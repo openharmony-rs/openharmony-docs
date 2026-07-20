@@ -6,6 +6,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
+<a id="getallsystemhotkeys"></a>
 ## getAllSystemHotkeys
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<HotkeyOptions>> | Promise对象，返回所有系统快捷键的列表。 |
+| Promise&lt;Array&lt;HotkeyOptions&gt;&gt; | Promise对象，返回所有系统快捷键的列表。 |
 
 **错误码：**
 

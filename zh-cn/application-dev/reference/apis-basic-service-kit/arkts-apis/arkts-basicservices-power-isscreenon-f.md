@@ -6,6 +6,7 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
+<a id="isscreenon"></a>
 ## isScreenOn
 
 ```TypeScript
@@ -28,7 +29,7 @@ function isScreenOn(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当检测成功，err为undefined，data为获取到的亮灭屏状态，返回true表示亮屏，返回false表示灭屏；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当检测成功，err为undefined，data为获取到的亮灭屏状态，返回true表示亮屏，返回false表示灭屏；否则为错误对象。 |
 
 **示例：**
 
@@ -44,6 +45,7 @@ power.isScreenOn((err: BusinessError, data: boolean) => {
 ```
 
 
+<a id="isscreenon-1"></a>
 ## isScreenOn
 
 ```TypeScript
@@ -66,7 +68,7 @@ function isScreenOn(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示亮屏；返回false表示灭屏。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示亮屏；返回false表示灭屏。 |
 
 **示例：**
 

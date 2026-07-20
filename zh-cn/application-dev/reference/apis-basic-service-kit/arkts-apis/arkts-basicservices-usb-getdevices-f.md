@@ -6,6 +6,7 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
+<a id="getdevices"></a>
 ## getDevices
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getDevices(): Array<Readonly<USBDevice>>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Readonly<USBDevice>> | 设备信息列表。 |
+| Array&lt;Readonly&lt;USBDevice&gt;&gt; | 设备信息列表。 |
 
 **示例：**
 

@@ -1,5 +1,6 @@
 # mutableBuilder
 
+<a id="mutablebuilder"></a>
 ## mutableBuilder
 
 ```TypeScript
@@ -28,5 +29,5 @@ declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback)
 
 | 类型 | 说明 |
 | --- | --- |
-| [MutableBuilder](arkts-arkui-common-mutablebuilder-c.md)<Args> | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
+| [MutableBuilder](arkts-arkui-mutablebuilder-c.md)&lt;Args&gt; | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 

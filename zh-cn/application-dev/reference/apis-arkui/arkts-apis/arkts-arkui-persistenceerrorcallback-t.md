@@ -23,8 +23,8 @@ export declare type PersistenceErrorCallback = (key: string, reason: 'quota' | '
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 出错的键值。 |
-| reason | 'quota' \| 'serialization' \| 'unknown' | 是 | 出错的原因类型。 |
-| message | string | 是 | 出错的更多消息。 |
+| key | string | 是 | 出错的键值。  |
+| reason | 'quota' \| 'serialization' \| 'unknown' | 是 | 出错的原因类型。  |
+| message | string | 是 | 出错的更多消息。  |
 | oldValue | string | 否 | 反序列化失败时，返回的旧的存储于磁盘的序列化数据。 |
 

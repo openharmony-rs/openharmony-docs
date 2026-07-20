@@ -6,6 +6,7 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
+<a id="getdisallowedbluetoothprotocols"></a>
 ## getDisallowedBluetoothProtocols
 
 ```TypeScript
@@ -29,13 +30,13 @@ function getDisallowedBluetoothProtocols(admin: Want, accountId: number): Array<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Protocol> | 禁用名单中蓝牙协议的数组。 |
+| Array&lt;Protocol&gt; | 禁用名单中蓝牙协议的数组。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ try {
 ```
 
 
+<a id="getdisallowedbluetoothprotocols-1"></a>
 ## getDisallowedBluetoothProtocols
 
 ```TypeScript
@@ -95,15 +97,15 @@ function getDisallowedBluetoothProtocols(admin: Want | null, accountId: number, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want \| null | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| accountId | number | 是 | <br>不合法的值区间: [0, +。  - 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。 |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) \| null | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| accountId | number | 是 | <br>不合法的值区间: [0, +。   - 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
 | policy | [TransferPolicy](arkts-mdm-bluetoothmanager-transferpolicy-e.md) | 是 | 传输策略。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Protocol> | 返回禁用名单中的蓝牙协议数组。 |
+| Array&lt;Protocol&gt; | 返回禁用名单中的蓝牙协议数组。 |
 
 **错误码：**
 

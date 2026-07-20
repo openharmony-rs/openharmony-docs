@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getallsimaccountinfolist"></a>
 ## getAllSimAccountInfoList
 
 ```TypeScript
@@ -28,7 +29,7 @@ Get the list of all SIM card account information.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<IccAccountInfo>> | 是 | The callback is used to return the array of {@link IccAccountInfo}. The ICCID and phone number will be null if has no ohos.permission.GET_TELEPHONY_STATE. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;IccAccountInfo&gt;&gt; | 是 | The callback is used to return the array of {@link IccAccountInfo}. The ICCID and phone number will be null if has no ohos.permission.GET_TELEPHONY_STATE. |
 
 **错误码：**
 
@@ -55,6 +56,7 @@ sim.getAllSimAccountInfoList((err: BusinessError) => {
 ```
 
 
+<a id="getallsimaccountinfolist-1"></a>
 ## getAllSimAccountInfoList
 
 ```TypeScript
@@ -77,7 +79,7 @@ Get the list of all SIM card account information.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<IccAccountInfo>> | Returns the array of {@link IccAccountInfo}. The ICCID and phone number will be null if has no ohos.permission.GET_TELEPHONY_STATE. |
+| Promise&lt;Array&lt;IccAccountInfo&gt;&gt; | Returns the array of {@link IccAccountInfo}. The ICCID and phone number will be null if has no ohos.permission.GET_TELEPHONY_STATE. |
 
 **错误码：**
 

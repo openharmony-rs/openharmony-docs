@@ -6,6 +6,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="off"></a>
 ## off('privateModeChange')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function off(type: 'privateModeChange', callback?: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'privateModeChange' | 是 | 监听事件，固定为'privateModeChange'，表示屏幕隐私模式状态发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 否 | 需要取消注册的回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。若无此参数，则取消注册屏幕隐私模式变化监听的所有回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。若无此参数，则取消注册屏幕隐私模式变化监听的所有回调函数。 |
 
 **错误码：**
 

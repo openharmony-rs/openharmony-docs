@@ -6,13 +6,14 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getprofilebyabilitysync"></a>
 ## getProfileByAbilitySync
 
 ```TypeScript
 function getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: string): Array<string>
 ```
 
-以同步方法根据给定的moduleName、abilityName和metadataName（module.json5中[metadata标签](../../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
+以同步方法根据给定的moduleName、abilityName和metadataName（module.json5中[metadata标签](docroot://quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
 
 **起始版本：** 10
 
@@ -28,13 +29,13 @@ function getProfileByAbilitySync(moduleName: string, abilityName: string, metada
 | --- | --- | --- | --- |
 | moduleName | string | 是 | 表示Module名称。 |
 | abilityName | string | 是 | 表示UIAbility组件的名称。 |
-| metadataName | string | 否 | 表示UIAbility组件的元信息名称，即module.json5配置文件中[abilities标签](../../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name，默认值为空。 |
+| metadataName | string | 否 | 表示UIAbility组件的元信息名称，即module.json5配置文件中[abilities标签](docroot://quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name，默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 数组对象，返回Array&lt;string&gt;。 |
+| Array&lt;string&gt; | 数组对象，返回Array<string>。 |
 
 **错误码：**
 

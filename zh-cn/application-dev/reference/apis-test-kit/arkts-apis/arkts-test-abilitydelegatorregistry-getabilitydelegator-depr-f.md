@@ -1,5 +1,6 @@
 # getAbilityDelegator
 
+<a id="getabilitydelegator"></a>
 ## getAbilityDelegator
 
 ```TypeScript

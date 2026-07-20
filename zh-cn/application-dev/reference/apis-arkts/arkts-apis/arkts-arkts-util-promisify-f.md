@@ -6,6 +6,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="promisify"></a>
 ## promisify
 
 ```TypeScript
@@ -26,7 +27,7 @@ function promisify(original: (err: Object, value: Object) => void): Function
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| original | (err: Object, value: Object) => void | 是 | 函数，其中第一个参数 **err** 表示拒绝的原因（如果 promise 已经 resolved，该值为**null**），第二个参数 **value** 表示 resolved 的值。 |
+| original | (err: Object, value: Object) =&gt; void | 是 | 函数，其中第一个参数 **err** 表示拒绝的原因（如果 promise 已经 resolved，该值为**null**），第二个参数 **value** 表示 resolved 的值。 |
 
 **返回值：**
 

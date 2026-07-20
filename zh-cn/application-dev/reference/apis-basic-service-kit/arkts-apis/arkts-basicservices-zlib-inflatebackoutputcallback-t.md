@@ -18,13 +18,13 @@ type InflateBackOutputCallback = (outDesc: object, buf: ArrayBuffer, length: num
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| outDesc | object | 是 | 用户定义数据对象。 |
-| buf | ArrayBuffer | 是 | 用于存储要写入的数据。 |
-| length | int | 是 | 写入输出缓冲区的长度。 |
+| outDesc | object | 是 | 用户定义数据对象。  |
+| buf | ArrayBuffer | 是 | 用于存储要写入的数据。  |
+| length | number | 是 | 写入输出缓冲区的长度。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 输出缓冲区的字节数。 |
+| number | 输出缓冲区的字节数。  |
 

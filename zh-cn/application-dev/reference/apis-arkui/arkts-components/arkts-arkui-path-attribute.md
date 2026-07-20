@@ -10,13 +10,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="commands"></a>
 ## commands
 
 ```TypeScript
 commands(value: ResourceStr)
 ```
 
-设置符合[SVG路径描述规范](../../../../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)的命令字符串，单位为px。像素单位转换方法请参考[像素单位转换](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
+设置符合[SVG路径描述规范](docroot://reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)的命令字符串，单位为px。像素单位转换方法请参考[像素单位转换](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
 
 **起始版本：** 7
 

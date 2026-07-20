@@ -42,7 +42,7 @@ readonly capabilities?: Array<AudioStreamInfo>
 
 设备支持的音频流能力。
 
-**类型：** Array<AudioStreamInfo>
+**类型：** Array&lt;AudioStreamInfo&gt;
 
 **起始版本：** 22
 
@@ -58,7 +58,7 @@ readonly channelCounts: Array<number>
 
 支持的通道数。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 9
 
@@ -76,7 +76,7 @@ readonly channelMasks: Array<number>
 
 支持的通道掩码。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 9
 
@@ -148,7 +148,7 @@ readonly encodingTypes?: Array<AudioEncodingType>
 
 支持的编码类型。
 
-**类型：** Array<AudioEncodingType>
+**类型：** Array&lt;AudioEncodingType&gt;
 
 **起始版本：** 11
 
@@ -220,7 +220,7 @@ readonly sampleRates: Array<number>
 
 支持的采样率。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 9
 

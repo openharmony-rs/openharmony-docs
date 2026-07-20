@@ -66,7 +66,7 @@ borderColor?: ResourceColor | EdgeColors
 
 设置弹窗背板的边框颜色。<br/>默认值：Color.Black<br/> 如果使用borderColor属性，需要和borderWidth属性一起使用。
 
-**类型：** ResourceColor | EdgeColors
+**类型：** ResourceColor \| EdgeColors
 
 **起始版本：** 12
 
@@ -86,7 +86,7 @@ borderStyle?: BorderStyle | EdgeStyles
 
 设置弹窗背板的边框样式。<br/>默认值：BorderStyle.Solid<br/> 如果使用borderStyle属性，需要和borderWidth属性一起使用。
 
-**类型：** BorderStyle | EdgeStyles
+**类型：** BorderStyle \| EdgeStyles
 
 **起始版本：** 12
 
@@ -106,7 +106,7 @@ borderWidth?: Dimension | EdgeWidths
 
 设置弹窗背板的边框宽度。<br />可分别设置4个边框宽度。<br />默认值：0<br />单位：vp<br /> 百分比参数方式：以父元素弹窗宽的百分比来设置弹窗的边框宽度。<br />当弹窗左边框和右边框大于弹窗宽度，弹窗上边框和下边框大于弹窗高度，显示可能不符合预期。
 
-**类型：** Dimension | EdgeWidths
+**类型：** Dimension \| EdgeWidths
 
 **起始版本：** 12
 
@@ -146,7 +146,7 @@ cornerRadius?: Dimension | BorderRadiuses
 
 设置背板的圆角半径。<br />可分别设置4个圆角的半径。<br />默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }<br /> 圆角大小受组件尺寸限制，最大值为组件宽或高的一半，若值为负，则按照默认值处理。<br /> 百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。
 
-**类型：** Dimension | BorderRadiuses
+**类型：** Dimension \| BorderRadiuses
 
 **起始版本：** 12
 
@@ -186,7 +186,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 设置弹窗背板的阴影。<br />当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
 
-**类型：** ShadowOptions | ShadowStyle
+**类型：** ShadowOptions \| ShadowStyle
 
 **起始版本：** 12
 

@@ -54,7 +54,7 @@ subFiles?: Array<FileResponse>
 
 文件列表。
 
-**类型：** Array<FileResponse>
+**类型：** Array&lt;FileResponse&gt;
 
 **起始版本：** 3
 
@@ -74,7 +74,7 @@ type: 'dir' | 'file'
 -dir：目录；  
 -file：文件。
 
-**类型：** 'dir' | 'file'
+**类型：** 'dir' \| 'file'
 
 **起始版本：** 3
 

@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="gettouchpadrightclicktype"></a>
 ## getTouchpadRightClickType
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getTouchpadRightClickType(callback: AsyncCallback<RightClickType>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RightClickType> | 是 | 回调函数。当获取触控板右键菜单类型成功，err为undefined，对象是触控板右键菜单类型；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RightClickType&gt; | 是 | 回调函数。当获取触控板右键菜单类型成功，err为undefined，对象是触控板右键菜单类型；否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ struct Index {
 ```
 
 
+<a id="gettouchpadrightclicktype-1"></a>
 ## getTouchpadRightClickType
 
 ```TypeScript
@@ -88,7 +90,7 @@ function getTouchpadRightClickType(): Promise<RightClickType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RightClickType> | Promise对象，返回触控板右键菜单类型。 |
+| Promise&lt;RightClickType&gt; | Promise对象，返回触控板右键菜单类型。 |
 
 **错误码：**
 

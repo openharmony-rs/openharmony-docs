@@ -24,5 +24,5 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Compilation[]&gt; | Promise对象，返回与关键字相关的合集数组。 |
+| Promise&lt;Compilation[]&gt; | Promise对象，返回与关键字相关的合集数组。  |
 

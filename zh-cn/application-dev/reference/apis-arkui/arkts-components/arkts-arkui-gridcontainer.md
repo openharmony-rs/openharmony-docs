@@ -28,7 +28,7 @@ GridContainer(value?: GridContainerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | GridContainerOptions | 否 | GridContainer参数。 |
+| value | [GridContainerOptions](arkts-arkui-gridcontaineroptions-i.md) | 否 | GridContainer参数。  |
 
 ## 汇总
 

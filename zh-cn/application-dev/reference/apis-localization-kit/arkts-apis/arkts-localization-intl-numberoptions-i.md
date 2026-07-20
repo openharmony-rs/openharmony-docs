@@ -24,7 +24,7 @@ compactDisplay?: string
 
 默认值：short。
 
-不同取值的显示效果请参考[附录表18](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表18](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -66,7 +66,7 @@ currencyDisplay?: string
 
 默认值：symbol。
 
-不同取值的显示效果请参考[附录表20](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表20](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -88,7 +88,7 @@ currencySign?: string
 
 默认值：standard。
 
-不同取值的显示效果请参考[附录表19](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表19](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -150,7 +150,7 @@ maximumFractionDigits?: number
 
 默认值：3。
 
-不同取值的显示效果请参考[附录表13](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表13](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** number
 
@@ -172,7 +172,7 @@ maximumSignificantDigits?: number
 
 默认值：21。
 
-不同取值的显示效果请参考[附录表15](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表15](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** number
 
@@ -194,7 +194,7 @@ minimumFractionDigits?: number
 
 默认值：0。
 
-不同取值的显示效果请参考[附录表12](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表12](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** number
 
@@ -216,7 +216,7 @@ minimumIntegerDigits?: number
 
 默认值：1。
 
-不同取值的显示效果请参考[附录表11](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表11](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** number
 
@@ -238,7 +238,7 @@ minimumSignificantDigits?: number
 
 默认值：1。
 
-不同取值的显示效果请参考[附录表14](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表14](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** number
 
@@ -260,7 +260,7 @@ notation?: string
 
 默认值：standard。
 
-不同取值的显示效果请参考[附录表17](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表17](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -450,7 +450,7 @@ unitDisplay?: string
 
 默认值：short。
 
-不同取值的显示效果请参考[附录表21](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表21](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -472,7 +472,7 @@ unitUsage?: string
 
 默认值：default。
 
-不同取值的显示效果请参考[附录表22](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表22](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -494,7 +494,7 @@ true表示分组显示，false表示不分组显示。
 
 默认值：true。
 
-不同取值的显示效果请参考[附录表16](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表16](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** boolean
 

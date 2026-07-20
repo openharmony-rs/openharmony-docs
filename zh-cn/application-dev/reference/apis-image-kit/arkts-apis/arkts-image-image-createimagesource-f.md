@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createimagesource"></a>
 ## createImageSource
 
 ```TypeScript
@@ -28,7 +29,7 @@ function createImageSource(uri: string): ImageSource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC&lt;sup&gt;12+&lt;/sup&gt;、WBMP&lt;sup&gt;23+&lt;/sup&gt;、HEIFS&lt;sup&gt;23+&lt;/sup&gt;、TIFF&lt;sup&gt;23+&lt;/sup&gt;、SVG&lt;sup&gt;10+&lt;/sup&gt;（可参考[SVG标签说明](../../../../reference/apis-image-kit/arkts-apis-image-f.md#svg标签说明)）、ICO&lt;sup&gt;11+&lt;/sup&gt;。从API版本26.0.0开始，增加支持AVIF、AVIS格式。<br>部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md#getimagesourcesupportedformats-1)接口，动态查询当前设备上的解码能力。 |
+| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、SVG<sup>10+</sup>（可参考[SVG标签说明](docroot://reference/apis-image-kit/arkts-apis-image-f.md#svg标签说明)）、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。<br>部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md#getimagesourcesupportedformats-1)接口，动态查询当前设备上的解码能力。 |
 
 **返回值：**
 
@@ -48,6 +49,7 @@ async function CreateImageSource(context : Context) {
 ```
 
 
+<a id="createimagesource-1"></a>
 ## createImageSource
 
 ```TypeScript
@@ -72,7 +74,7 @@ function createImageSource(uri: string, options: SourceOptions): ImageSource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径（可参考[使用说明](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#使用说明)）。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC&lt;sup&gt;12+&lt;/sup&gt;、WBMP&lt;sup&gt;23+&lt;/sup&gt;、HEIFS&lt;sup&gt;23+&lt;/sup&gt;、TIFF&lt;sup&gt;23+&lt;/sup&gt;、SVG&lt;sup&gt;10+&lt;/sup&gt;（可参考[SVG标签说明](../../../../reference/apis-image-kit/arkts-apis-image-f.md#svg标签说明)）、ICO&lt;sup&gt;11+&lt;/sup&gt;。从API版本26.0.0开始，增加支持AVIF、AVIS格式。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md#getimagesourcesupportedformats-1)接口，动态查询当前设备上的解码能力。 |
+| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径（可参考[使用说明](docroot://reference/apis-core-file-kit/js-apis-file-fs.md#使用说明)）。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、SVG<sup>10+</sup>（可参考[SVG标签说明](docroot://reference/apis-image-kit/arkts-apis-image-f.md#svg标签说明)）、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md#getimagesourcesupportedformats-1)接口，动态查询当前设备上的解码能力。 |
 | options | [SourceOptions](arkts-image-image-sourceoptions-i.md) | 是 | 图片属性，包括图片像素密度、像素格式和图片尺寸。 |
 
 **返回值：**
@@ -94,6 +96,7 @@ async function CreateImageSource(context : Context) {
 ```
 
 
+<a id="createimagesource-2"></a>
 ## createImageSource
 
 ```TypeScript
@@ -139,6 +142,7 @@ async function CreateImageSource(context : Context) {
 ```
 
 
+<a id="createimagesource-3"></a>
 ## createImageSource
 
 ```TypeScript
@@ -188,6 +192,7 @@ async function CreateImageSource(context : Context) {
 ```
 
 
+<a id="createimagesource-4"></a>
 ## createImageSource
 
 ```TypeScript
@@ -212,7 +217,7 @@ function createImageSource(buf: ArrayBuffer): ImageSource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 图像缓冲区数组。 |
+| buf | ArrayBuffer | 是 | 图像缓冲区数组。 |
 
 **返回值：**
 
@@ -231,6 +236,7 @@ async function CreateImageSource() {
 ```
 
 
+<a id="createimagesource-5"></a>
 ## createImageSource
 
 ```TypeScript
@@ -255,7 +261,7 @@ function createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSourc
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 图像缓冲区数组。 |
+| buf | ArrayBuffer | 是 | 图像缓冲区数组。 |
 | options | [SourceOptions](arkts-image-image-sourceoptions-i.md) | 是 | 图片属性，包括图片像素密度、像素格式和图片尺寸。 |
 
 **返回值：**
@@ -276,6 +282,7 @@ async function CreateImageSource() {
 ```
 
 
+<a id="createimagesource-6"></a>
 ## createImageSource
 
 ```TypeScript

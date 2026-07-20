@@ -6,6 +6,7 @@
 import { sendableImage } from '@kit.ImageKit';
 ```
 
+<a id="createimagesource"></a>
 ## createImageSource
 
 ```TypeScript
@@ -28,7 +29,7 @@ function createImageSource(uri: string): ImageSource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径。&lt;/br&gt;当前支持格式有：.jpg .png .gif .bmp .webp .dng [SVG](../../../../reference/apis-image-kit/arkts-apis-image-f.md#svg标签说明) .ico。 |
+| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng [SVG](docroot://reference/apis-image-kit/arkts-apis-image-f.md#svg标签说明) .ico。 |
 
 **返回值：**
 
@@ -49,6 +50,7 @@ async function CreateImageSource(context : Context) {
 ```
 
 
+<a id="createimagesource-1"></a>
 ## createImageSource
 
 ```TypeScript
@@ -94,6 +96,7 @@ async function CreateImageSource(context : Context) {
 ```
 
 
+<a id="createimagesource-2"></a>
 ## createImageSource
 
 ```TypeScript
@@ -118,7 +121,7 @@ function createImageSource(buf: ArrayBuffer): ImageSource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 图像缓冲区数组。 |
+| buf | ArrayBuffer | 是 | 图像缓冲区数组。 |
 
 **返回值：**
 

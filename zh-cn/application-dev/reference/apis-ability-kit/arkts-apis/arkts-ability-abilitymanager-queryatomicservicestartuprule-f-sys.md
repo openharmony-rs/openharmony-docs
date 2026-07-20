@@ -6,6 +6,7 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="queryatomicservicestartuprule"></a>
 ## queryAtomicServiceStartupRule
 
 ```TypeScript
@@ -35,7 +36,7 @@ function queryAtomicServiceStartupRule(context: Context, appId: string): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AtomicServiceStartupRule> | Promise对象。返回嵌入式拉起原子化服务的规则。 |
+| Promise&lt;AtomicServiceStartupRule&gt; | Promise对象。返回嵌入式拉起原子化服务的规则。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getappcloneidentity"></a>
 ## getAppCloneIdentity
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getAppCloneIdentity(uid: number): Promise<AppCloneIdentity>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AppCloneIdentity> | Promise对象，返回&lt;AppCloneIdentity&gt;。 |
+| Promise&lt;AppCloneIdentity&gt; | Promise对象，返回<AppCloneIdentity>。 |
 
 **错误码：**
 

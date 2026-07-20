@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getpermissiondef"></a>
 ## getPermissionDef
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getPermissionDef(permissionName: string, callback: AsyncCallback<Permis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | permissionName | string | 是 | 表示权限名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<PermissionDef> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array&lt;PermissionDef&gt;；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PermissionDef&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array<PermissionDef>；否则为错误对象。 |
 
 **错误码：**
 
@@ -64,6 +65,7 @@ try {
 ```
 
 
+<a id="getpermissiondef-1"></a>
 ## getPermissionDef
 
 ```TypeScript
@@ -92,7 +94,7 @@ function getPermissionDef(permissionName: string): Promise<PermissionDef>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PermissionDef> | Promise对象，返回Array&lt;PermissionDef&gt;对象。 |
+| Promise&lt;PermissionDef&gt; | Promise对象，返回Array<PermissionDef>对象。 |
 
 **错误码：**
 

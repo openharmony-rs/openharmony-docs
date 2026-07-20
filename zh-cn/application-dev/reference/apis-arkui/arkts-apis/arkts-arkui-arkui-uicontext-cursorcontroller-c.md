@@ -20,6 +20,7 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="restoredefault"></a>
 ## restoreDefault
 
 ```TypeScript
@@ -38,6 +39,7 @@ restoreDefault(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="setcursor"></a>
 ## setCursor
 
 ```TypeScript
@@ -66,6 +68,7 @@ setCursor(value: PointerStyle): void
 | --- | --- | --- | --- |
 | value | [PointerStyle](arkts-arkui-pointerstyle-t.md) | 是 | 光标样式。 |
 
+<a id="setcustomcursor"></a>
 ## setCustomCursor
 
 ```TypeScript

@@ -16,6 +16,7 @@
 import { stream } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -39,6 +40,7 @@ let duplex = new stream.Duplex();
 
 ```
 
+<a id="cork"></a>
 ## cork
 
 ```TypeScript
@@ -70,6 +72,7 @@ console.info("duplexStream cork result", result); // duplexStream cork result tr
 
 ```
 
+<a id="dowrite"></a>
 ## doWrite
 
 ```TypeScript
@@ -116,6 +119,7 @@ duplexStream.write("data", "utf8");
 
 ```
 
+<a id="dowritev"></a>
 ## doWritev
 
 ```TypeScript
@@ -169,6 +173,7 @@ duplexStream.end();
 
 ```
 
+<a id="end"></a>
 ## end
 
 ```TypeScript
@@ -229,6 +234,7 @@ duplexStream.end("test", "utf8", () => {
 
 ```
 
+<a id="setdefaultencoding"></a>
 ## setDefaultEncoding
 
 ```TypeScript
@@ -279,6 +285,7 @@ console.info("duplexStream is result", result); // duplexStream is result true
 
 ```
 
+<a id="uncork"></a>
 ## uncork
 
 ```TypeScript
@@ -328,6 +335,7 @@ console.info("Duplex test uncork", dataWritten); // Duplex test uncork ab
 
 ```
 
+<a id="write"></a>
 ## write
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { securityLabel } from '@kit.CoreFileKit';
 ```
 
+<a id="getsecuritylabel"></a>
 ## getSecurityLabel
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getSecurityLabel(path: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 返回数据安全等级。 |
+| Promise&lt;string&gt; | 返回数据安全等级。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ securityLabel.getSecurityLabel(filePath).then((type: string) => {
 ```
 
 
+<a id="getsecuritylabel-1"></a>
 ## getSecurityLabel
 
 ```TypeScript
@@ -78,7 +80,7 @@ function getSecurityLabel(path: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 文件路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 异步获取数据安全等级之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 异步获取数据安全等级之后的回调。 |
 
 **错误码：**
 

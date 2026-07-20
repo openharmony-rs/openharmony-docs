@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getslotflagsbybundle"></a>
 ## getSlotFlagsByBundle
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getSlotFlagsByBundle(bundle: BundleOption): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 以Promise形式返回获取指定应用的通知渠道标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。<br>- bit1：锁屏。0表示关闭，1表示开启。<br>- bit2：横幅。0表示关闭，1表示开启。<br>- bit3：亮屏。0表示关闭，1表示开启。<br>- bit4：振动。0表示关闭，1表示开启。<br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
+| Promise&lt;number&gt; | 以Promise形式返回获取指定应用的通知渠道标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。<br>- bit1：锁屏。0表示关闭，1表示开启。<br>- bit2：横幅。0表示关闭，1表示开启。<br>- bit3：亮屏。0表示关闭，1表示开启。<br>- bit4：振动。0表示关闭，1表示开启。<br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
 
 **错误码：**
 

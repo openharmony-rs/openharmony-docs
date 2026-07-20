@@ -6,6 +6,8 @@
 
 **起始版本：** 12
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-export declare struct IconGroupSuffix--><!--Device-unnamed-export declare struct IconGroupSuffix-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,7 +24,7 @@ import { ChipItemLabelOptions, ChipGroupSpaceOptions, SymbolItemOptions, SuffixI
 iconBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-common-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-common-commonmethod-c.md#shadow-1)等视觉属性。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)等视觉属性。
 
 默认值：undefined
 
@@ -50,11 +52,11 @@ items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItemOptions>
 
 尾部区域显示的自定义项数组，支持IconItemOptions（Image图标）、SymbolGlyphModifier（Symbol图标）或SymbolItemOptions（Symbol图标配置）类型。
 
-**类型：** Array<IconItemOptions | SymbolGlyphModifier | SymbolItemOptions>
+**类型：** Array&lt;IconItemOptions \| SymbolGlyphModifier \| SymbolItemOptions&gt;
 
 **起始版本：** 12
 
-**装饰器类型：** @Prop
+**装饰器类型：** @Require、@Prop
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

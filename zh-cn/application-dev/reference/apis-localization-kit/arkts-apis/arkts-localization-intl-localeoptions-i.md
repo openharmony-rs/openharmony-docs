@@ -5,7 +5,7 @@
 
 > **说明：**  
 >  
-> - calendar：不同取值的含义请参考[设置日历和历法表1](../../../../internationalization/i18n-calendar.md)。
+> - calendar：不同取值的含义请参考[设置日历和历法表1](docroot://internationalization/i18n-calendar.md)。
 
 **起始版本：** 6
 

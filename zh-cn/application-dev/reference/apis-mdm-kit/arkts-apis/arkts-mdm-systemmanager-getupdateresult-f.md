@@ -6,6 +6,7 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
+<a id="getupdateresult"></a>
 ## getUpdateResult
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getUpdateResult(admin: Want, version: string): Promise<UpdateResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<UpdateResult> | Promise对象，返回系统更新结果。 |
+| Promise&lt;UpdateResult&gt; | Promise对象，返回系统更新结果。 |
 
 **错误码：**
 

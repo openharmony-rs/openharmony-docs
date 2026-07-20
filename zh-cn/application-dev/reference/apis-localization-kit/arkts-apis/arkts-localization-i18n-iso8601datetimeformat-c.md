@@ -14,6 +14,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -38,6 +39,7 @@ public constructor(options?: ISO8601DateTimeFormatOptions)
 | --- | --- | --- | --- |
 | options | [ISO8601DateTimeFormatOptions](arkts-localization-i18n-iso8601datetimeformatoptions-i.md) | 否 | 符合ISO 8601标准的日期格式化对象创建时的配置项。默认值：所有属性都取默认值时的配置项。 |
 
+<a id="format"></a>
 ## format
 
 ```TypeScript

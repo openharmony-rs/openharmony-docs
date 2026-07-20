@@ -6,6 +6,7 @@
 import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
+<a id="ondownloadsuccess"></a>
 ## onDownloadSuccess
 
 ```TypeScript
@@ -25,7 +26,7 @@ function onDownloadSuccess(url: string, callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 待注册回调的url，url字符串的最大长度为8192字节。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 

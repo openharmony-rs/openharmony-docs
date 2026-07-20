@@ -6,6 +6,7 @@
 import { infraredEmitter } from '@kit.InputKit';
 ```
 
+<a id="hasiremitter"></a>
 ## hasIrEmitter
 
 ```TypeScript
@@ -26,7 +27,7 @@ function hasIrEmitter(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示设备具有红外发射器；返回false表示设备不具有红外发射器。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示设备具有红外发射器；返回false表示设备不具有红外发射器。 |
 
 **错误码：**
 

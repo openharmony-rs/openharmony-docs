@@ -14,6 +14,7 @@
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="addaccountimplicitly"></a>
 ## addAccountImplicitly
 
 ```TypeScript
@@ -35,7 +36,7 @@ addAccountImplicitly(
 
 **废弃版本：** 9
 
-**替代接口：** createAccountImplicitly(options:
+**替代接口：** [createAccountImplicitly(options:](arkts-basicservices-appaccount-authenticator-c.md#createaccountimplicitly-1)
 
 <!--Device-Authenticator-addAccountImplicitly(
       authType: string,
@@ -60,6 +61,7 @@ addAccountImplicitly(
 | options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
+<a id="auth"></a>
 ## auth
 
 ```TypeScript
@@ -80,9 +82,10 @@ auth(name: string, authType: string, options: Record<string, Object>, callback: 
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | authType | string | 是 | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。 |
-| options | Record<string, Object> | 是 | 鉴权所需要的可选项。 |
+| options | Record&lt;string, Object&gt; | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
+<a id="authenticate"></a>
 ## authenticate
 
 ```TypeScript
@@ -105,7 +108,7 @@ authenticate(
 
 **废弃版本：** 9
 
-**替代接口：** auth(name:
+**替代接口：** [auth(name:](arkts-basicservices-appaccount-authenticator-c.md#auth-1)
 
 <!--Device-Authenticator-authenticate(
       name: string,
@@ -133,6 +136,7 @@ authenticate(
 | options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
+<a id="checkaccountlabels"></a>
 ## checkAccountLabels
 
 ```TypeScript
@@ -152,13 +156,14 @@ checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| labels | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 标签数组。 |
+| labels | Array&lt;string&gt; | 是 | 标签数组。 |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
 **示例：**
 
 接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
 
+<a id="checkaccountremovable"></a>
 ## checkAccountRemovable
 
 ```TypeScript
@@ -184,6 +189,7 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 
 接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
 
+<a id="createaccountimplicitly"></a>
 ## createAccountImplicitly
 
 ```TypeScript
@@ -205,6 +211,7 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 | options | [CreateAccountImplicitlyOptions](arkts-basicservices-appaccount-createaccountimplicitlyoptions-i.md) | 是 | 隐式创建账号的选项。 |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调对象，用于返回创建结果。 |
 
+<a id="getremoteobject"></a>
 ## getRemoteObject
 
 ```TypeScript
@@ -273,6 +280,7 @@ export default {
 
 ```
 
+<a id="setproperties"></a>
 ## setProperties
 
 ```TypeScript
@@ -298,6 +306,7 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 
 接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
 
+<a id="verifycredential"></a>
 ## verifyCredential
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { manager } from '@kit.ConnectivityKit';
 ```
 
+<a id="setconnectionmode"></a>
 ## setConnectionMode
 
 ```TypeScript
@@ -37,7 +38,7 @@ function setConnectionMode(mode: ConnectionMode, duration: number): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 返回promise对象。 |
+| Promise&lt;void&gt; | 返回promise对象。 |
 
 **错误码：**
 
@@ -46,7 +47,7 @@ function setConnectionMode(mode: ConnectionMode, duration: number): Promise<void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
-| 36100003 | NearLink disabled. |
-| 36100040 | Integer out of range. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100040](../errorcode-nearlink.md#36100040-整数超出范围) | Integer out of range. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 

@@ -6,6 +6,7 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="on"></a>
 ## on('receiveImage')
 
 ```TypeScript
@@ -33,7 +34,7 @@ Registers receiveImage event.
 | --- | --- | --- | --- |
 | type | 'receiveImage' | 是 | Registration Type, 'receiveImage'. |
 | sessionId | number | 是 | Ability connection Session id. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventCallbackInfo> | 是 | Used to handle ('receiveImage') command. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 是 | Used to handle ('receiveImage') command. |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ abilityConnectionManager.on('receiveImage', sessionId, (callbackInfo) => {
 ```
 
 
+<a id="on-1"></a>
 ## on('collaborateEvent')
 
 ```TypeScript
@@ -85,7 +87,7 @@ Registers collaborateEvent event.
 | --- | --- | --- | --- |
 | type | 'collaborateEvent' | 是 | Registration Type, 'collaborateEvent'. |
 | sessionId | number | 是 | Ability connection Session id. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CollaborateEventInfo> | 是 | Called when an error event comes. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CollaborateEventInfo&gt; | 是 | Called when an error event comes. |
 
 **错误码：**
 
@@ -110,6 +112,7 @@ abilityConnectionManager.on('collaborateEvent', sessionId, (callbackInfo) => {
 ```
 
 
+<a id="on-2"></a>
 ## on('collaborateEvent')
 
 ```TypeScript
@@ -135,7 +138,7 @@ Registers collaborateEvent event.
 | --- | --- | --- | --- |
 | type | 'collaborateEvent' | 是 | Registration Type, 'collaborateEvent'. |
 | sessionId | number | 是 | Ability connection Session id. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CollaborateEventInfo> | 是 | Called when an error event comes. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CollaborateEventInfo&gt; | 是 | Called when an error event comes. |
 
 **错误码：**
 

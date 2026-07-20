@@ -6,6 +6,7 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="getauthinstance"></a>
 ## getAuthInstance
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getAuthInstance(challenge: Uint8Array, authType: UserAuthType, authTrus
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| challenge | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 挑战值，最大长度为32字节，可以传Uint8Array([])。 |
+| challenge | Uint8Array | 是 | 挑战值，最大长度为32字节，可以传Uint8Array([])。 |
 | authType | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md) | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
 | authTrustLevel | [AuthTrustLevel](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-authtrustlevel-e-sys.md) | 是 | 认证信任等级。 |
 

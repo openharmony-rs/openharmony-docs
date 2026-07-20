@@ -16,5 +16,5 @@ The callback of verify pin.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| verifyPinEvent | VerifyPinEvent | 是 | The event of verify PIN. |
+| verifyPinEvent | [VerifyPinEvent](arkts-arkweb-verifypinevent-i.md) | 是 | The event of verify PIN.  |
 

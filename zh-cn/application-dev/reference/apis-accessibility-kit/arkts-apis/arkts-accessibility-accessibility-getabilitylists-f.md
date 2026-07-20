@@ -6,6 +6,7 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+<a id="getabilitylists"></a>
 ## getAbilityLists
 
 ```TypeScript
@@ -22,9 +23,17 @@ function getAbilityLists(
 
 **废弃版本：** 9
 
-**替代接口：** getAccessibilityExtensionList(abilityType:
+**替代接口：** [getAccessibilityExtensionList(abilityType:](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist-1)
 
-<!--Device-accessibility-function getAbilityLists(abilityType: AbilityType,stateType: AbilityState,callback: AsyncCallback<Array<AccessibilityAbilityInfo>>): void--><!--Device-accessibility-function getAbilityLists(abilityType: AbilityType,stateType: AbilityState,callback: AsyncCallback<Array<AccessibilityAbilityInfo>>): void-End-->
+<!--Device-accessibility-function getAbilityLists(
+    abilityType: AbilityType,
+    stateType: AbilityState,
+    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>
+  ): void--><!--Device-accessibility-function getAbilityLists(
+    abilityType: AbilityType,
+    stateType: AbilityState,
+    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>
+  ): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -34,7 +43,7 @@ function getAbilityLists(
 | --- | --- | --- | --- |
 | abilityType | [AbilityType](arkts-accessibility-accessibility-abilitytype-t.md) | 是 | 辅助应用的类型。 |
 | stateType | [AbilityState](arkts-accessibility-accessibility-abilitystate-t.md) | 是 | 辅助应用的状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<AccessibilityAbilityInfo>> | 是 | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt; | 是 | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
 
 **示例：**
 
@@ -56,6 +65,7 @@ accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, da
 ```
 
 
+<a id="getabilitylists-1"></a>
 ## getAbilityLists
 
 ```TypeScript
@@ -68,7 +78,7 @@ function getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Pro
 
 **废弃版本：** 9
 
-**替代接口：** getAccessibilityExtensionList(abilityType:
+**替代接口：** [getAccessibilityExtensionList(abilityType:](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist-1)
 
 <!--Device-accessibility-function getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise<Array<AccessibilityAbilityInfo>>--><!--Device-accessibility-function getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise<Array<AccessibilityAbilityInfo>>-End-->
 
@@ -85,7 +95,7 @@ function getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AccessibilityAbilityInfo>> | Promise对象，返回辅助应用信息列表。 |
+| Promise&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt; | Promise对象，返回辅助应用信息列表。 |
 
 **示例：**
 

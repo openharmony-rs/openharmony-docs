@@ -18,11 +18,11 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mediaEntity | MediaEntity | 是 | 需要播放的媒体实体。 |
+| mediaEntity | [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md) | 是 | 需要播放的媒体实体。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。  |
 

@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="off"></a>
 ## off('sessionCreate')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) =>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sessionCreate' | 是 | 事件回调类型，支持的事件为：`'sessionCreate'`。 |
-| callback | (session: AVSessionDescriptor) => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (session: AVSessionDescriptor) =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -64,6 +65,7 @@ struct Index {
 ```
 
 
+<a id="off-1"></a>
 ## off('sessionDestroy')
 
 ```TypeScript
@@ -85,7 +87,7 @@ function off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) =
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sessionDestroy' | 是 | 事件回调类型，支持的事件为`'sessionDestroy'`。 |
-| callback | (session: AVSessionDescriptor) => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (session: AVSessionDescriptor) =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -122,6 +124,7 @@ struct Index {
 ```
 
 
+<a id="off-2"></a>
 ## off('topSessionChange')
 
 ```TypeScript
@@ -143,7 +146,7 @@ function off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'topSessionChange' | 是 | 事件回调类型，支持的事件为`'topSessionChange'`。 |
-| callback | (session: AVSessionDescriptor) => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (session: AVSessionDescriptor) =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -180,6 +183,7 @@ struct Index {
 ```
 
 
+<a id="off-3"></a>
 ## off('sessionServiceDie')
 
 ```TypeScript
@@ -201,7 +205,7 @@ function off(type: 'sessionServiceDie', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sessionServiceDie' | 是 | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件。 |
-| callback | () => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。 |
 
 **错误码：**
 
@@ -219,6 +223,7 @@ avSession.off('sessionServiceDie');
 ```
 
 
+<a id="off-4"></a>
 ## off('distributedSessionChange')
 
 ```TypeScript
@@ -241,7 +246,7 @@ function off(type: 'distributedSessionChange', distributedSessionType: Distribut
 | --- | --- | --- | --- |
 | type | 'distributedSessionChange' | 是 | 事件回调类型，支持的事件为`'distributedSessionChange'`。 |
 | distributedSessionType | [DistributedSessionType](arkts-avsession-avsession-distributedsessiontype-e-sys.md) | 是 | 远端会话类型。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<AVSessionController>> | 否 | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;AVSessionController&gt;&gt; | 否 | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
 
 **错误码：**
 
@@ -258,6 +263,7 @@ avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_
 ```
 
 
+<a id="off-5"></a>
 ## off('deviceAvailable')
 
 ```TypeScript
@@ -279,7 +285,7 @@ function off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceAvailable' | 是 | 事件回调类型，支持事件`'deviceAvailable'`：设备发现回调。 |
-| callback | (device: OutputDeviceInfo) => void | 否 | 用于返回设备信息。 |
+| callback | (device: OutputDeviceInfo) =&gt; void | 否 | 用于返回设备信息。 |
 
 **错误码：**
 
@@ -296,6 +302,7 @@ avSession.off('deviceAvailable');
 ```
 
 
+<a id="off-6"></a>
 ## off('deviceOffline')
 
 ```TypeScript
@@ -317,7 +324,7 @@ function off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceOffline' | 是 | 事件回调类型，支持事件`'deviceOffline'`：设备下线回调。 |
-| callback | (deviceId: string) => void | 否 | 回调函数，参数deviceId是设备的ID。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (deviceId: string) =&gt; void | 否 | 回调函数，参数deviceId是设备的ID。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -334,6 +341,7 @@ avSession.off('deviceOffline');
 ```
 
 
+<a id="off-7"></a>
 ## off('deviceLogEvent')
 
 ```TypeScript
@@ -355,7 +363,7 @@ function off(type: 'deviceLogEvent', callback?: Callback<DeviceLogEventCode>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceLogEvent' | 是 | 取消对应的监听事件，支持事件`'deviceLogEvent'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DeviceLogEventCode> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceLogEventCode&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -374,6 +382,7 @@ avSession.off('deviceLogEvent');
 ```
 
 
+<a id="off-8"></a>
 ## off('deviceStateChanged')
 
 ```TypeScript
@@ -397,7 +406,7 @@ function off(type: 'deviceStateChanged', callback?: Callback<DeviceState>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceStateChanged' | 是 | 取消对应的监听事件，支持事件`'deviceStateChanged'`，投播设备连接状态变化的回调。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DeviceState> | 否 | 回调函数，当监听事件取消成功时，err为undefined；否则返回错误对象。该参数为可选参数，若未填写，则取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceState&gt; | 否 | 回调函数，当监听事件取消成功时，err为undefined；否则返回错误对象。该参数为可选参数，若未填写，则取消所有相关会话的事件监听。 |
 
 **错误码：**
 

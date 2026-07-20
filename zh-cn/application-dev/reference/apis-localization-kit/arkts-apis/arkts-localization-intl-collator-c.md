@@ -14,6 +14,7 @@
 import { intl } from '@kit.LocalizationKit';
 ```
 
+<a id="compare"></a>
 ## compare
 
 ```TypeScript
@@ -55,6 +56,7 @@ let compareResult = collator.compare('first', 'second'); // compareResult = -1
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -81,6 +83,7 @@ let collator = new intl.Collator();
 
 ```
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -101,7 +104,7 @@ constructor(locale: string | Array<string>, options?: CollatorOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string \| Array<string> | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
+| locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
 | options | [CollatorOptions](arkts-localization-intl-collatoroptions-i.md) | 否 | 创建排序对象时可设置的配置项。<br>默认值：所有属性都取默认值时的配置项。 |
 
 **示例：**
@@ -114,6 +117,7 @@ let collator = new intl.Collator('zh-CN', {localeMatcher: 'lookup', usage: 'sort
 
 ```
 
+<a id="resolvedoptions"></a>
 ## resolvedOptions
 
 ```TypeScript

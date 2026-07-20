@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="ispriorityenabledbybundle"></a>
 ## isPriorityEnabledByBundle
 
 ```TypeScript
@@ -34,7 +35,7 @@ function isPriorityEnabledByBundle(bundle: BundleOption): Promise<PriorityEnable
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PriorityEnableStatus> | Promise对象，返回包含应用通知优先级开关状态的Promise对象。 |
+| Promise&lt;PriorityEnableStatus&gt; | Promise对象，返回包含应用通知优先级开关状态的Promise对象。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getdeveloperids"></a>
 ## getDeveloperIds
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getDeveloperIds(appDistributionType?: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 同步返回Array&lt;string&gt;。 |
+| Array&lt;string&gt; | 同步返回Array<string>。 |
 
 **错误码：**
 

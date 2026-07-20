@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="settouchpadtapswitch"></a>
 ## setTouchpadTapSwitch
 
 ```TypeScript
@@ -27,7 +28,7 @@ function setTouchpadTapSwitch(state: boolean, callback: AsyncCallback<void>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | state | boolean | 是 | 触控板轻触功能开关开启状态。 true代表轻触开启，false代表轻触关闭，默认开启。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置触控板轻触功能开关成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置触控板轻触功能开关成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ struct Index {
 ```
 
 
+<a id="settouchpadtapswitch-1"></a>
 ## setTouchpadTapSwitch
 
 ```TypeScript
@@ -95,7 +97,7 @@ function setTouchpadTapSwitch(state: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

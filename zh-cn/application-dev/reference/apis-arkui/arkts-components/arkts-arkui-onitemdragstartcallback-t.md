@@ -18,12 +18,12 @@ declare type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | ItemDragInfo | 是 | 被拖拽项的信息。 |
-| itemIndex | number | 是 | 拖动项的索引号。 |
+| event | [ItemDragInfo](arkts-arkui-itemdraginfo-i.md) | 是 | 被拖拽项的信息。  |
+| itemIndex | number | 是 | 拖动项的索引号。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| CustomBuilder | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@atomicservice |
+| [CustomBuilder](arkts-arkui-custombuilder-t.md) | @syscap SystemCapability.ArkUI.ArkUI.Full @FaAndStageModel @crossplatform @atomicservice  |
 

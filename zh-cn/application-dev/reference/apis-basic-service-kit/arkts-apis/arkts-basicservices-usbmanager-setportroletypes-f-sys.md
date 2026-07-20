@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="setportroletypes"></a>
 ## setPortRoleTypes
 
 ```TypeScript
@@ -36,7 +37,7 @@ function setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: Da
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。 |
 
 **错误码：**
 

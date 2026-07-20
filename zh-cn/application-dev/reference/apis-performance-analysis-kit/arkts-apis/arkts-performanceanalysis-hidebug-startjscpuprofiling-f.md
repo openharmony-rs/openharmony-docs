@@ -6,6 +6,7 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="startjscpuprofiling"></a>
 ## startJsCpuProfiling
 
 ```TypeScript

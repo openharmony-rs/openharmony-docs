@@ -6,6 +6,7 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
+<a id="setdefaultdata"></a>
 ## setDefaultData
 
 ```TypeScript

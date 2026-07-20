@@ -6,13 +6,14 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="getsnapshot"></a>
 ## getSnapshot
 
 ```TypeScript
 function getSnapshot(windowId: number): Promise<image.PixelMap>
 ```
 
-获取指定窗口相同尺寸截图，使用Promise异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](arkts-arkui-window-window-i.md#setwindowprivacymode-2)接口设置），截图结果为白屏。
+获取指定窗口相同尺寸截图，使用Promise异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](arkts-arkui-window-window-i.md#setwindowprivacymode-1)接口设置），截图结果为白屏。
 
 **起始版本：** 12
 
@@ -26,13 +27,13 @@ function getSnapshot(windowId: number): Promise<image.PixelMap>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | number | 是 | 窗口Id。可通过[getWindowProperties](@link @ohos.window:window.Window.getWindowProperties)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
+| windowId | number | 是 | 窗口Id。可通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties-1)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | - Promise that returns no value. |
+| Promise&lt;image.PixelMap&gt; | - Promise that returns no value. |
 
 **错误码：**
 

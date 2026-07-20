@@ -14,6 +14,7 @@ class UIInspector
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="createcomponentobserver"></a>
 ## createComponentObserver
 
 ```TypeScript
@@ -36,7 +37,7 @@ Sets the component after layout or draw criteria and returns the corresponding l
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | ID of the target component, set using the universal attributes [id](../arkts-components/arkts-arkui-common-commonmethod-c.md#id-1)or [key](../arkts-components/arkts-arkui-common-commonmethod-c.md#key-1). |
+| id | string | 是 | ID of the target component, set using the universal attributes [id](../arkts-components/arkts-arkui-commonmethod-c.md#id-1)or [key](../arkts-components/arkts-arkui-commonmethod-c.md#key-1). |
 
 **返回值：**
 
@@ -44,6 +45,7 @@ Sets the component after layout or draw criteria and returns the corresponding l
 | --- | --- |
 | inspector.ComponentObserver | Component observer, which is used to register or unregister listeners for completion of component layout or drawing display. |
 
+<a id="createcomponentobserver-1"></a>
 ## createComponentObserver
 
 ```TypeScript

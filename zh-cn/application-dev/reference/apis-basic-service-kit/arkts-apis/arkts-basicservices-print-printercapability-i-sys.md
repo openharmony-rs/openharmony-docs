@@ -96,7 +96,7 @@ pageSize: Array<PrintPageSize>
 
 表示打印机支持的页面尺寸列表。
 
-**类型：** Array<PrintPageSize>
+**类型：** Array&lt;PrintPageSize&gt;
 
 **起始版本：** 24
 
@@ -114,7 +114,7 @@ resolution?: Array<PrintResolution>
 
 表示打印机支持的分辨率列表。
 
-**类型：** Array<PrintResolution>
+**类型：** Array&lt;PrintResolution&gt;
 
 **起始版本：** 24
 

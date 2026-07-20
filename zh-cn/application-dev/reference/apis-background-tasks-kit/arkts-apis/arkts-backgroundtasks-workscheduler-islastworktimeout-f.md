@@ -6,6 +6,7 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="islastworktimeout"></a>
 ## isLastWorkTimeOut
 
 ```TypeScript
@@ -18,7 +19,7 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boole
 
 **废弃版本：** 10
 
-**替代接口：** isLastWorkTimeOut(workId:
+**替代接口：** [isLastWorkTimeOut(workId:](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -31,7 +32,7 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boole
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | workId | number | 是 | 指定延迟任务的Id。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **返回值：**
 
@@ -50,6 +51,7 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boole
 | [9700004](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700004-workinfo校验失败) | Check on workInfo failed. |
 
 
+<a id="islastworktimeout-1"></a>
 ## isLastWorkTimeOut
 
 ```TypeScript
@@ -71,7 +73,7 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<boolean>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | workId | number | 是 | 指定延迟任务的Id。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -100,6 +102,7 @@ workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) => {
 ```
 
 
+<a id="islastworktimeout-2"></a>
 ## isLastWorkTimeOut
 
 ```TypeScript
@@ -126,7 +129,7 @@ function isLastWorkTimeOut(workId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示指定任务的最后一次执行超时，false表示未超时。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示指定任务的最后一次执行超时，false表示未超时。 |
 
 **错误码：**
 

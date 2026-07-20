@@ -6,6 +6,7 @@
 import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="registerdeviceselectcallback"></a>
 ## registerDeviceSelectCallback
 
 ```TypeScript

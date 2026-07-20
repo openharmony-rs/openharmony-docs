@@ -22,7 +22,7 @@ dst:Array<Point>
 
 目标点坐标。
 
-**类型：** Array<Point>
+**类型：** Array&lt;Point&gt;
 
 **起始版本：** 12
 
@@ -94,7 +94,7 @@ src: Array<Point>
 
 源点坐标。
 
-**类型：** Array<Point>
+**类型：** Array&lt;Point&gt;
 
 **起始版本：** 12
 

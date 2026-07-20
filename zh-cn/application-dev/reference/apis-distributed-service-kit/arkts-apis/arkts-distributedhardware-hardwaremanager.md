@@ -23,9 +23,9 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [pauseDistributedHardware](arkts-distributedservice-hardwaremanager-pausedistributedhardware-f-sys.md#pausedistributedhardware-1) | 暂停被控端分布式硬件业务。使用promise异步回调。 |
-| [resumeDistributedHardware](arkts-distributedservice-hardwaremanager-resumedistributedhardware-f-sys.md#resumedistributedhardware-1) | 恢复被控端分布式硬件业务。使用promise异步回调。 |
-| [stopDistributedHardware](arkts-distributedservice-hardwaremanager-stopdistributedhardware-f-sys.md#stopdistributedhardware-1) | 停止被控端分布式硬件业务。使用promise异步回调。 |
+| [pauseDistributedHardware](arkts-distributedservice-hardwaremanager-pausedistributedhardware-f-sys.md#pausedistributedhardware) | 暂停被控端分布式硬件业务。使用promise异步回调。 |
+| [resumeDistributedHardware](arkts-distributedservice-hardwaremanager-resumedistributedhardware-f-sys.md#resumedistributedhardware) | 恢复被控端分布式硬件业务。使用promise异步回调。 |
+| [stopDistributedHardware](arkts-distributedservice-hardwaremanager-stopdistributedhardware-f-sys.md#stopdistributedhardware) | 停止被控端分布式硬件业务。使用promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

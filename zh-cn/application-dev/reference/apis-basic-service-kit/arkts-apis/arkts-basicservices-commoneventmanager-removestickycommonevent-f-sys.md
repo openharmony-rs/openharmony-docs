@@ -6,6 +6,7 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="removestickycommonevent"></a>
 ## removeStickyCommonEvent
 
 ```TypeScript
@@ -29,7 +30,7 @@ function removeStickyCommonEvent(event: string, callback: AsyncCallback<void>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 表示被移除的粘性公共事件。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当移除粘性事件成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当移除粘性事件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ commonEventManager.removeStickyCommonEvent('sticky_event', (err: BusinessError) 
 ```
 
 
+<a id="removestickycommonevent-1"></a>
 ## removeStickyCommonEvent
 
 ```TypeScript
@@ -86,7 +88,7 @@ function removeStickyCommonEvent(event: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

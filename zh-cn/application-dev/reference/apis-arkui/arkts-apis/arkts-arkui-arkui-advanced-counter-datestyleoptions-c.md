@@ -86,7 +86,7 @@ date：当前显示的日期值。
 
 值为undefined时，不显示当前的日期值。
 
-**类型：** (date: DateData) => void
+**类型：** (date: DateData) =&gt; void
 
 **起始版本：** 11
 

@@ -1,5 +1,6 @@
 # cancelSuspendDelay
 
+<a id="cancelsuspenddelay"></a>
 ## cancelSuspendDelay
 
 ```TypeScript

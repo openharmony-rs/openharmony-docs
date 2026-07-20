@@ -6,6 +6,7 @@
 import { resourceManager } from '@kit.LocalizationKit';
 ```
 
+<a id="getsysresourcemanager"></a>
 ## getSysResourceManager
 
 ```TypeScript

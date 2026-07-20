@@ -145,7 +145,7 @@ adWidth?: number
 
 <!--RP2--><!--RP2End-->
 
-**类型：** number | boolean | string | undefined
+**类型：** number \| boolean \| string \| undefined
 
 **起始版本：** 11
 

@@ -6,6 +6,7 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="off"></a>
 ## off('selectionCompleted')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function off(type: 'selectionCompleted', callback?: Callback<SelectionInfo>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'selectionCompleted' | 是 | 设置监听类型，固定取值为'selectionCompleted'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SelectionInfo> | 否 | 回调函数，返回SelectionInfo。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SelectionInfo&gt; | 否 | 回调函数，返回SelectionInfo。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 

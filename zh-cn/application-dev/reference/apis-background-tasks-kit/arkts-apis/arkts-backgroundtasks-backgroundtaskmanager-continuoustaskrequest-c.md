@@ -1,8 +1,8 @@
 # ContinuousTaskRequest
 
-通常作为[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-4)和[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-2)接口的入参，用于指定申请或更新的长时任务信息。其中：
+通常作为[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-1)和[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)接口的入参，用于指定申请或更新的长时任务信息。其中：
 
-1. 通过[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-4)接口申请长时任务时，如果待申请长时任务与当前应用下已存在长时任务，两者的主类型和子类型均相同，且combinedTaskNotification均取值为true，则会合并通知。否则不会合并通知。2. 如果长时任务本身没有通知，则不会合并，长时任务类型是否会通知请参考[BackgroundTaskMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)。3. 如果长时任务类型中包含数据传输类型，则不会合并通知。4. 通知合并后不能取消合并，已合并的不能更新成不合并。5. 通知合并后，点击通知栏消息，会跳转到第一个申请的长时任务对应的UIAbility，如果调用了更新接口，则跳转到最后一次更新的长时任务对应的UIAbility。6. 通过[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-2)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。7. 从API version 22开始支持特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)的长时任务。必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
+1. 通过[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-1)接口申请长时任务时，如果待申请长时任务与当前应用下已存在长时任务，两者的主类型和子类型均相同，且combinedTaskNotification均取值为true，则会合并通知。否则不会合并通知。2. 如果长时任务本身没有通知，则不会合并，长时任务类型是否会通知请参考[BackgroundTaskMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)。3. 如果长时任务类型中包含数据传输类型，则不会合并通知。4. 通知合并后不能取消合并，已合并的不能更新成不合并。5. 通知合并后，点击通知栏消息，会跳转到第一个申请的长时任务对应的UIAbility，如果调用了更新接口，则跳转到最后一次更新的长时任务对应的UIAbility。6. 通过[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。7. 从API version 22开始支持特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)的长时任务。必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
 
 **起始版本：** 21
 
@@ -16,6 +16,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="checkspecialscenarioauth"></a>
 ## checkSpecialScenarioAuth
 
 ```TypeScript
@@ -44,7 +45,7 @@ checkSpecialScenarioAuth(context: Context): Promise<UserAuthResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<UserAuthResult> | Promise对象，返回用户授权结果。 |
+| Promise&lt;UserAuthResult&gt; | Promise对象，返回用户授权结果。 |
 
 **错误码：**
 
@@ -78,6 +79,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="checkspecialscenarioauthresult"></a>
 ## checkSpecialScenarioAuthResult
 
 ```TypeScript
@@ -106,7 +108,7 @@ checkSpecialScenarioAuthResult(context: Context): Promise<UserAuthResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<UserAuthResult> | 用户授权结果 |
+| Promise&lt;UserAuthResult&gt; | 用户授权结果 |
 
 **错误码：**
 
@@ -140,6 +142,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="ismodesupported"></a>
 ## isModeSupported
 
 ```TypeScript
@@ -195,6 +198,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="requestauthfromuser"></a>
 ## requestAuthFromUser
 
 ```TypeScript
@@ -218,7 +222,7 @@ requestAuthFromUser(context: Context, callback: Callback<UserAuthResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用运行的上下文。<br><br>FA模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<UserAuthResult> | 是 | 用户操作后，返回授权结果。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;UserAuthResult&gt; | 是 | 用户操作后，返回授权结果。 |
 
 **错误码：**
 
@@ -257,6 +261,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="requestauthfromuserbydialog"></a>
 ## requestAuthFromUserByDialog
 
 ```TypeScript
@@ -280,7 +285,7 @@ requestAuthFromUserByDialog(context: Context, callback: Callback<UserAuthResult>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | App running context. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<UserAuthResult> | 是 | The callback of the function. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;UserAuthResult&gt; | 是 | The callback of the function. |
 
 **错误码：**
 
@@ -373,7 +378,7 @@ combinedTaskNotification?: boolean
 
 是否合并通知，true表示合并，false表示不合并，默认为false。
 
-**说明：** 该属性在[updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-2)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。
+**说明：** 该属性在[updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。
 
 **类型：** boolean
 
@@ -395,9 +400,9 @@ continuousTaskId?: number
 
 **说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。
 
-作为[updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-2)接口入参时，该属性必填，且必须是存在的ID。
+作为[updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)接口入参时，该属性必填，且必须是存在的ID。
 
-可以通过[getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskmanager-getallcontinuoustasks-f.md#getallcontinuoustasks-2)接口查看当前所有长时任务信息。
+可以通过[getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskmanager-getallcontinuoustasks-f.md#getallcontinuoustasks-1)接口查看当前所有长时任务信息。
 
 **类型：** number
 

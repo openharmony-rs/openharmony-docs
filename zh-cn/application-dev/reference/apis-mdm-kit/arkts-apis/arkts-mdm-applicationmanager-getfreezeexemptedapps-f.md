@@ -6,6 +6,7 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="getfreezeexemptedapps"></a>
 ## getFreezeExemptedApps
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getFreezeExemptedApps(admin: Want): Array<common.ApplicationInstance>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common.ApplicationInstance> | Array of the background freeze-exempt application list. |
+| Array&lt;common.ApplicationInstance&gt; | Array of the background freeze-exempt application list. |
 
 **错误码：**
 

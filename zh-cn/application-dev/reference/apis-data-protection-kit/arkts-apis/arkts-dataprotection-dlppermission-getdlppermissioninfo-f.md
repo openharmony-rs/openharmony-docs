@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="getdlppermissioninfo"></a>
 ## getDLPPermissionInfo
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getDLPPermissionInfo(): Promise<DLPPermissionInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DLPPermissionInfo> | Promise对象。返回查询的DLP文件的权限信息，无异常则表明查询成功。 |
+| Promise&lt;DLPPermissionInfo&gt; | Promise对象。返回查询的DLP文件的权限信息，无异常则表明查询成功。 |
 
 **错误码：**
 
@@ -54,6 +55,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // 是否在沙箱内。
 ```
 
 
+<a id="getdlppermissioninfo-1"></a>
 ## getDLPPermissionInfo
 
 ```TypeScript
@@ -74,7 +76,7 @@ function getDLPPermissionInfo(callback: AsyncCallback<DLPPermissionInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DLPPermissionInfo> | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DLPPermissionInfo&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
 

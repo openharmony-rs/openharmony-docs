@@ -18,6 +18,7 @@
 import { fileAccess } from '@kit.CoreFileKit';
 ```
 
+<a id="next"></a>
 ## next
 
 ```TypeScript

@@ -72,7 +72,7 @@ recoverable?: boolean
 
 **说明：**
 
-当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考[UIAbility备份恢复](../../../../application-models/ability-recover-guideline.md)。
+当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考[UIAbility备份恢复](docroot://application-models/ability-recover-guideline.md)。
 
 **类型：** boolean
 

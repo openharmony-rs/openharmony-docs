@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="requestprintpreview"></a>
 ## requestPrintPreview
 
 ```TypeScript
@@ -29,7 +30,7 @@ function requestPrintPreview(jobInfo: PrintJob, callback: Callback<number>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | jobInfo | [PrintJob](arkts-basicservices-print-printjob-i-sys.md) | 是 | 打印任务信息。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 请求预览打印数据之后的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 请求预览打印数据之后的回调。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ print.requestPrintPreview(jobInfo, (num : number) => {
 ```
 
 
+<a id="requestprintpreview-1"></a>
 ## requestPrintPreview
 
 ```TypeScript
@@ -97,7 +99,7 @@ function requestPrintPreview(jobInfo: PrintJob): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回预览结果。 |
+| Promise&lt;number&gt; | Promise对象，返回预览结果。 |
 
 **错误码：**
 

@@ -18,6 +18,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="gettype"></a>
 ## getType
 
 ```TypeScript
@@ -48,6 +49,7 @@ getType(ch: string): string
 | --- | --- |
 | string | 输入字符的一般类别值。 |
 
+<a id="isdigit"></a>
 ## isDigit
 
 ```TypeScript
@@ -78,6 +80,7 @@ isDigit(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是数字，false表示输入的字符不是数字。 |
 
+<a id="isideograph"></a>
 ## isIdeograph
 
 ```TypeScript
@@ -108,6 +111,7 @@ isIdeograph(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是表意文字，false表示输入的字符不是表意文字。 |
 
+<a id="isletter"></a>
 ## isLetter
 
 ```TypeScript
@@ -138,6 +142,7 @@ isLetter(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是字母，false表示输入的字符不是字母。 |
 
+<a id="islowercase"></a>
 ## isLowerCase
 
 ```TypeScript
@@ -168,6 +173,7 @@ isLowerCase(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是小写字母，false表示输入的字符不是小写字母。 |
 
+<a id="isrtl"></a>
 ## isRTL
 
 ```TypeScript
@@ -198,6 +204,7 @@ isRTL(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是从右到左语言的字符，false表示输入的字符不是从右到左语言的字符。 |
 
+<a id="isspacechar"></a>
 ## isSpaceChar
 
 ```TypeScript
@@ -228,6 +235,7 @@ isSpaceChar(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是空格符，false表示输入的字符不是空格符。 |
 
+<a id="isuppercase"></a>
 ## isUpperCase
 
 ```TypeScript
@@ -258,6 +266,7 @@ isUpperCase(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是大写字母，false表示输入的字符不是大写字母。 |
 
+<a id="iswhitespace"></a>
 ## isWhitespace
 
 ```TypeScript

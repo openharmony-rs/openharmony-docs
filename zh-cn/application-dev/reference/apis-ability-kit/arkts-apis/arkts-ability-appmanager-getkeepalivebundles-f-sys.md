@@ -6,6 +6,7 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="getkeepalivebundles"></a>
 ## getKeepAliveBundles
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise<A
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<KeepAliveBundleInfo>> | Promise对象，返回用户保活应用信息的数组。 |
+| Promise&lt;Array&lt;KeepAliveBundleInfo&gt;&gt; | Promise对象，返回用户保活应用信息的数组。 |
 
 **错误码：**
 

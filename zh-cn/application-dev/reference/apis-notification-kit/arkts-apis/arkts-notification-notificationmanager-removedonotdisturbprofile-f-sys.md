@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="removedonotdisturbprofile"></a>
 ## removeDoNotDisturbProfile
 
 ```TypeScript
@@ -28,13 +29,13 @@ function removeDoNotDisturbProfile(templates: Array<DoNotDisturbProfile>): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| templates | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DoNotDisturbProfile> | 是 | 勿扰模式的配置信息。 |
+| templates | Array&lt;DoNotDisturbProfile&gt; | 是 | 勿扰模式的配置信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
 ```
 
 
+<a id="removedonotdisturbprofile-1"></a>
 ## removeDoNotDisturbProfile
 
 ```TypeScript
@@ -93,14 +95,14 @@ function removeDoNotDisturbProfile(templates: Array<DoNotDisturbProfile>, userId
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| templates | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DoNotDisturbProfile> | 是 | 勿扰模式的配置信息。 |
+| templates | Array&lt;DoNotDisturbProfile&gt; | 是 | 勿扰模式的配置信息。 |
 | userId | number | 是 | 删除勿扰模式配置的用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 

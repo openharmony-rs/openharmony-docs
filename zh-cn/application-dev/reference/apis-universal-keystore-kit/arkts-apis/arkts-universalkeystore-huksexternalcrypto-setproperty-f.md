@@ -6,6 +6,7 @@
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="setproperty"></a>
 ## setProperty
 
 ```TypeScript
@@ -26,7 +27,7 @@ The set-type operations of the external crypto extension support calling custom 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | 资源ID，可通过[导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-2)获取，该接口的返回结果中附带resourceId。 |
+| resourceId | string | 是 | 资源ID，可通过[导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-1)获取，该接口的返回结果中附带resourceId。 |
 | propertyId | string | 是 | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，应用开发者需要针对接口名进行适配。 |
 | params | [HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)[] | 否 | 需要传递给[Extension Ability](arkts-security-cryptoextensionability.md)的输入参数。非系统应用传入[HUKS_EXT_CRYPTO_TAG_UID](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)是非法参数。 |
 
@@ -34,7 +35,7 @@ The set-type operations of the external crypto extension support calling custom 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，返回调用接口的结果。 |
+| Promise&lt;void&gt; | Promise对象，返回调用接口的结果。 |
 
 **错误码：**
 

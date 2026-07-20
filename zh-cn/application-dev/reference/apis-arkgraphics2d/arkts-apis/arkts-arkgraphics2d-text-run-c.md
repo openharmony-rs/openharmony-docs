@@ -16,6 +16,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="getadvances"></a>
 ## getAdvances
 
 ```TypeScript
@@ -42,7 +43,7 @@ getAdvances(range: Range): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | Returns the glyph width array of each glyph in the run unit relative to the horizontal direction. In [common2D.Point](arkts-arkgraphics2d-common2d-point-i.md), the x value represents the glyph width of each glyph relative to the horizontal direction, in physical pixels (px). The y value is a reserved field and returns **0** by default. |
+| Array&lt;common2D.Point&gt; | Returns the glyph width array of each glyph in the run unit relative to the horizontal direction. In [common2D.Point](arkts-arkgraphics2d-common2d-point-i.md), the x value represents the glyph width of each glyph relative to the horizontal direction, in physical pixels (px). The y value is a reserved field and returns **0** by default. |
 
 **示例：**
 
@@ -54,6 +55,7 @@ let advancesNull = runs[0].getAdvances(null); // null是非法参数，将返回
 
 ```
 
+<a id="getfont"></a>
 ## getFont
 
 ```TypeScript
@@ -83,6 +85,7 @@ let font = runs[0].getFont();
 
 ```
 
+<a id="getglyphcount"></a>
 ## getGlyphCount
 
 ```TypeScript
@@ -112,6 +115,7 @@ let glyphs = runs[0].getGlyphCount();
 
 ```
 
+<a id="getglyphs"></a>
 ## getGlyphs
 
 ```TypeScript
@@ -132,7 +136,7 @@ getGlyphs(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 该排版单元中每个字符对应的字形序号。 |
+| Array&lt;number&gt; | 该排版单元中每个字符对应的字形序号。 |
 
 **示例：**
 
@@ -141,6 +145,7 @@ let glyph = runs[0].getGlyphs();
 
 ```
 
+<a id="getglyphs-1"></a>
 ## getGlyphs
 
 ```TypeScript
@@ -167,7 +172,7 @@ getGlyphs(range: Range): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 该排版单元中每个字符对应的字形序号。 |
+| Array&lt;number&gt; | 该排版单元中每个字符对应的字形序号。 |
 
 **示例：**
 
@@ -198,6 +203,7 @@ struct Index {
 
 ```
 
+<a id="getimagebounds"></a>
 ## getImageBounds
 
 ```TypeScript
@@ -210,12 +216,12 @@ getImageBounds(): common2D.Rect
 >  
 > 示意图展示了字符串为" a b "的图像边界。  
 >  
-> ![zh-ch_image_ImageBounds.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
+> ![zh-ch_image_ImageBounds.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
 >  
 > 示意图展示了字符串为"j"或"E"的图像边界。  
 >  
 > !  
-> [zh-ch_image_ImageBounds_Character.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds_Character.png)
+> [zh-ch_image_ImageBounds_Character.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds_Character.png)
 
 **起始版本：** 18
 
@@ -238,6 +244,7 @@ let bounds = runs[0].getImageBounds();
 
 ```
 
+<a id="getoffsets"></a>
 ## getOffsets
 
 ```TypeScript
@@ -258,7 +265,7 @@ getOffsets(): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | Array holding the offset of each glyph in the run relative to its index. |
+| Array&lt;common2D.Point&gt; | Array holding the offset of each glyph in the run relative to its index. |
 
 **示例：**
 
@@ -267,6 +274,7 @@ let offsets = runs[0].getOffsets();
 
 ```
 
+<a id="getpositions"></a>
 ## getPositions
 
 ```TypeScript
@@ -287,7 +295,7 @@ getPositions(): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | Array holding the position of each glyph relative to the respective line in the run. |
+| Array&lt;common2D.Point&gt; | Array holding the position of each glyph relative to the respective line in the run. |
 
 **示例：**
 
@@ -296,6 +304,7 @@ let positions = runs[0].getPositions();
 
 ```
 
+<a id="getpositions-1"></a>
 ## getPositions
 
 ```TypeScript
@@ -322,7 +331,7 @@ getPositions(range: Range): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | Array holding the position of each glyph relative to the respective line in the run. |
+| Array&lt;common2D.Point&gt; | Array holding the position of each glyph relative to the respective line in the run. |
 
 **示例：**
 
@@ -353,6 +362,7 @@ struct Index {
 
 ```
 
+<a id="getstringindices"></a>
 ## getStringIndices
 
 ```TypeScript
@@ -379,7 +389,7 @@ getStringIndices(range?: Range): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 返回每个字符的索引。 |
+| Array&lt;number&gt; | 返回每个字符的索引。 |
 
 **示例：**
 
@@ -410,6 +420,7 @@ struct Index {
 
 ```
 
+<a id="getstringrange"></a>
 ## getStringRange
 
 ```TypeScript
@@ -441,6 +452,7 @@ let length = runStringRange.end;
 
 ```
 
+<a id="gettextdirection"></a>
 ## getTextDirection
 
 ```TypeScript
@@ -470,6 +482,7 @@ let textDirection = runs[0].getTextDirection();
 
 ```
 
+<a id="gettextstyle"></a>
 ## getTextStyle
 
 ```TypeScript
@@ -554,6 +567,7 @@ function numberToRGBA(colorNum: number): common2D.Color {
 
 ```
 
+<a id="gettypographicbounds"></a>
 ## getTypographicBounds
 
 ```TypeScript
@@ -567,12 +581,12 @@ getTypographicBounds(): TypographicBounds
 > 示意图展示了字符串为" a b "的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds.png)  
+> [zh-ch_image_TypographicBounds.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds.png)  
 >  
 > 示意图展示了字符串为"j"或"E"的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds_Character.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds_Character.png)
+> [zh-ch_image_TypographicBounds_Character.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds_Character.png)
 
 **起始版本：** 18
 
@@ -595,6 +609,7 @@ let typographicBounds = runs[0].getTypographicBounds();
 
 ```
 
+<a id="paint"></a>
 ## paint
 
 ```TypeScript

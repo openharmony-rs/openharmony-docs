@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getallnotificationenabledbundles"></a>
 ## getAllNotificationEnabledBundles
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getAllNotificationEnabledBundles(): Promise<Array<BundleOption>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<BundleOption>> | 返回允许通知的应用程序列表。 |
+| Promise&lt;Array&lt;BundleOption&gt;&gt; | 返回允许通知的应用程序列表。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 ```
 
 
+<a id="getallnotificationenabledbundles-1"></a>
 ## getAllNotificationEnabledBundles
 
 ```TypeScript
@@ -86,7 +88,7 @@ function getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleO
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<BundleOption>> | 返回允许通知的应用程序列表。 |
+| Promise&lt;Array&lt;BundleOption&gt;&gt; | 返回允许通知的应用程序列表。 |
 
 **错误码：**
 

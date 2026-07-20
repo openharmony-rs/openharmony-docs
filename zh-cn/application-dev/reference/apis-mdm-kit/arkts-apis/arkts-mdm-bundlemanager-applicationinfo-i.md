@@ -20,7 +20,7 @@ import { bundleManager } from '@kit.MDMKit';
 readonly accessTokenId: number
 ```
 
-应用程序的accessTokenId，应用的身份标识，在程序访问控制校验接口[checkAccessToken](../../../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。
+应用程序的accessTokenId，应用的身份标识，在程序访问控制校验接口[checkAccessToken](docroot://reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。
 
 **类型：** number
 
@@ -146,7 +146,7 @@ readonly debug: boolean
 readonly description: string
 ```
 
-标识应用的描述信息，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的description字段。关于description的详细信息详见本表中的descriptionResource字段说明。
+标识应用的描述信息，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的description字段。关于description的详细信息详见本表中的descriptionResource字段说明。
 
 **类型：** string
 
@@ -218,7 +218,7 @@ readonly enabled: boolean
 readonly icon: string
 ```
 
-应用程序的图标，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的icon字段。关于icon的详细信息详见本表中的iconResource字段说明。
+应用程序的图标，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的icon字段。关于icon的详细信息详见本表中的iconResource字段说明。
 
 **类型：** string
 
@@ -368,7 +368,7 @@ readonly labelResource: Resource
 readonly name: string
 ```
 
-应用包的名称，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的bundleName字段。
+应用包的名称，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的bundleName字段。
 
 **类型：** string
 

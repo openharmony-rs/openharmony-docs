@@ -14,6 +14,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="geneccsignature"></a>
 ## genEccSignature
 
 ```TypeScript
@@ -40,7 +41,7 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | ASN1 DER格式的签名数据。 |
+| Uint8Array | ASN1 DER格式的签名数据。 |
 
 **错误码：**
 
@@ -75,6 +76,7 @@ function testGenEccSignature() {
 
 ```
 
+<a id="geneccsignaturespec"></a>
 ## genEccSignatureSpec
 
 ```TypeScript
@@ -95,7 +97,7 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | ASN1 DER格式的签名数据。 |
+| data | Uint8Array | 是 | ASN1 DER格式的签名数据。 |
 
 **返回值：**
 

@@ -14,6 +14,7 @@ PerfTest类为白盒性能测试框架的总入口，提供测试任务创建、
 import { PerfTestStrategy, PerfMetric, PerfTest, PerfMeasureResult } from '@kit.TestKit';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -81,6 +82,7 @@ async function demo() {
 
 ```
 
+<a id="destroy"></a>
 ## destroy
 
 ```TypeScript
@@ -129,6 +131,7 @@ async function demo() {
 
 ```
 
+<a id="getmeasureresult"></a>
 ## getMeasureResult
 
 ```TypeScript
@@ -191,6 +194,7 @@ async function demo() {
 
 ```
 
+<a id="run"></a>
 ## run
 
 ```TypeScript
@@ -211,7 +215,7 @@ run(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

@@ -38,7 +38,7 @@ failedErrorInfos: Array<BatchErrInfo>
 
 批量操作中失败的关键资产的错误信息数组，全部成功时为空数组。
 
-**类型：** Array<BatchErrInfo>
+**类型：** Array&lt;BatchErrInfo&gt;
 
 **起始版本：** 26.0.0
 

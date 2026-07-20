@@ -1,5 +1,6 @@
 # closeSync
 
+<a id="closesync"></a>
 ## closeSync
 
 ```TypeScript

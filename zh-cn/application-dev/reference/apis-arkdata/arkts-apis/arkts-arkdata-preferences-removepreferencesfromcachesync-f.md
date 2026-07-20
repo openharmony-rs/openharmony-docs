@@ -6,6 +6,7 @@
 import { preferences } from '@kit.ArkData';
 ```
 
+<a id="removepreferencesfromcachesync"></a>
 ## removePreferencesFromCacheSync
 
 ```TypeScript
@@ -18,7 +19,7 @@ function removePreferencesFromCacheSync(context: Context, name: string): void
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
-若使用[GSKV存储模式](../../../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
+若使用[GSKV存储模式](docroot://database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
 **起始版本：** 10
 
@@ -70,6 +71,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
+<a id="removepreferencesfromcachesync-1"></a>
 ## removePreferencesFromCacheSync
 
 ```TypeScript
@@ -82,7 +84,7 @@ function removePreferencesFromCacheSync(context: Context, options: Options): voi
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
-若使用[GSKV存储模式](../../../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
+若使用[GSKV存储模式](docroot://database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
 **起始版本：** 10
 

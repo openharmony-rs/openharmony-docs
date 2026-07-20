@@ -6,6 +6,7 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="continuemission"></a>
 ## continueMission
 
 ```TypeScript
@@ -32,7 +33,7 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 | --- | --- | --- | --- |
 | parameter | [ContinueDeviceInfo](arkts-ability-continuedeviceinfo-i-sys.md) | 是 | 迁移信息。 |
 | options | [ContinueCallback](arkts-ability-continuecallback-i-sys.md) | 是 | 迁移任务完成回调函数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，迁移任务完成时，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，迁移任务完成时，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -83,6 +84,7 @@ try {
 ```
 
 
+<a id="continuemission-1"></a>
 ## continueMission
 
 ```TypeScript
@@ -114,7 +116,7 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的promise对象。 |
 
 **错误码：**
 
@@ -162,6 +164,7 @@ try {
 ```
 
 
+<a id="continuemission-2"></a>
 ## continueMission
 
 ```TypeScript
@@ -187,7 +190,7 @@ function continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | parameter | [ContinueMissionInfo](arkts-ability-continuemissioninfo-i-sys.md) | 是 | 迁移信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，通过指定包名迁移任务完成时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，通过指定包名迁移任务完成时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -231,6 +234,7 @@ try {
 ```
 
 
+<a id="continuemission-3"></a>
 ## continueMission
 
 ```TypeScript
@@ -261,7 +265,7 @@ function continueMission(parameter: ContinueMissionInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的promise对象。 |
 
 **错误码：**
 

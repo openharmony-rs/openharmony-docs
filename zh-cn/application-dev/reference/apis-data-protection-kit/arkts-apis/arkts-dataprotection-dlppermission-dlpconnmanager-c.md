@@ -18,6 +18,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -51,6 +52,7 @@ let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnMana
 
 ```
 
+<a id="registerplugin"></a>
 ## registerPlugin
 
 ```TypeScript
@@ -83,7 +85,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2&lt;sup&gt;64&lt;/sup&gt;-1]。 |
+| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2<sup>64</sup>-1]。 |
 
 **错误码：**
 
@@ -121,6 +123,7 @@ let pluginId: number = dlpPermission.DlpConnManager.registerPlugin(new DataCapsu
 
 ```
 
+<a id="unregisterplugin"></a>
 ## unregisterPlugin
 
 ```TypeScript

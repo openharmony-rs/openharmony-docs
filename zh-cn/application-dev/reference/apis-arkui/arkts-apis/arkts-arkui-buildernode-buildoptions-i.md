@@ -14,7 +14,7 @@ build的可选参数。
 enableProvideConsumeCrossing?: boolean
 ```
 
-定义BuilderNode内[状态管理V1](../../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)自定义组件的[@Consume](../../../../ui/state-management/arkts-provide-and-consume.md)变量是否与BuilderNode外部的[@Provide](../../../../ui/state-management/arkts-provide-and-consume.md)变量双向同步，BuilderNode内[状态管理V2](../../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)自定义组件的[@Consumer](../../../../ui/state-management/arkts-new-provider-and-consumer.md)变量是否与BuilderNode外部的[@Provider](../../../../ui/state-management/arkts-new-provider-and-consumer.md)变量双向同步。
+定义BuilderNode内[状态管理V1](docroot://ui/state-management/arkts-state-management-overview.md#状态管理v1)自定义组件的[@Consume](docroot://ui/state-management/arkts-provide-and-consume.md)变量是否与BuilderNode外部的[@Provide](docroot://ui/state-management/arkts-provide-and-consume.md)变量双向同步，BuilderNode内[状态管理V2](docroot://ui/state-management/arkts-state-management-overview.md#状态管理v2)自定义组件的[@Consumer](docroot://ui/state-management/arkts-new-provider-and-consumer.md)变量是否与BuilderNode外部的[@Provider](docroot://ui/state-management/arkts-new-provider-and-consumer.md)变量双向同步。
 
 从API version 20开始支持状态管理V1自定义组件的双向同步，从API version 23开始支持状态管理V2自定义组件的双向同步。
 

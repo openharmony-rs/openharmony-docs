@@ -1,5 +1,6 @@
 # getProcessRunningInfos
 
+<a id="getprocessrunninginfos"></a>
 ## getProcessRunningInfos
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getProcessRunningInfos(): Promise<Array<ProcessRunningInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<ProcessRunningInfo>> | Promise对象，返回有关运行进程的信息。 |
+| Promise&lt;Array&lt;ProcessRunningInfo&gt;&gt; | Promise对象，返回有关运行进程的信息。 |
 
 **示例：**
 
@@ -45,6 +46,7 @@ appManager.getProcessRunningInfos().then((data) => {
 ```
 
 
+<a id="getprocessrunninginfos-1"></a>
 ## getProcessRunningInfos
 
 ```TypeScript
@@ -73,7 +75,7 @@ function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessRunningInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<ProcessRunningInfo>> | 是 | 回调函数，返回有关运行进程的信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ProcessRunningInfo&gt;&gt; | 是 | 回调函数，返回有关运行进程的信息。 |
 
 **示例：**
 

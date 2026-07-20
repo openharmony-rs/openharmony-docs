@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="gettouchpadpointerspeed"></a>
 ## getTouchpadPointerSpeed
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getTouchpadPointerSpeed(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当获取触控板光标移动速度成功，err为undefined，number是获取的触控板光标移动速度；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取触控板光标移动速度成功，err为undefined，number是获取的触控板光标移动速度；否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ struct Index {
 ```
 
 
+<a id="gettouchpadpointerspeed-1"></a>
 ## getTouchpadPointerSpeed
 
 ```TypeScript
@@ -88,7 +90,7 @@ function getTouchpadPointerSpeed(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
+| Promise&lt;number&gt; | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
 
 **错误码：**
 

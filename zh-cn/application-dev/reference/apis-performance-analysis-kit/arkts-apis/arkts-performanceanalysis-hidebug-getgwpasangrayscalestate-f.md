@@ -6,6 +6,7 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="getgwpasangrayscalestate"></a>
 ## getGwpAsanGrayscaleState
 
 ```TypeScript
@@ -43,6 +44,7 @@ taskpool.execute(getGwpAsanStateTask).then((remainDays: Object) => {
 ```
 
 
+<a id="getgwpasangrayscalestate-1"></a>
 ## getGwpAsanGrayscaleState
 
 ```TypeScript

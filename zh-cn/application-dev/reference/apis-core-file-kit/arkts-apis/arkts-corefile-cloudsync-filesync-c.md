@@ -14,6 +14,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -41,6 +42,7 @@ let fileSync = new cloudSync.FileSync()
 
 ```
 
+<a id="getlastsynctime"></a>
 ## getLastSyncTime
 
 ```TypeScript
@@ -59,7 +61,7 @@ getLastSyncTime(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回上次同步时间。 |
+| Promise&lt;number&gt; | Promise对象，返回上次同步时间。 |
 
 **错误码：**
 
@@ -85,6 +87,7 @@ fileSync.getLastSyncTime().then((timeStamp: number) => {
 
 ```
 
+<a id="getlastsynctime-1"></a>
 ## getLastSyncTime
 
 ```TypeScript
@@ -103,7 +106,7 @@ getLastSyncTime(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。异步获取上次同步时间。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。异步获取上次同步时间。 |
 
 **错误码：**
 
@@ -130,6 +133,7 @@ fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -149,7 +153,7 @@ off(event: 'progress', callback?: Callback<SyncProgress>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'progress' | 是 | 取消订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SyncProgress> | 否 | 回调函数。同步过程事件， 默认值为null。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SyncProgress&gt; | 否 | 回调函数。同步过程事件， 默认值为null。 |
 
 **错误码：**
 
@@ -173,6 +177,7 @@ fileSync.off('progress', callback);
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -192,7 +197,7 @@ on(event: 'progress', callback: Callback<SyncProgress>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'progress' | 是 | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SyncProgress> | 是 | 回调函数。同步过程事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SyncProgress&gt; | 是 | 回调函数。同步过程事件。 |
 
 **错误码：**
 
@@ -213,6 +218,7 @@ fileSync.on('progress', callback);
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -231,7 +237,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -264,6 +270,7 @@ fileSync.start().then(() => {
 
 ```
 
+<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -282,7 +289,7 @@ start(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步启动端云同步。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步启动端云同步。 |
 
 **错误码：**
 
@@ -311,6 +318,7 @@ fileSync.start((err: BusinessError) => {
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -331,7 +339,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -355,6 +363,7 @@ fileSync.stop().then(() => {
 
 ```
 
+<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -375,7 +384,7 @@ stop(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步停止端云同步。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步停止端云同步。 |
 
 **错误码：**
 

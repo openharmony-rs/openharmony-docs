@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="getprinterinformationbyid"></a>
 ## getPrinterInformationById
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getPrinterInformationById(printerId: string): Promise<PrinterInformatio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PrinterInformation> | Promise对象，返回打印机信息。 |
+| Promise&lt;PrinterInformation&gt; | Promise对象，返回打印机信息。 |
 
 **错误码：**
 

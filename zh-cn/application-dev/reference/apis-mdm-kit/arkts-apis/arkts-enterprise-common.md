@@ -24,8 +24,8 @@ import { common } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ApplicationInstance](arkts-mdm-common-applicationinstance-i.md) | 应用的实例数据。该接口目前在[addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addusernonstopapps-1)、[removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md#removeusernonstopapps-1)、[addFreezeExemptedApps](arkts-mdm-applicationmanager-addfreezeexemptedapps-f.md#addfreezeexemptedapps-1)、[removeFreezeExemptedApps](arkts-mdm-applicationmanager-removefreezeexemptedapps-f.md#removefreezeexemptedapps-1)接口中作为入参使用。 |
-| [InstallationResult](arkts-mdm-common-installationresult-i.md) | 应用安装结果。该对象目前在[EnterpriseAdminExtensionAbility.onMarketAppInstallResult](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onmarketappinstallresult-1)作为回调入参使用。 |
+| [ApplicationInstance](arkts-mdm-common-applicationinstance-i.md) | 应用的实例数据。  该接口目前在[addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addusernonstopapps-1)、[removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md#removeusernonstopapps-1)、[addFreezeExemptedApps](arkts-mdm-applicationmanager-addfreezeexemptedapps-f.md#addfreezeexemptedapps-1)、[removeFreezeExemptedApps](arkts-mdm-applicationmanager-removefreezeexemptedapps-f.md#removefreezeexemptedapps-1)接口中作为入参使用。 |
+| [InstallationResult](arkts-mdm-common-installationresult-i.md) | 应用安装结果。  该对象目前在[EnterpriseAdminExtensionAbility.onMarketAppInstallResult](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onmarketappinstallresult-1)作为回调入参使用。 |
 | [PolicyChangedEvent](arkts-mdm-common-policychangedevent-i.md) | 策略变更事件 |
 
 ### 枚举

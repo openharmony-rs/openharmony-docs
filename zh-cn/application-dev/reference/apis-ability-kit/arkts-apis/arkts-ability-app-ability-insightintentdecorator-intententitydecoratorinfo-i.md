@@ -1,6 +1,6 @@
 # IntentEntityDecoratorInfo
 
-用于描述[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器支持的参数。
+用于描述[@InsightIntentEntity](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器支持的参数。
 
 **起始版本：** 20
 
@@ -42,7 +42,7 @@ parameters?: Record<string, Object>
 
 表示意图实体的数据格式声明。用于定义意图实体的数据格式。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 20
 

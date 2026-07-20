@@ -6,6 +6,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="generaterandombinaryuuid"></a>
 ## generateRandomBinaryUUID
 
 ```TypeScript
@@ -32,7 +33,7 @@ function generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 表示所生成 uuid 的 Uint8Array 值。 |
+| Uint8Array | 表示所生成 uuid 的 Uint8Array 值。 |
 
 **示例：**
 

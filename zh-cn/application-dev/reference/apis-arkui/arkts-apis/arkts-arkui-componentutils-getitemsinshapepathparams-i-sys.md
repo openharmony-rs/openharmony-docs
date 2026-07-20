@@ -24,7 +24,7 @@ images: Array<ImageItem>
 
 图片信息
 
-**类型：** Array<ImageItem>
+**类型：** Array&lt;ImageItem&gt;
 
 **起始版本：** 23
 
@@ -64,7 +64,7 @@ shapePath: Array<common2D.Point>
 
 表示路径的点信息
 
-**类型：** Array<common2D.Point>
+**类型：** Array&lt;common2D.Point&gt;
 
 **起始版本：** 23
 

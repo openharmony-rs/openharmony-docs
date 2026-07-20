@@ -6,6 +6,7 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="getoriginalsize"></a>
 ## getOriginalSize
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getOriginalSize(compressedFile: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回压缩文件的原始大小，单位字节。 |
+| Promise&lt;number&gt; | Promise对象，返回压缩文件的原始大小，单位字节。 |
 
 **错误码：**
 

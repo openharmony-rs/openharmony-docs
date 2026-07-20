@@ -1,6 +1,6 @@
 # AppDistributionType（系统接口）
 
-标识应用[HarmonyAppProvision配置文件说明](../../../../security/app-provision-structure.md)。
+标识应用[HarmonyAppProvision配置文件说明](docroot://security/app-provision-structure.md)。
 
 **起始版本：** 12
 

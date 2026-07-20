@@ -1,5 +1,6 @@
 # markModuleCollectable（系统接口）
 
+<a id="markmodulecollectable"></a>
 ## markModuleCollectable
 
 ```TypeScript

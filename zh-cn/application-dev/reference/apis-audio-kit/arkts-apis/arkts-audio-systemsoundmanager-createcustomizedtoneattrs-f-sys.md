@@ -6,6 +6,7 @@
 import { systemSoundManager } from '@kit.AudioKit';
 ```
 
+<a id="createcustomizedtoneattrs"></a>
 ## createCustomizedToneAttrs
 
 ```TypeScript

@@ -27,13 +27,13 @@ import { uiAppearance } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDarkMode](arkts-arkui-uiappearance-getdarkmode-f-sys.md#getdarkmode-1) | 获取系统当前的深色模式配置。&lt;!--Del--&gt; |
-| [getFontScale](arkts-arkui-uiappearance-getfontscale-f-sys.md#getfontscale-1) | 获取系统当前的字体大小缩放比例。&lt;!--Del--&gt; |
-| [getFontWeightScale](arkts-arkui-uiappearance-getfontweightscale-f-sys.md#getfontweightscale-1) | 获取系统当前的字体粗细缩放比例。&lt;!--Del--&gt; |
-| [setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md#setdarkmode-1) | 设置系统深色模式。使用callback异步回调。 |
-| [setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md#setdarkmode-2) | 设置系统深色模式。使用Promise异步回调。 |
-| [setFontScale](arkts-arkui-uiappearance-setfontscale-f-sys.md#setfontscale-1) | 设置系统字体大小。 |
-| [setFontWeightScale](arkts-arkui-uiappearance-setfontweightscale-f-sys.md#setfontweightscale-1) | 设置系统字体粗细。 |
+| [getDarkMode](arkts-arkui-uiappearance-getdarkmode-f-sys.md#getdarkmode) | 获取系统当前的深色模式配置。  <!--Del--> |
+| [getFontScale](arkts-arkui-uiappearance-getfontscale-f-sys.md#getfontscale) | 获取系统当前的字体大小缩放比例。  <!--Del--> |
+| [getFontWeightScale](arkts-arkui-uiappearance-getfontweightscale-f-sys.md#getfontweightscale) | 获取系统当前的字体粗细缩放比例。  <!--Del--> |
+| [setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md#setdarkmode) | 设置系统深色模式。使用callback异步回调。 |
+| [setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md#setdarkmode-1) | 设置系统深色模式。使用Promise异步回调。 |
+| [setFontScale](arkts-arkui-uiappearance-setfontscale-f-sys.md#setfontscale) | 设置系统字体大小。 |
+| [setFontWeightScale](arkts-arkui-uiappearance-setfontweightscale-f-sys.md#setfontweightscale) | 设置系统字体粗细。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -41,6 +41,6 @@ import { uiAppearance } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [DarkMode](arkts-arkui-uiappearance-darkmode-e-sys.md) | 深色模式枚举。\| 名称 \| 值 \| 说明 \| \| -- \| -- \| -- \| \| ALWAYS_DARK \| 0 \| 系统始终为深色。 \| \| ALWAYS_LIGHT \| 1 \| 系统始终为浅色。 \| |
+| [DarkMode](arkts-arkui-uiappearance-darkmode-e-sys.md) | 深色模式枚举。  \| 名称 \| 值 \| 说明 \|  \| -- \| -- \| -- \|  \| ALWAYS_DARK \| 0 \| 系统始终为深色。 \|  \| ALWAYS_LIGHT \| 1 \| 系统始终为浅色。 \| |
 <!--DelEnd-->
 

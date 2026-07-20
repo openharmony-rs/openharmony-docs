@@ -6,6 +6,7 @@
 import { reminderAgent } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="addnotificationslot"></a>
 ## addNotificationSlot
 
 ```TypeScript
@@ -29,7 +30,7 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-notificationslot-i.md) | 是 | notification.slot实例，仅支持设置其type属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步回调。 |
 
 **示例：**
 
@@ -49,6 +50,7 @@ reminderAgent.addNotificationSlot(mySlot, (err: BusinessError, data: void) => {
 ```
 
 
+<a id="addnotificationslot-1"></a>
 ## addNotificationSlot
 
 ```TypeScript
@@ -77,7 +79,7 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise类型异步回调。 |
+| Promise&lt;void&gt; | Promise类型异步回调。 |
 
 **示例：**
 

@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="offaudiozonesessionchange"></a>
 ## offAudioZoneSessionChange
 
 ```TypeScript
@@ -29,7 +30,7 @@ function offAudioZoneSessionChange(userId: number, callback?: Callback<AVSession
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | number | 是 | 用户id，归属某个音区<br>用户userId 所归属的音区 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVSessionDescriptor> | 否 | 返回对应音区的会话列表 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVSessionDescriptor&gt; | 否 | 返回对应音区的会话列表 |
 
 **错误码：**
 

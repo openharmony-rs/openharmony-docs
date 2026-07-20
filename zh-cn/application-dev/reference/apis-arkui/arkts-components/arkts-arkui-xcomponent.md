@@ -25,7 +25,7 @@ XComponent(value: { id: string; type: string; libraryname?: string; controller?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { id: string; type: string; libraryname?: string; controller?: XComponentController } | 是 | 表示XComponent的选项。 |
+| value | { id: string; type: string; libraryname?: string; controller?: XComponentController } | 是 | 表示XComponent的选项。  |
 
 ## XComponent
 
@@ -49,7 +49,7 @@ XComponent(value: { id: string; type: XComponentType; libraryname?: string; cont
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { id: string; type: XComponentType; libraryname?: string; controller?: XComponentController } | 是 | 表示XComponent的选项。 |
+| value | { id: string; type: XComponentType; libraryname?: string; controller?: XComponentController } | 是 | 表示XComponent的选项。  |
 
 ## XComponent
 
@@ -73,7 +73,7 @@ XComponent(options: XComponentOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | XComponentOptions | 是 | 表示XComponent的选项。 |
+| options | [XComponentOptions](arkts-arkui-xcomponentoptions-i.md) | 是 | 表示XComponent的选项。  |
 
 ## XComponent
 
@@ -97,7 +97,7 @@ XComponent(params: NativeXComponentParameters)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | NativeXComponentParameters | 是 | 表示用于native开发的XComponent构造参数。 |
+| params | [NativeXComponentParameters](arkts-arkui-nativexcomponentparameters-i.md) | 是 | 表示用于native开发的XComponent构造参数。  |
 
 ## 汇总
 

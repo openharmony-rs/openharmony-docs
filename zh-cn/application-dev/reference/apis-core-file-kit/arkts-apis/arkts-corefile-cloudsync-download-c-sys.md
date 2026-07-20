@@ -16,6 +16,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -39,6 +40,7 @@ let download = new cloudSync.Download()
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -62,7 +64,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | evt | 'progress' | 是 | 取消订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | (pg: DownloadProgress) => void | 是 | 回调函数。云文件下载过程事件，入参为[DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md)，返回值为void。 |
+| callback | (pg: DownloadProgress) =&gt; void | 是 | 回调函数。云文件下载过程事件，入参为[DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md)，返回值为void。 |
 
 **错误码：**
 
@@ -88,6 +90,7 @@ download.off('progress', callback);
 
 ```
 
+<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -134,6 +137,7 @@ download.off('progress');
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -157,7 +161,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | evt | 'progress' | 是 | 订阅的事件类型，取值为'progress'（下载过程事件）。 |
-| callback | (pg: DownloadProgress) => void | 是 | 回调函数。云文件下载过程事件，入参为[DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md)，返回值为void。 |
+| callback | (pg: DownloadProgress) =&gt; void | 是 | 回调函数。云文件下载过程事件，入参为[DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md)，返回值为void。 |
 
 **错误码：**
 
@@ -179,6 +183,7 @@ download.on('progress', (pg: cloudSync.DownloadProgress) => {
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -207,7 +212,7 @@ start(uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -239,6 +244,7 @@ download.start(uri).then(() => {
 
 ```
 
+<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -262,7 +268,7 @@ start(uri: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 待下载文件uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步启动云文件下载。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
 
@@ -292,6 +298,7 @@ download.start(uri, (err: BusinessError) => {
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -324,7 +331,7 @@ stop(uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -350,6 +357,7 @@ download.stop(uri).then(() => {
 
 ```
 
+<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -377,7 +385,7 @@ stop(uri: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 待下载文件uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步停止云文件下载。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
 

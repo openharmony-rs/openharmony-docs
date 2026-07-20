@@ -62,7 +62,7 @@ string类型: 单位为fp|vp|px|lpx且数值部分 ≥ 0 的字符串（如："8
 
 为undefined时，itemSpace采取默认值。
 
-**类型：** string | number
+**类型：** string \| number
 
 **起始版本：** 12
 

@@ -6,6 +6,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="confirminvitation"></a>
 ## confirmInvitation
 
 ```TypeScript
@@ -28,7 +29,7 @@ function confirmInvitation(invitationCode: string, state: State, callback: Async
 | --- | --- | --- | --- |
 | invitationCode | string | 是 | 端云共享的邀请码。 |
 | state | [State](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-state-e.md) | 是 | 确认邀请的状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Result<string>> | 是 | 回调函数。返回确认邀请的结果。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Result&lt;string&gt;&gt; | 是 | 回调函数。返回确认邀请的结果。 |
 
 **错误码：**
 
@@ -56,6 +57,7 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
 ```
 
 
+<a id="confirminvitation-1"></a>
 ## confirmInvitation
 
 ```TypeScript
@@ -83,7 +85,7 @@ function confirmInvitation(invitationCode: string, state: State): Promise<Result
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<string>> | Promise对象，返回确认共享邀请的结果。 |
+| Promise&lt;Result&lt;string&gt;&gt; | Promise对象，返回确认共享邀请的结果。 |
 
 **错误码：**
 

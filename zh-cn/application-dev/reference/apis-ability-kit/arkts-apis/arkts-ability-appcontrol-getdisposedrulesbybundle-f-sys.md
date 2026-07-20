@@ -6,6 +6,7 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
+<a id="getdisposedrulesbybundle"></a>
 ## getDisposedRulesByBundle
 
 ```TypeScript
@@ -36,7 +37,7 @@ function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfigu
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DisposedRuleConfiguration> | 指定应用程序包已设置的拦截规则。 |
+| Array&lt;DisposedRuleConfiguration&gt; | 指定应用程序包已设置的拦截规则。 |
 
 **错误码：**
 

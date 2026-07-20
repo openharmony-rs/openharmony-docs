@@ -6,6 +6,7 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getextbundlestats"></a>
 ## getExtBundleStats
 
 ```TypeScript
@@ -37,7 +38,7 @@ function getExtBundleStats(userId: number, businessName: string): Promise<ExtBun
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ExtBundleStats> | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
+| Promise&lt;ExtBundleStats&gt; | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
 
 **错误码：**
 

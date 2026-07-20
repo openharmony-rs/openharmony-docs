@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="getallusertrustedcertificates"></a>
 ## getAllUserTrustedCertificates
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getAllUserTrustedCertificates(): Promise<CMResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CMResult> | Promise对象，返回获取用户根CA证书列表的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的certList属性。 |
+| Promise&lt;CMResult&gt; | Promise对象，返回获取用户根CA证书列表的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的certList属性。 |
 
 **错误码：**
 
@@ -62,6 +63,7 @@ try {
 ```
 
 
+<a id="getallusertrustedcertificates-1"></a>
 ## getAllUserTrustedCertificates
 
 ```TypeScript
@@ -88,7 +90,7 @@ function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CMResult> | Promise对象，返回获取用户根CA证书列表的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的certList属性。 |
+| Promise&lt;CMResult&gt; | Promise对象，返回获取用户根CA证书列表的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的certList属性。 |
 
 **错误码：**
 

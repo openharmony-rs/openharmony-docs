@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -14,7 +15,7 @@ function add(attributes: AssetMap): Promise<void>
 
 新增一条关键资产。使用Promise异步回调。
 
-设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../../../security/AccessToken/declare-permissions.md)。
+设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](docroot://security/AccessToken/declare-permissions.md)。
 
 **起始版本：** 11
 
@@ -34,7 +35,7 @@ function add(attributes: AssetMap): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

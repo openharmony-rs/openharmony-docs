@@ -20,6 +20,7 @@ ImageSource的所有方法均不支持并发调用。
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createwidegamutsdrpixelmap"></a>
 ## createWideGamutSdrPixelMap
 
 ```TypeScript
@@ -49,7 +50,7 @@ createWideGamutSdrPixelMap(): Promise<PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | Promise对象，返回PixelMap。 |
+| Promise&lt;PixelMap&gt; | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -96,6 +97,7 @@ async function CreateWideGamutSdrPixelMap(context: Context) {
 
 ```
 
+<a id="isjpegprogressive"></a>
 ## isJpegProgressive
 
 ```TypeScript
@@ -118,7 +120,7 @@ isJpegProgressive(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示Jpeg图片是渐进式；返回false表示Jpeg图片不是渐进式。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示Jpeg图片是渐进式；返回false表示Jpeg图片不是渐进式。 |
 
 **错误码：**
 
@@ -143,6 +145,7 @@ async function IsJpegProgressive(imageSource : image.ImageSource) {
 
 ```
 
+<a id="modifyimageallproperties"></a>
 ## modifyImageAllProperties
 
 ```TypeScript
@@ -174,13 +177,13 @@ Exif属性中除"JPEGInterchangeFormat"/"JPEGInterchangeFormatLength"/"GIFLoopCo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| records | Record<string, string\|null> | 是 | 包含图片属性名和属性值的键值对集合。 |
+| records | Record&lt;string, string\|null&gt; | 是 | 包含图片属性名和属性值的键值对集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

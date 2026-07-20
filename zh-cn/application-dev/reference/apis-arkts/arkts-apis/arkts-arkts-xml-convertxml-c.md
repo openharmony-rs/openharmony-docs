@@ -14,6 +14,7 @@ ConvertXML 表示可扩展标记语言。
 import { convertxml } from '@kit.ArkTS';
 ```
 
+<a id="convert"></a>
 ## convert
 
 ```TypeScript
@@ -80,6 +81,7 @@ console.info(result);
 
 ```
 
+<a id="converttojsobject"></a>
 ## convertToJSObject
 
 ```TypeScript
@@ -161,6 +163,7 @@ try {
 
 ```
 
+<a id="fastconverttojsobject"></a>
 ## fastConvertToJSObject
 
 ```TypeScript
@@ -243,6 +246,7 @@ try {
 
 ```
 
+<a id="largeconverttojsobject"></a>
 ## largeConvertToJSObject
 
 ```TypeScript

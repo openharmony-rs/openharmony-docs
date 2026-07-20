@@ -18,6 +18,7 @@ UIServiceExtensionContext模块提供访问[UIServiceExtension](../../apis-abili
 
 **系统接口：** 此接口为系统接口。
 
+<a id="connectserviceextensionability"></a>
 ## connectServiceExtensionAbility
 
 ```TypeScript
@@ -28,7 +29,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -72,6 +73,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | [16000053](../../apis-ability-kit/errorcode-ability.md#16000053-非顶层应用) | The ability is not on the top of the UI. |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 
+<a id="disconnectserviceextensionability"></a>
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
@@ -100,7 +102,7 @@ disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -110,6 +112,7 @@ disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -120,7 +123,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -143,7 +146,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -168,6 +171,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
+<a id="startabilitybytype"></a>
 ## startAbilityByType
 
 ```TypeScript
@@ -179,7 +183,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -198,14 +202,14 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 目标ability类型。 |
-| wantParam | Record<string, Object> | 是 | Want参数。 |
+| wantParam | Record&lt;string, Object&gt; | 是 | Want参数。 |
 | abilityStartCallback | [AbilityStartCallback](../../apis-ability-kit/arkts-apis/arkts-ability-abilitystartcallback-i.md) | 是 | 拉起UIExtensionAbility执行结果的回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -214,6 +218,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<a id="terminateself"></a>
 ## terminateSelf
 
 ```TypeScript
@@ -236,5 +241,5 @@ terminateSelf(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 

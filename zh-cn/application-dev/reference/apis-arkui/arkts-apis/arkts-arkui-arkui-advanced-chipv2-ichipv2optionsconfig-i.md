@@ -322,7 +322,7 @@ maxFontScale?: number | Resource
 
 Chip的最大字体比例。
 
-**类型：** number | Resource
+**类型：** number \| Resource
 
 **起始版本：** 26.0.0
 
@@ -342,7 +342,7 @@ minFontScale?: number | Resource
 
 Chip的最小字体比例。
 
-**类型：** number | Resource
+**类型：** number \| Resource
 
 **起始版本：** 26.0.0
 
@@ -362,7 +362,7 @@ onClicked?: Callback<void>
 
 点击Chip时触发的回调。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 26.0.0
 
@@ -442,7 +442,7 @@ size?: ChipV2Size | SizeT<LengthMetrics>
 
 Chip尺寸。
 
-**类型：** ChipV2Size | SizeT<LengthMetrics>
+**类型：** ChipV2Size \| SizeT&lt;LengthMetrics&gt;
 
 **起始版本：** 26.0.0
 

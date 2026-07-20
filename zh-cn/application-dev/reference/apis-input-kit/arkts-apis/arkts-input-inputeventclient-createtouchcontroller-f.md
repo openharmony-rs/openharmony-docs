@@ -6,6 +6,7 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
+<a id="createtouchcontroller"></a>
 ## createTouchController
 
 ```TypeScript
@@ -28,7 +29,7 @@ function createTouchController(): Promise<TouchController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<TouchController> | Promise对象，返回触控控制器实例。 |
+| Promise&lt;TouchController&gt; | Promise对象，返回触控控制器实例。 |
 
 **错误码：**
 

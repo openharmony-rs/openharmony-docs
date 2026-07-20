@@ -6,6 +6,7 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="setresidentprocessenabled"></a>
 ## setResidentProcessEnabled
 
 ```TypeScript
@@ -33,7 +34,7 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

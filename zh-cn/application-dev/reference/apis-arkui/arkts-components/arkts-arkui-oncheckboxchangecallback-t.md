@@ -22,5 +22,5 @@ declare type OnCheckboxChangeCallback = (value: boolean) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 返回true表示已选中。返回false表示未选中。 |
+| value | boolean | 是 | 返回true表示已选中。返回false表示未选中。  |
 

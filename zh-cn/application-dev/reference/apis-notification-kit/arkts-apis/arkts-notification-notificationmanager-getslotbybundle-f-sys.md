@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getslotbybundle"></a>
 ## getSlotByBundle
 
 ```TypeScript
@@ -14,7 +15,7 @@ function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<Noti
 
 获取指定应用指定类型的通知渠道。使用Promise异步回调。
 
-获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot-1)创建通知渠道。
+获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md#addslot-3)创建通知渠道。
 
 **起始版本：** 12
 
@@ -37,7 +38,7 @@ function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<Noti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<NotificationSlot> | 以Promise形式返回获取指定应用指定类型的通知渠道。 |
+| Promise&lt;NotificationSlot&gt; | 以Promise形式返回获取指定应用指定类型的通知渠道。 |
 
 **错误码：**
 

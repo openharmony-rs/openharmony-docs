@@ -14,6 +14,7 @@
 import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
+<a id="clamp"></a>
 ## clamp
 
 ```TypeScript
@@ -44,6 +45,7 @@ static clamp(order: number): LevelOrder
 | --- | --- |
 | [LevelOrder](arkts-arkui-promptaction-levelorder-c.md) | 返回当前对象实例。 |
 
+<a id="getorder"></a>
 ## getOrder
 
 ```TypeScript

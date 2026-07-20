@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="requestenablenotification"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -17,7 +18,7 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 > **说明：**  
 >  
 > 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的  
-> [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-2)  
+> [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)  
 > 替代。
 
 **起始版本：** 9
@@ -34,7 +35,7 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当应用请求通知使能成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当应用请求通知使能成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -64,6 +65,7 @@ notificationManager.requestEnableNotification(requestEnableNotificationCallback)
 ```
 
 
+<a id="requestenablenotification-1"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -95,7 +97,7 @@ function requestEnableNotification(context: UIAbilityContext, callback: AsyncCal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) | 是 | 通知弹窗绑定Ability的上下文。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当应用通过弹窗获取用户授权成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当应用通过弹窗获取用户授权成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -140,6 +142,7 @@ class MyAbility extends UIAbility {
 ```
 
 
+<a id="requestenablenotification-2"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -151,7 +154,7 @@ function requestEnableNotification(): Promise<void>
 > **说明：**  
 >  
 > 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的  
-> [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-4)替代。
+> [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)替代。
 
 **起始版本：** 9
 
@@ -167,7 +170,7 @@ function requestEnableNotification(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -193,6 +196,7 @@ notificationManager.requestEnableNotification().then(() => {
 ```
 
 
+<a id="requestenablenotification-3"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -229,7 +233,7 @@ function requestEnableNotification(context: UIAbilityContext): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

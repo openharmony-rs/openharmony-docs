@@ -16,6 +16,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="convertpoint"></a>
 ## convertPoint
 
 ```TypeScript
@@ -43,7 +44,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | curveName | string | 是 | 椭圆曲线的曲线名，即相应的NID（Name Identifier）。 |
-| encodedPoint | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指定的ECC椭圆曲线上的点的数据。 |
+| encodedPoint | Uint8Array | 是 | 指定的ECC椭圆曲线上的点的数据。 |
 
 **返回值：**
 
@@ -74,13 +75,14 @@ console.info('returnPoint: ' + returnPoint.x.toString(16));
 
 ```
 
+<a id="genecccommonparamsspec"></a>
 ## genECCCommonParamsSpec
 
 ```TypeScript
 static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 ```
 
-根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
+根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](docroot://security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](docroot://security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
 
 **起始版本：** 11
 
@@ -127,6 +129,7 @@ try {
 
 ```
 
+<a id="getencodedpoint"></a>
 ## getEncodedPoint
 
 ```TypeScript
@@ -155,7 +158,7 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 返回指定格式的点数据。 |
+| Uint8Array | 返回指定格式的点数据。 |
 
 **错误码：**
 

@@ -1,5 +1,6 @@
 # registerVsyncCallback（系统接口）
 
+<a id="registervsynccallback"></a>
 ## registerVsyncCallback
 
 ```TypeScript
@@ -20,5 +21,5 @@ function registerVsyncCallback(callback: (info: string) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (info: string) => void | 是 | 回调信息为带有ui更新信息的json字符串。 |
+| callback | (info: string) =&gt; void | 是 | 回调信息为带有ui更新信息的json字符串。 |
 

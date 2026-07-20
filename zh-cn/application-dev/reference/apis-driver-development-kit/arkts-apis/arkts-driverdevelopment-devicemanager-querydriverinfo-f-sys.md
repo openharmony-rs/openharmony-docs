@@ -6,6 +6,7 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
+<a id="querydriverinfo"></a>
 ## queryDriverInfo
 
 ```TypeScript
@@ -34,7 +35,7 @@ function queryDriverInfo(driverUid?: string): Array<Readonly<DriverInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Readonly<DriverInfo>> | 扩展外设驱动详细信息列表。 |
+| Array&lt;Readonly&lt;DriverInfo&gt;&gt; | 扩展外设驱动详细信息列表。 |
 
 **错误码：**
 

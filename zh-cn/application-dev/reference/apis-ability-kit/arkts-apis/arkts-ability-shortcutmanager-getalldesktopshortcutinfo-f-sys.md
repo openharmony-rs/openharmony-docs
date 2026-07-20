@@ -6,6 +6,7 @@
 import { shortcutManager } from '@kit.AbilityKit';
 ```
 
+<a id="getalldesktopshortcutinfo"></a>
 ## getAllDesktopShortcutInfo
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getAllDesktopShortcutInfo(userId: number): Promise<Array<ShortcutInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<ShortcutInfo>> | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
+| Promise&lt;Array&lt;ShortcutInfo&gt;&gt; | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="setvolumedescription"></a>
 ## setVolumeDescription
 
 ```TypeScript
@@ -30,7 +31,7 @@ function setVolumeDescription(uuid: string, description: string, callback: Async
 | --- | --- | --- | --- |
 | uuid | string | 是 | 卷设备uuid。 |
 | description | string | 是 | 卷设备描述。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设置卷描述之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置卷描述之后的回调。 |
 
 **错误码：**
 
@@ -46,6 +47,7 @@ function setVolumeDescription(uuid: string, description: string, callback: Async
 | 13900042 | Unknown error. |
 
 
+<a id="setvolumedescription-1"></a>
 ## setVolumeDescription
 
 ```TypeScript
@@ -75,7 +77,7 @@ function setVolumeDescription(uuid: string, description: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

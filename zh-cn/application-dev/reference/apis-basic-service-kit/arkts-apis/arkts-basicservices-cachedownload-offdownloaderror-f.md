@@ -6,6 +6,7 @@
 import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
+<a id="offdownloaderror"></a>
 ## offDownloadError
 
 ```TypeScript
@@ -25,7 +26,7 @@ function offDownloadError(url: string, callback?: Callback<DownloadError>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 待注册回调的url，url字符串最大长度为8192字节。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DownloadError> | 否 | 回调函数，返回预下载的错误信息。若不填该参数，表示url下的所有错误回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DownloadError&gt; | 否 | 回调函数，返回预下载的错误信息。若不填该参数，表示url下的所有错误回调函数。 |
 
 **示例：**
 

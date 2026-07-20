@@ -246,7 +246,7 @@ readonly wants: Array<ShortcutWant>
 
 快捷方式意图列表。
 
-**类型：** Array<ShortcutWant>
+**类型：** Array&lt;ShortcutWant&gt;
 
 **起始版本：** 7
 

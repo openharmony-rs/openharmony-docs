@@ -23,14 +23,14 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addWatcher](arkts-performanceanalysis-hisysevent-addwatcher-f-sys.md#addwatcher-1) | 订阅系统事件，接收[Watcher](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-watcher-i.md)类型的对象作为事件参数。 |
-| [exportSysEvents](arkts-performanceanalysis-hisysevent-exportsysevents-f-sys.md#exportsysevents-1) | 批量导出系统事件，以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。 |
-| [query](arkts-performanceanalysis-hisysevent-query-f-sys.md#query-1) | 查询系统事件。 |
-| [removeWatcher](arkts-performanceanalysis-hisysevent-removewatcher-f-sys.md#removewatcher-1) | 取消订阅系统事件，接收[Watcher](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-watcher-i.md)类型的对象作为事件参数。 |
-| [subscribe](arkts-performanceanalysis-hisysevent-subscribe-f-sys.md#subscribe-1) | 订阅实时系统事件(事件需满足低频率或偶发性的约束条件)，事件发生时立即以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。 |
-| [unsubscribe](arkts-performanceanalysis-hisysevent-unsubscribe-f-sys.md#unsubscribe-1) | 取消订阅系统事件。 |
-| [write](arkts-performanceanalysis-hisysevent-write-f-sys.md#write-1) | 系统事件打点方法，接收[SysEventInfo](SysEventInfo)类型的对象作为事件参数，使用promise方式作为异步回调。 |
-| [write](arkts-performanceanalysis-hisysevent-write-f-sys.md#write-2) | 系统事件打点方法，接收[SysEventInfo](SysEventInfo)类型的对象作为事件参数，使用callback方式作为异步回调。 |
+| [addWatcher](arkts-performanceanalysis-hisysevent-addwatcher-f-sys.md#addwatcher) | 订阅系统事件，接收[Watcher](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-watcher-i.md)类型的对象作为事件参数。 |
+| [exportSysEvents](arkts-performanceanalysis-hisysevent-exportsysevents-f-sys.md#exportsysevents) | 批量导出系统事件，以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。 |
+| [query](arkts-performanceanalysis-hisysevent-query-f-sys.md#query) | 查询系统事件。 |
+| [removeWatcher](arkts-performanceanalysis-hisysevent-removewatcher-f-sys.md#removewatcher) | 取消订阅系统事件，接收[Watcher](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-watcher-i.md)类型的对象作为事件参数。 |
+| [subscribe](arkts-performanceanalysis-hisysevent-subscribe-f-sys.md#subscribe) | 订阅实时系统事件(事件需满足低频率或偶发性的约束条件)，事件发生时立即以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。 |
+| [unsubscribe](arkts-performanceanalysis-hisysevent-unsubscribe-f-sys.md#unsubscribe) | 取消订阅系统事件。 |
+| [write](arkts-performanceanalysis-hisysevent-write-f-sys.md#write) | 系统事件打点方法，接收[SysEventInfo](SysEventInfo)类型的对象作为事件参数，使用promise方式作为异步回调。 |
+| [write](arkts-performanceanalysis-hisysevent-write-f-sys.md#write-1) | 系统事件打点方法，接收[SysEventInfo](SysEventInfo)类型的对象作为事件参数，使用callback方式作为异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+<a id="getenabled"></a>
 ## getEnabled
 
 ```TypeScript
@@ -34,6 +35,7 @@ getEnabled(index: number): boolean
 | --- | --- |
 | boolean | 图层掩码是否启用 |
 
+<a id="setenabled"></a>
 ## setEnabled
 
 ```TypeScript

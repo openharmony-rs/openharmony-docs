@@ -10,13 +10,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="antialias"></a>
 ## antiAlias
 
 ```TypeScript
 antiAlias(value: boolean)
 ```
 
-设置是否开启抗锯齿效果，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置是否开启抗锯齿效果，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -34,13 +35,14 @@ antiAlias(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照false处理。 |
 
+<a id="fill"></a>
 ## fill
 
 ```TypeScript
 fill(value: ResourceColor)
 ```
 
-设置填充区域的颜色，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法，异常值按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
+设置填充区域的颜色，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法，异常值按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
 
 **起始版本：** 7
 
@@ -58,13 +60,14 @@ fill(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 填充区域颜色。<br/>默认值：[Color](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenetypes-color-i.md).Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
 
+<a id="fillopacity"></a>
 ## fillOpacity
 
 ```TypeScript
 fillOpacity(value: number | string | Resource)
 ```
 
-设置填充区域透明度，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置填充区域透明度，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -82,13 +85,14 @@ fillOpacity(value: number | string | Resource)
 | --- | --- | --- | --- |
 | value | number \| string \| Resource | 是 | 填充区域透明度。<br/>**说明：**<br/>number格式取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0，其余异常值按1.0处理。<br/>string格式支持number格式取值的字符串形式，取值范围与number格式相同。<br/>Resource格式支持系统资源或者应用资源中的字符串，取值范围和number格式相同。<br/>默认值：1.0 |
 
+<a id="mesh"></a>
 ## mesh
 
 ```TypeScript
 mesh(value: Array<any>, column: number, row: number)
 ```
 
-设置网格效果。将图像分割为（row + 1）* (column + 1)的网格，每个网格交点坐标存储在数组中（每两个元素表示一个交点的x、y坐标）。通过数组value中的坐标值，重新定位网格顶点位置，实现图像局部扭曲。支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置网格效果。将图像分割为（row + 1）* (column + 1)的网格，每个网格交点坐标存储在数组中（每两个元素表示一个交点的x、y坐标）。通过数组value中的坐标值，重新定位网格顶点位置，实现图像局部扭曲。支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 > **说明：**  
 >  
@@ -110,17 +114,18 @@ mesh(value: Array<any>, column: number, row: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<any> | 是 | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>设置异常值undefined、null时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。 |
+| value | Array&lt;any&gt; | 是 | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>设置异常值undefined、null时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。 |
 | column | number | 是 | mesh矩阵列数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
 | row | number | 是 | mesh矩阵行数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
 
+<a id="stroke"></a>
 ## stroke
 
 ```TypeScript
 stroke(value: ResourceColor)
 ```
 
-设置边框颜色，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法，不设置时，默认边框透明度为0，即没有边框。
+设置边框颜色，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法，不设置时，默认边框透明度为0，即没有边框。
 
 **起始版本：** 7
 
@@ -138,13 +143,14 @@ stroke(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 边框颜色。<br/>默认值：[Color](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenetypes-color-i.md).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenetypes-color-i.md).Black处理。 |
 
+<a id="strokedasharray"></a>
 ## strokeDashArray
 
 ```TypeScript
 strokeDashArray(value: Array<any>)
 ```
 
-设置边框间隙，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。取值范围为≥0，异常值按照默认值处理。
+设置边框间隙，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。取值范围为≥0，异常值按照默认值处理。
 
 **起始版本：** 7
 
@@ -160,15 +166,16 @@ strokeDashArray(value: Array<any>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<any> | 是 | 定义Shape轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a-&gt;间隙长度b-&gt;线段长度c-&gt;间隙长度d-&gt;线段长度a-&gt;...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a-&gt;间隙长度b-&gt;线段长度c-&gt;间隙长度a-&gt;线段长度b-&gt;间隙长度c-&gt;线段长度a-&gt;... |
+| value | Array&lt;any&gt; | 是 | 定义Shape轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
+<a id="strokedashoffset"></a>
 ## strokeDashOffset
 
 ```TypeScript
 strokeDashOffset(value: Length)
 ```
 
-设置边框绘制起点的偏移量，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。异常值按照默认值处理。
+设置边框绘制起点的偏移量，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。异常值按照默认值处理。
 
 **起始版本：** 7
 
@@ -186,13 +193,14 @@ strokeDashOffset(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 边框绘制起点的偏移量。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理，NaN和Infinity会导致strokeDashArray失效。<br>**起始版本：** 11 |
 
+<a id="strokelinecap"></a>
 ## strokeLineCap
 
 ```TypeScript
 strokeLineCap(value: LineCapStyle)
 ```
 
-设置边框端点绘制样式，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置边框端点绘制样式，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -208,15 +216,16 @@ strokeLineCap(value: LineCapStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [LineCapStyle](../arkts-apis/arkts-arkui-enums-linecapstyle-e.md) | 是 | 边框端点绘制样式。<br/>默认值：LineCapStyle.Butt <br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| value | [LineCapStyle](../arkts-apis/arkts-arkui-linecapstyle-e.md) | 是 | 边框端点绘制样式。<br/>默认值：LineCapStyle.Butt <br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
 
+<a id="strokelinejoin"></a>
 ## strokeLineJoin
 
 ```TypeScript
 strokeLineJoin(value: LineJoinStyle)
 ```
 
-设置边框拐角绘制样式，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置边框拐角绘制样式，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -232,15 +241,16 @@ strokeLineJoin(value: LineJoinStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [LineJoinStyle](../arkts-apis/arkts-arkui-enums-linejoinstyle-e.md) | 是 | 边框拐角绘制样式。<br/>默认值：LineJoinStyle.Miter <br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| value | [LineJoinStyle](../arkts-apis/arkts-arkui-linejoinstyle-e.md) | 是 | 边框拐角绘制样式。<br/>默认值：LineJoinStyle.Miter <br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
 
+<a id="strokemiterlimit"></a>
 ## strokeMiterLimit
 
 ```TypeScript
 strokeMiterLimit(value: Length)
 ```
 
-设置斜接长度与边框宽度比值的极限值，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。斜接长度表示外边框外边交点到内边交点的距离，边框宽度即strokeWidth属性的值。该属性取值需在strokeLineJoin属性取值LineJoinStyle.Miter时生效。
+设置斜接长度与边框宽度比值的极限值，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。斜接长度表示外边框外边交点到内边交点的距离，边框宽度即strokeWidth属性的值。该属性取值需在strokeLineJoin属性取值LineJoinStyle.Miter时生效。
 
 该属性的合法值范围应当大于等于1.0，当取值范围在[0,1)时按1.0处理，其余异常值按默认值处理。
 
@@ -260,13 +270,14 @@ strokeMiterLimit(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 斜接长度与边框宽度比值的极限值。<br/>默认值：4 <br/>异常值undefined、null和NaN按照默认值处理，Infinity会导致stroke失效。<br>**起始版本：** 20 |
 
+<a id="strokeopacity"></a>
 ## strokeOpacity
 
 ```TypeScript
 strokeOpacity(value: number | string | Resource)
 ```
 
-设置边框透明度，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。该属性的取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0。
+设置边框透明度，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。该属性的取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0。
 
 **起始版本：** 7
 
@@ -284,13 +295,14 @@ strokeOpacity(value: number | string | Resource)
 | --- | --- | --- | --- |
 | value | number \| string \| Resource | 是 | 边框透明度。<br/>默认值：[stroke](ShapeAttribute#stroke)接口设置的透明度。<br/>异常值NaN按0.0处理，undefined、null和Infinity按1.0处理。 |
 
+<a id="strokewidth"></a>
 ## strokeWidth
 
 ```TypeScript
 strokeWidth(value: Length)
 ```
 
-设置边框宽度，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。该属性若为string类型，暂不支持百分比，百分比按照1px处理。
+设置边框宽度，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。该属性若为string类型，暂不支持百分比，百分比按照1px处理。
 
 **起始版本：** 7
 
@@ -308,6 +320,7 @@ strokeWidth(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 边框宽度，取值范围≥0。<br/>默认值：1 <br/>默认单位：vp<br/>异常值undefined、null和NaN按照默认值处理，Infinity按0处理。<br>**起始版本：** 20 |
 
+<a id="viewport"></a>
 ## viewPort
 
 ```TypeScript
@@ -330,5 +343,5 @@ viewPort(value: ViewportRect)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ViewportRect](arkts-arkui-shape-viewportrect-i.md) | 是 | Viewport绘制属性。<br/>默认值：{}<br/>异常值undefined和null按照默认值处理。<br>**起始版本：** 18 |
+| value | [ViewportRect](arkts-arkui-viewportrect-i.md) | 是 | Viewport绘制属性。<br/>默认值：{}<br/>异常值undefined和null按照默认值处理。<br>**起始版本：** 18 |
 

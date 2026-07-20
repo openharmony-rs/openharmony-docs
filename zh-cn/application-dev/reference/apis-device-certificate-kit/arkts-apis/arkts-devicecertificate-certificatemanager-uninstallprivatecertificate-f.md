@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="uninstallprivatecertificate"></a>
 ## uninstallPrivateCertificate
 
 ```TypeScript
@@ -27,7 +28,7 @@ function uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyUri | string | 是 | 表示待卸载凭据的唯一标识符，长度限制256字节以内。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当卸载私有凭据成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当卸载私有凭据成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ try {
 ```
 
 
+<a id="uninstallprivatecertificate-1"></a>
 ## uninstallPrivateCertificate
 
 ```TypeScript
@@ -85,7 +87,7 @@ function uninstallPrivateCertificate(keyUri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -14,6 +14,7 @@
 import { WorkSchedulerExtensionContext } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="onworkstart"></a>
 ## onWorkStart
 
 ```TypeScript
@@ -51,6 +52,7 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
 
 ```
 
+<a id="onworkstop"></a>
 ## onWorkStop
 
 ```TypeScript

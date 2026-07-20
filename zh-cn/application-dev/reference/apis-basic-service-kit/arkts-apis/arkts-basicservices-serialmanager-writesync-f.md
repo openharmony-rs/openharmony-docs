@@ -6,6 +6,7 @@
 import { serialManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="writesync"></a>
 ## writeSync
 
 ```TypeScript
@@ -25,7 +26,7 @@ function writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | portId | number | 是 | 目标设备的端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getportlist-1)获取的串口参数SerialPort。 |
-| buffer | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 写入目标缓冲区，最大长度为4KB。 |
+| buffer | Uint8Array | 是 | 写入目标缓冲区，最大长度为4KB。 |
 | timeout | number | 否 | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。 |
 
 **返回值：**

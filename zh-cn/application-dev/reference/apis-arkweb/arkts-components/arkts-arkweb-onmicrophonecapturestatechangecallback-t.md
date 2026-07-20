@@ -16,5 +16,5 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | MicrophoneCaptureStateChangeInfo | 是 | 网页麦克风状态发生改变时，返回原来的状态和改变后的状态。 |
+| event | [MicrophoneCaptureStateChangeInfo](arkts-arkweb-microphonecapturestatechangeinfo-i.md) | 是 | 网页麦克风状态发生改变时，返回原来的状态和改变后的状态。  |
 

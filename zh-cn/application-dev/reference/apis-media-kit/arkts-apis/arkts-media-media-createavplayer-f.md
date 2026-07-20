@@ -6,6 +6,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createavplayer"></a>
 ## createAVPlayer
 
 ```TypeScript
@@ -34,7 +35,7 @@ function createAVPlayer(callback: AsyncCallback<AVPlayer>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AVPlayer> | 是 | 回调函数。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVPlayer&gt; | 是 | 回调函数。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ media.createAVPlayer((error: BusinessError, video: media.AVPlayer) => {
 ```
 
 
+<a id="createavplayer-1"></a>
 ## createAVPlayer
 
 ```TypeScript
@@ -88,7 +90,7 @@ function createAVPlayer(): Promise<AVPlayer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVPlayer> | Promise对象。成功时异步返回AVPlayer实例，可用于音视频播放。失败时返回null。 |
+| Promise&lt;AVPlayer&gt; | Promise对象。成功时异步返回AVPlayer实例，可用于音视频播放。失败时返回null。 |
 
 **错误码：**
 

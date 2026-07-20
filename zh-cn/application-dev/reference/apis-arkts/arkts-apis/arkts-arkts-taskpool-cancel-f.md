@@ -6,6 +6,7 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -37,6 +38,7 @@ function cancel(task: Task): void
 | [10200055](../errorcode-utils.md#10200055-异步任务被取消) | The asyncRunner task has been canceled.<br>**适用版本：** 18+ |
 
 
+<a id="cancel-1"></a>
 ## cancel
 
 ```TypeScript
@@ -107,6 +109,7 @@ concurrentFunc();
 ```
 
 
+<a id="cancel-2"></a>
 ## cancel
 
 ```TypeScript

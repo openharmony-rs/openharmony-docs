@@ -6,6 +6,7 @@
 import { scan } from '@kit.BasicServicesKit';
 ```
 
+<a id="getscannerparameter"></a>
 ## getScannerParameter
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getScannerParameter(scannerId: string): Promise<ScannerParameter[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ScannerParameter[]> | Promise used to return the scanner parameters. |
+| Promise&lt;ScannerParameter[]&gt; | Promise used to return the scanner parameters. |
 
 **错误码：**
 

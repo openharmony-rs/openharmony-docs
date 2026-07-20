@@ -6,6 +6,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="offapplicationfocusstatechange"></a>
 ## offApplicationFocusStateChange
 
 ```TypeScript
@@ -26,7 +27,7 @@ function offApplicationFocusStateChange(callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<boolean> | 否 | Callback used to return the result whether application process focused or not. If not provided, all callbacks for the given event type will be removed. |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | Callback used to return the result whether application process focused or not. If not provided, all callbacks for the given event type will be removed. |
 
 **示例：**
 

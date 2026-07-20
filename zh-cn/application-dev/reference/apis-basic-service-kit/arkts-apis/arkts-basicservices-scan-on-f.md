@@ -6,6 +6,7 @@
 import { scan } from '@kit.BasicServicesKit';
 ```
 
+<a id="on"></a>
 ## on('scanDeviceFound')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function on(type: 'scanDeviceFound', callback: Callback<ScannerDevice>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ScannerDevice> | 是 | 回调函数，返回扫描仪设备发现信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ScannerDevice&gt; | 是 | 回调函数，返回扫描仪设备发现信息。 |
 
 **错误码：**
 
@@ -47,6 +48,7 @@ scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
 ```
 
 
+<a id="on-1"></a>
 ## on('scanDeviceSync')
 
 ```TypeScript
@@ -68,7 +70,7 @@ function on(type: 'scanDeviceSync', callback: Callback<ScannerSyncDevice>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scanDeviceSync' | 是 | 事件类型。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ScannerSyncDevice> | 是 | 回调函数，返回扫描仪设备同步信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ScannerSyncDevice&gt; | 是 | 回调函数，返回扫描仪设备同步信息。 |
 
 **错误码：**
 

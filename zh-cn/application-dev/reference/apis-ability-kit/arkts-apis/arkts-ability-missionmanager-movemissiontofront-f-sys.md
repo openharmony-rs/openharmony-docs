@@ -6,6 +6,7 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
+<a id="movemissiontofront"></a>
 ## moveMissionToFront
 
 ```TypeScript
@@ -29,7 +30,7 @@ function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | missionId | number | 是 | 任务ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 执行结果回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ try {
 ```
 
 
+<a id="movemissiontofront-1"></a>
 ## moveMissionToFront
 
 ```TypeScript
@@ -89,7 +91,7 @@ function moveMissionToFront(missionId: number, options: StartOptions, callback: 
 | --- | --- | --- | --- |
 | missionId | number | 是 | 任务ID。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c-sys.md) | 是 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 执行结果回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码：**
 
@@ -125,6 +127,7 @@ try {
 ```
 
 
+<a id="movemissiontofront-2"></a>
 ## moveMissionToFront
 
 ```TypeScript
@@ -154,7 +157,7 @@ function moveMissionToFront(missionId: number, options?: StartOptions): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

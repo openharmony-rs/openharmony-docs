@@ -6,6 +6,7 @@
 import { font } from '@kit.ArkUI';
 ```
 
+<a id="getuifontconfig"></a>
 ## getUIFontConfig
 
 ```TypeScript

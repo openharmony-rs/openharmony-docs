@@ -14,6 +14,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="auth"></a>
 ## auth
 
 ```TypeScript
@@ -37,7 +38,7 @@ static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
-| credential | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示域账号的凭据。 |
+| credential | Uint8Array | 是 | 指示域账号的凭据。 |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 指示认证结果回调。 |
 
 **错误码：**
@@ -85,6 +86,7 @@ try {
 
 ```
 
+<a id="auth-1"></a>
 ## auth
 
 ```TypeScript
@@ -120,7 +122,7 @@ static auth(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
-| credential | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示域账号的凭据。 |
+| credential | Uint8Array | 是 | 指示域账号的凭据。 |
 | options | [DomainAccountAuthOptions](arkts-basicservices-osaccount-domainaccountauthoptions-i-sys.md) | 是 | 表示域账号认证的选项。 |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 指示认证结果回调。 |
 
@@ -175,6 +177,7 @@ try {
 
 ```
 
+<a id="authwithpopup"></a>
 ## authWithPopup
 
 ```TypeScript
@@ -238,6 +241,7 @@ try {
 
 ```
 
+<a id="authwithpopup-1"></a>
 ## authWithPopup
 
 ```TypeScript
@@ -303,6 +307,7 @@ try {
 
 ```
 
+<a id="getaccesstoken"></a>
 ## getAccessToken
 
 ```TypeScript
@@ -323,8 +328,8 @@ static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| businessParams | Record<string, Object> | 是 | 指示业务参数，具体格式取决于域插件的实现要求。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Uint8Array> | 是 | 指示结果回调。如果获取成功，err返回null，否则为错误对象。 |
+| businessParams | Record&lt;string, Object&gt; | 是 | 指示业务参数，具体格式取决于域插件的实现要求。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | 是 | 指示结果回调。如果获取成功，err返回null，否则为错误对象。 |
 
 **错误码：**
 
@@ -367,6 +372,7 @@ try {
 
 ```
 
+<a id="getaccesstoken-1"></a>
 ## getAccessToken
 
 ```TypeScript
@@ -387,13 +393,13 @@ static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Arra
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| businessParams | Record<string, Object> | 是 | 指示业务参数，具体格式取决于域插件的实现要求。 |
+| businessParams | Record&lt;string, Object&gt; | 是 | 指示业务参数，具体格式取决于域插件的实现要求。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回业务访问令牌。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
 
 **错误码：**
 
@@ -434,6 +440,7 @@ try {
 
 ```
 
+<a id="getaccountinfo"></a>
 ## getAccountInfo
 
 ```TypeScript
@@ -457,7 +464,7 @@ static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md) | 是 | 指示域账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<DomainAccountInfo> | 是 | 指示查询结果回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;DomainAccountInfo&gt; | 是 | 指示查询结果回调。 |
 
 **错误码：**
 
@@ -500,6 +507,7 @@ try {
 
 ```
 
+<a id="getaccountinfo-1"></a>
 ## getAccountInfo
 
 ```TypeScript
@@ -528,7 +536,7 @@ static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccou
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DomainAccountInfo> | Promise对象，返回指定的域账号信息。 |
+| Promise&lt;DomainAccountInfo&gt; | Promise对象，返回指定的域账号信息。 |
 
 **错误码：**
 
@@ -569,6 +577,7 @@ try {
 
 ```
 
+<a id="hasaccount"></a>
 ## hasAccount
 
 ```TypeScript
@@ -592,7 +601,7 @@ static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 指示检查结果回调。true表示指定的域账号已存在；false表示指定的域账号不存在。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 指示检查结果回调。true表示指定的域账号已存在；false表示指定的域账号不存在。 |
 
 **错误码：**
 
@@ -634,6 +643,7 @@ try {
 
 ```
 
+<a id="hasaccount-1"></a>
 ## hasAccount
 
 ```TypeScript
@@ -662,7 +672,7 @@ static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示指定的域账号已存在；返回false表示指定的域账号不存在。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已存在；返回false表示指定的域账号不存在。 |
 
 **错误码：**
 
@@ -702,6 +712,7 @@ try {
 
 ```
 
+<a id="isauthenticationexpired"></a>
 ## isAuthenticationExpired
 
 ```TypeScript
@@ -730,7 +741,7 @@ static isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise<bo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示指定的域账号已登录超期；返回false表示指定的域账号未登录超期。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已登录超期；返回false表示指定的域账号未登录超期。 |
 
 **错误码：**
 
@@ -763,6 +774,7 @@ try {
 
 ```
 
+<a id="registerplugin"></a>
 ## registerPlugin
 
 ```TypeScript
@@ -829,6 +841,7 @@ try {
 
 ```
 
+<a id="unregisterplugin"></a>
 ## unregisterPlugin
 
 ```TypeScript
@@ -870,6 +883,7 @@ try {
 
 ```
 
+<a id="updateaccounttoken"></a>
 ## updateAccountToken
 
 ```TypeScript
@@ -905,8 +919,8 @@ static updateAccountToken(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
-| token | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示域账号的令牌。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。如果更新成功，err为null，否则为错误对象。 |
+| token | Uint8Array | 是 | 指示域账号的令牌。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。如果更新成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -945,6 +959,7 @@ try {
 
 ```
 
+<a id="updateaccounttoken-1"></a>
 ## updateAccountToken
 
 ```TypeScript
@@ -968,13 +983,13 @@ static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Arra
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
-| token | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示域账号的令牌。 |
+| token | Uint8Array | 是 | 指示域账号的令牌。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 

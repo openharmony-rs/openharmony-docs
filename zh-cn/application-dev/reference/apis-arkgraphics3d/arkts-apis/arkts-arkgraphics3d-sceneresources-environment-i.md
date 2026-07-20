@@ -34,7 +34,7 @@ environmentImage?: Image | null
 
 环境图像.
 
-**类型：** Image | null
+**类型：** Image \| null
 
 **起始版本：** 12
 
@@ -134,7 +134,7 @@ radianceImage?: Image | null
 
 环境辐射图像.
 
-**类型：** Image | null
+**类型：** Image \| null
 
 **起始版本：** 12
 

@@ -6,6 +6,7 @@
 import { sendablePreferences } from '@kit.ArkData';
 ```
 
+<a id="getpreferencessync"></a>
 ## getPreferencesSync
 
 ```TypeScript

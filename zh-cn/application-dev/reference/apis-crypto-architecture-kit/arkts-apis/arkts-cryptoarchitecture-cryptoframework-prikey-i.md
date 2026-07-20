@@ -20,6 +20,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="clearmem"></a>
 ## clearMem
 
 ```TypeScript
@@ -57,6 +58,7 @@ async function testClearMem() {
 
 ```
 
+<a id="getasykeyspec"></a>
 ## getAsyKeySpec
 
 ```TypeScript
@@ -135,6 +137,7 @@ async function testgetAsyKeySpec() {
 
 ```
 
+<a id="getencodedder"></a>
 ## getEncodedDer
 
 ```TypeScript
@@ -196,6 +199,7 @@ async function testGetEncodedDer() {
 
 ```
 
+<a id="getencodedpem"></a>
 ## getEncodedPem
 
 ```TypeScript
@@ -265,6 +269,7 @@ function TestPriKeyPkcs1ToPkcs8BySync1024() {
 
 ```
 
+<a id="getencodedpem-1"></a>
 ## getEncodedPem
 
 ```TypeScript
@@ -339,6 +344,7 @@ function TestPriKeyPkcs1Encoded() {
 
 ```
 
+<a id="getkeydata"></a>
 ## getKeyData
 
 ```TypeScript
@@ -367,7 +373,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回指定密钥数据项类型的私钥数据。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回指定密钥数据项类型的私钥数据。 |
 
 **错误码：**
 
@@ -392,6 +398,7 @@ async function eccGetKeyDataTest() {
 
 ```
 
+<a id="getkeydatasync"></a>
 ## getKeyDataSync
 
 ```TypeScript
@@ -422,7 +429,7 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 返回指定密钥数据项类型的私钥数据。 |
+| Uint8Array | 返回指定密钥数据项类型的私钥数据。 |
 
 **错误码：**
 
@@ -447,6 +454,7 @@ function eccGetKeyDataTest() {
 
 ```
 
+<a id="getpubkey"></a>
 ## getPubKey
 
 ```TypeScript
@@ -467,7 +475,7 @@ getPubKey(): Promise<PubKey>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PubKey> | Promise对象，返回公钥对象PubKey。 |
+| Promise&lt;PubKey&gt; | Promise对象，返回公钥对象PubKey。 |
 
 **错误码：**
 
@@ -548,6 +556,7 @@ async function generateAsyKey() {
 
 ```
 
+<a id="getpubkeysync"></a>
 ## getPubKeySync
 
 ```TypeScript

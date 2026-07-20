@@ -20,6 +20,6 @@ declare type ButtonTriggerClickCallback = (xPos: number, yPos: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xPos | number | 是 | 点击位置x的坐标。<br/>单位：vp |
-| yPos | number | 是 | 点击位置y的坐标。<br/>单位：vp |
+| xPos | number | 是 | 点击位置x的坐标。<br/>单位：vp  |
+| yPos | number | 是 | 点击位置y的坐标。<br/>单位：vp  |
 

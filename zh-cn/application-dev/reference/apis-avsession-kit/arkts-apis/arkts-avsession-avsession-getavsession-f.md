@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getavsession"></a>
 ## getAVSession
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getAVSession(context: Context): Promise<AVSession>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVSession> | Promise对象。回调返回会话实例对象，可用于获取会话ID、设置元数据及播放状态、发送按键事件等操作。 |
+| Promise&lt;AVSession&gt; | Promise对象。回调返回会话实例对象，可用于获取会话ID、设置元数据及播放状态、发送按键事件等操作。 |
 
 **错误码：**
 

@@ -32,7 +32,7 @@ Checkbox(options?: CheckboxOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | CheckboxOptions | 否 | 配置多选框的参数。 |
+| options | [CheckboxOptions](arkts-arkui-checkboxoptions-i.md) | 否 | 配置多选框的参数。  |
 
 ## 汇总
 

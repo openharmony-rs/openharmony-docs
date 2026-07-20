@@ -42,7 +42,7 @@ bundleRecords: Array<BundleUsedRecord>
 
 每个元素表示一个应用维度下的权限访问记录，开发者可进一步遍历permissionRecords获取具体权限使用详情。
 
-**类型：** Array<BundleUsedRecord>
+**类型：** Array&lt;BundleUsedRecord&gt;
 
 **起始版本：** 9
 

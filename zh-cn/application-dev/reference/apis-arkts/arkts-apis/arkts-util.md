@@ -20,18 +20,18 @@ import { util } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [callbackWrapper](arkts-arkts-util-callbackwrapper-f.md#callbackwrapper-1) | 回调一个异步函数。在回调中，第一个参数表示拒绝的原因（如果 promise 已经 resolved，该值为 **null**），第二个参数表示 resolved 的值。 |
-| [errnoToString](arkts-arkts-util-errnotostring-f.md#errnotostring-1) | 获取系统错误码的详细信息。 |
-| [format](arkts-arkts-util-format-f.md#format-1) | 通过替换字符串中的占位符进行字符串格式化。 |
-| [generateRandomBinaryUUID](arkts-arkts-util-generaterandombinaryuuid-f.md#generaterandombinaryuuid-1) | 使用安全随机数生成器生成 RFC 4122 版本 4 的随机通用唯一识别码（UUID）。 |
-| [generateRandomUUID](arkts-arkts-util-generaterandomuuid-f.md#generaterandomuuid-1) | 使用安全随机数生成器生成 RFC 4122 版本 4 的随机通用唯一识别码（UUID，字符串类型）。为了提升性能，本接口默认使用缓存的 uuid，其中 **entropyCache** 设置为 **true**。最多可缓存 128 个随机 uuid。当缓存的 128 个 uuid 全部用完后，会再生成一组新的 uuid 以保持随机分布。如果不需要使用缓存的 uuid，可将 **entropyCache** 设置为 **false**。 |
-| [getErrorString](arkts-arkts-util-geterrorstring-f.md#geterrorstring-1) | 获取系统错误码的详细信息。 |
-| [getHash](arkts-arkts-util-gethash-f.md#gethash-1) | 获取对象的哈希值。如果尚未获取过哈希值，则生成一个随机哈希值，保存到对象的 **hash** 字段中并返回。如果已经获取过哈希值，则返回保存在**hash** 字段中的哈希值（同一对象返回相同的值）。 |
-| [getMainThreadStackTrace](arkts-arkts-util-getmainthreadstacktrace-f.md#getmainthreadstacktrace-1) | 获取主线程的栈追踪信息，最多返回 64 层调用帧。该接口可能对主线程性能产生影响，建议仅在必要时使用，如日志记录、错误分析或调试场景。 |
-| [parseUUID](arkts-arkts-util-parseuuid-f.md#parseuuid-1) | 将 **generateRandomUUID** 生成的字符串类型的 UUID 转换为 **generateRandomBinaryUUID** 生成的 UUID，如 RFC 4122所述。 |
-| [printf](arkts-arkts-util-printf-f.md#printf-1) | 通过替换字符串中的占位符进行字符串格式化。 |
-| [promiseWrapper](arkts-arkts-util-promisewrapper-f.md#promisewrapper-1) | 接收一个使用错误优先回调模式的函数（即最后一个参数为 `(err, value) =&gt; callback`），并通过 promise 返回结果。 |
-| [promisify](arkts-arkts-util-promisify-f.md#promisify-1) | 接收一个使用错误优先回调模式的函数（即最后一个参数为 `(err, value) =&gt; callback`），并通过 promise 返回结果。 |
+| [callbackWrapper](arkts-arkts-util-callbackwrapper-f.md#callbackwrapper) | 回调一个异步函数。在回调中，第一个参数表示拒绝的原因（如果 promise 已经 resolved，该值为 **null**），第二个参数表示 resolved 的值。 |
+| [errnoToString](arkts-arkts-util-errnotostring-f.md#errnotostring) | 获取系统错误码的详细信息。 |
+| [format](arkts-arkts-util-format-f.md#format) | 通过替换字符串中的占位符进行字符串格式化。 |
+| [generateRandomBinaryUUID](arkts-arkts-util-generaterandombinaryuuid-f.md#generaterandombinaryuuid) | 使用安全随机数生成器生成 RFC 4122 版本 4 的随机通用唯一识别码（UUID）。 |
+| [generateRandomUUID](arkts-arkts-util-generaterandomuuid-f.md#generaterandomuuid) | 使用安全随机数生成器生成 RFC 4122 版本 4 的随机通用唯一识别码（UUID，字符串类型）。为了提升性能，本接口默认使用缓存的 uuid，其中 **entropyCache** 设置为 **true**。最多可缓存 128 个随机 uuid。当缓存的 128 个 uuid 全部用完后，会再生成一组新的 uuid 以保持随机分布。如果不需要使用缓存的 uuid，可将 **entropyCache** 设置为 **false**。 |
+| [getErrorString](arkts-arkts-util-geterrorstring-f.md#geterrorstring) | 获取系统错误码的详细信息。 |
+| [getHash](arkts-arkts-util-gethash-f.md#gethash) | 获取对象的哈希值。如果尚未获取过哈希值，则生成一个随机哈希值，保存到对象的 **hash** 字段中并返回。如果已经获取过哈希值，则返回保存在**hash** 字段中的哈希值（同一对象返回相同的值）。 |
+| [getMainThreadStackTrace](arkts-arkts-util-getmainthreadstacktrace-f.md#getmainthreadstacktrace) | 获取主线程的栈追踪信息，最多返回 64 层调用帧。该接口可能对主线程性能产生影响，建议仅在必要时使用，如日志记录、错误分析或调试场景。 |
+| [parseUUID](arkts-arkts-util-parseuuid-f.md#parseuuid) | 将 **generateRandomUUID** 生成的字符串类型的 UUID 转换为 **generateRandomBinaryUUID** 生成的 UUID，如 RFC 4122所述。 |
+| [printf](arkts-arkts-util-printf-f.md#printf) | 通过替换字符串中的占位符进行字符串格式化。 |
+| [promiseWrapper](arkts-arkts-util-promisewrapper-f.md#promisewrapper) | 接收一个使用错误优先回调模式的函数（即最后一个参数为 `(err, value) => callback`），并通过 promise 返回结果。 |
+| [promisify](arkts-arkts-util-promisify-f.md#promisify) | 接收一个使用错误优先回调模式的函数（即最后一个参数为 `(err, value) => callback`），并通过 promise 返回结果。 |
 
 ### 类
 

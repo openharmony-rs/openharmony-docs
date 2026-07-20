@@ -168,7 +168,7 @@ formRecords: Array<HapFormInfo>
 
 FA中卡片的使用记录。
 
-**类型：** Array<HapFormInfo>
+**类型：** Array&lt;HapFormInfo&gt;
 
 **起始版本：** 9
 

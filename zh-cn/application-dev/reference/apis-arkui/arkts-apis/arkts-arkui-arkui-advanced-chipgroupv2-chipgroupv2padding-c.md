@@ -4,6 +4,8 @@ ChipGroupV2Padding定义了ChipGroupV2的上下内边距，用于控制其整体
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @ObservedV2
+
 <!--Device-unnamed-export declare class ChipGroupV2Padding--><!--Device-unnamed-export declare class ChipGroupV2Padding-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -14,6 +16,7 @@ ChipGroupV2Padding定义了ChipGroupV2的上下内边距，用于控制其整体
 import { ChipGroupV2ItemConfig, ChipGroupV2ItemStyleConfig, ChipGroupV2SpaceConfig, ChipGroupV2IconGroupSuffix, ChipGroupV2Items, ChipGroupV2Padding, ChipGroupV2Item, ChipGroupV2ItemStyle, ChipGroupV2, ChipGroupV2PaddingConfig, ChipGroupV2IconItemConfig, ChipGroupV2SymbolItemConfig, ChipGroupV2Space } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
+<a id="opensubscriptionsettings"></a>
 ## openSubscriptionSettings
 
 ```TypeScript
@@ -32,7 +33,7 @@ function openSubscriptionSettings(context: UIAbilityContext): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

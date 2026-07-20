@@ -14,7 +14,7 @@
 readonly accessTokenId: number
 ```
 
-应用程序的accessTokenId，应用的身份标识，在[程序访问控制校验接口](../../../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。
+应用程序的accessTokenId，应用的身份标识，在[程序访问控制校验接口](docroot://reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。
 
 **类型：** number
 
@@ -32,7 +32,7 @@ readonly accessTokenId: number
 readonly appDistributionType: string
 ```
 
-应用程序签名证书的分发类型，分为： <li>app_gallery：应用市场安装的应用。<!--RP1--><!--RP1End--> <li> enterprise：企业内部应用，企业自行开发、仅限企业内部员工使用的应用，不通过应用市场等公开渠道发布，而是通过企业自己的渠道进行内部分发。<!--RP2--><!--RP2End--><li> enterprise_mdm：企业[MDM应用](../../../../mdm/mdm-kit-term.md#mdm应用设备管理应用)。<!--Del-->需要被激活[管理员特权](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin-1)后，才能安装普通企业应用。<!--DelEnd--><!--RP3--><!--RP3End--> <li>enterprise_normal：普通企业应用，无需上架华为应用市场，可通过企业[MDM应用](../../../../mdm/mdm-kit-term.md#mdm应用设备管理应用)以及离线安装器分发安装。<!--RP4--><!--RP4End--><li>os_integration：预置应用，三方应用无法申请配置。<li>crowdtesting：众包测试应用，是由应用市场分发给部分用户，有一定的有效期的特定应用，系统检测到应用的有效期到期后，会通知用户到应用市场更新release版本的应用。从API version 11开始被废弃。<li>internaltesting：应用市场内测的应用。<!--RP5--><!--RP5End--><li>none：其他。
+应用程序签名证书的分发类型，分为： <li>app_gallery：应用市场安装的应用。<!--RP1--><!--RP1End--> <li> enterprise：企业内部应用，企业自行开发、仅限企业内部员工使用的应用，不通过应用市场等公开渠道发布，而是通过企业自己的渠道进行内部分发。<!--RP2--><!--RP2End--><li> enterprise_mdm：企业[MDM应用](docroot://mdm/mdm-kit-term.md#mdm应用设备管理应用)。<!--Del-->需要被激活[管理员特权](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin-1)后，才能安装普通企业应用。<!--DelEnd--><!--RP3--><!--RP3End--> <li>enterprise_normal：普通企业应用，无需上架华为应用市场，可通过企业[MDM应用](docroot://mdm/mdm-kit-term.md#mdm应用设备管理应用)以及离线安装器分发安装。<!--RP4--><!--RP4End--><li>os_integration：预置应用，三方应用无法申请配置。<li>crowdtesting：众包测试应用，是由应用市场分发给部分用户，有一定的有效期的特定应用，系统检测到应用的有效期到期后，会通知用户到应用市场更新release版本的应用。从API version 11开始被废弃。<li>internaltesting：应用市场内测的应用。<!--RP5--><!--RP5End--><li>none：其他。
 
 **类型：** string
 
@@ -192,7 +192,7 @@ readonly debug: boolean
 readonly description: string
 ```
 
-标识应用的描述信息，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的description字段。关于description的详细信息详见本表中的descriptionResource字段说明。
+标识应用的描述信息，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的description字段。关于description的详细信息详见本表中的descriptionResource字段说明。
 
 **类型：** string
 
@@ -228,7 +228,7 @@ readonly descriptionId: number
 readonly descriptionResource: Resource
 ```
 
-应用程序的描述资源信息，包含了该资源信息的bundleName、moduleName 和 id，可以调用全球化的接口[getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-5)来获取详细的资源数据信息。
+应用程序的描述资源信息，包含了该资源信息的bundleName、moduleName 和 id，可以调用全球化的接口[getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)来获取详细的资源数据信息。
 
 **类型：** Resource
 
@@ -264,7 +264,7 @@ readonly enabled: boolean
 readonly icon: string
 ```
 
-应用程序的图标，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的icon字段。关于icon的详细信息详见本表中的iconResource字段说明。
+应用程序的图标，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的icon字段。关于icon的详细信息详见本表中的iconResource字段说明。
 
 **类型：** string
 
@@ -300,7 +300,7 @@ readonly iconId: number
 readonly iconResource: Resource
 ```
 
-应用程序的图标资源信息，包含了该资源信息的bundleName、moduleName 和 id，可以调用全球化的接口[getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-5)来获取详细的资源数据信息。
+应用程序的图标资源信息，包含了该资源信息的bundleName、moduleName 和 id，可以调用全球化的接口[getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)来获取详细的资源数据信息。
 
 **类型：** Resource
 
@@ -342,7 +342,7 @@ readonly installSource: string
 readonly label: string
 ```
 
-标识应用的名称，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的label字段。关于label的详细信息详见本表中的labelResource字段说明。从API version 20开始，如果是通过[bundleManager.getAbilityInfo](arkts-ability-bundlemanager-getabilityinfo-f.md#getabilityinfo-1)获取ApplicationInfo信息，该字段为应用对用户显示的名称，而不是资源描述符。
+标识应用的名称，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的label字段。关于label的详细信息详见本表中的labelResource字段说明。从API version 20开始，如果是通过[bundleManager.getAbilityInfo](arkts-ability-bundlemanager-getabilityinfo-f.md#getabilityinfo-1)获取ApplicationInfo信息，该字段为应用对用户显示的名称，而不是资源描述符。
 
 **类型：** string
 
@@ -378,7 +378,7 @@ readonly labelId: number
 readonly labelResource: Resource
 ```
 
-应用程序的名称资源信息，包含了该资源信息的bundleName、moduleName 和 id，可以调用全球化的接口[getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-5)来获取详细的资源数据信息。
+应用程序的名称资源信息，包含了该资源信息的bundleName、moduleName 和 id，可以调用全球化的接口[getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)来获取详细的资源数据信息。
 
 **类型：** Resource
 
@@ -400,7 +400,7 @@ readonly metadata: Map<string, Array<Metadata>>
 
 **说明：** 从API version 9开始支持，从API version 10开始不再维护，建议使用metadataArray替代。
 
-**类型：** Map<string, Array<Metadata>>
+**类型：** Map&lt;string, Array&lt;Metadata&gt;&gt;
 
 **起始版本：** 9
 
@@ -420,7 +420,7 @@ readonly metadataArray: Array<ModuleMetadata>
 
 应用程序的元信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_METADATA获取。
 
-**类型：** Array<ModuleMetadata>
+**类型：** Array&lt;ModuleMetadata&gt;
 
 **起始版本：** 10
 
@@ -452,7 +452,7 @@ readonly multiAppMode: MultiAppMode
 readonly name: string
 ```
 
-应用包的bundle名称，对应[app.json5](../../../../quick-start/app-configuration-file.md)里面的bundleName。
+应用包的bundle名称，对应[app.json5](docroot://quick-start/app-configuration-file.md)里面的bundleName。
 
 **类型：** string
 
@@ -486,11 +486,11 @@ readonly nativeLibraryPath: string
 readonly permissions: Array<string>
 ```
 
-访问应用程序所需的权限列表<!--Del-->，可以通过调用[getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md#getapplicationinfo-2)接口，appFlags参数传入GET_APPLICATION_INFO_WITH_PERMISSION获取<!--DelEnd-->。
+访问应用程序所需的权限列表<!--Del-->，可以通过调用[getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md#getapplicationinfo-1)接口，appFlags参数传入GET_APPLICATION_INFO_WITH_PERMISSION获取<!--DelEnd-->。
 
-[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)或者[getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-2)接口获取ApplicationInfo信息时不会返回该字段内容，可以通过获取[bundleInfo](arkts-ability-bundleinfo-i.md).reqPermissionDetails信息获取权限列表。
+[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)或者[getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-1)接口获取ApplicationInfo信息时不会返回该字段内容，可以通过获取[bundleInfo](arkts-ability-bundleinfo-i.md).reqPermissionDetails信息获取权限列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 

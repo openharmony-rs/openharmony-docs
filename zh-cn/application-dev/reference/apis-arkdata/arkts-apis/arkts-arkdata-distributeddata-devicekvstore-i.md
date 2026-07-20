@@ -1,6 +1,6 @@
 # DeviceKVStore
 
-设备协同数据库，继承自KVStore，提供查询数据和同步数据的方法。设备协同数据库，以设备维度对数据进行区分，每台设备仅能写入和修改本设备的数据，其它设备的数据对其是只读的，无法修改其它设备的数据。比如，可以使用设备协同数据库实现设备间的图片分享，可以查看其他设备的图片，但无法修改和删除其他设备的图片。在调用DeviceKVStore的方法前，需要先通过[getKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#getkvstore-2)构建一个DeviceKVStore实例。
+设备协同数据库，继承自KVStore，提供查询数据和同步数据的方法。设备协同数据库，以设备维度对数据进行区分，每台设备仅能写入和修改本设备的数据，其它设备的数据对其是只读的，无法修改其它设备的数据。比如，可以使用设备协同数据库实现设备间的图片分享，可以查看其他设备的图片，但无法修改和删除其他设备的图片。在调用DeviceKVStore的方法前，需要先通过[getKVStore](distributedData.KVManager.getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>))构建一个DeviceKVStore实例。
 
 **继承/实现关系：** DeviceKVStore extends [KVStore](arkts-arkdata-distributeddata-kvstore-i.md)
 
@@ -14,13 +14,14 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
+<a id="closeresultset"></a>
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由[DeviceKVStore.getResultSet](../../../../reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的KvStoreResultSet对象，使用callback异步回调。
+关闭由[DeviceKVStore.getResultSet](docroot://reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的KvStoreResultSet对象，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -37,7 +38,7 @@ closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resultSet | [KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md) | 是 | 指示要关闭的KvStoreResultSet对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -59,13 +60,14 @@ try {
 
 ```
 
+<a id="closeresultset-1"></a>
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 ```
 
-关闭由[DeviceKVStore.getResultSet](../../../../reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的KvStoreResultSet对象，使用Promise异步回调。
+关闭由[DeviceKVStore.getResultSet](docroot://reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的KvStoreResultSet对象，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -87,7 +89,7 @@ closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -107,6 +109,7 @@ try {
 
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -138,7 +141,7 @@ get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | nu
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 标识要查询其数据的设备。 |
 | key | string | 是 | 表示要查询key值的键。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean \| string \| number \| Uint8Array> | 是 | 回调函数，返回匹配给定条件的字符串值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean \| string \| number \| Uint8Array&gt; | 是 | 回调函数，返回匹配给定条件的字符串值。 |
 
 **示例：**
 
@@ -159,6 +162,7 @@ try{
 
 ```
 
+<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -195,7 +199,7 @@ get(deviceId: string, key: string): Promise<boolean | string | number | Uint8Arr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean \| string \| number \| Uint8Array> | Promise对象。返回匹配给定条件的字符串值。 |
+| Promise&lt;boolean \| string \| number \| Uint8Array&gt; | Promise对象。返回匹配给定条件的字符串值。 |
 
 **示例：**
 
@@ -220,6 +224,7 @@ try {
 
 ```
 
+<a id="getentries"></a>
 ## getEntries
 
 ```TypeScript
@@ -251,7 +256,7 @@ getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback<Entry[]>
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 标识要查询其数据的设备。 |
 | keyPrefix | string | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Entry[]> | 是 | 回调函数，返回满足给定条件的所有键值对的列表。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Entry[]&gt; | 是 | 回调函数，返回满足给定条件的所有键值对的列表。 |
 
 **示例：**
 
@@ -285,6 +290,7 @@ try {
 
 ```
 
+<a id="getentries-1"></a>
 ## getEntries
 
 ```TypeScript
@@ -321,7 +327,7 @@ getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Entry[]> | Promise对象。返回匹配给定条件的所有键值对的列表。 |
+| Promise&lt;Entry[]&gt; | Promise对象。返回匹配给定条件的所有键值对的列表。 |
 
 **示例：**
 
@@ -361,6 +367,7 @@ try {
 
 ```
 
+<a id="getentries-2"></a>
 ## getEntries
 
 ```TypeScript
@@ -384,7 +391,7 @@ getEntries(query: Query, callback: AsyncCallback<Entry[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Entry[]> | 是 | 回调函数，返回与指定Query对象匹配的键值对列表。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Entry[]&gt; | 是 | 回调函数，返回与指定Query对象匹配的键值对列表。 |
 
 **示例：**
 
@@ -423,6 +430,7 @@ try {
 
 ```
 
+<a id="getentries-3"></a>
 ## getEntries
 
 ```TypeScript
@@ -451,7 +459,7 @@ getEntries(query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Entry[]> | Promise对象。返回与指定Query对象匹配的键值对列表。 |
+| Promise&lt;Entry[]&gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 |
 
 **示例：**
 
@@ -491,6 +499,7 @@ try {
 
 ```
 
+<a id="getentries-4"></a>
 ## getEntries
 
 ```TypeScript
@@ -522,7 +531,7 @@ getEntries(deviceId: string, query: Query, callback: AsyncCallback<Entry[]>): vo
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 键值对所属的设备ID。 |
 | query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Entry[]> | 是 | 回调函数。返回与指定设备ID和Query对象匹配的键值对列表。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Entry[]&gt; | 是 | 回调函数。返回与指定设备ID和Query对象匹配的键值对列表。 |
 
 **示例：**
 
@@ -561,6 +570,7 @@ try {
 
 ```
 
+<a id="getentries-5"></a>
 ## getEntries
 
 ```TypeScript
@@ -597,7 +607,7 @@ getEntries(deviceId: string, query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Entry[]> | Promise对象。返回与指定设备ID和Query对象匹配的键值对列表。 |
+| Promise&lt;Entry[]&gt; | Promise对象。返回与指定设备ID和Query对象匹配的键值对列表。 |
 
 **示例：**
 
@@ -638,6 +648,7 @@ try {
 
 ```
 
+<a id="getresultset"></a>
 ## getResultSet
 
 ```TypeScript
@@ -669,7 +680,7 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback<KvStor
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 标识要查询其数据的设备。 |
 | keyPrefix | string | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KvStoreResultSet> | 是 | 回调函数。返回与指定设备ID和key前缀匹配的KvStoreResultSet对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KvStoreResultSet&gt; | 是 | 回调函数。返回与指定设备ID和key前缀匹配的KvStoreResultSet对象。 |
 
 **示例：**
 
@@ -690,6 +701,7 @@ try {
 
 ```
 
+<a id="getresultset-1"></a>
 ## getResultSet
 
 ```TypeScript
@@ -726,7 +738,7 @@ getResultSet(deviceId: string, keyPrefix: string): Promise<KvStoreResultSet>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KvStoreResultSet> | Promise对象。返回与指定设备ID和key前缀匹配的KvStoreResultSet对象。 |
+| Promise&lt;KvStoreResultSet&gt; | Promise对象。返回与指定设备ID和key前缀匹配的KvStoreResultSet对象。 |
 
 **示例：**
 
@@ -751,6 +763,7 @@ try {
 
 ```
 
+<a id="getresultset-2"></a>
 ## getResultSet
 
 ```TypeScript
@@ -774,7 +787,7 @@ getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KvStoreResultSet> | 是 | 回调函数，返回与指定Query对象匹配的KvStoreResultSet对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KvStoreResultSet&gt; | 是 | 回调函数，返回与指定Query对象匹配的KvStoreResultSet对象。 |
 
 **示例：**
 
@@ -813,6 +826,7 @@ try {
 
 ```
 
+<a id="getresultset-3"></a>
 ## getResultSet
 
 ```TypeScript
@@ -841,7 +855,7 @@ getResultSet(query: Query): Promise<KvStoreResultSet>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KvStoreResultSet> | Promise对象。返回与指定Query对象匹配的KvStoreResultSet对象。 |
+| Promise&lt;KvStoreResultSet&gt; | Promise对象。返回与指定Query对象匹配的KvStoreResultSet对象。 |
 
 **示例：**
 
@@ -887,6 +901,7 @@ try {
 
 ```
 
+<a id="getresultset-4"></a>
 ## getResultSet
 
 ```TypeScript
@@ -918,7 +933,7 @@ getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KvStoreResu
 | --- | --- | --- | --- |
 | deviceId | string | 是 | KvStoreResultSet对象所属的设备ID。 |
 | query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KvStoreResultSet> | 是 | 回调函数。返回与指定设备ID和Query对象匹配的KvStoreResultSet对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KvStoreResultSet&gt; | 是 | 回调函数。返回与指定设备ID和Query对象匹配的KvStoreResultSet对象。 |
 
 **示例：**
 
@@ -956,6 +971,7 @@ try {
 
 ```
 
+<a id="getresultset-5"></a>
 ## getResultSet
 
 ```TypeScript
@@ -992,7 +1008,7 @@ getResultSet(deviceId: string, query: Query): Promise<KvStoreResultSet>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KvStoreResultSet> | Promise对象。返回与指定设备ID和Query对象匹配的KvStoreResultSet对象。 |
+| Promise&lt;KvStoreResultSet&gt; | Promise对象。返回与指定设备ID和Query对象匹配的KvStoreResultSet对象。 |
 
 **示例：**
 
@@ -1039,6 +1055,7 @@ try {
 
 ```
 
+<a id="getresultsize"></a>
 ## getResultSize
 
 ```TypeScript
@@ -1062,7 +1079,7 @@ getResultSize(query: Query, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，返回与指定Query对象匹配的结果数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回与指定Query对象匹配的结果数。 |
 
 **示例：**
 
@@ -1096,6 +1113,7 @@ try {
 
 ```
 
+<a id="getresultsize-1"></a>
 ## getResultSize
 
 ```TypeScript
@@ -1124,7 +1142,7 @@ getResultSize(query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回与指定Query对象匹配的结果数。 |
+| Promise&lt;number&gt; | Promise对象。返回与指定Query对象匹配的结果数。 |
 
 **示例：**
 
@@ -1162,6 +1180,7 @@ try {
 
 ```
 
+<a id="getresultsize-2"></a>
 ## getResultSize
 
 ```TypeScript
@@ -1193,7 +1212,7 @@ getResultSize(deviceId: string, query: Query, callback: AsyncCallback<number>): 
 | --- | --- | --- | --- |
 | deviceId | string | 是 | KvStoreResultSet对象所属的设备ID。 |
 | query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。返回与指定设备ID和Query对象匹配的结果数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回与指定设备ID和Query对象匹配的结果数。 |
 
 **示例：**
 
@@ -1226,6 +1245,7 @@ try {
 
 ```
 
+<a id="getresultsize-3"></a>
 ## getResultSize
 
 ```TypeScript
@@ -1262,7 +1282,7 @@ getResultSize(deviceId: string, query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回与指定设备ID和Query对象匹配的结果数。 |
+| Promise&lt;number&gt; | Promise对象。返回与指定设备ID和Query对象匹配的结果数。 |
 
 **示例：**
 
@@ -1299,6 +1319,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -1322,7 +1343,7 @@ off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取消订阅的事件名，固定为'dataChange'，表示数据变更事件。 |
-| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ChangeNotification> | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
+| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ChangeNotification&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
 
 **示例：**
 
@@ -1346,6 +1367,7 @@ class KvstoreModel {
 
 ```
 
+<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -1369,7 +1391,7 @@ off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'syncComplete' | 是 | 取消订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<[string, number]>> | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
+| syncCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
 
 **示例：**
 
@@ -1393,6 +1415,7 @@ class KvstoreModel {
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -1417,7 +1440,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotificati
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 订阅的事件名，固定为'dataChange'，表示数据变更事件。 |
 | type | [SubscribeType](../../apis-notification-kit/arkts-apis/arkts-notification-notificationextensionsubscription-subscribetype-e.md) | 是 | 表示订阅的类型。 |
-| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ChangeNotification> | 是 | 回调函数。 |
+| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ChangeNotification&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -1429,6 +1452,7 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
 
 ```
 
+<a id="on-1"></a>
 ## on
 
 ```TypeScript
@@ -1452,7 +1476,7 @@ on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'syncComplete' | 是 | 订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<[string, number]>> | 是 | 回调函数。用于向调用方发送同步结果的回调。 |
+| syncCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | 是 | 回调函数。用于向调用方发送同步结果的回调。 |
 
 **示例：**
 
@@ -1475,6 +1499,7 @@ try {
 
 ```
 
+<a id="removedevicedata"></a>
 ## removeDeviceData
 
 ```TypeScript
@@ -1505,7 +1530,7 @@ removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 标识要删除其数据的设备。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -1534,6 +1559,7 @@ try {
 
 ```
 
+<a id="removedevicedata-1"></a>
 ## removeDeviceData
 
 ```TypeScript
@@ -1569,7 +1595,7 @@ removeDeviceData(deviceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -1600,6 +1626,7 @@ try {
 
 ```
 
+<a id="sync"></a>
 ## sync
 
 ```TypeScript

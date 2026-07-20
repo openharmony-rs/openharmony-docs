@@ -108,7 +108,7 @@ action: Callback<void>
 
 为undefined时，表示解绑事件。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 12
 

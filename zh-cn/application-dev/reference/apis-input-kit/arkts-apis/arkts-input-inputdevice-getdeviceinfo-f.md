@@ -6,6 +6,7 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
+<a id="getdeviceinfo"></a>
 ## getDeviceInfo
 
 ```TypeScript
@@ -25,7 +26,7 @@ function getDeviceInfo(deviceId: number, callback: AsyncCallback<InputDeviceData
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | number | 是 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<InputDeviceData> | 是 | 回调函数。当获取成功，err为undefined，data为输入设备信息（包括输入设备ID、名称、支持的输入能力等）；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;InputDeviceData&gt; | 是 | 回调函数。当获取成功，err为undefined，data为输入设备信息（包括输入设备ID、名称、支持的输入能力等）；否则为错误对象。 |
 
 **错误码：**
 
@@ -67,6 +68,7 @@ struct Index {
 ```
 
 
+<a id="getdeviceinfo-1"></a>
 ## getDeviceInfo
 
 ```TypeScript
@@ -91,7 +93,7 @@ function getDeviceInfo(deviceId: number): Promise<InputDeviceData>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<InputDeviceData> | Promise对象，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
+| Promise&lt;InputDeviceData&gt; | Promise对象，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **错误码：**
 

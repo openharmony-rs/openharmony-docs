@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="activatecirclestyle"></a>
 ## activateCircleStyle
 
 ```TypeScript
@@ -34,8 +35,9 @@ activateCircleStyle(options: Optional<CircleStyleOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Optional](arkts-arkui-optional-t.md)<CircleStyleOptions> | 是 | 宫格圆点在“激活”状态的背景圆环样式。 |
+| options | [Optional](arkts-arkui-optional-t.md)&lt;CircleStyleOptions&gt; | 是 | 宫格圆点在“激活”状态的背景圆环样式。 |
 
+<a id="activecolor"></a>
 ## activeColor
 
 ```TypeScript
@@ -58,6 +60,7 @@ activeColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 宫格圆点在“激活”状态的填充颜色。<br/>默认值：'#ff182431' |
 
+<a id="autoreset"></a>
 ## autoReset
 
 ```TypeScript
@@ -80,6 +83,7 @@ autoReset(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 在完成密码输入后再次在组件区域按下时是否重置组件状态。<br/>true：完成密码输入后再次在组件区域按下时重置组件状态（即清除之前输入的密码）；false：完成密码输入后再次在组件区域按下时不重置组件状态。<br/>默认值：true |
 
+<a id="backgroundcolor"></a>
 ## backgroundColor
 
 ```TypeScript
@@ -90,7 +94,7 @@ backgroundColor(value: ResourceColor)
 
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
 
 **起始版本：** 9
 
@@ -106,6 +110,7 @@ backgroundColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 背景颜色。 |
 
+<a id="circleradius"></a>
 ## circleRadius
 
 ```TypeScript
@@ -128,6 +133,7 @@ circleRadius(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 宫格中圆点的半径。<br/>默认值：6vp<br/>取值范围：(0, sideLength/11]。设置小于等于0的值时，按默认值处理；超过最大值时，按最大值处理。 |
 
+<a id="ondotconnect"></a>
 ## onDotConnect
 
 ```TypeScript
@@ -140,7 +146,7 @@ onDotConnect(callback: import('../api/@ohos.base').Callback<number>)
 
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
 
 **起始版本：** 11
 
@@ -156,8 +162,9 @@ onDotConnect(callback: import('../api/@ohos.base').Callback<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | import('../api/@ohos.base').Callback<number> | 是 | 密码输入选中宫格圆点时触发该回调。 |
+| callback | import('../api/@ohos.base').Callback&lt;number&gt; | 是 | 密码输入选中宫格圆点时触发该回调。 |
 
+<a id="onpatterncomplete"></a>
 ## onPatternComplete
 
 ```TypeScript
@@ -178,8 +185,9 @@ onPatternComplete(callback: (input: Array<number>) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (input: Array<number>) => void | 是 | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
+| callback | (input: Array&lt;number&gt;) =&gt; void | 是 | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
 
+<a id="pathcolor"></a>
 ## pathColor
 
 ```TypeScript
@@ -202,6 +210,7 @@ pathColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 连线的颜色。<br/>默认值：'#33182431' |
 
+<a id="pathstrokewidth"></a>
 ## pathStrokeWidth
 
 ```TypeScript
@@ -224,6 +233,7 @@ pathStrokeWidth(value: number | string)
 | --- | --- | --- | --- |
 | value | number \| string | 是 | 连线的宽度。<br/>默认值：12vp<br/>取值范围：(0, sideLength/3]，设置为0或负数时连线不显示，超过最大值按最大值处理。 |
 
+<a id="regularcolor"></a>
 ## regularColor
 
 ```TypeScript
@@ -246,6 +256,7 @@ regularColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 宫格圆点在“未选中”状态的填充颜色。<br/>默认值：'#ff182431' |
 
+<a id="selectedcolor"></a>
 ## selectedColor
 
 ```TypeScript
@@ -268,6 +279,7 @@ selectedColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 宫格圆点在“选中”状态的填充颜色。<br/>默认值：'#ff182431' |
 
+<a id="sidelength"></a>
 ## sideLength
 
 ```TypeScript
@@ -278,7 +290,7 @@ sideLength(value: Length)
 
 > **说明：**  
 >  
-> PatternLock组件设置了通用属性宽高比[aspectRatio](arkts-arkui-common-commonmethod-c.md#aspectratio-1)，且不等于1时（组件尺寸被设定为长方形），九宫格依然绘制为正方形（超出组件范围）。
+> PatternLock组件设置了通用属性宽高比[aspectRatio](arkts-arkui-commonmethod-c.md#aspectratio-1)，且不等于1时（组件尺寸被设定为长方形），九宫格依然绘制为正方形（超出组件范围）。
 
 **起始版本：** 9
 
@@ -294,6 +306,7 @@ sideLength(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 组件的宽度和高度。默认值：288vp |
 
+<a id="skipunselectedpoint"></a>
 ## skipUnselectedPoint
 
 ```TypeScript

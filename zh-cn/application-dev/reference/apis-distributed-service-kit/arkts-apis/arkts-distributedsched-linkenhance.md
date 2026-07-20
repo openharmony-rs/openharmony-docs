@@ -20,8 +20,8 @@ import { linkEnhance } from '@kit.DistributedServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createConnection](arkts-distributedservice-linkenhance-createconnection-f.md#createconnection-1) | 作为客户端的设备创建连接对象，以便后续向服务端设备发起连接。 |
-| [createServer](arkts-distributedservice-linkenhance-createserver-f.md#createserver-1) | 在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。 |
+| [createConnection](arkts-distributedservice-linkenhance-createconnection-f.md#createconnection) | 作为客户端的设备创建连接对象，以便后续向服务端设备发起连接。 |
+| [createServer](arkts-distributedservice-linkenhance-createserver-f.md#createserver) | 在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。 |
 
 ### 接口
 

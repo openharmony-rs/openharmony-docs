@@ -16,6 +16,7 @@
 import { floatView } from '@kit.ArkUI';
 ```
 
+<a id="getwindowproperties"></a>
 ## getWindowProperties
 
 ```TypeScript
@@ -58,6 +59,7 @@ try {
 
 ```
 
+<a id="offlimitschange"></a>
 ## offLimitsChange
 
 ```TypeScript
@@ -78,7 +80,7 @@ offLimitsChange(callback?: Callback<FloatViewLimits>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<FloatViewLimits> | 否 | 回调函数。返回当前的标准悬浮窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗限制变化的监听。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewLimits&gt; | 否 | 回调函数。返回当前的标准悬浮窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗限制变化的监听。 |
 
 **错误码：**
 
@@ -102,6 +104,7 @@ try {
 
 ```
 
+<a id="offrectchange"></a>
 ## offRectChange
 
 ```TypeScript
@@ -122,7 +125,7 @@ offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<FloatViewRectChangeInfo> | 否 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗矩形区域变化的监听。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewRectChangeInfo&gt; | 否 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗矩形区域变化的监听。 |
 
 **错误码：**
 
@@ -146,6 +149,7 @@ try {
 
 ```
 
+<a id="offstatechange"></a>
 ## offStateChange
 
 ```TypeScript
@@ -166,7 +170,7 @@ offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<FloatViewStateChangeInfo> | 否 | 回调函数。返回当前的标准悬浮窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗状态变化的监听。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewStateChangeInfo&gt; | 否 | 回调函数。返回当前的标准悬浮窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗状态变化的监听。 |
 
 **错误码：**
 
@@ -190,6 +194,7 @@ try {
 
 ```
 
+<a id="onlimitschange"></a>
 ## onLimitsChange
 
 ```TypeScript
@@ -210,7 +215,7 @@ onLimitsChange(callback: Callback<FloatViewLimits>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<FloatViewLimits> | 是 | 回调函数。返回当前的标准悬浮窗限制变化信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewLimits&gt; | 是 | 回调函数。返回当前的标准悬浮窗限制变化信息。 |
 
 **错误码：**
 
@@ -235,6 +240,7 @@ try {
 
 ```
 
+<a id="onrectchange"></a>
 ## onRectChange
 
 ```TypeScript
@@ -255,7 +261,7 @@ onRectChange(callback: Callback<FloatViewRectChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<FloatViewRectChangeInfo> | 是 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewRectChangeInfo&gt; | 是 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。 |
 
 **错误码：**
 
@@ -280,6 +286,7 @@ try {
 
 ```
 
+<a id="onstatechange"></a>
 ## onStateChange
 
 ```TypeScript
@@ -300,7 +307,7 @@ onStateChange(callback: Callback<FloatViewStateChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<FloatViewStateChangeInfo> | 是 | 回调函数。返回当前的标准悬浮窗状态变化信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewStateChangeInfo&gt; | 是 | 回调函数。返回当前的标准悬浮窗状态变化信息。 |
 
 **错误码：**
 
@@ -325,6 +332,7 @@ try {
 
 ```
 
+<a id="restoremainwindow"></a>
 ## restoreMainWindow
 
 ```TypeScript
@@ -345,13 +353,13 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParameters | Record<string, Object> | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发[onNewWant](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitylifecyclecallback-abilitylifecyclecallback-c.md#onnewwant-1)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
+| wantParameters | Record&lt;string, Object&gt; | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发[onNewWant](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitylifecyclecallback-abilitylifecyclecallback-c.md#onnewwant-1)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -386,6 +394,7 @@ try {
 
 ```
 
+<a id="setfloatviewvisibilityinapp"></a>
 ## setFloatViewVisibilityInApp
 
 ```TypeScript
@@ -414,7 +423,7 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -442,6 +451,7 @@ try {
 
 ```
 
+<a id="setuicontext"></a>
 ## setUIContext
 
 ```TypeScript
@@ -463,13 +473,13 @@ setUIContext(path: string, storage?: LocalStorage): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
-| storage | [LocalStorage](arkts-arkui-common-ts-ets-api-localstorage-c.md) | 否 | 页面级UI状态存储单元，用于为加载到窗口的页面内容传递状态属性。默认值为空。 |
+| storage | [LocalStorage](arkts-arkui-localstorage-c.md) | 否 | 页面级UI状态存储单元，用于为加载到窗口的页面内容传递状态属性。默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -498,13 +508,14 @@ try {
 
 ```
 
+<a id="setuicontextbyname"></a>
 ## setUIContextByName
 
 ```TypeScript
 setUIContextByName(name: string, storage?: LocalStorage): Promise<void>
 ```
 
-根据指定路由页面名称为当前窗口加载[命名路由](../../../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
+根据指定路由页面名称为当前窗口加载[命名路由](docroot://ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -519,13 +530,13 @@ setUIContextByName(name: string, storage?: LocalStorage): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 命名路由页面的名称。 |
-| storage | [LocalStorage](arkts-arkui-common-ts-ets-api-localstorage-c.md) | 否 | 页面级UI状态存储单元，用于为加载到窗口的页面内容传递状态属性。默认值为空。 |
+| storage | [LocalStorage](arkts-arkui-localstorage-c.md) | 否 | 页面级UI状态存储单元，用于为加载到窗口的页面内容传递状态属性。默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -584,13 +595,14 @@ export struct Hello {
 
 ```
 
+<a id="setwindowsize"></a>
 ## setWindowSize
 
 ```TypeScript
 setWindowSize(size: window.Size): Promise<void>
 ```
 
-设置标准悬浮窗窗口大小。建议先调用[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1)接口获取推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](arkts-arkui-floatview-floatviewcontroller-i.md#onrectchange-1)接口监听。使用Promise异步回调。
+设置标准悬浮窗窗口大小。建议先调用[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1)接口获取推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](floatView.FloatViewController.onRectChange(callback: Callback<FloatViewRectChangeInfo>))接口监听。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -610,7 +622,7 @@ setWindowSize(size: window.Size): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -644,13 +656,14 @@ try {
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
 start(): Promise<void>
 ```
 
-启动标准悬浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](arkts-arkui-floatview-floatviewcontroller-i.md#onstatechange-1)接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontext-1)或[setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontextbyname-1)后调用start()。使用Promise异步回调。
+启动标准悬浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](floatView.FloatViewController.onStateChange(callback: Callback<FloatViewStateChangeInfo>))接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontext-1)或[setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontextbyname-1)后调用start()。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -666,7 +679,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -699,13 +712,14 @@ try {
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
 stop(): Promise<void>
 ```
 
-停止标准悬浮窗窗口。接口返回不表示stop流程结束，需要通过[onStateChange](arkts-arkui-floatview-floatviewcontroller-i.md#onstatechange-1)接口监听到STOPPED回调时判断停止成功。使用Promise异步回调。
+停止标准悬浮窗窗口。接口返回不表示stop流程结束，需要通过[onStateChange](floatView.FloatViewController.onStateChange(callback: Callback<FloatViewStateChangeInfo>))接口监听到STOPPED回调时判断停止成功。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -719,7 +733,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -749,13 +763,14 @@ try {
 
 ```
 
+<a id="switchtemplate"></a>
 ## switchTemplate
 
 ```TypeScript
 switchTemplate(templateProperty: TemplateProperty): Promise<void>
 ```
 
-切换标准悬浮窗的模板并改变其窗口尺寸。建议先调用[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1)接口获取目标模板类型推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](arkts-arkui-floatview-floatviewcontroller-i.md#onrectchange-1)接口监听。使用Promise异步回调。
+切换标准悬浮窗的模板并改变其窗口尺寸。建议先调用[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1)接口获取目标模板类型推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](floatView.FloatViewController.onRectChange(callback: Callback<FloatViewRectChangeInfo>))接口监听。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -775,7 +790,7 @@ switchTemplate(templateProperty: TemplateProperty): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

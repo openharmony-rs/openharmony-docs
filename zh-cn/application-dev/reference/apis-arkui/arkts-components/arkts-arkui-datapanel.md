@@ -32,7 +32,7 @@ DataPanel(options: DataPanelOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | DataPanelOptions | 是 | 数据面板组件参数。 |
+| options | [DataPanelOptions](arkts-arkui-datapaneloptions-i.md) | 是 | 数据面板组件参数。  |
 
 ## 汇总
 

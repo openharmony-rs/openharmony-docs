@@ -6,6 +6,7 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
+<a id="adduserextcredential"></a>
 ## addUserExtCredential
 
 ```TypeScript
@@ -36,7 +37,7 @@ function addUserExtCredential(admin: Want, info: AddCredentialInfo, accountId: n
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | 用户凭据ID |
+| Promise&lt;Uint8Array&gt; | 用户凭据ID |
 
 **错误码：**
 

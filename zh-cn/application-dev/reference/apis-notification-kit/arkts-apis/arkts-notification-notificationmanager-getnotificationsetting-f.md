@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getnotificationsetting"></a>
 ## getNotificationSetting
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getNotificationSetting(): Promise<NotificationSetting>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<NotificationSetting> | Promise对象，返回此应用程序的通知设置。 |
+| Promise&lt;NotificationSetting&gt; | Promise对象，返回此应用程序的通知设置。 |
 
 **错误码：**
 

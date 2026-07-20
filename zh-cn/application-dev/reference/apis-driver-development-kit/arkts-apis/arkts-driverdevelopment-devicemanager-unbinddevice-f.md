@@ -6,6 +6,7 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
+<a id="unbinddevice"></a>
 ## unbindDevice
 
 ```TypeScript
@@ -18,7 +19,7 @@ function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void
 
 **废弃版本：** 19
 
-**替代接口：** unbindDriverWithDeviceId(deviceId:
+**替代接口：** [unbindDriverWithDeviceId(deviceId:](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid-1)
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -31,7 +32,7 @@ function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | number | 是 | 设备ID，通过queryDevices获得。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当解绑设备成功时，err为undefined，data为设备ID；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当解绑设备成功时，err为undefined，data为设备ID；否则为错误对象。 |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ try {
 ```
 
 
+<a id="unbinddevice-1"></a>
 ## unbindDevice
 
 ```TypeScript
@@ -75,7 +77,7 @@ function unbindDevice(deviceId: number): Promise<number>
 
 **废弃版本：** 19
 
-**替代接口：** unbindDriverWithDeviceId(deviceId:
+**替代接口：** [unbindDriverWithDeviceId(deviceId:](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid-1)
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -93,7 +95,7 @@ function unbindDevice(deviceId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回解除绑定的设备ID。 |
+| Promise&lt;number&gt; | Promise对象，返回解除绑定的设备ID。 |
 
 **错误码：**
 

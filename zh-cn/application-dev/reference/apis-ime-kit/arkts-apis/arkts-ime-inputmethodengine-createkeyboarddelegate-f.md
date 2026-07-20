@@ -6,6 +6,7 @@
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
+<a id="createkeyboarddelegate"></a>
 ## createKeyboardDelegate
 
 ```TypeScript

@@ -4,13 +4,15 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 
 > **说明：**
 
-> 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如[getParent](../arkts-components/arkts-arkui-navigation-navpathstack-c.md#getparent-1)、  
-> [setInterception](../arkts-components/arkts-arkui-navigation-navpathstack-c.md#setinterception-1)、  
-> [pushDestination](../arkts-components/arkts-arkui-navigation-navpathstack-c.md#pushdestination-1)等)，可能会发生无法预期的问题。
+> 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如[getParent](../arkts-components/arkts-arkui-navpathstack-c.md#getparent-1)、  
+> [setInterception](../arkts-components/arkts-arkui-navpathstack-c.md#setinterception-1)、  
+> [pushDestination](../arkts-components/arkts-arkui-navpathstack-c.md#pushdestination-1)等)，可能会发生无法预期的问题。
 
 > MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
 
 **起始版本：** 14
+
+**装饰器类型：** @Component
 
 <!--Device-unnamed-export declare struct MultiNavigation--><!--Device-unnamed-export declare struct MultiNavigation-End-->
 

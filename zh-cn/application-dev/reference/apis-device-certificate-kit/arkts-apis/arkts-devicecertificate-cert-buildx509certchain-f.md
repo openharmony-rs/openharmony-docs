@@ -6,6 +6,7 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="buildx509certchain"></a>
 ## buildX509CertChain
 
 ```TypeScript
@@ -32,7 +33,7 @@ function buildX509CertChain(param: CertChainBuildParameters): Promise<CertChainB
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CertChainBuildResult> | Promise对象，返回创建的CertChainBuildResult实例。 |
+| Promise&lt;CertChainBuildResult&gt; | Promise对象，返回创建的CertChainBuildResult实例。 |
 
 **错误码：**
 

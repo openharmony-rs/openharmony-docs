@@ -6,6 +6,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="getalldisplay"></a>
 ## getAllDisplay
 
 ```TypeScript
@@ -18,7 +19,7 @@ function getAllDisplay(callback: AsyncCallback<Array<Display>>): void
 
 **废弃版本：** 9
 
-**替代接口：** getAllDisplays(callback:
+**替代接口：** [getAllDisplays(callback:](arkts-arkui-display-getalldisplays-f.md#getalldisplays-1)
 
 <!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void--><!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void-End-->
 
@@ -28,7 +29,7 @@ function getAllDisplay(callback: AsyncCallback<Array<Display>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Display>> | 是 | 回调函数。返回当前所有的Display对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Display&gt;&gt; | 是 | 回调函数。返回当前所有的Display对象。 |
 
 **示例：**
 
@@ -47,6 +48,7 @@ display.getAllDisplay((err: BusinessError, data: Array<display.Display>) => {
 ```
 
 
+<a id="getalldisplay-1"></a>
 ## getAllDisplay
 
 ```TypeScript
@@ -59,7 +61,7 @@ function getAllDisplay(): Promise<Array<Display>>
 
 **废弃版本：** 9
 
-**替代接口：** [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays-2)
+**替代接口：** [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays-1)
 
 <!--Device-display-function getAllDisplay(): Promise<Array<Display>>--><!--Device-display-function getAllDisplay(): Promise<Array<Display>>-End-->
 
@@ -69,7 +71,7 @@ function getAllDisplay(): Promise<Array<Display>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Display>> | Promise对象。返回当前所有的Display对象。 |
+| Promise&lt;Array&lt;Display&gt;&gt; | Promise对象。返回当前所有的Display对象。 |
 
 **示例：**
 

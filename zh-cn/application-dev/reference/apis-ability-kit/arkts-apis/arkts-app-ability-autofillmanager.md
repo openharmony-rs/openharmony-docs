@@ -22,7 +22,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave-1) | 请求保存表单数据。使用callback异步回调。如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。 |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave) | 请求保存表单数据。使用callback异步回调。如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。 |
 
 ### 接口
 

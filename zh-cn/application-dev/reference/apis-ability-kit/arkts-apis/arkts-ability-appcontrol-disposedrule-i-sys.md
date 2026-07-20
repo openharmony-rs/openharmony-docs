@@ -78,7 +78,7 @@ elementList: Array<ElementName>
 
 拦截指定应用程序能力的列表。
 
-**类型：** Array<ElementName>
+**类型：** Array&lt;ElementName&gt;
 
 **起始版本：** 11
 

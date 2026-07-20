@@ -6,6 +6,7 @@
 import { browser } from '@kit.MDMKit';
 ```
 
+<a id="getpolicies"></a>
 ## getPolicies
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getPolicies(admin: Want, appId: string, callback: AsyncCallback<string>
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | appId | string | 是 | 应用ID，用于指定浏览器。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ browser.getPolicies(wantTemp, appId, (err, result) => {
 ```
 
 
+<a id="getpolicies-1"></a>
 ## getPolicies
 
 ```TypeScript
@@ -101,7 +103,7 @@ function getPolicies(admin: Want, appId: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回浏览器策略。 |
+| Promise&lt;string&gt; | Promise对象，返回浏览器策略。 |
 
 **错误码：**
 

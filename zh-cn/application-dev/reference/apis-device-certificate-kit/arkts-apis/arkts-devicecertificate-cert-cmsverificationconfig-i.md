@@ -60,7 +60,7 @@ signerCerts?: Array<X509Cert>
 
 签名者证书。
 
-**类型：** Array<X509Cert>
+**类型：** Array&lt;X509Cert&gt;
 
 **起始版本：** 22
 
@@ -82,7 +82,7 @@ trustCerts: Array<X509Cert>
 >  
 > 需要配置所有签名者的信任证书。
 
-**类型：** Array<X509Cert>
+**类型：** Array&lt;X509Cert&gt;
 
 **起始版本：** 22
 

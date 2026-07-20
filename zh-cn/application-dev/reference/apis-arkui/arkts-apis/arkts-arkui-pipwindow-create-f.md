@@ -6,6 +6,7 @@
 import { PiPWindow } from '@kit.ArkUI';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -32,7 +33,7 @@ function create(config: PiPConfiguration): Promise<PiPController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PiPController> | Promise对象。返回当前创建的画中画控制器。 |
+| Promise&lt;PiPController&gt; | Promise对象。返回当前创建的画中画控制器。 |
 
 **错误码：**
 
@@ -145,6 +146,7 @@ struct Index {
 ```
 
 
+<a id="create-1"></a>
 ## create
 
 ```TypeScript
@@ -172,7 +174,7 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PiPController> | Promise对象。返回当前创建的画中画控制器。 |
+| Promise&lt;PiPController&gt; | Promise对象。返回当前创建的画中画控制器。 |
 
 **错误码：**
 

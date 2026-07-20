@@ -6,6 +6,7 @@
 import { hichecker } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="contains"></a>
 ## contains
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="unzipfile"></a>
 ## unzipFile
 
 ```TypeScript
@@ -26,7 +27,7 @@ function unzipFile(inFile: string, outFile: string, options: Options): Promise<v
 
 **废弃版本：** 9
 
-**替代接口：** decompressFile(inFile:
+**替代接口：** [decompressFile(inFile:](arkts-basicservices-zlib-decompressfile-f.md#decompressfile-1)
 
 <!--Device-zlib-function unzipFile(inFile: string, outFile: string, options: Options): Promise<void>--><!--Device-zlib-function unzipFile(inFile: string, outFile: string, options: Options): Promise<void>-End-->
 
@@ -44,7 +45,7 @@ function unzipFile(inFile: string, outFile: string, options: Options): Promise<v
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **示例：**
 

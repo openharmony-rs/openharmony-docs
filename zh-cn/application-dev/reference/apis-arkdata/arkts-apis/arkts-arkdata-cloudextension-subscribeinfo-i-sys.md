@@ -42,7 +42,7 @@ subscribe: Record<string, Array<SubscribeId>>
 
 订阅信息。
 
-**类型：** Record<string, Array<SubscribeId>>
+**类型：** Record&lt;string, Array&lt;SubscribeId&gt;&gt;
 
 **起始版本：** 11
 

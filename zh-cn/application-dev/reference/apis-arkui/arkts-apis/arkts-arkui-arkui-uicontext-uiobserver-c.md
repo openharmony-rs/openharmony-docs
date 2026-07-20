@@ -21,6 +21,7 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="addglobalgesturelistener"></a>
 ## addGlobalGestureListener
 
 ```TypeScript
@@ -50,6 +51,7 @@ addGlobalGestureListener(type: GestureListenerType,
 | option | [GestureObserverConfigs](arkts-arkui-arkui-uicontext-gestureobserverconfigs-i.md) | 是 | 绑定全局监听器时的配置选项。 |
 | callback | [GestureListenerCallback](arkts-arkui-gesturelistenercallback-t.md) | 是 | 手势状态更新时的回调函数。 |
 
+<a id="off"></a>
 ## off('navDestinationUpdate')
 
 ```TypeScript
@@ -72,8 +74,9 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdate'. |
 | options | { navigationId: ResourceStr } | 是 | The options object. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 否 | The callback function to remove. If not provided, all callbacks for the given event type and navigation ID will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and navigation ID will be removed. |
 
+<a id="off-1"></a>
 ## off('navDestinationUpdate')
 
 ```TypeScript
@@ -97,8 +100,9 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdate'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
 
+<a id="off-2"></a>
 ## off('navDestinationUpdateByUniqueId')
 
 ```TypeScript
@@ -123,8 +127,9 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdateByUniqueId' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdateByUniqueId'. |
 | navigationUniqueId | number | 是 | The uniqueId of the navigation. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
 
+<a id="off-3"></a>
 ## off('scrollEvent')
 
 ```TypeScript
@@ -149,8 +154,9 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to remove the listener for. Must be 'scrollEvent'. |
 | options | observer.ObserverOptions | 是 | The options object. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.ScrollEventInfo> | 否 | The callback function to remove. If not provided, all callbacks for the given event type and scroll ID will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and scroll ID will be removed. |
 
+<a id="off-4"></a>
 ## off('scrollEvent')
 
 ```TypeScript
@@ -174,8 +180,9 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to remove the listener for. Must be 'scrollEvent'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.ScrollEventInfo> | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
 
+<a id="off-5"></a>
 ## off('routerPageUpdate')
 
 ```TypeScript
@@ -199,8 +206,9 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'routerPageUpdate' | 是 | The type of event to remove the listener for. Must be 'routerPageUpdate'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.RouterPageInfo> | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.RouterPageInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
 
+<a id="off-6"></a>
 ## off('densityUpdate')
 
 ```TypeScript
@@ -224,8 +232,9 @@ off(type: 'densityUpdate', callback?: Callback<observer.DensityInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'densityUpdate' | 是 | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.DensityInfo> | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销该[UIContext](arkts-arkui-uicontext.md)下所有屏幕像素密度变化事件监听。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.DensityInfo&gt; | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销该[UIContext](arkts-arkui-uicontext.md)下所有屏幕像素密度变化事件监听。 |
 
+<a id="off-7"></a>
 ## off('willDraw')
 
 ```TypeScript
@@ -249,8 +258,9 @@ off(type: 'willDraw', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'willDraw' | 是 | 监听事件，固定为'willDraw'，即是否将要绘制。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 需要被注销的回调函数。不传参数时，取消所有绘制指令下发事件的监听回调。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 需要被注销的回调函数。不传参数时，取消所有绘制指令下发事件的监听回调。 |
 
+<a id="off-8"></a>
 ## off('didLayout')
 
 ```TypeScript
@@ -274,8 +284,9 @@ off(type: 'didLayout', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'didLayout' | 是 | 监听事件，固定为'didLayout'，即是否布局完成。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 需要被注销的回调函数。不传参数时，取消所有布局完成的监听回调。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 需要被注销的回调函数。不传参数时，取消所有布局完成的监听回调。 |
 
+<a id="off-9"></a>
 ## off('navDestinationSwitch')
 
 ```TypeScript
@@ -308,8 +319,9 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | The type of event to remove the listener for. Must be 'navDestinationSwitch'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationSwitchInfo> | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationSwitchInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
+<a id="off-10"></a>
 ## off('navDestinationSwitch')
 
 ```TypeScript
@@ -346,8 +358,9 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | The type of event to remove the listener for. Must be 'navDestinationSwitch'. |
 | observerOptions | observer.NavDestinationSwitchObserverOptions | 是 | Options. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationSwitchInfo> | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationSwitchInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
+<a id="off-11"></a>
 ## off('willClick')
 
 ```TypeScript
@@ -373,6 +386,7 @@ Removes a callback function to be called before clickEvent is called.
 | type | 'willClick' | 是 | The type of event to remove the listener for. |
 | callback | [ClickEventListenerCallback](arkts-arkui-clickeventlistenercallback-t.md) | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
+<a id="off-12"></a>
 ## off('didClick')
 
 ```TypeScript
@@ -398,6 +412,7 @@ Removes a callback function to be called after clickEvent is called.
 | type | 'didClick' | 是 | The type of event to remove the listener for. |
 | callback | [ClickEventListenerCallback](arkts-arkui-clickeventlistenercallback-t.md) | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
+<a id="off-13"></a>
 ## off('willClick')
 
 ```TypeScript
@@ -423,6 +438,7 @@ Removes a callback function to be called before tapGesture is called.
 | type | 'willClick' | 是 | The type of event to remove the listener for. |
 | callback | [GestureEventListenerCallback](arkts-arkui-gestureeventlistenercallback-t.md) | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
+<a id="off-14"></a>
 ## off('didClick')
 
 ```TypeScript
@@ -448,13 +464,14 @@ Removes a callback function to be called after tapGesture is called.
 | type | 'didClick' | 是 | The type of event to remove the listener for. |
 | callback | [GestureEventListenerCallback](arkts-arkui-gestureeventlistenercallback-t.md) | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
+<a id="off-15"></a>
 ## off('beforePanStart')
 
 ```TypeScript
 off(type: 'beforePanStart', callback?: PanListenerCallback): void
 ```
 
-取消[on('beforePanStart')](arkts-arkui-arkui-uicontext-uiobserver-c.md#on-16)监听Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行前的callback回调。
+取消[on('beforePanStart')](UIObserver#on(type: 'beforePanStart', callback: PanListenerCallback))监听Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行前的callback回调。
 
 **起始版本：** 19
 
@@ -470,16 +487,17 @@ off(type: 'beforePanStart', callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'beforePanStart' | 是 | 监听事件，固定为'beforePanStart'，即Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行前的指令下发情况。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行前的指令下发监听回调。 |
+| type | 'beforePanStart' | 是 | 监听事件，固定为'beforePanStart'，即Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行前的指令下发情况。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行前的指令下发监听回调。 |
 
+<a id="off-16"></a>
 ## off('beforePanEnd')
 
 ```TypeScript
 off(type: 'beforePanEnd', callback?: PanListenerCallback): void
 ```
 
-取消[on('beforePanEnd')](arkts-arkui-arkui-uicontext-uiobserver-c.md#on-17)监听Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行前的callback回调。
+取消[on('beforePanEnd')](UIObserver#on(type: 'beforePanEnd', callback: PanListenerCallback))监听Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的callback回调。
 
 **起始版本：** 19
 
@@ -495,16 +513,17 @@ off(type: 'beforePanEnd', callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'beforePanEnd' | 是 | 监听事件，固定为'beforePanEnd'，即Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发情况。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发监听回调。 |
+| type | 'beforePanEnd' | 是 | 监听事件，固定为'beforePanEnd'，即Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发情况。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发监听回调。 |
 
+<a id="off-17"></a>
 ## off('afterPanStart')
 
 ```TypeScript
 off(type: 'afterPanStart', callback?: PanListenerCallback): void
 ```
 
-取消[on('afterPanStart')](arkts-arkui-arkui-uicontext-uiobserver-c.md#on-18)监听Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行后的callback回调。
+取消[on('afterPanStart')](UIObserver#on(type: 'afterPanStart', callback: PanListenerCallback))监听Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的callback回调。
 
 **起始版本：** 19
 
@@ -520,16 +539,17 @@ off(type: 'afterPanStart', callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'afterPanStart' | 是 | 监听事件，固定为'afterPanStart'，即Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发情况。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发监听回调。 |
+| type | 'afterPanStart' | 是 | 监听事件，固定为'afterPanStart'，即Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发情况。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发监听回调。 |
 
+<a id="off-18"></a>
 ## off('afterPanEnd')
 
 ```TypeScript
 off(type: 'afterPanEnd', callback?: PanListenerCallback): void
 ```
 
-取消[on('afterPanEnd')](arkts-arkui-arkui-uicontext-uiobserver-c.md#on-19)监听Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行后的callback回调。
+取消[on('afterPanEnd')](UIObserver#on(type: 'afterPanEnd', callback: PanListenerCallback))监听Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的callback回调。
 
 **起始版本：** 19
 
@@ -545,9 +565,10 @@ off(type: 'afterPanEnd', callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'afterPanEnd' | 是 | 监听事件，固定为'afterPanEnd'，即Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发情况。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发监听回调。 |
+| type | 'afterPanEnd' | 是 | 监听事件，固定为'afterPanEnd'，即Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发情况。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发监听回调。 |
 
+<a id="off-19"></a>
 ## off('tabContentUpdate')
 
 ```TypeScript
@@ -572,8 +593,9 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | The type of event to remove the listener for. Must be 'tabContentUpdate'. |
 | options | observer.ObserverOptions | 是 | The options object. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TabContentInfo> | 否 | The callback function to remove. If not provided,all callbacks for the given event type and Tabs ID will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TabContentInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type and Tabs ID will be removed. |
 
+<a id="off-20"></a>
 ## off('tabContentUpdate')
 
 ```TypeScript
@@ -597,8 +619,9 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | The type of event to remove the listener for. Must be 'tabContentUpdate'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TabContentInfo> | 否 | The callback function to remove. If not provided,all callbacks for the given event type and Tabs ID will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TabContentInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type and Tabs ID will be removed. |
 
+<a id="off-21"></a>
 ## off('tabChange')
 
 ```TypeScript
@@ -623,8 +646,9 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback<obs
 | --- | --- | --- | --- |
 | type | 'tabChange' | 是 | 要移除监听的事件类型。必须是 'tabChange'。 |
 | config | observer.ObserverOptions | 是 | 选项对象。包含监听的tabs组件ID。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TabContentInfo> | 否 | 要移除的回调函数。如果未提供该参数，则将移除该tabs id的所有'tabChange'无感监听回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TabContentInfo&gt; | 否 | 要移除的回调函数。如果未提供该参数，则将移除该tabs id的所有'tabChange'无感监听回调函数。 |
 
+<a id="off-22"></a>
 ## off('tabChange')
 
 ```TypeScript
@@ -648,8 +672,9 @@ off(type: 'tabChange', callback?: Callback<observer.TabContentInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'tabChange' | 是 | 要移除监听的事件类型。必须是 'tabChange'。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TabContentInfo> | 否 | 要移除的回调函数。如果未提供该参数，则将移除所有tabs的所有'tabChange'无感监听回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TabContentInfo&gt; | 否 | 要移除的回调函数。如果未提供该参数，则将移除所有tabs的所有'tabChange'无感监听回调函数。 |
 
+<a id="off-23"></a>
 ## off('windowSizeLayoutBreakpointChange')
 
 ```TypeScript
@@ -673,8 +698,9 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback<observer.Windo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowSizeLayoutBreakpointChange' | 是 | 监听事件，固定为'windowSizeLayoutBreakpointChange'，用于监听窗口尺寸布局断点发生改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.WindowSizeLayoutBreakpointInfo> | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销该[UIContext](arkts-arkui-uicontext.md)下所有窗口尺寸布局断点变化事件监听。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.WindowSizeLayoutBreakpointInfo&gt; | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销该[UIContext](arkts-arkui-uicontext.md)下所有窗口尺寸布局断点变化事件监听。 |
 
+<a id="off-24"></a>
 ## off('nodeRenderState')
 
 ```TypeScript
@@ -701,6 +727,7 @@ off(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback?: NodeRenderSt
 | nodeIdentity | [NodeIdentity](arkts-arkui-nodeidentity-t.md) | 是 | 节点标识。 |
 | callback | [NodeRenderStateChangeCallback](arkts-arkui-noderenderstatechangecallback-t.md) | 否 | 需要被注销的回调函数。不传参数时，取消该节点所有的渲染状态变化指令下发监听回调。 |
 
+<a id="off-25"></a>
 ## off('textChange')
 
 ```TypeScript
@@ -724,8 +751,9 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'textChange' | 是 | The type of event to remove the listener for. Must be 'textChange'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TextChangeEventInfo> | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TextChangeEventInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
+<a id="off-26"></a>
 ## off('textChange')
 
 ```TypeScript
@@ -750,8 +778,9 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'textChange' | 是 | The type of event to remove the listener for. Must be 'textChange'. |
 | identity | observer.ObserverOptions | 是 | Identity options. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TextChangeEventInfo> | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TextChangeEventInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
+<a id="offnavdestinationsizechange"></a>
 ## offNavDestinationSizeChange
 
 ```TypeScript
@@ -774,8 +803,9 @@ offNavDestinationSizeChange(callback?: Callback<observer.NavDestinationInfo>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 否 | 需要被移除的回调函数。不传参数时，移除所有回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 否 | 需要被移除的回调函数。不传参数时，移除所有回调函数。 |
 
+<a id="offnavdestinationsizechangebyuniqueid"></a>
 ## offNavDestinationSizeChangeByUniqueId
 
 ```TypeScript
@@ -798,9 +828,10 @@ offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Cal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| navigationUniqueId | number | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过 [queryNavigationInfo](../arkts-components/arkts-arkui-common-basecustomcomponent-c.md#querynavigationinfo-1)获取。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 否 | 需要被移除的回调函数。不传参数时，移除所有指定了相同navigationUniqueId的回调函数。 |
+| navigationUniqueId | number | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过 [queryNavigationInfo](../arkts-components/arkts-arkui-basecustomcomponent-c.md#querynavigationinfo-1)获取。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 否 | 需要被移除的回调函数。不传参数时，移除所有指定了相同navigationUniqueId的回调函数。 |
 
+<a id="offrouterpagesizechange"></a>
 ## offRouterPageSizeChange
 
 ```TypeScript
@@ -823,8 +854,9 @@ offRouterPageSizeChange(callback?: Callback<observer.RouterPageInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.RouterPageInfo> | 否 | 需要被移除的回调函数。不传参数时，移除所有回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.RouterPageInfo&gt; | 否 | 需要被移除的回调函数。不传参数时，移除所有回调函数。 |
 
+<a id="offswipercontentupdate"></a>
 ## offSwiperContentUpdate
 
 ```TypeScript
@@ -847,8 +879,9 @@ offSwiperContentUpdate(callback?: Callback<SwiperContentInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<SwiperContentInfo> | 否 | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;SwiperContentInfo&gt; | 否 | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
 
+<a id="offswipercontentupdate-1"></a>
 ## offSwiperContentUpdate
 
 ```TypeScript
@@ -872,8 +905,9 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback<Swi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | observer.ObserverOptions | 是 | 指定监听的Swiper组件信息。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<SwiperContentInfo> | 否 | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;SwiperContentInfo&gt; | 否 | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
 
+<a id="on"></a>
 ## on('navDestinationUpdate')
 
 ```TypeScript
@@ -896,8 +930,9 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | Event type.The value is fixed at **'navDestinationUpdate'**, which indicates the state change event<br>of the **NavDestination** component. |
 | options | { navigationId: ResourceStr } | 是 | ID of the target **NavDestination** component. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 是 | Callback used to return the current<br>state of the **NavDestination** component. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 是 | Callback used to return the current<br>state of the **NavDestination** component. |
 
+<a id="on-1"></a>
 ## on('navDestinationUpdate')
 
 ```TypeScript
@@ -921,8 +956,9 @@ Subscribes to status changes of this **NavDestination** component.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | Event type.The value is fixed at **'navDestinationUpdate'**,<br>which indicates the state change event of the **NavDestination** component. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 是 | Callback used to return the current state of<br>the **NavDestination** component. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 是 | Callback used to return the current state of<br>the **NavDestination** component. |
 
+<a id="on-2"></a>
 ## on('navDestinationUpdateByUniqueId')
 
 ```TypeScript
@@ -947,8 +983,9 @@ Registers a callback function to be called when the navigation destination is up
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdateByUniqueId' | 是 | The type of event to listen for. Must be 'navDestinationUpdateByUniqueId'. |
 | navigationUniqueId | number | 是 | The uniqueId of the navigation. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 是 | The callback function to be called when the navigation destination is updated. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 是 | The callback function to be called when the navigation destination is updated. |
 
+<a id="on-3"></a>
 ## on('scrollEvent')
 
 ```TypeScript
@@ -973,8 +1010,9 @@ Registers a callback function to be called when the scroll event start or stop.
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
 | options | observer.ObserverOptions | 是 | The options object. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.ScrollEventInfo> | 是 | The callback function to be called when the scroll event start or stop. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll event start or stop. |
 
+<a id="on-4"></a>
 ## on('scrollEvent')
 
 ```TypeScript
@@ -998,8 +1036,9 @@ Registers a callback function to be called when the scroll event start or stop.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.ScrollEventInfo> | 是 | The callback function to be called when the scroll event start or stop. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll event start or stop. |
 
+<a id="on-5"></a>
 ## on('routerPageUpdate')
 
 ```TypeScript
@@ -1023,8 +1062,9 @@ Unsubscribes to state changes of the page in the router.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'routerPageUpdate' | 是 | Event type.<br>The value is fixed at 'routerPageUpdate', which indicates the state change event of the page in the router. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.RouterPageInfo> | 是 | Callback to be unregistered. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.RouterPageInfo&gt; | 是 | Callback to be unregistered. |
 
+<a id="on-6"></a>
 ## on('densityUpdate')
 
 ```TypeScript
@@ -1048,8 +1088,9 @@ on(type: 'densityUpdate', callback: Callback<observer.DensityInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'densityUpdate' | 是 | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.DensityInfo> | 是 | 回调函数。携带[DensityInfo](arkts-arkui-uiobserver-densityinfo-c.md)，返回变化后的屏幕像素密度。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.DensityInfo&gt; | 是 | 回调函数。携带[DensityInfo](arkts-arkui-uiobserver-densityinfo-c.md)，返回变化后的屏幕像素密度。 |
 
+<a id="on-7"></a>
 ## on('willDraw')
 
 ```TypeScript
@@ -1073,8 +1114,9 @@ on(type: 'willDraw', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'willDraw' | 是 | 监听事件，固定为'willDraw'，即是否将要绘制。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
+<a id="on-8"></a>
 ## on('didLayout')
 
 ```TypeScript
@@ -1098,8 +1140,9 @@ on(type: 'didLayout', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'didLayout' | 是 | 监听事件，固定为'didLayout'，即是否布局完成。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
+<a id="on-9"></a>
 ## on('navDestinationSwitch')
 
 ```TypeScript
@@ -1132,8 +1175,9 @@ Registers a callback function to be called when the navigation switched to a new
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | The type of event to listen for. Must be 'navDestinationSwitch'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationSwitchInfo> | 是 | The callback function to be called when the navigation switched to a new navDestination. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationSwitchInfo&gt; | 是 | The callback function to be called when the navigation switched to a new navDestination. |
 
+<a id="on-10"></a>
 ## on('navDestinationSwitch')
 
 ```TypeScript
@@ -1170,8 +1214,9 @@ Registers a callback function to be called when the navigation switched to a new
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | The type of event to listen for. Must be 'navDestinationSwitch'. |
 | observerOptions | observer.NavDestinationSwitchObserverOptions | 是 | Options. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationSwitchInfo> | 是 | The callback function to be called when the navigation switched to a new navDestination. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationSwitchInfo&gt; | 是 | The callback function to be called when the navigation switched to a new navDestination. |
 
+<a id="on-11"></a>
 ## on('willClick')
 
 ```TypeScript
@@ -1197,6 +1242,7 @@ Registers a callback function to be called before clickEvent is called.
 | type | 'willClick' | 是 | The type of event to listen for. |
 | callback | [ClickEventListenerCallback](arkts-arkui-clickeventlistenercallback-t.md) | 是 | The callback function to be called when the clickEvent will be trigger or after. |
 
+<a id="on-12"></a>
 ## on('didClick')
 
 ```TypeScript
@@ -1222,6 +1268,7 @@ Registers a callback function to be called after clickEvent is called.
 | type | 'didClick' | 是 | The type of event to listen for. |
 | callback | [ClickEventListenerCallback](arkts-arkui-clickeventlistenercallback-t.md) | 是 | The callback function to be called when the clickEvent will be trigger or after. |
 
+<a id="on-13"></a>
 ## on('willClick')
 
 ```TypeScript
@@ -1247,6 +1294,7 @@ Registers a callback function to be called before tapGesture is called.
 | type | 'willClick' | 是 | The type of event to listen for. |
 | callback | [GestureEventListenerCallback](arkts-arkui-gestureeventlistenercallback-t.md) | 是 | The callback function to be called when the clickEvent will be trigger or after. |
 
+<a id="on-14"></a>
 ## on('didClick')
 
 ```TypeScript
@@ -1272,13 +1320,14 @@ Registers a callback function to be called after tapGesture is called.
 | type | 'didClick' | 是 | The type of event to listen for. |
 | callback | [GestureEventListenerCallback](arkts-arkui-gestureeventlistenercallback-t.md) | 是 | The callback function to be called when the clickEvent will be trigger or after. |
 
+<a id="on-15"></a>
 ## on('beforePanStart')
 
 ```TypeScript
 on(type: 'beforePanStart', callback: PanListenerCallback): void
 ```
 
-监听Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件，在[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+监听Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件，在[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
 **起始版本：** 19
 
@@ -1294,16 +1343,17 @@ on(type: 'beforePanStart', callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'beforePanStart' | 是 | 监听事件，固定为'beforePanStart'，用于监听Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行前的指令下发情况，所注册回调将于Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件触发前触发。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](arkts-arkui-gesture-gestureevent-i.md)，[GestureRecognizer](arkts-arkui-gesture-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
+| type | 'beforePanStart' | 是 | 监听事件，固定为'beforePanStart'，用于监听Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行前的指令下发情况，所注册回调将于Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件触发前触发。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](arkts-arkui-gestureevent-i.md)，[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
 
+<a id="on-16"></a>
 ## on('beforePanEnd')
 
 ```TypeScript
 on(type: 'beforePanEnd', callback: PanListenerCallback): void
 ```
 
-监听Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发情况，在[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+监听Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发情况，在[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
 **起始版本：** 19
 
@@ -1319,16 +1369,17 @@ on(type: 'beforePanEnd', callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'beforePanEnd' | 是 | 监听事件，固定为'beforePanEnd'，用于监听Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发情况，所注册回调将于Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件触发前触发。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](arkts-arkui-gesture-gestureevent-i.md)，[GestureRecognizer](arkts-arkui-gesture-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
+| type | 'beforePanEnd' | 是 | 监听事件，固定为'beforePanEnd'，用于监听Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发情况，所注册回调将于Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件触发前触发。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](arkts-arkui-gestureevent-i.md)，[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
 
+<a id="on-17"></a>
 ## on('afterPanStart')
 
 ```TypeScript
 on(type: 'afterPanStart', callback: PanListenerCallback): void
 ```
 
-监听Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发情况，在[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+监听Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发情况，在[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
 **起始版本：** 19
 
@@ -1344,16 +1395,17 @@ on(type: 'afterPanStart', callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'afterPanStart' | 是 | 监听事件，固定为'afterPanStart'，用于监听Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionStart](arkts-arkui-gesture-pangestureinterface-i.md#onactionstart-1)事件触发后触发。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](arkts-arkui-gesture-gestureevent-i.md)，[GestureRecognizer](arkts-arkui-gesture-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
+| type | 'afterPanStart' | 是 | 监听事件，固定为'afterPanStart'，用于监听Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件触发后触发。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](arkts-arkui-gestureevent-i.md)，[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
 
+<a id="on-18"></a>
 ## on('afterPanEnd')
 
 ```TypeScript
 on(type: 'afterPanEnd', callback: PanListenerCallback): void
 ```
 
-监听Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发情况，在[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+监听Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发情况，在[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
 **起始版本：** 19
 
@@ -1369,9 +1421,10 @@ on(type: 'afterPanEnd', callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'afterPanEnd' | 是 | 监听事件，固定为'afterPanEnd'，用于监听Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionEnd](arkts-arkui-gesture-pangestureinterface-i.md#onactionend-1)事件触发后触发。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](arkts-arkui-gesture-gestureevent-i.md)，[GestureRecognizer](arkts-arkui-gesture-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
+| type | 'afterPanEnd' | 是 | 监听事件，固定为'afterPanEnd'，用于监听Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onactionend-1)事件触发后触发。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](arkts-arkui-gestureevent-i.md)，[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
 
+<a id="on-19"></a>
 ## on('tabContentUpdate')
 
 ```TypeScript
@@ -1396,8 +1449,9 @@ Registers a callback function to be called when the tabContent is showed or hidd
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | The type of event to listen for. Must be 'tabContentUpdate'. |
 | options | observer.ObserverOptions | 是 | The options object. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TabContentInfo> | 是 | The callback function to be called when the tabContent show or hide. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TabContentInfo&gt; | 是 | The callback function to be called when the tabContent show or hide. |
 
+<a id="on-20"></a>
 ## on('tabContentUpdate')
 
 ```TypeScript
@@ -1421,8 +1475,9 @@ Registers a callback function to be called when the tabContent is showed or hidd
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | The type of event to listen for. Must be 'tabContentUpdate'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TabContentInfo> | 是 | The callback function to be called when the tabContent is showed or hidden. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TabContentInfo&gt; | 是 | The callback function to be called when the tabContent is showed or hidden. |
 
+<a id="on-21"></a>
 ## on('tabChange')
 
 ```TypeScript
@@ -1447,8 +1502,9 @@ on(type: 'tabChange', config: observer.ObserverOptions, callback: Callback<obser
 | --- | --- | --- | --- |
 | type | 'tabChange' | 是 | 要监听的事件类型。必须是 'tabChange'。 |
 | config | observer.ObserverOptions | 是 | 选项对象。包含监听的tabs组件ID。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TabContentInfo> | 是 | 回调函数，当 tabContent 显示或隐藏时被调用。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TabContentInfo&gt; | 是 | 回调函数，当 tabContent 显示或隐藏时被调用。 |
 
+<a id="on-22"></a>
 ## on('tabChange')
 
 ```TypeScript
@@ -1472,8 +1528,9 @@ on(type: 'tabChange', callback: Callback<observer.TabContentInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'tabChange' | 是 | 要监听的事件类型。必须是 'tabChange'。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TabContentInfo> | 是 | 回调函数，当 tabContent 显示或隐藏时调用。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TabContentInfo&gt; | 是 | 回调函数，当 tabContent 显示或隐藏时调用。 |
 
+<a id="on-23"></a>
 ## on('windowSizeLayoutBreakpointChange')
 
 ```TypeScript
@@ -1497,8 +1554,9 @@ on(type: 'windowSizeLayoutBreakpointChange', callback: Callback<observer.WindowS
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowSizeLayoutBreakpointChange' | 是 | 监听事件，固定为'windowSizeLayoutBreakpointChange'，用于监听窗口尺寸布局断点发生改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.WindowSizeLayoutBreakpointInfo> | 是 | 回调函数。携带WindowSizeLayoutBreakpointinfo，包含窗口宽度和高度所在的布局断点枚举。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.WindowSizeLayoutBreakpointInfo&gt; | 是 | 回调函数。携带WindowSizeLayoutBreakpointinfo，包含窗口宽度和高度所在的布局断点枚举。 |
 
+<a id="on-24"></a>
 ## on('nodeRenderState')
 
 ```TypeScript
@@ -1535,6 +1593,7 @@ on(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback: NodeRenderStat
 | --- | --- |
 | [161001](../errorcode-node-render-monitor.md#161001-监听渲染状态的节点数超过限制) | The count of nodes monitoring render state is over the limitation. |
 
+<a id="on-25"></a>
 ## on('textChange')
 
 ```TypeScript
@@ -1558,8 +1617,9 @@ Registers a callback function to be called when text field's content is changed.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'textChange' | 是 | The type of event to listen for. Must be 'textChange'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TextChangeEventInfo> | 是 | The callback function to be called when text field's content is changed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TextChangeEventInfo&gt; | 是 | The callback function to be called when text field's content is changed. |
 
+<a id="on-26"></a>
 ## on('textChange')
 
 ```TypeScript
@@ -1584,8 +1644,9 @@ Registers a callback function to be called when text field's content is changed.
 | --- | --- | --- | --- |
 | type | 'textChange' | 是 | The type of event to listen for. Must be 'textChange'. |
 | identity | observer.ObserverOptions | 是 | Identity options. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.TextChangeEventInfo> | 是 | The callback function to be called when the text field's content is changed. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.TextChangeEventInfo&gt; | 是 | The callback function to be called when the text field's content is changed. |
 
+<a id="onnavdestinationsizechange"></a>
 ## onNavDestinationSizeChange
 
 ```TypeScript
@@ -1608,8 +1669,9 @@ onNavDestinationSizeChange(callback: Callback<observer.NavDestinationInfo>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 是 | 回调函数。携带NavDestinationInfo，返回NavDestination的信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 是 | 回调函数。携带NavDestinationInfo，返回NavDestination的信息。 |
 
+<a id="onnavdestinationsizechangebyuniqueid"></a>
 ## onNavDestinationSizeChangeByUniqueId
 
 ```TypeScript
@@ -1632,9 +1694,10 @@ onNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback: Callb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| navigationUniqueId | number | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](../arkts-components/arkts-arkui-common-basecustomcomponent-c.md#querynavigationinfo-1)获取。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.NavDestinationInfo> | 是 | Callback to be removed. If no parameter is passed,all callbacks with the same **navigationUniqueId** setting are removed. |
+| navigationUniqueId | number | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](../arkts-components/arkts-arkui-basecustomcomponent-c.md#querynavigationinfo-1)获取。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.NavDestinationInfo&gt; | 是 | Callback to be removed. If no parameter is passed,all callbacks with the same **navigationUniqueId** setting are removed. |
 
+<a id="onrouterpagesizechange"></a>
 ## onRouterPageSizeChange
 
 ```TypeScript
@@ -1657,8 +1720,9 @@ onRouterPageSizeChange(callback: Callback<observer.RouterPageInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<observer.RouterPageInfo> | 是 | 回调函数。携带RouterPageInfo，返回Router页面的信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;observer.RouterPageInfo&gt; | 是 | 回调函数。携带RouterPageInfo，返回Router页面的信息。 |
 
+<a id="onswipercontentupdate"></a>
 ## onSwiperContentUpdate
 
 ```TypeScript
@@ -1681,8 +1745,9 @@ onSwiperContentUpdate(callback: Callback<SwiperContentInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<SwiperContentInfo> | 是 | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;SwiperContentInfo&gt; | 是 | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。 |
 
+<a id="onswipercontentupdate-1"></a>
 ## onSwiperContentUpdate
 
 ```TypeScript
@@ -1706,8 +1771,9 @@ onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback<Swipe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | observer.ObserverOptions | 是 | 指定监听的Swiper组件信息。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<SwiperContentInfo> | 是 | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;SwiperContentInfo&gt; | 是 | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。 |
 
+<a id="removeglobalgesturelistener"></a>
 ## removeGlobalGestureListener
 
 ```TypeScript

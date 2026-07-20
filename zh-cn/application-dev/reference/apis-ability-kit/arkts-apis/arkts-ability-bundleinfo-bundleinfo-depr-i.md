@@ -22,9 +22,9 @@ readonly abilityInfos: Array<AbilityInfo>
 
 Ability的配置信息
 
-通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-3)接口时，传入GET_BUNDLE_WITH_ABILITIES获取。
+通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-1)接口时，传入GET_BUNDLE_WITH_ABILITIES获取。
 
-**类型：** Array<AbilityInfo>
+**类型：** Array&lt;AbilityInfo&gt;
 
 **默认值：** Obtains configuration information about an ability
 
@@ -171,7 +171,7 @@ readonly hapModuleInfos: Array<HapModuleInfo>
 
 模块的配置信息。
 
-**类型：** Array<HapModuleInfo>
+**类型：** Array&lt;HapModuleInfo&gt;
 
 **默认值：** Obtains configuration information about a module
 
@@ -299,9 +299,9 @@ readonly reqPermissionDetails: Array<ReqPermissionDetail>
 
 应用运行时需向系统申请的权限集合的详细信息
 
-通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-3)接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
+通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-1)接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
 
-**类型：** Array<ReqPermissionDetail>
+**类型：** Array&lt;ReqPermissionDetail&gt;
 
 **默认值：** Indicates the required permissions details defined in file config.json
 
@@ -323,7 +323,7 @@ readonly reqPermissionStates: Array<number>
 
 申请权限的授予状态。0表示申请成功，-1表示申请失败。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **默认值：** Indicates the grant status of required permissions
 
@@ -345,9 +345,9 @@ readonly reqPermissions: Array<string>
 
 应用运行时需向系统申请的权限集合
 
-通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-3)接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
+通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-1)接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** Indicates the required permissions name defined in file config.json
 

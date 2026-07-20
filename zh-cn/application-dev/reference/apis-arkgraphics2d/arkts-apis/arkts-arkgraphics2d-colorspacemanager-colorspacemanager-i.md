@@ -14,6 +14,7 @@
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 ```
 
+<a id="getcolorspacename"></a>
 ## getColorSpaceName
 
 ```TypeScript
@@ -53,6 +54,7 @@ try {
 
 ```
 
+<a id="getgamma"></a>
 ## getGamma
 
 ```TypeScript
@@ -92,6 +94,7 @@ try {
 
 ```
 
+<a id="getwhitepoint"></a>
 ## getWhitePoint
 
 ```TypeScript
@@ -110,7 +113,7 @@ getWhitePoint(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 返回色域白点值[x, y]。 |
+| Array&lt;number&gt; | 返回色域白点值[x, y]。 |
 
 **错误码：**
 

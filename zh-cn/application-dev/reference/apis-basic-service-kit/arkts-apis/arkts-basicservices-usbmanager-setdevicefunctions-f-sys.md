@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="setdevicefunctions"></a>
 ## setDeviceFunctions
 
 ```TypeScript
@@ -34,7 +35,7 @@ function setDeviceFunctions(funcs: FunctionType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。 |
 
 **错误码：**
 

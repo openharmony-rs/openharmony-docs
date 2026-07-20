@@ -20,11 +20,11 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | T | 是 | 回调函数调用时系统传入[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md)类型的参数。 |
+| info | T | 是 | 回调函数调用时系统传入[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md)类型的参数。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| U | 回调函数需要返回[RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md) \| void类型的返回值。 |
+| U | 回调函数需要返回[RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md) \| void类型的返回值。  |
 

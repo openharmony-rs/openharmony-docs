@@ -6,6 +6,7 @@
 import { dialogSession } from '@kit.AbilityKit';
 ```
 
+<a id="senddialogresult"></a>
 ## sendDialogResult
 
 ```TypeScript
@@ -36,7 +37,7 @@ function sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -49,6 +50,7 @@ function sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: 
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 
+<a id="senddialogresult-1"></a>
 ## sendDialogResult
 
 ```TypeScript
@@ -74,7 +76,7 @@ function sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: 
 | dialogSessionId | string | 是 | 用户请求会话ID。 |
 | targetWant | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 用户请求目标。 |
 | isAllowed | boolean | 是 | 是否允许拉起目标Ability。true表示允许，false表示不允许。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当发送用户请求成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当发送用户请求成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

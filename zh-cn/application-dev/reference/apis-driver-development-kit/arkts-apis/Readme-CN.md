@@ -7,12 +7,26 @@
   - [bindDevice](arkts-driverdevelopment-devicemanager-binddevice-f.md)
   - [bindDeviceDriver](arkts-driverdevelopment-devicemanager-binddevicedriver-f.md)
   - [bindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-binddriverwithdeviceid-f.md)
+  <!--Del-->
+  - [queryDeviceInfo(系统接口)](arkts-driverdevelopment-devicemanager-querydeviceinfo-f-sys.md)<!--DelEnd-->
   - [queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md)
+  <!--Del-->
+  - [queryDriverInfo(系统接口)](arkts-driverdevelopment-devicemanager-querydriverinfo-f-sys.md)<!--DelEnd-->
   - [unbindDevice](arkts-driverdevelopment-devicemanager-unbinddevice-f.md)
   - [unbindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md)
   - [Device](arkts-driverdevelopment-devicemanager-device-i.md)
+  <!--Del-->
+  - [DeviceInfo(系统接口)](arkts-driverdevelopment-devicemanager-deviceinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DriverInfo(系统接口)](arkts-driverdevelopment-devicemanager-driverinfo-i-sys.md)<!--DelEnd-->
   - [RemoteDeviceDriver](arkts-driverdevelopment-devicemanager-remotedevicedriver-i.md)
   - [USBDevice](arkts-driverdevelopment-devicemanager-usbdevice-i.md)
+  <!--Del-->
+  - [USBDeviceInfo(系统接口)](arkts-driverdevelopment-devicemanager-usbdeviceinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [USBDriverInfo(系统接口)](arkts-driverdevelopment-devicemanager-usbdriverinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [USBInterfaceDesc(系统接口)](arkts-driverdevelopment-devicemanager-usbinterfacedesc-i-sys.md)<!--DelEnd-->
   - [BusType](arkts-driverdevelopment-devicemanager-bustype-e.md)
 - application<!--arkts-driverdevelopmentkit-application-->
   - [DriverExtensionContext](arkts-driverextensioncontext.md)

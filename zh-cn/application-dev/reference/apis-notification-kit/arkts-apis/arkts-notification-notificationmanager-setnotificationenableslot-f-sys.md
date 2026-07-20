@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setnotificationenableslot"></a>
 ## setNotificationEnableSlot
 
 ```TypeScript
@@ -46,7 +47,7 @@ function setNotificationEnableSlot(
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 应用的包信息。 |
 | type | [SlotType](arkts-notification-notificationmanager-slottype-e-sys.md) | 是 | 指定渠道类型。 |
 | enable | boolean | 是 | 使能状态（true：使能，false：禁止）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设置渠道使能回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置渠道使能回调函数。 |
 
 **错误码：**
 
@@ -84,6 +85,7 @@ notificationManager.setNotificationEnableSlot(
 ```
 
 
+<a id="setnotificationenableslot-1"></a>
 ## setNotificationEnableSlot
 
 ```TypeScript
@@ -128,7 +130,7 @@ function setNotificationEnableSlot(
 | type | [SlotType](arkts-notification-notificationmanager-slottype-e-sys.md) | 是 | 指定渠道类型。 |
 | enable | boolean | 是 | 使能状态（true：使能，false：禁止）。 |
 | isForceControl | boolean | 是 | 渠道开关是否受通知授权开关影响（false：受影响，true：不受影响）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设置渠道使能回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置渠道使能回调函数。 |
 
 **错误码：**
 
@@ -145,6 +147,7 @@ function setNotificationEnableSlot(
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
 
+<a id="setnotificationenableslot-2"></a>
 ## setNotificationEnableSlot
 
 ```TypeScript
@@ -176,7 +179,7 @@ function setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable:
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

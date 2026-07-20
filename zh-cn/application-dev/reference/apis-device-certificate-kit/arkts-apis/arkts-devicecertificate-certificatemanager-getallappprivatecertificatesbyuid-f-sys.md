@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="getallappprivatecertificatesbyuid"></a>
 ## getAllAppPrivateCertificatesByUid
 
 ```TypeScript
@@ -36,7 +37,7 @@ function getAllAppPrivateCertificatesByUid(appUid: number) : Promise<CMResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CMResult> | Promise对象，返回获取指定应用的所有私有凭据的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的credentialDetailList属性。<br>**说明**：私有凭据个数为0时，返回CMResult为undefined。 |
+| Promise&lt;CMResult&gt; | Promise对象，返回获取指定应用的所有私有凭据的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的credentialDetailList属性。<br>**说明**：私有凭据个数为0时，返回CMResult为undefined。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
+<a id="getpermissionusedtypeinfos"></a>
 ## getPermissionUsedTypeInfos
 
 ```TypeScript
@@ -41,7 +42,7 @@ function getPermissionUsedTypeInfos(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<PermissionUsedTypeInfo>> | Promise used to return the list of permission access type information. |
+| Promise&lt;Array&lt;PermissionUsedTypeInfo&gt;&gt; | Promise used to return the list of permission access type information. |
 
 **错误码：**
 

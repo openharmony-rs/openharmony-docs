@@ -14,6 +14,7 @@
 import { audioHaptic } from '@kit.AudioKit';
 ```
 
+<a id="createplayer"></a>
 ## createPlayer
 
 ```TypeScript
@@ -41,7 +42,7 @@ createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise<AudioHapti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AudioHapticPlayer> | Promise对象，返回创建的音振播放器。 |
+| Promise&lt;AudioHapticPlayer&gt; | Promise对象，返回创建的音振播放器。 |
 
 **错误码：**
 
@@ -72,6 +73,7 @@ audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.Au
 
 ```
 
+<a id="registersource"></a>
 ## registerSource
 
 ```TypeScript
@@ -101,7 +103,7 @@ registerSource(audioUri: string, hapticUri: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
+| Promise&lt;number&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
 
 **错误码：**
 
@@ -127,6 +129,7 @@ audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: numb
 
 ```
 
+<a id="registersourcefromfd"></a>
 ## registerSourceFromFd
 
 ```TypeScript
@@ -156,7 +159,7 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
+| Promise&lt;number&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
 
 **示例：**
 
@@ -191,6 +194,7 @@ audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: 
 
 ```
 
+<a id="setaudiolatencymode"></a>
 ## setAudioLatencyMode
 
 ```TypeScript
@@ -232,6 +236,7 @@ audioHapticManagerInstance.setAudioLatencyMode(id, latencyMode);
 
 ```
 
+<a id="setstreamusage"></a>
 ## setStreamUsage
 
 ```TypeScript
@@ -274,6 +279,7 @@ audioHapticManagerInstance.setStreamUsage(id, usage);
 
 ```
 
+<a id="unregistersource"></a>
 ## unregisterSource
 
 ```TypeScript
@@ -302,7 +308,7 @@ unregisterSource(id: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getallappprovisioninfo"></a>
 ## getAllAppProvisionInfo
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getAllAppProvisionInfo(userId?: number): Promise<Array<AppProvisionInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AppProvisionInfo>> | Promise对象，返回应用的provision配置文件信息。 |
+| Promise&lt;Array&lt;AppProvisionInfo&gt;&gt; | Promise对象，返回应用的provision配置文件信息。 |
 
 **错误码：**
 

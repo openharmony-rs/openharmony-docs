@@ -6,6 +6,7 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="setkeepaliveforbundle"></a>
 ## setKeepAliveForBundle
 
 ```TypeScript
@@ -16,7 +17,7 @@ function setKeepAliveForBundle(bundleName: string, userId: number, enable: boole
 
 > **说明：**  
 >  
-> - 应用如果需要支持保活，其[module.json5配置文件](../../../../quick-start/module-configuration-file.md)中的mainElement必须是UIAbility。只有当  
+> - 应用如果需要支持保活，其[module.json5配置文件](docroot://quick-start/module-configuration-file.md)中的mainElement必须是UIAbility。只有当  
 > mainElement启动后，系统才会执行应用保活操作。  
 >  
 > - 在2in1设备上，被保活的应用需要在启动后5秒内添加至状态栏。否则，系统将取消该应用的保活设置，并杀死保活重启的进程。  
@@ -45,7 +46,7 @@ function setKeepAliveForBundle(bundleName: string, userId: number, enable: boole
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

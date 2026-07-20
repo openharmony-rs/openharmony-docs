@@ -100,7 +100,7 @@ exclusionList?: Array<string>
 
 Ĭ��Ϊ�����顣
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 24
 
@@ -182,7 +182,7 @@ objectUniqueIDs?: Array<number>
 
 Ĭ��Ϊ�����顣
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 24
 

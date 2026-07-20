@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setpriorityenabledbybundles"></a>
 ## setPriorityEnabledByBundles
 
 ```TypeScript
@@ -30,13 +31,13 @@ function setPriorityEnabledByBundles(switches: Map<BundleOption, boolean>): Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| switches | [Map](../../apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)<BundleOption, boolean> | 是 | 应用通知优先级开关状态的键值对集合。 |
+| switches | Map&lt;BundleOption, boolean&gt; | 是 | 应用通知优先级开关状态的键值对集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

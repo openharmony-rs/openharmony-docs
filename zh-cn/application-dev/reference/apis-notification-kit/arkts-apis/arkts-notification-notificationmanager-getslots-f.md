@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getslots"></a>
 ## getSlots
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getSlots(callback: AsyncCallback<Array<NotificationSlot>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<NotificationSlot>> | 是 | 回调函数。当获取通知渠道成功，err为undefined，data为获取到的NotificationSlot数组，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;NotificationSlot&gt;&gt; | 是 | 回调函数。当获取通知渠道成功，err为undefined，data为获取到的NotificationSlot数组，否则为错误对象。 |
 
 **错误码：**
 
@@ -55,6 +56,7 @@ notificationManager.getSlots(getSlotsCallback);
 ```
 
 
+<a id="getslots-1"></a>
 ## getSlots
 
 ```TypeScript
@@ -75,7 +77,7 @@ function getSlots(): Promise<Array<NotificationSlot>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<NotificationSlot>> | Promise对象，返回通知渠道对象。 |
+| Promise&lt;Array&lt;NotificationSlot&gt;&gt; | Promise对象，返回通知渠道对象。 |
 
 **错误码：**
 

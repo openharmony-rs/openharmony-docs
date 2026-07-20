@@ -18,6 +18,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getavplaybackstate"></a>
 ## getAVPlaybackState
 
 ```TypeScript
@@ -36,7 +37,7 @@ getAVPlaybackState(callback: AsyncCallback<AVPlaybackState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AVPlaybackState> | 是 | 回调函数，返回远端播放状态。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVPlaybackState&gt; | 是 | 回调函数，返回远端播放状态。 |
 
 **错误码：**
 
@@ -44,6 +45,7 @@ getAVPlaybackState(callback: AsyncCallback<AVPlaybackState>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="getavplaybackstate-1"></a>
 ## getAVPlaybackState
 
 ```TypeScript
@@ -64,7 +66,7 @@ getAVPlaybackState(): Promise<AVPlaybackState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVPlaybackState> | Promise对象。返回远端播放状态。 |
+| Promise&lt;AVPlaybackState&gt; | Promise对象。返回远端播放状态。 |
 
 **错误码：**
 
@@ -72,6 +74,7 @@ getAVPlaybackState(): Promise<AVPlaybackState>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="getcurrentitem"></a>
 ## getCurrentItem
 
 ```TypeScript
@@ -90,7 +93,7 @@ getCurrentItem(callback: AsyncCallback<AVQueueItem>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AVQueueItem> | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVQueueItem&gt; | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -98,6 +101,7 @@ getCurrentItem(callback: AsyncCallback<AVQueueItem>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="getcurrentitem-1"></a>
 ## getCurrentItem
 
 ```TypeScript
@@ -118,7 +122,7 @@ getCurrentItem(): Promise<AVQueueItem>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVQueueItem> | Promise对象，返回当前的播放资源，否则返回错误对象。 |
+| Promise&lt;AVQueueItem&gt; | Promise对象，返回当前的播放资源，否则返回错误对象。 |
 
 **错误码：**
 
@@ -126,6 +130,7 @@ getCurrentItem(): Promise<AVQueueItem>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="getrecommendedresolutionlevel"></a>
 ## getRecommendedResolutionLevel
 
 ```TypeScript
@@ -152,7 +157,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise<ResolutionLevel
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ResolutionLevel> | Promise对象。返回远端设备推荐的分辨率。 |
+| Promise&lt;ResolutionLevel&gt; | Promise对象。返回远端设备推荐的分辨率。 |
 
 **错误码：**
 
@@ -160,6 +165,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise<ResolutionLevel
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="getsupporteddecoders"></a>
 ## getSupportedDecoders
 
 ```TypeScript
@@ -180,7 +186,7 @@ getSupportedDecoders(): Promise<Array<DecoderType>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<DecoderType>> | Promise对象。返回远端设备所支持的解码能力列表。 |
+| Promise&lt;Array&lt;DecoderType&gt;&gt; | Promise对象。返回远端设备所支持的解码能力列表。 |
 
 **错误码：**
 
@@ -188,6 +194,7 @@ getSupportedDecoders(): Promise<Array<DecoderType>>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="getsupportedhdrcapabilities"></a>
 ## getSupportedHdrCapabilities
 
 ```TypeScript
@@ -208,7 +215,7 @@ getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<hdrCapability.HDRFormat>> | Promise对象。返回远端设备所支持的HDR能力。 |
+| Promise&lt;Array&lt;hdrCapability.HDRFormat&gt;&gt; | Promise对象。返回远端设备所支持的HDR能力。 |
 
 **错误码：**
 
@@ -216,6 +223,7 @@ getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="getsupportedplayspeeds"></a>
 ## getSupportedPlaySpeeds
 
 ```TypeScript
@@ -236,7 +244,7 @@ getSupportedPlaySpeeds(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | Promise对象。返回远端设备所支持的倍速播放列表。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象。返回远端设备所支持的倍速播放列表。 |
 
 **错误码：**
 
@@ -244,6 +252,7 @@ getSupportedPlaySpeeds(): Promise<Array<number>>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="getvalidcommands"></a>
 ## getValidCommands
 
 ```TypeScript
@@ -262,7 +271,7 @@ getValidCommands(callback: AsyncCallback<Array<AVCastControlCommandType>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<AVCastControlCommandType>> | 是 | 回调函数。返回当前支持的命令。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AVCastControlCommandType&gt;&gt; | 是 | 回调函数。返回当前支持的命令。 |
 
 **错误码：**
 
@@ -270,6 +279,7 @@ getValidCommands(callback: AsyncCallback<Array<AVCastControlCommandType>>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<a id="getvalidcommands-1"></a>
 ## getValidCommands
 
 ```TypeScript
@@ -288,7 +298,7 @@ getValidCommands(): Promise<Array<AVCastControlCommandType>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AVCastControlCommandType>> | Promise对象，返回当前支持的命令。 |
+| Promise&lt;Array&lt;AVCastControlCommandType&gt;&gt; | Promise对象，返回当前支持的命令。 |
 
 **错误码：**
 
@@ -296,6 +306,7 @@ getValidCommands(): Promise<Array<AVCastControlCommandType>>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<a id="off"></a>
 ## off('playbackStateChange')
 
 ```TypeScript
@@ -317,7 +328,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playbackStateChange' | 是 |  |
-| callback | (state: AVPlaybackState) => void | 否 | 回调函数，参数state是变化后的播放状态。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (state: AVPlaybackState) =&gt; void | 否 | 回调函数，参数state是变化后的播放状态。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -326,6 +337,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -355,6 +367,7 @@ off(type: 'mediaItemChange'): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="off-2"></a>
 ## off
 
 ```TypeScript
@@ -384,6 +397,7 @@ off(type: 'playNext'): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="off-3"></a>
 ## off
 
 ```TypeScript
@@ -413,6 +427,7 @@ off(type: 'playPrevious'): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="off-4"></a>
 ## off('requestPlay')
 
 ```TypeScript
@@ -432,7 +447,7 @@ off(type: 'requestPlay', callback?: Callback<AVQueueItem>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'requestPlay' | 是 | 取消对应的监听事件，支持事件`'requestPlay'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVQueueItem> | 否 | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVQueueItem&gt; | 否 | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -441,6 +456,7 @@ off(type: 'requestPlay', callback?: Callback<AVQueueItem>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="off-5"></a>
 ## off('endOfStream')
 
 ```TypeScript
@@ -460,7 +476,7 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 取消对应的监听事件，支持事件`'endOfStream'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -469,6 +485,7 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="off-6"></a>
 ## off
 
 ```TypeScript
@@ -498,6 +515,7 @@ off(type: 'seekDone'): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="off-7"></a>
 ## off('validCommandChange')
 
 ```TypeScript
@@ -517,7 +535,7 @@ off(type: 'validCommandChange', callback?: Callback<Array<AVCastControlCommandTy
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'validCommandChange' | 是 | 取消对应的监听事件，支持事件`'validCommandChange'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<AVCastControlCommandType>> | 否 | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;AVCastControlCommandType&gt;&gt; | 否 | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -527,6 +545,7 @@ off(type: 'validCommandChange', callback?: Callback<Array<AVCastControlCommandTy
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
+<a id="off-8"></a>
 ## off
 
 ```TypeScript
@@ -561,6 +580,7 @@ avCastController.off('videoSizeChange');
 
 ```
 
+<a id="off-9"></a>
 ## off
 
 ```TypeScript
@@ -596,6 +616,7 @@ off(type: 'error'): void
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-不支持的规格) | Unsupport format. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="off-10"></a>
 ## off('castControlGenericError')
 
 ```TypeScript
@@ -625,6 +646,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
+<a id="off-11"></a>
 ## off('castControlIoError')
 
 ```TypeScript
@@ -654,6 +676,7 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
+<a id="off-12"></a>
 ## off('castControlParsingError')
 
 ```TypeScript
@@ -683,6 +706,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
+<a id="off-13"></a>
 ## off('castControlDecodingError')
 
 ```TypeScript
@@ -712,6 +736,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
+<a id="off-14"></a>
 ## off('castControlAudioRendererError')
 
 ```TypeScript
@@ -741,6 +766,7 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
+<a id="off-15"></a>
 ## off('castControlDrmError')
 
 ```TypeScript
@@ -770,6 +796,7 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
+<a id="off-16"></a>
 ## off('keyRequest')
 
 ```TypeScript
@@ -800,6 +827,7 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="off-17"></a>
 ## off('customDataChange')
 
 ```TypeScript
@@ -821,7 +849,7 @@ off(type: 'customDataChange', callback?: Callback<Record<string, Object>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'customDataChange' | 是 | 取消对应的监听事件，支持的事件是'customDataChange'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Record<string, Object>> | 否 | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Record&lt;string, Object&gt;&gt; | 否 | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
 
 **错误码：**
 
@@ -829,6 +857,7 @@ off(type: 'customDataChange', callback?: Callback<Record<string, Object>>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on"></a>
 ## on('playbackStateChange')
 
 ```TypeScript
@@ -852,8 +881,8 @@ on(type: 'playbackStateChange', filter: Array<keyof AVPlaybackState> | 'all', ca
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playbackStateChange' | 是 |  |
-| filter | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<keyof AVPlaybackState> \| 'all' | 是 | 'all'表示关注播放状态所有字段变化；Array&lt;keyof AVPlaybackState&gt;表示关注Array中的字段变化。 |
-| callback | (state: AVPlaybackState) => void | 是 | 回调函数，参数state是变化后的播放状态。 |
+| filter | Array&lt;keyof AVPlaybackState&gt; \| 'all' | 是 | 'all'表示关注播放状态所有字段变化；Array<keyof AVPlaybackState>表示关注Array中的字段变化。 |
+| callback | (state: AVPlaybackState) =&gt; void | 是 | 回调函数，参数state是变化后的播放状态。 |
 
 **错误码：**
 
@@ -862,6 +891,7 @@ on(type: 'playbackStateChange', filter: Array<keyof AVPlaybackState> | 'all', ca
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on-1"></a>
 ## on('mediaItemChange')
 
 ```TypeScript
@@ -885,7 +915,7 @@ on(type: 'mediaItemChange', callback: Callback<AVQueueItem>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'mediaItemChange' | 是 | 事件回调类型，支持事件`'mediaItemChange'`：当播放的媒体内容变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVQueueItem> | 是 | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVQueueItem&gt; | 是 | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。 |
 
 **错误码：**
 
@@ -894,6 +924,7 @@ on(type: 'mediaItemChange', callback: Callback<AVQueueItem>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on-2"></a>
 ## on('playNext')
 
 ```TypeScript
@@ -917,7 +948,7 @@ on(type: 'playNext', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playNext' | 是 | 事件回调类型，支持事件`'playNext'`：当播放下一首状态变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -926,6 +957,7 @@ on(type: 'playNext', callback: Callback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on-3"></a>
 ## on('playPrevious')
 
 ```TypeScript
@@ -949,7 +981,7 @@ on(type: 'playPrevious', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playPrevious' | 是 | 事件回调类型，支持事件`'playPrevious'`：当播放上一首状态变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -958,6 +990,7 @@ on(type: 'playPrevious', callback: Callback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on-4"></a>
 ## on('requestPlay')
 
 ```TypeScript
@@ -979,7 +1012,7 @@ on(type: 'requestPlay', callback: Callback<AVQueueItem>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'requestPlay' | 是 | 事件回调类型，支持事件`'requestPlay'`：当请求播放状态变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVQueueItem> | 是 | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVQueueItem&gt; | 是 | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -988,6 +1021,7 @@ on(type: 'requestPlay', callback: Callback<AVQueueItem>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on-5"></a>
 ## on('endOfStream')
 
 ```TypeScript
@@ -1009,7 +1043,7 @@ on(type: 'endOfStream', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 事件回调类型，支持事件`'endOfStream'`：当资源播放结束时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1018,6 +1052,7 @@ on(type: 'endOfStream', callback: Callback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on-6"></a>
 ## on('seekDone')
 
 ```TypeScript
@@ -1041,7 +1076,7 @@ on(type: 'seekDone', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'seekDone' | 是 | 事件回调类型，支持事件`'seekDone'`：当seek结束时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数，返回seek后播放的位置。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数，返回seek后播放的位置。 |
 
 **错误码：**
 
@@ -1050,6 +1085,7 @@ on(type: 'seekDone', callback: Callback<number>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on-7"></a>
 ## on('validCommandChange')
 
 ```TypeScript
@@ -1071,7 +1107,7 @@ on(type: 'validCommandChange', callback: Callback<Array<AVCastControlCommandType
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'validCommandChange' | 是 | 事件回调类型，支持事件`'validCommandChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<AVCastControlCommandType>> | 是 | 回调函数。参数commands是有效命令的集合。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;AVCastControlCommandType&gt;&gt; | 是 | 回调函数。参数commands是有效命令的集合。 |
 
 **错误码：**
 
@@ -1081,6 +1117,7 @@ on(type: 'validCommandChange', callback: Callback<Array<AVCastControlCommandType
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
+<a id="on-8"></a>
 ## on('videoSizeChange')
 
 ```TypeScript
@@ -1102,7 +1139,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'videoSizeChange' | 是 | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
-| callback | (width: number, height: number) => void | 是 | 回调函数。 |
+| callback | (width: number, height: number) =&gt; void | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -1121,6 +1158,7 @@ avCastController.on('videoSizeChange', (width: number, height: number) => {
 
 ```
 
+<a id="on-9"></a>
 ## on('error')
 
 ```TypeScript
@@ -1159,6 +1197,7 @@ on(type: 'error', callback: ErrorCallback): void
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-不支持的规格) | Unsupport format. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on-10"></a>
 ## on('castControlGenericError')
 
 ```TypeScript
@@ -1204,6 +1243,7 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 | [6611107](../errorcode-avsession.md#6611107-内存分配失败) | Allocation of memory failed. |
 | [6611108](../errorcode-avsession.md#6611108-不允许进行当前操作) | Operation is not allowed. |
 
+<a id="on-11"></a>
 ## on('castControlIoError')
 
 ```TypeScript
@@ -1252,6 +1292,7 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 | [6612106](../errorcode-avsession.md#6612106-资源使用频繁) | The number of times this content has been used as requested has reached the maximum allowed number of uses. |
 | [6612107](../errorcode-avsession.md#6612107-本端向远端发送资源包失败) | An error occurs when sending packet from source device to sink device. |
 
+<a id="on-12"></a>
 ## on('castControlParsingError')
 
 ```TypeScript
@@ -1288,6 +1329,7 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 | [6613003](../errorcode-avsession.md#6613003-不支持该媒体格式) | An error occurs when attempting to extract a file with an unsupported media container format or an unsupported media container feature. |
 | [6613004](../errorcode-avsession.md#6613004-媒体清单中不支持此功能) | Unsupported feature in the media manifest. |
 
+<a id="on-13"></a>
 ## on('castControlDecodingError')
 
 ```TypeScript
@@ -1325,6 +1367,7 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 | [6614004](../errorcode-avsession.md#6614004-所需解码的内容格式超出设备能力) | The format of the content to decode exceeds the capabilities of the device. |
 | [6614005](../errorcode-avsession.md#6614005-解码不支持的内容格式) | The format of the content to decode is not supported. |
 
+<a id="on-14"></a>
 ## on('castControlAudioRendererError')
 
 ```TypeScript
@@ -1359,6 +1402,7 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 | [6615001](../errorcode-avsession.md#6615001-音频渲染器初始化异常) | Initializing the audio renderer failed. |
 | [6615002](../errorcode-avsession.md#6615002-音频渲染器写数据异常) | The audio renderer fails to write data. |
 
+<a id="on-15"></a>
 ## on('castControlDrmError')
 
 ```TypeScript
@@ -1400,6 +1444,7 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 | [6616008](../errorcode-avsession.md#6616008-已过期的drm许可证被加载到打开的drm会话中) | The DRM license being loaded into the open DRM session has expired. |
 | [6616100](../errorcode-avsession.md#6616100-drm进程秘钥响应错误) | An error occurs when the DRM processes the key response. |
 
+<a id="on-16"></a>
 ## on('keyRequest')
 
 ```TypeScript
@@ -1432,6 +1477,7 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="on-17"></a>
 ## on('customDataChange')
 
 ```TypeScript
@@ -1453,7 +1499,7 @@ on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'customDataChange' | 是 | 事件回调类型，支持'customDataChange'事件。媒体提供方发送自定义数据时触发。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Record<string, Object>> | 是 | 回调函数，用于接收自定义数据。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Record&lt;string, Object&gt;&gt; | 是 | 回调函数，用于接收自定义数据。 |
 
 **错误码：**
 
@@ -1461,6 +1507,7 @@ on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="prepare"></a>
 ## prepare
 
 ```TypeScript
@@ -1480,7 +1527,7 @@ prepare(item: AVQueueItem, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | item | [AVQueueItem](arkts-avsession-avsession-avqueueitem-i.md) | 是 | 播放列表中单项的相关属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1490,6 +1537,7 @@ prepare(item: AVQueueItem, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<a id="prepare-1"></a>
 ## prepare
 
 ```TypeScript
@@ -1516,7 +1564,7 @@ prepare(item: AVQueueItem): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1526,6 +1574,7 @@ prepare(item: AVQueueItem): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<a id="processmediakeyresponse"></a>
 ## processMediaKeyResponse
 
 ```TypeScript
@@ -1547,13 +1596,13 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | assetId | string | 是 | 媒体ID。 |
-| response | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 许可证响应。 |
+| response | Uint8Array | 是 | 许可证响应。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，当处理许可证响应成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象，当处理许可证响应成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1562,6 +1611,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -1580,7 +1630,7 @@ release(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当命令执行成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令执行成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1588,6 +1638,7 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -1608,7 +1659,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，controller销毁成功，无结果返回，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象，controller销毁成功，无结果返回，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1616,6 +1667,7 @@ release(): Promise<void>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<a id="sendcontrolcommand"></a>
 ## sendControlCommand
 
 ```TypeScript
@@ -1635,7 +1687,7 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback<void>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | command | [AVCastControlCommand](arkts-avsession-avsession-avcastcontrolcommand-i.md) | 是 | 会话的相关命令和命令相关参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1646,6 +1698,7 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback<void>)
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<a id="sendcontrolcommand-1"></a>
 ## sendControlCommand
 
 ```TypeScript
@@ -1672,7 +1725,7 @@ sendControlCommand(command: AVCastControlCommand): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1683,6 +1736,7 @@ sendControlCommand(command: AVCastControlCommand): Promise<void>
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<a id="sendcustomdata"></a>
 ## sendCustomData
 
 ```TypeScript
@@ -1703,13 +1757,13 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record<string, Object> | 是 | 应用程序填充的自定义数据。 |
+| data | Record&lt;string, Object&gt; | 是 | 应用程序填充的自定义数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1717,6 +1771,7 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -1742,7 +1797,7 @@ start(item: AVQueueItem, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | item | [AVQueueItem](arkts-avsession-avsession-avqueueitem-i.md) | 是 | 播放列表中单项的相关属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1752,6 +1807,7 @@ start(item: AVQueueItem, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -1784,7 +1840,7 @@ start(item: AVQueueItem): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1794,6 +1850,7 @@ start(item: AVQueueItem): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<a id="update"></a>
 ## update
 
 ```TypeScript
@@ -1820,7 +1877,7 @@ update(item: AVQueueItem): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 通过promise回调成功 |
+| Promise&lt;void&gt; | 通过promise回调成功 |
 
 **错误码：**
 

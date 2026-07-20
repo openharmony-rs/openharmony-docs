@@ -31,7 +31,7 @@ add: (bundleName: string, userId: number) => void
 
 获取应用安装时的信息。
 
-**类型：** (bundleName: string, userId: number) => void
+**类型：** (bundleName: string, userId: number) =&gt; void
 
 **起始版本：** 8
 
@@ -55,7 +55,7 @@ remove: (bundleName: string, userId: number) => void
 
 获取应用卸载时的信息。
 
-**类型：** (bundleName: string, userId: number) => void
+**类型：** (bundleName: string, userId: number) =&gt; void
 
 **起始版本：** 8
 
@@ -79,7 +79,7 @@ update: (bundleName: string, userId: number) => void
 
 获取应用更新时的信息。
 
-**类型：** (bundleName: string, userId: number) => void
+**类型：** (bundleName: string, userId: number) =&gt; void
 
 **起始版本：** 8
 

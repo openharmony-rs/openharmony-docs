@@ -6,6 +6,7 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
+<a id="supportkeys"></a>
 ## supportKeys
 
 ```TypeScript
@@ -25,8 +26,8 @@ function supportKeys(deviceId: number, keys: Array<KeyCode>, callback: AsyncCall
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | number | 是 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| keys | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<KeyCode> | 是 | 需要查询的键值，最多支持5个按键查询。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<boolean>> | 是 | 回调函数。当查询成功，err为undefined，data为按键支持查询结果（数组元素与keys参数一一对应，true表示支持，false表示不支持）；否则为错误对象。 |
+| keys | Array&lt;KeyCode&gt; | 是 | 需要查询的键值，最多支持5个按键查询。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;boolean&gt;&gt; | 是 | 回调函数。当查询成功，err为undefined，data为按键支持查询结果（数组元素与keys参数一一对应，true表示支持，false表示不支持）；否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ struct Index {
 ```
 
 
+<a id="supportkeys-1"></a>
 ## supportKeys
 
 ```TypeScript
@@ -87,13 +89,13 @@ function supportKeys(deviceId: number, keys: Array<KeyCode>): Promise<Array<bool
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | number | 是 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| keys | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<KeyCode> | 是 | 需要查询的键值，最多支持查询5个按键。 |
+| keys | Array&lt;KeyCode&gt; | 是 | 需要查询的键值，最多支持查询5个按键。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<boolean>> | Promise对象，返回查询结果。true表示支持，false表示不支持。 |
+| Promise&lt;Array&lt;boolean&gt;&gt; | Promise对象，返回查询结果。true表示支持，false表示不支持。 |
 
 **错误码：**
 

@@ -40,7 +40,7 @@ value: Uint8Array | string | number | boolean
 
 值。
 
-**类型：** Uint8Array | string | number | boolean
+**类型：** Uint8Array \| string \| number \| boolean
 
 **起始版本：** 7
 

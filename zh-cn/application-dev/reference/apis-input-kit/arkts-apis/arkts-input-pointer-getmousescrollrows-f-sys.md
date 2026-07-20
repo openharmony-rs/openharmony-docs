@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="getmousescrollrows"></a>
 ## getMouseScrollRows
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getMouseScrollRows(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当获取鼠标滚动行数成功，err为undefined，number为获取到的滚动行数；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取鼠标滚动行数成功，err为undefined，number为获取到的滚动行数；否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ struct Index {
 ```
 
 
+<a id="getmousescrollrows-1"></a>
 ## getMouseScrollRows
 
 ```TypeScript
@@ -88,7 +90,7 @@ function getMouseScrollRows(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回鼠标滚动行数。 |
+| Promise&lt;number&gt; | Promise对象，返回鼠标滚动行数。 |
 
 **错误码：**
 

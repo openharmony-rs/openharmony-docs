@@ -1,6 +1,6 @@
 # CheckResult（系统接口）
 
-搜包结果。
+版本检查结果。
 
 **起始版本：** 9
 
@@ -22,9 +22,7 @@ import { update } from '@kit.BasicServicesKit';
 isExistNewVersion: boolean
 ```
 
-是否有新版本。
-
-true表示有新版本，false表示没有新版本。
+是否有新版本。true表示有新版本，false表示没有新版本。
 
 **类型：** boolean
 

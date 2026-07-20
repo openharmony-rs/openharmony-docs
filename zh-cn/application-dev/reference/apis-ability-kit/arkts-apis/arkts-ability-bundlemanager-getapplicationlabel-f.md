@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getapplicationlabel"></a>
 ## getApplicationLabel
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getApplicationLabel(bundleName: string, appIndex: number): Promise<stri
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，调用成功返回应用名称；调用失败返回错误对象。 |
+| Promise&lt;string&gt; | Promise对象，调用成功返回应用名称；调用失败返回错误对象。 |
 
 **错误码：**
 

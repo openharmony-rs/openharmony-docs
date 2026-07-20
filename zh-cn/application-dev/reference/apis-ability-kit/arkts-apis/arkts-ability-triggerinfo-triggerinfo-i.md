@@ -1,6 +1,6 @@
 # TriggerInfo
 
-作为[trigger](../../../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagenttrigger)的入参定义触发WantAgent所需要的信息。
+作为[trigger](docroot://reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagenttrigger)的入参定义触发WantAgent所需要的信息。
 
 **起始版本：** 7
 
@@ -14,7 +14,7 @@
 code: number
 ```
 
-表示传递的公共事件数据，仅当WantAgent实例的[OperationType](../../../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#operationtype)类型是'SEND_COMMON_EVENT'时有效。该字段与发布者使用[commonEventManager.publish](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-commoneventmanager-publish-f.md#publish-2)发布公共事件时，传递[CommonEventPublishData](../../../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md#属性)公共事件数据中的`code`字段含义一致。
+表示传递的公共事件数据，仅当WantAgent实例的[OperationType](docroot://reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#operationtype)类型是'SEND_COMMON_EVENT'时有效。该字段与发布者使用[commonEventManager.publish](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-commoneventmanager-publish-f.md#publish-1)发布公共事件时，传递[CommonEventPublishData](docroot://reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md#属性)公共事件数据中的`code`字段含义一致。
 
 **类型：** number
 
@@ -52,7 +52,7 @@ extraInfos?: Record<string, Object>
 
 额外数据。推荐使用该属性替代extraInfo，设置该属性后，extraInfo不再生效。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 11
 
@@ -68,7 +68,7 @@ extraInfos?: Record<string, Object>
 permission?: string
 ```
 
-表示公共事件订阅者的权限。仅当WantAgent实例的[OperationType](../../../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#operationtype)类型是'SEND_COMMON_EVENT'时，该字段生效。
+表示公共事件订阅者的权限。仅当WantAgent实例的[OperationType](docroot://reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#operationtype)类型是'SEND_COMMON_EVENT'时，该字段生效。
 
 **类型：** string
 

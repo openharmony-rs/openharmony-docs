@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="on"></a>
 ## on('sessionCreate')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sessionCreate' | 是 | 事件回调类型，支持的事件是'sessionCreate'：会话创建事件，检测到会话创建时触发。 |
-| callback | (session: AVSessionDescriptor) => void | 是 | 回调函数。参数为会话相关描述。 |
+| callback | (session: AVSessionDescriptor) =&gt; void | 是 | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -67,6 +68,7 @@ struct Index {
 ```
 
 
+<a id="on-1"></a>
 ## on('sessionDestroy')
 
 ```TypeScript
@@ -88,7 +90,7 @@ function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sessionDestroy' | 是 | 事件回调类型，支持的事件是`'sessionDestroy'`：会话销毁事件，检测到会话销毁时触发。 |
-| callback | (session: AVSessionDescriptor) => void | 是 | 回调函数。参数为会话相关描述。 |
+| callback | (session: AVSessionDescriptor) =&gt; void | 是 | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -125,6 +127,7 @@ struct Index {
 ```
 
 
+<a id="on-2"></a>
 ## on('topSessionChange')
 
 ```TypeScript
@@ -146,7 +149,7 @@ function on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) =
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'topSessionChange' | 是 | 事件回调类型，支持的事件是 `'topSessionChange'`：最新播放会话的变化事件，检测到最新的会话改变时触发。 |
-| callback | (session: AVSessionDescriptor) => void | 是 | 回调函数。参数为会话相关描述。 |
+| callback | (session: AVSessionDescriptor) =&gt; void | 是 | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -185,6 +188,7 @@ struct Index {
 ```
 
 
+<a id="on-3"></a>
 ## on('sessionServiceDie')
 
 ```TypeScript
@@ -206,7 +210,7 @@ function on(type: 'sessionServiceDie', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sessionServiceDie' | 是 | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件，检测到会话的服务死亡时触发。 |
-| callback | () => void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -226,6 +230,7 @@ avSession.on('sessionServiceDie', () => {
 ```
 
 
+<a id="on-4"></a>
 ## on('distributedSessionChange')
 
 ```TypeScript
@@ -248,7 +253,7 @@ function on(type: 'distributedSessionChange', distributedSessionType: Distribute
 | --- | --- | --- | --- |
 | type | 'distributedSessionChange' | 是 | 事件回调类型，支持的事件为 `'distributedSessionChange'`：最新远端分布式会话的变化事件，检测到最新的会话改变时触发。 |
 | distributedSessionType | [DistributedSessionType](arkts-avsession-avsession-distributedsessiontype-e-sys.md) | 是 | 远端会话类型。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<AVSessionController>> | 是 | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;AVSessionController&gt;&gt; | 是 | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
 
 **错误码：**
 
@@ -267,6 +272,7 @@ avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_S
 ```
 
 
+<a id="on-5"></a>
 ## on('deviceAvailable')
 
 ```TypeScript
@@ -288,7 +294,7 @@ function on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceAvailable' | 是 | 事件回调类型，支持事件`'deviceAvailable'`，有设备被发现时触发回调。 |
-| callback | (device: OutputDeviceInfo) => void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | (device: OutputDeviceInfo) =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -309,6 +315,7 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 ```
 
 
+<a id="on-6"></a>
 ## on('deviceOffline')
 
 ```TypeScript
@@ -330,7 +337,7 @@ function on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceOffline' | 是 | 事件回调类型，支持事件`'deviceOffline'`，有设备下线时触发回调。 |
-| callback | (deviceId: string) => void | 是 | 回调函数，参数deviceId是设备的ID。当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | (deviceId: string) =&gt; void | 是 | 回调函数，参数deviceId是设备的ID。当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -351,6 +358,7 @@ avSession.on('deviceOffline', (deviceId: string) => {
 ```
 
 
+<a id="on-7"></a>
 ## on('deviceLogEvent')
 
 ```TypeScript
@@ -372,7 +380,7 @@ function on(type: 'deviceLogEvent', callback: Callback<DeviceLogEventCode>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceLogEvent' | 是 | 事件回调类型，支持事件`'deviceLogEvent'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DeviceLogEventCode> | 是 | 回调函数，参数DeviceLogEventCode是当前设备日志返回值。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceLogEventCode&gt; | 是 | 回调函数，参数DeviceLogEventCode是当前设备日志返回值。 |
 
 **错误码：**
 
@@ -393,6 +401,7 @@ avSession.on('deviceLogEvent', (eventCode: avSession.DeviceLogEventCode) => {
 ```
 
 
+<a id="on-8"></a>
 ## on('deviceStateChanged')
 
 ```TypeScript
@@ -416,7 +425,7 @@ function on(type: 'deviceStateChanged', callback: Callback<DeviceState>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceStateChanged' | 是 | 事件回调类型，支持事件`'deviceStateChanged'`，投播设备连接状态发生变化时触发回调。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DeviceState> | 是 | 回调函数，参数DeviceState包含投播设备ID、连接状态码、连接错误码和系统雷达错误码。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceState&gt; | 是 | 回调函数，参数DeviceState包含投播设备ID、连接状态码、连接错误码和系统雷达错误码。 |
 
 **错误码：**
 

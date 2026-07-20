@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="gridcoloffset"></a>
 ## gridColOffset
 
 ```TypeScript
@@ -36,6 +37,7 @@ gridColOffset(value: number | GridColColumnOption)
 | --- | --- | --- | --- |
 | value | number \| GridColColumnOption | 是 | 相对于前一个栅格子组件偏移的列数。<br/>取值为非负整数，默认值：0 <br />非法值：按默认值处理。 |
 
+<a id="order"></a>
 ## order
 
 ```TypeScript
@@ -60,6 +62,7 @@ order(value: number | GridColColumnOption)
 | --- | --- | --- | --- |
 | value | number \| GridColColumnOption | 是 | 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br/>取值为非负整数，默认值：0 <br />非法值：按默认值处理。 |
 
+<a id="span"></a>
 ## span
 
 ```TypeScript

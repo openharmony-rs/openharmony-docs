@@ -14,6 +14,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="changerendertype"></a>
 ## changeRenderType
 
 ```TypeScript
@@ -46,6 +47,7 @@ changeRenderType(type: NodeRenderType): boolean
 | --- | --- |
 | boolean | - 返回是否成功修改渲染类型。 |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -76,9 +78,10 @@ constructor(uiContext: UIContext, options: RenderOptions,
 | uiContext | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 用于创建FrameNode的UIContext |
 | options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | 是 | Builder Node的渲染选项 |
 | id | string | 是 | 应用定义的XComponent id |
-| type | [XComponentType](arkts-arkui-enums-xcomponenttype-e.md) | 是 | XComponent类型 |
+| type | [XComponentType](arkts-arkui-xcomponenttype-e.md) | 是 | XComponent类型 |
 | libraryName | string | 否 | XComponent要加载的库名称 |
 
+<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -105,6 +108,7 @@ onCreate(event?: Object): void
 | --- | --- | --- | --- |
 | event | Object | 否 | 加载库时来自native的事件 |
 
+<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript

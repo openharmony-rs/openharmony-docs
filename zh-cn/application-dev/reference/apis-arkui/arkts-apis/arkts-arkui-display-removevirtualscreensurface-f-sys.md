@@ -6,6 +6,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="removevirtualscreensurface"></a>
 ## removeVirtualScreenSurface
 
 ```TypeScript
@@ -35,7 +36,7 @@ function removeVirtualScreenSurface(screenId: number, surfaceId: string): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

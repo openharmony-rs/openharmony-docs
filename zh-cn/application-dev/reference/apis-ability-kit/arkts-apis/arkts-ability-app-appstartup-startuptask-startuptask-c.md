@@ -1,6 +1,6 @@
 # StartupTask
 
-The module provides capabilities related to startup tasks in [AppStartup](../../../../application-models/app-startup.md).
+The module provides capabilities related to startup tasks in [AppStartup](docroot://application-models/app-startup.md).
 
 **起始版本：** 12
 
@@ -16,6 +16,7 @@ The module provides capabilities related to startup tasks in [AppStartup](../../
 import { StartupTask } from '@kit.AbilityKit';
 ```
 
+<a id="init"></a>
 ## init
 
 ```TypeScript
@@ -42,7 +43,7 @@ init(context: AbilityStageContext): Promise<Object | void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Object \| void> | Promise used to return the execution result. |
+| Promise&lt;Object \| void&gt; | Promise used to return the execution result. |
 
 **示例：**
 
@@ -69,6 +70,7 @@ export default class StartupTask_001 extends StartupTask {
 
 ```
 
+<a id="ondependencycompleted"></a>
 ## onDependencyCompleted
 
 ```TypeScript
@@ -90,7 +92,7 @@ onDependencyCompleted?(dependency: string, result: Object): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | dependency | string | 是 | 依赖的启动任务名称。 |
-| result | Object | 是 | 依赖的启动任务[init](StartupTask#init(context: AbilityStageContext))返回的执行结果。 |
+| result | Object | 是 | 依赖的启动任务[init](arkts-ability-app-appstartup-startuptask-startuptask-c.md#init-1)返回的执行结果。 |
 
 **示例：**
 

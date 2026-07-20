@@ -1,6 +1,6 @@
 # WantAgentInfo
 
-定义触发WantAgent所需要的信息，可以作为[getWantAgent](../../../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)的入参创建指定的WantAgent对象。
+定义触发WantAgent所需要的信息，可以作为[getWantAgent](docroot://reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)的入参创建指定的WantAgent对象。
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@ actionFlags?: Array<abilityWantAgent.WantAgentFlags>
 
 动作执行属性。
 
-**类型：** Array<abilityWantAgent.WantAgentFlags>
+**类型：** Array&lt;abilityWantAgent.WantAgentFlags&gt;
 
 **起始版本：** 11
 
@@ -70,7 +70,7 @@ extraInfos?: Record<string, Object>
 
 额外数据。推荐使用该属性替代extraInfo，设置该属性后，extraInfo不再生效。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 11
 
@@ -132,7 +132,7 @@ wantAgentFlags?: Array<wantAgent.WantAgentFlags>
 
 从API version 7 开始支持，从API version 11 开始废弃，建议使用actionFlags<sup>11+</sup>替代。
 
-**类型：** Array<wantAgent.WantAgentFlags>
+**类型：** Array&lt;wantAgent.WantAgentFlags&gt;
 
 **起始版本：** 7
 
@@ -154,7 +154,7 @@ wants: Array<Want>
 
 将被执行的动作列表。wants数组为预留能力，当前只支持一个want。传入多个时只取wants数组的第一个成员。
 
-**类型：** Array<Want>
+**类型：** Array&lt;Want&gt;
 
 **起始版本：** 7
 

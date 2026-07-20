@@ -6,6 +6,7 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
+<a id="removesendsmspolicynumbers"></a>
 ## removeSendSmsPolicyNumbers
 
 ```TypeScript
@@ -30,7 +31,7 @@ function removeSendSmsPolicyNumbers(admin: Want, policy: adminManager.Policy, nu
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件 |
 | policy | adminManager.Policy | 是 | 允许或禁用策略 |
-| numbers | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 通话号码列表，当前仅支持全号码匹配。 |
+| numbers | Array&lt;string&gt; | 是 | 通话号码列表，当前仅支持全号码匹配。 |
 
 **错误码：**
 

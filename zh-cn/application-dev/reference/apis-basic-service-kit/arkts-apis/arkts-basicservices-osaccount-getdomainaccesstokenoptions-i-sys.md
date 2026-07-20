@@ -24,7 +24,7 @@ businessParams: Record<string, Object>
 
 业务参数，由业务方根据请求协议自定义。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 10
 

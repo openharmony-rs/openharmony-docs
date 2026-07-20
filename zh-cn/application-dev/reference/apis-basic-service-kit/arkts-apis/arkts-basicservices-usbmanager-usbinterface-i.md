@@ -54,7 +54,7 @@ endpoints: Array<USBEndpoint>
 
 当前接口所包含的端点。
 
-**类型：** Array<USBEndpoint>
+**类型：** Array&lt;USBEndpoint&gt;
 
 **起始版本：** 9
 

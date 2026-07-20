@@ -1,5 +1,6 @@
 # renameSync
 
+<a id="renamesync"></a>
 ## renameSync
 
 ```TypeScript

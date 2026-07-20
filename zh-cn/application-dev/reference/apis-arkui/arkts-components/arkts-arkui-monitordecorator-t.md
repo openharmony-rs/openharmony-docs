@@ -22,12 +22,12 @@ Defines Monitor Decorator type
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| MonitorDecoratorOptions | 是 | 由用户或配置选项输入的监视路径。 |
-| args | string[] | 是 | 用户输入的监控路径 |
+| value | string \| MonitorDecoratorOptions | 是 | 由用户或配置选项输入的监视路径。  |
+| args | string[] | 是 | 用户输入的监控路径  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| MethodDecorator | 监视器装饰器 |
+| MethodDecorator | 监视器装饰器  |
 

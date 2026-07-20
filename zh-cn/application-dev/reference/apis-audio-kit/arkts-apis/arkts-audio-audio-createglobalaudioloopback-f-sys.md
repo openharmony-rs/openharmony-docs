@@ -6,6 +6,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="createglobalaudioloopback"></a>
 ## createGlobalAudioLoopback
 
 ```TypeScript
@@ -40,7 +41,7 @@ function createGlobalAudioLoopback(mode: AudioLoopbackMode, isController: boolea
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AudioLoopback \| null> | Promise用于返回音频环回实例。或者发生错误时为null。 |
+| Promise&lt;AudioLoopback \| null&gt; | Promise用于返回音频环回实例。或者发生错误时为null。 |
 
 **错误码：**
 

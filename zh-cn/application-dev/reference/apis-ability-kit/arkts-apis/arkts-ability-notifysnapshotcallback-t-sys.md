@@ -20,6 +20,6 @@ type NotifySnapshotCallback = (deviceId: string, mission: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | Indicates the deviceId snapshot changed. |
-| mission | int | 是 | Indicates the id of mission. |
+| deviceId | string | 是 | Indicates the deviceId snapshot changed.  |
+| mission | number | 是 | Indicates the id of mission.  |
 

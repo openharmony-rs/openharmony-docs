@@ -6,13 +6,14 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="updatereminder"></a>
 ## updateReminder
 
 ```TypeScript
 function updateReminder(reminderId: number, reminderReq: ReminderRequest): Promise<void>
 ```
 
-更新指定id的代理提醒，使用Promise异步回调。仅[有效（未过期）](../../../../task-management/agent-powered-reminder.md#约束与限制)、未显示在通知中心的代理提醒支持更新。
+更新指定id的代理提醒，使用Promise异步回调。仅[有效（未过期）](docroot://task-management/agent-powered-reminder.md#约束与限制)、未显示在通知中心的代理提醒支持更新。
 
 **起始版本：** 20
 
@@ -33,7 +34,7 @@ function updateReminder(reminderId: number, reminderReq: ReminderRequest): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

@@ -14,6 +14,7 @@
 import { remoteDevice } from '@kit.ConnectivityKit';
 ```
 
+<a id="getacbstate"></a>
 ## getAcbState
 
 ```TypeScript
@@ -43,9 +44,10 @@ getAcbState(): AcbState
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="getconnectionstate"></a>
 ## getConnectionState
 
 ```TypeScript
@@ -75,9 +77,10 @@ getConnectionState(): ConnectionState
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="getdeviceclass"></a>
 ## getDeviceClass
 
 ```TypeScript
@@ -107,9 +110,10 @@ getDeviceClass(): DeviceClass
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="getdeviceinformation"></a>
 ## getDeviceInformation
 
 ```TypeScript
@@ -139,9 +143,10 @@ getDeviceInformation(): DeviceInformation
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="getdevicename"></a>
 ## getDeviceName
 
 ```TypeScript
@@ -171,9 +176,10 @@ getDeviceName(): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="getpairingstate"></a>
 ## getPairingState
 
 ```TypeScript
@@ -203,9 +209,10 @@ getPairingState(): PairingState
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="startpairing"></a>
 ## startPairing
 
 ```TypeScript
@@ -228,13 +235,13 @@ startPairing(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 返回promise对象。 |
+| Promise&lt;void&gt; | 返回promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 

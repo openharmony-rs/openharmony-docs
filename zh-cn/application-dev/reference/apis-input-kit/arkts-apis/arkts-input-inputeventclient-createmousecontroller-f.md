@@ -6,6 +6,7 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
+<a id="createmousecontroller"></a>
 ## createMouseController
 
 ```TypeScript
@@ -28,7 +29,7 @@ function createMouseController(): Promise<MouseController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<MouseController> | Promise对象，返回鼠标控制器实例。 |
+| Promise&lt;MouseController&gt; | Promise对象，返回鼠标控制器实例。 |
 
 **错误码：**
 

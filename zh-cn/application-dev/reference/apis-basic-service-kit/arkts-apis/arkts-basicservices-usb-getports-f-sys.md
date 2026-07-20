@@ -6,6 +6,7 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
+<a id="getports"></a>
 ## getPorts
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getPorts(): Array<USBPort>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<USBPort> | USB端口描述信息列表。 |
+| Array&lt;USBPort&gt; | USB端口描述信息列表。 |
 
 **示例：**
 

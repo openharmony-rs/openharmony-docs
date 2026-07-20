@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="addprinters"></a>
 ## addPrinters
 
 ```TypeScript
@@ -28,8 +29,8 @@ function addPrinters(printers: Array<PrinterInfo>, callback: AsyncCallback<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printers | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<PrinterInfo> | 是 | 表示新到达的打印机列表。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步添加打印机之后的回调。 |
+| printers | Array&lt;PrinterInfo&gt; | 是 | 表示新到达的打印机列表。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步添加打印机之后的回调。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ print.addPrinters([printerInfo], (err: BusinessError) => {
 ```
 
 
+<a id="addprinters-1"></a>
 ## addPrinters
 
 ```TypeScript
@@ -87,13 +89,13 @@ function addPrinters(printers: Array<PrinterInfo>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printers | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<PrinterInfo> | 是 | 表示新到达的打印机列表。 |
+| printers | Array&lt;PrinterInfo&gt; | 是 | 表示新到达的打印机列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

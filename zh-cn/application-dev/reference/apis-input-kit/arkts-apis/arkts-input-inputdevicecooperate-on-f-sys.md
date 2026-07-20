@@ -6,6 +6,7 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
+<a id="on"></a>
 ## on('cooperation')
 
 ```TypeScript
@@ -17,7 +18,7 @@ function on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: str
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用  
-> [cooperate.on](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-on-f-sys.md#on-2)  
+> [cooperate.on](@ohos.cooperate:cooperate.on(type: 'cooperateMessage', callback: Callback<CooperateMessage>))  
 > 替代。
 
 **起始版本：** 9
@@ -37,7 +38,7 @@ function on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: str
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'cooperation' | 是 | 注册类型，取值”cooperation“。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<{ deviceDescriptor: string, eventMsg: EventMsg }> | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;{ deviceDescriptor: string, eventMsg: EventMsg }&gt; | 是 |  |
 
 **错误码：**
 

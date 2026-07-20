@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="setenterprisepolicy"></a>
 ## setEnterprisePolicy
 
 ```TypeScript

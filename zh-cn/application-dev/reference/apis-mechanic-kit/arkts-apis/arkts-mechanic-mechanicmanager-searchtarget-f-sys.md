@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="searchtarget"></a>
 ## searchTarget
 
 ```TypeScript
@@ -33,7 +34,7 @@ Searching for a specified target.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SearchResult> | Promise that return the Search result. |
+| Promise&lt;SearchResult&gt; | Promise that return the Search result. |
 
 **错误码：**
 

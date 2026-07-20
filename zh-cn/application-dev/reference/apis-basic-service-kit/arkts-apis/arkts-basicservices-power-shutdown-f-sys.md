@@ -6,6 +6,7 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
+<a id="shutdown"></a>
 ## shutdown
 
 ```TypeScript

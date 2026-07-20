@@ -6,6 +6,7 @@
 import { bundleMonitor } from '@kit.AbilityKit';
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -29,7 +30,7 @@ function off(type: BundleChangedEvent, callback?: Callback<BundleChangedInfo>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [BundleChangedEvent](arkts-ability-bundlemonitor-bundlechangedevent-t-sys.md) | 是 | 注销监听的事件类型。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<BundleChangedInfo> | 否 | 回调函数，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;BundleChangedInfo&gt; | 否 | 回调函数，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
 
 **错误码：**
 

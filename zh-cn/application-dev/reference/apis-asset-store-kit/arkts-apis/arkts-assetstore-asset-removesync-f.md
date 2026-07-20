@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="removesync"></a>
 ## removeSync
 
 ```TypeScript

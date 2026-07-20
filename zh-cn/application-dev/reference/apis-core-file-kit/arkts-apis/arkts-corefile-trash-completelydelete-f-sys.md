@@ -6,6 +6,7 @@
 import { trash } from '@kit.CoreFileKit';
 ```
 
+<a id="completelydelete"></a>
 ## completelyDelete
 
 ```TypeScript

@@ -16,6 +16,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="hasimmersivewindow"></a>
 ## hasImmersiveWindow
 
 ```TypeScript
@@ -36,7 +37,7 @@ hasImmersiveWindow(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ displayClass.hasImmersiveWindow((err: BusinessError, data: boolean) => {
 
 ```
 
+<a id="hasimmersivewindow-1"></a>
 ## hasImmersiveWindow
 
 ```TypeScript
@@ -88,7 +90,7 @@ hasImmersiveWindow(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
 
 **错误码：**
 

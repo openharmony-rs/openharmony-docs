@@ -6,19 +6,20 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="sethdcdisabled"></a>
 ## setHdcDisabled
 
 ```TypeScript
 function setHdcDisabled(admin: Want, disabled: boolean, callback: AsyncCallback<void>): void
 ```
 
-使设备禁用或启用[HDC](../../../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。
+使设备禁用或启用[HDC](docroot://../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。
 
 **起始版本：** 10
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDisallowedPolicy(admin:
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -36,7 +37,7 @@ function setHdcDisabled(admin: Want, disabled: boolean, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | disabled | boolean | 是 | true表示禁止使用HDC，false表示允许使用HDC。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -71,6 +72,7 @@ restrictions.setHdcDisabled(wantTemp, true, (err) => {
 ```
 
 
+<a id="sethdcdisabled-1"></a>
 ## setHdcDisabled
 
 ```TypeScript
@@ -83,7 +85,7 @@ function setHdcDisabled(admin: Want, disabled: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDisallowedPolicy(admin:
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -106,7 +108,7 @@ function setHdcDisabled(admin: Want, disabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当禁止或允许使用HDC失败时，抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当禁止或允许使用HDC失败时，抛出错误对象。 |
 
 **错误码：**
 

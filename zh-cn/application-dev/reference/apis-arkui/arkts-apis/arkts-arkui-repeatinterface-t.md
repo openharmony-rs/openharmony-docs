@@ -22,11 +22,11 @@ Indicates the type of Repeat.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arr | RepeatArray&lt;T&gt; | 是 | The Data Source |
+| arr | [RepeatArray](arkts-arkui-repeatarray-t.md)&lt;T&gt; | 是 | The Data Source  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| RepeatAttribute&lt;T&gt; | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
+| [RepeatAttribute](arkts-arkui-repeatattribute-c.md)&lt;T&gt; | @syscap SystemCapability.ArkUI.ArkUI.Full @stagemodelonly @crossplatform @form @atomicservice  |
 

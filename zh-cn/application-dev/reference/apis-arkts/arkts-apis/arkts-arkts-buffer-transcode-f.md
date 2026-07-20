@@ -6,6 +6,7 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
+<a id="transcode"></a>
 ## transcode
 
 ```TypeScript
@@ -26,7 +27,7 @@ function transcode(source: Buffer | Uint8Array, fromEnc: string, toEnc: string):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | Buffer \| Uint8Array | 是 | 实例对象。 |
+| source | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 实例对象。 |
 | fromEnc | string | 是 | 当前编码。支持的格式范围为[BufferEncoding](arkts-arkts-buffer-bufferencoding-t.md)。 |
 | toEnc | string | 是 | 目标编码。支持的格式范围为[BufferEncoding](arkts-arkts-buffer-bufferencoding-t.md)。 |
 

@@ -40,7 +40,7 @@ alert: ResourceColor
 backgroundEmphasize: ResourceColor
 ```
 
-高亮背景颜色（实色，不透明）。</br>**影响组件：** [Progress](../arkts-components/arkts-arkui-progress.md)、[Button](../arkts-components/arkts-arkui-button.md)、[Slider](../arkts-components/arkts-arkui-slider.md)
+高亮背景颜色（实色，不透明）。</br>**影响组件：** [Progress](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-progress-i.md)、[Button](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-mouseevent-button-e.md)、[Slider](../arkts-components/arkts-arkui-slider.md)
 
 **类型：** ResourceColor
 
@@ -320,7 +320,7 @@ compBackgroundSecondary: ResourceColor
 compBackgroundTertiary: ResourceColor
 ```
 
-三级背景。</br>**影响组件：** [EditableTitleBar](@ohos.arkui.advanced.EditableTitleBar)、[Progress](../arkts-components/arkts-arkui-progress.md)、[AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer.md)、</br>[Button](../arkts-components/arkts-arkui-button.md)、[Select](../arkts-components/arkts-arkui-select.md)、[Toggle](../arkts-components/arkts-arkui-toggle.md)、</br>[Chip](arkts-arkui-advanced-chip.md)、[TextInput](../arkts-components/arkts-arkui-textinput.md)、[Search](../arkts-components/arkts-arkui-search.md)。从API版本26.0.0开始，新增[UIPickerComponent](../arkts-components/arkts-arkui-uipickercomponent.md)、[TextPicker](../arkts-components/arkts-arkui-textpicker.md)。
+三级背景。</br>**影响组件：** [EditableTitleBar](@ohos.arkui.advanced.EditableTitleBar)、[Progress](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-progress-i.md)、[AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer.md)、</br>[Button](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-mouseevent-button-e.md)、[Select](../arkts-components/arkts-arkui-select.md)、[Toggle](../arkts-components/arkts-arkui-toggle.md)、</br>[Chip](arkts-arkui-advanced-chip.md)、[TextInput](../arkts-components/arkts-arkui-textinput.md)、[Search](../arkts-components/arkts-arkui-search.md)。从API版本26.0.0开始，新增[UIPickerComponent](../arkts-components/arkts-arkui-uipickercomponent.md)、[TextPicker](../arkts-components/arkts-arkui-textpicker.md)。
 
 **类型：** ResourceColor
 
@@ -380,7 +380,7 @@ compDivider: ResourceColor
 compEmphasizeSecondary: ResourceColor
 ```
 
-20%高亮背景颜色。</br>**影响组件：** [Progress](../arkts-components/arkts-arkui-progress.md)、[ProgressButton](@ohos.arkui.advanced.ProgressButton)、[AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer.md)、</br>[Select](../arkts-components/arkts-arkui-select.md)、[Toggle](../arkts-components/arkts-arkui-toggle.md)
+20%高亮背景颜色。</br>**影响组件：** [Progress](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-progress-i.md)、[ProgressButton](@ohos.arkui.advanced.ProgressButton)、[AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer.md)、</br>[Select](../arkts-components/arkts-arkui-select.md)、[Toggle](../arkts-components/arkts-arkui-toggle.md)
 
 **类型：** ResourceColor
 
@@ -540,7 +540,7 @@ container?: ResourceColor
 fontEmphasize: ResourceColor
 ```
 
-高亮字体颜色。</br>**影响组件：** [TipsDialog](@ohos.arkui.advanced.Dialog:TipsDialog)、[ConfirmDialog](@ohos.arkui.advanced.Dialog:ConfirmDialog)、[AlertDialog](@ohos.arkui.advanced.Dialog:AlertDialog)、</br>[SelectDialog](@ohos.arkui.advanced.Dialog:SelectDialog)、[CustomContentDialog](@ohos.arkui.advanced.Dialog:CustomContentDialog)、[SubHeader](@ohos.arkui.advanced.SubHeader)、</br>[AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer.md)、[Popup](arkts-arkui-advanced-popup.md)、[Button](../arkts-components/arkts-arkui-button.md)、</br>[Select](../arkts-components/arkts-arkui-select.md)、[ToolBar](@ohos.arkui.advanced.ToolBar)、[Search](../arkts-components/arkts-arkui-search.md)、</br>[TimePicker](../arkts-components/arkts-arkui-timepicker.md)、[DatePicker](../arkts-components/arkts-arkui-datepicker.md)、[TextPicker](../arkts-components/arkts-arkui-textpicker.md)。从API版本26.0.0开始，新增[RichEditor](../arkts-components/arkts-arkui-richeditor.md)。
+高亮字体颜色。</br>**影响组件：** [TipsDialog](@ohos.arkui.advanced.Dialog:TipsDialog)、[ConfirmDialog](@ohos.arkui.advanced.Dialog:ConfirmDialog)、[AlertDialog](@ohos.arkui.advanced.Dialog:AlertDialog)、</br>[SelectDialog](@ohos.arkui.advanced.Dialog:SelectDialog)、[CustomContentDialog](@ohos.arkui.advanced.Dialog:CustomContentDialog)、[SubHeader](@ohos.arkui.advanced.SubHeader)、</br>[AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer.md)、[Popup](arkts-arkui-advanced-popup.md)、[Button](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-mouseevent-button-e.md)、</br>[Select](../arkts-components/arkts-arkui-select.md)、[ToolBar](@ohos.arkui.advanced.ToolBar)、[Search](../arkts-components/arkts-arkui-search.md)、</br>[TimePicker](../arkts-components/arkts-arkui-timepicker.md)、[DatePicker](../arkts-components/arkts-arkui-datepicker.md)、[TextPicker](../arkts-components/arkts-arkui-textpicker.md)。从API版本26.0.0开始，新增[RichEditor](../arkts-components/arkts-arkui-richeditor.md)。
 
 **类型：** ResourceColor
 
@@ -600,7 +600,7 @@ fontOnFourth: ResourceColor
 fontOnPrimary: ResourceColor
 ```
 
-一级文本反转颜色，用于彩色背景。</br>**影响组件：** [Badge](../arkts-components/arkts-arkui-badge.md)、[Button](../arkts-components/arkts-arkui-button.md)、[Chip](arkts-arkui-advanced-chip.md)
+一级文本反转颜色，用于彩色背景。</br>**影响组件：** [Badge](../arkts-components/arkts-arkui-badge.md)、[Button](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-mouseevent-button-e.md)、[Chip](arkts-arkui-advanced-chip.md)
 
 **类型：** ResourceColor
 
@@ -1080,7 +1080,7 @@ primary?: ResourceColor
 warning: ResourceColor
 ```
 
-一级警示色。</br>**影响组件：** [TipsDialog](@ohos.arkui.advanced.Dialog:TipsDialog)、[AlertDialog](@ohos.arkui.advanced.Dialog:AlertDialog)、[CustomContentDialog](@ohos.arkui.advanced.Dialog:CustomContentDialog)、</br>[Badge](../arkts-components/arkts-arkui-badge.md)、[Button](../arkts-components/arkts-arkui-button.md)
+一级警示色。</br>**影响组件：** [TipsDialog](@ohos.arkui.advanced.Dialog:TipsDialog)、[AlertDialog](@ohos.arkui.advanced.Dialog:AlertDialog)、[CustomContentDialog](@ohos.arkui.advanced.Dialog:CustomContentDialog)、</br>[Badge](../arkts-components/arkts-arkui-badge.md)、[Button](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-mouseevent-button-e.md)
 
 **类型：** ResourceColor
 

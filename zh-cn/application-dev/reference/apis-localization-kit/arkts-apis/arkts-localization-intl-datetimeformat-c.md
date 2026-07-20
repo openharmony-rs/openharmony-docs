@@ -18,6 +18,7 @@
 import { intl } from '@kit.LocalizationKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -50,6 +51,7 @@ let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 
 ```
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -76,7 +78,7 @@ constructor(locale: string | Array<string>, options?: DateTimeOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string \| Array<string> | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
+| locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
 | options | [DateTimeOptions](arkts-localization-intl-datetimeoptions-i.md) | 否 | 创建时间日期格式化对象时可设置的配置项。<br>若所有选项均未设置时，year、month、day三个属性的默认值为numeric。<br>默认值：所有属性都取默认值时的配置项。 |
 
 **示例：**
@@ -92,6 +94,7 @@ formatter = new intl.DateTimeFormat(['ban', 'zh'], { dateStyle: 'full', timeStyl
 
 ```
 
+<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -142,6 +145,7 @@ formattedDate = formatter.format(date); // formattedDate "Friday, 17 December 20
 
 ```
 
+<a id="formatrange"></a>
 ## formatRange
 
 ```TypeScript
@@ -190,6 +194,7 @@ let formattedDateRange: string = formatter.formatRange(startDate, endDate); // f
 
 ```
 
+<a id="resolvedoptions"></a>
 ## resolvedOptions
 
 ```TypeScript

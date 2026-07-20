@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -38,7 +39,7 @@ indexes: Array<string>
 
 表示json类型的字符串数组。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 8
 

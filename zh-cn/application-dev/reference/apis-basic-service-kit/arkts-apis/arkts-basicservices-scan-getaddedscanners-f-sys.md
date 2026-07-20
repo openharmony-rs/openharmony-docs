@@ -6,6 +6,7 @@
 import { scan } from '@kit.BasicServicesKit';
 ```
 
+<a id="getaddedscanners"></a>
 ## getAddedScanners
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getAddedScanners(): Promise<ScannerDevice[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ScannerDevice[]> | Promise used to return the array of added scanners. |
+| Promise&lt;ScannerDevice[]&gt; | Promise used to return the array of added scanners. |
 
 **错误码：**
 

@@ -14,6 +14,7 @@
 import { DrawableDescriptor, AnimatedDrawableDescriptor, AnimationStopMode, AnimationOptions, AnimationController, DrawableDescriptorLoadedResult, LayeredDrawableDescriptor, PictureDrawableDescriptor, PixelMapDrawableDescriptor, HdrCompositionConfig } from '@kit.ArkUI';
 ```
 
+<a id="getstatus"></a>
 ## getStatus
 
 ```TypeScript
@@ -36,7 +37,7 @@ getStatus(): AnimationStatus
 
 | 类型 | 说明 |
 | --- | --- |
-| [AnimationStatus](arkts-arkui-enums-animationstatus-e.md) | 动图的播放状态。包含4种状态：初始态、播放态、暂停态、停止态。 |
+| [AnimationStatus](arkts-arkui-animationstatus-e.md) | 动图的播放状态。包含4种状态：初始态、播放态、暂停态、停止态。 |
 
 **示例：**
 
@@ -82,6 +83,7 @@ struct Example {
 
 ```
 
+<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -128,6 +130,7 @@ struct Example {
 
 ```
 
+<a id="resume"></a>
 ## resume
 
 ```TypeScript
@@ -174,6 +177,7 @@ struct Example {
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -220,6 +224,7 @@ struct Example {
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript

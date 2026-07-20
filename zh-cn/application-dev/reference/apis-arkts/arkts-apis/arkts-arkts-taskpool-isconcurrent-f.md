@@ -6,6 +6,7 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="isconcurrent"></a>
 ## isConcurrent
 
 ```TypeScript
@@ -32,7 +33,7 @@ function isConcurrent(func: Function): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果被检查函数标注了[@Concurrent装饰器](../../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)，则返回**true**；否则返回**false**。 |
+| boolean | 检查结果。如果被检查函数标注了[@Concurrent装饰器](docroot://arkts-utils/taskpool-introduction.md#concurrent装饰器)，则返回**true**；否则返回**false**。 |
 
 **示例：**
 

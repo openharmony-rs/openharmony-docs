@@ -22,5 +22,5 @@ On scroll callback using in scrollable onWillStopDragging.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| velocity | number | 是 | The veolicity of the scroll view at the moment the touch was released. |
+| velocity | number | 是 | The veolicity of the scroll view at the moment the touch was released.  |
 

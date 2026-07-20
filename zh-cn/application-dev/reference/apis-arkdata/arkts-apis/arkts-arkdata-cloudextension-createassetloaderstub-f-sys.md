@@ -6,6 +6,7 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
+<a id="createassetloaderstub"></a>
 ## createAssetLoaderStub
 
 ```TypeScript
@@ -32,7 +33,7 @@ function createAssetLoaderStub(instance: AssetLoader): Promise<rpc.RemoteObject>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<rpc.RemoteObject> | Promise对象，返回AssetLoader的rpc.RemoteObject对象。 |
+| Promise&lt;rpc.RemoteObject&gt; | Promise对象，返回AssetLoader的rpc.RemoteObject对象。 |
 
 **示例：**
 

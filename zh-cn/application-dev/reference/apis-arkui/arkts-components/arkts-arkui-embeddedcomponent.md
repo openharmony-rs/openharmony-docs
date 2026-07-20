@@ -31,8 +31,8 @@ EmbeddedComponent(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| loader | import('../api/@ohos.app.ability.Want').default | 是 | 表示初始化参数 |
-| type | EmbeddedType | 是 | 表示EmbeddedComponent的类型 |
+| loader | import('../api/@ohos.app.ability.Want').default | 是 | 表示初始化参数  |
+| type | [EmbeddedType](../arkts-apis/arkts-arkui-embeddedtype-e.md) | 是 | 表示EmbeddedComponent的类型  |
 
 ## EmbeddedComponent
 
@@ -65,9 +65,9 @@ EmbeddedComponent(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| loader | import('../api/@ohos.app.ability.Want').default | 是 | 表示初始化参数 |
-| type | EmbeddedType | 是 | 表示EmbeddedComponent的类型 |
-| options | EmbeddedOptions | 否 | EmbeddedComponent的构造配置 |
+| loader | import('../api/@ohos.app.ability.Want').default | 是 | 表示初始化参数  |
+| type | [EmbeddedType](../arkts-apis/arkts-arkui-embeddedtype-e.md) | 是 | 表示EmbeddedComponent的类型  |
+| options | [EmbeddedOptions](arkts-arkui-embeddedoptions-i.md) | 否 | EmbeddedComponent的构造配置  |
 
 ## 汇总
 

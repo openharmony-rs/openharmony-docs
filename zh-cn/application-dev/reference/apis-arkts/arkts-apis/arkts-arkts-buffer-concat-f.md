@@ -6,6 +6,7 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
+<a id="concat"></a>
 ## concat
 
 ```TypeScript
@@ -39,7 +40,7 @@ function concat(list: Buffer[] | Uint8Array[], totalLength?: number): Buffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "length" is out of range. It must be &gt;= 0 and &lt;= uint32 max.Received value is: [length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "length" is out of range. It must be >= 0 and <= uint32 max.Received value is: [length] |
 
 **示例：**
 

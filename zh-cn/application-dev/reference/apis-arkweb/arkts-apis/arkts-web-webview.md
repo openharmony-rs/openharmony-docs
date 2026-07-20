@@ -20,7 +20,7 @@ import { webview } from '@kit.ArkWeb';
 
 | 名称 | 说明 |
 | --- | --- |
-| [once](arkts-arkweb-webview-once-f.md#once-1) | Subscribe to a callback of a specified type of web event once. |
+| [once](arkts-arkweb-webview-once-f.md#once) | Subscribe to a callback of a specified type of web event once. |
 
 ### 类
 
@@ -32,7 +32,7 @@ import { webview } from '@kit.ArkWeb';
 | [GeolocationPermissions](arkts-arkweb-webview-geolocationpermissions-c.md) | Provides a method for managing web geographic location permissions. |
 | [JsMessageExt](arkts-arkweb-webview-jsmessageext-c.md) | 该消息用于指示JavaScript代码执行结果的状态。 |
 | [MediaSourceInfo](arkts-arkweb-webview-mediasourceinfo-c.md) | 表示媒体源的信息。 |
-| [NativeMediaPlayerSurfaceInfo](arkts-arkweb-webview-nativemediaplayersurfaceinfo-c.md) | [应用接管网页媒体播放功能](../../../../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativemediaplayer12)中用于同层渲染的 surface 信息。 |
+| [NativeMediaPlayerSurfaceInfo](arkts-arkweb-webview-nativemediaplayersurfaceinfo-c.md) | [应用接管网页媒体播放功能](docroot://reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativemediaplayer12)中用于同层渲染的 surface 信息。 |
 | [PdfData](arkts-arkweb-webview-pdfdata-c.md) | Defines the callback of createPdf, related to {@link createPDF} method. |
 | [PrefetchOptions](arkts-arkweb-webview-prefetchoptions-c.md) | Defines the PrefetchOptions class. |
 | [ProxyConfig](arkts-arkweb-webview-proxyconfig-c.md) | The ProxyConfig used by applyProxyOverride. |
@@ -59,14 +59,14 @@ import { webview } from '@kit.ArkWeb';
 | 名称 | 说明 |
 | --- | --- |
 | [BackForwardList](arkts-arkweb-webview-backforwardlist-i.md) | Provides back and forward history list information method. related to {@link HistoryItem}. |
-| [BlanklessFrameInterpolationInfo](arkts-arkweb-webview-blanklessframeinterpolationinfo-i.md) | 1.定义插帧状态信息2.ArkWeb使能白屏插帧优化的场景设备行为差异:仅支持手机平台，其他平台返回801 |
+| [BlanklessFrameInterpolationInfo](arkts-arkweb-webview-blanklessframeinterpolationinfo-i.md) | 1.定义插帧状态信息2.ArkWeb使能白屏插帧优化的场景  设备行为差异:仅支持手机平台，其他平台返回801 |
 | [BlanklessInfo](arkts-arkweb-webview-blanklessinfo-i.md) | 页面首屏加载预测信息，主要包括首屏相似度预测值，首屏加载耗时预测值，预测错误码，应用需根据此信息来决策是否启用无白屏加载插帧方案。 |
-| [BlanklessLoadingParam](arkts-arkweb-webview-blanklessloadingparam-i.md) | 1.插帧加载参数设备行为差异:仅支持手机平台，其他平台返回801 |
+| [BlanklessLoadingParam](arkts-arkweb-webview-blanklessloadingparam-i.md) | 1.插帧加载参数  设备行为差异:仅支持手机平台，其他平台返回801 |
 | [CacheOptions](arkts-arkweb-webview-cacheoptions-i.md) | Web组件预编译JavaScript生成字节码缓存的配置对象，用于控制字节码缓存更新。 |
 | [HistoryItem](arkts-arkweb-webview-historyitem-i.md) | Provides information for history item in BackForwardList. |
 | [HitTestValue](arkts-arkweb-webview-hittestvalue-i.md) | 提供点击区域的元素信息。示例代码参考[getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest-1). |
 | [MediaInfo](arkts-arkweb-webview-mediainfo-i.md) | [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。 |
-| [NativeMediaPlayerBridge](arkts-arkweb-webview-nativemediaplayerbridge-i.md) | [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的返回值类型。接管网页媒体的播放器和ArkWeb内核之间的一个接口类。ArkWeb内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。 |
+| [NativeMediaPlayerBridge](arkts-arkweb-webview-nativemediaplayerbridge-i.md) | [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的返回值类型。接管网页媒体的播放器和ArkWeb内核之间的一个接口类。  ArkWeb内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。 |
 | [NativeMediaPlayerHandler](arkts-arkweb-webview-nativemediaplayerhandler-i.md) | [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的参数。应用通过该对象，将播放器的状态通知给 ArkWeb 内核。 |
 | [OfflineResourceMap](arkts-arkweb-webview-offlineresourcemap-i.md) | 本地离线资源配置对象，用于配置将被[injectOfflineResources](arkts-arkweb-webview-webviewcontroller-c.md#injectofflineresources-1)接口注入到内存缓存的本地离线资源的相关信息，内核会根据此信息生成资源缓存，并据此控制缓存的有效期。 |
 | [PdfConfiguration](arkts-arkweb-webview-pdfconfiguration-i.md) | Defines the configuration of creating pdf, related to {@Link createPdf} method. |
@@ -78,7 +78,7 @@ import { webview } from '@kit.ArkWeb';
 | [SnapshotResult](arkts-arkweb-webview-snapshotresult-i.md) | 全量绘制回调结果。 |
 | [WebCustomScheme](arkts-arkweb-webview-webcustomscheme-i.md) | Defines the configuration of web custom scheme, related to {@link customizeSchemes} method. |
 | [WebHeader](arkts-arkweb-webview-webheader-i.md) | Web组件返回的请求/响应头对象。 |
-| [WebHttpCookie](arkts-arkweb-webview-webhttpcookie-i.md) | Defines the Web's HTTPCookie.&lt;p&gt;<strong>API Note</strong>:<br>The maximum length allowed for each attribute value in a cookie string is 1024.&lt;/p&gt; |
+| [WebHttpCookie](arkts-arkweb-webview-webhttpcookie-i.md) | Defines the Web's HTTPCookie.<p><strong>API Note</strong>:<br>The maximum length allowed for each attribute value in a cookie string is 1024.</p> |
 | [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md) | Define html web message port. |
 | [WebStorageOrigin](arkts-arkweb-webview-webstorageorigin-i.md) | 提供Web SQL数据库的使用信息。 |
 
@@ -87,7 +87,7 @@ import { webview } from '@kit.ArkWeb';
 | 名称 | 说明 |
 | --- | --- |
 | [ArkWebEngineVersion](arkts-arkweb-webview-arkwebengineversion-e.md) | ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md)，[M132内核在OpenHarmony 7.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md)。 |
-| [BlanklessFrameInterpolationState](arkts-arkweb-webview-blanklessframeinterpolationstate-e.md) | 定义当前插帧状态设备行为差异:仅支持手机平台，其他平台返回801 |
+| [BlanklessFrameInterpolationState](arkts-arkweb-webview-blanklessframeinterpolationstate-e.md) | 定义当前插帧状态  设备行为差异:仅支持手机平台，其他平台返回801 |
 | [ControllerAttachState](arkts-arkweb-webview-controllerattachstate-e.md) | 表示controller的绑定状态枚举 |
 | [JsMessageType](arkts-arkweb-webview-jsmessagetype-e.md) | Enum type supplied to {@link runJavaScriptExt} for indicating the result of JavaScript code execution. |
 | [MediaError](arkts-arkweb-webview-mediaerror-e.md) | 播放器的错误类型。 |
@@ -123,7 +123,7 @@ import { webview } from '@kit.ArkWeb';
 
 | 名称 | 说明 |
 | --- | --- |
-| [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) | [onCreateNativeMediaPlayer](arkts-arkweb-webview-webviewcontroller-c.md#oncreatenativemediaplayer-1)方法的参数。一个回调函数，创建一个播放器，用于接管网页中的媒体播放。 |
+| [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) | [onCreateNativeMediaPlayer](@ohos.web.webview:webview.WebviewController#onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback))方法的参数。一个回调函数，创建一个播放器，用于接管网页中的媒体播放。 |
 | [OnProxyConfigChangeCallback](arkts-arkweb-webview-onproxyconfigchangecallback-t.md) | The callback for proxy changed. |
 | [WebMessage](arkts-arkweb-webview-webmessage-t.md) | 用于描述{@link onMessageEventExt}所支持的数据类型。 |
 

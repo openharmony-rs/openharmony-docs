@@ -22,7 +22,7 @@ details?: Record<string, number | number | number | string | Uint8Array>
 
 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。
 
-**类型：** Record<string, number | number | number | string | Uint8Array>
+**类型：** Record&lt;string, number \| number \| number \| string \| Uint8Array&gt;
 
 **起始版本：** 15
 
@@ -38,7 +38,7 @@ details?: Record<string, number | number | number | string | Uint8Array>
 fileType: string
 ```
 
-文件类型（必须是标准化数据类型（即[UTD预置列表](../../../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。fileType最大长度限制为1024个字节，超出限制时抛出异常。
+文件类型（必须是标准化数据类型（即[UTD预置列表](docroot://database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。fileType最大长度限制为1024个字节，超出限制时抛出异常。
 
 **类型：** string
 
@@ -94,7 +94,7 @@ uriAuthorizationPolicies?: Array<number>
 
 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权）。只针对单个record使用，优先级最高，具体策略见[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 26.0.0
 

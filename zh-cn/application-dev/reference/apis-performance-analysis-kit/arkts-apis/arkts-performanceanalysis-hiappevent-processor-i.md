@@ -108,7 +108,7 @@ customConfigs?: Record<string, string>
 
 元服务API： 从API version 12开始，该参数支持在元服务中使用。
 
-**类型：** Record<string, string>
+**类型：** Record&lt;string, string&gt;
 
 **起始版本：** 12
 

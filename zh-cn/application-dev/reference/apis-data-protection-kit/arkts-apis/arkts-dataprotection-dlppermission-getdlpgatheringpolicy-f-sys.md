@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="getdlpgatheringpolicy"></a>
 ## getDLPGatheringPolicy
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getDLPGatheringPolicy(): Promise<GatheringPolicyType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<GatheringPolicyType> | Promise对象。返回当前DLP沙箱聚合策略。 |
+| Promise&lt;GatheringPolicyType&gt; | Promise对象。返回当前DLP沙箱聚合策略。 |
 
 **错误码：**
 
@@ -55,6 +56,7 @@ dlpPermission.getDLPGatheringPolicy().then((gatheringPolicy: dlpPermission.Gathe
 ```
 
 
+<a id="getdlpgatheringpolicy-1"></a>
 ## getDLPGatheringPolicy
 
 ```TypeScript
@@ -79,7 +81,7 @@ function getDLPGatheringPolicy(callback: AsyncCallback<GatheringPolicyType>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<GatheringPolicyType> | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;GatheringPolicyType&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
 

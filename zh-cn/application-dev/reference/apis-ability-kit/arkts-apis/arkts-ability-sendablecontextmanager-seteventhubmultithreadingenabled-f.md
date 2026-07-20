@@ -6,6 +6,7 @@
 import { sendableContextManager } from '@kit.AbilityKit';
 ```
 
+<a id="seteventhubmultithreadingenabled"></a>
 ## setEventHubMultithreadingEnabled
 
 ```TypeScript
@@ -32,7 +33,7 @@ function setEventHubMultithreadingEnabled(context: common.Context, enabled: bool
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | common.Context | 是 | Context对象。其中，Eventhub支持传递的序列化数据类型参见[序列化支持的类型](../../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)，数据大小不超过16MB。 |
+| context | common.Context | 是 | Context对象。其中，Eventhub支持传递的序列化数据类型参见[序列化支持的类型](docroot://reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)，数据大小不超过16MB。 |
 | enabled | boolean | 是 | 表示是否启用Context的EventHub跨线程通信能力。true表示启用，false表示禁用。 |
 
 **示例：**

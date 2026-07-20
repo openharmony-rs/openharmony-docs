@@ -58,7 +58,7 @@ fontFeatures?: Array<string>
 
 字体支持的font feature列表
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 
@@ -152,7 +152,7 @@ languages?: Array<string>
 
 字体支持的language列表
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 
@@ -370,7 +370,7 @@ variationAxisRecords?: Array<FontVariationAxis>
 
 字体可变轴记录数组，用于描述字体支持的可变轴信息。非可变字体此字段为undefined。
 
-**类型：** Array<FontVariationAxis>
+**类型：** Array&lt;FontVariationAxis&gt;
 
 **起始版本：** 24
 
@@ -388,7 +388,7 @@ variationInstanceRecords?: Array<FontVariationInstance>
 
 字体可变实例记录数组，用于描述字体支持的可变实例信息。非可变字体此字段为undefined。
 
-**类型：** Array<FontVariationInstance>
+**类型：** Array&lt;FontVariationInstance&gt;
 
 **起始版本：** 24
 

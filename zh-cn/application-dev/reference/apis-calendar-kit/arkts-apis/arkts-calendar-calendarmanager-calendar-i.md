@@ -1,6 +1,6 @@
 # Calendar
 
-下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar-2)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar-3)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。
+下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar-1)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar-1)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。
 
 **起始版本：** 10
 
@@ -14,6 +14,7 @@
 import { calendarManager } from '@kit.CalendarKit';
 ```
 
+<a id="addevent"></a>
 ## addEvent
 
 ```TypeScript
@@ -43,7 +44,7 @@ addEvent(event: Event): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回日程的id，id大于0。 |
+| Promise&lt;number&gt; | Promise对象，返回日程的id，id大于0。 |
 
 **错误码：**
 
@@ -85,6 +86,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
+<a id="addevent-1"></a>
 ## addEvent
 
 ```TypeScript
@@ -109,7 +111,7 @@ addEvent(event: Event, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [Event](../../apis-contacts-kit/arkts-apis/arkts-contacts-contact-event-c.md) | 是 | Event对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，当添加日程成功时，err为undefined，data为日程id；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，当添加日程成功时，err为undefined，data为日程id；否则为错误对象。 |
 
 **错误码：**
 
@@ -151,6 +153,7 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
 
 ```
 
+<a id="addevents"></a>
 ## addEvents
 
 ```TypeScript
@@ -178,7 +181,7 @@ addEvents(events: Event[]): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -227,6 +230,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
+<a id="addevents-1"></a>
 ## addEvents
 
 ```TypeScript
@@ -249,7 +253,7 @@ addEvents(events: Event[], callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | events | [Event](../../apis-contacts-kit/arkts-apis/arkts-contacts-contact-event-c.md)[] | 是 | Event对象数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当添加日程成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当添加日程成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -300,6 +304,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
+<a id="deleteevent"></a>
 ## deleteEvent
 
 ```TypeScript
@@ -324,7 +329,7 @@ deleteEvent(id: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -367,6 +372,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
+<a id="deleteevent-1"></a>
 ## deleteEvent
 
 ```TypeScript
@@ -388,7 +394,7 @@ deleteEvent(id: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 日程id，传入的日程id为整数，表示已创建日程的id，是日程的唯一标识符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当删除日程成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当删除日程成功时，err为undefined；否则为错误对象。 |
 
 **示例：**
 
@@ -433,6 +439,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
+<a id="deleteevents"></a>
 ## deleteEvents
 
 ```TypeScript
@@ -457,7 +464,7 @@ deleteEvents(ids: number[]): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -513,6 +520,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
+<a id="deleteevents-1"></a>
 ## deleteEvents
 
 ```TypeScript
@@ -534,7 +542,7 @@ deleteEvents(ids: number[], callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | ids | number[] | 是 | 日程id数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当删除多个日程成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当删除多个日程成功时，err为undefined；否则为错误对象。 |
 
 **示例：**
 
@@ -592,6 +600,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
+<a id="getaccount"></a>
 ## getAccount
 
 ```TypeScript
@@ -635,6 +644,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
+<a id="getconfig"></a>
 ## getConfig
 
 ```TypeScript
@@ -678,6 +688,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
+<a id="getevents"></a>
 ## getEvents
 
 ```TypeScript
@@ -706,7 +717,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise<Event[
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Event[]> | Promise对象，返回的是Event对象数组。 |
+| Promise&lt;Event[]&gt; | Promise对象，返回的是Event对象数组。 |
 
 **错误码：**
 
@@ -757,6 +768,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
+<a id="getevents-1"></a>
 ## getEvents
 
 ```TypeScript
@@ -780,7 +792,7 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 | --- | --- | --- | --- |
 | eventFilter | [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 是 | 查询条件。 |
 | eventKey | (keyof Event)[] | 是 | 查询字段。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Event[]> | 是 | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Event[]&gt; | 是 | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -844,6 +856,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
+<a id="getevents-2"></a>
 ## getEvents
 
 ```TypeScript
@@ -865,7 +878,7 @@ getEvents(callback: AsyncCallback<Event[]>):void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Event[]> | 是 | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Event[]&gt; | 是 | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -902,6 +915,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
+<a id="openeventeditpage"></a>
 ## openEventEditPage
 
 ```TypeScript
@@ -930,7 +944,7 @@ Opens the event edit page.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -991,6 +1005,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 
 ```
 
+<a id="queryeventinstances"></a>
 ## queryEventInstances
 
 ```TypeScript
@@ -1023,7 +1038,7 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Event[]> | Promise对象，返回的是Event对象数组。 |
+| Promise&lt;Event[]&gt; | Promise对象，返回的是Event对象数组。 |
 
 **错误码：**
 
@@ -1074,6 +1089,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
+<a id="setconfig"></a>
 ## setConfig
 
 ```TypeScript
@@ -1098,7 +1114,7 @@ setConfig(config: CalendarConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1137,6 +1153,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
+<a id="setconfig-1"></a>
 ## setConfig
 
 ```TypeScript
@@ -1156,7 +1173,7 @@ setConfig(config: CalendarConfig, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | [CalendarConfig](arkts-calendar-calendarmanager-calendarconfig-i.md) | 是 | 日历配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当设置Config成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当设置Config成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -1197,6 +1214,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
+<a id="updateevent"></a>
 ## updateEvent
 
 ```TypeScript
@@ -1221,7 +1239,7 @@ updateEvent(event: Event): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1266,6 +1284,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
+<a id="updateevent-1"></a>
 ## updateEvent
 
 ```TypeScript
@@ -1285,7 +1304,7 @@ updateEvent(event: Event, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [Event](../../apis-contacts-kit/arkts-apis/arkts-contacts-contact-event-c.md) | 是 | Event对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当更新日程成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当更新日程成功时，err为undefined；否则为错误对象。 |
 
 **示例：**
 

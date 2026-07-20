@@ -6,6 +6,7 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="createstream"></a>
 ## createStream
 
 ```TypeScript
@@ -35,7 +36,7 @@ Creating a Stream.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | The promise returned by the function, contain the ID of a transport stream. |
+| Promise&lt;number&gt; | The promise returned by the function, contain the ID of a transport stream. |
 
 **错误码：**
 

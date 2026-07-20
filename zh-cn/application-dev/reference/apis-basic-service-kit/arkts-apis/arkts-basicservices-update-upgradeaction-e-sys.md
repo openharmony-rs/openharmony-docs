@@ -16,7 +16,7 @@
 UPGRADE = 'upgrade'
 ```
 
-差分包。
+差分包，仅包含与当前版本的差异部分，适用于已安装基础版本的增量升级场景。详见[术语](docroot://basic-services/update/update-kit-term.md)。
 
 **起始版本：** 9
 
@@ -32,7 +32,7 @@ UPGRADE = 'upgrade'
 RECOVERY = 'recovery'
 ```
 
-修复包。
+修复包，用于修复系统异常或恢复系统功能的特殊升级包，适用于系统故障修复场景。详见[术语](docroot://basic-services/update/update-kit-term.md)。
 
 **起始版本：** 9
 

@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -28,6 +29,7 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="identity"></a>
 ## identity
 
 ```TypeScript
@@ -54,6 +56,7 @@ identity(): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@famodelonly@form@atomicservice |
 
+<a id="invert"></a>
 ## invert
 
 ```TypeScript
@@ -80,6 +83,7 @@ invert(): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@famodelonly@form@atomicservice |
 
+<a id="multiply"></a>
 ## multiply
 
 ```TypeScript
@@ -112,6 +116,7 @@ multiply(other?: Matrix2D): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@famodelonly@form@atomicservice |
 
+<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
@@ -145,6 +150,7 @@ rotate(rx?: number, ry?: number): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@famodelonly@form@atomicservice |
 
+<a id="scale"></a>
 ## scale
 
 ```TypeScript
@@ -178,6 +184,7 @@ scale(sx?: number, sy?: number): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@famodelonly@form@atomicservice |
 
+<a id="translate"></a>
 ## translate
 
 ```TypeScript

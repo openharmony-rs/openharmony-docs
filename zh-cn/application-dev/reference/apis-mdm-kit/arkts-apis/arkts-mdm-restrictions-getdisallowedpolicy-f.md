@@ -6,6 +6,7 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="getdisallowedpolicy"></a>
 ## getDisallowedPolicy
 
 ```TypeScript
@@ -33,8 +34,8 @@ function getDisallowedPolicy(admin: Want | null, feature: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want \| null | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>**起始版本：** 12 - 19 |
-| feature | string | 是 | 支持查询的特性清单参考下表2。 <br/> **说明：** 从API version 15开始，应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startadminprovision-1)激活为[BDA](../../../../mdm/mdm-kit-term.md#bda)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、usb、wifi、tethering、camera&lt;!--RP4--&gt;&lt;!--RP4End--&gt;，从API版本26.0.0开始，新增支持使用此接口获取mtpServer特性状态。 |
+| admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) \| null | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>**起始版本：** 12 - 19 |
+| feature | string | 是 | 支持查询的特性清单参考下表2。 <br/> **说明：** 从API version 15开始，应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startadminprovision-1)激活为[BDA](docroot://mdm/mdm-kit-term.md#bda)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、usb、wifi、tethering、camera<!--RP4--><!--RP4End-->，从API版本26.0.0开始，新增支持使用此接口获取mtpServer特性状态。 |
 
 **返回值：**
 
@@ -73,6 +74,7 @@ try {
 ```
 
 
+<a id="getdisallowedpolicy-1"></a>
 ## getDisallowedPolicy
 
 ```TypeScript
@@ -95,7 +97,7 @@ function getDisallowedPolicy(admin: Want | null, feature: FeatureForDevice): boo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want \| null | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) \| null | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | feature | [FeatureForDevice](arkts-mdm-restrictions-featurefordevice-e.md) | 是 | 指定要查询的设备特性。 |
 
 **返回值：**

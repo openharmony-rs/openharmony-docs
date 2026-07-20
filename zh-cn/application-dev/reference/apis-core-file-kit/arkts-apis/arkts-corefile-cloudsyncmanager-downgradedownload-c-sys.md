@@ -18,6 +18,7 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -66,6 +67,7 @@ try {
 
 ```
 
+<a id="getcloudfileinfo"></a>
 ## getCloudFileInfo
 
 ```TypeScript
@@ -88,7 +90,7 @@ getCloudFileInfo(): Promise<CloudFileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CloudFileInfo> | Promise对象，返回携带本地与云端文件信息的对象。 |
+| Promise&lt;CloudFileInfo&gt; | Promise对象，返回携带本地与云端文件信息的对象。 |
 
 **错误码：**
 
@@ -115,6 +117,7 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
 
 ```
 
+<a id="startdownload"></a>
 ## startDownload
 
 ```TypeScript
@@ -139,13 +142,13 @@ startDownload(callback: Callback<DownloadProgress>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DownloadProgress> | 是 | 回调函数。全量下载进度，参数为DownloadProgress，返回值为void。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DownloadProgress&gt; | 是 | 回调函数。全量下载进度，参数为DownloadProgress，返回值为void。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -182,6 +185,7 @@ downgradeMgr.startDownload(callback).then(() => {
 
 ```
 
+<a id="starttransfer"></a>
 ## startTransfer
 
 ```TypeScript
@@ -209,7 +213,7 @@ startTransfer(targetUri: string, callback: Callback<TransferProgress>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | targetUri | string | 是 | 用于存放搬迁后的文件路径URI，必须以“/file://docs/storage/Users/currentUser/”为前缀。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<TransferProgress> | 是 | 回调函数，返回搬迁进度。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;TransferProgress&gt; | 是 | 回调函数，返回搬迁进度。 |
 
 **错误码：**
 
@@ -241,6 +245,7 @@ try {
 
 ```
 
+<a id="stopdownload"></a>
 ## stopDownload
 
 ```TypeScript
@@ -263,7 +268,7 @@ stopDownload(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

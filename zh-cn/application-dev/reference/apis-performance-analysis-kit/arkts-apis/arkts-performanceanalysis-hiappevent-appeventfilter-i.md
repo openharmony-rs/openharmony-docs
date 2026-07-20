@@ -4,7 +4,7 @@
 
 > **说明：**  
 >  
-> 不同类型应用上，系统事件的订阅规格不同，具体规格可参见[HiAppEvent约束与限制](../../../../dfx/hiappevent-intro.md#约束与限制)。
+> 不同类型应用上，系统事件的订阅规格不同，具体规格可参见[HiAppEvent约束与限制](docroot://dfx/hiappevent-intro.md#约束与限制)。
 
 **起始版本：** 9
 

@@ -6,6 +6,7 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
+<a id="setwifiprofile"></a>
 ## setWifiProfile
 
 ```TypeScript
@@ -36,7 +37,7 @@ function setWifiProfile(admin: Want, profile: WifiProfile, callback: AsyncCallba
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | profile | [WifiProfile](arkts-mdm-wifimanager-wifiprofile-i.md) | 是 | Wi-Fi配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ wifiManager.setWifiProfile(wantTemp, profile, (err) => {
 ```
 
 
+<a id="setwifiprofile-1"></a>
 ## setWifiProfile
 
 ```TypeScript
@@ -112,7 +114,7 @@ function setWifiProfile(admin: Want, profile: WifiProfile): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当配置Wi-Fi连接到指定网络失败时会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当配置Wi-Fi连接到指定网络失败时会抛出错误对象。 |
 
 **错误码：**
 

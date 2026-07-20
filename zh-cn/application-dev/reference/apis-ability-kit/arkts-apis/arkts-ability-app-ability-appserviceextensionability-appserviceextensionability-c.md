@@ -16,6 +16,7 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
 import { AppServiceExtensionAbility } from '@kit.AbilityKit';
 ```
 
+<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -73,6 +74,7 @@ export default class AppServiceExtAbility extends AppServiceExtensionAbility {
 
 ```
 
+<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -115,6 +117,7 @@ export default class AppServiceExtAbility extends AppServiceExtensionAbility {
 
 ```
 
+<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript
@@ -147,6 +150,7 @@ export default class AppServiceExtAbility extends AppServiceExtensionAbility {
 
 ```
 
+<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -185,6 +189,7 @@ export default class AppServiceExtAbility extends AppServiceExtensionAbility {
 
 ```
 
+<a id="onrequest"></a>
 ## onRequest
 
 ```TypeScript

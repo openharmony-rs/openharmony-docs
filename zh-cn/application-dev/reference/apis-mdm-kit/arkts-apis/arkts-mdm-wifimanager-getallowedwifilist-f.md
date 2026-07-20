@@ -6,6 +6,7 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
+<a id="getallowedwifilist"></a>
 ## getAllowedWifiList
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getAllowedWifiList(admin: Want): Array<WifiAccessInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<WifiAccessInfo> | Wi-Fi允许名单数组。 |
+| Array&lt;WifiAccessInfo&gt; | Wi-Fi允许名单数组。 |
 
 **错误码：**
 

@@ -24,7 +24,7 @@ readonly sortedHashCode: Array<string>
 
 通知排序的HashCode。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 7
 
@@ -42,7 +42,7 @@ readonly sortings: Record<string, NotificationSorting>
 
 通知排序信息。
 
-**类型：** Record<string, NotificationSorting>
+**类型：** Record&lt;string, NotificationSorting&gt;
 
 **起始版本：** 7
 

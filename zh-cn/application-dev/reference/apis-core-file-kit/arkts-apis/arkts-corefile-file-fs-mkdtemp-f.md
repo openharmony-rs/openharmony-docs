@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="mkdtemp"></a>
 ## mkdtemp
 
 ```TypeScript
@@ -30,7 +31,7 @@ declare function mkdtemp(prefix: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回生成的唯一目录路径。 |
+| Promise&lt;string&gt; | Promise对象。返回生成的唯一目录路径。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ declare function mkdtemp(prefix: string): Promise<string>
 | 13900042 | Unknown error |
 
 
+<a id="mkdtemp-1"></a>
 ## mkdtemp
 
 ```TypeScript
@@ -72,7 +74,7 @@ declare function mkdtemp(prefix: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | prefix | string | 是 | 指定目录路径，命名时需要以"XXXXXX"作为结尾。路径末尾的"XXXXXX"字符串将被替换为随机字符，以创建唯一的目录名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 异步创建临时目录之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 异步创建临时目录之后的回调。 |
 
 **错误码：**
 

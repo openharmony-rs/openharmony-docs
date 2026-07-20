@@ -6,6 +6,7 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+<a id="getaccessibilityextensionlist"></a>
 ## getAccessibilityExtensionList
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AccessibilityAbilityInfo>> | Promise对象，返回辅助应用信息列表。 |
+| Promise&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt; | Promise对象，返回辅助应用信息列表。 |
 
 **错误码：**
 
@@ -90,6 +91,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 ```
 
 
+<a id="getaccessibilityextensionlist-1"></a>
 ## getAccessibilityExtensionList
 
 ```TypeScript
@@ -114,7 +116,7 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 | --- | --- | --- | --- |
 | abilityType | [AbilityType](arkts-accessibility-accessibility-abilitytype-t.md) | 是 | 辅助应用的类型。 |
 | stateType | [AbilityState](arkts-accessibility-accessibility-abilitystate-t.md) | 是 | 辅助应用的状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<AccessibilityAbilityInfo>> | 是 | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt; | 是 | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
 
 **错误码：**
 

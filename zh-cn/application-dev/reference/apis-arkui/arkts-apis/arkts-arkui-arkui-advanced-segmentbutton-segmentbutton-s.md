@@ -10,6 +10,8 @@
 
 **起始版本：** 11
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-declare struct SegmentButton--><!--Device-unnamed-declare struct SegmentButton-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -60,7 +62,7 @@ maxFontScale: number | Resource
 
 当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。
 
-**类型：** number | Resource
+**类型：** number \| Resource
 
 **起始版本：** 14
 
@@ -82,7 +84,7 @@ onItemClicked?: Callback<number>
 
 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。若不传入此参数，则点击时不触发回调。
 
-**类型：** Callback<number>
+**类型：** Callback&lt;number&gt;
 
 **起始版本：** 13
 
@@ -126,7 +128,7 @@ selectedIndexes: number[]
 
 **说明：**
 
-`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。
+`selectedIndexes`使用[@Link装饰器：父子双向同步](docroot://ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。
 
 **类型：** number[]
 

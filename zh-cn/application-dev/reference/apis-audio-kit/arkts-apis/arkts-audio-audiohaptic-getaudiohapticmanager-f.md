@@ -6,6 +6,7 @@
 import { audioHaptic } from '@kit.AudioKit';
 ```
 
+<a id="getaudiohapticmanager"></a>
 ## getAudioHapticManager
 
 ```TypeScript

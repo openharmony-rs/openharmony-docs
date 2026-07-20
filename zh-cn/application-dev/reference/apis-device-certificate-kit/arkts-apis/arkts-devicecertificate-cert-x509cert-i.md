@@ -14,6 +14,7 @@ X509证书类。
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="checkvaliditywithdate"></a>
 ## checkValidityWithDate
 
 ```TypeScript
@@ -46,6 +47,7 @@ checkValidityWithDate(date: string): void
 | [19030003](../errorcode-cert.md#19030003-证书尚未生效) | 证书尚未生效。 |
 | [19030004](../errorcode-cert.md#19030004-证书过期) | 证书过期。 |
 
+<a id="getbasicconstraints"></a>
 ## getBasicConstraints
 
 ```TypeScript
@@ -68,6 +70,7 @@ getBasicConstraints(): number
 | --- | --- |
 | number | 表示X509证书基本约束。 |
 
+<a id="getcrldistributionpoint"></a>
 ## getCRLDistributionPoint
 
 ```TypeScript
@@ -98,6 +101,7 @@ getCRLDistributionPoint(): DataArray
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getcertserialnumber"></a>
 ## getCertSerialNumber
 
 ```TypeScript
@@ -126,6 +130,7 @@ getCertSerialNumber(): bigint
 | --- | --- |
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 
+<a id="getencoded"></a>
 ## getEncoded
 
 ```TypeScript
@@ -146,7 +151,7 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<EncodingBlob> | 是 | 回调函数。当获取X509证书序列化数据成功时，err为undefined，data为获取到的X509证书序列化数据；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;EncodingBlob&gt; | 是 | 回调函数。当获取X509证书序列化数据成功时，err为undefined，data为获取到的X509证书序列化数据；否则为错误对象。 |
 
 **错误码：**
 
@@ -157,6 +162,7 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getencoded-1"></a>
 ## getEncoded
 
 ```TypeScript
@@ -177,7 +183,7 @@ getEncoded(): Promise<EncodingBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<EncodingBlob> | Promise对象，返回X509证书序列化数据。 |
+| Promise&lt;EncodingBlob&gt; | Promise对象，返回X509证书序列化数据。 |
 
 **错误码：**
 
@@ -188,6 +194,7 @@ getEncoded(): Promise<EncodingBlob>
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getextkeyusage"></a>
 ## getExtKeyUsage
 
 ```TypeScript
@@ -218,6 +225,7 @@ getExtKeyUsage(): DataArray
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getextensionsobject"></a>
 ## getExtensionsObject
 
 ```TypeScript
@@ -248,6 +256,7 @@ getExtensionsObject(): CertExtension
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getissueraltnames"></a>
 ## getIssuerAltNames
 
 ```TypeScript
@@ -282,6 +291,7 @@ getIssuerAltNames(): DataArray
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getissuername"></a>
 ## getIssuerName
 
 ```TypeScript
@@ -316,6 +326,7 @@ getIssuerName(): DataBlob
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getissuername-1"></a>
 ## getIssuerName
 
 ```TypeScript
@@ -353,6 +364,7 @@ getIssuerName(encodingType: EncodingType): string
 | [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br>1. encodingType的值不在EncodingType枚举范围内。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getissuerx500distinguishedname"></a>
 ## getIssuerX500DistinguishedName
 
 ```TypeScript
@@ -383,6 +395,7 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getitem"></a>
 ## getItem
 
 ```TypeScript
@@ -420,6 +433,7 @@ getItem(itemType: CertItemType): DataBlob
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getkeyusage"></a>
 ## getKeyUsage
 
 ```TypeScript
@@ -449,6 +463,7 @@ getKeyUsage(): DataBlob
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getnotaftertime"></a>
 ## getNotAfterTime
 
 ```TypeScript
@@ -479,6 +494,7 @@ getNotAfterTime(): string
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getnotbeforetime"></a>
 ## getNotBeforeTime
 
 ```TypeScript
@@ -509,6 +525,7 @@ getNotBeforeTime(): string
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getpublickey"></a>
 ## getPublicKey
 
 ```TypeScript
@@ -538,6 +555,7 @@ getPublicKey(): cryptoFramework.PubKey
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getserialnumber"></a>
 ## getSerialNumber
 
 ```TypeScript
@@ -567,6 +585,7 @@ getSerialNumber(): number
 | --- | --- |
 | number | 表示X509证书序列号。 |
 
+<a id="getsignature"></a>
 ## getSignature
 
 ```TypeScript
@@ -597,6 +616,7 @@ getSignature(): DataBlob
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getsignaturealgname"></a>
 ## getSignatureAlgName
 
 ```TypeScript
@@ -627,6 +647,7 @@ getSignatureAlgName(): string
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getsignaturealgoid"></a>
 ## getSignatureAlgOid
 
 ```TypeScript
@@ -657,6 +678,7 @@ getSignatureAlgOid(): string
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getsignaturealgparams"></a>
 ## getSignatureAlgParams
 
 ```TypeScript
@@ -688,6 +710,7 @@ getSignatureAlgParams(): DataBlob
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getsubjectaltnames"></a>
 ## getSubjectAltNames
 
 ```TypeScript
@@ -722,6 +745,7 @@ getSubjectAltNames(): DataArray
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getsubjectname"></a>
 ## getSubjectName
 
 ```TypeScript
@@ -763,6 +787,7 @@ getSubjectName(encodingType?: EncodingType): DataBlob
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 参数类型不正确；<br>2. 参数校验失败。<br>**适用版本：** 12+ |
 
+<a id="getsubjectx500distinguishedname"></a>
 ## getSubjectX500DistinguishedName
 
 ```TypeScript
@@ -793,6 +818,7 @@ getSubjectX500DistinguishedName(): X500DistinguishedName
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getversion"></a>
 ## getVersion
 
 ```TypeScript
@@ -815,6 +841,7 @@ getVersion(): number
 | --- | --- |
 | number | 表示X509证书版本号。 |
 
+<a id="hashcode"></a>
 ## hashCode
 
 ```TypeScript
@@ -835,7 +862,7 @@ hashCode(): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | DER格式数据的哈希值。 |
+| Uint8Array | DER格式数据的哈希值。 |
 
 **错误码：**
 
@@ -845,6 +872,7 @@ hashCode(): Uint8Array
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="match"></a>
 ## match
 
 ```TypeScript
@@ -881,6 +909,7 @@ match(param: X509CertMatchParameters): boolean
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -911,6 +940,7 @@ toString(): string
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="tostring-1"></a>
 ## toString
 
 ```TypeScript
@@ -948,6 +978,7 @@ toString(encodingType: EncodingType): string
 | [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br>1. encodingType的值不在EncodingType枚举范围内。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="verify"></a>
 ## verify
 
 ```TypeScript
@@ -969,7 +1000,7 @@ verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | cryptoFramework.PubKey | 是 | 用于验签的公钥对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当验签成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当验签成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -978,6 +1009,7 @@ verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="verify-1"></a>
 ## verify
 
 ```TypeScript
@@ -1004,7 +1036,7 @@ verify(key: cryptoFramework.PubKey): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

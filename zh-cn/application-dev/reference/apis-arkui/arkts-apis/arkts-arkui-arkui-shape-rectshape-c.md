@@ -18,6 +18,7 @@
 import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -42,8 +43,9 @@ constructor(options?: RectShapeOptions | RoundRectShapeOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | RectShapeOptions \| RoundRectShapeOptions | 否 | 矩形形状参数。 |
+| options | [RectShapeOptions](arkts-arkui-arkui-shape-rectshapeoptions-i.md) \| RoundRectShapeOptions | 否 | 矩形形状参数。 |
 
+<a id="radius"></a>
 ## radius
 
 ```TypeScript
@@ -68,7 +70,7 @@ radius(radius: number | string | Array<number | string>): RectShape
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| radius | number \| string \| Array<number \| string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| radius | number \| string \| Array&lt;number \| string&gt; | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
@@ -76,6 +78,7 @@ radius(radius: number | string | Array<number | string>): RectShape
 | --- | --- |
 | [RectShape](arkts-arkui-arkui-shape-rectshape-c.md) | 返回RectShape对象。 |
 
+<a id="radiusheight"></a>
 ## radiusHeight
 
 ```TypeScript
@@ -108,6 +111,7 @@ radiusHeight(rHeight: number | string): RectShape
 | --- | --- |
 | [RectShape](arkts-arkui-arkui-shape-rectshape-c.md) | 返回RectShape对象。 |
 
+<a id="radiuswidth"></a>
 ## radiusWidth
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="getappnativememinfoasync"></a>
 ## getAppNativeMemInfoAsync
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getAppNativeMemInfoAsync(): Promise<NativeMemInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<NativeMemInfo> | promise���󣬷���Ӧ�ý����ڴ���Ϣ�� |
+| Promise&lt;NativeMemInfo&gt; | promise���󣬷���Ӧ�ý����ڴ���Ϣ�� |
 
 **示例：**
 

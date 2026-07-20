@@ -16,6 +16,7 @@
 import { RespCallback } from '@kit.AdsKit';
 ```
 
+<a id="onloadad"></a>
 ## onLoadAd
 
 ```TypeScript
@@ -56,6 +57,7 @@ export default class AdsExtensionAbility extends AdsServiceExtensionAbility {
 
 ```
 
+<a id="onloadadwithmultislots"></a>
 ## onLoadAdWithMultiSlots
 
 ```TypeScript

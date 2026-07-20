@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getshownumber"></a>
 ## getShowNumber
 
 ```TypeScript
@@ -29,7 +30,7 @@ Get the SIM card number of the specified card slot.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the card slot index number,ranging from 0 to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | Indicates the callback for getting the SIM card number. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | Indicates the callback for getting the SIM card number. |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ sim.getShowNumber(0, (err: BusinessError, data: string) => {
 ```
 
 
+<a id="getshownumber-1"></a>
 ## getShowNumber
 
 ```TypeScript
@@ -85,7 +87,7 @@ Get the SIM card number of the specified card slot.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Returns the SIM card number. |
+| Promise&lt;string&gt; | Returns the SIM card number. |
 
 **错误码：**
 

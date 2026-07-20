@@ -14,6 +14,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="enablesystemrecordcontroller"></a>
 ## enableSystemRecordController
 
 ```TypeScript
@@ -41,7 +42,7 @@ enableSystemRecordController(show: boolean, config: SystemRecordControllerConfig
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 不会返回任何值的Promise。 |
+| Promise&lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 

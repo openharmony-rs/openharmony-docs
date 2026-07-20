@@ -1,0 +1,50 @@
+# CheckBoxShape
+
+common enum of the checkbox shape
+
+**起始版本：** 12
+
+<!--Device-unnamed-declare enum CheckBoxShape--><!--Device-unnamed-declare enum CheckBoxShape-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CIRCLE
+
+```TypeScript
+CIRCLE = 0
+```
+
+Circle.
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CheckBoxShape-CIRCLE = 0--><!--Device-CheckBoxShape-CIRCLE = 0-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## ROUNDED_SQUARE
+
+```TypeScript
+ROUNDED_SQUARE = 1
+```
+
+Rounded Square.
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CheckBoxShape-ROUNDED_SQUARE = 1--><!--Device-CheckBoxShape-ROUNDED_SQUARE = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+

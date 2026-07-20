@@ -18,6 +18,7 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="auth"></a>
 ## auth
 
 ```TypeScript
@@ -57,7 +58,7 @@ auth(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| challenge | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 挑战值，可以传Uint8Array([])。 |
+| challenge | Uint8Array | 是 | 挑战值，可以传Uint8Array([])。 |
 | authType | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md) | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
 | authTrustLevel | [AuthTrustLevel](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-authtrustlevel-e-sys.md) | 是 | 认证信任等级。 |
 | callback | [IUserAuthCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 回调函数。 |
@@ -66,7 +67,7 @@ auth(
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | ContextId，作为取消认证[cancelAuth](arkts-userauthentication-userauth-userauth-c.md#cancelauth-1)接口的入参。 |
+| Uint8Array | ContextId，作为取消认证[cancelAuth](arkts-userauthentication-userauth-userauth-c.md#cancelauth-1)接口的入参。 |
 
 **示例：**
 
@@ -92,6 +93,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 ```
 
+<a id="cancelauth"></a>
 ## cancelAuth
 
 ```TypeScript
@@ -116,7 +118,7 @@ cancelAuth(contextID: Uint8Array): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contextID | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 上下文的标识，通过[auth](arkts-userauthentication-userauth-userauth-c.md#auth-1)接口获取。 |
+| contextID | Uint8Array | 是 | 上下文的标识，通过[auth](arkts-userauthentication-userauth-userauth-c.md#auth-1)接口获取。 |
 
 **返回值：**
 
@@ -141,6 +143,7 @@ if (cancelCode == userAuth.ResultCode.SUCCESS) {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -168,6 +171,7 @@ let auth = new userAuth.UserAuth();
 
 ```
 
+<a id="getavailablestatus"></a>
 ## getAvailableStatus
 
 ```TypeScript
@@ -216,6 +220,7 @@ if (checkCode == userAuth.ResultCode.SUCCESS) {
 
 ```
 
+<a id="getversion"></a>
 ## getVersion
 
 ```TypeScript

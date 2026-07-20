@@ -6,7 +6,7 @@
 >  
 > 本模块接口仅可在Stage模型下使用。  
 >  
-> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](docroot://mdm/mdm-kit-guide.md)。
 
 **起始版本：** 11
 
@@ -26,8 +26,8 @@ import { locationManager } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md#getlocationpolicy-1) | 查询位置服务管理策略。 |
-| [setLocationPolicy](arkts-mdm-locationmanager-setlocationpolicy-f.md#setlocationpolicy-1) | 设置位置服务管理策略。 |
+| [getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md#getlocationpolicy) | 查询位置服务管理策略。 |
+| [setLocationPolicy](arkts-mdm-locationmanager-setlocationpolicy-f.md#setlocationpolicy) | 设置位置服务管理策略。 |
 
 ### 枚举
 

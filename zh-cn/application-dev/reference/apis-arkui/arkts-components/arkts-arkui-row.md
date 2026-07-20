@@ -37,7 +37,7 @@ Row(options?: RowOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | RowOptions | 否 | 横向布局元素间距，支持设置number或string类型。 |
+| options | [RowOptions](arkts-arkui-rowoptions-i.md) | 否 | 横向布局元素间距，支持设置number或string类型。 |
 
 ## Row
 
@@ -63,7 +63,7 @@ Row(options?: RowOptions | RowOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | RowOptions \| RowOptionsV2 | 否 | 横向布局元素间距，支持设置number、string或Resource类型。 |
+| options | [RowOptions](arkts-arkui-rowoptions-i.md) \| RowOptionsV2 | 否 | 横向布局元素间距，支持设置number、string或Resource类型。  |
 
 ## 汇总
 

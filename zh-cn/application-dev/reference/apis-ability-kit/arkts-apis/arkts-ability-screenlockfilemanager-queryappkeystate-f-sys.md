@@ -6,6 +6,7 @@
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
 
+<a id="queryappkeystate"></a>
 ## queryAppKeyState
 
 ```TypeScript

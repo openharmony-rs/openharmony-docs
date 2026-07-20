@@ -6,6 +6,7 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
+<a id="controltransfer"></a>
 ## controlTransfer
 
 ```TypeScript
@@ -38,7 +39,7 @@ function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, ti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，获取传输或接收到的数据块大小。失败返回-1。 |
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回-1。 |
 
 **示例：**
 

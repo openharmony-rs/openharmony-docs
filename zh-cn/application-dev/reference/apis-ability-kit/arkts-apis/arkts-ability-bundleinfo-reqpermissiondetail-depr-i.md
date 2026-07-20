@@ -10,7 +10,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [bundleInfo](arkts-bundleinfo.md)
+**替代接口：** [bundleInfo](arkts-ability-bundleinfo-i.md)
 
 <!--Device-unnamed-export interface ReqPermissionDetail--><!--Device-unnamed-export interface ReqPermissionDetail-End-->
 

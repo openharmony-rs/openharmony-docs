@@ -6,6 +6,7 @@
 import { shortcutManager } from '@kit.AbilityKit';
 ```
 
+<a id="getshortcutinfobyability"></a>
 ## getShortcutInfoByAbility
 
 ```TypeScript
@@ -40,7 +41,7 @@ function getShortcutInfoByAbility(bundleName: string, moduleName: string, abilit
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ShortcutInfo> | Array形式返回指定用户下指定UIAbility的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
+| Array&lt;ShortcutInfo&gt; | Array形式返回指定用户下指定UIAbility的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
 
 **错误码：**
 

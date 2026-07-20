@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="enableselfdeviceadmin"></a>
 ## enableSelfDeviceAdmin
 
 ```TypeScript
@@ -37,7 +38,7 @@ function enableSelfDeviceAdmin(admin: Want, credential: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | the promise returned by the enableSelfDeviceAdmin. |
+| Promise&lt;void&gt; | the promise returned by the enableSelfDeviceAdmin. |
 
 **错误码：**
 

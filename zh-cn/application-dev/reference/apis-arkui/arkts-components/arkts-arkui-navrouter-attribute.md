@@ -14,6 +14,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="mode"></a>
 ## mode
 
 ```TypeScript
@@ -40,8 +41,9 @@ mode(mode: NavRouteMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [NavRouteMode](arkts-arkui-nav-router-navroutemode-e.md) | 是 | 指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。<br/>默认值：NavRouteMode.PUSH_WITH_RECREATE |
+| mode | [NavRouteMode](arkts-arkui-navroutemode-e.md) | 是 | 指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。<br/>默认值：NavRouteMode.PUSH_WITH_RECREATE |
 
+<a id="onstatechange"></a>
 ## onStateChange
 
 ```TypeScript
@@ -66,5 +68,5 @@ onStateChange(callback: (isActivated: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (isActivated: boolean) => void | 是 | isActivated为true时表示激活，为false时表示未激活。 |
+| callback | (isActivated: boolean) =&gt; void | 是 | isActivated为true时表示激活，为false时表示未激活。 |
 

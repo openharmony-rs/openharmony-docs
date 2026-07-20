@@ -1,6 +1,6 @@
 # LauncherAbilityInfo（系统接口）
 
-LauncherAbilityInfo信息，通过接口[innerBundleManager.getLauncherAbilityInfos](../../../../reference/apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md#innerbundlemanagergetlauncherabilityinfosdeprecated)获取。
+LauncherAbilityInfo信息，通过接口[innerBundleManager.getLauncherAbilityInfos](docroot://reference/apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md#innerbundlemanagergetlauncherabilityinfosdeprecated)获取。
 
 > **说明：**  
 >  

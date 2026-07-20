@@ -1,5 +1,6 @@
 # publishAsUser（系统接口）
 
+<a id="publishasuser"></a>
 ## publishAsUser
 
 ```TypeScript
@@ -12,7 +13,7 @@ function publishAsUser(event: string, userId: number, callback: AsyncCallback<vo
 
 **废弃版本：** 9
 
-**替代接口：** publishAsUser(event:
+**替代接口：** [publishAsUser(event:](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser-1)
 
 <!--Device-commonEvent-function publishAsUser(event: string, userId: number, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publishAsUser(event: string, userId: number, callback: AsyncCallback<void>): void-End-->
 
@@ -26,7 +27,7 @@ function publishAsUser(event: string, userId: number, callback: AsyncCallback<vo
 | --- | --- | --- | --- |
 | event | string | 是 | 表示要发送的公共事件。 |
 | userId | number | 是 | 表示指定向该用户ID发送此公共事件。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 表示被指定的回调方法。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
 **示例：**
 
@@ -51,6 +52,7 @@ commonEvent.publishAsUser('event', userId, publishCallBack);
 ```
 
 
+<a id="publishasuser-1"></a>
 ## publishAsUser
 
 ```TypeScript
@@ -68,7 +70,7 @@ function publishAsUser(
 
 **废弃版本：** 9
 
-**替代接口：** publishAsUser(
+**替代接口：** [publishAsUser(](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser-1)
 
 <!--Device-commonEvent-function publishAsUser(
     event: string,
@@ -93,7 +95,7 @@ function publishAsUser(
 | event | string | 是 | 表示要发布的公共事件。 |
 | userId | number | 是 | 表示指定向该用户ID发送此公共事件。 |
 | options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | 是 | 表示发布公共事件的属性。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 表示被指定的回调方法。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
 **示例：**
 

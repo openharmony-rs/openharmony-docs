@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="getsuperadmin"></a>
 ## getSuperAdmin
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getSuperAdmin(): Promise<Want>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Want> | 返回超级设备管理应用的Promise对象。当设备没有激活超级管理应用时，返回的Promise中Want的bundleName与abilityName为空串。 |
+| Promise&lt;Want&gt; | 返回超级设备管理应用的Promise对象。当设备没有激活超级管理应用时，返回的Promise中Want的bundleName与abilityName为空串。 |
 
 **错误码：**
 

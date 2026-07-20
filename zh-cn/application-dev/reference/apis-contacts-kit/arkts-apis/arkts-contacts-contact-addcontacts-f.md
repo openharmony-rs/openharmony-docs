@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="addcontacts"></a>
 ## addContacts
 
 ```TypeScript
@@ -29,13 +30,13 @@ function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
-| contacts | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Contact> | 是 | 联系人信息数组。 |
+| contacts | Array&lt;Contact&gt; | 是 | 联系人信息数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | Promise对象，返回批量添加的联系人id数组。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回批量添加的联系人id数组。 |
 
 **错误码：**
 

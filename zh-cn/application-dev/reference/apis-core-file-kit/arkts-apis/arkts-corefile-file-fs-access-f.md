@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="access"></a>
 ## access
 
 ```TypeScript
@@ -35,7 +36,7 @@ declare function access(path: string, mode?: AccessModeType): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回布尔值。返回true，表示文件存在；返回false，表示文件不存在。 |
+| Promise&lt;boolean&gt; | Promise对象。返回布尔值。返回true，表示文件存在；返回false，表示文件不存在。 |
 
 **错误码：**
 
@@ -55,6 +56,7 @@ declare function access(path: string, mode?: AccessModeType): Promise<boolean>
 | 13900042 | Unknown error |
 
 
+<a id="access-1"></a>
 ## access
 
 ```TypeScript
@@ -76,7 +78,7 @@ declare function access(path: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 文件或目录应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 异步检查文件或目录是否存在的回调。如果存在，回调返回true；否则返回false。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 异步检查文件或目录是否存在的回调。如果存在，回调返回true；否则返回false。 |
 
 **错误码：**
 
@@ -96,6 +98,7 @@ declare function access(path: string, callback: AsyncCallback<boolean>): void
 | 13900042 | Unknown error |
 
 
+<a id="access-2"></a>
 ## access
 
 ```TypeScript
@@ -124,7 +127,7 @@ declare function access(path: string, mode: AccessModeType, flag: AccessFlagType
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回布尔值。返回true，表示文件或目录在本地且校验权限存在；返回false，表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
+| Promise&lt;boolean&gt; | Promise对象。返回布尔值。返回true，表示文件或目录在本地且校验权限存在；返回false，表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
 
 **错误码：**
 

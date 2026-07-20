@@ -18,8 +18,8 @@ AbilityDelegatorRegistry模块提供用于存储已注册的[AbilityDelegator](.
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-depr-f.md#getabilitydelegator-1) | 获取应用程序的AbilityDelegator对象。 |
-| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-depr-f.md#getarguments-1) | 获取单元测试参数AbilityDelegatorArgs对象。 |
+| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-depr-f.md#getabilitydelegator) | 获取应用程序的AbilityDelegator对象。 |
+| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-depr-f.md#getarguments) | 获取单元测试参数AbilityDelegatorArgs对象。 |
 
 ### 枚举
 

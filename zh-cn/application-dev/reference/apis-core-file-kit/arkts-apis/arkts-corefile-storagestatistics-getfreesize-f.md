@@ -6,6 +6,7 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getfreesize"></a>
 ## getFreeSize
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getFreeSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回内置存储的可用空间大小（单位为Byte）。 (Unit: Byte) |
+| Promise&lt;number&gt; | Promise对象，返回内置存储的可用空间大小（单位为Byte）。 (Unit: Byte) |
 
 **错误码：**
 

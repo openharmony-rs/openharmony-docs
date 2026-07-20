@@ -22,7 +22,7 @@ responseHeaders: Array<WebHeader>
 
 请求此JavaScript文件时服务器返回的响应头，使用E-Tag或Last-Modified标识文件版本，判断是否需要更新。
 
-**类型：** Array<WebHeader>
+**类型：** Array&lt;WebHeader&gt;
 
 **起始版本：** 12
 

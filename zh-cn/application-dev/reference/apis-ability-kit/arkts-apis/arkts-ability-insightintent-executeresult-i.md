@@ -66,7 +66,7 @@ result?: Record<string, Object>
 
 意图执行返回的结果，通常会包含需要返回给系统入口的数据。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 11
 
@@ -86,7 +86,7 @@ uris?: Array<string>
 
 意图执行返回的URI列表。该字段需要与flags字段配合使用，根据URI列表将flags字段的相应权限授权给系统入口。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 18
 

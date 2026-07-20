@@ -54,7 +54,7 @@ interfaces: Array<USBInterface>
 
 配置支持的接口属性。
 
-**类型：** Array<USBInterface>
+**类型：** Array&lt;USBInterface&gt;
 
 **起始版本：** 9
 

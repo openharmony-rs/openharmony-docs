@@ -34,7 +34,7 @@ Uses new to create Polygon.Anonymous Object Rectification.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | PolygonOptions | 否 | Polygon options |
+| options | [PolygonOptions](arkts-arkui-polygonoptions-i.md) | 否 | Polygon options |
 
 ## Polygon
 
@@ -58,7 +58,7 @@ Polygon(options?: PolygonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | PolygonOptions | 否 | Polygon绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options | [PolygonOptions](arkts-arkui-polygonoptions-i.md) | 否 | Polygon绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## 汇总
 

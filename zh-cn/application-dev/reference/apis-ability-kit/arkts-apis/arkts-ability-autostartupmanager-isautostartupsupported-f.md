@@ -6,6 +6,7 @@
 import { autoStartupManager } from '@kit.AbilityKit';
 ```
 
+<a id="isautostartupsupported"></a>
 ## isAutoStartupSupported
 
 ```TypeScript

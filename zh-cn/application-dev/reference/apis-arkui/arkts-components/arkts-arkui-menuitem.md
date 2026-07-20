@@ -28,7 +28,7 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | MenuItemOptions \| CustomBuilder | 否 | 包含设置MenuItem的各项信息。 如果不传该参数，则创建空的MenuItem对象。 |
+| value | [MenuItemOptions](arkts-arkui-menuitemoptions-i.md) \| CustomBuilder | 否 | 包含设置MenuItem的各项信息。 如果不传该参数，则创建空的MenuItem对象。  |
 
 ## 汇总
 

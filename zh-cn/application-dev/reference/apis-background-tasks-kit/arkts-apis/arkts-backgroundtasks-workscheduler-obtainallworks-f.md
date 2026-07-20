@@ -6,6 +6,7 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="obtainallworks"></a>
 ## obtainAllWorks
 
 ```TypeScript
@@ -18,7 +19,7 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 
 **废弃版本：** 10
 
-**替代接口：** obtainAllWorks(callback:
+**替代接口：** [obtainAllWorks(callback:](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -30,13 +31,13 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<WorkInfo> | 延迟任务列表，如果已添加延迟任务到执行队列，则返回当前应用所有的延迟任务列表；否则返回空列表。 |
+| Array&lt;WorkInfo&gt; | 延迟任务列表，如果已添加延迟任务到执行队列，则返回当前应用所有的延迟任务列表；否则返回空列表。 |
 
 **错误码：**
 
@@ -48,6 +49,7 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 | [9700003](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 
 
+<a id="obtainallworks-1"></a>
 ## obtainAllWorks
 
 ```TypeScript
@@ -68,7 +70,7 @@ function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<WorkInfo>> | 是 | 回调函数，获取成功时，返回当前应用所有的延迟任务列表，否则抛出异常。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;WorkInfo&gt;&gt; | 是 | 回调函数，获取成功时，返回当前应用所有的延迟任务列表，否则抛出异常。 |
 
 **错误码：**
 
@@ -96,6 +98,7 @@ workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.Wor
 ```
 
 
+<a id="obtainallworks-2"></a>
 ## obtainAllWorks
 
 ```TypeScript
@@ -116,7 +119,7 @@ function obtainAllWorks(): Promise<Array<WorkInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<WorkInfo>> | Promise对象，返回当前应用所有的延迟任务。 |
+| Promise&lt;Array&lt;WorkInfo&gt;&gt; | Promise对象，返回当前应用所有的延迟任务。 |
 
 **错误码：**
 

@@ -60,7 +60,7 @@ keys: Array<GetPropertyType>
 
 指示要获取的属性类型数组。
 
-**类型：** Array<GetPropertyType>
+**类型：** Array&lt;GetPropertyType&gt;
 
 **起始版本：** 8
 

@@ -14,6 +14,7 @@
 import { AnimatorOptions, SimpleAnimatorOptions, AnimatorResult } from '@kit.ArkUI';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -27,7 +28,7 @@ static create(options: AnimatorOptions): AnimatorResult
 > -  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [createAnimator](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator)来明确UI的执行上下文。
+> [createAnimator](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator)来明确UI的执行上下文。
 
 **起始版本：** 9
 
@@ -80,13 +81,14 @@ animator.create(options); // 建议使用 UIContext.createAnimator()接口
 
 ```
 
+<a id="create-1"></a>
 ## create
 
 ```TypeScript
 static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-创建animator动画结果对象（AnimatorResult）。与[create](Animator.create(options: AnimatorOptions))相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
+创建animator动画结果对象（AnimatorResult）。与[create](arkts-arkui-animator-animator-c.md#create-1)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
 
 **起始版本：** 18
 
@@ -102,7 +104,7 @@ static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | AnimatorOptions \| SimpleAnimatorOptions | 是 | 定义动画参数选项。 |
+| options | [AnimatorOptions](arkts-arkui-animator-animatoroptions-i.md) \| SimpleAnimatorOptions | 是 | 定义动画参数选项。 |
 
 **返回值：**
 
@@ -127,6 +129,7 @@ animator.create(options); // 建议使用 UIContext.createAnimator()接口
 
 ```
 
+<a id="createanimator"></a>
 ## createAnimator
 
 ```TypeScript
@@ -141,7 +144,7 @@ static createAnimator(options: AnimatorOptions): AnimatorResult
 
 **废弃版本：** 9
 
-**替代接口：** create(options:
+**替代接口：** [create(options:](arkts-arkui-animator-animator-c.md#create-1)
 
 <!--Device-Animator-static createAnimator(options: AnimatorOptions): AnimatorResult--><!--Device-Animator-static createAnimator(options: AnimatorOptions): AnimatorResult-End-->
 

@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="stopcastdevicediscovery"></a>
 ## stopCastDeviceDiscovery
 
 ```TypeScript
@@ -26,7 +27,7 @@ function stopCastDeviceDiscovery(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当成功停止搜索，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当成功停止搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -45,6 +46,7 @@ avSession.stopCastDeviceDiscovery(() => {
 ```
 
 
+<a id="stopcastdevicediscovery-1"></a>
 ## stopCastDeviceDiscovery
 
 ```TypeScript
@@ -65,7 +67,7 @@ function stopCastDeviceDiscovery(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当成功停止搜索，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当成功停止搜索，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

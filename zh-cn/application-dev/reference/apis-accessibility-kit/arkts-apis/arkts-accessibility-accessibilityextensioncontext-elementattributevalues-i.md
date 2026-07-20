@@ -144,7 +144,7 @@ children: Array<AccessibilityElement>
 
 所有子元素。
 
-**类型：** Array<AccessibilityElement>
+**类型：** Array&lt;AccessibilityElement&gt;
 
 **起始版本：** 9
 
@@ -208,7 +208,7 @@ contents: Array<string>
 
 内容列表。根据实际场景设置，无特殊限制。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 
@@ -238,7 +238,7 @@ currentIndex: number
 customComponentType?: string
 ```
 
-自定义组件类型。与元素的[AccessibilityRoleType枚举说明](../../apis-arkui/arkts-components/arkts-arkui-common-accessibilityroletype-e.md)类型所对应。
+自定义组件类型。与元素的[AccessibilityRoleType枚举说明](../../apis-arkui/arkts-components/arkts-arkui-accessibilityroletype-e.md)类型所对应。
 
 **类型：** string
 

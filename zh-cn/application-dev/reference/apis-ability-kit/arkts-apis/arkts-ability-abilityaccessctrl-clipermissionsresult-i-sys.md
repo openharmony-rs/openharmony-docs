@@ -24,7 +24,7 @@ permList: Array<CliCommandPermissionResult>
 
 CLI权限信息的列表。
 
-**类型：** Array<CliCommandPermissionResult>
+**类型：** Array&lt;CliCommandPermissionResult&gt;
 
 **起始版本：** 26.0.0
 

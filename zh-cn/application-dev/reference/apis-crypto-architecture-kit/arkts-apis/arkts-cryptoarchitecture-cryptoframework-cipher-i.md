@@ -1,8 +1,8 @@
 # Cipher
 
-提供加解密的算法操作功能，按序调用本类中的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)、[update()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)、[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-2)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
+提供加解密的算法操作功能，按序调用本类中的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)、[update()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)、[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
 
-完整的加解密流程示例可参考[开发指南](../../../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md)。
+完整的加解密流程示例可参考[开发指南](docroot://security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md)。
 
 一次完整的加/解密流程在对称加密和非对称加密中略有不同：
 
@@ -23,6 +23,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="dofinal"></a>
 ## doFinal
 
 ```TypeScript
@@ -46,7 +47,7 @@ doFinal(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 表示最终要加密或解密的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DataBlob> | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ doFinal(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 数据过长。<br>**适用版本：** 22+ |
 
+<a id="dofinal-1"></a>
 ## doFinal
 
 ```TypeScript
@@ -79,7 +81,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 > 3.对于解密，GCM、CCM、CFB、OFB和CTR模式，如果**doFinal**传null，则返回结果为null；对于解密，其他模式，如果明文是加密块大小的  
 > 整倍数，调用**update**传入所有密文，调用**doFinal**传null，则返回结果为null。  
 > 4.非对称加解密时多次**doFinal**操作的示例代码请参阅  
-> [使用RSA非对称密钥对按段加密和解密](../../../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)。  
+> [使用RSA非对称密钥对按段加密和解密](docroot://security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)。  
 > SM2和RSA的操作类似。
 
 **起始版本：** 10
@@ -96,8 +98,8 @@ doFinal(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | DataBlob \| null | 是 | 要加密或解密的数据。在对称加解密中，这个参数可以是**null**，但是**{data: Uint8Array()}**不能传入。在API版本10之前，仅支持**DataBlob**。从API版本10开始，还支持**null**。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DataBlob> | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+| data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 要加密或解密的数据。在对称加解密中，这个参数可以是**null**，但是**{data: Uint8Array()}**不能传入。在API版本10之前，仅支持**DataBlob**。从API版本10开始，还支持**null**。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -162,6 +164,7 @@ function cipherByCallback() {
 
 ```
 
+<a id="dofinal-2"></a>
 ## doFinal
 
 ```TypeScript
@@ -190,7 +193,7 @@ doFinal(data: DataBlob): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DataBlob> | Promise对象，返回加密或解密的数据。 |
+| Promise&lt;DataBlob&gt; | Promise对象，返回加密或解密的数据。 |
 
 **错误码：**
 
@@ -202,6 +205,7 @@ doFinal(data: DataBlob): Promise<DataBlob>
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 数据过长。<br>**适用版本：** 22+ |
 
+<a id="dofinal-3"></a>
 ## doFinal
 
 ```TypeScript
@@ -223,7 +227,7 @@ doFinal(data: DataBlob | null): Promise<DataBlob>
 > 3.对于解密，GCM、CCM、CFB、OFB和CTR模式，如果**doFinal**传null，则返回结果为null；对于解密，其他模式，如果明文是加密块大小的  
 > 整倍数，调用**update**传入所有密文，调用**doFinal**传null，则返回结果为null。  
 > 4.非对称加解密时多次**doFinal**操作的示例代码请参阅  
-> [使用RSA非对称密钥对按段加密和解密](../../../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)。  
+> [使用RSA非对称密钥对按段加密和解密](docroot://security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)。  
 > SM2和RSA的操作类似。
 
 **起始版本：** 10
@@ -240,13 +244,13 @@ doFinal(data: DataBlob | null): Promise<DataBlob>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | DataBlob \| null | 是 | 要加密或解密的数据。可以为**null**，但不能为{data:Uint8Array(0)}。在API版本10之前的版本中，仅支持**DataBlob**。从API版本10开始，也支持**null**。 |
+| data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 要加密或解密的数据。可以为**null**，但不能为{data:Uint8Array(0)}。在API版本10之前的版本中，仅支持**DataBlob**。从API版本10开始，也支持**null**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DataBlob> | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
+| Promise&lt;DataBlob&gt; | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
 
 **错误码：**
 
@@ -306,6 +310,7 @@ async function cipherByPromise() {
 
 ```
 
+<a id="dofinalsync"></a>
 ## doFinalSync
 
 ```TypeScript
@@ -316,7 +321,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 - 对于GCM和CCM模式的对称加密：一次加密流程中，如果将每一次**update**和**doFinal**的结果拼接起来，会得到“密文+authTag”，即末尾的16字节（GCM模式）或12字节（CCM模式）是authTag，而其余部分均为密文。（也就是说，如果**doFinal**的data参数传入null，则**doFinal**的结果就是authTag）authTag需要填入解密时的[GcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-gcmparamsspec-i.md)或[CcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-ccmparamsspec-i.md)；密文则作为解密时的入参data。  
 - 对于其他模式的对称加解密及GCM和CCM模式的对称解密：一次加解密流程中，每次**update**和**doFinal**的结果拼接起来，得到完整的明文或密文。（2）在RSA和SM2非对称加解密中，使用**doFinal**方法加解密传入的数据，并使用Promise异步回调获取加密或解密结果。如果数据量较大，可以多次调用**doFinal**，拼接结果以获得完整的明文或密文。
 
-关于其他注意事项，请参见[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-2)中的**说明：**。
+关于其他注意事项，请参见[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)中的**说明：**。
 
 <br><br>**说明：**<br>建议优先使用异步API{@link doFinal}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
 
@@ -332,7 +337,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | DataBlob \| null | 是 | 待加密或解密的数据。在对称加解密中可以为**null**， 但不能传入{data: Uint8Array(0)}。 |
+| data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 待加密或解密的数据。在对称加解密中可以为**null**， 但不能传入{data: Uint8Array(0)}。 |
 
 **返回值：**
 
@@ -398,6 +403,7 @@ async function cipherBySync() {
 
 ```
 
+<a id="getcipherspec"></a>
 ## getCipherSpec
 
 ```TypeScript
@@ -451,6 +457,7 @@ function testGetCipherSpec() {
 
 ```
 
+<a id="init"></a>
 ## init
 
 ```TypeScript
@@ -478,7 +485,7 @@ init、update和doFinal必须配合使用，其中init和doFinal是必选的，u
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 要执行的操作（加密或解密） |
 | key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 用于加密或解密的密钥 |
 | params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | 是 | IV等算法参数 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当加解密初始化成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当加解密初始化成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -490,6 +497,7 @@ init、update和doFinal必须配合使用，其中init和doFinal是必选的，u
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 无效的opMode值；<br>2. 无效的iv长度；<br>3. 无效的密钥长度。<br>**适用版本：** 22+ |
 
+<a id="init-1"></a>
 ## init
 
 ```TypeScript
@@ -518,8 +526,8 @@ init、update、doFinal为三段式接口，需要成组使用。其中init和do
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 加密或者解密模式。 |
 | key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 指定加密或解密的密钥。 |
-| params | ParamsSpec \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。 |
+| params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -531,6 +539,7 @@ init、update、doFinal为三段式接口，需要成组使用。其中init和do
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 无效的opMode值；<br>2. 无效的iv长度；<br>3. 无效的密钥长度。<br>**适用版本：** 22+ |
 
+<a id="init-2"></a>
 ## init
 
 ```TypeScript
@@ -563,7 +572,7 @@ init、update和doFinal必须配合使用，其中init和doFinal是必选的，u
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -575,6 +584,7 @@ init、update和doFinal必须配合使用，其中init和doFinal是必选的，u
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 无效的opMode值；<br>2. 无效的iv长度；<br>3. 无效的密钥长度。<br>**适用版本：** 22+ |
 
+<a id="init-3"></a>
 ## init
 
 ```TypeScript
@@ -603,13 +613,13 @@ init、update、doFinal为三段式接口，需要成组使用。其中init和do
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 加密或者解密模式。 |
 | key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 指定加密或解密的密钥。 |
-| params | ParamsSpec \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
+| params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -621,6 +631,7 @@ init、update、doFinal为三段式接口，需要成组使用。其中init和do
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 无效的opMode值；<br>2. 无效的iv长度；<br>3. 无效的密钥长度。<br>**适用版本：** 22+ |
 
+<a id="initsync"></a>
 ## initSync
 
 ```TypeScript
@@ -649,7 +660,7 @@ initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 加密或者解密模式。 |
 | key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 指定加密或解密的密钥。 |
-| params | ParamsSpec \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。 |
+| params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。 |
 
 **错误码：**
 
@@ -661,6 +672,7 @@ initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 无效的opMode值；<br>2. 无效的iv长度；<br>3. 无效的密钥长度。<br>**适用版本：** 22+ |
 
+<a id="setcipherspec"></a>
 ## setCipherSpec
 
 ```TypeScript
@@ -684,7 +696,7 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | itemType | [CipherSpecItem](arkts-cryptoarchitecture-cryptoframework-cipherspecitem-e.md) | 是 | 用于指定需要设置的加解密参数。 |
-| itemValue | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 用于指定加解密参数的具体值。 |
+| itemValue | Uint8Array | 是 | 用于指定加解密参数的具体值。 |
 
 **错误码：**
 
@@ -709,6 +721,7 @@ function testsetCipherSpec() {
 
 ```
 
+<a id="update"></a>
 ## update
 
 ```TypeScript
@@ -717,7 +730,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 
 更新要分段加密或解密的数据。使用Callback异步回调。
 
-必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)初始化后，才能使用本函数。
+必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)初始化后，才能使用本函数。
 
 > **说明：**  
 >  
@@ -734,7 +747,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 > 2.根据数据量，可以不调用**update**（即**init**完成后直接调用**doFinal**）或多次调用**update**。  
 > 算法库目前没有对**update**（单次或累计）的数据量设置大小限制，建议对于大数据量的对称加解密，可以采用多次**update**的方式传入数据。  
 > 有关在多次**update()**调用中传递数据的示例代码的详细信息，请参见  
-> [使用AES对称密钥分段加密和解密（GCM模式）](../../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。  
+> [使用AES对称密钥分段加密和解密（GCM模式）](docroot://security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。  
 > 3. RSA或SM2非对称加解密不支持**update()**。  
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次**update**接口加密数据并调用**doFinal**接口获取tag，或直接调用**doFinal**  
 > 接口加密数据并获取tag，解密时只能调用1次**update**接口或调用1次**doFinal**接口解密数据并验证tag。
@@ -754,7 +767,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 需要进行加密或解密的数据。data不能为null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DataBlob> | 是 | 回调函数。当更新加/解密数据成功时，err为undefined，data为加密或解密结果DataBlob；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当更新加/解密数据成功时，err为undefined，data为加密或解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -766,6 +779,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 数据过长。<br>**适用版本：** 22+ |
 
+<a id="update-1"></a>
 ## update
 
 ```TypeScript
@@ -774,7 +788,7 @@ update(data: DataBlob): Promise<DataBlob>
 
 分段更新加密或者解密数据操作。使用Promise异步回调。
 
-必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)初始化后，才能使用本函数。
+必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)初始化后，才能使用本函数。
 
 > **说明：**  
 >  
@@ -791,7 +805,7 @@ update(data: DataBlob): Promise<DataBlob>
 > 2.根据数据量，可以不调用**update**（即**init**完成后直接调用**doFinal**）或多次调用**update**。  
 > 算法库目前没有对**update**（单次或累计）的数据量设置大小限制，建议对于大数据量的对称加解密，可以采用多次**update**的方式传入数据。  
 > 有关在多次**update()**调用中传递数据的示例代码的详细信息，请参见  
-> [使用AES对称密钥分段加密和解密（GCM模式）](../../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。  
+> [使用AES对称密钥分段加密和解密（GCM模式）](docroot://security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。  
 > 3. RSA或SM2非对称加解密不支持**update()**。  
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次**update**接口加密数据并调用**doFinal**接口获取tag，或直接调用**doFinal**  
 > 接口加密数据并获取tag，解密时只能调用1次**update**接口或调用1次**doFinal**接口解密数据并验证tag。
@@ -816,7 +830,7 @@ update(data: DataBlob): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DataBlob> | Promise对象，返回此次更新的加密或解密结果。 |
+| Promise&lt;DataBlob&gt; | Promise对象，返回此次更新的加密或解密结果。 |
 
 **错误码：**
 
@@ -828,6 +842,7 @@ update(data: DataBlob): Promise<DataBlob>
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 数据过长。<br>**适用版本：** 22+ |
 
+<a id="updatesync"></a>
 ## updateSync
 
 ```TypeScript

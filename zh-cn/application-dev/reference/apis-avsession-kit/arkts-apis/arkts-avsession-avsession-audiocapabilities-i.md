@@ -22,7 +22,7 @@ readonly streamInfos: Array<audio.AudioStreamInfo>
 
 音频能力参数的列表。
 
-**类型：** Array<audio.AudioStreamInfo>
+**类型：** Array&lt;audio.AudioStreamInfo&gt;
 
 **起始版本：** 20
 

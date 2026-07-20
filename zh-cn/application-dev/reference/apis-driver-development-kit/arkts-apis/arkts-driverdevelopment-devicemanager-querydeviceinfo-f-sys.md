@@ -6,6 +6,7 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
+<a id="querydeviceinfo"></a>
 ## queryDeviceInfo
 
 ```TypeScript
@@ -34,7 +35,7 @@ function queryDeviceInfo(deviceId?: number): Array<Readonly<DeviceInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Readonly<DeviceInfo>> | 扩展外设详细信息列表。 |
+| Array&lt;Readonly&lt;DeviceInfo&gt;&gt; | 扩展外设详细信息列表。 |
 
 **错误码：**
 

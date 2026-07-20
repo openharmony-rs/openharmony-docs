@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createauxiliarypictureusingallocator"></a>
 ## createAuxiliaryPictureUsingAllocator
 
 ```TypeScript
@@ -37,7 +38,7 @@ function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPic
 | --- | --- | --- | --- |
 | auxiliaryPictureInfo | [AuxiliaryPictureInfo](arkts-image-image-auxiliarypictureinfo-i.md) | 是 | 辅助图图像信息。<br>- 输入的ArrayBuffer的pixelFormat和最终创建出的辅助图的实际pixelFormat需与auxiliaryPictureInfo中指定的pixelFormat保持一致。<br>- 当AuxiliaryPictureType为GAINMAP时，AllocatorType仅支持传入AUTO/DMA。<br>- 当传入SHARE_MEMORY时，返回错误码7600205。 |
 | allocatorType | [AllocatorType](arkts-image-image-allocatortype-e.md) | 否 | 图像解码的内存类型，AUTO及默认情况下按照DMA处理。 |
-| pixels | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 否 | 以buffer形式存放的图像数据。<br>当未提供ArrayBuffer参数时，默认创建空白辅助图。 |
+| pixels | ArrayBuffer | 否 | 以buffer形式存放的图像数据。<br>当未提供ArrayBuffer参数时，默认创建空白辅助图。 |
 
 **返回值：**
 

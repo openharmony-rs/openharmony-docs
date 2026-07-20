@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="removeprinters"></a>
 ## removePrinters
 
 ```TypeScript
@@ -28,8 +29,8 @@ function removePrinters(printerIds: Array<string>, callback: AsyncCallback<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 表示需移除的打印机列表。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步移除打印机之后的回调。 |
+| printerIds | Array&lt;string&gt; | 是 | 表示需移除的打印机列表。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步移除打印机之后的回调。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ print.removePrinters([printerId], (err: BusinessError) => {
 ```
 
 
+<a id="removeprinters-1"></a>
 ## removePrinters
 
 ```TypeScript
@@ -79,13 +81,13 @@ function removePrinters(printerIds: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 表示需移除的打印机列表。 |
+| printerIds | Array&lt;string&gt; | 是 | 表示需移除的打印机列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

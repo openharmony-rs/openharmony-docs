@@ -23,35 +23,35 @@ import { scan } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [cancelScan](arkts-basicservices-scan-cancelscan-f.md#cancelscan-1) | 取消扫描。使用Promise异步回调。 |
-| [closeScanner](arkts-basicservices-scan-closescanner-f.md#closescanner-1) | 关闭扫描仪。使用Promise异步回调。 |
-| [exit](arkts-basicservices-scan-exit-f.md#exit-1) | 退出扫描服务。使用Promise异步回调。 |
-| [getPictureScanProgress](arkts-basicservices-scan-getpicturescanprogress-f.md#getpicturescanprogress-1) | 获取图片扫描进度。使用Promise异步回调。 |
-| [getScannerCurrentSetting](arkts-basicservices-scan-getscannercurrentsetting-f.md#getscannercurrentsetting-1) | 获取当前扫描仪设置。使用Promise异步回调。 |
-| [getScannerParameter](arkts-basicservices-scan-getscannerparameter-f.md#getscannerparameter-1) | 获取扫描仪参数。使用Promise异步回调。 |
-| [init](arkts-basicservices-scan-init-f.md#init-1) | 初始化扫描服务。使用Promise异步回调。 |
-| [off](arkts-basicservices-scan-off-f.md#off-1) | 取消注册扫描仪设备发现事件回调。使用callback异步回调。 |
-| [off](arkts-basicservices-scan-off-f.md#off-2) | 取消注册扫描仪设备同步事件回调。使用callback异步回调。 |
-| [on](arkts-basicservices-scan-on-f.md#on-1) | 注册扫描仪设备发现事件回调。使用callback异步回调。 |
-| [on](arkts-basicservices-scan-on-f.md#on-2) | 注册扫描仪设备同步事件回调。使用callback异步回调。 |
-| [openScanner](arkts-basicservices-scan-openscanner-f.md#openscanner-1) | 打开扫描仪。使用Promise异步回调。 |
-| [setScanAutoOption](arkts-basicservices-scan-setscanautooption-f.md#setscanautooption-1) | 设置扫描选项为自动模式。使用Promise异步回调。 |
-| [setScannerParameter](arkts-basicservices-scan-setscannerparameter-f.md#setscannerparameter-1) | 设置扫描仪参数。使用Promise异步回调。 |
-| [startScan](arkts-basicservices-scan-startscan-f.md#startscan-1) | 开始扫描。使用Promise异步回调。 |
-| [startScannerDiscovery](arkts-basicservices-scan-startscannerdiscovery-f.md#startscannerdiscovery-1) | 开始发现扫描仪。使用Promise异步回调。 |
+| [cancelScan](arkts-basicservices-scan-cancelscan-f.md#cancelscan) | 取消扫描。使用Promise异步回调。 |
+| [closeScanner](arkts-basicservices-scan-closescanner-f.md#closescanner) | 关闭扫描仪。使用Promise异步回调。 |
+| [exit](arkts-basicservices-scan-exit-f.md#exit) | 退出扫描服务。使用Promise异步回调。 |
+| [getPictureScanProgress](arkts-basicservices-scan-getpicturescanprogress-f.md#getpicturescanprogress) | 获取图片扫描进度。使用Promise异步回调。 |
+| [getScannerCurrentSetting](arkts-basicservices-scan-getscannercurrentsetting-f.md#getscannercurrentsetting) | 获取当前扫描仪设置。使用Promise异步回调。 |
+| [getScannerParameter](arkts-basicservices-scan-getscannerparameter-f.md#getscannerparameter) | 获取扫描仪参数。使用Promise异步回调。 |
+| [init](arkts-basicservices-scan-init-f.md#init) | 初始化扫描服务。使用Promise异步回调。 |
+| [off](arkts-basicservices-scan-off-f.md#off) | 取消注册扫描仪设备发现事件回调。使用callback异步回调。 |
+| [off](arkts-basicservices-scan-off-f.md#off-1) | 取消注册扫描仪设备同步事件回调。使用callback异步回调。 |
+| [on](arkts-basicservices-scan-on-f.md#on) | 注册扫描仪设备发现事件回调。使用callback异步回调。 |
+| [on](arkts-basicservices-scan-on-f.md#on-1) | 注册扫描仪设备同步事件回调。使用callback异步回调。 |
+| [openScanner](arkts-basicservices-scan-openscanner-f.md#openscanner) | 打开扫描仪。使用Promise异步回调。 |
+| [setScanAutoOption](arkts-basicservices-scan-setscanautooption-f.md#setscanautooption) | 设置扫描选项为自动模式。使用Promise异步回调。 |
+| [setScannerParameter](arkts-basicservices-scan-setscannerparameter-f.md#setscannerparameter) | 设置扫描仪参数。使用Promise异步回调。 |
+| [startScan](arkts-basicservices-scan-startscan-f.md#startscan) | 开始扫描。使用Promise异步回调。 |
+| [startScannerDiscovery](arkts-basicservices-scan-startscannerdiscovery-f.md#startscannerdiscovery) | 开始发现扫描仪。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [addScanner](arkts-basicservices-scan-addscanner-f-sys.md#addscanner-1) | 添加扫描仪（系统API）。使用Promise异步回调。 |
-| [deleteScanner](arkts-basicservices-scan-deletescanner-f-sys.md#deletescanner-1) | 删除扫描仪（系统API）。使用Promise异步回调。 |
-| [getAddedScanners](arkts-basicservices-scan-getaddedscanners-f-sys.md#getaddedscanners-1) | 获取已添加的扫描仪（系统API）。使用Promise异步回调。 |
-| [off](arkts-basicservices-scan-off-f-sys.md#off-3) | 取消注册扫描仪设备添加事件回调（系统API）。使用callback异步回调。 |
-| [off](arkts-basicservices-scan-off-f-sys.md#off-4) | 取消注册扫描仪设备删除事件回调（系统API）。使用callback异步回调。 |
-| [on](arkts-basicservices-scan-on-f-sys.md#on-3) | 注册扫描仪设备添加事件回调（系统API）。使用callback异步回调。 |
-| [on](arkts-basicservices-scan-on-f-sys.md#on-4) | 注册扫描仪设备删除事件回调（系统API）。使用callback异步回调。 |
+| [addScanner](arkts-basicservices-scan-addscanner-f-sys.md#addscanner) | 添加扫描仪（系统API）。使用Promise异步回调。 |
+| [deleteScanner](arkts-basicservices-scan-deletescanner-f-sys.md#deletescanner) | 删除扫描仪（系统API）。使用Promise异步回调。 |
+| [getAddedScanners](arkts-basicservices-scan-getaddedscanners-f-sys.md#getaddedscanners) | 获取已添加的扫描仪（系统API）。使用Promise异步回调。 |
+| [off](arkts-basicservices-scan-off-f-sys.md#off-2) | 取消注册扫描仪设备添加事件回调（系统API）。使用callback异步回调。 |
+| [off](arkts-basicservices-scan-off-f-sys.md#off-3) | 取消注册扫描仪设备删除事件回调（系统API）。使用callback异步回调。 |
+| [on](arkts-basicservices-scan-on-f-sys.md#on-2) | 注册扫描仪设备添加事件回调（系统API）。使用callback异步回调。 |
+| [on](arkts-basicservices-scan-on-f-sys.md#on-3) | 注册扫描仪设备删除事件回调（系统API）。使用callback异步回调。 |
 <!--DelEnd-->
 
 ### 接口

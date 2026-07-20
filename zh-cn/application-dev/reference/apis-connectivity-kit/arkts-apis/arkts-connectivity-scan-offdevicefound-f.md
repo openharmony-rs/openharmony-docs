@@ -6,6 +6,7 @@
 import { scan } from '@kit.ConnectivityKit';
 ```
 
+<a id="offdevicefound"></a>
 ## offDeviceFound
 
 ```TypeScript
@@ -26,7 +27,7 @@ function offDeviceFound(callback?: Callback<ScanResults[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<ScanResults[]> | 否 | 监听扫描结果事件的回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ScanResults[]&gt; | 否 | 监听扫描结果事件的回调。 |
 
 **错误码：**
 

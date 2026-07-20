@@ -6,6 +6,7 @@
 import { floatView } from '@kit.ArkUI';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -32,7 +33,7 @@ function create(config: FloatViewConfiguration): Promise<FloatViewController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<FloatViewController> | Promise对象。返回当前创建的标准悬浮窗控制器。 |
+| Promise&lt;FloatViewController&gt; | Promise对象。返回当前创建的标准悬浮窗控制器。 |
 
 **错误码：**
 

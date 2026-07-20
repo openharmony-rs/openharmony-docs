@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="queryiccdiallingnumbers"></a>
 ## queryIccDiallingNumbers
 
 ```TypeScript
@@ -30,7 +31,7 @@ Query dialing number information on SIM card.
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the card slot index number,ranging from 0 to the maximum card slot index number supported by the device. |
 | type | [ContactType](arkts-telephony-sim-contacttype-e-sys.md) | 是 | Indicates contact type. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<DiallingNumbersInfo>> | 是 | Indicates the callback for getting the dialing number information. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;DiallingNumbersInfo&gt;&gt; | 是 | Indicates the callback for getting the dialing number information. |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ sim.queryIccDiallingNumbers(0, 1, (err: BusinessError, data: Array<sim.DiallingN
 ```
 
 
+<a id="queryiccdiallingnumbers-1"></a>
 ## queryIccDiallingNumbers
 
 ```TypeScript
@@ -88,7 +90,7 @@ Query dialing number information on SIM card.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<DiallingNumbersInfo>> | Returns the dialing number information. |
+| Promise&lt;Array&lt;DiallingNumbersInfo&gt;&gt; | Returns the dialing number information. |
 
 **错误码：**
 

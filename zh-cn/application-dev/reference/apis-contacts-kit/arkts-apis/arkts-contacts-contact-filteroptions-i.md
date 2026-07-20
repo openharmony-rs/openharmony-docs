@@ -40,7 +40,7 @@ value?: string | ValueType[]
 
 过滤值，默认为undefined。
 
-**类型：** string | ValueType[]
+**类型：** string \| ValueType[]
 
 **起始版本：** 15
 

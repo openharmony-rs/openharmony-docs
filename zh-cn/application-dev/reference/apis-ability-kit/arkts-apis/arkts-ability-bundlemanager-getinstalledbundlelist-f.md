@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getinstalledbundlelist"></a>
 ## getInstalledBundleList
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getInstalledBundleList(bundleFlags: number): Promise<Array<BundleInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<BundleInfo>> | Promise对象，返回当前已安装应用的信息列表。 |
+| Promise&lt;Array&lt;BundleInfo&gt;&gt; | Promise对象，返回当前已安装应用的信息列表。 |
 
 **错误码：**
 

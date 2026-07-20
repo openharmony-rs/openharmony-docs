@@ -16,6 +16,7 @@
 import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -32,6 +33,7 @@ constructor()
 
 **系统能力：** SystemCapability.Utils.Lang
 
+<a id="lockasync"></a>
 ## lockAsync
 
 ```TypeScript
@@ -52,13 +54,13 @@ lockAsync<T>(callback: AsyncLockCallback<T>): Promise<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncLockCallback](arkts-arkts-locks-asynclockcallback-t.md)<T> | 是 | 获取锁后要调用的函数。 |
+| callback | [AsyncLockCallback](arkts-arkts-locks-asynclockcallback-t.md)&lt;T&gt; | 是 | 获取锁后要调用的函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<T> | 回调执行后将解决的Promise。 |
+| Promise&lt;T&gt; | 回调执行后将解决的Promise。 |
 
 **错误码：**
 
@@ -66,6 +68,7 @@ lockAsync<T>(callback: AsyncLockCallback<T>): Promise<T>
 | --- | --- |
 | [10200030](../errorcode-utils.md#10200030-锁不存在) | The lock does not exist. |
 
+<a id="lockasync-1"></a>
 ## lockAsync
 
 ```TypeScript
@@ -86,14 +89,14 @@ lockAsync<T>(callback: AsyncLockCallback<T>, mode: AsyncLockMode): Promise<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncLockCallback](arkts-arkts-locks-asynclockcallback-t.md)<T> | 是 | 获取锁后要调用的函数。 |
+| callback | [AsyncLockCallback](arkts-arkts-locks-asynclockcallback-t.md)&lt;T&gt; | 是 | 获取锁后要调用的函数。 |
 | mode | [AsyncLockMode](arkts-arkts-locks-asynclockmode-e.md) | 是 | 锁的操作模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<T> | 回调执行后将解决或拒绝的Promise。 |
+| Promise&lt;T&gt; | 回调执行后将解决或拒绝的Promise。 |
 
 **错误码：**
 
@@ -101,6 +104,7 @@ lockAsync<T>(callback: AsyncLockCallback<T>, mode: AsyncLockMode): Promise<T>
 | --- | --- |
 | [10200030](../errorcode-utils.md#10200030-锁不存在) | The lock does not exist. |
 
+<a id="lockasync-2"></a>
 ## lockAsync
 
 ```TypeScript
@@ -124,15 +128,15 @@ lockAsync<T, U>(callback: AsyncLockCallback<T>, mode: AsyncLockMode,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncLockCallback](arkts-arkts-locks-asynclockcallback-t.md)<T> | 是 | 获取锁后要调用的函数。 |
+| callback | [AsyncLockCallback](arkts-arkts-locks-asynclockcallback-t.md)&lt;T&gt; | 是 | 获取锁后要调用的函数。 |
 | mode | [AsyncLockMode](arkts-arkts-locks-asynclockmode-e.md) | 是 | 锁的操作模式。 |
-| options | [AsyncLockOptions](arkts-arkts-locks-asynclockoptions-c.md)<U> | 是 | 锁的操作选项。 |
+| options | [AsyncLockOptions](arkts-arkts-locks-asynclockoptions-c.md)&lt;U&gt; | 是 | 锁的操作选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<T \| U> | 回调执行后将解决的Promise，或者在超时情况下被拒绝。 |
+| Promise&lt;T \| U&gt; | 回调执行后将解决的Promise，或者在超时情况下被拒绝。 |
 
 **错误码：**
 
@@ -141,6 +145,7 @@ lockAsync<T, U>(callback: AsyncLockCallback<T>, mode: AsyncLockMode,
 | [10200030](../errorcode-utils.md#10200030-锁不存在) | The lock does not exist. |
 | [10200031](../errorcode-utils.md#10200031-lockasync超时) | Timeout exceeded. |
 
+<a id="query"></a>
 ## query
 
 ```TypeScript
@@ -175,6 +180,7 @@ static query(name: string): AsyncLockState
 | --- | --- |
 | [10200030](../errorcode-utils.md#10200030-锁不存在) | The lock does not exist. |
 
+<a id="queryall"></a>
 ## queryAll
 
 ```TypeScript
@@ -197,6 +203,7 @@ static queryAll(): AsyncLockState[]
 | --- | --- |
 | [AsyncLockState](arkts-arkts-locks-asynclockstate-c.md)[] | 返回AsyncLockState数组。 |
 
+<a id="request"></a>
 ## request
 
 ```TypeScript

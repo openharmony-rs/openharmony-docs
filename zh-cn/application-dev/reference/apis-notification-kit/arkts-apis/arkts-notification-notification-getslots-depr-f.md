@@ -1,5 +1,6 @@
 # getSlots
 
+<a id="getslots"></a>
 ## getSlots
 
 ```TypeScript
@@ -22,9 +23,10 @@ function getSlots(callback: AsyncCallback<Array<NotificationSlot>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<NotificationSlot>> | 是 | 以callback形式返回获取此应用程序的所有通知通道的结果。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;NotificationSlot&gt;&gt; | 是 | 以callback形式返回获取此应用程序的所有通知通道的结果。 |
 
 
+<a id="getslots-1"></a>
 ## getSlots
 
 ```TypeScript
@@ -47,5 +49,5 @@ function getSlots(): Promise<Array<NotificationSlot>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<NotificationSlot>> | 以Promise形式返回获取此应用程序的所有通知通道的结果。 |
+| Promise&lt;Array&lt;NotificationSlot&gt;&gt; | 以Promise形式返回获取此应用程序的所有通知通道的结果。 |
 

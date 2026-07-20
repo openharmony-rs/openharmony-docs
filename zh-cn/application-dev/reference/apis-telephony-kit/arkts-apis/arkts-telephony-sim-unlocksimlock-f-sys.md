@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="unlocksimlock"></a>
 ## unlockSimLock
 
 ```TypeScript
@@ -30,7 +31,7 @@ Unlock SIM card.
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the card slot index number,ranging from 0 to the maximum card slot index number supported by the device. |
 | lockInfo | [PersoLockInfo](arkts-telephony-sim-persolockinfo-i-sys.md) | 是 | Indicates customized lock type information. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<LockStatusResponse> | 是 | Indicates the callback used to obtain a response to obtain the SIM card lock status for the specified card slot. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;LockStatusResponse&gt; | 是 | Indicates the callback used to obtain a response to obtain the SIM card lock status for the specified card slot. |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ sim.unlockSimLock(0, persoLockInfo, (err: BusinessError, data: sim.LockStatusRes
 ```
 
 
+<a id="unlocksimlock-1"></a>
 ## unlockSimLock
 
 ```TypeScript
@@ -92,7 +94,7 @@ Unlock SIM card.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<LockStatusResponse> | Returns the response to obtain the SIM card lock status of the specified card slot. |
+| Promise&lt;LockStatusResponse&gt; | Returns the response to obtain the SIM card lock status of the specified card slot. |
 
 **错误码：**
 

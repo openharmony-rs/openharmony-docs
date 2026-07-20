@@ -1,12 +1,12 @@
 # IvParamsSpec
 
-加解密参数[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，用于在对称加解密时作为[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)方法的参数。
+加解密参数[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，用于在对称加解密时作为[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)方法的参数。
 
 适用于CBC、CTR、OFB、CFB这些需要iv作为参数的加解密模式。
 
 > **说明：**  
 >  
-> 传入[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)方法前需要  
+> 传入[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)方法前需要  
 > 指定其algName属性（来源于父类[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)）。
 
 **继承/实现关系：** IvParamsSpec extends [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)

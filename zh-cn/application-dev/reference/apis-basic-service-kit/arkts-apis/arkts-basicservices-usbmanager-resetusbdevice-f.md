@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="resetusbdevice"></a>
 ## resetUsbDevice
 
 ```TypeScript

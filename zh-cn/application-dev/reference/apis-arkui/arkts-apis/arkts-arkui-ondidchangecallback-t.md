@@ -20,6 +20,6 @@ declare type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRang
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rangeBefore | TextRange | 是 | 文本变化前将要被替换的文本范围。 |
-| rangeAfter | TextRange | 是 | 文本变化后新增内容的文本范围。 |
+| rangeBefore | [TextRange](arkts-arkui-textrange-i.md) | 是 | 文本变化前将要被替换的文本范围。  |
+| rangeAfter | [TextRange](arkts-arkui-textrange-i.md) | 是 | 文本变化后新增内容的文本范围。  |
 

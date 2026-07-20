@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="onsessiondestroy"></a>
 ## onSessionDestroy
 
 ```TypeScript
@@ -26,7 +27,7 @@ Register session destroy callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVSessionDescriptor> | 是 | 会话销毁回调函数 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVSessionDescriptor&gt; | 是 | 会话销毁回调函数 |
 
 **错误码：**
 

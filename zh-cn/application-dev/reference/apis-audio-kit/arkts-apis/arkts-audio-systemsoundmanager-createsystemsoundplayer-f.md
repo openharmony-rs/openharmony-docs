@@ -6,6 +6,7 @@
 import { systemSoundManager } from '@kit.AudioKit';
 ```
 
+<a id="createsystemsoundplayer"></a>
 ## createSystemSoundPlayer
 
 ```TypeScript
@@ -24,7 +25,7 @@ function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SystemSoundPlayer \| null> | 成功返回系统音效播放器对象，失败返回null。 |
+| Promise&lt;SystemSoundPlayer \| null&gt; | 成功返回系统音效播放器对象，失败返回null。 |
 
 **错误码：**
 

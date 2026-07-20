@@ -1,6 +1,6 @@
 # ShortcutWant（系统接口）
 
-快捷方式内定义的目标[wants](../../../../quick-start/module-configuration-file.md#wants标签)信息集合。
+快捷方式内定义的目标[wants](docroot://quick-start/module-configuration-file.md#wants标签)信息集合。
 
 **起始版本：** 20
 
@@ -18,7 +18,7 @@ parameters?: Array<ParameterItem>
 
 拉起快捷方式时的自定义数据，仅支持配置字符串类型的数据。其中键值均最大支持1024长度的字符串。
 
-**类型：** Array<ParameterItem>
+**类型：** Array&lt;ParameterItem&gt;
 
 **起始版本：** 20
 

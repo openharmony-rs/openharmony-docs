@@ -6,6 +6,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="offautosynctrigger"></a>
 ## offAutoSyncTrigger
 
 ```TypeScript
@@ -26,7 +27,7 @@ function offAutoSyncTrigger(observer?: Callback<AutoSyncTriggerInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| observer | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AutoSyncTriggerInfo> | 否 | 回调函数。 若传入observer，则取消指定回调函数的订阅；若不传入observer，则取消所有已注册的订阅。 |
+| observer | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AutoSyncTriggerInfo&gt; | 否 | 回调函数。 若传入observer，则取消指定回调函数的订阅；若不传入observer，则取消所有已注册的订阅。 |
 
 **错误码：**
 

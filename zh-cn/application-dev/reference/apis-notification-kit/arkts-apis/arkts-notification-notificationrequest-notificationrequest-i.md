@@ -16,7 +16,7 @@ actionButtons?: Array<NotificationActionButton>
 
 通知按钮，默认为空。一条通知中最多包含两个按钮。从API version 16开始，`wearable`设备一条通知最多包含三个按钮。
 
-**类型：** Array<NotificationActionButton>
+**类型：** Array&lt;NotificationActionButton&gt;
 
 **起始版本：** 7
 

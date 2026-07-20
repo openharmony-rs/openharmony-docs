@@ -22,5 +22,5 @@ declare type OnUIPickerComponentCallback = (selectedIndex: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectedIndex | number | 是 | 当前选中项的索引值。 |
+| selectedIndex | number | 是 | 当前选中项的索引值。  |
 

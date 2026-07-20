@@ -14,6 +14,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -43,6 +44,7 @@ let decoder = new util.StringDecoder();
 
 ```
 
+<a id="end"></a>
 ## end
 
 ```TypeScript
@@ -85,6 +87,7 @@ console.info("endString:", endString);
 
 ```
 
+<a id="write"></a>
 ## write
 
 ```TypeScript

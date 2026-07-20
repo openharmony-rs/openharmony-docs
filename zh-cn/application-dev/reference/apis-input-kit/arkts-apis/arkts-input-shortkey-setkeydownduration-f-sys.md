@@ -6,6 +6,7 @@
 import { shortKey } from '@kit.InputKit';
 ```
 
+<a id="setkeydownduration"></a>
 ## setKeyDownDuration
 
 ```TypeScript
@@ -28,7 +29,7 @@ function setKeyDownDuration(businessKey: string, delay: number, callback: AsyncC
 | --- | --- | --- | --- |
 | businessKey | string | 是 | 业务在多模侧注册的唯一标识，与ability_launch_config.json中的businessId对应。调用接口前自行查询。 |
 | delay | number | 是 | 按下快捷键多长时间后拉起Ability，单位：ms，仅支持快捷键按下触发。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置快捷键拉起Ability的延迟时间成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置快捷键拉起Ability的延迟时间成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ struct Index {
 ```
 
 
+<a id="setkeydownduration-1"></a>
 ## setKeyDownDuration
 
 ```TypeScript
@@ -97,7 +99,7 @@ function setKeyDownDuration(businessKey: string, delay: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Returns the result through a promise. |
+| Promise&lt;void&gt; | Returns the result through a promise. |
 
 **错误码：**
 

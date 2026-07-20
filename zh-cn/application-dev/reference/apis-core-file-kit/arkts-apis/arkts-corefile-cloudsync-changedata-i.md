@@ -22,7 +22,7 @@ isDirectory: Array<boolean>
 
 指示更改的URI是否为目录。true：是目录。false：非目录。
 
-**类型：** Array<boolean>
+**类型：** Array&lt;boolean&gt;
 
 **起始版本：** 12
 
@@ -54,7 +54,7 @@ uris: Array<string>
 
 需要更改的URI列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 

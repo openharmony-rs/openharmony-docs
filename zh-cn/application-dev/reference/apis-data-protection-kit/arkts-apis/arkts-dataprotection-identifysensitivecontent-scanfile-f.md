@@ -6,6 +6,7 @@
 import { identifySensitiveContent } from '@kit.DataProtectionKit';
 ```
 
+<a id="scanfile"></a>
 ## scanFile
 
 ```TypeScript
@@ -27,13 +28,13 @@ function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Ar
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filePath | string | 是 | 识别的文件路径，需使用物理路径，路径指向的文件必须存在且支持访问。 |
-| identifyPolicies | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Policy> | 是 | 用于识别敏感内容的策略数组。每个Policy定义识别规则（标签、关键字、正则表达式），系统将根据这些规则扫描文件内容并返回匹配结果。 |
+| identifyPolicies | Array&lt;Policy&gt; | 是 | 用于识别敏感内容的策略数组。每个Policy定义识别规则（标签、关键字、正则表达式），系统将根据这些规则扫描文件内容并返回匹配结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<MatchResult>> | Promise对象，返回敏感内容识别的结果。成功时返回匹配结果数组，异常返回错误码。 |
+| Promise&lt;Array&lt;MatchResult&gt;&gt; | Promise对象，返回敏感内容识别的结果。成功时返回匹配结果数组，异常返回错误码。 |
 
 **错误码：**
 

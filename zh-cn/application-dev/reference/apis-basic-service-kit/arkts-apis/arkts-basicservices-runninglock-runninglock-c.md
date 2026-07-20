@@ -14,6 +14,7 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
+<a id="hold"></a>
 ## hold
 
 ```TypeScript
@@ -34,7 +35,7 @@ hold(timeout: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeout | number | 是 | 锁定和持有RunningLock的时长，单位：毫秒。<br>该参数必须为数字类型：<br>**-1**：永久持锁，需要主动释放。<br>**0**：默认3s后超时释放。<br>**&gt;0**：按传入值超时释放。 |
+| timeout | number | 是 | 锁定和持有RunningLock的时长，单位：毫秒。<br>该参数必须为数字类型：<br>**-1**：永久持锁，需要主动释放。<br>**0**：默认3s后超时释放。<br>**>0**：按传入值超时释放。 |
 
 **错误码：**
 
@@ -79,6 +80,7 @@ class RunningLockTest {
 
 ```
 
+<a id="isholding"></a>
 ## isHolding
 
 ```TypeScript
@@ -127,6 +129,7 @@ class RunningLockTest {
 
 ```
 
+<a id="isused"></a>
 ## isUsed
 
 ```TypeScript
@@ -165,6 +168,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 ```
 
+<a id="lock"></a>
 ## lock
 
 ```TypeScript
@@ -205,6 +209,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 ```
 
+<a id="unhold"></a>
 ## unhold
 
 ```TypeScript
@@ -263,6 +268,7 @@ class RunningLockTest {
 
 ```
 
+<a id="unlock"></a>
 ## unlock
 
 ```TypeScript

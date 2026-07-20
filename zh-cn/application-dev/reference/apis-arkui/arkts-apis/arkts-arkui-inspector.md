@@ -20,7 +20,7 @@ import { inspector } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createComponentObserver](arkts-arkui-inspector-createcomponentobserver-f.md#createcomponentobserver-1) |  |
+| [createComponentObserver](arkts-arkui-inspector-createcomponentobserver-f.md#createcomponentobserver) |  |
 
 ### 接口
 

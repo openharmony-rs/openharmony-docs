@@ -1,5 +1,6 @@
 # restoreDefault
 
+<a id="restoredefault"></a>
 ## restoreDefault
 
 ```TypeScript

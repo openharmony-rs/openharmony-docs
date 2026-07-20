@@ -1,5 +1,6 @@
 # isDistributedEnabled
 
+<a id="isdistributedenabled"></a>
 ## isDistributedEnabled
 
 ```TypeScript
@@ -22,9 +23,10 @@ function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 设备是否支持分布式通知的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 设备是否支持分布式通知的回调函数。 |
 
 
+<a id="isdistributedenabled-1"></a>
 ## isDistributedEnabled
 
 ```TypeScript
@@ -47,5 +49,5 @@ function isDistributedEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise方式返回设备是否支持分布式通知的结果。 |
+| Promise&lt;boolean&gt; | Promise方式返回设备是否支持分布式通知的结果。 |
 

@@ -6,6 +6,7 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -38,7 +39,7 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback:
 | --- | --- | --- | --- |
 | sinkDeviceDescriptor | string | 是 | 键鼠穿越目标设备描述符。 |
 | srcInputDeviceId | number | 是 | 键鼠穿越待穿越外设标识符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当启动键鼠穿越成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当启动键鼠穿越成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -83,6 +84,7 @@ struct Index {
 ```
 
 
+<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -94,7 +96,7 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise<
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用  
-> [cooperate.activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-2)  
+> [cooperate.activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-1)  
 > 替代。
 
 **起始版本：** 9
@@ -120,7 +122,7 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

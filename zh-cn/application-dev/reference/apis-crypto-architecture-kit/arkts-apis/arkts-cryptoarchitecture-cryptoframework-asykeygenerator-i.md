@@ -16,6 +16,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="convertkey"></a>
 ## convertKey
 
 ```TypeScript
@@ -40,7 +41,7 @@ convertKey(pubKey: DataBlob, priKey: DataBlob, callback: AsyncCallback<KeyPair>)
 | --- | --- | --- | --- |
 | pubKey | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 公钥材料。 |
 | priKey | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 私钥材料。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KeyPair> | 是 | 回调函数。当生成非对称密钥成功时，err为undefined，data为获取到的KeyPair；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KeyPair&gt; | 是 | 回调函数。当生成非对称密钥成功时，err为undefined，data为获取到的KeyPair；否则为错误对象。 |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ convertKey(pubKey: DataBlob, priKey: DataBlob, callback: AsyncCallback<KeyPair>)
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
+<a id="convertkey-1"></a>
 ## convertKey
 
 ```TypeScript
@@ -73,9 +75,9 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCall
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pubKey | DataBlob \| null | 是 | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| priKey | DataBlob \| null | 是 | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KeyPair> | 是 | 回调函数。当生成非对称密钥成功时，err为undefined，data为获取到的KeyPair；否则为错误对象。 |
+| pubKey | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| priKey | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KeyPair&gt; | 是 | 回调函数。当生成非对称密钥成功时，err为undefined，data为获取到的KeyPair；否则为错误对象。 |
 
 **错误码：**
 
@@ -112,6 +114,7 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
 
 ```
 
+<a id="convertkey-2"></a>
 ## convertKey
 
 ```TypeScript
@@ -141,7 +144,7 @@ convertKey(pubKey: DataBlob, priKey: DataBlob): Promise<KeyPair>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KeyPair> | Promise对象，返回非对称密钥KeyPair。 |
+| Promise&lt;KeyPair&gt; | Promise对象，返回非对称密钥KeyPair。 |
 
 **错误码：**
 
@@ -152,6 +155,7 @@ convertKey(pubKey: DataBlob, priKey: DataBlob): Promise<KeyPair>
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
+<a id="convertkey-3"></a>
 ## convertKey
 
 ```TypeScript
@@ -174,14 +178,14 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise<KeyPair>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pubKey | DataBlob \| null | 是 | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| priKey | DataBlob \| null | 是 | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| pubKey | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| priKey | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KeyPair> | Promise对象，返回非对称密钥KeyPair。 |
+| Promise&lt;KeyPair&gt; | Promise对象，返回非对称密钥KeyPair。 |
 
 **错误码：**
 
@@ -218,6 +222,7 @@ keyGenPromise.then(keyPair => {
 
 ```
 
+<a id="convertkeysync"></a>
 ## convertKeySync
 
 ```TypeScript
@@ -240,8 +245,8 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pubKey | DataBlob \| null | 是 | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
-| priKey | DataBlob \| null | 是 | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| pubKey | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| priKey | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
 
 **返回值：**
 
@@ -287,6 +292,7 @@ try {
 
 ```
 
+<a id="convertpemkey"></a>
 ## convertPemKey
 
 ```TypeScript
@@ -323,7 +329,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise<KeyPair>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KeyPair> | Promise对象，返回非对称密钥KeyPair。 |
+| Promise&lt;KeyPair&gt; | Promise对象，返回非对称密钥KeyPair。 |
 
 **错误码：**
 
@@ -375,6 +381,7 @@ async function TestConvertPemKeyByPromise() {
 
 ```
 
+<a id="convertpemkey-1"></a>
 ## convertPemKey
 
 ```TypeScript
@@ -413,7 +420,7 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KeyPair> | Promise对象，返回非对称密钥KeyPair。 |
+| Promise&lt;KeyPair&gt; | Promise对象，返回非对称密钥KeyPair。 |
 
 **错误码：**
 
@@ -460,6 +467,7 @@ async function TestConvertPemKeyByPromise() {
 
 ```
 
+<a id="convertpemkeysync"></a>
 ## convertPemKeySync
 
 ```TypeScript
@@ -549,6 +557,7 @@ function TestConvertPemKeyBySync() {
 
 ```
 
+<a id="convertpemkeysync-1"></a>
 ## convertPemKeySync
 
 ```TypeScript
@@ -559,7 +568,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 > **说明：**  
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见  
-> [convertPemKey](arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertpemkey-2)  
+> [convertPemKey](arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertpemkey-1)  
 > 接口说明。
 
 <br><br>**说明：**<br>建议优先使用异步API{@link convertPemKey}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
@@ -634,6 +643,7 @@ function TestConvertPemKeyBySync() {
 
 ```
 
+<a id="generatekeypair"></a>
 ## generateKeyPair
 
 ```TypeScript
@@ -656,7 +666,7 @@ generateKeyPair(callback: AsyncCallback<KeyPair>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KeyPair> | 是 | 回调函数。当生成非对称密钥成功时，err为undefined，data为获取到的KeyPair；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KeyPair&gt; | 是 | 回调函数。当生成非对称密钥成功时，err为undefined，data为获取到的KeyPair；否则为错误对象。 |
 
 **错误码：**
 
@@ -682,6 +692,7 @@ asyKeyGenerator.generateKeyPair((err, keyPair) => {
 
 ```
 
+<a id="generatekeypair-1"></a>
 ## generateKeyPair
 
 ```TypeScript
@@ -704,7 +715,7 @@ generateKeyPair(): Promise<KeyPair>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KeyPair> | Promise对象，返回非对称密钥KeyPair。 |
+| Promise&lt;KeyPair&gt; | Promise对象，返回非对称密钥KeyPair。 |
 
 **错误码：**
 
@@ -730,6 +741,7 @@ keyGenPromise.then(keyPair => {
 
 ```
 
+<a id="generatekeypairsync"></a>
 ## generateKeyPairSync
 
 ```TypeScript

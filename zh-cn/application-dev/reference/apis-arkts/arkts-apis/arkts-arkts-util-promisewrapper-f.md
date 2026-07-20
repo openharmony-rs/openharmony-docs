@@ -6,6 +6,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="promisewrapper"></a>
 ## promiseWrapper
 
 ```TypeScript
@@ -28,11 +29,11 @@ function promiseWrapper(original: (err: Object, value: Object) => void): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| original | (err: Object, value: Object) => void | 是 | 异步函数。 |
+| original | (err: Object, value: Object) =&gt; void | 是 | 异步函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Object | 错误优先风格（即最后一个参数为 (err, value) =&gt; ... ）的 promise。 |
+| Object | 错误优先风格（即最后一个参数为 (err, value) => ... ）的 promise。 |
 

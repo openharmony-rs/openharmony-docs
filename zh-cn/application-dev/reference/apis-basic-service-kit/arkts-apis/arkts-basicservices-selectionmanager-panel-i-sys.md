@@ -16,6 +16,7 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="hide"></a>
 ## hide
 
 ```TypeScript
@@ -36,7 +37,7 @@ hide(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ selectionPanel.hide().then(() => {
 
 ```
 
+<a id="moveto"></a>
 ## moveTo
 
 ```TypeScript
@@ -94,7 +96,7 @@ moveTo(x: number, y: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -121,6 +123,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off('destroyed')
 
 ```TypeScript
@@ -142,7 +145,7 @@ off(type: 'destroyed', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'destroyed' | 是 | 设置监听类型，固定取值为'destroyed'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -156,6 +159,7 @@ try {
 
 ```
 
+<a id="off-1"></a>
 ## off('hidden')
 
 ```TypeScript
@@ -177,7 +181,7 @@ off(type: 'hidden', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hidden' | 是 | 设置监听类型，固定取值为'hidden'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -191,6 +195,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('destroyed')
 
 ```TypeScript
@@ -212,7 +217,7 @@ on(type: 'destroyed', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'destroyed' | 是 | 设置监听类型，固定取值为'destroyed'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数，返回值为空。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数，返回值为空。 |
 
 **示例：**
 
@@ -228,6 +233,7 @@ try {
 
 ```
 
+<a id="on-1"></a>
 ## on('hidden')
 
 ```TypeScript
@@ -249,7 +255,7 @@ on(type: 'hidden', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hidden' | 是 | 设置监听类型，固定取值为'hidden'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数，返回值为空。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数，返回值为空。 |
 
 **示例：**
 
@@ -265,6 +271,7 @@ try {
 
 ```
 
+<a id="setuicontent"></a>
 ## setUiContent
 
 ```TypeScript
@@ -293,7 +300,7 @@ setUiContent(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -320,6 +327,7 @@ try {
 
 ```
 
+<a id="show"></a>
 ## show
 
 ```TypeScript
@@ -342,7 +350,7 @@ show(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -365,6 +373,7 @@ selectionPanel.show().then(() => {
 
 ```
 
+<a id="startmoving"></a>
 ## startMoving
 
 ```TypeScript
@@ -387,7 +396,7 @@ startMoving(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

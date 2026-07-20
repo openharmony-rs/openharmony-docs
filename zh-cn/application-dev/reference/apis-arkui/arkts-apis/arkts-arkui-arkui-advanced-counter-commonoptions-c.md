@@ -60,7 +60,7 @@ isHover：表示鼠标是否悬浮在组件上，进入时为true，离开时为
 
 值为undefined时，按默认值处理。
 
-**类型：** (isHover: boolean) => void
+**类型：** (isHover: boolean) =&gt; void
 
 **起始版本：** 11
 
@@ -86,7 +86,7 @@ isHover：表示鼠标是否悬浮在组件上，鼠标进入时为true，退出
 
 值为undefined时，按默认值处理。
 
-**类型：** (isHover: boolean) => void
+**类型：** (isHover: boolean) =&gt; void
 
 **起始版本：** 11
 

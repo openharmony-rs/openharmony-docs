@@ -24,7 +24,7 @@ complete?: () => void
 
 Called when the execution is completed.
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 3
 
@@ -44,7 +44,7 @@ data?: Array<RequestData>
 
 Form data in the request body.
 
-**类型：** Array<RequestData>
+**类型：** Array&lt;RequestData&gt;
 
 **起始版本：** 3
 
@@ -64,7 +64,7 @@ fail?: (data: any, code: number) => void
 
 Called when uploading fails.
 
-**类型：** (data: any, code: number) => void
+**类型：** (data: any, code: number) =&gt; void
 
 **起始版本：** 3
 
@@ -84,7 +84,7 @@ files: Array<RequestFile>
 
 List of files to upload, which is submitted through multipart/form-data.
 
-**类型：** Array<RequestFile>
+**类型：** Array&lt;RequestFile&gt;
 
 **起始版本：** 3
 
@@ -144,7 +144,7 @@ success?: (data: UploadResponse) => void
 
 Called when the files are uploaded successfully.
 
-**类型：** (data: UploadResponse) => void
+**类型：** (data: UploadResponse) =&gt; void
 
 **起始版本：** 3
 

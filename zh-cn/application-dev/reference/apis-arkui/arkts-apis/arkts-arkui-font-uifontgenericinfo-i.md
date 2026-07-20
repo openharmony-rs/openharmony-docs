@@ -22,7 +22,7 @@ adjust: Array<UIFontAdjustInfo>
 
 字体原本的weight值对应需显示的值。
 
-**类型：** Array<UIFontAdjustInfo>
+**类型：** Array&lt;UIFontAdjustInfo&gt;
 
 **起始版本：** 11
 
@@ -42,7 +42,7 @@ alias: Array<UIFontAliasInfo>
 
 别名列表。
 
-**类型：** Array<UIFontAliasInfo>
+**类型：** Array&lt;UIFontAliasInfo&gt;
 
 **起始版本：** 11
 

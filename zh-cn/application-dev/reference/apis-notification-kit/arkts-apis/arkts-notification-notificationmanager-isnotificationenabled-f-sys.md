@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="isnotificationenabled"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -29,7 +30,7 @@ function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 指定应用的包信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback)
 ```
 
 
+<a id="isnotificationenabled-1"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -93,7 +95,7 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 以Promise形式返回获取指定应用的通知使能状态的结果（true：使能，false：禁止）。 |
+| Promise&lt;boolean&gt; | 以Promise形式返回获取指定应用的通知使能状态的结果（true：使能，false：禁止）。 |
 
 **错误码：**
 
@@ -124,6 +126,7 @@ notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
 ```
 
 
+<a id="isnotificationenabled-2"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -149,7 +152,7 @@ function isNotificationEnabled(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true，表示允许发布通知；返回false，表示禁止发布通知；调用失败返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true，表示允许发布通知；返回false，表示禁止发布通知；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -182,6 +185,7 @@ notificationManager.isNotificationEnabled(isNotificationEnabledCallback);
 ```
 
 
+<a id="isnotificationenabled-3"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -207,7 +211,7 @@ function isNotificationEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true，表示允许发布通知；返回false，表示禁止发布通知。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true，表示允许发布通知；返回false，表示禁止发布通知。 |
 
 **错误码：**
 
@@ -235,6 +239,7 @@ notificationManager.isNotificationEnabled().then((data: boolean) => {
 ```
 
 
+<a id="isnotificationenabled-4"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -258,7 +263,7 @@ function isNotificationEnabled(userId: number, callback: AsyncCallback<boolean>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | number | 是 | 指定的用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
 
 **错误码：**
 
@@ -293,6 +298,7 @@ notificationManager.isNotificationEnabled(userId, isNotificationEnabledCallback)
 ```
 
 
+<a id="isnotificationenabled-5"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -321,7 +327,7 @@ function isNotificationEnabled(userId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 以Promise形式返回获取通知使能状态的结果（true：使能，false：禁止）。 |
+| Promise&lt;boolean&gt; | 以Promise形式返回获取通知使能状态的结果（true：使能，false：禁止）。 |
 
 **错误码：**
 

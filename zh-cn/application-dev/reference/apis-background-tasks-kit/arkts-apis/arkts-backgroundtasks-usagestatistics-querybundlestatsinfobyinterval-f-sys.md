@@ -6,6 +6,7 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="querybundlestatsinfobyinterval"></a>
 ## queryBundleStatsInfoByInterval
 
 ```TypeScript
@@ -46,7 +47,7 @@ function queryBundleStatsInfoByInterval(
 | byInterval | [IntervalType](arkts-backgroundtasks-bundlestate-intervaltype-e.md) | 是 | 查询类型。 |
 | begin | number | 是 | 起始时间，单位：ms。 |
 | end | number | 是 | 结束时间，单位：ms。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<BundleStatsInfo>> | 是 | 回调函数。当查询成功，err为undefined，data为指定时间段间隔内，应用使用时长的统计信息；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BundleStatsInfo&gt;&gt; | 是 | 回调函数。当查询成功，err为undefined，data为指定时间段间隔内，应用使用时长的统计信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -84,6 +85,7 @@ usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000, (err: Busin
 ```
 
 
+<a id="querybundlestatsinfobyinterval-1"></a>
 ## queryBundleStatsInfoByInterval
 
 ```TypeScript
@@ -126,7 +128,7 @@ function queryBundleStatsInfoByInterval(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<BundleStatsInfo>> | Promise对象。返回指定时间段间隔内，应用使用时长的统计信息。 |
+| Promise&lt;Array&lt;BundleStatsInfo&gt;&gt; | Promise对象。返回指定时间段间隔内，应用使用时长的统计信息。 |
 
 **错误码：**
 

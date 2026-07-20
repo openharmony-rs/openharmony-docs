@@ -28,7 +28,7 @@ action: (index: number) => void
 
 **说明：** 回调参数index为选中模式在patterns数组中的索引值，与defaultSelected的取值范围一致。回调中可根据index值更新defaultSelected，以保持下次打开弹窗时选中状态与用户选择一致。
 
-**类型：** (index: number) => void
+**类型：** (index: number) =&gt; void
 
 **起始版本：** 11
 
@@ -76,7 +76,7 @@ patterns: Array<Pattern>
 
 **说明：** patterns数组中的每个Pattern的icon和selectedIcon均需为有效的[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)资源引用；建议至少配置2个模式选项以提供有意义的选择功能。
 
-**类型：** Array<Pattern>
+**类型：** Array&lt;Pattern&gt;
 
 **起始版本：** 11
 

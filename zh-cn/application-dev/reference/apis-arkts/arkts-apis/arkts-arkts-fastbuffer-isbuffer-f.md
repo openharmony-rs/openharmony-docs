@@ -6,6 +6,7 @@
 import { fastbuffer } from '@kit.ArkTS';
 ```
 
+<a id="isbuffer"></a>
 ## isBuffer
 
 ```TypeScript

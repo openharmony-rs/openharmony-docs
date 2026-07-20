@@ -37,7 +37,7 @@ supportDisplayDevices?: Array<string>
 
 可以同步通知到的设备列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 8
 
@@ -53,7 +53,7 @@ supportOperateDevices?: Array<string>
 
 可以打开通知的设备列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 8
 

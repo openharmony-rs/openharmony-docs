@@ -6,6 +6,7 @@
 import { quickFixManager } from '@kit.AbilityKit';
 ```
 
+<a id="getapplicationquickfixinfo"></a>
 ## getApplicationQuickFixInfo
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getApplicationQuickFixInfo(bundleName: string, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ApplicationQuickFixInfo> | 是 | 回调函数。返回应用的快速修复信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ApplicationQuickFixInfo&gt; | 是 | 回调函数。返回应用的快速修复信息。 |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ try {
 ```
 
 
+<a id="getapplicationquickfixinfo-1"></a>
 ## getApplicationQuickFixInfo
 
 ```TypeScript
@@ -91,7 +93,7 @@ function getApplicationQuickFixInfo(bundleName: string): Promise<ApplicationQuic
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ApplicationQuickFixInfo> | Promise对象。返回应用的快速修复信息。 |
+| Promise&lt;ApplicationQuickFixInfo&gt; | Promise对象。返回应用的快速修复信息。 |
 
 **错误码：**
 

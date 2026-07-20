@@ -6,6 +6,7 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getabilityicon"></a>
 ## getAbilityIcon
 
 ```TypeScript
@@ -34,9 +35,10 @@ function getAbilityIcon(bundleName: string, abilityName: string, callback: Async
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 要查询的应用Bundle名称。 |
 | abilityName | string | 是 | 要查询的Ability组件名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<image.PixelMap> | 是 | 程序启动作为入参的回调函数，返回指定[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 程序启动作为入参的回调函数，返回指定[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)。 |
 
 
+<a id="getabilityicon-1"></a>
 ## getAbilityIcon
 
 ```TypeScript
@@ -70,5 +72,5 @@ function getAbilityIcon(bundleName: string, abilityName: string): Promise<image.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | Returns the PixelMap object representing the icon of the specified ability. |
+| Promise&lt;image.PixelMap&gt; | Returns the PixelMap object representing the icon of the specified ability. |
 

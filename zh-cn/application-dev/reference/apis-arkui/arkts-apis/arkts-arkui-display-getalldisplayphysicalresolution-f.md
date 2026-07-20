@@ -6,6 +6,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="getalldisplayphysicalresolution"></a>
 ## getAllDisplayPhysicalResolution
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getAllDisplayPhysicalResolution(): Promise<Array<DisplayPhysicalResolut
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<DisplayPhysicalResolution>> | Promise对象。返回当前所有的DisplayPhysicalResolution对象。 |
+| Promise&lt;Array&lt;DisplayPhysicalResolution&gt;&gt; | Promise对象。返回当前所有的DisplayPhysicalResolution对象。 |
 
 **错误码：**
 

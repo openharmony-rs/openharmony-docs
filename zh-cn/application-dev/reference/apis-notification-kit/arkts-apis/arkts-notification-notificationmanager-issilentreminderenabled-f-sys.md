@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="issilentreminderenabled"></a>
 ## isSilentReminderEnabled
 
 ```TypeScript
@@ -34,7 +35,7 @@ function isSilentReminderEnabled(bundle: BundleOption): Promise<SwitchState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SwitchState> | Promise对象，返回指定应用的通知静默提醒开关状态。 |
+| Promise&lt;SwitchState&gt; | Promise对象，返回指定应用的通知静默提醒开关状态。 |
 
 **错误码：**
 

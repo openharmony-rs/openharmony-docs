@@ -6,6 +6,7 @@
 import { Environment } from '@kit.CoreFileKit';
 ```
 
+<a id="getuserdatadir"></a>
 ## getUserDataDir
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getUserDataDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 返回公共文件根目录。 |
+| Promise&lt;string&gt; | 返回公共文件根目录。 |
 
 **错误码：**
 
@@ -37,6 +38,7 @@ function getUserDataDir(): Promise<string>
 | 13900042 | Unknown error |
 
 
+<a id="getuserdatadir-1"></a>
 ## getUserDataDir
 
 ```TypeScript
@@ -57,7 +59,7 @@ function getUserDataDir(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 异步获取公共文件根目录之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 异步获取公共文件根目录之后的回调。 |
 
 **错误码：**
 

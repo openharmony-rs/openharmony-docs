@@ -6,6 +6,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createvideorecorder"></a>
 ## createVideoRecorder
 
 ```TypeScript
@@ -26,7 +27,7 @@ function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<VideoRecorder> | 是 | 回调函数，返回VideoRecorder实例，失败时返回null。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;VideoRecorder&gt; | 是 | 回调函数，返回VideoRecorder实例，失败时返回null。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 ```
 
 
+<a id="createvideorecorder-1"></a>
 ## createVideoRecorder
 
 ```TypeScript
@@ -73,7 +75,7 @@ function createVideoRecorder(): Promise<VideoRecorder>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<VideoRecorder> | Promise对象，返回VideoRecorder实例，失败时返回null。 |
+| Promise&lt;VideoRecorder&gt; | Promise对象，返回VideoRecorder实例，失败时返回null。 |
 
 **错误码：**
 

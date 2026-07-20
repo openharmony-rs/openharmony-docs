@@ -78,7 +78,7 @@ wantParam: Record<string, Object>
 
 表示扩展参数。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 9
 

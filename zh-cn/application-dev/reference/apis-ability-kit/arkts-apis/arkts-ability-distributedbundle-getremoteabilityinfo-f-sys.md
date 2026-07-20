@@ -6,6 +6,7 @@
 import { distributedBundle } from '@kit.AbilityKit';
 ```
 
+<a id="getremoteabilityinfo"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -33,9 +34,10 @@ function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | 获得的ElementName信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RemoteAbilityInfo> | 是 | 程序启动作为入参的回调函数，返回远程基本能力信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RemoteAbilityInfo&gt; | 是 | 程序启动作为入参的回调函数，返回远程基本能力信息。 |
 
 
+<a id="getremoteabilityinfo-1"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -68,5 +70,5 @@ function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityIn
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RemoteAbilityInfo> | Promise形式返回远程基本能力信息。 |
+| Promise&lt;RemoteAbilityInfo&gt; | Promise形式返回远程基本能力信息。 |
 

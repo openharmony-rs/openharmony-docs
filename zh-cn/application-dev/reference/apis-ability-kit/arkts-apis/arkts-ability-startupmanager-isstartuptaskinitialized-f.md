@@ -6,6 +6,7 @@
 import { startupManager } from '@kit.AbilityKit';
 ```
 
+<a id="isstartuptaskinitialized"></a>
 ## isStartupTaskInitialized
 
 ```TypeScript

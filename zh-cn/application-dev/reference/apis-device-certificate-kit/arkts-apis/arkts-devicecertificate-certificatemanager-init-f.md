@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="init"></a>
 ## init
 
 ```TypeScript
@@ -28,7 +29,7 @@ function init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback<CM
 | --- | --- | --- | --- |
 | authUri | string | 是 | 表示使用凭据的唯一标识符，长度限制256字节以内。 |
 | spec | [CMSignatureSpec](arkts-devicecertificate-certificatemanager-cmsignaturespec-i.md) | 是 | 表示签名、验签的属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<CMHandle> | 是 | 回调函数。当签名、验签的初始化操作成功时，err为null，data为获取到的CMHandle；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CMHandle&gt; | 是 | 回调函数。当签名、验签的初始化操作成功时，err为null，data为获取到的CMHandle；否则为错误对象。 |
 
 **错误码：**
 
@@ -66,6 +67,7 @@ try {
 ```
 
 
+<a id="init-1"></a>
 ## init
 
 ```TypeScript
@@ -93,7 +95,7 @@ function init(authUri: string, spec: CMSignatureSpec): Promise<CMHandle>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CMHandle> | Promise对象，返回签名、验签的初始化操作结果，返回值为CMHandle对象。 |
+| Promise&lt;CMHandle&gt; | Promise对象，返回签名、验签的初始化操作结果，返回值为CMHandle对象。 |
 
 **错误码：**
 

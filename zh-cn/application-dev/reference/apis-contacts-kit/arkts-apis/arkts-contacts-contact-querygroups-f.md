@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="querygroups"></a>
 ## queryGroups
 
 ```TypeScript
@@ -18,7 +19,7 @@ function queryGroups(callback: AsyncCallback<Array<Group>>): void
 
 **废弃版本：** 10
 
-**替代接口：** queryGroups(context:
+**替代接口：** [queryGroups(context:](arkts-contacts-contact-querygroups-f.md#querygroups-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -30,7 +31,7 @@ function queryGroups(callback: AsyncCallback<Array<Group>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Group>> | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Group&gt;&gt; | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -49,6 +50,7 @@ contact.queryGroups((err: BusinessError, data) => {
 ```
 
 
+<a id="querygroups-1"></a>
 ## queryGroups
 
 ```TypeScript
@@ -70,7 +72,7 @@ function queryGroups(context: Context, callback: AsyncCallback<Array<Group>>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Group>> | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Group&gt;&gt; | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -101,6 +103,7 @@ contact.queryGroups(context, (err: BusinessError, data) => {
 ```
 
 
+<a id="querygroups-2"></a>
 ## queryGroups
 
 ```TypeScript
@@ -113,7 +116,7 @@ function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): voi
 
 **废弃版本：** 10
 
-**替代接口：** queryGroups(context:
+**替代接口：** [queryGroups(context:](arkts-contacts-contact-querygroups-f.md#querygroups-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -126,7 +129,7 @@ function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Group>> | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Group&gt;&gt; | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -149,6 +152,7 @@ contact.queryGroups({
 ```
 
 
+<a id="querygroups-3"></a>
 ## queryGroups
 
 ```TypeScript
@@ -171,7 +175,7 @@ function queryGroups(context: Context, holder: Holder, callback: AsyncCallback<A
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Group>> | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Group&gt;&gt; | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -206,6 +210,7 @@ contact.queryGroups(context, {
 ```
 
 
+<a id="querygroups-4"></a>
 ## queryGroups
 
 ```TypeScript
@@ -218,7 +223,7 @@ function queryGroups(holder?: Holder): Promise<Array<Group>>
 
 **废弃版本：** 10
 
-**替代接口：** queryGroups(context:
+**替代接口：** [queryGroups(context:](arkts-contacts-contact-querygroups-f.md#querygroups-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -236,7 +241,7 @@ function queryGroups(holder?: Holder): Promise<Array<Group>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Group>> | Promise对象。返回查询到的群组对象数组。 |
+| Promise&lt;Array&lt;Group&gt;&gt; | Promise对象。返回查询到的群组对象数组。 |
 
 **示例：**
 
@@ -255,6 +260,7 @@ promise.then((data) => {
 ```
 
 
+<a id="querygroups-5"></a>
 ## queryGroups
 
 ```TypeScript
@@ -282,7 +288,7 @@ function queryGroups(context: Context, holder?: Holder): Promise<Array<Group>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Group>> | Promise对象。返回查询到的群组对象数组。 |
+| Promise&lt;Array&lt;Group&gt;&gt; | Promise对象。返回查询到的群组对象数组。 |
 
 **错误码：**
 

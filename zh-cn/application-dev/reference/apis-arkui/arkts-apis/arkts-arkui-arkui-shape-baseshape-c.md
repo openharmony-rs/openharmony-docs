@@ -16,6 +16,7 @@
 import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 ```
 
+<a id="height"></a>
 ## height
 
 ```TypeScript
@@ -48,6 +49,7 @@ height(height: Length): T
 | --- | --- |
 | T | 返回当前对象。 |
 
+<a id="size"></a>
 ## size
 
 ```TypeScript
@@ -72,7 +74,7 @@ size(size: SizeOptions): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [SizeOptions](arkts-arkui-units-sizeoptions-i.md) | 是 | 形状的大小。 |
+| size | [SizeOptions](arkts-arkui-sizeoptions-i.md) | 是 | 形状的大小。 |
 
 **返回值：**
 
@@ -80,6 +82,7 @@ size(size: SizeOptions): T
 | --- | --- |
 | T | 返回当前对象。 |
 
+<a id="width"></a>
 ## width
 
 ```TypeScript

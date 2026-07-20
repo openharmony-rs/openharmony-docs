@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="getdelegatedbundlenames"></a>
 ## getDelegatedBundleNames
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getDelegatedBundleNames(admin: Want, policy: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 被委托应用列表。 |
+| Array&lt;string&gt; | 被委托应用列表。 |
 
 **错误码：**
 

@@ -35,7 +35,7 @@ Radio(options: RadioOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | RadioOptions | 是 | 配置单选框的参数。 |
+| options | [RadioOptions](arkts-arkui-radiooptions-i.md) | 是 | 配置单选框的参数。  |
 
 ## 汇总
 

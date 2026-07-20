@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="usbcontroltransfer"></a>
 ## usbControlTransfer
 
 ```TypeScript
@@ -32,7 +33,7 @@ function usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestP
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：* - -1：驱动异常。 |
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：* - -1：驱动异常。 |
 
 **错误码：**
 

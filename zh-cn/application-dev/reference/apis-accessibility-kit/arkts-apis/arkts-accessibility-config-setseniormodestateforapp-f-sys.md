@@ -6,6 +6,7 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
+<a id="setseniormodestateforapp"></a>
 ## setSeniorModeStateForApp
 
 ```TypeScript
@@ -30,13 +31,13 @@ Set the senior mode state for app.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appSeniorModeInfos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AppSeniorModeInfo> | 是 | Indicates the list of app package names and statuses for which the advanced mode needs to be set. |
+| appSeniorModeInfos | Array&lt;AppSeniorModeInfo&gt; | 是 | Indicates the list of app package names and statuses for which the advanced mode needs to be set. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The promise returned by the function. |
+| Promise&lt;void&gt; | The promise returned by the function. |
 
 **错误码：**
 

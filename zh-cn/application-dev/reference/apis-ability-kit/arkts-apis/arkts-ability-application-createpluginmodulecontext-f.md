@@ -6,6 +6,7 @@
 import { application } from '@kit.AbilityKit';
 ```
 
+<a id="createpluginmodulecontext"></a>
 ## createPluginModuleContext
 
 ```TypeScript
@@ -34,7 +35,7 @@ export function createPluginModuleContext(context: Context, pluginBundleName: st
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Context> | Promise对象。返回创建的Context。 |
+| Promise&lt;Context&gt; | Promise对象。返回创建的Context。 |
 
 **示例：**
 

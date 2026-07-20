@@ -6,6 +6,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="queryparticipants"></a>
 ## queryParticipants
 
 ```TypeScript
@@ -27,7 +28,7 @@ function queryParticipants(sharingResource: string, callback: AsyncCallback<Resu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sharingResource | string | 是 | 端云共享数据的资源标识。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Result<Array<Participant>>> | 是 | 回调函数。返回查找共享参与者的结果。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt; | 是 | 回调函数。返回查找共享参与者的结果。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessErro
 ```
 
 
+<a id="queryparticipants-1"></a>
 ## queryParticipants
 
 ```TypeScript
@@ -79,7 +81,7 @@ function queryParticipants(sharingResource: string): Promise<Result<Array<Partic
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<Array<Participant>>> | Promise对象，返回查询共享参与者的结果。 |
+| Promise&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt; | Promise对象，返回查询共享参与者的结果。 |
 
 **错误码：**
 

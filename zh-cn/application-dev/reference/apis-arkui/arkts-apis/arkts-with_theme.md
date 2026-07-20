@@ -6,13 +6,13 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [WithThemeAttribute](arkts-arkui-with-theme-withthemeattribute-c.md) | 不支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。不支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。 |
+| [WithThemeAttribute](arkts-arkui-withthemeattribute-c.md) | 不支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。  不支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [WithThemeOptions](arkts-arkui-with-theme-withthemeoptions-i.md) | 设置WithTheme作用域内组件缺省样式及深浅色模式。 |
+| [WithThemeOptions](arkts-arkui-withthemeoptions-i.md) | 设置WithTheme作用域内组件缺省样式及深浅色模式。 |
 
 ### 类型
 

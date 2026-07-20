@@ -14,6 +14,7 @@ Buffer对象是处理二进制数据的缓存区。
 import { buffer } from '@kit.ArkTS';
 ```
 
+<a id="compare"></a>
 ## compare
 
 ```TypeScript
@@ -52,7 +53,7 @@ compare(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | Buffer \| Uint8Array | 是 | 要比较的实例对象。 |
+| target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要比较的实例对象。 |
 | targetStart | number | 否 | target实例中开始的偏移量。默认值：0。 |
 | targetEnd | number | 否 | target实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
 | sourceStart | number | 否 | this实例中开始的偏移量。默认值：0。 |
@@ -68,7 +69,7 @@ compare(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range.It must be &gt;= 0 and &lt;= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range.It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -87,6 +88,7 @@ console.info(buf1.compare(buf2, 5, 6, 5).toString());
 
 ```
 
+<a id="copy"></a>
 ## copy
 
 ```TypeScript
@@ -107,7 +109,7 @@ copy(target: Buffer | Uint8Array, targetStart?: number, sourceStart?: number, so
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | Buffer \| Uint8Array | 是 | 要复制到的Buffer或Uint8Array实例。 |
+| target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要复制到的Buffer或Uint8Array实例。 |
 | targetStart | number | 否 | target实例中开始写入的偏移量。默认值：0。 |
 | sourceStart | number | 否 | this实例中开始复制的偏移量。默认值：0。 |
 | sourceEnd | number | 否 | this实例中结束复制的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
@@ -122,7 +124,7 @@ copy(target: Buffer | Uint8Array, targetStart?: number, sourceStart?: number, so
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be &gt;= 0.Received value is: [targetStart/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0.Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -142,6 +144,7 @@ console.info(buf2.toString('ascii', 0, 25));
 
 ```
 
+<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -162,8 +165,8 @@ entries(): IterableIterator<[number, number]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[number, number]> | 包含key和value的迭代器，同时两者皆为number类型。<br>**适用版本：** 9 - 10 |
-| IterableIterator<[number, number]> | <br>**适用版本：** 11+ |
+| IterableIterator&lt;[number, number]&gt; | 包含key和value的迭代器，同时两者皆为number类型。<br>**适用版本：** 9 - 10 |
+| IterableIterator&lt;[number, number]&gt; | <br>**适用版本：** 11+ |
 
 **示例：**
 
@@ -188,6 +191,7 @@ while (!next.done) {
 
 ```
 
+<a id="equals"></a>
 ## equals
 
 ```TypeScript
@@ -232,6 +236,7 @@ console.info(buf1.equals(buf3).toString());
 
 ```
 
+<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -282,8 +287,9 @@ fill(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be &gt;= 0 and &lt;=[right range]. Received value is: [offset/end] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be >= 0 and <=[right range]. Received value is: [offset/end] |
 
+<a id="includes"></a>
 ## includes
 
 ```TypeScript
@@ -314,6 +320,7 @@ includes(value: string | number | number | number | Buffer | Uint8Array, byteOff
 | --- | --- |
 | boolean | 存在返回true，否则返回false。 |
 
+<a id="indexof"></a>
 ## indexOf
 
 ```TypeScript
@@ -344,6 +351,7 @@ indexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffs
 | --- | --- |
 | number | 第一次出现位置。 |
 
+<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -364,7 +372,7 @@ keys(): IterableIterator<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<number> | 返回一个包含key值的迭代器。 |
+| IterableIterator&lt;number&gt; | 返回一个包含key值的迭代器。 |
 
 **示例：**
 
@@ -387,6 +395,7 @@ for (const key of keys) {
 
 ```
 
+<a id="lastindexof"></a>
 ## lastIndexOf
 
 ```TypeScript
@@ -417,6 +426,7 @@ lastIndexOf(value: string | number | number | number | Buffer | Uint8Array, byte
 | --- | --- |
 | number | 最后一次出现value值的索引。 |
 
+<a id="readbigint64be"></a>
 ## readBigInt64BE
 
 ```TypeScript
@@ -437,7 +447,7 @@ readBigInt64BE(offset?: number): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -449,7 +459,7 @@ readBigInt64BE(offset?: number): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -468,6 +478,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readbigint64le"></a>
 ## readBigInt64LE
 
 ```TypeScript
@@ -488,7 +499,7 @@ readBigInt64LE(offset?: number): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -500,7 +511,7 @@ readBigInt64LE(offset?: number): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -519,6 +530,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readbiguint64be"></a>
 ## readBigUInt64BE
 
 ```TypeScript
@@ -539,7 +551,7 @@ readBigUInt64BE(offset?: number): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -551,7 +563,7 @@ readBigUInt64BE(offset?: number): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -569,6 +581,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readbiguint64le"></a>
 ## readBigUInt64LE
 
 ```TypeScript
@@ -589,7 +602,7 @@ readBigUInt64LE(offset?: number): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -601,7 +614,7 @@ readBigUInt64LE(offset?: number): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -620,6 +633,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readdoublebe"></a>
 ## readDoubleBE
 
 ```TypeScript
@@ -640,7 +654,7 @@ readDoubleBE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -652,7 +666,7 @@ readDoubleBE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -669,6 +683,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readdoublele"></a>
 ## readDoubleLE
 
 ```TypeScript
@@ -689,7 +704,7 @@ readDoubleLE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -701,7 +716,7 @@ readDoubleLE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -718,6 +733,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readfloatbe"></a>
 ## readFloatBE
 
 ```TypeScript
@@ -738,7 +754,7 @@ readFloatBE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -750,7 +766,7 @@ readFloatBE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -767,6 +783,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readfloatle"></a>
 ## readFloatLE
 
 ```TypeScript
@@ -787,7 +804,7 @@ readFloatLE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -799,7 +816,7 @@ readFloatLE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -816,6 +833,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readint16be"></a>
 ## readInt16BE
 
 ```TypeScript
@@ -836,7 +854,7 @@ readInt16BE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -848,7 +866,7 @@ readInt16BE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 2. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset] |
 
 **示例：**
 
@@ -865,6 +883,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readint16le"></a>
 ## readInt16LE
 
 ```TypeScript
@@ -885,7 +904,7 @@ readInt16LE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -897,7 +916,7 @@ readInt16LE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 2. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset] |
 
 **示例：**
 
@@ -914,6 +933,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readint32be"></a>
 ## readInt32BE
 
 ```TypeScript
@@ -934,7 +954,7 @@ readInt32BE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -946,7 +966,7 @@ readInt32BE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -963,6 +983,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readint32le"></a>
 ## readInt32LE
 
 ```TypeScript
@@ -983,7 +1004,7 @@ readInt32LE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -995,7 +1016,7 @@ readInt32LE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -1012,6 +1033,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readint8"></a>
 ## readInt8
 
 ```TypeScript
@@ -1032,7 +1054,7 @@ readInt8(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
 
 **返回值：**
 
@@ -1044,7 +1066,7 @@ readInt8(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 1. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1. Received value is: [offset] |
 
 **示例：**
 
@@ -1063,6 +1085,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readintbe"></a>
 ## readIntBE
 
 ```TypeScript
@@ -1083,8 +1106,8 @@ readIntBE(offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
-| byteLength | number | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 **返回值：**
 
@@ -1096,7 +1119,7 @@ readIntBE(offset: number, byteLength: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1114,6 +1137,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readintle"></a>
 ## readIntLE
 
 ```TypeScript
@@ -1134,8 +1158,8 @@ readIntLE(offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
-| byteLength | number | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 **返回值：**
 
@@ -1147,7 +1171,7 @@ readIntLE(offset: number, byteLength: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1164,6 +1188,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readuint16be"></a>
 ## readUInt16BE
 
 ```TypeScript
@@ -1184,7 +1209,7 @@ readUInt16BE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -1196,7 +1221,7 @@ readUInt16BE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 2. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset] |
 
 **示例：**
 
@@ -1215,6 +1240,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readuint16le"></a>
 ## readUInt16LE
 
 ```TypeScript
@@ -1235,7 +1261,7 @@ readUInt16LE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -1247,7 +1273,7 @@ readUInt16LE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 2. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset] |
 
 **示例：**
 
@@ -1266,6 +1292,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readuint32be"></a>
 ## readUInt32BE
 
 ```TypeScript
@@ -1286,7 +1313,7 @@ readUInt32BE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -1298,7 +1325,7 @@ readUInt32BE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -1315,6 +1342,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readuint32le"></a>
 ## readUInt32LE
 
 ```TypeScript
@@ -1335,7 +1363,7 @@ readUInt32LE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -1347,7 +1375,7 @@ readUInt32LE(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -1364,6 +1392,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readuint8"></a>
 ## readUInt8
 
 ```TypeScript
@@ -1384,7 +1413,7 @@ readUInt8(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
 
 **返回值：**
 
@@ -1396,7 +1425,7 @@ readUInt8(offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 1. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1. Received value is: [offset] |
 
 **示例：**
 
@@ -1415,6 +1444,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readuintbe"></a>
 ## readUIntBE
 
 ```TypeScript
@@ -1435,8 +1465,8 @@ readUIntBE(offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
-| byteLength | number | 是 | 要读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 **返回值：**
 
@@ -1448,7 +1478,7 @@ readUIntBE(offset: number, byteLength: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1465,6 +1495,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="readuintle"></a>
 ## readUIntLE
 
 ```TypeScript
@@ -1485,8 +1516,8 @@ readUIntLE(offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
-| byteLength | number | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 **返回值：**
 
@@ -1498,7 +1529,7 @@ readUIntLE(offset: number, byteLength: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1515,6 +1546,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="subarray"></a>
 ## subarray
 
 ```TypeScript
@@ -1542,7 +1574,7 @@ subarray(start?: number, end?: number): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。当start &lt; 0或end &lt; 0时返回空Buffer。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。当start < 0或end < 0时返回空Buffer。 |
 
 **示例：**
 
@@ -1560,6 +1592,7 @@ console.info(buf2.toString('ascii', 0, buf2.length));
 
 ```
 
+<a id="swap16"></a>
 ## swap16
 
 ```TypeScript
@@ -1602,6 +1635,7 @@ console.info(buf1.toString('hex'));
 
 ```
 
+<a id="swap32"></a>
 ## swap32
 
 ```TypeScript
@@ -1644,6 +1678,7 @@ console.info(buf1.toString('hex'));
 
 ```
 
+<a id="swap64"></a>
 ## swap64
 
 ```TypeScript
@@ -1686,6 +1721,7 @@ console.info(buf1.toString('hex'));
 
 ```
 
+<a id="tojson"></a>
 ## toJSON
 
 ```TypeScript
@@ -1720,6 +1756,7 @@ console.info(JSON.stringify(obj));
 
 ```
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -1748,7 +1785,7 @@ toString(encoding?: string, start?: number, end?: number): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 字符串。当start &gt;= Buffer.length或start &gt; end时返回空字符串。 |
+| string | 字符串。当start >= Buffer.length或start > end时返回空字符串。 |
 
 **示例：**
 
@@ -1764,6 +1801,7 @@ console.info(buf1.toString('utf-8'));
 
 ```
 
+<a id="values"></a>
 ## values
 
 ```TypeScript
@@ -1784,7 +1822,7 @@ values(): IterableIterator<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<number> | 迭代器。 |
+| IterableIterator&lt;number&gt; | 迭代器。 |
 
 **示例：**
 
@@ -1809,6 +1847,7 @@ while (!next.done) {
 
 ```
 
+<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -1844,7 +1883,7 @@ write(str: string, offset?: number, length?: number, encoding?: string): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/length]" is out of range. It must be &gt;= 0 and &lt;=buf.length. Received value is: [offset/length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/length]" is out of range. It must be >= 0 and <=buf.length. Received value is: [offset/length] |
 
 **示例：**
 
@@ -1863,6 +1902,7 @@ console.info("length = " + length);
 
 ```
 
+<a id="writebigint64be"></a>
 ## writeBigInt64BE
 
 ```TypeScript
@@ -1884,7 +1924,7 @@ writeBigInt64BE(value: bigint, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -1896,7 +1936,7 @@ writeBigInt64BE(value: bigint, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1910,6 +1950,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writebigint64le"></a>
 ## writeBigInt64LE
 
 ```TypeScript
@@ -1931,7 +1972,7 @@ writeBigInt64LE(value: bigint, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -1943,7 +1984,7 @@ writeBigInt64LE(value: bigint, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1957,6 +1998,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writebiguint64be"></a>
 ## writeBigUInt64BE
 
 ```TypeScript
@@ -1978,7 +2020,7 @@ writeBigUInt64BE(value: bigint, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -1990,7 +2032,7 @@ writeBigUInt64BE(value: bigint, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2004,6 +2046,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writebiguint64le"></a>
 ## writeBigUInt64LE
 
 ```TypeScript
@@ -2025,7 +2068,7 @@ writeBigUInt64LE(value: bigint, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -2037,7 +2080,7 @@ writeBigUInt64LE(value: bigint, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2051,6 +2094,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writedoublebe"></a>
 ## writeDoubleBE
 
 ```TypeScript
@@ -2072,7 +2116,7 @@ writeDoubleBE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -2084,7 +2128,7 @@ writeDoubleBE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -2098,6 +2142,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writedoublele"></a>
 ## writeDoubleLE
 
 ```TypeScript
@@ -2119,7 +2164,7 @@ writeDoubleLE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -2131,7 +2176,7 @@ writeDoubleLE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -2145,6 +2190,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writefloatbe"></a>
 ## writeFloatBE
 
 ```TypeScript
@@ -2166,7 +2212,7 @@ writeFloatBE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2178,7 +2224,7 @@ writeFloatBE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -2192,6 +2238,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writefloatle"></a>
 ## writeFloatLE
 
 ```TypeScript
@@ -2213,7 +2260,7 @@ writeFloatLE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2225,7 +2272,7 @@ writeFloatLE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -2239,6 +2286,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeint16be"></a>
 ## writeInt16BE
 
 ```TypeScript
@@ -2260,7 +2308,7 @@ writeInt16BE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -2272,7 +2320,7 @@ writeInt16BE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2286,6 +2334,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeint16le"></a>
 ## writeInt16LE
 
 ```TypeScript
@@ -2307,7 +2356,7 @@ writeInt16LE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -2319,7 +2368,7 @@ writeInt16LE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2333,6 +2382,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeint32be"></a>
 ## writeInt32BE
 
 ```TypeScript
@@ -2354,7 +2404,7 @@ writeInt32BE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2366,7 +2416,7 @@ writeInt32BE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2380,6 +2430,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeint32le"></a>
 ## writeInt32LE
 
 ```TypeScript
@@ -2401,7 +2452,7 @@ writeInt32LE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2413,7 +2464,7 @@ writeInt32LE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2427,6 +2478,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeint8"></a>
 ## writeInt8
 
 ```TypeScript
@@ -2448,7 +2500,7 @@ writeInt8(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
 
 **返回值：**
 
@@ -2460,7 +2512,7 @@ writeInt8(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2477,6 +2529,7 @@ console.info("result1 = " + result1);
 
 ```
 
+<a id="writeintbe"></a>
 ## writeIntBE
 
 ```TypeScript
@@ -2498,7 +2551,7 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
@@ -2511,7 +2564,7 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2525,6 +2578,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeintle"></a>
 ## writeIntLE
 
 ```TypeScript
@@ -2546,7 +2600,7 @@ writeIntLE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
@@ -2559,7 +2613,7 @@ writeIntLE(value: number, offset: number, byteLength: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2573,6 +2627,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeuint16be"></a>
 ## writeUInt16BE
 
 ```TypeScript
@@ -2594,7 +2649,7 @@ writeUInt16BE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -2606,7 +2661,7 @@ writeUInt16BE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2623,6 +2678,7 @@ console.info("result1 = " + result1);
 
 ```
 
+<a id="writeuint16le"></a>
 ## writeUInt16LE
 
 ```TypeScript
@@ -2644,7 +2700,7 @@ writeUInt16LE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -2656,7 +2712,7 @@ writeUInt16LE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2673,6 +2729,7 @@ console.info("result1 = " + result1);
 
 ```
 
+<a id="writeuint32be"></a>
 ## writeUInt32BE
 
 ```TypeScript
@@ -2694,7 +2751,7 @@ writeUInt32BE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2706,7 +2763,7 @@ writeUInt32BE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2720,6 +2777,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeuint32le"></a>
 ## writeUInt32LE
 
 ```TypeScript
@@ -2741,7 +2799,7 @@ writeUInt32LE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2753,7 +2811,7 @@ writeUInt32LE(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2767,6 +2825,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeuint8"></a>
 ## writeUInt8
 
 ```TypeScript
@@ -2788,7 +2847,7 @@ writeUInt8(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
 
 **返回值：**
 
@@ -2800,7 +2859,7 @@ writeUInt8(value: number, offset?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2823,6 +2882,7 @@ console.info("result3 = " + result3);
 
 ```
 
+<a id="writeuintbe"></a>
 ## writeUIntBE
 
 ```TypeScript
@@ -2844,7 +2904,7 @@ writeUIntBE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
@@ -2857,7 +2917,7 @@ writeUIntBE(value: number, offset: number, byteLength: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2871,6 +2931,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="writeuintle"></a>
 ## writeUIntLE
 
 ```TypeScript
@@ -2892,7 +2953,7 @@ writeUIntLE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
@@ -2905,7 +2966,7 @@ writeUIntLE(value: number, offset: number, byteLength: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
 
 **示例：**
 

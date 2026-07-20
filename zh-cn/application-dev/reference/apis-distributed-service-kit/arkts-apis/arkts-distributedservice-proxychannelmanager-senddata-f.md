@@ -6,6 +6,7 @@
 import { proxyChannelManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="senddata"></a>
 ## sendData
 
 ```TypeScript
@@ -29,13 +30,13 @@ function sendData(channelId: number, data: ArrayBuffer): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | channelId | number | 是 | 打开代理通道时获取的channelId。 |
-| data | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 向对端发送的字节消息，长度最大为4096个字节。 |
+| data | ArrayBuffer | 是 | 向对端发送的字节消息，长度最大为4096个字节。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回值的Promise的对象。 |
+| Promise&lt;void&gt; | 无返回值的Promise的对象。 |
 
 **错误码：**
 

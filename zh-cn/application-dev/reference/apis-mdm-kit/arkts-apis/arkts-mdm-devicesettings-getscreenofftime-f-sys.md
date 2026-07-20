@@ -6,6 +6,7 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
+<a id="getscreenofftime"></a>
 ## getScreenOffTime
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getScreenOffTime(admin: Want, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当接口调用成功，err为null，data为设备息屏时间（单位：毫秒），否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当接口调用成功，err为null，data为设备息屏时间（单位：毫秒），否则err为错误对象。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ deviceSettings.getScreenOffTime(wantTemp, (err, result) => {
 ```
 
 
+<a id="getscreenofftime-1"></a>
 ## getScreenOffTime
 
 ```TypeScript
@@ -104,7 +106,7 @@ function getScreenOffTime(admin: Want): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回设备息屏时间（单位：毫秒）。 |
+| Promise&lt;number&gt; | Promise对象，返回设备息屏时间（单位：毫秒）。 |
 
 **错误码：**
 

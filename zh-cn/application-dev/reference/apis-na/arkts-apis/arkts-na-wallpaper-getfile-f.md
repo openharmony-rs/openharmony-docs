@@ -1,5 +1,6 @@
 # getFile
 
+<a id="getfile"></a>
 ## getFile
 
 ```TypeScript
@@ -23,7 +24,7 @@ function getFile(wallpaperType: WallpaperType, callback: AsyncCallback<number>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 |  |
 
 **示例：**
 
@@ -41,6 +42,7 @@ wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
 ```
 
 
+<a id="getfile-1"></a>
 ## getFile
 
 ```TypeScript
@@ -69,7 +71,7 @@ function getFile(wallpaperType: WallpaperType): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 调用成功则返回壁纸文件描述符ID，调用失败则返回error信息。 |
+| Promise&lt;number&gt; | 调用成功则返回壁纸文件描述符ID，调用失败则返回error信息。 |
 
 **示例：**
 

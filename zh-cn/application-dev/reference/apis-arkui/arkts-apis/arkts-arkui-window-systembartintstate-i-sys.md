@@ -42,7 +42,7 @@ regionTint: Array<SystemBarRegionTint>
 
 当前已改变的所有系统栏信息。
 
-**类型：** Array<SystemBarRegionTint>
+**类型：** Array&lt;SystemBarRegionTint&gt;
 
 **起始版本：** 8
 

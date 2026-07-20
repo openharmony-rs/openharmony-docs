@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="movefile"></a>
 ## moveFile
 
 ```TypeScript
@@ -36,7 +37,7 @@ declare function moveFile(src: string, dest: string, mode?: number): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ declare function moveFile(src: string, dest: string, mode?: number): Promise<voi
 | 13900042 | Unknown error |
 
 
+<a id="movefile-1"></a>
 ## moveFile
 
 ```TypeScript
@@ -87,7 +89,7 @@ declare function moveFile(src: string, dest: string, callback: AsyncCallback<voi
 | --- | --- | --- | --- |
 | src | string | 是 | 源文件的应用沙箱路径。 |
 | dest | string | 是 | 目标文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步移动文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步移动文件之后的回调。 |
 
 **错误码：**
 
@@ -114,6 +116,7 @@ declare function moveFile(src: string, dest: string, callback: AsyncCallback<voi
 | 13900042 | Unknown error |
 
 
+<a id="movefile-2"></a>
 ## moveFile
 
 ```TypeScript
@@ -139,7 +142,7 @@ declare function moveFile(src: string, dest: string, mode: number, callback: Asy
 | src | string | 是 | 源文件的应用沙箱路径。 |
 | dest | string | 是 | 目标文件的应用沙箱路径。 |
 | mode | number | 是 | 移动模式。若mode为0，移动位置存在同名文件时，强制移动覆盖。若mode为1，移动位置存在同名文件时，抛出异常。默认为0。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步移动文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步移动文件之后的回调。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { fontManager } from '@kit.LocalizationKit';
 ```
 
+<a id="uninstallfont"></a>
 ## uninstallFont
 
 ```TypeScript
@@ -34,7 +35,7 @@ function uninstallFont(fullName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 返回卸载结果。返回为0表示卸载成功，否则卸载失败。 |
+| Promise&lt;number&gt; | 返回卸载结果。返回为0表示卸载成功，否则卸载失败。 |
 
 **错误码：**
 

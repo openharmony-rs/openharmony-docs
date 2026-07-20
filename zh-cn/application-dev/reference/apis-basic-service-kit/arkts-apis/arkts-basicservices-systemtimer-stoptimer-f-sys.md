@@ -6,6 +6,7 @@
 import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
+<a id="stoptimer"></a>
 ## stopTimer
 
 ```TypeScript
@@ -27,7 +28,7 @@ function stopTimer(timer: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | timer | number | 是 | 定时器的ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ try {
 ```
 
 
+<a id="stoptimer-1"></a>
 ## stopTimer
 
 ```TypeScript
@@ -96,7 +98,7 @@ function stopTimer(timer: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

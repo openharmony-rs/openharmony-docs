@@ -6,6 +6,7 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
+<a id="setkeyboardrepeatrate"></a>
 ## setKeyboardRepeatRate
 
 ```TypeScript
@@ -27,7 +28,7 @@ function setKeyboardRepeatRate(rate: number, callback: AsyncCallback<void>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | rate | number | 是 | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置键盘按键重复速率成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置键盘按键重复速率成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ struct Index {
 ```
 
 
+<a id="setkeyboardrepeatrate-1"></a>
 ## setKeyboardRepeatRate
 
 ```TypeScript
@@ -95,7 +97,7 @@ function setKeyboardRepeatRate(rate: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

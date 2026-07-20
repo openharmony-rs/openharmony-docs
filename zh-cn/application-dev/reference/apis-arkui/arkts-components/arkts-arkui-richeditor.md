@@ -30,7 +30,7 @@ RichEditor(value: RichEditorOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | RichEditorOptions | 是 | 富文本组件初始化选项。 |
+| value | [RichEditorOptions](arkts-arkui-richeditoroptions-i.md) | 是 | 富文本组件初始化选项。  |
 
 ## RichEditor
 
@@ -54,7 +54,7 @@ RichEditor(options: RichEditorStyledStringOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | RichEditorStyledStringOptions | 是 | 富文本组件初始化选项。 |
+| options | [RichEditorStyledStringOptions](arkts-arkui-richeditorstyledstringoptions-i.md) | 是 | 富文本组件初始化选项。  |
 
 ## 汇总
 

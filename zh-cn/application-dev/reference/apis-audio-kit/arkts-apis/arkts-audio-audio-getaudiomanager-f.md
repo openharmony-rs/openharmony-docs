@@ -6,6 +6,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="getaudiomanager"></a>
 ## getAudioManager
 
 ```TypeScript

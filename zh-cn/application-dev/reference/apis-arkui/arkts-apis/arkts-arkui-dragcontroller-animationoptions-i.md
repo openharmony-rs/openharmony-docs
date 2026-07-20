@@ -24,7 +24,7 @@ curve?: Curve | ICurve
 
 默认值：Curve.EaseInOut
 
-**类型：** Curve | ICurve
+**类型：** Curve \| ICurve
 
 **起始版本：** 11
 

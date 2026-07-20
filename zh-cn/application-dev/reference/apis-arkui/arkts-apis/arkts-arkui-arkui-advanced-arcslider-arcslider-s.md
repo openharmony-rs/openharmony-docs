@@ -10,6 +10,8 @@
 
 **起始版本：** 18
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-declare struct ArcSlider--><!--Device-unnamed-declare struct ArcSlider-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

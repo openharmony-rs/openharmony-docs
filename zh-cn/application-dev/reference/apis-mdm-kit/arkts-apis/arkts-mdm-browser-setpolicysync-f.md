@@ -6,6 +6,7 @@
 import { browser } from '@kit.MDMKit';
 ```
 
+<a id="setpolicysync"></a>
 ## setPolicySync
 
 ```TypeScript
@@ -29,7 +30,7 @@ function setPolicySync(admin: Want, appId: string, policyName: string, policyVal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| appId | string | 是 | 应用appId，用于指定浏览器，表示应用的唯一标识，详情信息可参考[什么是appId](../../../../quick-start/common-problem-of-application.md#什么是appid)。 |
+| appId | string | 是 | 应用appId，用于指定浏览器，表示应用的唯一标识，详情信息可参考[什么是appId](docroot://quick-start/common-problem-of-application.md#什么是appid)。 |
 | policyName | string | 是 | 浏览器子策略名，由接口调用方和指定浏览器约定。当此值为空字符串时，表示设置应用appId对应的浏览器策略。 |
 | policyValue | string | 是 | 浏览器子策略值，由接口调用方和指定浏览器约定。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
 

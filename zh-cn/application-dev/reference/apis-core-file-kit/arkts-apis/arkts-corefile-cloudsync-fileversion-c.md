@@ -14,6 +14,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="clearfileconflict"></a>
 ## clearFileConflict
 
 ```TypeScript
@@ -38,7 +39,7 @@ clearFileConflict(uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -78,6 +79,7 @@ fileVersion.clearFileConflict(uri).then(() => {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -105,6 +107,7 @@ let fileVersion = new cloudSync.FileVersion();
 
 ```
 
+<a id="downloadhistoryversion"></a>
 ## downloadHistoryVersion
 
 ```TypeScript
@@ -125,13 +128,13 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 | --- | --- | --- | --- |
 | uri | string | 是 | 文件的URI。 |
 | versionId | string | 是 | 文件某一版本的版本号，格式以接口[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist-1)返回为准。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VersionDownloadProgress> | 是 | 回调函数，返回下载进度。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VersionDownloadProgress&gt; | 是 | 回调函数，返回下载进度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回历史版本临时存储文件的URI。 |
+| Promise&lt;string&gt; | Promise对象，返回历史版本临时存储文件的URI。 |
 
 **错误码：**
 
@@ -146,6 +149,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 | 22400002 | Network unavailable. |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
+<a id="gethistoryversionlist"></a>
 ## getHistoryVersionList
 
 ```TypeScript
@@ -175,7 +179,7 @@ getHistoryVersionList(uri: string, versionNumLimit: number): Promise<Array<Histo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<HistoryVersion>> | Promise对象，返回历史版本列表。 |
+| Promise&lt;Array&lt;HistoryVersion&gt;&gt; | Promise对象，返回历史版本列表。 |
 
 **错误码：**
 
@@ -212,6 +216,7 @@ fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync
 
 ```
 
+<a id="isfileconflict"></a>
 ## isFileConflict
 
 ```TypeScript
@@ -238,7 +243,7 @@ isFileConflict(uri: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回本地文件和云端文件的冲突标志，true表示冲突，false表示不冲突。 |
+| Promise&lt;boolean&gt; | Promise对象，返回本地文件和云端文件的冲突标志，true表示冲突，false表示不冲突。 |
 
 **错误码：**
 
@@ -271,6 +276,7 @@ fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
 
 ```
 
+<a id="replacefilewithhistoryversion"></a>
 ## replaceFileWithHistoryVersion
 
 ```TypeScript
@@ -296,7 +302,7 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

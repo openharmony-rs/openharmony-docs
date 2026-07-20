@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="authorizeadmin"></a>
 ## authorizeAdmin
 
 ```TypeScript
@@ -32,7 +33,7 @@ function authorizeAdmin(admin: Want, bundleName: string, callback: AsyncCallback
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 被授予管理员权限应用的包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ adminManager.authorizeAdmin(wantTemp, bundleName, (err) => {
 ```
 
 
+<a id="authorizeadmin-1"></a>
 ## authorizeAdmin
 
 ```TypeScript
@@ -101,7 +103,7 @@ function authorizeAdmin(admin: Want, bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当授予指定应用管理员权限失败时，抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当授予指定应用管理员权限失败时，抛出错误对象。 |
 
 **错误码：**
 

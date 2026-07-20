@@ -6,6 +6,7 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
+<a id="emit"></a>
 ## emit
 
 ```TypeScript
@@ -14,7 +15,7 @@ function emit(event: InnerEvent, data?: EventData): void
 
 发送指定事件。
 
-该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](docroot://arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](docroot://ui/state-management/arkts-state.md)、[@Observed装饰器](docroot://ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -53,6 +54,7 @@ emitter.emit(innerEvent, eventData);
 ```
 
 
+<a id="emit-1"></a>
 ## emit
 
 ```TypeScript
@@ -61,7 +63,7 @@ function emit(eventId: string, data?: EventData): void
 
 发送指定事件。
 
-该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](docroot://arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](docroot://ui/state-management/arkts-state.md)、[@Observed装饰器](docroot://ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -95,6 +97,7 @@ emitter.emit('eventId', eventData);
 ```
 
 
+<a id="emit-2"></a>
 ## emit
 
 ```TypeScript
@@ -103,7 +106,7 @@ function emit<T>(eventId: string, data?: GenericEventData<T>): void
 
 发送指定事件。
 
-该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](docroot://arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](docroot://ui/state-management/arkts-state.md)、[@Observed装饰器](docroot://ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -120,7 +123,7 @@ function emit<T>(eventId: string, data?: GenericEventData<T>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)<T> | 否 | 事件携带的数据，默认为空。 |
+| data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt; | 否 | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -144,6 +147,7 @@ emitter.emit('eventId', eventData);
 ```
 
 
+<a id="emit-3"></a>
 ## emit
 
 ```TypeScript
@@ -152,7 +156,7 @@ function emit(eventId: string, options: Options, data?: EventData): void
 
 发送指定优先级事件。
 
-该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](docroot://arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](docroot://ui/state-management/arkts-state.md)、[@Observed装饰器](docroot://ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -191,6 +195,7 @@ emitter.emit('eventId', options, eventData);
 ```
 
 
+<a id="emit-4"></a>
 ## emit
 
 ```TypeScript
@@ -199,7 +204,7 @@ function emit<T>(eventId: string, options: Options, data?: GenericEventData<T>):
 
 发送指定优先级事件。
 
-该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](docroot://arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](docroot://ui/state-management/arkts-state.md)、[@Observed装饰器](docroot://ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -217,7 +222,7 @@ function emit<T>(eventId: string, options: Options, data?: GenericEventData<T>):
 | --- | --- | --- | --- |
 | eventId | string | 是 | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
 | options | [Options](arkts-basicservices-zlib-options-i.md) | 是 | 事件优先级。 |
-| data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)<T> | 否 | 事件携带的数据，默认为空。 |
+| data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt; | 否 | 事件携带的数据，默认为空。 |
 
 **示例：**
 

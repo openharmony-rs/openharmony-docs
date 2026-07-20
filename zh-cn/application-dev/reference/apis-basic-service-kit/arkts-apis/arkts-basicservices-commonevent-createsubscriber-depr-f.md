@@ -1,5 +1,6 @@
 # createSubscriber
 
+<a id="createsubscriber"></a>
 ## createSubscriber
 
 ```TypeScript
@@ -15,7 +16,7 @@ function createSubscriber(
 
 **废弃版本：** 9
 
-**替代接口：** createSubscriber(
+**替代接口：** [createSubscriber(](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)
 
 <!--Device-commonEvent-function createSubscriber(
     subscribeInfo: CommonEventSubscribeInfo,
@@ -32,7 +33,7 @@ function createSubscriber(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventmanager-commoneventsubscribeinfo-t.md) | 是 | 表示订阅信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<CommonEventSubscriber> | 是 | 表示创建订阅者的回调方法。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;CommonEventSubscriber&gt; | 是 | 表示创建订阅者的回调方法。 |
 
 **示例：**
 
@@ -63,6 +64,7 @@ commonEvent.createSubscriber(subscribeInfo, createCallBack);
 ```
 
 
+<a id="createsubscriber-1"></a>
 ## createSubscriber
 
 ```TypeScript
@@ -75,7 +77,7 @@ function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<Comm
 
 **废弃版本：** 9
 
-**替代接口：** createSubscriber(subscribeInfo:
+**替代接口：** [createSubscriber(subscribeInfo:](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)
 
 <!--Device-commonEvent-function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>--><!--Device-commonEvent-function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>-End-->
 
@@ -91,7 +93,7 @@ function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<Comm
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CommonEventSubscriber> | 返回订阅者对象。 |
+| Promise&lt;CommonEventSubscriber&gt; | 返回订阅者对象。 |
 
 **示例：**
 

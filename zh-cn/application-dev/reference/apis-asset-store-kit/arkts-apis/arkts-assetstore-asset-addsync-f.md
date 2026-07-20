@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="addsync"></a>
 ## addSync
 
 ```TypeScript
@@ -14,7 +15,7 @@ function addSync(attributes: AssetMap): void
 
 新增一条关键资产，使用同步方式返回结果。
 
-如果要设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../../../security/AccessToken/declare-permissions.md)。
+如果要设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](docroot://security/AccessToken/declare-permissions.md)。
 
 **起始版本：** 12
 

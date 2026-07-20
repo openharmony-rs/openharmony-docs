@@ -14,6 +14,7 @@
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
+<a id="discriminatepicturelightdegree"></a>
 ## discriminatePictureLightDegree
 
 ```TypeScript
@@ -69,6 +70,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ```
 
+<a id="getalphazerotransparentproportion"></a>
 ## getAlphaZeroTransparentProportion
 
 ```TypeScript
@@ -128,6 +130,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ```
 
+<a id="getcomplexitydegree"></a>
 ## getComplexityDegree
 
 ```TypeScript
@@ -187,6 +190,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ```
 
+<a id="getdeepenimmersioncolor"></a>
 ## getDeepenImmersionColor
 
 ```TypeScript
@@ -242,6 +246,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ```
 
+<a id="getimmersivebackgroundcolor"></a>
 ## getImmersiveBackgroundColor
 
 ```TypeScript
@@ -297,6 +302,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ```
 
+<a id="getimmersiveforegroundcolor"></a>
 ## getImmersiveForegroundColor
 
 ```TypeScript
@@ -352,6 +358,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ```
 
+<a id="getmorandishadowcolor"></a>
 ## getMorandiShadowColor
 
 ```TypeScript
@@ -407,6 +414,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ```
 
+<a id="getreversecolor"></a>
 ## getReverseColor
 
 ```TypeScript
@@ -462,6 +470,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ```
 
+<a id="getshadedegree"></a>
 ## getShadeDegree
 
 ```TypeScript
@@ -521,6 +530,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ```
 
+<a id="gettopproportioncolorsandpercentage"></a>
 ## getTopProportionColorsAndPercentage
 
 ```TypeScript
@@ -549,7 +559,7 @@ getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| [Map](../../apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)<Color \| null, number \| null> | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。  - 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。  - 取色失败或取色个数小于1返回`Map()`。 |
+| Map&lt;Color \| null, number \| null&gt; | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。   - 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。   - 取色失败或取色个数小于1返回`Map()`。 |
 
 **错误码：**
 

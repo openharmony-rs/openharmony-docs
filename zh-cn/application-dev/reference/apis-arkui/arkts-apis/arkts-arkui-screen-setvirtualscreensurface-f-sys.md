@@ -6,6 +6,7 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="setvirtualscreensurface"></a>
 ## setVirtualScreenSurface
 
 ```TypeScript
@@ -30,7 +31,7 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string, callback: A
 | --- | --- | --- | --- |
 | screenId | number | 是 | 屏幕的id，该参数仅支持整数输入。 |
 | surfaceId | string | 是 | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -85,6 +86,7 @@ struct Index {
 ```
 
 
+<a id="setvirtualscreensurface-1"></a>
 ## setVirtualScreenSurface
 
 ```TypeScript
@@ -114,7 +116,7 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string): Promise<vo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

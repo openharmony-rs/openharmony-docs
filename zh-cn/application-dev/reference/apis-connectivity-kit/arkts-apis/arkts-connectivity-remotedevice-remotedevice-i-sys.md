@@ -14,6 +14,7 @@
 import { remoteDevice } from '@kit.ConnectivityKit';
 ```
 
+<a id="canceldevicepairing"></a>
 ## cancelDevicePairing
 
 ```TypeScript
@@ -38,7 +39,7 @@ cancelDevicePairing(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 返回promise对象。 |
+| Promise&lt;void&gt; | 返回promise对象。 |
 
 **错误码：**
 
@@ -46,9 +47,10 @@ cancelDevicePairing(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="connect"></a>
 ## connect
 
 ```TypeScript
@@ -73,7 +75,7 @@ connect(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 将profile连接结果作为Promise返回。 |
+| Promise&lt;void&gt; | 将profile连接结果作为Promise返回。 |
 
 **错误码：**
 
@@ -81,9 +83,10 @@ connect(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="disconnect"></a>
 ## disconnect
 
 ```TypeScript
@@ -108,7 +111,7 @@ disconnect(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 将profile连接结果作为Promise返回。 |
+| Promise&lt;void&gt; | 将profile连接结果作为Promise返回。 |
 
 **错误码：**
 
@@ -116,9 +119,10 @@ disconnect(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="getdevicealias"></a>
 ## getDeviceAlias
 
 ```TypeScript
@@ -151,9 +155,10 @@ getDeviceAlias(): string
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="getdevicemodel"></a>
 ## getDeviceModel
 
 ```TypeScript
@@ -183,9 +188,10 @@ getDeviceModel(): DeviceModel
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="getrssivalue"></a>
 ## getRssiValue
 
 ```TypeScript
@@ -210,7 +216,7 @@ getRssiValue(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 返回RSSI值的promise对象。 |
+| Promise&lt;number&gt; | 返回RSSI值的promise对象。 |
 
 **错误码：**
 
@@ -218,9 +224,10 @@ getRssiValue(): Promise<number>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="removepaireddevice"></a>
 ## removePairedDevice
 
 ```TypeScript
@@ -245,7 +252,7 @@ removePairedDevice(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 返回promise对象。 |
+| Promise&lt;void&gt; | 返回promise对象。 |
 
 **错误码：**
 
@@ -253,9 +260,10 @@ removePairedDevice(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="setconnectioninterval"></a>
 ## setConnectionInterval
 
 ```TypeScript
@@ -288,9 +296,10 @@ setConnectionInterval(interval: ConnectionInterval): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="setdevicealias"></a>
 ## setDeviceAlias
 
 ```TypeScript
@@ -323,10 +332,11 @@ setDeviceAlias(alias: string): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | 36100046 | String exceeds maximum length. |
-| 36100099 | Operation failed. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="setpairingconfirmation"></a>
 ## setPairingConfirmation
 
 ```TypeScript
@@ -359,9 +369,10 @@ setPairingConfirmation(accept: boolean): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="setpairingpasscode"></a>
 ## setPairingPasscode
 
 ```TypeScript
@@ -392,7 +403,7 @@ setPairingPasscode(passcode: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 返回promise对象。 |
+| Promise&lt;void&gt; | 返回promise对象。 |
 
 **错误码：**
 
@@ -400,10 +411,11 @@ setPairingPasscode(passcode: string): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | 36100045 | Passcode must be a 6-digit number. |
-| 36100099 | Operation failed. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="startcrediblepairing"></a>
 ## startCrediblePairing
 
 ```TypeScript
@@ -428,7 +440,7 @@ startCrediblePairing(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 返回promise对象。 |
+| Promise&lt;void&gt; | 返回promise对象。 |
 
 **错误码：**
 
@@ -436,6 +448,6 @@ startCrediblePairing(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 

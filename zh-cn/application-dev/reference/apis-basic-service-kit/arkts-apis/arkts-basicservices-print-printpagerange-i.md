@@ -38,7 +38,7 @@ pages?: Array<number>
 
 表示待打印的页面范围的集合。默认值为空。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 11
 

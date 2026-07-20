@@ -72,7 +72,7 @@ params?: collections.Array <string | number>
 
 其他资源参数，包括资源名、格式化接口的替换值、复数接口的量词。
 
-**类型：** collections.Array <string | number>
+**类型：** collections.Array &lt;string \| number&gt;
 
 **起始版本：** 12
 

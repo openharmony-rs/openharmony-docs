@@ -16,7 +16,7 @@ readonly actions: Array<string>
 
 Skill接收的[Action集合](arkts-ability-wantconstant-action-depr-e.md)。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
@@ -52,7 +52,7 @@ readonly entities: Array<string>
 
 Skill接收的[Entity集合](arkts-ability-wantconstant-entity-depr-e.md)。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
@@ -70,7 +70,7 @@ readonly uris: Array<SkillUri>
 
 Want匹配的Uri集合。
 
-**类型：** Array<SkillUri>
+**类型：** Array&lt;SkillUri&gt;
 
 **起始版本：** 12
 

@@ -6,6 +6,7 @@
 import { uriPermissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="granturipermissionbykeyascaller"></a>
 ## grantUriPermissionByKeyAsCaller
 
 ```TypeScript
@@ -28,16 +29,16 @@ function grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 目标UDMF数据唯一标识。key必须指定应用（即callerTokenId对应的应用）通过[unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata-1)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../../../database/unified-data-channels.md)。 |
+| key | string | 是 | 目标UDMF数据唯一标识。key必须指定应用（即callerTokenId对应的应用）通过[unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata-1)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](docroot://database/unified-data-channels.md)。 |
 | flag | wantConstant.Flags | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>-FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 |
 | callerTokenId | number | 是 | 拉起方应用的身份标识，可以通过[want](arkts-ability-app-ability-want-want-c.md)中的"ohos.aafwk.param.callerToken"字段获取。 |
-| targetTokenId | number | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md#getapplicationinfo-2)获取。 |
+| targetTokenId | number | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md#getapplicationinfo-1)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

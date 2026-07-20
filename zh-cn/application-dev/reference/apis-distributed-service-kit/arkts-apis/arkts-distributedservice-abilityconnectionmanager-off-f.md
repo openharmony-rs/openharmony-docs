@@ -6,6 +6,7 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="off"></a>
 ## off('connect')
 
 ```TypeScript
@@ -31,7 +32,7 @@ function off(type: 'connect', sessionId: number,
 | --- | --- | --- | --- |
 | type | 'connect' | 是 | 事件回调类型，支持的事件为'connect'。 |
 | sessionId | number | 是 | 创建的协同会话ID。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventCallbackInfo> | 否 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 否 | 注册的回调函数。 |
 
 **错误码：**
 
@@ -52,6 +53,7 @@ abilityConnectionManager.off("connect", sessionId);
 ```
 
 
+<a id="off-1"></a>
 ## off('disconnect')
 
 ```TypeScript
@@ -77,7 +79,7 @@ function off(type: 'disconnect', sessionId: number,
 | --- | --- | --- | --- |
 | type | 'disconnect' | 是 | 事件回调类型，支持的事件为'disconnect'。 |
 | sessionId | number | 是 | 创建的协同会话ID。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventCallbackInfo> | 否 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 否 | 注册的回调函数。 |
 
 **错误码：**
 
@@ -99,6 +101,7 @@ abilityConnectionManager.off("disconnect", sessionId);
 ```
 
 
+<a id="off-2"></a>
 ## off('receiveMessage')
 
 ```TypeScript
@@ -124,7 +127,7 @@ function off(type: 'receiveMessage', sessionId: number,
 | --- | --- | --- | --- |
 | type | 'receiveMessage' | 是 | 事件回调类型，支持的事件为'receiveMessage'。 |
 | sessionId | number | 是 | 创建的协同会话ID。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventCallbackInfo> | 否 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 否 | 注册的回调函数。 |
 
 **错误码：**
 
@@ -146,6 +149,7 @@ abilityConnectionManager.off("receiveMessage", sessionId);
 ```
 
 
+<a id="off-3"></a>
 ## off('receiveData')
 
 ```TypeScript
@@ -171,7 +175,7 @@ function off(type: 'receiveData', sessionId: number,
 | --- | --- | --- | --- |
 | type | 'receiveData' | 是 | 事件回调类型，支持的事件为'receiveData'，完成。 |
 | sessionId | number | 是 | 创建的协同会话ID。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventCallbackInfo> | 否 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 否 | 注册的回调函数。 |
 
 **错误码：**
 

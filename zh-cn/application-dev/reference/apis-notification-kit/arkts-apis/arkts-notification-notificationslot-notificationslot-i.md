@@ -255,7 +255,7 @@ vibrationValues?: Array<number>
 
 通知振动样式。预留能力，暂不支持。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 7
 

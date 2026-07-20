@@ -186,7 +186,7 @@ fontFamilies?: Array<string>
 
 字体家族名称列表，默认为空，匹配系统字体。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
@@ -204,7 +204,7 @@ fontFeatures?: Array<FontFeature>
 
 文本字体特征数组。
 
-**类型：** Array<FontFeature>
+**类型：** Array&lt;FontFeature&gt;
 
 **起始版本：** 12
 
@@ -258,7 +258,7 @@ fontTypefaces?: Array<drawing.Typeface>
 
 字体对象数组
 
-**类型：** Array<drawing.Typeface>
+**类型：** Array&lt;drawing.Typeface&gt;
 
 **起始版本：** 26.0.0
 
@@ -278,7 +278,7 @@ fontVariations?: Array<FontVariation>
 
 可变字体属性数组。
 
-**类型：** Array<FontVariation>
+**类型：** Array&lt;FontVariation&gt;
 
 **起始版本：** 12
 
@@ -476,7 +476,7 @@ textShadows?: Array<TextShadow>
 
 文本阴影数组。
 
-**类型：** Array<TextShadow>
+**类型：** Array&lt;TextShadow&gt;
 
 **起始版本：** 12
 

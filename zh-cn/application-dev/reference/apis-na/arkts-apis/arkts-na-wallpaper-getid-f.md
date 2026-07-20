@@ -1,5 +1,6 @@
 # getId
 
+<a id="getid"></a>
 ## getId
 
 ```TypeScript
@@ -21,7 +22,7 @@ function getId(wallpaperType: WallpaperType, callback: AsyncCallback<number>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 |  |
 
 **示例：**
 
@@ -39,6 +40,7 @@ wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError,
 ```
 
 
+<a id="getid-1"></a>
 ## getId
 
 ```TypeScript
@@ -65,7 +67,7 @@ function getId(wallpaperType: WallpaperType): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 壁纸的ID。如果配置了这种壁纸类型的壁纸就返回一个大于等于0的数，否则返回-1。取值范围是-1到（2^31-1）。 |
+| Promise&lt;number&gt; | 壁纸的ID。如果配置了这种壁纸类型的壁纸就返回一个大于等于0的数，否则返回-1。取值范围是-1到（2^31-1）。 |
 
 **示例：**
 

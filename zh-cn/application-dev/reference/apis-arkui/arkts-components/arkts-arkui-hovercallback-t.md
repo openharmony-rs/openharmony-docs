@@ -20,6 +20,6 @@ hover事件的回调类型。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isHover | boolean | 是 | 是否处于hover状态，true表示处于hover状态，false表示不在hover状态。 |
-| event | HoverEvent | 是 | 获取鼠标或手写笔悬浮的位置坐标。 |
+| isHover | boolean | 是 | 是否处于hover状态，true表示处于hover状态，false表示不在hover状态。  |
+| event | [HoverEvent](arkts-arkui-hoverevent-i.md) | 是 | 获取鼠标或手写笔悬浮的位置坐标。  |
 

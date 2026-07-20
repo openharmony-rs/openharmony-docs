@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="settouchpadpointerspeed"></a>
 ## setTouchpadPointerSpeed
 
 ```TypeScript
@@ -27,7 +28,7 @@ function setTouchpadPointerSpeed(speed: number, callback: AsyncCallback<void>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | speed | number | 是 | speed代表光标移动速度。speed取值范围[1,11]，默认6。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置触控板光标移动速度成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置触控板光标移动速度成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ struct Index {
 ```
 
 
+<a id="settouchpadpointerspeed-1"></a>
 ## setTouchpadPointerSpeed
 
 ```TypeScript
@@ -95,7 +97,7 @@ function setTouchpadPointerSpeed(speed: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

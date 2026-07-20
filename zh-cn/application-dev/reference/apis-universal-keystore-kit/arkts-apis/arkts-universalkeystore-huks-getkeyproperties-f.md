@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="getkeyproperties"></a>
 ## getKeyProperties
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getKeyProperties(keyAlias: string, options: HuksOptions, callback: Asyn
 
 **废弃版本：** 9
 
-**替代接口：** getKeyItemProperties(
+**替代接口：** [getKeyItemProperties(](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties-1)
 
 <!--Device-huks-function getKeyProperties(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function getKeyProperties(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -36,7 +37,7 @@ function getKeyProperties(keyAlias: string, options: HuksOptions, callback: Asyn
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，应与所用密钥生成时使用的别名相同。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 空对象（此处传空即可）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<HuksResult> | 是 | 回调函数。当获取密钥属性成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksResult&gt; | 是 | 回调函数。当获取密钥属性成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例：**
 
@@ -54,6 +55,7 @@ huks.getKeyProperties(keyAlias, emptyOptions, (err, data) => {
 ```
 
 
+<a id="getkeyproperties-1"></a>
 ## getKeyProperties
 
 ```TypeScript
@@ -65,14 +67,14 @@ function getKeyProperties(keyAlias: string, options: HuksOptions): Promise<HuksR
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [huks.getKeyItemProperties<sup>9+</sup>](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties-2)  
+> [huks.getKeyItemProperties<sup>9+</sup>](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties-1)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** getKeyItemProperties(keyAlias:
+**替代接口：** [getKeyItemProperties(keyAlias:](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties-1)
 
 <!--Device-huks-function getKeyProperties(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function getKeyProperties(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 
@@ -89,7 +91,7 @@ function getKeyProperties(keyAlias: string, options: HuksOptions): Promise<HuksR
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksResult> | Promise对象，返回HuksResult。HuksResult的properties返回密钥参数。 |
+| Promise&lt;HuksResult&gt; | Promise对象，返回HuksResult。HuksResult的properties返回密钥参数。 |
 
 **示例：**
 

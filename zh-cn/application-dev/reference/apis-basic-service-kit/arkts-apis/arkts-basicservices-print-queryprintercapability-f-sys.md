@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryprintercapability"></a>
 ## queryPrinterCapability
 
 ```TypeScript
@@ -29,7 +30,7 @@ function queryPrinterCapability(printerId: string, callback: AsyncCallback<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | printerId | string | 是 | 打印机ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步查询打印机能力之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步查询打印机能力之后的回调。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ print.queryPrinterCapability(printerId, (err: BusinessError) => {
 ```
 
 
+<a id="queryprintercapability-1"></a>
 ## queryPrinterCapability
 
 ```TypeScript
@@ -85,7 +87,7 @@ function queryPrinterCapability(printerId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

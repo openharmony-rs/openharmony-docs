@@ -6,6 +6,7 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+<a id="getaccessibilityextensionlistsync"></a>
 ## getAccessibilityExtensionListSync
 
 ```TypeScript
@@ -44,7 +45,7 @@ function getAccessibilityExtensionListSync(
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AccessibilityAbilityInfo> | 返回辅助应用信息列表。 |
+| Array&lt;AccessibilityAbilityInfo&gt; | 返回辅助应用信息列表。 |
 
 **示例：**
 

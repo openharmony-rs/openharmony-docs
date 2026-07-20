@@ -6,6 +6,7 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
+<a id="unbinddriverwithdeviceid"></a>
 ## unbindDriverWithDeviceId
 
 ```TypeScript
@@ -32,7 +33,7 @@ function unbindDriverWithDeviceId(deviceId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回解除绑定的设备ID。 |
+| Promise&lt;number&gt; | Promise对象，返回解除绑定的设备ID。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
+<a id="getadrequestbody"></a>
 ## getAdRequestBody
 
 ```TypeScript
@@ -31,7 +32,7 @@ function getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回字符类型的广告数据。 |
+| Promise&lt;string&gt; | Promise对象，返回字符类型的广告数据。 |
 
 **错误码：**
 

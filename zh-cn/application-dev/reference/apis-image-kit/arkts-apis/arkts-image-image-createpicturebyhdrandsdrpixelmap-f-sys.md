@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createpicturebyhdrandsdrpixelmap"></a>
 ## createPictureByHdrAndSdrPixelMap
 
 ```TypeScript
@@ -33,7 +34,7 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Picture> | 返回Picture包含sdr和gainmap，像素格式为RGBA8888。 |
+| Promise&lt;Picture&gt; | 返回Picture包含sdr和gainmap，像素格式为RGBA8888。 |
 
 **错误码：**
 
@@ -81,6 +82,7 @@ async function CreatePictureTest(context: Context) {
 ```
 
 
+<a id="createpicturebyhdrandsdrpixelmap-1"></a>
 ## createPictureByHdrAndSdrPixelMap
 
 ```TypeScript
@@ -114,7 +116,7 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Picture> | Promise对象，返回Picture包含SDR和Gainmap，像素格式为RGBA_8888。 |
+| Promise&lt;Picture&gt; | Promise对象，返回Picture包含SDR和Gainmap，像素格式为RGBA_8888。 |
 
 **错误码：**
 

@@ -4,6 +4,8 @@
 
 **起始版本：** 20
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-declare struct ContentFormCard--><!--Device-unnamed-declare struct ContentFormCard-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core

@@ -64,7 +64,7 @@ NavRouter(value: RouteInfo)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | RouteInfo | 是 | 路由信息。 |
+| value | [RouteInfo](arkts-arkui-routeinfo-i.md) | 是 | 路由信息。  |
 
 ## 汇总
 

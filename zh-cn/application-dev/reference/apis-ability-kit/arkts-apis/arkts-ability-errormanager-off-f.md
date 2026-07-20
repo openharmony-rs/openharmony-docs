@@ -6,6 +6,7 @@
 import { errorManager } from '@kit.AbilityKit';
 ```
 
+<a id="off"></a>
 ## off('error')
 
 ```TypeScript
@@ -30,7 +31,7 @@ function off(type: 'error', observerId: number, callback: AsyncCallback<void>): 
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 填写'error'，表示错误观测器。 |
 | observerId | number | 是 | 由on方法返回的观测器的index值。没有具体的单位。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 表示指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示指定的回调方法。 |
 
 **错误码：**
 
@@ -64,6 +65,7 @@ try {
 ```
 
 
+<a id="off-1"></a>
 ## off('error')
 
 ```TypeScript
@@ -93,7 +95,7 @@ function off(type: 'error', observerId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -127,6 +129,7 @@ try {
 ```
 
 
+<a id="off-2"></a>
 ## off('loopObserver')
 
 ```TypeScript
@@ -176,6 +179,7 @@ try {
 ```
 
 
+<a id="off-3"></a>
 ## off('unhandledRejection')
 
 ```TypeScript
@@ -262,6 +266,7 @@ errorManager.off('unhandledRejection', observer);
 ```
 
 
+<a id="off-4"></a>
 ## off('globalUnhandledRejectionDetected')
 
 ```TypeScript
@@ -323,6 +328,7 @@ errorManager.off('globalUnhandledRejectionDetected', promiseFunc);
 ```
 
 
+<a id="off-5"></a>
 ## off('freeze')
 
 ```TypeScript
@@ -378,6 +384,7 @@ try {
 ```
 
 
+<a id="off-6"></a>
 ## off('globalErrorOccurred')
 
 ```TypeScript

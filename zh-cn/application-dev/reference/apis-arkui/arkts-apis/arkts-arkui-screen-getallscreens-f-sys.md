@@ -6,6 +6,7 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="getallscreens"></a>
 ## getAllScreens
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getAllScreens(callback: AsyncCallback<Array<Screen>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Screen>> | 是 | 回调函数。返回当前获取的屏幕对象集合。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Screen&gt;&gt; | 是 | 回调函数。返回当前获取的屏幕对象集合。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 ```
 
 
+<a id="getallscreens-1"></a>
 ## getAllScreens
 
 ```TypeScript
@@ -77,7 +79,7 @@ function getAllScreens(): Promise<Array<Screen>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Screen>> | Promise对象。返回当前获取的屏幕对象集合。 |
+| Promise&lt;Array&lt;Screen&gt;&gt; | Promise对象。返回当前获取的屏幕对象集合。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="setstaticsubscriberstate"></a>
 ## setStaticSubscriberState
 
 ```TypeScript
@@ -29,7 +30,7 @@ function setStaticSubscriberState(enable: boolean, callback: AsyncCallback<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 表示静态订阅事件使能状态。 true：使能 false：去使能。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置静态订阅事件使能状态成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置静态订阅事件使能状态成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -56,6 +57,7 @@ commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
 ```
 
 
+<a id="setstaticsubscriberstate-1"></a>
 ## setStaticSubscriberState
 
 ```TypeScript
@@ -84,7 +86,7 @@ function setStaticSubscriberState(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -109,6 +111,7 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 ```
 
 
+<a id="setstaticsubscriberstate-2"></a>
 ## setStaticSubscriberState
 
 ```TypeScript
@@ -132,13 +135,13 @@ function setStaticSubscriberState(enable: boolean, events?: Array<string>): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 表示静态订阅事件使能状态。 true：使能 false：去使能。 |
-| events | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 否 | 表示记录事件名称。 |
+| events | Array&lt;string&gt; | 否 | 表示记录事件名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

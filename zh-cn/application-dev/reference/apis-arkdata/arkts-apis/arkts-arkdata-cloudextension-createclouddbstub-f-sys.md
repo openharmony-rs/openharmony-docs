@@ -6,6 +6,7 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
+<a id="createclouddbstub"></a>
 ## createCloudDBStub
 
 ```TypeScript
@@ -32,7 +33,7 @@ function createCloudDBStub(instance: CloudDB): Promise<rpc.RemoteObject>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<rpc.RemoteObject> | Promise对象，返回CloudDB的rpc.RemoteObject对象。 |
+| Promise&lt;rpc.RemoteObject&gt; | Promise对象，返回CloudDB的rpc.RemoteObject对象。 |
 
 **示例：**
 

@@ -6,6 +6,7 @@
 import { statfs } from '@kit.CoreFileKit';
 ```
 
+<a id="gettotalsizesync"></a>
 ## getTotalSizeSync
 
 ```TypeScript

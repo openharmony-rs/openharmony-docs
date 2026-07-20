@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getactivenotificationbyfilter"></a>
 ## getActiveNotificationByFilter
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getActiveNotificationByFilter(filter: NotificationFilter, callback: Asy
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | [NotificationFilter](arkts-notification-notificationrequest-notificationfilter-i-sys.md) | 是 | 查询普通实况窗的过滤条件。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<NotificationRequest> | 是 | 获取满足条件的普通实况通知信息的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;NotificationRequest&gt; | 是 | 获取满足条件的普通实况通知信息的回调函数。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationB
 ```
 
 
+<a id="getactivenotificationbyfilter-1"></a>
 ## getActiveNotificationByFilter
 
 ```TypeScript
@@ -97,7 +99,7 @@ function getActiveNotificationByFilter(filter: NotificationFilter): Promise<Noti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<NotificationRequest> | 以Promise形式返回获取的满足条件的普通实况通知信息。 |
+| Promise&lt;NotificationRequest&gt; | 以Promise形式返回获取的满足条件的普通实况通知信息。 |
 
 **错误码：**
 

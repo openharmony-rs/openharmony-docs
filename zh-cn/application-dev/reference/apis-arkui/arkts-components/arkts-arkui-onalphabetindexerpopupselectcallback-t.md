@@ -20,5 +20,5 @@ declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | selected index |
+| index | number | 是 | selected index  |
 

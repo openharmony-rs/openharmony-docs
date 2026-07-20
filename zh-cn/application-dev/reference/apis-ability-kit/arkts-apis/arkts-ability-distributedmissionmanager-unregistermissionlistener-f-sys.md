@@ -6,6 +6,7 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="unregistermissionlistener"></a>
 ## unRegisterMissionListener
 
 ```TypeScript
@@ -31,7 +32,7 @@ function unRegisterMissionListener(parameter: MissionDeviceInfo, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | parameter | [MissionDeviceInfo](arkts-ability-missiondeviceinfo-i-sys.md) | 是 | 注册监听时的设备信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，取消监听成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，取消监听成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -64,6 +65,7 @@ try {
 ```
 
 
+<a id="unregistermissionlistener-1"></a>
 ## unRegisterMissionListener
 
 ```TypeScript
@@ -94,7 +96,7 @@ function unRegisterMissionListener(parameter: MissionDeviceInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

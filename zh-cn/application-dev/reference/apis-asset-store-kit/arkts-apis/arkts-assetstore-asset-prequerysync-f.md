@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="prequerysync"></a>
 ## preQuerySync
 
 ```TypeScript
@@ -32,7 +33,7 @@ function preQuerySync(query: AssetMap): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 挑战值。<br>**说明：** 挑战值用于后续用户认证。 |
+| Uint8Array | 挑战值。<br>**说明：** 挑战值用于后续用户认证。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
+<a id="cancelscreenwatermarkimage"></a>
 ## cancelScreenWatermarkImage
 
 ```TypeScript

@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+<a id="closekvstore"></a>
 ## closeKVStore
 
 ```TypeScript
@@ -37,7 +38,7 @@ closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCa
 | appId | string | 是 | 所调用数据库方的包名。 |
 | storeId | string | 是 | Unique identifier of the 要关闭的KVStore数据库。 The length cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributeddata-constants-n.md#constants). |
 | kvStore | [KVStore](arkts-arkdata-distributeddata-kvstore-i.md) | 是 | 要关闭的KVStore数据库。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -67,6 +68,7 @@ try {
 
 ```
 
+<a id="closekvstore-1"></a>
 ## closeKVStore
 
 ```TypeScript
@@ -97,7 +99,7 @@ closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -131,6 +133,7 @@ try {
 
 ```
 
+<a id="deletekvstore"></a>
 ## deleteKVStore
 
 ```TypeScript
@@ -155,7 +158,7 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): vo
 | --- | --- | --- | --- |
 | appId | string | 是 | 所调用数据库方的包名。 |
 | storeId | string | 是 | 要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](arkts-arkdata-distributeddata-constants-n.md#constants)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -185,6 +188,7 @@ try {
 
 ```
 
+<a id="deletekvstore-1"></a>
 ## deleteKVStore
 
 ```TypeScript
@@ -214,7 +218,7 @@ deleteKVStore(appId: string, storeId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -248,13 +252,14 @@ try {
 
 ```
 
+<a id="getallkvstoreid"></a>
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-获取所有通过[getKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#getkvstore-2)方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#deletekvstore-1)方法删除的KVStore数据库的storeId，使用callback异步回调。
+获取所有通过[getKVStore](distributedData.KVManager.getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#deletekvstore-1)方法删除的KVStore数据库的storeId，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -271,7 +276,7 @@ getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | appId | string | 是 | 所调用数据库方的包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string[]> | 是 | 回调函数。返回所有创建的KvStore数据库的storeId。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string[]&gt; | 是 | 回调函数。返回所有创建的KvStore数据库的storeId。 |
 
 **示例：**
 
@@ -288,13 +293,14 @@ try {
 
 ```
 
+<a id="getallkvstoreid-1"></a>
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-获取所有通过[getKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#getkvstore-2)方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#deletekvstore-1)方法删除的KVStore数据库的storeId，使用Promise异步回调。
+获取所有通过[getKVStore](distributedData.KVManager.getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#deletekvstore-1)方法删除的KVStore数据库的storeId，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -316,7 +322,7 @@ getAllKVStoreId(appId: string): Promise<string[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string[]> | Promise对象。返回所有创建的KvStore数据库的storeId。 |
+| Promise&lt;string[]&gt; | Promise对象。返回所有创建的KvStore数据库的storeId。 |
 
 **示例：**
 
@@ -336,6 +342,7 @@ try {
 
 ```
 
+<a id="getkvstore"></a>
 ## getKVStore
 
 ```TypeScript
@@ -365,7 +372,7 @@ getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<T> | Promise对象。返回创建的KVStore数据库实例。 |
+| Promise&lt;T&gt; | Promise对象。返回创建的KVStore数据库实例。 |
 
 **示例：**
 
@@ -393,6 +400,7 @@ try {
 
 ```
 
+<a id="getkvstore-1"></a>
 ## getKVStore
 
 ```TypeScript
@@ -417,7 +425,7 @@ getKVStore<T extends KVStore>(storeId: string, options: Options, callback: Async
 | --- | --- | --- | --- |
 | storeId | string | 是 | 数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](arkts-arkdata-distributeddata-constants-n.md#constants)。 |
 | options | [Options](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-zlib-options-i.md) | 是 | 创建KVStore实例的配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<T> | 是 | 回调函数。返回创建的KVStore数据库实例。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;T&gt; | 是 | 回调函数。返回创建的KVStore数据库实例。 |
 
 **示例：**
 
@@ -447,6 +455,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -470,7 +479,7 @@ off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'distributedDataServiceDie' | 是 | 取消订阅的事件名，固定为'distributedDataServiceDie'，即服务状态变更事件。 |
-| deathCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 取消订阅的函数。如不设置callback，则取消所有已订阅的函数。 |
+| deathCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有已订阅的函数。 |
 
 **示例：**
 
@@ -489,6 +498,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -512,7 +522,7 @@ on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'distributedDataServiceDie' | 是 | 订阅的事件名，固定为'distributedDataServiceDie'，即服务状态变更事件。 |
-| deathCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| deathCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 

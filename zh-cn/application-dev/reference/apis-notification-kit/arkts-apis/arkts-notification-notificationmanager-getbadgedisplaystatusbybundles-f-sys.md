@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getbadgedisplaystatusbybundles"></a>
 ## getBadgeDisplayStatusByBundles
 
 ```TypeScript
@@ -28,13 +29,13 @@ function getBadgeDisplayStatusByBundles(bundles: Array<BundleOption>) : Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundles | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<BundleOption> | 是 | 待获取应用角标显示状态的应用包信息数组。 |
+| bundles | Array&lt;BundleOption&gt; | 是 | 待获取应用角标显示状态的应用包信息数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Map<BundleOption, boolean>> | Promise对象，返回应用包信息和显示角标状态的键值对集合的Promise对象 。 |
+| Promise&lt;Map&lt;BundleOption, boolean&gt;&gt; | Promise对象，返回应用包信息和显示角标状态的键值对集合的Promise对象 。 |
 
 **错误码：**
 

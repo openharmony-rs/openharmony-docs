@@ -6,6 +6,7 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
+<a id="subscribenotification"></a>
 ## subscribeNotification
 
 ```TypeScript
@@ -36,7 +37,7 @@ function subscribeNotification(subscriber: NotificationSubscriber): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 ```
 
 
+<a id="subscribenotification-1"></a>
 ## subscribeNotification
 
 ```TypeScript
@@ -99,7 +101,7 @@ function subscribeNotification(subscriber: NotificationSubscriber, info: Notific
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="getauthlockstate"></a>
 ## getAuthLockState
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getAuthLockState(authType: UserAuthType): Promise<AuthLockState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AuthLockState> | Promise对象，当查询成功时，返回值为指定认证类型的身份认证冻结状态。失败时报错。 |
+| Promise&lt;AuthLockState&gt; | Promise对象，当查询成功时，返回值为指定认证类型的身份认证冻结状态。失败时报错。 |
 
 **错误码：**
 

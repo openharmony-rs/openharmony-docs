@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="readlines"></a>
 ## readLines
 
 ```TypeScript
@@ -31,7 +32,7 @@ declare function readLines(filePath: string, options?: Options): Promise<ReaderI
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ReaderIterator> | Promise对象。返回文件读取迭代器。 |
+| Promise&lt;ReaderIterator&gt; | Promise对象。返回文件读取迭代器。 |
 
 **错误码：**
 
@@ -52,6 +53,7 @@ declare function readLines(filePath: string, options?: Options): Promise<ReaderI
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
+<a id="readlines-1"></a>
 ## readLines
 
 ```TypeScript
@@ -71,7 +73,7 @@ declare function readLines(filePath: string, callback: AsyncCallback<ReaderItera
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filePath | string | 是 | 文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ReaderIterator> | 是 | 逐行读取文件文本内容回调。返回文件读取迭代器。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ReaderIterator&gt; | 是 | 逐行读取文件文本内容回调。返回文件读取迭代器。 |
 
 **错误码：**
 
@@ -91,6 +93,7 @@ declare function readLines(filePath: string, callback: AsyncCallback<ReaderItera
 | 13900042 | Unknown error |
 
 
+<a id="readlines-2"></a>
 ## readLines
 
 ```TypeScript
@@ -111,7 +114,7 @@ declare function readLines(filePath: string, options: Options, callback: AsyncCa
 | --- | --- | --- | --- |
 | filePath | string | 是 | 文件的应用沙箱路径。 |
 | options | [Options](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-zlib-options-i.md) | 是 | 可选项。支持以下选项：<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'，仅支持'utf-8'。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ReaderIterator> | 是 | 逐行读取文件文本内容回调。返回文件读取迭代器。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ReaderIterator&gt; | 是 | 逐行读取文件文本内容回调。返回文件读取迭代器。 |
 
 **错误码：**
 

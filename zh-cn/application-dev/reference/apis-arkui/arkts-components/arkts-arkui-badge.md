@@ -39,7 +39,7 @@ Badge(value: BadgeParamWithNumber)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | BadgeParamWithNumber | 是 | 数字标记组件参数。 |
+| value | [BadgeParamWithNumber](arkts-arkui-badgeparamwithnumber-i.md) | 是 | 数字标记组件参数。  |
 
 ## Badge
 
@@ -63,7 +63,7 @@ Badge(value: BadgeParamWithString)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | BadgeParamWithString | 是 | 字符串标记组件参数。 |
+| value | [BadgeParamWithString](arkts-arkui-badgeparamwithstring-i.md) | 是 | 字符串标记组件参数。  |
 
 ## 汇总
 

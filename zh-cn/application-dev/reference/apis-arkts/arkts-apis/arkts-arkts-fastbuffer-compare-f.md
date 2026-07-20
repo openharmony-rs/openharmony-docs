@@ -6,6 +6,7 @@
 import { fastbuffer } from '@kit.ArkTS';
 ```
 
+<a id="compare"></a>
 ## compare
 
 ```TypeScript
@@ -26,8 +27,8 @@ function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf1 | FastBuffer \| Uint8Array | 是 | 待比较的第一个对象。 |
-| buf2 | FastBuffer \| Uint8Array | 是 | 待比较的第二个对象。 |
+| buf1 | [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) \| Uint8Array | 是 | 待比较的第一个对象。 |
+| buf2 | [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) \| Uint8Array | 是 | 待比较的第二个对象。 |
 
 **返回值：**
 

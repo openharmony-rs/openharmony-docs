@@ -1,5 +1,6 @@
 # requestFocus
 
+<a id="requestfocus"></a>
 ## requestFocus
 
 ```TypeScript

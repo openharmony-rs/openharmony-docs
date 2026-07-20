@@ -1,5 +1,6 @@
 # getWallpaperByState（系统接口）
 
+<a id="getwallpaperbystate"></a>
 ## getWallpaperByState
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | 调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| Promise&lt;image.PixelMap&gt; | 调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
 
 **错误码：**
 

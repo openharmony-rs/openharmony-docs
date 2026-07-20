@@ -16,6 +16,7 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
+<a id="connectassetloader"></a>
 ## connectAssetLoader
 
 ```TypeScript
@@ -43,7 +44,7 @@ connectAssetLoader(bundleName: string, database: Database): Promise<rpc.RemoteOb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<rpc.RemoteObject> | Promise对象，返回AssetLoader的RemoteObject对象。 |
+| Promise&lt;rpc.RemoteObject&gt; | Promise对象，返回AssetLoader的RemoteObject对象。 |
 
 **示例：**
 
@@ -65,6 +66,7 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
+<a id="connectdb"></a>
 ## connectDB
 
 ```TypeScript
@@ -92,7 +94,7 @@ connectDB(bundleName: string, database: Database): Promise<rpc.RemoteObject>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<rpc.RemoteObject> | Promise对象，返回CloudDB的RemoteObject对象。 |
+| Promise&lt;rpc.RemoteObject&gt; | Promise对象，返回CloudDB的RemoteObject对象。 |
 
 **示例：**
 
@@ -114,6 +116,7 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
+<a id="connectsharecenter"></a>
 ## connectShareCenter
 
 ```TypeScript
@@ -141,7 +144,7 @@ connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<rpc.RemoteObject> | Promise对象，返回ShareCenter的RemoteObject对象。 |
+| Promise&lt;rpc.RemoteObject&gt; | Promise对象，返回ShareCenter的RemoteObject对象。 |
 
 **示例：**
 
@@ -163,6 +166,7 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
+<a id="getappbriefinfo"></a>
 ## getAppBriefInfo
 
 ```TypeScript
@@ -183,7 +187,7 @@ getAppBriefInfo(): Promise<Record<string, AppBriefInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Record<string, AppBriefInfo>> | Promise对象，返回以bundleName为键、AppBriefInfo为值的键值对。in KV pairs. |
+| Promise&lt;Record&lt;string, AppBriefInfo&gt;&gt; | Promise对象，返回以bundleName为键、AppBriefInfo为值的键值对。in KV pairs. |
 
 **示例：**
 
@@ -208,6 +212,7 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
+<a id="getappschema"></a>
 ## getAppSchema
 
 ```TypeScript
@@ -234,7 +239,7 @@ getAppSchema(bundleName: string): Promise<Result<AppSchema>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<AppSchema>> | Promise对象，返回数据库的schema信息。 |
+| Promise&lt;Result&lt;AppSchema&gt;&gt; | Promise对象，返回数据库的schema信息。 |
 
 **示例：**
 
@@ -260,6 +265,7 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
+<a id="getserviceinfo"></a>
 ## getServiceInfo
 
 ```TypeScript
@@ -280,7 +286,7 @@ getServiceInfo(): Promise<ServiceInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ServiceInfo> | Promise对象，返回获取的服务器信息。 |
+| Promise&lt;ServiceInfo&gt; | Promise对象，返回获取的服务器信息。 |
 
 **示例：**
 
@@ -308,6 +314,7 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
+<a id="subscribe"></a>
 ## subscribe
 
 ```TypeScript
@@ -337,14 +344,14 @@ subscribe(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subInfo | Record<string, Array<Database>> | 是 | 需要订阅的数据，由应用包名称和数据库信息组成的键值对。 |
+| subInfo | Record&lt;string, Array&lt;Database&gt;&gt; | 是 | 需要订阅的数据，由应用包名称和数据库信息组成的键值对。 |
 | expirationTime | number | 是 | 表示订阅到期时间（ms）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<SubscribeInfo>> | Promise对象，返回订阅的结果，包含订阅的过期时间和订阅信息。 |
+| Promise&lt;Result&lt;SubscribeInfo&gt;&gt; | Promise对象，返回订阅的结果，包含订阅的过期时间和订阅信息。 |
 
 **示例：**
 
@@ -370,6 +377,7 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
+<a id="unsubscribe"></a>
 ## unsubscribe
 
 ```TypeScript
@@ -390,13 +398,13 @@ unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| unsubscribeInfo | Record<string, Array<string>> | 是 | 需要取消订阅的数据信息，由应用包名和数据库名组成的键值对。 |
+| unsubscribeInfo | Record&lt;string, Array&lt;string&gt;&gt; | 是 | 需要取消订阅的数据信息，由应用包名和数据库名组成的键值对。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回取消订阅结果的错误码。 |
+| Promise&lt;number&gt; | Promise对象，返回取消订阅结果的错误码。 |
 
 **示例：**
 

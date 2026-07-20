@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryprintercapabilitybyuri"></a>
 ## queryPrinterCapabilityByUri
 
 ```TypeScript
@@ -37,7 +38,7 @@ function queryPrinterCapabilityByUri(printerUri: string, printerId: string): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PrinterCapabilities> | - Promise对象，返回打印机能力。 |
+| Promise&lt;PrinterCapabilities&gt; | - Promise对象，返回打印机能力。 |
 
 **错误码：**
 

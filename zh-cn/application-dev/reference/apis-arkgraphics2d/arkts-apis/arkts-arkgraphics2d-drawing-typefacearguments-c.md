@@ -22,6 +22,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="addvariation"></a>
 ## addVariation
 
 ```TypeScript
@@ -51,6 +52,7 @@ addVariation(axis: string, value: number)
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="setnetworkinterfacedisabled"></a>
 ## setNetworkInterfaceDisabled
 
 ```TypeScript
@@ -37,7 +38,7 @@ function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDi
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string | 是 | 指定网络接口。 |
 | isDisabled | boolean | 是 | true表示禁用该网络接口，false表示开启该网络接口。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true, (err) => {
 ```
 
 
+<a id="setnetworkinterfacedisabled-1"></a>
 ## setNetworkInterfaceDisabled
 
 ```TypeScript
@@ -109,7 +111,7 @@ function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当禁用网络接口失败时抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当禁用网络接口失败时抛出错误对象。 |
 
 **错误码：**
 

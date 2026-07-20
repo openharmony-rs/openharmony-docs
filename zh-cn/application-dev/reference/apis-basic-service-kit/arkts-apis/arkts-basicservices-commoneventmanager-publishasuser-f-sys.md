@@ -6,6 +6,7 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="publishasuser"></a>
 ## publishAsUser
 
 ```TypeScript
@@ -28,7 +29,7 @@ function publishAsUser(event: string, userId: number, callback: AsyncCallback<vo
 | --- | --- | --- | --- |
 | event | string | 是 | 表示要发送的公共事件。 |
 | userId | number | 是 | 表示指定向该用户ID发送此公共事件。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -66,6 +67,7 @@ try {
 ```
 
 
+<a id="publishasuser-1"></a>
 ## publishAsUser
 
 ```TypeScript
@@ -104,7 +106,7 @@ function publishAsUser(
 | event | string | 是 | 表示要发布的公共事件。 |
 | userId | number | 是 | 表示指定向该用户ID发送此公共事件。 |
 | options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | 是 | 表示发布公共事件的属性。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

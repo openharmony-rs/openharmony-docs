@@ -1,5 +1,6 @@
 # isDistributedEnabledByBundle（系统接口）
 
+<a id="isdistributedenabledbybundle"></a>
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -27,9 +28,10 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 应用的包。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 查询指定应用是否支持分布式通知的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 查询指定应用是否支持分布式通知的回调函数。 |
 
 
+<a id="isdistributedenabledbybundle-1"></a>
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -62,5 +64,5 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise方式返回指定应用是否支持分布式通知的结果。 |
+| Promise&lt;boolean&gt; | Promise方式返回指定应用是否支持分布式通知的结果。 |
 

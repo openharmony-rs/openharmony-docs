@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="getmouseprimarybutton"></a>
 ## getMousePrimaryButton
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getMousePrimaryButton(callback: AsyncCallback<PrimaryButton>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<PrimaryButton> | 是 | 回调函数。当获取当前鼠标主键成功，err为undefined，PrimaryButton为获取到的键值；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PrimaryButton&gt; | 是 | 回调函数。当获取当前鼠标主键成功，err为undefined，PrimaryButton为获取到的键值；否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ struct Index {
 ```
 
 
+<a id="getmouseprimarybutton-1"></a>
 ## getMousePrimaryButton
 
 ```TypeScript
@@ -88,7 +90,7 @@ function getMousePrimaryButton(): Promise<PrimaryButton>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PrimaryButton> | Promise对象，返回鼠标主键。 |
+| Promise&lt;PrimaryButton&gt; | Promise对象，返回鼠标主键。 |
 
 **错误码：**
 

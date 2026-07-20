@@ -6,6 +6,7 @@
 import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
+<a id="ondownloaderror"></a>
 ## onDownloadError
 
 ```TypeScript
@@ -25,7 +26,7 @@ function onDownloadError(url: string, callback: Callback<DownloadError>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 待注册回调的url，URL字符串的最大长度为8192字节。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DownloadError> | 是 | 回调函数，返回预下载的错误信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DownloadError&gt; | 是 | 回调函数，返回预下载的错误信息。 |
 
 **示例：**
 

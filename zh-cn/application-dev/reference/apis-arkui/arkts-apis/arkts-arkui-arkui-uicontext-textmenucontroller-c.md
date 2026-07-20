@@ -14,6 +14,7 @@ class TextMenuController
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="disablemenuitems"></a>
 ## disableMenuItems
 
 ```TypeScript
@@ -36,8 +37,9 @@ static disableMenuItems(items: Array<TextMenuItemId>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<TextMenuItemId> | 是 |  |
+| items | Array&lt;TextMenuItemId&gt; | 是 |  |
 
+<a id="disablesystemservicemenuitems"></a>
 ## disableSystemServiceMenuItems
 
 ```TypeScript
@@ -62,6 +64,7 @@ static disableSystemServiceMenuItems(disable: boolean): void
 | --- | --- | --- | --- |
 | disable | boolean | 是 |  |
 
+<a id="setmenuoptions"></a>
 ## setMenuOptions
 
 ```TypeScript
@@ -84,5 +87,5 @@ Set text menu options.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [TextMenuOptions](arkts-arkui-text-common-textmenuoptions-i.md) | 是 | the options of the text menu. |
+| options | [TextMenuOptions](arkts-arkui-textmenuoptions-i.md) | 是 | the options of the text menu. |
 

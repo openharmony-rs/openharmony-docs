@@ -6,6 +6,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="onchangewithattribute"></a>
 ## onChangeWithAttribute
 
 ```TypeScript
@@ -26,8 +27,8 @@ function onChangeWithAttribute(displayAttributeOption: Array<string>, callback: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayAttributeOption | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 指定需要监听的屏幕属性名称，且仅限于[display属性](../../../../reference/apis-arkui/js-apis-display.md#属性)中包含的属性。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
+| displayAttributeOption | Array&lt;string&gt; | 是 | 指定需要监听的屏幕属性名称，且仅限于[display属性](docroot://reference/apis-arkui/js-apis-display.md#属性)中包含的属性。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**
 

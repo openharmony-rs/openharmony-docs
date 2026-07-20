@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="getsharedhosts"></a>
 ## getSharedHosts
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getSharedHosts(): Promise<SharedHost[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SharedHost[]> | Promise that resolves with the list of shared hosts. |
+| Promise&lt;SharedHost[]&gt; | Promise that resolves with the list of shared hosts. |
 
 **错误码：**
 

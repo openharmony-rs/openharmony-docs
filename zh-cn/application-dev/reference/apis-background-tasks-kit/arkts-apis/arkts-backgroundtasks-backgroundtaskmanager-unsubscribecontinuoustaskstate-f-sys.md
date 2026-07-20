@@ -6,6 +6,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="unsubscribecontinuoustaskstate"></a>
 ## unsubscribeContinuousTaskState
 
 ```TypeScript

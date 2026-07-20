@@ -6,6 +6,7 @@
 import { displaySync } from '@kit.ArkGraphics2D';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript

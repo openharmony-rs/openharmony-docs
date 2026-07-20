@@ -6,6 +6,7 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
+<a id="getvalueforaccount"></a>
 ## getValueForAccount
 
 ```TypeScript

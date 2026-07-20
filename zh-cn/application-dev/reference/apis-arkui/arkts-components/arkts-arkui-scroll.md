@@ -33,7 +33,7 @@ Scroll(scroller?: Scroller)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scroller | Scroller | 否 |  |
+| scroller | [Scroller](arkts-arkui-scroller-c.md) | 否 |  |
 
 ## 汇总
 

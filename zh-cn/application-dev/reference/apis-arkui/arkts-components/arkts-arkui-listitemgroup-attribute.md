@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="childrenmainsize"></a>
 ## childrenMainSize
 
 ```TypeScript
@@ -36,8 +37,9 @@ childrenMainSize(value: ChildrenMainSize)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ChildrenMainSize](arkts-arkui-common-childrenmainsize-c.md) | 是 | 该对象用来维护子组件在主轴方向的大小信息。 |
+| value | [ChildrenMainSize](arkts-arkui-childrenmainsize-c.md) | 是 | 该对象用来维护子组件在主轴方向的大小信息。 |
 
+<a id="divider"></a>
 ## divider
 
 ```TypeScript
@@ -68,5 +70,5 @@ ListItem设置[多态样式](../../apis-ability-kit/arkts-apis/arkts-app-ability
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ListDividerOptions \| null | 是 | ListItem分割线样式。<br/> 默认值：null [since 18] |
+| value | [ListDividerOptions](arkts-arkui-listdivideroptions-i.md) \| null | 是 | ListItem分割线样式。<br/> 默认值：null [since 18] |
 

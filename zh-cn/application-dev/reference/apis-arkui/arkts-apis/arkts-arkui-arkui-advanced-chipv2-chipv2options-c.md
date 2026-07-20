@@ -4,6 +4,8 @@
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @ObservedV2
+
 <!--Device-unnamed-export class ChipV2Options--><!--Device-unnamed-export class ChipV2Options-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -14,6 +16,7 @@
 import { ChipV2SuffixSymbolIconConfig, ChipV2Label, ChipV2PrefixSymbolIconConfig, IChipV2OptionsConfig, ChipV2SymbolIcon, ChipV2SuffixImageIconConfig, ChipV2LocalizedLabelMarginConfig, ChipV2SymbolIconConfig, ChipV2LabelConfig, ChipV2SuffixSymbolIcon, ChipV2AccessibilityConfig, ChipV2Icon, ChipV2Size, ChipV2CloseConfig, ChipV2SuffixImageIcon, ChipV2Accessibility, ChipV2Options, ChipV2ImageIconConfig, ChipV2ImageIcon, ChipV2PrefixImageIcon, ChipV2LabelMarginConfig, ChipV2PrefixSymbolIcon, ChipV2, ChipV2CloseIcon, ChipV2PrefixImageIconConfig, ChipV2AccessibilitySelectedType } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -346,7 +349,7 @@ public maxFontScale?: number | Resource
 
 Chip的最大字体比例。
 
-**类型：** number | Resource
+**类型：** number \| Resource
 
 **起始版本：** 26.0.0
 
@@ -366,7 +369,7 @@ public minFontScale?: number | Resource
 
 Chip的最小字体比例。
 
-**类型：** number | Resource
+**类型：** number \| Resource
 
 **起始版本：** 26.0.0
 
@@ -386,7 +389,7 @@ public onClicked?: Callback<void>
 
 点击Chip时触发的回调。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 26.0.0
 
@@ -466,7 +469,7 @@ public size?: ChipV2Size | SizeT<LengthMetrics>
 
 Chip尺寸。
 
-**类型：** ChipV2Size | SizeT<LengthMetrics>
+**类型：** ChipV2Size \| SizeT&lt;LengthMetrics&gt;
 
 **起始版本：** 26.0.0
 

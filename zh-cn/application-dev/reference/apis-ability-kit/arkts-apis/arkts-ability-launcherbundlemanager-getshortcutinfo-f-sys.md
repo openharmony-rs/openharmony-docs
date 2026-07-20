@@ -6,6 +6,7 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getshortcutinfo"></a>
 ## getShortcutInfo
 
 ```TypeScript
@@ -31,7 +32,7 @@ function getShortcutInfo(bundleName :string, callback: AsyncCallback<Array<Short
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<ShortcutInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)信息。否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ShortcutInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ try {
 ```
 
 
+<a id="getshortcutinfo-1"></a>
 ## getShortcutInfo
 
 ```TypeScript
@@ -98,7 +100,7 @@ function getShortcutInfo(bundleName : string) : Promise<Array<ShortcutInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<ShortcutInfo>> | Promise对象。返回当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
+| Promise&lt;Array&lt;ShortcutInfo&gt;&gt; | Promise对象。返回当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
 
 **错误码：**
 

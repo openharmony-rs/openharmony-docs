@@ -6,6 +6,7 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
+<a id="on"></a>
 ## on('enabledAccessibilityExtensionListChange')
 
 ```TypeScript
@@ -29,7 +30,7 @@ function on(type: 'enabledAccessibilityExtensionListChange', callback: Callback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'enabledAccessibilityExtensionListChange' | 是 | 参数固定为'enabledAccessibilityExtensionListChange'，监听启用的辅助扩展的列表变化。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数，在启用的辅助扩展的列表变化时通过此函数进行通知。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数，在启用的辅助扩展的列表变化时通过此函数进行通知。 |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ config.on('enabledAccessibilityExtensionListChange', () => {
 ```
 
 
+<a id="on-1"></a>
 ## on('installedAccessibilityListChange')
 
 ```TypeScript
@@ -74,7 +76,7 @@ function on(type: 'installedAccessibilityListChange', callback: Callback<void>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'installedAccessibilityListChange' | 是 | 参数固定为'installedAccessibilityListChange'，监听已安装的辅助扩展的列表变化。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数，在已安装的辅助扩展的列表变化时通过此函数进行通知。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数，在已安装的辅助扩展的列表变化时通过此函数进行通知。 |
 
 **错误码：**
 

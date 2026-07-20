@@ -6,6 +6,7 @@
 import { identifier } from '@kit.AdsKit';
 ```
 
+<a id="resetoaid"></a>
 ## resetOAID
 
 ```TypeScript

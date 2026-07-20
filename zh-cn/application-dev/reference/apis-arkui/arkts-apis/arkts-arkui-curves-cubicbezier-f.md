@@ -6,6 +6,7 @@
 import { curves } from '@kit.ArkUI';
 ```
 
+<a id="cubicbezier"></a>
 ## cubicBezier
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="queryappgroup"></a>
 ## queryAppGroup
 
 ```TypeScript
@@ -28,7 +29,7 @@ function queryAppGroup(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当查询成功，err为undefined，data为当前应用优先级分组结果，值越小，优先级越高；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当查询成功，err为undefined，data为当前应用优先级分组结果，值越小，优先级越高；否则为错误对象。 |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ usageStatistics.queryAppGroup((err: BusinessError, res: number) => {
 ```
 
 
+<a id="queryappgroup-1"></a>
 ## queryAppGroup
 
 ```TypeScript
@@ -85,7 +87,7 @@ function queryAppGroup(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回当前应用优先级分组结果，值越小，优先级越高。 |
+| Promise&lt;number&gt; | Promise对象。返回当前应用优先级分组结果，值越小，优先级越高。 |
 
 **错误码：**
 
@@ -117,6 +119,7 @@ usageStatistics.queryAppGroup().then((res: number) => {
 ```
 
 
+<a id="queryappgroup-2"></a>
 ## queryAppGroup
 
 ```TypeScript
@@ -140,7 +143,7 @@ function queryAppGroup(bundleName: string, callback: AsyncCallback<number>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当查询成功，err为undefined，data为指定应用的优先级分组结果，值越小，优先级越高；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当查询成功，err为undefined，data为指定应用的优先级分组结果，值越小，优先级越高；否则为错误对象。 |
 
 **错误码：**
 
@@ -176,6 +179,7 @@ usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
 ```
 
 
+<a id="queryappgroup-3"></a>
 ## queryAppGroup
 
 ```TypeScript
@@ -204,7 +208,7 @@ function queryAppGroup(bundleName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回指定应用的优先级分组结果，值越小，优先级越高。 |
+| Promise&lt;number&gt; | Promise对象。返回指定应用的优先级分组结果，值越小，优先级越高。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="getprimarydisplaysync"></a>
 ## getPrimaryDisplaySync
 
 ```TypeScript

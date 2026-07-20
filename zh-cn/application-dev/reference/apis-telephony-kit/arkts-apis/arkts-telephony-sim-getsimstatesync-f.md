@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getsimstatesync"></a>
 ## getSimStateSync
 
 ```TypeScript
@@ -30,7 +31,7 @@ Obtains the state of the SIM card in a specified slot.
 
 | 类型 | 说明 |
 | --- | --- |
-| [SimState](arkts-telephony-sim-simstate-e.md) | Returns one of the following SIM card states:&lt;ul&gt;&lt;li&gt;{@code SimState#SIM_STATE_UNKNOWN}&lt;li&gt;{@code SimState#SIM_STATE_NOT_PRESENT}&lt;li&gt;{@code SimState#SIM_STATE_LOCKED}&lt;li&gt;{@code SimState#SIM_STATE_NOT_READY}&lt;li&gt;{@code SimState#SIM_STATE_READY}&lt;li&gt;{@code SimState#SIM_STATE_LOADED}&lt;/ul&gt; |
+| [SimState](arkts-telephony-sim-simstate-e.md) | Returns one of the following SIM card states:<ul><li>{@code SimState#SIM_STATE_UNKNOWN}<li>{@code SimState#SIM_STATE_NOT_PRESENT}<li>{@code SimState#SIM_STATE_LOCKED}<li>{@code SimState#SIM_STATE_NOT_READY}<li>{@code SimState#SIM_STATE_READY}<li>{@code SimState#SIM_STATE_LOADED}</ul> |
 
 **示例：**
 

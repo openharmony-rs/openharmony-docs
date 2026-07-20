@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="setenterpriseinfo"></a>
 ## setEnterpriseInfo
 
 ```TypeScript
@@ -32,7 +33,7 @@ function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo, callback
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | enterpriseInfo | [EnterpriseInfo](arkts-mdm-adminmanager-enterpriseinfo-i-sys.md) | 是 | 设备管理应用的企业信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -71,6 +72,7 @@ adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo, (err) => {
 ```
 
 
+<a id="setenterpriseinfo-1"></a>
 ## setEnterpriseInfo
 
 ```TypeScript
@@ -102,7 +104,7 @@ function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当设置设备管理应用企业信息失败时，会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置设备管理应用企业信息失败时，会抛出错误对象。 |
 
 **错误码：**
 

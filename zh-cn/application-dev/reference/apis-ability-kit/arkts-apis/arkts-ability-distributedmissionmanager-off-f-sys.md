@@ -6,6 +6,7 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="off"></a>
 ## off('continueStateChange')
 
 ```TypeScript
@@ -31,7 +32,7 @@ function off(type: 'continueStateChange', callback?: Callback<ContinueCallbackIn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'continueStateChange' | 是 | 当前任务流转状态，取值为'continueStateChange'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ContinueCallbackInfo> | 否 | 需要取消的回调函数。<br>参数不填写，取消type对应的所有回调监听。<br>**起始版本：** 11 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ContinueCallbackInfo&gt; | 否 | 需要取消的回调函数。<br>参数不填写，取消type对应的所有回调监听。<br>**起始版本：** 11 |
 
 **错误码：**
 

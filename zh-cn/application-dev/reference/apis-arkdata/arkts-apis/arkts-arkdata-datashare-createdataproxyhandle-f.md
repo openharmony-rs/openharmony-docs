@@ -6,6 +6,7 @@
 import { dataShare } from '@kit.ArkData';
 ```
 
+<a id="createdataproxyhandle"></a>
 ## createDataProxyHandle
 
 ```TypeScript
@@ -26,7 +27,7 @@ function createDataProxyHandle(): Promise<DataProxyHandle>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DataProxyHandle> | Promise对象。返回DataProxyHandle实例。 |
+| Promise&lt;DataProxyHandle&gt; | Promise对象。返回DataProxyHandle实例。 |
 
 **错误码：**
 

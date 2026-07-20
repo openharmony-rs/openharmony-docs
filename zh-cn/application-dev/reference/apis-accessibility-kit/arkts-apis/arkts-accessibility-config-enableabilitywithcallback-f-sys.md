@@ -6,6 +6,7 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
+<a id="enableabilitywithcallback"></a>
 ## enableAbilityWithCallback
 
 ```TypeScript
@@ -31,14 +32,14 @@ function enableAbilityWithCallback(name: string, capability: Array<accessibility
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
-| capability | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<accessibility.Capability> | 是 | 辅助扩展应用的能力属性。 |
+| capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助扩展应用的能力属性。 |
 | connectCallback | [ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md) | 是 | 辅助扩展应用的状态发生变化时调用的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

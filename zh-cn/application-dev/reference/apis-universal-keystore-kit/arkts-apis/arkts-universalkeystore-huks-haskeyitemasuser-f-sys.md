@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="haskeyitemasuser"></a>
 ## hasKeyItemAsUser
 
 ```TypeScript
@@ -36,7 +37,7 @@ function hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOpt
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。若密钥存在，返回值为true，若密钥不存在，返回值为false。 |
+| Promise&lt;boolean&gt; | Promise对象。若密钥存在，返回值为true，若密钥不存在，返回值为false。 |
 
 **错误码：**
 

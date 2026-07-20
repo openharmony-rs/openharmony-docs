@@ -6,6 +6,7 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
+<a id="getpowerpolicy"></a>
 ## getPowerPolicy
 
 ```TypeScript

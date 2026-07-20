@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="cleanbundlecachefiles"></a>
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -31,7 +32,7 @@ function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要清理其缓存数据的应用程序的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当清理应用缓存目录数据成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当清理应用缓存目录数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ try {
 ```
 
 
+<a id="cleanbundlecachefiles-1"></a>
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -98,7 +100,7 @@ function cleanBundleCacheFiles(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -133,6 +135,7 @@ try {
 ```
 
 
+<a id="cleanbundlecachefiles-2"></a>
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -164,7 +167,7 @@ function cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise<vo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

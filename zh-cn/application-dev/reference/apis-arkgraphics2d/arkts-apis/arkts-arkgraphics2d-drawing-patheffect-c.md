@@ -22,6 +22,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createcomposepatheffect"></a>
 ## createComposePathEffect
 
 ```TypeScript
@@ -49,6 +50,7 @@ static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect
 | --- | --- |
 | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 
+<a id="createcornerpatheffect"></a>
 ## createCornerPathEffect
 
 ```TypeScript
@@ -81,6 +83,7 @@ static createCornerPathEffect(radius: number): PathEffect
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createdashpatheffect"></a>
 ## createDashPathEffect
 
 ```TypeScript
@@ -99,7 +102,7 @@ static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| intervals | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 表示虚线的ON（实线部分）和OFF（空白部分）长度的数组，数组个数必须是偶数，且&gt;=2，该参数为正整数。 |
+| intervals | Array&lt;number&gt; | 是 | 表示虚线的ON（实线部分）和OFF（空白部分）长度的数组，数组个数必须是偶数，且>=2，该参数为正整数。 |
 | phase | number | 是 | 绘制时的偏移量，该参数为浮点数。 |
 
 **返回值：**
@@ -114,6 +117,7 @@ static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="creatediscretepatheffect"></a>
 ## createDiscretePathEffect
 
 ```TypeScript
@@ -142,6 +146,7 @@ static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: num
 | --- | --- |
 | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 
+<a id="createpathdasheffect"></a>
 ## createPathDashEffect
 
 ```TypeScript
@@ -177,6 +182,7 @@ static createPathDashEffect(path: Path, advance: number, phase: number, style: P
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createsumpatheffect"></a>
 ## createSumPathEffect
 
 ```TypeScript

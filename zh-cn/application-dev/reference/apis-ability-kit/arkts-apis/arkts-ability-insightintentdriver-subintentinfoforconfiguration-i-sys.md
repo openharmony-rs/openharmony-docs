@@ -1,6 +1,6 @@
 # SubIntentInfoForConfiguration（系统接口）
 
-用于描述[使用配置文件开发的意图](../../../../application-models/insight-intent-config-development.md)的特有信息。
+用于描述[使用配置文件开发的意图](docroot://application-models/insight-intent-config-development.md)的特有信息。
 
 **起始版本：** 23
 
@@ -24,7 +24,7 @@ readonly entities?: Record<string, Object>
 
 表示意图包含的实体信息。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 23
 
@@ -64,7 +64,7 @@ readonly inputParams?: Array<Record<string, Object>>
 
 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。
 
-**类型：** Array<Record<string, Object>>
+**类型：** Array&lt;Record&lt;string, Object&gt;&gt;
 
 **起始版本：** 23
 
@@ -84,7 +84,7 @@ readonly outputParams?: Array<Record<string, Object>>
 
 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。
 
-**类型：** Array<Record<string, Object>>
+**类型：** Array&lt;Record&lt;string, Object&gt;&gt;
 
 **起始版本：** 23
 

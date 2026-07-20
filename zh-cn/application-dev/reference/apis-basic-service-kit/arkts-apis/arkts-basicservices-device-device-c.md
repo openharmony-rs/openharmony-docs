@@ -16,6 +16,7 @@ getInfo interface
 import { DeviceResponse, GetDeviceOptions } from '@kit.BasicServicesKit';
 ```
 
+<a id="getinfo"></a>
 ## getInfo
 
 ```TypeScript

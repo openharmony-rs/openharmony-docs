@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="disturbancefields"></a>
 ## disturbanceFields
 
 ```TypeScript
@@ -32,8 +33,9 @@ disturbanceFields(fields: Array<DisturbanceFieldOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DisturbanceFieldOptions> | 是 | 扰动场数组。 |
+| fields | Array&lt;DisturbanceFieldOptions&gt; | 是 | 扰动场数组。 |
 
+<a id="emitter"></a>
 ## emitter
 
 ```TypeScript
@@ -56,8 +58,9 @@ emitter(value: Array<EmitterProperty>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<EmitterProperty> | 是 | 需要更新的emitter参数数组 |
+| value | Array&lt;EmitterProperty&gt; | 是 | 需要更新的emitter参数数组 |
 
+<a id="ripplefields"></a>
 ## rippleFields
 
 ```TypeScript
@@ -80,8 +83,9 @@ rippleFields(fields: Array<RippleFieldOptions> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<RippleFieldOptions> \| undefined | 是 | 粒子波动场数组。通过数组形式可以设置多个粒子波动场。当设置为undefined时，表示无波动场。 |
+| fields | Array&lt;RippleFieldOptions&gt; \| undefined | 是 | 粒子波动场数组。通过数组形式可以设置多个粒子波动场。当设置为undefined时，表示无波动场。 |
 
+<a id="velocityfields"></a>
 ## velocityFields
 
 ```TypeScript
@@ -104,5 +108,5 @@ velocityFields(fields: Array<VelocityFieldOptions> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<VelocityFieldOptions> \| undefined | 是 | 粒子速度场数组。通过数组形式可设置多个粒子速度场。设置为undefined时表示无速度场。 |
+| fields | Array&lt;VelocityFieldOptions&gt; \| undefined | 是 | 粒子速度场数组。通过数组形式可设置多个粒子速度场。设置为undefined时表示无速度场。 |
 

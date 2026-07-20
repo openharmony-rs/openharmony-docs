@@ -1,6 +1,6 @@
 # Matrix
 
-矩阵对象。表示为3*3的矩阵，如下图所示：![matrix_3x3](../../../../reference/apis-arkgraphics2d/figures/matrix3X3.PNG)矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：![matrix_xy](../../../../reference/apis-arkgraphics2d/figures/matrix_xy.PNG)
+矩阵对象。表示为3*3的矩阵，如下图所示：![matrix_3x3](docroot://reference/apis-arkgraphics2d/figures/matrix3X3.PNG)矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：![matrix_xy](docroot://reference/apis-arkgraphics2d/figures/matrix_xy.PNG)
 
 > **说明：**  
 >  
@@ -22,6 +22,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -36,6 +37,7 @@ constructor()
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -56,6 +58,7 @@ constructor(matrix: Matrix)
 | --- | --- | --- | --- |
 | matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 被拷贝的矩阵。 |
 
+<a id="getall"></a>
 ## getAll
 
 ```TypeScript
@@ -74,8 +77,9 @@ getAll(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 存储矩阵元素值的浮点数组，长度为9。 |
+| Array&lt;number&gt; | 存储矩阵元素值的浮点数组，长度为9。 |
 
+<a id="getvalue"></a>
 ## getValue
 
 ```TypeScript
@@ -108,6 +112,7 @@ getValue(index: number): number
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="invert"></a>
 ## invert
 
 ```TypeScript
@@ -140,6 +145,7 @@ invert(matrix: Matrix): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="isaffine"></a>
 ## isAffine
 
 ```TypeScript
@@ -160,6 +166,7 @@ isAffine(): boolean
 | --- | --- |
 | boolean | 返回当前矩阵是否为仿射矩阵。true表示是仿射矩阵，false表示不是仿射矩阵。 |
 
+<a id="isequal"></a>
 ## isEqual
 
 ```TypeScript
@@ -192,6 +199,7 @@ isEqual(matrix: Matrix): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="isidentity"></a>
 ## isIdentity
 
 ```TypeScript
@@ -212,6 +220,7 @@ isIdentity(): boolean
 | --- | --- |
 | boolean | 返回矩阵是否是单位矩阵。true表示矩阵是单位矩阵，false表示矩阵不是单位矩阵。 |
 
+<a id="mappoints"></a>
 ## mapPoints
 
 ```TypeScript
@@ -230,13 +239,13 @@ mapPoints(src: Array<common2D.Point>): Array<common2D.Point>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | 是 | 源点数组。 |
+| src | Array&lt;common2D.Point&gt; | 是 | 源点数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | Array of points obtained. |
+| Array&lt;common2D.Point&gt; | Array of points obtained. |
 
 **错误码：**
 
@@ -244,6 +253,7 @@ mapPoints(src: Array<common2D.Point>): Array<common2D.Point>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="mapradius"></a>
 ## mapRadius
 
 ```TypeScript
@@ -270,13 +280,14 @@ mapRadius(radius: number): number
 | --- | --- |
 | number | 返回经过变换之后的平均半径。 |
 
+<a id="maprect"></a>
 ## mapRect
 
 ```TypeScript
 mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 ```
 
-将目标矩形设置为源矩形通过矩阵变换后的图形的外接矩形。如下图所示，蓝色矩形为源矩形，假设黄色矩形为源矩形通过矩阵变换形成的图形，此时黄色矩形的边不与坐标轴平行，无法使用矩形对象表示，因此，将目标矩形设置为黄色矩形的外接矩形，即黑色矩形。![mapRect](../../../../reference/apis-arkgraphics2d/figures/zh-ch_matrix_mapRect.png)
+将目标矩形设置为源矩形通过矩阵变换后的图形的外接矩形。如下图所示，蓝色矩形为源矩形，假设黄色矩形为源矩形通过矩阵变换形成的图形，此时黄色矩形的边不与坐标轴平行，无法使用矩形对象表示，因此，将目标矩形设置为黄色矩形的外接矩形，即黑色矩形。![mapRect](docroot://reference/apis-arkgraphics2d/figures/zh-ch_matrix_mapRect.png)
 
 **起始版本：** 12
 
@@ -303,6 +314,7 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="postconcat"></a>
 ## postConcat
 
 ```TypeScript
@@ -323,6 +335,7 @@ postConcat(matrix: Matrix): void
 | --- | --- | --- | --- |
 | matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于运算的矩阵。 |
 
+<a id="postrotate"></a>
 ## postRotate
 
 ```TypeScript
@@ -351,6 +364,7 @@ postRotate(degree: number, px: number, py: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="postscale"></a>
 ## postScale
 
 ```TypeScript
@@ -380,6 +394,7 @@ postScale(sx: number, sy: number, px: number, py: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="postskew"></a>
 ## postSkew
 
 ```TypeScript
@@ -403,6 +418,7 @@ postSkew(kx: number, ky: number, px: number, py: number): void
 | px | number | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。 |
 | py | number | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。 |
 
+<a id="posttranslate"></a>
 ## postTranslate
 
 ```TypeScript
@@ -430,6 +446,7 @@ postTranslate(dx: number, dy: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="preconcat"></a>
 ## preConcat
 
 ```TypeScript
@@ -456,6 +473,7 @@ preConcat(matrix: Matrix): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="prerotate"></a>
 ## preRotate
 
 ```TypeScript
@@ -484,6 +502,7 @@ preRotate(degree: number, px: number, py: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="prescale"></a>
 ## preScale
 
 ```TypeScript
@@ -513,6 +532,7 @@ preScale(sx: number, sy: number, px: number, py: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="preskew"></a>
 ## preSkew
 
 ```TypeScript
@@ -536,6 +556,7 @@ preSkew(kx: number, ky: number, px: number, py: number): void
 | px | number | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。 |
 | py | number | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。 |
 
+<a id="pretranslate"></a>
 ## preTranslate
 
 ```TypeScript
@@ -563,6 +584,7 @@ preTranslate(dx: number, dy: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="rectstaysrect"></a>
 ## rectStaysRect
 
 ```TypeScript
@@ -583,6 +605,7 @@ rectStaysRect(): boolean
 | --- | --- |
 | boolean | 返回经过该矩阵映射后的矩形的形状是否仍为矩形。true表示仍是矩形，false表示不是矩形。 |
 
+<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -597,6 +620,7 @@ reset(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="setconcat"></a>
 ## setConcat
 
 ```TypeScript
@@ -618,6 +642,7 @@ setConcat(matrixA: Matrix, matrixB: Matrix): void
 | matrixA | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于运算的矩阵A。 |
 | matrixB | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于运算的矩阵B。 |
 
+<a id="setmatrix"></a>
 ## setMatrix
 
 ```TypeScript
@@ -636,7 +661,7 @@ setMatrix(values: Array<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| values | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 长度为9的浮点数组，表示矩阵对象参数。数组中的值按下标从小，到大分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。 |
+| values | Array&lt;number&gt; | 是 | 长度为9的浮点数组，表示矩阵对象参数。数组中的值按下标从小，到大分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。 |
 
 **错误码：**
 
@@ -644,6 +669,7 @@ setMatrix(values: Array<number>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setmatrix-1"></a>
 ## setMatrix
 
 ```TypeScript
@@ -662,8 +688,9 @@ setMatrix(matrix: Array<number> | Matrix): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| matrix | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> \| Matrix | 是 | 用于更新的数组或矩阵。 |
+| matrix | Array&lt;number&gt; \| Matrix | 是 | 用于更新的数组或矩阵。 |
 
+<a id="setpolytopoly"></a>
 ## setPolyToPoly
 
 ```TypeScript
@@ -682,8 +709,8 @@ setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: num
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | 是 | 源点数组，长度必须为count。 |
-| dst | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | 是 | 目标点数组，长度必须为count。 |
+| src | Array&lt;common2D.Point&gt; | 是 | 源点数组，长度必须为count。 |
+| dst | Array&lt;common2D.Point&gt; | 是 | 目标点数组，长度必须为count。 |
 | count | number | 是 | 在src和dst点的数量，该参数为整数。 |
 
 **返回值：**
@@ -698,6 +725,7 @@ setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: num
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setrecttorect"></a>
 ## setRectToRect
 
 ```TypeScript
@@ -732,6 +760,7 @@ setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): b
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setrotation"></a>
 ## setRotation
 
 ```TypeScript
@@ -760,6 +789,7 @@ setRotation(degree: number, px: number, py: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setscale"></a>
 ## setScale
 
 ```TypeScript
@@ -789,6 +819,7 @@ setScale(sx: number, sy: number, px: number, py: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setsincos"></a>
 ## setSinCos
 
 ```TypeScript
@@ -812,6 +843,7 @@ setSinCos(sinValue: number, cosValue: number, px: number, py: number): void
 | px | number | 是 | 旋转中心的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。 |
 | py | number | 是 | 旋转中心的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。 |
 
+<a id="setskew"></a>
 ## setSkew
 
 ```TypeScript
@@ -835,6 +867,7 @@ setSkew(kx: number, ky: number, px: number, py: number): void
 | px | number | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。 |
 | py | number | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。 |
 
+<a id="settranslation"></a>
 ## setTranslation
 
 ```TypeScript

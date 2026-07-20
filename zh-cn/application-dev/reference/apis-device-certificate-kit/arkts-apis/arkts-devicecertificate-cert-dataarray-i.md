@@ -22,7 +22,7 @@ data: Array<Uint8Array>
 
 表示数据数组内容。
 
-**类型：** Array<Uint8Array>
+**类型：** Array&lt;Uint8Array&gt;
 
 **起始版本：** 9
 

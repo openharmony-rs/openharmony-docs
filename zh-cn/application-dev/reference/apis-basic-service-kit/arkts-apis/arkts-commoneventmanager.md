@@ -20,27 +20,27 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1) | 创建订阅者。使用callback异步回调。 |
-| [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-2) | 创建订阅者。使用Promise异步回调。 |
-| [createSubscriberSync](arkts-basicservices-commoneventmanager-createsubscribersync-f.md#createsubscribersync-1) | createSubscriber的同步接口。 |
+| [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber) | 创建订阅者。使用callback异步回调。 |
+| [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1) | 创建订阅者。使用Promise异步回调。 |
+| [createSubscriberSync](arkts-basicservices-commoneventmanager-createsubscribersync-f.md#createsubscribersync) | createSubscriber的同步接口。 |
+| [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish) | 发布公共事件。使用callback异步回调。 |
 | [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish-1) | 发布公共事件。使用callback异步回调。 |
-| [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish-2) | 发布公共事件。使用callback异步回调。 |
-| [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe-1) | 订阅公共事件。使用callback异步回调。 |
-| [subscribeToEvent](arkts-basicservices-commoneventmanager-subscribetoevent-f.md#subscribetoevent-1) | 订阅公共事件，并返回订阅成功或失败信息。使用Promise异步回调。 |
-| [unsubscribe](arkts-basicservices-commoneventmanager-unsubscribe-f.md#unsubscribe-1) | 取消订阅公共事件。使用callback异步回调。 |
+| [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe) | 订阅公共事件。使用callback异步回调。 |
+| [subscribeToEvent](arkts-basicservices-commoneventmanager-subscribetoevent-f.md#subscribetoevent) | 订阅公共事件，并返回订阅成功或失败信息。使用Promise异步回调。 |
+| [unsubscribe](arkts-basicservices-commoneventmanager-unsubscribe-f.md#unsubscribe) | 取消订阅公共事件。使用callback异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser-1) | 向指定用户发布公共事件。使用callback异步回调。 |
-| [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser-2) | 向指定用户发布公共事件并指定发布信息。使用callback异步回调。 |
-| [removeStickyCommonEvent](arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent-1) | 移除粘性公共事件。使用callback异步回调。 |
-| [removeStickyCommonEvent](arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent-2) | 移除粘性公共事件。使用Promise异步回调。 |
-| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate-1) | 为当前应用设置静态订阅事件使能或去使能状态。使用callback异步回调。 |
-| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate-2) | 为当前应用设置静态订阅事件使能或去使能状态。使用Promise异步回调。 |
-| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate-3) | 为当前应用设置静态订阅事件的使能状态，并且记录事件名称。使用Promise异步回调。 |
+| [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser) | 向指定用户发布公共事件。使用callback异步回调。 |
+| [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser-1) | 向指定用户发布公共事件并指定发布信息。使用callback异步回调。 |
+| [removeStickyCommonEvent](arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent) | 移除粘性公共事件。使用callback异步回调。 |
+| [removeStickyCommonEvent](arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent-1) | 移除粘性公共事件。使用Promise异步回调。 |
+| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate) | 为当前应用设置静态订阅事件使能或去使能状态。使用callback异步回调。 |
+| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate-1) | 为当前应用设置静态订阅事件使能或去使能状态。使用Promise异步回调。 |
+| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate-2) | 为当前应用设置静态订阅事件的使能状态，并且记录事件名称。使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 枚举

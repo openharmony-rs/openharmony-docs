@@ -6,6 +6,7 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="query"></a>
 ## query
 
 ```TypeScript
@@ -29,7 +30,7 @@ Queries specified task details.Creates a group based on GroupConfig
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | the task id. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<TaskInfo> | 是 | callback function with a `TaskInfo` argument for informations of the |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;TaskInfo&gt; | 是 | callback function with a `TaskInfo` argument for informations of the |
 
 **错误码：**
 
@@ -42,6 +43,7 @@ Queries specified task details.Creates a group based on GroupConfig
 | [21900006](../../apis-basic-services-kit/errorcode-request.md#21900006-操作不存在的任务错误) | Task removed or not found. |
 
 
+<a id="query-1"></a>
 ## query
 
 ```TypeScript
@@ -70,7 +72,7 @@ Queries specified task details.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<TaskInfo> | the promise returned by the function. |
+| Promise&lt;TaskInfo&gt; | the promise returned by the function. |
 
 **错误码：**
 

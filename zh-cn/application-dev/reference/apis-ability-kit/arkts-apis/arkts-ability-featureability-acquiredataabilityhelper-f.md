@@ -6,6 +6,7 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="acquiredataabilityhelper"></a>
 ## acquireDataAbilityHelper
 
 ```TypeScript
@@ -16,7 +17,7 @@ function acquireDataAbilityHelper(uri: string): DataAbilityHelper
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（FA模型）](../../../../application-models/component-startup-rules-fa.md)。  
+> 组件启动规则详见：[组件启动规则（FA模型）](docroot://application-models/component-startup-rules-fa.md)。  
 >  
 > 跨应用访问dataAbility，对端应用需配置关联启动。
 

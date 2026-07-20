@@ -1,5 +1,6 @@
 # setImage（系统接口）
 
+<a id="setimage"></a>
 ## setImage
 
 ```TypeScript
@@ -24,7 +25,7 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType,
 | --- | --- | --- | --- |
 | source | string \| image.PixelMap | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
 | wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 ```
 
 
+<a id="setimage-1"></a>
 ## setImage
 
 ```TypeScript
@@ -102,7 +104,7 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType)
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

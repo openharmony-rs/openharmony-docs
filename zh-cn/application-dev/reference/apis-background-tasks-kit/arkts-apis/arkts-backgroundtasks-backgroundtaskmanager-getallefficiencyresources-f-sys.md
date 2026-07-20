@@ -6,6 +6,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getallefficiencyresources"></a>
 ## getAllEfficiencyResources
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getAllEfficiencyResources(): Promise<EfficiencyResourcesInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<EfficiencyResourcesInfo[]> | Promise对象，返回所有能效资源信息。 |
+| Promise&lt;EfficiencyResourcesInfo[]&gt; | Promise对象，返回所有能效资源信息。 |
 
 **错误码：**
 

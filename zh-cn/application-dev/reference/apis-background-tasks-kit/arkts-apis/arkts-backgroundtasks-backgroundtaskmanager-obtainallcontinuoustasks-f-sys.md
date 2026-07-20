@@ -6,6 +6,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="obtainallcontinuoustasks"></a>
 ## obtainAllContinuousTasks
 
 ```TypeScript
@@ -30,7 +31,7 @@ function obtainAllContinuousTasks(): Promise<ContinuousTaskInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ContinuousTaskInfo[]> | Promise对象，返回所有长时任务信息。 |
+| Promise&lt;ContinuousTaskInfo[]&gt; | Promise对象，返回所有长时任务信息。 |
 
 **错误码：**
 

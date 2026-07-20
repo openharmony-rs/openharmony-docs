@@ -64,7 +64,7 @@ permissionNameList: Array<Permissions>
 
 发起CLI相关操作的智能体当前未满足的权限名称列表。若相关权限不满足，CLI将无法拉起，或拉起后的CLI进程无法获得对应权限。
 
-**类型：** Array<Permissions>
+**类型：** Array&lt;Permissions&gt;
 
 **起始版本：** 26.0.0
 
@@ -84,7 +84,7 @@ statusList: Array<PermissionDecisionStatus>
 
 权限决策状态列表。
 
-**类型：** Array<PermissionDecisionStatus>
+**类型：** Array&lt;PermissionDecisionStatus&gt;
 
 **起始版本：** 26.0.0
 

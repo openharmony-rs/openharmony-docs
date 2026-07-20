@@ -1,5 +1,6 @@
 # isChangePermitted
 
+<a id="ischangepermitted"></a>
 ## isChangePermitted
 
 ```TypeScript
@@ -20,7 +21,7 @@ function isChangePermitted(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 |  |
 
 **示例：**
 
@@ -38,6 +39,7 @@ wallpaper.isChangePermitted((error: BusinessError, data: Boolean) => {
 ```
 
 
+<a id="ischangepermitted-1"></a>
 ## isChangePermitted
 
 ```TypeScript
@@ -58,7 +60,7 @@ function isChangePermitted(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 返回是否允许应用改变当前用户的壁纸。如果允许返回true，否则返回false。 |
+| Promise&lt;boolean&gt; | 返回是否允许应用改变当前用户的壁纸。如果允许返回true，否则返回false。 |
 
 **示例：**
 

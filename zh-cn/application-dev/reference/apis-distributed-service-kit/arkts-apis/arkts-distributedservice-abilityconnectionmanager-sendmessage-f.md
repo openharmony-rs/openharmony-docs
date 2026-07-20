@@ -6,6 +6,7 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="sendmessage"></a>
 ## sendMessage
 
 ```TypeScript
@@ -33,7 +34,7 @@ function sendMessage(sessionId: number, msg: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的promise对象。 |
 
 **错误码：**
 

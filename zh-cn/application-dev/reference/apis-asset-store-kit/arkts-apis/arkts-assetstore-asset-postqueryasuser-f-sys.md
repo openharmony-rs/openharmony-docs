@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="postqueryasuser"></a>
 ## postQueryAsUser
 
 ```TypeScript
@@ -35,7 +36,7 @@ function postQueryAsUser(userId:number, handle: AssetMap): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

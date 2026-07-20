@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getdsdsmode"></a>
 ## getDsdsMode
 
 ```TypeScript
@@ -28,7 +29,7 @@ Obtains the value of dsds mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DsdsMode> | 是 | Indicates the callback for getting one of the following dsds mode states:&lt;ul&gt;&lt;li&gt;{@code DsdsMode#DSDS_MODE_V2}&lt;li&gt;{@code DsdsMode#DSDS_MODE_V3}&lt;li&gt;{@code DsdsMode#DSDS_MODE_V5_TDM}&lt;li&gt;{@code DsdsMode#DSDS_MODE_V5_DSDA}&lt;/ul&gt; |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DsdsMode&gt; | 是 | Indicates the callback for getting one of the following dsds mode states:<ul><li>{@code DsdsMode#DSDS_MODE_V2}<li>{@code DsdsMode#DSDS_MODE_V3}<li>{@code DsdsMode#DSDS_MODE_V5_TDM}<li>{@code DsdsMode#DSDS_MODE_V5_DSDA}</ul> |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ sim.getDsdsMode((err: BusinessError, data: sim.DsdsMode) => {
 ```
 
 
+<a id="getdsdsmode-1"></a>
 ## getDsdsMode
 
 ```TypeScript
@@ -80,7 +82,7 @@ Obtains the value of dsds mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DsdsMode> | Returns one of the following dsds mode states:&lt;ul&gt;&lt;li&gt;{@code DsdsMode#DSDS_MODE_V2}&lt;li&gt;{@code DsdsMode#DSDS_MODE_V3}&lt;li&gt;{@code DsdsMode#DSDS_MODE_V5_TDM}&lt;li&gt;{@code DsdsMode#DSDS_MODE_V5_DSDA}&lt;/ul&gt; |
+| Promise&lt;DsdsMode&gt; | Returns one of the following dsds mode states:<ul><li>{@code DsdsMode#DSDS_MODE_V2}<li>{@code DsdsMode#DSDS_MODE_V3}<li>{@code DsdsMode#DSDS_MODE_V5_TDM}<li>{@code DsdsMode#DSDS_MODE_V5_DSDA}</ul> |
 
 **错误码：**
 

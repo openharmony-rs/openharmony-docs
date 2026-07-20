@@ -20,5 +20,5 @@ export type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentR
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackData | EnabledSilentReminderCallbackData | 是 | 回调返回监听到的静默提醒使能状态信息。 |
+| callbackData | [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscriber-enabledsilentremindercallbackdata-i-sys.md) | 是 | 回调返回监听到的静默提醒使能状态信息。  |
 

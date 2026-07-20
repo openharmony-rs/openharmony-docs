@@ -6,6 +6,7 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getbundlestats"></a>
 ## getBundleStats
 
 ```TypeScript
@@ -29,8 +30,8 @@ function getBundleStats(packageName: string, callback: AsyncCallback<BundleStats
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | packageName | string | 是 | 应用包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<BundleStats> | 是 | 获取指定卷上的应用存储数据的空间大小之后的回调。 |
-| index | number | 否 | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleresourceinfo-i-sys.md)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md#getbundleresourceinfo-2)接口获得。<br>**起始版本：** 12 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleStats&gt; | 是 | 获取指定卷上的应用存储数据的空间大小之后的回调。 |
+| index | number | 否 | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleresourceinfo-i-sys.md)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md#getbundleresourceinfo-1)接口获得。<br>**起始版本：** 12 |
 
 **错误码：**
 
@@ -75,6 +76,7 @@ try {
 ```
 
 
+<a id="getbundlestats-1"></a>
 ## getBundleStats
 
 ```TypeScript
@@ -98,13 +100,13 @@ function getBundleStats(packageName: string, index?: number): Promise<BundleStat
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | packageName | string | 是 | 应用包名。 |
-| index | number | 否 | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleresourceinfo-i-sys.md)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md#getbundleresourceinfo-2)接口获得。<br>**起始版本：** 12 |
+| index | number | 否 | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleresourceinfo-i-sys.md)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md#getbundleresourceinfo-1)接口获得。<br>**起始版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BundleStats> | Promise对象，返回指定卷上的应用存储数据的空间大小（单位为Byte）。 |
+| Promise&lt;BundleStats&gt; | Promise对象，返回指定卷上的应用存储数据的空间大小（单位为Byte）。 |
 
 **错误码：**
 

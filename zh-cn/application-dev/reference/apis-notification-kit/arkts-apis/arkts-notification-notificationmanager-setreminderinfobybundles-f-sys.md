@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setreminderinfobybundles"></a>
 ## setReminderInfoByBundles
 
 ```TypeScript
@@ -28,13 +29,13 @@ function setReminderInfoByBundles(reminderInfos: Array<NotificationReminderInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reminderInfos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<NotificationReminderInfo> | 是 | 设置应用通知提醒信息的列表。 |
+| reminderInfos | Array&lt;NotificationReminderInfo&gt; | 是 | 设置应用通知提醒信息的列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

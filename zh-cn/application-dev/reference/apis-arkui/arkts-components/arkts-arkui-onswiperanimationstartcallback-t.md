@@ -22,7 +22,7 @@ declare type OnSwiperAnimationStartCallback = (index: number, targetIndex: numbe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 当前显示元素的索引。多列Swiper时，index为最左侧组件的索引。 |
-| targetIndex | number | 是 | 切换动画目标元素的索引。 |
-| extraInfo | SwiperAnimationEvent | 是 | 动画相关信息，包括主轴方向上当前显示元素和目标元素相对Swiper起始位置的位移，以及离手速度。 |
+| index | number | 是 | 当前显示元素的索引。多列Swiper时，index为最左侧组件的索引。  |
+| targetIndex | number | 是 | 切换动画目标元素的索引。  |
+| extraInfo | [SwiperAnimationEvent](arkts-arkui-swiperanimationevent-i.md) | 是 | 动画相关信息，包括主轴方向上当前显示元素和目标元素相对Swiper起始位置的位移，以及离手速度。  |
 

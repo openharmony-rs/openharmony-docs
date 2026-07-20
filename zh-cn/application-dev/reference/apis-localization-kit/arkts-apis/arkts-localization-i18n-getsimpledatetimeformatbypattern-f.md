@@ -6,6 +6,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="getsimpledatetimeformatbypattern"></a>
 ## getSimpleDateTimeFormatByPattern
 
 ```TypeScript
@@ -42,6 +43,7 @@ export function getSimpleDateTimeFormatByPattern(pattern: string, locale?: Intl.
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 
+<a id="getsimpledatetimeformatbypattern-1"></a>
 ## getSimpleDateTimeFormatByPattern
 
 ```TypeScript
@@ -54,7 +56,7 @@ export function getSimpleDateTimeFormatByPattern(pattern: string, locale?: intl.
 
 **废弃版本：** 20
 
-**替代接口：** getSimpleDateTimeFormatByPattern(pattern:
+**替代接口：** [getSimpleDateTimeFormatByPattern(pattern:](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-1)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

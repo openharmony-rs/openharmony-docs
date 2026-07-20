@@ -6,13 +6,14 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getprofilebyextensionabilitysync"></a>
 ## getProfileByExtensionAbilitySync
 
 ```TypeScript
 function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: string, metadataName?: string): Array<string>
 ```
 
-以同步方法根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
+以同步方法根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](docroot://quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
 
 **起始版本：** 10
 
@@ -28,13 +29,13 @@ function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityNa
 | --- | --- | --- | --- |
 | moduleName | string | 是 | 表示Module名称。 |
 | extensionAbilityName | string | 是 | 表示ExtensionAbility组件的名称。 |
-| metadataName | string | 否 | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name，默认值为空。 |
+| metadataName | string | 否 | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](docroot://quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name，默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 返回Array&lt;string&gt;对象。 |
+| Array&lt;string&gt; | 返回Array<string>对象。 |
 
 **错误码：**
 

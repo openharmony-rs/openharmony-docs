@@ -120,7 +120,7 @@ pageNodeInfos: Array<PageNodeInfo>
 
 页面节点信息。
 
-**类型：** Array<PageNodeInfo>
+**类型：** Array&lt;PageNodeInfo&gt;
 
 **起始版本：** 26.0.0
 

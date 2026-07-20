@@ -18,6 +18,7 @@ LruBuffer 算法在缓存空间不足时使用新数据替换最不常使用的�
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -40,7 +41,7 @@ import { util } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[K, V]> | 返回以键值对形式的二维数组。 |
+| IterableIterator&lt;[K, V]&gt; | 返回以键值对形式的二维数组。 |
 
 **示例：**
 
@@ -51,6 +52,7 @@ let result = pro[Symbol.iterator]();
 
 ```
 
+<a id="afterremoval"></a>
 ## afterRemoval
 
 ```TypeScript
@@ -104,6 +106,7 @@ lru.put(33, 3);
 
 ```
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -132,6 +135,7 @@ pro.clear();
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -163,6 +167,7 @@ let pro : util.LruBuffer<number,number> = new util.LruBuffer();
 
 ```
 
+<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -204,6 +209,7 @@ console.info('result = ' + result);
 
 ```
 
+<a id="createdefault"></a>
 ## createDefault
 
 ```TypeScript
@@ -242,6 +248,7 @@ let result = pro.createDefault(50);
 
 ```
 
+<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -264,7 +271,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[K, V]> | 可迭代的数组。 |
+| IterableIterator&lt;[K, V]&gt; | 可迭代的数组。 |
 
 **示例：**
 
@@ -275,6 +282,7 @@ let result = pro.entries();
 
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -316,6 +324,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="getcapacity"></a>
 ## getCapacity
 
 ```TypeScript
@@ -350,6 +359,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="getcreatecount"></a>
 ## getCreateCount
 
 ```TypeScript
@@ -385,6 +395,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="getmatchcount"></a>
 ## getMatchCount
 
 ```TypeScript
@@ -421,6 +432,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="getmisscount"></a>
 ## getMissCount
 
 ```TypeScript
@@ -457,6 +469,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="getputcount"></a>
 ## getPutCount
 
 ```TypeScript
@@ -492,6 +505,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="getremovalcount"></a>
 ## getRemovalCount
 
 ```TypeScript
@@ -529,6 +543,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -564,6 +579,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -599,6 +615,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="put"></a>
 ## put
 
 ```TypeScript
@@ -640,6 +657,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -681,6 +699,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -718,6 +737,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="updatecapacity"></a>
 ## updateCapacity
 
 ```TypeScript
@@ -750,6 +770,7 @@ pro.updateCapacity(100);
 
 ```
 
+<a id="values"></a>
 ## values
 
 ```TypeScript

@@ -14,6 +14,7 @@ Stack基于数组的数据结构实现，特点是先进后出，只能在一端
 import { Stack } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -34,7 +35,7 @@ import { Stack } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
+| IterableIterator&lt;T&gt; | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ while (currentValue != undefined) {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -108,6 +110,7 @@ console.info("length:", stack.length);  // length: 0
 
 ```
 
+<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -128,7 +131,7 @@ forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisAr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, stack?: Stack<T>) => void | 是 | 回调函数。 |
+| callbackFn | (value: T, index?: number, stack?: Stack&lt;T&gt;) =&gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -156,6 +159,7 @@ stack.forEach((value: number, index: number): void => {
 
 ```
 
+<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -198,6 +202,7 @@ console.info("result:", result);  // result: false
 
 ```
 
+<a id="locate"></a>
 ## locate
 
 ```TypeScript
@@ -246,6 +251,7 @@ console.info("result:", result);  // result: 2
 
 ```
 
+<a id="peek"></a>
 ## peek
 
 ```TypeScript
@@ -273,7 +279,7 @@ peek(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The peek method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -289,6 +295,7 @@ console.info("result:", result);  // result: 2
 
 ```
 
+<a id="pop"></a>
 ## pop
 
 ```TypeScript
@@ -316,7 +323,7 @@ pop(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The pop method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -333,6 +340,7 @@ console.info("result = " + result); // result = 4
 
 ```
 
+<a id="push"></a>
 ## push
 
 ```TypeScript

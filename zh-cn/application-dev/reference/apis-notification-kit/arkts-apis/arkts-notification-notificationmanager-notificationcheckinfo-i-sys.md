@@ -84,7 +84,7 @@ extraInfos?: Record<string, Object>
 
 实况通知的附加信息。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 11
 

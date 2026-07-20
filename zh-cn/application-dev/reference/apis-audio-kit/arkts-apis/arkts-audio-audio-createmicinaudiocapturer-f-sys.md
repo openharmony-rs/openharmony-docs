@@ -6,6 +6,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="createmicinaudiocapturer"></a>
 ## createMicInAudioCapturer
 
 ```TypeScript
@@ -36,7 +37,7 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<Aud
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AudioCapturer \| null> | Promise用于返回录音实例。如果出现错误，则返回null。 |
+| Promise&lt;AudioCapturer \| null&gt; | Promise用于返回录音实例。如果出现错误，则返回null。 |
 
 **错误码：**
 

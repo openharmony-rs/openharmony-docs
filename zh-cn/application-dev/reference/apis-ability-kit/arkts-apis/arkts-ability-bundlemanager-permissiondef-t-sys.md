@@ -4,7 +4,7 @@
 export type PermissionDef = _PermissionDef
 ```
 
-[module.json5配置文件](../../../../quick-start/module-configuration-file.md)中定义的权限详细信息。
+[module.json5配置文件](docroot://quick-start/module-configuration-file.md)中定义的权限详细信息。
 
 **起始版本：** 9
 

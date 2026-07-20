@@ -18,6 +18,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="convertkey"></a>
 ## convertKey
 
 ```TypeScript
@@ -50,7 +51,7 @@ convertKey(key: DataBlob, callback: AsyncCallback<SymKey>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 指定的对称密钥材料。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<SymKey> | 是 | 回调函数。当生成对称密钥成功时，err为undefined，data为获取到的SymKey；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;SymKey&gt; | 是 | 回调函数。当生成对称密钥成功时，err为undefined，data为获取到的SymKey；否则为错误对象。 |
 
 **错误码：**
 
@@ -84,6 +85,7 @@ function testConvertKey() {
 
 ```
 
+<a id="convertkey-1"></a>
 ## convertKey
 
 ```TypeScript
@@ -114,7 +116,7 @@ convertKey(key: DataBlob): Promise<SymKey>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SymKey> | Promise对象，返回对称密钥SymKey。 |
+| Promise&lt;SymKey&gt; | Promise对象，返回对称密钥SymKey。 |
 
 **错误码：**
 
@@ -152,6 +154,7 @@ function testConvertKey() {
 
 ```
 
+<a id="convertkeysync"></a>
 ## convertKeySync
 
 ```TypeScript
@@ -218,6 +221,7 @@ function testConvertKeySync() {
 
 ```
 
+<a id="generatesymkey"></a>
 ## generateSymKey
 
 ```TypeScript
@@ -251,7 +255,7 @@ generateSymKey(callback: AsyncCallback<SymKey>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<SymKey> | 是 | 回调函数。当生成对称密钥成功时，err为undefined，data为获取到的SymKey；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;SymKey&gt; | 是 | 回调函数。当生成对称密钥成功时，err为undefined，data为获取到的SymKey；否则为错误对象。 |
 
 **错误码：**
 
@@ -272,6 +276,7 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
 
 ```
 
+<a id="generatesymkey-1"></a>
 ## generateSymKey
 
 ```TypeScript
@@ -298,7 +303,7 @@ generateSymKey(): Promise<SymKey>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SymKey> | Promise对象，返回对称密钥SymKey。 |
+| Promise&lt;SymKey&gt; | Promise对象，返回对称密钥SymKey。 |
 
 **错误码：**
 
@@ -323,6 +328,7 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
 
 ```
 
+<a id="generatesymkeysync"></a>
 ## generateSymKeySync
 
 ```TypeScript

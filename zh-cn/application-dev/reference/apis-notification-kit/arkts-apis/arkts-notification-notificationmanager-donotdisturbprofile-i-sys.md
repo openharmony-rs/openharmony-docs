@@ -60,7 +60,7 @@ trustlist?: Array<BundleOption>
 
 勿扰模式的信任列表。
 
-**类型：** Array<BundleOption>
+**类型：** Array&lt;BundleOption&gt;
 
 **起始版本：** 12
 

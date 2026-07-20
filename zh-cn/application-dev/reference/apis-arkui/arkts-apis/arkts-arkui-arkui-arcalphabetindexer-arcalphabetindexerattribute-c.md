@@ -18,6 +18,7 @@
 import { ArcAlphabetIndexerAttribute, ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 
+<a id="autocollapse"></a>
 ## autoCollapse
 
 ```TypeScript
@@ -38,7 +39,7 @@ autoCollapse(enable: Optional<boolean>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)<boolean> | 是 | 是否使用自适应折叠模式。<br/>默认值：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。 |
+| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否使用自适应折叠模式。<br/>默认值：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。 |
 
 **返回值：**
 
@@ -46,6 +47,7 @@ autoCollapse(enable: Optional<boolean>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="color"></a>
 ## color
 
 ```TypeScript
@@ -66,7 +68,7 @@ color(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ColorMetrics> | 是 | 文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ColorMetrics&gt; | 是 | 文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 **返回值：**
 
@@ -74,6 +76,7 @@ color(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="font"></a>
 ## font
 
 ```TypeScript
@@ -94,7 +97,7 @@ font(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | [Optional](../arkts-components/arkts-arkui-optional-t.md)<Font> | 是 | 字母索引条默认字体样式。<br/>默认值：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/>weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;Font&gt; | 是 | 字母索引条默认字体样式。<br/>默认值：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/>weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 **返回值：**
 
@@ -102,6 +105,7 @@ font(font: Optional<Font>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="itemsize"></a>
 ## itemSize
 
 ```TypeScript
@@ -122,7 +126,7 @@ itemSize(size: Optional<LengthMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [Optional](../arkts-components/arkts-arkui-optional-t.md)<LengthMetrics> | 是 | 字母索引条字母区域大小，字母区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
+| size | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;LengthMetrics&gt; | 是 | 字母索引条字母区域大小，字母区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
 
 **返回值：**
 
@@ -130,6 +134,7 @@ itemSize(size: Optional<LengthMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="onselect"></a>
 ## onSelect
 
 ```TypeScript
@@ -150,7 +155,7 @@ onSelect(handler: Optional<OnSelectCallback>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)<OnSelectCallback> | 是 | 回调函数类型。 |
+| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;OnSelectCallback&gt; | 是 | 回调函数类型。 |
 
 **返回值：**
 
@@ -158,6 +163,7 @@ onSelect(handler: Optional<OnSelectCallback>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="popupbackground"></a>
 ## popupBackground
 
 ```TypeScript
@@ -178,7 +184,7 @@ popupBackground(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ColorMetrics> | 是 | 提示弹窗背景色。<br/>默认值：0xD8404040，显示为微透明的深灰色。 |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ColorMetrics&gt; | 是 | 提示弹窗背景色。<br/>默认值：0xD8404040，显示为微透明的深灰色。 |
 
 **返回值：**
 
@@ -186,6 +192,7 @@ popupBackground(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="popupbackgroundblurstyle"></a>
 ## popupBackgroundBlurStyle
 
 ```TypeScript
@@ -211,7 +218,7 @@ popupBackgroundBlurStyle(style: Optional<BlurStyle>): ArcAlphabetIndexerAttribut
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [Optional](../arkts-components/arkts-arkui-optional-t.md)<BlurStyle> | 是 | 设置提示弹窗的背景模糊材质。 |
+| style | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;BlurStyle&gt; | 是 | 设置提示弹窗的背景模糊材质。 |
 
 **返回值：**
 
@@ -219,6 +226,7 @@ popupBackgroundBlurStyle(style: Optional<BlurStyle>): ArcAlphabetIndexerAttribut
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="popupcolor"></a>
 ## popupColor
 
 ```TypeScript
@@ -239,7 +247,7 @@ popupColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ColorMetrics> | 是 | 提示弹窗文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ColorMetrics&gt; | 是 | 提示弹窗文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 **返回值：**
 
@@ -247,6 +255,7 @@ popupColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="popupfont"></a>
 ## popupFont
 
 ```TypeScript
@@ -267,7 +276,7 @@ popupFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | [Optional](../arkts-components/arkts-arkui-optional-t.md)<Font> | 是 | 提示弹窗字体样式。<br/>默认值：<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/>weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;Font&gt; | 是 | 提示弹窗字体样式。<br/>默认值：<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/>weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 **返回值：**
 
@@ -275,6 +284,7 @@ popupFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="selected"></a>
 ## selected
 
 ```TypeScript
@@ -295,7 +305,7 @@ selected(index: Optional<number>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | [Optional](../arkts-components/arkts-arkui-optional-t.md)<number> | 是 | 选中项索引值。 <br/>默认值：0 <br/>该参数支持[!!](../../../../ui/state-management/arkts-new-binding.md)双向绑定变量。 |
+| index | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 选中项索引值。 <br/>默认值：0 <br/>该参数支持[!!](docroot://ui/state-management/arkts-new-binding.md)双向绑定变量。 |
 
 **返回值：**
 
@@ -303,6 +313,7 @@ selected(index: Optional<number>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="selectedbackgroundcolor"></a>
 ## selectedBackgroundColor
 
 ```TypeScript
@@ -323,7 +334,7 @@ selectedBackgroundColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttrib
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ColorMetrics> | 是 | 选中项背景颜色。<br/>默认值：0x1F71FF，显示为深蓝色。 |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ColorMetrics&gt; | 是 | 选中项背景颜色。<br/>默认值：0x1F71FF，显示为深蓝色。 |
 
 **返回值：**
 
@@ -331,6 +342,7 @@ selectedBackgroundColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttrib
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="selectedcolor"></a>
 ## selectedColor
 
 ```TypeScript
@@ -351,7 +363,7 @@ selectedColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ColorMetrics> | 是 | 选中项文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ColorMetrics&gt; | 是 | 选中项文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 **返回值：**
 
@@ -359,6 +371,7 @@ selectedColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="selectedfont"></a>
 ## selectedFont
 
 ```TypeScript
@@ -379,7 +392,7 @@ selectedFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | [Optional](../arkts-components/arkts-arkui-optional-t.md)<Font> | 是 | 选中项文字样式。<br/>默认值：{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;Font&gt; | 是 | 选中项文字样式。<br/>默认值：{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 **返回值：**
 
@@ -387,6 +400,7 @@ selectedFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="usepopup"></a>
 ## usePopup
 
 ```TypeScript
@@ -407,7 +421,7 @@ usePopup(enabled: Optional<boolean>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | [Optional](../arkts-components/arkts-arkui-optional-t.md)<boolean> | 是 | 是否使用提示弹窗。<br/>true表示使用提示弹窗；false表示不使用提示弹窗。<br/>默认值：false |
+| enabled | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否使用提示弹窗。<br/>true表示使用提示弹窗；false表示不使用提示弹窗。<br/>默认值：false |
 
 **返回值：**
 

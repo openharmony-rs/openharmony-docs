@@ -20,6 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="offreadmicindata"></a>
 ## offReadMicInData
 
 ```TypeScript
@@ -42,7 +43,7 @@ offReadMicInData(callback?: Callback<AudioCapturerMicInData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioCapturerMicInData> | 否 | 用于读取缓冲的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioCapturerMicInData&gt; | 否 | 用于读取缓冲的回调。 |
 
 **错误码：**
 
@@ -52,6 +53,7 @@ offReadMicInData(callback?: Callback<AudioCapturerMicInData>): void
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted at running state. |
 
+<a id="onreadmicindata"></a>
 ## onReadMicInData
 
 ```TypeScript
@@ -74,7 +76,7 @@ onReadMicInData(callback: Callback<AudioCapturerMicInData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioCapturerMicInData> | 是 | 读取缓冲的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioCapturerMicInData&gt; | 是 | 读取缓冲的回调。 |
 
 **错误码：**
 
@@ -83,6 +85,7 @@ onReadMicInData(callback: Callback<AudioCapturerMicInData>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted at running state. |
 
+<a id="setinputdevicetoaccessory"></a>
 ## setInputDeviceToAccessory
 
 ```TypeScript

@@ -49,7 +49,7 @@ GestureType：手势事件类型；
 
 PageUpdateType：页面刷新类型。
 
-**类型：** accessibility.EventType | accessibility.WindowUpdateType | TouchGuideType | GestureType | PageUpdateType
+**类型：** accessibility.EventType \| accessibility.WindowUpdateType \| TouchGuideType \| GestureType \| PageUpdateType
 
 **起始版本：** 9
 

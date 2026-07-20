@@ -18,6 +18,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="setdisplaysurface"></a>
 ## setDisplaySurface
 
 ```TypeScript
@@ -39,7 +40,7 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | surfaceId | string | 是 | 设置播放的surfaceId。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，返回当前设置结果。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，返回当前设置结果。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ media.createAVRecorder().then((avRecorder) => {
 
 ```
 
+<a id="setdisplaysurface-1"></a>
 ## setDisplaySurface
 
 ```TypeScript
@@ -95,7 +97,7 @@ setDisplaySurface(surfaceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。返回设置结果。 |
+| Promise&lt;void&gt; | Promise对象。返回设置结果。 |
 
 **错误码：**
 

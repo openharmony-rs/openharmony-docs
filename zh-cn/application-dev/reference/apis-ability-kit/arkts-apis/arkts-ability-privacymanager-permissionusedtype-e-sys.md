@@ -22,8 +22,6 @@
 NORMAL_TYPE = 0
 ```
 
-Sensitive resources are accessed with the declared permission or permission granted by the user.
-
 **起始版本：** 12
 
 <!--Device-PermissionUsedType-NORMAL_TYPE = 0--><!--Device-PermissionUsedType-NORMAL_TYPE = 0-End-->
@@ -38,8 +36,6 @@ Sensitive resources are accessed with the declared permission or permission gran
 PICKER_TYPE = 1
 ```
 
-Sensitive resources are accessed through a picker.
-
 **起始版本：** 12
 
 <!--Device-PermissionUsedType-PICKER_TYPE = 1--><!--Device-PermissionUsedType-PICKER_TYPE = 1-End-->
@@ -53,8 +49,6 @@ Sensitive resources are accessed through a picker.
 ```TypeScript
 SECURITY_COMPONENT_TYPE = 2
 ```
-
-Sensitive resources are accessed through a security component.
 
 **起始版本：** 12
 

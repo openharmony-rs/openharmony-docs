@@ -6,6 +6,7 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="off"></a>
 ## off('appForegroundState')
 
 ```TypeScript
@@ -76,6 +77,7 @@ try {
 ```
 
 
+<a id="off-1"></a>
 ## off('abilityFirstFrameState')
 
 ```TypeScript

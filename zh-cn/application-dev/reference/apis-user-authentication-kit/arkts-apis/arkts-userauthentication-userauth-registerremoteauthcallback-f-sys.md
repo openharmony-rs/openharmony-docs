@@ -6,6 +6,7 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="registerremoteauthcallback"></a>
 ## registerRemoteAuthCallback
 
 ```TypeScript

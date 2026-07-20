@@ -16,6 +16,7 @@ Sendable PixelMap instance.
 import { sendableImage } from '@kit.ImageKit';
 ```
 
+<a id="applycolorspace"></a>
 ## applyColorSpace
 
 ```TypeScript
@@ -42,7 +43,7 @@ This method is used to change color space of PixelMap.Pixel data will be changed
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -72,6 +73,7 @@ async function ApplyColorSpace(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="createalphapixelmap"></a>
 ## createAlphaPixelmap
 
 ```TypeScript
@@ -92,7 +94,7 @@ Obtains new pixelmap with alpha information. This method uses a promise to retur
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | A Promise instance used to return the new image pixelmap.If the operation fails, an error message is returned. |
+| Promise&lt;PixelMap&gt; | A Promise instance used to return the new image pixelmap.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -112,6 +114,7 @@ async function CreateAlphaPixelmap(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="createalphapixelmapsync"></a>
 ## createAlphaPixelmapSync
 
 ```TypeScript
@@ -153,6 +156,7 @@ async function CreateAlphaPixelmapSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="crop"></a>
 ## crop
 
 ```TypeScript
@@ -179,7 +183,7 @@ Crop the image. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -202,6 +206,7 @@ async function Crop(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="cropsync"></a>
 ## cropSync
 
 ```TypeScript
@@ -246,6 +251,7 @@ async function CropSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="flip"></a>
 ## flip
 
 ```TypeScript
@@ -273,7 +279,7 @@ Image flipping. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -296,6 +302,7 @@ async function Flip(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="flipsync"></a>
 ## flipSync
 
 ```TypeScript
@@ -341,6 +348,7 @@ async function FlipSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="getbytesnumberperrow"></a>
 ## getBytesNumberPerRow
 
 ```TypeScript
@@ -374,6 +382,7 @@ async function GetBytesNumberPerRow(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="getcolorspace"></a>
 ## getColorSpace
 
 ```TypeScript
@@ -415,6 +424,7 @@ async function GetColorSpace(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="getdensity"></a>
 ## getDensity
 
 ```TypeScript
@@ -448,6 +458,7 @@ async function GetDensity(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="getimageinfo"></a>
 ## getImageInfo
 
 ```TypeScript
@@ -468,7 +479,7 @@ Obtains pixelmap information about this image. This method uses a promise to ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.ImageInfo> | A Promise instance used to return the image pixelmap information.If the operation fails, an error message is returned. |
+| Promise&lt;image.ImageInfo&gt; | A Promise instance used to return the image pixelmap information.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -491,6 +502,7 @@ async function GetImageInfo(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="getimageinfosync"></a>
 ## getImageInfoSync
 
 ```TypeScript
@@ -533,6 +545,7 @@ async function GetImageInfoSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="getpixelbytesnumber"></a>
 ## getPixelBytesNumber
 
 ```TypeScript
@@ -566,6 +579,7 @@ async function GetPixelBytesNumber(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="marshalling"></a>
 ## marshalling
 
 ```TypeScript
@@ -654,6 +668,7 @@ async function Marshalling() {
 
 ```
 
+<a id="opacity"></a>
 ## opacity
 
 ```TypeScript
@@ -680,7 +695,7 @@ Set the transparent rate of pixelmap. This method uses a promise to return the r
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -701,6 +716,7 @@ async function Opacity(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="opacitysync"></a>
 ## opacitySync
 
 ```TypeScript
@@ -744,6 +760,7 @@ async function OpacitySync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="readpixels"></a>
 ## readPixels
 
 ```TypeScript
@@ -770,7 +787,7 @@ Reads image pixelmap data in an area. This method uses a promise to return the d
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -797,6 +814,7 @@ async function ReadPixels(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="readpixelssync"></a>
 ## readPixelsSync
 
 ```TypeScript
@@ -846,6 +864,7 @@ async function ReadPixelsSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="readpixelstobuffer"></a>
 ## readPixelsToBuffer
 
 ```TypeScript
@@ -866,13 +885,13 @@ Reads image pixelmap data and writes the data to an ArrayBuffer. This method use
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dst | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | A buffer to which the image pixelmap data will be written. |
+| dst | ArrayBuffer | 是 | A buffer to which the image pixelmap data will be written. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -893,6 +912,7 @@ async function ReadPixelsToBuffer(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="readpixelstobuffersync"></a>
 ## readPixelsToBufferSync
 
 ```TypeScript
@@ -913,7 +933,7 @@ Reads image pixelmap data and writes the data to an ArrayBuffer.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dst | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | A buffer to which the image pixelmap data will be written. |
+| dst | ArrayBuffer | 是 | A buffer to which the image pixelmap data will be written. |
 
 **错误码：**
 
@@ -937,6 +957,7 @@ async function ReadPixelsToBufferSync(pixelMap: sendableImage.PixelMap) {
 
 ```
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -957,7 +978,7 @@ Releases this PixelMap object. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the instance release result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the instance release result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -977,6 +998,7 @@ async function Release(pixelMap: sendableImage.PixelMap) {
 
 ```
 
+<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
@@ -1003,7 +1025,7 @@ Image rotation. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -1024,6 +1046,7 @@ async function Rotate(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="rotatesync"></a>
 ## rotateSync
 
 ```TypeScript
@@ -1067,6 +1090,7 @@ async function RotateSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="scale"></a>
 ## scale
 
 ```TypeScript
@@ -1094,7 +1118,7 @@ Image zoom in width and height. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -1117,6 +1141,7 @@ async function Scale(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="scalesync"></a>
 ## scaleSync
 
 ```TypeScript
@@ -1162,6 +1187,7 @@ async function ScaleSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="setcolorspace"></a>
 ## setColorSpace
 
 ```TypeScript
@@ -1207,6 +1233,7 @@ async function SetColorSpace(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="translate"></a>
 ## translate
 
 ```TypeScript
@@ -1234,7 +1261,7 @@ Image position transformation. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -1256,6 +1283,7 @@ async function Translate(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="translatesync"></a>
 ## translateSync
 
 ```TypeScript
@@ -1301,6 +1329,7 @@ async function TranslateSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="unmarshalling"></a>
 ## unmarshalling
 
 ```TypeScript
@@ -1325,7 +1354,7 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | A Promise instance used to return the PixelMap object. |
+| Promise&lt;PixelMap&gt; | A Promise instance used to return the PixelMap object. |
 
 **错误码：**
 
@@ -1396,6 +1425,7 @@ async function Unmarshalling() {
 
 ```
 
+<a id="writebuffertopixels"></a>
 ## writeBufferToPixels
 
 ```TypeScript
@@ -1416,13 +1446,13 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object. Thi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | A buffer from which the image data will be read. |
+| src | ArrayBuffer | 是 | A buffer from which the image data will be read. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -1447,6 +1477,7 @@ async function WriteBufferToPixels(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="writebuffertopixelssync"></a>
 ## writeBufferToPixelsSync
 
 ```TypeScript
@@ -1467,7 +1498,7 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | A buffer from which the image data will be read. |
+| src | ArrayBuffer | 是 | A buffer from which the image data will be read. |
 
 **错误码：**
 
@@ -1495,6 +1526,7 @@ async function WriteBufferToPixelsSync(pixelMap: sendableImage.PixelMap) {
 
 ```
 
+<a id="writepixels"></a>
 ## writePixels
 
 ```TypeScript
@@ -1521,7 +1553,7 @@ Writes image pixelmap data to the specified area. This method uses a promise to 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result.If the operation fails, an error message is returned. |
 
 **示例：**
 
@@ -1552,6 +1584,7 @@ async function WritePixels(pixelMap : sendableImage.PixelMap) {
 
 ```
 
+<a id="writepixelssync"></a>
 ## writePixelsSync
 
 ```TypeScript

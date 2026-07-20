@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="getallsystemappcertificates"></a>
 ## getAllSystemAppCertificates
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getAllSystemAppCertificates(): Promise<CMResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CMResult> | Promise对象，返回获取所有系统凭据列表的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的credentialList属性。 |
+| Promise&lt;CMResult&gt; | Promise对象，返回获取所有系统凭据列表的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的credentialList属性。 |
 
 **错误码：**
 

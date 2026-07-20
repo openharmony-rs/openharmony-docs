@@ -20,7 +20,7 @@ import { appAccount } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createAppAccountManager](arkts-basicservices-appaccount-createappaccountmanager-f.md#createappaccountmanager-1) | 创建应用账号管理器对象。 |
+| [createAppAccountManager](arkts-basicservices-appaccount-createappaccountmanager-f.md#createappaccountmanager) | 创建应用账号管理器对象。 |
 
 ### 类
 

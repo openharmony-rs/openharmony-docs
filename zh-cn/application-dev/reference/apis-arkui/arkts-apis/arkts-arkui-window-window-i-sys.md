@@ -16,6 +16,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="attachlayouttoparentwindow"></a>
 ## attachLayoutToParentWindow
 
 ```TypeScript
@@ -34,7 +35,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 > [detachLayoutToParentWindow()](arkts-arkui-window-window-i-sys.md#detachlayouttoparentwindow-1)接口解绑，否则效果将持续。  
 >  
 > - 当子窗调用该接口后，再调用  
-> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto-2)、  
+> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto-1)、  
 > [maximize()](arkts-arkui-window-window-i.md#maximize-1)、  
 > [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled-1)等修改窗  
 > 口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
@@ -60,7 +61,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -122,6 +123,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="binddialogtarget"></a>
 ## bindDialogTarget
 
 ```TypeScript
@@ -143,13 +145,13 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>): Promis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | token | rpc.RemoteObject | 是 | 目标窗口token值。 |
-| deathCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<void> | 是 | 目标窗口销毁监听。 |
+| deathCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -213,6 +215,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 ```
 
+<a id="binddialogtarget-1"></a>
 ## bindDialogTarget
 
 ```TypeScript
@@ -234,8 +237,8 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | token | rpc.RemoteObject | 是 | 目标窗口token值。 |
-| deathCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<void> | 是 | 目标窗口销毁监听。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| deathCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -301,6 +304,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 ```
 
+<a id="binddialogtarget-2"></a>
 ## bindDialogTarget
 
 ```TypeScript
@@ -322,13 +326,13 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | requestInfo | dialogRequest.RequestInfo | 是 | 目标窗口RequestInfo值。 |
-| deathCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<void> | 是 | 目标窗口销毁监听。 |
+| deathCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -380,6 +384,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 ```
 
+<a id="binddialogtarget-3"></a>
 ## bindDialogTarget
 
 ```TypeScript
@@ -401,8 +406,8 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | requestInfo | dialogRequest.RequestInfo | 是 | 目标窗口RequestInfo值。 |
-| deathCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<void> | 是 | 目标窗口销毁监听。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| deathCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -456,6 +461,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 ```
 
+<a id="detachlayouttoparentwindow"></a>
 ## detachLayoutToParentWindow
 
 ```TypeScript
@@ -471,7 +477,7 @@ detachLayoutToParentWindow(): Promise<void>
 > - 调用接口解除协同后，子窗将保持协同时的位置，可对子窗进行拖拽以修改子窗大小和位置。  
 >  
 > - 解除协同后，调用  
-> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto-2)、  
+> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto-1)、  
 > [maximize()](arkts-arkui-window-window-i.md#maximize-1)、  
 > [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled-1)修改窗口  
 > 位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
@@ -490,7 +496,7 @@ detachLayoutToParentWindow(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -537,6 +543,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="enabledrag"></a>
 ## enableDrag
 
 ```TypeScript
@@ -559,13 +566,13 @@ enableDrag(enable: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 是否允许拖拽。<br>true表示允许，false表示不允许。&lt;/br&gt; |
+| enable | boolean | 是 | 是否允许拖拽。<br>true表示允许，false表示不允许。</br> |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -577,13 +584,14 @@ enableDrag(enable: boolean): Promise<void>
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
+<a id="getrotationlocked"></a>
 ## getRotationLocked
 
 ```TypeScript
 getRotationLocked(): boolean
 ```
 
-仅支持[系统窗口](../../../../windowmanager/window-terminology.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
+仅支持[系统窗口](docroot://windowmanager/window-terminology.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
 
 **起始版本：** 22
 
@@ -621,6 +629,7 @@ try {
 
 ```
 
+<a id="gettransitioncontroller"></a>
 ## getTransitionController
 
 ```TypeScript
@@ -658,6 +667,7 @@ let controller = windowClass.getTransitionController(); // 获取属性转换控
 
 ```
 
+<a id="hide"></a>
 ## hide
 
 ```TypeScript
@@ -678,7 +688,7 @@ hide (callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -703,6 +713,7 @@ windowClass.hide((err: BusinessError) => {
 
 ```
 
+<a id="hide-1"></a>
 ## hide
 
 ```TypeScript
@@ -723,7 +734,7 @@ hide(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -746,6 +757,7 @@ promise.then(() => {
 
 ```
 
+<a id="hidenonsystemfloatingwindows"></a>
 ## hideNonSystemFloatingWindows
 
 ```TypeScript
@@ -769,7 +781,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback<void>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | shouldHide | boolean | 是 | 指示是否隐藏非系统级的悬浮窗口，true表示隐藏，false表示不隐藏。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -828,6 +840,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="hidenonsystemfloatingwindows-1"></a>
 ## hideNonSystemFloatingWindows
 
 ```TypeScript
@@ -856,7 +869,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -915,6 +928,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="hidewithanimation"></a>
 ## hideWithAnimation
 
 ```TypeScript
@@ -935,7 +949,7 @@ hideWithAnimation(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -962,6 +976,7 @@ windowClass.hideWithAnimation((err: BusinessError) => {
 
 ```
 
+<a id="hidewithanimation-1"></a>
 ## hideWithAnimation
 
 ```TypeScript
@@ -982,7 +997,7 @@ hideWithAnimation(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1007,6 +1022,7 @@ promise.then(() => {
 
 ```
 
+<a id="ismainwindowfullscreenacrossdisplays"></a>
 ## isMainWindowFullScreenAcrossDisplays
 
 ```TypeScript
@@ -1027,7 +1043,7 @@ isMainWindowFullScreenAcrossDisplays(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示当前窗口的主窗口跨多块屏幕使用全屏模式显示，返回false表示当前窗口的主窗口未跨多块屏幕使用全屏模式显示。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前窗口的主窗口跨多块屏幕使用全屏模式显示，返回false表示当前窗口的主窗口未跨多块屏幕使用全屏模式显示。 |
 
 **错误码：**
 
@@ -1057,6 +1073,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off('mainWindowFullScreenAcrossDisplaysChanged')
 
 ```TypeScript
@@ -1078,7 +1095,7 @@ off(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback?: Callback<boole
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'mainWindowFullScreenAcrossDisplaysChanged' | 是 | 监听事件，固定为'mainWindowFullScreenAcrossDisplaysChanged'，即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<boolean> | 否 | 回调函数。即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。 |
 
 **错误码：**
 
@@ -1109,6 +1126,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('mainWindowFullScreenAcrossDisplaysChanged')
 
 ```TypeScript
@@ -1130,7 +1148,7 @@ on(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback: Callback<boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'mainWindowFullScreenAcrossDisplaysChanged' | 是 | 监听事件，固定为'mainWindowFullScreenAcrossDisplaysChanged'，即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<boolean> | 是 | 回调函数。即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。true表示主窗口进入跨多块屏幕使用全屏模式显示状态，false表示主窗口退出跨多块屏幕使用全屏模式显示状态。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。true表示主窗口进入跨多块屏幕使用全屏模式显示状态，false表示主窗口退出跨多块屏幕使用全屏模式显示状态。 |
 
 **错误码：**
 
@@ -1156,13 +1174,14 @@ try {
 
 ```
 
+<a id="opacity"></a>
 ## opacity
 
 ```TypeScript
 opacity(opacity: number): void
 ```
 
-设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](docroot://windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
 
@@ -1198,6 +1217,7 @@ try {
 
 ```
 
+<a id="raiseabovetarget"></a>
 ## raiseAboveTarget
 
 ```TypeScript
@@ -1221,7 +1241,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | windowId | number | 是 | 目标子窗口的id，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties-1)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -1278,6 +1298,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="raiseabovetarget-1"></a>
 ## raiseAboveTarget
 
 ```TypeScript
@@ -1306,7 +1327,7 @@ raiseAboveTarget(windowId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1361,6 +1382,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="raisemainwindowabovetarget"></a>
 ## raiseMainWindowAboveTarget
 
 ```TypeScript
@@ -1394,7 +1416,7 @@ raiseMainWindowAboveTarget(windowId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1532,6 +1554,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
 
 ```
 
+<a id="raisetoapptop"></a>
 ## raiseToAppTop
 
 ```TypeScript
@@ -1554,7 +1577,7 @@ raiseToAppTop(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -1600,13 +1623,14 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="requestfocus"></a>
 ## requestFocus
 
 ```TypeScript
 requestFocus(isFocused: boolean): Promise<void>
 ```
 
-支持当前窗口主动请求获焦/失焦，使用Promise异步回调。调用成功即返回，该接口返回值不代表最终获焦/失焦生效结果。可使用[on('windowEvent')](arkts-arkui-window-window-i.md#on-22)监听窗口获焦/失焦状态。
+支持当前窗口主动请求获焦/失焦，使用Promise异步回调。调用成功即返回，该接口返回值不代表最终获焦/失焦生效结果。可使用[on('windowEvent')](@ohos.window:window.Window.on(type: 'windowEvent', callback: Callback<WindowEventType>))监听窗口获焦/失焦状态。
 
 获焦请求发送后，窗口获焦结果受到窗口可获焦属性及窗口可见状态的限制。获焦成功的窗口需满足以下约束：1.窗口支持获焦；2.窗口可见（窗口已显示，未销毁且未退至后台）。
 
@@ -1630,7 +1654,7 @@ requestFocus(isFocused: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1657,13 +1681,14 @@ promise.then(() => {
 
 ```
 
+<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
 rotate(rotateOptions: RotateOptions): void
 ```
 
-设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](docroot://windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
 
@@ -1677,7 +1702,7 @@ rotate(rotateOptions: RotateOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotateOptions | [RotateOptions](../arkts-components/arkts-arkui-common-rotateoptions-i.md) | 是 | 旋转参数。 |
+| rotateOptions | [RotateOptions](../arkts-components/arkts-arkui-rotateoptions-i.md) | 是 | 旋转参数。 |
 
 **错误码：**
 
@@ -1706,13 +1731,14 @@ try {
 
 ```
 
+<a id="scale"></a>
 ## scale
 
 ```TypeScript
 scale(scaleOptions: ScaleOptions): void
 ```
 
-设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](docroot://windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
 
@@ -1726,7 +1752,7 @@ scale(scaleOptions: ScaleOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scaleOptions | [ScaleOptions](../arkts-components/arkts-arkui-common-scaleoptions-i.md) | 是 | 缩放参数。 |
+| scaleOptions | [ScaleOptions](../arkts-components/arkts-arkui-scaleoptions-i.md) | 是 | 缩放参数。 |
 
 **错误码：**
 
@@ -1754,6 +1780,7 @@ try {
 
 ```
 
+<a id="setbackdropblur"></a>
 ## setBackdropBlur
 
 ```TypeScript
@@ -1801,6 +1828,7 @@ try {
 
 ```
 
+<a id="setbackdropblurstyle"></a>
 ## setBackdropBlurStyle
 
 ```TypeScript
@@ -1821,7 +1849,7 @@ setBackdropBlurStyle(blurStyle: BlurStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| blurStyle | [BlurStyle](../arkts-components/arkts-arkui-common-blurstyle-e.md) | 是 | 表示窗口背景模糊类型。 |
+| blurStyle | [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md) | 是 | 表示窗口背景模糊类型。 |
 
 **错误码：**
 
@@ -1843,6 +1871,7 @@ try {
 
 ```
 
+<a id="setblur"></a>
 ## setBlur
 
 ```TypeScript
@@ -1885,6 +1914,7 @@ try {
 
 ```
 
+<a id="setcornerradius"></a>
 ## setCornerRadius
 
 ```TypeScript
@@ -1927,6 +1957,7 @@ try {
 
 ```
 
+<a id="setdefaultdensityenabled"></a>
 ## setDefaultDensityEnabled
 
 ```TypeScript
@@ -1937,7 +1968,7 @@ setDefaultDensityEnabled(enabled: boolean): void
 
 不调用此接口进行设置，则表示不使用系统默认Density。
 
-当存在同时使用该接口、[setDefaultDensityEnabled(true)](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
+当存在同时使用该接口、[setDefaultDensityEnabled(true)](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
 
 **起始版本：** 20
 
@@ -1973,6 +2004,7 @@ try {
 
 ```
 
+<a id="setforbidsplitmove"></a>
 ## setForbidSplitMove
 
 ```TypeScript
@@ -1996,7 +2028,7 @@ setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isForbidSplitMove | boolean | 是 | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2045,6 +2077,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="setforbidsplitmove-1"></a>
 ## setForbidSplitMove
 
 ```TypeScript
@@ -2073,7 +2106,7 @@ setForbidSplitMove(isForbidSplitMove: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2120,6 +2153,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="sethandwritingflag"></a>
 ## setHandwritingFlag
 
 ```TypeScript
@@ -2146,7 +2180,7 @@ setHandwritingFlag(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2177,6 +2211,7 @@ try {
 
 ```
 
+<a id="setmainwindowraisebyclickenabled"></a>
 ## setMainWindowRaiseByClickEnabled
 
 ```TypeScript
@@ -2205,7 +2240,7 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2251,6 +2286,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="setraisebyclickenabled"></a>
 ## setRaiseByClickEnabled
 
 ```TypeScript
@@ -2276,7 +2312,7 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 设置子窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2328,24 +2364,25 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="setrotationlocked"></a>
 ## setRotationLocked
 
 ```TypeScript
 setRotationLocked(locked: boolean): Promise<void>
 ```
 
-仅支持[系统窗口](../../../../windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
+仅支持[系统窗口](docroot://windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
 
 > **说明：**  
 >  
 > - 如果在锁定期间主窗口通过  
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)  
+> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)  
 > 设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。  
 >  
 > - 如果在锁定期间系统窗口通过  
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)  
+> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)  
 > 设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用  
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)  
+> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)  
 > 设置显示方向。  
 >  
 > - 如果在锁定期间sensor方向发生了变化，则解除旋转锁定后还原到最后一次的sensor方向。  
@@ -2355,10 +2392,10 @@ setRotationLocked(locked: boolean): Promise<void>
 > 设置屏幕方向，忽略该次屏幕方向设置。  
 >  
 > - 解除锁定时，根据主窗口的显示方向属性  
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)  
-> 、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../../../windowmanager/window-rotation.md#窗口旋转简介)。  
+> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)  
+> 、sensor方向等决定应用显示方向，具体见[窗口旋转简介](docroot://windowmanager/window-rotation.md#窗口旋转简介)。  
 >  
-> - 不影响应用[module.json5配置文件中的abilities标签](../../../../quick-start/module-configuration-file.md#abilities标签)  
+> - 不影响应用[module.json5配置文件中的abilities标签](docroot://quick-start/module-configuration-file.md#abilities标签)  
 > orientation属性设置的启动方向。
 
 **起始版本：** 22
@@ -2379,7 +2416,7 @@ setRotationLocked(locked: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2406,6 +2443,7 @@ promise.then(() => {
 
 ```
 
+<a id="setshadow"></a>
 ## setShadow
 
 ```TypeScript
@@ -2451,6 +2489,7 @@ try {
 
 ```
 
+<a id="setsingleframecomposerenabled"></a>
 ## setSingleFrameComposerEnabled
 
 ```TypeScript
@@ -2479,7 +2518,7 @@ setSingleFrameComposerEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2509,6 +2548,7 @@ try {
 
 ```
 
+<a id="setsnapshotskip"></a>
 ## setSnapshotSkip
 
 ```TypeScript
@@ -2517,7 +2557,7 @@ setSnapshotSkip(isSkip: boolean): void
 
 截屏、录屏或投屏是否忽略当前窗口。此接口一般用于禁止截屏、录屏或投屏的场景。
 
-若要实现窗口始终在前台忽略截屏、录屏或投屏，在窗口从后台回到前台时，需要通过[on('windowEvent')](arkts-arkui-window-window-i.md#on-22)监听窗口生命周期变化，在后台状态时设置为false，而在前台状态时设置为true。
+若要实现窗口始终在前台忽略截屏、录屏或投屏，在窗口从后台回到前台时，需要通过[on('windowEvent')](@ohos.window:window.Window.on(type: 'windowEvent', callback: Callback<WindowEventType>))监听窗口生命周期变化，在后台状态时设置为false，而在前台状态时设置为true。
 
 **起始版本：** 9
 
@@ -2531,7 +2571,7 @@ setSnapshotSkip(isSkip: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isSkip | boolean | 是 | 截屏、录屏或投屏是否忽略当前窗口，默认为false。<br>true表示忽略当前窗口，false表示不忽略当前窗口。&lt;/br&gt; |
+| isSkip | boolean | 是 | 截屏、录屏或投屏是否忽略当前窗口，默认为false。<br>true表示忽略当前窗口，false表示不忽略当前窗口。</br> |
 
 **错误码：**
 
@@ -2553,6 +2593,7 @@ try {
 
 ```
 
+<a id="settitlebuttonvisible"></a>
 ## setTitleButtonVisible
 
 ```TypeScript
@@ -2628,6 +2669,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="settopmost"></a>
 ## setTopmost
 
 ```TypeScript
@@ -2654,7 +2696,7 @@ setTopmost(isTopmost: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2691,6 +2733,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="settouchableareas"></a>
 ## setTouchableAreas
 
 ```TypeScript
@@ -2716,13 +2759,13 @@ setTouchableAreas(rects: Array<Rect>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rects | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Rect> | 是 | 窗口可触摸区域。可触摸区域最大个数不能超过10个，且范围不能超出窗口区域。 |
+| rects | Array&lt;Rect&gt; | 是 | 窗口可触摸区域。可触摸区域最大个数不能超过10个，且范围不能超出窗口区域。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -2734,6 +2777,7 @@ setTouchableAreas(rects: Array<Rect>): Promise<void>
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Invalid parameter range. |
 
+<a id="setwakeupscreen"></a>
 ## setWakeUpScreen
 
 ```TypeScript
@@ -2777,6 +2821,7 @@ try {
 
 ```
 
+<a id="setwatermarkflag"></a>
 ## setWaterMarkFlag
 
 ```TypeScript
@@ -2798,7 +2843,7 @@ setWaterMarkFlag(enable: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 是否对窗口添加标志位。true表示添加，false表示删除。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2831,6 +2876,7 @@ try {
 
 ```
 
+<a id="setwatermarkflag-1"></a>
 ## setWaterMarkFlag
 
 ```TypeScript
@@ -2857,7 +2903,7 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2888,6 +2934,7 @@ try {
 
 ```
 
+<a id="setwindowcontainermodalcolor"></a>
 ## setWindowContainerModalColor
 
 ```TypeScript
@@ -2926,6 +2973,7 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
+<a id="setwindowmode"></a>
 ## setWindowMode
 
 ```TypeScript
@@ -2952,7 +3000,7 @@ setWindowMode(mode: WindowMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2999,6 +3047,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="setwindowmode-1"></a>
 ## setWindowMode
 
 ```TypeScript
@@ -3020,7 +3069,7 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | [WindowMode](../../apis-test-kit/arkts-apis/arkts-test-uitest-windowmode-e.md) | 是 | 窗口模式。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -3069,6 +3118,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="setwindowtype"></a>
 ## setWindowType
 
 ```TypeScript
@@ -3097,7 +3147,7 @@ setWindowType(type: WindowType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -3114,6 +3164,7 @@ promise.then(() => {
 
 ```
 
+<a id="setwindowtype-1"></a>
 ## setWindowType
 
 ```TypeScript
@@ -3137,7 +3188,7 @@ setWindowType(type: WindowType, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [WindowType](../../apis-accessibility-kit/arkts-apis/arkts-accessibility-windowtype-t.md) | 是 | 窗口类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -3156,6 +3207,7 @@ windowClass.setWindowType(type, (err: BusinessError) => {
 
 ```
 
+<a id="showwithanimation"></a>
 ## showWithAnimation
 
 ```TypeScript
@@ -3176,7 +3228,7 @@ showWithAnimation(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -3203,6 +3255,7 @@ windowClass.showWithAnimation((err: BusinessError) => {
 
 ```
 
+<a id="showwithanimation-1"></a>
 ## showWithAnimation
 
 ```TypeScript
@@ -3223,7 +3276,7 @@ showWithAnimation(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3248,13 +3301,14 @@ promise.then(() => {
 
 ```
 
+<a id="translate"></a>
 ## translate
 
 ```TypeScript
 translate(translateOptions: TranslateOptions): void
 ```
 
-设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](docroot://windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
 
@@ -3268,7 +3322,7 @@ translate(translateOptions: TranslateOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| translateOptions | [TranslateOptions](../arkts-components/arkts-arkui-common-translateoptions-i.md) | 是 | 平移参数，单位为px。 |
+| translateOptions | [TranslateOptions](../arkts-components/arkts-arkui-translateoptions-i.md) | 是 | 平移参数，单位为px。 |
 
 **错误码：**
 

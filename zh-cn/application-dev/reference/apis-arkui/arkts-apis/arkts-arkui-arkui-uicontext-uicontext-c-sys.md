@@ -7,8 +7,8 @@ UIContext实例对象。
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。  
 >  
 > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的  
-> [getUIContext()](../../../../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定  
-> 义组件内置方法[getUIContext()](../../../../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext  
+> [getUIContext()](docroot://reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定  
+> 义组件内置方法[getUIContext()](docroot://reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext  
 > 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#getcallingscopeuicontext-1)获取UIContext实例。本文中  
 > UIContext对象以uiContext表示。
 
@@ -24,6 +24,7 @@ UIContext实例对象。
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="animatetoimmediately"></a>
 ## animateToImmediately
 
 ```TypeScript
@@ -48,16 +49,17 @@ animateToImmediately(param: AnimateParam, processor: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | [AnimateParam](../arkts-components/arkts-arkui-common-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
-| processor | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| param | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
+| processor | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
+<a id="clearresourcecache"></a>
 ## clearResourceCache
 
 ```TypeScript
 clearResourceCache(): void
 ```
 
-清除跨模块（[HSP](../../../../quick-start/in-app-hsp.md)包）访问资源时生成的资源对象缓存。清除缓存后，下次访问该模块资源的加载时间会增加。
+清除跨模块（[HSP](docroot://quick-start/in-app-hsp.md)包）访问资源时生成的资源对象缓存。清除缓存后，下次访问该模块资源的加载时间会增加。
 
 **起始版本：** 12
 
@@ -96,6 +98,7 @@ struct MyStateSample {
 
 ```
 
+<a id="freezeuinode"></a>
 ## freezeUINode
 
 ```TypeScript
@@ -127,6 +130,7 @@ freezeUINode(id: string, isFrozen: boolean): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
+<a id="freezeuinode-1"></a>
 ## freezeUINode
 
 ```TypeScript
@@ -158,6 +162,7 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
+<a id="getluminancesampler"></a>
 ## getLuminanceSampler
 
 ```TypeScript
@@ -192,6 +197,7 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 
 参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23)接口的示例。
 
+<a id="recycleinvisibleimagememory"></a>
 ## recycleInvisibleImageMemory
 
 ```TypeScript
@@ -241,6 +247,7 @@ struct ImageRecycleSample {
 
 ```
 
+<a id="setdynamicdimming"></a>
 ## setDynamicDimming
 
 ```TypeScript
@@ -293,6 +300,7 @@ struct Index {
 
 ```
 
+<a id="setkeyboardappearanceconfig"></a>
 ## setKeyboardAppearanceConfig
 
 ```TypeScript
@@ -316,7 +324,7 @@ setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uniqueId | number | 是 | The unique id of the input component. |
-| config | [KeyboardAppearanceConfig](arkts-arkui-text-common-keyboardappearanceconfig-i-sys.md) | 是 | The config of keyboard. |
+| config | [KeyboardAppearanceConfig](arkts-arkui-keyboardappearanceconfig-i-sys.md) | 是 | The config of keyboard. |
 
 **错误码：**
 

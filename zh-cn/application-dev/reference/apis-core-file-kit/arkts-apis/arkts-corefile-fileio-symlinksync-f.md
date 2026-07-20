@@ -1,5 +1,6 @@
 # symlinkSync
 
+<a id="symlinksync"></a>
 ## symlinkSync
 
 ```TypeScript

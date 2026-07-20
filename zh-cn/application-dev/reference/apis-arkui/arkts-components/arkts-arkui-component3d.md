@@ -23,7 +23,7 @@ Component3D(sceneOptions?: SceneOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sceneOptions | SceneOptions | 否 | 3D场景控制器 |
+| sceneOptions | [SceneOptions](arkts-arkui-sceneoptions-i.md) | 否 | 3D场景控制器  |
 
 ## 汇总
 

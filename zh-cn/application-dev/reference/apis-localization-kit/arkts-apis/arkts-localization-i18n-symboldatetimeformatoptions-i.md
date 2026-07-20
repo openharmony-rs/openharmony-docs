@@ -24,7 +24,7 @@ amPMSymbol?: string[] | undefined
 
 指定的上午和下午符号，要求数组长度不小于2，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。
 
-**类型：** string[] | undefined
+**类型：** string[] \| undefined
 
 **起始版本：** 26.0.0
 

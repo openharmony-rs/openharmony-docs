@@ -18,5 +18,5 @@ type CallbackFunctionWithError = (e: Error) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| e | Error | 是 | 错误信息。 |
+| e | Error | 是 | 错误信息。  |
 

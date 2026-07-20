@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="displaybadge"></a>
 ## displayBadge
 
 ```TypeScript
@@ -30,7 +31,7 @@ function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 指定应用的包信息。 |
 | enable | boolean | 是 | 使能状态（true：使能，false：禁止）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设定角标使能回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设定角标使能回调函数。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ notificationManager.displayBadge(bundle, false, displayBadgeCallback);
 ```
 
 
+<a id="displaybadge-1"></a>
 ## displayBadge
 
 ```TypeScript
@@ -94,7 +96,7 @@ function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

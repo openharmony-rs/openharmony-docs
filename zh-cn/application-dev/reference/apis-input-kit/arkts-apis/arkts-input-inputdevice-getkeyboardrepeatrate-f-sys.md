@@ -6,6 +6,7 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
+<a id="getkeyboardrepeatrate"></a>
 ## getKeyboardRepeatRate
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getKeyboardRepeatRate(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当获取成功，err为undefined，data为键盘按键的重复速率；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取成功，err为undefined，data为键盘按键的重复速率；否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ struct Index {
 ```
 
 
+<a id="getkeyboardrepeatrate-1"></a>
 ## getKeyboardRepeatRate
 
 ```TypeScript
@@ -88,7 +90,7 @@ function getKeyboardRepeatRate(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回键盘按键的重复速率。 |
+| Promise&lt;number&gt; | Promise对象，返回键盘按键的重复速率。 |
 
 **错误码：**
 

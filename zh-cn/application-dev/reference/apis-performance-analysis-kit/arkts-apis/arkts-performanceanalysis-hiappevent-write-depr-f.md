@@ -1,5 +1,6 @@
 # write
 
+<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -30,7 +31,7 @@ function write(eventName: string, eventType: EventType, keyValues: object): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，可以在其then()、catch()方法中分别对事件写入成功、写入异常的情况进行异步处理。 |
+| Promise&lt;void&gt; | Promise对象，可以在其then()、catch()方法中分别对事件写入成功、写入异常的情况进行异步处理。 |
 
 **示例：**
 
@@ -53,6 +54,7 @@ hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams).then(() 
 ```
 
 
+<a id="write-1"></a>
 ## write
 
 ```TypeScript
@@ -78,7 +80,7 @@ function write(eventName: string, eventType: EventType, keyValues: object, callb
 | eventName | string | 是 | 事件名称。 |
 | eventType | [EventType](../../apis-arkts/arkts-apis/arkts-arkts-xml-eventtype-e.md) | 是 | 事件类型。 |
 | keyValues | object | 是 | 事件参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 事件回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 事件回调函数。 |
 
 **示例：**
 

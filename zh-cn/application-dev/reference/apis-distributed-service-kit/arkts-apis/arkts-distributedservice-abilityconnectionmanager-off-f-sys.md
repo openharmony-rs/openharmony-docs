@@ -6,6 +6,7 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="off"></a>
 ## off('receiveImage')
 
 ```TypeScript
@@ -33,7 +34,7 @@ Unregisters receiveImage event.
 | --- | --- | --- | --- |
 | type | 'receiveImage' | 是 | Registration Type, 'receiveImage'. |
 | sessionId | number | 是 | Ability connection Session id. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventCallbackInfo> | 否 | Used to handle ('receiveImage') command. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 否 | Used to handle ('receiveImage') command. |
 
 **错误码：**
 
@@ -55,6 +56,7 @@ abilityConnectionManager.off('receiveImage', sessionId);
 ```
 
 
+<a id="off-1"></a>
 ## off('collaborateEvent')
 
 ```TypeScript
@@ -82,7 +84,7 @@ Unregisters collaborateEvent event.
 | --- | --- | --- | --- |
 | type | 'collaborateEvent' | 是 | Registration Type, 'collaborateEvent'. |
 | sessionId | number | 是 | Ability connection Session id. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CollaborateEventInfo> | 否 | Called when an error event comes. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CollaborateEventInfo&gt; | 否 | Called when an error event comes. |
 
 **错误码：**
 
@@ -104,6 +106,7 @@ abilityConnectionManager.off('collaborateEvent', sessionId);
 ```
 
 
+<a id="off-2"></a>
 ## off('collaborateEvent')
 
 ```TypeScript
@@ -129,7 +132,7 @@ Unregisters collaborateEvent event.
 | --- | --- | --- | --- |
 | type | 'collaborateEvent' | 是 | Registration Type, 'collaborateEvent'. |
 | sessionId | number | 是 | Ability connection Session id. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CollaborateEventInfo> | 否 | Called when an error event comes. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CollaborateEventInfo&gt; | 否 | Called when an error event comes. |
 
 **错误码：**
 

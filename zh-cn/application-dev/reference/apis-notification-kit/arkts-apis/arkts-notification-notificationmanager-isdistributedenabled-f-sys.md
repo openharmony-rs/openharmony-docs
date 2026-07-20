@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="isdistributedenabled"></a>
 ## isDistributedEnabled
 
 ```TypeScript
@@ -34,7 +35,7 @@ function isDistributedEnabled(deviceType: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 返回设备是否支持跨设备协同通知的结果，返回true表示支持；返回false表示不支持。Promise对象。 |
+| Promise&lt;boolean&gt; | 返回设备是否支持跨设备协同通知的结果，返回true表示支持；返回false表示不支持。Promise对象。 |
 
 **错误码：**
 

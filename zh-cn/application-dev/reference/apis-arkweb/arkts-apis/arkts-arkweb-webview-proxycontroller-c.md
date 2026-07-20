@@ -14,6 +14,7 @@ This class is used for set proxy for ArkWeb.
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="applyproxyoverride"></a>
 ## applyProxyOverride
 
 ```TypeScript
@@ -43,6 +44,7 @@ static applyProxyOverride(proxyConfig: ProxyConfig, callback: OnProxyConfigChang
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
+<a id="removeproxyoverride"></a>
 ## removeProxyOverride
 
 ```TypeScript

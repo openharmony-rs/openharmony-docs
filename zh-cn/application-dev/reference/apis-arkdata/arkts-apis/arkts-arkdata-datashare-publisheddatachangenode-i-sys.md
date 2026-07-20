@@ -44,7 +44,7 @@ data: Array<PublishedItem>
 
 指定回调的数据。
 
-**类型：** Array<PublishedItem>
+**类型：** Array&lt;PublishedItem&gt;
 
 **起始版本：** 10
 

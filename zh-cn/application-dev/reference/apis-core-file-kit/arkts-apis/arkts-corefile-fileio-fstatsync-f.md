@@ -1,5 +1,6 @@
 # fstatSync
 
+<a id="fstatsync"></a>
 ## fstatSync
 
 ```TypeScript

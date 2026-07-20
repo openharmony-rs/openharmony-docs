@@ -6,6 +6,7 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="terminateselfwithresult"></a>
 ## terminateSelfWithResult
 
 ```TypeScript
@@ -27,7 +28,7 @@ function terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 表示停止Ability之后返回的结果。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当停止当前Ability成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止当前Ability成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -69,6 +70,7 @@ featureAbility.terminateSelfWithResult(
 ```
 
 
+<a id="terminateselfwithresult-1"></a>
 ## terminateSelfWithResult
 
 ```TypeScript
@@ -95,7 +97,7 @@ function terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 

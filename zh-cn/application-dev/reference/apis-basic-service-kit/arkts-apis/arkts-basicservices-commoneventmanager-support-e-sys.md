@@ -592,7 +592,7 @@ COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED = 'usual.event.DOMAIN_ACCOUNT_STATUS_
 
 域账号认证、删除、令牌更新、令牌失效将会触发事件通知服务发布该系统公共事件，事件携带域账号名、域名、域账号状态等信息。
 
-与这个公共事件相关的接口：removeOsAccount、DomainAccountManager.auth、updateAccountToken, 这些为系统API，具体参看[@ohos.account.osAccount](../../../../reference/js-apis-osAccount.md)。
+与这个公共事件相关的接口：removeOsAccount、DomainAccountManager.auth、updateAccountToken, 这些为系统API，具体参看[@ohos.account.osAccount](docroot://reference/js-apis-osAccount.md)。
 
 要订阅此事件，您的应用必须具备ohos.permission.GET_LOCAL_ACCOUNTS权限（该权限仅系统应用可申请）
 
@@ -780,7 +780,7 @@ COMMON_EVENT_SHORTCUT_CHANGED = 'usual.event.SHORTCUT_CHANGED'
 
 表示应用快捷方式发生变化的公共事件。
 
-在应用快捷方式的更改设置完成时（例如调用shortcutManager模块的[setShortcutVisibleForSelf](../../../../apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself)成功时），会发送此公共事件。
+在应用快捷方式的更改设置完成时（例如调用shortcutManager模块的[setShortcutVisibleForSelf](docroot://apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself)成功时），会发送此公共事件。
 
 要订阅此事件，您的应用必须具备ohos.permission.MANAGE_SHORTCUTS权限
 

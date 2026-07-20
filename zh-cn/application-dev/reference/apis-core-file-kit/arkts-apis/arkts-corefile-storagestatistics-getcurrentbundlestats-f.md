@@ -6,6 +6,7 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getcurrentbundlestats"></a>
 ## getCurrentBundleStats
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getCurrentBundleStats(callback: AsyncCallback<BundleStats>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<BundleStats> | 是 | 获取指定卷上的应用存储空间大小之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleStats&gt; | 是 | 获取指定卷上的应用存储空间大小之后的回调。 |
 
 **错误码：**
 
@@ -50,6 +51,7 @@ storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: stor
 ```
 
 
+<a id="getcurrentbundlestats-1"></a>
 ## getCurrentBundleStats
 
 ```TypeScript
@@ -68,7 +70,7 @@ function getCurrentBundleStats(): Promise<BundleStats>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BundleStats> | Promise对象，返回指定卷上的应用存储空间大小（单位为Byte）。 |
+| Promise&lt;BundleStats&gt; | Promise对象，返回指定卷上的应用存储空间大小（单位为Byte）。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="subscribereminderstate"></a>
 ## subscribeReminderState
 
 ```TypeScript
@@ -28,13 +29,13 @@ function subscribeReminderState(callback: Callback<Array<ReminderState>>): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<ReminderState>> | 是 | 回调函数，返回代理提醒状态信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;ReminderState&gt;&gt; | 是 | 回调函数，返回代理提醒状态信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

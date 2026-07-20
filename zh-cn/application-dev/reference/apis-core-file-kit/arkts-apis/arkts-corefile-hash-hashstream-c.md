@@ -16,6 +16,7 @@ HashStream 类是用于创建数据的哈希摘要的实用工具。由 [createH
 import { hash } from '@kit.CoreFileKit';
 ```
 
+<a id="digest"></a>
 ## digest
 
 ```TypeScript
@@ -56,6 +57,7 @@ console.info(`Succeeded in calculating file hash. hashResult: ${hashResult}`);
 
 ```
 
+<a id="update"></a>
 ## update
 
 ```TypeScript
@@ -74,7 +76,7 @@ update(data: ArrayBuffer): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | updated data. |
+| data | ArrayBuffer | 是 | updated data. |
 
 **错误码：**
 

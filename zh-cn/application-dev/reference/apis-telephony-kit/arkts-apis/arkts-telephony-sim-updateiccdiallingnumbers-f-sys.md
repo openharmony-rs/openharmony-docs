@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="updateiccdiallingnumbers"></a>
 ## updateIccDiallingNumbers
 
 ```TypeScript
@@ -31,7 +32,7 @@ Update dialing number information on SIM card.
 | slotId | number | 是 | Indicates the card slot index number,ranging from 0 to the maximum card slot index number supported by the device. |
 | type | [ContactType](arkts-telephony-sim-contacttype-e-sys.md) | 是 | Indicates contact type. |
 | diallingNumbers | [DiallingNumbersInfo](arkts-telephony-sim-diallingnumbersinfo-i-sys.md) | 是 | Indicates dialing number information. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | The callback of updateIccDiallingNumbers. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | The callback of updateIccDiallingNumbers. |
 
 **错误码：**
 
@@ -66,6 +67,7 @@ sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbers
 ```
 
 
+<a id="updateiccdiallingnumbers-1"></a>
 ## updateIccDiallingNumbers
 
 ```TypeScript
@@ -96,7 +98,7 @@ Update dialing number information on SIM card.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The promise returned by the updateIccDiallingNumbers. |
+| Promise&lt;void&gt; | The promise returned by the updateIccDiallingNumbers. |
 
 **错误码：**
 

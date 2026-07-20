@@ -14,6 +14,7 @@
 import { distributedDataObject } from '@kit.ArkData';
 ```
 
+<a id="bindassetstore"></a>
 ## bindAssetStore
 
 ```TypeScript
@@ -36,7 +37,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback<voi
 | --- | --- | --- | --- |
 | assetKey | string | 是 | 待绑定的融合资产在分布式对象中的键值。 |
 | bindInfo | [BindInfo](arkts-arkdata-distributeddataobject-bindinfo-i.md) | 是 | 待绑定的融合资产在数据库中的信息，包含库名、表名、主键、列名及在数据库中的资产名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 绑定数据库的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 绑定数据库的回调。 |
 
 **错误码：**
 
@@ -101,6 +102,7 @@ class EntryAbility extends UIAbility {
 
 ```
 
+<a id="bindassetstore-1"></a>
 ## bindAssetStore
 
 ```TypeScript
@@ -128,7 +130,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -192,6 +194,7 @@ class EntryAbility extends UIAbility {
 
 ```
 
+<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -211,7 +214,7 @@ off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
-| callback | (sessionId: string, fields: Array<string>) => void | 否 | 需要删除的数据变更回调，若不设置则删除该对象所有的数据变更回调。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
+| callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | 否 | 需要删除的数据变更回调，若不设置则删除该对象所有的数据变更回调。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
 
 **错误码：**
 
@@ -236,6 +239,7 @@ g_object.off('change');
 
 ```
 
+<a id="off-1"></a>
 ## off('status')
 
 ```TypeScript
@@ -264,7 +268,7 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId；<br>networkId：标识对象设备；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) =&gt; void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId；<br>networkId：标识对象设备；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 **错误码：**
 
@@ -284,6 +288,7 @@ g_object.off('status');
 
 ```
 
+<a id="off-2"></a>
 ## off('change')
 
 ```TypeScript
@@ -341,6 +346,7 @@ try {
 
 ```
 
+<a id="off-3"></a>
 ## off('status')
 
 ```TypeScript
@@ -387,6 +393,7 @@ try {
 
 ```
 
+<a id="off-4"></a>
 ## off('progressChanged')
 
 ```TypeScript
@@ -435,6 +442,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -454,7 +462,7 @@ on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
-| callback | (sessionId: string, fields: Array<string>) => void | 是 | 变更回调对象实例。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
+| callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | 是 | 变更回调对象实例。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
 
 **错误码：**
 
@@ -476,6 +484,7 @@ g_object.on('change', (sessionId: string, fields: Array<string>) => {
 
 ```
 
+<a id="on-1"></a>
 ## on('status')
 
 ```TypeScript
@@ -504,7 +513,7 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId；<br>networkId：标识对象设备；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) =&gt; void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId；<br>networkId：标识对象设备；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 **错误码：**
 
@@ -521,6 +530,7 @@ g_object.on('status', (sessionId: string, networkId: string, status: 'online' | 
 
 ```
 
+<a id="on-2"></a>
 ## on('change')
 
 ```TypeScript
@@ -561,6 +571,7 @@ try {
 
 ```
 
+<a id="on-3"></a>
 ## on('status')
 
 ```TypeScript
@@ -596,6 +607,7 @@ try {
 
 ```
 
+<a id="on-4"></a>
 ## on('progressChanged')
 
 ```TypeScript
@@ -632,6 +644,7 @@ try {
 
 ```
 
+<a id="revokesave"></a>
 ## revokeSave
 
 ```TypeScript
@@ -654,7 +667,7 @@ revokeSave(callback: AsyncCallback<RevokeSaveSuccessResponse>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RevokeSaveSuccessResponse> | 是 | 回调函数。返回RevokeSaveSuccessResponse，包含sessionId。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RevokeSaveSuccessResponse&gt; | 是 | 回调函数。返回RevokeSaveSuccessResponse，包含sessionId。 |
 
 **错误码：**
 
@@ -689,6 +702,7 @@ g_object.revokeSave((err: BusinessError, result: distributedDataObject.RevokeSav
 
 ```
 
+<a id="revokesave-1"></a>
 ## revokeSave
 
 ```TypeScript
@@ -711,7 +725,7 @@ revokeSave(): Promise<RevokeSaveSuccessResponse>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RevokeSaveSuccessResponse> | Promise对象。返回RevokeSaveSuccessResponse，包含sessionId。 |
+| Promise&lt;RevokeSaveSuccessResponse&gt; | Promise对象。返回RevokeSaveSuccessResponse，包含sessionId。 |
 
 **错误码：**
 
@@ -742,6 +756,7 @@ g_object.revokeSave().then((result: distributedDataObject.RevokeSaveSuccessRespo
 
 ```
 
+<a id="save"></a>
 ## save
 
 ```TypeScript
@@ -769,7 +784,7 @@ save(deviceId: string, callback: AsyncCallback<SaveSuccessResponse>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 存储数据的设备号，标识需要保存对象的设备。"local"表示本地设备，否则表示其他设备的设备号。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<SaveSuccessResponse> | 是 | 回调函数。返回SaveSuccessResponse，包含sessionId、version、deviceId等信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;SaveSuccessResponse&gt; | 是 | 回调函数。返回SaveSuccessResponse，包含sessionId、version、deviceId等信息。 |
 
 **错误码：**
 
@@ -795,6 +810,7 @@ g_object.save('local', (err: BusinessError, result:distributedDataObject.SaveSuc
 
 ```
 
+<a id="save-1"></a>
 ## save
 
 ```TypeScript
@@ -827,7 +843,7 @@ save(deviceId: string): Promise<SaveSuccessResponse>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SaveSuccessResponse> | Promise对象。返回SaveSuccessResponse，包含sessionId、version、deviceId等信息。 |
+| Promise&lt;SaveSuccessResponse&gt; | Promise对象。返回SaveSuccessResponse，包含sessionId、version、deviceId等信息。 |
 
 **错误码：**
 
@@ -851,13 +867,14 @@ g_object.save('local').then((callbackInfo: distributedDataObject.SaveSuccessResp
 
 ```
 
+<a id="setasset"></a>
 ## setAsset
 
 ```TypeScript
 setAsset(assetKey: string, uri: string): Promise<void>
 ```
 
-设置分布式对象中的单个资产的属性信息，该接口必须在[setSessionId](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid-3)接口调用前使用。使用Promise异步回调。
+设置分布式对象中的单个资产的属性信息，该接口必须在[setSessionId](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid-1)接口调用前使用。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -876,7 +893,7 @@ setAsset(assetKey: string, uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -930,13 +947,14 @@ class EntryAbility extends UIAbility {
 
 ```
 
+<a id="setassets"></a>
 ## setAssets
 
 ```TypeScript
 setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 ```
 
-设置分布式对象中的多个资产的属性信息，该接口必须在[setSessionId](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid-3)接口调用前使用。使用Promise异步回调。
+设置分布式对象中的多个资产的属性信息，该接口必须在[setSessionId](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid-1)接口调用前使用。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -949,13 +967,13 @@ setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | assetsKey | string | 是 | 分布式对象中资产数组类型数据对应的属性名。<br/>**使用约束：** <br/>（1）提供的assetsKey对应的文件已存在且类型必须为资产[Asset](arkts-arkdata-commontype-asset-i.md)，才可进行正确的设置资产。若assetsKey对应文件不存在或文件存在但类型不是资产类型，可能会出现资产设置错误。<br/>（2）在协同或接续场景下需要双端满足assetsKey对应的文件存在且为资产类型，才可将设置的资产数组同步到对端设备。 |
-| uris | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待设置的新资产数组的uri集合，表示资产数组内每个资产存放的分布式路径。数组中元素的数量为[1, 50]，元素uri必须为真实存在的资产对应的分布式路径。 |
+| uris | Array&lt;string&gt; | 是 | 待设置的新资产数组的uri集合，表示资产数组内每个资产存放的分布式路径。数组中元素的数量为[1, 50]，元素uri必须为真实存在的资产对应的分布式路径。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1009,6 +1027,7 @@ class EntryAbility extends UIAbility {
 
 ```
 
+<a id="setsessionid"></a>
 ## setSessionId
 
 ```TypeScript
@@ -1030,7 +1049,7 @@ setSessionId(sessionId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 分布式数据对象在可信组网中的标识ID，长度不大于128字节，且只能包含字母数字或下划线_。当传入""、null时表示退出分布式组网。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 加入session的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 加入session的异步回调。 |
 
 **错误码：**
 
@@ -1054,6 +1073,7 @@ g_object.setSessionId('', () => {
 
 ```
 
+<a id="setsessionid-1"></a>
 ## setSessionId
 
 ```TypeScript
@@ -1075,7 +1095,7 @@ setSessionId(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 退出所有已加入session的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 退出所有已加入session的异步回调。 |
 
 **错误码：**
 
@@ -1099,6 +1119,7 @@ g_object.setSessionId(() => {
 
 ```
 
+<a id="setsessionid-2"></a>
 ## setSessionId
 
 ```TypeScript
@@ -1125,7 +1146,7 @@ setSessionId(sessionId?: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

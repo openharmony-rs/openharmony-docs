@@ -14,6 +14,7 @@
 import { stream } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -37,6 +38,7 @@ let writableStream = new stream.Writable();
 
 ```
 
+<a id="cork"></a>
 ## cork
 
 ```TypeScript
@@ -78,6 +80,7 @@ console.info("Writable cork result", result); // Writable cork result true
 
 ```
 
+<a id="doinitialize"></a>
 ## doInitialize
 
 ```TypeScript
@@ -118,6 +121,7 @@ new MyWritable();
 
 ```
 
+<a id="dowrite"></a>
 ## doWrite
 
 ```TypeScript
@@ -161,6 +165,7 @@ writableStream.write("data", "utf8");
 
 ```
 
+<a id="dowritev"></a>
 ## doWritev
 
 ```TypeScript
@@ -208,6 +213,7 @@ writableStream.end();
 
 ```
 
+<a id="end"></a>
 ## end
 
 ```TypeScript
@@ -268,6 +274,7 @@ writableStream.end("finish", "utf8", () => {
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -289,7 +296,7 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 事件类型。支持以下事件： |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<emitter.EventData> | 否 | 回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;emitter.EventData&gt; | 否 | 回调函数。 |
 
 **示例：**
 
@@ -319,6 +326,7 @@ setTimeout(() => {
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -340,7 +348,7 @@ on(event: string, callback: Callback<emitter.EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 事件类型。支持以下事件： |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<emitter.EventData> | 是 | 用于返回事件数据的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;emitter.EventData&gt; | 是 | 用于返回事件数据的回调函数。 |
 
 **示例：**
 
@@ -365,6 +373,7 @@ writable.write("hello", "utf8", () => {
 
 ```
 
+<a id="setdefaultencoding"></a>
 ## setDefaultEncoding
 
 ```TypeScript
@@ -412,6 +421,7 @@ console.info("Writable is result", result); // Writable is result true
 
 ```
 
+<a id="uncork"></a>
 ## uncork
 
 ```TypeScript
@@ -459,6 +469,7 @@ writableStream.on("finish", () => {
 
 ```
 
+<a id="write"></a>
 ## write
 
 ```TypeScript

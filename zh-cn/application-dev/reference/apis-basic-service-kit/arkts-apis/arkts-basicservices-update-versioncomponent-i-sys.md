@@ -22,7 +22,7 @@ import { update } from '@kit.BasicServicesKit';
 componentId: string
 ```
 
-组件标识。
+组件标识，用于唯一标识升级包中的组件。从版本检查结果的versionComponents数组中获取，用于后续描述信息查询或组件信息展示等场景。
 
 **类型：** string
 
@@ -58,7 +58,7 @@ componentType: ComponentType
 descriptionInfo: DescriptionInfo
 ```
 
-版本描述文件信息。
+描述文件信息.
 
 **类型：** DescriptionInfo
 
@@ -94,7 +94,7 @@ displayVersion: string
 effectiveMode: EffectiveMode
 ```
 
-生效模式。
+生效模式，取值原则：COLD为冷升级，需重启设备生效；LIVE为热升级，无需重启即可生效；LIVE_AND_COLD为融合升级，结合两者特性。
 
 **类型：** EffectiveMode
 
@@ -130,7 +130,7 @@ innerVersion: string
 otaMode?: OtaMode
 ```
 
-升级模式。
+升级模式。当需要指定特定的升级模式时传入此参数，适用于存储空间受限、快速升级或A/B分区设备等特殊场景。取值原则：REGULAR_OTA为正常升级，适用于大多数常规升级场景；STREAM_OTA为流式升级，适用于存储空间受限或需要快速升级的场景；AB_REGULAR_OTA为AB正常升级，适用于A/B分区设备；AB_STREAM_OTA为AB流式升级，适用于A/B分区设备。不传入时默认为REGULAR_OTA，使用正常升级模式。
 
 **类型：** OtaMode
 
@@ -148,7 +148,7 @@ otaMode?: OtaMode
 size: number
 ```
 
-升级包大小，单位为B。
+升级包大小，单位为B，取值范围[0, +∞]。超出范围时抛出异常。
 
 **类型：** number
 
@@ -166,7 +166,7 @@ size: number
 upgradeAction: UpgradeAction
 ```
 
-升级方式。
+升级方式，取值原则：UPGRADE为差分包，适用于增量升级场景；RECOVERY为修复包，适用于系统故障修复场景。
 
 **类型：** UpgradeAction
 

@@ -18,13 +18,13 @@ ParseOptions中attributeWithTagCallbackFunction的回调方法，三个字符串
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tagName | string | 是 | 当前属性所属XML元素的标签名。 |
-| key | string | 是 | 当前属性所属XML元素的名称。 |
-| value | string | 是 | 当前属性所属XML元素的值。 |
+| tagName | string | 是 | 当前属性所属XML元素的标签名。  |
+| key | string | 是 | 当前属性所属XML元素的名称。  |
+| value | string | 是 | 当前属性所属XML元素的值。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否继续解析xml数据，true表示继续解析数据，false表示结束解析。 |
+| boolean | 是否继续解析xml数据，true表示继续解析数据，false表示结束解析。  |
 

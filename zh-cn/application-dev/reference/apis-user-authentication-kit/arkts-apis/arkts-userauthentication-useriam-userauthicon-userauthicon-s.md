@@ -10,6 +10,8 @@
 
 **起始版本：** 12
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-export default struct UserAuthIcon--><!--Device-unnamed-export default struct UserAuthIcon-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -88,7 +90,7 @@ onAuthResult: (result: userAuth.UserAuthResult) => void
 
 **注意：** 应用需申请`ohos.permission.ACCESS_BIOMETRIC`权限，否则应用将仅展示图标，无法正常拉起身份认证控件。
 
-**类型：** (result: userAuth.UserAuthResult) => void
+**类型：** (result: userAuth.UserAuthResult) =&gt; void
 
 **起始版本：** 12
 
@@ -106,7 +108,7 @@ onIconClick?: () => void
 
 图标点击回调。用户点击认证图标时触发此回调，可在回调中执行点击前的准备工作或记录用户行为日志。如果未设置此回调，点击图标后直接触发认证流程。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 12
 

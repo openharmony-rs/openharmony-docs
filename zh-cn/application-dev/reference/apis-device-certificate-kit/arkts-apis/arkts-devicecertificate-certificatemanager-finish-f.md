@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="finish"></a>
 ## finish
 
 ```TypeScript
@@ -26,8 +27,8 @@ function finish(handle: Uint8Array, callback: AsyncCallback<CMResult>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示操作句柄，需先调用init方法获得。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<CMResult> | 是 | 回调函数。当签名成功时，err为null，data为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的outData属性，表示签名数据；否则为错误对象。 |
+| handle | Uint8Array | 是 | 表示操作句柄，需先调用init方法获得。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CMResult&gt; | 是 | 回调函数。当签名成功时，err为null，data为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的outData属性，表示签名数据；否则为错误对象。 |
 
 **错误码：**
 
@@ -66,6 +67,7 @@ try {
 ```
 
 
+<a id="finish-1"></a>
 ## finish
 
 ```TypeScript
@@ -86,9 +88,9 @@ function finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示操作句柄，需先调用init方法获得。 |
-| signature | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示签名数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<CMResult> | 是 | 回调函数。当验签成功时，err为null；否则为错误对象。 |
+| handle | Uint8Array | 是 | 表示操作句柄，需先调用init方法获得。 |
+| signature | Uint8Array | 是 | 表示签名数据。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CMResult&gt; | 是 | 回调函数。当验签成功时，err为null；否则为错误对象。 |
 
 **错误码：**
 
@@ -125,6 +127,7 @@ try {
 ```
 
 
+<a id="finish-2"></a>
 ## finish
 
 ```TypeScript
@@ -145,14 +148,14 @@ function finish(handle: Uint8Array, signature?: Uint8Array): Promise<CMResult>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示操作句柄，需先调用init方法获得。<br>最大长度为8字节。 |
-| signature | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 否 | 表示用于验签操作的签名数据。签名操作时无需传入此参数。 |
+| handle | Uint8Array | 是 | 表示操作句柄，需先调用init方法获得。<br>最大长度为8字节。 |
+| signature | Uint8Array | 否 | 表示用于验签操作的签名数据。签名操作时无需传入此参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CMResult> | Promise对象。执行签名操作时，返回签名的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的outData属性；执行验签操作时，无返回值。 |
+| Promise&lt;CMResult&gt; | Promise对象。执行签名操作时，返回签名的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的outData属性；执行验签操作时，无返回值。 |
 
 **错误码：**
 

@@ -14,6 +14,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="genciphertextbyspec"></a>
 ## genCipherTextBySpec
 
 ```TypeScript
@@ -51,6 +52,7 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
+<a id="getciphertextspec"></a>
 ## getCipherTextSpec
 
 ```TypeScript

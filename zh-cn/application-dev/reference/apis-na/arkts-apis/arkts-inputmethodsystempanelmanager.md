@@ -17,12 +17,12 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [connectSystemChannel](arkts-na-inputmethodsystempanelmanager-connectsystemchannel-f-sys.md#connectsystemchannel-1) | 连接面板和输入法之间的系统通道。 |
-| [offSystemPanelStatusChange](arkts-na-inputmethodsystempanelmanager-offsystempanelstatuschange-f-sys.md#offsystempanelstatuschange-1) | 取消订阅系统面板状态改变事件。 |
-| [offSystemPrivateCommand](arkts-na-inputmethodsystempanelmanager-offsystemprivatecommand-f-sys.md#offsystemprivatecommand-1) | 取消订阅输入法应用发送私有数据命令的事件。 |
-| [onSystemPanelStatusChange](arkts-na-inputmethodsystempanelmanager-onsystempanelstatuschange-f-sys.md#onsystempanelstatuschange-1) | 订阅系统面板状态改变事件。 |
-| [onSystemPrivateCommand](arkts-na-inputmethodsystempanelmanager-onsystemprivatecommand-f-sys.md#onsystemprivatecommand-1) | 订阅输入法应用发送私有数据命令的事件。 |
-| [sendPrivateCommand](arkts-na-inputmethodsystempanelmanager-sendprivatecommand-f-sys.md#sendprivatecommand-1) | 发送私有命令。 |
+| [connectSystemChannel](arkts-na-inputmethodsystempanelmanager-connectsystemchannel-f-sys.md#connectsystemchannel) | 连接面板和输入法之间的系统通道。 |
+| [offSystemPanelStatusChange](arkts-na-inputmethodsystempanelmanager-offsystempanelstatuschange-f-sys.md#offsystempanelstatuschange) | 取消订阅系统面板状态改变事件。 |
+| [offSystemPrivateCommand](arkts-na-inputmethodsystempanelmanager-offsystemprivatecommand-f-sys.md#offsystemprivatecommand) | 取消订阅输入法应用发送私有数据命令的事件。 |
+| [onSystemPanelStatusChange](arkts-na-inputmethodsystempanelmanager-onsystempanelstatuschange-f-sys.md#onsystempanelstatuschange) | 订阅系统面板状态改变事件。 |
+| [onSystemPrivateCommand](arkts-na-inputmethodsystempanelmanager-onsystemprivatecommand-f-sys.md#onsystemprivatecommand) | 订阅输入法应用发送私有数据命令的事件。 |
+| [sendPrivateCommand](arkts-na-inputmethodsystempanelmanager-sendprivatecommand-f-sys.md#sendprivatecommand) | 发送私有命令。 |
 <!--DelEnd-->
 
 <!--Del-->

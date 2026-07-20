@@ -21,6 +21,7 @@ NotificationSubscriberExtensionAbility是通知订阅者扩展能力的基类，
 import { NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 ```
 
+<a id="oncancelmessages"></a>
 ## onCancelMessages
 
 ```TypeScript
@@ -41,7 +42,7 @@ onCancelMessages(hashCodes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 要取消的通知的哈希码列表。通过onReceiveMessage获取。 |
+| hashCodes | Array&lt;string&gt; | 是 | 要取消的通知的哈希码列表。通过onReceiveMessage获取。 |
 
 **示例：**
 
@@ -56,6 +57,7 @@ export default class NotificationSubscriberExtAbility extends NotificationSubscr
 
 ```
 
+<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript
@@ -85,6 +87,7 @@ export default class NotificationSubscriberExtAbility extends NotificationSubscr
 
 ```
 
+<a id="onreceivemessage"></a>
 ## onReceiveMessage
 
 ```TypeScript

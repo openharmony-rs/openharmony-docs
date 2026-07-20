@@ -6,6 +6,7 @@
 import { curves } from '@kit.ArkUI';
 ```
 
+<a id="stepscurve"></a>
 ## stepsCurve
 
 ```TypeScript
@@ -33,7 +34,7 @@ function stepsCurve(count: number, end: boolean): ICurve
 
 | 类型 | 说明 |
 | --- | --- |
-| [ICurve](../arkts-components/arkts-arkui-common-icurve-i.md) | 曲线的插值对象。 |
+| [ICurve](../arkts-components/arkts-arkui-icurve-i.md) | 曲线的插值对象。 |
 
 **示例：**
 

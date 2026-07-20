@@ -1,5 +1,6 @@
 # chown
 
+<a id="chown"></a>
 ## chown
 
 ```TypeScript
@@ -28,9 +29,10 @@ declare function chown(path: string, uid: number, gid: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
+<a id="chown-1"></a>
 ## chown
 
 ```TypeScript
@@ -54,5 +56,5 @@ declare function chown(path: string, uid: number, gid: number, callback: AsyncCa
 | path | string | 是 | 待改变文件的应用沙箱路径。 |
 | uid | number | 是 | 新的UID。 |
 | gid | number | 是 | 新的GID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步改变文件所有者之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
 

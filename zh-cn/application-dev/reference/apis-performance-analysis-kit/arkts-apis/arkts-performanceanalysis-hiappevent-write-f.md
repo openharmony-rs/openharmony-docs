@@ -6,6 +6,7 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -32,7 +33,7 @@ function write(info: AppEventInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ hiAppEvent.write({
 ```
 
 
+<a id="write-1"></a>
 ## write
 
 ```TypeScript
@@ -94,7 +96,7 @@ function write(info: AppEventInfo, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | info | [AppEventInfo](arkts-performanceanalysis-hiappevent-appeventinfo-i.md) | 是 | 应用事件对象。其内部定义的事件名称建议避免与[Event](arkts-performanceanalysis-hiappevent-event-n.md#event)中定义的系统事件名称常量产生冲突。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 打点回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 打点回调函数。 |
 
 **错误码：**
 

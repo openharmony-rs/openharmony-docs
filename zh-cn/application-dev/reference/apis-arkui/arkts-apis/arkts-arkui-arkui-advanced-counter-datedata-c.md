@@ -14,6 +14,7 @@ DateData定义了日期通用属性和方法，包括年、月、日。
 import { CounterType, DateData, CounterComponent, CounterOptions } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -40,6 +41,7 @@ DateData的构造函数用于初始化日期对象。
 | month | number | 是 | 设置日期内联型初始月份。 |
 | day | number | 是 | 设置日期内联型初始日。 |
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript

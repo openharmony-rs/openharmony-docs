@@ -28,7 +28,7 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | MenuItemGroupOptions | 否 | 包含设置MenuItemGroup的标题和尾部显示信息。<br/> 未设置时，不显示标题和尾部信息。 |
+| value | [MenuItemGroupOptions](arkts-arkui-menuitemgroupoptions-i.md) | 否 | 包含设置MenuItemGroup的标题和尾部显示信息。<br/> 未设置时，不显示标题和尾部信息。  |
 
 ## 汇总
 

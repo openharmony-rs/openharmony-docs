@@ -20,13 +20,13 @@ import { hichecker } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule-1) | ����һ�����������ϵͳ��ϵͳ�������ӵĹ�����м�������������Ӧ���򴥷�ʱ����hilog��grep HiChecker�鿴������Ϣ�� |
-| [addRule](arkts-performanceanalysis-hichecker-addrule-f.md#addrule-1) | &gt; **˵����** &gt; &gt; ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule-1)���������һ�����������ϵͳ��ϵͳ�������ӵĹ�����м������� |
-| [contains](arkts-performanceanalysis-hichecker-contains-f.md#contains-1) | &gt; **˵����** &gt; &gt; ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule-1)�������ǰ�����ӵĹ������Ƿ������ĳһ���ض��Ĺ����������Ĺ��򼶱�Ϊ�̼߳�������ڵ�ǰ�߳��н��в�ѯ�� |
-| [containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule-1) | ��ǰ�����ӵĹ������Ƿ������ĳһ���ض��Ĺ����������Ĺ��򼶱�Ϊ�̼߳�������ڵ�ǰ�߳��н��в�ѯ�� |
-| [getRule](arkts-performanceanalysis-hichecker-getrule-f.md#getrule-1) | ��ȡ��ǰ�̹߳��򡢽��̹��򡢸澯����ĺϼ��� |
-| [removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule-1) | ɾ��һ�����������ɾ���Ĺ��������������Ч�� |
-| [removeRule](arkts-performanceanalysis-hichecker-removerule-f.md#removerule-1) | &gt; **˵����** &gt; &gt; ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule-1)�����ɾ��һ�����������ɾ���Ĺ��������������Ч�� |
+| [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule) | ����һ�����������ϵͳ��ϵͳ�������ӵĹ�����м�������������Ӧ���򴥷�ʱ����hilog��grep HiChecker�鿴������Ϣ�� |
+| [addRule](arkts-performanceanalysis-hichecker-addrule-f.md#addrule) | > **˵����**  >  > ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule-1)�����  ����һ�����������ϵͳ��ϵͳ�������ӵĹ�����м������� |
+| [contains](arkts-performanceanalysis-hichecker-contains-f.md#contains) | > **˵����**  >  > ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule-1)�����  ��ǰ�����ӵĹ������Ƿ������ĳһ���ض��Ĺ����������Ĺ��򼶱�Ϊ�̼߳�������ڵ�ǰ�߳��н��в�ѯ�� |
+| [containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule) | ��ǰ�����ӵĹ������Ƿ������ĳһ���ض��Ĺ����������Ĺ��򼶱�Ϊ�̼߳�������ڵ�ǰ�߳��н��в�ѯ�� |
+| [getRule](arkts-performanceanalysis-hichecker-getrule-f.md#getrule) | ��ȡ��ǰ�̹߳��򡢽��̹��򡢸澯����ĺϼ��� |
+| [removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule) | ɾ��һ�����������ɾ���Ĺ��������������Ч�� |
+| [removeRule](arkts-performanceanalysis-hichecker-removerule-f.md#removerule) | > **˵����**  >  > ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule-1)�����  ɾ��һ�����������ɾ���Ĺ��������������Ч�� |
 
 ### 常量
 

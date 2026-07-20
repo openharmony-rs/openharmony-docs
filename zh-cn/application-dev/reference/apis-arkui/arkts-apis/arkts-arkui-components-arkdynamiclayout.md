@@ -12,7 +12,7 @@ import { DynamicLayoutAttribute, DynamicLayout } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [DynamicLayoutAttribute](arkts-arkui-arkui-components-arkdynamiclayout-dynamiclayoutattribute-c.md) | 支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。 |
+| [DynamicLayoutAttribute](arkts-arkui-arkui-components-arkdynamiclayout-dynamiclayoutattribute-c.md) | 支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。  支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。 |
 
 ### 接口
 

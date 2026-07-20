@@ -24,7 +24,7 @@ data: string | ArrayBuffer
 
 指定发布的数据。如果发布数据大小超过20KB，建议使用ArrayBuffer。
 
-**类型：** string | ArrayBuffer
+**类型：** string \| ArrayBuffer
 
 **起始版本：** 10
 

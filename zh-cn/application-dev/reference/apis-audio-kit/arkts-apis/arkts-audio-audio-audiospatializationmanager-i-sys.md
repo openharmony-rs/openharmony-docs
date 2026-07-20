@@ -20,6 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="downloadpersonalizedhrtf"></a>
 ## downloadPersonalizedHRTF
 
 ```TypeScript
@@ -50,7 +51,7 @@ downloadPersonalizedHRTF(hrtfDescriptor: AudioHRTFAnonymousDescriptor): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 201 - 权限被拒绝。 |
+| Promise&lt;void&gt; | 201 - 权限被拒绝。 |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ downloadPersonalizedHRTF(hrtfDescriptor: AudioHRTFAnonymousDescriptor): Promise<
 | [6800105](../errorcode-audio.md#6800105-处理超时) | Time out when saving HRTF on disk. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System internal error, fail to save HRTF on disk, like service died. |
 
+<a id="getcurrentspatialaudiosourcetype"></a>
 ## getCurrentSpatialAudioSourceType
 
 ```TypeScript
@@ -93,6 +95,7 @@ getCurrentSpatialAudioSourceType(): SpatialAudioSourceType
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 
+<a id="getspatializationscenetype"></a>
 ## getSpatializationSceneType
 
 ```TypeScript
@@ -137,6 +140,7 @@ try {
 
 ```
 
+<a id="isadaptivespatialrenderingenabled"></a>
 ## isAdaptiveSpatialRenderingEnabled
 
 ```TypeScript
@@ -172,6 +176,7 @@ Checks whether the adaptive spatial rendering is enabled by the specified device
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="isheadtrackingenabled"></a>
 ## isHeadTrackingEnabled
 
 ```TypeScript
@@ -220,6 +225,7 @@ try {
 
 ```
 
+<a id="isheadtrackingenabled-1"></a>
 ## isHeadTrackingEnabled
 
 ```TypeScript
@@ -287,6 +293,7 @@ try {
 
 ```
 
+<a id="isheadtrackingsupported"></a>
 ## isHeadTrackingSupported
 
 ```TypeScript
@@ -331,6 +338,7 @@ try {
 
 ```
 
+<a id="isheadtrackingsupportedfordevice"></a>
 ## isHeadTrackingSupportedForDevice
 
 ```TypeScript
@@ -398,6 +406,7 @@ try {
 
 ```
 
+<a id="ispersonalizedspatializationenabled"></a>
 ## isPersonalizedSpatializationEnabled
 
 ```TypeScript
@@ -435,6 +444,7 @@ isPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor):
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="ispersonalizedspatializationsupported"></a>
 ## isPersonalizedSpatializationSupported
 
 ```TypeScript
@@ -465,6 +475,7 @@ isPersonalizedSpatializationSupported(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
+<a id="isspatializationenabled"></a>
 ## isSpatializationEnabled
 
 ```TypeScript
@@ -513,6 +524,7 @@ try {
 
 ```
 
+<a id="isspatializationenabled-1"></a>
 ## isSpatializationEnabled
 
 ```TypeScript
@@ -580,6 +592,7 @@ try {
 
 ```
 
+<a id="isspatializationsupported"></a>
 ## isSpatializationSupported
 
 ```TypeScript
@@ -623,6 +636,7 @@ try {
 
 ```
 
+<a id="isspatializationsupportedfordevice"></a>
 ## isSpatializationSupportedForDevice
 
 ```TypeScript
@@ -690,6 +704,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off('spatializationEnabledChange')
 
 ```TypeScript
@@ -715,7 +730,7 @@ Unsubscribes to the spatialization enable state change events.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'spatializationEnabledChange' | 是 | Type of the event to listen for. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 否 | Callback used to get the spatialization enable state. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | Callback used to get the spatialization enable state. |
 
 **错误码：**
 
@@ -742,6 +757,7 @@ audioSpatializationManager.off('spatializationEnabledChange', spatializationEnab
 
 ```
 
+<a id="off-1"></a>
 ## off('spatializationEnabledChangeForAnyDevice')
 
 ```TypeScript
@@ -763,7 +779,7 @@ Unsubscribes to the spatialization enable state change events by the specified d
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'spatializationEnabledChangeForAnyDevice' | 是 | Type of the event to listen for. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioSpatialEnabledStateForDevice> | 否 | Callback used to get the spatialization enable state by the specified device. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSpatialEnabledStateForDevice&gt; | 否 | Callback used to get the spatialization enable state by the specified device. |
 
 **错误码：**
 
@@ -793,6 +809,7 @@ audioSpatializationManager.off('spatializationEnabledChangeForAnyDevice', spatia
 
 ```
 
+<a id="off-2"></a>
 ## off('headTrackingEnabledChange')
 
 ```TypeScript
@@ -818,7 +835,7 @@ Unsubscribes to the head tracking enable state change events.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'headTrackingEnabledChange' | 是 | Type of the event to listen for. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 否 | Callback used to get the head tracking enable state. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | Callback used to get the head tracking enable state. |
 
 **错误码：**
 
@@ -847,6 +864,7 @@ audioSpatializationManager.off('headTrackingEnabledChange', headTrackingEnabledC
 
 ```
 
+<a id="off-3"></a>
 ## off('headTrackingEnabledChangeForAnyDevice')
 
 ```TypeScript
@@ -868,7 +886,7 @@ Unsubscribes to the head tracking enable state change events by the specified de
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'headTrackingEnabledChangeForAnyDevice' | 是 | Type of the event to listen for. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioSpatialEnabledStateForDevice> | 否 | Callback used to get the head tracking enable state by the specified device. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSpatialEnabledStateForDevice&gt; | 否 | Callback used to get the head tracking enable state by the specified device. |
 
 **错误码：**
 
@@ -898,6 +916,7 @@ audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice', headTrac
 
 ```
 
+<a id="offadaptivespatialrenderingenabledchangeforanydevice"></a>
 ## offAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
 ```TypeScript
@@ -918,7 +937,7 @@ Unsubscribes to the adaptive spatial rendering enable state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioSpatialEnabledStateForDevice> | 否 | Callback used to get the adaptive spatial rendering enable state by the specified device. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSpatialEnabledStateForDevice&gt; | 否 | Callback used to get the adaptive spatial rendering enable state by the specified device. |
 
 **错误码：**
 
@@ -927,6 +946,7 @@ Unsubscribes to the adaptive spatial rendering enable state change events.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="offpersonalizedspatializationenabledchangeforanydevice"></a>
 ## offPersonalizedSpatializationEnabledChangeForAnyDevice
 
 ```TypeScript
@@ -952,7 +972,7 @@ offPersonalizedSpatializationEnabledChangeForAnyDevice(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioPersonalizedSpatialEnabledChangeForAnyDevice> | 否 | 回调用于通过所述指定设备获取所述个性化空间化使能状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioPersonalizedSpatialEnabledChangeForAnyDevice&gt; | 否 | 回调用于通过所述指定设备获取所述个性化空间化使能状态。 |
 
 **错误码：**
 
@@ -960,6 +980,7 @@ offPersonalizedSpatializationEnabledChangeForAnyDevice(
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
+<a id="offspatialaudiosourcetypechange"></a>
 ## offSpatialAudioSourceTypeChange
 
 ```TypeScript
@@ -982,7 +1003,7 @@ offSpatialAudioSourceTypeChange(callback?: Callback<SpatialAudioSourceType>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SpatialAudioSourceType> | 否 | 回调用于接收当前空间音频源类型变化 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SpatialAudioSourceType&gt; | 否 | 回调用于接收当前空间音频源类型变化 |
 
 **错误码：**
 
@@ -991,6 +1012,7 @@ offSpatialAudioSourceTypeChange(callback?: Callback<SpatialAudioSourceType>): vo
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="on"></a>
 ## on('spatializationEnabledChange')
 
 ```TypeScript
@@ -1016,7 +1038,7 @@ Subscribes to the spatialization enable state change events. When the spatializa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'spatializationEnabledChange' | 是 | Type of the event to listen for. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 是 | Callback used to get the spatialization enable state. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 是 | Callback used to get the spatialization enable state. |
 
 **错误码：**
 
@@ -1037,6 +1059,7 @@ audioSpatializationManager.on('spatializationEnabledChange', (isSpatializationEn
 
 ```
 
+<a id="on-1"></a>
 ## on('spatializationEnabledChangeForAnyDevice')
 
 ```TypeScript
@@ -1058,7 +1081,7 @@ Subscribes to the spatialization enable state change events by the specified dev
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'spatializationEnabledChangeForAnyDevice' | 是 | Type of the event to listen for. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioSpatialEnabledStateForDevice> | 是 | Callback used to get the spatialization enable state by the specified device. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSpatialEnabledStateForDevice&gt; | 是 | Callback used to get the spatialization enable state by the specified device. |
 
 **错误码：**
 
@@ -1080,6 +1103,7 @@ audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', (audioS
 
 ```
 
+<a id="on-2"></a>
 ## on('headTrackingEnabledChange')
 
 ```TypeScript
@@ -1105,7 +1129,7 @@ Subscribes to the head tracking enable state change events. When the head tracki
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'headTrackingEnabledChange' | 是 | Type of the event to listen for. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 是 | Callback used to get the head tracking enable state. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 是 | Callback used to get the head tracking enable state. |
 
 **错误码：**
 
@@ -1126,6 +1150,7 @@ audioSpatializationManager.on('headTrackingEnabledChange', (isHeadTrackingEnable
 
 ```
 
+<a id="on-3"></a>
 ## on('headTrackingEnabledChangeForAnyDevice')
 
 ```TypeScript
@@ -1147,7 +1172,7 @@ Subscribes to the head tracking enable state change events by the specified devi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'headTrackingEnabledChangeForAnyDevice' | 是 | Type of the event to listen for. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioSpatialEnabledStateForDevice> | 是 | Callback used to get the head tracking enable state by the specified device. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSpatialEnabledStateForDevice&gt; | 是 | Callback used to get the head tracking enable state by the specified device. |
 
 **错误码：**
 
@@ -1169,6 +1194,7 @@ audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', (audioSpa
 
 ```
 
+<a id="onadaptivespatialrenderingenabledchangeforanydevice"></a>
 ## onAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
 ```TypeScript
@@ -1189,7 +1215,7 @@ Subscribes to the adaptive spatial rendering enable state change events.When the
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioSpatialEnabledStateForDevice> | 是 | Callback used to get the adaptive spatial rendering enable state by the specified device. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSpatialEnabledStateForDevice&gt; | 是 | Callback used to get the adaptive spatial rendering enable state by the specified device. |
 
 **错误码：**
 
@@ -1198,6 +1224,7 @@ Subscribes to the adaptive spatial rendering enable state change events.When the
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="onpersonalizedspatializationenabledchangeforanydevice"></a>
 ## onPersonalizedSpatializationEnabledChangeForAnyDevice
 
 ```TypeScript
@@ -1223,7 +1250,7 @@ onPersonalizedSpatializationEnabledChangeForAnyDevice(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioPersonalizedSpatialEnabledChangeForAnyDevice> | 是 | 回调用于通过所述指定设备获取所述个性化空间化使能状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioPersonalizedSpatialEnabledChangeForAnyDevice&gt; | 是 | 回调用于通过所述指定设备获取所述个性化空间化使能状态。 |
 
 **错误码：**
 
@@ -1231,6 +1258,7 @@ onPersonalizedSpatializationEnabledChangeForAnyDevice(
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
+<a id="onspatialaudiosourcetypechange"></a>
 ## onSpatialAudioSourceTypeChange
 
 ```TypeScript
@@ -1253,7 +1281,7 @@ onSpatialAudioSourceTypeChange(callback: Callback<SpatialAudioSourceType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SpatialAudioSourceType> | 是 | 回调用于接收所述当前空间音源类型。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SpatialAudioSourceType&gt; | 是 | 回调用于接收所述当前空间音源类型。 |
 
 **错误码：**
 
@@ -1262,6 +1290,7 @@ onSpatialAudioSourceTypeChange(callback: Callback<SpatialAudioSourceType>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="setadaptivespatialrenderingenabled"></a>
 ## setAdaptiveSpatialRenderingEnabled
 
 ```TypeScript
@@ -1291,7 +1320,7 @@ Sets the adaptive spatial rendering enabled or disabled by the specified device.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -1302,6 +1331,7 @@ Sets the adaptive spatial rendering enabled or disabled by the specified device.
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported on the device. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="setheadtrackingenabled"></a>
 ## setHeadTrackingEnabled
 
 ```TypeScript
@@ -1329,7 +1359,7 @@ Sets the head tracking enabled or disabled. This method uses an asynchronous cal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | Head tracking enable state. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **错误码：**
 
@@ -1358,6 +1388,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable, (err: BusinessError) =
 
 ```
 
+<a id="setheadtrackingenabled-1"></a>
 ## setHeadTrackingEnabled
 
 ```TypeScript
@@ -1390,7 +1421,7 @@ Sets the head tracking enabled or disabled. This method uses a promise to return
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -1416,6 +1447,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 
 ```
 
+<a id="setheadtrackingenabled-2"></a>
 ## setHeadTrackingEnabled
 
 ```TypeScript
@@ -1445,7 +1477,7 @@ Sets the head tracking enabled or disabled by the specified device.This method u
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -1486,6 +1518,7 @@ audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then
 
 ```
 
+<a id="setpersonalizedspatializationenabled"></a>
 ## setPersonalizedSpatializationEnabled
 
 ```TypeScript
@@ -1520,7 +1553,7 @@ setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise用于返回结果。 |
+| Promise&lt;void&gt; | Promise用于返回结果。 |
 
 **错误码：**
 
@@ -1530,6 +1563,7 @@ setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability is not supported in this device. |
 
+<a id="setspatializationenabled"></a>
 ## setSpatializationEnabled
 
 ```TypeScript
@@ -1557,7 +1591,7 @@ Sets the spatialization enabled or disabled. This method uses an asynchronous ca
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | Spatialization enable state. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **错误码：**
 
@@ -1586,6 +1620,7 @@ audioSpatializationManager.setSpatializationEnabled(enable, (err: BusinessError)
 
 ```
 
+<a id="setspatializationenabled-1"></a>
 ## setSpatializationEnabled
 
 ```TypeScript
@@ -1618,7 +1653,7 @@ Sets the spatialization enabled or disabled. This method uses a promise to retur
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -1644,6 +1679,7 @@ audioSpatializationManager.setSpatializationEnabled(enable).then(() => {
 
 ```
 
+<a id="setspatializationenabled-2"></a>
 ## setSpatializationEnabled
 
 ```TypeScript
@@ -1673,7 +1709,7 @@ Sets the spatialization enabled or disabled by the specified device.This method 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -1714,6 +1750,7 @@ audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).t
 
 ```
 
+<a id="setspatializationscenetype"></a>
 ## setSpatializationSceneType
 
 ```TypeScript
@@ -1763,6 +1800,7 @@ try {
 
 ```
 
+<a id="updatespatialdevicestate"></a>
 ## updateSpatialDeviceState
 
 ```TypeScript

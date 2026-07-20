@@ -6,13 +6,14 @@
 import { childProcessManager } from '@kit.AbilityKit';
 ```
 
+<a id="startchildprocess"></a>
 ## startChildProcess
 
 ```TypeScript
 function startChildProcess(srcEntry: string, startMode: StartMode): Promise<number>
 ```
 
-启动[ArkTS子进程](../../../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回16000061错误码。
+启动[ArkTS子进程](docroot://application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回16000061错误码。
 
 > **说明：**  
 >  
@@ -40,7 +41,7 @@ function startChildProcess(srcEntry: string, startMode: StartMode): Promise<numb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回子进程pid。 |
+| Promise&lt;number&gt; | Promise对象，返回子进程pid。 |
 
 **错误码：**
 
@@ -88,13 +89,14 @@ try {
 ```
 
 
+<a id="startchildprocess-1"></a>
 ## startChildProcess
 
 ```TypeScript
 function startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallback<number>): void
 ```
 
-启动[ArkTS子进程](../../../../application-models/ability-terminology.md#arkts子进程)。使用callback异步回调。该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回16000061错误码。
+启动[ArkTS子进程](docroot://application-models/ability-terminology.md#arkts子进程)。使用callback异步回调。该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回16000061错误码。
 
 > **说明：**  
 >  
@@ -117,7 +119,7 @@ function startChildProcess(srcEntry: string, startMode: StartMode, callback: Asy
 | --- | --- | --- | --- |
 | srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br/>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
 | startMode | [StartMode](arkts-ability-childprocessmanager-startmode-e.md) | 是 | 子进程启动模式。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当子进程启动成功，err为undefined，data为获取到的子进程pid；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当子进程启动成功，err为undefined，data为获取到的子进程pid；否则为错误对象。 |
 
 **错误码：**
 

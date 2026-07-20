@@ -17,7 +17,7 @@ inspector的性能分析（Profiler）工具。
 
 | 名称 | 说明 |
 | --- | --- |
-| [registerVsyncCallback](arkts-arkui-profiler-registervsynccallback-f-sys.md#registervsynccallback-1) | 为profiler注册vsync回调。 |
-| [unregisterVsyncCallback](arkts-arkui-profiler-unregistervsynccallback-f-sys.md#unregistervsynccallback-1) | 注销vsync回调。 |
+| [registerVsyncCallback](arkts-arkui-profiler-registervsynccallback-f-sys.md#registervsynccallback) | 为profiler注册vsync回调。 |
+| [unregisterVsyncCallback](arkts-arkui-profiler-unregistervsynccallback-f-sys.md#unregistervsynccallback) | 注销vsync回调。 |
 <!--DelEnd-->
 

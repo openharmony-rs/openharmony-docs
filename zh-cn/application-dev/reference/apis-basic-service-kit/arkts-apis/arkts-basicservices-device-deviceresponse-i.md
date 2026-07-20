@@ -190,7 +190,7 @@ screenShape: 'rect' | 'circle'
 
 - circle：圆形屏。
 
-**类型：** 'rect' | 'circle'
+**类型：** 'rect' \| 'circle'
 
 **起始版本：** 4
 

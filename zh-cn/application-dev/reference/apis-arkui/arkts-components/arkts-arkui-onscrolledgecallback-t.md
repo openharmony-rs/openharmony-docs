@@ -20,5 +20,5 @@ declare type OnScrollEdgeCallback = (side: Edge) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| side | Edge | 是 | 滚动到的边缘位置。 |
+| side | [Edge](../arkts-apis/arkts-arkui-edge-e.md) | 是 | 滚动到的边缘位置。  |
 

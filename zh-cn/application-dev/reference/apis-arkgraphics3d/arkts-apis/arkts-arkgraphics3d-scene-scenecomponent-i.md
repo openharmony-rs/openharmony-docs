@@ -33,8 +33,7 @@ readonly property: Record<string, string | number | Vec2 | Vec3 | Vec4 | SceneRe
 
 组件属性
 
-**类型：** Record<string, string | number | Vec2 | Vec3 | Vec4 | SceneResource | boolean | number[] |
-  string[] | SceneResource[] | Vec2[] | Vec3[] | Vec4[] | null | undefined>
+**类型：** Record&lt;string, string \| number \| Vec2 \| Vec3 \| Vec4 \| SceneResource \| boolean \| number[] \|   string[] \| SceneResource[] \| Vec2[] \| Vec3[] \| Vec4[] \| null \| undefined&gt;
 
 **起始版本：** 20
 

@@ -18,7 +18,7 @@ info: CliCmdInfo | Permissions
 
 操作详细信息。
 
-**类型：** CliCmdInfo | Permissions
+**类型：** CliCmdInfo \| Permissions
 
 **起始版本：** 26.0.0
 

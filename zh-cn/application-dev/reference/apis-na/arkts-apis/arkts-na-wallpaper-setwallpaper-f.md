@@ -1,5 +1,6 @@
 # setWallpaper
 
+<a id="setwallpaper"></a>
 ## setWallpaper
 
 ```TypeScript
@@ -36,7 +37,7 @@ function setWallpaper(
 | --- | --- | --- | --- |
 | source | string \| image.PixelMap | 是 |  |
 | wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **示例：**
 
@@ -77,6 +78,7 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 ```
 
 
+<a id="setwallpaper-1"></a>
 ## setWallpaper
 
 ```TypeScript
@@ -106,7 +108,7 @@ function setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperT
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | the promise returned by the function. |
+| Promise&lt;void&gt; | the promise returned by the function. |
 
 **示例：**
 

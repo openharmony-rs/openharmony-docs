@@ -16,6 +16,7 @@
 import { LazyColumnLayoutAttribute, LazyColumnLayout } from '@kit.ArkUI';
 ```
 
+<a id="alignitems"></a>
 ## alignItems
 
 ```TypeScript
@@ -38,7 +39,7 @@ alignItems(value: HorizontalAlign | undefined): LazyColumnLayoutAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | HorizontalAlign \| undefined | 是 | 行内容的水平对齐。<br>默认值为HorizontalAlign.Center。 |
+| value | [HorizontalAlign](arkts-arkui-horizontalalign-e.md) \| undefined | 是 | 行内容的水平对齐。<br>默认值为HorizontalAlign.Center。 |
 
 **返回值：**
 
@@ -46,6 +47,7 @@ alignItems(value: HorizontalAlign | undefined): LazyColumnLayoutAttribute
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
+<a id="footer"></a>
 ## footer
 
 ```TypeScript
@@ -68,7 +70,7 @@ footer(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | CustomBuilder \| undefined | 是 | footer生成器函数<br>传入undefined移除footer。 |
+| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| undefined | 是 | footer生成器函数<br>传入undefined移除footer。 |
 
 **返回值：**
 
@@ -76,6 +78,7 @@ footer(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
+<a id="header"></a>
 ## header
 
 ```TypeScript
@@ -98,7 +101,7 @@ header(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | CustomBuilder \| undefined | 是 | header生成器函数<br>传递undefined将移除header。 |
+| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| undefined | 是 | header生成器函数<br>传递undefined将移除header。 |
 
 **返回值：**
 
@@ -106,6 +109,7 @@ header(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
+<a id="onvisibleindexeschange"></a>
 ## onVisibleIndexesChange
 
 ```TypeScript
@@ -128,7 +132,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): La
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | OnVisibleIndexesChangeCallback \| undefined | 是 | 回调函数，当可见区域中子组件的索引发生变化时触发。<br>传递undefined将取消注册回调。 |
+| callback | [OnVisibleIndexesChangeCallback](../arkts-components/arkts-arkui-onvisibleindexeschangecallback-t.md) \| undefined | 是 | 回调函数，当可见区域中子组件的索引发生变化时触发。<br>传递undefined将取消注册回调。 |
 
 **返回值：**
 
@@ -136,6 +140,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): La
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
+<a id="space"></a>
 ## space
 
 ```TypeScript
@@ -158,7 +163,7 @@ space(space: LengthMetrics | undefined): LazyColumnLayoutAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| space | LengthMetrics \| undefined | 是 | 行之间的间距。<br>默认值为0。<br>范围：[0, +∞)。 |
+| space | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) \| undefined | 是 | 行之间的间距。<br>默认值为0。<br>范围：[0, +∞)。 |
 
 **返回值：**
 
@@ -166,6 +171,7 @@ space(space: LengthMetrics | undefined): LazyColumnLayoutAttribute
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
+<a id="sticky"></a>
 ## sticky
 
 ```TypeScript
@@ -188,7 +194,7 @@ sticky(sticky: StickyStyle | undefined): LazyColumnLayoutAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sticky | StickyStyle \| undefined | 是 | header和footer吸顶吸底样式。 |
+| sticky | [StickyStyle](../arkts-components/arkts-arkui-stickystyle-e.md) \| undefined | 是 | header和footer吸顶吸底样式。 |
 
 **返回值：**
 

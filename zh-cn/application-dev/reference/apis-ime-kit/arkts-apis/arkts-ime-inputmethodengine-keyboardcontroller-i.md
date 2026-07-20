@@ -1,6 +1,6 @@
 # KeyboardController
 
-下列API均需使用[on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#on-1)获取到KeyboardController实例后，通过实例调用。
+下列API均需使用[on('inputStart')](inputMethodEngine.InputMethodAbility.on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient: InputClient) => void))获取到KeyboardController实例后，通过实例调用。
 
 **起始版本：** 8
 
@@ -14,6 +14,7 @@
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
+<a id="exitcurrentinputtype"></a>
 ## exitCurrentInputType
 
 ```TypeScript
@@ -32,7 +33,7 @@ exitCurrentInputType(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当退出当前输入类型成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当退出当前输入类型成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -56,6 +57,7 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 
 ```
 
+<a id="exitcurrentinputtype-1"></a>
 ## exitCurrentInputType
 
 ```TypeScript
@@ -74,7 +76,7 @@ exitCurrentInputType(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -96,6 +98,7 @@ keyboardController.exitCurrentInputType().then(() => {
 
 ```
 
+<a id="hide"></a>
 ## hide
 
 ```TypeScript
@@ -114,7 +117,7 @@ hide(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -137,6 +140,7 @@ keyboardController.hide((err: BusinessError) => {
 
 ```
 
+<a id="hide-1"></a>
 ## hide
 
 ```TypeScript
@@ -155,7 +159,7 @@ hide(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -176,6 +180,7 @@ keyboardController.hide().then(() => {
 
 ```
 
+<a id="hidekeyboard"></a>
 ## hideKeyboard
 
 ```TypeScript
@@ -188,7 +193,7 @@ hideKeyboard(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** hide(callback:
+**替代接口：** [hide(callback:](arkts-ime-inputmethodengine-keyboardcontroller-i.md#hide-1)
 
 <!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void-End-->
 
@@ -198,7 +203,7 @@ hideKeyboard(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -215,6 +220,7 @@ keyboardController.hideKeyboard((err: BusinessError) => {
 
 ```
 
+<a id="hidekeyboard-1"></a>
 ## hideKeyboard
 
 ```TypeScript
@@ -227,7 +233,7 @@ hideKeyboard(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [hide()](arkts-ime-inputmethodengine-keyboardcontroller-i.md#hide-2)
+**替代接口：** [hide()](arkts-ime-inputmethodengine-keyboardcontroller-i.md#hide-1)
 
 <!--Device-KeyboardController-hideKeyboard(): Promise<void>--><!--Device-KeyboardController-hideKeyboard(): Promise<void>-End-->
 
@@ -237,7 +243,7 @@ hideKeyboard(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 

@@ -6,6 +6,7 @@
 import { distributedDataObject } from '@kit.ArkData';
 ```
 
+<a id="createdistributedobject"></a>
 ## createDistributedObject
 
 ```TypeScript

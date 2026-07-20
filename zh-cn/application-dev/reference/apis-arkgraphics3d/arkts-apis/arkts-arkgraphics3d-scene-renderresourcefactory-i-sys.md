@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+<a id="createscene"></a>
 ## createScene
 
 ```TypeScript
@@ -37,5 +38,5 @@ createScene(uri: ResourceStr, param: SceneLoadParams): Promise<Scene>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Scene> | 返回场景的Promise |
+| Promise&lt;Scene&gt; | 返回场景的Promise |
 

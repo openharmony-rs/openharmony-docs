@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getapplicationinfosync"></a>
 ## getApplicationInfoSync
 
 ```TypeScript
@@ -73,6 +74,7 @@ try {
 ```
 
 
+<a id="getapplicationinfosync-1"></a>
 ## getApplicationInfoSync
 
 ```TypeScript

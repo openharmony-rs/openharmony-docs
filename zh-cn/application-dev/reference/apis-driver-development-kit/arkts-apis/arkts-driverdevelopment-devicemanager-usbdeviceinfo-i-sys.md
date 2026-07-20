@@ -26,7 +26,7 @@ interfaceDescList: Array<Readonly<USBInterfaceDesc>>
 
 USB设备接口描述符列表。
 
-**类型：** Array<Readonly<USBInterfaceDesc>>
+**类型：** Array&lt;Readonly&lt;USBInterfaceDesc&gt;&gt;
 
 **起始版本：** 12
 

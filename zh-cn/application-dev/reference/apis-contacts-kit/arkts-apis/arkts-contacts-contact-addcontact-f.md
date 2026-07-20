@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="addcontact"></a>
 ## addContact
 
 ```TypeScript
@@ -18,7 +19,7 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 
 **废弃版本：** 10
 
-**替代接口：** addContact(context:
+**替代接口：** [addContact(context:](arkts-contacts-contact-addcontact-f.md#addcontact-1)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -31,7 +32,7 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -60,6 +61,7 @@ contact.addContact(context, {
 ```
 
 
+<a id="addcontact-1"></a>
 ## addContact
 
 ```TypeScript
@@ -84,7 +86,7 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
 | contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -122,6 +124,7 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 ```
 
 
+<a id="addcontact-2"></a>
 ## addContact
 
 ```TypeScript
@@ -134,7 +137,7 @@ function addContact(contact: Contact): Promise<number>
 
 **废弃版本：** 10
 
-**替代接口：** addContact(context:
+**替代接口：** [addContact(context:](arkts-contacts-contact-addcontact-f.md#addcontact-1)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -152,7 +155,7 @@ function addContact(contact: Contact): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回添加的联系人id。 |
+| Promise&lt;number&gt; | Promise对象，返回添加的联系人id。 |
 
 **示例：**
 
@@ -176,6 +179,7 @@ promise.then((data) => {
 ```
 
 
+<a id="addcontact-3"></a>
 ## addContact
 
 ```TypeScript
@@ -205,7 +209,7 @@ function addContact(context: Context, contact: Contact): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回添加的联系人id。 |
+| Promise&lt;number&gt; | Promise对象，返回添加的联系人id。 |
 
 **错误码：**
 

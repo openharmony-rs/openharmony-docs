@@ -6,6 +6,7 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="getdowngradedownloadtaskstate"></a>
 ## getDowngradeDownloadTaskState
 
 ```TypeScript
@@ -32,13 +33,13 @@ function getDowngradeDownloadTaskState(bundleNames: Array<string>): Promise<Arra
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要查询的应用包名数组，每个元素为应用的包名字符串，包名数组大小上限为20个。 |
+| bundleNames | Array&lt;string&gt; | 是 | 需要查询的应用包名数组，每个元素为应用的包名字符串，包名数组大小上限为20个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<DownloadProgress>> | - Promise对象，返回查询的全量下载任务的状态信息数组。 |
+| Promise&lt;Array&lt;DownloadProgress&gt;&gt; | - Promise对象，返回查询的全量下载任务的状态信息数组。 |
 
 **错误码：**
 

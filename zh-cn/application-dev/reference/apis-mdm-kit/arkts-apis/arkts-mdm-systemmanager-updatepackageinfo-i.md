@@ -58,7 +58,7 @@ packages: Array<Package>
 
 系统更新包详情。
 
-**类型：** Array<Package>
+**类型：** Array&lt;Package&gt;
 
 **起始版本：** 12
 

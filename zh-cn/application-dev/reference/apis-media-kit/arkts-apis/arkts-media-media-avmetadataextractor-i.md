@@ -1,8 +1,8 @@
 # AVMetadataExtractor
 
-元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-3)构建一个AVMetadataExtractor实例。
+元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-1)构建一个AVMetadataExtractor实例。
 
-获取音频或视频元数据、视频缩略图的demo可参考：[使用AVMetadataExtractor提取音视频元数据信息(ArkTS)](../../../../media/media/avmetadataextractor.md)。
+获取音频或视频元数据、视频缩略图的demo可参考：[使用AVMetadataExtractor提取音视频元数据信息(ArkTS)](docroot://media/media/avmetadataextractor.md)。
 
 > **说明：**  
 >  
@@ -20,6 +20,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="cancelallfetchframes"></a>
 ## cancelAllFetchFrames
 
 ```TypeScript
@@ -36,6 +37,7 @@ cancelAllFetchFrames(): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+<a id="fetchalbumcover"></a>
 ## fetchAlbumCover
 
 ```TypeScript
@@ -54,7 +56,7 @@ fetchAlbumCover(callback: AsyncCallback<image.PixelMap>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<image.PixelMap> | 是 | 回调函数。异步返回专辑封面。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 回调函数。异步返回专辑封面。 |
 
 **错误码：**
 
@@ -63,6 +65,7 @@ fetchAlbumCover(callback: AsyncCallback<image.PixelMap>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by callback. |
 
+<a id="fetchalbumcover-1"></a>
 ## fetchAlbumCover
 
 ```TypeScript
@@ -81,7 +84,7 @@ fetchAlbumCover(): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | Promise对象。异步返回专辑封面。 |
+| Promise&lt;image.PixelMap&gt; | Promise对象。异步返回专辑封面。 |
 
 **错误码：**
 
@@ -90,6 +93,7 @@ fetchAlbumCover(): Promise<image.PixelMap>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by promise. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by promise. |
 
+<a id="fetchframebytime"></a>
 ## fetchFrameByTime
 
 ```TypeScript
@@ -116,7 +120,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | Promise对象，返回视频缩略图对象。 |
+| Promise&lt;image.PixelMap&gt; | Promise对象，返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -127,6 +131,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted.<br>**适用版本：** 23+ |
 
+<a id="fetchframebytimewithtimeout"></a>
 ## fetchFrameByTimeWithTimeout
 
 ```TypeScript
@@ -159,7 +164,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap \| undefined> | Promise对象，返回视频缩略图对象。 |
+| Promise&lt;image.PixelMap \| undefined&gt; | Promise对象，返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -171,6 +176,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted. |
 
+<a id="fetchframesbytimes"></a>
 ## fetchFramesByTimes
 
 ```TypeScript
@@ -216,6 +222,7 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext not permitted. |
 
+<a id="fetchframesbytimeswithtimeout"></a>
 ## fetchFramesByTimesWithTimeout
 
 ```TypeScript
@@ -264,6 +271,7 @@ fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOption
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext not permitted. |
 
+<a id="fetchmetadata"></a>
 ## fetchMetadata
 
 ```TypeScript
@@ -282,7 +290,7 @@ fetchMetadata(callback: AsyncCallback<AVMetadata>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AVMetadata> | 是 | 回调函数。异步返回音视频元数据对象（AVMetadata）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVMetadata&gt; | 是 | 回调函数。异步返回音视频元数据对象（AVMetadata）。 |
 
 **错误码：**
 
@@ -292,6 +300,7 @@ fetchMetadata(callback: AsyncCallback<AVMetadata>): void
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by callback. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted.<br>**适用版本：** 23+ |
 
+<a id="fetchmetadata-1"></a>
 ## fetchMetadata
 
 ```TypeScript
@@ -310,7 +319,7 @@ fetchMetadata(): Promise<AVMetadata>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVMetadata> | Promise对象。异步返回音视频元数据对象（AVMetadata）。 |
+| Promise&lt;AVMetadata&gt; | Promise对象。异步返回音视频元数据对象（AVMetadata）。 |
 
 **错误码：**
 
@@ -320,6 +329,7 @@ fetchMetadata(): Promise<AVMetadata>
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted.<br>**适用版本：** 23+ |
 
+<a id="fetchmetadatawithtimeout"></a>
 ## fetchMetadataWithTimeout
 
 ```TypeScript
@@ -346,7 +356,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise<AVMetadata | undefined>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVMetadata \| undefined> | Promise对象，异步返回音视频元数据对象（AVMetadata）。 |
+| Promise&lt;AVMetadata \| undefined&gt; | Promise对象，异步返回音视频元数据对象（AVMetadata）。 |
 
 **错误码：**
 
@@ -358,6 +368,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise<AVMetadata | undefined>
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted. |
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -376,7 +387,7 @@ release(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当释放资源成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当释放资源成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -384,6 +395,7 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by callback. |
 
+<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -402,7 +414,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 异步方式释放资源release方法的Promise返回值。 |
+| Promise&lt;void&gt; | 异步方式释放资源release方法的Promise返回值。 |
 
 **错误码：**
 
@@ -410,6 +422,7 @@ release(): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by promise. |
 
+<a id="seturlsource"></a>
 ## setUrlSource
 
 ```TypeScript
@@ -429,7 +442,7 @@ setUrlSource(url: string, headers?: Record<string, string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 媒体资源URL。<br/>1. 支持的视频格式包括：mp4、mpeg-ts、mkv。<br/>2. 支持的音频格式包括：m4a、aac、mp3、ogg、wav、flac、amr。<br/>**支持路径示例**：<br/>1. http网络播放：`http://xx`。<br/>2. https网络播放：`https://xx`。<br/>**说明：** 不支持设置HLS/Dash、直播资源。 |
-| headers | Record<string, string> | 否 | 支持访问网络资源HttpHeader自定义。默认为空。 |
+| headers | Record&lt;string, string&gt; | 否 | 支持访问网络资源HttpHeader自定义。默认为空。 |
 
 ## dataSrc
 

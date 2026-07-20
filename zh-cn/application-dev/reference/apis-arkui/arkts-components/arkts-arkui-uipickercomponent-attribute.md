@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="canloop"></a>
 ## canLoop
 
 ```TypeScript
@@ -39,8 +40,9 @@ canLoop(isLoop: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isLoop | [Optional](arkts-arkui-optional-t.md)<boolean> | 是 | 是否可循环滚动。 |
+| isLoop | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否可循环滚动。 |
 
+<a id="displayeditemcount"></a>
 ## displayedItemCount
 
 ```TypeScript
@@ -69,8 +71,9 @@ displayedItemCount(count: Optional<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| count | [Optional](arkts-arkui-optional-t.md)<number> | 是 | 可见选项数量。 |
+| count | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 可见选项数量。 |
 
+<a id="enablehapticfeedback"></a>
 ## enableHapticFeedback
 
 ```TypeScript
@@ -100,8 +103,9 @@ enableHapticFeedback(enable: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-optional-t.md)<boolean> | 是 | 设置是否开启触控反馈。 |
+| enable | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 设置是否开启触控反馈。 |
 
+<a id="itemheight"></a>
 ## itemHeight
 
 ```TypeScript
@@ -130,8 +134,9 @@ itemHeight(height: Optional<LengthMetrics>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| height | [Optional](arkts-arkui-optional-t.md)<LengthMetrics> | 是 | 选项高度。 |
+| height | [Optional](arkts-arkui-optional-t.md)&lt;LengthMetrics&gt; | 是 | 选项高度。 |
 
+<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -160,8 +165,9 @@ onChange(callback: Optional<OnUIPickerComponentCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)<OnUIPickerComponentCallback> | 是 | 当选中项发生变化时触发的回调函数。当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](arkts-arkui-optional-t.md)&lt;OnUIPickerComponentCallback&gt; | 是 | 当选中项发生变化时触发的回调函数。当callback的值为undefined时，不使用回调函数。 |
 
+<a id="onscrollstop"></a>
 ## onScrollStop
 
 ```TypeScript
@@ -184,8 +190,9 @@ onScrollStop(callback: Optional<OnUIPickerComponentCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)<OnUIPickerComponentCallback> | 是 | 当选择器滑动停止时触发的回调函数。当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](arkts-arkui-optional-t.md)&lt;OnUIPickerComponentCallback&gt; | 是 | 当选择器滑动停止时触发的回调函数。当callback的值为undefined时，不使用回调函数。 |
 
+<a id="selectionindicator"></a>
 ## selectionIndicator
 
 ```TypeScript
@@ -210,5 +217,5 @@ selectionIndicator(style: Optional<PickerIndicatorStyle>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-optional-t.md)<PickerIndicatorStyle> | 是 | 选中项指示器的样式。 |
+| style | [Optional](arkts-arkui-optional-t.md)&lt;PickerIndicatorStyle&gt; | 是 | 选中项指示器的样式。 |
 

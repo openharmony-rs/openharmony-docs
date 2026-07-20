@@ -14,6 +14,7 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="onresult"></a>
 ## onResult
 
 ```TypeScript

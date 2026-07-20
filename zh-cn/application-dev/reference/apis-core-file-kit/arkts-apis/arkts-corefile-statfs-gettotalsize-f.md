@@ -6,6 +6,7 @@
 import { statfs } from '@kit.CoreFileKit';
 ```
 
+<a id="gettotalsize"></a>
 ## getTotalSize
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getTotalSize(path: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回总字节数。 |
+| Promise&lt;number&gt; | Promise对象，返回总字节数。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ statfs.getTotalSize(path).then((totalSize: number) => {
 ```
 
 
+<a id="gettotalsize-1"></a>
 ## getTotalSize
 
 ```TypeScript
@@ -87,7 +89,7 @@ function getTotalSize(path: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 需要查询的文件系统的文件路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 异步获取总字节数之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步获取总字节数之后的回调。 |
 
 **错误码：**
 

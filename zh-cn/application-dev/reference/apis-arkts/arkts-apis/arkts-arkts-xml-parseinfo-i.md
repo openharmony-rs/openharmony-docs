@@ -14,6 +14,7 @@
 import { xml } from '@kit.ArkTS';
 ```
 
+<a id="getattributecount"></a>
 ## getAttributeCount
 
 ```TypeScript
@@ -59,6 +60,7 @@ console.info(str);
 
 ```
 
+<a id="getcolumnnumber"></a>
 ## getColumnNumber
 
 ```TypeScript
@@ -104,6 +106,7 @@ console.info(str);
 
 ```
 
+<a id="getdepth"></a>
 ## getDepth
 
 ```TypeScript
@@ -157,6 +160,7 @@ console.info(str);
 
 ```
 
+<a id="getlinenumber"></a>
 ## getLineNumber
 
 ```TypeScript
@@ -202,6 +206,7 @@ console.info(str);
 
 ```
 
+<a id="getname"></a>
 ## getName
 
 ```TypeScript
@@ -245,6 +250,7 @@ console.info(str);
 
 ```
 
+<a id="getnamespace"></a>
 ## getNamespace
 
 ```TypeScript
@@ -292,6 +298,7 @@ console.info(str);
 
 ```
 
+<a id="getprefix"></a>
 ## getPrefix
 
 ```TypeScript
@@ -339,6 +346,7 @@ console.info(str);
 
 ```
 
+<a id="gettext"></a>
 ## getText
 
 ```TypeScript
@@ -382,6 +390,7 @@ console.info(str);
 
 ```
 
+<a id="isemptyelementtag"></a>
 ## isEmptyElementTag
 
 ```TypeScript
@@ -429,6 +438,7 @@ console.info(str);
 
 ```
 
+<a id="iswhitespace"></a>
 ## isWhitespace
 
 ```TypeScript

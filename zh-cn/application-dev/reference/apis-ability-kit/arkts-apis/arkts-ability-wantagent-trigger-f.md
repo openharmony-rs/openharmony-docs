@@ -6,6 +6,7 @@
 import { WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="trigger"></a>
 ## trigger
 
 ```TypeScript
@@ -28,7 +29,7 @@ function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCal
 | --- | --- | --- | --- |
 | agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
 | triggerInfo | [TriggerInfo](arkts-ability-wantagent-triggerinfo-t.md) | 是 | 表示触发WantAgent实例时携带的信息，如自定义的extraInfos。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<CompleteData> | 否 | 主动激发WantAgent实例的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CompleteData&gt; | 否 | 主动激发WantAgent实例的回调方法。 |
 
 **错误码：**
 

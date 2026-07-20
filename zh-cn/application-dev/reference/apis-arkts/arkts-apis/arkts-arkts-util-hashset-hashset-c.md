@@ -14,6 +14,7 @@ HashSet基于HashMap实现。在HashSet中，仅处理value对象。
 import { HashSet } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -34,7 +35,7 @@ import { HashSet } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
+| IterableIterator&lt;T&gt; | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
 
 **错误码：**
 
@@ -81,6 +82,7 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
+<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -126,6 +128,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -161,6 +164,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -190,6 +194,7 @@ let hashSet = new HashSet<number>();
 
 ```
 
+<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -210,7 +215,7 @@ entries(): IterableIterator<[T, T]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[T, T]> | 返回一个迭代器。 |
+| IterableIterator&lt;[T, T]&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -251,6 +256,7 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
+<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -271,7 +277,7 @@ forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Ob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: T, key?: T, set?: HashSet<T>) => void | 是 | 回调函数。 |
+| callbackFn | (value?: T, key?: T, set?: HashSet&lt;T&gt;) =&gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -307,6 +313,7 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
+<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -352,6 +359,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -390,6 +398,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -436,6 +445,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="values"></a>
 ## values
 
 ```TypeScript
@@ -456,7 +466,7 @@ values(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | 返回一个迭代器。 |
+| IterableIterator&lt;T&gt; | 返回一个迭代器。 |
 
 **错误码：**
 

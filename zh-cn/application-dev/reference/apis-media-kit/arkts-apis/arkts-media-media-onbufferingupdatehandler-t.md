@@ -18,6 +18,6 @@ type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: number) => 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| infoType | BufferingInfoType | 是 | 缓存时间类型。 |
-| value | int | 是 | 缓存时间类型的值。 |
+| infoType | [BufferingInfoType](arkts-media-multimedia-media-bufferinginfotype-e.md) | 是 | 缓存时间类型。  |
+| value | number | 是 | 缓存时间类型的值。  |
 

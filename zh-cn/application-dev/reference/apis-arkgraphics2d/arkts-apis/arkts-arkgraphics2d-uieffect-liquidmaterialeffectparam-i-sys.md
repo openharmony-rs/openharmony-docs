@@ -132,7 +132,7 @@ ripplePosition?: Array<[number, number]>
 
 水波效果作用的位置。数组中每个位置包含x和y两个维度，最多支持10个位置坐标传入。传入超出10个位置坐标则整体无效。
 
-**类型：** Array<[number, number]>
+**类型：** Array&lt;[number, number]&gt;
 
 **起始版本：** 22
 

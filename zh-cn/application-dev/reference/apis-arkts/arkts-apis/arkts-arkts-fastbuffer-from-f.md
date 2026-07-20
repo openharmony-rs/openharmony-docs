@@ -6,6 +6,7 @@
 import { fastbuffer } from '@kit.ArkTS';
 ```
 
+<a id="from"></a>
 ## from
 
 ```TypeScript
@@ -46,6 +47,7 @@ console.info(buf.toString('hex'));
 ```
 
 
+<a id="from-1"></a>
 ## from
 
 ```TypeScript
@@ -68,7 +70,7 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 | --- | --- | --- | --- |
 | arrayBuffer | ArrayBuffer \| SharedArrayBuffer | 是 | 实例对象。 |
 | byteOffset | number | 否 | 字节偏移量，默认值：0。 |
-| length | number | 否 | 字节长度，默认值：（arrayBuffer.byteLength - byteOffset）。取值范围：0 &lt;= length &lt;= arrayBuffer.byteLength - byteOffset。传入null时返回空FastBuffer。 |
+| length | number | 否 | 字节长度，默认值：（arrayBuffer.byteLength - byteOffset）。取值范围：0 <= length <= arrayBuffer.byteLength - byteOffset。传入null时返回空FastBuffer。 |
 
 **返回值：**
 
@@ -96,6 +98,7 @@ console.info(buf.length.toString());
 ```
 
 
+<a id="from-2"></a>
 ## from
 
 ```TypeScript
@@ -118,7 +121,7 @@ function from(buffer: FastBuffer | Uint8Array): FastBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | FastBuffer \| Uint8Array | 是 | 对象数据。 |
+| buffer | [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) \| Uint8Array | 是 | 对象数据。 |
 
 **返回值：**
 
@@ -155,6 +158,7 @@ console.info('uint8Array:', uint8Array);
 ```
 
 
+<a id="from-3"></a>
 ## from
 
 ```TypeScript

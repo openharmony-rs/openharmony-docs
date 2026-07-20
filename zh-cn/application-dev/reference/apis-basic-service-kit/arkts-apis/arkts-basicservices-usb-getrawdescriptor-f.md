@@ -6,6 +6,7 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
+<a id="getrawdescriptor"></a>
 ## getRawDescriptor
 
 ```TypeScript
@@ -36,7 +37,7 @@ function getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 返回获取的原始数据；失败返回undefined。 |
+| Uint8Array | 返回获取的原始数据；失败返回undefined。 |
 
 **示例：**
 

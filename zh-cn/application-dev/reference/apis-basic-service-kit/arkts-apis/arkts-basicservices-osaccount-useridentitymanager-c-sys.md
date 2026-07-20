@@ -16,6 +16,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="addcredential"></a>
 ## addCredential
 
 ```TypeScript
@@ -96,6 +97,7 @@ userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
 
 ```
 
+<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -118,7 +120,7 @@ cancel(challenge: Uint8Array): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| challenge | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 挑战值。 |
+| challenge | Uint8Array | 是 | 挑战值。 |
 
 **错误码：**
 
@@ -146,6 +148,7 @@ try {
 
 ```
 
+<a id="closesession"></a>
 ## closeSession
 
 ```TypeScript
@@ -190,6 +193,7 @@ userIDM.closeSession(accountId);
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -219,6 +223,7 @@ let userIDM = new osAccount.UserIdentityManager();
 
 ```
 
+<a id="delcred"></a>
 ## delCred
 
 ```TypeScript
@@ -241,8 +246,8 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| credentialId | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 凭证索引。 |
-| token | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 身份验证令牌。 |
+| credentialId | Uint8Array | 是 | 凭证索引。 |
+| token | Uint8Array | 是 | 身份验证令牌。 |
 | callback | [IIdmCallback](arkts-basicservices-osaccount-iidmcallback-i-sys.md) | 是 | 回调对象，返回删除凭据的结果。 |
 
 **错误码：**
@@ -279,6 +284,7 @@ try {
 
 ```
 
+<a id="deluser"></a>
 ## delUser
 
 ```TypeScript
@@ -301,7 +307,7 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| token | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 身份验证令牌。 |
+| token | Uint8Array | 是 | 身份验证令牌。 |
 | callback | [IIdmCallback](arkts-basicservices-osaccount-iidmcallback-i-sys.md) | 是 | 回调对象，返回删除用户的结果。 |
 
 **错误码：**
@@ -335,6 +341,7 @@ try {
 
 ```
 
+<a id="getauthinfo"></a>
 ## getAuthInfo
 
 ```TypeScript
@@ -357,7 +364,7 @@ getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<EnrolledCredInfo>> | 是 | 回调函数。如果成功，err为null，data为当前用户的所有已注册凭据信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;EnrolledCredInfo&gt;&gt; | 是 | 回调函数。如果成功，err为null，data为当前用户的所有已注册凭据信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -389,6 +396,7 @@ try {
 
 ```
 
+<a id="getauthinfo-1"></a>
 ## getAuthInfo
 
 ```TypeScript
@@ -412,7 +420,7 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | authType | [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md) | 是 | 认证类型。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<EnrolledCredInfo>> | 是 | 回调函数，如果获取成功，err为null，data为当前用户指定类型的所有已注册凭据信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;EnrolledCredInfo&gt;&gt; | 是 | 回调函数，如果获取成功，err为null，data为当前用户指定类型的所有已注册凭据信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -446,6 +454,7 @@ try {
 
 ```
 
+<a id="getauthinfo-2"></a>
 ## getAuthInfo
 
 ```TypeScript
@@ -474,7 +483,7 @@ getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<EnrolledCredInfo>> | Promise对象，返回当前用户指定类型的所有已注册凭据信息。 |
+| Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。 |
 
 **错误码：**
 
@@ -505,6 +514,7 @@ try {
 
 ```
 
+<a id="getauthinfo-3"></a>
 ## getAuthInfo
 
 ```TypeScript
@@ -533,7 +543,7 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<EnrolledCredInfo>> | Promise对象，返回当前用户指定类型的所有已注册凭据信息。 |
+| Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。 |
 
 **错误码：**
 
@@ -569,6 +579,7 @@ try {
 
 ```
 
+<a id="getenrolledid"></a>
 ## getEnrolledId
 
 ```TypeScript
@@ -598,7 +609,7 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回已注册的凭据ID。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回已注册的凭据ID。 |
 
 **错误码：**
 
@@ -634,6 +645,7 @@ try {
 
 ```
 
+<a id="offcredentialchanged"></a>
 ## offCredentialChanged
 
 ```TypeScript
@@ -656,7 +668,7 @@ offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CredentialChangeInfo> | 否 | 表示用于接收凭据变更事件的回调函数。默认为undefined，表示清除所有订阅记录；非undefined时，表示清除与该回调函数关联的订阅记录。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CredentialChangeInfo&gt; | 否 | 表示用于接收凭据变更事件的回调函数。默认为undefined，表示清除所有订阅记录；非undefined时，表示清除与该回调函数关联的订阅记录。 |
 
 **错误码：**
 
@@ -701,6 +713,7 @@ try {
 
 ```
 
+<a id="oncredentialchanged"></a>
 ## onCredentialChanged
 
 ```TypeScript
@@ -724,7 +737,7 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | credentialTypes | [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md)[] | 是 | 表示订阅的凭据类型集合。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CredentialChangeInfo> | 是 | 表示用于接收凭据变更事件的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CredentialChangeInfo&gt; | 是 | 表示用于接收凭据变更事件的回调函数。 |
 
 **错误码：**
 
@@ -763,6 +776,7 @@ try {
 
 ```
 
+<a id="opensession"></a>
 ## openSession
 
 ```TypeScript
@@ -785,7 +799,7 @@ openSession(callback: AsyncCallback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Uint8Array> | 是 | 回调函数。如果打开会话成功，err为null，data为挑战值；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | 是 | 回调函数。如果打开会话成功，err为null，data为挑战值；否则为错误对象。 |
 
 **错误码：**
 
@@ -817,6 +831,7 @@ try {
 
 ```
 
+<a id="opensession-1"></a>
 ## openSession
 
 ```TypeScript
@@ -845,7 +860,7 @@ openSession(accountId?: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回挑战值。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
 
 **错误码：**
 
@@ -877,6 +892,7 @@ try {
 
 ```
 
+<a id="updatecredential"></a>
 ## updateCredential
 
 ```TypeScript

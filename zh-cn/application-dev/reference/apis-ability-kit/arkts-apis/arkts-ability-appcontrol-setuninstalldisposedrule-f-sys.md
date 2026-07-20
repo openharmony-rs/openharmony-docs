@@ -6,6 +6,7 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
+<a id="setuninstalldisposedrule"></a>
 ## setUninstallDisposedRule
 
 ```TypeScript
@@ -28,7 +29,7 @@ function setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposed
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appIdentifier | string | 是 | 要设置卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appIdentifier | string | 是 | 要设置卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](docroot://quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 | rule | [UninstallDisposedRule](arkts-ability-appcontrol-uninstalldisposedrule-i-sys.md) | 是 | 表示要设置的卸载处置规则。 |
 | appIndex | number | 否 | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示设置主应用的卸载处置规则。appIndex大于0时，表示设置指定分身应用的卸载处置规则。 |
 

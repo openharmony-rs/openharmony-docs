@@ -18,13 +18,13 @@ type OnRequestEventCallback = (source: Want, name: string, data: KVObject) => Re
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | Want | 是 |  |
+| source | [Want](arkts-arkui-want-t-sys.md) | 是 |  |
 | name | string | 是 |  |
-| data | KVObject | 是 |  |
+| data | [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md) | 是 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| RequestEventResult | 返回request事件结果。 |
+| [RequestEventResult](arkts-arkui-plugincomponentmanager-requesteventresult-i.md) | 返回request事件结果。  |
 

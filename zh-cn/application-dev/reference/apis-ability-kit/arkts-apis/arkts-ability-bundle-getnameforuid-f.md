@@ -6,6 +6,7 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getnameforuid"></a>
 ## getNameForUid
 
 ```TypeScript
@@ -26,10 +27,11 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | number | 是 | @param { AsyncCallback&lt;string&gt; } callback |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 |  |
+| uid | number | 是 | @param { AsyncCallback<string> } callback |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 |  |
 
 
+<a id="getnameforuid-1"></a>
 ## getNameForUid
 
 ```TypeScript
@@ -58,5 +60,5 @@ function getNameForUid(uid: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Returns the bundle name. |
+| Promise&lt;string&gt; | Returns the bundle name. |
 

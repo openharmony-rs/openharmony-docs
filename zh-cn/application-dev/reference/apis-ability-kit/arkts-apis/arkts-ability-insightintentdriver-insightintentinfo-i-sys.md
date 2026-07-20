@@ -124,7 +124,7 @@ readonly entities: Array<EntityInfo>
 
 表示意图包含的实体信息。
 
-**类型：** Array<EntityInfo>
+**类型：** Array&lt;EntityInfo&gt;
 
 **起始版本：** 20
 
@@ -288,7 +288,7 @@ readonly parameters: Record<string, Object>
 
 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 20
 
@@ -308,7 +308,7 @@ readonly result: Record<string, Object>
 
 表示意图调用返回的结果。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 20
 
@@ -352,7 +352,7 @@ readonly subIntentInfo: LinkIntentInfo | PageIntentInfo | FunctionIntentInfo | F
 
 对于使用配置文件开发的意图，该字段返回值默认为[EntryIntentInfo](#entryintentinfo20)。
 
-**类型：** LinkIntentInfo | PageIntentInfo | FunctionIntentInfo | FormIntentInfo | EntryIntentInfo
+**类型：** LinkIntentInfo \| PageIntentInfo \| FunctionIntentInfo \| FormIntentInfo \| EntryIntentInfo
 
 **起始版本：** 20
 

@@ -6,6 +6,7 @@
 import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
+<a id="getcfgdirlistsync"></a>
 ## getCfgDirListSync
 
 ```TypeScript
@@ -26,5 +27,5 @@ function getCfgDirListSync(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 返回配置层级目录列表。 |
+| Array&lt;string&gt; | 返回配置层级目录列表。 |
 

@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setbadgenumber"></a>
 ## setBadgeNumber
 
 ```TypeScript
@@ -27,7 +28,7 @@ function setBadgeNumber(badgeNumber: number, callback: AsyncCallback<void>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | badgeNumber | number | 是 | 角标个数。当角标设定个数取值小于或等于0时，清除角标。取值大于99时，通知角标将显示99+。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设定角标个数成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设定角标个数成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
 
+<a id="setbadgenumber-1"></a>
 ## setBadgeNumber
 
 ```TypeScript
@@ -84,7 +86,7 @@ function setBadgeNumber(badgeNumber: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

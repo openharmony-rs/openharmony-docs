@@ -6,6 +6,7 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
+<a id="usbfunctionsfromstring"></a>
 ## usbFunctionsFromString
 
 ```TypeScript

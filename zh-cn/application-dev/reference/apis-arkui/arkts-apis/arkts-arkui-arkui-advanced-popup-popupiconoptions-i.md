@@ -24,7 +24,7 @@ borderRadius?: Length | BorderRadiuses
 
 默认值：`$r('sys.float.ohos_id_corner_radius_default_s')`
 
-**类型：** Length | BorderRadiuses
+**类型：** Length \| BorderRadiuses
 
 **起始版本：** 11
 

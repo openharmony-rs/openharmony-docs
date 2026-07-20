@@ -1,6 +1,6 @@
 # AppProvisionInfo（系统接口）
 
-应用[HarmonyAppProvision配置文件](../../../../security/app-provision-structure.md)中的信息。
+应用[HarmonyAppProvision配置文件](docroot://security/app-provision-structure.md)中的信息。
 
 **起始版本：** 10
 
@@ -34,7 +34,7 @@ readonly apl: string
 readonly appDistributionType: string
 ```
 
-配置文件中的[分发类型](../../../../security/app-provision-structure.md)。
+配置文件中的[分发类型](docroot://security/app-provision-structure.md)。
 
 **类型：** string
 
@@ -52,7 +52,7 @@ readonly appDistributionType: string
 readonly appIdentifier: string
 ```
 
-应用的唯一标识，详情信息可参考[什么是appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
+应用的唯一标识，详情信息可参考[什么是appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **类型：** string
 

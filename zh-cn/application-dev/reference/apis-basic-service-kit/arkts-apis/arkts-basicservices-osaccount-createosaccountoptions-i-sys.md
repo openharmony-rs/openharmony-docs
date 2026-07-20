@@ -24,7 +24,7 @@ allowedPreinstalledBundles?: Array<string>
 
 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 19
 
@@ -42,7 +42,7 @@ disallowedPreinstalledBundles?: Array<string>
 
 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 19
 

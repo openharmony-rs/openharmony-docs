@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
+<a id="isblockdevice"></a>
 ## isBlockDevice
 
 ```TypeScript
@@ -44,6 +45,7 @@ let isBLockDevice = fileio.statSync(filePath).isBlockDevice();
 
 ```
 
+<a id="ischaracterdevice"></a>
 ## isCharacterDevice
 
 ```TypeScript
@@ -76,6 +78,7 @@ let isCharacterDevice = fileio.statSync(filePath).isCharacterDevice();
 
 ```
 
+<a id="isdirectory"></a>
 ## isDirectory
 
 ```TypeScript
@@ -108,6 +111,7 @@ let isDirectory = fileio.statSync(dirPath).isDirectory();
 
 ```
 
+<a id="isfifo"></a>
 ## isFIFO
 
 ```TypeScript
@@ -140,6 +144,7 @@ let isFIFO = fileio.statSync(filePath).isFIFO();
 
 ```
 
+<a id="isfile"></a>
 ## isFile
 
 ```TypeScript
@@ -172,6 +177,7 @@ let isFile = fileio.statSync(filePath).isFile();
 
 ```
 
+<a id="issocket"></a>
 ## isSocket
 
 ```TypeScript
@@ -204,6 +210,7 @@ let isSocket = fileio.statSync(filePath).isSocket();
 
 ```
 
+<a id="issymboliclink"></a>
 ## isSymbolicLink
 
 ```TypeScript

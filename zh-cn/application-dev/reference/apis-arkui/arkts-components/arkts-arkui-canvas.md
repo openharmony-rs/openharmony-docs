@@ -25,7 +25,7 @@ Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | CanvasRenderingContext2D \| DrawingRenderingContext | 否 | CanvasRenderingContext2D：不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)对象。DrawingRenderingContext：不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](docroot://reference/apis-arkui/arkui-ts/ts-drawingrenderingcontext.md)对象。<br>异常值null和undefined按未设置context处理。 |
+| context | [CanvasRenderingContext2D](arkts-arkui-canvasrenderingcontext2d-c.md) \| DrawingRenderingContext | 否 | CanvasRenderingContext2D：不支持多个Canvas共用一个CanvasRenderingContext2D对象， 具体描述见[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) 对象。DrawingRenderingContext：不支持多个Canvas共用一个DrawingRenderingContext对象， 具体描述见[DrawingRenderingContext](docroot://reference/apis-arkui/arkui-ts/ts-drawingrenderingcontext.md) 对象。 <br>异常值null和undefined按未设置context处理。  |
 
 ## Canvas
 
@@ -49,8 +49,8 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | CanvasRenderingContext2D \| DrawingRenderingContext | 是 | CanvasRenderingContext2D：不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)对象。DrawingRenderingContext：不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](docroot://reference/apis-arkui/arkui-ts/ts-drawingrenderingcontext.md)对象。<br>异常值null和undefined按未设置context处理。 |
-| imageAIOptions | ImageAIOptions | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。<br>异常值null和undefined按[ImageAIOptions](docroot://reference/apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12)的默认值处理，默认取值为{ type: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT],aiController: new ImageAnalyzerController() }，即开启主体识别和文字识别功能。 |
+| context | [CanvasRenderingContext2D](arkts-arkui-canvasrenderingcontext2d-c.md) \| DrawingRenderingContext | 是 | CanvasRenderingContext2D：不支持多个Canvas共用一个CanvasRenderingContext2D对象， 具体描述见[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) 对象。DrawingRenderingContext：不支持多个Canvas共用一个DrawingRenderingContext对象， 具体描述见[DrawingRenderingContext](docroot://reference/apis-arkui/arkui-ts/ts-drawingrenderingcontext.md) 对象。 <br>异常值null和undefined按未设置context处理。  |
+| imageAIOptions | [ImageAIOptions](../arkts-apis/arkts-arkui-imageaioptions-i.md) | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 <br>异常值null和undefined按 [ImageAIOptions](docroot://reference/apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) 的默认值处理，默认取值为{ type: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT], aiController: new ImageAnalyzerController() }，即开启主体识别和文字识别功能。  |
 
 ## Canvas
 
@@ -86,7 +86,7 @@ Canvas(params: CanvasParams)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | CanvasParams | 是 | Canvas组件的构造参数。 |
+| params | [CanvasParams](arkts-arkui-canvasparams-i.md) | 是 | Canvas组件的构造参数。  |
 
 ## 汇总
 

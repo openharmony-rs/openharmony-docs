@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="onclick"></a>
 ## onClick
 
 ```TypeScript
@@ -21,7 +22,7 @@ onClick(event: PasteButtonCallback)
 点击粘贴控件触发该回调，回调返回授权结果。授权成功后应用可临时获取读取剪贴板权限。
 
 > **说明**  
-> - 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../../security/AccessToken/security-component-overview.md#约束与限制)。
+> - 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](docroot://security/AccessToken/security-component-overview.md#约束与限制)。
 
 **起始版本：** 10
 

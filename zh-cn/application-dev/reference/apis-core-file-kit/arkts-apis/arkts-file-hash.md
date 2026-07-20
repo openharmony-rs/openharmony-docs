@@ -20,9 +20,9 @@ import { hash } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createHash](arkts-corefile-hash-createhash-f.md#createhash-1) | 创建并返回 HashStream 对象，该对象可用于使用给定的 algorithm 生成哈希摘要。 |
-| [hash](arkts-corefile-hash-f.md#hash-1) | 计算文件的哈希值，使用Promise异步回调。 |
-| [hash](arkts-corefile-hash-f.md#hash-2) | 计算文件的哈希值，使用callback异步回调。 |
+| [createHash](arkts-corefile-hash-createhash-f.md#createhash) | 创建并返回 HashStream 对象，该对象可用于使用给定的 algorithm 生成哈希摘要。 |
+| [hash](arkts-corefile-hash-f.md#hash) | 计算文件的哈希值，使用Promise异步回调。 |
+| [hash](arkts-corefile-hash-f.md#hash-1) | 计算文件的哈希值，使用callback异步回调。 |
 
 ### 类
 

@@ -18,17 +18,17 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md#createfilter-1) | 创建Filter实例用于给组件添加多种filter效果。 |
-| [createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md#createeffect-1) | 创建VisualEffect实例用于给组件添加多种effect效果。 |
+| [createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md#createfilter) | 创建Filter实例用于给组件添加多种filter效果。 |
+| [createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md#createeffect) | 创建VisualEffect实例用于给组件添加多种effect效果。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [createBrightnessBlender](arkts-arkgraphics2d-uieffect-createbrightnessblender-f-sys.md#createbrightnessblender-1) | 创建BrightnessBlender实例用于给组件添加提亮效果。 |
-| [createHdrBrightnessBlender](arkts-arkgraphics2d-uieffect-createhdrbrightnessblender-f-sys.md#createhdrbrightnessblender-1) | 创建HdrBrightnessBlender实例用于给组件添加支持HDR的提亮效果。 |
-| [createHdrDarkenBlender](arkts-arkgraphics2d-uieffect-createhdrdarkenblender-f-sys.md#createhdrdarkenblender-1) | 创建HdrDarkenBlender实例用于HDR图层的压暗混合效果。 |
+| [createBrightnessBlender](arkts-arkgraphics2d-uieffect-createbrightnessblender-f-sys.md#createbrightnessblender) | 创建BrightnessBlender实例用于给组件添加提亮效果。 |
+| [createHdrBrightnessBlender](arkts-arkgraphics2d-uieffect-createhdrbrightnessblender-f-sys.md#createhdrbrightnessblender) | 创建HdrBrightnessBlender实例用于给组件添加支持HDR的提亮效果。 |
+| [createHdrDarkenBlender](arkts-arkgraphics2d-uieffect-createhdrdarkenblender-f-sys.md#createhdrdarkenblender) | 创建HdrDarkenBlender实例用于HDR图层的压暗混合效果。 |
 <!--DelEnd-->
 
 <!--Del-->

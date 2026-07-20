@@ -24,7 +24,7 @@ id: number | string
 
 默认值：空字符串。
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 11
 

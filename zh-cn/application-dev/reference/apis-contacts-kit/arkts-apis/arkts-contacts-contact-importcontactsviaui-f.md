@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="importcontactsviaui"></a>
 ## importContactsViaUI
 
 ```TypeScript
@@ -31,13 +32,13 @@ function importContactsViaUI(context: Context, contacts: Array<Contact>): Promis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
-| contacts | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Contact> | 是 | 表示待导入数据库的联系人信息数组。 |
+| contacts | Array&lt;Contact&gt; | 是 | 表示待导入数据库的联系人信息数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | 返回联系人创建结果的数组。返回的联系人id有效（可通过[getId](Contact#getId())获取）表示创建成功。返回值为-1[INVALID_CONTACT_ID](arkts-contacts-contact-contact-c.md#invalid_contact_id) 表示创建失败。-2表示用户未选择该联系人。 |
+| Promise&lt;Array&lt;number&gt;&gt; | 返回联系人创建结果的数组。返回的联系人id有效（可通过[getId](Contact#getId())获取）表示创建成功。返回值为-1[INVALID_CONTACT_ID](arkts-contacts-contact-contact-c.md#invalid_contact_id) 表示创建失败。-2表示用户未选择该联系人。 |
 
 **错误码：**
 

@@ -60,7 +60,7 @@ values: Array<Record<string, CloudType>>
 
 需要查询数据的数组，包括数据记录的实际值和ExtensionValue（扩展值）。
 
-**类型：** Array<Record<string, CloudType>>
+**类型：** Array&lt;Record&lt;string, CloudType&gt;&gt;
 
 **起始版本：** 11
 

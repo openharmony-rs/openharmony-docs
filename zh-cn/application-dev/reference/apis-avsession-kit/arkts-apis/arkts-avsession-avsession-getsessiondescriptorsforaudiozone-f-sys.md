@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getsessiondescriptorsforaudiozone"></a>
 ## getSessionDescriptorsForAudioZone
 
 ```TypeScript
@@ -36,7 +37,7 @@ function getSessionDescriptorsForAudioZone(userId: number): Promise<Array<Readon
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Readonly<AVSessionDescriptor>>> | 返回对应音区的会话列表 |
+| Promise&lt;Array&lt;Readonly&lt;AVSessionDescriptor&gt;&gt;&gt; | 返回对应音区的会话列表 |
 
 **错误码：**
 

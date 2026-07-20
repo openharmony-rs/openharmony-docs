@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="deliccdiallingnumbers"></a>
 ## delIccDiallingNumbers
 
 ```TypeScript
@@ -31,7 +32,7 @@ Delete dialing number information on SIM card.
 | slotId | number | 是 | Indicates the card slot index number,ranging from 0 to the maximum card slot index number supported by the device. |
 | type | [ContactType](arkts-telephony-sim-contacttype-e-sys.md) | 是 | Indicates contact type. |
 | diallingNumbers | [DiallingNumbersInfo](arkts-telephony-sim-diallingnumbersinfo-i-sys.md) | 是 | Indicates dialing number information. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | The callback of delIccDiallingNumbers. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | The callback of delIccDiallingNumbers. |
 
 **错误码：**
 
@@ -66,6 +67,7 @@ sim.delIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInf
 ```
 
 
+<a id="deliccdiallingnumbers-1"></a>
 ## delIccDiallingNumbers
 
 ```TypeScript
@@ -96,7 +98,7 @@ Delete dialing number information on SIM card.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The promise returned by the delIccDiallingNumbers. |
+| Promise&lt;void&gt; | The promise returned by the delIccDiallingNumbers. |
 
 **错误码：**
 

@@ -52,7 +52,7 @@ Use new to create Path.Annonymous Object Rectification.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | PathOptions | 否 | path options |
+| options | [PathOptions](arkts-arkui-pathoptions-i.md) | 否 | path options |
 
 ## Path
 
@@ -76,7 +76,7 @@ Path(options?: PathOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | PathOptions | 否 | Path绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options | [PathOptions](arkts-arkui-pathoptions-i.md) | 否 | Path绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## 汇总
 

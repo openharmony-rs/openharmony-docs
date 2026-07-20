@@ -54,7 +54,7 @@ readonly sharedModuleInfo: Array<SharedModuleInfo>
 
 应用共享模块信息。
 
-**类型：** Array<SharedModuleInfo>
+**类型：** Array&lt;SharedModuleInfo&gt;
 
 **起始版本：** 10
 

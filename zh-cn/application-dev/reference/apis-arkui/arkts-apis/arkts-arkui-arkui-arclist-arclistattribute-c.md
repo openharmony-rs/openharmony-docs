@@ -16,6 +16,7 @@
 import { ArcListItemAttribute, ArcList, ArcListItem, ArcListAttribute } from '@kit.ArkUI';
 ```
 
+<a id="cachedcount"></a>
 ## cachedCount
 
 ```TypeScript
@@ -36,7 +37,7 @@ cachedCount(count: Optional<number>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| count | [Optional](../arkts-components/arkts-arkui-optional-t.md)<number> | 是 | ArcListItem的预加载数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br/>取值范围：[0, +∞) |
+| count | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number&gt; | 是 | ArcListItem的预加载数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -44,6 +45,7 @@ cachedCount(count: Optional<number>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="chainanimation"></a>
 ## chainAnimation
 
 ```TypeScript
@@ -64,7 +66,7 @@ chainAnimation(enable: Optional<boolean>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)<boolean> | 是 | 是否启用链式联动动效。<br/>默认值：false，不启用链式联动。true，启用链式联动。 |
+| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否启用链式联动动效。<br/>默认值：false，不启用链式联动。true，启用链式联动。 |
 
 **返回值：**
 
@@ -72,6 +74,7 @@ chainAnimation(enable: Optional<boolean>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="childrenmainsize"></a>
 ## childrenMainSize
 
 ```TypeScript
@@ -92,7 +95,7 @@ childrenMainSize(size: Optional<ChildrenMainSize>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ChildrenMainSize> | 是 | 通过ChildrenMainSize对象向ArcList组件精确提供所有子组件在主轴方向的大小信息。 |
+| size | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ChildrenMainSize&gt; | 是 | 通过ChildrenMainSize对象向ArcList组件精确提供所有子组件在主轴方向的大小信息。 |
 
 **返回值：**
 
@@ -100,6 +103,7 @@ childrenMainSize(size: Optional<ChildrenMainSize>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="digitalcrownsensitivity"></a>
 ## digitalCrownSensitivity
 
 ```TypeScript
@@ -120,7 +124,7 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcListAttribu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sensitivity | [Optional](../arkts-components/arkts-arkui-optional-t.md)<CrownSensitivity> | 是 | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
+| sensitivity | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;CrownSensitivity&gt; | 是 | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
 
 **返回值：**
 
@@ -128,6 +132,7 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcListAttribu
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="enablescrollinteraction"></a>
 ## enableScrollInteraction
 
 ```TypeScript
@@ -148,7 +153,7 @@ enableScrollInteraction(enable: Optional<boolean>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)<boolean> | 是 | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器Scroller的滚动接口。<br/>默认值：true |
+| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器Scroller的滚动接口。<br/>默认值：true |
 
 **返回值：**
 
@@ -156,6 +161,7 @@ enableScrollInteraction(enable: Optional<boolean>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="fadingedge"></a>
 ## fadingEdge
 
 ```TypeScript
@@ -176,7 +182,7 @@ fadingEdge(enable: Optional<boolean>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)<boolean> | 是 | fadingEdge生效时，会覆盖原组件的.overlay()属性。fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
+| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | fadingEdge生效时，会覆盖原组件的.overlay()属性。fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
 
 **返回值：**
 
@@ -184,6 +190,7 @@ fadingEdge(enable: Optional<boolean>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="flingspeedlimit"></a>
 ## flingSpeedLimit
 
 ```TypeScript
@@ -204,7 +211,7 @@ flingSpeedLimit(speed: Optional<number>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| speed | [Optional](../arkts-components/arkts-arkui-optional-t.md)<number> | 是 | 惯性滚动动效开始时的最大初始速度。<br/>默认值：9000<br/>单位：vp/s<br/>取值范围：(0, +∞) |
+| speed | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 惯性滚动动效开始时的最大初始速度。<br/>默认值：9000<br/>单位：vp/s<br/>取值范围：(0, +∞) |
 
 **返回值：**
 
@@ -212,6 +219,7 @@ flingSpeedLimit(speed: Optional<number>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="friction"></a>
 ## friction
 
 ```TypeScript
@@ -232,7 +240,7 @@ friction(friction: Optional<number>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| friction | [Optional](../arkts-components/arkts-arkui-optional-t.md)<number> | 是 | 摩擦系数。<br/>默认值：0.8<br/>取值范围：(0, +∞) |
+| friction | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 摩擦系数。<br/>默认值：0.8<br/>取值范围：(0, +∞) |
 
 **返回值：**
 
@@ -240,6 +248,7 @@ friction(friction: Optional<number>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="ondidscroll"></a>
 ## onDidScroll
 
 ```TypeScript
@@ -260,7 +269,7 @@ onDidScroll(handler: Optional<OnScrollCallback>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)<OnScrollCallback> | 是 | 列表滑动时触发的回调。 |
+| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;OnScrollCallback&gt; | 是 | 列表滑动时触发的回调。 |
 
 **返回值：**
 
@@ -268,6 +277,7 @@ onDidScroll(handler: Optional<OnScrollCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="onreachend"></a>
 ## onReachEnd
 
 ```TypeScript
@@ -288,7 +298,7 @@ onReachEnd(handler: Optional<VoidCallback>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)<VoidCallback> | 是 | 列表到达末尾位置时触发。 |
+| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;VoidCallback&gt; | 是 | 列表到达末尾位置时触发。 |
 
 **返回值：**
 
@@ -296,6 +306,7 @@ onReachEnd(handler: Optional<VoidCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="onreachstart"></a>
 ## onReachStart
 
 ```TypeScript
@@ -316,7 +327,7 @@ onReachStart(handler: Optional<VoidCallback>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)<VoidCallback> | 是 | 列表到达起始位置时触发。 |
+| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;VoidCallback&gt; | 是 | 列表到达起始位置时触发。 |
 
 **返回值：**
 
@@ -324,6 +335,7 @@ onReachStart(handler: Optional<VoidCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="onscrollindex"></a>
 ## onScrollIndex
 
 ```TypeScript
@@ -344,7 +356,7 @@ onScrollIndex(handler: Optional<ArcScrollIndexHandler>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ArcScrollIndexHandler> | 是 | 有子组件划入或划出ArcList显示区域时触发该回调。 |
+| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ArcScrollIndexHandler&gt; | 是 | 有子组件划入或划出ArcList显示区域时触发该回调。 |
 
 **返回值：**
 
@@ -352,6 +364,7 @@ onScrollIndex(handler: Optional<ArcScrollIndexHandler>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="onscrollstart"></a>
 ## onScrollStart
 
 ```TypeScript
@@ -372,7 +385,7 @@ onScrollStart(handler: Optional<VoidCallback>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)<VoidCallback> | 是 | 列表滑动开始时触发。 |
+| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;VoidCallback&gt; | 是 | 列表滑动开始时触发。 |
 
 **返回值：**
 
@@ -380,6 +393,7 @@ onScrollStart(handler: Optional<VoidCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="onscrollstop"></a>
 ## onScrollStop
 
 ```TypeScript
@@ -400,7 +414,7 @@ onScrollStop(handler: Optional<VoidCallback>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)<VoidCallback> | 是 | 列表滑动停止时触发。 |
+| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;VoidCallback&gt; | 是 | 列表滑动停止时触发。 |
 
 **返回值：**
 
@@ -408,6 +422,7 @@ onScrollStop(handler: Optional<VoidCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="onwillscroll"></a>
 ## onWillScroll
 
 ```TypeScript
@@ -428,7 +443,7 @@ onWillScroll(handler: Optional<OnWillScrollCallback>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)<OnWillScrollCallback> | 是 | 列表滑动时每帧开始前触发的回调。 |
+| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;OnWillScrollCallback&gt; | 是 | 列表滑动时每帧开始前触发的回调。 |
 
 **返回值：**
 
@@ -436,6 +451,7 @@ onWillScroll(handler: Optional<OnWillScrollCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="scrollbar"></a>
 ## scrollBar
 
 ```TypeScript
@@ -456,7 +472,7 @@ scrollBar(status: Optional<BarState>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| status | [Optional](../arkts-components/arkts-arkui-optional-t.md)<BarState> | 是 | 滚动条状态。<br/>默认值：BarState.Auto |
+| status | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;BarState&gt; | 是 | 滚动条状态。<br/>默认值：BarState.Auto |
 
 **返回值：**
 
@@ -464,6 +480,7 @@ scrollBar(status: Optional<BarState>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="scrollbarcolor"></a>
 ## scrollBarColor
 
 ```TypeScript
@@ -484,7 +501,7 @@ scrollBarColor(color: Optional<ColorMetrics>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ColorMetrics> | 是 | 设置滚动条颜色。<br/>默认值：ColorMetrics.numeric(0xA9FFFFFF) |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ColorMetrics&gt; | 是 | 设置滚动条颜色。<br/>默认值：ColorMetrics.numeric(0xA9FFFFFF) |
 
 **返回值：**
 
@@ -492,6 +509,7 @@ scrollBarColor(color: Optional<ColorMetrics>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="scrollbarwidth"></a>
 ## scrollBarWidth
 
 ```TypeScript
@@ -512,7 +530,7 @@ scrollBarWidth(width: Optional<LengthMetrics>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | [Optional](../arkts-components/arkts-arkui-optional-t.md)<LengthMetrics> | 是 | 滚动条的宽度。<br/>默认值：LengthMetrics.vp(24)<br/>最小值：LengthMetrics.vp(4) |
+| width | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;LengthMetrics&gt; | 是 | 滚动条的宽度。<br/>默认值：LengthMetrics.vp(24)<br/>最小值：LengthMetrics.vp(4) |
 
 **返回值：**
 
@@ -520,6 +538,7 @@ scrollBarWidth(width: Optional<LengthMetrics>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="space"></a>
 ## space
 
 ```TypeScript
@@ -540,7 +559,7 @@ space(space: Optional<LengthMetrics>): ArcListAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| space | [Optional](../arkts-components/arkts-arkui-optional-t.md)<LengthMetrics> | 是 | 列表子项之间的间距。<br/>默认值：LengthMetrics.vp(0) |
+| space | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;LengthMetrics&gt; | 是 | 列表子项之间的间距。<br/>默认值：LengthMetrics.vp(0) |
 
 **返回值：**
 

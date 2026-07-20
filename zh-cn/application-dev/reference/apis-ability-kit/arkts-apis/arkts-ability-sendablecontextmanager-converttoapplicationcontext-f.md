@@ -6,6 +6,7 @@
 import { sendableContextManager } from '@kit.AbilityKit';
 ```
 
+<a id="converttoapplicationcontext"></a>
 ## convertToApplicationContext
 
 ```TypeScript

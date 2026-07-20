@@ -60,7 +60,7 @@ Navigation组件的导航控制器。
 uniqueId?: number
 ```
 
-Navigation组件的uniqueId，可以通过[queryNavigationInfo](../arkts-components/arkts-arkui-common-basecustomcomponent-c.md#querynavigationinfo-1)获取。
+Navigation组件的uniqueId，可以通过[queryNavigationInfo](../arkts-components/arkts-arkui-basecustomcomponent-c.md#querynavigationinfo-1)获取。
 
 **类型：** number
 

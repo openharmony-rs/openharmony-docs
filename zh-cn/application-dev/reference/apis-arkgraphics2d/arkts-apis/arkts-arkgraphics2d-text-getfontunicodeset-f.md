@@ -6,6 +6,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="getfontunicodeset"></a>
 ## getFontUnicodeSet
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getFontUnicodeSet(path: string | Resource, index: number) : Promise<Arr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | Promise对象，返回字体文件对应的unicode码数组。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回字体文件对应的unicode码数组。 |
 
 **示例：**
 

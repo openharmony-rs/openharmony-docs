@@ -32,7 +32,7 @@ Sets Value.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | WebOptions | 是 |  |
+| value | [WebOptions](arkts-arkweb-weboptions-i.md) | 是 |  |
 
 ## 汇总
 

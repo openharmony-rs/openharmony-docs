@@ -20,12 +20,12 @@ declare type ShouldRecognizerParallelWithCallback = (current: GestureRecognizer,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| current | GestureRecognizer | 是 | 当前组件的手势识别器，当前仅支持[GestureType](../arkts-apis/arkts-arkui-gesturecontrol-gesturetype-e.md).PAN_GESTURE类型的手势识别器。 |
-| others | Array&lt;GestureRecognizer&gt; | 是 | 响应链上优先级高于当前组件的其他组件所持有的同类型[GestureType](../arkts-apis/arkts-arkui-gesturecontrol-gesturetype-e.md)的手势识别器。 |
+| current | [GestureRecognizer](../arkts-apis/arkts-arkui-gesturerecognizer-c.md) | 是 | 当前组件的手势识别器，当前仅支持[GestureType](../arkts-apis/arkts-arkui-gesturecontrol-gesturetype-e.md).PAN_GESTURE类型的手势识别器。  |
+| others | Array&lt;GestureRecognizer&gt; | 是 | 响应链上优先级高于当前组件的其他组件所持有的同类型[GestureType](../arkts-apis/arkts-arkui-gesturecontrol-gesturetype-e.md)的手势识别器。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| GestureRecognizer | 与current识别器绑定并行关系的某个手势识别器。 |
+| [GestureRecognizer](../arkts-apis/arkts-arkui-gesturerecognizer-c.md) | 与current识别器绑定并行关系的某个手势识别器。  |
 

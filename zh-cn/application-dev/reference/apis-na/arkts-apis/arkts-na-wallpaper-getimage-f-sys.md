@@ -1,5 +1,6 @@
 # getImage（系统接口）
 
+<a id="getimage"></a>
 ## getImage
 
 ```TypeScript
@@ -23,7 +24,7 @@ function getImage(wallpaperType: WallpaperType, callback: AsyncCallback<image.Pi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<image.PixelMap> | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
 
 **错误码：**
 
@@ -50,6 +51,7 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErr
 ```
 
 
+<a id="getimage-1"></a>
 ## getImage
 
 ```TypeScript
@@ -78,7 +80,7 @@ function getImage(wallpaperType: WallpaperType): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | 调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| Promise&lt;image.PixelMap&gt; | 调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
 
 **错误码：**
 

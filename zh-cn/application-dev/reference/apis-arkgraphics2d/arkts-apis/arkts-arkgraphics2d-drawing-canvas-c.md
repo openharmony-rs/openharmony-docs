@@ -23,6 +23,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="attachbrush"></a>
 ## attachBrush
 
 ```TypeScript
@@ -53,6 +54,7 @@ attachBrush(brush: Brush): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="attachpen"></a>
 ## attachPen
 
 ```TypeScript
@@ -83,6 +85,7 @@ attachPen(pen: Pen): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -109,6 +112,7 @@ clear(color: common2D.Color): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="clear-1"></a>
 ## clear
 
 ```TypeScript
@@ -129,6 +133,7 @@ clear(color: common2D.Color | number): void
 | --- | --- | --- | --- |
 | color | common2D.Color \| number | 是 | 颜色，可以用16进制ARGB格式的无符号整数表示。 |
 
+<a id="clippath"></a>
 ## clipPath
 
 ```TypeScript
@@ -157,6 +162,7 @@ clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="cliprect"></a>
 ## clipRect
 
 ```TypeScript
@@ -185,6 +191,7 @@ clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="clipregion"></a>
 ## clipRegion
 
 ```TypeScript
@@ -212,6 +219,7 @@ clipRegion(region: Region, clipOp?: ClipOp): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="cliproundrect"></a>
 ## clipRoundRect
 
 ```TypeScript
@@ -240,6 +248,7 @@ clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): voi
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="concatmatrix"></a>
 ## concatMatrix
 
 ```TypeScript
@@ -266,6 +275,7 @@ concatMatrix(matrix: Matrix): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -294,6 +304,7 @@ constructor(pixelmap: image.PixelMap)
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="detachbrush"></a>
 ## detachBrush
 
 ```TypeScript
@@ -308,6 +319,7 @@ detachBrush(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="detachpen"></a>
 ## detachPen
 
 ```TypeScript
@@ -322,6 +334,7 @@ detachPen(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="drawarc"></a>
 ## drawArc
 
 ```TypeScript
@@ -350,6 +363,7 @@ drawArc(arc: common2D.Rect, startAngle: number, sweepAngle: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawarcwithcenter"></a>
 ## drawArcWithCenter
 
 ```TypeScript
@@ -373,6 +387,7 @@ drawArcWithCenter(arc: common2D.Rect, startAngle: number, sweepAngle: number, us
 | sweepAngle | number | 是 | 弧的扫描角度，单位为度，该参数为浮点数。为正数时顺时针扫描，为负数时逆时针扫描。扫描角度可以超过360度，将绘制一个完整的椭圆。 |
 | useCenter | boolean | 是 | 绘制时弧形的起点和终点是否连接弧形的中心点。true表示连接，false表示不连接。 |
 
+<a id="drawbackground"></a>
 ## drawBackground
 
 ```TypeScript
@@ -399,6 +414,7 @@ drawBackground(brush: Brush): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawcircle"></a>
 ## drawCircle
 
 ```TypeScript
@@ -427,6 +443,7 @@ drawCircle(x: number, y: number, radius: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawcolor"></a>
 ## drawColor
 
 ```TypeScript
@@ -446,7 +463,7 @@ drawColor(color: common2D.Color, blendMode?: BlendMode): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | common2D.Color | 是 | ARGB格式的颜色，每个颜色通道的值是0到255之间的整数。 |
-| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
+| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -454,6 +471,7 @@ drawColor(color: common2D.Color, blendMode?: BlendMode): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawcolor-1"></a>
 ## drawColor
 
 ```TypeScript
@@ -476,7 +494,7 @@ drawColor(alpha: number, red: number, green: number, blue: number, blendMode?: B
 | red | number | 是 | ARGB格式颜色的红色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
 | green | number | 是 | ARGB格式颜色的绿色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
 | blue | number | 是 | ARGB格式颜色的蓝色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
-| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
+| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -484,6 +502,7 @@ drawColor(alpha: number, red: number, green: number, blue: number, blendMode?: B
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawcolor-2"></a>
 ## drawColor
 
 ```TypeScript
@@ -503,7 +522,7 @@ drawColor(color: number, blendMode?: BlendMode): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | number | 是 | 16进制ARGB格式的颜色。 |
-| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
+| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -511,6 +530,7 @@ drawColor(color: number, blendMode?: BlendMode): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawglyphs"></a>
 ## drawGlyphs
 
 ```TypeScript
@@ -534,9 +554,9 @@ drawGlyphs(glyphIds: Array<number>, glyphIdOffset: number, positions: Array<comm
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| glyphIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 指示字形ID的数组。 |
+| glyphIds | Array&lt;number&gt; | 是 | 指示字形ID的数组。 |
 | glyphIdOffset | number | 是 | 指示在绘制字形Ids数组之前要跳过的元素的数量。取值限定为整数。 |
-| positions | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | 是 | 表示位置数组。 |
+| positions | Array&lt;common2D.Point&gt; | 是 | 表示位置数组。 |
 | positionOffset | number | 是 | 指示在绘制位置数组之前要跳过的元素的数量。取值限定为整数。 |
 | glyphCount | number | 是 | 指示要绘制的字形的数目。取值限定为整数。 |
 | font | [Font](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-font-c.md) | 是 | 指示用于绘图的字体。 |
@@ -547,6 +567,7 @@ drawGlyphs(glyphIds: Array<number>, glyphIdOffset: number, positions: Array<comm
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="drawimage"></a>
 ## drawImage
 
 ```TypeScript
@@ -576,6 +597,7 @@ drawImage(pixelmap: image.PixelMap, left: number, top: number, samplingOptions?:
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawimagelattice"></a>
 ## drawImageLattice
 
 ```TypeScript
@@ -610,6 +632,7 @@ drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.R
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawimagenine"></a>
 ## drawImageNine
 
 ```TypeScript
@@ -644,6 +667,7 @@ drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawimagerect"></a>
 ## drawImageRect
 
 ```TypeScript
@@ -672,6 +696,7 @@ drawImageRect(pixelmap: image.PixelMap, dstRect: common2D.Rect, samplingOptions?
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawimagerectwithsrc"></a>
 ## drawImageRectWithSrc
 
 ```TypeScript
@@ -705,6 +730,7 @@ drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: 
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawline"></a>
 ## drawLine
 
 ```TypeScript
@@ -734,6 +760,7 @@ drawLine(x0: number, y0: number, x1: number, y1: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawnestedroundrect"></a>
 ## drawNestedRoundRect
 
 ```TypeScript
@@ -761,6 +788,7 @@ drawNestedRoundRect(outer: RoundRect, inner: RoundRect): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawoval"></a>
 ## drawOval
 
 ```TypeScript
@@ -787,6 +815,7 @@ drawOval(oval: common2D.Rect): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawpath"></a>
 ## drawPath
 
 ```TypeScript
@@ -813,6 +842,7 @@ drawPath(path: Path): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawpixelmapmesh"></a>
 ## drawPixelMapMesh
 
 ```TypeScript
@@ -837,9 +867,9 @@ drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number
 | pixelmap | image.PixelMap | 是 | 用于绘制网格的像素图。 |
 | meshWidth | number | 是 | 网格中的列数，大于0的整数。 |
 | meshHeight | number | 是 | 网格中的行数，大于0的整数。 |
-| vertices | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 顶点数组，指定网格的绘制位置，浮点数组，大小必须为((meshWidth+1) * (meshHeight+1) + vertOffset) * 2。 |
+| vertices | Array&lt;number&gt; | 是 | 顶点数组，指定网格的绘制位置，浮点数组，大小必须为((meshWidth+1) * (meshHeight+1) + vertOffset) * 2。 |
 | vertOffset | number | 是 | 绘图前要跳过的vert元素数，大于等于0的整数。 |
-| colors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> \| null | 是 | 颜色数组，在每个顶点指定一种颜色，整数数组，可为null，大小必须为(meshWidth+1) * (meshHeight+1) +colorOffset。<br>**起始版本：** 20 |
+| colors | Array&lt;number&gt; \| null | 是 | 颜色数组，在每个顶点指定一种颜色，整数数组，可为null，大小必须为(meshWidth+1) * (meshHeight+1) +colorOffset。<br>**起始版本：** 20 |
 | colorOffset | number | 是 | 绘制前要跳过的颜色元素数，大于等于0的整数。 |
 
 **错误码：**
@@ -848,6 +878,7 @@ drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawpoint"></a>
 ## drawPoint
 
 ```TypeScript
@@ -875,6 +906,7 @@ drawPoint(x: number, y: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawpoints"></a>
 ## drawPoints
 
 ```TypeScript
@@ -893,7 +925,7 @@ drawPoints(points: Array<common2D.Point>, mode?: PointMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| points | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | 是 | 要绘制的点的数组。长度不能为0。 |
+| points | Array&lt;common2D.Point&gt; | 是 | 要绘制的点的数组。长度不能为0。 |
 | mode | [PointMode](arkts-arkgraphics2d-drawing-pointmode-e.md) | 否 | 绘制数组中的点的方式，默认为drawing.PointMode.POINTS。 |
 
 **错误码：**
@@ -902,6 +934,7 @@ drawPoints(points: Array<common2D.Point>, mode?: PointMode): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawrect"></a>
 ## drawRect
 
 ```TypeScript
@@ -928,6 +961,7 @@ drawRect(rect: common2D.Rect): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawrect-1"></a>
 ## drawRect
 
 ```TypeScript
@@ -957,6 +991,7 @@ drawRect(left: number, top: number, right: number, bottom: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawregion"></a>
 ## drawRegion
 
 ```TypeScript
@@ -983,6 +1018,7 @@ drawRegion(region: Region): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawroundrect"></a>
 ## drawRoundRect
 
 ```TypeScript
@@ -1009,6 +1045,7 @@ drawRoundRect(roundRect: RoundRect): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawshadow"></a>
 ## drawShadow
 
 ```TypeScript
@@ -1044,6 +1081,7 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawshadow-1"></a>
 ## drawShadow
 
 ```TypeScript
@@ -1079,6 +1117,7 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawsinglecharacter"></a>
 ## drawSingleCharacter
 
 ```TypeScript
@@ -1108,6 +1147,7 @@ drawSingleCharacter(text: string, font: Font, x: number, y: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="drawsinglecharacterwithfeatures"></a>
 ## drawSingleCharacterWithFeatures
 
 ```TypeScript
@@ -1130,7 +1170,7 @@ drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, 
 | font | [Font](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-font-c.md) | 是 | 字型对象。 |
 | x | number | 是 | 所绘制字符基线左端点的横坐标，该参数为浮点数。 |
 | y | number | 是 | 所绘制字符基线左端点的纵坐标，该参数为浮点数。 |
-| features | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<FontFeature> | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。 |
+| features | Array&lt;FontFeature&gt; | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。 |
 
 **错误码：**
 
@@ -1138,6 +1178,7 @@ drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, 
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="drawtextblob"></a>
 ## drawTextBlob
 
 ```TypeScript
@@ -1166,6 +1207,7 @@ drawTextBlob(blob: TextBlob, x: number, y: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="drawvertices"></a>
 ## drawVertices
 
 ```TypeScript
@@ -1192,12 +1234,12 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array<commo
 | --- | --- | --- | --- |
 | vertexMode | [VertexMode](arkts-arkgraphics2d-drawing-vertexmode-e.md) | 是 | 绘制顶点的连接方式。 |
 | vertexCount | number | 是 | 顶点数组元素的数量，值为大于等于3的整数。 |
-| positions | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | 是 | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
-| texs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> \| null | 是 | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
-| colors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> \| null | 是 | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
+| positions | Array&lt;common2D.Point&gt; | 是 | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
+| texs | Array&lt;common2D.Point&gt; \| null | 是 | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
+| colors | Array&lt;number&gt; \| null | 是 | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
 | indexCount | number | 是 | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。 |
-| indices | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> \| null | 是 | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
-| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 是 | 颜色混合模式。 |
+| indices | Array&lt;number&gt; \| null | 是 | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
+| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 颜色混合模式。 |
 
 **错误码：**
 
@@ -1205,6 +1247,7 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array<commo
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="getheight"></a>
 ## getHeight
 
 ```TypeScript
@@ -1225,6 +1268,7 @@ getHeight(): number
 | --- | --- |
 | number | 返回画布的高度，该参数为浮点数。 |
 
+<a id="getlocalclipbounds"></a>
 ## getLocalClipBounds
 
 ```TypeScript
@@ -1245,6 +1289,7 @@ getLocalClipBounds(): common2D.Rect
 | --- | --- |
 | common2D.Rect | Bounds of the cropping region. |
 
+<a id="getsavecount"></a>
 ## getSaveCount
 
 ```TypeScript
@@ -1265,6 +1310,7 @@ getSaveCount(): number
 | --- | --- |
 | number | 已保存的画布状态的数量，该参数为正整数。 |
 
+<a id="gettotalmatrix"></a>
 ## getTotalMatrix
 
 ```TypeScript
@@ -1285,6 +1331,7 @@ getTotalMatrix(): Matrix
 | --- | --- |
 | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 返回画布矩阵。 |
 
+<a id="getwidth"></a>
 ## getWidth
 
 ```TypeScript
@@ -1305,6 +1352,7 @@ getWidth(): number
 | --- | --- |
 | number | 返回画布的宽度，该参数为浮点数。 |
 
+<a id="isclipempty"></a>
 ## isClipEmpty
 
 ```TypeScript
@@ -1325,6 +1373,7 @@ isClipEmpty(): boolean
 | --- | --- |
 | boolean | 返回画布的可绘制区域是否为空的结果，true表示为空，false表示不为空。 |
 
+<a id="isopaque"></a>
 ## isOpaque
 
 ```TypeScript
@@ -1347,6 +1396,7 @@ isOpaque(): boolean
 | --- | --- |
 | boolean | 如果绘制到设备中的当前层是不透明的，则返回true。 |
 
+<a id="quickrejectpath"></a>
 ## quickRejectPath
 
 ```TypeScript
@@ -1373,6 +1423,7 @@ quickRejectPath(path: Path): boolean
 | --- | --- |
 | boolean | 返回路径是否与画布区域不相交的结果。true表示路径与画布区域不相交，false表示路径与画布区域相交。 |
 
+<a id="quickrejectrect"></a>
 ## quickRejectRect
 
 ```TypeScript
@@ -1399,6 +1450,7 @@ quickRejectRect(rect: common2D.Rect): boolean
 | --- | --- |
 | boolean | 返回矩形是否与画布区域不相交的结果。true表示矩形与画布区域不相交，false表示矩形与画布区域相交。 |
 
+<a id="resetclip"></a>
 ## resetClip
 
 ```TypeScript
@@ -1415,6 +1467,7 @@ resetClip(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="resetmatrix"></a>
 ## resetMatrix
 
 ```TypeScript
@@ -1429,6 +1482,7 @@ resetMatrix(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="restore"></a>
 ## restore
 
 ```TypeScript
@@ -1443,6 +1497,7 @@ restore(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="restoretocount"></a>
 ## restoreToCount
 
 ```TypeScript
@@ -1469,6 +1524,7 @@ restoreToCount(count: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
@@ -1497,6 +1553,7 @@ rotate(degrees: number, sx: number, sy: number) : void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="save"></a>
 ## save
 
 ```TypeScript
@@ -1517,6 +1574,7 @@ save(): number
 | --- | --- |
 | number | 画布状态个数，该参数为正整数。 |
 
+<a id="savelayer"></a>
 ## saveLayer
 
 ```TypeScript
@@ -1536,7 +1594,7 @@ saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | rect | common2D.Rect \| null | 否 | 矩形对象，用于限制图层大小，默认为当前画布大小。 |
-| brush | Brush \| null | 否 | 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式，默认不设置额外效果。 |
+| brush | [Brush](arkts-arkgraphics2d-drawing-brush-c.md) \| null | 否 | 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式，默认不设置额外效果。 |
 
 **返回值：**
 
@@ -1550,6 +1608,7 @@ saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): number
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
+<a id="scale"></a>
 ## scale
 
 ```TypeScript
@@ -1577,6 +1636,7 @@ scale(sx: number, sy: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setmatrix"></a>
 ## setMatrix
 
 ```TypeScript
@@ -1603,6 +1663,7 @@ setMatrix(matrix: Matrix): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="skew"></a>
 ## skew
 
 ```TypeScript
@@ -1630,6 +1691,7 @@ skew(sx: number, sy: number) : void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="translate"></a>
 ## translate
 
 ```TypeScript

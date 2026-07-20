@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="off"></a>
 ## off('rotationAxesStatusChange')
 
 ```TypeScript
@@ -27,7 +28,7 @@ Unregister a listener for axis state changes.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rotationAxesStatusChange' | 是 | Event type. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<RotationAxesStateChangeInfo> | 否 | Rotate axis state changes callback. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;RotationAxesStateChangeInfo&gt; | 否 | Rotate axis state changes callback. |
 
 **错误码：**
 

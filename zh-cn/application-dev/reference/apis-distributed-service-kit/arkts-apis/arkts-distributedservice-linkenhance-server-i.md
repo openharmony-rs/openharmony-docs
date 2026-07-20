@@ -14,6 +14,7 @@
 import { linkEnhance } from '@kit.DistributedServiceKit';
 ```
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -60,6 +61,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off('connectionAccepted')
 
 ```TypeScript
@@ -83,7 +85,7 @@ off(type: 'connectionAccepted', callback?: Callback<Connection>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'connectionAccepted' | 是 | 事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Connection> | 否 | 注册的回调函数。[Connection](arkts-distributedservice-linkenhance-connection-i.md)返回的连接对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Connection&gt; | 否 | 注册的回调函数。[Connection](arkts-distributedservice-linkenhance-connection-i.md)返回的连接对象。 |
 
 **错误码：**
 
@@ -120,6 +122,7 @@ try {
 
 ```
 
+<a id="off-1"></a>
 ## off('serverStopped')
 
 ```TypeScript
@@ -143,7 +146,7 @@ off(type: 'serverStopped', callback?: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'serverStopped' | 是 | 事件回调类型，支持的事件为'serverStopped'，底层服务异常时触发。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 否 | 注册的回调函数，number为返回的错误码。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 注册的回调函数，number为返回的错误码。 |
 
 **错误码：**
 
@@ -180,6 +183,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('connectionAccepted')
 
 ```TypeScript
@@ -203,7 +207,7 @@ on(type: 'connectionAccepted', callback: Callback<Connection>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'connectionAccepted' | 是 | 事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Connection> | 是 | 注册的回调函数。[Connection](arkts-distributedservice-linkenhance-connection-i.md)返回的连接对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Connection&gt; | 是 | 注册的回调函数。[Connection](arkts-distributedservice-linkenhance-connection-i.md)返回的连接对象。 |
 
 **错误码：**
 
@@ -240,6 +244,7 @@ try {
 
 ```
 
+<a id="on-1"></a>
 ## on('serverStopped')
 
 ```TypeScript
@@ -263,7 +268,7 @@ on(type: 'serverStopped', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'serverStopped' | 是 | 事件回调类型，支持的事件为'serverStopped'，底层服务异常时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 注册的回调函数，number为返回的错误码。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 注册的回调函数，number为返回的错误码。 |
 
 **错误码：**
 
@@ -300,6 +305,7 @@ try {
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -347,6 +353,7 @@ try {
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript

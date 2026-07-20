@@ -26,6 +26,6 @@ import { ChipItemLabelOptions, ChipGroupSpaceOptions, SymbolItemOptions, SuffixI
 | [IconItemOptions](arkts-arkui-arkui-advanced-chipgroup-iconitemoptions-i.md) | 定义了尾部builder接口，针对背板大小及颜色设置限制。 |
 | [IconOptions](arkts-arkui-arkui-advanced-chipgroup-iconoptions-i.md) | IconOptions定义图标的共通属性。 |
 | [LabelOptions](arkts-arkui-arkui-advanced-chipgroup-labeloptions-i.md) | Label定义图标属性。 |
-| [SuffixImageIconOptions](arkts-arkui-arkui-advanced-chipgroup-suffiximageiconoptions-i.md) | 后缀图标选项的类型。继承自[IconOptions](arkts-arkui-arkui-advanced-chipgroup-iconoptions-i.md)。 |
+| [SuffixImageIconOptions](arkts-arkui-arkui-advanced-chipgroup-suffiximageiconoptions-i.md) | 后缀图标选项的类型。  继承自[IconOptions](arkts-arkui-arkui-advanced-chipgroup-iconoptions-i.md)。 |
 | [SymbolItemOptions](arkts-arkui-arkui-advanced-chipgroup-symbolitemoptions-i.md) | ChipGroup的尾部图标选项类型。 |
 

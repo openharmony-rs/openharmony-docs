@@ -24,7 +24,7 @@ abilities: Array<string>
 
 使用到该权限的Ability集合。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** Indicates the abilities that need the permission
 

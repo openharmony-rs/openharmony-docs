@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="startavplayback"></a>
 ## startAVPlayback
 
 ```TypeScript
@@ -35,7 +36,7 @@ function startAVPlayback(bundleName: string, assetId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当播放成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当播放成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 ```
 
 
+<a id="startavplayback-1"></a>
 ## startAVPlayback
 
 ```TypeScript
@@ -88,7 +90,7 @@ function startAVPlayback(bundleName: string, assetId: string, info: CommandInfo)
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | void promise when executed successfully |
+| Promise&lt;void&gt; | void promise when executed successfully |
 
 **错误码：**
 

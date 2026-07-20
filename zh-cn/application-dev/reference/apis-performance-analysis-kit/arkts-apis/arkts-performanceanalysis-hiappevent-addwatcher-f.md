@@ -6,6 +6,7 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="addwatcher"></a>
 ## addWatcher
 
 ```TypeScript

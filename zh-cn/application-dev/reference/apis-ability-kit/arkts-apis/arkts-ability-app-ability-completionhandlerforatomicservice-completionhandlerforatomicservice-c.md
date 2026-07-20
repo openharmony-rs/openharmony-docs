@@ -14,6 +14,7 @@ CompletionHandlerForAtomicService提供了[onAtomicServiceRequestSuccess](arkts-
 import { FailureCode } from '@kit.AbilityKit';
 ```
 
+<a id="onatomicservicerequestfailure"></a>
 ## onAtomicServiceRequestFailure
 
 ```TypeScript
@@ -44,6 +45,7 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 
 参见[CompletionHandlerForAtomicService示例](#completionhandlerforatomicservice示例)。
 
+<a id="onatomicservicerequestsuccess"></a>
 ## onAtomicServiceRequestSuccess
 
 ```TypeScript

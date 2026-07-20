@@ -6,6 +6,7 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+<a id="onerror"></a>
 ## onError
 
 ```TypeScript
@@ -32,6 +33,7 @@ onError(code: number, name: string, message: string): void
 | name | string | 是 | 拉起UIExtensionAbility执行失败时返回的名称。 |
 | message | string | 是 | 拉起UIExtensionAbility执行失败时返回的错误信息。 |
 
+<a id="onresult"></a>
 ## onResult
 
 ```TypeScript

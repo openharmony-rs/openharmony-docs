@@ -20,6 +20,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="bounds"></a>
 ## bounds
 
 ```TypeScript
@@ -40,6 +41,7 @@ bounds(): common2D.Rect
 | --- | --- |
 | common2D.Rect | Rectangular bounding box. |
 
+<a id="makefrompostext"></a>
 ## makeFromPosText
 
 ```TypeScript
@@ -75,6 +77,7 @@ static makeFromPosText(text: string, len: number, points: common2D.Point[], font
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="makefromrunbuffer"></a>
 ## makeFromRunBuffer
 
 ```TypeScript
@@ -93,7 +96,7 @@ static makeFromRunBuffer(pos: Array<TextBlobRunBuffer>, font: Font, bounds?: com
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<TextBlobRunBuffer> | 是 | TextBlobRunBuffer数组。 |
+| pos | Array&lt;TextBlobRunBuffer&gt; | 是 | TextBlobRunBuffer数组。 |
 | font | [Font](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-font-c.md) | 是 | 字型对象。 |
 | bounds | common2D.Rect | 否 | 可选，如果不设置，则无边界框。 |
 
@@ -109,6 +112,7 @@ static makeFromRunBuffer(pos: Array<TextBlobRunBuffer>, font: Font, bounds?: com
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="makefromstring"></a>
 ## makeFromString
 
 ```TypeScript
@@ -143,6 +147,7 @@ static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBl
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="uniqueid"></a>
 ## uniqueID
 
 ```TypeScript

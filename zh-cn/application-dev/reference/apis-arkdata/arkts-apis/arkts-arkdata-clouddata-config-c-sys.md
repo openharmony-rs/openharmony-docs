@@ -16,6 +16,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="batchquerylastsyncinfo"></a>
 ## batchQueryLastSyncInfo
 
 ```TypeScript
@@ -50,13 +51,13 @@ static batchQueryLastSyncInfo(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
-| bundleInfos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<BundleInfo> | 是 | 批量查询的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
+| bundleInfos | Array&lt;BundleInfo&gt; | 是 | 批量查询的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Record<string, Record<string, SyncInfo>>> | Promise对象，返回应用包名以及对应数据库的上一次端云同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
+| Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt; | Promise对象，返回应用包名以及对应数据库的上一次端云同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
 
 **错误码：**
 
@@ -91,6 +92,7 @@ try {
 
 ```
 
+<a id="changeappcloudswitch"></a>
 ## changeAppCloudSwitch
 
 ```TypeScript
@@ -131,7 +133,7 @@ static changeAppCloudSwitch(
 | accountId | string | 是 | 已登录的云账号ID。 |
 | bundleName | string | 是 | 应用包名。 |
 | status | boolean | 是 | 应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当修改单个应用端云协同开关成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当修改单个应用端云协同开关成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -164,6 +166,7 @@ try {
 
 ```
 
+<a id="changeappcloudswitch-1"></a>
 ## changeAppCloudSwitch
 
 ```TypeScript
@@ -194,7 +197,7 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -225,6 +228,7 @@ try {
 
 ```
 
+<a id="changeappcloudswitch-2"></a>
 ## changeAppCloudSwitch
 
 ```TypeScript
@@ -267,13 +271,13 @@ static changeAppCloudSwitch(
 | accountId | string | 是 | 已登录的云账号ID。 |
 | bundleName | string | 是 | 应用包名。 |
 | status | boolean | 是 | 应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
-| config | [SwitchConfig](arkts-arkdata-clouddata-switchconfig-i-sys.md) | 否 | 端云协同数据库级开关配置信息。端云协同开关优先级：应用级 &gt; 数据库级 &gt; 表级。当未配置该参数时，默认使用应用级的开关配置信息。 |
+| config | [SwitchConfig](arkts-arkdata-clouddata-switchconfig-i-sys.md) | 否 | 端云协同数据库级开关配置信息。端云协同开关优先级：应用级 > 数据库级 > 表级。当未配置该参数时，默认使用应用级的开关配置信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -314,6 +318,7 @@ try {
 
 ```
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -349,8 +354,8 @@ static clear(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
-| appActions | Record<string, ClearAction> | 是 | 要清除数据的应用信息及清除规则。<br>**起始版本：** 10 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当清除本地下载的云端数据成功，err为undefined，否则为错误对象。 |
+| appActions | Record&lt;string, ClearAction&gt; | 是 | 要清除数据的应用信息及清除规则。<br>**起始版本：** 10 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当清除本地下载的云端数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -387,6 +392,7 @@ try {
 
 ```
 
+<a id="clear-1"></a>
 ## clear
 
 ```TypeScript
@@ -410,13 +416,13 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
-| appActions | Record<string, ClearAction> | 是 | 要清除数据的应用信息及清除规则。<br>**起始版本：** 11 |
+| appActions | Record&lt;string, ClearAction&gt; | 是 | 要清除数据的应用信息及清除规则。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -451,6 +457,7 @@ try {
 
 ```
 
+<a id="clear-2"></a>
 ## clear
 
 ```TypeScript
@@ -488,14 +495,14 @@ static clear(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
-| appActions | Record<string, ClearAction> | 是 | 要清除数据的应用信息及清除规则。 |
-| config | Record<string, ClearConfig> | 否 | 端云协同数据库级清除配置信息。键为应用包名，值为该应用数据库清除规则。清除规则优先级：表级 &gt; 数据库级 &gt; 应用级。当未配置该参数时，默认使用应用级的数据清除方式。 |
+| appActions | Record&lt;string, ClearAction&gt; | 是 | 要清除数据的应用信息及清除规则。 |
+| config | Record&lt;string, ClearConfig&gt; | 否 | 端云协同数据库级清除配置信息。键为应用包名，值为该应用数据库清除规则。清除规则优先级：表级 > 数据库级 > 应用级。当未配置该参数时，默认使用应用级的数据清除方式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -542,6 +549,7 @@ try {
 
 ```
 
+<a id="cloudsync"></a>
 ## cloudSync
 
 ```TypeScript
@@ -582,13 +590,13 @@ static cloudSync(
 | bundleName | string | 是 | 待端云同步数据的应用包名。 |
 | storeId | string | 是 | 待端云同步的数据库名。 |
 | mode | relationalStore.SyncMode | 是 | 端云同步类型。 |
-| progress | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<relationalStore.ProgressDetails> | 是 | 同步进度回调。返回ProgressDetails实例对象。 |
+| progress | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;relationalStore.ProgressDetails&gt; | 是 | 同步进度回调。返回ProgressDetails实例对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -620,6 +628,7 @@ try {
 
 ```
 
+<a id="cloudsyncex"></a>
 ## cloudSyncEx
 
 ```TypeScript
@@ -630,7 +639,7 @@ static cloudSyncEx(
     ): Promise<void>
 ```
 
-对指定应用的数据按照云同步配置信息进行端云同步，当[CloudSyncConfig](../../../../reference/apis-arkdata/js-apis-data-relationalStore-sys.md#cloudsyncconfig)中的downloadOnly为true时，端云同步仅把云侧数据同步到本地，使用Promise异步回调。
+对指定应用的数据按照云同步配置信息进行端云同步，当[CloudSyncConfig](docroot://reference/apis-arkdata/js-apis-data-relationalStore-sys.md#cloudsyncconfig)中的downloadOnly为true时，端云同步仅把云侧数据同步到本地，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -658,13 +667,13 @@ static cloudSyncEx(
 | --- | --- | --- | --- |
 | bundleInfo | [BundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-i.md) | 是 | 应用包信息配置。BundleInfo的实例对象。 |
 | config | relationalStore.CloudSyncConfig | 是 | 云同步配置。 |
-| progress | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<relationalStore.ProgressDetails> | 是 | 进度回调函数。返回ProgressDetails实例对象。 |
+| progress | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;relationalStore.ProgressDetails&gt; | 是 | 进度回调函数。返回ProgressDetails实例对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -706,6 +715,7 @@ try {
 
 ```
 
+<a id="disablecloud"></a>
 ## disableCloud
 
 ```TypeScript
@@ -729,7 +739,7 @@ static disableCloud(accountId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当关闭端云协同成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当关闭端云协同成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -761,6 +771,7 @@ try {
 
 ```
 
+<a id="disablecloud-1"></a>
 ## disableCloud
 
 ```TypeScript
@@ -789,7 +800,7 @@ static disableCloud(accountId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -819,6 +830,7 @@ try {
 
 ```
 
+<a id="enablecloud"></a>
 ## enableCloud
 
 ```TypeScript
@@ -854,8 +866,8 @@ static enableCloud(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
-| switches | Record<string, boolean> | 是 | 各应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当打开端云协同功能成功，err为undefined，否则为错误对象。 |
+| switches | Record&lt;string, boolean&gt; | 是 | 各应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。<br>**起始版本：** 11 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当打开端云协同功能成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -888,6 +900,7 @@ try {
 
 ```
 
+<a id="enablecloud-1"></a>
 ## enableCloud
 
 ```TypeScript
@@ -911,13 +924,13 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
-| switches | Record<string, boolean> | 是 | 各应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。<br>**起始版本：** 11 |
+| switches | Record&lt;string, boolean&gt; | 是 | 各应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -948,6 +961,7 @@ try {
 
 ```
 
+<a id="notifydatachange"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -977,7 +991,7 @@ static notifyDataChange(extInfo: ExtraData, userId?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1011,6 +1025,7 @@ try {
 
 ```
 
+<a id="notifydatachange-1"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -1034,7 +1049,7 @@ static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | extInfo | [ExtraData](../../apis-core-file-kit/arkts-apis/arkts-corefile-cloudsyncmanager-extradata-i-sys.md) | 是 | 透传数据，包含通知数据变更后的应用信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1069,6 +1084,7 @@ try {
 
 ```
 
+<a id="notifydatachange-2"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -1093,7 +1109,7 @@ static notifyDataChange(extInfo: ExtraData, userId: number, callback: AsyncCallb
 | --- | --- | --- | --- |
 | extInfo | [ExtraData](../../apis-core-file-kit/arkts-apis/arkts-corefile-cloudsyncmanager-extradata-i-sys.md) | 是 | 透传数据，包含通知数据变更后的应用信息。 |
 | userId | number | 是 | 用户ID，对应为系统中现有的用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1129,6 +1145,7 @@ try {
 
 ```
 
+<a id="notifydatachange-3"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -1158,7 +1175,7 @@ static notifyDataChange(accountId: string, bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1189,6 +1206,7 @@ try {
 
 ```
 
+<a id="notifydatachange-4"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -1213,7 +1231,7 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
 | bundleName | string | 是 | 应用包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当通知云端的数据变更成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通知云端的数据变更成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1246,6 +1264,7 @@ try {
 
 ```
 
+<a id="offsyncinfochanged"></a>
 ## offSyncInfoChanged
 
 ```TypeScript
@@ -1279,8 +1298,8 @@ static offSyncInfoChanged(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleInfos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<BundleInfo> | 是 | 取消订阅的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。取消订阅时应用信息的storeId需要与订阅时保持一致。 |
-| progress | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Record<string, Record<string, SyncInfo>>> | 否 | 回调函数。如果传入此参数，则取消订阅指定的回调函数；如果不传此参数，则取消该应用的所有订阅。 |
+| bundleInfos | Array&lt;BundleInfo&gt; | 是 | 取消订阅的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。取消订阅时应用信息的storeId需要与订阅时保持一致。 |
+| progress | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt; | 否 | 回调函数。如果传入此参数，则取消订阅指定的回调函数；如果不传此参数，则取消该应用的所有订阅。 |
 
 **错误码：**
 
@@ -1331,6 +1350,7 @@ try {
 
 ```
 
+<a id="onsyncinfochanged"></a>
 ## onSyncInfoChanged
 
 ```TypeScript
@@ -1364,8 +1384,8 @@ static onSyncInfoChanged(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleInfos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<BundleInfo> | 是 | 订阅的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
-| progress | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Record<string, Record<string, SyncInfo>>> | 是 | 回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
+| bundleInfos | Array&lt;BundleInfo&gt; | 是 | 订阅的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
+| progress | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt; | 是 | 回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
 
 **错误码：**
 
@@ -1397,6 +1417,7 @@ try {
 
 ```
 
+<a id="querylastsyncinfo"></a>
 ## queryLastSyncInfo
 
 ```TypeScript
@@ -1439,7 +1460,7 @@ static queryLastSyncInfo(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Record<string, SyncInfo>> | 返回数据库名以及上一次端云同步的信息结果集。 |
+| Promise&lt;Record&lt;string, SyncInfo&gt;&gt; | 返回数据库名以及上一次端云同步的信息结果集。 |
 
 **错误码：**
 
@@ -1471,6 +1492,7 @@ try {
 
 ```
 
+<a id="querystatistics"></a>
 ## queryStatistics
 
 ```TypeScript
@@ -1513,7 +1535,7 @@ static queryStatistics(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Record<string, Array<StatisticInfo>>> | 返回以表名为键、统计信息数组为值的结果集。 |
+| Promise&lt;Record&lt;string, Array&lt;StatisticInfo&gt;&gt;&gt; | 返回以表名为键、统计信息数组为值的结果集。 |
 
 **错误码：**
 
@@ -1541,6 +1563,7 @@ cloudData.Config.queryStatistics(accountId, bundleName, storeId).then((result) =
 
 ```
 
+<a id="setglobalcloudstrategy"></a>
 ## setGlobalCloudStrategy
 
 ```TypeScript
@@ -1564,13 +1587,13 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array<commonType.V
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | strategy | [StrategyType](arkts-arkdata-clouddata-strategytype-e.md) | 是 | 配置的策略类型。 |
-| param | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<commonType.ValueType> | 否 | 策略参数。不填写时默认为空，默认取消所有配置。 |
+| param | Array&lt;commonType.ValueType&gt; | 否 | 策略参数。不填写时默认为空，默认取消所有配置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1594,6 +1617,7 @@ cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudDa
 
 ```
 
+<a id="stopcloudsync"></a>
 ## stopCloudSync
 
 ```TypeScript
@@ -1618,13 +1642,13 @@ static stopCloudSync(bundleInfos: Array<BundleInfo>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleInfos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<BundleInfo> | 是 | 应用包信息配置数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
+| bundleInfos | Array&lt;BundleInfo&gt; | 是 | 应用包信息配置数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

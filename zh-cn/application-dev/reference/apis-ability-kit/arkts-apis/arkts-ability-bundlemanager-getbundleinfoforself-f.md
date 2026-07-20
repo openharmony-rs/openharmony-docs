@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getbundleinfoforself"></a>
 ## getBundleInfoForSelf
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getBundleInfoForSelf(bundleFlags: number): Promise<BundleInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BundleInfo> | Promise对象，返回当前应用的BundleInfo。 |
+| Promise&lt;BundleInfo&gt; | Promise对象，返回当前应用的BundleInfo。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ try {
 ```
 
 
+<a id="getbundleinfoforself-1"></a>
 ## getBundleInfoForSelf
 
 ```TypeScript
@@ -86,7 +88,7 @@ function getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback<Bundl
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<BundleInfo> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInfo&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 

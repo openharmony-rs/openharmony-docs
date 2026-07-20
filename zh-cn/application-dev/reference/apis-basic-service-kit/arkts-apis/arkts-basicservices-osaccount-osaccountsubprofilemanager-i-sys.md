@@ -16,6 +16,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="createosaccountsubprofile"></a>
 ## createOsAccountSubProfile
 
 ```TypeScript
@@ -46,7 +47,7 @@ createOsAccountSubProfile(osAccountLocalId: number): Promise<OsAccountSubProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OsAccountSubProfile> | Promise对象，返回创建的子身份资料。 |
+| Promise&lt;OsAccountSubProfile&gt; | Promise对象，返回创建的子身份资料。 |
 
 **错误码：**
 
@@ -82,6 +83,7 @@ try {
 
 ```
 
+<a id="deleteosaccountsubprofile"></a>
 ## deleteOsAccountSubProfile
 
 ```TypeScript
@@ -113,7 +115,7 @@ deleteOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -150,6 +152,7 @@ try {
 
 ```
 
+<a id="getosaccountforegroundsubprofileid"></a>
 ## getOsAccountForegroundSubProfileId
 
 ```TypeScript
@@ -172,7 +175,7 @@ getOsAccountForegroundSubProfileId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回系统账号的前台子身份资料标识符。 |
+| Promise&lt;number&gt; | Promise对象，返回系统账号的前台子身份资料标识符。 |
 
 **错误码：**
 
@@ -201,6 +204,7 @@ try {
 
 ```
 
+<a id="getosaccountforegroundsubprofileid-1"></a>
 ## getOsAccountForegroundSubProfileId
 
 ```TypeScript
@@ -229,7 +233,7 @@ getOsAccountForegroundSubProfileId(osAccountLocalId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回系统账号前台子身份资料的标识符。 |
+| Promise&lt;number&gt; | Promise对象，返回系统账号前台子身份资料的标识符。 |
 
 **错误码：**
 
@@ -262,6 +266,7 @@ try {
 
 ```
 
+<a id="getosaccountlocalidforsubprofile"></a>
 ## getOsAccountLocalIdForSubProfile
 
 ```TypeScript
@@ -290,7 +295,7 @@ getOsAccountLocalIdForSubProfile(subProfileId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回子身份资料所属系统账号的本地ID。 |
+| Promise&lt;number&gt; | Promise对象，返回子身份资料所属系统账号的本地ID。 |
 
 **错误码：**
 
@@ -322,6 +327,7 @@ try {
 
 ```
 
+<a id="getosaccountsubprofile"></a>
 ## getOsAccountSubProfile
 
 ```TypeScript
@@ -352,7 +358,7 @@ getOsAccountSubProfile(subProfileId: number): Promise<OsAccountSubProfile>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OsAccountSubProfile> | Promise对象，返回子身份资料对象信息。 |
+| Promise&lt;OsAccountSubProfile&gt; | Promise对象，返回子身份资料对象信息。 |
 
 **错误码：**
 
@@ -385,6 +391,7 @@ try {
 
 ```
 
+<a id="getosaccountsubprofile-1"></a>
 ## getOsAccountSubProfile
 
 ```TypeScript
@@ -416,7 +423,7 @@ getOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OsAccountSubProfile> | Promise对象，返回子身份资料对象信息。 |
+| Promise&lt;OsAccountSubProfile&gt; | Promise对象，返回子身份资料对象信息。 |
 
 **错误码：**
 
@@ -450,6 +457,7 @@ try {
 
 ```
 
+<a id="getosaccountsubprofileids"></a>
 ## getOsAccountSubProfileIds
 
 ```TypeScript
@@ -474,7 +482,7 @@ getOsAccountSubProfileIds(): Promise<number[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number[]> | Promise used to return the ID list of sub-profile. |
+| Promise&lt;number[]&gt; | Promise used to return the ID list of sub-profile. |
 
 **错误码：**
 
@@ -503,6 +511,7 @@ try {
 
 ```
 
+<a id="getosaccountsubprofileids-1"></a>
 ## getOsAccountSubProfileIds
 
 ```TypeScript
@@ -533,7 +542,7 @@ getOsAccountSubProfileIds(osAccountLocalId: number): Promise<number[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number[]> | Promise used to return the ID list of sub-profile. |
+| Promise&lt;number[]&gt; | Promise used to return the ID list of sub-profile. |
 
 **错误码：**
 
@@ -566,6 +575,7 @@ try {
 
 ```
 
+<a id="offosaccountsubprofileevent"></a>
 ## offOsAccountSubProfileEvent
 
 ```TypeScript
@@ -588,7 +598,7 @@ offOsAccountSubProfileEvent(callback?: Callback<OsAccountSubProfileEventData>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<OsAccountSubProfileEventData> | 否 | 需要取消订阅的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;OsAccountSubProfileEventData&gt; | 否 | 需要取消订阅的回调。 |
 
 **错误码：**
 
@@ -612,6 +622,7 @@ try {
 
 ```
 
+<a id="onosaccountsubprofileevent"></a>
 ## onOsAccountSubProfileEvent
 
 ```TypeScript
@@ -641,7 +652,7 @@ onOsAccountSubProfileEvent(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | events | [OsAccountSubProfileEvent](arkts-basicservices-osaccount-osaccountsubprofileevent-e-sys.md)[] | 是 | 要订阅的事件数组 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<OsAccountSubProfileEventData> | 是 | 事件发生时调用的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;OsAccountSubProfileEventData&gt; | 是 | 事件发生时调用的回调。 |
 
 **错误码：**
 
@@ -671,6 +682,7 @@ try {
 
 ```
 
+<a id="switchosaccountsubprofile"></a>
 ## switchOsAccountSubProfile
 
 ```TypeScript
@@ -702,7 +714,7 @@ switchOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

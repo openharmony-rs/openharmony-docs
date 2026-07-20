@@ -1,5 +1,6 @@
 # on（系统接口）
 
+<a id="on"></a>
 ## on('wallpaperChange')
 
 ```TypeScript
@@ -30,7 +31,7 @@ function on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'wallpaperChange' | 是 | 事件回调类型。支持的事件为'wallpaperChange'，完成壁纸切换后触发该事件。 |
-| callback | (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void | 是 | 壁纸变化触发该回调方法，返回壁纸类型和壁纸资源类型。<br/>- wallpaperType：壁纸类型。<br/>- resourceType：壁纸资源类型。<br/>  - uri：壁纸资源地址。 |
+| callback | (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) =&gt; void | 是 | 壁纸变化触发该回调方法，返回壁纸类型和壁纸资源类型。<br/>- wallpaperType：壁纸类型。<br/>- resourceType：壁纸资源类型。<br/>   - uri：壁纸资源地址。 |
 
 **错误码：**
 

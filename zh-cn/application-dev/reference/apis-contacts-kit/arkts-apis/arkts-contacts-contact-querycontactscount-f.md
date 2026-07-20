@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="querycontactscount"></a>
 ## queryContactsCount
 
 ```TypeScript
@@ -34,7 +35,7 @@ function queryContactsCount(context: Context): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回查询到的联系人数量。 |
+| Promise&lt;number&gt; | Promise对象。返回查询到的联系人数量。 |
 
 **错误码：**
 

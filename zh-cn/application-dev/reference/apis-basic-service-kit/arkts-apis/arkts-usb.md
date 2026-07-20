@@ -29,32 +29,32 @@ import { usb } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [bulkTransfer](arkts-basicservices-usb-bulktransfer-f.md#bulktransfer-1) | 批量传输。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息列表以及endpoint；再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；然后调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到返回数据devicepipe之后，再次获取接口[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface-1)；再调用usb.bulkTransfer接口。 |
-| [claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface-1) | 注册通信接口。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息以及interfaces；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到devicepipe作为参数。 |
-| [closePipe](arkts-basicservices-usb-closepipe-f.md#closepipe-1) | 关闭设备消息控制通道。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)得到devicepipe作为参数。 |
-| [connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1) | 打开USB设备。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息以及device，再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限。 |
-| [controlTransfer](arkts-basicservices-usb-controltransfer-f.md#controltransfer-1) | 控制传输。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到devicepipe作为参数。 |
-| [getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1) | 获取USB设备列表。 |
-| [getFileDescriptor](arkts-basicservices-usb-getfiledescriptor-f.md#getfiledescriptor-1) | 获取文件描述符。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到devicepipe作为参数。 |
-| [getRawDescriptor](arkts-basicservices-usb-getrawdescriptor-f.md#getrawdescriptor-1) | 获取原始的USB描述符。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到devicepipe作为参数。 |
-| [hasRight](arkts-basicservices-usb-hasright-f.md#hasright-1) | 判断是否有权访问该设备。 |
-| [releaseInterface](arkts-basicservices-usb-releaseinterface-f.md#releaseinterface-1) | 释放注册过的通信接口。需要调用[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface-1)先获取接口，才能使用此方法释放接口。 |
-| [requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1) | 请求软件包的临时权限以访问设备。使用Promise异步回调。系统应用默认拥有访问设备权限，无需调用此接口申请。 |
-| [setConfiguration](arkts-basicservices-usb-setconfiguration-f.md#setconfiguration-1) | 设置设备配置。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息以及config；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)得到devicepipe作为参数。 |
-| [setInterface](arkts-basicservices-usb-setinterface-f.md#setinterface-1) | 设置设备接口。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表以及interfaces；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)得到devicepipe作为参数；调用[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface-1)注册通信接口。 |
+| [bulkTransfer](arkts-basicservices-usb-bulktransfer-f.md#bulktransfer) | 批量传输。  需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息列表以及endpoint；再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；然后调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到返回数据devicepipe之后，再次获取接口[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface-1)；再调用usb.bulkTransfer接口。 |
+| [claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface) | 注册通信接口。  需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息以及interfaces；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到devicepipe作为参数。 |
+| [closePipe](arkts-basicservices-usb-closepipe-f.md#closepipe) | 关闭设备消息控制通道。  需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)得到devicepipe作为参数。 |
+| [connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice) | 打开USB设备。  需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息以及device，再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限。 |
+| [controlTransfer](arkts-basicservices-usb-controltransfer-f.md#controltransfer) | 控制传输。  需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到devicepipe作为参数。 |
+| [getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices) | 获取USB设备列表。 |
+| [getFileDescriptor](arkts-basicservices-usb-getfiledescriptor-f.md#getfiledescriptor) | 获取文件描述符。  需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到devicepipe作为参数。 |
+| [getRawDescriptor](arkts-basicservices-usb-getrawdescriptor-f.md#getrawdescriptor) | 获取原始的USB描述符。  需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到devicepipe作为参数。 |
+| [hasRight](arkts-basicservices-usb-hasright-f.md#hasright) | 判断是否有权访问该设备。 |
+| [releaseInterface](arkts-basicservices-usb-releaseinterface-f.md#releaseinterface) | 释放注册过的通信接口。  需要调用[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface-1)先获取接口，才能使用此方法释放接口。 |
+| [requestRight](arkts-basicservices-usb-requestright-f.md#requestright) | 请求软件包的临时权限以访问设备。使用Promise异步回调。系统应用默认拥有访问设备权限，无需调用此接口申请。 |
+| [setConfiguration](arkts-basicservices-usb-setconfiguration-f.md#setconfiguration) | 设置设备配置。  需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息以及config；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)得到devicepipe作为参数。 |
+| [setInterface](arkts-basicservices-usb-setinterface-f.md#setinterface) | 设置设备接口。  需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备列表以及interfaces；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)得到devicepipe作为参数；调用[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface-1)注册通信接口。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCurrentFunctions](arkts-basicservices-usb-getcurrentfunctions-f-sys.md#getcurrentfunctions-1) | 在设备模式下，获取当前的USB功能列表的数字组合掩码。 |
-| [getPorts](arkts-basicservices-usb-getports-f-sys.md#getports-1) | 获取所有物理USB端口描述信息。 |
-| [getSupportedModes](arkts-basicservices-usb-getsupportedmodes-f-sys.md#getsupportedmodes-1) | 获取指定的端口支持的模式列表的组合掩码。 |
-| [setCurrentFunctions](arkts-basicservices-usb-setcurrentfunctions-f-sys.md#setcurrentfunctions-1) | 在设备模式下，设置当前的USB功能列表。 |
-| [setPortRoles](arkts-basicservices-usb-setportroles-f-sys.md#setportroles-1) | 设置指定的端口支持的角色模式，包含充电角色、数据传输角色。 |
-| [usbFunctionsFromString](arkts-basicservices-usb-usbfunctionsfromstring-f-sys.md#usbfunctionsfromstring-1) | 在设备模式下，将字符串形式的USB功能列表转化为数字掩码。 |
-| [usbFunctionsToString](arkts-basicservices-usb-usbfunctionstostring-f-sys.md#usbfunctionstostring-1) | 在设备模式下，将数字掩码形式的USB功能列表转化为字符串。 |
+| [getCurrentFunctions](arkts-basicservices-usb-getcurrentfunctions-f-sys.md#getcurrentfunctions) | 在设备模式下，获取当前的USB功能列表的数字组合掩码。 |
+| [getPorts](arkts-basicservices-usb-getports-f-sys.md#getports) | 获取所有物理USB端口描述信息。 |
+| [getSupportedModes](arkts-basicservices-usb-getsupportedmodes-f-sys.md#getsupportedmodes) | 获取指定的端口支持的模式列表的组合掩码。 |
+| [setCurrentFunctions](arkts-basicservices-usb-setcurrentfunctions-f-sys.md#setcurrentfunctions) | 在设备模式下，设置当前的USB功能列表。 |
+| [setPortRoles](arkts-basicservices-usb-setportroles-f-sys.md#setportroles) | 设置指定的端口支持的角色模式，包含充电角色、数据传输角色。 |
+| [usbFunctionsFromString](arkts-basicservices-usb-usbfunctionsfromstring-f-sys.md#usbfunctionsfromstring) | 在设备模式下，将字符串形式的USB功能列表转化为数字掩码。 |
+| [usbFunctionsToString](arkts-basicservices-usb-usbfunctionstostring-f-sys.md#usbfunctionstostring) | 在设备模式下，将数字掩码形式的USB功能列表转化为字符串。 |
 <!--DelEnd-->
 
 ### 接口

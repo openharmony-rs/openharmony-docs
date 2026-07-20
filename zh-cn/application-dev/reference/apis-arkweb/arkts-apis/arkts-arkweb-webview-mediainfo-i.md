@@ -22,7 +22,7 @@ attributes: Record<string, string>
 
 Attributes in **<video>** or **<audio>**.
 
-**类型：** Record<string, string>
+**类型：** Record&lt;string, string&gt;
 
 **起始版本：** 12
 
@@ -92,7 +92,7 @@ headers: Record<string, string>
 
 HTTP headers that need to be included in the player's request for media resources.
 
-**类型：** Record<string, string>
+**类型：** Record&lt;string, string&gt;
 
 **起始版本：** 12
 

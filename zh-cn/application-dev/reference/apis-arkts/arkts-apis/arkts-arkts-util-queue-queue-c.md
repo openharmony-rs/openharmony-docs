@@ -14,6 +14,7 @@ Queue的特点是先进先出，在尾部增加元素，在头部删除元素。
 import { Queue } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -34,7 +35,7 @@ import { Queue } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
+| IterableIterator&lt;T&gt; | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
 
 **错误码：**
 
@@ -76,6 +77,7 @@ while(temp != undefined) {
 
 ```
 
+<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -130,6 +132,7 @@ console.info("result:", queue.length);  // result: 4
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -161,6 +164,7 @@ console.info("queue length:", queue.length);  // queue length: 0
 
 ```
 
+<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -181,7 +185,7 @@ forEach(callbackFn: (value: T, index?: number, Queue?: Queue<T>) => void, thisAr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, Queue?: Queue<T>) => void | 是 | 回调函数。 |
+| callbackFn | (value: T, index?: number, Queue?: Queue&lt;T&gt;) =&gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackfn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -209,6 +213,7 @@ queue.forEach((value: number, index: number): void => {
 
 ```
 
+<a id="getfirst"></a>
 ## getFirst
 
 ```TypeScript
@@ -236,7 +241,7 @@ getFirst(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getFirst method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -252,6 +257,7 @@ console.info("result:", result);  // result: 2
 
 ```
 
+<a id="pop"></a>
 ## pop
 
 ```TypeScript
@@ -279,7 +285,7 @@ pop(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The pop method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 

@@ -6,6 +6,7 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
+<a id="getsync"></a>
 ## getSync
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getallcontinuoustasks"></a>
 ## getAllContinuousTasks
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getAllContinuousTasks(context: Context): Promise<ContinuousTaskInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ContinuousTaskInfo[]> | Promise对象，返回所有长时任务信息。 |
+| Promise&lt;ContinuousTaskInfo[]&gt; | Promise对象，返回所有长时任务信息。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
+<a id="getallcontinuoustasks-1"></a>
 ## getAllContinuousTasks
 
 ```TypeScript
@@ -95,7 +97,7 @@ function getAllContinuousTasks(context: Context, includeSuspended: boolean): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ContinuousTaskInfo[]> | Promise对象，返回所有长时任务信息。 |
+| Promise&lt;ContinuousTaskInfo[]&gt; | Promise对象，返回所有长时任务信息。 |
 
 **错误码：**
 

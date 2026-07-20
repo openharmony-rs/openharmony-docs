@@ -14,6 +14,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="register"></a>
 ## register
 
 ```TypeScript
@@ -34,6 +35,6 @@ static register<T>(obj: AutoFinalizer<T>, heldValue: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| obj | [AutoFinalizer](arkts-arkts-util-autofinalizer-i.md)<T> | 是 | 注册到 cleaner 的对象。 |
+| obj | [AutoFinalizer](arkts-arkts-util-autofinalizer-i.md)&lt;T&gt; | 是 | 注册到 cleaner 的对象。 |
 | heldValue | T | 是 | 传递给 finalizer 的值。 |
 

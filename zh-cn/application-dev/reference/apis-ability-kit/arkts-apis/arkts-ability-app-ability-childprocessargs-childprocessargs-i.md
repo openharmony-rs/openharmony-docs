@@ -45,7 +45,7 @@ fds?: Record<string, number>
 - fds最多支持16组，每组key的最大长度为20字符。  
 - 传递到子进程中句柄数字可能会变，但是指向的文件是一致的。
 
-**类型：** Record<string, number>
+**类型：** Record&lt;string, number&gt;
 
 **起始版本：** 12
 

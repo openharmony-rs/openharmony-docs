@@ -24,7 +24,7 @@ completedBatches: Array<number>
 
 值的范围是从1到totalBatches。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 26.0.0
 

@@ -6,6 +6,7 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="getgraphicsmemorysummary"></a>
 ## getGraphicsMemorySummary
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getGraphicsMemorySummary(interval?: number): Promise<GraphicsMemorySumm
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<GraphicsMemorySummary> | promise���󣬷���Ӧ���Դ����ݡ� |
+| Promise&lt;GraphicsMemorySummary&gt; | promise���󣬷���Ӧ���Դ����ݡ� |
 
 **错误码：**
 

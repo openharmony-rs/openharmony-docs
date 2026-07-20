@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="getenterprisemanagedtips"></a>
 ## getEnterpriseManagedTips
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getEnterpriseManagedTips(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | returns the enterprise message tips. |
+| Promise&lt;string&gt; | returns the enterprise message tips. |
 
 **错误码：**
 

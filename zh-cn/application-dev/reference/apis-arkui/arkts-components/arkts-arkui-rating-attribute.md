@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="contentmodifier"></a>
 ## contentModifier
 
 ```TypeScript
@@ -30,8 +31,9 @@ contentModifier(modifier: ContentModifier<RatingConfiguration>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-common-contentmodifier-i.md)<RatingConfiguration> | 是 | 在Rating组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;RatingConfiguration&gt; | 是 | 在Rating组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
+<a id="contentmodifier-1"></a>
 ## contentModifier
 
 ```TypeScript
@@ -54,8 +56,9 @@ contentModifier(modifier: Optional<ContentModifier<RatingConfiguration>>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [Optional](arkts-arkui-optional-t.md)<ContentModifier<RatingConfiguration>> | 是 | 在Rating组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](arkts-arkui-optional-t.md)&lt;ContentModifier&lt;RatingConfiguration&gt;&gt; | 是 | 在Rating组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
+<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -78,8 +81,9 @@ onChange(callback: (value: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: number) => void | 是 |  |
+| callback | (value: number) =&gt; void | 是 |  |
 
+<a id="onchange-1"></a>
 ## onChange
 
 ```TypeScript
@@ -104,8 +108,9 @@ onChange(callback: Optional<OnRatingChangeCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)<OnRatingChangeCallback> | 是 | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](arkts-arkui-optional-t.md)&lt;OnRatingChangeCallback&gt; | 是 | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
+<a id="starstyle"></a>
 ## starStyle
 
 ```TypeScript
@@ -132,8 +137,9 @@ starStyle(options: StarStyleOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [StarStyleOptions](arkts-arkui-rating-starstyleoptions-i.md) | 是 | 评分的样式。<br/>**说明：** <br/>当backgroundUri、foregroundUri或secondaryUri设置的图片路径错误时，图片将保持上次的图片显示结果。如果首次设置错误，则不显示图片。<br/>当backgroundUri或foregroundUri设置为undefined或空字符串时，Rating组件将加载系统默认星型图源。<br/>当secondaryUri未设置或设置为undefined或空字符串时，将优先使用backgroundUri，效果等同于仅设置foregroundUri和backgroundUri。<br>**起始版本：** 18 |
+| options | [StarStyleOptions](arkts-arkui-starstyleoptions-i.md) | 是 | 评分的样式。<br/>**说明：** <br/>当backgroundUri、foregroundUri或secondaryUri设置的图片路径错误时，图片将保持上次的图片显示结果。如果首次设置错误，则不显示图片。<br/>当backgroundUri或foregroundUri设置为undefined或空字符串时，Rating组件将加载系统默认星型图源。<br/>当secondaryUri未设置或设置为undefined或空字符串时，将优先使用backgroundUri，效果等同于仅设置foregroundUri和backgroundUri。<br>**起始版本：** 18 |
 
+<a id="starstyle-1"></a>
 ## starStyle
 
 ```TypeScript
@@ -164,8 +170,9 @@ starStyle(options: Optional<StarStyleOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Optional](arkts-arkui-optional-t.md)<StarStyleOptions> | 是 | 评分的样式。<br/>**说明：** <br/>当backgroundUri、foregroundUri或secondaryUri设置的图片路径错误时，图片将保持上次的图片显示结果。如果首次设置错误，则不显示图片。<br/>当backgroundUri或foregroundUri设置为undefined或空字符串时，Rating组件将加载系统默认星型图源。<br/>当secondaryUri未设置或设置为undefined或空字符串时，将优先使用backgroundUri，效果等同于仅设置foregroundUri和backgroundUri。 |
+| options | [Optional](arkts-arkui-optional-t.md)&lt;StarStyleOptions&gt; | 是 | 评分的样式。<br/>**说明：** <br/>当backgroundUri、foregroundUri或secondaryUri设置的图片路径错误时，图片将保持上次的图片显示结果。如果首次设置错误，则不显示图片。<br/>当backgroundUri或foregroundUri设置为undefined或空字符串时，Rating组件将加载系统默认星型图源。<br/>当secondaryUri未设置或设置为undefined或空字符串时，将优先使用backgroundUri，效果等同于仅设置foregroundUri和backgroundUri。 |
 
+<a id="stars"></a>
 ## stars
 
 ```TypeScript
@@ -190,6 +197,7 @@ stars(value: number)
 | --- | --- | --- | --- |
 | value | number | 是 | 设置评分总数。<br/>默认值：5 |
 
+<a id="stars-1"></a>
 ## stars
 
 ```TypeScript
@@ -214,8 +222,9 @@ stars(starCount: Optional<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| starCount | [Optional](arkts-arkui-optional-t.md)<number> | 是 | 设置评分总数。<br/>当starCount的值为undefined时，默认值：5 |
+| starCount | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 设置评分总数。<br/>当starCount的值为undefined时，默认值：5 |
 
+<a id="stepsize"></a>
 ## stepSize
 
 ```TypeScript
@@ -240,6 +249,7 @@ stepSize(value: number)
 | --- | --- | --- | --- |
 | value | number | 是 | 操作评级的步长。<br/>默认值：0.5<br/>取值范围：[0.1, stars] |
 
+<a id="stepsize-1"></a>
 ## stepSize
 
 ```TypeScript
@@ -264,5 +274,5 @@ stepSize(size: Optional<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [Optional](arkts-arkui-optional-t.md)<number> | 是 | 操作评级的步长。<br/>当size的值为undefined时，默认值：0.5<br/>取值范围：[0.1, stars] |
+| size | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 操作评级的步长。<br/>当size的值为undefined时，默认值：0.5<br/>取值范围：[0.1, stars] |
 

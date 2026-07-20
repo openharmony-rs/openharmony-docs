@@ -6,6 +6,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="on"></a>
 ## on('add' | 'remove' | 'change')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function on(type: 'add' | 'remove' | 'change', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'add' \| 'remove' \| 'change' | 是 | 监听事件。<br/>- type为"add"，表示增加显示设备事件。例如：插入显示器。<br/>- type为"remove"，表示移除显示设备事件。例如：移除显示器。<br/>- type为"change"，表示改变显示设备事件。例如：显示器方向改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**
 
@@ -49,6 +50,7 @@ display.on('add', callback);
 ```
 
 
+<a id="on-1"></a>
 ## on('add' | 'remove' | 'change')
 
 ```TypeScript
@@ -70,7 +72,7 @@ function on(type: 'add' | 'remove' | 'change', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'add' \| 'remove' \| 'change' | 是 | 监听事件。<br/>- type为"add"，表示增加显示设备事件。例如：插入显示器。<br/>- type为"remove"，表示移除显示设备事件。例如：移除显示器。<br/>- type为"change"，表示改变显示设备事件。例如：显示器方向改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**
 
@@ -92,6 +94,7 @@ display.on('add', callback);
 ```
 
 
+<a id="on-2"></a>
 ## on('add' | 'remove' | 'change')
 
 ```TypeScript
@@ -113,7 +116,7 @@ function on(type: 'add' | 'remove' | 'change', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'add' \| 'remove' \| 'change' | 是 | 监听事件。<br/>- type为"add"，表示增加显示设备事件。例如：插入显示器。<br/>- type为"remove"，表示移除显示设备事件。例如：移除显示器。<br/>- type为"change"，表示改变显示设备事件。例如：显示器方向改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**
 
@@ -135,6 +138,7 @@ display.on('add', callback);
 ```
 
 
+<a id="on-3"></a>
 ## on('foldStatusChange')
 
 ```TypeScript
@@ -143,11 +147,11 @@ function on(type: 'foldStatusChange', callback: Callback<FoldStatus>): void
 
 开启折叠设备折叠状态变化的监听。
 
-本接口监听设备物理折叠状态的变化，如果要监听屏幕显示模式的变化，需要使用[display.on('foldDisplayModeChange')](arkts-arkui-display-on-f.md#on-8)接口。
+本接口监听设备物理折叠状态的变化，如果要监听屏幕显示模式的变化，需要使用[display.on('foldDisplayModeChange')](display.on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>))接口。
 
 两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。
 
-若需监听当前显示内容是显示在折叠设备的内屏还是外屏，请使用[display.on('foldDisplayModeChange')](arkts-arkui-display-on-f.md#on-8)。
+若需监听当前显示内容是显示在折叠设备的内屏还是外屏，请使用[display.on('foldDisplayModeChange')](display.on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>))。
 
 **起始版本：** 10
 
@@ -162,7 +166,7 @@ function on(type: 'foldStatusChange', callback: Callback<FoldStatus>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'foldStatusChange' | 是 | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<FoldStatus> | 是 | 回调函数。表示折叠设备折叠状态。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FoldStatus&gt; | 是 | 回调函数。表示折叠设备折叠状态。 |
 
 **错误码：**
 
@@ -188,6 +192,7 @@ display.on('foldStatusChange', callback);
 ```
 
 
+<a id="on-4"></a>
 ## on('foldAngleChange')
 
 ```TypeScript
@@ -209,7 +214,7 @@ function on(type: 'foldAngleChange', callback: Callback<Array<number>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'foldAngleChange' | 是 | 监听事件，固定为'foldAngleChange'，表示折叠设备折叠角度发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<Array<number>> | 是 | 回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。如果是双折轴设备，则数组返回两个角度值，第一个值是折轴一的折叠角度值，第二个值是折轴二的折叠角度值。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。如果是双折轴设备，则数组返回两个角度值，第一个值是折轴一的折叠角度值，第二个值是折轴二的折叠角度值。 |
 
 **错误码：**
 
@@ -231,6 +236,7 @@ display.on('foldAngleChange', callback);
 ```
 
 
+<a id="on-5"></a>
 ## on('captureStatusChange')
 
 ```TypeScript
@@ -252,7 +258,7 @@ function on(type: 'captureStatusChange', callback: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'captureStatusChange' | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。 |
 
 **错误码：**
 
@@ -274,6 +280,7 @@ display.on('captureStatusChange', callback);
 ```
 
 
+<a id="on-6"></a>
 ## on('foldDisplayModeChange')
 
 ```TypeScript
@@ -282,7 +289,7 @@ function on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>):
 
 开启折叠设备屏幕显示模式变化的监听。
 
-本接口监听设备屏幕显示模式的变化，如果要监听设备物理折叠状态的变化，需要使用[display.on('foldStatusChange')](arkts-arkui-display-on-f.md#on-5)接口。
+本接口监听设备屏幕显示模式的变化，如果要监听设备物理折叠状态的变化，需要使用[display.on('foldStatusChange')](display.on(type: 'foldStatusChange', callback: Callback<FoldStatus>))接口。
 
 两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。
 
@@ -299,7 +306,7 @@ function on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'foldDisplayModeChange' | 是 | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<FoldDisplayMode> | 是 | 回调函数。表示折叠设备屏幕显示模式。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FoldDisplayMode&gt; | 是 | 回调函数。表示折叠设备屏幕显示模式。 |
 
 **错误码：**
 
@@ -325,6 +332,7 @@ display.on('foldDisplayModeChange', callback);
 ```
 
 
+<a id="on-7"></a>
 ## on('brightnessInfoChange')
 
 ```TypeScript
@@ -346,7 +354,7 @@ function on(type: 'brightnessInfoChange', callback: BrightnessCallback<number, B
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'brightnessInfoChange' | 是 | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
-| callback | [BrightnessCallback](arkts-arkui-display-brightnesscallback-t.md)<number, BrightnessInfo> | 是 | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
+| callback | [BrightnessCallback](arkts-arkui-display-brightnesscallback-t.md)&lt;number, BrightnessInfo&gt; | 是 | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
 
 **错误码：**
 

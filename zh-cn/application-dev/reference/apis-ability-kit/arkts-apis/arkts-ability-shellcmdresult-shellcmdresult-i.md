@@ -4,7 +4,7 @@
 
 > **说明：**  
 >  
-> 本模块接口仅可在[单元测试框架](../../../../application-test/unittest-guidelines.md)中使用。
+> 本模块接口仅可在[单元测试框架](docroot://application-test/unittest-guidelines.md)中使用。
 
 **起始版本：** 8
 

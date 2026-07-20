@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="addprinter"></a>
 ## addPrinter
 
 ```TypeScript
@@ -37,7 +38,7 @@ function addPrinter(printerName: string, uri: string, ppdName?: string, options?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回添加打印机成功与否的结果。 |
+| Promise&lt;boolean&gt; | Promise对象，返回添加打印机成功与否的结果。 |
 
 **错误码：**
 

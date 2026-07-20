@@ -18,7 +18,7 @@ readonly packages: Array<PackageConfig>
 
 pack.info的包信息。
 
-**类型：** Array<PackageConfig>
+**类型：** Array&lt;PackageConfig&gt;
 
 **起始版本：** 9
 

@@ -54,7 +54,7 @@ onBlurDecrease?: () => void
 
 值为undefined时，按默认值处理。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 11
 
@@ -78,7 +78,7 @@ onBlurIncrease?: () => void
 
 值为undefined时，按默认值处理。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 11
 
@@ -102,7 +102,7 @@ onFocusDecrease?: () => void
 
 值为undefined时，按默认值处理。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 11
 
@@ -126,7 +126,7 @@ onFocusIncrease?: () => void
 
 值为undefined时，按默认值处理。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 11
 

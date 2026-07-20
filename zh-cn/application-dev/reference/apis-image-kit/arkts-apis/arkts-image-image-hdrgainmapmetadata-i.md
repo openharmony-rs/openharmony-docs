@@ -54,7 +54,7 @@ channels: Array<GainmapChannel>
 
 The per-channel metadata.
 
-**类型：** Array<GainmapChannel>
+**类型：** Array&lt;GainmapChannel&gt;
 
 **起始版本：** 12
 

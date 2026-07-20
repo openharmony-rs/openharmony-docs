@@ -6,6 +6,7 @@
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="openauthorizedialog"></a>
 ## openAuthorizeDialog
 
 ```TypeScript
@@ -34,7 +35,7 @@ function openAuthorizeDialog(context: common.Context): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。表示返回授权证书uri的结果，最大长度为256字节。 |
+| Promise&lt;string&gt; | Promise对象。表示返回授权证书uri的结果，最大长度为256字节。 |
 
 **错误码：**
 
@@ -72,6 +73,7 @@ try {
 ```
 
 
+<a id="openauthorizedialog-1"></a>
 ## openAuthorizeDialog
 
 ```TypeScript
@@ -101,7 +103,7 @@ function openAuthorizeDialog(context: common.Context, authorizeRequest: Authoriz
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CertReference> | Promise对象，返回授权证书引用的结果。 |
+| Promise&lt;CertReference&gt; | Promise对象，返回授权证书引用的结果。 |
 
 **错误码：**
 

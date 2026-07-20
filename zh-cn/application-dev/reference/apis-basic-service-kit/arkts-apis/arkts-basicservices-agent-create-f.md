@@ -6,6 +6,7 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -16,7 +17,7 @@ function create(context: BaseContext, config: Config, callback: AsyncCallback<Ta
 
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -34,7 +35,7 @@ function create(context: BaseContext, config: Config, callback: AsyncCallback<Ta
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-basecontext-t.md) | 是 | 基于应用程序的上下文。 |
 | config | [Config](arkts-basicservices-agent-config-i.md) | 是 | 上传/下载任务的配置信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Task> | 是 | 回调函数。当创建上传或下载任务成功，err为undefined，data为获取到的Task对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Task&gt; | 是 | 回调函数。当创建上传或下载任务成功，err为undefined，data为获取到的Task对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -48,6 +49,7 @@ function create(context: BaseContext, config: Config, callback: AsyncCallback<Ta
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode. |
 
 
+<a id="create-1"></a>
 ## create
 
 ```TypeScript
@@ -58,7 +60,7 @@ function create(context: BaseContext, config: Config): Promise<Task>
 
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -81,7 +83,7 @@ function create(context: BaseContext, config: Config): Promise<Task>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Task> | Promise对象。返回任务配置信息的Promise对象。 |
+| Promise&lt;Task&gt; | Promise对象。返回任务配置信息的Promise对象。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getisocountrycodeforsim"></a>
 ## getISOCountryCodeForSim
 
 ```TypeScript
@@ -25,7 +26,7 @@ Obtains the ISO country code of the SIM card in a specified slot.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the card slot index number,ranging from 0 to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | Indicates the callback for getting the country code defined in ISO 3166-2; returns an empty string if no SIM card is inserted. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | Indicates the callback for getting the country code defined in ISO 3166-2; returns an empty string if no SIM card is inserted. |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ sim.getISOCountryCodeForSim(0, (err: BusinessError, data: string) => {
 ```
 
 
+<a id="getisocountrycodeforsim-1"></a>
 ## getISOCountryCodeForSim
 
 ```TypeScript
@@ -75,7 +77,7 @@ Obtains the ISO country code of the SIM card in a specified slot.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Returns the country code defined in ISO 3166-2;returns an empty string if no SIM card is inserted. |
+| Promise&lt;string&gt; | Returns the country code defined in ISO 3166-2;returns an empty string if no SIM card is inserted. |
 
 **错误码：**
 

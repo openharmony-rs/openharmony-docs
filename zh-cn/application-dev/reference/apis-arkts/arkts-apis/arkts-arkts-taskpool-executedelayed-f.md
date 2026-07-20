@@ -6,6 +6,7 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="executedelayed"></a>
 ## executeDelayed
 
 ```TypeScript
@@ -34,7 +35,7 @@ function executeDelayed(delayTime: number, task: Task, priority?: Priority): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Object> | Promise对象，返回任务函数的执行结果。 |
+| Promise&lt;Object&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ taskpool.executeDelayed(1000, task).then(() => { // 1000: delayTime is 1000ms
 ```
 
 
+<a id="executedelayed-1"></a>
 ## executeDelayed
 
 ```TypeScript
@@ -90,14 +92,14 @@ function executeDelayed<A extends Array<Object>, R>(delayTime: number, task: Gen
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | delayTime | number | 是 | 延时时间，单位为ms。delayTime值必须要大于等于0。该值应为整数。<br>单位：毫秒。 |
-| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)<A, R> | 是 | 需要延时执行的泛型任务。 |
+| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)&lt;A, R&gt; | 是 | 需要延时执行的泛型任务。 |
 | priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 延时执行的任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<R> | Promise对象，返回任务函数的执行结果。 |
+| Promise&lt;R&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 

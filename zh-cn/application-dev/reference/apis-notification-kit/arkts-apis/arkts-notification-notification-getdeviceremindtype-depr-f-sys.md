@@ -1,5 +1,6 @@
 # getDeviceRemindType（系统接口）
 
+<a id="getdeviceremindtype"></a>
 ## getDeviceRemindType
 
 ```TypeScript
@@ -26,9 +27,10 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DeviceRemindType> | 是 | 获取通知提醒方式的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceRemindType&gt; | 是 | 获取通知提醒方式的回调函数。 |
 
 
+<a id="getdeviceremindtype-1"></a>
 ## getDeviceRemindType
 
 ```TypeScript
@@ -55,5 +57,5 @@ function getDeviceRemindType(): Promise<DeviceRemindType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DeviceRemindType> | Promise方式返回获取通知提醒方式的结果。 |
+| Promise&lt;DeviceRemindType&gt; | Promise方式返回获取通知提醒方式的结果。 |
 

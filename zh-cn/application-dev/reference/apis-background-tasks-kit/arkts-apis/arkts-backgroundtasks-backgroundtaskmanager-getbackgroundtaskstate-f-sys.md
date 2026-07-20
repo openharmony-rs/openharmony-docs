@@ -6,6 +6,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getbackgroundtaskstate"></a>
 ## getBackgroundTaskState
 
 ```TypeScript

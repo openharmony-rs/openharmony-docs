@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="stopcasting"></a>
 ## stopCasting
 
 ```TypeScript
@@ -27,7 +28,7 @@ function stopCasting(session: SessionToken, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | session | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) | 是 | 会话令牌。SessionToken表示单个token。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当成功结束投播，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当成功结束投播，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ avSession.stopCasting(myToken, () => {
 ```
 
 
+<a id="stopcasting-1"></a>
 ## stopCasting
 
 ```TypeScript
@@ -77,7 +79,7 @@ function stopCasting(session: SessionToken): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当成功结束投播，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当成功结束投播，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

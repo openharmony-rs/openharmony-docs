@@ -6,6 +6,7 @@
 import { PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
+<a id="push"></a>
 ## push
 
 ```TypeScript
@@ -27,7 +28,7 @@ function push(param: PushParameters, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | param | [PushParameters](arkts-arkui-plugincomponentmanager-pushparameters-i.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 |  |
 
 **示例：**
 

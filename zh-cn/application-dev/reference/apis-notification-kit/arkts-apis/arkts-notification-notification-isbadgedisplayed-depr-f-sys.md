@@ -1,5 +1,6 @@
 # isBadgeDisplayed（系统接口）
 
+<a id="isbadgedisplayed"></a>
 ## isBadgeDisplayed
 
 ```TypeScript
@@ -27,9 +28,10 @@ function isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback<boolean>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 指定应用的包信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 获取角标使能状态回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 获取角标使能状态回调函数。 |
 
 
+<a id="isbadgedisplayed-1"></a>
 ## isBadgeDisplayed
 
 ```TypeScript
@@ -62,5 +64,5 @@ function isBadgeDisplayed(bundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 以Promise形式返回获取指定应用的角标使能状态。 |
+| Promise&lt;boolean&gt; | 以Promise形式返回获取指定应用的角标使能状态。 |
 

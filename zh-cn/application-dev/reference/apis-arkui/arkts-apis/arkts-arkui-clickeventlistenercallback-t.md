@@ -20,6 +20,6 @@ declare type ClickEventListenerCallback = (event: ClickEvent, node?: FrameNode) 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | ClickEvent | 是 | 触发事件监听的点击事件的相关信息。 |
-| node | FrameNode | 否 | 触发事件监听的点击事件所绑定的组件。 |
+| event | [ClickEvent](../arkts-components/arkts-arkui-clickevent-i.md) | 是 | 触发事件监听的点击事件的相关信息。  |
+| node | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | 否 | 触发事件监听的点击事件所绑定的组件。  |
 

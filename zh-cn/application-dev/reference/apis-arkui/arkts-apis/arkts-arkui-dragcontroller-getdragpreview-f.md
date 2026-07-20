@@ -6,6 +6,7 @@
 import { dragController } from '@kit.ArkUI';
 ```
 
+<a id="getdragpreview"></a>
 ## getDragPreview
 
 ```TypeScript

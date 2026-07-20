@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="deleteapn"></a>
 ## deleteApn
 
 ```TypeScript

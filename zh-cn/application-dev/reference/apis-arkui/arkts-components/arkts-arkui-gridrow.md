@@ -32,7 +32,7 @@ GridRow(option?: GridRowOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| option | GridRowOptions | 否 |  |
+| option | [GridRowOptions](arkts-arkui-gridrowoptions-i.md) | 否 |  |
 
 ## 汇总
 

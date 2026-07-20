@@ -14,6 +14,7 @@ animator简易动画参数对象。与AnimatorOptions相比，部分动画参数
 import { AnimatorOptions, SimpleAnimatorOptions, AnimatorResult } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -63,6 +64,7 @@ struct AnimatorTest {
 
 ```
 
+<a id="delay"></a>
 ## delay
 
 ```TypeScript
@@ -117,6 +119,7 @@ struct AnimatorTest {
 
 ```
 
+<a id="direction"></a>
 ## direction
 
 ```TypeScript
@@ -139,7 +142,7 @@ direction(direction: PlayMode): SimpleAnimatorOptions
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| direction | [PlayMode](arkts-arkui-enums-playmode-e.md) | 是 | 设置animator动画播放方向。<br/>默认值：PlayMode.Normal |
+| direction | [PlayMode](arkts-arkui-playmode-e.md) | 是 | 设置animator动画播放方向。<br/>默认值：PlayMode.Normal |
 
 **返回值：**
 
@@ -147,6 +150,7 @@ direction(direction: PlayMode): SimpleAnimatorOptions
 | --- | --- |
 | [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) | Animator简易动画参数对象。 |
 
+<a id="duration"></a>
 ## duration
 
 ```TypeScript
@@ -201,6 +205,7 @@ struct AnimatorTest {
 
 ```
 
+<a id="easing"></a>
 ## easing
 
 ```TypeScript
@@ -255,6 +260,7 @@ struct AnimatorTest {
 
 ```
 
+<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -277,7 +283,7 @@ fill(fillMode: FillMode): SimpleAnimatorOptions
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fillMode | [FillMode](arkts-arkui-enums-fillmode-e.md) | 是 | 设置animator动画填充方式，影响动画delay期间和结束时的表现。<br/>默认值：FillMode.Forwards |
+| fillMode | [FillMode](arkts-arkui-fillmode-e.md) | 是 | 设置animator动画填充方式，影响动画delay期间和结束时的表现。<br/>默认值：FillMode.Forwards |
 
 **返回值：**
 
@@ -285,6 +291,7 @@ fill(fillMode: FillMode): SimpleAnimatorOptions
 | --- | --- |
 | [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) | Animator简易动画参数对象。 |
 
+<a id="iterations"></a>
 ## iterations
 
 ```TypeScript

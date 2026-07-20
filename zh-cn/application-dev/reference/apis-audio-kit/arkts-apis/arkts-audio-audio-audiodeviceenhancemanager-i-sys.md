@@ -14,6 +14,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="getsoundcardinfo"></a>
 ## getSoundCardInfo
 
 ```TypeScript
@@ -36,7 +37,7 @@ getSoundCardInfo(): Promise<SoundCardInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SoundCardInfo> | Promise用于返回声卡信息。 |
+| Promise&lt;SoundCardInfo&gt; | Promise用于返回声卡信息。 |
 
 **错误码：**
 

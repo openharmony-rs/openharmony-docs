@@ -6,6 +6,7 @@
 import { proxyChannelManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="openproxychannel"></a>
 ## openProxyChannel
 
 ```TypeScript
@@ -34,7 +35,7 @@ function openProxyChannel(channelInfo: ChannelInfo): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 返回代理通道的channelId，取值范围为1~2147483647。channelId的生命周期和代理通道生命周期相同，不关闭代理时，传入相同入参将返回相同channelId。 |
+| Promise&lt;number&gt; | 返回代理通道的channelId，取值范围为1~2147483647。channelId的生命周期和代理通道生命周期相同，不关闭代理时，传入相同入参将返回相同channelId。 |
 
 **错误码：**
 

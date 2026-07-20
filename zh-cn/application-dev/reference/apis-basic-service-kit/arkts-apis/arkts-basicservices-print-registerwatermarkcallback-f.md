@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="registerwatermarkcallback"></a>
 ## registerWatermarkCallback
 
 ```TypeScript

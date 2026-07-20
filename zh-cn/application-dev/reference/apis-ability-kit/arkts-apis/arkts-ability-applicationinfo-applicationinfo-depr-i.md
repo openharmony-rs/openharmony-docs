@@ -1,6 +1,6 @@
 # ApplicationInfo
 
-应用程序信息，未做特殊说明的属性，均通过[bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo-3)获取。
+应用程序信息，未做特殊说明的属性，均通过[bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo-1)获取。
 
 > **说明：**  
 >  
@@ -262,9 +262,9 @@ readonly metaData: Map<string, Array<CustomizeData>>
 
 应用程序的自定义元信息。
 
-通过调用[bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo-3)接口时，传入GET_APPLICATION_INFO_WITH_METADATA获取。
+通过调用[bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo-1)接口时，传入GET_APPLICATION_INFO_WITH_METADATA获取。
 
-**类型：** Map<string, Array<CustomizeData>>
+**类型：** Map&lt;string, Array&lt;CustomizeData&gt;&gt;
 
 **默认值：** Indicates the metadata of module
 
@@ -286,7 +286,7 @@ readonly moduleInfos: Array<ModuleInfo>
 
 应用程序的模块信息。
 
-**类型：** Array<ModuleInfo>
+**类型：** Array&lt;ModuleInfo&gt;
 
 **默认值：** Indicates module information about an application
 
@@ -308,7 +308,7 @@ readonly moduleSourceDirs: Array<string>
 
 应用程序的资源存放的相对路径。不能拼接路径访问资源文件，请使用[资源管理接口](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)访问资源。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** Indicates the path storing the module resources of the application
 
@@ -350,9 +350,9 @@ readonly permissions: Array<string>
 
 访问应用程序所需的权限。
 
-通过调用[bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo-3)接口时，传入GET_APPLICATION_INFO_WITH_PERMISSION获取。
+通过调用[bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo-1)接口时，传入GET_APPLICATION_INFO_WITH_PERMISSION获取。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** Indicates the permissions required for accessing the application.
 

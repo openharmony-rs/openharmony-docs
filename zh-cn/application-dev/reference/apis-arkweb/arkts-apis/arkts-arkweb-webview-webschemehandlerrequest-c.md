@@ -14,6 +14,7 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="getframeurl"></a>
 ## getFrameUrl
 
 ```TypeScript
@@ -34,6 +35,7 @@ getFrameUrl(): string
 | --- | --- |
 | string | 返回触发此请求的Frame的URL。 |
 
+<a id="getheader"></a>
 ## getHeader
 
 ```TypeScript
@@ -54,8 +56,9 @@ getHeader(): Array<WebHeader>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<WebHeader> | 返回资源请求头信息。 |
+| Array&lt;WebHeader&gt; | 返回资源请求头信息。 |
 
+<a id="gethttpbodystream"></a>
 ## getHttpBodyStream
 
 ```TypeScript
@@ -78,6 +81,7 @@ getHttpBodyStream(): WebHttpBodyStream | null
 | --- | --- |
 | [WebHttpBodyStream](arkts-arkweb-webview-webhttpbodystream-c.md) | Return http body stream. If request has no http body stream, return null. |
 
+<a id="getreferrer"></a>
 ## getReferrer
 
 ```TypeScript
@@ -100,6 +104,7 @@ getReferrer(): string
 | --- | --- |
 | string | 获取到的referrer。 |
 
+<a id="getrequestmethod"></a>
 ## getRequestMethod
 
 ```TypeScript
@@ -122,6 +127,7 @@ getRequestMethod(): string
 | --- | --- |
 | string | 返回请求方法。 |
 
+<a id="getrequestresourcetype"></a>
 ## getRequestResourceType
 
 ```TypeScript
@@ -142,6 +148,7 @@ getRequestResourceType(): WebResourceType
 | --- | --- |
 | [WebResourceType](arkts-arkweb-webview-webresourcetype-e.md) | 返回资源请求的资源类型。 |
 
+<a id="getrequesturl"></a>
 ## getRequestUrl
 
 ```TypeScript
@@ -164,6 +171,7 @@ getRequestUrl(): string
 | --- | --- |
 | string | 返回资源请求的URL信息。 |
 
+<a id="hasgesture"></a>
 ## hasGesture
 
 ```TypeScript
@@ -186,6 +194,7 @@ hasGesture(): boolean
 | --- | --- |
 | boolean | 返回资源请求是否与手势（如点击）相关联，如果返回资源请求与手势相关联则返回true，否则返回false。 |
 
+<a id="ismainframe"></a>
 ## isMainFrame
 
 ```TypeScript

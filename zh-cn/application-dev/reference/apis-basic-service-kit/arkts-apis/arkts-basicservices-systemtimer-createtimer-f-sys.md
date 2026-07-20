@@ -6,6 +6,7 @@
 import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
+<a id="createtimer"></a>
 ## createTimer
 
 ```TypeScript
@@ -32,7 +33,7 @@ function createTimer(options: TimerOptions, callback: AsyncCallback<number>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [TimerOptions](arkts-basicservices-systemtimer-timeroptions-i-sys.md) | 是 | 创建系统定时器的初始化选项，包括定时器类型、是否循环触发、间隔时间、WantAgent通知机制等。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，返回定时器的ID。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回定时器的ID。 |
 
 **错误码：**
 
@@ -66,6 +67,7 @@ try {
 ```
 
 
+<a id="createtimer-1"></a>
 ## createTimer
 
 ```TypeScript
@@ -97,7 +99,7 @@ function createTimer(options: TimerOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回定时器的ID。 |
+| Promise&lt;number&gt; | Promise对象，返回定时器的ID。 |
 
 **错误码：**
 

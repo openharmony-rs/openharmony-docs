@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="discoverusbprinters"></a>
 ## discoverUsbPrinters
 
 ```TypeScript
@@ -28,7 +29,7 @@ function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<PrinterInformation>> | Promise对象，返回发现到的usb打印机信息。 |
+| Promise&lt;Array&lt;PrinterInformation&gt;&gt; | Promise对象，返回发现到的usb打印机信息。 |
 
 **错误码：**
 

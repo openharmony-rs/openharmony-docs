@@ -1,5 +1,6 @@
 # grantToolPermissionsByUser（系统接口）
 
+<a id="granttoolpermissionsbyuser"></a>
 ## grantToolPermissionsByUser
 
 ```TypeScript
@@ -28,7 +29,7 @@ export function grantToolPermissionsByUser(userAuthResult: UserAuthResult[]): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<TicketInfo[]> | Promise用于返回${TicketInfo[]}。 |
+| Promise&lt;TicketInfo[]&gt; | Promise用于返回${TicketInfo[]}。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="off"></a>
 ## off('continuousTaskCancel')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function off(type: 'continuousTaskCancel', callback?: Callback<ContinuousTaskCan
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'continuousTaskCancel' | 是 | 取消长时任务，固定取值为'continuousTaskCancel'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ContinuousTaskCancelInfo> | 否 | 需要取消监听的回调函数，未传入则取消所有注册回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ContinuousTaskCancelInfo&gt; | 否 | 需要取消监听的回调函数，未传入则取消所有注册回调。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
+<a id="off-1"></a>
 ## off('continuousTaskSuspend')
 
 ```TypeScript
@@ -82,7 +84,7 @@ function off(type: 'continuousTaskSuspend', callback?: Callback<ContinuousTaskSu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'continuousTaskSuspend' | 是 | 事件回调类型，固定取值为'continuousTaskSuspend'，表示长时任务暂停。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ContinuousTaskSuspendInfo> | 否 | 需要取消监听的回调函数，未传入则取消所有注册的暂停回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ContinuousTaskSuspendInfo&gt; | 否 | 需要取消监听的回调函数，未传入则取消所有注册的暂停回调。 |
 
 **错误码：**
 
@@ -117,6 +119,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
+<a id="off-2"></a>
 ## off('continuousTaskActive')
 
 ```TypeScript
@@ -138,7 +141,7 @@ function off(type: 'continuousTaskActive', callback?: Callback<ContinuousTaskAct
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'continuousTaskActive' | 是 | 事件回调类型，固定取值为'continuousTaskActive'，表示长时任务激活。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ContinuousTaskActiveInfo> | 否 | 需要取消监听的回调函数，未传入则取消所有注册的激活回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ContinuousTaskActiveInfo&gt; | 否 | 需要取消监听的回调函数，未传入则取消所有注册的激活回调。 |
 
 **错误码：**
 

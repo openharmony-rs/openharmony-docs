@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="attributemodifier"></a>
 ## attributeModifier
 
 ```TypeScript
@@ -32,8 +33,9 @@ attributeModifier(modifier: AttributeModifier<ContainerSpanAttribute>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [AttributeModifier](arkts-arkui-common-attributemodifier-i.md)<ContainerSpanAttribute> | 是 | 动态设置组件的属性。 |
+| modifier | [AttributeModifier](arkts-arkui-attributemodifier-i.md)&lt;ContainerSpanAttribute&gt; | 是 | 动态设置组件的属性。 |
 
+<a id="textbackgroundstyle"></a>
 ## textBackgroundStyle
 
 ```TypeScript
@@ -56,5 +58,5 @@ Span的背景样式
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [TextBackgroundStyle](arkts-arkui-span-textbackgroundstyle-i.md) | 是 | The background style of span. |
+| style | [TextBackgroundStyle](arkts-arkui-textbackgroundstyle-i.md) | 是 | The background style of span. |
 

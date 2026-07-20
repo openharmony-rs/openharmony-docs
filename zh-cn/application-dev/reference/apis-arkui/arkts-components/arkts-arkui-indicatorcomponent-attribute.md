@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="count"></a>
 ## count
 
 ```TypeScript
@@ -38,6 +39,7 @@ count(totalCount: number)
 | --- | --- | --- | --- |
 | totalCount | number | 是 |  |
 
+<a id="initialindex"></a>
 ## initialIndex
 
 ```TypeScript
@@ -66,6 +68,7 @@ initialIndex(index: number)
 | --- | --- | --- | --- |
 | index | number | 是 |  |
 
+<a id="loop"></a>
 ## loop
 
 ```TypeScript
@@ -94,6 +97,7 @@ loop(isLoop: boolean)
 | --- | --- | --- | --- |
 | isLoop | boolean | 是 |  |
 
+<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -118,8 +122,9 @@ Called when the index value changes.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<number> | 是 |  |
+| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 |  |
 
+<a id="style"></a>
 ## style
 
 ```TypeScript
@@ -144,8 +149,9 @@ style(indicatorStyle: DotIndicator | DigitIndicator)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indicatorStyle | DotIndicator \| DigitIndicator | 是 | 可选导航点指示器样式。<br/> - DotIndicator：圆点指示器样式。<br/> -DigitIndicator：数字指示器样式。<br/>  默认类型：DotIndicator。 |
+| indicatorStyle | [DotIndicator](arkts-arkui-dotindicator-c.md) \| DigitIndicator | 是 | 可选导航点指示器样式。<br/> - DotIndicator：圆点指示器样式。<br/> -DigitIndicator：数字指示器样式。<br/>  默认类型：DotIndicator。 |
 
+<a id="vertical"></a>
 ## vertical
 
 ```TypeScript

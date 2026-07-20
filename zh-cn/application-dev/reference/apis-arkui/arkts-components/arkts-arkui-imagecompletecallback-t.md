@@ -20,5 +20,5 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | ImageLoadResult | 是 | 图片数据加载成功和解码成功触发回调时返回的对象。 |
+| result | [ImageLoadResult](arkts-arkui-imageloadresult-i.md) | 是 | 图片数据加载成功和解码成功触发回调时返回的对象。  |
 

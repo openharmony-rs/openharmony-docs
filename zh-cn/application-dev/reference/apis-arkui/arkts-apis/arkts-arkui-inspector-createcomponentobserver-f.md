@@ -6,6 +6,7 @@
 import { inspector } from '@kit.ArkUI';
 ```
 
+<a id="createcomponentobserver"></a>
 ## createComponentObserver
 
 ```TypeScript

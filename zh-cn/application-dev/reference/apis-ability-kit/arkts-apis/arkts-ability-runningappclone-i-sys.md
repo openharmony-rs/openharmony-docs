@@ -36,7 +36,7 @@ pids: Array<number>
 
 应用的进程ID集合。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 12
 

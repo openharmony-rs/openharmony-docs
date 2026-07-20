@@ -6,6 +6,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createaudioplayer"></a>
 ## createAudioPlayer
 
 ```TypeScript
@@ -22,7 +23,7 @@ function createAudioPlayer(): AudioPlayer
 
 **废弃版本：** 9
 
-**替代接口：** createAVPlayer(callback:
+**替代接口：** [createAVPlayer(callback:](arkts-media-media-createavplayer-f.md#createavplayer-1)
 
 <!--Device-media-function createAudioPlayer(): AudioPlayer--><!--Device-media-function createAudioPlayer(): AudioPlayer-End-->
 

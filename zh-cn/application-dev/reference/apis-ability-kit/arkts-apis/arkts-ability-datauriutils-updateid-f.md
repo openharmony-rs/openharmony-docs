@@ -6,6 +6,7 @@
 import { dataUriUtils } from '@kit.AbilityKit';
 ```
 
+<a id="updateid"></a>
 ## updateId
 
 ```TypeScript

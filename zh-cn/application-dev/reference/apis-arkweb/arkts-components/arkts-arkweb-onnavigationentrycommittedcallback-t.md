@@ -18,5 +18,5 @@ The callback of load committed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| loadCommittedDetails | LoadCommittedDetails | 是 | callback information of onNavigationEntryCommitted. |
+| loadCommittedDetails | [LoadCommittedDetails](arkts-arkweb-loadcommitteddetails-i.md) | 是 | callback information of onNavigationEntryCommitted.  |
 

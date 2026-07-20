@@ -28,7 +28,7 @@ Slider(options?: SliderOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | SliderOptions | 否 | 配置滑动条的参数。若不传入，则使用SliderOptions中各属性的默认值。 |
+| options | [SliderOptions](arkts-arkui-slideroptions-i.md) | 否 | 配置滑动条的参数。若不传入，则使用SliderOptions中各属性的默认值。  |
 
 ## 汇总
 

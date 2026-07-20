@@ -14,6 +14,7 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
+<a id="addrecord"></a>
 ## addRecord
 
 ```TypeScript
@@ -67,6 +68,7 @@ unifiedData.addRecord(link);
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -111,6 +113,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ```
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -136,6 +139,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData();
 
 ```
 
+<a id="getrecords"></a>
 ## getRecords
 
 ```TypeScript
@@ -158,7 +162,7 @@ getRecords(): Array<UnifiedRecord>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<UnifiedRecord> | 当前统一数据对象中包含的所有数据记录数组，每条记录可通过getType获取类型后转换为具体子类使用，用于读取和处理统一数据中的各种类型数据。 |
+| Array&lt;UnifiedRecord&gt; | 当前统一数据对象中包含的所有数据记录数组，每条记录可通过getType获取类型后转换为具体子类使用，用于读取和处理统一数据中的各种类型数据。 |
 
 **示例：**
 
@@ -196,6 +200,7 @@ for (let i = 0; i < records.length; i++) {
 
 ```
 
+<a id="gettypes"></a>
 ## getTypes
 
 ```TypeScript
@@ -218,7 +223,7 @@ getTypes(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型的数组，表示当前记录的数据类型集合，元素值如'general.plain-text'、'general.hyperlink'、'openharmony.form'等。 |
+| Array&lt;string&gt; | [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型的数组，表示当前记录的数据类型集合，元素值如'general.plain-text'、'general.hyperlink'、'openharmony.form'等。 |
 
 **示例：**
 
@@ -245,6 +250,7 @@ let types = unifiedData.getTypes();
 
 ```
 
+<a id="hastype"></a>
 ## hasType
 
 ```TypeScript

@@ -18,6 +18,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="activate"></a>
 ## activate
 
 ```TypeScript
@@ -36,7 +37,7 @@ activate(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当会话激活成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当会话激活成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -45,6 +46,7 @@ activate(callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="activate-1"></a>
 ## activate
 
 ```TypeScript
@@ -65,7 +67,7 @@ activate(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当会话激活成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当会话激活成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -74,6 +76,7 @@ activate(): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="deactivate"></a>
 ## deactivate
 
 ```TypeScript
@@ -82,7 +85,7 @@ deactivate(callback: AsyncCallback<void>): void
 
 禁用当前会话。结果通过callback异步回调方式返回。
 
-禁用当前会话的功能，可通过[activate](arkts-avsession-avsession-avsession-i.md#activate-2)恢复。
+禁用当前会话的功能，可通过[activate](arkts-avsession-avsession-avsession-i.md#activate-1)恢复。
 
 **起始版本：** 10
 
@@ -94,7 +97,7 @@ deactivate(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当禁用会话成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当禁用会话成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -103,13 +106,14 @@ deactivate(callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="deactivate-1"></a>
 ## deactivate
 
 ```TypeScript
 deactivate(): Promise<void>
 ```
 
-禁用当前会话的功能，可通过[activate](arkts-avsession-avsession-avsession-i.md#activate-2)恢复。结果通过Promise异步回调方式返回。
+禁用当前会话的功能，可通过[activate](arkts-avsession-avsession-avsession-i.md#activate-1)恢复。结果通过Promise异步回调方式返回。
 
 **起始版本：** 10
 
@@ -123,7 +127,7 @@ deactivate(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当禁用会话成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当禁用会话成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -132,6 +136,7 @@ deactivate(): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="destroy"></a>
 ## destroy
 
 ```TypeScript
@@ -150,7 +155,7 @@ destroy(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当会话销毁成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当会话销毁成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -159,6 +164,7 @@ destroy(callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="destroy-1"></a>
 ## destroy
 
 ```TypeScript
@@ -179,7 +185,7 @@ destroy(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当会话销毁成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当会话销毁成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -188,6 +194,7 @@ destroy(): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="dispatchsessionevent"></a>
 ## dispatchSessionEvent
 
 ```TypeScript
@@ -208,7 +215,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 | --- | --- | --- | --- |
 | event | string | 是 | 需要设置的会话事件的名称。 |
 | args | {[key: string]: Object} | 是 | 需要传递的会话事件内容。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当会话事件设置成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当会话事件设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -218,6 +225,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="dispatchsessionevent-1"></a>
 ## dispatchSessionEvent
 
 ```TypeScript
@@ -245,7 +253,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当事件设置成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当事件设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -255,6 +263,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise<void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="enabledesktoplyric"></a>
 ## enableDesktopLyric
 
 ```TypeScript
@@ -281,7 +290,7 @@ enableDesktopLyric(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -291,6 +300,7 @@ enableDesktopLyric(enable: boolean): Promise<void>
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+<a id="getavcastcontroller"></a>
 ## getAVCastController
 
 ```TypeScript
@@ -309,7 +319,7 @@ getAVCastController(callback: AsyncCallback<AVCastController>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AVCastController> | 是 | 回调函数，返回投播控制器实例。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVCastController&gt; | 是 | 回调函数，返回投播控制器实例。 |
 
 **错误码：**
 
@@ -318,6 +328,7 @@ getAVCastController(callback: AsyncCallback<AVCastController>): void
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<a id="getavcastcontroller-1"></a>
 ## getAVCastController
 
 ```TypeScript
@@ -338,7 +349,7 @@ getAVCastController(): Promise<AVCastController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVCastController> | Promise对象。返回投播控制器实例。 |
+| Promise&lt;AVCastController&gt; | Promise对象。返回投播控制器实例。 |
 
 **错误码：**
 
@@ -347,6 +358,7 @@ getAVCastController(): Promise<AVCastController>
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<a id="getallcastdisplays"></a>
 ## getAllCastDisplays
 
 ```TypeScript
@@ -367,7 +379,7 @@ getAllCastDisplays(): Promise<Array<CastDisplayInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<CastDisplayInfo>> | Promise对象，返回当前系统中所有支持扩展屏投播的显示设备。 |
+| Promise&lt;Array&lt;CastDisplayInfo&gt;&gt; | Promise对象，返回当前系统中所有支持扩展屏投播的显示设备。 |
 
 **错误码：**
 
@@ -376,6 +388,7 @@ getAllCastDisplays(): Promise<Array<CastDisplayInfo>>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="getcontroller"></a>
 ## getController
 
 ```TypeScript
@@ -394,7 +407,7 @@ getController(callback: AsyncCallback<AVSessionController>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AVSessionController> | 是 | 回调函数。返回会话控制器。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVSessionController&gt; | 是 | 回调函数。返回会话控制器。 |
 
 **错误码：**
 
@@ -403,6 +416,7 @@ getController(callback: AsyncCallback<AVSessionController>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="getcontroller-1"></a>
 ## getController
 
 ```TypeScript
@@ -423,7 +437,7 @@ getController(): Promise<AVSessionController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVSessionController> | Promise对象。返回会话控制器。 |
+| Promise&lt;AVSessionController&gt; | Promise对象。返回会话控制器。 |
 
 **错误码：**
 
@@ -432,6 +446,7 @@ getController(): Promise<AVSessionController>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="getdesktoplyricstate"></a>
 ## getDesktopLyricState
 
 ```TypeScript
@@ -452,7 +467,7 @@ getDesktopLyricState(): Promise<DesktopLyricState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DesktopLyricState> | Promise对象。返回桌面歌词状态。 |
+| Promise&lt;DesktopLyricState&gt; | Promise对象。返回桌面歌词状态。 |
 
 **错误码：**
 
@@ -463,6 +478,7 @@ getDesktopLyricState(): Promise<DesktopLyricState>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+<a id="getoutputdevice"></a>
 ## getOutputDevice
 
 ```TypeScript
@@ -481,7 +497,7 @@ getOutputDevice(callback: AsyncCallback<OutputDeviceInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<OutputDeviceInfo> | 是 | 回调函数，返回播放设备信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;OutputDeviceInfo&gt; | 是 | 回调函数，返回播放设备信息。 |
 
 **错误码：**
 
@@ -490,6 +506,7 @@ getOutputDevice(callback: AsyncCallback<OutputDeviceInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="getoutputdevice-1"></a>
 ## getOutputDevice
 
 ```TypeScript
@@ -510,7 +527,7 @@ getOutputDevice(): Promise<OutputDeviceInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OutputDeviceInfo> | Promise对象。返回播放设备信息。 |
+| Promise&lt;OutputDeviceInfo&gt; | Promise对象。返回播放设备信息。 |
 
 **错误码：**
 
@@ -519,6 +536,7 @@ getOutputDevice(): Promise<OutputDeviceInfo>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="getoutputdevicesync"></a>
 ## getOutputDeviceSync
 
 ```TypeScript
@@ -548,6 +566,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="isdesktoplyricvisible"></a>
 ## isDesktopLyricVisible
 
 ```TypeScript
@@ -568,7 +587,7 @@ isDesktopLyricVisible(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示显示桌面歌词；返回false表示不显示桌面歌词。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示显示桌面歌词；返回false表示不显示桌面歌词。 |
 
 **错误码：**
 
@@ -579,6 +598,7 @@ isDesktopLyricVisible(): Promise<boolean>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+<a id="off"></a>
 ## off('play')
 
 ```TypeScript
@@ -600,7 +620,7 @@ off(type: 'play', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' | 是 | 关闭对应的监听事件，支持的事件是`'play'`。 |
-| callback | () => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -610,6 +630,7 @@ off(type: 'play', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-1"></a>
 ## off('pause')
 
 ```TypeScript
@@ -631,7 +652,7 @@ off(type: 'pause', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'pause' | 是 | 关闭对应的监听事件，支持的事件是`'pause'`。 |
-| callback | () => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -641,6 +662,7 @@ off(type: 'pause', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-2"></a>
 ## off('stop')
 
 ```TypeScript
@@ -662,7 +684,7 @@ off(type: 'stop', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stop' | 是 | 关闭对应的监听事件，支持的事件是`'stop'`。 |
-| callback | () => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -672,6 +694,7 @@ off(type: 'stop', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-3"></a>
 ## off('playNext')
 
 ```TypeScript
@@ -693,7 +716,7 @@ off(type: 'playNext', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playNext' | 是 | 关闭对应的监听事件，支持的事件是 `'playNext'`。 |
-| callback | () => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -703,6 +726,7 @@ off(type: 'playNext', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-4"></a>
 ## off('playPrevious')
 
 ```TypeScript
@@ -724,7 +748,7 @@ off(type: 'playPrevious', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playPrevious' | 是 | 关闭对应的监听事件，支持的事件是`'playPrevious'`。 |
-| callback | () => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -734,6 +758,7 @@ off(type: 'playPrevious', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-5"></a>
 ## off('fastForward')
 
 ```TypeScript
@@ -755,7 +780,7 @@ off(type: 'fastForward', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fastForward' | 是 | 关闭对应的监听事件，支持的事件是`'fastForward'`。 |
-| callback | () => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -765,6 +790,7 @@ off(type: 'fastForward', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-6"></a>
 ## off('rewind')
 
 ```TypeScript
@@ -786,7 +812,7 @@ off(type: 'rewind', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rewind' | 是 | 关闭对应的监听事件，支持的事件是`'rewind'`。 |
-| callback | () => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -796,6 +822,7 @@ off(type: 'rewind', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-7"></a>
 ## off('playFromAssetId')
 
 ```TypeScript
@@ -807,7 +834,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 > **说明：**  
 >  
 > 从API version 11开始支持，从API version 20开始废弃。建议使用  
-> [off('playWithAssetId')](arkts-avsession-avsession-avsession-i.md#off-9)取消  
+> [off('playWithAssetId')](avSession.AVSession.off(type: 'playWithAssetId', callback?: Callback<string>))取消  
 > 媒体ID播放事件监听。
 
 **起始版本：** 11
@@ -827,7 +854,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playFromAssetId' | 是 | 关闭对应的监听事件，支持的事件是`'playFromAssetId'`。 |
-| callback | (assetId: number) => void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
+| callback | (assetId: number) =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -837,6 +864,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-8"></a>
 ## off('playWithAssetId')
 
 ```TypeScript
@@ -858,7 +886,7 @@ off(type: 'playWithAssetId', callback?: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playWithAssetId' | 是 | 关闭对应的监听事件，支持的事件是`'playWithAssetId'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<string> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -867,6 +895,7 @@ off(type: 'playWithAssetId', callback?: Callback<string>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-9"></a>
 ## off('seek')
 
 ```TypeScript
@@ -888,7 +917,7 @@ off(type: 'seek', callback?: (time: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'seek' | 是 | 关闭对应的监听事件，支持关闭事件`'seek'`。 |
-| callback | (time: number) => void | 否 | 回调函数，参数time是时间节点，单位为毫秒。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (time: number) =&gt; void | 否 | 回调函数，参数time是时间节点，单位为毫秒。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -898,6 +927,7 @@ off(type: 'seek', callback?: (time: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-10"></a>
 ## off('setSpeed')
 
 ```TypeScript
@@ -919,7 +949,7 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setSpeed' | 是 | 关闭对应的监听事件，支持关闭事件`'setSpeed'`。 |
-| callback | (speed: number) => void | 否 | 回调函数，参数speed是播放倍速。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (speed: number) =&gt; void | 否 | 回调函数，参数speed是播放倍速。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -929,6 +959,7 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-11"></a>
 ## off('setLoopMode')
 
 ```TypeScript
@@ -950,7 +981,7 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setLoopMode' | 是 | 关闭对应的监听事件，支持关闭事件`'setLoopMode'`。 |
-| callback | (mode: LoopMode) => void | 否 | 回调函数，参数mode是循环模式。<br>- 当监听事件取消成功，err为undefined，否则返回错误对象。<br>- 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (mode: LoopMode) =&gt; void | 否 | 回调函数，参数mode是循环模式。<br>- 当监听事件取消成功，err为undefined，否则返回错误对象。<br>- 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -960,6 +991,7 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-12"></a>
 ## off('setTargetLoopMode')
 
 ```TypeScript
@@ -981,7 +1013,7 @@ off(type: 'setTargetLoopMode', callback?: Callback<LoopMode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setTargetLoopMode' | 是 | 关闭对应的监听事件，支持关闭事件`'setTargetLoopMode'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<LoopMode> | 否 | 回调函数，参数表示目标循环模式。<br>- 当监听事件取消成功，err为undefined，否则返回错误对象。<br>- 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;LoopMode&gt; | 否 | 回调函数，参数表示目标循环模式。<br>- 当监听事件取消成功，err为undefined，否则返回错误对象。<br>- 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -990,6 +1022,7 @@ off(type: 'setTargetLoopMode', callback?: Callback<LoopMode>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-13"></a>
 ## off('toggleFavorite')
 
 ```TypeScript
@@ -1011,7 +1044,7 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'toggleFavorite' | 是 | 关闭对应的监听事件，支持关闭事件`'toggleFavorite'`。 |
-| callback | (assetId: string) => void | 否 | 回调函数，参数assetId是媒体ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (assetId: string) =&gt; void | 否 | 回调函数，参数assetId是媒体ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1021,6 +1054,7 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-14"></a>
 ## off('handleKeyEvent')
 
 ```TypeScript
@@ -1042,7 +1076,7 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'handleKeyEvent' | 是 | 关闭对应的监听事件，支持关闭事件`'handleKeyEvent'`。 |
-| callback | (event: KeyEvent) => void | 否 | 回调函数，参数event是按键事件。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (event: KeyEvent) =&gt; void | 否 | 回调函数，参数event是按键事件。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1052,6 +1086,7 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-15"></a>
 ## off('outputDeviceChange')
 
 ```TypeScript
@@ -1073,7 +1108,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'outputDeviceChange' | 是 | 关闭对应的监听事件，支持关闭事件`'outputDeviceChange'`。 |
-| callback | (state: ConnectionState, device: OutputDeviceInfo) => void | 否 | 回调函数，参数device是设备相关信息。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (state: ConnectionState, device: OutputDeviceInfo) =&gt; void | 否 | 回调函数，参数device是设备相关信息。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1083,6 +1118,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 
+<a id="off-16"></a>
 ## off('commonCommand')
 
 ```TypeScript
@@ -1104,7 +1140,7 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'commonCommand' | 是 | 取消对应的监听事件，支持事件`'commonCommand'`。 |
-| callback | (command: string, args: {[key: string]: Object}) => void | 否 | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。 |
+| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 否 | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。 |
 
 **错误码：**
 
@@ -1114,6 +1150,7 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-17"></a>
 ## off('skipToQueueItem')
 
 ```TypeScript
@@ -1135,7 +1172,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'skipToQueueItem' | 是 | 关闭对应的监听事件，支持关闭事件`'skipToQueueItem'`。 |
-| callback | (itemId: number) => void | 否 | 回调函数，参数itemId是播放列表单项ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (itemId: number) =&gt; void | 否 | 回调函数，参数itemId是播放列表单项ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1145,6 +1182,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-18"></a>
 ## off('answer')
 
 ```TypeScript
@@ -1166,7 +1204,7 @@ off(type: 'answer', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'answer' | 是 | 关闭对应的监听事件，支持的事件是`'answer'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1176,6 +1214,7 @@ off(type: 'answer', callback?: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-19"></a>
 ## off('hangUp')
 
 ```TypeScript
@@ -1197,7 +1236,7 @@ off(type: 'hangUp', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hangUp' | 是 | 关闭对应的监听事件，支持的事件是`'hangUp'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1207,6 +1246,7 @@ off(type: 'hangUp', callback?: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-20"></a>
 ## off('toggleCallMute')
 
 ```TypeScript
@@ -1228,7 +1268,7 @@ off(type: 'toggleCallMute', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'toggleCallMute' | 是 | 关闭对应的监听事件，支持的事件是`'toggleCallMute'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1238,6 +1278,7 @@ off(type: 'toggleCallMute', callback?: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="off-21"></a>
 ## off('castDisplayChange')
 
 ```TypeScript
@@ -1259,7 +1300,7 @@ off(type: 'castDisplayChange', callback?: Callback<CastDisplayInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'castDisplayChange' | 是 | 关闭对应的监听事件，支持的事件是`'castDisplayChange'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CastDisplayInfo> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CastDisplayInfo&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1269,6 +1310,7 @@ off(type: 'castDisplayChange', callback?: Callback<CastDisplayInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 
+<a id="off-22"></a>
 ## off('customDataChange')
 
 ```TypeScript
@@ -1290,7 +1332,7 @@ Unsubscribes from custom data changes.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'customDataChange' | 是 | Custom data type. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Record<string, Object>> | 否 | Callback used to return the custom data. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Record&lt;string, Object&gt;&gt; | 否 | Callback used to return the custom data. |
 
 **错误码：**
 
@@ -1299,6 +1341,7 @@ Unsubscribes from custom data changes.
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="offdesktoplyricstatechanged"></a>
 ## offDesktopLyricStateChanged
 
 ```TypeScript
@@ -1319,7 +1362,7 @@ offDesktopLyricStateChanged(callback?: Callback<DesktopLyricState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DesktopLyricState> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DesktopLyricState&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
 
 **错误码：**
 
@@ -1328,6 +1371,7 @@ offDesktopLyricStateChanged(callback?: Callback<DesktopLyricState>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="offdesktoplyricvisibilitychanged"></a>
 ## offDesktopLyricVisibilityChanged
 
 ```TypeScript
@@ -1348,7 +1392,7 @@ offDesktopLyricVisibilityChanged(callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有显示桌面歌词状态变更事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有显示桌面歌词状态变更事件监听。 |
 
 **错误码：**
 
@@ -1357,6 +1401,7 @@ offDesktopLyricVisibilityChanged(callback?: Callback<boolean>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="offfastforward"></a>
 ## offFastForward
 
 ```TypeScript
@@ -1377,7 +1422,7 @@ offFastForward(callback?: TwoParamCallback<number, CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md)<number, CommandInfo> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md)&lt;number, CommandInfo&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1386,6 +1431,7 @@ offFastForward(callback?: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="offplay"></a>
 ## offPlay
 
 ```TypeScript
@@ -1406,7 +1452,7 @@ offPlay(callback?: Callback<CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CommandInfo> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CommandInfo&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1415,6 +1461,7 @@ offPlay(callback?: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="offplaynext"></a>
 ## offPlayNext
 
 ```TypeScript
@@ -1435,7 +1482,7 @@ offPlayNext(callback?: Callback<CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CommandInfo> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CommandInfo&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1444,6 +1491,7 @@ offPlayNext(callback?: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="offplayprevious"></a>
 ## offPlayPrevious
 
 ```TypeScript
@@ -1464,7 +1512,7 @@ offPlayPrevious(callback?: Callback<CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CommandInfo> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CommandInfo&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1473,6 +1521,7 @@ offPlayPrevious(callback?: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="offrewind"></a>
 ## offRewind
 
 ```TypeScript
@@ -1493,7 +1542,7 @@ offRewind(callback?: TwoParamCallback<number, CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md)<number, CommandInfo> | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md)&lt;number, CommandInfo&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1502,6 +1551,7 @@ offRewind(callback?: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on"></a>
 ## on('play')
 
 ```TypeScript
@@ -1525,7 +1575,7 @@ on(type: 'play', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' | 是 | 事件回调类型，支持的事件为`'play'`，当播放命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -1535,6 +1585,7 @@ on(type: 'play', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-1"></a>
 ## on('pause')
 
 ```TypeScript
@@ -1558,7 +1609,7 @@ on(type: 'pause', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'pause' | 是 | 事件回调类型，支持的事件为`'pause'`，当暂停命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1568,6 +1619,7 @@ on(type: 'pause', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-2"></a>
 ## on('stop')
 
 ```TypeScript
@@ -1591,7 +1643,7 @@ on(type: 'stop', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stop' | 是 | 事件回调类型，支持的事件是`'stop'`，当停止命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1601,6 +1653,7 @@ on(type: 'stop', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-3"></a>
 ## on('playNext')
 
 ```TypeScript
@@ -1624,7 +1677,7 @@ on(type: 'playNext', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playNext' | 是 | 事件回调类型，支持的事件是`'playNext'`，当播放下一首命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1634,6 +1687,7 @@ on(type: 'playNext', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-4"></a>
 ## on('playPrevious')
 
 ```TypeScript
@@ -1657,7 +1711,7 @@ on(type: 'playPrevious', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playPrevious' | 是 | 事件回调类型，支持的事件是`'playPrevious'`，当播放上一首命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1667,6 +1721,7 @@ on(type: 'playPrevious', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-5"></a>
 ## on('fastForward')
 
 ```TypeScript
@@ -1690,7 +1745,7 @@ on(type: 'fastForward', callback: (time ?: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fastForward' | 是 | 事件回调类型，支持的事件是 `'fastForward'`，当快进命令被发送到会话时，触发该事件回调。 |
-| callback | (time ?: number) => void | 是 | 回调函数。参数time是时间节点，单位为秒。 |
+| callback | (time ?: number) =&gt; void | 是 | 回调函数。参数time是时间节点，单位为秒。 |
 
 **错误码：**
 
@@ -1700,6 +1755,7 @@ on(type: 'fastForward', callback: (time ?: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-6"></a>
 ## on('rewind')
 
 ```TypeScript
@@ -1723,7 +1779,7 @@ on(type: 'rewind', callback: (time ?: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rewind' | 是 | 事件回调类型，支持的事件是`'rewind'`，当快退命令被发送到会话时，触发该事件回调。 |
-| callback | (time ?: number) => void | 是 | 回调函数。参数time是时间节点，单位为秒。 |
+| callback | (time ?: number) =&gt; void | 是 | 回调函数。参数time是时间节点，单位为秒。 |
 
 **错误码：**
 
@@ -1733,6 +1789,7 @@ on(type: 'rewind', callback: (time ?: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-7"></a>
 ## on('playFromAssetId')
 
 ```TypeScript
@@ -1744,7 +1801,7 @@ on(type: 'playFromAssetId', callback: (assetId: number) => void): void
 > **说明：**  
 >  
 > 从API version 11开始支持，从API version 20开始废弃。建议使用  
-> [on('playWithAssetId')](arkts-avsession-avsession-avsession-i.md#on-9)设置媒体  
+> [on('playWithAssetId')](avSession.AVSession.on(type: 'playWithAssetId', callback: Callback<string>))设置媒体  
 > ID播放监听事件。
 
 **起始版本：** 11
@@ -1764,7 +1821,7 @@ on(type: 'playFromAssetId', callback: (assetId: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playFromAssetId' | 是 | 事件回调类型，支持的事件是`'playFromAssetId'`，当媒体ID播放时，触发该事件回调。 |
-| callback | (assetId: number) => void | 是 | 回调函数。参数assetId是媒体ID。 |
+| callback | (assetId: number) =&gt; void | 是 | 回调函数。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -1774,6 +1831,7 @@ on(type: 'playFromAssetId', callback: (assetId: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-8"></a>
 ## on('playWithAssetId')
 
 ```TypeScript
@@ -1797,7 +1855,7 @@ on(type: 'playWithAssetId', callback: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playWithAssetId' | 是 | 事件回调类型，支持的事件是`'playWithAssetId'`，当指定资源id进行播放时，触发该事件回调。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<string> | 是 | 回调函数。参数assetId是媒体ID。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 是 | 回调函数。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -1806,6 +1864,7 @@ on(type: 'playWithAssetId', callback: Callback<string>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-9"></a>
 ## on('seek')
 
 ```TypeScript
@@ -1829,7 +1888,7 @@ on(type: 'seek', callback: (time: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'seek' | 是 | 事件回调类型，支持事件`'seek'`：当跳转节点命令被发送到会话时，触发该事件。 |
-| callback | (time: number) => void | 是 | 回调函数。参数time是时间节点，单位为毫秒。 |
+| callback | (time: number) =&gt; void | 是 | 回调函数。参数time是时间节点，单位为毫秒。 |
 
 **错误码：**
 
@@ -1839,6 +1898,7 @@ on(type: 'seek', callback: (time: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-10"></a>
 ## on('setSpeed')
 
 ```TypeScript
@@ -1862,7 +1922,7 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setSpeed' | 是 | 事件回调类型，支持事件`'setSpeed'`：当设置播放速率的命令被发送到会话时，触发该事件。 |
-| callback | (speed: number) => void | 是 | 回调函数。参数speed是播放倍速。 |
+| callback | (speed: number) =&gt; void | 是 | 回调函数。参数speed是播放倍速。 |
 
 **错误码：**
 
@@ -1872,6 +1932,7 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-11"></a>
 ## on('setLoopMode')
 
 ```TypeScript
@@ -1895,7 +1956,7 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setLoopMode' | 是 | 事件回调类型，支持事件`'setLoopMode'`：当设置循环模式的命令被发送到会话时，触发该事件。 |
-| callback | (mode: LoopMode) => void | 是 | 回调函数。参数mode是循环模式。 |
+| callback | (mode: LoopMode) =&gt; void | 是 | 回调函数。参数mode是循环模式。 |
 
 **错误码：**
 
@@ -1905,6 +1966,7 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-12"></a>
 ## on('setTargetLoopMode')
 
 ```TypeScript
@@ -1928,7 +1990,7 @@ on(type: 'setTargetLoopMode', callback: Callback<LoopMode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setTargetLoopMode' | 是 | 事件回调类型，支持事件`'setTargetLoopMode'`。<br>- `'setTargetLoopMode'`：当设置目标循环模式的命令被发送到会话时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<LoopMode> | 是 | 回调函数。参数表示目标循环模式。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;LoopMode&gt; | 是 | 回调函数。参数表示目标循环模式。 |
 
 **错误码：**
 
@@ -1937,6 +1999,7 @@ on(type: 'setTargetLoopMode', callback: Callback<LoopMode>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-13"></a>
 ## on('toggleFavorite')
 
 ```TypeScript
@@ -1960,7 +2023,7 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'toggleFavorite' | 是 | 事件回调类型，支持事件`'toggleFavorite'`：当是否收藏的命令被发送到会话时，触发该事件。 |
-| callback | (assetId: string) => void | 是 | 回调函数。参数assetId是媒体ID。 |
+| callback | (assetId: string) =&gt; void | 是 | 回调函数。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -1970,6 +2033,7 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-14"></a>
 ## on('handleKeyEvent')
 
 ```TypeScript
@@ -1993,7 +2057,7 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'handleKeyEvent' | 是 | 事件回调类型，支持事件`'handleKeyEvent'`：当按键事件被发送到会话时，触发该事件。 |
-| callback | (event: KeyEvent) => void | 是 | 回调函数。参数event是按键事件。 |
+| callback | (event: KeyEvent) =&gt; void | 是 | 回调函数。参数event是按键事件。 |
 
 **错误码：**
 
@@ -2003,6 +2067,7 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-15"></a>
 ## on('outputDeviceChange')
 
 ```TypeScript
@@ -2026,7 +2091,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'outputDeviceChange' | 是 | 事件回调类型，支持事件`'outputDeviceChange'`：当播放设备变化时，触发该事件。 |
-| callback | (state: ConnectionState, device: OutputDeviceInfo) => void | 是 | 回调函数，参数device是设备相关信息。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (state: ConnectionState, device: OutputDeviceInfo) =&gt; void | 是 | 回调函数，参数device是设备相关信息。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2036,6 +2101,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 
+<a id="on-16"></a>
 ## on('commonCommand')
 
 ```TypeScript
@@ -2059,7 +2125,7 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'commonCommand' | 是 | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
-| callback | (command: string, args: {[key: string]: Object}) => void | 是 | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](avSession.AVSessionController.sendCommonCommand(command: string, args: {[key: string]: Object))}方法设置的参数内容完全一致。 |
+| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 是 | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-avsession-avsession-avsessioncontroller-i.md#sendcommoncommand-1))}方法设置的参数内容完全一致。 |
 
 **错误码：**
 
@@ -2069,6 +2135,7 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-17"></a>
 ## on('skipToQueueItem')
 
 ```TypeScript
@@ -2092,7 +2159,7 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'skipToQueueItem' | 是 | 事件回调类型，支持事件`'skipToQueueItem'`：当播放列表选中单项的命令被发送到会话时，触发该事件。 |
-| callback | (itemId: number) => void | 是 | 回调函数。参数itemId是选中的播放列表项的ID。 |
+| callback | (itemId: number) =&gt; void | 是 | 回调函数。参数itemId是选中的播放列表项的ID。 |
 
 **错误码：**
 
@@ -2102,6 +2169,7 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-18"></a>
 ## on('answer')
 
 ```TypeScript
@@ -2125,7 +2193,7 @@ on(type: 'answer', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'answer' | 是 | 事件回调类型，支持事件`'answer'`：当通话接听时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2135,6 +2203,7 @@ on(type: 'answer', callback: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-19"></a>
 ## on('hangUp')
 
 ```TypeScript
@@ -2158,7 +2227,7 @@ on(type: 'hangUp', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hangUp' | 是 | 事件回调类型，支持事件`'hangUp'`：当通话挂断时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2168,6 +2237,7 @@ on(type: 'hangUp', callback: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-20"></a>
 ## on('toggleCallMute')
 
 ```TypeScript
@@ -2191,7 +2261,7 @@ on(type: 'toggleCallMute', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'toggleCallMute' | 是 | 事件回调类型，支持事件`'toggleCallMute'`：当通话静音或解除静音时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -2201,6 +2271,7 @@ on(type: 'toggleCallMute', callback: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="on-21"></a>
 ## on('castDisplayChange')
 
 ```TypeScript
@@ -2224,7 +2295,7 @@ on(type: 'castDisplayChange', callback: Callback<CastDisplayInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'castDisplayChange' | 是 | 事件回调类型，支持事件`'castDisplayChange'`：当扩展屏投播显示设备变化时触发事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CastDisplayInfo> | 是 | 回调函数。参数是扩展屏投播显示设备信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CastDisplayInfo&gt; | 是 | 回调函数。参数是扩展屏投播显示设备信息。 |
 
 **错误码：**
 
@@ -2234,6 +2305,7 @@ on(type: 'castDisplayChange', callback: Callback<CastDisplayInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 
+<a id="on-22"></a>
 ## on('customDataChange')
 
 ```TypeScript
@@ -2255,7 +2327,7 @@ on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'customDataChange' | 是 | 事件回调类型，支持事件'customDataChange'，当媒体提供方发送自定义数据时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Record<string, Object>> | 是 | 回调函数，用于接收自定义数据。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Record&lt;string, Object&gt;&gt; | 是 | 回调函数，用于接收自定义数据。 |
 
 **错误码：**
 
@@ -2264,6 +2336,7 @@ on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="ondesktoplyricstatechanged"></a>
 ## onDesktopLyricStateChanged
 
 ```TypeScript
@@ -2284,7 +2357,7 @@ onDesktopLyricStateChanged(callback: Callback<DesktopLyricState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DesktopLyricState> | 是 | 回调函数。返回桌面歌词状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DesktopLyricState&gt; | 是 | 回调函数。返回桌面歌词状态。 |
 
 **错误码：**
 
@@ -2293,6 +2366,7 @@ onDesktopLyricStateChanged(callback: Callback<DesktopLyricState>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="ondesktoplyricvisibilitychanged"></a>
 ## onDesktopLyricVisibilityChanged
 
 ```TypeScript
@@ -2313,7 +2387,7 @@ onDesktopLyricVisibilityChanged(callback: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 是 | 回调函数。返回true表示开启显示桌面歌词状态；返回false表示关闭显示桌面歌词状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示开启显示桌面歌词状态；返回false表示关闭显示桌面歌词状态。 |
 
 **错误码：**
 
@@ -2322,6 +2396,7 @@ onDesktopLyricVisibilityChanged(callback: Callback<boolean>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="onfastforward"></a>
 ## onFastForward
 
 ```TypeScript
@@ -2342,7 +2417,7 @@ onFastForward(callback: TwoParamCallback<number, CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md)<number, CommandInfo> | 是 | 回调函数。用于处理'fastForward'操作。 |
+| callback | [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md)&lt;number, CommandInfo&gt; | 是 | 回调函数。用于处理'fastForward'操作。 |
 
 **错误码：**
 
@@ -2351,6 +2426,7 @@ onFastForward(callback: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="onplay"></a>
 ## onPlay
 
 ```TypeScript
@@ -2371,7 +2447,7 @@ onPlay(callback: Callback<CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CommandInfo> | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CommandInfo&gt; | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2380,6 +2456,7 @@ onPlay(callback: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="onplaynext"></a>
 ## onPlayNext
 
 ```TypeScript
@@ -2400,7 +2477,7 @@ onPlayNext(callback: Callback<CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CommandInfo> | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CommandInfo&gt; | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2409,6 +2486,7 @@ onPlayNext(callback: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="onplayprevious"></a>
 ## onPlayPrevious
 
 ```TypeScript
@@ -2431,7 +2509,7 @@ onPlayPrevious(callback: Callback<CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CommandInfo> | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CommandInfo&gt; | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2440,6 +2518,7 @@ onPlayPrevious(callback: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="onrewind"></a>
 ## onRewind
 
 ```TypeScript
@@ -2460,7 +2539,7 @@ onRewind(callback: TwoParamCallback<number, CommandInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md)<number, CommandInfo> | 是 | 回调函数。用于处理'rewind'操作。 |
+| callback | [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md)&lt;number, CommandInfo&gt; | 是 | 回调函数。用于处理'rewind'操作。 |
 
 **错误码：**
 
@@ -2469,6 +2548,7 @@ onRewind(callback: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="sendcustomdata"></a>
 ## sendCustomData
 
 ```TypeScript
@@ -2489,13 +2569,13 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record<string, Object> | 是 | 应用程序填充的自定义数据。服务端仅解析key为'customData'，且Object为string类型的对象。 |
+| data | Record&lt;string, Object&gt; | 是 | 应用程序填充的自定义数据。服务端仅解析key为'customData'，且Object为string类型的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2504,6 +2584,7 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavcallstate"></a>
 ## setAVCallState
 
 ```TypeScript
@@ -2523,7 +2604,7 @@ setAVCallState(state: AVCallState, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | state | [AVCallState](arkts-avsession-avsession-avcallstate-i.md) | 是 | 通话状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当通话元数据设置成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通话元数据设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2533,6 +2614,7 @@ setAVCallState(state: AVCallState, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavcallstate-1"></a>
 ## setAVCallState
 
 ```TypeScript
@@ -2557,7 +2639,7 @@ setAVCallState(state: AVCallState): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当通话元数据设置成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当通话元数据设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2567,6 +2649,7 @@ setAVCallState(state: AVCallState): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavmetadata"></a>
 ## setAVMetadata
 
 ```TypeScript
@@ -2586,7 +2669,7 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [AVMetadata](arkts-avsession-avsession-avmetadata-i.md) | 是 | 会话元数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当元数据设置成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当元数据设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2596,6 +2679,7 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavmetadata-1"></a>
 ## setAVMetadata
 
 ```TypeScript
@@ -2622,7 +2706,7 @@ setAVMetadata(data: AVMetadata): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当元数据设置成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当元数据设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2632,6 +2716,7 @@ setAVMetadata(data: AVMetadata): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavplaybackstate"></a>
 ## setAVPlaybackState
 
 ```TypeScript
@@ -2651,7 +2736,7 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | state | [AVPlaybackState](arkts-avsession-avsession-avplaybackstate-i.md) | 是 | 会话播放状态，包括状态、倍数、循环模式等信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当播放状态设置成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当播放状态设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2661,6 +2746,7 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavplaybackstate-1"></a>
 ## setAVPlaybackState
 
 ```TypeScript
@@ -2687,7 +2773,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当播放状态设置成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当播放状态设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2697,6 +2783,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavqueueitems"></a>
 ## setAVQueueItems
 
 ```TypeScript
@@ -2715,8 +2802,8 @@ setAVQueueItems(items: Array<AVQueueItem>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AVQueueItem> | 是 | 播放列表单项的队列，用以表示播放列表。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当播放状态设置成功，err为undefined，否则返回错误对象。 |
+| items | Array&lt;AVQueueItem&gt; | 是 | 播放列表单项的队列，用以表示播放列表。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当播放状态设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2726,6 +2813,7 @@ setAVQueueItems(items: Array<AVQueueItem>, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavqueueitems-1"></a>
 ## setAVQueueItems
 
 ```TypeScript
@@ -2746,13 +2834,13 @@ setAVQueueItems(items: Array<AVQueueItem>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AVQueueItem> | 是 | 播放列表单项的队列，用以表示播放列表。 |
+| items | Array&lt;AVQueueItem&gt; | 是 | 播放列表单项的队列，用以表示播放列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当播放列表设置成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当播放列表设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2762,6 +2850,7 @@ setAVQueueItems(items: Array<AVQueueItem>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavqueuetitle"></a>
 ## setAVQueueTitle
 
 ```TypeScript
@@ -2781,7 +2870,7 @@ setAVQueueTitle(title: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | title | string | 是 | 播放列表名称字段。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当播放状态设置成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当播放状态设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2791,6 +2880,7 @@ setAVQueueTitle(title: string, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setavqueuetitle-1"></a>
 ## setAVQueueTitle
 
 ```TypeScript
@@ -2817,7 +2907,7 @@ setAVQueueTitle(title: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当播放列表设置成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当播放列表设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2827,6 +2917,7 @@ setAVQueueTitle(title: string): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setbackgroundplaymode"></a>
 ## setBackgroundPlayMode
 
 ```TypeScript
@@ -2855,7 +2946,7 @@ setBackgroundPlayMode(mode: BackgroundPlayMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2863,6 +2954,7 @@ setBackgroundPlayMode(mode: BackgroundPlayMode): Promise<void>
 | --- | --- |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setcallmetadata"></a>
 ## setCallMetadata
 
 ```TypeScript
@@ -2882,7 +2974,7 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [CallMetadata](arkts-avsession-avsession-callmetadata-i.md) | 是 | 通话会话元数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当通话元数据设置成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通话元数据设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2892,6 +2984,7 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setcallmetadata-1"></a>
 ## setCallMetadata
 
 ```TypeScript
@@ -2916,7 +3009,7 @@ setCallMetadata(data: CallMetadata): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当通话元数据设置成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当通话元数据设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2926,6 +3019,7 @@ setCallMetadata(data: CallMetadata): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setdesktoplyricstate"></a>
 ## setDesktopLyricState
 
 ```TypeScript
@@ -2952,7 +3046,7 @@ setDesktopLyricState(state: DesktopLyricState): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2963,6 +3057,7 @@ setDesktopLyricState(state: DesktopLyricState): Promise<void>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+<a id="setdesktoplyricvisible"></a>
 ## setDesktopLyricVisible
 
 ```TypeScript
@@ -2989,7 +3084,7 @@ setDesktopLyricVisible(visible: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3000,6 +3095,7 @@ setDesktopLyricVisible(visible: boolean): Promise<void>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+<a id="setextras"></a>
 ## setExtras
 
 ```TypeScript
@@ -3019,7 +3115,7 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | extras | {[key: string]: Object} | 是 | 需要传递的自定义媒体数据包键值对。<br> **说明：** 参数extras支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -3029,6 +3125,7 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setextras-1"></a>
 ## setExtras
 
 ```TypeScript
@@ -3055,7 +3152,7 @@ setExtras(extras: {[key: string]: Object}): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -3065,6 +3162,7 @@ setExtras(extras: {[key: string]: Object}): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setlaunchability"></a>
 ## setLaunchAbility
 
 ```TypeScript
@@ -3086,7 +3184,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | ability | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | 应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当Ability设置成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当Ability设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -3096,6 +3194,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setlaunchability-1"></a>
 ## setLaunchAbility
 
 ```TypeScript
@@ -3124,7 +3223,7 @@ setLaunchAbility(ability: WantAgent): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当Ability设置成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当Ability设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -3134,6 +3233,7 @@ setLaunchAbility(ability: WantAgent): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setmediacentercontroltype"></a>
 ## setMediaCenterControlType
 
 ```TypeScript
@@ -3142,7 +3242,7 @@ setMediaCenterControlType(type: Array<AVMediaCenterControlType>): Promise<void>
 
 设置应用支持的控制类型列表。使用Promise异步回调。
 
-设置优先显示在播控中心的控制类型列表，若未设置控制类型优先级，播控中心将根据[AVSessionType](arkts-avsession-avsession-avsessiontype-t.md)显示，具体显示规则参考[创建不同类型的会话](../../../../media/avsession/avsession-access-scene.md#创建不同类型的会话)。
+设置优先显示在播控中心的控制类型列表，若未设置控制类型优先级，播控中心将根据[AVSessionType](arkts-avsession-avsession-avsessiontype-t.md)显示，具体显示规则参考[创建不同类型的会话](docroot://media/avsession/avsession-access-scene.md#创建不同类型的会话)。
 
 **起始版本：** 26.0.0
 
@@ -3156,13 +3256,13 @@ setMediaCenterControlType(type: Array<AVMediaCenterControlType>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AVMediaCenterControlType> | 是 | 优先在播控中心显示的控制类型列表。 |
+| type | Array&lt;AVMediaCenterControlType&gt; | 是 | 优先在播控中心显示的控制类型列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3171,6 +3271,7 @@ setMediaCenterControlType(type: Array<AVMediaCenterControlType>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setsupportedloopmodes"></a>
 ## setSupportedLoopModes
 
 ```TypeScript
@@ -3193,13 +3294,13 @@ setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| loopModes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<LoopMode> | 是 | 支持的循环模式列表。 |
+| loopModes | Array&lt;LoopMode&gt; | 是 | 支持的循环模式列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3208,6 +3309,7 @@ setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="setsupportedplayspeeds"></a>
 ## setSupportedPlaySpeeds
 
 ```TypeScript
@@ -3230,13 +3332,13 @@ setSupportedPlaySpeeds(speeds: Array<number>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| speeds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 支持的播放倍速列表。 |
+| speeds | Array&lt;number&gt; | 是 | 支持的播放倍速列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3245,6 +3347,7 @@ setSupportedPlaySpeeds(speeds: Array<number>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<a id="stopcasting"></a>
 ## stopCasting
 
 ```TypeScript
@@ -3263,7 +3366,7 @@ stopCasting(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -3271,6 +3374,7 @@ stopCasting(callback: AsyncCallback<void>): void
 | --- | --- |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<a id="stopcasting-1"></a>
 ## stopCasting
 
 ```TypeScript
@@ -3291,7 +3395,7 @@ stopCasting(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当成功结束投播，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当成功结束投播，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

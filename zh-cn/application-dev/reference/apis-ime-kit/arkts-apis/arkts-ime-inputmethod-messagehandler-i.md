@@ -14,6 +14,7 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="onmessage"></a>
 ## onMessage
 
 ```TypeScript
@@ -33,7 +34,7 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | msgId | string | 是 | 接收到的自定义通信数据的标识符。 |
-| msgParam | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 否 | 接收到的自定义通信数据的消息体。 |
+| msgParam | ArrayBuffer | 否 | 接收到的自定义通信数据的消息体。 |
 
 **示例：**
 
@@ -52,6 +53,7 @@ inputMethodController.recvMessage(messageHandler);
 
 ```
 
+<a id="onterminated"></a>
 ## onTerminated
 
 ```TypeScript

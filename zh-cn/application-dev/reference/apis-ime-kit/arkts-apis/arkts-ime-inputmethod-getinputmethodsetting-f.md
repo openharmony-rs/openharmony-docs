@@ -6,6 +6,7 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="getinputmethodsetting"></a>
 ## getInputMethodSetting
 
 ```TypeScript

@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+<a id="setshaderinputs"></a>
 ## setShaderInputs
 
 ```TypeScript
@@ -30,7 +31,7 @@ setShaderInputs(inputs: Record<string, number | Vec2 | Vec3 | Vec4 | Image>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inputs | Record<string, number \| Vec2 \| Vec3 \| Vec4 \| Image> | 是 | 着色器的输入 |
+| inputs | Record&lt;string, number \| Vec2 \| Vec3 \| Vec4 \| Image&gt; | 是 | 着色器的输入 |
 
 ## inputs
 
@@ -40,7 +41,7 @@ readonly inputs: Record<string, number | Vec2 | Vec3 | Vec4 | Image>
 
 着色器输入.
 
-**类型：** Record<string, number | Vec2 | Vec3 | Vec4 | Image>
+**类型：** Record&lt;string, number \| Vec2 \| Vec3 \| Vec4 \| Image&gt;
 
 **起始版本：** 12
 

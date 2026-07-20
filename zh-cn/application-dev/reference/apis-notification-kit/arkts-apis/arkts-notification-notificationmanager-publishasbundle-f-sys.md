@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="publishasbundle"></a>
 ## publishAsBundle
 
 ```TypeScript
@@ -46,7 +47,7 @@ function publishAsBundle(
 | request | [NotificationRequest](arkts-notification-notificationmanager-notificationrequest-t.md) | 是 | 用于设置要发布通知的内容和相关配置信息。 |
 | representativeBundle | string | 是 | 被代理应用的包名。 |
 | userId | number | 是 | 用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 发布代理通知的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 发布代理通知的回调方法。 |
 
 **错误码：**
 
@@ -109,6 +110,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId, callb
 ```
 
 
+<a id="publishasbundle-1"></a>
 ## publishAsBundle
 
 ```TypeScript
@@ -139,7 +141,7 @@ function publishAsBundle(request: NotificationRequest, representativeBundle: str
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -198,6 +200,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 ```
 
 
+<a id="publishasbundle-2"></a>
 ## publishAsBundle
 
 ```TypeScript
@@ -227,7 +230,7 @@ function publishAsBundle(representativeBundle: BundleOption, request: Notificati
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

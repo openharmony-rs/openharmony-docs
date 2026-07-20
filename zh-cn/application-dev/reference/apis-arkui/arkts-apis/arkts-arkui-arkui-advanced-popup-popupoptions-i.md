@@ -146,7 +146,7 @@ onClose?: () => void
 
 默认不设置关闭按钮回调函数。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 11
 
@@ -172,7 +172,7 @@ Resource：显示对应的图标。
 
 默认值：true
 
-**类型：** boolean | Resource
+**类型：** boolean \| Resource
 
 **起始版本：** 11
 

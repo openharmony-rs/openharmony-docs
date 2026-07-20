@@ -6,6 +6,7 @@
 import { autoStartupManager } from '@kit.AbilityKit';
 ```
 
+<a id="getautostartupstatusforself"></a>
 ## getAutoStartupStatusForSelf
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getAutoStartupStatusForSelf(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示当前应用已被用户设置为开机自启动，false表示当前应用未被用户设置为开机自启动。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前应用已被用户设置为开机自启动，false表示当前应用未被用户设置为开机自启动。 |
 
 **错误码：**
 

@@ -23,7 +23,7 @@ ToolBarItem(options?: ToolBarItemOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ToolBarItemOptions | 否 | 列选项 |
+| options | [ToolBarItemOptions](arkts-arkui-toolbaritemoptions-i.md) | 否 | 列选项  |
 
 ## 汇总
 

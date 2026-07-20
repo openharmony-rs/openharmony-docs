@@ -54,7 +54,7 @@ runningAppClones?: Array<RunningAppClone>
 
 特定包名在运行态的分身应用信息。
 
-**类型：** Array<RunningAppClone>
+**类型：** Array&lt;RunningAppClone&gt;
 
 **起始版本：** 12
 
@@ -72,7 +72,7 @@ runningMultiInstances?: Array<RunningMultiInstanceInfo>
 
 特定包名在运行态的多实例应用信息。
 
-**类型：** Array<RunningMultiInstanceInfo>
+**类型：** Array&lt;RunningMultiInstanceInfo&gt;
 
 **起始版本：** 14
 

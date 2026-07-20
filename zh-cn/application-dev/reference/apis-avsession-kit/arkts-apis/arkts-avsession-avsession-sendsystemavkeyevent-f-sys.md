@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="sendsystemavkeyevent"></a>
 ## sendSystemAVKeyEvent
 
 ```TypeScript
@@ -28,8 +29,8 @@ function sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback<void>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [KeyEvent](../../apis-arkui/arkts-components/arkts-arkui-common-keyevent-i.md) | 是 | 按键事件。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当事件发送成功，err为undefined，否则返回错误对象。 |
+| event | [KeyEvent](../../apis-arkui/arkts-components/arkts-arkui-keyevent-i.md) | 是 | 按键事件。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当事件发送成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -56,6 +57,7 @@ avSession.sendSystemAVKeyEvent(event, () => {
 ```
 
 
+<a id="sendsystemavkeyevent-1"></a>
 ## sendSystemAVKeyEvent
 
 ```TypeScript
@@ -78,13 +80,13 @@ function sendSystemAVKeyEvent(event: KeyEvent): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [KeyEvent](../../apis-arkui/arkts-components/arkts-arkui-common-keyevent-i.md) | 是 | 按键事件。 |
+| event | [KeyEvent](../../apis-arkui/arkts-components/arkts-arkui-keyevent-i.md) | 是 | 按键事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当事件发送成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当事件发送成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

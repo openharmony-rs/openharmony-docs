@@ -20,6 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="gettarget"></a>
 ## getTarget
 
 ```TypeScript
@@ -63,6 +64,7 @@ async function getTarget(){
 
 ```
 
+<a id="settarget"></a>
 ## setTarget
 
 ```TypeScript
@@ -91,7 +93,7 @@ Sets the render target of this audio renderer.This function can only be called w
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 

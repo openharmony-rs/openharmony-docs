@@ -14,6 +14,7 @@
 import { distributedAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="getosaccountdistributedinfobylocalid"></a>
 ## getOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -39,7 +40,7 @@ getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback<Di
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<DistributedInfo> | 是 | 回调参数。当获取分布式账号信息成功，err为undefined，data为获取到的分布式账号信息对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;DistributedInfo&gt; | 是 | 回调参数。当获取分布式账号信息成功，err为undefined，data为获取到的分布式账号信息对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ try {
 
 ```
 
+<a id="getosaccountdistributedinfobylocalid-1"></a>
 ## getOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -103,7 +105,7 @@ getOsAccountDistributedInfoByLocalId(localId: number): Promise<DistributedInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DistributedInfo> | Promise对象，返回分布式账号信息对象。 |
+| Promise&lt;DistributedInfo&gt; | Promise对象，返回分布式账号信息对象。 |
 
 **错误码：**
 
@@ -135,6 +137,7 @@ try {
 
 ```
 
+<a id="setosaccountdistributedinfobylocalid"></a>
 ## setOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -159,7 +162,7 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
 | distributedInfo | [DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md) | 是 | 分布式账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置指定系统账号的分布式信息成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置指定系统账号的分布式信息成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -197,6 +200,7 @@ try {
 
 ```
 
+<a id="setosaccountdistributedinfobylocalid-1"></a>
 ## setOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -226,7 +230,7 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 

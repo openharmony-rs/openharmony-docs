@@ -6,6 +6,7 @@
 import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="query"></a>
 ## query
 
 ```TypeScript
@@ -29,7 +30,7 @@ function query(faultType: FaultType, callback: AsyncCallback<Array<FaultLogInfo>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | faultType | [FaultType](arkts-performanceanalysis-faultlogger-faulttype-e.md) | 是 | 输入要查询的故障类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<FaultLogInfo>> | 是 | 回调函数，在回调函数中获取故障信息数组。<br>value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;FaultLogInfo&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。<br>value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ try {
 ```
 
 
+<a id="query-1"></a>
 ## query
 
 ```TypeScript
@@ -101,7 +103,7 @@ function query(faultType: FaultType): Promise<Array<FaultLogInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<FaultLogInfo>> | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。<br>value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
+| Promise&lt;Array&lt;FaultLogInfo&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。<br>value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
 
 **错误码：**
 

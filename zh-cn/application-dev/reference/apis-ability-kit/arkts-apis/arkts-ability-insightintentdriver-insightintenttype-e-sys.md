@@ -16,7 +16,7 @@
 LINK = '@InsightIntentLink'
 ```
 
-[@InsightIntentLink](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)类型装饰器。
+[@InsightIntentLink](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)类型装饰器。
 
 **起始版本：** 20
 
@@ -34,7 +34,7 @@ LINK = '@InsightIntentLink'
 PAGE = '@InsightIntentPage'
 ```
 
-[@InsightIntentPage](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)类型装饰器。
+[@InsightIntentPage](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)类型装饰器。
 
 **起始版本：** 20
 
@@ -52,7 +52,7 @@ PAGE = '@InsightIntentPage'
 ENTRY = '@InsightIntentEntry'
 ```
 
-[@InsightIntentEntry](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)类型装饰器。
+[@InsightIntentEntry](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)类型装饰器。
 
 **起始版本：** 20
 
@@ -70,7 +70,7 @@ ENTRY = '@InsightIntentEntry'
 FUNCTION = '@InsightIntentFunctionMethod'
 ```
 
-[@InsightIntentFunctionMethod](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)类型装饰器。
+[@InsightIntentFunctionMethod](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)类型装饰器。
 
 **起始版本：** 20
 
@@ -88,7 +88,7 @@ FUNCTION = '@InsightIntentFunctionMethod'
 FORM = '@InsightIntentForm'
 ```
 
-[@InsightIntentForm](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform)类型装饰器。
+[@InsightIntentForm](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform)类型装饰器。
 
 **起始版本：** 20
 

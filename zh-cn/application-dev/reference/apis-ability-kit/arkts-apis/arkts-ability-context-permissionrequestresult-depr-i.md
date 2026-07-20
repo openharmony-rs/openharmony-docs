@@ -16,7 +16,7 @@ authResults: Array<number>
 
 请求权限的结果。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **默认值：** The results for the corresponding request permissions
 
@@ -36,7 +36,7 @@ permissions: Array<string>
 
 用户传入的权限。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** The permissions passed in by the user
 

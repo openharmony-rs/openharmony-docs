@@ -16,7 +16,7 @@ readonly targets: Record<string, number>
 
 形变目标名称和权重
 
-**类型：** Record<string, number>
+**类型：** Record&lt;string, number&gt;
 
 **起始版本：** 20
 

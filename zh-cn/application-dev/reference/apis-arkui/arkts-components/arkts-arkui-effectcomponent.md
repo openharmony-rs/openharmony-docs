@@ -56,7 +56,7 @@ EffectComponent(options?: EffectComponentOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | EffectComponentOptions | 否 | EffectComponent构造参数。 |
+| options | [EffectComponentOptions](arkts-arkui-effectcomponentoptions-i-sys.md) | 否 | EffectComponent构造参数。  |
 
 ## 汇总
 

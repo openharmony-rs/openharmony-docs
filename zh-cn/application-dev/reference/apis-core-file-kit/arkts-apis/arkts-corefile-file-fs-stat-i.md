@@ -1,6 +1,6 @@
 # Stat
 
-文件具体信息，在调用Stat的方法前，需要先通过[stat()](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat)方法（同步或异步）构建一个Stat实例。
+文件具体信息，在调用Stat的方法前，需要先通过[stat()](docroot://reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat)方法（同步或异步）构建一个Stat实例。
 
 **起始版本：** 9
 
@@ -14,6 +14,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="isblockdevice"></a>
 ## isBlockDevice
 
 ```TypeScript
@@ -49,6 +50,7 @@ let isBLockDevice = fileIo.statSync(filePath).isBlockDevice();
 
 ```
 
+<a id="ischaracterdevice"></a>
 ## isCharacterDevice
 
 ```TypeScript
@@ -84,6 +86,7 @@ let isCharacterDevice = fileIo.statSync(filePath).isCharacterDevice();
 
 ```
 
+<a id="isdirectory"></a>
 ## isDirectory
 
 ```TypeScript
@@ -121,6 +124,7 @@ let isDirectory = fileIo.statSync(dirPath).isDirectory();
 
 ```
 
+<a id="isfifo"></a>
 ## isFIFO
 
 ```TypeScript
@@ -156,6 +160,7 @@ let isFIFO = fileIo.statSync(filePath).isFIFO();
 
 ```
 
+<a id="isfile"></a>
 ## isFile
 
 ```TypeScript
@@ -193,6 +198,7 @@ let isFile = fileIo.statSync(filePath).isFile();
 
 ```
 
+<a id="issocket"></a>
 ## isSocket
 
 ```TypeScript
@@ -228,6 +234,7 @@ let isSocket = fileIo.statSync(filePath).isSocket();
 
 ```
 
+<a id="issymboliclink"></a>
 ## isSymbolicLink
 
 ```TypeScript

@@ -14,6 +14,7 @@ Class that holds brand name, major version and full version. Brand name and majo
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="getbrand"></a>
 ## getBrand
 
 ```TypeScript
@@ -36,6 +37,7 @@ Get the brand info.
 | --- | --- |
 | string | - Returns brand info of UserAgentBrandVersion. |
 
+<a id="getfullversion"></a>
 ## getFullVersion
 
 ```TypeScript
@@ -58,6 +60,7 @@ Get the full version.
 | --- | --- |
 | string | - Returns full version of UserAgentBrandVersion. |
 
+<a id="getmajorversion"></a>
 ## getMajorVersion
 
 ```TypeScript
@@ -80,6 +83,7 @@ Get the major version.
 | --- | --- |
 | string | - Returns major version of UserAgentBrandVersion. |
 
+<a id="setbrand"></a>
 ## setBrand
 
 ```TypeScript
@@ -102,6 +106,7 @@ Sets the brand. Should not be blank.
 | --- | --- | --- | --- |
 | brand | string | 是 | The brand. |
 
+<a id="setfullversion"></a>
 ## setFullVersion
 
 ```TypeScript
@@ -124,6 +129,7 @@ Sets the full version. Should not be blank.
 | --- | --- | --- | --- |
 | fullVersion | string | 是 | The full version. |
 
+<a id="setmajorversion"></a>
 ## setMajorVersion
 
 ```TypeScript

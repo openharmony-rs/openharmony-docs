@@ -10,13 +10,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="points"></a>
 ## points
 
 ```TypeScript
 points(value: Array<any>)
 ```
 
-设置折线经过坐标点列表，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置折线经过坐标点列表，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -32,5 +33,5 @@ points(value: Array<any>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<any> | 是 | 折线经过坐标点列表。使用时传入一个二维数组，每个子数组表示一个顶点的[x, y]坐标。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。 |
+| value | Array&lt;any&gt; | 是 | 折线经过坐标点列表。使用时传入一个二维数组，每个子数组表示一个顶点的[x, y]坐标。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。 |
 

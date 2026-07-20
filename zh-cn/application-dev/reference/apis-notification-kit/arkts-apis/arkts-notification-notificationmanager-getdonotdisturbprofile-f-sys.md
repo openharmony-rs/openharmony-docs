@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getdonotdisturbprofile"></a>
 ## getDoNotDisturbProfile
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getDoNotDisturbProfile(id: number): Promise<DoNotDisturbProfile>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DoNotDisturbProfile> | Promise对象，返回勿扰模式的配置信息。 |
+| Promise&lt;DoNotDisturbProfile&gt; | Promise对象，返回勿扰模式的配置信息。 |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 ```
 
 
+<a id="getdonotdisturbprofile-1"></a>
 ## getDoNotDisturbProfile
 
 ```TypeScript
@@ -94,7 +96,7 @@ function getDoNotDisturbProfile(id: number, userId: number): Promise<DoNotDistur
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DoNotDisturbProfile> | Promise对象，返回勿扰模式的配置信息。 |
+| Promise&lt;DoNotDisturbProfile&gt; | Promise对象，返回勿扰模式的配置信息。 |
 
 **错误码：**
 

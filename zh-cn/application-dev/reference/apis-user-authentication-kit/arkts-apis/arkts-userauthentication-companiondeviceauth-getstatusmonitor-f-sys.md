@@ -6,6 +6,7 @@
 import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="getstatusmonitor"></a>
 ## getStatusMonitor
 
 ```TypeScript
@@ -36,7 +37,7 @@ function getStatusMonitor(localUserId: number): StatusMonitor
 
 | 类型 | 说明 |
 | --- | --- |
-| [StatusMonitor](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md) | 状态监听器对象。可用于查询模板状态（[getTemplateStatus](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#gettemplatestatus-1)）、订阅模板变化（[onTemplateChange](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#ontemplatechange-1)）、订阅可添加设备变化（[onAvailableDeviceChange](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#onavailabledevicechange-1)）、订阅持续认证状态（[onContinuousAuthChange](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#oncontinuousauthchange-1)）等操作。 |
+| [StatusMonitor](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md) | 状态监听器对象。可用于查询模板状态（[getTemplateStatus](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#gettemplatestatus-1)）、订阅模板变化（[onTemplateChange](companionDeviceAuth.StatusMonitor.onTemplateChange(callback: TemplateStatusCallback))）、订阅可添加设备变化（[onAvailableDeviceChange](companionDeviceAuth.StatusMonitor.onAvailableDeviceChange(callback: AvailableDeviceStatusCallback))）、订阅持续认证状态（[onContinuousAuthChange](companionDeviceAuth.StatusMonitor.onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatusCallback))）等操作。 |
 
 **错误码：**
 

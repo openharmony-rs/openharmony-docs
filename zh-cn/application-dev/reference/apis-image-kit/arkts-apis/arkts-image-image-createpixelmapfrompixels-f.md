@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createpixelmapfrompixels"></a>
 ## createPixelMapFromPixels
 
 ```TypeScript
@@ -32,14 +33,14 @@ The following pixel formats are not supported for PixelMap creation:RGBA_1010102
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pixels | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | The pixel data buffer used to initialize the PixelMap.The format of the pixel data can be specified by InitializationOptions.srcPixelFormat.The size of the buffer should be: image width * image height * bytes per pixel. |
+| pixels | ArrayBuffer | 是 | The pixel data buffer used to initialize the PixelMap.The format of the pixel data can be specified by InitializationOptions.srcPixelFormat.The size of the buffer should be: image width * image height * bytes per pixel. |
 | param | [InitializationOptions](arkts-image-image-initializationoptions-i.md) | 是 | Initialization options for the PixelMap.If InitializationOptions.pixelFormat is set to ASTC_4x4, it will be reset to the default value RGBA_8888.If InitializationOptions.srcPixelFormat is set to ASTC_4x4, it will be reset to the default value BGRA_8888. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | A Promise of the new PixelMap created. |
+| Promise&lt;PixelMap&gt; | A Promise of the new PixelMap created. |
 
 **错误码：**
 

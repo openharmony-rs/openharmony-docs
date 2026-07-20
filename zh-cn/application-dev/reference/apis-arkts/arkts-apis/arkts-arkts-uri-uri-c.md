@@ -14,6 +14,7 @@
 import { uri } from '@kit.ArkTS';
 ```
 
+<a id="addencodedsegment"></a>
 ## addEncodedSegment
 
 ```TypeScript
@@ -51,6 +52,7 @@ console.info(uriWithEncodedSegment.toString()); // http://www.test.com/my%20imag
 
 ```
 
+<a id="addqueryvalue"></a>
 ## addQueryValue
 
 ```TypeScript
@@ -89,6 +91,7 @@ console.info(newRoute.toString()); // https://www.test.com?param1=hello%20world
 
 ```
 
+<a id="addsegment"></a>
 ## addSegment
 
 ```TypeScript
@@ -126,6 +129,7 @@ console.info(uriWithSegment.toString()); // http://www.test.com/my%20image.jpg
 
 ```
 
+<a id="checkhierarchical"></a>
 ## checkHierarchical
 
 ```TypeScript
@@ -158,6 +162,7 @@ console.info(`${uriInstance1.checkHierarchical()}`); // false
 
 ```
 
+<a id="checkisabsolute"></a>
 ## checkIsAbsolute
 
 ```TypeScript
@@ -190,6 +195,7 @@ console.info(`${uriInstance1.checkIsAbsolute()}`); // false
 
 ```
 
+<a id="checkopaque"></a>
 ## checkOpaque
 
 ```TypeScript
@@ -222,6 +228,7 @@ console.info(`${uriInstance1.checkOpaque()}`); // true
 
 ```
 
+<a id="checkrelative"></a>
 ## checkRelative
 
 ```TypeScript
@@ -254,6 +261,7 @@ console.info(`${uriInstance1.checkRelative()}`); // true
 
 ```
 
+<a id="clearquery"></a>
 ## clearQuery
 
 ```TypeScript
@@ -284,6 +292,7 @@ console.info(uriInstance.clearQuery().toString()); // https://www.test.com
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -325,6 +334,7 @@ new uri.URI('https://username:password@host:8080');
 
 ```
 
+<a id="createfromparts"></a>
 ## createFromParts
 
 ```TypeScript
@@ -363,6 +373,7 @@ console.info(uriInstance.toString()); // mailto:no%20body#top
 
 ```
 
+<a id="equals"></a>
 ## equals
 
 ```TypeScript
@@ -402,6 +413,7 @@ uriInstance.equals(uriInstance1); // true
 
 ```
 
+<a id="equalsto"></a>
 ## equalsTo
 
 ```TypeScript
@@ -439,6 +451,7 @@ let result = uriInstance.equalsTo(uriInstance1); // true
 
 ```
 
+<a id="getbooleanqueryvalue"></a>
 ## getBooleanQueryValue
 
 ```TypeScript
@@ -484,6 +497,7 @@ console.info(`${uriInstance4.getBooleanQueryValue('active', true)}`); // true
 
 ```
 
+<a id="getlastsegment"></a>
 ## getLastSegment
 
 ```TypeScript
@@ -514,6 +528,7 @@ console.info(uriInstance.getLastSegment()); // image.jpg
 
 ```
 
+<a id="getquerynames"></a>
 ## getQueryNames
 
 ```TypeScript
@@ -545,6 +560,7 @@ console.info(paramNames.toString()); // param1,param2
 
 ```
 
+<a id="getqueryvalue"></a>
 ## getQueryValue
 
 ```TypeScript
@@ -586,6 +602,7 @@ console.info(uriInstance1.getQueryValue('abc')) // null
 
 ```
 
+<a id="getqueryvalues"></a>
 ## getQueryValues
 
 ```TypeScript
@@ -625,6 +642,7 @@ console.info(JSON.stringify(uriInstance.getQueryValues('abc'))); // []
 
 ```
 
+<a id="getsegment"></a>
 ## getSegment
 
 ```TypeScript
@@ -655,6 +673,7 @@ console.info(uriInstance.getSegment().toString()); // path,to,image.jpg
 
 ```
 
+<a id="normalize"></a>
 ## normalize
 
 ```TypeScript
@@ -703,6 +722,7 @@ console.info(uri2.path); // /../../patch/path2/path3
 
 ```
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript

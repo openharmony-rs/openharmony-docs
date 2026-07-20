@@ -6,6 +6,7 @@
 import { dialogSession } from '@kit.AbilityKit';
 ```
 
+<a id="getdialogsessioninfo"></a>
 ## getDialogSessionInfo
 
 ```TypeScript

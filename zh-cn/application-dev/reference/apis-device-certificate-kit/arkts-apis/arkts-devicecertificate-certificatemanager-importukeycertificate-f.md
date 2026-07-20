@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="importukeycertificate"></a>
 ## importUkeyCertificate
 
 ```TypeScript
@@ -29,14 +30,14 @@ function importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyI
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyUri | string | 是 | 表示USB Key证书凭据的uri.<br>最大长度为256且不能为空。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](arkts-devicecertificate-certificatemanager-getukeycertificatelist-f.md#getukeycertificatelist-1)接口得到。 |
-| cert | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示待导入的证书数据。<br>最大长度为10240且不能为空。<br>证书数据格式遵循SKF（Smart Key Framework）规范的定义。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。<br>最大长度为10240且不能为空。<br>证书数据格式遵循SKF（Smart Key Framework）规范的定义。 |
 | ukeyInfo | [UkeyInfo](arkts-devicecertificate-certificatemanager-ukeyinfo-i.md) | 是 | 表示USB Key证书属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果 |
+| Promise&lt;void&gt; | Promise对象，无返回结果 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="onpreloadeduiextensionabilitydestroyed"></a>
 ## onPreloadedUIExtensionAbilityDestroyed
 
 ```TypeScript

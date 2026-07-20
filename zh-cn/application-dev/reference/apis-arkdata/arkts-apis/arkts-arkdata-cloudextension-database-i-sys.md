@@ -60,7 +60,7 @@ tables: Array<Table>
 
 数据库中的表，包含数据详细信息。
 
-**类型：** Array<Table>
+**类型：** Array&lt;Table&gt;
 
 **起始版本：** 11
 

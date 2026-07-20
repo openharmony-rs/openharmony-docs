@@ -36,7 +36,7 @@ extraInfoKeys: Array<string>
 
 实况通知的附加信息。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 11
 

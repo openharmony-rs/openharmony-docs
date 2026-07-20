@@ -18,6 +18,7 @@
 import { mediaquery } from '@kit.ArkUI';
 ```
 
+<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -41,7 +42,7 @@ off(type: 'change', callback?: Callback<MediaQueryResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 必须填写字符串'change'。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<MediaQueryResult> | 否 | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;MediaQueryResult&gt; | 否 | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
 
 **示例：**
 
@@ -61,6 +62,7 @@ listener.off('change', onPortrait) // 注销回调
 
 ```
 
+<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -88,7 +90,7 @@ on(type: 'change', callback: Callback<MediaQueryResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 必须填写字符串'change'。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<MediaQueryResult> | 是 | 向媒体查询注册的回调。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;MediaQueryResult&gt; | 是 | 向媒体查询注册的回调。 |
 
 **示例：**
 

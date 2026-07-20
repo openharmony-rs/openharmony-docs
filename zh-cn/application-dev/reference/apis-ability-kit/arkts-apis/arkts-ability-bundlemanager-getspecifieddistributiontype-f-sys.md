@@ -6,13 +6,14 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getspecifieddistributiontype"></a>
 ## getSpecifiedDistributionType
 
 ```TypeScript
 function getSpecifiedDistributionType(bundleName: string): string
 ```
 
-以同步的方法查询指定bundleName的[HarmonyAppProvision配置文件说明](../../../../security/app-provision-structure.md)，该返回值是在调用install接口时传入的[InstallParam](arkts-ability-installer-installparam-i-sys.md)中的specifiedDistributionType字段。
+以同步的方法查询指定bundleName的[HarmonyAppProvision配置文件说明](docroot://security/app-provision-structure.md)，该返回值是在调用install接口时传入的[InstallParam](arkts-ability-installer-installparam-i-sys.md)中的specifiedDistributionType字段。
 
 获取调用方自身的信息时不需要权限。
 
@@ -36,7 +37,7 @@ function getSpecifiedDistributionType(bundleName: string): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 返回指定bundleName的[HarmonyAppProvision配置文件说明](../../../../security/app-provision-structure.md)。 |
+| string | 返回指定bundleName的[HarmonyAppProvision配置文件说明](docroot://security/app-provision-structure.md)。 |
 
 **错误码：**
 

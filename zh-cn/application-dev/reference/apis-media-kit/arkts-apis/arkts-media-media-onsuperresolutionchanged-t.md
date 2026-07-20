@@ -22,5 +22,5 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 表示当前超分是否开启。true表示超分开启，false表示超分关闭。 |
+| enabled | boolean | 是 | 表示当前超分是否开启。true表示超分开启，false表示超分关闭。  |
 

@@ -20,5 +20,5 @@ export type OnSelectedIndexChange = (selectedIndex: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectedIndex | number | 是 | 分段按钮选项下标。 |
+| selectedIndex | number | 是 | 分段按钮选项下标。  |
 

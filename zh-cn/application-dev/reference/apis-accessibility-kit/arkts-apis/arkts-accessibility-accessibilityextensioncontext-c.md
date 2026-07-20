@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
+<a id="getfocuselement"></a>
 ## getFocusElement
 
 ```TypeScript
@@ -31,7 +32,7 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback<Accessibi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isAccessibilityFocus | boolean | 是 | 获取的是否是无障碍焦点元素，True表示是，False表示否。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AccessibilityElement> | 是 | 回调函数，返回当前对应的焦点元素。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AccessibilityElement&gt; | 是 | 回调函数，返回当前对应的焦点元素。 |
 
 **错误码：**
 
@@ -40,6 +41,7 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback<Accessibi
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getfocuselement-1"></a>
 ## getFocusElement
 
 ```TypeScript
@@ -66,7 +68,7 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AccessibilityElement> | Promise对象，返回当前对应的焦点元素。 |
+| Promise&lt;AccessibilityElement&gt; | Promise对象，返回当前对应的焦点元素。 |
 
 **错误码：**
 
@@ -75,6 +77,7 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise<AccessibilityElement>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getfocuselement-2"></a>
 ## getFocusElement
 
 ```TypeScript
@@ -95,7 +98,7 @@ getFocusElement(callback: AsyncCallback<AccessibilityElement>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AccessibilityElement> | 是 | 回调函数，返回当前对应的焦点元素。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AccessibilityElement&gt; | 是 | 回调函数，返回当前对应的焦点元素。 |
 
 **错误码：**
 
@@ -104,6 +107,7 @@ getFocusElement(callback: AsyncCallback<AccessibilityElement>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getwindowrootelement"></a>
 ## getWindowRootElement
 
 ```TypeScript
@@ -125,7 +129,7 @@ getWindowRootElement(windowId: number, callback: AsyncCallback<AccessibilityElem
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | windowId | number | 是 | 指定窗口的编号，未指定则从当前活跃窗口获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AccessibilityElement> | 是 | 回调函数，返回指定窗口的根节点元素。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AccessibilityElement&gt; | 是 | 回调函数，返回指定窗口的根节点元素。 |
 
 **错误码：**
 
@@ -134,6 +138,7 @@ getWindowRootElement(windowId: number, callback: AsyncCallback<AccessibilityElem
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getwindowrootelement-1"></a>
 ## getWindowRootElement
 
 ```TypeScript
@@ -160,7 +165,7 @@ getWindowRootElement(windowId?: number): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AccessibilityElement> | Promise对象，返回指定窗口的根节点元素。 |
+| Promise&lt;AccessibilityElement&gt; | Promise对象，返回指定窗口的根节点元素。 |
 
 **错误码：**
 
@@ -169,6 +174,7 @@ getWindowRootElement(windowId?: number): Promise<AccessibilityElement>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getwindowrootelement-2"></a>
 ## getWindowRootElement
 
 ```TypeScript
@@ -189,7 +195,7 @@ getWindowRootElement(callback: AsyncCallback<AccessibilityElement>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AccessibilityElement> | 是 | 回调函数，返回指定窗口的根节点元素。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AccessibilityElement&gt; | 是 | 回调函数，返回指定窗口的根节点元素。 |
 
 **错误码：**
 
@@ -198,6 +204,7 @@ getWindowRootElement(callback: AsyncCallback<AccessibilityElement>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getwindows"></a>
 ## getWindows
 
 ```TypeScript
@@ -219,7 +226,7 @@ getWindows(displayId: number, callback: AsyncCallback<Array<AccessibilityElement
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | displayId | number | 是 | 指定的屏幕编号，未指定则从默认主屏幕获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<AccessibilityElement>> | 是 | 回调函数，返回指定屏幕的所有窗口。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AccessibilityElement&gt;&gt; | 是 | 回调函数，返回指定屏幕的所有窗口。 |
 
 **错误码：**
 
@@ -228,6 +235,7 @@ getWindows(displayId: number, callback: AsyncCallback<Array<AccessibilityElement
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getwindows-1"></a>
 ## getWindows
 
 ```TypeScript
@@ -254,7 +262,7 @@ getWindows(displayId?: number): Promise<Array<AccessibilityElement>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AccessibilityElement>> | Promise对象，返回指定屏幕的所有窗口。 |
+| Promise&lt;Array&lt;AccessibilityElement&gt;&gt; | Promise对象，返回指定屏幕的所有窗口。 |
 
 **错误码：**
 
@@ -263,6 +271,7 @@ getWindows(displayId?: number): Promise<Array<AccessibilityElement>>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getwindows-2"></a>
 ## getWindows
 
 ```TypeScript
@@ -283,7 +292,7 @@ getWindows(callback: AsyncCallback<Array<AccessibilityElement>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<AccessibilityElement>> | 是 | 回调函数，返回指定屏幕的所有窗口。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AccessibilityElement&gt;&gt; | 是 | 回调函数，返回指定屏幕的所有窗口。 |
 
 **错误码：**
 
@@ -292,6 +301,7 @@ getWindows(callback: AsyncCallback<Array<AccessibilityElement>>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="injectgesture"></a>
 ## injectGesture
 
 ```TypeScript
@@ -315,7 +325,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | gesturePath | [GesturePath](arkts-accessibility-accessibility-gesturepath-gesturepath-c.md) | 是 | 表示手势的路径信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，表示注入手势执行结果的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，表示注入手势执行结果的回调。 |
 
 **错误码：**
 
@@ -324,6 +334,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="injectgesture-1"></a>
 ## injectGesture
 
 ```TypeScript
@@ -352,7 +363,7 @@ injectGesture(gesturePath: GesturePath): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -361,6 +372,7 @@ injectGesture(gesturePath: GesturePath): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="injectgesturesync"></a>
 ## injectGestureSync
 
 ```TypeScript
@@ -390,6 +402,7 @@ injectGestureSync(gesturePath: GesturePath): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="settargetbundlename"></a>
 ## setTargetBundleName
 
 ```TypeScript
@@ -410,8 +423,8 @@ setTargetBundleName(targetNames: Array<string>, callback: AsyncCallback<void>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 设置关注应用的包名，服务接收关注应用的无障碍事件，默认接收所有应用的无障碍事件，取消关注应用则传空数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，如果设置关注的目标包名失败，则AsyncCallback中err有数据返回。 |
+| targetNames | Array&lt;string&gt; | 是 | 设置关注应用的包名，服务接收关注应用的无障碍事件，默认接收所有应用的无障碍事件，取消关注应用则传空数组。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，如果设置关注的目标包名失败，则AsyncCallback中err有数据返回。 |
 
 **错误码：**
 
@@ -419,6 +432,7 @@ setTargetBundleName(targetNames: Array<string>, callback: AsyncCallback<void>): 
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
+<a id="settargetbundlename-1"></a>
 ## setTargetBundleName
 
 ```TypeScript
@@ -439,13 +453,13 @@ setTargetBundleName(targetNames: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 设置关注应用的包名，服务接收关注应用的无障碍事件，默认接收所有应用的无障碍事件，取消关注应用则传空数组。 |
+| targetNames | Array&lt;string&gt; | 是 | 设置关注应用的包名，服务接收关注应用的无障碍事件，默认接收所有应用的无障碍事件，取消关注应用则传空数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

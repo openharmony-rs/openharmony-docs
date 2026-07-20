@@ -6,6 +6,7 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -39,6 +40,7 @@ emitter.off(1);
 ```
 
 
+<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -72,13 +74,14 @@ emitter.off("eventId1");
 ```
 
 
+<a id="off-2"></a>
 ## off
 
 ```TypeScript
 function off(eventId: number, callback: Callback<EventData>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on-1)或[once](arkts-basicservices-emitter-once-f.md#once-1)接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](emitter.on(event: InnerEvent, callback: Callback<EventData>))或[once](emitter.once(event: InnerEvent, callback: Callback<EventData>))接口订阅callback时，该接口才生效。
 
 使用该接口取消某个事件订阅后，已通过[emit](emitter.emit(eventId: string))接口发布但尚未被执行的事件将被取消。
 
@@ -95,7 +98,7 @@ function off(eventId: number, callback: Callback<EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | number | 是 | 事件ID。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventData> | 是 | 事件的回调处理函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventData&gt; | 是 | 事件的回调处理函数。 |
 
 **示例：**
 
@@ -112,13 +115,14 @@ emitter.off(1, callback);
 ```
 
 
+<a id="off-3"></a>
 ## off
 
 ```TypeScript
 function off(eventId: string, callback: Callback<EventData>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on-2)或[once](arkts-basicservices-emitter-once-f.md#once-2)接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](emitter.on(eventId: string, callback: Callback<EventData>))或[once](emitter.once(eventId: string, callback: Callback<EventData>))接口订阅callback时，该接口才生效。
 
 使用该接口取消某个事件订阅后，已通过[emit](emitter.emit(eventId: string))接口发布但尚未被执行的事件将被取消。
 
@@ -135,7 +139,7 @@ function off(eventId: string, callback: Callback<EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventData> | 是 | 事件的回调处理函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventData&gt; | 是 | 事件的回调处理函数。 |
 
 **示例：**
 
@@ -152,13 +156,14 @@ emitter.off("eventId1", callback);
 ```
 
 
+<a id="off-4"></a>
 ## off
 
 ```TypeScript
 function off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on-3)或[once](arkts-basicservices-emitter-once-f.md#once-3)接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](emitter.on<T>(eventId: string, callback: Callback<GenericEventData<T>>))或[once](emitter.once<T>(eventId: string, callback: Callback<GenericEventData<T>>))接口订阅callback时，该接口才生效。
 
 使用该接口取消某个事件订阅后，已通过[emit](emitter.emit(eventId: string))接口发布但尚未被执行的事件将被取消。
 
@@ -175,7 +180,7 @@ function off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<GenericEventData<T>> | 是 | 事件的回调处理函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;GenericEventData&lt;T&gt;&gt; | 是 | 事件的回调处理函数。 |
 
 **示例：**
 

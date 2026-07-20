@@ -6,6 +6,7 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="killprocessesbybundlename"></a>
 ## killProcessesByBundleName
 
 ```TypeScript
@@ -34,7 +35,7 @@ function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

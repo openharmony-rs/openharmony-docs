@@ -52,7 +52,7 @@ onAbilityBackground?: (ability: UIAbility) => void
 
 UIAbility对象状态变成后台时，触发该回调函数。
 
-**类型：** (ability: UIAbility) => void
+**类型：** (ability: UIAbility) =&gt; void
 
 **起始版本：** 9
 
@@ -70,7 +70,7 @@ onAbilityCreate?: (ability: UIAbility) => void
 
 UIAbility对象被创建时，触发该回调函数。
 
-**类型：** (ability: UIAbility) => void
+**类型：** (ability: UIAbility) =&gt; void
 
 **起始版本：** 9
 
@@ -88,7 +88,7 @@ onAbilityDestroy?: (ability: UIAbility) => void
 
 UIAbility对象被销毁前，触发该回调函数。
 
-**类型：** (ability: UIAbility) => void
+**类型：** (ability: UIAbility) =&gt; void
 
 **起始版本：** 9
 
@@ -106,7 +106,7 @@ onAbilityForeground?: (ability: UIAbility) => void
 
 UIAbility对象状态变成前台时，触发该回调函数。
 
-**类型：** (ability: UIAbility) => void
+**类型：** (ability: UIAbility) =&gt; void
 
 **起始版本：** 9
 
@@ -124,7 +124,7 @@ onWindowStageCreate?: (ability: UIAbility) => void
 
 当WindowStage实例被创建时，触发该回调函数。
 
-**类型：** (ability: UIAbility) => void
+**类型：** (ability: UIAbility) =&gt; void
 
 **起始版本：** 9
 
@@ -142,7 +142,7 @@ onWindowStageDestroy?: (ability: UIAbility) => void
 
 当WindowStage被销毁前，触发该回调函数。
 
-**类型：** (ability: UIAbility) => void
+**类型：** (ability: UIAbility) =&gt; void
 
 **起始版本：** 9
 
@@ -160,7 +160,7 @@ onWindowStageRestore?: (ability: UIAbility) => void
 
 当UIAbility跨端迁移时，目标端UIAbility恢复页面栈时，触发该回调函数。
 
-**类型：** (ability: UIAbility) => void
+**类型：** (ability: UIAbility) =&gt; void
 
 **起始版本：** 9
 

@@ -6,6 +6,7 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
+<a id="unregistercontinuation"></a>
 ## unregisterContinuation
 
 ```TypeScript
@@ -33,7 +34,7 @@ function unregisterContinuation(token: number, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | token | number | 是 | 注册后的token。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当解注册成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当解注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ try {
 ```
 
 
+<a id="unregistercontinuation-1"></a>
 ## unregisterContinuation
 
 ```TypeScript
@@ -97,7 +99,7 @@ function unregisterContinuation(token: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise形式返回接口调用结果。 |
+| Promise&lt;void&gt; | Promise形式返回接口调用结果。 |
 
 **错误码：**
 

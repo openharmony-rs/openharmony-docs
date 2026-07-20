@@ -46,7 +46,7 @@ buttons?: Array<DialogButton>
 
 对话框中的按钮数组。提供时，对话框显示为带有按钮的警报样式对话框。与图纸一起使用时，按钮显示在图纸列表下方。
 
-**类型：** Array<DialogButton>
+**类型：** Array&lt;DialogButton&gt;
 
 **起始版本：** 26.1.0
 
@@ -106,7 +106,7 @@ sheets?: Array<DialogSheet>
 
 action-sheet样式的表单项数组。提供时，对话框将显示供用户选择的工作表项目。
 
-**类型：** Array<DialogSheet>
+**类型：** Array&lt;DialogSheet&gt;
 
 **起始版本：** 26.1.0
 

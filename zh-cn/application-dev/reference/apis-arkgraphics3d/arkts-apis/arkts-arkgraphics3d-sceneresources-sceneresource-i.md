@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+<a id="destroy"></a>
 ## destroy
 
 ```TypeScript

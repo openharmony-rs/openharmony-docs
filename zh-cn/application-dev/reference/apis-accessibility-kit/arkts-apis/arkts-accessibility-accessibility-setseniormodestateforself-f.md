@@ -6,6 +6,7 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+<a id="setseniormodestateforself"></a>
 ## setSeniorModeStateForSelf
 
 ```TypeScript
@@ -32,7 +33,7 @@ Set this application's senior mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The promise returned by the function. |
+| Promise&lt;void&gt; | The promise returned by the function. |
 
 **错误码：**
 

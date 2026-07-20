@@ -6,6 +6,7 @@
 import { systemTime } from '@kit.BasicServicesKit';
 ```
 
+<a id="setdate"></a>
 ## setDate
 
 ```TypeScript
@@ -31,7 +32,7 @@ function setDate(date: Date, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | date | Date | 是 | 目标日期。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ try {
 ```
 
 
+<a id="setdate-1"></a>
 ## setDate
 
 ```TypeScript
@@ -91,7 +93,7 @@ function setDate(date: Date): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

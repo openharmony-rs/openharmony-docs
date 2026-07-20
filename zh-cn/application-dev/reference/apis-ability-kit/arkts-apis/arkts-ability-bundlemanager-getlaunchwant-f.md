@@ -6,13 +6,14 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getlaunchwant"></a>
 ## getLaunchWant
 
 ```TypeScript
 function getLaunchWant(): Want
 ```
 
-获取本应用[入口UIAbility](../../../../quick-start/application-package-glossary.md#uiability)的Want参数。
+获取本应用[入口UIAbility](docroot://quick-start/application-package-glossary.md#uiability)的Want参数。
 
 **起始版本：** 13
 

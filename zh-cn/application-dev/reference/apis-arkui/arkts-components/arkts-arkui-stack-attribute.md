@@ -12,13 +12,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="aligncontent"></a>
 ## alignContent
 
 ```TypeScript
 alignContent(value: Alignment)
 ```
 
-设置子组件在容器内的对齐方式。该属性与[align](arkts-arkui-common-commonmethod-c.md#align-1)同时设置时，后设置的属性生效。该属性与接口的构造入参同时设置时，生效属性上的设置效果。
+设置子组件在容器内的对齐方式。该属性与[align](arkts-arkui-commonmethod-c.md#align-1)同时设置时，后设置的属性生效。该属性与接口的构造入参同时设置时，生效属性上的设置效果。
 
 **起始版本：** 7
 
@@ -34,8 +35,9 @@ alignContent(value: Alignment)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Alignment](../arkts-apis/arkts-arkui-enums-alignment-e.md) | 是 | 所有子组件在容器内的对齐方式。<br/>默认值：Alignment.Center <br />非法值：按默认值处理。 |
+| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | 是 | 所有子组件在容器内的对齐方式。<br/>默认值：Alignment.Center <br />非法值：按默认值处理。 |
 
+<a id="syncload"></a>
 ## syncLoad
 
 ```TypeScript

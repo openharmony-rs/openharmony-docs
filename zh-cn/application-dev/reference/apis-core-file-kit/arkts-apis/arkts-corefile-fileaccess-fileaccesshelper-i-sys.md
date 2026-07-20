@@ -18,6 +18,7 @@ FileAccessHelper对象。
 import { fileAccess } from '@kit.CoreFileKit';
 ```
 
+<a id="access"></a>
 ## access
 
 ```TypeScript
@@ -50,7 +51,7 @@ access(sourceFileUri: string) : Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Returns whether it exists. |
+| Promise&lt;boolean&gt; | Returns whether it exists. |
 
 **错误码：**
 
@@ -119,6 +120,7 @@ async function accessFunc() {
 
 ```
 
+<a id="access-1"></a>
 ## access
 
 ```TypeScript
@@ -146,7 +148,7 @@ access(sourceFileUri: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sourceFileUri | string | 是 | Indicates the selected file or directory. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | The callback is used to return whether it exists. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | The callback is used to return whether it exists. |
 
 **错误码：**
 
@@ -217,6 +219,7 @@ try {
 
 ```
 
+<a id="copy"></a>
 ## copy
 
 ```TypeScript
@@ -251,8 +254,9 @@ copy(sourceUri: string, destUri: string, force?: boolean): Promise<Array<CopyRes
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<CopyResult>> | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
+| Promise&lt;Array&lt;CopyResult&gt;&gt; | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
 
+<a id="copy-1"></a>
 ## copy
 
 ```TypeScript
@@ -281,7 +285,7 @@ copy(sourceUri: string, destUri: string, callback: AsyncCallback<Array<CopyResul
 | --- | --- | --- | --- |
 | sourceUri | string | 是 | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。 |
 | destUri | string | 是 | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<CopyResult>> | 是 | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;CopyResult&gt;&gt; | 是 | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
 
 **示例：**
 
@@ -319,6 +323,7 @@ try {
 
 ```
 
+<a id="copy-2"></a>
 ## copy
 
 ```TypeScript
@@ -348,7 +353,7 @@ copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback
 | sourceUri | string | 是 | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。 |
 | destUri | string | 是 | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。 |
 | force | boolean | 是 | 含有同名文件时是否强制覆盖原文件。force 为 true 时强制覆盖原文件；force 为空或 false 时不覆盖原文件。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<CopyResult>> | 是 | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;CopyResult&gt;&gt; | 是 | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
 
 **示例：**
 
@@ -386,6 +391,7 @@ try {
 
 ```
 
+<a id="copyfile"></a>
 ## copyFile
 
 ```TypeScript
@@ -422,7 +428,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 返回一个复制成功的文件的uri。 |
+| Promise&lt;string&gt; | 返回一个复制成功的文件的uri。 |
 
 **错误码：**
 
@@ -453,6 +459,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<a id="copyfile-1"></a>
 ## copyFile
 
 ```TypeScript
@@ -484,7 +491,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 | sourceUri | string | 是 | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。 |
 | destUri | string | 是 | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。 |
 | fileName | string | 是 | 如果目标目录中有1.txt文件。就是用fileName 作为文件名进行复制。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 返回一个复制成功的文件的uri。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 返回一个复制成功的文件的uri。 |
 
 **错误码：**
 
@@ -540,6 +547,7 @@ try {
 
 ```
 
+<a id="createfile"></a>
 ## createFile
 
 ```TypeScript
@@ -573,7 +581,7 @@ createFile(uri: string, displayName: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Returns the new file's URI. |
+| Promise&lt;string&gt; | Returns the new file's URI. |
 
 **错误码：**
 
@@ -644,6 +652,7 @@ async function createFile() {
 
 ```
 
+<a id="createfile-1"></a>
 ## createFile
 
 ```TypeScript
@@ -672,7 +681,7 @@ createFile(uri: string, displayName: string, callback: AsyncCallback<string>): v
 | --- | --- | --- | --- |
 | uri | string | 是 | Represents a specific parent directory. |
 | displayName | string | 是 | Indicates the new file name, and supports with suffix. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | The callback is used to return the new file's URI. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | The callback is used to return the new file's URI. |
 
 **错误码：**
 
@@ -740,6 +749,7 @@ try {
 
 ```
 
+<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -772,7 +782,7 @@ delete(uri: string) : Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | @throws { BusinessError } 13900001 - Operation not permitted |
+| Promise&lt;number&gt; | @throws { BusinessError } 13900001 - Operation not permitted |
 
 **错误码：**
 
@@ -838,6 +848,7 @@ async function deleteFile01() {
 
 ```
 
+<a id="delete-1"></a>
 ## delete
 
 ```TypeScript
@@ -865,7 +876,7 @@ delete(uri: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the file or directory to be deleted. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 |  |
 
 **错误码：**
 
@@ -932,6 +943,7 @@ try {
 
 ```
 
+<a id="getfileinfofromrelativepath"></a>
 ## getFileInfoFromRelativePath
 
 ```TypeScript
@@ -964,7 +976,7 @@ getFileInfoFromRelativePath(relativePath: string) : Promise<FileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<FileInfo> | Returns a FileInfo. |
+| Promise&lt;FileInfo&gt; | Returns a FileInfo. |
 
 **示例：**
 
@@ -988,6 +1000,7 @@ async function getRelativePath() {
 
 ```
 
+<a id="getfileinfofromrelativepath-1"></a>
 ## getFileInfoFromRelativePath
 
 ```TypeScript
@@ -1015,7 +1028,7 @@ getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback<FileIn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | relativePath | string | 是 | Indicates the selected file or directory. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<FileInfo> | 是 | The callback is used to return a fileinfo object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;FileInfo&gt; | 是 | The callback is used to return a fileinfo object. |
 
 **示例：**
 
@@ -1043,6 +1056,7 @@ try {
 
 ```
 
+<a id="getfileinfofromuri"></a>
 ## getFileInfoFromUri
 
 ```TypeScript
@@ -1075,7 +1089,7 @@ getFileInfoFromUri(uri: string) : Promise<FileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<FileInfo> | Returns a FileInfo. |
+| Promise&lt;FileInfo&gt; | Returns a FileInfo. |
 
 **示例：**
 
@@ -1100,6 +1114,7 @@ async function getUri() {
 
 ```
 
+<a id="getfileinfofromuri-1"></a>
 ## getFileInfoFromUri
 
 ```TypeScript
@@ -1127,7 +1142,7 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback<FileInfo>) : void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the selected file or directory. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<FileInfo> | 是 | The callback is used to return a fileinfo object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;FileInfo&gt; | 是 | The callback is used to return a fileinfo object. |
 
 **示例：**
 
@@ -1156,6 +1171,7 @@ try {
 
 ```
 
+<a id="getroots"></a>
 ## getRoots
 
 ```TypeScript
@@ -1180,7 +1196,7 @@ getRoots(): Promise<RootIterator>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RootIterator> | Returns a RootIterator. |
+| Promise&lt;RootIterator&gt; | Returns a RootIterator. |
 
 **错误码：**
 
@@ -1253,6 +1269,7 @@ async function getRoots() {
 
 ```
 
+<a id="getroots-1"></a>
 ## getRoots
 
 ```TypeScript
@@ -1277,7 +1294,7 @@ getRoots(callback: AsyncCallback<RootIterator>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RootIterator> | 是 | The callback is used to return a RootIterator. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RootIterator&gt; | 是 | The callback is used to return a RootIterator. |
 
 **错误码：**
 
@@ -1351,6 +1368,7 @@ async function getRoots() {
 
 ```
 
+<a id="mkdir"></a>
 ## mkDir
 
 ```TypeScript
@@ -1384,7 +1402,7 @@ mkDir(parentUri: string, displayName: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Returns the new directory's URI. |
+| Promise&lt;string&gt; | Returns the new directory's URI. |
 
 **错误码：**
 
@@ -1455,6 +1473,7 @@ async function createDirectory() {
 
 ```
 
+<a id="mkdir-1"></a>
 ## mkDir
 
 ```TypeScript
@@ -1483,7 +1502,7 @@ mkDir(parentUri: string, displayName: string, callback: AsyncCallback<string>): 
 | --- | --- | --- | --- |
 | parentUri | string | 是 | Represents a specific parent directory. |
 | displayName | string | 是 | Indicates the new directory name. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | The callback is used to return the new directory's URI. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | The callback is used to return the new directory's URI. |
 
 **错误码：**
 
@@ -1551,6 +1570,7 @@ try {
 
 ```
 
+<a id="move"></a>
 ## move
 
 ```TypeScript
@@ -1584,7 +1604,7 @@ move(sourceFile: string, destFile: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 新路径下的文件(夹)的uri。 |
+| Promise&lt;string&gt; | 新路径下的文件(夹)的uri。 |
 
 **错误码：**
 
@@ -1650,6 +1670,7 @@ async function moveFile01() {
 
 ```
 
+<a id="move-1"></a>
 ## move
 
 ```TypeScript
@@ -1678,7 +1699,7 @@ move(sourceFile: string, destFile: string, callback: AsyncCallback<string>): voi
 | --- | --- | --- | --- |
 | sourceFile | string | 是 | Indicates the file or directory to be moved. |
 | destFile | string | 是 | Represents the destination folder. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | The callback is used to return the generated new file or directory. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | The callback is used to return the generated new file or directory. |
 
 **错误码：**
 
@@ -1746,6 +1767,7 @@ try {
 
 ```
 
+<a id="movefile"></a>
 ## moveFile
 
 ```TypeScript
@@ -1782,7 +1804,7 @@ moveFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 新路径下的文件uri。 |
+| Promise&lt;string&gt; | 新路径下的文件uri。 |
 
 **错误码：**
 
@@ -1839,6 +1861,7 @@ async function moveFile01() {
 
 ```
 
+<a id="movefile-1"></a>
 ## moveFile
 
 ```TypeScript
@@ -1870,7 +1893,7 @@ moveFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 | sourceUri | string | 是 | 待移动的源文件的uri。 |
 | destUri | string | 是 | 目标文件夹的uri。 |
 | fileName | string | 是 | 冲突文件的新名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 新路径下的文件uri。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 新路径下的文件uri。 |
 
 **错误码：**
 
@@ -1929,6 +1952,7 @@ try {
 
 ```
 
+<a id="moveitem"></a>
 ## moveItem
 
 ```TypeScript
@@ -1965,7 +1989,7 @@ moveItem(sourceUri: string, destUri: string, force?: boolean): Promise<Array<Mov
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<MoveResult>> | 返回 moveresult 数组。moveResult 为移动操作失败的返回信息；复制成功无返回信息。 |
+| Promise&lt;Array&lt;MoveResult&gt;&gt; | 返回 moveresult 数组。moveResult 为移动操作失败的返回信息；复制成功无返回信息。 |
 
 **错误码：**
 
@@ -1996,6 +2020,7 @@ moveItem(sourceUri: string, destUri: string, force?: boolean): Promise<Array<Mov
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<a id="moveitem-1"></a>
 ## moveItem
 
 ```TypeScript
@@ -2026,7 +2051,7 @@ moveItem(sourceUri: string, destUri: string, callback: AsyncCallback<Array<MoveR
 | --- | --- | --- | --- |
 | sourceUri | string | 是 | 待移动的源文件(夹)的uri。 |
 | destUri | string | 是 | 目标文件夹的uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<MoveResult>> | 是 | 回调返回MoveResult数组。MoveResult为移动操作失败的返回信息；移动成功无返回信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;MoveResult&gt;&gt; | 是 | 回调返回MoveResult数组。MoveResult为移动操作失败的返回信息；移动成功无返回信息。 |
 
 **错误码：**
 
@@ -2093,6 +2118,7 @@ try {
 
 ```
 
+<a id="moveitem-2"></a>
 ## moveItem
 
 ```TypeScript
@@ -2124,7 +2150,7 @@ moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCall
 | sourceUri | string | 是 | 待移动的源文件(夹)的uri。 |
 | destUri | string | 是 | 目标文件夹的uri。 |
 | force | boolean | 是 | 选择当存在同名文件时，是否强制覆盖文件。当force为true时，强制覆盖文件；为false时不强制覆盖文件。该参数不填，默认为false。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<MoveResult>> | 是 | 回调返回MoveResult数组。MoveResult为移动操作失败的返回信息；移动成功无返回信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;MoveResult&gt;&gt; | 是 | 回调返回MoveResult数组。MoveResult为移动操作失败的返回信息；移动成功无返回信息。 |
 
 **错误码：**
 
@@ -2191,6 +2217,7 @@ try {
 
 ```
 
+<a id="openfile"></a>
 ## openFile
 
 ```TypeScript
@@ -2224,7 +2251,7 @@ openFile(uri: string, flags: OPENFLAGS) : Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Returns the file descriptor. |
+| Promise&lt;number&gt; | Returns the file descriptor. |
 
 **错误码：**
 
@@ -2288,6 +2315,7 @@ async function openFile01() {
 
 ```
 
+<a id="openfile-1"></a>
 ## openFile
 
 ```TypeScript
@@ -2316,7 +2344,7 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the path of the file to open. |
 | flags | [OPENFLAGS](arkts-corefile-fileaccess-openflags-e-sys.md) | 是 | Indicate options of opening a file. The default value is read-only. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | The callback is used to return the file descriptor. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | The callback is used to return the file descriptor. |
 
 **错误码：**
 
@@ -2383,6 +2411,7 @@ try {
 
 ```
 
+<a id="query"></a>
 ## query
 
 ```TypeScript
@@ -2416,7 +2445,7 @@ query(uri: string, metaJson: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 返回json字符串，包括查询属性和值。 |
+| Promise&lt;string&gt; | 返回json字符串，包括查询属性和值。 |
 
 **示例：**
 
@@ -2441,6 +2470,7 @@ async function getQuery01() {
 
 ```
 
+<a id="query-1"></a>
 ## query
 
 ```TypeScript
@@ -2469,7 +2499,7 @@ query(uri: string, metaJson: string, callback: AsyncCallback<string>) : void
 | --- | --- | --- | --- |
 | uri | string | 是 | 所选文件或目录的uri（从[FileInfo](arkts-corefile-fileaccess-fileinfo-i-sys.md)中获取）。 |
 | metaJson | string | 是 | json字符串，包含查询属性[FILEKEY](arkts-corefile-fileaccess-filekey-e-sys.md)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 返回json字符串，包括查询属性和值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 返回json字符串，包括查询属性和值。 |
 
 **示例：**
 
@@ -2499,6 +2529,7 @@ async function getQuery02() {
 
 ```
 
+<a id="registerobserver"></a>
 ## registerObserver
 
 ```TypeScript
@@ -2527,7 +2558,7 @@ registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback<
 | --- | --- | --- | --- |
 | uri | string | 是 | 文件或目录的uri。 |
 | notifyForDescendants | boolean | 是 | 监听目录时，是否监听子文件变化。true为监听；false为不监听。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<NotifyMessage> | 是 | 返回通知信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;NotifyMessage&gt; | 是 | 返回通知信息。 |
 
 **错误码：**
 
@@ -2535,6 +2566,7 @@ registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback<
 | --- | --- |
 | 14300002 | Invalid uri |
 
+<a id="rename"></a>
 ## rename
 
 ```TypeScript
@@ -2568,7 +2600,7 @@ rename(uri: string, displayName: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Returns a URI representing the new file or directory. |
+| Promise&lt;string&gt; | Returns a URI representing the new file or directory. |
 
 **错误码：**
 
@@ -2633,6 +2665,7 @@ async function renameFile01() {
 
 ```
 
+<a id="rename-1"></a>
 ## rename
 
 ```TypeScript
@@ -2661,7 +2694,7 @@ rename(uri: string, displayName: string, callback: AsyncCallback<string>): void
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the selected file or directory. |
 | displayName | string | 是 | Indicates the new directory or file name. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | The callback is used to return a URI representing the new file or directory. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | The callback is used to return a URI representing the new file or directory. |
 
 **错误码：**
 
@@ -2728,6 +2761,7 @@ try {
 
 ```
 
+<a id="unregisterobserver"></a>
 ## unregisterObserver
 
 ```TypeScript
@@ -2753,7 +2787,7 @@ unregisterObserver(uri: string, callback?: Callback<NotifyMessage>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 文件或目录的uri。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<NotifyMessage> | 否 | 解注册uri下对应的callback。如果该参数不填，则解注册对应的所有callbackback。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;NotifyMessage&gt; | 否 | 解注册uri下对应的callback。如果该参数不填，则解注册对应的所有callbackback。 |
 
 **错误码：**
 

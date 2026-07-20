@@ -20,5 +20,5 @@ declare type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | OnFoldStatusChangeInfo | 是 | 当前设备的折叠状态。 |
+| event | [OnFoldStatusChangeInfo](arkts-arkui-onfoldstatuschangeinfo-i.md) | 是 | 当前设备的折叠状态。  |
 

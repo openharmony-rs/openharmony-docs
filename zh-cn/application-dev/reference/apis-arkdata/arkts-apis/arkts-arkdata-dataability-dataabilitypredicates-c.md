@@ -14,6 +14,7 @@
 import { dataAbility } from '@kit.ArkData';
 ```
 
+<a id="and"></a>
 ## and
 
 ```TypeScript
@@ -43,6 +44,7 @@ dataAbilityPredicates.equalTo("NAME", "Lisa")
 
 ```
 
+<a id="beginwrap"></a>
 ## beginWrap
 
 ```TypeScript
@@ -75,6 +77,7 @@ dataAbilityPredicates.equalTo("NAME", "lisi")
 
 ```
 
+<a id="beginswith"></a>
 ## beginsWith
 
 ```TypeScript
@@ -111,6 +114,7 @@ dataAbilityPredicates.beginsWith("NAME", "os")
 
 ```
 
+<a id="between"></a>
 ## between
 
 ```TypeScript
@@ -146,6 +150,7 @@ dataAbilityPredicates.between("AGE", 10, 50)
 
 ```
 
+<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -180,6 +185,7 @@ dataAbilityPredicates.contains("NAME", "os")
 
 ```
 
+<a id="distinct"></a>
 ## distinct
 
 ```TypeScript
@@ -207,6 +213,7 @@ dataAbilityPredicates.equalTo("NAME", "Rose").distinct()
 
 ```
 
+<a id="endwrap"></a>
 ## endWrap
 
 ```TypeScript
@@ -239,6 +246,7 @@ dataAbilityPredicates.equalTo("NAME", "lisi")
 
 ```
 
+<a id="endswith"></a>
 ## endsWith
 
 ```TypeScript
@@ -275,6 +283,7 @@ dataAbilityPredicates.endsWith("NAME", "se")
 
 ```
 
+<a id="equalto"></a>
 ## equalTo
 
 ```TypeScript
@@ -311,6 +320,7 @@ dataAbilityPredicates.equalTo("NAME", "lisi")
 
 ```
 
+<a id="glob"></a>
 ## glob
 
 ```TypeScript
@@ -351,6 +361,7 @@ dataAbilityPredicates.glob("NAME", "lisa")
 
 ```
 
+<a id="greaterthan"></a>
 ## greaterThan
 
 ```TypeScript
@@ -385,6 +396,7 @@ dataAbilityPredicates.greaterThan("AGE", 18)
 
 ```
 
+<a id="greaterthanorequalto"></a>
 ## greaterThanOrEqualTo
 
 ```TypeScript
@@ -419,6 +431,7 @@ dataAbilityPredicates.greaterThanOrEqualTo("AGE", 18)
 
 ```
 
+<a id="groupby"></a>
 ## groupBy
 
 ```TypeScript
@@ -437,7 +450,7 @@ groupBy(fields: Array<string>): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 指定分组依赖的列名。 |
+| fields | Array&lt;string&gt; | 是 | 指定分组依赖的列名。 |
 
 **返回值：**
 
@@ -452,6 +465,7 @@ dataAbilityPredicates.groupBy(["AGE", "NAME"])
 
 ```
 
+<a id="in"></a>
 ## in
 
 ```TypeScript
@@ -471,7 +485,7 @@ in(field: string, value: Array<ValueType>): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ValueType> | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
+| value | Array&lt;ValueType&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
 
 **返回值：**
 
@@ -486,6 +500,7 @@ dataAbilityPredicates.in("AGE", [18, 20])
 
 ```
 
+<a id="indexedby"></a>
 ## indexedBy
 
 ```TypeScript
@@ -558,6 +573,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="isnotnull"></a>
 ## isNotNull
 
 ```TypeScript
@@ -591,6 +607,7 @@ dataAbilityPredicates.isNotNull("NAME")
 
 ```
 
+<a id="isnull"></a>
 ## isNull
 
 ```TypeScript
@@ -624,6 +641,7 @@ dataAbilityPredicates.isNull("NAME")
 
 ```
 
+<a id="lessthan"></a>
 ## lessThan
 
 ```TypeScript
@@ -658,6 +676,7 @@ dataAbilityPredicates.lessThan("AGE", 20)
 
 ```
 
+<a id="lessthanorequalto"></a>
 ## lessThanOrEqualTo
 
 ```TypeScript
@@ -692,6 +711,7 @@ dataAbilityPredicates.lessThanOrEqualTo("AGE", 20)
 
 ```
 
+<a id="like"></a>
 ## like
 
 ```TypeScript
@@ -728,6 +748,7 @@ dataAbilityPredicates.like("NAME", "%os%")
 
 ```
 
+<a id="limitas"></a>
 ## limitAs
 
 ```TypeScript
@@ -761,6 +782,7 @@ dataAbilityPredicates.equalTo("NAME", "Rose").limitAs(3)
 
 ```
 
+<a id="notbetween"></a>
 ## notBetween
 
 ```TypeScript
@@ -796,6 +818,7 @@ dataAbilityPredicates.notBetween("AGE", 10, 50)
 
 ```
 
+<a id="notequalto"></a>
 ## notEqualTo
 
 ```TypeScript
@@ -832,6 +855,7 @@ dataAbilityPredicates.notEqualTo("NAME", "lisi")
 
 ```
 
+<a id="notin"></a>
 ## notIn
 
 ```TypeScript
@@ -851,7 +875,7 @@ notIn(field: string, value: Array<ValueType>): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ValueType> | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
+| value | Array&lt;ValueType&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
 
 **返回值：**
 
@@ -866,6 +890,7 @@ dataAbilityPredicates.notIn("NAME", ["Lisa", "Rose"])
 
 ```
 
+<a id="offsetas"></a>
 ## offsetAs
 
 ```TypeScript
@@ -900,6 +925,7 @@ dataAbilityPredicates.equalTo("NAME", "Rose").offsetAs(3).limitAs(3)
 
 ```
 
+<a id="or"></a>
 ## or
 
 ```TypeScript
@@ -931,6 +957,7 @@ dataAbilityPredicates.equalTo("NAME", "Lisa")
 
 ```
 
+<a id="orderbyasc"></a>
 ## orderByAsc
 
 ```TypeScript
@@ -965,6 +992,7 @@ dataAbilityPredicates.orderByAsc("NAME").orderByAsc("AGE").orderByAsc("SALARY")
 
 ```
 
+<a id="orderbydesc"></a>
 ## orderByDesc
 
 ```TypeScript

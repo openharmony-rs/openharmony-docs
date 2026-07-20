@@ -40,7 +40,7 @@ otherCerts?: Array<X509Cert>
 
 其他证书。
 
-**类型：** Array<X509Cert>
+**类型：** Array&lt;X509Cert&gt;
 
 **起始版本：** 18
 
@@ -58,7 +58,7 @@ privateKey?: string | Uint8Array
 
 私钥。**string**对应PEM格式，**Uint8Array**对应DER格式。
 
-**类型：** string | Uint8Array
+**类型：** string \| Uint8Array
 
 **起始版本：** 18
 

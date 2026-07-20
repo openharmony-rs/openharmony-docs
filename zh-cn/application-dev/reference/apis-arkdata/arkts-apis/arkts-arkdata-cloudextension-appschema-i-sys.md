@@ -42,7 +42,7 @@ databases: Array<Database>
 
 应用的数据库信息。
 
-**类型：** Array<Database>
+**类型：** Array&lt;Database&gt;
 
 **起始版本：** 11
 

@@ -6,6 +6,7 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="setuserid"></a>
 ## setUserId
 
 ```TypeScript

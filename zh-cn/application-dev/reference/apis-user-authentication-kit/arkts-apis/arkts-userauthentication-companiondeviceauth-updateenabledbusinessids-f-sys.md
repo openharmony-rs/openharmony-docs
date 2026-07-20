@@ -6,6 +6,7 @@
 import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="updateenabledbusinessids"></a>
 ## updateEnabledBusinessIds
 
 ```TypeScript
@@ -30,14 +31,14 @@ function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: nu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| templateId | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 目标模板ID。要更新业务范围的模板的唯一标识，可通过[getTemplateStatus](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#gettemplatestatus-1)获取。 |
+| templateId | Uint8Array | 是 | 目标模板ID。要更新业务范围的模板的唯一标识，可通过[getTemplateStatus](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#gettemplatestatus-1)获取。 |
 | enabledBusinessIds | number[] | 是 | 模板支持的业务ID集合。要启用的业务场景列表，如[DEFAULT]、[解锁锁屏业务ID]等。不同业务ID对应不同的认证场景，应用可根据业务需求配置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

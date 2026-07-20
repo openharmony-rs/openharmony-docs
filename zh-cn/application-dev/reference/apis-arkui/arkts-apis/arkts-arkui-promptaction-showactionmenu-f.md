@@ -6,6 +6,7 @@
 import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
+<a id="showactionmenu"></a>
 ## showActionMenu
 
 ```TypeScript
@@ -37,7 +38,7 @@ function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<Acti
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md) | 是 | 操作菜单选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ActionMenuSuccessResponse> | 是 | 回调函数。弹出操作菜单成功，err为undefined，data为获取到的操作菜单响应结果，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ActionMenuSuccessResponse&gt; | 是 | 回调函数。弹出操作菜单成功，err为undefined，data为获取到的操作菜单响应结果，否则为错误对象。 |
 
 **错误码：**
 
@@ -155,6 +156,7 @@ struct Index {
 ```
 
 
+<a id="showactionmenu-1"></a>
 ## showActionMenu
 
 ```TypeScript
@@ -191,7 +193,7 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ActionMenuSuccessResponse> | Promise对象，返回菜单的响应结果。 |
+| Promise&lt;ActionMenuSuccessResponse&gt; | Promise对象，返回菜单的响应结果。 |
 
 **错误码：**
 

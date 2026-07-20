@@ -1,8 +1,8 @@
 # IDataSourcePrefetching
 
-继承自[IDataSource](../arkts-components/arkts-arkui-lazy-for-each-idatasource-i.md)。实现该接口，提供具备预取能力的DataSource。
+继承自[IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)。实现该接口，提供具备预取能力的DataSource。
 
-**继承/实现关系：** IDataSourcePrefetching extends [IDataSource](../arkts-components/arkts-arkui-lazy-for-each-idatasource-i.md)
+**继承/实现关系：** IDataSourcePrefetching extends [IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)
 
 **起始版本：** 12
 
@@ -16,6 +16,7 @@
 import { IDataSourcePrefetching, BasicPrefetcher, IPrefetcher } from '@kit.ArkUI';
 ```
 
+<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -44,8 +45,9 @@ cancel?(index: number): Promise<void> | void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise when this API is executed asynchronously; no return value when this API is executed synchronously. The promise only indicates that the operation is completed and contains no actual return content. |
+| Promise&lt;void&gt; | Promise when this API is executed asynchronously; no return value when this API is executed synchronously. The promise only indicates that the operation is completed and contains no actual return content. |
 
+<a id="prefetch"></a>
 ## prefetch
 
 ```TypeScript
@@ -74,5 +76,5 @@ prefetch(index: number): Promise<void> | void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise when this API is executed asynchronously; no return value when this API is executed synchronously. The promise only indicates that the operation is completed and contains no actual return content. |
+| Promise&lt;void&gt; | Promise when this API is executed asynchronously; no return value when this API is executed synchronously. The promise only indicates that the operation is completed and contains no actual return content. |
 

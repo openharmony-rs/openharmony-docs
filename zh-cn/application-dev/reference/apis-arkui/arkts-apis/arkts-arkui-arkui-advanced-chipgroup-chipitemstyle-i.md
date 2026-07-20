@@ -128,7 +128,7 @@ Chip尺寸，使用时需要从Chip组件引入ChipSize类型。
 
 为undefined时，使用默认值。
 
-**类型：** ChipSize | SizeOptions
+**类型：** ChipSize \| SizeOptions
 
 **起始版本：** 12
 

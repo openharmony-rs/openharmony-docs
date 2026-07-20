@@ -38,7 +38,7 @@ abilityName?: string
 action?: string
 ```
 
-表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，开发者可以定义该字段，配合uri或parameters来表示对数据执行的操作。隐式Want定义及匹配规则请参见[显式Want与隐式Want匹配规则](../../../../application-models/explicit-implicit-want-mappings.md)。
+表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，开发者可以定义该字段，配合uri或parameters来表示对数据执行的操作。隐式Want定义及匹配规则请参见[显式Want与隐式Want匹配规则](docroot://application-models/explicit-implicit-want-mappings.md)。
 
 **类型：** string
 
@@ -94,7 +94,7 @@ entities?: Array<string>
 
 表示目标Ability额外的类别信息（如：浏览器、视频播放器）。在隐式Want中是对action字段的补充。在隐式Want中，开发者可以定义该字段，来过滤匹配Ability类型。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 
@@ -114,7 +114,7 @@ readonly fds?: Record<string, number>
 
 从API version 15开始，该接口支持在原子化服务中使用。
 
-**类型：** Record<string, number>
+**类型：** Record&lt;string, number&gt;
 
 **起始版本：** 15
 
@@ -154,7 +154,7 @@ moduleName?: string
 
 **说明：**
 
-若待启动的Ability所属的模块为[HAR](../../../../quick-start/har-package.md)，则moduleName需为依赖该HAR的[HAP](../../../../quick-start/hap-package.md)/[HSP](../../../../quick-start/in-app-hsp.md)的moduleName。
+若待启动的Ability所属的模块为[HAR](docroot://quick-start/har-package.md)，则moduleName需为依赖该HAR的[HAP](docroot://quick-start/hap-package.md)/[HSP](docroot://quick-start/in-app-hsp.md)的moduleName。
 
 **类型：** string
 
@@ -206,7 +206,7 @@ want的Params操作的常量的具体信息请参考[wantConstant](arkts-app-abi
 
 parameters的Value值仅支持基本数据类型：String、Number、Boolean、Object、undefined和null，不支持传递Object内部的function。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 9
 

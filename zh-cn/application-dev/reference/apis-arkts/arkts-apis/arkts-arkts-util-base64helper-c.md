@@ -14,6 +14,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -30,6 +31,7 @@ constructor()
 
 **系统能力：** SystemCapability.Utils.Lang
 
+<a id="decode"></a>
 ## decode
 
 ```TypeScript
@@ -57,8 +59,9 @@ decode(src: Uint8Array | string, options?: Type): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
+<a id="decodesync"></a>
 ## decodeSync
 
 ```TypeScript
@@ -86,8 +89,9 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 获取到的 Uint8Array 对象。 |
 
+<a id="encode"></a>
 ## encode
 
 ```TypeScript
@@ -108,15 +112,16 @@ encode(src: Uint8Array, options?: Type): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 要编码的 Uint8Array 对象。 |
+| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
 | options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。<br>-**util.Type.BASIC_URL_SAFE**：Base64URL 编码。<br>**起始版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
+<a id="encodesync"></a>
 ## encodeSync
 
 ```TypeScript
@@ -137,15 +142,16 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 要编码的 Uint8Array 对象。 |
+| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
 | options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。<br>-**util.Type.BASIC_URL_SAFE**：Base64URL 编码。<br>**起始版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 获取到的 Uint8Array 对象。 |
 
+<a id="encodetostring"></a>
 ## encodeToString
 
 ```TypeScript
@@ -166,15 +172,16 @@ encodeToString(src: Uint8Array, options?: Type): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 要编码的 Uint8Array 对象。 |
+| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
 | options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。返回值不包含回车符或换行符。<br>- **util.Type.MIME**：Base64 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。<br>-**util.Type.BASIC_URL_SAFE**：Base64URL 编码。返回值不包含回车符或换行符。<br>- **util.Type.MIME_URL_SAFE**：Base64URL 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。<br>**起始版本：** 10 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 用于返回获取到的字符串的 promise。 |
+| Promise&lt;string&gt; | 用于返回获取到的字符串的 promise。 |
 
+<a id="encodetostringsync"></a>
 ## encodeToStringSync
 
 ```TypeScript
@@ -195,7 +202,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 要编码的 Uint8Array 对象。 |
+| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
 | options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。返回值不包含回车符或换行符。<br>- **util.Type.MIME**：Base64 编码。如果返回值超过 76 个字符，则每 76 个字符插入一个换行，每行以 '\r\n' 结尾。如果返回值少于 76 个字符，则抛出异常。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 编码。返回值不包含回车符或换行符。<br>- **util.Type.MIME_URL_SAFE**：Base64URL 编码。返回值每行最多 76 个字符且以'\r\n' 结尾。<br>**起始版本：** 12 |
 
 **返回值：**

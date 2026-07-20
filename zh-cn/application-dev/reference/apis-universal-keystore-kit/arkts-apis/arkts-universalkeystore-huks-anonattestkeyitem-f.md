@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="anonattestkeyitem"></a>
 ## anonAttestKeyItem
 
 ```TypeScript
@@ -36,7 +37,7 @@ function anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: Asy
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，存放待获取证书密钥的别名。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于获取证书时指定所需参数与数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<HuksReturnResult> | 是 | 回调函数。当获取匿名化密钥证书成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksReturnResult&gt; | 是 | 回调函数。当获取匿名化密钥证书成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象。 |
 
 **错误码：**
 
@@ -154,6 +155,7 @@ async function generateKeyThenAttestKey(): Promise<void> {
 ```
 
 
+<a id="anonattestkeyitem-1"></a>
 ## anonAttestKeyItem
 
 ```TypeScript
@@ -189,7 +191,7 @@ function anonAttestKeyItem(keyAlias: string, options: HuksOptions): Promise<Huks
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksReturnResult> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员为获取到的证书链。 |
+| Promise&lt;HuksReturnResult&gt; | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员为获取到的证书链。 |
 
 **错误码：**
 

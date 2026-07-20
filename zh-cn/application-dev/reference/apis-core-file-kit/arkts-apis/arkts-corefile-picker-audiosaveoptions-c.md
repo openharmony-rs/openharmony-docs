@@ -22,7 +22,7 @@ newFileNames?: Array<string>
 
 拉起documentPicker进行保存的文件名。若无此参数，则默认需要用户自行输入。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 

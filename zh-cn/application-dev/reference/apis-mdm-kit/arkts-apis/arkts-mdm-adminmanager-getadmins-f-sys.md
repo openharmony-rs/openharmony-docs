@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="getadmins"></a>
 ## getAdmins
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getAdmins(): Promise<Array<Want>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Want>> | 包含所有已激活的设备管理应用的Promise对象。 |
+| Promise&lt;Array&lt;Want&gt;&gt; | 包含所有已激活的设备管理应用的Promise对象。 |
 
 **错误码：**
 

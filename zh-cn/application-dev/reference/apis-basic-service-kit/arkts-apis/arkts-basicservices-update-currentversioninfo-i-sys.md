@@ -60,7 +60,7 @@ versionComponents: Array<VersionComponent>
 
 版本组件。
 
-**类型：** Array<VersionComponent>
+**类型：** Array&lt;VersionComponent&gt;
 
 **起始版本：** 9
 

@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="off"></a>
 ## off('openDLPFile')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function off(type: 'openDLPFile', listener?: Callback<AccessedDLPFileInfo>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'openDLPFile' | 是 | 监听事件类型。固定值为'openDLPFile'：打开DLP文件事件。 |
-| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AccessedDLPFileInfo> | 否 | DLP文件被打开的事件的回调。当需要取消特定回调时传入此参数（传入之前注册的回调函数），当需要取消所有回调时可不传此参数。不传入时默认为空，取消该类型事件的所有回调。 |
+| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AccessedDLPFileInfo&gt; | 否 | DLP文件被打开的事件的回调。当需要取消特定回调时传入此参数（传入之前注册的回调函数），当需要取消所有回调时可不传此参数。不传入时默认为空，取消该类型事件的所有回调。 |
 
 **错误码：**
 

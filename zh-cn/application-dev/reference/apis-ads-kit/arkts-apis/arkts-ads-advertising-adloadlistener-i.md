@@ -14,6 +14,7 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
+<a id="onadloadfailure"></a>
 ## onAdLoadFailure
 
 ```TypeScript
@@ -54,6 +55,7 @@ const adLoaderListener: advertising.AdLoadListener = {
 
 ```
 
+<a id="onadloadsuccess"></a>
 ## onAdLoadSuccess
 
 ```TypeScript
@@ -74,7 +76,7 @@ onAdLoadSuccess(ads: Array<Advertisement>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ads | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Advertisement> | 是 | 广告数据。 |
+| ads | Array&lt;Advertisement&gt; | 是 | 广告数据。 |
 
 **示例：**
 

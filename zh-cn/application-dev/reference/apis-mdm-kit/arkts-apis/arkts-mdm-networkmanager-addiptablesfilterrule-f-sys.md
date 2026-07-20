@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="addiptablesfilterrule"></a>
 ## addIptablesFilterRule
 
 ```TypeScript
@@ -32,7 +33,7 @@ function addIptablesFilterRule(admin: Want, filterRule: AddFilterRule, callback:
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | filterRule | [AddFilterRule](arkts-mdm-networkmanager-addfilterrule-i-sys.md) | 是 | 添加网络包过滤规则。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
 
 **错误码：**
 
@@ -80,6 +81,7 @@ networkManager.addIptablesFilterRule(wantTemp, filterRule, (err) => {
 ```
 
 
+<a id="addiptablesfilterrule-1"></a>
 ## addIptablesFilterRule
 
 ```TypeScript
@@ -111,7 +113,7 @@ function addIptablesFilterRule(admin: Want, filterRule: AddFilterRule): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当添加网络包过滤规则失败时抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当添加网络包过滤规则失败时抛出错误对象。 |
 
 **错误码：**
 

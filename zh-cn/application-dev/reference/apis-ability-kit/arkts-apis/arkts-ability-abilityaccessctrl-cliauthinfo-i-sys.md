@@ -1,6 +1,6 @@
 # CliAuthInfo（系统接口）
 
-程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../../../security/AccessToken/app-permission-mgmt-overview.md)。
+程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](docroot://security/AccessToken/app-permission-mgmt-overview.md)。
 
 该模块主要用于以下场景：
 
@@ -26,7 +26,7 @@
 
 - **[AtManager](arkts-ability-abilityaccessctrl-atmanager-i.md)：** 程序访问控制管理类，提供权限校验、权限弹窗申请、设置页授权引导和权限状态监听等能力。
 
-![image_abilityAccessCtrl](../../../../reference/apis-ability-kit/figures/abilityAccessCtrl.png)
+![image_abilityAccessCtrl](docroot://reference/apis-ability-kit/figures/abilityAccessCtrl.png)
 
 **起始版本：** 26.0.0
 
@@ -50,7 +50,7 @@ authorizationResults: Array<boolean>
 
 授权结果列表，且数组长度必须等于permissionNames.length。true表示授权成功，CLI命令可获得对应权限；false表示拒绝授权，CLI命令无法获得对应权限。
 
-**类型：** Array<boolean>
+**类型：** Array&lt;boolean&gt;
 
 **起始版本：** 26.0.0
 
@@ -90,7 +90,7 @@ permissionNames: Array<Permissions>
 
 权限名称列表。每个元素不能为空，且长度不能超过256个字符。
 
-**类型：** Array<Permissions>
+**类型：** Array&lt;Permissions&gt;
 
 **起始版本：** 26.0.0
 

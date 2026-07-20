@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="getukeycertificatelist"></a>
 ## getUkeyCertificateList
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CMResult> | Promise对象，返回获取USB Key证书凭据列表的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的credentialDetailList属性。 |
+| Promise&lt;CMResult&gt; | Promise对象，返回获取USB Key证书凭据列表的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的credentialDetailList属性。 |
 
 **错误码：**
 

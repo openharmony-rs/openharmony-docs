@@ -6,6 +6,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="changeconfirmation"></a>
 ## changeConfirmation
 
 ```TypeScript
@@ -28,7 +29,7 @@ function changeConfirmation(sharingResource: string, state: State, callback: Asy
 | --- | --- | --- | --- |
 | sharingResource | string | 是 | 端云共享数据的资源标识。 |
 | state | [State](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-state-e.md) | 是 | 更改邀请的状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Result<void>> | 是 | 回调函数。返回更改邀请状态的结果。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Result&lt;void&gt;&gt; | 是 | 回调函数。返回更改邀请状态的结果。 |
 
 **错误码：**
 
@@ -54,6 +55,7 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
 ```
 
 
+<a id="changeconfirmation-1"></a>
 ## changeConfirmation
 
 ```TypeScript
@@ -81,7 +83,7 @@ function changeConfirmation(sharingResource: string, state: State): Promise<Resu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<void>> | Promise对象，返回更改共享邀请状态的结果。 |
+| Promise&lt;Result&lt;void&gt;&gt; | Promise对象，返回更改共享邀请状态的结果。 |
 
 **错误码：**
 

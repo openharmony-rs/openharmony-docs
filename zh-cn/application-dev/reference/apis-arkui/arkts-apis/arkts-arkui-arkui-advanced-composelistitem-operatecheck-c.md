@@ -130,7 +130,7 @@ value为true时，表示从未选中变为选中。
 
 value为false时，表示从选中变为未选中。
 
-**类型：** (value: boolean) => void
+**类型：** (value: boolean) =&gt; void
 
 **起始版本：** 10
 

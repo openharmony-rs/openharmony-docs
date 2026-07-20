@@ -24,7 +24,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 身份认证信息获取回调函数。
 
-**类型：** (module: number, acquire: number, extraInfo: Uint8Array) => void
+**类型：** (module: number, acquire: number, extraInfo: Uint8Array) =&gt; void
 
 **起始版本：** 8
 
@@ -42,7 +42,7 @@ onResult: (result: number, extraInfo: AuthResult) => void
 
 身份认证结果回调函数，返回结果码和认证结果信息。
 
-**类型：** (result: number, extraInfo: AuthResult) => void
+**类型：** (result: number, extraInfo: AuthResult) =&gt; void
 
 **起始版本：** 8
 

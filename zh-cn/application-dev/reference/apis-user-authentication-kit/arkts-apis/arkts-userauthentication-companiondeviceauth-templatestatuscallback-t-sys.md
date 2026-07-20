@@ -20,5 +20,5 @@ type TemplateStatusCallback = (templateStatusList: TemplateStatus[]) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| templateStatusList | TemplateStatus[] | 是 | 模板状态列表。包含当前用户下所有已注册模板的状态信息，应用可根据列表中的isValid字段判断模板有效性，根据isConfirmed字段判断数据是否为实时数据。 |
+| templateStatusList | [TemplateStatus](arkts-userauthentication-companiondeviceauth-templatestatus-i-sys.md)[] | 是 | 模板状态列表。包含当前用户下所有已注册模板的状态信息，应用可根据列表中的isValid字段判断模板有效性，根据 isConfirmed字段判断数据是否为实时数据。  |
 

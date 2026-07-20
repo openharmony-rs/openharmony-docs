@@ -18,7 +18,7 @@ complete?: () => void
 
 接口调用结束的回调函数。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 3
 
@@ -36,7 +36,7 @@ fail?: (data: string, code: number) => void
 
 接口调用失败的回调函数。
 
-**类型：** (data: string, code: number) => void
+**类型：** (data: string, code: number) =&gt; void
 
 **起始版本：** 3
 
@@ -54,7 +54,7 @@ success?: (data: FileListResponse) => void
 
 接口调用成功的回调函数。返回[FileListResponse](arkts-corefile-file-filelistresponse-depr-i.md)。
 
-**类型：** (data: FileListResponse) => void
+**类型：** (data: FileListResponse) =&gt; void
 
 **起始版本：** 3
 

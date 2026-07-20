@@ -40,7 +40,7 @@ value: string | FileSpec | Array<FileSpec>
 
 表单参数值。
 
-**类型：** string | FileSpec | Array<FileSpec>
+**类型：** string \| FileSpec \| Array&lt;FileSpec&gt;
 
 **起始版本：** 10
 

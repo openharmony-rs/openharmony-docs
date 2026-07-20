@@ -1,6 +1,6 @@
 # AppForegroundStateObserver（系统接口）
 
-定义应用启动和退出的状态监听，可以作为[appManager.on('appForegroundState')](arkts-ability-appmanager-on-f-sys.md#on-4)的入参监听所有应用的启动和退出的变化。
+定义应用启动和退出的状态监听，可以作为[appManager.on('appForegroundState')](./../@ohos.app.ability.appManager:appManager.on(type: 'appForegroundState', observer: AppForegroundStateObserver))的入参监听所有应用的启动和退出的变化。
 
 **起始版本：** 11
 
@@ -10,6 +10,7 @@
 
 **系统接口：** 此接口为系统接口。
 
+<a id="onappstatechanged"></a>
 ## onAppStateChanged
 
 ```TypeScript

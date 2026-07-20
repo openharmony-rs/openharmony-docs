@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getdistributedsessioncontroller"></a>
 ## getDistributedSessionController
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getDistributedSessionController(distributedSessionType: DistributedSess
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AVSessionController>> | Promise对象。返回对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| Promise&lt;Array&lt;AVSessionController&gt;&gt; | Promise对象。返回对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
 
 **错误码：**
 

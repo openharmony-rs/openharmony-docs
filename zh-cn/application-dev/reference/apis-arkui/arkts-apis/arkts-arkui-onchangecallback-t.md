@@ -20,5 +20,5 @@ declare type OnChangeCallback = (value: boolean) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时的回调函数。<br>value为true时，表示从未选中变为选中。<br>value为false时，表示从选中变为未选中。 |
+| value | boolean | 是 | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时的回调函数。 <br>value为true时，表示从未选中变为选中。 <br>value为false时，表示从选中变为未选中。  |
 

@@ -28,7 +28,7 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | AlphabetIndexerOptions | 是 | 设置索引条组件参数。 |
+| options | [AlphabetIndexerOptions](arkts-arkui-alphabetindexeroptions-i.md) | 是 | 设置索引条组件参数。 |
 
 ## 汇总
 

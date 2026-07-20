@@ -36,7 +36,7 @@ moduleName: string
 name: string
 ```
 
-需要使用的[权限名称](../../../../security/AccessToken/app-permissions.md)。
+需要使用的[权限名称](docroot://security/AccessToken/app-permissions.md)。
 
 **类型：** string
 

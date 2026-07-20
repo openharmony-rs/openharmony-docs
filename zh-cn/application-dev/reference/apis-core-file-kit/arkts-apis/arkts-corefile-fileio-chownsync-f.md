@@ -1,5 +1,6 @@
 # chownSync
 
+<a id="chownsync"></a>
 ## chownSync
 
 ```TypeScript

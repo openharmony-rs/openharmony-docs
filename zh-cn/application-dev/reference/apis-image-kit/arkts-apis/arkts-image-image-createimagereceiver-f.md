@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createimagereceiver"></a>
 ## createImageReceiver
 
 ```TypeScript
@@ -24,7 +25,7 @@ function createImageReceiver(width: number, height: number, format: number, capa
 
 **废弃版本：** 11
 
-**替代接口：** createImageReceiver(size:
+**替代接口：** [createImageReceiver(size:](arkts-image-image-createimagereceiver-f.md#createimagereceiver-1)
 
 <!--Device-image-function createImageReceiver(width: number, height: number, format: number, capacity: number): ImageReceiver--><!--Device-image-function createImageReceiver(width: number, height: number, format: number, capacity: number): ImageReceiver-End-->
 
@@ -53,6 +54,7 @@ let receiver: image.ImageReceiver = image.createImageReceiver(8192, 8192, image.
 ```
 
 
+<a id="createimagereceiver-1"></a>
 ## createImageReceiver
 
 ```TypeScript
@@ -101,6 +103,7 @@ let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageF
 ```
 
 
+<a id="createimagereceiver-2"></a>
 ## createImageReceiver
 
 ```TypeScript

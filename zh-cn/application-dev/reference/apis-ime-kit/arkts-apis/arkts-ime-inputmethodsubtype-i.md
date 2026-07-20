@@ -164,7 +164,7 @@ readonly mode?: 'upper' | 'lower'
 
 输入法子类型的模式，包括upper（大写）和lower（小写）。用于描述键盘的大小写状态模式。
 
-**类型：** 'upper' | 'lower'
+**类型：** 'upper' \| 'lower'
 
 **起始版本：** 9
 

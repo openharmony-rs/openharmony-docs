@@ -1,5 +1,6 @@
 # createStreamSync
 
+<a id="createstreamsync"></a>
 ## createStreamSync
 
 ```TypeScript

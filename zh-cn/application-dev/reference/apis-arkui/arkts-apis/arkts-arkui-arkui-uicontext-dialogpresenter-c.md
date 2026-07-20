@@ -14,6 +14,7 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="dismiss"></a>
 ## dismiss
 
 ```TypeScript
@@ -36,13 +37,13 @@ dismiss(target: number | ComponentContent<Object>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | number \| ComponentContent<Object> | 是 | 要取消的对话ID或组件内容。 |
+| target | number \| ComponentContent&lt;Object&gt; | 是 | 要取消的对话ID或组件内容。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 不会返回任何值的Promise。 |
+| Promise&lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ dismiss(target: number | ComponentContent<Object>): Promise<void>
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | Dialog content not found. The ComponentContent cannot be found. |
 
+<a id="present"></a>
 ## present
 
 ```TypeScript
@@ -79,15 +81,16 @@ present(options?: dialog.DialogStyleOptions): Promise<DialogResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DialogResult> | 用于返回对话结果的Promise。 |
+| Promise&lt;DialogResult&gt; | 用于返回对话结果的Promise。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 103306 | The dialog cannot be opened due to node mount failure. |
-| 103308 | The dialog cannot be opened due to subwindow create failure. |
+| [103306](../errorcode-promptAction.md#103306-节点挂载失败导致无法打开弹出框) | The dialog cannot be opened due to node mount failure. |
+| [103308](../errorcode-promptAction.md#103308-子窗口创建失败导致无法打开弹出框) | The dialog cannot be opened due to subwindow create failure. |
 
+<a id="present-1"></a>
 ## present
 
 ```TypeScript
@@ -117,14 +120,14 @@ content参数通过联合类型接受CustomBuilder或ComponentContent：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | CustomBuilder \| CustomBuilderWithId \| ComponentContent<Object> | 是 | 自定义对话框内容。 |
+| content | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| CustomBuilderWithId \| ComponentContent&lt;Object&gt; | 是 | 自定义对话框内容。 |
 | options | dialog.DialogCustomOptions | 否 | 自定义对话框选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DialogResult> | 用于返回对话结果的Promise。 |
+| Promise&lt;DialogResult&gt; | 用于返回对话结果的Promise。 |
 
 **错误码：**
 
@@ -132,9 +135,10 @@ content参数通过联合类型接受CustomBuilder或ComponentContent：
 | --- | --- |
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103302](../errorcode-promptAction.md#103302-内容节点对应自定义弹窗已存在) | Dialog content already exist. The ComponentContent has already been opened. |
-| 103306 | The dialog cannot be opened due to node mount failure. |
-| 103308 | The dialog cannot be opened due to subwindow create failure. |
+| [103306](../errorcode-promptAction.md#103306-节点挂载失败导致无法打开弹出框) | The dialog cannot be opened due to node mount failure. |
+| [103308](../errorcode-promptAction.md#103308-子窗口创建失败导致无法打开弹出框) | The dialog cannot be opened due to subwindow create failure. |
 
+<a id="update"></a>
 ## update
 
 ```TypeScript
@@ -157,14 +161,14 @@ update(content: ComponentContent<Object>, options?: dialog.DialogBaseOptions): P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<Object> | 是 | 用于标识对话框的内容。 |
+| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;Object&gt; | 是 | 用于标识对话框的内容。 |
 | options | dialog.DialogBaseOptions | 否 | 要更新的选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 不会返回任何值的Promise。 |
+| Promise&lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 

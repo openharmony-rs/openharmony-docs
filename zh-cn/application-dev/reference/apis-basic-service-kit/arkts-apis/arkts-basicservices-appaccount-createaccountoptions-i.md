@@ -22,7 +22,7 @@ customData?: Record<string, string>
 
 自定义数据，默认为空。
 
-**类型：** Record<string, string>
+**类型：** Record&lt;string, string&gt;
 
 **起始版本：** 9
 

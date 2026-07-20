@@ -1,6 +1,6 @@
 # TaskGroup
 
-表示任务组，一次执行一组任务，适用于执行一组有关联的任务。如果所有任务正常执行，异步执行完毕后返回所有任务结果的数组，数组中元素的顺序与调用[addTask](arkts-arkts-taskpool-taskgroup-c.md#addtask-2)添加任务的顺序相同。如果任意任务失败，则会抛出对应异常。如果任务组中存在多个任务失败的情况，则会抛出第一个失败任务的异常。任务组可以多次执行，但执行后不能新增任务。
+表示任务组，一次执行一组任务，适用于执行一组有关联的任务。如果所有任务正常执行，异步执行完毕后返回所有任务结果的数组，数组中元素的顺序与调用[addTask](arkts-arkts-taskpool-taskgroup-c.md#addtask-1)添加任务的顺序相同。如果任意任务失败，则会抛出对应异常。如果任务组中存在多个任务失败的情况，则会抛出第一个失败任务的异常。任务组可以多次执行，但执行后不能新增任务。
 
 **起始版本：** 10
 
@@ -14,6 +14,7 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="addtask"></a>
 ## addTask
 
 ```TypeScript
@@ -34,8 +35,8 @@ addTask(func: Function, ...args: Object[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | Function | 是 | 需要传入使用[@Concurrent装饰器](../../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰的函数。支持的返回值类型请参考[序列化支持类型](../../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](../../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | Function | 是 | 需要传入使用[@Concurrent装饰器](docroot://arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰的函数。支持的返回值类型请参考[序列化支持类型](docroot://reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](docroot://reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ taskGroup.addTask(printArgs, 100); // 100: test number
 
 ```
 
+<a id="addtask-1"></a>
 ## addTask
 
 ```TypeScript
@@ -102,6 +104,7 @@ taskGroup.addTask(task);
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -125,6 +128,7 @@ let taskGroup = new taskpool.TaskGroup();
 
 ```
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript

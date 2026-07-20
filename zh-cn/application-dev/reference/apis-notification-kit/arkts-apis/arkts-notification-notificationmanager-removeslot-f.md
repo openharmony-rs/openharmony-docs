@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="removeslot"></a>
 ## removeSlot
 
 ```TypeScript
@@ -27,7 +28,7 @@ function removeSlot(slotType: SlotType, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotType | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 是 | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。需传入已创建的渠道类型，否则删除操作无效。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当删除指定类型的通知渠道成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当删除指定类型的通知渠道成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ notificationManager.removeSlot(slotType, removeSlotCallback);
 ```
 
 
+<a id="removeslot-1"></a>
 ## removeSlot
 
 ```TypeScript
@@ -83,7 +85,7 @@ function removeSlot(slotType: SlotType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

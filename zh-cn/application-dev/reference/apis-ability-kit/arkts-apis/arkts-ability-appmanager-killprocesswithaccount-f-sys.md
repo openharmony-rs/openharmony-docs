@@ -6,6 +6,7 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="killprocesswithaccount"></a>
 ## killProcessWithAccount
 
 ```TypeScript
@@ -41,7 +42,7 @@ function killProcessWithAccount(bundleName: string, accountId: number): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -76,6 +77,7 @@ try {
 ```
 
 
+<a id="killprocesswithaccount-1"></a>
 ## killProcessWithAccount
 
 ```TypeScript
@@ -114,7 +116,7 @@ function killProcessWithAccount(bundleName: string, accountId: number, clearPage
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -151,6 +153,7 @@ try {
 ```
 
 
+<a id="killprocesswithaccount-2"></a>
 ## killProcessWithAccount
 
 ```TypeScript
@@ -181,7 +184,7 @@ function killProcessWithAccount(bundleName: string, accountId: number, callback:
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 

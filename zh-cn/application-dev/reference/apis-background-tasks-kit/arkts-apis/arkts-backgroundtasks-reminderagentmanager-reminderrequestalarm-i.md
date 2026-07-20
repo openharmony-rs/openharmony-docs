@@ -26,7 +26,7 @@ daysOfWeek?: Array<number>
 
 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7，默认为空。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 9
 

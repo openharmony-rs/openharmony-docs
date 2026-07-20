@@ -6,6 +6,7 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="createvirtualscreen"></a>
 ## createVirtualScreen
 
 ```TypeScript
@@ -29,7 +30,7 @@ function createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [VirtualScreenOption](arkts-arkui-screen-virtualscreenoption-i-sys.md) | 是 | 用于创建虚拟屏幕的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Screen> | 是 | 回调函数，返回创建的虚拟屏幕对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Screen&gt; | 是 | 回调函数，返回创建的虚拟屏幕对象。 |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ screen.createVirtualScreen(option, (err: BusinessError, data: screen.Screen) => 
 ```
 
 
+<a id="createvirtualscreen-1"></a>
 ## createVirtualScreen
 
 ```TypeScript
@@ -105,7 +107,7 @@ function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Screen> | Promise对象。返回创建的虚拟屏幕对象。 |
+| Promise&lt;Screen&gt; | Promise对象。返回创建的虚拟屏幕对象。 |
 
 **错误码：**
 

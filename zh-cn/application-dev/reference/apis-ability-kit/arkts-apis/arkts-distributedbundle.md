@@ -34,9 +34,9 @@ import { distributedBundle } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-1) | 根据给定的ElementName获取有关远程设备AbilityInfo信息，使用callback异步回调。 |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-2) | 根据给定的ElementName获取有关远程设备AbilityInfo信息，使用Promise异步回调。 |
-| [getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getremoteabilityinfos-1) | 根据给定的ElementName获取有关远程设备AbilityInfos信息，使用callback异步回调。 |
-| [getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getremoteabilityinfos-2) | 根据给定的ElementName获取有关远程设备AbilityInfos信息，使用Promise异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | 根据给定的ElementName获取有关远程设备AbilityInfo信息，使用callback异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-1) | 根据给定的ElementName获取有关远程设备AbilityInfo信息，使用Promise异步回调。 |
+| [getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getremoteabilityinfos) | 根据给定的ElementName获取有关远程设备AbilityInfos信息，使用callback异步回调。 |
+| [getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getremoteabilityinfos-1) | 根据给定的ElementName获取有关远程设备AbilityInfos信息，使用Promise异步回调。 |
 <!--DelEnd-->
 

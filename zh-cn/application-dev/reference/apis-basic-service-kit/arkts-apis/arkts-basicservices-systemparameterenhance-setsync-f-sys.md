@@ -6,6 +6,7 @@
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
 ```
 
+<a id="setsync"></a>
 ## setSync
 
 ```TypeScript

@@ -16,6 +16,7 @@
 import { DynamicLayoutAttribute, DynamicLayout } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

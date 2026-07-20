@@ -16,6 +16,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="onsetdata"></a>
 ## onSetData
 
 ```TypeScript
@@ -37,7 +38,7 @@ onSetData(authSubType: AuthSubType, data: Uint8Array): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | authSubType | [AuthSubType](arkts-basicservices-osaccount-authsubtype-e-sys.md) | 是 | 用于认证的凭据子类型。 |
-| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 要设置的数据是凭据，用来在认证、添加、修改凭据操作。 |
+| data | Uint8Array | 是 | 要设置的数据是凭据，用来在认证、添加、修改凭据操作。 |
 
 **错误码：**
 

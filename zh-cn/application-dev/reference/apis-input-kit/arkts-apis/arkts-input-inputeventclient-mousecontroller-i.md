@@ -16,6 +16,7 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
+<a id="beginaxis"></a>
 ## beginAxis
 
 ```TypeScript
@@ -38,14 +39,14 @@ beginAxis(axis: Axis, value: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| axis | [Axis](../../apis-arkui/arkts-apis/arkts-arkui-enums-axis-e.md) | 是 | 轴类型。 |
+| axis | [Axis](../../apis-arkui/arkts-apis/arkts-arkui-axis-e.md) | 是 | 轴类型。 |
 | value | number | 是 | 轴值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -93,6 +94,7 @@ struct Index {
 
 ```
 
+<a id="endaxis"></a>
 ## endAxis
 
 ```TypeScript
@@ -115,13 +117,13 @@ endAxis(axis: Axis): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| axis | [Axis](../../apis-arkui/arkts-apis/arkts-arkui-enums-axis-e.md) | 是 | 轴类型。 |
+| axis | [Axis](../../apis-arkui/arkts-apis/arkts-arkui-axis-e.md) | 是 | 轴类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -135,6 +137,7 @@ endAxis(axis: Axis): Promise<void>
 
 参见[beginAxis](#beginaxis)示例。
 
+<a id="moveto"></a>
 ## moveTo
 
 ```TypeScript
@@ -165,7 +168,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -205,6 +208,7 @@ struct Index {
 
 ```
 
+<a id="pressbutton"></a>
 ## pressButton
 
 ```TypeScript
@@ -233,7 +237,7 @@ pressButton(button: Button): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -277,6 +281,7 @@ struct Index {
 
 ```
 
+<a id="releasebutton"></a>
 ## releaseButton
 
 ```TypeScript
@@ -305,7 +310,7 @@ releaseButton(button: Button): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -319,6 +324,7 @@ releaseButton(button: Button): Promise<void>
 
 参见[pressButton](#pressbutton)示例。
 
+<a id="updateaxis"></a>
 ## updateAxis
 
 ```TypeScript
@@ -341,14 +347,14 @@ updateAxis(axis: Axis, value: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| axis | [Axis](../../apis-arkui/arkts-apis/arkts-arkui-enums-axis-e.md) | 是 | 轴类型。 |
+| axis | [Axis](../../apis-arkui/arkts-apis/arkts-arkui-axis-e.md) | 是 | 轴类型。 |
 | value | number | 是 | 轴值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
+<a id="activatecooperatewithoptions"></a>
 ## activateCooperateWithOptions
 
 ```TypeScript
@@ -36,13 +37,13 @@ function activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: nu
 | --- | --- | --- | --- |
 | targetNetworkId | string | 是 | 键鼠穿越目标设备描述符。 |
 | inputDeviceId | number | 是 | 发起穿越操作的输入设备ID。 |
-| cooperateOptions | [CooperateOptions](arkts-distributedservice-cooperate-cooperateoptions-i-sys.md) | 否 | 穿越可选控制参数，用于控制穿出点具体位置等。不设置此参数时，本接口能力与[cooperate.activateCooperate](arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-2)相同。 |
+| cooperateOptions | [CooperateOptions](arkts-distributedservice-cooperate-cooperateoptions-i-sys.md) | 否 | 穿越可选控制参数，用于控制穿出点具体位置等。不设置此参数时，本接口能力与[cooperate.activateCooperate](arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-1)相同。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

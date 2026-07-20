@@ -6,6 +6,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="getfontdescriptorsfrompath"></a>
 ## getFontDescriptorsFromPath
 
 ```TypeScript
@@ -39,7 +40,7 @@ function getFontDescriptorsFromPath(path: string | Resource): Promise<Array<Font
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<FontDescriptor>> | Promise对象，返回所有的字体描述符。如果找不到字体文件、路径无效、无权限或非字体文件，则返回空数组。 |
+| Promise&lt;Array&lt;FontDescriptor&gt;&gt; | Promise对象，返回所有的字体描述符。如果找不到字体文件、路径无效、无权限或非字体文件，则返回空数组。 |
 
 **示例：**
 

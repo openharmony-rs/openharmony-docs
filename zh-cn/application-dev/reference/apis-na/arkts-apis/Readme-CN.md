@@ -9,22 +9,79 @@
   - [OnHoverStatusChangeHandler](arkts-na-onhoverstatuschangehandler-t.md)
   - [ExtraRegionPosition](arkts-na-arkui-advanced-foldsplitcontainer-extraregionposition-e.md)
   - [PresetSplitRatio](arkts-na-arkui-advanced-foldsplitcontainer-presetsplitratio-e.md)
+- [@ohos.inputMethodSystemPanelManager](arkts-inputmethodsystempanelmanager.md)
+  <!--Del-->
+  - [connectSystemChannel(系统接口)](arkts-na-inputmethodsystempanelmanager-connectsystemchannel-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offSystemPanelStatusChange(系统接口)](arkts-na-inputmethodsystempanelmanager-offsystempanelstatuschange-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offSystemPrivateCommand(系统接口)](arkts-na-inputmethodsystempanelmanager-offsystemprivatecommand-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onSystemPanelStatusChange(系统接口)](arkts-na-inputmethodsystempanelmanager-onsystempanelstatuschange-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onSystemPrivateCommand(系统接口)](arkts-na-inputmethodsystempanelmanager-onsystemprivatecommand-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [sendPrivateCommand(系统接口)](arkts-na-inputmethodsystempanelmanager-sendprivatecommand-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SystemPanelStatus(系统接口)](arkts-na-inputmethodsystempanelmanager-systempanelstatus-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [CommandDataType(系统接口)](arkts-na-inputmethodsystempanelmanager-commanddatatype-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [InputMethodInputType(系统接口)](arkts-na-inputmethodsystempanelmanager-inputmethodinputtype-e-sys.md)<!--DelEnd-->
 - [@ohos.wallpaper](arkts-wallpaper.md)
   - [getColors](arkts-na-wallpaper-getcolors-f.md)
+  <!--Del-->
+  - [getColorsSync(系统接口)](arkts-na-wallpaper-getcolorssync-f-sys.md)<!--DelEnd-->
   - [getFile](arkts-na-wallpaper-getfile-f.md)
   - [getId](arkts-na-wallpaper-getid-f.md)
+  <!--Del-->
+  - [getImage(系统接口)](arkts-na-wallpaper-getimage-f-sys.md)<!--DelEnd-->
   - [getMinHeight](arkts-na-wallpaper-getminheight-f.md)
+  <!--Del-->
+  - [getMinHeightSync(系统接口)](arkts-na-wallpaper-getminheightsync-f-sys.md)<!--DelEnd-->
   - [getMinWidth](arkts-na-wallpaper-getminwidth-f.md)
+  <!--Del-->
+  - [getMinWidthSync(系统接口)](arkts-na-wallpaper-getminwidthsync-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPixelMap(系统接口)](arkts-na-wallpaper-getpixelmap-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getWallpaperByState(系统接口)](arkts-na-wallpaper-getwallpaperbystate-f-sys.md)<!--DelEnd-->
   - [isChangePermitted](arkts-na-wallpaper-ischangepermitted-f.md)
   - [isOperationAllowed](arkts-na-wallpaper-isoperationallowed-f.md)
   - [off](arkts-na-wallpaper-off-f.md)
+  <!--Del-->
+  - [off(系统接口)](arkts-na-wallpaper-off-f-sys.md)<!--DelEnd-->
   - [on](arkts-na-wallpaper-on-f.md)
+  <!--Del-->
+  - [on(系统接口)](arkts-na-wallpaper-on-f-sys.md)<!--DelEnd-->
   - [reset](arkts-na-wallpaper-reset-f.md)
+  <!--Del-->
+  - [restore(系统接口)](arkts-na-wallpaper-restore-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setAllWallpapers(系统接口)](arkts-na-wallpaper-setallwallpapers-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setCustomWallpaper(系统接口)](arkts-na-wallpaper-setcustomwallpaper-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setImage(系统接口)](arkts-na-wallpaper-setimage-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setVideo(系统接口)](arkts-na-wallpaper-setvideo-f-sys.md)<!--DelEnd-->
   - [setWallpaper](arkts-na-wallpaper-setwallpaper-f.md)
   - [RgbaColor](arkts-na-wallpaper-rgbacolor-i.md)
+  <!--Del-->
+  - [WallpaperInfo(系统接口)](arkts-na-wallpaper-wallpaperinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FoldState(系统接口)](arkts-na-wallpaper-foldstate-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RotateState(系统接口)](arkts-na-wallpaper-rotatestate-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [WallpaperResourceType(系统接口)](arkts-na-wallpaper-wallpaperresourcetype-e-sys.md)<!--DelEnd-->
   - [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md)
 - application<!--arkts-na-application-->
   - [AppServiceExtensionContext](arkts-appserviceextensioncontext.md)
     - [AppServiceExtensionContext](arkts-na-appserviceextensioncontext-c.md)
   - [ServiceExtensionContext](arkts-serviceextensioncontext.md)
+    <!--Del-->
+    - [ServiceExtensionContext(系统接口)](arkts-na-serviceextensioncontext-c-sys.md)<!--DelEnd-->
   - [UIServiceExtensionContext](arkts-uiserviceextensioncontext.md)
+    <!--Del-->
+    - [UIServiceExtensionContext(系统接口)](arkts-na-uiserviceextensioncontext-c-sys.md)<!--DelEnd-->

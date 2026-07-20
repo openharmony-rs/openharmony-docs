@@ -18,6 +18,7 @@ class of window extension ability.
 import { WindowExtensionContext } from '@kit.ArkUI';
 ```
 
+<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -58,6 +59,7 @@ export default class MyWindowExtensionAbility extends WindowExtensionAbility {
 
 ```
 
+<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -98,6 +100,7 @@ export default class MyWindowExtensionAbility extends WindowExtensionAbility {
 
 ```
 
+<a id="onwindowready"></a>
 ## onWindowReady
 
 ```TypeScript

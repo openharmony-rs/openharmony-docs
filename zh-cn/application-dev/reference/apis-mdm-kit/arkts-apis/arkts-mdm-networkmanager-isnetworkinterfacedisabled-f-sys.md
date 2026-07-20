@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="isnetworkinterfacedisabled"></a>
 ## isNetworkInterfaceDisabled
 
 ```TypeScript
@@ -32,7 +33,7 @@ function isNetworkInterfaceDisabled(admin: Want, networkInterface: string, callb
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string | 是 | 指定网络接口。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当接口调用成功，err为null，data为指定网络接口是否被禁用，true表示该网络接口被禁用，false表示该网络接口未被禁用，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为null，data为指定网络接口是否被禁用，true表示该网络接口被禁用，false表示该网络接口未被禁用，否则err为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0', (err, result) => {
 ```
 
 
+<a id="isnetworkinterfacedisabled-1"></a>
 ## isNetworkInterfaceDisabled
 
 ```TypeScript
@@ -103,7 +105,7 @@ function isNetworkInterfaceDisabled(admin: Want, networkInterface: string): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise结果，返回指定网络接口是否被禁用，true表示该网络接口被禁用，false表示该网络接口未被禁用。 |
+| Promise&lt;boolean&gt; | Promise结果，返回指定网络接口是否被禁用，true表示该网络接口被禁用，false表示该网络接口未被禁用。 |
 
 **错误码：**
 

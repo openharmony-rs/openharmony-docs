@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="issmartreminderenabled"></a>
 ## isSmartReminderEnabled
 
 ```TypeScript
@@ -34,7 +35,7 @@ function isSmartReminderEnabled(deviceType: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 以Promise形式返回设备与其他设备协同智能提醒的开关是否开启的结果（true：开启，false：未开启）。 |
+| Promise&lt;boolean&gt; | 以Promise形式返回设备与其他设备协同智能提醒的开关是否开启的结果（true：开启，false：未开启）。 |
 
 **错误码：**
 

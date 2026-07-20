@@ -1,5 +1,6 @@
 # mkdtempSync
 
+<a id="mkdtempsync"></a>
 ## mkdtempSync
 
 ```TypeScript

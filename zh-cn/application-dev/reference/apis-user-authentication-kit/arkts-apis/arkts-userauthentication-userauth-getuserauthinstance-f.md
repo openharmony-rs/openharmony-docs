@@ -6,6 +6,7 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="getuserauthinstance"></a>
 ## getUserAuthInstance
 
 ```TypeScript
@@ -37,7 +38,7 @@ function getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): Us
 
 | 类型 | 说明 |
 | --- | --- |
-| [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md) | 支持用户界面的认证器对象。获取实例后，需调用[on('result')](arkts-userauthentication-userauth-userauthinstance-i.md#on-1)订阅认证结果，再调用[start](arkts-userauthentication-userauth-userauthinstance-i.md#start-1)启动认证。认证完成后，可通过回调获取认证结果。 |
+| [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md) | 支持用户界面的认证器对象。获取实例后，需调用[on('result')](userAuth.UserAuthInstance.on(type: 'result', callback: IAuthCallback))订阅认证结果，再调用[start](arkts-userauthentication-userauth-userauthinstance-i.md#start-1)启动认证。认证完成后，可通过回调获取认证结果。 |
 
 **错误码：**
 

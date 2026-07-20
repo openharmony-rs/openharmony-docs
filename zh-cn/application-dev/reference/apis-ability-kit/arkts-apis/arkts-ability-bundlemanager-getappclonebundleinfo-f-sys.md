@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getappclonebundleinfo"></a>
 ## getAppCloneBundleInfo
 
 ```TypeScript
@@ -39,7 +40,7 @@ function getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BundleInfo> | Promise对象。返回应用包信息。 |
+| Promise&lt;BundleInfo&gt; | Promise对象。返回应用包信息。 |
 
 **错误码：**
 

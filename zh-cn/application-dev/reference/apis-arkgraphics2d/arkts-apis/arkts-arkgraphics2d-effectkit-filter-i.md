@@ -14,6 +14,7 @@
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
+<a id="blur"></a>
 ## blur
 
 ```TypeScript
@@ -24,7 +25,7 @@ blur(radius: number): Filter
 
 > **说明：**  
 >  
-> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](../../../../ui/arkts-blur-effect.md)。
+> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](docroot://ui/arkts-blur-effect.md)。
 
 **起始版本：** 9
 
@@ -115,6 +116,7 @@ struct Index {
 
 ```
 
+<a id="blur-1"></a>
 ## blur
 
 ```TypeScript
@@ -125,7 +127,7 @@ blur(radius: number, tileMode: TileMode): Filter
 
 > **说明：**  
 >  
-> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](../../../../ui/arkts-blur-effect.md)。
+> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](docroot://ui/arkts-blur-effect.md)。
 
 **起始版本：** 14
 
@@ -213,6 +215,7 @@ struct Index {
 
 ```
 
+<a id="brightness"></a>
 ## brightness
 
 ```TypeScript
@@ -310,6 +313,7 @@ struct Index {
 
 ```
 
+<a id="geteffectpixelmap"></a>
 ## getEffectPixelMap
 
 ```TypeScript
@@ -332,7 +336,7 @@ getEffectPixelMap(): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | - Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
+| Promise&lt;image.PixelMap&gt; | - Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
 **示例：**
 
@@ -365,6 +369,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="geteffectpixelmap-1"></a>
 ## getEffectPixelMap
 
 ```TypeScript
@@ -393,7 +398,7 @@ getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | - Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
+| Promise&lt;image.PixelMap&gt; | - Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
 **示例：**
 
@@ -422,6 +427,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="getpixelmap"></a>
 ## getPixelMap
 
 ```TypeScript
@@ -472,6 +478,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="grayscale"></a>
 ## grayscale
 
 ```TypeScript
@@ -561,6 +568,7 @@ struct Index {
 
 ```
 
+<a id="invert"></a>
 ## invert
 
 ```TypeScript
@@ -646,6 +654,7 @@ struct Index {
 
 ```
 
+<a id="setcolormatrix"></a>
 ## setColorMatrix
 
 ```TypeScript
@@ -664,7 +673,7 @@ setColorMatrix(colorMatrix: Array<number>): Filter
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorMatrix | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 自定义颜色矩阵。用于创建效果滤镜的 5x4 大小的矩阵，矩阵元素取值范围为[0, 1]，0和1代表的是矩阵中对应位置的颜色通道的权重，0代表该颜色通道不参与计算，1代表该颜色通道参与计算并保持原始权重。 |
+| colorMatrix | Array&lt;number&gt; | 是 | 自定义颜色矩阵。用于创建效果滤镜的 5x4 大小的矩阵，矩阵元素取值范围为[0, 1]，0和1代表的是矩阵中对应位置的颜色通道的权重，0代表该颜色通道不参与计算，1代表该颜色通道参与计算并保持原始权重。 |
 
 **返回值：**
 

@@ -6,6 +6,7 @@
 import { fileAccess } from '@kit.CoreFileKit';
 ```
 
+<a id="createfileaccesshelper"></a>
 ## createFileAccessHelper
 
 ```TypeScript
@@ -100,6 +101,7 @@ function createFileAccessHelper02(context: common.UIAbilityContext) {
 ```
 
 
+<a id="createfileaccesshelper-1"></a>
 ## createFileAccessHelper
 
 ```TypeScript
@@ -127,7 +129,7 @@ function createFileAccessHelper(context: Context, wants: Array<Want>): FileAcces
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | Indicates the application context. |
-| wants | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Want> | 是 | Represents the connected data provider. |
+| wants | Array&lt;Want&gt; | 是 | Represents the connected data provider. |
 
 **返回值：**
 

@@ -6,6 +6,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="callbackwrapper"></a>
 ## callbackWrapper
 
 ```TypeScript
@@ -42,7 +43,7 @@ function callbackWrapper(original: Function): (err: Object, value: Object) => vo
 
 | 类型 | 说明 |
 | --- | --- |
-| (err: Object, value: Object) => void | 回调函数，其中第一个参数 **err** 表示拒绝的原因（如果 promise 已经 resolved，该值为**null**），第二个参数 **value** 表示 resolved 的值。 |
+| (err: Object, value: Object) =&gt; void | 回调函数，其中第一个参数 **err** 表示拒绝的原因（如果 promise 已经 resolved，该值为**null**），第二个参数 **value** 表示 resolved 的值。 |
 
 **示例：**
 

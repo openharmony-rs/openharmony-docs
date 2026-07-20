@@ -16,6 +16,7 @@
 import { BreakpointOptions, ContainerReader, ContainerReaderAttribute } from '@kit.ArkUI';
 ```
 
+<a id="breakpointconfig"></a>
 ## breakpointConfig
 
 ```TypeScript

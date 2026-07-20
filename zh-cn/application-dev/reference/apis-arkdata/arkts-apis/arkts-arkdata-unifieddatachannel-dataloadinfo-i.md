@@ -23,7 +23,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 recordCount?: number
 ```
 
-表示期望或可提供的最大数据记录数，默认值为0，取值范围为[0, 2<sup>32</sup>-1]。超过取值范围时会按默认值处理。设置为浮点数时，仅使用整数部分。当用于拖拽时，会作为角标数量显示，最大支持2<sup>31</sup>-1，超过此数值时不显示角标。作为角标数量时，优先级低于[DragPreviewOptions](../../apis-arkui/arkts-components/arkts-arkui-common-dragpreviewoptions-i.md)中的numberBadge方法。
+表示期望或可提供的最大数据记录数，默认值为0，取值范围为[0, 2<sup>32</sup>-1]。超过取值范围时会按默认值处理。设置为浮点数时，仅使用整数部分。当用于拖拽时，会作为角标数量显示，最大支持2<sup>31</sup>-1，超过此数值时不显示角标。作为角标数量时，优先级低于[DragPreviewOptions](../../apis-arkui/arkts-components/arkts-arkui-dragpreviewoptions-i.md)中的numberBadge方法。
 
 **类型：** number
 
@@ -45,7 +45,7 @@ types?: Set<string>
 
 表示数据类型集合，默认为空集合。
 
-**类型：** Set<string>
+**类型：** Set&lt;string&gt;
 
 **起始版本：** 20
 

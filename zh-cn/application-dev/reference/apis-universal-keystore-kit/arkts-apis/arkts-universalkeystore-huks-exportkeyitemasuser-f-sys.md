@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="exportkeyitemasuser"></a>
 ## exportKeyItemAsUser
 
 ```TypeScript
@@ -36,7 +37,7 @@ function exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: Huks
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksReturnResult> | Promise对象。 当调用成功时，HuksReturnResult的outData成员非空，为从密钥中导出的公钥，否则为失败。 |
+| Promise&lt;HuksReturnResult&gt; | Promise对象。 当调用成功时，HuksReturnResult的outData成员非空，为从密钥中导出的公钥，否则为失败。 |
 
 **错误码：**
 

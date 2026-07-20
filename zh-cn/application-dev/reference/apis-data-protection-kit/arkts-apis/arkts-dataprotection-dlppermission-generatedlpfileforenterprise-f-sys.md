@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="generatedlpfileforenterprise"></a>
 ## generateDlpFileForEnterprise
 
 ```TypeScript
@@ -34,8 +35,8 @@ function generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, proper
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 明文文件的文件描述符。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1时，fd的值被截断。 |
-| dlpFd | number | 是 | 加密文件的文件描述符。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1时，fd的值被截断。 |
+| plaintextFd | number | 是 | 明文文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| dlpFd | number | 是 | 加密文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i-sys.md) | 是 | DLP文件通用策略。 |
 | customProperty | [CustomProperty](arkts-dataprotection-dlppermission-customproperty-i-sys.md) | 是 | 企业定制策略。 |
 
@@ -43,7 +44,7 @@ function generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, proper
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

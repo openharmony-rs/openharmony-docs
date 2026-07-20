@@ -28,7 +28,7 @@ Progress(options: ProgressOptions<Type>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ProgressOptions&lt;Type&gt; | 是 | 按进度条类型不同，设置不同属性的进度条组件参数。 |
+| options | [ProgressOptions](arkts-arkui-progressoptions-i.md)&lt;Type&gt; | 是 | 按进度条类型不同，设置不同属性的进度条组件参数。  |
 
 ## 汇总
 

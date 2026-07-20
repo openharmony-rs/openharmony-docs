@@ -96,7 +96,7 @@ readonly permissions?: Array<string>
 
 Skill所需的权限。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 
@@ -116,7 +116,7 @@ readonly requestPermissions?: Array<string>
 
 表示应用包中requestPermissions下声明的权限。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 
@@ -196,7 +196,7 @@ readonly srcEntries?: Array<string>
 
 Skill的srcEntries信息。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 

@@ -16,6 +16,7 @@ A class that provides APIs to query and monitor the system screen recorder statu
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="off"></a>
 ## off('systemScreenRecorder')
 
 ```TypeScript
@@ -37,7 +38,7 @@ Unsubscribes from state change events of the system screen recorder.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'systemScreenRecorder' | 是 | Event type, which is **'systemScreenRecorder'** in this case.This event is triggered when the state of the system screen recorder changes. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ScreenCaptureEvent> | 否 | Callback invoked when the event is triggered,where ScreenCaptureEvent indicates the new state. If this parameter is not specified,the last subscription event is canceled. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ScreenCaptureEvent&gt; | 否 | Callback invoked when the event is triggered,where ScreenCaptureEvent indicates the new state. If this parameter is not specified,the last subscription event is canceled. |
 
 **错误码：**
 
@@ -52,6 +53,7 @@ screenCaptureMonitor.off('systemScreenRecorder');
 
 ```
 
+<a id="on"></a>
 ## on('systemScreenRecorder')
 
 ```TypeScript
@@ -71,7 +73,7 @@ Subscribes to state change events of the system screen recorder. From the Screen
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'systemScreenRecorder' | 是 | Event type, which is **'systemScreenRecorder'** in this case.This event is triggered when the state of the system screen recorder changes. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ScreenCaptureEvent> | 是 | Callback invoked when the event is triggered,where ScreenCaptureEvent indicates the new state. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ScreenCaptureEvent&gt; | 是 | Callback invoked when the event is triggered,where ScreenCaptureEvent indicates the new state. |
 
 **错误码：**
 

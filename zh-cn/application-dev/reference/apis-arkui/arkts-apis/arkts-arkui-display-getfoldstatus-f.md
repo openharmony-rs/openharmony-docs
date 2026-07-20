@@ -6,6 +6,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="getfoldstatus"></a>
 ## getFoldStatus
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getFoldStatus(): FoldStatus
 
 | 类型 | 说明 |
 | --- | --- |
-| [FoldStatus](arkts-arkui-enums-foldstatus-e.md) | FoldStatus对象，返回当前可折叠设备的折叠状态。 |
+| [FoldStatus](arkts-arkui-foldstatus-e.md) | FoldStatus对象，返回当前可折叠设备的折叠状态。 |
 
 **错误码：**
 

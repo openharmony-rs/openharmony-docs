@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="setapplicationenabled"></a>
 ## setApplicationEnabled
 
 ```TypeScript
@@ -36,7 +37,7 @@ function setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -71,6 +72,7 @@ try {
 ```
 
 
+<a id="setapplicationenabled-1"></a>
 ## setApplicationEnabled
 
 ```TypeScript
@@ -104,7 +106,7 @@ function setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回值 |
+| Promise&lt;void&gt; | 无返回值 |
 
 **错误码：**
 
@@ -144,6 +146,7 @@ try {
 ```
 
 
+<a id="setapplicationenabled-2"></a>
 ## setApplicationEnabled
 
 ```TypeScript
@@ -168,7 +171,7 @@ function setApplicationEnabled(bundleName: string, isEnabled: boolean, callback:
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定应用的bundleName。 |
 | isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置应用禁用或使能状态成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置应用禁用或使能状态成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -204,6 +207,7 @@ try {
 ```
 
 
+<a id="setapplicationenabled-3"></a>
 ## setApplicationEnabled
 
 ```TypeScript
@@ -233,7 +237,7 @@ function setApplicationEnabled(bundleName: string, isEnabled: boolean): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -14,6 +14,7 @@
 import { audioHaptic } from '@kit.AudioKit';
 ```
 
+<a id="enablehapticsinsilentmode"></a>
 ## enableHapticsInSilentMode
 
 ```TypeScript
@@ -43,6 +44,7 @@ Enable haptics when the ringer mode is silent mode.这个方法只能在播放�
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit in current state. |
 
+<a id="ishapticsintensityadjustmentsupported"></a>
 ## isHapticsIntensityAdjustmentSupported
 
 ```TypeScript
@@ -71,6 +73,7 @@ Check whether the device supports haptics intensity adjustment.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
+<a id="ishapticsrampsupported"></a>
 ## isHapticsRampSupported
 
 ```TypeScript
@@ -99,6 +102,7 @@ Check whether the device supports haptics intensity ramp effect.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
+<a id="sethapticsintensity"></a>
 ## setHapticsIntensity
 
 ```TypeScript
@@ -125,7 +129,7 @@ Set haptics intensity for this player. This method uses a promise to return the 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -136,6 +140,7 @@ Set haptics intensity for this player. This method uses a promise to return the 
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit in current state. |
 | [5400108](../../apis-media-kit/errorcode-media.md#5400108-参数超过取值范围) | Parameter out of range. |
 
+<a id="sethapticsramp"></a>
 ## setHapticsRamp
 
 ```TypeScript
@@ -164,7 +169,7 @@ Set haptics intensity ramp effect for this player. This method uses a promise to
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 

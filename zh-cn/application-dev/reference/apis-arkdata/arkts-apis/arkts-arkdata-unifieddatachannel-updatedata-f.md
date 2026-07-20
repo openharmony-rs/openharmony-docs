@@ -6,6 +6,7 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
+<a id="updatedata"></a>
 ## updateData
 
 ```TypeScript
@@ -30,7 +31,7 @@ function updateData(options: Options, data: UnifiedData, callback: AsyncCallback
 | --- | --- | --- | --- |
 | options | [Options](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-zlib-options-i.md) | 是 | 配置项参数，参数中key字段必填，不填时会返回401错误码；intention参数仅支持DATA_HUB；其他字段是否填写均不影响接口的使用。 |
 | data | [UnifiedData](../../apis-arkui/arkts-components/arkts-arkui-unifieddata-t.md) | 是 | 目标数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当更新数据成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当更新数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -92,6 +93,7 @@ try {
 ```
 
 
+<a id="updatedata-1"></a>
 ## updateData
 
 ```TypeScript
@@ -121,7 +123,7 @@ function updateData(options: Options, data: UnifiedData): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

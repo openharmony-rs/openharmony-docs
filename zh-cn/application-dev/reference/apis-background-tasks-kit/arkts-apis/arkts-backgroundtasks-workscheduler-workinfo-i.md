@@ -252,7 +252,7 @@ parameters?: Record<string, number | number | string | boolean>
 
 携带参数信息。
 
-**类型：** Record<string, number | number | string | boolean>
+**类型：** Record&lt;string, number \| number \| string \| boolean&gt;
 
 **起始版本：** 9
 

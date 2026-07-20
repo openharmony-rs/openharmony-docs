@@ -1,5 +1,6 @@
 # unregisterApplicationStateObserver（系统接口）
 
+<a id="unregisterapplicationstateobserver"></a>
 ## unregisterApplicationStateObserver
 
 ```TypeScript
@@ -27,7 +28,7 @@ function unregisterApplicationStateObserver(observerId: number, callback: AsyncC
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | observerId | number | 是 | 表示观察者的编号代码。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 表示指定的callback回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示指定的callback回调方法。 |
 
 **示例：**
 
@@ -49,6 +50,7 @@ appManager.unregisterApplicationStateObserver(observerId, unregisterApplicationS
 ```
 
 
+<a id="unregisterapplicationstateobserver-1"></a>
 ## unregisterApplicationStateObserver
 
 ```TypeScript
@@ -81,7 +83,7 @@ function unregisterApplicationStateObserver(observerId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 

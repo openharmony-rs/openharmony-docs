@@ -14,6 +14,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="compareto"></a>
 ## compareTo
 
 ```TypeScript

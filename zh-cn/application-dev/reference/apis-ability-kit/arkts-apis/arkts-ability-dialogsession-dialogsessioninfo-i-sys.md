@@ -44,7 +44,7 @@ parameters?: Record<string, Object>
 
 表示其他参数。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 11
 
@@ -64,7 +64,7 @@ targetAbilityInfos: Array<DialogAbilityInfo>
 
 表示目标组件信息列表。
 
-**类型：** Array<DialogAbilityInfo>
+**类型：** Array&lt;DialogAbilityInfo&gt;
 
 **起始版本：** 11
 

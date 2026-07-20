@@ -20,7 +20,7 @@ export type OnRequestFailureFn = (name: string, failureCode: AbilityStartFailure
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 被拉起Ability组件或系统操作的名称。Ability组件名称采用'[bundleName]#[moduleName]#[abilityName]'格式拼接。如果用户自动取消拉起，name为空。 |
-| failureCode | AbilityStartFailureCode | 是 | 失败原因的错误码。 |
-| failureMessage | string | 是 | 失败原因的描述。 |
+| name | string | 是 | 被拉起Ability组件或系统操作的名称。 Ability组件名称采用'[bundleName]#[moduleName]#[abilityName]'格式拼接。如果用户自动取消拉起，name为空。  |
+| failureCode | [AbilityStartFailureCode](arkts-ability-app-ability-completionhandlerforabilitystartcallback-abilitystartfailurecode-e.md) | 是 | 失败原因的错误码。  |
+| failureMessage | string | 是 | 失败原因的描述。  |
 

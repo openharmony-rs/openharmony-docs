@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="installmarketapps"></a>
 ## installMarketApps
 
 ```TypeScript
@@ -35,7 +36,7 @@ function installMarketApps(admin: Want, bundleNames: Array<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| bundleNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用包名列表，一次最多传入10个。包名需与应用市场中包名一致，否则无法创建下载任务，并抛出错误码9201002。 |
+| bundleNames | Array&lt;string&gt; | 是 | 应用包名列表，一次最多传入10个。包名需与应用市场中包名一致，否则无法创建下载任务，并抛出错误码9201002。 |
 
 **错误码：**
 

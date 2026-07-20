@@ -20,6 +20,7 @@ Worker线程自身的运行环境，与宿主线程环境隔离。
 import { MessageEvents, PostMessageOptions, MessageEvent, Priority, WorkerEventTarget, ThreadWorkerPriority, ThreadWorkerGlobalScope, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, WorkerOptions, EventTarget, WorkerEventListener } from '@kit.ArkTS';
 ```
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -60,6 +61,7 @@ parentPort.onmessage = (): void => {
 
 ```
 
+<a id="postmessage"></a>
 ## postMessage
 
 ```TypeScript
@@ -85,6 +87,7 @@ Worker线程向宿主线程发送消息。
 | messageObject | Object | 是 | messageObject 发送至宿主线程的数据。 |
 | transfer | Transferable[] | 是 | transfer 数组不可包含null。 |
 
+<a id="postmessage-1"></a>
 ## postMessage
 
 ```TypeScript
@@ -135,6 +138,7 @@ parentPort.onmessage = (e: MessageEvents) => {
 
 ```
 
+<a id="postmessage-2"></a>
 ## postMessage
 
 ```TypeScript
@@ -158,7 +162,7 @@ Worker线程向宿主线程发送消息。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | messageObject | Object | 是 | messageObject 发送至宿主线程的数据。 |
-| transfer | [ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md)[] | 是 | transfer 数组不可包含null。 |
+| transfer | ArrayBuffer[] | 是 | transfer 数组不可包含null。 |
 
 **示例：**
 
@@ -197,7 +201,7 @@ onmessage?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
 
 onmessage属性用于指定当Worker线程收到来自其宿主线程通过postMessage接口发送的消息时被调用的事件处理程序，该事件处理程序在Worker线程中执行。
 
-**类型：** (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
+**类型：** (this: DedicatedWorkerGlobalScope, ev: MessageEvent) =&gt; void
 
 **起始版本：** 7
 
@@ -217,7 +221,7 @@ onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
 
 onmessage属性用于指定当Worker线程收到一条无法被反序列化的消息时被调用的事件处理程序，该事件处理程序在Worker线程中执行。
 
-**类型：** (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
+**类型：** (this: DedicatedWorkerGlobalScope, ev: MessageEvent) =&gt; void
 
 **起始版本：** 7
 

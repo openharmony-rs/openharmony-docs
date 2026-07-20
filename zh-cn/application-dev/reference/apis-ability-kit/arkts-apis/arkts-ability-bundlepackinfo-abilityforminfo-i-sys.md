@@ -72,7 +72,7 @@ readonly supportDimensions: Array<string>
 
 表示卡片外观规格，取值为“1*2”，“2*2”，“2*4”，“4*4”，定义卡片时至少要指定一个卡片规格。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 

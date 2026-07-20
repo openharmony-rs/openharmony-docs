@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="getallnetworkinterfaces"></a>
 ## getAllNetworkInterfaces
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getAllNetworkInterfaces(admin: Want, callback: AsyncCallback<Array<stri
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<string>> | 是 | 回调函数。当接口调用成功，err为null，data为网络接口名称数组，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当接口调用成功，err为null，data为网络接口名称数组，否则err为错误对象。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ networkManager.getAllNetworkInterfaces(wantTemp, (err, result) => {
 ```
 
 
+<a id="getallnetworkinterfaces-1"></a>
 ## getAllNetworkInterfaces
 
 ```TypeScript
@@ -104,7 +106,7 @@ function getAllNetworkInterfaces(admin: Want): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise结果，返回所有激活的有线网络接口名称数组。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise结果，返回所有激活的有线网络接口名称数组。 |
 
 **错误码：**
 

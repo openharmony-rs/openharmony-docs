@@ -7,7 +7,7 @@
 > - 本Class首批接口从API version 14开始支持。  
 >  
 > - AVCastPickerHelper样式显示为半模态，实际会绑定  
-> [全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-common-commonmethod-c.md#bindcontentcover-1)  
+> [全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-commonmethod-c.md#bindcontentcover-1)  
 > 。
 
 **起始版本：** 14
@@ -22,6 +22,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -51,6 +52,7 @@ constructor(context: Context)
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<a id="off"></a>
 ## off('pickerStateChange')
 
 ```TypeScript
@@ -72,7 +74,7 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState>) : void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'pickerStateChange' | 是 | 取消对应的监听事件，支持事件`'pickerStateChange'`。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVCastPickerState> | 否 | 回调函数，参数state是变化后的半模态窗口状态。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVCastPickerState&gt; | 否 | 回调函数，参数state是变化后的半模态窗口状态。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -81,6 +83,7 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState>) : void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<a id="on"></a>
 ## on('pickerStateChange')
 
 ```TypeScript
@@ -104,7 +107,7 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState>) : void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'pickerStateChange' | 是 | 事件回调类型，支持事件`'pickerStateChange'`：当半模态窗口变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVCastPickerState> | 是 | 回调函数，参数state是变化后的半模态窗口状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVCastPickerState&gt; | 是 | 回调函数，参数state是变化后的半模态窗口状态。 |
 
 **错误码：**
 
@@ -113,6 +116,7 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState>) : void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<a id="resetcommunicationdevice"></a>
 ## resetCommunicationDevice
 
 ```TypeScript
@@ -133,8 +137,9 @@ resetCommunicationDevice(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<a id="select"></a>
 ## select
 
 ```TypeScript
@@ -161,7 +166,7 @@ select(options?: AVCastPickerOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

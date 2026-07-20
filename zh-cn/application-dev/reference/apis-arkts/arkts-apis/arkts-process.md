@@ -20,37 +20,37 @@ import { process } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [abort](arkts-arkts-process-abort-f.md#abort-1) | 中止进程并生成核心文件。该方法会导致进程立即退出，请谨慎使用。 |
-| [exit](arkts-arkts-process-exit-f.md#exit-1) | 终止程序。请谨慎使用此接口。调用此接口后应用将退出。如果输入参数非 0，可能会导致数据丢失或出现异常。 |
-| [getEnvironmentVar](arkts-arkts-process-getenvironmentvar-f.md#getenvironmentvar-1) | 获取环境变量名对应的值。 |
-| [getPastCpuTime](arkts-arkts-process-getpastcputime-f.md#getpastcputime-1) | 获取进程启动到当前时间的 CPU 时间（以毫秒为单位）。 |
-| [getStartRealtime](arkts-arkts-process-getstartrealtime-f.md#getstartrealtime-1) | 获取系统启动到进程启动的实时时间（以毫秒为单位，不包含系统休眠时间）。 |
-| [getSystemConfig](arkts-arkts-process-getsystemconfig-f.md#getsystemconfig-1) | 获取系统配置信息。 |
-| [getThreadPriority](arkts-arkts-process-getthreadpriority-f.md#getthreadpriority-1) | 根据指定的 tid 获取线程优先级，优先级顺序取决于当前操作系统。 |
-| [getUidForName](arkts-arkts-process-getuidforname-f.md#getuidforname-1) | 根据指定的用户名，从系统的用户数据库中获取该用户的 uid。 |
-| [is64Bit](arkts-arkts-process-is64bit-f.md#is64bit-1) | 检查运行环境是否为 64 位。 |
-| [isAppUid](arkts-arkts-process-isappuid-f.md#isappuid-1) | 判断 uid 是否属于应用程序。 |
-| [isIsolatedProcess](arkts-arkts-process-isisolatedprocess-f.md#isisolatedprocess-1) | 检查进程是否已被隔离。 |
-| [kill](arkts-arkts-process-kill-f.md#kill-1) | 发送信号到指定进程，结束该进程。 |
-| [uptime](arkts-arkts-process-uptime-f.md#uptime-1) | 获取当前系统已运行的时间（以秒为单位）。 |
+| [abort](arkts-arkts-process-abort-f.md#abort) | 中止进程并生成核心文件。该方法会导致进程立即退出，请谨慎使用。 |
+| [exit](arkts-arkts-process-exit-f.md#exit) | 终止程序。  请谨慎使用此接口。调用此接口后应用将退出。如果输入参数非 0，可能会导致数据丢失或出现异常。 |
+| [getEnvironmentVar](arkts-arkts-process-getenvironmentvar-f.md#getenvironmentvar) | 获取环境变量名对应的值。 |
+| [getPastCpuTime](arkts-arkts-process-getpastcputime-f.md#getpastcputime) | 获取进程启动到当前时间的 CPU 时间（以毫秒为单位）。 |
+| [getStartRealtime](arkts-arkts-process-getstartrealtime-f.md#getstartrealtime) | 获取系统启动到进程启动的实时时间（以毫秒为单位，不包含系统休眠时间）。 |
+| [getSystemConfig](arkts-arkts-process-getsystemconfig-f.md#getsystemconfig) | 获取系统配置信息。 |
+| [getThreadPriority](arkts-arkts-process-getthreadpriority-f.md#getthreadpriority) | 根据指定的 tid 获取线程优先级，优先级顺序取决于当前操作系统。 |
+| [getUidForName](arkts-arkts-process-getuidforname-f.md#getuidforname) | 根据指定的用户名，从系统的用户数据库中获取该用户的 uid。 |
+| [is64Bit](arkts-arkts-process-is64bit-f.md#is64bit) | 检查运行环境是否为 64 位。 |
+| [isAppUid](arkts-arkts-process-isappuid-f.md#isappuid) | 判断 uid 是否属于应用程序。 |
+| [isIsolatedProcess](arkts-arkts-process-isisolatedprocess-f.md#isisolatedprocess) | 检查进程是否已被隔离。 |
+| [kill](arkts-arkts-process-kill-f.md#kill) | 发送信号到指定进程，结束该进程。 |
+| [uptime](arkts-arkts-process-uptime-f.md#uptime) | 获取当前系统已运行的时间（以秒为单位）。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [chdir](arkts-arkts-process-chdir-f-sys.md#chdir-1) | 修改当前目录。 |
-| [cwd](arkts-arkts-process-cwd-f-sys.md#cwd-1) | 返回当前工作目录。 |
-| [off](arkts-arkts-process-off-f-sys.md#off-1) | 移除已注册的事件。 |
-| [on](arkts-arkts-process-on-f-sys.md#on-1) | 注册事件。 |
-| [runCmd](arkts-arkts-process-runcmd-f-sys.md#runcmd-1) | 返回一个子进程对象，并 spawn 一个新的 ChildProcess 来运行命令。 |
+| [chdir](arkts-arkts-process-chdir-f-sys.md#chdir) | 修改当前目录。 |
+| [cwd](arkts-arkts-process-cwd-f-sys.md#cwd) | 返回当前工作目录。 |
+| [off](arkts-arkts-process-off-f-sys.md#off) | 移除已注册的事件。 |
+| [on](arkts-arkts-process-on-f-sys.md#on) | 注册事件。 |
+| [runCmd](arkts-arkts-process-runcmd-f-sys.md#runcmd) | 返回一个子进程对象，并 spawn 一个新的 ChildProcess 来运行命令。 |
 <!--DelEnd-->
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [ProcessManager](arkts-arkts-process-processmanager-c.md) | 提供进程管理相关接口，包括进程 UID 判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。通过 `new process.ProcessManager()` 构造 ProcessManager 对象。 |
+| [ProcessManager](arkts-arkts-process-processmanager-c.md) | 提供进程管理相关接口，包括进程 UID 判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。  通过 `new process.ProcessManager()` 构造 ProcessManager 对象。 |
 
 <!--Del-->
 ### 接口（系统接口）

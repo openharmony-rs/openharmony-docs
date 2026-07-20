@@ -18,6 +18,7 @@
 import { DataType } from '@kit.ArkData';
 ```
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -47,6 +48,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="getblob"></a>
 ## getBlob
 
 ```TypeScript
@@ -77,7 +79,7 @@ getBlob(columnIndex: number): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 以字节数组的形式返回指定列的值。 |
+| Uint8Array | 以字节数组的形式返回指定列的值。 |
 
 **示例：**
 
@@ -95,6 +97,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="getcolumnindex"></a>
 ## getColumnIndex
 
 ```TypeScript
@@ -138,6 +141,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="getcolumnname"></a>
 ## getColumnName
 
 ```TypeScript
@@ -181,6 +185,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="getdatatype"></a>
 ## getDataType
 
 ```TypeScript
@@ -229,6 +234,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="getdouble"></a>
 ## getDouble
 
 ```TypeScript
@@ -277,6 +283,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="getlong"></a>
 ## getLong
 
 ```TypeScript
@@ -325,6 +332,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="getstring"></a>
 ## getString
 
 ```TypeScript
@@ -373,6 +381,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="goto"></a>
 ## goTo
 
 ```TypeScript
@@ -414,6 +423,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="gotofirstrow"></a>
 ## goToFirstRow
 
 ```TypeScript
@@ -449,6 +459,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="gotolastrow"></a>
 ## goToLastRow
 
 ```TypeScript
@@ -483,6 +494,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="gotonextrow"></a>
 ## goToNextRow
 
 ```TypeScript
@@ -517,6 +529,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="gotopreviousrow"></a>
 ## goToPreviousRow
 
 ```TypeScript
@@ -551,6 +564,7 @@ if (resultSet != undefined) {
 
 ```
 
+<a id="gotorow"></a>
 ## goToRow
 
 ```TypeScript
@@ -620,7 +634,7 @@ columnNames: Array<string>
 
 结果集中所有列的名称。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 

@@ -6,6 +6,7 @@
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
 ```
 
+<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -28,7 +29,7 @@ function set(key: string, value: string, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | key | string | 是 | 待设置的系统参数key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
 | value | string | 是 | 待设置的系统参数值。最大长度96字节（包括结束符）。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，异步设置系统参数。成功时err为undefined；失败时err为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，异步设置系统参数。成功时err为undefined；失败时err为错误对象。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ try {
 ```
 
 
+<a id="set-1"></a>
 ## set
 
 ```TypeScript
@@ -86,7 +88,7 @@ function set(key: string, value: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise实例，用于异步获取结果。 |
+| Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
 
 **错误码：**
 

@@ -29,14 +29,7 @@ buttons: [
 
 菜单中菜单项按钮的数组，结构为：{text:'button',&nbsp;color:&nbsp;'\#666666'}，支持1-6个按钮。按钮数量大于6个时，仅显示前6个按钮，之后的按钮不显示。
 
-**类型：** [
-            Button,
-            Button?,
-            Button?,
-            Button?,
-            Button?,
-            Button?
-        ]
+**类型：** [             Button,             Button?,             Button?,             Button?,             Button?,             Button?         ]
 
 **起始版本：** 9
 
@@ -154,7 +147,7 @@ onDidAppear?: Callback<void>
 
 菜单弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.快速点击弹出，关闭菜单时，onWillDisappear在onDidAppear前生效。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 20
 
@@ -174,7 +167,7 @@ onDidDisappear?: Callback<void>
 
 菜单消失后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 20
 
@@ -194,7 +187,7 @@ onWillAppear?: Callback<void>
 
 菜单显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 20
 
@@ -214,7 +207,7 @@ onWillDisappear?: Callback<void>
 
 菜单退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 20
 
@@ -276,7 +269,7 @@ title?: string | Resource
 
 标题文本。<br/>默认值：undefined，取值为undefined默认不显示标题。
 
-**类型：** string | Resource
+**类型：** string \| Resource
 
 **起始版本：** 9
 

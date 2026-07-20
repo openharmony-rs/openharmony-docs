@@ -1,5 +1,6 @@
 # offSystemPrivateCommand（系统接口）
 
+<a id="offsystemprivatecommand"></a>
 ## offSystemPrivateCommand
 
 ```TypeScript
@@ -22,7 +23,7 @@ function offSystemPrivateCommand(callback?: Callback<Record<string, CommandDataT
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Record<string, CommandDataType>> | 否 | 当输入法应用发送私有数据命令时触发的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Record&lt;string, CommandDataType&gt;&gt; | 否 | 当输入法应用发送私有数据命令时触发的回调。 |
 
 **错误码：**
 

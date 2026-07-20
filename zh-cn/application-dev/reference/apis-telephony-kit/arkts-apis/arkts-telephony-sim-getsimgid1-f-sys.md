@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getsimgid1"></a>
 ## getSimGid1
 
 ```TypeScript
@@ -29,7 +30,7 @@ Obtains the Group Identifier Level 1 (GID1) of the SIM card in a specified slot.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the card slot index number,ranging from 0 to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | Indicates the callback for getting the GID1;Returns an empty string if no SIM card is inserted or no GID1 in the SIM card. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | Indicates the callback for getting the GID1;Returns an empty string if no SIM card is inserted or no GID1 in the SIM card. |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ sim.getSimGid1(0, (err: BusinessError, data: string) => {
 ```
 
 
+<a id="getsimgid1-1"></a>
 ## getSimGid1
 
 ```TypeScript
@@ -85,7 +87,7 @@ Obtains the Group Identifier Level 1 (GID1) of the SIM card in a specified slot.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Returns the GID1; returns an empty string if no SIM card is inserted or no GID1 in the SIM card. |
+| Promise&lt;string&gt; | Returns the GID1; returns an empty string if no SIM card is inserted or no GID1 in the SIM card. |
 
 **错误码：**
 

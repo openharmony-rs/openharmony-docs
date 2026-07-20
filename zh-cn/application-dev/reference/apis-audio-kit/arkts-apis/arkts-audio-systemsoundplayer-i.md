@@ -10,6 +10,7 @@ SystemSoundPlayer需要和[@ohos.multimedia.systemSoundManager](arkts-multimedia
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+<a id="load"></a>
 ## load
 
 ```TypeScript
@@ -36,7 +37,7 @@ load(soundType: systemSoundManager.SystemSoundType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -46,6 +47,7 @@ load(soundType: systemSoundManager.SystemSoundType): Promise<void>
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Crash or blocking occurs in system process. |
 | [5400108](../../apis-media-kit/errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. Returned by promise. |
 
+<a id="play"></a>
 ## play
 
 ```TypeScript
@@ -72,7 +74,7 @@ play(soundType: systemSoundManager.SystemSoundType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -82,6 +84,7 @@ play(soundType: systemSoundManager.SystemSoundType): Promise<void>
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Crash or blocking occurs in system process. |
 | [5400108](../../apis-media-kit/errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. Returned by promise. |
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -102,7 +105,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -110,6 +113,7 @@ release(): Promise<void>
 | --- | --- |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Crash or blocking occurs in system process. |
 
+<a id="unload"></a>
 ## unload
 
 ```TypeScript
@@ -136,7 +140,7 @@ unload(soundType: systemSoundManager.SystemSoundType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

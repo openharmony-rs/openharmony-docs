@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="setcameratrackingenabled"></a>
 ## setCameraTrackingEnabled
 
 ```TypeScript

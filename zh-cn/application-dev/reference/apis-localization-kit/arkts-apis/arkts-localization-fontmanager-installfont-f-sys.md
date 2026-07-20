@@ -6,6 +6,7 @@
 import { fontManager } from '@kit.LocalizationKit';
 ```
 
+<a id="installfont"></a>
 ## installFont
 
 ```TypeScript
@@ -34,7 +35,7 @@ function installFont(path: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 返回安装结果。返回为0表示安装成功，否则安装失败。 |
+| Promise&lt;number&gt; | 返回安装结果。返回为0表示安装成功，否则安装失败。 |
 
 **错误码：**
 

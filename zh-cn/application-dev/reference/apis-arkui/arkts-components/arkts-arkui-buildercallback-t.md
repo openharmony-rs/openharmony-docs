@@ -20,5 +20,5 @@ declare type BuilderCallback = (...args: Args) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| args | Args | 是 | MutableBuilder的参数。 |
+| args | Args | 是 | MutableBuilder的参数。  |
 

@@ -24,7 +24,7 @@ DynamicComponent(options: DynamicOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | DynamicOptions | 是 | DynamicComponentAttribute的构造配置 |
+| options | [DynamicOptions](arkts-arkui-dynamicoptions-i-sys.md) | 是 | DynamicComponentAttribute的构造配置  |
 
 ## 汇总
 

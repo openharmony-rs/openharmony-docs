@@ -43,7 +43,7 @@ Flex布局容器。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | FlexOptions | 否 | 弹性布局子组件参数。 |
+| value | [FlexOptions](arkts-arkui-flexoptions-i.md) | 否 | 弹性布局子组件参数。  |
 
 ## 汇总
 

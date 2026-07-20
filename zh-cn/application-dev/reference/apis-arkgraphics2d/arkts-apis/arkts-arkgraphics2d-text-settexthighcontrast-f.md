@@ -6,6 +6,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="settexthighcontrast"></a>
 ## setTextHighContrast
 
 ```TypeScript

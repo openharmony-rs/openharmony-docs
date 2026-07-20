@@ -1,5 +1,6 @@
 # copyFileSync
 
+<a id="copyfilesync"></a>
 ## copyFileSync
 
 ```TypeScript

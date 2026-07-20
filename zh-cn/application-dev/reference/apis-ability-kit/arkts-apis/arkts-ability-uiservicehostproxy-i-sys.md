@@ -14,6 +14,7 @@ UIServiceHostProxy提供代理能力，可以将数据从[UIServiceExtension](ar
 
 **系统接口：** 此接口为系统接口。
 
+<a id="senddata"></a>
 ## sendData
 
 ```TypeScript
@@ -36,7 +37,7 @@ sendData(data: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record<string, Object> | 是 | 待发送到[UIServiceExtension](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)客户端的数据。 |
+| data | Record&lt;string, Object&gt; | 是 | 待发送到[UIServiceExtension](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)客户端的数据。 |
 
 **错误码：**
 

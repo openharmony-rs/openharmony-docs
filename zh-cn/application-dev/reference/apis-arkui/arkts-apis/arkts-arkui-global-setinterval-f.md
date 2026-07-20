@@ -1,5 +1,6 @@
 # setInterval
 
+<a id="setinterval"></a>
 ## setInterval
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="getwant"></a>
 ## getWant
 
 ```TypeScript
@@ -27,7 +28,7 @@ function getWant(agent: WantAgent, callback: AsyncCallback<Want>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Want> | 是 | 回调函数。当获取WantAgent对象want成功，err中code为0，data为获取到的Want数据；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Want&gt; | 是 | 回调函数。当获取WantAgent对象want成功，err中code为0，data为获取到的Want数据；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -39,6 +40,7 @@ function getWant(agent: WantAgent, callback: AsyncCallback<Want>): void
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
 
+<a id="getwant-1"></a>
 ## getWant
 
 ```TypeScript
@@ -65,7 +67,7 @@ function getWant(agent: WantAgent): Promise<Want>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Want> | Promise对象，返回WantAgent对象的want。 |
+| Promise&lt;Want&gt; | Promise对象，返回WantAgent对象的want。 |
 
 **错误码：**
 

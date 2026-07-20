@@ -74,7 +74,7 @@ region?: Edges<LengthMetrics>
 
 默认使用组件自身区域
 
-**类型：** Edges<LengthMetrics>
+**类型：** Edges&lt;LengthMetrics&gt;
 
 **起始版本：** 23
 

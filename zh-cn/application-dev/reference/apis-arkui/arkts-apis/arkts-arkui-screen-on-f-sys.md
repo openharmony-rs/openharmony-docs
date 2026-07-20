@@ -6,6 +6,7 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -27,7 +28,7 @@ function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<n
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventType | 'connect' \| 'disconnect' \| 'change' | 是 | 监听事件。<br/>-eventType为"connect"表示屏幕连接事件。<br/>-eventType为"disconnect"表示断开屏幕连接事件。<br/>-eventType为"change"表示屏幕状态改变事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回屏幕的id，该参数为整数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回屏幕的id，该参数为整数。 |
 
 **错误码：**
 
@@ -48,6 +49,7 @@ screen.on('connect', callback);
 ```
 
 
+<a id="on-1"></a>
 ## on
 
 ```TypeScript
@@ -69,7 +71,7 @@ function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<n
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventType | 'connect' \| 'disconnect' \| 'change' | 是 | 监听事件。<br/>-eventType为"connect"表示屏幕连接事件。<br/>-eventType为"disconnect"表示断开屏幕连接事件。<br/>-eventType为"change"表示屏幕状态改变事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回屏幕的id，该参数为整数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回屏幕的id，该参数为整数。 |
 
 **错误码：**
 
@@ -90,6 +92,7 @@ screen.on('connect', callback);
 ```
 
 
+<a id="on-2"></a>
 ## on
 
 ```TypeScript
@@ -111,7 +114,7 @@ function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<n
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventType | 'connect' \| 'disconnect' \| 'change' | 是 | 监听事件。<br/>-eventType为"connect"表示屏幕连接事件。<br/>-eventType为"disconnect"表示断开屏幕连接事件。<br/>-eventType为"change"表示屏幕状态改变事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回屏幕的id，该参数为整数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回屏幕的id，该参数为整数。 |
 
 **错误码：**
 

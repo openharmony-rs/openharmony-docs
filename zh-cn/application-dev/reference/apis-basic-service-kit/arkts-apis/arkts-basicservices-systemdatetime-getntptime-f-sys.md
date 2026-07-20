@@ -6,6 +6,7 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
+<a id="getntptime"></a>
 ## getNtpTime
 
 ```TypeScript

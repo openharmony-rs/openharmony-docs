@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="getglobalproxy"></a>
 ## getGlobalProxy
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getGlobalProxy(admin: Want, callback: AsyncCallback<connection.HttpProx
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<connection.HttpProxy> | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;connection.HttpProxy&gt; | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ networkManager.getGlobalProxy(wantTemp, (err, result) => {
 ```
 
 
+<a id="getglobalproxy-1"></a>
 ## getGlobalProxy
 
 ```TypeScript
@@ -104,7 +106,7 @@ function getGlobalProxy(admin: Want): Promise<connection.HttpProxy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<connection.HttpProxy> | Promise used to return the global HTTP proxy information obtained. |
+| Promise&lt;connection.HttpProxy&gt; | Promise used to return the global HTTP proxy information obtained. |
 
 **错误码：**
 

@@ -14,6 +14,7 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -30,6 +31,7 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+<a id="deserialize"></a>
 ## deserialize
 
 ```TypeScript
@@ -50,7 +52,7 @@ static deserialize(serializedData: Uint8Array): WebDownloadItem
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| serializedData | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 序列化后的下载。 |
+| serializedData | Uint8Array | 是 | 序列化后的下载。 |
 
 **返回值：**
 
@@ -64,6 +66,7 @@ static deserialize(serializedData: Uint8Array): WebDownloadItem
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
 
+<a id="getcurrentspeed"></a>
 ## getCurrentSpeed
 
 ```TypeScript
@@ -86,6 +89,7 @@ getCurrentSpeed(): number
 | --- | --- |
 | number | - 下载的速度（字节每秒）。 |
 
+<a id="getfullpath"></a>
 ## getFullPath
 
 ```TypeScript
@@ -108,6 +112,7 @@ getFullPath(): string
 | --- | --- |
 | string | - 下载文件在磁盘上的全路径。 |
 
+<a id="getguid"></a>
 ## getGuid
 
 ```TypeScript
@@ -130,6 +135,7 @@ getGuid(): string
 | --- | --- |
 | string | - 下载任务的唯一ID。 |
 
+<a id="getlasterrorcode"></a>
 ## getLastErrorCode
 
 ```TypeScript
@@ -152,6 +158,7 @@ getLastErrorCode(): WebDownloadErrorCode
 | --- | --- |
 | [WebDownloadErrorCode](arkts-arkweb-webview-webdownloaderrorcode-e.md) | - 下载发生错误的时候的错误码。 |
 
+<a id="getmethod"></a>
 ## getMethod
 
 ```TypeScript
@@ -174,6 +181,7 @@ getMethod(): string
 | --- | --- |
 | string | - 下载的请求方式。 |
 
+<a id="getmimetype"></a>
 ## getMimeType
 
 ```TypeScript
@@ -196,6 +204,7 @@ getMimeType(): string
 | --- | --- |
 | string | - 下载的媒体类型（例如，一个声音文件可能被标记为 audio/ogg ，一个图像文件可能是 image/png）。 |
 
+<a id="getoriginalurl"></a>
 ## getOriginalUrl
 
 ```TypeScript
@@ -218,6 +227,7 @@ getOriginalUrl(): string
 | --- | --- |
 | string | - 下载文件的原始URL地址。 |
 
+<a id="getpercentcomplete"></a>
 ## getPercentComplete
 
 ```TypeScript
@@ -240,6 +250,7 @@ getPercentComplete(): number
 | --- | --- |
 | number | - 下载完成的进度，100代表下载完成，-1代表进度未知。 |
 
+<a id="getreceivedbytes"></a>
 ## getReceivedBytes
 
 ```TypeScript
@@ -262,6 +273,7 @@ getReceivedBytes(): number
 | --- | --- |
 | number | - 已经接收的字节数。 |
 
+<a id="getreferrerurl"></a>
 ## getReferrerUrl
 
 ```TypeScript
@@ -284,6 +296,7 @@ getReferrerUrl(): string
 | --- | --- |
 | string | - 下载文件的referrer地址。 |
 
+<a id="getstate"></a>
 ## getState
 
 ```TypeScript
@@ -306,6 +319,7 @@ getState(): WebDownloadState
 | --- | --- |
 | [WebDownloadState](arkts-arkweb-webview-webdownloadstate-e.md) | - 下载的状态。 |
 
+<a id="getsuggestedfilename"></a>
 ## getSuggestedFileName
 
 ```TypeScript
@@ -328,6 +342,7 @@ getSuggestedFileName(): string
 | --- | --- |
 | string | - 下载的建议文件名。 |
 
+<a id="gettotalbytes"></a>
 ## getTotalBytes
 
 ```TypeScript
@@ -350,6 +365,7 @@ getTotalBytes(): number
 | --- | --- |
 | number | - 待下载文件的总长度，-1代表总大小未知。单位：字节。 |
 
+<a id="geturl"></a>
 ## getUrl
 
 ```TypeScript
@@ -372,6 +388,7 @@ getUrl(): string
 | --- | --- |
 | string | - 下载的请求地址。 |
 
+<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -394,6 +411,7 @@ pause(): void
 | --- | --- |
 | [17100019](../errorcode-webview.md#17100019-下载还没开始) | The download task is not started yet. |
 
+<a id="resume"></a>
 ## resume
 
 ```TypeScript
@@ -416,6 +434,7 @@ resume(): void
 | --- | --- |
 | [17100016](../errorcode-webview.md#17100016-下载任务没有处于暂停状态) | The download task is not paused. |
 
+<a id="serialize"></a>
 ## serialize
 
 ```TypeScript
@@ -436,8 +455,9 @@ serialize(): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | - 失败的下载序列化后的字节数组。 |
+| Uint8Array | - 失败的下载序列化后的字节数组。 |
 
+<a id="start"></a>
 ## start
 
 ```TypeScript

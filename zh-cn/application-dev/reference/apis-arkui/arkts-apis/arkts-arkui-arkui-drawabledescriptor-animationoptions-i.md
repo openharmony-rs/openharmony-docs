@@ -82,7 +82,7 @@ frameDurations?: Array<number>
 
 单位：毫秒
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 21
 

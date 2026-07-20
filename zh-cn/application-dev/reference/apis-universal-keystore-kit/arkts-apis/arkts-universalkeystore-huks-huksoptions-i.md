@@ -40,7 +40,7 @@ properties?: Array<HuksParam>
 
 标签。
 
-**类型：** Array<HuksParam>
+**类型：** Array&lt;HuksParam&gt;
 
 **起始版本：** 8
 

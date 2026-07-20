@@ -6,6 +6,7 @@
 import { uiAppearance } from '@kit.ArkUI';
 ```
 
+<a id="setfontweightscale"></a>
 ## setFontWeightScale
 
 ```TypeScript
@@ -34,7 +35,7 @@ function setFontWeightScale(fontWeightScale: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | the promise returned by the function |
+| Promise&lt;void&gt; | the promise returned by the function |
 
 **错误码：**
 

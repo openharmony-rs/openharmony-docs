@@ -24,7 +24,7 @@ desiredAuxiliaryPictures: Array<AuxiliaryPictureType>
 
 如果不希望解码任何辅助图，可以直接解码为PixelMap，使用PixelMap创建仅包含主图的Picture。
 
-**类型：** Array<AuxiliaryPictureType>
+**类型：** Array&lt;AuxiliaryPictureType&gt;
 
 **起始版本：** 13
 

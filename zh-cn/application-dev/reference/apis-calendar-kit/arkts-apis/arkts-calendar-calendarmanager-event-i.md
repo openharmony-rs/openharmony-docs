@@ -74,7 +74,7 @@ endTime: number
 id?: number
 ```
 
-日程id。当调用[addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent-2)、[addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents-2)创建日程时，不填写此参数；当调用[deleteEvent()](arkts-calendar-calendarmanager-calendar-i.md#deleteevent-2)、[deleteEvents()](arkts-calendar-calendarmanager-calendar-i.md#deleteevents-2)删除日程时，日程id数组，日程id需为整数，传入其他非法入参会报错。
+日程id。当调用[addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent-1)、[addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents-1)创建日程时，不填写此参数；当调用[deleteEvent()](arkts-calendar-calendarmanager-calendar-i.md#deleteevent-1)、[deleteEvents()](arkts-calendar-calendarmanager-calendar-i.md#deleteevents-1)删除日程时，日程id数组，日程id需为整数，传入其他非法入参会报错。
 
 **类型：** number
 
@@ -110,7 +110,7 @@ identifier?: string
 instanceEndTime?: number
 ```
 
-日程实例结束时间，需要13位时间戳。当调用[addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent-2)、[addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents-2)创建日程时，不填写此参数。
+日程实例结束时间，需要13位时间戳。当调用[addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent-1)、[addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents-1)创建日程时，不填写此参数。
 
 **类型：** number
 
@@ -128,7 +128,7 @@ instanceEndTime?: number
 instanceStartTime?: number
 ```
 
-日程实例开始时间，需要13位时间戳。当调用[addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent-2)、[addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents-2)创建日程时，不填写此参数。
+日程实例开始时间，需要13位时间戳。当调用[addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent-1)、[addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents-1)创建日程时，不填写此参数。
 
 **类型：** number
 

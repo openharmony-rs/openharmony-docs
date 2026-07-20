@@ -6,6 +6,7 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="makeexpand"></a>
 ## makeExpand
 
 ```TypeScript
@@ -28,8 +29,8 @@ function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ExpandOption> | 是 | 设置扩展屏幕的参数集合。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。返回扩展屏幕的群组id，其中id为整数。 |
+| options | Array&lt;ExpandOption&gt; | 是 | 设置扩展屏幕的参数集合。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回扩展屏幕的群组id，其中id为整数。 |
 
 **错误码：**
 
@@ -67,6 +68,7 @@ screen.makeExpand(expandOptionArray, (err: BusinessError, data: number) => {
 ```
 
 
+<a id="makeexpand-1"></a>
 ## makeExpand
 
 ```TypeScript
@@ -89,13 +91,13 @@ function makeExpand(options:Array<ExpandOption>): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ExpandOption> | 是 | 设置扩展屏幕的参数集合。 |
+| options | Array&lt;ExpandOption&gt; | 是 | 设置扩展屏幕的参数集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回扩展屏幕的群组id，其中id为整数。 |
+| Promise&lt;number&gt; | Promise对象。返回扩展屏幕的群组id，其中id为整数。 |
 
 **错误码：**
 

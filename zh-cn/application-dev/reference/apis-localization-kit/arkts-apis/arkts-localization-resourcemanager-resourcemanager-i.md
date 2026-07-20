@@ -11,12 +11,12 @@
 >  
 > - 单HAP包获取自身资源、跨HAP/HSP包获取资源，由于入参为Resource的接口相比于入参为resName、resId的接口耗时更长，因此更推荐使用参数为resName或resId的接口。跨HAP/HSP包获取资源，  
 > **需要先使用[createModuleContext](../../apis-ability-kit/arkts-apis/arkts-ability-application-createmodulecontext-f.md#createmodulecontext-1)创建对应module的context**  
-> ，再调用参数为resName或resId的接口。更多请参考[资源访问](../../../../quick-start/resource-categories-and-access.md#资源访问)。  
+> ，再调用参数为resName或resId的接口。更多请参考[资源访问](docroot://quick-start/resource-categories-and-access.md#资源访问)。  
 >  
 > - 在API version 22及之前版本，中间码HAR、字节码HAR通过资源ID相关接口访问资源时，因ID无效会抛出异常；从API version 23开始，中间码HAR、字节码HAR通过资源ID相关接口可以正常访问资源，  
-> 更多请参考[资源访问](../../../../quick-start/resource-categories-and-access.md#资源访问)。  
+> 更多请参考[资源访问](docroot://quick-start/resource-categories-and-access.md#资源访问)。  
 >  
-> - 示例代码中test文件的具体内容请参考[附录](../../../../reference/apis-localization-kit/js-apis-resource-manager.md#附录)。
+> - 示例代码中test文件的具体内容请参考[附录](docroot://reference/apis-localization-kit/js-apis-resource-manager.md#附录)。
 
 **起始版本：** 6
 
@@ -30,6 +30,7 @@
 import { resourceManager } from '@kit.LocalizationKit';
 ```
 
+<a id="addresource"></a>
 ## addResource
 
 ```TypeScript
@@ -85,6 +86,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="closerawfd"></a>
 ## closeRawFd
 
 ```TypeScript
@@ -106,7 +108,7 @@ closeRawFd(path: string, callback: _AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件路径。 |
-| callback | _AsyncCallback<void> | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
+| callback | _AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -144,6 +146,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="closerawfd-1"></a>
 ## closeRawFd
 
 ```TypeScript
@@ -170,7 +173,7 @@ closeRawFd(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -203,6 +206,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="closerawfdsync"></a>
 ## closeRawFdSync
 
 ```TypeScript
@@ -257,6 +261,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="closerawfiledescriptor"></a>
 ## closeRawFileDescriptor
 
 ```TypeScript
@@ -269,7 +274,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** closeRawFd(path:
+**替代接口：** [closeRawFd(path:](arkts-localization-resourcemanager-resourcemanager-i.md#closerawfd-1)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -280,7 +285,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -297,6 +302,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="closerawfiledescriptor-1"></a>
 ## closeRawFileDescriptor
 
 ```TypeScript
@@ -309,7 +315,7 @@ closeRawFileDescriptor(path: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** closeRawFd(path:
+**替代接口：** [closeRawFd(path:](arkts-localization-resourcemanager-resourcemanager-i.md#closerawfd-1)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>-End-->
 
@@ -325,7 +331,7 @@ closeRawFileDescriptor(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -338,6 +344,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getboolean"></a>
 ## getBoolean
 
 ```TypeScript
@@ -411,6 +418,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getboolean-1"></a>
 ## getBoolean
 
 ```TypeScript
@@ -423,7 +431,7 @@ getBoolean(resource: Resource): boolean
 
 **废弃版本：** 20
 
-**替代接口：** getBoolean(resId:
+**替代接口：** [getBoolean(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getboolean-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -490,6 +498,7 @@ try {
 
 ```
 
+<a id="getbooleanbyname"></a>
 ## getBooleanByName
 
 ```TypeScript
@@ -563,6 +572,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getcolor"></a>
 ## getColor
 
 ```TypeScript
@@ -584,7 +594,7 @@ getColor(resId: number, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback<number> | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
+| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -595,6 +605,7 @@ getColor(resId: number, callback: _AsyncCallback<number>): void
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
+<a id="getcolor-1"></a>
 ## getColor
 
 ```TypeScript
@@ -621,7 +632,7 @@ getColor(resId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回资源ID值对应的颜色值（十进制）。 |
+| Promise&lt;number&gt; | Promise对象，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -667,6 +678,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getcolor-2"></a>
 ## getColor
 
 ```TypeScript
@@ -679,7 +691,7 @@ getColor(resource: Resource, callback: _AsyncCallback<number>): void
 
 **废弃版本：** 20
 
-**替代接口：** getColor(resId:
+**替代接口：** [getColor(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getcolor-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -694,7 +706,7 @@ getColor(resource: Resource, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback<number> | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
+| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -740,6 +752,7 @@ this.context.resourceManager.getColor(resource, (error: BusinessError, value: nu
 
 ```
 
+<a id="getcolor-3"></a>
 ## getColor
 
 ```TypeScript
@@ -752,7 +765,7 @@ getColor(resource: Resource): Promise<number>
 
 **废弃版本：** 20
 
-**替代接口：** getColor(resId:
+**替代接口：** [getColor(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getcolor-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -772,7 +785,7 @@ getColor(resource: Resource): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回resource对象对应的颜色值（十进制）。 |
+| Promise&lt;number&gt; | Promise对象，返回resource对象对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -818,6 +831,7 @@ this.context.resourceManager.getColor(resource)
 
 ```
 
+<a id="getcolorbyname"></a>
 ## getColorByName
 
 ```TypeScript
@@ -839,7 +853,7 @@ getColorByName(resName: string, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback<number> | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
+| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -885,6 +899,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getcolorbyname-1"></a>
 ## getColorByName
 
 ```TypeScript
@@ -911,7 +926,7 @@ getColorByName(resName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回资源名称对应的颜色值（十进制）。 |
+| Promise&lt;number&gt; | Promise对象，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -957,6 +972,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getcolorbynamesync"></a>
 ## getColorByNameSync
 
 ```TypeScript
@@ -1030,6 +1046,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getcolorsync"></a>
 ## getColorSync
 
 ```TypeScript
@@ -1103,6 +1120,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getcolorsync-1"></a>
 ## getColorSync
 
 ```TypeScript
@@ -1115,7 +1133,7 @@ getColorSync(resource: Resource) : number
 
 **废弃版本：** 20
 
-**替代接口：** getColorSync(resId:
+**替代接口：** [getColorSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getcolorsync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1182,6 +1200,7 @@ try {
 
 ```
 
+<a id="getconfiguration"></a>
 ## getConfiguration
 
 ```TypeScript
@@ -1202,7 +1221,7 @@ getConfiguration(callback: _AsyncCallback<Configuration>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | _AsyncCallback<Configuration> | 是 | 回调函数，返回设备的Configuration。 |
+| callback | _AsyncCallback&lt;Configuration&gt; | 是 | 回调函数，返回设备的Configuration。 |
 
 **示例：**
 
@@ -1230,6 +1249,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getconfiguration-1"></a>
 ## getConfiguration
 
 ```TypeScript
@@ -1250,7 +1270,7 @@ getConfiguration(): Promise<Configuration>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Configuration> | Promise对象，返回设备的Configuration。 |
+| Promise&lt;Configuration&gt; | Promise对象，返回设备的Configuration。 |
 
 **示例：**
 
@@ -1276,6 +1296,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getconfigurationsync"></a>
 ## getConfigurationSync
 
 ```TypeScript
@@ -1317,6 +1338,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getdevicecapability"></a>
 ## getDeviceCapability
 
 ```TypeScript
@@ -1337,7 +1359,7 @@ getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | _AsyncCallback<DeviceCapability> | 是 | 回调函数，返回设备的DeviceCapability。 |
+| callback | _AsyncCallback&lt;DeviceCapability&gt; | 是 | 回调函数，返回设备的DeviceCapability。 |
 
 **示例：**
 
@@ -1365,6 +1387,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getdevicecapability-1"></a>
 ## getDeviceCapability
 
 ```TypeScript
@@ -1385,7 +1408,7 @@ getDeviceCapability(): Promise<DeviceCapability>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DeviceCapability> | Promise对象，返回设备的DeviceCapability。 |
+| Promise&lt;DeviceCapability&gt; | Promise对象，返回设备的DeviceCapability。 |
 
 **示例：**
 
@@ -1411,6 +1434,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getdevicecapabilitysync"></a>
 ## getDeviceCapabilitySync
 
 ```TypeScript
@@ -1452,13 +1476,14 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getdoublepluralstringbynamesync"></a>
 ## getDoublePluralStringByNameSync
 
 ```TypeScript
 getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定资源名称对应的[单复数](../../../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源名称对应的[单复数](docroot://internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
 
 > **说明**  
 >  
@@ -1481,7 +1506,7 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | num | number | 是 | 数量值（浮点数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
 
 **返回值：**
 
@@ -1545,13 +1570,14 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getdoublepluralstringvaluesync"></a>
 ## getDoublePluralStringValueSync
 
 ```TypeScript
 getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定资源ID对应的[单复数](../../../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源ID对应的[单复数](docroot://internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
 
 > **说明**  
 >  
@@ -1574,7 +1600,7 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值（浮点数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
 
 **返回值：**
 
@@ -1638,13 +1664,14 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getdoublepluralstringvaluesync-1"></a>
 ## getDoublePluralStringValueSync
 
 ```TypeScript
 getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定resource对象对应的[单复数](../../../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定resource对象对应的[单复数](docroot://internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
 
 > **说明**  
 >  
@@ -1655,7 +1682,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 
 **废弃版本：** 20
 
-**替代接口：** getDoublePluralStringValueSync(resId:
+**替代接口：** [getDoublePluralStringValueSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getdoublepluralstringvaluesync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1671,7 +1698,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
 | num | number | 是 | 数量值（浮点数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
 
 **返回值：**
 
@@ -1736,6 +1763,7 @@ try {
 
 ```
 
+<a id="getdrawabledescriptor"></a>
 ## getDrawableDescriptor
 
 ```TypeScript
@@ -1812,6 +1840,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getdrawabledescriptor-1"></a>
 ## getDrawableDescriptor
 
 ```TypeScript
@@ -1831,7 +1860,7 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 
 **废弃版本：** 20
 
-**替代接口：** getDrawableDescriptor(resId:
+**替代接口：** [getDrawableDescriptor(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getdrawabledescriptor-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1899,6 +1928,7 @@ try {
 
 ```
 
+<a id="getdrawabledescriptorbyname"></a>
 ## getDrawableDescriptorByName
 
 ```TypeScript
@@ -1975,13 +2005,14 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getintpluralstringbynamesync"></a>
 ## getIntPluralStringByNameSync
 
 ```TypeScript
 getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定资源名称对应的[单复数](../../../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源名称对应的[单复数](docroot://internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
 
 > **说明**  
 >  
@@ -2004,7 +2035,7 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | num | number | 是 | 数量值（整数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
 
 **返回值：**
 
@@ -2068,13 +2099,14 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getintpluralstringvaluesync"></a>
 ## getIntPluralStringValueSync
 
 ```TypeScript
 getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | number>): string
 ```
 
-获取指定资源ID对应的[单复数](../../../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源ID对应的[单复数](docroot://internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
 
 > **说明**  
 >  
@@ -2097,7 +2129,7 @@ getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | n
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值（整数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
 
 **返回值：**
 
@@ -2161,13 +2193,14 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getintpluralstringvaluesync-1"></a>
 ## getIntPluralStringValueSync
 
 ```TypeScript
 getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定resource对象对应的[单复数](../../../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定resource对象对应的[单复数](docroot://internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
 
 > **说明**  
 >  
@@ -2178,7 +2211,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 
 **废弃版本：** 20
 
-**替代接口：** getIntPluralStringValueSync(resId:
+**替代接口：** [getIntPluralStringValueSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2194,7 +2227,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
 | num | number | 是 | 数量值（整数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
 
 **返回值：**
 
@@ -2259,6 +2292,7 @@ try {
 
 ```
 
+<a id="getlocales"></a>
 ## getLocales
 
 ```TypeScript
@@ -2285,7 +2319,7 @@ getLocales(includeSystem?: boolean): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 返回获取的语言列表，列表中的字符串由语言、脚本（可选）、地区（可选），按照顺序使用中划线“-”连接组成。 |
+| Array&lt;string&gt; | 返回获取的语言列表，列表中的字符串由语言、脚本（可选）、地区（可选），按照顺序使用中划线“-”连接组成。 |
 
 **错误码：**
 
@@ -2330,6 +2364,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmedia"></a>
 ## getMedia
 
 ```TypeScript
@@ -2342,7 +2377,7 @@ getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
 
 **废弃版本：** 9
 
-**替代接口：** getMediaContent(resId:
+**替代接口：** [getMediaContent(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)
 
 <!--Device-ResourceManager-getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void-End-->
 
@@ -2353,7 +2388,7 @@ getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Uint8Array> | 是 | 回调函数，返回资源ID值对应的媒体文件内容。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID值对应的媒体文件内容。 |
 
 **示例：**
 
@@ -2370,6 +2405,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getmedia-1"></a>
 ## getMedia
 
 ```TypeScript
@@ -2382,7 +2418,7 @@ getMedia(resId: number): Promise<Uint8Array>
 
 **废弃版本：** 9
 
-**替代接口：** getMediaContent(resId:
+**替代接口：** [getMediaContent(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)
 
 <!--Device-ResourceManager-getMedia(resId: number): Promise<Uint8Array>--><!--Device-ResourceManager-getMedia(resId: number): Promise<Uint8Array>-End-->
 
@@ -2398,7 +2434,7 @@ getMedia(resId: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回资源ID值对应的媒体文件内容。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
 
 **示例：**
 
@@ -2415,6 +2451,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getmediabase64"></a>
 ## getMediaBase64
 
 ```TypeScript
@@ -2427,7 +2464,7 @@ getMediaBase64(resId: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** getMediaContentBase64(resId:
+**替代接口：** [getMediaContentBase64(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64-1)
 
 <!--Device-ResourceManager-getMediaBase64(resId: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaBase64(resId: number, callback: AsyncCallback<string>): void-End-->
 
@@ -2438,7 +2475,7 @@ getMediaBase64(resId: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **示例：**
 
@@ -2455,6 +2492,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getmediabase64-1"></a>
 ## getMediaBase64
 
 ```TypeScript
@@ -2467,7 +2505,7 @@ getMediaBase64(resId: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** getMediaContentBase64(resId:
+**替代接口：** [getMediaContentBase64(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64-1)
 
 <!--Device-ResourceManager-getMediaBase64(resId: number): Promise<string>--><!--Device-ResourceManager-getMediaBase64(resId: number): Promise<string>-End-->
 
@@ -2483,7 +2521,7 @@ getMediaBase64(resId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
+| Promise&lt;string&gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
 
 **示例：**
 
@@ -2500,6 +2538,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getmediabase64byname"></a>
 ## getMediaBase64ByName
 
 ```TypeScript
@@ -2521,7 +2560,7 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2558,6 +2597,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediabase64byname-1"></a>
 ## getMediaBase64ByName
 
 ```TypeScript
@@ -2580,7 +2620,7 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback<
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2617,6 +2657,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediabase64byname-2"></a>
 ## getMediaBase64ByName
 
 ```TypeScript
@@ -2643,7 +2684,7 @@ getMediaBase64ByName(resName: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源名称对应的图片资源Base64编码。 |
+| Promise&lt;string&gt; | Promise对象，返回资源名称对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2678,6 +2719,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediabase64byname-3"></a>
 ## getMediaBase64ByName
 
 ```TypeScript
@@ -2705,7 +2747,7 @@ getMediaBase64ByName(resName: string, density: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源名称对应的图片资源Base64编码。 |
+| Promise&lt;string&gt; | Promise对象，返回资源名称对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2740,6 +2782,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediabase64bynamesync"></a>
 ## getMediaBase64ByNameSync
 
 ```TypeScript
@@ -2807,6 +2850,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediabyname"></a>
 ## getMediaByName
 
 ```TypeScript
@@ -2828,7 +2872,7 @@ getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback<Uint8Array> | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -2865,6 +2909,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediabyname-1"></a>
 ## getMediaByName
 
 ```TypeScript
@@ -2887,7 +2932,7 @@ getMediaByName(resName: string, density: number, callback: _AsyncCallback<Uint8A
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。 |
-| callback | _AsyncCallback<Uint8Array> | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -2924,6 +2969,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediabyname-2"></a>
 ## getMediaByName
 
 ```TypeScript
@@ -2950,7 +2996,7 @@ getMediaByName(resName: string): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回资源名称对应的媒体文件内容。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -2985,6 +3031,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediabyname-3"></a>
 ## getMediaByName
 
 ```TypeScript
@@ -3012,7 +3059,7 @@ getMediaByName(resName: string, density: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回资源名称对应的媒体文件内容。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3047,6 +3094,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediabynamesync"></a>
 ## getMediaByNameSync
 
 ```TypeScript
@@ -3074,7 +3122,7 @@ getMediaByNameSync(resName: string, density?: number): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 资源名称对应的媒体文件内容。 |
+| Uint8Array | 资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3114,6 +3162,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontent"></a>
 ## getMediaContent
 
 ```TypeScript
@@ -3126,7 +3175,7 @@ getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContent(resId:
+**替代接口：** [getMediaContent(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3141,7 +3190,7 @@ getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback<Uint8Array> | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3178,6 +3227,7 @@ try {
 
 ```
 
+<a id="getmediacontent-1"></a>
 ## getMediaContent
 
 ```TypeScript
@@ -3190,7 +3240,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContent(resId:
+**替代接口：** [getMediaContent(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3206,7 +3256,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。 |
-| callback | _AsyncCallback<Uint8Array> | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3243,6 +3293,7 @@ try {
 
 ```
 
+<a id="getmediacontent-2"></a>
 ## getMediaContent
 
 ```TypeScript
@@ -3255,7 +3306,7 @@ getMediaContent(resource: Resource): Promise<Uint8Array>
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContent(resId:
+**替代接口：** [getMediaContent(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3275,7 +3326,7 @@ getMediaContent(resource: Resource): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回resource对象对应的媒体文件内容。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3310,6 +3361,7 @@ try {
 
 ```
 
+<a id="getmediacontent-3"></a>
 ## getMediaContent
 
 ```TypeScript
@@ -3322,7 +3374,7 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContent(resId:
+**替代接口：** [getMediaContent(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3343,7 +3395,7 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回resource对象对应的媒体文件内容。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3378,6 +3430,7 @@ try {
 
 ```
 
+<a id="getmediacontent-4"></a>
 ## getMediaContent
 
 ```TypeScript
@@ -3399,7 +3452,7 @@ getMediaContent(resId: number, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback<Uint8Array> | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3437,6 +3490,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontent-5"></a>
 ## getMediaContent
 
 ```TypeScript
@@ -3459,7 +3513,7 @@ getMediaContent(resId: number, density: number, callback: _AsyncCallback<Uint8Ar
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。 |
-| callback | _AsyncCallback<Uint8Array> | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3496,6 +3550,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontent-6"></a>
 ## getMediaContent
 
 ```TypeScript
@@ -3522,7 +3577,7 @@ getMediaContent(resId: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回资源ID值对应的媒体文件内容。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3557,6 +3612,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontent-7"></a>
 ## getMediaContent
 
 ```TypeScript
@@ -3584,7 +3640,7 @@ getMediaContent(resId: number, density: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回资源ID值对应的媒体文件内容。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3619,6 +3675,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontentbase64"></a>
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3631,7 +3688,7 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): voi
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContentBase64(resId:
+**替代接口：** [getMediaContentBase64(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3646,7 +3703,7 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3683,6 +3740,7 @@ try {
 
 ```
 
+<a id="getmediacontentbase64-1"></a>
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3695,7 +3753,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContentBase64(resId:
+**替代接口：** [getMediaContentBase64(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3711,7 +3769,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3748,6 +3806,7 @@ try {
 
 ```
 
+<a id="getmediacontentbase64-2"></a>
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3760,7 +3819,7 @@ getMediaContentBase64(resource: Resource): Promise<string>
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContentBase64(resId:
+**替代接口：** [getMediaContentBase64(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3780,7 +3839,7 @@ getMediaContentBase64(resource: Resource): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回resource对象对应的图片资源Base64编码。 |
+| Promise&lt;string&gt; | Promise对象，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3815,6 +3874,7 @@ try {
 
 ```
 
+<a id="getmediacontentbase64-3"></a>
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3827,7 +3887,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContentBase64(resId:
+**替代接口：** [getMediaContentBase64(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3848,7 +3908,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回resource对象对应的图片资源Base64编码。 |
+| Promise&lt;string&gt; | Promise对象，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3883,6 +3943,7 @@ try {
 
 ```
 
+<a id="getmediacontentbase64-4"></a>
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3904,7 +3965,7 @@ getMediaContentBase64(resId: number, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3941,6 +4002,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontentbase64-5"></a>
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3963,7 +4025,7 @@ getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback<s
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -4000,6 +4062,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontentbase64-6"></a>
 ## getMediaContentBase64
 
 ```TypeScript
@@ -4026,7 +4089,7 @@ getMediaContentBase64(resId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
+| Promise&lt;string&gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -4061,6 +4124,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontentbase64-7"></a>
 ## getMediaContentBase64
 
 ```TypeScript
@@ -4088,7 +4152,7 @@ getMediaContentBase64(resId: number, density: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
+| Promise&lt;string&gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -4123,6 +4187,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontentbase64sync"></a>
 ## getMediaContentBase64Sync
 
 ```TypeScript
@@ -4190,6 +4255,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontentbase64sync-1"></a>
 ## getMediaContentBase64Sync
 
 ```TypeScript
@@ -4202,7 +4268,7 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContentBase64Sync(resId:
+**替代接口：** [getMediaContentBase64Sync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64sync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4262,6 +4328,7 @@ try {
 
 ```
 
+<a id="getmediacontentsync"></a>
 ## getMediaContentSync
 
 ```TypeScript
@@ -4289,7 +4356,7 @@ getMediaContentSync(resId: number, density?: number): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 资源ID对应的媒体文件内容。 |
+| Uint8Array | 资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -4329,6 +4396,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getmediacontentsync-1"></a>
 ## getMediaContentSync
 
 ```TypeScript
@@ -4341,7 +4409,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 **废弃版本：** 20
 
-**替代接口：** getMediaContentSync(resId:
+**替代接口：** [getMediaContentSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentsync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4362,7 +4430,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | resource对象对应的媒体文件内容。 |
+| Uint8Array | resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -4401,6 +4469,7 @@ try {
 
 ```
 
+<a id="getnumber"></a>
 ## getNumber
 
 ```TypeScript
@@ -4501,6 +4570,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getnumber-1"></a>
 ## getNumber
 
 ```TypeScript
@@ -4513,7 +4583,7 @@ getNumber(resource: Resource): number
 
 **废弃版本：** 20
 
-**替代接口：** getNumber(resId:
+**替代接口：** [getNumber(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getnumber-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4581,6 +4651,7 @@ try {
 
 ```
 
+<a id="getnumberbyname"></a>
 ## getNumberByName
 
 ```TypeScript
@@ -4681,6 +4752,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getoverrideconfiguration"></a>
 ## getOverrideConfiguration
 
 ```TypeScript
@@ -4727,6 +4799,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getoverrideresourcemanager"></a>
 ## getOverrideResourceManager
 
 ```TypeScript
@@ -4785,6 +4858,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getpluralstring"></a>
 ## getPluralString
 
 ```TypeScript
@@ -4802,7 +4876,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 
 **废弃版本：** 9
 
-**替代接口：** getPluralStringValue(resId:
+**替代接口：** [getPluralStringValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getpluralstringvalue-1)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void-End-->
 
@@ -4814,7 +4888,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **示例：**
 
@@ -4833,6 +4907,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getpluralstring-1"></a>
 ## getPluralString
 
 ```TypeScript
@@ -4850,7 +4925,7 @@ getPluralString(resId: number, num: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** getPluralStringValue(resId:
+**替代接口：** [getPluralStringValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getpluralstringvalue-1)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>--><!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>-End-->
 
@@ -4867,7 +4942,7 @@ getPluralString(resId: number, num: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **示例：**
 
@@ -4884,6 +4959,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getpluralstringbyname"></a>
 ## getPluralStringByName
 
 ```TypeScript
@@ -4901,7 +4977,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<str
 
 **废弃版本：** 18
 
-**替代接口：** getIntPluralStringByNameSync(resName:
+**替代接口：** [getIntPluralStringByNameSync(resName:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringbynamesync-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4915,7 +4991,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<str
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | num | number | 是 | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -4966,6 +5042,7 @@ this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessEr
 
 ```
 
+<a id="getpluralstringbyname-1"></a>
 ## getPluralStringByName
 
 ```TypeScript
@@ -4983,7 +5060,7 @@ getPluralStringByName(resName: string, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** getIntPluralStringByNameSync(resName:
+**替代接口：** [getIntPluralStringByNameSync(resName:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringbynamesync-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5002,7 +5079,7 @@ getPluralStringByName(resName: string, num: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 根据传入的数量值，获取资源名称对应的字符串资源。 |
+| Promise&lt;string&gt; | 根据传入的数量值，获取资源名称对应的字符串资源。 |
 
 **错误码：**
 
@@ -5053,6 +5130,7 @@ this.context.resourceManager.getPluralStringByName("test", 1)
 
 ```
 
+<a id="getpluralstringbynamesync"></a>
 ## getPluralStringByNameSync
 
 ```TypeScript
@@ -5070,7 +5148,7 @@ getPluralStringByNameSync(resName: string, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** getIntPluralStringByNameSync(resName:
+**替代接口：** [getIntPluralStringByNameSync(resName:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringbynamesync-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5141,6 +5219,7 @@ try {
 
 ```
 
+<a id="getpluralstringvalue"></a>
 ## getPluralStringValue
 
 ```TypeScript
@@ -5158,7 +5237,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 
 **废弃版本：** 18
 
-**替代接口：** getIntPluralStringValueSync(resId:
+**替代接口：** [getIntPluralStringValueSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5174,7 +5253,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
 | num | number | 是 | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -5232,6 +5311,7 @@ this.context.resourceManager.getPluralStringValue(resource, 1,
 
 ```
 
+<a id="getpluralstringvalue-1"></a>
 ## getPluralStringValue
 
 ```TypeScript
@@ -5249,7 +5329,7 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** getIntPluralStringValueSync(resId:
+**替代接口：** [getIntPluralStringValueSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5270,7 +5350,7 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回resource对象对应的指定数量的单复数字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回resource对象对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -5327,6 +5407,7 @@ this.context.resourceManager.getPluralStringValue(resource, 1)
 
 ```
 
+<a id="getpluralstringvalue-2"></a>
 ## getPluralStringValue
 
 ```TypeScript
@@ -5344,7 +5425,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 
 **废弃版本：** 18
 
-**替代接口：** getIntPluralStringValueSync(resId:
+**替代接口：** [getIntPluralStringValueSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5358,7 +5439,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -5410,6 +5491,7 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
 
 ```
 
+<a id="getpluralstringvalue-3"></a>
 ## getPluralStringValue
 
 ```TypeScript
@@ -5427,7 +5509,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** getIntPluralStringValueSync(resId:
+**替代接口：** [getIntPluralStringValueSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5446,7 +5528,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -5497,6 +5579,7 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
 
 ```
 
+<a id="getpluralstringvaluesync"></a>
 ## getPluralStringValueSync
 
 ```TypeScript
@@ -5514,7 +5597,7 @@ getPluralStringValueSync(resId: number, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** getIntPluralStringValueSync(resId:
+**替代接口：** [getIntPluralStringValueSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5585,6 +5668,7 @@ try {
 
 ```
 
+<a id="getpluralstringvaluesync-1"></a>
 ## getPluralStringValueSync
 
 ```TypeScript
@@ -5602,7 +5686,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** getIntPluralStringValueSync(resId:
+**替代接口：** [getIntPluralStringValueSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5681,6 +5765,7 @@ try {
 
 ```
 
+<a id="getrawfd"></a>
 ## getRawFd
 
 ```TypeScript
@@ -5708,7 +5793,7 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件路径。 |
-| callback | _AsyncCallback<RawFileDescriptor> | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
+| callback | _AsyncCallback&lt;RawFileDescriptor&gt; | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
 
 **错误码：**
 
@@ -5747,6 +5832,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getrawfd-1"></a>
 ## getRawFd
 
 ```TypeScript
@@ -5779,7 +5865,7 @@ getRawFd(path: string): Promise<RawFileDescriptor>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RawFileDescriptor> | Promise对象，返回rawfile文件所在HAP的文件描述符（fd）。 |
+| Promise&lt;RawFileDescriptor&gt; | Promise对象，返回rawfile文件所在HAP的文件描述符（fd）。 |
 
 **错误码：**
 
@@ -5816,6 +5902,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getrawfdsync"></a>
 ## getRawFdSync
 
 ```TypeScript
@@ -5878,6 +5965,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getrawfile"></a>
 ## getRawFile
 
 ```TypeScript
@@ -5890,7 +5978,7 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 
 **废弃版本：** 9
 
-**替代接口：** getRawFileContent(path:
+**替代接口：** [getRawFileContent(path:](arkts-localization-resourcemanager-resourcemanager-i.md#getrawfilecontent-1)
 
 <!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void-End-->
 
@@ -5901,7 +5989,7 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Uint8Array> | 是 | 回调函数，返回rawfile文件内容。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回rawfile文件内容。 |
 
 **示例：**
 
@@ -5920,6 +6008,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getrawfile-1"></a>
 ## getRawFile
 
 ```TypeScript
@@ -5932,7 +6021,7 @@ getRawFile(path: string): Promise<Uint8Array>
 
 **废弃版本：** 9
 
-**替代接口：** getRawFileContent(path:
+**替代接口：** [getRawFileContent(path:](arkts-localization-resourcemanager-resourcemanager-i.md#getrawfilecontent-1)
 
 <!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>-End-->
 
@@ -5948,7 +6037,7 @@ getRawFile(path: string): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回rawfile文件内容。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回rawfile文件内容。 |
 
 **示例：**
 
@@ -5965,6 +6054,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getrawfilecontent"></a>
 ## getRawFileContent
 
 ```TypeScript
@@ -5986,7 +6076,7 @@ getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件路径。 |
-| callback | _AsyncCallback<Uint8Array> | 是 | 回调函数，返回获取的rawfile文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回获取的rawfile文件内容。 |
 
 **错误码：**
 
@@ -6022,6 +6112,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getrawfilecontent-1"></a>
 ## getRawFileContent
 
 ```TypeScript
@@ -6048,7 +6139,7 @@ getRawFileContent(path: string): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回获取的rawfile文件内容。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回获取的rawfile文件内容。 |
 
 **错误码：**
 
@@ -6082,6 +6173,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getrawfilecontentsync"></a>
 ## getRawFileContentSync
 
 ```TypeScript
@@ -6108,7 +6200,7 @@ getRawFileContentSync(path: string): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 返回获取的rawfile文件内容。 |
+| Uint8Array | 返回获取的rawfile文件内容。 |
 
 **错误码：**
 
@@ -6138,6 +6230,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getrawfiledescriptor"></a>
 ## getRawFileDescriptor
 
 ```TypeScript
@@ -6150,7 +6243,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 
 **废弃版本：** 9
 
-**替代接口：** getRawFd(path:
+**替代接口：** [getRawFd(path:](arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd-1)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void-End-->
 
@@ -6161,7 +6254,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RawFileDescriptor> | 是 | 回调函数，返回rawfile文件的文件描述符（fd）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RawFileDescriptor&gt; | 是 | 回调函数，返回rawfile文件的文件描述符（fd）。 |
 
 **示例：**
 
@@ -6182,6 +6275,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getrawfiledescriptor-1"></a>
 ## getRawFileDescriptor
 
 ```TypeScript
@@ -6194,7 +6288,7 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 
 **废弃版本：** 9
 
-**替代接口：** getRawFd(path:
+**替代接口：** [getRawFd(path:](arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd-1)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>-End-->
 
@@ -6210,7 +6304,7 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RawFileDescriptor> | Promise对象，返回rawfile文件的文件描述符（fd）。 |
+| Promise&lt;RawFileDescriptor&gt; | Promise对象，返回rawfile文件的文件描述符（fd）。 |
 
 **示例：**
 
@@ -6229,6 +6323,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getrawfilelist"></a>
 ## getRawFileList
 
 ```TypeScript
@@ -6254,7 +6349,7 @@ getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件夹路径。 |
-| callback | _AsyncCallback<Array<string>> | 是 | 回调函数，返回rawfile文件目录下的文件夹及文件列表。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回rawfile文件目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -6286,6 +6381,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getrawfilelist-1"></a>
 ## getRawFileList
 
 ```TypeScript
@@ -6316,7 +6412,7 @@ getRawFileList(path: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise对象，返回rawfile文件目录下的文件夹及文件列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回rawfile文件目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -6348,6 +6444,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getrawfilelistsync"></a>
 ## getRawFileListSync
 
 ```TypeScript
@@ -6378,7 +6475,7 @@ getRawFileListSync(path: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | rawfile文件目录下的文件夹及文件列表。 |
+| Array&lt;string&gt; | rawfile文件目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -6411,6 +6508,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getresourcename"></a>
 ## getResourceName
 
 ```TypeScript
@@ -6483,6 +6581,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstring"></a>
 ## getString
 
 ```TypeScript
@@ -6495,7 +6594,7 @@ getString(resId: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** getStringValue(resId:
+**替代接口：** [getStringValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue-1)
 
 <!--Device-ResourceManager-getString(resId: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getString(resId: number, callback: AsyncCallback<string>): void-End-->
 
@@ -6506,7 +6605,7 @@ getString(resId: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数，返回资源ID值对应的字符串。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的字符串。 |
 
 **示例：**
 
@@ -6523,6 +6622,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getstring-1"></a>
 ## getString
 
 ```TypeScript
@@ -6535,7 +6635,7 @@ getString(resId: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** getStringValue(resId:
+**替代接口：** [getStringValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue-1)
 
 <!--Device-ResourceManager-getString(resId: number): Promise<string>--><!--Device-ResourceManager-getString(resId: number): Promise<string>-End-->
 
@@ -6551,7 +6651,7 @@ getString(resId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源ID值对应的字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回资源ID值对应的字符串。 |
 
 **示例：**
 
@@ -6568,6 +6668,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getstringarray"></a>
 ## getStringArray
 
 ```TypeScript
@@ -6580,7 +6681,7 @@ getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void
 
 **废弃版本：** 9
 
-**替代接口：** getStringArrayValue(resId:
+**替代接口：** [getStringArrayValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvalue-1)
 
 <!--Device-ResourceManager-getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -6591,7 +6692,7 @@ getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<string>> | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
 **示例：**
 
@@ -6608,6 +6709,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getstringarray-1"></a>
 ## getStringArray
 
 ```TypeScript
@@ -6620,7 +6722,7 @@ getStringArray(resId: number): Promise<Array<string>>
 
 **废弃版本：** 9
 
-**替代接口：** getStringArrayValue(resId:
+**替代接口：** [getStringArrayValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvalue-1)
 
 <!--Device-ResourceManager-getStringArray(resId: number): Promise<Array<string>>--><!--Device-ResourceManager-getStringArray(resId: number): Promise<Array<string>>-End-->
 
@@ -6636,7 +6738,7 @@ getStringArray(resId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise对象，返回资源ID值对应的字符串数组。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回资源ID值对应的字符串数组。 |
 
 **示例：**
 
@@ -6653,6 +6755,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ```
 
+<a id="getstringarraybyname"></a>
 ## getStringArrayByName
 
 ```TypeScript
@@ -6674,7 +6777,7 @@ getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback<Array<string>> | 是 | 回调函数，返回资源名称对应的字符串数组。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源名称对应的字符串数组。 |
 
 **错误码：**
 
@@ -6725,6 +6828,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringarraybyname-1"></a>
 ## getStringArrayByName
 
 ```TypeScript
@@ -6751,7 +6855,7 @@ getStringArrayByName(resName: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise对象，返回资源名称对应的字符串数组。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回资源名称对应的字符串数组。 |
 
 **错误码：**
 
@@ -6801,6 +6905,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringarraybynamesync"></a>
 ## getStringArrayByNameSync
 
 ```TypeScript
@@ -6827,7 +6932,7 @@ getStringArrayByNameSync(resName: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 对应资源名称的字符串数组。 |
+| Array&lt;string&gt; | 对应资源名称的字符串数组。 |
 
 **错误码：**
 
@@ -6878,6 +6983,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringarrayvalue"></a>
 ## getStringArrayValue
 
 ```TypeScript
@@ -6890,7 +6996,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>)
 
 **废弃版本：** 20
 
-**替代接口：** getStringArrayValue(resId:
+**替代接口：** [getStringArrayValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvalue-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6905,7 +7011,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback<Array<string>> | 是 | 回调函数，返回resource对象对应的字符串数组。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回resource对象对应的字符串数组。 |
 
 **错误码：**
 
@@ -6955,6 +7061,7 @@ this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError
 
 ```
 
+<a id="getstringarrayvalue-1"></a>
 ## getStringArrayValue
 
 ```TypeScript
@@ -6967,7 +7074,7 @@ getStringArrayValue(resource: Resource): Promise<Array<string>>
 
 **废弃版本：** 20
 
-**替代接口：** getStringArrayValue(resId:
+**替代接口：** [getStringArrayValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvalue-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6987,7 +7094,7 @@ getStringArrayValue(resource: Resource): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise对象，返回resource对象对应的字符串数组。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回resource对象对应的字符串数组。 |
 
 **错误码：**
 
@@ -7037,6 +7144,7 @@ this.context.resourceManager.getStringArrayValue(resource)
 
 ```
 
+<a id="getstringarrayvalue-2"></a>
 ## getStringArrayValue
 
 ```TypeScript
@@ -7058,7 +7166,7 @@ getStringArrayValue(resId: number, callback: _AsyncCallback<Array<string>>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback<Array<string>> | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
 **错误码：**
 
@@ -7109,6 +7217,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringarrayvalue-3"></a>
 ## getStringArrayValue
 
 ```TypeScript
@@ -7135,7 +7244,7 @@ getStringArrayValue(resId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise对象，返回资源ID值对应的字符串数组。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回资源ID值对应的字符串数组。 |
 
 **错误码：**
 
@@ -7185,6 +7294,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringarrayvaluesync"></a>
 ## getStringArrayValueSync
 
 ```TypeScript
@@ -7211,7 +7321,7 @@ getStringArrayValueSync(resId: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 资源ID值对应的字符串数组。 |
+| Array&lt;string&gt; | 资源ID值对应的字符串数组。 |
 
 **错误码：**
 
@@ -7262,6 +7372,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringarrayvaluesync-1"></a>
 ## getStringArrayValueSync
 
 ```TypeScript
@@ -7274,7 +7385,7 @@ getStringArrayValueSync(resource: Resource): Array<string>
 
 **废弃版本：** 20
 
-**替代接口：** getStringArrayValueSync(resId:
+**替代接口：** [getStringArrayValueSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvaluesync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7294,7 +7405,7 @@ getStringArrayValueSync(resource: Resource): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | resource对象对应的字符串数组。 |
+| Array&lt;string&gt; | resource对象对应的字符串数组。 |
 
 **错误码：**
 
@@ -7345,6 +7456,7 @@ try {
 
 ```
 
+<a id="getstringbyname"></a>
 ## getStringByName
 
 ```TypeScript
@@ -7366,7 +7478,7 @@ getStringByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback<string> | 是 | 返回获取的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 返回获取的字符串。 |
 
 **错误码：**
 
@@ -7412,6 +7524,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringbyname-1"></a>
 ## getStringByName
 
 ```TypeScript
@@ -7438,7 +7551,7 @@ getStringByName(resName: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源名称对应的字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回资源名称对应的字符串。 |
 
 **错误码：**
 
@@ -7482,6 +7595,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringbynamesync"></a>
 ## getStringByNameSync
 
 ```TypeScript
@@ -7555,6 +7669,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringbynamesync-1"></a>
 ## getStringByNameSync
 
 ```TypeScript
@@ -7576,7 +7691,7 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
 
 **返回值：**
 
@@ -7630,6 +7745,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringsync"></a>
 ## getStringSync
 
 ```TypeScript
@@ -7703,6 +7819,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringsync-1"></a>
 ## getStringSync
 
 ```TypeScript
@@ -7724,7 +7841,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
 
 **返回值：**
 
@@ -7778,6 +7895,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getstringsync-2"></a>
 ## getStringSync
 
 ```TypeScript
@@ -7790,7 +7908,7 @@ getStringSync(resource: Resource): string
 
 **废弃版本：** 20
 
-**替代接口：** getStringSync(resId:
+**替代接口：** [getStringSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringsync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7857,6 +7975,7 @@ try {
 
 ```
 
+<a id="getstringsync-3"></a>
 ## getStringSync
 
 ```TypeScript
@@ -7869,7 +7988,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 **废弃版本：** 20
 
-**替代接口：** getStringSync(resId:
+**替代接口：** [getStringSync(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringsync-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7884,7 +8003,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
 
 **返回值：**
 
@@ -7938,6 +8057,7 @@ try {
 
 ```
 
+<a id="getstringvalue"></a>
 ## getStringValue
 
 ```TypeScript
@@ -7950,7 +8070,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
 
 **废弃版本：** 20
 
-**替代接口：** getStringValue(resId:
+**替代接口：** [getStringValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7965,7 +8085,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resource-resource-i.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回resource对象对应的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的字符串。 |
 
 **错误码：**
 
@@ -8011,6 +8131,7 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 
 ```
 
+<a id="getstringvalue-1"></a>
 ## getStringValue
 
 ```TypeScript
@@ -8023,7 +8144,7 @@ getStringValue(resource: Resource): Promise<string>
 
 **废弃版本：** 20
 
-**替代接口：** getStringValue(resId:
+**替代接口：** [getStringValue(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8043,7 +8164,7 @@ getStringValue(resource: Resource): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回resource对象对应的字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回resource对象对应的字符串。 |
 
 **错误码：**
 
@@ -8076,6 +8197,7 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 
 ```
 
+<a id="getstringvalue-2"></a>
 ## getStringValue
 
 ```TypeScript
@@ -8097,7 +8219,7 @@ getStringValue(resId: number, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback<string> | 是 | 回调函数，返回获取的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
 
 **错误码：**
 
@@ -8108,6 +8230,7 @@ getStringValue(resId: number, callback: _AsyncCallback<string>): void
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
+<a id="getstringvalue-3"></a>
 ## getStringValue
 
 ```TypeScript
@@ -8134,7 +8257,7 @@ getStringValue(resId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回资源ID值对应的字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回资源ID值对应的字符串。 |
 
 **错误码：**
 
@@ -8178,6 +8301,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getsymbol"></a>
 ## getSymbol
 
 ```TypeScript
@@ -8238,6 +8362,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="getsymbol-1"></a>
 ## getSymbol
 
 ```TypeScript
@@ -8250,7 +8375,7 @@ getSymbol(resource: Resource) : number
 
 **废弃版本：** 20
 
-**替代接口：** getSymbol(resId:
+**替代接口：** [getSymbol(resId:](arkts-localization-resourcemanager-resourcemanager-i.md#getsymbol-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8304,6 +8429,7 @@ try {
 
 ```
 
+<a id="getsymbolbyname"></a>
 ## getSymbolByName
 
 ```TypeScript
@@ -8364,6 +8490,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="israwdir"></a>
 ## isRawDir
 
 ```TypeScript
@@ -8390,7 +8517,7 @@ isRawDir(path: string): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否为rawfile下的目录。  - true：表示是rawfile下的目录。  - false：表示非rawfile下的目录。 |
+| boolean | 是否为rawfile下的目录。   - true：表示是rawfile下的目录。   - false：表示非rawfile下的目录。 |
 
 **错误码：**
 
@@ -8429,6 +8556,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -8458,6 +8586,7 @@ try {
 
 ```
 
+<a id="removeresource"></a>
 ## removeResource
 
 ```TypeScript
@@ -8513,6 +8642,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="updateoverrideconfiguration"></a>
 ## updateOverrideConfiguration
 
 ```TypeScript

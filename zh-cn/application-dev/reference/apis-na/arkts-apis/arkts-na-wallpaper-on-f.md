@@ -1,5 +1,6 @@
 # on
 
+<a id="on"></a>
 ## on('colorChange')
 
 ```TypeScript
@@ -21,7 +22,7 @@ function on(type: 'colorChange', callback: (colors: Array<RgbaColor>, wallpaperT
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'colorChange' | 是 |  |
-| callback | (colors: Array<RgbaColor>, wallpaperType: WallpaperType) => void | 是 |  |
+| callback | (colors: Array&lt;RgbaColor&gt;, wallpaperType: WallpaperType) =&gt; void | 是 |  |
 
 **示例：**
 

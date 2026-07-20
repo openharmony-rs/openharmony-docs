@@ -40,7 +40,7 @@ SideBarContainer(type?: SideBarContainerType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | SideBarContainerType | 否 | 设置侧边栏的显示类型。<br/>默认值：SideBarContainerType.Embed |
+| type | [SideBarContainerType](arkts-arkui-sidebarcontainertype-e.md) | 否 | 设置侧边栏的显示类型。<br/>默认值：SideBarContainerType.Embed  |
 
 ## 汇总
 

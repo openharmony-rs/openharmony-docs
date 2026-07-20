@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryrecommenddriversbyid"></a>
 ## queryRecommendDriversById
 
 ```TypeScript
@@ -36,7 +37,7 @@ function queryRecommendDriversById(printerId: string): Promise<PpdInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PpdInfo[]> | - Promise that resolves with all ppd info of the printer. |
+| Promise&lt;PpdInfo[]&gt; | - Promise that resolves with all ppd info of the printer. |
 
 **错误码：**
 

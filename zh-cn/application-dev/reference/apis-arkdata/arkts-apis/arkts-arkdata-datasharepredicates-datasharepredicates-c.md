@@ -16,6 +16,7 @@
 import { dataSharePredicates } from '@kit.ArkData';
 ```
 
+<a id="and"></a>
 ## and
 
 ```TypeScript
@@ -52,6 +53,7 @@ predicates.equalTo("NAME", "lisi")
 
 ```
 
+<a id="equalto"></a>
 ## equalTo
 
 ```TypeScript
@@ -93,6 +95,7 @@ predicates.equalTo("NAME", "Rose");
 
 ```
 
+<a id="in"></a>
 ## in
 
 ```TypeScript
@@ -118,7 +121,7 @@ in(field: string, value: Array<ValueType>): DataSharePredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 数据库表中的列名。field为undefined或者null时，此次调用接口配置的谓词无效。 |
-| value | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ValueType> | 是 | 以ValueType型数组形式指定的要匹配的值。 |
+| value | Array&lt;ValueType&gt; | 是 | 以ValueType型数组形式指定的要匹配的值。 |
 
 **返回值：**
 
@@ -134,6 +137,7 @@ predicates.in("AGE", [18, 20]);
 
 ```
 
+<a id="limit"></a>
 ## limit
 
 ```TypeScript
@@ -175,6 +179,7 @@ predicates.equalTo("NAME", "Rose").limit(10, 3);
 
 ```
 
+<a id="orderbyasc"></a>
 ## orderByAsc
 
 ```TypeScript
@@ -215,6 +220,7 @@ predicates.orderByAsc("AGE");
 
 ```
 
+<a id="orderbydesc"></a>
 ## orderByDesc
 
 ```TypeScript

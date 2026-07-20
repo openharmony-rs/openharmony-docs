@@ -74,7 +74,7 @@ crls?: Array<X509CRL>
 
 CRL列表。最大个数：100。
 
-**类型：** Array<X509CRL>
+**类型：** Array&lt;X509CRL&gt;
 
 **起始版本：** 26.0.0
 
@@ -116,7 +116,7 @@ ocspResponses?: Array<Uint8Array>
 
 OCSP响应数据。预置的OCSP响应数据。最大个数：100。
 
-**类型：** Array<Uint8Array>
+**类型：** Array&lt;Uint8Array&gt;
 
 **起始版本：** 26.0.0
 
@@ -136,7 +136,7 @@ revocationFlags: Array<CertRevocationFlag>
 
 吊销检查标志。数组长度范围：[1, 4]。数组必须包含CERT_REVOCATION_CRL_CHECK或CERT_REVOCATION_OCSP_CHECK。
 
-**类型：** Array<CertRevocationFlag>
+**类型：** Array&lt;CertRevocationFlag&gt;
 
 **起始版本：** 26.0.0
 

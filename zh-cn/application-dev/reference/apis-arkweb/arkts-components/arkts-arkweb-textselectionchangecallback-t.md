@@ -16,5 +16,5 @@ type TextSelectionChangeCallback = (selectionText: string) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectionText | string | 是 | 所选文本。 |
+| selectionText | string | 是 | 所选文本。  |
 

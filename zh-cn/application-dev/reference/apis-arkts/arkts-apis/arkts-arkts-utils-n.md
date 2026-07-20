@@ -25,7 +25,7 @@ import { ArkTSUtils } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [isSendable](arkts-arkts-utils-issendable-f.md#issendable-1) | 检查ArkTS值是否为Sendable。 |
+| [isSendable](arkts-arkts-utils-issendable-f.md#issendable) | 检查ArkTS值是否为Sendable。 |
 
 ### 类
 

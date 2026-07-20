@@ -6,6 +6,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="createaudioloopback"></a>
 ## createAudioLoopback
 
 ```TypeScript
@@ -32,7 +33,7 @@ function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AudioLoopback> | Promise对象，成功将返回音频返听器对象，异常将返回error对象。 |
+| Promise&lt;AudioLoopback&gt; | Promise对象，成功将返回音频返听器对象，异常将返回error对象。 |
 
 **错误码：**
 

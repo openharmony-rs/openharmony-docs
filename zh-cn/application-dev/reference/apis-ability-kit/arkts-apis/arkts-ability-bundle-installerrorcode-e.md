@@ -2,7 +2,7 @@
 
 > **说明：**  
 >  
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[包管理子系统通用错误码](../../../../reference/apis-ability-kit/errorcode-bundle.md)  
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[包管理子系统通用错误码](docroot://reference/apis-ability-kit/errorcode-bundle.md)  
 > 替代。
 
 **起始版本：** 7

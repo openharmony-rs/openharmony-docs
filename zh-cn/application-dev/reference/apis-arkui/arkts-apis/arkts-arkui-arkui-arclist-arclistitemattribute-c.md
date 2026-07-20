@@ -16,6 +16,7 @@
 import { ArcListItemAttribute, ArcList, ArcListItem, ArcListAttribute } from '@kit.ArkUI';
 ```
 
+<a id="autoscale"></a>
 ## autoScale
 
 ```TypeScript
@@ -36,7 +37,7 @@ autoScale(enable: Optional<boolean>): ArcListItemAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)<boolean> | 是 | ArcListItem是否支持自动缩放显示，true表示支持自动缩放显示，false表示不支持自动缩放显示。<br/>默认值：true，支持自动缩放显示。 |
+| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | ArcListItem是否支持自动缩放显示，true表示支持自动缩放显示，false表示不支持自动缩放显示。<br/>默认值：true，支持自动缩放显示。 |
 
 **返回值：**
 
@@ -44,6 +45,7 @@ autoScale(enable: Optional<boolean>): ArcListItemAttribute
 | --- | --- |
 | [ArcListItemAttribute](arkts-arkui-arkui-arclist-arclistitemattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
+<a id="swipeaction"></a>
 ## swipeAction
 
 ```TypeScript
@@ -64,7 +66,7 @@ swipeAction(options: Optional<SwipeActionOptions>): ArcListItemAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Optional](../arkts-components/arkts-arkui-optional-t.md)<SwipeActionOptions> | 是 | ArcListItem的划出组件。 |
+| options | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;SwipeActionOptions&gt; | 是 | ArcListItem的划出组件。 |
 
 **返回值：**
 

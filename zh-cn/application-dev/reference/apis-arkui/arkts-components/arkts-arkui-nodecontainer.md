@@ -39,7 +39,7 @@ NodeContainer(controller: import('../api/@ohos.arkui.node').NodeController)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | import('../api/@ohos.arkui.node').NodeController | 是 | NodeController用于控制NodeContainer中的节点的上树和下树，反映NodeContainer容器的生命周期。 |
+| controller | import('../api/@ohos.arkui.node').NodeController | 是 | NodeController用于控制NodeContainer中的节点的上树和下树， 反映NodeContainer容器的生命周期。  |
 
 ## 汇总
 

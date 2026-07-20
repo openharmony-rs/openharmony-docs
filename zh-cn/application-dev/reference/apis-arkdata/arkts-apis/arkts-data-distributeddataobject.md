@@ -20,9 +20,9 @@ import { distributedDataObject } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-arkdata-distributeddataobject-create-f.md#create-1) | 创建一个分布式数据对象。对象属性支持基本类型（数字类型、布尔类型和字符串类型）以及复杂类型（数组、基本类型嵌套）。 |
-| [createDistributedObject](arkts-arkdata-distributeddataobject-createdistributedobject-f.md#createdistributedobject-1) | 创建一个分布式数据对象。 |
-| [genSessionId](arkts-arkdata-distributeddataobject-gensessionid-f.md#gensessionid-1) | 随机创建一个sessionId。 |
+| [create](arkts-arkdata-distributeddataobject-create-f.md#create) | 创建一个分布式数据对象。对象属性支持基本类型（数字类型、布尔类型和字符串类型）以及复杂类型（数组、基本类型嵌套）。 |
+| [createDistributedObject](arkts-arkdata-distributeddataobject-createdistributedobject-f.md#createdistributedobject) | 创建一个分布式数据对象。 |
+| [genSessionId](arkts-arkdata-distributeddataobject-gensessionid-f.md#gensessionid) | 随机创建一个sessionId。 |
 
 ### 接口
 

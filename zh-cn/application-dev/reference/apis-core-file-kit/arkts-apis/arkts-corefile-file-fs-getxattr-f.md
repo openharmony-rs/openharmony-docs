@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="getxattr"></a>
 ## getxattr
 
 ```TypeScript
@@ -31,7 +32,7 @@ declare function getxattr(path: string, key: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回扩展属性的value。 |
+| Promise&lt;string&gt; | Promise对象。返回扩展属性的value。 |
 
 **错误码：**
 

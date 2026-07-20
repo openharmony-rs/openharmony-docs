@@ -21,7 +21,7 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionType | ActionType | 是 | 操作类型 |
-| customType | CustomType | 是 | 自定义信息类型 |
-| customElement | CustomElement | 是 | 自定义数据 |
+| actionType | [ActionType](arkts-avsession-avmusictemplate-actiontype-t.md) | 是 | 操作类型  |
+| customType | [CustomType](arkts-avsession-avmusictemplate-customtype-t.md) | 是 | 自定义信息类型  |
+| customElement | [CustomElement](arkts-avsession-avmusictemplate-customelement-i.md) | 是 | 自定义数据  |
 

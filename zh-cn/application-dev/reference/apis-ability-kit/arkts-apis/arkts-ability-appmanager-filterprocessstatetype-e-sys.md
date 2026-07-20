@@ -16,7 +16,7 @@
 CREATE = 1 << 0
 ```
 
-进程刚创建完成，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为0的状态。
+进程刚创建完成，对应[ProcessData](docroot://reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为0的状态。
 
 **起始版本：** 21
 
@@ -32,7 +32,7 @@ CREATE = 1 << 0
 FOREGROUND = 1 << 1
 ```
 
-进程处于前台，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为2的状态。
+进程处于前台，对应[ProcessData](docroot://reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为2的状态。
 
 **起始版本：** 21
 
@@ -48,7 +48,7 @@ FOREGROUND = 1 << 1
 BACKGROUND = 1 << 2
 ```
 
-进程处于后台，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为4的状态。
+进程处于后台，对应[ProcessData](docroot://reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为4的状态。
 
 **起始版本：** 21
 
@@ -64,7 +64,7 @@ BACKGROUND = 1 << 2
 DESTROY = 1 << 3
 ```
 
-进程已终止，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为5的状态。
+进程已终止，对应[ProcessData](docroot://reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为5的状态。
 
 **起始版本：** 21
 

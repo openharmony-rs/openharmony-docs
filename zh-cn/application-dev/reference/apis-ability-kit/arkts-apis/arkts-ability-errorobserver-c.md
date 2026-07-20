@@ -1,6 +1,6 @@
 # ErrorObserver
 
-定义异常监听，可以作为[errorManager.on('error')](arkts-ability-errormanager-on-f.md#on-1)的入参监听当前应用发生的异常。
+定义异常监听，可以作为[errorManager.on('error')](./../@ohos.app.ability.errorManager:errorManager.on(type: 'error', observer: ErrorObserver))的入参监听当前应用发生的异常。
 
 **起始版本：** 9
 
@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+<a id="onexception"></a>
 ## onException
 
 ```TypeScript
@@ -30,6 +31,7 @@ onException?(errObject: Error): void
 | --- | --- | --- | --- |
 | errObject | Error | 是 | 有关异常事件名字、消息和错误堆栈信息的对象。 |
 
+<a id="onunhandledexception"></a>
 ## onUnhandledException
 
 ```TypeScript

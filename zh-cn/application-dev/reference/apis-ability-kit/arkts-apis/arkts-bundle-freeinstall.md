@@ -27,14 +27,14 @@ import { freeInstall } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo-1) | 基于bundleName和bundlePackFlag来获取bundlePackInfo。使用callback异步回调。 |
-| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo-2) | 基于bundleName和BundlePackFlag来获取bundlePackInfo。使用Promise异步回调。 |
-| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo-1) | 获取有关dispatch版本的信息。使用callback异步回调。 |
-| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo-2) | 获取有关dispatch版本的信息。使用Promise异步回调。 |
-| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable-1) | 查询指定模块是否可以被移除。使用callback异步回调。 |
-| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable-2) | 查询指定模块是否可以被移除。使用Promise异步回调。 |
-| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag-1) | 设置指定模块是否升级。使用callback异步回调。 |
-| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag-2) | 设置指定模块是否升级。使用Promise异步回调。 |
+| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo) | 基于bundleName和bundlePackFlag来获取bundlePackInfo。使用callback异步回调。 |
+| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo-1) | 基于bundleName和BundlePackFlag来获取bundlePackInfo。使用Promise异步回调。 |
+| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo) | 获取有关dispatch版本的信息。使用callback异步回调。 |
+| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo-1) | 获取有关dispatch版本的信息。使用Promise异步回调。 |
+| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable) | 查询指定模块是否可以被移除。使用callback异步回调。 |
+| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable-1) | 查询指定模块是否可以被移除。使用Promise异步回调。 |
+| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag) | 设置指定模块是否升级。使用callback异步回调。 |
+| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag-1) | 设置指定模块是否升级。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

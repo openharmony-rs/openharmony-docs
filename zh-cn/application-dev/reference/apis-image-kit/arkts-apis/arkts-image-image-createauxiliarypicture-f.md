@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createauxiliarypicture"></a>
 ## createAuxiliaryPicture
 
 ```TypeScript
@@ -26,7 +27,7 @@ function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: Auxiliary
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 以buffer形式存放的图像数据。 |
+| buffer | ArrayBuffer | 是 | 以buffer形式存放的图像数据。 |
 | size | [Size](../../apis-arkui/arkts-apis/arkts-arkui-window-size-i.md) | 是 | 辅助图的尺寸。单位：像素（px）。 |
 | type | [AuxiliaryPictureType](arkts-image-image-auxiliarypicturetype-e.md) | 是 | 辅助图类型。 |
 

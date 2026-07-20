@@ -92,7 +92,7 @@ userId: "12345"
 
 }
 
-**类型：** Map<string, string>
+**类型：** Map&lt;string, string&gt;
 
 **起始版本：** 11
 

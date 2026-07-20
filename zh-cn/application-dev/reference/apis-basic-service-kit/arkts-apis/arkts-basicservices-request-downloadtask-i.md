@@ -1,6 +1,6 @@
 # DownloadTask
 
-下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-2)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)获取。
+下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)获取。
 
 **起始版本：** 6
 
@@ -14,6 +14,7 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -38,7 +39,7 @@ delete(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
 
 **错误码：**
 
@@ -74,6 +75,7 @@ try {
 
 ```
 
+<a id="delete-1"></a>
 ## delete
 
 ```TypeScript
@@ -98,7 +100,7 @@ delete(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
 
 **错误码：**
 
@@ -131,6 +133,7 @@ try {
 
 ```
 
+<a id="gettaskinfo"></a>
 ## getTaskInfo
 
 ```TypeScript
@@ -155,7 +158,7 @@ getTaskInfo(callback: AsyncCallback<DownloadInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<DownloadInfo> | 是 | 回调函数。当查询下载任务操作成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;DownloadInfo&gt; | 是 | 回调函数。当查询下载任务操作成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -191,6 +194,7 @@ try {
 
 ```
 
+<a id="gettaskinfo-1"></a>
 ## getTaskInfo
 
 ```TypeScript
@@ -215,7 +219,7 @@ getTaskInfo(): Promise<DownloadInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DownloadInfo> | Promise对象，返回DownloadInfo对象。 |
+| Promise&lt;DownloadInfo&gt; | Promise对象，返回DownloadInfo对象。 |
 
 **错误码：**
 
@@ -249,6 +253,7 @@ try {
 
 ```
 
+<a id="gettaskmimetype"></a>
 ## getTaskMimeType
 
 ```TypeScript
@@ -273,7 +278,7 @@ getTaskMimeType(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当查询下载任务MimeType成功，err为undefined，data为获取到的下载任务的MimeType的对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当查询下载任务MimeType成功，err为undefined，data为获取到的下载任务的MimeType的对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -309,6 +314,7 @@ try {
 
 ```
 
+<a id="gettaskmimetype-1"></a>
 ## getTaskMimeType
 
 ```TypeScript
@@ -333,7 +339,7 @@ getTaskMimeType(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回下载任务的MimeType。 |
+| Promise&lt;string&gt; | Promise对象。返回下载任务的MimeType。 |
 
 **错误码：**
 
@@ -367,6 +373,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off('progress')
 
 ```TypeScript
@@ -386,7 +393,7 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) => vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'progress' | 是 | 取消订阅的事件类型。<br>- 取值为'progress'，表示下载的进度信息。 |
-| callback | (receivedSize: number, totalSize: number) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | (receivedSize: number, totalSize: number) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -427,6 +434,7 @@ try {
 
 ```
 
+<a id="off-1"></a>
 ## off('complete' | 'pause' | 'remove')
 
 ```TypeScript
@@ -446,7 +454,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。<br/>- 取值为'complete'，表示下载任务完成。<br/>- 取值为'pause'，表示下载任务暂停。<br/>- 取值为'remove'，表示下载任务移除。 |
-| callback | () => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -513,6 +521,7 @@ try {
 
 ```
 
+<a id="off-2"></a>
 ## off('complete' | 'pause' | 'remove')
 
 ```TypeScript
@@ -532,7 +541,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。<br/>- 取值为'complete'，表示下载任务完成。<br/>- 取值为'pause'，表示下载任务暂停。<br/>- 取值为'remove'，表示下载任务移除。 |
-| callback | () => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -599,6 +608,7 @@ try {
 
 ```
 
+<a id="off-3"></a>
 ## off('complete' | 'pause' | 'remove')
 
 ```TypeScript
@@ -618,7 +628,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。<br/>- 取值为'complete'，表示下载任务完成。<br/>- 取值为'pause'，表示下载任务暂停。<br/>- 取值为'remove'，表示下载任务移除。 |
-| callback | () => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -685,6 +695,7 @@ try {
 
 ```
 
+<a id="off-4"></a>
 ## off('fail')
 
 ```TypeScript
@@ -704,7 +715,7 @@ off(type: 'fail', callback?: (err: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fail' | 是 | 取消订阅的事件类型。<br>- 取值为'fail'，表示下载失败。 |
-| callback | (err: number) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | (err: number) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -745,6 +756,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('progress')
 
 ```TypeScript
@@ -768,7 +780,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'progress' | 是 | 订阅的事件类型。<br>- 取值为'progress'，表示下载的进度信息，当任务进度有进展时触发该事件。 |
-| callback | (receivedSize: number, totalSize: number) => void | 是 | 下载任务进度的回调函数，返回已上传文件大小和上传文件大小总和，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
+| callback | (receivedSize: number, totalSize: number) =&gt; void | 是 | 下载任务进度的回调函数，返回已上传文件大小和上传文件大小总和，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
 
 **错误码：**
 
@@ -801,6 +813,7 @@ try {
 
 ```
 
+<a id="on-1"></a>
 ## on('complete' | 'pause' | 'remove')
 
 ```TypeScript
@@ -820,7 +833,7 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。<br>- 取值为'complete'，表示下载任务完成，任务完成时触发该事件。<br/>- 取值为'pause'，表示下载任务暂停，任务暂停时触发该事件。<br/>- 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
-| callback | () => void | 是 | 下载任务相关的回调函数。 |
+| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
 
 **错误码：**
 
@@ -863,6 +876,7 @@ try {
 
 ```
 
+<a id="on-2"></a>
 ## on('complete' | 'pause' | 'remove')
 
 ```TypeScript
@@ -882,7 +896,7 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。<br>- 取值为'complete'，表示下载任务完成，任务完成时触发该事件。<br/>- 取值为'pause'，表示下载任务暂停，任务暂停时触发该事件。<br/>- 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
-| callback | () => void | 是 | 下载任务相关的回调函数。 |
+| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
 
 **错误码：**
 
@@ -925,6 +939,7 @@ try {
 
 ```
 
+<a id="on-3"></a>
 ## on('complete' | 'pause' | 'remove')
 
 ```TypeScript
@@ -944,7 +959,7 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。<br>- 取值为'complete'，表示下载任务完成，任务完成时触发该事件。<br/>- 取值为'pause'，表示下载任务暂停，任务暂停时触发该事件。<br/>- 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
-| callback | () => void | 是 | 下载任务相关的回调函数。 |
+| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
 
 **错误码：**
 
@@ -987,6 +1002,7 @@ try {
 
 ```
 
+<a id="on-4"></a>
 ## on('fail')
 
 ```TypeScript
@@ -1006,7 +1022,7 @@ on(type: 'fail', callback: (err: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fail' | 是 | 订阅的事件类型。<br>- 取值为'fail'，表示下载失败，任务失败时触发该事件。 |
-| callback | (err: number) => void | 是 | 下载失败的回调函数。错误原因见[下载任务的错误码](../../../../reference/apis-basic-services-kit/js-apis-request.md#constants)。 |
+| callback | (err: number) =&gt; void | 是 | 下载失败的回调函数。错误原因见[下载任务的错误码](docroot://reference/apis-basic-services-kit/js-apis-request.md#constants)。 |
 
 **错误码：**
 
@@ -1039,6 +1055,7 @@ try {
 
 ```
 
+<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -1056,7 +1073,7 @@ pause(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** suspend(callback:
+**替代接口：** [suspend(callback:](arkts-basicservices-request-downloadtask-i.md#suspend-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1068,7 +1085,7 @@ pause(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当暂停下载任务成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当暂停下载任务成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1089,6 +1106,7 @@ downloadTask.pause((err: BusinessError) => {
 
 ```
 
+<a id="pause-1"></a>
 ## pause
 
 ```TypeScript
@@ -1099,13 +1117,13 @@ pause(): Promise<void>
 
 > **说明：**  
 >  
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend](arkts-basicservices-request-downloadtask-i.md#suspend-2)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend](arkts-basicservices-request-downloadtask-i.md#suspend-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [suspend()](arkts-basicservices-request-downloadtask-i.md#suspend-2)
+**替代接口：** [suspend()](arkts-basicservices-request-downloadtask-i.md#suspend-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1117,7 +1135,7 @@ pause(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1136,6 +1154,7 @@ downloadTask.pause().then(() => {
 
 ```
 
+<a id="query"></a>
 ## query
 
 ```TypeScript
@@ -1153,7 +1172,7 @@ query(callback: AsyncCallback<DownloadInfo>): void
 
 **废弃版本：** 9
 
-**替代接口：** getTaskInfo(callback:
+**替代接口：** [getTaskInfo(callback:](arkts-basicservices-request-downloadtask-i.md#gettaskinfo-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1165,7 +1184,7 @@ query(callback: AsyncCallback<DownloadInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<DownloadInfo> | 是 | 回调函数。当查询下载任务成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;DownloadInfo&gt; | 是 | 回调函数。当查询下载任务成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -1186,6 +1205,7 @@ downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo) => {
 
 ```
 
+<a id="query-1"></a>
 ## query
 
 ```TypeScript
@@ -1196,13 +1216,13 @@ query(): Promise<DownloadInfo>
 
 > **说明：**  
 >  
-> 从API version 7开始支持，从API version 9开始废弃,建议使用[getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo-2)替代。
+> 从API version 7开始支持，从API version 9开始废弃,建议使用[getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getTaskInfo()](arkts-basicservices-request-downloadtask-i.md#gettaskinfo-2)
+**替代接口：** [getTaskInfo()](arkts-basicservices-request-downloadtask-i.md#gettaskinfo-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1214,7 +1234,7 @@ query(): Promise<DownloadInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DownloadInfo> | Promise对象。返回DownloadInfo。 |
+| Promise&lt;DownloadInfo&gt; | Promise对象。返回DownloadInfo。 |
 
 **错误码：**
 
@@ -1233,6 +1253,7 @@ downloadTask.query().then((downloadInfo) => {
 
 ```
 
+<a id="querymimetype"></a>
 ## queryMimeType
 
 ```TypeScript
@@ -1250,7 +1271,7 @@ queryMimeType(callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** getTaskMimeType(callback:
+**替代接口：** [getTaskMimeType(callback:](arkts-basicservices-request-downloadtask-i.md#gettaskmimetype-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1262,7 +1283,7 @@ queryMimeType(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当查询下载任务的MimeType成功，err为undefined，data为获取到的任务的MimeType对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当查询下载任务的MimeType成功，err为undefined，data为获取到的任务的MimeType对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -1283,6 +1304,7 @@ downloadTask.queryMimeType((err: BusinessError, data: string) => {
 
 ```
 
+<a id="querymimetype-1"></a>
 ## queryMimeType
 
 ```TypeScript
@@ -1293,13 +1315,13 @@ queryMimeType(): Promise<string>
 
 > **说明：**  
 >  
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](arkts-basicservices-request-downloadtask-i.md#gettaskmimetype-2)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](arkts-basicservices-request-downloadtask-i.md#gettaskmimetype-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getTaskMimeType()](arkts-basicservices-request-downloadtask-i.md#gettaskmimetype-2)
+**替代接口：** [getTaskMimeType()](arkts-basicservices-request-downloadtask-i.md#gettaskmimetype-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1311,7 +1333,7 @@ queryMimeType(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回下载任务的MimeType。 |
+| Promise&lt;string&gt; | Promise对象。返回下载任务的MimeType。 |
 
 **错误码：**
 
@@ -1330,6 +1352,7 @@ downloadTask.queryMimeType().then((data: string) => {
 
 ```
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -1347,7 +1370,7 @@ remove(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** delete(callback:
+**替代接口：** [delete(callback:](arkts-basicservices-request-uploadtask-i.md#delete-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1359,7 +1382,7 @@ remove(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
 
 **错误码：**
 
@@ -1380,6 +1403,7 @@ downloadTask.remove((err, result) => {
 
 ```
 
+<a id="remove-1"></a>
 ## remove
 
 ```TypeScript
@@ -1390,13 +1414,13 @@ remove(): Promise<boolean>
 
 > **说明：**  
 >  
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](arkts-basicservices-request-uploadtask-i.md#delete-2)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](arkts-basicservices-request-uploadtask-i.md#delete-1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [delete()](arkts-basicservices-request-uploadtask-i.md#delete-2)
+**替代接口：** [delete()](arkts-basicservices-request-uploadtask-i.md#delete-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1408,7 +1432,7 @@ remove(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
 
 **错误码：**
 
@@ -1427,6 +1451,7 @@ downloadTask.remove().then((result) => {
 
 ```
 
+<a id="restore"></a>
 ## restore
 
 ```TypeScript
@@ -1451,7 +1476,7 @@ restore(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示重新启动已暂停的下载任务成功；返回false表示重新启动下载任务失败。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示重新启动已暂停的下载任务成功；返回false表示重新启动下载任务失败。 |
 
 **错误码：**
 
@@ -1487,6 +1512,7 @@ try {
 
 ```
 
+<a id="restore-1"></a>
 ## restore
 
 ```TypeScript
@@ -1511,7 +1537,7 @@ restore(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示重新启动被暂停的下载任务成功；返回false表示重新启动被暂停的下载任务失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示重新启动被暂停的下载任务成功；返回false表示重新启动被暂停的下载任务失败。 |
 
 **错误码：**
 
@@ -1545,6 +1571,7 @@ try {
 
 ```
 
+<a id="resume"></a>
 ## resume
 
 ```TypeScript
@@ -1562,7 +1589,7 @@ resume(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** restore(callback:
+**替代接口：** [restore(callback:](arkts-basicservices-request-downloadtask-i.md#restore-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1574,7 +1601,7 @@ resume(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当重新启动已暂停的下载任务成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当重新启动已暂停的下载任务成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1595,6 +1622,7 @@ downloadTask.resume((err: BusinessError) => {
 
 ```
 
+<a id="resume-1"></a>
 ## resume
 
 ```TypeScript
@@ -1605,13 +1633,13 @@ resume(): Promise<void>
 
 > **说明：**  
 >  
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](arkts-basicservices-request-downloadtask-i.md#restore-2)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](arkts-basicservices-request-downloadtask-i.md#restore-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [restore()](arkts-basicservices-request-downloadtask-i.md#restore-2)
+**替代接口：** [restore()](arkts-basicservices-request-downloadtask-i.md#restore-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1623,7 +1651,7 @@ resume(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1642,13 +1670,14 @@ downloadTask.resume().then(() => {
 
 ```
 
+<a id="suspend"></a>
 ## suspend
 
 ```TypeScript
 suspend(callback: AsyncCallback<boolean>): void
 ```
 
-暂停下载正在运行中的任务，已暂停的任务可被[restore](arkts-basicservices-request-downloadtask-i.md#restore-2)恢复，使用callback异步回调。
+暂停下载正在运行中的任务，已暂停的任务可被[restore](arkts-basicservices-request-downloadtask-i.md#restore-1)恢复，使用callback异步回调。
 
 > **说明：**  
 >  
@@ -1666,7 +1695,7 @@ suspend(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示暂停下载任务成功；返回false表示暂停下载任务失败。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示暂停下载任务成功；返回false表示暂停下载任务失败。 |
 
 **错误码：**
 
@@ -1702,13 +1731,14 @@ try {
 
 ```
 
+<a id="suspend-1"></a>
 ## suspend
 
 ```TypeScript
 suspend(): Promise<boolean>
 ```
 
-暂停下载正在运行中的任务，已暂停的任务可被[restore](arkts-basicservices-request-downloadtask-i.md#restore-2)恢复，使用Promise异步回调。
+暂停下载正在运行中的任务，已暂停的任务可被[restore](arkts-basicservices-request-downloadtask-i.md#restore-1)恢复，使用Promise异步回调。
 
 > **说明：**  
 >  
@@ -1726,7 +1756,7 @@ suspend(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示暂停下载正在运行中的任务成功；返回false表示暂停下载正在运行中的任务失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示暂停下载正在运行中的任务成功；返回false表示暂停下载正在运行中的任务失败。 |
 
 **错误码：**
 

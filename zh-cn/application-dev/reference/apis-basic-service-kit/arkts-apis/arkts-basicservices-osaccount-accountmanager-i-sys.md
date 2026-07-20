@@ -14,6 +14,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="activateosaccount"></a>
 ## activateOsAccount
 
 ```TypeScript
@@ -37,7 +38,7 @@ activateOsAccount(localId: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当账号激活成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当账号激活成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ try {
 
 ```
 
+<a id="activateosaccount-1"></a>
 ## activateOsAccount
 
 ```TypeScript
@@ -105,7 +107,7 @@ activateOsAccount(localId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -143,6 +145,7 @@ try {
 
 ```
 
+<a id="activateosaccount-2"></a>
 ## activateOsAccount
 
 ```TypeScript
@@ -172,7 +175,7 @@ activateOsAccount(localId: number, displayId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -212,6 +215,7 @@ try {
 
 ```
 
+<a id="binddomainaccount"></a>
 ## bindDomainAccount
 
 ```TypeScript
@@ -241,7 +245,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -280,6 +284,7 @@ try {
 
 ```
 
+<a id="createosaccount"></a>
 ## createOsAccount
 
 ```TypeScript
@@ -304,7 +309,7 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | localName | string | 是 | 创建的系统账号的名称。 |
 | type | [OsAccountType](arkts-basicservices-osaccount-osaccounttype-e-sys.md) | 是 | 创建的系统账号的类型。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<OsAccountInfo> | 是 | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;OsAccountInfo&gt; | 是 | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -343,6 +348,7 @@ try {
 
 ```
 
+<a id="createosaccount-1"></a>
 ## createOsAccount
 
 ```TypeScript
@@ -373,7 +379,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OsAccountInfo> | Promise对象，返回新创建的系统账号的信息。 |
+| Promise&lt;OsAccountInfo&gt; | Promise对象，返回新创建的系统账号的信息。 |
 
 **错误码：**
 
@@ -416,6 +422,7 @@ try {
 
 ```
 
+<a id="createosaccountfordomain"></a>
 ## createOsAccountForDomain
 
 ```TypeScript
@@ -452,7 +459,7 @@ createOsAccountForDomain(
 | --- | --- | --- | --- |
 | type | [OsAccountType](arkts-basicservices-osaccount-osaccounttype-e-sys.md) | 是 | 创建的系统账号的类型。 |
 | domainInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 域账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<OsAccountInfo> | 是 | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;OsAccountInfo&gt; | 是 | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -494,6 +501,7 @@ try {
 
 ```
 
+<a id="createosaccountfordomain-1"></a>
 ## createOsAccountForDomain
 
 ```TypeScript
@@ -524,7 +532,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OsAccountInfo> | Promise对象，返回新创建的系统账号的信息。 |
+| Promise&lt;OsAccountInfo&gt; | Promise对象，返回新创建的系统账号的信息。 |
 
 **错误码：**
 
@@ -568,6 +576,7 @@ try {
 
 ```
 
+<a id="deactivateosaccount"></a>
 ## deactivateOsAccount
 
 ```TypeScript
@@ -596,7 +605,7 @@ deactivateOsAccount(localId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -632,6 +641,7 @@ try {
 
 ```
 
+<a id="getbundleidforuid"></a>
 ## getBundleIdForUid
 
 ```TypeScript
@@ -653,7 +663,7 @@ getBundleIdForUid(uid: number, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uid | number | 是 | 进程uid。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。如果查询成功，err为null，data为与uid对应的bundleId；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果查询成功，err为null，data为与uid对应的bundleId；否则为错误对象。 |
 
 **错误码：**
 
@@ -687,6 +697,7 @@ try {
 
 ```
 
+<a id="getbundleidforuid-1"></a>
 ## getBundleIdForUid
 
 ```TypeScript
@@ -713,7 +724,7 @@ getBundleIdForUid(uid: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回与uid对应的bundleId。 |
+| Promise&lt;number&gt; | Promise对象，返回与uid对应的bundleId。 |
 
 **错误码：**
 
@@ -744,6 +755,7 @@ try {
 
 ```
 
+<a id="getbundleidforuidsync"></a>
 ## getBundleIdForUidSync
 
 ```TypeScript
@@ -797,6 +809,7 @@ try {
 
 ```
 
+<a id="getenabledosaccountconstraints"></a>
 ## getEnabledOsAccountConstraints
 
 ```TypeScript
@@ -825,7 +838,7 @@ getEnabledOsAccountConstraints(localId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise对象，返回指定系统账号已使能的全部[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号已使能的全部[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)。 |
 
 **错误码：**
 
@@ -859,6 +872,7 @@ try {
 
 ```
 
+<a id="getforegroundosaccountdisplayid"></a>
 ## getForegroundOsAccountDisplayId
 
 ```TypeScript
@@ -887,7 +901,7 @@ getForegroundOsAccountDisplayId(localId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回逻辑屏ID。 |
+| Promise&lt;number&gt; | Promise对象，返回逻辑屏ID。 |
 
 **错误码：**
 
@@ -918,6 +932,7 @@ try {
 
 ```
 
+<a id="getforegroundosaccountlocalid"></a>
 ## getForegroundOsAccountLocalId
 
 ```TypeScript
@@ -946,7 +961,7 @@ getForegroundOsAccountLocalId(displayId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回系统账号ID。 |
+| Promise&lt;number&gt; | Promise对象，返回系统账号ID。 |
 
 **错误码：**
 
@@ -977,6 +992,7 @@ try {
 
 ```
 
+<a id="getosaccountconstraintsourcetypes"></a>
 ## getOsAccountConstraintSourceTypes
 
 ```TypeScript
@@ -1000,8 +1016,8 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 要查询的系统账号ID。 |
-| constraint | string | 是 | 要查询的[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<ConstraintSourceTypeInfo>> | 是 | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)来源信息；否则为错误对象。 |
+| constraint | string | 是 | 要查询的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt; | 是 | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)来源信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -1036,6 +1052,7 @@ try {
 
 ```
 
+<a id="getosaccountconstraintsourcetypes-1"></a>
 ## getOsAccountConstraintSourceTypes
 
 ```TypeScript
@@ -1059,13 +1076,13 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 要查询的系统账号ID。 |
-| constraint | string | 是 | 要查询的[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint | string | 是 | 要查询的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<ConstraintSourceTypeInfo>> | Promise对象，返回指定系统账号的指定[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)来源信息。 |
+| Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)来源信息。 |
 
 **错误码：**
 
@@ -1098,6 +1115,7 @@ try {
 
 ```
 
+<a id="getosaccountprofilephoto"></a>
 ## getOsAccountProfilePhoto
 
 ```TypeScript
@@ -1121,7 +1139,7 @@ getOsAccountProfilePhoto(localId: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。如果获取成功，err为null，data为指定系统账号的头像信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。如果获取成功，err为null，data为指定系统账号的头像信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -1158,6 +1176,7 @@ try {
 
 ```
 
+<a id="getosaccountprofilephoto-1"></a>
 ## getOsAccountProfilePhoto
 
 ```TypeScript
@@ -1186,7 +1205,7 @@ getOsAccountProfilePhoto(localId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回指定系统账号的头像信息。 |
+| Promise&lt;string&gt; | Promise对象，返回指定系统账号的头像信息。 |
 
 **错误码：**
 
@@ -1221,6 +1240,7 @@ try {
 
 ```
 
+<a id="getosaccounttype"></a>
 ## getOsAccountType
 
 ```TypeScript
@@ -1249,7 +1269,7 @@ getOsAccountType(localId: number): Promise<OsAccountType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OsAccountType> | Promise对象，返回指定系统账号的类型。 |
+| Promise&lt;OsAccountType&gt; | Promise对象，返回指定系统账号的类型。 |
 
 **错误码：**
 
@@ -1281,6 +1301,7 @@ try {
 
 ```
 
+<a id="ismainosaccount"></a>
 ## isMainOsAccount
 
 ```TypeScript
@@ -1303,7 +1324,7 @@ isMainOsAccount(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
@@ -1335,6 +1356,7 @@ try {
 
 ```
 
+<a id="ismainosaccount-1"></a>
 ## isMainOsAccount
 
 ```TypeScript
@@ -1357,7 +1379,7 @@ isMainOsAccount(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
@@ -1386,6 +1408,7 @@ try {
 
 ```
 
+<a id="isosaccountactivated"></a>
 ## isOsAccountActivated
 
 ```TypeScript
@@ -1414,7 +1437,7 @@ isOsAccountActivated(localId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
 
 **错误码：**
 
@@ -1448,6 +1471,7 @@ try {
 
 ```
 
+<a id="isosaccountconstraintenabled"></a>
 ## isOsAccountConstraintEnabled
 
 ```TypeScript
@@ -1471,13 +1495,13 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise<boole
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraint | string | 是 | 指定的[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint | string | 是 | 指定的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **错误码：**
 
@@ -1512,6 +1536,7 @@ try {
 
 ```
 
+<a id="isosaccountunlocked"></a>
 ## isOsAccountUnlocked
 
 ```TypeScript
@@ -1540,7 +1565,7 @@ isOsAccountUnlocked(localId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
 
 **错误码：**
 
@@ -1572,6 +1597,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off('activate' | 'activating')
 
 ```TypeScript
@@ -1596,7 +1622,7 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback<number>):
 | --- | --- | --- | --- |
 | type | 'activate' \| 'activating' | 是 | 取消订阅类型，activate表示取消订阅账号已激活完成的事件，activating取消订阅账号正在激活的事件。 |
 | name | string | 是 | 订阅名称，可自定义，要求非空且长度不超过1024字节，需要与订阅接口传入的值保持一致。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 否 | 取消订阅系统账号激活完成与激活中的事件回调，默认为空，表示取消该类型事件的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 取消订阅系统账号激活完成与激活中的事件回调，默认为空，表示取消该类型事件的所有回调。 |
 
 **错误码：**
 
@@ -1628,6 +1654,7 @@ try {
 
 ```
 
+<a id="off-1"></a>
 ## off('activate' | 'activating')
 
 ```TypeScript
@@ -1652,7 +1679,7 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback<number>):
 | --- | --- | --- | --- |
 | type | 'activate' \| 'activating' | 是 | 取消订阅类型，activate表示取消订阅账号已激活完成的事件，activating取消订阅账号正在激活的事件。 |
 | name | string | 是 | 订阅名称，可自定义，要求非空且长度不超过1024字节，需要与订阅接口传入的值保持一致。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 否 | 取消订阅系统账号激活完成与激活中的事件回调，默认为空，表示取消该类型事件的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 取消订阅系统账号激活完成与激活中的事件回调，默认为空，表示取消该类型事件的所有回调。 |
 
 **错误码：**
 
@@ -1684,6 +1711,7 @@ try {
 
 ```
 
+<a id="off-2"></a>
 ## off('switching')
 
 ```TypeScript
@@ -1709,7 +1737,7 @@ off(type: 'switching', callback?: Callback<OsAccountSwitchEventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'switching' | 是 | 取消订阅类型，switching表示取消订阅的是系统账号的前后台正在切换事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<OsAccountSwitchEventData> | 否 | 取消订阅系统账号的前后台正在切换事件回调，默认为空，表示取消该类型事件的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;OsAccountSwitchEventData&gt; | 否 | 取消订阅系统账号的前后台正在切换事件回调，默认为空，表示取消该类型事件的所有回调。 |
 
 **错误码：**
 
@@ -1735,6 +1763,7 @@ try {
 
 ```
 
+<a id="off-3"></a>
 ## off('switched')
 
 ```TypeScript
@@ -1760,7 +1789,7 @@ off(type: 'switched', callback?: Callback<OsAccountSwitchEventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'switched' | 是 | 取消订阅类型，switched表示取消订阅的是系统账号的前后台切换结束事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<OsAccountSwitchEventData> | 否 | 取消订阅系统账号的前后台切换结束事件回调，默认为空，表示取消该类型事件的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;OsAccountSwitchEventData&gt; | 否 | 取消订阅系统账号的前后台切换结束事件回调，默认为空，表示取消该类型事件的所有回调。 |
 
 **错误码：**
 
@@ -1786,6 +1815,7 @@ try {
 
 ```
 
+<a id="offconstraintchanged"></a>
 ## offConstraintChanged
 
 ```TypeScript
@@ -1806,7 +1836,7 @@ offConstraintChanged(callback?: Callback<ConstraintChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ConstraintChangeInfo> | 否 | 表示用于接收约束变更事件的回调函数。<br>默认为undefined，表示清除所有订阅记录。<br>非undefined时，表示清除与该回调函数关联的订阅记录。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ConstraintChangeInfo&gt; | 否 | 表示用于接收约束变更事件的回调函数。<br>默认为undefined，表示清除所有订阅记录。<br>非undefined时，表示清除与该回调函数关联的订阅记录。 |
 
 **错误码：**
 
@@ -1842,6 +1872,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('activate' | 'activating')
 
 ```TypeScript
@@ -1866,7 +1897,7 @@ on(type: 'activate' | 'activating', name: string, callback: Callback<number>): v
 | --- | --- | --- | --- |
 | type | 'activate' \| 'activating' | 是 | 订阅类型，activate表示订阅的是账号已激活完成的事件，activating表示订阅的是账号正在激活的事件。 |
 | name | string | 是 | 订阅名称，可自定义，要求非空且长度不超过1024字节。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 订阅系统账号激活完成与激活中的事件回调，表示激活完成后或正在激活中的系统账号ID。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 订阅系统账号激活完成与激活中的事件回调，表示激活完成后或正在激活中的系统账号ID。 |
 
 **错误码：**
 
@@ -1898,6 +1929,7 @@ try {
 
 ```
 
+<a id="on-1"></a>
 ## on('activate' | 'activating')
 
 ```TypeScript
@@ -1922,7 +1954,7 @@ on(type: 'activate' | 'activating', name: string, callback: Callback<number>): v
 | --- | --- | --- | --- |
 | type | 'activate' \| 'activating' | 是 | 订阅类型，activate表示订阅的是账号已激活完成的事件，activating表示订阅的是账号正在激活的事件。 |
 | name | string | 是 | 订阅名称，可自定义，要求非空且长度不超过1024字节。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 订阅系统账号激活完成与激活中的事件回调，表示激活完成后或正在激活中的系统账号ID。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 订阅系统账号激活完成与激活中的事件回调，表示激活完成后或正在激活中的系统账号ID。 |
 
 **错误码：**
 
@@ -1954,6 +1986,7 @@ try {
 
 ```
 
+<a id="on-2"></a>
 ## on('switching')
 
 ```TypeScript
@@ -1979,7 +2012,7 @@ on(type: 'switching', callback: Callback<OsAccountSwitchEventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'switching' | 是 | 订阅类型，switching表示订阅的是系统账号的前后台正在切换事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<OsAccountSwitchEventData> | 是 | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;OsAccountSwitchEventData&gt; | 是 | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。 |
 
 **错误码：**
 
@@ -2010,6 +2043,7 @@ try {
 
 ```
 
+<a id="on-3"></a>
 ## on('switched')
 
 ```TypeScript
@@ -2035,7 +2069,7 @@ on(type: 'switched', callback: Callback<OsAccountSwitchEventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'switched' | 是 | 订阅类型，switched表示订阅的是系统账号的前后台切换结束事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<OsAccountSwitchEventData> | 是 | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;OsAccountSwitchEventData&gt; | 是 | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。 |
 
 **错误码：**
 
@@ -2066,6 +2100,7 @@ try {
 
 ```
 
+<a id="onconstraintchanged"></a>
 ## onConstraintChanged
 
 ```TypeScript
@@ -2086,8 +2121,8 @@ onConstraintChanged(constraints: string[], callback: Callback<ConstraintChangeIn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| constraints | string[] | 是 | 表示待订阅的[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ConstraintChangeInfo> | 是 | 表示用于接收约束变更事件的回调函数。 |
+| constraints | string[] | 是 | 表示待订阅的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ConstraintChangeInfo&gt; | 是 | 表示用于接收约束变更事件的回调函数。 |
 
 **错误码：**
 
@@ -2117,6 +2152,7 @@ try {
 
 ```
 
+<a id="queryallcreatedosaccounts"></a>
 ## queryAllCreatedOsAccounts
 
 ```TypeScript
@@ -2139,7 +2175,7 @@ queryAllCreatedOsAccounts(callback: AsyncCallback<Array<OsAccountInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<OsAccountInfo>> | 是 | 回调函数。如果查询成功，err为null，data为已创建的所有系统账号的信息列表；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;OsAccountInfo&gt;&gt; | 是 | 回调函数。如果查询成功，err为null，data为已创建的所有系统账号的信息列表；否则为错误对象。 |
 
 **错误码：**
 
@@ -2171,6 +2207,7 @@ try {
 
 ```
 
+<a id="queryallcreatedosaccounts-1"></a>
 ## queryAllCreatedOsAccounts
 
 ```TypeScript
@@ -2193,7 +2230,7 @@ queryAllCreatedOsAccounts(): Promise<Array<OsAccountInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<OsAccountInfo>> | Promise对象，返回已创建的所有系统账号的信息列表。 |
+| Promise&lt;Array&lt;OsAccountInfo&gt;&gt; | Promise对象，返回已创建的所有系统账号的信息列表。 |
 
 **错误码：**
 
@@ -2222,6 +2259,7 @@ try {
 
 ```
 
+<a id="querymaxloggedinosaccountnumber"></a>
 ## queryMaxLoggedInOsAccountNumber
 
 ```TypeScript
@@ -2242,7 +2280,7 @@ queryMaxLoggedInOsAccountNumber(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回允许登录的系统账号的最大数量。 |
+| Promise&lt;number&gt; | Promise对象，返回允许登录的系统账号的最大数量。 |
 
 **错误码：**
 
@@ -2270,6 +2308,7 @@ try {
 
 ```
 
+<a id="querymaxosaccountnumber"></a>
 ## queryMaxOsAccountNumber
 
 ```TypeScript
@@ -2290,7 +2329,7 @@ queryMaxOsAccountNumber(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，如果查询成功，err为null，data为允许创建的系统账号的最大数量；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，如果查询成功，err为null，data为允许创建的系统账号的最大数量；否则为错误对象。 |
 
 **错误码：**
 
@@ -2321,6 +2360,7 @@ try {
 
 ```
 
+<a id="querymaxosaccountnumber-1"></a>
 ## queryMaxOsAccountNumber
 
 ```TypeScript
@@ -2341,7 +2381,7 @@ queryMaxOsAccountNumber(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回允许创建的系统账号的最大数量。 |
+| Promise&lt;number&gt; | Promise对象，返回允许创建的系统账号的最大数量。 |
 
 **错误码：**
 
@@ -2369,6 +2409,7 @@ try {
 
 ```
 
+<a id="queryosaccount"></a>
 ## queryOsAccount
 
 ```TypeScript
@@ -2391,7 +2432,7 @@ queryOsAccount(): Promise<OsAccountInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OsAccountInfo> | Promise对象，返回当前进程所属的系统账号信息。 |
+| Promise&lt;OsAccountInfo&gt; | Promise对象，返回当前进程所属的系统账号信息。 |
 
 **错误码：**
 
@@ -2420,6 +2461,7 @@ try {
 
 ```
 
+<a id="queryosaccountbyid"></a>
 ## queryOsAccountById
 
 ```TypeScript
@@ -2443,7 +2485,7 @@ queryOsAccountById(localId: number, callback: AsyncCallback<OsAccountInfo>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 要查询的系统账号的ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<OsAccountInfo> | 是 | 回调函数。如果查询成功，err为null，data为查到的系统账号的信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;OsAccountInfo&gt; | 是 | 回调函数。如果查询成功，err为null，data为查到的系统账号的信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -2480,6 +2522,7 @@ try {
 
 ```
 
+<a id="queryosaccountbyid-1"></a>
 ## queryOsAccountById
 
 ```TypeScript
@@ -2508,7 +2551,7 @@ queryOsAccountById(localId: number): Promise<OsAccountInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OsAccountInfo> | Promise对象，返回查到的系统账号的信息。 |
+| Promise&lt;OsAccountInfo&gt; | Promise对象，返回查到的系统账号的信息。 |
 
 **错误码：**
 
@@ -2543,6 +2586,7 @@ try {
 
 ```
 
+<a id="removeosaccount"></a>
 ## removeOsAccount
 
 ```TypeScript
@@ -2566,7 +2610,7 @@ removeOsAccount(localId: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。如果删除账号成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。如果删除账号成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -2606,6 +2650,7 @@ try {
 
 ```
 
+<a id="removeosaccount-1"></a>
 ## removeOsAccount
 
 ```TypeScript
@@ -2634,7 +2679,7 @@ removeOsAccount(localId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2672,6 +2717,7 @@ try {
 
 ```
 
+<a id="removeosaccount-2"></a>
 ## removeOsAccount
 
 ```TypeScript
@@ -2701,7 +2747,7 @@ removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2743,6 +2789,7 @@ try {
 
 ```
 
+<a id="setosaccountconstraints"></a>
 ## setOsAccountConstraints
 
 ```TypeScript
@@ -2766,9 +2813,9 @@ setOsAccountConstraints(localId: number, constraints: Array<string>, enable: boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraints | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待设置/删除的[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
+| constraints | Array&lt;string&gt; | 是 | 待设置/删除的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
 | enable | boolean | 是 | 设置(true)/删除(false) 。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。如果设置成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -2807,6 +2854,7 @@ try {
 
 ```
 
+<a id="setosaccountconstraints-1"></a>
 ## setOsAccountConstraints
 
 ```TypeScript
@@ -2830,14 +2878,14 @@ setOsAccountConstraints(localId: number, constraints: Array<string>, enable: boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraints | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待设置/删除的[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
+| constraints | Array&lt;string&gt; | 是 | 待设置/删除的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
 | enable | boolean | 是 | 设置(true)/删除(false)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2873,6 +2921,7 @@ try {
 
 ```
 
+<a id="setosaccountname"></a>
 ## setOsAccountName
 
 ```TypeScript
@@ -2897,7 +2946,7 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback<voi
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
 | localName | string | 是 | 账号名，最大长度为1024个字符。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。如果设置成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -2936,6 +2985,7 @@ try {
 
 ```
 
+<a id="setosaccountname-1"></a>
 ## setOsAccountName
 
 ```TypeScript
@@ -2965,7 +3015,7 @@ setOsAccountName(localId: number, localName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3002,6 +3052,7 @@ try {
 
 ```
 
+<a id="setosaccountprofilephoto"></a>
 ## setOsAccountProfilePhoto
 
 ```TypeScript
@@ -3026,7 +3077,7 @@ setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
 | photo | string | 是 | 头像信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。如果设置成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -3068,6 +3119,7 @@ try {
 
 ```
 
+<a id="setosaccountprofilephoto-1"></a>
 ## setOsAccountProfilePhoto
 
 ```TypeScript
@@ -3097,7 +3149,7 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3137,6 +3189,7 @@ try {
 
 ```
 
+<a id="setosaccounttype"></a>
 ## setOsAccountType
 
 ```TypeScript
@@ -3167,7 +3220,7 @@ setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTyp
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

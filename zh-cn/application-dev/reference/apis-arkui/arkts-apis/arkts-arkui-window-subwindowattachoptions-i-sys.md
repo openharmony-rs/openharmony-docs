@@ -88,7 +88,7 @@ parentWindowSizeChangeCallback?: Callback<Size>
 
 父窗大小变化的回调。绑定后立即回调一次，后续父窗大小变化时通知。默认不传，无法收到父窗大小变化通知。
 
-**类型：** Callback<Size>
+**类型：** Callback&lt;Size&gt;
 
 **起始版本：** 24
 
@@ -108,7 +108,7 @@ parentWindowStatusChangeCallback?: Callback<WindowStatusType>
 
 父窗模式变化的回调。绑定后立即回调一次，后续父窗模式变化时通知。默认不传，无法收到父窗模式变化通知。
 
-**类型：** Callback<WindowStatusType>
+**类型：** Callback&lt;WindowStatusType&gt;
 
 **起始版本：** 24
 

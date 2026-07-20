@@ -16,6 +16,7 @@
 import { cloudDiskManager } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -68,6 +69,7 @@ struct Index {
 
 ```
 
+<a id="getallsyncfolders"></a>
 ## getAllSyncFolders
 
 ```TypeScript
@@ -90,7 +92,7 @@ getAllSyncFolders(): Promise<Array<SyncFolder>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<SyncFolder>> | Promise对象。返回所有网盘应用的同步根列表。 |
+| Promise&lt;Array&lt;SyncFolder&gt;&gt; | Promise对象。返回所有网盘应用的同步根列表。 |
 
 **错误码：**
 

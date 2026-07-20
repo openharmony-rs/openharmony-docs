@@ -6,6 +6,7 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="gettotalsizesync"></a>
 ## getTotalSizeSync
 
 ```TypeScript

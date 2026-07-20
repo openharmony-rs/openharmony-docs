@@ -6,6 +6,7 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="preloaduiextensionability"></a>
 ## preloadUIExtensionAbility
 
 ```TypeScript
@@ -36,7 +37,7 @@ function preloadUIExtensionAbility(want: Want): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的ID，用于后续清除或管理操作。 |
+| Promise&lt;number&gt; | Promise对象，返回预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的ID，用于后续清除或管理操作。 |
 
 **错误码：**
 

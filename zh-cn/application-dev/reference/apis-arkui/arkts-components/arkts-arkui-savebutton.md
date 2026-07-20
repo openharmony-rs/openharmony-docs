@@ -61,7 +61,7 @@ SaveButton(options: SaveButtonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | SaveButtonOptions | 是 | 保存控件的配置选项，用于指定图标、文本和按钮类型等元素属性。<br>建议至少显式设置 icon 或 text 中的一项，以确保用户能明确理解控件用途；若两者都不传，控件显示为默认样式。 |
+| options | [SaveButtonOptions](arkts-arkui-savebuttonoptions-i.md) | 是 | 保存控件的配置选项，用于指定图标、文本和按钮类型等元素属性。 <br>建议至少显式设置 icon 或 text 中的一项，以确保用户能明确理解控件用途；若两者都不传，控件显示为默认样式。  |
 
 ## 汇总
 

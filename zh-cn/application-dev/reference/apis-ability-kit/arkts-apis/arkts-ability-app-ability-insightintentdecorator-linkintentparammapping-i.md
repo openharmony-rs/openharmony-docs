@@ -1,6 +1,6 @@
 # LinkIntentParamMapping
 
-LinkIntentParamMapping是[@InsightIntentLink](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器的意图参数和uri信息的映射。
+LinkIntentParamMapping是[@InsightIntentLink](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器的意图参数和uri信息的映射。
 
 **起始版本：** 20
 

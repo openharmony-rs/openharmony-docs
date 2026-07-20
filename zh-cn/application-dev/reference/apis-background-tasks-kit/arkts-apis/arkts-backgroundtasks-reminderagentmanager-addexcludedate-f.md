@@ -6,6 +6,7 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="addexcludedate"></a>
 ## addExcludeDate
 
 ```TypeScript
@@ -31,7 +32,7 @@ function addExcludeDate(reminderId: number, date: Date): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

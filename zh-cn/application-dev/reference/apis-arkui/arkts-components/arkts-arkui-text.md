@@ -33,8 +33,8 @@ Text(content?: string | Resource, value?: TextOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | string \| Resource | 否 | 文本内容。当不包含子组件[Span]{@link span}和未设置[属性字符串]{@link styled_string}时该参数生效。<br/>默认值：' '<br/>**说明：** <br/>显示内容的优先级：属性字符串&gt;Span&gt;Text的文本内容。 |
-| value | TextOptions | 否 | 文本组件初始化选项。<br/> |
+| content | string \| Resource | 否 | 文本内容。当不包含子组件[Span]{@link span}和未设置[属性字符串]{@link styled_string}时该参数生效。<br/>默认 值：' '<br/>**说明：** <br/>显示内容的优先级：属性字符串>Span>Text的文本内容。  |
+| value | [TextOptions](arkts-arkui-textoptions-i.md) | 否 | 文本组件初始化选项。<br/> |
 
 ## 汇总
 

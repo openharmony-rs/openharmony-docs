@@ -40,7 +40,7 @@ Span(value: string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| Resource | 是 | 文本内容。 |
+| value | string \| Resource | 是 | 文本内容。  |
 
 ## 汇总
 

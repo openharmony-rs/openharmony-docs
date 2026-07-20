@@ -1,6 +1,6 @@
 # SingleKVStore
 
-单版本数据库，继承自[KVStore](arkts-arkdata-distributeddata-kvstoretype-e.md)数据库，提供查询数据和同步数据的方法。单版本数据库，不对数据所属设备进行区分，不同设备使用相同键写入数据会互相覆盖。比如，可以使用单版本数据库实现个人日历、联系人数据在不同设备间的数据同步。在调用SingleKVStore的方法前，需要先通过[getKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#getkvstore-2)构建一个SingleKVStore实例。
+单版本数据库，继承自[KVStore](arkts-arkdata-distributeddata-kvstoretype-e.md)数据库，提供查询数据和同步数据的方法。单版本数据库，不对数据所属设备进行区分，不同设备使用相同键写入数据会互相覆盖。比如，可以使用单版本数据库实现个人日历、联系人数据在不同设备间的数据同步。在调用SingleKVStore的方法前，需要先通过[getKVStore](distributedData.KVManager.getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>))构建一个SingleKVStore实例。
 
 **继承/实现关系：** SingleKVStore extends [KVStore](arkts-arkdata-distributeddata-kvstore-i.md)
 
@@ -14,6 +14,7 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+<a id="closeresultset"></a>
 ## closeResultSet
 
 ```TypeScript
@@ -37,7 +38,7 @@ closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resultSet | [KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md) | 是 | 表示要关闭的KvStoreResultSet对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -58,6 +59,7 @@ try {
 
 ```
 
+<a id="closeresultset-1"></a>
 ## closeResultSet
 
 ```TypeScript
@@ -86,7 +88,7 @@ closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -105,6 +107,7 @@ try {
 
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -128,7 +131,7 @@ get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](arkts-arkdata-distributeddata-constants-n.md#constants)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Uint8Array \| string \| boolean \| number> | 是 | 回调函数。返回获取查询的值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array \| string \| boolean \| number&gt; | 是 | 回调函数。返回获取查询的值。 |
 
 **示例：**
 
@@ -153,6 +156,7 @@ try {
 
 ```
 
+<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -181,7 +185,7 @@ get(key: string): Promise<Uint8Array | string | boolean | number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array \| string \| boolean \| number> | Promise对象。返回获取查询的值。 |
+| Promise&lt;Uint8Array \| string \| boolean \| number&gt; | Promise对象。返回获取查询的值。 |
 
 **示例：**
 
@@ -206,6 +210,7 @@ try {
 
 ```
 
+<a id="getentries"></a>
 ## getEntries
 
 ```TypeScript
@@ -229,7 +234,7 @@ getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyPrefix | string | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Entry[]> | 是 | 回调函数。返回匹配指定前缀的键值对列表。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Entry[]&gt; | 是 | 回调函数。返回匹配指定前缀的键值对列表。 |
 
 **示例：**
 
@@ -262,6 +267,7 @@ try {
 
 ```
 
+<a id="getentries-1"></a>
 ## getEntries
 
 ```TypeScript
@@ -290,7 +296,7 @@ getEntries(keyPrefix: string): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Entry[]> | Promise对象。返回匹配指定前缀的键值对列表。 |
+| Promise&lt;Entry[]&gt; | Promise对象。返回匹配指定前缀的键值对列表。 |
 
 **示例：**
 
@@ -330,6 +336,7 @@ try {
 
 ```
 
+<a id="getentries-2"></a>
 ## getEntries
 
 ```TypeScript
@@ -353,7 +360,7 @@ getEntries(query: Query, callback: AsyncCallback<Entry[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Entry[]> | 是 | 回调函数。返回与指定Query对象匹配的键值对列表。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Entry[]&gt; | 是 | 回调函数。返回与指定Query对象匹配的键值对列表。 |
 
 **示例：**
 
@@ -391,6 +398,7 @@ try {
 
 ```
 
+<a id="getentries-3"></a>
 ## getEntries
 
 ```TypeScript
@@ -419,7 +427,7 @@ getEntries(query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Entry[]> | Promise对象。返回与指定Query对象匹配的键值对列表。 |
+| Promise&lt;Entry[]&gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 |
 
 **示例：**
 
@@ -459,6 +467,7 @@ try {
 
 ```
 
+<a id="getresultset"></a>
 ## getResultSet
 
 ```TypeScript
@@ -482,7 +491,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyPrefix | string | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KvStoreResultSet> | 是 | 回调函数。返回具有指定前缀的结果集。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KvStoreResultSet&gt; | 是 | 回调函数。返回具有指定前缀的结果集。 |
 
 **示例：**
 
@@ -518,6 +527,7 @@ try {
 
 ```
 
+<a id="getresultset-1"></a>
 ## getResultSet
 
 ```TypeScript
@@ -546,7 +556,7 @@ getResultSet(keyPrefix: string): Promise<KvStoreResultSet>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KvStoreResultSet> | Promise对象。返回具有指定前缀的结果集。 |
+| Promise&lt;KvStoreResultSet&gt; | Promise对象。返回具有指定前缀的结果集。 |
 
 **示例：**
 
@@ -588,6 +598,7 @@ try {
 
 ```
 
+<a id="getresultset-2"></a>
 ## getResultSet
 
 ```TypeScript
@@ -611,7 +622,7 @@ getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KvStoreResultSet> | 是 | 回调函数，获取与指定Query对象匹配的KvStoreResultSet对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KvStoreResultSet&gt; | 是 | 回调函数，获取与指定Query对象匹配的KvStoreResultSet对象。 |
 
 **示例：**
 
@@ -646,6 +657,7 @@ try {
 
 ```
 
+<a id="getresultset-3"></a>
 ## getResultSet
 
 ```TypeScript
@@ -674,7 +686,7 @@ getResultSet(query: Query): Promise<KvStoreResultSet>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KvStoreResultSet> | Promise对象。获取与指定Query对象匹配的KvStoreResultSet对象。 |
+| Promise&lt;KvStoreResultSet&gt; | Promise对象。获取与指定Query对象匹配的KvStoreResultSet对象。 |
 
 **示例：**
 
@@ -713,6 +725,7 @@ try {
 
 ```
 
+<a id="getresultsize"></a>
 ## getResultSize
 
 ```TypeScript
@@ -736,7 +749,7 @@ getResultSize(query: Query, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。返回与指定Query对象匹配的结果数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回与指定Query对象匹配的结果数。 |
 
 **示例：**
 
@@ -769,6 +782,7 @@ try {
 
 ```
 
+<a id="getresultsize-1"></a>
 ## getResultSize
 
 ```TypeScript
@@ -797,7 +811,7 @@ getResultSize(query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。获取与指定Query对象匹配的结果数。 |
+| Promise&lt;number&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
 
 **示例：**
 
@@ -834,6 +848,7 @@ try {
 
 ```
 
+<a id="getsecuritylevel"></a>
 ## getSecurityLevel
 
 ```TypeScript
@@ -856,7 +871,7 @@ getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<SecurityLevel> | 是 | 回调函数。返回数据库的安全级别。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;SecurityLevel&gt; | 是 | 回调函数。返回数据库的安全级别。 |
 
 **示例：**
 
@@ -872,6 +887,7 @@ try {
 
 ```
 
+<a id="getsecuritylevel-1"></a>
 ## getSecurityLevel
 
 ```TypeScript
@@ -894,7 +910,7 @@ getSecurityLevel(): Promise<SecurityLevel>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SecurityLevel> | Promise对象。返回数据库的安全级别。 |
+| Promise&lt;SecurityLevel&gt; | Promise对象。返回数据库的安全级别。 |
 
 **示例：**
 
@@ -912,6 +928,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -935,7 +952,7 @@ off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取消订阅的事件名，固定为'dataChange'，表示数据变更事件。 |
-| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ChangeNotification> | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
+| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ChangeNotification&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
 
 **示例：**
 
@@ -959,6 +976,7 @@ class KvstoreModel {
 
 ```
 
+<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -982,7 +1000,7 @@ off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'syncComplete' | 是 | 取消订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<[string, number]>> | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
+| syncCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
 
 **示例：**
 
@@ -1006,6 +1024,7 @@ class KvstoreModel {
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -1030,7 +1049,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotificati
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 订阅的事件名，固定为'dataChange'，表示数据变更事件。 |
 | type | [SubscribeType](../../apis-notification-kit/arkts-apis/arkts-notification-notificationextensionsubscription-subscribetype-e.md) | 是 | 表示订阅的类型。 |
-| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ChangeNotification> | 是 | 回调函数。 |
+| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ChangeNotification&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -1042,6 +1061,7 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
 
 ```
 
+<a id="on-1"></a>
 ## on
 
 ```TypeScript
@@ -1065,7 +1085,7 @@ on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'syncComplete' | 是 | 订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<[string, number]>> | 是 | 回调函数。用于向调用方发送同步结果的回调。 |
+| syncCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | 是 | 回调函数。用于向调用方发送同步结果的回调。 |
 
 **示例：**
 
@@ -1088,6 +1108,7 @@ try {
 
 ```
 
+<a id="removedevicedata"></a>
 ## removeDeviceData
 
 ```TypeScript
@@ -1118,7 +1139,7 @@ removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 表示要删除设备的名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -1147,6 +1168,7 @@ try {
 
 ```
 
+<a id="removedevicedata-1"></a>
 ## removeDeviceData
 
 ```TypeScript
@@ -1182,7 +1204,7 @@ removeDeviceData(deviceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -1213,6 +1235,7 @@ try {
 
 ```
 
+<a id="setsyncparam"></a>
 ## setSyncParam
 
 ```TypeScript
@@ -1236,7 +1259,7 @@ setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | defaultAllowedDelayMs | number | 是 | 表示数据库同步允许的默认延迟，以毫秒为单位。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -1253,6 +1276,7 @@ try {
 
 ```
 
+<a id="setsyncparam-1"></a>
 ## setSyncParam
 
 ```TypeScript
@@ -1281,7 +1305,7 @@ setSyncParam(defaultAllowedDelayMs: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -1300,6 +1324,7 @@ try {
 
 ```
 
+<a id="sync"></a>
 ## sync
 
 ```TypeScript

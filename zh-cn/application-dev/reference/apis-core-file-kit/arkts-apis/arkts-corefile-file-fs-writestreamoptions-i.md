@@ -20,7 +20,7 @@ import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventList
 mode?: number
 ```
 
-创建文件可写流的[选项](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#openmode)，必须指定如下选项中的一个，默认只写方式创建：
+创建文件可写流的[选项](docroot://reference/apis-core-file-kit/js-apis-file-fs.md#openmode)，必须指定如下选项中的一个，默认只写方式创建：
 
 - OpenMode.READ_ONLY(0o0)：只读。
 

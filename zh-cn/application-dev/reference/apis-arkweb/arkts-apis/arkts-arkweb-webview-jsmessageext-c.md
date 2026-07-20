@@ -14,6 +14,7 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="getarray"></a>
 ## getArray
 
 ```TypeScript
@@ -34,7 +35,7 @@ getArray(): Array<string | number | boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number \| boolean> | - Returns data of Array type |
+| Array&lt;string \| number \| boolean&gt; | - Returns data of Array type |
 
 **错误码：**
 
@@ -42,6 +43,7 @@ getArray(): Array<string | number | boolean>
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
+<a id="getarraybuffer"></a>
 ## getArrayBuffer
 
 ```TypeScript
@@ -62,7 +64,7 @@ getArrayBuffer(): ArrayBuffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | - 返回原始二进制数据。 |
+| ArrayBuffer | - 返回原始二进制数据。 |
 
 **错误码：**
 
@@ -70,6 +72,7 @@ getArrayBuffer(): ArrayBuffer
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
+<a id="getboolean"></a>
 ## getBoolean
 
 ```TypeScript
@@ -98,6 +101,7 @@ getBoolean(): boolean
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
+<a id="geterrordescription"></a>
 ## getErrorDescription
 
 ```TypeScript
@@ -116,8 +120,9 @@ getErrorDescription(): string | null
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - If an exception occurs, or the returned type is object, return the serialized string in the format of "Not support type: &lt;{exception\|object}&gt;", Parts exceeding a length of2048 will be truncated; otherwise, return null. |
+| string | - If an exception occurs, or the returned type is object, return the serialized string in the format of "Not support type: <{exception\|object}>", Parts exceeding a length of2048 will be truncated; otherwise, return null. |
 
+<a id="getnumber"></a>
 ## getNumber
 
 ```TypeScript
@@ -146,6 +151,7 @@ getNumber(): number
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
+<a id="getstring"></a>
 ## getString
 
 ```TypeScript
@@ -174,6 +180,7 @@ getString(): string
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
+<a id="gettype"></a>
 ## getType
 
 ```TypeScript

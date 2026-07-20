@@ -20,6 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="forcevolumekeycontroltype"></a>
 ## forceVolumeKeyControlType
 
 ```TypeScript
@@ -74,6 +75,7 @@ audioVolumeManager.forceVolumeKeyControlType(volumeTypeDefault, durationToCancel
 
 ```
 
+<a id="getactivestreamsvolumeinfo"></a>
 ## getActiveStreamsVolumeInfo
 
 ```TypeScript
@@ -105,6 +107,7 @@ getActiveStreamsVolumeInfo(): ActiveStreamsVolumeInfoArray
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error, crash or blocking occurs in system process. |
 
+<a id="getappvolumepercentageforuid"></a>
 ## getAppVolumePercentageForUid
 
 ```TypeScript
@@ -133,7 +136,7 @@ Get the volume for specified app with range from 0 to 100. Applications with sam
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise used to return the result. |
+| Promise&lt;number&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -154,6 +157,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 ```
 
+<a id="getaudiovolumetypebystreamusage"></a>
 ## getAudioVolumeTypeByStreamUsage
 
 ```TypeScript
@@ -189,6 +193,7 @@ Obtains volume type by stream type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="getmaxsystemvolume"></a>
 ## getMaxSystemVolume
 
 ```TypeScript
@@ -224,6 +229,7 @@ Obtains the maximum volume allowed for a volume type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="getminsystemvolume"></a>
 ## getMinSystemVolume
 
 ```TypeScript
@@ -259,6 +265,7 @@ Obtains the minimum volume allowed for a volume type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="getminsystemvolumepercentage"></a>
 ## getMinSystemVolumePercentage
 
 ```TypeScript
@@ -307,6 +314,7 @@ try {
 
 ```
 
+<a id="getstreamusagesbyvolumetype"></a>
 ## getStreamUsagesByVolumeType
 
 ```TypeScript
@@ -342,6 +350,7 @@ Obtains stream types by volume type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="getsupportedaudiovolumetypes"></a>
 ## getSupportedAudioVolumeTypes
 
 ```TypeScript
@@ -362,7 +371,7 @@ Obtains system supported volume types.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Readonly<AudioVolumeType>> | Return the system volume type array. |
+| Array&lt;Readonly&lt;AudioVolumeType&gt;&gt; | Return the system volume type array. |
 
 **错误码：**
 
@@ -370,6 +379,7 @@ Obtains system supported volume types.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 
+<a id="getsystemvolume"></a>
 ## getSystemVolume
 
 ```TypeScript
@@ -405,6 +415,7 @@ Obtains the volume of a volume type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="getsystemvolumebyuid"></a>
 ## getSystemVolumeByUid
 
 ```TypeScript
@@ -442,6 +453,7 @@ Obtains the volume of streams in specific uid application.
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
+<a id="getsystemvolumepercentage"></a>
 ## getSystemVolumePercentage
 
 ```TypeScript
@@ -490,6 +502,7 @@ try {
 
 ```
 
+<a id="getvolumegroupinfos"></a>
 ## getVolumeGroupInfos
 
 ```TypeScript
@@ -511,7 +524,7 @@ Get the volume group list for a networkId. This method uses an asynchronous call
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | networkId | string | 是 | Distributed deice net work id |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<VolumeGroupInfos> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;VolumeGroupInfos&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -528,6 +541,7 @@ audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessErr
 
 ```
 
+<a id="getvolumegroupinfos-1"></a>
 ## getVolumeGroupInfos
 
 ```TypeScript
@@ -554,7 +568,7 @@ Get the volume group list for a networkId. This method uses a promise to return 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<VolumeGroupInfos> | Promise used to return the result. |
+| Promise&lt;VolumeGroupInfos&gt; | Promise used to return the result. |
 
 **示例：**
 
@@ -566,6 +580,7 @@ async function getVolumeGroupInfos(){
 
 ```
 
+<a id="getvolumegroupinfossync"></a>
 ## getVolumeGroupInfosSync
 
 ```TypeScript
@@ -616,6 +631,7 @@ try {
 
 ```
 
+<a id="getvolumeinunitofdb"></a>
 ## getVolumeInUnitOfDb
 
 ```TypeScript
@@ -653,6 +669,7 @@ Gets the volume db value that system calculate by volume type, volume level and 
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="isappvolumemutedforuid"></a>
 ## isAppVolumeMutedForUid
 
 ```TypeScript
@@ -682,7 +699,7 @@ Checks whether the app volume is muted. If there are multiple callers setting mu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise used to return the result. |
+| Promise&lt;boolean&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -703,6 +720,7 @@ audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
 
 ```
 
+<a id="issystemmuted"></a>
 ## isSystemMuted
 
 ```TypeScript
@@ -738,6 +756,7 @@ Checks whether a volume type is muted.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="off"></a>
 ## off('appVolumeChangeForUid')
 
 ```TypeScript
@@ -761,7 +780,7 @@ Unsubscribes to the app volume change events..
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'appVolumeChangeForUid' | 是 | Type of the event to be unregistered. Only the appVolumeChangeForUid event is supported. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VolumeEvent> | 否 | Callback used to obtain the invoking volume change event. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VolumeEvent&gt; | 否 | Callback used to obtain the invoking volume change event. |
 
 **错误码：**
 
@@ -790,6 +809,7 @@ audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 
 ```
 
+<a id="off-1"></a>
 ## off('activeVolumeTypeChange')
 
 ```TypeScript
@@ -811,7 +831,7 @@ off(type: 'activeVolumeTypeChange', callback?: Callback<AudioVolumeType>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'activeVolumeTypeChange' | 是 | Type of the event to unregister. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioVolumeType> | 否 | Callback used to return the active volume type. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioVolumeType&gt; | 否 | Callback used to return the active volume type. |
 
 **错误码：**
 
@@ -837,6 +857,7 @@ audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback)
 
 ```
 
+<a id="off-2"></a>
 ## off('systemVolumeChange')
 
 ```TypeScript
@@ -858,7 +879,7 @@ Unsubscribes to the system volume change events.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'systemVolumeChange' | 是 | Type of the event to be unregistered.Only the systemVolumeChange event is supported. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VolumeEvent> | 否 | Callback used to obtain the invoking volume change event. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VolumeEvent&gt; | 否 | Callback used to obtain the invoking volume change event. |
 
 **错误码：**
 
@@ -884,6 +905,7 @@ audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
 
 ```
 
+<a id="offsystemvolumechangebyfilter"></a>
 ## offSystemVolumeChangeByFilter
 
 ```TypeScript
@@ -906,7 +928,7 @@ offSystemVolumeChangeByFilter(callback?: Callback<VolumeEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VolumeEvent> | 否 | 订阅中使用的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VolumeEvent&gt; | 否 | 订阅中使用的回调。 |
 
 **错误码：**
 
@@ -915,6 +937,7 @@ offSystemVolumeChangeByFilter(callback?: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="offvolumepercentagechange"></a>
 ## offVolumePercentageChange
 
 ```TypeScript
@@ -935,7 +958,7 @@ Unsubscribes from system volume percentage change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VolumeEvent> | 否 | Callback used to return the system volume percentage change event. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VolumeEvent&gt; | 否 | Callback used to return the system volume percentage change event. |
 
 **错误码：**
 
@@ -964,6 +987,7 @@ audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
 
 ```
 
+<a id="on"></a>
 ## on('appVolumeChangeForUid')
 
 ```TypeScript
@@ -988,7 +1012,7 @@ Listens for specified app volume change events.The app volume may changed by {@l
 | --- | --- | --- | --- |
 | type | 'appVolumeChangeForUid' | 是 | Type of the event to listen for. Only the appVolumeChangeForUid event is supported. |
 | uid | number | 是 | The app's uid. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VolumeEvent> | 是 | Callback used to get the app volume change event. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VolumeEvent&gt; | 是 | Callback used to get the app volume change event. |
 
 **错误码：**
 
@@ -1011,6 +1035,7 @@ audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEv
 
 ```
 
+<a id="on-1"></a>
 ## on('activeVolumeTypeChange')
 
 ```TypeScript
@@ -1032,7 +1057,7 @@ on(type: 'activeVolumeTypeChange', callback: Callback<AudioVolumeType>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'activeVolumeTypeChange' | 是 | Type of the event to listen for. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioVolumeType> | 是 | Callback used to return the active volume type. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioVolumeType&gt; | 是 | Callback used to return the active volume type. |
 
 **错误码：**
 
@@ -1050,6 +1075,7 @@ audioVolumeManager.on('activeVolumeTypeChange', (volumeType: audio.AudioVolumeTy
 
 ```
 
+<a id="on-2"></a>
 ## on('systemVolumeChange')
 
 ```TypeScript
@@ -1071,7 +1097,7 @@ Listens for system volume change events. This method uses a callback to get volu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'systemVolumeChange' | 是 | Type of the event to listen for.Only the systemVolumeChange event is supported. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VolumeEvent> | 是 | Callback used to get the system volume change event. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VolumeEvent&gt; | 是 | Callback used to get the system volume change event. |
 
 **错误码：**
 
@@ -1089,6 +1115,7 @@ audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => 
 
 ```
 
+<a id="onsystemvolumechangebyfilter"></a>
 ## onSystemVolumeChangeByFilter
 
 ```TypeScript
@@ -1112,7 +1139,7 @@ onSystemVolumeChangeByFilter(filter: SystemVolumeFilter, callback: Callback<Volu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | [SystemVolumeFilter](arkts-audio-audio-systemvolumefilter-i-sys.md) | 是 | 系统音量变化的过滤器。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VolumeEvent> | 是 | 回调用于接收系统音量的变化。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VolumeEvent&gt; | 是 | 回调用于接收系统音量的变化。 |
 
 **错误码：**
 
@@ -1121,6 +1148,7 @@ onSystemVolumeChangeByFilter(filter: SystemVolumeFilter, callback: Callback<Volu
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not a system app. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="onvolumepercentagechange"></a>
 ## onVolumePercentageChange
 
 ```TypeScript
@@ -1141,7 +1169,7 @@ Subscribes to system volume percentage change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VolumeEvent> | 是 | Callback used to return the system volume percentage change event. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VolumeEvent&gt; | 是 | Callback used to return the system volume percentage change event. |
 
 **错误码：**
 
@@ -1162,6 +1190,7 @@ onVolumePercentageChange((volumeEvent: audio.VolumeEvent) => {
 
 ```
 
+<a id="setappvolumemutedforuid"></a>
 ## setAppVolumeMutedForUid
 
 ```TypeScript
@@ -1191,7 +1220,7 @@ Change mute state of specified application volume. If there are multiple callers
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -1213,6 +1242,7 @@ audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
 
 ```
 
+<a id="setappvolumepercentageforuid"></a>
 ## setAppVolumePercentageForUid
 
 ```TypeScript
@@ -1242,7 +1272,7 @@ Sets the volume for specified app with range from 0 to 100. Applications with sa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -1265,6 +1295,7 @@ audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
 
 ```
 
+<a id="setsystemvolumebyuid"></a>
 ## setSystemVolumeByUid
 
 ```TypeScript
@@ -1295,7 +1326,7 @@ Sets the volume for specific uid application. This method uses a promise to retu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -1306,6 +1337,7 @@ Sets the volume for specific uid application. This method uses a promise to retu
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
+<a id="setsystemvolumepercentage"></a>
 ## setSystemVolumePercentage
 
 ```TypeScript
@@ -1335,7 +1367,7 @@ Sets the system volume percentage, using an integer ranging from minimum system 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 

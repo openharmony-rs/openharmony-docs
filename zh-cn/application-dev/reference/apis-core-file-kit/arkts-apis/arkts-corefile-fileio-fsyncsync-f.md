@@ -1,5 +1,6 @@
 # fsyncSync
 
+<a id="fsyncsync"></a>
 ## fsyncSync
 
 ```TypeScript

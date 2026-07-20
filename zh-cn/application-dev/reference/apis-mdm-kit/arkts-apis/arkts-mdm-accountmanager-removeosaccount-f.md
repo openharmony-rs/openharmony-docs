@@ -6,6 +6,7 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
+<a id="removeosaccount"></a>
 ## removeOsAccount
 
 ```TypeScript
@@ -35,7 +36,7 @@ function removeOsAccount(admin: Want, accountId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | promise回调 |
+| Promise&lt;void&gt; | promise回调 |
 
 **错误码：**
 

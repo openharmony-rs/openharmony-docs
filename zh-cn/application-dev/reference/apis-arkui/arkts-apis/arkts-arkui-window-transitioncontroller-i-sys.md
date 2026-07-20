@@ -16,6 +16,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="animationforhidden"></a>
 ## animationForHidden
 
 ```TypeScript
@@ -105,6 +106,7 @@ try {
 
 ```
 
+<a id="animationforshown"></a>
 ## animationForShown
 
 ```TypeScript

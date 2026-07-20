@@ -1,6 +1,6 @@
 # Key
 
-密钥（父类），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)方法。
+密钥（父类），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)方法。
 
 密钥通过子类密钥生成器来生成，详见子类描述。具体子类有：[SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md)、[PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md)、[PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md)。
 
@@ -18,6 +18,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="getencoded"></a>
 ## getEncoded
 
 ```TypeScript
@@ -68,6 +69,7 @@ async function testGenerateAesKey() {
 
 ```
 
+<a id="getkeysize"></a>
 ## getKeySize
 
 ```TypeScript

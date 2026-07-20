@@ -13,6 +13,7 @@ DriverExtensionContext模块是DriverExtensionAbility的上下文环境，继承
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+<a id="updatedriverstate"></a>
 ## updateDriverState
 
 ```TypeScript

@@ -1,5 +1,6 @@
 # getActiveNotifications
 
+<a id="getactivenotifications"></a>
 ## getActiveNotifications
 
 ```TypeScript
@@ -22,9 +23,10 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<NotificationRequest>> | 是 | 获取当前应用通知列表回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;NotificationRequest&gt;&gt; | 是 | 获取当前应用通知列表回调函数。 |
 
 
+<a id="getactivenotifications-1"></a>
 ## getActiveNotifications
 
 ```TypeScript
@@ -47,5 +49,5 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<NotificationRequest>> | 以Promise形式返回获取当前应用通知列表。 |
+| Promise&lt;Array&lt;NotificationRequest&gt;&gt; | 以Promise形式返回获取当前应用通知列表。 |
 

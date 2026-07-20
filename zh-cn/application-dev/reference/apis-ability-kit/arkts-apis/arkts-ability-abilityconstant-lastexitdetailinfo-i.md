@@ -60,7 +60,7 @@ Ability上次退出的子原因。
 killReason?: string
 ```
 
-Ability上次退出时的原因，取值详见[应用终止事件reason字段说明](../../../../dfx/hiappevent-watcher-app-killed-events.md#reason字段说明)。
+Ability上次退出时的原因，取值详见[应用终止事件reason字段说明](docroot://dfx/hiappevent-watcher-app-killed-events.md#reason字段说明)。
 
 **类型：** string
 

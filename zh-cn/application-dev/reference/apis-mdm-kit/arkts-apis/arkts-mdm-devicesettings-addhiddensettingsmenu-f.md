@@ -6,6 +6,7 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
+<a id="addhiddensettingsmenu"></a>
 ## addHiddenSettingsMenu
 
 ```TypeScript
@@ -29,7 +30,7 @@ function addHiddenSettingsMenu(admin: Want, menusToHidden: Array<SettingsMenu>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| menusToHidden | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<SettingsMenu> | 是 | 隐藏的设置项列表。 |
+| menusToHidden | Array&lt;SettingsMenu&gt; | 是 | 隐藏的设置项列表。 |
 
 **错误码：**
 

@@ -1,5 +1,6 @@
 # connectSystemChannel（系统接口）
 
+<a id="connectsystemchannel"></a>
 ## connectSystemChannel
 
 ```TypeScript
@@ -24,7 +25,7 @@ function connectSystemChannel(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 返回的Promise。 |
+| Promise&lt;void&gt; | 返回的Promise。 |
 
 **错误码：**
 

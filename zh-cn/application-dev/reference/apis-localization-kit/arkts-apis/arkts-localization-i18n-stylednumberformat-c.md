@@ -14,6 +14,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -74,6 +75,7 @@ try {
 
 ```
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -86,7 +88,7 @@ constructor(numberFormat: intl.NumberFormat | SimpleNumberFormat, options?: Styl
 
 **废弃版本：** 20
 
-**替代接口：** constructor(numberFormat:
+**替代接口：** [constructor(numberFormat:](arkts-localization-i18n-stylednumberformat-c.md#constructor-1)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -138,6 +140,7 @@ try {
 
 ```
 
+<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -164,7 +167,7 @@ format(value: number): StyledString
 
 | 类型 | 说明 |
 | --- | --- |
-| [StyledString](../../apis-arkui/arkts-apis/arkts-arkui-styled-string-styledstring-c.md) | 格式化后的富文本对象。 |
+| [StyledString](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-c.md) | 格式化后的富文本对象。 |
 
 **示例：**
 

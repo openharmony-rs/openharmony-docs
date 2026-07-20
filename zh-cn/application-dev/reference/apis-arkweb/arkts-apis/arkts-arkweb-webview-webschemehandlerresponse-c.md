@@ -14,6 +14,7 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -30,6 +31,7 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+<a id="getencoding"></a>
 ## getEncoding
 
 ```TypeScript
@@ -52,6 +54,7 @@ getEncoding(): string
 | --- | --- |
 | string | 字符集。 |
 
+<a id="getheaderbyname"></a>
 ## getHeaderByName
 
 ```TypeScript
@@ -80,6 +83,7 @@ getHeaderByName(name: string): string
 | --- | --- |
 | string | 头部（header）的值。 |
 
+<a id="getmimetype"></a>
 ## getMimeType
 
 ```TypeScript
@@ -102,6 +106,7 @@ getMimeType(): string
 | --- | --- |
 | string | 媒体类型。 |
 
+<a id="getneterrorcode"></a>
 ## getNetErrorCode
 
 ```TypeScript
@@ -124,6 +129,7 @@ getNetErrorCode(): WebNetErrorList
 | --- | --- |
 | [WebNetErrorList](arkts-arkweb-web-neterrorlist-webneterrorlist-e.md) | 获取Response的网络错误码。 |
 
+<a id="getstatus"></a>
 ## getStatus
 
 ```TypeScript
@@ -146,6 +152,7 @@ getStatus(): number
 | --- | --- |
 | number | 获取Response的Http状态码。 |
 
+<a id="getstatustext"></a>
 ## getStatusText
 
 ```TypeScript
@@ -168,6 +175,7 @@ getStatusText(): string
 | --- | --- |
 | string | 状态文本。 |
 
+<a id="geturl"></a>
 ## getUrl
 
 ```TypeScript
@@ -190,6 +198,7 @@ getUrl(): string
 | --- | --- |
 | string | 获取经过重定向或由于HSTS而更改后的URL。 |
 
+<a id="setencoding"></a>
 ## setEncoding
 
 ```TypeScript
@@ -218,6 +227,7 @@ setEncoding(encoding: string): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
+<a id="setheaderbyname"></a>
 ## setHeaderByName
 
 ```TypeScript
@@ -248,6 +258,7 @@ setHeaderByName(name: string, value: string, overwrite: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
+<a id="setmimetype"></a>
 ## setMimeType
 
 ```TypeScript
@@ -276,6 +287,7 @@ setMimeType(type: string): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
+<a id="setneterrorcode"></a>
 ## setNetErrorCode
 
 ```TypeScript
@@ -304,6 +316,7 @@ setNetErrorCode(code: WebNetErrorList): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
+<a id="setstatus"></a>
 ## setStatus
 
 ```TypeScript
@@ -332,6 +345,7 @@ setStatus(code: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
+<a id="setstatustext"></a>
 ## setStatusText
 
 ```TypeScript
@@ -360,6 +374,7 @@ setStatusText(text: string): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
+<a id="seturl"></a>
 ## setUrl
 
 ```TypeScript

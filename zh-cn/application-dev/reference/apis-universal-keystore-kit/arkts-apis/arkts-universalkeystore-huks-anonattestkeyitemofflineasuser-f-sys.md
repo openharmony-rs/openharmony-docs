@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="anonattestkeyitemofflineasuser"></a>
 ## anonAttestKeyItemOfflineAsUser
 
 ```TypeScript
@@ -47,7 +48,7 @@ function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksReturnResult> | Promise用于返回结果。如果操作成功。HuksReturnResult中的certChains包含获取到的证书链。 |
+| Promise&lt;HuksReturnResult&gt; | Promise用于返回结果。如果操作成功。HuksReturnResult中的certChains包含获取到的证书链。 |
 
 **错误码：**
 

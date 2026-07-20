@@ -22,7 +22,7 @@ devices: Array<DeviceInfo>
 
 播放设备的集合。
 
-**类型：** Array<DeviceInfo>
+**类型：** Array&lt;DeviceInfo&gt;
 
 **起始版本：** 10
 

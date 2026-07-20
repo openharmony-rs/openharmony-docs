@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="savepdffilejob"></a>
 ## savePdfFileJob
 
 ```TypeScript
@@ -37,7 +38,7 @@ function savePdfFileJob(jobId: string, fd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | the promise returned by the function. |
+| Promise&lt;void&gt; | the promise returned by the function. |
 
 **错误码：**
 

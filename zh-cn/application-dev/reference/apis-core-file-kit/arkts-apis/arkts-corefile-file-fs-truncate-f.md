@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="truncate"></a>
 ## truncate
 
 ```TypeScript
@@ -33,7 +34,7 @@ declare function truncate(file: string | number, len?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ declare function truncate(file: string | number, len?: number): Promise<void>
 | 13900042 | Unknown error |
 
 
+<a id="truncate-1"></a>
 ## truncate
 
 ```TypeScript
@@ -78,7 +80,7 @@ declare function truncate(file: string | number, callback: AsyncCallback<void>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | file | string \| number | 是 | 文件的应用沙箱路径或已打开的文件描述符fd。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，本调用无返回值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
 
 **错误码：**
 
@@ -102,6 +104,7 @@ declare function truncate(file: string | number, callback: AsyncCallback<void>):
 | 13900042 | Unknown error |
 
 
+<a id="truncate-2"></a>
 ## truncate
 
 ```TypeScript
@@ -124,7 +127,7 @@ declare function truncate(file: string | number, len: number, callback: AsyncCal
 | --- | --- | --- | --- |
 | file | string \| number | 是 | 文件的应用沙箱路径或已打开的文件描述符fd。 |
 | len | number | 是 | 文件截断后的长度，单位为Byte。默认为0。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，本调用无返回值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
 
 **错误码：**
 

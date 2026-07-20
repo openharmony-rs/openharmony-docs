@@ -16,6 +16,7 @@
 import { LazyDynamicLayoutAttribute, LazyDynamicLayout } from '@kit.ArkUI';
 ```
 
+<a id="onvisibleindexeschange"></a>
 ## onVisibleIndexesChange
 
 ```TypeScript
@@ -38,7 +39,7 @@ onVisibleIndexesChange(callback: Callback<number[]> | undefined): LazyDynamicLay
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<number[]> \| undefined | 是 | 可见索引变化时回调的回调函数。<br>传递undefined将取消注册回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number[]&gt; \| undefined | 是 | 可见索引变化时回调的回调函数。<br>传递undefined将取消注册回调。 |
 
 **返回值：**
 

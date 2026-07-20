@@ -6,6 +6,7 @@
 import { autoStartupManager } from '@kit.AbilityKit';
 ```
 
+<a id="setapplicationautostartup"></a>
 ## setApplicationAutoStartup
 
 ```TypeScript
@@ -31,7 +32,7 @@ function setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | info | [AutoStartupInfo](arkts-ability-common-autostartupinfo-t-sys.md) | 是 | 要设置的开机自启动应用组件信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置应用组件开机自启动成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置应用组件开机自启动成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -45,6 +46,7 @@ function setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallbac
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
 
 
+<a id="setapplicationautostartup-1"></a>
 ## setApplicationAutoStartup
 
 ```TypeScript
@@ -75,7 +77,7 @@ function setApplicationAutoStartup(info: AutoStartupInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

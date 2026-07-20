@@ -14,13 +14,14 @@
 import { AnimatorOptions, SimpleAnimatorOptions, AnimatorResult } from '@kit.ArkUI';
 ```
 
+<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
 cancel(): void
 ```
 
-取消动画，会触发[onCancel](../../../../reference/apis-arkui/js-apis-animator.md#属性)回调。此接口和[finish](arkts-arkui-animator-animatorresult-i.md#finish-1)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
+取消动画，会触发[onCancel](docroot://reference/apis-arkui/js-apis-animator.md#属性)回调。此接口和[finish](arkts-arkui-animator-animatorresult-i.md#finish-1)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
 
 **起始版本：** 6
 
@@ -39,13 +40,14 @@ animator.cancel();
 
 ```
 
+<a id="finish"></a>
 ## finish
 
 ```TypeScript
 finish(): void
 ```
 
-结束动画，会触发[onFinish](../../../../reference/apis-arkui/js-apis-animator.md#属性)回调。
+结束动画，会触发[onFinish](docroot://reference/apis-arkui/js-apis-animator.md#属性)回调。
 
 **起始版本：** 6
 
@@ -64,6 +66,7 @@ animator.finish();
 
 ```
 
+<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -89,6 +92,7 @@ animator.pause();
 
 ```
 
+<a id="play"></a>
 ## play
 
 ```TypeScript
@@ -114,6 +118,7 @@ animator.play();
 
 ```
 
+<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -183,6 +188,7 @@ struct AnimatorTest {
 
 ```
 
+<a id="reset-1"></a>
 ## reset
 
 ```TypeScript
@@ -205,7 +211,7 @@ reset(options: AnimatorOptions | SimpleAnimatorOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | AnimatorOptions \| SimpleAnimatorOptions | 是 | 定义动画选项。 |
+| options | [AnimatorOptions](arkts-arkui-animator-animatoroptions-i.md) \| SimpleAnimatorOptions | 是 | 定义动画选项。 |
 
 **错误码：**
 
@@ -240,6 +246,7 @@ animatorResult.reset(optionsNew);
 
 ```
 
+<a id="reverse"></a>
 ## reverse
 
 ```TypeScript
@@ -265,6 +272,7 @@ animator.reverse();
 
 ```
 
+<a id="setexpectedframeraterange"></a>
 ## setExpectedFrameRateRange
 
 ```TypeScript
@@ -287,7 +295,7 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rateRange | [ExpectedFrameRateRange](../arkts-components/arkts-arkui-common-expectedframeraterange-i.md) | 是 | 设置期望的帧率范围。 |
+| rateRange | [ExpectedFrameRateRange](../arkts-components/arkts-arkui-expectedframeraterange-i.md) | 是 | 设置期望的帧率范围。 |
 
 **示例：**
 
@@ -326,6 +334,7 @@ struct AnimatorTest {
 
 ```
 
+<a id="update"></a>
 ## update
 
 ```TypeScript
@@ -342,7 +351,7 @@ update(options: AnimatorOptions): void
 
 **废弃版本：** 9
 
-**替代接口：** reset(options:
+**替代接口：** [reset(options:](arkts-arkui-animator-animatorresult-i.md#reset-1)
 
 <!--Device-AnimatorResult-update(options: AnimatorOptions): void--><!--Device-AnimatorResult-update(options: AnimatorOptions): void-End-->
 
@@ -371,7 +380,7 @@ onCancel: () => void
 
 动画被取消时回调。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 12
 
@@ -391,7 +400,7 @@ onFinish: () => void
 
 动画完成时回调。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 12
 
@@ -413,7 +422,7 @@ onFrame: (progress: number) => void
 
 progress表示动画的当前值。取值范围为[AnimatorOptions](arkts-arkui-animator-animatoroptions-i.md)定义的[begin, end]，默认取值范围为[0, 1]。
 
-**类型：** (progress: number) => void
+**类型：** (progress: number) =&gt; void
 
 **起始版本：** 12
 
@@ -433,7 +442,7 @@ onRepeat: () => void
 
 动画重复时回调。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 12
 
@@ -455,7 +464,7 @@ oncancel: () => void
 
 **说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onCancel。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 6
 
@@ -479,7 +488,7 @@ onfinish: () => void
 
 **说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFinish。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 6
 
@@ -503,7 +512,7 @@ onframe: (progress: number) => void
 
 **说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFrame。
 
-**类型：** (progress: number) => void
+**类型：** (progress: number) =&gt; void
 
 **起始版本：** 6
 
@@ -527,7 +536,7 @@ onrepeat: () => void
 
 **说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onRepeat。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 6
 

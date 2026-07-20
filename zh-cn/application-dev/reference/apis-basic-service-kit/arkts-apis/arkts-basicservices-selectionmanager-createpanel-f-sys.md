@@ -6,6 +6,7 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="createpanel"></a>
 ## createPanel
 
 ```TypeScript
@@ -35,7 +36,7 @@ function createPanel(ctx: Context, info: PanelInfo): Promise<Panel>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Panel> | Promise对象，返回当前创建的划词面板对象。 |
+| Promise&lt;Panel&gt; | Promise对象，返回当前创建的划词面板对象。 |
 
 **错误码：**
 

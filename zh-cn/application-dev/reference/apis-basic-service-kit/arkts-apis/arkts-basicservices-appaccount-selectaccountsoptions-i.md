@@ -22,7 +22,7 @@ allowedAccounts?: Array<AppAccountInfo>
 
 允许的账号数组，默认为空。
 
-**类型：** Array<AppAccountInfo>
+**类型：** Array&lt;AppAccountInfo&gt;
 
 **起始版本：** 9
 
@@ -38,7 +38,7 @@ allowedOwners?: Array<string>
 
 允许的账号所有者数组，默认为空。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 
@@ -54,7 +54,7 @@ requiredLabels?: Array<string>
 
 认证器的标签标识，默认为空。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 

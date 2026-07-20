@@ -20,6 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="adjustsystemvolumebystep"></a>
 ## adjustSystemVolumeByStep
 
 ```TypeScript
@@ -42,7 +43,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e-sys.md) | 是 | Audio volume type. |
 | adjustType | [VolumeAdjustType](arkts-audio-audio-volumeadjusttype-e-sys.md) | 是 | Volume adjustment type. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
 
 ```
 
+<a id="adjustsystemvolumebystep-1"></a>
 ## adjustSystemVolumeByStep
 
 ```TypeScript
@@ -95,7 +97,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | * |
+| Promise&lt;void&gt; | * |
 
 **错误码：**
 
@@ -119,6 +121,7 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
 
 ```
 
+<a id="adjustvolumebystep"></a>
 ## adjustVolumeByStep
 
 ```TypeScript
@@ -140,7 +143,7 @@ adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback<void>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | adjustType | [VolumeAdjustType](arkts-audio-audio-volumeadjusttype-e-sys.md) | 是 | Volume adjustment type. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **错误码：**
 
@@ -167,6 +170,7 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP, (er
 
 ```
 
+<a id="adjustvolumebystep-1"></a>
 ## adjustVolumeByStep
 
 ```TypeScript
@@ -193,7 +197,7 @@ adjustVolumeByStep(adjustType: VolumeAdjustType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | * |
+| Promise&lt;void&gt; | * |
 
 **错误码：**
 
@@ -217,6 +221,7 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).the
 
 ```
 
+<a id="getactivevolumetypesync"></a>
 ## getActiveVolumeTypeSync
 
 ```TypeScript
@@ -262,6 +267,7 @@ let value = audioVolumeGroupManager.getActiveVolumeTypeSync(uid);
 
 ```
 
+<a id="ispersistentmicmute"></a>
 ## isPersistentMicMute
 
 ```TypeScript
@@ -298,6 +304,7 @@ let value: boolean = audioVolumeGroupManager.isPersistentMicMute();
 
 ```
 
+<a id="mute"></a>
 ## mute
 
 ```TypeScript
@@ -320,7 +327,7 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>):
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e-sys.md) | 是 | Audio stream type. |
 | mute | boolean | 是 | Mute status to set. The value true means to mute the stream, and false means the opposite. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -337,6 +344,7 @@ audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessEr
 
 ```
 
+<a id="mute-1"></a>
 ## mute
 
 ```TypeScript
@@ -366,7 +374,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | * |
+| Promise&lt;void&gt; | * |
 
 **示例：**
 
@@ -377,6 +385,7 @@ audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
 
 ```
 
+<a id="setmicmute"></a>
 ## setMicMute
 
 ```TypeScript
@@ -403,7 +412,7 @@ setMicMute(mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | * |
+| Promise&lt;void&gt; | * |
 
 **错误码：**
 
@@ -423,6 +432,7 @@ audioVolumeGroupManager.setMicMute(true).then(() => {
 
 ```
 
+<a id="setmicmutepersistent"></a>
 ## setMicMutePersistent
 
 ```TypeScript
@@ -444,13 +454,13 @@ setMicMutePersistent(mute: boolean, type: PolicyType): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mute | boolean | 是 | Mute status to set. The value true means to mute the microphone, and false means the opposite. |
-| type | [PolicyType](arkts-audio-audio-policytype-e-sys.md) | 是 | Mute status to set. This value represents the caller's type such as EDM or privacy. |
+| type | [PolicyType](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-policytype-e.md) | 是 | Mute status to set. This value represents the caller's type such as EDM or privacy. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | * |
+| Promise&lt;void&gt; | * |
 
 **错误码：**
 
@@ -470,6 +480,7 @@ audioVolumeGroupManager.setMicMutePersistent(true, audio.PolicyType.PRIVACY).the
 
 ```
 
+<a id="setringermode"></a>
 ## setRingerMode
 
 ```TypeScript
@@ -491,7 +502,7 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | [AudioRingMode](arkts-audio-audio-audioringmode-e.md) | 是 | Ringer mode. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -508,6 +519,7 @@ audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (e
 
 ```
 
+<a id="setringermode-1"></a>
 ## setRingerMode
 
 ```TypeScript
@@ -536,7 +548,7 @@ setRingerMode(mode: AudioRingMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | * |
+| Promise&lt;void&gt; | * |
 
 **示例：**
 
@@ -547,6 +559,7 @@ audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).th
 
 ```
 
+<a id="setvolume"></a>
 ## setVolume
 
 ```TypeScript
@@ -571,7 +584,7 @@ Sets the volume for a stream. This method uses an asynchronous callback to retur
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e-sys.md) | 是 | Audio stream type. |
 | volume | number | 是 | Volume to set. The value range can be obtained by calling getMinVolume and getMaxVolume. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -588,6 +601,7 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: Busines
 
 ```
 
+<a id="setvolume-1"></a>
 ## setVolume
 
 ```TypeScript
@@ -617,7 +631,7 @@ Sets the volume for a stream. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **示例：**
 
@@ -628,6 +642,7 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
 
 ```
 
+<a id="setvolumewithflag"></a>
 ## setVolumeWithFlag
 
 ```TypeScript
@@ -658,7 +673,7 @@ Sets the volume for a stream. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 

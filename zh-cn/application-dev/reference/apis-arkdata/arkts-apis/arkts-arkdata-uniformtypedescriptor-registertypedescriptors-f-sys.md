@@ -6,6 +6,7 @@
 import { uniformTypeDescriptor } from '@kit.ArkData';
 ```
 
+<a id="registertypedescriptors"></a>
 ## registerTypeDescriptors
 
 ```TypeScript
@@ -32,13 +33,13 @@ function registerTypeDescriptors(typeDescriptors: Array<TypeDescriptor>): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| typeDescriptors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<TypeDescriptor> | 是 | 待注册的标准化数据类型描述符列表。TypeDescriptor用于描述自定义数据类型的属性，包括类型标识、所属类型、文件扩展名、MIME类型等。列表不可为空，其中元素个数不超过50。单个应用注册的标准化数据类型描述符数量总计不超过200。 |
+| typeDescriptors | Array&lt;TypeDescriptor&gt; | 是 | 待注册的标准化数据类型描述符列表。TypeDescriptor用于描述自定义数据类型的属性，包括类型标识、所属类型、文件扩展名、MIME类型等。列表不可为空，其中元素个数不超过50。单个应用注册的标准化数据类型描述符数量总计不超过200。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

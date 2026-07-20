@@ -22,5 +22,5 @@ On scroll callback using in scrollable onDidStopDragging.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| willFling | boolean | 是 | whether start fling animation. |
+| willFling | boolean | 是 | whether start fling animation.  |
 

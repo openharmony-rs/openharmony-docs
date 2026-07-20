@@ -14,7 +14,7 @@
 readonly appId: string
 ```
 
-应用的appId，表示应用的唯一标识，详情信息可参考[什么是appId](../../../../quick-start/common-problem-of-application.md#什么是appid)。
+应用的appId，表示应用的唯一标识，详情信息可参考[什么是appId](docroot://quick-start/common-problem-of-application.md#什么是appid)。
 
 **类型：** string
 
@@ -32,7 +32,7 @@ readonly appId: string
 readonly appIdentifier: string
 ```
 
-应用的唯一标识。详情信息可参考[什么是appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
+应用的唯一标识。详情信息可参考[什么是appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **类型：** string
 

@@ -6,6 +6,7 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="getusernonstopapps"></a>
 ## getUserNonStopApps
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getUserNonStopApps(admin: Want): Array<common.ApplicationInstance>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common.ApplicationInstance> | Array of non-stoppable applications. |
+| Array&lt;common.ApplicationInstance&gt; | Array of non-stoppable applications. |
 
 **错误码：**
 

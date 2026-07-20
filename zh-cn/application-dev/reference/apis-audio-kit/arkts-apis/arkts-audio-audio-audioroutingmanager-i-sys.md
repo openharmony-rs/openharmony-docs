@@ -20,6 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="excludeoutputdevices"></a>
 ## excludeOutputDevices
 
 ```TypeScript
@@ -50,7 +51,7 @@ Exclude output devices. After calling this function successfully, audio will not
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return result. |
+| Promise&lt;void&gt; | Promise used to return result. |
 
 **错误码：**
 
@@ -93,6 +94,7 @@ async function excludeOutputDevices(){
 
 ```
 
+<a id="getactiveoutputdevicedescriptors"></a>
 ## getActiveOutputDeviceDescriptors
 
 ```TypeScript
@@ -115,7 +117,7 @@ getActiveOutputDeviceDescriptors(): Promise<AudioDeviceDescriptors>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AudioDeviceDescriptors> | 当前激活的输出设备信息 |
+| Promise&lt;AudioDeviceDescriptors&gt; | 当前激活的输出设备信息 |
 
 **错误码：**
 
@@ -135,6 +137,7 @@ audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescript
 
 ```
 
+<a id="getexcludeddevices"></a>
 ## getExcludedDevices
 
 ```TypeScript
@@ -184,6 +187,7 @@ async function getExcludedDevices(){
 
 ```
 
+<a id="getpreferredinputdevicebyfilter"></a>
 ## getPreferredInputDeviceByFilter
 
 ```TypeScript
@@ -242,6 +246,7 @@ async function getPreferredInputDeviceByFilter(){
 
 ```
 
+<a id="getpreferredoutputdevicebyfilter"></a>
 ## getPreferredOutputDeviceByFilter
 
 ```TypeScript
@@ -301,6 +306,7 @@ async function selectOutputDeviceByFilter(){
 
 ```
 
+<a id="off"></a>
 ## off('preferredOutputDeviceChangeByFilter')
 
 ```TypeScript
@@ -322,7 +328,7 @@ Unsubscribes to preferred output device change events.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'preferredOutputDeviceChangeByFilter' | 是 | Type of the event to listen for. Only the preferredOutputDeviceChangeByFilter event is supported. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioDeviceDescriptors> | 否 | Callback used in subscribe. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioDeviceDescriptors&gt; | 否 | Callback used in subscribe. |
 
 **错误码：**
 
@@ -356,6 +362,7 @@ audioRoutingManager.off('preferredOutputDeviceChangeByFilter', preferredOutputDe
 
 ```
 
+<a id="offpreferredinputdevicechangebyfilter"></a>
 ## offPreferredInputDeviceChangeByFilter
 
 ```TypeScript
@@ -378,7 +385,7 @@ offPreferredInputDeviceChangeByFilter(callback?: Callback<AudioDeviceDescriptors
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioDeviceDescriptors> | 否 | 要侦听的事件类型。只有支持的输入设备变更按过滤事件为precedenceInputDeviceChangeByFilter。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioDeviceDescriptors&gt; | 否 | 要侦听的事件类型。只有支持的输入设备变更按过滤事件为precedenceInputDeviceChangeByFilter。 |
 
 **错误码：**
 
@@ -411,6 +418,7 @@ audioRoutingManager.offPreferredInputDeviceChangeByFilter(preferredInputDeviceCh
 
 ```
 
+<a id="on"></a>
 ## on('preferredOutputDeviceChangeByFilter')
 
 ```TypeScript
@@ -433,7 +441,7 @@ Subscribes to preferred output device change events. When preferred device for t
 | --- | --- | --- | --- |
 | type | 'preferredOutputDeviceChangeByFilter' | 是 | Type of the event to listen for. Only the preferredOutputDeviceChangeByFilter event is supported. |
 | filter | [AudioRendererFilter](arkts-audio-audio-audiorendererfilter-i-sys.md) | 是 | Filter for AudioRenderer. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioDeviceDescriptors> | 是 | Callback used to obtain the changed preferred devices information. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioDeviceDescriptors&gt; | 是 | Callback used to obtain the changed preferred devices information. |
 
 **错误码：**
 
@@ -460,6 +468,7 @@ audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendere
 
 ```
 
+<a id="onpreferredinputdevicechangebyfilter"></a>
 ## onPreferredInputDeviceChangeByFilter
 
 ```TypeScript
@@ -483,7 +492,7 @@ onPreferredInputDeviceChangeByFilter(filter: AudioCapturerFilter, callback: Call
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | [AudioCapturerFilter](arkts-audio-audio-audiocapturerfilter-i-sys.md) | 是 | 过滤capturer。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioDeviceDescriptors> | 是 | 回调用于接收首选设备变更信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioDeviceDescriptors&gt; | 是 | 回调用于接收首选设备变更信息。 |
 
 **错误码：**
 
@@ -509,6 +518,7 @@ audioRoutingManager.onPreferredInputDeviceChangeByFilter(inputAudioCapturerFilte
 
 ```
 
+<a id="restoreoutputdevicebyfilter"></a>
 ## restoreOutputDeviceByFilter
 
 ```TypeScript
@@ -537,7 +547,7 @@ restoreOutputDeviceByFilter(filter: AudioRendererFilter): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return result. |
+| Promise&lt;void&gt; | Promise used to return result. |
 
 **错误码：**
 
@@ -569,6 +579,7 @@ audioRoutingManager.restoreOutputDeviceByFilter(outputAudioRendererFilter).then(
 
 ```
 
+<a id="selectinputdevice"></a>
 ## selectInputDevice
 
 ```TypeScript
@@ -590,7 +601,7 @@ Select the input device. This method uses an asynchronous callback to return the
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | inputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 是 | Audio device description |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -625,6 +636,7 @@ async function selectInputDevice(){
 
 ```
 
+<a id="selectinputdevice-1"></a>
 ## selectInputDevice
 
 ```TypeScript
@@ -651,7 +663,7 @@ Select the input device. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **示例：**
 
@@ -684,6 +696,7 @@ async function getRoutingManager(){
 
 ```
 
+<a id="selectinputdevicebyfilter"></a>
 ## selectInputDeviceByFilter
 
 ```TypeScript
@@ -711,7 +724,7 @@ Select the input device with desired AudioCapturer. This method uses a promise t
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -761,6 +774,7 @@ async function selectInputDeviceByFilter(){
 
 ```
 
+<a id="selectoutputdevice"></a>
 ## selectOutputDevice
 
 ```TypeScript
@@ -782,7 +796,7 @@ Select the output device. This method uses an asynchronous callback to return th
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | outputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 是 | Audio device description |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -816,6 +830,7 @@ async function selectOutputDevice(){
 
 ```
 
+<a id="selectoutputdevice-1"></a>
 ## selectOutputDevice
 
 ```TypeScript
@@ -842,7 +857,7 @@ Select the output device. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **示例：**
 
@@ -875,6 +890,7 @@ async function selectOutputDevice(){
 
 ```
 
+<a id="selectoutputdevicebyfilter"></a>
 ## selectOutputDeviceByFilter
 
 ```TypeScript
@@ -897,7 +913,7 @@ Select the output device with desired AudioRenderer. This method uses an asynchr
 | --- | --- | --- | --- |
 | filter | [AudioRendererFilter](arkts-audio-audio-audiorendererfilter-i-sys.md) | 是 | Filter for AudioRenderer. |
 | outputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 是 | Audio device description. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -940,6 +956,7 @@ async function selectOutputDeviceByFilter(){
 
 ```
 
+<a id="selectoutputdevicebyfilter-1"></a>
 ## selectOutputDeviceByFilter
 
 ```TypeScript
@@ -967,7 +984,7 @@ Select the output device with desired AudioRenderer. This method uses a promise 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **示例：**
 
@@ -1009,6 +1026,7 @@ async function selectOutputDeviceByFilter(){
 
 ```
 
+<a id="selectoutputdevicebyfilter-2"></a>
 ## selectOutputDeviceByFilter
 
 ```TypeScript
@@ -1037,7 +1055,7 @@ Select the output device with desired AudioRenderer. This method uses a promise 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 202 - Not system App. |
+| Promise&lt;void&gt; | 202 - Not system App. |
 
 **错误码：**
 
@@ -1084,6 +1102,7 @@ audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, output
 
 ```
 
+<a id="unexcludeoutputdevices"></a>
 ## unexcludeOutputDevices
 
 ```TypeScript
@@ -1114,7 +1133,7 @@ Unexclude output devices.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return result. |
+| Promise&lt;void&gt; | Promise used to return result. |
 
 **错误码：**
 
@@ -1157,6 +1176,7 @@ async function unexcludeOutputDevices(){
 
 ```
 
+<a id="unexcludeoutputdevices-1"></a>
 ## unexcludeOutputDevices
 
 ```TypeScript
@@ -1186,7 +1206,7 @@ Unexclude output devices. This function will unexclude all output devices belong
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return result. |
+| Promise&lt;void&gt; | Promise used to return result. |
 
 **错误码：**
 

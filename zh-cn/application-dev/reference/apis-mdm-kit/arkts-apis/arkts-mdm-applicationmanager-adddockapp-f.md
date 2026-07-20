@@ -6,6 +6,7 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="adddockapp"></a>
 ## addDockApp
 
 ```TypeScript

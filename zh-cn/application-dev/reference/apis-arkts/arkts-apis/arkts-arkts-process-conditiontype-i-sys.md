@@ -24,7 +24,7 @@ killSignal?: number | string
 
 当子进程运行时间超过 timeout 时，向子进程发送的信号。
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 10
 

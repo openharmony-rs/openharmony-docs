@@ -16,6 +16,7 @@ ServiceExtensionAbility模块提供后台服务相关扩展能力，提供后台
 import { ServiceExtensionAbility } from '@kit.AbilityKit';
 ```
 
+<a id="onconfigurationupdate"></a>
 ## onConfigurationUpdate
 
 ```TypeScript
@@ -38,7 +39,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| newConfig | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-common-configuration-i.md) | 是 | 表示需要更新的配置信息。 |
+| newConfig | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-configuration-i.md) | 是 | 表示需要更新的配置信息。 |
 
 **示例：**
 
@@ -53,6 +54,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
+<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -132,6 +134,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
+<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -169,6 +172,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
+<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript
@@ -200,6 +204,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
+<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -253,6 +258,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
+<a id="ondump"></a>
 ## onDump
 
 ```TypeScript
@@ -275,13 +281,13 @@ onDump(params: Array<string>): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 表示命令形式的参数。 |
+| params | Array&lt;string&gt; | 是 | 表示命令形式的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 表示转存客户端信息数组。 |
+| Array&lt;string&gt; | 表示转存客户端信息数组。 |
 
 **示例：**
 
@@ -297,6 +303,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
+<a id="onreconnect"></a>
 ## onReconnect
 
 ```TypeScript
@@ -334,6 +341,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
+<a id="onrequest"></a>
 ## onRequest
 
 ```TypeScript

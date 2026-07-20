@@ -18,12 +18,12 @@ ArkTS TypedArray映射函数类型。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | FromElementType | 是 | 当前遍历的用于构造ArkTS TypedArray的元素。 |
-| index | number | 是 | 当前遍历的用于构造ArkTS TypedArray的元素索引，从0开始。 |
+| value | FromElementType | 是 | 当前遍历的用于构造ArkTS TypedArray的元素。  |
+| index | number | 是 | 当前遍历的用于构造ArkTS TypedArray的元素索引，从0开始。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ToElementType | 转换后的元素值。 |
+| ToElementType | 转换后的元素值。  |
 

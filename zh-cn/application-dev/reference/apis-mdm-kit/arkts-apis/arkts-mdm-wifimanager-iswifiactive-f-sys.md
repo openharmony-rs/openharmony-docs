@@ -6,6 +6,7 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
+<a id="iswifiactive"></a>
 ## isWifiActive
 
 ```TypeScript
@@ -35,7 +36,7 @@ function isWifiActive(admin: Want, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示Wi-Fi开启，false表示Wi-Fi关闭，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示Wi-Fi开启，false表示Wi-Fi关闭，否则err为错误对象。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ wifiManager.isWifiActive(wantTemp, (err, result) => {
 ```
 
 
+<a id="iswifiactive-1"></a>
 ## isWifiActive
 
 ```TypeScript
@@ -104,7 +106,7 @@ function isWifiActive(admin: Want): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回Wi-Fi开启状态，true表示Wi-Fi开启，false表示Wi-Fi关闭。 |
+| Promise&lt;boolean&gt; | Promise对象，返回Wi-Fi开启状态，true表示Wi-Fi开启，false表示Wi-Fi关闭。 |
 
 **错误码：**
 

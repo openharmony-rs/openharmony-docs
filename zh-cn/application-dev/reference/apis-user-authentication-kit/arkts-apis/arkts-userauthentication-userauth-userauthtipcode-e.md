@@ -1,6 +1,6 @@
 # UserAuthTipCode
 
-表示身份认证中间状态的枚举。该枚举用于描述认证过程中的各种中间状态，包括认证不通过、超时、冻结状态以及认证界面的加载和释放等。应用可通过[on('authTip')](arkts-userauthentication-userauth-userauthinstance-i.md#on-2)接口订阅这些中间状态，以便在认证过程中提供更精细的用户反馈和状态感知。
+表示身份认证中间状态的枚举。该枚举用于描述认证过程中的各种中间状态，包括认证不通过、超时、冻结状态以及认证界面的加载和释放等。应用可通过[on('authTip')](userAuth.UserAuthInstance.on(type: 'authTip', callback: AuthTipCallback))接口订阅这些中间状态，以便在认证过程中提供更精细的用户反馈和状态感知。
 
 **起始版本：** 20
 

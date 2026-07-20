@@ -20,6 +20,6 @@ type DataProgressListener = (progressInfo: ProgressInfo, data: UnifiedData | nul
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| progressInfo | ProgressInfo | 是 | 定义进度上报的进度信息，用于接收拖拽任务的进度状态和进度百分比。包含progress（进度百分比，取值范围[-1-100]）和status（任务状态码）两个字段，其中progress为-1表示获取数据失败，100表示获取数据完成。 |
-| data | UnifiedData \| null | 是 | 进度达到100时获取的数据，进度未到100时返回null。 |
+| progressInfo | [ProgressInfo](arkts-arkdata-unifieddatachannel-progressinfo-i.md) | 是 | 定义进度上报的进度信息，用于接收拖拽任务的进度状态和进度百分比。包含progress（进度百分比，取值范围[-1-100]）和status（任务状态码） 两个字段，其中progress为-1表示获取数据失败，100表示获取数据完成。  |
+| data | [UnifiedData](../../apis-arkui/arkts-components/arkts-arkui-unifieddata-t.md) \| null | 是 | 进度达到100时获取的数据，进度未到100时返回null。  |
 

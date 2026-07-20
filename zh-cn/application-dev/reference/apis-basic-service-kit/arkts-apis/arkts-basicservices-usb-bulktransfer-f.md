@@ -6,6 +6,7 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
+<a id="bulktransfer"></a>
 ## bulkTransfer
 
 ```TypeScript
@@ -47,14 +48,14 @@ function bulkTransfer(
 | --- | --- | --- | --- |
 | pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 用于确定设备。 |
 | endpoint | [USBEndpoint](arkts-basicservices-usbmanager-usbendpoint-i.md) | 是 | 用于确定传输的端口。 |
-| buffer | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 用于写入或读取的缓冲区。 |
+| buffer | Uint8Array | 是 | 用于写入或读取的缓冲区。 |
 | timeout | number | 否 | 超时时间（单位：ms），可选参数，默认为0不超时。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，获取传输或接收到的数据块大小。失败返回-1。 |
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回-1。 |
 
 **示例：**
 

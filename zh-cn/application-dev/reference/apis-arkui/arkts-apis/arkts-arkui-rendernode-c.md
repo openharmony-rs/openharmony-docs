@@ -15,6 +15,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="appendchild"></a>
 ## appendChild
 
 ```TypeScript
@@ -45,6 +46,7 @@ appendChild(node: RenderNode): void
 | --- | --- |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
 
+<a id="clearchildren"></a>
 ## clearChildren
 
 ```TypeScript
@@ -63,6 +65,7 @@ clearChildren(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -81,6 +84,7 @@ RenderNode的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="dispose"></a>
 ## dispose
 
 ```TypeScript
@@ -99,6 +103,7 @@ dispose(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="draw"></a>
 ## draw
 
 ```TypeScript
@@ -107,7 +112,7 @@ draw(context: DrawContext): void
 
 绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。
 
-该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
+该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](docroot://ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
 
 > **说明：**  
 >  
@@ -129,6 +134,7 @@ draw(context: DrawContext): void
 | --- | --- | --- | --- |
 | context | [DrawContext](../arkts-components/arkts-arkui-drawcontext-t.md) | 是 | 图形绘制上下文。 |
 
+<a id="getchild"></a>
 ## getChild
 
 ```TypeScript
@@ -159,6 +165,7 @@ getChild(index: number): RenderNode | null
 | --- | --- |
 | [RenderNode](arkts-arkui-rendernode-c.md) | Child node obtained. If the RenderNode does not contain the specified child node,null is returned. |
 
+<a id="getfirstchild"></a>
 ## getFirstChild
 
 ```TypeScript
@@ -183,6 +190,7 @@ getFirstChild(): RenderNode | null
 | --- | --- |
 | [RenderNode](arkts-arkui-rendernode-c.md) | First child node. If the RenderNode does not contain any child node, null is returned. |
 
+<a id="getnextsibling"></a>
 ## getNextSibling
 
 ```TypeScript
@@ -207,6 +215,7 @@ getNextSibling(): RenderNode | null
 | --- | --- |
 | [RenderNode](arkts-arkui-rendernode-c.md) | Next sibling node of the current RenderNode. If the RenderNode does not have the next sibling node, null is returned. |
 
+<a id="getprevioussibling"></a>
 ## getPreviousSibling
 
 ```TypeScript
@@ -231,6 +240,7 @@ getPreviousSibling(): RenderNode | null
 | --- | --- |
 | [RenderNode](arkts-arkui-rendernode-c.md) | Previous sibling node of the current RenderNode. If the RenderNode does not have the previous sibling node, null is returned. |
 
+<a id="insertchildafter"></a>
 ## insertChildAfter
 
 ```TypeScript
@@ -254,7 +264,7 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | child | [RenderNode](arkts-arkui-rendernode-c.md) | 是 | 需要添加的子节点。 |
-| sibling | RenderNode \| null | 是 | 需要添加的子节点。 |
+| sibling | [RenderNode](arkts-arkui-rendernode-c.md) \| null | 是 | 需要添加的子节点。 |
 
 **错误码：**
 
@@ -262,6 +272,7 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 | --- | --- |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
 
+<a id="invalidate"></a>
 ## invalidate
 
 ```TypeScript
@@ -280,6 +291,7 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="isdisposed"></a>
 ## isDisposed
 
 ```TypeScript
@@ -304,6 +316,7 @@ isDisposed(): boolean
 | --- | --- |
 | boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
+<a id="removechild"></a>
 ## removeChild
 
 ```TypeScript
@@ -378,7 +391,7 @@ get borderColor(): Edges<number>
 
 Get border color of the RenderNode.
 
-**类型：** Edges<number>
+**类型：** Edges&lt;number&gt;
 
 **默认值：** 0XFF000000
 
@@ -422,7 +435,7 @@ get borderStyle(): Edges<BorderStyle>
 
 获取当前RenderNode的边框样式。
 
-**类型：** Edges<BorderStyle>
+**类型：** Edges&lt;BorderStyle&gt;
 
 **起始版本：** 12
 
@@ -442,7 +455,7 @@ get borderWidth(): Edges<number>
 
 Get border width of the RenderNode.
 
-**类型：** Edges<number>
+**类型：** Edges&lt;number&gt;
 
 **默认值：** 0
 

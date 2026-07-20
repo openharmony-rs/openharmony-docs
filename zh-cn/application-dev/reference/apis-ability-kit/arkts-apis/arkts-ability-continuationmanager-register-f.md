@@ -6,6 +6,7 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
+<a id="register"></a>
 ## register
 
 ```TypeScript
@@ -30,7 +31,7 @@ function register(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
 
 **示例：**
 
@@ -50,6 +51,7 @@ continuationManager.register((err, data) => {
 ```
 
 
+<a id="register-1"></a>
 ## register
 
 ```TypeScript
@@ -75,7 +77,7 @@ function register(options: ContinuationExtraParams, callback: AsyncCallback<numb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [ContinuationExtraParams](arkts-ability-continuationextraparams-continuationextraparams-i.md) | 是 | 过滤可选择设备列表的额外参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
 
 **示例：**
 
@@ -99,6 +101,7 @@ continuationManager.register(
 ```
 
 
+<a id="register-2"></a>
 ## register
 
 ```TypeScript
@@ -129,7 +132,7 @@ function register(options?: ContinuationExtraParams): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise形式返回流转管理服务连接后生成的token。 |
+| Promise&lt;number&gt; | Promise形式返回流转管理服务连接后生成的token。 |
 
 **示例：**
 

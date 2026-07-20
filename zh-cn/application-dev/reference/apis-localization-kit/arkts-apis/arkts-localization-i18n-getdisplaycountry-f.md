@@ -6,6 +6,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="getdisplaycountry"></a>
 ## getDisplayCountry
 
 ```TypeScript
@@ -29,7 +30,7 @@ export function getDisplayCountry(country: string, locale: string, sentenceCase?
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | country | string | 是 | 指定国家。 |
-| locale | string | 是 | [表示区域ID的字符串](../../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
+| locale | string | 是 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
 | sentenceCase | boolean | 否 | true表示按照首字母大写的格式显示文本，false表示按照区域默认的大小写格式显示文本。默认值：true。 |
 
 **返回值：**

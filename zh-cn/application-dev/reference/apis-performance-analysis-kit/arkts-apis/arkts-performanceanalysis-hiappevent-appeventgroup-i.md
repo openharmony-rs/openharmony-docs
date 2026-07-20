@@ -22,7 +22,7 @@ appEventInfos: Array<AppEventInfo>
 
 事件对象集合。
 
-**类型：** Array<AppEventInfo>
+**类型：** Array&lt;AppEventInfo&gt;
 
 **起始版本：** 11
 

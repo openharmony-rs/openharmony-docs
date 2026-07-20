@@ -1,6 +1,6 @@
 # AbilityStateData
 
-AbilityStateData是Ability状态信息的数据结构。使用[on](arkts-ability-appmanager-on-f.md#on-1)注册生命周期变化监听后，可以通过[ApplicationStateObserver](arkts-ability-applicationstateobserver-c.md)的onAbilityStateChanged回调的入参获取该数据结构。
+AbilityStateData是Ability状态信息的数据结构。使用[on](./../@ohos.app.ability.appManager:appManager.on(type: 'applicationState', observer: ApplicationStateObserver))注册生命周期变化监听后，可以通过[ApplicationStateObserver](arkts-ability-applicationstateobserver-c.md)的onAbilityStateChanged回调的入参获取该数据结构。
 
 **起始版本：** 14
 
@@ -30,7 +30,7 @@ Ability名称。
 abilityType: number
 ```
 
-[Ability类型](../../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability类型)：[UIAbility](arkts-app-ability-uiability.md)或[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)等。
+[Ability类型](docroot://reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability类型)：[UIAbility](arkts-app-ability-uiability.md)或[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)等。
 
 **类型：** number
 
@@ -46,7 +46,7 @@ abilityType: number
 appCloneIndex?: number
 ```
 
-应用包的[分身](../../../../quick-start/app-clone.md)索引标识。
+应用包的[分身](docroot://quick-start/app-clone.md)索引标识。
 
 **类型：** number
 
@@ -148,8 +148,8 @@ state: number
 
 Ability状态。
 
-- [Stage模型](../../../../application-models/ability-terminology.md#stage模型)：[UIAbility](arkts-app-ability-uiability.md)的状态参见[UIAbility状态](../../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#uiability状态)；[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)的状态参见[ExtensionAbility状态](../../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#extensionability状态)；[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的状态参见[UIExtensionAbility状态](../../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#uiextensionability状态)。  
-- [FA模型](../../../../application-models/ability-terminology.md#fa模型)：参见[Ability状态](../../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)。
+- [Stage模型](docroot://application-models/ability-terminology.md#stage模型)：[UIAbility](arkts-app-ability-uiability.md)的状态参见[UIAbility状态](docroot://reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#uiability状态)；[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)的状态参见[ExtensionAbility状态](docroot://reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#extensionability状态)；[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的状态参见[UIExtensionAbility状态](docroot://reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#uiextensionability状态)。  
+- [FA模型](docroot://application-models/ability-terminology.md#fa模型)：参见[Ability状态](docroot://reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)。
 
 **类型：** number
 

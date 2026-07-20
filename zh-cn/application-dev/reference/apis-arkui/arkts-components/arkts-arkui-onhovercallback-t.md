@@ -20,6 +20,6 @@ declare type OnHoverCallback = (status: boolean, event: HoverEvent) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| status | boolean | 是 | 表示鼠标是否悬浮在组件上。true表示鼠标悬浮在组件上，false表示鼠标离开组件。 |
-| event | HoverEvent | 是 | 鼠标悬浮事件对象，包含悬浮事件的详细信息（如鼠标位置等）。 |
+| status | boolean | 是 | 表示鼠标是否悬浮在组件上。true表示鼠标悬浮在组件上，false表示鼠标离开组件。  |
+| event | [HoverEvent](arkts-arkui-hoverevent-i.md) | 是 | 鼠标悬浮事件对象，包含悬浮事件的详细信息（如鼠标位置等）。  |
 

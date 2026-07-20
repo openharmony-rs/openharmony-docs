@@ -6,6 +6,7 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="requesttrace"></a>
 ## requestTrace
 
 ```TypeScript
@@ -34,7 +35,7 @@ function requestTrace(config: RequestTraceConfig): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise���󣬷�����.sys��Ϊ��׺��trace�ļ���Ӧ��ɳ��·���� |
+| Promise&lt;string&gt; | Promise���󣬷�����.sys��Ϊ��׺��trace�ļ���Ӧ��ɳ��·���� |
 
 **错误码：**
 

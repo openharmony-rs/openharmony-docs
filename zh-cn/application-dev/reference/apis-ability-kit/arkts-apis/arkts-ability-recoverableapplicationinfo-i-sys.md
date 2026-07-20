@@ -58,7 +58,7 @@ readonly codePaths: Array<string>
 
 应用程序的安装目录。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 

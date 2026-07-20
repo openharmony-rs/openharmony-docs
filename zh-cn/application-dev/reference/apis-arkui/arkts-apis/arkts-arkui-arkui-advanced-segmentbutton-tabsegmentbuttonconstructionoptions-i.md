@@ -26,7 +26,7 @@ buttons: ItemRestriction<SegmentButtonTextItem>
 
 按钮信息。
 
-**类型：** ItemRestriction<SegmentButtonTextItem>
+**类型：** ItemRestriction&lt;SegmentButtonTextItem&gt;
 
 **起始版本：** 11
 

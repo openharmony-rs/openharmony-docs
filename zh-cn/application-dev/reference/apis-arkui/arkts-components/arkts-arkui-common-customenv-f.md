@@ -1,5 +1,6 @@
 # CustomEnv
 
+<a id="customenv"></a>
 ## CustomEnv
 
 ```TypeScript
@@ -22,7 +23,7 @@ declare function CustomEnv<T>(key: CustomEnvKey<T>): PropertyDecorator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | [CustomEnvKey](arkts-arkui-common-customenvkey-c.md)<T> | 是 | 自定义环境密钥 |
+| key | [CustomEnvKey](arkts-arkui-customenvkey-c.md)&lt;T&gt; | 是 | 自定义环境密钥 |
 
 **返回值：**
 

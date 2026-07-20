@@ -12,6 +12,7 @@ UIServiceProxy提供代理能力，可以从UIServiceExtension客户端发送数
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+<a id="senddata"></a>
 ## sendData
 
 ```TypeScript
@@ -22,7 +23,7 @@ sendData(data: Record<string, Object>): void
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -38,7 +39,7 @@ sendData(data: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record<string, Object> | 是 | 待发送给UIServiceExtension服务端的数据。 |
+| data | Record&lt;string, Object&gt; | 是 | 待发送给UIServiceExtension服务端的数据。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getpowersavemode"></a>
 ## getPowerSaveMode
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getPowerSaveMode(pid: number): Promise<PowerSaveMode>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PowerSaveMode> | Promise对象。返回进程能效模式状态。 |
+| Promise&lt;PowerSaveMode&gt; | Promise对象。返回进程能效模式状态。 |
 
 **错误码：**
 

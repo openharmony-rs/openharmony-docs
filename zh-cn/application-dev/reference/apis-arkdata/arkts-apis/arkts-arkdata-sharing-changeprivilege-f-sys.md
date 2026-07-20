@@ -6,6 +6,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="changeprivilege"></a>
 ## changePrivilege
 
 ```TypeScript
@@ -39,8 +40,8 @@ function changePrivilege(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sharingResource | string | 是 | 端云共享数据的资源标识。 |
-| participants | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Participant> | 是 | 端云共享的参与者。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Result<Array<Result<Participant>>>> | 是 | 回调函数。返回更改权限的结果。 |
+| participants | Array&lt;Participant&gt; | 是 | 端云共享的参与者。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt; | 是 | 回调函数。返回更改权限的结果。 |
 
 **错误码：**
 
@@ -81,6 +82,7 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: 
 ```
 
 
+<a id="changeprivilege-1"></a>
 ## changePrivilege
 
 ```TypeScript
@@ -111,13 +113,13 @@ function changePrivilege(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sharingResource | string | 是 | 端云共享数据的资源标识。 |
-| participants | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Participant> | 是 | 端云共享的参与者。 |
+| participants | Array&lt;Participant&gt; | 是 | 端云共享的参与者。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<Array<Result<Participant>>>> | Promise对象，返回更改共享参与者权限的结果。 |
+| Promise&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt; | Promise对象，返回更改共享参与者权限的结果。 |
 
 **错误码：**
 

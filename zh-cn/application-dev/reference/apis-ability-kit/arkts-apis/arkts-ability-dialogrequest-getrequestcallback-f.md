@@ -6,6 +6,7 @@
 import { dialogRequest } from '@kit.AbilityKit';
 ```
 
+<a id="getrequestcallback"></a>
 ## getRequestCallback
 
 ```TypeScript

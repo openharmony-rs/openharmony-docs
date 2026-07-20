@@ -22,7 +22,7 @@ keyAliases: Array<string>
 
 表示密钥别名集。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 

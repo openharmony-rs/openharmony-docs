@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getnotificationswitch"></a>
 ## getNotificationSwitch
 
 ```TypeScript
@@ -37,7 +38,7 @@ function getNotificationSwitch(switchName: string, userId: number): Promise<Swit
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SwitchState> | Promise对象，返回通知开关状态。 |
+| Promise&lt;SwitchState&gt; | Promise对象，返回通知开关状态。 |
 
 **错误码：**
 

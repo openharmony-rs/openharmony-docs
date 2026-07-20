@@ -6,6 +6,7 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
+<a id="getsendsmspolicynumbers"></a>
 ## getSendSmsPolicyNumbers
 
 ```TypeScript
@@ -28,14 +29,14 @@ function getSendSmsPolicyNumbers(admin: Want | null, policy: adminManager.Policy
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want \| null | 是 | 企业设备管理扩展组件 |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) \| null | 是 | 企业设备管理扩展组件 |
 | policy | adminManager.Policy | 是 | 允许或禁用名单策略。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | phone numbers in the trust/block list. |
+| Array&lt;string&gt; | phone numbers in the trust/block list. |
 
 **错误码：**
 

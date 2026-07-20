@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="getdelegatedpolicies"></a>
 ## getDelegatedPolicies
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getDelegatedPolicies(admin: Want, bundleName: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 委托策略列表。 |
+| Array&lt;string&gt; | 委托策略列表。 |
 
 **错误码：**
 

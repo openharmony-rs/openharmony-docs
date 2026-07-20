@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
+<a id="getdisallowedusbdevices"></a>
 ## getDisallowedUsbDevices
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getDisallowedUsbDevices(admin: Want): Array<UsbDeviceType>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<UsbDeviceType> | 禁止使用的USB设备类型。 |
+| Array&lt;UsbDeviceType&gt; | 禁止使用的USB设备类型。 |
 
 **错误码：**
 

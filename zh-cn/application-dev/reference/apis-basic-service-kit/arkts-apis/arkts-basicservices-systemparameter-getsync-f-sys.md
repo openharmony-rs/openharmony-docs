@@ -6,6 +6,7 @@
 import { systemParameter } from '@kit.BasicServicesKit';
 ```
 
+<a id="getsync"></a>
 ## getSync
 
 ```TypeScript

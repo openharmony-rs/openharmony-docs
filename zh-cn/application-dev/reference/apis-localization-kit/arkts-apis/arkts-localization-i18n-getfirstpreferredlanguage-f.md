@@ -6,6 +6,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="getfirstpreferredlanguage"></a>
 ## getFirstPreferredLanguage
 
 ```TypeScript

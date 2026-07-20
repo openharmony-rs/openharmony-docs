@@ -56,7 +56,7 @@ Swiper(controller?: SwiperController)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | SwiperController | 否 | 给组件绑定一个控制器，用来控制组件翻页或者预加载指定子节点。 |
+| controller | [SwiperController](arkts-arkui-swipercontroller-c.md) | 否 | 给组件绑定一个控制器，用来控制组件翻页或者预加载指定子节点。  |
 
 ## 汇总
 

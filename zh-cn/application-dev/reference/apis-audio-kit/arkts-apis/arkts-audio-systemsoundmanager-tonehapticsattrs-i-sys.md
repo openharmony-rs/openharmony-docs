@@ -16,6 +16,7 @@
 import { systemSoundManager } from '@kit.AudioKit';
 ```
 
+<a id="getfilename"></a>
 ## getFileName
 
 ```TypeScript
@@ -51,6 +52,7 @@ toneHapticsAttrs.getFileName();
 
 ```
 
+<a id="getgentlefilename"></a>
 ## getGentleFileName
 
 ```TypeScript
@@ -86,6 +88,7 @@ toneHapticsAttrs.getGentleFileName();
 
 ```
 
+<a id="getgentletitle"></a>
 ## getGentleTitle
 
 ```TypeScript
@@ -121,6 +124,7 @@ toneHapticsAttrs.getGentleTitle();
 
 ```
 
+<a id="getgentleuri"></a>
 ## getGentleUri
 
 ```TypeScript
@@ -156,6 +160,7 @@ toneHapticsAttrs.getGentleUri();
 
 ```
 
+<a id="gettitle"></a>
 ## getTitle
 
 ```TypeScript
@@ -191,6 +196,7 @@ toneHapticsAttrs.getTitle();
 
 ```
 
+<a id="geturi"></a>
 ## getUri
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="iscontrolsupported"></a>
 ## isControlSupported
 
 ```TypeScript

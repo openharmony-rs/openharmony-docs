@@ -6,6 +6,7 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
+<a id="isotaupdatenonceenable"></a>
 ## isOtaUpdateNonceEnable
 
 ```TypeScript

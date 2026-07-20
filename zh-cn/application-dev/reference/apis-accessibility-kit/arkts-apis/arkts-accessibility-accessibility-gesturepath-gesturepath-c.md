@@ -16,6 +16,7 @@ GesturePath表示手势路径信息。
 import { GesturePath } from '@kit.AccessibilityKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -71,7 +72,7 @@ points: Array<GesturePoint>
 
 手势触摸点。
 
-**类型：** Array<GesturePoint>
+**类型：** Array&lt;GesturePoint&gt;
 
 **起始版本：** 9
 

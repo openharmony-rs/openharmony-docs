@@ -6,6 +6,7 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getworkstatus"></a>
 ## getWorkStatus
 
 ```TypeScript
@@ -27,7 +28,7 @@ function getWorkStatus(workId: number, callback: AsyncCallback<WorkInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | workId | number | 是 | 延迟任务Id。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<WorkInfo> | 是 | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;WorkInfo&gt; | 是 | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
 **错误码：**
 
@@ -56,6 +57,7 @@ workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkIn
 ```
 
 
+<a id="getworkstatus-1"></a>
 ## getWorkStatus
 
 ```TypeScript
@@ -82,7 +84,7 @@ function getWorkStatus(workId: number): Promise<WorkInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<WorkInfo> | Promise对象，如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
+| Promise&lt;WorkInfo&gt; | Promise对象，如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
 **错误码：**
 

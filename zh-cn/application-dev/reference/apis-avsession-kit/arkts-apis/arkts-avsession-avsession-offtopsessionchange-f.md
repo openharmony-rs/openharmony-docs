@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="offtopsessionchange"></a>
 ## offTopSessionChange
 
 ```TypeScript
@@ -26,7 +27,7 @@ Unregister top session changed callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVSessionDescriptor> | 否 | Top会话变化回调函数 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVSessionDescriptor&gt; | 否 | Top会话变化回调函数 |
 
 **错误码：**
 

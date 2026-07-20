@@ -6,6 +6,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="on"></a>
 ## on('systemBarTintChange')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function on(type: 'systemBarTintChange', callback: Callback<SystemBarTintState>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'systemBarTintChange' | 是 | 监听事件，固定为'systemBarTintChange'，即导航栏、状态栏属性变化事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<SystemBarTintState> | 是 | 回调函数。返回当前的状态栏、导航栏信息集合。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;SystemBarTintState&gt; | 是 | 回调函数。返回当前的状态栏、导航栏信息集合。 |
 
 **错误码：**
 
@@ -50,6 +51,7 @@ try {
 ```
 
 
+<a id="on-1"></a>
 ## on('gestureNavigationEnabledChange')
 
 ```TypeScript
@@ -71,7 +73,7 @@ function on(type: 'gestureNavigationEnabledChange', callback: Callback<boolean>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'gestureNavigationEnabledChange' | 是 | 监听事件，固定为'gestureNavigationEnabledChange'，即手势导航启用状态变化事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<boolean> | 是 | 回调函数。返回当前手势导航的启用状态。true表示手势导航状态变化为启用；false表示手势导航状态变化为禁用。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回当前手势导航的启用状态。true表示手势导航状态变化为启用；false表示手势导航状态变化为禁用。 |
 
 **错误码：**
 
@@ -96,6 +98,7 @@ try {
 ```
 
 
+<a id="on-2"></a>
 ## on('waterMarkFlagChange')
 
 ```TypeScript
@@ -117,7 +120,7 @@ function on(type: 'waterMarkFlagChange', callback: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'waterMarkFlagChange' | 是 | 监听事件，固定为'waterMarkFlagChange'，即水印启用状态变化事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<boolean> | 是 | 回调函数。返回当前水印的启用状态。true表示当前已启用水印；false表示当前未启用水印。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回当前水印的启用状态。true表示当前已启用水印；false表示当前未启用水印。 |
 
 **错误码：**
 

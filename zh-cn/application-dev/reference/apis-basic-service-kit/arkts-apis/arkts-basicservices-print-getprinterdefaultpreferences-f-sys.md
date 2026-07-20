@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="getprinterdefaultpreferences"></a>
 ## getPrinterDefaultPreferences
 
 ```TypeScript
@@ -36,7 +37,7 @@ function getPrinterDefaultPreferences(printerId: string): Promise<PrinterPrefere
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PrinterPreferences> | - Promise that resolves with the default preferences of the printer. |
+| Promise&lt;PrinterPreferences&gt; | - Promise that resolves with the default preferences of the printer. |
 
 **错误码：**
 

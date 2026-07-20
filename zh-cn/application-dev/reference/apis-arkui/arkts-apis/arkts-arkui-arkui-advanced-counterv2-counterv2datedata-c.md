@@ -14,6 +14,7 @@ CounterV2DateData定义了日期通用属性和方法，包括年、月、日。
 import { CounterV2Component, CounterV2Options, CounterV2Type, CounterV2DateData } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -40,6 +41,7 @@ CounterV2DateData的构造函数用于初始化日期对象。
 | month | number | 是 | 设置日期内联型初始月份。<br/>取值范围：[1, 12]<br/>超出取值范围按默认值处理。 |
 | day | number | 是 | 设置日期内联型初始日。<br/>取值范围：[1, 31]<br/>必须为合法日期，如month为2月时，day传入30将视为异常值，按默认值处理。 |
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript

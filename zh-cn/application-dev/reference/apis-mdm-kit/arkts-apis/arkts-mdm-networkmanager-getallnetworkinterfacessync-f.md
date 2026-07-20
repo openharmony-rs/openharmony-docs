@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="getallnetworkinterfacessync"></a>
 ## getAllNetworkInterfacesSync
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getAllNetworkInterfacesSync(admin: Want): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 返回所有激活的有线网络接口名称数组。 |
+| Array&lt;string&gt; | 返回所有激活的有线网络接口名称数组。 |
 
 **错误码：**
 

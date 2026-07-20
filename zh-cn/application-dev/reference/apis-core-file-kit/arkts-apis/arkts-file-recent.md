@@ -29,9 +29,9 @@ import { recent } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [add](arkts-corefile-recent-add-f-sys.md#add-1) | 将uri对应的文件加入最近访问列表。 |
-| [listFile](arkts-corefile-recent-listfile-f-sys.md#listfile-1) | 查询最近访问列表中文件信息。 |
-| [remove](arkts-corefile-recent-remove-f-sys.md#remove-1) | 将uri对应的文件从最近访问列表中移除。 |
+| [add](arkts-corefile-recent-add-f-sys.md#add) | 将uri对应的文件加入最近访问列表。 |
+| [listFile](arkts-corefile-recent-listfile-f-sys.md#listfile) | 查询最近访问列表中文件信息。 |
+| [remove](arkts-corefile-recent-remove-f-sys.md#remove) | 将uri对应的文件从最近访问列表中移除。 |
 <!--DelEnd-->
 
 <!--Del-->

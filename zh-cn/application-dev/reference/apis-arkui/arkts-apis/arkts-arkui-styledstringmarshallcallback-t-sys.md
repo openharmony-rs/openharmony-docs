@@ -20,11 +20,11 @@ declare type StyledStringMarshallCallback = (marshallableVal: StyledStringMarsha
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| marshallableVal | StyledStringMarshallingValue | 是 | 属性字符串序列化对象。 |
+| marshallableVal | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) | 是 | 属性字符串序列化对象。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArrayBuffer | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md)序列化后的数据。 |
+| ArrayBuffer | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md)序列化后的数据。  |
 

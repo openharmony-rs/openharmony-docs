@@ -6,6 +6,7 @@
 import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
+<a id="opentoast"></a>
 ## openToast
 
 ```TypeScript
@@ -17,12 +18,12 @@ function openToast(options: ShowToastOptions): Promise<number>
 > **说明：**  
 >  
 > - 不支持在输入法类型窗口中使用子窗（showMode设置为TOP_MOST或者SYSTEM_TOP_MOST）的openToast，详情见输入法框架的约束与限制说明  
-> [createPanel](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-2)  
+> [createPanel](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)  
 > 。  
 >  
-> - 直接使用openToast可能导致[UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用UIContext中的getPromptAction方法获  
+> - 直接使用openToast可能导致[UI上下文不明确](docroot://ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用UIContext中的getPromptAction方法获  
 > 取到PromptAction对象，再通过该对象调用  
-> [openToast](../../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opentoast18)实现。
+> [openToast](docroot://reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opentoast18)实现。
 
 **起始版本：** 18
 
@@ -44,7 +45,7 @@ function openToast(options: ShowToastOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 返回即时反馈的id，可供closeToast使用。 |
+| Promise&lt;number&gt; | 返回即时反馈的id，可供closeToast使用。 |
 
 **错误码：**
 

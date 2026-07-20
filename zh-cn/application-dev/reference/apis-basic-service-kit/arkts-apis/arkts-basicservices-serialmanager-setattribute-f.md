@@ -6,6 +6,7 @@
 import { serialManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="setattribute"></a>
 ## setAttribute
 
 ```TypeScript

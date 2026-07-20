@@ -1,5 +1,6 @@
 # getStorageSync
 
+<a id="getstoragesync"></a>
 ## getStorageSync
 
 ```TypeScript

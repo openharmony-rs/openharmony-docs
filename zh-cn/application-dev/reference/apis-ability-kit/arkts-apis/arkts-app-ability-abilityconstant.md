@@ -33,17 +33,17 @@ import { AbilityConstant } from '@kit.AbilityKit';
 | [LaunchReason](arkts-ability-abilityconstant-launchreason-e.md) | Ability启动原因，该类型为枚举，可配合UIAbility的[onCreate(want, launchParam)](arkts-ability-app-ability-uiability-uiability-c.md#oncreate-1)方法根据launchParam.launchReason的不同类型执行相应操作。 |
 | [MemoryLevel](arkts-ability-abilityconstant-memorylevel-e.md) | 整机可用内存级别，该类型为枚举，可配合UIAbility的[onMemoryLevel()](arkts-ability-app-ability-ability-ability-c.md#onmemorylevel-1)方法根据level执行不同内存级别的相应操作。 |
 | [OnContinueResult](arkts-ability-abilityconstant-oncontinueresult-e.md) | Ability迁移结果，该类型为枚举，可配合UIAbility的[onContinue()](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue-1)方法完成相应的返回。 |
-| [OnSaveResult](arkts-ability-abilityconstant-onsaveresult-e.md) | 保存应用数据的结果，该类型为枚举。配合UIAbility的[onSaveState()](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate-1)方法使用，可以实现[UIAbility备份恢复](../../../../application-models/ability-recover-guideline.md)。 |
+| [OnSaveResult](arkts-ability-abilityconstant-onsaveresult-e.md) | 保存应用数据的结果，该类型为枚举。配合UIAbility的[onSaveState()](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate-1)方法使用，可以实现[UIAbility备份恢复](docroot://application-models/ability-recover-guideline.md)。 |
 | [PrepareTermination](arkts-ability-abilityconstant-preparetermination-e.md) | 应用准备关闭时返回的动作，该类型为枚举。需要配合[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)的[onPrepareTermination](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onpreparetermination-1)或者[onPrepareTerminationAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onprepareterminationasync-1)方法使用。 |
-| [StateType](arkts-ability-abilityconstant-statetype-e.md) | 保存应用数据场景原因，该类型为枚举。配合UIAbility的[onSaveState()](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate-1)方法使用，可以实现[UIAbility备份恢复](../../../../application-models/ability-recover-guideline.md)。 |
-| [WindowMode](arkts-ability-abilityconstant-windowmode-e.md) | 启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](arkts-ability-uiabilitycontext-c.md#startability-3)方法使用。 |
+| [StateType](arkts-ability-abilityconstant-statetype-e.md) | 保存应用数据场景原因，该类型为枚举。配合UIAbility的[onSaveState()](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate-1)方法使用，可以实现[UIAbility备份恢复](docroot://application-models/ability-recover-guideline.md)。 |
+| [WindowMode](arkts-ability-abilityconstant-windowmode-e.md) | 启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](arkts-ability-uiabilitycontext-c.md#startability-1)方法使用。 |
 
 <!--Del-->
 ### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [WindowMode](arkts-ability-abilityconstant-windowmode-e-sys.md) | 启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](arkts-ability-uiabilitycontext-c.md#startability-3)方法使用。 |
+| [WindowMode](arkts-ability-abilityconstant-windowmode-e-sys.md) | 启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](arkts-ability-uiabilitycontext-c.md#startability-1)方法使用。 |
 <!--DelEnd-->
 
 ### 常量

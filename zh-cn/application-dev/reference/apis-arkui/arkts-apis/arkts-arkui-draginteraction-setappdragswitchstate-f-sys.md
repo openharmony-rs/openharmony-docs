@@ -6,6 +6,7 @@
 import { dragInteraction } from '@kit.ArkUI';
 ```
 
+<a id="setappdragswitchstate"></a>
 ## setAppDragSwitchState
 
 ```TypeScript

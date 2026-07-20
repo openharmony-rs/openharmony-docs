@@ -4,6 +4,8 @@
 
 **起始版本：** 12
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-export declare struct AVVolumePanel--><!--Device-unnamed-export declare struct AVVolumePanel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume

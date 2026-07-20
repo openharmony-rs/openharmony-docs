@@ -6,6 +6,7 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
+<a id="turnonbluetooth"></a>
 ## turnOnBluetooth
 
 ```TypeScript

@@ -24,7 +24,7 @@ bundleNames?: Array<string>
 
 应用Bundle名称。 不传递该参数时，默认订阅所有应用的通知。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 7
 
@@ -146,7 +146,7 @@ slotTypes?: Array<notificationManager.SlotType>
 
 通知渠道类型。 不传递该参数时，默认订阅所有渠道类型的通知。
 
-**类型：** Array<notificationManager.SlotType>
+**类型：** Array&lt;notificationManager.SlotType&gt;
 
 **起始版本：** 18
 

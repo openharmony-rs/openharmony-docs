@@ -20,6 +20,7 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="onframe"></a>
 ## onFrame
 
 ```TypeScript
@@ -44,6 +45,7 @@ onFrame(frameTimeInNano: number): void
 | --- | --- | --- | --- |
 | frameTimeInNano | number | 是 | 下一帧渲染开始执行的时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
 
+<a id="onidle"></a>
 ## onIdle
 
 ```TypeScript

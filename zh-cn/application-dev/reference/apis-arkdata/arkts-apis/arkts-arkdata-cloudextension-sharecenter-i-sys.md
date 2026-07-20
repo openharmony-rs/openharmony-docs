@@ -16,6 +16,7 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
+<a id="changeconfirmation"></a>
 ## changeConfirmation
 
 ```TypeScript
@@ -60,7 +61,7 @@ changeConfirmation(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<void>> | Promise对象，返回更改共享邀请的结果。 |
+| Promise&lt;Result&lt;void&gt;&gt; | Promise对象，返回更改共享邀请的结果。 |
 
 **示例：**
 
@@ -85,6 +86,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
+<a id="changeprivilege"></a>
 ## changePrivilege
 
 ```TypeScript
@@ -123,13 +125,13 @@ changePrivilege(
 | userId | number | 是 | 表示用户账号ID。 |
 | bundleName | string | 是 | 应用包名。 |
 | sharingResource | string | 是 | 端云共享资源标识。 |
-| participants | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<cloudData.sharing.Participant> | 是 | 端云共享参与者。 |
+| participants | Array&lt;cloudData.sharing.Participant&gt; | 是 | 端云共享参与者。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<Array<Result<cloudData.sharing.Participant>>>> | Promise对象，返回更改权限的结果。 |
+| Promise&lt;Result&lt;Array&lt;Result&lt;cloudData.sharing.Participant&gt;&gt;&gt;&gt; | Promise对象，返回更改权限的结果。 |
 
 **示例：**
 
@@ -164,6 +166,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
+<a id="confirminvitation"></a>
 ## confirmInvitation
 
 ```TypeScript
@@ -208,7 +211,7 @@ confirmInvitation(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<string>> | Promise对象，返回确认端云共享邀请数据的共享资源标识。 |
+| Promise&lt;Result&lt;string&gt;&gt; | Promise对象，返回确认端云共享邀请数据的共享资源标识。 |
 
 **示例：**
 
@@ -234,6 +237,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
+<a id="exit"></a>
 ## exit
 
 ```TypeScript
@@ -262,7 +266,7 @@ exit(userId: number, bundleName: string, sharingResource: string): Promise<Resul
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<void>> | Promise对象，返回退出共享的结果。 |
+| Promise&lt;Result&lt;void&gt;&gt; | Promise对象，返回退出共享的结果。 |
 
 **示例：**
 
@@ -287,6 +291,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
+<a id="queryparticipants"></a>
 ## queryParticipants
 
 ```TypeScript
@@ -327,7 +332,7 @@ queryParticipants(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<Array<cloudData.sharing.Participant>>> | Promise对象，返回查询共享参与者的结果。 |
+| Promise&lt;Result&lt;Array&lt;cloudData.sharing.Participant&gt;&gt;&gt; | Promise对象，返回查询共享参与者的结果。 |
 
 **示例：**
 
@@ -382,6 +387,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
+<a id="queryparticipantsbyinvitation"></a>
 ## queryParticipantsByInvitation
 
 ```TypeScript
@@ -422,7 +428,7 @@ queryParticipantsByInvitation(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<Array<cloudData.sharing.Participant>>> | Promise对象，返回根据邀请码查询共享参与者的结果。 |
+| Promise&lt;Result&lt;Array&lt;cloudData.sharing.Participant&gt;&gt;&gt; | Promise对象，返回根据邀请码查询共享参与者的结果。 |
 
 **示例：**
 
@@ -477,6 +483,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
+<a id="share"></a>
 ## share
 
 ```TypeScript
@@ -515,13 +522,13 @@ share(
 | userId | number | 是 | 表示用户账号ID。 |
 | bundleName | string | 是 | 应用包名。 |
 | sharingResource | string | 是 | 端云共享资源的标识。 |
-| participants | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<cloudData.sharing.Participant> | 是 | 端云共享参与者。 |
+| participants | Array&lt;cloudData.sharing.Participant&gt; | 是 | 端云共享参与者。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<Array<Result<cloudData.sharing.Participant>>>> | Promise对象，返回发起共享的结果。 |
+| Promise&lt;Result&lt;Array&lt;Result&lt;cloudData.sharing.Participant&gt;&gt;&gt;&gt; | Promise对象，返回发起共享的结果。 |
 
 **示例：**
 
@@ -556,6 +563,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
+<a id="unshare"></a>
 ## unshare
 
 ```TypeScript
@@ -594,13 +602,13 @@ unshare(
 | userId | number | 是 | 表示用户账号ID。 |
 | bundleName | string | 是 | 应用包名。 |
 | sharingResource | string | 是 | 端云共享数据的资源标识。 |
-| participants | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<cloudData.sharing.Participant> | 是 | 端云共享参与者。 |
+| participants | Array&lt;cloudData.sharing.Participant&gt; | 是 | 端云共享参与者。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<Array<Result<cloudData.sharing.Participant>>>> | Promise对象，返回取消共享的结果。 |
+| Promise&lt;Result&lt;Array&lt;Result&lt;cloudData.sharing.Participant&gt;&gt;&gt;&gt; | Promise对象，返回取消共享的结果。 |
 
 **示例：**
 

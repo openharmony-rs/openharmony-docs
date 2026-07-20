@@ -6,6 +6,7 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="compressfile"></a>
 ## compressFile
 
 ```TypeScript
@@ -33,7 +34,7 @@ function compressFile(inFile: string, outFile: string, options: Options, callbac
 | inFile | string | 是 | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)，[Stage模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)。待压缩的文件夹不可为空，否则使用[decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile-1)对压缩后的文件解压时会报错。 |
 | outFile | string | 是 | 指定的压缩结果的文件路径。多个线程同时压缩文件时，outFile不能相同。 |
 | options | [Options](arkts-basicservices-zlib-options-i.md) | 是 | 压缩的配置参数。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步获取压缩结果之后的回调。成功返回null，失败返回错误码。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步获取压缩结果之后的回调。成功返回null，失败返回错误码。 |
 
 **错误码：**
 
@@ -74,6 +75,7 @@ try {
 ```
 
 
+<a id="compressfile-1"></a>
 ## compressFile
 
 ```TypeScript
@@ -106,7 +108,7 @@ function compressFile(inFile: string, outFile: string, options: Options): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { application } from '@kit.AbilityKit';
 ```
 
+<a id="getapppreloadtype"></a>
 ## getAppPreloadType
 
 ```TypeScript

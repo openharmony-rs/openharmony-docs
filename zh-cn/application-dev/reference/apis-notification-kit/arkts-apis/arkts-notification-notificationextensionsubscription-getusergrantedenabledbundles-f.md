@@ -6,6 +6,7 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
+<a id="getusergrantedenabledbundles"></a>
 ## getUserGrantedEnabledBundles
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getUserGrantedEnabledBundles(): Promise<GrantedBundleInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<GrantedBundleInfo[]> | Promise对象，返回获取指定应用中“已获取的本机通知”通知开关开启的应用列表。 |
+| Promise&lt;GrantedBundleInfo[]&gt; | Promise对象，返回获取指定应用中“已获取的本机通知”通知开关开启的应用列表。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getdistributeddevicelist"></a>
 ## getDistributedDeviceList
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getDistributedDeviceList(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | 返回支持跨设备协同通知的设备列表。Promise对象。 |
+| Promise&lt;Array&lt;string&gt;&gt; | 返回支持跨设备协同通知的设备列表。Promise对象。 |
 
 **错误码：**
 

@@ -1,5 +1,6 @@
 # close
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -28,9 +29,10 @@ declare function close(fd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
+<a id="close-1"></a>
 ## close
 
 ```TypeScript
@@ -54,5 +56,5 @@ declare function close(fd: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 待关闭文件的文件描述符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步关闭文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步关闭文件之后的回调。 |
 

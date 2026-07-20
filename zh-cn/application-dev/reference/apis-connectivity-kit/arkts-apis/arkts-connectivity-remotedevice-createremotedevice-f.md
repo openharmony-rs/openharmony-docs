@@ -6,6 +6,7 @@
 import { remoteDevice } from '@kit.ConnectivityKit';
 ```
 
+<a id="createremotedevice"></a>
 ## createRemoteDevice
 
 ```TypeScript
@@ -39,5 +40,5 @@ function createRemoteDevice(address: string): RemoteDevice
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
-| 36100041 | Invalid address. |
+| [36100041](../errorcode-nearlink.md#36100041-无效地址) | Invalid address. |
 

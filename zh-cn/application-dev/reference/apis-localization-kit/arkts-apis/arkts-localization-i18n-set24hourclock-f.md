@@ -6,6 +6,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="set24hourclock"></a>
 ## set24HourClock
 
 ```TypeScript

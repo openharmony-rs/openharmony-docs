@@ -6,6 +6,7 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
+<a id="adddisallowedwifilist"></a>
 ## addDisallowedWifiList
 
 ```TypeScript
@@ -33,7 +34,7 @@ function addDisallowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| list | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<WifiAccessInfo> | 是 | Wi-Fi禁用名单数组。数组总长度不能超过200。例如，若当前禁用名单数组中已有100个Wi-Fi，则最多支持通过该接口再添加100个。 |
+| list | Array&lt;WifiAccessInfo&gt; | 是 | Wi-Fi禁用名单数组。数组总长度不能超过200。例如，若当前禁用名单数组中已有100个Wi-Fi，则最多支持通过该接口再添加100个。 |
 
 **错误码：**
 

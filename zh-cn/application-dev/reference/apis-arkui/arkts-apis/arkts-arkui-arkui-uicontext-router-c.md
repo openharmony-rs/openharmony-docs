@@ -14,6 +14,7 @@ class Router
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="back"></a>
 ## back
 
 ```TypeScript
@@ -38,6 +39,7 @@ Returns to the previous page or a specified page.
 | --- | --- | --- | --- |
 | options | router.RouterOptions | 否 | Description of the target page. The **url** parameter specifies the URL of the page to return to. If the page with the specified URL does not exist in the navigation stack, no action is performed. If the navigation stack contains the corresponding URL, the application returns to the page with.the largest index.<br>If no URL is set, the application returns to the previous page, and the page is not rebuilt. The page in the page stack is not reclaimed. It will be reclaimed after being popped up. |
 
+<a id="back-1"></a>
 ## back
 
 ```TypeScript
@@ -63,6 +65,7 @@ Returns to the specified page.
 | index | number | 是 | Index of the target page to navigate to.<br>Value range: [0, +∞). |
 | params | Object | 否 | Parameters carried when returning to the page. |
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -81,6 +84,7 @@ Clears all historical pages and retains only the current page at the top of the 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="getlength"></a>
 ## getLength
 
 ```TypeScript
@@ -109,6 +113,7 @@ Obtains the number of pages in the current stack.
 | --- | --- |
 | string | Number of pages in the stack. The maximum value is **32**. |
 
+<a id="getparams"></a>
 ## getParams
 
 ```TypeScript
@@ -133,6 +138,7 @@ Obtains information about the current page params.
 | --- | --- |
 | Object | Parameters passed from the page that initiates redirection to the current page. |
 
+<a id="getstacksize"></a>
 ## getStackSize
 
 ```TypeScript
@@ -157,6 +163,7 @@ Obtains information about the current page state.
 | --- | --- |
 | number | Number of pages in the stack. The maximum value is **32**. |
 
+<a id="getstate"></a>
 ## getState
 
 ```TypeScript
@@ -181,6 +188,7 @@ Obtains information about the current page state.
 | --- | --- |
 | router.RouterState | Page routing state. |
 
+<a id="getstatebyindex"></a>
 ## getStateByIndex
 
 ```TypeScript
@@ -211,6 +219,7 @@ Obtains page information by index.
 | --- | --- |
 | router.RouterState | State information about the target page. **undefined** if the specified index does not exist. |
 
+<a id="getstatebyurl"></a>
 ## getStateByUrl
 
 ```TypeScript
@@ -239,8 +248,9 @@ Obtains page information by url.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<router.RouterState> | Page routing state. |
+| Array&lt;router.RouterState&gt; | Page routing state. |
 
+<a id="hidealertbeforebackpage"></a>
 ## hideAlertBeforeBackPage
 
 ```TypeScript
@@ -259,6 +269,7 @@ Hide alert before back page.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="pushnamedroute"></a>
 ## pushNamedRoute
 
 ```TypeScript
@@ -282,7 +293,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | router.NamedRouterOptions | 是 | Page routing parameters. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
 
 **错误码：**
 
@@ -293,6 +304,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
+<a id="pushnamedroute-1"></a>
 ## pushNamedRoute
 
 ```TypeScript
@@ -321,7 +333,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -332,6 +344,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
+<a id="pushnamedroute-2"></a>
 ## pushNamedRoute
 
 ```TypeScript
@@ -356,7 +369,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 | --- | --- | --- | --- |
 | options | router.NamedRouterOptions | 是 | Page routing parameters. |
 | mode | router.RouterMode | 是 | Routing mode. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
 
 **错误码：**
 
@@ -367,6 +380,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
+<a id="pushnamedroute-3"></a>
 ## pushNamedRoute
 
 ```TypeScript
@@ -396,7 +410,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -407,6 +421,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
+<a id="pushurl"></a>
 ## pushUrl
 
 ```TypeScript
@@ -430,7 +445,7 @@ Navigates to a specified page in the application.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | router.RouterOptions | 是 | Page routing parameters. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
 
 **错误码：**
 
@@ -441,6 +456,7 @@ Navigates to a specified page in the application.
 | [100002](../errorcode-router.md#100002-路由页面跳转时输入的uri错误) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 
+<a id="pushurl-1"></a>
 ## pushUrl
 
 ```TypeScript
@@ -469,7 +485,7 @@ Navigates to a specified page in the application. This API uses a promise to ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -480,6 +496,7 @@ Navigates to a specified page in the application. This API uses a promise to ret
 | [100002](../errorcode-router.md#100002-路由页面跳转时输入的uri错误) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 
+<a id="pushurl-2"></a>
 ## pushUrl
 
 ```TypeScript
@@ -504,7 +521,7 @@ Navigates to a specified page in the application.
 | --- | --- | --- | --- |
 | options | router.RouterOptions | 是 | Page routing parameters. |
 | mode | router.RouterMode | 是 | Routing mode. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
 
 **错误码：**
 
@@ -515,6 +532,7 @@ Navigates to a specified page in the application.
 | [100002](../errorcode-router.md#100002-路由页面跳转时输入的uri错误) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 
+<a id="pushurl-3"></a>
 ## pushUrl
 
 ```TypeScript
@@ -544,7 +562,7 @@ Navigates to a specified page in the application. This API uses a promise to ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -555,6 +573,7 @@ Navigates to a specified page in the application. This API uses a promise to ret
 | [100002](../errorcode-router.md#100002-路由页面跳转时输入的uri错误) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 
+<a id="replacenamedroute"></a>
 ## replaceNamedRoute
 
 ```TypeScript
@@ -578,7 +597,7 @@ Replaces the current page with another one in the application. The current page 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | router.NamedRouterOptions | 是 | Description of the new page. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
 
 **错误码：**
 
@@ -588,6 +607,7 @@ Replaces the current page with another one in the application. The current page 
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
+<a id="replacenamedroute-1"></a>
 ## replaceNamedRoute
 
 ```TypeScript
@@ -616,7 +636,7 @@ Replaces the current page with another one in the application. The current page 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -626,6 +646,7 @@ Replaces the current page with another one in the application. The current page 
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
+<a id="replacenamedroute-2"></a>
 ## replaceNamedRoute
 
 ```TypeScript
@@ -650,7 +671,7 @@ Replaces the current page with another one in the application. The current page 
 | --- | --- | --- | --- |
 | options | router.NamedRouterOptions | 是 | Description of the new page. |
 | mode | router.RouterMode | 是 | Routing mode. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
 
 **错误码：**
 
@@ -660,13 +681,14 @@ Replaces the current page with another one in the application. The current page 
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
+<a id="replacenamedroute-3"></a>
 ## replaceNamedRoute
 
 ```TypeScript
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-2)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **起始版本：** 10
 
@@ -689,7 +711,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -699,6 +721,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
+<a id="replaceurl"></a>
 ## replaceUrl
 
 ```TypeScript
@@ -722,7 +745,7 @@ Replaces the current page with another one in the application. The current page 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | router.RouterOptions | 是 | Description of the new page. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
 
 **错误码：**
 
@@ -732,6 +755,7 @@ Replaces the current page with another one in the application. The current page 
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
+<a id="replaceurl-1"></a>
 ## replaceUrl
 
 ```TypeScript
@@ -760,7 +784,7 @@ Replaces the current page with another one in the application. The current page 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -770,6 +794,7 @@ Replaces the current page with another one in the application. The current page 
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
+<a id="replaceurl-2"></a>
 ## replaceUrl
 
 ```TypeScript
@@ -794,7 +819,7 @@ Replaces the current page with another one in the application. The current page 
 | --- | --- | --- | --- |
 | options | router.RouterOptions | 是 | Description of the new page. |
 | mode | router.RouterMode | 是 | Routing mode. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | - Callback for the router navigation result.<br>If the navigation succeeds,**error** is **undefined**. If the navigation fails, **error** is the error object returned by the system. |
 
 **错误码：**
 
@@ -804,6 +829,7 @@ Replaces the current page with another one in the application. The current page 
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
+<a id="replaceurl-3"></a>
 ## replaceUrl
 
 ```TypeScript
@@ -833,7 +859,7 @@ Replaces the current page with another one in the application. The current page 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -843,6 +869,7 @@ Replaces the current page with another one in the application. The current page 
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
+<a id="showalertbeforebackpage"></a>
 ## showAlertBeforeBackPage
 
 ```TypeScript

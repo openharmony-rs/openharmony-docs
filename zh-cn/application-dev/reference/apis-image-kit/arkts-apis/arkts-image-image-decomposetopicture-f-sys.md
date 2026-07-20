@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="decomposetopicture"></a>
 ## decomposeToPicture
 
 ```TypeScript
@@ -35,7 +36,7 @@ function decomposeToPicture(hdrPixelMap : PixelMap, options?: HdrDecomposeOption
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Picture \| undefined> | Promise对象。返回包含SDR PixelMap和增益图的Picture对象。 |
+| Promise&lt;Picture \| undefined&gt; | Promise对象。返回包含SDR PixelMap和增益图的Picture对象。 |
 
 **错误码：**
 

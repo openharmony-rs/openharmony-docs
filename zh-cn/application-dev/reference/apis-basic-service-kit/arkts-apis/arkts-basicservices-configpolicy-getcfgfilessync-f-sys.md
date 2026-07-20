@@ -6,6 +6,7 @@
 import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
+<a id="getcfgfilessync"></a>
 ## getCfgFilesSync
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: stri
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 返回文件列表。 |
+| Array&lt;string&gt; | 返回文件列表。 |
 
 **错误码：**
 

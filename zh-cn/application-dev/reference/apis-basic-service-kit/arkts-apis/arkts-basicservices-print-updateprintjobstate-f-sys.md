@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="updateprintjobstate"></a>
 ## updatePrintJobState
 
 ```TypeScript
@@ -36,7 +37,7 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 | jobId | string | 是 | 表示打印任务ID。 |
 | state | [PrintJobState](arkts-basicservices-print-printjobstate-e.md) | 是 | 表示打印任务状态。 |
 | subState | [PrintJobSubState](arkts-basicservices-print-printjobsubstate-e.md) | 是 | 表示打印任务子状态。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步更新打印任务状态之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步更新打印任务状态之后的回调。 |
 
 **错误码：**
 
@@ -66,6 +67,7 @@ print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
 ```
 
 
+<a id="updateprintjobstate-1"></a>
 ## updatePrintJobState
 
 ```TypeScript
@@ -98,7 +100,7 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

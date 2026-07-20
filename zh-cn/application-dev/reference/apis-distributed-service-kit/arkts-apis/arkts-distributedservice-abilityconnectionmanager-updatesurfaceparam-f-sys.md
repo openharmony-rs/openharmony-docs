@@ -6,6 +6,7 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="updatesurfaceparam"></a>
 ## updateSurfaceParam
 
 ```TypeScript

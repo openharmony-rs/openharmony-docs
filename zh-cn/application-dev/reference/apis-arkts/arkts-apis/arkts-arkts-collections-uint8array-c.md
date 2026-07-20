@@ -21,6 +21,7 @@
 import { collections } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -41,7 +42,7 @@ import { collections } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<number> | 生成数字的迭代器对象。 |
+| IterableIterator&lt;number&gt; | 生成数字的迭代器对象。 |
 
 **错误码：**
 
@@ -49,6 +50,7 @@ import { collections } from '@kit.ArkTS';
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
+<a id="at"></a>
 ## at
 
 ```TypeScript
@@ -84,6 +86,7 @@ at(index: number): number | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The at method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -106,6 +109,7 @@ constructor()
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint8Array's constructor cannot be directly invoked. |
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -134,6 +138,7 @@ constructor(length: number)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint8Array's constructor cannot be directly invoked. |
 
+<a id="constructor-2"></a>
 ## constructor
 
 ```TypeScript
@@ -154,7 +159,7 @@ constructor(elements: Iterable<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elements | Iterable<number> | 是 | 可迭代数字集合，用于构造ArkTS Uint8Array对象。 |
+| elements | Iterable&lt;number&gt; | 是 | 可迭代数字集合，用于构造ArkTS Uint8Array对象。 |
 
 **错误码：**
 
@@ -162,6 +167,7 @@ constructor(elements: Iterable<number>)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint8Array's constructor cannot be directly invoked. |
 
+<a id="constructor-3"></a>
 ## constructor
 
 ```TypeScript
@@ -182,7 +188,7 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| array | ArrayLike<number> \| ArrayBuffer | 是 | 用于构造ArkTS Uint8Array的对象。当参数类型是ArrayBuffer时，buffer所占的字节数须是4的整数倍。 |
+| array | ArrayLike&lt;number&gt; \| ArrayBuffer | 是 | 用于构造ArkTS Uint8Array的对象。当参数类型是ArrayBuffer时，buffer所占的字节数须是4的整数倍。 |
 
 **错误码：**
 
@@ -190,6 +196,7 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint8Array's constructor cannot be directly invoked. |
 
+<a id="constructor-4"></a>
 ## constructor
 
 ```TypeScript
@@ -210,7 +217,7 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | [ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md) | 是 | 用于构造ArkTS Uint8Array的ArrayBuffer对象。buffer所占的字节数须是4的整数倍。 |
+| buffer | ArrayBuffer | 是 | 用于构造ArkTS Uint8Array的ArrayBuffer对象。buffer所占的字节数须是4的整数倍。 |
 | byteOffset | number | 否 | 指定buffer的字节偏移，从0开始。默认值为**0**。 |
 | length | number | 否 | 指定ArkTS Uint8Array的长度。默认值为**0**。 |
 
@@ -220,6 +227,7 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint8Array's constructor cannot be directly invoked. |
 
+<a id="copywithin"></a>
 ## copyWithin
 
 ```TypeScript
@@ -248,7 +256,7 @@ copyWithin(target: number, start: number, end?: number): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 修改后的ArkTS Uint8Array。 |
+| Uint8Array | 修改后的ArkTS Uint8Array。 |
 
 **错误码：**
 
@@ -257,6 +265,7 @@ copyWithin(target: number, start: number, end?: number): Uint8Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The copyWithin method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -277,7 +286,7 @@ entries(): IterableIterator<[number, number]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[number, number]> | 迭代器对象。 |
+| IterableIterator&lt;[number, number]&gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -286,6 +295,7 @@ entries(): IterableIterator<[number, number]>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="every"></a>
 ## every
 
 ```TypeScript
@@ -306,7 +316,7 @@ every(predicate: TypedArrayPredicateFn<number, Uint8Array>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)<number, Uint8Array> | 是 | 用于测试的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Uint8Array&gt; | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
@@ -321,6 +331,7 @@ every(predicate: TypedArrayPredicateFn<number, Uint8Array>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The every method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -349,7 +360,7 @@ fill(value: number, start?: number, end?: number): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 填充后的ArkTS Uint8Array。 |
+| Uint8Array | 填充后的ArkTS Uint8Array。 |
 
 **错误码：**
 
@@ -358,6 +369,7 @@ fill(value: number, start?: number, end?: number): Uint8Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The fill method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="filter"></a>
 ## filter
 
 ```TypeScript
@@ -378,13 +390,13 @@ filter(predicate: TypedArrayPredicateFn<number, Uint8Array>): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)<number, Uint8Array> | 是 | 用于元素过滤的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Uint8Array&gt; | 是 | 用于元素过滤的断言函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 过滤后的ArkTS Uint8Array对象。 |
+| Uint8Array | 过滤后的ArkTS Uint8Array对象。 |
 
 **错误码：**
 
@@ -393,6 +405,7 @@ filter(predicate: TypedArrayPredicateFn<number, Uint8Array>): Uint8Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The filter method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="find"></a>
 ## find
 
 ```TypeScript
@@ -413,7 +426,7 @@ find(predicate: TypedArrayPredicateFn<number, Uint8Array>): number | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)<number, Uint8Array> | 是 | 用于元素查找的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Uint8Array&gt; | 是 | 用于元素查找的断言函数。 |
 
 **返回值：**
 
@@ -428,6 +441,7 @@ find(predicate: TypedArrayPredicateFn<number, Uint8Array>): number | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The find method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="findindex"></a>
 ## findIndex
 
 ```TypeScript
@@ -448,7 +462,7 @@ findIndex(predicate: TypedArrayPredicateFn<number, Uint8Array>): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)<number, Uint8Array> | 是 | 用于元素查找的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Uint8Array&gt; | 是 | 用于元素查找的断言函数。 |
 
 **返回值：**
 
@@ -463,6 +477,7 @@ findIndex(predicate: TypedArrayPredicateFn<number, Uint8Array>): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The findIndex method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -483,7 +498,7 @@ forEach(callbackFn: TypedArrayForEachCallback<number, Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [TypedArrayForEachCallback](arkts-arkts-collections-typedarrayforeachcallback-t.md)<number, Uint8Array> | 是 | 用于对每个元素执行的回调函数。 |
+| callbackFn | [TypedArrayForEachCallback](arkts-arkts-collections-typedarrayforeachcallback-t.md)&lt;number, Uint8Array&gt; | 是 | 用于对每个元素执行的回调函数。 |
 
 **错误码：**
 
@@ -492,6 +507,7 @@ forEach(callbackFn: TypedArrayForEachCallback<number, Uint8Array>): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="from"></a>
 ## from
 
 ```TypeScript
@@ -512,14 +528,15 @@ static from(arrayLike: ArrayLike<number>): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | ArrayLike<number> | 是 | 用于构造ArkTS Uint8Array的ArrayLike对象。 |
+| arrayLike | ArrayLike&lt;number&gt; | 是 | 用于构造ArkTS Uint8Array的ArrayLike对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 新创建的ArkTS Uint8Array对象。 |
+| Uint8Array | 新创建的ArkTS Uint8Array对象。 |
 
+<a id="from-1"></a>
 ## from
 
 ```TypeScript
@@ -540,15 +557,16 @@ static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | ArrayLike<T> | 是 | 用于构造ArkTS Uint8Array的ArrayLike对象。 |
-| mapFn | [TypedArrayFromMapFn](arkts-arkts-collections-typedarrayfrommapfn-t.md)<T, number> | 是 | 映射函数，对数组的每个元素调用。 |
+| arrayLike | ArrayLike&lt;T&gt; | 是 | 用于构造ArkTS Uint8Array的ArrayLike对象。 |
+| mapFn | [TypedArrayFromMapFn](arkts-arkts-collections-typedarrayfrommapfn-t.md)&lt;T, number&gt; | 是 | 映射函数，对数组的每个元素调用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 新创建的ArkTS Uint8Array对象。 |
+| Uint8Array | 新创建的ArkTS Uint8Array对象。 |
 
+<a id="from-2"></a>
 ## from
 
 ```TypeScript
@@ -569,15 +587,16 @@ static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, num
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | Iterable<number> | 是 | 用于构造ArkTS Uint8Array的可迭代对象。 |
-| mapFn | [TypedArrayFromMapFn](arkts-arkts-collections-typedarrayfrommapfn-t.md)<number, number> | 否 | 映射函数，对数组的每个元素调用。 |
+| arrayLike | Iterable&lt;number&gt; | 是 | 用于构造ArkTS Uint8Array的可迭代对象。 |
+| mapFn | [TypedArrayFromMapFn](arkts-arkts-collections-typedarrayfrommapfn-t.md)&lt;number, number&gt; | 否 | 映射函数，对数组的每个元素调用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 新创建的ArkTS Uint8Array对象。 |
+| Uint8Array | 新创建的ArkTS Uint8Array对象。 |
 
+<a id="includes"></a>
 ## includes
 
 ```TypeScript
@@ -614,6 +633,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The includes method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="indexof"></a>
 ## indexOf
 
 ```TypeScript
@@ -650,6 +670,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The indexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="join"></a>
 ## join
 
 ```TypeScript
@@ -685,6 +706,7 @@ join(separator?: string): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The join method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -705,7 +727,7 @@ keys(): IterableIterator<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<number> | 迭代器对象。 |
+| IterableIterator&lt;number&gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -714,6 +736,7 @@ keys(): IterableIterator<number>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="lastindexof"></a>
 ## lastIndexOf
 
 ```TypeScript
@@ -750,6 +773,7 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The lastIndexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="map"></a>
 ## map
 
 ```TypeScript
@@ -770,13 +794,13 @@ map(callbackFn: TypedArrayMapCallback<number, Uint8Array>): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [TypedArrayMapCallback](arkts-arkts-collections-typedarraymapcallback-t.md)<number, Uint8Array> | 是 | 一个最多接受三个参数的函数。map方法对数组中的每个元素调用一次callbackfn函数。 |
+| callbackFn | [TypedArrayMapCallback](arkts-arkts-collections-typedarraymapcallback-t.md)&lt;number, Uint8Array&gt; | 是 | 一个最多接受三个参数的函数。map方法对数组中的每个元素调用一次callbackfn函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 新的ArkTS Uint8Array对象。 |
+| Uint8Array | 新的ArkTS Uint8Array对象。 |
 
 **错误码：**
 
@@ -785,6 +809,7 @@ map(callbackFn: TypedArrayMapCallback<number, Uint8Array>): Uint8Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The map method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="of"></a>
 ## of
 
 ```TypeScript
@@ -811,8 +836,9 @@ static of(...items: number[]): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 新的ArkTS Uint8Array实例。可能的原因：1.必填参数未指定；<br>2.参数类型不正确；3.参数校验失败。 |
+| Uint8Array | 新的ArkTS Uint8Array实例。可能的原因：1.必填参数未指定；<br>2.参数类型不正确；3.参数校验失败。 |
 
+<a id="reduce"></a>
 ## reduce
 
 ```TypeScript
@@ -833,7 +859,7 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint8Array>): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)<number, number, Uint8Array> | 是 | 一个最多接受四个参数的函数。reduce方法对数组中的每个元素调用一次callbackfn函数。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;number, number, Uint8Array&gt; | 是 | 一个最多接受四个参数的函数。reduce方法对数组中的每个元素调用一次callbackfn函数。 |
 
 **返回值：**
 
@@ -848,6 +874,7 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint8Array>): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduce-1"></a>
 ## reduce
 
 ```TypeScript
@@ -868,7 +895,7 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint8Array>, initial
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)<number, number, Uint8Array> | 是 | 一个最多接受四个参数的函数。reduce方法对数组中的每个元素调用一次callbackfn函数。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;number, number, Uint8Array&gt; | 是 | 一个最多接受四个参数的函数。reduce方法对数组中的每个元素调用一次callbackfn函数。 |
 | initialValue | number | 是 | 如果指定了initialValue，则将其作为初始值开始累加。首次调用callbackfn函数时，将该值作为参数提供，而不是使用数组元素的值。 |
 
 **返回值：**
@@ -884,6 +911,7 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint8Array>, initial
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduce-2"></a>
 ## reduce
 
 ```TypeScript
@@ -904,7 +932,7 @@ reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Uint8Array>, initialVa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)<U, number, Uint8Array> | 是 | 归约函数。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;U, number, Uint8Array&gt; | 是 | 归约函数。 |
 | initialValue | U | 是 | 初始值。 |
 
 **返回值：**
@@ -920,6 +948,7 @@ reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Uint8Array>, initialVa
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduceright"></a>
 ## reduceRight
 
 ```TypeScript
@@ -940,7 +969,7 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint8Arr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)<U, number, Uint8Array> | 是 | 对Uint8Array中的每个元素调用的函数。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;U, number, Uint8Array&gt; | 是 | 对Uint8Array中的每个元素调用的函数。 |
 | initialValue | U | 是 | 作为回调函数首次调用的第一个参数的值。<br>如果未提供初始值，则使用Uint8Array的最后一个元素，<br>回调将从倒数第二个元素开始调用。 |
 
 **返回值：**
@@ -956,6 +985,7 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint8Arr
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduceright-1"></a>
 ## reduceRight
 
 ```TypeScript
@@ -976,7 +1006,7 @@ reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Uint8Array>): n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)<number, number, Uint8Array> | 是 | 对Uint8Array中的每个元素调用的函数。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;number, number, Uint8Array&gt; | 是 | 对Uint8Array中的每个元素调用的函数。 |
 
 **返回值：**
 
@@ -991,6 +1021,7 @@ reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Uint8Array>): n
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reverse"></a>
 ## reverse
 
 ```TypeScript
@@ -1011,7 +1042,7 @@ reverse(): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 反转后的ArkTS Uint8Array对象。 |
+| Uint8Array | 反转后的ArkTS Uint8Array对象。 |
 
 **错误码：**
 
@@ -1020,6 +1051,7 @@ reverse(): Uint8Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reverse method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -1040,7 +1072,7 @@ set(array: ArrayLike<number>, offset?: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| array | ArrayLike<number> | 是 | 用于设置的ArrayLike对象。 |
+| array | ArrayLike&lt;number&gt; | 是 | 用于设置的ArrayLike对象。 |
 | offset | number | 否 | 当前数组中要写入值的起始位置索引。 |
 
 **错误码：**
@@ -1050,6 +1082,7 @@ set(array: ArrayLike<number>, offset?: number): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The set method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="slice"></a>
 ## slice
 
 ```TypeScript
@@ -1077,7 +1110,7 @@ slice(start?: number, end?: number): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 新的ArkTS Uint8Array对象。 |
+| Uint8Array | 新的ArkTS Uint8Array对象。 |
 
 **错误码：**
 
@@ -1086,6 +1119,7 @@ slice(start?: number, end?: number): Uint8Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The slice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="some"></a>
 ## some
 
 ```TypeScript
@@ -1106,7 +1140,7 @@ some(predicate: TypedArrayPredicateFn<number, Uint8Array>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)<number, Uint8Array> | 是 | 用于测试的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Uint8Array&gt; | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
@@ -1121,6 +1155,7 @@ some(predicate: TypedArrayPredicateFn<number, Uint8Array>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The some method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="sort"></a>
 ## sort
 
 ```TypeScript
@@ -1141,13 +1176,13 @@ sort(compareFn?: TypedArrayCompareFn<number>): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| compareFn | [TypedArrayCompareFn](arkts-arkts-collections-typedarraycomparefn-t.md)<number> | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
+| compareFn | [TypedArrayCompareFn](arkts-arkts-collections-typedarraycomparefn-t.md)&lt;number&gt; | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 排序后的ArkTS Uint8Array对象。 |
+| Uint8Array | 排序后的ArkTS Uint8Array对象。 |
 
 **错误码：**
 
@@ -1156,6 +1191,7 @@ sort(compareFn?: TypedArrayCompareFn<number>): Uint8Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The sort method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="subarray"></a>
 ## subarray
 
 ```TypeScript
@@ -1183,7 +1219,7 @@ subarray(begin?: number, end?: number): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 新的ArkTS Uint8Array对象。 |
+| Uint8Array | 新的ArkTS Uint8Array对象。 |
 
 **错误码：**
 
@@ -1192,6 +1228,7 @@ subarray(begin?: number, end?: number): Uint8Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The subarray method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="tolocalestring"></a>
 ## toLocaleString
 
 ```TypeScript
@@ -1221,6 +1258,7 @@ toLocaleString(): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toLocaleString method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -1250,6 +1288,7 @@ toString(): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toString method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="values"></a>
 ## values
 
 ```TypeScript
@@ -1270,7 +1309,7 @@ values(): IterableIterator<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<number> | 迭代器对象。 |
+| IterableIterator&lt;number&gt; | 迭代器对象。 |
 
 **错误码：**
 

@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="createhdrcolor"></a>
 ## createHDRColor
 
 ```TypeScript
@@ -42,6 +43,7 @@ static createHDRColor(colorSpace: ColorSpace, red: number, green: number, blue: 
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c-sys.md) | ColorMetrics class instance with HDR color. |
 
+<a id="createhdrcolorwithlinearexposure"></a>
 ## createHDRColorWithLinearExposure
 
 ```TypeScript
@@ -80,6 +82,7 @@ static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: Colo
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c-sys.md) | 带有HDR颜色的ColorMetrics类实例。 |
 
+<a id="createhdrcolorwithlogexposure"></a>
 ## createHDRColorWithLogExposure
 
 ```TypeScript
@@ -118,6 +121,7 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace,
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c-sys.md) | ColorMetrics class instance with HDR color. |
 
+<a id="getbluevalue"></a>
 ## getBlueValue
 
 ```TypeScript
@@ -140,8 +144,9 @@ getBlueValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 蓝色值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),&gt;1.0表示HDR亮度。 |
+| number | 蓝色值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),>1.0表示HDR亮度。 |
 
+<a id="getcolorspace"></a>
 ## getColorSpace
 
 ```TypeScript
@@ -166,6 +171,7 @@ getColorSpace(): ColorSpace
 | --- | --- |
 | [ColorSpace](arkts-arkui-window-colorspace-e.md) | The color space of the ColorMetrics.Possible value: ColorSpace.SRGB, ColorSpace.DISPLAY_P3, ColorSpace.BT2020. |
 
+<a id="getgreenvalue"></a>
 ## getGreenValue
 
 ```TypeScript
@@ -188,8 +194,9 @@ getGreenValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 绿色的值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),&gt;1.0表示HDR亮度。 |
+| number | 绿色的值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),>1.0表示HDR亮度。 |
 
+<a id="getredvalue"></a>
 ## getRedValue
 
 ```TypeScript
@@ -212,8 +219,9 @@ getRedValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 红色的值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),&gt;1.0表示HDR亮度。 |
+| number | 红色的值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),>1.0表示HDR亮度。 |
 
+<a id="ishdr"></a>
 ## isHDR
 
 ```TypeScript
@@ -236,5 +244,5 @@ isHDR(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | ColorMetrics是否是HDR颜色。如果满足以下条件，则返回true：  -颜色是使用createHDRColorWithXx()方法创建的。  -任何RGB通道值都大于1.0。 |
+| boolean | ColorMetrics是否是HDR颜色。如果满足以下条件，则返回true：   -颜色是使用createHDRColorWithXx()方法创建的。   -任何RGB通道值都大于1.0。 |
 

@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
+<a id="access"></a>
 ## access
 
 ```TypeScript
@@ -119,6 +120,7 @@ export default {
 
 ```
 
+<a id="copy"></a>
 ## copy
 
 ```TypeScript
@@ -230,6 +232,7 @@ export default {
 
 ```
 
+<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -339,6 +342,7 @@ export default {
 
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -448,6 +452,7 @@ export default {
 
 ```
 
+<a id="list"></a>
 ## list
 
 ```TypeScript
@@ -557,6 +562,7 @@ export default {
 
 ```
 
+<a id="mkdir"></a>
 ## mkdir
 
 ```TypeScript
@@ -666,6 +672,7 @@ export default {
 
 ```
 
+<a id="move"></a>
 ## move
 
 ```TypeScript
@@ -777,6 +784,7 @@ export default {
 
 ```
 
+<a id="readarraybuffer"></a>
 ## readArrayBuffer
 
 ```TypeScript
@@ -890,6 +898,7 @@ export default {
 
 ```
 
+<a id="readtext"></a>
 ## readText
 
 ```TypeScript
@@ -999,6 +1008,7 @@ export default {
 
 ```
 
+<a id="rmdir"></a>
 ## rmdir
 
 ```TypeScript
@@ -1108,6 +1118,7 @@ export default {
 
 ```
 
+<a id="writearraybuffer"></a>
 ## writeArrayBuffer
 
 ```TypeScript
@@ -1219,6 +1230,7 @@ export default {
 
 ```
 
+<a id="writetext"></a>
 ## writeText
 
 ```TypeScript

@@ -21,6 +21,7 @@
 import { collections } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -41,7 +42,7 @@ import { collections } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<number> | 一个新的可迭代迭代器对象。 |
+| IterableIterator&lt;number&gt; | 一个新的可迭代迭代器对象。 |
 
 **错误码：**
 
@@ -49,6 +50,7 @@ import { collections } from '@kit.ArkTS';
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -71,6 +73,7 @@ BitVector 的构造函数。
 | --- | --- | --- | --- |
 | length | number | 是 | 初始化 BitVector 的长度。 |
 
+<a id="flipbitbyindex"></a>
 ## flipBitByIndex
 
 ```TypeScript
@@ -101,6 +104,7 @@ flipBitByIndex(index: number): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The flipBitByIndex method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="flipbitsbyrange"></a>
 ## flipBitsByRange
 
 ```TypeScript
@@ -132,6 +136,7 @@ flipBitsByRange(fromIndex: number, toIndex: number): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The flipBitsByRange method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="getbitcountbyrange"></a>
 ## getBitCountByRange
 
 ```TypeScript
@@ -170,6 +175,7 @@ getBitCountByRange(element: number, fromIndex: number, toIndex: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getBitCountByRange method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="getbitsbyrange"></a>
 ## getBitsByRange
 
 ```TypeScript
@@ -207,6 +213,7 @@ getBitsByRange(fromIndex: number, toIndex: number): BitVector
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getBitsByRange method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="getindexof"></a>
 ## getIndexOf
 
 ```TypeScript
@@ -245,6 +252,7 @@ getIndexOf(element: number, fromIndex: number, toIndex: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="getlastindexof"></a>
 ## getLastIndexOf
 
 ```TypeScript
@@ -283,6 +291,7 @@ getLastIndexOf(element: number, fromIndex: number, toIndex: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLastIndexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -321,6 +330,7 @@ has(element: number, fromIndex: number, toIndex: number): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="pop"></a>
 ## pop
 
 ```TypeScript
@@ -350,6 +360,7 @@ pop(): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The pop method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="push"></a>
 ## push
 
 ```TypeScript
@@ -385,6 +396,7 @@ push(element: number): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The push method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="resize"></a>
 ## resize
 
 ```TypeScript
@@ -414,6 +426,7 @@ resize(size: number): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The resize method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="setallbits"></a>
 ## setAllBits
 
 ```TypeScript
@@ -443,6 +456,7 @@ setAllBits(element: number): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setAllBits method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="setbitsbyrange"></a>
 ## setBitsByRange
 
 ```TypeScript
@@ -475,6 +489,7 @@ setBitsByRange(element: number, fromIndex: number, toIndex: number): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setBitsByRange method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="values"></a>
 ## values
 
 ```TypeScript
@@ -495,7 +510,7 @@ values(): IterableIterator<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<number> | BitVector 迭代器对象。 |
+| IterableIterator&lt;number&gt; | BitVector 迭代器对象。 |
 
 **错误码：**
 

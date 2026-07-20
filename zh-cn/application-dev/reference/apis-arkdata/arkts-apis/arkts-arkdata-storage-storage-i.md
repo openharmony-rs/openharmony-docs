@@ -14,6 +14,7 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -34,7 +35,7 @@ clear(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -49,6 +50,7 @@ storage.clear(function (err) {
 
 ```
 
+<a id="clear-1"></a>
 ## clear
 
 ```TypeScript
@@ -69,7 +71,7 @@ clear(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise实例，用于异步处理。 |
+| Promise&lt;void&gt; | Promise实例，用于异步处理。 |
 
 **示例：**
 
@@ -83,6 +85,7 @@ promiseclear.then(() => {
 
 ```
 
+<a id="clearsync"></a>
 ## clearSync
 
 ```TypeScript
@@ -106,6 +109,7 @@ storage.clearSync();
 
 ```
 
+<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -127,7 +131,7 @@ delete(key: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要获取的存储key名称，不能为空。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -142,6 +146,7 @@ storage.delete('startup', function (err) {
 
 ```
 
+<a id="delete-1"></a>
 ## delete
 
 ```TypeScript
@@ -168,7 +173,7 @@ delete(key: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise实例，用于异步处理。 |
+| Promise&lt;void&gt; | Promise实例，用于异步处理。 |
 
 **示例：**
 
@@ -182,6 +187,7 @@ promisedel.then(() => {
 
 ```
 
+<a id="deletesync"></a>
 ## deleteSync
 
 ```TypeScript
@@ -211,6 +217,7 @@ deleteSync(key: string): void
 
 ```
 
+<a id="flush"></a>
 ## flush
 
 ```TypeScript
@@ -231,7 +238,7 @@ flush(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -246,6 +253,7 @@ storage.flush(function (err) {
 
 ```
 
+<a id="flush-1"></a>
 ## flush
 
 ```TypeScript
@@ -266,7 +274,7 @@ flush(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise实例，用于异步处理。 |
+| Promise&lt;void&gt; | Promise实例，用于异步处理。 |
 
 **示例：**
 
@@ -280,6 +288,7 @@ promiseflush.then(() => {
 
 ```
 
+<a id="flushsync"></a>
 ## flushSync
 
 ```TypeScript
@@ -303,6 +312,7 @@ storage.flushSync();
 
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -325,7 +335,7 @@ get(key: string, defValue: ValueType, callback: AsyncCallback<ValueType>): void
 | --- | --- | --- | --- |
 | key | string | 是 | 要获取的存储key名称，不能为空。 |
 | defValue | [ValueType](arkts-arkdata-storage-valuetype-t.md) | 是 | 默认返回值。支持number、string、boolean。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ValueType> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ValueType&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -340,6 +350,7 @@ storage.get('startup', 'default', function(err, value) {
 
 ```
 
+<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -367,7 +378,7 @@ get(key: string, defValue: ValueType): Promise<ValueType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ValueType> | Promise实例，用于异步获取结果。 |
+| Promise&lt;ValueType&gt; | Promise实例，用于异步获取结果。 |
 
 **示例：**
 
@@ -381,6 +392,7 @@ promiseget.then((value) => {
 
 ```
 
+<a id="getsync"></a>
 ## getSync
 
 ```TypeScript
@@ -418,6 +430,7 @@ console.info("The value of startup is " + value);
 
 ```
 
+<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -439,7 +452,7 @@ has(key: string, callback: AsyncCallback<boolean>): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要获取的存储key名称，不能为空。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。 |
 
 **返回值：**
 
@@ -462,6 +475,7 @@ storage.has('startup', function (err, isExist) {
 
 ```
 
+<a id="has-1"></a>
 ## has
 
 ```TypeScript
@@ -488,7 +502,7 @@ has(key: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise实例，用于异步处理。 |
+| Promise&lt;boolean&gt; | Promise实例，用于异步处理。 |
 
 **示例：**
 
@@ -504,6 +518,7 @@ promisehas.then((isExist) => {
 
 ```
 
+<a id="hassync"></a>
 ## hasSync
 
 ```TypeScript
@@ -542,6 +557,7 @@ if (isExist) {
 
 ```
 
+<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -563,7 +579,7 @@ off(type: 'change', callback: Callback<StorageObserver>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定值'change'，表示数据变更。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<StorageObserver> | 是 | 需要取消的回调对象实例。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;StorageObserver&gt; | 是 | 需要取消的回调对象实例。 |
 
 **示例：**
 
@@ -575,6 +591,7 @@ storage.off('change', observer);
 
 ```
 
+<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -596,7 +613,7 @@ on(type: 'change', callback: Callback<StorageObserver>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定值'change'，表示数据变更。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<StorageObserver> | 是 | 回调对象实例。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;StorageObserver&gt; | 是 | 回调对象实例。 |
 
 **示例：**
 
@@ -610,6 +627,7 @@ storage.flushSync();  // observer will be called.
 
 ```
 
+<a id="put"></a>
 ## put
 
 ```TypeScript
@@ -632,7 +650,7 @@ put(key: string, value: ValueType, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | key | string | 是 | 要修改的存储的key，不能为空。 |
 | value | [ValueType](arkts-arkdata-storage-valuetype-t.md) | 是 | 存储的新值。支持number、string、boolean。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -647,6 +665,7 @@ storage.put('startup', 'auto', function (err) {
 
 ```
 
+<a id="put-1"></a>
 ## put
 
 ```TypeScript
@@ -674,7 +693,7 @@ put(key: string, value: ValueType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise实例，用于异步处理。 |
+| Promise&lt;void&gt; | Promise实例，用于异步处理。 |
 
 **示例：**
 
@@ -688,6 +707,7 @@ promiseput.then(() => {
 
 ```
 
+<a id="putsync"></a>
 ## putSync
 
 ```TypeScript

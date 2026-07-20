@@ -6,6 +6,7 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getexcludedates"></a>
 ## getExcludeDates
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getExcludeDates(reminderId: number): Promise<Array<Date>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Date>> | Promise对象。返回特定日历设置的所有不提醒日期。 |
+| Promise&lt;Array&lt;Date&gt;&gt; | Promise对象。返回特定日历设置的所有不提醒日期。 |
 
 **错误码：**
 

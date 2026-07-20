@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="startcasting"></a>
 ## startCasting
 
 ```TypeScript
@@ -30,7 +31,7 @@ function startCasting(session: SessionToken, device: OutputDeviceInfo, callback:
 | --- | --- | --- | --- |
 | session | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) | 是 | 会话令牌。SessionToken表示单个token。 |
 | device | [OutputDeviceInfo](arkts-avsession-avsession-outputdeviceinfo-i.md) | 是 | 设备相关信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当命令发送成功并启动投播，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并启动投播，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 ```
 
 
+<a id="startcasting-1"></a>
 ## startCasting
 
 ```TypeScript
@@ -92,7 +94,7 @@ function startCasting(session: SessionToken, device: OutputDeviceInfo): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当命令发送成功并启动投播，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当命令发送成功并启动投播，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

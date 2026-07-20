@@ -6,6 +6,7 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
+<a id="getkeyboardtype"></a>
 ## getKeyboardType
 
 ```TypeScript
@@ -25,7 +26,7 @@ function getKeyboardType(deviceId: number, callback: AsyncCallback<KeyboardType>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | number | 是 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KeyboardType> | 是 | 回调函数。当查询成功，err为undefined，data为输入设备的键盘类型；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KeyboardType&gt; | 是 | 回调函数。当查询成功，err为undefined，data为输入设备的键盘类型；否则为错误对象。 |
 
 **错误码：**
 
@@ -67,6 +68,7 @@ struct Index {
 ```
 
 
+<a id="getkeyboardtype-1"></a>
 ## getKeyboardType
 
 ```TypeScript
@@ -91,7 +93,7 @@ function getKeyboardType(deviceId: number): Promise<KeyboardType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KeyboardType> | Promise对象，返回输入设备的键盘类型。 |
+| Promise&lt;KeyboardType&gt; | Promise对象，返回输入设备的键盘类型。 |
 
 **错误码：**
 

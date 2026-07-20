@@ -14,6 +14,7 @@ ComponentObserver用于监听布局和绘制事件。
 import { inspector } from '@kit.ArkUI';
 ```
 
+<a id="off"></a>
 ## off('layout')
 
 ```TypeScript
@@ -37,8 +38,9 @@ off(type: 'layout', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'layout' | 是 | 监听事件的类型。<br>**起始版本：** 12 |
-| callback | () => void | 否 | 监听事件的回调。<br>**起始版本：** 12 |
+| callback | () =&gt; void | 否 | 监听事件的回调。<br>**起始版本：** 12 |
 
+<a id="off-1"></a>
 ## off('draw')
 
 ```TypeScript
@@ -62,8 +64,9 @@ off(type: 'draw', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'draw' | 是 | 监听事件的类型。<br>**起始版本：** 12 |
-| callback | () => void | 否 | 监听事件的回调。<br>**起始版本：** 12 |
+| callback | () =&gt; void | 否 | 监听事件的回调。<br>**起始版本：** 12 |
 
+<a id="off-2"></a>
 ## off('drawChildren')
 
 ```TypeScript
@@ -87,8 +90,9 @@ off(type: 'drawChildren', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'drawChildren' | 是 | 监听事件的类型。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 监听事件的回调。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 监听事件的回调。 |
 
+<a id="offdrawchildren"></a>
 ## offDrawChildren
 
 ```TypeScript
@@ -111,7 +115,7 @@ offDrawChildren(callback?: Callback<number[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number[]> | 否 | 监听事件的回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number[]&gt; | 否 | 监听事件的回调函数。 |
 
 **示例：**
 
@@ -151,6 +155,7 @@ struct ImageExample {
 
 ```
 
+<a id="offlayoutchildren"></a>
 ## offLayoutChildren
 
 ```TypeScript
@@ -173,7 +178,7 @@ offLayoutChildren(callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 监听事件的回调。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 监听事件的回调。 |
 
 **示例：**
 
@@ -245,6 +250,7 @@ struct ImageExample {
 
 ```
 
+<a id="on"></a>
 ## on('layout')
 
 ```TypeScript
@@ -268,8 +274,9 @@ on(type: 'layout', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'layout' | 是 | 监听事件的类型。<br>**起始版本：** 12 |
-| callback | () => void | 是 | 监听事件的回调。<br>**起始版本：** 12 |
+| callback | () =&gt; void | 是 | 监听事件的回调。<br>**起始版本：** 12 |
 
+<a id="on-1"></a>
 ## on('draw')
 
 ```TypeScript
@@ -293,8 +300,9 @@ on(type: 'draw', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'draw' | 是 | 监听事件的类型。<br>**起始版本：** 12 |
-| callback | () => void | 是 | 监听事件的回调。<br>**起始版本：** 12 |
+| callback | () =&gt; void | 是 | 监听事件的回调。<br>**起始版本：** 12 |
 
+<a id="on-2"></a>
 ## on('drawChildren')
 
 ```TypeScript
@@ -318,8 +326,9 @@ on(type: 'drawChildren', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'drawChildren' | 是 | 监听事件的类型。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 监听事件的回调。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 监听事件的回调。 |
 
+<a id="ondrawchildren"></a>
 ## onDrawChildren
 
 ```TypeScript
@@ -342,7 +351,7 @@ onDrawChildren(callback: Callback<number[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number[]> | 是 | 监听事件的回调函数，回调函数的参数为发生绘制送显节点的UniqueId。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number[]&gt; | 是 | 监听事件的回调函数，回调函数的参数为发生绘制送显节点的UniqueId。 |
 
 **示例：**
 
@@ -382,6 +391,7 @@ struct ImageExample {
 
 ```
 
+<a id="onlayoutchildren"></a>
 ## onLayoutChildren
 
 ```TypeScript
@@ -404,5 +414,5 @@ onLayoutChildren(callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 事件触发时的回调方法。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 事件触发时的回调方法。 |
 

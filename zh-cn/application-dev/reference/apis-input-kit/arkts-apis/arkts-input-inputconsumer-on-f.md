@@ -6,6 +6,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
+<a id="on"></a>
 ## on('hotkeyChange')
 
 ```TypeScript
@@ -26,7 +27,7 @@ function on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callba
 | --- | --- | --- | --- |
 | type | 'hotkeyChange' | 是 | 事件类型，固定取值为'hotkeyChange'。 |
 | hotkeyOptions | [HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md) | 是 | 快捷键选项。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<HotkeyOptions> | 是 | 回调函数，返回满足条件的组合按键输入事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;HotkeyOptions&gt; | 是 | 回调函数，返回满足条件的组合按键输入事件。 |
 
 **错误码：**
 
@@ -74,6 +75,7 @@ struct Index {
 ```
 
 
+<a id="on-1"></a>
 ## on('keyPressed')
 
 ```TypeScript
@@ -82,7 +84,7 @@ function on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback<Ke
 
 订阅按键按下事件。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。使用callback异步回调。
 
-订阅成功后，该按键事件的系统默认行为将被屏蔽，即不会再触发系统级的响应，如音量调节。要恢复系统响应，请使用[off](arkts-input-inputconsumer-off-f.md#off-3)方法取消订阅。
+订阅成功后，该按键事件的系统默认行为将被屏蔽，即不会再触发系统级的响应，如音量调节。要恢复系统响应，请使用[off](inputConsumer.off(type: 'keyPressed', callback?: Callback<KeyEvent>))方法取消订阅。
 
 **起始版本：** 16
 
@@ -96,7 +98,7 @@ function on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback<Ke
 | --- | --- | --- | --- |
 | type | 'keyPressed' | 是 | 事件类型，固定取值为'keyPressed'。 |
 | options | [KeyPressedConfig](arkts-input-inputconsumer-keypressedconfig-i.md) | 是 | 按键事件消费设置。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<KeyEvent> | 是 | 回调函数，返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;KeyEvent&gt; | 是 | 回调函数，返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
 
 **错误码：**
 

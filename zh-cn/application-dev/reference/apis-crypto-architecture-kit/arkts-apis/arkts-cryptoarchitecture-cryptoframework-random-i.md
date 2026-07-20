@@ -16,6 +16,7 @@ Random类，调用Random方法生成随机数。调用前，需要通过[createR
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="enablehardwareentropy"></a>
 ## enableHardwareEntropy
 
 ```TypeScript
@@ -67,6 +68,7 @@ rand.generateRandom(12, (err, randData) => {
 
 ```
 
+<a id="generaterandom"></a>
 ## generateRandom
 
 ```TypeScript
@@ -94,7 +96,7 @@ generateRandom(len: number, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | len | number | 是 | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DataBlob> | 是 | 回调函数。当生成随机数成功时，err为undefined，data为获取到的随机数；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当生成随机数成功时，err为undefined，data为获取到的随机数；否则为错误对象。 |
 
 **错误码：**
 
@@ -120,6 +122,7 @@ rand.generateRandom(12, (err, randData) => {
 
 ```
 
+<a id="generaterandom-1"></a>
 ## generateRandom
 
 ```TypeScript
@@ -150,7 +153,7 @@ generateRandom(len: number): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DataBlob> | Promise对象，返回生成的随机数。 |
+| Promise&lt;DataBlob&gt; | Promise对象，返回生成的随机数。 |
 
 **错误码：**
 
@@ -247,6 +250,7 @@ export default {
 
 ```
 
+<a id="generaterandomsync"></a>
 ## generateRandomSync
 
 ```TypeScript
@@ -384,6 +388,7 @@ export default {
 
 ```
 
+<a id="setseed"></a>
 ## setSeed
 
 ```TypeScript

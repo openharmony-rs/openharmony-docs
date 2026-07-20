@@ -1,6 +1,6 @@
 # EnterpriseAdminExtensionAbility
 
-本模块提供[企业设备管理扩展能力](../../../../mdm/mdm-kit-term.md#企业设备管理扩展能力)。
+本模块提供[企业设备管理扩展能力](docroot://mdm/mdm-kit-term.md#企业设备管理扩展能力)。
 
 设备管理应用需要存在一个EnterpriseAdminExtensionAbility并重写相关接口，以此具备模块提供的各项能力，比如接收由系统发送的该应用被激活或者解除激活的通知。
 
@@ -20,6 +20,7 @@
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 ```
 
+<a id="onaccountadded"></a>
 ## onAccountAdded
 
 ```TypeScript
@@ -70,6 +71,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onaccountremoved"></a>
 ## onAccountRemoved
 
 ```TypeScript
@@ -120,6 +122,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onaccountswitched"></a>
 ## onAccountSwitched
 
 ```TypeScript
@@ -170,6 +173,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onadmindisabled"></a>
 ## onAdminDisabled
 
 ```TypeScript
@@ -199,6 +203,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onadminenabled"></a>
 ## onAdminEnabled
 
 ```TypeScript
@@ -228,6 +233,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onadminpolicychanged"></a>
 ## onAdminPolicyChanged
 
 ```TypeScript
@@ -279,6 +285,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onappstart"></a>
 ## onAppStart
 
 ```TypeScript
@@ -329,6 +336,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onappstop"></a>
 ## onAppStop
 
 ```TypeScript
@@ -379,6 +387,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onbundleadded"></a>
 ## onBundleAdded
 
 ```TypeScript
@@ -429,6 +438,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onbundleadded-1"></a>
 ## onBundleAdded
 
 ```TypeScript
@@ -481,6 +491,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onbundleremoved"></a>
 ## onBundleRemoved
 
 ```TypeScript
@@ -531,6 +542,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onbundleremoved-1"></a>
 ## onBundleRemoved
 
 ```TypeScript
@@ -583,6 +595,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onbundleupdated"></a>
 ## onBundleUpdated
 
 ```TypeScript
@@ -634,6 +647,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="ondeviceadmindisabled"></a>
 ## onDeviceAdminDisabled
 
 ```TypeScript
@@ -668,6 +682,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="ondeviceadminenabled"></a>
 ## onDeviceAdminEnabled
 
 ```TypeScript
@@ -702,6 +717,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="ondevicebootcompleted"></a>
 ## onDeviceBootCompleted
 
 ```TypeScript
@@ -746,6 +762,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onkeyevent"></a>
 ## onKeyEvent
 
 ```TypeScript
@@ -868,6 +885,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onkioskmodeentering"></a>
 ## onKioskModeEntering
 
 ```TypeScript
@@ -906,6 +924,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onkioskmodeexiting"></a>
 ## onKioskModeExiting
 
 ```TypeScript
@@ -942,6 +961,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onlogcollected"></a>
 ## onLogCollected
 
 ```TypeScript
@@ -1007,6 +1027,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onmarketappinstallresult"></a>
 ## onMarketAppInstallResult
 
 ```TypeScript
@@ -1043,6 +1064,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onstart"></a>
 ## onStart
 
 ```TypeScript
@@ -1072,6 +1094,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onstartupguidecompleted"></a>
 ## onStartupGuideCompleted
 
 ```TypeScript
@@ -1128,6 +1151,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ```
 
+<a id="onsystemupdate"></a>
 ## onSystemUpdate
 
 ```TypeScript

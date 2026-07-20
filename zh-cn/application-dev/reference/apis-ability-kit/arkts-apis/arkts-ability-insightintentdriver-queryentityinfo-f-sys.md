@@ -6,6 +6,7 @@
 import { insightIntentDriver } from '@kit.AbilityKit';
 ```
 
+<a id="queryentityinfo"></a>
 ## queryEntityInfo
 
 ```TypeScript
@@ -36,7 +37,7 @@ function queryEntityInfo(param: QueryParam): Promise<Array<Record<string, Object
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Record<string, Object>>> | - Returns the insight intent entity information. |
+| Promise&lt;Array&lt;Record&lt;string, Object&gt;&gt;&gt; | - Returns the insight intent entity information. |
 
 **错误码：**
 

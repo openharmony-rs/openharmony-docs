@@ -22,7 +22,7 @@ displayName?: Array<string>
 
 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 10
 
@@ -94,7 +94,7 @@ mimeType?: Array<string>
 
 mime类型完全匹配，各个关键词OR关系。预留字段，暂不支持使用。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 10
 
@@ -112,7 +112,7 @@ suffix?: Array<string>
 
 文件后缀名完全匹配，各个关键词OR关系。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 10
 

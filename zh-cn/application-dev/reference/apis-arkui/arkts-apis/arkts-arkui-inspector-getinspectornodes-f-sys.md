@@ -1,5 +1,6 @@
 # getInspectorNodes（系统接口）
 
+<a id="getinspectornodes"></a>
 ## getInspectorNodes
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="prequery"></a>
 ## preQuery
 
 ```TypeScript
@@ -32,7 +33,7 @@ function preQuery(query: AssetMap): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回挑战值。<br>**说明：** 挑战值用于后续的用户认证。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。<br>**说明：** 挑战值用于后续的用户认证。 |
 
 **错误码：**
 

@@ -26,7 +26,7 @@ dataGroupId?: string | null
 
 **模型约束：** 此属性仅在Stage模型下可用。
 
-**类型：** string | null
+**类型：** string \| null
 
 **起始版本：** 12
 

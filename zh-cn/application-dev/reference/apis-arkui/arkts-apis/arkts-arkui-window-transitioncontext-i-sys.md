@@ -16,13 +16,14 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="completetransition"></a>
 ## completeTransition
 
 ```TypeScript
 completeTransition(isCompleted: boolean): void
 ```
 
-设置属性转换的最终完成状态。该函数需要在动画函数[animateTo()](./@internal/component/ets/common)执行后设置。
+设置属性转换的最终完成状态。该函数需要在动画函数[animateTo()](../../apis-arkui/arkts-components/arkts-arkui-common-attribute.md)执行后设置。
 
 **起始版本：** 9
 

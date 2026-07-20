@@ -16,6 +16,7 @@ Transition Controller
 import { uiExtensionHost } from '@kit.ArkUI';
 ```
 
+<a id="createsubwindowwithoptions"></a>
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -45,7 +46,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<window.Window> | Promise used to return the subwindow created. |
+| Promise&lt;window.Window&gt; | Promise used to return the subwindow created. |
 
 **错误码：**
 
@@ -104,6 +105,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
+<a id="createsubwindowwithoptions-1"></a>
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -137,7 +139,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<window.Window> | Promise used to return the subwindow. |
+| Promise&lt;window.Window&gt; | Promise used to return the subwindow. |
 
 **错误码：**
 
@@ -195,6 +197,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
+<a id="getwindowavoidarea"></a>
 ## getWindowAvoidArea
 
 ```TypeScript
@@ -250,6 +253,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
+<a id="hidenonsecurewindows"></a>
 ## hideNonSecureWindows
 
 ```TypeScript
@@ -260,8 +264,8 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 
 > **说明：**  
 >  
-> - 不安全窗口是指可能遮挡[EmbeddedComponent](./@internal/component/ets/embedded_component)（或  
-> [UIExtensionComponent](./@internal/component/ets/ui_extension_component)）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口  
+> - 不安全窗口是指可能遮挡[EmbeddedComponent](../../apis-arkui/arkts-components/arkts-arkui-embedded_component-i)（或  
+> [UIExtensionComponent](../../apis-arkui/arkts-components/arkts-arkui-ui_extension_component-i)）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口  
 > （不包括系统应用创建的上述类型窗口）。  
 >  
 > - 当EmbeddedComponent（或UIExtensionComponent）组件被用来显示敏感操作提示内容时，可以选择隐藏不安全窗口，保护敏感操作提示内容不会被遮挡。当EmbeddedComponent（或  
@@ -292,7 +296,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。、 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。、 |
 
 **错误码：**
 
@@ -334,6 +338,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
+<a id="hideprivacycontentforhost"></a>
 ## hidePrivacyContentForHost
 
 ```TypeScript
@@ -344,8 +349,8 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise<void>
 
 > **说明：**  
 >  
-> 开启截图隐私内容保护后，使用窗口截图[window.snapshot](../../../../reference/apis-arkui/arkts-apis-window-Window.md#snapshot9)或者组件截图  
-> [UIContext.getComponentSnapshot](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)  
+> 开启截图隐私内容保护后，使用窗口截图[window.snapshot](docroot://reference/apis-arkui/arkts-apis-window-Window.md#snapshot9)或者组件截图  
+> [UIContext.getComponentSnapshot](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)  
 > 将无法截取到当前组件的内容（不包括该组件下创建的子窗）。
 
 **起始版本：** 13
@@ -368,7 +373,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -399,6 +404,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
+<a id="off"></a>
 ## off('avoidAreaChange')
 
 ```TypeScript
@@ -422,7 +428,7 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'avoidAreaChange' | 是 | 注销的事件类型，固定为'avoidAreaChange'，即系统避让区变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<{ type: window.AvoidAreaType, area: window.AvoidArea }> | 否 |  |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;{ type: window.AvoidAreaType, area: window.AvoidArea }&gt; | 否 |  |
 
 **错误码：**
 
@@ -447,6 +453,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
+<a id="off-1"></a>
 ## off('windowSizeChange')
 
 ```TypeScript
@@ -470,7 +477,7 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowSizeChange' | 是 | 注销的事件类型，固定值：'windowSizeChange'，即组件（EmbeddedComponent或UIExtensionComponent）尺寸变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<window.Size> | 否 | 回调函数。返回当前的组件（EmbeddedComponent或UIExtensionComponent）尺寸。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;window.Size&gt; | 否 | 回调函数。返回当前的组件（EmbeddedComponent或UIExtensionComponent）尺寸。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。 |
 
 **错误码：**
 
@@ -495,6 +502,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
+<a id="on"></a>
 ## on('avoidAreaChange')
 
 ```TypeScript
@@ -518,7 +526,7 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'avoidAreaChange' | 是 | 监听的事件类型，固定为'avoidAreaChange'，即系统避让区变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<{ type: window.AvoidAreaType, area: window.AvoidArea }> | 是 |  |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;{ type: window.AvoidAreaType, area: window.AvoidArea }&gt; | 是 |  |
 
 **错误码：**
 
@@ -545,6 +553,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
+<a id="on-1"></a>
 ## on('windowSizeChange')
 
 ```TypeScript
@@ -568,7 +577,7 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowSizeChange' | 是 | 监听的事件类型，固定为'windowSizeChange'，即组件（EmbeddedComponent或UIExtensionComponent）尺寸变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<window.Size> | 是 | 回调函数：入参用于接收当前组件（EmbeddedComponent或UIExtensionComponent）的尺寸。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;window.Size&gt; | 是 | 回调函数：入参用于接收当前组件（EmbeddedComponent或UIExtensionComponent）的尺寸。 |
 
 **错误码：**
 
@@ -595,6 +604,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
+<a id="setwatermarkflag"></a>
 ## setWaterMarkFlag
 
 ```TypeScript
@@ -627,7 +637,7 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -675,7 +685,7 @@ properties: UIExtensionHostWindowProxyProperties
 
 UIExtensionComponent组件以及宿主窗口的信息。
 
-**约束：** 由于架构约束，不建议在[onSessionCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate-1)阶段同步获取该值，建议在收到[on('windowSizeChange')](arkts-arkui-uiextensionhost-uiextensionhostwindowproxy-i-sys.md#on-2)回调之后获取。
+**约束：** 由于架构约束，不建议在[onSessionCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate-1)阶段同步获取该值，建议在收到[on('windowSizeChange')](@ohos.uiExtensionHost:uiExtensionHost.UIExtensionHostWindowProxy.on(type: 'windowSizeChange', callback: Callback<window.Size>))回调之后获取。
 
 **类型：** UIExtensionHostWindowProxyProperties
 

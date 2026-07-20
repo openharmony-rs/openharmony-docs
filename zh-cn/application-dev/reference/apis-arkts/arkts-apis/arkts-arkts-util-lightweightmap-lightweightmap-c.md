@@ -14,6 +14,7 @@ LightWeightMap可用于存储具有关联关系的key-value键值对集合，存
 import { LightWeightMap } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -34,7 +35,7 @@ import { LightWeightMap } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[K, V]> | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
+| IterableIterator&lt;[K, V]&gt; | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
 
 **错误码：**
 
@@ -86,6 +87,7 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -120,6 +122,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -149,6 +152,7 @@ let lightWeightMap = new LightWeightMap<string, number>();
 
 ```
 
+<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -169,7 +173,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[K, V]> | 返回一个迭代器。 |
+| IterableIterator&lt;[K, V]&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -205,6 +209,7 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
+<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -225,7 +230,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, th
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: V, key?: K, map?: LightWeightMap<K, V>) => void | 是 | 回调函数。 |
+| callbackFn | (value?: V, key?: K, map?: LightWeightMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -260,6 +265,7 @@ for (let i = 0; i < 10; i++) {
 
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -305,6 +311,7 @@ console.info("result:", result);  // result: 356
 
 ```
 
+<a id="getindexofkey"></a>
 ## getIndexOfKey
 
 ```TypeScript
@@ -350,6 +357,7 @@ console.info("result:", result);  // result: 0
 
 ```
 
+<a id="getindexofvalue"></a>
 ## getIndexOfValue
 
 ```TypeScript
@@ -395,6 +403,7 @@ console.info("result:", result);  // result: 1
 
 ```
 
+<a id="getkeyat"></a>
 ## getKeyAt
 
 ```TypeScript
@@ -441,6 +450,7 @@ console.info("result:", result);  // result: squirrel
 
 ```
 
+<a id="getvalueat"></a>
 ## getValueAt
 
 ```TypeScript
@@ -487,6 +497,7 @@ console.info("result:", result);  // result: 123
 
 ```
 
+<a id="hasall"></a>
 ## hasAll
 
 ```TypeScript
@@ -507,7 +518,7 @@ hasAll(map: LightWeightMap<K, V>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| map | [LightWeightMap](arkts-arkts-util-lightweightmap-lightweightmap-c.md)<K, V> | 是 | 比较对象。 |
+| map | [LightWeightMap](arkts-arkts-util-lightweightmap-lightweightmap-c.md)&lt;K, V&gt; | 是 | 比较对象。 |
 
 **返回值：**
 
@@ -534,6 +545,7 @@ console.info("result = ", result); // result = true
 
 ```
 
+<a id="haskey"></a>
 ## hasKey
 
 ```TypeScript
@@ -578,6 +590,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="hasvalue"></a>
 ## hasValue
 
 ```TypeScript
@@ -622,6 +635,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="increasecapacityto"></a>
 ## increaseCapacityTo
 
 ```TypeScript
@@ -658,6 +672,7 @@ lightWeightMap.increaseCapacityTo(10);
 
 ```
 
+<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -695,6 +710,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -715,7 +731,7 @@ keys(): IterableIterator<K>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<K> | 返回一个迭代器。 |
+| IterableIterator&lt;K&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -739,6 +755,7 @@ for (let key of keys) {
 
 ```
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -783,6 +800,7 @@ console.info("result:", result);  // result: 356
 
 ```
 
+<a id="removeat"></a>
 ## removeAt
 
 ```TypeScript
@@ -828,6 +846,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -872,6 +891,7 @@ console.info("result:", result);  // result: squirrel:123
 
 ```
 
+<a id="setall"></a>
 ## setAll
 
 ```TypeScript
@@ -892,7 +912,7 @@ setAll(map: LightWeightMap<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| map | [LightWeightMap](arkts-arkts-util-lightweightmap-lightweightmap-c.md)<K, V> | 是 | 该map会添加到其调用setAll接口的map对象中。 |
+| map | [LightWeightMap](arkts-arkts-util-lightweightmap-lightweightmap-c.md)&lt;K, V&gt; | 是 | 该map会添加到其调用setAll接口的map对象中。 |
 
 **错误码：**
 
@@ -913,6 +933,7 @@ console.info("result:", result);  // result: 356
 
 ```
 
+<a id="setvalueat"></a>
 ## setValueAt
 
 ```TypeScript
@@ -960,6 +981,7 @@ console.info("result:", lightWeightMap.get("squirrel"));  // result: 3546
 
 ```
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -999,6 +1021,7 @@ console.info("result:", result);  // result: sparrow:356,squirrel:123
 
 ```
 
+<a id="values"></a>
 ## values
 
 ```TypeScript
@@ -1019,7 +1042,7 @@ values(): IterableIterator<V>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<V> | 返回一个迭代器。 |
+| IterableIterator&lt;V&gt; | 返回一个迭代器。 |
 
 **错误码：**
 

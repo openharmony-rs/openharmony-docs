@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="installforresult"></a>
 ## installForResult
 
 ```TypeScript
@@ -29,14 +30,14 @@ function installForResult(admin: Want, hapFilePaths: Array<string>, installParam
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件 |
-| hapFilePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用包路径 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 应用包路径 |
 | installParam | [InstallParam](arkts-mdm-bundlemanager-installparam-i.md) | 否 | 安装参数 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 应用安装结果 |
+| Promise&lt;void&gt; | 应用安装结果 |
 
 **错误码：**
 

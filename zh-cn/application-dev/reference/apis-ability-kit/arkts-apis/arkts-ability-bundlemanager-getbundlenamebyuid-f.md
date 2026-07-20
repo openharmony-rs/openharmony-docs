@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getbundlenamebyuid"></a>
 ## getBundleNameByUid
 
 ```TypeScript
@@ -27,7 +28,7 @@ function getBundleNameByUid(uid: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uid | number | 是 | 表示应用程序的UID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的BundleName；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的BundleName；否则为错误对象。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ try {
 ```
 
 
+<a id="getbundlenamebyuid-1"></a>
 ## getBundleNameByUid
 
 ```TypeScript
@@ -87,7 +89,7 @@ function getBundleNameByUid(uid: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回bundleName。 |
+| Promise&lt;string&gt; | Promise对象，返回bundleName。 |
 
 **错误码：**
 

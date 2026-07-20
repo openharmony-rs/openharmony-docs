@@ -6,6 +6,7 @@
 import { dataUriUtils } from '@kit.AbilityKit';
 ```
 
+<a id="attachid"></a>
 ## attachId
 
 ```TypeScript

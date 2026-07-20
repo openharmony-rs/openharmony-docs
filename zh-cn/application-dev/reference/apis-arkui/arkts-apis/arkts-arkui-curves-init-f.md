@@ -6,6 +6,7 @@
 import { curves } from '@kit.ArkUI';
 ```
 
+<a id="init"></a>
 ## init
 
 ```TypeScript
@@ -32,7 +33,7 @@ function init(curve?: Curve): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| curve | [Curve](arkts-arkui-enums-curve-e.md) | 否 | 曲线类型。<br/>默认值：Curve.Linear |
+| curve | [Curve](arkts-arkui-curve-e.md) | 否 | 曲线类型。<br/>默认值：Curve.Linear |
 
 **返回值：**
 

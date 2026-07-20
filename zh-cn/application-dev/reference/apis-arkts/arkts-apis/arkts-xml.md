@@ -49,7 +49,7 @@ import { xml } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [EventType](arkts-arkts-xml-eventtype-e.md) | 事件类型枚举。**ArkTS-Dyn起始版本：** 8**ArkTS-Sta起始版本：** 23 |
+| [EventType](arkts-arkts-xml-eventtype-e.md) | 事件类型枚举。  **ArkTS-Dyn起始版本：** 8  **ArkTS-Sta起始版本：** 23 |
 
 ### 类型
 

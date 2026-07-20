@@ -16,6 +16,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -39,6 +40,7 @@ let gallerySync = new cloudSync.GallerySync()
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -62,7 +64,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | evt | 'progress' | 是 | 取消订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | (pg: SyncProgress) => void | 是 | 回调函数。同步过程事件，入参为[SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md)，返回值为void。 |
+| callback | (pg: SyncProgress) =&gt; void | 是 | 回调函数。同步过程事件，入参为[SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md)，返回值为void。 |
 
 **错误码：**
 
@@ -88,6 +90,7 @@ gallerySync.off('progress', callback);
 
 ```
 
+<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -134,6 +137,7 @@ gallerySync.off('progress');
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -157,7 +161,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | evt | 'progress' | 是 | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | (pg: SyncProgress) => void | 是 | 回调函数。同步过程事件，入参为[SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md)，返回值为void。 |
+| callback | (pg: SyncProgress) =&gt; void | 是 | 回调函数。同步过程事件，入参为[SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md)，返回值为void。 |
 
 **错误码：**
 
@@ -179,6 +183,7 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -201,7 +206,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -233,6 +238,7 @@ gallerySync.start().then(() => {
 
 ```
 
+<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -255,7 +261,7 @@ start(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步启动端云同步。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步启动端云同步。 |
 
 **错误码：**
 
@@ -285,6 +291,7 @@ gallerySync.start((err: BusinessError) => {
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -311,7 +318,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -336,6 +343,7 @@ gallerySync.stop().then(() => {
 
 ```
 
+<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -362,7 +370,7 @@ stop(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步停止端云同步。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步停止端云同步。 |
 
 **错误码：**
 

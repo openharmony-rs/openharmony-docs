@@ -6,6 +6,7 @@
 import { WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="getoperationtype"></a>
 ## getOperationType
 
 ```TypeScript
@@ -27,7 +28,7 @@ function getOperationType(agent: WantAgent, callback: AsyncCallback<number>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 获取一个WantAgent的OperationType信息的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取一个WantAgent的OperationType信息的回调方法。 |
 
 **错误码：**
 
@@ -109,6 +110,7 @@ try {
 ```
 
 
+<a id="getoperationtype-1"></a>
 ## getOperationType
 
 ```TypeScript
@@ -135,7 +137,7 @@ function getOperationType(agent: WantAgent): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回OperationType的结果。 |
+| Promise&lt;number&gt; | Promise对象，返回OperationType的结果。 |
 
 **错误码：**
 

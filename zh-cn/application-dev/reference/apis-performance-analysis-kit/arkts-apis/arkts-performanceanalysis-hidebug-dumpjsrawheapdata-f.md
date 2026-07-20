@@ -6,6 +6,7 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="dumpjsrawheapdata"></a>
 ## dumpJsRawHeapData
 
 ```TypeScript
@@ -38,7 +39,7 @@ function dumpJsRawHeapData(needGC?: boolean): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise���󣬷������ɵĿ����ļ�·���� |
+| Promise&lt;string&gt; | Promise���󣬷������ɵĿ����ļ�·���� |
 
 **错误码：**
 
@@ -67,6 +68,7 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 ```
 
 
+<a id="dumpjsrawheapdata-1"></a>
 ## dumpJsRawHeapData
 
 ```TypeScript
@@ -102,7 +104,7 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise���󣬷������ɵĿ����ļ�·���� |
+| Promise&lt;string&gt; | Promise���󣬷������ɵĿ����ļ�·���� |
 
 **错误码：**
 
@@ -132,6 +134,7 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 ```
 
 
+<a id="dumpjsrawheapdata-2"></a>
 ## dumpJsRawHeapData
 
 ```TypeScript
@@ -168,7 +171,7 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise���󣬷������ɵĿ����ļ�·�����顣 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise���󣬷������ɵĿ����ļ�·�����顣 |
 
 **错误码：**
 

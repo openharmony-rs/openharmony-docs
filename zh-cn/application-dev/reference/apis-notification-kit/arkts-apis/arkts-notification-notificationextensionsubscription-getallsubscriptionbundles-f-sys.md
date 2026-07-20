@@ -6,6 +6,7 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
+<a id="getallsubscriptionbundles"></a>
 ## getAllSubscriptionBundles
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getAllSubscriptionBundles(): Promise<BundleOption[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BundleOption[]> | Promise对象，返回所有具有ohos.permission.SUBSCRIBE_NOTIFICATION权限并且实现了NotificationSubscriberExtensionAbility的应用列表。 |
+| Promise&lt;BundleOption[]&gt; | Promise对象，返回所有具有ohos.permission.SUBSCRIBE_NOTIFICATION权限并且实现了NotificationSubscriberExtensionAbility的应用列表。 |
 
 **错误码：**
 
