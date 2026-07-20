@@ -131,7 +131,7 @@ off(type: 'draw', callback?: () => void): void
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
-通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
+通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法。当组件的子组件位于UI组件主树中且绘制送显完成时，会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。当前节点注册回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -167,7 +167,7 @@ onLayoutChildren(callback: Callback\<void\>): void
 
 通过[ComponentObserver](#componentobserver)注册layoutChildren事件回调。使用callback异步回调。
 
-把当前注册监听的节点作为根节点，子树中的节点完成布局时，会触发该回调。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。取消最顶层的回调后，其余layoutChildren事件回调也无法生效。
+以当前注册事件回调的节点为根节点，当子树中的节点位于UI组件主树中且完成布局时，会触发该回调。如果组件树中存在多个layoutChildren事件回调，只会触发最顶层的layoutChildren事件回调。通过[offLayoutChildren](#offlayoutchildren23)取消最顶层的回调后，其余layoutChildren事件回调也无法生效。当前节点注册回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -276,7 +276,7 @@ onDrawChildren(callback: Callback\<number[]\>): void
 
 通过[ComponentObserver](#componentobserver)注册drawChildren事件回调。使用callback异步回调。
 
-把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
+以当前注册事件回调的节点为根节点，当组件的子组件位于UI组件主树中且绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。当前节点注册事件回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
