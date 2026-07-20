@@ -19,7 +19,7 @@
 
 - **系统特权应用**：配置[runningResourcesApply特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#配置方式)应用的系统应用，需在[install_list_capability.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json)中完成配置，参考示例如下：
 
-  ```json
+  ```json5
   {
       "install_list": [
           {
@@ -63,8 +63,11 @@
 | reason | string | 是 | 申请资源原因 |
 | cpuLevel | [EfficiencyResourcesCpuLevel](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | 否 | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。从API version 23开始支持。 |
 
-**说明：** 使用cpuLevel参数时，需在config.json中完成配置，示例如下：
-```ts
+> **说明：**
+>
+> 使用cpuLevel参数时，需在config.json中完成配置，示例如下：
+
+```json5
 {
     "cpu_efficiency_resource_allow_apply_bundle_infos": [
         {
