@@ -781,7 +781,7 @@ Surface模式下，将index对应帧的编码参数送入编码器编码。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
-| uint32_t index | 输入参数缓冲区对应的索引值。由[OH_VideoEncoder_OnNeedInputParameter](capi-native-avcodec-base-h.md#oh_videoencoder_onneedinputparameter)给出。 |
+| uint32_t index | 输入参数缓冲区对应的索引值。由[OH_VideoEncoder_OnNeedInputParameter](#oh_videoencoder_onneedinputparameter)给出。 |
 
 **返回：**
 
