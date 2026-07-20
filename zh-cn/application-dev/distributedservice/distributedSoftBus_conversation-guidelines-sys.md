@@ -204,11 +204,11 @@
        let devices = conversation.getTrustedDevices() as conversation.DeviceNodeInfo[];
        if (devices && devices.length > 0) {
            let deviceInfo = devices.map((d, idx) =>
-           `${idx + 1}. ${d.deviceName} (${d.networkId}) - Type:${d.deviceTypeId} - Nearby:${d.nearby}`
-         ).join('\n');
+             `${idx + 1}. ${d.deviceName} (${d.networkId}) - Type:${d.deviceTypeId} - Nearby:${d.nearby}`
+           ).join('\n');
            hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
            hilog.info(DOMAIN, TAG, 'Devices list: \n %{public}s', deviceInfo);
-         } else {
+       } else {
            hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
        }
      } catch (err) {
