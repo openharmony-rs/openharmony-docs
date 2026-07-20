@@ -239,7 +239,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 2. 遍历结构体的字段名称和类型：针对每个结构体，通过[OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldcount)获取字段数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetStructFieldName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldname)和[OH_AbilityRuntime_TypeDescriptor_GetStructFieldType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldtype)逐个获取字段名称和类型。
 
     <!-- @[modular_object_extension_dispatcher_getStructField](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     // 获取结构体的字段数量，逐个遍历字段名和字段类型
     uint32_t fieldCount = 0;
@@ -264,7 +264,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
         if (!CheckApiErr(err, "GetStructFieldType")) {
             return nullptr;
         }
-        // 处理字段类型信息
+        //...
         OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&typeInfo);
     }
     ```
