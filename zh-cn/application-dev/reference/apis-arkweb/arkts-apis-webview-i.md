@@ -163,7 +163,7 @@ createPdf函数输入参数。
 
 ## ControllerAttachState<sup>20+</sup>
 
-WebViewController与Web组件的绑定状态。
+WebviewController与Web组件的绑定状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
