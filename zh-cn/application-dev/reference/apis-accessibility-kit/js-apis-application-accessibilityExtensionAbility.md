@@ -299,7 +299,7 @@ onConnect(): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -323,7 +323,7 @@ onDisconnect(): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -347,7 +347,7 @@ onAccessibilityEvent(event: AccessibilityEvent): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -380,7 +380,7 @@ onKeyEvent(keyEvent: KeyEvent): boolean
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

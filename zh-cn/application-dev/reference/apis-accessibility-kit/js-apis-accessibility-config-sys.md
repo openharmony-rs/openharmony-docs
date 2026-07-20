@@ -1137,7 +1137,9 @@ type OnDisconnectCallback = () => void
 
 ## DaltonizationColorFilter
 
-用于不同色弱类型的校正颜色滤镜。色彩校正功能启用时（[daltonizationState](#属性)设置为true）配置生效；色彩校正功能未启用时（[daltonizationState](#属性)设置为false）显示为正常类型。
+用于不同色弱类型的校正颜色滤镜。
+
+色彩校正功能启用时（[daltonizationState](#属性)设置为true）配置生效；色彩校正功能未启用时（[daltonizationState](#属性)设置为false）显示为正常类型。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1166,7 +1168,9 @@ type OnDisconnectCallback = () => void
 
 ## RepeatClickInterval<sup>11+</sup>
 
-用于不同时间间隔的忽略重复点击。忽略重复点击功能启用时（[ignoreRepeatClick](#属性)设置为true）配置生效；忽略重复点击功能未启用时（[ignoreRepeatClick](#属性)设置为false）不生效。
+用于不同时间间隔的忽略重复点击。
+
+忽略重复点击功能启用时（[ignoreRepeatClick](#属性)设置为true）配置生效；忽略重复点击功能未启用时（[ignoreRepeatClick](#属性)设置为false）不生效。
 
 **系统接口：** 此接口为系统接口。
 

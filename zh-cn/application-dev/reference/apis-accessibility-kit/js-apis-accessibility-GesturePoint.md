@@ -42,7 +42,7 @@ constructor(positionX: number, positionY: number)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

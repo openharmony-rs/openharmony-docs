@@ -119,7 +119,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |
-| ACCESSIBILITY_FOCUS        | 0    | 表示获得无障碍焦点。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).Parameter.accessibilityFocusScene，参数值为无障碍聚焦的场景类型。               |
+| ACCESSIBILITY_FOCUS        | 0    | 表示获得无障碍焦点。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).accessibilityFocusScene，参数值为无障碍聚焦的场景类型。               |
 | CLEAR_ACCESSIBILITY_FOCUS | 1    | 表示清除无障碍焦点。               |
 | FOCUS                      | 2    | 表示组件获得焦点。                |
 | CLEAR_FOCUS                | 3    | 表示清除组件焦点。                |

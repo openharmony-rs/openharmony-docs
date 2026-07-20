@@ -959,7 +959,9 @@ export default class AccessibilityManager {
 
 ## AccessibilityElement
 
-无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。在调用AccessibilityElement的接口之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement](#getaccessibilityfocusedelement20)或[AccessibilityExtensionContext.getRootInActiveWindow](#getrootinactivewindow20)来获取一个AccessibilityElement实例。
+无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。
+
+在调用AccessibilityElement的接口之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement](#getaccessibilityfocusedelement20)或[AccessibilityExtensionContext.getRootInActiveWindow](#getrootinactivewindow20)来获取一个AccessibilityElement实例。
 
 **系统接口：** 此接口为系统接口。
 

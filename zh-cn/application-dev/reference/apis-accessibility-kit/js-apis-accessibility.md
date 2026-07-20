@@ -236,7 +236,7 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[off('enableChange')](#offenablechangedeprecated)取消监听，否则可能会导致崩溃。
-> - 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> - 从API version 8开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -290,7 +290,7 @@ on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[off('styleChange')](#offstylechangedeprecated)取消监听，否则可能会导致崩溃。
-> - 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> - 从API version 8开始支持，从API version 12开始废弃。
 
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
@@ -343,7 +343,7 @@ off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 8开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -400,7 +400,7 @@ off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 8开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -972,7 +972,7 @@ getCaptionsManager(): CaptionsManager
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 8开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
