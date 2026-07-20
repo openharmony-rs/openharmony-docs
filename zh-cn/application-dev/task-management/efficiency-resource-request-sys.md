@@ -17,7 +17,23 @@
 
 - **能效资源申请接口** ：单独为进程申请CPU等资源的接口，保障系统应用在后台执行的诉求。申请CPU资源后，则应用或进程不被挂起。
 
-- **系统特权应用**：配置[runningResourcesApply特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)应用的系统应用。
+- **系统特权应用**：配置[runningResourcesApply特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#配置方式)应用的系统应用，需在[install_list_capability.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json)中完成配置，参考示例如下：
+
+  ```json
+  {
+      "install_list": [
+          {
+              "bundleName": "com.ohos.devicetest", // 替换为应用实际包名
+              "app_signature": ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"], // 替换为应用实际签名
+              "resourcesApply": [
+                  0 // 以实际申请的能效资源类型为准
+              ]
+              // 其他如associatedWakeUp等设置
+          }
+          // 其余应用包名
+      ]
+  }
+  ```
 
 ### 约束与限制
 
@@ -46,6 +62,19 @@
 | isProcess | boolean | 否 | 进程或应用申请，默认为false<br/>- true表示进程申请<br/>- false表示应用申请 |
 | reason | string | 是 | 申请资源原因 |
 | cpuLevel | [EfficiencyResourcesCpuLevel](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | 否 | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。从API version 23开始支持。 |
+
+**说明：** 使用cpuLevel参数时，需在config.json中完成配置，示例如下：
+```ts
+{
+    "cpu_efficiency_resource_allow_apply_bundle_infos": [
+        {
+            "bundleName": "com.ohos.devicetest", // 替换为应用实际包名
+            "app_signature": ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"], // 替换为应用实际签名
+            "cpuLevel": 2 // 以实际申请的cpuLevel为准
+        }
+    ]
+}
+```
 
 **表3** 能效资源类型
 | 参数名 | 值 | 描述 |
