@@ -1638,7 +1638,7 @@
       - [使用合适的音频类型](media/audio/using-right-streamusage-and-sourcetype.md)
       - 音频焦点和音频会话管理<!--audio-session-->
         - [音频焦点和音频会话介绍](media/audio/audio-playback-concurrency.md)
-        - [使用AudioSession管理应用音频焦点(ArkTs)](media/audio/audio-session-management.md)
+        - [使用AudioSession管理应用音频焦点(ArkTS)](media/audio/audio-session-management.md)
         - [使用AudioSession管理应用音频焦点(C/C++)](media/audio/using-ohaudio-for-session.md)
       - 音频播放<!--audio-playback-->
         - [音频播放开发概述](media/audio/audio-playback-overview.md)
@@ -1649,7 +1649,7 @@
         <!--DelEnd-->
         - [低时延音频播放(C/C++)](media/audio/audio-fast-playback.md)
         - [低功耗音频播放](media/audio/power-saving-for-playback.md)
-        - [使用AudioHaptic开发音振协同播放功能(ArkTS)](media/audio/using-audiohaptic-for-playback.md)
+        - [使用AudioHaptic开发音振协同播放功能(ArkTs)](media/audio/using-audiohaptic-for-playback.md)
         - [使用SoundPlayer开发系统音效播放功能](media/audio/using-soundplayer-for-playback.md)
         - [播放音量管理](media/audio/volume-management.md)
         - [空间音频能力查询和状态订阅](media/audio/public-audio-spatialization-management.md)
