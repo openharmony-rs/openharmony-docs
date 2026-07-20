@@ -41,7 +41,7 @@
 | [OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnStateChange callback, void *userData)](#oh_avrecorder_setstatecallback) | 设置状态变化回调函数，以便应用能够响应AVRecorder生成的状态变化事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。 |
 | [OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnError callback, void *userData)](#oh_avrecorder_seterrorcallback) | 设置错误回调函数，以便应用能够响应AVRecorder生成的错误事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。 |
 | [OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnUri callback, void *userData)](#oh_avrecorder_seturicallback) | 设置URI回调函数，以便应用能够响应AVRecorder生成的URI事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。 |
-| [OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)](#oh_avrecorder_setwillmutewheninterrupted) | 设置是否开启静音打断模式，用于控制音频录制被中断时的处理行为。设置成true表示录制被中断时录制静音，设置成false表示录制被中断时停止录制，默认值为false。此接口必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口之前调用。 |
+| [OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)](#oh_avrecorder_setwillmutewheninterrupted) | 设置是否开启静音打断模式，用于控制音频流被打断时的处理行为。设置成true表示音频流被打断时录制静音，设置成false表示音频流被打断时停止录制，默认值为false。此接口必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口之前调用。 |
 | [OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder, int32_t *amplitude)](#oh_avrecorder_getaudiocapturermaxamplitude) | 获取当前音频最大振幅。获取到的值为最近两次调用之间的最大振幅。例如，在1s时获取过一次最大振幅，然后在2s时再次调用该接口，那么返回值是1s到2s之间的最大振幅值。<br> 该接口只能在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口调用之后，且必须在[OH_AVRecorder_Stop](#oh_avrecorder_stop)接口之前调用。 |
 | [OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVFormat *metadata)](#oh_avrecorder_setmetadata) | 设置录制的元数据信息。典型使用场景包括：在录制的视频或音频文件中添加作者信息、版权信息、地理位置、录制时间等自定义元数据。如果metadata参数与config.metadata.customInfo（参考[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)和[OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md)）中存在相同的键，前者的对应值将覆盖后者。<br> 该方法只能在OH_AVRecorder_Prepare方法调用之后，且必须在[OH_AVRecorder_Stop](#oh_avrecorder_stop)方法之前调用。 |
 
@@ -93,7 +93,7 @@ OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：输入的recorder为nullptr或config为nullptr或准备失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：输入的recorder/config为nullptr或准备失败。 |
 
 ### OH_AVRecorder_GetAVRecorderConfig()
 
@@ -115,7 +115,7 @@ OH_AVErrCode OH_AVRecorder_GetAVRecorderConfig(OH_AVRecorder *recorder, OH_AVRec
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| [OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md) **config | 指向OH_AVRecorder_Config实例指针的指针，用于获取当前的录制参数配置。传入时\*config必须为nullptr，调用成功后\*config指向框架层分配的配置实例，由框架层统一释放。 |
+| [OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md) **config | 指向OH_AVRecorder_Config实例指针的指针，用于获取当前的录制参数配置。传入时\*config必须为nullptr，调用成功后，\*config指向框架层分配的配置实例，由框架层统一释放。 |
 
 **返回：**
 
@@ -143,7 +143,7 @@ OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWind
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| [OHNativeWindow](../apis-arkgraphics2d/capi-nativewindow-nativewindow.md) **window | 指向OHNativeWindow实例指针的指针，用于获取输入Surface。\*window必须为nullptr，调用成功后*window指向框架层分配的OHNativeWindow实例，调用者可从此实例中获取Surface填入视频数据。 |
+| [OHNativeWindow](../apis-arkgraphics2d/capi-nativewindow-nativewindow.md) **window | 指向OHNativeWindow实例指针的指针，用于获取输入Surface。\*window必须为nullptr，调用成功后，*window指向框架层分配的OHNativeWindow实例，调用者可从此实例中获取Surface填入视频数据。 |
 
 **返回：**
 
@@ -361,7 +361,7 @@ OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRec
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| [OH_AVRecorder_EncoderInfo](capi-avrecorder-oh-avrecorder-encoderinfo.md) **info | 指向OH_AVRecorder_EncoderInfo实例指针的指针，用于获取可用编码器信息数组。传入时\*info必须为nullptr，调用成功后\*info指向框架层分配的编码器信息数组，由框架层统一释放。 |
+| [OH_AVRecorder_EncoderInfo](capi-avrecorder-oh-avrecorder-encoderinfo.md) **info | 指向OH_AVRecorder_EncoderInfo实例指针的指针，用于获取可用编码器信息数组。传入时\*info必须为nullptr，调用成功后，\*info指向框架层分配的编码器信息数组，由框架层统一释放。 |
 | int32_t *length | 可用编码器数组的长度。 |
 
 **返回：**
@@ -531,7 +531,7 @@ OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVForma
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| const [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md) *metadata | 设置的元数据信息，将嵌入到录制的媒体文件中。格式为字符串键值对，其中，键需要以"com.openharmony."开头，且值的长度不能超过256个字节。 |
+| const [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md) *metadata | 设置的元数据信息，会嵌入到录制的媒体文件中。格式为字符串键值对，其中，键需要以"com.openharmony."开头，且值的长度不能超过256个字节。 |
 
 **返回：**
 

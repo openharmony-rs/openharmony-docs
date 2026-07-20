@@ -44,6 +44,6 @@ typedef struct OH_AVRecorder_Profile {...} OH_AVRecorder_Profile
 | int32_t videoFrameHeight | 视频高度。单位为像素（px）。取值为0时不录制视频。 |
 | int32_t videoFrameRate | 视频帧率。单位为帧每秒（FPS）。 |
 | bool isHdr | 是否录制HDR视频。 <br> true表示录制HDR视频，false表示不录制HDR视频。<br> 默认是false。 |
-| bool enableTemporalScale | 是否启用时域分层编码功能。<br> true表示编码输出的码流中部分帧可被跳过而不编码，false表示编码输出的码流中所有帧均需编码，详情请参考[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md)。<br> 默认是false。 |
+| bool enableTemporalScale | 是否启用时域分层编码功能。<br> true表示编码输出的码流中部分帧可被跳过不编码，false表示编码输出的码流中所有帧均需编码，详情请参考[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md)。<br> 默认是false。 |
 
 

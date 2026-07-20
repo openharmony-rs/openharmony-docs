@@ -431,7 +431,9 @@ try {
 
 setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
-设置当前录制音频流是否启用静音打断模式。启用后，录制音频流被更高优先级音频打断时将录制静音而非停止录制，适用于需要在打断期间保持录制连续性的场景（如会议录音、语音备忘）；不启用则保持默认打断模式。使用Promise异步回调。需要在[prepare()](#prepare9-1)接口之前调用。
+设置当前录制音频流是否启用静音打断模式。启用后，录制音频流被更高优先级音频打断时将录制静音而非停止录制，适用于需要在打断期间保持录制连续性的场景（如会议录音、语音备忘）；不启用则保持默认打断模式。使用Promise异步回调。
+
+此接口需要在[prepare()](#prepare9-1)接口之前调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
