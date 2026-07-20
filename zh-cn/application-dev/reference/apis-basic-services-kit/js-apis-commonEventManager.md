@@ -79,7 +79,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
@@ -152,7 +152,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -463,7 +463,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -581,7 +581,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -758,7 +758,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            | 
 | -------- | ----------------------------------- |
