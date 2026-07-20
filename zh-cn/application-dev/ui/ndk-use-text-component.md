@@ -39,7 +39,7 @@ Manager::nodeAPI_->setAttribute(text, NODE_HEIGHT, &textHeightItem);
 - 通过[NODE_TEXT_CONTENT](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_content)属性设置Text组件的基本文本内容。
 
   <!-- @[text_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
-
+  
   ``` C++
   const char *textContent = "this is text 2 this is text 2 this is text 2!!!! ";
   ArkUI_AttributeItem contentItem = {.string = textContent};
