@@ -5762,20 +5762,6 @@ With this permission, the application can always use sensors.
 
 **Valid since**: 24
 
-## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
-
-Allows a system application to enable agent-related permission management features.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
-
-**Valid since**: 26.0.0
-
 ## ohos.permission.MODIFY_AGENT_CARD
 
 Allows a system application to update and delete AgentCard.
