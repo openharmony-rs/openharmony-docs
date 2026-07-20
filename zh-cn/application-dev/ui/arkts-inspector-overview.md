@@ -162,7 +162,6 @@ struct ImageExample {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
 @Entry
 @Component
 struct ComponentPage {
