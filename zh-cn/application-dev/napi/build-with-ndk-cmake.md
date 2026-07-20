@@ -226,7 +226,7 @@ Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入bu
 
 ![zh-cn_image_20-24-01-16-14-58](figures/zh-cn_image_20-24-01-16-14-58.png)
 
-这里生成的build.ninja文件就是我们需要的 。
+这里生成的build.ninja文件就是我们需要的。
 
 Step 2. 让我们用ninja指令来编译生成目标文件，其位置如下图所示：
 
