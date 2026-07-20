@@ -7,9 +7,13 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-在跨设备协同场景中，应用常需启动其他设备上的组件以实现多端交互。由于跨设备调用涉及设备可信关系、安全等级匹配及权限校验等多重约束，未满足规则将导致启动失败。
+在跨设备协同场景中，应用常需启动其他设备上的组件以实现多端交互。由于跨设备调用涉及设备可信关系、安全等级匹配及权限校验等多重约束，未满足规则将导致启动失败。本文档面向三方应用开发者，梳理了跨设备启动 [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) 和 [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) 组件的完整规则，涵盖协同接口、启动条件（可信关系、安全等级、权限要求）及校验流程。适用于开发者在实现跨设备组件启动与多端协同功能时参考，以规范接口调用并快速定位启动异常。
 
-本文档面向三方应用开发者，梳理了跨设备启动 [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) 和 [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) 组件的完整规则，涵盖协同接口、启动条件（可信关系、安全等级、权限要求）及校验流程。适用于开发者在实现跨设备组件启动与多端协同功能时参考，以规范接口调用并快速定位启动异常。
+## 基本概念
+
+- **多轮交互**：启动方与目标方组件建立连接后，可进行多次数据通信与业务交互。
+- **单次交互**：启动方启动目标方组件后，仅获取启动结果或目标方销毁时返回的结果，无后续多轮通信。
+- **设备安全等级**：根据设备安全能力（如 TEE、安全存储芯片等）划分的等级，等级越高安全能力越强。详情参考 [设备安全等级](../database/native-access-control-by-device-and-data-level.md#设备安全等级)。
 
 ## 协同接口
 
@@ -21,9 +25,9 @@
 | 单次交互 | [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) | 支持跨设备启动 UIAbility 组件的单次交互，仅返回启动结果。 |
 | 单次交互 | [startAbilityForResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult)<br>[terminateSelfWithResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) | 支持跨设备启动 UIAbility 组件的单次交互，且支持由目标方组件调用 terminateSelfWithResult 销毁时返回详细结果。 |
 
-## 跨设备组件启动规则
+## 启动条件
 
-跨设备启动组件需同时满足以下三项规则要求：
+跨设备启动组件需同时满足以下三项要求：
 
 1. **设备间可信关系要求**
    - 双端设备登录同一账号场景，天然满足可信关系要求；
