@@ -463,7 +463,7 @@ static napi_value TestConnect(napi_env env, napi_callback_info info)
 
 除了上述基于Proxy的静态调用方式外，客户端还可以通过ModularObjectDispatcher实现动态调用。静态调用方式需要在编译期依赖服务端的接口定义，而动态调用方式允许客户端在运行时查询服务端的类型库元数据，并通过方法名发起调用，无需编译期绑定。
 
-动态调用适用于接口在运行时才能确定的场景，如通用脚本引擎、自动化测试框架、跨版本网关服务等。完整的动态调用开发流程请参考[使用ModularObjectDispatcher实现动态接口调用 (C/C++)](./modular-object-dispatcher-development.md)。
+动态调用适用于运行时才能确定接口的场景，如通用脚本引擎、自动化测试框架和跨版本网关服务。完整开发流程请参考[使用ModularObjectDispatcher实现动态接口调用 (C/C++)](./modular-object-dispatcher-development.md)。
 
 ### 断连ModularObjectExtensionAbility
 

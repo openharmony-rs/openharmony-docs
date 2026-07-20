@@ -40,9 +40,3 @@
 | OnConnectCallback | [OH_AbilityRuntime_ConnectOptions_OnConnectCallback](../reference/apis-ability-kit/capi-connect-options-h.md#oh_abilityruntime_connectoptions_onconnectcallback) |
 | Proxy | [OHIPCRemoteProxy](../reference/apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md) |
 | Stub | [OHIPCRemoteStub](../reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md) |
-
-## 相关开发文档
-
-- [使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md)：介绍服务端和客户端的基础开发流程，包括如何实现ModularObjectExtensionAbility服务端（创建Stub、注册生命周期回调）、客户端如何连接服务端、通过Proxy进行静态调用以及断开连接。
-- [使用Taihe实现ModularObjectExtensionAbility的IPC通信](./modular-object-extension-ability-taihe.md)：介绍如何使用Taihe工具根据接口定义（ohidl文件）自动生成服务端的Proxy/Stub代码及类型库元数据，屏蔽参数序列化、消息码分发等IPC底层细节。
-- [使用ModularObjectDispatcher实现动态接口调用 (C/C++)](./modular-object-dispatcher-development.md)：介绍客户端动态调用引擎，允许在运行时查询服务端类型库元数据并通过方法名发起IPC调用，无需编译期依赖服务端接口定义，适用于通用脚本引擎、自动化测试框架等场景。
