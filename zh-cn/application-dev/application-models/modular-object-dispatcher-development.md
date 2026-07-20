@@ -382,7 +382,7 @@ static void QueryMethodParamInfo(const char *interfaceName, const char *methodNa
 
 <!-- @[modular_object_extension_dispatcher_getMethodReturnType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 static void QueryMethodReturnType(const char *interfaceName, const char *methodName)
 {
     OH_AbilityRuntime_ModObjDispatcher_TypeInfo returnTypeInfo = {
@@ -393,7 +393,7 @@ static void QueryMethodReturnType(const char *interfaceName, const char *methodN
     if (!CheckApiErr(err, "GetMethodReturnType")) {
         return;
     }
-    // 处理返回值类型信息
+    //...
     OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&returnTypeInfo);
 }
 ```
