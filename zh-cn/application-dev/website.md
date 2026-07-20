@@ -1638,7 +1638,7 @@
       - [使用合适的音频类型](media/audio/using-right-streamusage-and-sourcetype.md)
       - 音频焦点和音频会话管理<!--audio-session-->
         - [音频焦点和音频会话介绍](media/audio/audio-playback-concurrency.md)
-        - [使用AudioSession管理应用音频焦点(ArkTS)](media/audio/audio-session-management.md)
+        - [使用AudioSession管理应用音频焦点(ArkTs)](media/audio/audio-session-management.md)
         - [使用AudioSession管理应用音频焦点(C/C++)](media/audio/using-ohaudio-for-session.md)
       - 音频播放<!--audio-playback-->
         - [音频播放开发概述](media/audio/audio-playback-overview.md)
