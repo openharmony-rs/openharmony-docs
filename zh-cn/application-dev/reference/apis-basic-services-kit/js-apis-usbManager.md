@@ -166,6 +166,7 @@ function connectDevice() {
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   console.info(`devicepipe = ${devicepipe}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -365,7 +366,10 @@ function claimInterface() {
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number= usbManager.claimInterface(devicepipe, interfaces);
-  console.info(`claimInterface = ${ret}`);
+  console.info(`claimInterface = ${ret}`);  
+  ret = usbManager.releaseInterface(devicepipe, interfaces);
+  console.info(`releaseInterface = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -420,6 +424,7 @@ function releaseInterface() {
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -469,6 +474,7 @@ function setConfiguration() {
   let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: number= usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -525,6 +531,7 @@ function setInterface() {
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.setInterface(devicepipe, interfaces);
   console.info(`setInterface = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -569,7 +576,8 @@ function getRawDescriptor() {
 
   usbManager.requestRight(devicesList?.[0]?.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+  usbManager.getRawDescriptor(devicepipe);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -686,6 +694,7 @@ function usbControlTransfer() {
   usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`usbControlTransfer = ${ret}`);
   })
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -764,6 +773,7 @@ function bulkTransfer() {
       });
     }
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -853,6 +863,7 @@ function usbSubmitTransfer() {
   } catch (error) {
     console.error('USB transfer failed:', error);
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -944,6 +955,7 @@ function usbCancelTransfer() {
   } catch (error) {
     console.error('USB transfer failed:', error);
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -1318,6 +1330,7 @@ function resetUsbDevice() {
   } catch (err) {
     console.error(`resetUsbDevice failed: ` + err);
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -1388,6 +1401,7 @@ function controlTransfer() {
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`controlTransfer = ${ret}`);
   })
+  usbManager.closePipe(devicepipe);
 }
 ```
 

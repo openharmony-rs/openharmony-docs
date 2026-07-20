@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 &lt;[list](js-lite-components-container-list.md)&gt;的子组件，用来展示列表具体item。
@@ -35,7 +35,7 @@
 | -------- | -------- | -------- |
 | click | - | 点击动作触发该事件。 |
 | longpress | - | 长按动作触发该事件。 |
-| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | 组件上快速滑动后触发。 |
+| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | 组件上快速滑动后触发。 |
 
 
 ## 样式

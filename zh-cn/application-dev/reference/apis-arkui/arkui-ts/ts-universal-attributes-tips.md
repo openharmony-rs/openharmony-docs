@@ -12,7 +12,7 @@
 >
 >  - 从API version 19开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - 目前支持通过外接鼠标、手写笔以及触控板触发。
+>  - Tips控制依赖设备可以触发[悬浮事件](./ts-universal-events-hover.md)，对于无法触发[悬浮事件](./ts-universal-events-hover.md)的硬件设备无法使用Tips控制。
 
 ## bindTips
 bindTips(message: TipsMessageType, options?: TipsOptions): T

@@ -12,7 +12,7 @@ You can bind a floating tooltip to a component. The tooltip automatically appear
 >
 >  - This feature is supported since API version 19. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  - Currently, this feature supports only external mouse devices, styluses, and touchpads as pointers.
+>  - This feature relies on devices capable of triggering [hover events](./ts-universal-events-hover.md). It cannot be used on hardware devices that are unable to trigger [hover events](./ts-universal-events-hover.md).
 
 ## bindTips
 bindTips(message: TipsMessageType, options?: TipsOptions): T

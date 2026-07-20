@@ -182,7 +182,7 @@ Stores key-value pair data on the application disk. If the given key already exi
 
 > **NOTE**
 >
-> 1. The second parameter is used when **key** is not specified, and the third parameter is used otherwise (including when the second parameter is invalid).
+> 1. If no key is specified, the class name of the data returned by the default constructor **defaultCreator** is used as the key and stored in PersistenceV2.
 >
 > 2. If the data has been stored in **PersistenceV2**, you can obtain the stored data without using the default constructor. Otherwise, you must specify a default constructor to avoid application exceptions.
 >

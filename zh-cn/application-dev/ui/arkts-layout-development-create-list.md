@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -14,6 +14,8 @@
 使用列表可以轻松高效地显示结构化、可滚动的信息。通过在[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件中按垂直或者水平方向线性排列子组件[ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)或[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)，为列表中的行或列提供单个视图，或使用[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)迭代一组行或列，或混合任意数量的单个视图和ForEach结构，构建一个列表。List组件支持使用[条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)、循环渲染、[懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)等[渲染控制](../ui/rendering-control/arkts-rendering-control-overview.md)方式生成子组件。
 
 在圆形屏幕设备上，推荐使用[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)组件，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)。
+
+以下各步骤示例为片段代码，可通过点击示例代码右下方的链接获取完整示例。
 
 ## 布局与约束
 
@@ -869,7 +871,7 @@ ListItem() {
 <!--RP1--><!--RP1End-->
 
 <!--Del-->
-下拉刷新与上拉加载的具体实现可参考[相关实例](#相关实例)中新闻数据加载。若开发者希望快速实现此功能，也可使用三方组件[PullToRefresh](https://gitcode.com/openharmony-sig/ohos_pull_to_refresh)。<!--DelEnd-->
+下拉刷新与上拉加载的具体实现可参考[相关实例](#相关实例)中新闻数据加载。若开发者希望快速实现此功能，也可使用三方组件[PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)。<!--DelEnd-->
 
 
 ## 编辑列表
@@ -1620,6 +1622,6 @@ List(
 
 - [List组件的使用之设置项（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/List_HDC)
 
-- [PullToRefresh](https://gitcode.com/openharmony-sig/ohos_pull_to_refresh)
+- [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)
 
 <!--RP2--><!--RP2End-->
