@@ -197,7 +197,7 @@ getBorderWidth(): DirectionalEdgesT&lt;number&gt;
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| uniqueId<sup>18+</sup>| number | 是 | 是 | 系统为子组件分配的唯一标识UniqueID。用于唯一标识子组件以进行后续操作（如通过getFrameNodeByUniqueId获取FrameNode）。取值范围[0, +∞)。系统会自动为每个子组件分配UniqueID，开发者可按需读取，无需主动设置。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| uniqueId<sup>18+</sup>| number | 否 | 是 | 系统为子组件分配的唯一标识UniqueID。用于唯一标识子组件以进行后续操作（如通过getFrameNodeByUniqueId获取FrameNode）。取值范围[0, +∞)。系统会自动为每个子组件分配UniqueID，开发者可按需读取，无需主动设置。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### measure<sup>10+</sup>
 

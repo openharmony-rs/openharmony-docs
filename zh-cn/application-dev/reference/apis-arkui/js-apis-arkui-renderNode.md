@@ -1993,7 +1993,7 @@ ArkTS侧代码：
 
 ```ts
 // Index.ets
-import bridge from 'libentry.so'; // 该 so 由开发者通过 NAPI 编写并生成
+import bridge from 'libentry.so'; // 该 .so 文件由开发者通过 NAPI 编写并生成
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // 继承RenderNode，实现自定义绘制方法
@@ -2166,7 +2166,7 @@ invalidate(): void
 **示例：**
 
 ```ts
-import bridge from 'libentry.so'; // 该 so 由开发者通过 NAPI 编写并生成
+import bridge from 'libentry.so'; // 该 .so 文件由开发者通过 NAPI 编写并生成
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // 继承RenderNode，实现自定义绘制方法
