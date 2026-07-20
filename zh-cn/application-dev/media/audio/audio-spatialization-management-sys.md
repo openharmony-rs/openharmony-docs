@@ -380,11 +380,11 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 查询指定设备的自适应空间音频渲染效果开关状态
 
-从API version 24开始，系统应用开发者可以通过[isAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isadaptivespatialrenderingenabled24)接口查询指定设备的自适应空间音频渲染效果开关状态。
+从API版本24开始，系统应用开发者可以通过[isAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isadaptivespatialrenderingenabled24)接口查询指定设备的自适应空间音频渲染效果开关状态。
 
-入参需要使用AudioDeviceDescriptor来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
+入参需要使用AudioDeviceDescriptor来指定设备，建议通过音频框架的[getActiveOutputDeviceDescriptors](../../reference/apis-audio-kit/js-apis-audio-sys.md#getactiveoutputdevicedescriptors)接口获取当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
 
-返回true表示自适应空间音频渲染开启，false表示关闭。返回值为[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setadaptivespatialrenderingenabled24)接口中成功设置的指定设备自适应空间音频渲染开关状态，默认为关闭。
+返回值表示指定设备的自适应空间音频渲染开关状态：返回true表示自适应空间音频渲染已开启，返回false表示已关闭（默认为关闭）。该状态可通过[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setadaptivespatialrenderingenabled24)接口设置。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -418,7 +418,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 开启/关闭指定设备的自适应空间音频渲染效果
 
-从API version 24开始，系统应用开发者可以通过[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setadaptivespatialrenderingenabled24)接口开启/关闭指定设备的自适应空间音频渲染效果。
+从API版本24开始，系统应用开发者可以通过[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setadaptivespatialrenderingenabled24)接口开启/关闭指定设备的自适应空间音频渲染效果。
 
 在使用此功能前，应用需要先申请权限`ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS`，申请方式请参考：[system_basic等级应用申请权限的方式](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
@@ -456,7 +456,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 订阅自适应空间音频渲染效果的开关状态变化事件
 
-从API version 24开始，系统应用开发者可以通过[onAdaptiveSpatialRenderingEnabledChangeForAnyDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#onadaptivespatialrenderingenabledchangeforanydevice24)接口订阅自适应空间音频渲染效果的开关状态变化事件。
+从API版本24开始，系统应用开发者可以通过[onAdaptiveSpatialRenderingEnabledChangeForAnyDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#onadaptivespatialrenderingenabledchangeforanydevice24)接口订阅自适应空间音频渲染效果的开关状态变化事件。
 
 回调包含[AudioSpatialEnabledStateForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatialenabledstatefordevice12)参数，其中deviceDescriptor为被改变设备的描述信息，enabled为true表示自适应空间音频渲染被开启，false表示自适应空间音频渲染被关闭。
 
@@ -474,7 +474,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 取消订阅自适应空间音频渲染效果的开关状态变化事件
 
-从API version 24开始，系统应用开发者可以通过[offAdaptiveSpatialRenderingEnabledChangeForAnyDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#offadaptivespatialrenderingenabledchangeforanydevice24)接口取消订阅自适应空间音频渲染效果的开关状态变化事件。
+从API版本24开始，系统应用开发者可以通过[offAdaptiveSpatialRenderingEnabledChangeForAnyDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#offadaptivespatialrenderingenabledchangeforanydevice24)接口取消订阅自适应空间音频渲染效果的开关状态变化事件。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -484,7 +484,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 获取当前空间音频源类型
 
-从API version 24开始，系统应用开发者可以通过[getCurrentSpatialAudioSourceType](../../reference/apis-audio-kit/js-apis-audio-sys.md#getcurrentspatialaudiosourcetype24)接口获取当前空间音频源类型。该接口返回当前播放的音频流类型，包括立体声、Audio Vivid或多声道。
+从API版本24开始，系统应用开发者可以通过[getCurrentSpatialAudioSourceType](../../reference/apis-audio-kit/js-apis-audio-sys.md#getcurrentspatialaudiosourcetype24)接口获取当前空间音频源类型。该接口返回当前播放的音频流类型，包括立体声、Audio Vivid或多声道。
 
 空间音频源类型的具体信息可以参考[SpatialAudioSourceType](../../reference/apis-audio-kit/js-apis-audio-sys.md#spatialaudiosourcetype24)。
 
@@ -504,7 +504,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 订阅空间音频源类型变化事件
 
-从API version 24开始，系统应用开发者可以通过[onSpatialAudioSourceTypeChange](../../reference/apis-audio-kit/js-apis-audio-sys.md#onspatialaudiosourcetypechange24)接口订阅空间音频源类型变化事件，回调包含SpatialAudioSourceType参数，表示变化后的空间音频源类型。当开始播放不同类型的音频流时，空间音频源类型会自动更新并触发回调。
+从API版本24开始，系统应用开发者可以通过[onSpatialAudioSourceTypeChange](../../reference/apis-audio-kit/js-apis-audio-sys.md#onspatialaudiosourcetypechange24)接口订阅空间音频源类型变化事件，回调包含SpatialAudioSourceType参数，表示变化后的空间音频源类型。当开始播放不同类型的音频流时，空间音频源类型会自动更新并触发回调。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -517,7 +517,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 取消订阅空间音频源类型变化事件
 
-从API version 24开始，系统应用开发者可以通过[offSpatialAudioSourceTypeChange](../../reference/apis-audio-kit/js-apis-audio-sys.md#offspatialaudiosourcetypechange24)接口取消订阅空间音频源类型变化事件。
+从API版本24开始，系统应用开发者可以通过[offSpatialAudioSourceTypeChange](../../reference/apis-audio-kit/js-apis-audio-sys.md#offspatialaudiosourcetypechange24)接口取消订阅空间音频源类型变化事件。
 
   ```ts
   import { audio } from '@kit.AudioKit';
