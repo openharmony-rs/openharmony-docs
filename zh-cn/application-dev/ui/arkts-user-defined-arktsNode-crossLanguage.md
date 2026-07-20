@@ -130,7 +130,7 @@ struct CrossLanguage {
             .fontSize(30)
             .textAlign(TextAlign.Center)
             .margin({ top: 10 })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .width("100%")
     }

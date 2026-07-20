@@ -539,7 +539,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -749,7 +749,7 @@ off(type: 'densityUpdate', context: UIContext, callback?: Callback\<DensityInfo\
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
 
 ```ts
-import { uiObserver, UIContext } from '@kit.ArkUI';
+import { uiObserver } from '@kit.ArkUI';
 
 @Entry
 @Component

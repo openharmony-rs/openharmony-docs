@@ -2394,13 +2394,13 @@ struct Index {
     const observer = this.getUIContext().getUIObserver();
 // 0、2、1分别表示Tap、Pan和LongPress手势类型，用于移除对应的全局监听
     if (this.tapCallback) {
-      observer.removeGlobalGestureListener(0, this.tapCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.TAP, this.tapCallback);
     }
     if (this.panCallback) {
-      observer.removeGlobalGestureListener(2, this.panCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.PAN, this.panCallback);
     }
     if (this.longPressCallback) {
-      observer.removeGlobalGestureListener(1, this.longPressCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.LONG_PRESS, this.longPressCallback);
     }
   }
 
