@@ -21,7 +21,7 @@
 import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
 
-## backgroundLoader.regisgerTask
+## backgroundLoader.registerTask
 
 regisgerTask(taskInfo: TaskInfo): void
 
@@ -76,7 +76,7 @@ regisgerTask(taskInfo: TaskInfo): void
   }
 ```
 
-## backgroundLoader.unregisgerTask
+## backgroundLoader.unregisterTask
 
 unregisgerTask(taskInfo: TaskInfo): void
 
@@ -188,7 +188,7 @@ const ON_START: string
 
 const ON_STOP: string
 
-应用需要实现后台加载任务onStop的回调方法，处理后台加载任务呗异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee).
+应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee).
 代码示例参考finishTask函数的完整实例。
 
 ## backgroundLoader.finishTask
@@ -198,7 +198,7 @@ finishTask(taskInfo: TaskInfo): void
 应用需要实现后台加载任务的onStart的主业务回调方法，在完成业务加载任务后，需要通过调用finishTask方法通知系统加载任务完成。运行在异步回调函数或其他线程中执行finishTask调用。
 
 **超时时间限制**：应用需要确保后台加载任务尽量在30秒内执行完成，从开始执行ON_START回调方法之后，需要在30秒内完成finishTask任务完成的调用。
-如果应用在执行后台加载任务时出现多次超时，系统将金庸后续的后台加载任务调度。
+如果应用在执行后台加载任务时出现多次超时，系统将禁用后续的后台加载任务调度。
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -283,7 +283,7 @@ finishTask(taskInfo: TaskInfo): void
 
 ## TaskStopInfo
 
-系统回调应用的onStop方法中，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化活动结构TaskStopInfo。具体参考finishTask函数中的完整示例代码。
+系统回调应用的onStop方法中，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体参考finishTask函数中的完整示例代码。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -305,5 +305,5 @@ finishTask(taskInfo: TaskInfo): void
 | SUCCESS       | 0    | 表示执行成功。     |
 | SYSTEM_ERROR    | 1    | 表示任务执行中发生系统错误。    |
 | PERCEPTIBLE_ERROR  | 2    | 表示任务执行中发生可感知任务错误。   |
-| TIMEOUT_ERROR | 3    | 表示这任务执行超时。 |
+| TIMEOUT_ERROR | 3    | 表示任务执行超时。 |
 | EXECUTE_ERROR  | 4    | 表示任务执行异常。  |
