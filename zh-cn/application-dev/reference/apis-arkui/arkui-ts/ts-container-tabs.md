@@ -56,7 +56,7 @@ Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tab
 | 名称         | 类型                              | 只读 | 可选   | 说明                                     |
 | ----------- | --------------------------------- | ---- | --------- | ------------------------------- |
 | barPosition<sup>7+</sup> | [BarPosition](#barposition枚举说明)| 否 | 是    | 设置Tabs的页签位置。页签的具体位置受vertical属性影响：vertical为true时Start位于左侧、End位于右侧；vertical为false时Start位于顶部、End位于底部。<br/>默认值：BarPosition.Start。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| index<sup>7+</sup>       | number                            | 否 | 是   | 设置当前显示页签的索引。<br/>默认值：0<br/>**说明：** <br/>设置为小于0的值时按默认值显示。<br/>可选值为[0, TabContent子节点数量-1]。<br/>直接修改index跳页时，切换动效不生效。 使用TabController的[changeIndex](#changeindex)时，默认生效切换动效，可以设置[animationDuration](#animationduration)为0关闭动画。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| index<sup>7+</sup>       | number                            | 否 | 是   | 设置当前显示页签的索引。<br/>默认值：0<br/>**说明：** <br/>设置为小于0的值时按默认值显示。<br/>可选值为[0, TabContent子节点数量-1]。<br/>直接修改index跳页时，切换动效不生效。 使用TabsController的[changeIndex](#changeindex)时，默认生效切换动效，可以设置[animationDuration](#animationduration)为0关闭动画。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | controller<sup>7+</sup>  | [TabsController](#tabscontroller) | 否 | 是    | 设置Tabs控制器。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
 | barModifier<sup>15+</sup>  | [CommonModifier](#commonmodifier15) | 否 | 是    | 设置TabBar的[通用属性](ts-component-general-attributes.md)，用于通过CommonModifier统一管理TabBar的样式、布局等通用属性。当需要动态修改TabBar的通用属性或实现属性的状态管理时传入此参数，不传入时TabBar使用默认样式和布局，无额外通用属性设置。<br/>**说明：** <br/>动态置为undefined时会保持当前状态不变，不会重置各通用属性。 <br/>由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。<br/>Tabs的[barWidth](#barwidth)、[barHeight](#barheight)、[barBackgroundColor](#barbackgroundcolor10)、[barBackgroundBlurStyle](#barbackgroundblurstyle18)、[barBackgroundEffect](#barbackgroundeffect18)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18)属性。<br/>[align](ts-universal-attributes-location.md#align)属性仅在[BarMode.Scrollable](#barmode10-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](#scrollablebarmodeoptions10对象说明)未设置或设置为异常值时才能生效。<br/>[TabContent](ts-container-tabcontent.md)组件的[tabBar](ts-container-tabcontent.md#tabbar18)属性为底部页签样式时不支持拖拽功能。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
@@ -70,8 +70,8 @@ Tabs页签位置枚举。
 
 | 名称  | 值 | 说明                                                         |
 | ----- | ----- | ------------------------------------------------------------ |
-| Start | 0 | vertical属性方法设置为true时，页签位于容器左侧；vertical属性方法设置为false时，页签位于容器顶部。 |
-| End   | 1 | vertical属性方法设置为true时，页签位于容器右侧；vertical属性方法设置为false时，页签位于容器底部。 |
+| Start | 0 | vertical属性设置为true时，页签位于容器左侧；vertical属性设置为false时，页签位于容器顶部。 |
+| End   | 1 | vertical属性设置为true时，页签位于容器右侧；vertical属性设置为false时，页签位于容器底部。 |
 
 
 ## 属性
@@ -126,7 +126,7 @@ barMode(value: BarMode, options?: ScrollableBarModeOptions)
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value                 | [BarMode](#barmode枚举说明)                                  | 是   | 布局模式。<br/>默认值：BarMode.Fixed                                                 |
-| options<sup>10+</sup> | [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) | 否   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅Scrollable且水平模式下有效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| options<sup>10+</sup> | [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) | 否   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅在value为Scrollable且水平模式下有效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### barMode<sup>10+</sup>
 
@@ -334,7 +334,7 @@ fadingEdge(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                               |
 | ------ | ------- | ---- | -------------------------------------------------- |
-| value  | boolean | 是   | 页签超过容器宽度时是否渐隐消失。<br />默认值：true，页签超过容器宽度时会渐隐消失。设置为false时，页签超过容器宽度直接截断显示，不产生任何渐变效果。 |
+| value  | boolean | 是   | 页签超过容器宽度时是否渐隐消失。<br />默认值：true，页签超过容器宽度时会渐隐消失。设置为false时，页签超过容器宽度直接截断显示。若未设置[barBackgroundColor](#barbackgroundcolor10)属性，页签末端仍会显示默认的白色渐隐效果。 |
 
 ### barOverlap<sup>10+</sup>
 
@@ -435,7 +435,7 @@ barGridAlign(value: BarGridColumnOptions)
 
 edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
 
-设置边缘滑动效果。
+设置边缘滑动效果。当滑动到边缘时，根据设置的边缘效果类型执行相应的回弹动作：Spring模式使用弹簧曲线实现弹性回弹效果，Fade模式使用渐变透明度实现视觉反馈，None模式不执行任何边缘效果。边缘效果的触发条件为滑动内容超出容器边界。
 
 >**说明：**
 >
@@ -668,9 +668,9 @@ TabBar悬浮样式。
 | 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
 | ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
 | barWidth | [FloatingTabBarWidth](#floatingtabbarwidth)             | 否 | 是    | 不同Tabs宽度下TabBar的宽度。宽度默认计算规则见[FloatingTabBarWidth](#floatingtabbarwidth)说明。 |
-| barSideMargin      | [Length](ts-types.md#length) | 否 | 是   | TabBar宽度默认计算规则中的左右边距。<br/>Tabs宽度小于600vp时，默认值为16vp。Tabs宽度处于600vp到840vp时，默认值为24vp。Tabs宽度大于840vp时，默认值为32vp。 |
-| barBottomMargin   | [Length](ts-types.md#length)           | 否 | 是    | TabBar距离Tabs底部的距离。默认值为28vp。 |
-| maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | 否 | 是    | 蒙层的颜色。蒙层显示区域在纵向会基于蒙层的颜色进行透明度渐变显示，从下到上不透明度变小。浅色模式下默认值为#CCF1F3F5，显示为白色。深色模式下默认值为#99000000，显示为黑色。 |
+| barSideMargin      | [Length](ts-types.md#length) | 否 | 是   | TabBar宽度默认计算规则中的左右边距。<br/>取值范围：[0, +∞)<br/>Tabs宽度小于600vp时，默认值为16vp。Tabs宽度处于600vp到840vp时，默认值为24vp。Tabs宽度大于840vp时，默认值为32vp。 |
+| barBottomMargin   | [Length](ts-types.md#length)           | 否 | 是    | TabBar距离Tabs底部的距离。<br/>取值范围：[0, +∞)<br/>默认值为28vp。 |
+| maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | 否 | 是    | 蒙层的颜色。蒙层显示区域会基于蒙层的颜色进行透明度渐变显示，从下到上不透明度变小。浅色模式下默认值为#CCF1F3F5，显示为白色。深色模式下默认值为#99000000，显示为黑色。 |
 | maskHeight   | [Length](ts-types.md#length)           | 否 | 是    | 蒙层的高度。蒙层显示上边缘默认比TabBar上边缘高16vp。 |
 | adaptToHandedness   | boolean           | 否 | 是    | 是否跟随操作手左右布局显示。<br/>true表示跟随操作手左右布局显示；false表示不跟随操作手左右布局显示。<br/>默认值：false |
 | systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。 |
@@ -698,8 +698,8 @@ TabBar布局模式枚举。
 
 | 名称          | 值   | 说明                                                         |
 | ------------- | ---- | ------------------------------------------------------------ |
-| CONTENT_FIRST | 0    | 先加载目标页内容，再开始切换动画。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ACTION_FIRST  | 1    | 先开始切换动画，再加载目标页内容；生效需要同时满足：Tabs的height、width没有设置成auto。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CONTENT_FIRST | 0    | 先加载目标页内容，再开始切换动画。适用于需要先确保内容加载完成再展示动画的场景，可避免动画过程中出现空白内容，推荐用于内容加载较快、需要平滑过渡的场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ACTION_FIRST  | 1    | 先开始切换动画，再加载目标页内容；生效需要同时满足：Tabs的height、width没有设置成auto。适用于需要立即响应用户操作、快速开始动画的场景，推荐用于内容加载较慢但希望提供快速视觉反馈的场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | NO_ANIMATION  | 2    | 关闭默认动画。调用TabsController的[changeIndex](#changeindex)接口切换TabContent时该枚举值不生效。<br>可以通过设置[animationDuration](#animationduration)为0实现调用TabsController的changeIndex接口时不带动画。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | CONTENT_FIRST_WITH_JUMP<sup>15+</sup> | 3    | 先加载目标页内容，再无动画跳转到目标页附近，最后有动画跳转到目标页。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | ACTION_FIRST_WITH_JUMP<sup>15+</sup>  | 4    | 先无动画跳转到目标页附近，再有动画跳转到目标页，最后加载目标页内容。此项生效需要同时满足：Tabs的height、width没有设置成auto。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
@@ -764,8 +764,8 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 
 | 名称                  | 值 | 说明                                     |
 | --------------------- | -- | ---------------------------------------- |
-| SELF_ONLY       | 0  | Tabs自身滚动，不与父组件联动。 |
-| SELF_FIRST | 1  | Tabs自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Tabs触发边缘效果。 |
+| SELF_ONLY       | 0  | Tabs自身滚动，不与父组件联动。适用于Tabs组件内部有完整滚动功能、需要独立控制滚动行为的场景。 |
+| SELF_FIRST | 1  | Tabs自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Tabs触发边缘效果。适用于Tabs作为主要滚动区域、滚动到边缘后需要与父组件联动的嵌套滚动场景。 |
 
 ## 事件
 
@@ -799,7 +799,7 @@ Tab页签切换后触发的事件。
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示的index索引，索引从0开始计算。 |
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示页签的索引值，从0开始计算。 |
 
 ### onTabBarClick<sup>10+</sup>
 
@@ -817,7 +817,7 @@ Tab页签点击后触发的事件。
 
 | 参数名 | 类型   | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 被点击的index索引，索引从0开始计算。 |
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 被点击页签的索引值，从0开始计算。 |
 
 ### onAnimationStart<sup>11+</sup>
 
@@ -859,7 +859,11 @@ onAnimationEnd(handler: OnTabsAnimationEndCallback)
 
 onGestureSwipe(handler: OnTabsGestureSwipeCallback)
 
-在页面跟手滑动过程中，逐帧触发该回调，用于监听当前显示页面的实时滑动状态。
+在页面跟手滑动过程中，逐帧触发，用于监听当前显示页面的实时滑动状态。
+
+> **说明：**
+>
+> 当使用[customContentTransition](#customcontenttransition11)自定义切换动画时，此事件不触发。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -971,7 +975,7 @@ onSelected(event: Callback\<number>)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前选中元素的索引。 |
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前选中元素的索引，从0开始计算。 |
 
 ### onUnselected<sup>18+</sup>
 
@@ -1003,7 +1007,7 @@ onUnselected(event: Callback\<number>)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 将要隐藏元素的索引。 |
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 将要隐藏元素的索引，从0开始计算。 |
 
 ### onContentDidScroll<sup>23+</sup>
 
@@ -1125,7 +1129,7 @@ type OnTabsContentWillChangeCallback = (currentIndex: number, comingIndex: numbe
 | 参数名       | 类型   | 必填 | 说明                                       |
 | ------------ | ------ | ---- | ------------------------------------------ |
 | currentIndex | number | 是   | 当前显示页面的index索引，索引从0开始计算。 |
-| comingIndex  | number | 是   | 将要显示的新页面的index索引。              |
+| comingIndex  | number | 是   | 将要显示的新页面的index索引，索引从0开始计算。              |
 
 **返回值：** 
 
@@ -1145,9 +1149,9 @@ Tabs组件动画相关信息集合。
 
 | 名称            | 类型      | 只读 | 可选 | 说明                                       |
 | ------------- | ---------- | ---- | ---- | ------------------------ |
-| currentOffset | number | 否 | 否 | Tabs当前显示元素在主轴方向上，相对于Tabs起始位置的位移。单位：vp，默认值为0。|
-| targetOffset | number | 否 | 否 | Tabs动画目标元素在主轴方向上，相对于Tabs起始位置的位移。单位：vp，默认值为0。|
-| velocity | number | 否 | 否 | Tabs离手动画开始时的离手速度。单位：vp/s，默认值为0。|
+| currentOffset | number | 否 | 否 | Tabs当前显示元素在主轴方向上，相对于Tabs起始位置的位移。单位：vp，默认值为0。正值表示向右（横向）或向下（纵向）偏移，负值表示向左（横向）或向上（纵向）偏移。|
+| targetOffset | number | 否 | 否 | Tabs动画目标元素在主轴方向上，相对于Tabs起始位置的位移。单位：vp，默认值为0。正值表示向右（横向）或向下（纵向）偏移，负值表示向左（横向）或向上（纵向）偏移。|
+| velocity | number | 否 | 否 | Tabs离手动画开始时的离手速度。单位：vp/s，默认值为0。正值表示向右（横向）或向下（纵向）滑动，负值表示向左（横向）或向上（纵向）滑动，速度值越大表示滑动越快，该参数可用于实现惯性滚动效果。|
 
 ## TabContentAnimatedTransition<sup>11+</sup>
 
@@ -1163,7 +1167,7 @@ Tabs自定义切换动画相关信息。
 
 | 名称            | 类型         | 只读 | 可选   | 说明                                       |
 | ------------- | ---------------- | ------ | ---- |---------------------- |
-| timeout | number | 否 | 是 | Tabs自定义切换动画超时时间。从自定义动画开始切换计时，如果到达该时间后，开发者仍未调用[TabContentTransitionProxy](#tabcontenttransitionproxy11)的finishTransition接口通知Tabs组件自定义动画结束，那么组件就会认为此次自定义动画已结束，直接执行后续操作。<br/>默认值：1000<br/>单位：ms<br/>取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。|
+| timeout | number | 否 | 是 | 自定义切换动画超时时间。如果到达该时间后，开发者仍未调用[TabContentTransitionProxy](#tabcontenttransitionproxy11)的finishTransition接口通知Tabs组件自定义动画结束，那么组件就会认为此次自定义动画已结束，直接执行后续操作。<br/>默认值：1000<br/>单位：ms<br/>取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。|
 | transition | [Callback](./ts-types.md#callback12)\<[TabContentTransitionProxy](#tabcontenttransitionproxy11)> | 否 | 否 | 自定义切换动画具体内容。|
 
 ## TabContentTransitionProxy<sup>11+</sup>
@@ -1248,7 +1252,11 @@ TabsController的构造函数。
 
 changeIndex(value: number): void
 
-控制Tabs切换到指定页签。
+控制Tabs切换到指定页签。在需要通过按钮、下拉菜单或其他控件实现页签跳转功能时使用，例如点击“上一页”/“下一页”按钮切换页签。
+
+> **说明：**
+>
+> 当animationMode设置为[AnimationMode.NO_ANIMATION](#animationmode12枚举说明)时，调用此接口切换TabContent时默认动画不生效，可通过设置[animationDuration](#animationduration)为0实现不带动画切换。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1258,13 +1266,13 @@ changeIndex(value: number): void
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| value | number | 是    | 页签在Tabs里的索引值，索引值从0开始。取值范围：[0, 页签总数-1]。设置范围外的值时按0处理。 |
+| value | number | 是    | 页签的索引，从0开始计算。取值范围：[0, 页签总数-1]。设置范围外的值时按0处理。 |
 
 ### preloadItems<sup>12+</sup>
 
 preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
-控制Tabs预加载指定子节点。调用该接口后会一次性加载所有指定的子节点，因此为了性能考虑，建议分批加载子节点。
+控制Tabs预加载指定子节点。调用该接口后会一次性加载所有指定的子节点，因此为了性能考虑，建议分批加载子节点。适用于需要提前加载某些页签以提高切换性能的场景，如某些页签内容较复杂或资源较多时，可预加载以优化用户体验。
 
 > **说明：**
 >
@@ -1304,7 +1312,7 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 setTabBarTranslate(translate: TranslateOptions): void
 
-设置TabBar的平移距离。
+设置TabBar的平移距离。适用于需要实现TabBar动态位置调整的场景，如TabBar滑动隐藏显示效果、配合页面滚动实现沉浸式体验等。
 
 > **说明：**
 >
@@ -1327,7 +1335,7 @@ setTabBarTranslate(translate: TranslateOptions): void
 
 setTabBarOpacity(opacity: number): void
 
-设置TabBar的不透明度。
+设置TabBar的不透明度。适用于需要调整TabBar显示透明度的场景，如TabBar渐隐渐显效果、降低TabBar视觉干扰突出内容等。
 
 > **说明：**
 >
@@ -1344,7 +1352,7 @@ setTabBarOpacity(opacity: number): void
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| opacity | number | 是 | 设置TabBar的不透明度，取值范围为[0.0, 1.0]，设置的值小于0.0时，按0.0处理，设置的值大于1.0时，按1.0处理。<br> 默认值：1.0。 |
+| opacity | number | 是 | 设置TabBar的不透明度，值为1.0表示完全不透明，值为0.0表示完全透明。取值范围为[0.0, 1.0]，设置的值小于0.0时，按0.0处理，设置的值大于1.0时，按1.0处理。<br> 默认值：1.0。 |
 
 ## 示例
 
@@ -3002,7 +3010,7 @@ struct MyComponent {
 
 ### 示例19（设置TabBar背景模糊效果）
 
-该示例分别通过[barBackgroundBlurStyle](#barbackgroundblurstyle18)和[barBackgroundEffect](#barbackgroundeffect18)设置TabsBar页签栏的背景模糊样式和效果。
+该示例分别通过[barBackgroundBlurStyle](#barbackgroundblurstyle18)和[barBackgroundEffect](#barbackgroundeffect18)设置TabBar页签栏的背景模糊样式和效果。
 
 从API version 18开始，新增了barBackgroundBlurStyle和barBackgroundEffect接口。
 
@@ -3352,7 +3360,7 @@ struct TabsExample {
               }.tabBar(SubTabBarStyle.of('子页c'))
             }
             .nestedScroll(TabsNestedScrollMode.SELF_FIRST) // 设置Tabs自身先滚动，滚动到边缘后父组件滚动
-          }.tabBar(SubTabBarStyle.of("首页1"))
+          }.tabBar(SubTabBarStyle.of('首页1'))
 
 
           TabContent() {

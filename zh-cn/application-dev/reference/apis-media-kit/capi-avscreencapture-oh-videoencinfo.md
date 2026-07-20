@@ -14,6 +14,8 @@ typedef struct OH_VideoEncInfo {...} OH_VideoEncInfo
 
 视频编码参数。
 
+用于配置屏幕录制的视频编码参数，支持设置编码格式、比特率和帧率。
+
 **起始版本：** 10
 
 **相关模块：** [AVScreenCapture](capi-avscreencapture.md)

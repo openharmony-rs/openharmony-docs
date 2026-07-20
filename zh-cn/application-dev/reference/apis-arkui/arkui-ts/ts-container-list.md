@@ -2,14 +2,14 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong; @yangcan18-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 List是ArkUI中的列表容器组件，用于呈现连续、多行或多列的同类数据，例如图片和文本，支持垂直或水平滚动。配合LazyForEach或Repeat可实现懒加载，提升长列表场景下的启动速度并减少内存消耗；支持预加载以减少滚动丢帧、提升流畅性；支持单列/多列布局、分组列表、吸顶吸底等能力，适用于消息列表、商品列表、设置页面等场景。
 
-List的懒加载是指组件按需加载可见区域可见的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
+List的懒加载是指组件按需加载显示区域内的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
 
 - 当List和ForEach结合，会一次性创建所有的子组件，在需要的时候布局和渲染屏幕范围内的节点。当用户滑动时，划出屏幕范围的节点不会下树销毁，划入屏幕范围的节点会布局和渲染。
 
@@ -177,7 +177,7 @@ cachedCount(value: number)
 
 List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行ListItem。计算ListItem行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。
 
-List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup时，LazyForEach会在List显示区域外上下各会创建cachedCount个ListItemGroup。
+List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup时，LazyForEach会在List显示区域外上下各创建cachedCount个ListItemGroup。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -215,8 +215,8 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number | 是   | 预加载的ListItem的数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
-| show  | boolean | 是   | 被预加载的ListItem是否需要显示。设置为true时显示预加载的ListItem，设置为false时不显示预加载的ListItem。 <br/> 默认值：false |
+| count  | number | 是   | 列表的预加载行数。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
+| show  | boolean | 是   | 被预加载的ListItem/ListItemGroup是否需要显示。设置为true时显示预加载的ListItem/ListItemGroup，设置为false时不显示预加载的ListItem/ListItemGroup。 <br/> 默认值：false |
 
 ### cachedCount<sup>22+</sup>
 
@@ -248,8 +248,8 @@ cachedCount(count: number | CacheCountInfo, show: boolean)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22对象说明) | 是   | 当参数类型为number时，表示预加载的ListItem的数量。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 <br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。|
-| show  | boolean | 是   | 被预加载的ListItem是否需要显示。<br/>true：显示预加载的ListItem。<br/>false：不显示预加载的ListItem。 |
+| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22对象说明) | 是   | 当参数类型为number时，表示列表的预加载行数。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 <br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。|
+| show  | boolean | 是   | 被预加载的ListItem/ListItemGroup是否需要显示。<br/>true：显示预加载的ListItem/ListItemGroup。<br/>false：不显示预加载的ListItem/ListItemGroup。 |
 
 ### edgeEffect
 
@@ -348,7 +348,7 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension)
 
-设置List组件布局列的数量和列的间距，默认按固定一列显示。在多列模式下，ListItemGroup独占一行，ListItemGroup中的ListItem按照List组件的lanes属性设置值来布局。
+设置List组件交叉轴方向的布局数量和间距。List垂直滚动时，设置列数和列间距；List水平滚动时，设置行数和行间距。默认按一列或一行显示。在多列或多行模式下，ListItemGroup在垂直滚动时独占一行，在水平滚动时独占一列；ListItemGroup中的ListItem按照List组件的lanes属性设置值来布局。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -362,8 +362,8 @@ lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension)
 
 | 参数名               | 类型                                                         | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前List组件布局列的数量。<br/> 设置为number类型时，根据number类型的数值确定列数，number类型取值范围：[1, +∞)，传入小于1的值时按默认值处理。<br/>设置为LengthConstrain类型时，根据LengthConstrain中的最大最小值确定列数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
-| gutter | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距。<br />默认值：0<br/>参数类型为number时单位为vp。<br/>取值范围：[0, +∞)，传入负值时按默认值处理。<br/>**说明：**<br/>gutter为列间距，当列数大于1时生效。 |
+| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前List组件交叉轴方向的布局数量。List垂直滚动时表示列数，水平滚动时表示行数。<br/>设置为number类型时，根据number类型的数值确定列数或行数，number类型取值范围：[1, +∞)，传入小于1的值时按默认值处理。<br/>设置为LengthConstrain类型时，垂直滚动时根据列宽的最大值和最小值确定列数，水平滚动时根据行高的最大值和最小值确定行数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
+| gutter | [Dimension](ts-types.md#dimension10)                         | 否   | List垂直滚动时表示列间距，水平滚动时表示行间距。<br />默认值：0<br/>参数类型为number时单位为vp。<br/>取值范围：[0, +∞)，传入负值时按默认值处理。<br/>**说明：**<br/>当列数或行数大于1时生效。 |
 
 ### alignListItem<sup>9+</sup>
 
@@ -823,7 +823,7 @@ ListItemGroup吸顶或吸底效果枚举。
 
 | 名称     |  值  | 说明                                     |
 | ------ | ------ | ---------------------------------------- |
-| NONE   | 0 | 默认无项目滚动对齐效果。            |
+| NONE   | 0 | 默认无列表项滚动结束对齐效果。            |
 | START  | 1 | 视图中的第一项将在列表的开头对齐。<br/>**说明：**<br/>当列表位移至末端，需要将末端的item完整显示，可能出现开头不对齐的情况。 |
 | CENTER | 2 | 视图中的中间项将在列表中心对齐。<br/>**说明：**<br/>顶端和末尾的item都可以在列表中心对齐，列表显示可能露出空白。 |
 | END    | 3 | 视图中的最后一项将在列表末尾对齐。<br/>**说明：**<br/>当列表位移至顶端，需要将顶端的item完整显示，可能出现末尾不对齐的情况。 |
@@ -1027,7 +1027,7 @@ onScrollStart(event: () => void)
 
 onScrollStop(event: () => void)
 
-列表滑动停止时触发。手拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
+列表滑动停止时触发。手指拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -2505,7 +2505,7 @@ struct ListExample {
             this.contentHeight = this.scrollerForList.contentSize().height;
           } catch (error) {
             let err: BusinessError = error as BusinessError;
-            console.error(`Failed to get contentSize of the grid. Code: ${err.code}, message: ${err.message}`);
+            console.error(`Failed to get contentSize of the List. Code: ${err.code}, message: ${err.message}`);
           }
         })
       // 将获取到的内容尺寸信息通过文本进行呈现

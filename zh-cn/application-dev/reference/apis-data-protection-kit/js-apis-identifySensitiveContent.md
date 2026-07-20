@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 21开始支持。后续版本的新增接口采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -47,35 +47,39 @@ scanFile(filePath: string, identifyPolicies:Array&lt;Policy&gt;): Promise&lt;Arr
 | -------- | -------- |
 | 201 | permission denied. |
 | 801 | Capability not supported. |
-| 19110001 | Parameter error.Possible causes:1. Incorrect policy format. 2. Invalid parameter range. |
+| 19110001 | Parameter error.Possible causes: 1. Incorrect policy format. 2. Invalid parameter range. |
 | 19110002 | Sensitive file content identification timed out. |
-| 19110003 | The file is not supported. Possible causes:1. The file path does not exist. 2. The file type is not supported. 3. The file permission is not supported. |
+| 19110003 | The file is not supported. Possible causes: 1. The file path does not exist. 2. The file type is not supported. 3. The file permission is not supported. |
 | 19110004 | A system error has occurred. |
 
 **示例：**
 
 ```ts
-// 导入敏感内容识别模块
 import { identifySensitiveContent } from '@kit.DataProtectionKit';
 
 // 定义待扫描的文件物理路径
-let filepath = "/data/app/el1/bundle/public/bundleName/test.txt";
+let filePath = "/data/service/el2/100/hmdfs/account/files/Docs/Documents/test.txt";
 
 // 配置敏感内容识别策略
 let policies: Array<identifySensitiveContent.Policy> = [
-  {"sensitiveLabel":"1", "keywords":[], "regex":""}
+  {"sensitiveLabel":"name", "keywords":["姓名"], "regex":""},
+  {"sensitiveLabel":"phone", "keywords":[], "regex":"电话"},
+  {"sensitiveLabel":"address", "keywords":["地址"], "regex":"xx省xx市"}
 ];
 try {
-  // 调用scanFile接口识别文件中的敏感内容
-  identifySensitiveContent.scanFile(filepath, policies).then(records => {
-    // 处理识别结果
+  identifySensitiveContent.scanFile(filePath, policies).then(records => {
     console.info('scanFile finish');
-  }).catch((err:Error) => {
+    for (let i = 0; i < records.length; ++i) {
+      const sensitiveLabel = records[i].sensitiveLabel;
+      const matchContent = records[i].matchContent;
+      const matchNumber = records[i].matchNumber;
+      console.info(`scanFile result sensitiveLabel: ${sensitiveLabel} matchNumber ${matchNumber} matchContent ${matchContent}`);
+    }
+  }).catch((err: BusinessError) => {
     // 处理识别失败
-    console.error('error message', err.message);
+    console.error(`Failed to scanFile. Code:${err.code}, message:${err.message}`);
   })
 } catch (err) {
-  // 捕获异常
   console.error('error message', err.message);
 }
 ```
@@ -84,7 +88,7 @@ try {
 
 定义敏感内容识别策略。
 
-- 单个策略内，关键字与正则表达式为顺序组合关系，实行两级匹配：首先进行关键字匹配，若命中，则仅在该关键字匹配位置的前后50字节窗口内，进行正则表达式匹配。
+- 单个策略内，关键字与正则表达式为顺序组合关系，实行两级匹配：首先进行关键字匹配，若命中，则仅在该关键字匹配位置的前后各50字节窗口内，进行正则表达式匹配。若只设置关键字，则仅进行关键字匹配。若只设置正则表达式，则仅进行正则表达式匹配。
 - 多个Policy策略之间独立，扫描时会分别应用每个策略。
 - sensitiveLabel用于标记匹配结果，便于识别具体匹配的策略。
 

@@ -51,7 +51,7 @@ import { BusinessError } from '@ohos.base';
 let wantAgent: _WantAgent;
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
     console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
         wantAgent = data;

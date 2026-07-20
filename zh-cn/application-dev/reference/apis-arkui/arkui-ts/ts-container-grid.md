@@ -1999,7 +1999,7 @@ struct Index {
       Text('Grid alignItems示例代码')
 
       Grid() {
-        LazyForEach(this.data, (item: number) => {
+        LazyForEach(this.data, (item: string) => {
           // GridItem和Column不设置高度，默认会自适应子组件大小，设置STRETCH的场景下，会变成与当前行最高节点同高。
           // 若设置高度，则会保持已设置的高度，不会与当前行最高节点同高。
           GridItem() {
@@ -2404,7 +2404,7 @@ enum SlideActionType {
   END
 }
 // 热区
-let HOT_AREA_LENGTH: number;
+let HOT_AREA_LENGTH: number = 0;
 try {
   HOT_AREA_LENGTH =
     Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
@@ -2414,7 +2414,7 @@ try {
 // 滚动曲线: 贝塞尔曲线
 const SLIDE_SELECT_SPEED_CURVE = curves.cubicBezierCurve(0.33, 0, 0.67, 1);
 // 滚动速度: 最大速度
-let AUTO_SPEED_MAX: number;
+let AUTO_SPEED_MAX: number = 0;
 try {
   AUTO_SPEED_MAX = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
 } catch (error) {
@@ -2703,7 +2703,6 @@ struct GridItemExample {
   @State numbers: number[] = [];
   @State dragItem: number = -1;
   @State scaleItem: number = -1;
-  @State item: number = -1;
   private dragRefOffsetX: number = 0;
   private dragRefOffsetY: number = 0;
   @State offsetX: number = 0;
@@ -2993,7 +2992,7 @@ struct Example {
   build() {
     Column({ space: 5 }) {
       Grid() {
-        LazyForEach(this.numbers, (item: number, index: number) => {
+        LazyForEach(this.numbers, (item: string, index: number) => {
           GridItem() {
             Text(item + '')
               .fontSize(16)

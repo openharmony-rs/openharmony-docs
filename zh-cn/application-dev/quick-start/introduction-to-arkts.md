@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS是一种设计用于构建高性能应用的编程语言。它在继承TypeScript语法的基础上进行了优化，以提供更高的性能和开发效率。
 
@@ -689,8 +689,10 @@ throw new Error('this error')
 ``` TypeScript
 try {
   // 可能发生异常的语句块
+  // ...
 } catch (e) {
   // 异常处理
+  // ...
 }
 ```
 
@@ -1823,10 +1825,10 @@ function last(x: number[]): number {
 
 如果需要为任何数组定义相同的函数，使用类型参数将该函数定义为泛型：
 
-<!-- @[generic_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
+<!-- @[generic_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericArray.ets) -->   
 
 ``` TypeScript
-function last1<T>(x: T[]): T {
+function last<T>(x: T[]): T {
   return x[x.length - 1];
 }
 ```
@@ -2038,6 +2040,7 @@ export default new Demo();
 
 ``` TypeScript
 import * as Utils from './Utils';
+// ...
 Utils.X // 表示来自Utils的X
 Utils.Y // 表示来自Utils的Y
 ```
@@ -2048,6 +2051,7 @@ Utils.Y // 表示来自Utils的Y
 
 ``` TypeScript
 import { X, Y } from './Utils';
+// ...
 X // 表示来自Utils的X
 Y // 表示来自Utils的Y
 ```
@@ -2186,7 +2190,7 @@ function foo(arg1: number) {
 ``` TypeScript
 // 注解的声明：
 @interface ClassAuthor {
-  authorName: string
+  authorName: string;
 }
 
 // 注解的使用：
@@ -2653,7 +2657,7 @@ class C {
 同一个实体不能重复使用同一注解，否则会导致编译错误。
 ```typescript
 @MyAnno({name: "123", value: 456})
-@MyAnno({name: "321", value: 654}) // 编译错误：不允许重复注释
+@MyAnno({name: "321", value: 654}) // 编译错误：不允许重复注解
 class C {
   // ...
 }

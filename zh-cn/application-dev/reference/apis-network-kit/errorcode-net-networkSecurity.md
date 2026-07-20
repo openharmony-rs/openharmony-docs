@@ -328,7 +328,7 @@ Certificate is untrusted.
 
 **错误信息**
 
-Hostname verification failed.
+Invalid hostname.
 
 **错误描述**
 

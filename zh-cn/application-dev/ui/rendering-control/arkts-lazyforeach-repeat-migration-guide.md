@@ -351,7 +351,7 @@ struct MyComponent {
    class MyDataSource implements IDataSource {
      private dataArray: string[] = [];
      
-     public changeData(index: number, newData: string): void {
+     public changeData(index: number, data: string): void {
        this.dataArray.splice(index, 1, data);
        this.notifyDataChange(index);
      }
@@ -1089,7 +1089,7 @@ Repeat本身具备组件复用能力，同时也支持与状态管理V2的[@Reus
 1. 直接使用Repeat自身的复用能力。
 2. 使用@ReusableV2装饰器提供的复用能力。
 
-需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持[关闭自身复用能力](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)）。
+需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持通过[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)关闭自身复用能力）。
 
 **示例7 - 迁移方案1：使用Repeat自身的复用能力**
 
@@ -1172,7 +1172,7 @@ struct MyComponent {
           }
         })
         .key((item: StringData, index: number) => index.toString())
-        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 19）
+        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 18）
     }.cachedCount(5)
   }
 }
@@ -1373,7 +1373,7 @@ class StringData {
 @Entry
 @ComponentV2
 struct MyComponent {
-  data: StringData[] = [];
+  @Local data: StringData[] = [];
 
   aboutToAppear() {
     for (let i = 0; i <= 200; i++) {
@@ -1443,7 +1443,7 @@ class StringData {
 @Entry
 @ComponentV2
 struct MyComponent {
-  data: StringData[] = [];
+  @Local data: StringData[] = [];
 
   aboutToAppear() {
     for (let i = 0; i <= 200; i++) {
@@ -1471,7 +1471,7 @@ struct MyComponent {
           }
         })
         .key((item: StringData, index: number) => index.toString())
-        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 19），避免渲染异常
+        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 18），避免渲染异常
     }.cachedCount(5)
   }
 }

@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines the enumerations and APIs of the **Navigation** or **Router** component.
+Defines the enumerations related to the **Navigation** and **Router** components.
 
 **File to include:** <arkui/node_attributes/navigation_router.h>
 

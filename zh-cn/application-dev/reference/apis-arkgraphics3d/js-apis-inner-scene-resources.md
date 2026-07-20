@@ -15,9 +15,9 @@
 ## 导入模块
 
 ```ts
-import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
-  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream } from '@kit.ArkGraphics3D';
+import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, PolygonMode, Material, MaterialProperty,
+  MetallicRoughnessMaterial, ShaderMaterial, UnlitMaterial, OcclusionMaterial, SamplerFilter, SamplerAddressMode, Sampler, SubMesh,
+  Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream, Effect } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceType
@@ -634,7 +634,7 @@ function finish(): void {
 | environmentImage | [Image](#image) \| null | 否 | 是 | 环境图片，默认为undefined。 |
 | radianceImage | [Image](#image) \| null | 否 | 是 | 辐射图片，默认为undefined。 |
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | 否 | 是 | 辐射系数，默认为undefined。 |
-| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。|
+| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Image
 

@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong; @yangcan18-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -635,7 +635,7 @@ onScrollStart(event: () => void): T
 
 onScrollStop(event: () => void): T
 
-滚动停止时触发。手指拖动滚动组件或其滚动条触发的滚动，手离开屏幕后滚动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滚动控制器触发的带动画的滚动，动画停止时会触发该事件。
+滚动停止时触发。手指拖动滚动组件或其滚动条触发的滚动，手指离开屏幕后滚动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滚动控制器触发的带动画的滚动，动画停止时会触发该事件。
 
 触发该事件的条件：
 
@@ -807,7 +807,7 @@ onWillStopDragging(handler: OnWillStopDraggingCallback): T
 
 onDidStopDragging(handler: OnDidStopDraggingCallback): T
 
-滚动组件结束拖拽时触发。
+滚动组件结束拖动时触发。
 
 **卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
@@ -1467,7 +1467,7 @@ struct ListExample {
           ' end index in group: ' + end.itemIndexInGroup);
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset);
+        console.info(`onDidScroll scrollState = ` + scrollState + `, scrollOffset = ` + scrollOffset);
       })
       .width('90%')
     }

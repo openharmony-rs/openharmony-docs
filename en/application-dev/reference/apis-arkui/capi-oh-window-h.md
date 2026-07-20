@@ -520,7 +520,7 @@ Injects a multimodal touch event into the target window. This function is limite
 | Parameter| Description|
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
-| [Input_TouchEvent](../apis-input-kit/capi-input-input-touchevent.md)* touchEvent | Pointer to the multimodal touch event. For details, see [Input_TouchEvent](../apis-input-kit/capi-input-input-touchevent.md). The event is defined in **oh_input_manager.h**. Certain fields in this parameter have specific constraints. Specifically, **action** should be an integer in the range [0, 3]; **id**, **displayX**, **displayY**, and **actionTime** should be an integer greater than or equal to 0. If these constraints are not met, the function returns **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**, indicating that the window manager service is abnormal.|
+| [Input_TouchEvent](../apis-input-kit/capi-input-input-touchevent.md)* touchEvent | Pointer to the multimodal touch event. For details, see [Input_TouchEvent](../apis-input-kit/capi-input-input-touchevent.md). The event is defined in **oh_input_manager.h**. Certain fields in this parameter have specific constraints. Specifically, **action** should be an integer in the range [0, 3]; **id**, **displayX**, and **displayY** should be an integer greater than or equal to 0. If these constraints are not met, the API returns **WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**, indicating that the window manager service is abnormal.|
 | int32_t windowX | X coordinate of the event relative to the target window. The value is an integer.|
 | int32_t windowY | Y coordinate of the event relative to the target window. The value is an integer.|
 
@@ -538,7 +538,7 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 
 **Description**
 
-Obtains the information about all main windows.
+Obtains the information about all main windows. After using this API, you are advised to call [OH_WindowManager_ReleaseAllMainWindowInfo()](#oh_windowmanager_releaseallmainwindowinfo) to release the memory to avoid memory leakage.
 
 **Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 

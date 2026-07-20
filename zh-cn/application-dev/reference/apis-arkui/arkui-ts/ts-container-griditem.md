@@ -241,7 +241,7 @@ GridItem元素被鼠标框选的状态改变时触发回调。
 ## 示例
 
 ### 示例1（GridItem设置自身位置）
-GridItem通过设置合理的ColumnStart、ColumnEnd、RowStart、RowEnd属性来设置自身位置。需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
+GridItem通过设置合理的rowStart、rowEnd、columnStart、columnEnd属性来设置自身位置。需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
 
 ```ts
 // xxx.ets
@@ -280,7 +280,7 @@ struct GridItemExample {
             .width('100%')
             .height('100%')
             .textAlign(TextAlign.Center)
-        }.columnStart(1).columnEnd(4) // 只设置列号，不会从第1列开始布局
+        }.columnStart(1).columnEnd(4) // 未设置行号，不按columnStart(1)定位；此处从第5行、索引为0的列开始并跨4列布局
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
@@ -301,7 +301,7 @@ struct GridItemExample {
 @Entry
 @Component
 struct GridItemExample {
-  @State numbers: String[] = ['0', '1', '2'];
+  @State numbers: string[] = ['0', '1', '2'];
 
   build() {
     Column({ space: 5 }) {

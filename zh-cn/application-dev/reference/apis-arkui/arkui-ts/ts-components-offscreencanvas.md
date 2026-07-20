@@ -1,4 +1,4 @@
-#  OffscreenCanvas
+# OffscreenCanvas
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
@@ -12,7 +12,7 @@ OffscreenCanvas组件用于绘制自定义图形。
 
 > **说明：** 
 >
-> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > OffscreenCanvas无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
 
@@ -26,7 +26,7 @@ OffscreenCanvas组件用于绘制自定义图形。
 
 constructor(width: number, height: number)
 
-构造用于创建离屏画布对象的OffscreenCanvas。
+构造OffscreenCanvas对象。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -38,14 +38,14 @@ constructor(width: number, height: number)
 
 | 参数名 | 类型 | 必填 | 说明                        |
 | ------ | -------- | ---- | ------------------------------------- |
-| width  | number   | 是  | OffscreenCanvas组件的宽度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
-| height | number   | 是  | OffscreenCanvas组件的高度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
+| width  | number   | 是  | OffscreenCanvas组件的宽度。<br>异常值NaN和Infinity按无效值处理，负数按0处理。<br>单位：vp。 |
+| height | number   | 是  | OffscreenCanvas组件的高度。<br>异常值NaN和Infinity按无效值处理，负数按0处理。<br>单位：vp。 |
 
 ### constructor<sup>12+</sup>
 
 constructor(width: number, height: number, unit: LengthMetricsUnit)
 
-构造用于创建离屏画布对象的OffscreenCanvas，支持配置OffscreenCanvas的单位模式。
+创建OffscreenCanvas对象，支持配置单位模式。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -59,9 +59,9 @@ constructor(width: number, height: number, unit: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明                        |
 | ------ | -------- | ---- | ------------------------------------- |
-| width  | number   | 是  | OffscreenCanvas组件的宽度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
-| height | number   | 是  | OffscreenCanvas组件的高度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
-| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 是   |  用来配置OffscreenCanvas对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
+| width  | number   | 是  | OffscreenCanvas组件的宽度。<br>异常值NaN和Infinity按无效值处理，负数按0处理。<br>单位由unit参数决定，默认单位：vp。 |
+| height | number   | 是  | OffscreenCanvas组件的高度。<br>异常值NaN和Infinity按无效值处理，负数按0处理。<br>单位由unit参数决定，默认单位：vp。 |
+| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 是   |  配置OffscreenCanvas对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。可选值：DEFAULT（默认单位模式，使用vp作为单位，会根据屏幕密度自动适配）、PX（px像素单位，适合需要精确像素控制的场景，宽高值按物理像素计算）。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。|
 
 ## 属性
 
@@ -75,8 +75,8 @@ OffscreenCanvas支持以下属性：
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | ------ | ------- | ---- |
-| width  | number | 否  |  否  | OffscreenCanvas组件的宽度。<br>默认单位为vp。 |
-| height | number | 否  |  否  | OffscreenCanvas组件的高度。<br>默认单位为vp。 |
+| width  | number | 否  |  否  | OffscreenCanvas组件的宽度。<br>异常值NaN和Infinity按无效值处理，负数按0处理。<br>单位：vp。 |
+| height | number | 否  |  否  | OffscreenCanvas组件的高度。<br>异常值NaN和Infinity按无效值处理，负数按0处理。<br>单位：vp。 |
 
 ### width
 
@@ -160,7 +160,11 @@ struct OffscreenCanvasPage {
 
 transferToImageBitmap(): ImageBitmap
 
-从OffscreenCanvas组件中最近渲染的图像创建一个ImageBitmap对象。
+从OffscreenCanvas组件当前内容创建一个ImageBitmap对象。
+
+> **说明：**
+>
+> OffscreenCanvas对象已通过postMessage传递到Worker线程后，原线程（发送方）不允许再使用该对象的transferToImageBitmap方法，否则会抛出异常。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -199,7 +203,7 @@ struct OffscreenCanvasPage {
           offContext.fillRect(0, 0, 400, 600)
           offContext.fillStyle = '#000000'
           offContext.font = '40px serif bold'
-          offContext.fillText("Offscreen : Hello World!", 20, 60)
+          offContext.fillText('Offscreen : Hello World!', 20, 60)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
         })
@@ -218,6 +222,12 @@ getContext(contextType: "2d", options?: RenderingContextSettings): OffscreenCanv
 
 返回OffscreenCanvas组件的绘图上下文。
 
+> **说明：**
+>
+> - OffscreenCanvas对象使用getContext获取绘图上下文后，不允许通过postMessage传该对象给任何其他线程，否则会抛出异常。
+>
+> - OffscreenCanvas对象已通过postMessage传递到Worker线程后，原线程（发送方）不允许再使用该对象的getContext方法，否则会抛出异常。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -228,8 +238,8 @@ getContext(contextType: "2d", options?: RenderingContextSettings): OffscreenCanv
 
 | 参数名  | 类型 | 必填 | 说明    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| contextType | string | 是   | OffscreenCanvas组件绘图上下文的类型，当前仅支持"2d"类型。<br>"2d"：创建一个表示二维渲染上下文的OffscreenCanvasRenderingContext2D对象。<br>异常值undefined和null按无效值处理，当前接口返回undefined。|
-| options      | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数，见[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)。<br>异常值undefined和null按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
+| contextType | string | 是   | OffscreenCanvas组件绘图上下文的类型，当前仅支持"2d"类型。<br>"2d"：创建一个表示二维渲染上下文的OffscreenCanvasRenderingContext2D对象。<br>异常值undefined和null按无效值处理，接口返回undefined。|
+| options      | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数，见[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)。当需要自定义渲染上下文配置（如开启抗锯齿）时传入此参数，不传入时使用默认配置（antialias默认为false）。<br>异常值undefined和null按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
 
 **返回值：**
 
@@ -257,15 +267,15 @@ struct OffscreenCanvasExamplePage {
           .onReady(() => {
             let offContext = this.offscreenCanvas.getContext("2d", this.settings)
             offContext.font = '70px sans-serif'
-            offContext.fillText("Offscreen : Hello World!", 20, 60)
-            offContext.fillStyle = "#0000ff"
+            offContext.fillText('Offscreen : Hello World!', 20, 60)
+            offContext.fillStyle = '#0000ff'
             offContext.fillRect(230, 350, 50, 50)
-            offContext.fillStyle = "#EE0077"
+            offContext.fillStyle = '#EE0077'
             offContext.translate(70, 70)
             offContext.fillRect(230, 350, 50, 50)
-            offContext.fillStyle = "#77EE0077"
+            offContext.fillStyle = '#77EE0077'
             offContext.translate(-70, -70)
-            offContext.fillStyle = "#00ffff"
+            offContext.fillStyle = '#00ffff'
             offContext.rotate(45 * Math.PI / 180);
             offContext.fillRect(180, 120, 50, 50);
             offContext.rotate(-45 * Math.PI / 180);
@@ -291,15 +301,15 @@ struct OffscreenCanvasExamplePage {
 
 ## OffscreenCanvas支持并发线程绘制
 
-从API version 11开始，当应用创建[Worker线程](../../../arkts-utils/worker-introduction.md)，支持使用postMessage将OffscreenCanvas实例传到Worker中进行绘制，并使用onmessage接收Worker线程发送的绘制结果进行显示。
+从API version 11开始，当应用创建[Worker线程](../../../arkts-utils/worker-introduction.md)，支持使用postMessage将OffscreenCanvas实例传到Worker中进行绘制，并使用onmessage接收Worker线程发送的ImageBitmap对象进行显示。
 
 > **说明：**
 >
-> OffscreenCanvas对象使用getContext获取绘图上下文后，不允许通过postMessage传该对象给其他线程，否则抛出异常。
+> OffscreenCanvas对象使用getContext获取绘图上下文后，不允许通过postMessage传该对象给任何其他线程，否则会抛出异常。
 >
-> 已经通过postMessage传OffscreenCanvas对象到某一线程，声明该对象的线程不允许该对象使用getContext和transferToImageBitmap方法，否则抛出异常。
+> OffscreenCanvas对象已通过postMessage传递到Worker线程后，原线程（发送方）不允许再使用该对象的getContext和transferToImageBitmap方法，否则会抛出异常。
 >
-> 已经通过postMessage传OffscreenCanvas对象到某一线程，不允许再将该对象通过postMessage传给其他线程，否则抛出异常。
+> OffscreenCanvas对象已通过postMessage传递到Worker线程后，不允许再将该对象通过postMessage传递给其他线程，否则会抛出异常。
 >
 > DevEco Studio的预览器不支持显示在Worker线程中绘制的内容。
 

@@ -15,7 +15,7 @@ The [internationalization](js-apis-i18n.md) module provides internationalization
 >
 >  - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the number formatting API can be used only for UI display. Do not hardcode or make assumptions about the return format, as doing so may cause version compatibility issues. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the [official CLDR documentation](https://cldr.unicode.org/).
+>  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the number formatting API can be used only for UI display. Do not hardcode or make assumptions about the return format, as doing so may cause version compatibility issues. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/downloads/cldr-42). For details about data changes, see the [official CLDR documentation](https://cldr.unicode.org/).
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 >
@@ -43,7 +43,7 @@ import { intl } from '@kit.LocalizationKit';
 | Name             | Type    | Read-Only |  Optional | Description                                      |
 | --------------- | ------- | -------- | -------- | ---------------------------------------- |
 | language        | string  | No| No| Language associated with the locale, for example, **zh**. The value complies with the ISO 639 standard.|
-| script          | string  | No| No| Script type of the language, for example, **Hans**. The value complies with the Unicode ISO 15924 standard.|
+| script          | string  | No| No| Script type of the language, for example, **Hans**. The value complies with the ISO 15924 standard.|
 | region          | string  | No| No| Country/region associated with the locale, for example, **CN**. The value complies with the ISO 3166 standard.|
 | baseName        | string  | No| No| Locale information, which consists of the language, script, and country/region, for example, **zh-Hans-CN**. |
 | caseFirst       | string  | No| No| Whether case is taken into account for the locale's collation rules. The value can be:<br>**upper**: Uppercase letters come first.<br>**lower**: Lowercase letters come first.<br>**false**: The default collation rules of the locale are used.|
@@ -51,7 +51,7 @@ import { intl } from '@kit.LocalizationKit';
 | collation       | string  | No| No| Collation rules for the locale. The value can be:<br>**big5han**: Pinyin sorting for Latin letters.<br>**compat**: compatibility sorting, only for Arabic.<br>**dict**: dictionary-style sorting, only for Singhalese.<br>**direct**: binary code point sorting.<br>**ducet**: sorting according to the Unicode collation element table.<br>**eor**: sorting according to the European collation rules.<br>**gb2312**: Pinyin sorting, only for Chinese.<br>**phonebk**: phone book-style sorting.<br>**phonetic**: phonetic sorting.<br>**pinyin**: Pinyin sorting.<br>**reformed**: reformed sorting, only for Swedish.<br>**searchjl**: special sorting for Korean initial consonant search.<br>**stroke**: stroke sorting for Chinese.<br>**trad**: traditional-style sorting, for example, Spanish.<br>unihan: radical-stroke sorting for Han characters, only for Chinese, Japanese, and Korean.<br>zhuyin: Zhuyin sorting, only for Chinese.|
 | hourCycle       | string  | No| No| Time system for the locale. The value can be:<br>"h11", "h12", "h23", or "h24".<br>For details about their display effects, see [Table 5](#appendix).|
 | numberingSystem | string  | No| No| Numbering system for the locale. The value can be:<br>**adlm**, **ahom**, **arab**, **arabext**, **bali**, **beng**, **bhks**, **brah**, **cakm**, **cham**, **deva**, **diak**, **fullwide**, **gong**, **gonm**, **gujr**, **guru**, **hanidec**, **hmng**, **hmnp**, **java**, **kali**, **khmr**, **knda**, **lana**, **lanatham**, **laoo**, **latn**, **lepc**, **limb**, **mathbold**, **mathdbl**, **mathmono**, **mathsanb**, **mathsans**, **mlym**, **modi**, **mong**, **mroo**, **mtei**, **mymr**, **mymrshan**, **mymrtlng**, **newa**, **nkoo**, **olck**, **orya**, **osma**, **rohg**, **saur**, **segment**, **shrd**, **sind**, **sinh**, **sora**, **sund**, **takr**, **talu**, **tamldec**, **telu**, **thai**, **tibt**, **tirh**, **vaii**, **wara**, or **wcho**.|
-| numeric         | boolean | No| No| Whether to use special sorting rules for digits. The value **true** means to use special sorting rules for digits, and the value **false** means the opposite.<br>The default value is **false**.                     |
+| numeric         | boolean | No| No| Whether to use special sorting rules for digits (sorting numeric characters by their numeric value). The value **true** indicates yes, and the value **false** indicates no.<br>The default value is **false**.                     |
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -96,7 +96,7 @@ Creates a **Locale** object.
 | Name                 | Type                              | Mandatory  | Description                          |
 | -------------------- | -------------------------------- | ---- | ---------------------------- |
 | locale               | string                           | Yes   | Locale ID, which consists of the language, script, and country/region.|
-| options             | [LocaleOptions](#localeoptionsdeprecated) | No   | Options for creating the **Locale** object.|
+| options             | [LocaleOptions](#localeoptionsdeprecated) | No   | Configuration options for creating a **Locale** object.<br>Default value: configuration options with all properties set to their default values. |
 
 **Example**
 ```ts
@@ -216,7 +216,7 @@ localeID = minimizedLocale.toString(); // localeID = 'en'
 
 > This API is supported since API version 6 and is deprecated since API version 20. Taking calendar as an example, you are advised to use [Intl.LocaleOptions.calendar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar) instead.
 
-Options for initializing the **Locale** object. Since API version 9, the **LocaleOptions** attribute is changed from mandatory to optional.
+Options for initializing a **Locale** object. Since API version 9, the **LocaleOptions** attribute is changed from mandatory to optional.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -253,7 +253,7 @@ constructor()
 
 > This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) instead.
 
-Creates a **DateTimeOptions** object for the specified locale.
+Creates a **DateTimeFormat** object.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -275,7 +275,7 @@ constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
 
 > This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) instead.
 
-Creates a **DateTimeOptions** object for the specified locale.
+Creates a **DateTimeFormat** object.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -288,7 +288,7 @@ Creates a **DateTimeOptions** object for the specified locale.
 | Name                 | Type                                  | Mandatory  | Description                          |
 | -------------------- | ------------------------------------ | ---- | ---------------------------- |
 | locale               | string \| Array&lt;string&gt;        | Yes   | Locale ID or locale ID array. If the input is a locale ID array, the first valid locale ID is used.|
-| options              | [DateTimeOptions](#datetimeoptionsdeprecated) | No   | Options for creating the **DateTimeOptions** object.<br>If no options are set, the default values of **year**, **month**, and **day** are **numeric**.|
+| options              | [DateTimeOptions](#datetimeoptionsdeprecated) | No   | Configuration options for creating a **DateTimeFormat** object.<br>If no options are set, the default values of **year**, **month**, and **day** are **numeric**.<br>Default value: configuration options with all properties set to their default values. |
 
 **Example**
 ```ts
@@ -307,7 +307,7 @@ format(date: Date): string
 
 > This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.format](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format) instead.
 
-Formats the date and time.
+Formats the date and time and returns the formatted date-time string.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -319,13 +319,13 @@ Formats the date and time.
 
 | Name | Type  | Mandatory  | Description     |
 | ---- | ---- | ---- | ------- |
-| date | Date | Yes   | Date and time. Note: The month starts from **0**. For example, **0** indicates January.|
+| date | Date | Yes   | Date and time.<br>**NOTE**<br>The month starts from **0**, indicating January.|
 
 **Return value**
 
 | Type    | Description          |
 | ------ | ------------ |
-| string | A string containing the formatted date and time.|
+| string | Formatted date-time string.|
 
 **Example**
 ```ts
@@ -347,7 +347,7 @@ formatRange(startDate: Date, endDate: Date): string
 
 > This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.formatRange](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange) instead.
 
-Formats date and time ranges.
+Formats a date and time range and returns the formatted date-time range string.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -359,14 +359,14 @@ Formats date and time ranges.
 
 | Name      | Type  | Mandatory  | Description      |
 | --------- | ---- | ---- | -------- |
-| startDate | Date | Yes   | Start date and time. Note: The month starts from **0**. For example, **0** indicates January.|
-| endDate   | Date | Yes   | End date and time. Note: The month starts from **0**. For example, **0** indicates January.|
+| startDate | Date | Yes   | Start date and time.<br>**NOTE**<br>The month starts from **0**, indicating January.|
+| endDate   | Date | Yes   | End date and time.<br>**NOTE**<br>The month starts from **0**, indicating January.|
 
 **Return value**
 
 | Type    | Description            |
 | ------ | -------------- |
-| string | A string containing the formatted date and time ranges.|
+| string | Formatted date-time range string.|
 
 **Example**
 ```ts
@@ -385,7 +385,7 @@ resolvedOptions(): DateTimeOptions
 
 > This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions) instead.
 
-Obtains the options for creating a **DateTimeOptions** object.
+Obtains the configuration options set when a **DateTimeFormat** object created.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -397,7 +397,7 @@ Obtains the options for creating a **DateTimeOptions** object.
 
 | Type                                  | Description                           |
 | ------------------------------------ | ----------------------------- |
-| [DateTimeOptions](#datetimeoptionsdeprecated) | Options for the **DateTimeOptions** object.|
+| [DateTimeOptions](#datetimeoptionsdeprecated) | Configuration options of the **DateTimeFormat** object.|
 
 **Example**
 ```ts
@@ -415,7 +415,7 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 > This API is supported since API version 6 and is deprecated since API version 20. You are advised to use **Intl.DateTimeFormatOptions** or **Intl.ResolvedDateTimeFormatOptions** instead. For details, see [Intl.DateTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) and [Intl.DateTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions).
 
-Defines the options for a **DateTimeOptions** object. Since API version 9, the **DateTimeOptions** attribute is changed from mandatory to optional.
+Defines the configuration options for a **DateTimeFormat** object. Since API version 9, the **DateTimeOptions** attribute is changed from mandatory to optional.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -487,7 +487,7 @@ Creates a **NumberFormat** object based on the specified locale and options.
 | Name                 | Type                              | Mandatory  | Description                          |
 | -------------------- | -------------------------------- | ---- | ---------------------------- |
 | locale               | string \| Array&lt;string&gt;    | Yes   | Locale ID or locale ID array. If the input is a locale ID array, the first valid locale ID is used.|
-| options              | [NumberOptions](#numberoptions) | No   | Options for creating the **NumberFormat** object.              |
+| options              | [NumberOptions](#numberoptions) | No   | Options for creating the **NumberFormat** object.<br>Default value: configuration options with all properties set to their default values.       |
 
 **Example**
 ```ts
@@ -501,7 +501,7 @@ let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'deci
 
 format(num: number): string
 
-Formats a number.
+Formats a number and returns a formatted numeric string.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -540,7 +540,7 @@ let result: string = formatter.format(1.23456); // result = 1.23
 
 formatRange(startRange: number, endRange: number): string
 
-Formats a number range.
+Formats a numeric range and returns the formatted numeric range string.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -550,8 +550,8 @@ Formats a number range.
 
 | Name   | Type    | Mandatory  | Description  |
 | ------ | ------ | ---- | ---- |
-| startRange | number | Yes   | Start number.|
-| endRange | number | Yes   | End number.|
+| startRange | number | Yes   | Start value of the number range.|
+| endRange | number | Yes   | End value of the number range.|
 
 **Return value**
 
@@ -606,12 +606,12 @@ Options for creating the **NumberFormat** object. Since API version 9, the **Num
 | Name                      | Type     | Read-Only  | Optional  |  Description                                      |
 | ------------------------ | ------- | ---- | ---- |  ---------------------------------------- |
 | locale                   | string  | No   | Yes   | Valid locale ID, for example, **zh-Hans-CN**.<br>The default value is the current locale ID.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
-| currency                 | string  | No   | Yes   | Currency unit. The value must comply with the [ISO-4217 standard](https://www.iso.org/iso-4217-currency-codes.html), for example, EUR, CNY, and USD.<br>From API version 12, a three-digit number is supported, for example, **978**, **156**, or **840**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
-| currencySign             | string  | No   | Yes   | Currency unit symbol. The value can be **standard** or **accounting**.<br>The default value is **standard**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 19](#appendix).|
-| currencyDisplay          | string  | No   | Yes   | Currency display mode. The value can be **symbol**, **narrowSymbol**, **code**, or **name**.<br>The default value is **symbol**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 20](#appendix).|
-| unit                     | string  | No   | Yes   | Unit name, for example, **meter**, **inch**, or **hectare**.<br>The combination units supported since API version 18 are as follows: beat-per-minute, body-weight-per-second, breath-per-minute, foot-per-hour, jump-rope-per-minute, meter-per-hour, milliliter-per-minute-per-kilogram, rotation-per-minute, step-per-minute, and stroke-per-minute.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| unitDisplay              | string  | No   | Yes   | Display format of units. The value can be **long**, **short**, or **narrow**.<br>The default value is **short**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 21](#appendix).|
-| unitUsage<sup>8+</sup>   | string  | No   | Yes   | Application scenario of units. The value can be any of the following: "default**, **area-land-agricult**, **area-land-commercl**, **area-land-residntl**, **length-person**, **length-person-small**, **length-rainfall**, **length-road**, **length-road-small**, **length-snowfall**, **length-vehicle**, **length-visiblty**, **length-visiblty-small**, **length-person-informal**, **length-person-small-informal**, **length-road-informal**, **speed-road-travel**, **speed-wind**, **temperature-person**, **temperature-weather**, **volume-vehicle-fuel**, **elapsed-time-second**, **size-file-byte**, or **size-shortfile-byte**.<br>The default value is **default**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 22](#appendix).|
+| currency                 | string  | No   | Yes   | Currency unit (**style** must be set to **currency**). The value must comply with the [ISO-4217 standard](https://www.iso.org/iso-4217-currency-codes.html), for example, EUR, CNY, and USD.<br>From API version 12, a three-digit number is supported, for example, **978**, **156**, or **840**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
+| currencySign             | string  | No   | Yes   | Currency unit symbol (**style** must be set to **currency**). The options are **standard** and **accounting**.<br>The default value is **standard**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 19](#appendix).|
+| currencyDisplay          | string  | No   | Yes   | Currency display mode (**style** must be set to **currency**). The options are **symbol**, **narrowSymbol**, **code**, and **name**.<br>The default value is **symbol**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 20](#appendix).|
+| unit                     | string  | No   | Yes   | Unit name (**style** must be set to **currency**), for example, **meter**, **inch**, or **hectare**.<br>The combination units supported since API version 18 are as follows: beat-per-minute, body-weight-per-second, breath-per-minute, foot-per-hour, jump-rope-per-minute, meter-per-hour, milliliter-per-minute-per-kilogram, rotation-per-minute, step-per-minute, and stroke-per-minute.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
+| unitDisplay              | string  | No   | Yes   | Unit display format (**style** must be set to **currency**). The options are **long**, **short**, and **narrow**.<br>The default value is **short**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 21](#appendix).|
+| unitUsage<sup>8+</sup>   | string  | No   | Yes   | Application scenario of units (**style** must be set to **currency**). The value can be any of the following: **default**, **area-land-agricult**, **area-land-commercl**, **area-land-residntl**, **length-person**, **length-person-small**, **length-rainfall**, **length-road**, **length-road-small**, **length-snowfall**, **length-vehicle**, **length-visiblty**, **length-visiblty-small**, **length-person-informal**, **length-person-small-informal**, **length-road-informal**, **speed-road-travel**, **speed-wind**, **temperature-person**, **temperature-weather**, **volume-vehicle-fuel**, **elapsed-time-second**, **size-file-byte**, **size-shortfile-byte**.<br>The default value is **default**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 22](#appendix).|
 | signDisplay              | string  | No   | Yes   | Number sign display format. The value can be:<br>- "auto": automatically determines whether to display the plus or minus sign.<br>- "never": do not display the plus or minus sign.<br>- "always": always displays the plus or minus sign.<br>- "exceptZero": displays the plus or minus sign for all values except 0.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | compactDisplay           | string  | No   | Yes   | Compact display format. The value can be **long** or **short**.<br>The default value is **short**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 18](#appendix).     |
 | notation                 | string  | No   | Yes   | Number notation. The value can be **standard**, **scientific**, **engineering**, or **compact**.<br>The default value is **standard**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 17](#appendix).|
@@ -619,12 +619,12 @@ Options for creating the **NumberFormat** object. Since API version 9, the **Num
 | style                    | string  | No   | Yes   | Number display format. The value can be **decimal**, **currency**, **percent**, or **unit**.<br>The default value is **decimal**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | numberingSystem          | string  | No   | Yes   | Numbering system. The value can be:<br>**adlm**, **ahom**, **arab**, **arabext**, **bali**, **beng**, **bhks**, **brah**, **cakm**, **cham**, **deva**, **diak**, **fullwide**, **gong**, **gonm**, **gujr**, **guru**, **hanidec**, **hmng**, **hmnp**, **java**, **kali**, **khmr**, **knda**, **lana**, **lanatham**, **laoo**, **latn**, **lepc**, **limb**, **mathbold**, **mathdbl**, **mathmono**, **mathsanb**, **mathsans**, **mlym**, **modi**, **mong**, **mroo**, **mtei**, **mymr**, **mymrshan**, **mymrtlng**, **newa**, **nkoo**, **olck**, **orya**, **osma**, **rohg**, **saur**, **segment**, **shrd**, **sind**, **sinh**, **sora**, **sund**, **takr**, **talu**, **tamldec**, **telu**, **thai**, **tibt**, **tirh**, **vaii**, **wara**, or **wcho**.<br>The default value is the default numbering system of the locale.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | useGrouping              | boolean | No   | Yes   | Whether to enable grouping for display. The value **true** means to enable grouping for display, and the value **false** means the opposite.<br>The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 16](#appendix).                                 |
-| minimumIntegerDigits     | number  | No   | Yes   | Minimum number of digits allowed in the integer part of a number. The value ranges from **1** to **21**.<br>The default value is **1**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 11](#appendix).                 |
-| minimumFractionDigits    | number  | No   | Yes   | Minimum number of digits in the fraction part of a number. The value ranges from **0** to **20**.<br>The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 12](#appendix).                 |
-| maximumFractionDigits    | number  | No   | Yes   | Maximum number of digits in the fraction part of a number. The value ranges from **1** to **21**.<br>The default value is **3**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 13](#appendix).                 |
-| minimumSignificantDigits | number  | No   | Yes   | Minimum number of the least significant digits. The value ranges from **1** to **21**.<br>The default value is **1**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 14](#appendix).                |
-| maximumSignificantDigits | number  | No   | Yes   | Maximum number of the least significant digits. The value ranges from **1** to **21**.<br>The default value is **21**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 15](#appendix).                 |
-| roundingPriority<sup>18+</sup>   | string  | No   | Yes   | Rounding priority used when both the maximum number of fraction digits and the maximum number of valid digits are set. The value can be **auto**, **morePrecision**, or **lessPrecision**. The value **morePrecision** indicates that the maximum number of fraction digits is used. The value **lessPrecision** indicates that the maximum number of valid digits is used.<br>The default value is **auto**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                 |
+| minimumIntegerDigits     | number  | No   | Yes   | Minimum number of integer digits to be used. The value range is [1, 21].<br>The default value is **1**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 11](#appendix).                 |
+| minimumFractionDigits    | number  | No   | Yes   | Minimum number of fractional digits to be used. The value range is [0, 20].<br>The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 12](#appendix).                 |
+| maximumFractionDigits    | number  | No   | Yes   | Maximum number of fractional digits to be used. The value range is [1, 21].<br>The default value is **3**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 13](#appendix).                 |
+| minimumSignificantDigits | number  | No   | Yes   | Minimum number of significant digits to be used. The value range is [1, 21].<br>The default value is **1**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 14](#appendix).                |
+| maximumSignificantDigits | number  | No   | Yes   | Maximum number of significant digits to be used. The value range is [1, 21].<br>The default value is **21**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 15](#appendix).                 |
+| roundingPriority<sup>18+</sup>   | string  | No   | Yes   | Rounding priority when both the maximum fraction digit count and the maximum significant digit count are set. The supported values are: **auto** (using the default maximum fraction digit count or maximum significant digit count of the locale), **morePrecision** (using the maximum fraction digit count), and **lessPrecision** (using the maximum significant digit count).<br>The default value is **auto**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                 |
 | roundingIncrement<sup>18+</sup>  | number  | No   | Yes   | Rounding increment. The value can be **1**, **2**, **5**, **10**, **20**, **25**, **50**, **100**, **200**, **250**, **500**, **1000**, **2000**, **2500**, or **5000**.<br>The default value is **1**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                 |
 | roundingMode<sup>18+</sup>       | string  | No   | Yes   | Rounding mode. The value can be:<br>- **ceil**: rounding up.<br>- **floor**: rounding down.<br>- **expand**: rounding away from 0.<br>- **trunc**: rounding toward 0.<br>- **halfCeil**: half-rounding up; that is, rounding up when the decimal number is greater than or equal to half of the increment, and rounding down otherwise.<br>- **halfFloor**: half-rounding down; that is, rounding up when the decimal number is greater than half of the increment, and rounding down otherwise.<br>- **halfExpand**: half-rounding away from 0; that is, rounding away from 0 when the decimal number is greater than or equal to half of the increment, and rounding toward 0 otherwise.<br>- **halfTrunc**: half-rounding toward 0; that is, rounding away from 0 when the decimal number is greater than half of the increment, and rounding toward 0 otherwise.<br>- "halfEven": half-rounding to the nearest even number; that is, rounding away from 0 when the decimal number is greater than half of the increment, rounding toward 0 when the decimal number is less than half of the increment, and rounding to the nearest even number when the decimal number is exactly half of the increment.<br>The default value is **halfExpand**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
@@ -670,7 +670,7 @@ Creates a **Collator** object based on the specified locale and options.
 | Name                 | Type                                  | Mandatory  | Description                          |
 | -------------------- | ------------------------------------ | ---- | ---------------------------- |
 | locale               | string \| Array&lt;string&gt;        | Yes   | Locale ID or locale ID array. If the input is a locale ID array, the first valid locale ID is used. |
-| options              | [CollatorOptions](#collatoroptions8) | No   | Options for creating a **Collator** object.      |
+| options              | [CollatorOptions](#collatoroptions8) | No   | Options for creating a **Collator** object.<br>Default value: configuration options with all properties set to their default values.       |
 
 **Example**
 ```ts
@@ -755,7 +755,7 @@ Since API version 9, the attributes in **CollatorOptions** are optional.
 
 | Name               | Type     | Read-Only  | Optional  | Description                                      |
 | ----------------- | ------- | ---- | ---- | ---------------------------------------- |
-| localeMatcher   | string  | No   | Yes   | Locale matching algorithm. The options are as follows:<br>**lookup**: fuzzy match.<br>**best fit**: exact match.<br>The default value is **best fit**.|
+| localeMatcher   | string  | No   | Yes   | Locale matching algorithm. The options are as follows:<br>- **lookup**: exact match.<br>- **best fit**: best match.<br>The default value is **best fit**.|
 | usage             | string  | No   | Yes   | Purpose of comparison. The options are as follows:<br>- **sort**: sorting.<br>- **search**: search for matched strings.<br>The default value is **sort**.       |
 | sensitivity       | string  | No   | Yes   | Differences in the strings that lead to non-zero return values. The options are as follows:<br>- **base**: Different letters are considered unequal, for example, 'a' ≠ 'b', 'a' = 'á', 'a' = 'A'.<br>- **accent**: Different letters or same letters with different pronunciations are considered unequal, for example, 'a' ≠ 'b', 'a' ≠ 'á', 'a' = 'A'.<br>- **case**: Different letters or same letters with different cases are considered unequal, for example, 'a' ≠ 'b', 'a' = 'á', 'a' ≠ 'A'.<br>- **variant**: Different letters, pronunciations, other distinguishing marks, or cases are all considered unequal, for example, 'a' ≠ 'b', 'a' ≠ 'á', 'a' ≠ 'A'.<br>The default value is **variant**.       |
 | ignorePunctuation | boolean | No   | Yes   | Whether to ignore punctuation. The value **true** means to ignore punctuation, and the value **false** means the opposite.<br>The default value is **false**.       |
@@ -812,7 +812,7 @@ Creates a **PluralRules** object to obtain the singular-plural type of numbers.
 | Name                 | Type                                      | Mandatory  | Description                          |
 | -------------------- | ---------------------------------------- | ---- | ---------------------------- |
 | locale               | string \| Array&lt;string&gt;            | Yes   | Locale ID or locale ID array. If the input is a locale ID array, the first valid locale ID is used.|
-| options              | [PluralRulesOptions](#pluralrulesoptionsdeprecated) | No   | Options for creating a **PluralRules** object.      |
+| options              | [PluralRulesOptions](#pluralrulesoptionsdeprecated) | No   | Options for creating a **PluralRules** object.<br>Default value: configuration options with all properties set to their default values.       |
 
 **Example**
 ```ts
@@ -876,11 +876,11 @@ Defines the options for creating a **PluralRules** object. Since API version 9, 
 | ------------------------ | ------ | ---- | ---- | ---------------------------------------- |
 | localeMatcher<sup>(deprecated)</sup>            | string | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.localeMatcher** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Locale matching algorithm. The value can be **lookup** or **best fit**.<br>The default value is **best fit**.|
 | type<sup>(deprecated)</sup>                     | string | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.type** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Collation type. The value can be **cardinal** or **ordinal**.<br>The default value is **cardinal**.<br>The value **cardinal** indicates a cardinal number and the value **ordinal** indicates an ordinal number. |
-| minimumIntegerDigits<sup>(deprecated)</sup>     | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.minimumIntegerDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of digits allowed in the integer part of a number. The value ranges from **1** to **21**.<br>The default value is **1**.                 |
-| minimumFractionDigits<sup>(deprecated)</sup>    | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.minimumFractionDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of digits in the fraction part of a number. The value ranges from **0** to **20**.<br>The default value is **0**.                 |
-| maximumFractionDigits<sup>(deprecated)</sup>    | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.maximumFractionDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Maximum number of digits in the fraction part of a number. The value ranges from **1** to **21**.<br>The default value is **3**.                 |
-| minimumSignificantDigits<sup>(deprecated)</sup> | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.minimumSignificantDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of the least significant digits. The value ranges from **1** to **21**.<br>The default value is **1**.                 |
-| maximumSignificantDigits<sup>(deprecated)</sup> | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.maximumSignificantDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Maximum number of the least significant digits. The value ranges from **1** to **21**.<br>The default value is **21**.               |
+| minimumIntegerDigits<sup>(deprecated)</sup>     | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.minimumIntegerDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of integer digits to be used. The value range is [1, 21]. Values less than 1 are treated as 1, and values greater than 21 are treated as 21.<br>The default value is **1**.                 |
+| minimumFractionDigits<sup>(deprecated)</sup>    | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.minimumFractionDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of fractional digits to be used. The value range is [0, 20]. Values less than 0 are treated as 0, and values greater than 20 are treated as 20.<br>The default value is **0**.                 |
+| maximumFractionDigits<sup>(deprecated)</sup>    | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.maximumFractionDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Maximum number of fractional digits to be used. The value range is [1, 21]. Values less than 1 are treated as 1, and values greater than 21 are treated as 21.<br>The default value is **3**.                 |
+| minimumSignificantDigits<sup>(deprecated)</sup> | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.minimumSignificantDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of significant digits to be used. The value range is [1, 21]. Values less than 1 are treated as 1, and values greater than 21 are treated as 21.<br>The default value is **1**.                 |
+| maximumSignificantDigits<sup>(deprecated)</sup> | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.maximumSignificantDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Maximum number of significant digits to be used. The value range is [1, 21]. Values less than 1 are treated as 1, and values greater than 21 are treated as 21.<br>The default value is **21**.               |
 
 
 ## RelativeTimeFormat<sup>(deprecated)</sup>
@@ -931,7 +931,7 @@ Creates a **RelativeTimeFormat** object.
 | Name                 | Type                                      | Mandatory  | Description                          |
 | -------------------- | ---------------------------------------- | ---- | ---------------------------- |
 | locale               | string \| Array&lt;string&gt;            | Yes   | Locale ID or locale ID array. If the input is a locale ID array, the first valid locale ID is used.|
-| options              | [RelativeTimeFormatInputOptions](#relativetimeformatinputoptionsdeprecated) | No   | Options for creating a **RelativeTimeFormat** object.    |
+| options              | [RelativeTimeFormatInputOptions](#relativetimeformatinputoptionsdeprecated) | No   | Configuration options for a **RelativeTimeFormat** object.<br>Default value: configuration options with all properties set to their default values.     |
 
 **Example**
 ```ts
@@ -952,7 +952,7 @@ format(value: number, unit: string): string
 
 > This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat.format](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format) instead.
 
-Formats a relative time.
+Formats the relative time and returns the relative time string.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1303,4 +1303,3 @@ The following uses the relative time **1 day ago** and locale IDs **fr-FR** and 
 | long   | Long relative time display  | il y a 1 jour  | 1 day ago       |
 | short  | Short relative time display  | il y a 1 j     | 1 day ago       |
 | narrow | Narrow relative time display| -1 j           | 1 day ago       |
-<!--no_check-->

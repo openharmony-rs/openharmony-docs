@@ -4,7 +4,7 @@
 <!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## ArkTS容器集
 
@@ -17,7 +17,7 @@ ArkTS共享容器不是线程安全的，内部使用了fail-fast（快速失败
 ArkTS共享容器包含如下几种：[Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)、[Map](../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)、[Set](../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、TypedArray（[Int8Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](../reference/apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Float32Array.md)）、[ArrayBuffer](../reference/apis-arkts/arkts-apis-arkts-collections-ArrayBuffer.md)、[BitVector](../reference/apis-arkts/arkts-apis-arkts-collections-BitVector.md)、[ConcatArray](../reference/apis-arkts/arkts-apis-arkts-collections-ConcatArray.md)，具体可见[@arkts.collections (ArkTS容器集)](../reference/apis-arkts/arkts-apis-arkts-collections.md)。
 
 容器集使用示例如下：
-<!-- @[example_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets) --> 
+<!-- @[example_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets) --> 
 
 ``` TypeScript
 import { ArkTSUtils, collections, taskpool } from '@kit.ArkTS';

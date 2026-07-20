@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供URI字符串解析功能，支持URI各组成部分（协议、主机、端口、路径、查询参数和片段等）的提取与设置，以及URI编码/解码、比较判断、路径规范化和查询参数操作等能力。
 

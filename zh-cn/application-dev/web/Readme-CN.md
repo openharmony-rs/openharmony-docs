@@ -43,7 +43,7 @@
   - [使用Web组件的广告过滤功能](web-adsblock.md)
   - [坚盾守护模式](web-secure-shield-mode.md)
 - 管理网页加载与浏览记录<!--web-manage-loading-browsing-->
-  - [使用Web组件加载页面](web-page-loading-with-web-components.md)
+  - [使用Web组件加载页面](web-page-loading-with-web-components.md)<!--RP4--><!--RP4End-->
   - [管理页面跳转及浏览记录导航](web-redirection-and-browsing-history-mgmt.md)
   - [拦截Web组件发起的网络请求](web-scheme-handler.md)
   - [自定义页面请求响应](web-resource-interception-request-mgmt.md)
@@ -67,14 +67,12 @@
   - [使用Web组件与系统剪贴板交互处理网页内容](web-clipboard.md)
   - [使用Web组件的智能分词能力](web-data-detector.md)
 - 同层渲染<!--same-layer-rendering-->
-  - [同层渲染](web-same-layer.md)
-  <!--RP3--><!--RP3End-->
+  - [同层渲染](web-same-layer.md)<!--RP3--><!--RP3End-->
 - [使用离线Web组件](web-offline-mode.md)
 - [使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景](web-native-messaging.md)
 - Web调试维测<!--web-debugging-->
   - [使用DevTools工具调试前端页面](web-debugging-with-devtools.md)
   - [使用crashpad收集Web组件崩溃信息](web-crashpad.md)
-  - [定位JS代码阻塞导致的页面卡死问题](web-js-freeze-debugging.md)
   - [定位与解决Web白屏问题](web-white-screen.md)<!--RP1--><!--RP1End-->
   - [定位网页加载问题](web-page-loading.md)
 - [ArkWeb术语](arkweb-glossary.md)

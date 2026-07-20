@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本文通过具体应用场景中的案例，提供在ArkTS语法规则下将TS代码适配成ArkTS代码的建议。各章以ArkTS语法规则的英文名称命名，每个案例展示适配前的TS代码和适配后的ArkTS代码。
 
@@ -70,6 +70,7 @@ printObj('abc'); // abc
 ``` TypeScript
 function printObj(obj: string) {
   console.info(obj);
+  // ...
 }
 
 printObj('abc'); // abc

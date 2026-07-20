@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
-<!--Designer: @yylong; @yangcan18-->
+<!--Owner: @shengu_lancer; @rongShao-Z-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -60,7 +60,7 @@ enableNestedScroll(enabled: Optional\<boolean>)
 
 >  **说明：**
 >
-> 滚动条使能嵌套滚动时，滚动条的滚动偏移量会先发送给绑定的内层滚动组件，内层滚动组件再根据设置的嵌套滚动优先级依次传递给外层父滚动组件。
+> 滚动条使能嵌套滚动时，滚动条偏移量会先发送给绑定的内层滚动组件，内层滚动组件再根据设置的嵌套滚动优先级依次传递给外层父滚动组件。
 >
 > WaterFlow组件的布局模式为移动窗口式（[WaterFlowLayoutMode.SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)）时，不支持嵌套滚动。
 >
@@ -70,7 +70,7 @@ enableNestedScroll(enabled: Optional\<boolean>)
 
 scrollBarColor(color: Optional\<ColorMetrics\>)
 
-设置滚动条滑块的颜色，仅滚动条不放置子组件时生效。
+设置滚动条的颜色，仅滚动条不放置子组件时生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -90,7 +90,7 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 
 >  **说明：**
 >
->  - ScrollBar组件负责定义可滚动区域的行为样式，ScrollBar的子节点负责定义滚动条的行为样式。
+>  - ScrollBar组件用于显示并控制所绑定可滚动组件的滚动位置。设置子组件时，该子组件作为自定义滚动条滑块，并随可滚动组件的滚动位置移动。
 >  - 滚动条组件与可滚动组件通过Scroller进行绑定，且只有当两者方向相同时，才能联动。一个可滚动组件可以绑定多个ScrollBar组件，一个ScrollBar组件只能绑定一个可滚动组件。
 >  - 从API version 12开始，ScrollBar组件没有子节点时，支持显示默认样式的滚动条。
 >  - ScrollBar组件的显隐是通过BarState设置，组件内部会自动根据BarState设置调整opacity来控制显隐，因此ScrollBar组件设置[opacity](./ts-universal-attributes-opacity.md#opacity18)属性不生效。

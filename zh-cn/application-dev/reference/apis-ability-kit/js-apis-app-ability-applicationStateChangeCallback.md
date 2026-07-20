@@ -23,7 +23,7 @@
 >**说明**
 >
 > 进程的前后台状态不同于应用的前后台状态，两者的差别如下：
->- 进程的前后台状态：如果进程中存在任何前台状态的UIAbility/UIExtensionAbility或可见窗口，则认为进程状态为前台，反之为后台。
+>- 进程的前后台状态：如果进程中存在任何前台状态的[UIAbility](js-apis-app-ability-uiAbility.md)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)或可见窗口，则认为进程状态为前台，反之为后台。
 >- 应用的前后台状态：如果应用下有任何一个进程状态为前台，则认为应用状态为前台，反之为后台。
 
 ## 导入模块
