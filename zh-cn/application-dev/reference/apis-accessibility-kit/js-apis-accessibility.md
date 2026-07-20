@@ -227,8 +227,8 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 | fontScale       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 描述字幕字体缩放系数，单位%，参数范围1~200。 |
 | fontColor       | ArkTS-Dyn: number \| string<br>ArkTS-Sta: int \| string        | 否    | 否    | 描述字幕字体颜色。<br>number \| int：HEX格式颜色，支持rgb或argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。 |
 | fontEdgeType    | [CaptionsFontEdgeType](#captionsfontedgetype8) | 否    | 否    | 描述字幕字体边缘。   |
-| backgroundColor | ArkTS-Dyn: number \ | string<br>ArkTS-Sta: int \| string        | 否    | 否    | 描述字幕背景颜色。<br>number \| int：HEX格式颜色，支持rgb或argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
-| windowColor     | ArkTS-Dyn: number \ | string<br>ArkTS-Sta: int \| string        | 否    | 否    | 描述字幕窗口颜色。<br>number \| int：HEX格式颜色，支持rgb或argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
+| backgroundColor | ArkTS-Dyn: number \| string<br>ArkTS-Sta: int \| string        | 否    | 否    | 描述字幕背景颜色。<br>number \| int：HEX格式颜色，支持rgb或argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
+| windowColor     | ArkTS-Dyn: number \| string<br>ArkTS-Sta: int \| string        | 否    | 否    | 描述字幕窗口颜色。<br>number \| int：HEX格式颜色，支持rgb或argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
 
 ## CaptionsManager<sup>8+</sup>
 

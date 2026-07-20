@@ -2421,7 +2421,7 @@ ArkTS-Sta: findElementById(condition: long): Promise\<AccessibilityElement>
 
 根据元素ID查找当前活动窗口下的节点元素。使用Promise异步回调。
 
-与[findElement('elementId')](#findelementelementid)功能等价，推荐优先使用本方法。
+与[findElement('elementId')](#findelementelementid12)功能等价，推荐优先使用本方法。
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
