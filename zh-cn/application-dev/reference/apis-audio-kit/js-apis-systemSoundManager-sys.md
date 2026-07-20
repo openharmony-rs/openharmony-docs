@@ -48,6 +48,8 @@ import { systemSoundManager } from '@kit.AudioKit';
 | RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | sim卡1的铃声。                                                              |
 | RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | 多SIM卡铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_1替代。 |
 | RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | sim卡2的铃声。                                                              |
+| RINGTONE_TYPE_ESIM_CARD_0<sup>26+</sup> | 2  | esim卡1的铃声。                                                              |
+| RINGTONE_TYPE_ESIM_CARD_1<sup>26+</sup> | 3  | esim卡2的铃声。                                                              |
 
 ## SystemToneType<sup>11+</sup>
 
@@ -61,6 +63,8 @@ import { systemSoundManager } from '@kit.AudioKit';
 | ------------------------------- |-----|------------|
 | SYSTEM_TONE_TYPE_SIM_CARD_0     | 0   | sim卡1的短信提示音。 |
 | SYSTEM_TONE_TYPE_SIM_CARD_1     | 1   | sim卡2的短信提示音。 |
+| SYSTEM_TONE_TYPE_ESIM_CARD_0     | 2   | esim卡1的短信提示音。 |
+| SYSTEM_TONE_TYPE_ESIM_CARD_1     | 3   | esim卡2的短信提示音。 |
 | SYSTEM_TONE_TYPE_NOTIFICATION   | 32  | 通知提示音。     |
 
 ## MediaType<sup>20+</sup>
@@ -492,8 +496,12 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 | ------------------------|----|--------|
 | CALL_SIM_CARD_0         | 0  | sim卡1的来电铃声的振动。 |
 | CALL_SIM_CARD_1         | 1  | sim卡2的来电铃声的振动。 |
+| CALL_ESIM_CARD_0         | 2  | esim卡1的来电铃声的振动。 |
+| CALL_ESIM_CARD_1         | 3  | esim卡2的来电铃声的振动。 |
 | TEXT_MESSAGE_SIM_CARD_0 | 20 | sim卡1的短信提示音的振动。 |
 | TEXT_MESSAGE_SIM_CARD_1 | 21 | sim卡2的短信提示音的振动。 |
+| TEXT_MESSAGE_ESIM_CARD_0 | 22 | esim卡1的短信提示音的振动。 |
+| TEXT_MESSAGE_ESIM_CARD_1 | 23 | esim卡2的短信提示音的振动。 |
 | NOTIFICATION            | 40 | 通知提示音的振动。 |
 
 ## ToneHapticsMode<sup>14+</sup>
