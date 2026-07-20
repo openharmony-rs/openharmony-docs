@@ -20,7 +20,7 @@ This component can contain only one child component.
 
 > **NOTE**
 >
-> - Supported child component types: built-in and custom components, including https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-foreach.md but excluding [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)
+> - Supported child component types: system and custom components, including [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) but excluding [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 >
 > - You are advised to use the **Text** component to build the current value and auxiliary text.
 >
