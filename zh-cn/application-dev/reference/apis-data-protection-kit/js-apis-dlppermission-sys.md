@@ -901,8 +901,7 @@ ExampleFunction();
 
 replaceDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
-替换link文件。使用Promise异步回调。调用成功后，使用新的link文件名替换当前link文
-件。需要先创建link文件并停止FUSE读写，才能执行此操作。
+替换link文件。使用Promise异步回调。调用成功后，使用新的link文件名替换当前link文件。需要先创建link文件并停止FUSE读写，才能执行此操作。
 
 需要切换访问不同的DLP文件时，通过替换link文件实现文件映射的切换。
 
