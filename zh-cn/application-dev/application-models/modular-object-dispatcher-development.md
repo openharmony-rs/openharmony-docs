@@ -264,7 +264,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
         if (!CheckApiErr(err, "GetStructFieldType")) {
             return nullptr;
         }
-        //...
+        // ...
         OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&typeInfo);
     }
     ```
@@ -370,7 +370,7 @@ static void QueryMethodParamInfo(const char *interfaceName, const char *methodNa
         if (!CheckApiErr(err, "GetMethodParamType")) {
             return;
         }
-        //...
+        // ...
         OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&paramTypeInfo);
     }
 }
@@ -393,7 +393,7 @@ static void QueryMethodReturnType(const char *interfaceName, const char *methodN
     if (!CheckApiErr(err, "GetMethodReturnType")) {
         return;
     }
-    //...
+    // ...
     OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&returnTypeInfo);
 }
 ```
