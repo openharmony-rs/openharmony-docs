@@ -21,7 +21,7 @@ When an application is backgrounded or closed, the system can still send schedul
 
 > **NOTE**
 >
-> When the reminder time arrives, the notification center displays the relevant reminder. The reminder remains active and unexpired unless the user touches the CLOSE button, at which point the reminder becomes expired.
+> When the reminder time arrives, the notification center displays the relevant reminder. The reminder remains active and unexpired unless the user touches the **CLOSE** button, at which point the reminder becomes expired.
 >
 > For a recurring reminder (for example, a daily reminder), the reminder is always valid regardless of whether the user touches the CLOSE button.
 
