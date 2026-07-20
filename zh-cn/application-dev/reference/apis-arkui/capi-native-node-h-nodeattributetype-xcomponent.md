@@ -41,7 +41,7 @@ XComponent组件的ID，支持属性设置和属性获取接口。<br>
 
 | 类型 | 说明 |
 | -- | -- |
-| .string | XComponent组件的ID内容。 |
+| .string | XComponent组件的ID内容，用于唯一标识该组件。 |
 
 ## NODE_XCOMPONENT_TYPE
 
