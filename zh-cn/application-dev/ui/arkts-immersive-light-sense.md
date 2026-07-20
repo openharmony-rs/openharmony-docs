@@ -65,9 +65,24 @@
 
 ### 应用级开启
 
-应用级开启指通过module.json5统一控制应用内支持沉浸式系统材质的组件是否默认开启系统材质。支持应用级沉浸式系统材质的组件包括：[弹出框Dialog](arkts-base-dialog-overview.md)、[即时反馈（Toast）](arkts-create-toast.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)、[ChipGroup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)、[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[SegmentButtonV2](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)、[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)（设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单）。
+应用级开启指通过module.json5统一控制应用内支持沉浸式系统材质的组件是否默认开启系统材质。支持应用级沉浸式系统材质的组件和默认开启时使用的系统材质参数如下所示：
 
-其中，name字段需为"ohos.arkui.UIMaterial.state"，value字段可以为default、enable和disable。使用此能力前，需要确保应用的[targetAPIVersion](../quick-start/app-configuration-file.md)不低于26.0.0。该配置仅在entry类型的module中生效。
+| 组件 | 默认材质样式ImmersiveStyle | 开关启用前的效果 | 开关启用后的效果 |
+| ----- | --- | ----------- | ----------- |
+| [弹出框（Dialog）](arkts-base-dialog-overview.md) | ULTRA_THICK | ![dialog-before](./figures/material-dialog-before.PNG) | ![dialog-after](./figures/material-dialog-after.PNG) |
+| [即时反馈（Toast）](arkts-create-toast.md) | THICK | ![toast-before](./figures/material-toast-before.PNG) | ![toast-after](./figures/material-toast-after.PNG) |
+| [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md) | THICK | ![indexer-before](./figures/material-indexer-before.PNG) | ![indexer-after](./figures/material-indexer-after.PNG) |
+| [Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md) | ULTRA_THIN | ![chip-before](./figures/material-chip-before.PNG) | ![chip-after](./figures/material-chip-after.PNG) |
+| [ChipGroup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md) | ULTRA_THIN | ![chipgroup-before](./figures/material-chipgroup-before.PNG) | ![chipgroup-after](./figures/material-chipgroup-after.PNG) |
+| [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md) | Select的背景使用的参数：ULTRA_THIN<br/>Select的下拉菜单使用的参数：THICK | ![select-before](./figures/material-select-before.PNG) | ![select-after](./figures/material-select-after.PNG) |
+| [菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md) | THICK | ![menu-before](./figures/material-menu-before.PNG) | ![menu-after](./figures/material-menu-after.PNG) |
+| [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md) | 不涉及材质样式 | ![toggle-before](./figures/material-toggle-before.PNG) | ![toggle-after](./figures/material-toggle-after.PNG) |
+| [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) | 不涉及材质样式 | ![slider-before](./figures/material-slider-before.PNG) | ![slider-after](./figures/material-slider-after.PNG) |
+| [SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md) | THIN | ![segmentbutton-before](./figures/material-segmentbutton-before.PNG) | ![segmentbutton-after](./figures/material-segmentbutton-after.PNG) |
+| [SegmentButtonV2](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md) | THIN | ![segmentbuttonv2-before](./figures/material-segmentbuttonv2-before.PNG) | ![segmentbuttonv2-after](./figures/material-segmentbuttonv2-after.PNG) |
+| [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)（设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单） | THICK | ![text-before](./figures/material-text-before.PNG) | ![text-after](./figures/material-text-after.PNG) |
+
+应用级开启的配置参数的name字段需为"ohos.arkui.UIMaterial.state"，value字段可以为default、enable和disable。使用此能力前，需要确保应用的[targetAPIVersion](../quick-start/app-configuration-file.md)不低于26.0.0。该配置仅在entry类型的module中生效。
 
 以下示例展示如何在[module.json5](../quick-start/module-configuration-file.md)中配置enable模式：
 
