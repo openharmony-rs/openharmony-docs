@@ -141,7 +141,7 @@ getDLPGatheringPolicy(callback: AsyncCallback&lt;GatheringPolicyType&gt;): void
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPGatheringPolicy((err, gatheringPolicy) => {
-  if (err !== undefined) {
+  if (err) {
     console.error('getDLPGatheringPolicy error,', err.code, err.message);
   } else {
     console.info('gatheringPolicy：', JSON.stringify(gatheringPolicy));
@@ -229,7 +229,7 @@ DLP文件管理应用打开受保护文件前，需要先为目标应用安装DL
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码401。 |
 | access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | 是 | DLP文件授权类型。设置不同的授权类型将决定用户对DLP文件的访问权限范围。 |
 | userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。<br>取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。当传入参数值小于0时，输出错误日志。 |
-| uri | string | 是 | DLP文件的URI。不超过4095字节。 超出范围时抛出错误码401。|
+| uri | string | 是 | DLP文件的URI。不超过4095字节。超出范围时抛出错误码401。|
 | callback | AsyncCallback&lt;[DLPSandboxInfo](#dlpsandboxinfo)&gt; | 是 | 回调函数。当安装DLP沙箱成功，err为undefined，data为获取到的沙箱信息；否则为错误对象。 |
 
 **错误码：**
@@ -251,7 +251,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100, uri, (err, res) => {
-  if (err !== undefined) {
+  if (err) {
     console.error('installDLPSandbox error,', err.code, err.message);
   } else {
     console.info('res', JSON.stringify(res));
@@ -363,7 +363,7 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
   uri).then((dlpSandboxInfo: dlpPermission.DLPSandboxInfo) => {
   console.info('dlpSandboxInfo：', JSON.stringify(dlpSandboxInfo));
   dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, dlpSandboxInfo.appIndex, (err, res) => {
-    if (err !== undefined) {
+    if (err) {
       console.error('uninstallDLPSandbox error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -540,7 +540,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
 
-  dlpFile?.closeDLPFile(); // 关闭DLP对象。
+  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
   if (file) {
     fileIo.closeSync(file);
   }
@@ -607,7 +607,7 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   dlpFile.addDLPLinkFile('test.txt.dlp.link', async (err, res) => {
-    if (err !== undefined) {
+    if (err) {
       console.error('addDLPLinkFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -674,10 +674,10 @@ async function ExampleFunction() {
   appId = data.signatureInfo.appId;
 
   file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId) // 打开DLP文件。
-  dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
-  dlpFile.stopFuseLink(); // 暂停link读写。
-  dlpFile?.closeDLPFile(); // 关闭DLP对象。
+  dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
+  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
+  await dlpFile.stopFuseLink(); // 暂停link读写。
+  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
   if (file) {
     fileIo.closeSync(file);
   }
@@ -744,7 +744,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
   dlpFile.stopFuseLink(async (err, res) => {
-    if (err !== undefined) {
+    if (err) {
       console.error('stopFuseLink error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -816,7 +816,7 @@ async function ExampleFunction() {
   await dlpFile.stopFuseLink(); // 暂停link读写。
   await dlpFile.resumeFuseLink(); // 恢复link读写。
   
-  dlpFile?.closeDLPFile(); // 关闭DLP对象。
+  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
   if (file) {
     fileIo.closeSync(file);
   }
@@ -884,7 +884,7 @@ async function ExampleFunction() {
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
   await dlpFile.stopFuseLink(); // 暂停link读写。
   dlpFile.resumeFuseLink(async (err, res) => {
-    if (err !== undefined) {
+    if (err) {
       console.error('resumeFuseLink error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -901,7 +901,7 @@ ExampleFunction();
 
 replaceDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
-替换link文件。使用Promise异步回调。调用成功后，使用新的link文件名替换当前link文件。
+替换link文件。使用Promise异步回调。调用成功后，使用新的link文件名替换当前link文件。需要先创建link文件并停止FUSE读写，才能执行此操作。
 
 需要切换访问不同的DLP文件时，通过替换link文件实现文件映射的切换。
 
@@ -977,7 +977,7 @@ replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): v
 
 替换link文件，使用callback异步回调。调用成功后，使用新的link文件名替换当前link文件。
 
-需要切换访问不同的DLP文件时替换link文件。
+需要切换访问不同的DLP文件时替换link文件。需要先创建link文件并停止FUSE读写，才能执行此操作。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1029,7 +1029,7 @@ async function ExampleFunction() {
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
   await dlpFile.stopFuseLink(); // 暂停link读写。
   dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link', async (err, res) => { // 替换link文件。
-    if (err !== undefined) {
+    if (err) {
       console.error('replaceDLPLinkFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -1176,7 +1176,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
   dlpFile.deleteDLPLinkFile('test.txt.dlp.link', async (err, res) => { // 删除link文件。
-    if (err !== undefined) {
+    if (err) {
       console.error('deleteDLPLinkFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -1255,10 +1255,10 @@ async function ExampleFunction() {
   appId = data.signatureInfo.appId;
 
   file = fileIo.openSync(uri).fd;
-  destFile = fileIo.openSync('destUri').fd;
+  destFile = fileIo.openSync('file://docs/storage/Users/currentUser/Desktop/dest.txt').fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   await dlpFile.recoverDLPFile(destFile); // 还原DLP文件。
-  dlpFile?.closeDLPFile(); // 关闭DLP对象。
+  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
   if (file) {
     fileIo.closeSync(file);
   }
@@ -1334,7 +1334,7 @@ async function ExampleFunction() {
   destFile = fileIo.openSync('destUri').fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   dlpFile.recoverDLPFile(destFile, async (err, res) => { // 还原DLP文件。
-    if (err !== undefined) {
+    if (err) {
       console.error('recoverDLPFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -1408,7 +1408,7 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
 
-  dlpFile?.closeDLPFile(); // 关闭DLP对象。
+  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
   if (file) {
     fileIo.closeSync(file);
   }
@@ -1478,7 +1478,7 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   dlpFile.closeDLPFile((err, res) => { // 关闭DLP文件。
-    if (err !== undefined) {
+    if (err) {
       console.error('closeDLPFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -1561,7 +1561,7 @@ async function ExampleFunction() {
   };
   dlpFile = await dlpPermission.generateDLPFile(file, dlp, dlpProperty); // 生成DLP文件。
 
-  dlpFile?.closeDLPFile(); // 关闭DLP对象。
+  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
   if (file) {
     fileIo.closeSync(file);
   }
@@ -1636,7 +1636,7 @@ let dlpProperty: dlpPermission.DLPProperty = {
   everyoneAccessList: []
 };
 dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // 生成DLP文件。
-  if (err !== undefined) {
+  if (err) {
     console.error('generateDLPFile error,', err.code, err.message);
   } else {
     console.info('res', JSON.stringify(res));
@@ -1667,7 +1667,7 @@ DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先�
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | ciphertextFd | number | 是 | 加密文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
-| appId | string | 是 | 调用方身份。最小8字节，最大1024字节。超出范围时返回错误码401。|
+| appId | string | 是 | 调用方身份。最小8字节，最大1024字节。超出范围时抛出错误码401。|
 
 **返回值：**
 
@@ -1717,6 +1717,7 @@ async function ExampleFunction() {
 
   file = fileIo.openSync(uri).fd; // file通过文件打开获取fd
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
+  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
 
   if (file) {
     fileIo.closeSync(file);
@@ -1743,7 +1744,7 @@ DLP管理应用调用该接口，打开DLP文件。使用callback异步回调。
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | ciphertextFd | number | 是 | 加密文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
-| appId | string | 是 | 调用方身份。最小8字节，最大1024字节。超出范围时返回错误码401。 |
+| appId | string | 是 | 调用方身份。最小8字节，最大1024字节。超出范围时抛出错误码401。 |
 | callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | 是 | 回调函数。用于接收打开DLP文件的结果。回调参数包括：err（错误对象，成功时为undefined）和res（DLPFile对象，表示打开的DLP文件）。 |
 
 **错误码：**
@@ -1786,11 +1787,12 @@ appId = data.signatureInfo.appId; // appId通过应用包信息获取
 
 file = fileIo.openSync(uri).fd; // file通过文件打开获取fd
 dlpPermission.openDLPFile(file, appId, (err, res) => { // 打开DLP文件。
-  if (err !== undefined) {
+  if (err) {
     console.error('openDLPFile error,', err.code, err.message);
   } else {
     console.info('res', JSON.stringify(res));
   }
+  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
   if (file) {
     fileIo.closeSync(file);
   }
