@@ -119,7 +119,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |
-| ACCESSIBILITY_FOCUS        | 0    | 表示获得无障碍焦点。               |
+| ACCESSIBILITY_FOCUS        | 0    | 表示获得无障碍焦点。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).Parameter.accessibilityFocusScene，参数值为无障碍聚焦的场景类型。               |
 | CLEAR_ACCESSIBILITY_FOCUS | 1    | 表示清除无障碍焦点。               |
 | FOCUS                      | 2    | 表示组件获得焦点。                |
 | CLEAR_FOCUS                | 3    | 表示清除组件焦点。                |
@@ -129,19 +129,19 @@ import { accessibility } from '@kit.AccessibilityKit';
 | COPY                       | 7    | 表示拷贝组件内容。                 |
 | PASTE                      | 8    | 表示粘贴内容到组件。                |
 | SELECT                     | 9    | 表示选择组件。                   |
-| SET_TEXT                   | 10   | 表示设置组件的文本。               |
-| SCROLL_FORWARD             | 11   | 表示向前滚动组件（向内容末尾方向滚动）。                 |
-| SCROLL_BACKWARD            | 12   | 表示向后滚动组件（向内容起始方向滚动）。                |
-| SET_SELECTION              | 13   | 表示选定组件内文本范围。             |
-| SET_CURSOR_POSITION        | 14   | 表示设置组件内的光标位置。             |
+| SET_TEXT                   | 10   | 表示设置组件的文本。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).setText，参数值为要设置的文本内容。               |
+| SCROLL_FORWARD             | 11   | 表示向前滚动组件（向内容末尾方向滚动）。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).scrollType，参数值为'fullScreen'或'halfScreen'。                 |
+| SCROLL_BACKWARD            | 12   | 表示向后滚动组件（向内容起始方向滚动）。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).scrollType，参数值为'fullScreen'或'halfScreen'。                |
+| SET_SELECTION              | 13   | 表示选定组件内文本范围。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).selectTextBegin、[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).selectTextEnd、[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).selectTextInForWard，参数值为选定文本的起始坐标、结束坐标及是否向前选择。             |
+| SET_CURSOR_POSITION        | 14   | 表示设置组件内的光标位置。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).offset，参数值为光标的字符偏移量。             |
 | HOME                       | 15   | 表示执行返回首页操作。<br>**使用约束：** 此操作在多屏场景下，仅在主屏幕上生效。              |
 | BACK                       | 16   | 表示执行返回操作。               |
 | RECENT_TASK                | 17   | 表示显示最近任务。                  |
 | NOTIFICATION_CENTER        | 18   | 表示显示通知中心。                  |
 | CONTROL_CENTER             | 19   | 表示显示控制中心。                  |
-| SPAN_CLICK                 | 20   | 表示对局部文本进行点击操作。             |
-| INJECT_ACTION              | 21   | 表示注入模拟用户操作的动作，具体注入动作类型参见[InjectActionType](#injectactiontype)。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| EXECUTE_CUSTOM_ACTION      | 22   | 表示执行自定义操作。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。    |
+| SPAN_CLICK                 | 20   | 表示对局部文本进行点击操作。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).spanId，参数值为超链接文本编号。             |
+| INJECT_ACTION              | 21   | 表示注入模拟用户操作的动作。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).injectActionType，参数值为注入动作类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| EXECUTE_CUSTOM_ACTION      | 22   | 表示执行自定义操作。需配置参数[Parameter](js-apis-inner-application-accessibilityExtensionContext-sys.md#parameter20).customAction，参数值为自定义操作的名称。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。    |
 
 ## FocusMoveResultCode<sup>23+</sup>
 
