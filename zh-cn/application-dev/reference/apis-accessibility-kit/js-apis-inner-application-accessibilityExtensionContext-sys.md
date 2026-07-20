@@ -962,9 +962,9 @@ updateAccessibilityElementProperty(elementId: number, windowId: number, node: Ac
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| elementId | number | 是 | 表示修改无障碍节点的节点id。 |
-| windowId | number | 是 | 表示修改无障碍节点的窗口id。 |
-| node | [AccessibilityVirtualNode](#accessibilityvirtualnode) | 是 | 修改无障碍节点的属性值，可修改的属性包括：<br>accessibilityText，accessibilityGroup，accessibilityLevel，checkable， isChecked, isSelected, isClickable,  isEnable, customComponentType。|
+| elementId | number | 是 | 表示修改无障碍节点的节点ID。 |
+| windowId | number | 是 | 表示修改无障碍节点的窗口ID。 |
+| node | [AccessibilityVirtualNode](#accessibilityvirtualnode) | 是 | 修改无障碍节点的属性值，可修改的属性包括：<br>accessibilityText，accessibilityGroup，accessibilityLevel，checkable，checked，selected，clickable，enabled，customComponentType。|
 
 **返回值：**
 
@@ -991,6 +991,7 @@ import {
   AccessibilityVirtualNode,
   OperateVirtualNodeResult
 } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class AccessibilityManager {
   private static instance: AccessibilityManager;
@@ -1017,8 +1018,8 @@ export default class AccessibilityManager {
       return;
     }
 
-    let elementId: number = 0; // the componentId of the accessibility element to be updated
-    let windowId: number = 0; // the windowId of the accessibility element
+    let elementId: number = 0; // 请使用需要修改节点属性的节点ID。
+    let windowId: number = 0; // 请使用需要修改节点属性的窗口ID。
     let accessibilityVirtualNode: AccessibilityVirtualNode = {
       virtualNodeId: 1,
       accessibilityText: "accessibilityTextNew"
@@ -1052,8 +1053,8 @@ addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&l
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| elementId | number | 是 | 表示新增虚拟节点树的父节点id。 |
-| windowId | number | 是 | 表示新增虚拟节点树的父节点窗口Id。 |
+| elementId | number | 是 | 表示新增虚拟节点树的父节点ID。 |
+| windowId | number | 是 | 表示新增虚拟节点树的父节点窗口ID。 |
 | nodes | Array<[AccessibilityVirtualNode](#accessibilityvirtualnode)> | 是 | 新增虚拟节点数组。 数组中的虚拟节点按parentId、childNodeIds父子关系构建成一颗树。|
 
 **返回值：**
@@ -1081,6 +1082,7 @@ import {
   AccessibilityVirtualNode,
   OperateVirtualNodeResult
 } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class AccessibilityManager {
   private static instance: AccessibilityManager;
@@ -1107,8 +1109,8 @@ export default class AccessibilityManager {
       return;
     }
 
-    let elementId: number = 0; // the componentId of the accessibility element to be added
-    let windowId: number = 0; // the windowId of the accessibility element
+    let elementId: number = 0; // 请使用需要新增虚拟节点树的父节点ID。
+    let windowId: number = 0; // 请使用需要新增虚拟节点树的窗口ID。
     let accessibilityVirtualNode: AccessibilityVirtualNode = {
       virtualNodeId: 1,
       accessibilityText: "accessibilityTextNew"
@@ -1142,8 +1144,8 @@ removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| elementId | number | 是 | 表示删除当前节点id下的虚拟节点树。 |
-| windowId  | number | 是 | 表示节点所在的窗口Id。 |
+| elementId | number | 是 | 表示删除当前节点ID下的虚拟节点树。 |
+| windowId  | number | 是 | 表示节点所在的窗口ID。 |
 
 **返回值：**
 
@@ -1170,6 +1172,7 @@ import {
   AccessibilityVirtualNode,
   OperateVirtualNodeResult
 } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class AccessibilityManager {
   private static instance: AccessibilityManager;
@@ -1196,8 +1199,8 @@ export default class AccessibilityManager {
       return;
     }
 
-    let elementId: number = 0; // the componentId of the accessibility element to be removed
-    let windowId: number = 0; // the windowId of the accessibility element
+    let elementId: number = 0; // 请使用需要删除虚拟节点树的父节点ID。
+    let windowId: number = 0; // 请使用需要删除虚拟节点树的窗口ID。
     this.context.removeAccessibilityVirtualNodes(elementId, windowId).then((data: OperateVirtualNodeResult)=>{
       console.info(`removeAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${data}`)
     }).catch((err: BusinessError) => {
@@ -1288,7 +1291,7 @@ export default class AccessibilityManager {
 | belongTreeId             | number              | 否   | 是   | 表示元素所属的组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | childrenTreeId             | number              | 否   | 是   | 表示元素的子组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | customActions             | Array\<string>                                                             | 否  | 是  | 元素支持的自定义操作列表。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| sourceType             | [AccessibilitySourceType](js-apis-inner-application-accessibilityExtensionContext.md#accessibilitysourcetype) | 否  | 是  | 组件来源类型，用于区分默认组件和新增、修改的虚拟组件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| sourceType             | [AccessibilitySourceType](./js-apis-accessibility-sys.md#accessibilitysourcetype) | 否  | 是  | 组件来源类型，用于区分默认组件和新增、修改的虚拟组件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **示例：**
 ```ts
@@ -2324,7 +2327,7 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 | 名称                  | 类型                                                             | 只读 | 可选 | 描述             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| virtualNodeId | number | 否 | 否 | 自定义的元素虚拟节点id。|
+| virtualNodeId | number | 否 | 否 | 自定义的元素虚拟节点ID。|
 | text | string  | 否  | 是  | 元素的文本内容。|
 | accessibilityText | string | 否 | 是 | 元素的无障碍文本信息。|
 | accessibilityGroup | boolean | 否 | 是 | 元素是否为无障碍组。true表示元素是无障碍组，false表示元素不是无障碍组。<br>默认值：true。|
