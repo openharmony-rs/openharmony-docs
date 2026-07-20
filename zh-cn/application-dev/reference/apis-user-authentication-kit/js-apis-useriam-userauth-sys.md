@@ -35,18 +35,18 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 ## AuthParam<sup>10+</sup>
 
-用户认证相关参数。该接口用于配置用户认证的各项参数，包括挑战值、认证类型列表、认证信任等级等。
+用户认证相关参数。该接口用于配置用户认证的各项参数。当前文档仅定义系统接口特有的参数，完整参数定义参见[AuthParam](js-apis-useriam-userauth.md#authparam10)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   |待认证的目标用户ID，值为非负整数，用于指定需要认证的用户。默认值为当前用户的ID。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。|
-| credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 |凭据ID列表。若凭据ID列表不为空，则会认证指定的凭据ID，而非用户的所有凭据。适用于需要精确控制认证凭据的场景。<br>**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：**此接口为系统接口。<br>**模型约束：**此接口仅可在Stage模型下使用。|
+| userId<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 待认证的目标用户ID，用于指定需要认证的用户。当需要认证特定用户而非当前登录用户时传入此参数；若不传入则默认使用当前登录用户的ID。取值为非负整数。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。|
+| credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 | 凭据ID列表，用于指定需要认证的凭据。当需要只认证特定凭据而非用户的所有凭据时传入此参数；若不传入或传入空数组，则默认认证该用户的所有凭据。<br>**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## WindowModeType<sup>10+</sup>
 
-用户认证界面的显示类型。
+用户认证界面的显示类型枚举。该枚举定义了认证界面可使用的显示模式，用于控制系统身份认证组件的窗口样式。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -63,14 +63,14 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 ## WidgetParam<sup>10+</sup>
 
-用户认证界面配置相关参数。该接口用于配置认证界面的显示样式和交互方式，包括标题、导航按钮文本、窗口模式等。
+用户认证界面配置相关参数。该接口用于配置认证界面的显示样式和交互方式。当前文档仅定义系统接口特有的参数，完整参数定义参见[WidgetParam](js-apis-useriam-userauth.md#widgetparam10)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称       | 类型                                                       | 只读 | 可选 | 说明                                                         |
 | ---------- | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| windowMode | [WindowModeType](#windowmodetype10)                        | 否   | 是   | 用户认证界面的显示类型。用于控制系统身份认证组件的窗口样式，可选择对话框模式（DIALOG_BOX）或全屏模式（FULLSCREEN）。默认值为WindowModeType.DIALOG_BOX。<br> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23<br/>**系统接口：** 此接口为系统接口。 |
-| appWindow  | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | 否   | 是   | 应用窗口对象。用于以模应用弹窗方式显示身份认证对话框，适用于需要通过窗口对象控制认证对话框显示的场景。如果已提供uiContext，则此参数将被忽略。<br>**系统接口：** 此接口为系统接口。<br> **ArkTS-Dyn起始版本：** 26.0.0 <br/> **ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| windowMode | [WindowModeType](#windowmodetype10)                        | 否   | 是   | 用户认证界面的显示类型。DIALOG_BOX适用于大多数认证场景（用户体验较好），FULLSCREEN适用于需要沉浸式认证体验或认证信息较多的场景。不传入时默认为WindowModeType.DIALOG_BOX。<br> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23<br/>**系统接口：** 此接口为系统接口。 |
+| appWindow  | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | 否   | 是   | 应用窗口对象。用于以模应用弹窗方式显示身份认证对话框，适用于需要通过窗口对象控制认证对话框显示的场景。如果已提供此参数，则uiContext将被忽略。<br>**系统接口：** 此接口为系统接口。<br> **ArkTS-Dyn起始版本：** 26.0.0 <br/> **ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## NoticeType<sup>10+</sup>
 
@@ -109,7 +109,7 @@ sendNotice(noticeType: NoticeType, eventData: string): void
 | 参数名     | 类型                        | 必填 | 说明       |
 | ---------- | --------------------------- | ---- | ---------- |
 | noticeType | [NoticeType](#noticetype10) | 是   | 通知类型。用于标识通知的来源，当前支持WIDGET_NOTICE（1），表示来自身份认证组件的通知。 |
-| eventData  | string                | 是   | 事件数据。JSON格式的字符串，包含通知的具体内容，如认证类型就绪事件等。数据长度范围为(0, 65536)字节。 |
+| eventData  | string                | 是   | 事件数据。JSON格式的字符串，包含通知的具体内容，如认证类型就绪事件等。数据长度范围为(0, 65536)字节。JSON对象应包含widgetContextId（number类型，控件上下文ID）、event（string类型，事件类型）、version（string类型，版本号）、payload（object类型，事件载荷对象）等字段。 |
 
 **错误码：**
 
@@ -132,9 +132,9 @@ interface  EventData {
   widgetContextId: number;
   event: string;
   version: string;
-  payload: PayLoad;
+  payload: Payload;
 }
-interface PayLoad {
+interface Payload {
   type: string[];
 }
 try {
@@ -144,7 +144,7 @@ try {
     version: '1',
     payload: {
       type: ['pin']
-    } as PayLoad,
+    } as Payload,
   };
   const jsonEventData = JSON.stringify(eventData);
   let noticeType = userAuth.NoticeType.WIDGET_NOTICE;
@@ -158,7 +158,7 @@ try {
 
 ## UserAuthWidgetMgr<sup>10+</sup>
 
-身份认证组件管理器。用于将自定义身份认证控件注册到UserAuthWidgetMgr中，由UserAuthWidgetMgr进行统一管理和调度。通过该接口，自定义身份认证控件可以接收来自用户认证框架的命令并执行相应操作。
+身份认证组件管理器。用于将自定义身份认证控件注册到UserAuthWidgetMgr中进行统一管理和调度。自定义身份认证控件可接收来自用户认证框架的命令并执行相应操作。
 
 ### on<sup>10+</sup>
 
@@ -203,7 +203,7 @@ try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
   console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.on('command', {
-    sendCommand(cmdData) {
+    sendCommand: (cmdData) => {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
@@ -251,7 +251,7 @@ onCommand(callback: IAuthWidgetCallback): void
 import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@ohos.base';
 
-const userAuthWidgetMgrVersion = 1;
+const userAuthWidgetMgrVersion: int = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
   console.info('get userAuthWidgetMgr instance successfully.');
@@ -288,7 +288,7 @@ off(type: 'command', callback?: IAuthWidgetCallback): void
 | 参数名   | 类型                                          | 必填 | 说明                                                         |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'command'                                     | 是   | 订阅事件类型。值为'command'，表明取消订阅用户认证框架向身份认证控件发送命令的事件。 |
-| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 否   | 回调函数。指定取消注册的回调函数，若不传入此参数，则取消所有已注册的回调。 |
+| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 否   | 回调函数。指定取消注册的回调函数，需与on方法注册时传入的回调一致；若不传入此参数，则取消所有已注册的回调。使用前需确保已通过[on方法](#on10)注册过相应回调。 |
 
 **错误码：**
 
@@ -310,7 +310,7 @@ try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
   console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.off('command', {
-    sendCommand(cmdData) {
+    sendCommand: (cmdData) => {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
@@ -400,7 +400,7 @@ ArkTS-Sta: getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| version | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 身份认证组件的版本号。用于指定组件的版本，目前支持版本1。组件版本决定了组件与框架之间的通信协议和功能支持范围。 |
+| version | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 身份认证组件的版本号。取值原则：目前仅支持版本1。组件版本决定了组件与框架之间的通信协议和功能支持范围。 |
 
 **返回值：**
 
@@ -487,7 +487,7 @@ sendCommand(cmdData: string): void
 
 | 参数名  | 类型   | 必填 | 说明                               |
 | ------- | ------ | ---- | ---------------------------------- |
-| cmdData | string | 是   | 命令数据。JSON格式的字符串，包含用户认证框架向身份认证控件发送的具体命令内容，如认证类型切换、认证结果返回等指令。控件需解析此数据并执行相应操作。 |
+| cmdData | string | 是   | 命令数据。JSON格式的字符串，包含用户认证框架向身份认证控件发送的具体命令内容。JSON结构根据不同的命令类型包含相应字段，常见字段包括：commandType（string，命令类型）、authType（array，认证类型列表）、result（number，认证结果码）等。控件需解析此数据并根据命令类型执行相应操作。 |
 
 **示例：**
 
@@ -502,7 +502,7 @@ try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
   console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.on('command', {
-    sendCommand(cmdData) {
+    sendCommand: (cmdData) => {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
@@ -537,7 +537,7 @@ try {
 
 ## UserAuthType<sup>8+</sup>
 
-表示身份认证的凭据类型枚举。该枚举定义了系统支持的认证类型，包括生物特征认证（人脸、指纹）和密码认证（PIN）等。
+表示身份认证的凭据类型枚举。当前文档仅定义系统接口特有的认证类型，完整类型定义参见[UserAuthType](js-apis-useriam-userauth.md#userauthtype8)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -547,7 +547,7 @@ try {
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私密码。一种特殊的PIN认证类型，一般用于解锁后的用户二次访问控制。例如用户可以选择使用隐私密码保护应用锁，从而阻止知道锁屏密码的家人访问自己的某些应用。<br> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。 |
+| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私密码。一种特殊的PIN认证类型，一般用于解锁后的用户二次访问控制（即在设备解锁后，用户访问特定应用或内容前需再次进行身份验证）。例如用户可以选择使用隐私密码保护应用锁（应用锁是一种对应用启动进行二次验证的功能，可防止他人打开用户的应用），从而阻止知道锁屏密码的家人访问自己的某些应用。<br> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。 |
 
 **示例：**
 
@@ -577,7 +577,7 @@ try {
   console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
-    onResult (result) {
+    onResult: (result) => {
       console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
@@ -698,7 +698,7 @@ try {
 
 ## UserAuthResultCode<sup>9+</sup>
 
-表示返回码的枚举。该枚举定义了用户认证操作可能返回的所有结果码，包括成功码和各类错误码。
+表示返回码的枚举。当前文档仅定义系统接口特有的错误码，完整错误码定义参见[UserAuthResultCode](js-apis-useriam-userauth.md#userauthresultcode9)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -734,7 +734,7 @@ type WidgetParamCallback = (challenge: Uint8Array) => WidgetParam
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| challenge | Uint8Array | 是 | 挑战值。用于防止重放攻击的一次性随机数，可传入Uint8Array([])格式。 |
+| challenge | Uint8Array | 是 | 随机挑战值，可用于防重放攻击。最大长度为32字节，可传Uint8Array([])。建议使用[加解密算法库框架](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md)生成的随机数作为挑战值，以增强安全性。 |
 
 **返回值：**
 
@@ -779,16 +779,16 @@ type ResultCallback = (challenge: Uint8Array, result: UserAuthResult) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-| 参数名 | 类型 | 只读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| WidgetParamCallback | [WidgetParamCallback](#widgetparamcallback) | 否 | 否 | 获取远程认证页面参数的回调函数。在远程设备发起认证请求时，系统会调用此回调获取认证界面配置参数。 |
+| onGetRemoteAuthWidgetParam | [WidgetParamCallback](#widgetparamcallback) | 否 | 否 | 获取远程认证页面参数的回调函数。在远程设备发起认证请求时，系统会调用此回调获取认证界面配置参数。 |
 | onRemoteAuthResult | [ResultCallback](#resultcallback) | 否 | 否 | 返回远程认证结果的回调函数。在远程认证完成后，系统会调用此回调将认证结果返回给发起方。 |
 
 ## userAuth.registerRemoteAuthCallback
 
 registerRemoteAuthCallback(callback: IRemoteAuthCallback): void
 
-注册远程认证回调。该接口用于在远程认证场景下注册回调接口，注册后系统可通过回调获取远程认证所需的页面参数，并在认证完成后接收认证结果。
+注册远程认证回调。该接口用于在远程认证场景下注册回调接口，注册后系统可通过回调获取远程认证所需的页面参数，并在认证完成后接收认证结果。不允许重复注册，在不使用时应调用[unregisterRemoteAuthCallback](#userauthregisterremoteauthcallback)取消注册，避免回调无法释放。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -821,7 +821,8 @@ registerRemoteAuthCallback(callback: IRemoteAuthCallback): void
 **示例：**
 
 ```ts
-import userAuth from '@ohos.userIAM.userAuth';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 let remoteAuthCallback: userAuth.IRemoteAuthCallback = {
   onGetRemoteAuthWidgetParam(challenge: Uint8Array): userAuth.WidgetParam {
@@ -832,15 +833,17 @@ let remoteAuthCallback: userAuth.IRemoteAuthCallback = {
     } as userAuth.WidgetParam;
   },
   onRemoteAuthResult(challenge: Uint8Array, result: userAuth.UserAuthResult): void {
-    console.info('Remote auth result, result: ' + result.result + ', authType: ' + result.authType);
+    console.info('remote auth result, result: ' + result.result + ', authType: ' + result.authType);
   }
 };
 
 try {
+  userAuth.unregisterRemoteAuthCallback();
   userAuth.registerRemoteAuthCallback(remoteAuthCallback);
   console.info('Remote auth callback registered successfully');
 } catch (error) {
-  console.error('Failed to register remote auth callback: ' + error.code + ', ' + error.message);
+  const err: BusinessError = error as BusinessError;
+  console.error(`failed to register remote auth callback. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -875,12 +878,14 @@ unregisterRemoteAuthCallback(): void
 **示例：**
 
 ```ts
-import userAuth from '@ohos.userIAM.userAuth';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 try {
   userAuth.unregisterRemoteAuthCallback();
   console.info('Remote auth callback unregistered successfully');
 } catch (error) {
-  console.error('Failed to unregister remote auth callback: ' + error.code + ', ' + error.message);
+  const err: BusinessError = error as BusinessError;
+  console.error(`failed to unregister remote auth callback. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
