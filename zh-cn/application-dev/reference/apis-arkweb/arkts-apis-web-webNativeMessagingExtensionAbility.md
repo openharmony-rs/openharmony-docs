@@ -36,7 +36,7 @@ import { WebNativeMessagingExtensionAbility } from '@kit.ArkWeb';
 
 onConnectNative(info: ConnectionInfo): void
 
-Web原生消息连接建立时回调此方法。在此回调中，开发者可以获取连接信息，用于后续的消息通信处理。
+Web原生消息连接建立时回调此方法。在此回调中，可以获取连接信息，用于后续的消息通信处理。
 
 **系统能力:** SystemCapability.Web.Webview.Core
 
