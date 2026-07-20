@@ -6,7 +6,7 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供3D图形中常用的基本资源类型。
+本模块提供3D图形中常用的基本资源类型，包括着色器、材质、网格、动画、环境或图片等用于构建3D场景的各类资源。
 
 > **说明：**
 >
@@ -146,7 +146,7 @@ function setinputs(): void {
         "uTime": 1.0,
         "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
         "uTexture": image
-      })
+      });
     }
   });
 }
@@ -658,7 +658,7 @@ function finish(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| surfaceId | string | 是 | 否 | 流ID，取值范围大于0。 |
+| surfaceId | string | 是 | 否 | 流ID，取值为大于0的整数字符串。 |
 
 ## Effect<sup>21+</sup>
 
