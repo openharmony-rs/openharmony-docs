@@ -212,7 +212,7 @@ void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* obj
 
 **描述：**
 
-注册对象及函数名称列表，用于向Web页面注入Native对象，实现应用侧与前端页面的双向通信。典型使用场景包括：Web页面调用Native功能、Native代码控制Web页面行为、混合应用中的跨层交互等。
+注册对象及函数名称列表，用于向Web页面注入Native对象，实现应用侧与前端页面的双向通信。用于Web页面调用Native功能、Native代码控制Web页面行为、混合应用中的跨层交互等场景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -238,7 +238,7 @@ void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* o
 
 **描述：**
 
-删除已注册的对象及其下的回调函数，用于清理不再需要的JavaScript注入对象。典型使用场景包括：页面销毁时清理注入对象、功能模块卸载时移除对应的Native接口、防止内存泄漏等。
+删除已注册的对象及其下的回调函数，用于清理不再需要的JavaScript注入对象。用于页面销毁时清理注入对象、功能模块卸载时移除对应的Native接口、防止内存泄漏等场景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -260,7 +260,7 @@ void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeA
 
 **描述：**
 
-设置对象可注册时的回调函数。**使用场景**：需要在JavaScript代理对象成功注册后执行特定逻辑时使用，例如注册成功后通知页面或记录日志。
+设置对象可注册时的回调函数。需要在JavaScript代理对象成功注册后执行特定逻辑时使用，例如注册成功后通知页面或记录日志。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -411,7 +411,7 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 
 **描述：**
 
-将当前可通过CookieManager API访问的所有cookies持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。**使用场景**：需要在应用退出或特定时机保存cookie状态时使用，例如保存用户登录状态、应用配置信息、会话数据等，确保应用重启后能够恢复之前的状态。
+将当前可通过CookieManager API访问的所有cookies持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。典型使用场景：可在应用退出或特定时机保存cookies状态时使用。例如保存用户登录状态、应用配置信息、会话数据等，确保应用重启后能够恢复之前的状态。
 
 **起始版本：** 20
 
@@ -419,7 +419,7 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | OH_ArkWebCookieManager_SaveCookieSync 错误码。请检查磁盘空间是否充足、是否有写入权限、cookies数据格式是否正确。<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookies成功。<br> [ARKWEB_COOKIE_SAVE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookies失败。<br> [ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) CookieManager初始化失败。<br> [ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED](capi-arkweb-error-code-h.md#arkweb_errorcode) 在非UI线程中，不允许在不初始化CookieManager接口的情况下调用该接口。请先使用OH_ArkWeb_GetNativeAPI初始化CookieManager接口。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | OH_ArkWebCookieManager_SaveCookieSync 错误码。请检查磁盘空间是否充足、是否有写入权限、cookies数据格式是否正确。<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookies成功。<br> [ARKWEB_COOKIE_SAVE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookies失败。<br> [ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) CookieManager初始化失败。<br> [ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED](capi-arkweb-error-code-h.md#arkweb_errorcode) 在非UI线程中，不允许在不初始化CookieManager接口的情况下调用该接口。请先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。 |
 
 ### OH_ArkWebCookieManager_SaveCookieAsync()
 
@@ -429,7 +429,7 @@ void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callb
 
 **描述：**
 
-将当前可通过CookieManager API访问的所有cookies持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用OH_ArkWeb_GetNativeAPI初始化CookieManager接口；在不初始化CookieManager接口的情况下，此接口将在UI线程上自动执行。**使用场景**：需要异步保存cookies状态时使用，例如在页面加载完成、用户操作完成后异步保存cookies，避免阻塞主线程。
+将当前可通过CookieManager API访问的所有cookies持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口；在不初始化CookieManager接口的情况下，此接口将在UI线程上自动执行。典型使用场景：需要异步保存cookies状态时使用，例如在页面加载完成、用户操作完成后异步保存cookies，避免阻塞主线程。
 
 **起始版本：** 20
 
@@ -546,7 +546,7 @@ uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)
 
 **描述：**
 
-设置无白屏加载方案的持久化缓存容量，返回实际生效值。默认缓存容量为30MB，最大值为100MB。当实际缓存超过容量时，将采用淘汰不常用的过渡帧的方式清理。典型使用场景包括：根据应用内存占用情况调整缓存大小、优化存储空间使用、平衡无白屏效果与系统资源消耗等。
+设置无白屏加载方案的持久化缓存容量，返回实际生效值。默认缓存容量为30MB，最大值为100MB。当实际缓存超过容量时，将采用淘汰不常用的过渡帧的方式清理。典型使用场景：根据应用内存占用情况调整缓存大小、优化存储空间使用、平衡无白屏效果与系统资源消耗等。
 
 **使用场景：**
 
