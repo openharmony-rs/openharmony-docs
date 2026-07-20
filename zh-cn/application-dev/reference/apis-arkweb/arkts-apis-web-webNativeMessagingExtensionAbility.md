@@ -67,7 +67,7 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 
 onDisconnectNative(info: ConnectionInfo): void
 
-Web原生消息连接断开时回调此方法。在此回调中，开发者可以释放与该连接相关的资源，并完成必要的清理工作。
+Web原生消息连接断开时回调此方法。在此回调中，可以释放与该连接相关的资源，并完成必要的清理工作。
 
 **系统能力:** SystemCapability.Web.Webview.Core
 
@@ -97,7 +97,7 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 
 onDestroy(): void
 
-WebNativeMessagingExtensionAbility销毁时回调。在此回调中，开发者可以释放所有占用的资源，并完成最终的清理操作。
+WebNativeMessagingExtensionAbility销毁时回调。在此回调中，可以释放所有占用的资源，并完成最终的清理操作。
 
 **系统能力:** SystemCapability.Web.Webview.Core
 
