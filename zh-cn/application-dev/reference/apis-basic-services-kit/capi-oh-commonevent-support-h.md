@@ -26,7 +26,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| static const char * const COMMON_EVENT_SHUTDOWN = "usual.event.SHUTDOWN" | 表示设备正在关闭并将继续直至最终关闭的公共事件。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Notification.CommonEvent |
+| static const char * const COMMON_EVENT_SHUTDOWN = "usual.event.SHUTDOWN" | 表示设备正在关闭并将继续直至最终关闭的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_BATTERY_CHANGED = "usual.event.BATTERY_CHANGED" | 表示电池充电状态、电平和其他信息发生变化的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_BATTERY_LOW = "usual.event.BATTERY_LOW" | 表示电池电量低的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_BATTERY_OKAY = "usual.event.BATTERY_OKAY" | 表示电池退出低电平状态的公共事件。<br>**起始版本：** 12 |
