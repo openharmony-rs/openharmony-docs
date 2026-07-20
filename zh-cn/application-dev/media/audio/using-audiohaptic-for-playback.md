@@ -96,14 +96,14 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
    let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
    // ...
-   audioHapticManagerInstance.createPlayer(idForFd, options).then((value: audioHaptic.AudioHapticPlayer) => {
-     console.info('Succeeded in creating player.');
-     audioHapticPlayer = value;
-     // ...
-   }).catch((err: BusinessError) => {
-     console.error(`Failed to create player. Code: ${err.code}, message: ${err.message}`);
-     // ...
-   });
+       audioHapticManagerInstance.createPlayer(idForFd, options).then((value: audioHaptic.AudioHapticPlayer) => {
+         console.info('Succeeded in creating player.');
+         audioHapticPlayer = value;
+         // ...
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to create player. Code: ${err.code}, message: ${err.message}`);
+         // ...
+       });
    ```
 
 4. 调用[start](../../reference/apis-audio-kit/js-apis-audioHaptic.md#start)方法，开启音频播放并同步开启振动。
