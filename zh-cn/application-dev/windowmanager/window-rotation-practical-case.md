@@ -34,19 +34,22 @@ import { display } from '@kit.ArkUI';
 struct Index {
   @State currentOrientation: string = 'UNSPECIFIED';
   private stage: window.WindowStage = (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage;
+  private foldDisplayModeCallback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+    console.info(`Listening enabled. Data: ${data}`);
+    this.getBreakPointAndSetOrientation();
+  };
 
   aboutToAppear() {
-    let ret: boolean = false;
-    ret = display.isFoldable();
+    const ret = display.isFoldable();
     if (ret) {
-      let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
-        console.info(`Listening enabled. Data: ${data}`);
-        this.getBreakPointAndSetOrientation();
-      };
-      display.on('foldDisplayModeChange', callback);
+      display.on('foldDisplayModeChange', this.foldDisplayModeCallback);
     } else {
       this.getBreakPointAndSetOrientation();
     }
+  }
+
+  aboutToDisappear() {
+    display.off('foldDisplayModeChange', this.foldDisplayModeCallback);
   }
 
   private getBreakPointAndSetOrientation(): void {
@@ -54,7 +57,7 @@ struct Index {
     let displayWidth = displayInfo.width;
     let displayHeight = displayInfo.height;
     let heightBp = displayHeight / displayWidth;
-    if(displayWidth > displayHeight) {
+    if (displayWidth > displayHeight) {
       let temp = displayWidth;
       displayWidth = displayHeight;
       displayHeight = temp;
@@ -70,13 +73,14 @@ struct Index {
       this.currentOrientation = 'PORTRAIT';
     }
   }
+
   build() {
     RelativeContainer() {
       Text(this.currentOrientation)
         .fontWeight(600)
         .fontSize(30)
         .textAlign(TextAlign.Center)
-        .position({y: 300})
+        .position({ y: 300 })
         .width('100%')
     }
     .height('100%')
