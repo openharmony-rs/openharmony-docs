@@ -2406,7 +2406,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env,JSVM_Value valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
 
 ### OH_JSVM_GetValueBigintUint64()
 
@@ -2434,7 +2434,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env,JSVM_Value val
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
 
 ### OH_JSVM_GetValueBigintWords()
 
@@ -2463,7 +2463,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env,JSVM_Value valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
 
 ### OH_JSVM_GetValueExternal()
 
@@ -2641,7 +2641,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env,JSVM_Value value,uin
 
 **描述**
 
-返回与给定的JavaScript number等价的C uint_32基础类型值。
+返回与给定的JavaScript number等价的C uint32基础类型值。
 
 **起始版本：** 11
 
@@ -5198,7 +5198,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env,JSVM_Value value,JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成BitInt。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成BigInt。 |
 
 ### OH_JSVM_IsRegExp()
 
