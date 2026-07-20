@@ -29,55 +29,52 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
-    ``` TypeScript
-    import { audio, audioHaptic } from '@kit.AudioKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { common } from '@kit.AbilityKit';
-    
-    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
+   ``` TypeScript
+   import { audio, audioHaptic } from '@kit.AudioKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
    
-    // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。	
-    // 推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
-
-    // ...
-    // 方法1：使用registerSource接口注册资源。
-    let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的URI。
-    let hapticUri = 'data/hapticTest.json'; // 此处仅作示例，实际使用时需要将文件替换为应用目标振动资源的URI。
-    let idForUri = 0;
+   let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
    
-    audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-      console.info(`Succeeded in registering source, sourceId is ${value}.`);
-      idForUri = value;
+   // ...
+     // 方法1：使用registerSource接口注册资源。
+     let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的URI。
+     let hapticUri = 'data/hapticTest.json'; // 此处仅作示例，实际使用时需要将文件替换为应用目标振动资源的URI。
+     let idForUri = 0;
+   
+     audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
+       console.info(`Succeeded in registering source, sourceId is ${value}.`);
+       idForUri = value;
        // ...
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
-      // ...
-    });
-    // ...
-    // 方法2：使用registerSourceFromFd接口注册资源。
-    // 此处仅作示例，实际使用时需要将文件替换为应用rawfile目录下的对应文件。
-    let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg');
-    let audioFd: audioHaptic.AudioHapticFileDescriptor = {
-      fd: audioFile.fd,
-      offset: audioFile.offset,
-      length: audioFile.length,
-    };
-    // 此处仅作示例，实际使用时需要将文件替换为应用rawfile目录下的对应文件。
-    let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json');
-    let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
-      fd: hapticFile.fd,
-      offset: hapticFile.offset,
-      length: hapticFile.length,
-    };
-    audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
-      console.info(`Succeeded in registering source from fd, sourceId is ${value}.`);
-      idForFd = value;
-      // ...
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
-      // ...
-    });
-    ```
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+     // ...
+     // 方法2：使用registerSourceFromFd接口注册资源。
+     // 此处仅作示例，实际使用时需要将文件替换为应用rawfile目录下的对应文件。
+     let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg');
+     let audioFd: audioHaptic.AudioHapticFileDescriptor = {
+       fd: audioFile.fd,
+       offset: audioFile.offset,
+       length: audioFile.length,
+     };
+     // 此处仅作示例，实际使用时需要将文件替换为应用rawfile目录下的对应文件。
+     let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json');
+     let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
+       fd: hapticFile.fd,
+       offset: hapticFile.offset,
+       length: hapticFile.length,
+     };
+     audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
+       console.info(`Succeeded in registering source from fd, sourceId is ${value}.`);
+       idForFd = value;
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+   ```
 
 2. 设置音振播放器音频时延模式和音频流使用类型，具体作用和类型可以查看[setAudioLatencyMode](../../reference/apis-audio-kit/js-apis-audioHaptic.md#setaudiolatencymode)和[setStreamUsage](../../reference/apis-audio-kit/js-apis-audioHaptic.md#setstreamusage)接口的文档，推荐短信、通知音等短提示音搭配FAST模式，来电铃声等长铃声搭配NORMAL模式。
 
