@@ -125,11 +125,11 @@ struct MaterialInfoPage {
           .value('选择')
           .margin({ bottom: 10 })
 
-        // 单独关闭Select的沉浸式系统材质
+        // 关闭Select和Select下拉菜单的沉浸式系统材质
         Select([{ value: '选项1' }, { value: '选项2' }])
           .value('选择（已关闭材质）')
           .systemMaterial(uiMaterial.Material.empty)
-          // .menuSystemMaterial(uiMaterial.Material.empty)
+          .menuSystemMaterial(uiMaterial.Material.empty)
       }
     }
     .width('100%')
@@ -421,7 +421,7 @@ struct MaterialInfoPage {
    
    **bindSheet示例**
    
-   以下示例通过bindSheet的[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)参数设置THICK样式的沉浸式系统材质，半模态页面会呈现带有模糊和材质效果的背景。
+   以下示例通过bindSheet的[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)参数设置ULTRA_THICK样式的沉浸式系统材质，半模态页面会呈现带有模糊和材质效果的背景。
    
    <!-- @[SheetMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/SheetMaterial.ets) -->
    
@@ -560,11 +560,11 @@ struct MaterialInfoPage {
            .fontSize(16)
            .margin({ bottom: 10 })
    
-         // 单独关闭Select组件的沉浸式系统材质
+         // 关闭Select和Select下拉菜单的沉浸式系统材质
          Select([{ value: '选项' }])
            .value('选择')
            .systemMaterial(uiMaterial.Material.empty)
-           // .menuSystemMaterial(uiMaterial.Material.empty)
+           .menuSystemMaterial(uiMaterial.Material.empty)
        }
        .width('100%')
        .height('100%')

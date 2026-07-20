@@ -149,7 +149,7 @@ struct Index {
                 return menuItems;
             },
             onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                // onMenuItemClick回调函数返回boolean类型
+                // onMenuItemClick回调函数返回boolean类型。
                 return false;
             }
           })

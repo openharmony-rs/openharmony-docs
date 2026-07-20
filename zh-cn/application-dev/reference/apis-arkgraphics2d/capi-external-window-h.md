@@ -308,7 +308,7 @@ OHNativeWindowBuffer* OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer(
 
 | 参数项 | 描述 |
 | -- | -- |
-| void* pSurfaceBuffer | 一个指向生产者buffer的指针，类型为sptr<OHOS::SurfaceBuffer>。 |
+| void* pSurfaceBuffer | 一个指向生产者buffer的指针，类型为sptr\<OHOS\:\:SurfaceBuffer\>。 |
 
 **返回：**
 

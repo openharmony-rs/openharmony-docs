@@ -15,7 +15,7 @@
 
 type ISendable = lang.ISendable
 
-ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有任何必须的方法和属性。
+ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有任何必需的方法和属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -32,7 +32,7 @@
 
 >  **说明：**
 >
->  - 不支持&lt;=，&gt;=，&lt;，&gt;操作符;
+>  - 不支持&lt;=，&gt;=，&lt;，&gt;操作符；
 >  - 从API version 9开始，支持多重()嵌套使用；
 >  - media语句整体长度不能超过 512 个字符；
 >  - 单个media条件长度不能超过32个字符；
@@ -54,7 +54,7 @@
 | 类型              | 说明                                       |
 | --------------- | ---------------------------------------- |
 | and             | 将多个媒体特征（Media&nbsp;Feature）以“与”的方式连接成一个媒体查询，只有当所有媒体特征都为true，查询条件成立。另外，它还可以将媒体类型和媒体功能结合起来。<br/>例如：screen&nbsp;and&nbsp;(device-type:&nbsp;liteWearable)&nbsp;and&nbsp;(max-height:&nbsp;454)&nbsp;表示当设备类型是智能穿戴同时应用的最大高度小于等于454个像素单位时成立。 |
-| or<sup>9+</sup> | 将多个媒体特征以“或”的方式连接成一个媒体查询，如果存在结果为true的媒体特征，则查询条件成立。<br/>例如：screen&nbsp;and&nbsp;(max-height:&nbsp;454) &nbsp;or&nbsp;&nbsp;（round-screen：true）表示当应用高度小于等于454个像素单位或者设备屏幕是圆形时，条件成立。 |
+| or<sup>9+</sup> | 将多个媒体特征以“或”的方式连接成一个媒体查询，如果存在结果为true的媒体特征，则查询条件成立。<br/>例如：screen&nbsp;and&nbsp;(max-height:&nbsp;454) &nbsp;or&nbsp;&nbsp;(round-screen:&nbsp;true)表示当应用高度小于等于454个像素单位或者设备屏幕是圆形时，条件成立。 |
 
 
 

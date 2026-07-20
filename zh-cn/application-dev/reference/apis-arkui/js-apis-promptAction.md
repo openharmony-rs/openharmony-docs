@@ -780,7 +780,8 @@ struct toastExample {
           try {
             promptAction.showToast({
               message: 'Hello World',
-              duration: 2000
+              duration: 2000,
+              showMode:promptAction.ToastShowMode.DEFAULT,
             });
           } catch (error) {
             let message = (error as BusinessError).message;
@@ -1018,7 +1019,7 @@ struct DialogExample {
           console.info("showDialog,is onDidDisappear!");
         },
         onWillAppear: () => {
-          this.log = 'Log information:#onWillAppear';
+          this.log = 'Log information:# onWillAppear';
           console.info("showDialog,is onWillAppear!");
         },
         onWillDisappear: () => {
