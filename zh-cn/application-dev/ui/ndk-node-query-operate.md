@@ -359,7 +359,7 @@ const unsigned int VALUE_3 = 50;
     // 创建Stack
     ArkUI_NodeHandle stack0 = nodeAPI->createNode(ARKUI_NODE_STACK);
     ArkUI_NumberValue stack_value[] = {{.f32=50}};
-    ArkUI_AttributeItem stack_item1 = {stack_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_AttributeItem stack_item1 = {stack_value, sizeof(stack_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(stack0, NODE_WIDTH, &stack_item1);
     nodeAPI->setAttribute(stack0, NODE_HEIGHT, &stack_item1);
     ArkUI_NumberValue stack_bc[] = {{.u32 = 0xFFFFB6C1}};
@@ -1119,7 +1119,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
        showText = !showText;
        bool isOnRenderTree = false;
        OH_ArkUI_NativeModule_IsInRenderState(textNode, &isOnRenderTree);
-       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "event","on render tree statie is %{public}d", isOnRenderTree);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "event","on render tree state is %{public}d", isOnRenderTree);
      }
    } // namespace Event
    
@@ -1147,7 +1147,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
      textNode = nodeAPI->createNode(ARKUI_NODE_TEXT);
      nodeAPI->addChild(columnTest, textNode);
      AttributeUtil textAttr(textNode, nodeAPI);
-     textAttr.text("hello word");
+     textAttr.text("hello world");
      OH_ArkUI_NodeContent_AddNode(contentHandle, columnTest);
      return nullptr;
    }
