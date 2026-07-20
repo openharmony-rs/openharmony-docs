@@ -34,7 +34,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 节点元素具备的属性名称及属性值类型信息。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -43,62 +44,62 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 | 名称                   | 类型                                                              | 只读 | 可选 | 说明              |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| accessibilityFocused | boolean                                                            | 否   | 否   | 表示元素是否处于无障碍焦点状态。true表示元素处于无障碍焦点状态，false表示元素不处于无障碍焦点状态，默认值为false。<br>**ArkTS-Dyn起始版本**：9 |
-| accessibilityText<sup>12+</sup> | string                                                  | 否   | 否   | 元素的无障碍文本信息。<br>**ArkTS-Dyn起始版本**：12  |
-| bundleName           | string                                                             | 否   | 否   | 应用包名。<br>**ArkTS-Dyn起始版本**：9  |
-| checkable            | boolean                                                            | 否   | 否   | 表示元素是否可勾选。true表示元素可勾选，false表示元素不可勾选，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| checked              | boolean                                                            | 否   | 否   | 表示元素的勾选状态。true表示元素已勾选，false表示元素未勾选，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| children             | Array&lt;[AccessibilityElement](#accessibilityelement)&gt;        | 否   | 否   | 所有子元素。<br>**ArkTS-Dyn起始版本**：9  |
-| clickable            | boolean                                                            | 否   | 否   | 表示元素是否可点击。true表示元素可点击，false表示元素不可点击，默认值为false。<br>**ArkTS-Dyn起始版本**：9 |
-| componentId          | number                                                             | 否   | 否   | 元素所属的组件ID。默认值为-1。<br>**ArkTS-Dyn起始版本**：9 |
-| componentType        | string                                                             | 否   | 否   | 表示元素所属的组件类型，如：按钮Button类型对应'Button'、图像Image类型对应'Image'。<br>**ArkTS-Dyn起始版本**：9  |
-| contents             | Array&lt;string&gt;                                                | 否   | 否   | 内容列表。根据实际场景设置，无特殊限制。<br>**ArkTS-Dyn起始版本**：9  |
-| currentIndex         | number                                                             | 否   | 否   | 当前项的索引，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本**：9 |
-| description          | string                                                             | 否   | 否   | 元素的描述信息。根据实际场景设置，无特殊限制。<br>**ArkTS-Dyn起始版本**：9  |
-| editable             | boolean                                                            | 否   | 否   | 表示元素是否可编辑。true表示元素可编辑，false表示元素不可编辑，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| endIndex             | number                                                             | 否   | 否   | 屏幕最后显示项的列表索引，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本**：9  |
-| error                | string                                                             | 否   | 否   | 错误状态字符串。<br>**ArkTS-Dyn起始版本**：9  |
-| focusable            | boolean                                                            | 否   | 否   | 表示元素是否可聚焦。true表示元素可聚焦，false表示元素不可聚焦，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| hintText             | string                                                             | 否   | 否   | 提示文本。<br>**ArkTS-Dyn起始版本**：9  |
-| inputType            | number                                                             | 否   | 否   | 输入文本的类型，不同数值对应不同的输入模式：0表示无特定类型；1表示文本；2表示邮箱；3表示日期；4表示时间；5表示数字；6表示密码；7表示电话号码；8表示用户名；9表示新密码。默认值为0。<br>**ArkTS-Dyn起始版本**：9  |
-| inspectorKey         | string                                                             | 否   | 否   | 表示元素的别名。<br>**ArkTS-Dyn起始版本**：9  |
-| isActive             | boolean                                                            | 否   | 否   | 表示元素是否处于活动状态。true表示元素处于活动状态，false表示元素不处于活动状态，默认值为true。<br>**ArkTS-Dyn起始版本**：9  |
-| isEnable             | boolean                                                            | 否   | 否   | 表示元素是否启用。true表示元素已启用，false表示元素未启用，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| isHint               | boolean                                                            | 否   | 否   | 表示元素是否为提示状态。true表示元素处于提示状态，false表示元素不处于提示状态，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| isFocused            | boolean                                                            | 否   | 否   | 表示元素是否聚焦。true表示元素处于聚焦状态，false表示元素不处于聚焦状态，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| isPassword           | boolean                                                            | 否   | 否   | 表示元素是否为密码。true表示元素为密码，false表示元素不为密码，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| isVisible            | boolean                                                            | 否   | 否   | 表示元素是否可见。true表示元素可见，false表示元素不可见，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| itemCount            | number                                                             | 否   | 否   | 项目的总数，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本**：9  |
-| lastContent          | string                                                             | 否   | 否   | 列表或滚动控件中最后一项的内容。<br>**ArkTS-Dyn起始版本**：9  |
-| layer                | number                                                             | 否   | 否   | 该元素的显示层，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本**：9  |
-| longClickable        | boolean                                                            | 否   | 否   | 表示元素是否可长按。true表示元素可长按，false表示元素不可长按，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| pageId               | number                                                             | 否   | 否   | 页码ID。默认值为-1。<br>**ArkTS-Dyn起始版本**：9  |
-| parent               | [AccessibilityElement](#accessibilityelement)                     | 否   | 否   | 元素的父元素。<br>**ArkTS-Dyn起始版本**：9  |
-| pluralLineSupported  | boolean                                                            | 否   | 否   | 表示元素是否支持多行文本。true表示元素支持多行文本，false表示元素不支持多行文本，默认值为false。<br>**ArkTS-Dyn起始版本**：9 |
-| rect                 | [Rect](#rect)                                                      | 否   | 否   | 元素的矩形区域，包含位置和尺寸信息。<br>**ArkTS-Dyn起始版本**：9  |
-| resourceName         | string                                                             | 否   | 否   | 元素的资源名称。<br>**ArkTS-Dyn起始版本**：9  |
-| rootElement          | [AccessibilityElement](#accessibilityelement)                     | 否   | 否   | 窗口元素的根节点元素。<br>**ArkTS-Dyn起始版本**：9  |
-| screenRect           | [Rect](#rect)                                                      | 否   | 否   | 元素的显示区域。<br>**ArkTS-Dyn起始版本**：9  |
-| scrollable           | boolean                                                            | 否   | 否   | 表示元素是否可滚动。true表示元素可滚动，false表示元素不可滚动，默认值为false。在无障碍模式下，当accessibilityScrollable与scrollable取值冲突时，以accessibilityScrollable属性值为准。<br>**ArkTS-Dyn起始版本**：9  |
-| selected             | boolean                                                            | 否   | 否   | 表示元素是否被选中。true表示元素被选中，false表示元素未被选中，默认值为false。<br>**ArkTS-Dyn起始版本**：9  |
-| startIndex           | number                                                             | 否   | 否   | 在屏幕上的第一个项目的列表索引，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本**：9  |
-| text                 | string                                                             | 否   | 否   | 元素的文本。<br>**ArkTS-Dyn起始版本**：9  |
-| textLengthLimit      | number                                                             | 否   | 否   | 元素文本的最大长度限制，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本**：9  |
-| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 否   | 否   | 文本被读取时的移动粒度。<br>**ArkTS-Dyn起始版本**：9  |
-| triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | 否   | 否   | 触发元素事件的动作。<br>**ArkTS-Dyn起始版本**：9  |
-| type                 | [WindowType](#windowtype)                                          | 否   | 否   | 元素的窗口类型。<br>**ArkTS-Dyn起始版本**：9  |
-| valueMax             | number                                                             | 否   | 否   | 最大值。默认值为0。<br>**ArkTS-Dyn起始版本**：9  |
-| valueMin             | number                                                             | 否   | 否   | 最小值。默认值为0。<br>**ArkTS-Dyn起始版本**：9 |
-| valueNow             | number                                                             | 否   | 否   | 当前值。默认值为0。<br>**ArkTS-Dyn起始版本**：9  |
-| windowId             | number                                                             | 否   | 否   | 窗口ID。默认值为-1。<br>**ArkTS-Dyn起始版本**：9  |
-| textType<sup>12+</sup>             | string                                                             | 否   | 否   | 元素的无障碍文本类型，由组件accessibilityTextHint属性配置。<br>**ArkTS-Dyn起始版本**：12  |
-| offset<sup>12+</sup>             | number              | 否   | 否   | 对于可滚动类控件，如List、Grid，内容区相对控件的顶部坐标滚动的像素偏移量，单位为像素（px）。默认值为0。<br>**ArkTS-Dyn起始版本**：12  |
-| hotArea<sup>12+</sup>             | [Rect](#rect)                                                              | 否   | 否   | 元素的可触摸区域。<br>**ArkTS-Dyn起始版本**：12  |
-| customComponentType<sup>18+</sup>             | string                                                             | 否   | 是   | 自定义组件类型。与元素的[AccessibilityRoleType](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明)类型对应。默认值为空。<br>**ArkTS-Dyn起始版本**：18 |
-| accessibilityNextFocusId<sup>18+</sup>             | number                | 否   | 是   | 下一个要聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElement对象中可获取到用户在控件上设置的该属性值。默认值为-1。<br>**ArkTS-Dyn起始版本**：18  |
-| accessibilityPreviousFocusId<sup>18+</sup>             | number                | 否   | 是   | 上一个聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElement对象中可获取到用户在控件上设置的该属性值。默认值为-1。<br>**ArkTS-Dyn起始版本**：18  |
-| extraInfo<sup>18+</sup>             | string     | 否  | 是   | 默认值为空。扩展属性，用于定义一些特定组件的属性，包含：<br>- CheckboxGroupSelectedStatus：表示CheckboxGroup组件的选中状态，其中取值0表示已选中，取值1表示部分选中，取值2表示未选中。<br>- Row：Grid组件中聚焦item的行信息，表示该item在第几行。<br>- Column：Grid组件中聚焦的item的列，表示该item在第几列。<br>- ListItemIndex：List组件中聚焦item的行信息，表示当前该item在第几行。<br>- SideBarContainerStates：表示可展开类组件（SideBarContainer、Select）的展开状态，其中取值0表示收起态，取值1表示展开态。<br>- ToggleType：表示Toggle组件的具体类型，其中取值0表示Checkbox，取值1表示Switch，取值2表示Button。<br>- BindSheet：表示BindSheet半模态弹窗组件的展示高度状态，其中取值0表示大高度展示态，取值1表示中高度展示态，取值2表示小高度展示态。<br>- hasRegisteredHover：表示组件是否注册了onAccessibilityHover事件回调，取值为1表示组件注册了事件回调，若未注册不会使用该字段。<br>- direction：表示List组件的布局方向，其中取值"vertical"表示竖向，取值"horizontal"表示横向。<br>- expandedState：表示List组件中ListItem的展开状态，其中取值"expanded"表示展开态，取值"collapsed"表示收起态。<br>- componentTypeDescription：组件类型详细信息，对componentType的补充描述。<br>**ArkTS-Dyn起始版本**：18 |
-| accessibilityScrollable<sup>18+</sup>             | boolean                 | 否   | 是   | 表示无障碍模式下元素是否可滚动，优先级高于scrollable，即以accessibilityScrollable属性值为准。其中，true表示可滚动，false表示不可滚动，默认值为true。<br>**ArkTS-Dyn起始版本**：18 |
+| accessibilityFocused | boolean                                                            | 否   | 否   | 表示元素是否处于无障碍焦点状态。true表示元素处于无障碍焦点状态，false表示元素不处于无障碍焦点状态，默认值为false。<br>**ArkTS-Dyn起始版本：** 9 |
+| accessibilityText<sup>12+</sup> | string                                                  | 否   | 否   | 元素的无障碍文本信息。<br>**ArkTS-Dyn起始版本：** 12  |
+| bundleName           | string                                                             | 否   | 否   | 应用包名。<br>**ArkTS-Dyn起始版本：** 9  |
+| checkable            | boolean                                                            | 否   | 否   | 表示元素是否可勾选。true表示元素可勾选，false表示元素不可勾选，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| checked              | boolean                                                            | 否   | 否   | 表示元素的勾选状态。true表示元素已勾选，false表示元素未勾选，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| children             | Array&lt;[AccessibilityElement](#accessibilityelement)&gt;        | 否   | 否   | 所有子元素。<br>**ArkTS-Dyn起始版本：** 9  |
+| clickable            | boolean                                                            | 否   | 否   | 表示元素是否可点击。true表示元素可点击，false表示元素不可点击，默认值为false。<br>**ArkTS-Dyn起始版本：** 9 |
+| componentId          | number                                                             | 否   | 否   | 元素所属的组件ID。默认值为-1。<br>**ArkTS-Dyn起始版本：** 9 |
+| componentType        | string                                                             | 否   | 否   | 表示元素所属的组件类型，如：按钮Button类型对应'Button'、图像Image类型对应'Image'。<br>**ArkTS-Dyn起始版本：** 9  |
+| contents             | Array&lt;string&gt;                                                | 否   | 否   | 内容列表。根据实际场景设置，无特殊限制。<br>**ArkTS-Dyn起始版本：** 9  |
+| currentIndex         | number                                                             | 否   | 否   | 当前项的索引，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本：** 9 |
+| description          | string                                                             | 否   | 否   | 元素的描述信息。根据实际场景设置，无特殊限制。<br>**ArkTS-Dyn起始版本：** 9  |
+| editable             | boolean                                                            | 否   | 否   | 表示元素是否可编辑。true表示元素可编辑，false表示元素不可编辑，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| endIndex             | number                                                             | 否   | 否   | 屏幕最后显示项的列表索引，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本：** 9  |
+| error                | string                                                             | 否   | 否   | 错误状态字符串。<br>**ArkTS-Dyn起始版本：** 9  |
+| focusable            | boolean                                                            | 否   | 否   | 表示元素是否可聚焦。true表示元素可聚焦，false表示元素不可聚焦，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| hintText             | string                                                             | 否   | 否   | 提示文本。<br>**ArkTS-Dyn起始版本：** 9  |
+| inputType            | number                                                             | 否   | 否   | 输入文本的类型，不同数值对应不同的输入模式：0表示无特定类型；1表示文本；2表示邮箱；3表示日期；4表示时间；5表示数字；6表示密码；7表示电话号码；8表示用户名；9表示新密码。默认值为0。<br>**ArkTS-Dyn起始版本：** 9  |
+| inspectorKey         | string                                                             | 否   | 否   | 表示元素的别名。<br>**ArkTS-Dyn起始版本：** 9  |
+| isActive             | boolean                                                            | 否   | 否   | 表示元素是否处于活动状态。true表示元素处于活动状态，false表示元素不处于活动状态，默认值为true。<br>**ArkTS-Dyn起始版本：** 9  |
+| isEnable             | boolean                                                            | 否   | 否   | 表示元素是否启用。true表示元素已启用，false表示元素未启用，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| isHint               | boolean                                                            | 否   | 否   | 表示元素是否为提示状态。true表示元素处于提示状态，false表示元素不处于提示状态，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| isFocused            | boolean                                                            | 否   | 否   | 表示元素是否聚焦。true表示元素处于聚焦状态，false表示元素不处于聚焦状态，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| isPassword           | boolean                                                            | 否   | 否   | 表示元素是否为密码。true表示元素为密码，false表示元素不为密码，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| isVisible            | boolean                                                            | 否   | 否   | 表示元素是否可见。true表示元素可见，false表示元素不可见，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| itemCount            | number                                                             | 否   | 否   | 项目的总数，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本：** 9  |
+| lastContent          | string                                                             | 否   | 否   | 列表或滚动控件中最后一项的内容。<br>**ArkTS-Dyn起始版本：** 9  |
+| layer                | number                                                             | 否   | 否   | 该元素的显示层，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本：** 9  |
+| longClickable        | boolean                                                            | 否   | 否   | 表示元素是否可长按。true表示元素可长按，false表示元素不可长按，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| pageId               | number                                                             | 否   | 否   | 页码ID。默认值为-1。<br>**ArkTS-Dyn起始版本：** 9  |
+| parent               | [AccessibilityElement](#accessibilityelement)                     | 否   | 否   | 元素的父元素。<br>**ArkTS-Dyn起始版本：** 9  |
+| pluralLineSupported  | boolean                                                            | 否   | 否   | 表示元素是否支持多行文本。true表示元素支持多行文本，false表示元素不支持多行文本，默认值为false。<br>**ArkTS-Dyn起始版本：** 9 |
+| rect                 | [Rect](#rect)                                                      | 否   | 否   | 元素的矩形区域，包含位置和尺寸信息。<br>**ArkTS-Dyn起始版本：** 9  |
+| resourceName         | string                                                             | 否   | 否   | 元素的资源名称。<br>**ArkTS-Dyn起始版本：** 9  |
+| rootElement          | [AccessibilityElement](#accessibilityelement)                     | 否   | 否   | 窗口元素的根节点元素。<br>**ArkTS-Dyn起始版本：** 9  |
+| screenRect           | [Rect](#rect)                                                      | 否   | 否   | 元素的显示区域。<br>**ArkTS-Dyn起始版本：** 9  |
+| scrollable           | boolean                                                            | 否   | 否   | 表示元素是否可滚动。true表示元素可滚动，false表示元素不可滚动，默认值为false。在无障碍模式下，当accessibilityScrollable与scrollable取值冲突时，以accessibilityScrollable属性值为准。<br>**ArkTS-Dyn起始版本：** 9  |
+| selected             | boolean                                                            | 否   | 否   | 表示元素是否被选中。true表示元素被选中，false表示元素未被选中，默认值为false。<br>**ArkTS-Dyn起始版本：** 9  |
+| startIndex           | number                                                             | 否   | 否   | 在屏幕上的第一个项目的列表索引，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本：** 9  |
+| text                 | string                                                             | 否   | 否   | 元素的文本。<br>**ArkTS-Dyn起始版本：** 9  |
+| textLengthLimit      | number                                                             | 否   | 否   | 元素文本的最大长度限制，取值范围大于等于0。默认值为0。<br>**ArkTS-Dyn起始版本：** 9  |
+| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 否   | 否   | 文本被读取时的移动粒度。<br>**ArkTS-Dyn起始版本：** 9  |
+| triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | 否   | 否   | 触发元素事件的动作。<br>**ArkTS-Dyn起始版本：** 9  |
+| type                 | [WindowType](#windowtype)                                          | 否   | 否   | 元素的窗口类型。<br>**ArkTS-Dyn起始版本：** 9  |
+| valueMax             | number                                                             | 否   | 否   | 最大值。默认值为0。<br>**ArkTS-Dyn起始版本：** 9  |
+| valueMin             | number                                                             | 否   | 否   | 最小值。默认值为0。<br>**ArkTS-Dyn起始版本：** 9 |
+| valueNow             | number                                                             | 否   | 否   | 当前值。默认值为0。<br>**ArkTS-Dyn起始版本：** 9  |
+| windowId             | number                                                             | 否   | 否   | 窗口ID。默认值为-1。<br>**ArkTS-Dyn起始版本：** 9  |
+| textType<sup>12+</sup>             | string                                                             | 否   | 否   | 元素的无障碍文本类型，由组件accessibilityTextHint属性配置。<br>**ArkTS-Dyn起始版本：** 12  |
+| offset<sup>12+</sup>             | number              | 否   | 否   | 对于可滚动类控件，如List、Grid，内容区相对控件的顶部坐标滚动的像素偏移量，单位为像素（px）。默认值为0。<br>**ArkTS-Dyn起始版本：** 12  |
+| hotArea<sup>12+</sup>             | [Rect](#rect)                                                              | 否   | 否   | 元素的可触摸区域。<br>**ArkTS-Dyn起始版本：** 12  |
+| customComponentType<sup>18+</sup>             | string                                                             | 否   | 是   | 自定义组件类型。与元素的[AccessibilityRoleType](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明)类型对应。默认值为空。<br>**ArkTS-Dyn起始版本：** 18 |
+| accessibilityNextFocusId<sup>18+</sup>             | number                | 否   | 是   | 下一个要聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElement对象中可获取到用户在控件上设置的该属性值。默认值为-1。<br>**ArkTS-Dyn起始版本：** 18  |
+| accessibilityPreviousFocusId<sup>18+</sup>             | number                | 否   | 是   | 上一个聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElement对象中可获取到用户在控件上设置的该属性值。默认值为-1。<br>**ArkTS-Dyn起始版本：** 18  |
+| extraInfo<sup>18+</sup>             | string     | 否  | 是   | 默认值为空。扩展属性，用于定义一些特定组件的属性，包含：<br>- CheckboxGroupSelectedStatus：表示CheckboxGroup组件的选中状态，其中取值0表示已选中，取值1表示部分选中，取值2表示未选中。<br>- Row：Grid组件中聚焦item的行信息，表示该item在第几行。<br>- Column：Grid组件中聚焦的item的列，表示该item在第几列。<br>- ListItemIndex：List组件中聚焦item的行信息，表示当前该item在第几行。<br>- SideBarContainerStates：表示可展开类组件（SideBarContainer、Select）的展开状态，其中取值0表示收起态，取值1表示展开态。<br>- ToggleType：表示Toggle组件的具体类型，其中取值0表示Checkbox，取值1表示Switch，取值2表示Button。<br>- BindSheet：表示BindSheet半模态弹窗组件的展示高度状态，其中取值0表示大高度展示态，取值1表示中高度展示态，取值2表示小高度展示态。<br>- hasRegisteredHover：表示组件是否注册了onAccessibilityHover事件回调，取值为1表示组件注册了事件回调，若未注册不会使用该字段。<br>- direction：表示List组件的布局方向，其中取值"vertical"表示竖向，取值"horizontal"表示横向。<br>- expandedState：表示List组件中ListItem的展开状态，其中取值"expanded"表示展开态，取值"collapsed"表示收起态。<br>- componentTypeDescription：组件类型详细信息，对componentType的补充描述。<br>**ArkTS-Dyn起始版本：** 18 |
+| accessibilityScrollable<sup>18+</sup>             | boolean                 | 否   | 是   | 表示无障碍模式下元素是否可滚动，优先级高于scrollable，即以accessibilityScrollable属性值为准。其中，true表示可滚动，false表示不可滚动，默认值为true。<br>**ArkTS-Dyn起始版本：** 18 |
 
 ## FocusDirection
 
@@ -108,9 +109,9 @@ type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 类型       | 说明      |
 | -------- | ------- |
@@ -127,10 +128,11 @@ type FocusType = 'accessibility' | 'normal'
 
 表示查询焦点元素的类型。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 | 类型            | 说明          |
 | ------------- | ----------- |
@@ -143,9 +145,9 @@ type FocusType = 'accessibility' | 'normal'
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型     | 只读   | 可选   | 说明        |
 | ------ | ------ | ---- | ---- | --------- |
@@ -162,9 +164,9 @@ type WindowType = 'application' | 'system'
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 类型          | 说明        |
 | ----------- | --------- |
@@ -183,12 +185,13 @@ setTargetBundleName(targetNames: Array\<string>): Promise\<void>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -232,12 +235,13 @@ setTargetBundleName(targetNames: Array\<string>, callback: AsyncCallback\<void>)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -282,12 +286,13 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -335,12 +340,13 @@ getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -384,12 +390,13 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<Accessib
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -435,12 +442,13 @@ getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -488,12 +496,13 @@ getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -537,12 +546,13 @@ getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityEle
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -588,12 +598,13 @@ getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -638,12 +649,13 @@ getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -684,12 +696,13 @@ getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityEleme
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -732,12 +745,13 @@ injectGesture(gesturePath: GesturePath): Promise\<void>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[injectGestureSync](#injectgesturesyncdeprecated)替代，但该替代接口从API version 12开始也已废弃并完全移除，无后续替代方案。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[injectGestureSync](#injectgesturesyncdeprecated)替代，但该替代接口从API version 12开始也已废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -787,12 +801,13 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[injectGestureSync](#injectgesturesyncdeprecated)替代，但该替代接口从API version 12开始也已废弃并完全移除，无后续替代方案。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[injectGestureSync](#injectgesturesyncdeprecated)替代，但该替代接口从API version 12开始也已废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -838,12 +853,13 @@ injectGestureSync(gesturePath: GesturePath): void
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 10开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -888,12 +904,13 @@ attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -923,12 +940,13 @@ attributeNames\<T extends keyof ElementAttributeValues>(callback: AsyncCallback\
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -960,12 +978,13 @@ attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T): Promi
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1013,12 +1032,13 @@ attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, callba
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1062,12 +1082,13 @@ actionNames(): Promise\<Array\<string>>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -1096,12 +1117,13 @@ actionNames(callback: AsyncCallback\<Array\<string>>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1132,12 +1154,13 @@ performAction(actionName: string, parameters?: object): Promise\<void>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1219,12 +1242,13 @@ performAction(actionName: string, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1267,12 +1291,13 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback\<v
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1317,12 +1342,13 @@ findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityEl
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1369,12 +1395,13 @@ findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1418,12 +1445,13 @@ findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElem
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1470,12 +1498,13 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<Ac
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1519,12 +1548,13 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise\<Accessi
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1571,12 +1601,13 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 

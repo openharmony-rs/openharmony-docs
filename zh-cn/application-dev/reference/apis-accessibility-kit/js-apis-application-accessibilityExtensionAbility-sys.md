@@ -30,9 +30,9 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -61,9 +61,9 @@ onAccessibilityConnect(): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -100,9 +100,9 @@ onAccessibilityDisconnect(): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -137,9 +137,9 @@ onAccessibilityEventInfo(event: AccessibilityEventInfo): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -183,9 +183,9 @@ onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

@@ -28,7 +28,7 @@ import { GesturePoint } from '@kit.AccessibilityKit';
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 ### 属性
 
@@ -45,11 +45,11 @@ constructor(positionX: number, positionY: number)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 

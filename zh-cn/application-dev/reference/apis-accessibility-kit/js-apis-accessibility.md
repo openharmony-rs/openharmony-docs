@@ -32,9 +32,9 @@ type AbilityState = 'enable' | 'disable' | 'install'
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 类型      | 说明       |
 | ------- | -------- |
@@ -56,12 +56,12 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 
 | 类型               | 说明        |
 | ---------------- | --------- |
-| audible          | 表示具有听觉反馈。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23|
-| generic          | 表示具有通用反馈。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| haptic           | 表示具有触觉反馈。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| spoken           | 表示具有语音反馈。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| visual           | 表示具有视觉反馈。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| all<sup>9+</sup> | 表示以上所有类别。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| audible          | 表示具有听觉反馈。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23|
+| generic          | 表示具有通用反馈。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| haptic           | 表示具有触觉反馈。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| spoken           | 表示具有语音反馈。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| visual           | 表示具有视觉反馈。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| all<sup>9+</sup> | 表示以上所有类别。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 
 ## AccessibilityAbilityInfo
 
@@ -77,16 +77,16 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 
 | 名称                             | 类型                                       | 只读   | 可选   | 说明               |
 | ------------------------------ | ---------------------------------------- | ---- | ---- | ---------------- |
-| id                             | string                                   | 是    | 否    | ability&nbsp;id。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| name                           | string                                   | 是    | 否    | ability名。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23        |
-| bundleName                     | string                                   | 是    | 否    | Bundle名称。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23         |
-| targetBundleNames<sup>9+</sup> | Array&lt;string&gt;                      | 是    | 否    | 关注的目标Bundle名称。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23    |
-| abilityTypes                   | Array&lt;[AbilityType](#abilitytype)&gt; | 是    | 否    | 辅助应用类型。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23           |
-| capabilities                   | Array&lt;[Capability](#capability)&gt;   | 是    | 否    | 辅助应用能力列表。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23         |
-| description                    | string                                   | 是    | 否    | 辅助应用描述。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23           |
-| eventTypes                     | Array&lt;[EventType](#eventtype)&gt;     | 是    | 否    | 辅助应用关注的无障碍事件列表。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23   |
-| needHide<sup>12+</sup>                     | boolean     | 是    | 否    | 辅助应用是否在已安装的扩展服务列表中被隐藏，true表示隐藏服务，false表示显示服务。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23   |
-| label<sup>12+</sup>                     | string     | 是    | 否    | 辅助应用在扩展服务列表中的名称。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23   |
+| id                             | string                                   | 是    | 否    | ability&nbsp;id。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| name                           | string                                   | 是    | 否    | ability名。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23        |
+| bundleName                     | string                                   | 是    | 否    | Bundle名称。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23         |
+| targetBundleNames<sup>9+</sup> | Array&lt;string&gt;                      | 是    | 否    | 关注的目标Bundle名称。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23    |
+| abilityTypes                   | Array&lt;[AbilityType](#abilitytype)&gt; | 是    | 否    | 辅助应用类型。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23           |
+| capabilities                   | Array&lt;[Capability](#capability)&gt;   | 是    | 否    | 辅助应用能力列表。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23         |
+| description                    | string                                   | 是    | 否    | 辅助应用描述。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23           |
+| eventTypes                     | Array&lt;[EventType](#eventtype)&gt;     | 是    | 否    | 辅助应用关注的无障碍事件列表。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23   |
+| needHide<sup>12+</sup>                     | boolean     | 是    | 否    | 辅助应用是否在已安装的扩展服务列表中被隐藏，true表示隐藏服务，false表示显示服务。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
+| label<sup>12+</sup>                     | string     | 是    | 否    | 辅助应用在扩展服务列表中的名称。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
 
 ## Action
 
@@ -105,31 +105,31 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 
 | 类型                      | 说明                 |
 | ----------------------- |--------------------|
-| 'click'                   | 表示点击操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'longClick'               | 表示长按操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'scrollForward'           | 表示向前滚动操作，需配置参数scrollType，参数值为'fullScreen'或'halfScreen'。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'scrollBackward'          | 表示向后滚动操作，需配置参数scrollType，参数值为'fullScreen'或'halfScreen'。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'focus'                   | 表示获得焦点操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'clearFocus'              | 表示清除焦点操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'clearSelection'          | 表示清除选择操作。当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'accessibilityFocus'      | 表示获得无障碍焦点操作，需配置参数accessibilityFocusScene，参数值为无障碍聚焦的场景类型。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'clearAccessibilityFocus'      | 表示清除无障碍焦点操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'cut'                     | 表示剪切操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'copy'                    | 表示复制操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'paste'                   | 表示粘贴操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'select'                  | 表示选择操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'setText'                 | 表示设置文本操作，需配置参数setText，参数值为要设置的文本内容。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'delete'                  | 表示删除操作。当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'setSelection'            | 表示设置文本选择范围操作，需配置参数selectTextBegin、selectTextEnd、selectTextInForWard，参数值为选定文本的起始坐标、结束坐标及是否向前选择。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| 'common'<sup>12+</sup>            | 表示没有特定操作，用于主动聚焦、主动播报等场景。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23  |
-| 'home'<sup>12+</sup>                | 表示返回桌面操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23  |
-| 'back'<sup>12+</sup>                | 表示返回上一级操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23  |
-| 'recentTask'<sup>12+</sup>          | 表示打开最近任务操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23  |
-| 'notificationCenter'<sup>12+</sup>      | 表示打开通知栏操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23  |
-| 'controlCenter'<sup>12+</sup>       | 表示打开控制中心操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23  |
-| 'setCursorPosition'<sup>12+</sup>     | 表示设置光标位置操作，需配置参数offset，参数值为光标的字符偏移量。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23  |
-| 'injectAction'    | 表示注入动作，需配置参数injectActionType，参数值为注入动作类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0  |
-| 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction，参数值为自定义操作的名称。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0  |
+| 'click'                   | 表示点击操作。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'longClick'               | 表示长按操作。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'scrollForward'           | 表示向前滚动操作，需配置参数scrollType，参数值为'fullScreen'或'halfScreen'。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'scrollBackward'          | 表示向后滚动操作，需配置参数scrollType，参数值为'fullScreen'或'halfScreen'。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'focus'                   | 表示获得焦点操作。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'clearFocus'              | 表示清除焦点操作。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'clearSelection'          | 表示清除选择操作。当前版本暂不支持。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'accessibilityFocus'      | 表示获得无障碍焦点操作，需配置参数accessibilityFocusScene，参数值为无障碍聚焦的场景类型。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'clearAccessibilityFocus'      | 表示清除无障碍焦点操作。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'cut'                     | 表示剪切操作。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'copy'                    | 表示复制操作。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'paste'                   | 表示粘贴操作。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'select'                  | 表示选择操作。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'setText'                 | 表示设置文本操作，需配置参数setText，参数值为要设置的文本内容。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'delete'                  | 表示删除操作。当前版本暂不支持。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'setSelection'            | 表示设置文本选择范围操作，需配置参数selectTextBegin、selectTextEnd、selectTextInForWard，参数值为选定文本的起始坐标、结束坐标及是否向前选择。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| 'common'<sup>12+</sup>            | 表示没有特定操作，用于主动聚焦、主动播报等场景。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| 'home'<sup>12+</sup>                | 表示返回桌面操作。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| 'back'<sup>12+</sup>                | 表示返回上一级操作。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| 'recentTask'<sup>12+</sup>          | 表示打开最近任务操作。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| 'notificationCenter'<sup>12+</sup>      | 表示打开通知栏操作。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| 'controlCenter'<sup>12+</sup>       | 表示打开控制中心操作。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| 'setCursorPosition'<sup>12+</sup>     | 表示设置光标位置操作，需配置参数offset，参数值为光标的字符偏移量。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| 'injectAction'    | 表示注入动作，需配置参数injectActionType，参数值为注入动作类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0  |
+| 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction，参数值为自定义操作的名称。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0  |
 
 ## Capability
 
@@ -143,9 +143,9 @@ type Capability = 'retrieve' | 'touchGuide' | 'keyEventObserver' | 'zoom' | 'ges
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 类型               | 说明                    |
 | ---------------- |-----------------------|
@@ -167,9 +167,9 @@ type CaptionsFontEdgeType = 'none' | 'raised' | 'depressed' | 'uniform' | 'dropS
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 类型         | 说明    |
 | ---------- | ----- |
@@ -192,9 +192,9 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 类型                  | 说明                |
 | ------------------- | ----------------- |
@@ -217,9 +217,9 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                    | 只读   | 可选   | 说明          |
 | --------------- | ---------------------------------------- | ---- | ---- | ----------- |
@@ -240,9 +240,9 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -261,13 +261,15 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[off('enableChange')](#offenablechangedeprecated)取消监听，否则可能会导致崩溃。
-> - 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> - 从API version 8开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-**相关接口**：该接口对应的ArkTS-Sta接口是[onEnableChange](#onenablechange23)。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onEnableChange](#onenablechange23)。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -315,13 +317,13 @@ onEnableChange(callback: Callback\<boolean\>): void
 
 监听字幕配置启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('enableChange')](#onenablechangedeprecated)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('enableChange')](#onenablechangedeprecated)。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -364,15 +366,15 @@ on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[off('styleChange')](#offstylechangedeprecated)取消监听，否则可能会导致崩溃。
-> - 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> - 从API version 8开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onStyleChange](#onstylechange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStyleChange](#onstylechange23)。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -420,13 +422,13 @@ onStyleChange(callback: Callback\<CaptionsStyle\>): void
 
 监听字幕风格变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('styleChange')](#onstylechangedeprecated)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('styleChange')](#onstylechangedeprecated)。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -467,13 +469,15 @@ off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 8开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-**相关接口**：该接口对应的ArkTS-Sta接口是[offEnableChange](#offenablechange23)。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offEnableChange](#offenablechange23)。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -526,13 +530,13 @@ offEnableChange(callback?: Callback\<boolean\>): void
 
 取消监听字幕配置启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('enableChange')](#offenablechangedeprecated)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('enableChange')](#offenablechangedeprecated)。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -578,13 +582,15 @@ off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 8开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-**相关接口**：该接口对应的ArkTS-Sta接口是[offStyleChange](#offstylechange23)。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStyleChange](#offstylechange23)。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -637,13 +643,13 @@ offStyleChange(callback?: Callback\<CaptionsStyle\>): void
 
 取消字幕风格变化监听事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('styleChange')](#offstylechangedeprecated)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('styleChange')](#offstylechangedeprecated)。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -695,24 +701,24 @@ struct Index {
 
 | 名称             | 类型                                   | 只读 | 可选 | 说明            |
 | ---------------- | ------------------------------------- |----- |------|-----------------------|
-| type             | [EventType](#eventtype)               | 否   | 否   | 无障碍事件类型，不可缺省。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23     |
-| windowUpdateType | [WindowUpdateType](#windowupdatetype) | 否   | 是   | 窗口变化类型。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23       |
-| bundleName       | string                                | 否   | 否   | 目标应用的Bundle名称；不可缺省。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23    |
-| componentType    | string                                | 否   | 是   | 应与事件源组件类型对应，默认值为空。<br>例如：<br>- 按钮Button类型->'Button'。<br>- 图片Image类型->'Image'。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23    |
-| pageId           | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 事件源的页面ID，默认值为0。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23    |
-| description      | string                                | 否   | 是   | 事件描述，由开发者根据业务需要自定义描述内容，无特殊限制，默认值为空。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23    |
-| triggerAction    | [Action](#action)                     | 否   | 否   | 触发事件的Action，不可缺省。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23   |
-| textMoveUnit     | [TextMoveUnit](#textmoveunit)         | 否   | 是   | 文本移动粒度，默认值为char。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23   |
-| contents         | Array&lt;string&gt;                   | 否   | 是   | 内容列表，根据实际场景设置，无特殊限制，默认值为空。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23      |
-| lastContent      | string                                | 否   | 是   | 最新内容，根据实际场景设置，无特殊限制，默认值为空。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23    |
-| beginIndex       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 画面显示条目的开始序号，默认值为0。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| currentIndex     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 当前条目序号，默认值为0。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23    |
-| endIndex         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 画面显示条目的结束序号，默认值为0。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23  |
-| itemCount        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 条目总数，默认值为0。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23    |
-| elementId<sup>12+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 组件elementId，默认值为0。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23   |
-| textAnnouncedForAccessibility<sup>12+</sup>     | string     | 否   | 是   | 主动播报的内容。当应用需要主动播报时，根据实际场景设置播报内容，无特殊限制，默认值为空。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23     |
-| textResourceAnnouncedForAccessibility<sup>18+</sup>      | Resource   | 否   | 是   | 主动播报的内容支持传入Resource类型，且Resource只能引用string类型资源（如$r('app.string.xxx')）。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23   |
-| customId<sup>12+</sup>        | string                                | 否   | 是   | 主动聚焦的组件ID，当应用需要主动聚焦时根据实际场景设置，默认值为空。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23   |
+| type             | [EventType](#eventtype)               | 否   | 否   | 无障碍事件类型，不可缺省。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23     |
+| windowUpdateType | [WindowUpdateType](#windowupdatetype) | 否   | 是   | 窗口变化类型。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23       |
+| bundleName       | string                                | 否   | 否   | 目标应用的Bundle名称；不可缺省。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23    |
+| componentType    | string                                | 否   | 是   | 应与事件源组件类型对应，默认值为空。<br>例如：<br>- 按钮Button类型->'Button'。<br>- 图片Image类型->'Image'。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23    |
+| pageId           | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 事件源的页面ID，默认值为0。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23    |
+| description      | string                                | 否   | 是   | 事件描述，由开发者根据业务需要自定义描述内容，无特殊限制，默认值为空。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23    |
+| triggerAction    | [Action](#action)                     | 否   | 否   | 触发事件的Action，不可缺省。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23   |
+| textMoveUnit     | [TextMoveUnit](#textmoveunit)         | 否   | 是   | 文本移动粒度，默认值为char。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23   |
+| contents         | Array&lt;string&gt;                   | 否   | 是   | 内容列表，根据实际场景设置，无特殊限制，默认值为空。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23      |
+| lastContent      | string                                | 否   | 是   | 最新内容，根据实际场景设置，无特殊限制，默认值为空。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23    |
+| beginIndex       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 画面显示条目的开始序号，默认值为0。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| currentIndex     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 当前条目序号，默认值为0。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23    |
+| endIndex         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 画面显示条目的结束序号，默认值为0。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23  |
+| itemCount        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 条目总数，默认值为0。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23    |
+| elementId<sup>12+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 组件elementId，默认值为0。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
+| textAnnouncedForAccessibility<sup>12+</sup>     | string     | 否   | 是   | 主动播报的内容。当应用需要主动播报时，根据实际场景设置播报内容，无特殊限制，默认值为空。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23     |
+| textResourceAnnouncedForAccessibility<sup>18+</sup>      | Resource   | 否   | 是   | 主动播报的内容支持传入Resource类型，且Resource只能引用string类型资源（如$r('app.string.xxx')）。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23   |
+| customId<sup>12+</sup>        | string                                | 否   | 是   | 主动聚焦的组件ID，当应用需要主动聚焦时根据实际场景设置，默认值为空。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
 
 ### constructor
 
@@ -720,9 +726,9 @@ constructor(jsonObject: Object)
 
 构造函数，通过JSON对象构造EventInfo实例。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[constructor](#constructor23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[constructor](#constructor23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -730,7 +736,7 @@ constructor(jsonObject: Object)
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -756,17 +762,17 @@ constructor()
 
 构造函数。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[constructor](#constructor)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[constructor](#constructor)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -792,9 +798,9 @@ constructor(type: EventType, bundleName: string, triggerAction: Action)
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -831,25 +837,25 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 
 | 类型                      | 说明                     |
 | ----------------------- |------------------------|
-| 'accessibilityFocus'      | 表示获得无障碍焦点的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'accessibilityFocusClear' | 表示清除无障碍焦点的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'click'                   | 表示点击组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'longClick'               | 表示长按组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'select'                  | 表示选择组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'hoverEnter'              | 表示悬停进入组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'hoverExit'               | 表示悬停离开组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'focus'                   | 表示组件获得焦点的事件，当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'textUpdate'              | 表示组件文本已更改的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'textSelectionUpdate'     | 表示选定文本已更改的事件，当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'scroll'                  | 表示滚动视图的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'requestFocusForAccessibility'<sup>12+</sup>     | 表示主动聚焦的事件。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
-| 'announceForAccessibility'<sup>12+</sup>         | 表示主动播报的事件。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
-| 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | 表示主动聚焦不打断的事件。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
-| 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
-| 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
-| 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。<br>**ArkTS-Dyn起始版本**：23<br>**ArkTS-Sta起始版本**：23 |
-| 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
-| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
+| 'accessibilityFocus'      | 表示获得无障碍焦点的事件。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'accessibilityFocusClear' | 表示清除无障碍焦点的事件。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'click'                   | 表示点击组件的事件。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'longClick'               | 表示长按组件的事件。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'select'                  | 表示选择组件的事件。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'hoverEnter'              | 表示悬停进入组件的事件。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'hoverExit'               | 表示悬停离开组件的事件。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'focus'                   | 表示组件获得焦点的事件，当前版本暂不支持。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'textUpdate'              | 表示组件文本已更改的事件。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'textSelectionUpdate'     | 表示选定文本已更改的事件，当前版本暂不支持。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'scroll'                  | 表示滚动视图的事件。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| 'requestFocusForAccessibility'<sup>12+</sup>     | 表示主动聚焦的事件。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| 'announceForAccessibility'<sup>12+</sup>         | 表示主动播报的事件。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | 表示主动聚焦不打断的事件。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## TextMoveUnit
 
@@ -863,9 +869,9 @@ type TextMoveUnit = 'char' | 'word' | 'line' | 'page' | 'paragraph'
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 类型        | 说明              |
 | --------- | --------------- |
@@ -887,9 +893,9 @@ type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
@@ -909,10 +915,11 @@ getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise&lt;A
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -953,10 +960,11 @@ getAbilityLists(abilityType: AbilityType, stateType: AbilityState,callback: Asyn
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -996,9 +1004,9 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1088,9 +1096,9 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState,
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1217,9 +1225,9 @@ getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilitySt
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1306,12 +1314,13 @@ getCaptionsManager(): CaptionsManager
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
+> 从API version 8开始支持，从API version 12开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -1340,9 +1349,9 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[accessibility.off('accessibilityStateChange')](#accessibilityoffaccessibilitystatechange)取消监听，否则可能会导致崩溃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onAccessibilityStateChange](#accessibilityonaccessibilitystatechange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAccessibilityStateChange](#accessibilityonaccessibilitystatechange23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1350,7 +1359,7 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1407,17 +1416,17 @@ onAccessibilityStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听辅助应用启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('accessibilityStateChange')](#accessibilityonaccessibilitystatechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('accessibilityStateChange')](#accessibilityonaccessibilitystatechange)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1462,9 +1471,9 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[accessibility.off('touchGuideStateChange')](#accessibilityofftouchguidestatechange)取消监听，否则可能会导致崩溃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onTouchGuideStateChange](#accessibilityontouchguidestatechange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchGuideStateChange](#accessibilityontouchguidestatechange23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1472,7 +1481,7 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Vision
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1526,17 +1535,17 @@ onTouchGuideStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听触摸浏览功能启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('touchGuideStateChange')](#accessibilityontouchguidestatechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('touchGuideStateChange')](#accessibilityontouchguidestatechange)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Vision
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1579,9 +1588,9 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[accessibility.off('screenReaderStateChange')](#accessibilityoffscreenreaderstatechange18)取消监听，否则可能会导致崩溃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onScreenReaderStateChange](#accessibilityonscreenreaderstatechange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenReaderStateChange](#accessibilityonscreenreaderstatechange23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1589,7 +1598,7 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -1640,17 +1649,17 @@ onScreenReaderStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听屏幕朗读功能启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('screenReaderStateChange')](#accessibilityonscreenreaderstatechange18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('screenReaderStateChange')](#accessibilityonscreenreaderstatechange18)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1693,9 +1702,9 @@ on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[accessibility.off('touchModeChange')](#accessibilityofftouchmodechange20)取消监听，否则可能会导致崩溃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onTouchModeChange](#accessibilityontouchmodechange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchModeChange](#accessibilityontouchmodechange23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1703,7 +1712,7 @@ on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1754,17 +1763,17 @@ onTouchModeChange(callback: Callback&lt;string&gt;): void
 
 监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('touchModeChange')](#accessibilityontouchmodechange20)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('touchModeChange')](#accessibilityontouchmodechange20)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1811,9 +1820,9 @@ onAnimationReduceStateChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1864,9 +1873,9 @@ onFlashReminderStateChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1917,9 +1926,9 @@ onAudioMonoStateChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1971,9 +1980,9 @@ onSeniorModeStateChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2026,9 +2035,9 @@ onSeniorModeStateChangeForSelf(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2070,9 +2079,9 @@ off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听辅助应用启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offAccessibilityStateChange](#accessibilityoffaccessibilitystatechange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAccessibilityStateChange](#accessibilityoffaccessibilitystatechange23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2080,7 +2089,7 @@ off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2131,17 +2140,17 @@ offAccessibilityStateChange(callback?: Callback&lt;boolean&gt;): void
 
 取消监听辅助应用启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('accessibilityStateChange')](#accessibilityoffaccessibilitystatechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('accessibilityStateChange')](#accessibilityoffaccessibilitystatechange)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2183,9 +2192,9 @@ off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听触摸浏览启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offTouchGuideStateChange](#accessibilityofftouchguidestatechange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchGuideStateChange](#accessibilityofftouchguidestatechange23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2193,7 +2202,7 @@ off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2244,17 +2253,17 @@ offTouchGuideStateChange(callback?: Callback&lt;boolean&gt;): void
 
 取消监听触摸浏览启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('touchGuideStateChange')](#accessibilityofftouchguidestatechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('touchGuideStateChange')](#accessibilityofftouchguidestatechange)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2296,9 +2305,9 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听屏幕朗读启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offScreenReaderStateChange](#accessibilityoffscreenreaderstatechange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenReaderStateChange](#accessibilityoffscreenreaderstatechange23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2306,7 +2315,7 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -2357,17 +2366,17 @@ offScreenReaderStateChange(callback?: Callback&lt;boolean&gt;): void
 
 取消监听屏幕朗读启用状态变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('screenReaderStateChange')](#accessibilityoffscreenreaderstatechange18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('screenReaderStateChange')](#accessibilityoffscreenreaderstatechange18)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2409,9 +2418,9 @@ off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
 取消监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offTouchModeChange](#accessibilityofftouchmodechange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchModeChange](#accessibilityofftouchmodechange23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2419,7 +2428,7 @@ off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2470,17 +2479,17 @@ offTouchModeChange(callback?: Callback&lt;string&gt;): void
 
 取消监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('touchModeChange')](#accessibilityofftouchmodechange20)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('touchModeChange')](#accessibilityofftouchmodechange20)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2526,9 +2535,9 @@ offAnimationReduceStateChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2574,9 +2583,9 @@ offFlashReminderStateChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2622,9 +2631,9 @@ offAudioMonoStateChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2671,9 +2680,9 @@ offSeniorModeStateChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2719,9 +2728,9 @@ offSeniorModeStateChangeForSelf(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2767,10 +2776,11 @@ isOpenAccessibility(): Promise&lt;boolean&gt;
 >
 > 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -2801,10 +2811,11 @@ isOpenAccessibility(callback: AsyncCallback&lt;boolean&gt;): void
 >
 > 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2841,9 +2852,9 @@ isOpenAccessibilitySync(): boolean
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 <!--RP3-->
@@ -2872,10 +2883,11 @@ isOpenTouchGuide(): Promise&lt;boolean&gt;
 >
 > 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Vision
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -2906,10 +2918,11 @@ isOpenTouchGuide(callback: AsyncCallback&lt;boolean&gt;): void
 >
 > 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Vision
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2944,9 +2957,9 @@ isOpenTouchGuideSync(): boolean
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Vision
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2974,9 +2987,9 @@ isScreenReaderOpenSync(): boolean
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Vision
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3002,9 +3015,9 @@ isAnimationReduceEnabled(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3048,9 +3061,9 @@ isAnimationReduceEnabledSync(): boolean
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3088,9 +3101,9 @@ isFlashReminderEnabled(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3134,9 +3147,9 @@ isFlashReminderEnabledSync(): boolean
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3174,9 +3187,9 @@ isAudioMonoEnabled(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3220,9 +3233,9 @@ isAudioMonoEnabledSync(): boolean
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：23
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3261,9 +3274,9 @@ isSeniorModeEnabled(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -3315,9 +3328,9 @@ getSeniorModeStateForSelf(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -3367,9 +3380,9 @@ setSeniorModeStateForSelf(state: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -3425,10 +3438,11 @@ sendEvent(event: EventInfo): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3471,10 +3485,11 @@ sendEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3516,9 +3531,9 @@ sendAccessibilityEvent(event: EventInfo): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3571,9 +3586,9 @@ sendAccessibilityEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): v
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3764,9 +3779,9 @@ getTouchModeSync(): string
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
