@@ -23,7 +23,7 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 
 ## backgroundLoader.registerTask
 
-regisgerTask(taskInfo: TaskInfo): void
+registerTask(taskInfo: TaskInfo): void
 
 申请后台加载任务，成功后会把任务添加到后台加载任务队列，满足触发条件后由系统调度执行。
 
@@ -78,7 +78,7 @@ regisgerTask(taskInfo: TaskInfo): void
 
 ## backgroundLoader.unregisterTask
 
-unregisgerTask(taskInfo: TaskInfo): void
+unregisterTask(taskInfo: TaskInfo): void
 
 取消注册后台加载任务。
 
@@ -222,7 +222,7 @@ finishTask(taskInfo: TaskInfo): void
 **示例**：
 
 ```ts
-  import { UIAbility, AbilityConstant， Want } from '@kit.AbilityKit';
+  import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
   import { backgroundLoader } from '@kit.BackgroundTasksKit';
   import { rpc } from '@kit.IPCKit';
   
