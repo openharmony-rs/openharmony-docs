@@ -53,10 +53,6 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
-
 **示例：**
 
 > **说明：**

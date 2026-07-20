@@ -11,7 +11,7 @@
 在BLE蓝牙应用开发过程中，调用[setCharacteristicChangeNotification](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangenotification)接口时出现2900099报错。
 
 ## 背景知识
-- [2900099](../../reference/apis-connectivity-kit/errorcode-bluetoothManager.md#2900099)表示接口调用操作失败。一般接口调用阻塞，会返回此错误码。
+- [2900099](../../reference/apis-connectivity-kit/errorcode-bluetoothManager.md#2900099-操作失败)表示接口调用操作失败。一般接口调用阻塞，会返回此错误码。
 - setCharacteristicChangeNotification接口提供了client端启用或者禁用接收server端特征值内容变更通知的能力，使用前需仔细阅读接口下方说明。
 - 调用setCharacteristicChangeNotification接口后，底层会默认通过描述符的形式向server端写入一次数据请求，server端可通过[on('descriptorWrite')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#ondescriptorwrite)接收请求，然后调用[sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse)接口向client返回数据，client成功接收到数据后，即一个完整的setCharacteristicChangeNotification接口请求流程才算完毕。
 

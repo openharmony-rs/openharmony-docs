@@ -63,8 +63,8 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | 名称                                  | 类型                                                         | 只读 | 可选 | 说明                                                      |
 | ------------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | message                               | string                                                       | 否  | 否  | 气泡信息内容。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                               |
-| primaryButton                         | {<br/>value:&nbsp;string,<br/>action:&nbsp;()&nbsp;=&gt;&nbsp;void<br/>} | 否   | 是  | 第一个按钮。<br/>value：气泡里主按钮的文本。<br/>action：点击主按钮的回调函数。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| secondaryButton                       | {<br/>value:&nbsp;string,<br/>action:&nbsp;()&nbsp;=&gt;&nbsp;void<br/>} | 否   | 是  | 第二个按钮。<br/>value：气泡里辅助按钮的文本。<br/>action：点击辅助按钮的回调函数。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| primaryButton                         | {<br/>value:&nbsp;string,<br/>action:&nbsp;()&nbsp;=&gt;&nbsp;void<br/>} | 否   | 是  | 主按钮。<br/>value：气泡里主按钮的文本。<br/>action：点击主按钮的回调函数。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| secondaryButton                       | {<br/>value:&nbsp;string,<br/>action:&nbsp;()&nbsp;=&gt;&nbsp;void<br/>} | 否   | 是  | 辅助按钮。<br/>value：气泡里辅助按钮的文本。<br/>action：点击辅助按钮的回调函数。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | onStateChange                         | (event:&nbsp;{&nbsp;isVisible:&nbsp;boolean&nbsp;})&nbsp;=&gt;&nbsp;void | 否   | 是  | 气泡状态变化事件回调，参数isVisible为气泡的显示状态。返回true时，表示气泡从关闭到打开，返回false时，表示气泡从打开到关闭。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。    |
 | showInSubWindow<sup>9+</sup>          | boolean                                                      | 否   | 是  | 气泡是否显示在创建的子窗里。<br/>true：气泡会显示在创建的子窗里；false：气泡会显示在对应的主窗中。<br />默认值：false<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
 | mask<sup>10+</sup>                    | boolean&nbsp;\|&nbsp;{ color : [ResourceColor](ts-types.md#resourcecolor) }| 否   | 是  | 设置气泡是否有遮罩层及遮罩颜色。<br/>true：显示透明色遮罩层；false：不显示遮罩层。<br/>Color：显示指定颜色的遮罩层。<br/>默认值：true<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -141,7 +141,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | 名称          | 值   | 说明                                                       |
 | ------------- | ---- | ------------------------------------------------------------ |
 | PRESS_BACK    | 0    | 点击三键back、侧滑（左滑/右滑）、键盘ESC。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| TOUCH_OUTSIDE | 1    | 点击遮障层时。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| TOUCH_OUTSIDE | 1    | 点击遮罩层时。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | CLOSE_BUTTON  | 2    | 点击关闭按钮。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | SLIDE_DOWN    | 3    | 下拉关闭。<br/>**说明：** <br/>该接口仅支持在[半模态转场](ts-universal-attributes-sheet-transition.md)中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | SLIDE<sup>20+</sup>    | 4    | 侧滑（左滑/右滑）关闭。默认表示向右滑动关闭，镜像场景表示向左滑动关闭，不支持选择向左或向右滑动。<br/>**说明：** <br/>该接口仅支持在[半模态转场](ts-universal-attributes-sheet-transition.md)中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -647,6 +647,7 @@ struct PopupExample {
 @Component
 struct PopupExample {
   @State handlePopup: boolean = false;
+  private timer: number = -1;
 
   build() {
     Column() {
@@ -671,13 +672,16 @@ struct PopupExample {
           followTransformOfTarget: true,
           onStateChange: (e) => {
             // 设置气泡显示6秒后自动关闭
-            let timer = setTimeout(() => {
+            if (e.isVisible) {
+              this.timer = setTimeout(() => {
+                this.handlePopup = false;
+              }, 6000);
+            } else {
               this.handlePopup = false;
-            }, 6000);
-            // 气泡关闭时清除定时器
-            if (!e.isVisible) {
-              this.handlePopup = false;
-              clearTimeout(timer);
+              if (this.timer !== -1) {
+                clearTimeout(this.timer);
+                this.timer = -1;
+              }
             }
           },
           // 不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数值为false时才退出

@@ -1298,7 +1298,7 @@ getEffectPixelMap(): Promise\<image.PixelMap>
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。返回创建的ColorPicker实例。 |
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
 
 **示例：**

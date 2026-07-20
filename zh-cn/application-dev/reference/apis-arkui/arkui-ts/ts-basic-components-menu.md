@@ -204,7 +204,7 @@ Menu子菜单展开样式枚举。
 | 名称            | 值   | 说明                                       |
 | --------------- | ---- | ------------------------------------------ |
 | SIDE_EXPAND     | 0    | 默认展开样式，子菜单位于同一平面侧边展开。 |
-| EMBEDDED_EXPAND | 1    | 直接展开样式，子菜单嵌于主菜单内展开。     |
+| EMBEDDED_EXPAND | 1    | 内嵌展开样式，子菜单嵌于主菜单内展开。     |
 | STACK_EXPAND    | 2    | 堆叠样式，子菜单浮于主菜单上方展开。       |
 
 ## 示例
@@ -421,7 +421,7 @@ struct Index {
 
 ### 示例4（设置分割线样式）
 
-该示例通过设置menuItemGroupDivider属性实现分割线样式。
+该示例通过设置menuItemDivider和menuItemGroupDivider属性实现分割线样式。
 
 ```ts
 import { LengthMetrics, DividerMode } from '@kit.ArkUI'

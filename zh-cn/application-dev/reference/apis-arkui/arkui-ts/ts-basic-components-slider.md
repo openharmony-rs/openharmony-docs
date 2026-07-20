@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 从API版本26.0.0开始，Slider组件传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启系统材质的开关标记，不影响实际视觉效果。主要影响Slider的滑块大小、滑块样式、阴影等视觉属性。传入undefined时，系统材质不生效，表现为原先的Slider样式。
 
 
 ## 子组件
@@ -150,7 +152,7 @@ trackColor(value: ResourceColor | LinearGradient)
 
 trackColorMetrics(color: ColorMetricsLinearGradient)
 
-设置滑轨轨道的线性渐变背景颜色。与trackColor相比，使用ColorMetricsLinearGradient类型支持指定色域的渐变。
+设置滑轨的线性渐变背景颜色。与trackColor相比，使用ColorMetricsLinearGradient类型支持指定色域的渐变。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -164,7 +166,7 @@ trackColorMetrics(color: ColorMetricsLinearGradient)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [ColorMetricsLinearGradient](#colormetricslineargradient23) | 是   | 滑轨轨道的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，轨道背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
+| color  | [ColorMetricsLinearGradient](#colormetricslineargradient23) | 是   | 滑轨的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，滑轨背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
 
 ### selectedColor
 
@@ -341,7 +343,7 @@ stepColor(value: ResourceColor)
 
 trackBorderRadius(value: Length)
 
-设置底板圆角半径。
+设置滑轨圆角半径。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -353,7 +355,7 @@ trackBorderRadius(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                             |
 | ------ | ---------------------------- | ---- | -------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 底板圆角半径。<br/>默认值：<br/>style为SliderStyle.OutSet时默认值为2vp。<br/>style为SliderStyle.InSet时默认值为10vp。<br/>**说明：** <br/>设定值小于0时取默认值。 |
+| value  | [Length](ts-types.md#length) | 是   | 滑轨圆角半径。<br/>默认值：<br/>style为SliderStyle.OutSet时默认值为2vp。<br/>style为SliderStyle.InSet时默认值为10vp。<br/>**说明：** <br/>设定值小于0时取默认值。 |
 
 ### selectedBorderRadius<sup>12+</sup>
 
@@ -371,7 +373,7 @@ selectedBorderRadius(value: Dimension)
 
 | 参数名 | 类型                         | 必填 | 说明                             |
 | ------ | ---------------------------- | ---- | -------------------------------- |
-| value  | [Dimension](ts-types.md#dimension10)| 是   | 已选择部分的圆角半径。<br/>默认值：style为SliderStyle.InSet或SliderStyle.OutSet时，跟随底板圆角；style为SliderStyle.NONE时，为0。<br/>**说明：** <br/>不支持Percentage类型。设定值小于0时取默认值。 |
+| value  | [Dimension](ts-types.md#dimension10)| 是   | 已滑动部分的圆角半径。<br/>默认值：style为SliderStyle.InSet或SliderStyle.OutSet时，跟随滑轨圆角；style为SliderStyle.NONE时，为0。<br/>**说明：** <br/>不支持Percentage类型。设定值小于0时取默认值。 |
 
 ### blockSize<sup>10+</sup>
 
@@ -576,8 +578,8 @@ prefix(content: ComponentContent, options?: SliderPrefixOptions)
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 是   | 滑块前缀的可视化内容，显示在滑块起始位置。 |
-| options | [SliderPrefixOptions](#sliderprefixoptions20) | 否   | 滑块前缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
+| content | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 是   | 滑动条前缀的可视化内容，显示在滑动条起始位置。 |
+| options | [SliderPrefixOptions](#sliderprefixoptions20) | 否   | 滑动条前缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
 
 ### suffix<sup>20+</sup>
 
@@ -595,8 +597,8 @@ suffix(content: ComponentContent, options?: SliderSuffixOptions)
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)    | 是   | 滑块后缀的可视化内容，显示在滑块结束位置。 |
-| options | [SliderSuffixOptions](#slidersuffixoptions20) | 否   | 滑块后缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
+| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)    | 是   | 滑动条后缀的可视化内容，显示在滑动条结束位置。 |
+| options | [SliderSuffixOptions](#slidersuffixoptions20) | 否   | 滑动条后缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
 
 ### showSteps<sup>20+</sup>
 
@@ -661,7 +663,7 @@ maxLabel(value: string)
 
 ## ColorMetricsLinearGradient<sup>23+</sup>
 
-滑轨轨道的线性渐变背景颜色。
+滑轨的线性渐变背景颜色。
 
 ### constructor<sup>23+</sup>
 
@@ -683,7 +685,7 @@ ColorMetricsLinearGradient的构造函数。
 
 ## ColorMetricsStop<sup>23+</sup>
 
-线性渐变颜色断点类型，用于描述渐进色颜色断点。
+线性渐变颜色断点类型，用于描述渐变色颜色断点。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

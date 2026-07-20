@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -24,7 +24,7 @@
 
 以订阅应用冻屏事件为例，说明开发步骤。
 
-1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
+1. 在DevEco Studio中，新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
    ```ts
    import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
@@ -181,28 +181,29 @@
    HiAppEvent eventInfo.params.test_data=100
    HiAppEvent eventInfo.params.process_life_time=18
    HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
+   HiAppEvent eventInfo.params.page_switch_log=["/data/storage/el2/log/page_switch/snapshot/page_switch-com.example.myapplication-1-1-20260717101852288.log"]
    HiAppEvent eventInfo.params.application_gc_info={"averagePause":48.4983,"count":3,"lastEndTime":1711440881768,"lastStartTime":1711440881708,"lastType":Local GC,"maxPause":"10.733","minPause":"2.832"}
    HiAppEvent eventInfo.params.application_io_info={"cancelled_write_bytes":4096,"rchar":14557921,"read_bytes":0,"syscr":6934,"syscw":118,"wchar":909,"write_bytes":"4096"}
    ```
 
 2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
 
-## 从Faultlogger接口迁移应用冻屏事件
+## 从FaultLogger接口迁移应用冻屏事件
 
-[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用，不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅应用冻屏事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅应用冻屏事件。
+[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用，不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅应用冻屏事件。该章节指导开发者从FaultLogger接口迁移至hiAppEvent接口，来订阅应用冻屏事件。
 
-在Faultlogger的[FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)里定义的APP_FREEZE即为应用冻屏故障类型。
+在FaultLogger的[FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)里定义的APP_FREEZE即为应用冻屏故障类型。
 
 在hiAppEvent的hiAppEvent.addWatcher接口中设置事件名称为hiAppEvent.event.APP_FREEZE、事件领域为hiAppEvent.domain.OS，可以订阅应用冻屏事件。
 
 通过[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params字段说明)中exception字段的name子字段可以区分具体是哪种应用冻屏事件。
 
 [FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo)与[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params字段说明)的字段对应关系如下：
-| Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | 说明 |
+| FaultLogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | 说明 |
 | --- | --- | --- |
 | pid | pid | 无。 |
 | uid | uid | 无。 |
-| type | exception字段中的name子字段 | 类型不同，Faultlogger中是故障类型枚举，hiAppEvent中是字符串类型。 |
+| type | exception字段中的name子字段 | 类型不同，FaultLogger中是故障类型枚举，hiAppEvent中是字符串类型。 |
 | timestamp | time | 无。 |
 | module | bundle_name | 无。 |
 | fullLog | external_log | fullLog为故障日志全文。external_log为故障日志文件在应用沙箱中的具体路径(/data/storage/el2/log/)，访问该路径的文件，可以得到故障日志全文。 |
@@ -211,7 +212,7 @@
 
 [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)(使用callback回调)和[FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)(使用Promise回调)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
 
-查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到应用冻屏事件](#验证观察者是否订阅到应用冻屏事件)，了解使用hiAppEvent订阅应用冻屏事件（ArkTS）的具体步骤。
+查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到应用冻屏事件](#验证观察者是否订阅到应用冻屏事件)，了解使用HiAppEvent订阅应用冻屏事件（ArkTS）的具体步骤。
 
 <!--RP1-->
 <!--RP1End-->

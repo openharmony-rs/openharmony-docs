@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-描述通知类型。
+NotificationContent中定义通知的内容结构，提供多种通知类型的内容描述接口。当应用需要发布通知时，可根据通知的展示需求（如普通文本、长文本、多行文本、图片、实况窗），选择对应的内容类型接口构造通知内容。
 
 > **说明：**
 >
@@ -54,9 +54,11 @@
 
 ## NotificationSystemLiveViewContent<sup>18+</sup>
 
-描述系统实况窗通知内容。继承自[NotificationBasicContent](#notificationbasiccontent)。
+描述系统实况窗通知内容，用于在实况窗中展示实时状态信息。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](#notificationbasiccontent)。
 
-不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent)。
+> **说明：**
+>
+> 实际显示效果依赖于设备能力和通知中心UI样式。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -69,7 +71,11 @@
 
 ## NotificationCapsule<sup>11+</sup>
 
-描述通知胶囊。
+描述通知胶囊，用于在实况窗中展示胶囊形态。
+
+> **说明：**
+>
+> 实际显示效果依赖于设备能力和通知中心UI样式。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -145,6 +151,14 @@ type IconType = Resource | image.PixelMap
 ## NotificationMultiLineContent
 
 描述多行文本通知。继承自[NotificationBasicContent](#notificationbasiccontent)。
+
+> **说明：**
+>
+> - 当该类型通知与其他通知形成组通知时，该通知类型的展示效果默认为折叠态，显示的标题与正文为该类型继承的[普通文本](#notificationbasiccontent)中的`title`与`text`。<br>当该类型通知单独展示，没有与其他通知形成组通知时，该通知类型的展示效果默认为展开态，显示的标题为展开时的标题`longTitle`，多行文本内容`lines`作为正文多行显示。
+>
+> - 用户点击成组展示的通知，查看各个通知详情时，该通知的展示效果变化为展开态。
+>
+> - 实际显示效果依赖于设备能力和通知中心UI样式。
 
 **系统能力**：SystemCapability.Notification.Notification
 

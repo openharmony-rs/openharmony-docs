@@ -26,7 +26,7 @@ The FrameNode is not modifiable.
 
 **处理步骤**
 
-避免对不可修改的节点进行修改性操作。可通过try catch捕捉并处理错误，避免影响其他逻辑。
+避免对不可修改的节点进行修改性操作。可通过try-catch捕获并处理错误，避免影响其他逻辑。
 
 ## 100022 FrameNode节点的组件类型不支持调整跨语言的通用属性设置权限
 
@@ -36,7 +36,7 @@ The FrameNode cannot be set whether to support cross-language common attribute s
 
 **错误描述**
 
-当前FrameNode节点不支持跨语言通用属性设置，无法调整其跨语言的通用属性设置权限。
+当前FrameNode节点的组件类型不支持调整跨语言通用属性设置权限。
 
 **可能原因**
 
@@ -92,17 +92,17 @@ The parameter is invalid. Details about the invalid parameter and the reason are
 
 **错误描述**
 
-传入参数有误。
+参数无效。错误信息中包含无效参数及其原因的详细信息。例如：“参数‘targetNode’无效：该参数不能是已销毁的节点。”
 
 **可能原因**
 
-如果传入null、undefined或其他无效参数，请查看错误信息以了解具体原因。
+传入的参数为null、undefined或其他无效值，具体原因可查看错误信息。
 
 **处理步骤**
 
 1. 当报错信息显示传入参数为null，改为传入一个非空的FrameNode对象。
-2. 当报错信息显示找不到公共父节点时，传入目标节点前判断目标节点是否为离屏节点，并传入与当前节点存在公共父节点的目标节点。
-3. 其他原因的报错可参考错误信息进行修改。
+2. 当报错信息显示找不到公共祖先节点时，传入目标节点前判断目标节点是否为离屏节点，并传入与当前节点存在公共祖先节点的目标节点。
+3. 根据错误信息中指明的无效参数及原因，修改对应参数。
 
 ## 100026 调用接口的实例对象已与后端实体节点解绑
 
@@ -116,7 +116,7 @@ The current FrameNode has been disposed.
 
 **可能原因**
 
-开发者在当前接口调用前，使用该实例对象调用了[disposeNode](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)接口，例如：item.dispose()。
+开发者在当前接口调用前，使用该实例对象调用了[dispose](./js-apis-arkui-frameNode.md#dispose12)接口，例如：item.dispose()。
 
 **处理步骤**
 

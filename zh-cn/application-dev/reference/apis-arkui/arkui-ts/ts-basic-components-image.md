@@ -565,7 +565,7 @@ colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor)
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) | 是   | 图像颜色的滤镜值。<br/>[ColorFilter](ts-types.md#colorfilter9)、[DrawingColorFilter](#drawingcolorfilter12)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter9)的接口说明。 [ResourceColor](ts-types.md#resourcecolor)类型的输入颜色值，默认按照[DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter)的SRC_ATOP模式进行绘制。 |
+| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) | 是   | 图像颜色的滤镜值。<br/>[ColorFilter](ts-types.md#colorfilter9)、[DrawingColorFilter](#drawingcolorfilter12)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter9)的接口说明。[ResourceColor](ts-types.md#resourcecolor)类型的输入颜色值，默认按照[DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter)的SRC_ATOP模式进行绘制（该模式表示滤镜颜色与目标图像叠加，滤镜覆盖在目标上方）。 |
 
 ### draggable<sup>9+</sup>
 
@@ -2640,7 +2640,7 @@ struct Index {
         .height(100)
         .width(100)
         .onError((e)=>{
-          console.error(`DownLoadErrorInfo: ${JSON.stringify(e?.downloadInfo)}`)
+          console.error(`DownloadErrorInfo: ${JSON.stringify(e?.downloadInfo)}`)
         })
     }
     .height('100%')

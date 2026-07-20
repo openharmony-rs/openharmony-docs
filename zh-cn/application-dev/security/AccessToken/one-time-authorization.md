@@ -27,7 +27,7 @@
 
 当前仅支持以下权限，当应用向用户申请这些权限时，弹窗将显示“允许本次使用”的选项；在设置中修改这些权限时，系统将显示“每次询问”的选项。
 
-- 剪切板：["ohos.permission.READ_PASTEBOARD"](restricted-permissions.md#ohospermissionread_pasteboard)
+- 剪贴板：["ohos.permission.READ_PASTEBOARD"](restricted-permissions.md#ohospermissionread_pasteboard)
 - 模糊位置：["ohos.permission.APPROXIMATELY_LOCATION"](permissions-for-all-user.md#ohospermissionapproximately_location)
 - 位置：["ohos.permission.LOCATION"](permissions-for-all-user.md#ohospermissionlocation)
 - 后台位置：["ohos.permission.LOCATION_IN_BACKGROUND"](permissions-for-all-user.md#ohospermissionlocation_in_background)
@@ -37,19 +37,18 @@
 ## 使用限制
 
 - 当用户点击“允许本次使用”按钮后，应用将获得临时权限。
-  - **相机与麦克风权限：** 临时权限将一直保持，直到应用彻底退出（进程销毁）后才会收回。在此期间，应用切换至后台或前台均不影响权限状态。
 
-  - **其他权限（剪切板/位置/模糊位置/后台位置）：** 在应用处于以下状态时，应用的临时权限会持续保留：
+  在应用处于以下状态时，应用的临时权限会持续保留：
 
-      - 应用处于前台活跃状态。
-      - 应用展开卡片，且[卡片处于当前屏幕可见](../../form/arkts-ui-widget-lifecycle.md)。
-      - 应用使用定位导航类[后台长时任务](../../task-management/continuous-task.md)，可保留位置/模糊位置/后台位置权限。
+    - 应用处于前台活跃状态。
+    - 应用展开卡片，且[卡片处于当前屏幕可见](../../form/arkts-ui-widget-lifecycle.md)。
+    - 应用使用定位导航类[后台长时任务](../../task-management/continuous-task.md)，可保留位置/模糊位置/后台位置权限。
 
-      除上述状态外，系统将启动 10 秒倒计时，计时结束后，系统将自动取消临时授权。临时授权被取消后，若需再次获取该权限，必须重新向用户弹窗申请授权。
+    除上述状态外，系统将启动 10 秒倒计时，计时结束后，系统将自动取消临时授权。临时授权被取消后，若需再次获取该权限，必须重新向用户弹窗申请授权。
 
-     <!--RP2-->
-     如下图样例所示，相机应用处于卡片可见状态：
+    <!--RP2-->
+    如下图样例所示，相机应用处于卡片可见状态：
 
-     ![alt text](figures/form_visible.png)
-     <!--RP2End-->
+    ![alt text](figures/form_visible.png)
+    <!--RP2End-->
 - 当用户在位置的权限设置中选择“每次询问”时，应用将获得模糊位置和位置临时权限。取消临时授权的操作与此相同。

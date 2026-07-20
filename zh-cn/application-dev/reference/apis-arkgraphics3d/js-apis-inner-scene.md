@@ -16,8 +16,8 @@
 ## 导入模块
 
 ```ts
-import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters,RenderResourceFactory,
-  SceneResourceFactory, SceneComponent, RenderContext, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
+import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters, RenderResourceFactory, CameraParameters, EffectParameters,
+  SceneResourceFactory, SceneComponent, RenderContext, SoftShadowConfig, PCFConfig, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceParameters
@@ -28,7 +28,7 @@ import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastPar
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 要创建资源的名称，可由开发者自定填写，用于标识该场景资源。|
+| name | string | 否 | 否 | 要创建资源的名称，可由开发者自定义填写，用于标识该场景资源。|
 | uri | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr) | 否 | 是 | 3D场景所需的资源文件路径。默认值为undefined。|
 
 **示例：**
@@ -805,7 +805,7 @@ function createEffect() : Promise<Effect> {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 要创建场景组件的名称，可由开发者自定填写，用于标识场景组件。|
+| name | string | 否 | 否 | 要创建场景组件的名称，可由开发者自定义填写，用于标识场景组件。|
 | property | Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | 是 | 否 | 组件的属性集合，以键值对形式存储。支持多种基础类型和复杂类型，用于描述场景组件的各种属性，单位及取值范围取决于具体场景组件。|
 
 ## RenderContext<sup>20+</sup>

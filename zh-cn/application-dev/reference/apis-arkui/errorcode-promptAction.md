@@ -94,7 +94,7 @@ targetId无效，或者对应的节点已销毁。
 
 请确认targetId对应的节点是否存在，可以通过[getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12)接口查询。
 
-## 103305 指定的targetId对应的节点未挂载在节点树上
+## 103305 指定的targetId对应的节点未挂载在组件树上
 
 **错误信息**
 
@@ -102,17 +102,37 @@ The node of targetId is not in the component tree.
 
 **错误描述**
 
-指定的targetId对应的节点未挂载在节点树上时，方法将返回该错误码。
+指定的targetId对应的节点未挂载在组件树上时，方法将返回该错误码。
 
 **可能原因**
 
-指定的targetId对应的节点未挂载在节点树上。
+指定的targetId对应的节点未挂载在组件树上。
 
 **处理步骤**
 
 1. 请确认targetId对应的节点是否存在，可以通过[getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12)接口查询。
 
-2. 请确认targetId对应的节点已挂载在主节点树上，可以通过内容节点的[isAttached()](./js-apis-arkui-frameNode.md#isattached12)接口判断是否被挂载到主节点树上。
+2. 请确认targetId对应的节点已挂载在主组件树上，可以通过内容节点的[isAttached()](./js-apis-arkui-frameNode.md#isattached12)接口判断是否被挂载到主组件树上。
+
+## 103306 节点挂载失败导致无法打开弹出框
+
+**错误信息**
+
+The dialog cannot be opened due to node mount failure.
+
+**错误描述**
+
+由于节点挂载失败，无法打开弹出框。
+
+**可能原因**
+
+弹出框内容节点挂载失败，无法挂载到节点树上正常渲染显示。
+
+**处理步骤**
+
+1. 请确认弹出框内容能够正常渲染显示。
+
+2. 当[DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的levelMode设置为LevelMode.EMBEDDED时，请确认levelUniqueId对应的页面节点已挂载到节点树上后再调用[present](arkts-apis-uicontext-dialogpresenter.md#present)接口。
 
 ## 103307 系统弹出窗口导致无法打开浮层
 
@@ -131,6 +151,28 @@ The overlay cannot be opened due to the system pop-up window.
 **处理步骤**
 
 等待用户关闭系统弹出窗口后重新尝试打开浮层。
+
+## 103308 子窗口创建失败导致无法打开弹出框
+
+**错误信息**
+
+The dialog cannot be opened due to subwindow create failure.
+
+**错误描述**
+
+由于子窗口创建失败，无法打开弹出框。
+
+**可能原因**
+
+1. 当前页面存在系统弹出窗口，拦截浮层的显示，导致弹出框的子窗创建失败。
+
+2. 当弹出框需要在子窗口中显示（[DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的showInSubWindow设置为true）时，子窗口创建失败。
+
+**处理步骤**
+
+1. 等待用户关闭系统弹出窗口后重新尝试打开浮层。
+
+2. 请确认当前环境支持创建子窗口后重新尝试调用[present](arkts-apis-uicontext-dialogpresenter.md#present)接口。
 
 ## 103401 无法找到对应的文本提示框
 

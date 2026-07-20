@@ -5,7 +5,7 @@
 <!--Owner: @li-weifeng2024; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AbilityDelegator是用于调度和管理UIAbility测试生命周期的代理控制器，它通过AbilityMonitor机制来监听和管理[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)生命周期的变化。例如获取UIAbility当前状态（如是否已创建/是否在前台等）、查询当前获焦的UIAbility、等待UIAbility进入某个生命周期节点（如等待UIAbility进入onForeground）、启动指定UIAbility、设置超时机制等功能。
 
@@ -33,7 +33,7 @@ addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -42,7 +42,7 @@ addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 | monitor  | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) | 是       | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例。 |
 | callback | AsyncCallback\<void>                                         | 是       | 回调函数。当添加AbilityMonitor实例成功，err为undefined，否则为错误对象。   |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -61,14 +61,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 声明AbilityDelegator对象
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 // 创建AbilityMonitor实例，设置监听的Ability名称和onAbilityCreate生命周期回调
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}`);
+}
+
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
-
-let onAbilityCreateCallback = (data: UIAbility) => {
-  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}`);
-}
 
 // 获取AbilityDelegator实例
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -88,7 +88,7 @@ addAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -102,7 +102,7 @@ addAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 | -------------- | ------------------- |
 | Promise\<void> |Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -117,9 +117,9 @@ addAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
 
-function onAbilityCreateCallback(data: UIAbility) {
+let onAbilityCreateCallback = (data: UIAbility) => {
   console.info('onAbilityCreateCallback');
-}
+};
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
@@ -140,7 +140,7 @@ addAbilityMonitorSync(monitor: AbilityMonitor): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -148,7 +148,7 @@ addAbilityMonitorSync(monitor: AbilityMonitor): void
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | monitor | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) | 是   | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -165,9 +165,9 @@ import { UIAbility } from '@kit.AbilityKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 
-function onAbilityCreateCallback(data: UIAbility) {
+let onAbilityCreateCallback = (data: UIAbility) => {
   console.info('onAbilityCreateCallback');
-}
+};
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
@@ -186,16 +186,16 @@ removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): v
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | monitor  | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) | 是   | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例。 |
-| callback | AsyncCallback\<void>                                         | 是   | 回调函数。当删除已经添加的AbilityMonitor实例成功，err为undefined，否则为错误对象。  |
+| callback | AsyncCallback\<void>                                         | 是   | 回调函数。成功删除AbilityMonitor实例时，err为undefined；否则为错误对象。  |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -213,9 +213,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 
-function onAbilityCreateCallback(data: UIAbility) {
+let onAbilityCreateCallback = (data: UIAbility) => {
   console.info('onAbilityCreateCallback');
-}
+};
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
@@ -238,7 +238,7 @@ removeAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -252,7 +252,7 @@ removeAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 | -------------- | ------------------- |
 | Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -268,14 +268,15 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
-
-function onAbilityCreateCallback(data: UIAbility) {
-  console.info('onAbilityCreateCallback');
-}
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitor(monitor).then(() => {
@@ -291,7 +292,7 @@ removeAbilityMonitorSync(monitor: AbilityMonitor): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -299,7 +300,7 @@ removeAbilityMonitorSync(monitor: AbilityMonitor): void
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | monitor  | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) | 是   | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -315,14 +316,15 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
-
-function onAbilityCreateCallback(data: UIAbility) {
-  console.info('onAbilityCreateCallback');
-}
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitorSync(monitor);
@@ -336,16 +338,16 @@ waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<UIAbility>)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | monitor  | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) | 是   | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例。 |
-| callback | AsyncCallback\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | 是   | 回调函数。当等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期成功，err为undefined，data为获取到的Ability实例，否则为错误对象。   |
+| callback | AsyncCallback\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | 是   | 回调函数。当成功等待与AbilityMonitor实例匹配的Ability进入OnCreate生命周期时，返回的err为undefined，data则为该Ability实例；否则为错误对象。   |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -362,14 +364,15 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
-};
 
 let onAbilityCreateCallback = (data: UIAbility) => {
   console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}`);
 }
+
+let monitor: abilityDelegatorRegistry.AbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbility) => {
@@ -389,7 +392,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCall
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -397,9 +400,9 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCall
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | monitor  | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) | 是   | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例。 |
 | timeout  | number                                                       | 是   | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。                                 |
-| callback | AsyncCallback\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | 是   | 表示指定的回调方法。                                           |
+| callback | AsyncCallback\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | 是   | 回调函数。当成功等待与AbilityMonitor实例匹配的Ability进入OnCreate生命周期时，返回的err为undefined，data则为该Ability实例；否则为错误对象。                                           |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -420,14 +423,14 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 // 设置最大等待时间（毫秒）
 let timeout = 100;
 // 创建AbilityMonitor实例，设置监听的Ability名称
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}.`);
+};
+
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
-
-function onAbilityCreateCallback(data: UIAbility) {
-  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}.`);
-}
 
 // 获取AbilityDelegator实例
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -451,7 +454,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise\<UIAbilit
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -466,7 +469,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise\<UIAbilit
 | ----------------------------------------------------------- | -------------------------- |
 | Promise\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | Promise对象，返回Ability实例。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -482,14 +485,15 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
-
-function onAbilityCreateCallback(data: UIAbility) {
-  console.info('onAbilityCreateCallback');
-}
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
@@ -505,7 +509,7 @@ getAppContext(): Context
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
@@ -533,7 +537,7 @@ getAbilityState(ability: UIAbility): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -547,7 +551,7 @@ getAbilityState(ability: UIAbility): number
 | ------ | ------------------------------------------------------------ |
 | number | 指定ability的生命周期状态。状态枚举值使用[AbilityLifecycleState](js-apis-app-ability-abilityDelegatorRegistry.md#abilitylifecyclestate)。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
@@ -586,7 +590,7 @@ getCurrentTopAbility(callback: AsyncCallback\<UIAbility>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -594,7 +598,7 @@ getCurrentTopAbility(callback: AsyncCallback\<UIAbility>): void
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | callback | AsyncCallback\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | 是   | 回调函数。当获取当前应用顶部Ability成功，err为undefined，data为获取到的Ability实例；否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -632,7 +636,7 @@ getCurrentTopAbility(): Promise\<UIAbility>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：**SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
@@ -640,7 +644,7 @@ getCurrentTopAbility(): Promise\<UIAbility>
 | ----------------------------------------------------------- | -------------------------------------- |
 | Promise\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | Promise对象，返回当前应用顶部Ability。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -672,7 +676,7 @@ startAbility(want: Want, callback: AsyncCallback\<void>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -681,7 +685,7 @@ startAbility(want: Want, callback: AsyncCallback\<void>): void
 | want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability参数。    |
 | callback | AsyncCallback\<void>                   | 是   | 回调函数。当启动指定Ability成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -739,7 +743,7 @@ startAbility(want: Want): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -753,7 +757,7 @@ startAbility(want: Want): Promise\<void>
 | -------------- | ------------------- |
 | Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -802,7 +806,7 @@ doAbilityForeground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -811,7 +815,7 @@ doAbilityForeground(ability: UIAbility, callback: AsyncCallback\<void>): void
 | ability  | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)  | 是   | 指定Ability对象。                                         |
 | callback | AsyncCallback\<void>    | 是   | 回调函数。当调度指定Ability生命周期状态到Foreground状态成功，err为undefined，否则为错误对象。  |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -856,7 +860,7 @@ doAbilityForeground(ability: UIAbility): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -870,7 +874,7 @@ doAbilityForeground(ability: UIAbility): Promise\<void>
 | ----------------- | ------------------------------------------------------------ |
 | Promise\<void> | Promise对象。无返回结果的Promise对象。         |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -897,7 +901,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
     console.info('getCurrentTopAbility callback');
     ability = data;
     abilityDelegator.doAbilityForeground(ability).then(() => {
-      console.info("doAbilityForeground promise");
+      console.info('doAbilityForeground promise');
     });
   }
 });
@@ -911,7 +915,7 @@ doAbilityBackground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -920,7 +924,7 @@ doAbilityBackground(ability: UIAbility, callback: AsyncCallback\<void>): void
 | ability  | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)  | 是   | 指定Ability对象。                                         |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当调度指定Ability生命周期状态到Background状态成功，err为undefined，否则为错误对象。  |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -950,7 +954,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
       if (err) {
         console.error(`doAbilityBackground fail. Code: ${err.code}, message: ${err.message}`);
       } else {
-        console.info("doAbilityBackground callback");
+        console.info('doAbilityBackground callback');
       }
     });
   }
@@ -965,7 +969,7 @@ doAbilityBackground(ability: UIAbility): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -979,7 +983,7 @@ doAbilityBackground(ability: UIAbility): Promise\<void>
 | ----------------- | ------------------------------------------------------------ |
 | Promise\<void> | Promise对象。无返回结果的Promise对象。                            |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1006,7 +1010,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
     console.info('getCurrentTopAbility callback');
     ability = data;
     abilityDelegator.doAbilityBackground(ability).then(() => {
-      console.info("doAbilityBackground promise");
+      console.info('doAbilityBackground promise');
     });
   }
 });
@@ -1020,7 +1024,7 @@ printSync(msg: string): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1028,7 +1032,7 @@ printSync(msg: string): void
 | ------ | ------ | ---- | ---------- |
 | msg    | string | 是   | 日志字符串。字符串最大长度为10000。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
@@ -1056,7 +1060,7 @@ print(msg: string, callback: AsyncCallback\<void>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1092,7 +1096,7 @@ print(msg: string): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1130,7 +1134,7 @@ executeShellCommand(cmd: string, callback: AsyncCallback\<ShellCmdResult>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1171,7 +1175,7 @@ executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback\<S
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1211,7 +1215,7 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1249,7 +1253,7 @@ finishTest(msg: string, code: number, callback: AsyncCallback\<void>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1259,7 +1263,7 @@ finishTest(msg: string, code: number, callback: AsyncCallback\<void>): void
 | code     | number               | 是   | 日志码。             |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当结束测试并打印日志信息到单元测试终端控制台成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1295,7 +1299,7 @@ finishTest(msg: string, code: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1310,7 +1314,7 @@ finishTest(msg: string, code: number): Promise\<void>
 | -------------- | ------------------- |
 | Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1341,7 +1345,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<vo
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1350,7 +1354,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<vo
 | monitor  | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) | 是       | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) 实例。 |
 | callback | AsyncCallback\<void>                                         | 是       | 回调函数。当添加一个用于监视指定AbilityStage的生命周期状态更改的AbilityStageMonitor对象成功，err为undefined，否则为错误对象。     |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1372,7 +1376,11 @@ abilityDelegator.addAbilityStageMonitor({
   moduleName: 'moduleName',
   srcEntrance: 'srcEntrance',
 }, (err: BusinessError) => {
-  console.info('addAbilityStageMonitor callback');
+  if (err) {
+    console.error(`addAbilityStageMonitor fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('addAbilityStageMonitor callback');
+  }
 });
 ```
 
@@ -1384,7 +1392,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1398,7 +1406,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 | -------------- | ------------------- |
 | Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1431,7 +1439,7 @@ addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1439,7 +1447,7 @@ addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 | -------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | monitor  | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) | 是       | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) 实例。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1470,7 +1478,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1479,7 +1487,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\
 | monitor  | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) | 是       | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) 实例。 |
 | callback | AsyncCallback\<void>                                         | 是       | 回调函数。当从应用程序内存中删除指定的AbilityStageMonitor对象成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1501,7 +1509,11 @@ abilityDelegator.removeAbilityStageMonitor({
   moduleName: 'moduleName',
   srcEntrance: 'srcEntrance',
 }, (err: BusinessError) => {
-  console.info('removeAbilityStageMonitor callback');
+  if (err) {
+    console.error(`removeAbilityStageMonitor fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('removeAbilityStageMonitor callback');
+  }
 });
 ```
 
@@ -1513,7 +1525,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1527,7 +1539,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 | -------------- | ------------------- |
 | Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1560,7 +1572,7 @@ removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1568,7 +1580,7 @@ removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 | -------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | monitor  | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) | 是       | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) 实例。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1600,7 +1612,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<A
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1609,7 +1621,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<A
 | monitor  | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) | 是       | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) 实例。 |
 | callback | AsyncCallback\<AbilityStage>                                         | 是       | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为undefined，data为获取到的[AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md)对象；否则为错误对象。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1632,7 +1644,11 @@ abilityDelegator.waitAbilityStageMonitor({
   moduleName: 'moduleName',
   srcEntrance: 'srcEntrance',
 }, (err: BusinessError, data: AbilityStage) => {
-  console.info('waitAbilityStageMonitor callback');
+  if (err) {
+    console.error(`waitAbilityStageMonitor fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('waitAbilityStageMonitor callback');
+  }
 });
 ```
 
@@ -1644,7 +1660,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1659,7 +1675,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise
 | -------------- | ------------------- |
 | Promise\<AbilityStage> | Promise对象，返回[AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md)对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1693,7 +1709,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback:
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1703,7 +1719,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback:
 | timeout | number | 是   | 超时最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
 | callback | AsyncCallback\<AbilityStage>                                         | 是       | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为undefined，data为获取到的[AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md)对象；否则为错误对象。   |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
@@ -1727,7 +1743,11 @@ abilityDelegator.waitAbilityStageMonitor({
   moduleName: 'moduleName',
   srcEntrance: 'srcEntrance',
 }, timeout, (err: BusinessError, data: AbilityStage) => {
-  console.info('waitAbilityStageMonitor callback');
+  if (err) {
+    console.error(`waitAbilityStageMonitor fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('waitAbilityStageMonitor callback');
+  }
 });
 ```
 
@@ -1739,7 +1759,7 @@ setMockList(mockList: Record\<string, string>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
