@@ -47,7 +47,7 @@ The UUID is already registered.
 
 **处理步骤**
 
-调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#destroyport)接口销毁对应UUID的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
+调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#datatransferdestroyport)接口销毁对应UUID的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
 ## 36100021 端口注册数量超出上限
@@ -66,7 +66,7 @@ Port exceeds the upper limit.
 
 **处理步骤**
 
-调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#destroyport)接口销毁其他已注册的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
+调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#datatransferdestroyport)接口销毁其他已注册的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
 ## 36100022 端口未注册
