@@ -38,8 +38,8 @@ NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](./arkts-apis-webvie
 | release | [ZeroParamFn](#zeroparamfn23)\<> | 否   | 否   | 销毁播放器。|
 | enterFullscreen | [ZeroParamFn](#zeroparamfn23)\<> | 否   | 否   | 使播放器进入全屏。|
 | exitFullscreen | [ZeroParamFn](#zeroparamfn23)\<> | 否   | 否   | 使播放器退出全屏。|
-| resumePlayer | [ResumePlayerFn](#resumeplayerfn23) | 否   | 是   | 通知应用重建播放器，并恢复播放器的状态信息。在 suspendPlayer 挂起后，当需要恢复媒体播放时由 ArkWeb 内核触发，应用应依据已保存的状态信息重建播放器并恢复到挂起前的播放状态。仅与 suspendPlayer 成对出现。|
-| suspendPlayer | [SuspendPlayerFn](#suspendplayerfn23) | 否   | 是   | 通知应用销毁播放器，并保存播放器的状态信息。当系统资源需要释放或媒体播放需要临时挂起时由 ArkWeb 内核触发，应用应保存当前播放状态（如播放位置、音量等）以便后续恢复。仅与 resumePlayer 成对出现。|
+| resumePlayer | [ResumePlayerFn](#resumeplayerfn23) | 否   | 是   | 通知应用重建播放器，并恢复播放器的状态信息。仅与 suspendPlayer 成对出现。|
+| suspendPlayer | [SuspendPlayerFn](#suspendplayerfn23) | 否   | 是   | 通知应用销毁播放器，并保存播放器的状态信息。仅与 resumePlayer 成对出现。|
 
 ## updateRect<sup>12+</sup>
 
@@ -238,7 +238,7 @@ exitFullscreen(): void
 
 resumePlayer?(): void
 
-通知应用重建播放器，并恢复播放器的状态信息。在 suspendPlayer 挂起后，当需要恢复媒体播放时由 ArkWeb 内核触发，应用应依据已保存的状态信息重建播放器并恢复到挂起前的播放状态。仅与 suspendPlayer 成对出现。
+通知应用重建播放器，并恢复播放器的状态信息。仅与 suspendPlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -254,7 +254,7 @@ resumePlayer?(): void
 
 suspendPlayer?(type: SuspendType): void
 
-通知应用销毁播放器，并保存播放器的状态信息。当系统资源需要释放或媒体播放需要临时挂起时由 ArkWeb 内核触发，应用应保存当前播放状态（如播放位置、音量等）以便后续恢复。仅与 resumePlayer 成对出现。
+通知应用销毁播放器，并保存播放器的状态信息。仅与 resumePlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -321,7 +321,7 @@ type OneParamFn<T,V=void> = (param: T) => V
 
 type ResumePlayerFn = () => void
 
-通知应用重建播放器，并恢复播放器的状态信息。在 suspendPlayer 挂起后，当需要恢复媒体播放时由 ArkWeb 内核触发，应用应依据已保存的状态信息重建播放器并恢复到挂起前的播放状态。仅与 suspendPlayer 成对出现。
+通知应用重建播放器，并恢复播放器的状态信息。仅与 suspendPlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -333,7 +333,7 @@ type ResumePlayerFn = () => void
 
 type SuspendPlayerFn = (type: SuspendType) => void
 
-通知应用销毁播放器，并保存播放器的状态信息。当系统资源需要释放或媒体播放需要临时挂起时由 ArkWeb 内核触发，应用应保存当前播放状态（如播放位置、音量等）以便后续恢复。仅与 resumePlayer 成对出现。
+通知应用销毁播放器，并保存播放器的状态信息。仅与 resumePlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
