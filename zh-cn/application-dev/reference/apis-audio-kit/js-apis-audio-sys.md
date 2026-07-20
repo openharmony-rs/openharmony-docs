@@ -4671,7 +4671,7 @@ audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice', headTrac
 
 isAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
 
-查询指定设备是否开启了自适应空间音频渲染。同步返回结果。
+以同步方式查询指定设备是否开启了自适应空间音频渲染。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4681,13 +4681,13 @@ isAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor): bool
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 目标设备描述符，用于查询是否开启了自适应空间音频渲染。 |
+| deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 待查询的设备描述符。 |
 
 **返回值：**
 
 | 类型                                           | 说明                          |
 |----------------------------------------------| ----------------------------- |
-| boolean | 指定设备是否开启了自适应空间音频渲染。返回true，表示自适应空间音频渲染开启。返回false，表示自适应空间音频渲染关闭。 |
+| boolean | 指定设备是否开启了自适应空间音频渲染。true表示自适应空间音频渲染开启；false表示自适应空间音频渲染关闭。 |
 
 **错误码：**
 
@@ -4748,7 +4748,7 @@ setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enab
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 目标设备描述符，用于设置是否开启自适应空间音频渲染。 |
+| deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 待设置的设备描述符。 |
 | enabled     | boolean     | 是   | 是否开启自适应空间音频渲染。true表示开启；false表示关闭。 |
 
 **返回值：**
