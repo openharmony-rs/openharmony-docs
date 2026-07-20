@@ -12,7 +12,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 ## 开发指导
 
-使用AudioHaptic开发音频与振动协同播放功能，涉及到音频及振动资源的管理、音频时延模式及音频流使用类型的配置、音振播放器的创建及管理等。本开发指导将以一次音振协同播放的过程为例，向开发者讲解如何使用AudioHaptic开发音振协同播放功能，建议结合[audioHaptic](../../reference/apis-audio-kit/js-apis-audioHaptic.md)API接口文档一起阅读。
+使用AudioHaptic开发音频与振动协同播放功能，涉及到音频及振动资源的管理、音频时延模式及音频流使用类型的配置、音振播放器的创建及管理等。本文将以一次音振协同播放的过程为例，讲解如何使用AudioHaptic开发音振协同播放功能，建议结合[audioHaptic](../../reference/apis-audio-kit/js-apis-audioHaptic.md)API接口文档一起阅读。
 
 ### 权限申请
 
@@ -25,7 +25,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 1. 获取音振管理器实例，并注册音频及振动资源，单个应用最多支持同时注册128个资源，播放器支持的音频和振动资源格式，请查看[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)文档中的描述。开发者可通过如下两种方式注册资源：
    - 方式1：使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)接口，通过文件URI来注册资源。
-   - 方式2（推荐）：从API版本20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源，更便于开发者使用。
+   - 方式2（推荐）：从API版本20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源。
 
    <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
