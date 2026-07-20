@@ -1468,6 +1468,59 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 });
 ```
 
+## volumemanager.isVolumeInUse
+
+isVolumeInUse(volumePath: string): Promise&lt;boolean&gt;
+
+查询指定卷是否处于占用状态。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| volumePath | string | 是   | 指定卷的物理路径。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| ---------------------- | ---------- |
+| Promise&lt;boolean&gt; | Promise对象，返回指定卷是否处于被占用状态，true代表正在被占用，false代表未被占用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600010 | The input parameter is invalid. |
+| 13600033 | Failed to query whether the specified volume is currently in use. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let volumePath: string = "";
+volumeManager.isVolumeInUse(volumePath).then(() => {
+  console.info("isVolumeInUse successfully.");
+}).catch((error: BusinessError) => {
+  console.error(`isVolumeInUse failed with error, code is: ${error.code}, message is: ${error.message}`);
+});
+```
+
 ## Volume
 
 卷信息详情。

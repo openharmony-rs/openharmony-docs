@@ -190,5 +190,4 @@ struct ComponentPage {
     .height('100%')
   }
 }
-
 ```

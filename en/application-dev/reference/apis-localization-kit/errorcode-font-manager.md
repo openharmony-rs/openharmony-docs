@@ -6,6 +6,7 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=cc8fe8b0f1b2859346994908b98ebf9b3df1ff9d translatedAt=2026-07-17T00:22:39.717Z pushedAt=2026-07-17T03:07:15.093Z -->
 
 > **NOTE**
 >
@@ -15,16 +16,16 @@
 
 **Error Message**
 
-Font does not exist.
+The font does not exist.
 
-**Symptom**
+**Description**
 
-This error code is reported input font file path does not exist.
+This error code is reported if the input font file path does not exist.
 
 **Possible Causes**
 
 The font file path is incorrect.
- 
+
 **Solution**
 
 Ensure that the input file is in **.ttf** or **.ttc** format and the path is correct.
@@ -33,17 +34,18 @@ Ensure that the input file is in **.ttf** or **.ttc** format and the path is cor
 
 **Error Message**
 
-Font is not supported.
+The font is not supported.
 
-**Symptom**
+**Description**
 
 This error code is reported if the input file is not a font file, leading to an installation failure.
 
 **Possible Causes**
 
 1. The input file is not in **.ttf** or **.ttc** format.
+
 2. The file content does not comply with the font file specifications.
- 
+
 **Solution**
 
 Ensure that the input file is in **.ttf** or **.ttc** format.
@@ -52,16 +54,16 @@ Ensure that the input file is in **.ttf** or **.ttc** format.
 
 **Error Message**
 
-Font file copy failed.
+Failed to copy the font file.
 
-**Symptom**
+**Description**
 
 This error code is reported if copying the font file fails during installation.
 
 **Possible Causes**
 
 An exception occurs during font file copying.
- 
+
 **Solution**
 
 Try again, or restart the device and try again.
@@ -70,16 +72,16 @@ Try again, or restart the device and try again.
 
 **Error Message**
 
-Font file installed.
+The font file is installed.
 
-**Symptom**
+**Description**
 
 This error code is reported if the input font file has been installed.
 
 **Possible Causes**
 
 The input font file has been installed, and the font name is duplicate.
- 
+
 **Solution**
 
 Uninstall the existing font with the same name and reinstall the font file.
@@ -88,16 +90,16 @@ Uninstall the existing font with the same name and reinstall the font file.
 
 **Error Message**
 
-Exceeded maximum number of installed files.
+Exceeded the maximum number of installed files.
 
-**Symptom**
+**Description**
 
 This error code is reported if the number of installed font files reaches the maximum.
 
 **Possible Causes**
 
 The number of installed font files reaches the maximum (200).
- 
+
 **Solution**
 
 Uninstall unnecessary font files and try again.
@@ -106,16 +108,16 @@ Uninstall unnecessary font files and try again.
 
 **Error Message**
 
-Other error.
+The system ability works abnormally.
 
-**Symptom**
+**Description**
 
 This error code is reported if the font file installation fails because of a system error. 
 
 **Possible Causes**
 
 An exception occurs during font installation.
- 
+
 **Solution**
 
 Try again, or restart the device and try again.
@@ -124,16 +126,16 @@ Try again, or restart the device and try again.
 
 **Error Message**
 
-Font file does not exist.
+The font file does not exist.
 
-**Symptom**
+**Description**
 
 This error code is reported if the font file to be uninstalled does not exist.
 
 **Possible Causes**
 
 The font file to be uninstalled has not been installed, or the input font file name is incorrect.
- 
+
 **Solution**
 
 Check whether the input font name is correct. If not, correct it and try again.
@@ -142,16 +144,16 @@ Check whether the input font name is correct. If not, correct it and try again.
 
 **Error Message**
 
-Font file delete error.
+Failed to delete the font file.
 
-**Symptom**
+**Description**
 
 This error code is reported if deleting the font file fails during uninstallation.
 
 **Possible Causes**
 
 An exception occurs during uninstallation.
- 
+
 **Solution**
 
 Try again, or restart the device and try again.
@@ -160,16 +162,16 @@ Try again, or restart the device and try again.
 
 **Error Message**
 
-Other error.
+The system ability works abnormally.
 
-**Symptom**
+**Description**
 
 This error code is reported if the font file uninstallation fails because of a system error. 
 
 **Possible Causes**
 
 An exception occurs during uninstallation.
- 
+
 **Solution**
 
 Try again, or restart the device and try again.
@@ -178,16 +180,16 @@ Try again, or restart the device and try again.
 
 **Error Message**
 
-System error.
+Call failed due to system error.
 
-**Symptom**
+**Description**
 
 The system service is abnormal, and the API fails to be called.
 
 **Possible Causes**
 
-An exception occurs during data migration task startup.
- 
+A system exception occurred when the data migration task is started.
+
 **Solution**
 
 Perform the operation again or restart the device and then perform the operation again.
@@ -196,16 +198,16 @@ Perform the operation again or restart the device and then perform the operation
 
 **Error Message**
 
-DataMigrationing.
+Data migration is in progress.
 
-**Symptom**
+**Description**
 
-The data migration task is being executed and cannot be started again.
+The data migration task is in execution and cannot be started again.
 
 **Possible Causes**
 
 The data migration task is being executed.
- 
+
 **Solution**
 
-The migration task cannot be started again. Wait until the current task is complete.
+Do not start the migration task repeatedly. Wait until the current task is completed.

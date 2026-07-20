@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-基础组件，用于挂载自定义节点（如[FrameNode](../js-apis-arkui-frameNode.md)或[BuilderNode](../js-apis-arkui-builderNode.md)），并通过[NodeController](../js-apis-arkui-nodeController.md)动态控制节点的上树和下树。组件不支持尾随添加子节点，接受一个[NodeController](../js-apis-arkui-nodeController.md)实例接口，需与NodeController组合使用。
+基础组件，用于挂载自定义节点（如[FrameNode](../js-apis-arkui-frameNode.md)或[BuilderNode](../js-apis-arkui-builderNode.md)中获取的根节点FrameNode），并通过[NodeController](../js-apis-arkui-nodeController.md)动态控制节点的上树和下树，适用于需要在组件树中动态插入、移除自定义节点以实现UI按需加载与节点复用的场景，可提升页面渲染效率并降低节点创建开销。组件不支持尾随添加子节点，接受一个[NodeController](../js-apis-arkui-nodeController.md)实例，需与NodeController组合使用。
 
 > **说明：**
 >

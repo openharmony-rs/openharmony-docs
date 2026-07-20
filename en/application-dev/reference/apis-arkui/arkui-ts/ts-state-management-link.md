@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=79e4597a11fe0470e85a7a6ec526decbb0cbcff4 translatedAt=2026-07-15T07:36:24.771Z pushedAt=2026-07-15T08:48:52.774Z -->
 
-**@Link** is used for state management V1 to receive the reference of the state variable passed by the parent component and establishes two-way data binding between the parent and child components. It is applicable to scenarios where the parent component's state needs to be directly changed in the child component and the communication between the parent and child components needs to be simplified.
+**\@Link** is used for [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to receive the reference of the state variable passed by the parent component and establish two-way data binding between the parent and child components. It is applicable to scenarios where the parent component's state needs to be directly changed in the child component and the communication between the parent and child components needs to be simplified.
 
 For details, see [@Link Decorator: Implementing Two-Way Synchronization Between Parent and Child Components](../../../ui/state-management/arkts-link.md).
 

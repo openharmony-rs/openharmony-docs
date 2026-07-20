@@ -1,4 +1,4 @@
-# 使用Taihe实现ModularObjectExtensionAbility的IPC通信
+# 使用Taihe实现ModularObjectExtensionAbility的IPC通信 (C/C++)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

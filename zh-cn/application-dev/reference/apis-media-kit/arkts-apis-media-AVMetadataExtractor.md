@@ -53,7 +53,7 @@ import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
-media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
   if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
@@ -63,7 +63,7 @@ media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AV
     };
     avMetadataExtractor.setUrlSource(url, headers);
   } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code} message: ${error.message}`);
   }
 });
 ```
@@ -92,7 +92,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -126,10 +126,10 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
     avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((fetchedPixelMap: image.PixelMap) => {
       pixelMap = fetchedPixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
+      console.error(`Failed to fetch FrameByTime, code:${error.code} message:${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code} message: ${error.message}`);
   }
 });
 ```
@@ -199,10 +199,10 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
     avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((fetchedPixelMap: image.PixelMap | undefined) => {
       pixelMap = fetchedPixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
+      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVMetadataExtractor, code: ${error.code}, message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code}, message: ${error.message}`);
   }
 });
 ```
@@ -233,7 +233,7 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -263,13 +263,13 @@ async function fetchFramesByTimesDemo() {
   let avMetadataExtractor = await media.createAVMetadataExtractor();
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
-        console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
+        console.info(`fetchFramesByTimes callback failed, code: ${err.code} message: ${err.message}`);
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        let pixelMap = frameInfo.image;
+        this.pixelMap = frameInfo.image;
       }});
   }
 }
@@ -336,13 +336,13 @@ async function fetchFramesByTimesDemo() {
   let avMetadataExtractor = await media.createAVMetadataExtractor();
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+    avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
         console.error(`fetchFramesByTimes callback failed, code: ${err.code}, message: ${err.message}`);
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        let pixelMap = frameInfo.image;
+        this.pixelMap = frameInfo.image;
       }});
   }
 }
@@ -361,6 +361,7 @@ cancelAllFetchFrames(): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
@@ -371,7 +372,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.cancelAllFetchFrames();
   } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code} message: ${error.message}`);
   }
 });
 ```
@@ -411,7 +412,7 @@ async function test() {
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   avMetadataExtractor.fetchMetadata((error: BusinessError, metadata: media.AVMetadata) => {
     if (error) {
-      console.error(`Failed to fetch Metadata, err = ${JSON.stringify(error)}`);
+      console.error(`Failed to fetch Metadata, code: ${error.code} message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
@@ -455,7 +456,7 @@ async function test() {
   avMetadataExtractor.fetchMetadata().then((metadata: media.AVMetadata) => {
     console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to fetch Metadata, error message:${error.message}`);
+    console.error(`Failed to fetch Metadata, code: ${error.code} message: ${error.message}`);
   });
 }
 ```
@@ -553,7 +554,7 @@ async function test() {
 
   avMetadataExtractor.fetchAlbumCover((error: BusinessError, pixelMap: image.PixelMap) => {
     if (error) {
-      console.error(`Failed to fetch AlbumCover, error = ${JSON.stringify(error)}`);
+      console.error(`Failed to fetch AlbumCover, code: ${error.code} message: ${error.message}`);
       return;
     }
     pixel_map = pixelMap;
@@ -565,7 +566,7 @@ async function test() {
 
 fetchAlbumCover(): Promise\<image.PixelMap>
 
-获取专辑封面。使用Promise异步回调。
+获取音频专辑封面。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -599,7 +600,7 @@ async function test() {
   avMetadataExtractor.fetchAlbumCover().then((pixelMap: image.PixelMap) => {
     pixel_map = pixelMap;
   }).catch((error: BusinessError) => {
-    console.error(`Failed to fetch AlbumCover, error message:${error.message}`);
+    console.error(`Failed to fetch AlbumCover, code:${error.code} message:${error.message}`);
   });
 }
 ```
@@ -637,7 +638,7 @@ async function test() {
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   avMetadataExtractor.release((error: BusinessError) => {
     if (error) {
-      console.error(`Failed to release, err = ${JSON.stringify(error)}`);
+      console.error(`Failed to release, code: ${error.code} message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in releasing.`);
@@ -676,10 +677,12 @@ import { media } from '@kit.MediaKit';
 async function test() {
   // 创建AVMetadataExtractor对象。
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-  avMetadataExtractor.release().then(() => {
-    console.info(`Succeeded in releasing.`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to release, error message:${error.message}`);
-  });
+  if (avMetadataExtractor) {
+    avMetadataExtractor.release().then(() => {
+      console.info(`Succeeded in releasing.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to release, code: ${error.code} message: ${error.message}`);
+    });
+  }
 }
 ```

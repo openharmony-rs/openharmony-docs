@@ -45,7 +45,7 @@
 | [OH_AVRecorder_ContainerFormatType](#oh_avrecorder_containerformattype) | OH_AVRecorder_ContainerFormatType | 容器格式类型（容器格式类型的缩写是 CFT）。 |
 | [OH_AVRecorder_State](#oh_avrecorder_state) | OH_AVRecorder_State | AVRecorder状态。 |
 | [OH_AVRecorder_StateChangeReason](#oh_avrecorder_statechangereason) | OH_AVRecorder_StateChangeReason | AVRecorder状态变化的原因。 |
-| [OH_AVRecorder_FileGenerationMode](#oh_avrecorder_filegenerationmode) | OH_AVRecorder_FileGenerationMode | 创建录制文件的模式。 |
+| [OH_AVRecorder_FileGenerationMode](#oh_avrecorder_filegenerationmode) | OH_AVRecorder_FileGenerationMode | 录制文件的生成模式。 |
 
 ### 函数
 
@@ -121,8 +121,8 @@ enum OH_AVRecorder_CodecMimeType
 | AVRECORDER_AUDIO_G711MU = 5 | G711-mulaw 编码器MIME类型。 |
 | AVRECORDER_VIDEO_MPEG4 = 6 | MPEG4 编码器MIME类型。 |
 | AVRECORDER_VIDEO_HEVC = 8 | H.265 编码器MIME类型。 |
-| AVRECORDER_AUDIO_AMR_NB = 9 | AMR_NB 编解码器MIME类型。 |
-| AVRECORDER_AUDIO_AMR_WB = 10 | AMR_WB 编解码器MIME类型。 |
+| AVRECORDER_AUDIO_AMR_NB = 9 | AMR_NB 编码器MIME类型。 |
+| AVRECORDER_AUDIO_AMR_WB = 10 | AMR_WB 编码器MIME类型。 |
 
 ### OH_AVRecorder_ContainerFormatType
 
@@ -163,13 +163,13 @@ AVRecorder状态。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_IDLE = 0 | 空闲状态。此时可以调用[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)方法设置录制参数，进入AVRECORDER_PREPARED状态。 |
-| AVRECORDER_PREPARED = 1 | 准备状态。参数设置完成，此时可以调用[OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start)方法开始录制，进入AVRECORDER_STARTED状态。 |
-| AVRECORDER_STARTED = 2 | 启动状态。正在录制，此时可以调用[OH_AVRecorder_Pause](capi-avrecorder-h.md#oh_avrecorder_pause)方法暂停录制，进入AVRECORDER_PAUSED状态。<br>也可以调用[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)方法结束录制，进入AVRECORDER_STOPPED状态。 |
-| AVRECORDER_PAUSED = 3 | 暂停状态。此时可以调用[OH_AVRecorder_Resume](capi-avrecorder-h.md#oh_avrecorder_resume)方法继续录制，进入AVRECORDER_STARTED状态。<br>也可以调用[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)方法结束录制，进入AVRECORDER_STOPPED状态。 |
-| AVRECORDER_STOPPED = 4 | 停止状态。此时可以调用[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)方法设置录制参数，重新进入AVRECORDER_PREPARED状态。 |
-| AVRECORDER_RELEASED = 5 | 释放状态。录制资源释放，此时不能再进行任何操作。在任何其他状态下，均可以通过调用[OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release)方法进入AVRECORDER_RELEASED状态。 |
-| AVRECORDER_ERROR = 6 | 错误状态。当AVRecorder实例发生不可逆错误，会转换至当前状态。<br>切换至AVRECORDER_ERROR状态时会伴随[OH_AVRecorder_OnError](#oh_avrecorder_onerror)事件，该事件会上报详细错误原因。<br>在AVRECORDER_ERROR状态时，用户需要调用[OH_AVRecorder_Reset](capi-avrecorder-h.md#oh_avrecorder_reset)方法重置AVRecorder实例，或者调用[OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release)方法释放资源。 |
+| AVRECORDER_IDLE = 0 | 空闲状态。此时可以调用[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)接口设置录制参数，进入AVRECORDER_PREPARED状态。 |
+| AVRECORDER_PREPARED = 1 | 准备状态。参数设置完成，此时可以调用[OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start)接口开始录制，进入AVRECORDER_STARTED状态。 |
+| AVRECORDER_STARTED = 2 | 启动状态。正在录制，此时可以调用[OH_AVRecorder_Pause](capi-avrecorder-h.md#oh_avrecorder_pause)接口暂停录制，进入AVRECORDER_PAUSED状态。<br>也可以调用[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)接口结束录制，进入AVRECORDER_STOPPED状态。 |
+| AVRECORDER_PAUSED = 3 | 暂停状态。此时可以调用[OH_AVRecorder_Resume](capi-avrecorder-h.md#oh_avrecorder_resume)接口继续录制，进入AVRECORDER_STARTED状态。<br>也可以调用[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)接口结束录制，进入AVRECORDER_STOPPED状态。 |
+| AVRECORDER_STOPPED = 4 | 停止状态。此时可以调用[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)接口设置录制参数，重新进入AVRECORDER_PREPARED状态。 |
+| AVRECORDER_RELEASED = 5 | 释放状态。录制资源释放，此时不能再进行任何操作。在任何其他状态下，均可以通过调用[OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release)接口进入AVRECORDER_RELEASED状态。 |
+| AVRECORDER_ERROR = 6 | 错误状态。当AVRecorder实例发生不可逆错误，会转换至当前状态。<br>切换至AVRECORDER_ERROR状态时会伴随[OH_AVRecorder_OnError](#oh_avrecorder_onerror)事件，该事件会上报详细错误原因。<br>在AVRECORDER_ERROR状态时，用户需要调用[OH_AVRecorder_Reset](capi-avrecorder-h.md#oh_avrecorder_reset)接口重置AVRecorder实例，或者调用[OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release)接口释放资源。 |
 
 ### OH_AVRecorder_StateChangeReason
 
@@ -198,7 +198,7 @@ enum OH_AVRecorder_FileGenerationMode
 
 **描述**
 
-创建录制文件的模式。
+录制文件的生成模式。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -215,7 +215,7 @@ enum OH_AVRecorder_FileGenerationMode
 ### OH_AVRecorder_OnStateChange()
 
 ```c
-typedef void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder,OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)
+typedef void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)
 ```
 
 **描述**
@@ -239,7 +239,7 @@ typedef void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder,OH_AVRecorde
 ### OH_AVRecorder_OnError()
 
 ```c
-typedef void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg,void *userData)
+typedef void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)
 ```
 
 **描述**
@@ -268,7 +268,7 @@ typedef void (*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asse
 
 **描述**
 
-当录制在[OH_AVRecorder_FileGenerationMode](#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE模式下时调用。
+当录制在[OH_AVRecorder_FileGenerationMode](#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE模式时调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 

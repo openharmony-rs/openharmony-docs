@@ -79,9 +79,9 @@
        // 2.注册回调函数
        ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id.c_str(), provider,
            &accessibilityProviderCallbacksWithInstance_);
-       if (ret != 0) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                         "OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance failed");
+        if (ret != 0) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance failed");
            return;
        }
        g_provider = provider;
@@ -132,6 +132,8 @@
            // 设置根节点信息
            OH_ArkUI_AccessibilityElementInfoSetElementId(rootNode, 0);
            OH_ArkUI_AccessibilityElementInfoSetParentId(rootNode, parentOfRoot);
+           OH_ArkUI_AccessibilityElementInfoSetEnabled(rootNode, true);
+           OH_ArkUI_AccessibilityElementInfoSetVisible(rootNode, true);
            FakeWidget::Instance().fillAccessibilityElement(rootNode);
    
            ArkUI_AccessibleRect rect;
@@ -146,11 +148,6 @@
             OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
            auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
            int64_t childNodes[1024];
-           for (int i = 0; i < objects.size(); i++) {
-               int elementId = i + 1;
-   
-               childNodes[i] = elementId;
-           }
            for (int i = 0; i < objects.size(); i++) {
                int elementId = i + 1;
                childNodes[i] = elementId;
@@ -300,9 +297,9 @@
        rect.rightBottomX = nextElementId * NUMBER_FIRST + NUMBER_FIRST;
        rect.rightBottomY = NUMBER_SECOND;
        OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
-       auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
+        auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
         OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, nextElementId);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
        // 本函数仅演示创建事件信息，未发送事件。若无需发送事件，请调用 OH_ArkUI_DestoryAccessibilityEventInfo
        // 释放内存；若需发送事件，请调用 OH_ArkUI_SendAccessibilityAsyncEvent，并在回调中释放内存。
        OH_ArkUI_DestoryAccessibilityEventInfo(eventInfo);
@@ -415,23 +412,23 @@
        // 根据 actionValue 执行相应逻辑，或移除未使用的查询代码。
        // 根据action类型执行对应的行为。
        switch (action) {
-           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
+            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
                 object->OnClick();
                 object->fillAccessibilityElement(element);
-               // 向无障碍服务发送指定事件。
-               AccessibilityManager::SendAccessibilityAsyncEvent(element,
-                   ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED, announcedText);
-               break;
-           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS:
+                // 向无障碍服务发送指定事件。
+                AccessibilityManager::SendAccessibilityAsyncEvent(element,
+                    ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED, announcedText);
+                break;
+            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS:
                 object->SetFocus(true);
-
+   
                 object->fillAccessibilityElement(element);
-               // 向无障碍服务发送指定事件。
-               AccessibilityManager::SendAccessibilityAsyncEvent(element,
-                   ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED,
-                   announcedText);
-               break;
-           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS:
+                // 向无障碍服务发送指定事件。
+                AccessibilityManager::SendAccessibilityAsyncEvent(element,
+                    ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED,
+                    announcedText);
+                break;
+            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS:
                 object->SetFocus(false);
                 object->fillAccessibilityElement(element);
                AccessibilityManager::SendAccessibilityAsyncEvent(
@@ -494,38 +491,38 @@ provider通过回调函数[OH_ArkUI_AccessibilityProviderRegisterCallback](../re
 
     <!-- @[abilitycap_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi/entry/src/main/cpp/AccessibilityMaker.cpp) -->
 
-   ``` C++
-   int32_t AccessibilityMaker::GetAccessibilityProvider(ArkUI_NodeHandle* customNode, const char* id)
-   {
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById =
-           FindAccessibilityNodeInfosById;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText =
-           FindAccessibilityNodeInfosByText;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode =
-           FindFocusedAccessibilityNode;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findNextFocusAccessibilityNode =
-           FindNextFocusAccessibilityNode;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.executeAccessibilityAction =
-           ExecuteAccessibilityAction;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.clearFocusedFocusAccessibilityNode =
-           ClearFocusedFocusAccessibilityNode;
-       AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition =
-           GetAccessibilityNodeCursorPosition;
+    ``` C++
+    int32_t AccessibilityMaker::GetAccessibilityProvider(ArkUI_NodeHandle* customNode, const char* id)
+    {
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById =
+            FindAccessibilityNodeInfosById;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText =
+            FindAccessibilityNodeInfosByText;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode =
+            FindFocusedAccessibilityNode;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.findNextFocusAccessibilityNode =
+            FindNextFocusAccessibilityNode;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.executeAccessibilityAction =
+            ExecuteAccessibilityAction;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.clearFocusedFocusAccessibilityNode =
+            ClearFocusedFocusAccessibilityNode;
+        AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition =
+            GetAccessibilityNodeCursorPosition;
 
-       // 获取 native 层提供的 accessibility provider，并为其注册回调
-       OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(customNode, &accessibilityProvider_);
-       if (accessibilityProvider_ == nullptr) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AccessibilityMaker", "accessibilityProvider_ is null");
-           return -1;
-       }
+        // 获取native层提供的accessibility provider，并为其注册回调
+        OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(customNode, &accessibilityProvider_);
+        if (accessibilityProvider_ == nullptr) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AccessibilityMaker", "accessibilityProvider_ is null");
+            return -1;
+        }
 
-       int32_t ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id, accessibilityProvider_,
-           &AccessibilityMaker::accessibilityProviderCallbacksWithInstance_);
-       if (ret != 0) {
-           return ret;
-       }
-       return 0;
-   }
-   ```
+        int32_t ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id, accessibilityProvider_,
+            &AccessibilityMaker::accessibilityProviderCallbacksWithInstance_);
+        if (ret != 0) {
+            return ret;
+        }
+        return 0;
+    }
+    ```
 
 3. 三方框架需要实现回调函数。请参考前文的[基于XComponent的自绘制接入方式](#基于xcomponent的自绘制接入方式)。
