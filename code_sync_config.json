@@ -39292,5 +39292,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/native-camera-deferred-capture.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.cpp",
+				"functions":[
+					{
+						"end_line":1847,
+						"name":"deferred_photo",
+						"start_line":1654
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/native-camera-preview-imageReceiver.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/camera_manager.h",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"import_header",
+						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":182,
+						"name":"image_receiver_callback_show",
+						"start_line":78
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/native-camera-preview.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp",
+				"functions":[
+					{
+						"end_line":473,
+						"name":"create_preview_output",
+						"start_line":456
+					}
+				]
+			}
+		]
 	}
 ]
