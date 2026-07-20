@@ -82,7 +82,7 @@ MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用)提供设备管理能力，包
      };
      // ...
        try {
-         restrictions.setDisallowedPolicy(this.wantTemp, 'wifi', isDisallow);
+         restrictions.setDisallowedPolicy(this.wantTemp, restrictions.FeatureForDevice.WIFI, isDisallow);
          console.info(isDisallow ? 'disable wifi success.' : 'enable wifi success.');
          // ...
        } catch (err) {
