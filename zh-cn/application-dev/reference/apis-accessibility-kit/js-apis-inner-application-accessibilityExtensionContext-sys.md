@@ -1018,8 +1018,8 @@ export default class AccessibilityManager {
       return;
     }
 
-    let elementId: number = 0; // 请使用需要修改节点属性的节点ID。
-    let windowId: number = 0; // 请使用需要修改节点属性的窗口ID。
+    let elementId: number = 10; // 请使用需要修改节点属性的节点ID。
+    let windowId: number = 10; // 请使用需要修改节点属性的窗口ID。
     let accessibilityVirtualNode: AccessibilityVirtualNode = {
       virtualNodeId: 1,
       accessibilityText: "accessibilityTextNew"
@@ -1109,8 +1109,8 @@ export default class AccessibilityManager {
       return;
     }
 
-    let elementId: number = 0; // 请使用需要新增虚拟节点树的父节点ID。
-    let windowId: number = 0; // 请使用需要新增虚拟节点树的窗口ID。
+    let elementId: number = 10; // 请使用需要新增虚拟节点树的父节点ID。
+    let windowId: number = 10; // 请使用需要新增虚拟节点树的窗口ID。
     let accessibilityVirtualNode: AccessibilityVirtualNode = {
       virtualNodeId: 1,
       accessibilityText: "accessibilityTextNew"
@@ -1169,7 +1169,6 @@ removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt
 import {
   AccessibilityEvent, 
   AccessibilityExtensionContext,
-  AccessibilityVirtualNode,
   OperateVirtualNodeResult
 } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1199,8 +1198,8 @@ export default class AccessibilityManager {
       return;
     }
 
-    let elementId: number = 0; // 请使用需要删除虚拟节点树的父节点ID。
-    let windowId: number = 0; // 请使用需要删除虚拟节点树的窗口ID。
+    let elementId: number = 10; // 请使用需要删除虚拟节点树的父节点ID。
+    let windowId: number = 10; // 请使用需要删除虚拟节点树的窗口ID。
     this.context.removeAccessibilityVirtualNodes(elementId, windowId).then((data: OperateVirtualNodeResult)=>{
       console.info(`removeAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${data}`)
     }).catch((err: BusinessError) => {
