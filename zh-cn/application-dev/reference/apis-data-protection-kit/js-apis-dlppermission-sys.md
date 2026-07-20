@@ -1786,13 +1786,13 @@ let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
 appId = data.signatureInfo.appId; // appId通过应用包信息获取
 
 file = fileIo.openSync(uri).fd; // file通过文件打开获取fd
-dlpPermission.openDLPFile(file, appId, (err, res) => { // 打开DLP文件。
+dlpPermission.openDLPFile(file, appId, async (err, res) => { // 打开DLP文件。
   if (err) {
     console.error('openDLPFile error,', err.code, err.message);
   } else {
     console.info('res', JSON.stringify(res));
   }
-  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
+  await res?.closeDLPFile(); // 关闭DLP对象。
   if (file) {
     fileIo.closeSync(file);
   }
