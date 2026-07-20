@@ -1171,7 +1171,7 @@ CONFIG
 ```
 
 ### 抓取指定进程三合一维测日志
-从API version 26开始支持抓取指定进程三合一维测日志(调用栈trace、堆快照rawheap、map映射文件)，可配合[RES_ARK_GLOBAL_HANDLE](#抓取指定进程globalHandle对象的调用栈)和[RES_ARK_LOCAL_HANDLE](#抓取指定进程localhandle对象调用栈)使用。
+从API version 26开始支持抓取指定进程三合一维测日志(调用栈trace、堆快照rawheap、map映射文件)，可配合[RES_ARK_GLOBAL_HANDLE](#抓取指定进程globalhandle对象的调用栈)和[RES_ARK_LOCAL_HANDLE](#抓取指定进程localhandle对象调用栈)使用。
 > **说明：**
 >
 > 抓取三合一维测日志，须设置RES_COMPOSITE_HEAP。
