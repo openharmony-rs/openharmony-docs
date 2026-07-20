@@ -125,7 +125,7 @@ unregisterTask(taskInfo: TaskInfo): void
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {
-            console.error(`backgroundLoader.un registerTask catch error, code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+            console.error(`backgroundLoader.unregisterTask catch error, code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
         }
     }
   }
@@ -263,7 +263,7 @@ finishTask(taskInfo: TaskInfo): void
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {
-            console.error(`backgroundLoader.un registerTask catch error, code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+            console.error(`backgroundLoader.unregisterTask catch error, code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
         }
     }
 }
@@ -278,7 +278,7 @@ finishTask(taskInfo: TaskInfo): void
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
 | taskId          | int                            | 否    | 否    |应用指定标识任务ID。          |
-| abilityName     | string                            | 否    | 否    |应用需要实现后台加载主UIAbility名称，当前每个应用仅支持主要自身的主UIAbility。 |
+| abilityName     | string                            | 否    | 否    |应用需要实现后台加载主UIAbility名称，当前每个应用仅支持自身的主UIAbility。 |
 
 
 ## TaskStopInfo
@@ -290,7 +290,7 @@ finishTask(taskInfo: TaskInfo): void
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
 | taskId          | int                            | 否    | 否    |应用指定标识任务ID。          |
-| abilityName     | string                            | 否    | 否    |应用需要实现后台加载主UIAbility名称，当前每个应用仅支持主要自身的主UIAbility。 |
+| abilityName     | string                            | 否    | 否    |应用需要实现后台加载主UIAbility名称，当前每个应用仅支持自身的主UIAbility。 |
 | stopCode        | [StopCode](#stopcode)                            | 否    | 否    |任务停止的错误码。          |
 | stopMessage     | string                            | 否    | 否    |任务停止的错误码描述。 |
 
