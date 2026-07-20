@@ -79,11 +79,11 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 2. 设置音振播放器音频时延模式和音频流使用类型，具体作用和类型可以查看[setAudioLatencyMode](../../reference/apis-audio-kit/js-apis-audioHaptic.md#setaudiolatencymode)和[setStreamUsage](../../reference/apis-audio-kit/js-apis-audioHaptic.md#setstreamusage)接口的文档，推荐短信、通知音等短提示音搭配FAST模式，来电铃声等长铃声搭配NORMAL模式。
 
    <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
-
+   
    ``` TypeScript
-   let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
+   let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
    audioHapticManagerInstance.setAudioLatencyMode(idForFd, latencyMode);
-
+   
    let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
    audioHapticManagerInstance.setStreamUsage(idForFd, usage);
    ```
