@@ -125,9 +125,11 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 
 根据日历账户信息，创建一个Calendar对象，若创建的账户已存在（与CalendarAccount的name和type相同的账户已被创建），则返回之前的Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+API版本 21+：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -181,9 +183,11 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 
 根据日历账户信息，创建一个Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+API版本21+：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -237,9 +241,11 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 删除指定Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+API版本21+：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.WRITE_CALENDAR权限
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -302,9 +308,11 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 
 删除指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**： 
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+API版本21+：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -369,9 +377,11 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 
 获取默认Calendar对象，默认Calendar是日历存储首次运行时创建的，若创建Event时不关注其Calendar归属，则无须通过[createCalendar()](#createcalendar)创建Calendar，直接使用默认Calendar，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+API版本21+：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.READ_CALENDAR
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -418,9 +428,11 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 
 获取指定Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+API版本21+：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.READ_CALENDAR
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -479,10 +491,11 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 
 获取默认Calendar对象或者指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+API版本21+：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
 
+API版本10-20：ohos.permission.READ_CALENDAR
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -534,10 +547,11 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+API版本21+：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
 
+API版本10-20：ohos.permission.READ_CALENDAR 
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -585,9 +599,11 @@ getAllCalendars(): Promise\<Calendar[]>
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+API版本21+：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -696,9 +712,11 @@ addEvent(event: Event, callback: AsyncCallback\<number>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+API版本21+：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -758,9 +776,11 @@ addEvent(event: Event): Promise\<number>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+API版本21+：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -823,9 +843,11 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
 批量创建日程，入参[Event](#event)不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+API版本21+：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -892,9 +914,11 @@ addEvents(events: Event[]): Promise\<void>
 
 批量创建日程，入参[Event](#event)不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+API版本21+：ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1351,9 +1375,11 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 API version 20之前，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime。从API version 20开始，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。若查询字段为空，则不返回该字段。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+API版本21+：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1405,9 +1431,11 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 
 获取Calendar下符合查询条件的Event，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+API版本21+：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1492,9 +1520,11 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 
 当没有入参时，可查询指定日历账户下的所有日程。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+API版本21+：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+
+API版本10-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1752,9 +1782,11 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 获取Calendar下符合查询条件的日程实例，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+API版本21+：ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR
+
+API版本18-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1945,12 +1977,12 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                                                                                                                                                                                                                          |
 | -------------- | --------------------------------- | ---- |----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id             | number                            | 否   | 是  | 日程id。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，id为数据库自增字段，没有默认值，不填写此参数；当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id数组，日程id需为整数，传入其他非法入参会报错。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |
-| type           | [EventType](#eventtype)           | 否   | 否  | 日程类型。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                |
+| id             | number                            | 否   | 是  | 日程id。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，id为数据库自增字段，没有默认值，不填写此参数；当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id数组，日程id需为整数，传入其他非法入参会报错；当调用[getevents()](#getevents-2)查询日程时，为必查询字段。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |
+| type           | [EventType](#eventtype)           | 否   | 否  | 日程类型。当调用[getevents()](#getevents-2)查询日程时，为必查询字段。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                |
 | title          | string                            | 否   | 是  | 日程标题。长度建议为[0,5000]字符，不填时，默认为空字符串。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                   |
 | location       | [Location](#location)             | 否   | 是  | 日程地点。不填时，默认为undefined。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                               |
-| startTime      | number                            | 否   | 否  | 日程开始时间，需要13位时间戳。全天日程时，该字段转换为传入日期00:00对应的时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
-| endTime        | number                            | 否   | 否  | 日程结束时间，需要13位时间戳。全天日程时，该字段转换为传入日期24:00对应的时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
+| startTime      | number                            | 否   | 否  | 日程开始时间，需要13位时间戳。全天日程时，该字段转换为传入日期00:00对应的时间戳。当调用[getevents()](#getevents-2)查询日程时，为必查询字段。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
+| endTime        | number                            | 否   | 否  | 日程结束时间，需要13位时间戳。全天日程时，该字段转换为传入日期24:00对应的时间戳。当调用[getevents()](#getevents-2)查询日程时，为必查询字段。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
 | isAllDay       | boolean                           | 否   | 是  | 是否为全天日程。当取值为true时，说明为全天日程；当取值为false时，说明不是全天日程，默认为非全天日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                               |
 | attendee       | [Attendee](#attendee)[]           | 否   | 是  | 会议日程参与者。不填时，默认为undefined。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                  |
 | timeZone       | string                            | 否   | 是  | 日程时区。长度建议为[0,5000]字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过[systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone)获取当前系统时区。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -1960,8 +1992,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 | service        | [EventService](#eventservice)     | 否   | 是  | <!--RP1-->日程服务。不填时，默认没有一键服务。暂不支持此功能。<!--RP1End-->   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                    |
 | identifier<sup>12+</sup>     | string                            | 否   | 是  | 写入方可指定日程唯一标识。长度建议为[0,5000]字符，不填时，默认为空字符串。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                            |
 | isLunar<sup>12+</sup>     | boolean                            | 否   | 是  | 是否为农历日程。当取值为true时，说明为农历日程；当取值为false时，说明不是农历日程，默认为非农历日程。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                               |
-| instanceStartTime<sup>18+</sup> | number                            | 否   | 是  | 日程实例开始时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数，默认值为undefined。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                    |
-| instanceEndTime<sup>18+</sup>   | number                            | 否   | 是  | 日程实例结束时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数，默认值为undefined。  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                   |
+| instanceStartTime<sup>18+</sup> | number                            | 否   | 是  | 日程实例开始时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程或[getevents()](#getevents-2)查询日程时，不填写此参数，默认值为undefined。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                    |
+| instanceEndTime<sup>18+</sup>   | number                            | 否   | 是  | 日程实例结束时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程或[getevents()](#getevents-2)查询日程时，不填写此参数，默认值为undefined。  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                   |
 
 ## CalendarType
 
