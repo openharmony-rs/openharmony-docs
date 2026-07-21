@@ -6547,7 +6547,7 @@
 **起始版本**：26.0.0
 
 ## ohos.permission.vehicle.CREATE_SIGN_CONTENT_TRUST
-	 
+
 允许应用创建内容证真签名。
 
 **权限级别**：system_basic
