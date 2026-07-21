@@ -237,8 +237,8 @@ function callFunction(fn: () => void) {
   let a: A = new A();
   let b: B = new B();
 
-  // callFunction(a.foo); // 程序crash。this的上下文发生了变化
-  // b.callFunction(a.foo); // 程序crash。this的上下文发生了变化
+  // callFunction(a.foo); // 程序crash，this的上下文发生了变化
+  // b.callFunction(a.foo); // 程序crash，this的上下文发生了变化
   b.callFunction(a.foo.bind(b)) // 输出'I am B'
 ```
 

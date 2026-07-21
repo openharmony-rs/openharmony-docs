@@ -1822,7 +1822,7 @@ let utilitiesUser: UtilitiesUser = {
   email: 'alice@example.com'
 };
 
-// ArkTS中优先使用明确的属性访问，避免依赖keyof和索引访问类型。
+// ArkTS中优先使用明确的属性访问，避免依赖keyof和索引访问类型
 function renameUser(target: UtilitiesUser, newName: string): void {
   target.name = newName;
 }
