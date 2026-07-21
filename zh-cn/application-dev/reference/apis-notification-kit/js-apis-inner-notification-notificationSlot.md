@@ -30,6 +30,6 @@
 | lightEnabled         | boolean               | 否 | 是  | 是否闪灯。默认值为false。<br> - true：闪灯。<br> - false：不闪灯。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23                        |
 | type<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype) | 否 | 是  | 渠道类型。<br>从API version 7开始支持，从API version 11开始废弃，建议使用notificationType替代。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本**：7        |
 | level<sup>(deprecated)</sup> | [notification.SlotLevel](js-apis-notificationManager.md#slotlevel) | 否 | 是  | 通知级别。<br>从API version 7开始支持，从API version 20开始废弃，建议使用notificationLevel替代。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本**：7 |
-| lockscreenVisibility | number                | 否 | 是  | 在锁定屏幕上显示通知的模式。预留能力，暂不支持。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
-| lightColor           | number                | 否 | 是  | 通知灯颜色。预留能力，暂不支持。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23                |
-| vibrationValues      | Array\<number\>       | 否 | 是  | 通知振动样式。预留能力，暂不支持。              |
+| lockscreenVisibility | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 否 | 是  | 在锁定屏幕上显示通知的模式。预留能力，暂不支持。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
+| lightColor           | ArkTS-Dyn: number<br/>ArkTS-Sta: int              | 否 | 是  | 通知灯颜色。预留能力，暂不支持。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23                |
+| vibrationValues      | ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<long\>       | 否 | 是  | 通知振动样式。预留能力，暂不支持。              |

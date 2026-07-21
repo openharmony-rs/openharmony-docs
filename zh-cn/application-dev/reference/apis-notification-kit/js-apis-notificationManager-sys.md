@@ -4036,7 +4036,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
-| 1600014  | The right of liveView is not enabled. |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
@@ -4162,7 +4162,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
-| 1600014  | The right of liveView is not enabled. |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
@@ -4278,7 +4278,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
-| 1600014  | The right of liveView is not enabled. |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |

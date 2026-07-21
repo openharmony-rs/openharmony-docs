@@ -3261,7 +3261,7 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 
 | 类型   | 说明                                         |
 | ------ | -------------------------------------------- |
-| [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13) | 当前实例所在窗口的宽高比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
+| [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13) | 当前实例所在窗口的高宽比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
 
 **示例：**
 

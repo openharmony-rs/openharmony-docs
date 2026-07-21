@@ -1812,7 +1812,7 @@ ArkTS-Sta: getNotificationParameters(id: int, label?: string): Promise\<Notifica
 
 | 类型                                                         | 说明                                    |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\> | Promise对象，返回wantAgent的部分信息。 |
+| ArkTS-Dyn: Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\><br/>ArkTS-Sta: Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\|null\> | Promise对象，返回wantAgent的部分信息。 |
 
 **错误码：**
 
