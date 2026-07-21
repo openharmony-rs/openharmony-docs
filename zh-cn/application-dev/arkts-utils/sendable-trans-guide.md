@@ -70,7 +70,6 @@
      
      ``` TypeScript
      import { Serializable, SerialName } from '@hadss/turbo-trans-core';
-     import { collections } from '@kit.ArkTS';
      // ...
      
      @Serializable({ generateSendable: true})

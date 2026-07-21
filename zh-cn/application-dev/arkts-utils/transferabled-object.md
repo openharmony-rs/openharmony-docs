@@ -52,20 +52,16 @@ struct Index {
       await taskpool.execute(loadPixelMap, rawFileDescriptor).then(pixelMap => {
         if (pixelMap) {
           this.pixelMap = pixelMap as PixelMap;
-          this.message = 'success';
           console.info('Succeeded in creating pixelMap.');
           // 主线程释放pixelMap。由于子线程返回pixelMap时已调用setTransferDetached，所以此处能够立即释放pixelMap。
           this.pixelMap.release();
         } else {
-          this.message = 'failed';
           console.error('Failed to create pixelMap.');
         }
       }).catch((e: BusinessError) => {
-        this.message = 'failed';
-        console.error(`taskpool execute loadPixelMap failed. Code: ${e.code}, message: ${e.message}`);
+        console.error('taskpool execute loadPixelMap failed. Code: ' + e.code + ', message: ' + e.message);
       });
     }).catch(() => {
-      this.message = 'failed';
       console.error(`Failed to get RawFd`);
     });
   }

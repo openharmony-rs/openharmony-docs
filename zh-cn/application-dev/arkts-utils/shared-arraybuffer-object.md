@@ -30,7 +30,7 @@ function transferAtomics(arg1: Int32Array) {
 
 @Entry
 @Component
-struct CSharedArrayBuffer {
+struct sharedArrayBuffer {
   @State message: string = 'Hello World';
 
   build() {
@@ -49,15 +49,11 @@ struct CSharedArrayBuffer {
           let int32 = new Int32Array(sab);
           let task: taskpool.Task = new taskpool.Task(transferAtomics, int32);
           taskpool.execute(task).then((res) => {
-            this.message = 'success';
-            console.info(`this res is:`, res);
-          }).catch((e: BusinessError) => {
-            this.message = 'fail';
-            console.error(`taskpool: execute task: code: ${e.code}, message: ${e.message}`);
-          });
+            console.info('this res is: ' + res);
           setTimeout(() => {
             Atomics.notify(int32, 0, 1);
           }, 1000);
+          this.message = 'success';
         })
     }
     .height('100%')
