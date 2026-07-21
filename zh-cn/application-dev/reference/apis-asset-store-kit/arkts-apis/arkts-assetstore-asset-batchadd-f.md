@@ -15,7 +15,7 @@ function batchAdd(attributesArray: Array<AssetMap>): Promise<BatchResult>
 
 批量新增关键资产。使用Promise异步回调。
 
-设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](docroot://security/AccessToken/declare-permissions.md)。
+设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
 批量新增的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。
 

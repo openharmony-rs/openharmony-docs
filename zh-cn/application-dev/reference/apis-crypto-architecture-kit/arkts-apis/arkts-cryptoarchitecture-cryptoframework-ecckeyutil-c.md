@@ -50,7 +50,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
 | 类型 | 说明 |
 | --- | --- |
-| [Point](../../apis-test-kit/arkts-apis/arkts-test-uitest-point-i.md) | 返回ECC的Point对象。 |
+| Point | 返回ECC的Point对象。 |
 
 **错误码：**
 
@@ -82,7 +82,7 @@ console.info('returnPoint: ' + returnPoint.x.toString(16));
 static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 ```
 
-根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](docroot://security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](docroot://security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
+根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
 
 **起始版本：** 11
 
@@ -151,7 +151,7 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | curveName | string | 是 | 椭圆曲线的曲线名，即相应的NID（Name Identifier）。 |
-| point | [Point](../../apis-test-kit/arkts-apis/arkts-test-uitest-point-i.md) | 是 | 椭圆曲线上的Point点对象。 |
+| point | Point | 是 | 椭圆曲线上的Point点对象。 |
 | format | string | 是 | 需要获取的点数据格式，当前支持"COMPRESSED"或"UNCOMPRESSED"。 |
 
 **返回值：**

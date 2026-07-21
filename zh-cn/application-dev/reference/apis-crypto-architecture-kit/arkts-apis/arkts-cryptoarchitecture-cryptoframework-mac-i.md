@@ -39,7 +39,7 @@ doFinal(callback: AsyncCallback<DataBlob>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当MAC计算成功时，err为undefined，data为获取到的Mac计算结果；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当MAC计算成功时，err为undefined，data为获取到的Mac计算结果；否则为错误对象。 |
 
 **错误码：**
 
@@ -50,7 +50,7 @@ doFinal(callback: AsyncCallback<DataBlob>): void
 
 **示例：**
 
-此外，更多HMAC的完整示例可参考开发指导中[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
+此外，更多HMAC的完整示例可参考开发指导中[消息认证码计算](../../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -108,7 +108,7 @@ doFinal(): Promise<DataBlob>
 
 **示例：**
 
-此外，更多HMAC的完整示例可参考开发指导[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
+此外，更多HMAC的完整示例可参考开发指导[消息认证码计算](../../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -164,7 +164,7 @@ doFinalSync(): DataBlob
 
 **示例：**
 
-此外，更多HMAC的完整示例可参考开发指导[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
+此外，更多HMAC的完整示例可参考开发指导[消息认证码计算](../../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -277,7 +277,7 @@ init(key: SymKey, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | [SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md) | 是 | 对称密钥。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当HMAC初始化成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当HMAC初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -370,7 +370,7 @@ update(input: DataBlob, callback: AsyncCallback<void>): void
 
 > **说明：**  
 >  
-> HMAC算法多次调用update更新的代码示例详见[消息认证码计算](docroot://security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
+> HMAC算法多次调用update更新的代码示例详见[消息认证码计算](../../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
 **起始版本：** 9
 
@@ -387,7 +387,7 @@ update(input: DataBlob, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | input | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 传入的消息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当HMAC更新成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当HMAC更新成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -408,7 +408,7 @@ update(input: DataBlob): Promise<void>
 
 > **说明：**  
 >  
-> HMAC算法多次调用update更新的代码示例详见[消息认证码计算](docroot://security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
+> HMAC算法多次调用update更新的代码示例详见[消息认证码计算](../../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
 **起始版本：** 9
 
@@ -452,7 +452,7 @@ updateSync(input: DataBlob): void
 > **说明：**  
 >  
 > HMAC算法多次调用updateSync更新的代码示例详见  
-> [消息认证码计算](docroot://security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
+> [消息认证码计算](../../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
 <br><br>**说明：**<br>建议优先使用异步API{@link update}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
 

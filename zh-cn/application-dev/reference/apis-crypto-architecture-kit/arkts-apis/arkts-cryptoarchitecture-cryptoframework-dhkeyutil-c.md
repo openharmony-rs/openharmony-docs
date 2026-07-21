@@ -23,7 +23,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 static genDHCommonParamsSpec(pLen: number, skLen?: number): DHCommonParamsSpec
 ```
 
-根据素数P的长度和私钥长度（单位为bit）生成DH公共密钥参数。详见[DH密钥生成规格](docroot://security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#dh)。
+根据素数P的长度和私钥长度（单位为bit）生成DH公共密钥参数。详见[DH密钥生成规格](../../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#dh)。
 
 **起始版本：** 11
 

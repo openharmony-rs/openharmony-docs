@@ -37,7 +37,7 @@ function anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: Asy
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，存放待获取证书密钥的别名。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于获取证书时指定所需参数与数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksReturnResult&gt; | 是 | 回调函数。当获取匿名化密钥证书成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象。 |
+| callback | AsyncCallback&lt;HuksReturnResult&gt; | 是 | 回调函数。当获取匿名化密钥证书成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象。 |
 
 **错误码：**
 

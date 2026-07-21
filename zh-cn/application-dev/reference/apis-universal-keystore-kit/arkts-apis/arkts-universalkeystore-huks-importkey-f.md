@@ -37,7 +37,7 @@ function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于导入时所需TAG和需要导入的密钥。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksResult&gt; | 是 | 回调函数。当导入密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| callback | AsyncCallback&lt;HuksResult&gt; | 是 | 回调函数。当导入密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例：**
 

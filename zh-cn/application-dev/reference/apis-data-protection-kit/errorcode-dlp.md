@@ -541,7 +541,7 @@ The specified userId is inconsistent with the current userId.
 
 **处理步骤**
 
-请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。
+请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的[getOsAccountLocalId]等接口来获取。
 
 ## 19100024 个人空间用户不支持设置受控应用
 

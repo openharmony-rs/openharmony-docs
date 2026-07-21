@@ -48,8 +48,8 @@ import { huks } from '@kit.UniversalKeystoreKit';
 | [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession-2) | finishSession操作密钥接口。使用Promise异步回调。  huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
 | [generateKey](arkts-universalkeystore-huks-generatekey-f.md#generatekey) | 生成密钥。使用callback异步回调。 |
 | [generateKey](arkts-universalkeystore-huks-generatekey-f.md#generatekey-1) | 生成密钥。使用Promise异步回调。 |
-| [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem) | 生成密钥。使用callback异步回调。  基于密钥不出[TEE](docroot://security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。 |
-| [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem-1) | 生成密钥。使用Promise异步回调。  基于密钥不出[TEE](docroot://security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。 |
+| [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem) | 生成密钥。使用callback异步回调。  基于密钥不出[TEE](../../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。 |
+| [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem-1) | 生成密钥。使用Promise异步回调。  基于密钥不出[TEE](../../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。 |
 | [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties) | Obtains key properties. This API uses an asynchronous callback to return the result. |
 | [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties-1) | 获取密钥属性。使用Promise异步回调。 |
 | [getKeyProperties](arkts-universalkeystore-huks-getkeyproperties-f.md#getkeyproperties) | 获取密钥属性。使用callback异步回调。 |
@@ -90,7 +90,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 | [attestKeyItemAsUser](arkts-universalkeystore-huks-attestkeyitemasuser-f-sys.md#attestkeyitemasuser) | 指定用户身份获取密钥证书，使用Promise方式异步返回结果。 |
 | [deleteKeyItemAsUser](arkts-universalkeystore-huks-deletekeyitemasuser-f-sys.md#deletekeyitemasuser) | 指定用户身份删除密钥，使用Promise方式异步返回结果。 |
 | [exportKeyItemAsUser](arkts-universalkeystore-huks-exportkeyitemasuser-f-sys.md#exportkeyitemasuser) | 指定用户身份导出密钥，使用Promise方式回调异步返回的结果。 |
-| [generateKeyItemAsUser](arkts-universalkeystore-huks-generatekeyitemasuser-f-sys.md#generatekeyitemasuser) | 指定用户身份生成密钥，使用Promise方式异步返回结果。基于密钥不出[TEE](docroot://security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，通过promise不会返回密钥材料内容，只用于表示此次调用是否成功。 |
+| [generateKeyItemAsUser](arkts-universalkeystore-huks-generatekeyitemasuser-f-sys.md#generatekeyitemasuser) | 指定用户身份生成密钥，使用Promise方式异步返回结果。基于密钥不出[TEE](../../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，通过promise不会返回密钥材料内容，只用于表示此次调用是否成功。 |
 | [getKeyItemPropertiesAsUser](arkts-universalkeystore-huks-getkeyitempropertiesasuser-f-sys.md#getkeyitempropertiesasuser) | Get properties of the key as user. |
 | [hasKeyItemAsUser](arkts-universalkeystore-huks-haskeyitemasuser-f-sys.md#haskeyitemasuser) | 指定用户身份判断密钥是否存在，使用Promise回调异步返回结果。 |
 | [importKeyItemAsUser](arkts-universalkeystore-huks-importkeyitemasuser-f-sys.md#importkeyitemasuser) | 指定用户身份导入明文密钥，使用Promise方式异步返回结果。 |
@@ -120,7 +120,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 | [HuksChallengeType](arkts-universalkeystore-huks-hukschallengetype-e.md) | 表示密钥使用时生成challenge的类型。 |
 | [HuksCipherMode](arkts-universalkeystore-huks-huksciphermode-e.md) | 表示加密模式。 |
 | [HuksErrorCode](arkts-universalkeystore-huks-hukserrorcode-e.md) | 表示错误码的枚举。 |
-| [HuksExceptionErrCode](arkts-universalkeystore-huks-huksexceptionerrcode-e.md) | 表示错误码的枚举以及对应的错误信息，错误码表示错误类型，错误信息展示错误详情。  关于错误码的具体信息，可在[通用错误码](docroot://reference/errorcode-universal.md)和[HUKS错误码](docroot://reference/apis-universal-keystore-kit/errorcode-huks.md)中查看。 |
+| [HuksExceptionErrCode](arkts-universalkeystore-huks-huksexceptionerrcode-e.md) | 表示错误码的枚举以及对应的错误信息，错误码表示错误类型，错误信息展示错误详情。  关于错误码的具体信息，可在[通用错误码](../../../reference/errorcode-universal.md)和[HUKS错误码](../../../reference/apis-universal-keystore-kit/errorcode-huks.md)中查看。 |
 | [HuksImportKeyType](arkts-universalkeystore-huks-huksimportkeytype-e.md) | 表示导入密钥的密钥类型，默认为导入公钥，导入对称密钥时不需要该字段。 |
 | [HuksKeyAlg](arkts-universalkeystore-huks-hukskeyalg-e.md) | 表示密钥使用的算法。 |
 | [HuksKeyClassType](arkts-universalkeystore-huks-hukskeyclasstype-e.md) | 表示密钥的来源。 |

@@ -19,7 +19,7 @@ function queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<A
 
 > **说明：**  
 >  
-> - 该接口仅能查询调用方应用通过[generateDlpFileForEnterprise](arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f-sys.md#generatedlpfileforenterprise-1)生成的企业DLP文件，无法查询  
+> - 该接口仅能查询调用方应用通过[generateDlpFileForEnterprise](arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f-sys.md#generatedlpfileforenterprise)生成的企业DLP文件，无法查询  
 > 其他应用生成的企业DLP文件。  
 >  
 > - 相同分类标签的只读企业DLP文件在同一个沙箱中打开。如果一个沙箱中打开了多个相同标签的只读企业DLP文件，则查询结果返回所有该沙箱打开过文件的URI（包括手动关闭的文件）。

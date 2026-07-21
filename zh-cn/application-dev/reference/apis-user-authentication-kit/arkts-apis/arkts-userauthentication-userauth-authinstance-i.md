@@ -37,7 +37,7 @@ cancel: () => void
 
 **废弃版本：** 10
 
-**替代接口：** [cancel](arkts-userauthentication-userauth-userauthinstance-i.md#cancel-1)
+**替代接口：** [cancel](arkts-userauthentication-userauth-userauthinstance-i.md#cancel)
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -116,7 +116,7 @@ start: () => void
 
 **废弃版本：** 10
 
-**替代接口：** [start](arkts-userauthentication-userauth-userauthinstance-i.md#start-1)
+**替代接口：** [start](arkts-userauthentication-userauth-userauthinstance-i.md#start)
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 

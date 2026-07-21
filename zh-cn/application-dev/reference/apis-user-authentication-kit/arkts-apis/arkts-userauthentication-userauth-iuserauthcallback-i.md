@@ -36,7 +36,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: any) => void
 
 **废弃版本：** 9
 
-**替代接口：** [callback](arkts-userauthentication-userauth-authevent-i.md#callback-1)
+**替代接口：** [callback](arkts-userauthentication-userauth-authevent-i.md#callback)
 
 <!--Device-IUserAuthCallback-onAcquireInfo?: (module: number, acquire: number, extraInfo: any) => void--><!--Device-IUserAuthCallback-onAcquireInfo?: (module: number, acquire: number, extraInfo: any) => void-End-->
 
@@ -59,7 +59,7 @@ onResult: (result: number, extraInfo: AuthResult) => void
 
 **废弃版本：** 9
 
-**替代接口：** [callback](arkts-userauthentication-userauth-authevent-i.md#callback-1)
+**替代接口：** [callback](arkts-userauthentication-userauth-authevent-i.md#callback)
 
 <!--Device-IUserAuthCallback-onResult: (result: number, extraInfo: AuthResult) => void--><!--Device-IUserAuthCallback-onResult: (result: number, extraInfo: AuthResult) => void-End-->
 

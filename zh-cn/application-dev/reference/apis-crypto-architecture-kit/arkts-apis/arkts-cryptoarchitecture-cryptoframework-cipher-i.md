@@ -2,7 +2,7 @@
 
 提供加解密的算法操作功能，按序调用本类中的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)、[update()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)、[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
 
-完整的加解密流程示例可参考[开发指南](docroot://security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md)。
+完整的加解密流程示例可参考[开发指南](../../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md)。
 
 一次完整的加/解密流程在对称加密和非对称加密中略有不同：
 
@@ -47,7 +47,7 @@ doFinal(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 表示最终要加密或解密的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -81,7 +81,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 > 3.对于解密，GCM、CCM、CFB、OFB和CTR模式，如果**doFinal**传null，则返回结果为null；对于解密，其他模式，如果明文是加密块大小的  
 > 整倍数，调用**update**传入所有密文，调用**doFinal**传null，则返回结果为null。  
 > 4.非对称加解密时多次**doFinal**操作的示例代码请参阅  
-> [使用RSA非对称密钥对按段加密和解密](docroot://security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)。  
+> [使用RSA非对称密钥对按段加密和解密](../../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)。  
 > SM2和RSA的操作类似。
 
 **起始版本：** 10
@@ -99,7 +99,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 要加密或解密的数据。在对称加解密中，这个参数可以是**null**，但是**{data: Uint8Array()}**不能传入。在API版本10之前，仅支持**DataBlob**。从API版本10开始，还支持**null**。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -113,7 +113,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 
 **示例：**
 
-更多加解密流程的完整示例请参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+更多加解密流程的完整示例请参考[加解密开发指导](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -227,7 +227,7 @@ doFinal(data: DataBlob | null): Promise<DataBlob>
 > 3.对于解密，GCM、CCM、CFB、OFB和CTR模式，如果**doFinal**传null，则返回结果为null；对于解密，其他模式，如果明文是加密块大小的  
 > 整倍数，调用**update**传入所有密文，调用**doFinal**传null，则返回结果为null。  
 > 4.非对称加解密时多次**doFinal**操作的示例代码请参阅  
-> [使用RSA非对称密钥对按段加密和解密](docroot://security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)。  
+> [使用RSA非对称密钥对按段加密和解密](../../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)。  
 > SM2和RSA的操作类似。
 
 **起始版本：** 10
@@ -264,7 +264,7 @@ doFinal(data: DataBlob | null): Promise<DataBlob>
 
 **示例：**
 
-此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+此外，更多加解密流程的完整示例可参考[加解密开发指导](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -357,7 +357,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 **示例：**
 
-此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+此外，更多加解密流程的完整示例可参考[加解密开发指导](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -483,9 +483,9 @@ init、update和doFinal必须配合使用，其中init和doFinal是必选的，u
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 要执行的操作（加密或解密） |
-| key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 用于加密或解密的密钥 |
+| key | Key | 是 | 用于加密或解密的密钥 |
 | params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | 是 | IV等算法参数 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当加解密初始化成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当加解密初始化成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -525,9 +525,9 @@ init、update、doFinal为三段式接口，需要成组使用。其中init和do
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 加密或者解密模式。 |
-| key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 指定加密或解密的密钥。 |
+| key | Key | 是 | 指定加密或解密的密钥。 |
 | params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -565,7 +565,7 @@ init、update和doFinal必须配合使用，其中init和doFinal是必选的，u
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 要执行的操作（加密或解密） |
-| key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 用于加密或解密的密钥 |
+| key | Key | 是 | 用于加密或解密的密钥 |
 | params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | 是 | IV等算法参数 |
 
 **返回值：**
@@ -612,7 +612,7 @@ init、update、doFinal为三段式接口，需要成组使用。其中init和do
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 加密或者解密模式。 |
-| key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 指定加密或解密的密钥。 |
+| key | Key | 是 | 指定加密或解密的密钥。 |
 | params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
 
 **返回值：**
@@ -659,7 +659,7 @@ initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 加密或者解密模式。 |
-| key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 指定加密或解密的密钥。 |
+| key | Key | 是 | 指定加密或解密的密钥。 |
 | params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。 |
 
 **错误码：**
@@ -747,7 +747,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 > 2.根据数据量，可以不调用**update**（即**init**完成后直接调用**doFinal**）或多次调用**update**。  
 > 算法库目前没有对**update**（单次或累计）的数据量设置大小限制，建议对于大数据量的对称加解密，可以采用多次**update**的方式传入数据。  
 > 有关在多次**update()**调用中传递数据的示例代码的详细信息，请参见  
-> [使用AES对称密钥分段加密和解密（GCM模式）](docroot://security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。  
+> [使用AES对称密钥分段加密和解密（GCM模式）](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。  
 > 3. RSA或SM2非对称加解密不支持**update()**。  
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次**update**接口加密数据并调用**doFinal**接口获取tag，或直接调用**doFinal**  
 > 接口加密数据并获取tag，解密时只能调用1次**update**接口或调用1次**doFinal**接口解密数据并验证tag。
@@ -767,7 +767,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 需要进行加密或解密的数据。data不能为null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当更新加/解密数据成功时，err为undefined，data为加密或解密结果DataBlob；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当更新加/解密数据成功时，err为undefined，data为加密或解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -805,7 +805,7 @@ update(data: DataBlob): Promise<DataBlob>
 > 2.根据数据量，可以不调用**update**（即**init**完成后直接调用**doFinal**）或多次调用**update**。  
 > 算法库目前没有对**update**（单次或累计）的数据量设置大小限制，建议对于大数据量的对称加解密，可以采用多次**update**的方式传入数据。  
 > 有关在多次**update()**调用中传递数据的示例代码的详细信息，请参见  
-> [使用AES对称密钥分段加密和解密（GCM模式）](docroot://security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。  
+> [使用AES对称密钥分段加密和解密（GCM模式）](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。  
 > 3. RSA或SM2非对称加解密不支持**update()**。  
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次**update**接口加密数据并调用**doFinal**接口获取tag，或直接调用**doFinal**  
 > 接口加密数据并获取tag，解密时只能调用1次**update**接口或调用1次**doFinal**接口解密数据并验证tag。
@@ -851,7 +851,7 @@ updateSync(data: DataBlob): DataBlob
 
 分段更新加密或者解密数据操作。
 
-必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initsync-1)初始化后，才能使用本函数。
+必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initsync)初始化后，才能使用本函数。
 
 其他注意事项同上异步接口说明。
 

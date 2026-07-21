@@ -1,6 +1,6 @@
 # Sign
 
-Sign类，使用Sign方法之前需要创建该类的实例进行操作，通过[createSign(algName: string): Sign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md#createsign-1)方法构造此实例。按序调用本类中的init、update、sign方法完成签名操作。签名操作的示例代码详见[签名验签开发指导](docroot://security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+Sign类，使用Sign方法之前需要创建该类的实例进行操作，通过[createSign(algName: string): Sign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md#createsign-1)方法构造此实例。按序调用本类中的init、update、sign方法完成签名操作。签名操作的示例代码详见[签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
 Sign类不支持重复初始化，当业务方需要使用新密钥签名时，需要重新创建新Sign对象并调用init初始化。
 
@@ -109,7 +109,7 @@ Sign类不支持重复初始化。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | priKey | [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md) | 是 | 用于Sign的初始化。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当签名初始化成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当签名初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -363,7 +363,7 @@ sign(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 待签名的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当签名成功时，err为undefined，data为获取到的签名结果DataBlob；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当签名成功时，err为undefined，data为获取到的签名结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -399,7 +399,7 @@ sign(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当签名成功时，err为undefined，data为获取到的签名结果DataBlob；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当签名成功时，err为undefined，data为获取到的签名结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -536,7 +536,7 @@ signSync(data: DataBlob | null): DataBlob
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -599,7 +599,7 @@ function signByCallback() {
 
 ```
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -664,7 +664,7 @@ async function signByPromise() {
 
 ```
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -738,7 +738,7 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 
 追加待签名数据，使用callback异步回调完成更新。
 
-必须在对[Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)实例使用[init](arkts-cryptoarchitecture-cryptoframework-sign-i.md#init-1)或[initSync](arkts-cryptoarchitecture-cryptoframework-sign-i.md#initsync-1)初始化后，才能使用本函数。
+必须在对[Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)实例使用[init](arkts-cryptoarchitecture-cryptoframework-sign-i.md#init-1)或[initSync](arkts-cryptoarchitecture-cryptoframework-sign-i.md#initsync)初始化后，才能使用本函数。
 
 > **说明：**  
 >  
@@ -749,7 +749,7 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 > 过大内存。  
 >  
 > 签名使用多次update操作的示例代码详见  
-> [使用RSA密钥对分段签名验签](docroot://security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，  
+> [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，  
 > 其余算法操作类似。
 
 > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。
@@ -771,7 +771,7 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 传入的消息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当签名更新成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当签名更新成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -803,7 +803,7 @@ update(data: DataBlob): Promise<void>
 > 算法库不对单次或累计的update数据量设置大小限制。建议在处理大数据量的签名操作时，采用多次update方式传入数据，以避免一次性申请过大内  
 > 存。  
 > 签名使用多次update操作的示例代码详见  
-> [使用RSA密钥对分段签名验签](docroot://security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，  
+> [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，  
 > 其余算法操作类似。  
 >  
 > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。  
@@ -851,18 +851,18 @@ updateSync(data: DataBlob): void
 
 追加待签名数据，通过同步方式完成更新。
 
-必须在对[Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)实例使用[initSync()](arkts-cryptoarchitecture-cryptoframework-sign-i.md#initsync-1)初始化后，才能使用本函数。
+必须在对[Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)实例使用[initSync()](arkts-cryptoarchitecture-cryptoframework-sign-i.md#initsync)初始化后，才能使用本函数。
 
 > **说明：**  
 >  
-> 根据数据量，可以不调用updateSync（即[initSync](arkts-cryptoarchitecture-cryptoframework-sign-i.md#initsync-1)完成后直接调用  
+> 根据数据量，可以不调用updateSync（即[initSync](arkts-cryptoarchitecture-cryptoframework-sign-i.md#initsync)完成后直接调用  
 > [signSync](arkts-cryptoarchitecture-cryptoframework-sign-i.md#signsync-1)）或多次调用updateSync。  
 >  
 > 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次updateSync的方式传入数据，避免  
 > 一次性申请过大内存。  
 >  
 > 签名使用多次updateSync操作的示例代码详见  
-> [使用RSA密钥对分段签名验签](docroot://security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，  
+> [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，  
 > 其余算法操作类似。  
 >  
 > OnlySign模式下，不支持updateSync操作，需要直接使用signSync传入数据。  

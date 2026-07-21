@@ -100,7 +100,7 @@ function uninstallDLPSandbox(bundleName: string, userId: number, appIndex: numbe
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码401。 |
 | userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。 |
 | appIndex | number | 是 | DLP沙箱号，即installDLPSandbox接口调用成功后的返回值，用于标识已安装的DLP沙箱。取值范围为[1000, 1100]，超出范围时输出错误日志。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当卸载DLP沙箱成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当卸载DLP沙箱成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

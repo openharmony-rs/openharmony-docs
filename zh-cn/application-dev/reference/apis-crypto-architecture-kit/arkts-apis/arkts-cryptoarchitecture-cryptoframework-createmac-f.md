@@ -15,7 +15,7 @@ function createMac(algName: string): Mac
 
 生成Mac实例，用于消息认证码的计算与操作。
 
-支持的规格详见[HMAC消息认证码算法规格](docroot://security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
+支持的规格详见[HMAC消息认证码算法规格](../../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 
 **起始版本：** 9
 
@@ -31,7 +31,7 @@ function createMac(algName: string): Mac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algName | string | 是 | 指定摘要算法，支持算法请参考[HMAC消息认证码算法规格](docroot://security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。 |
+| algName | string | 是 | 指定摘要算法，支持算法请参考[HMAC消息认证码算法规格](../../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。 |
 
 **返回值：**
 
@@ -72,7 +72,7 @@ function createMac(macSpec: MacSpec): Mac
 
 生成Mac实例，用于进行消息认证码的计算与操作。
 
-支持的规格详见[MAC消息认证码算法规格](docroot://security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
+支持的规格详见[MAC消息认证码算法规格](../../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 
 **起始版本：** 18
 
@@ -86,7 +86,7 @@ function createMac(macSpec: MacSpec): Mac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| macSpec | [MacSpec](arkts-cryptoarchitecture-cryptoframework-macspec-i.md) | 是 | 根据消息认证码的不同算法，指定入参参数，支持算法请参考[MAC消息认证码算法规格](docroot://security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。 |
+| macSpec | [MacSpec](arkts-cryptoarchitecture-cryptoframework-macspec-i.md) | 是 | 根据消息认证码的不同算法，指定入参参数，支持算法请参考[MAC消息认证码算法规格](../../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。 |
 
 **返回值：**
 

@@ -20,9 +20,7 @@ function encapsulate(keyAlias: string, params: HuksParam[],
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-huks-function encapsulate(keyAlias: string, params: HuksParam[],
-      sharedKeyAlias?: string, sharedKeyParams?: HuksParam[]): Promise<HuksReturnResult>--><!--Device-huks-function encapsulate(keyAlias: string, params: HuksParam[],
-      sharedKeyAlias?: string, sharedKeyParams?: HuksParam[]): Promise<HuksReturnResult>-End-->
+<!--Device-huks-function encapsulate(keyAlias: string, params: HuksParam[],sharedKeyAlias?: string, sharedKeyParams?: HuksParam[]): Promise<HuksReturnResult>--><!--Device-huks-function encapsulate(keyAlias: string, params: HuksParam[],sharedKeyAlias?: string, sharedKeyParams?: HuksParam[]): Promise<HuksReturnResult>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 

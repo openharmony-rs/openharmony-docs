@@ -28,7 +28,7 @@ function getPrivateCertificate(keyUri: string, callback: AsyncCallback<CMResult>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyUri | string | 是 | 表示待获取凭据的唯一标识符，长度限制256字节以内。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CMResult&gt; | 是 | 回调函数。当获取私有凭据的详细信息成功时，err为null，data为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的credential属性；否则为错误对象。 |
+| callback | AsyncCallback&lt;CMResult&gt; | 是 | 回调函数。当获取私有凭据的详细信息成功时，err为null，data为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的credential属性；否则为错误对象。 |
 
 **错误码：**
 

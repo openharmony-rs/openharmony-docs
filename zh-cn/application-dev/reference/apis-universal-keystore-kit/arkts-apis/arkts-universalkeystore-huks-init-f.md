@@ -38,7 +38,7 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | Init操作密钥的别名。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Init操作的参数集合。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksHandle&gt; | 是 | 回调函数。当密钥操作init成功时，err为undefined，data为获取到的HuksHandle；否则为错误对象。HuksHandle的handle返回init生成的handle。 |
+| callback | AsyncCallback&lt;HuksHandle&gt; | 是 | 回调函数。当密钥操作init成功时，err为undefined，data为获取到的HuksHandle；否则为错误对象。HuksHandle的handle返回init生成的handle。 |
 
 
 <a id="init-1"></a>

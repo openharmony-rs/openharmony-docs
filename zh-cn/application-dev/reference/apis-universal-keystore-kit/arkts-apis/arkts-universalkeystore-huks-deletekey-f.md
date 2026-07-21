@@ -37,7 +37,7 @@ function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，应为生成key时传入的别名。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于删除时指定密钥的属性TAG。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksResult&gt; | 是 | 回调函数。当删除密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| callback | AsyncCallback&lt;HuksResult&gt; | 是 | 回调函数。当删除密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例：**
 

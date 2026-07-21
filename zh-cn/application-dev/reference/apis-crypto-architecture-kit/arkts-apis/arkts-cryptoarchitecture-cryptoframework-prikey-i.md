@@ -148,9 +148,9 @@ getEncodedDer(format: string): DataBlob
 
 > **说明：**  
 >  
-> 本接口和[Key.getEncoded()](arkts-cryptoarchitecture-cryptoframework-key-i.md#getencoded-1)的区别是：  
+> 本接口和[Key.getEncoded()](arkts-cryptoarchitecture-cryptoframework-key-i.md#getencoded)的区别是：  
 > 1. 本接口可以指定获取密钥数据的格式。  
-> 2. [Key.getEncoded()](arkts-cryptoarchitecture-cryptoframework-key-i.md#getencoded-1)不支持指定获取密钥数据的格式。
+> 2. [Key.getEncoded()](arkts-cryptoarchitecture-cryptoframework-key-i.md#getencoded)不支持指定获取密钥数据的格式。
 
 **起始版本：** 12
 

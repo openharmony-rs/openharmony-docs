@@ -200,8 +200,8 @@ off(type: 'authTip', callback?: AuthTipCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'authTip' | 是 | 取消订阅的事件类型，支持的事件为'authTip'，当[start()](arkts-userauthentication-userauth-userauthinstance-i.md#start-1)调用完成，发起身份认证并调用[on('authTip')](arkts-userauthentication-userauth-userauthinstance-i.md#on-2)订阅该事件后，调用该方法可取消订阅，不会再触发该事件。 |
-| callback | [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) | 否 | 认证接口的回调函数，用于返回认证中间状态。 当不传该参数时默认值为调用[on('authTip')](arkts-userauthentication-userauth-userauthinstance-i.md#on-2)接口时传递的参数值。 |
+| type | 'authTip' | 是 | 取消订阅的事件类型，支持的事件为'authTip'，当[start()](arkts-userauthentication-userauth-userauthinstance-i.md#start)调用完成，发起身份认证并调用[on('authTip')](arkts-userauthentication-userauth-userauthinstance-i.md#onauthtip)订阅该事件后，调用该方法可取消订阅，不会再触发该事件。 |
+| callback | [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) | 否 | 认证接口的回调函数，用于返回认证中间状态。 当不传该参数时默认值为调用[on('authTip')](arkts-userauthentication-userauth-userauthinstance-i.md#onauthtip)接口时传递的参数值。 |
 
 **错误码：**
 
@@ -318,7 +318,7 @@ on(type: 'authTip', callback: AuthTipCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'authTip' | 是 | 订阅事件类型，支持的事件为'authTip'，当[start()](arkts-userauthentication-userauth-userauthinstance-i.md#start-1)调用完成，发起身份认证，触发该事件。 |
+| type | 'authTip' | 是 | 订阅事件类型，支持的事件为'authTip'，当[start()](arkts-userauthentication-userauth-userauthinstance-i.md#start)调用完成，发起身份认证，触发该事件。 |
 | callback | [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) | 是 | 认证接口的回调函数，用于返回认证中间状态。 |
 
 **错误码：**

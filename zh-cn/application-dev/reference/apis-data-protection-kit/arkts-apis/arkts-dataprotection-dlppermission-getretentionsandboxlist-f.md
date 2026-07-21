@@ -80,7 +80,7 @@ function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Arr
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定应用包名，用于查询该应用的保留沙箱信息列表。长度范围[7, 128]字节，超出此范围抛出错误码401。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;RetentionSandboxInfo&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
 
@@ -128,7 +128,7 @@ function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxI
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;RetentionSandboxInfo&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
 

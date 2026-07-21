@@ -31,7 +31,7 @@ callback(result: EventInfo): void
 
 **废弃版本：** 11
 
-**替代接口：** [onResult(result:](arkts-userauthentication-userauth-iauthcallback-i.md#onresult-1)
+**替代接口：** [onResult(result:](arkts-userauthentication-userauth-iauthcallback-i.md#onresult)
 
 <!--Device-AuthEvent-callback(result: EventInfo): void--><!--Device-AuthEvent-callback(result: EventInfo): void-End-->
 
@@ -41,7 +41,7 @@ callback(result: EventInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | [EventInfo](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-update-eventinfo-i-sys.md) | 是 | 返回的认证结果信息或提示信息。 |
+| result | EventInfo | 是 | 返回的认证结果信息或提示信息。 |
 
 **示例：**
 

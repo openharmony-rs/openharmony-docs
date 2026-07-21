@@ -37,7 +37,7 @@ function getKeyProperties(keyAlias: string, options: HuksOptions, callback: Asyn
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，应与所用密钥生成时使用的别名相同。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 空对象（此处传空即可）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksResult&gt; | 是 | 回调函数。当获取密钥属性成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| callback | AsyncCallback&lt;HuksResult&gt; | 是 | 回调函数。当获取密钥属性成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例：**
 

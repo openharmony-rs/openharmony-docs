@@ -102,4 +102,4 @@ Crypto operation error.
 
 检查该接口或相关联接口输入参数的正确性。
 
-AES解密失败可参考[算法库加解密失败返回错误码17630001](../../security/CryptoArchitectureKit/crypto-architecture-kit-error-faq.md)
+AES解密失败可参考[算法库加解密失败返回错误码17630001]

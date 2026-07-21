@@ -29,7 +29,7 @@ function createKdf(algName: string): Kdf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algName | string | 是 | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF、SCRYPT、X963KDF算法，如"PBKDF2\|SHA256", "HKDF\|SHA256", "SCRYPT", "X963KDF\|SHA256"。<br>支持的规格详见[密钥派生函数规格](docroot://security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。 |
+| algName | string | 是 | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF、SCRYPT、X963KDF算法，如"PBKDF2\|SHA256", "HKDF\|SHA256", "SCRYPT", "X963KDF\|SHA256"。<br>支持的规格详见[密钥派生函数规格](../../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。 |
 
 **返回值：**
 
