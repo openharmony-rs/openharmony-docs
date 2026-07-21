@@ -521,7 +521,7 @@ if (surface == EGL_NO_SURFACE) {
    }
    ```
 <!--Del-->
-有关ArkTS XComponent 组件的使用，请参考：[ArkTS XComponent组件使用示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/XComponent/README_zh.md#)。
+有关ArkTS XComponent 组件的使用，请参考：[ArkTS XComponent组件使用示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent3D)。
 <!--DelEnd-->
 
 ### 使用eglCreateContext创建渲染上下文 
