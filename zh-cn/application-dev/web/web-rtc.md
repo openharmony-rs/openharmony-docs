@@ -184,41 +184,170 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 
 方案一：遍历后置摄像头选择第一个后置摄像头。
 
-- 遍历设备，获取第一个后置摄像头的 deviceId，示例如下：
+- 遍历设备，获取第一个后置摄像头的 deviceId。
 
-<!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Telephoto1.html) --> 
+- 通过deviceId来强选第一个后置摄像头。
 
-```html
-async function getFirstBackCameraId() {
-  const devices = await navigator.mediaDevices.enumerateDevices();
-  const videoDevices = devices.filter(d => d.kind === 'videoinput');
-  const back = videoDevices.find(d => {
-    const label = d.label.toLowerCase();
-    return label.includes('back') || label.includes('rear') || label.includes('后置');
-  });
-  return back ? back.deviceId : (videoDevices[0] ? videoDevices[0].deviceId : null);
-}
-```
-
-- 通过deviceId来强选第一个后置摄像头，示例如下：
-
-<!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Telephoto1.html) --> 
+示例如下：
 
 ```html
-const deviceId = await getFirstBackCameraId();
-const stream = await navigator.mediaDevices.getUserMedia({
-  video: { deviceId: { exact: deviceId } },
-  audio: false
-});
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>打开后置摄像头</title>
+    <style>
+        body { text-align: center; padding-top: 50px; }
+        button { font-size: 18px; padding: 12px 24px; margin: 10px; }
+        video { width: 80%; max-width: 500px; border: 1px solid #ccc; margin-top: 20px; background: #222; }
+    </style>
+</head>
+<body>
+<h2>后置摄像头预览</h2>
+<video id="video" autoplay playsinline></video>
+<br>
+<button id="onBtn">打开后置摄像头</button>
+<button id="offBtn" disabled>关闭摄像头</button>
+
+<script>
+    let currentStream = null;
+    const video = document.getElementById('video');
+    const onBtn = document.getElementById('onBtn');
+    const offBtn = document.getElementById('offBtn');
+
+    // 遍历设备，获取第一个后置摄像头的 deviceId
+    async function getFirstBackCameraId() {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(d => d.kind === 'videoinput');
+        const back = videoDevices.find(d => {
+            const label = d.label.toLowerCase();
+            return label.includes('back') || label.includes('rear') || label.includes('后置');
+        });
+        return back ? back.deviceId : (videoDevices[0] ? videoDevices[0].deviceId : null);
+    }
+
+    async function openCamera() {
+        try {
+            if (currentStream) {
+                currentStream.getTracks().forEach(t => t.stop());
+                currentStream = null;
+            }
+            // 通过deviceId来强选第一个后置摄像头
+            const deviceId = await getFirstBackCameraId();
+            if (!deviceId) {
+                alert('未找到摄像头');
+                return;
+            }
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: { deviceId: { exact: deviceId } },
+                audio: false
+            });
+            video.srcObject = stream;
+            currentStream = stream;
+            onBtn.disabled = true;
+            offBtn.disabled = false;
+            console.log('后置摄像头已打开');
+        } catch (err) {
+            console.error('打开摄像头失败：', err);
+            alert('无法打开摄像头，请检查权限或 HTTPS 环境。');
+        }
+    }
+
+    function closeCamera() {
+        if (currentStream) {
+            currentStream.getTracks().forEach(t => t.stop());
+            currentStream = null;
+        }
+        video.srcObject = null;
+        onBtn.disabled = false;
+        offBtn.disabled = true;
+        console.log('摄像头已关闭');
+    }
+
+    onBtn.addEventListener('click', openCamera);
+    offBtn.addEventListener('click', closeCamera);
+
+    window.addEventListener('beforeunload', () => {
+        if (currentStream) {
+            currentStream.getTracks().forEach(t => t.stop());
+        }
+    });
+</script>
+</body>
+</html>
 ```
 
 方案二：可以直接通过facingMode属性选择后置
 
-<!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Telephoto2.html) --> 
-
 ```html
-const stream = await navigator.mediaDevices.getUserMedia({
-  video: { facingMode: 'environment' },
-  audio: false
-});
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>后置摄像头预览</title>
+    <style>
+        body { text-align: center; padding-top: 50px; }
+        button { font-size: 18px; padding: 12px 24px; margin: 10px; }
+        video { width: 80%; max-width: 500px; border: 1px solid #ccc; margin-top: 20px; background: #222; }
+    </style>
+</head>
+<body>
+<h2>后置摄像头预览facingMode</h2>
+<video id="video" autoplay playsinline></video>
+<br>
+<button id="onBtn">打开后置摄像头</button>
+<button id="offBtn" disabled>关闭摄像头</button>
+
+<script>
+    let currentStream = null;
+    const video = document.getElementById('video');
+    const onBtn = document.getElementById('onBtn');
+    const offBtn = document.getElementById('offBtn');
+
+    async function openCamera() {
+        try {
+            if (currentStream) {
+                currentStream.getTracks().forEach(t => t.stop());
+                currentStream = null;
+            }
+            // 使用facingMode:'environment'让浏览器自动选择后置摄像头
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: 'environment' },
+                audio: false
+            });
+            video.srcObject = stream;
+            currentStream = stream;
+            onBtn.disabled = true;
+            offBtn.disabled = false;
+            console.log('后置摄像头已打开');
+        } catch (err) {
+            console.error('打开摄像头失败：', err);
+            alert('无法打开后置摄像头，请检查权限或 HTTPS 环境。');
+        }
+    }
+
+    function closeCamera() {
+        if (currentStream) {
+            currentStream.getTracks().forEach(t => t.stop());
+            currentStream = null;
+        }
+        video.srcObject = null;
+        onBtn.disabled = false;
+        offBtn.disabled = true;
+        console.log('摄像头已关闭');
+    }
+
+    onBtn.addEventListener('click', openCamera);
+    offBtn.addEventListener('click', closeCamera);
+
+    window.addEventListener('beforeunload', () => {
+        if (currentStream) {
+            currentStream.getTracks().forEach(t => t.stop());
+        }
+    });
+</script>
+</body>
+</html>
 ```
