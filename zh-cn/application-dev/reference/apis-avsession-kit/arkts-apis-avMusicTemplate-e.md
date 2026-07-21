@@ -145,7 +145,7 @@
 | PLAY_MUSIC      | 'playMusic'     | 播放音乐。              |
 | PLAY_VIDEO      | 'playVideo'     | 播放视频。              |
 | PLAY_MUSIC_LIST | 'playMusicList' | 播放音乐列表（指定歌单）。 |
-| PLAY_VIDEO_LIST | 'playVideoList' | 播放视频列表（指定歌单）。 |
+| PLAY_VIDEO_LIST | 'playVideoList' | 播放视频列表（指定视频）。 |
 
 ## DownloadStatus
 
