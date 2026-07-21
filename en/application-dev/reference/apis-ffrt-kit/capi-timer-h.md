@@ -59,7 +59,7 @@ Starts a timer on an FFRT worker thread. Avoid calling `exit` or [ffrt_timer_sto
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API [ffrt_timer_t](capi-type-def-h.md#variable) | Timer handle. `-1` is returned if the callback function is a null pointer or the QoS mapping is not registered. |
+| FFRT_C_API [ffrt_timer_t](capi-type-def-h.md#variables) | Timer handle. `-1` is returned if the callback function is a null pointer or the QoS mapping is not registered. |
 
 **Reference:**
 
@@ -81,8 +81,8 @@ Stops a timer on an FFRT worker thread. This API is a blocking API. Avoid callin
 
 | Name| Description|
 | -- | -- |
-| [ffrt_qos_t](capi-type-def-h.md#variable) qos | QoS level of the worker thread on which the timer runs. It must be the same as the QoS level used in [ffrt_timer_start](capi-timer-h.md#ffrt_timer_start). |
-| [ffrt_timer_t](capi-type-def-h.md#variable) handle | Handle to the target timer, returned by [ffrt_timer_start](capi-timer-h.md#ffrt_timer_start). |
+| [ffrt_qos_t](capi-type-def-h.md#variables) qos | QoS level of the worker thread on which the timer runs. It must be the same as the QoS level used in [ffrt_timer_start](capi-timer-h.md#ffrt_timer_start). |
+| [ffrt_timer_t](capi-type-def-h.md#variables) handle | Handle to the target timer, returned by [ffrt_timer_start](capi-timer-h.md#ffrt_timer_start). |
 
 **Returns**
 

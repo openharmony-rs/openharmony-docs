@@ -10,7 +10,7 @@
 
 ## Overview
 
-This file declares the C APIs of fiber. A fiber is a lightweight user-mode thread used to implement efficient task scheduling and context switching in the user space.
+This file declares the C APIs of fibers. A fiber is a lightweight user-mode thread used to implement efficient task scheduling and context switching in the user space.
 
 **File to include**: <ffrt/fiber.h>
 
