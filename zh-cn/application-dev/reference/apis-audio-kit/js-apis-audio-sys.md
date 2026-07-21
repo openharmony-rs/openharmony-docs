@@ -4997,7 +4997,7 @@ setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enab
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
 | deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 目标设备描述符，用于设置是否开启自适应空间音频渲染。 |
-| enabled     | boolean     | 是   | 是否开启自适应空间音频渲染。true表示开启，false表示关闭。 |
+| enabled     | boolean     | 是   | 是否开启自适应空间音频渲染。true表示开启；false表示关闭。 |
 
 **返回值：**
 
@@ -5096,7 +5096,7 @@ offAdaptiveSpatialRenderingEnabledChangeForAnyDevice(callback?: Callback<AudioSp
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数，返回设备信息和自适应空间音频渲染开关状态。不传入时，表示取消所有已注册的回调。 |
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数，返回设备信息和自适应空间音频渲染开关状态。参数为空时，表示取消所有已注册的回调。 |
 
 **错误码：**
 
