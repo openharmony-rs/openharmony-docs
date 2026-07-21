@@ -30,6 +30,7 @@
 跨设备启动组件需同时满足以下三项要求：
 
 1. 设备间可信关系要求
+
    - 双端设备登录同一账号，满足可信关系要求。
    - 双端设备非同账号，需通过[设备发现](../distributedservice/devicemanager-guidelines.md#设备发现开发指导)和[设备绑定](../distributedservice/devicemanager-guidelines.md#设备绑定开发指导)提前建立可信关系。
 
@@ -50,6 +51,7 @@
 | [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。 | 无要求（仅单次交互）。 |
 | [startAbilityForResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult)<br>[terminateSelfWithResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。 | 无要求（仅单次交互）。 |
 
-> **说明：**
+> **说明**
+>
 > - 权限的申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 > - connectServiceExtensionAbility和startAbilityByCall所需的ohos.permission.DISTRIBUTED_DATASYNC权限，在应用拉起阶段不校验，仅在应用间建链操作时由软总线校验。
