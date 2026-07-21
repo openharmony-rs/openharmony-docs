@@ -634,7 +634,7 @@ try {
 }
 ```
 
-### onPairingRequest
+### remoteDevice.onPairingRequest
 
 onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
 
@@ -684,7 +684,7 @@ try {
 }
 ```
 
-### offPairingRequest
+### remoteDevice.offPairingRequest
 
 offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
 
