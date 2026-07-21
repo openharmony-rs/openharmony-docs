@@ -21,69 +21,7 @@
 
 示例代码如下：
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { window } from '@kit.ArkUI'
-import common from '@ohos.app.ability.common';
-import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  @State currentOrientation: string = 'UNSPECIFIED';
-  private stage: window.WindowStage = (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage;
-
-  aboutToAppear() {
-    let ret: boolean = false;
-    ret = display.isFoldable();
-    if (ret) {
-      let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
-        console.info(`Listening enabled. Data: ${data}`);
-        this.getBreakPointAndSetOrientation();
-      };
-      display.on('foldDisplayModeChange', callback);
-    } else {
-      this.getBreakPointAndSetOrientation();
-    }
-  }
-
-  private getBreakPointAndSetOrientation(): void {
-    let displayInfo = display.getDefaultDisplaySync();
-    let displayWidth = displayInfo.width;
-    let displayHeight = displayInfo.height;
-    let heightBp = displayHeight / displayWidth;
-    if(displayWidth > displayHeight) {
-      let temp = displayWidth;
-      displayWidth = displayHeight;
-      displayHeight = temp;
-    }
-    // 建议使用单一策略如"FOLLOW_DESKTOP"来应对设备的差异化，如单一策略无法满足需求，可参考断点机制，屏蔽设备差异
-    // 此处是举的特殊示例，原则上支持横屏的应用，旋转策略应该是支持4个方向可旋转，此处是为了说明断点的使用方式，才举此例
-    // 600为宽度断点枚举值其中的边界值， 0.8为高宽比断点枚举值其中的边界值
-    if (displayWidth >= 600 && heightBp < 0.8) {
-      this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.LANDSCAPE);
-      this.currentOrientation = 'LANDSCAPE';
-    } else {
-      this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.PORTRAIT);
-      this.currentOrientation = 'PORTRAIT';
-    }
-  }
-  build() {
-    RelativeContainer() {
-      Text(this.currentOrientation)
-        .fontWeight(600)
-        .fontSize(30)
-        .textAlign(TextAlign.Center)
-        .position({y: 300})
-        .width('100%')
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) --> 
 
 ## 视频类应用横竖屏切换
 
@@ -123,7 +61,7 @@ struct Index {
 
 若开发者想准确知道当前窗口方向从而选择旋转策略（比如视频播放页面锁定当前方向），推荐获取到[display.rotation](../reference/apis-arkui/js-apis-display.md#属性)或[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)后，再使用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)将屏幕方向转化为窗口方向，具体示例如下：
 
-1. 获取目标屏幕方向。调用[getDefaultDisplaySync()](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取屏幕方向。
+1. 获取目标屏幕方向。调用[getDefaultDisplaySync()](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取目标屏幕的Display对象，再通过其[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)属性获取屏幕方向。
 
 2. 将屏幕方向转换为窗口方向。调用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)可以把屏幕方向[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)转换为窗口方向[orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)。
 
