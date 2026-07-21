@@ -212,7 +212,7 @@ selectedColor(value: ResourceColor | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 被选中或部分选中状态的颜色。<br/>当value的值为undefined时，默认值：$r('sys.color.ohos_id_color_text_primary_activated')<br/>异常值按照默认值处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 被选中或部分选中状态的颜色。<br/>当value的值为undefined时，按照默认值处理。默认值：$r('sys.color.ohos_id_color_text_primary_activated')<br/>异常值按照默认值处理。 |
 
 ### unselectedColor<sup>10+</sup>
 

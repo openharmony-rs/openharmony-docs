@@ -504,7 +504,79 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 以下示例展示了如何创建默认星型评分样式。
 
+ArkTS-Dyn示例：
+
 ```ts
+// xxx.ets
+@Entry
+@Component
+struct RatingExample {
+  @State rating: number = 3.5;
+
+  build() {
+    Column() {
+      Column() {
+        Rating({ rating: this.rating, indicator: false })
+          .stars(5)
+          .stepSize(0.5)
+          .margin({ top: 24 })
+          .onChange((value: number) => {
+            this.rating = value;
+          })
+        Text('current score is ' + this.rating)
+          .fontSize(16)
+          .fontColor('rgba(24,36,49,0.60)')
+          .margin({ top: 16 })
+      }.width(360).height(113).backgroundColor('#FFFFFF').margin({ top: 68 })
+
+      Row() {
+        // 'common/testImage.jpg'需要替换为开发者所需的图像资源文件。
+        Image('common/testImage.jpg')
+          .width(40)
+          .height(40)
+          .borderRadius(20)
+          .margin({ left: 24 })
+        Column() {
+          Text('Yue')
+            .fontSize(16)
+            .fontColor('#182431')
+            .fontWeight(500)
+          Row() {
+            Rating({ rating: 3.5, indicator: false }).margin({ top: 1, right: 8 })
+            Text('2021/06/02')
+              .fontSize(10)
+              .fontColor('#182431')
+          }
+        }.margin({ left: 12 }).alignItems(HorizontalAlign.Start)
+
+        Text('1st Floor')
+          .fontSize(10)
+          .fontColor('#182431')
+          .position({ x: 295, y: 8 })
+      }.width(360).height(56).backgroundColor('#FFFFFF').margin({ top: 64 })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static';
+
+import {
+  Entry,
+  Column,
+  Component,
+  Text,
+  Color,
+  Rating,
+  Row,
+  Image,
+  HorizontalAlign
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
 // xxx.ets
 @Entry
 @Component
@@ -561,6 +633,8 @@ struct RatingExample {
 
 ### 示例2（自定义评分条）
 以下示例实现了自定义评分条的功能，其中每个圆圈表示0.5分。当ratingIndicator为true时，评分条作为指示器使用，不可改变评分；当为false时，可进行评分。ratingStars用于设置评分总数，ratingStepsize用于设置评分步长。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -699,6 +773,231 @@ struct ratingExample {
   @State rating: number = 0;
   @State ratingIndicator: boolean = true;
   @State ratingStars: number = 0;
+  @State ratingStepSize: number = 0.5;
+  @State ratingEnabled: boolean = true;
+
+  build() {
+    Row() {
+      Column() {
+        Rating({
+          rating: 0,
+          indicator: this.ratingIndicator
+        })
+          .stepSize(this.ratingStepSize)
+          .stars(this.ratingStars)
+          .backgroundColor(Color.Transparent)
+          .width('100%')
+          .height(50)
+          .onChange((value: number) => {
+            console.info('Rating change is' + value);
+            this.rating = value;
+          })
+          .contentModifier(new MyRatingStyle("hello", 3))
+        Button(this.ratingIndicator ? "ratingIndicator : true" : "ratingIndicator : false")
+          .onClick((event) => {
+            if (this.ratingIndicator) {
+              this.ratingIndicator = false;
+            } else {
+              this.ratingIndicator = true;
+            }
+          }).margin({ top: 5 })
+
+        Button(this.ratingStars < 5 ? "ratingStars + 1, ratingStars =" + this.ratingStars : "ratingStars最大值为5")
+          .onClick((event) => {
+            if (this.ratingStars < 5) {
+              this.ratingStars += 1;
+            }
+          }).margin({ top: 5 })
+
+        Button(this.ratingStars > 0 ? "ratingStars - 1, ratingStars =" + this.ratingStars :
+          "ratingStars小于等于0时默认等于5")
+          .onClick((event) => {
+            if (this.ratingStars > 0) {
+              this.ratingStars -= 1;
+            }
+          }).margin({ top: 5 })
+
+        Button(this.ratingStepSize == 0.5 ? "ratingStepSize : 0.5" : "ratingStepSize : 1")
+          .onClick((event) => {
+            if (this.ratingStepSize == 0.5) {
+              this.ratingStepSize = 1;
+            } else {
+              this.ratingStepSize = 0.5;
+            }
+          }).margin({ top: 5 })
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static';
+
+import {
+  Entry,
+  Column,
+  Component,
+  Text,
+  Color,
+  Rating,
+  Row,
+  RatingConfiguration,
+  ContentModifier,
+  WrappedBuilder,
+  wrapBuilder,
+  Circle,
+  ClickEvent,
+  Button,
+  Visibility,
+  FlexAlign
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+type BuilderRating = @Builder(config: RatingConfiguration) => void
+
+class MyRatingStyle implements ContentModifier<RatingConfiguration> {
+  name: string = "";
+  style: number = 0;
+
+  constructor(value1: string, value2: number) {
+    this.name = value1;
+    this.style = value2;
+  }
+
+  applyContent(): WrappedBuilder<BuilderRating> {
+    return wrapBuilder(buildRating);
+  }
+}
+
+@Builder
+function buildRating(config: RatingConfiguration) {
+  Column() {
+    Row() {
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 0.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(0.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(1);
+              return
+            }
+          }
+        }).visibility(config.stars >= 1 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 0.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(1);
+          }
+        }).visibility(config.stars >= 1 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 1.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(1.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(2);
+              return
+            }
+          }
+        }).visibility(config.stars >= 2 ? Visibility.Visible : Visibility.Hidden).margin({ left: 10 })
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 1.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(2);
+          }
+        }).visibility(config.stars >= 2 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 2.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(2.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(3);
+              return
+            }
+          }
+        }).visibility(config.stars >= 3 ? Visibility.Visible : Visibility.Hidden).margin({ left: 10 })
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 2.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(3);
+          }
+        }).visibility(config.stars >= 3 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 3.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(3.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(4);
+              return
+            }
+          }
+        }).visibility(config.stars >= 4 ? Visibility.Visible : Visibility.Hidden).margin({ left: 10 })
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 3.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(4);
+          }
+        }).visibility(config.stars >= 4 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 4.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(4.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(5);
+              return
+            }
+          }
+        }).visibility(config.stars >= 5 ? Visibility.Visible : Visibility.Hidden).margin({ left: 10 })
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 4.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(5);
+          }
+        }).visibility(config.stars >= 5 ? Visibility.Visible : Visibility.Hidden)
+    }
+
+    Text("分值：" + config.rating)
+  }
+}
+
+@Entry
+@Component
+struct ratingExample {
+  @State rating: number = 0;
+  @State ratingIndicator: boolean = true;
+  @State ratingStars: Int = 0;
   @State ratingStepSize: number = 0.5;
   @State ratingEnabled: boolean = true;
 
