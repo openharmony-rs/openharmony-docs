@@ -535,3 +535,11 @@ struct Index {
   }
 }
 ```
+
+## 常见问题
+
+### 更新XComponent的大小，防止不同折叠状态变化后图像拉伸变形
+
+折叠状态变化切换镜头后，可能出现图像分辨率与XComponent的宽高比不匹配的情况，应用可通过[Window.on('windowSizeChange')](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-window-window#onwindowsizechange7)监听窗口的变化，根据屏幕旋转角度（[Display.rotation](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-display#%E5%B1%9E%E6%80%A7)）与相机镜头角度（[CameraDevice.cameraOrientation](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-display#orientation10)）之间的角度来确定布局的宽高比，以确保布局能跟随窗口实时调整。
+
+详细代码可参考：[指定XComponent的大小，防止图像拉伸变形](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/camera-rotation-angle-adaptation#%E6%8C%87%E5%AE%9Axcomponent%E7%9A%84%E5%A4%A7%E5%B0%8F%E9%98%B2%E6%AD%A2%E6%97%8B%E8%BD%AC%E5%90%8E%E5%9B%BE%E5%83%8F%E6%8B%89%E4%BC%B8%E5%8F%98%E5%BD%A2)
