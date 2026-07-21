@@ -1,10 +1,12 @@
 # native_deviceinfo.h
+
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6b4681121c8c0a0b9c6d7090c0aa91698a4b9fcf translatedAt=2026-07-21T01:10:26.513Z pushedAt=2026-07-21T01:14:16.384Z -->
 
 ## Overview
 
@@ -26,7 +28,7 @@ Declares the definitions of playback control device information.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) | - | Defines a struct for the target device information.|
+| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) | AVSession_OutputDeviceInfo | Defines a struct for the target device information. |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) | AVSession_DeviceInfo | Defines a struct for the device information. This instance is used to obtain more device information and its detailed properties.|
 
 ### Functions
