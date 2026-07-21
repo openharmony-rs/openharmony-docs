@@ -899,9 +899,7 @@ Allows an application to add, remove, or change all calendar events.
 
 Allows an application to query, set, and subscribe to the mating part status information via the head unit.
 
-Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
-
-<!--RP98--><!--RP98End-->
+<!--RP102--><!--RP102End-->
 
 **Permission level**: system_basic
 
@@ -916,9 +914,8 @@ Applicable scenarios and functionalities: This permission can be requested when 
 Allows an application to subscribe to and obtain the status of the mating part (steering wheel).
 
 You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
-Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
 
-<!--RP98--><!--RP98End-->
+<!--RP102--><!--RP102End-->
 
 **Permission level**: system_basic
 
@@ -933,9 +930,8 @@ Applicable scenarios and functionalities: This permission can be requested when 
 Allows an application to subscribe to and obtain the status of the mating part (interior light).
 
 You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
-Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
 
-<!--RP98--><!--RP98End-->
+<!--RP102--><!--RP102End-->
 
 **Permission level**: system_basic
 
@@ -950,9 +946,8 @@ Applicable scenarios and functionalities: This permission can be requested when 
 Allows an application to set the status of the mating part (interior light).
 
 You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
-Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
 
-<!--RP98--><!--RP98End-->
+<!--RP102--><!--RP102End-->
 
 **Permission level**: system_basic
 
@@ -967,9 +962,8 @@ Applicable scenarios and functionalities: This permission can be requested when 
 Allows an application to subscribe to and obtain the status of the mating part (driving information module).
 
 You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
-Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
 
-<!--RP98--><!--RP98End-->
+<!--RP102--><!--RP102End-->
 
 **Permission level**: system_basic
 
@@ -984,9 +978,8 @@ Applicable scenarios and functionalities: This permission can be requested when 
 Allows an application to subscribe to and obtain the status of the mating part (accelerator pedal).
 
 You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
-Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
 
-<!--RP98--><!--RP98End-->
+<!--RP102--><!--RP102End-->
 
 **Permission level**: system_basic
 
@@ -1001,9 +994,8 @@ Applicable scenarios and functionalities: This permission can be requested when 
 Allows an application to subscribe to and obtain the status of the mating part (brake pedal).
 
 You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
-Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
 
-<!--RP98--><!--RP98End-->
+<!--RP102--><!--RP102End-->
 
 **Permission level**: system_basic
 
