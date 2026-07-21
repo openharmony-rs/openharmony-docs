@@ -1463,7 +1463,7 @@ ArkTS-Sta: addAccessibilityVirtualNodes(elementId: long, windowId: int, nodes: A
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#OperateVirtualNodeResult)&gt; | Promise对象，返回执行结果。 |
+| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#operatevirtualnoderesult)&gt; | Promise对象，返回执行结果。 |
 
 **错误码：**
 
@@ -1557,7 +1557,7 @@ ArkTS-Sta: removeAccessibilityVirtualNodes(elementId: long, windowId: int): Prom
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#OperateVirtualNodeResult)&gt; | Promise对象，返回执行结果。 |
+| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#operatevirtualnoderesult)&gt; | Promise对象，返回执行结果。 |
 
 **错误码：**
 
