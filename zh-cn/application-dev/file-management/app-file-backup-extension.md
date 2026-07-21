@@ -30,7 +30,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 - 当备份目录时，应用进程必须拥有读取该目录及其所有子目录的权限（DAC中的`r`），否则将导致备份失败。
 - 当备份文件时，应用进程必须拥有搜索该文件所有祖父级目录的权限（DAC中的`x`），否则将导致备份失败。
 - 当备份恢复时，所有待备份恢复的文件及目录不支持相对路径(../)和软链接。
-- 针对BackupExtensionAbility接口调用限制，详情请参考API中的[约束限制](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#约束条件)。
+- 针对BackupExtensionAbility接口调用限制，详情请参考API中的[约束限制](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#约束限制)。
 
 ## 开发步骤
 

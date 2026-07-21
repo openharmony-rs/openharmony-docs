@@ -511,6 +511,6 @@ BackupExtensionAbility不支持以下模块的引用。
 | <!--DelRow--> Input Kit | [@ohos.multimodalInput.inputMonitor (输入监听)(系统接口)](../apis-input-kit/js-apis-inputmonitor-sys.md) |
 | Location Kit | [@ohos.geolocation (位置服务)](../apis-location-kit/js-apis-geolocation.md) |
 | MDM Kit | [@ohos.enterprise.adminManager（admin权限管理）](../apis-mdm-kit/js-apis-enterprise-adminManager.md) |
-| <!--DelRow--> MDM Kit | [@ohos.enterprise.dateTimeManager （系统时间管理）(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
+| <!--DelRow--> MDM Kit | [@ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
 | <!--DelRow--> Media Kit | [@ohos.multimedia.media (媒体服务)(系统接口)](../apis-media-kit/js-apis-media-sys.md) |
 | Sensor Service Kit | [@ohos.sensor (传感器)](../apis-sensor-service-kit/js-apis-sensor.md) |
