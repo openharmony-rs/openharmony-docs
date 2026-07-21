@@ -81,7 +81,7 @@ export struct DefaultAndTopToastExample {
           } catch (error) {
             let message = (error as BusinessError).message;
             let code = (error as BusinessError).code;
-            hilog.error(DOMAIN, TAG, '%{public}s', `showToast args error code is $\{code}, message is $\{message}`);
+            hilog.error(DOMAIN, TAG, '%{public}s', `showToast args error code is ${code}, message is ${message}`);
           }
         })
 
@@ -99,7 +99,7 @@ export struct DefaultAndTopToastExample {
           }  catch (error) {
             let message = (error as BusinessError).message;
             let code = (error as BusinessError).code;
-            hilog.error(DOMAIN, TAG, '%{public}s', `showToast args error code is $\{code}, message is $\{message}`);
+            hilog.error(DOMAIN, TAG, '%{public}s', `showToast args error code is ${code}, message is ${message}`);
           }
         })
       }
