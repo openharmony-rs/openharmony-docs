@@ -1,8 +1,8 @@
 # ArkData常见问题
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @widecode-->
-<!--Designer: @widecode-->
+<!--Owner: @baijidong-->
+<!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -147,3 +147,18 @@
 4. 排查表中是否存在符合查询条件的数据。
    - 是：提供hilog系统日志，联系技术支撑人员定位。
    - 否：确保查询条件符合预期，可以查询到数据。
+
+## 调用getRdbStore接口使用原始密钥打开加密关系型数据库时，入参encryptionKey如何配置
+
+在关系型数据库中，调用[getRdbStore](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)接口使用原始密钥打开加密库时，入参[CryptoParam.encryptionKey](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#cryptoparam14)需要按照如下操作配置：
+
+```ts
+import { relationalStore } from '@kit.ArkData'
+
+let password: string = "x'3605d7de19311edba4d3c88143c61cdd79dd5a58bc829c8b1234567891234567'"; // 需替换为实际的数据库口令密码
+let key = new Uint8Array(buffer.from(password, 'utf8').buffer); // 返回的是Uint8Array
+// 配置加密参数
+const cryptoParam: relationalStore.CryptoParam = {
+  encryptionKey: key, // 必填，指定密钥
+};
+```
