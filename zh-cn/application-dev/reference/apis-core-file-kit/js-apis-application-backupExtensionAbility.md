@@ -470,7 +470,7 @@ class BackupExt extends BackupExtensionAbility {
 
 ## 附录
 
-BackupExtensionAbility不支持引用以下模块。
+BackupExtensionAbility不支持以下模块的引用。
 
 | Kit | 模块 |
 | --- | --- |
