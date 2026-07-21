@@ -690,7 +690,7 @@ updateContentSize(width: number, height: number): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中不报错也不生效。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用；在Car设备中，<!--Del-->仅支持特定模板类型（具体可见[PiPTemplateType](js-apis-pipWindow-sys.md#piptemplatetype)）的画中画调用此接口更新尺寸，只能以固定大小尺寸更新，当宽高比>=1时更新为横屏小窗类型，当宽高比<1时更新为竖屏大窗类型，其他模板类型的画中画<!--DelEnd-->调用此接口不报错也不生效。
 
 **参数：**
 
