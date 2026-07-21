@@ -37,7 +37,7 @@ Imports a key in plaintext. This API uses an asynchronous callback to return the
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
@@ -142,7 +142,7 @@ Imports a key in plaintext. This API uses a promise to return the result.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |

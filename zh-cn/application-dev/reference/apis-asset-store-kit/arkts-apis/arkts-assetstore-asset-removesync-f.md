@@ -33,7 +33,7 @@ function removeSync(query: AssetMap): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Incorrect parameter types.2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Incorrect parameter types.2. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 | [24000002](../errorcode-asset.md#24000002-未找到关键资产) | The asset is not found. |
 | [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |

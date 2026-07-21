@@ -44,7 +44,7 @@ function queryAsUser(userId: number, query: AssetMap): Promise<Array<AssetMap>>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The caller doesn't have the permission. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Incorrect parameter types.2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Incorrect parameter types.2. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 | [24000002](../errorcode-asset.md#24000002-未找到关键资产) | The asset is not found. |
 | [24000004](../errorcode-asset.md#24000004-访问被拒绝) | Access denied. |

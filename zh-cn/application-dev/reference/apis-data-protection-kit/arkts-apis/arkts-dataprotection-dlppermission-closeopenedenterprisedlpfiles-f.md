@@ -19,7 +19,7 @@ function closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<v
 
 > **说明：**  
 >  
-> 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f-sys.md#generatedlpfileforenterprise)生成的企业DLP文件。
+> 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise]生成的企业DLP文件。
 
 **起始版本：** 26.0.0
 

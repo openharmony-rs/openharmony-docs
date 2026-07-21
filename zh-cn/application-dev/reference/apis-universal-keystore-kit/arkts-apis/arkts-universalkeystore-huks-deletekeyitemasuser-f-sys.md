@@ -45,7 +45,7 @@ function deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: Huks
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of<br>cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system applications are not allowed to use system APIs. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |

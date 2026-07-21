@@ -59,7 +59,7 @@ This function is prohibited by enterprise management policies.
 
 **处理步骤**
 
-请使用[getDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicydeprecated)接口检查该系统功能是否被禁用，并使用[setDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口解除禁用状态。
+请使用[getDisallowedPolicy]接口检查该系统功能是否被禁用，并使用[setDisallowedPolicy]接口解除禁用状态。
 
 <!--Del-->
 ## 204 用户访问控制策略拒绝此访问
@@ -84,8 +84,8 @@ Access denied due to user access control policy. Possible causes:
 **处理步骤**
 
 1. 确认目标操作涉及的用户约束和用户特权。
-2. 若目标操作受约束管控，则通过[isOsAccountConstraintEnabled](./apis-basic-services-kit/js-apis-osAccount.md#isosaccountconstraintenabled11)接口判断目标操作涉及的约束是否使能，若已使能，则停止操作。
-3. 若目标操作受特权管控，则通过[acquireAuthorization](./apis-basic-services-kit/js-apis-osAccount-sys.md#acquireauthorization24)接口申请目标特权，若申请成功则继续执行目标操作，否则停止操作。
+2. 若目标操作受约束管控，则通过[isOsAccountConstraintEnabled]接口判断目标操作涉及的约束是否使能，若已使能，则停止操作。
+3. 若目标操作受特权管控，则通过[acquireAuthorization]接口申请目标特权，若申请成功则继续执行目标操作，否则停止操作。
 <!--DelEnd-->
 
 ## 401 参数检查失败

@@ -39,7 +39,7 @@ function createX509CertChain(inStream: EncodingBlob): Promise<X509CertChain>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
@@ -163,7 +163,7 @@ function createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback<X50
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
@@ -287,7 +287,7 @@ function createX509CertChain(certs: Array<X509Cert>): X509CertChain
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 

@@ -46,7 +46,7 @@ function removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.<br> The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter verification failed.<br> Possible causes: the URI is null or the URI format is wrong. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter verification failed.<br> Possible causes: the URI is null or the URI format is wrong. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500002](../errorcode-certManager.md#17500002-证书不存在) | Indicates that the certificate does not exist. |
 
