@@ -70,7 +70,7 @@ class WebObj {
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController()
+  controller: webview.WebviewController = new webview.WebviewController();
   @State webTestObj: WebObj = new WebObj();
 
   build() {
@@ -367,7 +367,7 @@ struct WebComponent {
 }
 ```
 
-2.resources协议。
+2.resource协议。
 
 使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时URL会被“#”截断的问题。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
 ```ts
@@ -5457,7 +5457,7 @@ static setConnectionTimeout(timeout: number): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| timeout        | number  | 是   | socket连接超时时间，以秒为单位，必须为大于0的整数。 |
+| timeout        | number  | 是   | socket连接超时时间，单位：s，必须为大于0的整数。 |
 
 **错误码：**
 
