@@ -202,8 +202,12 @@
         const uint8Array: Uint8Array = textEncoder.encodeInto(jsonStr);
         const arrayBuffer = uint8Array.buffer;
     
-        socket.sppWrite(this.clientNumber, arrayBuffer);
-        hilog.info(DOMAIN, 'testTag', `sending success size: ${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
+        try {
+          socket.sppWrite(this.clientNumber, arrayBuffer);
+          hilog.info(DOMAIN, 'testTag', `sending success size: ${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
+        } catch (err) {
+          hilog.info(DOMAIN, 'testTag', `sending fail, err is ${JSON.stringify(err)}`);
+        }
       }
     
       public sendNotificationData(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
