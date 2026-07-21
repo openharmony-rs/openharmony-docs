@@ -12,7 +12,7 @@
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 从API版本26.0.0开始，Slider组件传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启系统材质的开关标记，不影响实际视觉效果。主要影响Slider的滑块大小、滑块样式、阴影等视觉属性。传入undefined时，系统材质不生效，表现为原先的Slider样式。
+> - 从API版本26.0.0开始，Slider组件传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启系统材质的开关标记，不影响实际视觉效果，实际效果见示例10。主要影响Slider的滑块大小、滑块样式、阴影等视觉属性。传入undefined时，系统材质不生效，表现为原先的Slider样式。
 
 
 ## 子组件
@@ -1847,3 +1847,38 @@ struct SliderExample {
 ```
 
 ![slider_9](figures/slider_9.png)
+
+### 示例10（设置滑动条的系统材质）
+
+该示例通过通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)为滑动条设置沉浸式材质。
+
+从API版本26.0.0开始，新增systemMaterial接口。
+
+```ts
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SliderSystemMaterial {
+  build() {
+    RelativeContainer() {
+      Slider({
+        style: SliderStyle.InSet
+      })
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center },
+        })
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+        }))
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Grey)
+  }
+}
+```
+
+![slider_10](figures/slider_10.png)
