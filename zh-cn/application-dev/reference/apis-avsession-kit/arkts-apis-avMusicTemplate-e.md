@@ -140,10 +140,12 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称       | 值          | 说明       |
-| ---------- | ----------- | ---------- |
-| PLAY_MUSIC | 'playMusic' | 播放音乐。 |
-| PLAY_VIDEO | 'playVideo' | 播放视频。 |
+| 名称            | 值              | 说明                    |
+| --------------- | --------------- | ---------------------- |
+| PLAY_MUSIC      | 'playMusic'     | 播放音乐。              |
+| PLAY_VIDEO      | 'playVideo'     | 播放视频。              |
+| PLAY_MUSIC_LIST | 'playMusicList' | 播放音乐列表（指定歌单）。 |
+| PLAY_VIDEO_LIST | 'playVideoList' | 播放视频列表（指定歌单）。 |
 
 ## DownloadStatus
 

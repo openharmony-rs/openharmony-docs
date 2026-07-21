@@ -528,6 +528,29 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 | ------------------------------------------------------------ | ------------------------------------- |
 | Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise对象，返回搜播的操作结果对象。 |
 
+## CustomCommandEvent
+
+type CustomCommandEvent = (command: string, args: string) => Promise&lt;OperResult&gt;
+
+自定义控制命令。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**参数：**
+
+| 参数名     | 类型   | 必填 |      说明       |
+| ---------- | ------ | ---- | -------------- |
+| command    | string | 是   | 自定义控制命令。 |
+| args       | string | 是   | 自定义控制参数。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                  |
+| ------------------------------------------------------------ | ------------------------------------- |
+| Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise对象，返回自定义控制命令的操作结果对象。 |
+
 ## ExecuteActionEvent
 
 type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;string&gt;

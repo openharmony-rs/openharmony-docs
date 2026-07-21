@@ -215,6 +215,7 @@
 | isSupportSkipHead      | boolean  | 否   | 否   | 是否支持跳过开头。true表示支持，false表示不支持。无默认值。|
 | isSupportSkipTail      | boolean  | 否   | 否   | 是否支持跳过结尾。true表示支持，false表示不支持。无默认值。|
 | isSupportPlayMode      | boolean  | 否   | 否   | 是否支持切换播放模式。true表示支持，false表示不支持。无默认值。|
+| isSupportExtras        | boolean  | 否   | 否   | 是否支持额外信息模式。true表示支持，false表示不支持。无默认值。|
 | isSupportPlayRate      | boolean  | 否   | 否   | 是否支持改变播放速率。true表示支持，false表示不支持。无默认值。|
 | supportedPlayRate      | string[] | 否   | 否   | 支持的播放速率的数组。                        |
 | currentPlayRate        | string   | 否   | 否   | 当前的播放速率。                            |
@@ -412,6 +413,7 @@
 | description   | string                                        | 否   | 是   | 对音频的描述。                                      |
 | playMusicOnly | boolean                                       | 否   | 是   | 是否仅执行播放音乐的操作。true表示是，false表示否。无默认值。|
 | playMode      | string                                        | 否   | 是   | 音频的播放模式。                                    |
+| extras        | string                                        | 否   | 是   | 音频的额外信息。                                    |
 
 ## SearchPlayMusicItem
 
