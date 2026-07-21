@@ -125,7 +125,7 @@ typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, in
 
 **描述**
 
-回调转码进度更新时调用。
+转码进度更新时的回调函数。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
