@@ -49,7 +49,7 @@
 <!--DelEnd-->
 
 
-```json
+```json5
 {
   "module": {
     "abilities": [{
