@@ -73,7 +73,7 @@ if (ohos_kernel_type == "liteos_m") {
 
 2. 添加适配文件。
 
-   在“vendor/MyVendorCompany/MyProduct/config.json”文件中，通常将配置“vendor_adapter_dir”配置为 “//device/MyDeviceCompany/MyBoard/adapter”。
+   在“vendor/MyVendorCompany/MyProduct/config.json”文件中，通常将配置“vendor_adapter_dir”配置为 “//device/soc/MyDeviceCompany/MyBoard/adapter”。
 
    在“vendor_adapter_dir”目录下进行适配：
 
