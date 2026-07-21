@@ -566,7 +566,7 @@ Failed to restore the main window.
 
 **错误描述**
 
-闪控窗拉起应用主窗失败。
+闪控窗拉起应用主窗口失败。
 
 **可能原因**
 
@@ -602,7 +602,7 @@ Failed to start float view.
 
 1. 同一应用重复启动了多个闪控窗。
 
-2. 启动闪控窗时，context关联的主窗不在前台。
+2. 启动闪控窗时，context关联的主窗口不在前台。
 
 **处理步骤**
 
