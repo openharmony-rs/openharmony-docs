@@ -246,10 +246,10 @@ finishTask(taskInfo: TaskInfo): void
   function BackgroundLoaderOnStart(pdata: rpc.MessageSequence) {
     let taskInfo =  backgroundLoader.TaskInfo = {
         taskId: pdata.readInt(),
-        abilityName: pdata.readstring()
+        abilityName: pdata.readString()
     };
 
-    console.info(`background loader Task OnStart, taskInfo `${taskInfo.taskId});
+    console.info(`background loader Task OnStart, taskInfo ${taskInfo.taskId}`);
     // TODO：执行应用后台加载的业务逻辑
 
     // 通知系统预取任务处理完成，可以提前冻结应用。
