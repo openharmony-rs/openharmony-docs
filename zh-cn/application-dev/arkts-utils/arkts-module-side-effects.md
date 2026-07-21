@@ -467,7 +467,7 @@ data is  data from module
 // src/main/ets/pages/Index.ets
 import * as har from 'expandPathHar';
 
-console.info('har.One is ', har.One); // 这里的One变量是har/src/main/ets/NumberString.ets导出的
+console.info('har.One is ', har.One); // 这里的One变量是expandPathHar/src/main/ets/NumberString.ets导出的
 ```
 
 <!-- @[expandPathHarIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/Index.ets) -->
@@ -477,7 +477,7 @@ console.info('har.One is ', har.One); // 这里的One变量是har/src/main/ets/N
 export * from './src/main/ets/OtherModule1'
 export * from './src/main/ets/OtherModule2'
 export * from './src/main/ets/Utils'
-console.info('har Index.ets execute.');
+console.info('expandPathHar Index.ets execute.');
 ```
 
 <!-- @[Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/Utils.ets) -->
@@ -487,7 +487,7 @@ console.info('har Index.ets execute.');
 export * from './OtherModule3'
 export * from './OtherModule4'
 export * from './NumberString'
-console.info('har Utils.ets execute.');
+console.info('expandPathHar Utils.ets execute.');
 ```
 
 <!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/NumberString.ets) -->
@@ -495,7 +495,7 @@ console.info('har Utils.ets execute.');
 ``` TypeScript
 // expandPathHar/src/main/ets/NumberString.ets
 export const One: string = '1';
-console.info('har NumberString.ets execute.');
+console.info('expandPathHar NumberString.ets execute.');
 ```
 
 1. 如果Index.ets只需要依赖expandPathHar中的NumberString模块，import xxx from "expandPathHar"的写法会导致expandPathHar整条链路上的模块被解析、执行，**导致模块解析及执行耗时增加**。上述例子中的expandPathHar/Index、OtherModule1、OtherModule2、Utils、OtherModule3、OtherModule4、NumberString模块均会被解析、执行。
@@ -520,7 +520,7 @@ console.info('One is ', One);
 ``` TypeScript
 // expandPathHar/src/main/ets/NumberString.ets
 export const One: string = '1';
-console.info('har NumberString.ets execute.');
+console.info('expandPathHar NumberString.ets execute.');
 ```
 
 ### 副作用
