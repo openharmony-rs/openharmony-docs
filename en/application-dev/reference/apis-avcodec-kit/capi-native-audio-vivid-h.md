@@ -47,6 +47,10 @@ The file declares the functions and enums related to Audio Vivid.
 | [OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder *builder, bool withStaticMeta, int32_t *len)](#oh_audiovividmetabuilder_getmetalen) | Obtains the length of metadata.|
 | [OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *builder, bool withStaticMeta, uint8_t *buffer, int32_t len)](#oh_audiovividmetabuilder_getmeta) | Obtains the metadata buffer.|
 | [OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)](#oh_audiovividmetabuilder_destroy) | Destroys an Audio Vivid metadata builder and releases resources.|
+| [OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilder **builder)](#oh_audiovividmetabuilder_createemptybuilder) | Creates an empty Audio Vivid metadata builder. This function is used to merge Audio Vivid metadata. After creating an empty metadata builder, you can add, modify, or remove audio objects by calling the [OH_AudioVividMetaBuilder_UpdateBaseMeta](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updatebasemeta) API.|
+| [OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *builder, const uint8_t *buffer, int32_t len)](#oh_audiovividmetabuilder_updatebasemeta) | Updates the basic metadata of the Audio Vivid metadata builder. The buffer must contain complete Audio Vivid metadata. The builder will retain the audio bed and audio object information in the metadata.|
+| [OH_AVErrCode OH_AudioVividMetaBuilder_AddObject(OH_AudioVividMetaBuilder *builder, int32_t *objectIndex)](#oh_audiovividmetabuilder_addobject) | Adds an audio object to the Audio Vivid metadata builder. After adding the audio object, you can update its position and linear gain for object rendering via the [OH_AudioVividMetaBuilder_UpdateObjectPos](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updateobjectpos) and [OH_AudioVividMetaBuilder_UpdateObjectGain](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updateobjectgain) APIs.|
+| [OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *builder, int32_t objectIndex)](#oh_audiovividmetabuilder_removeobject) | Deletes an audio object from the Audio Vivid metadata builder. Only audio objects added via the [OH_AudioVividMetaBuilder_AddObject](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_addobject) function can be deleted. Objects added via the [OH_AudioVividMetaBuilder_UpdateBaseMeta](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updatebasemeta) function cannot be deleted. After an audio object is deleted, the indexes of other audio objects remain unchanged.|
 
 ## Enumeration Description
 
@@ -85,7 +89,7 @@ Creates an Audio Vivid metadata builder.
 > **NOTE**
 > 
 > Lifecycle management:
-> * If an instance created using this function is no longer used, you must call [OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy) to manually release the instance to avoid memory leakage.
+> * If an instance created using this function is no longer needed, you must call [OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy) to manually release the instance to avoid memory leaks.
 
 **Since**: 26.0.0
 
@@ -170,7 +174,7 @@ Obtains the length of metadata.
 
 | Name| Description|
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
+| const [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
 | bool withStaticMeta | Whether the output length includes static metadata. The value **true** indicates that the output length includes static metadata, and the value **false** indicates that the output length includes only dynamic metadata.|
 | int32_t *len | Pointer used to receive the metadata length. The unit is bytes.|
 
@@ -196,10 +200,10 @@ Obtains the metadata buffer.
 
 | Name| Description|
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
+| const [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
 | bool withStaticMeta | Whether the output buffer includes static metadata. The value **true** indicates that the output buffer includes static metadata, and the value **false** indicates that the output buffer includes only dynamic metadata.|
 | uint8_t *buffer | Pointer to the buffer for receiving the metadata.|
-| int32_t len | Buffer length, in bytes.|
+| int32_t len | Buffer length, is bytes.|
 
 **Returns**
 
@@ -230,4 +234,118 @@ Destroys an Audio Vivid metadata builder and releases resources.
 | Type| Description|
 | -- | -- |
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The **builder** parameter is a null pointer.|
-<!--no_check-->
+
+### OH_AudioVividMetaBuilder_CreateEmptyBuilder()
+
+```c
+OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilder **builder)
+```
+
+**Description**
+
+Creates an empty Audio Vivid metadata builder. This function is used to merge Audio Vivid metadata. After creating an empty metadata builder, you can add, modify, or remove audio objects by calling the [OH_AudioVividMetaBuilder_UpdateBaseMeta](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updatebasemeta) API.
+
+> **NOTE**
+> 
+> Lifecycle management:
+> - If an instance created using this function is no longer needed, you must call [OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy) to manually release it to avoid memory leaks.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) **builder | Output parameter, which is used to obtain the double pointer to the **OH_AudioVividMetaBuilder** instance.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>**AV_ERR_OK**: The operation is successful.</li><br>         <li>**AV_ERR_INVALID_VAL**: The **builder** parameter is a null pointer or invalid.</li><br>         <li>**AV_ERR_UNSUPPORT**: This function is not supported on the device.</li><br>         <li>**AV_ERR_UNKNOWN**: Failed to create the builder. This is an unknown error. Check the log for details.</li><br>         </ul> |
+
+### OH_AudioVividMetaBuilder_UpdateBaseMeta()
+
+```c
+OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *builder, const uint8_t *buffer, int32_t len)
+```
+
+**Description**
+
+Updates the basic metadata of the Audio Vivid metadata builder. The buffer must contain complete Audio Vivid metadata. The builder will retain the audio bed and audio object information in the metadata.
+
+> **NOTE**
+> 
+> Constraints:
+> - The total number of audio bed channels and objects in the basic metadata must be less than or equal to 16.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
+| const uint8_t *buffer | Pointer to the basic metadata.|
+| int32_t len | Buffer length, The unit is bytes.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>**AV_ERR_OK**: The operation is successful.</li><br>         <li>**AV_ERR_INVALID_VAL**: The **builder** or **format** parameter is a null pointer or invalid.</li><br>         </ul> |
+
+### OH_AudioVividMetaBuilder_AddObject()
+
+```c
+OH_AVErrCode OH_AudioVividMetaBuilder_AddObject(OH_AudioVividMetaBuilder *builder, int32_t *objectIndex)
+```
+
+**Description**
+
+Adds an audio object to the Audio Vivid metadata builder. After adding the audio object, you can update its position and linear gain for object rendering via the [OH_AudioVividMetaBuilder_UpdateObjectPos](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updateobjectpos) and [OH_AudioVividMetaBuilder_UpdateObjectGain](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updateobjectgain) APIs.
+
+> **NOTE**
+>
+> Constraints:
+> - The total number of audio bed channels and objects in the audio must be less than or equal to 16.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
+| int32_t *objectIndex | Output parameter, which is used to output the index of the new object.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>**AV_ERR_OK**: The operation is successful.</li><br>         <li>**AV_ERR_INVALID_VAL**: The **builder** or **objectIndex** parameter is a null pointer or invalid.</li><br>         <li>**AV_ERR_UNKNOWN**: Failed to add the object. This is an unknown error. Check the log for details.</li><br>         </ul> |
+
+### OH_AudioVividMetaBuilder_RemoveObject()
+
+```c
+OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *builder, int32_t objectIndex)
+```
+
+**Description**
+
+Deletes an audio object from the Audio Vivid metadata builder. Only audio objects added via the [OH_AudioVividMetaBuilder_AddObject](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_addobject) function can be deleted. Objects added via the [OH_AudioVividMetaBuilder_UpdateBaseMeta](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updatebasemeta) function cannot be deleted. After an audio object is deleted, the indexes of other audio objects remain unchanged.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
+| int32_t objectIndex | Index of the audio object to be removed.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>**AV_ERR_OK**: The operation is successful.</li><br>         <li>**AV_ERR_INVALID_VAL**: </li><br>         <li>    1. The **builder** parameter is a null pointer or invalid. </li><br>         <li>    2. The **objectIndex** parameter is set to an invalid value.</li><br>         </ul> |
