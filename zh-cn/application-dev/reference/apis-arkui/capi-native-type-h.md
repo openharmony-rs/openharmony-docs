@@ -3465,7 +3465,7 @@ uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewSty
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t color | 选中态拖拽文本预览样式的的背景，格式为RGBA。 |
+| uint32_t color | 选中态拖拽文本预览样式的背景，格式为RGBA。 |
 
 ### OH_ArkUI_DecorationStyleOptions_SetTextDecorationType()
 
