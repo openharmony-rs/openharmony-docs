@@ -93,7 +93,7 @@ fileAccess(fileAccess: boolean)
 
 imageAccess(imageAccess: boolean)
 
-设置是否允许自动加载图片资源。当属性没有显式调用时，允许自动加载图片资源。
+设置是否允许自动加载图片资源。当属性没有显式调用时，默认允许。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -101,7 +101,7 @@ imageAccess(imageAccess: boolean)
 
 | 参数名         | 类型    | 必填   | 说明            |
 | ----------- | ------- | ---- | --------------- |
-| imageAccess | boolean | 是    | 设置是否允许自动加载图片资源。<br>true表示设置允许自动加载图片资源，false表示设置不允许自动加载图片资源。<br>传入undefined或null时为false。 |
+| imageAccess | boolean | 是    | 设置是否允许自动加载图片资源。<br>true 表示允许，false 表示不允许。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
   ```ts
@@ -304,7 +304,7 @@ mixedMode(mixedMode: MixedMode)
 
 onlineImageAccess(onlineImageAccess: boolean)
 
-设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。当属性没有显式调用时，默认允许从网络加载图片资源。
+设置是否允许从网络加载图片资源（通过 HTTP 和 HTTPS 访问的资源）。当属性没有显式调用时，默认允许。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -312,7 +312,7 @@ onlineImageAccess(onlineImageAccess: boolean)
 
 | 参数名               | 类型    | 必填   | 说明             |
 | ----------------- | ------- | ---- | ---------------- |
-| onlineImageAccess | boolean | 是    | 设置是否允许从网络加载图片资源。<br>true表示设置允许从网络加载图片资源，false表示设置不允许从网络加载图片资源。<br>传入undefined或null时为false。 |
+| onlineImageAccess | boolean | 是    | 设置是否允许从网络加载图片资源。<br>true 表示允许，false 表示不允许。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
 
@@ -338,7 +338,7 @@ onlineImageAccess(onlineImageAccess: boolean)
 
 zoomAccess(zoomAccess: boolean)
 
-设置是否支持手势进行缩放。该属性没有显式调用时，默认支持手势进行缩放。
+设置是否支持手势进行缩放。该属性没有显式调用时，默认支持。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -346,7 +346,7 @@ zoomAccess(zoomAccess: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| zoomAccess | boolean | 是    | 设置是否支持手势进行缩放。<br>true表示设置支持手势进行缩放，false表示设置不支持手势进行缩放。<br>传入undefined或null时为false。 |
+| zoomAccess | boolean | 是    | 设置是否支持手势进行缩放。<br>true表示支持，false表示不支持。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -480,7 +480,7 @@ geolocationAccess(geolocationAccess: boolean)
 
 mediaPlayGestureAccess(access: boolean)
 
-设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。当该属性未显式设置时，默认有声视频的自动播放需要用户手动点击。
+设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。当该属性未显式设置时，默认需要用户手动点击。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -488,7 +488,7 @@ mediaPlayGestureAccess(access: boolean)
 
 | 参数名    | 类型    | 必填   | 说明                |
 | ------ | ------- | ---- | ------------------- |
-| access | boolean | 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true表示设置有声视频的自动播放需要用户手动点击，false表示设置有声视频的自动播放不需要用户手动点击，能自动播放。<br>传入undefined或null时为false。 |
+| access | boolean | 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true 表示需要用户手动点击，false 表示不需要，能自动播放。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
 
@@ -534,7 +534,7 @@ mediaPlayGestureAccess(access: boolean)
 
 multiWindowAccess(multiWindow: boolean)
 
-设置是否开启多窗口权限。当属性没有显式调用时，默认不开启多窗口权限。
+设置是否开启多窗口权限。当属性没有显式调用时，默认不开启。
 
 使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew](./arkts-basic-components-web-events.md#onwindownew9)。
 
@@ -544,7 +544,7 @@ multiWindowAccess(multiWindow: boolean)
 
 | 参数名         | 类型    | 必填   | 说明         |
 | ----------- | ------- | ---- | ------------ |
-| multiWindow | boolean | 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。 |
+| multiWindow | boolean | 是    | 设置是否开启多窗口权限。<br>true表示开启，false表示不开启。 |
 
 ## horizontalScrollBarAccess<sup>9+</sup>
 
@@ -822,7 +822,7 @@ textZoomRatio(textZoomRatio: number)
 
 initialScale(percent: number)
 
-设置整体页面的缩放百分比。该属性没有显式调用时，默认缩放百分比为100。
+设置整体页面的缩放百分比。该属性没有显式调用时，默认为100。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1467,7 +1467,7 @@ struct WebComponent {
                     })
                     this.dialogController.open();
                     // 将新窗口对应WebviewController返回给Web内核。
-                    // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+                    // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
                     // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
                     event.handler.setWebController(popController);
                 })
@@ -2560,7 +2560,7 @@ enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
 
 | 参数名  | 类型   | 必填   | 说明 |
 | ---- | ------ | ---- | ---------------------|
-| config | [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) | 是    | enable: 是否开启该功能。<br/> shouldOverlay: 该功能开启后， 应用接管网页视频的播放器画面是否覆盖网页内容。<br>传入undefined或null时为`{enable: false, shouldOverlay: false}`。|
+| config | [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) | 是    | 应用接管网页媒体播放功能的配置对象。包含以下属性：enable（boolean 类型，是否开启该功能，默认为 false），shouldOverlay（boolean 类型，当功能开启后，应用接管网页视频的播放器画面是否覆盖网页内容，默认为 false）。<br>传入 undefined 或 null 时为`{enable: false, shouldOverlay: false}`。|
 
   **示例：**
 
@@ -3220,7 +3220,7 @@ struct SelectionMenuLongPress {
 
 blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
-设置当软键盘收起时Web元素失焦模式。
+设置当软键盘收起时Web元素失焦模式。当属性没有显式调用时，默认按[BlurOnKeyboardHideMode.SILENT](./arkts-basic-components-web-e.md#bluronkeyboardhidemode14)模式处理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4575,7 +4575,7 @@ struct WebComponent {
 
 keyboardAppearance(mode: WebKeyboardAppearanceMode)
 
-设置键盘外观。不调用该方法时，默认跟随系统的沉浸式模式。
+设置键盘外观模式，用于控制Web组件内输入框弹出键盘的外观样式，包括沉浸式和非沉浸式模式。不调用该方法时，默认跟随系统的沉浸式模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4628,7 +4628,7 @@ keyboardAppearance(mode: WebKeyboardAppearanceMode)
 
 enableFullscreenVideoOverlay(enabled: boolean)
 
-设置Web组件是否开启覆盖式全屏播放功能。当属性没有显式调用时，默认不开启该能力。
+设置 Web 组件是否开启覆盖式全屏播放功能。当属性没有显式调用时，默认不开启该能力。
 
 > **说明：**
 >
@@ -4647,7 +4647,7 @@ enableFullscreenVideoOverlay(enabled: boolean)
 
 | 参数名 | 类型 | 必填 | 说明                         |
 | ------ | -------- | ---- | -------------------------------- |
-| enabled | boolean  | 是   | 设置Web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
+| enabled | boolean  | 是   | 设置 Web 组件是否开启覆盖式全屏播放功能。<br>true 表示开启该功能。<br>false 表示不开启。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
 

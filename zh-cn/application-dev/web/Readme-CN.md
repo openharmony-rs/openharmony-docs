@@ -65,7 +65,7 @@
   - [网页中安全区域计算和避让适配](web-safe-area-insets.md)
   - [使用Web组件菜单处理网页内容](web-menu.md)
   - [使用Web组件与系统剪贴板交互处理网页内容](web-clipboard.md)
-  - [使用Web组件的智能分词能力](web-data-detector.md)
+  - [使用Web组件的智能分词能力](web-data-detector.md)<!--RP5--><!--RP5End-->
 - 同层渲染<!--same-layer-rendering-->
   - [同层渲染](web-same-layer.md)<!--RP3--><!--RP3End-->
 - [使用离线Web组件](web-offline-mode.md)

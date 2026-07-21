@@ -5662,6 +5662,20 @@ With this permission, the application can call the API to obtain the local accou
 
 **Valid since**: 24
 
+ ## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
+ 
+ Allows a system application to enable agent-related permission management features.
+ 
+ **Permission level**: system_basic
+ 
+ **Authorization mode**: system_grant
+ 
+ **Certificate-based authorization**: true
+ 
+ **Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+ **Valid since**: 26.0.0
+
 ## ohos.permission.GET_AGENT_CARD
 
 Allows a system application to obtain AgentCard information.
@@ -6936,6 +6950,20 @@ With this permission, the application can manage smart file categorization, gene
 **Certificate-based authorization**: true
 
 **Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.UPDATE_FORM_CROSS_BUNDLE
+
+Allows an application to update widgets of other applications.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | TV | Car
 
 **Since**: 26.0.0
 
