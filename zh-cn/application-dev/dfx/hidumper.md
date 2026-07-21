@@ -49,7 +49,7 @@ HiDumper命令行工具使用常见问题汇总在[常见问题](#常见问题)�
 | [--zip](#导出信息压缩存储) | 保存命令输出到 /data/log/hidumper 下的压缩文件，压缩格式为 ZIP。 |
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#获取进程间通信信息) | 统计一段时间进程IPC信息。如果使用-a，则统计所有进程IPC数据。使用--start-stat开始统计，使用--stat获取统计数据，使用--stop-stat结束统计。 |
 | [--mem-smaps pid [-v]](#查询进程内存) | 获取pid内存统计信息，数据来源于/proc/pid/smaps，使用-v指定更多详细信息。（仅支持导出[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)）<br />**说明**：从API version 20开始，支持该参数。 |
-| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean] [--single]](#查询虚拟机堆内存) | 必选参数pid。触发ArkTS应用JS线程的gc和堆内存快照导出。文件命名格式为：<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->，文件内容为JSON结构的JS堆快照。<br>指定线程tid时，仅触发该线程的gc和堆内存快照导出。<br>指定--gc时，仅触发gc，不导出快照。<br>指定--leakobj时，应用开启泄漏检测可获取泄漏对象列表。<br>指定--raw时，堆快照以rawheap格式导出。<br>指定--clean时，快照导出后触发清理nodeId节点信息。<br>指定--single时，按进程导出一份快照，只支持rawheap格式，需配合--raw命令使用。<br>**说明**：<br>使用该命令时，应用应处于前台亮屏状态。<br>从API version 19开始，支持--raw参数。<br>从API version 24开始，支持--clean参数。<br>从API版本26.0.0开始，支持--single参数。<br>从API版本26.0.0开始，[release版本应用](performance-analysis-kit-terminology.md#release版本应用)支持此命令，但需同时满足[profileable标签](../quick-start/app-configuration-file.md#配置文件标签)、enterprise类型的[appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)且开发者模式打开。 |
+| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean] [--single]](#查询虚拟机堆内存) | 必选参数pid。触发ArkTS应用JS线程的gc和堆内存快照导出。文件命名格式为：<!--RP1-->动态快照为jsheap-进程号-JS线程号-时间戳，静态快照为static_jsheap-进程号-时间戳，动静态混合快照为hybrid_jsheap-进程号-JS线程号-时间戳<!--RP1End-->，文件内容为JSON结构的JS堆快照。<br>指定线程tid时，仅触发该线程的gc和堆内存快照导出。<br>指定--gc时，仅触发gc，不导出快照。<br>指定--leakobj时，应用开启泄漏检测可获取泄漏对象列表。<br>指定--raw时，堆快照以rawheap格式导出。<br>指定--clean时，快照导出后触发清理nodeId节点信息。<br>指定--single时，按进程导出一份快照，只支持rawheap格式，需配合--raw命令使用。<br>**说明**：<br>使用该命令时，应用应处于前台亮屏状态。<br>从API version 19开始，支持--raw参数。<br>从API version 24开始，支持--clean参数。<br>从API版本26.0.0开始，支持--single参数。<br>从API版本26.0.0开始，[release版本应用](performance-analysis-kit-terminology.md#release版本应用)支持此命令，但需同时满足[profileable标签](../quick-start/app-configuration-file.md#配置文件标签)、enterprise类型的[appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)且开发者模式打开。 |
 | <!--DelRow-->[--mem-cjheap pid [--gc]](#查询虚拟机堆内存) | pid为必选参数。触发仓颉应用gc和堆内存快照导出。如果指定--gc，只触发gc不做快照导出。<br>**说明**：<br>使用该命令时，应用应处于前台亮屏状态。<br>从API version 20开始，支持该参数。 |
 | <!--RP13-->[--mem-heap pid ARG [--leakobj]](#查询虚拟机堆内存) | 导出指定类型的内存快照信息。ARG用于指定快照类型，当前支持--native和--kotlin类型。<br>指定--leakobj，只触发打印可疑内存泄漏点不做快照导出，仅配合--native参数使用。<br>**说明**：<br>使用该命令时，应用应处于前台亮屏状态。<br>从API版本26.0.0开始，支持--leakobj参数以及--kotlin类型的快照导出。<!--RP13End--> |
 
@@ -387,44 +387,144 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 >
 > 确认命令指定的应用是否为可调试应用：参考上述hidumper --mem-smaps [pid] [-v]命令中的注意事项。
 
-- 可使用hidumper --mem-jsheap pid命令获取指定进程所有JS线程的虚拟机堆内存，文件命名为：<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->，如果有多个JS线程会生成多个文件。
+hidumper --mem-jsheap命令会根据不同场景生成不同快照，不同场景下生成的快照个数说明如下：
+
+| hidumper指令 | 当前进程只跑在动态虚拟机 | 当前进程只跑在静态虚拟机 | 当前进程既跑在动态虚拟机又跑在静态虚拟机 |
+| -------- | -------- | -------- | -------- |
+| 触发指定进程快照导出（snapshot格式）<br>hidumper --mem-jsheap pid | 每个线程生成一份动态快照 | 生成一份静态快照 | 生成一份主线程混合的快照，其他线程若包含动态，则生成一份该线程的动态快照，若包含静态，静态部分归一到主线程混合快照中。 |
+| 触发指定线程快照导出（snapshot格式）<br>hidumper --mem-jsheap pid -T tid | 生成一份指定线程的动态快照 | 生成一份静态快照 | 生成一份指定线程的快照，若该线程只包含动态，则生成一份该线程的动态快照，若该线程只包含静态，则生成一份主进程的静态快照，若均包含，则生成一份该线程的混合快照。 |
+| 触发指定进程快照导出（rawheap格式）<br>hidumper --mem-jsheap pid --raw | 每个线程生成一份动态快照 | 生成一份静态快照 | 每个线程都按照各自场景生成快照，若线程包含动态，则生成一份该线程的动态快照，若线程包含静态，则静态部分归一到主进程静态快照中。 |
+| 触发指定线程快照导出（rawheap格式）<br>hidumper --mem-jsheap pid -T tid --raw | 生成一份指定线程的动态快照 | 生成一份静态快照 | 该线程按照场景生成快照，若线程包含动态，则生成一份该线程的动态快照，若线程包含静态，则静态部分归一到主进程静态快照中。 |
+| 触发指定进程快照导出（rawheap格式，按进程归一）<br>hidumper --mem-jsheap pid --raw --single | 生成一份动态快照 | 生成一份静态快照 | 生成一份归一的动态快照、一份归一的主进程静态快照。 |
+
+> **说明：**
+>
+> 同一rawheap指令生成的动态快照与静态快照时间戳一致，以便于识别和解析。
+
+- 可使用hidumper --mem-jsheap pid命令获取指定进程所有JS线程的虚拟机堆内存，文件命名按快照类型区分：<!--RP1-->动态快照为jsheap-进程号-JS线程号-时间戳，静态快照为static_jsheap-进程号-时间戳，动静态混合快照为hybrid_jsheap-进程号-JS线程号-时间戳<!--RP1End-->，如果有多个JS线程会按照表格中具体场景生成多个文件。
 
   使用样例：
 
   <!--RP3-->
+  ArkTS-Dyn:
   ```shell
-  $ hidumper --mem-jsheap 64949  -> 64949 为目标应用进程号
-  $ ls | grep jsheap   -> 进入堆内存文件存放目录后执行
+  $ hidumper --mem-jsheap 64949  -> 64949 为目标应用进程号 64950 为目标进程的线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
   jsheap-64949-64949-1751075546050
-  jsheap-64949-64989-1751075546050
+  jsheap-64949-64950-1751075546051
+  ```
+
+  ArkTS-Sta:
+  ```shell
+  $ hidumper --mem-jsheap 64949  -> 64949 为目标应用进程号 64950 为目标进程的线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  static_jsheap-64949-1751075546050
+  ```
+
+  混合:
+  ```shell
+  $ hidumper --mem-jsheap 64949  -> 64949 为目标应用进程号 64950 为目标进程的动态线程 64951 为目标进程的静态线程 64952 为目标进程的动静态混合线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  hybrid_jsheap-64949-64949-1751075546050
+  jsheap-64949-64950-1751075546051
+  jsheap-64949-64952-1751075546052
   ```
   <!--RP3End-->
 
-- 可使用hidumper --mem-jsheap pid -T tid命令获取指定进程指定JS线程的虚拟机堆内存，文件命名为：<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->。
+- 可使用hidumper --mem-jsheap pid -T tid命令获取指定进程指定JS线程的虚拟机堆内存，文件命名按快照类型区分：<!--RP1-->动态快照为jsheap-进程号-JS线程号-时间戳，静态快照为static_jsheap-进程号-时间戳，动静态混合快照为hybrid_jsheap-进程号-JS线程号-时间戳<!--RP1End-->。
 
   使用样例：
 
   <!--RP4-->
+  ArkTS-Dyn:
   ```shell
   $ hidumper --mem-jsheap 64949 -T 64949  -> 64949 为目标应用进程号
   $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
   jsheap-64949-64949-1751075567710
   ```
+
+  ArkTS-Sta:
+  ```shell
+  $ hidumper --mem-jsheap 64949 -T 64949  -> 64949 为目标应用进程号
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  static_jsheap-64949-1751075567710
+  ```
+
+  混合:
+  ```shell
+  动态线程场景：
+  $ hidumper --mem-jsheap 64949 -T 64950  -> 64949 为目标应用进程号 64950 为目标进程的动态线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  jsheap-64949-64950-1751075567710
+  静态线程场景：
+  $ hidumper --mem-jsheap 64949 -T 64950  -> 64949 为目标应用进程号 64950 为目标进程的静态线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  static_jsheap-64949-1751075567710
+  动静态混合线程场景：
+  $ hidumper --mem-jsheap 64949 -T 64950  -> 64949 为目标应用进程号 64950 为目标进程的动静态混合线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  hybrid_jsheap-64949-64950-1751075567710
+  ```
   <!--RP4End-->
 
-- 可使用hidumper --mem-jsheap pid [-T tid] --raw获取指定进程或指定JS线程的虚拟机堆内存，生成的堆内存文件为rawheap格式，文件命名为<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->.rawheap。rawheap的解析转换可参考使用：[rawheap-translator工具](../tools/rawheap-translator.md)。
+- 可使用hidumper --mem-jsheap pid [-T tid] --raw获取指定进程或指定JS线程的虚拟机堆内存，生成的堆内存文件命名按快照类型区分（后缀均为.rawheap）：<!--RP1-->动态快照为jsheap-进程号-JS线程号-时间戳，静态快照为static_jsheap-进程号-时间戳，动静态混合快照为hybrid_jsheap-进程号-JS线程号-时间戳<!--RP1End-->。rawheap的解析转换可参考使用：[rawheap-translator工具](../tools/rawheap-translator.md)。
 
   使用样例：
 
   <!--RP5-->
+  ArkTS-Dyn:
   ```shell
-  $ hidumper --mem-jsheap 64949 --raw  -> 64949 为目标应用进程号
+  $ hidumper --mem-jsheap 64949 --raw  -> 64949 为目标应用进程号 64950 为目标进程的线程
   $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
   jsheap-64949-64949-1751075546050.rawheap
-  jsheap-64949-64989-1751075546050.rawheap
-  $ hidumper --mem-jsheap 64949 -T 64949 --raw  -> 64949 为目标应用进程号
-  $ ls | grep jsheap
-  jsheap-64949-64949-1751075546055.rawheap
+  jsheap-64949-64950-1751075546050.rawheap
+  $ hidumper --mem-jsheap 64949 -T 64950 --raw  -> 64949 为目标应用进程号 64950 为目标进程的线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  jsheap-64949-64950-1751075546055.rawheap
+  ```
+
+  ArkTS-Sta:
+  ```shell
+  $ hidumper --mem-jsheap 64949 --raw  -> 64949 为目标应用进程号 64950 为目标进程的线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  static_jsheap-64949-1751075546050.rawheap
+  $ hidumper --mem-jsheap 64949 -T 64950 --raw  -> 64949 为目标应用进程号 64950 为目标进程的线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  static_jsheap-64949-1751075546050.rawheap
+  ```
+
+  混合:
+  ```shell
+  动态线程场景：
+  $ hidumper --mem-jsheap 64949 --raw  -> 64949 为目标应用进程号 64950 为目标进程的动态线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  jsheap-64949-64949-1751075546050.rawheap
+  jsheap-64949-64950-1751075546050.rawheap
+  static_jsheap-64949-1751075546050.rawheap
+  静态线程场景：
+  $ hidumper --mem-jsheap 64949 --raw  -> 64949 为目标应用进程号 64950 为目标进程的静态线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  jsheap-64949-64949-1751075546050.rawheap
+  static_jsheap-64949-1751075546050.rawheap
+  动静态混合线程场景：
+  $ hidumper --mem-jsheap 64949 --raw  -> 64949 为目标应用进程号 64950 为目标进程的动静态混合线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  jsheap-64949-64949-1751075546050.rawheap
+  jsheap-64949-64950-1751075546050.rawheap
+  static_jsheap-64949-1751075546050.rawheap
+  动态线程场景：
+  $ hidumper --mem-jsheap 64949 -T 64950 --raw  -> 64949 为目标应用进程号 64950 为目标进程的动态线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  jsheap-64949-64950-1751075546050.rawheap
+  静态线程场景：
+  $ hidumper --mem-jsheap 64949 -T 64950 --raw  -> 64949 为目标应用进程号 64950 为目标进程的静态线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  static_jsheap-64949-1751075546050.rawheap
+  动静态混合线程场景：
+  $ hidumper --mem-jsheap 64949 -T 64950 --raw  -> 64949 为目标应用进程号 64950 为目标进程的动静态混合线程
+  $ ls | grep jsheap  -> 进入堆内存文件存放目录后执行
+  jsheap-64949-64950-1751075546050.rawheap
+  static_jsheap-64949-1751075546050.rawheap
   ```
   <!--RP5End-->
 
@@ -464,7 +564,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
   $ hidumper --mem-jsheap 64949 --clean  -> 64949 为目标应用进程号
   ```
 
-- 可使用hidumper --mem-jsheap pid --raw --single命令获取指定进程的虚拟机堆内存，此进程下所有线程的内存数据生成在一个.rawheap文件中，文件命名为<!--RP8-->jsheap-进程号-时间戳<!--RP8End-->.rawheap。rawheap的解析转换可参考使用：[rawheap-translator工具](../tools/rawheap-translator.md)。
+- 可使用hidumper --mem-jsheap pid --raw --single命令获取指定进程的虚拟机堆内存，此进程下所有线程的内存数据按进程归一生成堆内存文件，文件命名按快照类型区分（后缀均为.rawheap）：<!--RP8-->动态快照为jsheap-进程号-时间戳，静态快照为static_jsheap-进程号-时间戳<!--RP8End-->。rawheap的解析转换可参考使用：[rawheap-translator工具](../tools/rawheap-translator.md)。
 
   使用样例：
 
