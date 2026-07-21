@@ -476,41 +476,41 @@ BackupExtensionAbility不支持引用以下模块。
 | --- | --- |
 | Ability Kit | @ohos.abilityAccessCtrl (程序访问控制管理) |
 | Ability Kit | @ohos.app.ability.appManager (应用管理) |
-| Ability Kit | @ohos.app.ability.missionManager (missionManager)(系统接口) |
-| Ability Kit | @ohos.app.ability.quickFixManager (quickFixManager)(系统接口) |
-| Ability Kit | @ohos.application.missionManager (missionManager)(系统接口) |
-| Ability Kit | @ohos.bundle.appControl (appControl模块)(系统接口) |
-| Ability Kit | @ohos.bundle.bundleMonitor (bundleMonitor模块)(系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.app.ability.missionManager (missionManager)(系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.app.ability.quickFixManager (quickFixManager)(系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.application.missionManager (missionManager)(系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.bundle.appControl (appControl模块)(系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.bundle.bundleMonitor (bundleMonitor模块)(系统接口) |
 | Ability Kit | @ohos.bundle.defaultAppManager (默认应用管理) |
-| Ability Kit | @ohos.bundle.distributedBundleManager (distributedBundleManager模块)(系统接口) |
-| Ability Kit | @ohos.bundle.freeInstall (freeInstall模块)(系统接口) |
-| Ability Kit | @ohos.bundle.innerBundleManager (innerBundleManager模块)(系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.bundle.distributedBundleManager (distributedBundleManager模块)(系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.bundle.freeInstall (freeInstall模块)(系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.bundle.innerBundleManager (innerBundleManager模块)(系统接口) |
 | Ability Kit | @ohos.bundle.launcherBundleManager (launcherBundleManager模块) |
-| Ability Kit | @ohos.distributedBundle (分布式包管理)(系统接口) |
-| Ability Kit | @ohos.distributedMissionManager (分布式任务管理)(系统接口) |
-| Ability Kit | BundleInstaller (系统接口) |
-| Ability Kit | ServiceExtensionContext (系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.distributedBundle (分布式包管理)(系统接口) |
+| <!--DelRow--> Ability Kit | @ohos.distributedMissionManager (分布式任务管理)(系统接口) |
+| <!--DelRow--> Ability Kit | BundleInstaller (系统接口) |
+| <!--DelRow--> Ability Kit | ServiceExtensionContext (系统接口) |
 | Ability Kit | UIAbilityContext |
-| ArkUI | @ohos.screen (屏幕)(系统接口) |
+| <!--DelRow--> ArkUI | @ohos.screen (屏幕)(系统接口) |
 | ArkUI | @ohos.screenshot (屏幕截图) |
-| ArkUI | @ohos.window (窗口)(系统接口) |
-| Audio Kit | @ohos.multimedia.audio (音频管理)(系统接口) |
+| <!--DelRow--> ArkUI | @ohos.window (窗口)(系统接口) |
+| <!--DelRow--> Audio Kit | @ohos.multimedia.audio (音频管理)(系统接口) |
 | Background Tasks Kit | @ohos.bundleState (设备使用信息统计) |
 | Background Tasks Kit | @ohos.reminderAgent (后台代理提醒) |
 | Background Tasks Kit | @ohos.reminderAgentManager (后台代理提醒) |
-| Background Tasks Kit | @ohos.resourceschedule.usageStatistics (设备使用信息统计)(系统接口) |
+| <!--DelRow--> Background Tasks Kit | @ohos.resourceschedule.usageStatistics (设备使用信息统计)(系统接口) |
 | Basic Services Kit | @ohos.power (系统电源管理) |
-| Basic Services Kit | @ohos.update (升级)(系统接口) |
+| <!--DelRow--> Basic Services Kit | @ohos.update (升级)(系统接口) |
 | Connectivity Kit | @ohos.nfc.cardEmulation (标准NFC-cardEmulation) |
-| Core File Kit | @ohos.file.fileAccess (公共文件访问与管理)(系统接口) |
-| Form Kit | @ohos.app.form.formHost (formHost)(系统接口) |
+| <!--DelRow--> Core File Kit | @ohos.file.fileAccess (公共文件访问与管理)(系统接口) |
+| <!--DelRow--> Form Kit | @ohos.app.form.formHost (formHost)(系统接口) |
 | Form Kit | @ohos.application.formError (formError) |
 | Form Kit | @ohos.application.formError (formError) |
-| Form Kit | @ohos.application.formHost (formHost)(系统接口) |
+| <!--DelRow--> Form Kit | @ohos.application.formHost (formHost)(系统接口) |
 | IME Kit | @ohos.inputMethod (输入法框架) |
-| Input Kit | @ohos.multimodalInput.inputMonitor (输入监听)(系统接口) |
+| <!--DelRow--> Input Kit | @ohos.multimodalInput.inputMonitor (输入监听)(系统接口) |
 | Location Kit | @ohos.geolocation (位置服务) |
 | MDM Kit | @ohos.enterprise.adminManager（admin权限管理） |
-| MDM Kit | @ohos.enterprise.dateTimeManager （系统时间管理）(系统接口) |
-| Media Kit | @ohos.multimedia.media (媒体服务)(系统接口) |
+| <!--DelRow--> MDM Kit | @ohos.enterprise.dateTimeManager （系统时间管理）(系统接口) |
+| <!--DelRow--> Media Kit | @ohos.multimedia.media (媒体服务)(系统接口) |
 | Sensor Service Kit | @ohos.sensor (传感器) |
