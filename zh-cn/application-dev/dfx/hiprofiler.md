@@ -209,7 +209,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_ARK_GLOBAL_HANDLE | ark全局句柄分配栈。 | 23 |
 | RES_VMA_ARKWEB | ArkWeb PA分配器内存跟踪。 | 23 |
 | RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
-| RES_COMPOSITE_HEAP | 三合一维测日志(调用栈trace、堆快照rawheap、map映射文件)。 | 26.1.0 |
+| RES_COMPOSITE_HEAP | 三合一维测日志，具体包含调用栈trace、堆快照rawheap、map映射文件。 | 26.1.0 |
 
 ### async_type参数介绍
 
@@ -1176,9 +1176,9 @@ CONFIG
 >
 > 抓取三合一维测日志，须在[nativehook插件](#nativehook插件)配置中增加[restrace_tag参数](#restrace_tag参数介绍)RES_COMPOSITE_HEAP。
 >
-> 三合一维测日志是落盘在命令行-o指定的/data/local/tmp/目录下命名为hiprofiler_data_{timestamp}.zip的压缩文件(只保留最新的)。
+> 三合一维测日志落盘在命令行-o指定的/data/local/tmp/目录下，是以hiprofiler_data_{timestamp}.zip命名的压缩文件。日志文件仅保留最新记录。
 >
-> user版本采集的进程仅支持[使用调试证书签名的应用](#使用调试证书签名的应用)。
+> 采集的进程仅支持[使用调试证书签名的应用](#使用调试证书签名的应用)。
 
 示例命令：
 
