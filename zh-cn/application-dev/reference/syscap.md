@@ -34,7 +34,7 @@ SysCap的用途：
 
    仍以蓝牙为例，不同设备类型对蓝牙的支持情况有所不同，为便于开发者判断相关API是否可用，引入了SysCap机制。
    
-   开发者可通过[canIUse](../reference/common/js-apis-syscap.md#caniuse)接口，判断指定SysCap所代表的开放能力API集合是否支持在目标设备类型上调用。
+   开发者可通过[canIUse]接口，判断指定SysCap所代表的开放能力API集合是否支持在目标设备类型上调用。
    
 2. 次要职责：进行特性归类。
 
@@ -42,7 +42,7 @@ SysCap的用途：
 
 > **注意**：
 > 
-> 同一设备类型下不同的产品型号，软硬件规格可能不一致，所以需要开发者通过canIUse和能力查询接口判断，以达到先查询后使用的目的。例如部分手机不支持POI功能，所以需要开发者先使用canIUse判断SystemCapability.Location.Location.Core在手机上是否可调用，接着还需使用[geoLocationManager.isPoiServiceSupported](apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerispoiservicesupported20)查询系统（即软件）是否支持POI服务，全部支持之后开发者才可正常使用POI相关接口。详情请参见[SysCap适配应用开发](#syscap适配应用开发)。
+> 同一设备类型下不同的产品型号，软硬件规格可能不一致，所以需要开发者通过canIUse和能力查询接口判断，以达到先查询后使用的目的。例如部分手机不支持POI功能，所以需要开发者先使用canIUse判断SystemCapability.Location.Location.Core在手机上是否可调用，接着还需使用[geoLocationManager.isPoiServiceSupported]查询系统（即软件）是否支持POI服务，全部支持之后开发者才可正常使用POI相关接口。详情请参见[SysCap适配应用开发](#syscap适配应用开发)。
 
 ## SysCap与SDK和Kit的关系
 
@@ -98,7 +98,7 @@ DevEco Studio自动识别项目中的设备类型，定位SDK“device-define”
 
 ### 使用canIUse判断SysCap是否可调用
 
-使用[canIUse](../reference/common/js-apis-syscap.md#caniuse)接口判断SysCap对应的API集合是否可调用：true表示可调用，false表示不可调用（该SysCap在对应设备类型中未包含）。
+使用[canIUse]接口判断SysCap对应的API集合是否可调用：true表示可调用，false表示不可调用（该SysCap在对应设备类型中未包含）。
 
 **ArkTS API使用示例**
 
@@ -220,7 +220,7 @@ registerCameraStatus(cameraManager: camera.CameraManager): void {
    });
    ```
 
-3.  使用全局捕获，在全局添加异常捕获监听，能够捕获未被try...catch的异常，添加后应用抛出异常后不会主动退出，详情可参考[errorManager.on('error')](apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)。
+3.  使用全局捕获，在全局添加异常捕获监听，能够捕获未被try...catch的异常，添加后应用抛出异常后不会主动退出，详情可参考[errorManager.on('error')]。
 
 ## 单设备及多设备应用开发场景下的适配开发
 
