@@ -203,7 +203,7 @@ Obtains the metadata buffer.
 | const [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
 | bool withStaticMeta | Whether the output buffer includes static metadata. The value **true** indicates that the output buffer includes static metadata, and the value **false** indicates that the output buffer includes only dynamic metadata.|
 | uint8_t *buffer | Pointer to the buffer for receiving the metadata.|
-| int32_t len | Buffer length, is bytes.|
+| int32_t len | Buffer length, in bytes.|
 
 **Returns**
 
@@ -287,7 +287,7 @@ Updates the basic metadata of the Audio Vivid metadata builder. The buffer must 
 | -- | -- |
 | [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
 | const uint8_t *buffer | Pointer to the basic metadata.|
-| int32_t len | Buffer length, The unit is bytes.|
+| int32_t len | Buffer length, in bytes.|
 
 **Returns**
 
