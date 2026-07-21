@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:19:20.788Z pushedAt=2026-07-20T12:37:40.106Z -->
+<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:19:20.788Z pushedAt=2026-07-21T12:11:27.919Z -->
 
 Starting from API version 26.0.0, video encoders support preprocessing, including downsampling, cropping, and frame dropping.
 
@@ -219,8 +219,8 @@ if (ret != AV_ERR_OK || window == nullptr) {
 }
 
 // Bind the window to a data source such as Camera or XComponent.
-// For example: cameraManager->SetPreviewSurface(window).
-//       nativeXComponent->SetSurface(window)。
+// For example: cameraManager->SetPreviewSurface(window)
+//       nativeXComponent->SetSurface(window)
 ```
 
 > **Key rules:**

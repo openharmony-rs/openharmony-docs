@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:19:26.909Z pushedAt=2026-07-20T10:52:29.420Z -->
+<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:19:26.909Z pushedAt=2026-07-21T12:10:53.541Z -->
 
 Starting from API version 26.0.0, video encoding supports one input and dual outputs. This capability allows the same video input data to simultaneously drive **two independent encoders** to generate two encoded streams with different configurations.
 
@@ -239,8 +239,8 @@ if (ret != AV_ERR_OK || window == nullptr) {
 }
 
 // Bind the window to the Camera/XComponent data source.
-// cameraManager->SetPreviewSurface(window)。
-// nativeXComponent->SetSurface(window)。
+// cameraManager->SetPreviewSurface(window)
+// nativeXComponent->SetSurface(window)
 ```
 
 > **Core rules:**

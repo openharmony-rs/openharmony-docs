@@ -6,7 +6,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:16:35.098Z pushedAt=2026-07-21T10:50:09.070Z -->
+<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:16:35.098Z pushedAt=2026-07-21T12:10:01.443Z -->
 
 Starting from API version 26.0.0, [AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md) provides Pulse Code Modulation (PCM) audio format conversion capabilities. In scenarios such as pure audio transcoding, you can use format conversion APIs to convert the format of PCM audio data, including sample rate, channel layout, and sample format (bit depth).
 
@@ -205,7 +205,7 @@ The format conversion APIs support the following PCM audio formats:
 
    ``` C++
    // Allocate the processing buffer.
-   const int32_t processBufferSize = 4096 * 4; // 16KB。
+   const int32_t processBufferSize = 4096 * 4; // 16 KB
    uint8_t *processBuffer = new uint8_t[processBufferSize];
    int32_t outputSize = 0;
    int32_t totalOutputSize = 0;
