@@ -247,7 +247,7 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
             currentStream = stream;
             onBtn.disabled = true;
             offBtn.disabled = false;
-            console.log('后置摄像头已打开');
+            console.info('后置摄像头已打开');
         } catch (err) {
             console.error('打开摄像头失败：', err);
             alert('无法打开摄像头，请检查权限或 HTTPS 环境。');
@@ -262,7 +262,7 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
         video.srcObject = null;
         onBtn.disabled = false;
         offBtn.disabled = true;
-        console.log('摄像头已关闭');
+        console.info('摄像头已关闭');
     }
 
     onBtn.addEventListener('click', openCamera);
@@ -321,7 +321,7 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
             currentStream = stream;
             onBtn.disabled = true;
             offBtn.disabled = false;
-            console.log('后置摄像头已打开');
+            console.info('后置摄像头已打开');
         } catch (err) {
             console.error('打开摄像头失败：', err);
             alert('无法打开后置摄像头，请检查权限或 HTTPS 环境。');
@@ -336,7 +336,7 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
         video.srcObject = null;
         onBtn.disabled = false;
         offBtn.disabled = true;
-        console.log('摄像头已关闭');
+        console.info('摄像头已关闭');
     }
 
     onBtn.addEventListener('click', openCamera);
