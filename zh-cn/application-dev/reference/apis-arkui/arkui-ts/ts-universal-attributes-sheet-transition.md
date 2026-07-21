@@ -1004,7 +1004,7 @@ struct SheetMaterialExample {
   @State isShow: boolean = false;
   @State sheetHeight: number = 300;
   @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
-    style: 0,
+    style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
   });
 
   @Builder
