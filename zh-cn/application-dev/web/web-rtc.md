@@ -161,3 +161,52 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
   </body>
   </html>
   ```
+
+## 常见问题
+
+### 在华为浏览器中，h5页面为何会选到长焦摄像头，导致无法对焦？
+
+#### 可能的原因
+- 当前鸿蒙平台的相机列表与IOS平台一致是顺序返回，在Android平台是逆序返回。
+
+- 华为浏览器是系统应用，最后一个摄像头是长焦摄像头。
+
+部分网站遍历设备后通过deviceId来强选最后一个摄像头，这两个因素叠加，在华为浏览器上就选择到长焦了。
+
+#### 解决方案
+鸿蒙平台的相机列表与IOS平台一致是顺序返回，因此有两个修改方案。
+
+方案一：遍历后置摄像头选择第一个后置摄像头。
+
+- 遍历设备，获取第一个后置摄像头的 deviceId，示例如下：
+
+<!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Telephoto1.html) --> 
+
+async function getFirstBackCameraId() {
+  const devices = await navigator.mediaDevices.enumerateDevices();
+  const videoDevices = devices.filter(d => d.kind === 'videoinput');
+  const back = videoDevices.find(d => {
+    const label = d.label.toLowerCase();
+    return label.includes('back') || label.includes('rear') || label.includes('后置');
+  });
+  return back ? back.deviceId : (videoDevices[0] ? videoDevices[0].deviceId : null);
+}
+
+- 通过deviceId来强选第一个后置摄像头，示例如下：
+
+<!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Telephoto1.html) --> 
+
+const deviceId = await getFirstBackCameraId();
+const stream = await navigator.mediaDevices.getUserMedia({
+  video: { deviceId: { exact: deviceId } },
+  audio: false
+});
+
+方案二：可以直接通过facingMode属性选择后置
+
+<!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Telephoto2.html) --> 
+
+const stream = await navigator.mediaDevices.getUserMedia({
+  video: { facingMode: 'environment' },
+  audio: false
+});
