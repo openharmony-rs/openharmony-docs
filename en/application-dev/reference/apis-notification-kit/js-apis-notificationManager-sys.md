@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:42:01.799Z pushedAt=2026-06-30T11:39:53.001Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:14:43.340Z pushedAt=2026-07-21T03:20:34.199Z -->
 
 This module provides system API capabilities for notification management, including publishing notifications to specified users, publishing agent notifications, canceling agent notifications, creating, obtaining, and removing notification channels, setting and querying notification enable status, badge enable status, and channel enable status, setting and querying do-not-disturb time and DND mode configuration, managing distributed notification collaboration, managing notification publishing permission control, obtaining active notification information, setting notification reminder methods, subscribing to system live view, registering notification verification callbacks, managing notification priority policies, and setting advanced features such as geofence, ringtone information, and silent reminders.
 
@@ -68,6 +68,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
 | 1600026  | The location switch is off.<br> Applicable versions: 23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>Applicable versions: 26.0.0+ |
 | 2300007  | Network unreachable.<br> Applicable versions: 11+                              |
 
 **Example**
@@ -151,6 +152,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
 | 1600026  | The location switch is off.<br> Applicable versions: 23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> Applicable versions: 26.0.0+ |
 | 2300007  | Network unreachable.<br> Applicable versions: 11+                              |
 
 **Example**
@@ -522,9 +524,9 @@ Obtains a list of applications that allow notifications. This API uses a promise
 
 **Return value**
 
-| Type     | Description       | 
+| Type     | Description       |
 |---------|-----------|
-| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | Returns a list of applications that allow notifications.| 
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | List of applications that allow notifications. |
 
 **Error codes**
 
@@ -558,7 +560,7 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 
 getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleOption\>>
 
-Obtains the list of applications that are allowed to publish notifications by a specified user. This API uses a promise to return the result.
+Obtains the list of applications that allow notifications for a specified user. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -570,13 +572,13 @@ Obtains the list of applications that are allowed to publish notifications by a 
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| userId   | number | Yes| Target user.|
+| userId   | number | Yes | User for whom the list of applications that allow notifications is to be obtained. |
 
 **Return value**
 
-| Type     | Description       | 
+| Type     | Description       |
 |---------|-----------|
-| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | Returns a list of applications that allow notifications.| 
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | List of applications that allow notifications. |
 
 **Error codes**
 
@@ -1596,6 +1598,59 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
 });
 ```
 
+## notificationManager.getActiveNotification
+
+getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
+
+Obtains an active notification based on **hashCode**. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model constraint:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Notification.Notification
+
+**Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API:** This is a system API.
+
+**Parameters**
+
+| Name    | Type                                                        | Mandatory| Description                          |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------- |
+| hashCode  | string  | Yes   | Unique notification identifier.                |
+
+**Return value**
+
+| Type                                                        | Description                                                         |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | Promise used to return the notification information. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                             |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.                  |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.|
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600007  | The notification does not exist.    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
+    console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.getActiveNotificationByFilter<sup>11+</sup>
 
 getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest\>): void
@@ -2377,7 +2432,7 @@ Sets whether to enable distributed notification on this device. This API uses an
 
 **Deprecated since**: 26.0.0
 
-**Substitutes:**: [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
+**Substitute:** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2433,7 +2488,7 @@ Sets whether to enable distributed notification on this device. This API uses a 
 
 **Deprecated since**: 26.0.0
 
-**Substitutes:**: [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
+**Substitute:** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2505,7 +2560,7 @@ Sets whether to enable distributed notification for a specified application. Thi
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes  | Bundle information of the application.                  |
 | enable   | boolean                  | Yes  | Whether to enable distributed notification. The value **true** means to enable distributed notification, and **false** means the opposite.|
-| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void\> | Yes | Callback used to return whether the application supports distributed notifications. |
 
 **Error codes**
 
@@ -2609,7 +2664,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
-Checks whether distributed notification is enabled for a specified application. This API uses an asynchronous callback to return the result.
+Obtains whether an application supports distributed notification based on the application bundle. This API uses an asynchronous callback to return the result.
 
 **Since**: 9
 
@@ -2863,12 +2918,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled.<br>  Applicable versions: 26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
 | 1600026  | The location switch is off.<br> Applicable versions: 23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>  Applicable versions: 26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **Example**
@@ -2948,12 +3005,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled.<br>Applicable versions: 26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
 | 1600026  | The location switch is off.<br> Applicable versions: 23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>Applicable versions: 26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **Example**
@@ -3028,12 +3087,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled.<br>  Applicable versions: 26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
 | 1600026  | The location switch is off.<br> Applicable versions: 23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>  Applicable versions: 26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **Example**
@@ -3586,6 +3647,68 @@ notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notificati
 });
 ```
 
+## notificationManager.isNotificationSlotEnabledByBundles
+
+isNotificationSlotEnabledByBundles(bundles: Array\<BundleOption\>, type: SlotType): Promise\<Map\<BundleOption, boolean\>\>
+
+Obtains the enabled state of a specified slot type for multiple applications in batches. This API uses a promise to return the result. All applications share the same slot type. Applications for which no slot has been created will not be returned.
+
+**System capability:** SystemCapability.Notification.Notification
+
+**Device behavior difference:** This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+
+**Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API:** This is a system API.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| bundles | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | Yes | Array of application bundle information. The maximum length is 1000 and cannot be empty. |
+| type | [SlotType](./js-apis-notificationManager.md#slottype) | Yes | Slot type. All applications share the same slot type. |
+
+**Return value**
+
+| Type | Description |
+| ---- | ---- |
+| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean\>\> | Promise used to return the batch query result. The key is the application bundle information, and the value is the slot enabled state (**true**: enabled; **false**: disabled). Applications for which no slot has been created will not be returned. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 801 | Capability not supported. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain whether the live view switch function is enabled for multiple applications in batches.
+const bundles: Array<notificationManager.BundleOption> = [
+    { bundle: 'com.example.app1', uid: 10001 },
+    { bundle: 'com.example.app2', uid: 10002 },
+];
+
+notificationManager.isNotificationSlotEnabledByBundles(
+    bundles, notificationManager.SlotType.LIVE_VIEW).then((data) => {
+    data.forEach((value: boolean, key: notificationManager.BundleOption) => {
+        console.info(`bundle: ${key.bundle}, enabled: ${value}`);
+    });
+}).catch((err: BusinessError) => {
+    console.error(`isNotificationSlotEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: AsyncCallback\<void\>): void
@@ -3608,7 +3731,7 @@ Sets whether to enable the notification sync feature for devices where the appli
 | ------ | ----------------------------- | ---- | -------------- |
 | userId | number | Yes  | User ID.  |
 | enable | boolean | Yes  | Whether to enable the notification sync feature. The value **true** means to enable the feature, and **false** means the opposite.  |
-| callback | AsyncCallback\<void\>    | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void\> | Yes | Callback used to set whether to enable the notification sync feature for devices where the application is not installed. |
 
 **Error codes**
 
@@ -3670,7 +3793,7 @@ Sets whether to enable the notification sync feature for devices where the appli
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<void\> | Promise used to return the result.|
+| Promise\<void\> | Promise used to return the result of setting whether to enable the notification sync feature for devices where the application is not installed. |
 
 **Error codes**
 
@@ -3723,7 +3846,7 @@ Obtains whether the notification sync feature is enabled for devices where the a
 | Name| Type                         | Mandatory| Description          |
 | ------ | ----------------------------- | ---- | -------------- |
 | userId | number | Yes  | User ID.  |
-| callback | AsyncCallback\<boolean\>         | Yes  | Callback used to return the result. The value **true** means that the notification sync feature is enabled, and **false** means the opposite.|
+| callback | AsyncCallback\<boolean\>         | Yes   | Callback used to return whether the notification sync feature is enabled for devices where the application is not installed. The value **true** means that the notification sync feature is enabled, and **false** means the opposite. |
 
 **Error codes**
 
@@ -3783,7 +3906,7 @@ Obtains whether the notification sync feature is enabled for devices where the a
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | Promise used to return the result. The value **true** means that the notification sync feature is enabled, and **false** means the opposite.|
+| Promise\<boolean\> | Promise used to return whether the notification sync feature is enabled for devices where the application is not installed. The value **true** means that the notification sync feature is enabled, and **false** means the opposite. |
 
 **Error codes**
 
@@ -5339,7 +5462,7 @@ setNotificationSwitch(switchName: string, switchState: boolean, userId: number):
 
 Sets the notification switch state. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -5399,7 +5522,7 @@ getNotificationSwitch(switchName: string, userId: number): Promise\<SwitchState\
 
 Obtains the notification switch state. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -5814,7 +5937,7 @@ notificationManager.setBadgeDisplayStatusByBundles(badges).then(() => {
 
 getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean>>
 
-Batch obtains the display statuses of application badges. This API uses a promise to return the result.
+Obtains the display statuses of application badges in batches. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6943,7 +7066,7 @@ Provides the button information of the notification.
 
 **System API**: This is a system API.
 
-| Name      |   Type | Read-Only| Optional| Description                   |
+| Name      |   Type | Read-only| Optional| Description                   |
 | ---------- | ------ | ---- | ---- | ---------------------- |
 | buttonName | string |  No | No  | Button name.             |
 
@@ -6960,6 +7083,10 @@ Subscriber of the system live view notification.
 | onResponse  | (notificationId: number, buttonOptions: [ButtonOptions](#buttonoptions11)) => void | No  |  Yes | Callback when the button is touched.       |
 
 ## SlotType
+
+Defines the notification slot type.
+
+Different types correspond to different [SlotLevel](js-apis-notificationManager.md#slotlevel) values, which determine the reminder behavior of notifications.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6986,6 +7113,8 @@ Each bit can control the notification mode. When the bitwise OR operation is per
 
 ## DoNotDisturbProfile<sup>12+</sup>
 
+Defines the configuration information of the Do Not Disturb mode.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
@@ -6998,7 +7127,7 @@ Each bit can control the notification mode. When the bitwise OR operation is per
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
-type NotificationLiveViewContent = _NotificationLiveViewContent
+type NotificationLiveViewContent = _NotificationLiveViewContent 
 
 Describes the common live view.
 
@@ -7036,8 +7165,8 @@ Describes the bundle information of an application that enables cross-device col
 | Name         | Type                                                      | Read-Only| Optional| Description             |
 | --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
 | bundleName   | string | No| No| Bundle name.         |
-| uid          | number | No| No| UID of the application.         |
-| enable       | boolean| No| Yes| Whether the application enables cross-device collaboration. The value **true** indicates that the cross-device collaboration is enabled, and the value **false** indicates the opposite.     |
+| uid          | number | No | No | UID of the application.          |
+| enable       | boolean| No| Yes| Whether the application enables cross-device collaboration. The value **true** indicates that the cross-device collaboration is enabled, and the value **false** indicates the opposite. The default value is **false**.     |
 
 ## RingtoneType<sup>21+</sup>
 
@@ -7133,8 +7262,8 @@ Describes the enabling status of the priority notification for an application.
 | Name                | Value | Description                              |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | The priority notification is disabled.|
-| ENABLE_BY_INTELLIGENT  | 1  | The priority notification is enabled by intelligent recognition.|
-| ENABLE   | 2   | The priority notification is enabled for all applications.|
+| ENABLE_BY_INTELLIGENT  | 1  | The priority notification is enabled in the intelligent recognition state. Notifications can be set as priority notifications through intelligent recognition, user keyword matching, application rule matching, and other methods. |
+| ENABLE   | 2   | All application notifications are set as priority notifications. |
 
 ## NotificationIconButton<sup>23+</sup>
 
