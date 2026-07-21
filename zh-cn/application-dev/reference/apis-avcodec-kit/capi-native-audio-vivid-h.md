@@ -149,7 +149,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
-| int32_t objectIndex | 要更新的音频对象索引，从0开始，不超过在[OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create)创建builder时入参format设置的[OH_MD_KEY_AUDIO_OBJECT_NUMBER](./capi-codecbase.md#音频专有的键值对)对应的值。 |
+| int32_t objectIndex | 要更新的音频对象索引，从0开始，小于在[OH_AudioVividMetaBuilder_Create](#oh_audiovividmetabuilder_create)创建builder时入参format设置的[OH_MD_KEY_AUDIO_OBJECT_NUMBER](./capi-codecbase.md#音频专有的键值对)对应的值。 |
 | float gain | 对象渲染时应用的线性增益值，范围为[0.0, 6.0]，线性增益0.0为静音，1.0为不变。 |
 
 **返回：**
@@ -349,5 +349,3 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：</li><br>         <li>    1. 参数builder为空指针或无效；</li><br>         <li>    2. 参数objectIndex无效。</li><br>         </ul> |
-
-
