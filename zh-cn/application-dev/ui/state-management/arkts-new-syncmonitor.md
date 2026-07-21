@@ -658,8 +658,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 - 如果\@SyncMonitor观察的多个属性在不同的赋值操作中发生改变，则每次赋值操作后都会立即调用\@SyncMonitor回调函数。这与\@Monitor的行为相反，后者只调用一次并使用最后一次更改的值。调用Array的API可能会一次改变多个数组元素，但每次只会触发一次\@SyncMonitor装饰的回调函数。
 
   <!-- @[syncmonitor_array_multi_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorArrayMultiPath.ets) -->
-
-  ``` typescript
+  
+  ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   @Entry
   @ComponentV2
