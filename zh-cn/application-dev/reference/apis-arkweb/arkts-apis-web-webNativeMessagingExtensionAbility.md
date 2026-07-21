@@ -30,7 +30,7 @@ import { WebNativeMessagingExtensionAbility } from '@kit.ArkWeb';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ------ | ------ | ------ |
-| context | [WebNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md) | 否 | 否 | Web原生消息通信上下文。 |
+| context | [WebNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md) | 否 | 否 | 当前Web原生消息扩展Ability的上下文。 |
 
 ### onConnectNative
 

@@ -210,7 +210,7 @@ typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId,
 | -- | -- |
 | uint32_t controllerId | 画中画控制器Id，为非负整数。 |
 |  uint8_t requestId | 请求Id，表示当前请求拉起画中画窗口的次数。 |
-|  uint64_t surfaceId | 画中画内部Xcomponent组件的surfaceId，用于应用自行渲染。 |
+|  uint64_t surfaceId | 画中画内部XComponent组件的surfaceId，用于应用自行渲染。 |
 
 ### WebPipLifecycleCallback()
 
@@ -476,7 +476,7 @@ int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint
 | 参数项 | 描述 |
 | -- | -- |
 | [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md) pipConfig | 画中画参数配置器。 |
-| uint32_t* controllerId | 用于接收创建画中画控制器的id。 |
+| uint32_t* controllerId | 用于接收创建画中画控制器的Id。 |
 
 **返回：**
 

@@ -3,18 +3,18 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
 <!--Owner: @no86-->
-<!--Designer: @mmwwbb-->
+<!--Designer: @no86-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
 SelectionExtensionContext是[SelectionExtensionAbility](./js-apis-selectionInput-selectionExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
-每个SelectionExtensionAbility组件实例化时，系统都会自动创建对应的SelectionExtensionContext。开发者可以通过SelectionExtensionContext拉起同应用内其他Ability。
+每个SelectionExtensionAbility组件实例化时，系统都会自动创建对应的SelectionExtensionContext。开发者可以通过SelectionExtensionContext拉起同应用内其他Ability。适用于在划词扩展场景中需要跳转至应用内其他Ability的情况，帮助用户在划词操作后快速获取与划词内容关联的功能或信息。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块仅支持PC/2in1设备。
+> - 本模块仅支持PC/2in1设备。开发者可通过canIUse('SystemCapability.SelectionInput.Selection')判断当前设备是否支持该功能。
 
 ## 导入模块
 
@@ -32,7 +32,7 @@ import { SelectionExtensionContext } from '@kit.BasicServicesKit';
 
 startAbility(want: Want): Promise\<void>
 
-拉起目标应用。使用Promise异步回调。
+拉起同应用内的目标Ability，适用于在划词扩展场景中需要跳转至应用内其他Ability的情况。系统根据Want对象中指定的bundleName和abilityName匹配并调度启动目标Ability。使用Promise异步回调。关于Ability启动机制，请参见[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -42,7 +42,7 @@ startAbility(want: Want): Promise\<void>
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 想要被拉起的应用信息，包括Ability名称、Bundle名称等。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 需要拉起的目标应用信息。主要字段包括bundleName（目标应用的Bundle名称）和abilityName（目标Ability名称）。设置后系统将根据其中指定的bundleName和abilityName查找并拉起对应的Ability。仅支持拉起同应用内的Ability。 |
 
 **返回值：**
 
@@ -52,7 +52,7 @@ startAbility(want: Want): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
+以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
@@ -85,8 +85,8 @@ import { rpc } from '@kit.IPCKit';
 import { Want } from '@kit.AbilityKit';
 
 class SelectionAbilityStub extends rpc.RemoteObject {
-  constructor(des: string) {
-    super(des);
+  constructor(descriptor: string) {
+    super(descriptor);
   }
   onRemoteMessageRequest(
     code: number,
@@ -102,17 +102,19 @@ class SelectionAbilityStub extends rpc.RemoteObject {
 class SelectionExtAbility extends SelectionExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
     try {
+      // 构造Want对象，指定要拉起的目标Ability信息
       let wantAbility: Want = {
-        bundleName: "com.selection.selectionapplication",
-        abilityName: "EntryAbility",
+        bundleName: 'com.selection.selectionapplication',
+        abilityName: 'EntryAbility',
       };
+      // 拉起目标Ability，this.context由SelectionExtensionAbility实例自动提供，无需额外获取
       this.context.startAbility(wantAbility).then(() => {
         console.info(`startAbility success`);
       }).catch((err: BusinessError) => {
-        console.error(`startAbility error: ${err.code}, error message: ${err.message}`);
-      })
-    } catch (err) {
-      console.error(`startAbility error: ${err.code}, error message: ${err.message}`);
+        console.error(`Failed to startAbility. Error code: ${err.code}, error message: ${err.message}`);
+      });
+    } catch(err) {
+      console.error(`Failed to startAbility. Error code: ${err.code}, error message: ${err.message}`);
     }
     return new SelectionAbilityStub('remote');
   }

@@ -1,10 +1,10 @@
 # 使用JSVM-API接口进行Date相关开发
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -54,7 +54,7 @@ static JSVM_Value CreateDate(JSVM_Env env, JSVM_CallbackInfo info)
 
     JSVM_CALL(OH_JSVM_CreateDate(env, value, &returnValue));
 
-    bool isDate;
+    bool isDate = false;
     JSVM_CALL(OH_JSVM_IsDate(env, returnValue, &isDate));
     if (!isDate) {
         OH_LOG_ERROR(LOG_APP, "JSVM IsDate fail");

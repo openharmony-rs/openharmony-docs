@@ -1,8 +1,8 @@
 # @ohos.display (屏幕属性)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -398,6 +398,161 @@ export default class EntryAbility extends UIAbility {
     }).catch((err: BusinessError) => {
       console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
     });
+  }
+}
+```
+
+## display.addVirtualScreenSurface
+
+addVirtualScreenSurface(screenId: number, surfaceId: string, surfaceRegion?: Rect): Promise&lt;void&gt;
+
+为虚拟屏幕添加surface。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明          |
+| --------- | ------ | ---- | ------------- |
+| screenId  | number | 是   | 虚拟屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
+| surfaceId | string | 是   | 虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId。该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
+| surfaceRegion | [Rect](js-apis-display.md#rect9) | 否   | surface中显示虚拟屏幕的矩形区域。如果虚拟屏幕未通过[setVirtualScreenSurface()](js-apis-display.md#displaysetvirtualscreensurface16)或[addVirtualScreenSurface()](#displayaddvirtualscreensurface)绑定过surface，surfaceRegion无效，默认全屏。在镜像模式下，surfaceRegion无效，默认全屏；在异源模式下，surfaceRegion有效。以虚拟屏幕左顶点为原点，当指定的surfaceRegion区域与虚拟屏幕无重叠区域时，返回1400004错误码。 |
+
+**返回值：**
+
+| 类型                | 说明                    |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息  |
+| ------- | ----------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Function addVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 1400001  | Invalid display or screen. |
+| 1400003  | This display manager service works abnormally. |
+| 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**示例：**
+
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  addVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    display.addVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in adding surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to add surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('addSurface')
+        .onClick((event: ClickEvent) => {
+          this.addVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## display.removeVirtualScreenSurface
+
+removeVirtualScreenSurface(screenId: number, surfaceId: string): Promise&lt;void&gt;
+
+移除虚拟屏幕绑定的surface。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明          |
+| --------- | ------ | ---- | ------------- |
+| screenId  | number | 是   | 虚拟屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
+| surfaceId | string | 是   | 虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId。该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
+
+**返回值：**
+
+| 类型                | 说明                    |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Function removeVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 1400001  | Invalid display or screen. |
+| 1400003  | This display manager service works abnormally. |
+| 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**示例：**
+
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  removeVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    display.removeVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in removing surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to remove surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('removeSurface')
+        .onClick((event: ClickEvent) => {
+          this.removeVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```

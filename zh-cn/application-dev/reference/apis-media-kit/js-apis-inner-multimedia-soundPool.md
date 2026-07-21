@@ -36,7 +36,7 @@ import { audio } from '@kit.AudioKit';
 | leftVolume  | number | 否 | 是  | 设置左声道音量。设置范围为[0.0, 1.0]，默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。                       |
 | rightVolume | number  | 否 | 是  | 设置右声道音量（当前不支持左右分别设置，将以左声道音量为准）。设置范围为[0.0, 1.0]，默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。 |
 | priority  | number  | 否 | 是  | 音频流播放的优先级。0为最低优先级，数值越大优先级越高。<br> 通过相互比较数值大小确定播放优先级，设置范围为大于等于0的整数。默认值为0。 <br> 当优先级为负数时自动设置为0，为浮点数时只截取整数部分。     |
-| pitch  | number  | 否 | 是  | 设置音频流播放的音调。设置范围为[0.25, 4.0]，默认值为1.0。<br>当音调超过边界值时自动设置为边界值。<br>**起始版本：** 26.0.0。<br>**模型约束：** 此接口仅可在Stage模型下使用。       |
+| pitch  | number  | 否 | 是  | 设置音频流播放的音调。设置范围为[0.25, 4.0]，默认值为1.0。<br>当音调超过边界值时自动设置为边界值。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。       |
 
 ## ErrorType<sup>20+</sup>
 
@@ -1279,7 +1279,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
-设置同一soundId对应的音频资源在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效。若未设置，将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一个soundId对应的音频资源，如果前一播放实例尚未播放完成，后一播放实例在播放前会先打断前一播放实例的播放。
+设置同一soundId对应的音频资源在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的play函数之前设置有效。若未设置，将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一个soundId对应的音频资源，如果前一播放实例尚未播放完成，后一播放实例在播放前会先打断前一播放实例的播放。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1578,7 +1578,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
     soundPool.on('loadComplete', (soundId: number) => {
-      console.info('Succeeded in loadComplete, soundId：' + soundId);
+      console.info('Succeeded in loadComplete, soundId: ' + soundId);
     })
   }
 });

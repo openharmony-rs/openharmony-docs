@@ -227,7 +227,7 @@ formObserver.on('formRemove', bundleName, callback);
 
 off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
-取消订阅卡片删除事件。使用callback异步回调，返回当前删除卡片的信息。
+取消订阅卡片删除事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -558,7 +558,7 @@ getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;Array&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | 是 | 回调函数。获取设备上正在运行的所有非临时卡片信息。当前卡片信息成功，error为undefined，data为查询到的卡片信息。|
+| callback | AsyncCallback&lt;Array&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | 是 | 回调函数。获取设备上正在运行的所有非临时卡片信息。当获取卡片信息成功时，error为undefined，data为查询到的卡片信息。|
 | hostBundleName | string | 否 |  指定要查询的卡片使用方名称，指定后会仅返回该卡片使用方下正在运行的非临时卡片信息。 <br> 缺省时，返回设备上所有正在运行的非临时卡片信息。 |
 
 **错误码：**

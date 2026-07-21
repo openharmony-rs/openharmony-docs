@@ -25,7 +25,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [PrintExtensionContext](js-apis-PrintExtensionContext.md) | 否 | 否 | 打印服务扩展能力上下文。<br/>**起始版本：** 26.0.0<br/> |
+| context | PrintExtensionContext | 否 | 否 | 打印服务扩展能力上下文。<br/>**起始版本：** 26.0.0<br/> |
 
 ## PrintExtensionAbility
 

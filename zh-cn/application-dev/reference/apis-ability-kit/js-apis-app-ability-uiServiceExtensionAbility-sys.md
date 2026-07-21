@@ -92,7 +92,7 @@ import { UIServiceExtensionAbility, Want} from '@kit.AbilityKit';
 
 class UIServiceExt extends UIServiceExtensionAbility {
   onRequest(want: Want, startId: number) {
-    console.info('onRequest, want:' + want.abilityName + ', startId:' + startId);
+    console.info(`onRequest, want: ${want.abilityName}, startId: ${startId}`);
   }
 }
 ```
@@ -123,7 +123,7 @@ import { UIServiceExtensionAbility, Want, common} from '@kit.AbilityKit';
 
 class UIServiceExt extends UIServiceExtensionAbility {
   onConnect(want: Want, proxy: common.UIServiceHostProxy){
-    console.info('onConnect, want:' + want.abilityName + '');
+    console.info(`onConnect, want: ${want.abilityName}`);
   }
 }
 ```
@@ -153,7 +153,7 @@ import { UIServiceExtensionAbility, Want, common } from '@kit.AbilityKit';
 
 class UIServiceExt extends UIServiceExtensionAbility {
   onDisconnect(want: Want, proxy: common.UIServiceHostProxy) {
-    console.info('onDisconnect, want: ${want.abilityName}');
+    console.info(`onDisconnect, want: ${want.abilityName}`);
   }
 }
 ```

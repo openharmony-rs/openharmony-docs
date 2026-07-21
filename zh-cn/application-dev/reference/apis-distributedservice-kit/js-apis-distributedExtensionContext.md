@@ -31,7 +31,7 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 
 ## DistributedExtensionContext.connectServiceExtensionAbility
 
-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
+connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 连接远端ServiceExtensionAbility。
 
@@ -52,7 +52,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| long | 返回连接ID，后续通过该ID断开连接。该ID由connectServiceExtensionAbility返回时分配，为递增数字。 |
+| number | 返回连接ID，后续通过该ID断开连接。该ID由connectServiceExtensionAbility返回时分配，为递增数字。 |
 
 **错误码：**
 
@@ -156,7 +156,7 @@ export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 ## DistributedExtensionContext.disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: long): Promise\<void\>
+disconnectServiceExtensionAbility(connection: number): Promise\<void\>
 
 断开与远端ServiceExtensionAbility的连接。使用Promise异步回调。
 
@@ -170,7 +170,7 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 | 参数名     | 类型   | 必填 | 说明                                                     |
 | ---------- | ------ | ---- | -------------------------------------------------------- |
-| connection | long | 是   | 连接ID，即connectServiceExtensionAbility返回的long值。 |
+| connection | number | 是   | 连接ID，即connectServiceExtensionAbility返回的number值。 |
 
 **返回值：**
 

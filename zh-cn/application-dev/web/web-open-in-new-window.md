@@ -25,7 +25,7 @@ Web组件提供了在新窗口打开页面的能力，开发者可以通过[mult
 
 在下面的本地示例中，当用户点击“新窗口中打开网页”按钮时，应用会在`onWindowNew()`接口收到Web组件的新窗口事件。
 > **说明：**
-> - 网页要求用户创建新的窗口时触发回调[OnWindowNewEvent()](../reference/apis-arkweb/arkts-basic-components-web-i.md#onwindownewevent12)，该回调函数中isUserTrigger参数，true代表用户触发，false代表非用户触发。
+> - 网页要求用户创建新的窗口时触发回调[OnWindowNewEvent](../reference/apis-arkweb/arkts-basic-components-web-i.md#onwindownewevent12)，该回调函数中isUserTrigger参数返回true代表用户触发，false代表非用户触发。
 
 
 - 应用侧代码。

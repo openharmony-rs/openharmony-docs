@@ -79,6 +79,7 @@
 | [OH_Drawing_ErrorCode OH_Drawing_FontGetBounds(const OH_Drawing_Font* font, const uint16_t* glyphs, uint32_t count,OH_Drawing_Array* bounds)](#oh_drawing_fontgetbounds) | 获取字型指定字形索引的矩形边界。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontGetPathForGlyph(const OH_Drawing_Font* font, uint16_t glyph,OH_Drawing_Path* path)](#oh_drawing_fontgetpathforglyph) | 获取字型指定字形索引的轮廓。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontGetTextPath(const OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding, float x, float y, OH_Drawing_Path* path)](#oh_drawing_fontgettextpath) | 获取文字轮廓路径。 |
+| [OH_Drawing_ErrorCode OH_Drawing_FontGetTextPathWithFallback(const OH_Drawing_Font* font, const void* text, size_t byteLength, OH_Drawing_TextEncoding encoding, float x, float y, OH_Drawing_Path* path)](#oh_drawing_fontgettextpathwithfallback) | 获取文字轮廓路径，支持字体回退。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontSetThemeFontFollowed(OH_Drawing_Font* font, bool followed)](#oh_drawing_fontsetthemefontfollowed) | 设置字型中的字体是否跟随主题字体。设置跟随主题字体后，若系统启用主题字体并且字型未被设置字体，字型会使用该主题字体。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontIsThemeFontFollowed(const OH_Drawing_Font* font, bool* followed)](#oh_drawing_fontisthemefontfollowed) | 获取字型中的字体是否跟随主题字体。默认不跟随主题字体。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacterWithFeatures(const OH_Drawing_Font* font, const char* str,const OH_Drawing_FontFeatures* fontFeatures, float* textWidth)](#oh_drawing_fontmeasuresinglecharacterwithfeatures) | 用于测量单个字符的宽度，字符带有字体特征。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。 |
@@ -1251,6 +1252,36 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetTextPath(const OH_Drawing_Font* font, con
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回错误代码。<br> 如果操作成功，则返回 [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode)。<br> 如果 font、text 或 path 中的任何一个为空指针，则返回 [OH_DRAWING_ERROR_INVALID_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode)。 |
+
+### OH_Drawing_FontGetTextPathWithFallback()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_FontGetTextPathWithFallback(const OH_Drawing_Font* font, const void* text, size_t byteLength, OH_Drawing_TextEncoding encoding, float x, float y, OH_Drawing_Path* path)
+```
+
+**描述**
+
+获取文字轮廓路径，支持字体回退。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指示字型对象[OH_Drawing_Font](capi-drawing-oh-drawing-font.md)的指针。 |
+| const void* text | 指示要获取轮廓路径的文本字符串。 |
+| size_t byteLength | 指示要获取对应文本路径的字节长度，如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | 指示文本编码格式，支持 UTF-8、UTF-16、UTF-32，以及字形索引。 |
+| float x | 指示文本在绘图区域内以原点为起始位置的X坐标。 |
+| float y | 指示文本在绘图区域内以原点为起始位置的Y坐标。 |
+| [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 返回获取到的文字轮廓路径对象，作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br> 如果font、text或path中的任何一个为空指针，或者byteLength为0，则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
 
 ### OH_Drawing_FontSetThemeFontFollowed()
 

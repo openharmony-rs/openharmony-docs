@@ -25,7 +25,7 @@ HTTP缓存结构体。
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *buffer | 缓存区数据。 |
-| uint32_t length | 缓存区长度。 |
+| const char *buffer | 缓冲区数据。 |
+| uint32_t length | 缓冲区长度。单位：Byte。 |
 
 

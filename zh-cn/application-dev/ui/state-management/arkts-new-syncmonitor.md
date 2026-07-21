@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用\@SyncMonitor装饰器对状态变量进行监听。
+为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用[\@SyncMonitor](../../reference/apis-arkui/arkui-ts/ts-state-management-syncmonitor.md#syncmonitor)装饰器对状态变量进行监听。
 
 \@SyncMonitor提供了对V2状态变量的同步监听。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)，[\@Monitor](./arkts-new-monitor.md)。
 
@@ -137,7 +137,7 @@ Monitor - sum changed from 0 to 6
 |\@SyncMonitor属性装饰器| 说明                                                        |
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数         | 字符串类型的对象属性名称。可同时监听多个对象属性，每个属性以逗号隔开，例如： @SyncMonitor('prop1', 'prop2')。此外，可监听深层的属性变化：多维数组中的元素、嵌套对象中的属性、对象数组中的属性。支持在路径末尾添加通配符'*'来监听任意被观察属性的变化。详情参见 [监听变化](#监听变化)。|
-| 装饰内容           | 成员方法。在被观察属性变化时，该回调会被触发。该回调方法以[IMonitor类型](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#imonitor12)的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。|
+| 装饰内容           | 成员方法。在被观察属性变化时，该回调会被触发。该回调方法以[IMonitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#imonitor)类型的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。|
 
 ## 监听路径中通配符的说明
 
@@ -170,7 +170,7 @@ Monitor - sum changed from 0 to 6
 
 ## 接口说明
 
-IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状态变量变化监听](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md)。
+IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Monitor：状态变量修改监听](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md)。
 
 ## 监听变化
 

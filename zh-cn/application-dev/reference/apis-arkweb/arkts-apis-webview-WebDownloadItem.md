@@ -363,7 +363,7 @@ getLastErrorCode(): WebDownloadErrorCode
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| [WebDownloadErrorCode](./arkts-apis-webview-e.md#webdownloaderrorcode11) | 下载发生错误的时候的错误码。 |
+| [WebDownloadErrorCode](./arkts-apis-webview-e.md#webdownloaderrorcode11) | 下载失败时的错误码。 |
 
 **示例：**
 
@@ -450,7 +450,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download， method:" + webDownloadItem.getMethod());
+              console.info("will start a download, method:" + webDownloadItem.getMethod());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
@@ -515,7 +515,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download， mime type:" + webDownloadItem.getMimeType());
+              console.info("will start a download, mime type:" + webDownloadItem.getMimeType());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })

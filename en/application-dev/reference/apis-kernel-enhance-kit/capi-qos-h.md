@@ -106,7 +106,7 @@ Enumerates the Gewu error codes.
 | OH_QOS_GEWU_INVAL = 401 | Invalid parameter.|
 | OH_QOS_GEWU_EXIST = 501 | Handle already exists.|
 | OH_QOS_GEWU_NOENT = 502 | Handle not found.|
-| OH_QOS_GEWU_NOSYS = 801 | Symbol not found.|
+| OH_QOS_GEWU_NOSYS = 801 | Subsystem not found. Possible cause: The target device does not support this feature. Solution: Use a device that supports this feature.|
 | OH_QOS_GEWU_FAULT = 901 | Other errors.|
 
 

@@ -6,13 +6,13 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-TextClock组件通过文本将当前系统时间显示在设备上。支持不同时区的时间显示，最高精度到秒级。
+TextClock组件通过文本将当前系统时间显示在设备上，支持不同时区的时间显示和时间格式自定义，最高精度到秒级。适用于需要在应用界面上实时展示系统时间、支持多时区显示的场景，可帮助开发者快速实现时间文本展示功能，无需手动计算和更新时间。
 
 组件不可见时，时间变动将停止。组件的可见状态基于[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)处理，可见阈值ratios大于0即视为可见状态。
 
 >**说明：**
 >
->该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 
 ## 子组件
@@ -33,7 +33,7 @@ TextClock(options?: TextClockOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options |  [TextClockOptions](#textclockoptions18对象说明)| 否 | 通过文本显示当前系统时间的组件参数。 |
+| options |  [TextClockOptions](#textclockoptions18对象说明)| 否 | 通过文本显示当前系统时间的组件参数。不传入时使用默认配置，各属性默认值详见TextClockOptions。 |
 
 ## TextClockOptions<sup>18+</sup>对象说明
 
@@ -53,12 +53,12 @@ TextClock(options?: TextClockOptions)
 
 | 名称            | 类型      | 只读   | 可选  | 说明                                                     |
 | -------------- | -------- | ------ | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| timeZoneOffset<sup>8+</sup> | number   | 否    | 是    | 设置时区偏移量。<br>取值范围为[-14, 12]，表示东十二区到西十二区，其中负值表示东时区，正值表示西时区，比如东八区为-8。设置值为该取值范围内的浮点数时会进行取整，舍弃小数部分。<br>对横跨国际日界线的国家或地区，用-13（UTC+13）和-14（UTC+14）来保证整个国家或者区域处在相同的时间，当设置的值不在取值范围内时，将使用当前系统的时区偏移量。<br/>默认值：当前系统的时区偏移量 <br/>设置值为{ 9.5, 3.5, -3.5, -4.5, -5.5, -5.75, -6.5, -9.5, -10.5, -12.75 }集合中的浮点数时不进行取整。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| controller<sup>8+</sup>     | [TextClockController](#textclockcontroller) | 否     | 是     | 绑定一个控制器，用来控制文本时钟的状态。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| timeZoneOffset<sup>8+</sup> | number   | 否    | 是    | 设置时区偏移量，单位：小时。<br>取值范围为[-14, 12]，表示东十二区到西十二区，其中负值表示东时区，正值表示西时区，比如东八区为-8。设置值为该取值范围内的浮点数时会进行取整，舍弃小数部分。<br>对横跨国际日界线的国家或地区，用-13（UTC+13）和-14（UTC+14）来保证整个国家或者区域处在相同的时间，当设置的值不在取值范围内时，将使用当前系统的时区偏移量。<br>默认值：当前系统的时区偏移量 <br>设置值为{ 9.5, 3.5, -3.5, -4.5, -5.5, -5.75, -6.5, -9.5, -10.5, -12.75 }集合中的浮点数时不进行取整。<br>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| controller<sup>8+</sup>     | [TextClockController](#textclockcontroller) | 否     | 是     | 绑定一个控制器，用来控制文本时钟的状态。当需要通过代码控制时钟的启动与停止时传入此参数；不传入时，时钟仍会正常运行显示，但无法通过代码控制启停。<br>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 
 ## 属性
 
-除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+除支持[通用属性](./ts-component-general-attributes.md)外，还支持以下属性：
 
 ### format
 
@@ -66,7 +66,7 @@ format(value: ResourceStr)
 
 设置显示时间格式，如“yyyy/MM/dd”、“yyyy-MM-dd”。
 
-y：年（yyyy表示完整年份，yy表示年份后两位）<br />M：月（若想使用01月则使用MM）<br />d：日（若想使用01日则使用dd）<br />E：星期（若想使用星期六则使用EEEE，若想使用周六则使用E、EE、EEE）<br />H：小时（24小时制）   h：小时（12小时制）    <br/>m：分钟<br/>s：秒<br/>SS：厘秒（format中S个数<3，全部按厘秒处理）<br />SSS：毫秒（format中S个数>=3，全部按毫秒处理）<br/>a：上午/下午（当设置小时制式为H时，该参数不生效）
+y：年（yyyy表示完整年份，yy表示年份后两位）<br>M：月（若想使用01月则使用MM）<br>d：日（若想使用01日则使用dd）<br>E：星期（若想使用星期六则使用EEEE，若想使用周六则使用E、EE、EEE）<br>H：小时（24小时制）<br>h：小时（12小时制）<br>m：分钟<br>s：秒<br>SS：厘秒（format中S个数<3，全部按厘秒处理）<br>SSS：毫秒（format中S个数>=3，全部按毫秒处理）<br>a：上午/下午（当设置小时制式为H时，该参数不生效）
 
 日期间隔符："年月日"、“/”、"-"、"."（可以自定义间隔符样式，字母不可以作为间隔符，汉字可以作为间隔符处理）
 
@@ -76,7 +76,7 @@ y：年（yyyy表示完整年份，yy表示年份后两位）<br />M：月（若
 
 若format为空字符串（""）或者undefined，则使用默认值。
 
-非卡片中默认值：12小时制：aa hh:mm:ss，24小时制：HH:mm:ss。<br />卡片中默认值：12小时制：hh:mm，24小时制：HH:mm 。<br />卡片中使用时，最小时间单位为分钟。如果设置格式中有秒或厘秒按默认值处理。
+非卡片中默认值：12小时制：aa hh:mm:ss，24小时制：HH:mm:ss。<br>卡片中默认值：12小时制：hh:mm，24小时制：HH:mm 。<br>卡片中使用时，最小时间单位为分钟。如果设置格式中有秒或厘秒，则按默认值处理。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -88,7 +88,7 @@ y：年（yyyy表示完整年份，yy表示年份后两位）<br />M：月（若
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 显示时间格式。  <br>从API version 20开始，支持Resource类型。|
+| value  | [ResourceStr](./ts-types.md#resourcestr) | 是   | 显示时间格式。  <br>从API version 20开始，支持Resource类型。|
 
 以下是format输入的格式样式及对应的显示效果：
 
@@ -140,7 +140,7 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。<br/>Wearable设备上默认值：'#c5ffffff'，其他设备默认值：'e6182431' |
+| value  | [ResourceColor](./ts-types.md#resourcecolor) | 是   | 字体颜色。<br>Wearable设备上默认值：'#c5ffffff'，其他设备默认值：'#e6182431' |
 
 ### fontSize
 
@@ -158,7 +158,7 @@ fontSize(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
+| value  | [Length](./ts-types.md#length) | 是   | 字体大小。fontSize为number类型时，使用fp单位。<br>字体默认大小16fp。不支持设置百分比字符串，传入百分比字符串时使用默认值。 |
 
 ### fontStyle
 
@@ -176,7 +176,7 @@ fontStyle(value: FontStyle)
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式。<br/>默认值：FontStyle.Normal，表示标准的字体样式（非斜体）。 |
+| value  | [FontStyle](./ts-appendix-enums.md#fontstyle) | 是   | 字体样式。<br>默认值：FontStyle.Normal，表示标准的字体样式（非斜体）。 |
 
 ### fontWeight
 
@@ -194,7 +194,7 @@ fontWeight(value: number | FontWeight | string)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | 是   | 文本的字体粗细，number类型取值范围为[100,&nbsp;900]，取值间隔为100，取值越大，字体越粗。number类型取值范围外的默认值为400。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal |
+| value  | number \| [FontWeight](./ts-appendix-enums.md#fontweight) \| string | 是   | 文本的字体粗细，number类型取值范围为[100, 900]，取值间隔为100，取值越大，字体越粗。number类型取值范围外的默认值为400。string类型支持：number类型取值的字符串形式（如400），以及枚举值'lighter'（对应300）、'regular'（对应400）、'medium'（对应500）、'bold'（对应700）、'bolder'（对应900），分别对应FontWeight中相应的枚举值。<br>默认值：FontWeight.Normal |
 
 ### fontFamily
 
@@ -212,13 +212,13 @@ fontFamily(value: ResourceStr)
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | [ResourceStr](./ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 ### textShadow<sup>11+</sup>
 
 textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
-设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。不支持fill字段, 不支持智能取色模式。
+设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。不支持fill字段和智能取色模式。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -232,7 +232,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果。 |
+| value  | [ShadowOptions](./ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](./ts-universal-attributes-image-effect.md#shadowoptions对象说明)&gt; | 是   | 文字阴影效果。支持单个阴影对象或阴影数组实现多重阴影效果。ShadowOptions对象包含radius（模糊半径）、color（阴影颜色）、offsetX（X轴偏移）、offsetY（Y轴偏移）等属性。<br>不支持fill字段，不支持智能取色模式。具体属性说明请参考[ShadowOptions对象说明](./ts-universal-attributes-image-effect.md#shadowoptions对象说明)。 |
 
 ### fontFeature<sup>11+</sup>
 
@@ -260,7 +260,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| value  | string | 是   | 文字特性效果。 |
+| value  | string | 是   | 文字特性效果，用于设置文字的OpenType特性。格式为：normal \| \<feature-tag-value\>，其中\<feature-tag-value\>格式为：\<string\> [ \<integer\> \| on \| off ]。可设置多个特性，中间用','隔开。例如，使用等宽时钟数字的格式为：'"ss01" on'。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -278,7 +278,7 @@ contentModifier(modifier: ContentModifier\<TextClockConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[TextClockConfiguration](#textclockconfiguration12对象说明)> | 是   | 在TextClock组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[TextClockConfiguration](#textclockconfiguration12对象说明)> | 是   | 在TextClock组件上，定制内容区的方法。<br>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### dateTimeOptions<sup>12+</sup>
 
@@ -298,11 +298,11 @@ dateTimeOptions(dateTimeOptions: Optional\<DateTimeOptions>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| dateTimeOptions  | Optional<[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated)> | 是   | 设置小时是否显示前导0，只支持设置hour参数，参数值为{hour: "2-digit"}时表示显示前导0，参数值为{hour: "numeric"}时表示不显示前导0。<br/>默认值：undefined，默认状态下，24小时制显示前导0，12小时制不显示前导0。|
+| dateTimeOptions  | Optional<[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated)> | 是   | 设置小时是否显示前导0，只支持设置hour参数，参数值为{hour: "2-digit"}时表示显示前导0，参数值为{hour: "numeric"}时表示不显示前导0。<br>默认值：undefined，默认状态下，24小时制显示前导0，12小时制不显示前导0。|
 
 ## 事件
 
-除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
+除支持[通用事件](./ts-component-general-events.md)外，还支持以下事件：
 
 ### onDateChange
 
@@ -360,7 +360,7 @@ TextClockController的构造函数。
 
 start()
 
-启动文本时钟。
+启动文本时钟。使用前需先将TextClockController绑定到TextClock组件。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -372,7 +372,7 @@ start()
 
 stop()
 
-停止文本时钟。
+停止文本时钟。使用前需先将TextClockController绑定到TextClock组件。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -392,7 +392,7 @@ stop()
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| timeZoneOffset | number | 否 | 否 | 当前文本时钟时区偏移量。<br>取值范围为[-14, 12]，表示东十二区到西十二区，其中负值表示东时区，正值表示西时区，比如东八区为-8。设置值为该取值范围内的浮点数时会进行取整，舍弃小数部分。 |
+| timeZoneOffset | number | 否 | 否 | 当前文本时钟时区偏移量。<br>取值范围为[-14, 12]，表示东十二区到西十二区，其中负值表示东时区，正值表示西时区，比如东八区为-8。设置值为该取值范围内的浮点数时会进行取整，舍弃小数部分。当设置的值不在取值范围内时，将使用当前系统的时区偏移量。|
 | started | boolean | 否 | 否 | 指示文本时钟是否启动。<br>true：表示启动文本时钟。<br>false：表示停止文本时钟。<br>默认值：true |
 | timeValue | number | 否 | 否 | 当前文本时钟时区的UTC秒数。 |
 
@@ -446,7 +446,7 @@ struct Second {
 
 ### 示例2（设定文本阴影样式）
 
-该示例通过[textShadow](#textshadow11)属性设置文本时钟的文本阴影样式。
+该示例通过[textShadow](#textshadow11)属性设置时钟文本的阴影样式。
 
 ``` ts
 @Entry
@@ -513,6 +513,9 @@ function buildTextClock(config: TextClockConfiguration) {
         .fontSize(20)
         .margin(20)
       TimePicker({
+        // 根据UTC秒数和时区偏移量计算本地时间：config.timeValue为UTC秒数，需乘1000转为毫秒；
+        // currentTimeZoneOffset为当前系统时区偏移量，timeZoneOffset为目标时区偏移量，
+        // 二者之差乘以3600000得到时区调整的毫秒数
         selected: (new Date(config.timeValue * 1000 +
           ((config.contentModifier as MyTextClockStyle).currentTimeZoneOffset - config.timeZoneOffset) * 60 * 60 *
             1000)),

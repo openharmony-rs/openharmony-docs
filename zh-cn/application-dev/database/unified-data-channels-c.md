@@ -432,7 +432,7 @@ int32_t ProcessDataElement(OH_UdmfData* data)
 
 int32_t ProcessHyperlinkDataFromArray(OH_UdmfData* readData, unsigned int dataSize, OH_UdmfData** dataArray)
 {
-    for (unsigned int i = 0; i < dataSize - 1; i++) {
+    for (unsigned int i = 0; i < dataSize; i++) {
         OH_UdmfData* data = OH_UDMF_GetDataElementAt(dataArray, i);
         // 3. 判断OH_UdmfData是否有对应的类型。
         if (!OH_UdmfData_HasType(data, UDMF_META_HYPERLINK)) {

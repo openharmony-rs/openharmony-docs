@@ -35,7 +35,7 @@ import { media } from '@kit.MediaKit';
 
 ## addWatermark
 
-addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
+addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
 
 为视频转码添加水印。使用Promise异步回调。
  
@@ -55,7 +55,7 @@ addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promis
 | 参数名    | 类型                                    | 必填 | 说明                       |
 | --------- | --------------------------------------- | ---- | -------------------------- |
 | watermark | [image.PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 水印图像。                 |
-| configs   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 水印配置参数。             |
+| config   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 水印配置参数。             |
 
 **返回值：**
 
@@ -130,7 +130,7 @@ prepare(config: AVTranscoderConfig): Promise\<void>
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 401  | The parameter check failed. Return by promise. |
+| 401  | The parameter check failed. Return by promise. <br>适用版本：22+ |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | IO error. Return by promise.              |
 | 5400105  | Service died. Return by promise.       |

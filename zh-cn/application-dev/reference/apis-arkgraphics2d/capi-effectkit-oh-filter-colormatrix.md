@@ -8,7 +8,9 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct OH_Filter_ColorMatrix {...} OH_Filter_ColorMatrix
+struct OH_Filter_ColorMatrix {
+    // ...
+};
 ```
 
 ## 概述

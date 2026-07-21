@@ -96,8 +96,8 @@ import { cloudSync } from '@kit.CoreFileKit';
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | 否   | 否   | 枚举值，云文件下载状态。|
-| processed | number | 否   | 否   | 已下载数据大小，取值范围[0，9223372036854775807]（单位：Byte）。|
-| size | number | 否   | 否   | 当前云文件大小，取值范围[0，9223372036854775807]（单位：Byte）。|
+| processed | number | 否   | 否   | 已下载数据大小，取值范围[0, 9223372036854775807]（单位：Byte）。|
+| size | number | 否   | 否   | 当前云文件大小，取值范围[0, 9223372036854775807]（单位：Byte）。|
 | uri | string | 否   | 否   | 当前云文件URI。|
 | error | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 下载的错误类型。|
 
@@ -832,7 +832,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
-| needClean<sup>12+</sup> | boolean | 否   | 是否删除已下载的文件。默认值为false表示不删除；true表示删除。<br>从API version12开始支持该参数。 |
+| needClean<sup>12+</sup> | boolean | 否   | 是否删除已下载的文件。默认值为false表示不删除；true表示删除。<br>从API version 12开始支持该参数。 |
 
 **返回值：**
 

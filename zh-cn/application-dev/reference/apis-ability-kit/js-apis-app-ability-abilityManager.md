@@ -191,4 +191,4 @@ AbilityStateData二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityStateData.default](js-apis-inner-application-abilityStateData.md) | AbilityStateData二级模块，提供Ability状态信息。 |
+| [_AbilityStateData](js-apis-inner-application-abilityStateData.md).default | AbilityStateData二级模块，提供Ability状态信息。 |

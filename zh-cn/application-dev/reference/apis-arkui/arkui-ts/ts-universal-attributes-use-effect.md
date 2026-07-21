@@ -18,7 +18,7 @@
 
 useEffect(value: boolean): T
 
-用于对背景模糊等特效进行绘制合并。
+用于控制组件是否继承父级EffectComponent的特效属性参数，对背景模糊等特效进行绘制合并。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -88,12 +88,12 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
-| DEFAULT  | 0   | 使用<!--Del-->父级EffectComponent定义的<!--DelEnd-->效果模板进行定义。 |
-| WINDOW_EFFECT  | 1   | 使用窗口定义的效果模板进行定义。 |
+| DEFAULT  | 0   | 使用<!--Del-->父级EffectComponent定义的<!--DelEnd-->效果模板。 |
+| WINDOW_EFFECT  | 1   | 使用窗口定义的效果模板。 |
 
 效果模板
 
@@ -112,7 +112,7 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 <!--code_no_check-->
 
 ```ts
-//Index.ets
+// Index.ets
 @Entry
 @Component
 struct Index {
@@ -120,7 +120,7 @@ struct Index {
 
   build() {
     Stack() {
-      Image($r("app.media.mountain"))
+      Image($r('app.media.mountain'))
         .autoResize(true)
       EffectComponent() {
         Column({ space: 20 }) {

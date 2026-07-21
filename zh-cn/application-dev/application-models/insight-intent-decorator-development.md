@@ -437,12 +437,7 @@
 
     <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
 
-    ```ts
-    import { insightIntent, InsightIntentEntity, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const LOG_TAG: string = 'testTag';
-
+    ```TypeScript
     // 使用@InsightIntentEntry装饰器定义意图
     @InsightIntentEntry({
       intentName: 'PlayMusicList',

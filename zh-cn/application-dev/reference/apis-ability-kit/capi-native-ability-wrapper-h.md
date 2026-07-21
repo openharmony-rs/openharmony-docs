@@ -43,8 +43,8 @@
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityInstanceId(
-    const AbilityRuntime_NativeAbilityWrapper* nativeAbilityWrapper, 
-    char* buffer, 
+    const AbilityRuntime_NativeAbilityWrapper* nativeAbilityWrapper,
+    char* buffer,
     const int32_t bufferSize)
 ```
 
@@ -112,7 +112,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityName(
 | -- | -- |
 | [AbilityRuntime_NativeAbilityWrapper](capi-abilityruntime-nativeabilitywrapper.md)* nativeAbilityWrapper | NativeAbility数据信息指针。 |
 | char* buffer | 接收Ability名称字符串的缓冲区指针。传入nullptr可查询Ability名称长度。 |
-| int32_t bufferSize | 缓冲区长度。确保缓冲区至少有额外一个字节用于'\0'。 |
+| int32_t bufferSize | 缓冲区长度（字节）。确保缓冲区至少有额外一个字节用于'\0'。 |
 | int32_t* writeLength | 输出Ability名称字符串长度。 |
 
 **返回：**

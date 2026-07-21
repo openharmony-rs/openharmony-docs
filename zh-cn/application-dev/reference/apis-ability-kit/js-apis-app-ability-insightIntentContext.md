@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供意图执行上下文，是[意图执行基类](./js-apis-app-ability-insightIntentExecutor.md)和[@InsightIntentEntry的意图执行基类](./js-apis-app-ability-InsightIntentEntryExecutor.md)的属性，为意图执行提供基础能力，例如启动本应用内的[UIAbility组件](./js-apis-app-ability-uiAbility.md)。
+本模块提供意图执行上下文，是[意图执行基类](./js-apis-app-ability-insightIntentExecutor.md)和[@InsightIntentEntry的意图执行基类](./js-apis-app-ability-InsightIntentEntryExecutor.md)的属性，为意图执行提供基础能力，例如启动本应用内的[UIAbility](./js-apis-app-ability-uiAbility.md#uiability)组件。
 
 > **说明：**
 >
@@ -57,12 +57,12 @@ import { InsightIntentContext } from '@kit.AbilityKit';
             console.info('testTag setExecuteResult success');
           })
           .catch((error: BusinessError) => {
-            console.error(`testTag setExecuteResult fail1, error code: ${JSON.stringify(error)}`);
+            console.error(`Failed to setExecuteResult. Code: ${error.code}, message: ${error.message}`);
           });
       } catch (e) {
         let code = (e as BusinessError).code;
         let msg = (e as BusinessError).message;
-        console.error(`testTag setExecuteResult fail2, error code: ${JSON.stringify(code)}, error msg: ${JSON.stringify(msg)}`);
+        console.error(`testTag setExecuteResult fail2, error code: ${code}, error msg: ${msg}`);
       }
       return result;
     }
@@ -135,7 +135,8 @@ startAbility(want: Want, callback: AsyncCallback\<void\>): void
           }
         })
       } catch (error) {
-        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to start ability. Code: ${err.code}, message: ${err.message}`);
       }
 
       let result: insightIntent.ExecuteResult = {
@@ -215,7 +216,8 @@ startAbility(want: Want): Promise\<void\>
         await this.context.startAbility(want);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Start ability finished');
       } catch (error) {
-        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to start ability. Code: ${err.code}, message: ${err.message}`);
       }
 
       let result: insightIntent.ExecuteResult = {
@@ -235,9 +237,9 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
 
 设置意图执行结果的返回形式，适用于执行模式为[UI_ABILITY_FOREGROUND](./js-apis-app-ability-insightIntent.md#executemode)的意图。
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -277,9 +279,8 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
       try {
         this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
       } catch (error) {
-        let code = (error as BusinessError).code;
-        let msg = (error as BusinessError).message;
-        console.error(`testTag setReturnModeForUIAbilityForeground fail, error code: ${code}, err msg: ${msg}.`);
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to setReturnModeForUIAbilityForeground. Code: ${err.code}, message: ${err.message}`);
       }
 
       let localStorageData: Record<string, number> = {
@@ -357,9 +358,8 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
         storage.setOrCreate('session', pageLoader);
         pageLoader.loadContent('pages/UIExtensionPage', storage);
       } catch (err) {
-        let code = (err as BusinessError).code;
-        let msg = (err as BusinessError).message;
-        console.info(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
+        const err: BusinessError = err as BusinessError;
+        console.error(`Failed to loadContent. Code: ${err.code}, message: ${err.message}`);
       }
       return result;
     }

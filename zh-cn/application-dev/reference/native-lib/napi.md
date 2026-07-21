@@ -1,10 +1,10 @@
 # Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -887,7 +887,7 @@ napi_status napi_coerce_to_native_binding_object(napi_env env,
 
 - [in] detach_cb: 解绑回调，一般在序列化时调用，可在对象解绑时执行一些清理操作。
 
-- [in] attach_cb: 绑定回调，一般在序列化时调用。
+- [in] attach_cb: 绑定回调，一般在反序列化时调用。
 
 - [in] native_object: 需要传递给回调的参数，不能为空。
 
@@ -1421,7 +1421,7 @@ napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void**
 
 **描述：**
 
-移除并获取ArkTS对象封装的native实例，移除后回调将不再触发，需手动delete释放内存。
+移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。
 
 **起始版本：** 12
 

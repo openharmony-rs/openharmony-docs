@@ -55,7 +55,7 @@ Sensor_Result OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) | 返回[Sensor_Result](capi-oh-sensor-type-h.md#sensor_result)枚举值。主要枚举值如下：<br> SENSOR_SUCCESS：操作成功，表示成功获取传感器信息。<br> [SENSOR_PERMISSION_DENIED](capi-oh-sensor-type-h.md#sensor_result)：权限验证失败。<br> [SENSOR_PARAMETER_ERROR](capi-oh-sensor-type-h.md#sensor_result)：参数检查失败。例如，传入的infos或count参数为NULL指针。<br> [SENSOR_SERVICE_EXCEPTION](capi-oh-sensor-type-h.md#sensor_result)：传感器服务异常。例如，传感器服务未启动或发生内部错误。<br>其他可能的错误代码请参考[Sensor_Result](capi-oh-sensor-type-h.md#sensor_result)。 |
+| [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) | 返回[Sensor_Result](capi-oh-sensor-type-h.md#sensor_result)枚举值。主要枚举值如下：<br> SENSOR_SUCCESS：操作成功，表示成功获取传感器信息。<br> [SENSOR_PARAMETER_ERROR](capi-oh-sensor-type-h.md#sensor_result)：参数检查失败。例如，传入的infos或count参数为NULL指针。<br> [SENSOR_SERVICE_EXCEPTION](capi-oh-sensor-type-h.md#sensor_result)：传感器服务异常。例如，传感器服务未启动或发生内部错误。<br>其他可能的错误代码请参考[Sensor_Result](capi-oh-sensor-type-h.md#sensor_result)。 |
 
 ### OH_Sensor_Subscribe()
 

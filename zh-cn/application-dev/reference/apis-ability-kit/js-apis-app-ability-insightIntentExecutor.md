@@ -57,13 +57,13 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 意图名称。 |
 | param | Record<string, Object> | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
-| pageLoader | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 表示windowStage实例对象，和[onWindowStageCreate](./js-apis-app-ability-uiAbility.md#onwindowstagecreate)接口的windowStage实例是同一个，可用于加载意图执行的页面。 |
+| pageLoader | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | 表示windowStage实例对象，和[onWindowStageCreate](./js-apis-app-ability-uiAbility.md#onwindowstagecreate)接口的windowStage实例是同一个，通过调用其loadContent方法加载意图执行的页面，参数为页面路径字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult) \| Promise<[insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult)> | 返回意图执行结果或返回带有意图执行结果的Promise对象，表示本次意图执行返回给系统入口的数据。 |
+| [insightIntent.ExecuteResult](./js-apis-app-ability-insightIntent.md#executeresult) \| Promise<[insightIntent.ExecuteResult](./js-apis-app-ability-insightIntent.md#executeresult)> | 返回意图执行结果或返回带有意图执行结果的Promise对象，表示本次意图执行返回给系统入口的数据。 |
 
 **示例：**
 
@@ -92,7 +92,7 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
       // 若开发者需要加载意图内容，pages/IntentPage即为意图页面
       pageLoader.loadContent('pages/IntentPage', (err, data) => {
         if (err.code) {
-          hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+          hilog.error(0x0000, 'testTag', `Failed to load the content. Code: ${err.code}, message: ${err.message}`);
         } else {
           hilog.info(0x0000, 'testTag', '%{public}s', 'Succeeded in loading the content');
         }
@@ -174,7 +174,7 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult) \| Promise<[insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult)> | 返回意图执行结果或返回带有意图执行结果的Promise对象，表示本次意图执行返回给系统入口的数据。 |
+| [insightIntent.ExecuteResult](./js-apis-app-ability-insightIntent.md#executeresult) \| Promise<[insightIntent.ExecuteResult](./js-apis-app-ability-insightIntent.md#executeresult)> | 返回意图执行结果或返回带有意图执行结果的Promise对象，表示本次意图执行返回给系统入口的数据。 |
 
 **示例：**
 
@@ -215,7 +215,18 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
     // 实现异步接口需要使用async/await语法糖，通过async声明该接口是一个异步函数
     async onExecuteInUIAbilityBackgroundMode(name: string,
       param: Record<string, Object>): Promise<insightIntent.ExecuteResult> {
-      let result: insightIntent.ExecuteResult = await executeInsightIntent(param);
+      let result: insightIntent.ExecuteResult;
+      if (name !== 'SupportedInsightIntentName') {
+        hilog.warn(0x0000, 'testTag', 'Unsupported insight intent %{public}s', name);
+        result = {
+          code: 404,
+          result: {
+            message: 'Unsupported insight intent.',
+          }
+        };
+        return result;
+      }
+      result = await executeInsightIntent(param);
       return result;
     }
   }
@@ -237,13 +248,13 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 意图名称。 |
 | param | Record<string, Object> | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
-| pageLoader | [UIExtensionContentSession](js-apis-app-ability-uiExtensionContentSession.md) | 是 | 表示UIExtensionContentSession实例对象，和[onSessionCreate](./js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)接口的UIExtensionContentSession实例是同一个，可用于加载意图执行的页面。 |
+| pageLoader | [UIExtensionContentSession](./js-apis-app-ability-uiExtensionContentSession.md) | 是 | 表示UIExtensionContentSession实例对象，和[onSessionCreate](./js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)接口的UIExtensionContentSession实例是同一个，可用于加载意图执行的页面。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult) \| Promise<[insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult)> | 返回意图执行结果或返回带有意图执行结果的Promise对象，表示本次意图执行返回给系统入口的数据。 |
+| [insightIntent.ExecuteResult](./js-apis-app-ability-insightIntent.md#executeresult) \| Promise<[insightIntent.ExecuteResult](./js-apis-app-ability-insightIntent.md#executeresult)> | 返回意图执行结果或返回带有意图执行结果的Promise对象，表示本次意图执行返回给系统入口的数据。 |
 
 **示例：**
 
@@ -343,7 +354,7 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult) \| Promise<[insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult)> | 返回意图执行结果或返回带有意图执行结果的Promise对象，表示本次意图执行返回给系统入口的数据。 |
+| [insightIntent.ExecuteResult](./js-apis-app-ability-insightIntent.md#executeresult) \| Promise<[insightIntent.ExecuteResult](./js-apis-app-ability-insightIntent.md#executeresult)> | 返回意图执行结果或返回带有意图执行结果的Promise对象，表示本次意图执行返回给系统入口的数据。 |
 
 **示例：**
 
@@ -392,7 +403,7 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
         }
       };
       resolve(result);
-    });
+    })
   }
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {

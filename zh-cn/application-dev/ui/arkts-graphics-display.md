@@ -190,56 +190,58 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 PixelMap是图片解码后的像素图，具体用法请参考[Image Kit简介](../media/image/image-overview.md)。以下示例将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上。
 
 
-  <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->    
-  
-  ``` TypeScript
-  import { http } from '@kit.NetworkKit';
-  import { image } from '@kit.ImageKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  const DOMAIN = 0x0001;
-  const TAG = 'Sample_imagecomponent';
-  
-  @Entry
-  @Component
-  struct HttpExample {
-    outData: http.HttpResponse | undefined = undefined;
-    code: http.ResponseCode | number | undefined = undefined;
-    @State image: PixelMap | undefined = undefined; // 创建PixelMap状态变量
-  
-    // 使用createHttp接口将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上
-    aboutToAppear(): void {
-      http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // 需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
-        (error: BusinessError, data: http.HttpResponse) => {
-          if (error) {
-            hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
-            return;
+<!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->
+
+``` TypeScript
+import { http } from '@kit.NetworkKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'Sample_imagecomponent';
+
+@Entry
+@Component
+struct HttpExample {
+  outData: http.HttpResponse | undefined = undefined;
+  code: http.ResponseCode | number | undefined = undefined;
+  @State image: PixelMap | undefined = undefined; // 创建PixelMap状态变量
+
+  // 使用createHttp接口将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上
+  aboutToAppear(): void {
+    http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // 需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
+      (error: BusinessError, data: http.HttpResponse) => {
+        if (error) {
+          hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
+          return;
+        };
+        this.outData = data;
+        // 将网络地址成功返回的数据，解码成PixelMap格式
+        if (http.ResponseCode.OK === this.outData.responseCode) {
+          let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
+          let imageSource: image.ImageSource = image.createImageSource(imageData);
+          let options: image.DecodingOptions = {
+            'desiredPixelFormat': image.PixelMapFormat.RGBA_8888,
           };
-          this.outData = data;
-          // 将网络地址成功返回的数据，编码转码成pixelMap的图片格式
-          if (http.ResponseCode.OK === this.outData.responseCode) {
-            let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
-            let imageSource: image.ImageSource = image.createImageSource(imageData);
-            let options: image.DecodingOptions = {
-              'desiredPixelFormat': image.PixelMapFormat.RGBA_8888,
-            };
-            imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
-              this.image = pixelMap;
-            });
-          };
-        });
-    };
-  
-    build() {
-      Column() {
-        // 显示图片
-        Image(this.image)
-          .height(100)
-          .width(100)
-      }
+          imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
+            this.image = pixelMap;
+            imageSource.release();
+          });
+        };
+      });
+  };
+
+  build() {
+    Column() {
+      // 显示图片
+      Image(this.image)
+        .height(100)
+        .width(100)
     }
   }
-  ```
+}
+```
+  
 
 ### 可绘制描述符
 
@@ -430,7 +432,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ### 设置图片缩放类型
 
-通过设置[objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md#objectfit)属性，可以使图片在高度和宽度确定的框内进行缩放。
+通过设置[objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#objectfit)属性，可以使图片在高度和宽度确定的框内进行缩放。
 
 
   <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->   
@@ -740,7 +742,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ### 为图片添加滤镜效果
 
-通过colorFilter调整图片的像素颜色，为图片添加滤镜。
+通过colorFilter调整图片的像素颜色，为图片添加滤镜。<!--RP1--><!--RP1End-->
 
 
   <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->    
@@ -789,6 +791,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     .syncLoad(true)
   ```
 
+<!--RP2--><!--RP2End-->
 
 ## 事件调用
 

@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@ObjectLink用于状态管理V1中，接收@Observed装饰的类的实例，并与父组件中的数据源建立双向数据绑定。
+@ObjectLink用于状态管理V1中，接收\@Observed装饰的类的实例，并与父组件中的数据源建立双向数据绑定，适用于需要观察嵌套类属性并触发UI刷新的场景。
 
 开发指南参考：[\@Observed装饰器和\@ObjectLink装饰器：嵌套类对象属性变化](../../../ui/state-management/arkts-observed-and-objectlink.md)。
 

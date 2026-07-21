@@ -33,7 +33,7 @@ import { common } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| agentCard | [AgentCard](js-apis-inner-application-AgentCard.md) | 否 | 否 | 当前[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)所配置的[AgentCard](js-apis-inner-application-AgentCard.md#agentcard-1)信息。 |
+| agentCard | [AgentCard](js-apis-inner-application-AgentCard.md) | 否 | 否 | 当前[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)智能体所配置的[AgentCard](js-apis-inner-application-AgentCard.md#agentcard-1)信息。 |
 
 **示例：**
 

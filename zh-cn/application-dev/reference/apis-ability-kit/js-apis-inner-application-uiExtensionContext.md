@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-UIExtensionContext是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)，提供[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的相关配置信息以及操作[UIAbility](js-apis-app-ability-uiAbility.md)的方法，如启动[UIAbility](js-apis-app-ability-uiAbility.md)等。
+UIExtensionContext是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)，提供[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的相关配置信息以及操作[UIAbility](js-apis-app-ability-uiAbility.md)的能力。如启动[UIAbility](js-apis-app-ability-uiAbility.md)等。
 
 > **说明：**
 >
@@ -39,7 +39,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility时必要的Want，包含待启动UIAbility的名称等信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want，包含待启动UIAbility的名称等信息。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当启动UIAbility成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -221,8 +221,8 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility时必要的Want，包含待启动UIAbility的名称等信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的额外参数。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want，包含待启动UIAbility的名称等信息。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的额外参数，用于自定义启动行为（如指定显示屏幕ID、窗口模式等）。当需要自定义启动配置时传入此参数，不传入时使用系统默认启动配置。 |
 
 **返回值：**
 
@@ -509,8 +509,8 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility时必要的Want，包含待启动UIAbility的名称等信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的额外参数。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want，包含待启动UIAbility的名称等信息。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的额外参数，用于自定义启动行为（如指定显示屏幕ID、窗口模式等）。当需要自定义启动配置时传入此参数，不传入时使用系统默认启动配置。 |
 
 
 **返回值：**
@@ -689,8 +689,6 @@ disconnectServiceExtensionAbility(connection: number): Promise\<void>
 
 断开与ServiceExtensionAbility的连接，断开连接之后开发者需要将连接成功时返回的remote对象置空。使用Promise异步回调。
 
-ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-models/extensionability-overview.md)组件，这类组件由系统提供，通常用于提供指定场景后台服务能力，不支持开发者自定义。ServiceExtensionAbility可以被其他组件连接，并根据调用者的请求信息在后台处理相关事务。
-
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -725,8 +723,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
-    // connection为connectServiceExtensionAbility中的返回值
-    let connection = 1;
+// connection需要通过connectServiceExtensionAbility接口返回获取，详见connectServiceExtensionAbility示例
+let connection = 1; // 示例值，实际开发中应使用连接时返回的connectionId
     let commRemote: rpc.IRemoteObject | null;
 
     try {
@@ -737,7 +735,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
       }).catch((err: BusinessError) => {
         // 处理业务逻辑错误
         console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
-      })
+      });
     } catch (err) {
       commRemote = null;
       // 处理入参错误异常
@@ -754,8 +752,6 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<void>): void
 
 断开与ServiceExtensionAbility的连接，断开连接之后开发者需要将连接成功时返回的remote对象置空。使用callback异步回调。
-
-ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-models/extensionability-overview.md)组件，这类组件由系统提供，通常用于提供指定场景后台服务能力，不支持开发者自定义。ServiceExtensionAbility可以被其他组件连接，并根据调用者的请求信息在后台处理相关事务。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1035,7 +1031,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### reportDrawnCompleted<sup>12+<sup>
+### reportDrawnCompleted<sup>12+</sup>
 
 reportDrawnCompleted(callback: AsyncCallback\<void>): void
 
@@ -1095,7 +1091,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### openAtomicService<sup>12+<sup>
+### openAtomicService<sup>12+</sup>
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
@@ -1177,7 +1173,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### openLink<sup>12+<sup>
+### openLink<sup>12+</sup>
 
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
@@ -1203,8 +1199,8 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | link | string | 是 | 指示要打开的标准格式URL。 |
-| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数。 |
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 否 | 回调函数，包含返回给拉起方的信息。 |
+| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数。不传入时使用默认选项。|
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 否 | 回调函数，用于异步接收操作结果和返回数据。 |
 
 **返回值：**
 
@@ -1275,6 +1271,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
       appLinkingOnly: true
     };
     try {
+      // 通过App Linking或Deep Linking方式启动UIAbility
       this.context.openLink(
         link,
         openLinkOptions,
@@ -1303,7 +1300,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### startUIServiceExtensionAbility<sup>14+<sup>
+### startUIServiceExtensionAbility<sup>14+</sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
@@ -1376,20 +1373,20 @@ struct Index {
                 console.info(`startUIServiceExtensionAbility success.`);
               }).catch((error: BusinessError) => {
                 console.error(`startUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
-              })
+              });
             } catch (err) {
               let code = (err as BusinessError).code;
               let msg = (err as BusinessError).message;
               console.error(`startUIServiceExtensionAbility failed, err code: ${code}, err msg: ${msg}.`);
             }
-          })
+          });
       }
     }
   }
 }
 ```
 
-### connectUIServiceExtensionAbility<sup>14+<sup>
+### connectUIServiceExtensionAbility<sup>14+</sup>
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
@@ -1471,14 +1468,14 @@ struct Page_UIServiceExtensionAbility {
           console.info(`connectUIServiceExtensionAbility success`);
         }).catch((error: BusinessError) => {
           console.error(`connectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
-        })
+        });
       })
     }
   }
 }
 ```
 
-### disconnectUIServiceExtensionAbility<sup>14+<sup>
+### disconnectUIServiceExtensionAbility<sup>14+</sup>
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
@@ -1526,11 +1523,12 @@ struct Page_UIServiceExtensionAbility {
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         // this.uiServiceProxy是连接时保存的proxy对象
+        // 断开UIServiceExtensionAbility连接
         context.disconnectUIServiceExtensionAbility(this.uiServiceProxy).then(() => {
           console.info(`disconnectUIServiceExtensionAbility success.`);
         }).catch((error: BusinessError) => {
           console.error(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
-        })
+        });
       })
     }
   }
@@ -1544,7 +1542,7 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 设置UIExtensionAbility的深浅色模式。调用该接口前需要保证该UIExtensionContext对应页面已完成加载。仅支持主线程调用。
 
 > **说明**：
-> - 调用该接口后会创建新的资源管理器对象，如果此前有缓存资源管理器，需要进行更新。
+> - 调用该接口后会创建新的资源管理器对象，如果此前有缓存资源管理器，开发者需要更新缓存的资源管理器引用，以使用新创建的资源管理器对象。
 > - 深浅色模式生效的优先级：UIExtensionAbility的深浅色模式 > 应用的深浅色模式（[ApplicationContext.setColorMode](js-apis-inner-application-applicationContext.md#applicationcontextsetcolormode11)）> 系统的深浅色模式。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core

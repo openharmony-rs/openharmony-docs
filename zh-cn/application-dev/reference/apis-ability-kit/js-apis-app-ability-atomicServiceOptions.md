@@ -32,7 +32,7 @@ import { AtomicServiceOptions } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | [flags](js-apis-app-ability-wantConstant.md#flags) | number | 否 |  是 | 系统处理该次启动的方式。<br />例如通过wantConstant.Flags.FLAG_INSTALL_ON_DEMAND表示使用免安装能力。 |
 | parameters | Record\<string, Object> | 否 |  是 | 表示额外参数描述。具体描述参考[Want](js-apis-app-ability-want.md)中parameters字段描述。 |
-| completionHandlerForAtomicService<sup>20+</sup> | [CompletionHandlerForAtomicService](./js-apis-app-ability-CompletionHandlerForAtomicService.md) | 否 |  是 | 打开原子化服务结果的操作类，用于接收打开原子化服务的结果。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| completionHandlerForAtomicService<sup>20+</sup> | [CompletionHandlerForAtomicService](js-apis-app-ability-CompletionHandlerForAtomicService.md) | 否 |  是 | 打开原子化服务结果的操作类，用于接收打开原子化服务的结果。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 

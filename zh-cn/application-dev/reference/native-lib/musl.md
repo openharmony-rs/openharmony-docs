@@ -1,10 +1,10 @@
 # libc标准库
-<!--Kit: NDK-->	 
+<!--Kit: ArkTS-->	 
 <!--Subsystem: arkcompiler-->	 
 <!--Owner: @da_wei_li11-->	 
 <!--Designer: @liyiming13-->	 
 <!--Tester: @zsw_zhushiwei-->	 
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 ## 简介
 C标准函数库在C语言程序设计中，提供符合标准的头文件，以及常用的库函数实现（如I/O输入输出和字符串控制）。
 

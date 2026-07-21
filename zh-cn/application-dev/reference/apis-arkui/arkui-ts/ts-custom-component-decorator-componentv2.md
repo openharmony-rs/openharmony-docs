@@ -7,7 +7,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@ComponentV2主要配合状态管理V2使用。除非特别说明，@ComponentV2装饰的自定义组件将与[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)装饰的自定义组件保持相同的行为。开发指南参考：[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)。
+@ComponentV2主要配合状态管理V2使用，相比[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)，@ComponentV2支持对象的深度观测和深度监听，装饰器易用性高、拓展性强，适用于需要深度观测嵌套对象状态的场景。除非特别说明，@ComponentV2装饰的自定义组件将与@Component装饰的自定义组件保持相同的行为。
+
+开发指南参考：[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)。
 
 > **说明：**
 >
@@ -31,11 +33,17 @@ const ComponentV2: ClassDecorator & ((options: ComponentOptions) => ClassDecorat
 | --------------------- | ------ | ---- | ------------------------------------------------------------ |
 | options               | [ComponentOptions](./ts-custom-component-parameter.md#componentoptions) | 否 | \@ComponentV2装饰器选项。当需要开启组件冻结或全局复用功能时传入此参数进行自定义配置；缺省时关闭组件冻结和全局复用功能。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| ClassDecorator | 类装饰器，开发者无需关注该返回值。 |
+
 **示例：**
 
 ```ts
 @Entry
-@ComponentV2({ freezeWhenInactive: true })
+@ComponentV2({ freezeWhenInactive: true }) // 开启组件冻结功能
 struct MyComponent {
   build() {
     Column() {
