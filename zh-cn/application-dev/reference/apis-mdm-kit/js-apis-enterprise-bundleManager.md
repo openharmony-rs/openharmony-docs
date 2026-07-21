@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供包管理能力，包括添加包安装允许名单、获取包安装允许名单、移除包安装允许名单等。
+本模块提供包管理能力，包括安装和卸载应用包，管理包安装允许名单、包安装禁止名单、包卸载禁止名单、可安装应用的分发类型等。在企业设备管理场景中，通过这些能力可以实现应用安装卸载的精细化管控，防止未授权应用的安装和卸载，保障企业设备安全，降低安全风险。
 
 > **说明：**
 >
@@ -155,7 +155,7 @@ getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;s
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | 返回当前用户下的应用程序包安装允许名单。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
 
 **错误码**：
 
@@ -321,7 +321,7 @@ getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&l
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | 返回当前用户下的应用程序包安装禁止名单。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
 
 **错误码**：
 
@@ -490,7 +490,7 @@ getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | 返回当前用户下的包卸载禁止名单。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
 
 **错误码**：
 
@@ -517,7 +517,7 @@ let wantTemp: Want = {
 
 try {
   // 参数需根据实际情况进行替换
-  let result: Array<String> = bundleManager.getDisallowedUninstallBundlesSync(wantTemp, 100);
+  let result: Array<string> = bundleManager.getDisallowedUninstallBundlesSync(wantTemp, 100);
   console.info(`Succeeded in getting disallowed uninstall bundles, result : ${JSON.stringify(result)}`);
 } catch (err) {
   console.error(`Failed to get disallowed uninstall bundles. Code is ${err.code}, message is ${err.message}`);
@@ -1220,7 +1220,7 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 | 名称                     | 类型                   | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
 | userId                   | number                 | 否   | 是 | 指示用户ID，默认值：调用方所在用户，取值范围：大于等于0。    |
-| installFlag              | number                 | 否   | 是 |安装标志。枚举值：0：应用初次安装，1：应用覆盖安装，2：应用免安装，默认值为应用初次安装。 |
+| installFlag              | number                 | 否   | 是 |安装标志。枚举值：0：应用初次安装，1：应用覆盖安装，2：应用免安装，默认值为0(应用初次安装)。 |
 | parameters<sup>19+</sup> | Record&lt;string, string&gt; | 否   | 是 | 扩展参数，默认值为空。key取值支持"ohos.bms.param.enterpriseForAllUser"，若对应的value值为"true"，表示为所有用户安装应用。 |
 
 ## AppDistributionType<sup>20+</sup>
@@ -1349,5 +1349,5 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | bundleName| string         | 否   | 否   | 应用的包名。                 |
 | appSize   | number         | 否   | 否   | 应用安装文件大小，单位为Byte。<br/>应用安装文件保存在以下目录：<br/>/data/storage/el1/bundle         |
-| dataSize  | number         | 否   | 否   | 应用的本地数据、分布式数据和数据库数据大小，单位为Byte。<br/>本地文件保存在以下目录（注意缓存文件目录为以下目录的子目录）：<br/>/data/storage/\${el1-el5}/base<br/>分布式文件保存在以下目录：<br/>/data/storage/el2/distributedfiles<br/>数据库文件保存在以下目录：<br/>/data/storage/\${el1-el5}/database<br/> **说明**：\${el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../application-dev/file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。 |
+| dataSize  | number         | 否   | 否   | 应用的本地数据、分布式数据和数据库数据大小，单位为Byte。<br/>本地文件保存在以下目录（注意缓存文件目录为以下目录的子目录）：<br/>/data/storage/\${el1-el5}/base<br/>分布式文件保存在以下目录：<br/>/data/storage/el2/distributedfiles<br/>数据库文件保存在以下目录：<br/>/data/storage/\${el1-el5}/database<br/> **说明：**\${el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../application-dev/file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。 |
 
