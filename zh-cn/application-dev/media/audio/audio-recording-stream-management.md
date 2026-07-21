@@ -40,6 +40,23 @@
 
 如果部分应用需要查询所有音频流的变化信息，可以通过AudioStreamManager读取或监听所有音频流的变化。
 
+### 判断麦克风是否被占用
+
+录音、语音识别、实时语音通话、短语音消息、直播连麦等业务在启动音频采集前，通常需要先判断麦克风是否被占用。如果麦克风已被其他录制流占用，当前录音可能启动失败，或受系统音频焦点、录音并发策略影响而被打断、进入静音录制等状态，进而影响录音文件内容、语音识别结果或实时通话体验。
+
+如果需要在启动录音前判断麦克风是否被占用，推荐调用[isRecordingAvailable](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-audio-audiostreammanager#isrecordingavailable20)检查指定音源类型的录制是否可以启动成功。该接口直接返回当前录制请求是否可启动，适合用于录音按钮置灰、启动前校验等场景。
+
+- 判断是否可启动录音：调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)，传入业务要使用的[AudioCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)。返回`true`表示当前音源类型的录制可以启动，返回`false`表示当前录制请求可能因被占用或焦点策略等原因启动失败。示例代码可参考[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)。
+
+- 主动查询当前录制流：调用[getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9)获取当前音频采集器信息。返回数组中存在麦克风相关音源类型的录制流时，可以认为麦克风正在被录音使用。示例代码可参考[如何判断麦克风正在录音](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-audio-66)。
+- 监听录制流变化：调用[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)监听音频录制流变化。当回调返回的录制流列表从空变为非空、或出现麦克风相关音源类型时，表示有应用开始录音；当列表中不再存在对应录制流时，表示录音已停止。示例代码可参考[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)。
+
+> **说明：**
+>
+> - `isRecordingAvailable`用于判断传入音源类型的录制是否可以启动成功，不用于返回当前正在录制的应用或录制流详情。需要查看录制流详情时，使用`getCurrentAudioCapturerInfoArray`；需要持续感知录制流变化时，使用`on('audioCapturerChange')`。
+> - 如果只关注普通麦克风录音，可过滤[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)为`SOURCE_TYPE_MIC`的录制流；如果业务也将语音识别、语音通话、短语音、录像、纯净录音或直播等场景视为麦克风录音，可按业务范围同时过滤对应音源类型。
+> - `getCurrentAudioCapturerInfoArray`和`on('audioCapturerChange')`返回的音频采集器信息可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。开发者可通过返回结果中[AudioCapturerChangeInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)的[capturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)属性获取[AudioCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)，再结合其[source](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)属性和业务场景判断。
+
 <!--Del-->
 > **说明：**
 > 
