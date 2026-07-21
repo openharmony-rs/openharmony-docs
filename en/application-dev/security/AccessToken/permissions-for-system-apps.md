@@ -6517,7 +6517,7 @@ With this permission, the application can connect to or disconnect from network 
 **Valid since**: 26.0.0
 
 ## ohos.permission.CREATE_SIGN_CONTENT_TRUST
-	  	 
+
 Allows an application to create a content trust signature.
 
 **Permission level**: system_basic
