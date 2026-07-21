@@ -895,6 +895,124 @@ Allows an application to add, remove, or change all calendar events.
 
 **Changelog**: This permission is available only to system applications in API versions 9 to 19. From API version 20, it's also available to normal applications.
 
+## ohos.permission.vehicle.CAR_CONTROL
+
+Allows an application to query, set, and subscribe to the mating part status information via the head unit.
+
+Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Car
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.STEERINGWHEEL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (steering wheel).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Car
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (interior light).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Car
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
+
+Allows an application to set the status of the mating part (interior light).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Car
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (driving information module).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Car
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (accelerator pedal).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Car
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.BRAKE_PEDAL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (brake pedal).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Applicable scenarios and functionalities: This permission can be requested when the application is a game that involves racing and driving control scenarios.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Car
+
+**Since**: 26.1.0
+
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
 Allows an application to set the trustlist of target applications for system sharing.
