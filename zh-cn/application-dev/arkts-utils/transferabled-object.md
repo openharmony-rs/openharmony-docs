@@ -77,11 +77,11 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          this.loadImageFromThread().then(() => {	 
-            this.message = 'success'; 
-          }).catch((e: BusinessError) => { 
-            this.message = 'failed'; 
-            console.error('taskpool execute loadImageFromThread failed. Code: ' + e.code + ', message: ' + e.message); 
+          this.loadImageFromThread().then(() => {
+            this.message = 'success';
+          }).catch((e: BusinessError) => {
+            this.message = 'failed';
+            console.error('taskpool execute loadImageFromThread failed. Code: ' + e.code + ', message: ' + e.message);
           })
         })
     }
