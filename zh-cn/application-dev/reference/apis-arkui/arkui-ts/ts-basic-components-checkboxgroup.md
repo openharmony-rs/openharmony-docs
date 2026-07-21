@@ -98,7 +98,7 @@ selectAll(isAllSelected: boolean | undefined | Bindable\<boolean\>)
 
 在与带有缓存功能的组件（如[List](ts-container-list.md)）配合使用时，未创建的Checkbox选中状态需由开发者控制。
 
-该属性支持Bindable双向绑定变量。
+该属性支持[Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)双向绑定变量。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -114,7 +114,7 @@ selectAll(isAllSelected: boolean | undefined | Bindable\<boolean\>)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isAllSelected | boolean \| undefined \| Bindable\<boolean\>| 是   | 是否全选。<br/>默认值：false<br/>值为true时，多选框群组将全部被选中；取值为false或undefined时，多选框群组将全部取消选中。设置为true时，在多线程并发加载的情况下无法对不同线程下同组的[Checkbox](ts-basic-components-checkbox.md)全部生效，建议把相同group值的[Checkbox](ts-basic-components-checkbox.md)和CheckboxGroup放在同一个线程中进行创建。 |
+| isAllSelected | boolean \| undefined \| [Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)\<boolean\>| 是   | 是否全选。<br/>默认值：false<br/>值为true时，多选框群组将全部被选中；取值为false或undefined时，多选框群组将全部取消选中。设置为true时，在多线程并发加载的情况下无法对不同线程下同组的[Checkbox](ts-basic-components-checkbox.md)全部生效，建议把相同group值的[Checkbox](ts-basic-components-checkbox.md)和CheckboxGroup放在同一个线程中进行创建。 |
 
 ### selectAll<sup>18+</sup>
 
