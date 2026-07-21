@@ -13,7 +13,7 @@ Since API version 14, the **Web** component supports the [createPdf](../referenc
 After generating an instance using [createPdf](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14), call the `pdfArrayBuffer` method to obtain the binary data stream, and then use the [fileIo](../reference/apis-core-file-kit/js-apis-file-fs.md) method to save the binary data stream as a PDF file. Users can save frontend page content as a PDF for sharing or storage. For example, generating reports, invoices, etc., facilitates saving and transmission for users.
 > **NOTE**
 >
-> Through the [pdfConfiguration](../reference/apis-arkweb/arkts-apis-webview-i.md#pdfconfiguration14) settings, you can adjust the PDF page size, frontend page scaling ratio, and more. It is recommended to use a frontend page adaptation strategy and optimize PDF layout through CSS media queries (@media print).
+> Through the [pdfConfiguration](../reference/apis-arkweb/arkts-apis-webview-i.md#pdfconfiguration14) settings, you can adjust the PDF page size, frontend page scaling ratio, and more. You are advised to use the frontend page adaptation strategy and optimize PDF layout through CSS media queries (@media print).
 
 ## Required Permissions
 
