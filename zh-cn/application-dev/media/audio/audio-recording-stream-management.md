@@ -42,20 +42,22 @@
 
 ### 判断麦克风是否被占用
 
-录音、语音识别、实时语音通话、短语音消息、直播连麦等业务在启动音频采集前，通常需要先判断麦克风是否被占用。如果麦克风已被其他录制流占用，当前录音可能启动失败，或受系统音频焦点、录音并发策略影响而被打断、进入静音录制等状态，进而影响录音文件内容、语音识别结果或实时通话体验。
+录音、语音识别、实时语音通话、短语音消息、直播连麦等业务在启动音频采集前，通常需要先判断麦克风是否被占用。若麦克风已被其他录制流占用，新录音流可能无法正常启动；或者在启动成功后，也可能在运行过程中受系统音频焦点或录音并发策略影响而被中断、进入静音录制状态，进而导致录音文件不完整、语音识别结果缺失等问题。
 
-如果需要在启动录音前判断麦克风是否被占用，推荐调用[isRecordingAvailable](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-audio-audiostreammanager#isrecordingavailable20)检查指定音源类型的录制是否可以启动成功。该接口直接返回当前录制请求是否可启动，适合用于录音按钮置灰、启动前校验等场景。
+如果需要在启动录音前判断麦克风是否被占用，推荐调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)检查指定音源类型的录制是否可以启动成功。该接口直接返回当前录制请求是否可启动，适合用于录音按钮置灰、启动前校验等场景。
 
 - 判断是否可启动录音：调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)，传入业务要使用的[AudioCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)。返回`true`表示当前音源类型的录制可以启动，返回`false`表示当前录制请求可能因被占用或焦点策略等原因启动失败。示例代码可参考[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)。
 
-- 主动查询当前录制流：调用[getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9)获取当前音频采集器信息。返回数组中存在麦克风相关音源类型的录制流时，可以认为麦克风正在被录音使用。示例代码可参考[如何判断麦克风正在录音](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-audio-66)。
+- 主动查询当前录制流：调用[getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9)获取当前音频采集器信息。可通过返回结果中的`capturerInfo.source`判断录制流的音源类型；当存在业务需要关注的麦克风输入录制流时，可以认为麦克风正在被录音使用。
+- 按输入设备电平判断：调用[getMaxAmplitudeForInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#getmaxamplitudeforinputdevice12)获取输入设备音频流的最大电平值，取值范围为[0, 1]。遍历`getCurrentAudioCapturerInfoArray`获取到的音频采集器信息，并对每个采集器使用的输入设备调用`getMaxAmplitudeForInputDevice`。当最大电平值大于0时，说明该设备采集到声音，可辅助判断设备正在录音。
 - 监听录制流变化：调用[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)监听音频录制流变化。当回调返回的录制流列表从空变为非空、或出现麦克风相关音源类型时，表示有应用开始录音；当列表中不再存在对应录制流时，表示录音已停止。示例代码可参考[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)。
 
 > **说明：**
 >
 > - `isRecordingAvailable`用于判断传入音源类型的录制是否可以启动成功，不用于返回当前正在录制的应用或录制流详情。需要查看录制流详情时，使用`getCurrentAudioCapturerInfoArray`；需要持续感知录制流变化时，使用`on('audioCapturerChange')`。
-> - 如果只关注普通麦克风录音，可过滤[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)为`SOURCE_TYPE_MIC`的录制流；如果业务也将语音识别、语音通话、短语音、录像、纯净录音或直播等场景视为麦克风录音，可按业务范围同时过滤对应音源类型。
-> - `getCurrentAudioCapturerInfoArray`和`on('audioCapturerChange')`返回的音频采集器信息可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。开发者可通过返回结果中[AudioCapturerChangeInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)的[capturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)属性获取[AudioCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)，再结合其[source](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)属性和业务场景判断。
+> - `SourceType`表示录制流的音源类型。除`SOURCE_TYPE_MIC`外，语音识别`SOURCE_TYPE_VOICE_RECOGNITION`、语音通话`SOURCE_TYPE_VOICE_COMMUNICATION`、短语音`SOURCE_TYPE_VOICE_MESSAGE`、录像`SOURCE_TYPE_CAMCORDER`、纯净录音`SOURCE_TYPE_UNPROCESSED`等录制场景也可能使用麦克风输入。如果当前业务创建录制流时仅使用`SOURCE_TYPE_MIC`，可只过滤`SOURCE_TYPE_MIC`；如果业务需要把上述场景也作为麦克风占用处理，应按业务范围同时过滤对应音源类型。
+> - `getMaxAmplitudeForInputDevice`用于获取指定输入设备音频流的最大电平值，可辅助判断设备是否采集到声音；当返回值为0时，不一定表示麦克风未被占用，可能是当前输入静音、环境无声音或录制流未产生有效音频数据。
+> - `getCurrentAudioCapturerInfoArray`和`on('audioCapturerChange')`返回的音频采集器信息可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。开发者可通过返回结果中[AudioCapturerChangeInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)的[capturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)属性获取[AudioCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)，再结合其[source](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)属性和业务场景，判断该录制流是否属于当前业务需要识别的麦克风占用场景。
 
 <!--Del-->
 > **说明：**
@@ -130,7 +132,7 @@
    > **说明：**
    > 
    > 对所有音频流状态进行监听的应用需要[声明权限](../../security/AccessToken/declare-permissions.md)ohos.permission.USE_BLUETOOTH，否则无法获得实际的设备名称和设备地址信息，查询到的设备名称和设备地址（蓝牙设备的相关属性）将为空字符串。
-   > 从API version 20开始，通常在音频录制启动前调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)，判断当前传入的音频采集器信息中音源类型的录制是否可以启动成功。
+   > 从API version 20开始，通常在音频录制启动前调用[isRecordingAvailable](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-audio-audiostreammanager#isrecordingavailable20)，判断当前传入的音频采集器信息中音源类型的录制是否可以启动成功。
 
    <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->   
    
