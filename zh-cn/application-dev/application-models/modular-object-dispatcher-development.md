@@ -77,7 +77,7 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 1. 通过[OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_hastypedescriptor)接口判断远端服务是否提供了类型库元数据。只有支持动态接口的服务端才能进行后续的元数据查询和动态调用。
 
     <!-- @[modular_object_extension_dispatcher_hasTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     uint32_t hasTypeDescriptor = 0;
     AbilityRuntime_ErrorCode err =
@@ -94,7 +94,7 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 2. 确认远端支持类型库元数据后，通过[OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor)获取类型描述符句柄。
 
     <!-- @[modular_object_extension_dispatcher_getTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     err = OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor(g_ModObjDispatcher, &g_TypeDescriptor);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -148,7 +148,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 1. 查询所有接口名称：通过[OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getinterfacecount)获取接口数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetInterfaceName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getinterfacename)逐个获取接口名称。
 
     <!-- @[modular_object_extension_dispatcher_getInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     uint32_t interfaceCount = 0;
     AbilityRuntime_ErrorCode err =
@@ -157,7 +157,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "InterfaceCount:%{public}d", interfaceCount);
-
+    
     for (uint32_t interfaceIndex = 0; interfaceIndex < interfaceCount; interfaceIndex++) {
         char interfaceName[256];
         err = OH_AbilityRuntime_TypeDescriptor_GetInterfaceName(g_TypeDescriptor, interfaceIndex, interfaceName,
@@ -166,7 +166,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
             return nullptr;
         }
         OH_LOG_INFO(LOG_APP, "InterfaceName:%{public}s", interfaceName);
-
+    
         // ...
     }
     ```
@@ -174,8 +174,8 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 2. 遍历接口下的方法名称：针对每个接口，通过[OH_AbilityRuntime_TypeDescriptor_GetMethodCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodcount)获取方法数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetMethodName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodname)和[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)获取方法名称及其MemberID。
 
     <!-- @[modular_object_extension_dispatcher_getMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
-
-    ``` C
+    
+    ``` C++
     static void QueryMethodMetadata(const char *interfaceName)
     {
         // 获取接口下的方法数量，逐个遍历方法名并解析对应的MemberID
@@ -195,7 +195,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
                 return;
             }
             OH_LOG_INFO(LOG_APP, "MethodName:%{public}s", methodName);
-
+    
             uint32_t memId = 0;
             err = OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId(g_TypeDescriptor, interfaceName, methodName,
                 &memId);
@@ -203,7 +203,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
                 return;
             }
             OH_LOG_INFO(LOG_APP, "MethodMemberId:%{public}d", memId);
-
+    
             // ...
         }
     }
@@ -214,7 +214,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 1. 查询所有结构体名称：通过[OH_AbilityRuntime_TypeDescriptor_GetStructCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructcount)获取结构体数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetStructName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructname)逐个获取结构体名称。
 
     <!-- @[modular_object_extension_dispatcher_getStructName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     uint32_t structCount = 0;
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_TypeDescriptor_GetStructCount(g_TypeDescriptor, &structCount);
@@ -222,7 +222,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "StructCount:%{public}d", structCount);
-
+    
     for (uint32_t structIndex = 0; structIndex < structCount; structIndex++) {
         char structName[256];
         err = OH_AbilityRuntime_TypeDescriptor_GetStructName(g_TypeDescriptor, structIndex, structName,
@@ -231,7 +231,6 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
             return nullptr;
         }
         OH_LOG_INFO(LOG_APP, "StructName:%{public}s", structName);
-
         // ...
     }
     ```
@@ -264,7 +263,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
         if (!CheckApiErr(err, "GetStructFieldType")) {
             return nullptr;
         }
-        // ...
+        //...
         OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&typeInfo);
     }
     ```
@@ -274,7 +273,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 1. 查询所有枚举名称：通过[OH_AbilityRuntime_TypeDescriptor_GetEnumCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumcount)获取枚举数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetEnumName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumname)逐个获取枚举名称。
 
     <!-- @[modular_object_extension_dispatcher_getEnumName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     uint32_t enumCount = 0;
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_TypeDescriptor_GetEnumCount(g_TypeDescriptor, &enumCount);
@@ -283,7 +282,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "EnumCount:%{public}d", enumCount);
-
+    
     for (uint32_t enumIndex = 0; enumIndex < enumCount; enumIndex++) {
         char enumName[256];
         err = OH_AbilityRuntime_TypeDescriptor_GetEnumName(g_TypeDescriptor, enumIndex, enumName, sizeof(enumName));
@@ -292,7 +291,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
             return nullptr;
         }
         OH_LOG_INFO(LOG_APP, "EnumName:%{public}s", enumName);
-
+    
         // ...
     }
     ```
@@ -300,7 +299,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 2. 遍历所有枚举值名称和枚举值：针对每个枚举，通过[OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvaluecount)获取枚举值数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetEnumValueName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvaluename)和[OH_AbilityRuntime_TypeDescriptor_GetEnumValue](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvalue)逐个获取枚举值名称和枚举值。
 
     <!-- @[modular_object_extension_dispatcher_getEnumValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     // 遍历枚举的所有枚举值名称和对应的枚举值
     uint32_t valueCount = 0;
@@ -319,7 +318,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
             return nullptr;
         }
         OH_LOG_INFO(LOG_APP, "ValueName:%{public}s", valueName);
-
+    
         int32_t value = 0;
         err = OH_AbilityRuntime_TypeDescriptor_GetEnumValue(g_TypeDescriptor, enumName, valueName, &value);
         if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -370,7 +369,7 @@ static void QueryMethodParamInfo(const char *interfaceName, const char *methodNa
         if (!CheckApiErr(err, "GetMethodParamType")) {
             return;
         }
-        // ...
+        //...
         OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&paramTypeInfo);
     }
 }
@@ -393,7 +392,7 @@ static void QueryMethodReturnType(const char *interfaceName, const char *methodN
     if (!CheckApiErr(err, "GetMethodReturnType")) {
         return;
     }
-    // ...
+    //...
     OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&returnTypeInfo);
 }
 ```
@@ -557,7 +556,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 <!-- @[modular_object_extension_dispatcher_callTypeArray_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 static void ParseArrayResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
 {
     // 校验返回类型，嵌套遍历二维数组读取每个元素
@@ -704,7 +703,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 <!-- @[modular_object_extension_dispatcher_callTypeMap_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 static void FillMapEntries(OH_AbilityRuntime_ModObjDispatcher_MapHandle map)
 {
     const char *keys[] = {"cn", "us", "jp"};
@@ -756,7 +755,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 <!-- @[modular_object_extension_dispatcher_callTypeMap_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 static void ParseMapResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
 {
     if (result->vt != OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_MAP || result->u.pmapVal == NULL) {
@@ -785,7 +784,7 @@ static void ParseMapResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
 
 <!-- @[modular_object_extension_dispatcher_callTypeStruct_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 static OH_AbilityRuntime_ModObjDispatcher_StructHandle CreatePointStruct(int32_t x, int32_t y)
 {
     OH_AbilityRuntime_ModObjDispatcher_StructHandle handle = NULL;
@@ -840,7 +839,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 <!-- @[modular_object_extension_dispatcher_callTypeStruct_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 static void ParseStructResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
 {
     if (result->vt != OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRUCT || result->u.pstructVal == NULL) {
