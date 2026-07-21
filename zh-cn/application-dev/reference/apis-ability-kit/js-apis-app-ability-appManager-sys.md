@@ -2956,10 +2956,10 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称       | 值   | 说明                                                         |
 | ---------- | ---- | ------------------------------------------------------------ |
-| CREATE     | 1 << 0    | Ability正在创建中，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态fa模型)中的ABILITY_STATE_CREATE。 |
-| FOREGROUND | 1 << 1    | Ability处于前台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态fa模型)中的ABILITY_STATE_FOREGROUND。 |
-| BACKGROUND | 1 << 2    | Ability处于后台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态fa模型)中的ABILITY_STATE_BACKGROUND。 |
-| DESTROY    | 1 << 3    | Ability已经销毁，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态fa模型)中的ABILITY_STATE_TERMINATED。 |
+| CREATE | 1 << 0 | Ability正在创建中，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)、[ExtensionAbility状态](js-apis-inner-application-abilityStateData.md#extensionability状态)以及[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为0的状态。 |
+| FOREGROUND | 1 << 1 | Ability处于前台，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)和[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为2的状态。|
+| BACKGROUND | 1 << 2 | Ability处于后台，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)和[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为4的状态。|
+| DESTROY | 1 << 3 | Ability已经销毁，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)、[ExtensionAbility状态](js-apis-inner-application-abilityStateData.md#extensionability状态)以及[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为5的状态和[ExtensionAbility状态](js-apis-inner-application-abilityStateData.md#extensionability状态)中state取值为4的状态。|
 
 ## FilterCallback<sup>21+</sup>
 
