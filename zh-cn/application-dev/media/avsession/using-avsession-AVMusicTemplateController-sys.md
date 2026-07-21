@@ -130,7 +130,7 @@
 
      private createController(sessionId: string, bundleName: string) {
        if (this.currentBundleName === null || this.currentBundleName === undefined) {
-         console.warn(TAG, 'createController: sessionId is invalid');
+         console.warn(TAG, 'createController: currentBundleName is invalid');
          return;
        }
        if (sessionId === null || sessionId === undefined) {
@@ -321,7 +321,7 @@
 
 4. 在不能实时获取数据的场景下（登录、下载等），音频模板系统需要注册监听，接受媒体应用主动同步过来的数据。监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md)。
 
-   例如，在登录导致用户信息变化的场景下，需要注册监听[onUserInfoChange](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#onuserinfochange)。因为用户在音频模板系统界面扫码登录时，登录状态只有媒体应用能感知。
+   例如，在登录导致用户信息变化的场景下，需要注册监听[onUserInfoChange](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#onuserinfochange)。因为用户在音频模板系统界面扫码登录时，登录状态仅媒体应用可感知。
 
       ``` TypeScript
       import { avMusicTemplate } from '@kit.AVSessionKit';

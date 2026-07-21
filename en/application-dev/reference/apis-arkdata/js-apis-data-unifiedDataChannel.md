@@ -6,11 +6,17 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-As a part of the Unified Data Management Framework (UDMF), the **unifiedDataChannel** module provides unified data channels and standard data access interfaces for many-to-many data sharing across applications. It also provides definitions for uniform data types, such as text and image, to streamline data interaction between different applications and minimize the workload of data type adaptation. Although the UDMF does not parse user data, you are advised not to transfer sensitive personal data or privacy data due to low-level security of storage path.
+As a part of the Unified Data Management Framework (UDMF), the **unifiedDataChannel** module provides unified data channels and standard data access interfaces for many-to-many data sharing across applications. It also provides definitions for uniform data types, such as text and image, to streamline data interaction between different applications and minimize the workload of data type adaptation.
+
+**Design logic:** UDMF uses a unified data model to encapsulate different types of data into **UnifiedData** objects. It uses **Intention** to identify different data path types (such as **DATA_HUB** and **DRAG**) to implement cross-application data sharing. When data is written, a unique key is generated. When data is read, **key** or **intention** is used to query and obtain the data.
+
+Although the UDMF does not parse user data, you are advised not to transfer sensitive personal data or privacy data due to low-level security of storage path.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -35,7 +41,7 @@ Enumerates the options for using **UnifiedData** in a device.
 
 type GetDelayData = (type: string) => UnifiedData
 
-Defines a function used to obtain a deferred **UnifiedData** object. Currently, it can be used only in the pasteboard application of the same device.
+Defines a function used to obtain a deferred **UnifiedData** object. When the data receiver requests data of a specific type, the system triggers this callback. The data sender can dynamically generate data in the callback instead of preparing all data in advance. Currently, this API can be used only in the pasteboard scenario of the same device.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -45,13 +51,13 @@ Defines a function used to obtain a deferred **UnifiedData** object. Currently, 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Identifier of the deferred encapsulation.|
+| type | string | Yes| Identifier of the deferred data type, which is used to distinguish different types of data. For details about the values, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). For example, **'general.plain-text'** indicates the plain text type.|
 
 **Return value**
 
 | Type                                    | Description                     |
 | ---------------------------------------- |-------------------------|
-| [UnifiedData](#unifieddata) | **UnifiedData** object.|
+| [UnifiedData](#unifieddata) | **UnifiedData** object that contains the corresponding type of data, which can be used for application data sharing and transmission.|
 
 **Example**
 
@@ -60,16 +66,16 @@ import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
 let getDelayData: unifiedDataChannel.GetDelayData = ((type: string) => {
   if (type == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-    let plainTextDetails : Record<string, string> = {
+    let plainTextDetails: Record<string, string> = {
       'attr1': 'value1',
       'attr2': 'value2'
-    }
-    let plainText : uniformDataStruct.PlainText = {
+    };
+    let plainText: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      textContent : 'This is a plain text example',
-      abstract : 'This is abstract',
-      details : plainTextDetails
-    }
+      textContent: 'This is a plain text example',
+      abstract: 'This is abstract',
+      details: plainTextDetails
+    };
     let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
     let textData = new unifiedDataChannel.UnifiedData(text);
     return textData;
@@ -100,21 +106,60 @@ Enumerates the data field types allowed in a unified data record.
 | null | Null.|
 | undefined | Undefined.|
 
+## UriPermission
+
+Defines the URI authorization policy in the drag scenario.
+
+>**NOTE**
+>
+>This authorization policy takes effect only in drag scenarios.
+
+**Implementation mechanism**: When data is dragged and transmitted, the system temporarily authorizes the target URI based on the **UriPermission** configuration. The authorization lifecycle is bound to the drag session. After the drag is complete, the temporary authorization is automatically cleaned up. When the receiver application accesses the URI, the system verifies the permission configuration to determine whether to allow the access. **PERSIST** converts the temporary authorization into a persistent authorization.
+
+The **NONE**, **READ**, **WRITE**, and **PERSIST** policies are supported. They can be combined, and only the following combinations take effect:
+- **NONE**: No file permission is granted.
+- **READ**: Only one-time read permission is granted.
+- **WRITE**: Only one-time read and write permissions are granted. (Write permission includes read permission.)
+- **READ+WRITE**: One-time read and write permissions are granted, which is the same as the effect of using only **WRITE**.
+- **READ+PERSIST**: Persistent read permission is granted.
+- **WRITE+PERSIST**: Persistent read and write permissions are granted.
+- **READ+WRITE+PERSIST**: Persistent read and write permissions are granted.
+
+The rules for applying the drag authorization policies are as follows (in descending order of priority):
+- Single data level: The authorization policy parameters can be configured for the two unified data structures (UDSs) **FileUri** and **HTML** and the six unified data contents (UDCs) **File**, **Image**, **Video**, **Audio**, **Folder**, and **HTML**. The parameters take effect only for a single record at a time, and have the highest priority.
+- **UnifiedData** level: The authorization parameters provided in **UnifiedDataProperties** are valid for a single drag operation. If an authorization policy is configured for a piece of data, the configuration of the data is preferentially used. This level has the second highest priority.
+- Default level: If no authorization policy is configured for a single piece of data or **UnifiedDataProperties**, proxy authorization is performed based on the default drag logic. The default logic is as follows:
+
+    - **FileUri** data (FileUri (UDS) or File, Image, Video, Audio, and Folder (UDCs)): By default, the **READ**, **WRITE**, and **PERSIST** permissions are granted in drag scenarios.
+    - HTML data: Read permission is granted only for URIs under the **img** tag in HTML text.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+
+| Name| Value| Description|
+| ------------ | --- | ------------------------------------------- |
+| NONE | 0 | No permission granted.|
+| READ | 1 | Permission to read or view data.|
+| WRITE | 2 | Permission to modify data (including **READ**).|
+| PERSIST | 3 | Permission to persist files.|
+
 ## UnifiedDataProperties<sup>12+</sup>
 
 Defines the properties of the data records in the unified data object, including the timestamp, tag, pasting range, and additional data.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| extras | Record<string, object> | No| Yes| Object of the dictionary type used to set other properties. The default value is an empty dictionary object.|
-| tag | string | No| Yes| Customized tag. The default value is an empty string.|
-| timestamp | Date | Yes| Yes| Timestamp when [UnifiedData](#unifieddata) is generated. The default value is January 1, 1970 (UTC).|
-| shareOptions | [ShareOptions](#shareoptions12) | No| Yes| Range, in which [UnifiedData](#unifieddata) can be used. The default value is **CROSS_APP**.|
-| getDelayData | [GetDelayData](#getdelaydata12) | No| Yes| Callback for obtaining the deferred data. Currently, it can be used only in the pasteboard application of the same device. The default value is **undefined**.|
+| extras | Record<string, object> | No| Yes| Object of the dictionary type used to set other properties. The default value is an empty dictionary object.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| tag | string | No| Yes| Customized tag. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| timestamp | Date | Yes| Yes| Timestamp when [UnifiedData](#unifieddata) is generated. The default value is January 1, 1970 (UTC).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| shareOptions | [ShareOptions](#shareoptions12) | No| Yes| Range, in which [UnifiedData](#unifieddata) can be used. The default value is **CROSS_APP**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| getDelayData | [GetDelayData](#getdelaydata12) | No| Yes| Callback for obtaining the deferred data. Currently, this API can be used only in the pasteboard scenario of the same device. This callback is triggered when a user reads data from the pasteboard. The default value is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | No| Yes| URI authorization policy used in drag scenarios. The default value is **READ+WRITE+PERSIST**, which takes effect only for a single data operation and has a low priority. For details about the policy, see [UriPermission](#uripermission).<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 **Example**
 
@@ -130,18 +175,22 @@ properties.extras = {
 };
 properties.tag = "This is a tag of properties";
 properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+// Since API version 26.0.0, the URI authorization policy is supported.
+properties.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.WRITE
+];
 properties.getDelayData = ((type: string) => {
   if (type == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-    let plainTextDetails : Record<string, string> = {
+    let plainTextDetails: Record<string, string> = {
       'attr1': 'value1',
       'attr2': 'value2'
-    }
-    let plainText : uniformDataStruct.PlainText = {
+    };
+    let plainText: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      textContent : 'This is a plain text example',
-      abstract : 'This is abstract',
-      details : plainTextDetails
-    }
+      textContent: 'This is a plain text example',
+      abstract: 'This is abstract',
+      details: plainTextDetails
+    };
     let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
     let textData = new unifiedDataChannel.UnifiedData(text);
     return textData;
@@ -182,7 +231,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData();
 
 constructor(record: UnifiedRecord)
 
-Defines a constructor used to create a **UnifiedData** object with a data record.
+Defines a constructor used to create a **UnifiedData** object with a data record. If the call is successful, the **UnifiedData** object containing the specified data record is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -200,7 +249,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -210,7 +259,7 @@ let plainText : uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
   textContent : 'This is a plain text example',
   abstract : 'This is abstract'
-}
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 ```
@@ -219,7 +268,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 addRecord(record: UnifiedRecord): void
 
-Adds a data record to this **UnifiedRecord** object.
+Adds a data record to this **UnifiedRecord** object. If the call is successful, the specified data record is added to this **UnifiedRecord** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -229,7 +278,7 @@ Adds a data record to this **UnifiedRecord** object.
 
 | Name| Type                           | Mandatory| Description                                         |
 | ------ | ------------------------------- | ---- |---------------------------------------------|
-| record | [UnifiedRecord](#unifiedrecord) | Yes  | Data record to add. It is a **UnifiedRecord** child class object.|
+| record | [UnifiedRecord](#unifiedrecord) | Yes  | Data record in the **UnifiedData** object. It is a **UnifiedRecord** object or its child class object.|
 
 **Error codes**
 
@@ -237,25 +286,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-let plainText : uniformDataStruct.PlainText = {
+
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 unifiedData.addRecord(link);
 ```
@@ -274,26 +324,26 @@ Obtains all data records from this **UnifiedData** object. The data obtained is 
 
 | Type                                    | Description                     |
 | ---------------------------------------- |-------------------------|
-| Array\<[UnifiedRecord](#unifiedrecord)\> | Records in the **UnifiedData** object obtained.|
+| Array\<[UnifiedRecord](#unifiedrecord)\> | Array of all data records contained in this **UnifiedRecord** object. The type of each record can be obtained through **getType** and then converted into a specific subclass for reading and processing various types of data in the unified data.|
 
 **Example**
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 unifiedData.addRecord(link);
 
@@ -341,26 +391,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 unifiedData.addRecord(link);
 
@@ -382,26 +432,26 @@ Obtains the types of all data records in this **UnifiedData** object.
 
 | Type                                    | Description                     |
 | ---------------------------------------- |-------------------------|
-| Array\<string\> | Array of the [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype) types obtained.|
+| Array\<string\> | Array of [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype) types, indicating the data type set of the current record. The element values include **'general.plain-text'**, **'general.hyperlink'**, and **'openharmony.form'**.|
 
 **Example**
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 unifiedData.addRecord(link);
 
@@ -423,20 +473,20 @@ Summarizes the data information of the **unifiedData** object, including the dat
 **Example**
 
 ```ts
-function parseSummary(summary : unifiedDataChannel.Summary) {
+function parseSummary(summary: unifiedDataChannel.Summary) {
   let summaryRecord = summary.summary as Record<string, number>;
   if (summaryRecord) {
     for (let item of Object.entries(summaryRecord)) {
       if (item && item.length <= 1) {
         continue;
       }
-      let summaryStr : string = String(item[1]);
-      let info : string[] = summaryStr.split(",");
+      let summaryStr: string = String(item[1]);
+      let info: string[] = summaryStr.split(",");
       if (info.length <= 1) {
         continue;
       }
-      let key : string = info[0];
-      let value : string = info[1];
+      let key: string = info[0];
+      let value: string = info[1];
     }
   }
   let overviewRecord = summary.overview as Record<string, number>;
@@ -446,13 +496,13 @@ function parseSummary(summary : unifiedDataChannel.Summary) {
 
 ## UnifiedRecord
 
-An abstract definition of the data content supported by the UDMF. A **UnifiedRecord** object contains one or more data records, for example, a text record, an image record, or an HTML record. Since API version 15, different styles of the same content can be added to a **UnifiedRecord** object. Data users can obtain the corresponding styles as required.
+An abstract definition of the data content supported by the UDMF. A **UnifiedRecord** object contains one or more data records, for example, a text record, an image record, or an HTML record. Since API version 15, different data formats of the same content can be added to a data record. For example, the same text can be stored in plain text, HTML, or hyperlink format. The data user can obtain the data in the required format by using the **getEntry** method.
 
 ### constructor<sup>12+</sup>
 
 constructor()
 
-Defines a constructor used to create a **UnfiedRecord** object.
+Defines a constructor used to create a **UnfiedRecord** object. If the call is successful, an empty **UnifiedRecord** object is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -468,7 +518,7 @@ let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
 
 constructor(type: string, value: ValueType)
 
-Defines a constructor used to create a data record with the specified type and value.<br>If **value** is of the [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type, **type** must be the value of **OPENHARMONY_PIXEL_MAP** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).<br>If **value** is of the [Want](../apis-ability-kit/js-apis-app-ability-want.md) type, **type** must be the value of **OPENHARMONY_WANT** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
+Defines a constructor used to create a data record with the specified type and value. If the call is successful, a **UnifiedRecord** object containing the specified type and value is returned.<br>If **value** is of the [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type, **type** must be the value of **OPENHARMONY_PIXEL_MAP** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).<br>If **value** is of the [Want](../apis-ability-kit/js-apis-app-ability-want.md) type, **type** must be the value of **OPENHARMONY_WANT** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -478,7 +528,7 @@ Defines a constructor used to create a data record with the specified type and v
 
 | Name| Type                           | Mandatory| Description                                     |
 | ------ | ------------------------------- | ---- |-----------------------------------------|
-| type | string | Yes  | Type of the data record to create.|
+| type | string | Yes| Type of the data record to create, which is used to identify the specific type of the data record. For details about the value, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). For example, **'general.plain-text'** and **'general.hyperlink'**.|
 | value | [ValueType](#valuetype12) | Yes  | Value of the data record to create.|
 
 **Error codes**
@@ -487,7 +537,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -495,27 +545,33 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let hyperlinkRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 
 let arrayBuffer = new ArrayBuffer(4 * 200 * 200);
-let opt : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 }, alphaType: 3 };
-let pixelMap : uniformDataStruct.PixelMap = {
-  uniformDataType : 'openharmony.pixel-map',
-  pixelMap : image.createPixelMapSync(arrayBuffer, opt)
-}
-let pixelMapRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
+let opt: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: { height: 200, width: 200 },
+  alphaType: 3
+};
+let pixelMap: uniformDataStruct.PixelMap = {
+  uniformDataType: 'openharmony.pixel-map',
+  pixelMap: image.createPixelMapSync(arrayBuffer, opt)
+};
+let pixelMapRecord =
+  new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
 ```
 
 ### getType
@@ -539,11 +595,11 @@ Obtains the type of this **UnfiedRecord**. The data obtained by [getRecords](#ge
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
@@ -575,19 +631,20 @@ Obtains the value of this data record.
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, 'this is value of text');
+let text =
+  new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, 'this is value of text');
 let value = text.getValue();
 
-let hyperlinkDetails : Record<string, string> = {
+let hyperlinkDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink',
-  details : hyperlinkDetails
-}
+};
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink',
+  details: hyperlinkDetails
+};
 let hyperlinkRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 let hyperlinkValue = hyperlinkRecord.getValue();
 ```
@@ -596,7 +653,7 @@ let hyperlinkValue = hyperlinkRecord.getValue();
 
 addEntry(type: string, value: ValueType): void
 
-Adds data of a specified data type and content to the current data record. You can use this API to add different data types and contents to the same data.
+Adds data of a specified data type and content to the current data record. You can use this API to add different data types and contents to the same data. After the API is successfully called, the specified data type and content are added to the current data record.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -607,7 +664,7 @@ Adds data of a specified data type and content to the current data record. You c
 | Name| Type                           | Mandatory| Description                                     |
 | ------ | ------------------------------- | ---- |-----------------------------------------|
 | type | string | Yes  | Type of the data to add. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
-| value | [ValueType](#valuetype12) | Yes  | Value of the data to add.|
+| value | [ValueType](#valuetype12) | Yes| Value of the data to add.|
 
 **Error codes**
 
@@ -615,28 +672,28 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let fileUriDetails : Record<string, string> = {
+let fileUriDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let fileUri : uniformDataStruct.FileUri = {
-  uniformDataType : 'general.file-uri',
-  oriUri : 'file://data/image/1.png',
-  fileType : 'general.image',
-  details : fileUriDetails
-}
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'file://data/image/1.png',
-  description : 'This is the description of the hyperlink'
-}
+};
+let fileUri: uniformDataStruct.FileUri = {
+  uniformDataType: 'general.file-uri',
+  oriUri: 'file://data/image/1.png',
+  fileType: 'general.image',
+  details: fileUriDetails
+};
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'file://data/image/1.png',
+  description: 'This is the description of the hyperlink'
+};
 
 let unifiedData = new unifiedDataChannel.UnifiedData();
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
@@ -658,7 +715,7 @@ Obtains data of the specified type from the data record.
 
 | Name| Type                           | Mandatory| Description                                     |
 | ------ | ------------------------------- | ---- |-----------------------------------------|
-| type | string | Yes  | Type of the data to obtain. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
+| type | string | Yes| Type of the data to obtain. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 
 **Return value**
 
@@ -672,36 +729,36 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let fileUriDetails : Record<string, string> = {
+let fileUriDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let fileUri : uniformDataStruct.FileUri = {
-  uniformDataType : 'general.file-uri',
-  oriUri : 'file://data/image/1.png',
-  fileType : 'general.image',
-  details : fileUriDetails
-}
-let formDetails : Record<string, string> = {
+};
+let fileUri: uniformDataStruct.FileUri = {
+  uniformDataType: 'general.file-uri',
+  oriUri: 'file://data/image/1.png',
+  fileType: 'general.image',
+  details: fileUriDetails
+};
+let formDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let form : uniformDataStruct.Form = {
-  uniformDataType : 'openharmony.form',
-  formId : 1,
-  formName : 'form',
-  bundleName : 'com.xx.app',
-  abilityName : 'ability',
-  module : 'module',
-  details : formDetails
-}
+};
+let form: uniformDataStruct.Form = {
+  uniformDataType: 'openharmony.form',
+  formId: 1,
+  formName: 'form',
+  bundleName: 'com.xx.app',
+  abilityName: 'ability',
+  module: 'module',
+  details: formDetails
+};
 
 let unifiedData = new unifiedDataChannel.UnifiedData();
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
@@ -711,11 +768,13 @@ unifiedData.addRecord(record);
 let records = unifiedData.getRecords();
 for (let i = 0; i < records.length; i++) {
   let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
-  let fileUriRead : uniformDataStruct.FileUri = unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+  let fileUriRead: uniformDataStruct.FileUri =
+    unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
   if (fileUriRead != undefined) {
     console.info(`oriUri: ${fileUriRead.oriUri}`);
   }
-  let formRead = unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM) as uniformDataStruct.Form;
+  let formRead =
+    unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM) as uniformDataStruct.Form;
   if (formRead != undefined) {
     console.info(`formName: ${formRead.formName}`);
   }
@@ -746,17 +805,17 @@ import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 let fileUriDetails : Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
+};
 let fileUri : uniformDataStruct.FileUri = {
   uniformDataType : 'general.file-uri',
   oriUri : 'file://data/image/1.png',
   fileType : 'general.image',
   details : fileUriDetails
-}
+};
 let formDetails : Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
+};
 let form : uniformDataStruct.Form = {
   uniformDataType : 'openharmony.form',
   formId : 1,
@@ -765,7 +824,7 @@ let form : uniformDataStruct.Form = {
   abilityName : 'ability',
   module : 'module',
   details : formDetails
-}
+};
 
 let unifiedData = new unifiedDataChannel.UnifiedData();
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
@@ -801,36 +860,36 @@ Obtains all the data types in the data record. This API can be called using the 
 
 | Type                                    | Description                     |
 | ---------------------------------------- |-------------------------|
-| Array\<string\> | Array of [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)s obtained.|
+| Array\<string\> | Array of the [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype) types obtained. The element values include **'general.plain-text'**, **'general.hyperlink'**, **'general.html'**.|
 
 **Example**
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let fileUriDetails : Record<string, string> = {
+let fileUriDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let fileUri : uniformDataStruct.FileUri = {
-  uniformDataType : 'general.file-uri',
-  oriUri : 'file://data/image/1.png',
-  fileType : 'general.image',
-  details : fileUriDetails
-}
-let formDetails : Record<string, string> = {
+};
+let fileUri: uniformDataStruct.FileUri = {
+  uniformDataType: 'general.file-uri',
+  oriUri: 'file://data/image/1.png',
+  fileType: 'general.image',
+  details: fileUriDetails
+};
+let formDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let form : uniformDataStruct.Form = {
-  uniformDataType : 'openharmony.form',
-  formId : 1,
-  formName : 'form',
-  bundleName : 'com.xx.app',
-  abilityName : 'ability',
-  module : 'module',
-  details : formDetails
-}
+};
+let form: uniformDataStruct.Form = {
+  uniformDataType: 'openharmony.form',
+  formId: 1,
+  formName: 'form',
+  bundleName: 'com.xx.app',
+  abilityName: 'ability',
+  module: 'module',
+  details: formDetails
+};
 
 let unifiedData = new unifiedDataChannel.UnifiedData();
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
@@ -840,11 +899,11 @@ unifiedData.addRecord(record);
 let records = unifiedData.getRecords();
 for (let i = 0; i < records.length; i++) {
   let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
-  let types : Array<string> = unifiedDataRecord.getTypes();
+  let types: Array<string> = unifiedDataRecord.getTypes();
   if (types.includes(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM)) {
     console.info(`Types include: ${uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM}`);
   }
-}
+};
 ```
 
 ## Text
@@ -857,7 +916,7 @@ Represents the text data. It is a child class of [UnifiedRecord](#unifiedrecord)
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| details | Record<string, string> | No| Yes| A dictionary type object, where both the key and value are of the string type and are used to describe the text content. For example, a data object with the following content can be created to describe a text file:<br>{<br>"title":"Title of the file",<br>"content":"Content of the file"<br>}<br> The default value is an empty dictionary object.|
+| details | Record<string, string> | No| Yes| A dictionary type object, where both the key and value are of the string type and are used to describe the text content. For example, a data object with the following content can be created to describe a text file:<br>{<br>"title":"Title",<br>"content":"Content"<br>}<br> The default value is an empty dictionary object.|
 
 **Example**
 
@@ -916,14 +975,13 @@ link.description = 'This is description';
 
 Represents the HTML data. It is a child class of [Text](#text).
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| htmlContent  | string | No| No| Content in HTML format.            |
-| plainContent | string | No| Yes| Plaintext without HTML tags. This parameter is optional. The default value is an empty string.|
+| htmlContent  | string | No| No| Content in HTML format.<br>**Atomic service API**: This API can be used in atomic services since API version 11.            |
+| plainContent | string | No| Yes| Plaintext without HTML tags. This parameter is optional. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | No| Yes| URI authorization policy used in drag scenarios. The default value is **READ** (read-only authorization), which takes effect only in scenarios such as the **img** tag. This policy is used only for a single record and has the highest priority. For details, see [UriPermission](#uripermission).<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 **Example**
 
@@ -931,20 +989,23 @@ Represents the HTML data. It is a child class of [Text](#text).
 let html = new unifiedDataChannel.HTML();
 html.htmlContent = '<div><p>Title</p></div>';
 html.plainContent = 'This is plainContent';
+// Since API version 26.0.0, the URI authorization policy is supported.
+html.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.WRITE
+];
 ```
 
 ## File
 
 Represents the file data. It is a child class of [UnifiedRecord](#unifiedrecord) and a base class of the data of the file type. You are advised to use the child class of **File**, for example, [Image](#image), [Video](#video), and [Folder](#folder), to describe data.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| details | Record<string, string> | No| Yes| A dictionary type object, where both the key and value are of the string type and are used to describe file information. For example, a data object with the following content can be created to describe a file:<br>{<br>"name":"File name",<br>"type":"File type"<br>}<br> The default value is an empty dictionary object.|
-| uri     | string                    | No| No| URI of the local file or online file. The local file URI can be obtained using the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) function.                                                                                                                                           |
+| details | Record<string, string> | No| Yes| A dictionary type object, where both the key and value are of the string type and are used to describe file information. For example, a data object with the following content can be created to describe a file:<br>{<br>"name":"File name",<br>"type":"File type"<br>}<br> The default value is an empty dictionary object.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| uri     | string                    | No| No| URI of the local file or online file. The local file URI can be obtained using the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) function.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | No| Yes| URI authorization policy used in drag scenarios. The default value is **READ+WRITE+PERSIST**, which is the highest priority and applies only to a single record. For details about the policy, see [UriPermission](#uripermission).<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 **Example**
 
@@ -960,11 +1021,15 @@ export default class EntryAbility extends UIAbility {
     let pathDir = context.filesDir;
     let file = new unifiedDataChannel.File();
     file.details = {
-        name: 'test',
-        type: 'txt'
+      'name': 'test',
+      'type': 'txt'
     };
     let filePath = pathDir + '/test.txt';
     file.uri = fileUri.getUriFromPath(filePath);
+    // Since API version 26.0.0, the URI authorization policy is supported.
+    file.uriAuthorizationPolicies = [
+      unifiedDataChannel.UriPermission.WRITE
+    ];
   }
 }
 ```
@@ -1026,7 +1091,7 @@ export default class EntryAbility extends UIAbility {
     let pathDir = context.filesDir;
     let video = new unifiedDataChannel.Video();
     let filePath = pathDir + '/test.mp4';
-    video.videoUri =fileUri.getUriFromPath(filePath);
+    video.videoUri = fileUri.getUriFromPath(filePath);
   }
 }
 ```
@@ -1111,9 +1176,9 @@ Represents specific data types defined by OpenHarmony. It is a child class of [U
 let sdr = new unifiedDataChannel.SystemDefinedRecord();
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 sdr.details = {
-    title: 'recordTitle',
-    version: 1,
-    content: u8Array
+  title: 'recordTitle',
+  version: 1,
+  content: u8Array
 };
 let unifiedData = new unifiedDataChannel.UnifiedData(sdr);
 ```
@@ -1164,8 +1229,8 @@ Represents the data of the home screen icon defined by the system. It is a child
 | -------- | -------- | -------- | -------- | -------- |
 | appId       | string | No| No| ID of the application, for which the icon is used.     |
 | appName     | string | No| No| Name of the application, for which the icon is used.      |
-| appIconId   | string | No| No| Image ID of the icon.<br>**Model restriction**: This API can be used only in the stage model.<br>       |
-| appLabelId  | string | No| No| Label ID corresponding to the icon name.<br>**Model restriction**: This API can be used only in the stage model.<br>   |
+| appIconId   | string | No| No| Image ID of the icon.<br>       |
+| appLabelId  | string | No| No| Label ID corresponding to the icon name.  |
 | bundleName  | string | No| No| Bundle name corresponding to the icon.|
 | abilityName | string | No| No| Application ability name corresponding to the icon.|
 
@@ -1181,9 +1246,9 @@ appItem.bundleName = 'MyBundleName';
 appItem.abilityName = 'MyAbilityName';
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 appItem.details = {
-    appItemKey1: 123,
-    appItemKey2: 'appItemValue',
-    appItemKey3: u8Array
+  appItemKey1: 123,
+  appItemKey2: 'appItemValue',
+  appItemKey3: u8Array
 };
 let unifiedData = new unifiedDataChannel.UnifiedData(appItem);
 ```
@@ -1273,11 +1338,11 @@ Enumerates the data channel types supported by the UDMF. It is used to identify 
 
 | Name      | Value        | Description     |
 |----------|-----------|---------|
-| DATA_HUB | 'DataHub' | Public data channel.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| DRAG<sup>14+</sup> | 'Drag' | Channel in which data can be dragged and dropped.<br>**Model restriction**: This API can be used only in the stage model.<br>**Use scenario**: This API is used to share data across applications in drag-and-drop scenarios.|
-| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | Data channel of the system sharing type.<br>**Model restriction**: This API can be used only in the stage model.<br>**Use scenario**: This API is used to share data across applications in system sharing scenarios.|
-| PICKER<sup>20+</sup> | 'Picker' | Data channel of the picker type.<br>**Model restriction**: This API can be used only in the stage model.<br>**Use scenario**: This API is used to share data across applications in the scenarios where a picker is used.|
-| MENU<sup>20+</sup> | 'Menu' | Data channel of the menu type.<br>**Model restriction**: This API can be used only in the stage model.<br>**Use scenario**: This API is used to share data across applications in the shortcut menu.|
+| DATA_HUB | 'DataHub' | Public data channel.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Use scenario**: This type is applicable to the scenario where UDMF is used to share data across applications in the public data sharing scenario.|
+| DRAG<sup>14+</sup> | 'Drag' | Channel in which data can be dragged and dropped.<br>**Use scenario**: This API is used to share data across applications in drag-and-drop scenarios.|
+| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | Data channel of the system sharing type.<br>**Use scenario**: This API is used to share data across applications in system sharing scenarios.|
+| PICKER<sup>20+</sup> | 'Picker' | Data channel of the picker type.<br>**Use scenario**: This API is used to share data across applications in the scenarios where a picker is used.|
+| MENU<sup>20+</sup> | 'Menu' | Data channel of the menu type.<br>**Use scenario**: This API is used to share data across applications in the shortcut menu.|
 
 ## Visibility<sup>20+</sup> 
 
@@ -1287,8 +1352,8 @@ Enumerates the data visibility levels.
 
 | Name         | Value  | Description                         |
 | ------------- | ---- |------------------------------|
-| ALL           | 0    | Visible to all applications.<br>**Model restriction**: This API can be used only in the stage model.    |
-| OWN_PROCESS   | 1    | Visible only to the data provider.<br>**Model restriction**: This API can be used only in the stage model. |
+| ALL           | 0    | Visible to all applications.   |
+| OWN_PROCESS   | 1    | Visible only to the data provider. |
 
 ## Options
 
@@ -1298,9 +1363,9 @@ Defines the data operation performed by the UDMF. It includes three optional par
 
 | Name     | Type                   | Read-Only| Optional| Description                                                        |
 | --------- | ----------------------- | ---- | ----- | ------------------------------------------------------- |
-| intention | [Intention](#intention) | No| Yes| Type of the data channel related to the data operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                            |
-| key       | string                  | No| Yes| Unique identifier of the data object in the UDMF, which can be obtained from the value returned by [insertData](#unifieddatachannelinsertdata).<br>The key consists of **udmf:/**, **intention**, **bundleName**, and **groupId** with a (/) in between, for example, **udmf://DataHub/com.ohos.test/0123456789**.<br>**udmf:/** is fixed, **DataHub** is an enum of **intention**, **com.ohos.test** is the bundle name, and **0123456789** is a group ID randomly generated.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| visibility<sup>20+</sup> | [Visibility](#visibility20) | No| Yes| Data visibility level. This parameter is effective only when specified during data writing. If unspecified, the default value **Visibility.ALL** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
+| intention | [Intention](#intention) | No| Yes| Type of the data path related to the data operation. The value is of the [Intention](#intention) enum type, including **DATA_HUB** and **DRAG**. If this parameter is not specified, no value is used by default. For details about whether this parameter is mandatory, see the parameter description of the specific API.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
+| key | string | No| Yes| Unique identifier of the data object in the UDMF, which can be obtained from the value returned by [insertData](#unifieddatachannelinsertdata). If this parameter is not specified, no value is used by default. For details about whether this parameter is mandatory, see the parameter description of the specific API.<br>The key consists of **udmf:/**, **intention**, **bundleName**, and **groupId** with a (/) in between, for example, **udmf://DataHub/com.ohos.test/0123456789**.<br>**udmf:/** is fixed, **DataHub** is an enum of **intention**, **com.ohos.test** is the bundle name, and **0123456789** is a group ID randomly generated.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| visibility<sup>20+</sup> | [Visibility](#visibility20) | No| Yes| Visibility level of data. This parameter is available only for public data paths. The value is of the [Visibility](#visibility20) enum type. This parameter is effective only when specified during data writing. If unspecified, the default value **Visibility.ALL** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
 
 ## FileConflictOptions<sup>15+</sup>
 
@@ -1374,7 +1439,7 @@ Defines the callback used to return the data retrieval progress information and 
 
 | Name     | Type                           | Mandatory   | Description          |
 |----------|-------------------------------|-------|--------------|
-| progressInfo| [ProgressInfo](#progressinfo15) | Yes    | Progress information to report.|
+| progressInfo | [ProgressInfo](#progressinfo15) | Yes| Progress information to report, which is used to receive the progress status and progress percentage of a drag task. The parameter contains two fields: **progress** (progress percentage, value range: [–1, 100]) and **status** (task status code). If the value of **progress** is –1, data fails to be obtained. If the value is **100**, data obtaining is complete.|
 | data        | [UnifiedData](#unifieddata)  \| null  |  Yes   | Data obtained when the progress reaches 100. If the progress does not reach 100, **null** is returned.|
 
 ## GetDataParams<sup>15+</sup>
@@ -1411,7 +1476,7 @@ Defines type and quantity of the data to load.
 | Name                  | Type                                             | Read-Only| Optional| Description                                                                                                                                                |
 |----------------------|-------------------------------------------------| ---- |-----| -----------------------------------------------------------------------------------------------------------------------------------------------|
 | types    | Set\<string\>       | No| Yes| Data type set. The default value is an empty set.                                                                                                                        |
-| recordCount | number | No| Yes| Maximum number of data records, ranging from 0 to 2<sup>32</sup>-1. The default value is **0**. If the value is out of the range, the default value is used. If the value is a floating point number, only the integer part is used. If the value is used for drag and drop, it is displayed as the number of badges with a maximum value of **2<sup>31</sup>-1**. If the value exceeds the maximum, no badge is displayed. In addition, the priority of this API is lower than the **numberBadge** method in [DragPreviewOptions](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11).                           |
+| recordCount | number | No| Yes| Maximum number of data records, ranging from 0 to 2<sup>32</sup>-1. The default value is **0**. If the value is out of the range, the default value is used. If the value is a floating point number, only the integer part is used. If the value is used for drag and drop, it is displayed as the number of badges with a maximum value of **2<sup>31</sup>-1**. If the value exceeds the maximum, no badge is displayed. In addition, the priority of this parameter is lower than the **numberBadge** method in [DragPreviewOptions](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1).                           |
 
 ## DataLoadHandler<sup>20+</sup>
 
@@ -1435,7 +1500,7 @@ This API is a synchronous function and is applicable to simple service logic. If
 
 | Type                   | Description                               |
 |-----------------------|-----------------------------------|
-| [UnifiedData](#unifieddata) \| null | Returns **UnifiedData** or **null** when the processing function for lazy data loading is triggered.|
+| [UnifiedData](#unifieddata) \| null | When the lazy handler is triggered, a **UnifiedData** object generated based on the receiver information is returned for data transmission. If data cannot be generated or fails to be generated, **null** is returned.|
 
 ## DelayedDataLoadHandler<sup>22+</sup>
 
@@ -1446,8 +1511,6 @@ Defines a handler for lazy data loading. The data sender can dynamically generat
 This API is an asynchronous function, which uses a promise to return the result. It does not block the main thread and can be used to process time-consuming tasks with complex service logic.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1461,7 +1524,7 @@ This API is an asynchronous function, which uses a promise to return the result.
 
 | Type                   | Description                               |
 |-----------------------|-----------------------------------|
-| Promise&lt;[UnifiedData](#unifieddata) \| null&gt; | Promise used to return the result.|
+| Promise&lt;[UnifiedData](#unifieddata) \| null&gt; | Promise used to return the result. The **resolve** method returns the **UnifiedData** object generated based on the recipient information or null. The **reject** method returns error information.|
 
 ## DataLoadParams<sup>20+</sup>
 
@@ -1475,8 +1538,8 @@ If both **loadHandler** and **delayedDataLoadHandler** are passed, **delayedData
 
 | Name                  | Type                                             | Read-Only| Optional| Description                                                                                                                                                |
 |----------------------|-------------------------------------------------| ---- |-----|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | No| No| Processing function used for lazy data loading.<br>**Atomic service API**: This API can be used in atomic services since API version 20.            |
-| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | No| Yes| Asynchronous handler used for lazy data loading.<br>**Atomic service API**: This API can be used in atomic services since API version 22.<br>**Model restriction**: This API can be used only in the stage model.             |
+| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | No| No| Processing function used for lazy data loading. This API is a synchronous function and is applicable to simple service logic. If the service logic is complex and the execution time lasts for more than 3s, you are advised to use [DelayedDataLoadHandler](#delayeddataloadhandler22).<br>**Atomic service API**: This API can be used in atomic services since API version 20.            |
+| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | No| Yes| Asynchronous handler used for lazy data loading. The default value is **undefined**. If this parameter is not specified, only **loadHandler** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | No| No| Data type and quantity that can be generated by the sender.<br>**Atomic service API**: This API can be used in atomic services since API version 20.             |
 
 ## unifiedDataChannel.insertData
@@ -1484,6 +1547,8 @@ If both **loadHandler** and **delayedDataLoadHandler** are passed, **delayedData
 insertData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;string&gt;): void
 
 Inserts data to the UDMF public data channel. This API uses an asynchronous callback to return the unique identifier of the data inserted.
+
+**Implementation mechanism**: After receiving the **UnifiedData** object, the system verifies the data integrity and serializes the data for storage. The data is routed to the corresponding storage space based on the **intention** value, and a unique **key** is generated. The system manages the validity period of data in the public data path. The default policy is auto cleanup after the application exits.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1494,7 +1559,7 @@ Inserts data to the UDMF public data channel. This API uses an asynchronous call
 | Name     | Type                        | Mandatory| Description                          |
 |----------|----------------------------|----|------------------------------|
 | options  | [Options](#options)        | Yes | Configuration for the data insertion operation. The **intention** field is mandatory (the DRAG channel is not supported). If it is not specified, error code 401 will be returned. The settings of other parameters do not affect the use of this API.       |
-| data     | [UnifiedData](#unifieddata) | Yes | Data to insert.                       |
+| data | [UnifiedData](#unifieddata) | Yes| **UnifiedData** object to insert or update, which is used to store data records and their properties.|
 | callback | AsyncCallback&lt;string&gt; | Yes | Callback used to return the key (unique identifier) of the data inserted.|
 
 **Error codes**
@@ -1503,7 +1568,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1511,17 +1576,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
-}
+};
 try {
   unifiedDataChannel.insertData(options, unifiedData, (err, key) => {
     if (err === undefined) {
@@ -1532,7 +1597,7 @@ try {
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1565,7 +1630,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1573,26 +1638,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
-}
+};
 try {
   unifiedDataChannel.insertData(options, unifiedData).then((key) => {
     console.info(`Succeeded in inserting data. key = ${key}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1611,7 +1676,7 @@ Updates the data in the UDMF public data channel. This API uses an asynchronous 
 | Name     | Type                         | Mandatory| Description                                 |
 |----------|-----------------------------|----|-------------------------------------|
 | options  | [Options](#options)         | Yes | Configuration for the data update operation. The **key** field is mandatory. If it is not specified, error code 401 will be returned. Only the DATA_HUB channel of the **intention** parameter is supported. The settings of other parameters do not affect the use of this API.                    |
-| data     | [UnifiedData](#unifieddata) | Yes | Data to update.                              |
+| data     | [UnifiedData](#unifieddata) | Yes | Data to insert.                              |
 | callback | AsyncCallback&lt;void&gt;   | Yes | Callback used to return the result. If the data is updated successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1620,7 +1685,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1628,48 +1693,49 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
-}
+};
 try {
   unifiedDataChannel.insertData(options, unifiedData).then((key) => {
     console.info(`Succeeded in inserting data. key = ${key}`);
     let updateOptions: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB,
       key: key
-    }
-    let plainTextUpdate : uniformDataStruct.PlainText = {
+    };
+    let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      textContent : 'This is plainText textContent for update',
-      abstract : 'This is abstract for update'
-    }
-    let textUpdate = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+      textContent: 'This is plainText textContent for update',
+      abstract: 'This is abstract for update'
+    };
+    let textUpdate =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
     let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(textUpdate);
     try {
       unifiedDataChannel.updateData(updateOptions, unifiedDataUpdate, (err) => {
         if (err === undefined) {
           console.info('Succeeded in updating data.');
         } else {
-          console.error(`Failed to update data. code is ${err.code}, message is ${err.message} `);
+          console.error(`Failed to update data. code is ${err.code}, message is ${err.message}`);
         }
       });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
-      console.error(`Update data throws an exception. code is ${error.code}, message is ${error.message} `);
+      console.error(`Update data throws an exception. code is ${error.code}, message is ${error.message}`);
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1688,7 +1754,7 @@ Updates the data in the UDMF public data channel. This API uses a promise to ret
 | Name    | Type                         | Mandatory| Description             |
 |---------|-----------------------------|----|-----------------|
 | options | [Options](#options)         | Yes | Configuration for the data update operation. The **key** field is mandatory. If it is not specified, error code 401 will be returned. Only the DATA_HUB channel of the **intention** parameter is supported. The settings of other parameters do not affect the use of this API.|
-| data    | [UnifiedData](#unifieddata) | Yes | Data to update.          |
+| data    | [UnifiedData](#unifieddata) | Yes | Data to insert.          |
 
 **Return value**
 
@@ -1702,7 +1768,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1710,29 +1776,31 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
-}
+};
+
 try {
   unifiedDataChannel.insertData(options, unifiedData).then((key) => {
     console.info(`Succeeded in inserting data. key = ${key}`);
     let updateOptions: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB,
       key: key
-    }
-    let plainTextUpdate : uniformDataStruct.PlainText = {
+    };
+    let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      textContent : 'This is plainText textContent for update',
-      abstract : 'This is abstract for update'
-    }
-    let textUpdate = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+      textContent: 'This is plainText textContent for update',
+      abstract: 'This is abstract for update'
+    };
+    let textUpdate =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
     let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(textUpdate);
     try {
       unifiedDataChannel.updateData(updateOptions, unifiedDataUpdate).then(() => {
@@ -1776,7 +1844,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1796,18 +1864,19 @@ try {
         let records = data[i].getRecords();
         for (let j = 0; j < records.length; j++) {
           if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-            let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            let text =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
             console.info(`${i + 1}.${text.textContent}`);
           }
         }
       }
     } else {
-      console.error(`Failed to query data. code is ${err.code}, message is ${err.message} `);
+      console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
     }
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1839,7 +1908,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1858,17 +1927,18 @@ try {
       let records = data[i].getRecords();
       for (let j = 0; j < records.length; j++) {
         if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-          let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+          let text =
+            records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
           console.info(`${i + 1}.${text.textContent}`);
         }
       }
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to query data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1895,7 +1965,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1915,18 +1985,19 @@ try {
         let records = data[i].getRecords();
         for (let j = 0; j < records.length; j++) {
           if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-            let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            let text =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
             console.info(`${i + 1}.${text.textContent}`);
           }
         }
       }
     } else {
-      console.error(`Failed to delete data. code is ${err.code}, message is ${err.message} `);
+      console.error(`Failed to delete data. code is ${err.code}, message is ${err.message}`);
     }
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1958,7 +2029,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1977,17 +2048,18 @@ try {
       let records = data[i].getRecords();
       for (let j = 0; j < records.length; j++) {
         if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-          let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+          let text =
+            records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
           console.info(`${i + 1}.${text.textContent}`);
         }
       }
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to delete data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to delete data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1995,11 +2067,9 @@ try {
 
 setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
-Sets the [ShareOptions](#shareoptions12) for the application data. Currently, only the drag-and-drop data channel is supported.
+Sets the [ShareOptions](#shareoptions12) for the application data. Currently, only the drag-and-drop data channel is supported. If the API is successfully called, the usage scope of the drag-and-drop data channel is set to the specified **ShareOptions** value.
 
 **Required permissions**: ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2016,20 +2086,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 20400001     | Settings already exist. To reconfigure, remove the existing sharing options.       |
+| 20400001     | Settings already exist. To reconfigure, remove the existing sharing options.        |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.IN_APP);
-  console.info(`[UDMF]setAppShareOptions success. `);
-}catch (e){
+  console.info(`[UDMF]setAppShareOptions success.`);
+} catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`[UDMF]setAppShareOptions throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`[UDMF]setAppShareOptions throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2037,11 +2108,9 @@ try {
 
 removeAppShareOptions(intention: Intention): void
 
-Removes the data control information set by [setAppShareOptions](#unifieddatachannelsetappshareoptions14).
+Removes the data control information set by [setAppShareOptions](#unifieddatachannelsetappshareoptions14). If the API is successfully called, the data control information set by **setAppShareOptions** is cleared, and the data of the drag-and-drop data channel is restored to the default usage scope.
 
 **Required permissions**: ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2057,19 +2126,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   unifiedDataChannel.removeAppShareOptions(unifiedDataChannel.Intention.DRAG);
-  console.info(`[UDMF]removeAppShareOptions success. `);
-}catch (e){
+  console.info(`[UDMF]removeAppShareOptions success.`);
+} catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`[UDMF]removeAppShareOptions throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`[UDMF]removeAppShareOptions throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2077,17 +2147,15 @@ try {
 
 convertRecordsToEntries(data: UnifiedData): void
 
-Converts the provided data into a multi-style data structure, which is useful when the original data uses multiple records to represent different styles of the same data.
+Converts the provided data into a multi-style data structure, which is useful when the original data uses multiple records to represent different data formats of the same data.
 
 This API is used only when the following rules are met:
-1. The number of records in data is greater than 1.
+1. The number of records in data is greater than 1;
 2. The value of **unifiedData.properties.tag** is **records_to_entries_data_format**.
 
  
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2095,7 +2163,7 @@ This API is used only when the following rules are met:
 
 | Name   | Type                   | Mandatory| Description                                                        |
 | --------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| data    | [UnifiedData](#unifieddata) | Yes | Data to convert.          |
+| data    | [UnifiedData](#unifieddata) | Yes | **UnifiedData** object to be converted into a multi-style data structure.          |
 
 **Error codes**
 
@@ -2103,7 +2171,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                |
 | ------------ | ------------------------------------------------------------ |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2112,22 +2180,22 @@ import { unifiedDataChannel } from '@kit.ArkData';
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let details : Record<string, string> = {
+let details: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let plainTextObj : uniformDataStruct.PlainText = {
+};
+let plainTextObj: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'The weather is very good today',
-  abstract : 'The weather is very good today',
-  details : details
-}
-let htmlObj : uniformDataStruct.HTML = {
-  uniformDataType :'general.html',
-  htmlContent : '<div><p>The weather is very good today</p></div>',
-  plainContent : 'The weather is very good today',
-  details : details
-}
+  textContent: 'The weather is very good today',
+  abstract: 'The weather is very good today',
+  details: details
+};
+let htmlObj: uniformDataStruct.HTML = {
+  uniformDataType: 'general.html',
+  htmlContent: '<div><p>The weather is very good today</p></div>',
+  plainContent: 'The weather is very good today',
+  details: details
+};
 let plainText = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextObj);
 let html = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HTML, htmlObj);
 let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
@@ -2139,13 +2207,15 @@ try {
   let records: Array<unifiedDataChannel.UnifiedRecord> = unifiedData.getRecords();
   console.info(`Records size is ${records.length}`); // After conversion, its length must be less than 1
   if (records.length == 1) {
-    let plainTextObjRead: uniformDataStruct.PlainText = records[0].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+    let plainTextObjRead: uniformDataStruct.PlainText =
+      records[0].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
     console.info(`TextContent is ${plainTextObjRead.textContent}`);
-    let htmlObjRead: uniformDataStruct.HTML = records[0].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
+    let htmlObjRead: uniformDataStruct.HTML =
+      records[0].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
     console.info(`HtmlContent is ${htmlObjRead.htmlContent}`);
   }
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Convert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Convert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```

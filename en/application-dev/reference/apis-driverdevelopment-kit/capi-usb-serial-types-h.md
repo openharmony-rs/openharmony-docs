@@ -1,10 +1,12 @@
 # usb_serial_types.h
+
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:49:26.034Z pushedAt=2026-06-22T11:21:11.426Z -->
 
 ## Overview
 
@@ -26,7 +28,7 @@ Provides the enum variables, structures, and macros used in USB Serial DDK APIs.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | \_\_attribute\_\_((aligned(8))) UsbSerial_Params | Defines the USB serial port parameters for the USB Serial DDK.|
+| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | UsbSerial_Params | Defines the USB serial port parameters for the USB Serial DDK. |
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) | UsbSerial_Device | Defines the data structures for the USB serial port device (opaque).|
 
 ### Enums

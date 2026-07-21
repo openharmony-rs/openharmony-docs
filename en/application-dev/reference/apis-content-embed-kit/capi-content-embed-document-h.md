@@ -45,7 +45,7 @@ Provides the data structures and corresponding operation APIs related to the emb
 | -- | -- |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, ContentEmbed_Document **document)](#oh_contentembed_createdocumentbyoeid) | Creates a new [ContentEmbed_Document](capi-contentembed-contentembed-document.md) instance using the provided identifier (OEID).<br> You can destroy the instance using [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument) to avoid memory leaks.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFilePath, size_t length, bool isLinking, ContentEmbed_Document **document)](#oh_contentembed_createdocumentbyfile) | Creates a new [ContentEmbed_Document](capi-contentembed-contentembed-document.md) instance from a source file.<br> You can destroy the instance using [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument) to avoid memory leaks.|
-| [ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFilePath, size_t length, ContentEmbed_Document **document)](#oh_contentembed_loaddocumentfromfile) | Loads an [ContentEmbed_Document](capi-contentembed-contentembed-document.md) instance from an existing .oe file.<br> You can destroy the instance using [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument) to avoid memory leaks.|
+| [ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFilePath, size_t length, ContentEmbed_Document **document)](#oh_contentembed_loaddocumentfromfile) | Loads a [ContentEmbed_Document](capi-contentembed-contentembed-document.md) instance from an existing .oe file.<br> You can destroy the instance using [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument) to avoid memory leaks.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t length, ContentEmbed_Document *document, size_t offset, size_t *readSize)](#oh_contentembed_document_read) | Reads the original binary data from the specified offset position of the.oe file to the buffer.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetOEid(const ContentEmbed_Document *document, char *oeid)](#oh_contentembed_document_getoeid) | Obtains the identifier of an OE document object.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Document_IsLinking(const ContentEmbed_Document *document, bool *isLinking)](#oh_contentembed_document_islinking) | Checks whether an OE document is created in link mode.|
@@ -56,11 +56,11 @@ Provides the data structures and corresponding operation APIs related to the emb
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Storage **childStorage)](#oh_contentembed_storage_getstorage) | Obtains a child [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) object from the parent Storage object and name of the OE document.<br> You can destroy the instance using [OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage) to avoid memory leaks.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)](#oh_contentembed_storage_createstream) | Creates a [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) object from the parent Storage object and name in the OE document.<br> You can destroy the instance using [OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream) to avoid memory leaks.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)](#oh_contentembed_storage_getstream) | Obtains a child [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) object from the parent Storage object and name in the OE document.<br> You can destroy the instance using [OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream) to avoid memory leaks.|
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage *parentStorage, const char *name)](#oh_contentembed_storage_deleteentry) | Deletes a child Storage object or Stream object with a specified name from the parent Storage object in the OpenHarmony document.|
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Storage *storage)](#oh_contentembed_storage_deleteallentry) | Deletes all entries from the storage object of an OpenEdge document, including the sub-storage objects and sub-stream objects.|
-| [ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStorage(ContentEmbed_Storage *storage)](#oh_contentembed_destroystorage) | Destroys the [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) object instance of an OpenEdge document and reclaims the memory.|
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, unsigned char **buffer, size_t length, size_t *num)](#oh_contentembed_stream_read) | Reads data of a specified length from the current position of the stream object of an OpenEdge document to the buffer. After the data is successfully read, the offset of the stream object increases by the number of actually read bytes.|
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Write(ContentEmbed_Stream *stream, const unsigned char *data, size_t length, size_t *num)](#oh_contentembed_stream_write) | Writes data of a specified length from the buffer to the current position of the stream object of an OpenEdge document. After the data is successfully written, the offset of the stream object increases by the number of actually written bytes.|
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage *parentStorage, const char *name)](#oh_contentembed_storage_deleteentry) | Deletes a child Storage object or Stream object with a specified name from the parent Storage object in the OE document.|
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Storage *storage)](#oh_contentembed_storage_deleteallentry) | Deletes all entries from the storage object of an OE document, including the sub-storage objects and sub-stream objects.|
+| [ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStorage(ContentEmbed_Storage *storage)](#oh_contentembed_destroystorage) | Destroys the [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) object instance of an OE document and reclaims the memory.|
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, unsigned char **buffer, size_t length, size_t *num)](#oh_contentembed_stream_read) | Reads data of a specified length from the current position of the stream object of an OE document to the buffer. After the data is successfully read, the offset of the stream object increases by the number of actually read bytes.|
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Write(ContentEmbed_Stream *stream, const unsigned char *data, size_t length, size_t *num)](#oh_contentembed_stream_write) | Writes data of a specified length from the buffer to the current position of the stream object of an OE document. After the data is successfully written, the offset of the stream object increases by the number of actually written bytes.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, size_t position)](#oh_contentembed_stream_seek) | Sets the current read location of the stream object in an OE document to the specified offset.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetPosition(ContentEmbed_Stream *stream, size_t *position)](#oh_contentembed_stream_getposition) | Obtains the current position offset of the stream object in an OE document.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetSize(ContentEmbed_Stream *stream, size_t *size)](#oh_contentembed_stream_getsize) | Obtains the total size of the stream object in an OE document, in bytes.|
@@ -271,7 +271,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Docu
 
 **Description**
 
-Obtains the root [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) object from an OpenHarmony document object.<br> You can destroy the instance using [OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage) to avoid memory leaks.
+Obtains the root [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) object from an OE document object.<br> You can destroy the instance using [OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage) to avoid memory leaks.
 
 **Since**: 24
 
@@ -279,8 +279,8 @@ Obtains the root [ContentEmbed_Storage](capi-contentembed-contentembed-storage.m
 
 | Name| Description|
 | -- | -- |
-| [ContentEmbed_Document](capi-contentembed-contentembed-document.md) *document | Pointer to the OpenHarmony document object.|
-| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) **storage | Output parameter. After the API is successfully called, this pointer points to the root storage object of the OpenHarmony document.|
+| [ContentEmbed_Document](capi-contentembed-contentembed-document.md) *document | Pointer to the OE document object.|
+| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) **storage | Output parameter. After the API is successfully called, this pointer points to the root storage object of the OE document.|
 
 **Returns:**
 
@@ -296,7 +296,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Flush(const ContentEmbed_Documen
 
 **Description**
 
-Flushes data in an OpenHarmony document to an OpenHarmony file.
+Flushes data in an OE document to an OE file.
 
 **Since**: 24
 
@@ -330,7 +330,7 @@ Creates a child [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md
 | -- | -- |
 | [const ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *parentStorage | Pointer to the parent storage object of the OE document.<br>                      To delete a specified child storage object from the parent storage object, call [OH_ContentEmbed_Storage_DeleteEntry](capi-content-embed-document-h.md#oh_contentembed_storage_deleteentry).<br>                      To delete all child storage objects from the parent storage object, call [OH_ContentEmbed_Storage_DeleteAllEntry](capi-content-embed-document-h.md#oh_contentembed_storage_deleteallentry).|
 | const char *name | Name of the child storage object to be created. The value cannot be an empty string. It can contain a maximum of 31 characters and cannot contain invalid characters, such as '/', '\', ':', and '!'.|
-| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) **childStorage | Output parameter. After the function is successfully called, the pointer points to the newly created child storage object of the OpenEuler document.|
+| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) **childStorage | Output parameter. After the function is successfully called, the pointer points to the newly created child storage object of the OE document.|
 
 **Returns:**
 
@@ -449,7 +449,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Stora
 
 **Description**
 
-Deletes all entries from the storage object of an OpenEuler document, including the sub-storage objects and sub-stream objects.
+Deletes all entries from the storage object of an OE document, including the sub-storage objects and sub-stream objects.
 
 **Since**: 24
 
@@ -457,7 +457,7 @@ Deletes all entries from the storage object of an OpenEuler document, including 
 
 | Name| Description|
 | -- | -- |
-| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | Pointer to the storage object of an OpenEuler document.|
+| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | Pointer to the storage object of an OE document.|
 
 **Returns:**
 
@@ -473,7 +473,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStorage(ContentEmbed_Storage *stor
 
 **Description**
 
-Destroys the [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) object instance of an OpenHarmony document and reclaims the memory.
+Destroys the [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) object instance of an OE document and reclaims the memory.
 
 **Since**: 24
 
@@ -481,7 +481,7 @@ Destroys the [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) o
 
 | Name| Description|
 | -- | -- |
-| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | Pointer to the storage object of an OpenHarmony document.|
+| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | Pointer to the storage object of an OE document.|
 
 **Returns:**
 
@@ -497,7 +497,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, 
 
 **Description**
 
-Reads data of a specified length from the current position of the stream object of an OpenHarmony document to the buffer. After the data is successfully read, the offset of the stream object increases by the number of actually read bytes.
+Reads data of a specified length from the current position of the stream object of an OE document to the buffer. After the data is successfully read, the offset of the stream object increases by the number of actually read bytes.
 
 **Since**: 24
 
@@ -505,7 +505,7 @@ Reads data of a specified length from the current position of the stream object 
 
 | Name| Description|
 | -- | -- |
-| [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) *stream | Pointer to the stream object of an OpenHarmony document.|
+| [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) *stream | Pointer to the stream object of an OE document.|
 | unsigned char **buffer | Output parameter. Pointer to the buffer for storing the read data. The memory is allocated internally in the function. The caller needs to release the memory.|
 | size_t length | Maximum number of bytes of data to be read.|
 | size_t *num | Output parameter. Number of actually read data items, in bytes.|
@@ -576,7 +576,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetPosition(ContentEmbed_Stream *s
 
 **Description**
 
-Obtains the current position offset of the stream object in an OpenEuler document.
+Obtains the current position offset of the stream object in an OE document.
 
 **Since**: 24
 

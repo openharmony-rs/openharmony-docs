@@ -6,15 +6,15 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-组件提供勾选框样式、状态按钮样式和开关样式。
+组件提供勾选框样式、状态按钮样式和开关样式，适用于需要快速切换状态或进行单选确认的场景，能够有效提升交互体验与界面的直观性。
 
 >  **说明：**
 >
-> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 从API版本26.0.0开始，Toggle组件支持新材质效果。Toggle组件使用通用新材质属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)时，不同[ToggleType](#toggletype枚举说明)类型的效果不同：    
+> - 从API版本26.0.0开始，Toggle组件支持系统材质效果。Toggle组件使用通用系统材质属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)时，不同[ToggleType](#toggletype枚举说明)类型的效果不同：    
 >   - ToggleType.Checkbox：当前未适配系统材质效果，设置系统材质不会出现系统材质相关的动效和视觉效果。
->   - ToggleType.Switch：传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启新材质的开关标记，不影响实际视觉效果。主要影响Toggle的滑块大小、滑块样式、阴影等视觉属性。设置[switchPointColor](#switchpointcolor)后会出现点光源效果，点光源颜色跟随switchPointColor的设置。传入undefined时，新材质不生效，表现为原先的Toggle样式。
+>   - ToggleType.Switch：传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启系统材质的开关标记，不影响实际视觉效果。主要影响Toggle的滑块大小、滑块样式、阴影等视觉属性。设置[switchPointColor](#switchpointcolor)后会出现点光源效果，点光源颜色跟随switchPointColor的设置。传入undefined时，系统材质不生效，表现为原先的Toggle样式。
 >   - ToggleType.Button：设置系统材质的效果与[Button](ts-basic-components-button.md)组件设置系统材质的效果相同，主要影响背景颜色、边框、阴影等视觉属性。
 
 
@@ -40,7 +40,7 @@ Toggle(options: ToggleOptions)
 
 ## ToggleOptions<sup>18+</sup>对象说明
 
-Toggle的信息。
+Toggle组件的配置信息。
 
 > **说明：**
 >
@@ -75,8 +75,8 @@ Toggle的样式。
 
 | 名称     | 值   | 说明                                                         |
 | -------- | ---- | ------------------------------------------------------------ |
-| Checkbox | 0    | 提供单选框样式。<br>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
-| Switch   | 1    | 提供开关样式。<br>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)默认值为：<br>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
+| Checkbox | 0    | 提供勾选框样式。<br/>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br/>{<br/>&nbsp;top: '14px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '14px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br/>{width:'20vp', height:'20vp'}。 |
+| Switch   | 1    | 提供开关样式。<br>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br/>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
 | Button   | 2    | 提供状态按钮样式。如子组件设置文本，文本内容将显示在按钮内。默认高度为28vp，宽度无默认值。 |
 
 ## 属性
@@ -88,6 +88,10 @@ Toggle的样式。
 selectedColor(value: ResourceColor)
 
 设置组件在打开状态下的背景颜色。
+
+> **说明：**
+>
+> 设置systemMaterial系统材质时对背景色的影响，请参考组件开篇说明。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -117,13 +121,17 @@ switchPointColor(color: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                       |
 | ------ | ------------------------------------------ | ---- | -------------------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary')<br/>**说明：**<br/>同时设置了[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)新材质时，设置此属性后会出现点光源效果，点光源颜色跟随此属性的设置。 |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary')<br/>**说明：**<br/>同时设置了[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)系统材质时，设置此属性后会出现点光源效果，点光源颜色跟随此属性的设置。 |
 
 ### switchStyle<sup>12+</sup>
 
 switchStyle(value: SwitchStyle)
 
 设置Switch类型的样式。仅当type为ToggleType.Switch生效。
+
+> **说明：**
+>
+> 与systemMaterial系统材质同时设置时，请参考组件开篇说明及通用系统材质属性文档。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -160,6 +168,10 @@ contentModifier(modifier: ContentModifier\<ToggleConfiguration>)
 ## SwitchStyle<sup>12+</sup>对象说明
 
 Switch类型的样式。
+
+> **说明：**
+>
+> 与systemMaterial系统材质同时设置时，请参考组件开篇说明及通用系统材质属性文档。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -210,7 +222,7 @@ onChange(callback:&nbsp;(isOn:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | isOn   | boolean| 否  | 否 | 开关是否打开。<br/>true：开关打开；false：开关关闭。<br/>默认值：false |
 | enabled | boolean | 否 | 否 | 是否可以切换状态。<br/>true：可以切换状态；false：不可以切换状态。<br/>默认值：true |
-| triggerChange |Callback\<boolean>| 否 | 否 |触发switch选中状态变化。<br/>true：状态从关切换为开；false：状态从开切换为关。 |
+| triggerChange | Callback\<boolean> | 否 | 否 | 用于触发Toggle开关状态变化的回调函数，通常在自定义ContentModifier中通过编程方式改变开关状态。调用此回调并传入true可将开关状态设置为打开，传入false可将开关状态设置为关闭。 |
 
 
 ## 示例
@@ -333,8 +345,11 @@ struct ToggleExample {
 
 ```ts
 // xxx.ets
+// 自定义Switch样式修改器，实现ContentModifier接口定制Toggle内容区
 class MySwitchStyle implements ContentModifier<ToggleConfiguration> {
+  // 开关打开时的背景颜色
   selectedColor: Color = Color.White;
+  // 用于按钮显示的文本
   lamp: string = 'string';
 
   constructor(selectedColor: Color, lamp: string) {
@@ -370,6 +385,7 @@ function buildSwitch(config: ToggleConfiguration) {
 struct Index {
   build() {
     Column({ space: 50 }) {
+      // 使用自定义样式修改器定制Toggle内容，并通过onChange监听状态变化
       Toggle({ type: ToggleType.Switch })
         .enabled(true)
         .contentModifier(new MySwitchStyle(Color.Yellow, '灯'))
@@ -383,9 +399,9 @@ struct Index {
 
 ![toggle](figures/Toggle_builder.gif)
 
-### 示例4（Toggle新材质效果）
+### 示例4（Toggle系统材质效果）
 
-该示例展示了Toggle组件Switch类型在开启新材质前后的效果对比，包括不设置系统材质、设置undefined、开启新材质以及开启新材质并配合[switchPointColor](#switchpointcolor)设置点光源的效果。用例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现新材质效果。
+该示例展示了Toggle组件Switch类型在开启系统材质前后的效果对比，包括不设置系统材质、设置undefined、开启系统材质以及开启系统材质并配合[switchPointColor](#switchpointcolor)设置点光源的效果。示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现系统材质效果。
 
 从API版本26.0.0开始，新增systemMaterial属性。
 
@@ -398,7 +414,7 @@ import { uiMaterial } from '@kit.ArkUI';
 struct ToggleMaterialTest {
   build() {
     Column({ space: 10 }) {
-      // 不设置新材质接口，无新材质效果
+      // 不设置系统材质接口，无系统材质效果
       Toggle({ type: ToggleType.Switch, isOn: true })
         .size({ width: 80, height: 40 })
 
@@ -407,12 +423,12 @@ struct ToggleMaterialTest {
         .size({ width: 80, height: 40 })
         .systemMaterial(undefined)
 
-      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），无点光源效果
+      // 开启系统材质效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），无点光源效果
       Toggle({ type: ToggleType.Switch, isOn: true })
         .size({ width: 80, height: 40 })
         .systemMaterial(new uiMaterial.Material())
 
-      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），有点光源效果
+      // 开启系统材质效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），有点光源效果
       Toggle({ type: ToggleType.Switch, isOn: true })
         .size({ width: 80, height: 40 })
         .systemMaterial(new uiMaterial.Material())

@@ -61,7 +61,6 @@ import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
 struct Index {
-  private avsessionController !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() { 
@@ -125,7 +124,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  private avsessioncontroller !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() {
@@ -156,7 +154,7 @@ getAVSession(context: Context): Promise\<AVSession>
 
 获取会话对象。使用Promise异步回调。
 
-该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，当前接口会调用失败抛出异常。
+该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，该接口调用会失败并抛出异常。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -191,7 +189,6 @@ import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
 struct Index {
-  private avsessioncontroller !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() {

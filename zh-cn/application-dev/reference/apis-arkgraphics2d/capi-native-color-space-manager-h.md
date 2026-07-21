@@ -26,8 +26,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) | ColorSpacePrimaries | 提供色彩原色结构体声明。 |
-| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | WhitePointArray | 提供白点数组结构体，白点是指在当前色域中表示白色的坐标。 |
+| [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) | ColorSpacePrimaries | 提供色彩原色结构体声明，用于存储色彩空间的红绿蓝三原色和白点的坐标信息。 |
+| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | WhitePointArray | 提供白点数组结构体，白点是在当前色域中表示白色的坐标。 |
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | 提供OH_NativeColorSpaceManager结构体声明。 |
 
 ### 枚举
@@ -42,7 +42,7 @@
 | -- | -- |
 | [OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)](#oh_nativecolorspacemanager_createfromname) | 通过colorSpaceName创建OH_NativeColorSpaceManager实例。<br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。 |
 | [OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)](#oh_nativecolorspacemanager_createfromprimariesandgamma) | 通过原色和伽马值创建OH_NativeColorSpaceManager实例。<br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。 |
-| [void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_destroy) | 销毁OH_NativeColorSpaceManager实例。 |
+| [void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_destroy) | 销毁OH_NativeColorSpaceManager实例。当不再需要OH_NativeColorSpaceManager实例时，需要调用此函数进行销毁以释放内存。 |
 | [int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_getcolorspacename) | 获取色彩空间名称。 |
 | [WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_getwhitepoint) | 获取白点。 |
 | [float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_getgamma) | 获取伽马值。 |
@@ -65,9 +65,9 @@ enum ColorSpaceName
 | -- | -- |
 | NONE = 0 | 表示未知的色彩空间。 |
 | ADOBE_RGB = 1 | 表示基于Adobe RGB的色彩空间。 |
-| DCI_P3 = 2 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1：1999的色彩空间。 |
-| DISPLAY_P3 = 3 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1：1999的色彩空间。 |
-| SRGB = 4 | 表示基于IEC 61966-2.1：1999的标准红绿蓝（SRGB）色彩空间。 |
+| DCI_P3 = 2 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1:1999的色彩空间。 |
+| DISPLAY_P3 = 3 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1:1999的色彩空间。 |
+| SRGB = 4 | 表示基于IEC 61966-2.1:1999的标准红绿蓝（SRGB）色彩空间。 |
 | BT709 = 6 | 表示基于ITU-R BT.709的色彩空间。 |
 | BT601_EBU = 7 | 表示基于ITU-R BT.601的色彩空间。 |
 | BT601_SMPTE_C = 8 | 表示基于ITU-R BT.601的色彩空间。 |
@@ -93,6 +93,8 @@ enum ColorSpaceName
 | DISPLAY_P3_SRGB = DISPLAY_P3 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为Full的色彩空间。 |
 | DISPLAY_P3_HLG = P3_HLG | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。 |
 | DISPLAY_P3_PQ = P3_PQ | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。 |
+| BT2020_LOG_FULL = 27 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为Full的色彩空间。<br/>**起始版本：** 26.0.0 |
+| BT2020_LOG_LIMIT = 28 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为LIMIT的色彩空间。<br/>**起始版本：** 26.0.0 |
 | CUSTOM = 5 | 表示自定义色彩空间。 |
 
 
@@ -145,7 +147,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 | 参数项 | 描述 |
 | -- | -- |
 | [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) primaries | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的色彩原色。 |
-| float gamma | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的伽马值，伽马值为一个浮点数，用于校正亮度范围。<br>伽马值通常为正值，负值会使弱光区域更亮，强光区域变暗，伽马值为0表示线性色彩空间。 |
+| float gamma | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的伽马值，伽马值为一个浮点数，用于校正亮度范围。<br>伽马值通常为正值，负值会使弱光区域更亮，强光区域变暗，伽马值为1.0表示线性色彩空间。 |
 
 **返回：**
 
@@ -161,7 +163,7 @@ void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorS
 
 **描述**
 
-销毁OH_NativeColorSpaceManager实例。
+销毁OH_NativeColorSpaceManager实例。当不再需要OH_NativeColorSpaceManager实例时，需要调用此函数进行销毁以释放内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -199,7 +201,7 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回色彩空间枚举[ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename)对应的值。其中，当返回值为0时，表示接口操作失败。 |
+| int | 返回色彩空间枚举[ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename)对应的值。其中，当返回值为0时，表示接口操作失败。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：检查参数是否为有效指针。 |
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 
@@ -226,7 +228,7 @@ WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceMana
 
 | 类型 | 说明 |
 | -- | -- |
-| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | 返回值为float数组，返回值为<0.0, 0.0>表示接口操作失败，其余返回值表示操作成功。 |
+| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | 返回值为float数组，返回值为<0.0, 0.0>表示接口操作失败，其余返回值表示操作成功。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：检查参数是否为有效指针。 |
 
 ### OH_NativeColorSpaceManager_GetGamma()
 
@@ -253,6 +255,6 @@ float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColo
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回值为float类型，返回值为0.0表示接口操作失败，其余返回值表示操作成功。 |
+| float | 返回值为float类型，返回值为0.0表示接口操作失败，其余返回值表示操作成功。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：检查参数是否为有效指针。 |
 
 

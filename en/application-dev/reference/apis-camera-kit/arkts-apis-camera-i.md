@@ -85,8 +85,8 @@ Describes the frame rate range.
 
 | Name     | Type                         | Read-only| Optional| Description           |
 | -------- | ----------------------------- |----- |---| -------------- |
-| min      | number                        |  Yes | No| Minimum frame rate, in frames per second (fps).     |
-| max      | number                        |  Yes | No| Maximum frame rate, in fps.     |
+| min      | number                        |  Yes | No| Minimum frame rate. Unit: FPS     |
+| max      | number                        |  Yes | No| Maximum frame rate. Unit: FPS     |
 
 ## VideoProfile
 
@@ -98,7 +98,7 @@ Describes the video configuration information. It inherits from [Profile](#profi
 
 | Name                      | Type                                     | Read-only| Optional| Description       |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| frameRateRange            | [FrameRateRange](arkts-apis-camera-i.md#frameraterange)         | Yes |  No | Frame rate range, in fps.|
+| frameRateRange            | [FrameRateRange](arkts-apis-camera-i.md#frameraterange)         | Yes |  No | Describes the frame rate range. Unit: FPS|
 
 ## CameraOutputCapability
 
@@ -194,7 +194,7 @@ Describes the settings for taking an image.
 
 | Name     | Type                           | Read-only| Optional| Description                                                                  |
 | -------- | ------------------------------- | ---- | ---- |----------------------------------------------------------------------|
-| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | No  | Yes  | Image quality (low by default).                                                          |
+| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | No  | Yes  | Image quality (medium by default).                                                          |
 | rotation | [ImageRotation](arkts-apis-camera-e.md#imagerotation) | No  | Yes  | Rotation angle of the image. The default value is **0**, indicating clockwise rotation.                                                 |
 | location | [Location](#location)           | No  | Yes  | Geolocation information of the image (depending on the device hardware information by default).                                              |
 | mirror   | boolean                         | No  | Yes  | Whether mirror photography is enabled (disabled by default). Before using this enumerated value, call [isMirrorSupported](arkts-apis-camera-PhotoOutput.md#ismirrorsupported) to check whether mirror photography is supported. **true** if enabled, **false** otherwise.|
@@ -210,7 +210,7 @@ Describes the frame shutter information.
 | Name      | Type  | Read-only| Optional| Description       |
 | --------- | ------ | ---- | ---- | ---------- |
 | captureId | number | No  | No  | ID of this capture action.|
-| timestamp | number | No  | No  | Timestamp of the shutter, in milliseconds.|
+| timestamp | number | No  | No  | Timestamp when the frame shutter event is triggered, in milliseconds.|
 
 ## FrameShutterEndInfo<sup>12+</sup>
 
@@ -293,8 +293,126 @@ Describes the camera metadata, which is the data source of [CameraInput](arkts-a
 | Name        | Type                                       | Read-only| Optional|Description               |
 | ----------- | ------------------------------------------- | ---- | ---- | ----------------- |
 | type        | [MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)   |  Yes |  No | Metadata object type.   |
-| timestamp   | number                                      |  Yes |  No | Current timestamp, in nanoseconds (ns).|
+| timestamp   | number                                      |  Yes |  No | Timestamp, in ns.|
 | boundingBox | [Rect](#rect)                               |  Yes |  No | Metadata rectangle. |
+
+## MetadataBasicFaceObject
+
+Basic face metadata detected by the camera, which is extended from [MetadataObject](#metadataobject). It serves as the data source of the camera information in [CameraInput](arkts-apis-camera-CameraInput.md). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                   | Type                             | Read-only| Optional|Description               |
+| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
+| leftEyeBoundingBox     | [Rect](#rect)                             |  Yes |  Yes | Left eye area.|
+| rightEyeBoundingBox    | [Rect](#rect)                            |  Yes |  Yes | Right eye area.|
+| pitchAngle             | number                            |  Yes |  Yes | Pitch angle. The value range is [-90, 90], with the positive direction being downwards.|
+| yawAngle               | number                            |  Yes |  Yes | Yaw angle. The value range is [-90, 90], with the positive direction being rightwards.|
+| rollAngle              | number                            |  Yes |  Yes | Roll angle. The value range is [-180, 180], with the positive direction being clockwise.|
+
+## MetadataFaceObject
+
+Face metadata detected by the camera, which is extended from [MetadataObject](#metadataobject). It serves as the data source of the camera information in [CameraInput](arkts-apis-camera-CameraInput.md). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                   | Type                             | Read-only| Optional|Description               |
+| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
+| leftEyeBoundingBox     | [Rect](#rect)                             |  Yes |  No | Left eye area.|
+| rightEyeBoundingBox    | [Rect](#rect)                            |  Yes |  No | Right eye area.|
+| emotion                | [Emotion](arkts-apis-camera-e.md#emotion)             |  Yes |  No | Detected emotion.|
+| emotionConfidence      | number                            |  Yes |  No | Emotion detection confidence. The value range is [0, 1].|
+| pitchAngle             | number                            |  Yes |  No | Pitch angle. The value range is [-90, 90], with the positive direction being downwards.|
+| yawAngle               | number                            |  Yes |  No | Yaw angle. The value range is [-90, 90], with the positive direction being rightwards.|
+| rollAngle              | number                            |  Yes |  No | Roll angle. The value range is [-180, 180], with the positive direction being clockwise.|
+
+## MetadataHumanBodyObject
+
+Human body metadata detected by the camera, which is extended from [MetadataObject](#metadataobject). It serves as the data source of the camera information in [CameraInput](arkts-apis-camera-CameraInput.md). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+## MetadataCatFaceObject
+
+Cat face metadata detected by the camera, which is extended from [MetadataObject](#metadataobject). It serves as the data source of the camera information in [CameraInput](arkts-apis-camera-CameraInput.md). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                   | Type                             | Read-only| Optional|Description               |
+| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
+| leftEyeBoundingBox     | [Rect](#rect)                              |  Yes |  No | Left eye area.|
+| rightEyeBoundingBox    | [Rect](#rect)                              |  Yes |  No | Right eye area.|
+
+## MetadataCatBodyObject
+
+Cat body metadata detected by the camera, which is extended from [MetadataObject](#metadataobject). It serves as the data source of the camera information in [CameraInput](arkts-apis-camera-CameraInput.md). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+## MetadataDogFaceObject
+
+Dog face metadata detected by the camera, which is extended from [MetadataObject](#metadataobject). It serves as the data source of the camera information in [CameraInput](arkts-apis-camera-CameraInput.md). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                   | Type                             | Read-only| Optional|Description               |
+| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
+| leftEyeBoundingBox     | [Rect](#rect)                              |  Yes |  No | Left eye area.|
+| rightEyeBoundingBox    | [Rect](#rect)                              |  Yes |  No | Right eye area.|
+
+## MetadataDogBodyObject
+
+Dog body metadata detected by the camera, which is extended from [MetadataObject](#metadataobject). It serves as the data source of the camera information in [CameraInput](arkts-apis-camera-CameraInput.md). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+## MetadataSalientDetectionObject
+
+Salient subject metadata detected by the camera, which is extended from [MetadataObject](#metadataobject). It serves as the data source of the camera information in [CameraInput](arkts-apis-camera-CameraInput.md). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+## MetadataBarcodeObject
+
+Barcode metadata detected by the camera, which is extended from [MetadataObject](#metadataobject). It serves as the data source of the camera information in [CameraInput](arkts-apis-camera-CameraInput.md). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## SmoothZoomInfo<sup>11+</sup>
 
@@ -383,3 +501,18 @@ Describes the exposure information object.
 | Name     | Type                         | Read-only| Optional| Description           |
 | -------- | ----------------------------- |----- |---| --------------|
 | exposureTime      | number                        |  Yes | Yes| Exposure time, in microseconds.     |
+
+## ZoomPointInfo
+
+Describes the equivalent focal length information.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name    | Type       |   Read-only  | Optional | Description      |
+| -------- | ---------- | -------- |-----| ---------- |
+| zoomRatio |   number   |   Yes    | No  | Zoom ratio.|
+| equivalentFocalLength |   number   |   Yes    | No  | Equivalent focal length corresponding to the current focal length ratio.|

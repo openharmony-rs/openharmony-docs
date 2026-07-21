@@ -1,10 +1,12 @@
 # Access Control by Device and Data Level (ArkTS)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @widecode; @htt1997-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:39:34.994Z pushedAt=2026-06-22T07:40:13.061Z -->
 
 ## Basic Concepts
 
@@ -24,10 +26,11 @@ The data can be rated into four security levels as below.
 | Low| S1 | Data that may cause minor adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Gender, nationality, and user application records| 
 
 ### Device Security Levels
+
 <!--RP1-->
 Device security levels are classified into SL1 to SL5 based on devices' security capabilities, such as whether a Trusted Execution Environment (TEE) or a secure storage chip is available. For example, the development boards RK3568 and Hi3516 are SL1 (lower security) devices, and tablets are SL4 (higher security) devices.
 
-During device networking, you can run the **hidumper -s 3511** command to query the device security level. If no result is displayed, run the **service_control start dslm_service** command to start the corresponding process and then run the **hidumper** command to query the security level. The following example shows how to query the security level of the RK3568 device:
+When devices are networked, you can run the `hidumper -s 3511` command to check the device security level. If no result is returned, run the `service_control start dslm_service` command to start the corresponding service, and then run the hidumper command again. The following figure shows the security level of an RK3568 device.
 <!--RP1End-->
 <!--Del-->
 ![Device-Security-Levels](figures/Device-Security-Levels.png)
@@ -44,6 +47,7 @@ In cross-device data sync, data access is controlled based on the device securit
 |SL3|S1 to S3|
 |SL4|S1 to S4|
 |SL5|S1 to S4| 
+
 <!--RP2-->
 For example, the security level of development boards RK3568 and Hi3516 is SL1. The database with data security label S1 can be synced with RK3568 and Hi3516, but the databases with database labels S2-S4 cannot.
 <!--RP2End-->
@@ -51,7 +55,6 @@ For example, the security level of development boards RK3568 and Hi3516 is SL1. 
 ## When to Use
 
 The access control mechanism ensures secure data storage and sync across devices. When creating a database, you need to correctly set the security level for the database.
-
 
 ## Setting the Security Level for a KV Store
 
@@ -84,8 +87,9 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    export class KvInterface {
    }
    ```
+
    <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public CreateKvManager = (() => {
      Logger.info('CreateKvManager start');
@@ -106,8 +110,9 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
      }
    })
    ```
+
    <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public GetKvStore = (() => {
      Logger.info('GetKvStore start');
@@ -164,12 +169,11 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    })
    ```
 
-## Setting the Security Level for an RDB Store 
+## Setting the Security Level for an RDB Store
 
 When an RDB store is created, the **securityLevel** parameter specifies the security level of the RDB store. For details about the security levels, see [SecurityLevel](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#securitylevel). The following example shows how to create an RDB store with security level of S3.
 
 For details about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
-
 
 <!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  
 

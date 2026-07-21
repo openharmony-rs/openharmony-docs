@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:55.552Z pushedAt=2026-06-25T06:58:09.383Z -->
 
 ## When to Use
 
@@ -70,7 +71,7 @@ struct Index {
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
-          // Callback triggered when the mouse button is pressed.
+          // Monitor mouse press events. The callback returns true when pressed.
           try {
             inputMonitor.off('mouse', callback); // Cancel listening for mouse events.
             console.info(`Monitor off success`);

@@ -30,7 +30,7 @@ import brightness, { BrightnessModeResponse, BrightnessResponse } from '@system.
 
 ## Brightness
 
-Provides APIs for querying and adjusting the screen brightness and mode.
+The **brightness** module provides APIs for querying and adjusting the screen brightness and mode.
 
 ### getValue<sup>(deprecated)</sup>
 
@@ -268,7 +268,7 @@ export default {
 
 setMode(options?: SetBrightnessModeOptions): void
 
-Sets the screen brightness adjustment mode.
+Sets the screen brightness mode.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -350,7 +350,7 @@ Sets whether to always keep the screen on. Call this API in **onShow()**.
 > **NOTE**
 >
 > - This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) instead.
-> - On Lite Wearables, this API can only prevent the system from turning off the screen due to inactivity timeout (automatic). It cannot prevent screen-off caused by user actions (such as covering the screen) or the end of the keep-screen-on period.
+> - On lite wearables, this API can only prevent the screen from turning off (automatically) due to inactivity. It cannot prevent the screen from turning off due to user actions (such as covering the screen) or the end of screen-on time.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 

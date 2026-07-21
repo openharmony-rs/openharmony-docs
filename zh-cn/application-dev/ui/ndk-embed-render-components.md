@@ -64,7 +64,7 @@
        ArkUI_NodeHandle Custom = nodeAPI->createNode(ARKUI_NODE_CUSTOM);
        valueWidth[0].f32 = 400;
        nodeAPI->setAttribute(Custom, NODE_WIDTH, &itemWidth);
-       nodeAPI->setAttribute(Custom, NODE_HEIGHT, &itemWidth);
+       nodeAPI->setAttribute(Custom, NODE_HEIGHT, &itemHeight);
        nodeAPI->addChild(column, Custom);
    
        // 节点操作类接口 创建 - 挂载 - 构建树。
@@ -141,8 +141,8 @@
 
        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+       ArkUI_NodeHandle testNode = nullptr;
        if (nodeAPI != nullptr) {
-            ArkUI_NodeHandle testNode;
             testNode = testRenderNode(nodeAPI);
        }
    
@@ -257,6 +257,9 @@
                OH_Drawing_PenSetColor(pen, color);
                OH_Drawing_CanvasAttachPen(canvas, pen);
                OH_Drawing_CanvasDrawPath(canvas, path);
+               OH_Drawing_CanvasDetachPen(canvas);
+               OH_Drawing_PenDestroy(pen);
+               OH_Drawing_PathDestroy(path);
            });
    
        // 用户自定义参数。
@@ -312,12 +315,15 @@
 
        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+       ArkUI_NodeHandle testNode = nullptr;
        if (nodeAPI != nullptr) {
-            ArkUI_NodeHandle testNode;
             // 获取ets侧传入的context。
             ArkUI_ContextHandle context = nullptr;
             // 通过code判断是否获取成功。
             auto code = OH_ArkUI_GetContextFromNapiValue(env, args[1], &context);
+            if (code != ARKUI_ERROR_CODE_NO_ERROR) {
+                return nullptr;
+            }
             testNode = testRenderNode2(nodeAPI, context);
        }
    
@@ -407,7 +413,6 @@
        auto renderNode = std::make_shared<ArkUIRenderNode>();
        Custom->AddRenderNode(renderNode);
        renderNode->SetSize(g_num300, g_num300);
-       Custom->AddRenderNode(renderNode);
        render_ = renderNode;
    
        scroll->AddChild(column);

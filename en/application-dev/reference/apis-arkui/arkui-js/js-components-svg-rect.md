@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:21.031Z pushedAt=2026-06-24T01:31:48.271Z -->
 
 >  **NOTE**
 >
@@ -53,4 +54,4 @@ The [universal attributes](js-components-svg-common-attributes.md) and the attri
 ```
 
 
-![0](figures/0.png)
+![rect](figures/rect.png)

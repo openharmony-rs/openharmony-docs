@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-**VideoOutput** implements output information used in a video session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+VideoOutput implements output information used in a video session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
@@ -372,7 +372,9 @@ function getSupportedFrameRates(videoOutput: camera.VideoOutput): Array<camera.F
 
 setFrameRate(minFps: number, maxFps: number): void
 
-Sets a frame rate range for video streams. The range must be within the supported frame rate range, which can be obtained by calling [getSupportedFrameRates](#getsupportedframerates12).
+Sets a frame rate range for video streams. The range must be within the supported frame rate range,
+
+which can be obtained by calling [getSupportedFrameRates](#getsupportedframerates12).
 
 > **NOTE**
 >
@@ -555,7 +557,7 @@ getVideoRotation(deviceDegree?: number): ImageRotation
 
 Obtains the video rotation angle.
 
-- Device's natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+- Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -568,7 +570,7 @@ Obtains the video rotation angle.
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | No  | Device rotation angle, measured in degrees, within the range of [0, 360].<br>Since API version 23, the input parameter **deviceDegree** is optional. If no parameter is passed, the system obtains the **deviceDegree** value to calculate the video rotation angle.|
+| deviceDegree | number | No  | Device rotation angle, measured in degrees, within the range of [0, 360].<br> Since API version 23, the input parameter **deviceDegree** is optional. If no parameter is passed, the system obtains the **deviceDegree** value to calculate the video rotation angle.|
 
 **Return value**
 
@@ -582,6 +584,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID  | Error Message                        |
 |---------|------------------------------|
+| 7400101 | Parameter missing or parameter type incorrect.<br>Applicable versions: 12-22   |
 | 7400201 | Camera service fatal error.  |
 
 **Example**

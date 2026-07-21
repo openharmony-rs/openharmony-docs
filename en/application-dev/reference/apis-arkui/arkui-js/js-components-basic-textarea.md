@@ -1,10 +1,12 @@
 # textarea
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bbe820b15aaf29733c2f40fbe62bda7f1f6a0b03 translatedAt=2026-06-22T07:51:30.527Z pushedAt=2026-06-23T01:37:10.366Z -->
 
 >  **NOTE**
 >
@@ -12,16 +14,13 @@
 
 The **\<textarea>** component provides a text box to receive multi-line text input.
 
-
 ## Required Permissions
 
 None
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -48,7 +47,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | icon    | string | Path of the icon for a menu option.|
 | content | string | Text content of a menu option.|
 
-
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -58,11 +56,10 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | color                    | &lt;color&gt;              | \#e6000000 | No   | Text color of the multi-line text box.                             |
 | font-size                | &lt;length&gt;             | 16px       | No   | Font size of the multi-line text box.                             |
 | allow-scale              | boolean                    | true       | No   | Whether the font size changes with the system's font size settings.<br>If the **config-changes** tag of **fontSize** is configured for abilities in the **config.json** file, the setting takes effect without application restart.|
-| placeholder-color        | &lt;color&gt;              | \#99000000 | No   | Color of the hint text in the multi-line text box. This attribute is available when the component type is set to one of the following: text\|email\|date\|time\|number\|password.|
+| placeholder-color        | &lt;color&gt;              | \#99000000 | No    | Color of the hint text in the multi-line text box. |
 | font-weight              | number \| string | normal     | No   | Font weight. For details, see **font-weight** of the [**\<text>**](js-components-basic-text.md#styles) component.|
 | font-family              | string                     | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
 | caret-color<sup>6+</sup> | &lt;color&gt;              | -          | No   | Color of the caret.                              |
-
 
 ## Events
 
@@ -70,18 +67,16 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 | Name                       | Parameter                                      | Description                                      |
 | ------------------------- | ---------------------------------------- | ---------------------------------------- |
-| change                    | { text: newText, lines: textLines, height: textHeight } | Triggered when the input content changes. The input content, number of rows, and row height are obtained through the parameters.<br>Since API version 5, if you change the value attribute directly, this event will not be triggered.|
+| change | { text: newText, lines: textLines, height: textHeight } | Triggered when the input content changes. The input content, number of lines, and line height can be obtained through the parameters.<br/>Since API version 5, if you change the value attribute directly, this event will not be triggered. |
 | translate<sup>5+</sup>    | { value: selectedText }   | Triggered when users click the translate button in the menu displayed after they select a text segment. The selected text content is returned.|
 | share<sup>5+</sup>        | { value: selectedText }   | Triggered when users click the share button in the menu displayed after they select a text segment. The selected text content is returned.|
 | search<sup>5+</sup>       | { value: selectedText }   | Triggered when users click the search button in the menu displayed after they select a text segment. The selected text content is returned.|
 | optionselect<sup>5+</sup> | { index:optionIndex, value: selectedText } | Triggered when users click a menu option in the menu displayed after they select a text segment. This event is valid only when the **menuoptions** attribute is set. The option index and selected text content are returned.|
-| selectchange<sup>6+</sup> | { start: number, end: number }| Triggered when the text selection changes.                            |
-
+| selectchange<sup>6+</sup> | { start: number, end: number } | Triggered when the text selection changes. |
 
 ## Methods
 
 The [universal methods](js-components-common-methods.md) are supported.
-
 
 ## Example
 
@@ -113,4 +108,4 @@ change(e){
 }
 ```
 
-![000000](figures/000000.png)
+![value](figures/value.png)

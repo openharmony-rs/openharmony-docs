@@ -105,11 +105,11 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ### 资产同步机制
 
-在分布式对象中，可以使用[资产类型](../reference/apis-arkdata/js-apis-data-commonType.md#asset)来描述本地实体资产文件，分布式对象跨设备同步时，该文件会和数据一起同步到其他设备上。
+在分布式对象中，可以使用资产类型[Asset](../reference/apis-arkdata/js-apis-data-commonType.md#asset)来描述本地实体资产文件，分布式对象跨设备同步时，该文件会和数据一起同步到其他设备上。
 
-在API version 20之前版本，仅支持资产类型，不支持[资产类型数组](../reference/apis-arkdata/js-apis-data-commonType.md#assets)。如需同步多个资产，可将每个资产作为分布式对象的一个根属性实现。
+在API version 20之前版本，仅支持资产类型，不支持资产类型数组[Assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets)。如需同步多个资产，可将每个资产作为分布式对象的一个根属性实现。
 
-从API version 20开始，支持[资产类型数组](../reference/apis-arkdata/js-apis-data-commonType.md#assets)的同步。
+从API version 20开始，支持资产类型数组[Assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets)的同步。
 
 ## 约束限制
 <!--RP5-->
@@ -535,6 +535,6 @@ function getRemoteDeviceId() {
 
 针对分布式数据对象开发，有以下相关实例可供参考：
 
-- [设备管理（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication)
+- [设备管理（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
 
 - [分布式备忘录（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedNote)

@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:07.533Z pushedAt=2026-06-23T06:12:23.654Z -->
 
 AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
 
@@ -491,7 +492,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400104  | Operation timeout. Returned by promise. |
+| 5400104  | Operation timeout. |
 | 5400106  | Unsupported format. Returned by promise.  |
 | 5400108  | Parameter check failed. Returned by promise.  |
 | 5411012  | Http cleartext traffic is not permitted. |

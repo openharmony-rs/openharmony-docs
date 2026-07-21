@@ -28,7 +28,7 @@ The file declares the common enums and definitions of the display.
 | -- | -- | -- |
 | [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) | NativeDisplayManager_Rect | Describes a rectangle.|
 | [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md) | NativeDisplayManager_WaterfallDisplayAreaRects | Describes the curved area on a waterfall display.|
-| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) | NativeDisplayManager_CutoutInfo | Describes the unusable area of a display, including punch hole, notch, and curved area of a waterfall display.|
+| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) | NativeDisplayManager_CutoutInfo | Describes the unusable area of a display, including punch a hole, a notch, and the curved area of a waterfall display.|
 | [NativeDisplayManager_DisplayHdrFormat](capi-nativedisplaymanager-displayhdrformat.md) | NativeDisplayManager_DisplayHdrFormat | Describes all the HDR formats supported by a display.|
 | [NativeDisplayManager_DisplayColorSpace](capi-nativedisplaymanager-displaycolorspace.md) | NativeDisplayManager_DisplayColorSpace | Describes all the color spaces supported by a display.|
 | [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) | NativeDisplayManager_DisplayInfo | Describes the information about a display.|
@@ -114,7 +114,7 @@ Enumerates the status codes returned by the display manager interface.
 | DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001 | The display is invalid.|
 | DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002 | The current operation object does not have the operation permission.|
 | DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003 | The system service is abnormal.|
-| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 |  Invalid parameter.<br>**Since**: 20|
+| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 | Invalid parameter.<br>**Since**: 20|
 
 ### NativeDisplayManager_FoldDisplayMode
 

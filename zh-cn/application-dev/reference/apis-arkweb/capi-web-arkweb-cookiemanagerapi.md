@@ -12,7 +12,9 @@ typedef struct {...} ArkWeb_CookieManagerAPI
 
 ## 概述
 
-定义了ArkWeb的CookieManager接口。在调用接口之前，建议使用[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)检查函数结构体是否有对应的函数指针，避免SDK与设备ROM不匹配导致崩溃。CookieManager相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。
+ArkWeb_CookieManagerAPI是Cookie管理相关Native API结构体。该结构体提供了Cookie的读取、设置、清除和同步等操作能力。
+
+CookieManager相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
 **起始版本：** 12
 
@@ -69,7 +71,7 @@ ArkWeb_ErrorCode (*fetchCookieSync)(const char* url, bool incognito, bool includ
 ### configCookieSync()
 
 ```c
-ArkWeb_ErrorCode (*configCookieSync)(const char* url,const char* cookieValue, bool incognito, bool includeHttpOnly)
+ArkWeb_ErrorCode (*configCookieSync)(const char* url, const char* cookieValue, bool incognito, bool includeHttpOnly)
 ```
 
 **描述：**

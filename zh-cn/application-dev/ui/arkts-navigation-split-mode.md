@@ -1,8 +1,8 @@
 # Navigation分栏开发
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -110,7 +110,7 @@
       "pageSourceFile": "src/main/ets/pages/navigation/splitmode/NewsDetail.ets",
       "buildFunction": "NewsDetailPageBuilder",
       "data": {
-        "description": "this is DetailPageA"
+        "description": "this is NewsDetail"
       }
     }
   ]

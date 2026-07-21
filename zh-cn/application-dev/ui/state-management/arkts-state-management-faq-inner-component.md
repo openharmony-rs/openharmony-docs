@@ -124,7 +124,6 @@ let model: Model = new Model();
 @Component
 struct Test {
   @State count: number = 10;
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   aboutToAppear(): void {
     model.add(() => {
@@ -535,7 +534,7 @@ struct DeepReParent {
 }
 ```
 
-在以上示例中，DeepRePropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据带来性能开销，所以\@ObjectLink是比\@Prop更优的选择。
+在以上示例中，DeepRePropChild组件没有改变\@Prop testClass: DeepReMyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据带来性能开销，所以\@ObjectLink是比\@Prop更优的选择。
 
 【正例】
 
@@ -581,7 +580,7 @@ struct Parent {
 
 ## 状态变量关联的组件数过多导致性能下降
 
-建议每个状态变量关联的组件数少于20个。精准控制状态变量关联的组件数量可减少不必要的组件刷新，提升刷新效率。有时开发者会将同一状态变量绑定于多个同级组件属性，状态变化时将导致这些组件同步更新，产生不必要的刷新，当组件复杂度较高时会显著影响整体性能。相反，将该状态变量绑定在这些组件的父组件上，可以减少需要刷新的组件数，提高性能。在应用开发中，可以通过HiDumper查看状态变量关联的组件数。<!--Del-->具体可参考[状态变量组件定位工具实践](../../performance/state_variable_dfx_pratice.md)。<!--DelEnd-->
+建议每个状态变量关联的组件数少于20个。精准控制状态变量关联的组件数量可减少不必要的组件刷新，提升刷新效率。有时开发者会将同一状态变量绑定于多个同级组件属性，状态变化时将导致这些组件同步更新，产生不必要的刷新，当组件复杂度较高时会显著影响整体性能。相反，将该状态变量绑定在这些组件的父组件上，可以减少需要刷新的组件数，提高性能。在应用开发中，可以通过HiDumper查看状态变量关联的组件数。<!--Del-->具体可参考[状态变量组件定位工具实践](../../performance/state-variable-dfx-practice.md)。<!--DelEnd-->
 
 【反例】
 

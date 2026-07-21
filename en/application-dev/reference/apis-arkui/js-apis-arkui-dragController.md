@@ -167,7 +167,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 | Type                                              | Description                    |
 | -------------------------------------------------- | ------------------------ |
-| Promise&lt;[DragEventParam](#drageventparam12)&gt; | Promise used to return the result.|
+| Promise&lt;[DragEventParam](#drageventparam12)&gt; | Promise used to return the result when the drag ends.|
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -873,7 +873,7 @@ Subscribes to drag state changes.
 | Name    | Type | Mandatory  | Description            |
 | ------ | ------ | ------- | ---------------- |
 |  type  | string | Yes     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | Yes     | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | Yes     | Callback used to return the drag state in [DragAndDropInfo](#draganddropinfo11).|
 
 **Example**
 
@@ -963,7 +963,7 @@ Unsubscribes from drag state changes.
 | Name    | Type | Mandatory   | Description            |
 | ------ | ------ | ------- | ---------------- |
 |  type  | string | Yes     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | No   | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | No   | Callback used to return the drag state in [DragAndDropInfo](#draganddropinfo11).|
 
 **Example**
 

@@ -239,7 +239,7 @@ export struct pageThreeTmp {
     if (this.builderNode!.getFrameNode()) {
       this.content.addFrameNode(this.rootNode);
       // BuilderNode的根节点被挂载至FrameNode对象对应的节点中。
-      // BuilderNode的根节点如果要触发析构需要从主动从FrameNode对象对应的节点中移除，或者等待FrameNode对象对应的节点析构。
+      // BuilderNode的根节点如果要触发析构需要主动从FrameNode对象对应的节点中移除，或者等待FrameNode对象对应的节点析构。
       // 否则，BuilderNode的根节点无法触发析构。
       this.rootNode.appendChild(this.builderNode.getFrameNode());
     }

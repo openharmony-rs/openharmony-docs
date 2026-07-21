@@ -1,10 +1,12 @@
 # Basic Usage of Custom Components
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1-->
 <!--Designer: @shiyu_huang-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:55.597Z pushedAt=2026-06-23T10:45:43.299Z -->
 
 Custom components are existing components encapsulated based on service requirements. A custom component can be invoked multiple times in a project to improve the code readability. You can import a custom component to the host page through **element** as shown in the following code snippet:
 
@@ -28,7 +30,6 @@ The following is an example of using a custom component with **if-else**, which 
 
 The **name** attribute indicates the custom component name (optional), which is case-insensitive and is in lowercase by default. The **src** attribute indicates the **.hml** file path (mandatory) of the custom component. If **name** is not set, the **.hml** file name is used as the component name by default.
 
-
 ## Custom Events
 
 To bind an event to a custom child component, use the **(on|@)event-name="bindParentVmMethod"** syntax. **this.$emit('eventName', { params: 'passedParameters' })** is used in the child component to trigger the event and pass parameters to the parent component. The parent component then calls the **bindParentVmMethod** API and receives parameters passed by the child component.
@@ -37,7 +38,7 @@ To bind an event to a custom child component, use the **(on|@)event-name="bindPa
 >
 >  For child component events that are named in camel case, convert the names to kebab case when binding the events to the parent component. For example, use **\@children-event** in the parent component instead of **childrenEvent** used in the child component.
 
-**Example 1 with parameters passed**
+**Example 1 with no parameters passed**
 
 The following example describes how to define a child component **comp**:
 
@@ -105,7 +106,7 @@ export default {
 }
 ```
 
-**Example 2 with no parameters passed**
+**Example 2 with parameters passed**
 
 The following example describes how to define a child component **comp**:
 
@@ -152,9 +153,7 @@ export default {
 
 ![EventParameters](figures/EventParameters.gif)
 
-
 ## Custom Component Data
-
 
 In the JS file of a custom component, you can define, pass, and process data by declaring fields such as **data**, **props**, and **computed**. For details about how to use **props** and **computed**, see [Data Transfer and Processing](js-components-custom-props.md).
 
@@ -162,6 +161,6 @@ In the JS file of a custom component, you can define, pass, and process data by 
 
 | Name     | Type           | Description                                    |
 | -------- | --------------- | ---------------------------------------- |
-| data     | Object \| Function | Data model of the page. If the attribute is of the function type, the return value must be of the object type. The name cannot start with a dollar sign ($) or underscore (\_). Do not use reserved words (**for**, **if**, **show**, and **tid**).<br>Do not use this attribute and **private** or **public** at the same time.|
+| data     | Object&nbsp;\|&nbsp;Function | Data model of the page. If the attribute is of the function type, the return value must be of the object type. The name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**).<br/>Do not use this attribute and **private** or **public** at the same time. |
 | props    | Array \| Object    | Used for communication between components. This attribute can be passed to components through **\<tag xxxx='value'>**. A **props** name must be in lowercase and cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**) in the name. Currently, **props** does not support functions.|
 | computed | Object          | Used for pre-processing for reading and setting parameters. The result is cached. The name cannot start with a dollar sign ($) or underscore (\_). Do not use reserved words.|

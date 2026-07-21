@@ -16,7 +16,10 @@
 <!--RP3--><!--RP3End-->
 
 <!--RP2-->
-- **个数限制**：一个普通应用支持最多30个有效提醒，一个系统应用支持最多10000个有效提醒。整个系统最多支持12000个有效提醒。
+- **个数限制**：
+  - API版本26.0.0及以上：单个普通应用最多支持64个提醒。
+  - API version 25及以下：单个普通应用最多支持30个提醒。
+  - 一个系统应用支持最多10000个有效提醒。整个系统最多支持12000个有效提醒。
 <!--RP2End-->
 
 > **说明：**
@@ -101,7 +104,7 @@
 
    - 定义日历实例。
      
-      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) --> 
+      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->  
       
       ``` TypeScript
       let calendar: reminderAgentManager.ReminderRequestCalendar = {
@@ -109,7 +112,7 @@
         dateTime: {
           // 指明提醒的目标时间
           year: date.getFullYear(),
-          month: date.getUTCMonth() + 1,
+          month: date.getMonth() + 1,
           day: date.getDate(),
           hour: date.getHours(),
           minute: date.getMinutes(),

@@ -12,11 +12,11 @@
 
 ## SecurityLevel
 
-数据库的安全级别枚举。请使用枚举名称而非枚举值。数据库的安全等级仅支持由低向高设置，不支持由高向低设置。
+数据库的安全级别枚举。请使用枚举名称而非枚举值。数据库的安全级别仅支持由低向高设置，不支持由高向低设置。
 
 > **说明：**
 >
-> 若需要进行同步操作，数据库安全等级应不高于对端设备安全等级，具体可见[跨设备同步访问控制机制](../../database/sync-app-data-across-devices-overview.md#跨设备同步访问控制机制)。
+> 若需要进行同步操作，数据库安全级别应不高于对端设备安全级别，具体可见[跨设备同步访问控制机制](../../database/sync-app-data-across-devices-overview.md#跨设备同步访问控制机制)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -89,7 +89,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 // 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
-class EntryAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
     let store: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -99,7 +99,7 @@ class EntryAbility extends UIAbility {
     };
     store = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
 
-    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize=icu zh_CN)";
+    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize='icu zh_CN')";
     if (store != undefined) {
       (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
@@ -121,7 +121,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 // 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
-class EntryAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
     let store: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -156,24 +156,24 @@ export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('custom tokenizer example: window stage create begin.');
     let store: relationalStore.RdbStore | undefined = undefined;
-    const storeConfig: relationalStore.StoreConfig = {
+    const SQL_CREATE_TABLE: relationalStore.StoreConfig = {
       name: "MyStore.db",
       securityLevel: relationalStore.SecurityLevel.S3
     };
     let customType = relationalStore.Tokenizer.CUSTOM_TOKENIZER;
     let customTypeSupported = relationalStore.isTokenizerSupported(customType);
     if (customTypeSupported) {
-      storeConfig.tokenizer = customType;
+      SQL_CREATE_TABLE.tokenizer = customType;
     } else {
       console.info('custom tokenizer example: not support custom tokenizer.');
       return;
     }
     store = await relationalStore.getRdbStore(this.context, storeConfig);
 
-    const sqlCreateTable =
+    const SQL_CREATE_TABLE =
       "CREATE VIRTUAL TABLE example USING fts5(name, content, tokenize='customtokenizer cut_mode short_words')";
     if (store != undefined) {
-      (store as relationalStore.RdbStore).executeSql(sqlCreateTable, (err) => {
+      (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
           console.error(`custom tokenizer example: ExecuteSql failed, code is ${err.code},message is ${err.message}`);
           return;
@@ -199,7 +199,7 @@ export default class EntryAbility extends UIAbility {
 | ASSET_DELETE | 4 | 表示资产需要在云端删除。 |
 | ASSET_ABNORMAL    | 5   | 表示资产状态异常。      |
 | ASSET_DOWNLOADING | 6   | 表示资产正在下载到本地设备。 |
-| ASSET_TO_DOWNLOAD | 7 | 表示资产待下载。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ASSET_TO_DOWNLOAD | 7 | 表示资产待下载。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SyncMode
 
@@ -311,7 +311,7 @@ export default class EntryAbility extends UIAbility {
 
 | 名称 | 值 | 说明 |
 |------|---|--------------------|
-| CONFLICT_POLICY_DEFAULT | 0 | 默认冲突策略，按照端云同步模式[SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)执行。 |
+| CONFLICT_POLICY_DEFAULT | 0 | 默认冲突策略，按照端云同步模式[SyncMode](#syncmode)执行。 |
 | CONFLICT_POLICY_TIME_FIRST | 1 | 基于时间优先的冲突策略。 |
 | CONFLICT_POLICY_TEMP_PATH | 2 | 基于临时路径的冲突策略。 |
 
@@ -329,7 +329,7 @@ export default class EntryAbility extends UIAbility {
 
 ## ProgressCode<sup>10+</sup>
 
-表示端云同步过程的状态。请使用枚举名称而非枚举值。
+表示端云同步过程的状态码。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -343,7 +343,7 @@ export default class EntryAbility extends UIAbility {
 | RECORD_LIMIT_EXCEEDED | 5    | 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。                             |
 | NO_SPACE_FOR_ASSET    | 6    | 表示云空间剩余空间小于待同步的资产大小。                                          |
 | BLOCKED_BY_NETWORK_STRATEGY<sup>12+</sup>    | 7    | 表示端云同步被网络策略限制。                                                |
-| STOP_CLOUD_SYNC    | 8    | 表示端云同步被停止。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。                                                    |
+| STOP_CLOUD_SYNC    | 8    | 表示端云同步被停止。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。                                                    |
 
 ## TransactionType<sup>14+</sup>
 
@@ -396,7 +396,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 值   | 说明                                    |
 | ------------------ | --- | ---------------------------------------- |

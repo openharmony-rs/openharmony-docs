@@ -1,10 +1,10 @@
 # 使用JSVM-API接口进行函数创建和调用
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -36,10 +36,8 @@ cpp测试全量代码，入口为TEST_FUNC
 #include "napi/native_api.h"
 #include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-
 #define LOG_DOMAIN 0x3200
 #define LOG_TAG "APP"
-
 #define CHECK_RET(cond)                                                                                                \
     if ((cond)) {                                                                                                      \
         const JSVM_ExtendedErrorInfo *info;                                                                            \

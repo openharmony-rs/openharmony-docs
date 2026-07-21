@@ -10,7 +10,7 @@
 
 > **说明：**
 >
->  从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## onVisibleAreaChange
 
@@ -23,29 +23,29 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 >- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 >
 >- 仅提供自身节点相对于所有祖先节点（直到window边界）的相对裁切面积与自身面积的比值及其变化趋势。
-> 
+>
 >- 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如[Stack](ts-container-stack.md)、[Z序控制](ts-universal-attributes-z-order.md)、[rotate](ts-universal-attributes-transformation.md#rotate)等。
 >
 >- 不支持非挂树节点的可见面积变化计算。例如，预加载的节点、通过[overlay](ts-universal-attributes-overlay.md#overlay)能力挂载的自定义节点。
 >
->- 不支持[scale](ts-universal-attributes-transformation.md#scale)属性，如果想要支持[scale](ts-universal-attributes-transformation.md#scale)，则需使用[onVisibleAreaChange<sup>22+</sup>](#onvisibleareachange22)，将measureFromViewport设置为true。
+>- 不支持[scale](ts-universal-attributes-transformation.md#scale)属性，如需支持[scale](ts-universal-attributes-transformation.md#scale)，则需使用[onVisibleAreaChange<sup>22+</sup>](#onvisibleareachange22)，将measureFromViewport设置为true。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**说明：** <br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
-| event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
+| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值在变化中，达到所设阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br>**说明：** <br>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
+| event  | [VisibleAreaChangeCallback](#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 ## onVisibleAreaChange<sup>22+</sup>
 
@@ -59,25 +59,25 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**说明：**<br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
-| event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
-| measureFromViewport  | boolean | 是  | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。 |
+| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值在变化中，达到所设阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br>**说明：**<br>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
+| event  | [VisibleAreaChangeCallback](#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
+| measureFromViewport  | boolean | 是  | 设置可见区域计算模式。<br>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 > **说明：**
 >
 >
 >- 仅提供自身节点相对于所有祖先节点（直到window边界）的相对裁切面积与自身面积的比值及其变化趋势。
-> 
+>
 >- 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如[Stack](ts-container-stack.md)、[Z序控制](ts-universal-attributes-z-order.md)、[rotate](ts-universal-attributes-transformation.md#rotate)等。
 >
 >- 不支持非挂树节点的可见面积变化计算。例如，预加载的节点、通过[overlay](ts-universal-attributes-overlay.md#overlay)能力挂载的自定义节点。
@@ -86,7 +86,7 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): T
 
-设置onVisibleAreaApproximateChange事件的回调参数，限制它的执行间隔。
+设置onVisibleAreaApproximateChange事件的回调参数，限制回调的执行间隔。
 
 > **说明：**
 >
@@ -102,30 +102,36 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| options  | [VisibleAreaEventOptions](#visibleareaeventoptions12) | 是   | 可见区域变化相关的参数。 |
-| event  | [VisibleAreaChangeCallback](#visibleareachangecallback12)   \| undefined | 是   | onVisibleAreaChange事件的回调函数。当组件可见面积与自身面积的比值接近options中设置的阈值时触发该回调。 |
+| options  | [VisibleAreaEventOptions](#visibleareaeventoptions12) | 是   | 可见区域变化相关的配置参数，用于设置可见区域回调阈值、期望计算间隔以及可见区域计算模式。 |
+| event  | [VisibleAreaChangeCallback](#visibleareachangecallback12)   \| undefined | 是   | onVisibleAreaChange事件的回调函数。当组件可见面积与自身面积的比值达到options中设置的阈值时触发该回调，可见区域比例计算间隔由options中的expectedUpdateInterval参数决定。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
->**说明：**
+> **说明：**
 >
->- 此接口与[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)接口存在如下差异：onVisibleAreaChange在每一帧都会进行可见区域比例的计算，如果注册节点太多，系统功耗存在劣化。而此接口降低了可见区域比例计算的频度，计算间隔由[VisibleAreaEventOptions](#visibleareaeventoptions12)的expectedUpdateInterval参数决定。
+>- 此接口与[onVisibleAreaChange](#onvisibleareachange)接口存在如下差异：onVisibleAreaChange在每一帧都会进行可见区域比例的计算，如果注册节点太多，系统功耗存在劣化。而此接口降低了可见区域比例计算的频度，计算间隔由[VisibleAreaEventOptions](#visibleareaeventoptions12)的expectedUpdateInterval参数决定。
+>
+>- 仅提供自身节点相对于所有祖先节点（直到window边界）的相对裁切面积与自身面积的比值及其变化趋势。
+>
+>- 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如[Stack](ts-container-stack.md)、[Z序控制](ts-universal-attributes-z-order.md)、[rotate](ts-universal-attributes-transformation.md#rotate)等。
+>
+>- 不支持非挂树节点的可见面积变化计算。例如，预加载的节点、通过[overlay](ts-universal-attributes-overlay.md#overlay)能力挂载的自定义节点。
 >
 >- 当前接口的可见区域回调阈值默认包含0。例如，开发者设置回调阈值为[0.5]，实际生效的阈值为[0.0, 0.5]。
 >
 >- 从API version 18开始，支持在自定义组件中调用该接口。
 >
->- 不支持[scale](ts-universal-attributes-transformation.md#scale)属性，如果想要支持[scale](ts-universal-attributes-transformation.md#scale)，则需将[VisibleAreaEventOptions](#visibleareaeventoptions12)的measureFromViewport设置为true。
+>- 不支持[scale](ts-universal-attributes-transformation.md#scale)属性。从API version 22开始，如需支持[scale](ts-universal-attributes-transformation.md#scale)，则需将[VisibleAreaEventOptions](#visibleareaeventoptions12)的measureFromViewport设置为true。
 >
 >- 从API version 21开始，返回值类型由void改为T。
 
 ## VisibleAreaEventOptions<sup>12+</sup>
 
-关于区域变化相关的参数。
+关于可见区域变化相关的参数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -133,9 +139,9 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 
 | 名称 | 类型                                                | 只读 | 可选 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | -------- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 否 | 否   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| expectedUpdateInterval | number | 否 | 是 | 定义了开发者期望的计算间隔，单位为ms。当该字段小于100或为NaN时，默认取值为100；当该字段大于2^31-1时，默认取值为2^31-1。<br/>默认值：1000 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| measureFromViewport<sup>22+</sup> | boolean | 否 | 是 | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>默认值：false <br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| ratios | Array&lt;number&gt;                                 | 否 | 否   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| expectedUpdateInterval | number | 否 | 是 | 定义了开发者期望的计算间隔，用于控制可见区域比例的计算频率，单位为ms。当需要更及时地感知可见区域变化时，可设置较小的间隔；当注册节点较多或更关注降低计算频率和功耗时，建议设置较大的间隔。不设置时使用默认值1000。当该字段小于100或为NaN时，默认取值为100；当该字段大于2^31-1时，默认取值为2^31-1。<br>默认值：1000 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| measureFromViewport<sup>22+</sup> | boolean | 否 | 是 | 设置可见区域计算模式。<br>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br>默认值：false <br>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ## VisibleAreaChangeCallback<sup>12+</sup>
 
@@ -154,7 +160,7 @@ type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) =>
 | 参数名            | 类型               | 必填      | 说明                                       |
 | ------------- | ------------------   | ------------- | ---------------------- |
 | isExpanding | boolean | 是 | 视组件的可见面积与自身面积的比值与上一次回调相比的情况而定，比值变大为true，比值变小为false。 |
-| currentRatio | number | 是 | 触发回调时，组件可见面积与自身面积的比值。 |
+| currentRatio | number | 是 | 触发回调时，组件可见面积与自身面积的比值，取值范围为[0.0, 1.0]。 |
 
 ## 示例
 
@@ -167,10 +173,10 @@ type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) =>
 @Entry
 @Component
 struct ScrollExample {
-  scroller: Scroller = new Scroller()
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  @State testTextStr: string = 'test'
-  @State testRowStr: string = 'test'
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State testTextStr: string = 'test';
+  @State testRowStr: string = 'test';
 
   build() {
     Column() {
@@ -187,22 +193,22 @@ struct ScrollExample {
 
       Scroll(this.scroller) {
         Column() {
-          Text("Test Text Visible Change")
+          Text('Test Text Visible Change')
             .fontSize(20)
             .height(200)
             .margin({ top: 50, bottom: 20 })
             .backgroundColor(Color.Green)
             // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
             .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-              console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+              console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
               if (isExpanding && currentRatio >= 1.0) {
-                console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`)
-                this.testTextStr = 'Test Text is fully visible'
+                console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`);
+                this.testTextStr = 'Test Text is fully visible';
               }
 
               if (!isExpanding && currentRatio <= 0.0) {
-                console.info('Test Text is completely invisible.')
-                this.testTextStr = 'Test Text is completely invisible'
+                console.info('Test Text is completely invisible.');
+                this.testTextStr = 'Test Text is completely invisible';
               }
             })
 
@@ -215,15 +221,15 @@ struct ScrollExample {
           .height(200)
           .backgroundColor(Color.Yellow)
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
             if (isExpanding && currentRatio >= 1.0) {
-              console.info('Test Row is fully visible.')
-              this.testRowStr = 'Test Row is fully visible'
+              console.info('Test Row is fully visible.');
+              this.testRowStr = 'Test Row is fully visible';
             }
 
             if (!isExpanding && currentRatio <= 0.0) {
-              console.info('Test Row is completely invisible.')
-              this.testRowStr = 'Test Row is completely invisible'
+              console.info('Test Row is completely invisible.');
+              this.testRowStr = 'Test Row is completely invisible';
             }
           })
 
@@ -245,14 +251,14 @@ struct ScrollExample {
       .scrollBar(BarState.On)
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(10)
-      .onWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
-        console.info(`${xOffset} ${yOffset}`)
+      .onWillScroll((xOffset: number, yOffset: number) => {
+        console.info(`${xOffset} ${yOffset}`);
       })
-      .onScrollEdge((side: Edge) => {
-        console.info('To the edge')
+      .onScrollEdge(() => {
+        console.info('To the edge');
       })
       .onScrollStop(() => {
-        console.info('Scroll Stop')
+        console.info('Scroll Stop');
       })
 
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
@@ -269,10 +275,10 @@ struct ScrollExample {
 @Entry
 @Component
 struct ScrollExample {
-  scroller: Scroller = new Scroller()
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  @State testTextStr: string = 'test'
-  @State testRowStr: string = 'test'
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State testTextStr: string = 'test';
+  @State testRowStr: string = 'test';
 
   build() {
     Column() {
@@ -289,7 +295,7 @@ struct ScrollExample {
 
       Scroll(this.scroller) {
         Column() {
-          Text("Test Text Visible Change")
+          Text('Test Text Visible Change')
             .fontSize(20)
             .height(200)
             .margin({ top: 50, bottom: 20 })
@@ -297,15 +303,15 @@ struct ScrollExample {
             // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
             .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 },
               (isExpanding: boolean, currentRatio: number) => {
-                console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+                console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
                 if (isExpanding && currentRatio >= 1.0) {
-                  console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`)
-                  this.testTextStr = 'Test Text is fully visible'
+                  console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`);
+                  this.testTextStr = 'Test Text is fully visible';
                 }
 
                 if (!isExpanding && currentRatio <= 0.0) {
-                  console.info('Test Text is completely invisible.')
-                  this.testTextStr = 'Test Text is completely invisible'
+                  console.info('Test Text is completely invisible.');
+                  this.testTextStr = 'Test Text is completely invisible';
                 }
               })
 
@@ -317,16 +323,16 @@ struct ScrollExample {
           }
           .height(200)
           .backgroundColor(Color.Yellow)
-          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+          .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 }, (isExpanding: boolean, currentRatio: number) => {
+            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
             if (isExpanding && currentRatio >= 1.0) {
-              console.info('Test Row is fully visible.')
-              this.testRowStr = 'Test Row is fully visible'
+              console.info('Test Row is fully visible.');
+              this.testRowStr = 'Test Row is fully visible';
             }
 
             if (!isExpanding && currentRatio <= 0.0) {
-              console.info('Test Row is completely invisible.')
-              this.testRowStr = 'Test Row is completely invisible'
+              console.info('Test Row is completely invisible.');
+              this.testRowStr = 'Test Row is completely invisible';
             }
           })
 
@@ -348,14 +354,14 @@ struct ScrollExample {
       .scrollBar(BarState.On)
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(10)
-      .onWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
-        console.info(`${xOffset} ${yOffset}`)
+      .onWillScroll((xOffset: number, yOffset: number) => {
+        console.info(`${xOffset} ${yOffset}`);
       })
-      .onScrollEdge((side: Edge) => {
-        console.info('To the edge')
+      .onScrollEdge(() => {
+        console.info('To the edge');
       })
       .onScrollStop(() => {
-        console.info('Scroll Stop')
+        console.info('Scroll Stop');
       })
 
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
@@ -366,7 +372,7 @@ struct ScrollExample {
 
 ### 示例3 (设置measureFromViewport子组件超出父组件显示)
 
-从API version 22开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数效果对比，主要差异体现在回调返回值组件可见比例（currentRatio）的不同，设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有微小差异。
+从API version 22开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数后的效果对比，主要差异体现在回调返回的组件可见比例（currentRatio）上。设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有微小差异。
 
 ```ts
 @Entry
@@ -394,10 +400,10 @@ struct OnVisibleAreaChangeSample {
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.info(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio1 = currentRatio
+            this.ratio1 = currentRatio;
           }, true)
         }
         .backgroundColor(Color.Pink)
@@ -422,10 +428,10 @@ struct OnVisibleAreaChangeSample {
           // 不设置measureFromViewport，measureFromViewport默认为false，父组件未设置clip(true)，超出父组件的区域被视为不可见区域。
           .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 500 },
             (isExpanding: boolean, currentRatio: number) => {
-              console.info(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+              console.info(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
             })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio2 = currentRatio
+            this.ratio2 = currentRatio;
           })
         }
         .backgroundColor(Color.Pink)
@@ -453,10 +459,10 @@ struct OnVisibleAreaChangeSample {
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.info(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio3 = currentRatio
+            this.ratio3 = currentRatio;
           }, true)
         }
         .clip(true)

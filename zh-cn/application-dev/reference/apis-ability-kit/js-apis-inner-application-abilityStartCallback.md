@@ -81,7 +81,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### onResult<sup>12+<sup>
+### onResult<sup>12+</sup>
 
 onResult?(parameter: AbilityResult): void
 
@@ -110,10 +110,10 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.info(`code:` + code + `name:` + name + `message:` + message);
+        console.error(`code: ${code}, name: ${name}, message: ${message}`);
       },
       onResult: (abilityResult: common.AbilityResult) => {
-        console.info(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
+        console.info(`resultCode: ${abilityResult.resultCode}, bundleName: ${abilityResult.want?.bundleName}`);
       }
     };
 

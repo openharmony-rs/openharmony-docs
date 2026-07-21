@@ -6,11 +6,11 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-组件可交互状态下响应[点击事件](ts-universal-events-click.md)、[触摸事件](ts-universal-events-touch.md)、[拖拽事件](ts-universal-events-drag-drop.md)、[按键事件](ts-universal-events-key.md)、[焦点事件](ts-universal-focus-event.md)、[鼠标事件](ts-universal-mouse-key.md)、[轴事件](ts-universal-events-axis.md)、[悬浮事件](ts-universal-events-hover.md)、[无障碍悬浮事件](ts-universal-accessibility-hover-event.md)、[手势事件](ts-gesture-settings.md)、[焦点轴事件](ts-universal-events-focus_axis.md)和[表冠事件](ts-universal-events-crown.md)。
+禁用控制用于设置组件是否可交互。组件可交互状态下可以响应[点击事件](ts-universal-events-click.md)、[触摸事件](ts-universal-events-touch.md)、[拖拽事件](ts-universal-events-drag-drop.md)、[按键事件](ts-universal-events-key.md)、[焦点事件](ts-universal-focus-event.md)、[鼠标事件](ts-universal-mouse-key.md)、[轴事件](ts-universal-events-axis.md)、[悬浮事件](ts-universal-events-hover.md)、[无障碍悬浮事件](ts-universal-accessibility-hover-event.md)、[手势事件](ts-gesture-settings.md)、[焦点轴事件](ts-universal-events-focus_axis.md)和[表冠事件](ts-universal-events-crown.md)；组件不可交互状态下不响应上述操作，适用于需要临时阻止用户交互的场景。
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  禁用控制属性仅在按下时生效，交互过程中更改enabled属性无效。
 
@@ -26,21 +26,21 @@ enabled(value: boolean): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 值为true表示组件可交互，响应点击等操作。<br/>值为false表示组件不可交互，不响应点击等操作。 |
+| value  | boolean | 是   | 值为true表示组件可交互，响应点击等操作。<br>值为false表示组件不可交互，不响应点击等操作。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，支持链式调用。 |
 
 ## 示例
 
-该示例通过enabled设置按钮可交互性。
+该示例通过enabled设置按钮是否可交互。
 
 ```ts
 // xxx.ets

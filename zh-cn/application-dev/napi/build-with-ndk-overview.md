@@ -1,10 +1,10 @@
 # NDK工程构建概述
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @liyiming13-->
 <!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 OpenHarmony NDK默认使用CMake作为构建系统，随包提供了符合OpenHarmony工具链的基础配置文件<!--RP2-->ohos.toolchain.cmake<!--RP2End-->，用于预定义CMake变量来简化开发者配置。
 

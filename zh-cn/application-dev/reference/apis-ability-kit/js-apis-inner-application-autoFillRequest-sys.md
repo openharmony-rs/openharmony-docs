@@ -32,7 +32,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
 | customData<sup>13+</sup>    | [CustomData](js-apis-inner-application-customData-sys.md)               | 否   | 否   | 自定义数据。             |
-| isPopup<sup>12+</sup>    | boolean               | 否   | 否   | 自动填充服务是否拉起popup窗口。<br>true：当前拉起popup窗口。<br>false：当前拉起模态窗。              |
+| isPopup<sup>12+</sup>    | boolean               | 否   | 否   | 自动填充服务是否拉起popup窗口。<br>true：当前拉起popup窗口。<br>false：当前拉起模态窗。        |
 
 ## UpdateRequest<sup>12+</sup>
 
@@ -44,7 +44,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据。              |
+| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
 
 ## FillResponse
 
@@ -56,7 +56,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据。              |
+| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
 
 ## FillRequestCallback
 
@@ -78,7 +78,7 @@ onSuccess(response: FillResponse): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | ------------------------------ |
-| response | [FillResponse](#fillresponse)  | 是 | 自动填充响应信息。 |
+| response | [FillResponse](#fillresponse)  | 是 | 自动填充响应信息，包含填充后的页面数据和相关状态信息，用于通知客户端自动填充操作的结果。 |
 
 **错误码：**
 
@@ -103,6 +103,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
     callback: autoFillManager.FillRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     try {
+      // 初始化LocalStorage
       let storageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData> = {
         'fillCallback': callback,
         'message': 'AutoFill Page',
@@ -131,6 +132,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct AutoFillPage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // fillCallback和viewData由AutoFillExtensionAbility的onFillRequest回调传入LocalStorage
   fillCallback: autoFillManager.FillRequestCallback | undefined =
     this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
   viewData: autoFillManager.ViewData | undefined = this.storage?.get<autoFillManager.ViewData>('viewData');
@@ -225,6 +227,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct AutoFillPage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // fillCallback由AutoFillExtensionAbility的onFillRequest回调传入LocalStorage
   fillCallback: autoFillManager.FillRequestCallback | undefined =
     this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
   
@@ -267,7 +270,7 @@ onCancel(fillContent?: string): void
 
 | 参数名                    | 类型   | 必填 | 说明                 |
 | ------------------------- | ------ | ---- | -------------------- |
-| fillContent | string | 否   | 表示通知自动填充取消后，返回给输入法框架的填充内容。 |
+| fillContent | string | 否   | 表示通知自动填充取消后，返回给输入法框架的填充内容。不传或为undefined时，返回空字符串。 |
 
 **错误码：**
 
@@ -320,13 +323,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct AutoFillPage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // fillCallback由AutoFillExtensionAbility的onFillRequest回调传入LocalStorage
   fillCallback: autoFillManager.FillRequestCallback | undefined =
     this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
 
   build() {
     Row() {
       Column() {
-        Text('Hello World')
+        Text('AutoFill Page')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
       }
@@ -438,6 +442,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     console.info(`testTag. Get fill request type: ${JSON.stringify(request.type)}.`);
 
     try {
+      // 初始化LocalStorage，存储保存回调
       let localStorageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData | autoFillManager.AutoFillType> =
         {
           'message': 'AutoFill Page',
@@ -467,6 +472,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     callback: autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onSaveRequest');
     try {
+      // 初始化LocalStorage，存储保存回调
       let localStorageData: Record<string, string | autoFillManager.SaveRequestCallback> = {
         'message': 'AutoFill Page',
         'saveCallback': callback
@@ -550,6 +556,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct SavePage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // saveCallback由AutoFillExtensionAbility的onSaveRequest回调传入LocalStorage
   saveCallback: autoFillManager.SaveRequestCallback | undefined =
     this.storage?.get<autoFillManager.SaveRequestCallback>('saveCallback');
 
@@ -638,6 +645,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct SavePage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // saveCallback由AutoFillExtensionAbility的onSaveRequest回调传入LocalStorage
   saveCallback: autoFillManager.SaveRequestCallback | undefined =
     this.storage?.get<autoFillManager.SaveRequestCallback>('saveCallback');
 

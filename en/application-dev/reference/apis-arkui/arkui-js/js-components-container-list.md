@@ -2,10 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:33.372Z pushedAt=2026-06-23T10:24:27.414Z -->
 
 >  **NOTE**
 >
@@ -17,11 +18,9 @@ The **\<list>** component provides a list container that presents a series of li
 
 None
 
-
 ## Child Components
 
 The **[\<list-item-group>](js-components-container-list-item-group.md)** and **[\<list-item>](js-components-container-list-item.md)** components are supported.
-
 
 ## Attributes
 
@@ -40,11 +39,10 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | divider<sup>5+</sup>        | boolean                                  | false   | No   | Whether list items are separated by dividers.<br>For details about divider styles, see **divider-color**, **divider-height**, **divider-length**, and **divider-origin** in the **Styles** table.|
 | shapemode                   | string                                   | default | No   | Shape of the side scrollbar.<br>- **default**: not specified (following the theme).<br>- **rect**: rectangle.<br>- **round**: circle.|
 | updateeffect                | boolean                                  | false   | No   | Whether a dynamic effect is displayed when an item in the list is deleted or added.<br>- **false**: No dynamic effect is displayed.<br>- **true**: A dynamic effect is displayed when an item is added or deleted.|
-| chainanimation<sup>5+</sup> | boolean                                  | false   | No   | Whether to display chained animations on this list when it slides or its top and bottom are dragged. The list items are separated with even space, and one item animation starts after the previous animation during basic sliding interactions. The chained animation effect is similar with spring physics.<br>- **false**: Chained animations are displayed.<br>- **true**: No chained animation is displayed.<br>Type of the **Enter** key on the soft keyboard. The value cannot be dynamically updated.<br>This attribute does not take effect if an indexer is used.<br>If this attribute is **true**, the **sticky** attributes set for **\<list-item>** components do not take effect.|
+| chainanimation<sup>5+</sup> | boolean                                  | false   | No   | Whether to display chained animations on this list when it slides or its top and bottom are dragged. The list items are separated with even space, and one item animation starts after the previous animation during basic sliding interactions. The chained animation effect is similar to spring physics.<br>- **false**: No chained animation is displayed.<br>- **true**: Chained animations are displayed.<br>The value cannot be dynamically updated.<br>This attribute does not take effect if an indexer is used.<br>If this attribute is **true**, the **sticky** attributes set for **\<list-item>** components do not take effect.|
 | initialindex                | number                                   | 0       | No   | Item displayed at the start position of the viewport when the current list is loaded for the first time. The default value is **0**, indicating that the first item is displayed. If the number you set is greater than the index of the last item, the setting does not take effect. When the **initialoffset** attribute is set, this attribute does not take effect. This attribute does not take effect if **indexer** or **scrollpage** is set to **true**.|
 | initialoffset               | &lt;length&gt;                           | 0       | No   | Start offset of the viewport when the current list is loaded for the first time. The offset must not exceed the scrolling range of the current list. If exceeded, the offset is truncated to the maximum value of the scrolling range. This attribute does not take effect if **indexer** or **scrollpage** is set to **true**.|
 | selected<sup>5+</sup>       | string                                   | -       | No   | Selected item in the current list. The value can be a **section** value of any list items.|
-
 
 ## Styles
 
@@ -65,7 +63,6 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | scrollbar-width<sup>6+</sup>  | &lt;length&gt;                           | -           | No   | Width of the scrollbar.                               |
 | scrollbar-offset<sup>6+</sup> | &lt;length&gt;                           | 0           | No   | Offset between the scrollbar and the default position of the list. The value must be a positive number. The default position is on the right edge of the list. You can adjust the horizontal position of the scrollbar by setting this offset. If the scrollbar is drawn outside the list and the parent component of the list is capable of cropping, the scrollbar will be cropped.|
 
-
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
@@ -80,7 +77,6 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | scrolltouchup              | -                                        | Triggered when the list continues scrolling after the user lifts their fingers.                        |
 | requestitem                | -                                        | Triggered for a request to create a list-item.<br>This event is triggered when the number of cached list-items outside the visible area is less than the value of **cachedcount** during long list loading with delay.|
 | rotation<sup>7+</sup>      | { rotateValue: number }                  | Triggered to indicate the incremental value of the rotation angle of the watch crown. This parameter is only supported by wearables.                    |
-
 
 ## Methods
 
@@ -119,6 +115,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
   </list>
 </div>
 ```
+
 ```css
 /* index.css */
 .container {
@@ -158,7 +155,5 @@ export default {
   },
 }
 ```
-
-
 
 ![list](figures/list.png)

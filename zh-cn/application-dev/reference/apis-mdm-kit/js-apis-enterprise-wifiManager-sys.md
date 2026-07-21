@@ -24,11 +24,15 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
-## wifiManager.isWifiActive
+## wifiManager.isWifiActive<sup>(deprecated)</sup>
 
 isWifiActive(admin: Want, callback: AsyncCallback&lt;boolean&gt;): void
 
 查询当前设备的Wi-Fi开启状态。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [isWifiActiveSync](./js-apis-enterprise-wifiManager.md#wifimanageriswifiactivesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -78,11 +82,15 @@ wifiManager.isWifiActive(wantTemp, (err, result) => {
 });
 ```
 
-## wifiManager.isWifiActive
+## wifiManager.isWifiActive<sup>(deprecated)</sup>
 
 isWifiActive(admin: Want): Promise&lt;boolean&gt;
 
 查询当前设备的Wi-Fi开启状态。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [isWifiActiveSync](./js-apis-enterprise-wifiManager.md#wifimanageriswifiactivesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -136,11 +144,15 @@ wifiManager.isWifiActive(wantTemp).then((result) => {
 });
 ```
 
-## wifiManager.setWifiProfile
+## wifiManager.setWifiProfile<sup>(deprecated)</sup>
 
 setWifiProfile(admin: Want, profile: WifiProfile, callback: AsyncCallback&lt;void&gt;): void
 
 为当前设备配置Wi-Fi，使连接到指定网络。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setWifiProfileSync](./js-apis-enterprise-wifiManager.md#wifimanagersetwifiprofilesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -197,11 +209,15 @@ wifiManager.setWifiProfile(wantTemp, profile, (err) => {
 });
 ```
 
-## wifiManager.setWifiProfile
+## wifiManager.setWifiProfile<sup>(deprecated)</sup>
 
 setWifiProfile(admin: Want, profile: WifiProfile): Promise&lt;void&gt;
 
 为当前设备配置Wi-Fi，使连接到指定网络。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setWifiProfileSync](./js-apis-enterprise-wifiManager.md#wifimanagersetwifiprofilesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -262,11 +278,15 @@ wifiManager.setWifiProfile(wantTemp, profile).then(() => {
 });
 ```
 
-## wifiManager.isWifiDisabled<sup>11+</sup>
+## wifiManager.isWifiDisabled<sup>(deprecated)</sup>
 
 isWifiDisabled(admin: Want): boolean
 
 查询当前设备Wi-Fi是否被禁用。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -319,11 +339,15 @@ try {
 };
 ```
 
-## wifiManager.setWifiDisabled<sup>11+</sup>
+## wifiManager.setWifiDisabled<sup>(deprecated)</sup>
 
 setWifiDisabled(admin: Want, disabled: boolean): void
 
 设置禁用Wi-Fi策略。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 

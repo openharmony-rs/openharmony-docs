@@ -111,6 +111,7 @@ export struct FocusActiveExample {
 
 ``` TypeScript
 @Entry
+@Component
 export struct FocusTransferExample {
   @State logText: string = '\n';
   context = this.getUIContext().getHostContext();
@@ -128,8 +129,12 @@ export struct FocusTransferExample {
               .margin(20)
               .onClick(() => {
                 // 请将$r('app.string.Focus_Event')替换为实际资源文件，在本示例中该资源文件的value值为"获焦信息"
-                this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
-                this.getUIContext().getFocusController().requestFocus('Row 2');
+                try {
+                  this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
+                  this.getUIContext().getFocusController().requestFocus('Row 2');
+                } catch (error) {
+                  console.error('Row 2 request focus failed!');
+                }
               })
           }
         }
@@ -140,24 +145,40 @@ export struct FocusTransferExample {
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-                this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                try {
+                  this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                } catch (error) {
+                  console.error('Get string failed!');
+                }
               })
-            Button('button 3')
+            Button('Button 3')
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-                this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                try {
+                  this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                } catch (error) {
+                  console.error('Get string failed!');
+                }
               })
           }
           .id('Row 2')
           .onFocus(() => {
             // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-            this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+            try {
+              this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+            } catch (error) {
+              console.error('Get string failed!');
+            }
           })
         }
         .onFocus(() => {
           // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-          this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          try {
+            this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          } catch (error) {
+            console.error('Get string failed!');
+          }
         })
 
         Scroll() {
@@ -298,11 +319,11 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 
 方向键上下走焦：纵向的Column容器中，可以使用上下键走焦，无法使用左右键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_2.gif)
+![Liner_Focus_2](figures/Liner_Focus_2.gif)
 
 横向的Row容器中，可以使用左右键走焦，无法使用上下键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_3.gif)
+![Liner_Focus_3](figures/Liner_Focus_3.gif)
 
 
 **投影走焦算法**
@@ -401,7 +422,7 @@ onFocus(event: () => void)
 获焦事件回调，绑定该接口的组件获焦时，回调响应。
 
 ```ts
-onBlur(event:() => void)
+onBlur(event: () => void)
 ```
 
 失焦事件回调，绑定该接口的组件失焦时，回调响应。
@@ -484,7 +505,7 @@ export struct OnFocusBlur {
 
 父节点Row1失焦 —> 子节点Button1失焦 —> 子节点Button2获焦 —> 父节点Row2获焦。
 
-<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) -->
+<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -513,7 +534,7 @@ export struct FocusAndBlurExample {
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onFocus`);
           })
           .onBlur(() => {
             hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onBlur`);
@@ -532,7 +553,7 @@ export struct FocusAndBlurExample {
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onFocus`);
           })
           .onBlur(() => {
             hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onBlur`);
@@ -602,7 +623,7 @@ focusOnTouch(value: boolean)
 >当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照[走焦规范](#走焦规范)将焦点转移给其他组件。
 
 
- <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) -->
+ <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) --> 
  
  ``` TypeScript
  @Entry
@@ -635,7 +656,7 @@ focusOnTouch(value: boolean)
              })
            Divider()
  
-           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusableOnTouch为true
+           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusOnTouch为true
              .borderColor(this.color2)
              .borderWidth(2)
              .width(300)
@@ -1039,7 +1060,7 @@ export struct RequestFocusExample {
 
   调用此接口可以主动让焦点转移至参数指定的组件上，焦点转移生效时间为下一个帧信号。
 
-  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) -->
+  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -1089,7 +1110,11 @@ export struct RequestFocusExample {
               Button('FocusController.requestFocus')
                 .width(200).height(70).fontColor(Color.White)
                 .onClick(() => {
-                  this.getUIContext().getFocusController().requestFocus('testButton');
+                  try {
+                    this.getUIContext().getFocusController().requestFocus('testButton');
+                  } catch (error) {
+                    console.error('Request focus failed!');
+                  }
                 })
                 .backgroundColor('#ff2787d9')
   
@@ -1208,7 +1233,7 @@ tabIndex自定义组件Tab键走焦顺序。
 > 
 > 不建议在[层级页面](#基础概念)中通过单独设置组件的tabIndex属性为负数来控制获焦能力，可以使用focusable属性代替。
 > 
-> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextfocus](#nextfocus自定义走焦)。
+> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextFocus](#nextfocus自定义走焦)。
 
   <!-- @[dynamic_focus_tab_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndex.ets) -->
   

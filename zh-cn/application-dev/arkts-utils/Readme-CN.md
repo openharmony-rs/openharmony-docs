@@ -4,7 +4,7 @@
 <!--Owner: @vigavi; @wang_zhaoyong-->
 <!--Designer: @vigavi-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease; @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 - [ArkTS简介](arkts-overview.md)
 - ArkTS基础类库<!--arkts-utils-->
@@ -25,7 +25,7 @@
   - [并发概述](concurrency-overview.md)
   - [异步并发](async-concurrency-overview.md)
   - 多线程并发<!--multithread-concurrency-->
-    - [多线程并发概述](multi-thread-concurrency-overview.md)
+    - [多线程并发概述](multi-thread-concurrency-overview.md)<!--RP1--><!--RP1End-->
     - [TaskPool简介](taskpool-introduction.md)
     - [Worker简介](worker-introduction.md)
     - [TaskPool与Worker对比 (TaskPool和Worker)](taskpool-vs-worker.md)
@@ -111,8 +111,11 @@
   - [Disassembler反汇编工具](tool-disassembler.md)
   - ArkGuard源码混淆工具<!--arkts-arkguard-->
     - [ArkGuard混淆概述](source-obfuscation-overview.md)
-    - [ArkGuard混淆原理及功能](source-obfuscation.md)
+    - [ArkGuard混淆原理](source-obfuscation.md)
+    - [ArkGuard混淆配置选项](source-obfuscation-rule-options.md)
+    - [ArkGuard混淆保留选项](source-obfuscation-keep-options.md)
     - [ArkGuard混淆开启指南](source-obfuscation-guide.md)
+    - [ArkGuard混淆实践指导](source-obfuscation-apply-code.md)
     - [不同包类型的源码混淆建议](source-obfuscation-practice.md)
     - [ArkGuard混淆常见问题](source-obfuscation-questions.md)
   - ArkGuard字节码混淆工具<!--arkts-arkguard-bytecode-->

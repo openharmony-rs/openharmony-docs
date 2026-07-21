@@ -198,17 +198,17 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
   supportedQueryProperties: ['entityId', 'name', 'extension'] // 表示onQueryEntity支持通过entityId、name或者extension属性来查询实体信息
 })
 export class AppIntentEntityImpl extends insightIntent.AppIntentEntity<AppIntentEntityImpl> {
-  entityId: string = "default";
-  name: string = "";
-  displayName: string = "";
+  entityId: string = 'default';
+  name: string = '';
+  displayName: string = '';
   description?: string;
   extension?: string;
 
   async onQueryEntity(params: insightIntent.QueryEntityParam): Promise<Array<AppIntentEntityImpl>> {
     const appStringEntities: AppIntentEntityImpl[] = [
-      this.createEntityInstance('id1', '名称1', '显示名称1', '描述1', "扩展字段1"),
-      this.createEntityInstance('id2', '名称2', '显示名称2', '描述2', "扩展字段2"),
-      this.createEntityInstance('id3', '名称3', '显示名称3', '描述3', "扩展字段3"),
+      this.createEntityInstance('id1', '名称1', '显示名称1', '描述1', '扩展字段1'),
+      this.createEntityInstance('id2', '名称2', '显示名称2', '描述2', '扩展字段2'),
+      this.createEntityInstance('id3', '名称3', '显示名称3', '描述3', '扩展字段3'),
     ];
 
     let resultEntities: AppIntentEntityImpl[] = [];

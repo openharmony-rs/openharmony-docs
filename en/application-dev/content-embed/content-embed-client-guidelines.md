@@ -6,22 +6,25 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:39:25.834Z pushedAt=2026-06-25T06:42:42.796Z -->
 
 ## When to Use
 
 The [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md) content embedding module provides an object editing framework and technology for inter-application document embedding and collaborative editing.
 
-An OE client application is an application that embeds documents from other applications. By calling [OE framework APIs](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md), it can embed external documents, display document snapshots, and start OE server applications on demand to edit documents.
+An OE client application embeds external documents into its own application. By calling the APIs provided by [content_embed_proxy.h](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md) in the OE framework layer, it can embed external documents, display document snapshots, and launch an OE server application on demand to edit the documents.
 
 Typical use cases include:
 
 - Embedding an Excel spreadsheet into a CAD document and starting Excel to edit the spreadsheet by clicking the embedded object.
+
 - Embedding documents in various formats, such as images and tables, into a document editor.
+
 - Embedding documents from other applications into a note-taking application for cross-application collaboration.
 
 ## Constraints
 
-Before using the APIs, check whether the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about how to check system capabilities, see [Querying Whether a Specified System Capability Is Supported](../reference/common/init.md#caniuse). In addition, request the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details about how to configure the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+Before calling the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about checking whether a system capability is supported, see [canIUse()](../reference/common/init.md#caniuse). You must also declare the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 ## Available APIs
 
@@ -169,6 +172,7 @@ void QueryFormatByOEid(const std::string &oeid, const std::string &locale)
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale failed, errCode: %{public}d.", errCode);
         // Destroy the ContentEmbed_Format object if the query fails.
         OH_ContentEmbed_DestroyContentEmbedFormat(ceFormat);
+        return;
     }
     char name[MAX_NAME_LENGTH];
     char description[MAX_DESCRIPTION_LENGTH];
@@ -389,9 +393,13 @@ EXTERN_C_END
 ### Implementing Interaction Between the Client OE Object and the OE Extension
 
 1. Start the OE Extension component.
+
 2. Query the capabilities of the OE Extension component.
+
 3. Edit a document by notifying the OE server to start a UIAbility.
+
 4. Query the editing status of the OE document.
+
 5. Obtain the OE document snapshot.
 
 ```cpp

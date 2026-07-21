@@ -1,10 +1,10 @@
 # qrcode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xuqinfeng1-->
-<!--Designer: @liyujie43-->
-<!--Tester: @xiong0104-->
-<!--Adviser: @xuqinfeng1-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 5开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -62,7 +62,7 @@
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <qrcode value="{{qr_value}}" type="{{qr_type}}"
+  <qrcode value="Hello World" type="{{qr_type}}"
   style="color: {{qr_col}};background-color: {{qr_bcol}};width: {{qr_size}};height: {{qr_size}};margin-bottom: 70px;"></qrcode>
   <text class="txt">Type</text>
   <switch showtext="true" checked="true" texton="rect" textoff="circle" onchange="setType"></switch>

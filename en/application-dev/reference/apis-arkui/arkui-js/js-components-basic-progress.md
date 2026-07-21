@@ -86,7 +86,7 @@ Arc progress bar, of which **type** is **arc**
 | background-color | &lt;color&gt;  | -             | No   | Background color of the arc progress bar.                              |
 | stroke-width     | &lt;length&gt; | 4px           | No   | Width of the arc progress bar, which is always within the radius area.<br>A larger width value means that the progress bar is closer to the center of the circle.|
 | start-angle      | &lt;deg&gt;    | 240           | No   | Start angle of the arc progress bar, which starts from zero o'clock clockwise. The value ranges from 0 to 360 degrees.     |
-| total-angle      | &lt;deg&gt;    | 240           | No   | Total length of the arc progress bar. The value ranges from –360 to 360. A negative number indicates anticlockwise.     |
+| total-angle      | &lt;deg&gt;    | 240           | No   | Total angle of the arc progress bar. The value ranges from –360 to 360. A negative number indicates the anticlockwise direction from the start point to the end point.     |
 | center-x         | &lt;length&gt; | Half of the width of the arc progress bar   | No   | Center of the arc progress bar (with the upper left corner of this component as the coordinate origin). This attribute must be used together with **center-y** and **radius**.|
 | center-y         | &lt;length&gt; | Half of the height of the arc progress bar   | No   | Center of the arc progress bar (with the upper left corner of this component as the coordinate origin). This attribute must be used together with **center-x** and **radius**.|
 | radius           | &lt;length&gt; | Half of the minimum width and height of the arc progress bar| No   | Radius of the arc progress bar. This attribute must be used together with **center-x** and **center-y**.    |

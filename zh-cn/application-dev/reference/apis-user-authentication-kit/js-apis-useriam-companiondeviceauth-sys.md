@@ -6,8 +6,6 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
 **companionDeviceAuth**模块是OpenHarmony用户身份认证体系（UserIAM）的重要组成部分，专门用于伴随设备认证管理。该模块为系统应用提供伴随设备查询、订阅和服务范围管理等能力。
 
 该模块主要用于以下场景：

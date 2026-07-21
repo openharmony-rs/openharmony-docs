@@ -371,8 +371,8 @@ Obtains the start time of the time zone rule at the specified index based on Tim
 | Name| Description|
 | -- | -- |
 | [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | Time zone rule [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md) defined by the start timestamp array.|
-| int32_t index | Index of the start time.|
-| double* result | Start time of the rule.|
+| int32_t index | Index of the start time. Value range: [0, rule.numStartTimes - 1].|
+| double* result | Time when the rule takes effect, in milliseconds. The value is Unix timestamp.|
 
 **Returns**
 

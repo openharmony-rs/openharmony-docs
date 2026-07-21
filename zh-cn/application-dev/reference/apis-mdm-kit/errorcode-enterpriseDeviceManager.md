@@ -133,6 +133,7 @@ The specified user ID is invalid.
 
 1. 检查调用接口中指定的user ID是否是有效的user ID。
 2. 检查调用者user ID和指定设置的user ID是否是同一user ID，DA模式下不允许跨用户设置策略。
+<!--DelEnd-->
 
 ## 9200007 系统服务工作异常
 
@@ -155,7 +156,6 @@ The system ability works abnormally.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
-<!--DelEnd-->
 
 ## 9200008 系统订阅事件无效
 
@@ -347,11 +347,11 @@ The self-activation credential of the enterprise device administrator is invalid
 
 **可能原因**
 
-1、企业ID不匹配。
+1. 企业ID不匹配。
 
-2、应用appIdentifier配置失败。
+2. 应用appIdentifier配置失败。
 
-3、激活凭证缺少必需字段或者证书链校验失败。
+3. 激活凭证缺少必需字段或者证书链校验失败。
 
 **处理步骤**
 
@@ -1220,7 +1220,7 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 
 **处理步骤**
 
-先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
+先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
 
 ## 9201044 指定权限未被禁用
 

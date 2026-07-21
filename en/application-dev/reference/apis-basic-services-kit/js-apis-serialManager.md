@@ -9,6 +9,20 @@
 
 This module provides the serial port management functions, including enabling and disabling the serial port of the device, writing and reading data, setting and obtaining the configuration parameters of the serial port, and managing permissions.
 
+**Process**
+1. Call **getPortList** to obtain the serial port list.
+2. Call **requestSerialRight** to request permissions.
+3. Call **open** to open the serial port.
+4. (Optional) Call **getAttribute** and **setAttribute** to set serial port parameters.
+5. Call **read** and **write** or **readSync** and **writeSync** to read and write data.
+6. Call **close** to close the serial port.
+7. Call **cancelSerialRight** to remove permissions.
+
+**Use scenarios**
+- Embedded device communication
+- Industrial device commissioning
+- Data interaction of the serial port peripheral
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 19. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -23,7 +37,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 getPortList(): Readonly&lt;SerialPort&gt;[]
 
-Obtains the serial port device list, including the device name and port number.
+Obtains the serial port device list, including the device name and port number. Generally, this API is called when the application is started, a device is connected, or available serial port devices need to be detected.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -32,6 +46,14 @@ Obtains the serial port device list, including the device name and port number.
 | Type                                       | Description         |
 |-------------------------------------------|-------------|
 | Readonly&lt;[SerialPort](#serialport)&gt;[] | Serial port information list.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 31400001 | Serial port management exception.                            |
 
 **Example**
 
@@ -52,7 +74,6 @@ function getPortList() {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
 }
 ```
 
@@ -60,7 +81,7 @@ function getPortList() {
 
 hasSerialRight(portId: number): boolean
 
-Checks whether the application has the permission to access the serial port device. When an application is restarted after exits, you need to request the permission from the user again.
+Checks whether the application has the permission to access the serial port device. When an application is restarted after exiting, authorization needs to be requested again. Generally, this API is called to check the permission status before a serial port device is opened or a serial port operation is performed.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -68,19 +89,20 @@ Checks whether the application has the permission to access the serial port devi
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
+| portId | number | Yes | Port number, which is obtained from [SerialPort](#serialport) in [getPortList](#serialmanagergetportlist). The value must be a valid port number returned by **getPortList**. If an invalid value is passed, error code 31400003 is returned.|
 
 **Return value**
 
-| Type     | Description              |
+| Return Value (Boolean)| Description              |
 |---------|------------------|
-| boolean | The value **true** indicates that the permission is authorized, and **false** indicates the opposite.|
+| true | Permission granted.|
+| false | Permission denied.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
@@ -106,7 +128,6 @@ function hasSerialRight() {
     console.error('portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
 
   // Check whether the device can be accessed by the application.
   if (serialManager.hasSerialRight(portId)) {
@@ -121,7 +142,7 @@ function hasSerialRight() {
 
 requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
-Requests the permission for the application to access the serial port device. After the application exits, the access permission on the serial port device is automatically removed. After the application is restarted, you need to request the permission again. This API uses a promise to return the result.
+Requests the permission for the application to access the serial port device. After the application exits, the access permission on the serial port device is automatically removed. After the application is restarted, the application needs to request the permission again. This API uses a promise to return the result. Generally, this API is called to request authorization from the user when the application attempts to access the serial port for the first time and detects that it does not have the permission.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -129,19 +150,19 @@ Requests the permission for the application to access the serial port device. Af
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
+| portId | number | Yes | Port number, which is obtained from the [SerialPort](#serialport) object returned by [getPortList](#serialmanagergetportlist).|
 
 **Return value**
 
 | Type                    | Description           |
 |------------------------|---------------|
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the permission is successfully requested, and **false** indicates the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return a Boolean value. The value **true** indicates that the permission is successfully requested, and **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
@@ -173,7 +194,7 @@ function requestSerialRight() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -188,7 +209,15 @@ function requestSerialRight() {
 
 open(portId: number): void
 
-Opens a serial port device.
+Opens a serial port device. Before calling this API, you need to call [requestSerialRight](#serialmanagerrequestserialright) to request the permission. After calling this API, you need to call [close](#serialmanagerclose) to close the serial port. After the API is successfully called, you can perform operations such as read/write and parameter configuration on the serial port.
+
+**Prerequisites**
+- Call [getPortList](#serialmanagergetportlist) to obtain the port number.
+- Call [requestSerialRight](#serialmanagerrequestserialright) to request the access permission.
+
+**API called in pairs**
+- This API must be used with [close](#serialmanagerclose) in pairs.
+- After the serial port is opened, you must call **close()** to close the serial port and release resources.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -196,13 +225,13 @@ Opens a serial port device.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
+| portId | number | Yes | Port number, which is obtained from the [SerialPort](#serialport) object returned by [getPortList](#serialmanagergetportlist).|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -235,7 +264,7 @@ function open() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -251,6 +280,14 @@ function open() {
   } catch (error) {
     console.error('open usbSerial error, ' + JSON.stringify(error));
   }
+
+  // Close the serial port device.
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -258,7 +295,12 @@ function open() {
 
 getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
-Obtains the configuration parameters of a specified serial port.
+Obtains the configuration parameters of a specified serial port. You need to call [open](#serialmanageropen) to open the serial port to obtain the configuration. Generally, this API is called to check the current communication parameter configuration and debug serial port communication issues after the device is initialized.
+
+**Prerequisites**
+- Call [getPortList](#serialmanagergetportlist) to obtain the port number.
+- Call [requestSerialRight](#serialmanagerrequestserialright) to request the access permission.
+- Call [open](#serialmanageropen) to open the serial port.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -266,19 +308,19 @@ Obtains the configuration parameters of a specified serial port.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
+| portId | number | Yes | Port number, which is obtained from the [SerialPort](#serialport) object returned by [getPortList](#serialmanagergetportlist).|
 
 **Return value**
 
 | Type    | Description         |
 |--------|-------------|
-| Readonly&lt;[SerialAttribute](#serialattribute)&gt; | Configuration parameters of the serial port.|
+| Readonly&lt;[SerialAttribute](#serialattribute)&gt; |  Serial port configuration parameters, including the baud rate, data bit, parity bit, and stop bit.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -310,7 +352,7 @@ function getAttribute() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -339,6 +381,14 @@ function getAttribute() {
   } catch (error) {
     console.error('getAttribute usbSerial error, ' + JSON.stringify(error));
   }
+
+  // Close the serial port device.
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -346,7 +396,12 @@ function getAttribute() {
 
 setAttribute(portId: number, attribute: SerialAttribute): void
 
-Sets the parameters of the serial port. If this method is not called, the default configuration parameters are used (baud rate: 9600 bit/s; data bit: 8; parity bit: 0; stop bit: 1).
+Sets the parameters of the serial port. If this method is not called, the default configuration parameters are used (baud rate: 9600 bit/s; data bit: 8; parity bit: 0; stop bit: 1). You need to call [open](#serialmanageropen) to open the serial port to set parameters. Generally, this API is called when the device is initialized, the communication protocol is switched, or the device requires non-default configuration parameters.
+
+**Prerequisites**
+- Call [getPortList](#serialmanagergetportlist) to obtain the port number.
+- Call [requestSerialRight](#serialmanagerrequestserialright) to request the access permission.
+- Call [open](#serialmanageropen) to open the serial port.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -354,14 +409,14 @@ Sets the parameters of the serial port. If this method is not called, the defaul
 
 | Name      | Type                                 | Mandatory| Description         |
 |-----------|-------------------------------------|----|-------------|
-| portId    | number                              | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
-| attribute | [SerialAttribute](#serialattribute) | Yes | Configuration parameters of the serial port.    |
+| portId    | number                              | Yes | Port number, which is obtained from the [SerialPort](#serialport) object returned by [getPortList](#serialmanagergetportlist).|
+| attribute | [SerialAttribute](#serialattribute) | Yes | Serial port configuration parameters. The parameters include **baudRate** (mandatory), **dataBits** (optional) whose default value is **8**, **parity** (optional) whose default value is **None**, and **stopBits** (optional) whose default value is **1**.    |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -393,7 +448,7 @@ function setAttribute() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -424,6 +479,14 @@ function setAttribute() {
   } catch (error) {
     console.error('setAttribute usbSerial error, ' + JSON.stringify(error));
   }
+
+  // Close the serial port device.
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -431,7 +494,12 @@ function setAttribute() {
 
 read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-Reads data from the serial port device asynchronously. This API uses a promise to return the result.
+Reads data from the serial port device asynchronously. The read data is stored in the **buffer** parameter. Before calling this API, call [open](#serialmanageropen) to open the serial port device first. This API uses a promise to return the length of the data that is actually read. This API can be used to receive data reported by sensors, read response data returned by devices, and receive device status information.
+
+**Prerequisites**
+- Call [getPortList](#serialmanagergetportlist) to obtain the port number.
+- Call [requestSerialRight](#serialmanagerrequestserialright) to request the access permission.
+- Call [open](#serialmanageropen) to open the serial port.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -439,21 +507,20 @@ Reads data from the serial port device asynchronously. This API uses a promise t
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).     |
-| buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | Timeout interval, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
-
+| portId | number | Yes | Port number, which is obtained from the [SerialPort](#serialport) object returned by [getPortList](#serialmanagergetportlist).     |
+| buffer  | Uint8Array | Yes | Buffer for storing the binary data read from the serial port device. The buffer size should be determined based on the expected amount of data to be read. After the read operation is successful, the return value indicates the length of the data that is actually read.|
+| timeout | number     | No | Timeout interval, in milliseconds. If there is no data in the buffer of the target port, this API returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting. It is recommended that the value be greater than or equal to 0. Set this parameter based on the device response speed and data volume.|
 **Return value**
 
 | Type                   | Description            |
 |-----------------------|----------------|
-| Promise&lt;number&gt; | Promise used to return the length of the data read.|
+| Promise&lt;number&gt; | Promise used to return the length of the data read, in bytes.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -487,7 +554,7 @@ function read() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -511,14 +578,34 @@ function read() {
   }).catch((error: Error) => {
     console.error('read usbSerial error, ' + JSON.stringify(error));
   })
+
+  // Close the serial port device.
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
+
+## Differences Between read and readSync
+
+- **read**: reads data asynchronously. This API uses a promise to return the result, which does not block the main thread. This method is suitable for scenarios that require non-blocking operations or concurrent processing of multiple tasks.
+- **readSync**: reads data synchronously. The current thread is blocked until the read operation is complete or times out. It is suitable for simple scenarios or scenarios where operations need to be performed in sequence.
+
+Select a proper read mode based on the application architecture and performance requirements.
 
 ## serialManager.readSync
 
 readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-Reads data from the serial port device synchronously.
+Reads data from the serial port device synchronously. The read data is stored in the **buffer** parameter. The actual length of the data read is returned. Before calling this API, call [open](#serialmanageropen) to open the serial port device first. This method is applicable to simple communication scenarios where data needs to be read in blocking mode, the read sequence must be strictly followed, or there is no high requirement on real-time performance.
+
+**Prerequisites**
+- Call [getPortList](#serialmanagergetportlist) to obtain the port number.
+- Call [requestSerialRight](#serialmanagerrequestserialright) to request the access permission.
+- Call [open](#serialmanageropen) to open the serial port.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -526,21 +613,21 @@ Reads data from the serial port device synchronously.
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
-| buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | Timeout interval, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
+| portId  | number | Yes | Port number, which is the value of the [SerialPort](#serialport) parameter obtained by [getPortList](#serialmanagergetportlist).|
+| buffer  | Uint8Array | Yes | Buffer for storing the binary data read from the serial port device. The buffer size should be determined based on the expected amount of data to be read. After the read operation is successful, the return value indicates the length of the data that is actually read.|
+| timeout | number     | No | Timeout interval, in milliseconds. If there is no data in the buffer of the target port, this API returns the result after waiting for the specified time. The value must be greater than or equal to 0. The default value **0** indicates that the API returns the result without waiting. If a negative number is passed, a parameter error is thrown. It is recommended that the value be greater than or equal to 0. Set this parameter based on the device response speed and data volume.|
 
 **Return value**
 
 | Type    | Description         |
 |--------|-------------|
-| number | Length of the data read.|
+| number | Promise used to return the length of the data read, in bytes.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -574,7 +661,7 @@ function readSync() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -599,6 +686,14 @@ function readSync() {
   } catch (error) {
     console.error('readSync usbSerial error, ' + JSON.stringify(error));
   }
+
+  // Close the serial port device.
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -606,7 +701,12 @@ function readSync() {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-Writes data to the serial port device asynchronously. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets. This API uses a promise to return the result.
+Writes data to the serial port device asynchronously. Before calling this API, call [open](#serialmanageropen) to open the serial port first. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets. This API uses a promise to return the result. This API is applicable to scenarios such as sending control commands to devices, delivering configuration parameters, and transferring the collected data.
+
+**Prerequisites**
+- Call [getPortList](#serialmanagergetportlist) to obtain the port number.
+- Call [requestSerialRight](#serialmanagerrequestserialright) to request the access permission.
+- Call [open](#serialmanageropen) to open the serial port.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -614,21 +714,21 @@ Writes data to the serial port device asynchronously. The length of data written
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).     |
-| buffer  | Uint8Array | Yes | Buffer for writing data.|
-| timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If so, the API is processed properly; if not, a timeout message is returned after the specified time. The default value **0** is returned when data cannot be written into the target port.|
+| portId  | number     | Yes | Port number, which is the value of the [SerialPort](#serialport) parameter obtained by [getPortList](#serialmanagergetportlist).     |
+| buffer  | Uint8Array | Yes | Buffer for writing data, including the binary data to be sent to the serial port device. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets.|
+| timeout | number     | No |  Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If so, the API is processed properly; if not, a timeout message is returned after the specified time. The default value **0** is returned when data cannot be written into the target port. It is recommended that the value be greater than or equal to 0. Set the value based on the device write speed. If a negative number is passed, a parameter error is thrown.|
 
 **Return value**
 
 | Type                   | Description         |
 |-----------------------|-------------|
-| Promise&lt;number&gt; | Promise used to return the length of the data written.|
+| Promise&lt;number&gt; | Promise used to return the length of the data written, in bytes.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -663,7 +763,7 @@ function write() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -687,14 +787,34 @@ function write() {
   }).catch((error: Error) => {
     console.error('write usbSerial error, ' + JSON.stringify(error));
   })
+
+  // Close the serial port device.
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
+
+## Differences Between write and writeSync
+
+- **write**: writes data asynchronously. This API uses a promise to return the result, which does not block the main thread. This method is suitable for scenarios that require non-blocking operations or concurrent processing of multiple tasks.
+- **writeSync**: writes data synchronously. The current thread is blocked until the write operation is complete or times out. It is suitable for simple scenarios or scenarios where operations need to be performed in sequence.
+
+Select a proper write mode based on the application architecture and performance requirements.
 
 ## serialManager.writeSync
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-Writes data to the serial port device synchronously. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets.
+Writes data to the serial port device synchronously. Before calling this API, call [open](#serialmanageropen) to open the serial port device first. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets. This API uses a promise to return the result. This API is applicable to scenarios where data needs to be written in blocking mode, important commands need to be sent, or the write sequence must be strictly followed.
+
+**Prerequisites**
+- Call [getPortList](#serialmanagergetportlist) to obtain the port number.
+- Call [requestSerialRight](#serialmanagerrequestserialright) to request the access permission.
+- Call [open](#serialmanageropen) to open the serial port.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -702,21 +822,21 @@ Writes data to the serial port device synchronously. The length of data written 
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).    |
-| buffer  | Uint8Array | Yes | Destination buffer for writing data.|
-| timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If so, the API is processed properly; if not, a timeout message is returned after the specified time. The default value **0** is returned when data cannot be written into the target port.|
+| portId  | number     | Yes | Port number, which is the value of the [SerialPort](#serialport) parameter obtained by [getPortList](#serialmanagergetportlist).    |
+| buffer  | Uint8Array | Yes | Buffer for writing data, including the binary data to be sent to the serial port device. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets.|
+| timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If so, the API is processed properly; if not, a timeout message is returned after the specified time. The default value **0** is returned when data cannot be written into the target port. If a negative value is passed, a parameter error is thrown. It is recommended that the value be greater than or equal to 0. Set the value based on the device write speed.|
 
 **Return value**
 
 | Type    | Description         |
 |--------|-------------|
-| number | Length of the data written.|
+| number | Promise used to return the length of the data written, in bytes.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -751,7 +871,7 @@ function writeSync() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -776,6 +896,14 @@ function writeSync() {
   } catch (error) {
     console.error('writeSync usbSerial error, ' + JSON.stringify(error));
   }
+  
+  // Close the serial port device.
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -783,7 +911,16 @@ function writeSync() {
 
 close(portId: number): void
 
-Closes the serial port device.
+Closes the serial port device. Call [requestSerialRight](#serialmanagerrequestserialright) to request the permission and then call [open](#serialmanageropen) to open the serial port. Generally, this API is called when the application exits, the device is disconnected, or serial port resources need to be released. Closing the serial port does not remove the access permission. To remove the permission, call **cancelSerialRight**.
+
+**API called in pairs**
+- This API must be used with [open](#serialmanageropen) in pairs.
+- After the serial port is opened, you must call this method to close the serial port and release resources.
+
+**Prerequisites**
+- Call [getPortList](#serialmanagergetportlist) to obtain the port number.
+- Call [requestSerialRight](#serialmanagerrequestserialright) to request the access permission.
+- Call [open](#serialmanageropen) to open the serial port.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -791,13 +928,13 @@ Closes the serial port device.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
+| portId | number | Yes | Port number, which is the value of the [SerialPort](#serialport) parameter obtained by [getPortList](#serialmanagergetportlist).|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -829,7 +966,7 @@ function close() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -861,7 +998,15 @@ function close() {
 
 cancelSerialRight(portId: number): void
 
-Cancels the permission to access the serial port device when the application is running. This API is used to close the enabled serial port device.
+Cancels the permission to access the serial port device when the application is running. This API is used to close the enabled serial port device. Generally, this API is called to proactively release the permission, access another device, or for security purposes.
+
+**Prerequisites**
+- Call [getPortList](#serialmanagergetportlist) to obtain the port number.
+- Call [requestSerialRight](#serialmanagerrequestserialright) to request the access permission.
+
+**Related methods**
+- [requestSerialRight](#serialmanagerrequestserialright): requests the access permission.
+- [hasSerialRight](#serialmanagerhasserialright): checks whether the access permission is granted.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -869,13 +1014,13 @@ Cancels the permission to access the serial port device when the application is 
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
+| portId | number | Yes | Port number, which is the value of the [SerialPort](#serialport) parameter obtained by [getPortList](#serialmanagergetportlist).|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception.                                |
@@ -908,7 +1053,7 @@ function cancelSerialRight() {
   if (!serialManager.hasSerialRight(portId)) {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
-        // If the application does not have the access permission and is not granted by the user, the application exits.
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
         console.error('user is not granted the operation permission');
         return;
       } else {
@@ -935,10 +1080,10 @@ Represents the configuration parameters of a serial port.
 
 | Name      |          Type       |  Read-Only  |  Optional| Description       |
 |----------|--------|----------|-----------|----------------------|
-| baudRate | [BaudRates](#baudrates) |   No  | No | Baud rate of the serial port, in bit/s. |
-| dataBits | [DataBits](#databits)   |   No  | Yes | Data bits of the serial port, in bits. The default value is **8**. |
-| parity   | [Parity](#parity)       |   No  | Yes | Parity check. The default value is **None**, indicating that no parity check is performed.|
-| stopBits | [StopBits](#stopbits)   |   No  | Yes | Stop bits of the serial port, in bits. The default value is **1**. |
+| baudRate | [BaudRates](#baudrates) |   No  | No | Baud rate of the serial port, in bit/s. This parameter indicates the data transmission rate. |
+| dataBits | [DataBits](#databits)   |   No  | Yes | Data bits of the serial port, in bits. The default value is **8**. This parameter indicates the number of valid data bits in a packet. |
+| parity   | [Parity](#parity)       |   No  | Yes | Parity check. The default value is **None**, indicating that no parity check is performed. This parameter is used to detect data transmission errors.|
+| stopBits | [StopBits](#stopbits)   |   No  | Yes | Stop bits of the serial port, in bits. The default value is **1**. This parameter indicates the end of a packet. |
 
 ## SerialPort
 
@@ -998,10 +1143,10 @@ Enumerates the number of data bits, in bits.
 
 | Name    | Value    | Description   |
 |-----------|-----------|-----------|
-| DATABIT_8 | 8 | The number of data bits is 8.|
-| DATABIT_7 | 7 | The number of data bits is 7.|
-| DATABIT_6 | 6 | The number of data bits is 6.|
-| DATABIT_5 | 5 | The number of data bits is 5.|
+| DATABIT_8 | 8 | The number of valid packet data bits is 8.|
+| DATABIT_7 | 7 | The number of valid packet data bits is 7.|
+| DATABIT_6 | 6 | The number of valid packet data bits is 6.|
+| DATABIT_5 | 5 | The number of valid packet data bits is 5.|
 
 ## Parity
 
@@ -1025,5 +1170,5 @@ Enumerates the number of stop bits, in bits.
 
 | Name    | Value    | Description   |
 |-----------|-----------|-----------|
-| STOPBIT_1 | 0 | The number of stop bits is 1.|
-| STOPBIT_2 | 1 | The number of stop bits is 2.|
+| STOPBIT_1 | 0 | The number of valid packet stop bits is 1.|
+| STOPBIT_2 | 1 | The number of valid packet stop bits is 2.|

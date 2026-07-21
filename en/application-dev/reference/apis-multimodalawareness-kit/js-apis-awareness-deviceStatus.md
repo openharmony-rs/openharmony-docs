@@ -1,10 +1,12 @@
 # @ohos.multimodalAwareness.deviceStatus (Device Status Awareness)
+
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
 <!--Designer: @zou_ye-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:42.988Z pushedAt=2026-06-25T01:35:11.428Z -->
 
 The **deviceStatus** module provides the device status awareness functionality.
 
@@ -81,7 +83,7 @@ Unsubscribes from steady standing state events.
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                           | Yes  | Event type. This field has a fixed value of **steadyStandingDetect**.|
-| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | No  | Callback used to return the steady standing state of the device.|
+| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | No   | Callback used to return the steady standing state information. The callback to unregister must be the same as the one passed in during subscription. If not specified, all callbacks currently listening for this event will be unregistered. |
 
 **Error codes**
 

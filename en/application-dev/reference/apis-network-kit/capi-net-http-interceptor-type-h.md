@@ -1,10 +1,12 @@
 # http_interceptor_type.h
+
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:20.738Z pushedAt=2026-06-26T03:00:41.272Z -->
 
 ## Overview
 
@@ -50,10 +52,7 @@ Defines the data structures for the C APIs of the global HTTP interceptor module
 ### OH_Interceptor_Stage
 
 ```c
-typedef enum OH_Interceptor_Stage {
-    OH_STAGE_REQUEST,
-    OH_STAGE_RESPONSE
-} OH_Interceptor_Stage;
+enum OH_Interceptor_Stage
 ```
 
 **Description**
@@ -63,6 +62,7 @@ Defines an enum for the interceptor stages.
 **Since**: 24
 
 **Parameters**
+
 | Enum Item| Description|
 | -- | -- |
 | OH_STAGE_REQUEST | The interceptor processes the request.|
@@ -71,29 +71,24 @@ Defines an enum for the interceptor stages.
 ### OH_Interceptor_Type
 
 ```c
-typedef enum OH_Interceptor_Type {
-    OH_TYPE_READ_ONLY
-} OH_Interceptor_Type;
+enum OH_Interceptor_Type
 ```
 
 **Description**
 
 Defines an enum for the interceptor types.
 
-**Since**: 24
-
 **Parameters**
+
 | Enum Item| Description|
 | -- | -- |
-| OH_TYPE_READ_ONLY | Read-only interceptor.|
+| OH_TYPE_READ_ONLY | Read-only interceptor. **Since:** 24. |
+| OH_TYPE_MODIFY_NETWORK_KIT | Modifiable interceptor. Only effective for Network Kit HTTP requests. **Since:** 26.0.0. |
 
 ### OH_Interceptor_Result
 
 ```c
-typedef enum OH_Interceptor_Result {
-    OH_CONTINUE,
-    OH_ABORT
-} OH_Interceptor_Result;
+enum OH_Interceptor_Result
 ```
 
 **Description**
@@ -103,6 +98,7 @@ Defines an enum for the interceptor results.
 **Since**: 24
 
 **Parameters**
+
 | Enum Item| Description|
 | -- | -- |
 | OH_CONTINUE | The processing continues.|
@@ -116,7 +112,7 @@ Defines an enum for the interceptor results.
 typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(
     OH_Http_Interceptor_Request *request,
     OH_Http_Interceptor_Response *response,
-    int32_t *isModified);
+    int32_t *isModified)
 ```
 
 **Description**
@@ -126,13 +122,15 @@ Defines the HTTP interceptor handler function.
 **Since**: 24
 
 **Parameters**
+
 | Name| Description|
 | -- | -- |
-| OH_Http_Interceptor_Request *request | Pointer to the HTTP request data packet (valid only in the request stage).|
-| OH_Http_Interceptor_Response *response | Pointer to the HTTP response data packet (valid only in the response stage).|
-| int32_t *isModified | Output parameter, which indicates whether the interceptor has modified the data packet. This parameter is invalid for the interceptor of the **OH_TYPE_READ_ONLY** type.|
+| [OH_Http_Interceptor_Request](capi-netstack-http-interceptor-request.md) *request| Pointer to the HTTP request packet (valid only during the request phase). |
+| [OH_Http_Interceptor_Response](capi-netstack-http-interceptor-response.md) *response| Pointer to the HTTP response packet (valid only during the response phase). |
+| int32_t *isModified | Pointer to whether the interceptor has modified the packet. This is invalid for **OH_TYPE_READ_ONLY** interceptors and can be set to **nullptr**.<br>- **0** indicates that no modification has been performed on the data.<br>- Non-0 values indicate that modification has been performed on the data. |
 
 **Returns**
-| Type| Description|
-| -- | -- |
-| OH_Interceptor_Result | Interceptor processing result. - **OH_CONTINUE**: The processing continues. - **OH_ABORT**: The processing is aborted.|
+
+| Type                                            | Description                                                  |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| [OH_Interceptor_Result](#oh_interceptor_result) | Interceptor processing result.<br>- **OH_CONTINUE**: continue processing<br>- **OH_ABORT**: abort processing |

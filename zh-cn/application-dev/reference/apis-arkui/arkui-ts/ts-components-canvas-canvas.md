@@ -10,7 +10,7 @@
 
 > **说明：** 
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 子组件
 
@@ -28,7 +28,7 @@ Canvas(params: CanvasParams)
 >
 > - 使用本接口创建的Canvas组件将在[onReady<sup>23+</sup>](#onready23)回调的入参中返回一个[DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md)对象，可用于在该Canvas组件上进行绘制。
 >
-> - 使用这个接口创建的Canvas组件在组件不可见时将不响应绘制指令。
+> - 使用本接口创建的Canvas组件在组件不可见时将不响应绘制指令。
 >
 > - 不可见场景主要包括组件所在的页面进入后台、组件滑到窗口外、设置[visibility](ts-universal-attributes-visibility.md#visibility)属性为隐藏等，不包括组件被其他组件或是其他窗口遮挡导致不可见的场景。
 
@@ -42,13 +42,15 @@ Canvas(params: CanvasParams)
 
 | 参数名  | 类型    | 必填 | 说明   |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| params | [CanvasParams](#canvasparams23) | 是  | Canvas组件的构造参数。 |
+| params | [CanvasParams](#canvasparams23) | 是 | Canvas组件的构造参数，用于创建不缓存指令的Canvas组件。配置参数详见[CanvasParams](#canvasparams23)。 |
 
 ### Canvas
 
 Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
 创建Canvas组件时，最大面积不超过10000px*10000px，超过最大面积则无法正常创建。
+
+使用本接口创建的Canvas组件在组件不可见时将不响应绘制指令。不可见场景主要包括组件所在的页面进入后台、组件滑到窗口外、设置[visibility](ts-universal-attributes-visibility.md#visibility)属性为隐藏等，不包括组件被其他组件或是其他窗口遮挡导致不可见的场景。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -66,7 +68,9 @@ Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
 Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptions: ImageAIOptions)
 
-创建Canvas组件，支持设置CanvasRenderingContext2D对象或DrawingRenderingContext对象，支持设置AI分析选项。
+创建Canvas组件时，最大面积不超过10000px*10000px，超过最大面积则无法正常创建。支持设置CanvasRenderingContext2D对象或DrawingRenderingContext对象，支持设置AI分析选项。
+
+使用本接口创建的Canvas组件在组件不可见时将不响应绘制指令。不可见场景主要包括组件所在的页面进入后台、组件滑到窗口外、设置[visibility](ts-universal-attributes-visibility.md#visibility)属性为隐藏等，不包括组件被其他组件或是其他窗口遮挡导致不可见的场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -93,8 +97,8 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 是 | 用于描述Canvas绘制时所采用的单位模式。<br/>仅可在创建Canvas时设置，后续不可修改。<br/>默认值：LengthMetricsUnit.DEFAULT |
-| imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否 | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 |
+| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 是 | 用于描述Canvas绘制时所采用的单位模式，不同单位模式会影响绘制时的坐标和尺寸计算方式，具体说明见[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)。<br>仅可在创建Canvas时设置，后续不可修改。<br>默认值：LengthMetricsUnit.DEFAULT |
+| imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否 | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。<br>异常值null和undefined按不开启AI分析功能处理。<br>默认值：不开启AI分析功能。 |
 
 ## 属性
 
@@ -104,9 +108,9 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-需要搭配[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)中的[StartImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12)和[StopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12)一起使用。
+需要搭配[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)中的[startImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12)和[stopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12)一起使用。
 
-不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中CustomBuilder属性将失效。该特性依赖设备能力。
+不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中CustomBuilder属性将失效。该特性依赖设备能力，可通过[ImageAnalyzerController.getImageAnalyzerSupportTypes](ts-image-common.md#getimageanalyzersupporttypes12)接口查询设备支持的分析类型。
 
 >**说明：**
 >
@@ -122,7 +126,7 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 | 参数名 | 类型    | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable  | boolean | 是   | 组件支持AI分析，需要组件内容支持主体识别、文字识别或对象查找。<br>设置为true时，组件可进行AI分析，设置为false时，组件不可进行AI分析。<br>异常值null和undefined按默认值处理。<br/>默认值：false |
+| enable  | boolean | 是   | 设置组件是否开启AI分析功能，开启时需要组件内容支持主体识别、文字识别或对象查找。<br>设置为true时，组件可进行AI分析，设置为false时，组件不可进行AI分析。<br>异常值null和undefined按false处理。<br>默认值：false |
 
 ## 事件
 
@@ -168,7 +172,8 @@ Canvas组件初始化完成或者发生大小变化时的事件回调，支持[a
 
 | 参数名 | 类型    | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| event  | Callback<[DrawingRenderingContext](ts-drawingrenderingcontext.md) \| undefined> \| undefined | 是 | Canvas组件初始化完成或者发生大小变化时的回调事件。<br/>关于Callback<DrawingRenderingContext \|undefined>类型的入参：<br/>1. 只有使用[CanvasParams](#canvasparams23)创建的Canvas组件在该回调中返回DrawingRenderingContext对象，否则返回undefined。<br/>2. 该回调返回的DrawingRenderingContext对象不允许作为参数创建Canvas组件，否则会导致应用崩溃。 |
+| event  | Callback<[DrawingRenderingContext](ts-drawingrenderingcontext.md) \| undefined> \| undefined | 是 | Canvas组件初始化完成或者发生大小变化时的回调事件。<br>关于Callback<DrawingRenderingContext \|undefined>类型的入参：<br>1. 只有使用[CanvasParams](#canvasparams23)创建的Canvas组件在该回调中返回DrawingRenderingContext对象，否则返回undefined。<br>2. 该回调返回的DrawingRenderingContext对象不允许作为参数创建Canvas组件，否则会导致应用崩溃。 |
+
 ## 示例
 
 ### 示例1（使用CanvasRenderingContext2D中的方法）
@@ -251,7 +256,7 @@ class MyCanvasModifier implements AttributeModifier<CanvasAttribute> {
       let image = new ImageBitmap("common/img.png")
       this.context.drawImage(image, 0, 0, 200, 200)
     })
-    // 设置开启组件AI分析功能，点击start后，长按触发AI识别功能
+    // 设置开启组件AI分析功能，点击start按钮调用startImageAnalyzer方法启动AI分析
     instance.enableAnalyzer(true)
   }
 }
@@ -284,8 +289,7 @@ struct attributeDemo {
                 console.info("analysis complete")
               })
               .catch((error: BusinessError) => {
-                let e: BusinessError = error as BusinessError
-                console.error(`Error code: ${e.code}, message: ${e.message}`)
+                console.error(`Error code: ${error.code}, message: ${error.message}`)
               })
           })
         Button('stop')

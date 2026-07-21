@@ -39,7 +39,7 @@ Obtains the serial port list. This API uses a promise to return the result, whic
 
 For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                                        |
+| ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
 | 203      | This function is prohibited by enterprise management policies. |
 | 35700001 | Service error.                                   |
@@ -105,7 +105,7 @@ Opens a serial port device. When a serial port is opened for the first time, the
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700002 | Invalid parameter.                |
@@ -142,7 +142,7 @@ serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
 
 close(): Promise&lt;void&gt;
 
-Close a serial port. This API uses a promise to return the result.
+Closes a serial port device. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -160,7 +160,7 @@ Close a serial port. This API uses a promise to return the result.
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | -------------------- |
 | 35700001 | Service error.       |
 | 35700005 | Port not open.       |
@@ -207,7 +207,7 @@ Writes data to a serial port device. The value range of the data length is (0, 4
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700002 | Invalid parameter.                |
@@ -252,7 +252,7 @@ Listens for data receiving events on the serial port. This API uses an asynchron
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -291,7 +291,7 @@ Cancels listening for data receiving events on the serial port. This API uses an
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | -------------------- |
 | 35700001 | Service error.       |
 | 35700005 | Port not open.       |
@@ -333,7 +333,7 @@ Flushes the serial port buffer, including the read buffer and write buffer. Data
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -374,7 +374,7 @@ Waits until all write requests are complete. This API uses a promise to return t
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -421,7 +421,7 @@ Sets the status of the Request to Send (RTS) signal. This API uses a promise to 
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -462,7 +462,7 @@ Obtains the status of the Clear to Send (CTS) signal. This API uses a promise to
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -503,7 +503,7 @@ Sends a BRK signal. This API uses a promise to return the result.
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -520,6 +520,174 @@ port.sendBrk().then(() => {
 }).catch((error: Error) => {
   console.error(`sendBrk error: ${JSON.stringify(error)}`);
 });
+```
+
+### setDtr
+
+setDtr(enable: boolean): Promise&lt;void&gt;
+
+Sets the status of the data terminal ready (DTR) signal. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.BusManager.Serial
+
+**Parameters**
+
+| Name| Type    | Mandatory| Description                                      |
+| ------ | -------- | ---- | ------------------------------------------ |
+| enable | boolean  | Yes  | DTR signal status. The value **true** indicates that the data terminal is ready, and the value **false** indicates that the data terminal is not ready.|
+
+**Return value**
+
+| Type               | Description                   |
+| ------------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
+
+| ID| Error Message                         |
+| -------- | --------------------------------- |
+| 35700001 | Service error.                    |
+| 35700003 | Virtual serial port disconnected. |
+| 35700005 | Port not open.                    |
+
+**Example**
+
+```ts
+import { serial } from "@kit.BasicServicesKit";
+
+// Set the DTR signal.
+port.setDtr(true).then(() => {
+  console.info('setDtr success');
+}).catch((error: Error) => {
+  console.error(`setDtr error: ${JSON.stringify(error)}`);
+});
+```
+
+### getDsr
+
+getDsr(): Promise&lt;boolean&gt;
+
+Obtains the status of the data set ready (DSR) signal. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.BusManager.Serial
+
+**Return value**
+
+| Type                    | Description                                            |
+| ------------------------ | ------------------------------------------------ |
+| Promise&lt;boolean&gt;   | Promise used to return the DSR signal status. The value **true** indicates that the data device is ready, and the value **false** indicates that the data device is not ready.|
+
+**Error codes**
+
+For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
+
+| ID| Error Message                         |
+| -------- | --------------------------------- |
+| 35700001 | Service error.                    |
+| 35700003 | Virtual serial port disconnected. |
+| 35700005 | Port not open.                    |
+
+**Example**
+
+```ts
+import { serial } from "@kit.BasicServicesKit";
+
+// Obtain the DSR signal status.
+port.getDsr().then((dsr: boolean) => {
+  console.info('getDsr success, dsr: ' + dsr);
+}).catch((error: Error) => {
+  console.error(`getDsr error: ${JSON.stringify(error)}`);
+});
+```
+
+### onDisconnect
+
+onDisconnect(callback: Callback&lt;void&gt;): void
+
+Subscribes to serial port disconnection events. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.BusManager.Serial
+
+**Parameters**
+
+| Name  | Type                 | Mandatory| Description                            |
+| -------- | --------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;void&gt;  | Yes  | Callback used to return the result, which is triggered when the serial port is disconnected.|
+
+**Error codes**
+
+For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
+
+| ID| Error Message            |
+| -------- | -------------------- |
+| 35700001 | Service error.       |
+| 35700005 | Port not open.       |
+
+**Example**
+
+```ts
+import { serial } from "@kit.BasicServicesKit";
+
+// Subscribe to serial port disconnection events.
+port.onDisconnect(() => {
+  console.info('serial port disconnected');
+});
+```
+
+### offDisconnect
+
+offDisconnect(callback?: Callback&lt;void&gt;): void
+
+Unsubscribes from serial port disconnection events.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.BusManager.Serial
+
+**Parameters**
+
+| Name  | Type                 | Mandatory| Description                                                  |
+| -------- | --------------------- | ---- | ------------------------------------------------------ |
+| callback | Callback&lt;void&gt;  | No  | Callback used to return the result. If no callback is passed, the listener for all serial port disconnection events is canceled.|
+
+**Error codes**
+
+For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
+
+| ID| Error Message            |
+| -------- | -------------------- |
+| 35700001 | Service error.       |
+| 35700005 | Port not open.       |
+
+**Example**
+
+```ts
+import { serial } from "@kit.BasicServicesKit";
+
+// Unsubscribe from serial port disconnection events.
+port.offDisconnect();
+
+// Cancel the specified listener callback.
+let disconnectedCallback = () => {
+  console.info('serial port disconnected');
+};
+port.offDisconnect(disconnectedCallback);
 ```
 
 ## SerialPortInfo
@@ -576,6 +744,8 @@ Enumerates the number of stop bits.
 Enumerates the number of parity bits.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability:** SystemCapability.BusManager.Serial
 

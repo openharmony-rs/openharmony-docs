@@ -1,8 +1,8 @@
 # OH_AVTranscoder_Config
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ typedef struct OH_AVTranscoder_Config OH_AVTranscoder_Config
 
 ## 概述
 
-初始化AVTranscoder_Config。
+初始化OH_AVTranscoder_Config。
 
 **起始版本：** 20
 

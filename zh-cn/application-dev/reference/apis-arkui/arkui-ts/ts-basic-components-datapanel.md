@@ -6,11 +6,11 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-数据面板组件，用于将多个数据占比情况使用占比图进行展示。
+数据面板组件，用于将多个数据占比情况使用占比图进行展示，支持环形和线性两种展示类型，可自定义颜色、阴影、底板等视觉效果，适用于存储容量、任务进度、资源占比等数据可视化场景，帮助用户直观了解数据分布情况。
 
 >  **说明：**
 >
-> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 
@@ -36,7 +36,7 @@ DataPanel(options: DataPanelOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options |  [DataPanelOptions](#datapaneloptions对象说明)| 是 | 数据面板组件参数。 |
+| options |  [DataPanelOptions](#datapaneloptions对象说明)| 是 | 数据面板配置选项，用于设置数据面板的数据值列表、最大值和数据面板类型。 |
 
 ## DataPanelOptions对象说明
 
@@ -50,9 +50,9 @@ DataPanel(options: DataPanelOptions)
 
 | 名称            | 类型   | 只读 | 可选 | 说明 |
 | ----------------- | -------- | ----- | -------- | -------- |
-| values            | number[]   | 否   | 否  | 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。 |
-| max               | number     | 否   | 是   |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于value数组各项的和，按比例显示。<br/>默认值：100 |
-| type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 是 | 数据面板的类型（不支持动态修改）。<br/>默认值：DataPanelType.Circle |
+| values            | number[]   | 否   | 否  | 数据值列表，数组长度范围[0, 9]，大于9个数据则取前9个数据。若数据值小于0则置为0。 |
+| max               | number     | 否   | 是   |   - max大于0时，表示数据的最大值。<br>- max小于等于0时，max等于values数据值列表各项的和，按比例显示。<br>不传入时默认值：100。|
+| type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 是 | 数据面板的类型（不支持动态修改）。<br>可选值：DataPanelType.Line（线性数据面板，适合在有限空间内展示多段数据对比）、DataPanelType.Circle（环形数据面板，适合直观展示数据占比关系）。<br>不传入时默认值为DataPanelType.Circle。|
 
 
 ## DataPanelType<sup>8+</sup>枚举说明
@@ -67,7 +67,7 @@ DataPanel(options: DataPanelOptions)
 
 | 名称 | 值 | 说明 |
 | -------| - | ------------ |
-| Line   | 0 | 线型数据面板。 |
+| Line   | 0 | 线性数据面板。 |
 | Circle | 4 | 环形数据面板。 |
 
 
@@ -79,7 +79,7 @@ DataPanel(options: DataPanelOptions)
 
 closeEffect(value: boolean)
 
-设置是否关闭数据占比图表旋转动效和投影效果。若未设置[trackShadow](#trackshadow10)属性，则由该属性控制投影效果的开关，开启投影的效果为投影的默认效果。若设置了trackShadow属性，则由trackShadow属性值控制投影效果的开关。
+设置是否关闭数据占比图表旋转动效和投影效果。若未设置[trackShadow](#trackshadow10)属性，则由该属性控制投影效果，当closeEffect为false（投影开启）时，投影为默认效果。若已设置trackShadow属性，则由trackShadow属性值控制投影效果。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -91,7 +91,7 @@ closeEffect(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                   |
 | ------ | ------- | ---- | ------------------------------------------------------ |
-| value  | boolean | 是   | 关闭数据占比图表旋转动效和投影效果。<br/>默认值：false，false表示开启数据占比图表旋转动效和投影效果，true表示关闭数据占比图表旋转动效和投影效果。 |
+| value  | boolean | 是   | 关闭数据占比图表旋转动效和投影效果。<br>默认值：false，表示开启动效和投影；true表示关闭动效和投影。 |
 
 ### valueColors<sup>10+</sup>
 
@@ -109,7 +109,7 @@ valueColors(value: Array<ResourceColor | LinearGradient>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | 是   | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。默认渐变色，其九段数据段默认颜色：[{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }]、[{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }]、[{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }]、[{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }]、[{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }]、[{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }]、[{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }]、[{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }]、[{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }] |
+| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | 是   | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。默认值为渐变色，九段数据的默认颜色为：[{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }]、[{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }]、[{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }]、[{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }]、[{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }]、[{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }]、[{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }]、[{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }]、[{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }]。<br>**说明：**<br>若设置的颜色个数少于数据段个数，剩余数据段会自动匹配默认颜色列表里对应顺序的颜色；若设置的颜色个数多于数据段个数，则显示的颜色个数与数据段个数一致，多余颜色将被忽略。 |
 
 ### trackBackgroundColor<sup>10+</sup>
 
@@ -127,7 +127,7 @@ trackBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 底板颜色。<br/>默认值：'#08182431'，格式为十六进制ARGB值，前两位代表透明度。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 底板颜色。<br>默认值：'#08182431'，格式为十六进制ARGB值，前两位代表透明度。 |
 
 ### strokeWidth<sup>10+</sup>
 
@@ -145,13 +145,14 @@ strokeWidth(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value | [Length](ts-types.md#length) | 是 | 圆环粗细。<br/>默认值：24<br/>单位：vp<br/>设置字符串类型参数时，如果不指定单位，默认单位为px，例如'10'，等同于'10px'。<br/>**说明：**<br/>设置小于0的值时，按默认值显示。<br/>请合理设置圆环粗细，当value大于圆环半径时，圆环粗细会自动设置为圆环半径的12%。如果value过大，圆环可能会消失。 |
+| value | [Length](ts-types.md#length) | 是 | 圆环粗细。<br>默认值：24<br>单位：vp<br>设置字符串类型参数时，如果不指定单位，默认单位为px，例如'10'，等同于'10px'。<br>**说明：**<br>数据面板的类型为DataPanelType.Line时该属性不生效。<br>设置小于0的值时，按默认值显示。<br>当value大于圆环半径时，圆环粗细会自动设置为圆环半径的12%。如果value过大，圆环可能会消失。 |
+
 
 ### trackShadow<sup>10+</sup>
 
 trackShadow(value: DataPanelShadowOptions)
 
-设置投影样式。
+设置投影样式。若设置了本属性，则投影效果由本属性控制，closeEffect对投影效果的控制不再生效（closeEffect对旋转动效的控制不受影响）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -163,7 +164,7 @@ trackShadow(value: DataPanelShadowOptions)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                  |
 | ------ | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) | 是   | 投影样式。<br/>**说明：** <br/>设置为null时，不开启投影。 |
+| value  | [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) | 是   | 投影样式。<br>**说明：** <br>设置为null时，不开启投影。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -181,7 +182,7 @@ contentModifier(modifier: ContentModifier\<DataPanelConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[DataPanelConfiguration](#datapanelconfiguration12对象说明)> | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[DataPanelConfiguration](#datapanelconfiguration12对象说明)> | 是   | 在DataPanel组件上，定制内容区的方法，设置后将使用开发者自定义的内容替换DataPanel原有显示内容。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 
 ## DataPanelShadowOptions<sup>10+</sup>对象说明
@@ -196,7 +197,7 @@ DataPanelShadowOptions继承自[MultiShadowOptions](ts-information-display-commo
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| colors | Array<[ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](#lineargradient10)> | 否 | 是 | 各数据段投影的颜色。 <br/>默认值：与valueColors值相同 <br/>**说明：** <br/>若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。<br/>若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。|
+| colors | Array<[ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](#lineargradient10)> | 否 | 是 | 各数据段投影的颜色。 <br>默认值：与valueColors值相同 <br>**说明：** <br>若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。<br>若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。|
 
 ## LinearGradient<sup>10+</sup>
 
@@ -221,7 +222,7 @@ constructor(colorStops: ColorStop[])
 
 ## ColorStop<sup>10+</sup>
 
-颜色断点类型，用于描述渐进色颜色断点。
+颜色断点类型，用于描述渐变色颜色断点。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -232,7 +233,7 @@ constructor(colorStops: ColorStop[])
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 否 | 渐变色断点处的颜色值。|
-| offset | [Length](ts-types.md#length) | 否 | 否 | 渐变色断点（0~1之间的比例值，若数据值小于0则置为0，若数据值大于1则置为1）。<br>**说明：** <br/>若传入字符串类型且内容为数字，则转换为对应的数值。<br/>例如'10vp'转换为10，'10%'转换为0.1。 |
+| offset | [Length](ts-types.md#length) | 否 | 否 | 渐变色断点（0~1之间的比例值，若该值小于0则置为0，若该值大于1则置为1）。<br>**说明：** <br>若传入字符串类型且内容为数字，则转换为对应的数值。<br>例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ## DataPanelConfiguration<sup>12+</sup>对象说明
 
@@ -246,8 +247,8 @@ constructor(colorStops: ColorStop[])
 
 | 名称  | 类型    |    只读    |    可选   |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| values | number[] | 否 | 否 | 当前DataPanel的数据值。<br>数组长度范围是[0, 9]。<br>**说明：**<br/>如果数组长度大于9，则取前9项。|
-| maxValue | number | 否 | 否 | DataPanel显示的最大值。<br/>默认值：100。<br>**说明：** <br/>如果小于或等于0，maxValue将被设为values数组中所有项的总和，并按比例显示。 |
+| values | number[] | 否 | 否 | 当前DataPanel的数据值。<br>数组长度范围是[0, 9]。<br>**说明：**<br>如果数组长度大于9，则取前9项。|
+| maxValue | number | 否 | 否 | DataPanel显示的最大值。<br>默认值：100。<br>**说明：** <br>如果小于或等于0，maxValue将被设为values数组中所有项的总和，并按比例显示。 |
 
 ## 示例
 
@@ -260,7 +261,7 @@ constructor(colorStops: ColorStop[])
 @Entry
 @Component
 struct DataPanelExample {
-  public valueArr: number[] = [10, 10, 10, 10, 10, 10, 10, 10, 10]
+  public valueArr: number[] = [10, 10, 10, 10, 10, 10, 10, 10, 10];
 
   build() {
     Column({ space: 5 }) {
@@ -316,28 +317,28 @@ struct DataPanelExample {
 @Entry
 @Component
 struct LinearGradientDataPanelExample {
-  public values1: number[] = [20, 20, 20, 20]
+  public values1: number[] = [20, 20, 20, 20];
   public color1: LinearGradient =
-    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }])
+      new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }]);
   public color2: LinearGradient =
-    new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }])
+      new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }]);
   public colorShadow1: LinearGradient =
-    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#65EF629F', offset: 1 }])
+      new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#65EF629F', offset: 1 }]);
   public colorShadow2: LinearGradient =
-    new LinearGradient([{ color: '#65e26709', offset: 0 }, { color: '#65efbd08', offset: 1 }])
+      new LinearGradient([{ color: '#65e26709', offset: 0 }, { color: '#65efbd08', offset: 1 }]);
   public colorShadow3: LinearGradient =
-    new LinearGradient([{ color: '#6572B513', offset: 0 }, { color: '#6508efa6', offset: 1 }])
+      new LinearGradient([{ color: '#6572B513', offset: 0 }, { color: '#6508efa6', offset: 1 }]);
   public colorShadow4: LinearGradient =
-    new LinearGradient([{ color: '#65ed08f5', offset: 0 }, { color: '#65ef0849', offset: 1 }])
+      new LinearGradient([{ color: '#65ed08f5', offset: 0 }, { color: '#65ef0849', offset: 1 }]);
   @State shadowColorArray: Array<LinearGradient | ResourceColor> =
-    [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4]
-  @State color3: string = '#00FF00'
-  @State color4: string = '#20FF0000'
-  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4]
-  @State bgColor: string = '#08182431'
-  @State offsetX: number = 15
-  @State offsetY: number = 15
-  @State radius: number = 5
+      [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4];
+  @State color3: string = '#00FF00';
+  @State color4: string = '#20FF0000';
+  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4];
+  @State bgColor: string = '#08182431';
+  @State offsetX: number = 15;
+  @State offsetY: number = 15;
+  @State radius: number = 5;
 
   build() {
     Column({ space: 5 }) {
@@ -368,35 +369,25 @@ struct LinearGradientDataPanelExample {
 
 ### 示例3（设置关闭动画和阴影）
 
-该示例通过[closeEffect](#closeeffect)接口，实现了关闭数据面板动画和阴影的功能。
+该示例通过[closeEffect](#closeeffect)接口，实现了关闭数据占比图表旋转动效和投影效果的功能。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct LinearGradientDataPanelExample {
-  public values1: number[] = [20, 20, 20, 20]
+  public values1: number[] = [20, 20, 20, 20];
   public color1: LinearGradient =
-    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }])
+    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }]);
   public color2: LinearGradient =
-    new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }])
-  public colorShadow1: LinearGradient =
-    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#65EF629F', offset: 1 }])
-  public colorShadow2: LinearGradient =
-    new LinearGradient([{ color: '#65e26709', offset: 0 }, { color: '#65efbd08', offset: 1 }])
-  public colorShadow3: LinearGradient =
-    new LinearGradient([{ color: '#6572B513', offset: 0 }, { color: '#6508efa6', offset: 1 }])
-  public colorShadow4: LinearGradient =
-    new LinearGradient([{ color: '#65ed08f5', offset: 0 }, { color: '#65ef0849', offset: 1 }])
-  @State shadowColorArray: Array<LinearGradient | ResourceColor> =
-    [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4]
-  @State color3: string = '#00FF00'
-  @State color4: string = '#20FF0000'
-  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4]
-  @State bgColor: string = '#08182431'
-  @State offsetX: number = 15
-  @State offsetY: number = 15
-  @State radius: number = 5
+    new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }]);
+  @State color3: string = '#00FF00';
+  @State color4: string = '#20FF0000';
+  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4];
+  @State bgColor: string = '#08182431';
+  @State offsetX: number = 15;
+  @State offsetY: number = 15;
+  @State radius: number = 5;
 
   build() {
     Column({ space: 5 }) {
@@ -484,7 +475,7 @@ struct ChildItem {
   public color4: string = '#6595ff00'
   public color5: string = '#65000dff'
   public color6: string = '#650099ff'
-  public colorArray: Array<string> = [this.color1, this.color2, this.color3, this.color4, this.color5, this.color6]
+  public colorArray: Array<string> = [this.color1, this.color2, this.color3, this.color4, this.color5, this.color6];
 
   build() {
     RelativeContainer() {
@@ -503,4 +494,4 @@ struct ChildItem {
   }
 }
 ```
-![LinearGradientDataPanel](figures/ContentModifierDataPanel.jpg)
+![ContentModifierDataPanel](figures/ContentModifierDataPanel.jpg)

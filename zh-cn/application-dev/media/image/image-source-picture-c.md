@@ -240,9 +240,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        
-       char filePath[MAX_SIZE];
-       size_t pathSize;
-       napi_get_value_string_utf8(env, args[0], filePath, MAX_SIZE, &pathSize);
+       char filePath[MAX_SIZE] = {0};
+       size_t pathSize = 0;
+       if (napi_get_value_string_utf8(env, args[0], filePath, sizeof(filePath), &pathSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "CreatePictureByImageSource napi_get_value_string_utf8 failed !");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       filePath[MAX_SIZE - 1] = '\0';
    
        g_thisPicture->errorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &g_thisPicture->source);
        if (g_thisPicture->errorCode != IMAGE_SUCCESS) {

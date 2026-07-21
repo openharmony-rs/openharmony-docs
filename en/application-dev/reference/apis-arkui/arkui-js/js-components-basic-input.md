@@ -1,10 +1,12 @@
 # input
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:09.547Z pushedAt=2026-06-22T06:26:55.652Z -->
 
 >  **NOTE**
 >
@@ -16,11 +18,9 @@ The **\<input>** component provides an interactive interface to receive user inp
 
 None
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -38,7 +38,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | headericon                       | string                  | -         | No   | Icon resource path before text input. This icon does not support click events and is unavailable for **button**, **checkbox**, and **radio** types. The supported icon image formats are JPG, PNG, and SVG.|
 | showcounter<sup>5+</sup>         | boolean                 | false     | No   | Whether to display the character counter for an input box. This attribute takes effect only when **maxlength** is set.        |
 | menuoptions<sup>5+</sup>         | Array&lt;MenuOption&gt; | -         | No   | Menu options displayed after users click the **More** button.                 |
-| autofocus<sup>6+</sup>           | boolean                 | false     | No   | Whether to automatically obtain focus.<br>This attribute setting does not take effect on the application home page. You can enable a text box on the home page to automatically obtain focus, by delaying the **focus** method call (for about 100–500 ms) in **onActive**.|
+| autofocus<sup>6+</sup>           | boolean                 | false     | No    | Whether to automatically obtain focus. This attribute setting does not take effect on the application home page. You can enable a text box on the home page to automatically obtain focus, by delaying the **focus** method call (for about 100–500 ms) in **onActive**. The value **true** indicates that the text box automatically obtains focus, and **false** indicates the opposite. |
 | selectedstart<sup>6+</sup>       | number                  | -1        | No   | Start position for text selection.                          |
 | selectedend<sup>6+</sup>         | number                  | -1        | No   | End position for text selection.                          |
 | softkeyboardenabled<sup>6+</sup> | boolean                 | true      | No   | Whether to display the soft keyboard during editing.                           |
@@ -50,7 +50,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | ------- | ------ | ----------- |
 | icon    | string | Path of the icon for a menu option.|
 | content | string | Text content of a menu option.|
-
 
 ## Styles
 
@@ -65,22 +64,21 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | font-weight              | number \| string | normal     | No   | Font weight of the single-line text box or button. For details, see **font-weight** of the [**\<text>**](js-components-basic-text.md) component. |
 | caret-color<sup>6+</sup> | &lt;color&gt;              | -          | No   | Color of the caret.                              |
 
-
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
 - When **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**, the following events are supported.
 
-  | Name                       | Parameter                                      | Description                                      |
-  | ------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Name                       | Parameter                                      | Description                                      |
+| ------------------------- | ---------------------------------------- | ---------------------------------------- |
   | change                    | {<br> value: inputValue<br> }  | Triggered when the content entered in the input box changes. The most recent content entered by the user is returned.<br>If you change the **value** attribute directly, this event will not be triggered.|
   | enterkeyclick             | {<br> value: enterKey<br> }    | Triggered when the **Enter** key on the soft keyboard is clicked. The type of the **Enter** key is returned, which is of the number type. Available values are as follows:<br>- **2**: returned if **enterkeytype** is **go**.<br>- **3**: returned if **enterkeytype** is **search**.<br>- **4**: returned if **enterkeytype** is **send**.<br>- **5**: returned if **enterkeytype** is **next**.<br>- **6**: returned if **enterkeytype** is **default**, **done**, or is not set.|
   | translate<sup>5+</sup>    | {<br> value: selectedText<br> } | Triggered when users click the translate button in the menu displayed after they select a text segment. The selected text content is returned.|
   | share<sup>5+</sup>        | {<br> value: selectedText<br> } | Triggered when users click the share button in the menu displayed after they select a text segment. The selected text content is returned.|
   | search<sup>5+</sup>       | {<br> value: selectedText<br> } | Triggered when users click the search button in the menu displayed after they select a text segment. The selected text content is returned.|
   | optionselect<sup>5+</sup> | {<br> index: optionIndex,<br> value: selectedText<br> } | Triggered when users click a menu option in the menu displayed after they select a text segment. This event is valid only when the **menuoptions** attribute is set. The option index and selected text content are returned.|
-  | selectchange<sup>6+</sup> | {<br>start: number,<br>end: number<br> } | Triggered when the text selection changes.                            |
+  | selectchange<sup>6+</sup> | {<br>start:&nbsp;number,<br>end:&nbsp;number<br>&nbsp;} | Triggered when the text selection changes. The start and end positions of the text selection are returned.                             |
 
 - When **type** is set to **checkbox** or **radio**, the following events are supported.
 
@@ -101,6 +99,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 ## Example
 
 1. Single-line text box
+
    ```html
    <!-- xxx.hml -->
    <div class="content">
@@ -129,7 +128,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
      margin-top: 20px;
     }
    ```
-   
+
    ```js
    // xxx.js
    import promptAction from '@ohos.promptAction';
@@ -154,9 +153,10 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
     }
    ```
 
-   ![1-2](figures/1-2.png)
-   
+   ![submit-button](figures/submit-button.png)
+
 2. Common button
+
    ```html
    <!-- xxx.hml -->
    <div class="div-button">
@@ -179,6 +179,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![input](figures/input.png)
 
 3. Check box
+
    ```html
    <!-- xxx.hml -->
    <div class="content">
@@ -212,6 +213,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![input01](figures/input01.png)
 
 4. Radio button
+
    ```html
    <!-- xxx.hml -->
    <div class="content">
@@ -246,4 +248,4 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    }
    ```
 
-   ![1-3](figures/1-3.png)
+   ![input02](figures/input02.png)

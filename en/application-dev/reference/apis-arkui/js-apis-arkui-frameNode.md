@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
+**FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode.<!--RP2--><!--RP2End-->
 
 > **NOTE**
 >
@@ -266,7 +266,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." <br>Applicable versions: 22+|
 
 **Example**
 
@@ -298,7 +298,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." <br>Applicable versions: 22+|
 
 **Example**
 
@@ -572,7 +572,7 @@ See [Example of Node Operations](#example-of-node-operations).
 
 ### getChildrenCount
 
-getChildrenCount(countMode?: ChildrenCountMode): int
+getChildrenCount(countMode?: ChildrenCountMode): number
 
 Obtains the number of child nodes of this FrameNode based on the specified counting mode.
 
@@ -592,7 +592,7 @@ Obtains the number of child nodes of this FrameNode based on the specified count
 **Return value**
 | Type    | Description                           |
 | -------- | ------------------------------- |
-| int | Number of child nodes of this FrameNode, which is returned based on the counting mode.|
+| number | Number of child nodes of this FrameNode, which is returned based on the counting mode.|
 
 **Example**
 
@@ -851,7 +851,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100027   | The current node has been adopted. |
+| 100027   | The current node has been adopted. <br>Applicable versions: 22+|
 
 **Example**
 
@@ -1892,7 +1892,7 @@ struct Index {
 }
 ```
 
-![en-us_image_dispose](figures/image-dispose.gif)
+![zh-cn_image_dispose](figures/image-dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -2423,7 +2423,7 @@ struct Index {
 }
 ```
 
-![en-us_image_disposeTree](figures/image-disposeTree.gif)
+![zh-cn_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 
@@ -5358,7 +5358,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable.<br>Applicable versions: 15-24|
+| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24. <br>Applicable versions: 15-24|
 
 **Example**
 
@@ -6233,7 +6233,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>Applicable versions: 20-24|
 
 **Example**
 
@@ -6938,7 +6938,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24]|
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>Applicable versions: 20-24|
 
 **Example**
 
@@ -7553,7 +7553,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>Applicable versions: 20-24|
 
 **Example**
 
@@ -9117,6 +9117,12 @@ Obtains all available items. Available nodes include both currently displayed an
 onAttachToNode?(target: FrameNode): void
 
 Called when a FrameNode is attached to the NodeAdapter.
+
+> **NOTE**
+>
+> In versions earlier than API version 26.0.0, this callback is triggered when the host node is attached to the main tree. If you set this callback by dynamically assigning a value, you can complete the setting after calling [attachNodeAdapter](#attachnodeadapter12) and before the host node is attached to the main tree. In this case, you will receive this callback when the host node is attached to the main tree.
+>
+> In API version 26.0.0 and later, this callback is triggered immediately when the NodeAdapter is bound to the host node, instead of when the host node is attached to the main tree. In this case, the host node may not have been attached to the main tree. If the node on which the callback logic depends has been mounted (for example, accessing layout information or executing animation), you are advised to register [onAppear](./arkui-ts/ts-universal-events-show-hide.md#onappear) in the callback and place the related logic in **onAppear** for execution. If you set this callback by dynamically assigning a value, complete the setting before calling [attachNodeAdapter](#attachnodeadapter12). Otherwise, the callback may fail to be triggered.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

@@ -141,7 +141,7 @@ nodeAPI->unregisterNodeEventReceiver();
            nativeModule_ = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
            // 事件触发时需要通过函数获取对应的事件对象，这边通过设置节点自定义数据将封装类指针保持在组件上，方便后续事件分发。
            nativeModule_->setUserData(handle_, this);
-           // 注册节点监听事件接受器。
+           // 注册节点监听事件接收器。
            nativeModule_->addNodeEventReceiver(handle_, ArkUINode::NodeEventReceiver);
        }
    

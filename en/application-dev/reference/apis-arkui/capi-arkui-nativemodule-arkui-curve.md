@@ -12,7 +12,7 @@ typedef struct ArkUI_Curve ArkUI_Curve
 
 ## Overview
 
-Defines an interpolation curve.
+Defines an interpolation curve object, which is used to calculate the interpolation of an animation attribute value.
 
 **Since**: 12
 

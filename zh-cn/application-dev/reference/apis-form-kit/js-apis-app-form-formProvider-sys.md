@@ -73,13 +73,13 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.requestPublishForm(want, obj, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -130,13 +130,13 @@ let want: Want = {
 try {
   formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -194,10 +194,10 @@ try {
   formProvider.requestPublishForm(want).then((data: string) => {
     console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -238,7 +238,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.isRequestPublishFormSupported((error: BusinessError, isSupported: boolean) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
     } else {
       if (isSupported) {
         let want: Want = {
@@ -252,19 +252,19 @@ try {
         try {
           formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
             if (error) {
-              console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+              console.error(`callback error, code: ${error.code}, message: ${error.message}`);
               return;
             }
             console.info(`formProvider requestPublishForm, form ID is: ${data}`);
           });
         } catch (error) {
-          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
         }
       }
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -316,17 +316,17 @@ try {
         formProvider.requestPublishForm(want).then((data: string) => {
           console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
         }).catch((error: BusinessError) => {
-          console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+          console.error(`promise error, code: ${error.code}, message: ${error.message}`);
         });
       } catch (error) {
-        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       }
     }
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -338,13 +338,15 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。 |
+| formId | string | 是 | 卡片标识。 |
 
 **返回值：**
 
@@ -380,10 +382,10 @@ try {
   formProvider.activateSceneAnimation(formId).then(() => {
     console.info('activateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -395,13 +397,15 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。|
+| formId | string | 是 | 卡片标识。|
 
 **返回值：**
 
@@ -437,10 +441,10 @@ try {
   formProvider.deactivateSceneAnimation(formId).then(() => {
     console.info('deactivateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -498,10 +502,10 @@ try {
   formProvider.updateTemplateFormDetailInfo(templateFormInfo).then(() => {
     console.info('updateTemplateFormDetailInfo succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -547,7 +551,7 @@ try {
   });
   console.info(`onPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -592,6 +596,6 @@ try {
   formProvider.offPublishFormCrossBundleControl();
   console.info(`offPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```

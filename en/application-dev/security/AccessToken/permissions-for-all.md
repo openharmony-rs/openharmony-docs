@@ -148,7 +148,11 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Valid since**: 8
+
+**Changelog**: From API version 22, the support for the P2P capability is added to this permission.
 
 ## ohos.permission.GYROSCOPE
 
@@ -218,6 +222,8 @@ Allows an application to set screens that cannot be captured or recorded.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Valid since**: 9
 
 **Changelog**: The permission level is system_basic in API versions 9 to 10 and changed to normal since API version 11.
@@ -241,6 +247,8 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
 **Valid since**: 8
 
@@ -281,6 +289,18 @@ With this permission, the application can publish sticky common events, so that 
 **Authorization mode**: system_grant
 
 **Valid since**: 7
+
+## ohos.permission.RUNNING_LOCK
+
+Allows an application to obtain a running lock to keep running in the background.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets | car | phone | TV | wearable
+
+**Since**: 7
 
 ## ohos.permission.ACCESS_CERT_MANAGER
 
@@ -440,11 +460,13 @@ The configured icon and label information can be displayed in **Task Center** an
 
 Allows an application to start its UIAbility by using C APIs.
 
+This permission allows starting a UIAbility within the same application from the native layer, suitable for scenarios where C/C++ APIs are called to launch a UIAbility.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices | tablets | Phones
 
 **Valid since**: 15
 
@@ -756,5 +778,19 @@ With this permission, the application can set audio sound effects and manage aud
 **Authorization mode**: system_grant
 
 **Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.DCAS_RUN_MODEL
+
+Allows an application to access device-side model runtime management.
+
+With this permission, the application can access device-side model runtime management capabilities to complete model loading and inference.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0

@@ -28,7 +28,7 @@ An attempt is made to modify a declarative node.
 
 Avoid modifying unmodifiable nodes. Use try-catch to handle errors and prevent impact on other logic.
 
-## 100022 Cross-Language Attribute Configuration Not Supported
+## 100022 Cross-Language Common Attribute Configuration Not Supported
 
 **Error Message**
 
@@ -36,11 +36,11 @@ The FrameNode cannot be set whether to support cross-language common attribute s
 
 **Description**
 
-This error code is reported when the target FrameNode does not support cross-language attribute configuration.
+This error code is reported when the current FrameNode does not support cross-language common attribute configuration.
 
 **Possible Causes**
 
-An attempt is made to adjust the cross-language attribute permission of the target FrameNode.
+An attempt is made to adjust the cross-language common attribute permission of the target FrameNode.
 
 **Solution**
 
@@ -167,7 +167,7 @@ Reuse/Recycle not implemented for ViewV2, yet.
 
 **Description**
 
-In the BuilderNode, [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) does not support [component reuse](./js-apis-arkui-builderNode.md#reuse12).
+This error code is reported when [State Management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) does not support [reuse](./js-apis-arkui-builderNode.md#reuse12) in the BuilderNode.
 
 **Possible Causes**
 

@@ -7,11 +7,11 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The **\<input>** component provides a radio button to receive user input. 
+The **\<input>** component provides a radio button to receive user input.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Attributes
 
@@ -20,9 +20,9 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | Name     | Type     | Default Value  | Mandatory  | Description                                      |
 | ------- | ------- | ----- | ---- | ---------------------------------------- |
 | type    | string  | radio | Yes   | Type of the **\<input>** component. Currently, only the radio button is supported.<br>- **radio**: a radio button that allows users to select one from multiple others with the same name.|
-| checked | boolean | false | No   | Whether the component is checked or not.                               |
+| checked | boolean | false | No   | Whether the component is selected. **true**: selected; **false**: not selected.                               |
 | name    | string  | -     | No   | Name of the **\<input>** component.                             |
-| value   | string  | -     | No   | Value of the **\<input>** component. When **type** is **radio**, this attribute is mandatory and the value must be unique for radio buttons with the same name. |
+| value   | string  | -     | No   | Value of the **\<input>** component. When **type** is **radio**, this attribute is mandatory and the value must be unique for radio buttons with the same name.|
 
 
 ## Styles

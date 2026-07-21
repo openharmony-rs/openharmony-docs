@@ -12,9 +12,9 @@ typedef struct ArkUI_ImmersiveMaterial* ArkUI_ImmersiveMaterialHandle
 
 ## Overview
 
-Defines the pointer to an immersive material object.
+Defines the pointer to an immersive material object, which is used to implement immersive visual effects.
 
-[OH_ArkUI_NativeModule_ImmersiveMaterial_Create](./capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_create) can be used to create an immersive material object. [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](./capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy) can be used to destroy the immersive material object.
+You can call [OH_ArkUI_NativeModule_ImmersiveMaterial_Create](./capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_create) to create an immersive material object. When the object is no longer used, you must call [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](./capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy) to destroy it to release resources, avoiding memory leakage.
 
 **Since**: 26.0.0
 

@@ -225,7 +225,7 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                          |
 | -------- | -------------------------------------- | ---- | --------------------------------------------- |
-| name     | string                                 | 是   | 子窗口的名字。                                |
+| name     | string                                 | 是   | 子窗口的名字，用于唯一标识子窗口。建议使用有意义的窗口名称作为标识符。 |
 | callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数。返回当前WindowStage下的子窗口对象。 |
 
 **错误码：**
@@ -235,7 +235,8 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
+| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and cannot be created again. |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -307,7 +308,8 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
+| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and cannot be created again. |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -415,7 +417,7 @@ export default class EntryAbility extends UIAbility {
 
 getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
-获取该WindowStage实例下的所有子窗口，使用callback异步回调。
+获取该WindowStage实例下的所有子窗口，使用callback异步回调。调用成功后返回所有子窗口对象数组。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -427,7 +429,7 @@ getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
 | 参数名   | 类型                                                | 必填 | 说明                                              |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | 是   | 回调函数。返回当前WindowStage下的所有子窗口对象。 |
+| callback | AsyncCallback&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | 是   | 回调函数。返回当前WindowStage下的所有子窗口对象，若无子窗口则返回空数组。 |
 
 **错误码：**
 
@@ -435,7 +437,8 @@ getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. <br>适用版本：10+ |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 <!--code_no_check-->
@@ -468,7 +471,7 @@ export default class EntryAbility extends UIAbility {
 
 getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
-获取该WindowStage实例下的所有子窗口，使用Promise异步回调。
+获取该WindowStage实例下的所有子窗口，使用Promise异步回调。调用成功后返回所有子窗口对象数组。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -480,7 +483,7 @@ getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
 | 类型                                          | 说明                                                 |
 | --------------------------------------------- | ---------------------------------------------------- |
-| Promise&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | Promise对象。返回当前WindowStage下的所有子窗口对象。 |
+| Promise&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | Promise对象。返回当前WindowStage下的所有子窗口对象，若无子窗口则返回空数组。 |
 
 **错误码：**
 
@@ -488,7 +491,8 @@ getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. <br>适用版本：10+ |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 <!--code_no_check-->
@@ -545,6 +549,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -613,6 +618,7 @@ loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -674,6 +680,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -722,7 +729,7 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| name     | string                                                  | 是   | 命名路由页面的名称。                                             |
+| name     | string                                                  | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过[routeName](arkui-ts/ts-universal-entry.md#entryoptions10)属性定义。  |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，为加载到窗口的页面内容传递状态属性。 |
 | callback | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。                                                   |
 
@@ -809,7 +816,7 @@ loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明             |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | 是   | 命名路由页面的名称。 |
+| name     | string                    | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过[routeName](arkui-ts/ts-universal-entry.md#entryoptions10)属性定义。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。       |
 
 **错误码：**
@@ -877,7 +884,7 @@ export struct Index {
 
 loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-根据指定路由页面名称为当前WindowStage加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用promise异步回调。
+根据指定路由页面名称为当前WindowStage加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
 
 建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
 
@@ -891,7 +898,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 | 参数名  | 类型         | 必填 | 说明                                                         |
 | ------- | ------------ | ---- | ------------------------------------------------------------ |
-| name    | string       | 是   | 命名路由页面的名称。                                             |
+| name    | string       | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过[routeName](arkui-ts/ts-universal-entry.md#entryoptions10)属性定义。   |
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 页面级UI状态存储单元，为加载到窗口的页面内容传递状态属性，默认值为空。 |
 
 **返回值：**
@@ -1041,7 +1048,7 @@ on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | eventType  | string                                                       | 是   | 监听事件，固定为'windowStageEvent'，即WindowStage生命周期变化事件。 |
-| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 是   | 回调函数。返回当前的WindowStage生命周期状态。                |
+| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 是   | 回调函数。当WindowStage生命周期状态发生变化时会返回当前的WindowStage生命周期状态。 |
 
 **错误码：**
 
@@ -1050,7 +1057,7 @@ on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
@@ -1106,7 +1113,7 @@ off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&g
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
@@ -1181,7 +1188,7 @@ on(eventType: 'windowStageLifecycleEvent', callback: Callback&lt;WindowStageLife
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
@@ -1247,7 +1254,7 @@ off(eventType: 'windowStageLifecycleEvent', callback?: Callback&lt;WindowStageLi
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
@@ -1320,7 +1327,7 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -1379,7 +1386,7 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -1616,7 +1623,7 @@ setWindowModal(isModal: boolean): Promise&lt;void&gt;
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. |
-| 1300005 | This window stage is abnormal. |
+| 1300005 | This window stage is abnormal. Possible cause: The window is not created or destroyed.<br>适用版本：20+ |
 
 **示例：**
 
@@ -1895,7 +1902,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 | ------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. <br>适用版本：20+ |
 
 **示例：**
 
@@ -1931,7 +1938,7 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 
 > **说明：**
 >
-> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。
+> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。该接口不支持应用在后台状态时调用，否则返回错误码1300002。
 
 **起始版本：** 26.0.0
 
@@ -1962,7 +1969,7 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The WindowStage is running in the background. 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 

@@ -12,7 +12,7 @@ typedef struct {...} ArkWeb_ProxyMethod
 
 ## 概述
 
-注入的Proxy方法通用结构体。
+ArkWeb_ProxyMethod是用于定义JavaScript代理方法的结构体，指定了一个可以从JavaScript调用的Native方法的基本信息。该结构体包含方法名称（methodName）和对应的Native回调函数指针（callback）两个字段。多个ArkWeb_ProxyMethod可以组合成ArkWeb_ProxyObject，以对象的形式整体注入到Web页面中。
 
 **起始版本：** 12
 

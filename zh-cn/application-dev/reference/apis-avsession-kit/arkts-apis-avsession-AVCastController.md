@@ -875,7 +875,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | 'all' 表示关注播放状态所有字段变化；Array\<keyof AVPlaybackstate> 表示关注Array中的字段变化。|
+| filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | 'all'表示关注播放状态所有字段变化；Array\<keyof AVPlaybackState>表示关注Array中的字段变化。|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。 |
 
 **错误码：**
@@ -1402,7 +1402,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
-系统能力： SystemCapability.Multimedia.AVSession.AVCast
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **参数：**
 
@@ -1434,7 +1434,7 @@ off(type: 'videoSizeChange'): void
 
 取消视频尺寸事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
-系统能力： SystemCapability.Multimedia.AVSession.AVCast
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **参数：**
 
@@ -2099,8 +2099,8 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-avCastController.on('customDataChange', (callback) => {
-    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+avCastController.on('customDataChange', (data: Record<string, Object>) => {
+    console.info(`Caught customDataChange event, the new data is: ${JSON.stringify(data)}`);
 });
 ```
 

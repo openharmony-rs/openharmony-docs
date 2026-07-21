@@ -1,8 +1,8 @@
 #  OffscreenCanvas
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,13 +14,13 @@ When the [Canvas](ts-components-canvas-canvas.md) component or **CanvasRendering
 >
 > This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> **OffscreenCanvas** cannot be used in ServiceExtensionAbility. It is recommended that you use the [drawing module](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md) for offscreen drawing in ServiceExtensionAbility.
+> **OffscreenCanvas** cannot be used in **ServiceExtensionAbility**. It is recommended that you use the [drawing module](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md) for offscreen rendering in **ServiceExtensionAbility**.
 
 ## Child Components
 
 Not supported
 
-## Constructor
+## APIs
 
 ### constructor
 
@@ -45,11 +45,13 @@ Constructs an OffscreenCanvas for creating an offscreen canvas object.
 
 constructor(width: number, height: number, unit: LengthMetricsUnit)
 
-Constructs an **OffscreenCanvas** object for creating an offscreen canvas object. The unit mode is configurable for the **OffscreenCanvas** object.
+Constructs an **OffscreenCanvas** for creating an offscreen canvas object. The unit mode is configurable for the **OffscreenCanvas** object.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,6 +79,8 @@ The following attributes are supported.
 | height | number | No |  No | Height of the offscreen canvas.<br>Default unit: vp|
 
 ### width
+
+**Example**
 
 ```ts
 // xxx.ets
@@ -113,6 +117,8 @@ struct OffscreenCanvasPage {
 ![en-us_image_0000001194032666](figures/offscreen_canvas_width.png)
 
 ### height
+
+**Example**
 
 ```ts
 // xxx.ets
@@ -204,7 +210,7 @@ struct OffscreenCanvasPage {
 }
 ```
 
-![zh-cn_image_0000001194032666](figures/offscreen_canvas_transferToImageBitmap.png)
+![en-us_image_0000001194032666](figures/offscreen_canvas_transferToImageBitmap.png)
 
 ### getContext<sup>10+</sup>
 
@@ -214,20 +220,22 @@ Obtains the drawing context of the offscreen canvas.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type| Mandatory| Description   |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| contextType | string | Yes  | Type of the drawing context of the offscreen canvas. The value can only be **"2d"**.<br>**"2d"**: creates an **OffscreenCanvasRenderingContext2D** object that represents a two-dimensional rendering context.<br>The values **undefined** and **null** are considered as invalid values, and **undefined** is returned.|
+| contextType | string | Yes  | Context type of the offscreen canvas. The value can only be **"2d"**.<br>**"2d"**: creates an **OffscreenCanvasRenderingContext2D** object that represents a two-dimensional rendering context.<br>The values **undefined** and **null** are considered as invalid values, and **undefined** is returned.|
 | options      | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | No| Parameters of the **OffscreenCanvasRenderingContext2D** object. For details, see [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>**undefined** and **null** values are processed based on the default value of [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>Default value: **null**.|
 
 **Return value**
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md) | Drawing context of the offscreen canvas. If the input parameter contextType of the **getContext** method is not **"2d"** (including null or undefined), **undefined** will be returned. Before using the method, check whether the return value is **undefined**.|
+| [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md) | Drawing context of the offscreen canvas. If the input parameter **contextType** of the **getContext** method is not **"2d"** (including null or undefined), **undefined** will be returned. Before using the method, check whether the return value is **undefined**.|
 
 **Example**
 
@@ -293,12 +301,13 @@ Since API version 11, when an application creates a [worker thread](../../../ark
 >
 > After an **OffscreenCanvas** object is passed to a thread through **postMessage**, it cannot be passed to any other thread through **postMessage**. Otherwise, an exception is thrown.
 >
-> The previewer of DevEco Studio does not support the display of content drawn in the Worker thread.
+> The Previewer of DevEco Studio does not support the display of content drawn in the Worker thread.
 
 **Example**
 
 ```ts
 import { worker } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { common } from '@kit.AbilityKit';
@@ -317,7 +326,7 @@ struct OffscreenCanvasExamplePage {
     try {
       this.imgPixelMap = resourceMgr.getDrawableDescriptor($r("app.media.startIcon").id).getPixelMap();
     } catch (error) {
-      console.error("resourceMgr getDrawableDescriptor error, error code: " + error);
+      console.error(`resourceMgr getDrawableDescriptor error, error code: ${(error as BusinessError).code}`);
     }
   }
 
@@ -354,7 +363,7 @@ struct OffscreenCanvasExamplePage {
 After the main thread sends the **OffscreenCanvas** instance through **postMessage**, the worker thread can receive it in **onmessage** for display.
 
 ```ts
-// entry/ets/workers/Worker.ets
+// entry/src/main/ets/workers/Worker.ets
 import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 import { image } from '@kit.ImageKit';
 

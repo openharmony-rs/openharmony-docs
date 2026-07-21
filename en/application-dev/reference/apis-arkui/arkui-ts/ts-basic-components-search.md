@@ -2323,7 +2323,7 @@ struct SearchExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        Search({value: '中文 Text'})
+        Search({value: '中文Text'})
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
         Search({value: '中文Text'})

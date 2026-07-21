@@ -28,9 +28,9 @@ Enumerates the modes for accessing a URI.
 | ----- |-----|-----|
 | READ_MODE  | 0b1 | Read.|
 | WRITE_MODE  | 0b10 | Write.|
-| CREATE_MODE<sup>20+</sup>  | 0b100 | Permission to create a file or folder.|
-| DELETE_MODE<sup>20+</sup>  | 0b1000 | Permission to delete a file or folder.|
-| RENAME_MODE<sup>20+</sup>  | 0b10000 | Permission to rename a file or folder.|
+| CREATE_MODE<sup>20+</sup>  | 0b100 | Create. If no write permission is granted on the parent directory, the create permission of the target file or folder can be granted to create the file or folder. If the write permission is granted on the parent directory, no permission needs to be granted separately.|
+| DELETE_MODE<sup>20+</sup>  | 0b1000 | Delete. If no write permission is granted on the parent directory, the delete permission of the target file or folder can be granted to delete the file or folder. If the write permission is granted on the parent directory, no permission needs to be granted separately.|
+| RENAME_MODE<sup>20+</sup>  | 0b10000 | Rename. If no write permission is granted on the parent directory, the rename permission of the target file or folder can be granted to rename the file or folder. If the write permission is granted on the parent directory, no permission needs to be granted separately.|
 
 ## PolicyErrorCode<sup>11+</sup>
 
@@ -70,7 +70,7 @@ Represents a permission policy, that is, a policy for granting or activating the
 | Name | Type | Read-Only| Optional| Description                                                  |
 |------|-------|------|-----|------------------------------------------------------|
 | uri| string | No  | No| URI of the file, on which the permission is to be granted or activated.                                      |
-| operationMode | number | No  | No| URI operation mode. For details, see [OperationMode](#operationmode11). To grant multiple permissions, you can combine them, for example, use READ_MODE | WRITE_MODE to grant the read and write permissions.|
+| operationMode | number | No  | No| URI operation mode. For details, see [OperationMode](#operationmode11). To grant multiple permissions, you can combine them, for example, use READ_MODE \| WRITE_MODE to grant the read and write permissions.|
 
 ## PathPolicyInfo<sup>15+</sup>
 
@@ -204,7 +204,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 If the permission revocation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
-| ID| Error Message|
+|ID    | Error Message|
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |

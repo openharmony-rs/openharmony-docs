@@ -9,7 +9,7 @@
 
 ## 简介
 
-N-API 是 Node.js Addon Programming Interface 的缩写，是 Node.js 提供的一组 C++ API，封装了[V8 引擎](https://dev.nodejs.cn/learn/the-v8-javascript-engine/)的能力，用于编写 Node.js 的 Native 扩展模块。通过 N-API，开发者可以使用 C++ 编写高性能的 Node.js 模块，同时保持与 Node.js 的兼容性。 
+N-API 是 Node.js Addon Programming Interface 的缩写，是 Node.js 提供的一组 C++ API，封装了[V8 引擎](https://nodejs.org/learn/getting-started/the-v8-javascript-engine)的能力，用于编写 Node.js 的 Native 扩展模块。通过 N-API，开发者可以使用 C++ 编写高性能的 Node.js 模块，同时保持与 Node.js 的兼容性。 
 
 [Node.js 官网](https://nodejs.org/api/n-api.html)中已经给出 N-API 接口基础能力的介绍，同时，[方舟 ArkTS 运行时](https://gitcode.com/openharmony/arkcompiler_ets_runtime)提供的 N-API 接口，封装了方舟引擎的能力，在功能上与 Node.js 社区保持一致，这里不再赘述。 
 
@@ -414,4 +414,4 @@ t.detach();
 在多线程环境下，需要避免使用共享的数据结构和全局变量，以免竞争和冲突。同时，需要确保线程之间的同步和互斥，以避免数据不一致的情况发生。除此之外，仍需注意： 
 * 对线程安全函数的调用是异步进行的，对 JavaScript 回调的调用将被放置在任务队列中；
 * 创建 napi_threadsafe_function 时，可以提供 napi_finalize 回调。当线程安全函数即将被销毁时，将在主线程上调用此 napi_finalize 回调；
-* 在调用 napi_create_threadsafe_function 时给定了上下文，可以从任何调用 napi_get_threadafe_function_context 的线程中获取。
+* 在调用 napi_create_threadsafe_function 时给定了上下文，可以从任何调用 napi_get_threadsafe_function_context 的线程中获取。

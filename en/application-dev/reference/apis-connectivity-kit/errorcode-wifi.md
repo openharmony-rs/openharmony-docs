@@ -18,7 +18,7 @@ Operation failed.
 
 **Description**
 
-An error occurs when the Wi-Fi service performs an operation related to the station (STA).
+An unknown error occurs in the Wi-Fi service when the API whose **syscap** is **SystemCapability.Communication.WiFi.Core** is called.
 
 **Possible Causes**
 
@@ -181,6 +181,27 @@ An error occurs when the Wi-Fi service performs a P2P-related operation.
 
 1. Communication between the Wi-Fi service and the STA failed.
 2. The Wi-Fi chip communication is abnormal.
+3. An unknown error has occurred.
+
+**Solution**
+
+1. Disable and then enable the Wi-Fi function again.
+2. If the error persists, restart the device.
+
+## 2801001 P2P Module Error
+
+**Error Message**
+
+Wi-Fi P2P disabled.
+
+**Description**
+
+An error occurs when the Wi-Fi service performs a P2P-related operation.
+
+**Possible Causes**
+
+1. Communication between the Wi-Fi service and the STA failed.
+2. Failed to enable the P2P service.
 3. An unknown error has occurred.
 
 **Solution**

@@ -37,7 +37,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition
 | 参数名  | 类型                                        | 必填 | 说明                                                         |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isShow  | boolean                        | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
-| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。builder里面的根节点需要唯一。                           |
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。                           |
 | type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 与transition同时设置时，此属性不生效。                                 |
 
 **返回值：**
@@ -112,7 +112,7 @@ struct ModalTransitionExample {
   @Builder
   myBuilder2() {
     Column() {
-      Button("close modal 2")
+      Button('close modal 2')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -135,7 +135,7 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.NONE,
         backgroundColor: Color.Orange,
         onWillAppear: () => {
-          console.info("BindContentCover onWillAppear.");
+          console.info('BindContentCover onWillAppear.');
         },
         onAppear: () => {
           console.info("BindContentCover onAppear.");
@@ -222,7 +222,7 @@ struct ModalTransitionExample {
   @Builder
   myBuilder2() {
     Column() {
-      Button("close modal 2")
+      Button('close modal 2')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -236,7 +236,7 @@ struct ModalTransitionExample {
   @Builder
   myBuilder() {
     Column() {
-      Button("transition modal 2")
+      Button('transition modal 2')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -258,7 +258,7 @@ struct ModalTransitionExample {
         }
       })
 
-      Button("close modal 1")
+      Button('close modal 1')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -324,7 +324,7 @@ struct ModalTransitionExample {
   @Builder
   myBuilder2() {
     Column() {
-      Button("close modal 2")
+      Button('close modal 2')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -338,7 +338,7 @@ struct ModalTransitionExample {
   @Builder
   myBuilder() {
     Column() {
-      Button("transition modal 2")
+      Button('transition modal 2')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -360,7 +360,7 @@ struct ModalTransitionExample {
         }
       })
 
-      Button("close modal 1")
+      Button('close modal 1')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -422,7 +422,7 @@ struct ModalTransitionExample {
   @Builder
   myBuilder2() {
     Column() {
-      Button("close modal 2")
+      Button('close modal 2')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -437,7 +437,7 @@ struct ModalTransitionExample {
   @Builder
   myBuilder() {
     Column() {
-      Button("transition modal 2")
+      Button('transition modal 2')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -459,7 +459,7 @@ struct ModalTransitionExample {
         }
       })
 
-      Button("close modal 1")
+      Button('close modal 1')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -624,7 +624,7 @@ struct ModalTransitionExample {
 
 ### 示例6（设置全屏模态适配安全区）
 
-从API version 20开始，该示例主要演示设置enableSafeArea为true后全屏模态适配安全区的内容效果。全屏模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
+从API version 20开始，该示例主要演示设置enableSafeArea为true后全屏模态适配安全区的内容效果。全屏模态容器的背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
 
 ```ts
 // xxx.ets

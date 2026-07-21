@@ -6,11 +6,11 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-控制鼠标光标的显示样式。
+鼠标光标控制用于控制鼠标光标的显示样式，适用于需要根据组件状态或交互区域切换光标样式的场景，帮助提升用户的交互识别和操作反馈体验。
 
 >  **说明：**
 >
-> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -31,7 +31,7 @@ setCursor(value: PointerStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ---- | ---- |
-| value | [PointerStyle](#pointerstyle) | 是   | 设置的鼠标样式。 |
+| value | [PointerStyle](#pointerstyle) | 是   | 设置的光标样式。 |
 
 ### restoreDefault
 
@@ -58,7 +58,7 @@ type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.Point
 |import('../api/@ohos.multimodalInput.pointer').default.[PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
 
 > **说明：**
-> 
+>
 > 直接使用cursorControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getCursorController](../arkts-apis-uicontext-uicontext.md#getcursorcontroller12)获取绑定实例的cursorControl。
 
 ## 示例
@@ -72,9 +72,6 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct CursorControlExample {
-  @State text: string = '';
-  controller: TextInputController = new TextInputController()
-
   build() {
     Column() {
       Row()
@@ -85,10 +82,10 @@ struct CursorControlExample {
         .onHover((flag) => {
           if (flag) {
             // 建议使用this.getUIContext().getCursorController().setCursor()
-            cursorControl.setCursor(pointer.PointerStyle.EAST)
+            cursorControl.setCursor(pointer.PointerStyle.EAST);
           } else {
             // 建议使用this.getUIContext().getCursorController().restoreDefault()
-            cursorControl.restoreDefault()
+            cursorControl.restoreDefault();
           }
         })
       Row()
@@ -99,10 +96,10 @@ struct CursorControlExample {
         .onHover((flag) => {
           if (flag) {
             // 建议使用this.getUIContext().getCursorController().setCursor()
-            cursorControl.setCursor(pointer.PointerStyle.WEST)
+            cursorControl.setCursor(pointer.PointerStyle.WEST);
           } else {
             // 建议使用this.getUIContext().getCursorController().restoreDefault()
-            cursorControl.restoreDefault()
+            cursorControl.restoreDefault();
           }
         })
     }.width('100%')

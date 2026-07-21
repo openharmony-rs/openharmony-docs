@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-autoStartupManager模块提供获取自身应用的开机自启状态。
+autoStartupManager模块提供获取自身应用的开机自启状态以及检查设备是否支持开机自启动的能力。
 
 > **说明：**
 >
@@ -55,6 +55,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     try {
+      // 获取当前应用的开机自启动状态
       autoStartupManager.getAutoStartupStatusForSelf().then((isAutoStartup: boolean) => {
         console.info(`getAutoStartupStatusForSelf success, isAutoStartup: ${JSON.stringify(isAutoStartup)}.`);
       }).catch((err: BusinessError) => {
@@ -96,6 +97,7 @@ import { autoStartupManager, UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
+    // 检查当前设备是否支持开机自启动
     const isSupported: boolean = autoStartupManager.isAutoStartupSupported();
     console.info(`isAutoStartupSupported: ${isSupported}.`);
   }

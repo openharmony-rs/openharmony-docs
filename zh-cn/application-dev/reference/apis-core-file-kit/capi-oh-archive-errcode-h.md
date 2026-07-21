@@ -50,7 +50,7 @@ enum OH_Archive_ErrCode
 | OH_ARCHIVE_CANCEL_ERROR = 13900101 | 用户取消操作。<br>**起始版本：** 26.0.0 |
 | OH_ARCHIVE_UNSUPPORTED_ERROR = 13900102 | 不支持当前压缩算法。<br>**起始版本：** 26.0.0 |
 | OH_ARCHIVE_MEM_ERROR = 13900103 | 内存分配失败。<br>**起始版本：** 26.0.0 |
-| OH_ARCHIVE_OPEN_ERROR = 13900104 | 打开归档文件失败。<br>**起始版本：** 26.0.0 |
+| OH_ARCHIVE_OPEN_ERROR = 13900104 | 打开压缩包文件失败。<br>**起始版本：** 26.0.0 |
 | OH_ARCHIVE_WRITE_ERROR = 13900105 | 写操作失败。<br>**起始版本：** 26.0.0 |
 | OH_ARCHIVE_READ_ERROR = 13900106 | 读操作失败。<br>**起始版本：** 26.0.0 |
 | OH_ARCHIVE_STREAM_OUTPUT_ERROR = 13900107 | 流输出错误。<br>**起始版本：** 26.0.0 |

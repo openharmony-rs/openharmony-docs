@@ -19,7 +19,7 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
 > 
 > - [registerNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver)是全局监听函数，不同于[addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver)，[registerNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver)能够监听所有Native组件的自定义事件触发，但只能传递一个函数指针，多次调用使用最后一次的函数指针进行回调，释放时使用unregisterNodeCustomEventReceiver进行反注册。
 > 
-> - 自定义组件相关接口（[measureNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode)、[layoutNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode)、[setMeasuredSize](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setmeasuredsize)、[setLayoutPosition](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlayoutposition)）仅允许在对应的自定义事件（ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE、ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT，见[ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-node-attributes-node-attr-custom-h.md#arkui_nodecustomeventtype)）回调中使用。
+> - 自定义组件相关接口（[measureNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode)、[layoutNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode)、[setMeasuredSize](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setmeasuredsize)、[setLayoutPosition](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlayoutposition)）仅允许在对应的自定义事件（ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE、ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT，见[ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-node-attributes-custom-attributes-h.md#arkui_nodecustomeventtype)）回调中使用。
 
 
 ## 自定义布局容器
@@ -125,6 +125,7 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
                const int paddingMultiplier = 2;
                nativeModule_->setMeasuredSize(handle_, maxWidth + paddingMultiplier * padding_,
                                               maxHeight + paddingMultiplier * padding_);
+               OH_ArkUI_LayoutConstraint_Dispose(childLayoutConstrain);
            }
    
            void OnLayout(ArkUI_NodeCustomEvent *event)
@@ -359,6 +360,7 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
                OH_Drawing_BrushSetColor(brush, color_);
                OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
                OH_Drawing_CanvasDrawPath(drawCanvas, path);
+               OH_Drawing_CanvasDetachBrush(drawCanvas);
                // 释放资源
                OH_Drawing_BrushDestroy(brush);
                OH_Drawing_PathDestroy(path);
@@ -500,217 +502,217 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    <!-- @[irregular-grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/ArkUIIrregularGridNode.h) -->
    
    ``` C
-   // ArkUIIrregularGridNode.h
-   // 不规则网格布局容器示例
-   
-   #ifndef MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
-   #define MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
-   
-   #include "ArkUINode.h"
-   #include <vector>
-   #include <map>
-   
-   namespace NativeModule {
-   
-   // 网格单元配置
-   struct GridItemConfig {
-       int32_t rowSpan = 1;    // 占据的行数
-       int32_t columnSpan = 1; // 占据的列数
-   };
-   
-   class ArkUIIrregularGridNode : public ArkUINode {
-   public:
-       // 使用自定义组件类型ARKUI_NODE_CUSTOM创建组件
-       ArkUIIrregularGridNode()
-           : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_CUSTOM))
-       {
-           // 注册自定义事件监听器
-           nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // 声明自定义事件并传递自身作为自定义数据
-           nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE, 0, this);
-           nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT, 0, this);
-       }
-   
-       ~ArkUIIrregularGridNode() override
-       {
-           // 反注册自定义事件监听器
-           nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // 取消声明自定义事件
-           nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE);
-           nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT);
-       }
-   
-       // 设置列数
-       void SetColumnCount(int32_t count)
-       {
-           columnCount_ = count;
-           nativeModule_->markDirty(handle_, NODE_NEED_MEASURE);
-       }
-   
-       // 设置网格间距
-       void SetGap(int32_t gap)
-       {
-           gap_ = gap;
-           nativeModule_->markDirty(handle_, NODE_NEED_MEASURE);
-       }
-   
-       // 设置子组件的网格配置
-       void SetItemConfig(ArkUI_NodeHandle child, int32_t rowSpan, int32_t columnSpan)
-       {
-           GridItemConfig config;
-           config.rowSpan = rowSpan;
-           config.columnSpan = columnSpan;
-           itemConfigs_[child] = config;
-           nativeModule_->markDirty(handle_, NODE_NEED_MEASURE);
-       }
-   
-   private:
-       static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event)
-       {
-           // 获取组件实例对象，调用相关实例方法
-           auto customNode = reinterpret_cast<ArkUIIrregularGridNode *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
-           auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
-           switch (type) {
-               case ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE:
-                   customNode->OnMeasure(event);
-                   break;
-               case ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT:
-                   customNode->OnLayout(event);
-                   break;
-               default:
-                   break;
-           }
-       }
-   
-       // 测算单个子组件并更新列高信息
-       void MeasureChild(ArkUI_NodeHandle child, int32_t cellWidth,
-           ArkUI_LayoutConstraint *childConstraint, std::vector<int32_t> &columnHeights)
-       {
-           GridItemConfig config = {1, 1};
-           auto it = itemConfigs_.find(child);
-           if (it != itemConfigs_.end()) {
-               config = it->second;
-           }
-           if (config.columnSpan > columnCount_) {
-               config.columnSpan = columnCount_;
-           }
-   
-           int32_t startColumn = FindLowestColumn(columnHeights, config.columnSpan);
-           int32_t startY = 0;
-           for (int32_t col = startColumn; col < startColumn + config.columnSpan && col < columnCount_; col++) {
-               if (columnHeights[col] > startY) {
-                   startY = columnHeights[col];
-               }
-           }
-   
-           int32_t itemWidth = cellWidth * config.columnSpan + gap_ * (config.columnSpan - 1);
-           OH_ArkUI_LayoutConstraint_SetMaxWidth(childConstraint, itemWidth);
-           OH_ArkUI_LayoutConstraint_SetMinWidth(childConstraint, itemWidth);
-           nativeModule_->measureNode(child, childConstraint);
-           auto size = nativeModule_->getMeasuredSize(child);
-   
-           LayoutItemInfo info;
-           info.x = startColumn * (cellWidth + gap_);
-           info.y = startY;
-           info.width = size.width;
-           info.height = size.height;
-           layoutInfo_.push_back(info);
-   
-           int32_t newHeight = startY + size.height + gap_;
-           for (int32_t col = startColumn; col < startColumn + config.columnSpan && col < columnCount_; col++) {
-               columnHeights[col] = newHeight;
-           }
-       }
-   
-       // 自定义测算逻辑：不规则网格布局
-       void OnMeasure(ArkUI_NodeCustomEvent *event)
-       {
-           auto layoutConstrain = OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(event);
-           int32_t maxWidth = OH_ArkUI_LayoutConstraint_GetMaxWidth(layoutConstrain);
-   
-           int32_t totalGap = gap_ * (columnCount_ - 1);
-           int32_t cellWidth = (maxWidth - totalGap) / columnCount_;
-   
-           auto childConstraint = OH_ArkUI_LayoutConstraint_Copy(layoutConstrain);
-           std::vector<int32_t> columnHeights(columnCount_, 0);
-           layoutInfo_.clear();
-   
-           auto totalSize = nativeModule_->getTotalChildCount(handle_);
-           for (uint32_t i = 0; i < totalSize; i++) {
-               auto child = nativeModule_->getChildAt(handle_, i);
-               MeasureChild(child, cellWidth, childConstraint, columnHeights);
-           }
-   
-           int32_t maxHeight = 0;
-           for (int32_t height : columnHeights) {
-               if (height > maxHeight) {
-                   maxHeight = height;
-               }
-           }
-           if (maxHeight > gap_) {
-               maxHeight -= gap_;
-           }
-   
-           nativeModule_->setMeasuredSize(handle_, maxWidth, maxHeight);
-           OH_ArkUI_LayoutConstraint_Dispose(childConstraint);
-       }
-   
-       void OnLayout(ArkUI_NodeCustomEvent *event)
-       {
-           // 获取父组件期望位置并设置
-           auto position = OH_ArkUI_NodeCustomEvent_GetPositionInLayout(event);
-           nativeModule_->setLayoutPosition(handle_, position.x, position.y);
-   
-           // 布局子组件
-           auto totalSize = nativeModule_->getTotalChildCount(handle_);
-           for (uint32_t i = 0; i < totalSize && i < layoutInfo_.size(); i++) {
-               auto child = nativeModule_->getChildAt(handle_, i);
-               nativeModule_->layoutNode(child, layoutInfo_[i].x, layoutInfo_[i].y);
-           }
-       }
-   
-       // 找到最矮的列，确保可以放下指定列跨度的项
-       int32_t FindLowestColumn(const std::vector<int32_t>& columnHeights, int32_t columnSpan)
-       {
-           int32_t lowestColumn = 0;
-           int32_t lowestHeight = INT32_MAX;
-   
-           // 遍历所有可能的起始列
-           for (int32_t col = 0; col <= columnCount_ - columnSpan; col++) {
-               // 找到这个范围内最高的列
-               int32_t maxHeightInRange = 0;
-               for (int32_t i = col; i < col + columnSpan; i++) {
-                   if (columnHeights[i] > maxHeightInRange) {
-                       maxHeightInRange = columnHeights[i];
-                   }
-               }
-   
-               // 如果这个范围的最高点比当前最低点还低，更新最低列
-               if (maxHeightInRange < lowestHeight) {
-                   lowestHeight = maxHeightInRange;
-                   lowestColumn = col;
-               }
-           }
-   
-           return lowestColumn;
-       }
-   
-       struct LayoutItemInfo {
-           int32_t x;
-           int32_t y;
-           int32_t width;
-           int32_t height;
-       };
-   
-       int32_t columnCount_ = 3;
-       int32_t gap_ = 10;
-       std::map<ArkUI_NodeHandle, GridItemConfig> itemConfigs_;
-       std::vector<LayoutItemInfo> layoutInfo_;
-   };
-   
-   } // namespace NativeModule
-   
-   #endif // MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
+    // ArkUIIrregularGridNode.h
+    // 不规则网格布局容器示例
+
+    #ifndef MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
+    #define MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
+
+    #include "ArkUINode.h"
+    #include <vector>
+    #include <map>
+
+    namespace NativeModule {
+
+    // 网格单元配置
+    struct GridItemConfig {
+        int32_t rowSpan = 1;    // 占据的行数
+        int32_t columnSpan = 1; // 占据的列数
+    };
+
+    class ArkUIIrregularGridNode : public ArkUINode {
+    public:
+        // 使用自定义组件类型ARKUI_NODE_CUSTOM创建组件
+        ArkUIIrregularGridNode()
+            : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_CUSTOM))
+        {
+            // 注册自定义事件监听器
+            nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
+            // 声明自定义事件并传递自身作为自定义数据
+            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE, 0, this);
+            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT, 0, this);
+        }
+
+        ~ArkUIIrregularGridNode() override
+        {
+            // 反注册自定义事件监听器
+            nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
+            // 取消声明自定义事件。
+            nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE);
+            nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT);
+        }
+
+        // 设置列数
+        void SetColumnCount(int32_t count)
+        {
+            columnCount_ = count;
+            nativeModule_->markDirty(handle_, NODE_NEED_MEASURE);
+        }
+
+        // 设置网格间距
+        void SetGap(int32_t gap)
+        {
+            gap_ = gap;
+            nativeModule_->markDirty(handle_, NODE_NEED_MEASURE);
+        }
+
+        // 设置子组件的网格配置
+        void SetItemConfig(ArkUI_NodeHandle child, int32_t rowSpan, int32_t columnSpan)
+        {
+            GridItemConfig config;
+            config.rowSpan = rowSpan;
+            config.columnSpan = columnSpan;
+            itemConfigs_[child] = config;
+            nativeModule_->markDirty(handle_, NODE_NEED_MEASURE);
+        }
+
+    private:
+        static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event)
+        {
+            // 获取组件实例对象，调用相关实例方法。
+            auto customNode = reinterpret_cast<ArkUIIrregularGridNode *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
+            auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
+            switch (type) {
+                case ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE:
+                    customNode->OnMeasure(event);
+                    break;
+                case ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT:
+                    customNode->OnLayout(event);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // 测算单个子组件并更新列高信息
+        void MeasureChild(ArkUI_NodeHandle child, int32_t cellWidth,
+            ArkUI_LayoutConstraint *childConstraint, std::vector<int32_t> &columnHeights)
+        {
+            GridItemConfig config = {1, 1};
+            auto it = itemConfigs_.find(child);
+            if (it != itemConfigs_.end()) {
+                config = it->second;
+            }
+            if (config.columnSpan > columnCount_) {
+                config.columnSpan = columnCount_;
+            }
+
+            int32_t startColumn = FindLowestColumn(columnHeights, config.columnSpan);
+            int32_t startY = 0;
+            for (int32_t col = startColumn; col < startColumn + config.columnSpan && col < columnCount_; col++) {
+                if (columnHeights[col] > startY) {
+                    startY = columnHeights[col];
+                }
+            }
+
+            int32_t itemWidth = cellWidth * config.columnSpan + gap_ * (config.columnSpan - 1);
+            OH_ArkUI_LayoutConstraint_SetMaxWidth(childConstraint, itemWidth);
+            OH_ArkUI_LayoutConstraint_SetMinWidth(childConstraint, itemWidth);
+            nativeModule_->measureNode(child, childConstraint);
+            auto size = nativeModule_->getMeasuredSize(child);
+
+            LayoutItemInfo info;
+            info.x = startColumn * (cellWidth + gap_);
+            info.y = startY;
+            info.width = size.width;
+            info.height = size.height;
+            layoutInfo_.push_back(info);
+
+            int32_t newHeight = startY + size.height + gap_;
+            for (int32_t col = startColumn; col < startColumn + config.columnSpan && col < columnCount_; col++) {
+                columnHeights[col] = newHeight;
+            }
+        }
+
+        // 自定义测算逻辑：不规则网格布局
+        void OnMeasure(ArkUI_NodeCustomEvent *event)
+        {
+            auto layoutConstrain = OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(event);
+            int32_t maxWidth = OH_ArkUI_LayoutConstraint_GetMaxWidth(layoutConstrain);
+
+            int32_t totalGap = gap_ * (columnCount_ - 1);
+            int32_t cellWidth = (maxWidth - totalGap) / columnCount_;
+
+            auto childConstraint = OH_ArkUI_LayoutConstraint_Copy(layoutConstrain);
+            std::vector<int32_t> columnHeights(columnCount_, 0);
+            layoutInfo_.clear();
+
+            auto totalSize = nativeModule_->getTotalChildCount(handle_);
+            for (uint32_t i = 0; i < totalSize; i++) {
+                auto child = nativeModule_->getChildAt(handle_, i);
+                MeasureChild(child, cellWidth, childConstraint, columnHeights);
+            }
+
+            int32_t maxHeight = 0;
+            for (int32_t height : columnHeights) {
+                if (height > maxHeight) {
+                    maxHeight = height;
+                }
+            }
+            if (maxHeight > gap_) {
+                maxHeight -= gap_;
+            }
+
+            nativeModule_->setMeasuredSize(handle_, maxWidth, maxHeight);
+            OH_ArkUI_LayoutConstraint_Dispose(childConstraint);
+        }
+
+        void OnLayout(ArkUI_NodeCustomEvent *event)
+        {
+            // 获取父组件期望位置并设置
+            auto position = OH_ArkUI_NodeCustomEvent_GetPositionInLayout(event);
+            nativeModule_->setLayoutPosition(handle_, position.x, position.y);
+
+            // 布局子组件
+            auto totalSize = nativeModule_->getTotalChildCount(handle_);
+            for (uint32_t i = 0; i < totalSize && i < layoutInfo_.size(); i++) {
+                auto child = nativeModule_->getChildAt(handle_, i);
+                nativeModule_->layoutNode(child, layoutInfo_[i].x, layoutInfo_[i].y);
+            }
+        }
+
+        // 找到最矮的列，确保可以放下指定列跨度的项
+        int32_t FindLowestColumn(const std::vector<int32_t>& columnHeights, int32_t columnSpan)
+        {
+            int32_t lowestColumn = 0;
+            int32_t lowestHeight = INT32_MAX;
+
+            // 遍历所有可能的起始列
+            for (int32_t col = 0; col <= columnCount_ - columnSpan; col++) {
+                // 找到这个范围内最高的列
+                int32_t maxHeightInRange = 0;
+                for (int32_t i = col; i < col + columnSpan; i++) {
+                    if (columnHeights[i] > maxHeightInRange) {
+                        maxHeightInRange = columnHeights[i];
+                    }
+                }
+
+                // 如果这个范围的最高点比当前最低点还低，更新最低列
+                if (maxHeightInRange < lowestHeight) {
+                    lowestHeight = maxHeightInRange;
+                    lowestColumn = col;
+                }
+            }
+
+            return lowestColumn;
+        }
+
+        struct LayoutItemInfo {
+            int32_t x;
+            int32_t y;
+            int32_t width;
+            int32_t height;
+        };
+
+        int32_t columnCount_ = 3;
+        int32_t gap_ = 10;
+        std::map<ArkUI_NodeHandle, GridItemConfig> itemConfigs_;
+        std::vector<LayoutItemInfo> layoutInfo_;
+    };
+
+    } // namespace NativeModule
+
+    #endif // MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
    ```
 
 
@@ -718,144 +720,144 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    <!-- @[irregular-grid-entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/NativeEntry.cpp) -->
    
    ``` C++
-   #include "NativeEntry.h"
-   
-   #include "ArkUIIrregularGridNode.h"
-   #include "ArkUINode.h"
-   
-   #include <arkui/native_node_napi.h>
-   #include <arkui/native_type.h>
-   #include <js_native_api.h>
-   #include <utility>
-   #include <vector>
-   
-   namespace NativeModule {
-   namespace {
-   napi_env g_env = nullptr;
-   
-   constexpr uint32_t GRID_BACKGROUND_COLOR = 0xFFF5F5F5;
-   constexpr int32_t GRID_COLUMN_COUNT = 4;
-   constexpr int32_t GRID_GAP = 8;
-   constexpr float GRID_ITEM_RADIUS = 8.0f;
-   constexpr float GRID_ITEM_BORDER_WIDTH = 1.0f;
-   constexpr uint32_t GRID_ITEM_BORDER_COLOR = 0xFFCCCCCC;
-   constexpr float GRID_ITEM_BASE_HEIGHT = 60.0f;
-   constexpr float GRID_ITEM_HEIGHT_STEP = 40.0f;
-   
-   using GridItemSize = std::pair<int32_t, int32_t>;
-   
-   const std::vector<GridItemSize>& GetGridItemSizes()
-   {
-       static const std::vector<GridItemSize> itemSizes = {
-           {1, 1}, // 小方块
-           {2, 1}, // 竖长条
-           {1, 3}, // 横长条
-           {2, 2}, // 大方块
-           {1, 1}, // 小方块
-           {1, 2}, // 横条
-           {3, 1}, // 很长的竖条
-       };
-       return itemSizes;
-   }
-   
-   const std::vector<uint32_t>& GetGridItemColors()
-   {
-       static const std::vector<uint32_t> colors = {
-           0xFF64B5F6, // 蓝色
-           0xFFE57373, // 红色
-           0xFF81C784, // 绿色
-           0xFFFFB74D, // 橙色
-           0xFF9575CD, // 紫色
-           0xFF4DB6AC, // 青色
-           0xFFFFD54F, // 黄色
-           0xFFF06292, // 粉色
-           0xFF7986CB, // 靛蓝
-           0xFFA1887F, // 棕色
-       };
-       return colors;
-   }
-   
-   void SetNodeColorAttribute(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node, uint32_t color)
-   {
-       ArkUI_NumberValue bgColor[] = {{.u32 = color}};
-       ArkUI_AttributeItem bgColorItem = {bgColor, 1};
-       nodeAPI->setAttribute(node, NODE_BACKGROUND_COLOR, &bgColorItem);
-   }
-   
-   void SetNodeBorderRadiusAttribute(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node, float radius)
-   {
-       ArkUI_NumberValue radiusValue[] = {{.f32 = radius}};
-       ArkUI_AttributeItem radiusItem = {radiusValue, 1};
-       nodeAPI->setAttribute(node, NODE_BORDER_RADIUS, &radiusItem);
-   }
-   
-   void SetNodeBorderStyle(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node)
-   {
-       ArkUI_NumberValue borderWidth[] = {{.f32 = GRID_ITEM_BORDER_WIDTH}};
-       ArkUI_AttributeItem borderWidthItem = {borderWidth, 1};
-       nodeAPI->setAttribute(node, NODE_BORDER_WIDTH, &borderWidthItem);
-   
-       ArkUI_NumberValue borderColor[] = {{.u32 = GRID_ITEM_BORDER_COLOR}};
-       ArkUI_AttributeItem borderColorItem = {borderColor, 1};
-       nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
-   }
-   
-   void SetNodeHeightByRowSpan(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node, int32_t rowSpan)
-   {
-       float minHeight = GRID_ITEM_BASE_HEIGHT + (rowSpan - 1) * GRID_ITEM_HEIGHT_STEP;
-       ArkUI_NumberValue minHeightValue[] = {{.f32 = minHeight}};
-       ArkUI_AttributeItem minHeightItem = {minHeightValue, 1};
-       nodeAPI->setAttribute(node, NODE_HEIGHT, &minHeightItem);
-   }
-   
-   void AddGridItems(
-       ArkUI_NativeNodeAPI_1* nodeAPI,
-       const std::shared_ptr<ArkUIIrregularGridNode>& gridNode,
-       const std::vector<GridItemSize>& itemSizes,
-       const std::vector<uint32_t>& colors)
-   {
-       for (size_t i = 0; i < itemSizes.size(); ++i) {
-           auto itemNode = nodeAPI->createNode(ARKUI_NODE_STACK);
-           SetNodeColorAttribute(nodeAPI, itemNode, colors[i % colors.size()]);
-           SetNodeBorderRadiusAttribute(nodeAPI, itemNode, GRID_ITEM_RADIUS);
-           SetNodeBorderStyle(nodeAPI, itemNode);
-           SetNodeHeightByRowSpan(nodeAPI, itemNode, itemSizes[i].first);
-           gridNode->SetItemConfig(itemNode, itemSizes[i].first, itemSizes[i].second);
-           nodeAPI->addChild(gridNode->GetHandle(), itemNode);
-       }
-   }
-   } // namespace
-   
-   napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
-   {
-       size_t argc = 1;
-       napi_value args[1] = {nullptr};
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
-       ArkUI_NodeContentHandle contentHandle;
-       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
-       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
-   
-       auto gridNode = std::make_shared<ArkUIIrregularGridNode>();
-       gridNode->SetBackgroundColor(GRID_BACKGROUND_COLOR);
-       gridNode->SetColumnCount(GRID_COLUMN_COUNT);
-       gridNode->SetGap(GRID_GAP);
-   
-       auto* nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-       AddGridItems(nodeAPI, gridNode, GetGridItemSizes(), GetGridItemColors());
-   
-       // 保持Native侧对象到管理类中，维护生命周期
-       NativeEntry::GetInstance()->SetRootNode(gridNode);
-       g_env = env;
-       return nullptr;
-   }
-   
-   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
-   {
-       // 从管理类中释放Native侧对象
-       NativeEntry::GetInstance()->DisposeRootNode();
-       return nullptr;
-   }
-   
-   } // namespace NativeModule
+    #include "NativeEntry.h"
+
+    #include "ArkUIIrregularGridNode.h"
+    #include "ArkUINode.h"
+
+    #include <arkui/native_node_napi.h>
+    #include <arkui/native_type.h>
+    #include <js_native_api.h>
+    #include <utility>
+    #include <vector>
+
+    namespace NativeModule {
+    namespace {
+    napi_env g_env = nullptr;
+
+    constexpr uint32_t GRID_BACKGROUND_COLOR = 0xFFF5F5F5;
+    constexpr int32_t GRID_COLUMN_COUNT = 4;
+    constexpr int32_t GRID_GAP = 8;
+    constexpr float GRID_ITEM_RADIUS = 8.0f;
+    constexpr float GRID_ITEM_BORDER_WIDTH = 1.0f;
+    constexpr uint32_t GRID_ITEM_BORDER_COLOR = 0xFFCCCCCC;
+    constexpr float GRID_ITEM_BASE_HEIGHT = 60.0f;
+    constexpr float GRID_ITEM_HEIGHT_STEP = 40.0f;
+
+    using GridItemSize = std::pair<int32_t, int32_t>;
+
+    const std::vector<GridItemSize>& GetGridItemSizes()
+    {
+        static const std::vector<GridItemSize> itemSizes = {
+            {1, 1}, // 小方块
+            {2, 1}, // 竖长条
+            {1, 3}, // 横长条
+            {2, 2}, // 大方块
+            {1, 1}, // 小方块
+            {1, 2}, // 横条
+            {3, 1}, // 很长的竖条
+        };
+        return itemSizes;
+    }
+
+    const std::vector<uint32_t>& GetGridItemColors()
+    {
+        static const std::vector<uint32_t> colors = {
+            0xFF64B5F6, // 蓝色
+            0xFFE57373, // 红色
+            0xFF81C784, // 绿色
+            0xFFFFB74D, // 橙色
+            0xFF9575CD, // 紫色
+            0xFF4DB6AC, // 青色
+            0xFFFFD54F, // 黄色
+            0xFFF06292, // 粉色
+            0xFF7986CB, // 靛蓝
+            0xFFA1887F, // 棕色
+        };
+        return colors;
+    }
+
+    void SetNodeColorAttribute(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node, uint32_t color)
+    {
+        ArkUI_NumberValue bgColor[] = {{.u32 = color}};
+        ArkUI_AttributeItem bgColorItem = {bgColor, 1};
+        nodeAPI->setAttribute(node, NODE_BACKGROUND_COLOR, &bgColorItem);
+    }
+
+    void SetNodeBorderRadiusAttribute(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node, float radius)
+    {
+        ArkUI_NumberValue radiusValue[] = {{.f32 = radius}};
+        ArkUI_AttributeItem radiusItem = {radiusValue, 1};
+        nodeAPI->setAttribute(node, NODE_BORDER_RADIUS, &radiusItem);
+    }
+
+    void SetNodeBorderStyle(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node)
+    {
+        ArkUI_NumberValue borderWidth[] = {{.f32 = GRID_ITEM_BORDER_WIDTH}};
+        ArkUI_AttributeItem borderWidthItem = {borderWidth, 1};
+        nodeAPI->setAttribute(node, NODE_BORDER_WIDTH, &borderWidthItem);
+
+        ArkUI_NumberValue borderColor[] = {{.u32 = GRID_ITEM_BORDER_COLOR}};
+        ArkUI_AttributeItem borderColorItem = {borderColor, 1};
+        nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
+    }
+
+    void SetNodeHeightByRowSpan(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node, int32_t rowSpan)
+    {
+        float minHeight = GRID_ITEM_BASE_HEIGHT + (rowSpan - 1) * GRID_ITEM_HEIGHT_STEP;
+        ArkUI_NumberValue minHeightValue[] = {{.f32 = minHeight}};
+        ArkUI_AttributeItem minHeightItem = {minHeightValue, 1};
+        nodeAPI->setAttribute(node, NODE_HEIGHT, &minHeightItem);
+    }
+
+    void AddGridItems(
+        ArkUI_NativeNodeAPI_1* nodeAPI,
+        const std::shared_ptr<ArkUIIrregularGridNode>& gridNode,
+        const std::vector<GridItemSize>& itemSizes,
+        const std::vector<uint32_t>& colors)
+    {
+        for (size_t i = 0; i < itemSizes.size(); ++i) {
+            auto itemNode = nodeAPI->createNode(ARKUI_NODE_STACK);
+            SetNodeColorAttribute(nodeAPI, itemNode, colors[i % colors.size()]);
+            SetNodeBorderRadiusAttribute(nodeAPI, itemNode, GRID_ITEM_RADIUS);
+            SetNodeBorderStyle(nodeAPI, itemNode);
+            SetNodeHeightByRowSpan(nodeAPI, itemNode, itemSizes[i].first);
+            gridNode->SetItemConfig(itemNode, itemSizes[i].first, itemSizes[i].second);
+            nodeAPI->addChild(gridNode->GetHandle(), itemNode);
+        }
+    }
+    } // namespace
+
+    napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 1;
+        napi_value args[1] = {nullptr};
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+        ArkUI_NodeContentHandle contentHandle;
+        OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+
+        auto gridNode = std::make_shared<ArkUIIrregularGridNode>();
+        gridNode->SetBackgroundColor(GRID_BACKGROUND_COLOR);
+        gridNode->SetColumnCount(GRID_COLUMN_COUNT);
+        gridNode->SetGap(GRID_GAP);
+
+        auto* nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+        AddGridItems(nodeAPI, gridNode, GetGridItemSizes(), GetGridItemColors());
+
+        // 保持Native侧对象到管理类中，维护生命周期。
+        NativeEntry::GetInstance()->SetRootNode(gridNode);
+        g_env = env;
+        return nullptr;
+    }
+
+    napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+    {
+        // 从管理类中释放Native侧对象。
+        NativeEntry::GetInstance()->DisposeRootNode();
+        return nullptr;
+    }
+
+    } // namespace NativeModule
    ```

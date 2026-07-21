@@ -1,10 +1,12 @@
 # ScsiPeripheral_Response
+
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:49.107Z pushedAt=2026-06-22T11:21:11.409Z -->
 
 ```c
 typedef struct ScsiPeripheral_Response {...} ScsiPeripheral_Response
@@ -26,8 +28,8 @@ Defines the response structure.
 
 | Name| Description|
 | -- | -- |
-| uint8_t senseData[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN] | Sense data, that is, information returned by the SCSI device to the host to report the device status, error information, and diagnosis information.|
-| ScsiPeripheral_Status status | Status when the call is complete, for example, **Good** or **Busy**.|
+| uint8_t senseData[[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN](capi-scsi-peripheral-types-h.md#scsiperipheral_max_sense_data_len)] | Sense data, that is, information returned by the SCSI device to the host to report the device status, error information, and diagnosis information. |
+| [ScsiPeripheral_Status](capi-scsi-peripheral-types-h.md#scsiperipheral_status) status | Status when the call is complete, for example, **Good** or **Busy**.|
 | uint8_t maskedStatus | Masked status, which is used in SCSI Generic (SG) interfaces of Linux to store the processed SCSI status for easy access by applications.|
 | uint8_t msgStatus | Message status.|
 | uint8_t sbLenWr | Number of bytes that are actually written to the sense buffer.|

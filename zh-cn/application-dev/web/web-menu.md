@@ -241,7 +241,7 @@ struct WebComponent {
 <!---->
 
 ```html
-<!-- index.html -->
+<!-- index1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -366,7 +366,7 @@ struct WebComponent {
 
 以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容（需要注意PreviewBuilder中的Web组件不会接收事件），使用[Progress组件](../ui/arkts-common-components-progress-indicator.md)展示了加载进度。
 
-<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) -->
+<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -413,7 +413,6 @@ struct SelectionMenuLongPress {
           .style({ strokeWidth: 3, enableSmoothEffect: true })
           .backgroundColor(Color.White)
           .opacity(this.progressVisible?1:0)
-          .backgroundColor(Color.White)
       }.alignContent(Alignment.Bottom)
       Web({src:$$.url,controller: new webview.WebviewController()})
         .javaScriptAccess(true)
@@ -570,7 +569,7 @@ html示例
 2. 在onContextMenuShow中获取图片url，通过copyLocalPicToDir或copyUrlPicToDir将图片保存至应用沙箱。
 3. 通过photoAccessHelper将应用沙箱中的图片保存至图库。
 
-<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -612,6 +611,7 @@ struct WebComponent {
         }
       }
       fileIo.close(dest.fd);
+      fileIo.close(srcFileDes.fd)
       return dest.path;
     } catch (err) {
       console.error(`copyLocalPicToDir failed with error: ${err.code}, ${err.message}`);
@@ -881,7 +881,7 @@ struct WebComponent {
 
 **示例代码**
 
-<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) --> 
+<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -952,12 +952,15 @@ struct WebComponent {
     }
   }
   onBackPress(): boolean | void {
-    if (this.controller.accessStep(-1)) {
-      this.controller.backward();
-      return true;
-    } else {
-      return false;
+    try {
+      if (this.controller.accessStep(-1)) {
+        this.controller.backward();
+        return true;
+      }
+    } catch (err) {
+      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
     }
+    return false;
   }
 }
 ```

@@ -21,12 +21,12 @@
 | void OH_HiTrace_SetId(const HiTraceId \*id) | 将当前线程TLS中的跟踪标识设置为id。 | 
 | void OH_HiTrace_ClearId(void) | 清除当前线程的跟踪标识。 | 
 | HiTraceId OH_HiTrace_CreateSpan(void) | 创建跟踪分支。创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId，返回该HiTraceId。 | 
-| bool OH_HiTrace_IsIdValid(const HiTraceId \*id) | 判断HiTraceId是否有效。<br/>true：HiTraceId有效；false：HiTraceId无效。 | 
-| bool OH_HiTrace_IsFlagEnabled(const HiTraceId \*id, HiTrace_Flag flag) | 判断HiTraceId中指定的跟踪标志是否已启用。<br/>true：指定的跟踪标志已启用；false：指定的跟踪标志未启用。 | 
+| bool OH_HiTrace_IsIdValid(const HiTraceId \*id) | 判断HiTraceId是否有效。<br>true：HiTraceId有效；false：HiTraceId无效。 | 
+| bool OH_HiTrace_IsFlagEnabled(const HiTraceId \*id, HiTrace_Flag flag) | 判断HiTraceId中指定的跟踪标志是否已启用。<br>true：指定的跟踪标志已启用；false：指定的跟踪标志未启用。 | 
 | void OH_HiTrace_EnableFlag(const HiTraceId \*id, HiTrace_Flag flag) | 启用HiTraceId中指定的跟踪标志。 | 
 | void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId \*id, const char \*fmt, ...) | HiTraceMeter跟踪信息埋点。 | 
 
-下表所示的接口提供对HiTraceId的一些拓展操作，这些接口仅在C/C++中提供。
+下表所示的接口提供对HiTraceId的一些扩展操作，这些接口仅在C/C++中提供。
 
 | 方法 | 接口描述 | 
 | -------- | -------- |

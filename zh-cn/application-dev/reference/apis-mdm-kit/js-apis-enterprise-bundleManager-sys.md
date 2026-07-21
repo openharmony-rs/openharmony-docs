@@ -24,11 +24,15 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-## bundleManager.addAllowedInstallBundles
+## bundleManager.addAllowedInstallBundles<sup>(deprecated)</sup>
 
 addAllowedInstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 添加应用至当前用户的应用程序包安装允许名单，添加至允许名单的应用允许在当前用户下安装，否则不允许安装，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageraddallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -81,11 +85,15 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.addAllowedInstallBundles
+## bundleManager.addAllowedInstallBundles<sup>(deprecated)</sup>
 
 addAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在指定用户（通过userId指定）下安装，否则不允许安装，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageraddallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -139,11 +147,15 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.addAllowedInstallBundles
+## bundleManager.addAllowedInstallBundles<sup>(deprecated)</sup>
 
 addAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在当前/指定用户下安装，否则不允许安装。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageraddallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -201,11 +213,15 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.removeAllowedInstallBundles
+## bundleManager.removeAllowedInstallBundles<sup>(deprecated)</sup>
 
 removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 移除当前用户的应用程序包安装允许名单中的指定应用。安装允许名单存在时，不在允许名单中的应用不允许在当前用户下安装，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -258,11 +274,15 @@ bundleManager.removeAllowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.removeAllowedInstallBundles
+## bundleManager.removeAllowedInstallBundles<sup>(deprecated)</sup>
 
 removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 移除在应用程序包安装允许名单中的应用，在允许名单存在的情况下，不在允许名单中的应用不允许在指定用户（通过userId指定）下安装，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -316,11 +336,15 @@ bundleManager.removeAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.removeAllowedInstallBundles
+## bundleManager.removeAllowedInstallBundles<sup>(deprecated)</sup>
 
 removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 移除在应用程序包安装允许名单中的应用，在允许名单存在的情况下，不在允许名单中的应用不允许在当前/指定用户下安装。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -378,11 +402,15 @@ bundleManager.removeAllowedInstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.getAllowedInstallBundles
+## bundleManager.getAllowedInstallBundles<sup>(deprecated)</sup>
 
 getAllowedInstallBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取当前用户下的应用程序包安装允许名单，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -432,11 +460,15 @@ bundleManager.getAllowedInstallBundles(wantTemp, (err, result) => {
 });
 ```
 
-## bundleManager.getAllowedInstallBundles
+## bundleManager.getAllowedInstallBundles<sup>(deprecated)</sup>
 
 getAllowedInstallBundles(admin: Want, userId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取指定用户（通过userId指定）下的应用程序包安装允许名单，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -487,11 +519,15 @@ bundleManager.getAllowedInstallBundles(wantTemp, 100, (err, result) => {
 });
 ```
 
-## bundleManager.getAllowedInstallBundles
+## bundleManager.getAllowedInstallBundles<sup>(deprecated)</sup>
 
 getAllowedInstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
 获取当前/指定用户下的应用程序包安装允许名单，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -546,11 +582,15 @@ bundleManager.getAllowedInstallBundles(wantTemp, 100).then((result) => {
 });
 ```
 
-## bundleManager.addDisallowedInstallBundles
+## bundleManager.addDisallowedInstallBundles<sup>(deprecated)</sup>
 
 addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前用户下安装，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -603,11 +643,15 @@ bundleManager.addDisallowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.addDisallowedInstallBundles
+## bundleManager.addDisallowedInstallBundles<sup>(deprecated)</sup>
 
 addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在指定用户（通过userId指定）下安装。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -661,11 +705,15 @@ bundleManager.addDisallowedInstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.addDisallowedInstallBundles
+## bundleManager.addDisallowedInstallBundles<sup>(deprecated)</sup>
 
 addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前/指定用户下安装。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -723,11 +771,15 @@ bundleManager.addDisallowedInstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.removeDisallowedInstallBundles
+## bundleManager.removeDisallowedInstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 移除在应用程序包安装禁止名单中的应用，在禁止名单存在的情况下，在禁止名单中的应用不允许在当前用户下安装。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -780,11 +832,15 @@ bundleManager.removeDisallowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.removeDisallowedInstallBundles
+## bundleManager.removeDisallowedInstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 移除在应用程序包安装禁止名单中的应用，在禁止名单存在的情况下，在禁止名单中的应用不允许在指定用户（通过userId指定）下安装，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -838,11 +894,15 @@ bundleManager.removeDisallowedInstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.removeDisallowedInstallBundles
+## bundleManager.removeDisallowedInstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 移除在应用程序包安装禁止名单中的应用，在禁止名单存在的情况下，在禁止名单中的应用不允许在当前/指定用户下安装。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -900,11 +960,15 @@ bundleManager.removeDisallowedInstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.getDisallowedInstallBundles
+## bundleManager.getDisallowedInstallBundles<sup>(deprecated)</sup>
 
 getDisallowedInstallBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取当前用户下的应用程序包安装禁止名单，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -954,11 +1018,15 @@ bundleManager.getDisallowedInstallBundles(wantTemp, (err, result) => {
 });
 ```
 
-## bundleManager.getDisallowedInstallBundles
+## bundleManager.getDisallowedInstallBundles<sup>(deprecated)</sup>
 
 getDisallowedInstallBundles(admin: Want, userId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取指定用户（通过userId指定）下的应用程序包安装禁止名单，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1009,11 +1077,15 @@ bundleManager.getDisallowedInstallBundles(wantTemp, 100, (err, result) => {
 });
 ```
 
-## bundleManager.getDisallowedInstallBundles
+## bundleManager.getDisallowedInstallBundles<sup>(deprecated)</sup>
 
 getDisallowedInstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
 获取当前/指定用户下的应用程序包安装禁止名单，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1068,11 +1140,15 @@ bundleManager.getDisallowedInstallBundles(wantTemp, 100).then((result) => {
 });
 ```
 
-## bundleManager.addDisallowedUninstallBundles
+## bundleManager.addDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 添加应用至应用程序包卸载禁止名单，添加至禁止名单的应用不允许在当前用户下卸载，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1125,11 +1201,15 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.addDisallowedUninstallBundles
+## bundleManager.addDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 添加应用至应用程序包卸载禁止名单，添加至禁止名单的应用不允许在指定用户（通过userId指定）下卸载。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1183,11 +1263,15 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.addDisallowedUninstallBundles
+## bundleManager.addDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 添加应用至应用程序包卸载禁止名单，添加至禁止名单的应用不允许在当前/指定用户下卸载。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1245,11 +1329,15 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.removeDisallowedUninstallBundles
+## bundleManager.removeDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 移除在应用程序包卸载禁止名单中的应用，在禁止名单存在的情况下，在禁止名单中的应用不允许在当前用户下卸载，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1302,11 +1390,15 @@ bundleManager.removeDisallowedUninstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.removeDisallowedUninstallBundles
+## bundleManager.removeDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 移除在应用程序包卸载禁止名单中的应用，在禁止名单存在的情况下，在禁止名单中的应用不允许在指定用户（通过userId指定）下卸载。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1360,11 +1452,15 @@ bundleManager.removeDisallowedUninstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.removeDisallowedUninstallBundles
+## bundleManager.removeDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 移除在应用程序包卸载禁止名单中的应用。在禁止名单存在的情况下，在禁止名单中的应用不允许在当前/指定用户下卸载。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1422,11 +1518,15 @@ bundleManager.removeDisallowedUninstallBundles(wantTemp, appIds, 100).then(() =>
 });
 ```
 
-## bundleManager.getDisallowedUninstallBundles
+## bundleManager.getDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 getDisallowedUninstallBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取当前用户下的应用程序包卸载禁止名单，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1476,11 +1576,15 @@ bundleManager.getDisallowedUninstallBundles(wantTemp, (err, result) => {
 });
 ```
 
-## bundleManager.getDisallowedUninstallBundles
+## bundleManager.getDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 getDisallowedUninstallBundles(admin: Want, userId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取指定用户（通过userId指定）下的应用程序包卸载禁止名单，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1531,11 +1635,15 @@ bundleManager.getDisallowedUninstallBundles(wantTemp, 100, (err, result) => {
 });
 ```
 
-## bundleManager.getDisallowedUninstallBundles
+## bundleManager.getDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 getDisallowedUninstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
 获取当前/指定用户下应用程序包卸载禁止名单接口，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1590,11 +1698,15 @@ bundleManager.getDisallowedUninstallBundles(wantTemp, 100).then((result) => {
 });
 ```
 
-## bundleManager.uninstall
+## bundleManager.uninstall<sup>(deprecated)</sup>
 
 uninstall(admin: Want, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 卸载当前用户下的指定应用程序包，且不保留应用程序包数据。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [uninstall](./js-apis-enterprise-bundleManager.md#bundlemanageruninstall)
 
 > **说明：**
 >
@@ -1649,11 +1761,15 @@ bundleManager.uninstall(wantTemp, 'bundleName', (err) => {
 });
 ```
 
-## bundleManager.uninstall
+## bundleManager.uninstall<sup>(deprecated)</sup>
 
 uninstall(admin: Want, bundleName: string, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 卸载指定用户下（由参数userId指定）的指定应用程序包，且不保留应用程序包数据。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [uninstall](./js-apis-enterprise-bundleManager.md#bundlemanageruninstall)
 
 > **说明：**
 >
@@ -1709,11 +1825,15 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, (err) => {
 });
 ```
 
-## bundleManager.uninstall
+## bundleManager.uninstall<sup>(deprecated)</sup>
 
 uninstall(admin: Want, bundleName: string, isKeepData: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 卸载当前用户下的指定应用程序包，选择是否保留应用程序包数据（由isKeepData指定）。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [uninstall](./js-apis-enterprise-bundleManager.md#bundlemanageruninstall)
 
 > **说明：**
 >
@@ -1769,11 +1889,15 @@ bundleManager.uninstall(wantTemp, 'bundleName', true, (err) => {
 });
 ```
 
-## bundleManager.uninstall
+## bundleManager.uninstall<sup>(deprecated)</sup>
 
 uninstall(admin: Want, bundleName: string, userId: number, isKeepData: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 卸载指定用户下（由参数userId指定）的指定应用程序包接口，选择是否保留应用程序包数据（由isKeepData指定）。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [uninstall](./js-apis-enterprise-bundleManager.md#bundlemanageruninstall)
 
 > **说明：**
 >
@@ -1830,11 +1954,15 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, true, (err) => {
 });
 ```
 
-## bundleManager.install
+## bundleManager.install<sup>(deprecated)</sup>
 
 install(admin: Want, hapFilePaths: Array\<string>, callback: AsyncCallback\<void>): void
 
 安装指定路径下的应用包。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -1888,11 +2016,15 @@ bundleManager.install(wantTemp, hapFilePaths, (err) => {
 });
 ```
 
-## bundleManager.install
+## bundleManager.install<sup>(deprecated)</sup>
 
 install(admin: Want, hapFilePaths: Array\<string>, installParam: InstallParam, callback: AsyncCallback\<void>): void
 
 安装指定路径下的指定安装参数的应用包。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 

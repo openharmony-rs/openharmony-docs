@@ -1,10 +1,11 @@
 # Image
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:03.805Z pushedAt=2026-06-23T02:28:19.167Z -->
 
 >  **NOTE**
 >
@@ -43,7 +44,7 @@ export default {
         // It is recommended that the image be stored in the common directory.
         img.src = 'common/images/example.jpg';
         img.onload = function () {
-            console.log('Image load success');
+            console.info('Image load success');
             ctx.drawImage(img, 0, 0, 360, 250);
         };
         img.onerror = function () {
@@ -54,4 +55,4 @@ export default {
 ```
 
 
-![1-9](figures/1-9.png)
+![Image](figures/Image.png)

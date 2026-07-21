@@ -22,11 +22,11 @@ This error code is reported when the provided **bindSheetContent** is incorrect.
 
 **Possible Causes**
 
-The configuration for **bindSheetContent** is incorrect.
+**bindSheetContent** is empty or its type does not meet the requirements.
 
 **Solution**
 
-Verify the **bindSheetContent** configuration.
+Check whether the input **bindSheetContent** is correct. Ensure that the input content node is a valid Builder or CustomBuilder instance and the content node has been correctly registered and constructed.
 
 ## 120002 Modal for bindSheetContent Already Exists
 
@@ -44,7 +44,7 @@ The modal corresponding to the provided **bindSheetContent** is already displaye
 
 **Solution**
 
-Verify the **bindSheetContent** configuration.
+To open the modal corresponding to the same **bindSheetContent**, close the currently displayed modal and then open it again.
 
 ## 120003 No Matching Modal Found
 
@@ -95,11 +95,11 @@ This error code is reported when the node corresponding to the specified **targe
 
 **Possible Causes**
 
-The node with the specified **targetId** is not mounted in the component tree.
+When the **EMBEDDED** mode is specified for the modal, the node corresponding to the specified **targetId** is not mounted to the component tree.
 
 **Solution**
 
-Wait for the node corresponding to the **targetId** to be attached to the component tree before calling the API again; or consider setting the modal to OVERLAY mode.
+Call the method after the node corresponding to **targetId** is mounted to the component tree. Alternatively, set **SheetMode** to **OVERLAY**.
 
 ## 120006 Node Specified by targetId Is Not a Child of a Page Node or NavDestination Node
 

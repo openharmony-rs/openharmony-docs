@@ -231,8 +231,8 @@ Enumerates the playback statuses of the player, which is an input parameter of t
 
 | Name| Value| Description|
 |------|----|------|
-| PAUSED  | 0 | Playing.|
-| PLAYING | 1 | Paused.|
+| PAUSED  | 0 | Paused.|
+| PLAYING | 1 | Playing.|
 
 ## NetworkState<sup>12+<sup>
 

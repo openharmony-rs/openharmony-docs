@@ -45,7 +45,7 @@
   ```
 + scrollTo：将页面滚动到绝对坐标位置。
   ```javascript
-  window.scrollTo(x, y);// X是你想要显示在左上角的元素沿水平轴的像素，Y是你想要显示在左上角的元素沿垂直轴的像素。
+  window.scrollTo(x, y);// x是滚动后窗口左上角的水平坐标（像素），y是滚动后窗口左上角的垂直坐标（像素）。
   ```
   (1) 返回页面顶部。
   ```javascript

@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
+ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
 
 \@Builder装饰的函数也称为“自定义构建函数”。
 
@@ -43,7 +43,7 @@ ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，�
 struct BuilderDemo {
   @Builder
   showTextBuilder() {
-    // @Builder装饰此函数，使其能以链式调用的方式配置并构建Text组件
+    // @Builder装饰此函数，使其成为自定义构建函数，用于配置并构建Text组件
     Text('Hello World')
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
@@ -305,7 +305,7 @@ struct PrivateBuilder {
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1.gif)
 
-### 全局自定义构建函数
+### 使用全局自定义构建函数
 
 创建全局的`@Builder`函数，并在`Column`中通过`overBuilder()`方式调用。传递参数时，可以使用对象字面量形式，无论是简单类型还是复杂类型，值的任何变化都会触发UI界面的刷新。
 
@@ -1559,6 +1559,7 @@ struct BackGround1 {
       })
     }
     .margin(10)
+    .width('100%')
   }
 }
 ```
@@ -1618,9 +1619,14 @@ struct BackGround2 {
       })
     }
     .margin(10)
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-builder-faq-notui.gif](./figures/arkts-builder-faq-notui.gif)
 
 ### 在\@Builder方法中使用MutableBinding未传递set访问器
 
@@ -1637,15 +1643,18 @@ class GlobalTmp1 {
   @Trace public strValue: string = 'Hello';
 }
 
+// 定义@Builder函数，接收Binding和MutableBinding类型的参数
 @Builder
 function builderWithTwoParams1(param1: Binding<GlobalTmp1>, param2: MutableBinding<number>) {
-  Column() {
+  Column({ space: 5 }) {
     Text(`strValue: ${param1.value.strValue}`)
     Button(`num: ${param2.value}`)
       .onClick(() => {
         param2.value += 1; // 点击Button触发set访问器会造成运行时错误
       })
-  }.borderWidth(1)
+  }
+  .borderWidth(1)
+  .padding(5)
 }
 
 @Entry
@@ -1655,15 +1664,17 @@ struct MakeBindingTest1 {
   @Local num: number = 0;
 
   build() {
-    Column() {
+    Column({ space: 5 }) {
       Text(`${this.GlobalTmp1.strValue}`)
       builderWithTwoParams1(UIUtils.makeBinding(() => this.GlobalTmp1),
         UIUtils.makeBinding<number>(() => this.num)) // 构造MutableBinding类型参数时没有传SetterCallback
       Button('Update Values').onClick(() => {
+        // 点击按钮更新状态变量的值
         this.GlobalTmp1.strValue = 'Hello World 2025';
         this.num = 1;
       })
     }
+    .width('100%')
   }
 }
 ```
@@ -1680,15 +1691,18 @@ class GlobalTmp2 {
   @Trace public strValue: string = 'Hello';
 }
 
+// 定义@Builder函数，接收Binding和MutableBinding类型的参数
 @Builder
 function builderWithTwoParams2(param1: Binding<GlobalTmp2>, param2: MutableBinding<number>) {
-  Column() {
+  Column({space: 5}) {
     Text(`strValue: ${param1.value.strValue}`)
     Button(`num: ${param2.value}`)
       .onClick(() => {
         param2.value += 1; // 修改了MutableBinding类型参数的value属性
       })
-  }.borderWidth(1)
+  }
+  .borderWidth(1)
+  .padding(5)
 }
 
 @Entry
@@ -1698,21 +1712,28 @@ struct MakeBindingTest2 {
   @Local num: number = 0;
 
   build() {
-    Column() {
+    Column({space: 5}) {
       Text(`${this.GlobalTmp2.strValue}`)
+      // 正确用法：构造MutableBinding时传递了SetterCallback
       builderWithTwoParams2(UIUtils.makeBinding(() => this.GlobalTmp2),
         UIUtils.makeBinding<number>(() => this.num,
           val => {
             this.num = val;
           }))
       Button('Update Values').onClick(() => {
+        // 点击按钮更新状态变量的值
         this.GlobalTmp2.strValue = 'Hello World 2025';
         this.num = 1;
       })
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-builder-faq-mutablebinding-no-setter.gif](./figures/arkts-builder-faq-mutablebinding-no-setter.gif)
 
 ### 在@Builder装饰的函数内部修改入参内容
 
@@ -1777,6 +1798,7 @@ struct ParentMod1 {
       this.extendBlank();
       Button('click me')
         .onClick(() => {
+          // 点击按钮修改状态变量，观察UI刷新
           this.label = 'ArkUI';
         })
       this.extendBlank();
@@ -1812,13 +1834,15 @@ interface TempMod2 {
 // 使用MutableBinding在@Builder装饰的函数内部修改参数值
 @Builder
 function overBuilderMod2(param: MutableBinding<TempMod2>) {
-  Column() {
+  Column({ space: 5 }) {
     Button(`Mod--overBuilder === ${param.value.paramA}`)
       .onClick(() => {
+        // 修改对象参数的属性值
         param.value.paramA = 'Yes';
       })
     Button(`change`)
       .onClick(() => {
+        // 整体替换对象参数
         param.value = { paramA: 'trialOne' };
       })
   }
@@ -1855,6 +1879,7 @@ struct ParentMod2 {
       this.extendBlank();
       Button('click me')
         .onClick(() => {
+          // 点击按钮修改状态变量的属性
           this.objectOne.paramA = 'ArkUI';
         })
       this.extendBlank();
@@ -1867,9 +1892,14 @@ struct ParentMod2 {
         )
       );
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-builder-faq-change-parameter.gif](./figures/arkts-builder-faq-change-parameter.gif)
 
 ### 在\@Watch函数中执行\@Builder函数
 
@@ -1882,6 +1912,7 @@ struct ParentMod2 {
 @Entry
 @Component
 struct Child1 {
+  // 使用@Provide和@Watch装饰器，当content变化时触发provideWatch回调
   @Provide @Watch('provideWatch') content: string = 'Index: hello world';
 
   @Builder
@@ -1891,6 +1922,7 @@ struct Child1 {
     }
   }
 
+  // @Watch回调函数
   provideWatch() {
     this.watchBuilder(this.content); // 错误写法，在@Watch函数中使用@Builder函数
   }
@@ -1899,6 +1931,7 @@ struct Child1 {
     Column() {
       Button(`content value: ${this.content}`)
         .onClick(() => {
+          // 点击按钮修改content，触发@Watch回调
           this.content += '_world';
         })
       this.watchBuilder(this.content);
@@ -1915,6 +1948,7 @@ Button按钮会出现UI异常的情况，开发者需要避免在\@Watch函数�
 @Entry
 @Component
 struct Child2 {
+  // 使用@Provide和@Watch装饰器，当content变化时触发provideWatch回调
   @Provide @Watch('provideWatch') content: string = 'Index: hello world';
 
   @Builder
@@ -1924,19 +1958,26 @@ struct Child2 {
     }
   }
 
+  // @Watch回调函数
   provideWatch() {
     // 正确写法，不在@Watch函数中使用@Builder函数
     console.info(`content value has changed.`);
   }
 
   build() {
-    Column() {
+    Column({ space: 5 }) {
       Button(`content value: ${this.content}`)
         .onClick(() => {
+          // 点击按钮修改content，触发@Watch回调
           this.content += '_world';
         })
       this.watchBuilder(this.content);
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-builder-faq-watch-builder.gif](./figures/arkts-builder-faq-watch-builder.gif)

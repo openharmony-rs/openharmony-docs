@@ -10,7 +10,7 @@
 
 ## 通过菜单或键盘快捷键与系统剪贴板交互
 
-开发者能够自定义菜单中的功能选项，当用户选择特定选项时，开发者可以通过调用[cut](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#cut9)、[copy](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copy9)、[copyImage](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copyimage9)、[paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9)、[pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20)等接口，将网页中的文本、HTML或图片数据复制到系统剪贴板，或从系统剪贴板粘贴到网页的可输入区域。
+开发者能够自定义菜单中的功能选项，当用户选择特定选项时，开发者可以通过调用[cut](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#cut9)、[copy](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copy9)、[copyImage](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copyimage9)、[paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9)、[pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20)等接口，对网页内容执行剪切或复制操作至系统剪贴板，或从系统剪贴板粘贴到网页的可输入区域。
 
 菜单功能接口的使用可参考[使用Web组件菜单处理网页内容](web-menu.md)。
 
@@ -48,7 +48,7 @@ await navigator.clipboard.write([clipboardItem]);
 const text = await navigator.clipboard.readText()
 ```
 
-- read()：从系统剪贴板读取任意类型内容。
+- read：从系统剪贴板读取任意类型内容。
 
 ```javascript
 // 从剪贴板读取 HTML

@@ -12,20 +12,20 @@ typedef struct {...} ARKUI_TextPickerCascadeRangeContent
 
 ## Overview
 
-Defines a struct for the multi-column cascade picker.
+Defines a multi-column cascade picker.
 
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [picker.h](capi-picker-h.md)
 
 ## Summary
 
 ### Member Variables
 
-| Name                                              | How to Emulate|
+| Name                                              | Description|
 |--------------------------------------------------| -- |
-| const char* text                                 | Text information.|
+| const char* text                                 | Pointer to the text information.|
 | const [ARKUI_TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontent.md)* children | Cascade data.|
 | int32_t size                                     | Size of the cascade data array.|

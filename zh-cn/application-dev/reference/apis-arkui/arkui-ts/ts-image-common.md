@@ -78,7 +78,7 @@ type PixelMap = import('../api/@ohos.multimedia.image').default.PixelMap
 
 ## ImageAnalyzerController<sup>12+</sup>
 
-图像分析控制器。可以将此对象绑定至支持的组件，通过控制器来调用支持的方法。
+图像AI分析控制器。可以将此对象绑定至支持的组件，并通过该控制器调用其提供的方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -102,7 +102,7 @@ constructor()
 
 getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
-获取对应组件支持的分析类型。
+获取此控制器已绑定组件所支持的AI分析类型。调用前需先通过 Image/ImageAnimator 等组件的 aiController 属性将本控制器绑定到组件，否则返回空数组。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -110,11 +110,11 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值:**
+**返回值：**
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |
-| [ImageAnalyzerType](#imageanalyzertype12)[] | 对应组件支持的分析类型。 |
+| [ImageAnalyzerType](#imageanalyzertype12)[] | 对应组件支持的AI分析类型。 |
 
 ## ContentTransitionEffect<sup>21+</sup>对象说明
 
@@ -122,7 +122,9 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
 ### 属性
 
-**原子化服务API：** 从 API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

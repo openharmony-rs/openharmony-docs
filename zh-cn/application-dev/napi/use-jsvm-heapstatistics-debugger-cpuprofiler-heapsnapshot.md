@@ -1,10 +1,10 @@
 # 使用JSVM-API接口进行JavaScript代码调试调优
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -39,11 +39,13 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 cpp部分代码
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_vm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getvm/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
 
 // OH_JSVM_GetVM的样例方法
 static JSVM_Value GetVM(JSVM_Env env, JSVM_CallbackInfo info)
@@ -70,6 +72,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getVM", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+
+const char *SRC_CALL_NATIVE = R"JS(getVM())JS";
 ```
 
 样例测试JS
@@ -77,7 +81,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```c++
 const char *srcCallNative = R"JS(getVM())JS";
 ```
-<!-- @[oh_jsvm_get_vm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getvm/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -90,11 +93,13 @@ JSVM OH_JSVM_GetVM: success
 
 cpp部分代码
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+// ...
 
 // OH_JSVM_GetHeapStatistics的样例方法
 void PrintHeapStatistics(JSVM_HeapStatistics result)
@@ -138,6 +143,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getHeapStatistics", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+
+const char *SRC_CALL_NATIVE = R"JS(getHeapStatistics())JS";
 ```
 
 样例测试JS
@@ -145,7 +152,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```c++
 const char *srcCallNative = R"JS(getHeapStatistics())JS";
 ```
-<!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
+
 预计的输出结果（虚拟机堆的统计数据，会实时发生变化）：
 ```txt
 JSVM API heap totalHeapSize: 1597440

@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 应用包信息，通过接口[freeInstall.getBundlePackInfo](js-apis-freeInstall-sys.md#getbundlepackinfo)获取。

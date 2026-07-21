@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-Want是对象间信息传递的载体, 可以用于应用组件间的信息传递。 Want的使用场景之一是作为[startAbility](js-apis-inner-application-uiAbilityContext.md#startability)的参数, 其包含了指定的启动目标, 以及启动时需携带的相关数据, 如bundleName和abilityName字段分别指明目标Ability所在应用的Bundle名称以及对应包内的Ability名称。当Ability A需要启动Ability B并传入一些数据时, 可使用Want作为载体将这些数据传递给Ability B。
+Want是对象间信息传递的载体，可以用于应用组件间的信息传递。 Want的使用场景之一是作为[startAbility](js-apis-inner-application-uiAbilityContext.md#startability)的参数，其包含了指定的启动目标，以及启动时需携带的相关数据，如bundleName和abilityName字段分别指明目标Ability所在应用的Bundle名称以及对应包内的Ability名称。当Ability A需要启动Ability B并传入一些数据时，可使用Want作为载体将这些数据传递给Ability B。
 
 > **说明：**
 > 
@@ -28,7 +28,7 @@ import Want from '@ohos.app.ability.Want';
 | deviceId    | string               | 否 | 是  | 表示运行指定Ability的设备ID。如果未设置该字段，则表明指定本设备。                                |
 | bundleName   | string               | 否 | 是  | 表示Bundle名称。 |
 | abilityName  | string               | 否 | 是  | 表示待启动的Ability名称。如果在Want中该字段同时指定了BundleName和AbilityName，则Want可以直接匹配到指定的Ability。AbilityName需要在一个应用的范围内保证唯一。 |
-| uri          | string               | 否 | 是  | 表示Uri。如果在Want中指定了Uri，则Want将匹配指定的Uri信息，包括scheme, schemeSpecificPart, authority和path信息。 |
+| uri          | string               | 否 | 是  | 表示URI。如果在Want中指定了URI，则Want将匹配指定的URI信息，包括scheme、schemeSpecificPart、authority和path信息。 |
 | type         | string               | 否 | 是  | 表示MIME type类型，打开文件的类型，主要用于文管打开文件。比如：'text/xml' 、 'image/*'等，MIME定义参考：https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com。   |
 | flags        | number               | 否 | 是  | 表示处理Want的方式。默认传数字，具体参考：[flags说明](js-apis-ability-wantConstant.md#flags)。 |
 | action      | string               | 否 | 是  | 表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。具体参考：[Action说明](js-apis-ability-wantConstant.md#action)。隐式Want定义及匹配规则参考：[显式Want与隐式Want匹配规则](../../application-models/explicit-implicit-want-mappings.md)。                           |

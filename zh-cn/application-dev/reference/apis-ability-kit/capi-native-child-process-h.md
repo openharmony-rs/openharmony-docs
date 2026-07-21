@@ -57,9 +57,9 @@
 | [Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcessWithConfigs(const char* entry, NativeChildProcess_Args args, Ability_ChildProcessConfigs* configs, int32_t *pid)](#oh_ability_startnativechildprocesswithconfigs) | - | 根据参数中子进程配置信息启动Native子进程，加载参数中指定的动态链接库文件并调用入口函数。支持传参到子进程。指定的动态库必须实现一个以NativeChildProcess_Args为参数的函数（函数名称可自定义），并导出该函数。示例如下：<br>1. void Main(NativeChildProcess_Args args);<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_StartNativeChildProcessWithConfigs(entryPoint, args, configs, &pid)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("Main")<br>4. Main(args)<br>5. 子进程将在Main(args)函数返回后退出。<br>**设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回[NCP_ERR_NOT_SUPPORTED](#ability_nativechildprocess_errcode)错误码。 |
 | [NativeChildProcess_Args* OH_Ability_GetCurrentChildProcessArgs()](#oh_ability_getcurrentchildprocessargs) | - | 子进程获取自身的启动参数。 |
 | [typedef void (\*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal)](#oh_ability_onnativechildprocessexit) | OH_Ability_OnNativeChildProcessExit | 获取子进程退出信息。 |
-| [Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_registernativechildprocessexitcallback) | - | 注册子进程退出回调。只有[OH_Ability_StartNativeChildProcess](#oh_ability_startnativechildprocess)、[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)和[@ohos.app.ability.childProcessManager的startNativeChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)启动的子进程退出时才会触发所注册的回调函数。重复注册同一个回调函数只会保留一个。 |
+| [Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_registernativechildprocessexitcallback) | - | 注册子进程退出回调。只有[OH_Ability_StartNativeChildProcess](#oh_ability_startnativechildprocess)、[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)和[childProcessManager.startNativeChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)启动的子进程退出时才会触发所注册的回调函数。重复注册同一个回调函数只会保留一个。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_unregisternativechildprocessexitcallback) | - | 解注册子进程退出回调。 |
-| [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool enableIsolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | 设置子进程配置信息对象的uid是否隔离。该设置仅在NativeChildProcess_IsolationMode为NCP_ISOLATION_MODE_ISOLATED时生效。 |
+| [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool isolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | 设置子进程配置信息对象的uid是否隔离。该设置仅在NativeChildProcess_IsolationMode为NCP_ISOLATION_MODE_ISOLATED时生效。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)](#oh_ability_killchildprocess) | - | 终止当前进程创建的子进程。 |
 | [OH_Ability_IsNativeChildProcessSupported()](#oh_ability_isnativechildprocesssupported) | - | 查询是否允许调用者在此设备上创建Native子进程。 |
 
@@ -88,11 +88,11 @@ enum Ability_NativeChildProcess_ErrCode
 | NCP_ERR_SERVICE_ERROR = 16010003 | 服务端出错。 |
 | NCP_ERR_MULTI_PROCESS_DISABLED = 16010004 | 多进程模式已关闭，不允许启动子进程。 |
 | NCP_ERR_ALREADY_IN_CHILD = 16010005 | 不允许在子进程中再次创建进程。 |
-| NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006 | 到达最大Native子进程数量限制，不能再创建子进程。 |
+| NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006 | 到达最大子进程数量限制，不能再创建子进程。 |
 | NCP_ERR_LIB_LOADING_FAILED = 16010007 | 子进程加载动态库失败，文件不存在或者未实现对应的方法并导出。 |
 | NCP_ERR_CONNECTION_FAILED = 16010008 | 子进程调用动态库的OnConnect方法失败，可能返回了无效的IPC对象指针。 |
 | NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | 父进程调用解注册Native子进程退出回调，未找到注册的回调函数。<br>**起始版本：** 20 |
-| NCP_ERR_INVALID_PID = 16010010 | 该进程pid不存在，或并非当前进程的子进程pid，或属于[childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程。 <br>**起始版本：** 22|
+| NCP_ERR_INVALID_PID = 16010010 | 传入的进程pid不存在，或并非当前进程所创建的子进程pid，或属于[childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程。 <br>**起始版本：** 22|
 
 ### NativeChildProcess_IsolationMode
 
@@ -175,7 +175,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMo
 | 参数项 | 描述 |
 | -- | -- |
 | [Ability_ChildProcessConfigs](capi-ability-childprocessconfigs.md)* configs | 子进程的配置信息对象指针。不可以为空指针。 |
-| [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode) isolationMode | 要设置的数据沙箱与网络环境的共享模式，详见NativeChildProcess_IsolationMode。 |
+| [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode) isolationMode | 要设置的数据沙箱与网络环境的共享模式，详见NativeChildProcess_IsolationMode，如果不设置默认为NCP_ISOLATION_MODE_NORMAL。 |
 
 **返回：**
 
@@ -194,6 +194,8 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUi
 设置子进程配置信息对象的uid是否隔离。例如用于浏览器的安全加固场景，设置主进程与子进程的uid隔离。
 
 该设置仅在NativeChildProcess_IsolationMode为NCP_ISOLATION_MODE_ISOLATED时生效。不调用该接口设置isolationUid时，则默认为false，即子进程与主进程拥有相同uid。
+
+该设置仅当调用[OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs)、[OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs)接口时生效。
 
 **起始版本：** 21
 
@@ -219,7 +221,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetProcessName
 
 **描述**
 
-设置子进程配置信息对象中的进程名称。
+设置子进程配置信息对象中的进程名称。该设置仅当调用[OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs)、[OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs)接口时生效。
 
 **起始版本：** 20
 
@@ -229,13 +231,13 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetProcessName
 | 参数项 | 描述 |
 | -- | -- |
 | [Ability_ChildProcessConfigs](capi-ability-childprocessconfigs.md)* configs | 子进程的配置信息对象指针。不能为空指针。 |
-| const char* processName | 设置的子进程名字符串必须是非空字符串，并且只能由字母、数字和下划线构成。最大长度为64字符。最终的进程名是{bundleName}:{processName}。 |
+| const char* processName | 设置的子进程名字符串必须是非空字符串，并且只能由字母、数字和下划线构成。最大长度为64字符，不能为空字符串。最终的进程名是{bundleName}:{processName}。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。<br>NCP_ERR_INVALID_PARAM - 传入参数configs为nullptr，或者processName包含除字母、数字、下划线以外的字符。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。<br>NCP_ERR_INVALID_PARAM - 传入参数configs为nullptr，或者processName包含除字母、数字、下划线以外的字符，或者processName长度超过64字符，或者processName为空字符串。 |
 
 ### OH_Ability_OnNativeChildProcessStarted()
 
@@ -268,7 +270,7 @@ int OH_Ability_CreateNativeChildProcess(const char* libName,OH_Ability_OnNativeC
 
 **描述**
 
-创建子进程并加载参数中指定的动态链接库文件，进程启动结果通过回调参数异步通知，需注意回调通知为独立线程，回调函数实现需要注意线程同步，且不能执行高耗时操作避免长时间阻塞。
+创建子进程并加载参数中指定的动态链接库文件。子进程的启动结果通过回调参数异步通知调用方。该回调在独立线程中执行，需要确保线程同步，且不能执行高耗时操作避免长时间阻塞。
 
 参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcess(libName, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(ipcRemote, errCode)<br>子进程：<br>8. 在NativeChildProcess_MainProc()函数返回后子进程退出。
 
@@ -276,7 +278,7 @@ int OH_Ability_CreateNativeChildProcess(const char* libName,OH_Ability_OnNativeC
 
 > **说明：**
 >
-> API version 14及之前版本，单个进程只能启动1个Native子进程。从API version 15开始，单个进程最多支持启动50个Native子进程。
+> API version 14及之前版本，单个进程只能启动1个Native子进程。从API version 15开始，单个进程使用该接口一共最多支持启动50个Native子进程。从API version 20开始，单个进程使用该接口和[OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs)接口一共最多支持启动50个Native子进程。超过这个限制再调用该接口会返回[NCP_ERR_MAX_CHILD_PROCESSES_REACHED](#ability_nativechildprocess_errcode)错误码。
 
 **起始版本：** 12
 
@@ -310,6 +312,10 @@ Ability_NativeChildProcess_ErrCode OH_Ability_CreateNativeChildProcessWithConfig
 参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcessWithConfigs(libName, configs, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(ipcRemote, errCode)<br>子进程：<br>8. 在NativeChildProcess_MainProc()函数返回后子进程退出。
 
 **设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回[NCP_ERR_NOT_SUPPORTED](#ability_nativechildprocess_errcode)错误码。
+
+> **说明：**
+>
+> 单个进程使用该接口和[OH_Ability_CreateNativeChildProcess](#oh_ability_createnativechildprocess)接口一共最多支持启动50个Native子进程，超过这个限制再调用该接口会返回[NCP_ERR_MAX_CHILD_PROCESSES_REACHED](#ability_nativechildprocess_errcode)错误码。
 
 **起始版本：** 20
 
@@ -351,16 +357,16 @@ Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcess(const char
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* entry | 子进程中加载的动态库及入口函数，例如"libEntry.so:Main"，不能为nullptr。 |
+| const char* entry | 子进程中调用动态库的符号和入口函数，中间用“:”隔开（例如“libentry.so:Main”），不能为nullptr。 |
 | [NativeChildProcess_Args](capi-nativechildprocess-args.md) args | 传递给子进程的参数。 |
 | [NativeChildProcess_Options](capi-nativechildprocess-options.md) options | 子进程选项。 |
-| int32_t *pid | 启动的子进程id。 |
+| int32_t *pid | 输出参数，表示被启动的子进程号。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。<br>NCP_ERR_INVALID_PARAM - 无效的动态库名称或者回调函数指针。<br>NCP_ERR_NOT_SUPPORTED - 当前设备不支持创建Native子进程。<br> NCP_ERR_ALREADY_IN_CHILD - 当前设备已关闭多进程模式。<br>NCP_ERR_MAX_CHILD_PROCESSES_REACHED - 到达最大Native子进程数限制。<br>详见Ability_NativeChildProcess_ErrCode定义。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。<br>NCP_ERR_INVALID_PARAM - 无效的动态库名称或者回调函数指针。<br>NCP_ERR_NOT_SUPPORTED - 当前设备不支持创建Native子进程。<br> NCP_ERR_ALREADY_IN_CHILD - 不允许在子进程中再次创建子进程。<br>NCP_ERR_MAX_CHILD_PROCESSES_REACHED - 到达最大Native子进程数限制。<br>详见Ability_NativeChildProcess_ErrCode定义。 |
 
 **参考：**
 
@@ -387,9 +393,9 @@ Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcessWithConfigs
 | 参数项 | 描述 |
 | -- | -- |
 | const char* entry | 子进程中调用动态库的符号和入口函数，中间用“:”隔开（例如“libentry.so:Main”），不能为nullptr。 |
-| [NativeChildProcess_Args](capi-nativechildprocess-args.md) args | 传给子进程的参数。 |
+| [NativeChildProcess_Args](capi-nativechildprocess-args.md) args | 传给子进程的参数，不能为nullptr。 |
 | [Ability_ChildProcessConfigs](capi-ability-childprocessconfigs.md)* configs | 子进程的配置信息参数。 |
-| int32_t *pid | 被启动的子进程号。 |
+| int32_t *pid | 输出参数，表示被启动的子进程号。 |
 
 **返回：**
 
@@ -448,7 +454,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCall
 
 **描述**
 
-注册Native子进程退出回调函数。只有[OH_Ability_StartNativeChildProcess](#oh_ability_startnativechildprocess)、[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)和[@ohos.app.ability.childProcessManager的startNativeChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)启动的子进程退出时才会触发所注册的回调函数。当重复注册同一个回调函数时，子进程退出时只会执行一次回调函数。
+注册Native子进程退出回调函数。只有[OH_Ability_StartNativeChildProcess](#oh_ability_startnativechildprocess)、[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)和[childProcessManager.startNativeChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)启动的子进程退出时才会触发所注册的回调函数。当重复注册同一个回调函数时，子进程退出时只会执行一次回调函数。
 
 参数必须实现[OH_Ability_OnNativeChildProcessExit](#oh_ability_onnativechildprocessexit)入口函数。详见[注册Native子进程退出回调](../../application-models/capi-nativechildprocess-exit-info.md)。
 

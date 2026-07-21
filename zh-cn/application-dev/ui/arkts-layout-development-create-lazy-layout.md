@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArkUI提供了[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)四种滚动类组件。其中，Scroll不支持懒加载，List、Grid、WaterFlow虽支持配合[LazyForEach](./rendering-control/arkts-rendering-control-lazyforeach.md)实现懒加载，但各自仅支持特定的布局模式。在实际业务场景中，一个滚动页面往往需要混合使用多种布局模式。例如，电商首页可能同时包含多列网格分类入口、瀑布流商品卡片、线性列表推荐；社交应用信息流可能同时包含文本列表、九宫格图片、视频卡片。此时单一滚动组件无法灵活适配，存在一定局限性。
@@ -44,7 +44,7 @@ ArkUI提供了[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)�
 
 ## 约束与限制
 
-1. 三种懒加载布局容器的高度均默认自适应内容，不建议设置高度、高度约束或宽高比，设置后会导致显示异常。
+1. 三种懒加载布局容器的高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[size](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)中的height、[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)，以及[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height15)取[LayoutPolicy](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutpolicy15)值的场景。
 
 2. 三种懒加载布局容器均需要配合可滚动父组件使用，不同容器支持的父组件范围有所差异。
 
@@ -54,7 +54,7 @@ ArkUI提供了[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)�
 
 3. 三种懒加载布局容器在不同父组件下的懒加载支持条件如下。
 
-   - 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用懒加载布局容器会导致应用崩溃。当List设置了[lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9)、[chainAnimation](../reference/apis-arkui/arkui-ts/ts-container-list.md#chainanimation)、[scrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10)属性中的任意一个时，懒加载布局容器的懒加载功能会失效。
+   - 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用懒加载布局容器会导致应用崩溃。当List设置了[lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9)、[chainAnimation](../reference/apis-arkui/arkui-ts/ts-container-list.md#chainanimation)、[scrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10)属性中的任意一个或多个时，懒加载布局容器的懒加载功能会失效。
 
    - 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollable)属性设置为ScrollDirection.Vertical），在非竖直方向的Scroll中使用懒加载布局容器会导致应用崩溃。
 
@@ -343,6 +343,7 @@ LazyVWaterFlowLayout() {
 ``` TypeScript
 List({ space: 10 }) {
   // ...
+  // 瀑布流布局
   LazyVWaterFlowLayout() {
     LazyForEach(this.flowData, (item: number) => {
       // ...
@@ -462,6 +463,7 @@ export struct ListNestedLazyLayout {
               .fontColor(Color.Gray)
           }
 
+          // 等宽的网格布局
           LazyVGridLayout() {
             LazyForEach(this.gridData, (item: number) => {
               Text('item' + item.toString())
@@ -479,6 +481,7 @@ export struct ListNestedLazyLayout {
             console.info('LazyVGridLayout visible indexes: start: ' + start + ', end: ' + end);
           })
 
+          // 不等宽的网格布局
           LazyVGridLayout() {
             LazyForEach(this.gridData, (item: number) => {
               Text('item' + (this.gridData.totalCount() + item).toString())
@@ -506,6 +509,7 @@ export struct ListNestedLazyLayout {
               .fontColor(Color.Gray)
           }
 
+          // 瀑布流布局
           LazyVWaterFlowLayout() {
             LazyForEach(this.flowData, (item: number) => {
               Text('item' + item.toString())
@@ -829,7 +833,7 @@ build() {
               }, (item: number) => `${index}_${item}`)
             }
             // ...
-            .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount()))
+            .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount())) // 内层分组header：显示月份标题
             // ...
           }, (group: PhotoGroup) => group.title)
           // ...
@@ -862,7 +866,7 @@ build() {
           // ...
         }
         // ...
-        .footer(this.GroupFooterBuilder())
+        .footer(this.GroupFooterBuilder()) // 外层footer：显示"已经到底了"
       }
       .scrollable(ScrollDirection.Vertical)
       .width('100%')
@@ -1069,12 +1073,12 @@ export struct LazyLayoutGroup {
               .columnsTemplate('1fr 1fr 1fr')
               .rowsGap(LengthMetrics.vp(2))
               .columnsGap(LengthMetrics.vp(2))
-              .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount()))
+              .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount())) // 内层分组header：显示月份标题
               .sticky(StickyStyle.Header) // header吸顶
             }, (group: PhotoGroup) => group.title)
           }
           .space(LengthMetrics.vp(12))
-          .footer(this.GroupFooterBuilder())
+          .footer(this.GroupFooterBuilder()) // 外层footer：显示"已经到底了"
         }
         .scrollable(ScrollDirection.Vertical)
         .width('100%')

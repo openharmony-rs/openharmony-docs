@@ -1,10 +1,12 @@
 # NotificationContent (System API)
+
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:20.317Z pushedAt=2026-06-30T10:57:36.999Z -->
 
 The **NotificationContent** module provides APIs for defining the notification content.
 
@@ -36,7 +38,7 @@ Describes the normal text notification.
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
-Describes the common live view.
+Describes the normal live notification content. This API inherits from [NotificationBasicContent](#notificationbasiccontent).
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -51,10 +53,11 @@ Describes the common live view.
 | isLocalUpdateOnly<sup>12+</sup> | boolean                                           | No | Yes | Whether the live view is updated only locally. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.    |
 | extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  No |  Yes | Redirection by tapping in the auxiliary area. This parameter is left empty by default.     |
 
-
 ## NotificationSystemLiveViewContent<sup>18+</sup>
 
-Describes the system live view notification. A third-party application cannot directly create a notification of this type. After the system proxy creates a system live view, the third-party application releases a notification with the same ID to update the specified content. This API inherits from [NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent).
+Describes the system live view notification content. This API inherits from [NotificationBasicContent](#notificationbasiccontent).
+
+Third-party applications are not supported to directly create this type of notification. After the system proxy creates a system live view notification, a third-party application can publish a notification with the same ID to update the specified content. This API inherits from [NotificationBasicContent](#notificationbasiccontent)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -76,7 +79,7 @@ Describe the notification capsule.
 | Name                 |  Type                        | Read-Only| Optional| Description                             |
 | --------------------- | ---------------------------- | ---- | ---- | -------------------------------- |
 | content<sup>12+</sup> | string                       |  No |  Yes | Extended text of the capsule. This parameter is left empty by default.                  |
-| time<sup>18+</sup> | number                       |  No |  Yes | Display duration of the notification capsule of an instant task, in seconds. The default value is **0**.  |
+| time<sup>18+</sup> | number                       |  No  |  Yes  | Display duration of the notification capsule of an instant task. The default value is **0**.<br>Unit: second.   |
 | capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  No |  Yes | Buttons of the notification capsule of an instant task. A maximum of two buttons are supported. This parameter is left empty by default.     |
 
 ## LiveViewStatus<sup>11+</sup>
@@ -106,9 +109,9 @@ Describes the information of a system notification button.
 
 | Name         | Type                   | Read-Only| Optional| Description                                     |
 | ------------ | ----------------------- | ---- | ---- | ---------------------------------------- |
-| name         | string                  | No  |  No | Button ID, which is used to distinguish multiple buttons of the same notification.  |
+| name         | string                  | No   |  No  | Button identifier, used to distinguish multiple different buttons for the same notification. The string length cannot exceed 202 bytes, and the exceeding part will be truncated. It cannot be an empty string.   |
 | iconResource | [IconType](#icontype18) | No  |  No | Background image of a button.                            |
-| text         | string                  | No  |  Yes | Text displayed on the button. This parameter is left empty by default.                          |
+| text         | string                  | No   |  Yes  | Text displayed on the button, which defaults to empty. The string length cannot exceed 202 bytes, and the exceeding part will be truncated.             |
 | hidePanel    | boolean                 | No  |  Yes | Whether to hide the notification panel when the button is tapped. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.  |
 
 ## IconType<sup>18+</sup>
@@ -141,6 +144,8 @@ Enumerates live view types.
 | LIVE_VIEW_LONG_TERM          | 2  | Long-term task.|
 
 ## NotificationMultiLineContent
+
+Describes the multi-line text notification content. This API inherits from [NotificationBasicContent](#notificationbasiccontent).
 
 **System capability**: SystemCapability.Notification.Notification
 

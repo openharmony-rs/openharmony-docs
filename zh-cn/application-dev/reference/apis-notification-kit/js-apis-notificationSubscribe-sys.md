@@ -52,9 +52,9 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 
 | 错误码ID | 错误信息                             |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -117,9 +117,9 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -185,9 +185,9 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -245,7 +245,7 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied.     |
 | 202      | Not system application to call the interface.     |
 | 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.                    |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -304,7 +304,7 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied.     |
 | 202      | Not system application to call the interface.     |
 | 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.                    |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -358,9 +358,9 @@ subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
-| -------- | ----------------------------------- | 
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| -------- | ----------------------------------- |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -409,8 +409,9 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.<br> 适用版本：9-19                                      |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -464,8 +465,9 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.<br> 适用版本：9-19                                      |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -484,7 +486,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.unsubscribe(subscriber).then(() => {
   console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -515,9 +517,9 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -582,9 +584,9 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -608,7 +610,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -638,9 +640,9 @@ remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback\<void\>):
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -694,9 +696,9 @@ remove(hashCode: string, reason: RemoveReason): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -712,7 +714,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCode, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -742,9 +744,9 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason, callback: AsyncCallback
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -797,9 +799,9 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -814,7 +816,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCodes, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -843,9 +845,9 @@ removeAll(bundle: BundleOption, callback: AsyncCallback\<void\>): void
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -893,9 +895,9 @@ removeAll(callback: AsyncCallback\<void\>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -945,9 +947,9 @@ removeAll(bundle?: BundleOption): Promise\<void\>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -962,7 +964,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 notificationSubscribe.removeAll().then(() => {
   console.info("removeAll success");
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -991,9 +993,9 @@ removeAll(userId: number, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1046,9 +1048,9 @@ removeAll(userId: number): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1063,7 +1065,7 @@ let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
   console.info("removeAll success");
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1098,9 +1100,9 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600010  | Distributed operation failed.                     |
 | 1600021  | Distributed operation timed out.                    |
 
@@ -1119,11 +1121,13 @@ let operationInfo: notificationSubscribe.OperationInfo = {
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
   console.info("distributeOperation success");
 }).catch((err: BusinessError) => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+  console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
 ## NotificationKey
+
+通知键值。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1136,6 +1140,8 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 ## RemoveReason
 
+通知删除原因。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -1146,6 +1152,8 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 | CANCEL_REASON_REMOVE | 2   | 用户删除通知。         |
 
 ## OperationInfo<sup>18+</sup>
+
+跨设备协同操作信息。
 
 **系统能力**：SystemCapability.Notification.Notification
 
