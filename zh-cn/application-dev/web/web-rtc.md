@@ -182,6 +182,7 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 
 <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Telephoto1.html) --> 
 
+```html
 async function getFirstBackCameraId() {
   const devices = await navigator.mediaDevices.enumerateDevices();
   const videoDevices = devices.filter(d => d.kind === 'videoinput');
@@ -191,22 +192,27 @@ async function getFirstBackCameraId() {
   });
   return back ? back.deviceId : (videoDevices[0] ? videoDevices[0].deviceId : null);
 }
+```
 
 - 通过deviceId来强选第一个后置摄像头，示例如下：
 
 <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Telephoto1.html) --> 
 
+```html
 const deviceId = await getFirstBackCameraId();
 const stream = await navigator.mediaDevices.getUserMedia({
   video: { deviceId: { exact: deviceId } },
   audio: false
 });
+```
 
 方案二：可以直接通过facingMode属性选择后置
 
 <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Telephoto2.html) --> 
 
+```html
 const stream = await navigator.mediaDevices.getUserMedia({
   video: { facingMode: 'environment' },
   audio: false
 });
+```
