@@ -34,7 +34,7 @@
     * 该配置项仅在PC/2in1设备上生效。
     * 若使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)的supportWindowModes属性，需要配置FULL_SCREEN选项，此时使用metadata标签配置主窗口最大化启动生效，否则不生效。
     * 若使用[module.json5](../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode属性，需要配置fullscreen选项，此时使用metadata标签配置主窗口最大化启动生效，否则不生效。
-    * 主窗显示设置优先级排序为：全屏显示 > 使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)接口指定大小和位置 > 使用[setWindowRectAutoSave()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setwindowrectautosave14)方法开启窗口尺寸记忆 > 使用metadata标签配置最大化 > 使用metadata标签配置大小和位置。全屏显示配置方法包括如下三种：
+    * 主窗口显示设置优先级排序为：全屏显示 > 使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)接口指定大小和位置 > 使用[setWindowRectAutoSave()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setwindowrectautosave14)方法开启窗口尺寸记忆 > 使用metadata标签配置最大化 > 使用metadata标签配置大小和位置。全屏显示配置方法包括如下三种：
         1. 使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)的windowMode属性并将其配置为WINDOW_MODE_FULLSCREEN。
         2. 使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)的supportWindowModes属性，且只配置FULL_SCREEN选项。
         3. 使用[module.json5](../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode属性，且只配置fullscreen选项。
@@ -45,7 +45,7 @@
 
    非自由多窗模式下只能通过配置module.json5中abilities标签下的SupportWindowMode属性配置窗口支持模式，其他配置方式均不生效。<!--Del-->
 
-5. 使用metadata标签配置主窗边角以直角显示。配置项为：name为ohos.ability.window.isRightAngle，value取值为true或false，取值为true表示窗口边角以直角显示、取值为false则使用系统默认圆角，未配置时默认为false。主窗直角配置仅在PC/2in1设备上生效，且仅支持系统应用。
+5. 使用metadata标签配置主窗口边角以直角显示。配置项为：name为ohos.ability.window.isRightAngle，value取值为true或false，取值为true表示窗口边角以直角显示、取值为false则使用系统默认圆角，未配置时默认为false。主窗口直角配置仅在PC/2in1设备上生效，且仅支持系统应用。
 <!--DelEnd-->
 
 

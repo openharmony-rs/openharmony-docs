@@ -7250,7 +7250,7 @@ resetAspectRatio(): Promise&lt;void&gt;
 
 取消设置窗口内容布局的比例，使用Promise异步回调。
 
-仅主窗可设置，调用后将清除持久化储存的比例信息。
+仅主窗可设置，调用后将清除持久化存储的比例信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7308,7 +7308,7 @@ resetAspectRatio(callback: AsyncCallback&lt;void&gt;): void
 
 取消设置窗口内容布局的比例，使用callback异步回调。
 
-仅主窗可设置，调用后将清除持久化储存的比例信息。
+仅主窗可设置，调用后将清除持久化存储的比例信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
