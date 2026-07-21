@@ -777,7 +777,7 @@ ArkTS-Sta: getSlot(slotType: SlotType): Promise\<NotificationSlot|null\>;
 
 | 参数名     | 类型     | 必填 | 说明                                                        |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，例如社交通信、服务提醒、内容资讯等类型。 |
+| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，例如社交通信、服务提醒、内容咨询等类型。 |
 
 **返回值：**
 
@@ -959,7 +959,7 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 | 参数名     | 类型                  | 必填 | 说明                                                        |
 | -------- | --------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型，例如社交通信、服务提醒、内容资讯等类型。需传入已创建的渠道类型，否则删除操作无效。 |
+| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型，例如社交通信、服务提醒、内容咨询等类型。需传入已创建的渠道类型，否则删除操作无效。 |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。当删除指定类型的通知渠道成功，err为undefined，否则为错误对象。                                        |
 
 **错误码：**

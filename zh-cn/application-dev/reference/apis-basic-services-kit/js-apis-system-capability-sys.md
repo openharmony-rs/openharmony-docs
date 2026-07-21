@@ -63,7 +63,7 @@ querySystemCapabilities(): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise实例，用于异步获取结果。 |
+| Promise&lt;string&gt; | Promise示例，用于异步获取结果。 |
 
 **示例：**
 
