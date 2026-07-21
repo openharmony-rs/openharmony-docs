@@ -265,6 +265,10 @@ ArkTS-Dyn映射到ArkTS-Sta时分为两层语义：
 | enum string | enum string |
 | enum int | enum int |
 
+> **说明：**
+>
+> 当ArkTS-Dyn侧向ArkTS-Sta侧传递数值时，若该数值超出ArkTS-Dyn中`Number`的安全整数范围（即[-2<sup>53</sup>+1, 2<sup>53</sup>-1]），由于ArkTS-Dyn侧`Number`类型本身的精度限制，会导致进入ArkTS-Sta侧时出现精度损失或数值错误。
+
 ### 工具类型
 
 **ArkTS-Sta工具类型在ArkTS-Dyn上下文中的映射**
@@ -524,6 +528,10 @@ ArkTS-Sta类/对象暴露到ArkTS-Dyn分为两种：
 | 继承方法 | 继承方法 | 
 | 接口字段 | 接口字段 | 
 | 接口方法 | 接口方法 | 
+
+> **说明：**
+>
+> ArkTS-Sta侧定义类时，不应声明名为`name`和`length`的静态属性。由于ArkTS-Dyn侧的类底层已内置对应的静态属性，ArkTS-Sta类中若定义同名的静态属性，在ArkTS-Dyn侧访问该类时会因属性冲突而产生运行崩溃。
 
 **ArkTS-Dyn接口和类在ArkTS-Sta上下文中的映射**
 
