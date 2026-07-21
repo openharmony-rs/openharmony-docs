@@ -35,7 +35,6 @@ ArrayBuffer常用于表示图片等二进制资源，在应用开发中，处理
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 在Task执行的处理函数，用于处理ArrayBuffer数据
 @Concurrent
@@ -52,11 +51,7 @@ function createImageTask(arrayBuffer: ArrayBuffer, isParamsByTransfer: boolean):
   let task: taskpool.Task = new taskpool.Task(adjustImageValue, arrayBuffer);
   if (!isParamsByTransfer) {
     // 传递空数组[]，全部arrayBuffer参数传递均采用拷贝方式
-    try {
-      task.setTransferList([]);
-    } catch (err) {
-      hilog.error(0x0000, 'testTag', 'Failed to set transferList. Cause: %{public}s', JSON.stringify(err));
-    }
+    task.setTransferList([]);
   }
   return task;
 }
