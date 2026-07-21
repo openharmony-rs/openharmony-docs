@@ -182,6 +182,7 @@ getTaskInfo(taskId: int): Promise\<TaskInfo>
 const ON_START: string
 
 应用需要实现后台加载任务onStart的回调方法， 在这个回调方法中实现后台处理应用页面数据的加载逻辑。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 
+
 代码示例参考finishTask函数的完整实例。
 
 ## backgroundLoader.ON_STOP
@@ -189,6 +190,7 @@ const ON_START: string
 const ON_STOP: string
 
 应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 
+ 
 代码示例参考finishTask函数的完整实例。
 
 ## backgroundLoader.finishTask
