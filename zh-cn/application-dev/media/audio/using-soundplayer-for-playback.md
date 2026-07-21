@@ -26,7 +26,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
 
 1. 在调用SystemSoundPlayer的接口前，需要先通过[createSystemSoundPlayer](../../reference/apis-audio-kit/js-apis-systemSoundManager.md#systemsoundmanagercreatesystemsoundplayer)创建实例。
 
-   <!-- @[sound_player_create](https://gitcode.com/openharmony/applications_app_samples//master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
+   <!-- @[sound_player_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
    ``` TypeScript
    import { systemSoundManager } from '@kit.AudioKit';
@@ -46,7 +46,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
 
 2. 调用[load](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#load)接口，加载指定类型音效资源。
 
-   <!-- @[sound_player_load](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
+   <!-- @[sound_player_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
    ``` TypeScript
    import { systemSoundManager } from '@kit.AudioKit';
@@ -65,7 +65,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
 
 3. 调用[play](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#play)接口，播放已加载的音效资源。
 
-   <!-- @[sound_player_play](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
+   <!-- @[sound_player_play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
    ``` TypeScript
    import { systemSoundManager } from '@kit.AudioKit';
@@ -84,7 +84,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
 
 4. 调用[unload](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#unload)接口，卸载之前已加载的音效资源。
 
-   <!-- @[sound_player_unload](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
+   <!-- @[sound_player_unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
    ``` TypeScript
    import { systemSoundManager } from '@kit.AudioKit';
@@ -103,7 +103,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
 
 5. 调用[release](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#release)接口，释放系统音效播放器。
 
-   <!-- @[sound_player_release](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
+   <!-- @[sound_player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
    ``` TypeScript
    systemSoundPlayer?.release().then(() => {
