@@ -1,19 +1,22 @@
 # Saving a Frontend Page as a PDF File
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhang-yinglie-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=b9f7d7684e0ec1d6ddedfecf2f7a565566740dbe translatedAt=2026-07-21T04:21:54.568Z pushedAt=2026-07-21T06:07:44.664Z -->
 
 Since API version 14, the **Web** component supports the [createPdf](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14) method for saving frontend pages as PDF files.
 
-After an instance is generated using [createPdf](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14), obtain the binary stream using the **pdfArrayBuffer** method, and save it as a PDF file using the **fileIo** method. In this way, users can save frontend page content such as reports and invoices as PDF files for sharing.
-> **Description**
+After generating an instance using [createPdf](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14), call the `pdfArrayBuffer` method to obtain the binary data stream, and then use the [fileIo](../reference/apis-core-file-kit/js-apis-file-fs.md) method to save the binary data stream as a PDF file. Users can save frontend page content as a PDF for sharing or storage. For example, generating reports, invoices, etc., facilitates saving and transmission for users.
+> **NOTE**
 >
-> You can adjust the PDF page size and frontend page zoom ratio through [pdfconfiguration](../reference/apis-arkweb/arkts-apis-webview-i.md#pdfconfiguration14). You are advised to use the frontend page adaptation policy and optimize the PDF layout through CSS media query (**@media print**).
+> Through the [pdfConfiguration](../reference/apis-arkweb/arkts-apis-webview-i.md#pdfconfiguration14) settings, you can adjust the PDF page size, frontend page scaling ratio, and more. It is recommended to use a frontend page adaptation strategy and optimize PDF layout through CSS media queries (@media print).
 
 ## Required Permissions
+
 To obtain network documents, you need to configure the network access permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
 <!-- @[web_createpdf_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/module.json5) -->
@@ -27,6 +30,7 @@ To obtain network documents, you need to configure the network access permission
 ```
 
 ## Saving a PDF File Using a Callback
+
 Call the **createPdf** API through a callback, obtain the PDF binary stream through the **pdfArrayBuffer** API based on the obtained result, and use the **fileIo** method to save it as a PDF file.
 
 <!-- @[web_createpdf_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfCallback.ets) -->
@@ -75,7 +79,7 @@ struct Index {
                 });
               } catch (resError) {
                 console.error(
-                  `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  `ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
               }
             });
         })
@@ -86,6 +90,7 @@ struct Index {
 ```
 
 ## Saving a PDF File Using a Promise
+
 Call the **createPdf** API through a promise, obtain the PDF binary stream through the **pdfArrayBuffer** API based on the obtained result, and use the **fileIo** method to save it as a PDF file.
 
 <!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) -->
