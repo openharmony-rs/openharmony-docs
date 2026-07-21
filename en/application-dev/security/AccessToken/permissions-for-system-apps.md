@@ -5662,6 +5662,20 @@ With this permission, the application can call the API to obtain the local accou
 
 **Valid since**: 24
 
+ ## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
+ 
+ Allows a system application to enable agent-related permission management features.
+ 
+ **Permission level**: system_basic
+ 
+ **Authorization mode**: system_grant
+ 
+ **Certificate-based authorization**: true
+ 
+ **Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+ **Valid since**: 26.0.0
+
 ## ohos.permission.GET_AGENT_CARD
 
 Allows a system application to obtain AgentCard information.
