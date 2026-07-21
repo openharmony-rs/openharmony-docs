@@ -442,7 +442,7 @@ JSVM OH_JSVM_SetNamedProperty success
 
 ### OH_JSVM_GetNamedProperty
 
-用于从JavaScript对象中获取命名属性的值
+用于从JavaScript对象中获取命名属性的值。
 
 cpp部分代码：
 

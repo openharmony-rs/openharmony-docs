@@ -2641,7 +2641,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env,JSVM_Value value,uin
 
 **描述**
 
-返回与给定的JavaScript number等价的C uint32基础类型值。
+返回与给定的JavaScript number等价的C uint_32基础类型值。
 
 **起始版本：** 11
 
