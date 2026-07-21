@@ -44,10 +44,10 @@
 
 录音、语音识别、实时语音通话、短语音消息、直播连麦等业务在启动音频采集前，通常需要先判断麦克风是否被占用。若麦克风已被其他录制流占用，新录音流可能无法正常启动；或者在启动成功后，也可能在运行过程中受系统音频焦点或录音并发策略影响而被中断、进入静音录制状态，进而导致录音文件不完整、语音识别结果缺失等问题。
 
-如果需要判断麦克风是否被占用，可根据业务场景任选以下两种方式之一：
+可根据业务场景，任选其中一种方法进行判断：
 
 - 查询当前采集器和输入设备电平：如果需要主动查询当前是否有输入设备正在采集声音，可联合使用[getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9)和[getMaxAmplitudeForInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#getmaxamplitudeforinputdevice12)。先调用`getCurrentAudioCapturerInfoArray`获取当前音频采集器信息，再遍历每个采集器使用的输入设备并调用`getMaxAmplitudeForInputDevice`获取音频流最大电平值，取值范围为[0, 1]。当最大电平值大于0时，说明该设备采集到声音，设备正在录音，可判断麦克风正在被占用。
-- 判断指定录制请求是否可启动：如果需要在启动录音前判断指定音源类型的录制请求是否可以启动，可调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)，传入业务要使用的[AudioCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)。返回`true`表示当前音源类型的录制可以启动，返回`false`表示当前录制请求可能因被占用或焦点策略等原因启动失败。示例代码可参考[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)。
+- 判断指定录制请求是否可启动：如果需要在启动录音前判断指定音源类型的录制请求是否可以启动，可调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)，传入业务要使用的[AudioCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)。如果返回`true`，表明可以使用麦克风进行录制；如果返回`false`，表明麦克风可能已被占用。示例代码可参考[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)。
 
 > **说明：**
 >
