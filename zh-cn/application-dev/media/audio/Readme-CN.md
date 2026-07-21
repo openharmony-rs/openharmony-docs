@@ -7,7 +7,6 @@
 <!--Adviser: @w_Machine_cc-->
 
 - [Audio Kit简介](audio-kit-intro.md)
-- [使用合适的音频类型](using-right-streamusage-and-sourcetype.md)
 - 音频焦点和音频会话管理<!--audio-session-->
   - [音频焦点和音频会话开发概述](audio-playback-concurrency-audio-session-overview.md)
   - [音频焦点介绍](audio-playback-concurrency.md)
@@ -15,6 +14,7 @@
   - [使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)
 - 音频播放<!--audio-playback-->
   - [音频播放开发概述](audio-playback-overview.md)
+  - [选择合适的播放流类型](using-right-streamusage-for-playback.md)
   - [推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)
   - [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)
   <!--Del-->
@@ -38,6 +38,7 @@
   <!--DelEnd-->
 - 音频录制<!--audio-recording-->
   - [音频录制开发概述](audio-recording-overview.md)
+  - [选择合适的录制流类型](using-right-sourcetype-for-recording.md)
   - [推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)
   - [使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)
   - [低时延音频录制(C/C++)](audio-fast-recording.md)

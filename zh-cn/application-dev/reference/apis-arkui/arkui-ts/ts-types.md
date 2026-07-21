@@ -836,7 +836,11 @@ type LPX = { number }lpx
 
 ## Percentage<sup>10+</sup>
 
+type Percentage = { number }%
+
 长度类型，用于描述以百分比单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -846,13 +850,13 @@ type LPX = { number }lpx
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}%               | 需要指定以百分比单位，如'10%'。 |
+| { number }%               | 需要指定以百分比单位，如'10%'。 |
 
 ## Degree<sup>10+</sup>
 
 type Degree = `${number}deg`
 
-角度类型，用于描述以deg像素单位为单位的长度。
+角度类型，用于描述以deg为单位的角度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -862,7 +866,7 @@ type Degree = `${number}deg`
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}deg               | 需要指定以deg像素单位，如'10deg'。 |
+| { number }deg               | 需要指定以deg为单位，如'10deg'。 |
 
 ## TouchPoint<sup>11+</sup>
 
