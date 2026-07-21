@@ -253,7 +253,7 @@ JSVM GetValueBigintUint64 success
 
 ### OH_JSVM_CreateBigintInt64
 
-根据给定的uint64类型对象创建JavaScript BigInt对象。
+根据给定的int64_t类型对象创建JavaScript BigInt对象。
 
 cpp部分代码：
 
@@ -347,5 +347,5 @@ const char* SRC_CALL_NATIVE = R"JS(getBigintInt64(BigInt(-5555555555555555)))JS"
 
 预期的输出结果
 ```ts
-JSVM GetValueBigintUint64 success
+JSVM GetBigintInt64 success:1
 ```
