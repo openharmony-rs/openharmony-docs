@@ -501,7 +501,7 @@ try {
 | manufacturerData | string | 否 | 否 | 厂商信息。 |
 | modelData | string | 否 | 否 | 设备型号信息。 |
 
-### onPairingStateChange
+### remoteDevice.onPairingStateChange
 
 onPairingStateChange(callback: Callback&lt;PairingStateParam&gt;): void
 
@@ -546,7 +546,7 @@ try {
 ```
 
 
-### offPairingStateChange
+### remoteDevice.offPairingStateChange
 
 offPairingStateChange(callback?: Callback&lt;PairingStateParam&gt;): void
 
@@ -585,7 +585,7 @@ try {
 }
 ```
 
-### onConnectionStateChange
+### remoteDevice.onConnectionStateChange
 
 onConnectionStateChange(callback: Callback&lt;ConnectionStateParam&gt;): void
 
@@ -630,7 +630,7 @@ try {
 ```
 
 
-### offConnectionStateChange
+### remoteDevice.offConnectionStateChange
 
 offConnectionStateChange(callback?: Callback&lt;ConnectionStateParam&gt;): void
 
@@ -708,7 +708,7 @@ try {
 | CONNECTION_FAIL_NO_AVAILABLE_SERVICE | 6 | 表示没有可连接/可用的profile。 |
 | CONNECTION_FAIL_CONNECTION_NUM_LIMITED | 7 | 表示连接数超出限制。 |
 
-### onAcbStateChange
+### remoteDevice.onAcbStateChange
 
 onAcbStateChange(callback: Callback&lt;AcbStateParam&gt;): void
 
@@ -753,7 +753,7 @@ try {
 ```
 
 
-### offAcbStateChange
+### remoteDevice.offAcbStateChange
 
 offAcbStateChange(callback?: Callback&lt;AcbStateParam&gt;): void
 

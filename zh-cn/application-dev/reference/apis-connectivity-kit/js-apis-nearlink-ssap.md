@@ -912,7 +912,7 @@ addService(service: Service): void
 | -------- | -------- |
 | 201 | Permission denied. |
 | 36100003 | NearLink disabled. |
-| 36100043 | Invalid UUID in property. |
+| 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
 | 36100099 | Operation failed. |
 
@@ -998,7 +998,7 @@ removeService(serviceUuid: string): void
 | -------- | -------- |
 | 201 | Permission denied. |
 | 36100003 | NearLink disabled. |
-| 36100043 | Invalid UUID in property. |
+| 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
 | 36100099 | Operation failed. |
 
