@@ -177,22 +177,6 @@ getTaskInfo(taskId: int): Promise\<TaskInfo>
   })
 ``` 
 
-## backgroundLoader.ON_START
-
-const ON_START: string
-
-应用需要实现后台加载任务onStart的回调方法， 在这个回调方法中实现后台处理应用页面数据的加载逻辑。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 
-
-代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
-
-## backgroundLoader.ON_STOP
-
-const ON_STOP: string
-
-应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 
- 
-代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
-
 ## backgroundLoader.finishTask
 
 finishTask(taskInfo: TaskInfo): void
@@ -331,3 +315,19 @@ finishTask(taskInfo: TaskInfo): void
 | PERCEPTIBLE_ERROR  | 2    | 表示任务执行中发生可感知任务错误。   |
 | TIMEOUT_ERROR | 3    | 表示任务执行超时。 |
 | EXECUTE_ERROR  | 4    | 表示任务执行异常。  |
+
+## 常量
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ON_START | string | 'onStart' | 应用需要实现后台加载任务onStart的回调方法， 在这个回调方法中实现后台处理应用页面数据的加载逻辑。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。 |
+| ON_STOP | string | 'onStop' | 应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。|
+
