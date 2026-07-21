@@ -42,13 +42,13 @@
 
 3. 应用权限要求
 
-| 分类 | 接口 | 目标方对启动方的权限要求 | 启动方与目标方的分布式协同相关权限要求 |
-| --- | --- | --- | --- |
-| 多轮交互 | [abilityConnectionManager](../reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md) | 若目标方在 module.json5 文件中配置了 abilities 标签的 `permissions`，启动方须持有其中全部权限。 | ohos.permission.DISTRIBUTED_DATASYNC<br>ohos.permission.GET_NETWORK_INFO<br>ohos.permission.SET_NETWORK_INFO<br>ohos.permission.INTERNET |
-| 多轮交互 | [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) | 若目标方在 module.json5 文件中配置了 abilities 标签的 `permissions`，启动方须持有其中全部权限。 | ohos.permission.DISTRIBUTED_DATASYNC |
-| 多轮交互 | [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) | 无要求（仅限同一应用间调用）。 | ohos.permission.DISTRIBUTED_DATASYNC |
-| 单次交互 | [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) | 若目标方在 module.json5 文件中配置了 abilities 标签的 `permissions`，启动方须持有其中全部权限。 | 无要求（仅单次交互）。 |
-| 单次交互 | [startAbilityForResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult)<br>[terminateSelfWithResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) | 若目标方在 module.json5 文件中配置了 abilities 标签的 `permissions`，启动方须持有其中全部权限。 | 无要求（仅单次交互）。 |
+| 接口 | 目标方对启动方的权限要求 | 启动方与目标方的分布式协同相关权限要求 |
+| --- | --- | --- |
+| [abilityConnectionManager](../reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md) | 若目标方在 module.json5 文件中配置了 abilities 标签的 `permissions`，启动方须持有其中全部权限。 | ohos.permission.DISTRIBUTED_DATASYNC<br>ohos.permission.GET_NETWORK_INFO<br>ohos.permission.SET_NETWORK_INFO<br>ohos.permission.INTERNET |
+| [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) | 若目标方在 module.json5 文件中配置了 abilities 标签的 `permissions`，启动方须持有其中全部权限。 | ohos.permission.DISTRIBUTED_DATASYNC |
+| [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) | 无要求（仅限同一应用间调用）。 | ohos.permission.DISTRIBUTED_DATASYNC |
+| [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) | 若目标方在 module.json5 文件中配置了 abilities 标签的 `permissions`，启动方须持有其中全部权限。 | 无要求（仅单次交互）。 |
+| [startAbilityForResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult)<br>[terminateSelfWithResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) | 若目标方在 module.json5 文件中配置了 abilities 标签的 `permissions`，启动方须持有其中全部权限。 | 无要求（仅单次交互）。 |
 
 > **说明：**
 > - 权限的申请方式请参考 [声明权限](../security/AccessToken/declare-permissions.md)。
