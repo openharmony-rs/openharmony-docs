@@ -156,17 +156,23 @@
    
    // ...
      let writtenBytes: number = 0;
+     pendingRecordingWrite = Promise.resolve();
      let path = context.cacheDir;
      let filePath = path + '/S16LE_2_48000.pcm';
-     file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
      onReadData = (buffer: ArrayBuffer) => {
-       // ...
+       let recordingBuffer = buffer.slice(0);
+       let writeOffset = writtenBytes;
+       writtenBytes += recordingBuffer.byteLength;
        let options: Options = {
-         offset: writtenBytes,
-         length: buffer.byteLength
+         offset: writeOffset,
+         length: recordingBuffer.byteLength
        }
-       fs.writeSync(file.fd, buffer, options);
-       writtenBytes += buffer.byteLength;
+       pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+         await fs.write(recordingFile.fd, recordingBuffer, options);
+       }).catch((error: BusinessError) => {
+         console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+       });
      };
      // ...
          audioCapturer.on('readData', onReadData);

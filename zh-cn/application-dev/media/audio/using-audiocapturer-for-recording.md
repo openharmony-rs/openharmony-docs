@@ -90,17 +90,23 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    
    // ...
      let writtenBytes: number = 0;
+     pendingRecordingWrite = Promise.resolve();
      let path = context.cacheDir;
      let filePath = path + '/S16LE_2_48000.pcm';
-     file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
      onReadData = (buffer: ArrayBuffer) => {
-       // ...
+       let recordingBuffer = buffer.slice(0);
+       let writeOffset = writtenBytes;
+       writtenBytes += recordingBuffer.byteLength;
        let options: Options = {
-         offset: writtenBytes,
-         length: buffer.byteLength
+         offset: writeOffset,
+         length: recordingBuffer.byteLength
        }
-       fs.writeSync(file.fd, buffer, options);
-       writtenBytes += buffer.byteLength;
+       pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+         await fs.write(recordingFile.fd, recordingBuffer, options);
+       }).catch((error: BusinessError) => {
+         console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+       });
      };
      // ...
          audioCapturer.on('readData', onReadData);
@@ -158,7 +164,8 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
          // ...
          console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
        } finally {
-         fs.closeSync(file.fd);
+         await pendingRecordingWrite;
+         fs.closeSync(recordingFile.fd);
        }
    ```
 
@@ -208,29 +215,32 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 };
 
 let file: fs.File;
+let recordingFile: fs.File;
 let onReadData: Callback<ArrayBuffer>;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
+let pendingRecordingWrite: Promise<void> = Promise.resolve();
 
 // ...
 
 async function initRecordingResources(context: common.UIAbilityContext): Promise<void> {
   let writtenBytes: number = 0;
+  pendingRecordingWrite = Promise.resolve();
   let path = context.cacheDir;
   let filePath = path + '/S16LE_2_48000.pcm';
-  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   onReadData = (buffer: ArrayBuffer) => {
-    if (capturerMuteHintEnabledByApp) {
-      let view = new DataView(buffer);
-      for (let i = 0; i < buffer.byteLength; i++) {
-        view.setUint8(i, 0);
-      }
-    }
+    let recordingBuffer = buffer.slice(0);
+    let writeOffset = writtenBytes;
+    writtenBytes += recordingBuffer.byteLength;
     let options: Options = {
-      offset: writtenBytes,
-      length: buffer.byteLength
+      offset: writeOffset,
+      length: recordingBuffer.byteLength
     }
-    fs.writeSync(file.fd, buffer, options);
-    writtenBytes += buffer.byteLength;
+    pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+      await fs.write(recordingFile.fd, recordingBuffer, options);
+    }).catch((error: BusinessError) => {
+      console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+    });
   };
 }
 
@@ -467,7 +477,8 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
       // ...
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
     } finally {
-      fs.closeSync(file.fd);
+      await pendingRecordingWrite;
+      fs.closeSync(recordingFile.fd);
     }
   }
 }
