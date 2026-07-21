@@ -50,6 +50,7 @@ struct sharedArrayBuffer {
           let task: taskpool.Task = new taskpool.Task(transferAtomics, int32);
           taskpool.execute(task).then((res) => {
             console.info('this res is: ' + res);
+          });
           setTimeout(() => {
             Atomics.notify(int32, 0, 1);
           }, 1000);
