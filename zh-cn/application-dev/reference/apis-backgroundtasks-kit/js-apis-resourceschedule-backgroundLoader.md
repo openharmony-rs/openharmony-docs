@@ -135,7 +135,7 @@ unregisterTask(taskInfo: TaskInfo): void
 
 getTaskInfo(taskId: int): Promise\<TaskInfo>
 
-查询以及注册的后台加载任务，使用Promise形式返回。
+查询已经注册的后台加载任务，使用Promise形式返回。
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
