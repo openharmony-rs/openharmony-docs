@@ -144,8 +144,8 @@ ConsoleMessage的日志来源。
 
 | 名称     | 值 | 说明          |
 | ------ | -- | ----------- |
-| SILENT  | 0 | 软键盘收起时Web组件失焦功能关闭，当用户手动收起软键盘时焦点仍在文本框。 |
-| BLUR | 1 | 软键盘收起时Web组件失焦功能开启，当用户手动收起软键盘时，焦点会从文本框转移到Web的body上，文本框失焦。 |
+| SILENT  | 0 | 软键盘收起时Web组件失焦功能关闭，当用户手动收起软键盘时焦点仍在文本框。适用于需要保持输入焦点的场景。 |
+| BLUR | 1 | 软键盘收起时Web组件失焦功能开启，当用户手动收起软键盘时，焦点会从文本框转移到Web的body上，文本框失焦。适用于需要标准输入框行为的场景。 |
 
 ## WebDarkMode<sup>9+</sup>
 
@@ -275,7 +275,7 @@ Web布局模式的配置。
 
 ## ProtectedResourceType<sup>9+</sup>
 
-受保护的资源类型。
+ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源类型，用于控制 MIDI、相机、麦克风、传感器等敏感资源的访问权限，帮助开发者在保护用户隐私的同时提供丰富的 Web 功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -494,7 +494,7 @@ Web布局模式的配置。
 
 ## AudioSessionType<sup>20+</sup>
 
-应用中Web音频类型。
+应用中 Web 音频类型，用于控制 Web 音频的音频流类型和行为，帮助开发者根据应用场景优化音频体验，如支持网页游戏声音与系统音乐同时播放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -555,7 +555,7 @@ Web布局模式的配置。
 
 ## PdfLoadResult<sup>20+</sup>
 
-定义PDF页面的加载结果。
+定义PDF页面的加载结果，用于标识PDF文件加载过程中的各种状态和错误类型，帮助开发者在PDF显示失败时进行错误诊断和用户提示。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -566,10 +566,10 @@ Web布局模式的配置。
 | 名称             | 值    | 说明                                       |
 | -------------- | ---- | ---------------------------------------- |
 | LOAD_SUCCESS | 0 | PDF页面加载成功。    |
-| PARSE_ERROR_FILE | 1 | PDF文件加载失败的错误码。 |
-| PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持的错误码。 |
-| PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确的错误码。 |
-| PARSE_ERROR_HANDLER | 4 | PDF文件处理失败的错误码。 |
+| PARSE_ERROR_FILE | 1 | PDF文件加载失败。 |
+| PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持。 |
+| PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确。 |
+| PARSE_ERROR_HANDLER | 4 | PDF文件处理失败。 |
 
 ## DetectedBlankScreenReason<sup>22+</sup>
 
@@ -633,7 +633,7 @@ PIN码认证结果。
 
 ## CameraCaptureState<sup>23+</sup>
 
-定义摄像头使用状态的值。
+定义摄像头使用状态的值，用于标识摄像头的当前工作状态，帮助开发者实时监控摄像头资源使用情况，优化资源管理和用户隐私保护。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -649,7 +649,7 @@ PIN码认证结果。
 
 ## MicrophoneCaptureState<sup>23+</sup>
 
-定义麦克风使用状态的值。
+定义麦克风使用状态的值，用于标识麦克风的当前工作状态，帮助开发者实时监控麦克风资源使用情况，优化资源管理和用户隐私保护。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -754,7 +754,7 @@ AI会话操作的结果状态。
 
 ## WebKeyboardAppearanceMode
 
-WebView中输入法沉浸模式。
+WebView中输入法沉浸模式，用于控制软键盘的显示风格，帮助开发者根据应用主题和用户偏好提供一致性的视觉体验，支持默认外观、系统跟随、浅色和深色沉浸式风格。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

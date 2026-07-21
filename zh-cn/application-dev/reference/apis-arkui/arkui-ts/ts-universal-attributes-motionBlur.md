@@ -144,7 +144,7 @@ motionBlur(value: MotionBlurOptions | undefined)
 
 | 名称          | 类型                                                        | 只读  | 可选  | 说明                                                         |
 | ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
-| radius | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined   | 否    | 否    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内。单位：px。 |
+| radius | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined   | 否    | 否    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内来实现较为美观的效果。单位：px。 |
 | anchor | ArkTS-Dyn: [MotionBlurAnchor](#motionbluranchor对象说明) <br> ArkTS-Sta: [MotionBlurAnchor](#motionbluranchor对象说明) \| undefined | 否    | 否    | 运动模糊锚点坐标。运动模糊锚点坐标设置时需要与动画缩放的锚点保持一致设置。 |
 
 ## MotionBlurAnchor对象说明

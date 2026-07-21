@@ -102,7 +102,7 @@ struct ParentComponent {
 
 ### \@Entry
 
-\@Entry装饰的自定义组件将作为[UI页面](../arkts-router-to-navigation.md#页面结构)的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
+[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry)装饰的自定义组件将作为[UI页面](../arkts-router-to-navigation.md#页面结构)的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
 
   > **说明：**
   >
@@ -148,7 +148,7 @@ struct ParentComponent {
 
 ### \@Component
 
-@Component装饰的struct为V1自定义组件，可以使用[状态管理V1版本](./arkts-state-management-overview.md#状态管理v1)装饰器的能力。
+[@Component](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-component.md#component)装饰的struct为V1自定义组件，可以使用[状态管理V1版本](./arkts-state-management-overview.md#状态管理v1)装饰器的能力。
 
   > **说明：**
   >
@@ -169,7 +169,7 @@ struct ParentComponent {
 
 ### \@ComponentV2
 
-@ComponentV2装饰的struct为V2自定义组件，可以使用[状态管理V2版本](./arkts-state-management-overview.md#状态管理v2)装饰器的能力。
+[@ComponentV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-componentv2.md#componentv2)装饰的struct为V2自定义组件，可以使用[状态管理V2版本](./arkts-state-management-overview.md#状态管理v2)装饰器的能力。
 >  **说明：**
 >
 > \@ComponentV2装饰器从API version 12开始支持。

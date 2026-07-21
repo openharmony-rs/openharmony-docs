@@ -153,7 +153,7 @@ ArkTS-Dyn: imageAccess(imageAccess: boolean)
 
 ArkTS-Sta: imageAccess(imageAccess: boolean | undefined)
 
-设置是否允许自动加载图片资源。当属性没有显式调用时，允许自动加载图片资源。
+设置是否允许自动加载图片资源。当属性没有显式调用时，默认允许。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -165,7 +165,7 @@ ArkTS-Sta: imageAccess(imageAccess: boolean | undefined)
 
 | 参数名         | 类型    | 必填   | 说明            |
 | ----------- | ------- | ---- | --------------- |
-| imageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许自动加载图片资源。<br>true表示设置允许自动加载图片资源，false表示设置不允许自动加载图片资源。<br>传入undefined或null时为false。|
+| imageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许自动加载图片资源。<br>true 表示允许，false 表示不允许。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
 
@@ -544,7 +544,7 @@ ArkTS-Dyn: onlineImageAccess(onlineImageAccess: boolean)
 
 ArkTS-Sta: onlineImageAccess(onlineImageAccess: boolean | undefined)
 
-设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。当属性没有显式调用时，默认允许从网络加载图片资源。
+设置是否允许从网络加载图片资源（通过 HTTP 和 HTTPS 访问的资源）。当属性没有显式调用时，默认允许。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -556,7 +556,7 @@ ArkTS-Sta: onlineImageAccess(onlineImageAccess: boolean | undefined)
 
 | 参数名               | 类型    | 必填   | 说明             |
 | ----------------- | ------- | ---- | ---------------- |
-| onlineImageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许从网络加载图片资源。<br>true表示设置允许从网络加载图片资源，false表示设置不允许从网络加载图片资源。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
+| onlineImageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许从网络加载图片资源。<br>true 表示允许，false 表示不允许。<br>ArkTS-Dyn：传入 undefined 或 null 时为 false。<br>ArkTS-Sta：传入 undefined 时为 false。 |
 
 **示例：**
 
@@ -608,7 +608,7 @@ ArkTS-Dyn: zoomAccess(zoomAccess: boolean)
 
 ArkTS-Sta: zoomAccess(zoomAccess: boolean | undefined)
 
-设置是否支持手势进行缩放。该属性没有显式调用时，默认支持手势进行缩放。
+设置是否支持手势进行缩放。该属性没有显式调用时，默认支持。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -620,7 +620,7 @@ ArkTS-Sta: zoomAccess(zoomAccess: boolean | undefined)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| zoomAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否支持手势进行缩放。<br>true表示设置支持手势进行缩放，false表示设置不支持手势进行缩放。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
+| zoomAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否支持手势进行缩放。<br>true表示支持，false表示不支持。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -862,7 +862,7 @@ ArkTS-Dyn: mediaPlayGestureAccess(access: boolean)
 
 ArkTS-Sta: mediaPlayGestureAccess(access: boolean | undefined)
 
-设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。当该属性未显式设置时，默认有声视频的自动播放需要用户手动点击。
+设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。当该属性未显式设置时，默认需要用户手动点击。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -874,7 +874,7 @@ ArkTS-Sta: mediaPlayGestureAccess(access: boolean | undefined)
 
 | 参数名    | 类型    | 必填   | 说明                |
 | ------ | ------- | ---- | ------------------- |
-| access | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true表示设置有声视频的自动播放需要用户手动点击，false表示设置有声视频的自动播放不需要用户手动点击，能自动播放。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
+| access | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true表示需要用户手动点击，false表示不需要，能自动播放。<br>ArkTS-Dyn：传入 undefined 或 null 时为 false。<br>ArkTS-Sta：传入 undefined 时为 false。|
 
 **示例：**
 
@@ -1422,7 +1422,7 @@ ArkTS-Dyn: initialScale(percent: number)
 
 ArkTS-Sta: initialScale(percent: double | undefined)
 
-设置整体页面的缩放百分比。该属性没有显式调用时，默认缩放百分比为100。
+设置整体页面的缩放百分比。该属性没有显式调用时，默认为100。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4336,7 +4336,7 @@ ArkTS-Sta: enableNativeMediaPlayer(config: NativeMediaPlayerConfig | undefined)
 
 | 参数名  | 类型   | 必填   | 说明 |
 | ---- | ------ | ---- | ---------------------|
-| config | ArkTS-Dyn: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12)<br/>ArkTS-Sta: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) \|  undefined | 是    | enable: 是否开启该功能。<br/> shouldOverlay: 该功能开启后， 应用接管网页视频的播放器画面是否覆盖网页内容。<br>ArkTS-Dyn：传入undefined或null时为`{enable: false, shouldOverlay: false}`。<br>ArkTS-Sta：传入undefined时为`{enable: false, shouldOverlay: false}`。|
+| config | ArkTS-Dyn: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12)<br/>ArkTS-Sta: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) \|  undefined | 是    | 应用接管网页媒体播放功能的配置对象。包含以下属性：enable（boolean 类型，是否开启该功能，默认为 false），shouldOverlay（boolean 类型，当功能开启后，应用接管网页视频的播放器画面是否覆盖网页内容，默认为 false）。<br>ArkTS-Dyn：传入 undefined 或 null 时为`{enable: false, shouldOverlay: false}`。<br>ArkTS-Sta：传入 undefined 时为`{enable: false, shouldOverlay: false}`。|
 
   **示例：**
 
@@ -5451,7 +5451,7 @@ ArkTS-Dyn: blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
 ArkTS-Sta: blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode | undefined)
 
-设置当软键盘收起时Web元素失焦模式。若未显式调用该属性或入参值为undefined时，软键盘收起时Web组件失焦功能关闭。
+设置当软键盘收起时Web元素失焦模式。若未显式调用该属性或入参值为undefined时，默认按[BlurOnKeyboardHideMode.SILENT](./arkts-basic-components-web-e.md#bluronkeyboardhidemode14)模式处理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7456,7 +7456,7 @@ ArkTS-Dyn: keyboardAppearance(mode: WebKeyboardAppearanceMode)
 
 ArkTS-Sta: keyboardAppearance(mode: WebKeyboardAppearanceMode | undefined)
 
-设置键盘外观。不调用该方法时，默认跟随系统的沉浸式模式。
+设置键盘外观模式，用于控制Web组件内输入框弹出键盘的外观样式，包括沉浸式和非沉浸式模式。不调用该方法时，默认跟随系统的沉浸式模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7558,7 +7558,7 @@ ArkTS-Sta: enableFullscreenVideoOverlay(enabled: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | -------------------------------- |
-| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置Web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置 Web 组件是否开启覆盖式全屏播放功能。<br>true 表示开启该功能。<br>false 表示不开启。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
 
