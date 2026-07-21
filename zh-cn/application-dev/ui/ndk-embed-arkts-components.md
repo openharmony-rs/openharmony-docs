@@ -273,6 +273,7 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    class ArkUIMixedRefresh : public ArkUIMixedNode {
    public:
        static napi_value RegisterCreateRefresh(napi_env env, napi_callback_info info);
+       static napi_value RegisterUpdateRefresh(napi_env env, napi_callback_info info);
    };
    
    } // namespace NativeModule
@@ -310,6 +311,22 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        napi_create_reference(env, args[0], 1, &refer);
    
        g_createRefresh = refer;
+       return nullptr;
+   }
+   
+   napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       g_env = env;
+       napi_ref refer;
+       // 创建引用之后保存，防止释放。
+       napi_create_reference(env, args[0], 1, &refer);
+   
+       g_updateRefresh = refer;
        return nullptr;
    }
    
