@@ -35,6 +35,7 @@ ArrayBuffer常用于表示图片等二进制资源，在应用开发中，处理
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 在Task执行的处理函数，用于处理ArrayBuffer数据
 @Concurrent
@@ -45,13 +46,17 @@ function adjustImageValue(arrayBuffer: ArrayBuffer): ArrayBuffer {
 
 /*
  * 创建一个Task，用于将ArrayBuffer传入Task执行
- * isParamsByCopy用于控制ArrayBuffer是“拷贝”还是“转移”传递
+ * isParamsByTransfer用于控制ArrayBuffer是“拷贝”还是“转移”传递
  */
-function createImageTask(arrayBuffer: ArrayBuffer, isParamsByCopy: boolean): taskpool.Task {
+function createImageTask(arrayBuffer: ArrayBuffer, isParamsByTransfer: boolean): taskpool.Task {
   let task: taskpool.Task = new taskpool.Task(adjustImageValue, arrayBuffer);
-  if (!isParamsByCopy) {
+  if (!isParamsByTransfer) {
     // 传递空数组[]，全部arrayBuffer参数传递均采用拷贝方式
-    task.setTransferList([]);
+    try {
+      task.setTransferList([]);
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', 'Failed to set transferList. Cause: %{public}s', JSON.stringify(err));
+    }
   }
   return task;
 }
@@ -80,16 +85,14 @@ struct Index {
           for (let i: number = 0; i < taskNum; i++) {
             let arrayBufferSlice: ArrayBuffer =
               arrayBuffer.slice(arrayBuffer.byteLength / taskNum * i, arrayBuffer.byteLength / taskNum * (i + 1));
-            // isParamsByCopy为true时，就可以实现拷贝方式的传输
+            // 使用拷贝方式传入ArrayBuffer，所以isParamsByTransfer为false，改成true，就可以实现转移方式的传输
             taskPoolGroup.addTask(createImageTask(arrayBufferSlice, false));
           }
           // 执行Task，UI主线程接收处理完成后的结果
           taskpool.execute(taskPoolGroup).then((data) => {
             // 将各Task返回的ArrayBuffer数据进行拼接
-            this.message = 'success';
           }).catch((e: BusinessError) => {
-            this.message = 'fail';
-            console.error(`taskpool: execute task: code: ${e.code}, message: ${e.message}`);
+            console.error(e.message);
           })
           // ...
         })
