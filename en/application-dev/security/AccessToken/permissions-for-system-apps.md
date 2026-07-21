@@ -6526,7 +6526,7 @@ Allows an application to create a content trust signature.
 
 **Certificate-based authorization**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: Phone | PC/2in1 | Tablet
 
 **Since**: 26.0.0
 
@@ -6540,7 +6540,7 @@ Allows an application to append a content trust signature.
 
 **Certificate-based authorization**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: Phone | PC/2in1 | Tablet
 
 **Since**: 26.0.0
 
