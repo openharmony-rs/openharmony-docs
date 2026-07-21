@@ -334,7 +334,7 @@ OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, 
 
 **描述**
 
-设置转码输出视频是否使能B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。<br>如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。
+设置转码输出视频是否使能B帧编码。<br>此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。<br>如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
