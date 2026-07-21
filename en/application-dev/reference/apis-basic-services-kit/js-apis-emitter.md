@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=5b716a0e1c062ed98c8e1f363a9507fe09b52f56 translatedAt=2026-07-21T02:32:48.006Z pushedAt=2026-07-21T07:17:13.932Z -->
+<!-- md-trans-meta sourceCommit=5b716a0e1c062ed98c8e1f363a9507fe09b52f56 translatedAt=2026-07-21T02:32:48.006Z pushedAt=2026-07-21T07:45:40.298Z -->
 
 This module provides APIs for sending and processing events between threads in a process or within a thread. You can use the APIs of this module to subscribe to events (continuous subscription or one-shot subscription), cancel event subscription, send events to the event queue, and query the number of subscribed events. In this way, event communication between different threads in the same process and within the same thread can be implemented. It is applicable to scenarios such as cross-thread communication, module decoupling, and the event-driven mode, helping developers implement a lightweight publish-subscribe pattern, reduce coupling between components, and improve code maintainability and scalability.
 
@@ -18,7 +18,7 @@ Two event processing entries are provided. You can select one based on the isola
 
 **APIs used in combination**
 
-The event communication of this module follows the calling sequence of subscription, publishing, processing , and unsubscription. For both namespace and instance APIs, you need to subscribe to an event first, and then another thread or the same thread publishes the event. The callback is executed after the event is received. When the event is no longer needed, unsubscribe from the event to release resources. In addition, event subscription has a lifecycle. Pay attention to resource management:
+The event communication of this module follows the calling sequence of subscription, publishing, processing, and unsubscription. For both namespace and instance APIs, you need to subscribe to an event first, and then another thread or the same thread publishes the event. The callback is executed after the event is received. When the event is no longer needed, unsubscribe from the event to release resources. In addition, event subscription has a lifecycle. Pay attention to resource management:
 
 - **Continuous subscription** (**on**): The subscription remains valid until **off** is called to cancel subscription. If the subscription is not canceled, it will be retained.
 

@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=5b716a0e1c062ed98c8e1f363a9507fe09b52f56 translatedAt=2026-07-21T02:32:47.313Z pushedAt=2026-07-21T07:17:13.931Z -->
+<!-- md-trans-meta sourceCommit=5b716a0e1c062ed98c8e1f363a9507fe09b52f56 translatedAt=2026-07-21T02:32:47.313Z pushedAt=2026-07-21T07:45:40.296Z -->
 
 This module encapsulates the data and attributes carried when a common event is published, including the event data (code/data), subscriber permissions, subscriber bundle name, whether the event is ordered or sticky, and additional parameters. It allows the publisher to precisely control the common event recipients, event delivery sequence, and sticky feature. This module is applicable to scenarios where the recipients need to be specified, custom event data needs to be transferred, and ordered/sticky common events need to be implemented.
 
