@@ -27,7 +27,7 @@ authTrustLevel: AuthTrustLevel
 - ATL3：适用于设备解锁等较高安全场景。  
 - ATL4：适用于小额支付等高安全场景。
 
-典型操作需要的身份认证可信等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](docroot://security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。
+典型操作需要的身份认证可信等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。
 
 **类型：** AuthTrustLevel
 

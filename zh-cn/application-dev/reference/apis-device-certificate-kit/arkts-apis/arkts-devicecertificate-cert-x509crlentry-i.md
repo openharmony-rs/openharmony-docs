@@ -141,7 +141,7 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;EncodingBlob&gt; | 是 | 回调函数。当获取证书吊销条目序列化数据成功时，err为undefined，data为获取到的证书吊销条目序列化数据；否则为错误对象。 |
+| callback | AsyncCallback&lt;EncodingBlob&gt; | 是 | 回调函数。当获取证书吊销条目序列化数据成功时，err为undefined，data为获取到的证书吊销条目序列化数据；否则为错误对象。 |
 
 **错误码：**
 

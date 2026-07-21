@@ -15,7 +15,7 @@ function createMd(algName: string): Md
 
 生成Md实例，用于进行消息摘要的计算与操作。
 
-支持的规格详见[MD消息摘要算法规格](docroot://security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#支持的算法与规格)。
+支持的规格详见[MD消息摘要算法规格](../../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#支持的算法与规格)。
 
 **起始版本：** 9
 
@@ -35,7 +35,7 @@ function createMd(algName: string): Md
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algName | string | 是 | 指定摘要算法，支持算法请参考[MD消息摘要算法规格](docroot://security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#支持的算法与规格)。 |
+| algName | string | 是 | 指定摘要算法，支持算法请参考[MD消息摘要算法规格](../../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#支持的算法与规格)。 |
 
 **返回值：**
 

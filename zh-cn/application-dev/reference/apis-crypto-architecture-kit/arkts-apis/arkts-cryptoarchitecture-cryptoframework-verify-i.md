@@ -1,6 +1,6 @@
 # Verify
 
-Verify类，使用Verify方法之前需要创建该类的实例进行操作，通过[createVerify(algName: string): Verify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md#createverify-1)方法构造此实例。按序调用本类中的init、update、verify方法完成签名操作。验签操作的示例代码详见[签名验签开发指导](docroot://security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+Verify类，使用Verify方法之前需要创建该类的实例进行操作，通过[createVerify(algName: string): Verify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md#createverify-1)方法构造此实例。按序调用本类中的init、update、verify方法完成签名操作。验签操作的示例代码详见[签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
 Verify类不支持重复初始化，当业务方需要使用新密钥验签时，需要重新创建新Verify对象并调用init初始化。
 
@@ -105,7 +105,7 @@ init(pubKey: PubKey, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | pubKey | [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | 是 | 公钥对象，用于Verify的初始化。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当验签初始化成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当验签初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -517,7 +517,7 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 
 追加待验签数据，使用callback异步回调完成更新。
 
-必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md)实例使用[init](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)或[initSync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initsync-1)初始化后，才能使用本函数。
+必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md)实例使用[init](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)或[initSync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initsync)初始化后，才能使用本函数。
 
 > **说明：**  
 >  
@@ -530,7 +530,7 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 > 过大内存。  
 >  
 > 验签使用多次update操作的示例代码详见  
-> [使用RSA密钥对分段签名验签](docroot://security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)  
+> [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)  
 > ，其余算法操作类似。  
 >  
 > OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。  
@@ -552,7 +552,7 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 传入的消息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当验签更新成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当验签更新成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -584,7 +584,7 @@ update(data: DataBlob): Promise<void>
 > 过大内存。  
 >  
 > 验签使用多次update操作的示例代码详见  
-> [使用RSA密钥对分段签名验签](docroot://security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)  
+> [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)  
 > ，其余算法操作类似。  
 >  
 > OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。  
@@ -632,18 +632,18 @@ updateSync(data: DataBlob): void
 
 追加待验签数据，通过同步方式完成更新。
 
-必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md)实例使用[initSync()](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initsync-1)初始化后，才能使用本函数。
+必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md)实例使用[initSync()](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initsync)初始化后，才能使用本函数。
 
 > **说明：**  
 >  
-> 根据数据量，可以不调用updateSync（即[initSync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initsync-1)完成后直接调用  
+> 根据数据量，可以不调用updateSync（即[initSync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initsync)完成后直接调用  
 > [verifySync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#verifysync-1)）或多次调用updateSync。  
 >  
 > 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次updateSync的方式传入数据，避免  
 > 一次性申请过大内存。  
 >  
 > 验签使用多次updateSync操作的示例代码详见  
-> [使用RSA密钥对分段签名验签](docroot://security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，  
+> [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，  
 > 其余算法操作类似。  
 >  
 > OnlyVerify模式下，不支持updateSync操作，需要直接使用verifySync传入数据。  
@@ -701,7 +701,7 @@ verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback<boolean>
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 待验签的数据。 |
 | signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签失败。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签失败。 |
 
 **错误码：**
 
@@ -738,7 +738,7 @@ verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback<b
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 | signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签不通过。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签不通过。 |
 
 **错误码：**
 
@@ -878,7 +878,7 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -951,7 +951,7 @@ function verifyByCallback() {
 
 ```
 
-更多示例请参见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+更多示例请参见[签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1026,7 +1026,7 @@ async function verifyByPromise() {
 
 ```
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

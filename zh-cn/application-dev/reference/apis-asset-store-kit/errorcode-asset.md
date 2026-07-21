@@ -55,8 +55,8 @@ The asset already exists.
 
 请先确认写入同别名的关键资产是否符合预期，如果不符合需排查别名是否错误，如果符合则可通过以下任意一种方式处理：
 
-1. 先调用[asset.remove](js-apis-asset.md#assetremove)删除同别名的关键资产，再调用[asset.add](js-apis-asset.md#assetadd)重新写入。
-2. 调用[asset.add](js-apis-asset.md#assetadd)时，指定参数asset.Tag.CONFLICT_RESOLUTION的值为asset.ConflictResolution.OVERWRITE。
+1. 先调用[asset.remove]删除同别名的关键资产，再调用[asset.add]重新写入。
+2. 调用[asset.add]时，指定参数asset.Tag.CONFLICT_RESOLUTION的值为asset.ConflictResolution.OVERWRITE。
 
 ## 24000004 访问被拒绝
 
@@ -243,11 +243,11 @@ The cache exceeds the limit.
 
 **可能原因**
 
-业务调用[asset.preQuery](js-apis-asset.md#assetprequery)预查询后，没有通过[asset.postQuery](js-apis-asset.md#assetpostquery)释放资源。
+业务调用[asset.preQuery]预查询后，没有通过[asset.postQuery]释放资源。
 
 **处理步骤**
 
-业务调用[asset.preQuery](js-apis-asset.md#assetprequery)预查询后，通过[asset.postQuery](js-apis-asset.md#assetpostquery)释放资源。
+业务调用[asset.preQuery]预查询后，通过[asset.postQuery]释放资源。
 
 ## 24000017 该子功能不支持
 
@@ -281,7 +281,7 @@ Parameter verify failed.
 
 **错误信息**
 
-Each value of [Tag.GROUP_ID](js-apis-asset.md#tag) and [Tag.REQUIRE_ATTR_ENCRYPTED](js-apis-asset.md#tag) in the array is not consistent.
+Each value of [Tag.GROUP_ID] and [Tag.REQUIRE_ATTR_ENCRYPTED] in the array is not consistent.
 
 **可能原因**
 

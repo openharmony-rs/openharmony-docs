@@ -13,7 +13,7 @@ import { asset } from '@kit.AssetStoreKit';
 function query(query: AssetMap): Promise<Array<AssetMap>>
 ```
 
-查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery-1)接口，在本函数后调用[asset.postQuery](arkts-assetstore-asset-postquery-f.md#postquery-1)接口，开发步骤请参考[开发指导](docroot://security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。
+查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery-1)接口，在本函数后调用[asset.postQuery](arkts-assetstore-asset-postquery-f.md#postquery-1)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。
 
 如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。
 

@@ -28,7 +28,7 @@ function finish(handle: Uint8Array, callback: AsyncCallback<CMResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | handle | Uint8Array | 是 | 表示操作句柄，需先调用init方法获得。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CMResult&gt; | 是 | 回调函数。当签名成功时，err为null，data为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的outData属性，表示签名数据；否则为错误对象。 |
+| callback | AsyncCallback&lt;CMResult&gt; | 是 | 回调函数。当签名成功时，err为null，data为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的outData属性，表示签名数据；否则为错误对象。 |
 
 **错误码：**
 
@@ -90,7 +90,7 @@ function finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallba
 | --- | --- | --- | --- |
 | handle | Uint8Array | 是 | 表示操作句柄，需先调用init方法获得。 |
 | signature | Uint8Array | 是 | 表示签名数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CMResult&gt; | 是 | 回调函数。当验签成功时，err为null；否则为错误对象。 |
+| callback | AsyncCallback&lt;CMResult&gt; | 是 | 回调函数。当验签成功时，err为null；否则为错误对象。 |
 
 **错误码：**
 

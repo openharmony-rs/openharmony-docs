@@ -28,17 +28,6 @@ Imports a wrapped key. This API uses an asynchronous callback to return the resu
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-huks-function importWrappedKeyItem(
-    keyAlias: string,
-    wrappingKeyAlias: string,
-    options: HuksOptions,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-huks-function importWrappedKeyItem(
-    keyAlias: string,
-    wrappingKeyAlias: string,
-    options: HuksOptions,
-    callback: AsyncCallback<void>
-  ): void-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
@@ -51,7 +40,7 @@ Imports a wrapped key. This API uses an asynchronous callback to return the resu
 | keyAlias | string | 是 | Alias of the wrapped key to import. |
 | wrappingKeyAlias | string | 是 | Alias of the data used to unwrap the key imported. |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Tags required for the import and the wrapped key to import. The algorithm, key purpose, and key length are mandatory. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful, no **err** value is returned; otherwise, an error code is returned. |
+| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful, no **err** value is returned; otherwise, an error code is returned. |
 
 **错误码：**
 

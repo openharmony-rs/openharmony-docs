@@ -173,7 +173,7 @@ validate(param: CertChainValidationParameters, callback: AsyncCallback<CertChain
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | param | [CertChainValidationParameters](arkts-devicecertificate-cert-certchainvalidationparameters-i.md) | 是 | 表示校验X509证书链的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CertChainValidationResult&gt; | 是 | 回调函数。当校验证书链成功时，err为undefined，data为获取到的证书链校验结果；否则为错误对象。 |
+| callback | AsyncCallback&lt;CertChainValidationResult&gt; | 是 | 回调函数。当校验证书链成功时，err为undefined，data为获取到的证书链校验结果；否则为错误对象。 |
 
 **错误码：**
 

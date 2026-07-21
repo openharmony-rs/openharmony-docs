@@ -32,7 +32,7 @@ function deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，应为生成key时传入的别名。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于删除密钥时指定密钥的属性，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md)指定需删除密钥的安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当删除密钥成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当删除密钥成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

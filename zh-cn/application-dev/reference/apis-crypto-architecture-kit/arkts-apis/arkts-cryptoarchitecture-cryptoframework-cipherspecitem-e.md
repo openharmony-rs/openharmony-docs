@@ -1,8 +1,8 @@
 # CipherSpecItem
 
-表示加解密参数的枚举。这些参数支持通过[setCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#setcipherspec-1)接口设置，通过[getCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#getcipherspec-1)接口获取。
+表示加解密参数的枚举。这些参数支持通过[setCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#setcipherspec)接口设置，通过[getCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#getcipherspec)接口获取。
 
-当前只支持RSA算法和SM2算法，从API version 11开始，增加对SM2_MD_NAME_STR参数的支持，详细规格请参考[加解密规格](docroot://security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。
+当前只支持RSA算法和SM2算法，从API version 11开始，增加对SM2_MD_NAME_STR参数的支持，详细规格请参考[加解密规格](../../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。
 
 API version 10-11 系统能力为 SystemCapability.Security.CryptoFramework；从 API version 12 开始为SystemCapability.Security.CryptoFramework.Cipher
 

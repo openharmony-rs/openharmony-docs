@@ -4,8 +4,8 @@
 
 > **说明：**  
 >  
-> [registerPlugin](arkts-dataprotection-dlppermission-dlpconnmanager-c.md#registerplugin-1)接口的参数需要继承该接口，  
-> [connectServer](arkts-dataprotection-dlppermission-dlpconnplugin-i.md#connectserver-1)由SA（System Ability）侧调用，通过callback进行回传参数。
+> [registerPlugin](arkts-dataprotection-dlppermission-dlpconnmanager-c.md#registerplugin)接口的参数需要继承该接口，  
+> [connectServer](arkts-dataprotection-dlppermission-dlpconnplugin-i.md#connectserver)由SA（System Ability）侧调用，通过callback进行回传参数。
 
 **起始版本：** 21
 
@@ -50,7 +50,7 @@ connectServer(requestId: string, requestData: string, callback: Callback<string>
 | --- | --- | --- | --- |
 | requestId | string | 是 | SA（System Ability）侧传递的本次请求的标识。无范围限制。 |
 | requestData | string | 是 | SA（System Ability）侧传递的数据。无范围限制。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 是 | SA（System Ability）侧传递的接口，用于回调。无范围限制。 |
+| callback | Callback&lt;string&gt; | 是 | SA（System Ability）侧传递的接口，用于回调。无范围限制。 |
 
 **错误码：**
 

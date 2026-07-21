@@ -55,7 +55,7 @@ authTag: DataBlob
 
 指明加解密参数authTag，长度为16字节。
 
-采用GCM模式加密时，需从[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)或[doFinalSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinalsync-1)输出的[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)中提取末尾16字节，作为[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)或[initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initsync-1)方法中GcmParamsSpec的authTag。
+采用GCM模式加密时，需从[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)或[doFinalSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinalsync)输出的[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)中提取末尾16字节，作为[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)或[initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initsync)方法中GcmParamsSpec的authTag。
 
 **类型：** DataBlob
 

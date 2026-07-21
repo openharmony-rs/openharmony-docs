@@ -29,7 +29,7 @@ function update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback<vo
 | --- | --- | --- | --- |
 | handle | Uint8Array | 是 | 表示操作句柄，需先调用init方法获得 |
 | data | Uint8Array | 是 | 表示待签名、验签的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当签名、验签的数据更新操作成功时，err为null，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当签名、验签的数据更新操作成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 

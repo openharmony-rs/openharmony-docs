@@ -5,7 +5,7 @@
 > **说明：**  
 >  
 > 以下为Tag类型的全量枚举值，每个接口可传的Tag枚举及对应的Value取值范围不同，详见  
-> [各个场景的开发指导](docroot://security/AssetStoreKit/asset-store-kit-overview.md)。
+> [各个场景的开发指导](../../../security/AssetStoreKit/asset-store-kit-overview.md)。
 
 **起始版本：** 11
 

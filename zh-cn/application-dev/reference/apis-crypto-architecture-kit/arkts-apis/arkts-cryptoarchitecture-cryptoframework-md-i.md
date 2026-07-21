@@ -43,7 +43,7 @@ digest(callback: AsyncCallback<DataBlob>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当摘要计算成功时，err为undefined，data为获取到的摘要结果；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当摘要计算成功时，err为undefined，data为获取到的摘要结果；否则为错误对象。 |
 
 **错误码：**
 
@@ -394,7 +394,7 @@ update(input: DataBlob, callback: AsyncCallback<void>): void
 > **说明：**  
 >  
 > Md算法多次调用update更新的代码示例详见开发指导  
-> [分段摘要算法](docroot://security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
+> [分段摘要算法](../../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
 
 **起始版本：** 9
 
@@ -415,7 +415,7 @@ update(input: DataBlob, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | input | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 传入的消息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当摘要更新成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当摘要更新成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -437,7 +437,7 @@ update(input: DataBlob): Promise<void>
 > **说明：**  
 >  
 > Md算法多次调用update更新的代码示例详见开发指导  
-> [分段摘要算法](docroot://security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
+> [分段摘要算法](../../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
 
 **起始版本：** 9
 
@@ -483,7 +483,7 @@ updateSync(input: DataBlob): void
 > **说明：**  
 >  
 > Md算法多次调用updateSync更新的代码示例详见开发指导  
-> [分段摘要算法](docroot://security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
+> [分段摘要算法](../../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
 
 <br><br>**说明：**<br>建议优先使用异步API{@link update}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
 

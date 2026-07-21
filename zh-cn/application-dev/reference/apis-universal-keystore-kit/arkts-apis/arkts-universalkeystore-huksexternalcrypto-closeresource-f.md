@@ -15,7 +15,7 @@ function closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): 
 
 关闭指定资源ID的资源。使用Promise异步回调。
 
-该接口会回调[onClearUkeyPinAuthState](docroot://reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonclearukeypinauthstate)清理该资源关联的PIN认证状态，以及会回调[onFinishSession](docroot://reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonfinishsession)清理该资源关联的会话handle。
+该接口会回调[onClearUkeyPinAuthState](../../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonclearukeypinauthstate)清理该资源关联的PIN认证状态，以及会回调[onFinishSession](../../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonfinishsession)清理该资源关联的会话handle。
 
 **起始版本：** 26.0.0
 

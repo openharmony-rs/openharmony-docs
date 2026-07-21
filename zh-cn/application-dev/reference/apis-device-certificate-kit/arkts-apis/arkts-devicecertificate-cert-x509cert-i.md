@@ -151,7 +151,7 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;EncodingBlob&gt; | 是 | 回调函数。当获取X509证书序列化数据成功时，err为undefined，data为获取到的X509证书序列化数据；否则为错误对象。 |
+| callback | AsyncCallback&lt;EncodingBlob&gt; | 是 | 回调函数。当获取X509证书序列化数据成功时，err为undefined，data为获取到的X509证书序列化数据；否则为错误对象。 |
 
 **错误码：**
 
@@ -567,7 +567,7 @@ getSerialNumber(): number
 > **说明：**  
 >  
 > 从API version 9开始支持，从API version 10开始废弃，建议使用  
-> [X509Cert.getCertSerialNumber()](arkts-devicecertificate-cert-x509cert-i.md#getcertserialnumber-1)替代。
+> [X509Cert.getCertSerialNumber()](arkts-devicecertificate-cert-x509cert-i.md#getcertserialnumber)替代。
 
 **起始版本：** 9
 
@@ -1000,7 +1000,7 @@ verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | cryptoFramework.PubKey | 是 | 用于验签的公钥对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当验签成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当验签成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

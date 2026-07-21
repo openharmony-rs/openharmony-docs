@@ -20,7 +20,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 allowDownloadIntermediateCa?: boolean
 ```
 
-表示是否允许尝试从网络下载缺失的中间CA证书。true表示允许；false表示不允许。默认值为false。下载地址将从证书AIA扩展中获取，仅支持http，如需使用网络下载，需申请ohos.permission.INTERNET权限。配置方式请参见[声明权限](docroot://security/AccessToken/declare-permissions.md)。
+表示是否允许尝试从网络下载缺失的中间CA证书。true表示允许；false表示不允许。默认值为false。下载地址将从证书AIA扩展中获取，仅支持http，如需使用网络下载，需申请ohos.permission.INTERNET权限。配置方式请参见[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
 **类型：** boolean
 

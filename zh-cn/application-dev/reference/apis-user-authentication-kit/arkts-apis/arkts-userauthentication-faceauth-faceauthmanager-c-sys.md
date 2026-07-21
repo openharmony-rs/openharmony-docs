@@ -49,7 +49,7 @@ let faceAuthManager = new faceAuth.FaceAuthManager();
 setSurfaceId(surfaceId: string): void
 ```
 
-用于在录入人脸时设置人脸预览界面的Surface ID。该接口需要配合[addCredential](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-useridentitymanager-c-sys.md#addcredential-1)使用，通过[getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponentcontroller-c.md#getxcomponentsurfaceid-1)组件的Surface来显示人脸预览画面。
+用于在录入人脸时设置人脸预览界面的Surface ID。该接口需要配合[addCredential]使用，通过[getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponentcontroller-c.md#getxcomponentsurfaceid-1)组件的Surface来显示人脸预览画面。
 
 **起始版本：** 9
 
