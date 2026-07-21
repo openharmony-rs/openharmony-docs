@@ -139,12 +139,12 @@ System error.
 
 1. 系统服务重启、跨进程调用异常等系统处理异常。
 2. 接口参数、应用权限或对象状态校验异常。对于自API版本20起新增的音频API，6800301错误码不包含本语义的信息。接口是否可能涉及此问题，以接口文档声明的错误码说明为准。
-3. 音频焦点抢占失败。
+3. 音频焦点抢占失败。仅有需要激活音频焦点的音频流启动类接口（如[AudioRenderer](arkts-apis-audio-AudioRenderer.md#start8)、[AudioCapturer](arkts-apis-audio-AudioCapturer.md#start8)的`start`接口，以及对应的C API），可能由于音频焦点抢占失败返回此错误码，其他不涉及焦点激活的接口不会因该原因返回此错误码。
 
 **处理步骤**
 
 1. 根据返回错误码`6800301`的接口约束和系统日志，参考下文的常见问题案例，检查调用参数、应用权限和业务状态，排除应用侧异常。
-2. 排除应用侧异常后，尝试重新创建对应业务。避免无条件反复重试。
+2. 排除应用侧异常后，再尝试恢复业务，避免在异常状态下反复重试。
 
 以下为AudioCapturer业务返回错误码`6800301`时的常见问题案例。
 
@@ -159,8 +159,9 @@ System error.
 
 ```text
 <应用进程名>: [CheckAndReportErrorEvent]Invalid sourceType -1!
-<应用进程名>: [CreateCapturer]Check fail
 ```
+
+以上日志格式，从API版本20开始支持。
 
 **可能原因**
 
@@ -182,6 +183,7 @@ System error.
 <应用进程名>: [IsRecordChannelRelatedInfoValid]AudioStream: Invalid source channel layout
 <应用进程名>: [IsRecordChannelRelatedInfoValid]AudioStream: not matched source channel and channel layout
 ```
+以上日志格式，从API版本23开始支持。
 
 **可能原因**
 
@@ -200,15 +202,17 @@ System error.
 
 **判断依据**
 
-使用Mic音频源创建AudioCapturer失败，系统日志提示麦克风未授权。
+使用Mic音频源（即[SourceType](arkts-apis-audio-e.md#sourcetype8)为`SOURCE_TYPE_MIC`、`SOURCE_TYPE_VOICE_RECOGNITION`、`SOURCE_TYPE_VOICE_COMMUNICATION`、`SOURCE_TYPE_VOICE_MESSAGE`或`SOURCE_TYPE_LIVE`）创建AudioCapturer失败，系统日志提示麦克风未授权。各音频源的权限要求请参考[使用AudioCapturer开发音频录制功能](../../media/audio/using-audiocapturer-for-recording.md)。
 
-系统服务进程和应用进程的典型日志如下：
+系统音频服务进程可能出现以下一条或多条日志：
 
 ```text
 audio_server: [VerifyClientPermission]Permission denied [...], [ohos.permission.MICROPHONE]
 audio_server: [CheckRecorderPermission]Check record permission failed: No permission.
 audio_server: [CreateAudioProcessInner]Create audio process failed, no permission
 ```
+
+`CheckRecorderPermission`和`CreateAudioProcessInner`日志从API版本11开始支持；`VerifyClientPermission`日志从API版本12开始支持。
 
 **可能原因**
 
@@ -236,6 +240,8 @@ AudioCapturer创建成功，但调用[start](arkts-apis-audio-AudioCapturer.md#s
 <应用进程名>: [CheckStateAndReportErrorEvent]Start failed. Illegal state 4.
 ```
 
+以上日志格式，从API版本18开始支持。
+
 日志中的状态值为`2`时，表示AudioCapturer处于`STATE_RUNNING`状态，通常为重复调用`start()`；状态值为`4`时，表示AudioCapturer处于`STATE_RELEASED`状态，通常为实例释放后继续调用`start()`。
 
 **可能原因**
@@ -260,31 +266,32 @@ AudioCapturer创建成功，但调用[start](arkts-apis-audio-AudioCapturer.md#s
 <应用进程名>: [Start]ActivateAudioInterrupt Failed
 ```
 
+以上日志格式，从API版本10开始支持。
+
 **可能原因**
 
 设备上同时存在其他录音、通话等音频业务，当前流启动被焦点策略拦截。
 
 **处理步骤**
 
-1. 参考[录音并发策略说明](../../media/audio/audio-recording-concurrency.md)，确认当前录音场景是否允许与其他音频业务并发。
-2. 通过[查询和监听其他应用录制状态](../../media/audio/audio-recording-stream-management.md)确认设备上是否存在其他录音流。
-3. 根据[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)检查当前业务的音频焦点处理逻辑。
+参考[录音并发策略说明](../../media/audio/audio-recording-concurrency.md)，确认当前录音场景是否允许与其他音频业务并发，并根据并发策略调整业务启动时机或录音流类型。
 
 ### 调用start启动AudioCapturer失败-底层录音流启动异常
 
 **判断依据**
 
-`audio_server`进程和应用进程依次提示底层录音流启动失败：
+若根据6300801系统异常处理下的音频流类型异常，麦克风未授权，AudioCapturer状态异常，激活音频焦点失败等案例进行排查后，应用进程仍出现以下一条或多条日志，说明可能发生系统侧异常：
 
 ```text
-audio_server: [StartInner]Start stream failed, reason: ...
 <应用进程名>: [StartAudioStream]Start call server failed: ...
 <应用进程名>: [StartImpl]Start audio stream failed
 ```
 
+`StartAudioStream`日志从API版本11开始支持；`StartImpl`日志从API版本12开始支持。
+
 **可能原因**
 
-底层录音流、音频服务或输入设备在启动阶段发生异常。
+底层录音流、音频服务或输入设备在启动阶段发生系统异常。
 
 **处理步骤**
 
