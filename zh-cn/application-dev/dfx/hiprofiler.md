@@ -1174,7 +1174,7 @@ CONFIG
 从API版本26.1.0开始支持抓取指定进程三合一维测日志，具体包含调用栈trace、堆快照rawheap、map映射文件，可配合[RES_ARK_GLOBAL_HANDLE](#抓取指定进程globalhandle对象的调用栈)和[RES_ARK_LOCAL_HANDLE](#抓取指定进程localhandle对象调用栈)使用。
 > **说明：**
 >
-> 抓取三合一维测日志，须在[native hook插件](#native-hook插件)配置中增加[restrace_tag参数](#restrace_tag参数介绍)RES_COMPOSITE_HEAP。
+> 抓取三合一维测日志，须在[native hook插件](#native-hook插件)配置中增加[restrace_tag参数](#restrace_tag参数介绍)为RES_COMPOSITE_HEAP。
 >
 > 三合一维测日志落盘在命令行-o指定的/data/local/tmp/目录下，是以hiprofiler_data_{timestamp}.zip命名的压缩文件。日志文件仅保留最新记录。
 >
