@@ -755,7 +755,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数无效。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
 
 ### OH_JSVM_CreateCodeCache()
 
@@ -2406,7 +2406,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env,JSVM_Value valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
 
 ### OH_JSVM_GetValueBigintUint64()
 
@@ -2434,7 +2434,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env,JSVM_Value val
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
 
 ### OH_JSVM_GetValueBigintWords()
 
@@ -2463,7 +2463,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env,JSVM_Value valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
 
 ### OH_JSVM_GetValueExternal()
 
@@ -4112,7 +4112,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env,JSVM_Deferred* deferr
 | 参数项 | 描述 |
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md)* deferred | 一个新创建的延迟对象，后续可以传递给OH_JSVM_ResolveDeferred()或OH_JSVM_RejectDeferred()以解析resp。或拒绝相关的Promise。 |
+| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md)* deferred | 一个新创建的延迟对象，后续可以传递给OH_JSVM_ResolveDeferred()或OH_JSVM_RejectDeferred()以解析或拒绝相关的Promise。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* promise | 与延迟对象关联的JavaScript Promise。 |
 
 **返回：**
@@ -5198,7 +5198,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env,JSVM_Value value,JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成BitInt。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成BigInt。 |
 
 ### OH_JSVM_IsRegExp()
 
@@ -6023,13 +6023,13 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* stream
 | 参数项 | 描述 |
 | -- | -- |
 | [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | 输出流回调函数，实现接收 Trace 数据功能。 |
-| void* streamData | 的输出流指针，用于辅助输出流回调函数进行数据输出。 |
+| void* streamData | 输出流指针，用于辅助输出流回调函数进行数据输出。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。 。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) stream 或者 streamData 为空。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) stream 或者 streamData 为空。 |
 
 ### OH_JSVM_AddHandlerForGC()
 
@@ -6213,7 +6213,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* 
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                                         | 调用JSVM-API的环境。 |
 | const char* utf8name                                                              | JavaScript构造函数的名称，建议在包装C++类时使用C++类名。 |
 | size_t length                                                                     | utf8name的长度（以字节为单位）或JSVM_AUTO_LENGTH（如果以 null 结尾）。 |
-| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor                     | 用于创建类的构造函数的回调函数。包装C++类时，此方法必须是符合JSVM_Callback。callback签名的静态成员。不能使用C++类构造函数。详情请参考[JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md)。 |
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor                     | 用于创建类的构造函数的回调函数。包装C++类时，此方法必须是符合JSVM_Callback签名的静态成员。不能使用C++类构造函数。详情请参考[JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md)。 |
 | size_t propertyCount                                                              | properties数组参数中的项目数量。 |
 | const [JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | 类的属性描述符，用于定义类的属性和方法。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) parentClass             | 当前所定义的class的父类class。 |
@@ -6496,7 +6496,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)* result | 需要进行释放的后台反序列化结果。 |
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md) result | 需要进行释放的后台反序列化结果。 |
 
 **返回：**
 
