@@ -8005,7 +8005,7 @@ struct Index {
 
 setAudioMuted(mute: boolean): void
 
-设置网页静音。
+设置网页静音。典型使用场景包括：应用需要控制网页音量（如提供静音开关）、后台播放时需要静音等。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -12392,6 +12392,10 @@ struct WebComponent {
   aboutToAppear(): void {
     let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
     atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
+      if (err) {
+        console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+        return;
+      }
       console.info('data:' + JSON.stringify(data));
       console.info('data permissions:' + data.permissions);
       console.info('data authResults:' + data.authResults);
@@ -12473,6 +12477,10 @@ struct WebComponent {
     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
     atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'],
       (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (err) {
+          console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+          return;
+        }
         if (data) {
           console.info('data:' + JSON.stringify(data));
           console.info('data permissions:' + data.permissions);
@@ -18210,6 +18218,10 @@ struct WebComponent {
   aboutToAppear(): void {
     let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
     atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+      if (err) {
+        console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+        return;
+      }
       console.info('data:' + JSON.stringify(data));
       console.info('data permissions:' + data.permissions);
       console.info('data authResults:' + data.authResults);
@@ -18293,6 +18305,10 @@ struct WebComponent {
     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
     atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'],
       (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (err) {
+          console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+          return;
+        }
         if (data) {
           console.info('data:' + JSON.stringify(data));
           console.info('data permissions:' + data.permissions);
@@ -18398,6 +18414,12 @@ struct WebComponent {
 pauseMicrophone(): void
 
 暂停当前网页麦克风捕获。
+
+> **说明：**
+>
+> 与 resumeMicrophone 和 stopMicrophone 的区别：
+>
+> pauseMicrophone 仅暂停麦克风捕获，可通过 resumeMicrophone 恢复；stopMicrophone 会停止捕获并释放资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
