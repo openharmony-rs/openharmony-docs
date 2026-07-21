@@ -36,7 +36,7 @@
     }
     ```
 
-- 卡片页面：卡片具备不同的状态选择，在不同的状态下需要刷新不同的内容，因此在状态发生变化时通过postCardAction通知EntryFormAbility。
+- 卡片页面：卡片具备不同的状态选择，在不同的状态下需要刷新不同的内容，因此在状态发生变化时通过postCardAction通知UpdateByStatusFormAbility。
 
     <!-- @[widget_update_by_status_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets) --> 
     
