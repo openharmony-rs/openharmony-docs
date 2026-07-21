@@ -236,7 +236,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | ACCESSIBILITY_ELEMENT_NOT_EXIST    |  1 | 表示执行操作的节点不存在。 |
 | CANNOT_MODIFY_ROOT_NODE            |  2 | 表示当前根节点不允许修改。 |
 | ACCESSIBILITY_PROPERTY_IS_EMPTY    |  3 | 表示无障碍节点属性为空。   |
-| ALLOCATE_ID_FAILED                 |  4 | 表示分配虚拟节点失败。     |
+| ALLOCATE_ID_FAILED                 |  4 | 表示分配虚拟节点ID失败。   |
 | VIRTUAL_NODE_PARAMETER_IS_EMPTY    |  5 | 表示新增虚拟节点数组为空。 |
 | INTERNAL_ERROR                     |  6 | 表示系统异常。            |
 | VIRTUAL_NODE_NOT_SUPPORTED         |  7 | 表示不支持虚拟节点操作。   |

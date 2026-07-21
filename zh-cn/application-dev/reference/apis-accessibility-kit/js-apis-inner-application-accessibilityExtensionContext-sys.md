@@ -1055,7 +1055,7 @@ addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&l
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | elementId | number | 是 | 表示新增虚拟节点树的父节点ID。 |
 | windowId | number | 是 | 表示新增虚拟节点树的父节点窗口ID。 |
-| nodes | Array<[AccessibilityVirtualNode](#accessibilityvirtualnode)> | 是 | 新增虚拟节点数组。 数组中的虚拟节点按parentId、childNodeIds父子关系构建成一颗树。|
+| nodes | Array<[AccessibilityVirtualNode](#accessibilityvirtualnode)> | 是 | 新增虚拟节点数组。 数组中的虚拟节点按parentId、childNodeIds父子关系构建成一棵树。|
 
 **返回值：**
 
@@ -1144,8 +1144,8 @@ removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| elementId | number | 是 | 表示删除当前节点ID下的虚拟节点树。 |
-| windowId  | number | 是 | 表示节点所在的窗口ID。 |
+| elementId | number | 是 | 表示待删除的虚拟节点树所在的节点ID。 |
+| windowId  | number | 是 | 表示待删除的虚拟节点树所在的窗口ID。 |
 
 **返回值：**
 
