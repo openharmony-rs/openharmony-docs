@@ -85,7 +85,7 @@
 | [OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_pushinputbuffer) | 通知视频解码器已对index对应的缓冲区完成输入数据的填充。<br> 输入回调将报告可用的输入缓冲区和相应的index值，请参阅{@OH_AVCodecOnNeedInputBuffer}。一旦具有指定index的缓冲区提交到视频解码器，则无法再次访问缓冲区，直到再次收到输入回调，报告具有相同index的缓冲区可用。此外，如果所使用的编码格式或解码器能力说明要求输入编解码特定数据，则需要在开始时向解码器输入该数据，以初始化解码器的解码过程，如H.264格式的PPS/SPS数据。<br> 开发者可以使用该接口把解码需要的参数集如H.264格式的PPS/SPS传递给解码器，该参数集可以单独送入解码器也可以和要解码的数据一起传入。 |
 | [OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_renderoutputbuffer) | 将index对应的输出缓冲返回给解码器，并通知解码器完成在输出surface上渲染其中的解码数据。<br> 如果之前没有配置输出surface，则调用此接口仅将指定index对应的输出缓冲区返回给解码器。 |
 | [OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_t index, int64_t renderTimestampNs)](#oh_videodecoder_renderoutputbufferattime) | 将index对应的输出缓冲返回给解码器，并通知解码器在开发者指定的时间内完成在输出surface上渲染。 |
-| [OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_freeoutputbuffer) | 将处理后的输出缓冲区返回到解码器。用户使用完输出缓存区后需要立即调用此接口释放输出缓存区，否则会阻塞解码流程。 |
+| [OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_freeoutputbuffer) | 将处理后的输出缓冲区返回到解码器。用户使用完需要及时调用此接口释放输出缓冲区，否则会阻塞解码流程。 |
 | [OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)](#oh_videodecoder_isvalid) | 在解码器实例存在的情况下，检查当前解码器服务是否有效。 |
 | [OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession, bool secureVideoPath)](#oh_videodecoder_setdecryptionconfig) | 设置解密配置。在调用OH_VideoDecoder_Prepare接口之前，可选择调用此接口。 |
 | [OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)](#oh_videodecoder_queryinputbuffer) | 查询下一个可用输入缓冲区的索引。<br> 调用此接口后需要接着调用[OH_VideoDecoder_GetInputBuffer](#oh_videodecoder_getinputbuffer)接口获取缓冲区实例，并通过[OH_VideoDecoder_PushInputBuffer](#oh_videodecoder_pushinputbuffer)接口传递给解码器。<br> 需要注意的是，上述操作仅在同步模式下支持。 |
@@ -667,7 +667,7 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 
 **描述**
 
-将处理后的输出缓冲区返回到解码器。用户使用完需要立即调用此接口释放输出缓冲区，否则会阻塞解码流程。<br>详情请参见：[视频解码](../../media/avcodec/video-decoding.md) “Surface模式的步骤-12或Buffer模式步骤-10”。
+将处理后的输出缓冲区返回到解码器。用户使用完需要及时调用此接口释放输出缓冲区，否则会阻塞解码流程。<br>详情请参见：[视频解码](../../media/avcodec/video-decoding.md) “Surface模式的步骤-12或Buffer模式步骤-10”。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
