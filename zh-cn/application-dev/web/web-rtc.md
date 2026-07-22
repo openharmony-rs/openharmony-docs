@@ -345,7 +345,9 @@ ArkTS-Sta示例：
 </html>
 ```
 
-方案二：可以直接通过facingMode属性选择后置摄像头
+方案二：可以直接通过facingMode属性选择后置摄像头。
+
+示例如下：
 
 ```html
 <!-- index.html -->
