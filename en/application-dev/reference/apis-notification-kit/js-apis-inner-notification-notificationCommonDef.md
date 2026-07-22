@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:14.030Z pushedAt=2026-06-30T10:57:36.997Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:08:26.410Z pushedAt=2026-07-21T09:31:45.946Z -->
 
 The **NotificationCommonDef** module defines the common data structures used in notification-related APIs.
 
@@ -22,8 +22,8 @@ Describes the **BundleOption** information, that is, the bundle information of a
 
 | Name  | Type  | Read Only| Optional| Description  |
 | ------ | ------ | ----| -- |  ------ |
-| bundle | string | No | No| Bundle name of the application.|
-| uid    | number | No | Yes| UID of the application, which is obtained from [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). The default value is **0**. This parameter is mandatory in application clone<!--Del--> or telematics device<!--DelEnd--> scenarios.|
+| bundle | string | No  | No | Bundle name of the application. |
+| uid    | number | No  | Yes | UID of the application, which is obtained from [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). The default value is **0**. This parameter is mandatory in application clone<!--Del--> or telematics device<!--DelEnd--> scenarios.|
 
 ## GrantedBundleInfo<sup>22+</sup>
 
@@ -33,9 +33,9 @@ Describes the authorized bundle information.
 
 | Name  | Type  | Read Only| Optional| Description  |
 | ------ | ------ | ----| -- |  ------ |
-| bundleName | string | No | No| Bundle name of the application.|
-| appIndex   | number | Yes | No| Index of an application clone, which takes effect only for application clones. The value is obtained from the **appIndex** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).|
-| appName    | string | Yes | Yes| Application name, which is obtained from the **label** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).|
+| bundleName | string | No | No | Bundle name of the application. |
+| appIndex   | number | Yes | No | Index of an application clone, which takes effect only for application clones. The value is obtained from the **appIndex** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). |
+| appName    | string | Yes | Yes | Application name, which is obtained from the **label** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). |
 
 ## UserGrantSetting
 
