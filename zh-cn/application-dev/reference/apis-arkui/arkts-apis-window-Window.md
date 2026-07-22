@@ -6447,7 +6447,7 @@ try {
 
 on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): void
 
-开启屏幕截屏事件类型的监听。
+开启屏幕截图事件类型的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6461,7 +6461,7 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即屏幕截屏的事件类型，对控制中心截屏、快捷键截屏以及滚动截屏生效。 |
+| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即屏幕截图的事件类型，对控制中心截屏、快捷键截屏以及滚动截屏生效。 |
 | callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 是   | 回调函数。返回触发的截屏事件类型。                 |
 
 **错误码：**
@@ -6533,7 +6533,7 @@ try {
 
 off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;): void
 
-关闭屏幕截屏事件类型的监听。
+关闭屏幕截图事件类型的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6547,8 +6547,8 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即屏幕截屏的事件类型。 |
-| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 否   | 回调函数。返回触发的截屏事件类型。若传入参数，则关闭该监听。若未传入参数，则关闭所有屏幕截屏事件的监听。                 |
+| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即屏幕截图的事件类型。 |
+| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 否   | 回调函数。返回触发的截屏事件类型。若传入参数，则关闭该监听。若未传入参数，则关闭所有屏幕截图事件的监听。                 |
 
 **错误码：**
 
@@ -7338,7 +7338,7 @@ try {
 
 on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): void
 
-开启窗口可见性状态变化事件的监听，相较于[on('windowVisibilityChange')](#onwindowvisibilitychange11)接口，此接口回调函数参数可以判断**部分可见**状态。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
+开启窗口可见性状态变化事件的监听，相较于[on('windowVisibilityChange')](#onwindowvisibilitychange11)接口，此接口回调函数参数可以判断部分可见状态。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
 - 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
 - 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
