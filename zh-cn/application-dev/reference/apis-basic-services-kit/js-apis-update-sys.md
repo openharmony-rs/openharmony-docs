@@ -2792,6 +2792,7 @@ factoryReset(callback: AsyncCallback\<void>): void
 | --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
+| 203      | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error.               |
 
 **示例**：
@@ -2855,6 +2856,7 @@ factoryReset(): Promise\<void>
 | --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
+| 203      | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error.               |
 
 **示例**：
@@ -2917,6 +2919,7 @@ forceFactoryReset(): Promise\<void>
 | --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
+| 203      | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error.               |
 
 **示例**：
@@ -2991,6 +2994,7 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 | --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
+| 203      | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error.               |
 
 **示例**：
