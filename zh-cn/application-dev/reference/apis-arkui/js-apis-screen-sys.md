@@ -3076,21 +3076,21 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 ```
 
 ## ScreenType
- 	 
+
 屏幕类型的枚举。
- 	 
+
 **模型约束：** 此字段仅可在Stage模型下使用。
- 	
+
 **系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
 
- 	 
+
 
 **系统能力：** SystemCapability.Window.SessionManager
- 	 
+
 | 名称               | 值   | 说明                             |
 | ------------------ | ---- | -------------------------------- |
 | BUILT_IN           | 0    | 表示物理集成到设备中的内置屏幕。 |
