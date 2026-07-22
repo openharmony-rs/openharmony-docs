@@ -1,4 +1,4 @@
-# 单元测试框架使用指导 
+# 单元测试框架使用指导
 
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
@@ -24,9 +24,9 @@
 |  [数据驱动能力](#数据驱动) | 提供数据驱动能力，支持复用同一个测试脚本，使用不同输入数据驱动测试脚本执行。 |
 |  [专项能力](#命令行执行测试脚本) | 支持测试套与用例筛选、随机执行、压力测试、超时设置、遇错即停模式和跳过执行模式。 |
 
-  **图1.单元测试框架主要功能**
+**图1.单元测试框架主要功能**
 
-  ![](figures/UnitTest.PNG)
+![](figures/UnitTest.PNG)
 
 
 ## 单元测试框架发布方式
@@ -58,6 +58,8 @@
 3. 断言接口调用，设置测试代码中的检查点，用于检查用例是否符合预期。
 
 下面提供一个简单示例，测试场景：启动被测试页面，检查设备当前显示的页面是否为预期启动的页面。
+
+**ArkTS-Dyn示例：**
 
 <!-- @[basic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
 
@@ -95,6 +97,40 @@ export default function abilityTest() {
   })
 }
 ```
+**ArkTS-Sta示例：**
+ 1. 示例中的sleep函数参数[sleep](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/Util.test.ets)
+<!-- @[basic_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
+
+``` TypeScript
+import { describe, expect, it, TestType, Level, Size } from '../../../../hypium/index';
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { sleep } from '../Util.test'
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+
+export default function abilityTest(): void {
+  describe('ActsAbilityTest', (): void => {
+    // 测试套名称为ActsAbilityTest
+    // 可根据此处设置的用例类型、用例规模、用例级别进行用例筛选
+    it('testExample', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      // 测试用例名称为testExample
+      const bundleName: string = abilityDelegatorRegistry.getArguments().bundleName;
+      // 启动被测试Ability
+      const want: Want = {
+        bundleName: bundleName,
+        abilityName: 'EntryAbility'
+      }
+      await delegator.startAbility(want);
+      await sleep(1000);
+      // 获取设备上前台显示的页面并断言检查
+      const ability: UIAbility = await delegator.getCurrentTopAbility();
+      expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
+
+    })
+  })
+}
+```
+
 ### DevEco Studio执行测试脚本
 
 连接目标测试设备（如手机），在DevEco Studio页面点击对应按钮执行测试脚本，当前支持以下四种方式：
@@ -156,7 +192,7 @@ export default function abilityTest() {
 >
 > 下文参数配置和命令示例均基于Stage模型。
 >
-> 执行命令参数需基于@ohos/hypium框架发布版本，且测试应用包需集成该版本，否则命令参数无法响应，具体配置方式参考[发布方式](#单元测试框架发布方式)。  
+> 执行命令参数需基于@ohos/hypium框架发布版本，且测试应用包需集成该版本，否则命令参数无法响应，具体配置方式参考[发布方式](#单元测试框架发布方式)。
 
 
 **示例代码1**：执行所有测试用例
@@ -246,16 +282,16 @@ export default function abilityTest() {
     OHOS_REPORT_STATUS_CODE: 0
     OHOS_REPORT_STATUS: consuming=4
     ```
-    | 日志输出字段               | 日志输出字段含义       |
-    | -------           | -------------------------|
-    | OHOS_REPORT_SUM    | 当前执行的测试套中用例总数。 |
-    | OHOS_REPORT_STATUS: class | 当前执行用例所属测试套名称。|
-    | OHOS_REPORT_STATUS: id | 当前用例执行语言，默认JS。  |
-    | OHOS_REPORT_STATUS: numtests | 当前测试包中测试用例总数。|
-    | OHOS_REPORT_STATUS: stream | 当前用例发生错误时，记录错误信息。 |
-    | OHOS_REPORT_STATUS: test| 当前用例执行的it name。 |
-    | OHOS_REPORT_STATUS_CODE | 当前用例执行状态。1表示用例开始执行，0表示用例执行通过，-1表示用例执行报错，-2表示用例执行失败。|
-    | OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
+   | 日志输出字段               | 日志输出字段含义       |
+       | -------           | -------------------------|
+   | OHOS_REPORT_SUM    | 当前执行的测试套中用例总数。 |
+   | OHOS_REPORT_STATUS: class | 当前执行用例所属测试套名称。|
+   | OHOS_REPORT_STATUS: id | 当前用例执行语言，默认JS。  |
+   | OHOS_REPORT_STATUS: numtests | 当前测试包中测试用例总数。|
+   | OHOS_REPORT_STATUS: stream | 当前用例发生错误时，记录错误信息。 |
+   | OHOS_REPORT_STATUS: test| 当前用例执行的it name。 |
+   | OHOS_REPORT_STATUS_CODE | 当前用例执行状态。1表示用例开始执行，0表示用例执行通过，-1表示用例执行报错，-2表示用例执行失败。|
+   | OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
 2. 命令行执行完成后，框架会打印如下相关日志信息。
     ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
@@ -264,18 +300,18 @@ export default function abilityTest() {
     OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
     OHOS_REPORT_STATUS: taskconsuming=16029
     ```
-    | 日志输出字段               | 日志输出字段含义           |
-    | ------------------| -------------------------|
-    | run    | 当前测试包用例总数。 |
-    | Failure | 当前测试失败用例数量。 |
-    | Error | 当前执行用例发生错误用例数量。  |
-    | Pass | 当前执行用例通过用例数量。|
-    | Ignore | 当前未执行用例数量。 |
-    | taskconsuming| 执行当前测试用例总耗时（ms）。 |
+   | 日志输出字段               | 日志输出字段含义           |
+       | ------------------| -------------------------|
+   | run    | 当前测试包用例总数。 |
+   | Failure | 当前测试失败用例数量。 |
+   | Error | 当前执行用例发生错误用例数量。  |
+   | Pass | 当前执行用例通过用例数量。|
+   | Ignore | 当前未执行用例数量。 |
+   | taskconsuming| 执行当前测试用例总耗时（ms）。 |
 
-    > **说明：**
-    >
-    > 当按照遇错即停方式执行时，用例发生错误时，注意查看Ignore字段以及错误中断时的提示信息。
+   > **说明：**
+   >
+   > 当按照遇错即停方式执行时，用例发生错误时，注意查看Ignore字段以及错误中断时的提示信息。
 
 ## 单元测试框架能力使用说明
 ### 基础流程能力
@@ -297,6 +333,8 @@ export default function abilityTest() {
 |  xit                | 定义一条跳过的测试用例。 <br>**说明**：从@ohos/hypium 1.0.17版本开始支持。                    |
 
 **示例代码1**：beforeAll/beforeEach/afterEach/afterAll使用示例
+
+**ArkTS-Dyn示例：**
 
 <!-- @[order1_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) -->
 
@@ -345,7 +383,57 @@ export default function exampleTest() {
   })
 }
 ```
+
+**ArkTS-Sta示例：**
+
+<!-- @[order1_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) -->
+
+``` TypeScript
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '../../../../hypium/index';
+export default function exampleTest(): void {
+
+  describe('order1_sample', (): void => {
+    let testNumA: number = 1;
+    let testNumB: number = 1;
+
+    beforeAll(() => {
+      testNumA++;
+    })
+
+    beforeEach(() => {
+      testNumA++;
+      testNumB++;
+    })
+
+    afterEach(() => {
+      testNumA++;
+    })
+
+    afterAll(() => {
+      let expectValue: number = 5;
+      expect(testNumA).assertEqual(expectValue);
+    })
+
+    it('testExampleA', Level.LEVEL1, () => {
+      let expectA: number = 3;
+      let expectB: number = 2;
+      expect(testNumA).assertEqual(expectA);
+      expect(testNumB).assertEqual(expectB);
+    })
+
+    it('testExampleB', Level.LEVEL1, () => {
+      let expectA: number = 5;
+      let expectB: number = 3;
+      expect(testNumA).assertEqual(expectA);
+      expect(testNumB).assertEqual(expectB);
+    })
+  })
+}
+```
+
 **示例代码2**：beforeItSpecified/afterItSpecified使用示例，从1.0.15版本开始支持
+
+**ArkTS-Dyn示例：**
 
 <!-- @[order2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) -->
 
@@ -379,7 +467,41 @@ export default function exampleTest() {
   })
 }
 ```
+
+**ArkTS-Sta示例：**
+<!-- @[order2_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) -->
+
+``` TypeScript
+import { afterItSpecified, beforeItSpecified, describe, expect, it, Level } from '../../../../hypium/index';
+export default function exampleTest(): void {
+
+  describe('order2_sample', (): void => {
+    let testNumA: number = 1;
+    let testNumB: number = 1;
+
+    beforeItSpecified(['testExampleB'], (): void => {
+      testNumB++;
+    })
+    afterItSpecified(['testExampleA'], (): void => {
+      testNumA++;
+    })
+
+    it('testExampleA', Level.LEVEL1, async (): Promise<void> => {
+      expect(testNumA).assertEqual(1);
+      expect(testNumB).assertEqual(1);
+    })
+
+    it('testExampleB', Level.LEVEL1, async (): Promise<void> => {
+      expect(testNumA).assertEqual(2);
+      expect(testNumB).assertEqual(2);
+    })
+  })
+}
+```
+
 **示例代码3**：xit使用示例，从1.0.17版本开始支持
+
+**ArkTS-Dyn示例：**
 
 <!-- @[order3_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) -->
 
@@ -400,7 +522,30 @@ export default function describeExampleTest() {
 }
 ```
 
+**ArkTS-Sta示例：**
+
+<!-- @[order3_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) -->
+
+``` TypeScript
+import { describe, it, Level, xit } from '../../../../hypium/index';
+export default function describeExampleTest(): void {
+
+  describe('order3_sample', (): void => {
+    xit('testExampleA', Level.LEVEL1, async (done: () => void) => {
+      done();
+    })
+
+    it('testExampleB', Level.LEVEL1, async (done: () => void) => {
+      done();
+    })
+  })
+}
+```
+
+
 **示例代码4**：beforeEachIt/afterEachIt使用示例，从1.0.25版本开始支持
+
+**ArkTS-Dyn示例：**
 
 <!-- @[order4_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
 
@@ -409,6 +554,45 @@ import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect 
 let str = "";
 export default function test() {
   describe('test0', () => {
+    beforeEach(async () => {
+      str += "A"
+    })
+    beforeEachIt(async () => {
+      str += "B"
+    })
+    afterEach(async () => {
+      str += "C"
+    })
+    afterEachIt(async () => {
+      str += "D"
+    })
+    it('test0000', 0, () => {
+      expect(str).assertEqual("BA");
+    })
+    describe('test1', () => {
+      beforeEach(async () => {
+        str += "E"
+      })
+      beforeEachIt(async () => {
+        str += "F"
+      })
+      it('test1111', 0, async () => {
+        expect(str).assertEqual("BACDBFE");
+      })
+    })
+  })
+}
+```
+
+**ArkTS-Sta示例：**
+
+<!-- @[order4_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
+
+``` TypeScript
+import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect } from '../../../../hypium/index';
+let str: string = "";
+export default function test(): void {
+  describe('test0', (): void => {
     beforeEach(async () => {
       str += "A"
     })
@@ -471,6 +655,8 @@ export default function test() {
 |  not                | 断言取反，支持上述所有断言功能。<br>**说明**：从@ohos/hypium 1.0.4版本开始支持。           |
 
 **示例代码**：
+
+**ArkTS-Dyn示例：**
 
 <!-- @[assert_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets) -->
 
@@ -640,6 +826,178 @@ interface PromiseInfo {
   res: string;
 }
 ```
+
+**ArkTS-Sta示例：**
+1. 示例中的promiseReject函数参数[promiseReject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/Util.test.ets)
+<!-- @[assert_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/assertExampleTest/AssertExample.test.ets) -->
+
+``` TypeScript
+import { describe, expect, it, Level } from '../../../../hypium/index';
+import { promiseReject } from '../Util.test'
+
+
+export default function exampleTest(): void {
+  describe('ExampleTest', (): void => {
+    it('assertCloseTest', Level.LEVEL1, () => {
+      let a: int = 100;
+      let b: double = 0.1;
+      let c: int = 99;
+      expect(a).assertClose(c, b);
+    })
+
+    it('assertContain_1', Level.LEVEL1, () => {
+      let a: string = 'abc';
+      expect(a).assertContain('b');
+    })
+
+    it('assertContain_2', Level.LEVEL1, () => {
+      let a: int[] = [1, 2, 3];
+      expect(a).assertContain(1);
+    })
+
+    it('assertEqualTest', Level.LEVEL1, () => {
+      expect(3).assertEqual(3);
+    })
+
+    it('assertFailTest', Level.LEVEL1, () => {
+      expect().not().assertFail(); // 用例失败
+    })
+
+    it('assertFalseTest', Level.LEVEL1, () => {
+      expect(false).assertFalse();
+    })
+
+    it('assertTrueTest', Level.LEVEL1, () => {
+      expect(true).assertTrue();
+    })
+
+    it('assertInstanceOfTest', Level.LEVEL1, () => {
+      let a: string = 'strTest';
+      expect(a).assertInstanceOf('String');
+    })
+
+    it('assertLargerTest', Level.LEVEL1, () => {
+      expect(3).assertLarger(2);
+    })
+
+    it('assertLessTest', Level.LEVEL1, () => {
+      expect(2).assertLess(3);
+    })
+
+    it('assertNullTest', Level.LEVEL1, () => {
+      expect(null).assertNull();
+    })
+
+    it('assertThrowErrorTest', Level.LEVEL1, () => {
+      expect(() => {
+        throw new Error('test');
+      }).assertThrowError('Error', 'test');
+    })
+
+    it('assertUndefinedTest', Level.LEVEL1, () => {
+      expect(undefined).assertUndefined();
+    })
+
+    it('assertLargerOrEqualTest', Level.LEVEL1, () => {
+      expect(3).assertLargerOrEqual(3);
+    })
+
+    it('assertLessOrEqualTest', Level.LEVEL1, () => {
+      expect(3).assertLessOrEqual(3);
+    })
+
+    it('assertNaNTest', Level.LEVEL1, () => {
+      expect(Number.NaN).assertNaN(); // true
+    })
+
+    it('assertNegUnlimitedTest', Level.LEVEL1, () => {
+      expect(Number.NEGATIVE_INFINITY).assertNegUnlimited(); // true
+    })
+
+    it('assertPosUnlimitedTest', Level.LEVEL1, () => {
+      expect(Number.POSITIVE_INFINITY).assertPosUnlimited(); // true
+    })
+
+    it('deepEquals_null_true', Level.LEVEL1, () => {
+      expect(null).assertDeepEquals(null);
+    })
+
+    it('deepEquals_array_not_have_true', Level.LEVEL1, () => {
+      const a: Array<int> = [];
+      const b: Array<int> = [];
+      expect(a).assertDeepEquals(b);
+    })
+
+    it('deepEquals_map_equal_length_success', Level.LEVEL1, () => {
+      const a: Map<string, int> = new Map<string, int>();
+      const b: Map<string, int> = new Map<string, int>();
+      a.set('1', 100);
+      a.set('2', 200);
+      b.set('1', 100);
+      b.set('2', 200);
+      expect(a).assertDeepEquals(b);
+    })
+
+    it('deepEquals_obj_success_1', Level.LEVEL1, () => {
+      const a: SampleTest = { x: 1 };
+      const b: SampleTest = { x: 1 };
+      expect(a).assertDeepEquals(b);
+    })
+
+    it('deepEquals_regExp_success_0', Level.LEVEL1, () => {
+      const a: RegExp = new RegExp('/test/');
+      const b: RegExp = new RegExp('/test/');
+      expect(a).assertDeepEquals(b);
+    })
+
+    it('assertPromiseIsPendingTest', Level.LEVEL1, async () => {
+      let p: Promise<void> = new Promise<void>(() => {
+      });
+      await expect(p).assertPromiseIsPending();
+    })
+
+    it('assertPromiseIsRejectedTest', Level.LEVEL1, async () => {
+      let p: Promise<Error> = promiseReject('no');
+      await expect(p).assertPromiseIsRejected();
+    })
+
+    it('assertPromiseIsRejectedWithTest', Level.LEVEL1, async () => {
+      let p: Promise<Error> = promiseReject('reject value')
+      await expect(p).assertPromiseIsRejectedWith('reject value');
+    })
+
+    it('assertPromiseIsRejectedWithErrorTest', Level.LEVEL1, async () => {
+      let p1: Promise<TypeError> = Promise.reject(new TypeError('number'));
+      await expect(p1).assertPromiseIsRejectedWithError('TypeError', 'number');
+    })
+
+    it('assertPromiseIsResolvedTest', Level.LEVEL1, async () => {
+      let info: PromiseInfo = { res: 'result value' };
+      let p: Promise<PromiseInfo> = Promise.resolve(info);
+      await expect(p).assertPromiseIsResolved();
+    })
+
+    it('assertPromiseIsResolvedWithTest', Level.LEVEL1, async () => {
+      let p: Promise<string> = Promise.resolve('result value');
+      await expect(p).assertPromiseIsResolvedWith('result value');
+    })
+
+    it('test_message', Level.LEVEL1, () => {
+      expect(1).not().message('1 is not equal 2!').assertEqual(2); // fail
+    })
+  })
+}
+
+interface SampleTest {
+  x: int;
+}
+
+interface PromiseInfo {
+  res: string;
+}
+
+```
+
 ### Mock能力
 从@ohos/hypium 1.0.1版本开始，单元测试框架支持Mock能力。配置方式参考上文[发布方式](#单元测试框架发布方式)。
 
@@ -1321,7 +1679,7 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
- 
+
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  
@@ -1341,7 +1699,7 @@ export default class TestAbility extends UIAbility {
    value: string
  }
  ```
->**说明:** 
+>**说明:**
 >
 >若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
 
@@ -1374,7 +1732,7 @@ export default class TestAbility extends UIAbility {
 
 1. 用例执行异步接口时，如果未调用done函数，会导致用例无法正常结束，最终超时。
 2. 用例调用函数耗时过长，超过用例执行设置的超时时间（默认5000ms）。
-3. 用例调用函数时断言失败抛出异常，导致用例执行超时终止。  
+3. 用例调用函数时断言失败抛出异常，导致用例执行超时终止。
 
 **解决方法**
 
@@ -1383,5 +1741,5 @@ export default class TestAbility extends UIAbility {
 3. 检查用例代码逻辑，确保断言通过。
 ## 完整示例
 <!--RP3-->
-[测试框架](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/jsunit)
+[测试框架](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit)
 <!--RP3End-->
