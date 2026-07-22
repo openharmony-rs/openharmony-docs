@@ -81,7 +81,7 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 
      
    ```c++
-   int mbedtls_hardware_poll( void *data,unsigned char *output, size_t len, size_t *olen );
+   int mbedtls_hardware_poll(void *data, unsigned char *output, size_t len, size_t *olen);
    ```
 
 

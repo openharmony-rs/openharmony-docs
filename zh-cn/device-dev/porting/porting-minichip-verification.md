@@ -13,10 +13,11 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
      
    ```json
    {
-     "subsystem": "test",
+     "subsystem": "xts",
      "components": [
-       { "component": "xts_acts", "features":[] },
-       { "component": "xts_tools", "features":[] }
+       { "component": "acts", "features":[] },
+       { "component": "tools", "features":[] }, 
+       { "component": "device_attest_lite", "features":[] }
      ]
    }
    ```
