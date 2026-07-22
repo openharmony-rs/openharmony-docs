@@ -139,7 +139,7 @@ System error.
 
 1. 系统服务重启、跨进程调用异常等系统处理异常。
 2. 接口参数、应用权限或对象状态校验异常。对于自API版本20起新增的音频API，6800301错误码不包含本语义的信息。接口是否可能涉及此问题，以接口文档声明的错误码说明为准。
-3. 音频焦点抢占失败。仅有需要激活音频焦点的音频流启动类接口（如[AudioRenderer](arkts-apis-audio-AudioRenderer.md#start8)、[AudioCapturer](arkts-apis-audio-AudioCapturer.md#start8)的`start`接口，以及对应的C API），可能由于音频焦点抢占失败返回此错误码，其他不涉及焦点激活的接口不会因该原因返回此错误码。
+3. 音频焦点抢占失败。仅有需要激活音频焦点的音频流启动类接口（如AudioRenderer的[start](arkts-apis-audio-AudioRenderer.md#start8)接口、AudioCapturer的[start](arkts-apis-audio-AudioCapturer.md#start8)接口），可能由于音频焦点抢占失败返回此错误码，其他不涉及焦点激活的接口不会因该原因返回此错误码。
 
 **处理步骤**
 
@@ -194,7 +194,7 @@ System error.
 **处理步骤**
 
 1. 根据[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)检查采样率、采样格式、编码类型、声道数和声道布局。
-2. 确保声道数与声道布局描述相同的声道组成。
+2. 由于`channelLayout`参数中隐含了声道数信息，需要确保声道布局的声道数和`channels`的值匹配。当`channelLayout`为`CH_LAYOUT_UNKNOWN(0x0)`时，不参与匹配校验。如需明确的声道布局，请根据`channels`显式设置对应布局。
 
 ### 调用createAudioCapturer创建AudioCapturer失败-麦克风未授权
 
@@ -280,7 +280,7 @@ AudioCapturer创建成功，但调用[start](arkts-apis-audio-AudioCapturer.md#s
 
 **判断依据**
 
-若根据6300801系统异常处理下的音频流类型异常，麦克风未授权，AudioCapturer状态异常，激活音频焦点失败等案例进行排查后，应用进程仍出现以下一条或多条日志，说明可能发生系统侧异常：
+若根据6800301系统处理异常下的音频流类型异常、麦克风未授权、AudioCapturer状态异常、激活音频焦点失败等案例进行排查后，应用进程仍出现以下一条或多条日志，说明可能发生系统侧异常：
 
 ```text
 <应用进程名>: [StartAudioStream]Start call server failed: ...
