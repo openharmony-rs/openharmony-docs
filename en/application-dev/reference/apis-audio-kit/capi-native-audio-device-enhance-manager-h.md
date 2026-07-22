@@ -5,40 +5,39 @@
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1961de06e85063963f633ec54a8a4baaf5cb7dc8 translatedAt=2026-07-21T03:52:27.157Z pushedAt=2026-07-21T08:55:05.314Z -->
 
 ## Overview
 
-Declares the interfaces related to the audio device enhancement manager. The interfaces in this file are used to obtain an OH_AudioDeviceEnhanceManager handle, switch input and output devices for an app or audio stream, and perform other enhancement functions related to audio devices or routing.
+The file declares the APIs related to an audio device enhancement manager. The APIs in this file are used to obtain the OH_AudioDeviceEnhanceManager handle, switch input and output devices for applications or audio streams, and perform other enhanced functions related to audio devices or routing.
 
-**File to include:** <ohaudio/native_audio_device_enhance_manager.h>
+**File to include**: <ohaudio/native_audio_device_enhance_manager.h>
 
-**Library:** libohaudio.so
+**Library**: libohaudio.so
 
-**System capability:** SystemCapability.Multimedia.Audio.Core
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since:** 26.0.0
 
-**Related module:** [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-ohaudio.md)
 
 ## Summary
 
 ### Structs
 
-| Name | typedef Keyword | Description |
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) | OH_AudioDeviceEnhanceManager | Defines the handle type of the audio device enhancement manager, which provides audio device enhancement management for app-level audio device selection and stream-level audio device selection. |
+| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) | OH_AudioDeviceEnhanceManager | Defines the handle type for the audio device enhancement manager. This manager enables device selection at both the application level and the stream level.|
 
 ### Functions
 
-| Name | Description |
+| Name| Description|
 | -- | -- |
-| [OH_AudioCommon_Result OH_AudioManager_GetAudioDeviceEnhanceManager(OH_AudioDeviceEnhanceManager **audioDeviceEnhanceManager)](#oh_audiomanager_getaudiodeviceenhancemanager) | Obtains the Audio Device Enhancement Manager handle. |
-| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, bool *supported)](#oh_audiodeviceenhancemanager_isenhancedroutingsupported) | Queries whether the system supports the Enhancement Routing feature provided by the current manager. |
-| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDevice(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiodeviceenhancemanager_selectoutputdevice) | Selects an output device for the app. |
-| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDevice(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiodeviceenhancemanager_selectinputdevice) | Selects an input device for the app. |
-| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioRenderer *renderer, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiodeviceenhancemanager_selectoutputdeviceforaudiorenderer) | Selects an output device for the specified audio playback stream. |
-| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioCapturer *capturer, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiodeviceenhancemanager_selectinputdeviceforaudiocapturer) | Selects an input device for the specified audio recording stream. |
+| [OH_AudioCommon_Result OH_AudioManager_GetAudioDeviceEnhanceManager(OH_AudioDeviceEnhanceManager **audioDeviceEnhanceManager)](#oh_audiomanager_getaudiodeviceenhancemanager) | Obtains the handle to the audio device enhancement manager.|
+| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, bool *supported)](#oh_audiodeviceenhancemanager_isenhancedroutingsupported) | Checks whether the system supports the enhanced routing function provided by the current manager.|
+| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDevice(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiodeviceenhancemanager_selectoutputdevice) | Selects an output device for an application.|
+| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDevice(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiodeviceenhancemanager_selectinputdevice) | Selects an input device for an application.|
+| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioRenderer *renderer, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiodeviceenhancemanager_selectoutputdeviceforaudiorenderer) | Selects an output device for a specified audio playback stream.|
+| [OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioCapturer *capturer, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiodeviceenhancemanager_selectinputdeviceforaudiocapturer) | Selects an input device for a specified audio recording stream.|
 
 ## Function Description
 
@@ -50,27 +49,27 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioDeviceEnhanceManager(OH_AudioDevic
 
 **Description**
 
-Obtains the Audio Device Enhancement Manager handle.
+Obtains the handle to the audio device enhancement manager.
 
 > **NOTE**
 >
-> This handle should be passed as the first parameter of the related APIs for enhanced audio device management.
+> This handle should be passed as the first parameter to APIs related to audio device enhancement management.
 > The capabilities provided by this manager are available only on specific devices.
-> Before using it, the app should call [OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported](capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_isenhancedroutingsupported) to check whether the system supports the audio device enhancement management feature.
+> Before using this manager, applications should call [OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported](capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_isenhancedroutingsupported) to confirm whether the system supports the audio device enhancement management feature.
 
 **Since:** 26.0.0
 
 **Parameters**
 
-| Name | Description |
+| Name| Description|
 | -- | -- |
-| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) **audioDeviceEnhanceManager | Pointer to the OH_AudioDeviceEnhanceManager handle, used to receive the manager instance returned by the function. |
+| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) **audioDeviceEnhanceManager | Pointer to the OH_AudioDeviceEnhanceManager handle, which is used to receive the manager instance returned by the function.|
 
-**Return**
+**Returns**
 
-| Type | Description |
+| Type| Description|
 | -- | -- |
-| OH_AudioCommon_Result | Result code.<br>         AUDIOCOMMON_RESULT_SUCCESS: The function is executed successfully.<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: The parameter audioDeviceEnhanceManager is nullptr. |
+| OH_AudioCommon_Result | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioDeviceEnhanceManager** parameter is **nullptr**.|
 
 ### OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported()
 
@@ -80,29 +79,29 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(OH
 
 **Description**
 
-Queries whether the system supports the enhancement routing feature provided by the current manager.
+Checks whether the system supports the enhanced routing function provided by the current manager.
 
 > **NOTE**
 > 
-> The enhancement routing feature supports selecting input and output devices for apps or audio streams.
-> Before calling related enhancement routing APIs, the app should call this API to check whether the system supports the audio device enhancement management feature.
-> Even for the same product device, different models may have different support statuses due to hardware limitations.
-> When the system does not support the enhancement routing feature, calling related APIs will not take effect, and the default input and output devices will be selected for the app or audio stream.
+> The enhanced routing feature supports selecting input and output devices for applications or audio streams.
+> Before calling a related enhanced routing API, applications should call this API to check whether the system supports the audio device enhancement management feature.
+> Even for devices of the same product model, support for this feature may vary across different hardware variants due to hardware limitations.
+> If the system does not support the enhanced routing feature, calling the related APIs will not take effect, and the system will select the default input and output devices for the application or audio stream.
 
 **Since:** 26.0.0
 
 **Parameters**
 
-| Name | Description |
+| Name| Description|
 | -- | -- |
-| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Handle to the Audio Device Enhancement Manager obtained via [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager). |
-| bool *supported | Pointer to the query result indicating whether the system supports the audio device enhancement management feature. The value **true** indicates supported, and **false** indicates not supported. |
+| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Handle to the audio device enhancement manager obtained through [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager).|
+| bool *supported | Query result, indicating whether the system supports the audio device enhancement management feature. **true** if supported; **false** otherwise.|
 
-**Return**
+**Returns**
 
-| Type | Description |
+| Type| Description|
 | -- | -- |
-| OH_AudioCommon_Result | Result code.<br>         AUDIOCOMMON_RESULT_SUCCESS: function execution successful.<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: the parameter audioDeviceEnhanceManager or supported is nullptr.<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM: the audio client fails to call the audio service, or a system error occurs. |
+| OH_AudioCommon_Result | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioDeviceEnhanceManager** or **supported** parameter is **nullptr**.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: The audio client failed to call the audio service or a system error occurred.|
 
 ### OH_AudioDeviceEnhanceManager_SelectOutputDevice()
 
@@ -112,30 +111,30 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDevice(OH_AudioDe
 
 **Description**
 
-Selects the output device for the app.
+Selects an output device for an application.
 
 > **NOTE**
 > 
-> This setting takes effect for all playback streams created by the app, except for streams that have been individually assigned a dedicated output device.
-> When the app implements the output device selection feature, it can obtain the available output device list through [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices),
-> and obtain the current preferred output device through [OH_AudioRoutingManager_GetPreferredOutputDevice](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getpreferredoutputdevice).
-> This selection becomes invalid after the app exits or the selected device goes offline. It requires reconfiguration to take effect after the app restarts or the device comes back online.
-> When the system does not support this feature, the default output device is selected for the app.
+> This setting applies to all playback streams created by the application, except for streams that have already been assigned a dedicated output device.
+> When implementing output device selection, the application can obtain the list of available output devices via [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices), 
+> and retrieve the current preferred output device via [OH_AudioRoutingManager_GetPreferredOutputDevice](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getpreferredoutputdevice).
+> This selection becomes invalid after the application exits or the selected device goes offline. After the application restarts or when the device comes back online, the selection needs to be re-configured.
+> If the system does not support this feature, the default output device will be used for the application.
 
 **Since:** 26.0.0
 
 **Parameters**
 
-| Name | Description |
+| Name| Description|
 | -- | -- |
-| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Handle to the Audio Device Enhancement Manager obtained via [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager). |
-| OH_AudioDeviceDescriptor *deviceDescriptor | Target device. Available devices must be obtained from the device list returned by [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices). When nullptr is passed, the system clears the previous selection and restores the default output device for the app. |
+| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Handle to the audio device enhancement manager obtained through [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager).|
+| OH_AudioDeviceDescriptor *deviceDescriptor | Pointer to the target device. The available devices must be obtained from the device list returned by [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices). If **nullptr** is passed, the system clears the previous selection and restores the default output device for the application.|
 
-**Return**
+**Returns**
 
-| Type | Description |
+| Type| Description|
 | -- | -- |
-| OH_AudioCommon_Result | Result code.<br>         AUDIOCOMMON_RESULT_SUCCESS: Function executed successfully.<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: The parameter audioDeviceEnhanceManager is nullptr,<br>         the parameter deviceDescriptor is invalid, or the specified output device is offline.<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM: The audio client failed to call the audio service, or a system error occurred. |
+| OH_AudioCommon_Result | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioDeviceEnhanceManager** parameter is nullptr.<br>         The **deviceDescriptor** parameter is invalid or the specified output device is offline.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: The audio client failed to call the audio service or a system error occurred.|
 
 ### OH_AudioDeviceEnhanceManager_SelectInputDevice()
 
@@ -145,30 +144,30 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDevice(OH_AudioDev
 
 **Description**
 
-Selects an input device for the app.
+Selects an input device for an application.
 
 > **NOTE**
 >
-> This setting takes effect for all recording streams created by the app, unless a specific stream has already been assigned a dedicated input device.
-> When the app implements the input device selection feature, you can obtain the available input device list through [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices),
-> and obtain the current preferred input device through [OH_AudioRoutingManager_GetPreferredInputDevice](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getpreferredinputdevice).
-> This selection becomes invalid after the app exits or the selected device goes offline. It requires reconfiguration to take effect after the app restarts or the device comes back online.
-> When the system does not support this feature, the default input device is selected for the app.
+> This setting applies to all recording streams created by the application, except for streams that have already been assigned a dedicated input device.
+> When implementing input device selection, the application can obtain the list of available input devices via [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices), 
+> and retrieve the current preferred input device via [OH_AudioRoutingManager_GetPreferredInputDevice](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getpreferredinputdevice).
+> This selection becomes invalid after the application exits or the selected device goes offline. After the application restarts or when the device comes back online, the selection needs to be re-configured.
+> If the system does not support this feature, the default input device will be used for the application.
 
 **Since:** 26.0.0
 
 **Parameters**
 
-| Name | Description |
+| Name| Description|
 | -- | -- |
-| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Handle to the Audio Device Enhancement Manager obtained via [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager). |
-| OH_AudioDeviceDescriptor *deviceDescriptor | Target device. Available devices must be obtained from the device list returned by [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices). When nullptr is passed in, the system clears the previous selection and restores the default input device for the app. |
+| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Handle to the audio device enhancement manager obtained through [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager).|
+| OH_AudioDeviceDescriptor *deviceDescriptor | Pointer to the target device. The available devices must be obtained from the device list returned by [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices). If **nullptr** is passed, the system clears the previous selection and restores the default input device for the application.|
 
-**Return**
+**Returns**
 
-| Type | Description |
+| Type| Description|
 | -- | -- |
-| OH_AudioCommon_Result | Result code.<br>         `AUDIOCOMMON_RESULT_SUCCESS`: function execution successful.<br>         `AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM`: the parameter `audioDeviceEnhanceManager` is nullptr,<br>         the parameter `deviceDescriptor` is invalid, or the specified input device is offline.<br>         `AUDIOCOMMON_RESULT_ERROR_SYSTEM`: the audio client fails to call the audio service, or a system error occurs. |
+| OH_AudioCommon_Result | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioDeviceEnhanceManager** parameter is nullptr.<br>         The **deviceDescriptor** parameter is invalid or the specified input device is offline.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: The audio client failed to call the audio service or a system error occurred.|
 
 ### OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer()
 
@@ -182,26 +181,26 @@ Selects an output device for a specified audio playback stream.
 
 > **NOTE**
 > 
-> The app must ensure that the specified audio playback stream is valid.
-> This selection takes effect only for the specified stream. Other playback streams in the app continue to use the app-level selected device or the system default output device.
-> This selection becomes invalid after the app exits or the selected device goes offline. After the app restarts or the device comes back online, reconfiguration is required for the selection to take effect.
-> When the system does not support this feature, the default output device is selected for the audio playback stream.
+> The application must ensure that the specified audio playback stream is valid.
+> This selection applies only to the specified stream. Other playback streams in the application will continue to use the application-level selected device or the system default output device.
+> This selection becomes invalid after the application exits or the selected device goes offline. After the application restarts or when the device comes back online, the selection needs to be re-configured.
+> If the system does not support this feature, the default output device will be used for the audio playback stream.
 
 **Since:** 26.0.0
 
 **Parameters**
 
-| Name | Description |
+| Name| Description|
 | -- | -- |
-| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Audio device enhancement manager handle obtained via [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager). |
-| OH_AudioRenderer *renderer | Audio playback stream instance created via [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer). |
-| OH_AudioDeviceDescriptor *deviceDescriptor | Target device. Available devices must be obtained from the device list returned by [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices). When nullptr is passed, the system clears the previous selection and restores the default output device for the audio playback stream. |
+| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Handle to the audio device enhancement manager obtained through [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager).|
+| OH_AudioRenderer *renderer | Pointer to the audio playback stream instance obtained through [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
+| OH_AudioDeviceDescriptor *deviceDescriptor | Pointer to the target device. The available devices must be obtained from the device list returned by [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices). If **nullptr** is passed, the system clears the previous selection and restores the default output device for the audio playback stream.|
 
-**Return**
+**Returns**
 
-| Type | Description |
+| Type| Description|
 | -- | -- |
-| OH_AudioCommon_Result | Result code.<br>         AUDIOCOMMON_RESULT_SUCCESS: function executed successfully.<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: the parameter audioDeviceEnhanceManager or renderer is nullptr,<br>         the parameter deviceDescriptor is invalid, or the specified output device is offline.<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM: the audio client failed to call the audio service, or a system error occurred. |
+| OH_AudioCommon_Result | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioDeviceEnhanceManager** or **renderer** parameter is **nullptr**.<br>         The **deviceDescriptor** parameter is invalid or the specified output device is offline.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: The audio client failed to call the audio service or a system error occurred.|
 
 ### OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer()
 
@@ -215,23 +214,24 @@ Selects an input device for a specified audio recording stream.
 
 > **NOTE**
 > 
-> The app must ensure that the specified audio recording stream is valid.
-> This selection takes effect only for the specified stream. Other recording streams in the app continue to use the device selected at the app level or the system default input device.
-> This selection becomes invalid after the app exits or the selected device goes offline. After the app restarts or the device comes back online, reconfiguration is required for the selection to take effect.
-> When the system does not support this feature, the default input device is selected for the audio recording stream.
+> The application must ensure that the specified audio recording stream is valid.
+> This selection applies only to the specified stream. Other recording streams in the application will continue to use the application-level selected device or the system default input device.
+> This selection becomes invalid after the application exits or the selected device goes offline. After the application restarts or when the device comes back online, the selection needs to be re-configured.
+> If the system does not support this feature, the default input device will be used for the audio recording stream.
 
 **Since:** 26.0.0
 
 **Parameters**
 
-| Name | Description |
+| Name| Description|
 | -- | -- |
-| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Handle to the Audio Device Enhancement Manager obtained via [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager). |
-| OH_AudioCapturer *capturer | Audio recording stream instance created via [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
-| OH_AudioDeviceDescriptor *deviceDescriptor | Target device. Available devices must be obtained from the device list returned by [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices). When nullptr is passed, the system clears the previous selection and restores the default input device for this audio recording stream. |
+| [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) *audioDeviceEnhanceManager | Handle to the audio device enhancement manager obtained through [OH_AudioManager_GetAudioDeviceEnhanceManager](capi-native-audio-device-enhance-manager-h.md#oh_audiomanager_getaudiodeviceenhancemanager).|
+| OH_AudioCapturer *capturer | Pointer to the audio recording stream instance obtained through [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
+| OH_AudioDeviceDescriptor *deviceDescriptor | Pointer to the target device. The available devices must be obtained from the device list returned by [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices). If **nullptr** is passed, the system clears the previous selection and restores the default input device for the audio recording stream.|
 
-**Return**
+**Returns**
 
-| Type | Description |
+| Type| Description|
 | -- | -- |
-| OH_AudioCommon_Result | Result code.<br>         AUDIOCOMMON_RESULT_SUCCESS: function execution successful.<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: the audioDeviceEnhanceManager or capturer parameter is nullptr,<br>         the deviceDescriptor parameter is invalid, or the specified input device is offline.<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM: the audio client fails to call the audio service, or a system error occurs. |
+| OH_AudioCommon_Result | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioDeviceEnhanceManager** or **capturer** parameter is **nullptr**.<br>         The **deviceDescriptor** parameter is invalid or the specified input device is offline.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: The audio client failed to call the audio service or a system error occurred.|
+<!--no_check-->

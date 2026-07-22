@@ -25,3 +25,4 @@ This module provides the following common audio features:
 ```ts
 import { audio } from '@kit.AudioKit';
 ```
+<!--no_check-->
