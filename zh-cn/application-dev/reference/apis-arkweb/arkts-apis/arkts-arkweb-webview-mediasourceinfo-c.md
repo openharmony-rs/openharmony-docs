@@ -1,7 +1,6 @@
 # MediaSourceInfo
 
 表示媒体源的信息。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 12开始支持。  

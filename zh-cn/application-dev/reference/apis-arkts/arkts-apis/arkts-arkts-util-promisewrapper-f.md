@@ -6,7 +6,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="promisewrapper"></a>
 ## promiseWrapper
 
 ```TypeScript
@@ -19,7 +18,7 @@ function promiseWrapper(original: (err: Object, value: Object) => void): Object
 
 **废弃版本：** 9
 
-**替代接口：** [promisify](arkts-arkts-util-promisify-f.md#promisify-1)
+**替代接口：** [promisify](arkts-arkts-util-promisify-f.md#promisify)
 
 <!--Device-util-function promiseWrapper(original: (err: Object, value: Object) => void): Object--><!--Device-util-function promiseWrapper(original: (err: Object, value: Object) => void): Object-End-->
 

@@ -6,7 +6,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="createavrecorder"></a>
 ## createAVRecorder
 
 ```TypeScript
@@ -14,7 +13,6 @@ function createAVRecorder(callback: AsyncCallback<AVRecorder>): void
 ```
 
 创建音视频录制实例。使用callback异步回调。
-
 > **说明：**  
 >  
 > 应用可创建多个音视频录制实例，但由于设备共用音频通路，一个设备仅能有一个实例进行音频录制。创建第二个实例录制音频时，将会因为音频通路冲突导致创建失败。
@@ -55,7 +53,6 @@ media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
 ```
 
 
-<a id="createavrecorder-1"></a>
 ## createAVRecorder
 
 ```TypeScript
@@ -63,7 +60,6 @@ function createAVRecorder(): Promise<AVRecorder>
 ```
 
 创建音视频录制实例。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 应用可创建多个音视频录制实例，但由于设备共用音频通路，一个设备仅能有一个实例进行音频录制。创建第二个实例录制音频时，将会因为音频通路冲突导致创建失败。

@@ -6,7 +6,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="reportavscreencaptureuserchoice"></a>
 ## reportAVScreenCaptureUserChoice
 
 ```TypeScript

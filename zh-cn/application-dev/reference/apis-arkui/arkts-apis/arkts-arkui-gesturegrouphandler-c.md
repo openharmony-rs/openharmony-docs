@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -35,7 +34,6 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 | --- | --- | --- | --- |
 | options | [GestureGroupGestureHandlerOptions](arkts-arkui-gesturegroupgesturehandleroptions-i.md) | 否 | 手势组处理器配置参数。 |
 
-<a id="oncancel"></a>
 ## onCancel
 
 ```TypeScript

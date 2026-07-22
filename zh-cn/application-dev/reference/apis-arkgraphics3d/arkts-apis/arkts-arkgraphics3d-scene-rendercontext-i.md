@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="getrenderresourcefactory"></a>
 ## getRenderResourceFactory
 
 ```TypeScript
@@ -29,7 +28,6 @@ getRenderResourceFactory() : RenderResourceFactory
 | --- | --- |
 | [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md) | -- RenderResourceFactory实例 |
 
-<a id="loadplugin"></a>
 ## loadPlugin
 
 ```TypeScript
@@ -56,7 +54,6 @@ loadPlugin(name: string): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | - 返回表示插件加载是否成功的Promise |
 
-<a id="registerresourcepath"></a>
 ## registerResourcePath
 
 ```TypeScript

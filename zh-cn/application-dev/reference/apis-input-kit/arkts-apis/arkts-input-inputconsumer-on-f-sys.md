@@ -6,7 +6,6 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-<a id="on"></a>
 ## on('key')
 
 ```TypeScript
@@ -14,7 +13,6 @@ function on(type: 'key', keyOptions: KeyOptions, callback: Callback<KeyOptions>)
 ```
 
 订阅系统快捷键，使用callback异步回调。
-
 > **说明：**  
 >  
 > - 支持仅订阅按键的down事件，或者同时订阅按键的down事件和up事件。  

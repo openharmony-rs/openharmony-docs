@@ -14,7 +14,6 @@ UIExtension窗口代理。
 import { uiExtension } from '@kit.ArkUI';
 ```
 
-<a id="createsubwindowwithoptions"></a>
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -103,7 +102,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
-<a id="createsubwindowwithoptions-1"></a>
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -117,9 +115,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowProxy-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,
-        followCreatorLifecycle: boolean): Promise<window.Window>--><!--Device-WindowProxy-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,
-        followCreatorLifecycle: boolean): Promise<window.Window>-End-->
+<!--Device-WindowProxy-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,        followCreatorLifecycle: boolean): Promise<window.Window>--><!--Device-WindowProxy-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,        followCreatorLifecycle: boolean): Promise<window.Window>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -193,7 +189,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
-<a id="getwindowavoidarea"></a>
 ## getWindowAvoidArea
 
 ```TypeScript
@@ -248,7 +243,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
-<a id="occupyevents"></a>
 ## occupyEvents
 
 ```TypeScript
@@ -315,7 +309,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
-<a id="off"></a>
 ## off('avoidAreaChange')
 
 ```TypeScript
@@ -364,7 +357,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
-<a id="off-1"></a>
 ## off('windowSizeChange')
 
 ```TypeScript
@@ -413,7 +405,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
-<a id="off-2"></a>
 ## off('rectChange')
 
 ```TypeScript
@@ -463,7 +454,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
-<a id="on"></a>
 ## on('avoidAreaChange')
 
 ```TypeScript
@@ -515,7 +505,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
-<a id="on-1"></a>
 ## on('windowSizeChange')
 
 ```TypeScript
@@ -567,7 +556,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
-<a id="on-2"></a>
 ## on('rectChange')
 
 ```TypeScript
@@ -629,7 +617,7 @@ properties: WindowProxyProperties
 
 组件（EmbeddedComponent或UIExtensionComponent）的信息。
 
-**约束：** 由于架构约束，不建议在[onSessionCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate-1)阶段同步获取该值，建议在收到[on('windowSizeChange')](@ohos.arkui.uiExtension:uiExtension.WindowProxy.on(type: 'windowSizeChange', callback: Callback<window.Size>))回调之后获取。
+**约束：** 由于架构约束，不建议在[onSessionCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](@ohos.arkui.uiExtension:uiExtension.WindowProxy.on(type: 'windowSizeChange', callback: Callback&lt;window.Size&gt;))回调之后获取。
 
 **类型：** WindowProxyProperties
 

@@ -6,7 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="setappgroup"></a>
 ## setAppGroup
 
 ```TypeScript
@@ -68,7 +67,6 @@ usageStatistics.setAppGroup(bundleName, newGroup, (err: BusinessError) => {
 ```
 
 
-<a id="setappgroup-1"></a>
 ## setAppGroup
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { manager } from '@kit.ConnectivityKit';
 ```
 
-<a id="isnearlinksupported"></a>
 ## isNearLinkSupported
 
 ```TypeScript

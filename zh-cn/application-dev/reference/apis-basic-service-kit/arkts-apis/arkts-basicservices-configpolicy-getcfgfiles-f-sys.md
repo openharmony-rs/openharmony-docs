@@ -6,7 +6,6 @@
 import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
-<a id="getcfgfiles"></a>
 ## getCfgFiles
 
 ```TypeScript
@@ -37,7 +36,6 @@ function getCfgFiles(relPath: string, callback: AsyncCallback<Array<string>>): v
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
-<a id="getcfgfiles-1"></a>
 ## getCfgFiles
 
 ```TypeScript
@@ -69,7 +67,6 @@ function getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCa
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
-<a id="getcfgfiles-2"></a>
 ## getCfgFiles
 
 ```TypeScript
@@ -102,7 +99,6 @@ function getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, ca
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
-<a id="getcfgfiles-3"></a>
 ## getCfgFiles
 
 ```TypeScript
@@ -138,7 +134,6 @@ function getCfgFiles(relPath: string): Promise<Array<string>>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
-<a id="getcfgfiles-4"></a>
 ## getCfgFiles
 
 ```TypeScript

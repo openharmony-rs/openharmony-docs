@@ -6,7 +6,6 @@
 import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
-<a id="cancel"></a>
 ## cancel
 
 ```TypeScript

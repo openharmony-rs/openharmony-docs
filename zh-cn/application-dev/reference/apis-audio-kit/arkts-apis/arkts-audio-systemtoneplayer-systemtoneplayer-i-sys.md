@@ -1,6 +1,6 @@
 # SystemTonePlayer（系统接口）
 
-系统提示音播放器提供了短信提示音、通知提示音的播放、配置、获取信息等功能。在调用SystemTonePlayer的接口前，需要先通过[getSystemTonePlayer](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getsystemtoneplayer-1)创建实例。
+系统提示音播放器提供了短信提示音、通知提示音的播放、配置、获取信息等功能。在调用SystemTonePlayer的接口前，需要先通过[getSystemTonePlayer](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getsystemtoneplayer)创建实例。
 
 **起始版本：** 11
 
@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="getaudiovolumescale"></a>
 ## getAudioVolumeScale
 
 ```TypeScript
@@ -39,7 +38,6 @@ getAudioVolumeScale(): number
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-<a id="gethapticsfeature"></a>
 ## getHapticsFeature
 
 ```TypeScript
@@ -69,7 +67,6 @@ getHapticsFeature(): systemSoundManager.ToneHapticsFeature
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-操作不支持) | Unsupported operation. |
 
-<a id="getsupportedhapticsfeatures"></a>
 ## getSupportedHapticsFeatures
 
 ```TypeScript
@@ -99,7 +96,6 @@ getSupportedHapticsFeatures(): Promise<Array<systemSoundManager.ToneHapticsFeatu
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-操作不支持) | Unsupported operation. |
 
-<a id="gettitle"></a>
 ## getTitle
 
 ```TypeScript
@@ -129,7 +125,6 @@ getTitle(): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 
-<a id="off"></a>
 ## off('playFinished')
 
 ```TypeScript
@@ -160,7 +155,6 @@ off(type: 'playFinished', callback?: Callback<number>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-参数检查失败) | Parameter check error. |
 
-<a id="off-1"></a>
 ## off('error')
 
 ```TypeScript
@@ -191,7 +185,6 @@ off(type: 'error', callback?: ErrorCallback): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-参数检查失败) | Parameter check error. |
 
-<a id="on"></a>
 ## on('playFinished')
 
 ```TypeScript
@@ -215,7 +208,7 @@ on(type: 'playFinished', streamId: number, callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playFinished' | 是 | 事件回调类型，支持的事件为'playFinished'，当铃音播放完成时，触发该事件。 |
-| streamId | number | 是 | 监听对象为指定streamId对应的音频流，streamId通过[start](arkts-audio-systemtoneplayer-systemtoneplayer-i-sys.md#start-1)获取。当streamId传入0时，可监听当前播放器对应的所有音频流。 |
+| streamId | number | 是 | 监听对象为指定streamId对应的音频流，streamId通过[start](arkts-audio-systemtoneplayer-systemtoneplayer-i-sys.md#start)获取。当streamId传入0时，可监听当前播放器对应的所有音频流。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 'playFinished'的回调方法。返回播放完成的音频流的streamId。 |
 
 **错误码：**
@@ -225,7 +218,6 @@ on(type: 'playFinished', streamId: number, callback: Callback<number>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-参数检查失败) | Parameter check error. |
 
-<a id="on-1"></a>
 ## on('error')
 
 ```TypeScript
@@ -256,7 +248,6 @@ on(type: 'error', callback: ErrorCallback): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-参数检查失败) | Parameter check error. |
 
-<a id="prepare"></a>
 ## prepare
 
 ```TypeScript
@@ -287,7 +278,6 @@ prepare(): Promise<void>
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -316,7 +306,6 @@ release(): Promise<void>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-<a id="setaudiovolumescale"></a>
 ## setAudioVolumeScale
 
 ```TypeScript
@@ -348,7 +337,6 @@ setAudioVolumeScale(scale: number): void
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-参数检查失败) | Parameter check error. For example, value is outside [0,1]. |
 
-<a id="sethapticsfeature"></a>
 ## setHapticsFeature
 
 ```TypeScript
@@ -357,7 +345,7 @@ setHapticsFeature(hapticsFeature: systemSoundManager.ToneHapticsFeature): void
 
 设置播放铃音时的振动风格。
 
-调用本接口前，应该先调用[getSupportedHapticsFeatures](arkts-audio-systemtoneplayer-systemtoneplayer-i-sys.md#getsupportedhapticsfeatures-1)查询支持的振动风格，如果设置不支持的振动风格，则设置失败。
+调用本接口前，应该先调用[getSupportedHapticsFeatures](arkts-audio-systemtoneplayer-systemtoneplayer-i-sys.md#getsupportedhapticsfeatures)查询支持的振动风格，如果设置不支持的振动风格，则设置失败。
 
 **起始版本：** 13
 
@@ -382,7 +370,6 @@ setHapticsFeature(hapticsFeature: systemSoundManager.ToneHapticsFeature): void
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-操作不支持) | Unsupported operation. |
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -422,7 +409,6 @@ start(toneOptions?: SystemToneOptions): Promise<number>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript

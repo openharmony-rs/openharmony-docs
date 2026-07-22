@@ -14,7 +14,6 @@
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="addaccountimplicitly"></a>
 ## addAccountImplicitly
 
 ```TypeScript
@@ -27,7 +26,6 @@ addAccountImplicitly(
 ```
 
 根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
@@ -36,19 +34,9 @@ addAccountImplicitly(
 
 **废弃版本：** 9
 
-**替代接口：** [createAccountImplicitly(options:](arkts-basicservices-appaccount-authenticator-c.md#createaccountimplicitly-1)
+**替代接口：** [createAccountImplicitly(options:](arkts-basicservices-appaccount-authenticator-c.md#createaccountimplicitly)
 
-<!--Device-Authenticator-addAccountImplicitly(
-      authType: string,
-      callerBundleName: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void--><!--Device-Authenticator-addAccountImplicitly(
-      authType: string,
-      callerBundleName: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void-End-->
+<!--Device-Authenticator-addAccountImplicitly(      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-Authenticator-addAccountImplicitly(      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -61,7 +49,6 @@ addAccountImplicitly(
 | options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
-<a id="auth"></a>
 ## auth
 
 ```TypeScript
@@ -85,7 +72,6 @@ auth(name: string, authType: string, options: Record<string, Object>, callback: 
 | options | Record&lt;string, Object&gt; | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
-<a id="authenticate"></a>
 ## authenticate
 
 ```TypeScript
@@ -99,7 +85,6 @@ authenticate(
 ```
 
 对应用账号进行鉴权，获取OAuth令牌。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持, 从API version 9开始废弃。建议使用[auth](#auth9-2)替代。
@@ -108,21 +93,9 @@ authenticate(
 
 **废弃版本：** 9
 
-**替代接口：** [auth(name:](arkts-basicservices-appaccount-authenticator-c.md#auth-1)
+**替代接口：** [auth(name:](arkts-basicservices-appaccount-authenticator-c.md#auth)
 
-<!--Device-Authenticator-authenticate(
-      name: string,
-      authType: string,
-      callerBundleName: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void--><!--Device-Authenticator-authenticate(
-      name: string,
-      authType: string,
-      callerBundleName: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void-End-->
+<!--Device-Authenticator-authenticate(      name: string,      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-Authenticator-authenticate(      name: string,      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -136,7 +109,6 @@ authenticate(
 | options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
-<a id="checkaccountlabels"></a>
 ## checkAccountLabels
 
 ```TypeScript
@@ -163,7 +135,6 @@ checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback):
 
 接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
 
-<a id="checkaccountremovable"></a>
 ## checkAccountRemovable
 
 ```TypeScript
@@ -189,7 +160,6 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 
 接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
 
-<a id="createaccountimplicitly"></a>
 ## createAccountImplicitly
 
 ```TypeScript
@@ -211,7 +181,6 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 | options | [CreateAccountImplicitlyOptions](arkts-basicservices-appaccount-createaccountimplicitlyoptions-i.md) | 是 | 隐式创建账号的选项。 |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调对象，用于返回创建结果。 |
 
-<a id="getremoteobject"></a>
 ## getRemoteObject
 
 ```TypeScript
@@ -280,7 +249,6 @@ export default {
 
 ```
 
-<a id="setproperties"></a>
 ## setProperties
 
 ```TypeScript
@@ -306,7 +274,6 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 
 接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
 
-<a id="verifycredential"></a>
 ## verifyCredential
 
 ```TypeScript

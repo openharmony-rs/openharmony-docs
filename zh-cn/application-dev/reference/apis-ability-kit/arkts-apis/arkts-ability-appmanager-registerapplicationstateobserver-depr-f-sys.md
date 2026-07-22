@@ -1,6 +1,5 @@
 # registerApplicationStateObserver（系统接口）
 
-<a id="registerapplicationstateobserver"></a>
 ## registerApplicationStateObserver
 
 ```TypeScript

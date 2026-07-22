@@ -6,7 +6,6 @@
 import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
-<a id="stoptimer"></a>
 ## stopTimer
 
 ```TypeScript
@@ -71,7 +70,6 @@ try {
 ```
 
 
-<a id="stoptimer-1"></a>
 ## stopTimer
 
 ```TypeScript

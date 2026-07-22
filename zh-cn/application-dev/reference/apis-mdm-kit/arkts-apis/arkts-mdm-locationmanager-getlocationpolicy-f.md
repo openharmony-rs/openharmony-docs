@@ -6,7 +6,6 @@
 import { locationManager } from '@kit.MDMKit';
 ```
 
-<a id="getlocationpolicy"></a>
 ## getLocationPolicy
 
 ```TypeScript

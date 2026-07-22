@@ -1,7 +1,6 @@
 # WebDataBase
 
 Web组件数据库管理对象。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 9开始支持。  
@@ -22,7 +21,6 @@ Web组件数据库管理对象。
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="deletehttpauthcredentials"></a>
 ## deleteHttpAuthCredentials
 
 ```TypeScript
@@ -39,7 +37,6 @@ static deleteHttpAuthCredentials(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="existhttpauthcredentials"></a>
 ## existHttpAuthCredentials
 
 ```TypeScript
@@ -62,7 +59,6 @@ static existHttpAuthCredentials(): boolean
 | --- | --- |
 | boolean | 是否存在任何已保存的HTTP身份验证凭据。<br>存在返回true，不存在返回false。 |
 
-<a id="gethttpauthcredentials"></a>
 ## getHttpAuthCredentials
 
 ```TypeScript
@@ -98,7 +94,6 @@ static getHttpAuthCredentials(host: string, realm: string): Array<string>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
-<a id="savehttpauthcredentials"></a>
 ## saveHttpAuthCredentials
 
 ```TypeScript

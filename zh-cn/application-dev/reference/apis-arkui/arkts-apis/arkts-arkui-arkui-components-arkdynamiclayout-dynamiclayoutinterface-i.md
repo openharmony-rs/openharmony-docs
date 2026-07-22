@@ -1,7 +1,6 @@
 # DynamicLayoutInterface
 
 动态布局容器组件，支持在运行时动态切换不同的布局算法，不改变子组件的状态。
-
 > **说明：**
 
 **起始版本：** 24
@@ -16,7 +15,6 @@
 import { DynamicLayoutAttribute, DynamicLayout } from '@kit.ArkUI';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

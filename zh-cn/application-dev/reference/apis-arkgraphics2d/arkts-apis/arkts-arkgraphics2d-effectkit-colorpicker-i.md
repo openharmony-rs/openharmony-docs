@@ -1,6 +1,6 @@
 # ColorPicker
 
-取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker-1)创建一个ColorPicker实例。
+取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker)创建一个ColorPicker实例。
 
 **起始版本：** 9
 
@@ -14,7 +14,6 @@
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
-<a id="getaveragecolor"></a>
 ## getAverageColor
 
 ```TypeScript
@@ -73,7 +72,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="gethighestsaturationcolor"></a>
 ## getHighestSaturationColor
 
 ```TypeScript
@@ -132,7 +130,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="getlargestproportioncolor"></a>
 ## getLargestProportionColor
 
 ```TypeScript
@@ -191,7 +188,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="getmaincolor"></a>
 ## getMainColor
 
 ```TypeScript
@@ -252,7 +248,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="getmaincolorsync"></a>
 ## getMainColorSync
 
 ```TypeScript
@@ -311,7 +306,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="gettopproportioncolors"></a>
 ## getTopProportionColors
 
 ```TypeScript
@@ -380,7 +374,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="isblackorwhiteorgraycolor"></a>
 ## isBlackOrWhiteOrGrayColor
 
 ```TypeScript

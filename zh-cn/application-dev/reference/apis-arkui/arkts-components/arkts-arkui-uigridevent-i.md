@@ -1,6 +1,6 @@
 # UIGridEvent
 
-frameNode中[getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-1)方法的返回值，可用于给Grid节点设置滚动事件。
+frameNode中[getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent)方法的返回值，可用于给Grid节点设置滚动事件。
 
 UIGridEvent继承于[UIScrollableCommonEvent](arkts-arkui-uiscrollablecommonevent-i.md)。
 
@@ -12,14 +12,13 @@ UIGridEvent继承于[UIScrollableCommonEvent](arkts-arkui-uiscrollablecommoneven
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="setondidscroll"></a>
 ## setOnDidScroll
 
 ```TypeScript
 setOnDidScroll(callback: OnScrollCallback | undefined): void
 ```
 
-设置[onDidScroll](docroot://reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)事件的回调。
+设置[onDidScroll](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)事件的回调。
 
 方法入参为undefined时，会重置事件回调。
 
@@ -39,14 +38,13 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 | --- | --- | --- | --- |
 | callback | [OnScrollCallback](arkts-arkui-onscrollcallback-t.md) \| undefined | 是 | onDidScroll事件的回调函数。 |
 
-<a id="setonscrollindex"></a>
 ## setOnScrollIndex
 
 ```TypeScript
 setOnScrollIndex(callback: OnGridScrollIndexCallback | undefined): void
 ```
 
-设置[onScrollIndex](docroot://reference/apis-arkui/arkui-ts/ts-container-grid.md#onscrollindex)事件的回调。
+设置[onScrollIndex](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#onscrollindex)事件的回调。
 
 方法入参为undefined时，会重置事件回调。
 
@@ -66,14 +64,13 @@ setOnScrollIndex(callback: OnGridScrollIndexCallback | undefined): void
 | --- | --- | --- | --- |
 | callback | [OnGridScrollIndexCallback](arkts-arkui-ongridscrollindexcallback-t.md) \| undefined | 是 | onScrollIndex事件的回调函数。 |
 
-<a id="setonwillscroll"></a>
 ## setOnWillScroll
 
 ```TypeScript
 setOnWillScroll(callback: OnWillScrollCallback | undefined): void
 ```
 
-设置[onWillScroll](docroot://reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onwillscroll12)事件的回调。
+设置[onWillScroll](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onwillscroll12)事件的回调。
 
 方法入参为undefined时，会重置事件回调。
 

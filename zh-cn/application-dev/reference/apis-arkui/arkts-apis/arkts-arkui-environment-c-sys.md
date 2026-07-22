@@ -1,6 +1,6 @@
 # Environment
 
-Environment具体使用说明，详见[Environment(设备环境查询)](docroot://ui/state-management/arkts-environment.md)
+Environment具体使用说明，详见[Environment(设备环境查询)](../../../ui/state-management/arkts-environment.md)
 
 ## 内置环境变量说明
 
@@ -19,7 +19,6 @@ Environment具体使用说明，详见[Environment(设备环境查询)](docroot:
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

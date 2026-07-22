@@ -6,7 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createpicturebyhdrandsdrpixelmap"></a>
 ## createPictureByHdrAndSdrPixelMap
 
 ```TypeScript
@@ -82,7 +81,6 @@ async function CreatePictureTest(context: Context) {
 ```
 
 
-<a id="createpicturebyhdrandsdrpixelmap-1"></a>
 ## createPictureByHdrAndSdrPixelMap
 
 ```TypeScript
@@ -96,9 +94,7 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, 
-      params: GainmapParams): Promise<Picture>--><!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, 
-      params: GainmapParams): Promise<Picture>-End-->
+<!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap,       params: GainmapParams): Promise<Picture>--><!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap,       params: GainmapParams): Promise<Picture>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

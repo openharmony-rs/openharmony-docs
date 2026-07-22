@@ -6,7 +6,6 @@
 import { thermal } from '@kit.BasicServicesKit';
 ```
 
-<a id="subscribethermallevel"></a>
 ## subscribeThermalLevel
 
 ```TypeScript
@@ -19,7 +18,7 @@ function subscribeThermalLevel(callback: AsyncCallback<ThermalLevel>): void
 
 **废弃版本：** 9
 
-**替代接口：** [registerThermalLevelCallback](arkts-basicservices-thermal-registerthermallevelcallback-f.md#registerthermallevelcallback-1)
+**替代接口：** [registerThermalLevelCallback](arkts-basicservices-thermal-registerthermallevelcallback-f.md#registerthermallevelcallback)
 
 <!--Device-thermal-function subscribeThermalLevel(callback: AsyncCallback<ThermalLevel>): void--><!--Device-thermal-function subscribeThermalLevel(callback: AsyncCallback<ThermalLevel>): void-End-->
 

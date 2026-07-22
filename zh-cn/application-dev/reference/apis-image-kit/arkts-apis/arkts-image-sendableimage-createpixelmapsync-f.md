@@ -6,7 +6,6 @@
 import { sendableImage } from '@kit.ImageKit';
 ```
 
-<a id="createpixelmapsync"></a>
 ## createPixelMapSync
 
 ```TypeScript

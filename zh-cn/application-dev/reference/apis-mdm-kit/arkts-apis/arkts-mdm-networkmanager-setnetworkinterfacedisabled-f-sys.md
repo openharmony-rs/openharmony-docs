@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="setnetworkinterfacedisabled"></a>
 ## setNetworkInterfaceDisabled
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDi
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setnetworkinterfacedisabledsync-1)
+**替代接口：** [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setnetworkinterfacedisabledsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_NETWORK
 
@@ -74,7 +73,6 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true, (err) => {
 ```
 
 
-<a id="setnetworkinterfacedisabled-1"></a>
 ## setNetworkInterfaceDisabled
 
 ```TypeScript
@@ -87,7 +85,7 @@ function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDi
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setnetworkinterfacedisabledsync-1)
+**替代接口：** [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setnetworkinterfacedisabledsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_NETWORK
 

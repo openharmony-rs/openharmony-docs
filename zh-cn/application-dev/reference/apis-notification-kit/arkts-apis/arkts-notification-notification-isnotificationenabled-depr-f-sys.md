@@ -1,6 +1,5 @@
 # isNotificationEnabled（系统接口）
 
-<a id="isnotificationenabled"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -31,7 +30,6 @@ function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boo
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数。 |
 
 
-<a id="isnotificationenabled-1"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -67,7 +65,6 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 | Promise&lt;boolean&gt; | 以Promise形式返回获取指定应用的通知使能状态的结果。 |
 
 
-<a id="isnotificationenabled-2"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -97,7 +94,6 @@ function isNotificationEnabled(callback: AsyncCallback<boolean>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数。 |
 
 
-<a id="isnotificationenabled-3"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -127,7 +123,6 @@ function isNotificationEnabled(): Promise<boolean>
 | Promise&lt;boolean&gt; | 以Promise形式返回获取通知使能状态的结果。 |
 
 
-<a id="isnotificationenabled-4"></a>
 ## isNotificationEnabled
 
 ```TypeScript
@@ -158,7 +153,6 @@ function isNotificationEnabled(userId: number, callback: AsyncCallback<boolean>)
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
 
 
-<a id="isnotificationenabled-5"></a>
 ## isNotificationEnabled
 
 ```TypeScript

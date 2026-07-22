@@ -6,7 +6,6 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
-<a id="getextbundlestats"></a>
 ## getExtBundleStats
 
 ```TypeScript

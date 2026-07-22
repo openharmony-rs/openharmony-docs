@@ -74,7 +74,7 @@ dataSize: number
 
 /data/storage/${el1-el5}/database
 
-**说明**：${el1-el5}指的是[el1，el2，el3，el4，el5目录](docroot://file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。
+**说明**：${el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。
 
 **类型：** number
 

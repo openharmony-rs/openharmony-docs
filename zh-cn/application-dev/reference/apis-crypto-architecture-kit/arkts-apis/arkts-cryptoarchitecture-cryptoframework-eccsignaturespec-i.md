@@ -1,7 +1,6 @@
 # EccSignatureSpec
 
 包含（r、s）的ECC/SM2签名数据的对象。
-
 > **说明：**  
 >  
 > r和s的长度各为256位。

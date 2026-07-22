@@ -6,7 +6,6 @@
 import { sendableResourceManager } from '@kit.LocalizationKit';
 ```
 
-<a id="resourcetosendableresource"></a>
 ## resourceToSendableResource
 
 ```TypeScript

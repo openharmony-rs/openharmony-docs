@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="getallnetworkinterfaces"></a>
 ## getAllNetworkInterfaces
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getAllNetworkInterfaces(admin: Want, callback: AsyncCallback<Array<stri
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getAllNetworkInterfacesSync](arkts-mdm-networkmanager-getallnetworkinterfacessync-f.md#getallnetworkinterfacessync-1)
+**替代接口：** [getAllNetworkInterfacesSync](arkts-mdm-networkmanager-getallnetworkinterfacessync-f.md#getallnetworkinterfacessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -71,7 +70,6 @@ networkManager.getAllNetworkInterfaces(wantTemp, (err, result) => {
 ```
 
 
-<a id="getallnetworkinterfaces-1"></a>
 ## getAllNetworkInterfaces
 
 ```TypeScript
@@ -84,7 +82,7 @@ function getAllNetworkInterfaces(admin: Want): Promise<Array<string>>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getAllNetworkInterfacesSync](arkts-mdm-networkmanager-getallnetworkinterfacessync-f.md#getallnetworkinterfacessync-1)
+**替代接口：** [getAllNetworkInterfacesSync](arkts-mdm-networkmanager-getallnetworkinterfacessync-f.md#getallnetworkinterfacessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 

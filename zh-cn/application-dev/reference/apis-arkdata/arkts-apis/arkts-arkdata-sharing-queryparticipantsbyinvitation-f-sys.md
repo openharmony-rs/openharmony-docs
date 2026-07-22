@@ -6,7 +6,6 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
-<a id="queryparticipantsbyinvitation"></a>
 ## queryParticipantsByInvitation
 
 ```TypeScript
@@ -20,13 +19,7 @@ function queryParticipantsByInvitation(
 
 **起始版本：** 11
 
-<!--Device-sharing-function queryParticipantsByInvitation(
-      invitationCode: string,
-      callback: AsyncCallback<Result<Array<Participant>>>
-    ): void--><!--Device-sharing-function queryParticipantsByInvitation(
-      invitationCode: string,
-      callback: AsyncCallback<Result<Array<Participant>>>
-    ): void-End-->
+<!--Device-sharing-function queryParticipantsByInvitation(      invitationCode: string,      callback: AsyncCallback<Result<Array<Participant>>>    ): void--><!--Device-sharing-function queryParticipantsByInvitation(      invitationCode: string,      callback: AsyncCallback<Result<Array<Participant>>>    ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -63,7 +56,6 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', 
 ```
 
 
-<a id="queryparticipantsbyinvitation-1"></a>
 ## queryParticipantsByInvitation
 
 ```TypeScript

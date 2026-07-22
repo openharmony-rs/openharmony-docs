@@ -1,6 +1,5 @@
 # getUid
 
-<a id="getuid"></a>
 ## getUid
 
 ```TypeScript
@@ -84,7 +83,6 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="getuid-1"></a>
 ## getUid
 
 ```TypeScript

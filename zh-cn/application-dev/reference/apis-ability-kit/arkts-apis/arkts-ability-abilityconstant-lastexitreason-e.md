@@ -1,6 +1,6 @@
 # LastExitReason
 
-Ability上次退出原因，该类型为枚举，可配合UIAbility的[onCreate()](arkts-ability-app-ability-uiability-uiability-c.md#oncreate-1)方法根据launchParam.lastExitReason的不同类型执行相应操作。
+Ability上次退出原因，该类型为枚举，可配合UIAbility的[onCreate()](arkts-ability-app-ability-uiability-uiability-c.md#oncreate)方法根据launchParam.lastExitReason的不同类型执行相应操作。
 
 **起始版本：** 9
 
@@ -72,7 +72,7 @@ NORMAL = 2
 CPP_CRASH = 3
 ```
 
-[进程崩溃](docroot://dfx/cppcrash-guidelines.md)导致的应用程序退出。
+[进程崩溃](../../../dfx/cppcrash-guidelines.md)导致的应用程序退出。
 
 **起始版本：** 10
 
@@ -108,7 +108,7 @@ JS_ERROR = 4
 APP_FREEZE = 5
 ```
 
-[应用冻屏](docroot://dfx/appfreeze-guidelines.md)导致的应用程序退出。
+[应用冻屏](../../../dfx/appfreeze-guidelines.md)导致的应用程序退出。
 
 **起始版本：** 10
 

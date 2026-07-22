@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getborderwidth"></a>
 ## getBorderWidth
 
 ```TypeScript
@@ -33,7 +32,6 @@ getBorderWidth() : DirectionalEdgesT<number>
 | --- | --- |
 | [DirectionalEdgesT](../arkts-apis/arkts-arkui-directionaledgest-i.md)&lt;number&gt; | 子组件的borderWidth信息。 |
 
-<a id="getmargin"></a>
 ## getMargin
 
 ```TypeScript
@@ -58,7 +56,6 @@ getMargin() : DirectionalEdgesT<number>
 | --- | --- |
 | [DirectionalEdgesT](../arkts-apis/arkts-arkui-directionaledgest-i.md)&lt;number&gt; | 子组件的margin信息。 |
 
-<a id="getpadding"></a>
 ## getPadding
 
 ```TypeScript
@@ -83,7 +80,6 @@ getPadding() : DirectionalEdgesT<number>
 | --- | --- |
 | [DirectionalEdgesT](../arkts-apis/arkts-arkui-directionaledgest-i.md)&lt;number&gt; | 子组件的padding信息。 |
 
-<a id="measure"></a>
 ## measure
 
 ```TypeScript

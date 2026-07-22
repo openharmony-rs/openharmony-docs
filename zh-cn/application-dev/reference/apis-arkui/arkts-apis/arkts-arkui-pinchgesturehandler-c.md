@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -35,7 +34,6 @@ constructor(options?: PinchGestureHandlerOptions)
 | --- | --- | --- | --- |
 | options | [PinchGestureHandlerOptions](arkts-arkui-pinchgesturehandleroptions-i.md) | 否 | 捏合手势处理器配置参数。 |
 
-<a id="onactioncancel"></a>
 ## onActionCancel
 
 ```TypeScript
@@ -66,14 +64,13 @@ onActionCancel(event: Callback<void>): PinchGestureHandler
 | --- | --- |
 | [PinchGestureHandler](arkts-arkui-pinchgesturehandler-c.md) | 返回当前捏合手势处理器对象。 |
 
-<a id="onactioncancel-1"></a>
 ## onActionCancel
 
 ```TypeScript
 onActionCancel(event: Callback<GestureEvent>): PinchGestureHandler
 ```
 
-设置捏合手势处理器取消回调。捏合手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](arkts-arkui-pinchgesturehandler-c.md#onactioncancel-1)接口相比，此接口返回手势事件信息。
+设置捏合手势处理器取消回调。捏合手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](arkts-arkui-pinchgesturehandler-c.md#onactioncancel)接口相比，此接口返回手势事件信息。
 
 **起始版本：** 18
 
@@ -97,7 +94,6 @@ onActionCancel(event: Callback<GestureEvent>): PinchGestureHandler
 | --- | --- |
 | [PinchGestureHandler](arkts-arkui-pinchgesturehandler-c.md) | 返回当前捏合手势处理器对象。 |
 
-<a id="onactionend"></a>
 ## onActionEnd
 
 ```TypeScript
@@ -128,7 +124,6 @@ onActionEnd(event: Callback<GestureEvent>): PinchGestureHandler
 | --- | --- |
 | [PinchGestureHandler](arkts-arkui-pinchgesturehandler-c.md) | 返回当前捏合手势处理器对象。 |
 
-<a id="onactionstart"></a>
 ## onActionStart
 
 ```TypeScript
@@ -159,7 +154,6 @@ onActionStart(event: Callback<GestureEvent>): PinchGestureHandler
 | --- | --- |
 | [PinchGestureHandler](arkts-arkui-pinchgesturehandler-c.md) | 返回当前捏合手势处理器对象。 |
 
-<a id="onactionupdate"></a>
 ## onActionUpdate
 
 ```TypeScript

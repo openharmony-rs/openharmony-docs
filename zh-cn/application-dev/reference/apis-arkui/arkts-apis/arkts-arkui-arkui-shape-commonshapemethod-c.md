@@ -14,7 +14,6 @@
 import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 ```
 
-<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -47,7 +46,6 @@ fill(color: ResourceColor): T
 | --- | --- |
 | T | 返回当前对象。 |
 
-<a id="offset"></a>
 ## offset
 
 ```TypeScript
@@ -80,7 +78,6 @@ offset(offset: Position): T
 | --- | --- |
 | T | 返回当前对象。 |
 
-<a id="position"></a>
 ## position
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { statfs } from '@kit.CoreFileKit';
 ```
 
-<a id="getfreesizesync"></a>
 ## getFreeSizeSync
 
 ```TypeScript

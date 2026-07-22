@@ -6,7 +6,6 @@
 import { advertising } from '@kit.ConnectivityKit';
 ```
 
-<a id="startadvertising"></a>
 ## startAdvertising
 
 ```TypeScript

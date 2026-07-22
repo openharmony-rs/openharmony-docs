@@ -6,7 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="settouchpadscrollswitch"></a>
 ## setTouchpadScrollSwitch
 
 ```TypeScript
@@ -70,7 +69,6 @@ struct Index {
 ```
 
 
-<a id="settouchpadscrollswitch-1"></a>
 ## setTouchpadScrollSwitch
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="anonattestkeyitemoffline"></a>
 ## anonAttestKeyItemOffline
 
 ```TypeScript
@@ -14,13 +13,11 @@ function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promis
 ```
 
 离线模式下获取匿名化密钥证书。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 离线密钥证明依赖网络，需要定期联网使用该接口以更新离线证书，推荐优先使用离线匿名密钥证明。  
 >  
 > - 离线匿名密钥证明需保证本地时间是准确的，否则可能导致对端校验证书超期失败。
-
 > **说明**  
 > >  
 > - Offline key attestation depends on the network. You need to periodically connect to the network to use this API  
@@ -66,7 +63,7 @@ function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promis
 | [12000014](../errorcode-huks.md#12000014-内存不足) | The memory is insufficient. |
 | [12000018](../errorcode-huks.md#12000018-输入参数非法) | The parameter is incorrect. Possible causes:1. A mandatory parameter is left empty.2. The parameter type is incorrect.3. The parameter verification failed.4. The group ID specified by the access group tag is invalid. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | The operation times out. This may be caused by network jitter.You can try again later. |
-| 12000027 | The network is unavailable. Check network connections. |
+| [12000027](../errorcode-huks.md#12000027-网络不可用) | The network is unavailable. Check network connections. |
 
 **示例：**
 

@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="setabilityenabled"></a>
 ## setAbilityEnabled
 
 ```TypeScript
@@ -38,7 +37,6 @@ function setAbilityEnabled(info: AbilityInfo, isEnable: boolean, callback: Async
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 为返回操作结果而调用的回调。 |
 
 
-<a id="setabilityenabled-1"></a>
 ## setAbilityEnabled
 
 ```TypeScript

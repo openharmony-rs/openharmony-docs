@@ -14,7 +14,6 @@
 import { displaySync } from '@kit.ArkGraphics2D';
 ```
 
-<a id="off"></a>
 ## off('frame')
 
 ```TypeScript
@@ -52,7 +51,6 @@ backDisplaySync?.off("frame", callback)
 
 ```
 
-<a id="on"></a>
 ## on('frame')
 
 ```TypeScript
@@ -90,7 +88,6 @@ backDisplaySync?.start()
 
 ```
 
-<a id="setexpectedframeraterange"></a>
 ## setExpectedFrameRateRange
 
 ```TypeScript
@@ -135,7 +132,6 @@ backDisplaySync?.start()
 
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -203,7 +199,6 @@ struct Index {
 
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="stopmirror"></a>
 ## stopMirror
 
 ```TypeScript
@@ -58,7 +57,6 @@ screen.stopMirror(mirrorScreenIds, (err: BusinessError) => {
 ```
 
 
-<a id="stopmirror-1"></a>
 ## stopMirror
 
 ```TypeScript

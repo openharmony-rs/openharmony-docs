@@ -6,7 +6,6 @@
 import { dragInteraction } from '@kit.ArkUI';
 ```
 
-<a id="getdatasummary"></a>
 ## getDataSummary
 
 ```TypeScript

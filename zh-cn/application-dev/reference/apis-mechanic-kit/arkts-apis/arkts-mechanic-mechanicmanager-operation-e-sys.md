@@ -1,6 +1,6 @@
 # Operation（系统接口）
 
-Enumerates the user operations.
+用户操作
 
 **起始版本：** 20
 
@@ -16,7 +16,7 @@ Enumerates the user operations.
 CONNECT = 0
 ```
 
-Connection operation.
+连接操作
 
 **起始版本：** 20
 
@@ -32,7 +32,7 @@ Connection operation.
 DISCONNECT = 1
 ```
 
-Disconnection operation.
+断开操作
 
 **起始版本：** 20
 

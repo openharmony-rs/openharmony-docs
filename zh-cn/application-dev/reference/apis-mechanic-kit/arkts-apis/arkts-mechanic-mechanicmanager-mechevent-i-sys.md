@@ -1,6 +1,6 @@
 # MechEvent（系统接口）
 
-Definition of Mechanic device event.
+具身设备事件定义
 
 **起始版本：** 26.0.0
 
@@ -22,7 +22,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 event: MechEventType
 ```
 
-Event type of this event.
+事件类型
 
 **类型：** MechEventType
 
@@ -40,7 +40,7 @@ Event type of this event.
 mechId: number
 ```
 
-ID of the mechanical device.The value should be an integer.
+具身设备ID。取值限定为整数。
 
 **类型：** number
 

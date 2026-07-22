@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getpermissiondefsync"></a>
 ## getPermissionDefSync
 
 ```TypeScript

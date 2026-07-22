@@ -6,7 +6,6 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="createsubscribersync"></a>
 ## createSubscriberSync
 
 ```TypeScript

@@ -14,7 +14,6 @@ Defines the callback of createPdf, related to {@link createPDF} method.
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="pdfarraybuffer"></a>
 ## pdfArrayBuffer
 
 ```TypeScript

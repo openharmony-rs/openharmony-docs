@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="listfileext"></a>
 ## listFileExt
 
 ```TypeScript
@@ -22,13 +21,7 @@ declare function listFileExt(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare function listFileExt(
-  path: string,
-  options?: ListFileExtOptions
-): Promise<string[]>--><!--Device-unnamed-declare function listFileExt(
-  path: string,
-  options?: ListFileExtOptions
-): Promise<string[]>-End-->
+<!--Device-unnamed-declare function listFileExt(  path: string,  options?: ListFileExtOptions): Promise<string[]>--><!--Device-unnamed-declare function listFileExt(  path: string,  options?: ListFileExtOptions): Promise<string[]>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

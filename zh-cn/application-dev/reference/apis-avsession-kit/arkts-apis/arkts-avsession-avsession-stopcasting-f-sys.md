@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="stopcasting"></a>
 ## stopCasting
 
 ```TypeScript
@@ -52,7 +51,6 @@ avSession.stopCasting(myToken, () => {
 ```
 
 
-<a id="stopcasting-1"></a>
 ## stopCasting
 
 ```TypeScript

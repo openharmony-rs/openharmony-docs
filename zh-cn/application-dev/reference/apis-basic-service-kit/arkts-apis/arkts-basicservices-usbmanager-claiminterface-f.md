@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="claiminterface"></a>
 ## claimInterface
 
 ```TypeScript
@@ -14,7 +13,6 @@ function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolea
 ```
 
 声明对USB设备某个接口的控制权。
-
 > **说明：**  
 >  
 > 在USB编程中，claim interface是一个常见操作，指的是应用程序请求操作系统将某个USB接口从内核驱动中释放并交由用户空间程序控制。<br>  
@@ -30,15 +28,15 @@ function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 用于确定总线号和设备地址，需要调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice-1)获取。 |
-| iface | [USBInterface](arkts-basicservices-usb-usbinterface-i.md) | 是 | 用于确定需要获取接口的索引，需要调用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices-1)获取设备信息并通过id确定唯一接口。 |
+| pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 用于确定总线号和设备地址，需要调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice)获取。 |
+| iface | [USBInterface](arkts-basicservices-usb-usbinterface-i.md) | 是 | 用于确定需要获取接口的索引，需要调用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices)获取设备信息并通过id确定唯一接口。 |
 | force | boolean | 否 | 可选参数，是否强制获取。默认值为false?，表示不强制获取，用户按需选择。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | claim通信接口成功返回0；claim通信接口失败返回其他错误码如下：* - 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。* - 88080486：服务初始化中，请稍后重试。* - 88080488：无设备访问权限，请先调用[usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestright-1)接口申请授权。* - -1：驱动异常。 |
+| number | claim通信接口成功返回0；claim通信接口失败返回其他错误码如下：* - 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。* - 88080486：服务初始化中，请稍后重试。* - 88080488：无设备访问权限，请先调用[usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestright)接口申请授权。* - -1：驱动异常。 |
 
 **错误码：**
 

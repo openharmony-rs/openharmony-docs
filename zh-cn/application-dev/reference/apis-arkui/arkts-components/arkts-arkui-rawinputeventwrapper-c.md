@@ -7,14 +7,13 @@
 此类封装了原始的MouseEvent、TouchEvent或KeyEvent对象，并通过类型安全的方法访问。
 
 此类为抽象类，开发者无法自行创建实例。系统会在触发输入事件监听器时自动创建实例并传递回调函数。
-
 > **说明：**  
 >  
 > 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](arkts-arkui-eventtarget-i.md)、相对于组件的坐标  
-> [x](arkts-arkui-mouseevent-i.md#x)和[y](arkts-arkui-mouseevent-i.md#y)、[getCurrentLocalPosition](arkts-arkui-touchobject-i.md#getcurrentlocalposition-1)和  
+> [x](arkts-arkui-mouseevent-i.md#x)和[y](arkts-arkui-mouseevent-i.md#y)、[getCurrentLocalPosition](arkts-arkui-touchobject-i.md#getcurrentlocalposition)和  
 > [stopPropagation](arkts-arkui-touchevent-i.md#stoppropagation)方法、TouchEvent的[preventDefault](arkts-arkui-touchevent-i.md#preventdefault)和  
-> [getHistoricalPoints](arkts-arkui-touchevent-i.md#gethistoricalpoints-1)方法以及KeyEvent的[metaKey](arkts-arkui-keyevent-i.md#metakey)属性和  
-> [getModifierKeyState](arkts-arkui-keyevent-i.md#getmodifierkeystate-1)方法。
+> [getHistoricalPoints](arkts-arkui-touchevent-i.md#gethistoricalpoints)方法以及KeyEvent的[metaKey](arkts-arkui-keyevent-i.md#metakey)属性和  
+> [getModifierKeyState](arkts-arkui-keyevent-i.md#getmodifierkeystate)方法。
 
 **起始版本：** 26.0.0
 
@@ -22,7 +21,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="askeyevent"></a>
 ## asKeyEvent
 
 ```TypeScript
@@ -47,7 +45,6 @@ asKeyEvent(): KeyEvent | null
 | --- | --- |
 | [KeyEvent](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-keyevent-i.md) | Key event object if it is a key event, or **null** otherwise. |
 
-<a id="asmouseevent"></a>
 ## asMouseEvent
 
 ```TypeScript
@@ -72,7 +69,6 @@ asMouseEvent(): MouseEvent | null
 | --- | --- |
 | [MouseEvent](arkts-arkui-mouseevent-i.md) | Mouse event object if it is a mouse event, or **null** otherwise. |
 
-<a id="astouchevent"></a>
 ## asTouchEvent
 
 ```TypeScript
@@ -97,7 +93,6 @@ asTouchEvent(): TouchEvent | null
 | --- | --- |
 | [TouchEvent](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-touchevent-touchevent-i.md) | Touch event object if it is a touch event, or **null** otherwise. |
 
-<a id="iskeyevent"></a>
 ## isKeyEvent
 
 ```TypeScript
@@ -122,7 +117,6 @@ isKeyEvent(): boolean
 | --- | --- |
 | boolean | 判断是否为按键事件，如果是按键事件则返回true，否则返回false。 |
 
-<a id="ismouseevent"></a>
 ## isMouseEvent
 
 ```TypeScript
@@ -147,7 +141,6 @@ isMouseEvent(): boolean
 | --- | --- |
 | boolean | 判断是否为鼠标事件，如果是鼠标事件则返回true，否则返回false。 |
 
-<a id="istouchevent"></a>
 ## isTouchEvent
 
 ```TypeScript

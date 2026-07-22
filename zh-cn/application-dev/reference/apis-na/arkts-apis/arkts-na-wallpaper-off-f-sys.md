@@ -1,6 +1,5 @@
 # off（系统接口）
 
-<a id="off"></a>
 ## off('wallpaperChange')
 
 ```TypeScript
@@ -14,13 +13,7 @@ function off(
 
 **起始版本：** 10
 
-<!--Device-wallpaper-function off(
-    type: 'wallpaperChange',
-    callback?: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void
-  ): void--><!--Device-wallpaper-function off(
-    type: 'wallpaperChange',
-    callback?: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void
-  ): void-End-->
+<!--Device-wallpaper-function off(    type: 'wallpaperChange',    callback?: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void  ): void--><!--Device-wallpaper-function off(    type: 'wallpaperChange',    callback?: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void  ): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
 

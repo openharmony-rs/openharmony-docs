@@ -20,7 +20,7 @@ import { wantConstant } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Flags](arkts-ability-wantconstant-flags-e.md) | [Want.flags](./@ohos.app.ability.Want:Want.Flags)字段常用的系统预置关键字。开发者可以通过这些预置关键字设置或获取应用跳转等场景中额外携带的标志位信息。 |
+| [Flags](arkts-ability-wantconstant-flags-e.md) | [Want.flags](arkts-ability-app-ability-want-want-c.md#flags)字段常用的系统预置关键字。开发者可以通过这些预置关键字设置或获取应用跳转等场景中额外携带的标志位信息。 |
 | [Params](arkts-ability-wantconstant-params-e.md) | want的Params操作的常量。 |
 | [ShowMode](arkts-ability-wantconstant-showmode-e.md) | 表示[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)被拉起时的显示模式。 |
 

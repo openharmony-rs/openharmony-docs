@@ -6,7 +6,6 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-<a id="onerror"></a>
 ## onError
 
 ```TypeScript
@@ -33,7 +32,6 @@ onError(code: number, name: string, message: string): void
 | name | string | 是 | 拉起UIExtensionAbility执行失败时返回的名称。 |
 | message | string | 是 | 拉起UIExtensionAbility执行失败时返回的错误信息。 |
 
-<a id="onresult"></a>
 ## onResult
 
 ```TypeScript
@@ -56,7 +54,7 @@ onResult?(parameter: AbilityResult): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 当调用[terminateSelfWithResult](arkts-ability-uiextensioncontext-c.md#terminateselfwithresult-1)方法终止UIExtensionAbility时返回的结果。 |
+| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 当调用[terminateSelfWithResult](arkts-ability-uiextensioncontext-c.md#terminateselfwithresult)方法终止UIExtensionAbility时返回的结果。 |
 
 ## completionHandler
 

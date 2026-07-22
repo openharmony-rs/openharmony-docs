@@ -107,6 +107,19 @@
   - [DistributedHardwareErrorCode(系统接口)](arkts-distributedservice-hardwaremanager-distributedhardwareerrorcode-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [DistributedHardwareType(系统接口)](arkts-distributedservice-hardwaremanager-distributedhardwaretype-e-sys.md)<!--DelEnd-->
+- [@ohos.distributedSoftBus.conversation](arkts-distributedsoftbus-conversation.md)
+  <!--Del-->
+  - [getTrustedDevices(系统接口)](arkts-distributedservice-conversation-gettrusteddevices-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [postConversationData(系统接口)](arkts-distributedservice-conversation-postconversationdata-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [registerConversationListener(系统接口)](arkts-distributedservice-conversation-registerconversationlistener-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unregisterConversationListener(系统接口)](arkts-distributedservice-conversation-unregisterconversationlistener-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DeviceNodeInfo(系统接口)](arkts-distributedservice-conversation-devicenodeinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DataCallback(系统接口)](arkts-distributedservice-conversation-datacallback-t-sys.md)<!--DelEnd-->
 - [@ohos.distributedsched.abilityConnectionManager](arkts-distributedsched-abilityconnectionmanager.md)
   - [acceptConnect](arkts-distributedservice-abilityconnectionmanager-acceptconnect-f.md)
   - [connect](arkts-distributedservice-abilityconnectionmanager-connect-f.md)

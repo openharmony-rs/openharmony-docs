@@ -6,7 +6,6 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="enablegwpasangrayscale"></a>
 ## enableGwpAsanGrayscale
 
 ```TypeScript
@@ -62,7 +61,6 @@ taskpool.execute(enableGwpAsanTask).then(() => {
 ```
 
 
-<a id="enablegwpasangrayscale-1"></a>
 ## enableGwpAsanGrayscale
 
 ```TypeScript

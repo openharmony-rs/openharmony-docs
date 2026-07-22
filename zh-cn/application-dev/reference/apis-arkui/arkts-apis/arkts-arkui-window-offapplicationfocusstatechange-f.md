@@ -6,7 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="offapplicationfocusstatechange"></a>
 ## offApplicationFocusStateChange
 
 ```TypeScript

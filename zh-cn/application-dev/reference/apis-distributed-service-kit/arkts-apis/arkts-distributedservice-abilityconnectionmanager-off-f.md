@@ -6,7 +6,6 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="off"></a>
 ## off('connect')
 
 ```TypeScript
@@ -20,9 +19,7 @@ function off(type: 'connect', sessionId: number,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function off(type: 'connect', sessionId: number,
-        callback?: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function off(type: 'connect', sessionId: number,
-        callback?: Callback<EventCallbackInfo>): void-End-->
+<!--Device-abilityConnectionManager-function off(type: 'connect', sessionId: number,        callback?: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function off(type: 'connect', sessionId: number,        callback?: Callback<EventCallbackInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -53,7 +50,6 @@ abilityConnectionManager.off("connect", sessionId);
 ```
 
 
-<a id="off-1"></a>
 ## off('disconnect')
 
 ```TypeScript
@@ -67,9 +63,7 @@ function off(type: 'disconnect', sessionId: number,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function off(type: 'disconnect', sessionId: number,
-        callback?: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function off(type: 'disconnect', sessionId: number,
-        callback?: Callback<EventCallbackInfo>): void-End-->
+<!--Device-abilityConnectionManager-function off(type: 'disconnect', sessionId: number,        callback?: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function off(type: 'disconnect', sessionId: number,        callback?: Callback<EventCallbackInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -101,7 +95,6 @@ abilityConnectionManager.off("disconnect", sessionId);
 ```
 
 
-<a id="off-2"></a>
 ## off('receiveMessage')
 
 ```TypeScript
@@ -115,9 +108,7 @@ function off(type: 'receiveMessage', sessionId: number,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function off(type: 'receiveMessage', sessionId: number,
-        callback?: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function off(type: 'receiveMessage', sessionId: number,
-        callback?: Callback<EventCallbackInfo>): void-End-->
+<!--Device-abilityConnectionManager-function off(type: 'receiveMessage', sessionId: number,        callback?: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function off(type: 'receiveMessage', sessionId: number,        callback?: Callback<EventCallbackInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -149,7 +140,6 @@ abilityConnectionManager.off("receiveMessage", sessionId);
 ```
 
 
-<a id="off-3"></a>
 ## off('receiveData')
 
 ```TypeScript
@@ -163,9 +153,7 @@ function off(type: 'receiveData', sessionId: number,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function off(type: 'receiveData', sessionId: number,
-        callback?: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function off(type: 'receiveData', sessionId: number,
-        callback?: Callback<EventCallbackInfo>): void-End-->
+<!--Device-abilityConnectionManager-function off(type: 'receiveData', sessionId: number,        callback?: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function off(type: 'receiveData', sessionId: number,        callback?: Callback<EventCallbackInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 

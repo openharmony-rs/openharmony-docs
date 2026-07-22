@@ -16,7 +16,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="acquireauthorization"></a>
 ## acquireAuthorization
 
 ```TypeScript
@@ -84,7 +83,6 @@ try {
 
 ```
 
-<a id="hasauthorization"></a>
 ## hasAuthorization
 
 ```TypeScript
@@ -145,7 +143,6 @@ try {
 
 ```
 
-<a id="releaseauthorization"></a>
 ## releaseAuthorization
 
 ```TypeScript

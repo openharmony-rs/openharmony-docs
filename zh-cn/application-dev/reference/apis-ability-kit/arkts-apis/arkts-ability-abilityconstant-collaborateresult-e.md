@@ -1,6 +1,6 @@
 # CollaborateResult
 
-应用协同状态，该类型为枚举。用于多设备场景下，调用方应用拉起协同方应用时，协同方应用是否接受协同。需要配合UIAbility的[onCollaborate()](arkts-ability-app-ability-uiability-uiability-c.md#oncollaborate-1)方法进行设置。
+应用协同状态，该类型为枚举。用于多设备场景下，调用方应用拉起协同方应用时，协同方应用是否接受协同。需要配合UIAbility的[onCollaborate()](arkts-ability-app-ability-uiability-uiability-c.md#oncollaborate)方法进行设置。
 
 **起始版本：** 18
 

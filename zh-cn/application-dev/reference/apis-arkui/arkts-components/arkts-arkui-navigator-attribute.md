@@ -14,7 +14,6 @@ Navigator的属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="active"></a>
 ## active
 
 ```TypeScript
@@ -41,7 +40,6 @@ active(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 路由组件是否处于激活状态。设置为true时，组件处于激活态。设置为false时，组件不处于激活态。 |
 
-<a id="params"></a>
 ## params
 
 ```TypeScript
@@ -49,7 +47,6 @@ params(value: object)
 ```
 
 设置跳转时传递到目标页面的数据。
-
 > **说明：**
 
 **起始版本：** 7
@@ -68,9 +65,8 @@ params(value: object)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | object | 是 | 跳转时要同时传递到目标页面的数据，可在目标页面使用[router.getParams()](../arkts-apis/arkts-arkui-router-getparams-f.md#getparams-1)获得。 |
+| value | object | 是 | 跳转时要同时传递到目标页面的数据，可在目标页面使用[router.getParams()](../arkts-apis/arkts-arkui-router-getparams-f.md#getparams)获得。 |
 
-<a id="target"></a>
 ## target
 
 ```TypeScript
@@ -97,7 +93,6 @@ target(value: string)
 | --- | --- | --- | --- |
 | value | string | 是 | 跳转目标页面的路径。 |
 
-<a id="type"></a>
 ## type
 
 ```TypeScript
@@ -105,7 +100,6 @@ type(value: NavigationType)
 ```
 
 设置路由跳转方式。
-
 > **说明：**
 
 **起始版本：** 7

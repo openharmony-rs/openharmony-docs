@@ -6,7 +6,6 @@
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="getpowersavemode"></a>
 ## getPowerSaveMode
 
 ```TypeScript

@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="arc"></a>
 ## arc
 
 ```TypeScript
@@ -38,7 +37,6 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
 | endAngle | number | 是 | 弧线的终止弧度。单位：弧度。 |
 | counterclockwise | boolean | 否 | 是否逆时针绘制圆弧。<br>**true**：逆时针方向绘制圆弧。<br>**false**：顺时针方向绘制圆弧。<br>默认值：**false**，设置**null**或**undefined**按默认值处理。 |
 
-<a id="arcto"></a>
 ## arcTo
 
 ```TypeScript
@@ -67,7 +65,6 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
 | y2 | number | 是 | 圆弧经过的第二个点的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 | radius | number | 是 | 圆弧的圆半径值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 
-<a id="beziercurveto"></a>
 ## bezierCurveTo
 
 ```TypeScript
@@ -97,7 +94,6 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
 | x | number | 是 | 路径结束时的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 | y | number | 是 | 路径结束时的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 
-<a id="closepath"></a>
 ## closePath
 
 ```TypeScript
@@ -116,7 +112,6 @@ closePath(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="ellipse"></a>
 ## ellipse
 
 ```TypeScript
@@ -140,25 +135,7 @@ ellipse(
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-CanvasPath-ellipse(
-    x: number,
-    y: number,
-    radiusX: number,
-    radiusY: number,
-    rotation: number,
-    startAngle: number,
-    endAngle: number,
-    counterclockwise?: boolean,
-  ): void--><!--Device-CanvasPath-ellipse(
-    x: number,
-    y: number,
-    radiusX: number,
-    radiusY: number,
-    rotation: number,
-    startAngle: number,
-    endAngle: number,
-    counterclockwise?: boolean,
-  ): void-End-->
+<!--Device-CanvasPath-ellipse(    x: number,    y: number,    radiusX: number,    radiusY: number,    rotation: number,    startAngle: number,    endAngle: number,    counterclockwise?: boolean,  ): void--><!--Device-CanvasPath-ellipse(    x: number,    y: number,    radiusX: number,    radiusY: number,    rotation: number,    startAngle: number,    endAngle: number,    counterclockwise?: boolean,  ): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,7 +152,6 @@ ellipse(
 | endAngle | number | 是 | 椭圆绘制的结束点角度。单位：弧度。 |
 | counterclockwise | boolean | 否 | 是否以逆时针方向绘制椭圆。<br>**true**：逆时针方向绘制椭圆。<br>**false**：顺时针方向绘制椭圆。<br>默认值：**false**，设置**null**或**undefined**按默认值处理。 |
 
-<a id="lineto"></a>
 ## lineTo
 
 ```TypeScript
@@ -201,7 +177,6 @@ lineTo(x: number, y: number): void
 | x | number | 是 | 目标点X轴坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 | y | number | 是 | 目标点Y轴坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 
-<a id="moveto"></a>
 ## moveTo
 
 ```TypeScript
@@ -227,7 +202,6 @@ moveTo(x: number, y: number): void
 | x | number | 是 | 目标点X轴坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 | y | number | 是 | 目标点Y轴坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp * > **说明：**   >   > API version 18之前，如果没有调用**moveTo**接口或传入无效参数，路径从(0,0)开始。   >   > API version 18及以后，如果没有调用**moveTo**接口或传入无效参数，路径将从第一个有效调用的   > **lineTo**、**arcTo**、**bezierCurveTo**或**quadraticCurveTo**的起始点开始。* |
 
-<a id="quadraticcurveto"></a>
 ## quadraticCurveTo
 
 ```TypeScript
@@ -255,7 +229,6 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 | x | number | 是 | 路径结束时的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 | y | number | 是 | 路径结束时的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 
-<a id="rect"></a>
 ## rect
 
 ```TypeScript
@@ -283,7 +256,6 @@ rect(x: number, y: number, w: number, h: number): void
 | w | number | 是 | 指定矩形的宽度。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 | h | number | 是 | 指定矩形的高度。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。默认单位：vp |
 
-<a id="roundrect"></a>
 ## roundRect
 
 ```TypeScript

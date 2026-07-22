@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

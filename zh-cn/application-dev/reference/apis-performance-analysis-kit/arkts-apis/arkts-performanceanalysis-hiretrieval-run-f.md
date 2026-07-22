@@ -6,7 +6,6 @@
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="run"></a>
 ## run
 
 ```TypeScript

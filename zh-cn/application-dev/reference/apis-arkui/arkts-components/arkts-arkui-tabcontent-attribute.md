@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="onwillhide"></a>
 ## onWillHide
 
 ```TypeScript
@@ -20,10 +19,8 @@ onWillHide(event: VoidCallback)
 ```
 
 �߼��ص���TabContent��Ҫ���ص�ʱ�򴥷��ûص�����������TabContent�л���ҳ���л�������ǰ��̨�л���
-
 > **˵����**
-
-> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)�е��á�
+> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)�е��á�
 
 **起始版本：** 12
 
@@ -41,7 +38,6 @@ onWillHide(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | TabContent��Ҫ���صĻص������� |
 
-<a id="onwillshow"></a>
 ## onWillShow
 
 ```TypeScript
@@ -49,10 +45,8 @@ onWillShow(event: VoidCallback)
 ```
 
 �߼��ص���TabContent��Ҫ��ʾ��ʱ�򴥷��ûص�����������TabContent�״���ʾ��TabContent�л���ҳ���л�������ǰ��̨�л���
-
 > **˵����**
-
-> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)�е��á�
+> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)�е��á�
 
 **起始版本：** 12
 
@@ -70,7 +64,6 @@ onWillShow(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | TabContent��Ҫ��ʾ�Ļص������� |
 
-<a id="tabbar"></a>
 ## tabBar
 
 ```TypeScript
@@ -97,7 +90,6 @@ tabBar(options: string | Resource | CustomBuilder | TabBarOptions)
 | --- | --- | --- | --- |
 | options | string \| Resource \| CustomBuilder \| TabBarOptions | 是 | TabBar����ʾ���ݡ�<br/>CustomBuilder��?���������ڲ����Դ��������API version 8�汾�������ã���<br>**起始版本：** 18 |
 
-<a id="tabbar-1"></a>
 ## tabBar
 
 ```TypeScript
@@ -105,9 +97,7 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 ```
 
 ����TabBar����ʾ���ݡ��ײ���ʽû���»���Ч����icon�쳣ʱ��ʾ��ɫͼ�顣
-
 > **˵����**
-
 > - ��ҳǩ��[SubTabBarStyle](arkts-arkui-subtabbarstyle-c.md)����ʽ��ͨ��Ϊ����+�»��ߣ�����+�����ҳǩ������������ı���ʽ����������ڶ������ߵײ�ʹ�á��л�ҳǩʱĬ��֧�ֶ�����תЧ������������Ѷ  
 > ��Ӧ�õĶ������ࣨ��"��ע����Ƶ������"��������ģ��Ķ�������������  
 >  
@@ -128,7 +118,6 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 | --- | --- | --- | --- |
 | value | [SubTabBarStyle](arkts-arkui-subtabbarstyle-c.md) \| BottomTabBarStyle | 是 | TabBar����ʾ���ݡ�<br/>SubTabBarStyle��?��ҳǩ��ʽ��<br/>BottomTabBarStyle��?�ײ�ҳǩ�Ͳ��ҳǩ��ʽ�� |
 
-<a id="tabbar-2"></a>
 ## tabBar
 
 ```TypeScript
@@ -148,9 +137,7 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | 
-    TabBarOptions): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | 
-    TabBarOptions): TabContentAttribute-End-->
+<!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder |     TabBarOptions): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder |     TabBarOptions): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

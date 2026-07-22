@@ -6,7 +6,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="createavplayer"></a>
 ## createAVPlayer
 
 ```TypeScript
@@ -14,7 +13,6 @@ function createAVPlayer(callback: AsyncCallback<AVPlayer>): void
 ```
 
 创建音视频播放实例。使用callback异步回调。
-
 > **说明：**  
 >  
 > - 推荐单个应用创建的音视频播放实例（即音频、视频、音视频三类相加）不超过16个。<!--Del-->  
@@ -61,7 +59,6 @@ media.createAVPlayer((error: BusinessError, video: media.AVPlayer) => {
 ```
 
 
-<a id="createavplayer-1"></a>
 ## createAVPlayer
 
 ```TypeScript
@@ -69,7 +66,6 @@ function createAVPlayer(): Promise<AVPlayer>
 ```
 
 异步方式创建音视频播放实例。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 推荐单个应用创建的音视频播放实例（即音频、视频、音视频三类相加）不超过16个。<!--Del-->  

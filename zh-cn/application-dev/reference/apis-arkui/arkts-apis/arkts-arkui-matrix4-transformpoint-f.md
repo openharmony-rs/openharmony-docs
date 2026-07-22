@@ -6,7 +6,6 @@
 import { matrix4 } from '@kit.ArkUI';
 ```
 
-<a id="transformpoint"></a>
 ## transformPoint
 
 ```TypeScript
@@ -14,14 +13,13 @@ function transformPoint(options: [number, number]): [number, number]
 ```
 
 Matrix的坐标点转换函数，可以将当前的变换效果作用到一个坐标点上。
-
 > **说明：**
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [transformPoint](arkts-arkui-matrix4-matrix4transit-i.md#transformpoint-1)
+**替代接口：** [transformPoint](arkts-arkui-matrix4-matrix4transit-i.md#transformpoint)
 
 <!--Device-matrix4-function transformPoint(options: [number, number]): [number, number]--><!--Device-matrix4-function transformPoint(options: [number, number]): [number, number]-End-->
 

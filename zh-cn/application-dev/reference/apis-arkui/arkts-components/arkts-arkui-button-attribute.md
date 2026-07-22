@@ -12,18 +12,16 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="buttonstyle"></a>
 ## buttonStyle
 
 ```TypeScript
 buttonStyle(value: ButtonStyleMode)
 ```
 
-设置Button组件的样式和重要程度。根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor-1)、[fontColor](ButtonAttribute#fontColor)和[role](ButtonAttribute#role)接口设置，实际显示效果以最后一次设置为准。
-
+设置Button组件的样式和重要程度。根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor)、[fontColor](ButtonAttribute#fontColor)和[role](ButtonAttribute#role)接口设置，实际显示效果以最后一次设置为准。
 > **说明：**  
 >  
-> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -43,7 +41,6 @@ buttonStyle(value: ButtonStyleMode)
 | --- | --- | --- | --- |
 | value | [ButtonStyleMode](arkts-arkui-buttonstylemode-e.md) | 是 | Button组件的样式和重要程度。<br/>默认值：ButtonStyleMode.EMPHASIZED |
 
-<a id="contentmodifier"></a>
 ## contentModifier
 
 ```TypeScript
@@ -68,7 +65,6 @@ contentModifier(modifier: ContentModifier<ButtonConfiguration>)
 | --- | --- | --- | --- |
 | modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;ButtonConfiguration&gt; | 是 | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
-<a id="controlsize"></a>
 ## controlSize
 
 ```TypeScript
@@ -76,10 +72,9 @@ controlSize(value: ControlSize)
 ```
 
 设置Button组件的尺寸。
-
 > **说明：**  
 >  
-> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -99,7 +94,6 @@ controlSize(value: ControlSize)
 | --- | --- | --- | --- |
 | value | [ControlSize](arkts-arkui-controlsize-e.md) | 是 | Button组件的尺寸。<br/>默认值：ControlSize.NORMAL |
 
-<a id="fontcolor"></a>
 ## fontColor
 
 ```TypeScript
@@ -124,7 +118,6 @@ fontColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 文本显示颜色。<br/>默认值：$r('sys.color.font_on_primary')，显示为白色字体。 |
 
-<a id="fontfamily"></a>
 ## fontFamily
 
 ```TypeScript
@@ -149,7 +142,6 @@ fontFamily(value: string | Resource)
 | --- | --- | --- | --- |
 | value | string \| Resource | 是 | 字体列表。默认字体'HarmonyOS Sans'，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../arkts-apis/arkts-font.md)。 |
 
-<a id="fontsize"></a>
 ## fontSize
 
 ```TypeScript
@@ -174,7 +166,6 @@ fontSize(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 文本显示字号。<br/>默认值：当controlSize为ControlSize.NORMAL时，默认值为`$r('sys.float.Body_L')`。<br/>当controlSize为ControlSize.SMALL时，默认值为`$r('sys.float.Body_S')`。<br/>**说明**：设置string类型时，不支持百分比。 |
 
-<a id="fontstyle"></a>
 ## fontStyle
 
 ```TypeScript
@@ -199,7 +190,6 @@ fontStyle(value: FontStyle)
 | --- | --- | --- | --- |
 | value | [FontStyle](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontstyle-e.md) | 是 | 文本的字体样式。<br/>默认值：FontStyle.Normal |
 
-<a id="fontweight"></a>
 ## fontWeight
 
 ```TypeScript
@@ -224,7 +214,6 @@ fontWeight(value: number | FontWeight | string)
 | --- | --- | --- | --- |
 | value | number \| FontWeight \| string | 是 | 文本的字体粗细，number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br>默认值：500<br/>string类型仅支持number类型取值的字符串形式，例如'400'，以及'bold'、'bolder'、'lighter'、'regular'、'medium'，分别对应FontWeight中相应的枚举值。<br/>当值为异常值或非法值时，字体粗细取值为400。 |
 
-<a id="labelstyle"></a>
 ## labelStyle
 
 ```TypeScript
@@ -249,7 +238,6 @@ labelStyle(value: LabelStyle)
 | --- | --- | --- | --- |
 | value | [LabelStyle](arkts-arkui-labelstyle-i.md) | 是 | Button组件label文本和字体的样式。 |
 
-<a id="maxfontscale"></a>
 ## maxFontScale
 
 ```TypeScript
@@ -274,7 +262,6 @@ maxFontScale(scale: number | Resource)
 | --- | --- | --- | --- |
 | scale | number \| Resource | 是 | 文本最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。<br/>未设置最大缩放倍数时，圆形按钮最大缩放倍数为1倍，胶囊型按钮、普通按钮、圆角矩形按钮最大缩放倍数跟随系统设置。 |
 
-<a id="minfontscale"></a>
 ## minFontScale
 
 ```TypeScript
@@ -299,14 +286,13 @@ minFontScale(scale: number | Resource)
 | --- | --- | --- | --- |
 | scale | number \| Resource | 是 | 文本最小的字体缩放倍数。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理，设置的值大于1，按值为1处理，异常值默认不生效。 |
 
-<a id="role"></a>
 ## role
 
 ```TypeScript
 role(value: ButtonRole)
 ```
 
-设置Button组件的角色。根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor-1)、[fontColor](ButtonAttribute#fontColor)和[buttonStyle](ButtonAttribute#buttonStyle)接口设置，实际显示效果以最后一次设置为准。
+设置Button组件的角色。根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor)、[fontColor](ButtonAttribute#fontColor)和[buttonStyle](ButtonAttribute#buttonStyle)接口设置，实际显示效果以最后一次设置为准。
 
 **起始版本：** 12
 
@@ -326,7 +312,6 @@ role(value: ButtonRole)
 | --- | --- | --- | --- |
 | value | [ButtonRole](arkts-arkui-buttonrole-e.md) | 是 | 设置Button组件的角色。<br/>默认值：ButtonRole.NORMAL |
 
-<a id="stateeffect"></a>
 ## stateEffect
 
 ```TypeScript
@@ -351,7 +336,6 @@ stateEffect(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 按钮按下时是否开启按压态显示效果。<br/>true：开启按压效果；false：关闭按压效果。<br/>默认值：true |
 
-<a id="type"></a>
 ## type
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="getsyncnotificationenabledwithoutapp"></a>
 ## getSyncNotificationEnabledWithoutApp
 
 ```TypeScript
@@ -66,7 +65,6 @@ notificationManager.getSyncNotificationEnabledWithoutApp(userId, getSyncNotifica
 ```
 
 
-<a id="getsyncnotificationenabledwithoutapp-1"></a>
 ## getSyncNotificationEnabledWithoutApp
 
 ```TypeScript

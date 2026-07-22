@@ -6,7 +6,6 @@
 import { customConfig } from '@kit.BasicServicesKit';
 ```
 
-<a id="getchannelid"></a>
 ## getChannelId
 
 ```TypeScript

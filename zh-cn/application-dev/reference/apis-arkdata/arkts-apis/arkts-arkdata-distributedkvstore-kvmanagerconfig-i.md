@@ -40,7 +40,7 @@ context: BaseContext
 
 应用的上下文。
 
-FA模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)。
+FA模型的应用Context定义见[Context](arkts-arkdata-distributedkvstore-kvmanagerconfig-i.md#context)。
 
 Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md)。
 

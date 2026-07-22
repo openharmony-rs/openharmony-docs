@@ -2,8 +2,7 @@
 
 提供音频采集的相关接口。
 
-在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-1)获取AudioCapturer实例。
-
+在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer)获取AudioCapturer实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 8开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="offreadmicindata"></a>
 ## offReadMicInData
 
 ```TypeScript
@@ -53,7 +51,6 @@ offReadMicInData(callback?: Callback<AudioCapturerMicInData>): void
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted at running state. |
 
-<a id="onreadmicindata"></a>
 ## onReadMicInData
 
 ```TypeScript
@@ -85,7 +82,6 @@ onReadMicInData(callback: Callback<AudioCapturerMicInData>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted at running state. |
 
-<a id="setinputdevicetoaccessory"></a>
 ## setInputDeviceToAccessory
 
 ```TypeScript

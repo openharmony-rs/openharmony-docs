@@ -6,7 +6,6 @@
 import { serial } from '@kit.BasicServicesKit';
 ```
 
-<a id="addportauthorization"></a>
 ## addPortAuthorization
 
 ```TypeScript

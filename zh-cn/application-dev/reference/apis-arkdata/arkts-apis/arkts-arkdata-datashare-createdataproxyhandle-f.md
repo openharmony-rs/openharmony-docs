@@ -6,7 +6,6 @@
 import { dataShare } from '@kit.ArkData';
 ```
 
-<a id="createdataproxyhandle"></a>
 ## createDataProxyHandle
 
 ```TypeScript

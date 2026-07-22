@@ -28,7 +28,7 @@ SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED = 4
 SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5
 ```
 
-申请AUDIO_PLAYBACK类型长时任务，但是未接入[AVSession](docroot://media/avsession/avsession-overview.md)。
+申请AUDIO_PLAYBACK类型长时任务，但是未接入[AVSession](../../../media/avsession/avsession-overview.md)。
 
 **起始版本：** 20
 

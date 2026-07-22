@@ -1,6 +1,5 @@
 # mkdtempSync
 
-<a id="mkdtempsync"></a>
 ## mkdtempSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function mkdtempSync(prefix: string): string
 
 **废弃版本：** 9
 
-**替代接口：** [fs:mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md#mkdtempsync-1)
+**替代接口：** [fs:mkdtempSync](arkts-corefile-fileio-mkdtempsync-f.md#mkdtempsync)
 
 <!--Device-unnamed-declare function mkdtempSync(prefix: string): string--><!--Device-unnamed-declare function mkdtempSync(prefix: string): string-End-->
 

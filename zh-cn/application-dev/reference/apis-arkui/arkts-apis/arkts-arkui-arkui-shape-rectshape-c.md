@@ -18,7 +18,6 @@
 import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -45,7 +44,6 @@ constructor(options?: RectShapeOptions | RoundRectShapeOptions)
 | --- | --- | --- | --- |
 | options | [RectShapeOptions](arkts-arkui-arkui-shape-rectshapeoptions-i.md) \| RoundRectShapeOptions | 否 | 矩形形状参数。 |
 
-<a id="radius"></a>
 ## radius
 
 ```TypeScript
@@ -78,7 +76,6 @@ radius(radius: number | string | Array<number | string>): RectShape
 | --- | --- |
 | [RectShape](arkts-arkui-arkui-shape-rectshape-c.md) | 返回RectShape对象。 |
 
-<a id="radiusheight"></a>
 ## radiusHeight
 
 ```TypeScript
@@ -111,7 +108,6 @@ radiusHeight(rHeight: number | string): RectShape
 | --- | --- |
 | [RectShape](arkts-arkui-arkui-shape-rectshape-c.md) | 返回RectShape对象。 |
 
-<a id="radiuswidth"></a>
 ## radiusWidth
 
 ```TypeScript

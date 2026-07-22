@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="off"></a>
 ## off('printerStateChange')
 
 ```TypeScript
@@ -52,7 +51,6 @@ print.off('printerStateChange', (data: boolean) => {
 ```
 
 
-<a id="off-1"></a>
 ## off('jobStateChange')
 
 ```TypeScript
@@ -98,7 +96,6 @@ print.off('jobStateChange', (data: boolean) => {
 ```
 
 
-<a id="off-2"></a>
 ## off('extInfoChange')
 
 ```TypeScript

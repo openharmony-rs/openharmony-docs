@@ -1,7 +1,6 @@
 # TapGestureInterface
 
 支持单击、双击和多次点击事件的识别。
-
 > **说明：**  
 >  
 > 当组件同时绑定双击和单击手势且双击手势先绑定时，单击手势会有300ms的延时。
@@ -14,7 +13,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -45,7 +43,6 @@
 | --- | --- |
 | [TapGestureInterface](arkts-arkui-tapgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onaction"></a>
 ## onAction
 
 ```TypeScript

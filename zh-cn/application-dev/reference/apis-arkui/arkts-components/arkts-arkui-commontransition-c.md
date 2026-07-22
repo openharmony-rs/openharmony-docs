@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="opacity"></a>
 ## opacity
 
 ```TypeScript
@@ -54,7 +52,6 @@ opacity(value: number): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="scale"></a>
 ## scale
 
 ```TypeScript
@@ -83,7 +80,6 @@ scale(value: ScaleOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="slide"></a>
 ## slide
 
 ```TypeScript
@@ -112,7 +108,6 @@ slide(value: SlideEffect): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="translate"></a>
 ## translate
 
 ```TypeScript

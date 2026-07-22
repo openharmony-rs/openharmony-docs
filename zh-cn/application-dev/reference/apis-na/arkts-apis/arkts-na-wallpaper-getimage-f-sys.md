@@ -1,6 +1,5 @@
 # getImage（系统接口）
 
-<a id="getimage"></a>
 ## getImage
 
 ```TypeScript
@@ -51,7 +50,6 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErr
 ```
 
 
-<a id="getimage-1"></a>
 ## getImage
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { scan } from '@kit.BasicServicesKit';
 ```
 
-<a id="off"></a>
 ## off('scanDeviceFound')
 
 ```TypeScript
@@ -51,7 +50,6 @@ scan.off('scanDeviceFound', callback);
 ```
 
 
-<a id="off-1"></a>
 ## off('scanDeviceSync')
 
 ```TypeScript

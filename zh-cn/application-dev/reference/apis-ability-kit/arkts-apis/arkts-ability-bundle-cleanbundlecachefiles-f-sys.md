@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="cleanbundlecachefiles"></a>
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -37,7 +36,6 @@ function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 
-<a id="cleanbundlecachefiles-1"></a>
 ## cleanBundleCacheFiles
 
 ```TypeScript

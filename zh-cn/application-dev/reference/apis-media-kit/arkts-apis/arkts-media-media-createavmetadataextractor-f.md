@@ -6,7 +6,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="createavmetadataextractor"></a>
 ## createAVMetadataExtractor
 
 ```TypeScript
@@ -53,7 +52,6 @@ media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) =>
 ```
 
 
-<a id="createavmetadataextractor-1"></a>
 ## createAVMetadataExtractor
 
 ```TypeScript

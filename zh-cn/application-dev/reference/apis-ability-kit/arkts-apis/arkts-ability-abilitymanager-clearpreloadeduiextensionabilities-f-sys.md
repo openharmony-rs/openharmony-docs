@@ -6,7 +6,6 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
-<a id="clearpreloadeduiextensionabilities"></a>
 ## clearPreloadedUIExtensionAbilities
 
 ```TypeScript

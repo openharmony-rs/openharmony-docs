@@ -16,7 +16,6 @@ PIN码认证基类。
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -46,7 +45,6 @@ let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
 
 ```
 
-<a id="registerinputer"></a>
 ## registerInputer
 
 ```TypeScript
@@ -103,7 +101,6 @@ try {
 
 ```
 
-<a id="unregisterinputer"></a>
 ## unregisterInputer
 
 ```TypeScript

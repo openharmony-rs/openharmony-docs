@@ -8,7 +8,6 @@ TextContentControllerBase
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="gettext"></a>
 ## getText
 
 ```TypeScript

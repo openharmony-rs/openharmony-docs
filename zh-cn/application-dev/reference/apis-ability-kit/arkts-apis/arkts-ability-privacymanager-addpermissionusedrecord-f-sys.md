@@ -6,7 +6,6 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
-<a id="addpermissionusedrecord"></a>
 ## addPermissionUsedRecord
 
 ```TypeScript
@@ -23,25 +22,13 @@ function addPermissionUsedRecord(
 
 权限使用记录包括：调用方的应用身份标识、使用的应用权限名称，以及调用方访问本应用成功和失败的次数。
 
-权限使用记录受[setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus-1)设置的开关状态控制。开关关闭时，调用此接口不会产生权限使用记录。
+权限使用记录受[setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus)设置的开关状态控制。开关关闭时，调用此接口不会产生权限使用记录。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
-<!--Device-privacyManager-function addPermissionUsedRecord(
-    tokenID: int,
-    permissionName: Permissions,
-    successCount: int,
-    failCount: int,
-    options?: AddPermissionUsedRecordOptions
-  ): Promise<void>--><!--Device-privacyManager-function addPermissionUsedRecord(
-    tokenID: int,
-    permissionName: Permissions,
-    successCount: int,
-    failCount: int,
-    options?: AddPermissionUsedRecordOptions
-  ): Promise<void>-End-->
+<!--Device-privacyManager-function addPermissionUsedRecord(    tokenID: int,    permissionName: Permissions,    successCount: int,    failCount: int,    options?: AddPermissionUsedRecordOptions  ): Promise<void>--><!--Device-privacyManager-function addPermissionUsedRecord(    tokenID: int,    permissionName: Permissions,    successCount: int,    failCount: int,    options?: AddPermissionUsedRecordOptions  ): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -51,7 +38,7 @@ function addPermissionUsedRecord(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenID | number | 是 | 目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
+| tokenID | number | 是 | 目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync)。 |
 | permissionName | Permissions | 是 | 需要记录的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
 | successCount | number | 是 | 访问成功的次数。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：取值必须为非负整数。 |
 | failCount | number | 是 | 访问失败的次数。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：取值必须为非负整数。 |
@@ -104,7 +91,6 @@ privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1,
 ```
 
 
-<a id="addpermissionusedrecord-1"></a>
 ## addPermissionUsedRecord
 
 ```TypeScript
@@ -121,25 +107,13 @@ function addPermissionUsedRecord(
 
 权限使用记录包括：调用方的应用身份标识、使用的应用权限名称，以及调用方访问本应用成功和失败的次数。
 
-权限使用记录受[setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus-1)设置的开关状态控制。开关关闭时，调用此接口不会产生权限使用记录。
+权限使用记录受[setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus)设置的开关状态控制。开关关闭时，调用此接口不会产生权限使用记录。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
-<!--Device-privacyManager-function addPermissionUsedRecord(
-    tokenID: int,
-    permissionName: Permissions,
-    successCount: int,
-    failCount: int,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-privacyManager-function addPermissionUsedRecord(
-    tokenID: int,
-    permissionName: Permissions,
-    successCount: int,
-    failCount: int,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-privacyManager-function addPermissionUsedRecord(    tokenID: int,    permissionName: Permissions,    successCount: int,    failCount: int,    callback: AsyncCallback<void>  ): void--><!--Device-privacyManager-function addPermissionUsedRecord(    tokenID: int,    permissionName: Permissions,    successCount: int,    failCount: int,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -149,7 +123,7 @@ function addPermissionUsedRecord(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenID | number | 是 | 目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
+| tokenID | number | 是 | 目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync)。 |
 | permissionName | Permissions | 是 | 需要记录的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
 | successCount | number | 是 | 访问成功的次数。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：取值必须为非负整数。 |
 | failCount | number | 是 | 访问失败的次数。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：取值必须为非负整数。 |

@@ -6,7 +6,6 @@
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
 ```
 
-<a id="getsync"></a>
 ## getSync
 
 ```TypeScript
@@ -14,6 +13,13 @@ function getSync(key: string, def?: string): string
 ```
 
 获取系统参数key对应的值。
+> **说明：**  
+>  
+> getSync和get方法都用于获取系统参数值：  
+> - getSync：同步方法，直接返回系统参数值，适用于简单同步场景。  
+> - get：异步方法，使用callback或Promise异步返回结果，适用于需要异步处理的场景。  
+>  
+> 开发者应根据具体场景选择合适的方法。
 
 **起始版本：** 9
 

@@ -14,7 +14,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -41,7 +40,6 @@ Callback when the change label is clicked.
 | --- | --- | --- | --- |
 | callback | (prevIndex: number, index: number) =&gt; void | 是 | Callback triggered when the page is switched.<br/>prevIndex: Index of the step page before the switching.<br>Value range:[0, +∞).<br/>index: Index of the step page after the switching, that is, index of the previous or next page.<br>Value range: [0, +∞). |
 
-<a id="onfinish"></a>
 ## onFinish
 
 ```TypeScript
@@ -68,7 +66,6 @@ Callback when the finish label is clicked.
 | --- | --- | --- | --- |
 | callback | () =&gt; void | 是 | Invoked when the **nextLabel** of the last **StepperItem** in the **Stepper** is clicked and the **ItemState** attribute is set to **Normal**. |
 
-<a id="onnext"></a>
 ## onNext
 
 ```TypeScript
@@ -95,7 +92,6 @@ Callback when the next label is clicked.
 | --- | --- | --- | --- |
 | callback | (index: number, pendingIndex: number) =&gt; void | 是 | Callback triggered when the page is switched.<br/>index: Index of the current step page.<br/>pendingIndex: Index of the next step page. |
 
-<a id="onprevious"></a>
 ## onPrevious
 
 ```TypeScript
@@ -122,7 +118,6 @@ Callback when the previous label is clicked.
 | --- | --- | --- | --- |
 | callback | (index: number, pendingIndex: number) =&gt; void | 是 | Callback triggered when the page is switched.<br/>index: Index of the current step page.<br/>pendingIndex: Index of the next step page. |
 
-<a id="onskip"></a>
 ## onSkip
 
 ```TypeScript

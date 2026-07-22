@@ -6,7 +6,6 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
-<a id="getuninstalldisposedrule"></a>
 ## getUninstallDisposedRule
 
 ```TypeScript
@@ -29,7 +28,7 @@ function getUninstallDisposedRule(appIdentifier: string, appIndex?: number): Uni
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appIdentifier | string | 是 | 要获取卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](docroot://quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appIdentifier | string | 是 | 要获取卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 | appIndex | number | 否 | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示获取主应用的卸载处置规则。appIndex大于0时，表示获取指定分身应用的卸载处置规则。 |
 
 **返回值：**

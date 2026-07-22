@@ -10,14 +10,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="points"></a>
 ## points
 
 ```TypeScript
 points(value: Array<any>)
 ```
 
-设置折线经过坐标点列表，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置折线经过坐标点列表，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 

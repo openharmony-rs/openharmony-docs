@@ -1,6 +1,5 @@
 # getInspectorNodes（系统接口）
 
-<a id="getinspectornodes"></a>
 ## getInspectorNodes
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function getInspectorNodes(): object
 
 **废弃版本：** 9
 
-**替代接口：** [getInspectorTree](arkts-arkui-global-getinspectortree-f.md#getinspectortree-1)
+**替代接口：** [getInspectorTree](arkts-arkui-global-getinspectortree-f.md#getinspectortree)
 
 <!--Device-unnamed-declare function getInspectorNodes(): object--><!--Device-unnamed-declare function getInspectorNodes(): object-End-->
 

@@ -42,29 +42,29 @@ modifier?: ImageModifier
 
 1.透明度。
 
-通过[opacity](arkts-arkui-commonmethod-c.md#opacity-1)设置不透明度，不透明度的取值范围为0-1。设置0或不设置时采用背板图透明度的默认值0.95，设置1或异常值时不透明。
+通过[opacity](arkts-arkui-commonmethod-c.md#opacity)设置不透明度，不透明度的取值范围为0-1。设置0或不设置时采用背板图透明度的默认值0.95，设置1或异常值时不透明。
 
 2.阴影。
 
-通过[shadow](arkts-arkui-commonmethod-c.md#shadow-1)设置阴影。
+通过[shadow](arkts-arkui-commonmethod-c.md#shadow)设置阴影。
 
 3.背景模糊度。
 
-通过[backgroundEffect](arkts-arkui-commonmethod-c.md#backgroundeffect-1)或[backgroundBlurStyle](arkts-arkui-commonmethod-c.md#backgroundblurstyle-1)设置背景模糊度，如果两者同时设置，以后设置的属性为准。
+通过[backgroundEffect](arkts-arkui-commonmethod-c.md#backgroundeffect)或[backgroundBlurStyle](arkts-arkui-commonmethod-c.md#backgroundblurstyle)设置背景模糊度，如果两者同时设置，以后设置的属性为准。
 
 4.圆角。
 
-通过[border](arkts-arkui-commonmethod-c.md#border-1)或[borderRadius](arkts-arkui-commonmethod-c.md#borderradius-1)设置圆角，当同时在mode和modifier中设置圆角，mode设置的圆角显示优先级低于modifier设置。
+通过[border](arkts-arkui-commonmethod-c.md#border)或[borderRadius](arkts-arkui-commonmethod-c.md#borderradius)设置圆角，当同时在mode和modifier中设置圆角，mode设置的圆角显示优先级低于modifier设置。
 
 5.材质效果，从API版本26.0.0开始支持。
 
-通过[systemMaterial](arkts-arkui-commonmethod-c.md#systemmaterial-1)设置系统材质效果。
+通过[systemMaterial](arkts-arkui-commonmethod-c.md#systemmaterial)设置系统材质效果。
 
 默认值：空，拖拽背板不设置背板图样式。
 
 **说明：**
 
-1.若节点已设置背景模糊或材质效果，直接用作拖拽预览会导致截图包含这些效果，与拖拽modifier属性冲突。建议使用[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview-1)自定义不包含背景模糊和材质效果的预览。
+1.若节点已设置背景模糊或材质效果，直接用作拖拽预览会导致截图包含这些效果，与拖拽modifier属性冲突。建议使用[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview)自定义不包含背景模糊和材质效果的预览。
 
 2.[ImmersiveMaterial](@ohos.arkui.uiMaterial:ImmersiveMaterial#immersivematerial)的[colorInvert](@ohos.arkui.uiMaterial:ImmersiveOptions#colorInvert)参数在拖拽中不生效。
 

@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="off"></a>
 ## off('accessibilityStateChange')
 
 ```TypeScript
@@ -50,7 +49,6 @@ accessibility.off('accessibilityStateChange', (data: boolean) => {
 ```
 
 
-<a id="off-1"></a>
 ## off('touchGuideStateChange')
 
 ```TypeScript
@@ -94,7 +92,6 @@ accessibility.off('touchGuideStateChange', (data: boolean) => {
 ```
 
 
-<a id="off-2"></a>
 ## off('screenReaderStateChange')
 
 ```TypeScript
@@ -138,7 +135,6 @@ accessibility.off('screenReaderStateChange', (data: boolean) => {
 ```
 
 
-<a id="off-3"></a>
 ## off('touchModeChange')
 
 ```TypeScript

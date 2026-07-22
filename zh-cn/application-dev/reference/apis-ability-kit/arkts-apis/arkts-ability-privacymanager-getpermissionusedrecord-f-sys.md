@@ -6,7 +6,6 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
-<a id="getpermissionusedrecord"></a>
 ## getPermissionUsedRecord
 
 ```TypeScript
@@ -74,7 +73,6 @@ privacyManager.getPermissionUsedRecord(request).then((data) => {
 ```
 
 
-<a id="getpermissionusedrecord-1"></a>
 ## getPermissionUsedRecord
 
 ```TypeScript
@@ -89,11 +87,7 @@ function getPermissionUsedRecord(
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
-<!--Device-privacyManager-function getPermissionUsedRecord(
-    request: PermissionUsedRequest,
-    callback: AsyncCallback<PermissionUsedResponse>): void--><!--Device-privacyManager-function getPermissionUsedRecord(
-    request: PermissionUsedRequest,
-    callback: AsyncCallback<PermissionUsedResponse>): void-End-->
+<!--Device-privacyManager-function getPermissionUsedRecord(    request: PermissionUsedRequest,    callback: AsyncCallback<PermissionUsedResponse>): void--><!--Device-privacyManager-function getPermissionUsedRecord(    request: PermissionUsedRequest,    callback: AsyncCallback<PermissionUsedResponse>): void-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 

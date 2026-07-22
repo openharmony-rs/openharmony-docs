@@ -6,7 +6,6 @@
 import { WantAgent } from '@kit.AbilityKit';
 ```
 
-<a id="triggerasync"></a>
 ## triggerAsync
 
 ```TypeScript

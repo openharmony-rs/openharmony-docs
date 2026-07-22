@@ -16,7 +16,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="registerinputer"></a>
 ## registerInputer
 
 ```TypeScript
@@ -75,7 +74,6 @@ try {
 
 ```
 
-<a id="unregisterinputer"></a>
 ## unregisterInputer
 
 ```TypeScript

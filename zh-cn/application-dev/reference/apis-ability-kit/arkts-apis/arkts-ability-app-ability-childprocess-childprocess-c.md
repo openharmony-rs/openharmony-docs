@@ -14,7 +14,6 @@
 import { ChildProcess } from '@kit.AbilityKit';
 ```
 
-<a id="onstart"></a>
 ## onStart
 
 ```TypeScript

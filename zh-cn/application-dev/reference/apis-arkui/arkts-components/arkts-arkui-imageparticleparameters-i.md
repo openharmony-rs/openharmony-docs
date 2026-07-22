@@ -58,7 +58,7 @@ size: ParticleTuple<Dimension, Dimension>
 src: ResourceStr
 ```
 
-图片路径，支持本地图片和网络图片，引用方式请参考[加载图片资源](docroot://ui/arkts-graphics-display.md#加载图片资源)。
+图片路径，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。
 
 暂不支持svg图片类型。
 

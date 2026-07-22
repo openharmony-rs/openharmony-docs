@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="getabilitylists"></a>
 ## getAbilityLists
 
 ```TypeScript
@@ -23,17 +22,9 @@ function getAbilityLists(
 
 **废弃版本：** 9
 
-**替代接口：** [getAccessibilityExtensionList(abilityType:](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist-1)
+**替代接口：** [getAccessibilityExtensionList(abilityType:](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist)
 
-<!--Device-accessibility-function getAbilityLists(
-    abilityType: AbilityType,
-    stateType: AbilityState,
-    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>
-  ): void--><!--Device-accessibility-function getAbilityLists(
-    abilityType: AbilityType,
-    stateType: AbilityState,
-    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>
-  ): void-End-->
+<!--Device-accessibility-function getAbilityLists(    abilityType: AbilityType,    stateType: AbilityState,    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>  ): void--><!--Device-accessibility-function getAbilityLists(    abilityType: AbilityType,    stateType: AbilityState,    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>  ): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -65,7 +56,6 @@ accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, da
 ```
 
 
-<a id="getabilitylists-1"></a>
 ## getAbilityLists
 
 ```TypeScript
@@ -78,7 +68,7 @@ function getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Pro
 
 **废弃版本：** 9
 
-**替代接口：** [getAccessibilityExtensionList(abilityType:](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist-1)
+**替代接口：** [getAccessibilityExtensionList(abilityType:](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist)
 
 <!--Device-accessibility-function getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise<Array<AccessibilityAbilityInfo>>--><!--Device-accessibility-function getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise<Array<AccessibilityAbilityInfo>>-End-->
 

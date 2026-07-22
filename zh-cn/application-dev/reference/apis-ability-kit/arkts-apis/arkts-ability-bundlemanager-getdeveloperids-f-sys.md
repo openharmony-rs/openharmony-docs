@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getdeveloperids"></a>
 ## getDeveloperIds
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
-<a id="isscreenon"></a>
 ## isScreenOn
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isScreenOn(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [isActive](arkts-basicservices-power-isactive-f.md#isactive-1)
+**替代接口：** [isActive](arkts-basicservices-power-isactive-f.md#isactive)
 
 <!--Device-power-function isScreenOn(callback: AsyncCallback<boolean>): void--><!--Device-power-function isScreenOn(callback: AsyncCallback<boolean>): void-End-->
 
@@ -45,7 +44,6 @@ power.isScreenOn((err: BusinessError, data: boolean) => {
 ```
 
 
-<a id="isscreenon-1"></a>
 ## isScreenOn
 
 ```TypeScript
@@ -58,7 +56,7 @@ function isScreenOn(): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [isActive](arkts-basicservices-power-isactive-f.md#isactive-1)
+**替代接口：** [isActive](arkts-basicservices-power-isactive-f.md#isactive)
 
 <!--Device-power-function isScreenOn(): Promise<boolean>--><!--Device-power-function isScreenOn(): Promise<boolean>-End-->
 

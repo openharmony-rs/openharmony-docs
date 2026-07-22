@@ -2,11 +2,11 @@
 
 ImagePacker类，用于图片压缩和编码。
 
-在调用ImagePacker的方法前，需要先通过[image.createImagePacker](arkts-image-image-createimagepacker-f.md#createimagepacker-1)构建一个ImagePacker实例。
+在调用ImagePacker的方法前，需要先通过[image.createImagePacker](arkts-image-image-createimagepacker-f.md#createimagepacker)构建一个ImagePacker实例。
 
 编码期间，请避免修改或释放作为输入的ImageSource/PixelMap/Picture对象，以免出现crash或其他未定义行为。
 
-由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用[release](arkts-image-image-imagepacker-i.md#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用[release](arkts-image-image-imagepacker-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 当前支持的格式有：JPEG、WebP、PNG、HEIC<sup>12+</sup>、GIF<sup>18+</sup>、从API版本26.0.0开始支持TIFF格式（不同硬件设备支持情况不同，可通过ImagePacker的supportedFormats属性查看）。
 
@@ -22,7 +22,6 @@ ImagePacker类，用于图片压缩和编码。
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="packbinaryimagetotiffdata"></a>
 ## packBinaryImageToTiffData
 
 ```TypeScript
@@ -59,7 +58,6 @@ packBinaryImageToTiffData(bufferInfo: BinaryBufferInfo, options?: PackingOptions
 | [7800202](../errorcode-image.md#7800202-imagepacker无效参数) | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
-<a id="packbinaryimagetotifffile"></a>
 ## packBinaryImageToTiffFile
 
 ```TypeScript
@@ -97,7 +95,6 @@ packBinaryImageToTiffFile(bufferInfo: BinaryBufferInfo, fd: number, options?: Pa
 | [7800202](../errorcode-image.md#7800202-imagepacker无效参数) | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
-<a id="packtodata"></a>
 ## packToData
 
 ```TypeScript
@@ -141,7 +138,6 @@ packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
-<a id="packtodata-1"></a>
 ## packToData
 
 ```TypeScript
@@ -149,7 +145,6 @@ packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>
 ```
 
 图片压缩或重新编码。使用Promise异步回调。
-
 > **注意：**  
 >  
 > 接口如果返回401错误码，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -189,7 +184,6 @@ packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
-<a id="packtodatafrompixelmapsequence"></a>
 ## packToDataFromPixelmapSequence
 
 ```TypeScript
@@ -224,7 +218,6 @@ packToDataFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, options: Packi
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types;3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Failed to encode image. |
 
-<a id="packtofile"></a>
 ## packToFile
 
 ```TypeScript
@@ -262,7 +255,6 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
-<a id="packtofile-1"></a>
 ## packToFile
 
 ```TypeScript
@@ -305,7 +297,6 @@ packToFile(source: ImageSource, fd: number, options: PackingOption): Promise<voi
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
-<a id="packtofile-2"></a>
 ## packToFile
 
 ```TypeScript
@@ -313,7 +304,6 @@ packToFile(source: PixelMap, fd: number, options: PackingOption, callback: Async
 ```
 
 指定编码参数，将PixelMap直接编码进文件。使用callback异步回调。
-
 > **注意：**  
 >  
 > 接口如果返回62980115错误码，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -347,7 +337,6 @@ packToFile(source: PixelMap, fd: number, options: PackingOption, callback: Async
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
-<a id="packtofile-3"></a>
 ## packToFile
 
 ```TypeScript
@@ -355,7 +344,6 @@ packToFile(source: PixelMap, fd: number, options: PackingOption): Promise<void>
 ```
 
 指定编码参数，将PixelMap直接编码进文件。使用Promise异步回调。
-
 > **注意：**  
 >  
 > 接口如果返回62980115错误码，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -394,7 +382,6 @@ packToFile(source: PixelMap, fd: number, options: PackingOption): Promise<void>
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
-<a id="packtofile-4"></a>
 ## packToFile
 
 ```TypeScript
@@ -430,7 +417,6 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
-<a id="packtofilefrompixelmapsequence"></a>
 ## packToFileFromPixelmapSequence
 
 ```TypeScript
@@ -466,7 +452,6 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: number, op
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types;3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Failed to encode image. |
 
-<a id="packing"></a>
 ## packing
 
 ```TypeScript
@@ -474,16 +459,15 @@ packing(source: ImageSource, option: PackingOption, callback: AsyncCallback<Arra
 ```
 
 图片压缩或重新编码。使用callback异步回调。
-
 > **说明：**  
 >  
-> [packToData](arkts-image-image-imagepacker-i.md#packtodata-1)代替。
+> [packToData](arkts-image-image-imagepacker-i.md#packtodata)代替。
 
 **起始版本：** 6
 
 **废弃版本：** 13
 
-**替代接口：** [packToData](arkts-image-image-imagepacker-i.md#packtodata-1)
+**替代接口：** [packToData](arkts-image-image-imagepacker-i.md#packtodata)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -499,7 +483,6 @@ packing(source: ImageSource, option: PackingOption, callback: AsyncCallback<Arra
 | option | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
 
-<a id="packing-1"></a>
 ## packing
 
 ```TypeScript
@@ -507,16 +490,15 @@ packing(source: ImageSource, option: PackingOption): Promise<ArrayBuffer>
 ```
 
 图片压缩或重新编码。使用Promise异步回调。
-
 > **说明：**  
 >  
-> [packToData](arkts-image-image-imagepacker-i.md#packtodata-1)代替。
+> [packToData](arkts-image-image-imagepacker-i.md#packtodata)代替。
 
 **起始版本：** 6
 
 **废弃版本：** 13
 
-**替代接口：** [packToData](arkts-image-image-imagepacker-i.md#packtodata-1)
+**替代接口：** [packToData](arkts-image-image-imagepacker-i.md#packtodata)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -537,7 +519,6 @@ packing(source: ImageSource, option: PackingOption): Promise<ArrayBuffer>
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
-<a id="packing-2"></a>
 ## packing
 
 ```TypeScript
@@ -545,10 +526,9 @@ packing(source: PixelMap, option: PackingOption, callback: AsyncCallback<ArrayBu
 ```
 
 图片压缩或重新编码。使用callback异步回调。
-
 > **说明：**  
 >  
-> [packToData](arkts-image-image-imagepacker-i.md#packtodata-1)代替。  
+> [packToData](arkts-image-image-imagepacker-i.md#packtodata)代替。  
 > > **注意：**  
 >  
 > 接口如果返回"PixelMap mismatch"，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -557,7 +537,7 @@ packing(source: PixelMap, option: PackingOption, callback: AsyncCallback<ArrayBu
 
 **废弃版本：** 13
 
-**替代接口：** [packToData](arkts-image-image-imagepacker-i.md#packtodata-1)
+**替代接口：** [packToData](arkts-image-image-imagepacker-i.md#packtodata)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -573,7 +553,6 @@ packing(source: PixelMap, option: PackingOption, callback: AsyncCallback<ArrayBu
 | option | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
 
-<a id="packing-3"></a>
 ## packing
 
 ```TypeScript
@@ -581,10 +560,9 @@ packing(source: PixelMap, option: PackingOption): Promise<ArrayBuffer>
 ```
 
 图片压缩或重新编码。使用Promise异步回调。
-
 > **说明：**  
 >  
-> [packToData](arkts-image-image-imagepacker-i.md#packtodata-1)代替。  
+> [packToData](arkts-image-image-imagepacker-i.md#packtodata)代替。  
 > > **注意：**  
 >  
 > 接口如果返回"PixelMap mismatch"，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -593,7 +571,7 @@ packing(source: PixelMap, option: PackingOption): Promise<ArrayBuffer>
 
 **废弃版本：** 13
 
-**替代接口：** [packToData](arkts-image-image-imagepacker-i.md#packtodata-1)
+**替代接口：** [packToData](arkts-image-image-imagepacker-i.md#packtodata)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -614,7 +592,6 @@ packing(source: PixelMap, option: PackingOption): Promise<ArrayBuffer>
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
-<a id="packing-4"></a>
 ## packing
 
 ```TypeScript
@@ -649,7 +626,6 @@ packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -674,7 +650,6 @@ release(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当释放图片编码实例成功，err为undefined，否则为错误对象。 |
 
-<a id="release-1"></a>
 ## release
 
 ```TypeScript

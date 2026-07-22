@@ -6,7 +6,6 @@
 import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
-<a id="getcfgfilessync"></a>
 ## getCfgFilesSync
 
 ```TypeScript

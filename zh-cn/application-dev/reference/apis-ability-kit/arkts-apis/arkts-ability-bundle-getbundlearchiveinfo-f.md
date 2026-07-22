@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getbundlearchiveinfo"></a>
 ## getBundleArchiveInfo
 
 ```TypeScript
@@ -32,7 +31,6 @@ function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInfo&gt; | 是 | 程序启动作为入参的回调函数，返回HAP中包含的应用程序包的信息。 |
 
 
-<a id="getbundlearchiveinfo-1"></a>
 ## getBundleArchiveInfo
 
 ```TypeScript

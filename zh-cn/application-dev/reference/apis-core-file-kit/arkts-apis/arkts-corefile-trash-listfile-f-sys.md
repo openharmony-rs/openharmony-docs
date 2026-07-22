@@ -6,7 +6,6 @@
 import { trash } from '@kit.CoreFileKit';
 ```
 
-<a id="listfile"></a>
 ## listFile
 
 ```TypeScript

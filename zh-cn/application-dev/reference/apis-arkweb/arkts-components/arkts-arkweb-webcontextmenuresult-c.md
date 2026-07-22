@@ -8,7 +8,6 @@ Defines the context menu result, related to {@link WebContextMenuResult} method.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="closecontextmenu"></a>
 ## closeContextMenu
 
 ```TypeScript
@@ -25,7 +24,6 @@ closeContextMenu(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -42,7 +40,6 @@ WebContextMenuResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="copy"></a>
 ## copy
 
 ```TypeScript
@@ -59,7 +56,6 @@ copy(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="copyimage"></a>
 ## copyImage
 
 ```TypeScript
@@ -76,7 +72,6 @@ copyImage(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="cut"></a>
 ## cut
 
 ```TypeScript
@@ -93,7 +88,6 @@ cut(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="paste"></a>
 ## paste
 
 ```TypeScript
@@ -110,7 +104,6 @@ paste(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="pasteandmatchstyle"></a>
 ## pasteAndMatchStyle
 
 ```TypeScript
@@ -125,7 +118,6 @@ pasteAndMatchStyle(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="redo"></a>
 ## redo
 
 ```TypeScript
@@ -140,7 +132,6 @@ redo(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="requestpasswordautofill"></a>
 ## requestPasswordAutoFill
 
 ```TypeScript
@@ -155,7 +146,6 @@ requestPasswordAutoFill(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="saveimage"></a>
 ## saveImage
 
 ```TypeScript
@@ -172,7 +162,6 @@ saveImage(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="selectall"></a>
 ## selectAll
 
 ```TypeScript
@@ -189,7 +178,6 @@ selectAll(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="undo"></a>
 ## undo
 
 ```TypeScript

@@ -10,7 +10,6 @@ CommonShapeMethod
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="antialias"></a>
 ## antiAlias
 
 ```TypeScript
@@ -41,7 +40,6 @@ Indicates whether to enable anti-aliasing
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -72,7 +70,6 @@ Fill color.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="fillopacity"></a>
 ## fillOpacity
 
 ```TypeScript
@@ -103,7 +100,6 @@ fill Opacity
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="stroke"></a>
 ## stroke
 
 ```TypeScript
@@ -134,7 +130,6 @@ border Color
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="strokedasharray"></a>
 ## strokeDashArray
 
 ```TypeScript
@@ -165,7 +160,6 @@ Sets the gap for the border.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="strokedashoffset"></a>
 ## strokeDashOffset
 
 ```TypeScript
@@ -196,7 +190,6 @@ Offset from the start point of the border drawing.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="strokelinecap"></a>
 ## strokeLineCap
 
 ```TypeScript
@@ -227,7 +220,6 @@ Path endpoint drawing style.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="strokelinejoin"></a>
 ## strokeLineJoin
 
 ```TypeScript
@@ -258,7 +250,6 @@ Border corner drawing style.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="strokemiterlimit"></a>
 ## strokeMiterLimit
 
 ```TypeScript
@@ -289,7 +280,6 @@ Limits for drawing acute angles as bevels
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="strokeopacity"></a>
 ## strokeOpacity
 
 ```TypeScript
@@ -320,7 +310,6 @@ Sets the opacity of the border.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="strokewidth"></a>
 ## strokeWidth
 
 ```TypeScript

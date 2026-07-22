@@ -6,7 +6,6 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
-<a id="createassetloaderstub"></a>
 ## createAssetLoaderStub
 
 ```TypeScript

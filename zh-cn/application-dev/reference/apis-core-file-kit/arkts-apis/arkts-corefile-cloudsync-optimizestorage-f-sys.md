@@ -6,7 +6,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="optimizestorage"></a>
 ## optimizeStorage
 
 ```TypeScript

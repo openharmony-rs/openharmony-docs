@@ -32,7 +32,7 @@ readonly host: string
 readonly linkFeature: string
 ```
 
-标识 URI 提供的[功能类型](docroot://application-models/app-uri-config.md#linkfeature标签说明)，用于实现应用间跳转，仅在AbilityInfo中存在。
+标识 URI 提供的[功能类型](../../../application-models/app-uri-config.md#linkfeature标签说明)，用于实现应用间跳转，仅在AbilityInfo中存在。
 
 **类型：** string
 

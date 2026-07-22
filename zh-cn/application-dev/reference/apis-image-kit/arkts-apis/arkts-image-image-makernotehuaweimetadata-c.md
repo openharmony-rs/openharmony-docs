@@ -18,7 +18,6 @@ MakerNoteHuaweiMetadata implements Metadata
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="clone"></a>
 ## clone
 
 ```TypeScript
@@ -41,7 +40,6 @@ clone(): Promise<MakerNoteHuaweiMetadata>
 | --- | --- |
 | Promise&lt;MakerNoteHuaweiMetadata&gt; | Promise对象，当成功获取元数据时返回MakerNoteHuaweiMetadata元数据实例。 |
 
-<a id="createinstance"></a>
 ## createInstance
 
 ```TypeScript
@@ -64,7 +62,6 @@ static createInstance(): MakerNoteHuaweiMetadata
 | --- | --- |
 | [MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md) | 返回MakerNoteHuaweiMetadata的空实例。 |
 
-<a id="getallproperties"></a>
 ## getAllProperties
 
 ```TypeScript
@@ -87,7 +84,6 @@ getAllProperties(): Promise<Record<string, string | null>>
 | --- | --- |
 | Promise&lt;Record&lt;string, string \| null&gt;&gt; | Promise对象，返回元数据中定义的所有键值对。 |
 
-<a id="getblob"></a>
 ## getBlob
 
 ```TypeScript
@@ -110,7 +106,6 @@ getBlob(): Promise<ArrayBuffer>
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise对象，返回元数据的二进制数据。 |
 
-<a id="getproperties"></a>
 ## getProperties
 
 ```TypeScript
@@ -147,7 +142,6 @@ getProperties(key: Array<string>): Promise<Record<string, string | null>>
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-不支持的元数据读写) | Unsupported metadata. Possible causes: unsupported metadata type. |
 
-<a id="setblob"></a>
 ## setBlob
 
 ```TypeScript
@@ -182,7 +176,6 @@ setBlob(blob: ArrayBuffer): Promise<void>
 | --- | --- |
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
 
-<a id="setproperties"></a>
 ## setProperties
 
 ```TypeScript

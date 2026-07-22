@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="activatesim"></a>
 ## activateSim
 
 ```TypeScript
@@ -58,7 +57,6 @@ sim.activateSim(0, (err: BusinessError) => {
 ```
 
 
-<a id="activatesim-1"></a>
 ## activateSim
 
 ```TypeScript

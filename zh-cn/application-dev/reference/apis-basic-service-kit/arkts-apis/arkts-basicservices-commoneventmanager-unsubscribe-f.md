@@ -6,7 +6,6 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="unsubscribe"></a>
 ## unsubscribe
 
 ```TypeScript

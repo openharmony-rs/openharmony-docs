@@ -8,7 +8,6 @@ Defines the content transition effect.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="identity"></a>
 ## IDENTITY
 
 ```TypeScript
@@ -33,7 +32,6 @@ When the content changes, there is no animation effect.
 | --- | --- |
 | [ContentTransitionEffect](arkts-arkui-contenttransitioneffect-c.md) |  |
 
-<a id="opacity"></a>
 ## OPACITY
 
 ```TypeScript

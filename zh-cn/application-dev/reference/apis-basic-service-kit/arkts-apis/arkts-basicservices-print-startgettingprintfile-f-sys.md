@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="startgettingprintfile"></a>
 ## startGettingPrintFile
 
 ```TypeScript
@@ -20,9 +19,7 @@ function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, 
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
-<!--Device-print-function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: int,
-    onFileStateChanged: Callback<PrintFileCreationState>): void--><!--Device-print-function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: int,
-    onFileStateChanged: Callback<PrintFileCreationState>): void-End-->
+<!--Device-print-function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: int,    onFileStateChanged: Callback<PrintFileCreationState>): void--><!--Device-print-function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: int,    onFileStateChanged: Callback<PrintFileCreationState>): void-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

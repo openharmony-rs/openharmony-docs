@@ -6,7 +6,6 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="requestsuspenddelay"></a>
 ## requestSuspendDelay
 
 ```TypeScript
@@ -14,10 +13,9 @@ function requestSuspendDelay(reason: string, callback: Callback<void>): DelaySus
 ```
 
 申请短时任务。
-
 > **说明：**  
 >  
-> 短时任务的申请和使用过程中的约束与限制请参考[指南](docroot://task-management/transient-task.md#约束与限制)。
+> 短时任务的申请和使用过程中的约束与限制请参考[指南](../../../task-management/transient-task.md#约束与限制)。
 
 **起始版本：** 9
 

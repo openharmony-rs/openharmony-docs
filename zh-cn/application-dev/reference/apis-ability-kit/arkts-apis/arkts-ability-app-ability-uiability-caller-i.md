@@ -1,6 +1,6 @@
 # Caller
 
-调用方Caller UIAbility通过[startAbilityByCall](arkts-ability-uiabilitycontext-c.md#startabilitybycall-1)接口拉起目标Callee UIAbility，目标UIAbility启动成功后，返回一个Caller对象给调用方进行通信。
+调用方Caller UIAbility通过[startAbilityByCall](arkts-ability-uiabilitycontext-c.md#startabilitybycall)接口拉起目标Callee UIAbility，目标UIAbility启动成功后，返回一个Caller对象给调用方进行通信。
 
 **起始版本：** 9
 
@@ -14,7 +14,6 @@
 import { Callee, Caller, OnReleaseCallback, OnRemoteStateChangeCallback, CalleeCallback } from '@kit.AbilityKit';
 ```
 
-<a id="call"></a>
 ## call
 
 ```TypeScript
@@ -113,7 +112,6 @@ export default class MainUIAbility extends UIAbility {
 
 ```
 
-<a id="callwithresult"></a>
 ## callWithResult
 
 ```TypeScript
@@ -215,7 +213,6 @@ export default class MainUIAbility extends UIAbility {
 
 ```
 
-<a id="off"></a>
 ## off('release')
 
 ```TypeScript
@@ -278,7 +275,6 @@ export default class MainUIAbility extends UIAbility {
 
 ```
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -341,7 +337,6 @@ export default class MainUIAbility extends UIAbility {
 
 ```
 
-<a id="on"></a>
 ## on('release')
 
 ```TypeScript
@@ -404,7 +399,6 @@ export default class MainUIAbility extends UIAbility {
 
 ```
 
-<a id="onrelease"></a>
 ## onRelease
 
 ```TypeScript
@@ -465,7 +459,6 @@ export default class MainUIAbility extends UIAbility {
 
 ```
 
-<a id="onremotestatechange"></a>
 ## onRemoteStateChange
 
 ```TypeScript
@@ -529,7 +522,6 @@ export default class MainAbility extends UIAbility {
 
 ```
 
-<a id="release"></a>
 ## release
 
 ```TypeScript

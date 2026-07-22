@@ -16,7 +16,6 @@ childprocess 对象可用于创建新的进程。
 import { process } from '@kit.ArkTS';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -33,7 +32,6 @@ close(): void
 
 **系统接口：** 此接口为系统接口。
 
-<a id="geterroroutput"></a>
 ## getErrorOutput
 
 ```TypeScript
@@ -56,7 +54,6 @@ getErrorOutput(): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 返回子进程的标准错误输出。 |
 
-<a id="getoutput"></a>
 ## getOutput
 
 ```TypeScript
@@ -79,7 +76,6 @@ getOutput(): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 返回子进程的标准输出。 |
 
-<a id="kill"></a>
 ## kill
 
 ```TypeScript
@@ -102,7 +98,6 @@ kill(signal: number | string): void
 | --- | --- | --- | --- |
 | signal | number \| string | 是 | number 或 string，表示发送的信号。 |
 
-<a id="wait"></a>
 ## wait
 
 ```TypeScript

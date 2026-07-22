@@ -1,10 +1,10 @@
 # AbilityStage
 
-AbilityStage是一个[Module](docroot://quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，用于进行Module级别的资源预加载、线程创建等初始化操作，以及维护Module下的应用状态。AbilityStage与Module一一对应，即一个Module拥有一个AbilityStage。
+AbilityStage是一个[Module](../../../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，用于进行Module级别的资源预加载、线程创建等初始化操作，以及维护Module下的应用状态。AbilityStage与Module一一对应，即一个Module拥有一个AbilityStage。
 
-应用的[HAP](docroot://quick-start/hap-package.md)/[HSP](docroot://quick-start/in-app-hsp.md)在首次加载时会创建一个AbilityStage实例。当一个Module中存在AbilityStage和其他组件（UIAbility/ExtensionAbility组件），AbilityStage实例会早于其他组件实例创建。
+应用的[HAP](../../../quick-start/hap-package.md)/[HSP](../../../quick-start/in-app-hsp.md)在首次加载时会创建一个AbilityStage实例。当一个Module中存在AbilityStage和其他组件（UIAbility/ExtensionAbility组件），AbilityStage实例会早于其他组件实例创建。
 
-AbilityStage拥有[onCreate()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate-1)、[onDestroy()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#ondestroy-1)生命周期回调和[onAcceptWant()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onacceptwant-1)、[onConfigurationUpdate()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onconfigurationupdate-1)、[onMemoryLevel()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onmemorylevel-1)事件回调等。
+AbilityStage拥有[onCreate()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)、[onDestroy()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#ondestroy)生命周期回调和[onAcceptWant()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onacceptwant)、[onConfigurationUpdate()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onconfigurationupdate)、[onMemoryLevel()](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onmemorylevel)事件回调等。
 
 **起始版本：** 9
 
@@ -18,7 +18,6 @@ AbilityStage拥有[onCreate()](arkts-ability-app-ability-abilitystage-abilitysta
 import { AbilityStage } from '@kit.AbilityKit';
 ```
 
-<a id="onabouttocreateability"></a>
 ## onAboutToCreateAbility
 
 ```TypeScript
@@ -49,20 +48,18 @@ export default class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="onacceptwant"></a>
 ## onAcceptWant
 
 ```TypeScript
 onAcceptWant(want: Want): string
 ```
 
-当启动模式配置为[specified](docroot://application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个string作为待启动的UIAbility实例的唯一标识。同步接口，不支持异步回调。
+当启动模式配置为[specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个string作为待启动的UIAbility实例的唯一标识。同步接口，不支持异步回调。
 
 如果系统中已经有相同标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。
-
 > **说明：**  
 >  
-> 从API version 20开始，当[AbilityStage.onAcceptWantAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onacceptwantasync-1)实现时，本回调函数将不会被触发。
+> 从API version 20开始，当[AbilityStage.onAcceptWantAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onacceptwantasync)实现时，本回调函数将不会被触发。
 
 **起始版本：** 9
 
@@ -100,14 +97,13 @@ export default class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="onacceptwantasync"></a>
 ## onAcceptWantAsync
 
 ```TypeScript
 onAcceptWantAsync(want: Want): Promise<string>
 ```
 
-当启动模式配置为[specified](docroot://application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个string作为待启动的UIAbility实例的唯一标识。使用Promise异步回调。
+当启动模式配置为[specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个string作为待启动的UIAbility实例的唯一标识。使用Promise异步回调。
 
 如果系统中已经有相同标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。
 
@@ -150,7 +146,6 @@ class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="onconfigurationupdate"></a>
 ## onConfigurationUpdate
 
 ```TypeScript
@@ -158,12 +153,11 @@ onConfigurationUpdate(newConfig: Configuration): void
 ```
 
 当系统全局配置（例如系统语言、深浅色等）发生变更时，会触发该回调。配置项均定义在[Configuration](arkts-ability-app-ability-configuration-configuration-i.md)类中。同步接口，不支持异步回调。
-
 > **说明：**  
 >  
-> 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](arkts-ability-applicationcontext-c.md#setlanguage-1)接口  
+> 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](arkts-ability-applicationcontext-c.md#setlanguage)接口  
 > 设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见  
-> [使用场景](docroot://application-models/subscribe-system-environment-variable-changes.md#使用场景)。
+> [使用场景](../../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
 
 **起始版本：** 9
 
@@ -194,7 +188,6 @@ export default class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -228,7 +221,6 @@ export default class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript
@@ -260,7 +252,6 @@ export default class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="onlaunchfromhypersnap"></a>
 ## onLaunchFromHyperSnap
 
 ```TypeScript
@@ -291,7 +282,6 @@ export default class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="onmemorylevel"></a>
 ## onMemoryLevel
 
 ```TypeScript
@@ -301,7 +291,6 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 该接口用于监听系统内存状态变化。当整机可用内存变化到指定程度时，系统会触发该回调。开发者可通过实现此接口，在收到内存紧张事件时，及时释放非必要资源（如缓存数据、临时对象等），以避免应用进程被系统强制终止。
 
 同步接口，不支持异步回调。
-
 > **说明：**  
 >  
 > onMemoryLevel回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务，因此不建议在该回调中释放UI组件。
@@ -335,31 +324,29 @@ export default class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="onnewprocessrequest"></a>
 ## onNewProcessRequest
 
 ```TypeScript
 onNewProcessRequest(want: Want): string
 ```
 
-如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即[module.json5配置文件](docroot://quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为进程唯一标识。同步接口，不支持异步回调。
+如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即[module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为进程唯一标识。同步接口，不支持异步回调。
 
 如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。
 
-如果开发者同时实现onNewProcessRequest和[onAcceptWant](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onacceptwant-1)，将先收到onNewProcessRequest回调，再收到onAcceptWant回调。
+如果开发者同时实现onNewProcessRequest和[onAcceptWant](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onacceptwant)，将先收到onNewProcessRequest回调，再收到onAcceptWant回调。
 
 <!--Del-->
 
-仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](docroot://quick-start/module-configuration-file.md)配置文件中配置isolationProcess字段为true。
+仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)配置文件中配置isolationProcess字段为true。
 
 <!--DelEnd-->
-
 > **说明：**  
 >  
 > - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。<!--Del-->从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。<!--DelEnd  
 > -->  
 >  
-> - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onnewprocessrequestasync-1)实现时，本回调函  
+> - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onnewprocessrequestasync)实现时，本回调函  
 > 数将不执行。
 
 **起始版本：** 11
@@ -396,20 +383,19 @@ export default class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="onnewprocessrequestasync"></a>
 ## onNewProcessRequestAsync
 
 ```TypeScript
 onNewProcessRequestAsync(want: Want): Promise<string>
 ```
 
-如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即[module.json5配置文件](docroot://quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为进程唯一标识。使用Promise异步回调。
+如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即[module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为进程唯一标识。使用Promise异步回调。
 
 如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。
 
 <!--Del-->
 
-仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](docroot://quick-start/module-configuration-file.md)中配置isolationProcess字段为true。
+仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)中配置isolationProcess字段为true。
 
 <!--DelEnd-->
 
@@ -452,7 +438,6 @@ class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="onpreparetermination"></a>
 ## onPrepareTermination
 
 ```TypeScript
@@ -460,12 +445,11 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 ```
 
 当应用被用户关闭时调用，可用于询问用户选择立即执行操作还是取消操作。同步接口，不支持异步回调。
-
 > **说明：**  
 >  
 > - 仅当应用正常退出（例如，通过doc栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。  
 >  
-> - 当[AbilityStage.onPrepareTerminationAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onprepareterminationasync-1)实现时，本回调函数将不执行。
+> - 当[AbilityStage.onPrepareTerminationAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onprepareterminationasync)实现时，本回调函数将不执行。
 
 **起始版本：** 15
 
@@ -499,7 +483,6 @@ export default class MyAbilityStage extends AbilityStage {
 
 ```
 
-<a id="onprepareterminationasync"></a>
 ## onPrepareTerminationAsync
 
 ```TypeScript
@@ -507,7 +490,6 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 ```
 
 当应用被用户关闭时调用，可用于询问用户选择立即执行操作还是取消操作。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 仅当应用正常退出（例如，通过doc栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。  

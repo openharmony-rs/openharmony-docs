@@ -16,7 +16,6 @@
 import { GetStatusOptions, BatteryResponse } from '@kit.BasicServicesKit';
 ```
 
-<a id="getstatus"></a>
 ## getStatus
 
 ```TypeScript

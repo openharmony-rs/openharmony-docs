@@ -5,7 +5,6 @@
 ## 子组件
 
 可以包含[Span]{@link span}、[ImageSpan]{@link image_span}、[SymbolSpan]{@link symbol_span}和[ContainerSpan]{@link container_span}子组件。
-
 > **说明：**  
 >  
 > 使用[子组件](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-text.md#子组件)实现  

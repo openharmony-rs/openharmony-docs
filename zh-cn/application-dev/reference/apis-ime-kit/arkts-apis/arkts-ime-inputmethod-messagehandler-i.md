@@ -14,7 +14,6 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="onmessage"></a>
 ## onMessage
 
 ```TypeScript
@@ -53,7 +52,6 @@ inputMethodController.recvMessage(messageHandler);
 
 ```
 
-<a id="onterminated"></a>
 ## onTerminated
 
 ```TypeScript

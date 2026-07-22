@@ -6,7 +6,6 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
-<a id="rebootdevice"></a>
 ## rebootDevice
 
 ```TypeScript
@@ -19,7 +18,7 @@ function rebootDevice(reason: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-1)
+**替代接口：** [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot)
 
 **需要权限：** ohos.permission.REBOOT
 

@@ -26,31 +26,7 @@ declare type TransitionEffects = {
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type TransitionEffects = {
-  identity: undefined;
-  opacity: number;
-  slideSwitch: undefined;
-  move: TransitionEdge;
-  translate: TranslateOptions;
-  rotate: RotateOptions;
-  scale: ScaleOptions;
-  asymmetric: {
-    appear: TransitionEffect;
-    disappear: TransitionEffect;
-  };
-}--><!--Device-unnamed-declare type TransitionEffects = {
-  identity: undefined;
-  opacity: number;
-  slideSwitch: undefined;
-  move: TransitionEdge;
-  translate: TranslateOptions;
-  rotate: RotateOptions;
-  scale: ScaleOptions;
-  asymmetric: {
-    appear: TransitionEffect;
-    disappear: TransitionEffect;
-  };
-}-End-->
+<!--Device-unnamed-declare type TransitionEffects = {  identity: undefined;  opacity: number;  slideSwitch: undefined;  move: TransitionEdge;  translate: TranslateOptions;  rotate: RotateOptions;  scale: ScaleOptions;  asymmetric: {    appear: TransitionEffect;    disappear: TransitionEffect;  };}--><!--Device-unnamed-declare type TransitionEffects = {  identity: undefined;  opacity: number;  slideSwitch: undefined;  move: TransitionEdge;  translate: TranslateOptions;  rotate: RotateOptions;  scale: ScaleOptions;  asymmetric: {    appear: TransitionEffect;    disappear: TransitionEffect;  };}-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

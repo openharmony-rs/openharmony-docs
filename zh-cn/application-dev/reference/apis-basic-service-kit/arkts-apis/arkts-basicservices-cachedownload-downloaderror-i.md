@@ -36,7 +36,7 @@ readonly errorCode: ErrorCode
 readonly message: string
 ```
 
-返回[通用错误码](docroot://reference/errorcode-universal.md)或[HTTP错误码](docroot://reference/apis-network-kit/errorcode-net-http.md)。
+返回[通用错误码](../../../reference/errorcode-universal.md)或[HTTP错误码](../../../reference/apis-network-kit/errorcode-net-http.md)。
 
 **类型：** string
 

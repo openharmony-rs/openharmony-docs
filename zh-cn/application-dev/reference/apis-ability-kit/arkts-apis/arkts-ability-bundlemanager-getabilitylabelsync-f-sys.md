@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getabilitylabelsync"></a>
 ## getAbilityLabelSync
 
 ```TypeScript

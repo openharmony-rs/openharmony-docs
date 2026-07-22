@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="getmac"></a>
 ## getMac
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getMac(admin: Want, networkInterface: string, callback: AsyncCallback<s
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md#getmacsync-1)
+**替代接口：** [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md#getmacsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -73,7 +72,6 @@ networkManager.getMac(wantTemp, 'eth0', (err, result) => {
 ```
 
 
-<a id="getmac-1"></a>
 ## getMac
 
 ```TypeScript
@@ -86,7 +84,7 @@ function getMac(admin: Want, networkInterface: string): Promise<string>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md#getmacsync-1)
+**替代接口：** [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md#getmacsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 

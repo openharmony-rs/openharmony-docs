@@ -6,7 +6,6 @@
 import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
-<a id="showtoast"></a>
 ## showToast
 
 ```TypeScript
@@ -16,7 +15,6 @@ function showToast(options: ShowToastOptions): void
 Creates and displays a toast.
 
 创建并显示即时反馈。
-
 > **说明：**  
 >  
 > - 从API version 9开始支持，从API version 18开始废弃，建议使用[showToast](arkts-apis-uicontext-promptaction.md#showtoast)替代。showToast需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用showToast可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。  
@@ -41,7 +39,7 @@ Creates and displays a toast.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [ShowToastOptions](arkts-arkui-promptaction-showtoastoptions-i.md) | 是 | Toast选项。 |
+| options | [ShowToastOptions](arkts-arkui-prompt-showtoastoptions-i.md) | 是 | Toast选项。 |
 
 **错误码：**
 

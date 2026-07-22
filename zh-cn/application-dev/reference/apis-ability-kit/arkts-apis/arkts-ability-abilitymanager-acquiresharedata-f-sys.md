@@ -6,14 +6,13 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
-<a id="acquiresharedata"></a>
 ## acquireShareData
 
 ```TypeScript
 function acquireShareData(missionId: number, callback: AsyncCallback<Record<string, Object>>): void
 ```
 
-系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare-1)回调并返回分享数据。使用callback异步回调。
+系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -39,14 +38,13 @@ function acquireShareData(missionId: number, callback: AsyncCallback<Record<stri
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 
-<a id="acquiresharedata-1"></a>
 ## acquireShareData
 
 ```TypeScript
 function acquireShareData(missionId: number): Promise<Record<string, Object>>
 ```
 
-系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare-1)回调并返回分享数据。使用Promise异步回调。
+系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用Promise异步回调。
 
 **起始版本：** 10
 

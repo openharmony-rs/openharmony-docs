@@ -18,7 +18,6 @@
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -49,7 +48,6 @@ let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -91,7 +89,6 @@ let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN', {
 
 ```
 
-<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -137,7 +134,6 @@ let formatResult: string = formatter.format(3, 'quarter'); // formatResult = '3ä
 
 ```
 
-<a id="formattoparts"></a>
 ## formatToParts
 
 ```TypeScript
@@ -182,7 +178,6 @@ let parts: Array<object> = formatter.formatToParts(10, 'seconds'); // parts = [ 
 
 ```
 
-<a id="resolvedoptions"></a>
 ## resolvedOptions
 
 ```TypeScript

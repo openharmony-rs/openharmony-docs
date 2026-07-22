@@ -6,7 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="closeopenedenterprisedlpfiles"></a>
 ## closeOpenedEnterpriseDlpFiles
 
 ```TypeScript
@@ -16,10 +15,9 @@ function closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<v
 关闭当前打开的所有符合指定选项的企业DLP文件。使用Promise异步回调。
 
 在需要批量关闭企业DLP文件、清理文件资源或应用退出前释放文件句柄时调用该接口。
-
 > **说明：**  
 >  
-> 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise]生成的企业DLP文件。
+> 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f-sys.md#generatedlpfileforenterprise)生成的企业DLP文件。
 
 **起始版本：** 26.0.0
 

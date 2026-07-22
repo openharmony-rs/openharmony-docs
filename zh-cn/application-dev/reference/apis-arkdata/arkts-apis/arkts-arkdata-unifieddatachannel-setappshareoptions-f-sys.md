@@ -6,7 +6,6 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
-<a id="setappshareoptions"></a>
 ## setAppShareOptions
 
 ```TypeScript

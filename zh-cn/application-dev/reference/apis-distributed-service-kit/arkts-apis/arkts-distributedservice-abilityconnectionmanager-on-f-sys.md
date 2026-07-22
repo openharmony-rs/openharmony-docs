@@ -6,7 +6,6 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="on"></a>
 ## on('receiveImage')
 
 ```TypeScript
@@ -20,9 +19,7 @@ Registers receiveImage event.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function on(type: 'receiveImage', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'receiveImage', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void-End-->
+<!--Device-abilityConnectionManager-function on(type: 'receiveImage', sessionId: number,        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'receiveImage', sessionId: number,        callback: Callback<EventCallbackInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -59,7 +56,6 @@ abilityConnectionManager.on('receiveImage', sessionId, (callbackInfo) => {
 ```
 
 
-<a id="on-1"></a>
 ## on('collaborateEvent')
 
 ```TypeScript
@@ -73,9 +69,7 @@ Registers collaborateEvent event.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function on(type: 'collaborateEvent', sessionId: number,
-        callback: Callback<CollaborateEventInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'collaborateEvent', sessionId: number,
-        callback: Callback<CollaborateEventInfo>): void-End-->
+<!--Device-abilityConnectionManager-function on(type: 'collaborateEvent', sessionId: number,        callback: Callback<CollaborateEventInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'collaborateEvent', sessionId: number,        callback: Callback<CollaborateEventInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -112,7 +106,6 @@ abilityConnectionManager.on('collaborateEvent', sessionId, (callbackInfo) => {
 ```
 
 
-<a id="on-2"></a>
 ## on('collaborateEvent')
 
 ```TypeScript
@@ -124,9 +117,7 @@ Registers collaborateEvent event.
 
 **起始版本：** 18
 
-<!--Device-abilityConnectionManager-function on(type: 'collaborateEvent', sessionId: number,
-        callback: Callback<CollaborateEventInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'collaborateEvent', sessionId: number,
-        callback: Callback<CollaborateEventInfo>): void-End-->
+<!--Device-abilityConnectionManager-function on(type: 'collaborateEvent', sessionId: number,        callback: Callback<CollaborateEventInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'collaborateEvent', sessionId: number,        callback: Callback<CollaborateEventInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 

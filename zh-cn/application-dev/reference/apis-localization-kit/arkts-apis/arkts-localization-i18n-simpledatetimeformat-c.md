@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="format"></a>
 ## format
 
 ```TypeScript

@@ -8,7 +8,6 @@ ListItem划出菜单的管理器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="collapse"></a>
 ## collapse
 
 ```TypeScript
@@ -40,7 +39,6 @@ static collapse(node: FrameNode): void
 | [100023](../errorcode-node.md#100023-参数错误) | The component type of the node is incorrect. |
 | [106203](../errorcode-node.md#106203-传入的节点未挂载到组件树上) | The node not mounted to component tree. |
 
-<a id="expand"></a>
 ## expand
 
 ```TypeScript

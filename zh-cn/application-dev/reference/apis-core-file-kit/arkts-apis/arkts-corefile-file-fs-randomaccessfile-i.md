@@ -14,7 +14,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -49,7 +48,6 @@ randomAccessFile.close();
 
 ```
 
-<a id="getreadstream"></a>
 ## getReadStream
 
 ```TypeScript
@@ -92,7 +90,6 @@ randomAccessFile.close();
 
 ```
 
-<a id="getwritestream"></a>
 ## getWriteStream
 
 ```TypeScript
@@ -135,7 +132,6 @@ randomAccessFile.close();
 
 ```
 
-<a id="read"></a>
 ## read
 
 ```TypeScript
@@ -149,13 +145,7 @@ read(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-read(
-    buffer: ArrayBuffer,
-    options?: ReadOptions
-  ): Promise<number>--><!--Device-RandomAccessFile-read(
-    buffer: ArrayBuffer,
-    options?: ReadOptions
-  ): Promise<number>-End-->
+<!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<number>--><!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -213,7 +203,6 @@ randomAccessFile.read(arrayBuffer, readOption).then((readLength: number) => {
 
 ```
 
-<a id="read-1"></a>
 ## read
 
 ```TypeScript
@@ -274,7 +263,6 @@ randomAccessFile.read(arrayBuffer, (err: BusinessError, readLength: number) => {
 
 ```
 
-<a id="read-2"></a>
 ## read
 
 ```TypeScript
@@ -289,15 +277,7 @@ read(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-read(
-    buffer: ArrayBuffer,
-    options: ReadOptions,
-    callback: AsyncCallback<number>
-  ): void--><!--Device-RandomAccessFile-read(
-    buffer: ArrayBuffer,
-    options: ReadOptions,
-    callback: AsyncCallback<number>
-  ): void-End-->
+<!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<number>  ): void--><!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<number>  ): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -352,7 +332,6 @@ randomAccessFile.read(arrayBuffer, readOption, (err: BusinessError, readLength: 
 
 ```
 
-<a id="readsync"></a>
 ## readSync
 
 ```TypeScript
@@ -366,13 +345,7 @@ readSync(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-readSync(
-    buffer: ArrayBuffer,
-    options?: ReadOptions
-  ): number--><!--Device-RandomAccessFile-readSync(
-    buffer: ArrayBuffer,
-    options?: ReadOptions
-  ): number-End-->
+<!--Device-RandomAccessFile-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): number--><!--Device-RandomAccessFile-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -418,7 +391,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="setfilepointer"></a>
 ## setFilePointer
 
 ```TypeScript
@@ -459,7 +431,6 @@ randomAccessFile.close();
 
 ```
 
-<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -473,13 +444,7 @@ write(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-write(
-    buffer: ArrayBuffer | string,
-    options?: WriteOptions
-  ): Promise<number>--><!--Device-RandomAccessFile-write(
-    buffer: ArrayBuffer | string,
-    options?: WriteOptions
-  ): Promise<number>-End-->
+<!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<number>--><!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -541,7 +506,6 @@ randomAccessFile.write(arrayBuffer, writeOption).then((bytesWritten: number) => 
 
 ```
 
-<a id="write-1"></a>
 ## write
 
 ```TypeScript
@@ -604,7 +568,6 @@ randomAccessFile.write(arrayBuffer, (err: BusinessError, bytesWritten: number) =
 
 ```
 
-<a id="write-2"></a>
 ## write
 
 ```TypeScript
@@ -619,15 +582,7 @@ write(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-write(
-    buffer: ArrayBuffer | string,
-    options: WriteOptions,
-    callback: AsyncCallback<number>
-  ): void--><!--Device-RandomAccessFile-write(
-    buffer: ArrayBuffer | string,
-    options: WriteOptions,
-    callback: AsyncCallback<number>
-  ): void-End-->
+<!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<number>  ): void--><!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<number>  ): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -686,7 +641,6 @@ randomAccessFile.write(arrayBuffer, writeOption, (err: BusinessError, bytesWritt
 
 ```
 
-<a id="writesync"></a>
 ## writeSync
 
 ```TypeScript
@@ -700,13 +654,7 @@ writeSync(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-writeSync(
-    buffer: ArrayBuffer | string,
-    options?: WriteOptions
-  ): number--><!--Device-RandomAccessFile-writeSync(
-    buffer: ArrayBuffer | string,
-    options?: WriteOptions
-  ): number-End-->
+<!--Device-RandomAccessFile-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): number--><!--Device-RandomAccessFile-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

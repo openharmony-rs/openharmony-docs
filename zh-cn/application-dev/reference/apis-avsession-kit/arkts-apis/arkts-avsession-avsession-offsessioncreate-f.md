@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="offsessioncreate"></a>
 ## offSessionCreate
 
 ```TypeScript

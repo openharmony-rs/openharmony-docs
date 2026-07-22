@@ -6,7 +6,6 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-<a id="removeall"></a>
 ## removeAll
 
 ```TypeScript
@@ -64,7 +63,6 @@ notificationSubscribe.removeAll(bundle, removeAllCallback);
 ```
 
 
-<a id="removeall-1"></a>
 ## removeAll
 
 ```TypeScript
@@ -117,7 +115,6 @@ notificationSubscribe.removeAll(removeAllCallback);
 ```
 
 
-<a id="removeall-2"></a>
 ## removeAll
 
 ```TypeScript
@@ -174,7 +171,6 @@ notificationSubscribe.removeAll(userId, removeAllCallback);
 ```
 
 
-<a id="removeall-3"></a>
 ## removeAll
 
 ```TypeScript
@@ -232,7 +228,6 @@ notificationSubscribe.removeAll(userId).then(() => {
 ```
 
 
-<a id="removeall-4"></a>
 ## removeAll
 
 ```TypeScript

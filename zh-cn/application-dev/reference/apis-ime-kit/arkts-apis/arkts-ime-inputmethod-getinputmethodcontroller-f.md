@@ -6,7 +6,6 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="getinputmethodcontroller"></a>
 ## getInputMethodController
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getInputMethodController(): InputMethodController
 
 **废弃版本：** 9
 
-**替代接口：** [getController](arkts-ime-inputmethod-getcontroller-f.md#getcontroller-1)
+**替代接口：** [getController](arkts-ime-inputmethod-getcontroller-f.md#getcontroller)
 
 <!--Device-inputMethod-function getInputMethodController(): InputMethodController--><!--Device-inputMethod-function getInputMethodController(): InputMethodController-End-->
 

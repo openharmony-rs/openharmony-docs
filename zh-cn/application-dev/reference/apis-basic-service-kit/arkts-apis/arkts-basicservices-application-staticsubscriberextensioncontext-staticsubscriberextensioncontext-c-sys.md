@@ -20,7 +20,6 @@ StaticSubscriberExtensionContext模块提供StaticSubscriberExtensionAbility具�
 import { StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
 ```
 
-<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -110,7 +109,6 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
 
 ```
 
-<a id="startability-1"></a>
 ## startAbility
 
 ```TypeScript

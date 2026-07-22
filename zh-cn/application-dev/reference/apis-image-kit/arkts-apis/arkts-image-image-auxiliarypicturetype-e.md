@@ -4,7 +4,7 @@
 
 辅助图不直接参与图片显示，且并非所有图片中都含有辅助图。
 
-在获取和使用特定辅助图前，应首先调用Picture的[getAuxiliaryPicture](arkts-image-image-picture-i.md#getauxiliarypicture-1)方法尝试获取该辅助图。
+在获取和使用特定辅助图前，应首先调用Picture的[getAuxiliaryPicture](arkts-image-image-picture-i.md#getauxiliarypicture)方法尝试获取该辅助图。
 
 **起始版本：** 13
 
@@ -22,7 +22,7 @@ GAINMAP = 1
 
 用于更准确地生成HDR图像。
 
-HDR合成通常需要同时使用SDR主图、增益图和HDR元数据（[getMetadata](arkts-image-image-pixelmap-i.md#getmetadata-1)）共同计算亮度映射关系。
+HDR合成通常需要同时使用SDR主图、增益图和HDR元数据（[getMetadata](arkts-image-image-pixelmap-i.md#getmetadata)）共同计算亮度映射关系。
 
 **起始版本：** 13
 

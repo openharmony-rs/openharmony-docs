@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="addfirewallrule"></a>
 ## addFirewallRule
 
 ```TypeScript

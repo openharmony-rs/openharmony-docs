@@ -11,9 +11,7 @@ type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'r
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avSession-type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' |
-    'toggleFavorite'--><!--Device-avSession-type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' |
-    'toggleFavorite'-End-->
+<!--Device-avSession-type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' |    'toggleFavorite'--><!--Device-avSession-type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' |    'toggleFavorite'-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 

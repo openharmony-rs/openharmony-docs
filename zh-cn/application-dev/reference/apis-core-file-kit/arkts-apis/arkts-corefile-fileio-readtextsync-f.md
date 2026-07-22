@@ -1,6 +1,5 @@
 # readTextSync
 
-<a id="readtextsync"></a>
 ## readTextSync
 
 ```TypeScript
@@ -20,23 +19,9 @@ declare function readTextSync(
 
 **废弃版本：** 9
 
-**替代接口：** [fs:readTextSync](arkts-corefile-file-fs-readtextsync-f.md#readtextsync-1)
+**替代接口：** [fs:readTextSync](arkts-corefile-fileio-readtextsync-f.md#readtextsync)
 
-<!--Device-unnamed-declare function readTextSync(
-  filePath: string,
-  options?: {
-    position?: number;
-    length?: number;
-    encoding?: string;
-  }
-): string--><!--Device-unnamed-declare function readTextSync(
-  filePath: string,
-  options?: {
-    position?: number;
-    length?: number;
-    encoding?: string;
-  }
-): string-End-->
+<!--Device-unnamed-declare function readTextSync(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): string--><!--Device-unnamed-declare function readTextSync(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

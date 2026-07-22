@@ -14,7 +14,6 @@
 import { dataAbility } from '@kit.ArkData';
 ```
 
-<a id="and"></a>
 ## and
 
 ```TypeScript
@@ -44,14 +43,13 @@ dataAbilityPredicates.equalTo("NAME", "Lisa")
 
 ```
 
-<a id="beginwrap"></a>
 ## beginWrap
 
 ```TypeScript
 beginWrap(): DataAbilityPredicates
 ```
 
-在谓词中添加左括号。此方法类似于SQL语句的“(”，需要与[endWrap](arkts-arkdata-dataability-dataabilitypredicates-c.md#endwrap-1)一起使用。
+在谓词中添加左括号。此方法类似于SQL语句的“(”，需要与[endWrap](arkts-arkdata-dataability-dataabilitypredicates-c.md#endwrap)一起使用。
 
 **起始版本：** 7
 
@@ -77,7 +75,6 @@ dataAbilityPredicates.equalTo("NAME", "lisi")
 
 ```
 
-<a id="beginswith"></a>
 ## beginsWith
 
 ```TypeScript
@@ -114,7 +111,6 @@ dataAbilityPredicates.beginsWith("NAME", "os")
 
 ```
 
-<a id="between"></a>
 ## between
 
 ```TypeScript
@@ -150,7 +146,6 @@ dataAbilityPredicates.between("AGE", 10, 50)
 
 ```
 
-<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -185,7 +180,6 @@ dataAbilityPredicates.contains("NAME", "os")
 
 ```
 
-<a id="distinct"></a>
 ## distinct
 
 ```TypeScript
@@ -213,14 +207,13 @@ dataAbilityPredicates.equalTo("NAME", "Rose").distinct()
 
 ```
 
-<a id="endwrap"></a>
 ## endWrap
 
 ```TypeScript
 endWrap(): DataAbilityPredicates
 ```
 
-在谓词中添加右括号。此方法类似于SQL语句的“)”，需要和[beginWrap](arkts-arkdata-dataability-dataabilitypredicates-c.md#beginwrap-1)一起使用。
+在谓词中添加右括号。此方法类似于SQL语句的“)”，需要和[beginWrap](arkts-arkdata-dataability-dataabilitypredicates-c.md#beginwrap)一起使用。
 
 **起始版本：** 7
 
@@ -246,7 +239,6 @@ dataAbilityPredicates.equalTo("NAME", "lisi")
 
 ```
 
-<a id="endswith"></a>
 ## endsWith
 
 ```TypeScript
@@ -283,7 +275,6 @@ dataAbilityPredicates.endsWith("NAME", "se")
 
 ```
 
-<a id="equalto"></a>
 ## equalTo
 
 ```TypeScript
@@ -320,7 +311,6 @@ dataAbilityPredicates.equalTo("NAME", "lisi")
 
 ```
 
-<a id="glob"></a>
 ## glob
 
 ```TypeScript
@@ -361,7 +351,6 @@ dataAbilityPredicates.glob("NAME", "lisa")
 
 ```
 
-<a id="greaterthan"></a>
 ## greaterThan
 
 ```TypeScript
@@ -396,7 +385,6 @@ dataAbilityPredicates.greaterThan("AGE", 18)
 
 ```
 
-<a id="greaterthanorequalto"></a>
 ## greaterThanOrEqualTo
 
 ```TypeScript
@@ -431,7 +419,6 @@ dataAbilityPredicates.greaterThanOrEqualTo("AGE", 18)
 
 ```
 
-<a id="groupby"></a>
 ## groupBy
 
 ```TypeScript
@@ -465,7 +452,6 @@ dataAbilityPredicates.groupBy(["AGE", "NAME"])
 
 ```
 
-<a id="in"></a>
 ## in
 
 ```TypeScript
@@ -500,7 +486,6 @@ dataAbilityPredicates.in("AGE", [18, 20])
 
 ```
 
-<a id="indexedby"></a>
 ## indexedBy
 
 ```TypeScript
@@ -573,7 +558,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="isnotnull"></a>
 ## isNotNull
 
 ```TypeScript
@@ -607,7 +591,6 @@ dataAbilityPredicates.isNotNull("NAME")
 
 ```
 
-<a id="isnull"></a>
 ## isNull
 
 ```TypeScript
@@ -641,7 +624,6 @@ dataAbilityPredicates.isNull("NAME")
 
 ```
 
-<a id="lessthan"></a>
 ## lessThan
 
 ```TypeScript
@@ -676,7 +658,6 @@ dataAbilityPredicates.lessThan("AGE", 20)
 
 ```
 
-<a id="lessthanorequalto"></a>
 ## lessThanOrEqualTo
 
 ```TypeScript
@@ -711,7 +692,6 @@ dataAbilityPredicates.lessThanOrEqualTo("AGE", 20)
 
 ```
 
-<a id="like"></a>
 ## like
 
 ```TypeScript
@@ -748,7 +728,6 @@ dataAbilityPredicates.like("NAME", "%os%")
 
 ```
 
-<a id="limitas"></a>
 ## limitAs
 
 ```TypeScript
@@ -782,7 +761,6 @@ dataAbilityPredicates.equalTo("NAME", "Rose").limitAs(3)
 
 ```
 
-<a id="notbetween"></a>
 ## notBetween
 
 ```TypeScript
@@ -818,7 +796,6 @@ dataAbilityPredicates.notBetween("AGE", 10, 50)
 
 ```
 
-<a id="notequalto"></a>
 ## notEqualTo
 
 ```TypeScript
@@ -855,7 +832,6 @@ dataAbilityPredicates.notEqualTo("NAME", "lisi")
 
 ```
 
-<a id="notin"></a>
 ## notIn
 
 ```TypeScript
@@ -890,14 +866,13 @@ dataAbilityPredicates.notIn("NAME", ["Lisa", "Rose"])
 
 ```
 
-<a id="offsetas"></a>
 ## offsetAs
 
 ```TypeScript
 offsetAs(rowOffset: number): DataAbilityPredicates
 ```
 
-设置谓词查询结果的起始位置。需要同步调用[limitAs](arkts-arkdata-dataability-dataabilitypredicates-c.md#limitas-1)接口指定查询数量，否则无查询结果。查询指定偏移位置后的所有行时，[limitAs](arkts-arkdata-dataability-dataabilitypredicates-c.md#limitas-1)接口需传入参数-1。
+设置谓词查询结果的起始位置。需要同步调用[limitAs](arkts-arkdata-dataability-dataabilitypredicates-c.md#limitas)接口指定查询数量，否则无查询结果。查询指定偏移位置后的所有行时，[limitAs](arkts-arkdata-dataability-dataabilitypredicates-c.md#limitas)接口需传入参数-1。
 
 **起始版本：** 7
 
@@ -925,7 +900,6 @@ dataAbilityPredicates.equalTo("NAME", "Rose").offsetAs(3).limitAs(3)
 
 ```
 
-<a id="or"></a>
 ## or
 
 ```TypeScript
@@ -957,7 +931,6 @@ dataAbilityPredicates.equalTo("NAME", "Lisa")
 
 ```
 
-<a id="orderbyasc"></a>
 ## orderByAsc
 
 ```TypeScript
@@ -992,7 +965,6 @@ dataAbilityPredicates.orderByAsc("NAME").orderByAsc("AGE").orderByAsc("SALARY")
 
 ```
 
-<a id="orderbydesc"></a>
 ## orderByDesc
 
 ```TypeScript

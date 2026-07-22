@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getmodifierkeystate"></a>
 ## getModifierKeyState
 
 ```TypeScript
@@ -225,7 +224,7 @@ metaKey: number
 stopPropagation: () => void
 ```
 
-阻塞[事件冒泡](docroot://ui/arkts-interaction-basic-principles.md#事件冒泡)传递。
+阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。
 
 **类型：** () =&gt; void
 

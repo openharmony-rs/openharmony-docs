@@ -40,7 +40,7 @@ selected: number
 
 初始选中项索引值，若超出索引值范围，则取默认值0。
 
-该参数支持[!!](docroot://ui/state-management/arkts-new-binding.md)双向绑定变量。
+该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
 
 **类型：** number
 

@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="stat"></a>
 ## stat
 
 ```TypeScript
@@ -54,7 +53,6 @@ declare function stat(file: string | number): Promise<Stat>
 | 13900042 | Unknown error |
 
 
-<a id="stat-1"></a>
 ## stat
 
 ```TypeScript

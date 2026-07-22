@@ -14,7 +14,6 @@ class Font
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="getfontbyname"></a>
 ## getFontByName
 
 ```TypeScript
@@ -45,7 +44,6 @@ getFontByName(fontName: string): font.FontInfo
 | --- | --- |
 | font.FontInfo | Returns the font info |
 
-<a id="getsystemfontlist"></a>
 ## getSystemFontList
 
 ```TypeScript
@@ -70,7 +68,6 @@ getSystemFontList(): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | 字体名称列表 |
 
-<a id="registerfont"></a>
 ## registerFont
 
 ```TypeScript

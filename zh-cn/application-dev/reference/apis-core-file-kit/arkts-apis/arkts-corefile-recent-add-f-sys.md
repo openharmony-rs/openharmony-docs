@@ -6,7 +6,6 @@
 import { recent } from '@kit.CoreFileKit';
 ```
 
-<a id="add"></a>
 ## add
 
 ```TypeScript

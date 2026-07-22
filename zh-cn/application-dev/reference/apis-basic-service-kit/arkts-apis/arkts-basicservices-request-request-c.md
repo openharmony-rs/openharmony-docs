@@ -16,7 +16,6 @@
 import { UploadResponse, RequestData, DownloadRequestOptions, DownloadResponse, RequestFile, OnDownloadCompleteOptions, OnDownloadCompleteResponse, UploadRequestOptions } from '@kit.BasicServicesKit';
 ```
 
-<a id="download"></a>
 ## download
 
 ```TypeScript
@@ -29,7 +28,7 @@ static download(options: DownloadRequestOptions): void
 
 **废弃版本：** 9
 
-**替代接口：** [downloadFile(context:](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)
+**替代接口：** [downloadFile(context:](arkts-basicservices-request-downloadfile-f.md#downloadfile)
 
 <!--Device-Request-static download(options: DownloadRequestOptions): void--><!--Device-Request-static download(options: DownloadRequestOptions): void-End-->
 
@@ -41,7 +40,6 @@ static download(options: DownloadRequestOptions): void
 | --- | --- | --- | --- |
 | options | [DownloadRequestOptions](arkts-basicservices-request-downloadrequestoptions-i.md) | 是 | 下载的配置信息。 |
 
-<a id="ondownloadcomplete"></a>
 ## onDownloadComplete
 
 ```TypeScript
@@ -66,7 +64,6 @@ static onDownloadComplete(options: OnDownloadCompleteOptions): void
 | --- | --- | --- | --- |
 | options | [OnDownloadCompleteOptions](arkts-basicservices-request-ondownloadcompleteoptions-i.md) | 是 | 监听下载任务的配置信息。 |
 
-<a id="upload"></a>
 ## upload
 
 ```TypeScript
@@ -79,7 +76,7 @@ static upload(options: UploadRequestOptions): void
 
 **废弃版本：** 9
 
-**替代接口：** [uploadFile(context:](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)
+**替代接口：** [uploadFile(context:](arkts-basicservices-request-uploadfile-f.md#uploadfile)
 
 <!--Device-Request-static upload(options: UploadRequestOptions): void--><!--Device-Request-static upload(options: UploadRequestOptions): void-End-->
 

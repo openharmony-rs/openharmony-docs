@@ -1,6 +1,5 @@
 # setImage（系统接口）
 
-<a id="setimage"></a>
 ## setImage
 
 ```TypeScript
@@ -74,7 +73,6 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 ```
 
 
-<a id="setimage-1"></a>
 ## setImage
 
 ```TypeScript

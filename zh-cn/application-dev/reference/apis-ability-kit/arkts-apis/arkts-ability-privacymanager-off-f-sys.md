@@ -6,7 +6,6 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
-<a id="off"></a>
 ## off('activeStateChange')
 
 ```TypeScript
@@ -19,7 +18,6 @@ function off(
 取消订阅指定权限列表的权限使用状态变更事件。取消订阅成功后，将不再接收指定权限列表的状态变更通知。
 
 取消订阅时，若不传入回调函数，则批量删除permissionList下的所有回调函数。
-
 > **说明**  
 > 该接口通常与[on](privacyManager.on)配套使用，用于取消通过on创建的监听关系。
 
@@ -27,13 +25,7 @@ function off(
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
-<!--Device-privacyManager-function off(
-    type: 'activeStateChange',
-    permissionList: Array<Permissions>,
-    callback?: Callback<ActiveChangeResponse>): void--><!--Device-privacyManager-function off(
-    type: 'activeStateChange',
-    permissionList: Array<Permissions>,
-    callback?: Callback<ActiveChangeResponse>): void-End-->
+<!--Device-privacyManager-function off(    type: 'activeStateChange',    permissionList: Array<Permissions>,    callback?: Callback<ActiveChangeResponse>): void--><!--Device-privacyManager-function off(    type: 'activeStateChange',    permissionList: Array<Permissions>,    callback?: Callback<ActiveChangeResponse>): void-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 

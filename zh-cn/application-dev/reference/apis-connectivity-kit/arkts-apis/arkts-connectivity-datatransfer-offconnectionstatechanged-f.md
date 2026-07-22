@@ -6,7 +6,6 @@
 import { dataTransfer } from '@kit.ConnectivityKit';
 ```
 
-<a id="offconnectionstatechanged"></a>
 ## offConnectionStateChanged
 
 ```TypeScript

@@ -16,7 +16,6 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
-<a id="connectassetloader"></a>
 ## connectAssetLoader
 
 ```TypeScript
@@ -66,7 +65,6 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
-<a id="connectdb"></a>
 ## connectDB
 
 ```TypeScript
@@ -116,7 +114,6 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
-<a id="connectsharecenter"></a>
 ## connectShareCenter
 
 ```TypeScript
@@ -166,7 +163,6 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
-<a id="getappbriefinfo"></a>
 ## getAppBriefInfo
 
 ```TypeScript
@@ -212,7 +208,6 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
-<a id="getappschema"></a>
 ## getAppSchema
 
 ```TypeScript
@@ -265,7 +260,6 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
-<a id="getserviceinfo"></a>
 ## getServiceInfo
 
 ```TypeScript
@@ -314,7 +308,6 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
-<a id="subscribe"></a>
 ## subscribe
 
 ```TypeScript
@@ -328,13 +321,7 @@ subscribe(
 
 **起始版本：** 11
 
-<!--Device-CloudService-subscribe(
-      subInfo: Record<string, Array<Database>>,
-      expirationTime: long
-    ): Promise<Result<SubscribeInfo>>--><!--Device-CloudService-subscribe(
-      subInfo: Record<string, Array<Database>>,
-      expirationTime: long
-    ): Promise<Result<SubscribeInfo>>-End-->
+<!--Device-CloudService-subscribe(      subInfo: Record<string, Array<Database>>,      expirationTime: long    ): Promise<Result<SubscribeInfo>>--><!--Device-CloudService-subscribe(      subInfo: Record<string, Array<Database>>,      expirationTime: long    ): Promise<Result<SubscribeInfo>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -377,7 +364,6 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ```
 
-<a id="unsubscribe"></a>
 ## unsubscribe
 
 ```TypeScript

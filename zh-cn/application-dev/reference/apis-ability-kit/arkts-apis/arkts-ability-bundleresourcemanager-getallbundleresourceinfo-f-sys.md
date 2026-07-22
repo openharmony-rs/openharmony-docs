@@ -6,7 +6,6 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
-<a id="getallbundleresourceinfo"></a>
 ## getAllBundleResourceInfo
 
 ```TypeScript
@@ -41,7 +40,6 @@ function getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 
-<a id="getallbundleresourceinfo-1"></a>
 ## getAllBundleResourceInfo
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -14,11 +13,10 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback:
 ```
 
 启动键鼠穿越，使用callback异步回调。
-
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用  
-> [cooperate.activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-1)  
+> [cooperate.activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate)  
 > 替代。
 
 **起始版本：** 9
@@ -84,7 +82,6 @@ struct Index {
 ```
 
 
-<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -92,11 +89,10 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise<
 ```
 
 启动键鼠穿越，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用  
-> [cooperate.activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-1)  
+> [cooperate.activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate)  
 > 替代。
 
 **起始版本：** 9

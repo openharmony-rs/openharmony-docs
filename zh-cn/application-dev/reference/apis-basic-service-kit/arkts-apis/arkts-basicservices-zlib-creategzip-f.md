@@ -6,7 +6,6 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
-<a id="creategzip"></a>
 ## createGZip
 
 ```TypeScript

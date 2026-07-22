@@ -14,7 +14,6 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="dismiss"></a>
 ## dismiss
 
 ```TypeScript
@@ -52,7 +51,6 @@ dismiss(target: number | ComponentContent<Object>): Promise<void>
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | Dialog content not found. The ComponentContent cannot be found. |
 
-<a id="present"></a>
 ## present
 
 ```TypeScript
@@ -90,7 +88,6 @@ present(options?: dialog.DialogStyleOptions): Promise<DialogResult>
 | [103306](../errorcode-promptAction.md#103306-节点挂载失败导致无法打开弹出框) | The dialog cannot be opened due to node mount failure. |
 | [103308](../errorcode-promptAction.md#103308-子窗口创建失败导致无法打开弹出框) | The dialog cannot be opened due to subwindow create failure. |
 
-<a id="present-1"></a>
 ## present
 
 ```TypeScript
@@ -102,7 +99,6 @@ present(content: CustomBuilder | CustomBuilderWithId | ComponentContent<Object>,
 content参数通过联合类型接受CustomBuilder或ComponentContent：  
 -CustomBuilder：自定义对话框内容的生成器函数。  
 - ComponentContent：支持状态驱动更新的ComponentContent。
-
 > **说明**  
 > isModal = true和showInSubWindow = true不能同时使用。
 
@@ -138,7 +134,6 @@ content参数通过联合类型接受CustomBuilder或ComponentContent：
 | [103306](../errorcode-promptAction.md#103306-节点挂载失败导致无法打开弹出框) | The dialog cannot be opened due to node mount failure. |
 | [103308](../errorcode-promptAction.md#103308-子窗口创建失败导致无法打开弹出框) | The dialog cannot be opened due to subwindow create failure. |
 
-<a id="update"></a>
 ## update
 
 ```TypeScript

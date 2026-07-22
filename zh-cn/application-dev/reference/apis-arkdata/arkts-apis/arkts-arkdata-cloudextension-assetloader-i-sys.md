@@ -16,7 +16,6 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
-<a id="download"></a>
 ## download
 
 ```TypeScript
@@ -62,7 +61,6 @@ class MyAssetLoader implements cloudExtension.AssetLoader {
 
 ```
 
-<a id="upload"></a>
 ## upload
 
 ```TypeScript

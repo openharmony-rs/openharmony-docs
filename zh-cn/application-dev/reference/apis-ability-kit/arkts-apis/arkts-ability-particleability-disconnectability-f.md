@@ -6,7 +6,6 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
-<a id="disconnectability"></a>
 ## disconnectAbility
 
 ```TypeScript
@@ -61,7 +60,6 @@ particleAbility.disconnectAbility(connId, (err) => {
 ```
 
 
-<a id="disconnectability-1"></a>
 ## disconnectAbility
 
 ```TypeScript

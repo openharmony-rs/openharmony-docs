@@ -1,7 +1,6 @@
 # @ohos.app.ability.continueManager
 
 continueManager提供了应用跨端迁移的管理能力，如获取应用跨端迁移过程中快速拉起目标应用的结果。
-
 > 本模块接口仅可在Stage模型下使用。
 
 **起始版本：** 18

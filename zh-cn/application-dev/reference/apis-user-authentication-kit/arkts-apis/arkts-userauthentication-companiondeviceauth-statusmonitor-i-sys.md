@@ -1,6 +1,6 @@
 # StatusMonitor（系统接口）
 
-状态监听器对象。用于监听或获取模板状态、持续认证状态、可添加设备状态等信息。通过[getStatusMonitor](arkts-userauthentication-companiondeviceauth-getstatusmonitor-f-sys.md#getstatusmonitor-1)获取此对象。
+状态监听器对象。用于监听或获取模板状态、持续认证状态、可添加设备状态等信息。通过[getStatusMonitor](arkts-userauthentication-companiondeviceauth-getstatusmonitor-f-sys.md#getstatusmonitor)获取此对象。
 
 **起始版本：** 23
 
@@ -16,7 +16,6 @@
 import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 ```
 
-<a id="gettemplatestatus"></a>
 ## getTemplateStatus
 
 ```TypeScript
@@ -66,7 +65,6 @@ statusMonitor.getTemplateStatus()
 
 ```
 
-<a id="offavailabledevicechange"></a>
 ## offAvailableDeviceChange
 
 ```TypeScript
@@ -119,7 +117,6 @@ try {
 
 ```
 
-<a id="offcontinuousauthchange"></a>
 ## offContinuousAuthChange
 
 ```TypeScript
@@ -181,7 +178,6 @@ try {
 
 ```
 
-<a id="offtemplatechange"></a>
 ## offTemplateChange
 
 ```TypeScript
@@ -234,7 +230,6 @@ try {
 
 ```
 
-<a id="onavailabledevicechange"></a>
 ## onAvailableDeviceChange
 
 ```TypeScript
@@ -286,7 +281,6 @@ try {
 
 ```
 
-<a id="oncontinuousauthchange"></a>
 ## onContinuousAuthChange
 
 ```TypeScript
@@ -349,7 +343,6 @@ try {
 
 ```
 
-<a id="ontemplatechange"></a>
 ## onTemplateChange
 
 ```TypeScript

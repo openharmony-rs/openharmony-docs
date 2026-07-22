@@ -12,14 +12,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="color"></a>
 ## color
 
 ```TypeScript
 color(value: ResourceColor)
 ```
 
-设置空白填充的填充颜色，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置空白填充的填充颜色，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 

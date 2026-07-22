@@ -2,8 +2,7 @@
 
 空间音频管理。
 
-在使用AudioSpatializationManager的接口之前，需先通过[getSpatializationManager](arkts-audio-audio-audiomanager-i.md#getspatializationmanager-1)获取AudioSpatializationManager实例。
-
+在使用AudioSpatializationManager的接口之前，需先通过[getSpatializationManager](arkts-audio-audio-audiomanager-i.md#getspatializationmanager)获取AudioSpatializationManager实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 18开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="isspatializationenabledforcurrentdevice"></a>
 ## isSpatializationEnabledForCurrentDevice
 
 ```TypeScript
@@ -41,7 +39,6 @@ isSpatializationEnabledForCurrentDevice(): boolean
 | --- | --- |
 | boolean | 当前设备空间音频渲染是否开启。true表示开启，false表示未开启。 |
 
-<a id="off"></a>
 ## off('spatializationEnabledChangeForCurrentDevice')
 
 ```TypeScript
@@ -69,7 +66,6 @@ off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boo
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on"></a>
 ## on('spatializationEnabledChangeForCurrentDevice')
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { sendablePreferences } from '@kit.ArkData';
 ```
 
-<a id="removepreferencesfromcachesync"></a>
 ## removePreferencesFromCacheSync
 
 ```TypeScript
@@ -15,7 +14,7 @@ function removePreferencesFromCacheSync(context: Context, options: Options): voi
 
 从缓存中移除指定的Preferences实例，此为同步接口。
 
-应用首次调用[getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences-1)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences-1)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+应用首次调用[getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 **起始版本：** 12
 

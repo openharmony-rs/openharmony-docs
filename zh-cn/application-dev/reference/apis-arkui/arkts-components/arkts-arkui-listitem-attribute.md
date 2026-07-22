@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="editable"></a>
 ## editable
 
 ```TypeScript
@@ -33,7 +32,6 @@ editable(value: boolean | EditMode)
 | --- | --- | --- | --- |
 | value | boolean \| EditMode | 是 |  |
 
-<a id="onselect"></a>
 ## onSelect
 
 ```TypeScript
@@ -58,7 +56,6 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 | --- | --- | --- | --- |
 | event | (isSelected: boolean) =&gt; void | 是 |  |
 
-<a id="selectable"></a>
 ## selectable
 
 ```TypeScript
@@ -83,7 +80,6 @@ selectable(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 |  |
 
-<a id="selected"></a>
 ## selected
 
 ```TypeScript
@@ -110,7 +106,6 @@ selected(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 当前ListItem选中状态。设置为true时为选中状态，设置为false时为默认状态。默认值：false |
 
-<a id="sticky"></a>
 ## sticky
 
 ```TypeScript
@@ -135,7 +130,6 @@ sticky(value: Sticky)
 | --- | --- | --- | --- |
 | value | [Sticky](arkts-arkui-sticky-e.md) | 是 |  |
 
-<a id="swipeaction"></a>
 ## swipeAction
 
 ```TypeScript

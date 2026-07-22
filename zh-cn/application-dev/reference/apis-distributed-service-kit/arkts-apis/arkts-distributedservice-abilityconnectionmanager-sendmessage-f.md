@@ -6,7 +6,6 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="sendmessage"></a>
 ## sendMessage
 
 ```TypeScript

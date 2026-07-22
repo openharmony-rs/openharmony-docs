@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="closeeffect"></a>
 ## closeEffect
 
 ```TypeScript
@@ -35,7 +34,6 @@ closeEffect(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 关闭数据占比图表旋转动效和投影效果。<br/>默认值：false，false表示开启数据占比图表旋转动效和投影效果，true表示关闭数据占比图表旋转动效和投影效果。 |
 
-<a id="contentmodifier"></a>
 ## contentModifier
 
 ```TypeScript
@@ -60,7 +58,6 @@ contentModifier(modifier: ContentModifier<DataPanelConfiguration>)
 | --- | --- | --- | --- |
 | modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;DataPanelConfiguration&gt; | 是 | 在DataPanel组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
-<a id="strokewidth"></a>
 ## strokeWidth
 
 ```TypeScript
@@ -85,7 +82,6 @@ strokeWidth(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 圆环粗细。<br/>默认值：24<br/>单位：vp<br/>设置字符串类型参数时，如果不指定单位，默认单位为px，例如'10'，等同于'10px'。<br/>**说明：**<br/>设置小于0的值时，按默认值显示。<br/>请合理设置圆环粗细，当value大于圆环半径时，圆环粗细会自动设置为圆环半径的12%。如果value过大，圆环可能会消失。 |
 
-<a id="trackbackgroundcolor"></a>
 ## trackBackgroundColor
 
 ```TypeScript
@@ -110,7 +106,6 @@ trackBackgroundColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 底板颜色。<br/>默认值：'#08182431'，格式为十六进制ARGB值，前两位代表透明度。 |
 
-<a id="trackshadow"></a>
 ## trackShadow
 
 ```TypeScript
@@ -135,7 +130,6 @@ trackShadow(value: DataPanelShadowOptions)
 | --- | --- | --- | --- |
 | value | [DataPanelShadowOptions](arkts-arkui-datapanelshadowoptions-i.md) | 是 | 投影样式。<br/>**说明：** <br/>设置为null时，不开启投影。 |
 
-<a id="valuecolors"></a>
 ## valueColors
 
 ```TypeScript

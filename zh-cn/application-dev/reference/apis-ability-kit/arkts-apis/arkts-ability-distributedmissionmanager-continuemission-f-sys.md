@@ -6,7 +6,6 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
-<a id="continuemission"></a>
 ## continueMission
 
 ```TypeScript
@@ -84,7 +83,6 @@ try {
 ```
 
 
-<a id="continuemission-1"></a>
 ## continueMission
 
 ```TypeScript
@@ -164,7 +162,6 @@ try {
 ```
 
 
-<a id="continuemission-2"></a>
 ## continueMission
 
 ```TypeScript
@@ -234,7 +231,6 @@ try {
 ```
 
 
-<a id="continuemission-3"></a>
 ## continueMission
 
 ```TypeScript

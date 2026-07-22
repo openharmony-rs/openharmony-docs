@@ -6,7 +6,6 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
-<a id="off"></a>
 ## off('cooperation')
 
 ```TypeScript
@@ -14,7 +13,6 @@ function off(type: 'cooperation', callback?: AsyncCallback<void>): void
 ```
 
 关闭监听键鼠穿越状态，使用callback异步回调。
-
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用  

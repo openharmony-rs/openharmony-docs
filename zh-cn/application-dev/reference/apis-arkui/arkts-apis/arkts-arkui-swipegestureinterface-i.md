@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -39,7 +38,6 @@
 | --- | --- |
 | [SwipeGestureInterface](arkts-arkui-swipegestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -70,7 +68,6 @@
 | --- | --- |
 | [SwipeGestureInterface](arkts-arkui-swipegestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onaction"></a>
 ## onAction
 
 ```TypeScript

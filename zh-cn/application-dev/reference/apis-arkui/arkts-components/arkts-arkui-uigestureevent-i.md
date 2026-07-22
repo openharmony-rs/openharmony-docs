@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="addgesture"></a>
 ## addGesture
 
 ```TypeScript
@@ -35,7 +34,6 @@ addGesture<T>(gesture: GestureHandler<T>, priority?: GesturePriority, mask?: Ges
 | priority | [GesturePriority](../arkts-apis/arkts-arkui-gesturepriority-e.md) | 否 | 绑定手势的优先级。<br>默认值：GesturePriority.NORMAL |
 | mask | [GestureMask](../arkts-apis/arkts-arkui-gesturemask-e.md) | 否 | 事件响应设置。<br>默认值：GestureMask.Normal |
 
-<a id="addparallelgesture"></a>
 ## addParallelGesture
 
 ```TypeScript
@@ -61,7 +59,6 @@ addParallelGesture<T>(gesture: GestureHandler<T>, mask?: GestureMask): void
 | gesture | [GestureHandler](../arkts-apis/arkts-arkui-gesturehandler-c.md)&lt;T&gt; | 是 | 手势处理器对象。 |
 | mask | [GestureMask](../arkts-apis/arkts-arkui-gesturemask-e.md) | 否 | 事件响应设置。<br>默认值：GestureMask.Normal |
 
-<a id="cleargestures"></a>
 ## clearGestures
 
 ```TypeScript
@@ -80,7 +77,6 @@ clearGestures(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="removegesturebytag"></a>
 ## removeGestureByTag
 
 ```TypeScript

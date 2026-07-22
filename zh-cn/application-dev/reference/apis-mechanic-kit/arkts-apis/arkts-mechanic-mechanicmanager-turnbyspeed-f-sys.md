@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="turnbyspeed"></a>
 ## turnBySpeed
 
 ```TypeScript
 function turnBySpeed(mechId: number, angleSpeed: number, duration: number): Promise<Result>
 ```
 
-Rotate in place according to the speed.
+以固定速度原地旋转
 
 **起始版本：** 26.0.0
 
@@ -27,15 +26,15 @@ Rotate in place according to the speed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device.<br>The value should be an integer. |
-| angleSpeed | number | 是 | angular velocity. |
-| duration | number | 是 | Duration of movement, unit ms.<br>The value should be an integer. |
+| mechId | number | 是 | 具身设备ID。<br>取值限定为整数。 |
+| angleSpeed | number | 是 | 角速度。 |
+| duration | number | 是 | 转动时长，单位ms。<br>取值限定为整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | Promise that returns the execution result. |
+| Promise&lt;Result&gt; | 202 - 非系统应用 |
 
 **错误码：**
 

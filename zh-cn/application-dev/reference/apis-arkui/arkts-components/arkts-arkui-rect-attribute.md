@@ -10,14 +10,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="radius"></a>
 ## radius
 
 ```TypeScript
 radius(value: Length | Array<any>)
 ```
 
-设置圆角半径大小，取值范围≥0，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。异常值按照默认值处理。
+设置圆角半径大小，取值范围≥0，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。异常值按照默认值处理。
 
 **起始版本：** 7
 
@@ -35,14 +34,13 @@ radius(value: Length | Array<any>)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) \| Array&lt;any&gt; | 是 | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照[[0, 0], [0, 0], [0, 0], [0, 0]]处理。<br>**起始版本：** 20 |
 
-<a id="radiusheight"></a>
 ## radiusHeight
 
 ```TypeScript
 radiusHeight(value: Length)
 ```
 
-设置圆角的高度，仅设置高时宽高一致，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。 异常值按照默认值处理。
+设置圆角的高度，仅设置高时宽高一致，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。 异常值按照默认值处理。
 
 **起始版本：** 7
 
@@ -60,14 +58,13 @@ radiusHeight(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 圆角的高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined按照默认值处理。<br>**起始版本：** 20 |
 
-<a id="radiuswidth"></a>
 ## radiusWidth
 
 ```TypeScript
 radiusWidth(value: Length)
 ```
 
-设置圆角的宽度，仅设置宽时宽高一致，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。 异常值按照默认值处理。
+设置圆角的宽度，仅设置宽时宽高一致，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。 异常值按照默认值处理。
 
 **起始版本：** 7
 

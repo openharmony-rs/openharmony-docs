@@ -6,7 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="getmousescrollrows"></a>
 ## getMouseScrollRows
 
 ```TypeScript
@@ -69,7 +68,6 @@ struct Index {
 ```
 
 
-<a id="getmousescrollrows-1"></a>
 ## getMouseScrollRows
 
 ```TypeScript

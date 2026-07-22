@@ -6,7 +6,6 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="createpkcs12sync"></a>
 ## createPkcs12Sync
 
 ```TypeScript

@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="canceltouch"></a>
 ## cancelTouch
 
 ```TypeScript
@@ -27,7 +26,6 @@ cancelTouch(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="geteventtargetinfo"></a>
 ## getEventTargetInfo
 
 ```TypeScript
@@ -52,7 +50,6 @@ getEventTargetInfo(): EventTargetInfo
 | --- | --- |
 | [EventTargetInfo](arkts-arkui-eventtargetinfo-c.md) | 当前触摸识别器对应组件的信息。 |
 
-<a id="ishostbelongsto"></a>
 ## isHostBelongsTo
 
 ```TypeScript
@@ -83,7 +80,6 @@ Check whether the current gesture binding node is a descendant of the passed-in 
 | --- | --- |
 | boolean | - the query result. |
 
-<a id="ishostbelongsto-1"></a>
 ## isHostBelongsTo
 
 ```TypeScript
@@ -106,7 +102,7 @@ isHostBelongsTo(uniqueId: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uniqueId | number | 是 | 组件的唯一ID。可以通过[getUniqueId](arkts-arkui-eventtargetinfo-c.md#getuniqueid-1)接口获取该ID。 |
+| uniqueId | number | 是 | 组件的唯一ID。可以通过[getUniqueId](arkts-arkui-eventtargetinfo-c.md#getuniqueid)接口获取该ID。 |
 
 **返回值：**
 

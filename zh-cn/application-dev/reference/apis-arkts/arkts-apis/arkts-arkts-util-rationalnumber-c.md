@@ -14,7 +14,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="compare"></a>
 ## compare
 
 ```TypeScript
@@ -43,7 +42,6 @@ compare(another: RationalNumber): number
 | --- | --- |
 | number | 根据比较结果返回 0、1 或 -1。 |
 
-<a id="compareto"></a>
 ## compareTo
 
 ```TypeScript
@@ -74,7 +72,6 @@ compareTo(another: RationalNumber): number
 | --- | --- |
 | number | 根据比较结果返回 0、1 或 -1。 |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -87,7 +84,7 @@ constructor(numerator: number, denominator: number)
 
 **废弃版本：** 9
 
-**替代接口：** [parseRationalNumber](arkts-arkts-util-rationalnumber-c.md#parserationalnumber-1)
+**替代接口：** [parseRationalNumber](arkts-arkts-util-rationalnumber-c.md#parserationalnumber)
 
 <!--Device-RationalNumber-constructor(numerator: number, denominator: number)--><!--Device-RationalNumber-constructor(numerator: number, denominator: number)-End-->
 
@@ -107,7 +104,6 @@ let rationalNumber = new util.RationalNumber(1,2);
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -131,7 +127,6 @@ let rationalNumber = new util.RationalNumber();
 
 ```
 
-<a id="createrationalfromstring"></a>
 ## createRationalFromString
 
 ```TypeScript
@@ -139,7 +134,6 @@ static createRationalFromString(rationalString: string): RationalNumber
 ```
 
 根据给定的字符串创建一个 **RationalNumber** 对象。
-
 > **NOTE**  
 >  
 > **rationalString** 参数必须为字符串。如果传入小数字符串，该函数不会被拦截，但会显示错误信息  
@@ -172,7 +166,6 @@ let rational = util.RationalNumber.createRationalFromString("3/4");
 
 ```
 
-<a id="equals"></a>
 ## equals
 
 ```TypeScript
@@ -223,7 +216,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="getcommondivisor"></a>
 ## getCommonDivisor
 
 ```TypeScript
@@ -236,7 +228,7 @@ static getCommonDivisor(number1: number, number2: number): number
 
 **废弃版本：** 9
 
-**替代接口：** [getCommonFactor](arkts-arkts-util-rationalnumber-c.md#getcommonfactor-1)
+**替代接口：** [getCommonFactor](arkts-arkts-util-rationalnumber-c.md#getcommonfactor)
 
 <!--Device-RationalNumber-static getCommonDivisor(number1: number, number2: number): number--><!--Device-RationalNumber-static getCommonDivisor(number1: number, number2: number): number-End-->
 
@@ -255,7 +247,6 @@ static getCommonDivisor(number1: number, number2: number): number
 | --- | --- |
 | number | 获取到的最大公约数。 |
 
-<a id="getcommonfactor"></a>
 ## getCommonFactor
 
 ```TypeScript
@@ -263,7 +254,6 @@ static getCommonFactor(number1: number, number2: number): number
 ```
 
 获取两个指定整数的最大公约数。
-
 > **NOTE**  
 >  
 > **number1** 和 **number2** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息  
@@ -299,7 +289,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="getdenominator"></a>
 ## getDenominator
 
 ```TypeScript
@@ -342,7 +331,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="getnumerator"></a>
 ## getNumerator
 
 ```TypeScript
@@ -385,7 +373,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isfinite"></a>
 ## isFinite
 
 ```TypeScript
@@ -428,7 +415,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isnan"></a>
 ## isNaN
 
 ```TypeScript
@@ -471,7 +457,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="iszero"></a>
 ## isZero
 
 ```TypeScript
@@ -514,7 +499,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="parserationalnumber"></a>
 ## parseRationalNumber
 
 ```TypeScript
@@ -522,7 +506,6 @@ static parseRationalNumber(numerator: number, denominator: number): RationalNumb
 ```
 
 根据给定的分子和分母创建一个 **RationalNumber** 实例。
-
 > **NOTE**  
 >  
 > **numerator** 和 **denominator** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息  
@@ -556,7 +539,6 @@ let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -599,7 +581,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="valueof"></a>
 ## valueOf
 
 ```TypeScript

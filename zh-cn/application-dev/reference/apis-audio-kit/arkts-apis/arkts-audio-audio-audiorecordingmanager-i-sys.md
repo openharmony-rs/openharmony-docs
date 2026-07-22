@@ -14,7 +14,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="offsystemrecordcontrollerenabledchange"></a>
 ## offSystemRecordControllerEnabledChange
 
 ```TypeScript
@@ -47,7 +46,6 @@ offSystemRecordControllerEnabledChange(callback?: Callback<SystemRecordControlle
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs like service died. |
 
-<a id="onsystemrecordcontrollerenabledchange"></a>
 ## onSystemRecordControllerEnabledChange
 
 ```TypeScript

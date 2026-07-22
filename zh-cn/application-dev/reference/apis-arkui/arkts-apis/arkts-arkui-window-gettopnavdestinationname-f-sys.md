@@ -6,7 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="gettopnavdestinationname"></a>
 ## getTopNavDestinationName
 
 ```TypeScript

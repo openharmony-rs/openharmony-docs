@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="getpropertyvalue"></a>
 ## getPropertyValue
 
 ```TypeScript
@@ -39,7 +38,6 @@ getPropertyValue(propertyName: string): Object | null | undefined
 | --- | --- |
 | Object | 特效属性值，如果"get"操作失败则返回null. |
 
-<a id="setpropertyvalue"></a>
 ## setPropertyValue
 
 ```TypeScript

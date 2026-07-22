@@ -14,7 +14,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="capacity"></a>
 ## capacity
 
 ```TypeScript
@@ -58,7 +57,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="flip"></a>
 ## flip
 
 ```TypeScript
@@ -103,7 +101,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="getlimit"></a>
 ## getLimit
 
 ```TypeScript
@@ -147,7 +144,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="getposition"></a>
 ## getPosition
 
 ```TypeScript
@@ -191,7 +187,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="msync"></a>
 ## msync
 
 ```TypeScript
@@ -248,7 +243,6 @@ mapping.msync().then(() => {
 
 ```
 
-<a id="msync-1"></a>
 ## msync
 
 ```TypeScript
@@ -312,7 +306,6 @@ mapping.msync(50, buffer.byteLength).then(() => {
 
 ```
 
-<a id="msyncsync"></a>
 ## msyncSync
 
 ```TypeScript
@@ -360,7 +353,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="msyncsync-1"></a>
 ## msyncSync
 
 ```TypeScript
@@ -415,7 +407,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="read"></a>
 ## read
 
 ```TypeScript
@@ -471,7 +462,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="read-1"></a>
 ## read
 
 ```TypeScript
@@ -528,7 +518,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="remaining"></a>
 ## remaining
 
 ```TypeScript
@@ -575,7 +564,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="setlimit"></a>
 ## setLimit
 
 ```TypeScript
@@ -619,7 +607,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="setposition"></a>
 ## setPosition
 
 ```TypeScript
@@ -663,7 +650,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="unmap"></a>
 ## unmap
 
 ```TypeScript
@@ -714,7 +700,6 @@ mapping.unmap().then(() => {
 
 ```
 
-<a id="unmapsync"></a>
 ## unmapSync
 
 ```TypeScript
@@ -753,7 +738,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -811,7 +795,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="write-1"></a>
 ## write
 
 ```TypeScript

@@ -2,7 +2,7 @@
 
 屏幕实例。描述Display对象的属性和方法。
 
-下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays-1)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync-1)中的任一方法获取到Display实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync)中的任一方法获取到Display实例，再通过此实例调用对应方法。
 
 **起始版本：** 7
 
@@ -16,7 +16,6 @@
 import { display } from '@kit.ArkUI';
 ```
 
-<a id="getavailablearea"></a>
 ## getAvailableArea
 
 ```TypeScript
@@ -68,7 +67,6 @@ try {
 
 ```
 
-<a id="getcutoutinfo"></a>
 ## getCutoutInfo
 
 ```TypeScript
@@ -116,7 +114,6 @@ displayClass.getCutoutInfo((err: BusinessError, data: display.CutoutInfo) => {
 
 ```
 
-<a id="getcutoutinfo-1"></a>
 ## getCutoutInfo
 
 ```TypeScript
@@ -161,7 +158,6 @@ promise.then((data: display.CutoutInfo) => {
 
 ```
 
-<a id="getdisplaycapability"></a>
 ## getDisplayCapability
 
 ```TypeScript
@@ -192,7 +188,6 @@ Get current display capability, including foldstatus, displaymode, rotation, and
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-<a id="getlivecreaseregion"></a>
 ## getLiveCreaseRegion
 
 ```TypeScript
@@ -234,7 +229,6 @@ try {
 
 ```
 
-<a id="getroundedcorner"></a>
 ## getRoundedCorner
 
 ```TypeScript
@@ -281,7 +275,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off('availableAreaChange')
 
 ```TypeScript
@@ -331,7 +324,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on('availableAreaChange')
 
 ```TypeScript
@@ -491,7 +483,7 @@ SystemCapability.WindowManager.WindowManager.Core
 densityPixels: number
 ```
 
-显示设备逻辑像素的密度，代表物理像素与逻辑像素的缩放系数，计算方式为：![densityPixels](docroot://reference/apis-arkui/figures/densityPixels.jpg)
+显示设备逻辑像素的密度，代表物理像素与逻辑像素的缩放系数，计算方式为：![densityPixels](../../../reference/apis-arkui/figures/densityPixels.jpg)
 
 该参数为浮点数，受densityDPI范围限制，取值范围在[0.5，4.0]。一般取值1.0、3.0等，实际取值取决于不同设备提供的densityDPI。
 

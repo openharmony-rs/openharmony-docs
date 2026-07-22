@@ -6,7 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="querymoduleusagerecords"></a>
 ## queryModuleUsageRecords
 
 ```TypeScript
@@ -68,7 +67,6 @@ usageStatistics.queryModuleUsageRecords(1000, (err: BusinessError, res: Array<us
 ```
 
 
-<a id="querymoduleusagerecords-1"></a>
 ## queryModuleUsageRecords
 
 ```TypeScript
@@ -133,7 +131,6 @@ usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.H
 ```
 
 
-<a id="querymoduleusagerecords-2"></a>
 ## queryModuleUsageRecords
 
 ```TypeScript
@@ -194,7 +191,6 @@ usageStatistics.queryModuleUsageRecords((err: BusinessError, res: Array<usageSta
 ```
 
 
-<a id="querymoduleusagerecords-3"></a>
 ## queryModuleUsageRecords
 
 ```TypeScript

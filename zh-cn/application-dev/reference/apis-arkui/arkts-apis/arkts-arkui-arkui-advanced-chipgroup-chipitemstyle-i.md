@@ -1,7 +1,6 @@
 # ChipItemStyle
 
 ChipItemStyle定义了Chip的共通属性。
-
 > **说明：**  
 >  
 > 1. 操作块的大小有两种类型，一种是ChipSize，提供NORMAL和SMALL两种尺寸供选择；另一种是SizeOptions。  

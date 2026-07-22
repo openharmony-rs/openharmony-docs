@@ -14,11 +14,7 @@ type ParamsInterface = {
 
 **替代接口：** params
 
-<!--Device-unnamed-type ParamsInterface = {
-  [key: string]: Object;
-}--><!--Device-unnamed-type ParamsInterface = {
-  [key: string]: Object;
-}-End-->
+<!--Device-unnamed-type ParamsInterface = {  [key: string]: Object;}--><!--Device-unnamed-type ParamsInterface = {  [key: string]: Object;}-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -14,7 +14,6 @@
 import { cdsm } from '@kit.ConnectivityKit';
 ```
 
-<a id="getcdsminfo"></a>
 ## getCdsmInfo
 
 ```TypeScript
@@ -47,7 +46,6 @@ getCdsmInfo(): CdsmInfo
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="offcdsminfochange"></a>
 ## offCdsmInfoChange
 
 ```TypeScript
@@ -70,7 +68,6 @@ offCdsmInfoChange(callback?: Callback<CdsmInfo>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;CdsmInfo&gt; | 否 | 用于监听合作设备集信息的回调。 |
 
-<a id="oncdsminfochange"></a>
 ## onCdsmInfoChange
 
 ```TypeScript

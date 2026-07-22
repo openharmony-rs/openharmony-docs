@@ -1,6 +1,5 @@
 # deleteStorageSync
 
-<a id="deletestoragesync"></a>
 ## deleteStorageSync
 
 ```TypeScript

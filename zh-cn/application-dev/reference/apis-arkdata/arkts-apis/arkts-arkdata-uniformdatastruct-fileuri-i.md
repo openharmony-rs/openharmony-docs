@@ -38,7 +38,7 @@ details?: Record<string, number | number | number | string | Uint8Array>
 fileType: string
 ```
 
-文件类型（必须是标准化数据类型（即[UTD预置列表](docroot://database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。fileType最大长度限制为1024个字节，超出限制时抛出异常。
+文件类型（必须是标准化数据类型（即[UTD预置列表](../../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。fileType最大长度限制为1024个字节，超出限制时抛出异常。
 
 **类型：** string
 

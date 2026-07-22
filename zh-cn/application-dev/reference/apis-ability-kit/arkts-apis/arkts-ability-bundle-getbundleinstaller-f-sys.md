@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getbundleinstaller"></a>
 ## getBundleInstaller
 
 ```TypeScript
@@ -36,7 +35,6 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInstaller&gt; | 是 | 回调函数，返回安装接口对象。 |
 
 
-<a id="getbundleinstaller-1"></a>
 ## getBundleInstaller
 
 ```TypeScript

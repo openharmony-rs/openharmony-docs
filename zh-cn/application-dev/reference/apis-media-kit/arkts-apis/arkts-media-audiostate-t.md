@@ -5,7 +5,6 @@ type AudioState = 'idle' | 'playing' | 'paused' | 'stopped' | 'error'
 ```
 
 音频播放的状态机。可通过state属性获取当前状态。
-
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVPlayerState](arkts-media-media-avplayerstate-t.md)替代。
 

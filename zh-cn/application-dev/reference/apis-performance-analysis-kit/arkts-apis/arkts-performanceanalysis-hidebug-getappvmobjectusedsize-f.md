@@ -6,7 +6,6 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="getappvmobjectusedsize"></a>
 ## getAppVMObjectUsedSize
 
 ```TypeScript

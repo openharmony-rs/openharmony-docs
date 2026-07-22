@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="fdatasync"></a>
 ## fdatasync
 
 ```TypeScript
@@ -46,7 +45,6 @@ declare function fdatasync(fd: number): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="fdatasync-1"></a>
 ## fdatasync
 
 ```TypeScript

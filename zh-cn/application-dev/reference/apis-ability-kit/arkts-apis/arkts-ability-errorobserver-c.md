@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-<a id="onexception"></a>
 ## onException
 
 ```TypeScript
@@ -31,7 +30,6 @@ onException?(errObject: Error): void
 | --- | --- | --- | --- |
 | errObject | Error | 是 | 有关异常事件名字、消息和错误堆栈信息的对象。 |
 
-<a id="onunhandledexception"></a>
 ## onUnhandledException
 
 ```TypeScript

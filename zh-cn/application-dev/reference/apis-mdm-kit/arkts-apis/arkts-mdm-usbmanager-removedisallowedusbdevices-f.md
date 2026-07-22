@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
-<a id="removedisallowedusbdevices"></a>
 ## removeDisallowedUsbDevices
 
 ```TypeScript
@@ -30,7 +29,7 @@ function removeDisallowedUsbDevices(admin: Want, usbDevices: Array<UsbDeviceType
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| usbDevices | Array&lt;UsbDeviceType&gt; | 是 | 要移除的USB设备类型的数组，UsbDeviceType信息可以通过[getDevices](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-usbmanager-getdevices-f.md#getdevices-1)接口获取。 |
+| usbDevices | Array&lt;UsbDeviceType&gt; | 是 | 要移除的USB设备类型的数组，UsbDeviceType信息可以通过[getDevices](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-usbmanager-getdevices-f.md#getdevices)接口获取。 |
 
 **错误码：**
 

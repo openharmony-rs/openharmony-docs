@@ -1,7 +1,6 @@
 # Task
 
-上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create-1)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create-1)获取。
-
+上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取。
 > **说明：**  
 >  
 > Task对象及其挂载回调函数会在调用remove方法后释放并被系统自动回收。
@@ -18,7 +17,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -26,10 +24,9 @@ off(event: 'progress', callback?: (progress: Progress) => void): void
 ```
 
 取消订阅任务进度事件。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -53,7 +50,6 @@ off(event: 'progress', callback?: (progress: Progress) => void): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | task mode error.<br>**适用版本：** 10+ |
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -61,10 +57,9 @@ off(event: 'completed', callback?: (progress: Progress) => void): void
 ```
 
 取消订阅任务完成事件。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -88,7 +83,6 @@ off(event: 'completed', callback?: (progress: Progress) => void): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10+ |
 
-<a id="off-2"></a>
 ## off
 
 ```TypeScript
@@ -96,10 +90,9 @@ off(event: 'failed', callback?: (progress: Progress) => void): void
 ```
 
 取消订阅任务失败事件。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -123,7 +116,6 @@ off(event: 'failed', callback?: (progress: Progress) => void): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10+ |
 
-<a id="off-3"></a>
 ## off
 
 ```TypeScript
@@ -131,10 +123,9 @@ off(event: 'pause', callback?: (progress: Progress) => void): void
 ```
 
 取消订阅任务暂停事件。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 11
 
@@ -155,7 +146,6 @@ off(event: 'pause', callback?: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="off-4"></a>
 ## off
 
 ```TypeScript
@@ -163,10 +153,9 @@ off(event: 'resume', callback?: (progress: Progress) => void): void
 ```
 
 取消订阅任务恢复事件。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 11
 
@@ -187,7 +176,6 @@ off(event: 'resume', callback?: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="off-5"></a>
 ## off
 
 ```TypeScript
@@ -195,10 +183,9 @@ off(event: 'remove', callback?: (progress: Progress) => void): void
 ```
 
 取消订阅任务移除事件。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 11
 
@@ -219,7 +206,6 @@ off(event: 'remove', callback?: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types.<br> 3. Parameter verification failed. |
 
-<a id="off-6"></a>
 ## off
 
 ```TypeScript
@@ -227,10 +213,9 @@ off(event: 'response', callback?: Callback<HttpResponse>): void
 ```
 
 取消订阅任务响应事件。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 12
 
@@ -253,7 +238,6 @@ off(event: 'response', callback?: Callback<HttpResponse>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="off-7"></a>
 ## off
 
 ```TypeScript
@@ -261,10 +245,9 @@ off(event: 'faultOccur', callback?: Callback<Faults>): void
 ```
 
 取消订阅任务失败原因相关的事件。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 20
 
@@ -285,7 +268,6 @@ off(event: 'faultOccur', callback?: Callback<Faults>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="off-8"></a>
 ## off
 
 ```TypeScript
@@ -293,10 +275,9 @@ off(event: 'wait', callback?: Callback<WaitingReason>): void
 ```
 
 取消订阅任务等待原因相关的事件。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 20
 
@@ -317,7 +298,6 @@ off(event: 'wait', callback?: Callback<WaitingReason>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -325,10 +305,9 @@ on(event: 'progress', callback: (progress: Progress) => void): void
 ```
 
 订阅任务进度的事件，使用callback异步回调。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -352,7 +331,6 @@ on(event: 'progress', callback: (progress: Progress) => void): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | task mode error.<br>**适用版本：** 10+ |
 
-<a id="on-1"></a>
 ## on
 
 ```TypeScript
@@ -360,10 +338,9 @@ on(event: 'completed', callback: (progress: Progress) => void): void
 ```
 
 订阅任务完成事件，使用callback异步回调。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -387,18 +364,16 @@ on(event: 'completed', callback: (progress: Progress) => void): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | task mode error.<br>**适用版本：** 10+ |
 
-<a id="on-2"></a>
 ## on
 
 ```TypeScript
 on(event: 'failed', callback: (progress: Progress) => void): void
 ```
 
-订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](arkts-basicservices-agent-show-f.md#show-1)查看错误原因。
-
+订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](arkts-basicservices-agent-show-f.md#show)查看错误原因。
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -422,7 +397,6 @@ on(event: 'failed', callback: (progress: Progress) => void): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10+ |
 
-<a id="on-3"></a>
 ## on
 
 ```TypeScript
@@ -430,10 +404,9 @@ on(event: 'pause', callback: (progress: Progress) => void): void
 ```
 
 订阅任务暂停事件，使用callback异步回调。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 11
 
@@ -454,7 +427,6 @@ on(event: 'pause', callback: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="on-4"></a>
 ## on
 
 ```TypeScript
@@ -462,10 +434,9 @@ on(event: 'resume', callback: (progress: Progress) => void): void
 ```
 
 订阅任务恢复事件，使用callback异步回调。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 11
 
@@ -486,7 +457,6 @@ on(event: 'resume', callback: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="on-5"></a>
 ## on
 
 ```TypeScript
@@ -494,10 +464,9 @@ on(event: 'remove', callback: (progress: Progress) => void): void
 ```
 
 订阅任务移除事件，使用callback异步回调。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 11
 
@@ -518,7 +487,6 @@ on(event: 'remove', callback: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="on-6"></a>
 ## on
 
 ```TypeScript
@@ -526,10 +494,9 @@ on(event: 'response', callback: Callback<HttpResponse>): void
 ```
 
 订阅任务响应头，使用callback异步回调。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 12
 
@@ -552,7 +519,6 @@ on(event: 'response', callback: Callback<HttpResponse>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="on-7"></a>
 ## on
 
 ```TypeScript
@@ -560,10 +526,9 @@ on(event: 'faultOccur', callback: Callback<Faults>): void
 ```
 
 订阅任务失败原因，使用callback形式返回结果。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 20
 
@@ -584,7 +549,6 @@ on(event: 'faultOccur', callback: Callback<Faults>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="on-8"></a>
 ## on
 
 ```TypeScript
@@ -592,10 +556,9 @@ on(event: 'wait', callback: Callback<WaitingReason>): void
 ```
 
 订阅任务等待原因，使用callback形式返回结果。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 20
 
@@ -616,14 +579,13 @@ on(event: 'wait', callback: Callback<WaitingReason>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 
-<a id="pause"></a>
 ## pause
 
 ```TypeScript
 pause(callback: AsyncCallback<void>): void
 ```
 
-暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](arkts-basicservices-agent-task-i.md#resume-1)恢复。使用callback异步回调。
+暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](arkts-basicservices-agent-task-i.md#resume)恢复。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -645,14 +607,13 @@ pause(callback: AsyncCallback<void>): void
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10+ |
 | [21900007](../../apis-basic-services-kit/errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="pause-1"></a>
 ## pause
 
 ```TypeScript
 pause(): Promise<void>
 ```
 
-暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](arkts-basicservices-agent-task-i.md#resume-1)恢复。使用Promise异步回调。
+暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](arkts-basicservices-agent-task-i.md#resume)恢复。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -674,7 +635,6 @@ pause(): Promise<void>
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10+ |
 | [21900007](../../apis-basic-services-kit/errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="resume"></a>
 ## resume
 
 ```TypeScript
@@ -706,7 +666,6 @@ resume(callback: AsyncCallback<void>): void
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10+ |
 | [21900007](../../apis-basic-services-kit/errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="resume-1"></a>
 ## resume
 
 ```TypeScript
@@ -738,7 +697,6 @@ resume(): Promise<void>
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10+ |
 | [21900007](../../apis-basic-services-kit/errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="setmaxspeed"></a>
 ## setMaxSpeed
 
 ```TypeScript
@@ -772,7 +730,6 @@ setMaxSpeed(speed: number): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
 | [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -784,10 +741,9 @@ start(callback: AsyncCallback<void>): void
 以下状态的任务可以被启动：
 
 1. 刚被request.agent.create接口创建的任务。2. 使用request.agent.create接口创建的已经失败或者停止的下载任务。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -813,7 +769,6 @@ start(callback: AsyncCallback<void>): void
 | [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900007](../../apis-basic-services-kit/errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -825,10 +780,9 @@ start(): Promise<void>
 以下状态的任务可以被启动：
 
 1. 刚被request.agent.create接口创建的任务。2. 使用request.agent.create接口创建的已经失败或者停止的下载任务。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -854,14 +808,13 @@ start(): Promise<void>
 | [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900007](../../apis-basic-services-kit/errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript
 stop(callback: AsyncCallback<void>): void
 ```
 
-停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](arkts-basicservices-agent-task-i.md#start-1)恢复。使用callback异步回调。
+停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](arkts-basicservices-agent-task-i.md#start)恢复。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -884,14 +837,13 @@ stop(callback: AsyncCallback<void>): void
 | [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900007](../../apis-basic-services-kit/errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
 stop(): Promise<void>
 ```
 
-停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](arkts-basicservices-agent-task-i.md#start-1)恢复。使用Promise异步回调。
+停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](arkts-basicservices-agent-task-i.md#start)恢复。使用Promise异步回调。
 
 **起始版本：** 10
 

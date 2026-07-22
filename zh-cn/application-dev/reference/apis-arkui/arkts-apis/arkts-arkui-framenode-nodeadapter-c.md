@@ -1,7 +1,6 @@
 # NodeAdapter
 
 NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](../arkts-components/arkts-arkui-lazyforeach.md)实现接口功能。
-
 > **说明：**  
 >  
 > 入参不能为负数，入参为负数时不做处理。
@@ -12,7 +11,6 @@ NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](../arkt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="attachnodeadapter"></a>
 ## attachNodeAdapter
 
 ```TypeScript
@@ -20,7 +18,6 @@ static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean
 ```
 
 给FrameNode绑定一个NodeAdapter。一个节点只能绑定一个NodeAdapter。已经绑定NodeAdapter的再次绑定会失败并返回false。
-
 > **说明：**  
 >  
 > 支持绑定的组件：Column、Row、Stack、GridRow、Flex、Swiper、RelativeContainer、List、ListItemGroup、WaterFlow、Grid。
@@ -48,7 +45,6 @@ static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean
 | --- | --- |
 | boolean | 绑定结果，返回true绑定成功，false绑定失败。 |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -67,7 +63,6 @@ NodeAdapter的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="detachnodeadapter"></a>
 ## detachNodeAdapter
 
 ```TypeScript
@@ -92,7 +87,6 @@ static detachNodeAdapter(node: FrameNode): void
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 要解除绑定的FrameNode节点。 |
 
-<a id="dispose"></a>
 ## dispose
 
 ```TypeScript
@@ -111,14 +105,13 @@ dispose(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getallavailableitems"></a>
 ## getAllAvailableItems
 
 ```TypeScript
 getAllAvailableItems(): Array<FrameNode>
 ```
 
-获取所有有效数据。有效节点数据包括显示在屏幕上的节点以及预加载的节点。其中预加载节点的数量可依照LazyForEach的[使用限制](docroot://ui/rendering-control/arkts-rendering-control-lazyforeach.md#使用限制)，调整父容器的cachedCount属性进行设置。
+获取所有有效数据。有效节点数据包括显示在屏幕上的节点以及预加载的节点。其中预加载节点的数量可依照LazyForEach的[使用限制](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#使用限制)，调整父容器的cachedCount属性进行设置。
 
 **起始版本：** 12
 
@@ -136,7 +129,6 @@ getAllAvailableItems(): Array<FrameNode>
 | --- | --- |
 | Array&lt;FrameNode&gt; | FrameNode数据节点集合。 |
 
-<a id="insertitem"></a>
 ## insertItem
 
 ```TypeScript
@@ -162,7 +154,6 @@ insertItem(start: number, count: number): void
 | start | number | 是 | 新增的节点开始索引值。<br/>取值范围：[0, +∞) |
 | count | number | 是 | 新增数据节点的数量。<br/>取值范围：[0, +∞) |
 
-<a id="isdisposed"></a>
 ## isDisposed
 
 ```TypeScript
@@ -187,7 +178,6 @@ isDisposed(): boolean
 | --- | --- |
 | boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
-<a id="moveitem"></a>
 ## moveItem
 
 ```TypeScript
@@ -213,7 +203,6 @@ moveItem(from: number, to: number): void
 | from | number | 是 | 数据移动的原始索引值。<br/>取值范围：[0, +∞) |
 | to | number | 是 | 数据移动的目的索引值。<br/>取值范围：[0, +∞) |
 
-<a id="onattachtonode"></a>
 ## onAttachToNode
 
 ```TypeScript
@@ -238,7 +227,6 @@ FrameNode绑定NodeAdapter时回调。
 | --- | --- | --- | --- |
 | target | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 绑定NodeAdapter的FrameNode节点。 |
 
-<a id="oncreatechild"></a>
 ## onCreateChild
 
 ```TypeScript
@@ -269,7 +257,6 @@ onCreateChild?(index: number): FrameNode
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) | 返回开发者创建的FrameNode节点。 |
 
-<a id="ondetachfromnode"></a>
 ## onDetachFromNode
 
 ```TypeScript
@@ -288,7 +275,6 @@ onDetachFromNode?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="ondisposechild"></a>
 ## onDisposeChild
 
 ```TypeScript
@@ -314,7 +300,6 @@ onDisposeChild?(id: number, node: FrameNode): void
 | id | number | 是 | 即将销毁的子节点id。 |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 即将销毁的FrameNode节点。 |
 
-<a id="ongetchildid"></a>
 ## onGetChildId
 
 ```TypeScript
@@ -345,7 +330,6 @@ onGetChildId?(index: number): number
 | --- | --- |
 | number | 返回开发者自定义生成的Id，需要开发者自行保证Id的唯一性。 |
 
-<a id="onupdatechild"></a>
 ## onUpdateChild
 
 ```TypeScript
@@ -371,14 +355,13 @@ onUpdateChild?(id: number, node: FrameNode): void
 | id | number | 是 | 复用节点的id。 |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 被复用的FrameNode节点。 |
 
-<a id="reloadallitems"></a>
 ## reloadAllItems
 
 ```TypeScript
 reloadAllItems(): void
 ```
 
-重新加载全部数据操作。实际调用了LazyForEach中的[OnDataReloaded](../arkts-components/arkts-arkui-datachangelistener-i.md#ondatareloaded-1)接口通知组件重新加载所有数据。
+重新加载全部数据操作。实际调用了LazyForEach中的[OnDataReloaded](../arkts-components/arkts-arkui-datachangelistener-i.md#ondatareloaded)接口通知组件重新加载所有数据。
 
 **起始版本：** 12
 
@@ -390,7 +373,6 @@ reloadAllItems(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="reloaditem"></a>
 ## reloadItem
 
 ```TypeScript
@@ -416,7 +398,6 @@ reloadItem(start: number, count: number): void
 | start | number | 是 | 重新加载的节点开始索引值。<br/>取值范围：[0, +∞) |
 | count | number | 是 | 重新加载数据节点的数量。<br/>取值范围：[0, +∞) |
 
-<a id="removeitem"></a>
 ## removeItem
 
 ```TypeScript

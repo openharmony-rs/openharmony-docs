@@ -14,7 +14,6 @@ Driver类为uitest测试框架的总入口，提供控件匹配/查找，按键�
 import { ResizeDirection, WindowMode, PenMode, PenKeyOperation, Driver, MatchPattern, UiDirection, TouchOptions, ComponentEventType, PointerMatrix, WindowChangeType, Component, ON, PenKey, Rect, InputTextMode, UIEventObserver, WindowFilter, WindowChangeOptions, UiWindow, TouchPadSwipeOptions, Point, KeyOptions, DisplayRotation, UIElementInfo, PenKeyOperationOptions, ComponentEventOptions, MouseButton, On } from '@kit.TestKit';
 ```
 
-<a id="assertcomponentexist"></a>
 ## assertComponentExist
 
 ```TypeScript
@@ -64,7 +63,6 @@ async function demo() {
 
 ```
 
-<a id="click"></a>
 ## click
 
 ```TypeScript
@@ -116,7 +114,6 @@ async function demo() {
 
 ```
 
-<a id="clickat"></a>
 ## clickAt
 
 ```TypeScript
@@ -165,7 +162,6 @@ async function demo() {
 
 ```
 
-<a id="clickatwithoptions"></a>
 ## clickAtWithOptions
 
 ```TypeScript
@@ -219,7 +215,6 @@ async function demo() {
 
 ```
 
-<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -260,7 +255,6 @@ async function demo() {
 
 ```
 
-<a id="createuieventobserver"></a>
 ## createUIEventObserver
 
 ```TypeScript
@@ -302,7 +296,6 @@ async function demo() {
 
 ```
 
-<a id="crownrotate"></a>
 ## crownRotate
 
 ```TypeScript
@@ -356,7 +349,6 @@ async function demo() {
 
 ```
 
-<a id="delayms"></a>
 ## delayMs
 
 ```TypeScript
@@ -405,7 +397,6 @@ async function demo() {
 
 ```
 
-<a id="doubleclick"></a>
 ## doubleClick
 
 ```TypeScript
@@ -455,7 +446,6 @@ async function demo() {
 
 ```
 
-<a id="doubleclickat"></a>
 ## doubleClickAt
 
 ```TypeScript
@@ -504,7 +494,6 @@ async function demo() {
 
 ```
 
-<a id="drag"></a>
 ## drag
 
 ```TypeScript
@@ -557,7 +546,6 @@ async function demo() {
 
 ```
 
-<a id="dragbetween"></a>
 ## dragBetween
 
 ```TypeScript
@@ -609,7 +597,6 @@ async function demo() {
 
 ```
 
-<a id="dragbetweenwithoptions"></a>
 ## dragBetweenWithOptions
 
 ```TypeScript
@@ -666,7 +653,6 @@ async function demo() {
 
 ```
 
-<a id="dumplayout"></a>
 ## dumpLayout
 
 ```TypeScript
@@ -687,7 +673,7 @@ Get the current layout information and save as file with json format.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| savePath | string | 是 | the path where to store the json, must be in the application sandbox directory.The path must be the [sandbox path](docroot://file-management/app-sandbox-directory.md) of the current application. |
+| savePath | string | 是 | the path where to store the json, must be in the application sandbox directory.The path must be the [sandbox path](../../../file-management/app-sandbox-directory.md) of the current application. |
 | displayId | number | 否 | the Id of the specified display, default is the displayId of the main screen. |
 
 **返回值：**
@@ -717,7 +703,6 @@ async function demo() {
 
 ```
 
-<a id="findcomponent"></a>
 ## findComponent
 
 ```TypeScript
@@ -768,7 +753,6 @@ async function demo() {
 
 ```
 
-<a id="findcomponents"></a>
 ## findComponents
 
 ```TypeScript
@@ -819,7 +803,6 @@ async function demo() {
 
 ```
 
-<a id="findwindow"></a>
 ## findWindow
 
 ```TypeScript
@@ -868,7 +851,6 @@ async function demo() {
 
 ```
 
-<a id="fling"></a>
 ## fling
 
 ```TypeScript
@@ -920,7 +902,6 @@ async function demo() {
 
 ```
 
-<a id="fling-1"></a>
 ## fling
 
 ```TypeScript
@@ -970,7 +951,6 @@ async function demo() {
 
 ```
 
-<a id="fling-2"></a>
 ## fling
 
 ```TypeScript
@@ -1021,7 +1001,6 @@ async function demo() {
 
 ```
 
-<a id="getdisplaydensity"></a>
 ## getDisplayDensity
 
 ```TypeScript
@@ -1063,7 +1042,6 @@ async function demo() {
 
 ```
 
-<a id="getdisplaydensity-1"></a>
 ## getDisplayDensity
 
 ```TypeScript
@@ -1112,7 +1090,6 @@ async function demo() {
 
 ```
 
-<a id="getdisplayrotation"></a>
 ## getDisplayRotation
 
 ```TypeScript
@@ -1154,7 +1131,6 @@ async function demo() {
 
 ```
 
-<a id="getdisplayrotation-1"></a>
 ## getDisplayRotation
 
 ```TypeScript
@@ -1203,7 +1179,6 @@ async function demo() {
 
 ```
 
-<a id="getdisplaysize"></a>
 ## getDisplaySize
 
 ```TypeScript
@@ -1245,7 +1220,6 @@ async function demo() {
 
 ```
 
-<a id="getdisplaysize-1"></a>
 ## getDisplaySize
 
 ```TypeScript
@@ -1294,7 +1268,6 @@ async function demo() {
 
 ```
 
-<a id="injectknucklepointeraction"></a>
 ## injectKnucklePointerAction
 
 ```TypeScript
@@ -1302,7 +1275,6 @@ injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise<voi
 ```
 
 模拟指关节多点注入滑动操作。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 若设备关闭了指关节手势<!--RP4--><!--RP4End-->，则调用本接口返回17000005错误码。
@@ -1357,7 +1329,6 @@ async function demo() {
 
 ```
 
-<a id="injectmultipointeraction"></a>
 ## injectMultiPointerAction
 
 ```TypeScript
@@ -1423,7 +1394,6 @@ async function demo() {
 
 ```
 
-<a id="injectpenpointeraction"></a>
 ## injectPenPointerAction
 
 ```TypeScript
@@ -1481,7 +1451,6 @@ async function demo() {
 
 ```
 
-<a id="inputtext"></a>
 ## inputText
 
 ```TypeScript
@@ -1537,7 +1506,6 @@ async function demo() {
 
 ```
 
-<a id="inputtext-1"></a>
 ## inputText
 
 ```TypeScript
@@ -1599,7 +1567,6 @@ async function demoChinese() {
 
 ```
 
-<a id="iscomponentpresentwhendrag"></a>
 ## isComponentPresentWhenDrag
 
 ```TypeScript
@@ -1652,7 +1619,6 @@ async function demo() {
 
 ```
 
-<a id="iscomponentpresentwhenlongclick"></a>
 ## isComponentPresentWhenLongClick
 
 ```TypeScript
@@ -1703,7 +1669,6 @@ async function demo() {
 
 ```
 
-<a id="iscomponentpresentwhenswipe"></a>
 ## isComponentPresentWhenSwipe
 
 ```TypeScript
@@ -1755,7 +1720,6 @@ async function demo() {
 
 ```
 
-<a id="knuckleknock"></a>
 ## knuckleKnock
 
 ```TypeScript
@@ -1763,7 +1727,6 @@ knuckleKnock(pointers: Array<Point>, times: number): Promise<void>
 ```
 
 模拟指关节敲击屏幕操作。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 若设备关闭了指关节手势<!--RP4--><!--RP4End-->，则调用本接口返回17000005错误码。
@@ -1812,7 +1775,6 @@ async function demo() {
 
 ```
 
-<a id="longclick"></a>
 ## longClick
 
 ```TypeScript
@@ -1862,7 +1824,6 @@ async function demo() {
 
 ```
 
-<a id="longclickat"></a>
 ## longClickAt
 
 ```TypeScript
@@ -1912,7 +1873,6 @@ async function demo() {
 
 ```
 
-<a id="longclickatwithoptions"></a>
 ## longClickAtWithOptions
 
 ```TypeScript
@@ -1967,7 +1927,6 @@ async function demo() {
 
 ```
 
-<a id="mouseclick"></a>
 ## mouseClick
 
 ```TypeScript
@@ -2019,7 +1978,6 @@ async function demo() {
 
 ```
 
-<a id="mousedoubleclick"></a>
 ## mouseDoubleClick
 
 ```TypeScript
@@ -2071,7 +2029,6 @@ async function demo() {
 
 ```
 
-<a id="mousedrag"></a>
 ## mouseDrag
 
 ```TypeScript
@@ -2122,7 +2079,6 @@ async function demo() {
 
 ```
 
-<a id="mousedrag-1"></a>
 ## mouseDrag
 
 ```TypeScript
@@ -2174,7 +2130,6 @@ async function demo() {
 
 ```
 
-<a id="mousedragwithoptions"></a>
 ## mouseDragWithOptions
 
 ```TypeScript
@@ -2235,7 +2190,6 @@ async function demo() {
 
 ```
 
-<a id="mouselongclick"></a>
 ## mouseLongClick
 
 ```TypeScript
@@ -2288,7 +2242,6 @@ async function demo() {
 
 ```
 
-<a id="mouselongclick-1"></a>
 ## mouseLongClick
 
 ```TypeScript
@@ -2342,7 +2295,6 @@ async function demo() {
 
 ```
 
-<a id="mousemoveto"></a>
 ## mouseMoveTo
 
 ```TypeScript
@@ -2391,7 +2343,6 @@ async function demo() {
 
 ```
 
-<a id="mousemovewithtrack"></a>
 ## mouseMoveWithTrack
 
 ```TypeScript
@@ -2442,7 +2393,6 @@ async function demo() {
 
 ```
 
-<a id="mousescroll"></a>
 ## mouseScroll
 
 ```TypeScript
@@ -2495,7 +2445,6 @@ async function demo() {
 
 ```
 
-<a id="mousescroll-1"></a>
 ## mouseScroll
 
 ```TypeScript
@@ -2549,7 +2498,6 @@ async function demo() {
 
 ```
 
-<a id="penclick"></a>
 ## penClick
 
 ```TypeScript
@@ -2598,7 +2546,6 @@ async function demo() {
 
 ```
 
-<a id="pendoubleclick"></a>
 ## penDoubleClick
 
 ```TypeScript
@@ -2647,7 +2594,6 @@ async function demo() {
 
 ```
 
-<a id="penlongclick"></a>
 ## penLongClick
 
 ```TypeScript
@@ -2697,7 +2643,6 @@ async function demo() {
 
 ```
 
-<a id="penswipe"></a>
 ## penSwipe
 
 ```TypeScript
@@ -2749,7 +2694,6 @@ async function demo() {
 
 ```
 
-<a id="pressback"></a>
 ## pressBack
 
 ```TypeScript
@@ -2791,7 +2735,6 @@ async function demo() {
 
 ```
 
-<a id="pressback-1"></a>
 ## pressBack
 
 ```TypeScript
@@ -2840,7 +2783,6 @@ async function demo() {
 
 ```
 
-<a id="presshome"></a>
 ## pressHome
 
 ```TypeScript
@@ -2882,7 +2824,6 @@ async function demo() {
 
 ```
 
-<a id="presshome-1"></a>
 ## pressHome
 
 ```TypeScript
@@ -2931,7 +2872,6 @@ async function demo() {
 
 ```
 
-<a id="screencap"></a>
 ## screenCap
 
 ```TypeScript
@@ -2952,7 +2892,7 @@ screenCap(savePath: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| savePath | string | 是 | 文件保存路径。路径需为当前应用的[沙箱路径](docroot://file-management/app-sandbox-directory.md)。 |
+| savePath | string | 是 | 文件保存路径。路径需为当前应用的[沙箱路径](../../../file-management/app-sandbox-directory.md)。 |
 
 **返回值：**
 
@@ -2980,7 +2920,6 @@ async function demo() {
 
 ```
 
-<a id="screencap-1"></a>
 ## screenCap
 
 ```TypeScript
@@ -3001,7 +2940,7 @@ screenCap(savePath: string, displayId: number): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| savePath | string | 是 | 文件保存路径。路径需为当前应用的[沙箱路径](docroot://file-management/app-sandbox-directory.md)。 |
+| savePath | string | 是 | 文件保存路径。路径需为当前应用的[沙箱路径](../../../file-management/app-sandbox-directory.md)。 |
 | displayId | number | 是 | 指定设备屏幕ID。取值范围：大于等于0的整数。**说明：** 传入displayId不存在时，将抛出17000007异常。 |
 
 **返回值：**
@@ -3030,7 +2969,6 @@ async function demo() {
 
 ```
 
-<a id="screencapture"></a>
 ## screenCapture
 
 ```TypeScript
@@ -3051,7 +2989,7 @@ screenCapture(savePath: string, rect?: Rect): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| savePath | string | 是 | 文件保存路径。路径需为当前应用的[沙箱路径](docroot://file-management/app-sandbox-directory.md)。 |
+| savePath | string | 是 | 文件保存路径。路径需为当前应用的[沙箱路径](../../../file-management/app-sandbox-directory.md)。 |
 | rect | [Rect](arkts-test-uitest-rect-i.md) | 否 | 截图区域，默认为全屏。<br>**起始版本：** 11 |
 
 **返回值：**
@@ -3085,7 +3023,6 @@ async function demo() {
 
 ```
 
-<a id="setdisplayrotation"></a>
 ## setDisplayRotation
 
 ```TypeScript
@@ -3134,7 +3071,6 @@ async function demo() {
 
 ```
 
-<a id="setdisplayrotationenabled"></a>
 ## setDisplayRotationEnabled
 
 ```TypeScript
@@ -3183,7 +3119,6 @@ async function demo() {
 
 ```
 
-<a id="swipe"></a>
 ## swipe
 
 ```TypeScript
@@ -3238,7 +3173,6 @@ async function demo() {
 
 ```
 
-<a id="swipebetween"></a>
 ## swipeBetween
 
 ```TypeScript
@@ -3289,7 +3223,6 @@ async function demo() {
 
 ```
 
-<a id="swipebetweenwithoptions"></a>
 ## swipeBetweenWithOptions
 
 ```TypeScript
@@ -3345,7 +3278,6 @@ async function demo() {
 
 ```
 
-<a id="touchpadmultifingerswipe"></a>
 ## touchPadMultiFingerSwipe
 
 ```TypeScript
@@ -3397,7 +3329,6 @@ async function demo() {
 
 ```
 
-<a id="touchpadtwofingersscroll"></a>
 ## touchPadTwoFingersScroll
 
 ```TypeScript
@@ -3450,7 +3381,6 @@ async function demo() {
 
 ```
 
-<a id="triggercombinekeys"></a>
 ## triggerCombineKeys
 
 ```TypeScript
@@ -3502,7 +3432,6 @@ async function demo() {
 
 ```
 
-<a id="triggercombinekeys-1"></a>
 ## triggerCombineKeys
 
 ```TypeScript
@@ -3554,7 +3483,6 @@ async function demo() {
 
 ```
 
-<a id="triggerkey"></a>
 ## triggerKey
 
 ```TypeScript
@@ -3604,7 +3532,6 @@ async function demo() {
 
 ```
 
-<a id="triggerkey-1"></a>
 ## triggerKey
 
 ```TypeScript
@@ -3655,7 +3582,6 @@ async function demo() {
 
 ```
 
-<a id="triggerpenkey"></a>
 ## triggerPenKey
 
 ```TypeScript
@@ -3718,7 +3644,6 @@ async function demo() {
 
 ```
 
-<a id="waitforcomponent"></a>
 ## waitForComponent
 
 ```TypeScript
@@ -3768,7 +3693,6 @@ async function demo() {
 
 ```
 
-<a id="waitforidle"></a>
 ## waitForIdle
 
 ```TypeScript
@@ -3818,7 +3742,6 @@ async function demo() {
 
 ```
 
-<a id="wakeupdisplay"></a>
 ## wakeUpDisplay
 
 ```TypeScript

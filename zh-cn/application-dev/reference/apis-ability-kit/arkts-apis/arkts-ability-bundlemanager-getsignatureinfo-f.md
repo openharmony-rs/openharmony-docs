@@ -6,14 +6,13 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getsignatureinfo"></a>
 ## getSignatureInfo
 
 ```TypeScript
 function getSignatureInfo(uid: number): SignatureInfo
 ```
 
-根据给定的uid获取对应应用的[签名信息](bundleManager/BundleInfo:SignatureInfo)。
+根据给定的uid获取对应应用的[签名信息](arkts-ability-bundlemanager-signatureinfo-t.md)。
 
 **起始版本：** 18
 

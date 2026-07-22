@@ -1,7 +1,6 @@
 # AudioHapticFileDescriptor
 
 描述音振文件描述符。
-
 > **注意：**  
 >  
 > 开发者需要确保fd是可用的文件描述符，且offset和length的值都是正确的。

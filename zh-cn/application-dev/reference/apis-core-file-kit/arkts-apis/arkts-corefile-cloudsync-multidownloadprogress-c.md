@@ -14,7 +14,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="getfailedfiles"></a>
 ## getFailedFiles
 
 ```TypeScript
@@ -74,7 +73,6 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 
 ```
 
-<a id="getsuccessfulfiles"></a>
 ## getSuccessfulFiles
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # symlinkSync
 
-<a id="symlinksync"></a>
 ## symlinkSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function symlinkSync(target: string, srcPath: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:symlinkSync](arkts-corefile-file-fs-symlinksync-f.md#symlinksync-1)
+**替代接口：** [fs:symlinkSync](arkts-corefile-fileio-symlinksync-f.md#symlinksync)
 
 <!--Device-unnamed-declare function symlinkSync(target: string, srcPath: string): void--><!--Device-unnamed-declare function symlinkSync(target: string, srcPath: string): void-End-->
 

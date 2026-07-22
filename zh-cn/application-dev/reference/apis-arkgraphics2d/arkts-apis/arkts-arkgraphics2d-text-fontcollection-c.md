@@ -14,7 +14,6 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
-<a id="clearcaches"></a>
 ## clearCaches
 
 ```TypeScript
@@ -52,7 +51,6 @@ struct Index {
 
 ```
 
-<a id="getglobalinstance"></a>
 ## getGlobalInstance
 
 ```TypeScript
@@ -99,7 +97,6 @@ struct Index {
 
 ```
 
-<a id="getlocalinstance"></a>
 ## getLocalInstance
 
 ```TypeScript
@@ -132,7 +129,6 @@ let fontCollection = text.FontCollection.getLocalInstance();
 
 ```
 
-<a id="loadfont"></a>
 ## loadFont
 
 ```TypeScript
@@ -198,7 +194,6 @@ struct RenderTest {
 
 ```
 
-<a id="loadfontsync"></a>
 ## loadFontSync
 
 ```TypeScript
@@ -261,7 +256,6 @@ struct RenderTest {
 
 ```
 
-<a id="loadfontsyncwithcheck"></a>
 ## loadFontSyncWithCheck
 
 ```TypeScript
@@ -340,7 +334,6 @@ struct Index {
 
 ```
 
-<a id="loadfontwithcheck"></a>
 ## loadFontWithCheck
 
 ```TypeScript
@@ -429,7 +422,6 @@ struct Index {
 
 ```
 
-<a id="setparagraphcachesenabled"></a>
 ## setParagraphCachesEnabled
 
 ```TypeScript
@@ -476,7 +468,6 @@ struct Index {
 
 ```
 
-<a id="unloadfont"></a>
 ## unloadFont
 
 ```TypeScript
@@ -548,7 +539,6 @@ struct UnloadFontTest {
 
 ```
 
-<a id="unloadfontsync"></a>
 ## unloadFontSync
 
 ```TypeScript

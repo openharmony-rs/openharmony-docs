@@ -8,7 +8,6 @@ ProgressMask设置遮罩的进度、最大值和颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -35,7 +34,6 @@ constructor(value: number, total: number, color: ResourceColor)
 | total | number | 是 | 进度遮罩的最大值。<br/> 取值范围：[0.0, +∞) |
 | color | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 进度遮罩的颜色。 |
 
-<a id="enablebreathinganimation"></a>
 ## enableBreathingAnimation
 
 ```TypeScript
@@ -60,7 +58,6 @@ enableBreathingAnimation(value: boolean): void
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否开启呼吸光晕动画。<br/>true：开启呼吸光晕动画。<br/>false：关闭呼吸光晕动画。 |
 
-<a id="updatecolor"></a>
 ## updateColor
 
 ```TypeScript
@@ -85,7 +82,6 @@ updateColor(value: ResourceColor): void
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 进度遮罩的颜色。 |
 
-<a id="updateprogress"></a>
 ## updateProgress
 
 ```TypeScript

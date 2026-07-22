@@ -1,6 +1,5 @@
 # $r
 
-<a id="$r"></a>
 ## $r
 
 ```TypeScript

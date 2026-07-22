@@ -14,7 +14,6 @@
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="addaccount"></a>
 ## addAccount
 
 ```TypeScript
@@ -22,18 +21,17 @@ addAccount(name: string, callback: AsyncCallback<void>): void
 ```
 
 根据账号名添加应用账号。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount-1)替  
+> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount)替  
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount-1)
+**替代接口：** [createAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount)
 
 <!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -57,7 +55,6 @@ appAccountManager.addAccount('WangWu', (err: BusinessError) => {
 
 ```
 
-<a id="addaccount-1"></a>
 ## addAccount
 
 ```TypeScript
@@ -65,18 +62,17 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void
 ```
 
 根据账号名和额外信息添加应用账号。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount-1)  
+> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount-1)
+**替代接口：** [createAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -101,7 +97,6 @@ appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => {
 
 ```
 
-<a id="addaccount-2"></a>
 ## addAccount
 
 ```TypeScript
@@ -109,17 +104,16 @@ addAccount(name: string, extraInfo?: string): Promise<void>
 ```
 
 根据账号名和额外信息添加应用账号。使用Promise异步回调。
-
 > **说明：**  
 > > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount-1)  
+> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount-1)
+**替代接口：** [createAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>--><!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>-End-->
 
@@ -151,7 +145,6 @@ appAccountManager.addAccount('LiSi', 'token101').then(()=> {
 
 ```
 
-<a id="addaccountimplicitly"></a>
 ## addAccountImplicitly
 
 ```TypeScript
@@ -164,30 +157,19 @@ addAccountImplicitly(
 ```
 
 根据指定的账号所有者隐式地添加应用账号。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [createAccountImplicitly](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccountimplicitly-1)  
+> [createAccountImplicitly](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccountimplicitly)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [createAccountImplicitly(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccountimplicitly-1)
+**替代接口：** [createAccountImplicitly(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccountimplicitly)
 
-<!--Device-AppAccountManager-addAccountImplicitly(
-      owner: string,
-      authType: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void--><!--Device-AppAccountManager-addAccountImplicitly(
-      owner: string,
-      authType: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void-End-->
+<!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -242,7 +224,6 @@ struct Index {
 
 ```
 
-<a id="auth"></a>
 ## auth
 
 ```TypeScript
@@ -325,7 +306,6 @@ struct Index {
 
 ```
 
-<a id="auth-1"></a>
 ## auth
 
 ```TypeScript
@@ -342,19 +322,7 @@ auth(
 
 **起始版本：** 9
 
-<!--Device-AppAccountManager-auth(
-      name: string,
-      owner: string,
-      authType: string,
-      options: Record<string, Object>,
-      callback: AuthCallback
-    ): void--><!--Device-AppAccountManager-auth(
-      name: string,
-      owner: string,
-      authType: string,
-      options: Record<string, Object>,
-      callback: AuthCallback
-    ): void-End-->
+<!--Device-AppAccountManager-auth(      name: string,      owner: string,      authType: string,      options: Record<string, Object>,      callback: AuthCallback    ): void--><!--Device-AppAccountManager-auth(      name: string,      owner: string,      authType: string,      options: Record<string, Object>,      callback: AuthCallback    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -430,7 +398,6 @@ struct Index {
 
 ```
 
-<a id="authenticate"></a>
 ## authenticate
 
 ```TypeScript
@@ -444,32 +411,19 @@ authenticate(
 ```
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [auth](arkts-basicservices-appaccount-appaccountmanager-i.md#auth-1)  
+> [auth](arkts-basicservices-appaccount-appaccountmanager-i.md#auth)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [auth(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#auth-1)
+**替代接口：** [auth(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#auth)
 
-<!--Device-AppAccountManager-authenticate(
-      name: string,
-      owner: string,
-      authType: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void--><!--Device-AppAccountManager-authenticate(
-      name: string,
-      owner: string,
-      authType: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void-End-->
+<!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -525,7 +479,6 @@ struct Index {
 
 ```
 
-<a id="checkaccountlabels"></a>
 ## checkAccountLabels
 
 ```TypeScript
@@ -583,7 +536,6 @@ try {
 
 ```
 
-<a id="checkaccountlabels-1"></a>
 ## checkAccountLabels
 
 ```TypeScript
@@ -644,7 +596,6 @@ try {
 
 ```
 
-<a id="checkappaccess"></a>
 ## checkAppAccess
 
 ```TypeScript
@@ -697,7 +648,6 @@ try {
 
 ```
 
-<a id="checkappaccess-1"></a>
 ## checkAppAccess
 
 ```TypeScript
@@ -752,7 +702,6 @@ try {
 
 ```
 
-<a id="checkappaccountsyncenable"></a>
 ## checkAppAccountSyncEnable
 
 ```TypeScript
@@ -760,18 +709,17 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void
 ```
 
 检查指定应用账号是否开启数据同步功能。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [checkDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled-1)  
+> [checkDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkDataSyncEnabled(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled-1)
+**替代接口：** [checkDataSyncEnabled(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -801,7 +749,6 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, res
 
 ```
 
-<a id="checkappaccountsyncenable-1"></a>
 ## checkAppAccountSyncEnable
 
 ```TypeScript
@@ -809,17 +756,16 @@ checkAppAccountSyncEnable(name: string): Promise<boolean>
 ```
 
 检查指定应用账号是否开启数据同步功能。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [checkDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled-1)替代。
+> [checkDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkDataSyncEnabled(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled-1)
+**替代接口：** [checkDataSyncEnabled(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -852,7 +798,6 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => 
 
 ```
 
-<a id="checkauthtokenvisibility"></a>
 ## checkAuthTokenVisibility
 
 ```TypeScript
@@ -907,7 +852,6 @@ try {
 
 ```
 
-<a id="checkauthtokenvisibility-1"></a>
 ## checkAuthTokenVisibility
 
 ```TypeScript
@@ -965,7 +909,6 @@ try {
 
 ```
 
-<a id="checkdatasyncenabled"></a>
 ## checkDataSyncEnabled
 
 ```TypeScript
@@ -1019,7 +962,6 @@ try {
 
 ```
 
-<a id="checkdatasyncenabled-1"></a>
 ## checkDataSyncEnabled
 
 ```TypeScript
@@ -1076,7 +1018,6 @@ try {
 
 ```
 
-<a id="checkoauthtokenvisibility"></a>
 ## checkOAuthTokenVisibility
 
 ```TypeScript
@@ -1089,30 +1030,19 @@ checkOAuthTokenVisibility(
 ```
 
 检查指定应用账号的特定鉴权类型的授权令牌对指定应用的可见性。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [checkAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility-1)  
+> [checkAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [checkAuthTokenVisibility(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility-1)
+**替代接口：** [checkAuthTokenVisibility(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility)
 
-<!--Device-AppAccountManager-checkOAuthTokenVisibility(
-      name: string,
-      authType: string,
-      bundleName: string,
-      callback: AsyncCallback<boolean>
-    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(
-      name: string,
-      authType: string,
-      bundleName: string,
-      callback: AsyncCallback<boolean>
-    ): void-End-->
+<!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1141,7 +1071,6 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
 
 ```
 
-<a id="checkoauthtokenvisibility-1"></a>
 ## checkOAuthTokenVisibility
 
 ```TypeScript
@@ -1149,18 +1078,17 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 ```
 
 检查指定应用账号的特定鉴权类型的授权令牌对指定应用的可见性。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [checkAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility-1)  
+> [checkAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [checkAuthTokenVisibility(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility-1)
+**替代接口：** [checkAuthTokenVisibility(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
 
@@ -1194,7 +1122,6 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
 
 ```
 
-<a id="createaccount"></a>
 ## createAccount
 
 ```TypeScript
@@ -1246,7 +1173,6 @@ try {
 
 ```
 
-<a id="createaccount-1"></a>
 ## createAccount
 
 ```TypeScript
@@ -1304,7 +1230,6 @@ try {
 
 ```
 
-<a id="createaccount-2"></a>
 ## createAccount
 
 ```TypeScript
@@ -1365,7 +1290,6 @@ try {
 
 ```
 
-<a id="createaccountimplicitly"></a>
 ## createAccountImplicitly
 
 ```TypeScript
@@ -1445,7 +1369,6 @@ struct Index {
 
 ```
 
-<a id="createaccountimplicitly-1"></a>
 ## createAccountImplicitly
 
 ```TypeScript
@@ -1530,7 +1453,6 @@ struct Index {
 
 ```
 
-<a id="deleteaccount"></a>
 ## deleteAccount
 
 ```TypeScript
@@ -1538,18 +1460,17 @@ deleteAccount(name: string, callback: AsyncCallback<void>): void
 ```
 
 删除应用账号。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [removeAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount-1)替  
+> [removeAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount)替  
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [removeAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount-1)
+**替代接口：** [removeAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount)
 
 <!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -1573,7 +1494,6 @@ appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => {
 
 ```
 
-<a id="deleteaccount-1"></a>
 ## deleteAccount
 
 ```TypeScript
@@ -1581,18 +1501,17 @@ deleteAccount(name: string): Promise<void>
 ```
 
 删除应用账号。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [removeAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount-1)替  
+> [removeAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount)替  
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [removeAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount-1)
+**替代接口：** [removeAccount(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount)
 
 <!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>--><!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>-End-->
 
@@ -1623,7 +1542,6 @@ appAccountManager.deleteAccount('ZhaoLiu').then(() => {
 
 ```
 
-<a id="deleteauthtoken"></a>
 ## deleteAuthToken
 
 ```TypeScript
@@ -1679,7 +1597,6 @@ try {
 
 ```
 
-<a id="deleteauthtoken-1"></a>
 ## deleteAuthToken
 
 ```TypeScript
@@ -1737,7 +1654,6 @@ try {
 
 ```
 
-<a id="deletecredential"></a>
 ## deleteCredential
 
 ```TypeScript
@@ -1790,7 +1706,6 @@ try {
 
 ```
 
-<a id="deletecredential-1"></a>
 ## deleteCredential
 
 ```TypeScript
@@ -1846,7 +1761,6 @@ try {
 
 ```
 
-<a id="deleteoauthtoken"></a>
 ## deleteOAuthToken
 
 ```TypeScript
@@ -1854,18 +1768,17 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 ```
 
 删除指定应用账号的特定鉴权类型的授权令牌。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [deleteAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken-1)  
+> [deleteAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken-1)
+**替代接口：** [deleteAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -1897,7 +1810,6 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
 
 ```
 
-<a id="deleteoauthtoken-1"></a>
 ## deleteOAuthToken
 
 ```TypeScript
@@ -1905,18 +1817,17 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 ```
 
 删除指定应用账号的特定鉴权类型的授权令牌。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [deleteAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken-1)  
+> [deleteAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken-1)
+**替代接口：** [deleteAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
 
@@ -1950,7 +1861,6 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
 
 ```
 
-<a id="disableappaccess"></a>
 ## disableAppAccess
 
 ```TypeScript
@@ -1958,18 +1868,17 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>
 ```
 
 禁止指定第三方应用账号名称对指定的第三方应用进行访问。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)  
+> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)
+**替代接口：** [setAppAccess(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -1994,7 +1903,6 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err
 
 ```
 
-<a id="disableappaccess-1"></a>
 ## disableAppAccess
 
 ```TypeScript
@@ -2002,18 +1910,17 @@ disableAppAccess(name: string, bundleName: string): Promise<void>
 ```
 
 禁止指定第三方应用账号名称对指定包名称的第三方应用进行访问。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)  
+> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)
+**替代接口：** [setAppAccess(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -2045,7 +1952,6 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then
 
 ```
 
-<a id="enableappaccess"></a>
 ## enableAppAccess
 
 ```TypeScript
@@ -2053,18 +1959,17 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>)
 ```
 
 允许指定第三方应用账号名称对指定包名称的第三方应用进行访问。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)  
+> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)
+**替代接口：** [setAppAccess(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -2093,7 +1998,6 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err:
 
 ```
 
-<a id="enableappaccess-1"></a>
 ## enableAppAccess
 
 ```TypeScript
@@ -2101,18 +2005,17 @@ enableAppAccess(name: string, bundleName: string): Promise<void>
 ```
 
 允许指定第三方应用账号的名称对指定包名称的第三方应用进行访问。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)  
+> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)
+**替代接口：** [setAppAccess(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -2144,7 +2047,6 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(
 
 ```
 
-<a id="getaccountcredential"></a>
 ## getAccountCredential
 
 ```TypeScript
@@ -2152,18 +2054,17 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 ```
 
 获取指定应用账号的凭据。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential-1)  
+> [getCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCredential(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential-1)
+**替代接口：** [getCredential(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -2192,7 +2093,6 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: Bu
 
 ```
 
-<a id="getaccountcredential-1"></a>
 ## getAccountCredential
 
 ```TypeScript
@@ -2200,17 +2100,16 @@ getAccountCredential(name: string, credentialType: string): Promise<string>
 ```
 
 获取指定应用账号的凭据。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential-1)替代。
+> [getCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCredential(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential-1)
+**替代接口：** [getCredential(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>-End-->
 
@@ -2242,7 +2141,6 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((da
 
 ```
 
-<a id="getaccountextrainfo"></a>
 ## getAccountExtraInfo
 
 ```TypeScript
@@ -2250,18 +2148,17 @@ getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void
 ```
 
 获取指定应用账号的额外信息（能转换成string类型的其它信息）。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)  
+> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)
+**替代接口：** [getCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void-End-->
 
@@ -2289,7 +2186,6 @@ appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: s
 
 ```
 
-<a id="getaccountextrainfo-1"></a>
 ## getAccountExtraInfo
 
 ```TypeScript
@@ -2297,17 +2193,16 @@ getAccountExtraInfo(name: string): Promise<string>
 ```
 
 获取指定应用账号的额外信息（能转换成string类型的其它信息）。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)替代。
+> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)
+**替代接口：** [getCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>--><!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>-End-->
 
@@ -2338,7 +2233,6 @@ appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => {
 
 ```
 
-<a id="getaccountsbyowner"></a>
 ## getAccountsByOwner
 
 ```TypeScript
@@ -2389,7 +2283,6 @@ try {
 
 ```
 
-<a id="getaccountsbyowner-1"></a>
 ## getAccountsByOwner
 
 ```TypeScript
@@ -2443,7 +2336,6 @@ try {
 
 ```
 
-<a id="getallaccessibleaccounts"></a>
 ## getAllAccessibleAccounts
 
 ```TypeScript
@@ -2451,18 +2343,17 @@ getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 ```
 
 获取所有可访问的应用账号信息。使用callback异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getAllAccounts](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts-1)  
+> [getAllAccounts](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAccounts(callback:](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts-1)
+**替代接口：** [getAllAccounts(callback:](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -2491,7 +2382,6 @@ appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount
 
 ```
 
-<a id="getallaccessibleaccounts-1"></a>
 ## getAllAccessibleAccounts
 
 ```TypeScript
@@ -2499,17 +2389,16 @@ getAllAccessibleAccounts(): Promise<Array<AppAccountInfo>>
 ```
 
 获取所有可访问的应用账号信息。使用Promise异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权。
-
 > **说明：**  
 >  
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts-1)  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAccounts()](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts-1)
+**替代接口：** [getAllAccounts()](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -2536,7 +2425,6 @@ appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountIn
 
 ```
 
-<a id="getallaccounts"></a>
 ## getAllAccounts
 
 ```TypeScript
@@ -2584,7 +2472,6 @@ try {
 
 ```
 
-<a id="getallaccounts-1"></a>
 ## getAllAccounts
 
 ```TypeScript
@@ -2629,7 +2516,6 @@ try {
 
 ```
 
-<a id="getallaccounts-2"></a>
 ## getAllAccounts
 
 ```TypeScript
@@ -2637,18 +2523,17 @@ getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): v
 ```
 
 根据应用账号所有者获取调用方可访问的应用账号列表。使用callback异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getAccountsByOwner](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner-1)  
+> [getAccountsByOwner](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAccountsByOwner(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner-1)
+**替代接口：** [getAccountsByOwner(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -2679,7 +2564,6 @@ appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccou
 
 ```
 
-<a id="getallaccounts-3"></a>
 ## getAllAccounts
 
 ```TypeScript
@@ -2687,17 +2571,16 @@ getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>
 ```
 
 根据应用账号所有者获取调用方可访问的应用账号列表。使用Promise异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getAccountsByOwner](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner-1)替代。
+> [getAccountsByOwner](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAccountsByOwner(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner-1)
+**替代接口：** [getAccountsByOwner(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -2731,7 +2614,6 @@ appAccountManager.getAllAccounts(selfBundle).then((data: appAccount.AppAccountIn
 
 ```
 
-<a id="getallauthtokens"></a>
 ## getAllAuthTokens
 
 ```TypeScript
@@ -2784,7 +2666,6 @@ try {
 
 ```
 
-<a id="getallauthtokens-1"></a>
 ## getAllAuthTokens
 
 ```TypeScript
@@ -2840,7 +2721,6 @@ try {
 
 ```
 
-<a id="getalloauthtokens"></a>
 ## getAllOAuthTokens
 
 ```TypeScript
@@ -2848,18 +2728,17 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAu
 ```
 
 获取指定账号对调用方可见的所有授权令牌。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [getAllAuthTokens](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens-1)  
+> [getAllAuthTokens](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAuthTokens(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens-1)
+**替代接口：** [getAllAuthTokens(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void-End-->
 
@@ -2889,7 +2768,6 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
 
 ```
 
-<a id="getalloauthtokens-1"></a>
 ## getAllOAuthTokens
 
 ```TypeScript
@@ -2897,17 +2775,16 @@ getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>
 ```
 
 获取指定账号对调用方可见的所有授权令牌。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [getAllAuthTokens](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens-1)替代。
+> [getAllAuthTokens](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAuthTokens(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens-1)
+**替代接口：** [getAllAuthTokens(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>-End-->
 
@@ -2940,7 +2817,6 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
 
 ```
 
-<a id="getassociateddata"></a>
 ## getAssociatedData
 
 ```TypeScript
@@ -2948,18 +2824,17 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): v
 ```
 
 根据指定键名获取特定应用账号的关联数据。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)  
+> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)
+**替代接口：** [getCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -2988,7 +2863,6 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, res
 
 ```
 
-<a id="getassociateddata-1"></a>
 ## getAssociatedData
 
 ```TypeScript
@@ -2996,17 +2870,16 @@ getAssociatedData(name: string, key: string): Promise<string>
 ```
 
 获取与此应用程序账号关联的数据。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)替代。
+> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)
+**替代接口：** [getCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>-End-->
 
@@ -3038,7 +2911,6 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => {
 
 ```
 
-<a id="getauthcallback"></a>
 ## getAuthCallback
 
 ```TypeScript
@@ -3105,7 +2977,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="getauthcallback-1"></a>
 ## getAuthCallback
 
 ```TypeScript
@@ -3175,14 +3046,13 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="getauthlist"></a>
 ## getAuthList
 
 ```TypeScript
 getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-1)来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility)来设置）。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -3228,14 +3098,13 @@ try {
 
 ```
 
-<a id="getauthlist-1"></a>
 ## getAuthList
 
 ```TypeScript
 getAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-1)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility)来设置）。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -3284,7 +3153,6 @@ try {
 
 ```
 
-<a id="getauthtoken"></a>
 ## getAuthToken
 
 ```TypeScript
@@ -3339,7 +3207,6 @@ try {
 
 ```
 
-<a id="getauthtoken-1"></a>
 ## getAuthToken
 
 ```TypeScript
@@ -3396,7 +3263,6 @@ try {
 
 ```
 
-<a id="getauthenticatorcallback"></a>
 ## getAuthenticatorCallback
 
 ```TypeScript
@@ -3404,18 +3270,17 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<Authenticato
 ```
 
 获取鉴权会话的认证器回调。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [getAuthCallback](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback-1)  
+> [getAuthCallback](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthCallback(sessionId:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback-1)
+**替代接口：** [getAuthCallback(sessionId:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void-End-->
 
@@ -3455,7 +3320,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="getauthenticatorcallback-1"></a>
 ## getAuthenticatorCallback
 
 ```TypeScript
@@ -3463,17 +3327,16 @@ getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>
 ```
 
 获取鉴权会话的认证器回调。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [getAuthCallback](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback-1)替代。
+> [getAuthCallback](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthCallback(sessionId:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback-1)
+**替代接口：** [getAuthCallback(sessionId:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>-End-->
 
@@ -3516,7 +3379,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="getauthenticatorinfo"></a>
 ## getAuthenticatorInfo
 
 ```TypeScript
@@ -3524,18 +3386,17 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>):
 ```
 
 获取指定应用的认证器信息。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [queryAuthenticatorInfo](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo-1)  
+> [queryAuthenticatorInfo](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [queryAuthenticatorInfo(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo-1)
+**替代接口：** [queryAuthenticatorInfo(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
 
@@ -3564,7 +3425,6 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
 
 ```
 
-<a id="getauthenticatorinfo-1"></a>
 ## getAuthenticatorInfo
 
 ```TypeScript
@@ -3572,17 +3432,16 @@ getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 ```
 
 获取指定应用的认证器信息。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [queryAuthenticatorInfo](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo-1)替代。
+> [queryAuthenticatorInfo](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [queryAuthenticatorInfo(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo-1)
+**替代接口：** [queryAuthenticatorInfo(owner:](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
 
@@ -3614,7 +3473,6 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
 
 ```
 
-<a id="getcredential"></a>
 ## getCredential
 
 ```TypeScript
@@ -3667,7 +3525,6 @@ try {
 
 ```
 
-<a id="getcredential-1"></a>
 ## getCredential
 
 ```TypeScript
@@ -3723,7 +3580,6 @@ try {
 
 ```
 
-<a id="getcustomdata"></a>
 ## getCustomData
 
 ```TypeScript
@@ -3776,7 +3632,6 @@ try {
 
 ```
 
-<a id="getcustomdata-1"></a>
 ## getCustomData
 
 ```TypeScript
@@ -3832,7 +3687,6 @@ try {
 
 ```
 
-<a id="getcustomdatasync"></a>
 ## getCustomDataSync
 
 ```TypeScript
@@ -3885,26 +3739,24 @@ try {
 
 ```
 
-<a id="getoauthlist"></a>
 ## getOAuthList
 
 ```TypeScript
 getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setoauthtokenvisibility-1)来设置）。使用callback异步回调。
-
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setoauthtokenvisibility)来设置）。使用callback异步回调。
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [getAuthList](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist-1)  
+> [getAuthList](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthList(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist-1)
+**替代接口：** [getAuthList(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -3933,25 +3785,23 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 
 ```
 
-<a id="getoauthlist-1"></a>
 ## getOAuthList
 
 ```TypeScript
 getOAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setoauthtokenvisibility-1)来设置）。使用Promise异步回调。
-
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setoauthtokenvisibility)来设置）。使用Promise异步回调。
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [getAuthList](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist-1)替代。
+> [getAuthList](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthList(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist-1)
+**替代接口：** [getAuthList(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>-End-->
 
@@ -3983,7 +3833,6 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) =>
 
 ```
 
-<a id="getoauthtoken"></a>
 ## getOAuthToken
 
 ```TypeScript
@@ -3991,18 +3840,17 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 ```
 
 获取指定应用账号的特定鉴权类型的授权令牌。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [getAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken-1)  
+> [getAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken-1)
+**替代接口：** [getAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4033,7 +3881,6 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
 
 ```
 
-<a id="getoauthtoken-1"></a>
 ## getOAuthToken
 
 ```TypeScript
@@ -4041,18 +3888,17 @@ getOAuthToken(name: string, owner: string, authType: string): Promise<string>
 ```
 
 获取指定应用账号的特定鉴权类型的授权令牌。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [getAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken-1)替  
+> [getAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken)替  
 > 代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken-1)
+**替代接口：** [getAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
 
@@ -4085,7 +3931,6 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
 
 ```
 
-<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -4093,11 +3938,10 @@ off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void
 ```
 
 取消订阅账号信息变更事件。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [off('accountChange')](appAccount.AppAccountManager.off(type: 'accountChange', callback?: Callback<Array<AppAccountInfo>>))  
+> [off('accountChange')](appAccount.AppAccountManager.off(type: 'accountChange', callback?: Callback&lt;Array<AppAccountInfo>&gt;))  
 > 替代。
 
 **起始版本：** 7
@@ -4138,7 +3982,6 @@ try {
 
 ```
 
-<a id="off-1"></a>
 ## off('accountChange')
 
 ```TypeScript
@@ -4192,7 +4035,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -4200,11 +4042,10 @@ on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInf
 ```
 
 订阅指定应用的账号信息变更事件。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [on('accountChange')](appAccount.AppAccountManager.on(type: 'accountChange', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>))  
+> [on('accountChange')](appAccount.AppAccountManager.on(type: 'accountChange', owners: Array<string>, callback: Callback&lt;Array<AppAccountInfo>&gt;))  
 > 替代。
 
 **起始版本：** 7
@@ -4243,7 +4084,6 @@ try {
 
 ```
 
-<a id="on-1"></a>
 ## on('accountChange')
 
 ```TypeScript
@@ -4292,7 +4132,6 @@ try {
 
 ```
 
-<a id="queryauthenticatorinfo"></a>
 ## queryAuthenticatorInfo
 
 ```TypeScript
@@ -4344,7 +4183,6 @@ try {
 
 ```
 
-<a id="queryauthenticatorinfo-1"></a>
 ## queryAuthenticatorInfo
 
 ```TypeScript
@@ -4399,7 +4237,6 @@ try {
 
 ```
 
-<a id="removeaccount"></a>
 ## removeAccount
 
 ```TypeScript
@@ -4450,7 +4287,6 @@ try {
 
 ```
 
-<a id="removeaccount-1"></a>
 ## removeAccount
 
 ```TypeScript
@@ -4504,7 +4340,6 @@ try {
 
 ```
 
-<a id="selectaccountsbyoptions"></a>
 ## selectAccountsByOptions
 
 ```TypeScript
@@ -4561,7 +4396,6 @@ try {
 
 ```
 
-<a id="selectaccountsbyoptions-1"></a>
 ## selectAccountsByOptions
 
 ```TypeScript
@@ -4619,7 +4453,6 @@ try {
 
 ```
 
-<a id="setaccountcredential"></a>
 ## setAccountCredential
 
 ```TypeScript
@@ -4627,18 +4460,17 @@ setAccountCredential(name: string, credentialType: string, credential: string, c
 ```
 
 设置指定应用账号的凭据。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃，建议使用  
-> [setCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential-1)  
+> [setCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCredential(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential-1)
+**替代接口：** [setCredential(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4668,7 +4500,6 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 
 ```
 
-<a id="setaccountcredential-1"></a>
 ## setAccountCredential
 
 ```TypeScript
@@ -4676,18 +4507,17 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 ```
 
 设置指定应用账号的凭据。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃，建议使用  
-> [setCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential-1)  
+> [setCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCredential(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential-1)
+**替代接口：** [setCredential(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
 
@@ -4720,7 +4550,6 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 
 ```
 
-<a id="setaccountextrainfo"></a>
 ## setAccountExtraInfo
 
 ```TypeScript
@@ -4728,18 +4557,17 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<voi
 ```
 
 设置指定应用账号的额外信息。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)  
+> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)
+**替代接口：** [setCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4768,7 +4596,6 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) 
 
 ```
 
-<a id="setaccountextrainfo-1"></a>
 ## setAccountExtraInfo
 
 ```TypeScript
@@ -4776,17 +4603,16 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise<void>
 ```
 
 设置此应用程序账号的额外信息。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)替代。
+> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)
+**替代接口：** [setCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>-End-->
 
@@ -4818,7 +4644,6 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => {
 
 ```
 
-<a id="setappaccess"></a>
 ## setAppAccess
 
 ```TypeScript
@@ -4872,7 +4697,6 @@ try {
 
 ```
 
-<a id="setappaccess-1"></a>
 ## setAppAccess
 
 ```TypeScript
@@ -4929,7 +4753,6 @@ try {
 
 ```
 
-<a id="setappaccountsyncenable"></a>
 ## setAppAccountSyncEnable
 
 ```TypeScript
@@ -4937,18 +4760,17 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 ```
 
 开启或禁止指定应用账号的数据同步功能。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled-1)  
+> [setDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setDataSyncEnabled(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled-1)
+**替代接口：** [setDataSyncEnabled(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -4979,7 +4801,6 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError)
 
 ```
 
-<a id="setappaccountsyncenable-1"></a>
 ## setAppAccountSyncEnable
 
 ```TypeScript
@@ -4987,18 +4808,17 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>
 ```
 
 开启或禁止指定应用账号的数据同步功能。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled-1)替代  
+> [setDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled)替代  
 > 。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setDataSyncEnabled(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled-1)
+**替代接口：** [setDataSyncEnabled(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5032,7 +4852,6 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => {
 
 ```
 
-<a id="setassociateddata"></a>
 ## setAssociatedData
 
 ```TypeScript
@@ -5040,18 +4859,17 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 ```
 
 设置指定应用账号的关联数据。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)  
+> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)
+**替代接口：** [setCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5081,7 +4899,6 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessEr
 
 ```
 
-<a id="setassociateddata-1"></a>
 ## setAssociatedData
 
 ```TypeScript
@@ -5089,17 +4906,16 @@ setAssociatedData(name: string, key: string, value: string): Promise<void>
 ```
 
 设置指定应用账号的关联数据。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)替代。
+> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)
+**替代接口：** [setCustomData(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>-End-->
 
@@ -5132,7 +4948,6 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => {
 
 ```
 
-<a id="setauthtoken"></a>
 ## setAuthToken
 
 ```TypeScript
@@ -5186,7 +5001,6 @@ try {
 
 ```
 
-<a id="setauthtoken-1"></a>
 ## setAuthToken
 
 ```TypeScript
@@ -5243,7 +5057,6 @@ try {
 
 ```
 
-<a id="setauthtokenvisibility"></a>
 ## setAuthTokenVisibility
 
 ```TypeScript
@@ -5260,19 +5073,7 @@ setAuthTokenVisibility(
 
 **起始版本：** 9
 
-<!--Device-AppAccountManager-setAuthTokenVisibility(
-      name: string,
-      authType: string,
-      bundleName: string,
-      isVisible: boolean,
-      callback: AsyncCallback<void>
-    ): void--><!--Device-AppAccountManager-setAuthTokenVisibility(
-      name: string,
-      authType: string,
-      bundleName: string,
-      isVisible: boolean,
-      callback: AsyncCallback<void>
-    ): void-End-->
+<!--Device-AppAccountManager-setAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5318,7 +5119,6 @@ try {
 
 ```
 
-<a id="setauthtokenvisibility-1"></a>
 ## setAuthTokenVisibility
 
 ```TypeScript
@@ -5377,7 +5177,6 @@ try {
 
 ```
 
-<a id="setauthenticatorproperties"></a>
 ## setAuthenticatorProperties
 
 ```TypeScript
@@ -5433,7 +5232,6 @@ try {
 
 ```
 
-<a id="setauthenticatorproperties-1"></a>
 ## setAuthenticatorProperties
 
 ```TypeScript
@@ -5493,7 +5291,6 @@ try {
 
 ```
 
-<a id="setcredential"></a>
 ## setCredential
 
 ```TypeScript
@@ -5505,9 +5302,7 @@ setCredential(name: string, credentialType: string, credential: string,
 
 **起始版本：** 9
 
-<!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string,
-                             callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string,
-                             callback: AsyncCallback<void>): void-End-->
+<!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string,                             callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string,                             callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5549,7 +5344,6 @@ try {
 
 ```
 
-<a id="setcredential-1"></a>
 ## setCredential
 
 ```TypeScript
@@ -5605,7 +5399,6 @@ try {
 
 ```
 
-<a id="setcustomdata"></a>
 ## setCustomData
 
 ```TypeScript
@@ -5659,7 +5452,6 @@ try {
 
 ```
 
-<a id="setcustomdata-1"></a>
 ## setCustomData
 
 ```TypeScript
@@ -5716,7 +5508,6 @@ try {
 
 ```
 
-<a id="setdatasyncenabled"></a>
 ## setDataSyncEnabled
 
 ```TypeScript
@@ -5767,7 +5558,6 @@ try {
 
 ```
 
-<a id="setdatasyncenabled-1"></a>
 ## setDataSyncEnabled
 
 ```TypeScript
@@ -5825,7 +5615,6 @@ try {
 
 ```
 
-<a id="setoauthtoken"></a>
 ## setOAuthToken
 
 ```TypeScript
@@ -5833,18 +5622,17 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 ```
 
 为指定应用账号设置特定鉴权类型的授权令牌。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [setAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken-1)  
+> [setAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken-1)
+**替代接口：** [setAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5874,7 +5662,6 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessE
 
 ```
 
-<a id="setoauthtoken-1"></a>
 ## setOAuthToken
 
 ```TypeScript
@@ -5882,18 +5669,17 @@ setOAuthToken(name: string, authType: string, token: string): Promise<void>
 ```
 
 为指定应用账号设置特定鉴权类型的授权令牌。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [setAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken-1)替  
+> [setAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken)替  
 > 代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken-1)
+**替代接口：** [setAuthToken(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
 
@@ -5926,7 +5712,6 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
 
 ```
 
-<a id="setoauthtokenvisibility"></a>
 ## setOAuthTokenVisibility
 
 ```TypeScript
@@ -5940,32 +5725,19 @@ setOAuthTokenVisibility(
 ```
 
 设置指定账号的特定鉴权类型的授权令牌对指定应用的可见性。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-1)  
+> [setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthTokenVisibility(](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-1)
+**替代接口：** [setAuthTokenVisibility(](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility)
 
-<!--Device-AppAccountManager-setOAuthTokenVisibility(
-      name: string,
-      authType: string,
-      bundleName: string,
-      isVisible: boolean,
-      callback: AsyncCallback<void>
-    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(
-      name: string,
-      authType: string,
-      bundleName: string,
-      isVisible: boolean,
-      callback: AsyncCallback<void>
-    ): void-End-->
+<!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5995,7 +5767,6 @@ appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.
 
 ```
 
-<a id="setoauthtokenvisibility-1"></a>
 ## setOAuthTokenVisibility
 
 ```TypeScript
@@ -6003,18 +5774,17 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 ```
 
 设置指定账号的特定鉴权类型的授权令牌对指定应用的可见性。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃。建议使用  
-> [setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-1)  
+> [setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthTokenVisibility(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-1)
+**替代接口：** [setAuthTokenVisibility(name:](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility)
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
 
@@ -6048,7 +5818,6 @@ appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.
 
 ```
 
-<a id="verifycredential"></a>
 ## verifyCredential
 
 ```TypeScript
@@ -6106,7 +5875,6 @@ try {
 
 ```
 
-<a id="verifycredential-1"></a>
 ## verifyCredential
 
 ```TypeScript

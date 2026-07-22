@@ -16,7 +16,6 @@
 import { windowAnimationManager } from '@kit.ArkUI';
 ```
 
-<a id="onapptransition"></a>
 ## onAppTransition
 
 ```TypeScript
@@ -30,9 +29,7 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowAnimationController-onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void-End-->
+<!--Device-WindowAnimationController-onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -50,7 +47,6 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 
 请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
 
-<a id="onclosewindow"></a>
 ## onCloseWindow
 
 ```TypeScript
@@ -80,7 +76,6 @@ onCloseWindow(closingWindowTarget: WindowAnimationTarget, finishCallback: Window
 
 请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
 
-<a id="onminimizewindow"></a>
 ## onMinimizeWindow
 
 ```TypeScript
@@ -94,9 +89,7 @@ onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowAnimationController-onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void-End-->
+<!--Device-WindowAnimationController-onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -113,7 +106,6 @@ onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,
 
 请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
 
-<a id="onscreenunlock"></a>
 ## onScreenUnlock
 
 ```TypeScript
@@ -138,7 +130,6 @@ onScreenUnlock(finishCallback: WindowAnimationFinishedCallback): void
 | --- | --- | --- | --- |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
-<a id="onstartappfromlauncher"></a>
 ## onStartAppFromLauncher
 
 ```TypeScript
@@ -152,9 +143,7 @@ onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowAnimationController-onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void-End-->
+<!--Device-WindowAnimationController-onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -171,7 +160,6 @@ onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,
 
 请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
 
-<a id="onstartappfromother"></a>
 ## onStartAppFromOther
 
 ```TypeScript
@@ -185,9 +173,7 @@ onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowAnimationController-onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void-End-->
+<!--Device-WindowAnimationController-onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -204,7 +190,6 @@ onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,
 
 请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
 
-<a id="onstartappfromrecent"></a>
 ## onStartAppFromRecent
 
 ```TypeScript
@@ -218,9 +203,7 @@ onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowAnimationController-onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,
-      finishCallback: WindowAnimationFinishedCallback): void-End-->
+<!--Device-WindowAnimationController-onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -237,7 +220,6 @@ onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,
 
 请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
 
-<a id="onwindowanimationtargetsupdate"></a>
 ## onWindowAnimationTargetsUpdate
 
 ```TypeScript
@@ -251,9 +233,7 @@ onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowAnimationController-onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget,
-      floatingWindowTargets: Array<WindowAnimationTarget>): void--><!--Device-WindowAnimationController-onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget,
-      floatingWindowTargets: Array<WindowAnimationTarget>): void-End-->
+<!--Device-WindowAnimationController-onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget,      floatingWindowTargets: Array<WindowAnimationTarget>): void--><!--Device-WindowAnimationController-onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget,      floatingWindowTargets: Array<WindowAnimationTarget>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

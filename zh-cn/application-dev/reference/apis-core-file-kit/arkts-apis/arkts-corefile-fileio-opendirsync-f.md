@@ -1,6 +1,5 @@
 # opendirSync
 
-<a id="opendirsync"></a>
 ## opendirSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function opendirSync(path: string): Dir
 
 **废弃版本：** 9
 
-**替代接口：** [fs:listFileSync](arkts-corefile-file-fs-listfilesync-f.md#listfilesync-1)
+**替代接口：** [fs:listFileSync](arkts-corefile-file-fs-listfilesync-f.md#listfilesync)
 
 <!--Device-unnamed-declare function opendirSync(path: string): Dir--><!--Device-unnamed-declare function opendirSync(path: string): Dir-End-->
 

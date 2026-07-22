@@ -6,7 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="movemainwindowtotargetdisplay"></a>
 ## moveMainWindowToTargetDisplay
 
 ```TypeScript
@@ -15,7 +14,7 @@ function moveMainWindowToTargetDisplay(displayId: number, windowId: number): Pro
 
 将指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
 
-- 对于[主屏](docroot://displaymanager/display-terminology.md#主屏)/[扩展屏](docroot://displaymanager/display-terminology.md#扩展屏)与[虚拟屏](docroot://displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗及其子窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。  
+- 对于[主屏](../../../displaymanager/display-terminology.md#主屏)/[扩展屏](../../../displaymanager/display-terminology.md#扩展屏)与[虚拟屏](../../../displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗及其子窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。  
 - 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕，抬升并获取焦点。
 
 <!--RP3--><!--RP3End-->
@@ -34,8 +33,8 @@ function moveMainWindowToTargetDisplay(displayId: number, windowId: number): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | number | 是 | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties-1)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.displayId获取；也可通过获取[Display](arkts-arkui-display-displaystate-e.md)对象的[id](docroot://reference/apis-arkui/js-apis-display.md#属性)属性获取此参数。 |
-| windowId | number | 是 | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties-1)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
+| displayId | number | 是 | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.displayId获取；也可通过获取[Display](arkts-arkui-display-displaystate-e.md)对象的[id](../../../reference/apis-arkui/js-apis-display.md#属性)属性获取此参数。 |
+| windowId | number | 是 | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
 
 **返回值：**
 

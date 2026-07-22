@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="queryabilityinfo"></a>
 ## queryAbilityInfo
 
 ```TypeScript
@@ -77,7 +76,6 @@ try {
 ```
 
 
-<a id="queryabilityinfo-1"></a>
 ## queryAbilityInfo
 
 ```TypeScript
@@ -104,7 +102,7 @@ function queryAbilityInfo(want: Want, abilityFlags: number, userId: number, call
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | abilityFlags | number | 是 | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](arkts-ability-bundlemanager-abilityflag-e-sys.md)。 |
-| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AbilityInfo&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array<AbilityInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -151,7 +149,6 @@ try {
 ```
 
 
-<a id="queryabilityinfo-2"></a>
 ## queryAbilityInfo
 
 ```TypeScript
@@ -178,7 +175,7 @@ function queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Pr
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | abilityFlags | number | 是 | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](arkts-ability-bundlemanager-abilityflag-e-sys.md)。 |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -253,7 +250,6 @@ try {
 ```
 
 
-<a id="queryabilityinfo-3"></a>
 ## queryAbilityInfo
 
 ```TypeScript
@@ -280,13 +276,13 @@ function queryAbilityInfo(wants: Array<Want>, abilityFlags: number, userId?: num
 | --- | --- | --- | --- |
 | wants | Array&lt;Want&gt; | 是 | 表示包含要查询的应用Bundle名称的Want集合。 |
 | abilityFlags | number | 是 | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](arkts-ability-bundlemanager-abilityflag-e-sys.md)。 |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AbilityInfo&gt;&gt; | Promise对象，返回Array<[AbilityInfo](bundleManager/AbilityInfo)>信息。 |
+| Promise&lt;Array&lt;AbilityInfo&gt;&gt; | Promise对象，返回Array&lt;[AbilityInfo](bundleManager/AbilityInfo)&gt;信息。 |
 
 **错误码：**
 

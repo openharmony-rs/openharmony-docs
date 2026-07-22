@@ -6,7 +6,6 @@
 import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createhdrdarkenblender"></a>
 ## createHdrDarkenBlender
 
 ```TypeScript
@@ -20,9 +19,7 @@ function createHdrDarkenBlender(hdrBrightnessRatio: number,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-uiEffect-function createHdrDarkenBlender(hdrBrightnessRatio: double,
-    grayscaleFactor?: [double, double, double]): HdrDarkenBlender--><!--Device-uiEffect-function createHdrDarkenBlender(hdrBrightnessRatio: double,
-    grayscaleFactor?: [double, double, double]): HdrDarkenBlender-End-->
+<!--Device-uiEffect-function createHdrDarkenBlender(hdrBrightnessRatio: double,    grayscaleFactor?: [double, double, double]): HdrDarkenBlender--><!--Device-uiEffect-function createHdrDarkenBlender(hdrBrightnessRatio: double,    grayscaleFactor?: [double, double, double]): HdrDarkenBlender-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

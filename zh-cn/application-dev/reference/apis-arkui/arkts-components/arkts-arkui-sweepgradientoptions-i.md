@@ -1,16 +1,14 @@
 # SweepGradientOptions
 
 角度渐变参数。
-
 > **说明：**  
 >  
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
-
 > **说明：**  
 >  
 > metricsColors参数的约束：  
 >  
-> [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)表示填充的颜色，可以使用[colorWithSpace](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md#colorwithspace-1)  
+> [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)表示填充的颜色，可以使用[colorWithSpace](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md#colorwithspace)  
 > 方法构造指定色域属性的颜色。number表示指定颜色所处的位置，取值范围为[0, 1.0]，0表示需要设置渐变色的容器开始处，1.0表示容器的结束处。为了实现多个颜色渐变效果，多个数组中的number类型参数应递增设置。如果后一个  
 > 数组中的number类型参数小于前一个数组的number类型参数，将按照等于前一个数组number值处理。
 

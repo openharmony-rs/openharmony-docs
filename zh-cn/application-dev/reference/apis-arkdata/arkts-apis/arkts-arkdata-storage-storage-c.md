@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core.Lite
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -35,7 +34,6 @@ static clear(options?: ClearStorageOptions): void
 | --- | --- | --- | --- |
 | options | [ClearStorageOptions](arkts-arkdata-storage-clearstorageoptions-i.md) | 否 | Indicates the target options. |
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -62,7 +60,6 @@ static delete(options: DeleteStorageOptions): void
 | --- | --- | --- | --- |
 | options | [DeleteStorageOptions](arkts-arkdata-storage-deletestorageoptions-i.md) | 是 | Indicates the target options. |
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -89,7 +86,6 @@ static get(options: GetStorageOptions): void
 | --- | --- | --- | --- |
 | options | [GetStorageOptions](arkts-arkdata-storage-getstorageoptions-i.md) | 是 | Indicates the target options. |
 
-<a id="set"></a>
 ## set
 
 ```TypeScript

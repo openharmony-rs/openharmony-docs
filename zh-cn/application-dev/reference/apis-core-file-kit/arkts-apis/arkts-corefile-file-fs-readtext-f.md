@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="readtext"></a>
 ## readText
 
 ```TypeScript
@@ -22,13 +21,7 @@ declare function readText(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function readText(
-  filePath: string,
-  options?: ReadTextOptions
-): Promise<string>--><!--Device-unnamed-declare function readText(
-  filePath: string,
-  options?: ReadTextOptions
-): Promise<string>-End-->
+<!--Device-unnamed-declare function readText(  filePath: string,  options?: ReadTextOptions): Promise<string>--><!--Device-unnamed-declare function readText(  filePath: string,  options?: ReadTextOptions): Promise<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -65,7 +58,6 @@ declare function readText(
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="readtext-1"></a>
 ## readText
 
 ```TypeScript
@@ -108,7 +100,6 @@ declare function readText(filePath: string, callback: AsyncCallback<string>): vo
 | 13900042 | Unknown error |
 
 
-<a id="readtext-2"></a>
 ## readText
 
 ```TypeScript
@@ -125,15 +116,7 @@ declare function readText(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function readText(
-  filePath: string,
-  options: ReadTextOptions,
-  callback: AsyncCallback<string>
-): void--><!--Device-unnamed-declare function readText(
-  filePath: string,
-  options: ReadTextOptions,
-  callback: AsyncCallback<string>
-): void-End-->
+<!--Device-unnamed-declare function readText(  filePath: string,  options: ReadTextOptions,  callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function readText(  filePath: string,  options: ReadTextOptions,  callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

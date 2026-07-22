@@ -1,6 +1,5 @@
 # getPixelMap（系统接口）
 
-<a id="getpixelmap"></a>
 ## getPixelMap
 
 ```TypeScript
@@ -8,7 +7,6 @@ function getPixelMap(wallpaperType: WallpaperType, callback: AsyncCallback<image
 ```
 
 获取壁纸图片的像素图。
-
 > **说明：**  
 >  
 > 从 API version 7开始支持，从API version 9开始废弃。
@@ -49,7 +47,6 @@ wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: Business
 ```
 
 
-<a id="getpixelmap-1"></a>
 ## getPixelMap
 
 ```TypeScript
@@ -57,7 +54,6 @@ function getPixelMap(wallpaperType: WallpaperType): Promise<image.PixelMap>
 ```
 
 获取壁纸图片的像素图。
-
 > **说明：**  
 >  
 > 从 API version 7开始支持，从API version 9开始废弃。

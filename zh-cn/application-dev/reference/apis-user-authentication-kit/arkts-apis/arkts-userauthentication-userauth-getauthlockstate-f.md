@@ -6,7 +6,6 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
-<a id="getauthlockstate"></a>
 ## getAuthLockState
 
 ```TypeScript

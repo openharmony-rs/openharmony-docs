@@ -1,7 +1,6 @@
 # ChipGroupItemOptions
 
 ChipGroupItemOptions定义每个Chip的非通用属性。
-
 > **说明：**  
 >  
 > 当传入`suffixIcon`参数时，`allowClose`不生效；未传入`suffixIcon`参数时，`allowClose`决定是否显示移除图标。

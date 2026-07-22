@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="autorefresh"></a>
 ## autoRefresh
 
 ```TypeScript
@@ -39,7 +38,6 @@ autoRefresh?(value: boolean): ColorMetrics
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | 返回用于链接的ColorMetrics对象。 |
 
-<a id="blendcolor"></a>
 ## blendColor
 
 ```TypeScript
@@ -76,7 +74,6 @@ blendColor(overlayColor: ColorMetrics): ColorMetrics
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. The type of the input parameter is not ColorMetrics. |
 
-<a id="colorwithspace"></a>
 ## colorWithSpace
 
 ```TypeScript
@@ -99,7 +96,7 @@ static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorSpace | [ColorSpace](arkts-arkui-window-colorspace-e.md) | 是 | 颜色空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要对应窗口调用[setWindowColorSpace](docroot://reference/apis-arkui/arkts-apis-window-Window.md#setwindowcolorspace9-1)接口，将当前窗口设置为广色域模式。 |
+| colorSpace | [ColorSpace](arkts-arkui-window-colorspace-e.md) | 是 | 颜色空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要对应窗口调用[setWindowColorSpace](../../../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcolorspace9-1)接口，将当前窗口设置为广色域模式。 |
 | red | number | 是 | 颜色的R分量（红色），值是0~1的浮动数值。 |
 | green | number | 是 | 颜色的G分量（绿色），值是0~1的浮动数值。 |
 | blue | number | 是 | 颜色的B分量（蓝色），值是0~1的浮动数值。 |
@@ -111,7 +108,6 @@ static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: 
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | ColorMetrics类的实例。 |
 
-<a id="numeric"></a>
 ## numeric
 
 ```TypeScript
@@ -142,7 +138,6 @@ static numeric(value: number): ColorMetrics
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | ColorMetrics 类的实例。 |
 
-<a id="resourcecolor"></a>
 ## resourceColor
 
 ```TypeScript
@@ -180,7 +175,6 @@ static resourceColor(color: ResourceColor): ColorMetrics
 | [180003](../errorcode-event.md#180003-该事件不是克隆事件) | Failed to obtain the color resource. |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible cause:1. The type of the input color parameter is not ResourceColor.2. The format of the input color string is not RGB or RGBA. |
 
-<a id="rgba"></a>
 ## rgba
 
 ```TypeScript

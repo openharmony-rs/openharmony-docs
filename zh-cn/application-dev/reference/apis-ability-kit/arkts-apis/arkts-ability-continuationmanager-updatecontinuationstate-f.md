@@ -6,7 +6,6 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
-<a id="updatecontinuationstate"></a>
 ## updateContinuationState
 
 ```TypeScript
@@ -30,17 +29,7 @@ function updateContinuationState(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-continuationManager-function updateContinuationState(
-    token: number,
-    deviceId: string,
-    status: DeviceConnectState,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-continuationManager-function updateContinuationState(
-    token: number,
-    deviceId: string,
-    status: DeviceConnectState,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-continuationManager-function updateContinuationState(    token: number,    deviceId: string,    status: DeviceConnectState,    callback: AsyncCallback<void>  ): void--><!--Device-continuationManager-function updateContinuationState(    token: number,    deviceId: string,    status: DeviceConnectState,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -84,7 +73,6 @@ try {
 ```
 
 
-<a id="updatecontinuationstate-1"></a>
 ## updateContinuationState
 
 ```TypeScript

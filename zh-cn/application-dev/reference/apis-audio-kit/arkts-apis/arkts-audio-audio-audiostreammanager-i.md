@@ -2,8 +2,7 @@
 
 音频流管理。
 
-在使用AudioStreamManager的接口之前，需先通过[getStreamManager](arkts-audio-audio-audiomanager-i.md#getstreammanager-1)获取AudioStreamManager实例。
-
+在使用AudioStreamManager的接口之前，需先通过[getStreamManager](arkts-audio-audio-audiomanager-i.md#getstreammanager)获取AudioStreamManager实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 9开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="getaudioeffectinfoarray"></a>
 ## getAudioEffectInfoArray
 
 ```TypeScript
@@ -49,7 +47,6 @@ getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback<AudioEffectI
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
 
-<a id="getaudioeffectinfoarray-1"></a>
 ## getAudioEffectInfoArray
 
 ```TypeScript
@@ -83,7 +80,6 @@ getAudioEffectInfoArray(usage: StreamUsage): Promise<AudioEffectInfoArray>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 
-<a id="getaudioeffectinfoarraysync"></a>
 ## getAudioEffectInfoArraySync
 
 ```TypeScript
@@ -117,7 +113,6 @@ getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getcurrentaudiocapturerinfoarray"></a>
 ## getCurrentAudioCapturerInfoArray
 
 ```TypeScript
@@ -125,7 +120,6 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback<AudioCapturerChangeInfo
 ```
 
 获取当前音频采集器的信息。使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
@@ -142,7 +136,6 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback<AudioCapturerChangeInfo
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioCapturerChangeInfoArray&gt; | 是 | 回调函数。当获取当前音频采集器的信息成功，err为undefined，data为获取到的当前音频采集器的信息；否则为错误对象。 |
 
-<a id="getcurrentaudiocapturerinfoarray-1"></a>
 ## getCurrentAudioCapturerInfoArray
 
 ```TypeScript
@@ -150,7 +143,6 @@ getCurrentAudioCapturerInfoArray(): Promise<AudioCapturerChangeInfoArray>
 ```
 
 获取当前音频采集器的信息。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
@@ -167,7 +159,6 @@ getCurrentAudioCapturerInfoArray(): Promise<AudioCapturerChangeInfoArray>
 | --- | --- |
 | Promise&lt;AudioCapturerChangeInfoArray&gt; | Promise对象，返回当前音频采集器信息。 |
 
-<a id="getcurrentaudiocapturerinfoarraysync"></a>
 ## getCurrentAudioCapturerInfoArraySync
 
 ```TypeScript
@@ -175,7 +166,6 @@ getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray
 ```
 
 获取当前音频采集器的信息。同步返回结果。
-
 > **说明：**  
 >  
 > 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
@@ -192,7 +182,6 @@ getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray
 | --- | --- |
 | [AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md) | 返回当前音频采集器信息。 |
 
-<a id="getcurrentaudiorendererinfoarray"></a>
 ## getCurrentAudioRendererInfoArray
 
 ```TypeScript
@@ -200,7 +189,6 @@ getCurrentAudioRendererInfoArray(callback: AsyncCallback<AudioRendererChangeInfo
 ```
 
 获取当前音频渲染器的信息。使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
@@ -217,7 +205,6 @@ getCurrentAudioRendererInfoArray(callback: AsyncCallback<AudioRendererChangeInfo
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioRendererChangeInfoArray&gt; | 是 | 回调函数。当获取当前音频渲染器的信息成功，err为undefined，data为获取到的当前音频渲染器的信息；否则为错误对象。 |
 
-<a id="getcurrentaudiorendererinfoarray-1"></a>
 ## getCurrentAudioRendererInfoArray
 
 ```TypeScript
@@ -225,7 +212,6 @@ getCurrentAudioRendererInfoArray(): Promise<AudioRendererChangeInfoArray>
 ```
 
 获取当前音频渲染器的信息。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
@@ -242,7 +228,6 @@ getCurrentAudioRendererInfoArray(): Promise<AudioRendererChangeInfoArray>
 | --- | --- |
 | Promise&lt;AudioRendererChangeInfoArray&gt; | Promise对象，返回当前音频渲染器信息。 |
 
-<a id="getcurrentaudiorendererinfoarraysync"></a>
 ## getCurrentAudioRendererInfoArraySync
 
 ```TypeScript
@@ -250,7 +235,6 @@ getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 ```
 
 获取当前音频渲染器的信息。同步返回结果。
-
 > **说明：**  
 >  
 > 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
@@ -267,7 +251,6 @@ getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 | --- | --- |
 | [AudioRendererChangeInfoArray](arkts-audio-audio-audiorendererchangeinfoarray-t.md) | 返回当前音频渲染器信息。 |
 
-<a id="isacousticechocancelersupported"></a>
 ## isAcousticEchoCancelerSupported
 
 ```TypeScript
@@ -300,7 +283,6 @@ isAcousticEchoCancelerSupported(sourceType: SourceType): boolean
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="isactive"></a>
 ## isActive
 
 ```TypeScript
@@ -326,7 +308,6 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频流类型。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音频流活跃状态成功，err为undefined，data为true表示活跃，false表示不活跃；否则为错误对象。 |
 
-<a id="isactive-1"></a>
 ## isActive
 
 ```TypeScript
@@ -357,7 +338,6 @@ isActive(volumeType: AudioVolumeType): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示流状态为活跃；返回false表示流状态不活跃。 |
 
-<a id="isactivesync"></a>
 ## isActiveSync
 
 ```TypeScript
@@ -395,7 +375,6 @@ isActiveSync(volumeType: AudioVolumeType): boolean
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="isaudioloopbacksupported"></a>
 ## isAudioLoopbackSupported
 
 ```TypeScript
@@ -428,7 +407,6 @@ isAudioLoopbackSupported(mode: AudioLoopbackMode): boolean
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="isdirectplaybacksupported"></a>
 ## isDirectPlaybackSupported
 
 ```TypeScript
@@ -458,7 +436,6 @@ isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): bool
 | --- | --- |
 | boolean | 是否支持直通播放。true表示支持，false表示不支持。 |
 
-<a id="isfastplaybacksupported"></a>
 ## isFastPlaybackSupported
 
 ```TypeScript
@@ -488,7 +465,6 @@ isFastPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolea
 | --- | --- |
 | boolean | 是否支持低时延播放。true表示支持，false表示不支持。 |
 
-<a id="isfastrecordingsupported"></a>
 ## isFastRecordingSupported
 
 ```TypeScript
@@ -518,7 +494,6 @@ isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boole
 | --- | --- |
 | boolean | 是否支持低时延录制。true表示支持，false表示不支持。 |
 
-<a id="isintelligentnoisereductionenabledforcurrentdevice"></a>
 ## isIntelligentNoiseReductionEnabledForCurrentDevice
 
 ```TypeScript
@@ -551,7 +526,6 @@ isIntelligentNoiseReductionEnabledForCurrentDevice(sourceType: SourceType): bool
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="ismultichannelplaybacksupported"></a>
 ## isMultichannelPlaybackSupported
 
 ```TypeScript
@@ -581,7 +555,6 @@ isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage)
 | --- | --- |
 | boolean | 是否支持多声道播放。true表示支持，false表示不支持。 |
 
-<a id="isoffloadplaybacksupported"></a>
 ## isOffloadPlaybackSupported
 
 ```TypeScript
@@ -611,7 +584,6 @@ isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boo
 | --- | --- |
 | boolean | 是否支持低功耗通路播放。true表示支持，false表示不支持。 |
 
-<a id="isrecordingavailable"></a>
 ## isRecordingAvailable
 
 ```TypeScript
@@ -644,7 +616,6 @@ isRecordingAvailable(capturerInfo: AudioCapturerInfo): boolean
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="isstreamactive"></a>
 ## isStreamActive
 
 ```TypeScript
@@ -677,7 +648,6 @@ isStreamActive(streamUsage: StreamUsage): boolean
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off"></a>
 ## off('audioRendererChange')
 
 ```TypeScript
@@ -685,7 +655,6 @@ off(type: 'audioRendererChange', callback?: Callback<AudioRendererChangeInfoArra
 ```
 
 取消监听音频渲染器更改事件。使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
@@ -709,7 +678,6 @@ off(type: 'audioRendererChange', callback?: Callback<AudioRendererChangeInfoArra
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off-1"></a>
 ## off('audioCapturerChange')
 
 ```TypeScript
@@ -717,7 +685,6 @@ off(type: 'audioCapturerChange', callback?: Callback<AudioCapturerChangeInfoArra
 ```
 
 取消监听音频采集器更改事件。使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
@@ -741,7 +708,6 @@ off(type: 'audioCapturerChange', callback?: Callback<AudioCapturerChangeInfoArra
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on"></a>
 ## on('audioRendererChange')
 
 ```TypeScript
@@ -749,7 +715,6 @@ on(type: 'audioRendererChange', callback: Callback<AudioRendererChangeInfoArray>
 ```
 
 监听音频渲染器更改事件（当音频播放流状态变化或设备变化时触发）。使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
@@ -774,7 +739,6 @@ on(type: 'audioRendererChange', callback: Callback<AudioRendererChangeInfoArray>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on-1"></a>
 ## on('audioCapturerChange')
 
 ```TypeScript
@@ -782,7 +746,6 @@ on(type: 'audioCapturerChange', callback: Callback<AudioCapturerChangeInfoArray>
 ```
 
 监听音频采集器更改事件（当音频录制流状态变化或设备变化时触发）。使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。

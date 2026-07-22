@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="checked"></a>
 ## checked
 
 ```TypeScript
@@ -21,9 +20,9 @@ checked(value: boolean)
 
 设置单选框的选中状态。
 
-从API version 10开始，该属性支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
-从API version 18开始，该属性支持[!!](docroot://ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **起始版本：** 8
 
@@ -41,7 +40,6 @@ checked(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
-<a id="checked-1"></a>
 ## checked
 
 ```TypeScript
@@ -50,7 +48,7 @@ checked(isChecked: Optional<boolean>)
 
 设置单选框的选中状态。与[checked](RadioAttribute#checked(value: boolean))相比，isChecked参数新增了对undefined类型的支持。
 
-该属性支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)、[!!](docroot://ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **起始版本：** 18
 
@@ -70,7 +68,6 @@ checked(isChecked: Optional<boolean>)
 | --- | --- | --- | --- |
 | isChecked | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 单选框的选中状态。<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
-<a id="contentmodifier"></a>
 ## contentModifier
 
 ```TypeScript
@@ -95,7 +92,6 @@ contentModifier(modifier: ContentModifier<RadioConfiguration>)
 | --- | --- | --- | --- |
 | modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;RadioConfiguration&gt; | 是 | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
-<a id="contentmodifier-1"></a>
 ## contentModifier
 
 ```TypeScript
@@ -121,7 +117,6 @@ contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>)
 | --- | --- | --- | --- |
 | modifier | [Optional](arkts-arkui-optional-t.md)&lt;ContentModifier&lt;RadioConfiguration&gt;&gt; | 是 | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
-<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -146,7 +141,6 @@ onChange(callback: (isChecked: boolean) => void)
 | --- | --- | --- | --- |
 | callback | (isChecked: boolean) =&gt; void | 是 | 单选框选中状态改变时触发该回调。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
 
-<a id="onchange-1"></a>
 ## onChange
 
 ```TypeScript
@@ -173,7 +167,6 @@ onChange(callback: Optional<OnRadioChangeCallback>)
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-optional-t.md)&lt;OnRadioChangeCallback&gt; | 是 | 单选框选中状态改变时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
-<a id="radiostyle"></a>
 ## radioStyle
 
 ```TypeScript

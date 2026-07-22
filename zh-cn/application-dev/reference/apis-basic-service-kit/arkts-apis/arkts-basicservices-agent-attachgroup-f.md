@@ -6,7 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="attachgroup"></a>
 ## attachGroup
 
 ```TypeScript

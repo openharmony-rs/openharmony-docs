@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="access"></a>
 ## access
 
 ```TypeScript
@@ -56,7 +55,6 @@ declare function access(path: string, mode?: AccessModeType): Promise<boolean>
 | 13900042 | Unknown error |
 
 
-<a id="access-1"></a>
 ## access
 
 ```TypeScript
@@ -98,7 +96,6 @@ declare function access(path: string, callback: AsyncCallback<boolean>): void
 | 13900042 | Unknown error |
 
 
-<a id="access-2"></a>
 ## access
 
 ```TypeScript

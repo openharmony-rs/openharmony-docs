@@ -6,7 +6,6 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="getrotationlimits"></a>
 ## getRotationLimits
 
 ```TypeScript
@@ -27,13 +26,13 @@ Obtains the maximum rotation angles relative to the reference point for the spec
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device. |
+| mechId | number | 是 | 机械设备ID |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [RotationLimits](arkts-mechanic-mechanicmanager-rotationlimits-i-sys.md) | Maximum rotation angles. |
+| [RotationLimits](arkts-mechanic-mechanicmanager-rotationlimits-i-sys.md) | 最大旋转角度 |
 
 **错误码：**
 

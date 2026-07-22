@@ -6,7 +6,6 @@
 import { hichecker } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -15,7 +14,7 @@ function contains(rule: bigint): boolean
 
 > **˵����**  
 >  
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule-1)�����
+> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule)�����
 
 ��ǰ�����ӵĹ������Ƿ������ĳһ���ض��Ĺ����������Ĺ��򼶱�Ϊ�̼߳�������ڵ�ǰ�߳��н��в�ѯ��
 
@@ -23,7 +22,7 @@ function contains(rule: bigint): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule-1)
+**替代接口：** [containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule)
 
 <!--Device-hichecker-function contains(rule: bigint): boolean--><!--Device-hichecker-function contains(rule: bigint): boolean-End-->
 

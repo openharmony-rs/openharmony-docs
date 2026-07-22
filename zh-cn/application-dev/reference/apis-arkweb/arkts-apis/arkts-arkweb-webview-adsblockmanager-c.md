@@ -14,7 +14,6 @@ This class is used to set adblock config.
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="addadsblockallowedlist"></a>
 ## addAdsBlockAllowedList
 
 ```TypeScript
@@ -22,7 +21,6 @@ static addAdsBlockAllowedList(domainSuffixes: Array<string>): void
 ```
 
 向AdsBlockManager的AllowedList中添加一组域名，主要用于重新开启DisallowedList中的部分网站的广告过滤。
-
 > **说明：**  
 >  
 > 此接口设置的域名不会持久化，应用重启需要重新设置。  
@@ -51,7 +49,6 @@ static addAdsBlockAllowedList(domainSuffixes: Array<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
-<a id="addadsblockdisallowedlist"></a>
 ## addAdsBlockDisallowedList
 
 ```TypeScript
@@ -59,7 +56,6 @@ static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 ```
 
 向AdsBlockManager的DisallowedList中添加一组域名。广告过滤功能开启时，将禁用这些网站的广告过滤功能。
-
 > **说明：**  
 >  
 > 此接口设置的域名不会持久化，应用重启需要重新设置。  
@@ -88,7 +84,6 @@ static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
-<a id="clearadsblockallowedlist"></a>
 ## clearAdsBlockAllowedList
 
 ```TypeScript
@@ -111,7 +106,6 @@ clear Ads Block Allowed list.
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
-<a id="clearadsblockdisallowedlist"></a>
 ## clearAdsBlockDisallowedList
 
 ```TypeScript
@@ -134,7 +128,6 @@ clear Ads Block Disallowed list.
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
-<a id="removeadsblockallowedlist"></a>
 ## removeAdsBlockAllowedList
 
 ```TypeScript
@@ -164,7 +157,6 @@ static removeAdsBlockAllowedList(domainSuffixes: Array<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
-<a id="removeadsblockdisallowedlist"></a>
 ## removeAdsBlockDisallowedList
 
 ```TypeScript
@@ -194,7 +186,6 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
-<a id="setadsblockrules"></a>
 ## setAdsBlockRules
 
 ```TypeScript
@@ -202,7 +193,6 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 ```
 
 向Web组件中设置自定义的符合通用easylist语法规则的广告过滤配置文件。
-
 > **说明：**  
 >  
 > 此接口设置的广告过滤规则，内部解析成功后会持久化存储，应用重启后不需要重复设置。

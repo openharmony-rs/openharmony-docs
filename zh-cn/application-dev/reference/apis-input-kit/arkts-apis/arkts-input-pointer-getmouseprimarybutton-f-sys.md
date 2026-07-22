@@ -6,7 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="getmouseprimarybutton"></a>
 ## getMousePrimaryButton
 
 ```TypeScript
@@ -69,7 +68,6 @@ struct Index {
 ```
 
 
-<a id="getmouseprimarybutton-1"></a>
 ## getMousePrimaryButton
 
 ```TypeScript

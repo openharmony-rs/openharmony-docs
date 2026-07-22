@@ -6,7 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createauxiliarypictureusingallocator"></a>
 ## createAuxiliaryPictureUsingAllocator
 
 ```TypeScript
@@ -15,7 +14,6 @@ function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPic
 ```
 
 使用指定的内存类型，根据辅助图信息和像素数据创建辅助图对象。
-
 > **说明：**  
 >  
 > - 在处理此接口返回的AuxiliaryPicture时，需要考虑内存中每行像素所占的空间的影响。  
@@ -26,9 +24,7 @@ function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPic
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPictureInfo,
-    allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture--><!--Device-image-function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPictureInfo,
-    allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture-End-->
+<!--Device-image-function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPictureInfo,    allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture--><!--Device-image-function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPictureInfo,    allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

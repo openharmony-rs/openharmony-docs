@@ -20,7 +20,6 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
-<a id="clearmem"></a>
 ## clearMem
 
 ```TypeScript
@@ -58,7 +57,6 @@ async function testClearMem() {
 
 ```
 
-<a id="getasykeyspec"></a>
 ## getAsyKeySpec
 
 ```TypeScript
@@ -93,7 +91,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
@@ -137,7 +135,6 @@ async function testgetAsyKeySpec() {
 
 ```
 
-<a id="getencodedder"></a>
 ## getEncodedDer
 
 ```TypeScript
@@ -145,7 +142,6 @@ getEncodedDer(format: string): DataBlob
 ```
 
 支持根据指定的密钥格式（如采用哪个规范），获取满足ASN.1语法、DER编码的私钥数据。
-
 > **说明：**  
 >  
 > 本接口和[Key.getEncoded()](arkts-cryptoarchitecture-cryptoframework-key-i.md#getencoded)的区别是：  
@@ -176,7 +172,7 @@ getEncodedDer(format: string): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
@@ -199,7 +195,6 @@ async function testGetEncodedDer() {
 
 ```
 
-<a id="getencodedpem"></a>
 ## getEncodedPem
 
 ```TypeScript
@@ -232,7 +227,7 @@ getEncodedPem(format: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
@@ -269,7 +264,6 @@ function TestPriKeyPkcs1ToPkcs8BySync1024() {
 
 ```
 
-<a id="getencodedpem-1"></a>
 ## getEncodedPem
 
 ```TypeScript
@@ -303,7 +297,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
@@ -344,7 +338,6 @@ function TestPriKeyPkcs1Encoded() {
 
 ```
 
-<a id="getkeydata"></a>
 ## getKeyData
 
 ```TypeScript
@@ -398,7 +391,6 @@ async function eccGetKeyDataTest() {
 
 ```
 
-<a id="getkeydatasync"></a>
 ## getKeyDataSync
 
 ```TypeScript
@@ -454,7 +446,6 @@ function eccGetKeyDataTest() {
 
 ```
 
-<a id="getpubkey"></a>
 ## getPubKey
 
 ```TypeScript
@@ -556,7 +547,6 @@ async function generateAsyKey() {
 
 ```
 
-<a id="getpubkeysync"></a>
 ## getPubKeySync
 
 ```TypeScript

@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -35,7 +34,6 @@ constructor(options?: SwipeGestureHandlerOptions)
 | --- | --- | --- | --- |
 | options | [SwipeGestureHandlerOptions](arkts-arkui-swipegesturehandleroptions-i.md) | 否 | 快滑手势处理器配置参数。 |
 
-<a id="onaction"></a>
 ## onAction
 
 ```TypeScript

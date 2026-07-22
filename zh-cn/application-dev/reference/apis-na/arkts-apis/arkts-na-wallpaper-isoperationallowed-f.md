@@ -1,6 +1,5 @@
 # isOperationAllowed
 
-<a id="isoperationallowed"></a>
 ## isOperationAllowed
 
 ```TypeScript
@@ -39,7 +38,6 @@ wallpaper.isOperationAllowed((error: BusinessError, data: Boolean) => {
 ```
 
 
-<a id="isoperationallowed-1"></a>
 ## isOperationAllowed
 
 ```TypeScript

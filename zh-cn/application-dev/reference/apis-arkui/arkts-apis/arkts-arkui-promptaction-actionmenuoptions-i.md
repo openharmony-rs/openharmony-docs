@@ -35,21 +35,7 @@ buttons: [
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ActionMenuOptions-buttons: [
-            Button,
-            Button?,
-            Button?,
-            Button?,
-            Button?,
-            Button?
-        ]--><!--Device-ActionMenuOptions-buttons: [
-            Button,
-            Button?,
-            Button?,
-            Button?,
-            Button?,
-            Button?
-        ]-End-->
+<!--Device-ActionMenuOptions-buttons: [            Button,            Button?,            Button?,            Button?,            Button?,            Button?        ]--><!--Device-ActionMenuOptions-buttons: [            Button,            Button?,            Button?,            Button?,            Button?,            Button?        ]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

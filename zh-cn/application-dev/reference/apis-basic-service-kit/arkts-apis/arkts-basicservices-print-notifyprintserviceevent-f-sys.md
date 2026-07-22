@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="notifyprintserviceevent"></a>
 ## notifyPrintServiceEvent
 
 ```TypeScript
@@ -61,7 +60,6 @@ print.notifyPrintServiceEvent(event).then(() => {
 ```
 
 
-<a id="notifyprintserviceevent-1"></a>
 ## notifyPrintServiceEvent
 
 ```TypeScript

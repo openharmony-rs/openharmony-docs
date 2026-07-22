@@ -6,7 +6,6 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
-<a id="unshare"></a>
 ## unshare
 
 ```TypeScript
@@ -21,15 +20,7 @@ function unshare(
 
 **起始版本：** 11
 
-<!--Device-sharing-function unshare(
-      sharingResource: string,
-      participants: Array<Participant>,
-      callback: AsyncCallback<Result<Array<Result<Participant>>>>
-    ): void--><!--Device-sharing-function unshare(
-      sharingResource: string,
-      participants: Array<Participant>,
-      callback: AsyncCallback<Result<Array<Result<Participant>>>>
-    ): void-End-->
+<!--Device-sharing-function unshare(      sharingResource: string,      participants: Array<Participant>,      callback: AsyncCallback<Result<Array<Result<Participant>>>>    ): void--><!--Device-sharing-function unshare(      sharingResource: string,      participants: Array<Participant>,      callback: AsyncCallback<Result<Array<Result<Participant>>>>    ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -81,7 +72,6 @@ cloudData.sharing.unshare('sharing_resource_test', participants, ((err: Business
 ```
 
 
-<a id="unshare-1"></a>
 ## unshare
 
 ```TypeScript
@@ -95,13 +85,7 @@ function unshare(
 
 **起始版本：** 11
 
-<!--Device-sharing-function unshare(
-      sharingResource: string,
-      participants: Array<Participant>
-    ): Promise<Result<Array<Result<Participant>>>>--><!--Device-sharing-function unshare(
-      sharingResource: string,
-      participants: Array<Participant>
-    ): Promise<Result<Array<Result<Participant>>>>-End-->
+<!--Device-sharing-function unshare(      sharingResource: string,      participants: Array<Participant>    ): Promise<Result<Array<Result<Participant>>>>--><!--Device-sharing-function unshare(      sharingResource: string,      participants: Array<Participant>    ): Promise<Result<Array<Result<Participant>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

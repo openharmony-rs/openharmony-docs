@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="alterpin2"></a>
 ## alterPin2
 
 ```TypeScript
@@ -61,7 +60,6 @@ sim.alterPin2(0, "1234", "0000", (err: BusinessError, data: sim.LockStatusRespon
 ```
 
 
-<a id="alterpin2-1"></a>
 ## alterPin2
 
 ```TypeScript

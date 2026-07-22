@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ PermissionRequest的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="deny"></a>
 ## deny
 
 ```TypeScript
@@ -42,7 +40,6 @@ Reject the request.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="getaccessibleresource"></a>
 ## getAccessibleResource
 
 ```TypeScript
@@ -65,7 +62,6 @@ Gets the resource that the webpage is trying to access.
 | --- | --- |
 | Array&lt;string&gt; | @syscap SystemCapability.Web.Webview.Core@crossplatform |
 
-<a id="getorigin"></a>
 ## getOrigin
 
 ```TypeScript
@@ -88,7 +84,6 @@ Gets the source if the webpage that attempted to access the restricted resource.
 | --- | --- |
 | string | @syscap SystemCapability.Web.Webview.Core@crossplatform |
 
-<a id="grant"></a>
 ## grant
 
 ```TypeScript

@@ -8,7 +8,6 @@ Defines the console info.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="assert"></a>
 ## assert
 
 ```TypeScript
@@ -38,7 +37,6 @@ Prints a message if value is false or omitted.
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="count"></a>
 ## count
 
 ```TypeScript
@@ -67,7 +65,6 @@ Maintains an internal counter specific to label and print the number of times co
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="countreset"></a>
 ## countReset
 
 ```TypeScript
@@ -96,7 +93,6 @@ Reset the internal counter specific to label.
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="debug"></a>
 ## debug
 
 ```TypeScript
@@ -122,7 +118,6 @@ Prints "debug" logs.
 | message | string | 是 | Text to print. |
 | arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform<br>**起始版本：** 10 |
 
-<a id="dir"></a>
 ## dir
 
 ```TypeScript
@@ -145,7 +140,6 @@ Prints properties of the specified JavaScript object.
 | --- | --- | --- | --- |
 | dir | Object | 否 | A JavaScript object whose properties should be output. |
 
-<a id="dirxml"></a>
 ## dirxml
 
 ```TypeScript
@@ -168,7 +162,6 @@ This method calls console.log() passing it the arguments received.This method do
 | --- | --- | --- | --- |
 | arguments | Object[] | 是 | Text to print. |
 
-<a id="error"></a>
 ## error
 
 ```TypeScript
@@ -194,7 +187,6 @@ Prints "error" logs.
 | message | string | 是 | Text to print. |
 | arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform<br>**起始版本：** 10 |
 
-<a id="group"></a>
 ## group
 
 ```TypeScript
@@ -217,7 +209,6 @@ Creates a new inline group, causing any subsequent console messages to be indent
 | --- | --- | --- | --- |
 | arguments | Object[] | 是 | messages to print first. |
 
-<a id="groupcollapsed"></a>
 ## groupCollapsed
 
 ```TypeScript
@@ -240,7 +231,6 @@ Same as console.group()
 | --- | --- | --- | --- |
 | arguments | Object[] | 是 | messages to print first. |
 
-<a id="groupend"></a>
 ## groupEnd
 
 ```TypeScript
@@ -257,7 +247,6 @@ Exit current inline group.
 
 **系统能力：** SystemCapability.Utils.Lang
 
-<a id="info"></a>
 ## info
 
 ```TypeScript
@@ -283,7 +272,6 @@ Prints "info" logs.
 | message | string | 是 | Text to print. |
 | arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform<br>**起始版本：** 10 |
 
-<a id="log"></a>
 ## log
 
 ```TypeScript
@@ -309,7 +297,6 @@ Prints "log" logs.
 | message | string | 是 | Text to print. |
 | arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform<br>**起始版本：** 10 |
 
-<a id="table"></a>
 ## table
 
 ```TypeScript
@@ -332,7 +319,6 @@ Prints tabular data as a table.
 | --- | --- | --- | --- |
 | tableData | Object | 否 | tabular data. |
 
-<a id="time"></a>
 ## time
 
 ```TypeScript
@@ -361,7 +347,6 @@ Start a timer.
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="timeend"></a>
 ## timeEnd
 
 ```TypeScript
@@ -390,7 +375,6 @@ End a timer and print time duration.
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="timelog"></a>
 ## timeLog
 
 ```TypeScript
@@ -420,7 +404,6 @@ Print the elapsed time and other data arguments.
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="trace"></a>
 ## trace
 
 ```TypeScript
@@ -443,7 +426,6 @@ Prints stack information for the current code location.
 | --- | --- | --- | --- |
 | arguments | Object[] | 是 | message to print. |
 
-<a id="tracehybridstack"></a>
 ## traceHybridStack
 
 ```TypeScript
@@ -460,7 +442,6 @@ Prints information about the current hybrid stack of the calling thread in the m
 
 **系统能力：** SystemCapability.Utils.Lang
 
-<a id="warn"></a>
 ## warn
 
 ```TypeScript

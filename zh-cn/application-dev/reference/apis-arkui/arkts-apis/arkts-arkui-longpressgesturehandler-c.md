@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -35,7 +34,6 @@ constructor(options?: LongPressGestureHandlerOptions)
 | --- | --- | --- | --- |
 | options | [LongPressGestureHandlerOptions](arkts-arkui-longpressgesturehandleroptions-i.md) | 否 | 长按手势处理器配置参数。 |
 
-<a id="onaction"></a>
 ## onAction
 
 ```TypeScript
@@ -66,7 +64,6 @@ onAction(event: Callback<GestureEvent>): LongPressGestureHandler
 | --- | --- |
 | [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) | 返回当前长按手势处理器对象。 |
 
-<a id="onactioncancel"></a>
 ## onActionCancel
 
 ```TypeScript
@@ -97,14 +94,13 @@ onActionCancel(event: Callback<void>): LongPressGestureHandler
 | --- | --- |
 | [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) | 返回当前长按手势处理器对象。 |
 
-<a id="onactioncancel-1"></a>
 ## onActionCancel
 
 ```TypeScript
 onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler
 ```
 
-设置长按手势处理器取消回调。长按手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](arkts-arkui-longpressgesturehandler-c.md#onactioncancel-1)接口相比，此接口返回手势事件信息。
+设置长按手势处理器取消回调。长按手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](arkts-arkui-longpressgesturehandler-c.md#onactioncancel)接口相比，此接口返回手势事件信息。
 
 **起始版本：** 18
 
@@ -128,7 +124,6 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler
 | --- | --- |
 | [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) | 返回当前长按手势处理器对象。 |
 
-<a id="onactionend"></a>
 ## onActionEnd
 
 ```TypeScript

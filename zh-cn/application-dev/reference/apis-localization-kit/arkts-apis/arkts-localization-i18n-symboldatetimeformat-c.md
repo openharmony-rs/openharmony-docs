@@ -16,7 +16,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -48,7 +47,6 @@ public constructor(locale?: Intl.Locale, options?: SymbolDateTimeFormatOptions)
 | --- | --- |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
-<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -79,7 +77,6 @@ public format(date?: Date | number): string
 | --- | --- |
 | string | 使用自定义符号的时间日期字符串。 |
 
-<a id="formatrange"></a>
 ## formatRange
 
 ```TypeScript
@@ -111,7 +108,6 @@ public formatRange(startDate: Date | number | bigint, endDate: Date | number | b
 | --- | --- |
 | string | 格式化后的时间日期范围字符串。 |
 
-<a id="formatrangetoparts"></a>
 ## formatRangeToParts
 
 ```TypeScript
@@ -127,9 +123,7 @@ public formatRangeToParts(startDate: Date | number | bigint, endDate: Date | num
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SymbolDateTimeFormat-public formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | bigint):
-      Intl.DateTimeRangeFormatPart[]--><!--Device-SymbolDateTimeFormat-public formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | bigint):
-      Intl.DateTimeRangeFormatPart[]-End-->
+<!--Device-SymbolDateTimeFormat-public formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | bigint):      Intl.DateTimeRangeFormatPart[]--><!--Device-SymbolDateTimeFormat-public formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | bigint):      Intl.DateTimeRangeFormatPart[]-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -146,7 +140,6 @@ public formatRangeToParts(startDate: Date | number | bigint, endDate: Date | num
 | --- | --- |
 | Intl.DateTimeRangeFormatPart[] | 时间日期范围元素数组。 |
 
-<a id="formattoparts"></a>
 ## formatToParts
 
 ```TypeScript
@@ -177,7 +170,6 @@ public formatToParts(date?: Date | number): Intl.DateTimeFormatPart[]
 | --- | --- |
 | Intl.DateTimeFormatPart[] | 使用自定义符号的时间日期元素数组。 |
 
-<a id="parse"></a>
 ## parse
 
 ```TypeScript
@@ -215,7 +207,6 @@ public parse(text: string, lenientMode: boolean): number
 | --- | --- |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
-<a id="resolvedoptions"></a>
 ## resolvedOptions
 
 ```TypeScript

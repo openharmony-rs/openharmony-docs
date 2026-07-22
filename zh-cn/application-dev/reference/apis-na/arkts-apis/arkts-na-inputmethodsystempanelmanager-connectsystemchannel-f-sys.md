@@ -1,6 +1,5 @@
 # connectSystemChannel（系统接口）
 
-<a id="connectsystemchannel"></a>
 ## connectSystemChannel
 
 ```TypeScript

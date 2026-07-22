@@ -6,7 +6,6 @@
 import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
-<a id="getcfgdirlist"></a>
 ## getCfgDirList
 
 ```TypeScript
@@ -36,7 +35,6 @@ function getCfgDirList(callback: AsyncCallback<Array<string>>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
-<a id="getcfgdirlist-1"></a>
 ## getCfgDirList
 
 ```TypeScript

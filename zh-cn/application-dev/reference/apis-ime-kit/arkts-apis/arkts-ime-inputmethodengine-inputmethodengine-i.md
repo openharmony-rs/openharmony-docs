@@ -1,6 +1,6 @@
 # InputMethodEngine
 
-下列API均需使用[getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md#getinputmethodengine-1)获取到InputMethodEngine实例后，通过实例调用。
+下列API均需使用[getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md#getinputmethodengine)获取到InputMethodEngine实例后，通过实例调用。
 
 **起始版本：** 8
 
@@ -18,7 +18,6 @@
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
-<a id="off"></a>
 ## off('inputStart')
 
 ```TypeScript
@@ -36,13 +35,7 @@ off(
 
 **替代接口：** off(type:
 
-<!--Device-InputMethodEngine-off(
-      type: 'inputStart',
-      callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void
-    ): void--><!--Device-InputMethodEngine-off(
-      type: 'inputStart',
-      callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void
-    ): void-End-->
+<!--Device-InputMethodEngine-off(      type: 'inputStart',      callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void--><!--Device-InputMethodEngine-off(      type: 'inputStart',      callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -64,7 +57,6 @@ inputMethodEngine.getInputMethodEngine()
 
 ```
 
-<a id="off-1"></a>
 ## off('keyboardShow' | 'keyboardHide')
 
 ```TypeScript
@@ -98,7 +90,6 @@ inputMethodEngine.getInputMethodEngine().off('keyboardHide');
 
 ```
 
-<a id="off-2"></a>
 ## off('keyboardShow' | 'keyboardHide')
 
 ```TypeScript
@@ -132,7 +123,6 @@ inputMethodEngine.getInputMethodEngine().off('keyboardHide');
 
 ```
 
-<a id="on"></a>
 ## on('inputStart')
 
 ```TypeScript
@@ -150,13 +140,7 @@ on(
 
 **替代接口：** on(type:
 
-<!--Device-InputMethodEngine-on(
-      type: 'inputStart',
-      callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void
-    ): void--><!--Device-InputMethodEngine-on(
-      type: 'inputStart',
-      callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void
-    ): void-End-->
+<!--Device-InputMethodEngine-on(      type: 'inputStart',      callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void--><!--Device-InputMethodEngine-on(      type: 'inputStart',      callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -178,7 +162,6 @@ inputMethodEngine.getInputMethodEngine()
 
 ```
 
-<a id="on-1"></a>
 ## on('keyboardShow' | 'keyboardHide')
 
 ```TypeScript
@@ -216,7 +199,6 @@ inputMethodEngine.getInputMethodEngine().on('keyboardHide', () => {
 
 ```
 
-<a id="on-2"></a>
 ## on('keyboardShow' | 'keyboardHide')
 
 ```TypeScript

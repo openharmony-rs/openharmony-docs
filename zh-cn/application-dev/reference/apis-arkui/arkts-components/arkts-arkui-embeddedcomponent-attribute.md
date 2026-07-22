@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="ondrawready"></a>
 ## onDrawReady
 
 ```TypeScript
@@ -35,7 +34,6 @@ EmbeddedUIExtensionAbility绘制首帧时的回调。
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 |  |
 
-<a id="onerror"></a>
 ## onError
 
 ```TypeScript
@@ -60,7 +58,6 @@ onError(callback: import('../api/@ohos.base').ErrorCallback)
 | --- | --- | --- | --- |
 | callback | import('../api/@ohos.base').ErrorCallback | 是 |  |
 
-<a id="onterminated"></a>
 ## onTerminated
 
 ```TypeScript

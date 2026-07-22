@@ -1,6 +1,5 @@
 # moveMissionToFront（系统接口）
 
-<a id="movemissiontofront"></a>
 ## moveMissionToFront
 
 ```TypeScript
@@ -53,7 +52,6 @@ try {
 ```
 
 
-<a id="movemissiontofront-1"></a>
 ## moveMissionToFront
 
 ```TypeScript
@@ -107,7 +105,6 @@ try {
 ```
 
 
-<a id="movemissiontofront-2"></a>
 ## moveMissionToFront
 
 ```TypeScript

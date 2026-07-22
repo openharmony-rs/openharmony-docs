@@ -6,7 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="queryappstatsinfos"></a>
 ## queryAppStatsInfos
 
 ```TypeScript

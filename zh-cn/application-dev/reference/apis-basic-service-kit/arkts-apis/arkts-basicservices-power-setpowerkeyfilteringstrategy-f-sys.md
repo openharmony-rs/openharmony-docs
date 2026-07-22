@@ -6,7 +6,6 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
-<a id="setpowerkeyfilteringstrategy"></a>
 ## setPowerKeyFilteringStrategy
 
 ```TypeScript

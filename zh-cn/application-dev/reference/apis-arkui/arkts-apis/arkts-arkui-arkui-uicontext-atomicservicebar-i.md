@@ -14,7 +14,6 @@ interface AtomicServiceBar
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="getbarrect"></a>
 ## getBarRect
 
 ```TypeScript
@@ -39,7 +38,6 @@ Get size and position of the bar.
 | --- | --- |
 | [Frame](arkts-arkui-graphics-frame-i.md) | The size and position of bar in vp relative to window. |
 
-<a id="onbarrectchange"></a>
 ## onBarRectChange
 
 ```TypeScript
@@ -64,7 +62,6 @@ onBarRectChange(callback: Callback<Frame>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;Frame&gt; | 是 | 回调函数的参数为Frame。当传入的callback为undefined时表示取消监听appbar组件的大小变化。回调函数触发时，回调函数的参数不可能为undefined或者null。 |
 
-<a id="setbackgroundcolor"></a>
 ## setBackgroundColor
 
 ```TypeScript
@@ -89,7 +86,6 @@ Set the background color of the bar.
 | --- | --- | --- | --- |
 | color | [Nullable](arkts-arkui-nullable-t.md)&lt; Color \| number \| string&gt; | 是 | the color to set, undefined indicates using default. |
 
-<a id="seticoncolor"></a>
 ## setIconColor
 
 ```TypeScript
@@ -114,7 +110,6 @@ Set the color of the icon on the bar.
 | --- | --- | --- | --- |
 | color | [Nullable](arkts-arkui-nullable-t.md)&lt; Color \| number \| string&gt; | 是 | the color to set to icon, undefined indicates using default. |
 
-<a id="settitlecontent"></a>
 ## setTitleContent
 
 ```TypeScript
@@ -139,7 +134,6 @@ Set the title of the bar.
 | --- | --- | --- | --- |
 | content | string | 是 | the content of the bar. |
 
-<a id="settitlefontstyle"></a>
 ## setTitleFontStyle
 
 ```TypeScript
@@ -164,7 +158,6 @@ Set the font style of the bar's title.
 | --- | --- | --- | --- |
 | font | [FontStyle](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontstyle-e.md) | 是 | the font style of the bar's title. |
 
-<a id="setvisible"></a>
 ## setVisible
 
 ```TypeScript

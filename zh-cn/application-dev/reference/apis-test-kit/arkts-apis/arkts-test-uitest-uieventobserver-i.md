@@ -14,7 +14,6 @@ UI事件监听器。
 import { ResizeDirection, WindowMode, PenMode, PenKeyOperation, Driver, MatchPattern, UiDirection, TouchOptions, ComponentEventType, PointerMatrix, WindowChangeType, Component, ON, PenKey, Rect, InputTextMode, UIEventObserver, WindowFilter, WindowChangeOptions, UiWindow, TouchPadSwipeOptions, Point, KeyOptions, DisplayRotation, UIElementInfo, PenKeyOperationOptions, ComponentEventOptions, MouseButton, On } from '@kit.TestKit';
 ```
 
-<a id="once"></a>
 ## once('toastShow')
 
 ```TypeScript
@@ -67,7 +66,6 @@ async function demo() {
 
 ```
 
-<a id="once-1"></a>
 ## once('dialogShow')
 
 ```TypeScript
@@ -116,14 +114,13 @@ async function demo() {
 
 ```
 
-<a id="once-2"></a>
 ## once('windowChange')
 
 ```TypeScript
 once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback<UIElementInfo>): void
 ```
 
-开始监听指定类型的窗口变化事件，支持设置事件监听的扩展配置，监听到指定窗口变化事件时触发callback回调。仅支持[自由多窗模式](docroot://windowmanager/window-terminology.md#自由多窗模式)的窗口监听。
+开始监听指定类型的窗口变化事件，支持设置事件监听的扩展配置，监听到指定窗口变化事件时触发callback回调。仅支持[自由多窗模式](../../../windowmanager/window-terminology.md#自由多窗模式)的窗口监听。
 
 **起始版本：** 22
 
@@ -174,7 +171,6 @@ async function demo() {
 
 ```
 
-<a id="once-3"></a>
 ## once('componentEventOccur')
 
 ```TypeScript

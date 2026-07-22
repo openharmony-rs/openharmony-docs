@@ -6,7 +6,6 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
-<a id="unprepare"></a>
 ## unprepare
 
 ```TypeScript
@@ -19,7 +18,7 @@ function unprepare(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [unprepareCooperate(callback:](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate-1)
+**替代接口：** [unprepareCooperate(callback:](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate)
 
 <!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void--><!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void-End-->
 
@@ -60,7 +59,6 @@ try {
 ```
 
 
-<a id="unprepare-1"></a>
 ## unprepare
 
 ```TypeScript
@@ -73,7 +71,7 @@ function unprepare(): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [unprepareCooperate()](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate-1)
+**替代接口：** [unprepareCooperate()](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate)
 
 <!--Device-cooperate-function unprepare(): Promise<void>--><!--Device-cooperate-function unprepare(): Promise<void>-End-->
 

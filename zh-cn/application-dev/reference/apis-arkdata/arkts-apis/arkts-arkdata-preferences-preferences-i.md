@@ -2,7 +2,7 @@
 
 首选项实例，提供获取和修改存储数据的接口。
 
-下列接口都需先使用[preferences.getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences-1)获取到Preferences实例，再通过此实例调用对应接口。
+下列接口都需先使用[preferences.getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences)获取到Preferences实例，再通过此实例调用对应接口。
 
 **起始版本：** 9
 
@@ -16,14 +16,13 @@
 import { preferences } from '@kit.ArkData';
 ```
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
 clear(callback: AsyncCallback<void>): void
 ```
 
-清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)将Preferences实例持久化，使用callback异步回调。
+清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush)将Preferences实例持久化，使用callback异步回调。
 
 **起始版本：** 9
 
@@ -61,14 +60,13 @@ dataPreferences.clear((err: BusinessError) =>{
 
 ```
 
-<a id="clear-1"></a>
 ## clear
 
 ```TypeScript
 clear(): Promise<void>
 ```
 
-清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)将Preferences实例持久化，使用Promise异步回调。
+清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush)将Preferences实例持久化，使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -104,14 +102,13 @@ promise.then(() => {
 
 ```
 
-<a id="clearsync"></a>
 ## clearSync
 
 ```TypeScript
 clearSync(): void
 ```
 
-清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)将Preferences实例持久化，此为同步接口。
+清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush)将Preferences实例持久化，此为同步接口。
 
 **起始版本：** 10
 
@@ -128,14 +125,13 @@ dataPreferences.clearSync();
 
 ```
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
 delete(key: string, callback: AsyncCallback<void>): void
 ```
 
-从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)将Preferences实例持久化，使用callback异步回调。
+从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush)将Preferences实例持久化，使用callback异步回调。
 
 **起始版本：** 9
 
@@ -149,7 +145,7 @@ delete(key: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当删除成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
@@ -174,14 +170,13 @@ dataPreferences.delete('startup', (err: BusinessError) => {
 
 ```
 
-<a id="delete-1"></a>
 ## delete
 
 ```TypeScript
 delete(key: string): Promise<void>
 ```
 
-从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)将Preferences实例持久化，使用Promise异步回调。
+从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush)将Preferences实例持久化，使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -195,7 +190,7 @@ delete(key: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -224,14 +219,13 @@ deleteStartupPromise.then(() => {
 
 ```
 
-<a id="deletesync"></a>
 ## deleteSync
 
 ```TypeScript
 deleteSync(key: string): void
 ```
 
-从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)将Preferences实例持久化，此为同步接口。
+从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush)将Preferences实例持久化，此为同步接口。
 
 **起始版本：** 10
 
@@ -245,7 +239,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **错误码：**
 
@@ -261,7 +255,6 @@ dataPreferences.deleteSync('startup');
 
 ```
 
-<a id="flush"></a>
 ## flush
 
 ```TypeScript
@@ -269,13 +262,12 @@ flush(callback: AsyncCallback<void>): void
 ```
 
 将缓存的Preferences实例中的数据异步存储到用户首选项的持久化文件中，使用callback异步回调。
-
 > **说明：**  
 >  
 > 当数据未修改或修改后的数据与缓存数据一致时，不会刷新持久化文件。  
 >  
 > 只在XML存储模式下使用，在GSKV存储模式下无需调用，因为当选择该模式时首选项对数据的操作会实时落盘。Preferences存储模式可见  
-> [存储模式说明](docroot://database/data-persistence-by-preferences.md#存储模式说明)。
+> [存储模式说明](../../../database/data-persistence-by-preferences.md#存储模式说明)。
 
 **起始版本：** 9
 
@@ -313,7 +305,6 @@ dataPreferences.flush((err: BusinessError) => {
 
 ```
 
-<a id="flush-1"></a>
 ## flush
 
 ```TypeScript
@@ -321,13 +312,12 @@ flush(): Promise<void>
 ```
 
 将缓存的Preferences实例中的数据异步存储到用户首选项的持久化文件中，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 当数据未修改或修改后的数据与缓存数据一致时，不会刷新持久化文件。  
 >  
 > 只在XML存储模式下使用，在GSKV存储模式下无需调用，因为当选择该模式时首选项对数据的操作会实时落盘。Preferences存储模式可见  
-> [存储模式说明](docroot://database/data-persistence-by-preferences.md#存储模式说明)。
+> [存储模式说明](../../../database/data-persistence-by-preferences.md#存储模式说明)。
 
 **起始版本：** 9
 
@@ -363,7 +353,6 @@ flushResult.then(() => {
 
 ```
 
-<a id="flushsync"></a>
 ## flushSync
 
 ```TypeScript
@@ -371,7 +360,6 @@ flushSync(): void
 ```
 
 将缓存的Preferences实例中的数据存储到用户首选项的持久化文件中。
-
 > **说明：**  
 >  
 > 当数据未修改或修改后的数据与缓存数据一致时，不会刷新持久化文件。
@@ -397,7 +385,6 @@ dataPreferences.flushSync();
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -418,7 +405,7 @@ get(key: string, defValue: ValueType, callback: AsyncCallback<ValueType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | defValue | [ValueType](arkts-arkdata-storage-valuetype-t.md) | 是 | 默认返回值。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ValueType&gt; | 是 | 回调函数。当获取成功时，err为undefined，data为键对应的值；否则err为错误对象。 |
 
@@ -444,7 +431,6 @@ dataPreferences.get('startup', 'default', (err: BusinessError, val: preferences.
 
 ```
 
-<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -465,7 +451,7 @@ get(key: string, defValue: ValueType): Promise<ValueType>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | defValue | [ValueType](arkts-arkdata-storage-valuetype-t.md) | 是 | 默认返回值。 |
 
 **返回值：**
@@ -495,7 +481,6 @@ data.then((data: preferences.ValueType) => {
 
 ```
 
-<a id="getall"></a>
 ## getAll
 
 ```TypeScript
@@ -549,7 +534,6 @@ dataPreferences.getAll((err: BusinessError, value: Object) => {
 
 ```
 
-<a id="getall-1"></a>
 ## getAll
 
 ```TypeScript
@@ -601,7 +585,6 @@ allData.then((value: Object) => {
 
 ```
 
-<a id="getallsync"></a>
 ## getAllSync
 
 ```TypeScript
@@ -647,7 +630,6 @@ console.info("getAll object = " + JSON.stringify(value));
 
 ```
 
-<a id="getsync"></a>
 ## getSync
 
 ```TypeScript
@@ -668,7 +650,7 @@ getSync(key: string, defValue: ValueType): ValueType
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | defValue | [ValueType](arkts-arkdata-storage-valuetype-t.md) | 是 | 默认返回值。 |
 
 **返回值：**
@@ -691,7 +673,6 @@ let value: preferences.ValueType = dataPreferences.getSync('startup', 'default')
 
 ```
 
-<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -712,7 +693,7 @@ has(key: string, callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
@@ -741,7 +722,6 @@ dataPreferences.has('startup', (err: BusinessError, val: boolean) => {
 
 ```
 
-<a id="has-1"></a>
 ## has
 
 ```TypeScript
@@ -762,7 +742,7 @@ has(key: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -795,7 +775,6 @@ isStartupSet.then((val: boolean) => {
 
 ```
 
-<a id="hassync"></a>
 ## hasSync
 
 ```TypeScript
@@ -816,7 +795,7 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -843,7 +822,6 @@ if (isExist) {
 
 ```
 
-<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -895,7 +873,6 @@ dataPreferences.off('change', observer);
 
 ```
 
-<a id="off-1"></a>
 ## off('multiProcessChange')
 
 ```TypeScript
@@ -949,7 +926,6 @@ dataPreferences.off('multiProcessChange', observer);
 
 ```
 
-<a id="off-2"></a>
 ## off('dataChange')
 
 ```TypeScript
@@ -1007,15 +983,13 @@ dataPreferences.off('dataChange', keys, observer);
 
 ```
 
-<a id="on"></a>
 ## on('change')
 
 ```TypeScript
 on(type: 'change', callback: Callback<string>): void
 ```
 
-订阅数据变更，订阅的Key的值发生变更后，并且在执行[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)方法后，触发callback回调。
-
+订阅数据变更，订阅的Key的值发生变更后，并且在执行[flush](arkts-arkdata-preferences-preferences-i.md#flush)方法后，触发callback回调。
 > **不同订阅方法的对比：**  
 >  
 > - on('change')：订阅所有Key变化，适合全局数据变化感知需求。  
@@ -1028,9 +1002,9 @@ on(type: 'change', callback: Callback<string>): void
 > dataChange')。  
 > > **说明：**  
 >  
-> 当调用[removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache-1)或  
-> [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences-1)后，订阅的数据变更会主动取消订阅，在重新  
-> [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences-1)后需要重新订阅数据变更。
+> 当调用[removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache)或  
+> [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences)后，订阅的数据变更会主动取消订阅，在重新  
+> [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences)后需要重新订阅数据变更。
 
 **起始版本：** 9
 
@@ -1074,24 +1048,22 @@ dataPreferences.flush((err: BusinessError) => {
 
 ```
 
-<a id="on-1"></a>
 ## on('multiProcessChange')
 
 ```TypeScript
 on(type: 'multiProcessChange', callback: Callback<string>): void
 ```
 
-订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)方法，持久化文件发生变更后，触发callback回调。
+订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](arkts-arkdata-preferences-preferences-i.md#flush)方法，持久化文件发生变更后，触发callback回调。
 
 本接口提供给申请了[dataGroupId](arkts-arkdata-preferences-options-i.md)的应用进行使用，未申请的应用不推荐使用（监听不到数据变更），多进程操作可能会损坏持久化文件，导致数据丢失。
-
 > **说明：**  
 >  
 > 同一持久化文件在当前进程对多进程数据变更订阅的最大数量为50次，超过最大限制后订阅会失败。建议在触发callback回调后及时取消订阅。  
 >  
-> 当调用[removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache-1)或  
-> [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences-1)后，订阅的数据变更会主动取消订阅，在重新  
-> [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences-1)后需要重新订阅数据变更。
+> 当调用[removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache)或  
+> [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences)后，订阅的数据变更会主动取消订阅，在重新  
+> [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences)后需要重新订阅数据变更。
 
 **起始版本：** 10
 
@@ -1136,20 +1108,18 @@ dataPreferences.flush((err: BusinessError) => {
 
 ```
 
-<a id="on-2"></a>
 ## on('dataChange')
 
 ```TypeScript
 on(type: 'dataChange', keys: Array<string>, callback: Callback<Record<string, ValueType>>): void
 ```
 
-精确订阅数据变更，只有被订阅的Key值发生变更后，在执行[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)方法后，触发callback回调。
-
+精确订阅数据变更，只有被订阅的Key值发生变更后，在执行[flush](arkts-arkdata-preferences-preferences-i.md#flush)方法后，触发callback回调。
 > **说明：**  
 >  
-> 当调用[removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache-1)或  
-> [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences-1)后，订阅的数据变更会主动取消订阅，在重新  
-> [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences-1)后需要重新订阅数据变更。
+> 当调用[removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache)或  
+> [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences)后，订阅的数据变更会主动取消订阅，在重新  
+> [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences)后需要重新订阅数据变更。
 
 **起始版本：** 12
 
@@ -1199,15 +1169,13 @@ dataPreferences.flush((err: BusinessError) => {
 
 ```
 
-<a id="put"></a>
 ## put
 
 ```TypeScript
 put(key: string, value: ValueType, callback: AsyncCallback<void>): void
 ```
 
-将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)将Preferences实例持久化，使用callback异步回调。
-
+将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush)将Preferences实例持久化，使用callback异步回调。
 > **说明：**  
 >  
 > 当value中包含非UTF-8格式的字符串时，请使用Uint8Array类型存储，否则会造成持久化文件出现格式错误造成文件损坏。  
@@ -1226,7 +1194,7 @@ put(key: string, value: ValueType, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | value | [ValueType](arkts-arkdata-storage-valuetype-t.md) | 是 | 存储的新值。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当数据写入成功，err为undefined；否则为错误对象。 |
 
@@ -1252,15 +1220,13 @@ dataPreferences.put('startup', 'auto', (err: BusinessError) => {
 
 ```
 
-<a id="put-1"></a>
 ## put
 
 ```TypeScript
 put(key: string, value: ValueType): Promise<void>
 ```
 
-将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)将Preferences实例持久化，使用Promise异步回调。
-
+将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush)将Preferences实例持久化，使用Promise异步回调。
 > **说明：**  
 >  
 > 当value中包含非UTF-8格式的字符串时，请使用Uint8Array类型存储，否则会造成持久化文件出现格式错误造成文件损坏。  
@@ -1279,7 +1245,7 @@ put(key: string, value: ValueType): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | value | [ValueType](arkts-arkdata-storage-valuetype-t.md) | 是 | 存储的新值。 |
 
 **返回值：**
@@ -1309,15 +1275,13 @@ putStartupPref.then(() => {
 
 ```
 
-<a id="putsync"></a>
 ## putSync
 
 ```TypeScript
 putSync(key: string, value: ValueType): void
 ```
 
-将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)将Preferences实例持久化，此为同步接口。
-
+将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-preferences-preferences-i.md#flush)将Preferences实例持久化，此为同步接口。
 > **说明：**  
 >  
 > 当value中包含非UTF-8格式的字符串时，请使用Uint8Array类型存储，否则会造成持久化文件出现格式错误造成文件损坏。  
@@ -1336,7 +1300,7 @@ putSync(key: string, value: ValueType): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | value | [ValueType](arkts-arkdata-storage-valuetype-t.md) | 是 | 存储的新值。 |
 
 **错误码：**

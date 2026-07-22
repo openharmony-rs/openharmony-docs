@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getnameforuid"></a>
 ## getNameForUid
 
 ```TypeScript
@@ -31,7 +30,6 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 |  |
 
 
-<a id="getnameforuid-1"></a>
 ## getNameForUid
 
 ```TypeScript

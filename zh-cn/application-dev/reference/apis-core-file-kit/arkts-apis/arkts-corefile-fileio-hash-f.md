@@ -1,6 +1,5 @@
 # hash
 
-<a id="hash"></a>
 ## hash
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function hash(path: string, algorithm: string): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [hash:hash](arkts-file-hash.md)
+**替代接口：** [hash:hash](arkts-corefile-fileio-hash-f.md#hash)
 
 <!--Device-unnamed-declare function hash(path: string, algorithm: string): Promise<string>--><!--Device-unnamed-declare function hash(path: string, algorithm: string): Promise<string>-End-->
 
@@ -33,7 +32,6 @@ declare function hash(path: string, algorithm: string): Promise<string>
 | Promise&lt;string&gt; | Promise对象。返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
 
 
-<a id="hash-1"></a>
 ## hash
 
 ```TypeScript
@@ -46,7 +44,7 @@ declare function hash(path: string, algorithm: string, callback: AsyncCallback<s
 
 **废弃版本：** 9
 
-**替代接口：** [hash:hash](arkts-file-hash.md)
+**替代接口：** [hash:hash](arkts-corefile-fileio-hash-f.md#hash)
 
 <!--Device-unnamed-declare function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void-End-->
 

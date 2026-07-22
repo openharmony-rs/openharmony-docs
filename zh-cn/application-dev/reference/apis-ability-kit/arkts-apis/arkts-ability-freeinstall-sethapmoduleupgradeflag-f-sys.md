@@ -6,7 +6,6 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
-<a id="sethapmoduleupgradeflag"></a>
 ## setHapModuleUpgradeFlag
 
 ```TypeScript
@@ -20,9 +19,7 @@ function setHapModuleUpgradeFlag(bundleName: string,
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
-<!--Device-freeInstall-function setHapModuleUpgradeFlag(bundleName: string, 
-    moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback<void>): void--><!--Device-freeInstall-function setHapModuleUpgradeFlag(bundleName: string, 
-    moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback<void>): void-End-->
+<!--Device-freeInstall-function setHapModuleUpgradeFlag(bundleName: string,     moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback<void>): void--><!--Device-freeInstall-function setHapModuleUpgradeFlag(bundleName: string,     moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -49,7 +46,6 @@ function setHapModuleUpgradeFlag(bundleName: string,
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 
 
-<a id="sethapmoduleupgradeflag-1"></a>
 ## setHapModuleUpgradeFlag
 
 ```TypeScript

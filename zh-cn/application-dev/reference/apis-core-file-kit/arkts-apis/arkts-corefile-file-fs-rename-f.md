@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="rename"></a>
 ## rename
 
 ```TypeScript
@@ -14,7 +13,6 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 ```
 
 重命名文件或目录，使用promise异步回调。
-
 > **说明：**  
 >  
 > 该接口不支持在分布式文件路径下操作。
@@ -65,7 +63,6 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="rename-1"></a>
 ## rename
 
 ```TypeScript
@@ -73,7 +70,6 @@ declare function rename(oldPath: string, newPath: string, callback: AsyncCallbac
 ```
 
 重命名文件或目录，使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口不支持在分布式文件路径下操作。

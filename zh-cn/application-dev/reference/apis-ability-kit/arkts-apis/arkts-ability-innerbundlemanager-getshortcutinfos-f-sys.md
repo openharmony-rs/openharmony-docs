@@ -6,7 +6,6 @@
 import { BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
-<a id="getshortcutinfos"></a>
 ## getShortcutInfos
 
 ```TypeScript
@@ -14,18 +13,17 @@ function getShortcutInfos(bundleName: string, callback: AsyncCallback<Array<Shor
 ```
 
 根据给定的Bundle名称获取快捷方式信息，使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md#getshortcutinfo-1)  
+> [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md#getshortcutinfo)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getShortcutInfo(bundleName](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md#getshortcutinfo-1)
+**替代接口：** [getShortcutInfo(bundleName](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md#getshortcutinfo)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -43,7 +41,6 @@ function getShortcutInfos(bundleName: string, callback: AsyncCallback<Array<Shor
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ShortcutInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回快捷方式信息。 |
 
 
-<a id="getshortcutinfos-1"></a>
 ## getShortcutInfos
 
 ```TypeScript
@@ -51,18 +48,17 @@ function getShortcutInfos(bundleName: string): Promise<Array<ShortcutInfo>>
 ```
 
 根据给定的Bundle名称获取快捷方式信息，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md#getshortcutinfo-1)  
+> [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md#getshortcutinfo)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getShortcutInfo(bundleName](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md#getshortcutinfo-1)
+**替代接口：** [getShortcutInfo(bundleName](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md#getshortcutinfo)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

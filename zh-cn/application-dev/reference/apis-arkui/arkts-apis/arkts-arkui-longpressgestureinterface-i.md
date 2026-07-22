@@ -1,7 +1,6 @@
 # LongPressGestureInterface
 
 用于触发长按手势事件，触发长按手势的最少手指数为1，默认最短长按时间为500毫秒。可配置duration参数控制最短长按时长。
-
 > **说明：**  
 >  
 > 从API version 18开始，部分设备会优先响应系统的双指长按手势，导致应用的双指长按手势不生效。
@@ -14,7 +13,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -49,7 +47,6 @@
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -86,7 +83,6 @@
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onaction"></a>
 ## onAction
 
 ```TypeScript
@@ -115,7 +111,6 @@ onAction(event: (event: GestureEvent) => void): LongPressGestureInterface
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactioncancel"></a>
 ## onActionCancel
 
 ```TypeScript
@@ -144,7 +139,6 @@ onActionCancel(event: () => void): LongPressGestureInterface
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactioncancel-1"></a>
 ## onActionCancel
 
 ```TypeScript
@@ -175,7 +169,6 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onactionend"></a>
 ## onActionEnd
 
 ```TypeScript

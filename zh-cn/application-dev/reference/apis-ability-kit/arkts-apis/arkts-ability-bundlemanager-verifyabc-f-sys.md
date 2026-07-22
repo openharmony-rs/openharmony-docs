@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="verifyabc"></a>
 ## verifyAbc
 
 ```TypeScript
@@ -67,7 +66,6 @@ try {
 ```
 
 
-<a id="verifyabc-1"></a>
 ## verifyAbc
 
 ```TypeScript

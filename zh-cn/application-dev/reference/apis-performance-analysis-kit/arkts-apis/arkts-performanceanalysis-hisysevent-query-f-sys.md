@@ -6,7 +6,6 @@
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="query"></a>
 ## query
 
 ```TypeScript

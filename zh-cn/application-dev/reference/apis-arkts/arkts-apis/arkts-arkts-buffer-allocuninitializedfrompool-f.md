@@ -6,14 +6,13 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
-<a id="allocuninitializedfrompool"></a>
 ## allocUninitializedFromPool
 
 ```TypeScript
 function allocUninitializedFromPool(size: number): Buffer
 ```
 
-创建指定大小未初始化的Buffer对象。内存从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill-1)函数来初始化Buffer对象。
+创建指定大小未初始化的Buffer对象。内存从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill)函数来初始化Buffer对象。
 
 **起始版本：** 9
 

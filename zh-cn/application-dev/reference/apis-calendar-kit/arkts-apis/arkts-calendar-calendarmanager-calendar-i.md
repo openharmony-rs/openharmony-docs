@@ -1,6 +1,6 @@
 # Calendar
 
-下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar-1)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar-1)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。
+下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。
 
 **起始版本：** 10
 
@@ -14,7 +14,6 @@
 import { calendarManager } from '@kit.CalendarKit';
 ```
 
-<a id="addevent"></a>
 ## addEvent
 
 ```TypeScript
@@ -86,7 +85,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
-<a id="addevent-1"></a>
 ## addEvent
 
 ```TypeScript
@@ -153,7 +151,6 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
 
 ```
 
-<a id="addevents"></a>
 ## addEvents
 
 ```TypeScript
@@ -230,7 +227,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
-<a id="addevents-1"></a>
 ## addEvents
 
 ```TypeScript
@@ -304,7 +300,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
-<a id="deleteevent"></a>
 ## deleteEvent
 
 ```TypeScript
@@ -372,7 +367,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
-<a id="deleteevent-1"></a>
 ## deleteEvent
 
 ```TypeScript
@@ -439,7 +433,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
-<a id="deleteevents"></a>
 ## deleteEvents
 
 ```TypeScript
@@ -520,7 +513,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
-<a id="deleteevents-1"></a>
 ## deleteEvents
 
 ```TypeScript
@@ -600,7 +592,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
-<a id="getaccount"></a>
 ## getAccount
 
 ```TypeScript
@@ -644,7 +635,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
-<a id="getconfig"></a>
 ## getConfig
 
 ```TypeScript
@@ -688,7 +678,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
-<a id="getevents"></a>
 ## getEvents
 
 ```TypeScript
@@ -768,7 +757,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
-<a id="getevents-1"></a>
 ## getEvents
 
 ```TypeScript
@@ -856,7 +844,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
-<a id="getevents-2"></a>
 ## getEvents
 
 ```TypeScript
@@ -915,7 +902,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
-<a id="openeventeditpage"></a>
 ## openEventEditPage
 
 ```TypeScript
@@ -1005,7 +991,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 
 ```
 
-<a id="queryeventinstances"></a>
 ## queryEventInstances
 
 ```TypeScript
@@ -1089,7 +1074,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
-<a id="setconfig"></a>
 ## setConfig
 
 ```TypeScript
@@ -1153,7 +1137,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
-<a id="setconfig-1"></a>
 ## setConfig
 
 ```TypeScript
@@ -1214,7 +1197,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 
 ```
 
-<a id="updateevent"></a>
 ## updateEvent
 
 ```TypeScript
@@ -1284,7 +1266,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ```
 
-<a id="updateevent-1"></a>
 ## updateEvent
 
 ```TypeScript

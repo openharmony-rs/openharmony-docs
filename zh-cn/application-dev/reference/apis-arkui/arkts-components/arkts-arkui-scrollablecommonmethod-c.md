@@ -10,7 +10,6 @@ CommonScrollableMethod
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="autoadjustscrollbarmargin"></a>
 ## autoAdjustScrollBarMargin
 
 ```TypeScript
@@ -41,7 +40,6 @@ autoAdjustScrollBarMargin(enable: boolean | undefined): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="backtotop"></a>
 ## backToTop
 
 ```TypeScript
@@ -72,7 +70,6 @@ Controls whether the scrollable scrolls back to top when status bar is clicked.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="clipcontent"></a>
 ## clipContent
 
 ```TypeScript
@@ -103,7 +100,6 @@ Clip the content of the scrollable container, excluding background.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="contentendoffset"></a>
 ## contentEndOffset
 
 ```TypeScript
@@ -134,7 +130,6 @@ contentEndOffset(offset: number | Resource): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="contentstartoffset"></a>
 ## contentStartOffset
 
 ```TypeScript
@@ -165,7 +160,6 @@ Sets the offset from the start of the content to the boundary of the scrollable 
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="digitalcrownsensitivity"></a>
 ## digitalCrownSensitivity
 
 ```TypeScript
@@ -196,7 +190,6 @@ Set the sensitivity of rotating crown.
 | --- | --- |
 | T | The component instance. |
 
-<a id="edgeeffect"></a>
 ## edgeEffect
 
 ```TypeScript
@@ -228,7 +221,6 @@ Edge scrolling effect.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="enablescrollinteraction"></a>
 ## enableScrollInteraction
 
 ```TypeScript
@@ -259,7 +251,6 @@ Whether to support scroll gestures by finger or mouse.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="enablescrollwithmouse"></a>
 ## enableScrollWithMouse
 
 ```TypeScript
@@ -290,7 +281,6 @@ enableScrollWithMouse(enabled: boolean | undefined): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="fadingedge"></a>
 ## fadingEdge
 
 ```TypeScript
@@ -322,7 +312,6 @@ Called when setting whether to enable fading Edge effect.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="flingspeedlimit"></a>
 ## flingSpeedLimit
 
 ```TypeScript
@@ -353,7 +342,6 @@ Limit the max speed when fling.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="friction"></a>
 ## friction
 
 ```TypeScript
@@ -384,7 +372,6 @@ friction coefficient.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="nestedscroll"></a>
 ## nestedScroll
 
 ```TypeScript
@@ -415,7 +402,6 @@ Nested scrolling options.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="ondidscroll"></a>
 ## onDidScroll
 
 ```TypeScript
@@ -448,7 +434,6 @@ Triggered when the scrollable component scrolls.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="ondidstopdragging"></a>
 ## onDidStopDragging
 
 ```TypeScript
@@ -481,7 +466,6 @@ Called when the scrollable did end dragging.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="ondidstopfling"></a>
 ## onDidStopFling
 
 ```TypeScript
@@ -514,7 +498,6 @@ Called when the scrollable did end fling.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="onreachend"></a>
 ## onReachEnd
 
 ```TypeScript
@@ -545,7 +528,6 @@ Called when the scrollable reaches the end position.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onreachstart"></a>
 ## onReachStart
 
 ```TypeScript
@@ -576,7 +558,6 @@ Called when the scrollable reaches the start position.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onscroll"></a>
 ## onScroll
 
 ```TypeScript
@@ -589,7 +570,7 @@ Triggered when the scrollable component scrolls.
 
 **废弃版本：** 12
 
-**替代接口：** [onDidScroll](arkts-arkui-scrollablecommonmethod-c.md#ondidscroll-1)
+**替代接口：** [onDidScroll](arkts-arkui-scrollablecommonmethod-c.md#ondidscroll)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -611,7 +592,6 @@ Triggered when the scrollable component scrolls.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onscrollstart"></a>
 ## onScrollStart
 
 ```TypeScript
@@ -642,7 +622,6 @@ Called when the scrollable starts scrolling.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onscrollstop"></a>
 ## onScrollStop
 
 ```TypeScript
@@ -673,7 +652,6 @@ Called when the scrollable stops scrolling.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onwillscroll"></a>
 ## onWillScroll
 
 ```TypeScript
@@ -704,7 +682,6 @@ Called when the scrollable will scroll.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onwillstartdragging"></a>
 ## onWillStartDragging
 
 ```TypeScript
@@ -737,7 +714,6 @@ Called when the scrollable will start dragging.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="onwillstartfling"></a>
 ## onWillStartFling
 
 ```TypeScript
@@ -770,7 +746,6 @@ Called when the scrollable will start fling.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="onwillstopdragging"></a>
 ## onWillStopDragging
 
 ```TypeScript
@@ -803,7 +778,6 @@ Called when the scrollable will end dragging.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="scrollbar"></a>
 ## scrollBar
 
 ```TypeScript
@@ -834,7 +808,6 @@ Scrollbar status.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="scrollbarcolor"></a>
 ## scrollBarColor
 
 ```TypeScript
@@ -865,7 +838,6 @@ Color of the scrollbar.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="scrollbarcolor-1"></a>
 ## scrollBarColor
 
 ```TypeScript
@@ -896,7 +868,6 @@ Sets the scrollbar color.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="scrollbarheight"></a>
 ## scrollBarHeight
 
 ```TypeScript
@@ -927,7 +898,6 @@ scrollBarHeight(height: LengthMetrics | undefined): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="scrollbarmargin"></a>
 ## scrollBarMargin
 
 ```TypeScript
@@ -958,7 +928,6 @@ Margin of the scrollbar.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="scrollbarwidth"></a>
 ## scrollBarWidth
 
 ```TypeScript
@@ -989,7 +958,6 @@ Width of the scrollbar.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="scrollbarwidth-1"></a>
 ## scrollBarWidth
 
 ```TypeScript

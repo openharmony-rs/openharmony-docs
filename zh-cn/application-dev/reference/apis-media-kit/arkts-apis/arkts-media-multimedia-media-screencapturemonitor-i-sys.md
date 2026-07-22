@@ -16,7 +16,6 @@ A class that provides APIs to query and monitor the system screen recorder statu
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="off"></a>
 ## off('systemScreenRecorder')
 
 ```TypeScript
@@ -53,7 +52,6 @@ screenCaptureMonitor.off('systemScreenRecorder');
 
 ```
 
-<a id="on"></a>
 ## on('systemScreenRecorder')
 
 ```TypeScript

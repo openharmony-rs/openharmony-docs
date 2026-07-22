@@ -6,7 +6,6 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
-<a id="deletedata"></a>
 ## deleteData
 
 ```TypeScript
@@ -74,7 +73,6 @@ try {
 ```
 
 
-<a id="deletedata-1"></a>
 ## deleteData
 
 ```TypeScript

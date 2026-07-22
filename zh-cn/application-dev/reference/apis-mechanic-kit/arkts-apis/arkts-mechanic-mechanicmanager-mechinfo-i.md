@@ -1,6 +1,6 @@
 # MechInfo
 
-Mechanical device information.
+机械设备信息
 
 **起始版本：** 20
 
@@ -20,7 +20,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 mechDeviceType: MechDeviceType
 ```
 
-Type of the mechanical device.
+机械设备类型
 
 **类型：** MechDeviceType
 
@@ -36,7 +36,7 @@ Type of the mechanical device.
 mechId: number
 ```
 
-ID of the mechanical device.
+机械设备ID
 
 **类型：** number
 
@@ -52,7 +52,7 @@ ID of the mechanical device.
 mechName: string
 ```
 
-Name of the mechanical device.
+机械设备名称
 
 **类型：** string
 

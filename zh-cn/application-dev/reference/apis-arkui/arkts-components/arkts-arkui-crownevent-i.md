@@ -80,7 +80,7 @@ degree: number
 stopPropagation: Callback<void>
 ```
 
-阻止[事件冒泡](docroot://ui/arkts-interaction-basic-principles.md#事件冒泡)。
+阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
 
 **类型：** Callback&lt;void&gt;
 

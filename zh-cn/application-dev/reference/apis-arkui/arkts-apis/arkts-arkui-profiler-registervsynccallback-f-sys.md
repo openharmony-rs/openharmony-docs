@@ -1,6 +1,5 @@
 # registerVsyncCallback（系统接口）
 
-<a id="registervsynccallback"></a>
 ## registerVsyncCallback
 
 ```TypeScript

@@ -1,11 +1,8 @@
 # @ohos.arkui.observer
 
 提供UI组件行为变化的无感监听能力。
-
 > **说明：**
-
 > - 以下API需先使用UIContext中的{@link getUIObserver()}方法获取到UIObserver对象，再通过该对象调用对应方法。
-
 > - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent.md)等<!--DelEnd-->跨进程场景的信  
 > 息。
 
@@ -47,8 +44,8 @@ import { uiObserver } from '@kit.ArkUI';
 | [on](arkts-arkui-uiobserver-on-f.md#on-5) | 监听屏幕像素密度变化。 |
 | [on](arkts-arkui-uiobserver-on-f.md#on-6) | 监听每一帧绘制指令下发情况。 |
 | [on](arkts-arkui-uiobserver-on-f.md#on-7) | 监听每一帧布局完成情况。 |
-| [on](arkts-arkui-uiobserver-on-f.md#on-8) | 监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange',callback: Callback<observer.TabContentInfo>))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
-| [on](arkts-arkui-uiobserver-on-f.md#on-9) | 监听TabContent页面的切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange', callback:Callback<observer.TabContentInfo>))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
+| [on](arkts-arkui-uiobserver-on-f.md#on-8) | 监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange',callback: Callback&lt;observer.TabContentInfo&gt;))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
+| [on](arkts-arkui-uiobserver-on-f.md#on-9) | 监听TabContent页面的切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange', callback:Callback&lt;observer.TabContentInfo&gt;))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
 | [on](arkts-arkui-uiobserver-on-f.md#on-10) | 监听Navigation的页面切换事件。 |
 | [on](arkts-arkui-uiobserver-on-f.md#on-11) | 监听Navigation的页面切换事件。与[uiObserver.on](uiObserver.on( type: 'navDestinationSwitch', context: UIAbilityContext \|UIContext, callback: Callback<NavDestinationSwitchInfo> ))相比，新增了observerOptions参数，即支持设置监听选项。 |
 

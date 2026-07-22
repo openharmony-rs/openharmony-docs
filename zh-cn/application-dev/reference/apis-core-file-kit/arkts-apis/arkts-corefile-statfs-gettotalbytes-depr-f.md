@@ -1,6 +1,5 @@
 # getTotalBytes
 
-<a id="gettotalbytes"></a>
 ## getTotalBytes
 
 ```TypeScript
@@ -13,7 +12,7 @@ function getTotalBytes(path: string, callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** getTotalBytes
+**替代接口：** [getTotalBytes](arkts-corefile-statfs-gettotalbytes-depr-f.md#gettotalbytes)
 
 <!--Device-Statfs-function getTotalBytes(path: string, callback: AsyncCallback<number>): void--><!--Device-Statfs-function getTotalBytes(path: string, callback: AsyncCallback<number>): void-End-->
 
@@ -44,7 +43,6 @@ statfs.getTotalBytes(path, (err: BusinessError, totalBytes:Number) => {
 ```
 
 
-<a id="gettotalbytes-1"></a>
 ## getTotalBytes
 
 ```TypeScript
@@ -57,7 +55,7 @@ function getTotalBytes(path: string): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** getTotalBytes
+**替代接口：** [getTotalBytes](arkts-corefile-statfs-gettotalbytes-depr-f.md#gettotalbytes)
 
 <!--Device-Statfs-function getTotalBytes(path: string): Promise<number>--><!--Device-Statfs-function getTotalBytes(path: string): Promise<number>-End-->
 

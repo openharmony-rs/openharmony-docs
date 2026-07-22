@@ -6,7 +6,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="getsystemregion"></a>
 ## getSystemRegion
 
 ```TypeScript
@@ -19,7 +18,7 @@ export function getSystemRegion(): string
 
 **废弃版本：** 9
 
-**替代接口：** [getSystemRegion](arkts-localization-i18n-system-c.md#getsystemregion-1)
+**替代接口：** [getSystemRegion](arkts-localization-i18n-system-c.md#getsystemregion)
 
 <!--Device-i18n-export function getSystemRegion(): string--><!--Device-i18n-export function getSystemRegion(): string-End-->
 

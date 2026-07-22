@@ -2,12 +2,11 @@
 
 Image类，供ImageReceiver和ImageCreator使用，用于传输图片对象，其实际内容由生产者决定。如相机预览流提供的Image对象存储了YUV数据、相机拍照提供的Image对象存储了JPEG文件。
 
-调用[readNextImage](arkts-image-image-imagereceiver-i.md#readnextimage-1)和[readLatestImage](arkts-image-image-imagereceiver-i.md#readlatestimage-1)接口时会返回Image实例。
+调用[readNextImage](arkts-image-image-imagereceiver-i.md#readnextimage)和[readLatestImage](arkts-image-image-imagereceiver-i.md#readlatestimage)接口时会返回Image实例。
 
 Image的属性仅支持在创建时初始化，后续无法再修改，且其属性不对图片内容产生实际影响，请以图片生产者写入的属性为准，即以向[ImageReceiver](arkts-image-image-imagereceiver-i.md)发送图片数据的发送方实际写入的内容为准。
 
-由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](arkts-image-image-image-i.md#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
-
+由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](arkts-image-image-image-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 9开始支持。
@@ -24,7 +23,6 @@ Image的属性仅支持在创建时初始化，后续无法再修改，且其属
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="getbufferdata"></a>
 ## getBufferData
 
 ```TypeScript
@@ -32,7 +30,6 @@ getBufferData(): ImageBufferData | null
 ```
 
 从图像中获取ImageBufferData。
-
 > **注意：**  
 >  
 > ImageBufferData中的byteBuffer是对内部缓存的浅拷贝，当Image的生命周期结束时，便不能对byteBuffer做任何操作，否则会导致未定义行为。
@@ -51,7 +48,6 @@ getBufferData(): ImageBufferData | null
 | --- | --- |
 | [ImageBufferData](arkts-image-image-imagebufferdata-i.md) | 获取封装图像数据缓冲区的结构体，获取不到时返回空值。 |
 
-<a id="getcomponent"></a>
 ## getComponent
 
 ```TypeScript
@@ -73,7 +69,6 @@ getComponent(componentType: ComponentType, callback: AsyncCallback<Component>): 
 | componentType | [ComponentType](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-update-componenttype-e-sys.md) | 是 | 图像的组件类型（目前仅支持ComponentType:JPEG，实际返回格式由生产者决定，如相机）。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Component&gt; | 是 | 回调函数，当返回组件缓冲区成功，err为undefined，data为获取到的组件缓冲区；否则为错误对象。 |
 
-<a id="getcomponent-1"></a>
 ## getComponent
 
 ```TypeScript
@@ -100,7 +95,6 @@ getComponent(componentType: ComponentType): Promise<Component>
 | --- | --- |
 | Promise&lt;Component&gt; | Promise对象，返回组件缓冲区。 |
 
-<a id="getmetadata"></a>
 ## getMetadata
 
 ```TypeScript
@@ -136,7 +130,6 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue | null
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Memory copy failed. |
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -163,7 +156,6 @@ release(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当图像释放成功，err为undefined，否则为错误对象。 |
 
-<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -230,7 +222,7 @@ readonly colorSpace: colorSpaceManager.ColorSpace
 readonly format: number
 ```
 
-图像格式，参考[OH_NativeBuffer_Format](docroot://reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。
+图像格式，参考[OH_NativeBuffer_Format](../../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。
 
 **类型：** number
 
@@ -254,7 +246,7 @@ readonly size: Size
 
 Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId通过[createPreviewOutput](@ohos.multimedia.camera:camera.CameraManager.createPreviewOutput(profile: Profile, surfaceId: string))接口还是[createPhotoOutput](@ohos.multimedia.camera:camera.CameraManager.createPhotoOutput(profile: Profile, surfaceId: string))接口传给相机。
 
-相机预览与拍照最佳实践请参考[双路预览(ArkTS)](docroot://media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](docroot://media/camera/camera-shooting-case.md)。
+相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../../media/camera/camera-shooting-case.md)。
 
 **类型：** Size
 
@@ -270,7 +262,7 @@ Image对象所存储的数据是预览流还是拍照流，取决于应用将rec
 readonly timestamp: number
 ```
 
-图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty-1)接口读取EXIF时间戳信息。
+图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty)接口读取EXIF时间戳信息。
 
 **类型：** number
 

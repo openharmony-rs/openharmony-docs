@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="rmdir"></a>
 ## rmdir
 
 ```TypeScript
@@ -14,7 +13,6 @@ declare function rmdir(path: string): Promise<void>
 ```
 
 删除目录及其所有子目录和文件，使用promise异步回调。
-
 > **说明：**  
 >  
 > 该接口支持删除单个文件，但不推荐使用此方法删除单个文件，推荐使用unlink接口删除单个文件。
@@ -57,7 +55,6 @@ declare function rmdir(path: string): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="rmdir-1"></a>
 ## rmdir
 
 ```TypeScript
@@ -65,7 +62,6 @@ declare function rmdir(path: string, callback: AsyncCallback<void>): void
 ```
 
 删除目录及其所有子目录和文件，使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口支持删除单个文件，但不推荐使用此方法删除单个文件，推荐使用unlink接口删除单个文件。

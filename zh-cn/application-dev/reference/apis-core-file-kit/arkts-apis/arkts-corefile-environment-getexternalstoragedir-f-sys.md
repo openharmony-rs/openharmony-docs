@@ -6,7 +6,6 @@
 import { Environment } from '@kit.CoreFileKit';
 ```
 
-<a id="getexternalstoragedir"></a>
 ## getExternalStorageDir
 
 ```TypeScript

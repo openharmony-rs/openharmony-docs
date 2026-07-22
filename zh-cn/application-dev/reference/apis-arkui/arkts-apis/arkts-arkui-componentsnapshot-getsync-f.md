@@ -6,7 +6,6 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
-<a id="getsync"></a>
 ## getSync
 
 ```TypeScript
@@ -14,7 +13,6 @@ function getSync(id: string, options?: SnapshotOptions): image.PixelMap
 ```
 
 获取已加载的组件的截图，传入组件的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。
-
 > **说明：**  
 >  
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。

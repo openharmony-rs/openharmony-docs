@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="read"></a>
 ## read
 
 ```TypeScript
@@ -23,15 +22,7 @@ declare function read(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function read(
-  fd: number,
-  buffer: ArrayBuffer,
-  options?: ReadOptions
-): Promise<number>--><!--Device-unnamed-declare function read(
-  fd: number,
-  buffer: ArrayBuffer,
-  options?: ReadOptions
-): Promise<number>-End-->
+<!--Device-unnamed-declare function read(  fd: number,  buffer: ArrayBuffer,  options?: ReadOptions): Promise<number>--><!--Device-unnamed-declare function read(  fd: number,  buffer: ArrayBuffer,  options?: ReadOptions): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -65,7 +56,6 @@ declare function read(
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="read-1"></a>
 ## read
 
 ```TypeScript
@@ -105,7 +95,6 @@ declare function read(fd: number, buffer: ArrayBuffer, callback: AsyncCallback<n
 | 13900042 | Unknown error |
 
 
-<a id="read-2"></a>
 ## read
 
 ```TypeScript
@@ -123,17 +112,7 @@ declare function read(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function read(
-  fd: number,
-  buffer: ArrayBuffer,
-  options: ReadOptions,
-  callback: AsyncCallback<number>
-): void--><!--Device-unnamed-declare function read(
-  fd: number,
-  buffer: ArrayBuffer,
-  options: ReadOptions,
-  callback: AsyncCallback<number>
-): void-End-->
+<!--Device-unnamed-declare function read(  fd: number,  buffer: ArrayBuffer,  options: ReadOptions,  callback: AsyncCallback<number>): void--><!--Device-unnamed-declare function read(  fd: number,  buffer: ArrayBuffer,  options: ReadOptions,  callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

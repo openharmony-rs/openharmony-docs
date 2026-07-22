@@ -6,7 +6,6 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
-<a id="unlockmission"></a>
 ## unlockMission
 
 ```TypeScript
@@ -66,7 +65,6 @@ try {
 ```
 
 
-<a id="unlockmission-1"></a>
 ## unlockMission
 
 ```TypeScript

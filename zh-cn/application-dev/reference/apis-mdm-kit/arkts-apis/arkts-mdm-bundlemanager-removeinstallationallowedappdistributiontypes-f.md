@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="removeinstallationallowedappdistributiontypes"></a>
 ## removeInstallationAllowedAppDistributionTypes
 
 ```TypeScript
@@ -15,7 +14,7 @@ function removeInstallationAllowedAppDistributionTypes(admin: Want, appDistribut
 
 移除应用的分发类型。若只移除了数组中部分的分发类型，则当前设备可以安装数组中剩下的分发类型的应用，但无法安装[AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md)中未添加的分发类型的应用。
 
-应用程序签名证书的分发类型详细介绍请参见[ApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md)的appDistributionType属性。
+应用程序签名证书的分发类型详细介绍请参见[ApplicationInfo](arkts-mdm-bundlemanager-applicationinfo-i.md)的appDistributionType属性。
 
 **起始版本：** 20
 

@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="move"></a>
 ## move
 
 ```TypeScript
 function move(mechId: number, params: MoveParams): Promise<Result>
 ```
 
-Move a mechanical device with the specified parameters.
+以特定参数移动一个具身设备
 
 **起始版本：** 26.0.0
 
@@ -27,14 +26,14 @@ Move a mechanical device with the specified parameters.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device.<br>The value should be an integer. |
-| params | [MoveParams](arkts-mechanic-mechanicmanager-moveparams-i-sys.md) | 是 | Parameters to use when moving. |
+| mechId | number | 是 | 具身设备ID。<br>取值限定为整数。 |
+| params | [MoveParams](arkts-mechanic-mechanicmanager-moveparams-i-sys.md) | 是 | 移动参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | Promise that returns the execution result. |
+| Promise&lt;Result&gt; | 202 - 非系统应用 |
 
 **错误码：**
 

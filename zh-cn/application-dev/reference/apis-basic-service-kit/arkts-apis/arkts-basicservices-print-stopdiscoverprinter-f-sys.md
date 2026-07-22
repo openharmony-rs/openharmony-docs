@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="stopdiscoverprinter"></a>
 ## stopDiscoverPrinter
 
 ```TypeScript
@@ -57,7 +56,6 @@ print.stopDiscoverPrinter((err: BusinessError) => {
 ```
 
 
-<a id="stopdiscoverprinter-1"></a>
 ## stopDiscoverPrinter
 
 ```TypeScript

@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -39,7 +38,6 @@
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -70,7 +68,6 @@
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onactioncancel"></a>
 ## onActionCancel
 
 ```TypeScript
@@ -99,7 +96,6 @@ onActionCancel(event: () => void): PanGestureInterface
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactioncancel-1"></a>
 ## onActionCancel
 
 ```TypeScript
@@ -130,7 +126,6 @@ onActionCancel(event: Callback<GestureEvent>): PanGestureInterface
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onactionend"></a>
 ## onActionEnd
 
 ```TypeScript
@@ -159,7 +154,6 @@ onActionEnd(event: (event: GestureEvent) => void): PanGestureInterface
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactionstart"></a>
 ## onActionStart
 
 ```TypeScript
@@ -188,7 +182,6 @@ onActionStart(event: (event: GestureEvent) => void): PanGestureInterface
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactionupdate"></a>
 ## onActionUpdate
 
 ```TypeScript

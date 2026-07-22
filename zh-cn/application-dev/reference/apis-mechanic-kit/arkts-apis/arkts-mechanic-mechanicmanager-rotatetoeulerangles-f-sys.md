@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="rotatetoeulerangles"></a>
 ## rotateToEulerAngles
 
 ```TypeScript
 function rotateToEulerAngles(mechId: number, angles: EulerAngles, duration: number): Promise<Result>
 ```
 
-Rotates a mechanical device to the absolute angles.
+将机械设备旋转到绝对角度
 
 **起始版本：** 20
 
@@ -27,15 +26,15 @@ Rotates a mechanical device to the absolute angles.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device. |
-| angles | [EulerAngles](arkts-mechanic-mechanicmanager-eulerangles-i-sys.md) | 是 | Absolute angles. |
-| duration | number | 是 | Rotation duration. Unit: millisecond. |
+| mechId | number | 是 | 机械设备ID |
+| angles | [EulerAngles](arkts-mechanic-mechanicmanager-eulerangles-i-sys.md) | 是 | 绝对角度位置 |
+| duration | number | 是 | 执行时间 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | Promise that return the execution result. |
+| Promise&lt;Result&gt; | 返回执行结果 |
 
 **错误码：**
 

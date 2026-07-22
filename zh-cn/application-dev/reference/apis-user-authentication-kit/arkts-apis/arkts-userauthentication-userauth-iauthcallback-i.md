@@ -14,7 +14,6 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
-<a id="onresult"></a>
 ## onResult
 
 ```TypeScript
@@ -35,5 +34,5 @@ onResult(result: UserAuthResult): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | UserAuthResult | 是 | 认证结果。包含认证结果码、认证令牌（成功时）、认证类型和凭据状态等信息。应用应检查result.result字段判断认证是否成功：<br>- 若result.result为SUCCESS(12500000)，表示认证通过，可使用result.token进行后续操作。<br>- 若result.result为其他值，表示认证不通过，应根据具体错误码进行处理。 |
+| result | [UserAuthResult](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md) | 是 | 认证结果。包含认证结果码、认证令牌（成功时）、认证类型和凭据状态等信息。应用应检查result.result字段判断认证是否成功：<br>- 若result.result为SUCCESS(12500000)，表示认证通过，可使用result.token进行后续操作。<br>- 若result.result为其他值，表示认证不通过，应根据具体错误码进行处理。 |
 

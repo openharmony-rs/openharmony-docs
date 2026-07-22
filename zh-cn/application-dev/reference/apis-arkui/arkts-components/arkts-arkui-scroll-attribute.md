@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="edgeeffect"></a>
 ## edgeEffect
 
 ```TypeScript
@@ -34,7 +33,6 @@ edgeEffect(edgeEffect: EdgeEffect, options?: EdgeEffectOptions)
 | edgeEffect | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | 是 | Scroll组件的边缘滑动效果，支持弹簧效果和阴影效果。<br>默认值：<em>EdgeEffect.None</em> |
 | options | [EdgeEffectOptions](arkts-arkui-edgeeffectoptions-i.md) | 否 | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br>默认值：<em>{ alwaysEnabled: true }</em><br>**起始版本：** 11 |
 
-<a id="enablebounceszoom"></a>
 ## enableBouncesZoom
 
 ```TypeScript
@@ -59,7 +57,6 @@ enableBouncesZoom(enable: boolean)
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 启用过缩放回弹效果。设置为true表示启用该效果，设置为false表示禁用该效果。<br>默认值：true。 |
 
-<a id="enablepaging"></a>
 ## enablePaging
 
 ```TypeScript
@@ -84,7 +81,6 @@ enablePaging(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否支持划动翻页。设置为true支持滑动翻页，false不支持。<br>默认值：<em>false</em> |
 
-<a id="enablescrollinteraction"></a>
 ## enableScrollInteraction
 
 ```TypeScript
@@ -109,7 +105,6 @@ enableScrollInteraction(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器的滚动接口。<br>默认值：<em>true</em> |
 
-<a id="friction"></a>
 ## friction
 
 ```TypeScript
@@ -134,7 +129,6 @@ friction(value: number | Resource)
 | --- | --- | --- | --- |
 | value | number \| Resource | 是 | 摩擦系数。<br>默认值：非可穿戴设备为<em>0.6</em>，可穿戴设备为<em>0.9</em><br>从API version 11开始，非可穿戴设备默认值为<em>0.7</em>。<br>从API version 12开始，非可穿戴设备默认值为<em>0.75</em>。 |
 
-<a id="initialoffset"></a>
 ## initialOffset
 
 ```TypeScript
@@ -159,7 +153,6 @@ initialOffset(value: OffsetOptions)
 | --- | --- | --- | --- |
 | value | [OffsetOptions](arkts-arkui-offsetoptions-i.md) | 是 | 初始滚动偏移量。当输入的大小为百分比时，初始滚动偏移量为Scroll组件主轴方向大小与百分比数值之积。 |
 
-<a id="maxzoomscale"></a>
 ## maxZoomScale
 
 ```TypeScript
@@ -184,7 +177,6 @@ maxZoomScale(scale: number)
 | --- | --- | --- | --- |
 | scale | number | 是 | Scroll组件内容的最大手势缩放比例。<br>默认值：1。<br>取值范围：(0, +∞)，小于或等于0时按默认值1处理。 |
 
-<a id="minzoomscale"></a>
 ## minZoomScale
 
 ```TypeScript
@@ -209,7 +201,6 @@ minZoomScale(scale: number)
 | --- | --- | --- | --- |
 | scale | number | 是 | Scroll组件内容的最小手势缩放比例。<br>默认值：1。<br>取值范围：(0, maxZoomScale]。大于maxZoomScale时按maxZoomScale处理。 |
 
-<a id="nestedscroll"></a>
 ## nestedScroll
 
 ```TypeScript
@@ -234,7 +225,6 @@ nestedScroll(value: NestedScrollOptions)
 | --- | --- | --- | --- |
 | value | [NestedScrollOptions](arkts-arkui-nestedscrolloptions-i.md) | 是 | 嵌套滚动选项。<br>默认值：<em>{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY}</em> |
 
-<a id="ondidscroll"></a>
 ## onDidScroll
 
 ```TypeScript
@@ -261,7 +251,6 @@ onDidScroll(handler: ScrollOnScrollCallback)
 | --- | --- | --- | --- |
 | handler | [ScrollOnScrollCallback](arkts-arkui-scrollonscrollcallback-t.md) | 是 | Scroll滚动时触发的回调。 |
 
-<a id="ondidzoom"></a>
 ## onDidZoom
 
 ```TypeScript
@@ -286,7 +275,6 @@ onDidZoom(event: ScrollOnDidZoomCallback)
 | --- | --- | --- | --- |
 | event | [ScrollOnDidZoomCallback](arkts-arkui-scrollondidzoomcallback-t.md) | 是 | 每帧缩放完成时回调。 |
 
-<a id="onscroll"></a>
 ## onScroll
 
 ```TypeScript
@@ -315,7 +303,6 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 | --- | --- | --- | --- |
 | event | (xOffset: number, yOffset: number) =&gt; void | 是 | callback when scroll,xOffset: 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。yOffset: 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 
-<a id="onscrolledge"></a>
 ## onScrollEdge
 
 ```TypeScript
@@ -340,7 +327,6 @@ onScrollEdge(event: OnScrollEdgeCallback)
 | --- | --- | --- | --- |
 | event | [OnScrollEdgeCallback](arkts-arkui-onscrolledgecallback-t.md) | 是 | 滚动到的边缘位置。<br>**起始版本：** 18 |
 
-<a id="onscrollend"></a>
 ## onScrollEnd
 
 ```TypeScript
@@ -367,7 +353,6 @@ onScrollEnd(event: () => void)
 | --- | --- | --- | --- |
 | event | () =&gt; void | 是 |  |
 
-<a id="onscrollframebegin"></a>
 ## onScrollFrameBegin
 
 ```TypeScript
@@ -392,7 +377,6 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 | --- | --- | --- | --- |
 | event | [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md) | 是 | 每帧滚动开始回调函数。<br>**起始版本：** 18 |
 
-<a id="onscrollstart"></a>
 ## onScrollStart
 
 ```TypeScript
@@ -417,7 +401,6 @@ onScrollStart(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | 滚动开始回调。<br>**起始版本：** 18 |
 
-<a id="onscrollstop"></a>
 ## onScrollStop
 
 ```TypeScript
@@ -442,7 +425,6 @@ onScrollStop(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | 滚动停止回调。<br>**起始版本：** 18 |
 
-<a id="onwillscroll"></a>
 ## onWillScroll
 
 ```TypeScript
@@ -469,7 +451,6 @@ onWillScroll(handler: ScrollOnWillScrollCallback)
 | --- | --- | --- | --- |
 | handler | [ScrollOnWillScrollCallback](arkts-arkui-scrollonwillscrollcallback-t.md) | 是 | Scroll滚动前触发的回调。 |
 
-<a id="onzoomstart"></a>
 ## onZoomStart
 
 ```TypeScript
@@ -494,7 +475,6 @@ onZoomStart(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | 缩放开始回调。 |
 
-<a id="onzoomstop"></a>
 ## onZoomStop
 
 ```TypeScript
@@ -519,7 +499,6 @@ onZoomStop(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | 缩放停止回调。 |
 
-<a id="scrollbar"></a>
 ## scrollBar
 
 ```TypeScript
@@ -542,7 +521,6 @@ scrollBar(barState: BarState)
 | --- | --- | --- | --- |
 | barState | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | 是 | 滚动条状态。<br>默认值：<em>BarState.Auto</em> |
 
-<a id="scrollbarcolor"></a>
 ## scrollBarColor
 
 ```TypeScript
@@ -565,7 +543,6 @@ scrollBarColor(color: Color | number | string)
 | --- | --- | --- | --- |
 | color | [Color](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenetypes-color-i.md) \| number \| string | 是 | 滚动条的颜色。<br>默认值：<em>'\#66182431'</em><br>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。<br>string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
-<a id="scrollbarcolor-1"></a>
 ## scrollBarColor
 
 ```TypeScript
@@ -590,7 +567,6 @@ scrollBarColor(color: Color | number | string | Resource)
 | --- | --- | --- | --- |
 | color | [Color](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenetypes-color-i.md) \| number \| string \| Resource | 是 | 滚动条的颜色。<br>默认值：<em>'\#66182431'</em><br>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
-<a id="scrollbarwidth"></a>
 ## scrollBarWidth
 
 ```TypeScript
@@ -613,7 +589,6 @@ scrollBarWidth(value: number | string)
 | --- | --- | --- | --- |
 | value | number \| string | 是 | 滚动条的宽度。<br>默认值：<em>4</em> <br>单位：vp<br>设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。 |
 
-<a id="scrollbarwidth-1"></a>
 ## scrollBarWidth
 
 ```TypeScript
@@ -638,7 +613,6 @@ scrollBarWidth(value: number | string | Resource)
 | --- | --- | --- | --- |
 | value | number \| string \| Resource | 是 | 滚动条的宽度。<br>单位：vp<br>默认值：<em>4</em><br>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。 |
 
-<a id="scrollsnap"></a>
 ## scrollSnap
 
 ```TypeScript
@@ -663,7 +637,6 @@ scrollSnap(value: ScrollSnapOptions)
 | --- | --- | --- | --- |
 | value | [ScrollSnapOptions](arkts-arkui-scrollsnapoptions-i.md) | 是 | Scroll组件的限位滚动模式。 |
 
-<a id="scrollable"></a>
 ## scrollable
 
 ```TypeScript
@@ -686,7 +659,6 @@ scrollable(value: ScrollDirection)
 | --- | --- | --- | --- |
 | value | [ScrollDirection](arkts-arkui-scrolldirection-e.md) | 是 | 滚动方向。<br>默认值：<em>ScrollDirection.Vertical</em> |
 
-<a id="zoomscale"></a>
 ## zoomScale
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getabilityinfo"></a>
 ## getAbilityInfo
 
 ```TypeScript
@@ -36,7 +35,6 @@ function getAbilityInfo(bundleName: string, abilityName: string, callback: Async
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AbilityInfo&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
 
-<a id="getabilityinfo-1"></a>
 ## getAbilityInfo
 
 ```TypeScript

@@ -14,7 +14,6 @@
 import { dragController } from '@kit.ArkUI';
 ```
 
-<a id="off"></a>
 ## off('statusChange')
 
 ```TypeScript
@@ -40,7 +39,6 @@ off(type: 'statusChange', callback?: Callback<DragAndDropInfo>): void
 | type | 'statusChange' | 是 | for status changing |
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DragAndDropInfo&gt; | 否 | with drag event and status information |
 
-<a id="on"></a>
 ## on('statusChange')
 
 ```TypeScript
@@ -66,7 +64,6 @@ on(type: 'statusChange', callback: Callback<DragAndDropInfo>): void
 | type | 'statusChange' | 是 | for status changing |
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DragAndDropInfo&gt; | 是 | with drag event and status information |
 
-<a id="startdrag"></a>
 ## startDrag
 
 ```TypeScript

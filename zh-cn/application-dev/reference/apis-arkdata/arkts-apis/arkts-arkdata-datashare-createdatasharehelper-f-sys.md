@@ -6,7 +6,6 @@
 import { dataShare } from '@kit.ArkData';
 ```
 
-<a id="createdatasharehelper"></a>
 ## createDataShareHelper
 
 ```TypeScript
@@ -72,7 +71,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="createdatasharehelper-1"></a>
 ## createDataShareHelper
 
 ```TypeScript
@@ -90,17 +88,7 @@ function createDataShareHelper(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-dataShare-function createDataShareHelper(
-    context: Context,
-    uri: string,
-    options: DataShareHelperOptions,
-    callback: AsyncCallback<DataShareHelper>
-  ): void--><!--Device-dataShare-function createDataShareHelper(
-    context: Context,
-    uri: string,
-    options: DataShareHelperOptions,
-    callback: AsyncCallback<DataShareHelper>
-  ): void-End-->
+<!--Device-dataShare-function createDataShareHelper(    context: Context,    uri: string,    options: DataShareHelperOptions,    callback: AsyncCallback<DataShareHelper>  ): void--><!--Device-dataShare-function createDataShareHelper(    context: Context,    uri: string,    options: DataShareHelperOptions,    callback: AsyncCallback<DataShareHelper>  ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -154,7 +142,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="createdatasharehelper-2"></a>
 ## createDataShareHelper
 
 ```TypeScript
@@ -171,15 +158,7 @@ function createDataShareHelper(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-dataShare-function createDataShareHelper(
-    context: Context,
-    uri: string,
-    options?: DataShareHelperOptions
-  ): Promise<DataShareHelper>--><!--Device-dataShare-function createDataShareHelper(
-    context: Context,
-    uri: string,
-    options?: DataShareHelperOptions
-  ): Promise<DataShareHelper>-End-->
+<!--Device-dataShare-function createDataShareHelper(    context: Context,    uri: string,    options?: DataShareHelperOptions  ): Promise<DataShareHelper>--><!--Device-dataShare-function createDataShareHelper(    context: Context,    uri: string,    options?: DataShareHelperOptions  ): Promise<DataShareHelper>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 

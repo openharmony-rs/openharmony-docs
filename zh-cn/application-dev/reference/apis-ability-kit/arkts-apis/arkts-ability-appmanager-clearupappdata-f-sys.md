@@ -6,7 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="clearupappdata"></a>
 ## clearUpAppData
 
 ```TypeScript

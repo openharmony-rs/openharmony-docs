@@ -14,7 +14,6 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="onbeforedownload"></a>
 ## onBeforeDownload
 
 ```TypeScript
@@ -22,7 +21,6 @@ onBeforeDownload(callback: Callback<WebDownloadItem>): void
 ```
 
 下载开始前通知给用户，用户需要在此接口中调用WebDownloadItem.start("xxx")并提供下载路径，否则下载会一直处于PENDING状态。
-
 > **说明：**  
 >  
 > 处于PENDING状态的下载任务会首先将文件保存至临时目录。在调用WebDownloadItem.start并指定目标路径后，临时文件将被重命名为目标文件名，未完成下载的部分会在调用  
@@ -43,7 +41,6 @@ onBeforeDownload(callback: Callback<WebDownloadItem>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 触发下载的回调。 |
 
-<a id="ondownloadfailed"></a>
 ## onDownloadFailed
 
 ```TypeScript
@@ -66,7 +63,6 @@ onDownloadFailed(callback: Callback<WebDownloadItem>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 下载失败的回调。 |
 
-<a id="ondownloadfinish"></a>
 ## onDownloadFinish
 
 ```TypeScript
@@ -89,7 +85,6 @@ onDownloadFinish(callback: Callback<WebDownloadItem>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 下载完成的回调。 |
 
-<a id="ondownloadupdated"></a>
 ## onDownloadUpdated
 
 ```TypeScript

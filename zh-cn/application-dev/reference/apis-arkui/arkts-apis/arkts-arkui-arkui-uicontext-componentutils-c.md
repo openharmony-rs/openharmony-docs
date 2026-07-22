@@ -1,12 +1,11 @@
 # ComponentUtils
 
 提供获取组件绘制区域坐标和大小的能力。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 10开始支持。  
 >  
-> - 以下API需先使用UIContext中的[getComponentUtils()](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentutils-1)方法获取到ComponentUtils对象，再通过该对象调用对应方法。
+> - 以下API需先使用UIContext中的[getComponentUtils()](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentutils)方法获取到ComponentUtils对象，再通过该对象调用对应方法。
 
 **起始版本：** 10
 
@@ -20,7 +19,6 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="getrectanglebyid"></a>
 ## getRectangleById
 
 ```TypeScript
@@ -28,7 +26,6 @@ getRectangleById(id: string): componentUtils.ComponentInfo
 ```
 
 获取组件大小、位置、平移、缩放、旋转及仿射矩阵属性信息。
-
 > **说明：**  
 >  
 > 该接口需要在目标组件布局完成以后获取目标组件区域大小信息，建议在[布局回调](arkts-arkui-inspector.md)中使用该接口。如果组件动态创建但未挂载组件树，则无法通过该接口获取正常的  

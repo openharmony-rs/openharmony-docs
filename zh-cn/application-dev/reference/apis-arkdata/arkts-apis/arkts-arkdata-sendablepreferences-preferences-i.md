@@ -1,8 +1,8 @@
 # Preferences
 
-Preferences继承自[ISendable](docroot://arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，提供获取和修改存储数据的接口。
+Preferences继承自[ISendable](../../../arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，提供获取和修改存储数据的接口。
 
-下列接口都需先使用[sendablePreferences.getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences-1)获取到Preferences实例，再通过此实例调用对应接口。
+下列接口都需先使用[sendablePreferences.getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences)获取到Preferences实例，再通过此实例调用对应接口。
 
 **继承/实现关系：** Preferences extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
@@ -18,14 +18,13 @@ Preferences继承自[ISendable](docroot://arkts-utils/arkts-sendable.md#isendabl
 import { sendablePreferences } from '@kit.ArkData';
 ```
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
 clear(): Promise<void>
 ```
 
-清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush-1)将Preferences实例持久化，使用Promise异步回调。
+清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush)将Preferences实例持久化，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -61,14 +60,13 @@ promise.then(() => {
 
 ```
 
-<a id="clearsync"></a>
 ## clearSync
 
 ```TypeScript
 clearSync(): void
 ```
 
-清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush-1)将Preferences实例持久化，此为同步接口。
+清除缓存的Preferences实例中的所有数据，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush)将Preferences实例持久化，此为同步接口。
 
 **起始版本：** 12
 
@@ -91,14 +89,13 @@ preferences.clearSync();
 
 ```
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
 delete(key: string): Promise<void>
 ```
 
-从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush-1)将Preferences实例持久化，使用Promise异步回调。
+从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush)将Preferences实例持久化，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -112,7 +109,7 @@ delete(key: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -141,14 +138,13 @@ promise.then(() => {
 
 ```
 
-<a id="deletesync"></a>
 ## deleteSync
 
 ```TypeScript
 deleteSync(key: string): void
 ```
 
-从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush-1)将Preferences实例持久化，此为同步接口。
+从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush)将Preferences实例持久化，此为同步接口。
 
 **起始版本：** 12
 
@@ -162,7 +158,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **错误码：**
 
@@ -178,7 +174,6 @@ preferences.deleteSync('startup');
 
 ```
 
-<a id="flush"></a>
 ## flush
 
 ```TypeScript
@@ -186,7 +181,6 @@ flush(): Promise<void>
 ```
 
 将缓存的Preferences实例中的数据异步存储到共享用户首选项的持久化文件中，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 当数据未修改或修改后的数据与缓存数据一致时，不会刷新持久化文件。
@@ -225,7 +219,6 @@ promise.then(() => {
 
 ```
 
-<a id="flushsync"></a>
 ## flushSync
 
 ```TypeScript
@@ -233,7 +226,6 @@ flushSync(): void
 ```
 
 将缓存的Preferences实例中的数据存储到共享用户首选项的持久化文件中。
-
 > **说明：**  
 >  
 > 当数据未修改或修改后的数据与缓存数据一致时，不会刷新持久化文件。
@@ -259,7 +251,6 @@ preferences.flushSync();
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -280,7 +271,7 @@ get(key: string, defValue: lang.ISendable): Promise<lang.ISendable>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | defValue | lang.ISendable | 是 | 默认返回值。 |
 
 **返回值：**
@@ -312,7 +303,6 @@ promise.then((data: lang.ISendable) => {
 
 ```
 
-<a id="getall"></a>
 ## getAll
 
 ```TypeScript
@@ -358,7 +348,6 @@ promise.then((keyValues: lang.ISendable) => {
 
 ```
 
-<a id="getallsync"></a>
 ## getAllSync
 
 ```TypeScript
@@ -399,7 +388,6 @@ for (let value of Object.keys(keyValues)) {
 
 ```
 
-<a id="getsync"></a>
 ## getSync
 
 ```TypeScript
@@ -420,7 +408,7 @@ getSync(key: string, defValue: lang.ISendable): lang.ISendable
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | defValue | lang.ISendable | 是 | 默认返回值。 |
 
 **返回值：**
@@ -445,7 +433,6 @@ let value: lang.ISendable = preferences.getSync('startup', 'default');
 
 ```
 
-<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -466,7 +453,7 @@ has(key: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -499,7 +486,6 @@ promise.then((val: boolean) => {
 
 ```
 
-<a id="hassync"></a>
 ## hasSync
 
 ```TypeScript
@@ -520,7 +506,7 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -547,7 +533,6 @@ if (isExist) {
 
 ```
 
-<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -597,7 +582,6 @@ preferences.flush().then(() => {
 
 ```
 
-<a id="off-1"></a>
 ## off('multiProcessChange')
 
 ```TypeScript
@@ -649,7 +633,6 @@ preferences.flush().then(() => {
 
 ```
 
-<a id="off-2"></a>
 ## off('dataChange')
 
 ```TypeScript
@@ -703,7 +686,6 @@ preferences.flush().then(() => {
 
 ```
 
-<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -711,7 +693,6 @@ on(type: 'change', callback: Callback<string>): void
 ```
 
 订阅数据变更，订阅的Key的值发生变更后，在执行flush方法后，触发callback回调。
-
 > **不同订阅方法的对比：**  
 >  
 > - on('change')：订阅所有Key变化，适合全局数据变化感知需求。  
@@ -721,9 +702,9 @@ on(type: 'change', callback: Callback<string>): void
 > **选取建议：** 需要监听所有数据变更时使用on('change')；需要精确知道特定Key变化并获取新值时使用on('dataChange')。  
 > > **说明：**  
 >  
-> 当调用[removePreferencesFromCache](arkts-arkdata-sendablepreferences-removepreferencesfromcache-f.md#removepreferencesfromcache-1)或者  
-> [deletePreferences](arkts-arkdata-sendablepreferences-deletepreferences-f.md#deletepreferences-1)后，订阅的数据变更会主动取消订阅，在重新  
-> [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences-1)后需要重新订阅数据变更。
+> 当调用[removePreferencesFromCache](arkts-arkdata-sendablepreferences-removepreferencesfromcache-f.md#removepreferencesfromcache)或者  
+> [deletePreferences](arkts-arkdata-sendablepreferences-deletepreferences-f.md#deletepreferences)后，订阅的数据变更会主动取消订阅，在重新  
+> [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences)后需要重新订阅数据变更。
 
 **起始版本：** 12
 
@@ -765,24 +746,22 @@ preferences.flush().then(() => {
 
 ```
 
-<a id="on-1"></a>
 ## on('multiProcessChange')
 
 ```TypeScript
 on(type: 'multiProcessChange', callback: Callback<string>): void
 ```
 
-订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush-1)方法，持久化文件发生变更后，触发callback回调。
+订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush)方法，持久化文件发生变更后，触发callback回调。
 
 本接口提供给申请了[dataGroupId](arkts-arkdata-sendablepreferences-options-i.md)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
-
 > **说明：**  
 >  
 > 同一持久化文件在当前进程订阅进程间数据变更的最大数量为50次，超过最大限制后会订阅失败。建议在触发callback回调后及时取消订阅。  
 >  
-> 当调用[removePreferencesFromCache](arkts-arkdata-sendablepreferences-removepreferencesfromcache-f.md#removepreferencesfromcache-1)或者  
-> [deletePreferences](arkts-arkdata-sendablepreferences-deletepreferences-f.md#deletepreferences-1)后，订阅的数据变更会主动取消订阅，在重新  
-> [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences-1)后需要重新订阅数据变更。
+> 当调用[removePreferencesFromCache](arkts-arkdata-sendablepreferences-removepreferencesfromcache-f.md#removepreferencesfromcache)或者  
+> [deletePreferences](arkts-arkdata-sendablepreferences-deletepreferences-f.md#deletepreferences)后，订阅的数据变更会主动取消订阅，在重新  
+> [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences)后需要重新订阅数据变更。
 
 **起始版本：** 12
 
@@ -825,20 +804,18 @@ preferences.flush().then(() => {
 
 ```
 
-<a id="on-2"></a>
 ## on('dataChange')
 
 ```TypeScript
 on(type: 'dataChange', keys: Array<string>, callback: Callback<lang.ISendable>): void
 ```
 
-精确订阅数据变更，只有被订阅的Key值发生变更后，在执行[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush-1)方法后，触发callback回调。
-
+精确订阅数据变更，只有被订阅的Key值发生变更后，在执行[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush)方法后，触发callback回调。
 > **说明：**  
 >  
-> 当调用[removePreferencesFromCache](arkts-arkdata-sendablepreferences-removepreferencesfromcache-f.md#removepreferencesfromcache-1)或者  
-> [deletePreferences](arkts-arkdata-sendablepreferences-deletepreferences-f.md#deletepreferences-1)后，订阅的数据变更会主动取消订阅，在重新  
-> [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences-1)后需要重新订阅数据变更。
+> 当调用[removePreferencesFromCache](arkts-arkdata-sendablepreferences-removepreferencesfromcache-f.md#removepreferencesfromcache)或者  
+> [deletePreferences](arkts-arkdata-sendablepreferences-deletepreferences-f.md#deletepreferences)后，订阅的数据变更会主动取消订阅，在重新  
+> [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences)后需要重新订阅数据变更。
 
 **起始版本：** 12
 
@@ -884,15 +861,13 @@ preferences.flush().then(() => {
 
 ```
 
-<a id="put"></a>
 ## put
 
 ```TypeScript
 put(key: string, value: lang.ISendable): Promise<void>
 ```
 
-将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush-1)将Preferences实例持久化，使用Promise异步回调。
-
+将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush)将Preferences实例持久化，使用Promise异步回调。
 > **说明：**  
 >  
 > 当value中包含非UTF-8格式的字符串时，请使用Uint8Array类型存储，否则会造成持久化文件出现格式错误造成文件损坏。  
@@ -911,7 +886,7 @@ put(key: string, value: lang.ISendable): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | value | lang.ISendable | 是 | 存储的新值。 |
 
 **返回值：**
@@ -941,15 +916,13 @@ promise.then(() => {
 
 ```
 
-<a id="putsync"></a>
 ## putSync
 
 ```TypeScript
 putSync(key: string, value: lang.ISendable): void
 ```
 
-将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush-1)将Preferences实例持久化，此为同步接口。
-
+将数据写入缓存的Preferences实例中，可通过[flush](arkts-arkdata-sendablepreferences-preferences-i.md#flush)将Preferences实例持久化，此为同步接口。
 > **说明：**  
 >  
 > 当value中包含非UTF-8格式的字符串时，请使用Uint8Array类型存储，否则会造成持久化文件出现格式错误造成文件损坏。  
@@ -968,7 +941,7 @@ putSync(key: string, value: lang.ISendable): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | value | lang.ISendable | 是 | 存储的新值。 |
 
 **错误码：**

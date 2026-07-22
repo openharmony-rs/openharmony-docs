@@ -32,7 +32,7 @@ import { webview } from '@kit.ArkWeb';
 | [GeolocationPermissions](arkts-arkweb-webview-geolocationpermissions-c.md) | Provides a method for managing web geographic location permissions. |
 | [JsMessageExt](arkts-arkweb-webview-jsmessageext-c.md) | 该消息用于指示JavaScript代码执行结果的状态。 |
 | [MediaSourceInfo](arkts-arkweb-webview-mediasourceinfo-c.md) | 表示媒体源的信息。 |
-| [NativeMediaPlayerSurfaceInfo](arkts-arkweb-webview-nativemediaplayersurfaceinfo-c.md) | [应用接管网页媒体播放功能](docroot://reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativemediaplayer12)中用于同层渲染的 surface 信息。 |
+| [NativeMediaPlayerSurfaceInfo](arkts-arkweb-webview-nativemediaplayersurfaceinfo-c.md) | [应用接管网页媒体播放功能](../../../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativemediaplayer12)中用于同层渲染的 surface 信息。 |
 | [PdfData](arkts-arkweb-webview-pdfdata-c.md) | Defines the callback of createPdf, related to {@link createPDF} method. |
 | [PrefetchOptions](arkts-arkweb-webview-prefetchoptions-c.md) | Defines the PrefetchOptions class. |
 | [ProxyConfig](arkts-arkweb-webview-proxyconfig-c.md) | The ProxyConfig used by applyProxyOverride. |
@@ -64,11 +64,11 @@ import { webview } from '@kit.ArkWeb';
 | [BlanklessLoadingParam](arkts-arkweb-webview-blanklessloadingparam-i.md) | 1.插帧加载参数  设备行为差异:仅支持手机平台，其他平台返回801 |
 | [CacheOptions](arkts-arkweb-webview-cacheoptions-i.md) | Web组件预编译JavaScript生成字节码缓存的配置对象，用于控制字节码缓存更新。 |
 | [HistoryItem](arkts-arkweb-webview-historyitem-i.md) | Provides information for history item in BackForwardList. |
-| [HitTestValue](arkts-arkweb-webview-hittestvalue-i.md) | 提供点击区域的元素信息。示例代码参考[getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest-1). |
+| [HitTestValue](arkts-arkweb-webview-hittestvalue-i.md) | 提供点击区域的元素信息。示例代码参考[getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest). |
 | [MediaInfo](arkts-arkweb-webview-mediainfo-i.md) | [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。 |
 | [NativeMediaPlayerBridge](arkts-arkweb-webview-nativemediaplayerbridge-i.md) | [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的返回值类型。接管网页媒体的播放器和ArkWeb内核之间的一个接口类。  ArkWeb内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。 |
 | [NativeMediaPlayerHandler](arkts-arkweb-webview-nativemediaplayerhandler-i.md) | [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的参数。应用通过该对象，将播放器的状态通知给 ArkWeb 内核。 |
-| [OfflineResourceMap](arkts-arkweb-webview-offlineresourcemap-i.md) | 本地离线资源配置对象，用于配置将被[injectOfflineResources](arkts-arkweb-webview-webviewcontroller-c.md#injectofflineresources-1)接口注入到内存缓存的本地离线资源的相关信息，内核会根据此信息生成资源缓存，并据此控制缓存的有效期。 |
+| [OfflineResourceMap](arkts-arkweb-webview-offlineresourcemap-i.md) | 本地离线资源配置对象，用于配置将被[injectOfflineResources](arkts-arkweb-webview-webviewcontroller-c.md#injectofflineresources)接口注入到内存缓存的本地离线资源的相关信息，内核会根据此信息生成资源缓存，并据此控制缓存的有效期。 |
 | [PdfConfiguration](arkts-arkweb-webview-pdfconfiguration-i.md) | Defines the configuration of creating pdf, related to {@Link createPdf} method. |
 | [RectEvent](arkts-arkweb-webview-rectevent-i.md) | 矩形定义。 |
 | [RequestInfo](arkts-arkweb-webview-requestinfo-i.md) | Web组件发送的资源请求信息。 |
@@ -95,7 +95,7 @@ import { webview } from '@kit.ArkWeb';
 | [MediaType](arkts-arkweb-webview-mediatype-e.md) | 表示媒体类型。 |
 | [NetworkState](arkts-arkweb-webview-networkstate-e.md) | 播放器的网络状态。 |
 | [OfflineResourceType](arkts-arkweb-webview-offlineresourcetype-e.md) | [OfflineResourceMap](arkts-arkweb-webview-offlineresourcemap-i.md)对象对应的本地离线资源的接口类型。 |
-| [PlaybackStatus](arkts-arkweb-webview-playbackstatus-e.md) | [handleStatusChanged](arkts-arkweb-webview-nativemediaplayerhandler-i.md#handlestatuschanged-1) 接口参数， 用于表示播放器的播放状态。 |
+| [PlaybackStatus](arkts-arkweb-webview-playbackstatus-e.md) | [handleStatusChanged](arkts-arkweb-webview-nativemediaplayerhandler-i.md#handlestatuschanged) 接口参数， 用于表示播放器的播放状态。 |
 | [Preload](arkts-arkweb-webview-preload-e.md) | 播放器预加载媒体数据。 |
 | [PressureLevel](arkts-arkweb-webview-pressurelevel-e.md) | 内存压力等级。在应用主动清理Web组件占用的缓存时，Web内核会根据内存压力等级，进行缓存释放。 |
 | [ProxySchemeFilter](arkts-arkweb-webview-proxyschemefilter-e.md) | Enum type supplied to {@link insertProxyRule} for indicating the scheme filter for proxy. |
@@ -113,7 +113,7 @@ import { webview } from '@kit.ArkWeb';
 | [WebDestroyMode](arkts-arkweb-webview-webdestroymode-e.md) | 提供SetWebDestroyMode接口配置web组件的销毁模式 |
 | [WebDownloadErrorCode](arkts-arkweb-webview-webdownloaderrorcode-e.md) | 下载任务的错误码。 |
 | [WebDownloadState](arkts-arkweb-webview-webdownloadstate-e.md) | Defines the state for download. |
-| [WebHitTestType](arkts-arkweb-webview-webhittesttype-e.md) | [getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest-1)接口用于指示光标节点。 |
+| [WebHitTestType](arkts-arkweb-webview-webhittesttype-e.md) | [getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest)接口用于指示光标节点。 |
 | [WebHttpCookieSameSitePolicy](arkts-arkweb-webview-webhttpcookiesamesitepolicy-e.md) | 指示是否将 cookie 限制为仅创建它的同一站点的请求可以携带。指示是否将 cookie 限制为仅创建它的同一站点的请求可以携带。 |
 | [WebMessageType](arkts-arkweb-webview-webmessagetype-e.md) | 向 {@link onMessageEventExt} 提供的枚举类型，用于指示网络消息的类型。 |
 | [WebResourceType](arkts-arkweb-webview-webresourcetype-e.md) | Defines the resource type of request. |

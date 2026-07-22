@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="unlockpin2"></a>
 ## unlockPin2
 
 ```TypeScript
@@ -61,7 +60,6 @@ sim.unlockPin2(0, pin2, (err: BusinessError, data: sim.LockStatusResponse) => {
 ```
 
 
-<a id="unlockpin2-1"></a>
 ## unlockPin2
 
 ```TypeScript

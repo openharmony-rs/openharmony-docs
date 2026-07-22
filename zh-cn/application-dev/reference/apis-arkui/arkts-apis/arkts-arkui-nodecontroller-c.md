@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="abouttoappear"></a>
 ## aboutToAppear
 
 ```TypeScript
@@ -16,10 +15,9 @@ aboutToAppear?(): void
 ```
 
 当NodeController绑定的[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)挂载显示后触发此回调。
-
 > **说明：**  
 >  
-> 回调时机参考[onAppear](../arkts-components/arkts-arkui-commonmethod-c.md#onappear-1)。
+> 回调时机参考[onAppear](../arkts-components/arkts-arkui-commonmethod-c.md#onappear)。
 
 **起始版本：** 11
 
@@ -31,7 +29,6 @@ aboutToAppear?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="abouttodisappear"></a>
 ## aboutToDisappear
 
 ```TypeScript
@@ -39,10 +36,9 @@ aboutToDisappear?(): void
 ```
 
 当NodeController绑定的[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)销毁时触发此回调。
-
 > **说明：**  
 >  
-> 回调时机参考[onDisAppear](../arkts-components/arkts-arkui-commonmethod-c.md#ondisappear-1)。
+> 回调时机参考[onDisAppear](../arkts-components/arkts-arkui-commonmethod-c.md#ondisappear)。
 
 **起始版本：** 11
 
@@ -54,7 +50,6 @@ aboutToDisappear?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="abouttoresize"></a>
 ## aboutToResize
 
 ```TypeScript
@@ -79,7 +74,6 @@ aboutToResize?(size: Size): void
 | --- | --- | --- | --- |
 | size | [Size](../arkts-components/arkts-arkui-size-i.md) | 是 | 用于返回组件布局大小的宽和高，单位为vp。 |
 
-<a id="makenode"></a>
 ## makeNode
 
 ```TypeScript
@@ -89,14 +83,13 @@ abstract makeNode(uiContext: UIContext): FrameNode | null
 当实例绑定的[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)创建的时候进行回调。回调方法将返回一个节点，将该节点挂载至[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)。
 
 或者可以通过NodeController的rebuild()方法进行回调的触发。
-
 > **说明：**  
 >  
 > [NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)不支持跨实例复用。如果出现跨实例复用[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)，传入  
 > [NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)的[NodeController](arkts-arkui-nodecontroller-c.md)触发  
-> [makeNode](arkts-arkui-nodecontroller-c.md#makenode-1)回调方法时，入参中的[UIContext](arkts-arkui-uicontext.md)对象可能为undefined，此时需要开发者  
+> [makeNode](arkts-arkui-nodecontroller-c.md#makenode)回调方法时，入参中的[UIContext](arkts-arkui-uicontext.md)对象可能为undefined，此时需要开发者  
 > 判断入参中的[UIContext](arkts-arkui-uicontext.md)对象是否为undefined，防止后续使用此入参时出现  
-> [UIContext无效的JS异常](docroot://ui/arkts-wrong-uicontext-debug.md#定位uicontext错误问题)。
+> [UIContext无效的JS异常](../../../ui/arkts-wrong-uicontext-debug.md#定位uicontext错误问题)。
 
 **起始版本：** 11
 
@@ -120,7 +113,6 @@ abstract makeNode(uiContext: UIContext): FrameNode | null
 | --- | --- |
 | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | **FrameNode** object, which will be mounted to the placeholder node of the [NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md) component. If a null object is returned, the child nodes of the corresponding [NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md) component are removed. |
 
-<a id="onattach"></a>
 ## onAttach
 
 ```TypeScript
@@ -128,10 +120,9 @@ onAttach?(): void
 ```
 
 当NodeController绑定的[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)挂载至主节点树时触发此回调。
-
 > **说明：**  
 >  
-> 回调时机参考[onAttach](../arkts-components/arkts-arkui-commonmethod-c.md#onattach-1)。
+> 回调时机参考[onAttach](../arkts-components/arkts-arkui-commonmethod-c.md#onattach)。
 
 **起始版本：** 18
 
@@ -143,7 +134,6 @@ onAttach?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="onbind"></a>
 ## onBind
 
 ```TypeScript
@@ -168,7 +158,6 @@ onBind?(containerId: number): void
 | --- | --- | --- | --- |
 | containerId | number | 是 | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)绑定完成。 |
 
-<a id="ondetach"></a>
 ## onDetach
 
 ```TypeScript
@@ -176,10 +165,9 @@ onDetach?(): void
 ```
 
 当NodeController绑定的[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)从主节点树卸载时触发此回调。
-
 > **说明：**  
 >  
-> 回调时机参考[onDetach](../arkts-components/arkts-arkui-commonmethod-c.md#ondetach-1)。
+> 回调时机参考[onDetach](../arkts-components/arkts-arkui-commonmethod-c.md#ondetach)。
 
 **起始版本：** 18
 
@@ -191,7 +179,6 @@ onDetach?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="ontouchevent"></a>
 ## onTouchEvent
 
 ```TypeScript
@@ -216,7 +203,6 @@ onTouchEvent?(event: TouchEvent): void
 | --- | --- | --- | --- |
 | event | [TouchEvent](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-touchevent-touchevent-i.md) | 是 | 触摸事件。 |
 
-<a id="onunbind"></a>
 ## onUnbind
 
 ```TypeScript
@@ -241,7 +227,6 @@ onUnbind?(containerId: number): void
 | --- | --- | --- | --- |
 | containerId | number | 是 | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)解绑完成。 |
 
-<a id="onwillbind"></a>
 ## onWillBind
 
 ```TypeScript
@@ -266,7 +251,6 @@ onWillBind?(containerId: number): void
 | --- | --- | --- | --- |
 | containerId | number | 是 | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)即将绑定。 |
 
-<a id="onwillunbind"></a>
 ## onWillUnbind
 
 ```TypeScript
@@ -291,20 +275,18 @@ onWillUnbind?(containerId: number): void
 | --- | --- | --- | --- |
 | containerId | number | 是 | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)即将解绑。 |
 
-<a id="rebuild"></a>
 ## rebuild
 
 ```TypeScript
 rebuild(): void
 ```
 
-调用此接口通知[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)组件重新回调[makeNode](arkts-arkui-nodecontroller-c.md#makenode-1)方法，更改子节点。
-
+调用此接口通知[NodeContainer](../arkts-components/arkts-arkui-nodecontainer.md)组件重新回调[makeNode](arkts-arkui-nodecontroller-c.md#makenode)方法，更改子节点。
 > **说明：**  
 > > 由于rebuild方法为应用主动调用的方法，且该操作与UI相关。需要开发者自行保证调用该接口时UI上下文有效，即与绑定的NodeContainer保持UI上下文一致。  
 >  
-> 监听回调等[UI上下文不明确](docroot://ui/arkts-global-interface.md#ui上下文不明确)时，可以通过[UIContext](arkts-arkui-uicontext.md)的  
-> [runScopedTask](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)方法明确调用时的UI上下文。
+> 监听回调等[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)时，可以通过[UIContext](arkts-arkui-uicontext.md)的  
+> [runScopedTask](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)方法明确调用时的UI上下文。
 
 **起始版本：** 11
 

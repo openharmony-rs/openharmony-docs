@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="invalidate"></a>
 ## invalidate
 
 ```TypeScript
@@ -29,7 +28,6 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="ondraw"></a>
 ## onDraw
 
 ```TypeScript
@@ -55,7 +53,6 @@ abstract onDraw(context: DrawContext,  drawInfo: CustomSpanDrawInfo): void
 | context | [DrawContext](arkts-arkui-graphics-drawcontext-c.md) | 是 | 图形绘制上下文。<br/>**说明：** <br/>DrawContext的canvas方法获取的画布是Text组件的画布，绘制时不会超出Text组件的范围。 |
 | drawInfo | [CustomSpanDrawInfo](arkts-arkui-customspandrawinfo-i.md) | 是 | 自定义绘制Span的绘制信息。 |
 
-<a id="onmeasure"></a>
 ## onMeasure
 
 ```TypeScript

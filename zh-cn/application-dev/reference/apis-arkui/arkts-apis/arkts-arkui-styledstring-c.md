@@ -8,7 +8,6 @@ StyledString
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -31,10 +30,9 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array<StyleOp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| ImageAttachment \| CustomSpan | 是 | 属性字符串文本内容。<br/>**说明：** <br/>当value的类型为ImageAttachment或CustomSpan时，styles参数不生效。<br/>需要设置styles时，通过[setStyle](arkts-arkui-mutablestyledstring-c.md#setstyle-1)等方法实现。 |
+| value | string \| ImageAttachment \| CustomSpan | 是 | 属性字符串文本内容。<br/>**说明：** <br/>当value的类型为ImageAttachment或CustomSpan时，styles参数不生效。<br/>需要设置styles时，通过[setStyle](arkts-arkui-mutablestyledstring-c.md#setstyle)等方法实现。 |
 | styles | Array&lt;StyleOptions&gt; | 否 | 属性字符串初始化选项。<br/>**说明：** <br/>start为异常值时，按默认值0处理；<br/>当length为异常值时，length等于属性字符串在start后的实际长度；<br/>当StyledStringKey与StyledStringValue不匹配时，styles不生效。 |
 
-<a id="equals"></a>
 ## equals
 
 ```TypeScript
@@ -65,7 +63,6 @@ equals(other: StyledString): boolean
 | --- | --- |
 | boolean | 两个属性字符串是否相等。<br/>true表示相等，false表示不相等。<br/>**说明：** <br/>当属性字符串的文本及样式均一致，视为相等。<br/>不比较[GestureStyle](arkts-arkui-gesturestyle-c.md)，当属性字符串配置了不同事件，文本和其他样式相同时，亦视为相等。<br/>当比较[CustomSpan](arkts-arkui-customspan-c.md)或[LeadingMarginSpan](arkts-arkui-leadingmarginspan-c.md)时，比较的是地址，地址相等，视为相等。 |
 
-<a id="fromhtml"></a>
 ## fromHtml
 
 ```TypeScript
@@ -106,7 +103,6 @@ static fromHtml(html: string): Promise<StyledString>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [170001](../errorcode-styled-string.md#170001-转换错误) | Convert Error. |
 
-<a id="getstring"></a>
 ## getString
 
 ```TypeScript
@@ -131,7 +127,6 @@ getString(): string
 | --- | --- |
 | string | 属性字符串文本内容。<br/>**说明：** <br/>当属性字符串中包含图片或[CustomSpan](arkts-arkui-customspan-c.md)时，其返回的结果用空格表示。 |
 
-<a id="getstyles"></a>
 ## getStyles
 
 ```TypeScript
@@ -172,7 +167,6 @@ getStyles(start: number, length: number, styledKey?: StyledStringKey): Array<Spa
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="substyledstring"></a>
 ## subStyledString
 
 ```TypeScript
@@ -210,7 +204,6 @@ subStyledString(start: number, length?: number): StyledString
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="tohtml"></a>
 ## toHtml
 
 ```TypeScript
@@ -219,7 +212,7 @@ static toHtml(styledString: StyledString): string
 
 将属性字符串转换成HTML格式字符串。支持转换的属性字符串[StyledStringKey](arkts-arkui-styledstringkey-e.md)包括：StyledStringKey.FONT、StyledStringKey.DECORATION、StyledStringKey.LETTER_SPACING、StyledStringKey.TEXT_SHADOW、StyledStringKey.LINE_HEIGHT、StyledStringKey.IMAGE。
 
-使用方法参考[示例12（fromHtml和toHtml互相转换）](docroot://reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#示例12fromhtml和tohtml互相转换)。
+使用方法参考[示例12（fromHtml和toHtml互相转换）](../../../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#示例12fromhtml和tohtml互相转换)。
 
 **起始版本：** 14
 

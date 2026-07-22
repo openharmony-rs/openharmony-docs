@@ -6,7 +6,6 @@
 import { floatView } from '@kit.ArkUI';
 ```
 
-<a id="bind"></a>
 ## bind
 
 ```TypeScript
@@ -15,17 +14,16 @@ function bind(floatViewController: FloatViewController, floatingBallController: 
 ```
 
 绑定标准悬浮窗和闪控球。需要先创建[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和[闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)，且均未启动。使用Promise异步回调。
-
 > **说明：**  
 >  
-> - 绑定成功后，调用[start()](arkts-arkui-floatview-floatviewcontroller-i.md#start-1)或  
-> [startFloatingBall()](arkts-arkui-floatingball-floatingballcontroller-i.md#startfloatingball-1)均会同时创  
+> - 绑定成功后，调用[start()](arkts-arkui-floatview-floatviewcontroller-i.md#start)或  
+> [startFloatingBall()](arkts-arkui-floatingball-floatingballcontroller-i.md#startfloatingball)均会同时创  
 > 建标准悬浮窗窗口和闪控球窗口，并触发对应窗口已注册的状态回调。但同一时刻仅展示其中一个窗口，展示顺序取决于先调用哪个控制器的启动接口。  
 >  
 > - 绑定成功后，用户可通过点击操作在标准悬浮窗窗口与闪控球之间进行切换。  
 >  
-> - 绑定成功后，调用任一控制器的停止接口（[stop()](arkts-arkui-floatview-floatviewcontroller-i.md#stop-1)或  
-> [stopFloatingBall()](arkts-arkui-floatingball-floatingballcontroller-i.md#stopfloatingball-1)）会同时销毁标  
+> - 绑定成功后，调用任一控制器的停止接口（[stop()](arkts-arkui-floatview-floatviewcontroller-i.md#stop)或  
+> [stopFloatingBall()](arkts-arkui-floatingball-floatingballcontroller-i.md#stopfloatingball)）会同时销毁标  
 > 准悬浮窗窗口和闪控球窗口，并触发对应窗口已注册的状态回调。
 
 **起始版本：** 26.0.0
@@ -34,9 +32,7 @@ function bind(floatViewController: FloatViewController, floatingBallController: 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-floatView-function bind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController,
-    floatingBallParams: floatingBall.FloatingBallParams): Promise<void>--><!--Device-floatView-function bind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController,
-    floatingBallParams: floatingBall.FloatingBallParams): Promise<void>-End-->
+<!--Device-floatView-function bind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController,    floatingBallParams: floatingBall.FloatingBallParams): Promise<void>--><!--Device-floatView-function bind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController,    floatingBallParams: floatingBall.FloatingBallParams): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

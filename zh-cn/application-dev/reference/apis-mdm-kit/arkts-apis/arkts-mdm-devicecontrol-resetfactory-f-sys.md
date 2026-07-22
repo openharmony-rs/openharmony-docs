@@ -6,7 +6,6 @@
 import { deviceControl } from '@kit.MDMKit';
 ```
 
-<a id="resetfactory"></a>
 ## resetFactory
 
 ```TypeScript
@@ -19,7 +18,7 @@ function resetFactory(admin: Want, callback: AsyncCallback<void>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [operateDevice(admin:](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1)
+**替代接口：** [operateDevice(admin:](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -71,7 +70,6 @@ deviceControl.resetFactory(wantTemp, (err) => {
 ```
 
 
-<a id="resetfactory-1"></a>
 ## resetFactory
 
 ```TypeScript
@@ -84,7 +82,7 @@ function resetFactory(admin: Want): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [operateDevice(admin:](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1)
+**替代接口：** [operateDevice(admin:](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESET_DEVICE
 

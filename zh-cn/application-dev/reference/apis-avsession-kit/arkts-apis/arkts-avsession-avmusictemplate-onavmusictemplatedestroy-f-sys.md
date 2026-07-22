@@ -6,7 +6,6 @@
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
-<a id="onavmusictemplatedestroy"></a>
 ## onAVMusicTemplateDestroy
 
 ```TypeScript

@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="addlocale"></a>
 ## addLocale
 
 ```TypeScript
@@ -35,7 +34,7 @@ addLocale(locale: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string | 是 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
+| locale | string | 是 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
 
 **示例：**
 
@@ -47,7 +46,6 @@ indexUtil.addLocale('en-US');
 
 ```
 
-<a id="getindex"></a>
 ## getIndex
 
 ```TypeScript
@@ -86,7 +84,6 @@ let index: string = indexUtil.getIndex('hi'); // index = 'H'
 
 ```
 
-<a id="getindexlist"></a>
 ## getIndexList
 
 ```TypeScript

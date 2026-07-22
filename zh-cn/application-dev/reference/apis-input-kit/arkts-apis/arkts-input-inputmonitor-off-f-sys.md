@@ -6,7 +6,6 @@
 import { inputMonitor } from '@kit.InputKit';
 ```
 
-<a id="off"></a>
 ## off('touch')
 
 ```TypeScript
@@ -109,7 +108,6 @@ struct Index {
 ```
 
 
-<a id="off-1"></a>
 ## off('mouse')
 
 ```TypeScript
@@ -212,7 +210,6 @@ struct Index {
 ```
 
 
-<a id="off-2"></a>
 ## off('pinch')
 
 ```TypeScript
@@ -315,7 +312,6 @@ struct Index {
 ```
 
 
-<a id="off-3"></a>
 ## off('pinch')
 
 ```TypeScript
@@ -419,7 +415,6 @@ struct Index {
 ```
 
 
-<a id="off-4"></a>
 ## off('rotate')
 
 ```TypeScript
@@ -523,7 +518,6 @@ struct Index {
 ```
 
 
-<a id="off-5"></a>
 ## off('threeFingersSwipe')
 
 ```TypeScript
@@ -626,7 +620,6 @@ struct Index {
 ```
 
 
-<a id="off-6"></a>
 ## off('fourFingersSwipe')
 
 ```TypeScript
@@ -729,7 +722,6 @@ struct Index {
 ```
 
 
-<a id="off-7"></a>
 ## off('threeFingersTap')
 
 ```TypeScript
@@ -832,7 +824,6 @@ struct Index {
 ```
 
 
-<a id="off-8"></a>
 ## off('fingerprint')
 
 ```TypeScript
@@ -935,7 +926,6 @@ struct Index {
 ```
 
 
-<a id="off-9"></a>
 ## off('swipeInward')
 
 ```TypeScript
@@ -1036,7 +1026,6 @@ build() {
 ```
 
 
-<a id="off-10"></a>
 ## off('touchscreenSwipe')
 
 ```TypeScript
@@ -1137,7 +1126,6 @@ struct Index {
 ```
 
 
-<a id="off-11"></a>
 ## off('touchscreenPinch')
 
 ```TypeScript
@@ -1238,7 +1226,6 @@ struct Index {
 ```
 
 
-<a id="off-12"></a>
 ## off('keyPressed')
 
 ```TypeScript

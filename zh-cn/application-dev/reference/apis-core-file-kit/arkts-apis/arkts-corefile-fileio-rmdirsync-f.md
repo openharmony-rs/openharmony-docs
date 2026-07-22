@@ -1,6 +1,5 @@
 # rmdirSync
 
-<a id="rmdirsync"></a>
 ## rmdirSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function rmdirSync(path: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:rmdirSync](arkts-corefile-file-fs-rmdirsync-f.md#rmdirsync-1)
+**替代接口：** [fs:rmdirSync](arkts-corefile-fileio-rmdirsync-f.md#rmdirsync)
 
 <!--Device-unnamed-declare function rmdirSync(path: string): void--><!--Device-unnamed-declare function rmdirSync(path: string): void-End-->
 

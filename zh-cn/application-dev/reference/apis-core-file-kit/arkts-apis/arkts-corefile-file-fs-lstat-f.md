@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="lstat"></a>
 ## lstat
 
 ```TypeScript
@@ -49,7 +48,6 @@ declare function lstat(path: string): Promise<Stat>
 | 13900042 | Unknown error |
 
 
-<a id="lstat-1"></a>
 ## lstat
 
 ```TypeScript

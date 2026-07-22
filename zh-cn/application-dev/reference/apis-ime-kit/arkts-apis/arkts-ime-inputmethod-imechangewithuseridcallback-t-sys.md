@@ -11,9 +11,7 @@ export type ImeChangeWithUserIdCallback =
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-inputMethod-export type ImeChangeWithUserIdCallback =
-      (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: int) => void--><!--Device-inputMethod-export type ImeChangeWithUserIdCallback =
-      (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: int) => void-End-->
+<!--Device-inputMethod-export type ImeChangeWithUserIdCallback =      (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: int) => void--><!--Device-inputMethod-export type ImeChangeWithUserIdCallback =      (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: int) => void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

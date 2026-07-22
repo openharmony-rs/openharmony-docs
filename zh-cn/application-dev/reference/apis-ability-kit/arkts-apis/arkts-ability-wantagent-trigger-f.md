@@ -6,7 +6,6 @@
 import { WantAgent } from '@kit.AbilityKit';
 ```
 
-<a id="trigger"></a>
 ## trigger
 
 ```TypeScript

@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="isbegin"></a>
 ## isBegin
 
 ```TypeScript
@@ -35,7 +34,6 @@ isBegin(): boolean
 | --- | --- |
 | boolean | 当前滚动类容器组件是否在顶部。true表示组件在顶部，false表示组件不在顶部。 |
 
-<a id="isend"></a>
 ## isEnd
 
 ```TypeScript

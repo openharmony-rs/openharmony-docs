@@ -6,7 +6,6 @@
 import { sendablePreferences } from '@kit.ArkData';
 ```
 
-<a id="deletepreferences"></a>
 ## deletePreferences
 
 ```TypeScript

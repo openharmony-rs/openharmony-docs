@@ -1,7 +1,6 @@
 # ListScroller
 
 List组件的滚动控制器，通过它控制List组件的滚动，仅支持一对一绑定到List组件。
-
 > **说明：**  
 >  
 > ListScroller继承自[Scroller](arkts-arkui-scroller-c.md)，具有[Scroller](arkts-arkui-scroller-c.md)的全部方法。
@@ -14,7 +13,6 @@ List组件的滚动控制器，通过它控制List组件的滚动，仅支持一
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="closeallswipeactions"></a>
 ## closeAllSwipeActions
 
 ```TypeScript
@@ -46,7 +44,6 @@ closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
-<a id="getitemrectingroup"></a>
 ## getItemRectInGroup
 
 ```TypeScript
@@ -54,7 +51,6 @@ getItemRectInGroup(index: number, indexInGroup: number): RectResult
 ```
 
 获取[ListItemGroup](arkts-arkui-listitemgroup.md)中的[ListItem](arkts-arkui-listitem.md)的大小和相对于List的位置。
-
 > **说明：**  
 >  
 > - index必须是当前显示区域显示的子组件的索引值，否则视index为非法值。  
@@ -92,7 +88,6 @@ getItemRectInGroup(index: number, indexInGroup: number): RectResult
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
-<a id="getvisiblelistcontentinfo"></a>
 ## getVisibleListContentInfo
 
 ```TypeScript
@@ -131,7 +126,6 @@ getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
-<a id="scrolltoitemingroup"></a>
 ## scrollToItemInGroup
 
 ```TypeScript

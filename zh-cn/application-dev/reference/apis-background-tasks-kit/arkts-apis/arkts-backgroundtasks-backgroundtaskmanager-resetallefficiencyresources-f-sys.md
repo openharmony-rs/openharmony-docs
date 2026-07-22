@@ -6,7 +6,6 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="resetallefficiencyresources"></a>
 ## resetAllEfficiencyResources
 
 ```TypeScript

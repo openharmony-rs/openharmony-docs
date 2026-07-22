@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="disturbancefields"></a>
 ## disturbanceFields
 
 ```TypeScript
@@ -35,7 +34,6 @@ disturbanceFields(fields: Array<DisturbanceFieldOptions>)
 | --- | --- | --- | --- |
 | fields | Array&lt;DisturbanceFieldOptions&gt; | 是 | 扰动场数组。 |
 
-<a id="emitter"></a>
 ## emitter
 
 ```TypeScript
@@ -60,7 +58,6 @@ emitter(value: Array<EmitterProperty>)
 | --- | --- | --- | --- |
 | value | Array&lt;EmitterProperty&gt; | 是 | 需要更新的emitter参数数组 |
 
-<a id="ripplefields"></a>
 ## rippleFields
 
 ```TypeScript
@@ -85,7 +82,6 @@ rippleFields(fields: Array<RippleFieldOptions> | undefined)
 | --- | --- | --- | --- |
 | fields | Array&lt;RippleFieldOptions&gt; \| undefined | 是 | 粒子波动场数组。通过数组形式可以设置多个粒子波动场。当设置为undefined时，表示无波动场。 |
 
-<a id="velocityfields"></a>
 ## velocityFields
 
 ```TypeScript

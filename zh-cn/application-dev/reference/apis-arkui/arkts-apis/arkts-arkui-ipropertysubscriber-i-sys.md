@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="abouttobedeleted"></a>
 ## aboutToBeDeleted
 
 ```TypeScript
@@ -33,7 +32,6 @@ aboutToBeDeleted(owningView?: IPropertySubscriber): void
 | --- | --- | --- | --- |
 | owningView | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 否 | 所在自定义组件。 |
 
-<a id="id"></a>
 ## id
 
 ```TypeScript

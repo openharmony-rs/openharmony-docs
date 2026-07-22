@@ -1,6 +1,5 @@
 # offSystemPrivateCommand（系统接口）
 
-<a id="offsystemprivatecommand"></a>
 ## offSystemPrivateCommand
 
 ```TypeScript

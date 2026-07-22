@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="off"></a>
 ## off('checkNotification')
 
 ```TypeScript
@@ -22,13 +21,7 @@ function off(
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
-<!--Device-notificationManager-function off(
-    type: 'checkNotification',
-    callback?: (checkInfo: NotificationCheckInfo) => NotificationCheckResult
-  ): void--><!--Device-notificationManager-function off(
-    type: 'checkNotification',
-    callback?: (checkInfo: NotificationCheckInfo) => NotificationCheckResult
-  ): void-End-->
+<!--Device-notificationManager-function off(    type: 'checkNotification',    callback?: (checkInfo: NotificationCheckInfo) => NotificationCheckResult  ): void--><!--Device-notificationManager-function off(    type: 'checkNotification',    callback?: (checkInfo: NotificationCheckInfo) => NotificationCheckResult  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

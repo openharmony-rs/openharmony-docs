@@ -1,6 +1,5 @@
 # clearAllMissions（系统接口）
 
-<a id="clearallmissions"></a>
 ## clearAllMissions
 
 ```TypeScript
@@ -51,7 +50,6 @@ try {
 ```
 
 
-<a id="clearallmissions-1"></a>
 ## clearAllMissions
 
 ```TypeScript

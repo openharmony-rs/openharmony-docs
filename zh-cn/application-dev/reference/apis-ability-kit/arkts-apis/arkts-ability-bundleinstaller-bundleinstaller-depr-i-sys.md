@@ -14,7 +14,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="install"></a>
 ## install
 
 ```TypeScript
@@ -27,7 +26,7 @@ install(bundleFilePaths: Array<string>, param: InstallParam, callback: AsyncCall
 
 **废弃版本：** 9
 
-**替代接口：** [install](arkts-ability-installer-bundleinstaller-i-sys.md#install-1)
+**替代接口：** [install](arkts-ability-installer-bundleinstaller-i-sys.md#install)
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
@@ -45,7 +44,6 @@ install(bundleFilePaths: Array<string>, param: InstallParam, callback: AsyncCall
 | param | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 是 | 指定安装所需的其他参数。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;InstallStatus&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，程序启动作为入参的回调函数，返回安装状态信息。 |
 
-<a id="recover"></a>
 ## recover
 
 ```TypeScript
@@ -58,7 +56,7 @@ recover(bundleName: string, param: InstallParam, callback: AsyncCallback<Install
 
 **废弃版本：** 9
 
-**替代接口：** [recover](arkts-ability-installer-bundleinstaller-i-sys.md#recover-1)
+**替代接口：** [recover](arkts-ability-installer-bundleinstaller-i-sys.md#recover)
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
@@ -76,7 +74,6 @@ recover(bundleName: string, param: InstallParam, callback: AsyncCallback<Install
 | param | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 是 | 指定应用恢复所需的其他参数。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;InstallStatus&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，程序启动作为入参的回调函数，返回安装状态信息。 |
 
-<a id="uninstall"></a>
 ## uninstall
 
 ```TypeScript
@@ -89,7 +86,7 @@ uninstall(bundleName: string, param: InstallParam, callback: AsyncCallback<Insta
 
 **废弃版本：** 9
 
-**替代接口：** [uninstall](arkts-ability-installer-bundleinstaller-i-sys.md#uninstall-1)
+**替代接口：** [uninstall](arkts-ability-installer-bundleinstaller-i-sys.md#uninstall)
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 

@@ -6,7 +6,6 @@
 import { deviceInfo } from '@kit.BasicServicesKit';
 ```
 
-<a id="apiavailable"></a>
 ## apiAvailable
 
 ```TypeScript
@@ -27,7 +26,7 @@ function apiAvailable(version: string | number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| version | string \| number | 是 | 需要校验的API版本号，支持整数版本号和点分版本号。整数版本号范围：0<x<26。OpenHarmony点分版本号格式为M.S.F（如26.0.0），M>=26,0<=S<=99,0<=F<=99。传入无效值时报错。 |
+| version | string \| number | 是 | 需要校验的API版本号，支持整数版本号和点分版本号。整数版本号范围：0<x&lt;26。OpenHarmony点分版本号格式为M.S.F（如26.0.0），M&gt;=26,0<=S<=99,0<=F<=99。传入无效值时报错。 |
 
 **返回值：**
 

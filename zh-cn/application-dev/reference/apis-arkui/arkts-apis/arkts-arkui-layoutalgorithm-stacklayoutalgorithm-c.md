@@ -1,7 +1,6 @@
 # StackLayoutAlgorithm
 
 堆叠布局算法类。
-
 > **说明：**  
 >  
 > StackLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](arkts-arkui-components-arkdynamiclayout.md)组件的  
@@ -17,7 +16,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

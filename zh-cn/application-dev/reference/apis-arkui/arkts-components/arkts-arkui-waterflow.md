@@ -15,7 +15,6 @@
 仅支持[FlowItem]{@link flow_item}子组件和自定义组件。自定义组件在WaterFlow下使用时，建议使用FlowItem作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
 
 支持通过渲染控制类型（[if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](docroot://ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](docroot://ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](docroot://ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
-
 > **说明：**  
 >  
 > WaterFlow子组件的visibility属性设置为None时不显示，但该子组件周围的columnsGap、rowsGap、margin仍会生效。  

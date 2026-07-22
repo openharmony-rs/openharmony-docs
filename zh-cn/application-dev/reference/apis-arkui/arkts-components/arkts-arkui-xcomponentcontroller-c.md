@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getxcomponentcontext"></a>
 ## getXComponentContext
 
 ```TypeScript
@@ -48,7 +46,6 @@ getXComponentContext(): Object
 | --- | --- |
 | Object | XComponent对象的context。context中包含的接口由开发者定义。context作为onLoad回调的第一个参数传入。 |
 
-<a id="getxcomponentsurfaceid"></a>
 ## getXComponentSurfaceId
 
 ```TypeScript
@@ -71,7 +68,6 @@ getXComponentSurfaceId(): string
 | --- | --- |
 | string | XComponent所持有的surface的ID。 |
 
-<a id="getxcomponentsurfacerect"></a>
 ## getXComponentSurfaceRect
 
 ```TypeScript
@@ -96,7 +92,6 @@ getXComponentSurfaceRect(): SurfaceRect
 | --- | --- |
 | [SurfaceRect](arkts-arkui-surfacerect-i.md) | surface的矩形信息。 |
 
-<a id="getxcomponentsurfacerotation"></a>
 ## getXComponentSurfaceRotation
 
 ```TypeScript
@@ -121,7 +116,6 @@ getXComponentSurfaceRotation(): Required<SurfaceRotationOptions>
 | --- | --- |
 | Required&lt;SurfaceRotationOptions&gt; | surface旋转选项的结果。 |
 
-<a id="lockcanvas"></a>
 ## lockCanvas
 
 ```TypeScript
@@ -146,7 +140,6 @@ lockCanvas(): DrawingCanvas | null
 | --- | --- |
 | [DrawingCanvas](arkts-arkui-drawingcanvas-t.md) | 返回用于在XComponent创建的surface上绘制的Canvas。如果surface不可用，则返回null。 |
 
-<a id="onsurfacechanged"></a>
 ## onSurfaceChanged
 
 ```TypeScript
@@ -172,7 +165,6 @@ onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void
 | surfaceId | string | 是 | XComponent创建的surface的id。 |
 | rect | [SurfaceRect](arkts-arkui-surfacerect-i.md) | 是 | XComponent创建的surface的矩形信息。 |
 
-<a id="onsurfacecreated"></a>
 ## onSurfaceCreated
 
 ```TypeScript
@@ -197,7 +189,6 @@ onSurfaceCreated(surfaceId: string): void
 | --- | --- | --- | --- |
 | surfaceId | string | 是 | XComponent创建的surface的id。 |
 
-<a id="onsurfacedestroyed"></a>
 ## onSurfaceDestroyed
 
 ```TypeScript
@@ -222,7 +213,6 @@ onSurfaceDestroyed(surfaceId: string): void
 | --- | --- | --- | --- |
 | surfaceId | string | 是 | XComponent创建的surface的id。 |
 
-<a id="setxcomponentsurfaceconfig"></a>
 ## setXComponentSurfaceConfig
 
 ```TypeScript
@@ -247,7 +237,6 @@ setXComponentSurfaceConfig(config: SurfaceConfig):void
 | --- | --- | --- | --- |
 | config | [SurfaceConfig](arkts-arkui-surfaceconfig-i.md) | 是 | surface配置 |
 
-<a id="setxcomponentsurfacerect"></a>
 ## setXComponentSurfaceRect
 
 ```TypeScript
@@ -272,7 +261,6 @@ setXComponentSurfaceRect(rect: SurfaceRect): void
 | --- | --- | --- | --- |
 | rect | [SurfaceRect](arkts-arkui-surfacerect-i.md) | 是 | surface的矩形信息。 |
 
-<a id="setxcomponentsurfacerotation"></a>
 ## setXComponentSurfaceRotation
 
 ```TypeScript
@@ -297,7 +285,6 @@ setXComponentSurfaceRotation(rotationOptions: SurfaceRotationOptions): void
 | --- | --- | --- | --- |
 | rotationOptions | [SurfaceRotationOptions](arkts-arkui-surfacerotationoptions-i.md) | 是 | surface的旋转选项。 |
 
-<a id="setxcomponentsurfacesize"></a>
 ## setXComponentSurfaceSize
 
 ```TypeScript
@@ -313,15 +300,9 @@ setXComponentSurfaceSize(value: {
 
 **废弃版本：** 12
 
-**替代接口：** [setXComponentSurfaceRect](arkts-arkui-xcomponentcontroller-c.md#setxcomponentsurfacerect-1)
+**替代接口：** [setXComponentSurfaceRect](arkts-arkui-xcomponentcontroller-c.md#setxcomponentsurfacerect)
 
-<!--Device-XComponentController-setXComponentSurfaceSize(value: {
-    surfaceWidth: number;
-    surfaceHeight: number;
-  }): void--><!--Device-XComponentController-setXComponentSurfaceSize(value: {
-    surfaceWidth: number;
-    surfaceHeight: number;
-  }): void-End-->
+<!--Device-XComponentController-setXComponentSurfaceSize(value: {    surfaceWidth: number;    surfaceHeight: number;  }): void--><!--Device-XComponentController-setXComponentSurfaceSize(value: {    surfaceWidth: number;    surfaceHeight: number;  }): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -331,7 +312,6 @@ setXComponentSurfaceSize(value: {
 | --- | --- | --- | --- |
 | value | {     surfaceWidth: number;     surfaceHeight: number;   } | 是 | XComponent所持有的surface的宽度和高度。 |
 
-<a id="startimageanalyzer"></a>
 ## startImageAnalyzer
 
 ```TypeScript
@@ -370,7 +350,6 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 | [110002](../arkui-ts/errorcode-image-analyzer.md#110002-ai图像分析正在进行中) | 图像分析正在执行中。 |
 | [110003](../arkui-ts/errorcode-image-analyzer.md#110003-ai图像分析已停止) | 图像分析已停止。 |
 
-<a id="stopimageanalyzer"></a>
 ## stopImageAnalyzer
 
 ```TypeScript
@@ -389,7 +368,6 @@ stopImageAnalyzer(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="unlockcanvasandpost"></a>
 ## unlockCanvasAndPost
 
 ```TypeScript

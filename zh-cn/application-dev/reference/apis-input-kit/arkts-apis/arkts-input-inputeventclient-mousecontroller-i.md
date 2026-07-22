@@ -16,7 +16,6 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
-<a id="beginaxis"></a>
 ## beginAxis
 
 ```TypeScript
@@ -94,7 +93,6 @@ struct Index {
 
 ```
 
-<a id="endaxis"></a>
 ## endAxis
 
 ```TypeScript
@@ -137,7 +135,6 @@ endAxis(axis: Axis): Promise<void>
 
 参见[beginAxis](#beginaxis)示例。
 
-<a id="moveto"></a>
 ## moveTo
 
 ```TypeScript
@@ -208,7 +205,6 @@ struct Index {
 
 ```
 
-<a id="pressbutton"></a>
 ## pressButton
 
 ```TypeScript
@@ -231,7 +227,7 @@ pressButton(button: Button): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| button | [Button](../../apis-arkui/arkts-apis/arkts-arkui-promptaction-button-i.md) | 是 | 要按下的鼠标按键。 |
+| button | [Button](../../apis-arkui/arkts-apis/arkts-arkui-prompt-button-i.md) | 是 | 要按下的鼠标按键。 |
 
 **返回值：**
 
@@ -281,7 +277,6 @@ struct Index {
 
 ```
 
-<a id="releasebutton"></a>
 ## releaseButton
 
 ```TypeScript
@@ -304,7 +299,7 @@ releaseButton(button: Button): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| button | [Button](../../apis-arkui/arkts-apis/arkts-arkui-promptaction-button-i.md) | 是 | 要抬起的鼠标按键。 |
+| button | [Button](../../apis-arkui/arkts-apis/arkts-arkui-prompt-button-i.md) | 是 | 要抬起的鼠标按键。 |
 
 **返回值：**
 
@@ -324,7 +319,6 @@ releaseButton(button: Button): Promise<void>
 
 参见[pressButton](#pressbutton)示例。
 
-<a id="updateaxis"></a>
 ## updateAxis
 
 ```TypeScript

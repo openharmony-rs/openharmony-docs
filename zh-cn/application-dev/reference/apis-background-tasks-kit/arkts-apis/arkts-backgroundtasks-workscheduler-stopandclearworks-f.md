@@ -6,7 +6,6 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="stopandclearworks"></a>
 ## stopAndClearWorks
 
 ```TypeScript

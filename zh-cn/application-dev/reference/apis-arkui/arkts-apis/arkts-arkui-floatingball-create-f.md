@@ -6,7 +6,6 @@
 import { floatingBall } from '@kit.ArkUI';
 ```
 
-<a id="create"></a>
 ## create
 
 ```TypeScript

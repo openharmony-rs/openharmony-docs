@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="getaccessibilityextensionlist"></a>
 ## getAccessibilityExtensionList
 
 ```TypeScript
@@ -91,7 +90,6 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 ```
 
 
-<a id="getaccessibilityextensionlist-1"></a>
 ## getAccessibilityExtensionList
 
 ```TypeScript

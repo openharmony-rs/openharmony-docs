@@ -4,7 +4,7 @@
 export type AccessibilityElement = _AccessibilityElement
 ```
 
-表示无障碍节点元素，请参考[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)。
+表示无障碍节点元素，请参考[AccessibilityElement](arkts-accessibility-accessibilityelement-t.md)。
 
 **起始版本：** 10
 

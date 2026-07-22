@@ -50,7 +50,7 @@ distance?: number
 
 从API version 19开始，手写笔默认值为8，单位为vp。
 
-使用[gestureModifier](../arkts-components/arkts-arkui-commonmethod-c.md#gesturemodifier-1)配置该字段时，单位为px。
+使用[gestureModifier](../arkts-components/arkts-arkui-commonmethod-c.md#gesturemodifier)配置该字段时，单位为px。
 
 **类型：** number
 

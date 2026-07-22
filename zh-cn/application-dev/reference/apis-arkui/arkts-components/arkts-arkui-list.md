@@ -35,7 +35,6 @@ Repeat结合，它的预加载行为和ForEach一致。
 仅支持[ListItem]{@link list_item}、[ListItemGroup]{@link list_item_group}子组件和自定义组件。自定义组件在List下使用时，建议使用ListItem或ListItemGroup作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
 
 支持通过渲染控制类型（[if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](docroot://ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](docroot://ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](docroot://ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
-
 > **说明：**  
 >  
 > 如果在处理大量子组件时遇到卡顿问题，请考虑采用懒加载、缓存列表项、动态预加载、组件复用和布局优化等方法来进行优化。最佳实践请参考  
@@ -63,7 +62,6 @@ Repeat结合，它的预加载行为和ForEach一致。
 ## ListOptions<sup>18+</sup>对象说明
 
 用于设置List组件参数。
-
 > **说明：**  
 >  
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
@@ -155,7 +153,6 @@ ListItemGroup吸顶或吸底效果枚举。
 ## ListDividerOptions<sup>18+</sup>对象说明
 
 用于设置List或ListItemGroup组件的分割线样式。
-
 > **说明：**  
 >  
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。

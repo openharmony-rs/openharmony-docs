@@ -1,7 +1,6 @@
 # Metadata
 
 Metadata类，用于存储图像的元数据。目前支持的元数据类型可参考[MetadataType](arkts-image-image-metadatatype-e.md)。
-
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 13开始支持。
@@ -18,7 +17,6 @@ Metadata类，用于存储图像的元数据。目前支持的元数据类型可
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="clone"></a>
 ## clone
 
 ```TypeScript
@@ -39,7 +37,6 @@ clone(): Promise<Metadata>
 | --- | --- |
 | Promise&lt;Metadata&gt; | Promise对象，成功返回元数据实例。 |
 
-<a id="getallproperties"></a>
 ## getAllProperties
 
 ```TypeScript
@@ -62,7 +59,6 @@ getAllProperties(): Promise<Record<string, string | null>>
 | --- | --- |
 | Promise&lt;Record&lt;string, string \| null&gt;&gt; | Promise对象，返回元数据拥有的所有属性的值。 |
 
-<a id="getblob"></a>
 ## getBlob
 
 ```TypeScript
@@ -85,7 +81,6 @@ getBlob(): Promise<ArrayBuffer>
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise对象，返回元数据的二进制数据。 |
 
-<a id="getproperties"></a>
 ## getProperties
 
 ```TypeScript
@@ -121,7 +116,6 @@ getProperties(key: Array<string>): Promise<Record<string, string | null>>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7600202](../errorcode-image.md#7600202-不支持的元数据读写) | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
 
-<a id="setblob"></a>
 ## setBlob
 
 ```TypeScript
@@ -156,7 +150,6 @@ setBlob(blob: ArrayBuffer): Promise<void>
 | --- | --- |
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
 
-<a id="setproperties"></a>
 ## setProperties
 
 ```TypeScript

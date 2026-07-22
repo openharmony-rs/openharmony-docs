@@ -14,7 +14,6 @@ class TextMenuController
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="disablemenuitems"></a>
 ## disableMenuItems
 
 ```TypeScript
@@ -39,7 +38,6 @@ static disableMenuItems(items: Array<TextMenuItemId>): void
 | --- | --- | --- | --- |
 | items | Array&lt;TextMenuItemId&gt; | 是 |  |
 
-<a id="disablesystemservicemenuitems"></a>
 ## disableSystemServiceMenuItems
 
 ```TypeScript
@@ -64,7 +62,6 @@ static disableSystemServiceMenuItems(disable: boolean): void
 | --- | --- | --- | --- |
 | disable | boolean | 是 |  |
 
-<a id="setmenuoptions"></a>
 ## setMenuOptions
 
 ```TypeScript

@@ -46,7 +46,7 @@ STRING = 1
 UNORDERED_ARRAY = 2
 ```
 
-无序数组类型。序列化时，此类型在XMP元数据中的格式为<rdf:Bag>。
+无序数组类型。序列化时，此类型在XMP元数据中的格式为&lt;rdf:Bag&gt;。
 
 **起始版本：** 26.0.0
 
@@ -62,7 +62,7 @@ UNORDERED_ARRAY = 2
 ORDERED_ARRAY = 3
 ```
 
-有序数组类型。序列化时，此类型在XMP元数据中的格式为<rdf:Seq>。
+有序数组类型。序列化时，此类型在XMP元数据中的格式为&lt;rdf:Seq&gt;。
 
 **起始版本：** 26.0.0
 
@@ -78,7 +78,7 @@ ORDERED_ARRAY = 3
 ALTERNATE_ARRAY = 4
 ```
 
-备选数组类型。序列化时，此类型在XMP元数据中的格式为<rdf:Alt>。
+备选数组类型。序列化时，此类型在XMP元数据中的格式为&lt;rdf:Alt&gt;。
 
 **起始版本：** 26.0.0
 

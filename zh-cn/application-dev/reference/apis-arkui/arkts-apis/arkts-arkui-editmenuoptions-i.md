@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="oncreatemenu"></a>
 ## onCreateMenu
 
 ```TypeScript
@@ -39,7 +38,6 @@ onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem>
 | --- | --- |
 | Array&lt;TextMenuItem&gt; | 处理后的菜单项。 |
 
-<a id="onmenuitemclick"></a>
 ## onMenuItemClick
 
 ```TypeScript

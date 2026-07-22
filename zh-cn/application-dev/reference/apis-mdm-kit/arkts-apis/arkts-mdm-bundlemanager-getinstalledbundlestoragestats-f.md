@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="getinstalledbundlestoragestats"></a>
 ## getInstalledBundleStorageStats
 
 ```TypeScript
@@ -14,7 +13,6 @@ function getInstalledBundleStorageStats(admin: Want, bundleNames: Array<string>,
 ```
 
 获取设备指定用户下已安装应用的存储占用信息。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 1.仅能获取已安装应用的存储占用信息。  
@@ -41,7 +39,7 @@ function getInstalledBundleStorageStats(admin: Want, bundleNames: Array<string>,
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleNames | Array&lt;string&gt; | 是 | 应用包名列表。取值范围：小于等于200个应用包名。 |
-| accountId | number | 是 | 账号ID<br>取值应为≥0的整数。   - 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| accountId | number | 是 | 账号ID<br>取值应为≥0的整数。   - 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **返回值：**
 

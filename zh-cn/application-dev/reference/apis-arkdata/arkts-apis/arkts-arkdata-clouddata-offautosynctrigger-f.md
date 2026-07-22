@@ -6,7 +6,6 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
-<a id="offautosynctrigger"></a>
 ## offAutoSyncTrigger
 
 ```TypeScript

@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="off"></a>
 ## off('asyncReceiverRegister')
 
 ```TypeScript
@@ -36,7 +35,6 @@ off(type: 'asyncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 | type | 'asyncReceiverRegister' | 是 | 监听事件的类型。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;UIExtensionProxy&gt; | 否 | 监听事件的回调。 |
 
-<a id="off-1"></a>
 ## off('syncReceiverRegister')
 
 ```TypeScript
@@ -62,7 +60,6 @@ off(type: 'syncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 | type | 'syncReceiverRegister' | 是 | 监听事件的类型。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;UIExtensionProxy&gt; | 否 | 监听事件的回调。 |
 
-<a id="on"></a>
 ## on('asyncReceiverRegister')
 
 ```TypeScript
@@ -88,7 +85,6 @@ on(type: 'asyncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 | type | 'asyncReceiverRegister' | 是 | 表示事件的类型。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;UIExtensionProxy&gt; | 是 | 监听事件的回调。 |
 
-<a id="on-1"></a>
 ## on('syncReceiverRegister')
 
 ```TypeScript
@@ -114,7 +110,6 @@ on(type: 'syncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 | type | 'syncReceiverRegister' | 是 | 表示事件的类型。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;UIExtensionProxy&gt; | 是 | 监听事件的回调。 |
 
-<a id="send"></a>
 ## send
 
 ```TypeScript
@@ -139,7 +134,6 @@ send(data: Record<string, Object>): void
 | --- | --- | --- | --- |
 | data | Record&lt;string, Object&gt; | 是 |  |
 
-<a id="sendsync"></a>
 ## sendSync
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="getfilesyncstate"></a>
 ## getFileSyncState
 
 ```TypeScript
@@ -66,7 +65,6 @@ cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState
 ```
 
 
-<a id="getfilesyncstate-1"></a>
 ## getFileSyncState
 
 ```TypeScript
@@ -122,7 +120,6 @@ cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSyn
 ```
 
 
-<a id="getfilesyncstate-2"></a>
 ## getFileSyncState
 
 ```TypeScript

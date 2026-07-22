@@ -1,6 +1,6 @@
 # ColorSpaceManager
 
-当前可共享的色彩管理实例。下列API示例中都需先使用[create()](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md#create-1)获取到ColorSpaceManager实例，再通过此实例调用对应方法。
+当前可共享的色彩管理实例。下列API示例中都需先使用[create()](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md#create)获取到ColorSpaceManager实例，再通过此实例调用对应方法。
 
 **继承/实现关系：** ColorSpaceManager extends [ISendable](arkts-arkgraphics2d-sendablecolorspacemanager-isendable-t.md)
 
@@ -16,7 +16,6 @@
 import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ```
 
-<a id="getcolorspacename"></a>
 ## getColorSpaceName
 
 ```TypeScript
@@ -51,7 +50,6 @@ let spaceName: colorSpaceManager.ColorSpace = colorSpace.getColorSpaceName();
 
 ```
 
-<a id="getgamma"></a>
 ## getGamma
 
 ```TypeScript
@@ -86,7 +84,6 @@ let gamma: number = colorSpace.getGamma();
 
 ```
 
-<a id="getwhitepoint"></a>
 ## getWhitePoint
 
 ```TypeScript

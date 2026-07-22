@@ -14,7 +14,6 @@
 import { ssap } from '@kit.ConnectivityKit';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -41,7 +40,6 @@ close(): void
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="connect"></a>
 ## connect
 
 ```TypeScript
@@ -74,7 +72,6 @@ connect(): Promise<void>
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="disconnect"></a>
 ## disconnect
 
 ```TypeScript
@@ -107,7 +104,6 @@ disconnect(): Promise<void>
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="getservices"></a>
 ## getServices
 
 ```TypeScript
@@ -140,7 +136,6 @@ getServices(): Promise<Service[]>
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="offconnectionstatechange"></a>
 ## offConnectionStateChange
 
 ```TypeScript
@@ -163,7 +158,6 @@ offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ConnectionChangeState&gt; | 否 | 用于监听连接状态改变事件的回调。 |
 
-<a id="offmtuchange"></a>
 ## offMtuChange
 
 ```TypeScript
@@ -186,7 +180,6 @@ offMtuChange(callback?: Callback<number>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 用于监听mtu变化事件的回调。 |
 
-<a id="offpropertychange"></a>
 ## offPropertyChange
 
 ```TypeScript
@@ -209,7 +202,6 @@ offPropertyChange(callback?: Callback<Property>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Property&gt; | 否 | 用于监听属性值变更事件的回调。 |
 
-<a id="onconnectionstatechange"></a>
 ## onConnectionStateChange
 
 ```TypeScript
@@ -234,7 +226,6 @@ onConnectionStateChange(callback: Callback<ConnectionChangeState>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ConnectionChangeState&gt; | 是 | 用于监听连接状态改变事件的回调。 |
 
-<a id="onmtuchange"></a>
 ## onMtuChange
 
 ```TypeScript
@@ -259,7 +250,6 @@ onMtuChange(callback: Callback<number>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 用于监听mtu变化事件的回调。 |
 
-<a id="onpropertychange"></a>
 ## onPropertyChange
 
 ```TypeScript
@@ -284,7 +274,6 @@ onPropertyChange(callback: Callback<Property>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Property&gt; | 是 | 用于监听属性值更改事件的回调。 |
 
-<a id="readproperty"></a>
 ## readProperty
 
 ```TypeScript
@@ -325,7 +314,6 @@ readProperty(property: Property): Promise<Property>
 | [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="requestmtusize"></a>
 ## requestMtuSize
 
 ```TypeScript
@@ -364,7 +352,6 @@ requestMtuSize(mtu: number): Promise<void>
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="setpropertynotification"></a>
 ## setPropertyNotification
 
 ```TypeScript
@@ -406,7 +393,6 @@ setPropertyNotification(property: Property, enable: boolean): Promise<void>
 | [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="writeproperty"></a>
 ## writeProperty
 
 ```TypeScript

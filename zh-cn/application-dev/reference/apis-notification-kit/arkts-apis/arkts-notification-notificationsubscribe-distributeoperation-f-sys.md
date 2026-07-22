@@ -6,7 +6,6 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-<a id="distributeoperation"></a>
 ## distributeOperation
 
 ```TypeScript

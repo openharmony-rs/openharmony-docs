@@ -6,7 +6,6 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="setexternalsourceextensionspolicy"></a>
 ## setExternalSourceExtensionsPolicy
 
 ```TypeScript

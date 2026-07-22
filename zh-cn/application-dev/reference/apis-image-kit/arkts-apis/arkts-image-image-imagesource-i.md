@@ -2,11 +2,11 @@
 
 ImageSource类，用于获取图片相关信息。
 
-在调用ImageSource的方法前，需要先通过[image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource-1)构建一个ImageSource实例。
+在调用ImageSource的方法前，需要先通过[image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource)构建一个ImageSource实例。
 
 ImageSource的所有方法均不支持并发调用。
 
-由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-image-imagesource-i.md#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-image-imagesource-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **起始版本：** 6
 
@@ -20,7 +20,6 @@ ImageSource的所有方法均不支持并发调用。
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createimagerawdata"></a>
 ## createImageRawData
 
 ```TypeScript
@@ -50,7 +49,6 @@ createImageRawData(): Promise<ImageRawData>
 | [7700101](../errorcode-image.md#7700101-图片源存在问题) | Bad source. |
 | [7700102](../errorcode-image.md#7700102-不支持的mime类型) | Unsupported MIME type. |
 
-<a id="createpicture"></a>
 ## createPicture
 
 ```TypeScript
@@ -59,7 +57,7 @@ createPicture(options?: DecodingOptionsForPicture): Promise<Picture>
 
 通过图片解码参数创建Picture对象。使用Promise异步回调。
 
-由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](arkts-image-image-picture-i.md#release-1)方法，及时释放内存。
+由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](arkts-image-image-picture-i.md#release)方法，及时释放内存。
 
 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
@@ -89,7 +87,6 @@ createPicture(options?: DecodingOptionsForPicture): Promise<Picture>
 | [7700301](../errorcode-image.md#7700301-解码失败) | Decode failed. |
 | [7700203](../errorcode-image.md#7700203-不支持的选项) | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format.<br>**适用版本：** 24+ |
 
-<a id="createpictureatindex"></a>
 ## createPictureAtIndex
 
 ```TypeScript
@@ -97,12 +94,11 @@ createPictureAtIndex(index: number): Promise<Picture>
 ```
 
 通过指定序号的图片创建Picture对象。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 支持GIF和HEIF<sup>23+</sup>图像序列格式。从API版本26.0.0开始，增加支持AVIS格式。  
 >  
-> - 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](arkts-image-image-picture-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](arkts-image-image-picture-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
@@ -134,7 +130,6 @@ createPictureAtIndex(index: number): Promise<Picture>
 | [7700203](../errorcode-image.md#7700203-不支持的选项) | Unsupported options. For example, index is invalid. |
 | [7700301](../errorcode-image.md#7700301-解码失败) | Decoding failed. |
 
-<a id="createpixelmap"></a>
 ## createPixelMap
 
 ```TypeScript
@@ -143,13 +138,12 @@ createPixelMap(options?: DecodingOptions): Promise<PixelMap>
 
 通过图片解码参数创建PixelMap对象。使用Promise异步回调。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocator](arkts-image-image-createpixelmapusingallocator-f.md#createpixelmapusingallocator-1)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-image-image-allocatortype-e.md)，详情请参考[图片解码内存优化(ArkTS)](docroot://media/image/image-allocator-type.md)。
-
+从API version 15开始，推荐使用[createPixelMapUsingAllocator](arkts-image-image-createpixelmapusingallocator-f.md#createpixelmapusingallocator)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-image-image-allocatortype-e.md)，详情请参考[图片解码内存优化(ArkTS)](../../../media/image/image-allocator-type.md)。
 > **说明：**  
 >  
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。  
 >  
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
@@ -175,7 +169,6 @@ createPixelMap(options?: DecodingOptions): Promise<PixelMap>
 | --- | --- |
 | Promise&lt;PixelMap&gt; | Promise对象，返回PixelMap。 |
 
-<a id="createpixelmap-1"></a>
 ## createPixelMap
 
 ```TypeScript
@@ -184,13 +177,12 @@ createPixelMap(callback: AsyncCallback<PixelMap>): void
 
 通过默认参数创建PixelMap对象。使用callback异步回调。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocator](arkts-image-image-createpixelmapusingallocator-f.md#createpixelmapusingallocator-1)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-image-image-allocatortype-e.md)，详情请参考[图片解码内存优化(ArkTS)](docroot://media/image/image-allocator-type.md)。
-
+从API version 15开始，推荐使用[createPixelMapUsingAllocator](arkts-image-image-createpixelmapusingallocator-f.md#createpixelmapusingallocator)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-image-image-allocatortype-e.md)，详情请参考[图片解码内存优化(ArkTS)](../../../media/image/image-allocator-type.md)。
 > **说明：**  
 >  
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。  
 >  
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
@@ -210,7 +202,6 @@ createPixelMap(callback: AsyncCallback<PixelMap>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PixelMap&gt; | 是 | 回调函数，当创建PixelMap对象成功，err为undefined，data为获取到的PixelMap对象；否则为错误对象。 |
 
-<a id="createpixelmap-2"></a>
 ## createPixelMap
 
 ```TypeScript
@@ -219,13 +210,12 @@ createPixelMap(options: DecodingOptions, callback: AsyncCallback<PixelMap>): voi
 
 通过图片解码参数创建PixelMap对象。使用callback异步回调。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocator](arkts-image-image-createpixelmapusingallocator-f.md#createpixelmapusingallocator-1)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-image-image-allocatortype-e.md)，详情请参考[图片解码内存优化(ArkTS)](docroot://media/image/image-allocator-type.md)。
-
+从API version 15开始，推荐使用[createPixelMapUsingAllocator](arkts-image-image-createpixelmapusingallocator-f.md#createpixelmapusingallocator)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-image-image-allocatortype-e.md)，详情请参考[图片解码内存优化(ArkTS)](../../../media/image/image-allocator-type.md)。
 > **说明：**  
 >  
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。  
 >  
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
@@ -246,7 +236,6 @@ createPixelMap(options: DecodingOptions, callback: AsyncCallback<PixelMap>): voi
 | options | [DecodingOptions](arkts-image-image-decodingoptions-i.md) | 是 | 解码参数。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PixelMap&gt; | 是 | 回调函数，当创建PixelMap对象成功，err为undefined，data为获取到的PixelMap对象；否则为错误对象。 |
 
-<a id="createpixelmaplist"></a>
 ## createPixelMapList
 
 ```TypeScript
@@ -256,12 +245,11 @@ createPixelMapList(options?: DecodingOptions): Promise<Array<PixelMap>>
 通过图片解码参数创建PixelMap数组。使用Promise异步回调。
 
 针对动态图（如Gif、Webp），该接口会返回每帧图片数据；针对静态图，该接口会返回唯一的一帧图片数据。
-
 > **说明：**  
 >  
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。  
 >  
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。  
 >  
@@ -304,7 +292,6 @@ createPixelMapList(options?: DecodingOptions): Promise<Array<PixelMap>>
 | [62980173](../errorcode-image.md#62980173-dma内存空间错误) | The DMA memory does not exist. |
 | [62980174](../errorcode-image.md#62980174-dma内存数据异常) | The DMA memory data is abnormal. |
 
-<a id="createpixelmaplist-1"></a>
 ## createPixelMapList
 
 ```TypeScript
@@ -314,12 +301,11 @@ createPixelMapList(callback: AsyncCallback<Array<PixelMap>>): void
 通过默认参数创建PixelMap数组。使用callback异步回调。
 
 针对动态图（如Gif、Webp），该接口会返回每帧图片数据；针对静态图，该接口会返回唯一的一帧图片数据。
-
 > **说明：**  
 >  
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。  
 >  
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。  
 >  
@@ -355,7 +341,6 @@ createPixelMapList(callback: AsyncCallback<Array<PixelMap>>): void
 | [62980173](../errorcode-image.md#62980173-dma内存空间错误) | The DMA memory does not exist. |
 | [62980174](../errorcode-image.md#62980174-dma内存数据异常) | The DMA memory data is abnormal. |
 
-<a id="createpixelmaplist-2"></a>
 ## createPixelMapList
 
 ```TypeScript
@@ -365,12 +350,11 @@ createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array<Pixel
 通过图片解码参数创建PixelMap数组。使用callback异步回调。
 
 针对动态图（如Gif、Webp），该接口会返回每帧图片数据；针对静态图，该接口会返回唯一的一帧图片数据。
-
 > **说明：**  
 >  
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。  
 >  
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。  
 >  
@@ -407,7 +391,6 @@ createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array<Pixel
 | [62980173](../errorcode-image.md#62980173-dma内存空间错误) | The DMA memory does not exist. |
 | [62980174](../errorcode-image.md#62980174-dma内存数据异常) | The DMA memory data is abnormal. |
 
-<a id="createpixelmapsync"></a>
 ## createPixelMapSync
 
 ```TypeScript
@@ -416,16 +399,15 @@ createPixelMapSync(options?: DecodingOptions): PixelMap
 
 通过图片解码参数同步创建PixelMap对象。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。
 
 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocatorSync](arkts-image-image-createpixelmapusingallocatorsync-f.md#createpixelmapusingallocatorsync-1)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-image-image-allocatortype-e.md)，详情请参考[图片解码内存优化(ArkTS)](docroot://media/image/image-allocator-type.md)。
-
+从API version 15开始，推荐使用[createPixelMapUsingAllocatorSync](arkts-image-image-createpixelmapusingallocatorsync-f.md#createpixelmapusingallocatorsync)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-image-image-allocatortype-e.md)，详情请参考[图片解码内存优化(ArkTS)](../../../media/image/image-allocator-type.md)。
 > **说明：**  
 >  
 > 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考  
-> [耗时任务并发场景简介](docroot://arkts-utils/time-consuming-task-overview.md)。
+> [耗时任务并发场景简介](../../../arkts-utils/time-consuming-task-overview.md)。
 
 **起始版本：** 12
 
@@ -445,20 +427,18 @@ createPixelMapSync(options?: DecodingOptions): PixelMap
 | --- | --- |
 | [PixelMap](arkts-image-image-pixelmap-i.md) | 用于同步返回创建结果。 |
 
-<a id="createpixelmapusingallocator"></a>
 ## createPixelMapUsingAllocator
 
 ```TypeScript
 createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise<PixelMap>
 ```
 
-使用指定的分配器根据图像解码参数异步创建PixelMap对象。使用Promise异步回调。接口使用详情请参考[图片解码内存优化(ArkTS)](docroot://media/image/image-allocator-type.md)。
-
+使用指定的分配器根据图像解码参数异步创建PixelMap对象。使用Promise异步回调。接口使用详情请参考[图片解码内存优化(ArkTS)](../../../media/image/image-allocator-type.md)。
 > **说明：**  
 >  
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。  
 >  
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
@@ -494,23 +474,21 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 | [7700301](../errorcode-image.md#7700301-解码失败) | Failed to decode image. |
 | [7700302](../errorcode-image.md#7700302-内存分配失败) | Failed to allocate memory. |
 
-<a id="createpixelmapusingallocatorsync"></a>
 ## createPixelMapUsingAllocatorSync
 
 ```TypeScript
 createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
 ```
 
-根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[图片解码内存优化(ArkTS)](docroot://media/image/image-allocator-type.md)。
+根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[图片解码内存优化(ArkTS)](../../../media/image/image-allocator-type.md)。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。
 
 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
 > **说明：**  
 >  
 > 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考  
-> [耗时任务并发场景简介](docroot://arkts-utils/time-consuming-task-overview.md)。
+> [耗时任务并发场景简介](../../../arkts-utils/time-consuming-task-overview.md)。
 
 **起始版本：** 15
 
@@ -544,7 +522,6 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 | [7700301](../errorcode-image.md#7700301-解码失败) | Failed to decode image. |
 | [7700302](../errorcode-image.md#7700302-内存分配失败) | Failed to allocate memory. |
 
-<a id="createthumbnail"></a>
 ## createThumbnail
 
 ```TypeScript
@@ -556,12 +533,11 @@ createThumbnail(options?: DecodingOptionsForThumbnail): Promise<PixelMap | undef
 当前支持对JPEG和HEIF格式的图片创建缩略图PixelMap对象。
 
 优先解码图片文件中包含的缩略图。若图片文件中没有缩略图，则对原图进行解码。
-
 > **说明：**  
 >  
 > - 不支持在同一个ImageSource实例上并发调用。  
 >  
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
@@ -596,7 +572,6 @@ createThumbnail(options?: DecodingOptionsForThumbnail): Promise<PixelMap | undef
 | [7700303](../errorcode-image.md#7700303-图片不包含缩略图数据) | Image does not carry thumbnail data. |
 | [7700305](../errorcode-image.md#7700305-缩略图生成失败) | Thumbnail generation failed. |
 
-<a id="createthumbnailsync"></a>
 ## createThumbnailSync
 
 ```TypeScript
@@ -608,15 +583,14 @@ createThumbnailSync(options?: DecodingOptionsForThumbnail): PixelMap | undefined
 当前支持对JPEG和HEIF格式的图片创建缩略图PixelMap对象。
 
 优先解码图片文件中包含的缩略图。若图片文件中没有缩略图，则对原图进行解码。
-
 > **说明：**  
 >  
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release-1)方法，及时释放内存。  
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-image-pixelmap-i.md#release)方法，及时释放内存。  
 >  
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。  
 >  
 > - 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考  
-> [耗时任务并发场景简介](docroot://arkts-utils/time-consuming-task-overview.md)。
+> [耗时任务并发场景简介](../../../arkts-utils/time-consuming-task-overview.md)。
 
 **起始版本：** 26.0.0
 
@@ -649,7 +623,6 @@ createThumbnailSync(options?: DecodingOptionsForThumbnail): PixelMap | undefined
 | [7700303](../errorcode-image.md#7700303-图片不包含缩略图数据) | Image does not carry thumbnail data. |
 | [7700305](../errorcode-image.md#7700305-缩略图生成失败) | Thumbnail generation failed. |
 
-<a id="getdelaytimelist"></a>
 ## getDelayTimeList
 
 ```TypeScript
@@ -683,7 +656,6 @@ getDelayTimeList(): Promise<Array<number>>
 | [62980122](../errorcode-image.md#62980122-解码图片头异常) | Failed to decode the image header. |
 | [62980149](../errorcode-image.md#62980149-图片参数无效) | Invalid MIME type for the image source. |
 
-<a id="getdelaytimelist-1"></a>
 ## getDelayTimeList
 
 ```TypeScript
@@ -717,7 +689,6 @@ getDelayTimeList(callback: AsyncCallback<Array<number>>): void
 | [62980122](../errorcode-image.md#62980122-解码图片头异常) | Failed to decode the image header. |
 | [62980149](../errorcode-image.md#62980149-图片参数无效) | Invalid MIME type for the image source. |
 
-<a id="getdisposaltypelist"></a>
 ## getDisposalTypeList
 
 ```TypeScript
@@ -747,7 +718,6 @@ getDisposalTypeList(): Promise<Array<number>>
 | [62980137](../errorcode-image.md#62980137-图片操作无效) | Invalid media operation. |
 | [62980149](../errorcode-image.md#62980149-图片参数无效) | Invalid MIME type for the image source. |
 
-<a id="getframecount"></a>
 ## getFrameCount
 
 ```TypeScript
@@ -782,7 +752,6 @@ getFrameCount(): Promise<number>
 | [62980122](../errorcode-image.md#62980122-解码图片头异常) | Failed to decode the image header. |
 | [62980137](../errorcode-image.md#62980137-图片操作无效) | Invalid media operation. |
 
-<a id="getframecount-1"></a>
 ## getFrameCount
 
 ```TypeScript
@@ -817,7 +786,6 @@ getFrameCount(callback: AsyncCallback<number>): void
 | [62980122](../errorcode-image.md#62980122-解码图片头异常) | Failed to decode the image header. |
 | [62980137](../errorcode-image.md#62980137-图片操作无效) | Invalid media operation. |
 
-<a id="getimageinfo"></a>
 ## getImageInfo
 
 ```TypeScript
@@ -843,7 +811,6 @@ getImageInfo(index: number, callback: AsyncCallback<ImageInfo>): void
 | index | number | 是 | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：[0, (帧数-1)]。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ImageInfo&gt; | 是 | 回调函数。当获取图片信息成功，err为undefined，data为获取到的图片信息；否则为错误对象。 |
 
-<a id="getimageinfo-1"></a>
 ## getImageInfo
 
 ```TypeScript
@@ -868,7 +835,6 @@ getImageInfo(callback: AsyncCallback<ImageInfo>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ImageInfo&gt; | 是 | 回调函数。当获取图片信息成功，err为undefined，data为获取到的图片信息；否则为错误对象。 |
 
-<a id="getimageinfo-2"></a>
 ## getImageInfo
 
 ```TypeScript
@@ -899,7 +865,6 @@ getImageInfo(index?: number): Promise<ImageInfo>
 | --- | --- |
 | Promise&lt;ImageInfo&gt; | Promise对象，返回获取到的图片信息。 |
 
-<a id="getimageinfosync"></a>
 ## getImageInfoSync
 
 ```TypeScript
@@ -907,11 +872,10 @@ getImageInfoSync(index?: number): ImageInfo
 ```
 
 获取指定序号的图片信息，使用同步形式返回图片信息。
-
 > **说明：**  
 >  
 > 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考  
-> [耗时任务并发场景简介](docroot://arkts-utils/time-consuming-task-overview.md)。
+> [耗时任务并发场景简介](../../../arkts-utils/time-consuming-task-overview.md)。
 
 **起始版本：** 12
 
@@ -931,7 +895,6 @@ getImageInfoSync(index?: number): ImageInfo
 | --- | --- |
 | [ImageInfo](arkts-image-image-imageinfo-i.md) | 同步返回获取到的图片信息。 |
 
-<a id="getimageproperties"></a>
 ## getImageProperties
 
 ```TypeScript
@@ -970,7 +933,6 @@ getImageProperties(key: Array<PropertyKey>): Promise<Record<PropertyKey, string|
 | [62980113](../errorcode-image.md#62980113-图片未知格式) | Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted. |
 | [62980116](../errorcode-image.md#62980116-解码失败) | Failed to decode the image. |
 
-<a id="getimageproperty"></a>
 ## getImageProperty
 
 ```TypeScript
@@ -1017,7 +979,6 @@ getImageProperty(key: PropertyKey, options?: ImagePropertyOptions): Promise<stri
 | [62980123](../errorcode-image.md#62980123-图片不支持exif解码) | The image does not support EXIF decoding. |
 | [62980135](../errorcode-image.md#62980135-图片属性值无效) | The EXIF value is invalid. |
 
-<a id="getimageproperty-1"></a>
 ## getImageProperty
 
 ```TypeScript
@@ -1027,18 +988,17 @@ getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string
 获取图片中给定索引处图像的指定属性键的值。使用Promise异步回调。
 
 该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 11废弃，建议使用  
-> [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty-1)代  
+> [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty)代  
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty(key:](arkts-image-image-imagesource-i.md#getimageproperty-1)
+**替代接口：** [getImageProperty(key:](arkts-image-image-imagesource-i.md#getimageproperty)
 
 <!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>--><!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>-End-->
 
@@ -1057,7 +1017,6 @@ getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回图片属性值，如获取失败则返回属性默认值。 |
 
-<a id="getimageproperty-2"></a>
 ## getImageProperty
 
 ```TypeScript
@@ -1067,18 +1026,17 @@ getImageProperty(key: string, callback: AsyncCallback<string>): void
 获取图片中给定索引处图像的指定属性键的值。使用callback异步回调。
 
 该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 11废弃，建议使用  
-> [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty-1)代  
+> [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty)代  
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty(key:](arkts-image-image-imagesource-i.md#getimageproperty-1)
+**替代接口：** [getImageProperty(key:](arkts-image-image-imagesource-i.md#getimageproperty)
 
 <!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -1091,7 +1049,6 @@ getImageProperty(key: string, callback: AsyncCallback<string>): void
 | key | string | 是 | 图片属性名。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，当获取图片属性值成功，err为undefined，data为获取到的图片属性值；否则为错误对象。 |
 
-<a id="getimageproperty-3"></a>
 ## getImageProperty
 
 ```TypeScript
@@ -1101,18 +1058,17 @@ getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncC
 获取图片指定属性键的值。使用callback异步回调。
 
 该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 11废弃，建议使用  
-> [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty-1)代  
+> [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty)代  
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty(key:](arkts-image-image-imagesource-i.md#getimageproperty-1)
+**替代接口：** [getImageProperty(key:](arkts-image-image-imagesource-i.md#getimageproperty)
 
 <!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void-End-->
 
@@ -1126,7 +1082,6 @@ getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncC
 | options | [GetImagePropertyOptions](arkts-image-image-getimagepropertyoptions-i.md) | 是 | 图片属性，包括图片序号与默认属性值。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，当获取图片属性值成功，err为undefined，data为获取到的图片属性值；否则为错误对象。 |
 
-<a id="getimagepropertysync"></a>
 ## getImagePropertySync
 
 ```TypeScript
@@ -1134,7 +1089,6 @@ getImagePropertySync(key: PropertyKey): string
 ```
 
 获取图片Exif指定属性键的值，使用同步形式返回结果。
-
 > **说明：**  
 >  
 > - 该方法仅支持JPEG、PNG、HEIF、WEBP<sup>23+</sup>和DNG<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。  
@@ -1142,7 +1096,7 @@ getImagePropertySync(key: PropertyKey): string
 > - Exif信息是图片的元数据，包含拍摄时间、相机型号、光圈、焦距、ISO等。  
 >  
 > - 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考  
-> [耗时任务并发场景简介](docroot://arkts-utils/time-consuming-task-overview.md)。
+> [耗时任务并发场景简介](../../../arkts-utils/time-consuming-task-overview.md)。
 
 **起始版本：** 20
 
@@ -1170,7 +1124,6 @@ getImagePropertySync(key: PropertyKey): string
 | [7700102](../errorcode-image.md#7700102-不支持的mime类型) | Unsupported MIME type. |
 | [7700202](../errorcode-image.md#7700202-不支持的元数据) | Unsupported metadata. For example, key is not supported. |
 
-<a id="modifyimageproperties"></a>
 ## modifyImageProperties
 
 ```TypeScript
@@ -1180,7 +1133,6 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise<void>
 批量通过指定的键修改图片属性的值。使用Promise异步回调。
 
 该接口仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
-
 > **说明：**  
 >  
 > - 调用modifyImageProperties修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperties会导致buffer内容覆盖，目前buffer创建的  
@@ -1215,7 +1167,6 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise<void>
 | [62980135](../errorcode-image.md#62980135-图片属性值无效) | The EXIF value is invalid. |
 | [62980146](../errorcode-image.md#62980146-图片属性值写入文件失败) | The EXIF data failed to be written to the file. |
 
-<a id="modifyimagepropertiesenhanced"></a>
 ## modifyImagePropertiesEnhanced
 
 ```TypeScript
@@ -1223,14 +1174,13 @@ modifyImagePropertiesEnhanced(records: Record<string, string | null>): Promise<v
 ```
 
 批量修改图片属性。使用Promise异步回调。
-
 > **说明：**  
 >  
-> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource-1)实例或通过传入的uri创建  
-> [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource-1)实例。  
+> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource)实例或通过传入的uri创建  
+> [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource)实例。  
 >  
 > - 该方法在内存中完成批量数据修改后会一次性写入文件，相比  
-> [modifyImageProperties](arkts-image-image-imagesource-i.md#modifyimageproperties-1)  
+> [modifyImageProperties](arkts-image-image-imagesource-i.md#modifyimageproperties)  
 > 更高效。  
 >  
 > - 支持修改JPEG、PNG、HEIF和WEBP文件类型的图片属性，图片需要包含Exif信息。  
@@ -1263,7 +1213,6 @@ modifyImagePropertiesEnhanced(records: Record<string, string | null>): Promise<v
 | [7700202](../errorcode-image.md#7700202-不支持的元数据) | Unsupported metadata. For example, the property key is not supported,or the property value is invalid. |
 | [7700304](../errorcode-image.md#7700304-图片信息写入文件失败) | Failed to write image properties to the file. |
 
-<a id="modifyimageproperty"></a>
 ## modifyImageProperty
 
 ```TypeScript
@@ -1273,7 +1222,6 @@ modifyImageProperty(key: PropertyKey, value: string): Promise<void>
 通过指定的键修改图片属性的值。使用Promise异步回调。
 
 该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
-
 > **说明：**  
 >  
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的  
@@ -1310,7 +1258,6 @@ modifyImageProperty(key: PropertyKey, value: string): Promise<void>
 | [62980135](../errorcode-image.md#62980135-图片属性值无效) | The EXIF value is invalid. |
 | [62980146](../errorcode-image.md#62980146-图片属性值写入文件失败) | The EXIF data failed to be written to the file. |
 
-<a id="modifyimageproperty-1"></a>
 ## modifyImageProperty
 
 ```TypeScript
@@ -1320,14 +1267,13 @@ modifyImageProperty(key: string, value: string): Promise<void>
 通过指定的键修改图片属性的值。使用Promise异步回调。
 
 该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
-
 > **说明：**  
 >  
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的  
 > ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。  
 >  
 > - 从API version 9开始支持，从API version 11废弃，建议使用  
-> [modifyImageProperty](arkts-image-image-imagesource-i.md#modifyimageproperty-1)代替。  
+> [modifyImageProperty](arkts-image-image-imagesource-i.md#modifyimageproperty)代替。  
 >  
 > - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
@@ -1335,7 +1281,7 @@ modifyImageProperty(key: string, value: string): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [modifyImageProperty(key:](arkts-image-image-imagesource-i.md#modifyimageproperty-1)
+**替代接口：** [modifyImageProperty(key:](arkts-image-image-imagesource-i.md#modifyimageproperty)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>--><!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>-End-->
 
@@ -1354,7 +1300,6 @@ modifyImageProperty(key: string, value: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-<a id="modifyimageproperty-2"></a>
 ## modifyImageProperty
 
 ```TypeScript
@@ -1364,14 +1309,13 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 通过指定的键修改图片属性的值。使用callback异步回调。
 
 仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
-
 > **说明：**  
 >  
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的  
 > ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。  
 >  
 > - 从API version 9开始支持，从API version 11废弃，建议使用  
-> [modifyImageProperty](arkts-image-image-imagesource-i.md#modifyimageproperty-1)代替。  
+> [modifyImageProperty](arkts-image-image-imagesource-i.md#modifyimageproperty)代替。  
 >  
 > - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
@@ -1379,7 +1323,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 
 **废弃版本：** 11
 
-**替代接口：** [modifyImageProperty(key:](arkts-image-image-imagesource-i.md#modifyimageproperty-1)
+**替代接口：** [modifyImageProperty(key:](arkts-image-image-imagesource-i.md#modifyimageproperty)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -1393,7 +1337,6 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 | value | string | 是 | 属性值。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当修改图片属性值成功，err为undefined，否则为错误对象。 |
 
-<a id="readimagemetadata"></a>
 ## readImageMetadata
 
 ```TypeScript
@@ -1403,7 +1346,6 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise<ImageMetadat
 读取图像源的元数据，使用propertyKeys指定元数据字段。使用Promise异步回调。
 
 该接口仅支持JPEG、PNG、HEIF、WebP、DNG、GIF、TIFF、HEIFS、JFIF和AVIS（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
-
 > **说明：**  
 >  
 > 读取DNG格式图片时，该接口对部分propertyKeys有特殊处理。以下字段的字符串取值请参考[PropertyKey](arkts-image-image-propertykey-e.md)中的值：  
@@ -1437,7 +1379,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise<ImageMetadat
 > - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-image-image-gifpropertykey-e.md)。  
 >  
 > - 从API版本26.0.0开始，支持读取JPEG、PNG、GIF、DNG、TIFF格式图片的XMP元数据。XMP元数据的操作方法可以参考  
-> [XMPMetadata](docroot://reference/apis-image-kit/arkts-apis-image-XMPMetadata.md)。  
+> [XMPMetadata](../../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md)。  
 >  
 > - 从API版本26.0.0开始，支持读取AVIS元数据。要查询的属性的具体信息请参考[AvisPropertyKey](arkts-image-image-avispropertykey-e.md)。
 
@@ -1470,7 +1412,6 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise<ImageMetadat
 | [7700202](../errorcode-image.md#7700202-不支持的元数据) | Unsupported metadata. |
 | [7700204](../errorcode-image.md#7700204-无效参数) | Invalid parameter. Possible causes: 1. The index is negative.2. The index is greater than or equal to the number of frames in the image. |
 
-<a id="readimagemetadatabytype"></a>
 ## readImageMetadataByType
 
 ```TypeScript
@@ -1480,7 +1421,6 @@ readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise
 读取图像源的元数据，使用metadataTypes指定元数据类型。若未指定metadataTypes，则返回所有支持的元数据。使用Promise异步回调。
 
 该接口仅支持JPEG、PNG、HEIF、WebP、DNG、GIF、TIFF、HEIFS、JFIF和AVIS（不同硬件设备支持情况不同）文件。
-
 > **说明：**  
 >  
 > - EXIF_METADATA元数据类型适用于JPEG、PNG、HEIF、WEBP和DNG格式图片。  
@@ -1502,7 +1442,7 @@ readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise
 > - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-image-image-gifpropertykey-e.md)。  
 >  
 > - 从API版本26.0.0开始，支持读取JPEG、PNG、GIF、DNG、TIFF格式图片的XMP元数据。XMP元数据的操作方法可以参考  
-> [XMPMetadata](docroot://reference/apis-image-kit/arkts-apis-image-XMPMetadata.md)。  
+> [XMPMetadata](../../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md)。  
 >  
 > - 从API版本26.0.0开始，支持读取AVIS元数据。要查询的属性的具体信息请参考[AvisPropertyKey](arkts-image-image-avispropertykey-e.md)。
 
@@ -1535,7 +1475,6 @@ readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise
 | [7700202](../errorcode-image.md#7700202-不支持的元数据) | Unsupported metadata. |
 | [7700204](../errorcode-image.md#7700204-无效参数) | Invalid parameter. Possible causes: 1.The index is negative.2. The index is greater than or equal to the number of frames in the image. |
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -1560,7 +1499,6 @@ release(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当资源释放成功，err为undefined，否则为错误对象。 |
 
-<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -1585,7 +1523,6 @@ release(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-<a id="updatedata"></a>
 ## updateData
 
 ```TypeScript
@@ -1615,7 +1552,6 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-<a id="updatedata-1"></a>
 ## updateData
 
 ```TypeScript
@@ -1632,19 +1568,7 @@ updateData(
 
 **起始版本：** 9
 
-<!--Device-ImageSource-updateData(
-      buf: ArrayBuffer,
-      isFinished: boolean,
-      offset: int,
-      length: int,
-      callback: AsyncCallback<void>
-    ): void--><!--Device-ImageSource-updateData(
-      buf: ArrayBuffer,
-      isFinished: boolean,
-      offset: int,
-      length: int,
-      callback: AsyncCallback<void>
-    ): void-End-->
+<!--Device-ImageSource-updateData(      buf: ArrayBuffer,      isFinished: boolean,      offset: int,      length: int,      callback: AsyncCallback<void>    ): void--><!--Device-ImageSource-updateData(      buf: ArrayBuffer,      isFinished: boolean,      offset: int,      length: int,      callback: AsyncCallback<void>    ): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1658,7 +1582,6 @@ updateData(
 | length | number | 是 | 当前buffer的长度。单位：字节（Byte）。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当更新增量数据成功，err为undefined，否则为错误对象。 |
 
-<a id="writeimagemetadata"></a>
 ## writeImageMetadata
 
 ```TypeScript
@@ -1666,20 +1589,19 @@ writeImageMetadata(imageMetadata: ImageMetadata): Promise<void>
 ```
 
 批量修改图片属性。使用Promise异步回调。
-
 > **说明：**  
 >  
-> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource-1)实例或通过传入的uri创建  
-> [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource-1)实例。  
+> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource)实例或通过传入的uri创建  
+> [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource)实例。  
 >  
 > - 该方法在内存中完成批量数据修改后会一次性写入文件，相比  
-> [modifyImageProperties](arkts-image-image-imagesource-i.md#modifyimageproperties-1)  
+> [modifyImageProperties](arkts-image-image-imagesource-i.md#modifyimageproperties)  
 > 更高效。  
 >  
 > - 支持修改JPEG、PNG和HEIF文件类型的图片属性，图片需要包含Exif信息。修改属性前，先通过supportedFormats属性查询设备是否支持HEIF格式的Exif读写。  
 >  
 > - 从API版本26.0.0开始，支持修改JPEG、PNG、GIF格式图片的XMP元数据。XMP元数据的操作方法可以参考  
-> [XMPMetadata](docroot://reference/apis-image-kit/arkts-apis-image-XMPMetadata.md)。  
+> [XMPMetadata](../../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md)。  
 >  
 > - 调用writeImageMetadata接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
@@ -1721,7 +1643,7 @@ readonly supportedFormats: Array<string>
 
 包括：PNG、JPEG、BMP、GIF、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。
 
-部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md#getimagesourcesupportedformats-1)接口，动态查询当前设备上的解码能力。
+部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md#getimagesourcesupportedformats)接口，动态查询当前设备上的解码能力。
 
 **类型：** Array&lt;string&gt;
 

@@ -22,7 +22,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 pitch?: number
 ```
 
-Pitch angle, ranging from -Math.PI to Math.PI, measured in radians.
+俯仰角，范围从-π到π，以弧度为单位。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ Pitch angle, ranging from -Math.PI to Math.PI, measured in radians.
 roll?: number
 ```
 
-Roll angle, ranging from -Math.PI to Math.PI, measured in radians.
+滚动角，范围从-π到π，以弧度为单位。
 
 **类型：** number
 
@@ -58,7 +58,7 @@ Roll angle, ranging from -Math.PI to Math.PI, measured in radians.
 yaw?: number
 ```
 
-Yaw angle, ranging from -Math.PI to Math.PI, measured in radians.
+偏航角，范围从-π到π，以弧度为单位。
 
 **类型：** number
 

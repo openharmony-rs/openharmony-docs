@@ -1,7 +1,6 @@
 # ColorFilter
 
 颜色滤波器。
-
 > **说明：**  
 >  
 > - 本模块使用屏幕物理像素单位px。  
@@ -20,7 +19,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createblendmodecolorfilter"></a>
 ## createBlendModeColorFilter
 
 ```TypeScript
@@ -54,7 +52,6 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createblendmodecolorfilter-1"></a>
 ## createBlendModeColorFilter
 
 ```TypeScript
@@ -88,7 +85,6 @@ static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMod
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createcomposecolorfilter"></a>
 ## createComposeColorFilter
 
 ```TypeScript
@@ -122,7 +118,6 @@ static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFi
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="createlightingcolorfilter"></a>
 ## createLightingColorFilter
 
 ```TypeScript
@@ -150,7 +145,6 @@ static createLightingColorFilter(mutColor: common2D.Color | number, addColor: co
 | --- | --- |
 | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回一个颜色滤波器。 |
 
-<a id="createlineartosrgbgamma"></a>
 ## createLinearToSRGBGamma
 
 ```TypeScript
@@ -171,7 +165,6 @@ static createLinearToSRGBGamma(): ColorFilter
 | --- | --- |
 | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 
-<a id="createlumacolorfilter"></a>
 ## createLumaColorFilter
 
 ```TypeScript
@@ -192,7 +185,6 @@ static createLumaColorFilter(): ColorFilter
 | --- | --- |
 | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 
-<a id="creatematrixcolorfilter"></a>
 ## createMatrixColorFilter
 
 ```TypeScript
@@ -225,7 +217,6 @@ static createMatrixColorFilter(matrix: Array<number>): ColorFilter
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createsrgbgammatolinear"></a>
 ## createSRGBGammaToLinear
 
 ```TypeScript

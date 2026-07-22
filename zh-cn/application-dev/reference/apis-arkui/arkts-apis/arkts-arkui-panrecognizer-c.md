@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getdirection"></a>
 ## getDirection
 
 ```TypeScript
@@ -35,7 +34,6 @@ getDirection(): PanDirection
 | --- | --- |
 | [PanDirection](arkts-arkui-pandirection-e.md) | 当前滑动手势识别器的识别方向。 |
 
-<a id="getdistance"></a>
 ## getDistance
 
 ```TypeScript
@@ -60,7 +58,6 @@ getDistance(): number
 | --- | --- |
 | number | 当前滑动手势识别器触发的最小滑动距离。单位：vp |
 
-<a id="getdistancemap"></a>
 ## getDistanceMap
 
 ```TypeScript
@@ -68,7 +65,6 @@ getDistanceMap(): Map<SourceTool, number>
 ```
 
 返回滑动手势识别器在不同输入源的情况下触发的最小滑动距离。
-
 > **说明：**  
 >  
 > 仅支持对通过Pan手势初始化配置修改的设备类型进行阈值查询。对于默认滑动阈值，可通过查询[SourceTool](../arkts-components/arkts-arkui-sourcetool-e.md).Unknown类型获取。其他未主动设置的类型则无法获取。
@@ -89,7 +85,6 @@ getDistanceMap(): Map<SourceTool, number>
 | --- | --- |
 | Map&lt;SourceTool, number&gt; | 不同输入源的滑动手势识别器触发的最小滑动距离。滑动距离的单位：vp |
 
-<a id="getpangestureoptions"></a>
 ## getPanGestureOptions
 
 ```TypeScript

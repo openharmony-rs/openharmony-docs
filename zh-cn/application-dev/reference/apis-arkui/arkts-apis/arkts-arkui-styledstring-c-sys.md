@@ -8,7 +8,6 @@ StyledString
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="marshalling"></a>
 ## marshalling
 
 ```TypeScript
@@ -40,7 +39,6 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 | --- | --- |
 | ArrayBuffer | 序列化后的buffer信息。<br/>**说明：** <br/>目前支持文本和图片。 |
 
-<a id="marshalling-1"></a>
 ## marshalling
 
 ```TypeScript
@@ -71,7 +69,6 @@ static marshalling(styledString: StyledString): ArrayBuffer
 | --- | --- |
 | ArrayBuffer | 序列化后的buffer信息。<br/>**说明：** <br/>目前支持文本和图片。 |
 
-<a id="unmarshalling"></a>
 ## unmarshalling
 
 ```TypeScript
@@ -110,7 +107,6 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [170002](../errorcode-styled-string.md#170002-属性字符串解码错误) | Styled string decode error. |
 
-<a id="unmarshalling-1"></a>
 ## unmarshalling
 
 ```TypeScript

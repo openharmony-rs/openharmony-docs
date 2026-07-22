@@ -1,13 +1,12 @@
 # @ohos.enterprise.dateTimeManager
 
 本模块提供系统时间管理能力。
-
 > **说明**：  
 >  
 > 本模块接口仅可在Stage模型下使用。  
 >  
-> 本模块接口仅对[设备管理应用](docroot://mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将  
-> [设备管理应用激活](arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin-1)  
+> 本模块接口仅对[设备管理应用](../../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将  
+> [设备管理应用激活](arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin)  
 > 后调用。  
 >  
 > 本模块接口均为系统接口。

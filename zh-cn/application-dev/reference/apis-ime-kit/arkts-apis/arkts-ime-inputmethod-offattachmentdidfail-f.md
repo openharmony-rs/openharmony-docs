@@ -6,7 +6,6 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="offattachmentdidfail"></a>
 ## offAttachmentDidFail
 
 ```TypeScript

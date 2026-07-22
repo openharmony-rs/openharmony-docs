@@ -1,6 +1,6 @@
 # Stream
 
-文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](docroot://reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatestream)方法或者[fileIo.fdopenStream](docroot://reference/apis-core-file-kit/js-apis-file-fs.md#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
+文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatestream)方法或者[fileIo.fdopenStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
 
 **起始版本：** 9
 
@@ -14,7 +14,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -63,7 +62,6 @@ stream.close().then(() => {
 
 ```
 
-<a id="close-1"></a>
 ## close
 
 ```TypeScript
@@ -114,7 +112,6 @@ stream.close((err: BusinessError) => {
 
 ```
 
-<a id="closesync"></a>
 ## closeSync
 
 ```TypeScript
@@ -151,7 +148,6 @@ stream.closeSync();
 
 ```
 
-<a id="flush"></a>
 ## flush
 
 ```TypeScript
@@ -207,7 +203,6 @@ stream.flush().then(() => {
 
 ```
 
-<a id="flush-1"></a>
 ## flush
 
 ```TypeScript
@@ -265,7 +260,6 @@ stream.flush((err: BusinessError) => {
 
 ```
 
-<a id="flushsync"></a>
 ## flushSync
 
 ```TypeScript
@@ -309,7 +303,6 @@ stream.close();
 
 ```
 
-<a id="read"></a>
 ## read
 
 ```TypeScript
@@ -325,13 +318,7 @@ read(
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Stream-read(
-      buffer: ArrayBuffer,
-      options?: ReadOptions
-  ): Promise<number>--><!--Device-Stream-read(
-      buffer: ArrayBuffer,
-      options?: ReadOptions
-  ): Promise<number>-End-->
+<!--Device-Stream-read(      buffer: ArrayBuffer,      options?: ReadOptions  ): Promise<number>--><!--Device-Stream-read(      buffer: ArrayBuffer,      options?: ReadOptions  ): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -387,7 +374,6 @@ stream.read(arrayBuffer, readOption).then((readLen: number) => {
 
 ```
 
-<a id="read-1"></a>
 ## read
 
 ```TypeScript
@@ -446,7 +432,6 @@ stream.read(arrayBuffer, (err: BusinessError, readLen: number) => {
 
 ```
 
-<a id="read-2"></a>
 ## read
 
 ```TypeScript
@@ -463,15 +448,7 @@ read(
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Stream-read(
-      buffer: ArrayBuffer,
-      options: ReadOptions,
-      callback: AsyncCallback<number>
-  ): void--><!--Device-Stream-read(
-      buffer: ArrayBuffer,
-      options: ReadOptions,
-      callback: AsyncCallback<number>
-  ): void-End-->
+<!--Device-Stream-read(      buffer: ArrayBuffer,      options: ReadOptions,      callback: AsyncCallback<number>  ): void--><!--Device-Stream-read(      buffer: ArrayBuffer,      options: ReadOptions,      callback: AsyncCallback<number>  ): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -523,7 +500,6 @@ stream.read(arrayBuffer, readOption, (err: BusinessError, readLen: number) => {
 
 ```
 
-<a id="readsync"></a>
 ## readSync
 
 ```TypeScript
@@ -539,13 +515,7 @@ readSync(
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Stream-readSync(
-      buffer: ArrayBuffer,
-      options?: ReadOptions
-  ): number--><!--Device-Stream-readSync(
-      buffer: ArrayBuffer,
-      options?: ReadOptions
-  ): number-End-->
+<!--Device-Stream-readSync(      buffer: ArrayBuffer,      options?: ReadOptions  ): number--><!--Device-Stream-readSync(      buffer: ArrayBuffer,      options?: ReadOptions  ): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -594,7 +564,6 @@ stream.close();
 
 ```
 
-<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -610,13 +579,7 @@ write(
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Stream-write(
-      buffer: ArrayBuffer | string,
-      options?: WriteOptions
-  ): Promise<number>--><!--Device-Stream-write(
-      buffer: ArrayBuffer | string,
-      options?: WriteOptions
-  ): Promise<number>-End-->
+<!--Device-Stream-write(      buffer: ArrayBuffer | string,      options?: WriteOptions  ): Promise<number>--><!--Device-Stream-write(      buffer: ArrayBuffer | string,      options?: WriteOptions  ): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -672,7 +635,6 @@ stream.write("hello, world", writeOption).then((number: number) => {
 
 ```
 
-<a id="write-1"></a>
 ## write
 
 ```TypeScript
@@ -733,7 +695,6 @@ stream.write("hello, world", (err: BusinessError, bytesWritten: number) => {
 
 ```
 
-<a id="write-2"></a>
 ## write
 
 ```TypeScript
@@ -750,15 +711,7 @@ write(
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Stream-write(
-      buffer: ArrayBuffer | string,
-      options: WriteOptions,
-      callback: AsyncCallback<number>
-  ): void--><!--Device-Stream-write(
-      buffer: ArrayBuffer | string,
-      options: WriteOptions,
-      callback: AsyncCallback<number>
-  ): void-End-->
+<!--Device-Stream-write(      buffer: ArrayBuffer | string,      options: WriteOptions,      callback: AsyncCallback<number>  ): void--><!--Device-Stream-write(      buffer: ArrayBuffer | string,      options: WriteOptions,      callback: AsyncCallback<number>  ): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -813,7 +766,6 @@ stream.write("hello, world", writeOption, (err: BusinessError, bytesWritten: num
 
 ```
 
-<a id="writesync"></a>
 ## writeSync
 
 ```TypeScript
@@ -829,13 +781,7 @@ writeSync(
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Stream-writeSync(
-      buffer: ArrayBuffer | string,
-      options?: WriteOptions
-  ): number--><!--Device-Stream-writeSync(
-      buffer: ArrayBuffer | string,
-      options?: WriteOptions
-  ): number-End-->
+<!--Device-Stream-writeSync(      buffer: ArrayBuffer | string,      options?: WriteOptions  ): number--><!--Device-Stream-writeSync(      buffer: ArrayBuffer | string,      options?: WriteOptions  ): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

@@ -6,7 +6,6 @@
 import { insightIntentDriver } from '@kit.AbilityKit';
 ```
 
-<a id="getinsightintentinfobyfilter"></a>
 ## getInsightIntentInfoByFilter
 
 ```TypeScript

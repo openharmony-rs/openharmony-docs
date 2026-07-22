@@ -6,7 +6,6 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
-<a id="deactivesim"></a>
 ## deactiveSim
 
 ```TypeScript

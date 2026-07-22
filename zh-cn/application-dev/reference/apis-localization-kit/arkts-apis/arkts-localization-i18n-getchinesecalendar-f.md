@@ -6,7 +6,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="getchinesecalendar"></a>
 ## getChineseCalendar
 
 ```TypeScript

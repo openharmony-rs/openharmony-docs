@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="createimage"></a>
 ## createImage
 
 ```TypeScript
@@ -35,7 +34,6 @@ createImage(params: SceneResourceParameters): Promise<Image>
 | --- | --- |
 | Promise&lt;Image&gt; | 返回创建的图像 |
 
-<a id="createimagestream"></a>
 ## createImageStream
 
 ```TypeScript
@@ -64,7 +62,6 @@ createImageStream(params: SceneResourceParameters): Promise<ImageStream>
 | --- | --- |
 | Promise&lt;ImageStream&gt; | 返回创建的图像流 |
 
-<a id="createmesh"></a>
 ## createMesh
 
 ```TypeScript
@@ -92,7 +89,6 @@ createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promi
 | --- | --- |
 | Promise&lt;MeshResource&gt; | 返回创建的网格 |
 
-<a id="createsampler"></a>
 ## createSampler
 
 ```TypeScript
@@ -119,7 +115,6 @@ createSampler(params:SceneResourceParameters): Promise<Sampler>
 | --- | --- |
 | Promise&lt;Sampler&gt; | - 返回创建的采样器 |
 
-<a id="createscene"></a>
 ## createScene
 
 ```TypeScript
@@ -146,7 +141,6 @@ createScene(uri?: ResourceStr): Promise<Scene>
 | --- | --- |
 | Promise&lt;Scene&gt; | 返回创建的场景 |
 
-<a id="createshader"></a>
 ## createShader
 
 ```TypeScript

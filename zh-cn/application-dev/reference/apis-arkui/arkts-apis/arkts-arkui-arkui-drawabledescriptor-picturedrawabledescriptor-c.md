@@ -16,7 +16,6 @@
 import { DrawableDescriptor, AnimatedDrawableDescriptor, AnimationStopMode, AnimationOptions, AnimationController, DrawableDescriptorLoadedResult, LayeredDrawableDescriptor, PictureDrawableDescriptor, PixelMapDrawableDescriptor, HdrCompositionConfig } from '@kit.ArkUI';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -41,7 +40,6 @@ PictureDrawableDescriptor的构造函数。
 | --- | --- | --- | --- |
 | src | image.Picture | 是 | 用于创建PictureDrawableDescriptor的Picture对象。 |
 
-<a id="sethdrcomposition"></a>
 ## setHdrComposition
 
 ```TypeScript

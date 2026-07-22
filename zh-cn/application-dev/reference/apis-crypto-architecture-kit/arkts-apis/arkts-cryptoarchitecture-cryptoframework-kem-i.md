@@ -14,7 +14,6 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
-<a id="decapsulate"></a>
 ## decapsulate
 
 ```TypeScript
@@ -78,7 +77,6 @@ async function kemDecapsulate() {
 
 ```
 
-<a id="decapsulatesync"></a>
 ## decapsulateSync
 
 ```TypeScript
@@ -144,7 +142,6 @@ function kemDecapsulateSync() {
 
 ```
 
-<a id="encapsulate"></a>
 ## encapsulate
 
 ```TypeScript
@@ -208,7 +205,6 @@ async function kemEncapsulate() {
 
 ```
 
-<a id="encapsulatesync"></a>
 ## encapsulateSync
 
 ```TypeScript

@@ -1,7 +1,6 @@
 # NotificationLongTextContent
 
 描述长文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。
-
 > **说明：**  
 >  
 > - 当该类型通知与其他通知形成组通知时，该通知类型的展示效果默认为折叠态，  

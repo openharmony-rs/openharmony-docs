@@ -1,6 +1,5 @@
 # choose
 
-<a id="choose"></a>
 ## choose
 
 ```TypeScript
@@ -30,7 +29,6 @@ declare function choose(types?: string[]): Promise<string>
 | Promise&lt;string&gt; | 异步返回文件URI（注：当前返回错误码） |
 
 
-<a id="choose-1"></a>
 ## choose
 
 ```TypeScript
@@ -54,7 +52,6 @@ declare function choose(callback: AsyncCallback<string>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 异步获取对应文件URI（注：当前返回错误码） |
 
 
-<a id="choose-2"></a>
 ## choose
 
 ```TypeScript

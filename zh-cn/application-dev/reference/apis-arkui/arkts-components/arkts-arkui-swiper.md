@@ -12,7 +12,6 @@
 ## 子组件
 
 可以包含子组件。
-
 > **说明：**  
 >  
 > - 子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)、  

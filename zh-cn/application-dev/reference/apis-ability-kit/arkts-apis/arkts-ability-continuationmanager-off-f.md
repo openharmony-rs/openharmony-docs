@@ -6,7 +6,6 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
-<a id="off"></a>
 ## off('deviceSelected')
 
 ```TypeScript
@@ -63,7 +62,6 @@ try {
 ```
 
 
-<a id="off-1"></a>
 ## off('deviceUnselected')
 
 ```TypeScript
@@ -120,7 +118,6 @@ try {
 ```
 
 
-<a id="off-2"></a>
 ## off('deviceConnect')
 
 ```TypeScript
@@ -162,7 +159,6 @@ continuationManager.off("deviceConnect", (data) => {
 ```
 
 
-<a id="off-3"></a>
 ## off('deviceDisconnect')
 
 ```TypeScript

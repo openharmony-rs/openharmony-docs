@@ -2,7 +2,7 @@
 
 音频音量和设备管理。
 
-在使用AudioManager的接口之前，需先通过[getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager-1)获取AudioManager实例。
+在使用AudioManager的接口之前，需先通过[getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager)获取AudioManager实例。
 
 **起始版本：** 7
 
@@ -16,7 +16,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="disablesafemediavolume"></a>
 ## disableSafeMediaVolume
 
 ```TypeScript
@@ -61,7 +60,6 @@ audioManager.disableSafeMediaVolume().then(() => {
 
 ```
 
-<a id="getcollaborativemanager"></a>
 ## getCollaborativeManager
 
 ```TypeScript
@@ -90,7 +88,6 @@ getCollaborativeManager(): AudioCollaborativeManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 
-<a id="geteffectmanager"></a>
 ## getEffectManager
 
 ```TypeScript
@@ -128,7 +125,6 @@ let audioEffectManager: audio.AudioEffectManager = audioManager.getEffectManager
 
 ```
 
-<a id="getextraparameters"></a>
 ## getExtraParameters
 
 ```TypeScript
@@ -180,7 +176,6 @@ audioManager.getExtraParameters('key_example', subKeys).then((value: Record<stri
 
 ```
 
-<a id="getrecordingmanager"></a>
 ## getRecordingManager
 
 ```TypeScript
@@ -211,7 +206,6 @@ getRecordingManager(): AudioRecordingManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-<a id="on"></a>
 ## on('volumeChange')
 
 ```TypeScript
@@ -250,7 +244,6 @@ audioManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
 
 ```
 
-<a id="on-1"></a>
 ## on('ringerModeChange')
 
 ```TypeScript
@@ -287,7 +280,6 @@ audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
 
 ```
 
-<a id="setaudioscene"></a>
 ## setAudioScene
 
 ```TypeScript
@@ -326,7 +318,6 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: Busine
 
 ```
 
-<a id="setaudioscene-1"></a>
 ## setAudioScene
 
 ```TypeScript
@@ -368,7 +359,6 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL).then(() => {
 
 ```
 
-<a id="setextraparameters"></a>
 ## setExtraParameters
 
 ```TypeScript

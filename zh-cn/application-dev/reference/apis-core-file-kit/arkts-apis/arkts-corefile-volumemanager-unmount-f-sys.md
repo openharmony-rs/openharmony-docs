@@ -6,7 +6,6 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-<a id="unmount"></a>
 ## unmount
 
 ```TypeScript
@@ -47,7 +46,6 @@ function unmount(volumeId: string, callback: AsyncCallback<void>): void
 | 13900042 | Unknown error. |
 
 
-<a id="unmount-1"></a>
 ## unmount
 
 ```TypeScript

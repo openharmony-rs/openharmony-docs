@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="canceltransition"></a>
 ## cancelTransition
 
 ```TypeScript
@@ -27,7 +26,6 @@ cancelTransition?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="finishtransition"></a>
 ## finishTransition
 
 ```TypeScript
@@ -46,7 +44,6 @@ finishTransition(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="updatetransition"></a>
 ## updateTransition
 
 ```TypeScript
@@ -54,10 +51,9 @@ updateTransition?(progress: number): void
 ```
 
 更新交互转场动画进度(不可交互动画不支持动画进度设置)。
-
 > **说明：**  
 >  
-> 不建议在[aboutToAppear](arkts-arkui-basecustomcomponent-c.md#abouttoappear-1)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
+> 不建议在[aboutToAppear](arkts-arkui-basecustomcomponent-c.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
 
 **起始版本：** 12
 

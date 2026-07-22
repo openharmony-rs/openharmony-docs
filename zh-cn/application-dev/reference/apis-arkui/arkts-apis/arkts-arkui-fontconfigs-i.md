@@ -14,7 +14,7 @@
 fontWeightConfigs?: FontWeightConfigs
 ```
 
-字体粗细配置。默认值继承[FontWeightConfigs](docroot://reference/apis-arkui/arkui-ts/ts-text-common.md#fontweightconfigs24对象说明)。
+字体粗细配置。默认值继承[FontWeightConfigs](../../../reference/apis-arkui/arkui-ts/ts-text-common.md#fontweightconfigs24对象说明)。
 
 **类型：** FontWeightConfigs
 

@@ -16,7 +16,6 @@
 import { AdComponent } from '@kit.AdsKit';
 ```
 
-<a id="build"></a>
 ## build
 
 ```TypeScript

@@ -46,7 +46,7 @@ import { config } from '@kit.AccessibilityKit';
 | --- | --- |
 | [AppSeniorModeInfo](arkts-accessibility-config-appseniormodeinfo-i-sys.md) | Indicates the senior mode information of an application. |
 | [Config](arkts-accessibility-config-config-i-sys.md) | 用于属性的设置、获取与监听。 |
-| [ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md) | 通过[enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback-1)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。 |
+| [ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md) | 通过[enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。 |
 <!--DelEnd-->
 
 <!--Del-->

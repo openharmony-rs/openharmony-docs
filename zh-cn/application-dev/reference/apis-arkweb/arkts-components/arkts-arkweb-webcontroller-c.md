@@ -12,7 +12,6 @@ Defines the Web controller.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="accessbackward"></a>
 ## accessBackward
 
 ```TypeScript
@@ -37,7 +36,6 @@ Checks whether the web page can go back.
 | --- | --- |
 | boolean | Whether the web page can go back. |
 
-<a id="accessforward"></a>
 ## accessForward
 
 ```TypeScript
@@ -62,7 +60,6 @@ Checks whether the web page can go forward.
 | --- | --- |
 | boolean | @syscap SystemCapability.Web.Webview.Core |
 
-<a id="accessstep"></a>
 ## accessStep
 
 ```TypeScript
@@ -93,7 +90,6 @@ Checks whether the web page can go back or forward the given number of steps.
 | --- | --- |
 | boolean | @syscap SystemCapability.Web.Webview.Core |
 
-<a id="backward"></a>
 ## backward
 
 ```TypeScript
@@ -112,7 +108,6 @@ Goes back in the history of the web page.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="clearhistory"></a>
 ## clearHistory
 
 ```TypeScript
@@ -131,7 +126,6 @@ Clears the history in the Web.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -150,7 +144,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="deletejavascriptregister"></a>
 ## deleteJavaScriptRegister
 
 ```TypeScript
@@ -175,7 +168,6 @@ Deletes a registered JavaScript object with given name.
 | --- | --- | --- | --- |
 | name | string | 是 | The name of a registered JavaScript object to be deleted. |
 
-<a id="forward"></a>
 ## forward
 
 ```TypeScript
@@ -194,7 +186,6 @@ Goes forward in the history of the web page.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="getcookiemanager"></a>
 ## getCookieManager
 
 ```TypeScript
@@ -219,7 +210,6 @@ Gets network cookie manager
 | --- | --- |
 | [WebCookie](arkts-arkweb-webcookie-c.md) | @syscap SystemCapability.Web.Webview.Core |
 
-<a id="gethittest"></a>
 ## getHitTest
 
 ```TypeScript
@@ -244,7 +234,6 @@ getHitTest(): HitTestType
 | --- | --- |
 | [HitTestType](arkts-arkweb-hittesttype-e.md) | 点击测试类型。 |
 
-<a id="loaddata"></a>
 ## loadData
 
 ```TypeScript
@@ -269,7 +258,6 @@ Loads the data or URL.
 | --- | --- | --- | --- |
 | options | { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string } | 是 | The options with the data or URL and other information. |
 
-<a id="loadurl"></a>
 ## loadUrl
 
 ```TypeScript
@@ -294,7 +282,6 @@ Loads the given URL.
 | --- | --- | --- | --- |
 | options | { url: string \| Resource, headers?: Array&lt;Header&gt; } | 是 | The options with the URL and other information. |
 
-<a id="onactive"></a>
 ## onActive
 
 ```TypeScript
@@ -313,7 +300,6 @@ Let the Web active.It is no longer maintained since API version 9, and it is rec
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="oninactive"></a>
 ## onInactive
 
 ```TypeScript
@@ -332,7 +318,6 @@ Let the Web inactive.It is no longer maintained since API version 9, and it is r
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="refresh"></a>
 ## refresh
 
 ```TypeScript
@@ -351,7 +336,6 @@ refreshes the current URL.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="registerjavascriptproxy"></a>
 ## registerJavaScriptProxy
 
 ```TypeScript
@@ -376,7 +360,6 @@ Registers the JavaScript object and method list.
 | --- | --- | --- | --- |
 | options | { object: object, name: string, methodList: Array&lt;string&gt; } | 是 | The option with the JavaScript object and method list. |
 
-<a id="requestfocus"></a>
 ## requestFocus
 
 ```TypeScript
@@ -395,7 +378,6 @@ Gets the request focus.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="runjavascript"></a>
 ## runJavaScript
 
 ```TypeScript
@@ -420,7 +402,6 @@ Asynchronously execute JavaScript in the context of the currently displayed page
 | --- | --- | --- | --- |
 | options | { script: string, callback?: (result: string) =&gt; void } | 是 | The options with a piece of code and a callback. |
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -439,7 +420,6 @@ Stops the current load.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="zoom"></a>
 ## zoom
 
 ```TypeScript

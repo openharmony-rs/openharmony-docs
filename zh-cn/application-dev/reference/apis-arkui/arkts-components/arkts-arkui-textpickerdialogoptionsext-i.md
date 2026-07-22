@@ -20,7 +20,7 @@ acceptButtonStyle?: PickerDialogButtonStyle
 
 说明：
 
-1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效，保持默认值false。2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形[ROUNDED_RECTANGLE](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)，呈现效果依然是胶囊型按钮[Capsule](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)。
+1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效，保持默认值false。2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形[ROUNDED_RECTANGLE](../../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)，呈现效果依然是胶囊型按钮[Capsule](../../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)。
 
 **类型：** PickerDialogButtonStyle
 
@@ -191,7 +191,7 @@ cancelButtonStyle?: PickerDialogButtonStyle
 
 1.acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效，保持默认值false。
 
-2.按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形[ROUNDED_RECTANGLE](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)，呈现效果依然是胶囊型按钮[Capsule](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)。
+2.按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形[ROUNDED_RECTANGLE](../../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)，呈现效果依然是胶囊型按钮[Capsule](../../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)。
 
 **类型：** PickerDialogButtonStyle
 
@@ -235,7 +235,7 @@ defaultTextStyle?: TextPickerTextStyle
 
 设置关闭滑动过程中文本样式变化动效时的各个选项的文本样式，仅当disableTextStyleAnimation为true时生效。
 
-默认值：与[Text](./text)组件默认值相同。
+默认值：与[Text](../../apis-arkgraphics2d/arkts-apis/arkts-graphics-text.md)组件默认值相同。
 
 **类型：** TextPickerTextStyle
 
@@ -264,7 +264,7 @@ disableTextStyleAnimation?: boolean
 
 说明：
 
-设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为defaultTextStyle属性设置的样式。如未设置defaultTextStyle，则显示为[Text](./text)组件默认样式。
+设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为defaultTextStyle属性设置的样式。如未设置defaultTextStyle，则显示为[Text](../../apis-arkgraphics2d/arkts-apis/arkts-graphics-text.md)组件默认样式。
 
 **类型：** boolean
 

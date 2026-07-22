@@ -6,7 +6,6 @@
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="copy"></a>
 ## copy
 
 ```TypeScript
@@ -75,7 +74,6 @@ try {
 ```
 
 
-<a id="copy-1"></a>
 ## copy
 
 ```TypeScript

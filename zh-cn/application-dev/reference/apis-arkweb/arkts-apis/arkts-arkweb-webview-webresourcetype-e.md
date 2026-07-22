@@ -210,7 +210,7 @@ XMLHttpRequest.
 PING = 14
 ```
 
-<a ping\>/sendBeacon的Ping请求。
+&lt;a ping\&gt;/sendBeacon的Ping请求。
 
 **起始版本：** 12
 

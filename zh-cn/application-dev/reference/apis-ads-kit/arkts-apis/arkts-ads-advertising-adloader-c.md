@@ -14,7 +14,6 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -52,7 +51,6 @@ function createAdLoader(context: common.Context): void {
 
 ```
 
-<a id="loadad"></a>
 ## loadAd
 
 ```TypeScript
@@ -118,7 +116,6 @@ function loadAd(context: common.Context, adRequestParams: advertising.AdRequestP
 
 ```
 
-<a id="loadadwithmultislots"></a>
 ## loadAdWithMultiSlots
 
 ```TypeScript

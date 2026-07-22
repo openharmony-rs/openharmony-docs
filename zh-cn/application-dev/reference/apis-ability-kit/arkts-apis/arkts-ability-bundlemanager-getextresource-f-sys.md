@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getextresource"></a>
 ## getExtResource
 
 ```TypeScript

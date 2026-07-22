@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="copyfile"></a>
 ## copyFile
 
 ```TypeScript
@@ -61,7 +60,6 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="copyfile-1"></a>
 ## copyFile
 
 ```TypeScript
@@ -109,7 +107,6 @@ declare function copyFile(src: string | number, dest: string | number, callback:
 | 13900042 | Unknown error |
 
 
-<a id="copyfile-2"></a>
 ## copyFile
 
 ```TypeScript
@@ -127,17 +124,7 @@ declare function copyFile(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function copyFile(
-  src: string | number,
-  dest: string | number,
-  mode: number,
-  callback: AsyncCallback<void>
-): void--><!--Device-unnamed-declare function copyFile(
-  src: string | number,
-  dest: string | number,
-  mode: number,
-  callback: AsyncCallback<void>
-): void-End-->
+<!--Device-unnamed-declare function copyFile(  src: string | number,  dest: string | number,  mode: number,  callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copyFile(  src: string | number,  dest: string | number,  mode: number,  callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

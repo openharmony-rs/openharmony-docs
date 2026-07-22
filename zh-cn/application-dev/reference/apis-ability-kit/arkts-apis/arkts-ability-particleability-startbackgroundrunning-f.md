@@ -6,7 +6,6 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
-<a id="startbackgroundrunning"></a>
 ## startBackgroundRunning
 
 ```TypeScript
@@ -19,7 +18,7 @@ function startBackgroundRunning(id: number, request: NotificationRequest, callba
 
 **废弃版本：** 9
 
-**替代接口：** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-1)
+**替代接口：** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -83,7 +82,6 @@ wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj) => {
 ```
 
 
-<a id="startbackgroundrunning-1"></a>
 ## startBackgroundRunning
 
 ```TypeScript
@@ -96,7 +94,7 @@ function startBackgroundRunning(id: number, request: NotificationRequest): Promi
 
 **废弃版本：** 9
 
-**替代接口：** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-1)
+**替代接口：** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

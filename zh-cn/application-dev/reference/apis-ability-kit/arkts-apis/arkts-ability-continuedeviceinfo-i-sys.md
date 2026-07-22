@@ -1,6 +1,6 @@
 # ContinueDeviceInfo（系统接口）
 
-表示发起Mission迁移时所需参数的枚举，迁移Mission详见：[continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission-1)
+表示发起Mission迁移时所需参数的枚举，迁移Mission详见：[continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission)
 
 **起始版本：** 9
 

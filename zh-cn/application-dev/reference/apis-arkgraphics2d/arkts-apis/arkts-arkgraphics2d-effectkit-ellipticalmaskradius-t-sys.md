@@ -13,13 +13,7 @@ type EllipticalMaskRadius = [
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-effectKit-type EllipticalMaskRadius = [
-  double,
-  double
-]--><!--Device-effectKit-type EllipticalMaskRadius = [
-  double,
-  double
-]-End-->
+<!--Device-effectKit-type EllipticalMaskRadius = [  double,  double]--><!--Device-effectKit-type EllipticalMaskRadius = [  double,  double]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

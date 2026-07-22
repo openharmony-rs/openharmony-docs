@@ -14,7 +14,6 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -44,7 +43,6 @@ let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -52,7 +50,6 @@ constructor(name: string, priority?: Priority)
 ```
 
 SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。该实例表示一个全局串行队列。如果传入的名字与已有名字相同，将返回同一个串行队列。
-
 > **说明**  
 >  
 > - 底层通过单例模式保证了：创建同名串行队列时，获取到同一个实例。  
@@ -81,7 +78,6 @@ let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner("runner1", task
 
 ```
 
-<a id="execute"></a>
 ## execute
 
 ```TypeScript
@@ -89,7 +85,6 @@ execute(task: Task): Promise<Object>
 ```
 
 执行串行任务。使用该方法前需先构造**SequenceRunner**实例。串行队列不能执行任务组任务、其他串行队列任务、异步队列任务、有依赖关系的任务和已执行的任务。使用Promise异步回调。
-
 > **说明**  
 >  
 > - 不支持加入存在依赖的任务。  

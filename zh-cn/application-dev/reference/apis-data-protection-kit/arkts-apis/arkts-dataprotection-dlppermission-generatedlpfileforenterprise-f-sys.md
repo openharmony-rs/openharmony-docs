@@ -6,7 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="generatedlpfileforenterprise"></a>
 ## generateDlpFileForEnterprise
 
 ```TypeScript
@@ -16,7 +15,6 @@ function generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, proper
 将明文文件加密生成企业账号DLP文件，仅支持企业账号调用。使用Promise异步回调。
 
 用于将明文文件加密生成企业账号的DLP权限受控文件，实现企业级的文件权限管理。
-
 > **说明：**  
 >  
 > 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。使用该接口可以将明文文件加密生成权限受控文件，由企业服务器管控账号是否有权限解密该文件。

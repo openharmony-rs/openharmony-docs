@@ -6,7 +6,6 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
-<a id="setseniormodestateforapp"></a>
 ## setSeniorModeStateForApp
 
 ```TypeScript

@@ -6,14 +6,13 @@
 import { screenshot } from '@kit.ArkUI';
 ```
 
-<a id="pick"></a>
 ## pick
 
 ```TypeScript
 function pick(): Promise<PickInfo>
 ```
 
-获取屏幕截图，当前仅支持获取displayId为0的屏幕截图（如果需要对扩展屏截图，可以通过[capture](arkts-arkui-screenshot-capture-f.md#capture-1)接口实现），使用Promise异步回调。
+获取屏幕截图，当前仅支持获取displayId为0的屏幕截图（如果需要对扩展屏截图，可以通过[capture](arkts-arkui-screenshot-capture-f.md#capture)接口实现），使用Promise异步回调。
 
 **起始版本：** 12
 

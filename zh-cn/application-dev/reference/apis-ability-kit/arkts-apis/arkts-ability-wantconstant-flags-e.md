@@ -1,6 +1,6 @@
 # Flags
 
-[Want.flags](./@ohos.app.ability.Want:Want.Flags)字段常用的系统预置关键字。开发者可以通过这些预置关键字设置或获取应用跳转等场景中额外携带的标志位信息。
+[Want.flags](arkts-ability-app-ability-want-want-c.md#flags)字段常用的系统预置关键字。开发者可以通过这些预置关键字设置或获取应用跳转等场景中额外携带的标志位信息。
 
 **起始版本：** 9
 
@@ -79,7 +79,7 @@ FLAG_INSTALL_ON_DEMAND = 0x00000800
 FLAG_ABILITY_ON_COLLABORATE = 0x00002000
 ```
 
-在多设备协同场景下，调用方应用通过DMS系统发起请求并且通过Flags字段携带此标志，协同方应用才会触发生命周期回调方法[onCollaborate()](arkts-ability-app-ability-uiability-uiability-c.md#oncollaborate-1)。
+在多设备协同场景下，调用方应用通过DMS系统发起请求并且通过Flags字段携带此标志，协同方应用才会触发生命周期回调方法[onCollaborate()](arkts-ability-app-ability-uiability-uiability-c.md#oncollaborate)。
 
 **起始版本：** 18
 
@@ -95,7 +95,7 @@ FLAG_START_WITHOUT_TIPS = 0x40000000
 
 表示是否关闭匹配失败弹窗功能。
 
-通过[隐式方式拉起应用](docroot://application-models/app-startup-overview.md)时，如果没有能够匹配的应用，默认会弹出提示弹窗“暂无可用打开方式”。开发者可以通过该字段屏蔽该弹窗。
+通过[隐式方式拉起应用](../../../application-models/app-startup-overview.md)时，如果没有能够匹配的应用，默认会弹出提示弹窗“暂无可用打开方式”。开发者可以通过该字段屏蔽该弹窗。
 
 **起始版本：** 11
 

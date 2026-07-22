@@ -14,7 +14,6 @@ XmlPullParser接口用于解析现有的XML文件。
 import { xml } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -50,7 +49,6 @@ let xmlParser = new xml.XmlPullParser(uint8Array.buffer as object as ArrayBuffer
 
 ```
 
-<a id="parse"></a>
 ## parse
 
 ```TypeScript
@@ -110,7 +108,6 @@ that.parse(options);
 
 ```
 
-<a id="parsexml"></a>
 ## parseXml
 
 ```TypeScript

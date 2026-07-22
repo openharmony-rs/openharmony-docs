@@ -6,7 +6,6 @@
 import { linkEnhance } from '@kit.DistributedServiceKit';
 ```
 
-<a id="createconnection"></a>
 ## createConnection
 
 ```TypeScript
@@ -29,7 +28,7 @@ function createConnection(deviceId: string, name: string): Connection
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | 连接的目标设备的deviceId，即对端设备的BLE MAC地址。BLE MAC的获取方法，请参考[查找设备](docroot://connectivity/bluetooth/ble-development-guide.md)。 |
+| deviceId | string | 是 | 连接的目标设备的deviceId，即对端设备的BLE MAC地址。BLE MAC的获取方法，请参考[查找设备](../../../connectivity/bluetooth/ble-development-guide.md)。 |
 | name | string | 是 | 连接的目标设备的服务名，非空字符串，最大长度255字节。 |
 
 **返回值：**

@@ -14,7 +14,6 @@ This class is used to intercept requests for a specified scheme.
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="onrequeststart"></a>
 ## onRequestStart
 
 ```TypeScript
@@ -28,9 +27,7 @@ onRequestStart(
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebSchemeHandler-onRequestStart(
-      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void--><!--Device-WebSchemeHandler-onRequestStart(
-      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void-End-->
+<!--Device-WebSchemeHandler-onRequestStart(      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void--><!--Device-WebSchemeHandler-onRequestStart(      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,7 +43,6 @@ onRequestStart(
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
-<a id="onrequeststop"></a>
 ## onRequestStop
 
 ```TypeScript

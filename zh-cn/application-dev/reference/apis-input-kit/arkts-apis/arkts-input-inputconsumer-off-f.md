@@ -6,7 +6,6 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-<a id="off"></a>
 ## off('hotkeyChange')
 
 ```TypeScript
@@ -107,7 +106,6 @@ struct Index {
 ```
 
 
-<a id="off-1"></a>
 ## off('keyPressed')
 
 ```TypeScript

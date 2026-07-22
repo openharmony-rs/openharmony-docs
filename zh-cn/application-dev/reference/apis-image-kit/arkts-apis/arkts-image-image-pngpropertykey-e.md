@@ -1,10 +1,9 @@
 # PngPropertyKey
 
 表示PNG图片信息的枚举。
-
 > **说明：**  
 >  
-> 返回字段类型具体参考[PngMetadata](docroot://reference/apis-image-kit/arkts-apis-image-PngMetadata.md)。  
+> 返回字段类型具体参考[PngMetadata](../../../reference/apis-image-kit/arkts-apis-image-PngMetadata.md)。  
 > | 名称 | 值 | 说明 |  
 > | ---- | -- | ---- |  
 > | X_PIXELS_PER_METER | 'PngXPixelsPerMeter' | PNG图像X方向每米像素数。 |  

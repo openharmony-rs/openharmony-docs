@@ -6,7 +6,6 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="getselectioncontent"></a>
 ## getSelectionContent
 
 ```TypeScript

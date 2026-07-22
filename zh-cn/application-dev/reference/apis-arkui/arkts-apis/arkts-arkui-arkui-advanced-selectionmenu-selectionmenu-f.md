@@ -6,7 +6,6 @@
 import { EditorMenuOptions, SelectionMenuOptions, EditorEventInfo, SelectionMenu, ExpandedMenuOptions } from '@kit.ArkUI';
 ```
 
-<a id="selectionmenu"></a>
 ## SelectionMenu
 
 ```TypeScript

@@ -8,7 +8,6 @@ Define DynamicNode.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="onmove"></a>
 ## onMove
 
 ```TypeScript
@@ -39,7 +38,6 @@ Set the move action.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onmove-1"></a>
 ## onMove
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
-<a id="getupdateauthdata"></a>
 ## getUpdateAuthData
 
 ```TypeScript

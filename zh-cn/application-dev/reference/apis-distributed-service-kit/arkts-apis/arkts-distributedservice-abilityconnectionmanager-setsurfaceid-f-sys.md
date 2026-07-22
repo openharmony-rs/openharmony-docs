@@ -6,7 +6,6 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="setsurfaceid"></a>
 ## setSurfaceId
 
 ```TypeScript

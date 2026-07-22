@@ -6,7 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="download"></a>
 ## download
 
 ```TypeScript
@@ -19,7 +18,7 @@ function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>)
 
 **废弃版本：** 9
 
-**替代接口：** [downloadFile(context:](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)
+**替代接口：** [downloadFile(context:](arkts-basicservices-request-downloadfile-f.md#downloadfile)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -59,7 +58,6 @@ filePath: 'xxx/xxxxx.hap'}, (err: BusinessError, data: request.DownloadTask) => 
 ```
 
 
-<a id="download-1"></a>
 ## download
 
 ```TypeScript
@@ -72,7 +70,7 @@ function download(config: DownloadConfig): Promise<DownloadTask>
 
 **废弃版本：** 9
 
-**替代接口：** [downloadFile(context:](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)
+**替代接口：** [downloadFile(context:](arkts-basicservices-request-downloadfile-f.md#downloadfile)
 
 **需要权限：** ohos.permission.INTERNET
 

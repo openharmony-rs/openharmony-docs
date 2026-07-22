@@ -16,7 +16,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -48,7 +47,6 @@ let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager
 
 ```
 
-<a id="getlanguageinfoarray"></a>
 ## getLanguageInfoArray
 
 ```TypeScript
@@ -106,7 +104,6 @@ try {
 
 ```
 
-<a id="getregioninfoarray"></a>
 ## getRegionInfoArray
 
 ```TypeScript
@@ -164,7 +161,6 @@ try {
 
 ```
 
-<a id="gettimezonecityitemarray"></a>
 ## getTimeZoneCityItemArray
 
 ```TypeScript

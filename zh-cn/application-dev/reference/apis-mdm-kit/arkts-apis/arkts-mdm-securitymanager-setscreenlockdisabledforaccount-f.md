@@ -6,7 +6,6 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="setscreenlockdisabledforaccount"></a>
 ## setScreenLockDisabledForAccount
 
 ```TypeScript
@@ -14,7 +13,6 @@ function setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 ```
 
 禁用/启用当前用户的滑动解锁能力。启用时：设备灭屏后再亮屏，用户需要在屏幕上滑动后才能进入桌面。禁用时：设备灭屏后再亮屏会直接进入桌面。
-
 > **说明：**  
 >  
 > 1.该接口能力仅在设备无锁屏密码时生效。  

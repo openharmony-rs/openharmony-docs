@@ -6,7 +6,6 @@
 import { manager } from '@kit.ConnectivityKit';
 ```
 
-<a id="setconnectionmode"></a>
 ## setConnectionMode
 
 ```TypeScript

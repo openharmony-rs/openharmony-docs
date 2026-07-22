@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="getallactivenotifications"></a>
 ## getAllActiveNotifications
 
 ```TypeScript
@@ -60,7 +59,6 @@ notificationManager.getAllActiveNotifications(getAllActiveNotificationsCallback)
 ```
 
 
-<a id="getallactivenotifications-1"></a>
 ## getAllActiveNotifications
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="disconnectprinter"></a>
 ## disconnectPrinter
 
 ```TypeScript
@@ -58,7 +57,6 @@ print.disconnectPrinter(printerId, (err: BusinessError) => {
 ```
 
 
-<a id="disconnectprinter-1"></a>
 ## disconnectPrinter
 
 ```TypeScript

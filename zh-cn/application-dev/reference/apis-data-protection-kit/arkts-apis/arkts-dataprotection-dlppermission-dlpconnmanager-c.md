@@ -1,7 +1,6 @@
 # DlpConnManager
 
 用于调用registerPlugin和unregisterPlugin接口，在SA（System Ability）中注册或注销回调能力。
-
 > **说明：**  
 >  
 > registerPlugin接口将回调能力注册进SA（System Ability），而unregisterPlugin接口将回调能力从SA（System Ability）中注销。
@@ -18,7 +17,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -52,7 +50,6 @@ let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnMana
 
 ```
 
-<a id="registerplugin"></a>
 ## registerPlugin
 
 ```TypeScript
@@ -60,7 +57,6 @@ static registerPlugin(plugin: DlpConnPlugin): number
 ```
 
 该接口提供将回调注册到SA（System Ability）侧的功能。
-
 > **说明：**  
 >  
 > registerPlugin将plugin注册到SA（System Ability）侧，待SA（System Ability）调用。
@@ -123,7 +119,6 @@ let pluginId: number = dlpPermission.DlpConnManager.registerPlugin(new DataCapsu
 
 ```
 
-<a id="unregisterplugin"></a>
 ## unregisterPlugin
 
 ```TypeScript
@@ -133,7 +128,6 @@ static unregisterPlugin(): void
 提供将回调从SA（System Ability）侧注销的能力。
 
 该接口可用于应用退出时注销回调释放资源，确保回调能力正确释放。
-
 > **说明：**  
 >  
 > unregisterPlugin将plugin从SA（System Ability）侧注销。

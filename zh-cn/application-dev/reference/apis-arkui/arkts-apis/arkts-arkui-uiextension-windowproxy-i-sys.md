@@ -14,7 +14,6 @@ UIExtension窗口代理。
 import { uiExtension } from '@kit.ArkUI';
 ```
 
-<a id="hidenonsecurewindows"></a>
 ## hideNonSecureWindows
 
 ```TypeScript
@@ -22,7 +21,6 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 ```
 
 设置是否隐藏不安全窗口，使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 不安全窗口是指可能遮挡[EmbeddedComponent](../../apis-arkui/arkts-components/arkts-arkui-embedded_component-i)（或  
@@ -99,7 +97,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="setwatermarkflag"></a>
 ## setWaterMarkFlag
 
 ```TypeScript
@@ -107,7 +104,6 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 ```
 
 为当前窗口添加或删除安全水印标志，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 添加安全水印标志后，窗口在前台时会将当前全屏幕覆盖水印。全屏、悬浮窗、分屏等场景下只要有添加了安全水印标志的窗口在前台，就会显示全屏水印。

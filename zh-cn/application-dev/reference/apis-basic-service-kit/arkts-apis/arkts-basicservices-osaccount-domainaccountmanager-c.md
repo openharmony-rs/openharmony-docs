@@ -14,7 +14,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="updateaccountinfo"></a>
 ## updateAccountInfo
 
 ```TypeScript

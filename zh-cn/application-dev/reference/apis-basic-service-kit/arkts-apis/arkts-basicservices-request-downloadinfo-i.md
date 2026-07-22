@@ -1,6 +1,6 @@
 # DownloadInfo
 
-下载任务信息，[getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo-1)接口的回调参数。
+下载任务信息，[getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo)接口的回调参数。
 
 **起始版本：** 7
 
@@ -100,7 +100,7 @@ downloadedBytes: number
 failedReason: number
 ```
 
-下载失败原因，可以是任何[下载任务的错误码](docroot://reference/apis-basic-services-kit/js-apis-request.md#constants)常量。
+下载失败原因，可以是任何[下载任务的错误码](../../../reference/apis-basic-services-kit/js-apis-request.md#constants)常量。
 
 **类型：** number
 
@@ -148,7 +148,7 @@ filePath: string
 pausedReason: number
 ```
 
-会话暂停的原因，可以是任何[下载任务暂停原因](docroot://reference/apis-basic-services-kit/js-apis-request.md#constants)常量。
+会话暂停的原因，可以是任何[下载任务暂停原因](../../../reference/apis-basic-services-kit/js-apis-request.md#constants)常量。
 
 **类型：** number
 
@@ -164,7 +164,7 @@ pausedReason: number
 status: number
 ```
 
-下载状态码，可以是任何[下载任务状态码](docroot://reference/apis-basic-services-kit/js-apis-request.md#constants)常量。
+下载状态码，可以是任何[下载任务状态码](../../../reference/apis-basic-services-kit/js-apis-request.md#constants)常量。
 
 **类型：** number
 

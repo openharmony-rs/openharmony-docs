@@ -1,6 +1,6 @@
 # RotationAxesStateChangeInfo（系统接口）
 
-Rotation axes state change information.
+旋转轴状态变更信息
 
 **起始版本：** 20
 
@@ -22,7 +22,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 mechId: number
 ```
 
-ID of the mechanical device.
+机械设备唯一ID
 
 **类型：** number
 

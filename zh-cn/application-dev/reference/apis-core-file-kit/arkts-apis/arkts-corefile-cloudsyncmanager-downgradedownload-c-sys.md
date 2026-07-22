@@ -18,7 +18,6 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -67,7 +66,6 @@ try {
 
 ```
 
-<a id="getcloudfileinfo"></a>
 ## getCloudFileInfo
 
 ```TypeScript
@@ -117,7 +115,6 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
 
 ```
 
-<a id="startdownload"></a>
 ## startDownload
 
 ```TypeScript
@@ -185,7 +182,6 @@ downgradeMgr.startDownload(callback).then(() => {
 
 ```
 
-<a id="starttransfer"></a>
 ## startTransfer
 
 ```TypeScript
@@ -245,14 +241,13 @@ try {
 
 ```
 
-<a id="stopdownload"></a>
 ## stopDownload
 
 ```TypeScript
 stopDownload(): Promise<void>
 ```
 
-停止由[startDownload](arkts-corefile-cloudsyncmanager-downgradedownload-c-sys.md#startdownload-1)触发的全量下载任务，使用Promise异步回调。
+停止由[startDownload](arkts-corefile-cloudsyncmanager-downgradedownload-c-sys.md#startdownload)触发的全量下载任务，使用Promise异步回调。
 
 **起始版本：** 20
 

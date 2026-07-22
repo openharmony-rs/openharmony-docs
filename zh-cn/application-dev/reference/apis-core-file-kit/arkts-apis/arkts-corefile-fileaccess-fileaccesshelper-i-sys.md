@@ -18,7 +18,6 @@ FileAccessHelper对象。
 import { fileAccess } from '@kit.CoreFileKit';
 ```
 
-<a id="access"></a>
 ## access
 
 ```TypeScript
@@ -120,7 +119,6 @@ async function accessFunc() {
 
 ```
 
-<a id="access-1"></a>
 ## access
 
 ```TypeScript
@@ -219,7 +217,6 @@ try {
 
 ```
 
-<a id="copy"></a>
 ## copy
 
 ```TypeScript
@@ -256,7 +253,6 @@ copy(sourceUri: string, destUri: string, force?: boolean): Promise<Array<CopyRes
 | --- | --- |
 | Promise&lt;Array&lt;CopyResult&gt;&gt; | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
 
-<a id="copy-1"></a>
 ## copy
 
 ```TypeScript
@@ -323,7 +319,6 @@ try {
 
 ```
 
-<a id="copy-2"></a>
 ## copy
 
 ```TypeScript
@@ -391,7 +386,6 @@ try {
 
 ```
 
-<a id="copyfile"></a>
 ## copyFile
 
 ```TypeScript
@@ -459,7 +453,6 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
-<a id="copyfile-1"></a>
 ## copyFile
 
 ```TypeScript
@@ -547,7 +540,6 @@ try {
 
 ```
 
-<a id="createfile"></a>
 ## createFile
 
 ```TypeScript
@@ -652,7 +644,6 @@ async function createFile() {
 
 ```
 
-<a id="createfile-1"></a>
 ## createFile
 
 ```TypeScript
@@ -749,7 +740,6 @@ try {
 
 ```
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -762,7 +752,7 @@ delete(uri: string) : Promise<number>
 
 **废弃版本：** 23
 
-**替代接口：** [delete](arkts-corefile-file-fs-atomicfile-c.md#delete-1)
+**替代接口：** [delete](arkts-corefile-file-fs-atomicfile-c.md#delete)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -848,7 +838,6 @@ async function deleteFile01() {
 
 ```
 
-<a id="delete-1"></a>
 ## delete
 
 ```TypeScript
@@ -861,7 +850,7 @@ delete(uri: string, callback: AsyncCallback<number>): void
 
 **废弃版本：** 23
 
-**替代接口：** [delete](arkts-corefile-file-fs-atomicfile-c.md#delete-1)
+**替代接口：** [delete](arkts-corefile-file-fs-atomicfile-c.md#delete)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -943,7 +932,6 @@ try {
 
 ```
 
-<a id="getfileinfofromrelativepath"></a>
 ## getFileInfoFromRelativePath
 
 ```TypeScript
@@ -1000,7 +988,6 @@ async function getRelativePath() {
 
 ```
 
-<a id="getfileinfofromrelativepath-1"></a>
 ## getFileInfoFromRelativePath
 
 ```TypeScript
@@ -1056,7 +1043,6 @@ try {
 
 ```
 
-<a id="getfileinfofromuri"></a>
 ## getFileInfoFromUri
 
 ```TypeScript
@@ -1114,7 +1100,6 @@ async function getUri() {
 
 ```
 
-<a id="getfileinfofromuri-1"></a>
 ## getFileInfoFromUri
 
 ```TypeScript
@@ -1171,14 +1156,13 @@ try {
 
 ```
 
-<a id="getroots"></a>
 ## getRoots
 
 ```TypeScript
 getRoots(): Promise<RootIterator>
 ```
 
-以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。该方法返回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next-1)方法返回[RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md)。
+以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。该方法返回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回[RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md)。
 
 **起始版本：** 9
 
@@ -1269,14 +1253,13 @@ async function getRoots() {
 
 ```
 
-<a id="getroots-1"></a>
 ## getRoots
 
 ```TypeScript
 getRoots(callback: AsyncCallback<RootIterator>): void
 ```
 
-以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。callback带回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next-1)方法返回[RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md)。
+以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。callback带回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回[RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md)。
 
 **起始版本：** 9
 
@@ -1368,7 +1351,6 @@ async function getRoots() {
 
 ```
 
-<a id="mkdir"></a>
 ## mkDir
 
 ```TypeScript
@@ -1473,7 +1455,6 @@ async function createDirectory() {
 
 ```
 
-<a id="mkdir-1"></a>
 ## mkDir
 
 ```TypeScript
@@ -1570,7 +1551,6 @@ try {
 
 ```
 
-<a id="move"></a>
 ## move
 
 ```TypeScript
@@ -1670,7 +1650,6 @@ async function moveFile01() {
 
 ```
 
-<a id="move-1"></a>
 ## move
 
 ```TypeScript
@@ -1767,7 +1746,6 @@ try {
 
 ```
 
-<a id="movefile"></a>
 ## moveFile
 
 ```TypeScript
@@ -1861,7 +1839,6 @@ async function moveFile01() {
 
 ```
 
-<a id="movefile-1"></a>
 ## moveFile
 
 ```TypeScript
@@ -1952,7 +1929,6 @@ try {
 
 ```
 
-<a id="moveitem"></a>
 ## moveItem
 
 ```TypeScript
@@ -2020,7 +1996,6 @@ moveItem(sourceUri: string, destUri: string, force?: boolean): Promise<Array<Mov
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
-<a id="moveitem-1"></a>
 ## moveItem
 
 ```TypeScript
@@ -2118,7 +2093,6 @@ try {
 
 ```
 
-<a id="moveitem-2"></a>
 ## moveItem
 
 ```TypeScript
@@ -2217,7 +2191,6 @@ try {
 
 ```
 
-<a id="openfile"></a>
 ## openFile
 
 ```TypeScript
@@ -2315,7 +2288,6 @@ async function openFile01() {
 
 ```
 
-<a id="openfile-1"></a>
 ## openFile
 
 ```TypeScript
@@ -2411,7 +2383,6 @@ try {
 
 ```
 
-<a id="query"></a>
 ## query
 
 ```TypeScript
@@ -2470,7 +2441,6 @@ async function getQuery01() {
 
 ```
 
-<a id="query-1"></a>
 ## query
 
 ```TypeScript
@@ -2529,7 +2499,6 @@ async function getQuery02() {
 
 ```
 
-<a id="registerobserver"></a>
 ## registerObserver
 
 ```TypeScript
@@ -2566,7 +2535,6 @@ registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback<
 | --- | --- |
 | 14300002 | Invalid uri |
 
-<a id="rename"></a>
 ## rename
 
 ```TypeScript
@@ -2665,7 +2633,6 @@ async function renameFile01() {
 
 ```
 
-<a id="rename-1"></a>
 ## rename
 
 ```TypeScript
@@ -2761,7 +2728,6 @@ try {
 
 ```
 
-<a id="unregisterobserver"></a>
 ## unregisterObserver
 
 ```TypeScript

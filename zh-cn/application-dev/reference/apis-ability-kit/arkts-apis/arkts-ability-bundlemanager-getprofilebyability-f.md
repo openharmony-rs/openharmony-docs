@@ -6,15 +6,13 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getprofilebyability"></a>
 ## getProfileByAbility
 
 ```TypeScript
 function getProfileByAbility(moduleName: string, abilityName: string, metadataName: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](docroot://quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
-
+根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
 > 说明：  
 > > 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)的相  
 > 关接口，来获取引用的资源。
@@ -33,7 +31,7 @@ function getProfileByAbility(moduleName: string, abilityName: string, metadataNa
 | --- | --- | --- | --- |
 | moduleName | string | 是 | 表示Module名称。 |
 | abilityName | string | 是 | 表示UIAbility组件的名称。 |
-| metadataName | string | 是 | 表示UIAbility组件的[元信息名称](docroot://quick-start/module-configuration-file.md#metadata标签)，即module.json5配置文件中[abilities标签](docroot://quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name。 |
+| metadataName | string | 是 | 表示UIAbility组件的[元信息名称](../../../quick-start/module-configuration-file.md#metadata标签)，即module.json5配置文件中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array<string>；否则为错误对象。 |
 
 **错误码：**
@@ -73,15 +71,13 @@ try {
 ```
 
 
-<a id="getprofilebyability-1"></a>
 ## getProfileByAbility
 
 ```TypeScript
 function getProfileByAbility(moduleName: string, abilityName: string, metadataName?: string): Promise<Array<string>>
 ```
 
-根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](docroot://quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
-
+根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
 > 说明：  
 > > 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)的相  
 > 关接口，来获取引用的资源。
@@ -100,7 +96,7 @@ function getProfileByAbility(moduleName: string, abilityName: string, metadataNa
 | --- | --- | --- | --- |
 | moduleName | string | 是 | 表示Module名称。 |
 | abilityName | string | 是 | 表示UIAbility组件的名称。 |
-| metadataName | string | 否 | 表示UIAbility组件的元信息名称，即module.json5配置文件中[abilities标签](docroot://quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name，默认值为空。 |
+| metadataName | string | 否 | 表示UIAbility组件的元信息名称，即module.json5配置文件中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name，默认值为空。 |
 
 **返回值：**
 

@@ -14,7 +14,6 @@ Provides back and forward history list information method. related to {@link His
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="getitematindex"></a>
 ## getItemAtIndex
 
 ```TypeScript

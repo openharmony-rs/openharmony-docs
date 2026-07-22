@@ -1,6 +1,6 @@
 # RotationLimits（系统接口）
 
-Rotation angle limits relative to the reference point.
+相对于参考点的旋转角度限制
 
 **起始版本：** 20
 

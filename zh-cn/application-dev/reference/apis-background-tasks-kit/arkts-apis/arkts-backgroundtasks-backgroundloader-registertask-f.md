@@ -6,7 +6,6 @@
 import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="registertask"></a>
 ## registerTask
 
 ```TypeScript

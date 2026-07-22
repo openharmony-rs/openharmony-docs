@@ -8,7 +8,6 @@ Text组件的控制器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="closeselectionmenu"></a>
 ## closeSelectionMenu
 
 ```TypeScript
@@ -27,7 +26,6 @@ closeSelectionMenu(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getlayoutmanager"></a>
 ## getLayoutManager
 
 ```TypeScript
@@ -52,7 +50,6 @@ getLayoutManager(): LayoutManager
 | --- | --- |
 | [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | 布局管理器对象。 |
 
-<a id="setstyledstring"></a>
 ## setStyledString
 
 ```TypeScript
@@ -77,7 +74,6 @@ setStyledString(value: StyledString): void
 | --- | --- | --- | --- |
 | value | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | 是 | 属性字符串。<br/>**说明：** <br/>StyledString的子类[MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md)也可以作为入参值。 |
 
-<a id="settextselection"></a>
 ## setTextSelection
 
 ```TypeScript
@@ -86,7 +82,6 @@ setTextSelection(selectionStart: number | undefined, selectionEnd: number | unde
 ```
 
 设置文本选择区域并高亮显示。
-
 > **说明：**  
 >  
 > 当[copyOption](TextAttribute#copyOption)设置为CopyOptions.None时，设置setTextSelection不生效。  
@@ -107,9 +102,7 @@ setTextSelection(selectionStart: number | undefined, selectionEnd: number | unde
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextController-setTextSelection(selectionStart: number | undefined, selectionEnd: number | undefined,
-                   options?: SelectionOptions): void--><!--Device-TextController-setTextSelection(selectionStart: number | undefined, selectionEnd: number | undefined,
-                   options?: SelectionOptions): void-End-->
+<!--Device-TextController-setTextSelection(selectionStart: number | undefined, selectionEnd: number | undefined,                   options?: SelectionOptions): void--><!--Device-TextController-setTextSelection(selectionStart: number | undefined, selectionEnd: number | undefined,                   options?: SelectionOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

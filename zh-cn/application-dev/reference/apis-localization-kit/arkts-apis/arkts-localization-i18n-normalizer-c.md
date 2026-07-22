@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="getinstance"></a>
 ## getInstance
 
 ```TypeScript
@@ -64,7 +63,6 @@ try {
 
 ```
 
-<a id="normalize"></a>
 ## normalize
 
 ```TypeScript

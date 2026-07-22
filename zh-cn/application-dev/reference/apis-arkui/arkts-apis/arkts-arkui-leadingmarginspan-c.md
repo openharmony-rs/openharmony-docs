@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getleadingmargin"></a>
 ## getLeadingMargin
 
 ```TypeScript
@@ -33,7 +32,6 @@ abstract getLeadingMargin(): LengthMetrics
 | --- | --- |
 | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 文本段落的缩进。不支持百分比。<br/>默认值：0<br/> |
 
-<a id="ondraw"></a>
 ## onDraw
 
 ```TypeScript

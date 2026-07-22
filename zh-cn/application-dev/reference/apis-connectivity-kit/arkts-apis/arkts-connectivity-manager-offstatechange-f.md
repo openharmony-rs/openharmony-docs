@@ -6,7 +6,6 @@
 import { manager } from '@kit.ConnectivityKit';
 ```
 
-<a id="offstatechange"></a>
 ## offStateChange
 
 ```TypeScript

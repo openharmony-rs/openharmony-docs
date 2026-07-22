@@ -14,7 +14,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="cleancache"></a>
 ## cleanCache
 
 ```TypeScript
@@ -70,7 +69,6 @@ try {
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -108,7 +106,6 @@ let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 
 ```
 
-<a id="getdownloadlist"></a>
 ## getDownloadList
 
 ```TypeScript

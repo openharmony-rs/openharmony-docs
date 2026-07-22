@@ -20,7 +20,6 @@
 import { CommonSegmentButtonOptions, SegmentButtonItemOptionsConstructorOptions, SegmentButtonIconTextItem, SegmentButtonItemOptions, SegmentButtonTextItem, CapsuleSegmentButtonOptions, SegmentButtonOptions, CapsuleSegmentButtonConstructionOptions, SegmentButtonItemTuple, SegmentButton, SegmentButtonItemArray, SegmentButtonItemOptionsArray, SegmentButtonIconItem, BorderRadiusMode, TabSegmentButtonConstructionOptions, TabSegmentButtonOptions, ItemRestriction, DimensionNoPercentage } from '@kit.ArkUI';
 ```
 
-<a id="capsule"></a>
 ## capsule
 
 ```TypeScript
@@ -51,7 +50,6 @@ static capsule(options: CapsuleSegmentButtonConstructionOptions): SegmentButtonO
 | --- | --- |
 | [SegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md) | 分段按钮选项。 |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -76,7 +74,6 @@ constructor(options: TabSegmentButtonOptions | CapsuleSegmentButtonOptions)
 | --- | --- | --- | --- |
 | options | [TabSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonoptions-i.md) \| CapsuleSegmentButtonOptions | 是 | 页签类或者胶囊类分段按钮信息。 |
 
-<a id="tab"></a>
 ## tab
 
 ```TypeScript

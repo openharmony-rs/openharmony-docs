@@ -14,7 +14,6 @@
 import { Callee, Caller, OnReleaseCallback, OnRemoteStateChangeCallback, CalleeCallback } from '@kit.AbilityKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

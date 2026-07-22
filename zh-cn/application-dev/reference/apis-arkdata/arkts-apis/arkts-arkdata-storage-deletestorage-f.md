@@ -1,6 +1,5 @@
 # deleteStorage
 
-<a id="deletestorage"></a>
 ## deleteStorage
 
 ```TypeScript
@@ -25,7 +24,6 @@ function deleteStorage(path: string, callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 
-<a id="deletestorage-1"></a>
 ## deleteStorage
 
 ```TypeScript

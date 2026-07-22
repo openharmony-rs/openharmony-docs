@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="setscreenprivacymaskimage"></a>
 ## setScreenPrivacyMaskImage
 
 ```TypeScript

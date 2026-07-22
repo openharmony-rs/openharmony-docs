@@ -59,7 +59,6 @@ Canvas(params: CanvasParams)
 ```
 
 使用CanvasParams创建不缓存指令的Canvas组件。创建Canvas组件时，最大面积不超过10000px*10000px，超过最大面积则无法正常创建。
-
 > **说明：**  
 >  
 > - 使用本接口创建的Canvas组件将在onReady回调的入参中返回一个  

@@ -6,7 +6,6 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-<a id="disallowaddlocalaccount"></a>
 ## disallowAddLocalAccount
 
 ```TypeScript
@@ -19,7 +18,7 @@ function disallowAddLocalAccount(admin: Want, disallow: boolean, callback: Async
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowosaccountaddition-1)
+**替代接口：** [disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowosaccountaddition)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -72,7 +71,6 @@ accountManager.disallowAddLocalAccount(wantTemp, true, (err) => {
 ```
 
 
-<a id="disallowaddlocalaccount-1"></a>
 ## disallowAddLocalAccount
 
 ```TypeScript
@@ -85,7 +83,7 @@ function disallowAddLocalAccount(admin: Want, disallow: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowosaccountaddition-1)
+**替代接口：** [disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowosaccountaddition)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 

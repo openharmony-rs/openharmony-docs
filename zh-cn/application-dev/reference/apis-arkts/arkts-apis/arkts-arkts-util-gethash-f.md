@@ -6,7 +6,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="gethash"></a>
 ## getHash
 
 ```TypeScript

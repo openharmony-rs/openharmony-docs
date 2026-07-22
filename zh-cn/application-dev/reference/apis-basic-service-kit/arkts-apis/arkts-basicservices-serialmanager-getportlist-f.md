@@ -6,7 +6,6 @@
 import { serialManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="getportlist"></a>
 ## getPortList
 
 ```TypeScript

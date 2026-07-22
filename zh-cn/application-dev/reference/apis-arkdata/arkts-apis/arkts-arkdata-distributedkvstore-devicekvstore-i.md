@@ -22,7 +22,6 @@
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -55,7 +54,6 @@ get(key: string, callback: AsyncCallback<boolean | string | number | number | Ui
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
-<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -93,7 +91,6 @@ get(key: string): Promise<boolean | string | number | number | Uint8Array>
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
-<a id="get-2"></a>
 ## get
 
 ```TypeScript
@@ -101,15 +98,14 @@ get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | nu
 ```
 
 获取与指定设备ID和Key匹配的值，使用callback异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -136,7 +132,6 @@ get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | nu
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
-<a id="get-3"></a>
 ## get
 
 ```TypeScript
@@ -144,15 +139,14 @@ get(deviceId: string, key: string): Promise<boolean | string | number | number |
 ```
 
 获取与指定设备ID和Key匹配的值，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -184,7 +178,6 @@ get(deviceId: string, key: string): Promise<boolean | string | number | number |
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
-<a id="getentries"></a>
 ## getEntries
 
 ```TypeScript
@@ -260,7 +253,6 @@ try {
 
 ```
 
-<a id="getentries-1"></a>
 ## getEntries
 
 ```TypeScript
@@ -336,7 +328,6 @@ try {
 
 ```
 
-<a id="getentries-2"></a>
 ## getEntries
 
 ```TypeScript
@@ -344,15 +335,14 @@ getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback<Entry[]>
 ```
 
 获取与指定设备ID和Key前缀匹配的所有键值对，使用callback异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -422,7 +412,6 @@ try {
 
 ```
 
-<a id="getentries-3"></a>
 ## getEntries
 
 ```TypeScript
@@ -430,15 +419,14 @@ getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>
 ```
 
 获取与指定设备ID和Key前缀匹配的所有键值对，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -511,7 +499,6 @@ try {
 
 ```
 
-<a id="getentries-4"></a>
 ## getEntries
 
 ```TypeScript
@@ -590,7 +577,6 @@ try {
 
 ```
 
-<a id="getentries-5"></a>
 ## getEntries
 
 ```TypeScript
@@ -669,7 +655,6 @@ try {
 
 ```
 
-<a id="getentries-6"></a>
 ## getEntries
 
 ```TypeScript
@@ -677,15 +662,14 @@ getEntries(deviceId: string, query: Query, callback: AsyncCallback<Entry[]>): vo
 ```
 
 获取与指定设备ID和Query对象匹配的键值对列表，使用callback异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -760,7 +744,6 @@ try {
 
 ```
 
-<a id="getentries-7"></a>
 ## getEntries
 
 ```TypeScript
@@ -768,15 +751,14 @@ getEntries(deviceId: string, query: Query): Promise<Entry[]>
 ```
 
 获取与指定设备ID和Query对象匹配的键值对列表，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -850,14 +832,13 @@ try {
 
 ```
 
-<a id="getresultset"></a>
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset-1)关闭结果集释放资源。
+从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -935,14 +916,13 @@ try {
 
 ```
 
-<a id="getresultset-1"></a>
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string): Promise<KVStoreResultSet>
 ```
 
-从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset-1)关闭结果集释放资源。
+从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1017,7 +997,6 @@ try {
 
 ```
 
-<a id="getresultset-2"></a>
 ## getResultSet
 
 ```TypeScript
@@ -1025,15 +1004,14 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback<KVStor
 ```
 
 获取与指定设备ID和Key前缀匹配的KVStoreResultSet对象，使用callback异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -1091,7 +1069,6 @@ try {
 
 ```
 
-<a id="getresultset-3"></a>
 ## getResultSet
 
 ```TypeScript
@@ -1099,15 +1076,14 @@ getResultSet(deviceId: string, keyPrefix: string): Promise<KVStoreResultSet>
 ```
 
 获取与指定设备ID和Key前缀匹配的KVStoreResultSet对象，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -1166,7 +1142,6 @@ try {
 
 ```
 
-<a id="getresultset-4"></a>
 ## getResultSet
 
 ```TypeScript
@@ -1253,7 +1228,6 @@ try {
 
 ```
 
-<a id="getresultset-5"></a>
 ## getResultSet
 
 ```TypeScript
@@ -1330,23 +1304,21 @@ try {
 
 ```
 
-<a id="getresultset-6"></a>
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-获取与指定设备ID和Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset-1)关闭结果集释放资源。
-
+获取与指定设备ID和Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)关闭结果集释放资源。
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -1427,23 +1399,21 @@ try {
 
 ```
 
-<a id="getresultset-7"></a>
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, query: Query): Promise<KVStoreResultSet>
 ```
 
-获取与指定设备ID和Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset-1)关闭结果集释放资源。
-
+获取与指定设备ID和Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)关闭结果集释放资源。
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -1526,7 +1496,6 @@ try {
 
 ```
 
-<a id="getresultsize"></a>
 ## getResultSize
 
 ```TypeScript
@@ -1602,7 +1571,6 @@ try {
 
 ```
 
-<a id="getresultsize-1"></a>
 ## getResultSize
 
 ```TypeScript
@@ -1677,7 +1645,6 @@ try {
 
 ```
 
-<a id="getresultsize-2"></a>
 ## getResultSize
 
 ```TypeScript
@@ -1685,15 +1652,14 @@ getResultSize(deviceId: string, query: Query, callback: AsyncCallback<number>): 
 ```
 
 获取与指定设备ID和Query对象匹配的结果数，使用callback异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -1763,7 +1729,6 @@ try {
 
 ```
 
-<a id="getresultsize-3"></a>
 ## getResultSize
 
 ```TypeScript
@@ -1771,15 +1736,14 @@ getResultSize(deviceId: string, query: Query): Promise<number>
 ```
 
 获取与指定设备ID和Query对象匹配的结果数，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)  
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  
-> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync-1)。
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 

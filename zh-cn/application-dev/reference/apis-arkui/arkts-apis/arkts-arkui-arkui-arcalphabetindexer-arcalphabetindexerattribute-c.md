@@ -18,7 +18,6 @@
 import { ArcAlphabetIndexerAttribute, ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 
-<a id="autocollapse"></a>
 ## autoCollapse
 
 ```TypeScript
@@ -47,7 +46,6 @@ autoCollapse(enable: Optional<boolean>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="color"></a>
 ## color
 
 ```TypeScript
@@ -76,7 +74,6 @@ color(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="font"></a>
 ## font
 
 ```TypeScript
@@ -105,7 +102,6 @@ font(font: Optional<Font>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="itemsize"></a>
 ## itemSize
 
 ```TypeScript
@@ -134,7 +130,6 @@ itemSize(size: Optional<LengthMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onselect"></a>
 ## onSelect
 
 ```TypeScript
@@ -163,7 +158,6 @@ onSelect(handler: Optional<OnSelectCallback>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="popupbackground"></a>
 ## popupBackground
 
 ```TypeScript
@@ -192,7 +186,6 @@ popupBackground(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="popupbackgroundblurstyle"></a>
 ## popupBackgroundBlurStyle
 
 ```TypeScript
@@ -200,11 +193,9 @@ popupBackgroundBlurStyle(style: Optional<BlurStyle>): ArcAlphabetIndexerAttribut
 ```
 
 设置提示弹窗的背景模糊材质。未通过该接口设置时，默认为关闭模糊，对应取值为BlurStyle中的NONE。
-
 > **说明：**
-
 > 当通过popupBackgroundBlurStyle设置弹窗气泡的背景模糊材质时，不建议再通过  
-> [popupBackground](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md#popupbackground-1)设置背景色。
+> [popupBackground](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md#popupbackground)设置背景色。
 
 **起始版本：** 18
 
@@ -226,7 +217,6 @@ popupBackgroundBlurStyle(style: Optional<BlurStyle>): ArcAlphabetIndexerAttribut
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="popupcolor"></a>
 ## popupColor
 
 ```TypeScript
@@ -255,7 +245,6 @@ popupColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="popupfont"></a>
 ## popupFont
 
 ```TypeScript
@@ -284,7 +273,6 @@ popupFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="selected"></a>
 ## selected
 
 ```TypeScript
@@ -305,7 +293,7 @@ selected(index: Optional<number>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 选中项索引值。 <br/>默认值：0 <br/>该参数支持[!!](docroot://ui/state-management/arkts-new-binding.md)双向绑定变量。 |
+| index | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 选中项索引值。 <br/>默认值：0 <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。 |
 
 **返回值：**
 
@@ -313,7 +301,6 @@ selected(index: Optional<number>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="selectedbackgroundcolor"></a>
 ## selectedBackgroundColor
 
 ```TypeScript
@@ -342,7 +329,6 @@ selectedBackgroundColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttrib
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="selectedcolor"></a>
 ## selectedColor
 
 ```TypeScript
@@ -371,7 +357,6 @@ selectedColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="selectedfont"></a>
 ## selectedFont
 
 ```TypeScript
@@ -400,7 +385,6 @@ selectedFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 | --- | --- |
 | [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="usepopup"></a>
 ## usePopup
 
 ```TypeScript

@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="oncancel"></a>
 ## onCancel
 
 ```TypeScript
@@ -43,7 +42,6 @@ onCancel(fillContent?: string): void
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.The input parameter is not valid parameter;<br>2. Mandatory parameters are left unspecified.<br>**适用版本：** 12+ |
 
-<a id="onfailure"></a>
 ## onFailure
 
 ```TypeScript
@@ -69,7 +67,6 @@ onFailure(): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-<a id="onsuccess"></a>
 ## onSuccess
 
 ```TypeScript
@@ -102,7 +99,6 @@ onSuccess(response: FillResponse): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Mandatory parameters are left unspecified. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-<a id="setautofillpopupconfig"></a>
 ## setAutoFillPopupConfig
 
 ```TypeScript

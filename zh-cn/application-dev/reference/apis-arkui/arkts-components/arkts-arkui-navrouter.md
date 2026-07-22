@@ -5,7 +5,6 @@
 ## 子组件
 
 必须包含两个子组件，其中第二个子组件必须为[NavDestination]{@link nav_destination}。
-
 > **说明：**  
 >  
 > 子组件个数异常时：  

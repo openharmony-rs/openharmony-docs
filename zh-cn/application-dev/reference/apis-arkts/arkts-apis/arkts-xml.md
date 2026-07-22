@@ -9,7 +9,6 @@
 本模块提供了两种解析XML文件的方式:
 
 * [XmlPullParser](arkts-arkts-xml-xmlpullparser-c.md)：适用于对xml文本进行随机访问和灵活解析的场景。* [XmlSAXParser<sup>24+</sup>](arkts-arkts-xml-xmlsaxparser-c.md)：适用于流式解析xml文本的场景，当xml文本较大，其他解析方式会消耗较多内存，建议采用流式解析。
-
 > **说明：**  
 >  
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。

@@ -1,6 +1,5 @@
 # $rawfile
 
-<a id="$rawfile"></a>
 ## $rawfile
 
 ```TypeScript

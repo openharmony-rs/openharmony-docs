@@ -16,7 +16,6 @@
 import { process } from '@kit.ArkTS';
 ```
 
-<a id="exit"></a>
 ## exit
 
 ```TypeScript
@@ -49,7 +48,6 @@ processManager.exit(0);
 
 ```
 
-<a id="getenvironmentvar"></a>
 ## getEnvironmentVar
 
 ```TypeScript
@@ -57,7 +55,6 @@ getEnvironmentVar(name: string): string
 ```
 
 获取环境变量对应的值。
-
 > **说明**  
 >  
 > 获取环境变量的值。如果环境变量不存在，返回 **undefined**。
@@ -92,7 +89,6 @@ let pres = processManager.getEnvironmentVar("PATH");
 
 ```
 
-<a id="getsystemconfig"></a>
 ## getSystemConfig
 
 ```TypeScript
@@ -133,7 +129,6 @@ let pres = processManager.getSystemConfig(_SC_ARG_MAX);
 
 ```
 
-<a id="getthreadpriority"></a>
 ## getThreadPriority
 
 ```TypeScript
@@ -174,7 +169,6 @@ let pres = processManager.getThreadPriority(tid);
 
 ```
 
-<a id="getuidforname"></a>
 ## getUidForName
 
 ```TypeScript
@@ -213,7 +207,6 @@ let pres = processManager.getUidForName("tool");
 
 ```
 
-<a id="isappuid"></a>
 ## isAppUid
 
 ```TypeScript
@@ -255,7 +248,6 @@ console.info("result:", result); // result: true
 
 ```
 
-<a id="kill"></a>
 ## kill
 
 ```TypeScript

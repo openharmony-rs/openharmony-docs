@@ -1,6 +1,6 @@
 # RestartFlag
 
-应用重启标志，[enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md#enableapprecovery-1)接口重启选项参数，该类型为枚举。
+应用重启标志，[enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md#enableapprecovery)接口重启选项参数，该类型为枚举。
 
 **起始版本：** 9
 

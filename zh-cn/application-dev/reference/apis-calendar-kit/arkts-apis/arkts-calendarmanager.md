@@ -33,10 +33,10 @@ import { calendarManager } from '@kit.CalendarKit';
 | 名称 | 说明 |
 | --- | --- |
 | [Attendee](arkts-calendar-calendarmanager-attendee-i.md) | 会议日程参与者。 |
-| [Calendar](arkts-calendar-calendarmanager-calendar-i.md) | 下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar-1)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar-1)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。 |
+| [Calendar](arkts-calendar-calendarmanager-calendar-i.md) | 下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。 |
 | [CalendarAccount](arkts-calendar-calendarmanager-calendaraccount-i.md) | 日历账户信息。 |
 | [CalendarConfig](arkts-calendar-calendarmanager-calendarconfig-i.md) | 日历配置信息。 |
-| [CalendarManager](arkts-calendar-calendarmanager-calendarmanager-i.md) | 下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md#getcalendarmanager-1)方法获取CalendarManager对象，再通过此对象调用对应方法，进行Calendar的创建、删除、修改、查询等操作。 |
+| [CalendarManager](arkts-calendar-calendarmanager-calendarmanager-i.md) | 下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md#getcalendarmanager)方法获取CalendarManager对象，再通过此对象调用对应方法，进行Calendar的创建、删除、修改、查询等操作。 |
 | [Event](arkts-calendar-calendarmanager-event-i.md) | 日程对象，包含日程标题、开始时间、结束时间等信息。 |
 | [EventService](arkts-calendar-calendarmanager-eventservice-i.md) | 日程服务。 |
 | [Location](arkts-calendar-calendarmanager-location-i.md) | 日程地点。 |

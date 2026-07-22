@@ -1,6 +1,5 @@
 # getSlot
 
-<a id="getslot"></a>
 ## getSlot
 
 ```TypeScript
@@ -27,7 +26,6 @@ function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>):
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;NotificationSlot&gt; | 是 | 表示被指定的回调方法。 |
 
 
-<a id="getslot-1"></a>
 ## getSlot
 
 ```TypeScript

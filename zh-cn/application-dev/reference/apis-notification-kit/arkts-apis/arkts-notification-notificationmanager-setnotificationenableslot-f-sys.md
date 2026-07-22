@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="setnotificationenableslot"></a>
 ## setNotificationEnableSlot
 
 ```TypeScript
@@ -24,17 +23,7 @@ function setNotificationEnableSlot(
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notificationManager-function setNotificationEnableSlot(
-    bundle: BundleOption,
-    type: SlotType,
-    enable: boolean,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-notificationManager-function setNotificationEnableSlot(
-    bundle: BundleOption,
-    type: SlotType,
-    enable: boolean,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-notificationManager-function setNotificationEnableSlot(    bundle: BundleOption,    type: SlotType,    enable: boolean,    callback: AsyncCallback<void>  ): void--><!--Device-notificationManager-function setNotificationEnableSlot(    bundle: BundleOption,    type: SlotType,    enable: boolean,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -85,7 +74,6 @@ notificationManager.setNotificationEnableSlot(
 ```
 
 
-<a id="setnotificationenableslot-1"></a>
 ## setNotificationEnableSlot
 
 ```TypeScript
@@ -104,19 +92,7 @@ function setNotificationEnableSlot(
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notificationManager-function setNotificationEnableSlot(
-    bundle: BundleOption,
-    type: SlotType,
-    enable: boolean,
-    isForceControl: boolean,
-    callback: AsyncCallback<void>,
-  ): void--><!--Device-notificationManager-function setNotificationEnableSlot(
-    bundle: BundleOption,
-    type: SlotType,
-    enable: boolean,
-    isForceControl: boolean,
-    callback: AsyncCallback<void>,
-  ): void-End-->
+<!--Device-notificationManager-function setNotificationEnableSlot(    bundle: BundleOption,    type: SlotType,    enable: boolean,    isForceControl: boolean,    callback: AsyncCallback<void>,  ): void--><!--Device-notificationManager-function setNotificationEnableSlot(    bundle: BundleOption,    type: SlotType,    enable: boolean,    isForceControl: boolean,    callback: AsyncCallback<void>,  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -147,7 +123,6 @@ function setNotificationEnableSlot(
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
 
-<a id="setnotificationenableslot-2"></a>
 ## setNotificationEnableSlot
 
 ```TypeScript

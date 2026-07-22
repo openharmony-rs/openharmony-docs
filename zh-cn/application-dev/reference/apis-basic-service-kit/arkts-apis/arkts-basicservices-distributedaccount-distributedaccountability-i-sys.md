@@ -14,7 +14,6 @@
 import { distributedAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="getosaccountdistributedinfobylocalid"></a>
 ## getOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -74,7 +73,6 @@ try {
 
 ```
 
-<a id="getosaccountdistributedinfobylocalid-1"></a>
 ## getOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -137,7 +135,6 @@ try {
 
 ```
 
-<a id="setosaccountdistributedinfobylocalid"></a>
 ## setOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -200,7 +197,6 @@ try {
 
 ```
 
-<a id="setosaccountdistributedinfobylocalid-1"></a>
 ## setOsAccountDistributedInfoByLocalId
 
 ```TypeScript

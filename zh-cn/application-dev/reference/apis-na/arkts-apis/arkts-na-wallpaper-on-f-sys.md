@@ -1,6 +1,5 @@
 # on（系统接口）
 
-<a id="on"></a>
 ## on('wallpaperChange')
 
 ```TypeScript
@@ -14,13 +13,7 @@ function on(
 
 **起始版本：** 10
 
-<!--Device-wallpaper-function on(
-    type: 'wallpaperChange',
-    callback: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void
-  ): void--><!--Device-wallpaper-function on(
-    type: 'wallpaperChange',
-    callback: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void
-  ): void-End-->
+<!--Device-wallpaper-function on(    type: 'wallpaperChange',    callback: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void  ): void--><!--Device-wallpaper-function on(    type: 'wallpaperChange',    callback: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void  ): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
 

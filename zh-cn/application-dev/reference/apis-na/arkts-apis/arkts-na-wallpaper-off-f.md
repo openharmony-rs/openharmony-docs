@@ -1,6 +1,5 @@
 # off
 
-<a id="off"></a>
 ## off('colorChange')
 
 ```TypeScript

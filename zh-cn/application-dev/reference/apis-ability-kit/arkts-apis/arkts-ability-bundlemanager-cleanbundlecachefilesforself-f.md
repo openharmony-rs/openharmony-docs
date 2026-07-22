@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="cleanbundlecachefilesforself"></a>
 ## cleanBundleCacheFilesForSelf
 
 ```TypeScript

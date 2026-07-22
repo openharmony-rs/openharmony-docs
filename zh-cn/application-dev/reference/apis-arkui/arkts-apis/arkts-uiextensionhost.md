@@ -1,7 +1,6 @@
 # @ohos.uiExtensionHost
 
 仅用于在有进程隔离诉求的UIExtensionComponent组件中为提供方应用提供宿主应用的窗口信息和组件本身的信息。
-
 > **说明**  
 >  
 > 后续此接口不再新增功能，相关功能在接口[uiExtension](arkts-arkui-uiextension.md)中提供。  

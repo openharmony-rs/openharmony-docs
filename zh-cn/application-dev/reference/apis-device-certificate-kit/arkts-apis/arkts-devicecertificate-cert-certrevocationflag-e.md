@@ -57,7 +57,6 @@ CERT_REVOCATION_OCSP_CHECK = 2
 启用OCSP检查。使用在线证书状态协议检查证书状态。
 
 首先使用[X509CertRevokedParams](arkts-devicecertificate-cert-x509certrevokedparams-i.md)的ocspResponses参数，未匹配到响应且[X509CertRevokedParams](arkts-devicecertificate-cert-x509certrevokedparams-i.md)的allowOcspCheckOnline参数设置为true则尝试从证书AIA扩展获取OCSP URL并发送请求获取响应。
-
 > **说明：**  
 >  
 > - 始终使系统当前时间校验ocsp响应的有效期，并允许前后5分钟的时间容差。  

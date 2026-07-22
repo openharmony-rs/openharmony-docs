@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="removeprinters"></a>
 ## removePrinters
 
 ```TypeScript
@@ -58,7 +57,6 @@ print.removePrinters([printerId], (err: BusinessError) => {
 ```
 
 
-<a id="removeprinters-1"></a>
 ## removePrinters
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="gettransienttaskinfo"></a>
 ## getTransientTaskInfo
 
 ```TypeScript

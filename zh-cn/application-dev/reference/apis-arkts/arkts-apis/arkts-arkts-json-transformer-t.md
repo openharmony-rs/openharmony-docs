@@ -6,9 +6,9 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 
 定义转换结果函数的类型。
 
-当作为[JSON.parse](arkts-arkts-json-parse-f.md#parse-1)的参数时，对象的每个成员都会调用此函数，可在解析期间进行自定义数据处理或转换。
+当作为[JSON.parse](arkts-arkts-json-parse-f.md#parse)的参数时，对象的每个成员都会调用此函数，可在解析期间进行自定义数据处理或转换。
 
-当作为[JSON.stringify](arkts-arkts-json-stringify-f.md#stringify-1)的参数时，在序列化期间用于转换和处理每个属性。
+当作为[JSON.stringify](arkts-arkts-json-stringify-f.md#stringify)的参数时，在序列化期间用于转换和处理每个属性。
 
 **起始版本：** 12
 

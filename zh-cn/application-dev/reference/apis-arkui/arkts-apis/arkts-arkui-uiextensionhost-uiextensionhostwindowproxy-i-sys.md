@@ -16,7 +16,6 @@ Transition Controller
 import { uiExtensionHost } from '@kit.ArkUI';
 ```
 
-<a id="createsubwindowwithoptions"></a>
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -105,7 +104,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="createsubwindowwithoptions-1"></a>
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -119,9 +117,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIExtensionHostWindowProxy-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,
-        followCreatorLifecycle: boolean): Promise<window.Window>--><!--Device-UIExtensionHostWindowProxy-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,
-        followCreatorLifecycle: boolean): Promise<window.Window>-End-->
+<!--Device-UIExtensionHostWindowProxy-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,        followCreatorLifecycle: boolean): Promise<window.Window>--><!--Device-UIExtensionHostWindowProxy-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,        followCreatorLifecycle: boolean): Promise<window.Window>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -197,7 +193,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="getwindowavoidarea"></a>
 ## getWindowAvoidArea
 
 ```TypeScript
@@ -253,7 +248,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="hidenonsecurewindows"></a>
 ## hideNonSecureWindows
 
 ```TypeScript
@@ -261,7 +255,6 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 ```
 
 设置是否隐藏不安全窗口，使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 不安全窗口是指可能遮挡[EmbeddedComponent](../../apis-arkui/arkts-components/arkts-arkui-embedded_component-i)（或  
@@ -338,7 +331,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="hideprivacycontentforhost"></a>
 ## hidePrivacyContentForHost
 
 ```TypeScript
@@ -346,11 +338,10 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise<void>
 ```
 
 设置UIExtension组件在非系统截图时的隐私内容保护开关，使用Promise异步回调。
-
 > **说明：**  
 >  
-> 开启截图隐私内容保护后，使用窗口截图[window.snapshot](docroot://reference/apis-arkui/arkts-apis-window-Window.md#snapshot9)或者组件截图  
-> [UIContext.getComponentSnapshot](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)  
+> 开启截图隐私内容保护后，使用窗口截图[window.snapshot](../../../reference/apis-arkui/arkts-apis-window-Window.md#snapshot9)或者组件截图  
+> [UIContext.getComponentSnapshot](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)  
 > 将无法截取到当前组件的内容（不包括该组件下创建的子窗）。
 
 **起始版本：** 13
@@ -404,7 +395,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="off"></a>
 ## off('avoidAreaChange')
 
 ```TypeScript
@@ -453,7 +443,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="off-1"></a>
 ## off('windowSizeChange')
 
 ```TypeScript
@@ -502,7 +491,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="on"></a>
 ## on('avoidAreaChange')
 
 ```TypeScript
@@ -553,7 +541,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="on-1"></a>
 ## on('windowSizeChange')
 
 ```TypeScript
@@ -604,7 +591,6 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ```
 
-<a id="setwatermarkflag"></a>
 ## setWaterMarkFlag
 
 ```TypeScript
@@ -612,7 +598,6 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 ```
 
 为当前窗口添加或删除安全水印标志，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 添加安全水印标志后，窗口在前台时会将当前全屏幕覆盖水印。全屏、悬浮窗、分屏等场景下只要有添加了安全水印标志的窗口在前台，就会显示全屏水印。
@@ -685,7 +670,7 @@ properties: UIExtensionHostWindowProxyProperties
 
 UIExtensionComponent组件以及宿主窗口的信息。
 
-**约束：** 由于架构约束，不建议在[onSessionCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate-1)阶段同步获取该值，建议在收到[on('windowSizeChange')](@ohos.uiExtensionHost:uiExtensionHost.UIExtensionHostWindowProxy.on(type: 'windowSizeChange', callback: Callback<window.Size>))回调之后获取。
+**约束：** 由于架构约束，不建议在[onSessionCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](@ohos.uiExtensionHost:uiExtensionHost.UIExtensionHostWindowProxy.on(type: 'windowSizeChange', callback: Callback&lt;window.Size&gt;))回调之后获取。
 
 **类型：** UIExtensionHostWindowProxyProperties
 

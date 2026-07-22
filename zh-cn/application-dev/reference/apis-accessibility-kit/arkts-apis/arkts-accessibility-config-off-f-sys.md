@@ -6,7 +6,6 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
-<a id="off"></a>
 ## off('enabledAccessibilityExtensionListChange')
 
 ```TypeScript
@@ -52,7 +51,6 @@ config.off('enabledAccessibilityExtensionListChange', () => {
 ```
 
 
-<a id="off-1"></a>
 ## off('installedAccessibilityListChange')
 
 ```TypeScript

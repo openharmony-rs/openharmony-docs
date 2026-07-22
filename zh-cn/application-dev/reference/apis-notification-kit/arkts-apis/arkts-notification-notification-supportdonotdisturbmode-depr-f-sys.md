@@ -1,6 +1,5 @@
 # supportDoNotDisturbMode（系统接口）
 
-<a id="supportdonotdisturbmode"></a>
 ## supportDoNotDisturbMode
 
 ```TypeScript
@@ -30,7 +29,6 @@ function supportDoNotDisturbMode(callback: AsyncCallback<boolean>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 查询是否支持免打扰功能回调函数。 |
 
 
-<a id="supportdonotdisturbmode-1"></a>
 ## supportDoNotDisturbMode
 
 ```TypeScript

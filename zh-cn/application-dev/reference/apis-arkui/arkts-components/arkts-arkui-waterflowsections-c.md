@@ -1,7 +1,6 @@
 # WaterFlowSections
 
 瀑布流分组信息。
-
 > **说明：**  
 >  
 > 使用splice、push、update修改分组信息后需要保证所有分组子节点总数与瀑布流实际子节点总数一致，否则会出现瀑布流因为不能正常布局而无法滑动的问题。
@@ -12,7 +11,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -31,7 +29,6 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="length"></a>
 ## length
 
 ```TypeScript
@@ -56,7 +53,6 @@ length(): number
 | --- | --- |
 | number | 瀑布流中分组数量。 |
 
-<a id="push"></a>
 ## push
 
 ```TypeScript
@@ -87,7 +83,6 @@ push(section: SectionOptions): boolean
 | --- | --- |
 | boolean | 分组添加成功返回true，添加失败（新分组的itemsCount不是非负数）返回false。 |
 
-<a id="splice"></a>
 ## splice
 
 ```TypeScript
@@ -110,8 +105,8 @@ splice(start: number, deleteCount?: number, sections?: Array<SectionOptions>): b
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 从0开始计算的索引，会转换为整数，表示要开始改变分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用`start +WaterFlowSections.length()`。<br/>2. 如果 `start < -WaterFlowSections.length()`，则使用0。<br/>3. 如果 `start >=WaterFlowSections.length()`，则在最后添加新分组。 |
-| deleteCount | number | 否 | 从0开始计算的索引，会转换为整数，表示要开始改变分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用`start +WaterFlowSections.length()`。<br/>2. 如果 `start < -WaterFlowSections.length()`，则使用0。<br/>3. 如果 `start >=WaterFlowSections.length()`，则在最后添加新分组。 |
+| start | number | 是 | 从0开始计算的索引，会转换为整数，表示要开始改变分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用`start +WaterFlowSections.length()`。<br/>2. 如果 `start &lt; -WaterFlowSections.length()`，则使用0。<br/>3. 如果 `start &gt;=WaterFlowSections.length()`，则在最后添加新分组。 |
+| deleteCount | number | 否 | 从0开始计算的索引，会转换为整数，表示要开始改变分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用`start +WaterFlowSections.length()`。<br/>2. 如果 `start &lt; -WaterFlowSections.length()`，则使用0。<br/>3. 如果 `start &gt;=WaterFlowSections.length()`，则在最后添加新分组。 |
 | sections | Array&lt;SectionOptions&gt; | 否 | 表示要从start开始加入的分组。如果不指定，`splice()`将只从瀑布流中删除分组。 |
 
 **返回值：**
@@ -120,7 +115,6 @@ splice(start: number, deleteCount?: number, sections?: Array<SectionOptions>): b
 | --- | --- |
 | boolean | 分组修改成功返回true；修改失败（要加入的分组中有任意分组的itemsCount不是非负数）返回false。 |
 
-<a id="update"></a>
 ## update
 
 ```TypeScript
@@ -143,7 +137,7 @@ update(sectionIndex:number, section: SectionOptions): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sectionIndex | number | 是 | 从0开始计算的索引，会转换为整数，表示要修改的分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用`sectionIndex+ WaterFlowSections.length()`。<br/>2. 如果`sectionIndex < -WaterFlowSections.length()`，则使用0。<br/>3. 如果`sectionIndex >= WaterFlowSections.length()`，则在最后添加新分组。 |
+| sectionIndex | number | 是 | 从0开始计算的索引，会转换为整数，表示要修改的分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用`sectionIndex+ WaterFlowSections.length()`。<br/>2. 如果`sectionIndex &lt; -WaterFlowSections.length()`，则使用0。<br/>3. 如果`sectionIndex &gt;= WaterFlowSections.length()`，则在最后添加新分组。 |
 | section | [SectionOptions](arkts-arkui-sectionoptions-c.md) | 是 | 新的分组信息。 |
 
 **返回值：**
@@ -152,7 +146,6 @@ update(sectionIndex:number, section: SectionOptions): boolean
 | --- | --- |
 | boolean | 分组是否更新成功，新分组的itemsCount不是非负数时返回false。 |
 
-<a id="values"></a>
 ## values
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="notifyprintservice"></a>
 ## notifyPrintService
 
 ```TypeScript
@@ -20,9 +19,7 @@ function notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' 
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
-<!--Device-print-function notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started',
-    callback: AsyncCallback<void>): void--><!--Device-print-function notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started',
-    callback: AsyncCallback<void>): void-End-->
+<!--Device-print-function notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started',    callback: AsyncCallback<void>): void--><!--Device-print-function notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started',    callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -62,7 +59,6 @@ print.notifyPrintService(jobId, 'spooler_closed_for_started', (err: BusinessErro
 ```
 
 
-<a id="notifyprintservice-1"></a>
 ## notifyPrintService
 
 ```TypeScript
@@ -76,9 +72,7 @@ function notifyPrintService(jobId: string,
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
-<!--Device-print-function notifyPrintService(jobId: string,
-    type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started'): Promise<void>--><!--Device-print-function notifyPrintService(jobId: string,
-    type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started'): Promise<void>-End-->
+<!--Device-print-function notifyPrintService(jobId: string,    type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started'): Promise<void>--><!--Device-print-function notifyPrintService(jobId: string,    type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started'): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

@@ -1,6 +1,5 @@
 # clearInterval
 
-<a id="clearinterval"></a>
 ## clearInterval
 
 ```TypeScript

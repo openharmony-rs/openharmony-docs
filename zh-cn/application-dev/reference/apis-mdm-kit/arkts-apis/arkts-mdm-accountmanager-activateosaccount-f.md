@@ -6,7 +6,6 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-<a id="activateosaccount"></a>
 ## activateOsAccount
 
 ```TypeScript

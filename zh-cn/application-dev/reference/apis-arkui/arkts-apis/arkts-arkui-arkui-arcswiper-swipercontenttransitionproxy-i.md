@@ -1,9 +1,7 @@
 # SwiperContentTransitionProxy
 
 ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画视窗内的页面信息，同时，也可以通过调用该对象的finishTransition接口通知ArcSwiper组件页面自定义动画已结束。
-
 > **说明：**
-
 > - 假设当前选中的子组件的索引为0，从第0页切换到第1页的动画过程中，每帧都会对视窗内所有页面触发回调，当视窗内有第0页和第1页两页时，每帧会触发两次回调。其中第一次回调的selectedIndex为0，index为0，  
 > position为当前帧第0页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第0页的长度；第二次回调的selectedIndex仍为0，index为1，position为当前帧第1页相对于动画开始前第0  
 > 页的移动比例，mainAxisLength为主轴方向上第1页的长度。  
@@ -22,7 +20,6 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 import { ArcSwiperAttribute, ArcSwiper, ArcDirection, ArcSwiperController, ArcDotIndicator } from '@kit.ArkUI';
 ```
 
-<a id="finishtransition"></a>
 ## finishTransition
 
 ```TypeScript

@@ -1,6 +1,6 @@
 # SendableContext
 
-SendableContext符合[Sendable协议](docroot://arkts-utils/arkts-sendable.md#sendable协议)，继承自[lang.ISendable](docroot://reference/apis-arkts/js-apis-arkts-lang.md#langisendable)。
+SendableContext符合[Sendable协议](../../../arkts-utils/arkts-sendable.md#sendable协议)，继承自[lang.ISendable](../../../reference/apis-arkts/js-apis-arkts-lang.md#langisendable)。
 
 **继承/实现关系：** SendableContext extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 

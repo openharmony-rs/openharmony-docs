@@ -6,7 +6,6 @@
 import { systemTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getcurrenttime"></a>
 ## getCurrentTime
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getTime](arkts-basicservices-systemdatetime-gettime-f.md#gettime-1)
+**替代接口：** [getTime](arkts-basicservices-systemdatetime-gettime-f.md#gettime)
 
 <!--Device-systemTime-function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void--><!--Device-systemTime-function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void-End-->
 
@@ -59,7 +58,6 @@ try {
 ```
 
 
-<a id="getcurrenttime-1"></a>
 ## getCurrentTime
 
 ```TypeScript
@@ -72,7 +70,7 @@ function getCurrentTime(callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getTime](arkts-basicservices-systemdatetime-gettime-f.md#gettime-1)
+**替代接口：** [getTime](arkts-basicservices-systemdatetime-gettime-f.md#gettime)
 
 <!--Device-systemTime-function getCurrentTime(callback: AsyncCallback<number>): void--><!--Device-systemTime-function getCurrentTime(callback: AsyncCallback<number>): void-End-->
 
@@ -111,7 +109,6 @@ try {
 ```
 
 
-<a id="getcurrenttime-2"></a>
 ## getCurrentTime
 
 ```TypeScript
@@ -124,7 +121,7 @@ function getCurrentTime(isNano?: boolean): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** [getTime](arkts-basicservices-systemdatetime-gettime-f.md#gettime-1)
+**替代接口：** [getTime](arkts-basicservices-systemdatetime-gettime-f.md#gettime)
 
 <!--Device-systemTime-function getCurrentTime(isNano?: boolean): Promise<number>--><!--Device-systemTime-function getCurrentTime(isNano?: boolean): Promise<number>-End-->
 

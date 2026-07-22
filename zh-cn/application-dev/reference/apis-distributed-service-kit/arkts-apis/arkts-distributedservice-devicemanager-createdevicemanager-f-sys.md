@@ -6,7 +6,6 @@
 import { deviceManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="createdevicemanager"></a>
 ## createDeviceManager
 
 ```TypeScript
@@ -19,7 +18,7 @@ function createDeviceManager(bundleName: string, callback: AsyncCallback<DeviceM
 
 **废弃版本：** 11
 
-**替代接口：** [createDeviceManager](arkts-distributedservice-distributeddevicemanager-createdevicemanager-f.md#createdevicemanager-1)
+**替代接口：** [createDeviceManager](arkts-distributedservice-distributeddevicemanager-createdevicemanager-f.md#createdevicemanager)
 
 <!--Device-deviceManager-function createDeviceManager(bundleName: string, callback: AsyncCallback<DeviceManager>): void--><!--Device-deviceManager-function createDeviceManager(bundleName: string, callback: AsyncCallback<DeviceManager>): void-End-->
 

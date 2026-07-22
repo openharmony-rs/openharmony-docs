@@ -70,7 +70,7 @@ WebViewController未绑定组件。
 ERR_KEY_NOT_MATCH = -4
 ```
 
-未匹配到key值，对于[setBlanklessLoadingWithKey](arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithkey-1)需与[getBlanklessInfoWithKey](arkts-arkweb-webview-webviewcontroller-c.md#getblanklessinfowithkey-1)配套使用并且key值一致，否则返回该错误码。
+未匹配到key值，对于[setBlanklessLoadingWithKey](arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithkey)需与[getBlanklessInfoWithKey](arkts-arkweb-webview-webviewcontroller-c.md#getblanklessinfowithkey)配套使用并且key值一致，否则返回该错误码。
 
 **起始版本：** 20
 
@@ -84,7 +84,7 @@ ERR_KEY_NOT_MATCH = -4
 ERR_SIGNIFICANT_CHANGE = -5
 ```
 
-当相似度较低时，系统会判定为跳变太大，[setBlanklessLoadingWithKey](arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithkey-1)接口不会成功启用插帧。
+当相似度较低时，系统会判定为跳变太大，[setBlanklessLoadingWithKey](arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithkey)接口不会成功启用插帧。
 
 **起始版本：** 20
 

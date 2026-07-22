@@ -14,7 +14,6 @@
 import { Binding, ComponentReuse, CustomComponentLifecycleState, ComponentInactive, PersistenceV2, ComponentDisappear, MutableBinding, CustomComponentLifecycleObserver, AppStorageV2, Type, ConnectOptionsCollections, CollectionType, CustomComponentContext, IReusePool, ConnectOptions, UIUtils, ComponentActive, CustomComponentLifecycle, ComponentInit, ComponentAppear, ComponentBuilt, ComponentRecycle, IReusableInfo } from '@kit.ArkUI';
 ```
 
-<a id="getreusableinfo"></a>
 ## getReusableInfo
 
 ```TypeScript
@@ -30,9 +29,7 @@ getReusableInfo(constructor: ReusableComponentConstructor,
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IReusePool-getReusableInfo(constructor: ReusableComponentConstructor,
-    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined--><!--Device-IReusePool-getReusableInfo(constructor: ReusableComponentConstructor,
-    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined-End-->
+<!--Device-IReusePool-getReusableInfo(constructor: ReusableComponentConstructor,    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined--><!--Device-IReusePool-getReusableInfo(constructor: ReusableComponentConstructor,    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,7 +114,6 @@ struct PoolOwner {
 
 ```
 
-<a id="prerender"></a>
 ## preRender
 
 ```TypeScript

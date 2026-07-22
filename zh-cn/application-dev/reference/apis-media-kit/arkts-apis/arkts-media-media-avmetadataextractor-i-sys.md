@@ -1,9 +1,8 @@
 # AVMetadataExtractor
 
-元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-1)构建一个AVMetadataExtractor实例。
+元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor)构建一个AVMetadataExtractor实例。
 
-获取音频或视频元数据、视频缩略图的demo可参考：[使用AVMetadataExtractor提取音视频元数据信息(ArkTS)](docroot://media/media/avmetadataextractor.md)。
-
+获取音频或视频元数据、视频缩略图的demo可参考：[使用AVMetadataExtractor提取音视频元数据信息(ArkTS)](../../../media/media/avmetadataextractor.md)。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 11开始支持。
@@ -20,7 +19,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="getframeindexbytime"></a>
 ## getFrameIndexByTime
 
 ```TypeScript
@@ -71,7 +69,6 @@ avMetadataExtractor.getFrameIndexByTime(0).then((index: number) => {
 
 ```
 
-<a id="gettimebyframeindex"></a>
 ## getTimeByFrameIndex
 
 ```TypeScript

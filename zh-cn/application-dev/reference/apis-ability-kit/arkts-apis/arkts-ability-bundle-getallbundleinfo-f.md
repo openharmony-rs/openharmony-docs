@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getallbundleinfo"></a>
 ## getAllBundleInfo
 
 ```TypeScript
@@ -34,7 +33,6 @@ function getAllBundleInfo(bundleFlag: BundleFlag, userId: number, callback: Asyn
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BundleInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回指定用户下所有包的BundleInfo。 |
 
 
-<a id="getallbundleinfo-1"></a>
 ## getAllBundleInfo
 
 ```TypeScript
@@ -61,7 +59,6 @@ function getAllBundleInfo(bundleFlag: BundleFlag, callback: AsyncCallback<Array<
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BundleInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回所有可用的BundleInfo。 |
 
 
-<a id="getallbundleinfo-2"></a>
 ## getAllBundleInfo
 
 ```TypeScript

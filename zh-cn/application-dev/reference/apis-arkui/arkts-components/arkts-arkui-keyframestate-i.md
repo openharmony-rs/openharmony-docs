@@ -18,13 +18,13 @@ curve?: Curve | string | ICurve
 
 推荐以Curve或ICurve形式指定。
 
-当类型为string时，为动画插值曲线，取值参考[AnimateParam](docroot://reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)的curve参数。
+当类型为string时，为动画插值曲线，取值参考[AnimateParam](../../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)的curve参数。
 
 默认值：Curve.EaseInOut
 
 **说明：**
 
-由于[springMotion](../arkts-apis/arkts-arkui-curves-springmotion-f.md#springmotion-1)、[responsiveSpringMotion](../arkts-apis/arkts-arkui-curves-responsivespringmotion-f.md#responsivespringmotion-1)、[interpolatingSpring](../arkts-apis/arkts-arkui-curves-interpolatingspring-f.md#interpolatingspring-1)曲线时长不生效，故不支持这三种曲线。
+由于[springMotion](../arkts-apis/arkts-arkui-curves-springmotion-f.md#springmotion)、[responsiveSpringMotion](../arkts-apis/arkts-arkui-curves-responsivespringmotion-f.md#responsivespringmotion)、[interpolatingSpring](../arkts-apis/arkts-arkui-curves-interpolatingspring-f.md#interpolatingspring)曲线时长不生效，故不支持这三种曲线。
 
 **类型：** Curve \| string \| ICurve
 

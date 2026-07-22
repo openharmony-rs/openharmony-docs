@@ -1,6 +1,5 @@
 # enableNotification（系统接口）
 
-<a id="enablenotification"></a>
 ## enableNotification
 
 ```TypeScript
@@ -32,7 +31,6 @@ function enableNotification(bundle: BundleOption, enable: boolean, callback: Asy
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设定通知使能回调函数。 |
 
 
-<a id="enablenotification-1"></a>
 ## enableNotification
 
 ```TypeScript

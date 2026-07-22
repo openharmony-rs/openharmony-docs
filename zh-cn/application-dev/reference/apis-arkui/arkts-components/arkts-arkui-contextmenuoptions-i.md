@@ -24,11 +24,11 @@
 **表3：enableArrow为true且placement未设置或者值为非法值的菜单默认位置**  
 | 接口 | 菜单默认位置 |  
 |------|-------------|  
-| [bindMenu](arkts-arkui-commonmethod-c.md#bindmenu-1) | Placement.BottomLeft |  
-| [bindMenu<sup>11+</sup>](arkts-arkui-commonmethod-c.md#bindmenu-1) | Placement.BottomLeft |  
-| [bindContextMenu<sup>8+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu-1) | Placement.Top |  
-| [bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu-1) | Placement.BottomLeft |  
-| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse-1) | Placement.Top |
+| [bindMenu](arkts-arkui-commonmethod-c.md#bindmenu) | Placement.BottomLeft |  
+| [bindMenu<sup>11+</sup>](arkts-arkui-commonmethod-c.md#bindmenu) | Placement.BottomLeft |  
+| [bindContextMenu<sup>8+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu) | Placement.Top |  
+| [bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu) | Placement.BottomLeft |  
+| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse) | Placement.Top |
 
 **起始版本：** 10
 
@@ -302,7 +302,7 @@ colorMode?: AnchoredColorMode
 
 **说明：**
 
-1. 仅当绑定组件使用了[WithTheme](docroot://reference/apis-arkui/arkui-ts/ts-container-with-theme.md#接口)标签时，该属性才会生效。2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
+1. 仅当绑定组件使用了[WithTheme](../../../reference/apis-arkui/arkui-ts/ts-container-with-theme.md#接口)标签时，该属性才会生效。2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
 
 **类型：** AnchoredColorMode
 
@@ -380,7 +380,7 @@ enableHoverMode?: boolean
 gridStyle?: MenuGridStyleOptions
 ```
 
-设置菜单的栅格样式。仅固定样式菜单生效，例如在[bindMenu](arkts-arkui-commonmethod-c.md#bindmenu-1)、[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu-1)、[bindContextMenuByResponseType](arkts-arkui-commonmethod-c.md#bindcontextmenubyresponsetype-1)、[bindContextMenuByIsShow](arkts-arkui-commonmethod-c.md#bindcontextmenubyisshow-1)、[bindContextMenuWithResponse](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse-1)中使用[MenuElement](arkts-arkui-menuelement-i.md)或在[MenuItem](arkts-arkui-menuitem.md)中使用MenuItemOptions。
+设置菜单的栅格样式。仅固定样式菜单生效，例如在[bindMenu](arkts-arkui-commonmethod-c.md#bindmenu)、[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu)、[bindContextMenuByResponseType](arkts-arkui-commonmethod-c.md#bindcontextmenubyresponsetype)、[bindContextMenuByIsShow](arkts-arkui-commonmethod-c.md#bindcontextmenubyisshow)、[bindContextMenuWithResponse](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse)中使用[MenuElement](arkts-arkui-menuelement-i.md)或在[MenuItem](arkts-arkui-menuitem.md)中使用MenuItemOptions。
 
 **类型：** MenuGridStyleOptions
 
@@ -408,9 +408,9 @@ hapticFeedbackMode?: HapticFeedbackMode
 
 只有一级菜单可配置弹出时振动效果。
 
-仅当用户启用系统触感反馈且在工程的[module.json5](docroot://quick-start/module-configuration-file.md)中配置requestPermissions字段开启ohos.permission.VIBRATE振动权限时，方可生效。配置如下：
+仅当用户启用系统触感反馈且在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启ohos.permission.VIBRATE振动权限时，方可生效。配置如下：
 
-![menuEnableHapticFeedback](docroot://reference/apis-arkui/arkui-ts/figures/menuEnableHapticFeedback.png)
+![menuEnableHapticFeedback](../../../reference/apis-arkui/arkui-ts/figures/menuEnableHapticFeedback.png)
 
 **类型：** HapticFeedbackMode
 
@@ -835,7 +835,7 @@ placement?: Placement
 
 **说明：**
 
-1. 作为[bindMenu](arkts-arkui-commonmethod-c.md#bindmenu-1)入参时，默认值为Placement.BottomLeft。2. 作为[bindContextMenu<sup>8+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu-1)或[bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse-1)入参时，默认效果为菜单跟随点击位置弹出。3. 作为[bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu-1)入参时，默认值为Placement.BottomLeft。4. placement值设置为undefined、null或缺省时，按默认值处理。
+1. 作为[bindMenu](arkts-arkui-commonmethod-c.md#bindmenu)入参时，默认值为Placement.BottomLeft。2. 作为[bindContextMenu<sup>8+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu)或[bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse)入参时，默认效果为菜单跟随点击位置弹出。3. 作为[bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu)入参时，默认值为Placement.BottomLeft。4. placement值设置为undefined、null或缺省时，按默认值处理。
 
 **类型：** Placement
 
@@ -858,7 +858,7 @@ placement?: Placement
 preview?: MenuPreviewMode | CustomBuilder
 ```
 
-长按悬浮菜单或使用[bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu-1)显示菜单的预览内容样式，可以为目标组件的截图，也可以为用户自定义的内容。
+长按悬浮菜单或使用[bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu)显示菜单的预览内容样式，可以为目标组件的截图，也可以为用户自定义的内容。
 
 默认值：MenuPreviewMode.NONE，无预览内容。
 

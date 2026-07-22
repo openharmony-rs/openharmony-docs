@@ -6,7 +6,6 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="once"></a>
 ## once
 
 ```TypeScript

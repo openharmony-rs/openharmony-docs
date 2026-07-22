@@ -20,7 +20,6 @@ Worker线程自身的运行环境，与宿主线程环境隔离。
 import { MessageEvents, PostMessageOptions, MessageEvent, Priority, WorkerEventTarget, ThreadWorkerPriority, ThreadWorkerGlobalScope, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, WorkerOptions, EventTarget, WorkerEventListener } from '@kit.ArkTS';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -61,7 +60,6 @@ parentPort.onmessage = (): void => {
 
 ```
 
-<a id="postmessage"></a>
 ## postMessage
 
 ```TypeScript
@@ -87,7 +85,6 @@ Worker线程向宿主线程发送消息。
 | messageObject | Object | 是 | messageObject 发送至宿主线程的数据。 |
 | transfer | Transferable[] | 是 | transfer 数组不可包含null。 |
 
-<a id="postmessage-1"></a>
 ## postMessage
 
 ```TypeScript
@@ -138,7 +135,6 @@ parentPort.onmessage = (e: MessageEvents) => {
 
 ```
 
-<a id="postmessage-2"></a>
 ## postMessage
 
 ```TypeScript

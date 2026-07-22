@@ -96,7 +96,7 @@ COMPONENT_SCROLL_END = 4
 COMPONENT_TEXT_CHANGED = 5
 ```
 
-[输入框控件](docroot://ui/arkts-common-components-text-input.md)文本变化事件。
+[输入框控件](../../../ui/arkts-common-components-text-input.md)文本变化事件。
 
 **起始版本：** 22
 

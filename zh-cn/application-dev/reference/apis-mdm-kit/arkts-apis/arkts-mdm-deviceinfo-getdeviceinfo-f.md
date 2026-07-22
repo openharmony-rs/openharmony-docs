@@ -6,7 +6,6 @@
 import { deviceInfo } from '@kit.MDMKit';
 ```
 
-<a id="getdeviceinfo"></a>
 ## getDeviceInfo
 
 ```TypeScript

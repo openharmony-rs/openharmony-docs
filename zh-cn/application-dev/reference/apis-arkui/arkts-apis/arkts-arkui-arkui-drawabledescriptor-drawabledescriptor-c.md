@@ -14,7 +14,6 @@
 import { DrawableDescriptor, AnimatedDrawableDescriptor, AnimationStopMode, AnimationOptions, AnimationController, DrawableDescriptorLoadedResult, LayeredDrawableDescriptor, PictureDrawableDescriptor, PixelMapDrawableDescriptor, HdrCompositionConfig } from '@kit.ArkUI';
 ```
 
-<a id="getpixelmap"></a>
 ## getPixelMap
 
 ```TypeScript
@@ -49,7 +48,6 @@ getPixelMap(): image.PixelMap
 
 示例请参考[LayeredDrawableDescriptor](#layereddrawabledescriptor)中的示例代码。
 
-<a id="invalidate"></a>
 ## invalidate
 
 ```TypeScript
@@ -68,14 +66,13 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="isreleased"></a>
 ## isReleased
 
 ```TypeScript
 isReleased(): boolean
 ```
 
-查询DrawableDescriptor是否已被释放。返回true表示已释放，此时调用[getPixelMap](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#getpixelmap-1)、[getForeground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getforeground-1)、[getBackground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getbackground-1)、[getMask](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getmask-1)、[loadSync](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#loadsync-1)、[load](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#load-1)等接口会抛出111002错误；返回false表示未释放，对象可正常使用。
+查询DrawableDescriptor是否已被释放。返回true表示已释放，此时调用[getPixelMap](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#getpixelmap)、[getForeground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getforeground)、[getBackground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getbackground)、[getMask](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getmask)、[loadSync](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#loadsync)、[load](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#load)等接口会抛出111002错误；返回false表示未释放，对象可正常使用。
 
 **起始版本：** 26.0.0
 
@@ -93,7 +90,6 @@ isReleased(): boolean
 | --- | --- |
 | boolean | DrawableDescriptor是否已被释放。true表示已释放，false表示未释放。 |
 
-<a id="load"></a>
 ## load
 
 ```TypeScript
@@ -127,7 +123,6 @@ load(): Promise<DrawableDescriptorLoadedResult>
 
 示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
 
-<a id="loadsync"></a>
 ## loadSync
 
 ```TypeScript
@@ -161,14 +156,13 @@ loadSync(): DrawableDescriptorLoadedResult
 
 示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
 release(): void
 ```
 
-释放DrawableDescriptor持有的资源。调用release后，该对象将不可用，再调用[getPixelMap](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#getpixelmap-1)、[getForeground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getforeground-1)、[getBackground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getbackground-1)、[getMask](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getmask-1)、[loadSync](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#loadsync-1)、[load](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#load-1)等接口会抛出111002错误。重复调用release不会崩溃。
+释放DrawableDescriptor持有的资源。调用release后，该对象将不可用，再调用[getPixelMap](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#getpixelmap)、[getForeground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getforeground)、[getBackground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getbackground)、[getMask](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getmask)、[loadSync](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#loadsync)、[load](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#load)等接口会抛出111002错误。重复调用release不会崩溃。
 
 **起始版本：** 26.0.0
 

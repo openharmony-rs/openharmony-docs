@@ -6,7 +6,6 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
-<a id="isencoding"></a>
 ## isEncoding
 
 ```TypeScript

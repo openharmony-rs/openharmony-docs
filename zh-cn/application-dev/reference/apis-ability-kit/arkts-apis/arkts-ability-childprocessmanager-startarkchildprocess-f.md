@@ -6,21 +6,19 @@
 import { childProcessManager } from '@kit.AbilityKit';
 ```
 
-<a id="startarkchildprocess"></a>
 ## startArkChildProcess
 
 ```TypeScript
 function startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise<number>
 ```
 
-启动[ArkTS子进程](docroot://application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
-
+启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 > **说明：**  
 >  
 > 调用该接口创建的子进程不会继承父进程资源，子进程创建成功会返回子进程pid，然后执行子进程的  
-> [ChildProcess.onStart](arkts-ability-app-ability-childprocess-childprocess-c.md#onstart-1)函数。  
-> [ChildProcess.onStart](arkts-ability-app-ability-childprocess-childprocess-c.md#onstart-1)函数执行完后子进程不会自动销毁，需要子进程调用  
-> [process.abort](../../apis-arkts/arkts-apis/arkts-arkts-process-abort-f.md#abort-1)销毁。调用该接口的进程销毁后，所创建的子进程也会一并销毁。
+> [ChildProcess.onStart](arkts-ability-app-ability-childprocess-childprocess-c.md#onstart)函数。  
+> [ChildProcess.onStart](arkts-ability-app-ability-childprocess-childprocess-c.md#onstart)函数执行完后子进程不会自动销毁，需要子进程调用  
+> [process.abort](../../apis-arkts/arkts-apis/arkts-arkts-process-abort-f.md#abort)销毁。调用该接口的进程销毁后，所创建的子进程也会一并销毁。
 
 **起始版本：** 12
 

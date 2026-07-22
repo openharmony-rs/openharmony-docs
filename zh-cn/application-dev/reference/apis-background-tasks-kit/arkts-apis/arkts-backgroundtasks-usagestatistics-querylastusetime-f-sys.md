@@ -6,7 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="querylastusetime"></a>
 ## queryLastUseTime
 
 ```TypeScript

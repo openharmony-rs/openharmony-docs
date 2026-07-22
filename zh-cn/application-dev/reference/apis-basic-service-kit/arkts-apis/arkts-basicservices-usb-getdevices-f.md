@@ -6,7 +6,6 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
-<a id="getdevices"></a>
 ## getDevices
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getDevices(): Array<Readonly<USBDevice>>
 
 **废弃版本：** 9
 
-**替代接口：** [getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices-1)
+**替代接口：** [getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices)
 
 <!--Device-usb-function getDevices(): Array<Readonly<USBDevice>>--><!--Device-usb-function getDevices(): Array<Readonly<USBDevice>>-End-->
 

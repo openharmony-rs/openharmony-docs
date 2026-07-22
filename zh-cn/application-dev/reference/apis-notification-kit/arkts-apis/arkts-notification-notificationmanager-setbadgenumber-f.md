@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="setbadgenumber"></a>
 ## setBadgeNumber
 
 ```TypeScript
@@ -59,7 +58,6 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
 
-<a id="setbadgenumber-1"></a>
 ## setBadgeNumber
 
 ```TypeScript

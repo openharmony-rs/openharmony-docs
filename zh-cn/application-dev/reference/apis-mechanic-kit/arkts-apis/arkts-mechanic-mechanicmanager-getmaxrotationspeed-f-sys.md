@@ -6,7 +6,6 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="getmaxrotationspeed"></a>
 ## getMaxRotationSpeed
 
 ```TypeScript
@@ -27,13 +26,13 @@ Obtains the maximum rotation speed of a mechanical device.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device. |
+| mechId | number | 是 | 机械设备ID |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [RotationSpeed](arkts-mechanic-mechanicmanager-rotationspeed-i-sys.md) | Maximum speed. Only the absolute value of the speed is returned. |
+| [RotationSpeed](arkts-mechanic-mechanicmanager-rotationspeed-i-sys.md) | 返回最大速度，只返回速度的绝对值 |
 
 **错误码：**
 

@@ -6,7 +6,6 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
-<a id="getscreenofftime"></a>
 ## getScreenOffTime
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getScreenOffTime(admin: Want, callback: AsyncCallback<number>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getvalue-1)
+**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_SETTINGS
 
@@ -71,7 +70,6 @@ deviceSettings.getScreenOffTime(wantTemp, (err, result) => {
 ```
 
 
-<a id="getscreenofftime-1"></a>
 ## getScreenOffTime
 
 ```TypeScript
@@ -84,7 +82,7 @@ function getScreenOffTime(admin: Want): Promise<number>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getvalue-1)
+**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_SETTINGS
 

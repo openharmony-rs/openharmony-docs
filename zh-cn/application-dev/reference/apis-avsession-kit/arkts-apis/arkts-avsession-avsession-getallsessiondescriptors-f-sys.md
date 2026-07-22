@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="getallsessiondescriptors"></a>
 ## getAllSessionDescriptors
 
 ```TypeScript
@@ -71,7 +70,6 @@ struct Index {
 ```
 
 
-<a id="getallsessiondescriptors-1"></a>
 ## getAllSessionDescriptors
 
 ```TypeScript

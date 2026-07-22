@@ -14,7 +14,6 @@
 import { remoteDevice } from '@kit.ConnectivityKit';
 ```
 
-<a id="canceldevicepairing"></a>
 ## cancelDevicePairing
 
 ```TypeScript
@@ -50,7 +49,6 @@ cancelDevicePairing(): Promise<void>
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="connect"></a>
 ## connect
 
 ```TypeScript
@@ -86,7 +84,6 @@ connect(): Promise<void>
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="disconnect"></a>
 ## disconnect
 
 ```TypeScript
@@ -122,7 +119,6 @@ disconnect(): Promise<void>
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="getdevicealias"></a>
 ## getDeviceAlias
 
 ```TypeScript
@@ -158,7 +154,6 @@ getDeviceAlias(): string
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="getdevicemodel"></a>
 ## getDeviceModel
 
 ```TypeScript
@@ -191,7 +186,6 @@ getDeviceModel(): DeviceModel
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="getrssivalue"></a>
 ## getRssiValue
 
 ```TypeScript
@@ -227,7 +221,6 @@ getRssiValue(): Promise<number>
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="removepaireddevice"></a>
 ## removePairedDevice
 
 ```TypeScript
@@ -263,7 +256,6 @@ removePairedDevice(): Promise<void>
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="setconnectioninterval"></a>
 ## setConnectionInterval
 
 ```TypeScript
@@ -299,7 +291,6 @@ setConnectionInterval(interval: ConnectionInterval): void
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="setdevicealias"></a>
 ## setDeviceAlias
 
 ```TypeScript
@@ -336,7 +327,6 @@ setDeviceAlias(alias: string): void
 | 36100046 | String exceeds maximum length. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="setpairingconfirmation"></a>
 ## setPairingConfirmation
 
 ```TypeScript
@@ -372,7 +362,6 @@ setPairingConfirmation(accept: boolean): void
 | [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="setpairingpasscode"></a>
 ## setPairingPasscode
 
 ```TypeScript
@@ -415,7 +404,6 @@ setPairingPasscode(passcode: string): Promise<void>
 | 36100045 | Passcode must be a 6-digit number. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="startcrediblepairing"></a>
 ## startCrediblePairing
 
 ```TypeScript

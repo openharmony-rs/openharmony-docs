@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="getprojectionmatrix"></a>
 ## getProjectionMatrix
 
 ```TypeScript
@@ -31,7 +30,6 @@ getProjectionMatrix(): Mat4x4
 | --- | --- |
 | [Mat4x4](arkts-arkgraphics3d-scenetypes-mat4x4-i.md) | -- 相机的投影矩阵 |
 
-<a id="getviewmatrix"></a>
 ## getViewMatrix
 
 ```TypeScript
@@ -52,7 +50,6 @@ getViewMatrix(): Mat4x4
 | --- | --- |
 | [Mat4x4](arkts-arkgraphics3d-scenetypes-mat4x4-i.md) | -- 相机的视图矩阵 |
 
-<a id="raycast"></a>
 ## raycast
 
 ```TypeScript

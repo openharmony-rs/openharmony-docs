@@ -6,7 +6,6 @@
 import { dataUriUtils } from '@kit.AbilityKit';
 ```
 
-<a id="deleteid"></a>
 ## deleteId
 
 ```TypeScript

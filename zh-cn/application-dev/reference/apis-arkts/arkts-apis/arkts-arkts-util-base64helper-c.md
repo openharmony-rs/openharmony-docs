@@ -14,7 +14,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -31,7 +30,6 @@ constructor()
 
 **系统能力：** SystemCapability.Utils.Lang
 
-<a id="decode"></a>
 ## decode
 
 ```TypeScript
@@ -61,7 +59,6 @@ decode(src: Uint8Array | string, options?: Type): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
-<a id="decodesync"></a>
 ## decodeSync
 
 ```TypeScript
@@ -91,7 +88,6 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
-<a id="encode"></a>
 ## encode
 
 ```TypeScript
@@ -121,7 +117,6 @@ encode(src: Uint8Array, options?: Type): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
-<a id="encodesync"></a>
 ## encodeSync
 
 ```TypeScript
@@ -151,7 +146,6 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
-<a id="encodetostring"></a>
 ## encodeToString
 
 ```TypeScript
@@ -181,7 +175,6 @@ encodeToString(src: Uint8Array, options?: Type): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | 用于返回获取到的字符串的 promise。 |
 
-<a id="encodetostringsync"></a>
 ## encodeToStringSync
 
 ```TypeScript

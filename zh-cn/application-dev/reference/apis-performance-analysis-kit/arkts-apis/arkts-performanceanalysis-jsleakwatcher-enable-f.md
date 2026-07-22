@@ -6,7 +6,6 @@
 import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="enable"></a>
 ## enable
 
 ```TypeScript

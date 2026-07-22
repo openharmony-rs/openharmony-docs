@@ -14,7 +14,6 @@ Provides a method for managing web geographic location permissions.
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="allowgeolocation"></a>
 ## allowGeolocation
 
 ```TypeScript
@@ -45,7 +44,6 @@ Allow geolocation permissions for specifies source.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. The origin format must follow defined in RFC 6454. |
 
-<a id="deleteallgeolocation"></a>
 ## deleteAllGeolocation
 
 ```TypeScript
@@ -68,7 +66,6 @@ Delete all geolocation permissions.
 | --- | --- | --- | --- |
 | incognito | boolean | 否 | Whether to clear the geolocation permission status of all sources in incognito mode. The value **true** means to clear the geolocation permission status of all sources in incognito mode,and **false** means the opposite.<br>Default value: **false**.<br>If **null** or **undefined** is passed in,the value is **false**.<br>**起始版本：** 11 |
 
-<a id="deletegeolocation"></a>
 ## deleteGeolocation
 
 ```TypeScript
@@ -99,7 +96,6 @@ Delete geolocation permissions for specifies source.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. The origin format must follow defined in RFC 6454. |
 
-<a id="getaccessiblegeolocation"></a>
 ## getAccessibleGeolocation
 
 ```TypeScript
@@ -136,7 +132,6 @@ Gets the geolocation permission status of the specified source.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. The origin format must follow defined in RFC 6454. |
 
-<a id="getaccessiblegeolocation-1"></a>
 ## getAccessibleGeolocation
 
 ```TypeScript
@@ -168,7 +163,6 @@ Gets the geolocation permission status of the specified source.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. The origin format must follow defined in RFC 6454. |
 
-<a id="getstoredgeolocation"></a>
 ## getStoredGeolocation
 
 ```TypeScript
@@ -203,7 +197,6 @@ Get all stored geolocation permission url source.
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
-<a id="getstoredgeolocation-1"></a>
 ## getStoredGeolocation
 
 ```TypeScript

@@ -8,7 +8,6 @@ Define the controller to interact with a custom keyboard, related to the {@link 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -23,7 +22,6 @@ Close the custom keyboard.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -40,7 +38,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="deletebackward"></a>
 ## deleteBackward
 
 ```TypeScript
@@ -61,7 +58,6 @@ Delete text from front to back.
 | --- | --- | --- | --- |
 | length | number | 是 | length of text, which will be deleted from front to back. |
 
-<a id="deleteforward"></a>
 ## deleteForward
 
 ```TypeScript
@@ -82,7 +78,6 @@ Delete text from back to front.
 | --- | --- | --- | --- |
 | length | number | 是 | length of text, which will be deleted from back to front. |
 
-<a id="inserttext"></a>
 ## insertText
 
 ```TypeScript
@@ -103,7 +98,6 @@ Insert text into Editor.
 | --- | --- | --- | --- |
 | text | string | 是 | text which will be inserted. |
 
-<a id="sendfunctionkey"></a>
 ## sendFunctionKey
 
 ```TypeScript

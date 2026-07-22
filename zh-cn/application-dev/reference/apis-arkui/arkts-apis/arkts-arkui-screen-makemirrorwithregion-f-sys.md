@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="makemirrorwithregion"></a>
 ## makeMirrorWithRegion
 
 ```TypeScript

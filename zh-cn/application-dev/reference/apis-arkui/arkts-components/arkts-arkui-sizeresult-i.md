@@ -1,7 +1,6 @@
 # SizeResult
 
 组件尺寸信息。
-
 > **说明：**  
 >  
 >- 自定义布局暂不支持LazyForEach写法。  

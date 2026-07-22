@@ -48,7 +48,7 @@ destUri: string
 errCode: number
 ```
 
-错误码。接口抛出错误码的详细介绍请参见[文件管理错误码](docroot://reference/apis-core-file-kit/errorcode-filemanagement.md)。
+错误码。接口抛出错误码的详细介绍请参见[文件管理错误码](../../../reference/apis-core-file-kit/errorcode-filemanagement.md)。
 
 **类型：** number
 

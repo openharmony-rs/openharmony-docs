@@ -1,6 +1,5 @@
 # sendMouseEvent
 
-<a id="sendmouseevent"></a>
 ## sendMouseEvent
 
 ```TypeScript

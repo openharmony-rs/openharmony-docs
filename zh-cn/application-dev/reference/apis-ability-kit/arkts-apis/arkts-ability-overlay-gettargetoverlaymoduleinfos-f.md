@@ -6,7 +6,6 @@
 import { overlay } from '@kit.AbilityKit';
 ```
 
-<a id="gettargetoverlaymoduleinfos"></a>
 ## getTargetOverlayModuleInfos
 
 ```TypeScript
@@ -26,7 +25,7 @@ function getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | targetModuleName | string | 是 | 指定当前应用中的目标module的名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;OverlayModuleInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取指定的目标module的[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)成功时，err返回undefined。否则回调函数返回具体错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;OverlayModuleInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取指定的目标module的[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)成功时，err返回undefined。否则回调函数返回具体错误对象。 |
 
 **错误码：**
 
@@ -62,7 +61,6 @@ try {
 ```
 
 
-<a id="gettargetoverlaymoduleinfos-1"></a>
 ## getTargetOverlayModuleInfos
 
 ```TypeScript
@@ -87,7 +85,7 @@ function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<Ov
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;OverlayModuleInfo&gt;&gt; | Promise对象，返回<Array<[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)>>。 |
+| Promise&lt;Array&lt;OverlayModuleInfo&gt;&gt; | Promise对象，返回&lt;Array<[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)>&gt;&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;>。 |
 
 **错误码：**
 

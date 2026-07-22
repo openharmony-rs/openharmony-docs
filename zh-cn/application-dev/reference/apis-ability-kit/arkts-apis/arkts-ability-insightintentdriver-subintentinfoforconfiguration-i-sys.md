@@ -1,6 +1,6 @@
 # SubIntentInfoForConfiguration（系统接口）
 
-用于描述[使用配置文件开发的意图](docroot://application-models/insight-intent-config-development.md)的特有信息。
+用于描述[使用配置文件开发的意图](../../../application-models/insight-intent-config-development.md)的特有信息。
 
 **起始版本：** 23
 

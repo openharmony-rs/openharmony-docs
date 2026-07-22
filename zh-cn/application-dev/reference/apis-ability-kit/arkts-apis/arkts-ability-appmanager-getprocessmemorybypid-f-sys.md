@@ -6,7 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="getprocessmemorybypid"></a>
 ## getProcessMemoryByPid
 
 ```TypeScript
@@ -27,7 +26,7 @@ function getProcessMemoryByPid(pid: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](arkts-ability-appmanager-getrunningprocessinfobybundlename-f-sys.md#getrunningprocessinfobybundlename-1)。 |
+| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](arkts-ability-appmanager-getrunningprocessinfobybundlename-f-sys.md#getrunningprocessinfobybundlename)。 |
 
 **返回值：**
 
@@ -66,7 +65,6 @@ try {
 ```
 
 
-<a id="getprocessmemorybypid-1"></a>
 ## getProcessMemoryByPid
 
 ```TypeScript
@@ -87,7 +85,7 @@ function getProcessMemoryByPid(pid: number, callback: AsyncCallback<number>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](arkts-ability-appmanager-getrunningprocessinfobybundlename-f-sys.md#getrunningprocessinfobybundlename-1)。 |
+| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](arkts-ability-appmanager-getrunningprocessinfobybundlename-f-sys.md#getrunningprocessinfobybundlename)。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 以回调方式返回接口运行结果及进程占用的内存大小（单位KB），可进行错误处理或其他自定义处理。 |
 
 **错误码：**

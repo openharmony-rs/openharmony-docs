@@ -2,8 +2,7 @@
 
 管理音频组音量。
 
-在使用AudioVolumeGroupManager的接口之前，需先通过[getVolumeGroupManager](arkts-audio-audio-audiovolumemanager-i.md#getvolumegroupmanager-1)获取AudioVolumeGroupManager实例。
-
+在使用AudioVolumeGroupManager的接口之前，需先通过[getVolumeGroupManager](arkts-audio-audio-audiovolumemanager-i.md#getvolumegroupmanager)获取AudioVolumeGroupManager实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 9开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="adjustsystemvolumebystep"></a>
 ## adjustSystemVolumeByStep
 
 ```TypeScript
@@ -69,7 +67,6 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
 
 ```
 
-<a id="adjustsystemvolumebystep-1"></a>
 ## adjustSystemVolumeByStep
 
 ```TypeScript
@@ -121,7 +118,6 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
 
 ```
 
-<a id="adjustvolumebystep"></a>
 ## adjustVolumeByStep
 
 ```TypeScript
@@ -170,7 +166,6 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP, (er
 
 ```
 
-<a id="adjustvolumebystep-1"></a>
 ## adjustVolumeByStep
 
 ```TypeScript
@@ -221,7 +216,6 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).the
 
 ```
 
-<a id="getactivevolumetypesync"></a>
 ## getActiveVolumeTypeSync
 
 ```TypeScript
@@ -267,7 +261,6 @@ let value = audioVolumeGroupManager.getActiveVolumeTypeSync(uid);
 
 ```
 
-<a id="ispersistentmicmute"></a>
 ## isPersistentMicMute
 
 ```TypeScript
@@ -304,7 +297,6 @@ let value: boolean = audioVolumeGroupManager.isPersistentMicMute();
 
 ```
 
-<a id="mute"></a>
 ## mute
 
 ```TypeScript
@@ -344,7 +336,6 @@ audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessEr
 
 ```
 
-<a id="mute-1"></a>
 ## mute
 
 ```TypeScript
@@ -385,7 +376,6 @@ audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
 
 ```
 
-<a id="setmicmute"></a>
 ## setMicMute
 
 ```TypeScript
@@ -432,7 +422,6 @@ audioVolumeGroupManager.setMicMute(true).then(() => {
 
 ```
 
-<a id="setmicmutepersistent"></a>
 ## setMicMutePersistent
 
 ```TypeScript
@@ -480,7 +469,6 @@ audioVolumeGroupManager.setMicMutePersistent(true, audio.PolicyType.PRIVACY).the
 
 ```
 
-<a id="setringermode"></a>
 ## setRingerMode
 
 ```TypeScript
@@ -519,7 +507,6 @@ audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (e
 
 ```
 
-<a id="setringermode-1"></a>
 ## setRingerMode
 
 ```TypeScript
@@ -559,7 +546,6 @@ audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).th
 
 ```
 
-<a id="setvolume"></a>
 ## setVolume
 
 ```TypeScript
@@ -601,7 +587,6 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: Busines
 
 ```
 
-<a id="setvolume-1"></a>
 ## setVolume
 
 ```TypeScript
@@ -642,7 +627,6 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
 
 ```
 
-<a id="setvolumewithflag"></a>
 ## setVolumeWithFlag
 
 ```TypeScript

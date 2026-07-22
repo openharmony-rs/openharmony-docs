@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="setabilityenabled"></a>
 ## setAbilityEnabled
 
 ```TypeScript
@@ -86,7 +85,6 @@ try {
 ```
 
 
-<a id="setabilityenabled-1"></a>
 ## setAbilityEnabled
 
 ```TypeScript
@@ -161,7 +159,6 @@ try {
 ```
 
 
-<a id="setabilityenabled-2"></a>
 ## setAbilityEnabled
 
 ```TypeScript

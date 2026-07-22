@@ -6,7 +6,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="geterrorstring"></a>
 ## getErrorString
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getErrorString(errno: number): string
 
 **废弃版本：** 9
 
-**替代接口：** [errnoToString](arkts-arkts-util-errnotostring-f.md#errnotostring-1)
+**替代接口：** [errnoToString](arkts-arkts-util-errnotostring-f.md#errnotostring)
 
 <!--Device-util-function getErrorString(errno: number): string--><!--Device-util-function getErrorString(errno: number): string-End-->
 

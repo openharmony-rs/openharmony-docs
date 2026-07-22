@@ -6,7 +6,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="parseuuid"></a>
 ## parseUUID
 
 ```TypeScript

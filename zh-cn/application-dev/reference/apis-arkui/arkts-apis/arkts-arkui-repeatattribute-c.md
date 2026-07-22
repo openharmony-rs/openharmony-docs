@@ -10,22 +10,20 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="each"></a>
 ## each
 
 ```TypeScript
 each(itemGenerator: (repeatItem: RepeatItem<T>) => void): RepeatAttribute<T>
 ```
 
-组件生成函数。当所有[`.template()`](docroot://reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template)的type和[`.templateId()`](docroot://reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid)返回值不匹配（即当前item不适用任何template定义的样式）时，将使用`.each()`处理数据项。
-
+组件生成函数。当所有[`.template()`](../../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template)的type和[`.templateId()`](../../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid)返回值不匹配（即当前item不适用任何template定义的样式）时，将使用`.each()`处理数据项。
 > **说明**  
 >  
 > - `each`属性必须有，否则运行时会报错。  
 >  
 > - `itemGenerator`的参数为`RepeatItem`，该参数将`item`和`index`结合到了一起，请勿将`RepeatItem`参数拆开使用。  
 >  
-> - 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> - 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -51,7 +49,6 @@ each(itemGenerator: (repeatItem: RepeatItem<T>) => void): RepeatAttribute<T>
 | --- | --- |
 | [RepeatAttribute](arkts-arkui-repeatattribute-c.md)&lt;T&gt; | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="key"></a>
 ## key
 
 ```TypeScript
@@ -59,10 +56,9 @@ key(keyGenerator: (item: T, index: number) => string): RepeatAttribute<T>
 ```
 
 键值生成函数。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -88,7 +84,6 @@ key(keyGenerator: (item: T, index: number) => string): RepeatAttribute<T>
 | --- | --- |
 | [RepeatAttribute](arkts-arkui-repeatattribute-c.md)&lt;T&gt; | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="template"></a>
 ## template
 
 ```TypeScript
@@ -96,10 +91,9 @@ template(type: string, itemBuilder: RepeatItemBuilder<T>, templateOptions?: Temp
 ```
 
 由template type渲染对应的template子组件。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -125,7 +119,6 @@ template(type: string, itemBuilder: RepeatItemBuilder<T>, templateOptions?: Temp
 | --- | --- |
 | [RepeatAttribute](arkts-arkui-repeatattribute-c.md)&lt;T&gt; | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="templateid"></a>
 ## templateId
 
 ```TypeScript
@@ -133,10 +126,9 @@ templateId(typedFunc: TemplateTypedFunc<T>): RepeatAttribute<T>
 ```
 
 为当前数据项分配template type。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -160,7 +152,6 @@ templateId(typedFunc: TemplateTypedFunc<T>): RepeatAttribute<T>
 | --- | --- |
 | [RepeatAttribute](arkts-arkui-repeatattribute-c.md)&lt;T&gt; | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="virtualscroll"></a>
 ## virtualScroll
 
 ```TypeScript
@@ -168,10 +159,9 @@ virtualScroll(virtualScrollOptions?: VirtualScrollOptions): RepeatAttribute<T>
 ```
 
 `Repeat`开启虚拟滚动。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](../arkts-components/arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 

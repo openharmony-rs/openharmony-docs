@@ -6,7 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="getglobalwindowmode"></a>
 ## getGlobalWindowMode
 
 ```TypeScript
@@ -27,7 +26,7 @@ function getGlobalWindowMode(displayId?: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | number | 否 | 可选的屏幕ID，用于获取对应屏幕上的窗口模式信息。该参数应为大于等于0的整数，小于0时会返回错误码1300016，不传或传值为null以及undefined则代表查询所有屏幕，传入非整数会忽略掉小数部分。如果指定的屏幕不存在，返回值为0，推荐使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties-1)方法获取窗口所在屏幕ID属性。 |
+| displayId | number | 否 | 可选的屏幕ID，用于获取对应屏幕上的窗口模式信息。该参数应为大于等于0的整数，小于0时会返回错误码1300016，不传或传值为null以及undefined则代表查询所有屏幕，传入非整数会忽略掉小数部分。如果指定的屏幕不存在，返回值为0，推荐使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口所在屏幕ID属性。 |
 
 **返回值：**
 

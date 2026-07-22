@@ -6,7 +6,6 @@
 import { uniformTypeDescriptor } from '@kit.ArkData';
 ```
 
-<a id="getuniformdatatypesbyfilenameextension"></a>
 ## getUniformDataTypesByFilenameExtension
 
 ```TypeScript

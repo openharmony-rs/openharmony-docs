@@ -6,14 +6,13 @@
 import { uiMaterial } from '@kit.ArkUI';
 ```
 
-<a id="getmaterialinfo"></a>
 ## getMaterialInfo
 
 ```TypeScript
 function getMaterialInfo(): MaterialInfo
 ```
 
-获取当前应用的材质配置信息。返回的配置信息来自应用在[module.json5](docroot://quick-start/module-configuration-file.md)中配置的metadata。
+获取当前应用的材质配置信息。返回的配置信息来自应用在[module.json5](../../../quick-start/module-configuration-file.md)中配置的metadata。
 
 **起始版本：** 26.0.0
 

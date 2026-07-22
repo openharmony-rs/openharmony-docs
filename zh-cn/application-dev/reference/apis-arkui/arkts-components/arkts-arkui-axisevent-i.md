@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getcurrentlocalposition"></a>
 ## getCurrentLocalPosition
 
 ```TypeScript
@@ -35,7 +34,6 @@ getCurrentLocalPosition?(): Coordinate2D
 | --- | --- |
 | [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | - 点击位置相对于当前组件实时位置的左上角坐标。 |
 
-<a id="gethorizontalaxisvalue"></a>
 ## getHorizontalAxisValue
 
 ```TypeScript
@@ -60,7 +58,6 @@ getHorizontalAxisValue(): number
 | --- | --- |
 | number | 水平轴值。<br>单位：vp |
 
-<a id="getpinchaxisscalevalue"></a>
 ## getPinchAxisScaleValue
 
 ```TypeScript
@@ -85,7 +82,6 @@ getPinchAxisScaleValue(): number
 | --- | --- |
 | number | 双指缩放比例。<br/> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值。<br/>默认值：0<br/>取值范围：[0, +∞)<br/> |
 
-<a id="getverticalaxisvalue"></a>
 ## getVerticalAxisValue
 
 ```TypeScript
@@ -110,7 +106,6 @@ getVerticalAxisValue(): number
 | --- | --- |
 | number | 垂直轴值。<br>单位：vp |
 
-<a id="hasaxis"></a>
 ## hasAxis
 
 ```TypeScript
@@ -215,7 +210,7 @@ eventHandleId?: number
 
 取值范围：[0, +∞)
 
-**说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy-1)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。
+**说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。
 
 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
 
@@ -237,7 +232,7 @@ eventHandleId?: number
 globalDisplayX?: number
 ```
 
-鼠标光标在[全局坐标系](docroot://windowmanager/window-terminology.md#全局坐标系)中的X坐标。
+鼠标光标在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
 
 单位：vp
 
@@ -261,7 +256,7 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-鼠标光标或手写笔位置在[全局坐标系](docroot://windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
+鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
 
 单位：vp
 
@@ -285,7 +280,7 @@ globalDisplayY?: number
 propagation: Callback<void>
 ```
 
-激活[事件冒泡](docroot://ui/arkts-interaction-basic-principles.md#事件冒泡)。
+激活[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
 
 **类型：** Callback&lt;void&gt;
 
@@ -371,7 +366,7 @@ windowY: number
 x: number
 ```
 
-鼠标光标在被点击元素为基准的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中的X坐标。
+鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。
 
 单位：vp
 
@@ -393,7 +388,7 @@ x: number
 y: number
 ```
 
-鼠标光标在被点击元素为基准的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中的Y坐标。
+鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。
 
 单位：vp
 

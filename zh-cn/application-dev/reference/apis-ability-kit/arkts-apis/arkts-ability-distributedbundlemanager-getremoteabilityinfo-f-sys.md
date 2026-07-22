@@ -6,7 +6,6 @@
 import { distributedBundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getremoteabilityinfo"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -73,7 +72,6 @@ try {
 ```
 
 
-<a id="getremoteabilityinfo-1"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -143,7 +141,6 @@ try {
 ```
 
 
-<a id="getremoteabilityinfo-2"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -217,7 +214,6 @@ try {
 ```
 
 
-<a id="getremoteabilityinfo-3"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -294,7 +290,6 @@ try {
 ```
 
 
-<a id="getremoteabilityinfo-4"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -362,7 +357,6 @@ try {
 ```
 
 
-<a id="getremoteabilityinfo-5"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -433,7 +427,6 @@ try {
 ```
 
 
-<a id="getremoteabilityinfo-6"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -508,7 +501,6 @@ try {
 ```
 
 
-<a id="getremoteabilityinfo-7"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript

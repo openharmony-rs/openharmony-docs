@@ -1,7 +1,6 @@
 # DngPropertyKey
 
 表示DNG图片信息的枚举。
-
 > **说明：**  
 >  
 > - 关于字段的更详细描述请参考DNG协议文档DNG Specification 1.4.0.0。  

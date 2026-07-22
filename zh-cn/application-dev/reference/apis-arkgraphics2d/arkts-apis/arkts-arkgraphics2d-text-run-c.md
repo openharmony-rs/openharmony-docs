@@ -2,7 +2,7 @@
 
 文本排版单元。
 
-下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns-1)接口获取Run对象实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接口获取Run对象实例，再通过此实例调用对应方法。
 
 **起始版本：** 12
 
@@ -16,7 +16,6 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
-<a id="getadvances"></a>
 ## getAdvances
 
 ```TypeScript
@@ -55,7 +54,6 @@ let advancesNull = runs[0].getAdvances(null); // null是非法参数，将返回
 
 ```
 
-<a id="getfont"></a>
 ## getFont
 
 ```TypeScript
@@ -85,7 +83,6 @@ let font = runs[0].getFont();
 
 ```
 
-<a id="getglyphcount"></a>
 ## getGlyphCount
 
 ```TypeScript
@@ -115,7 +112,6 @@ let glyphs = runs[0].getGlyphCount();
 
 ```
 
-<a id="getglyphs"></a>
 ## getGlyphs
 
 ```TypeScript
@@ -145,7 +141,6 @@ let glyph = runs[0].getGlyphs();
 
 ```
 
-<a id="getglyphs-1"></a>
 ## getGlyphs
 
 ```TypeScript
@@ -203,7 +198,6 @@ struct Index {
 
 ```
 
-<a id="getimagebounds"></a>
 ## getImageBounds
 
 ```TypeScript
@@ -211,17 +205,16 @@ getImageBounds(): common2D.Rect
 ```
 
 获取该排版单元的图像边界，图像边界与排版字体、排版字号、字符本身都有关，相当于视觉边界，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，用户在界面上只能看到"a b"，图像边界即为不包括带行首和末尾空格的边界。
-
 > **说明：**  
 >  
 > 示意图展示了字符串为" a b "的图像边界。  
 >  
-> ![zh-ch_image_ImageBounds.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
+> ![zh-ch_image_ImageBounds.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
 >  
 > 示意图展示了字符串为"j"或"E"的图像边界。  
 >  
 > !  
-> [zh-ch_image_ImageBounds_Character.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds_Character.png)
+> [zh-ch_image_ImageBounds_Character.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds_Character.png)
 
 **起始版本：** 18
 
@@ -244,7 +237,6 @@ let bounds = runs[0].getImageBounds();
 
 ```
 
-<a id="getoffsets"></a>
 ## getOffsets
 
 ```TypeScript
@@ -274,7 +266,6 @@ let offsets = runs[0].getOffsets();
 
 ```
 
-<a id="getpositions"></a>
 ## getPositions
 
 ```TypeScript
@@ -304,7 +295,6 @@ let positions = runs[0].getPositions();
 
 ```
 
-<a id="getpositions-1"></a>
 ## getPositions
 
 ```TypeScript
@@ -362,7 +352,6 @@ struct Index {
 
 ```
 
-<a id="getstringindices"></a>
 ## getStringIndices
 
 ```TypeScript
@@ -420,7 +409,6 @@ struct Index {
 
 ```
 
-<a id="getstringrange"></a>
 ## getStringRange
 
 ```TypeScript
@@ -452,7 +440,6 @@ let length = runStringRange.end;
 
 ```
 
-<a id="gettextdirection"></a>
 ## getTextDirection
 
 ```TypeScript
@@ -482,7 +469,6 @@ let textDirection = runs[0].getTextDirection();
 
 ```
 
-<a id="gettextstyle"></a>
 ## getTextStyle
 
 ```TypeScript
@@ -567,7 +553,6 @@ function numberToRGBA(colorNum: number): common2D.Color {
 
 ```
 
-<a id="gettypographicbounds"></a>
 ## getTypographicBounds
 
 ```TypeScript
@@ -575,18 +560,17 @@ getTypographicBounds(): TypographicBounds
 ```
 
 获取该排版单元的排版边界，排版边界与排版字体、排版字号有关，与字符本身无关，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。
-
 > **说明：**  
 >  
 > 示意图展示了字符串为" a b "的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds.png)  
+> [zh-ch_image_TypographicBounds.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds.png)  
 >  
 > 示意图展示了字符串为"j"或"E"的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds_Character.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds_Character.png)
+> [zh-ch_image_TypographicBounds_Character.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds_Character.png)
 
 **起始版本：** 18
 
@@ -609,7 +593,6 @@ let typographicBounds = runs[0].getTypographicBounds();
 
 ```
 
-<a id="paint"></a>
 ## paint
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createbrightnessblender"></a>
 ## createBrightnessBlender
 
 ```TypeScript

@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ JsResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="handlecancel"></a>
 ## handleCancel
 
 ```TypeScript
@@ -42,7 +40,6 @@ handleCancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="handleconfirm"></a>
 ## handleConfirm
 
 ```TypeScript
@@ -59,7 +56,6 @@ handleConfirm(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="handlepromptconfirm"></a>
 ## handlePromptConfirm
 
 ```TypeScript

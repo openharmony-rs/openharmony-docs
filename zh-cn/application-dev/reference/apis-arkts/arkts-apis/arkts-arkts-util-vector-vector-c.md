@@ -3,7 +3,6 @@
 Vector是基于数组实现的线性数据结构。当Vector的内存用完时，会自动分配一块更大的连续内存区域，并将所有元素复制到新内存区域，回收当前内存区域。Vector可用于高效访问元素。Vector和[ArrayList](arkts-util-arraylist.md)都是基于数组实现，但Vector提供了更多的数组操作接口。两者都可以动态调整容量，Vector每次扩容为原来的两倍，ArrayList每次扩容为原来的1.5倍。**推荐使用场景：** 当数据量较大时，推荐使用Vector。文档中使用了泛型，涉及以下泛型标记符：
 
 - T：Type，类
-
 > **说明**  
 >  
 > - 此模块提供的接口从API version 9开始废弃。建议使用  
@@ -25,7 +24,6 @@ Vector是基于数组实现的线性数据结构。当Vector的内存用完时�
 import { Vector } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -73,7 +71,6 @@ while(temp != undefined) {
 
 ```
 
-<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -125,7 +122,6 @@ let result3 = vector.add(personInfo);
 
 ```
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -154,7 +150,6 @@ vector.clear();
 
 ```
 
-<a id="clone"></a>
 ## clone
 
 ```TypeScript
@@ -189,7 +184,6 @@ let result = vector.clone();
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -213,7 +207,6 @@ let vector : Vector<string | number | Array<number>> = new Vector();
 
 ```
 
-<a id="converttoarray"></a>
 ## convertToArray
 
 ```TypeScript
@@ -248,7 +241,6 @@ let result = vector.convertToArray();
 
 ```
 
-<a id="copytoarray"></a>
 ## copyToArray
 
 ```TypeScript
@@ -271,7 +263,6 @@ copyToArray(array: Array<T>): void
 | --- | --- | --- | --- |
 | array | Array&lt;T&gt; | 是 | 接收Vector中复制元素的数组。 |
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -311,7 +302,6 @@ vector.forEach((value : number, index?: number) : void => {
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -352,7 +342,6 @@ let result = vector.get(2);
 
 ```
 
-<a id="getcapacity"></a>
 ## getCapacity
 
 ```TypeScript
@@ -387,7 +376,6 @@ let result = vector.getCapacity();
 
 ```
 
-<a id="getfirstelement"></a>
 ## getFirstElement
 
 ```TypeScript
@@ -422,7 +410,6 @@ let result = vector.getFirstElement();
 
 ```
 
-<a id="getindexfrom"></a>
 ## getIndexFrom
 
 ```TypeScript
@@ -464,7 +451,6 @@ let result = vector.getIndexFrom(4, 3);
 
 ```
 
-<a id="getindexof"></a>
 ## getIndexOf
 
 ```TypeScript
@@ -508,7 +494,6 @@ let result = vector.getIndexOf(2);
 
 ```
 
-<a id="getlastelement"></a>
 ## getLastElement
 
 ```TypeScript
@@ -543,7 +528,6 @@ let result = vector.getLastElement();
 
 ```
 
-<a id="getlastindexfrom"></a>
 ## getLastIndexFrom
 
 ```TypeScript
@@ -585,7 +569,6 @@ let result = vector.getLastIndexFrom(4,3);
 
 ```
 
-<a id="getlastindexof"></a>
 ## getLastIndexOf
 
 ```TypeScript
@@ -629,7 +612,6 @@ let result = vector.getLastIndexOf(2);
 
 ```
 
-<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -672,7 +654,6 @@ let result1 = vector.has("squirrel");
 
 ```
 
-<a id="increasecapacityto"></a>
 ## increaseCapacityTo
 
 ```TypeScript
@@ -711,7 +692,6 @@ vector.increaseCapacityTo(12);
 
 ```
 
-<a id="insert"></a>
 ## insert
 
 ```TypeScript
@@ -749,7 +729,6 @@ vector.insert(true, 2);
 
 ```
 
-<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -784,7 +763,6 @@ let result = vector.isEmpty();
 
 ```
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -825,7 +803,6 @@ let result = vector.remove(2);
 
 ```
 
-<a id="removebyindex"></a>
 ## removeByIndex
 
 ```TypeScript
@@ -867,7 +844,6 @@ let result = vector.removeByIndex(2);
 
 ```
 
-<a id="removebyrange"></a>
 ## removeByRange
 
 ```TypeScript
@@ -905,7 +881,6 @@ vector.removeByRange(2,4);
 
 ```
 
-<a id="replaceallelements"></a>
 ## replaceAllElements
 
 ```TypeScript
@@ -946,7 +921,6 @@ vector.replaceAllElements((value : number) : number => {
 
 ```
 
-<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -976,7 +950,6 @@ set(index: number, element: T): T
 | --- | --- |
 | T | 返回替换后的新元素。 |
 
-<a id="setlength"></a>
 ## setLength
 
 ```TypeScript
@@ -1012,7 +985,6 @@ vector.setLength(2);
 
 ```
 
-<a id="sort"></a>
 ## sort
 
 ```TypeScript
@@ -1053,7 +1025,6 @@ vector.sort();
 
 ```
 
-<a id="subvector"></a>
 ## subVector
 
 ```TypeScript
@@ -1102,7 +1073,6 @@ let result1 = vector.subVector(2,4);
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -1137,7 +1107,6 @@ let result = vector.toString();
 
 ```
 
-<a id="trimtocurrentlength"></a>
 ## trimToCurrentLength
 
 ```TypeScript

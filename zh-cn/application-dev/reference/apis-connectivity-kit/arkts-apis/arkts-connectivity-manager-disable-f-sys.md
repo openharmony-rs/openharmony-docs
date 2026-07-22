@@ -6,7 +6,6 @@
 import { manager } from '@kit.ConnectivityKit';
 ```
 
-<a id="disable"></a>
 ## disable
 
 ```TypeScript

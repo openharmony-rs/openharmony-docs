@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="movebyspeed"></a>
 ## moveBySpeed
 
 ```TypeScript
 function moveBySpeed(mechId: number, params: SpeedParams, duration: number): Promise<Result>
 ```
 
-Move a mechanical device at the specified speed.
+以特定速度移动一个具身设备
 
 **起始版本：** 26.0.0
 
@@ -27,15 +26,15 @@ Move a mechanical device at the specified speed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device.<br>The value should be an integer. |
-| params | [SpeedParams](arkts-mechanic-mechanicmanager-speedparams-i-sys.md) | 是 | Parameters to use when moving. |
-| duration | number | 是 | Duration of movement, in ms.<br>The value should be an integer. |
+| mechId | number | 是 | 具身设备ID。<br>取值限定为整数。 |
+| params | [SpeedParams](arkts-mechanic-mechanicmanager-speedparams-i-sys.md) | 是 | 移动参数。 |
+| duration | number | 是 | 移动时长，单位ms。<br>取值限定为整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | Promise that returns the execution result. |
+| Promise&lt;Result&gt; | 202 - 非系统应用 |
 
 **错误码：**
 

@@ -14,7 +14,6 @@
 import { autoFillManager } from '@kit.AbilityKit';
 ```
 
-<a id="onfailure"></a>
 ## onFailure
 
 ```TypeScript
@@ -37,7 +36,6 @@ onFailure(): void
 
 参见[autoFillManager.requestAutoSave](#autofillmanagerrequestautosave)。
 
-<a id="onsuccess"></a>
 ## onSuccess
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -40,7 +39,6 @@ emitter.off(1);
 ```
 
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -74,7 +72,6 @@ emitter.off("eventId1");
 ```
 
 
-<a id="off-2"></a>
 ## off
 
 ```TypeScript
@@ -115,7 +112,6 @@ emitter.off(1, callback);
 ```
 
 
-<a id="off-3"></a>
 ## off
 
 ```TypeScript
@@ -156,14 +152,13 @@ emitter.off("eventId1", callback);
 ```
 
 
-<a id="off-4"></a>
 ## off
 
 ```TypeScript
 function off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](emitter.on<T>(eventId: string, callback: Callback<GenericEventData<T>>))或[once](emitter.once<T>(eventId: string, callback: Callback<GenericEventData<T>>))接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](emitter.on<T>(eventId: string, callback: Callback&lt;GenericEventData<T>&gt;))或[once](emitter.once<T>(eventId: string, callback: Callback&lt;GenericEventData<T>&gt;))接口订阅callback时，该接口才生效。
 
 使用该接口取消某个事件订阅后，已通过[emit](emitter.emit(eventId: string))接口发布但尚未被执行的事件将被取消。
 

@@ -1,6 +1,5 @@
 # getMissionInfo（系统接口）
 
-<a id="getmissioninfo"></a>
 ## getMissionInfo
 
 ```TypeScript
@@ -56,7 +55,6 @@ missionManager.getMissionInfo('', missionId, (error, mission) => {
 ```
 
 
-<a id="getmissioninfo-1"></a>
 ## getMissionInfo
 
 ```TypeScript

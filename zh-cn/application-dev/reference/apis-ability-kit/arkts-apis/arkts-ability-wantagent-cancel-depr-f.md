@@ -1,6 +1,5 @@
 # cancel
 
-<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -84,7 +83,6 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="cancel-1"></a>
 ## cancel
 
 ```TypeScript

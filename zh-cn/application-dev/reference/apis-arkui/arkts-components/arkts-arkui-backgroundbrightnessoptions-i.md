@@ -1,7 +1,6 @@
 # BackgroundBrightnessOptions
 
 背景亮度选项。
-
 > **说明：**  
 >  
 > 对于组件背景内容，每个像素自身的亮度（灰阶值）的计算公式为：  

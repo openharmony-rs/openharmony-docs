@@ -18,7 +18,6 @@ Scope 接口用于描述字段的有效范围。
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="clamp"></a>
 ## clamp
 
 ```TypeScript
@@ -31,7 +30,7 @@ clamp(value: ScopeType): ScopeType
 
 **废弃版本：** 9
 
-**替代接口：** [clamp](arkts-arkts-util-scopehelper-c.md#clamp-1)
+**替代接口：** [clamp](arkts-arkts-util-scopehelper-c.md#clamp)
 
 <!--Device-Scope-clamp(value: ScopeType): ScopeType--><!--Device-Scope-clamp(value: ScopeType): ScopeType-End-->
 
@@ -82,7 +81,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -139,7 +137,6 @@ console.info("range = " + range);
 
 ```
 
-<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -152,7 +149,7 @@ contains(value: ScopeType): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains-1)
+**替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains)
 
 <!--Device-Scope-contains(value: ScopeType): boolean--><!--Device-Scope-contains(value: ScopeType): boolean-End-->
 
@@ -203,7 +200,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="contains-1"></a>
 ## contains
 
 ```TypeScript
@@ -216,7 +212,7 @@ contains(range: Scope): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains-1)
+**替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains)
 
 <!--Device-Scope-contains(range: Scope): boolean--><!--Device-Scope-contains(range: Scope): boolean-End-->
 
@@ -269,7 +265,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="expand"></a>
 ## expand
 
 ```TypeScript
@@ -335,7 +330,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="expand-1"></a>
 ## expand
 
 ```TypeScript
@@ -401,7 +395,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="expand-2"></a>
 ## expand
 
 ```TypeScript
@@ -465,7 +458,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="getlower"></a>
 ## getLower
 
 ```TypeScript
@@ -478,7 +470,7 @@ getLower(): ScopeType
 
 **废弃版本：** 9
 
-**替代接口：** [getLower](arkts-arkts-util-scopehelper-c.md#getlower-1)
+**替代接口：** [getLower](arkts-arkts-util-scopehelper-c.md#getlower)
 
 <!--Device-Scope-getLower(): ScopeType--><!--Device-Scope-getLower(): ScopeType-End-->
 
@@ -522,7 +514,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="getupper"></a>
 ## getUpper
 
 ```TypeScript
@@ -535,7 +526,7 @@ getUpper(): ScopeType
 
 **废弃版本：** 9
 
-**替代接口：** [getUpper](arkts-arkts-util-scopehelper-c.md#getupper-1)
+**替代接口：** [getUpper](arkts-arkts-util-scopehelper-c.md#getupper)
 
 <!--Device-Scope-getUpper(): ScopeType--><!--Device-Scope-getUpper(): ScopeType-End-->
 
@@ -579,7 +570,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="intersect"></a>
 ## intersect
 
 ```TypeScript
@@ -645,7 +635,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="intersect-1"></a>
 ## intersect
 
 ```TypeScript
@@ -711,7 +700,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -724,7 +712,7 @@ toString(): string
 
 **废弃版本：** 9
 
-**替代接口：** [toString](arkts-arkts-util-lrucache-c.md#tostring-1)
+**替代接口：** [toString](arkts-arkts-util-lrucache-c.md#tostring)
 
 <!--Device-Scope-toString(): string--><!--Device-Scope-toString(): string-End-->
 

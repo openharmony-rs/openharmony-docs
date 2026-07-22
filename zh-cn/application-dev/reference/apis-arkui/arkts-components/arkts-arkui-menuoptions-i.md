@@ -50,7 +50,7 @@ title?: ResourceStr
 
 **说明：**
 
-仅在content设置为Array<[MenuElement](arkts-arkui-menuelement-i.md)> 时生效。
+仅在content设置为Array&lt;[MenuElement](arkts-arkui-menuelement-i.md)&gt; 时生效。
 
 **类型：** ResourceStr
 

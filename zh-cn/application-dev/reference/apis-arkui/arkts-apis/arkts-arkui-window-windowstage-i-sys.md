@@ -2,7 +2,7 @@
 
 窗口管理器。管理各个基本窗口单元，即[Window](arkts-window.md)实例。
 
-下列API示例中都需在[onWindowStageCreate()](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate-1)函数中使用WindowStage的实例调用对应方法。
+下列API示例中都需在[onWindowStageCreate()](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)函数中使用WindowStage的实例调用对应方法。
 
 **起始版本：** 9
 
@@ -16,7 +16,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="disablewindowdecor"></a>
 ## disableWindowDecor
 
 ```TypeScript
@@ -25,7 +24,7 @@ disableWindowDecor(): void
 
 禁止窗口装饰。
 
-禁止窗口装饰后，当主窗口进入全屏沉浸状态时，此时鼠标Hover到上方窗口标题栏热区上会显示悬浮标题栏。若想禁用悬浮标题栏显示，请使用[setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown-1)接口。
+禁止窗口装饰后，当主窗口进入全屏沉浸状态时，此时鼠标Hover到上方窗口标题栏热区上会显示悬浮标题栏。若想禁用悬浮标题栏显示，请使用[setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown)接口。
 
 **起始版本：** 9
 
@@ -62,7 +61,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="removeimageforrecent"></a>
 ## removeImageForRecent
 
 ```TypeScript
@@ -100,7 +98,6 @@ removeImageForRecent(): Promise<void>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
-<a id="setimageforrecent"></a>
 ## setImageForRecent
 
 ```TypeScript
@@ -150,7 +147,6 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:1. Invalid parameter range. 2. Invalid parameter length. |
 
-<a id="setimageforrecent-1"></a>
 ## setImageForRecent
 
 ```TypeScript
@@ -223,7 +219,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="setshowonlockscreen"></a>
 ## setShowOnLockScreen
 
 ```TypeScript

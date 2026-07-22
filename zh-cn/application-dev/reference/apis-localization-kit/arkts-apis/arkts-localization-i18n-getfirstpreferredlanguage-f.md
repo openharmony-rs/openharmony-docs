@@ -6,7 +6,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="getfirstpreferredlanguage"></a>
 ## getFirstPreferredLanguage
 
 ```TypeScript
@@ -19,7 +18,7 @@ export function getFirstPreferredLanguage(): string
 
 **废弃版本：** 9
 
-**替代接口：** [getFirstPreferredLanguage](arkts-localization-i18n-system-c.md#getfirstpreferredlanguage-1)
+**替代接口：** [getFirstPreferredLanguage](arkts-localization-i18n-system-c.md#getfirstpreferredlanguage)
 
 <!--Device-i18n-export function getFirstPreferredLanguage(): string--><!--Device-i18n-export function getFirstPreferredLanguage(): string-End-->
 

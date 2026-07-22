@@ -1,6 +1,6 @@
 # AccessibilityElement
 
-无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement-1)或 [AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow-1)来获取一个 **AccessibilityElement** 实例。
+无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement)或 [AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow)来获取一个 **AccessibilityElement** 实例。
 
 **起始版本：** 9
 
@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-<a id="actionnames"></a>
 ## actionNames
 
 ```TypeScript
@@ -31,7 +30,6 @@ actionNames(callback: AsyncCallback<Array<string>>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回节点元素支持的所有操作名称。 |
 
-<a id="actionnames-1"></a>
 ## actionNames
 
 ```TypeScript
@@ -54,7 +52,6 @@ actionNames(): Promise<Array<string>>
 | --- | --- |
 | Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回节点元素支持的所有操作名称。 |
 
-<a id="attributenames"></a>
 ## attributeNames
 
 ```TypeScript
@@ -77,7 +74,6 @@ attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<A
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;T&gt;&gt; | 是 | 回调函数，返回节点元素的所有属性名称。 |
 
-<a id="attributenames-1"></a>
 ## attributeNames
 
 ```TypeScript
@@ -100,7 +96,6 @@ attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>
 | --- | --- |
 | Promise&lt;Array&lt;T&gt;&gt; | Promise对象，返回节点元素的所有属性名称。 |
 
-<a id="attributevalue"></a>
 ## attributeValue
 
 ```TypeScript
@@ -116,13 +111,7 @@ attributeValue<T extends keyof ElementAttributeValues>(
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(
-    attributeName: T,
-    callback: AsyncCallback<ElementAttributeValues[T]>
-  ): void--><!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(
-    attributeName: T,
-    callback: AsyncCallback<ElementAttributeValues[T]>
-  ): void-End-->
+<!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(    attributeName: T,    callback: AsyncCallback<ElementAttributeValues[T]>  ): void--><!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(    attributeName: T,    callback: AsyncCallback<ElementAttributeValues[T]>  ): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -140,7 +129,6 @@ attributeValue<T extends keyof ElementAttributeValues>(
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300004](../errorcode-accessibility.md#9300004-属性不存在) | This property does not exist. |
 
-<a id="attributevalue-1"></a>
 ## attributeValue
 
 ```TypeScript
@@ -176,7 +164,6 @@ attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promis
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300004](../errorcode-accessibility.md#9300004-属性不存在) | This property does not exist. |
 
-<a id="findelement"></a>
 ## findElement
 
 ```TypeScript
@@ -207,7 +194,6 @@ findElement(type: 'content', condition: string, callback: AsyncCallback<Array<Ac
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
-<a id="findelement-1"></a>
 ## findElement
 
 ```TypeScript
@@ -243,7 +229,6 @@ findElement(type: 'content', condition: string): Promise<Array<AccessibilityElem
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
-<a id="findelement-2"></a>
 ## findElement
 
 ```TypeScript
@@ -274,7 +259,6 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<Acc
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
-<a id="findelement-3"></a>
 ## findElement
 
 ```TypeScript
@@ -310,7 +294,6 @@ findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityEleme
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
-<a id="findelement-4"></a>
 ## findElement
 
 ```TypeScript
@@ -341,7 +324,6 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
-<a id="findelement-5"></a>
 ## findElement
 
 ```TypeScript
@@ -377,7 +359,6 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise<Accessib
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
-<a id="performaction"></a>
 ## performAction
 
 ```TypeScript
@@ -409,7 +390,6 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback<vo
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
-<a id="performaction-1"></a>
 ## performAction
 
 ```TypeScript
@@ -446,7 +426,6 @@ performAction(actionName: string, parameters?: object): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
-<a id="performaction-2"></a>
 ## performAction
 
 ```TypeScript

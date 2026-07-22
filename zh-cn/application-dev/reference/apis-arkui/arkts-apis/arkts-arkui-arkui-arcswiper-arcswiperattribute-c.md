@@ -16,7 +16,6 @@
 import { ArcSwiperAttribute, ArcSwiper, ArcDirection, ArcSwiperController, ArcDotIndicator } from '@kit.ArkUI';
 ```
 
-<a id="customcontenttransition"></a>
 ## customContentTransition
 
 ```TypeScript
@@ -47,7 +46,6 @@ customContentTransition(transition: Optional<SwiperContentAnimatedTransition>): 
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="digitalcrownsensitivity"></a>
 ## digitalCrownSensitivity
 
 ```TypeScript
@@ -76,7 +74,6 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcSwiperAttri
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="disableswipe"></a>
 ## disableSwipe
 
 ```TypeScript
@@ -105,7 +102,6 @@ disableSwipe(disabled: Optional<boolean>): ArcSwiperAttribute
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="disabletransitionanimation"></a>
 ## disableTransitionAnimation
 
 ```TypeScript
@@ -134,7 +130,6 @@ disableTransitionAnimation(disabled: Optional<boolean>): ArcSwiperAttribute
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="duration"></a>
 ## duration
 
 ```TypeScript
@@ -163,7 +158,6 @@ duration(duration: Optional<number>): ArcSwiperAttribute
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="effectmode"></a>
 ## effectMode
 
 ```TypeScript
@@ -192,7 +186,6 @@ effectMode(edgeEffect: Optional<EdgeEffect>): ArcSwiperAttribute
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="index"></a>
 ## index
 
 ```TypeScript
@@ -221,7 +214,6 @@ index(index: Optional<number>): ArcSwiperAttribute
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="indicator"></a>
 ## indicator
 
 ```TypeScript
@@ -250,7 +242,6 @@ indicator(style: Optional<ArcDotIndicator | boolean>): ArcSwiperAttribute
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onanimationend"></a>
 ## onAnimationEnd
 
 ```TypeScript
@@ -281,7 +272,6 @@ onAnimationEnd(handler: Optional<AnimationEndHandler>): ArcSwiperAttribute
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onanimationstart"></a>
 ## onAnimationStart
 
 ```TypeScript
@@ -310,7 +300,6 @@ onAnimationStart(handler: Optional<AnimationStartHandler>): ArcSwiperAttribute
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -319,7 +308,7 @@ onChange(handler: Optional<IndexChangedHandler>): ArcSwiperAttribute
 
 当前显示子组件的索引变化时触发该事件，返回值为当前显示子组件的索引值。
 
-ArcSwiper组件结合[LazyForEach](docroot://ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，不能在onChange事件里触发子页面UI的刷新。
+ArcSwiper组件结合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，不能在onChange事件里触发子页面UI的刷新。
 
 **起始版本：** 18
 
@@ -341,7 +330,6 @@ ArcSwiper组件结合[LazyForEach](docroot://ui/rendering-control/arkts-renderin
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="ongestureswipe"></a>
 ## onGestureSwipe
 
 ```TypeScript
@@ -370,7 +358,6 @@ onGestureSwipe(handler: Optional<GestureSwipeHandler>): ArcSwiperAttribute
 | --- | --- |
 | [ArcSwiperAttribute](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="vertical"></a>
 ## vertical
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { defaultAppManager } from '@kit.AbilityKit';
 ```
 
-<a id="getdefaultapplication"></a>
 ## getDefaultApplication
 
 ```TypeScript
@@ -30,7 +29,7 @@ function getDefaultApplication(type: string, userId: number, callback: AsyncCall
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 要查询的应用类型，取[ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型。 |
-| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInfo&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的应用信息；否则为错误对象。 |
 
 **错误码：**
@@ -80,7 +79,6 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 ```
 
 
-<a id="getdefaultapplication-1"></a>
 ## getDefaultApplication
 
 ```TypeScript
@@ -151,7 +149,6 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 ```
 
 
-<a id="getdefaultapplication-2"></a>
 ## getDefaultApplication
 
 ```TypeScript
@@ -175,7 +172,7 @@ function getDefaultApplication(type: string, userId?: number) : Promise<BundleIn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 要查询的应用类型，取[ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型。 |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。默认值：调用方所在用户。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户。 |
 
 **返回值：**
 

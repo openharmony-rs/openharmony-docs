@@ -6,7 +6,6 @@
 import { display } from '@kit.ArkUI';
 ```
 
-<a id="off"></a>
 ## off('add' | 'remove' | 'change')
 
 ```TypeScript
@@ -51,7 +50,6 @@ display.off('remove', callback);
 ```
 
 
-<a id="off-1"></a>
 ## off('add' | 'remove' | 'change')
 
 ```TypeScript
@@ -96,7 +94,6 @@ display.off('remove', callback);
 ```
 
 
-<a id="off-2"></a>
 ## off('add' | 'remove' | 'change')
 
 ```TypeScript
@@ -141,7 +138,6 @@ display.off('remove', callback);
 ```
 
 
-<a id="off-3"></a>
 ## off('foldStatusChange')
 
 ```TypeScript
@@ -187,7 +183,6 @@ display.off('foldStatusChange', callback);
 ```
 
 
-<a id="off-4"></a>
 ## off('foldAngleChange')
 
 ```TypeScript
@@ -235,7 +230,6 @@ display.off('foldAngleChange', callback);
 ```
 
 
-<a id="off-5"></a>
 ## off('captureStatusChange')
 
 ```TypeScript
@@ -283,7 +277,6 @@ display.off('captureStatusChange', callback);
 ```
 
 
-<a id="off-6"></a>
 ## off('foldDisplayModeChange')
 
 ```TypeScript
@@ -331,7 +324,6 @@ display.off('foldDisplayModeChange', callback);
 ```
 
 
-<a id="off-7"></a>
 ## off('brightnessInfoChange')
 
 ```TypeScript

@@ -77,14 +77,14 @@ Rotation time out.
 ## TERMINATE_OBSTACLE
 
 ```TypeScript
-TERMINATE_OBSTACLE = 4
+TERMINATE_OBSTACLE  = 4
 ```
 
-Termination caused by an obstacle.
+障碍物导致终止
 
 **起始版本：** 26.0.0
 
-<!--Device-Result-TERMINATE_OBSTACLE = 4--><!--Device-Result-TERMINATE_OBSTACLE = 4-End-->
+<!--Device-Result-TERMINATE_OBSTACLE  = 4--><!--Device-Result-TERMINATE_OBSTACLE  = 4-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -96,7 +96,7 @@ Termination caused by an obstacle.
 TERMINATE_CLIFF = 5
 ```
 
-Termination caused by a cliff.
+悬崖导致终止
 
 **起始版本：** 26.0.0
 

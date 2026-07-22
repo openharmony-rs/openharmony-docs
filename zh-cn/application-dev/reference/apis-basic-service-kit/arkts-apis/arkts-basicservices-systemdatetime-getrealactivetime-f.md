@@ -6,7 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getrealactivetime"></a>
 ## getRealActiveTime
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): vo
 
 **废弃版本：** 12
 
-**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime-1)
+**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime)
 
 <!--Device-systemDateTime-function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): void--><!--Device-systemDateTime-function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): void-End-->
 
@@ -59,7 +58,6 @@ try {
 ```
 
 
-<a id="getrealactivetime-1"></a>
 ## getRealActiveTime
 
 ```TypeScript
@@ -72,7 +70,7 @@ function getRealActiveTime(callback: AsyncCallback<number>): void
 
 **废弃版本：** 12
 
-**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime-1)
+**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime)
 
 <!--Device-systemDateTime-function getRealActiveTime(callback: AsyncCallback<number>): void--><!--Device-systemDateTime-function getRealActiveTime(callback: AsyncCallback<number>): void-End-->
 
@@ -111,7 +109,6 @@ try {
 ```
 
 
-<a id="getrealactivetime-2"></a>
 ## getRealActiveTime
 
 ```TypeScript
@@ -124,7 +121,7 @@ function getRealActiveTime(isNano?: boolean): Promise<number>
 
 **废弃版本：** 12
 
-**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime-1)
+**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime)
 
 <!--Device-systemDateTime-function getRealActiveTime(isNano?: boolean): Promise<number>--><!--Device-systemDateTime-function getRealActiveTime(isNano?: boolean): Promise<number>-End-->
 

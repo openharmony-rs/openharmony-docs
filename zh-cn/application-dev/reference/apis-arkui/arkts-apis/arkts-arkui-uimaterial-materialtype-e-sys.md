@@ -16,7 +16,7 @@
 NONE = 0
 ```
 
-无系统材质效果。对应的效果为背景色[backgroundColor](docroot://reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)为透明色，边框颜色[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor-1)为透明色，边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth-1)为0，无阴影[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)。
+无系统材质效果。对应的效果为背景色[backgroundColor](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)为透明色，边框颜色[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor)为透明色，边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth)为0，无阴影[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -40,13 +40,13 @@ SEMI_TRANSPARENT = 1
 
 半透明系统材质效果。对应的效果为：
 
-背景色[backgroundColor](docroot://reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)：浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。
+背景色[backgroundColor](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)：浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。
 
-边框颜色[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor-1)为混合10%的透明度的theme.colors.compForegroundPrimary的[token](docroot://ui/theme_skinning.md#系统缺省token色值)值。
+边框颜色[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor)为混合10%的透明度的theme.colors.compForegroundPrimary的[token](../../../ui/theme_skinning.md#系统缺省token色值)值。
 
-边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth-1)为1vp。
+边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth)为1vp。
 
-阴影[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)为ShadowStyle.OUTER_DEFAULT_SM。
+阴影[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow)为ShadowStyle.OUTER_DEFAULT_SM。
 
 **系统接口：** 此接口为系统接口。
 

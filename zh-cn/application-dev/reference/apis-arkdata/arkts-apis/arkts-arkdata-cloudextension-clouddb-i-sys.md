@@ -16,7 +16,6 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -30,13 +29,7 @@ delete(
 
 **起始版本：** 11
 
-<!--Device-CloudDB-delete(
-      table: string,
-      extensions: Array<Record<string, CloudType>>
-    ): Promise<Array<Result<Record<string, CloudType>>>>--><!--Device-CloudDB-delete(
-      table: string,
-      extensions: Array<Record<string, CloudType>>
-    ): Promise<Array<Result<Record<string, CloudType>>>>-End-->
+<!--Device-CloudDB-delete(      table: string,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>--><!--Device-CloudDB-delete(      table: string,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -72,7 +65,6 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
-<a id="generateid"></a>
 ## generateId
 
 ```TypeScript
@@ -120,7 +112,6 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
-<a id="heartbeat"></a>
 ## heartbeat
 
 ```TypeScript
@@ -174,7 +165,6 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
-<a id="insert"></a>
 ## insert
 
 ```TypeScript
@@ -189,15 +179,7 @@ insert(
 
 **起始版本：** 11
 
-<!--Device-CloudDB-insert(
-      table: string,
-      values: Array<Record<string, CloudType>>,
-      extensions: Array<Record<string, CloudType>>
-    ): Promise<Array<Result<Record<string, CloudType>>>>--><!--Device-CloudDB-insert(
-      table: string,
-      values: Array<Record<string, CloudType>>,
-      extensions: Array<Record<string, CloudType>>
-    ): Promise<Array<Result<Record<string, CloudType>>>>-End-->
+<!--Device-CloudDB-insert(      table: string,      values: Array<Record<string, CloudType>>,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>--><!--Device-CloudDB-insert(      table: string,      values: Array<Record<string, CloudType>>,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -234,7 +216,6 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
-<a id="lock"></a>
 ## lock
 
 ```TypeScript
@@ -282,7 +263,6 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
-<a id="query"></a>
 ## query
 
 ```TypeScript
@@ -338,7 +318,6 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
-<a id="unlock"></a>
 ## unlock
 
 ```TypeScript
@@ -387,7 +366,6 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
-<a id="update"></a>
 ## update
 
 ```TypeScript
@@ -402,15 +380,7 @@ update(
 
 **起始版本：** 11
 
-<!--Device-CloudDB-update(
-      table: string,
-      values: Array<Record<string, CloudType>>,
-      extensions: Array<Record<string, CloudType>>
-    ): Promise<Array<Result<Record<string, CloudType>>>>--><!--Device-CloudDB-update(
-      table: string,
-      values: Array<Record<string, CloudType>>,
-      extensions: Array<Record<string, CloudType>>
-    ): Promise<Array<Result<Record<string, CloudType>>>>-End-->
+<!--Device-CloudDB-update(      table: string,      values: Array<Record<string, CloudType>>,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>--><!--Device-CloudDB-update(      table: string,      values: Array<Record<string, CloudType>>,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 

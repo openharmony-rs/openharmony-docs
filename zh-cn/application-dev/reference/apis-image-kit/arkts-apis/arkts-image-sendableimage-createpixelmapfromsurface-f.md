@@ -6,7 +6,6 @@
 import { sendableImage } from '@kit.ImageKit';
 ```
 
-<a id="createpixelmapfromsurface"></a>
 ## createPixelMapFromSurface
 
 ```TypeScript

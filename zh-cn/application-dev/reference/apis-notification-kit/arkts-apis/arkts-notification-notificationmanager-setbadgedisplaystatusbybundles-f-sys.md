@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="setbadgedisplaystatusbybundles"></a>
 ## setBadgeDisplayStatusByBundles
 
 ```TypeScript

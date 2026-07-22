@@ -74,7 +74,7 @@ symbolIcon?: SymbolGlyphModifier
 
 **说明：**
 
-不支持通过[SymbolGlyphModifier](SymbolGlyphModifier:SymbolGlyphModifier)对象的[fontSize](SymbolGlyphAttribute#fontSize)属性修改图标大小、[effectStrategy](SymbolGlyphAttribute#effectStrategy)属性修改动效、[symbolEffect](SymbolGlyphAttribute#symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean))属性修改动效类型。
+不支持通过[SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md)对象的[fontSize](SymbolGlyphAttribute#fontSize)属性修改图标大小、[effectStrategy](SymbolGlyphAttribute#effectStrategy)属性修改动效、[symbolEffect](SymbolGlyphAttribute#symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean))属性修改动效类型。
 
 **类型：** SymbolGlyphModifier
 

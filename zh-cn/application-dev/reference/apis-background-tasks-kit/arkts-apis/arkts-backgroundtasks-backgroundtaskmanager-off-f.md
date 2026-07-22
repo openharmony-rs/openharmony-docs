@@ -6,7 +6,6 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="off"></a>
 ## off('continuousTaskCancel')
 
 ```TypeScript
@@ -62,7 +61,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="off-1"></a>
 ## off('continuousTaskSuspend')
 
 ```TypeScript
@@ -119,7 +117,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="off-2"></a>
 ## off('continuousTaskActive')
 
 ```TypeScript

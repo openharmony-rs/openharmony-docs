@@ -6,7 +6,6 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="gettaskpoolinfo"></a>
 ## getTaskPoolInfo
 
 ```TypeScript

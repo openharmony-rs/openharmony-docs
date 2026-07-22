@@ -6,7 +6,7 @@ AbilityDelegatorRegistry模块提供用于存储已注册的[AbilityDelegator](.
 
 **废弃版本：** 9
 
-**替代接口：** [abilityDelegatorRegistry:abilityDelegatorRegistry](arkts-app-ability-abilitydelegatorregistry.md)
+**替代接口：** [abilityDelegatorRegistry:abilityDelegatorRegistry](arkts-application-abilitydelegatorregistry.md)
 
 <!--Device-unnamed-declare namespace abilityDelegatorRegistry--><!--Device-unnamed-declare namespace abilityDelegatorRegistry-End-->
 

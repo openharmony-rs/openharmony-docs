@@ -1,6 +1,5 @@
 # animateToImmediately
 
-<a id="animatetoimmediately"></a>
 ## animateToImmediately
 
 ```TypeScript

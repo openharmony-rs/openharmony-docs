@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="getnotificationstatisticsbybundle"></a>
 ## getNotificationStatisticsByBundle
 
 ```TypeScript

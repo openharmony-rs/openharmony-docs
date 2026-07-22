@@ -6,7 +6,6 @@
 import { proxyChannelManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="off"></a>
 ## off('receiveData')
 
 ```TypeScript
@@ -72,7 +71,6 @@ struct Index {
 ```
 
 
-<a id="off-1"></a>
 ## off('channelStateChange')
 
 ```TypeScript

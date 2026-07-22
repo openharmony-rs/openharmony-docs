@@ -1,6 +1,5 @@
 # write
 
-<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -22,27 +21,9 @@ declare function write(
 
 **废弃版本：** 9
 
-**替代接口：** [fs:write](arkts-corefile-file-fs-write-f.md#write-1)
+**替代接口：** [fs:write](arkts-corefile-fileio-write-f.md#write)
 
-<!--Device-unnamed-declare function write(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options?: {
-    offset?: number;
-    length?: number;
-    position?: number;
-    encoding?: string;
-  }
-): Promise<number>--><!--Device-unnamed-declare function write(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options?: {
-    offset?: number;
-    length?: number;
-    position?: number;
-    encoding?: string;
-  }
-): Promise<number>-End-->
+<!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options?: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  }): Promise<number>--><!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options?: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  }): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -61,7 +42,6 @@ declare function write(
 | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 
-<a id="write-1"></a>
 ## write
 
 ```TypeScript
@@ -74,7 +54,7 @@ declare function write(fd: number, buffer: ArrayBuffer | string, callback: Async
 
 **废弃版本：** 9
 
-**替代接口：** [fs:write](arkts-corefile-file-fs-write-f.md#write-1)
+**替代接口：** [fs:write](arkts-corefile-fileio-write-f.md#write)
 
 <!--Device-unnamed-declare function write(fd: number, buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void--><!--Device-unnamed-declare function write(fd: number, buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void-End-->
 
@@ -89,7 +69,6 @@ declare function write(fd: number, buffer: ArrayBuffer | string, callback: Async
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步将数据写入完成后执行的回调函数。返回实际写入的长度，单位为Byte。 |
 
 
-<a id="write-2"></a>
 ## write
 
 ```TypeScript
@@ -112,29 +91,9 @@ declare function write(
 
 **废弃版本：** 9
 
-**替代接口：** [fs:write](arkts-corefile-file-fs-write-f.md#write-1)
+**替代接口：** [fs:write](arkts-corefile-fileio-write-f.md#write)
 
-<!--Device-unnamed-declare function write(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options: {
-    offset?: number;
-    length?: number;
-    position?: number;
-    encoding?: string;
-  },
-  callback: AsyncCallback<number>
-): void--><!--Device-unnamed-declare function write(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options: {
-    offset?: number;
-    length?: number;
-    position?: number;
-    encoding?: string;
-  },
-  callback: AsyncCallback<number>
-): void-End-->
+<!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  },  callback: AsyncCallback<number>): void--><!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  },  callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

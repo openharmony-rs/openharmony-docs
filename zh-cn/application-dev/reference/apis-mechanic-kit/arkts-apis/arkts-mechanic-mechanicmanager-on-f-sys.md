@@ -6,7 +6,6 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="on"></a>
 ## on('rotationAxesStatusChange')
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # on
 
-<a id="on"></a>
 ## on('colorChange')
 
 ```TypeScript

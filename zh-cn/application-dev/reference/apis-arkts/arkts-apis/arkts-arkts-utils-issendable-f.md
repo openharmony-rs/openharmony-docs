@@ -6,7 +6,6 @@
 import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
-<a id="issendable"></a>
 ## isSendable
 
 ```TypeScript

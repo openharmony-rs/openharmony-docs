@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="sendsystemcontrolcommand"></a>
 ## sendSystemControlCommand
 
 ```TypeScript
@@ -69,7 +68,6 @@ avSession.sendSystemControlCommand(avcommand, () => {
 ```
 
 
-<a id="sendsystemcontrolcommand-1"></a>
 ## sendSystemControlCommand
 
 ```TypeScript

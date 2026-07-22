@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="on"></a>
 ## on('printerStateChange')
 
 ```TypeScript
@@ -58,7 +57,6 @@ print.on('printerStateChange', (state: print.PrinterState, info: print.PrinterIn
 ```
 
 
-<a id="on-1"></a>
 ## on('jobStateChange')
 
 ```TypeScript
@@ -104,7 +102,6 @@ print.on('jobStateChange', (state: print.PrintJobState, job: print.PrintJob) => 
 ```
 
 
-<a id="on-2"></a>
 ## on('extInfoChange')
 
 ```TypeScript

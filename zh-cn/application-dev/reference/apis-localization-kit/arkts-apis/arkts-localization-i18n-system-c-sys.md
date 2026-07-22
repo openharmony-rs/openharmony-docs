@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="addpreferredlanguage"></a>
 ## addPreferredLanguage
 
 ```TypeScript
@@ -67,7 +66,6 @@ try {
 
 ```
 
-<a id="getsystemcollations"></a>
 ## getSystemCollations
 
 ```TypeScript
@@ -111,7 +109,6 @@ try {
 
 ```
 
-<a id="getsystemmeasurements"></a>
 ## getSystemMeasurements
 
 ```TypeScript
@@ -155,7 +152,6 @@ try {
 
 ```
 
-<a id="getsystemnumberpatterns"></a>
 ## getSystemNumberPatterns
 
 ```TypeScript
@@ -199,7 +195,6 @@ try {
 
 ```
 
-<a id="getsystemnumberingsystems"></a>
 ## getSystemNumberingSystems
 
 ```TypeScript
@@ -243,7 +238,6 @@ try {
 
 ```
 
-<a id="getsystemnumericaldatepatterns"></a>
 ## getSystemNumericalDatePatterns
 
 ```TypeScript
@@ -287,7 +281,6 @@ try {
 
 ```
 
-<a id="getusingcollation"></a>
 ## getUsingCollation
 
 ```TypeScript
@@ -331,7 +324,6 @@ try {
 
 ```
 
-<a id="getusingmeasurement"></a>
 ## getUsingMeasurement
 
 ```TypeScript
@@ -375,7 +367,6 @@ try {
 
 ```
 
-<a id="getusingnumberpattern"></a>
 ## getUsingNumberPattern
 
 ```TypeScript
@@ -419,7 +410,6 @@ try {
 
 ```
 
-<a id="getusingnumberingsystem"></a>
 ## getUsingNumberingSystem
 
 ```TypeScript
@@ -448,7 +438,6 @@ static getUsingNumberingSystem(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-<a id="getusingnumericaldatepattern"></a>
 ## getUsingNumericalDatePattern
 
 ```TypeScript
@@ -492,7 +481,6 @@ try {
 
 ```
 
-<a id="removepreferredlanguage"></a>
 ## removePreferredLanguage
 
 ```TypeScript
@@ -543,7 +531,6 @@ try {
 
 ```
 
-<a id="set24hourclock"></a>
 ## set24HourClock
 
 ```TypeScript
@@ -593,7 +580,6 @@ try {
 
 ```
 
-<a id="setfirstdayofweek"></a>
 ## setFirstDayOfWeek
 
 ```TypeScript
@@ -641,7 +627,6 @@ try {
 
 ```
 
-<a id="setsystemcollation"></a>
 ## setSystemCollation
 
 ```TypeScript
@@ -689,14 +674,13 @@ try {
 
 ```
 
-<a id="setsystemlanguage"></a>
 ## setSystemLanguage
 
 ```TypeScript
 static setSystemLanguage(language: string): void
 ```
 
-设置系统语言。若要监听系统语言变化，可以监听[公共事件](docroot://reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考[系统语言与区域](docroot://internationalization/i18n-system-language-region.md#开发步骤)。<br>**说明：**<br>可以通过[i18n.System.getSystemLanguage()](docroot://reference/apis-localization-kit/js-apis-i18n.md#getsystemlanguage9)接口获取系统语言。<br>从API version 21开始，也可以使用[param工具](docroot://tools/param-tool.md#获取系统参数的值)的“param get persist.global.language”命令获取系统语言。
+设置系统语言。若要监听系统语言变化，可以监听[公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考[系统语言与区域](../../../internationalization/i18n-system-language-region.md#开发步骤)。<br>**说明：**<br>可以通过[i18n.System.getSystemLanguage()](../../../reference/apis-localization-kit/js-apis-i18n.md#getsystemlanguage9)接口获取系统语言。<br>从API version 21开始，也可以使用[param工具](../../../tools/param-tool.md#获取系统参数的值)的“param get persist.global.language”命令获取系统语言。
 
 **起始版本：** 9
 
@@ -712,7 +696,7 @@ static setSystemLanguage(language: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| language | string | 是 | [合法的语言ID](docroot://internationalization/i18n-locale-culture.md#实现原理)。 |
+| language | string | 是 | [合法的语言ID](../../../internationalization/i18n-locale-culture.md#实现原理)。 |
 
 **错误码：**
 
@@ -739,7 +723,6 @@ try {
 
 ```
 
-<a id="setsystemlocale"></a>
 ## setSystemLocale
 
 ```TypeScript
@@ -764,7 +747,7 @@ static setSystemLocale(locale: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string | 是 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家或地区组成。 |
+| locale | string | 是 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家或地区组成。 |
 
 **错误码：**
 
@@ -789,7 +772,6 @@ try {
 
 ```
 
-<a id="setsystemmeasurement"></a>
 ## setSystemMeasurement
 
 ```TypeScript
@@ -837,7 +819,6 @@ try {
 
 ```
 
-<a id="setsystemnumberpattern"></a>
 ## setSystemNumberPattern
 
 ```TypeScript
@@ -885,7 +866,6 @@ try {
 
 ```
 
-<a id="setsystemnumberingsystem"></a>
 ## setSystemNumberingSystem
 
 ```TypeScript
@@ -933,7 +913,6 @@ try {
 
 ```
 
-<a id="setsystemnumericaldatepattern"></a>
 ## setSystemNumericalDatePattern
 
 ```TypeScript
@@ -981,14 +960,13 @@ try {
 
 ```
 
-<a id="setsystemregion"></a>
 ## setSystemRegion
 
 ```TypeScript
 static setSystemRegion(region: string): void
 ```
 
-设置系统地区。若要监听系统地区变化，可以监听[公共事件](docroot://reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考[系统语言与区域](docroot://internationalization/i18n-system-language-region.md#开发步骤)。<br>**说明：**<br>可以通过[i18n.System.getSystemRegion()](docroot://reference/apis-localization-kit/js-apis-i18n.md#getsystemregion9)接口获取系统地区。
+设置系统地区。若要监听系统地区变化，可以监听[公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考[系统语言与区域](../../../internationalization/i18n-system-language-region.md#开发步骤)。<br>**说明：**<br>可以通过[i18n.System.getSystemRegion()](../../../reference/apis-localization-kit/js-apis-i18n.md#getsystemregion9)接口获取系统地区。
 
 **起始版本：** 9
 
@@ -1004,7 +982,7 @@ static setSystemRegion(region: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| region | string | 是 | [合法的地区ID](docroot://internationalization/i18n-locale-culture.md#实现原理)。 |
+| region | string | 是 | [合法的地区ID](../../../internationalization/i18n-locale-culture.md#实现原理)。 |
 
 **错误码：**
 
@@ -1030,7 +1008,6 @@ try {
 
 ```
 
-<a id="settemperaturetype"></a>
 ## setTemperatureType
 
 ```TypeScript
@@ -1078,7 +1055,6 @@ try {
 
 ```
 
-<a id="setusinglocaldigit"></a>
 ## setUsingLocalDigit
 
 ```TypeScript

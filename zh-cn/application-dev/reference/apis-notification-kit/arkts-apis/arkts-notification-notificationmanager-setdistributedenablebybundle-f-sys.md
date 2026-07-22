@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="setdistributedenablebybundle"></a>
 ## setDistributedEnableByBundle
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, cal
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md#setdistributedenabledbybundle-1)
+**替代接口：** [setDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md#setdistributedenabledbybundle)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -72,7 +71,6 @@ notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedE
 ```
 
 
-<a id="setdistributedenablebybundle-1"></a>
 ## setDistributedEnableByBundle
 
 ```TypeScript
@@ -85,7 +83,7 @@ function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Pr
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md#setdistributedenabledbybundle-1)
+**替代接口：** [setDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md#setdistributedenabledbybundle)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

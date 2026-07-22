@@ -1,6 +1,5 @@
 # readText
 
-<a id="readtext"></a>
 ## readText
 
 ```TypeScript
@@ -20,23 +19,9 @@ declare function readText(
 
 **废弃版本：** 9
 
-**替代接口：** [fs:readText](arkts-corefile-file-fs-readtext-f.md#readtext-1)
+**替代接口：** [fs:readText](arkts-corefile-fileio-readtext-f.md#readtext)
 
-<!--Device-unnamed-declare function readText(
-  filePath: string,
-  options?: {
-    position?: number;
-    length?: number;
-    encoding?: string;
-  }
-): Promise<string>--><!--Device-unnamed-declare function readText(
-  filePath: string,
-  options?: {
-    position?: number;
-    length?: number;
-    encoding?: string;
-  }
-): Promise<string>-End-->
+<!--Device-unnamed-declare function readText(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): Promise<string>--><!--Device-unnamed-declare function readText(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): Promise<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -54,7 +39,6 @@ declare function readText(
 | Promise&lt;string&gt; | Promise对象。返回读取文件的内容。 |
 
 
-<a id="readtext-1"></a>
 ## readText
 
 ```TypeScript
@@ -75,25 +59,9 @@ declare function readText(
 
 **废弃版本：** 9
 
-**替代接口：** [fs:readText](arkts-corefile-file-fs-readtext-f.md#readtext-1)
+**替代接口：** [fs:readText](arkts-corefile-fileio-readtext-f.md#readtext)
 
-<!--Device-unnamed-declare function readText(
-  filePath: string,
-  options: {
-    position?: number;
-    length?: number;
-    encoding?: string;
-  },
-  callback: AsyncCallback<string>
-): void--><!--Device-unnamed-declare function readText(
-  filePath: string,
-  options: {
-    position?: number;
-    length?: number;
-    encoding?: string;
-  },
-  callback: AsyncCallback<string>
-): void-End-->
+<!--Device-unnamed-declare function readText(  filePath: string,  options: {    position?: number;    length?: number;    encoding?: string;  },  callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function readText(  filePath: string,  options: {    position?: number;    length?: number;    encoding?: string;  },  callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

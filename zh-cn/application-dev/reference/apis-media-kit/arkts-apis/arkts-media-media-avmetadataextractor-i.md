@@ -1,9 +1,8 @@
 # AVMetadataExtractor
 
-元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-1)构建一个AVMetadataExtractor实例。
+元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor)构建一个AVMetadataExtractor实例。
 
-获取音频或视频元数据、视频缩略图的demo可参考：[使用AVMetadataExtractor提取音视频元数据信息(ArkTS)](docroot://media/media/avmetadataextractor.md)。
-
+获取音频或视频元数据、视频缩略图的demo可参考：[使用AVMetadataExtractor提取音视频元数据信息(ArkTS)](../../../media/media/avmetadataextractor.md)。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 11开始支持。
@@ -20,7 +19,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="cancelallfetchframes"></a>
 ## cancelAllFetchFrames
 
 ```TypeScript
@@ -37,7 +35,6 @@ cancelAllFetchFrames(): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
-<a id="fetchalbumcover"></a>
 ## fetchAlbumCover
 
 ```TypeScript
@@ -65,7 +62,6 @@ fetchAlbumCover(callback: AsyncCallback<image.PixelMap>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by callback. |
 
-<a id="fetchalbumcover-1"></a>
 ## fetchAlbumCover
 
 ```TypeScript
@@ -93,7 +89,6 @@ fetchAlbumCover(): Promise<image.PixelMap>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by promise. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by promise. |
 
-<a id="fetchframebytime"></a>
 ## fetchFrameByTime
 
 ```TypeScript
@@ -131,7 +126,6 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted.<br>**适用版本：** 23+ |
 
-<a id="fetchframebytimewithtimeout"></a>
 ## fetchFrameByTimeWithTimeout
 
 ```TypeScript
@@ -145,9 +139,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVMetadataExtractor-fetchFrameByTimeWithTimeout(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams,
-      timeoutMs: long): Promise<image.PixelMap | undefined>--><!--Device-AVMetadataExtractor-fetchFrameByTimeWithTimeout(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams,
-      timeoutMs: long): Promise<image.PixelMap | undefined>-End-->
+<!--Device-AVMetadataExtractor-fetchFrameByTimeWithTimeout(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams,      timeoutMs: long): Promise<image.PixelMap | undefined>--><!--Device-AVMetadataExtractor-fetchFrameByTimeWithTimeout(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams,      timeoutMs: long): Promise<image.PixelMap | undefined>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -176,7 +168,6 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted. |
 
-<a id="fetchframesbytimes"></a>
 ## fetchFramesByTimes
 
 ```TypeScript
@@ -185,7 +176,6 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 ```
 
 批量获取视频缩略图。使用Callback异步回调。
-
 > **说明：**  
 >  
 > - 先对给定的视频资源进行解码，随后依据提供的参数options和param，从timesUs数组中的每个时间点提取图像帧。  
@@ -196,9 +186,7 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVMetadataExtractor-fetchFramesByTimes(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams,
-        callback: OnFrameFetched): void--><!--Device-AVMetadataExtractor-fetchFramesByTimes(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams,
-        callback: OnFrameFetched): void-End-->
+<!--Device-AVMetadataExtractor-fetchFramesByTimes(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams,        callback: OnFrameFetched): void--><!--Device-AVMetadataExtractor-fetchFramesByTimes(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams,        callback: OnFrameFetched): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -222,7 +210,6 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext not permitted. |
 
-<a id="fetchframesbytimeswithtimeout"></a>
 ## fetchFramesByTimesWithTimeout
 
 ```TypeScript
@@ -231,7 +218,6 @@ fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOption
 ```
 
 批量获取视频缩略图，支持设置每一帧缩略图获取最大耗时timeoutMs。使用Callback异步回调。
-
 > **说明：**  
 >  
 > - 先对给定的视频资源进行解码，随后依据提供的参数options和param，从timesUs数组中的每个时间点提取图像帧。  
@@ -244,9 +230,7 @@ fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVMetadataExtractor-fetchFramesByTimesWithTimeout(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams,
-      timeoutMs: long, callback: OnFrameFetched): void--><!--Device-AVMetadataExtractor-fetchFramesByTimesWithTimeout(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams,
-      timeoutMs: long, callback: OnFrameFetched): void-End-->
+<!--Device-AVMetadataExtractor-fetchFramesByTimesWithTimeout(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams,      timeoutMs: long, callback: OnFrameFetched): void--><!--Device-AVMetadataExtractor-fetchFramesByTimesWithTimeout(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams,      timeoutMs: long, callback: OnFrameFetched): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -271,7 +255,6 @@ fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOption
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext not permitted. |
 
-<a id="fetchmetadata"></a>
 ## fetchMetadata
 
 ```TypeScript
@@ -300,7 +283,6 @@ fetchMetadata(callback: AsyncCallback<AVMetadata>): void
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by callback. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted.<br>**适用版本：** 23+ |
 
-<a id="fetchmetadata-1"></a>
 ## fetchMetadata
 
 ```TypeScript
@@ -329,7 +311,6 @@ fetchMetadata(): Promise<AVMetadata>
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted.<br>**适用版本：** 23+ |
 
-<a id="fetchmetadatawithtimeout"></a>
 ## fetchMetadataWithTimeout
 
 ```TypeScript
@@ -368,7 +349,6 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise<AVMetadata | undefined>
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted. |
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -395,7 +375,6 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by callback. |
 
-<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -422,14 +401,13 @@ release(): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by promise. |
 
-<a id="seturlsource"></a>
 ## setUrlSource
 
 ```TypeScript
 setUrlSource(url: string, headers?: Record<string, string>): void
 ```
 
-网络点播资源地址描述，通过该接口设置数据源。只支持获取网络[fetchMetadata](arkts-media-media-avmetadataextractor-i.md#fetchmetadata-1)（元数据）和[fetchFrameByTime](arkts-media-media-avmetadataextractor-i.md#fetchframebytime-1)（缩略图），在获取之前，必须设置媒体资源URL。
+网络点播资源地址描述，通过该接口设置数据源。只支持获取网络[fetchMetadata](arkts-media-media-avmetadataextractor-i.md#fetchmetadata)（元数据）和[fetchFrameByTime](arkts-media-media-avmetadataextractor-i.md#fetchframebytime)（缩略图），在获取之前，必须设置媒体资源URL。
 
 **起始版本：** 20
 

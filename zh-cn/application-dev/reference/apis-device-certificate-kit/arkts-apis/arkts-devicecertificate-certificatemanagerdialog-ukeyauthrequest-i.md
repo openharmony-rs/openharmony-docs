@@ -20,7 +20,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 keyUri: string
 ```
 
-表示USB Key证书凭据的唯一标识符，长度限制256字节以内。该参数值可通过调用[openAuthorizeDialog](arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-1)接口返回的CertReference中获取。
+表示USB Key证书凭据的唯一标识符，长度限制256字节以内。该参数值可通过调用[openAuthorizeDialog](arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog)接口返回的CertReference中获取。
 
 **类型：** string
 

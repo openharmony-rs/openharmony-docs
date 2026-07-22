@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="isdistributedenabled"></a>
 ## isDistributedEnabled
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabled(deviceType:](arkts-notification-notificationmanager-isdistributedenabled-f.md#isdistributedenabled-1)
+**替代接口：** [isDistributedEnabled(deviceType:](arkts-notification-notificationmanager-isdistributedenabled-f.md#isdistributedenabled)
 
 <!--Device-notificationManager-function isDistributedEnabled(callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isDistributedEnabled(callback: AsyncCallback<boolean>): void-End-->
 
@@ -59,7 +58,6 @@ notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 ```
 
 
-<a id="isdistributedenabled-1"></a>
 ## isDistributedEnabled
 
 ```TypeScript
@@ -72,7 +70,7 @@ function isDistributedEnabled(): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabled(deviceType:](arkts-notification-notificationmanager-isdistributedenabled-f.md#isdistributedenabled-1)
+**替代接口：** [isDistributedEnabled(deviceType:](arkts-notification-notificationmanager-isdistributedenabled-f.md#isdistributedenabled)
 
 <!--Device-notificationManager-function isDistributedEnabled(): Promise<boolean>--><!--Device-notificationManager-function isDistributedEnabled(): Promise<boolean>-End-->
 

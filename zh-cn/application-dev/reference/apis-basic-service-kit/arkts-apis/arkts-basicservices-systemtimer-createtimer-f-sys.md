@@ -6,7 +6,6 @@
 import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
-<a id="createtimer"></a>
 ## createTimer
 
 ```TypeScript
@@ -14,10 +13,9 @@ function createTimer(options: TimerOptions, callback: AsyncCallback<number>): vo
 ```
 
 创建定时器，使用callback异步回调。
-
 > **注意：**  
 >  
-> 需与[systemTimer.destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-1)结合使用，否则会造  
+> 需与[systemTimer.destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer)结合使用，否则会造  
 > 成内存泄漏
 
 **起始版本：** 7
@@ -67,7 +65,6 @@ try {
 ```
 
 
-<a id="createtimer-1"></a>
 ## createTimer
 
 ```TypeScript
@@ -75,10 +72,9 @@ function createTimer(options: TimerOptions): Promise<number>
 ```
 
 创建定时器，使用Promise异步回调返回定时器的ID。
-
 > **注意：**  
 >  
-> 需与[systemTimer.destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-1)结合使用，否则会造  
+> 需与[systemTimer.destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer)结合使用，否则会造  
 > 成内存泄漏
 
 **起始版本：** 7

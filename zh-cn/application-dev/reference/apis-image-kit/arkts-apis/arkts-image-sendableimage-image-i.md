@@ -1,8 +1,8 @@
 # Image
 
-提供基本的图像操作，包括获取图像信息、读写图像数据。调用[readNextImage](arkts-image-sendableimage-imagereceiver-i.md#readnextimage-1)和[readLatestImage](arkts-image-sendableimage-imagereceiver-i.md#readlatestimage-1)接口时会返回Image。继承自[ISendable](docroot://arkts-utils/arkts-sendable.md#isendable)。
+提供基本的图像操作，包括获取图像信息、读写图像数据。调用[readNextImage](arkts-image-sendableimage-imagereceiver-i.md#readnextimage)和[readLatestImage](arkts-image-sendableimage-imagereceiver-i.md#readlatestimage)接口时会返回Image。继承自[ISendable](../../../arkts-utils/arkts-sendable.md#isendable)。
 
-由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **继承/实现关系：** Image extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
@@ -18,7 +18,6 @@
 import { sendableImage } from '@kit.ImageKit';
 ```
 
-<a id="getcomponent"></a>
 ## getComponent
 
 ```TypeScript
@@ -68,7 +67,6 @@ async function GetComponent() {
 
 ```
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -140,7 +138,7 @@ clipRect: Region
 readonly format: number
 ```
 
-图像格式，参考[OH_NativeBuffer_Format](docroot://reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。
+图像格式，参考[OH_NativeBuffer_Format](../../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。
 
 **类型：** number
 
@@ -164,7 +162,7 @@ readonly size: Size
 
 Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的是previewOutput还是captureOutput。
 
-相机预览与拍照最佳实践请参考[双路预览(ArkTS)](docroot://media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](docroot://media/camera/camera-shooting-case.md)。
+相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../../media/camera/camera-shooting-case.md)。
 
 **类型：** Size
 
@@ -180,7 +178,7 @@ Image对象所存储的数据是预览流还是拍照流，取决于应用将rec
 readonly timestamp: number
 ```
 
-图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty-1)接口读取相关的EXIF信息。
+图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty)接口读取相关的EXIF信息。
 
 **类型：** number
 

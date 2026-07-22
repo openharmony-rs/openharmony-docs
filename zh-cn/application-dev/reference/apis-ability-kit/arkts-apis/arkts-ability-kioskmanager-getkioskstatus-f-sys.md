@@ -6,7 +6,6 @@
 import { kioskManager } from '@kit.AbilityKit';
 ```
 
-<a id="getkioskstatus"></a>
 ## getKioskStatus
 
 ```TypeScript

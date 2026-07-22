@@ -6,7 +6,6 @@
 import { thermal } from '@kit.BasicServicesKit';
 ```
 
-<a id="registerthermallevelcallback"></a>
 ## registerThermalLevelCallback
 
 ```TypeScript

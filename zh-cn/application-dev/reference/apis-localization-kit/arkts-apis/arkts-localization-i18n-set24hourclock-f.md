@@ -6,7 +6,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="set24hourclock"></a>
 ## set24HourClock
 
 ```TypeScript
@@ -19,7 +18,7 @@ export function set24HourClock(option: boolean): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [set24HourClock](arkts-localization-i18n-system-c-sys.md#set24hourclock-1)
+**替代接口：** [set24HourClock](arkts-localization-i18n-system-c-sys.md#set24hourclock)
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 

@@ -6,7 +6,6 @@
 import { BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
-<a id="on"></a>
 ## on('BundleStatusChange')
 
 ```TypeScript
@@ -15,7 +14,6 @@ function on(type: 'BundleStatusChange',
 ```
 
 注册Callback。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
@@ -30,9 +28,7 @@ function on(type: 'BundleStatusChange',
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
-<!--Device-innerBundleManager-function on(type: 'BundleStatusChange',
-    bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void--><!--Device-innerBundleManager-function on(type: 'BundleStatusChange',
-    bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void-End-->
+<!--Device-innerBundleManager-function on(type: 'BundleStatusChange',    bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void--><!--Device-innerBundleManager-function on(type: 'BundleStatusChange',    bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -47,7 +43,6 @@ function on(type: 'BundleStatusChange',
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回正确结果或错误信息。 |
 
 
-<a id="on-1"></a>
 ## on('BundleStatusChange')
 
 ```TypeScript
@@ -55,7 +50,6 @@ function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallba
 ```
 
 注册Callback。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  

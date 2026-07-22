@@ -1,6 +1,6 @@
 # AppDistributionType
 
-应用程序签名证书的分发类型。详细介绍请参见[ApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md)的appDistributionType属性。
+应用程序签名证书的分发类型。详细介绍请参见[ApplicationInfo](arkts-mdm-bundlemanager-applicationinfo-i.md)的appDistributionType属性。
 
 **起始版本：** 20
 

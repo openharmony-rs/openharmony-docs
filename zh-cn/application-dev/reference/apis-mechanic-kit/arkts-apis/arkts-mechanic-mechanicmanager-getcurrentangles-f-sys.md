@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="getcurrentangles"></a>
 ## getCurrentAngles
 
 ```TypeScript
 function getCurrentAngles(mechId: number): EulerAngles
 ```
 
-Obtains the current angles of a mechanical device.
+获取机械设备的当前角度
 
 **起始版本：** 20
 
@@ -27,13 +26,13 @@ Obtains the current angles of a mechanical device.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device. |
+| mechId | number | 是 | 机械设备ID |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [EulerAngles](arkts-mechanic-mechanicmanager-eulerangles-i-sys.md) | Rotation angles. |
+| [EulerAngles](arkts-mechanic-mechanicmanager-eulerangles-i-sys.md) | 返回当前角度 |
 
 **错误码：**
 

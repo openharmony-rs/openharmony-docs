@@ -1,7 +1,6 @@
 # PathEffect
 
 路径效果对象。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 12开始支持。  
@@ -22,7 +21,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createcomposepatheffect"></a>
 ## createComposePathEffect
 
 ```TypeScript
@@ -50,7 +48,6 @@ static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect
 | --- | --- |
 | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 
-<a id="createcornerpatheffect"></a>
 ## createCornerPathEffect
 
 ```TypeScript
@@ -83,7 +80,6 @@ static createCornerPathEffect(radius: number): PathEffect
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createdashpatheffect"></a>
 ## createDashPathEffect
 
 ```TypeScript
@@ -117,7 +113,6 @@ static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="creatediscretepatheffect"></a>
 ## createDiscretePathEffect
 
 ```TypeScript
@@ -146,7 +141,6 @@ static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: num
 | --- | --- |
 | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 
-<a id="createpathdasheffect"></a>
 ## createPathDashEffect
 
 ```TypeScript
@@ -182,7 +176,6 @@ static createPathDashEffect(path: Path, advance: number, phase: number, style: P
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createsumpatheffect"></a>
 ## createSumPathEffect
 
 ```TypeScript

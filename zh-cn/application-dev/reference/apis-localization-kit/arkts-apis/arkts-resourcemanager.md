@@ -1,6 +1,6 @@
 # @ohos.resourceManager
 
-本模块提供资源获取能力。根据当前的[Configuration](arkts-localization-resourcemanager-configuration-c.md)配置，获取最匹配的应用资源或系统资源。具体匹配规则参考[资源匹配](docroot://quick-start/resource-categories-and-access.md#资源匹配)。Configuration配置包括语言、区域、横竖屏、颜色模式、Mcc（移动国家码）和Mnc（移动网络码）、Device capability（设备类型）、Density（分辨率）。
+本模块提供资源获取能力。根据当前的[Configuration](arkts-localization-resourcemanager-configuration-c.md)配置，获取最匹配的应用资源或系统资源。具体匹配规则参考[资源匹配](../../../quick-start/resource-categories-and-access.md#资源匹配)。Configuration配置包括语言、区域、横竖屏、颜色模式、Mcc（移动国家码）和Mnc（移动网络码）、Device capability（设备类型）、Density（分辨率）。
 
 **起始版本：** 6
 
@@ -25,7 +25,7 @@ import { resourceManager } from '@kit.LocalizationKit';
 | [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-2) | 获取当前应用的资源管理对象，使用Promise异步回调。 |
 | [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-3) | 获取指定应用的资源管理对象，使用Promise异步回调。 |
 | [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md#getsysresourcemanager) | 获取系统资源管理对象。 |
-| [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md#getsystemresourcemanager) | 获取系统资源管理ResourceManager对象。  > **说明**  >  > 当前接口获取到的系统资源管理ResourceManager对象中的Configuration为默认值。默认值如下：  > {"locale": "", "direction": -1, "deviceType": -1, "screenDensity": 0, "colorMode": 1, "mcc": 0, "mnc": 0}。 |
+| [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md#getsystemresourcemanager) | 获取系统资源管理ResourceManager对象。 > **说明**  >  > 当前接口获取到的系统资源管理ResourceManager对象中的Configuration为默认值。默认值如下：  > {"locale": "", "direction": -1, "deviceType": -1, "screenDensity": 0, "colorMode": 1, "mcc": 0, "mnc": 0}。 |
 
 ### 类
 

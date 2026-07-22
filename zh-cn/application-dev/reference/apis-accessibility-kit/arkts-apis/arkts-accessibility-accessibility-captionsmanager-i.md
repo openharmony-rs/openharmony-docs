@@ -1,6 +1,6 @@
 # CaptionsManager
 
-字幕配置管理，在调用CaptionsManager的方法前，需要先通过 [accessibility.getCaptionsManager()](arkts-accessibility-accessibility-getcaptionsmanager-f.md#getcaptionsmanager-1)获取CaptionsManager实例。
+字幕配置管理，在调用CaptionsManager的方法前，需要先通过 [accessibility.getCaptionsManager()](arkts-accessibility-accessibility-getcaptionsmanager-f.md#getcaptionsmanager)获取CaptionsManager实例。
 
 **起始版本：** 8
 
@@ -14,7 +14,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="off"></a>
 ## off('enableChange')
 
 ```TypeScript
@@ -75,7 +74,6 @@ struct Index {
 
 ```
 
-<a id="off-1"></a>
 ## off('styleChange')
 
 ```TypeScript
@@ -136,7 +134,6 @@ struct Index {
 
 ```
 
-<a id="on"></a>
 ## on('enableChange')
 
 ```TypeScript
@@ -144,7 +141,6 @@ on(type: 'enableChange', callback: Callback<boolean>): void
 ```
 
 监听字幕配置启用状态变化事件，使用callback异步回调。
-
 > **说明：**  
 >  
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。  
@@ -200,7 +196,6 @@ struct Index {
 
 ```
 
-<a id="on-1"></a>
 ## on('styleChange')
 
 ```TypeScript
@@ -208,7 +203,6 @@ on(type: 'styleChange', callback: Callback<CaptionsStyle>): void
 ```
 
 监听字幕风格变化事件，使用callback异步回调。
-
 > **说明：**  
 >  
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。  

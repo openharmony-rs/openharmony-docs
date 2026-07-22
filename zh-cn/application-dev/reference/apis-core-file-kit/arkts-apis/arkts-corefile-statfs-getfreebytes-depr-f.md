@@ -1,6 +1,5 @@
 # getFreeBytes
 
-<a id="getfreebytes"></a>
 ## getFreeBytes
 
 ```TypeScript
@@ -13,7 +12,7 @@ function getFreeBytes(path: string, callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** getFreeBytes
+**替代接口：** [getFreeBytes](arkts-corefile-statfs-getfreebytes-depr-f.md#getfreebytes)
 
 <!--Device-Statfs-function getFreeBytes(path: string, callback: AsyncCallback<number>): void--><!--Device-Statfs-function getFreeBytes(path: string, callback: AsyncCallback<number>): void-End-->
 
@@ -44,7 +43,6 @@ statfs.getFreeBytes(path, (err: BusinessError, freeBytes:Number) => {
 ```
 
 
-<a id="getfreebytes-1"></a>
 ## getFreeBytes
 
 ```TypeScript
@@ -57,7 +55,7 @@ function getFreeBytes(path: string): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** getFreeBytes
+**替代接口：** [getFreeBytes](arkts-corefile-statfs-getfreebytes-depr-f.md#getfreebytes)
 
 <!--Device-Statfs-function getFreeBytes(path: string): Promise<number>--><!--Device-Statfs-function getFreeBytes(path: string): Promise<number>-End-->
 

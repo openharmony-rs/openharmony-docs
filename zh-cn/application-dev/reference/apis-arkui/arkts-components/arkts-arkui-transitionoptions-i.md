@@ -1,11 +1,10 @@
 # TransitionOptions
 
 TransitionOptions通过指定结构体内的参数来指定转场效果。
-
 > **说明：**  
 >  
 > 1. 当使用TransitionOptions类型的入参指定转场效果时，**必须**配合  
-> [animateTo](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)使用才有动画效果，动效时长、曲线、延时跟随  
+> [animateTo](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)使用才有动画效果，动效时长、曲线、延时跟随  
 > animateTo中的配置。  
 >  
 > 2. 当使用TransitionOptions作为入参，且不指定除type外的任何参数时，此时相当于指定了透明度的转场效果。例如，指定{type: TransitionType.Insert}相当于指定了{type:  
@@ -41,7 +40,7 @@ opacity?: number
 
 **废弃版本：** 10
 
-**替代接口：** [opacity](arkts-arkui-transitioneffect-c.md#opacity-1)
+**替代接口：** [opacity](arkts-arkui-transitioneffect-c.md#opacity)
 
 <!--Device-TransitionOptions-opacity?: number--><!--Device-TransitionOptions-opacity?: number-End-->
 
@@ -71,7 +70,7 @@ rotate?: RotateOptions
 
 **废弃版本：** 10
 
-**替代接口：** [rotate](arkts-arkui-transitioneffect-c.md#rotate-1)
+**替代接口：** [rotate](arkts-arkui-transitioneffect-c.md#rotate)
 
 <!--Device-TransitionOptions-rotate?: RotateOptions--><!--Device-TransitionOptions-rotate?: RotateOptions-End-->
 
@@ -105,7 +104,7 @@ scale?: ScaleOptions
 
 **废弃版本：** 10
 
-**替代接口：** [scale](arkts-arkui-transitioneffect-c.md#scale-1)
+**替代接口：** [scale](arkts-arkui-transitioneffect-c.md#scale)
 
 <!--Device-TransitionOptions-scale?: ScaleOptions--><!--Device-TransitionOptions-scale?: ScaleOptions-End-->
 
@@ -131,7 +130,7 @@ translate?: TranslateOptions
 
 **废弃版本：** 10
 
-**替代接口：** [translate](arkts-arkui-transitioneffect-c.md#translate-1)
+**替代接口：** [translate](arkts-arkui-transitioneffect-c.md#translate)
 
 <!--Device-TransitionOptions-translate?: TranslateOptions--><!--Device-TransitionOptions-translate?: TranslateOptions-End-->
 

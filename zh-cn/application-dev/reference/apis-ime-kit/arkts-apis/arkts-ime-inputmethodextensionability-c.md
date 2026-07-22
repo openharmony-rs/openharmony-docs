@@ -20,7 +20,6 @@
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
 ```
 
-<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -85,7 +84,6 @@ class InputMethodExt extends InputMethodExtensionAbility {
 
 ```
 
-<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript

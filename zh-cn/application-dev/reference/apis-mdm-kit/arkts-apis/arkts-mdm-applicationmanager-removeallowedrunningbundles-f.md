@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="removeallowedrunningbundles"></a>
 ## removeAllowedRunningBundles
 
 ```TypeScript

@@ -14,7 +14,6 @@
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="compare"></a>
 ## compare
 
 ```TypeScript
@@ -56,7 +55,6 @@ let compareResult = collator.compare('first', 'second'); // compareResult = -1
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -83,7 +81,6 @@ let collator = new intl.Collator();
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -117,7 +114,6 @@ let collator = new intl.Collator('zh-CN', {localeMatcher: 'lookup', usage: 'sort
 
 ```
 
-<a id="resolvedoptions"></a>
 ## resolvedOptions
 
 ```TypeScript

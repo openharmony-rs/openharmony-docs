@@ -6,7 +6,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="callbackwrapper"></a>
 ## callbackWrapper
 
 ```TypeScript
@@ -14,7 +13,6 @@ function callbackWrapper(original: Function): (err: Object, value: Object) => vo
 ```
 
 回调一个异步函数。在回调中，第一个参数表示拒绝的原因（如果 promise 已经 resolved，该值为 **null**），第二个参数表示 resolved 的值。
-
 > **NOTE**  
 >  
 > - **original** 必须是异步函数。如果传入非异步函数，该函数不会被拦截，但会显示错误信息  

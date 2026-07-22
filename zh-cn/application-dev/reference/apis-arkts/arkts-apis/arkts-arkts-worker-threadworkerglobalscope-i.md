@@ -16,7 +16,6 @@ Worker线程用于与宿主线程通信的类。其中postMessage接口用于向
 import { MessageEvents, PostMessageOptions, MessageEvent, Priority, WorkerEventTarget, ThreadWorkerPriority, ThreadWorkerGlobalScope, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, WorkerOptions, EventTarget, WorkerEventListener } from '@kit.ArkTS';
 ```
 
-<a id="callglobalcallobjectmethod"></a>
 ## callGlobalCallObjectMethod
 
 ```TypeScript
@@ -107,7 +106,6 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -152,7 +150,6 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 ```
 
-<a id="postmessage"></a>
 ## postMessage
 
 ```TypeScript
@@ -209,7 +206,6 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 ```
 
-<a id="postmessage-1"></a>
 ## postMessage
 
 ```TypeScript
@@ -265,7 +261,6 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 ```
 
-<a id="postmessageatfront"></a>
 ## postMessageAtFront
 
 ```TypeScript
@@ -384,7 +379,6 @@ workerPort.onmessage = (e: MessageEvents) => {
 
 ```
 
-<a id="postmessagewithsharedsendable"></a>
 ## postMessageWithSharedSendable
 
 ```TypeScript

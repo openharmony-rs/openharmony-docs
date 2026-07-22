@@ -6,7 +6,6 @@
 import { reminderAgent } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="cancelallreminders"></a>
 ## cancelAllReminders
 
 ```TypeScript
@@ -19,7 +18,7 @@ function cancelAllReminders(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [cancelAllReminders](arkts-backgroundtasks-reminderagentmanager-cancelallreminders-f.md#cancelallreminders-1)
+**替代接口：** [cancelAllReminders](arkts-backgroundtasks-reminderagentmanager-cancelallreminders-f.md#cancelallreminders)
 
 <!--Device-reminderAgent-function cancelAllReminders(callback: AsyncCallback<void>): void--><!--Device-reminderAgent-function cancelAllReminders(callback: AsyncCallback<void>): void-End-->
 
@@ -44,7 +43,6 @@ reminderAgent.cancelAllReminders((err: BusinessError, data: void) =>{
 ```
 
 
-<a id="cancelallreminders-1"></a>
 ## cancelAllReminders
 
 ```TypeScript
@@ -57,7 +55,7 @@ function cancelAllReminders(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [cancelAllReminders](arkts-backgroundtasks-reminderagentmanager-cancelallreminders-f.md#cancelallreminders-1)
+**替代接口：** [cancelAllReminders](arkts-backgroundtasks-reminderagentmanager-cancelallreminders-f.md#cancelallreminders)
 
 <!--Device-reminderAgent-function cancelAllReminders(): Promise<void>--><!--Device-reminderAgent-function cancelAllReminders(): Promise<void>-End-->
 

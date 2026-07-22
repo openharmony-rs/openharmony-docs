@@ -1,6 +1,5 @@
 # fdopenStream
 
-<a id="fdopenstream"></a>
 ## fdopenStream
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function fdopenStream(fd: number, mode: string): Promise<Stream>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md#fdopenstream-1)
+**替代接口：** [fs:fdopenStream](arkts-corefile-fileio-fdopenstream-f.md#fdopenstream)
 
 <!--Device-unnamed-declare function fdopenStream(fd: number, mode: string): Promise<Stream>--><!--Device-unnamed-declare function fdopenStream(fd: number, mode: string): Promise<Stream>-End-->
 
@@ -33,7 +32,6 @@ declare function fdopenStream(fd: number, mode: string): Promise<Stream>
 | Promise&lt;Stream&gt; | Promise对象。返回文件流的结果。 |
 
 
-<a id="fdopenstream-1"></a>
 ## fdopenStream
 
 ```TypeScript
@@ -46,7 +44,7 @@ declare function fdopenStream(fd: number, mode: string, callback: AsyncCallback<
 
 **废弃版本：** 9
 
-**替代接口：** [fs:fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md#fdopenstream-1)
+**替代接口：** [fs:fdopenStream](arkts-corefile-fileio-fdopenstream-f.md#fdopenstream)
 
 <!--Device-unnamed-declare function fdopenStream(fd: number, mode: string, callback: AsyncCallback<Stream>): void--><!--Device-unnamed-declare function fdopenStream(fd: number, mode: string, callback: AsyncCallback<Stream>): void-End-->
 

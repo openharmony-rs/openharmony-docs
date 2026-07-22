@@ -6,7 +6,6 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="setprocdumpinsharedoom"></a>
 ## setProcDumpInSharedOOM
 
 ```TypeScript
@@ -14,7 +13,6 @@ function setProcDumpInSharedOOM(enable: boolean): void
 ```
 
 ��ת���Ķѿ������̼߳���Ϊ���̼���
-
 > **ע��**  
 >  
 > Ҫ��ת�����̼��Ķѿ��գ����øýӿڲ�����true������OOMʱ��������SharedHeap OOM����������ȱһ���ɡ�  

@@ -6,7 +6,6 @@
 import { windowAnimationManager } from '@kit.ArkUI';
 ```
 
-<a id="minimizewindowwithanimation"></a>
 ## minimizeWindowWithAnimation
 
 ```TypeScript
@@ -18,9 +17,7 @@ function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,
 
 **起始版本：** 9
 
-<!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,
-    callback: AsyncCallback<WindowAnimationFinishedCallback>): void--><!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,
-    callback: AsyncCallback<WindowAnimationFinishedCallback>): void-End-->
+<!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,    callback: AsyncCallback<WindowAnimationFinishedCallback>): void--><!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,    callback: AsyncCallback<WindowAnimationFinishedCallback>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -99,7 +96,6 @@ windowAnimationManager.minimizeWindowWithAnimation(target, (err: BusinessError, 
 ```
 
 
-<a id="minimizewindowwithanimation-1"></a>
 ## minimizeWindowWithAnimation
 
 ```TypeScript

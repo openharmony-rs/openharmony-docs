@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="getdisalloweduninstallbundles"></a>
 ## getDisallowedUninstallBundles
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getDisallowedUninstallBundles(admin: Want, callback: AsyncCallback<Arra
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync-1)
+**替代接口：** [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -71,7 +70,6 @@ bundleManager.getDisallowedUninstallBundles(wantTemp, (err, result) => {
 ```
 
 
-<a id="getdisalloweduninstallbundles-1"></a>
 ## getDisallowedUninstallBundles
 
 ```TypeScript
@@ -84,7 +82,7 @@ function getDisallowedUninstallBundles(admin: Want, userId: number, callback: As
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync-1)
+**替代接口：** [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -137,7 +135,6 @@ bundleManager.getDisallowedUninstallBundles(wantTemp, 100, (err, result) => {
 ```
 
 
-<a id="getdisalloweduninstallbundles-2"></a>
 ## getDisallowedUninstallBundles
 
 ```TypeScript
@@ -150,7 +147,7 @@ function getDisallowedUninstallBundles(admin: Want, userId?: number): Promise<Ar
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync-1)
+**替代接口：** [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 

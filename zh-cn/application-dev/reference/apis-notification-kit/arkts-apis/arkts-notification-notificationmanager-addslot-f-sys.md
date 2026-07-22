@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="addslot"></a>
 ## addSlot
 
 ```TypeScript
@@ -66,7 +65,6 @@ notificationManager.addSlot(notificationSlot, addSlotCallBack);
 ```
 
 
-<a id="addslot-1"></a>
 ## addSlot
 
 ```TypeScript

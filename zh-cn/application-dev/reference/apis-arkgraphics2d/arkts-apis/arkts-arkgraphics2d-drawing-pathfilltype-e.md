@@ -1,11 +1,8 @@
 # PathFillType
 
 定义路径的填充类型枚举。
-
 > **说明：**
-
-> ![image_PathFillType_Winding_Even_Odd.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_PathFillType_Winding_Even_Odd.png)
-
+> ![image_PathFillType_Winding_Even_Odd.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_PathFillType_Winding_Even_Odd.png)
 > 如图所示圆环为路径，箭头指示路径的方向，p为区域内任意一点，蓝色线条为点p出发的射线，黑色箭头所指为对应填充规则下使用蓝色填充路径的结果。WINDING填充规则下，射线与路径的交点计数为2，不为0，点p被涂色；EVEN_ODD  
 > 填充规则下，射线与路径的相交次数为2，是偶数，点p不被涂色。
 

@@ -6,7 +6,6 @@
 import { hash } from '@kit.CoreFileKit';
 ```
 
-<a id="hash"></a>
 ## hash
 
 ```TypeScript
@@ -58,7 +57,6 @@ hash.hash(filePath, "sha256").then((str: string) => {
 ```
 
 
-<a id="hash-1"></a>
 ## hash
 
 ```TypeScript

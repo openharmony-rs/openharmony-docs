@@ -18,7 +18,6 @@
 import { mediaquery } from '@kit.ArkUI';
 ```
 
-<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -62,7 +61,6 @@ listener.off('change', onPortrait) // 注销回调
 
 ```
 
-<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -70,7 +68,6 @@ on(type: 'change', callback: Callback<MediaQueryResult>): void
 ```
 
 通过句柄向对应的查询条件注册回调，当媒体属性发生变更时会触发该回调。
-
 > **说明：**  
 >  
 > 注册的回调中不允许进一步调用on或off。

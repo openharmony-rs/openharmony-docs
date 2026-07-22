@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="querybundlestatsinfos"></a>
 ## queryBundleStatsInfos
 
 ```TypeScript
@@ -32,7 +31,7 @@ function queryBundleStatsInfos(admin: Want, startTime: number, endTime: number, 
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | startTime | number | 是 | 查询起始时间<br>单位为： 毫秒，取值应为≥0的整数。 |
 | endTime | number | 是 | 查询结束时间，单位：毫秒（时间戳）<br>单位为： 毫秒，取值应为≥0的整数。 |
-| accountId | number | 是 | accountId为操作系统帐户的本地ID。<br>取值应为≥0的整数。   - 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| accountId | number | 是 | accountId为操作系统帐户的本地ID。<br>取值应为≥0的整数。   - 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **返回值：**
 

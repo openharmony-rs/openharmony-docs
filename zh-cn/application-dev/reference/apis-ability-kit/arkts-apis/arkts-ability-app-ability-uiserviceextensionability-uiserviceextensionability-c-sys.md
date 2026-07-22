@@ -18,14 +18,13 @@ UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[Extens
 import { UIServiceExtensionAbility } from '@kit.AbilityKit';
 ```
 
-<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
 onConnect(want: Want, proxy: UIServiceHostProxy): void
 ```
 
-UIServiceExtension生命周期回调。如果是[connectUIServiceExtensionAbility()](arkts-ability-uiextensioncontext-c.md#connectuiserviceextensionability-1)拉起的服务，会在[onCreate()](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md#oncreate-1)之后回调。接收一个[UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md)对象，用于客户端和服务端进行通信。
+UIServiceExtension生命周期回调。如果是[connectUIServiceExtensionAbility()](arkts-ability-uiextensioncontext-c.md#connectuiserviceextensionability)拉起的服务，会在[onCreate()](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md#oncreate)之后回调。接收一个[UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md)对象，用于客户端和服务端进行通信。
 
 **起始版本：** 14
 
@@ -57,7 +56,6 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 ```
 
-<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -96,7 +94,6 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 ```
 
-<a id="ondata"></a>
 ## onData
 
 ```TypeScript
@@ -135,7 +132,6 @@ class ServiceExt extends UIServiceExtensionAbility {
 
 ```
 
-<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript
@@ -167,7 +163,6 @@ class ServiceExt extends UIServiceExtensionAbility {
 
 ```
 
-<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -206,14 +201,13 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 ```
 
-<a id="onrequest"></a>
 ## onRequest
 
 ```TypeScript
 onRequest(want: Want, startId: number): void
 ```
 
-请求拉起UIServiceExtension服务处理。如果是[startAbility](arkts-ability-uiabilitycontext-c.md#startability-1)或者[startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability-1)拉起的服务，会在[onCreate](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md#oncreate-1)之后回调。每次拉起服务都会回调，startId会递增。
+请求拉起UIServiceExtension服务处理。如果是[startAbility](arkts-ability-uiabilitycontext-c.md#startability)或者[startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability)拉起的服务，会在[onCreate](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md#oncreate)之后回调。每次拉起服务都会回调，startId会递增。
 
 **起始版本：** 14
 
@@ -245,7 +239,6 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 ```
 
-<a id="onwindowdidcreate"></a>
 ## onWindowDidCreate
 
 ```TypeScript
@@ -284,7 +277,6 @@ class ServiceExt extends UIServiceExtensionAbility {
 
 ```
 
-<a id="onwindowwillcreate"></a>
 ## onWindowWillCreate
 
 ```TypeScript

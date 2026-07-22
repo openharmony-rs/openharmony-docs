@@ -6,7 +6,6 @@
 import { batteryInfo } from '@kit.BasicServicesKit';
 ```
 
-<a id="getbatteryconfig"></a>
 ## getBatteryConfig
 
 ```TypeScript

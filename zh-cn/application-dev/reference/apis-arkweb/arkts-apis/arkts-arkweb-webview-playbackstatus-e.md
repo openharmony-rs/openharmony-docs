@@ -1,6 +1,6 @@
 # PlaybackStatus
 
-[handleStatusChanged](arkts-arkweb-webview-nativemediaplayerhandler-i.md#handlestatuschanged-1) 接口参数， 用于表示播放器的播放状态。
+[handleStatusChanged](arkts-arkweb-webview-nativemediaplayerhandler-i.md#handlestatuschanged) 接口参数， 用于表示播放器的播放状态。
 
 **起始版本：** 12
 

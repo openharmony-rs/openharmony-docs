@@ -6,7 +6,6 @@
 import { scan } from '@kit.ConnectivityKit';
 ```
 
-<a id="offdevicefound"></a>
 ## offDeviceFound
 
 ```TypeScript

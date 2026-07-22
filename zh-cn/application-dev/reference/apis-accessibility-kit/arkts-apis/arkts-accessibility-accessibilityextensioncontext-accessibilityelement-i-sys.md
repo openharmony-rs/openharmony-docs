@@ -1,6 +1,6 @@
 # AccessibilityElement
 
-无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement-1)或 [AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow-1)来获取一个 **AccessibilityElement** 实例。
+无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement)或 [AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow)来获取一个 **AccessibilityElement** 实例。
 
 **起始版本：** 9
 
@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-<a id="enablescreencurtain"></a>
 ## enableScreenCurtain
 
 ```TypeScript
@@ -39,7 +38,6 @@ enableScreenCurtain(isEnable: boolean): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="executeaction"></a>
 ## executeAction
 
 ```TypeScript
@@ -79,7 +77,6 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
-<a id="findelement"></a>
 ## findElement
 
 ```TypeScript
@@ -115,7 +112,6 @@ findElement(type: 'textType', condition: string): Promise<Array<AccessibilityEle
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
-<a id="findelement-1"></a>
 ## findElement
 
 ```TypeScript
@@ -151,7 +147,6 @@ findElement(type: 'elementId', condition: number): Promise<AccessibilityElement>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
-<a id="findelementbycontent"></a>
 ## findElementByContent
 
 ```TypeScript
@@ -190,7 +185,6 @@ findElementByContent(condition: string): Promise<Array<AccessibilityElement>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
-<a id="findelementbyfocusdirection"></a>
 ## findElementByFocusDirection
 
 ```TypeScript
@@ -229,7 +223,6 @@ findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityEle
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
-<a id="findelementbyid"></a>
 ## findElementById
 
 ```TypeScript
@@ -268,7 +261,6 @@ findElementById(condition: number): Promise<AccessibilityElement>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
-<a id="findelementsbyaccessibilityhinttext"></a>
 ## findElementsByAccessibilityHintText
 
 ```TypeScript
@@ -307,7 +299,6 @@ findElementsByAccessibilityHintText(condition: string): Promise<Array<Accessibil
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
-<a id="findelementsbycondition"></a>
 ## findElementsByCondition
 
 ```TypeScript
@@ -346,7 +337,6 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<Foc
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-<a id="getchildren"></a>
 ## getChildren
 
 ```TypeScript
@@ -378,7 +368,6 @@ getChildren(): Promise<Array<AccessibilityElement>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-<a id="getcursorposition"></a>
 ## getCursorPosition
 
 ```TypeScript
@@ -401,7 +390,6 @@ getCursorPosition(callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，表示文本组件中光标位置。 |
 
-<a id="getcursorposition-1"></a>
 ## getCursorPosition
 
 ```TypeScript
@@ -424,7 +412,6 @@ getCursorPosition(): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回当前光标所处位置。 |
 
-<a id="getparent"></a>
 ## getParent
 
 ```TypeScript
@@ -456,7 +443,6 @@ getParent(): Promise<AccessibilityElement>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-<a id="getroot"></a>
 ## getRoot
 
 ```TypeScript

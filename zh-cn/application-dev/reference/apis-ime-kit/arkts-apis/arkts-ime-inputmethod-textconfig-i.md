@@ -104,7 +104,7 @@ windowId?: number
 
 编辑框所在的窗口Id，该参数应为整数。
 
-推荐使用[getWindowProperties](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties-1)方法获取窗口id属性。
+推荐使用[getWindowProperties](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。
 
 **类型：** number
 

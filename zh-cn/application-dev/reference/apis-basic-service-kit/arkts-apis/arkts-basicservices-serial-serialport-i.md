@@ -14,7 +14,6 @@
 import { serial } from '@kit.BasicServicesKit';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -44,7 +43,6 @@ close(): Promise<void>
 | [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="drain"></a>
 ## drain
 
 ```TypeScript
@@ -75,7 +73,6 @@ drain(): Promise<void>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="flush"></a>
 ## flush
 
 ```TypeScript
@@ -106,7 +103,6 @@ flush串口缓冲区。使用Promise异步回调。
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="getcts"></a>
 ## getCts
 
 ```TypeScript
@@ -137,7 +133,6 @@ getCts(): Promise<boolean>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="getdsr"></a>
 ## getDsr
 
 ```TypeScript
@@ -168,7 +163,6 @@ getDsr(): Promise<boolean>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="offdataread"></a>
 ## offDataRead
 
 ```TypeScript
@@ -198,7 +192,6 @@ offDataRead(callback?: Callback<Uint8Array>): void
 | [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="offdisconnect"></a>
 ## offDisconnect
 
 ```TypeScript
@@ -228,7 +221,6 @@ offDisconnect(callback?: Callback<void>): void
 | [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="ondataread"></a>
 ## onDataRead
 
 ```TypeScript
@@ -259,7 +251,6 @@ onDataRead(callback: Callback<Uint8Array>): void
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -289,7 +280,6 @@ onDisconnect(callback: Callback<void>): void
 | [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="open"></a>
 ## open
 
 ```TypeScript
@@ -328,7 +318,6 @@ open(config?: SerialConfigs): Promise<void>
 | [35700004](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700004-端口已被占用) | Port already in use. |
 | [35700007](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700007-需要用户授权) | User authorization required. |
 
-<a id="sendbrk"></a>
 ## sendBrk
 
 ```TypeScript
@@ -359,7 +348,6 @@ sendBrk(): Promise<void>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="setdtr"></a>
 ## setDtr
 
 ```TypeScript
@@ -396,7 +384,6 @@ setDtr(enable: boolean): Promise<void>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="setrts"></a>
 ## setRts
 
 ```TypeScript
@@ -433,7 +420,6 @@ setRts(enable: boolean): Promise<void>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
-<a id="write"></a>
 ## write
 
 ```TypeScript

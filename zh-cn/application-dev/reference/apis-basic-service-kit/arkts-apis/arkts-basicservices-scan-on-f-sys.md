@@ -6,7 +6,6 @@
 import { scan } from '@kit.BasicServicesKit';
 ```
 
-<a id="on"></a>
 ## on('scanDeviceAdd')
 
 ```TypeScript
@@ -51,7 +50,6 @@ scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
 ```
 
 
-<a id="on-1"></a>
 ## on('scanDeviceDel')
 
 ```TypeScript

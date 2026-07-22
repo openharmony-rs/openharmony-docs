@@ -6,7 +6,6 @@
 import { deviceInfo } from '@kit.MDMKit';
 ```
 
-<a id="getdevicename"></a>
 ## getDeviceName
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getDeviceName(admin: Want, callback: AsyncCallback<string>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md#getdeviceinfo-1)
+**替代接口：** [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md#getdeviceinfo)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -71,7 +70,6 @@ deviceInfo.getDeviceName(wantTemp, (err, result) => {
 ```
 
 
-<a id="getdevicename-1"></a>
 ## getDeviceName
 
 ```TypeScript
@@ -84,7 +82,7 @@ function getDeviceName(admin: Want): Promise<string>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md#getdeviceinfo-1)
+**替代接口：** [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md#getdeviceinfo)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 

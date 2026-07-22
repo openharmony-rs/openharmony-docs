@@ -37,16 +37,16 @@ import { effectKit } from '@kit.ArkGraphics2D';
 | 名称 | 说明 |
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | 颜色类，用于保存取色的结果。 |
-| [ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i.md) | 取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker-1)创建一个ColorPicker实例。 |
-| [Filter](arkts-arkgraphics2d-effectkit-filter-i.md) | 图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect-1)创建一个Filter实例。 |
+| [ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i.md) | 取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker)创建一个ColorPicker实例。 |
+| [Filter](arkts-arkgraphics2d-effectkit-filter-i.md) | 图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect)创建一个Filter实例。 |
 
 <!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i-sys.md) | 取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker-1)创建一个ColorPicker实例。 |
-| [Filter](arkts-arkgraphics2d-effectkit-filter-i-sys.md) | 图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect-1)创建一个Filter实例。 |
+| [ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i-sys.md) | 取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker)创建一个ColorPicker实例。 |
+| [Filter](arkts-arkgraphics2d-effectkit-filter-i-sys.md) | 图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect)创建一个Filter实例。 |
 <!--DelEnd-->
 
 ### 枚举

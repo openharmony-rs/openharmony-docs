@@ -6,7 +6,6 @@
 import { matrix4 } from '@kit.ArkUI';
 ```
 
-<a id="identity"></a>
 ## identity
 
 ```TypeScript

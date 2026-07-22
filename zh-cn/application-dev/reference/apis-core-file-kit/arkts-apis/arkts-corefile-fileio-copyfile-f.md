@@ -1,6 +1,5 @@
 # copyFile
 
-<a id="copyfile"></a>
 ## copyFile
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 
 **废弃版本：** 9
 
-**替代接口：** [fs:copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile-1)
+**替代接口：** [fs:copyFile](arkts-corefile-fileio-copyfile-f.md#copyfile)
 
 <!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, mode?: number): Promise<void>--><!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, mode?: number): Promise<void>-End-->
 
@@ -34,7 +33,6 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="copyfile-1"></a>
 ## copyFile
 
 ```TypeScript
@@ -47,7 +45,7 @@ copyFile.
 
 **废弃版本：** 9
 
-**替代接口：** [fs:copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile-1)
+**替代接口：** [fs:copyFile](arkts-corefile-fileio-copyfile-f.md#copyfile)
 
 <!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, callback: AsyncCallback<void>): void-End-->
 
@@ -62,7 +60,6 @@ copyFile.
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
 
 
-<a id="copyfile-2"></a>
 ## copyFile
 
 ```TypeScript
@@ -80,19 +77,9 @@ declare function copyFile(
 
 **废弃版本：** 9
 
-**替代接口：** [fs:copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile-1)
+**替代接口：** [fs:copyFile](arkts-corefile-fileio-copyfile-f.md#copyfile)
 
-<!--Device-unnamed-declare function copyFile(
-  src: string | number,
-  dest: string | number,
-  mode: number,
-  callback: AsyncCallback<void>
-): void--><!--Device-unnamed-declare function copyFile(
-  src: string | number,
-  dest: string | number,
-  mode: number,
-  callback: AsyncCallback<void>
-): void-End-->
+<!--Device-unnamed-declare function copyFile(  src: string | number,  dest: string | number,  mode: number,  callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copyFile(  src: string | number,  dest: string | number,  mode: number,  callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

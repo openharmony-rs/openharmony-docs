@@ -6,7 +6,6 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
-<a id="addsendsmspolicynumbers"></a>
 ## addSendSmsPolicyNumbers
 
 ```TypeScript

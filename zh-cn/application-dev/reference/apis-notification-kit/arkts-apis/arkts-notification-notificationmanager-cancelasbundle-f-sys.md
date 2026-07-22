@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="cancelasbundle"></a>
 ## cancelAsBundle
 
 ```TypeScript
@@ -24,17 +23,7 @@ function cancelAsBundle(
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
-<!--Device-notificationManager-function cancelAsBundle(
-    id: int,
-    representativeBundle: string,
-    userId: int,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-notificationManager-function cancelAsBundle(
-    id: int,
-    representativeBundle: string,
-    userId: int,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-notificationManager-function cancelAsBundle(    id: int,    representativeBundle: string,    userId: int,    callback: AsyncCallback<void>  ): void--><!--Device-notificationManager-function cancelAsBundle(    id: int,    representativeBundle: string,    userId: int,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -85,7 +74,6 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBund
 ```
 
 
-<a id="cancelasbundle-1"></a>
 ## cancelAsBundle
 
 ```TypeScript
@@ -150,7 +138,6 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 ```
 
 
-<a id="cancelasbundle-2"></a>
 ## cancelAsBundle
 
 ```TypeScript

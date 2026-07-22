@@ -6,7 +6,6 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="uninstallallusertrustedcertificate"></a>
 ## uninstallAllUserTrustedCertificate
 
 ```TypeScript

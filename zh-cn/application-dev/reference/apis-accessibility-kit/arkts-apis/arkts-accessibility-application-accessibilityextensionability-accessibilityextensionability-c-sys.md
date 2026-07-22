@@ -14,7 +14,6 @@ AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能�
 import { Rect, TouchPosition, AccessibilityVirtualNode, ElementAttributeKeys, FocusCondition, AccessibilityExtensionContext, ElementAttributeValues, AccessibilityEventInfo, AccessibilityEvent, AccessibilityElement, FocusRule, FocusMoveResult, FocusType, Parameter, FocusDirection, WindowType } from '@kit.AccessibilityKit';
 ```
 
-<a id="onaccessibilityconnect"></a>
 ## onAccessibilityConnect
 
 ```TypeScript
@@ -55,7 +54,6 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ```
 
-<a id="onaccessibilitydisconnect"></a>
 ## onAccessibilityDisconnect
 
 ```TypeScript
@@ -96,7 +94,6 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ```
 
-<a id="onaccessibilityeventinfo"></a>
 ## onAccessibilityEventInfo
 
 ```TypeScript
@@ -144,7 +141,6 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ```
 
-<a id="onaccessibilitykeyevent"></a>
 ## onAccessibilityKeyEvent
 
 ```TypeScript

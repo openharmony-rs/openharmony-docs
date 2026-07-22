@@ -1,6 +1,5 @@
 # getAbilityDelegator
 
-<a id="getabilitydelegator"></a>
 ## getAbilityDelegator
 
 ```TypeScript
@@ -13,7 +12,7 @@ function getAbilityDelegator(): AbilityDelegator
 
 **废弃版本：** 9
 
-**替代接口：** [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md#getabilitydelegator-1)
+**替代接口：** [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-depr-f.md#getabilitydelegator)
 
 <!--Device-abilityDelegatorRegistry-function getAbilityDelegator(): AbilityDelegator--><!--Device-abilityDelegatorRegistry-function getAbilityDelegator(): AbilityDelegator-End-->
 

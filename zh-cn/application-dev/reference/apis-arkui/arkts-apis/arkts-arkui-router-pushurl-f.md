@@ -6,7 +6,6 @@
 import { router } from '@kit.ArkUI';
 ```
 
-<a id="pushurl"></a>
 ## pushUrl
 
 ```TypeScript
@@ -14,24 +13,23 @@ function pushUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 ```
 
 跳转到应用内的指定页面。
-
 > **说明：**  
 >  
 > - 从API version 9开始支持，从API version 18开始废弃，建议使用  
-> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)  
+> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)  
 > 替代。pushUrl需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** [pushUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)
+**替代接口：** [pushUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#pushurl)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -92,7 +90,6 @@ router.pushUrl({
 ```
 
 
-<a id="pushurl-1"></a>
 ## pushUrl
 
 ```TypeScript
@@ -100,24 +97,23 @@ function pushUrl(options: RouterOptions): Promise<void>
 ```
 
 跳转到应用内的指定页面。
-
 > **说明：**  
 >  
 > - 从API version 9开始支持，从API version 18开始废弃，建议使用  
-> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)替代。pushUrl需先通过  
+> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)替代。pushUrl需先通过  
 > [UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** [pushUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)
+**替代接口：** [pushUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#pushurl)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -185,7 +181,6 @@ router.pushUrl({
 ```
 
 
-<a id="pushurl-2"></a>
 ## pushUrl
 
 ```TypeScript
@@ -193,24 +188,23 @@ function pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallba
 ```
 
 跳转到应用内的指定页面。
-
 > **说明：**  
 >  
 > - 从API version 9开始支持，从API version 18开始废弃，建议使用  
-> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)  
+> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)  
 > 替代。pushUrl需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** [pushUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)
+**替代接口：** [pushUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#pushurl)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -272,7 +266,6 @@ router.pushUrl({
 ```
 
 
-<a id="pushurl-3"></a>
 ## pushUrl
 
 ```TypeScript
@@ -280,24 +273,23 @@ function pushUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 ```
 
 跳转到应用内的指定页面。
-
 > **说明：**  
 >  
 > - 从API version 9开始支持，从API version 18开始废弃，建议使用  
-> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)替代。  
+> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)替代。  
 > pushUrl需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** [pushUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)
+**替代接口：** [pushUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#pushurl)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

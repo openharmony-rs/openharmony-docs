@@ -1,6 +1,5 @@
 # unregisterApplicationStateObserver（系统接口）
 
-<a id="unregisterapplicationstateobserver"></a>
 ## unregisterApplicationStateObserver
 
 ```TypeScript
@@ -50,7 +49,6 @@ appManager.unregisterApplicationStateObserver(observerId, unregisterApplicationS
 ```
 
 
-<a id="unregisterapplicationstateobserver-1"></a>
 ## unregisterApplicationStateObserver
 
 ```TypeScript

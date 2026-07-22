@@ -8,7 +8,6 @@ Defines the onScreenCapture callback, related to {@link onScreenCapture} method.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="deny"></a>
 ## deny
 
 ```TypeScript
@@ -42,7 +40,6 @@ Reject the request.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="getorigin"></a>
 ## getOrigin
 
 ```TypeScript
@@ -65,7 +62,6 @@ Gets the source of the webpage that attempted to access the restricted resource.
 | --- | --- |
 | string | @syscap SystemCapability.Web.Webview.Core@atomicservice |
 
-<a id="grant"></a>
 ## grant
 
 ```TypeScript

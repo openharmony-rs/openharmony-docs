@@ -1,6 +1,6 @@
 # RotationAxisLimited（系统接口）
 
-Enumerates the rotation axis limit states.
+旋转轴限位状态
 
 **起始版本：** 20
 
@@ -16,7 +16,7 @@ Enumerates the rotation axis limit states.
 NOT_LIMITED = 0
 ```
 
-Not limited.
+不限位
 
 **起始版本：** 20
 
@@ -32,7 +32,7 @@ Not limited.
 NEGATIVE_LIMITED = 1
 ```
 
-Negative limited.
+负限位
 
 **起始版本：** 20
 

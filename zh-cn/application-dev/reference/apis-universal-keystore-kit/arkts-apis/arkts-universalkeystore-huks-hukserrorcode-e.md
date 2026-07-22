@@ -1,7 +1,6 @@
 # HuksErrorCode
 
 表示错误码的枚举。
-
 > **说明：**  
 >  
 > 从API version 9开始废弃，建议使用[HuksExceptionErrCode<sup>9+</sup>](arkts-universalkeystore-huks-huksexceptionerrcode-e.md)替代。

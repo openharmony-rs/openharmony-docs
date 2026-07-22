@@ -6,7 +6,6 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-<a id="addosaccountasync"></a>
 ## addOsAccountAsync
 
 ```TypeScript
@@ -14,7 +13,6 @@ function addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountT
 ```
 
 后台添加账号。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。

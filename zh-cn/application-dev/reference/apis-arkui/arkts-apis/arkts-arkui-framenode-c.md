@@ -8,14 +8,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="addcomponentcontent"></a>
 ## addComponentContent
 
 ```TypeScript
 addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent<T>): void
 ```
 
-支持添加ComponentContent类型的组件内容。要求当前节点是一个可修改的节点，即[isModifiable](arkts-arkui-framenode-c.md#ismodifiable-1)的返回值为true，否则抛出异常信息。
+支持添加ComponentContent类型的组件内容。要求当前节点是一个可修改的节点，即[isModifiable](arkts-arkui-framenode-c.md#ismodifiable)的返回值为true，否则抛出异常信息。
 
 **起始版本：** 12
 
@@ -39,7 +38,6 @@ addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent<T
 | --- | --- |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
 
-<a id="addsupporteduistates"></a>
 ## addSupportedUIStates
 
 ```TypeScript
@@ -66,7 +64,6 @@ addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandle
 | statesChangeHandler | [UIStatesChangeHandler](arkts-arkui-uistateschangehandler-t.md) | 是 | 状态变化时的回调函数。 |
 | excludeInner | boolean | 否 | 禁止内部默认状态样式处理的标志，默认值为false。<br> true表示禁止内部默认状态样式处理，false不禁止内部默认状态样式处理。 |
 
-<a id="adoptchild"></a>
 ## adoptChild
 
 ```TypeScript
@@ -97,7 +94,6 @@ adoptChild(child: FrameNode): void
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be disposed." |
 | [100026](../errorcode-node.md#100026-调用接口的实例对象已与后端实体节点解绑) | The current FrameNode has been disposed. |
 
-<a id="appendchild"></a>
 ## appendChild
 
 ```TypeScript
@@ -129,7 +125,6 @@ appendChild(node: FrameNode): void
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted."<br>**适用版本：** 22+ |
 
-<a id="cancelanimations"></a>
 ## cancelAnimations
 
 ```TypeScript
@@ -158,9 +153,8 @@ cancelAnimations(properties: AnimationPropertyType[]): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 表示动画是否取消成功。<br/>返回值为true：动画取消成功。<br/>返回值为false：动画取消失败。<br/>可能导致动画取消失败的原因：<br/> 1. 节点已经释放，调用过[dispose](arkts-arkui-framenode-c.md#dispose-1)方法。<br/> 2. 对于系统组件的代理节点，即对于[isModifiable](arkts-arkui-framenode-c.md#ismodifiable-1)为false的节点，调用该接口会失败。<br/> 3. 属性枚举数组存在非法枚举值。<br/> 4. 系统异常。如发生ipc异常导致动画取消失败。<br/> 1. 即使属性上没有动画，尝试取消该属性的动画，在无系统异常情况下调用取消接口也会返回true。<br/> 2. 如果开发者保证传入参数合法且节点正常，返回false时表明发生了系统异常。此时开发者可隔一段时间后再次尝试取消，或通过调用duration为0的[createAnimation](arkts-arkui-framenode-c.md#createanimation-1)接口停止属性上的动画。 |
+| boolean | 表示动画是否取消成功。<br/>返回值为true：动画取消成功。<br/>返回值为false：动画取消失败。<br/>可能导致动画取消失败的原因：<br/> 1. 节点已经释放，调用过[dispose](arkts-arkui-framenode-c.md#dispose)方法。<br/> 2. 对于系统组件的代理节点，即对于[isModifiable](arkts-arkui-framenode-c.md#ismodifiable)为false的节点，调用该接口会失败。<br/> 3. 属性枚举数组存在非法枚举值。<br/> 4. 系统异常。如发生ipc异常导致动画取消失败。<br/> 1. 即使属性上没有动画，尝试取消该属性的动画，在无系统异常情况下调用取消接口也会返回true。<br/> 2. 如果开发者保证传入参数合法且节点正常，返回false时表明发生了系统异常。此时开发者可隔一段时间后再次尝试取消，或通过调用duration为0的[createAnimation](arkts-arkui-framenode-c.md#createanimation)接口停止属性上的动画。 |
 
-<a id="clearchildren"></a>
 ## clearChildren
 
 ```TypeScript
@@ -185,7 +179,6 @@ clearChildren(): void
 | --- | --- |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -210,7 +203,6 @@ FrameNode的构造函数。
 | --- | --- | --- | --- |
 | uiContext | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 创建对应节点时所需的UI上下文。 |
 
-<a id="convertposition"></a>
 ## convertPosition
 
 ```TypeScript
@@ -249,7 +241,6 @@ convertPosition(position: Position, targetNode: FrameNode): Position
 | [100024](../errorcode-node.md#100024-节点没有公共祖先节点) | The current FrameNode and the target FrameNode do not have a common ancestor node. |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed." |
 
-<a id="convertpositionfromwindow"></a>
 ## convertPositionFromWindow
 
 ```TypeScript
@@ -287,7 +278,6 @@ convertPositionFromWindow(positionByWindow: Position): Position
 | [100026](../errorcode-node.md#100026-调用接口的实例对象已与后端实体节点解绑) | The current FrameNode has been disposed. |
 | [100028](../errorcode-node.md#100028-当前节点不在主节点树上) | The current FrameNode is not on the main tree. |
 
-<a id="convertpositiontowindow"></a>
 ## convertPositionToWindow
 
 ```TypeScript
@@ -325,7 +315,6 @@ convertPositionToWindow(positionByLocal: Position): Position
 | [100026](../errorcode-node.md#100026-调用接口的实例对象已与后端实体节点解绑) | The current FrameNode has been disposed. |
 | [100028](../errorcode-node.md#100028-当前节点不在主节点树上) | The current FrameNode is not on the main tree. |
 
-<a id="createanimation"></a>
 ## createAnimation
 
 ```TypeScript
@@ -357,9 +346,8 @@ createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>,
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 表示动画是否创建成功。<br/>返回值为true：动画创建成功，如果动画参数中设置结束回调，动画结束后会调用结束回调。<br/>返回值为false：动画创建失败，即使动画参数中设置结束回调，结束回调也不会被调用。<br/>可能导致动画创建失败的原因：<br/> 1. 节点已经释放，调用过[dispose](arkts-arkui-framenode-c.md#dispose-1)方法。<br/> 2. 对于系统组件的代理节点，即对于[isModifiable](arkts-arkui-framenode-c.md#ismodifiable-1)为false的节点，调用该接口会失败。<br/> 3. 属性枚举非法，或属性枚举需要的长度与startValue或endValue的长度不匹配。<br/> 4. 该属性在第一次创建动画时没有显式指定startValue导致没有动画起点值，或设置的动画终值和动画起始值（当startValue为undefined时动画起始值为上一次的终值）相同，此时无动画产生。 |
+| boolean | 表示动画是否创建成功。<br/>返回值为true：动画创建成功，如果动画参数中设置结束回调，动画结束后会调用结束回调。<br/>返回值为false：动画创建失败，即使动画参数中设置结束回调，结束回调也不会被调用。<br/>可能导致动画创建失败的原因：<br/> 1. 节点已经释放，调用过[dispose](arkts-arkui-framenode-c.md#dispose)方法。<br/> 2. 对于系统组件的代理节点，即对于[isModifiable](arkts-arkui-framenode-c.md#ismodifiable)为false的节点，调用该接口会失败。<br/> 3. 属性枚举非法，或属性枚举需要的长度与startValue或endValue的长度不匹配。<br/> 4. 该属性在第一次创建动画时没有显式指定startValue导致没有动画起点值，或设置的动画终值和动画起始值（当startValue为undefined时动画起始值为上一次的终值）相同，此时无动画产生。 |
 
-<a id="createframenodes"></a>
 ## createFrameNodes
 
 ```TypeScript
@@ -391,7 +379,6 @@ static createFrameNodes(uiContext: UIContext, count: number): FrameNode[]
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md)[] | Array of created FrameNodes. |
 
-<a id="dispose"></a>
 ## dispose
 
 ```TypeScript
@@ -399,13 +386,12 @@ dispose(): void
 ```
 
 立即解除当前FrameNode对象对实体FrameNode节点的引用关系。
-
 > **说明：**  
 >  
-> - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](arkts-arkui-framenode-c.md#getmeasuredsize-1)、  
-> [getLayoutPosition](arkts-arkui-framenode-c.md#getlayoutposition-1))的时候会导致应用出现jscrash。  
+> - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](arkts-arkui-framenode-c.md#getmeasuredsize)、  
+> [getLayoutPosition](arkts-arkui-framenode-c.md#getlayoutposition))的时候会导致应用出现jscrash。  
 >  
-> - 通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid-1)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体  
+> - 通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体  
 > FrameNode节点。
 
 **起始版本：** 12
@@ -418,7 +404,6 @@ dispose(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="disposetree"></a>
 ## disposeTree
 
 ```TypeScript
@@ -437,7 +422,6 @@ disposeTree(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getchild"></a>
 ## getChild
 
 ```TypeScript
@@ -468,7 +452,6 @@ getChild(index: number): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) | Child node obtained. If the FrameNode does not contain the specified child node, null is returned. |
 
-<a id="getchild-1"></a>
 ## getChild
 
 ```TypeScript
@@ -500,7 +483,6 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) | Child node obtained. If the FrameNode does not contain the specified child node, null is returned. |
 
-<a id="getchildrencount"></a>
 ## getChildrenCount
 
 ```TypeScript
@@ -525,7 +507,6 @@ getChildrenCount(): number
 | --- | --- |
 | number | 获取当前FrameNode的子节点数量。 |
 
-<a id="getchildrencount-1"></a>
 ## getChildrenCount
 
 ```TypeScript
@@ -556,7 +537,6 @@ getChildrenCount(countMode?: ChildrenCountMode): number
 | --- | --- |
 | number | - Returns the number of children of the current FrameNode based on the count mode. |
 
-<a id="getcrosslanguageoptions"></a>
 ## getCrossLanguageOptions
 
 ```TypeScript
@@ -581,7 +561,6 @@ getCrossLanguageOptions(): CrossLanguageOptions
 | --- | --- |
 | [CrossLanguageOptions](arkts-arkui-framenode-crosslanguageoptions-i.md) | 跨ArkTS语言访问选项。 |
 
-<a id="getcustomproperty"></a>
 ## getCustomProperty
 
 ```TypeScript
@@ -612,7 +591,6 @@ getCustomProperty(name: string): Object | undefined
 | --- | --- |
 | Object | Value of the custom property. |
 
-<a id="getfirstchild"></a>
 ## getFirstChild
 
 ```TypeScript
@@ -637,7 +615,6 @@ getFirstChild(): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) | First child node. If the FrameNode does not contain any child node, null is returned. |
 
-<a id="getfirstchildindexwithoutexpand"></a>
 ## getFirstChildIndexWithoutExpand
 
 ```TypeScript
@@ -662,7 +639,6 @@ getFirstChildIndexWithoutExpand(): number
 | --- | --- |
 | number | 当前节点第一个在主节点树上的子节点的序列号。 |
 
-<a id="getframenodebyid"></a>
 ## getFrameNodeById
 
 ```TypeScript
@@ -693,14 +669,13 @@ getFrameNodeById(id: string): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) | First node that matches the specified ID, which is returned by searching for all child nodes layer by layer from the current node (which is used as the root node). If no child node of the current node matches the specified ID, a null is returned. |
 
-<a id="getframenodebyuniqueid"></a>
 ## getFrameNodeByUniqueId
 
 ```TypeScript
 getFrameNodeByUniqueId(id: number): FrameNode | null
 ```
 
-以当前节点为根节点，查找并返回指定UniqueID（系统分配的节点唯一标识，该标识可通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid-1)接口获取）的子节点。
+以当前节点为根节点，查找并返回指定UniqueID（系统分配的节点唯一标识，该标识可通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid)接口获取）的子节点。
 
 **起始版本：** 26.0.0
 
@@ -724,7 +699,6 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) | Child node with the unique ID, which is found from the current node (which is used as the root node). If the child node with the unique ID cannot be found under the current node, a null is returned. |
 
-<a id="getglobalpositionondisplay"></a>
 ## getGlobalPositionOnDisplay
 
 ```TypeScript
@@ -749,7 +723,6 @@ getGlobalPositionOnDisplay(): Position
 | --- | --- |
 | [Position](arkts-arkui-position-i.md) | 节点相对于全局屏幕的位置偏移，单位为VP。 |
 
-<a id="getid"></a>
 ## getId
 
 ```TypeScript
@@ -774,7 +747,6 @@ getId(): string
 | --- | --- |
 | string | 用户设置的节点ID（通用属性设置的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)）。 |
 
-<a id="getinspectorinfo"></a>
 ## getInspectorInfo
 
 ```TypeScript
@@ -782,7 +754,6 @@ getInspectorInfo(): Object
 ```
 
 获取节点的结构信息，该信息和DevEco Studio内置<!--RP1-->ArkUI Inspector<!--RP1End-->工具里面的一致。
-
 > **说明：**  
 >  
 > getInspectorInfo接口用于获取所有节点的信息，作为调试接口使用，频繁调用会导致性能下降。
@@ -803,7 +774,6 @@ getInspectorInfo(): Object
 | --- | --- |
 | Object | 节点的结构信息。 |
 
-<a id="getinteractioneventbindinginfo"></a>
 ## getInteractionEventBindingInfo
 
 ```TypeScript
@@ -834,7 +804,6 @@ getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindi
 | --- | --- |
 | [InteractionEventBindingInfo](arkts-arkui-framenode-interactioneventbindinginfo-i.md) | Returns an **InteractionEventBindingInfo** object containing event binding details if the interaction event is bound to the current node; returns **undefined** otherwise. |
 
-<a id="getlastchildindexwithoutexpand"></a>
 ## getLastChildIndexWithoutExpand
 
 ```TypeScript
@@ -859,7 +828,6 @@ getLastChildIndexWithoutExpand(): number
 | --- | --- |
 | number | 当前节点最后一个在主节点树上的子节点的序列号。 |
 
-<a id="getlayoutposition"></a>
 ## getLayoutPosition
 
 ```TypeScript
@@ -884,7 +852,6 @@ getLayoutPosition(): Position
 | --- | --- |
 | [Position](arkts-arkui-position-i.md) | 节点布局后相对于父组件的位置偏移，单位为PX。 |
 
-<a id="getmeasuredsize"></a>
 ## getMeasuredSize
 
 ```TypeScript
@@ -909,7 +876,6 @@ getMeasuredSize(): Size
 | --- | --- |
 | [Size](../arkts-components/arkts-arkui-size-i.md) | 节点测量后的大小，单位为PX。 |
 
-<a id="getnextsibling"></a>
 ## getNextSibling
 
 ```TypeScript
@@ -934,7 +900,6 @@ getNextSibling(): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) | Next sibling node of the current FrameNode. If the FrameNode does not have the next sibling node, null is returned. |
 
-<a id="getnodepropertyvalue"></a>
 ## getNodePropertyValue
 
 ```TypeScript
@@ -963,9 +928,8 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 
 | 类型 | 说明 |
 | --- | --- |
-| number[] | Current property value from the render node. The array length corresponds to the property type.<br>The return value format varies by property:<br>- An empty array (length 0) is returned if the node has been disposed, the [dispose](arkts-arkui-framenode-c.md#dispose-1)API has been called, or the property enumeration is invalid.<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°).<br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px.<br>- **AnimationPropertyType.SCALE**: [scaleX, scaleY](scale factors).<br>- **AnimationPropertyType.OPACITY**: [opacity].<br>1. After animation cancellation, the node's property value is restored to the display value at the time of cancellation, which can be obtained using this API.<br>2. During animation playback, this API returns the final target value rather than real-time interpolated values.<br> |
+| number[] | Current property value from the render node. The array length corresponds to the property type.<br>The return value format varies by property:<br>- An empty array (length 0) is returned if the node has been disposed, the [dispose](arkts-arkui-framenode-c.md#dispose)API has been called, or the property enumeration is invalid.<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°).<br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px.<br>- **AnimationPropertyType.SCALE**: [scaleX, scaleY](scale factors).<br>- **AnimationPropertyType.OPACITY**: [opacity].<br>1. After animation cancellation, the node's property value is restored to the display value at the time of cancellation, which can be obtained using this API.<br>2. During animation playback, this API returns the final target value rather than real-time interpolated values.<br> |
 
-<a id="getnodetype"></a>
 ## getNodeType
 
 ```TypeScript
@@ -990,7 +954,6 @@ getNodeType(): string
 | --- | --- |
 | string | 节点的类型。 |
 
-<a id="getopacity"></a>
 ## getOpacity
 
 ```TypeScript
@@ -1015,7 +978,6 @@ getOpacity(): number
 | --- | --- |
 | number | 节点的不透明度。范围是[0, 1]，值越大透明度越低。 |
 
-<a id="getparent"></a>
 ## getParent
 
 ```TypeScript
@@ -1040,7 +1002,6 @@ getParent(): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) | Parent node of the current FrameNode. If the FrameNode does not contain a parent node, null is returned. |
 
-<a id="getpositiontoparent"></a>
 ## getPositionToParent
 
 ```TypeScript
@@ -1065,14 +1026,13 @@ getPositionToParent(): Position
 | --- | --- |
 | [Position](arkts-arkui-position-i.md) | 节点相对于父组件的位置偏移，单位为VP。 |
 
-<a id="getpositiontoparentwithtransform"></a>
 ## getPositionToParentWithTransform
 
 ```TypeScript
 getPositionToParentWithTransform(): Position
 ```
 
-获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-commonmethod-c.md#transform-1),[translate](../arkts-components/arkts-arkui-commonmethod-c.md#translate-1)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-commonmethod-c.md#transform),[translate](../arkts-components/arkts-arkui-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -1090,7 +1050,6 @@ getPositionToParentWithTransform(): Position
 | --- | --- |
 | [Position](arkts-arkui-position-i.md) | 节点相对于父组件的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
-<a id="getpositiontoscreen"></a>
 ## getPositionToScreen
 
 ```TypeScript
@@ -1115,14 +1074,13 @@ getPositionToScreen(): Position
 | --- | --- |
 | [Position](arkts-arkui-position-i.md) | 节点相对于屏幕的位置偏移，单位为VP。 |
 
-<a id="getpositiontoscreenwithtransform"></a>
 ## getPositionToScreenWithTransform
 
 ```TypeScript
 getPositionToScreenWithTransform(): Position
 ```
 
-获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-commonmethod-c.md#transform-1),[translate](../arkts-components/arkts-arkui-commonmethod-c.md#translate-1)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-commonmethod-c.md#transform),[translate](../arkts-components/arkts-arkui-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -1140,7 +1098,6 @@ getPositionToScreenWithTransform(): Position
 | --- | --- |
 | [Position](arkts-arkui-position-i.md) | 节点相对于屏幕的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
-<a id="getpositiontowindow"></a>
 ## getPositionToWindow
 
 ```TypeScript
@@ -1165,14 +1122,13 @@ getPositionToWindow(): Position
 | --- | --- |
 | [Position](arkts-arkui-position-i.md) | 节点相对于窗口的位置偏移，单位为VP。 |
 
-<a id="getpositiontowindowwithtransform"></a>
 ## getPositionToWindowWithTransform
 
 ```TypeScript
 getPositionToWindowWithTransform(): Position
 ```
 
-获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-commonmethod-c.md#transform-1),[translate](../arkts-components/arkts-arkui-commonmethod-c.md#translate-1)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-commonmethod-c.md#transform),[translate](../arkts-components/arkts-arkui-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -1190,7 +1146,6 @@ getPositionToWindowWithTransform(): Position
 | --- | --- |
 | [Position](arkts-arkui-position-i.md) | 节点相对于窗口的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
-<a id="getprevioussibling"></a>
 ## getPreviousSibling
 
 ```TypeScript
@@ -1215,7 +1170,6 @@ getPreviousSibling(): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) | Previous sibling node of the current FrameNode. If the FrameNode does not have the previous sibling node, null is returned. |
 
-<a id="getrendernode"></a>
 ## getRenderNode
 
 ```TypeScript
@@ -1240,7 +1194,6 @@ getRenderNode(): RenderNode | null
 | --- | --- |
 | [RenderNode](arkts-arkui-rendernode-c.md) | **RenderNode** instance. If the current FrameNode does not hold any RenderNode,**null** is returned. If the current FrameNode is a node created by a declarative component, **null** is returned. |
 
-<a id="getuniqueid"></a>
 ## getUniqueId
 
 ```TypeScript
@@ -1265,7 +1218,6 @@ getUniqueId(): number
 | --- | --- |
 | number | 系统分配的唯一标识的节点UniqueID。 |
 
-<a id="getuserconfigborderwidth"></a>
 ## getUserConfigBorderWidth
 
 ```TypeScript
@@ -1290,7 +1242,6 @@ getUserConfigBorderWidth(): Edges<LengthMetrics>
 | --- | --- |
 | [Edges](arkts-arkui-edges-i.md)&lt;LengthMetrics&gt; | 用户设置的边框宽度。 |
 
-<a id="getuserconfigmargin"></a>
 ## getUserConfigMargin
 
 ```TypeScript
@@ -1315,7 +1266,6 @@ getUserConfigMargin(): Edges<LengthMetrics>
 | --- | --- |
 | [Edges](arkts-arkui-edges-i.md)&lt;LengthMetrics&gt; | 用户设置的外边距。 |
 
-<a id="getuserconfigpadding"></a>
 ## getUserConfigPadding
 
 ```TypeScript
@@ -1340,7 +1290,6 @@ getUserConfigPadding(): Edges<LengthMetrics>
 | --- | --- |
 | [Edges](arkts-arkui-edges-i.md)&lt;LengthMetrics&gt; | 用户设置的内边距。 |
 
-<a id="getuserconfigsize"></a>
 ## getUserConfigSize
 
 ```TypeScript
@@ -1365,7 +1314,6 @@ getUserConfigSize(): SizeT<LengthMetrics>
 | --- | --- |
 | [SizeT](../arkts-components/arkts-arkui-sizet-t.md)&lt;LengthMetrics&gt; | 用户设置的宽高。 |
 
-<a id="insertchildafter"></a>
 ## insertChildAfter
 
 ```TypeScript
@@ -1398,7 +1346,6 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted."<br>**适用版本：** 22+ |
 
-<a id="invalidate"></a>
 ## invalidate
 
 ```TypeScript
@@ -1417,7 +1364,6 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="invalidateattributes"></a>
 ## invalidateAttributes
 
 ```TypeScript
@@ -1440,7 +1386,6 @@ invalidateAttributes(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="isattached"></a>
 ## isAttached
 
 ```TypeScript
@@ -1465,14 +1410,13 @@ isAttached(): boolean
 | --- | --- |
 | boolean | 节点是否被挂载到主节点树上。<br/>true表示节点被挂载到主节点树上，false表示节点不是被挂载到主节点树上。 |
 
-<a id="iscliptoframe"></a>
 ## isClipToFrame
 
 ```TypeScript
 isClipToFrame(): boolean
 ```
 
-获取节点是否是剪裁到组件区域。当调用[dispose](arkts-arkui-framenode-c.md#dispose-1)解除对实体FrameNode节点的引用关系之后，返回值为true。
+获取节点是否是剪裁到组件区域。当调用[dispose](arkts-arkui-framenode-c.md#dispose)解除对实体FrameNode节点的引用关系之后，返回值为true。
 
 **起始版本：** 12
 
@@ -1490,7 +1434,6 @@ isClipToFrame(): boolean
 | --- | --- |
 | boolean | 节点是否是剪裁到组件区域。<br/>true表示节点剪裁到组件区域，false表示节点不是剪裁到组件区域。 |
 
-<a id="isdisposed"></a>
 ## isDisposed
 
 ```TypeScript
@@ -1515,7 +1458,6 @@ isDisposed(): boolean
 | --- | --- |
 | boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
-<a id="isinrenderstate"></a>
 ## isInRenderState
 
 ```TypeScript
@@ -1540,7 +1482,6 @@ isInRenderState(): boolean
 | --- | --- |
 | boolean | 节点是否处于渲染状态。<br/>true：处于渲染状态；false：不处于渲染状态。 |
 
-<a id="ismodifiable"></a>
 ## isModifiable
 
 ```TypeScript
@@ -1563,9 +1504,8 @@ isModifiable(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 判断当前节点是否可修改。<br/>true表示当前节点可修改，false表示当前节点不可修改。<br/>当节点为[自定义组件节点](docroot://ui/arkts-user-defined-node.md#自定义组件节点-framenode)中的系统组件代理节点或节点已经[dispose](arkts-arkui-framenode-c.md#dispose-1)时返回false。<br/>当返回false时，当前FrameNode不支持[appendChild](arkts-arkui-framenode-c.md#appendchild-1)、[insertChildAfter](arkts-arkui-framenode-c.md#insertchildafter-1)、[removeChild](arkts-arkui-framenode-c.md#removechild-1)、[clearChildren](arkts-arkui-framenode-c.md#clearchildren-1)、[createAnimation](arkts-arkui-framenode-c.md#createanimation-1)、[cancelAnimations](arkts-arkui-framenode-c.md#cancelanimations-1)的操作。 |
+| boolean | 判断当前节点是否可修改。<br/>true表示当前节点可修改，false表示当前节点不可修改。<br/>当节点为[自定义组件节点](../../../ui/arkts-user-defined-node.md#自定义组件节点-framenode)中的系统组件代理节点或节点已经[dispose](arkts-arkui-framenode-c.md#dispose)时返回false。<br/>当返回false时，当前FrameNode不支持[appendChild](arkts-arkui-framenode-c.md#appendchild)、[insertChildAfter](arkts-arkui-framenode-c.md#insertchildafter)、[removeChild](arkts-arkui-framenode-c.md#removechild)、[clearChildren](arkts-arkui-framenode-c.md#clearchildren)、[createAnimation](arkts-arkui-framenode-c.md#createanimation)、[cancelAnimations](arkts-arkui-framenode-c.md#cancelanimations)的操作。 |
 
-<a id="isonmaintree"></a>
 ## isOnMainTree
 
 ```TypeScript
@@ -1596,7 +1536,6 @@ isOnMainTree(): boolean
 | --- | --- |
 | [100026](../errorcode-node.md#100026-调用接口的实例对象已与后端实体节点解绑) | The current FrameNode has been disposed. |
 
-<a id="istransferred"></a>
 ## isTransferred
 
 ```TypeScript
@@ -1621,7 +1560,6 @@ isTransferred(): boolean
 | --- | --- |
 | boolean | - Returns true if the FrameNode was converted between dynamic and static states,otherwise, returns false. |
 
-<a id="isvisible"></a>
 ## isVisible
 
 ```TypeScript
@@ -1629,7 +1567,6 @@ isVisible(): boolean
 ```
 
 获取节点是否可见。
-
 > **说明：**  
 >  
 > 根据组件设置的visibility属性值判断该节点是否可见。
@@ -1650,14 +1587,13 @@ isVisible(): boolean
 | --- | --- |
 | boolean | 节点是否可见。<br/>true表示节点可见，false表示节点不可见。 |
 
-<a id="layout"></a>
 ## layout
 
 ```TypeScript
 layout(position: Position): void
 ```
 
-调用FrameNode的布局方法，为FrameNode及其子节点指定布局位置，如果布局方法被重写，则调用重写的方法。建议在[onLayout](arkts-arkui-framenode-c.md#onlayout-1)方法中调用。
+调用FrameNode的布局方法，为FrameNode及其子节点指定布局位置，如果布局方法被重写，则调用重写的方法。建议在[onLayout](arkts-arkui-framenode-c.md#onlayout)方法中调用。
 
 **起始版本：** 12
 
@@ -1675,14 +1611,13 @@ layout(position: Position): void
 | --- | --- | --- | --- |
 | position | [Position](arkts-arkui-position-i.md) | 是 | 组件进行布局时使用的位置信息。 |
 
-<a id="measure"></a>
 ## measure
 
 ```TypeScript
 measure(constraint: LayoutConstraint): void
 ```
 
-调用FrameNode的测量方法，根据父容器的布局约束，对FrameNode进行测量，计算出尺寸，如果测量方法被重写，则调用重写的方法。建议在[onMeasure](arkts-arkui-framenode-c.md#onmeasure-1)方法中调用。
+调用FrameNode的测量方法，根据父容器的布局约束，对FrameNode进行测量，计算出尺寸，如果测量方法被重写，则调用重写的方法。建议在[onMeasure](arkts-arkui-framenode-c.md#onmeasure)方法中调用。
 
 **起始版本：** 12
 
@@ -1700,7 +1635,6 @@ measure(constraint: LayoutConstraint): void
 | --- | --- | --- | --- |
 | constraint | [LayoutConstraint](arkts-arkui-framenode-layoutconstraint-i.md) | 是 | 组件进行测量时使用的父容器布局约束。 |
 
-<a id="moveto"></a>
 ## moveTo
 
 ```TypeScript
@@ -1708,7 +1642,6 @@ moveTo(targetParent: FrameNode, index?: number): void
 ```
 
 将当前FrameNode移动到目标FrameNode的指定位置。当前FrameNode如果不可修改，抛出异常信息。targetParent为[typeNode](arkts-arkui-typenode-n.md)时会校验子组件类型或个数，不满足时抛出异常信息，限制情况请查看[typeNode](arkts-arkui-typenode-n.md)描述。
-
 > **说明：**  
 >  
 > 当前仅支持以下类型的[TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)进行移动操作：[Stack](arkts-arkui-typenode-stack-t.md)、  
@@ -1741,7 +1674,6 @@ moveTo(targetParent: FrameNode, index?: number): void
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
 | [100027](../errorcode-node.md#100027-当前节点已被接纳为附属节点) | The current node has been adopted.<br>**适用版本：** 22+ |
 
-<a id="ondraw"></a>
 ## onDraw
 
 ```TypeScript
@@ -1750,7 +1682,7 @@ onDraw?(context: DrawContext): void
 
 FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。
 
-该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](docroot://ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
+该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
 
 **起始版本：** 12
 
@@ -1768,7 +1700,6 @@ FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNod
 | --- | --- | --- | --- |
 | context | [DrawContext](../arkts-components/arkts-arkui-drawcontext-t.md) | 是 | 图形绘制上下文。自绘制区域无法超出组件自身大小。 |
 
-<a id="onlayout"></a>
 ## onLayout
 
 ```TypeScript
@@ -1793,7 +1724,6 @@ FrameNode的自定义布局方法，该方法会重写默认布局方法，在Fr
 | --- | --- | --- | --- |
 | position | [Position](arkts-arkui-position-i.md) | 是 | 组件进行布局时使用的位置信息。 |
 
-<a id="onmeasure"></a>
 ## onMeasure
 
 ```TypeScript
@@ -1818,7 +1748,6 @@ FrameNode的自定义测量方法，该方法会重写默认测量方法，在Fr
 | --- | --- | --- | --- |
 | constraint | [LayoutConstraint](arkts-arkui-framenode-layoutconstraint-i.md) | 是 | 组件进行测量时使用的布局约束。 |
 
-<a id="recycle"></a>
 ## recycle
 
 ```TypeScript
@@ -1837,7 +1766,6 @@ recycle(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="removeadoptedchild"></a>
 ## removeAdoptedChild
 
 ```TypeScript
@@ -1868,7 +1796,6 @@ removeAdoptedChild(child: FrameNode): void
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be null." |
 | [100026](../errorcode-node.md#100026-调用接口的实例对象已与后端实体节点解绑) | The current FrameNode has been disposed. |
 
-<a id="removechild"></a>
 ## removeChild
 
 ```TypeScript
@@ -1899,7 +1826,6 @@ removeChild(node: FrameNode): void
 | --- | --- |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
 
-<a id="removesupporteduistates"></a>
 ## removeSupportedUIStates
 
 ```TypeScript
@@ -1924,7 +1850,6 @@ removeSupportedUIStates(uiStates: number): void
 | --- | --- | --- | --- |
 | uiStates | number | 是 | 需要删除的UI状态。<br>可以通过位或计算同时指定删除多个状态，如：removeUIStates = UIState.PRESSED  \|UIState.FOCUSED。 |
 
-<a id="reuse"></a>
 ## reuse
 
 ```TypeScript
@@ -1943,7 +1868,6 @@ reuse(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="setcrosslanguageoptions"></a>
 ## setCrossLanguageOptions
 
 ```TypeScript
@@ -1951,7 +1875,6 @@ setCrossLanguageOptions(options: CrossLanguageOptions): void
 ```
 
 设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置，从API版本26.0.0开始支持设置是否可通过非ArkTS语言进行组件树操作。当前FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。
-
 > **说明：**  
 >  
 > 当前仅支持[Scroll](arkts-arkui-typenode-scroll-t.md), [Swiper](arkts-arkui-typenode-swiper-t.md)，[List](arkts-arkui-typenode-list-t.md)，  
@@ -1987,7 +1910,6 @@ setCrossLanguageOptions(options: CrossLanguageOptions): void
 | --- | --- |
 | [100022](../errorcode-node.md#100022-framenode节点的组件类型不支持调整跨语言的通用属性设置权限) | The FrameNode cannot be set whether to support cross-language common attribute setting. |
 
-<a id="setlayoutposition"></a>
 ## setLayoutPosition
 
 ```TypeScript
@@ -2012,7 +1934,6 @@ setLayoutPosition(position: Position): void
 | --- | --- | --- | --- |
 | position | [Position](arkts-arkui-position-i.md) | 是 | FrameNode的布局后的位置。 |
 
-<a id="setmeasuredsize"></a>
 ## setMeasuredSize
 
 ```TypeScript
@@ -2037,7 +1958,6 @@ setMeasuredSize(size: Size): void
 | --- | --- | --- | --- |
 | size | [Size](../arkts-components/arkts-arkui-size-i.md) | 是 | FrameNode的测量后的尺寸。 |
 
-<a id="setneedslayout"></a>
 ## setNeedsLayout
 
 ```TypeScript
@@ -2065,13 +1985,12 @@ get commonAttribute(): CommonAttribute
 获取FrameNode中持有的CommonAttribute接口，用于设置[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)和[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
 
 仅可以修改自定义节点的属性。
-
 > **说明：**  
 >  
 > FrameNode的效果参考对齐方式为顶部起始端的[Stack](../../apis-arkts/arkts-apis/arkts-arkts-util-stack-stack-c.md)容器组件。  
 >  
 > FrameNode的属性支持情况参考  
-> [属性或事件对attributemodifier的支持情况](docroot://ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
+> [属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
 
 **类型：** CommonAttribute
 

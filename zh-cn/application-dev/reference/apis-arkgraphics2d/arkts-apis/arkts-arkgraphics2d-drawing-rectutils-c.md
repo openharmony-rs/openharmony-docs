@@ -3,7 +3,6 @@
 提供了处理矩形的工具。主要的使用场景：
 
 1. 矩形快速构建与获取基本属性，如构造新矩形、拷贝矩形、获取矩形的宽高以及中心点等。2. 边界计算与调整，如获取包含关系、计算与更新矩形之间交集和并集，更新边界值等。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 20开始支持。  
@@ -24,7 +23,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="centerx"></a>
 ## centerX
 
 ```TypeScript
@@ -51,7 +49,6 @@ static centerX(rect: common2D.Rect): number
 | --- | --- |
 | number | 返回矩形中心的横坐标。 |
 
-<a id="centery"></a>
 ## centerY
 
 ```TypeScript
@@ -78,7 +75,6 @@ static centerY(rect: common2D.Rect): number
 | --- | --- |
 | number | 返回矩形中心的纵坐标。 |
 
-<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -106,7 +102,6 @@ static contains(rect: common2D.Rect, other: common2D.Rect): boolean
 | --- | --- |
 | boolean | 返回矩形是否完全包含另一个矩形的结果。true表示指定矩形在另一个矩形内部或者相等，false表示指定矩形在另一个矩形外部。空的矩形不包含任何矩形。 |
 
-<a id="contains-1"></a>
 ## contains
 
 ```TypeScript
@@ -137,7 +132,6 @@ static contains(rect: common2D.Rect, left: number, top: number, right: number, b
 | --- | --- |
 | boolean | 返回矩形是否完全包含由左上右下坐标组成的矩形的结果。true表示指定左上右下坐标组成的矩形在矩形的内部或者相等，false表示指定左上右下坐标组成的矩形在矩形的外部。空的矩形不包含任何矩形。 |
 
-<a id="contains-2"></a>
 ## contains
 
 ```TypeScript
@@ -166,7 +160,6 @@ static contains(rect: common2D.Rect, x: number, y: number): boolean
 | --- | --- |
 | boolean | 返回矩形是否完全包含x、y组成的点的结果。true表示矩形完全包含x、y组成的点，false表示矩形不完全包含x、y组成的点。左边界和上边界属于矩形内部，右边界和下边界不属于矩形内部。空的矩形不包含任何点。 |
 
-<a id="getheight"></a>
 ## getHeight
 
 ```TypeScript
@@ -193,7 +186,6 @@ static getHeight(rect: common2D.Rect): number
 | --- | --- |
 | number | 返回矩形的高。如果矩形的上边界大于下边界，获取的高度为负值，上边界小于下边界则为正值。 |
 
-<a id="getwidth"></a>
 ## getWidth
 
 ```TypeScript
@@ -220,7 +212,6 @@ static getWidth(rect: common2D.Rect): number
 | --- | --- |
 | number | 返回矩形的宽。如果矩形的左边界大于右边界，获取的宽度为负值，左边界小于右边界则为正值。 |
 
-<a id="inset"></a>
 ## inset
 
 ```TypeScript
@@ -245,7 +236,6 @@ static inset(rect: common2D.Rect, left: number, top: number, right: number, bott
 | right | number | 是 | 添加到矩形右边界的值（矩形右下角横坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
 | bottom | number | 是 | 添加到矩形下边界的值（矩形右下角纵坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
 
-<a id="intersect"></a>
 ## intersect
 
 ```TypeScript
@@ -273,7 +263,6 @@ static intersect(rect: common2D.Rect, other: common2D.Rect): boolean
 | --- | --- |
 | boolean | 返回两个矩形是否有交集的结果。true表示两个矩形有交集，false表示两个矩形没有交集。 |
 
-<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -300,7 +289,6 @@ static isEmpty(rect: common2D.Rect): boolean
 | --- | --- |
 | boolean | 返回矩形是否为空的结果。true表示矩形是空，false表示矩形不为空。 |
 
-<a id="isequal"></a>
 ## isEqual
 
 ```TypeScript
@@ -328,7 +316,6 @@ static isEqual(rect: common2D.Rect, other: common2D.Rect): boolean
 | --- | --- |
 | boolean | 返回两个矩形是否相等的结果。true表示两个矩形相等，false表示两个矩形不相等。 |
 
-<a id="isintersect"></a>
 ## isIntersect
 
 ```TypeScript
@@ -356,7 +343,6 @@ static isIntersect(rect: common2D.Rect, other: common2D.Rect): boolean
 | --- | --- |
 | boolean | 返回两个矩形是否有交集的结果。true表示指定矩形与原矩形相交，false表示指定矩形和原矩形没有交集。两矩形仅边重叠或点相交返回false。 |
 
-<a id="makecopy"></a>
 ## makeCopy
 
 ```TypeScript
@@ -383,7 +369,6 @@ static makeCopy(src: common2D.Rect): common2D.Rect
 | --- | --- |
 | common2D.Rect | Created rectangle. |
 
-<a id="makeempty"></a>
 ## makeEmpty
 
 ```TypeScript
@@ -404,7 +389,6 @@ static makeEmpty(): common2D.Rect
 | --- | --- |
 | common2D.Rect | Created rectangle object. |
 
-<a id="makeltrb"></a>
 ## makeLtrb
 
 ```TypeScript
@@ -434,7 +418,6 @@ static makeLtrb(left: number, top: number, right: number, bottom: number): commo
 | --- | --- |
 | common2D.Rect | Created rectangle. |
 
-<a id="offset"></a>
 ## offset
 
 ```TypeScript
@@ -457,7 +440,6 @@ static offset(rect: common2D.Rect, dx: number, dy: number): void
 | dx | number | 是 | 水平方向平移的距离，该参数为浮点数。0表示不平移，负数表示向左平移，正数表示向右平移。 |
 | dy | number | 是 | 竖直方向平移的距离，该参数为浮点数。0表示不平移，负数表示向上平移，正数表示向下平移。 |
 
-<a id="offsetto"></a>
 ## offsetTo
 
 ```TypeScript
@@ -480,7 +462,6 @@ static offsetTo(rect: common2D.Rect, newLeft: number, newTop: number): void
 | newLeft | number | 是 | 要平移到的对应位置的x轴坐标，浮点数。0表示坐标原点，负数位于坐标原点左侧，正数位于坐标原点右侧。 |
 | newTop | number | 是 | 要平移到的对应位置的y轴坐标，浮点数。0表示坐标原点，负数位于坐标原点上侧，正数位于坐标原点下侧。 |
 
-<a id="setempty"></a>
 ## setEmpty
 
 ```TypeScript
@@ -501,7 +482,6 @@ static setEmpty(rect: common2D.Rect): void
 | --- | --- | --- | --- |
 | rect | common2D.Rect | 是 | 用于设置为空的矩形对象。 |
 
-<a id="setltrb"></a>
 ## setLtrb
 
 ```TypeScript
@@ -526,7 +506,6 @@ static setLtrb(rect: common2D.Rect, left: number, top: number, right: number, bo
 | right | number | 是 | 矩形的右下角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
 | bottom | number | 是 | 矩形的右下角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
 
-<a id="setrect"></a>
 ## setRect
 
 ```TypeScript
@@ -548,7 +527,6 @@ static setRect(rect: common2D.Rect, other: common2D.Rect): void
 | rect | common2D.Rect | 是 | 原矩形。 |
 | other | common2D.Rect | 是 | 用于赋值的矩形。 |
 
-<a id="sort"></a>
 ## sort
 
 ```TypeScript
@@ -569,7 +547,6 @@ static sort(rect: common2D.Rect): void
 | --- | --- | --- | --- |
 | rect | common2D.Rect | 是 | 用于设置的矩形对象。 |
 
-<a id="union"></a>
 ## union
 
 ```TypeScript

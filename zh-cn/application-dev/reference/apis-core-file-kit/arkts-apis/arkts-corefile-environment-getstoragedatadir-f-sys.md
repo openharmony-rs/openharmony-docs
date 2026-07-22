@@ -6,7 +6,6 @@
 import { Environment } from '@kit.CoreFileKit';
 ```
 
-<a id="getstoragedatadir"></a>
 ## getStorageDataDir
 
 ```TypeScript
@@ -38,7 +37,6 @@ function getStorageDataDir(): Promise<string>
 | 13900042 | Unknown error |
 
 
-<a id="getstoragedatadir-1"></a>
 ## getStorageDataDir
 
 ```TypeScript

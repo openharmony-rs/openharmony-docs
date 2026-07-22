@@ -1,6 +1,5 @@
 # fstat
 
-<a id="fstat"></a>
 ## fstat
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function fstat(fd: number): Promise<Stat>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:stat](arkts-corefile-file-fs-stat-f.md#stat-1)
+**替代接口：** [fs:stat](arkts-corefile-fileio-stat-f.md#stat)
 
 <!--Device-unnamed-declare function fstat(fd: number): Promise<Stat>--><!--Device-unnamed-declare function fstat(fd: number): Promise<Stat>-End-->
 
@@ -32,7 +31,6 @@ declare function fstat(fd: number): Promise<Stat>
 | Promise&lt;Stat&gt; | Promise对象。返回表示文件状态的具体信息。 |
 
 
-<a id="fstat-1"></a>
 ## fstat
 
 ```TypeScript
@@ -45,7 +43,7 @@ declare function fstat(fd: number, callback: AsyncCallback<Stat>): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:stat](arkts-corefile-file-fs-stat-f.md#stat-1)
+**替代接口：** [fs:stat](arkts-corefile-fileio-stat-f.md#stat)
 
 <!--Device-unnamed-declare function fstat(fd: number, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function fstat(fd: number, callback: AsyncCallback<Stat>): void-End-->
 

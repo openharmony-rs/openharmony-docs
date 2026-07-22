@@ -1,6 +1,5 @@
 # createStream
 
-<a id="createstream"></a>
 ## createStream
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function createStream(path: string, mode: string): Promise<Stream>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:createStream](arkts-corefile-file-fs-createstream-f.md#createstream-1)
+**替代接口：** [fs:createStream](arkts-corefile-fileio-createstream-f.md#createstream)
 
 <!--Device-unnamed-declare function createStream(path: string, mode: string): Promise<Stream>--><!--Device-unnamed-declare function createStream(path: string, mode: string): Promise<Stream>-End-->
 
@@ -33,7 +32,6 @@ declare function createStream(path: string, mode: string): Promise<Stream>
 | Promise&lt;Stream&gt; | Promise对象。返回文件流的结果。 |
 
 
-<a id="createstream-1"></a>
 ## createStream
 
 ```TypeScript
@@ -46,7 +44,7 @@ declare function createStream(path: string, mode: string, callback: AsyncCallbac
 
 **废弃版本：** 9
 
-**替代接口：** [fs:createStream](arkts-corefile-file-fs-createstream-f.md#createstream-1)
+**替代接口：** [fs:createStream](arkts-corefile-fileio-createstream-f.md#createstream)
 
 <!--Device-unnamed-declare function createStream(path: string, mode: string, callback: AsyncCallback<Stream>): void--><!--Device-unnamed-declare function createStream(path: string, mode: string, callback: AsyncCallback<Stream>): void-End-->
 

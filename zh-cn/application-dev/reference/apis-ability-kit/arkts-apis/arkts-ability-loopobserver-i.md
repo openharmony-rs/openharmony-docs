@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-<a id="onlooptimeout"></a>
 ## onLoopTimeOut
 
 ```TypeScript

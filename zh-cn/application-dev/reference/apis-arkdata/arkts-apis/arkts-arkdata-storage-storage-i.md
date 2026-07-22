@@ -2,7 +2,7 @@
 
 提供获取和修改存储数据的接口。
 
-下列接口都需先使用[data_storage.getStorage](arkts-arkdata-storage-getstorage-f.md#getstorage-1)或[data_storage.getStorageSync](arkts-arkdata-storage-getstoragesync-f.md#getstoragesync-1)获取到Storage实例，再通过此实例调用对应接口。
+下列接口都需先使用[data_storage.getStorage](arkts-arkdata-storage-getstorage-f.md#getstorage)或[data_storage.getStorageSync](arkts-arkdata-storage-getstoragesync-f.md#getstoragesync)获取到Storage实例，再通过此实例调用对应接口。
 
 **起始版本：** 6
 
@@ -14,7 +14,6 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -50,7 +49,6 @@ storage.clear(function (err) {
 
 ```
 
-<a id="clear-1"></a>
 ## clear
 
 ```TypeScript
@@ -85,7 +83,6 @@ promiseclear.then(() => {
 
 ```
 
-<a id="clearsync"></a>
 ## clearSync
 
 ```TypeScript
@@ -109,7 +106,6 @@ storage.clearSync();
 
 ```
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -146,7 +142,6 @@ storage.delete('startup', function (err) {
 
 ```
 
-<a id="delete-1"></a>
 ## delete
 
 ```TypeScript
@@ -187,7 +182,6 @@ promisedel.then(() => {
 
 ```
 
-<a id="deletesync"></a>
 ## deleteSync
 
 ```TypeScript
@@ -217,7 +211,6 @@ deleteSync(key: string): void
 
 ```
 
-<a id="flush"></a>
 ## flush
 
 ```TypeScript
@@ -253,7 +246,6 @@ storage.flush(function (err) {
 
 ```
 
-<a id="flush-1"></a>
 ## flush
 
 ```TypeScript
@@ -288,7 +280,6 @@ promiseflush.then(() => {
 
 ```
 
-<a id="flushsync"></a>
 ## flushSync
 
 ```TypeScript
@@ -312,7 +303,6 @@ storage.flushSync();
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -350,7 +340,6 @@ storage.get('startup', 'default', function(err, value) {
 
 ```
 
-<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -392,7 +381,6 @@ promiseget.then((value) => {
 
 ```
 
-<a id="getsync"></a>
 ## getSync
 
 ```TypeScript
@@ -430,7 +418,6 @@ console.info("The value of startup is " + value);
 
 ```
 
-<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -475,7 +462,6 @@ storage.has('startup', function (err, isExist) {
 
 ```
 
-<a id="has-1"></a>
 ## has
 
 ```TypeScript
@@ -518,7 +504,6 @@ promisehas.then((isExist) => {
 
 ```
 
-<a id="hassync"></a>
 ## hasSync
 
 ```TypeScript
@@ -557,7 +542,6 @@ if (isExist) {
 
 ```
 
-<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -591,7 +575,6 @@ storage.off('change', observer);
 
 ```
 
-<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -627,7 +610,6 @@ storage.flushSync();  // observer will be called.
 
 ```
 
-<a id="put"></a>
 ## put
 
 ```TypeScript
@@ -665,7 +647,6 @@ storage.put('startup', 'auto', function (err) {
 
 ```
 
-<a id="put-1"></a>
 ## put
 
 ```TypeScript
@@ -707,7 +688,6 @@ promiseput.then(() => {
 
 ```
 
-<a id="putsync"></a>
 ## putSync
 
 ```TypeScript

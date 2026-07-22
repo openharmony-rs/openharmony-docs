@@ -16,7 +16,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -40,7 +39,6 @@ let download = new cloudSync.Download()
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -90,7 +88,6 @@ download.off('progress', callback);
 
 ```
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -137,7 +134,6 @@ download.off('progress');
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -183,7 +179,6 @@ download.on('progress', (pg: cloudSync.DownloadProgress) => {
 
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -244,7 +239,6 @@ download.start(uri).then(() => {
 
 ```
 
-<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -298,7 +292,6 @@ download.start(uri, (err: BusinessError) => {
 
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -306,7 +299,6 @@ stop(uri: string): Promise<void>
 ```
 
 异步方法停止云文件下载。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 调用stop接口，当前文件下载流程会终止，缓存文件会被删除，再次调用start接口会重新开始下载。
@@ -357,7 +349,6 @@ download.stop(uri).then(() => {
 
 ```
 
-<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -365,7 +356,6 @@ stop(uri: string, callback: AsyncCallback<void>): void
 ```
 
 异步方法停止云文件下载。使用callback异步回调。
-
 > **说明：**  
 >  
 > 调用stop接口，当前文件下载流程会终止，缓存文件会被删除，再次调用start接口会重新开始下载。

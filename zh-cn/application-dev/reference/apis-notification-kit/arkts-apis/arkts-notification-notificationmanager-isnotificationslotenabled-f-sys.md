@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="isnotificationslotenabled"></a>
 ## isNotificationSlotEnabled
 
 ```TypeScript
@@ -68,7 +67,6 @@ notificationManager.isNotificationSlotEnabled(
 ```
 
 
-<a id="isnotificationslotenabled-1"></a>
 ## isNotificationSlotEnabled
 
 ```TypeScript

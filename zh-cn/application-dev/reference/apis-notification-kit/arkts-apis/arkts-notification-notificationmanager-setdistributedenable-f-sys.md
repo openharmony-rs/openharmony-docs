@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="setdistributedenable"></a>
 ## setDistributedEnable
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setDistributedEnable(enable: boolean, callback: AsyncCallback<void>): v
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDistributedEnabled(enable:](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled-1)
+**替代接口：** [setDistributedEnabled(enable:](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -67,7 +66,6 @@ notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 ```
 
 
-<a id="setdistributedenable-1"></a>
 ## setDistributedEnable
 
 ```TypeScript
@@ -80,7 +78,7 @@ function setDistributedEnable(enable: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDistributedEnabled(enable:](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled-1)
+**替代接口：** [setDistributedEnabled(enable:](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

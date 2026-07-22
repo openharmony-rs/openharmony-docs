@@ -16,7 +16,6 @@
 import { BrightnessResponse, BrightnessModeResponse, SetBrightnessModeOptions, GetBrightnessModeOptions, SetBrightnessOptions, GetBrightnessOptions, SetKeepScreenOnOptions } from '@kit.BasicServicesKit';
 ```
 
-<a id="getmode"></a>
 ## getMode
 
 ```TypeScript
@@ -110,7 +109,6 @@ export default {
 
 ```
 
-<a id="getvalue"></a>
 ## getValue
 
 ```TypeScript
@@ -204,7 +202,6 @@ export default {
 
 ```
 
-<a id="setkeepscreenon"></a>
 ## setKeepScreenOn
 
 ```TypeScript
@@ -215,7 +212,7 @@ static setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
 注意：
 
-- 除Lite Wearable外，从API version 7开始不再维护，建议使用[window.setWindowKeepScreenOn()](docroot://reference/apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9)替代。
+- 除Lite Wearable外，从API version 7开始不再维护，建议使用[window.setWindowKeepScreenOn()](../../../reference/apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9)替代。
 
 - 在Lite Wearable上，该接口仅能阻止系统无活动超时灭屏（自动），无法阻止用户主动操作（如盖屏）、常亮时刻结束等导致的灭屏。
 
@@ -307,7 +304,6 @@ export default {
 
 ```
 
-<a id="setmode"></a>
 ## setMode
 
 ```TypeScript
@@ -402,7 +398,6 @@ export default {
 
 ```
 
-<a id="setvalue"></a>
 ## setValue
 
 ```TypeScript
@@ -415,7 +410,7 @@ static setValue(options?: SetBrightnessOptions): void
 
 **废弃版本：** 7
 
-**替代接口：** [setValue](arkts-basicservices-brightness-setvalue-f-sys.md#setvalue-1)
+**替代接口：** [setValue](arkts-basicservices-brightness-setvalue-f-sys.md#setvalue)
 
 <!--Device-Brightness-static setValue(options?: SetBrightnessOptions): void--><!--Device-Brightness-static setValue(options?: SetBrightnessOptions): void-End-->
 

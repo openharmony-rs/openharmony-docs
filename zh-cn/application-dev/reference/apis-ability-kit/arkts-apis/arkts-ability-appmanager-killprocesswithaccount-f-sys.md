@@ -6,7 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="killprocesswithaccount"></a>
 ## killProcessWithAccount
 
 ```TypeScript
@@ -14,7 +13,6 @@ function killProcessWithAccount(bundleName: string, accountId: number): Promise<
 ```
 
 终止account进程。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
@@ -36,7 +34,7 @@ function killProcessWithAccount(bundleName: string, accountId: number): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)。 |
+| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)。 |
 
 **返回值：**
 
@@ -77,7 +75,6 @@ try {
 ```
 
 
-<a id="killprocesswithaccount-1"></a>
 ## killProcessWithAccount
 
 ```TypeScript
@@ -86,7 +83,6 @@ function killProcessWithAccount(bundleName: string, accountId: number, clearPage
 ```
 
 终止account进程。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
@@ -95,9 +91,7 @@ function killProcessWithAccount(bundleName: string, accountId: number, clearPage
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.KILL_APP_PROCESSES or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
-<!--Device-appManager-function killProcessWithAccount(bundleName: string, accountId: int, clearPageStack: boolean, appIndex?: int):
-    Promise<void>--><!--Device-appManager-function killProcessWithAccount(bundleName: string, accountId: int, clearPageStack: boolean, appIndex?: int):
-    Promise<void>-End-->
+<!--Device-appManager-function killProcessWithAccount(bundleName: string, accountId: int, clearPageStack: boolean, appIndex?: int):    Promise<void>--><!--Device-appManager-function killProcessWithAccount(bundleName: string, accountId: int, clearPageStack: boolean, appIndex?: int):    Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -108,7 +102,7 @@ function killProcessWithAccount(bundleName: string, accountId: number, clearPage
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)。 |
+| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)。 |
 | clearPageStack | boolean | 是 | 表示是否清除页面堆栈。true表示清除，false表示不清除。 |
 | appIndex | number | 否 | 应用分身ID。 |
 
@@ -153,7 +147,6 @@ try {
 ```
 
 
-<a id="killprocesswithaccount-2"></a>
 ## killProcessWithAccount
 
 ```TypeScript
@@ -161,7 +154,6 @@ function killProcessWithAccount(bundleName: string, accountId: number, callback:
 ```
 
 终止account进程。使用callback异步回调。
-
 > **说明：**  
 >  
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
@@ -183,7 +175,7 @@ function killProcessWithAccount(bundleName: string, accountId: number, callback:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)。 |
+| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
 
 **错误码：**

@@ -6,7 +6,6 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
-<a id="compressfiles"></a>
 ## compressFiles
 
 ```TypeScript
@@ -27,7 +26,7 @@ function compressFiles(inFiles: Array<string>, outFile: string, options: Options
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inFiles | Array&lt;string&gt; | 是 | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)，[Stage模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)。待压缩的文件夹不可为空，否则使用[decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile-1)对压缩后的文件解压时会报错。 |
+| inFiles | Array&lt;string&gt; | 是 | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-t.md)，[Stage模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-t.md)。待压缩的文件夹不可为空，否则使用[decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile)对压缩后的文件解压时会报错。 |
 | outFile | string | 是 | 指定的压缩结果的文件路径。多个线程同时压缩文件时，outFile不能相同。 |
 | options | [Options](arkts-basicservices-zlib-options-i.md) | 是 | 压缩的配置参数。 |
 

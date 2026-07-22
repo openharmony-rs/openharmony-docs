@@ -6,7 +6,6 @@
 import { defaultAppManager } from '@kit.AbilityKit';
 ```
 
-<a id="isdefaultapplication"></a>
 ## isDefaultApplication
 
 ```TypeScript
@@ -52,7 +51,6 @@ defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER
 ```
 
 
-<a id="isdefaultapplication-1"></a>
 ## isDefaultApplication
 
 ```TypeScript

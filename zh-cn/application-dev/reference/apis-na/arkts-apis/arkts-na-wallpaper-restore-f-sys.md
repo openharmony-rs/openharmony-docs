@@ -1,6 +1,5 @@
 # restore（系统接口）
 
-<a id="restore"></a>
 ## restore
 
 ```TypeScript
@@ -50,7 +49,6 @@ wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
 ```
 
 
-<a id="restore-1"></a>
 ## restore
 
 ```TypeScript

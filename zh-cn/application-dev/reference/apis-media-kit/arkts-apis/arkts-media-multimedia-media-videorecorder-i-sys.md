@@ -16,7 +16,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="getinputsurface"></a>
 ## getInputSurface
 
 ```TypeScript
@@ -66,7 +65,6 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 
 ```
 
-<a id="getinputsurface-1"></a>
 ## getInputSurface
 
 ```TypeScript
@@ -114,7 +112,6 @@ videoRecorder.getInputSurface().then((surfaceId: string) => {
 
 ```
 
-<a id="on"></a>
 ## on('error')
 
 ```TypeScript
@@ -159,7 +156,6 @@ videoRecorder.on('error', (error: BusinessError) => { // 设置'error'事件回�
 
 ```
 
-<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -207,7 +203,6 @@ videoRecorder.pause((err: BusinessError) => {
 
 ```
 
-<a id="pause-1"></a>
 ## pause
 
 ```TypeScript
@@ -253,7 +248,6 @@ videoRecorder.pause().then(() => {
 
 ```
 
-<a id="prepare"></a>
 ## prepare
 
 ```TypeScript
@@ -328,7 +322,6 @@ videoRecorder.prepare(videoConfig, (err: BusinessError) => {
 
 ```
 
-<a id="prepare-1"></a>
 ## prepare
 
 ```TypeScript
@@ -406,7 +399,6 @@ videoRecorder.prepare(videoConfig).then(() => {
 
 ```
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -452,7 +444,6 @@ videoRecorder.release((err: BusinessError) => {
 
 ```
 
-<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -496,7 +487,6 @@ videoRecorder.release().then(() => {
 
 ```
 
-<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -543,7 +533,6 @@ videoRecorder.reset((err: BusinessError) => {
 
 ```
 
-<a id="reset-1"></a>
 ## reset
 
 ```TypeScript
@@ -588,7 +577,6 @@ videoRecorder.reset().then(() => {
 
 ```
 
-<a id="resume"></a>
 ## resume
 
 ```TypeScript
@@ -636,7 +624,6 @@ videoRecorder.resume((err: BusinessError) => {
 
 ```
 
-<a id="resume-1"></a>
 ## resume
 
 ```TypeScript
@@ -682,7 +669,6 @@ videoRecorder.resume().then(() => {
 
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -730,7 +716,6 @@ videoRecorder.start((err: BusinessError) => {
 
 ```
 
-<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -776,7 +761,6 @@ videoRecorder.start().then(() => {
 
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -824,7 +808,6 @@ videoRecorder.stop((err: BusinessError) => {
 
 ```
 
-<a id="stop-1"></a>
 ## stop
 
 ```TypeScript

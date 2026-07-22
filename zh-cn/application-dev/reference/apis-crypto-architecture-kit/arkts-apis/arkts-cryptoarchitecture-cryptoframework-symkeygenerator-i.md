@@ -2,7 +2,7 @@
 
 对称密钥生成器。
 
-在使用该类的方法前，先使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator-1)构建SymKeyGenerator实例。
+在使用该类的方法前，先使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)构建SymKeyGenerator实例。
 
 **起始版本：** 9
 
@@ -18,7 +18,6 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
-<a id="convertkey"></a>
 ## convertKey
 
 ```TypeScript
@@ -27,8 +26,7 @@ convertKey(key: DataBlob, callback: AsyncCallback<SymKey>): void
 
 将指定数据转换为对称密钥。使用callback异步回调。
 
-必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator-1)创建对称密钥生成器后，才能使用本函数。
-
+必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 > **说明：**  
 >  
 > 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定"HMAC|SHA256"），则需要传入与哈希长度一致的二进制  
@@ -51,13 +49,13 @@ convertKey(key: DataBlob, callback: AsyncCallback<SymKey>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 指定的对称密钥材料。 |
-| callback | AsyncCallback&lt;SymKey&gt; | 是 | 回调函数。当生成对称密钥成功时，err为undefined，data为获取到的SymKey；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;SymKey&gt; | 是 | 回调函数。当生成对称密钥成功时，err为undefined，data为获取到的SymKey；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
@@ -85,7 +83,6 @@ function testConvertKey() {
 
 ```
 
-<a id="convertkey-1"></a>
 ## convertKey
 
 ```TypeScript
@@ -94,7 +91,7 @@ convertKey(key: DataBlob): Promise<SymKey>
 
 将指定数据转换为对称密钥。使用Promise异步回调。
 
-在使用本函数前，需先通过[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator-1)创建对称密钥生成器。
+在使用本函数前，需先通过[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)创建对称密钥生成器。
 
 **起始版本：** 9
 
@@ -122,7 +119,7 @@ convertKey(key: DataBlob): Promise<SymKey>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
@@ -154,7 +151,6 @@ function testConvertKey() {
 
 ```
 
-<a id="convertkeysync"></a>
 ## convertKeySync
 
 ```TypeScript
@@ -163,8 +159,7 @@ convertKeySync(key: DataBlob): SymKey
 
 将指定数据转换为对称密钥。
 
-必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator-1)创建对称密钥生成器后，才能使用本函数。
-
+必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 > **说明：**  
 >  
 > 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则需要传入与哈希长度一致的二进制密钥数据  
@@ -197,7 +192,7 @@ convertKeySync(key: DataBlob): SymKey
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
@@ -221,7 +216,6 @@ function testConvertKeySync() {
 
 ```
 
-<a id="generatesymkey"></a>
 ## generateSymKey
 
 ```TypeScript
@@ -230,15 +224,14 @@ generateSymKey(callback: AsyncCallback<SymKey>): void
 
 获取对称密钥生成器随机生成的密钥。使用callback异步回调。
 
-必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator-1)创建对称密钥生成器后，才能使用本函数。
+必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
 目前支持使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
-
 > **说明：**  
 >  
 > 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则会随机生成与哈希长度一致的二进制密钥  
 > 数据（如256位的密钥数据）。如果未指定具体哈希算法，如仅指定"HMAC"，则不支持随机生成对称密钥数据，可通过  
-> [convertKey](arkts-cryptoarchitecture-cryptoframework-symkeygenerator-i.md#convertkey-1)  
+> [convertKey](arkts-cryptoarchitecture-cryptoframework-symkeygenerator-i.md#convertkey)  
 > 方式生成对称密钥数据。
 
 **起始版本：** 9
@@ -255,7 +248,7 @@ generateSymKey(callback: AsyncCallback<SymKey>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;SymKey&gt; | 是 | 回调函数。当生成对称密钥成功时，err为undefined，data为获取到的SymKey；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;SymKey&gt; | 是 | 回调函数。当生成对称密钥成功时，err为undefined，data为获取到的SymKey；否则为错误对象。 |
 
 **错误码：**
 
@@ -276,7 +269,6 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
 
 ```
 
-<a id="generatesymkey-1"></a>
 ## generateSymKey
 
 ```TypeScript
@@ -285,7 +277,7 @@ generateSymKey(): Promise<SymKey>
 
 获取该对称密钥生成器随机生成的密钥。使用Promise异步回调。
 
-必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator-1)创建对称密钥生成器后，才能使用本函数。
+必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
 目前支持使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
 
@@ -328,7 +320,6 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
 
 ```
 
-<a id="generatesymkeysync"></a>
 ## generateSymKeySync
 
 ```TypeScript
@@ -337,10 +328,9 @@ generateSymKeySync(): SymKey
 
 同步获取对称密钥生成器随机生成的密钥。
 
-必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator-1)创建对称密钥生成器后，才能使用本函数。
+必须在使用[createSymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
 目前支持使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
-
 > **说明：**  
 >  
 > 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定"HMAC|SHA256"），则会随机生成与哈希长度一致的  

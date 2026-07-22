@@ -6,7 +6,6 @@
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="createappaccountmanager"></a>
 ## createAppAccountManager
 
 ```TypeScript

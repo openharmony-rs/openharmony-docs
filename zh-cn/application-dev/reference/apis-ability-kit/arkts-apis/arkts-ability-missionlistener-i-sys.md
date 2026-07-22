@@ -1,6 +1,6 @@
 # MissionListener（系统接口）
 
-定义系统任务状态监听，可以通过[on](arkts-ability-missionmanager-on-f-sys.md#on-1)注册。
+定义系统任务状态监听，可以通过[on](arkts-ability-missionmanager-on-f-sys.md#on)注册。
 
 **起始版本：** 8
 
@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="onmissionclosed"></a>
 ## onMissionClosed
 
 ```TypeScript
@@ -33,7 +32,6 @@ onMissionClosed(mission: number): void
 | --- | --- | --- | --- |
 | mission | number | 是 | 表示关闭的任务ID。 |
 
-<a id="onmissioncreated"></a>
 ## onMissionCreated
 
 ```TypeScript
@@ -56,7 +54,6 @@ onMissionCreated(mission: number): void
 | --- | --- | --- | --- |
 | mission | number | 是 | 表示创建的任务ID。 |
 
-<a id="onmissiondestroyed"></a>
 ## onMissionDestroyed
 
 ```TypeScript
@@ -79,7 +76,6 @@ onMissionDestroyed(mission: number): void
 | --- | --- | --- | --- |
 | mission | number | 是 | 表示销毁的任务ID。 |
 
-<a id="onmissioniconupdated"></a>
 ## onMissionIconUpdated
 
 ```TypeScript
@@ -103,7 +99,6 @@ onMissionIconUpdated(mission: number, icon: image.PixelMap): void
 | mission | number | 是 | 表示任务ID。 |
 | icon | image.PixelMap | 是 | 表示更新的任务图标。 |
 
-<a id="onmissionlabelupdated"></a>
 ## onMissionLabelUpdated
 
 ```TypeScript
@@ -126,7 +121,6 @@ onMissionLabelUpdated(mission: number): void
 | --- | --- | --- | --- |
 | mission | number | 是 | 表示任务ID。 |
 
-<a id="onmissionmovedtofront"></a>
 ## onMissionMovedToFront
 
 ```TypeScript
@@ -149,7 +143,6 @@ onMissionMovedToFront(mission: number): void
 | --- | --- | --- | --- |
 | mission | number | 是 | 表示任务ID。 |
 
-<a id="onmissionsnapshotchanged"></a>
 ## onMissionSnapshotChanged
 
 ```TypeScript

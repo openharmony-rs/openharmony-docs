@@ -1,7 +1,6 @@
 # @ohos.deviceStatus.dragInteraction
 
 拖拽功能模块，提供注册和取消拖拽状态监听的能力。
-
 > **说明：**  
 >  
 > - 本模块接口均为系统接口。

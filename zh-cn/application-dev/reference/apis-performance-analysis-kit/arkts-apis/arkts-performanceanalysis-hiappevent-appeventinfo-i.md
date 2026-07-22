@@ -74,7 +74,7 @@ name: string
 params: object
 ```
 
-事件参数对象，包含每个事件参数的参数名和参数值。**系统事件中params包含的字段已由各系统事件定义，具体字段含义在各类系统事件指南的介绍中，例如[崩溃事件介绍](docroot://dfx/hiappevent-watcher-crash-events.md)。** 针对应用事件，[Write](arkts-performanceanalysis-hiappevent-write-f.md#write-1)打点写入的参数由开发者定义，其规格如下：
+事件参数对象，包含每个事件参数的参数名和参数值。**系统事件中params包含的字段已由各系统事件定义，具体字段含义在各类系统事件指南的介绍中，例如[崩溃事件介绍](../../../dfx/hiappevent-watcher-crash-events.md)。** 针对应用事件，[Write](arkts-performanceanalysis-hiappevent-write-f.md#write)打点写入的参数由开发者定义，其规格如下：
 
 - 参数名为string类型，首字符必须为字母字符或`$`字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName、$123_name等。  
 - 参数值支持string、number、boolean、数组类型。string类型参数长度需在8*1024个字符以内，超出后会和对应的参数名一同被丢弃；number类型参数取值需在Number.MIN_SAFE_INTEGER~Number.MAX_SAFE_INTEGER范围内，超出可能会产生不确定值；数组类型参数中的元素类型只能全为string、number、boolean中的一种，且元素个数需在100以内，超出部分即从第101个元素开始会被丢弃。  

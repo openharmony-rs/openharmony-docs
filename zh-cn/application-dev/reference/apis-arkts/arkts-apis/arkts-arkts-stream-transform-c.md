@@ -16,7 +16,6 @@
 import { stream } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -40,7 +39,6 @@ let transform = new stream.Transform();
 
 ```
 
-<a id="doflush"></a>
 ## doFlush
 
 ```TypeScript
@@ -88,7 +86,6 @@ transform.on("data", (data) => {
 
 ```
 
-<a id="dotransform"></a>
 ## doTransform
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="createavsession"></a>
 ## createAVSession
 
 ```TypeScript
@@ -14,7 +13,6 @@ function createAVSession(context: Context, tag: string, type: AVSessionType, cal
 ```
 
 创建会话对象，一个应用程序仅允许存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。
-
 > **说明：**  
 >  
 > - 在业务执行阶段需要保持avsession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
@@ -77,7 +75,6 @@ struct Index {
 ```
 
 
-<a id="createavsession-1"></a>
 ## createAVSession
 
 ```TypeScript
@@ -85,7 +82,6 @@ function createAVSession(context: Context, tag: string, type: AVSessionType): Pr
 ```
 
 创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，结果通过Promise异步回调方式返回。
-
 > **说明：**  
 >  
 > - 在业务执行阶段需要保持avsession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。

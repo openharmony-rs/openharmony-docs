@@ -16,7 +16,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -42,7 +41,6 @@ public constructor(locale?: Intl.Locale, options?: SymbolNumberFormatOptions)
 | locale | Intl.Locale | 否 | 区域对象。默认值：系统区域对象。 |
 | options | [SymbolNumberFormatOptions](arkts-localization-i18n-symbolnumberformatoptions-i.md) | 否 | 自定义数字格式化符号的配置项。默认值：区域默认的符号。 |
 
-<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -73,7 +71,6 @@ public format(value: number | bigint): string
 | --- | --- |
 | string | 使用自定义符号的数字字符串。 |
 
-<a id="formatrange"></a>
 ## formatRange
 
 ```TypeScript
@@ -105,7 +102,6 @@ public formatRange(startRange: number, endRange: number): string
 | --- | --- |
 | string | 使用自定义符号的数字范围字符串。 |
 
-<a id="formatrangetoparts"></a>
 ## formatRangeToParts
 
 ```TypeScript
@@ -137,7 +133,6 @@ public formatRangeToParts(startRange: number, endRange: number): Intl.NumberForm
 | --- | --- |
 | Intl.NumberFormatPart[] | 使用自定义符号的数字元素数组。 |
 
-<a id="formattoparts"></a>
 ## formatToParts
 
 ```TypeScript
@@ -168,7 +163,6 @@ public formatToParts(value?: number | bigint): Intl.NumberFormatPart[]
 | --- | --- |
 | Intl.NumberFormatPart[] | 使用自定义符号的数字元素数组。 |
 
-<a id="parse"></a>
 ## parse
 
 ```TypeScript
@@ -206,7 +200,6 @@ public parse(text: string, lenientMode: boolean): number
 | --- | --- |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
-<a id="resolvedoptions"></a>
 ## resolvedOptions
 
 ```TypeScript

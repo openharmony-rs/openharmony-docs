@@ -2,13 +2,13 @@
 
 > **说明：**  
 > > 从 API version 7开始支持，从API version 9开始废弃。建议使用  
-> [notificationManager.BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)替代。
+> [notificationManager.BundleOption](arkts-notification-notification-bundleoption-depr-i.md)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [/notification/NotificationCommonDef:BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)
+**替代接口：** [/notification/NotificationCommonDef:BundleOption](arkts-notification-notification-bundleoption-depr-i.md)
 
 <!--Device-notification-export interface BundleOption--><!--Device-notification-export interface BundleOption-End-->
 

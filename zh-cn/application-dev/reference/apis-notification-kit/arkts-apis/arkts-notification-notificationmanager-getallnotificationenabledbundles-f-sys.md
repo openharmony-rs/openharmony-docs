@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="getallnotificationenabledbundles"></a>
 ## getAllNotificationEnabledBundles
 
 ```TypeScript
@@ -59,7 +58,6 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 ```
 
 
-<a id="getallnotificationenabledbundles-1"></a>
 ## getAllNotificationEnabledBundles
 
 ```TypeScript

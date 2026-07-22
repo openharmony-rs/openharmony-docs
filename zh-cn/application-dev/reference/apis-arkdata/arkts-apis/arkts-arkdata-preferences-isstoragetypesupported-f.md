@@ -6,7 +6,6 @@
 import { preferences } from '@kit.ArkData';
 ```
 
-<a id="isstoragetypesupported"></a>
 ## isStorageTypeSupported
 
 ```TypeScript

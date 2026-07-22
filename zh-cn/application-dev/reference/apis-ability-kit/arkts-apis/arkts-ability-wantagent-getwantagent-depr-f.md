@@ -1,6 +1,5 @@
 # getWantAgent
 
-<a id="getwantagent"></a>
 ## getWantAgent
 
 ```TypeScript
@@ -73,7 +72,6 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="getwantagent-1"></a>
 ## getWantAgent
 
 ```TypeScript

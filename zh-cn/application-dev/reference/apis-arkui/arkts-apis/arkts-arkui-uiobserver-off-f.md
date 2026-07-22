@@ -6,7 +6,6 @@
 import { uiObserver } from '@kit.ArkUI';
 ```
 
-<a id="off"></a>
 ## off('navDestinationUpdate')
 
 ```TypeScript
@@ -34,7 +33,6 @@ export function off(type: 'navDestinationUpdate', options: { navigationId: Resou
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationInfo&gt; | 否 | 回调函数。返回当前的NavDestination组件状态。 |
 
 
-<a id="off-1"></a>
 ## off('navDestinationUpdate')
 
 ```TypeScript
@@ -61,7 +59,6 @@ export function off(type: 'navDestinationUpdate', callback?: Callback<NavDestina
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationInfo&gt; | 否 | 回调函数。返回当前的NavDestination组件状态。 |
 
 
-<a id="off-2"></a>
 ## off('scrollEvent')
 
 ```TypeScript
@@ -159,7 +156,6 @@ struct Index {
 ```
 
 
-<a id="off-3"></a>
 ## off('scrollEvent')
 
 ```TypeScript
@@ -186,7 +182,6 @@ Removes a callback function that was previously registered with `on()`.
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
 
 
-<a id="off-4"></a>
 ## off('routerPageUpdate')
 
 ```TypeScript
@@ -242,7 +237,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="off-5"></a>
 ## off('densityUpdate')
 
 ```TypeScript
@@ -270,7 +264,6 @@ export function off(type: 'densityUpdate', context: UIContext, callback?: Callba
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DensityInfo&gt; | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
 
 
-<a id="off-6"></a>
 ## off('willDraw')
 
 ```TypeScript
@@ -298,7 +291,6 @@ export function off(type: 'willDraw', context: UIContext, callback?: Callback<vo
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 需要被注销的回调函数。 |
 
 
-<a id="off-7"></a>
 ## off('didLayout')
 
 ```TypeScript
@@ -326,7 +318,6 @@ export function off(type: 'didLayout', context: UIContext, callback?: Callback<v
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 需要被注销的回调函数。 |
 
 
-<a id="off-8"></a>
 ## off('tabContentUpdate')
 
 ```TypeScript
@@ -354,7 +345,6 @@ export function off(type: 'tabContentUpdate', options: ObserverOptions, callback
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;TabContentInfo&gt; | 否 | 需要被注销的回调函数。 |
 
 
-<a id="off-9"></a>
 ## off('tabContentUpdate')
 
 ```TypeScript
@@ -381,7 +371,6 @@ export function off(type: 'tabContentUpdate', callback?: Callback<TabContentInfo
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;TabContentInfo&gt; | 否 | 需要被注销的回调函数。 |
 
 
-<a id="off-10"></a>
 ## off('navDestinationSwitch')
 
 ```TypeScript
@@ -400,15 +389,7 @@ export function off(
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-uiObserver-export function off(
-    type: 'navDestinationSwitch',
-    context: UIAbilityContext | UIContext,
-    callback?: Callback<NavDestinationSwitchInfo>
-  ): void--><!--Device-uiObserver-export function off(
-    type: 'navDestinationSwitch',
-    context: UIAbilityContext | UIContext,
-    callback?: Callback<NavDestinationSwitchInfo>
-  ): void-End-->
+<!--Device-uiObserver-export function off(    type: 'navDestinationSwitch',    context: UIAbilityContext | UIContext,    callback?: Callback<NavDestinationSwitchInfo>  ): void--><!--Device-uiObserver-export function off(    type: 'navDestinationSwitch',    context: UIAbilityContext | UIContext,    callback?: Callback<NavDestinationSwitchInfo>  ): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -421,7 +402,6 @@ export function off(
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationSwitchInfo&gt; | 否 | 需要被注销的回调函数。 |
 
 
-<a id="off-11"></a>
 ## off('navDestinationSwitch')
 
 ```TypeScript
@@ -441,17 +421,7 @@ export function off(
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-uiObserver-export function off(
-    type: 'navDestinationSwitch',
-    context: UIAbilityContext | UIContext,
-    observerOptions: NavDestinationSwitchObserverOptions,
-    callback?: Callback<NavDestinationSwitchInfo>
-  ): void--><!--Device-uiObserver-export function off(
-    type: 'navDestinationSwitch',
-    context: UIAbilityContext | UIContext,
-    observerOptions: NavDestinationSwitchObserverOptions,
-    callback?: Callback<NavDestinationSwitchInfo>
-  ): void-End-->
+<!--Device-uiObserver-export function off(    type: 'navDestinationSwitch',    context: UIAbilityContext | UIContext,    observerOptions: NavDestinationSwitchObserverOptions,    callback?: Callback<NavDestinationSwitchInfo>  ): void--><!--Device-uiObserver-export function off(    type: 'navDestinationSwitch',    context: UIAbilityContext | UIContext,    observerOptions: NavDestinationSwitchObserverOptions,    callback?: Callback<NavDestinationSwitchInfo>  ): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

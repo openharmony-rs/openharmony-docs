@@ -1,7 +1,6 @@
 # AVScreenCaptureRecorder
 
-屏幕录制管理类，用于进行屏幕录制。在调用AVScreenCaptureRecorder的方法前，需要先通过[createAVScreenCaptureRecorder()](arkts-media-media-createavscreencapturerecorder-f.md#createavscreencapturerecorder-1)创建一个AVScreenCaptureRecorder实例。
-
+屏幕录制管理类，用于进行屏幕录制。在调用AVScreenCaptureRecorder的方法前，需要先通过[createAVScreenCaptureRecorder()](arkts-media-media-createavscreencapturerecorder-f.md#createavscreencapturerecorder)创建一个AVScreenCaptureRecorder实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 12开始支持。
@@ -18,7 +17,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="excludepickerwindows"></a>
 ## excludePickerWindows
 
 ```TypeScript
@@ -37,7 +35,7 @@ excludePickerWindows(excludedWindows: Array<number>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| excludedWindows | Array&lt;number&gt; | 是 | 需要在Picker中隐藏的窗口列表，窗口属性获取方法可以参考[getWindowProperties](docroot://reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| excludedWindows | Array&lt;number&gt; | 是 | 需要在Picker中隐藏的窗口列表，窗口属性获取方法可以参考[getWindowProperties](../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
 
 **返回值：**
 
@@ -53,7 +51,6 @@ excludePickerWindows(excludedWindows: Array<number>): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="init"></a>
 ## init
 
 ```TypeScript
@@ -88,7 +85,6 @@ init(config: AVScreenCaptureRecordConfig): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="off"></a>
 ## off('stateChange')
 
 ```TypeScript
@@ -110,7 +106,6 @@ off(type: 'stateChange', callback?: Callback<AVScreenCaptureStateCode>): void
 | type | 'stateChange' | 是 | 状态切换事件回调类型，支持的事件：'stateChange'。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVScreenCaptureStateCode&gt; | 否 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
 
-<a id="off-1"></a>
 ## off('error')
 
 ```TypeScript
@@ -132,7 +127,6 @@ off(type: 'error', callback?: ErrorCallback): void
 | type | 'error' | 是 | 状态切换事件回调类型，支持的事件：'error'。 |
 | callback | [ErrorCallback](../../apis-arkui/arkts-components/arkts-arkui-errorcallback-t-sys.md) | 否 | 录屏错误事件回调方法，不填此参数则会取消最后一次订阅事件。 |
 
-<a id="on"></a>
 ## on('stateChange')
 
 ```TypeScript
@@ -154,7 +148,6 @@ on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void
 | type | 'stateChange' | 是 | 状态切换事件回调类型，支持的事件：'stateChange'。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVScreenCaptureStateCode&gt; | 是 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态。 |
 
-<a id="on-1"></a>
 ## on('error')
 
 ```TypeScript
@@ -184,7 +177,6 @@ on(type: 'error', callback: ErrorCallback): void
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by ErrorCallback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by ErrorCallback. |
 
-<a id="pauserecording"></a>
 ## pauseRecording
 
 ```TypeScript
@@ -215,7 +207,6 @@ pauseRecording(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="presentpicker"></a>
 ## presentPicker
 
 ```TypeScript
@@ -223,7 +214,6 @@ presentPicker(): Promise<void>
 ```
 
 录屏开始后，调用该接口再次弹出Picker，可动态更新录制源（窗口、屏幕）。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 更新录制源过程中，原录制流程不中断。  
@@ -250,7 +240,6 @@ presentPicker(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -278,7 +267,6 @@ release(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="resumerecording"></a>
 ## resumeRecording
 
 ```TypeScript
@@ -309,7 +297,6 @@ resumeRecording(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="setmicenabled"></a>
 ## setMicEnabled
 
 ```TypeScript
@@ -343,7 +330,6 @@ setMicEnabled(enable: boolean): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="setpickermode"></a>
 ## setPickerMode
 
 ```TypeScript
@@ -378,7 +364,6 @@ setPickerMode(pickerMode: PickerMode): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="skipprivacymode"></a>
 ## skipPrivacyMode
 
 ```TypeScript
@@ -399,7 +384,7 @@ skipPrivacyMode(windowIDs: Array<number>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowIDs | Array&lt;number&gt; | 是 | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[getWindowProperties](docroot://reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| windowIDs | Array&lt;number&gt; | 是 | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[getWindowProperties](../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
 
 **返回值：**
 
@@ -414,7 +399,6 @@ skipPrivacyMode(windowIDs: Array<number>): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="startrecording"></a>
 ## startRecording
 
 ```TypeScript
@@ -442,7 +426,6 @@ startRecording(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="stoprecording"></a>
 ## stopRecording
 
 ```TypeScript

@@ -14,7 +14,6 @@
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="getdeviceiconinfo"></a>
 ## getDeviceIconInfo
 
 ```TypeScript
@@ -86,7 +85,6 @@ try {
 
 ```
 
-<a id="getdevicenetworkidlist"></a>
 ## getDeviceNetworkIdList
 
 ```TypeScript
@@ -151,7 +149,6 @@ try {
 
 ```
 
-<a id="getdeviceprofileinfolist"></a>
 ## getDeviceProfileInfoList
 
 ```TypeScript
@@ -213,7 +210,6 @@ try {
 
 ```
 
-<a id="getidentificationbydeviceids"></a>
 ## getIdentificationByDeviceIds
 
 ```TypeScript
@@ -272,7 +268,6 @@ try {
 
 ```
 
-<a id="getlocaldisplaydevicename"></a>
 ## getLocalDisplayDeviceName
 
 ```TypeScript
@@ -333,7 +328,6 @@ try {
 
 ```
 
-<a id="getostypebynetworkid"></a>
 ## getOsTypeByNetworkId
 
 ```TypeScript
@@ -375,7 +369,6 @@ getOsTypeByNetworkId(networkId: string): number
 | [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | 11600110 | Invalid network ID. |
 
-<a id="off"></a>
 ## off('replyResult')
 
 ```TypeScript
@@ -425,7 +418,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on('replyResult')
 
 ```TypeScript
@@ -488,7 +480,6 @@ try {
 
 ```
 
-<a id="putdeviceprofileinfolist"></a>
 ## putDeviceProfileInfoList
 
 ```TypeScript
@@ -549,7 +540,6 @@ try {
 
 ```
 
-<a id="replyuiaction"></a>
 ## replyUiAction
 
 ```TypeScript
@@ -608,7 +598,6 @@ try {
 
 ```
 
-<a id="restorelocaldeivcename"></a>
 ## restoreLocalDeivceName
 
 ```TypeScript
@@ -621,7 +610,7 @@ restoreLocalDeivceName(): void
 
 **废弃版本：** 24
 
-**替代接口：** [restoreLocalDeviceName](arkts-distributedservice-distributeddevicemanager-devicemanager-i-sys.md#restorelocaldevicename-1)
+**替代接口：** [restoreLocalDeviceName](arkts-distributedservice-distributeddevicemanager-devicemanager-i-sys.md#restorelocaldevicename)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -655,7 +644,6 @@ try {
 
 ```
 
-<a id="restorelocaldevicename"></a>
 ## restoreLocalDeviceName
 
 ```TypeScript
@@ -700,7 +688,6 @@ try {
 
 ```
 
-<a id="setheartbeatpolicy"></a>
 ## setHeartbeatPolicy
 
 ```TypeScript
@@ -753,7 +740,6 @@ try {
 
 ```
 
-<a id="setlocaldevicename"></a>
 ## setLocalDeviceName
 
 ```TypeScript
@@ -817,7 +803,6 @@ try {
 
 ```
 
-<a id="setremotedevicename"></a>
 ## setRemoteDeviceName
 
 ```TypeScript

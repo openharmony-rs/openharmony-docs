@@ -6,7 +6,6 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
-<a id="getports"></a>
 ## getPorts
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getPorts(): Array<USBPort>
 
 **废弃版本：** 9
 
-**替代接口：** [getPorts](arkts-basicservices-usbmanager-getports-f-sys.md#getports-1)
+**替代接口：** [getPorts](arkts-basicservices-usbmanager-getports-f-sys.md#getports)
 
 <!--Device-usb-function getPorts(): Array<USBPort>--><!--Device-usb-function getPorts(): Array<USBPort>-End-->
 

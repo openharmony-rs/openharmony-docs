@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="autorefresh"></a>
 ## autoRefresh
 
 ```TypeScript
@@ -39,7 +38,6 @@ autoRefresh?(value: boolean): LengthMetrics
 | --- | --- |
 | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 返回用于链接的LengthMetrics对象。 |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -65,7 +63,6 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 | value | number | 是 | 长度属性的值。<br/>取值范围：[0, +∞) |
 | unit | [LengthUnit](arkts-arkui-graphics-lengthunit-e.md) | 否 | 长度属性的单位。 |
 
-<a id="fp"></a>
 ## fp
 
 ```TypeScript
@@ -96,7 +93,6 @@ static fp(value: number): LengthMetrics
 | --- | --- |
 | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | LengthMetrics 类的实例。 |
 
-<a id="lpx"></a>
 ## lpx
 
 ```TypeScript
@@ -127,7 +123,6 @@ static lpx(value: number): LengthMetrics
 | --- | --- |
 | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | LengthMetrics 类的实例。 |
 
-<a id="percent"></a>
 ## percent
 
 ```TypeScript
@@ -158,7 +153,6 @@ static percent(value: number): LengthMetrics
 | --- | --- |
 | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | LengthMetrics 类的实例。 |
 
-<a id="px"></a>
 ## px
 
 ```TypeScript
@@ -189,7 +183,6 @@ static px(value: number): LengthMetrics
 | --- | --- |
 | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | LengthMetrics 类的实例。 |
 
-<a id="resource"></a>
 ## resource
 
 ```TypeScript
@@ -220,7 +213,6 @@ static resource(value: Resource): LengthMetrics
 | --- | --- |
 | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | LengthMetrics 类的实例。 |
 
-<a id="vp"></a>
 ## vp
 
 ```TypeScript

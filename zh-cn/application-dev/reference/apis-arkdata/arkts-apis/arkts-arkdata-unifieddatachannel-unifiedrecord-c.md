@@ -14,7 +14,6 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
-<a id="addentry"></a>
 ## addEntry
 
 ```TypeScript
@@ -74,7 +73,6 @@ unifiedData.addRecord(record);
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -100,7 +98,6 @@ let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -172,7 +169,6 @@ let pixelMapRecord =
 
 ```
 
-<a id="getentries"></a>
 ## getEntries
 
 ```TypeScript
@@ -247,7 +243,6 @@ for (let i = 0; i < records.length; i++) {
 
 ```
 
-<a id="getentry"></a>
 ## getEntry
 
 ```TypeScript
@@ -335,14 +330,13 @@ for (let i = 0; i < records.length; i++) {
 
 ```
 
-<a id="gettype"></a>
 ## getType
 
 ```TypeScript
 getType(): string
 ```
 
-获取当前数据记录的类型。由于从统一数据对象中调用[getRecords](arkts-arkdata-unifieddatachannel-unifieddata-c.md#getrecords-1)所取出的数据是UnifiedRecord对象，因此需要通过本接口查询此记录的具体类型，再将该UnifiedRecord对象转换为其子类，调用子类接口。
+获取当前数据记录的类型。由于从统一数据对象中调用[getRecords](arkts-arkdata-unifieddatachannel-unifieddata-c.md#getrecords)所取出的数据是UnifiedRecord对象，因此需要通过本接口查询此记录的具体类型，再将该UnifiedRecord对象转换为其子类，调用子类接口。
 
 **起始版本：** 10
 
@@ -381,14 +375,13 @@ if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
 
 ```
 
-<a id="gettypes"></a>
 ## getTypes
 
 ```TypeScript
 getTypes(): Array<string>
 ```
 
-获取数据记录中数据的所有类型集合。可通过UnifiedRecord数据记录对象调用本接口，查询出此记录中数据的所有类型集合，包括使用[addEntry](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#addentry-1)函数添加的数据类型。
+获取数据记录中数据的所有类型集合。可通过UnifiedRecord数据记录对象调用本接口，查询出此记录中数据的所有类型集合，包括使用[addEntry](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#addentry)函数添加的数据类型。
 
 **起始版本：** 15
 
@@ -451,7 +444,6 @@ for (let i = 0; i < records.length; i++) {
 
 ```
 
-<a id="getvalue"></a>
 ## getValue
 
 ```TypeScript

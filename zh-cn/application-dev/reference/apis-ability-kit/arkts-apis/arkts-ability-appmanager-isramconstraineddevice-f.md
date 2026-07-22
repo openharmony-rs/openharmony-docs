@@ -6,7 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="isramconstraineddevice"></a>
 ## isRamConstrainedDevice
 
 ```TypeScript
@@ -50,7 +49,6 @@ appManager.isRamConstrainedDevice().then((data) => {
 ```
 
 
-<a id="isramconstraineddevice-1"></a>
 ## isRamConstrainedDevice
 
 ```TypeScript

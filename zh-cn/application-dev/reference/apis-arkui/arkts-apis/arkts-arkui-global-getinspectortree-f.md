@@ -1,6 +1,5 @@
 # getInspectorTree
 
-<a id="getinspectortree"></a>
 ## getInspectorTree
 
 ```TypeScript

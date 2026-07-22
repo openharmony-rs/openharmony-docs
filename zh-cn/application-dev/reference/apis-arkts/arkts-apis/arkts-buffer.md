@@ -21,8 +21,8 @@ import { buffer } from '@kit.ArkTS';
 | 名称 | 说明 |
 | --- | --- |
 | [alloc](arkts-arkts-buffer-alloc-f.md#alloc) | 创建指定字节长度的Buffer对象并初始化。 |
-| [allocUninitialized](arkts-arkts-buffer-allocuninitialized-f.md#allocuninitialized) | 创建指定大小未初始化的Buffer对象。内存不从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill-1)函数来初始化Buffer对象。 |
-| [allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocuninitializedfrompool) | 创建指定大小未初始化的Buffer对象。内存从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill-1)函数来初始化Buffer对象。 |
+| [allocUninitialized](arkts-arkts-buffer-allocuninitialized-f.md#allocuninitialized) | 创建指定大小未初始化的Buffer对象。内存不从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill)函数来初始化Buffer对象。 |
+| [allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocuninitializedfrompool) | 创建指定大小未初始化的Buffer对象。内存从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill)函数来初始化Buffer对象。 |
 | [byteLength](arkts-arkts-buffer-bytelength-f.md#bytelength) | 根据不同的编码格式，返回指定字符串的字节数。 |
 | [compare](arkts-arkts-buffer-compare-f.md#compare) | 返回两个Buffer对象的比较结果，通常用于对Buffer对象数组进行排序。 |
 | [concat](arkts-arkts-buffer-concat-f.md#concat) | 将数组中的内容复制指定字节长度到新的Buffer对象中并返回。 |

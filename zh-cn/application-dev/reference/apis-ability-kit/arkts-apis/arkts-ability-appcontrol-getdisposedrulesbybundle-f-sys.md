@@ -6,7 +6,6 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
-<a id="getdisposedrulesbybundle"></a>
 ## getDisposedRulesByBundle
 
 ```TypeScript

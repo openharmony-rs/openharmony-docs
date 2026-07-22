@@ -1,7 +1,6 @@
 # SaveButtonOptions
 
 用于设置保存控件的图标、文本、按钮类型等属性。
-
 > **说明**  
 >  
 > - 建议icon或text至少传入一个。  

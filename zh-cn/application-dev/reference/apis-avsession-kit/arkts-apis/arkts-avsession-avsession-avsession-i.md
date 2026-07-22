@@ -1,7 +1,6 @@
 # AVSession
 
-调用[avSession.createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession-1)后，返回会话的实例，可以获得会话ID，完成设置元数据，播放状态信息等操作。
-
+调用[avSession.createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession)后，返回会话的实例，可以获得会话ID，完成设置元数据，播放状态信息等操作。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 10开始支持。
@@ -18,7 +17,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="activate"></a>
 ## activate
 
 ```TypeScript
@@ -46,7 +44,6 @@ activate(callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="activate-1"></a>
 ## activate
 
 ```TypeScript
@@ -76,7 +73,6 @@ activate(): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="deactivate"></a>
 ## deactivate
 
 ```TypeScript
@@ -85,7 +81,7 @@ deactivate(callback: AsyncCallback<void>): void
 
 禁用当前会话。结果通过callback异步回调方式返回。
 
-禁用当前会话的功能，可通过[activate](arkts-avsession-avsession-avsession-i.md#activate-1)恢复。
+禁用当前会话的功能，可通过[activate](arkts-avsession-avsession-avsession-i.md#activate)恢复。
 
 **起始版本：** 10
 
@@ -106,14 +102,13 @@ deactivate(callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="deactivate-1"></a>
 ## deactivate
 
 ```TypeScript
 deactivate(): Promise<void>
 ```
 
-禁用当前会话的功能，可通过[activate](arkts-avsession-avsession-avsession-i.md#activate-1)恢复。结果通过Promise异步回调方式返回。
+禁用当前会话的功能，可通过[activate](arkts-avsession-avsession-avsession-i.md#activate)恢复。结果通过Promise异步回调方式返回。
 
 **起始版本：** 10
 
@@ -136,7 +131,6 @@ deactivate(): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="destroy"></a>
 ## destroy
 
 ```TypeScript
@@ -164,7 +158,6 @@ destroy(callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="destroy-1"></a>
 ## destroy
 
 ```TypeScript
@@ -194,7 +187,6 @@ destroy(): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="dispatchsessionevent"></a>
 ## dispatchSessionEvent
 
 ```TypeScript
@@ -225,7 +217,6 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="dispatchsessionevent-1"></a>
 ## dispatchSessionEvent
 
 ```TypeScript
@@ -263,7 +254,6 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise<void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="enabledesktoplyric"></a>
 ## enableDesktopLyric
 
 ```TypeScript
@@ -300,7 +290,6 @@ enableDesktopLyric(enable: boolean): Promise<void>
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
-<a id="getavcastcontroller"></a>
 ## getAVCastController
 
 ```TypeScript
@@ -328,7 +317,6 @@ getAVCastController(callback: AsyncCallback<AVCastController>): void
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
-<a id="getavcastcontroller-1"></a>
 ## getAVCastController
 
 ```TypeScript
@@ -358,7 +346,6 @@ getAVCastController(): Promise<AVCastController>
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
-<a id="getallcastdisplays"></a>
 ## getAllCastDisplays
 
 ```TypeScript
@@ -388,7 +375,6 @@ getAllCastDisplays(): Promise<Array<CastDisplayInfo>>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="getcontroller"></a>
 ## getController
 
 ```TypeScript
@@ -416,7 +402,6 @@ getController(callback: AsyncCallback<AVSessionController>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="getcontroller-1"></a>
 ## getController
 
 ```TypeScript
@@ -446,7 +431,6 @@ getController(): Promise<AVSessionController>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="getdesktoplyricstate"></a>
 ## getDesktopLyricState
 
 ```TypeScript
@@ -478,7 +462,6 @@ getDesktopLyricState(): Promise<DesktopLyricState>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
-<a id="getoutputdevice"></a>
 ## getOutputDevice
 
 ```TypeScript
@@ -506,7 +489,6 @@ getOutputDevice(callback: AsyncCallback<OutputDeviceInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="getoutputdevice-1"></a>
 ## getOutputDevice
 
 ```TypeScript
@@ -536,7 +518,6 @@ getOutputDevice(): Promise<OutputDeviceInfo>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="getoutputdevicesync"></a>
 ## getOutputDeviceSync
 
 ```TypeScript
@@ -566,7 +547,6 @@ getOutputDeviceSync(): OutputDeviceInfo
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="isdesktoplyricvisible"></a>
 ## isDesktopLyricVisible
 
 ```TypeScript
@@ -598,7 +578,6 @@ isDesktopLyricVisible(): Promise<boolean>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
-<a id="off"></a>
 ## off('play')
 
 ```TypeScript
@@ -630,7 +609,6 @@ off(type: 'play', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-1"></a>
 ## off('pause')
 
 ```TypeScript
@@ -662,7 +640,6 @@ off(type: 'pause', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-2"></a>
 ## off('stop')
 
 ```TypeScript
@@ -694,7 +671,6 @@ off(type: 'stop', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-3"></a>
 ## off('playNext')
 
 ```TypeScript
@@ -726,7 +702,6 @@ off(type: 'playNext', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-4"></a>
 ## off('playPrevious')
 
 ```TypeScript
@@ -758,7 +733,6 @@ off(type: 'playPrevious', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-5"></a>
 ## off('fastForward')
 
 ```TypeScript
@@ -790,7 +764,6 @@ off(type: 'fastForward', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-6"></a>
 ## off('rewind')
 
 ```TypeScript
@@ -822,7 +795,6 @@ off(type: 'rewind', callback?: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-7"></a>
 ## off('playFromAssetId')
 
 ```TypeScript
@@ -830,7 +802,6 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 ```
 
 取消媒体ID播放事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
 > **说明：**  
 >  
 > 从API version 11开始支持，从API version 20开始废弃。建议使用  
@@ -864,7 +835,6 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-8"></a>
 ## off('playWithAssetId')
 
 ```TypeScript
@@ -895,7 +865,6 @@ off(type: 'playWithAssetId', callback?: Callback<string>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-9"></a>
 ## off('seek')
 
 ```TypeScript
@@ -927,7 +896,6 @@ off(type: 'seek', callback?: (time: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-10"></a>
 ## off('setSpeed')
 
 ```TypeScript
@@ -959,7 +927,6 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-11"></a>
 ## off('setLoopMode')
 
 ```TypeScript
@@ -991,7 +958,6 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-12"></a>
 ## off('setTargetLoopMode')
 
 ```TypeScript
@@ -1022,7 +988,6 @@ off(type: 'setTargetLoopMode', callback?: Callback<LoopMode>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-13"></a>
 ## off('toggleFavorite')
 
 ```TypeScript
@@ -1054,7 +1019,6 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-14"></a>
 ## off('handleKeyEvent')
 
 ```TypeScript
@@ -1086,7 +1050,6 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-15"></a>
 ## off('outputDeviceChange')
 
 ```TypeScript
@@ -1118,7 +1081,6 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 
-<a id="off-16"></a>
 ## off('commonCommand')
 
 ```TypeScript
@@ -1150,7 +1112,6 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-17"></a>
 ## off('skipToQueueItem')
 
 ```TypeScript
@@ -1182,7 +1143,6 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-18"></a>
 ## off('answer')
 
 ```TypeScript
@@ -1214,7 +1174,6 @@ off(type: 'answer', callback?: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-19"></a>
 ## off('hangUp')
 
 ```TypeScript
@@ -1246,7 +1205,6 @@ off(type: 'hangUp', callback?: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-20"></a>
 ## off('toggleCallMute')
 
 ```TypeScript
@@ -1278,7 +1236,6 @@ off(type: 'toggleCallMute', callback?: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="off-21"></a>
 ## off('castDisplayChange')
 
 ```TypeScript
@@ -1310,7 +1267,6 @@ off(type: 'castDisplayChange', callback?: Callback<CastDisplayInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 
-<a id="off-22"></a>
 ## off('customDataChange')
 
 ```TypeScript
@@ -1341,7 +1297,6 @@ Unsubscribes from custom data changes.
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="offdesktoplyricstatechanged"></a>
 ## offDesktopLyricStateChanged
 
 ```TypeScript
@@ -1371,7 +1326,6 @@ offDesktopLyricStateChanged(callback?: Callback<DesktopLyricState>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="offdesktoplyricvisibilitychanged"></a>
 ## offDesktopLyricVisibilityChanged
 
 ```TypeScript
@@ -1401,7 +1355,6 @@ offDesktopLyricVisibilityChanged(callback?: Callback<boolean>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="offfastforward"></a>
 ## offFastForward
 
 ```TypeScript
@@ -1431,7 +1384,6 @@ offFastForward(callback?: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="offplay"></a>
 ## offPlay
 
 ```TypeScript
@@ -1461,7 +1413,6 @@ offPlay(callback?: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="offplaynext"></a>
 ## offPlayNext
 
 ```TypeScript
@@ -1491,7 +1442,6 @@ offPlayNext(callback?: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="offplayprevious"></a>
 ## offPlayPrevious
 
 ```TypeScript
@@ -1521,7 +1471,6 @@ offPlayPrevious(callback?: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="offrewind"></a>
 ## offRewind
 
 ```TypeScript
@@ -1551,7 +1500,6 @@ offRewind(callback?: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on"></a>
 ## on('play')
 
 ```TypeScript
@@ -1585,7 +1533,6 @@ on(type: 'play', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-1"></a>
 ## on('pause')
 
 ```TypeScript
@@ -1619,7 +1566,6 @@ on(type: 'pause', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-2"></a>
 ## on('stop')
 
 ```TypeScript
@@ -1653,7 +1599,6 @@ on(type: 'stop', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-3"></a>
 ## on('playNext')
 
 ```TypeScript
@@ -1687,7 +1632,6 @@ on(type: 'playNext', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-4"></a>
 ## on('playPrevious')
 
 ```TypeScript
@@ -1721,7 +1665,6 @@ on(type: 'playPrevious', callback: () => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-5"></a>
 ## on('fastForward')
 
 ```TypeScript
@@ -1755,7 +1698,6 @@ on(type: 'fastForward', callback: (time ?: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-6"></a>
 ## on('rewind')
 
 ```TypeScript
@@ -1789,7 +1731,6 @@ on(type: 'rewind', callback: (time ?: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-7"></a>
 ## on('playFromAssetId')
 
 ```TypeScript
@@ -1797,7 +1738,6 @@ on(type: 'playFromAssetId', callback: (assetId: number) => void): void
 ```
 
 设置媒体ID播放监听事件。
-
 > **说明：**  
 >  
 > 从API version 11开始支持，从API version 20开始废弃。建议使用  
@@ -1831,7 +1771,6 @@ on(type: 'playFromAssetId', callback: (assetId: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-8"></a>
 ## on('playWithAssetId')
 
 ```TypeScript
@@ -1864,7 +1803,6 @@ on(type: 'playWithAssetId', callback: Callback<string>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-9"></a>
 ## on('seek')
 
 ```TypeScript
@@ -1898,7 +1836,6 @@ on(type: 'seek', callback: (time: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-10"></a>
 ## on('setSpeed')
 
 ```TypeScript
@@ -1932,7 +1869,6 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-11"></a>
 ## on('setLoopMode')
 
 ```TypeScript
@@ -1966,7 +1902,6 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-12"></a>
 ## on('setTargetLoopMode')
 
 ```TypeScript
@@ -1999,7 +1934,6 @@ on(type: 'setTargetLoopMode', callback: Callback<LoopMode>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-13"></a>
 ## on('toggleFavorite')
 
 ```TypeScript
@@ -2033,7 +1967,6 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-14"></a>
 ## on('handleKeyEvent')
 
 ```TypeScript
@@ -2067,7 +2000,6 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-15"></a>
 ## on('outputDeviceChange')
 
 ```TypeScript
@@ -2101,7 +2033,6 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 
-<a id="on-16"></a>
 ## on('commonCommand')
 
 ```TypeScript
@@ -2125,7 +2056,7 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'commonCommand' | 是 | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
-| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 是 | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-avsession-avsession-avsessioncontroller-i.md#sendcommoncommand-1))}方法设置的参数内容完全一致。 |
+| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 是 | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-avsession-avsession-avsessioncontroller-i.md#sendcommoncommand))}方法设置的参数内容完全一致。 |
 
 **错误码：**
 
@@ -2135,7 +2066,6 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-17"></a>
 ## on('skipToQueueItem')
 
 ```TypeScript
@@ -2169,7 +2099,6 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-18"></a>
 ## on('answer')
 
 ```TypeScript
@@ -2203,7 +2132,6 @@ on(type: 'answer', callback: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-19"></a>
 ## on('hangUp')
 
 ```TypeScript
@@ -2237,7 +2165,6 @@ on(type: 'hangUp', callback: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-20"></a>
 ## on('toggleCallMute')
 
 ```TypeScript
@@ -2271,7 +2198,6 @@ on(type: 'toggleCallMute', callback: Callback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="on-21"></a>
 ## on('castDisplayChange')
 
 ```TypeScript
@@ -2305,7 +2231,6 @@ on(type: 'castDisplayChange', callback: Callback<CastDisplayInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 
-<a id="on-22"></a>
 ## on('customDataChange')
 
 ```TypeScript
@@ -2336,7 +2261,6 @@ on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="ondesktoplyricstatechanged"></a>
 ## onDesktopLyricStateChanged
 
 ```TypeScript
@@ -2366,7 +2290,6 @@ onDesktopLyricStateChanged(callback: Callback<DesktopLyricState>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="ondesktoplyricvisibilitychanged"></a>
 ## onDesktopLyricVisibilityChanged
 
 ```TypeScript
@@ -2396,7 +2319,6 @@ onDesktopLyricVisibilityChanged(callback: Callback<boolean>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="onfastforward"></a>
 ## onFastForward
 
 ```TypeScript
@@ -2426,7 +2348,6 @@ onFastForward(callback: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="onplay"></a>
 ## onPlay
 
 ```TypeScript
@@ -2456,7 +2377,6 @@ onPlay(callback: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="onplaynext"></a>
 ## onPlayNext
 
 ```TypeScript
@@ -2486,7 +2406,6 @@ onPlayNext(callback: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="onplayprevious"></a>
 ## onPlayPrevious
 
 ```TypeScript
@@ -2518,7 +2437,6 @@ onPlayPrevious(callback: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="onrewind"></a>
 ## onRewind
 
 ```TypeScript
@@ -2548,7 +2466,6 @@ onRewind(callback: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="sendcustomdata"></a>
 ## sendCustomData
 
 ```TypeScript
@@ -2584,7 +2501,6 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavcallstate"></a>
 ## setAVCallState
 
 ```TypeScript
@@ -2614,7 +2530,6 @@ setAVCallState(state: AVCallState, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavcallstate-1"></a>
 ## setAVCallState
 
 ```TypeScript
@@ -2649,7 +2564,6 @@ setAVCallState(state: AVCallState): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavmetadata"></a>
 ## setAVMetadata
 
 ```TypeScript
@@ -2679,7 +2593,6 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavmetadata-1"></a>
 ## setAVMetadata
 
 ```TypeScript
@@ -2716,7 +2629,6 @@ setAVMetadata(data: AVMetadata): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavplaybackstate"></a>
 ## setAVPlaybackState
 
 ```TypeScript
@@ -2746,7 +2658,6 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavplaybackstate-1"></a>
 ## setAVPlaybackState
 
 ```TypeScript
@@ -2783,7 +2694,6 @@ setAVPlaybackState(state: AVPlaybackState): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavqueueitems"></a>
 ## setAVQueueItems
 
 ```TypeScript
@@ -2813,7 +2723,6 @@ setAVQueueItems(items: Array<AVQueueItem>, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavqueueitems-1"></a>
 ## setAVQueueItems
 
 ```TypeScript
@@ -2850,7 +2759,6 @@ setAVQueueItems(items: Array<AVQueueItem>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavqueuetitle"></a>
 ## setAVQueueTitle
 
 ```TypeScript
@@ -2880,7 +2788,6 @@ setAVQueueTitle(title: string, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setavqueuetitle-1"></a>
 ## setAVQueueTitle
 
 ```TypeScript
@@ -2917,7 +2824,6 @@ setAVQueueTitle(title: string): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setbackgroundplaymode"></a>
 ## setBackgroundPlayMode
 
 ```TypeScript
@@ -2954,7 +2860,6 @@ setBackgroundPlayMode(mode: BackgroundPlayMode): Promise<void>
 | --- | --- |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setcallmetadata"></a>
 ## setCallMetadata
 
 ```TypeScript
@@ -2984,7 +2889,6 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setcallmetadata-1"></a>
 ## setCallMetadata
 
 ```TypeScript
@@ -3019,7 +2923,6 @@ setCallMetadata(data: CallMetadata): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setdesktoplyricstate"></a>
 ## setDesktopLyricState
 
 ```TypeScript
@@ -3057,7 +2960,6 @@ setDesktopLyricState(state: DesktopLyricState): Promise<void>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
-<a id="setdesktoplyricvisible"></a>
 ## setDesktopLyricVisible
 
 ```TypeScript
@@ -3095,7 +2997,6 @@ setDesktopLyricVisible(visible: boolean): Promise<void>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
-<a id="setextras"></a>
 ## setExtras
 
 ```TypeScript
@@ -3125,7 +3026,6 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setextras-1"></a>
 ## setExtras
 
 ```TypeScript
@@ -3162,7 +3062,6 @@ setExtras(extras: {[key: string]: Object}): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setlaunchability"></a>
 ## setLaunchAbility
 
 ```TypeScript
@@ -3171,7 +3070,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback<void>): void
 
 设置一个WantAgent用于拉起会话的Ability。结果通过callback异步回调方式返回。
 
-通过点击播控组件可以跳转到对应的播放界面，默认跳转到[avSession.createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession-1)接口传入的context所属的UIAbility界面。
+通过点击播控组件可以跳转到对应的播放界面，默认跳转到[avSession.createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession)接口传入的context所属的UIAbility界面。
 
 **起始版本：** 10
 
@@ -3194,7 +3093,6 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setlaunchability-1"></a>
 ## setLaunchAbility
 
 ```TypeScript
@@ -3203,7 +3101,7 @@ setLaunchAbility(ability: WantAgent): Promise<void>
 
 设置一个WantAgent用于拉起会话的Ability。结果通过Promise异步回调方式返回。
 
-通过点击播控组件可以跳转到对应的播放界面，默认跳转到[avSession.createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession-1)接口传入的context所属的UIAbility界面。
+通过点击播控组件可以跳转到对应的播放界面，默认跳转到[avSession.createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession)接口传入的context所属的UIAbility界面。
 
 **起始版本：** 10
 
@@ -3233,7 +3131,6 @@ setLaunchAbility(ability: WantAgent): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setmediacentercontroltype"></a>
 ## setMediaCenterControlType
 
 ```TypeScript
@@ -3242,7 +3139,7 @@ setMediaCenterControlType(type: Array<AVMediaCenterControlType>): Promise<void>
 
 设置应用支持的控制类型列表。使用Promise异步回调。
 
-设置优先显示在播控中心的控制类型列表，若未设置控制类型优先级，播控中心将根据[AVSessionType](arkts-avsession-avsession-avsessiontype-t.md)显示，具体显示规则参考[创建不同类型的会话](docroot://media/avsession/avsession-access-scene.md#创建不同类型的会话)。
+设置优先显示在播控中心的控制类型列表，若未设置控制类型优先级，播控中心将根据[AVSessionType](arkts-avsession-avsession-avsessiontype-t.md)显示，具体显示规则参考[创建不同类型的会话](../../../media/avsession/avsession-access-scene.md#创建不同类型的会话)。
 
 **起始版本：** 26.0.0
 
@@ -3271,7 +3168,6 @@ setMediaCenterControlType(type: Array<AVMediaCenterControlType>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setsupportedloopmodes"></a>
 ## setSupportedLoopModes
 
 ```TypeScript
@@ -3309,7 +3205,6 @@ setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="setsupportedplayspeeds"></a>
 ## setSupportedPlaySpeeds
 
 ```TypeScript
@@ -3347,7 +3242,6 @@ setSupportedPlaySpeeds(speeds: Array<number>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-<a id="stopcasting"></a>
 ## stopCasting
 
 ```TypeScript
@@ -3374,7 +3268,6 @@ stopCasting(callback: AsyncCallback<void>): void
 | --- | --- |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
-<a id="stopcasting-1"></a>
 ## stopCasting
 
 ```TypeScript

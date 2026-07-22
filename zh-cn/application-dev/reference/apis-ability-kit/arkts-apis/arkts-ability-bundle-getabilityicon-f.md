@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getabilityicon"></a>
 ## getAbilityIcon
 
 ```TypeScript
@@ -38,7 +37,6 @@ function getAbilityIcon(bundleName: string, abilityName: string, callback: Async
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 程序启动作为入参的回调函数，返回指定[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)。 |
 
 
-<a id="getabilityicon-1"></a>
 ## getAbilityIcon
 
 ```TypeScript

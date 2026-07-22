@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="closeselectionmenu"></a>
 ## closeSelectionMenu
 
 ```TypeScript
@@ -27,7 +26,6 @@ closeSelectionMenu(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getlayoutmanager"></a>
 ## getLayoutManager
 
 ```TypeScript
@@ -52,7 +50,6 @@ getLayoutManager(): LayoutManager
 | --- | --- |
 | [LayoutManager](arkts-arkui-layoutmanager-i.md) | 布局管理器对象。 |
 
-<a id="setselection"></a>
 ## setSelection
 
 ```TypeScript

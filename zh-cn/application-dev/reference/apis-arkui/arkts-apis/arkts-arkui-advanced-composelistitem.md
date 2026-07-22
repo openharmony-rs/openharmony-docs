@@ -22,7 +22,7 @@ import { OperateCheck, OperateIcon, ComposeListItem, OperateItem, IconType, Cont
 
 | 名称 | 说明 |
 | --- | --- |
-| [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md) | 该组件用于展示一系列宽度相同的列表项，适用于展示连续、多行的同类数据组合（如图片与文本）。  @internal/component/ets/common}和[通用事件](../../apis-arkui/arkts-components/arkts-arkui-common-attribute.md)，  > 编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ComposeListItem本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议  > ComposeListItem设置通用属性和通用事件。 |
+| [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md) | 该组件用于展示一系列宽度相同的列表项，适用于展示连续、多行的同类数据组合（如图片与文本）。 @internal/component/ets/common}和[通用事件](../../apis-arkui/arkts-components/arkts-arkui-common-attribute.md)，  > 编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ComposeListItem本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议  > ComposeListItem设置通用属性和通用事件。 |
 
 ### 枚举
 

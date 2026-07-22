@@ -6,7 +6,6 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
-<a id="getautounlockafterreboot"></a>
 ## getAutoUnlockAfterReboot
 
 ```TypeScript

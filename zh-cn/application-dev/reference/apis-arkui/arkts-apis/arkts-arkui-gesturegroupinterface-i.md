@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -38,7 +37,6 @@
 | --- | --- |
 | [GestureGroupInterface](arkts-arkui-gesturegroupinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="oncancel"></a>
 ## onCancel
 
 ```TypeScript

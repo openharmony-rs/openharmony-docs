@@ -6,7 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="terminatemission"></a>
 ## terminateMission
 
 ```TypeScript
@@ -29,7 +28,7 @@ function terminateMission(missionId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionId | number | 是 | 任务ID，可通过[getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getmissioninfos-1)获取。 |
+| missionId | number | 是 | 任务ID，可通过[getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getmissioninfos)获取。 |
 
 **返回值：**
 

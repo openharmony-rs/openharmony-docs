@@ -16,7 +16,6 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="oncontinuoustaskstart"></a>
 ## onContinuousTaskStart
 
 ```TypeScript
@@ -60,7 +59,6 @@ let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = 
 
 ```
 
-<a id="oncontinuoustaskstop"></a>
 ## onContinuousTaskStop
 
 ```TypeScript
@@ -104,7 +102,6 @@ let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = 
 
 ```
 
-<a id="oncontinuoustaskupdate"></a>
 ## onContinuousTaskUpdate
 
 ```TypeScript

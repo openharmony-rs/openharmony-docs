@@ -14,7 +14,6 @@ EnvironmentCallback模块提供对系统环境变化监听回调的能力。
 import { EnvironmentCallback } from '@kit.AbilityKit';
 ```
 
-<a id="onconfigurationupdated"></a>
 ## onConfigurationUpdated
 
 ```TypeScript
@@ -43,7 +42,6 @@ onConfigurationUpdated(config: Configuration): void
 
 参见[EnvironmentCallback使用](#environmentcallback使用)。
 
-<a id="onmemorylevel"></a>
 ## onMemoryLevel
 
 ```TypeScript

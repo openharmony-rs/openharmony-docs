@@ -1,6 +1,6 @@
 # UploadTask
 
-上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)获取，callback形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)获取。
+上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)获取，callback形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)获取。
 
 **起始版本：** 6
 
@@ -14,7 +14,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -22,7 +21,6 @@ delete(callback: AsyncCallback<boolean>): void
 ```
 
 移除上传的任务，使用callback异步回调。
-
 > **说明：**  
 >  
 > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
@@ -60,7 +58,6 @@ uploadTask.delete((err: BusinessError, result: boolean) => {
 
 ```
 
-<a id="delete-1"></a>
 ## delete
 
 ```TypeScript
@@ -68,7 +65,6 @@ delete(): Promise<boolean>
 ```
 
 移除上传的任务，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
@@ -104,7 +100,6 @@ uploadTask.delete().then((result: boolean) => {
 
 ```
 
-<a id="off"></a>
 ## off('progress')
 
 ```TypeScript
@@ -150,7 +145,6 @@ uploadTask.off('progress');
 
 ```
 
-<a id="off-1"></a>
 ## off('headerReceive')
 
 ```TypeScript
@@ -196,7 +190,6 @@ uploadTask.off('headerReceive');
 
 ```
 
-<a id="off-2"></a>
 ## off('complete' | 'fail')
 
 ```TypeScript
@@ -267,7 +260,6 @@ uploadTask.off('fail');
 
 ```
 
-<a id="off-3"></a>
 ## off('complete' | 'fail')
 
 ```TypeScript
@@ -338,7 +330,6 @@ uploadTask.off('fail');
 
 ```
 
-<a id="on"></a>
 ## on('progress')
 
 ```TypeScript
@@ -346,7 +337,6 @@ on(type: 'progress', callback: (uploadedSize: number, totalSize: number) => void
 ```
 
 订阅上传任务进度事件，使用callback异步回调。
-
 > **说明：**  
 >  
 > 应用处于后台时，为满足功耗性能要求，不支持调用此接口进行回调。
@@ -380,7 +370,6 @@ uploadTask.on('progress', upProgressCallback);
 
 ```
 
-<a id="on-1"></a>
 ## on('headerReceive')
 
 ```TypeScript
@@ -418,7 +407,6 @@ uploadTask.on('headerReceive', headerCallback);
 
 ```
 
-<a id="on-2"></a>
 ## on('complete' | 'fail')
 
 ```TypeScript
@@ -465,7 +453,6 @@ uploadTask.on('fail', upFailCallback);
 
 ```
 
-<a id="on-3"></a>
 ## on('complete' | 'fail')
 
 ```TypeScript
@@ -512,7 +499,6 @@ uploadTask.on('fail', upFailCallback);
 
 ```
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -520,17 +506,16 @@ remove(callback: AsyncCallback<boolean>): void
 ```
 
 移除上传的任务，使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [delete](arkts-basicservices-request-uploadtask-i.md#delete-1)替代。
+> [delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [delete(callback:](arkts-basicservices-request-uploadtask-i.md#delete-1)
+**替代接口：** [delete(callback:](arkts-basicservices-request-uploadtask-i.md#delete)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -565,7 +550,6 @@ uploadTask.remove((err: BusinessError, result: boolean) => {
 
 ```
 
-<a id="remove-1"></a>
 ## remove
 
 ```TypeScript
@@ -573,16 +557,15 @@ remove(): Promise<boolean>
 ```
 
 移除上传的任务，使用Promise异步回调。
-
 > **说明：**  
 >  
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](arkts-basicservices-request-uploadtask-i.md#delete-1)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [delete()](arkts-basicservices-request-uploadtask-i.md#delete-1)
+**替代接口：** [delete()](arkts-basicservices-request-uploadtask-i.md#delete)
 
 **需要权限：** ohos.permission.INTERNET
 

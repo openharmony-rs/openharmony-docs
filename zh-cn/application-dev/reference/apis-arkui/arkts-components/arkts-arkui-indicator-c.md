@@ -1,6 +1,6 @@
 # Indicator
 
-设置导航点距离Swiper组件距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。若想实现完全贴底，可以使用[IndicatorComponent](docroot://reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md#indicatorcomponent)组件，更灵活地调整位置。
+设置导航点距离Swiper组件距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。若想实现完全贴底，可以使用[IndicatorComponent](../../../reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md#indicatorcomponent)组件，更灵活地调整位置。
 
 **起始版本：** 10
 
@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="bottom"></a>
 ## bottom
 
 ```TypeScript
@@ -41,7 +40,6 @@ bottom(value: Length): T
 | --- | --- |
 | T | 返回当前导航点指示器。 |
 
-<a id="bottom-1"></a>
 ## bottom
 
 ```TypeScript
@@ -67,7 +65,7 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bottom | [LengthMetrics](../arkts-apis/arkts-arkui-lengthmetrics-t.md) \| Length | 是 | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。 |
-| ignoreSize | boolean | 是 | 设置是否忽略导航点本身大小，默认false。<br/>设为true时可以将导航点更靠近Swiper底部，使用方法可以参考[示例9演示导航点space与bottom](docroot://reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例9演示导航点space与bottom)。<br/> 说明：[数字导航点](arkts-arkui-digitindicator-c.md)ignoreSize属性，不生效的场景如下：<br/> • 当[vertical](SwiperAttribute#vertical) 设置为false，且bottom > 0。<br/> • 当[vertical](SwiperAttribute#vertical) 设置为true时：<br/>1、bottom > 0 时。<br/> 2、bottom设为undefined。 <br/> 3、isSidebarMiddle设置为false时。 |
+| ignoreSize | boolean | 是 | 设置是否忽略导航点本身大小，默认false。<br/>设为true时可以将导航点更靠近Swiper底部，使用方法可以参考[示例9演示导航点space与bottom](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例9演示导航点space与bottom)。<br/> 说明：[数字导航点](arkts-arkui-digitindicator-c.md)ignoreSize属性，不生效的场景如下：<br/> • 当[vertical](SwiperAttribute#vertical) 设置为false，且bottom > 0。<br/> • 当[vertical](SwiperAttribute#vertical) 设置为true时：<br/>1、bottom > 0 时。<br/> 2、bottom设为undefined。 <br/> 3、isSidebarMiddle设置为false时。 |
 
 **返回值：**
 
@@ -75,7 +73,6 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 | --- | --- |
 | T | 返回当前导航点指示器。 |
 
-<a id="digit"></a>
 ## digit
 
 ```TypeScript
@@ -102,7 +99,6 @@ static digit(): DigitIndicator
 | --- | --- |
 | [DigitIndicator](arkts-arkui-digitindicator-c.md) | 数字指示器。 |
 
-<a id="dot"></a>
 ## dot
 
 ```TypeScript
@@ -129,7 +125,6 @@ static dot(): DotIndicator
 | --- | --- |
 | [DotIndicator](arkts-arkui-dotindicator-c.md) | 圆点指示器。 |
 
-<a id="end"></a>
 ## end
 
 ```TypeScript
@@ -162,7 +157,6 @@ end(value: LengthMetrics): T
 | --- | --- |
 | T | 返回当前导航点指示器。 |
 
-<a id="left"></a>
 ## left
 
 ```TypeScript
@@ -195,7 +189,6 @@ left(value: Length): T
 | --- | --- |
 | T | 返回当前导航点指示器。 |
 
-<a id="right"></a>
 ## right
 
 ```TypeScript
@@ -228,7 +221,6 @@ right(value: Length): T
 | --- | --- |
 | T | 返回当前导航点指示器。 |
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -261,7 +253,6 @@ start(value: LengthMetrics): T
 | --- | --- |
 | T | 返回当前导航点指示器。 |
 
-<a id="top"></a>
 ## top
 
 ```TypeScript

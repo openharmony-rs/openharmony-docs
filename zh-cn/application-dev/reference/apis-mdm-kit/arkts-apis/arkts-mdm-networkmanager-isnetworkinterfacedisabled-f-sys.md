@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="isnetworkinterfacedisabled"></a>
 ## isNetworkInterfaceDisabled
 
 ```TypeScript
@@ -69,7 +68,6 @@ networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0', (err, result) => {
 ```
 
 
-<a id="isnetworkinterfacedisabled-1"></a>
 ## isNetworkInterfaceDisabled
 
 ```TypeScript
@@ -82,7 +80,7 @@ function isNetworkInterfaceDisabled(admin: Want, networkInterface: string): Prom
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md#isnetworkinterfacedisabledsync-1)
+**替代接口：** [isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md#isnetworkinterfacedisabledsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 

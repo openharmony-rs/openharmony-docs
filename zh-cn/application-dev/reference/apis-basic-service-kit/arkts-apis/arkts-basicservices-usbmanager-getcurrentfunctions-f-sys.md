@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="getcurrentfunctions"></a>
 ## getCurrentFunctions
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getCurrentFunctions(): FunctionType
 
 **废弃版本：** 12
 
-**替代接口：** [getDeviceFunctions()](arkts-basicservices-usbmanager-getdevicefunctions-f-sys.md#getdevicefunctions-1)
+**替代接口：** [getDeviceFunctions()](arkts-basicservices-usbmanager-getdevicefunctions-f-sys.md#getdevicefunctions)
 
 <!--Device-usbManager-function getCurrentFunctions(): FunctionType--><!--Device-usbManager-function getCurrentFunctions(): FunctionType-End-->
 

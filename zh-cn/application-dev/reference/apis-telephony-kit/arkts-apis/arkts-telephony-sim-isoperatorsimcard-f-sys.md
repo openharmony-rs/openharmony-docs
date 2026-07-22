@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="isoperatorsimcard"></a>
 ## isOperatorSimCard
 
 ```TypeScript

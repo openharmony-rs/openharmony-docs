@@ -47,7 +47,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | [Constants](arkts-arkdata-distributedkvstore-constants-i.md) | 分布式键值数据库常量。 |
 | [DeviceKVStore](arkts-arkdata-distributedkvstore-devicekvstore-i.md) | 设备协同数据库，继承自SingleKVStore，提供查询数据和端端同步数据的方法，可以使用SingleKVStore的方法例如：put、putBatch等。  设备协同数据库，以设备维度对数据进行区分，每台设备仅能写入和修改本设备的数据，其它设备的数据对其是只读的，无法修改其它设备的数据。  比如，可以使用设备协同数据库实现设备间的图片分享，可以查看其他设备的图片，但无法修改和删除其他设备的图片。  在调用DeviceKVStore的方法前，需要先通过[getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))构建一个DeviceKVStore实例。 |
 | [Entry](arkts-arkdata-distributedkvstore-entry-i.md) | 存储在数据库中的键值对。 |
-| [KVManager](arkts-arkdata-distributedkvstore-kvmanager-i.md) | 分布式键值数据库管理实例，用于获取分布式键值数据库的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager-1)构建一个KVManager实例。 |
+| [KVManager](arkts-arkdata-distributedkvstore-kvmanager-i.md) | 分布式键值数据库管理实例，用于获取分布式键值数据库的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager)构建一个KVManager实例。 |
 | [KVManagerConfig](arkts-arkdata-distributedkvstore-kvmanagerconfig-i.md) | 提供KVManager实例的配置信息，包括调用方的包名和应用的上下文。 |
 | [KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md) | 提供获取数据库结果集的相关方法，包括查询和移动数据读取位置等。同时允许打开的结果集的最大数量为8个。  KVStoreResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。  在调用KVStoreResultSet的方法前，需要先通过[getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))构建一个SingleKVStore或者DeviceKVStore实例。 |
 | [Options](arkts-arkdata-distributedkvstore-options-i.md) | 用于提供创建数据库的配置信息。 |

@@ -18,7 +18,6 @@
 import { BackRouterOptions, DisableAlertBeforeBackPageOptions, RouterOptions, RouterState, EnableAlertBeforeBackPageOptions } from '@kit.ArkUI';
 ```
 
-<a id="back"></a>
 ## back
 
 ```TypeScript
@@ -43,7 +42,6 @@ static back(options?: BackRouterOptions): void
 | --- | --- | --- | --- |
 | options | [BackRouterOptions](arkts-arkui-router-backrouteroptions-i.md) | 否 | 详细请参考BackRouterOptions。 |
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -62,7 +60,6 @@ static clear(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="disablealertbeforebackpage"></a>
 ## disableAlertBeforeBackPage
 
 ```TypeScript
@@ -87,7 +84,6 @@ static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): 
 | --- | --- | --- | --- |
 | options | [DisableAlertBeforeBackPageOptions](arkts-arkui-router-disablealertbeforebackpageoptions-i.md) | 否 | 详细请参见DisableAlertBeforeBackPageOptions。 |
 
-<a id="enablealertbeforebackpage"></a>
 ## enableAlertBeforeBackPage
 
 ```TypeScript
@@ -112,7 +108,6 @@ static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): voi
 | --- | --- | --- | --- |
 | options | [EnableAlertBeforeBackPageOptions](arkts-arkui-router-enablealertbeforebackpageoptions-i.md) | 是 | 详细请参见EnableAlertBeforeBackPageOptions。 |
 
-<a id="getlength"></a>
 ## getLength
 
 ```TypeScript
@@ -137,7 +132,6 @@ static getLength(): string
 | --- | --- |
 | string | 页面数量，页面栈支持最大数值是32。 |
 
-<a id="getparams"></a>
 ## getParams
 
 ```TypeScript
@@ -162,7 +156,6 @@ static getParams(): ParamsInterface
 | --- | --- |
 | [ParamsInterface](arkts-arkui-paramsinterface-t.md) | 详细请参见ParamsInterface。 |
 
-<a id="getstate"></a>
 ## getState
 
 ```TypeScript
@@ -187,7 +180,6 @@ static getState(): RouterState
 | --- | --- |
 | [RouterState](arkts-arkui-router-routerstate-i.md) | 详细请参见RouterState。 |
 
-<a id="push"></a>
 ## push
 
 ```TypeScript
@@ -195,7 +187,6 @@ static push(options: RouterOptions): void
 ```
 
 跳转到应用内的指定页面。
-
 > **说明：**  
 >  
 > 页面路由栈支持的最大Page数量为32。
@@ -216,7 +207,6 @@ static push(options: RouterOptions): void
 | --- | --- | --- | --- |
 | options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | 是 | 页面路由参数，详细请参考RouterOptions。 |
 
-<a id="replace"></a>
 ## replace
 
 ```TypeScript

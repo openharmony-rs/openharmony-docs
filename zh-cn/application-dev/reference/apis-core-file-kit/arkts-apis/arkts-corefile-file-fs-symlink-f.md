@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="symlink"></a>
 ## symlink
 
 ```TypeScript
@@ -14,7 +13,6 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 ```
 
 基于文件路径创建符号链接，使用promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 11开始，不支持三方应用使用。
@@ -58,7 +56,6 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="symlink-1"></a>
 ## symlink
 
 ```TypeScript
@@ -66,7 +63,6 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 ```
 
 基于文件路径创建符号链接，使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 11开始，不支持三方应用使用。

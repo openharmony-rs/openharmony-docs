@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getrecoverableapplicationinfo"></a>
 ## getRecoverableApplicationInfo
 
 ```TypeScript
@@ -61,7 +60,6 @@ try {
 ```
 
 
-<a id="getrecoverableapplicationinfo-1"></a>
 ## getRecoverableApplicationInfo
 
 ```TypeScript

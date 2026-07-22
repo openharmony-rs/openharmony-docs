@@ -10,7 +10,6 @@ NodeContent是节点内容的实体封装。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="addframenode"></a>
 ## addFrameNode
 
 ```TypeScript
@@ -41,7 +40,6 @@ addFrameNode(node: FrameNode): void
 | --- | --- |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message.For example: "The parameter 'node' is invalid: it cannot be adopted."<br>**适用版本：** 22+ |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -60,7 +58,6 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="removeframenode"></a>
 ## removeFrameNode
 
 ```TypeScript

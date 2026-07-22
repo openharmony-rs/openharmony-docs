@@ -8,7 +8,6 @@ Defines the attribute modifier.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="applydisabledattribute"></a>
 ## applyDisabledAttribute
 
 ```TypeScript
@@ -33,7 +32,6 @@ Defines the disabled update attribute function.
 | --- | --- | --- | --- |
 | instance | T | 是 |  |
 
-<a id="applyfocusedattribute"></a>
 ## applyFocusedAttribute
 
 ```TypeScript
@@ -58,7 +56,6 @@ Defines the focused update attribute function.
 | --- | --- | --- | --- |
 | instance | T | 是 |  |
 
-<a id="applyhoveredattribute"></a>
 ## applyHoveredAttribute
 
 ```TypeScript
@@ -83,7 +80,6 @@ applyHoveredAttribute?(instance: T) : void
 | --- | --- | --- | --- |
 | instance | T | 是 |  |
 
-<a id="applynormalattribute"></a>
 ## applyNormalAttribute
 
 ```TypeScript
@@ -108,7 +104,6 @@ Defines the normal update attribute function.
 | --- | --- | --- | --- |
 | instance | T | 是 |  |
 
-<a id="applypressedattribute"></a>
 ## applyPressedAttribute
 
 ```TypeScript
@@ -133,7 +128,6 @@ Defines the pressed update attribute function.
 | --- | --- | --- | --- |
 | instance | T | 是 |  |
 
-<a id="applyselectedattribute"></a>
 ## applySelectedAttribute
 
 ```TypeScript

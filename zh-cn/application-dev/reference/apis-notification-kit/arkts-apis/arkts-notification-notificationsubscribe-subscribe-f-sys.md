@@ -6,7 +6,6 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-<a id="subscribe"></a>
 ## subscribe
 
 ```TypeScript
@@ -19,7 +18,7 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification-1)
+**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -71,7 +70,6 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
 
-<a id="subscribe-1"></a>
 ## subscribe
 
 ```TypeScript
@@ -88,19 +86,11 @@ function subscribe(
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification-1)
+**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notificationSubscribe-function subscribe(
-    subscriber: NotificationSubscriber,
-    info: NotificationSubscribeInfo,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-notificationSubscribe-function subscribe(
-    subscriber: NotificationSubscriber,
-    info: NotificationSubscribeInfo,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-notificationSubscribe-function subscribe(    subscriber: NotificationSubscriber,    info: NotificationSubscribeInfo,    callback: AsyncCallback<void>  ): void--><!--Device-notificationSubscribe-function subscribe(    subscriber: NotificationSubscriber,    info: NotificationSubscribeInfo,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -154,7 +144,6 @@ notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
 
 
-<a id="subscribe-2"></a>
 ## subscribe
 
 ```TypeScript
@@ -167,7 +156,7 @@ function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscr
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification-1)
+**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

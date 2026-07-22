@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="addiccdiallingnumbers"></a>
 ## addIccDiallingNumbers
 
 ```TypeScript
@@ -66,7 +65,6 @@ sim.addIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInf
 ```
 
 
-<a id="addiccdiallingnumbers-1"></a>
 ## addIccDiallingNumbers
 
 ```TypeScript

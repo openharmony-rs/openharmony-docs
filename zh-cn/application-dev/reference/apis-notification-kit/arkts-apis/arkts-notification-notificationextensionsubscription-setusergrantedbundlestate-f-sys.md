@@ -6,7 +6,6 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
-<a id="setusergrantedbundlestate"></a>
 ## setUserGrantedBundleState
 
 ```TypeScript
@@ -20,9 +19,7 @@ function setUserGrantedBundleState(targetBundle: BundleOption,
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notificationExtensionSubscription-function setUserGrantedBundleState(targetBundle: BundleOption,
-    enabledBundles: BundleOption[], enabled: boolean): Promise<void>--><!--Device-notificationExtensionSubscription-function setUserGrantedBundleState(targetBundle: BundleOption,
-    enabledBundles: BundleOption[], enabled: boolean): Promise<void>-End-->
+<!--Device-notificationExtensionSubscription-function setUserGrantedBundleState(targetBundle: BundleOption,    enabledBundles: BundleOption[], enabled: boolean): Promise<void>--><!--Device-notificationExtensionSubscription-function setUserGrantedBundleState(targetBundle: BundleOption,    enabledBundles: BundleOption[], enabled: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

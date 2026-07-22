@@ -6,7 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="toggleshownstateforallappwindows"></a>
 ## toggleShownStateForAllAppWindows
 
 ```TypeScript
@@ -54,7 +53,6 @@ window.toggleShownStateForAllAppWindows((err: BusinessError) => {
 ```
 
 
-<a id="toggleshownstateforallappwindows-1"></a>
 ## toggleShownStateForAllAppWindows
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="getsupportedmodes"></a>
 ## getSupportedModes
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getSupportedModes(portId: number): PortModeType
 
 **废弃版本：** 12
 
-**替代接口：** [getPortSupportModes(portId:](arkts-basicservices-usbmanager-getportsupportmodes-f-sys.md#getportsupportmodes-1)
+**替代接口：** [getPortSupportModes(portId:](arkts-basicservices-usbmanager-getportsupportmodes-f-sys.md#getportsupportmodes)
 
 <!--Device-usbManager-function getSupportedModes(portId: number): PortModeType--><!--Device-usbManager-function getSupportedModes(portId: number): PortModeType-End-->
 

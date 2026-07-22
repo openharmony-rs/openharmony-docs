@@ -6,7 +6,6 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
-<a id="iswifiactive"></a>
 ## isWifiActive
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isWifiActive(admin: Want, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#iswifiactivesync-1)
+**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#iswifiactivesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -71,7 +70,6 @@ wifiManager.isWifiActive(wantTemp, (err, result) => {
 ```
 
 
-<a id="iswifiactive-1"></a>
 ## isWifiActive
 
 ```TypeScript
@@ -84,7 +82,7 @@ function isWifiActive(admin: Want): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#iswifiactivesync-1)
+**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#iswifiactivesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 

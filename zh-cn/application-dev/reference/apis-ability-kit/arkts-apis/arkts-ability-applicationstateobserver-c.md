@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-<a id="onabilitystatechanged"></a>
 ## onAbilityStateChanged
 
 ```TypeScript
@@ -29,7 +28,6 @@ Ability状态发生变化时执行的回调函数。
 | --- | --- | --- | --- |
 | abilityStateData | [AbilityStateData](arkts-ability-abilitystatedata-c.md) | 是 | Ability状态信息。 |
 
-<a id="onappstarted"></a>
 ## onAppStarted
 
 ```TypeScript
@@ -50,7 +48,6 @@ onAppStarted(appStateData: AppStateData): void
 | --- | --- | --- | --- |
 | appStateData | [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | 是 | 应用状态信息。 |
 
-<a id="onappstopped"></a>
 ## onAppStopped
 
 ```TypeScript
@@ -71,7 +68,6 @@ onAppStopped(appStateData: AppStateData): void
 | --- | --- | --- | --- |
 | appStateData | [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | 是 | 应用状态信息。 |
 
-<a id="onforegroundapplicationchanged"></a>
 ## onForegroundApplicationChanged
 
 ```TypeScript
@@ -92,7 +88,6 @@ onForegroundApplicationChanged(appStateData: AppStateData): void
 | --- | --- | --- | --- |
 | appStateData | [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | 是 | 应用状态信息。 |
 
-<a id="onprocesscreated"></a>
 ## onProcessCreated
 
 ```TypeScript
@@ -113,7 +108,6 @@ onProcessCreated(processData: ProcessData): void
 | --- | --- | --- | --- |
 | processData | [ProcessData](arkts-ability-processdata-c.md) | 是 | 进程数据信息。 |
 
-<a id="onprocessdied"></a>
 ## onProcessDied
 
 ```TypeScript
@@ -134,7 +128,6 @@ onProcessDied(processData: ProcessData): void
 | --- | --- | --- | --- |
 | processData | [ProcessData](arkts-ability-processdata-c.md) | 是 | 进程数据信息。 |
 
-<a id="onprocessstatechanged"></a>
 ## onProcessStateChanged
 
 ```TypeScript

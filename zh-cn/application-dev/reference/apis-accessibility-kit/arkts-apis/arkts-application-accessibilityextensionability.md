@@ -40,15 +40,15 @@ import { Rect, TouchPosition, AccessibilityVirtualNode, ElementAttributeKeys, Fo
 
 | 名称 | 说明 |
 | --- | --- |
-| [AccessibilityElement](arkts-accessibility-accessibilityelement-t.md) | 表示无障碍节点元素，请参考[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)。 |
-| [AccessibilityExtensionContext](arkts-accessibility-accessibilityextensioncontext-t.md) | 表示辅助功能扩展的上下文环境，请参考[AccessibilityExtensionContext](arkts-accessibility-accessibilityextensioncontext-c.md)。 |
-| [ElementAttributeKeys](arkts-accessibility-elementattributekeys-t.md) | 表示[ElementAttributeValues](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i.md)的属性名称。 |
-| [ElementAttributeValues](arkts-accessibility-elementattributevalues-t.md) | 表示节点元素具备的属性名称及属性值类型信息，请参考[ElementAttributeValues](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i.md)。 |
+| [AccessibilityElement](arkts-accessibility-accessibilityelement-t.md) | 表示无障碍节点元素，请参考[AccessibilityElement](arkts-accessibility-accessibilityelement-t.md)。 |
+| [AccessibilityExtensionContext](arkts-accessibility-accessibilityextensioncontext-t.md) | 表示辅助功能扩展的上下文环境，请参考[AccessibilityExtensionContext](arkts-accessibility-accessibilityextensioncontext-t.md)。 |
+| [ElementAttributeKeys](arkts-accessibility-elementattributekeys-t.md) | 表示[ElementAttributeValues](arkts-accessibility-elementattributevalues-t.md)的属性名称。 |
+| [ElementAttributeValues](arkts-accessibility-elementattributevalues-t.md) | 表示节点元素具备的属性名称及属性值类型信息，请参考[ElementAttributeValues](arkts-accessibility-elementattributevalues-t.md)。 |
 | [FocusDirection](arkts-accessibility-focusdirection-t.md) | 表示查询下一焦点元素的方向，请参考[FocusDirection](arkts-accessibility-focusdirection-t.md)。 |
 | [FocusType](arkts-accessibility-focustype-t.md) | 表示查询焦点元素的类型，请参考[FocusType](arkts-accessibility-focustype-t.md)。 |
 | [GestureType](arkts-accessibility-gesturetype-t.md) | 手势事件类型。 |
 | [PageUpdateType](arkts-accessibility-pageupdatetype-t.md) | 页面刷新类型。 |
-| [Rect](arkts-accessibility-rect-t.md) | 表示矩形区域，请参考[Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)。 |
+| [Rect](arkts-accessibility-rect-t.md) | 表示矩形区域，请参考[Rect](arkts-accessibility-rect-t.md)。 |
 | [TouchGuideType](arkts-accessibility-touchguidetype-t.md) | 触摸浏览事件类型。 |
 | [WindowType](arkts-accessibility-windowtype-t.md) | 表示窗口的类型，请参考[WindowType](arkts-accessibility-windowtype-t.md)。 |
 

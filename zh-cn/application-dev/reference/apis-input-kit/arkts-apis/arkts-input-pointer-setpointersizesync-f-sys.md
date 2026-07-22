@@ -6,7 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="setpointersizesync"></a>
 ## setPointerSizeSync
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { screenshot } from '@kit.ArkUI';
 ```
 
-<a id="capture"></a>
 ## capture
 
 ```TypeScript
@@ -15,7 +14,7 @@ function capture(options?: CaptureOption): Promise<image.PixelMap>
 
 获取屏幕全屏截图，使用Promise异步回调。
 
-此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](arkts-arkui-screenshot-pick-f.md#pick-1)接口可实现区域截屏。
+此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](arkts-arkui-screenshot-pick-f.md#pick)接口可实现区域截屏。
 
 **起始版本：** 14
 

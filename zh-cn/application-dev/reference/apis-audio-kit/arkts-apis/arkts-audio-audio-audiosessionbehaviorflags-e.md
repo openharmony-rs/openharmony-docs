@@ -32,7 +32,7 @@ MUTE_WHEN_INTERRUPTED = 0x00000002
 
 当系统需要停止或暂停音频流时，执行强制静音替代。
 
-调用[setAudioSessionBehavior](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionbehavior-1)接口配置该行为时，必须同步调用[setAudioSessionScene](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionscene-1)接口，否则配置将无法生效。
+调用[setAudioSessionBehavior](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionbehavior)接口配置该行为时，必须同步调用[setAudioSessionScene](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionscene)接口，否则配置将无法生效。
 
 在音频会话场景下，当音频流静音或恢复时，应用将分别收到[AudioSessionStateChangeHint](arkts-audio-audio-audiosessionstatechangehint-e.md).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE与[AudioSessionStateChangeHint](arkts-audio-audio-audiosessionstatechangehint-e.md).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE的通知。
 
@@ -56,7 +56,7 @@ PAUSE_WHEN_INTERRUPTED = 0x00000004
 
 当系统需要停止音频流时，执行暂停替代。
 
-调用[setAudioSessionBehavior](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionbehavior-1)接口配置该行为时，必须同步调用[setAudioSessionScene](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionscene-1)接口，否则配置将无法生效。
+调用[setAudioSessionBehavior](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionbehavior)接口配置该行为时，必须同步调用[setAudioSessionScene](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionscene)接口，否则配置将无法生效。
 
 在音频会话场景下，当音频流暂停或恢复时，应用将分别收到[AudioSessionStateChangeHint](arkts-audio-audio-audiosessionstatechangehint-e.md).AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE与[AudioSessionStateChangeHint](arkts-audio-audio-audiosessionstatechangehint-e.md).AUDIO_SESSION_STATE_CHANGE_HINT_RESUME的通知。
 

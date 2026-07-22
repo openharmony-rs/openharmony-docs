@@ -1,7 +1,6 @@
 # SelectionExtensionAbility（系统接口）
 
 本模块提供划词扩展功能，用于用户通过鼠标、触控板等方式选择文本后的搜索、翻译等场景。
-
 > **说明：**  
 > - 本模块仅支持PC/2in1设备。
 
@@ -19,7 +18,6 @@
 import { SelectionExtensionAbility } from '@kit.BasicServicesKit';
 ```
 
-<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -86,7 +84,6 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 
 ```
 
-<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript

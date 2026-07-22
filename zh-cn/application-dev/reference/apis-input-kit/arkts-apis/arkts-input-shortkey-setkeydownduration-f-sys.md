@@ -6,7 +6,6 @@
 import { shortKey } from '@kit.InputKit';
 ```
 
-<a id="setkeydownduration"></a>
 ## setKeyDownDuration
 
 ```TypeScript
@@ -71,7 +70,6 @@ struct Index {
 ```
 
 
-<a id="setkeydownduration-1"></a>
 ## setKeyDownDuration
 
 ```TypeScript

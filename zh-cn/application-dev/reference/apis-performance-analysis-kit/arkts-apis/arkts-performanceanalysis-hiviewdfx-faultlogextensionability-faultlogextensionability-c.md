@@ -6,14 +6,13 @@
 
 本模块作为该场景的补充。在应用实现FaultLogExtensionAbility后，当应用发生崩溃或冻屏时，系统服务预计会在30分钟后拉起FaultLogExtensionAbility。
 
-开发者可在[onFaultReportReady](arkts-performanceanalysis-hiviewdfx-faultlogextensionability-faultlogextensionability-c.md#onfaultreportready-1)中订阅并处理故障事件。
-
+开发者可在[onFaultReportReady](arkts-performanceanalysis-hiviewdfx-faultlogextensionability-faultlogextensionability-c.md#onfaultreportready)中订阅并处理故障事件。
 > **说明：**  
 >  
 > - 本模块接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
 >  
 > - 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见  
-> [附录](docroot://reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#附录)。
+> [附录](../../../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#附录)。
 
 **起始版本：** 21
 
@@ -27,7 +26,6 @@
 import { FaultLogExtensionAbility } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -55,7 +53,6 @@ export default class MyFaultLogExtension extends FaultLogExtensionAbility {
 
 ```
 
-<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -83,7 +80,6 @@ export default class MyFaultLogExtension extends FaultLogExtensionAbility {
 
 ```
 
-<a id="onfaultreportready"></a>
 ## onFaultReportReady
 
 ```TypeScript

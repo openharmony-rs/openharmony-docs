@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="savepdffilejob"></a>
 ## savePdfFileJob
 
 ```TypeScript

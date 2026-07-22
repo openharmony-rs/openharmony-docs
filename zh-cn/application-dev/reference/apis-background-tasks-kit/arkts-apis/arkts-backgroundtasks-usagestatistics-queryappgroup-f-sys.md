@@ -6,7 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="queryappgroup"></a>
 ## queryAppGroup
 
 ```TypeScript
@@ -64,7 +63,6 @@ usageStatistics.queryAppGroup((err: BusinessError, res: number) => {
 ```
 
 
-<a id="queryappgroup-1"></a>
 ## queryAppGroup
 
 ```TypeScript
@@ -119,7 +117,6 @@ usageStatistics.queryAppGroup().then((res: number) => {
 ```
 
 
-<a id="queryappgroup-2"></a>
 ## queryAppGroup
 
 ```TypeScript
@@ -179,7 +176,6 @@ usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
 ```
 
 
-<a id="queryappgroup-3"></a>
 ## queryAppGroup
 
 ```TypeScript

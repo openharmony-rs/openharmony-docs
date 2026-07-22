@@ -6,7 +6,6 @@
 import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createfilter"></a>
 ## createFilter
 
 ```TypeScript

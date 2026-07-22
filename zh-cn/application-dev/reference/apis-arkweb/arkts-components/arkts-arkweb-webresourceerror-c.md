@@ -8,7 +8,6 @@ Defines the Web resource error.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="geterrorcode"></a>
 ## getErrorCode
 
 ```TypeScript
@@ -48,7 +46,6 @@ getErrorCode(): number
 | --- | --- |
 | number | 返回加载资源的错误码。 |
 
-<a id="geterrorinfo"></a>
 ## getErrorInfo
 
 ```TypeScript

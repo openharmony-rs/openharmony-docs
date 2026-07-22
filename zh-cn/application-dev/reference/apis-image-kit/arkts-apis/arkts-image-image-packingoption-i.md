@@ -44,7 +44,7 @@ PNG、WebP等支持透明度的格式会忽略此参数。
 bufferSize?: number
 ```
 
-接收编码数据的缓冲区大小，单位：字节（Byte）。如果不设置大小，默认为25MB。如果编码图片超过25MB，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](arkts-image-image-imagepacker-i.md#packtofile-1)不受此参数限制。
+接收编码数据的缓冲区大小，单位：字节（Byte）。如果不设置大小，默认为25MB。如果编码图片超过25MB，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](arkts-image-image-imagepacker-i.md#packtofile)不受此参数限制。
 
 **类型：** number
 
@@ -78,10 +78,10 @@ desiredDynamicRange?: PackingDynamicRange
 format: string
 ```
 
-目标格式。</br>- 当[输入为ImageSource或PixelMap](docroot://media/image/image-encoding.md)时，支持"image/jpeg"、"image/webp"、"image/png"和"image/heic（或者image/heif）"<sup>12+</sup>、"image/sdr_astc_4x4"<sup>18+</sup>、"image/sdr_sut_superfast_4x4"<sup>18+</sup>（不同硬件设备支持情况不同）、"image/hdr_astc_4x4"<sup>20+</sup>。
+目标格式。</br>- 当[输入为ImageSource或PixelMap](../../../media/image/image-encoding.md)时，支持"image/jpeg"、"image/webp"、"image/png"和"image/heic（或者image/heif）"<sup>12+</sup>、"image/sdr_astc_4x4"<sup>18+</sup>、"image/sdr_sut_superfast_4x4"<sup>18+</sup>（不同硬件设备支持情况不同）、"image/hdr_astc_4x4"<sup>20+</sup>。
 
-- 当[输入为Picture](docroot://media/image/image-picture-encoding.md)时，仅支持"image/jpeg"和"image/heic（或者image/heif）"<sup>12+</sup>。  
-- gif图片编码需要输入多个PixelMap，并指定format为"image/gif"，使用[packToDataFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packtodatafrompixelmapsequence-1)或[packToFileFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packtofilefrompixelmapsequence-1)接口进行编码。
+- 当[输入为Picture](../../../media/image/image-picture-encoding.md)时，仅支持"image/jpeg"和"image/heic（或者image/heif）"<sup>12+</sup>。  
+- gif图片编码需要输入多个PixelMap，并指定format为"image/gif"，使用[packToDataFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packtodatafrompixelmapsequence)或[packToFileFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packtofilefrompixelmapsequence)接口进行编码。
 
 **说明：** 因为jpeg不支持透明通道，若使用带透明通道的数据编码jpeg格式，透明色将变为黑色。
 
@@ -194,8 +194,9 @@ sizeLimit?: PackingSizeLimit
 参数规则：
 
 - maxSize = {0, 0}：不限制最大编码尺寸，按原图尺寸编码  
-- maxSize.width > 0而maxSize.height <= 0：限制最大宽度，高度不限（使用原图高度）  
+- maxSize.width > 0而maxSize.height &lt;= 0：限制最大宽度，高度不限（使用原图高度）  
 - maxSize.width <= 0而maxSize.height > 0：限制最大高度，宽度不限（使用原图宽度）  
+- maxSize.width &gt;&lt;= 0而maxSize.height &gt; 0：限制最大高度，宽度不限（使用原图宽度）  
 - maxSize.width > 0且maxSize.height > 0：宽高同时限制，选择较小的缩放比例
 
 默认值：{maxSize: {width: 0, height: 0}, level: AntiAliasingLevel.NONE}

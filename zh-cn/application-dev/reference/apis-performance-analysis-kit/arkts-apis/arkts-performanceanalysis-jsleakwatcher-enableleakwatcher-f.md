@@ -6,7 +6,6 @@
 import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="enableleakwatcher"></a>
 ## enableLeakWatcher
 
 ```TypeScript
@@ -53,7 +52,6 @@ jsLeakWatcher.enableLeakWatcher(true, config, (filePath: Array<string>) => {
 ```
 
 
-<a id="enableleakwatcher-1"></a>
 ## enableLeakWatcher
 
 ```TypeScript
@@ -63,7 +61,6 @@ function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callb
 ʹ��ArkTS����й©��⡣
 
 �˽ӿ�ͨ��һ�ε��ü��ɼ��ArkTS������ڴ�й©����֮ǰ��Ҫ�����ĸ�������enable��watch��check��dump���ķ������Ӽ�ࣻͨ��configs��������������Զ������ü��������ԣ���Ƚ�֮ǰ����������й©������ܡ�
-
 > **ע��**  
 >  
 > ��ǰjsLeakWatcherй©������ܿ����ϴ󣬻ᵼ��Ӧ�ÿ��٣�������������ʱ�䣬���ٿ���Ƶ�ʡ�

@@ -22,7 +22,6 @@
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="getresultset"></a>
 ## getResultSet
 
 ```TypeScript
@@ -58,7 +57,6 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
-<a id="getresultset-1"></a>
 ## getResultSet
 
 ```TypeScript
@@ -99,7 +97,6 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVSto
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
-<a id="getresultset-2"></a>
 ## getResultSet
 
 ```TypeScript
@@ -136,7 +133,6 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
-<a id="getresultset-3"></a>
 ## getResultSet
 
 ```TypeScript

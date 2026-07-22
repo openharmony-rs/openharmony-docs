@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="enabledynamicicon"></a>
 ## enableDynamicIcon
 
 ```TypeScript
@@ -74,7 +73,6 @@ try {
 ```
 
 
-<a id="enabledynamicicon-1"></a>
 ## enableDynamicIcon
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # removeAll（系统接口）
 
-<a id="removeall"></a>
 ## removeAll
 
 ```TypeScript
@@ -31,7 +30,6 @@ function removeAll(bundle: BundleOption, callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定应用的所有通知回调函数。 |
 
 
-<a id="removeall-1"></a>
 ## removeAll
 
 ```TypeScript
@@ -61,7 +59,6 @@ function removeAll(callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除所有通知回调函数。 |
 
 
-<a id="removeall-2"></a>
 ## removeAll
 
 ```TypeScript
@@ -92,7 +89,6 @@ function removeAll(userId: number, callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定用户所有通知回调函数。 |
 
 
-<a id="removeall-3"></a>
 ## removeAll
 
 ```TypeScript
@@ -128,7 +124,6 @@ function removeAll(userId: number): Promise<void>
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 
-<a id="removeall-4"></a>
 ## removeAll
 
 ```TypeScript

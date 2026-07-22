@@ -6,7 +6,6 @@
 import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 ```
 
-<a id="setdlpfeature"></a>
 ## setDlpFeature
 
 ```TypeScript

@@ -24,7 +24,7 @@ charging: boolean
 
 当前电池是否在充电中。true表示在充电，false表示没有充电，默认为false。
 
-**说明：** 除Lite Wearable外，从API Version 6开始不再维护，建议使用[`batteryInfo.chargingStatus`](docroot://reference/apis-basic-services-kit/js-apis-battery-info.md#常量)替代。
+**说明：** 除Lite Wearable外，从API Version 6开始不再维护，建议使用[`batteryInfo.chargingStatus`](../../../reference/apis-basic-services-kit/js-apis-battery-info.md#常量)替代。
 
 **类型：** boolean
 
@@ -46,7 +46,7 @@ level: number
 
 当前电池的电量百分比，取值范围：0.00~1.00。
 
-**说明：** 除Lite Wearable外，从API Version 6开始不再维护，建议使用[`batteryInfo.batterySOC`](docroot://reference/apis-basic-services-kit/js-apis-battery-info.md#常量)替代。
+**说明：** 除Lite Wearable外，从API Version 6开始不再维护，建议使用[`batteryInfo.batterySOC`](../../../reference/apis-basic-services-kit/js-apis-battery-info.md#常量)替代。
 
 **类型：** number
 

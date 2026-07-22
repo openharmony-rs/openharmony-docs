@@ -1,6 +1,6 @@
 # KVManager
 
-分布式键值数据库管理实例，用于获取分布式键值数据库的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager-1)构建一个KVManager实例。
+分布式键值数据库管理实例，用于获取分布式键值数据库的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager)构建一个KVManager实例。
 
 **起始版本：** 9
 
@@ -14,7 +14,6 @@
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="closekvstore"></a>
 ## closeKVStore
 
 ```TypeScript
@@ -88,7 +87,6 @@ try {
 
 ```
 
-<a id="closekvstore-1"></a>
 ## closeKVStore
 
 ```TypeScript
@@ -167,7 +165,6 @@ try {
 
 ```
 
-<a id="deletekvstore"></a>
 ## deleteKVStore
 
 ```TypeScript
@@ -243,7 +240,6 @@ try {
 
 ```
 
-<a id="deletekvstore-1"></a>
 ## deleteKVStore
 
 ```TypeScript
@@ -323,14 +319,13 @@ try {
 
 ```
 
-<a id="getallkvstoreid"></a>
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-获取所有通过[getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore-1)方法删除的分布式键值数据库的storeId，使用callback异步回调。
+获取所有通过[getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore)方法删除的分布式键值数据库的storeId，使用callback异步回调。
 
 **起始版本：** 9
 
@@ -375,14 +370,13 @@ try {
 
 ```
 
-<a id="getallkvstoreid-1"></a>
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-获取所有通过[getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore-1)方法删除的分布式键值数据库的storeId，使用Promise异步回调。
+获取所有通过[getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore)方法删除的分布式键值数据库的storeId，使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -431,19 +425,17 @@ try {
 
 ```
 
-<a id="getkvstore"></a>
 ## getKVStore
 
 ```TypeScript
 getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>): void
 ```
 
-通过指定options和storeId，创建并获取分布式键值数据库，使用callback异步回调。获取数据库后，在使用完毕时需调用[closeKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#closekvstore-1)关闭数据库释放资源。
-
+通过指定options和storeId，创建并获取分布式键值数据库，使用callback异步回调。获取数据库后，在使用完毕时需调用[closeKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#closekvstore)关闭数据库释放资源。
 > **注意：**  
 >  
 > 在获取已有的分布式键值数据库时，如果数据库文件无法打开（例如文件头损坏），将触发自动重建逻辑，并返回新创建的分布式键值数据库实例。建议对重要且无法重新生成的数据使用备份恢复功能，以防止数据丢失。有关备份恢复的使用方法，请参  
-> 阅[数据库备份与恢复](docroot://database/data-backup-and-restore.md)。
+> 阅[数据库备份与恢复](../../../database/data-backup-and-restore.md)。
 
 **起始版本：** 9
 
@@ -503,19 +495,17 @@ try {
 
 ```
 
-<a id="getkvstore-1"></a>
 ## getKVStore
 
 ```TypeScript
 getKVStore<T>(storeId: string, options: Options): Promise<T>
 ```
 
-指定options和storeId，创建并获取分布式键值数据库，使用Promise回调。获取数据库后，在使用完毕时需调用[closeKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#closekvstore-1)关闭数据库释放资源。
-
+指定options和storeId，创建并获取分布式键值数据库，使用Promise回调。获取数据库后，在使用完毕时需调用[closeKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#closekvstore)关闭数据库释放资源。
 > **注意：**  
 >  
 > 获取已有的分布式键值数据库时，如果数据库文件无法打开（如文件头损坏），将触发自动重建逻辑，并返回新创建的分布式键值数据库实例。建议对重要且无法重新生成的数据使用备份恢复功能，防止数据丢失。备份恢复的使用方法详见  
-> [数据库备份与恢复](docroot://database/data-backup-and-restore.md)。
+> [数据库备份与恢复](../../../database/data-backup-and-restore.md)。
 
 **起始版本：** 9
 
@@ -576,7 +566,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -622,14 +611,13 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
 on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
 ```
 
-订阅服务终止事件。如果服务终止，需要重新调用[on('dataChange')](distributedKVStore.SingleKVStore.on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>))和[on('syncComplete')](distributedKVStore.SingleKVStore.on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>))注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。调用on订阅后，在不需要监听时必须调用[off('distributedDataServiceDie')](distributedKVStore.KVManager.off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>))取消订阅。
+订阅服务终止事件。如果服务终止，需要重新调用[on('dataChange')](distributedKVStore.SingleKVStore.on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>))和[on('syncComplete')](distributedKVStore.SingleKVStore.on(event: 'syncComplete', syncCallback: Callback&lt;Array<[string, number]>&gt;&lt;[string, number]&gt;>))注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。调用on订阅后，在不需要监听时必须调用[off('distributedDataServiceDie')](distributedKVStore.KVManager.off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>))取消订阅。
 
 **起始版本：** 9
 

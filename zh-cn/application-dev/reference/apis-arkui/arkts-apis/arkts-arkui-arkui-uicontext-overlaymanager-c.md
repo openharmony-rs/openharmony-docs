@@ -14,7 +14,6 @@ class OverlayManager
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="addcomponentcontent"></a>
 ## addComponentContent
 
 ```TypeScript
@@ -40,7 +39,6 @@ Adds a specified ComponentContent node to the OverlayManager.
 | content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md) | 是 | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br>By default, the new node is centered on the page and stacked according to its stacking level. |
 | index | number | 否 |  |
 
-<a id="addcomponentcontentwithorder"></a>
 ## addComponentContentWithOrder
 
 ```TypeScript
@@ -66,7 +64,6 @@ Creates a floating layer node with the specified display order.This API allows y
 | content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md) | 是 | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br>By default, the new node is centered on the page and stacked according to its stacking level. |
 | levelOrder | [LevelOrder](arkts-arkui-levelorder-t.md) | 否 |  |
 
-<a id="hideallcomponentcontents"></a>
 ## hideAllComponentContents
 
 ```TypeScript
@@ -85,7 +82,6 @@ Hide all ComponentContents on the OverlayManager.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="hidecomponentcontent"></a>
 ## hideComponentContent
 
 ```TypeScript
@@ -110,7 +106,6 @@ Hide the ComponentContent.
 | --- | --- | --- | --- |
 | content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md) | 是 | Content to hide on the **OverlayManager**. |
 
-<a id="openorderoverlay"></a>
 ## openOrderOverlay
 
 ```TypeScript
@@ -148,7 +143,6 @@ openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Prom
 | --- | --- |
 | [103307](../errorcode-promptAction.md#103307-系统弹出窗口导致无法打开浮层) | The overlay cannot be opened due to the system pop-up window. |
 
-<a id="removecomponentcontent"></a>
 ## removeComponentContent
 
 ```TypeScript
@@ -173,7 +167,6 @@ Removes a specified ComponentContent node from the OverlayManager
 | --- | --- | --- | --- |
 | content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md) | 是 | Content to remove from the **OverlayManager**. |
 
-<a id="showallcomponentcontents"></a>
 ## showAllComponentContents
 
 ```TypeScript
@@ -192,7 +185,6 @@ Show all ComponentContents on the OverlayManager.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="showcomponentcontent"></a>
 ## showComponentContent
 
 ```TypeScript

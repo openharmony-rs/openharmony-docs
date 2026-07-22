@@ -6,7 +6,6 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
-<a id="turnoffbluetooth"></a>
 ## turnOffBluetooth
 
 ```TypeScript

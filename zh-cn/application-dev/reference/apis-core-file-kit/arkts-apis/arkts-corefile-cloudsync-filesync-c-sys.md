@@ -14,7 +14,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -51,7 +50,6 @@ let fileSync = new cloudSync.FileSync("com.ohos.demo")
 
 ```
 
-<a id="getuploadlist"></a>
 ## getUploadList
 
 ```TypeScript
@@ -112,7 +110,6 @@ fileSync.getUploadList(uris).then((progressList: cloudSync.UploadProgress[]) => 
 
 ```
 
-<a id="pauseupload"></a>
 ## pauseUpload
 
 ```TypeScript
@@ -169,7 +166,6 @@ try {
 
 ```
 
-<a id="registeruploadprogress"></a>
 ## registerUploadProgress
 
 ```TypeScript
@@ -226,7 +222,6 @@ try {
 
 ```
 
-<a id="resumeupload"></a>
 ## resumeUpload
 
 ```TypeScript
@@ -283,7 +278,6 @@ try {
 
 ```
 
-<a id="unregisteruploadprogress"></a>
 ## unregisterUploadProgress
 
 ```TypeScript

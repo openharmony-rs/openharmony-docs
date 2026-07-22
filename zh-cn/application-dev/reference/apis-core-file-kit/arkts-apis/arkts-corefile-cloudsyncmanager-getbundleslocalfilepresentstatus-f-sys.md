@@ -6,7 +6,6 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
-<a id="getbundleslocalfilepresentstatus"></a>
 ## getBundlesLocalFilePresentStatus
 
 ```TypeScript

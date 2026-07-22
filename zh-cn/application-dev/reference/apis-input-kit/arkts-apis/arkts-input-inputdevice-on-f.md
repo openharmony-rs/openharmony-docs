@@ -6,7 +6,6 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
-<a id="on"></a>
 ## on('change')
 
 ```TypeScript

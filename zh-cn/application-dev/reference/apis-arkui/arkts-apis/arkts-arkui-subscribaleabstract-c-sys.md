@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="addowningproperty"></a>
 ## addOwningProperty
 
 ```TypeScript
@@ -33,7 +32,6 @@ public addOwningProperty(subscriber: IPropertySubscriber): void
 | --- | --- | --- | --- |
 | subscriber | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 是 | 订阅者。 |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -50,7 +48,6 @@ constructor()
 
 **系统接口：** 此接口为系统接口。
 
-<a id="notifypropertyhaschanged"></a>
 ## notifyPropertyHasChanged
 
 ```TypeScript
@@ -74,7 +71,6 @@ protected notifyPropertyHasChanged(propName: string, newValue: any): void
 | propName | string | 是 | 属性名称。 |
 | newValue | any | 是 | 更改的新值。 |
 
-<a id="removeowningproperty"></a>
 ## removeOwningProperty
 
 ```TypeScript
@@ -97,7 +93,6 @@ public removeOwningProperty(property: IPropertySubscriber): void
 | --- | --- | --- | --- |
 | property | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 是 | 要删除的属性。 |
 
-<a id="removeowningpropertybyid"></a>
 ## removeOwningPropertyById
 
 ```TypeScript

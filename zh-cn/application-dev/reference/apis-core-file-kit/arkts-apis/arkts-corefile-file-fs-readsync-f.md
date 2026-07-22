@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="readsync"></a>
 ## readSync
 
 ```TypeScript
@@ -23,15 +22,7 @@ declare function readSync(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function readSync(
-  fd: number,
-  buffer: ArrayBuffer,
-  options?: ReadOptions
-): number--><!--Device-unnamed-declare function readSync(
-  fd: number,
-  buffer: ArrayBuffer,
-  options?: ReadOptions
-): number-End-->
+<!--Device-unnamed-declare function readSync(  fd: number,  buffer: ArrayBuffer,  options?: ReadOptions): number--><!--Device-unnamed-declare function readSync(  fd: number,  buffer: ArrayBuffer,  options?: ReadOptions): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

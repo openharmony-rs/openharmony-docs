@@ -3,12 +3,11 @@
 EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
 每个EnterpriseAdminExtensionAbility组件实例化时，系统都会自动创建对应的EnterpriseAdminExtensionContext。开发者可以通过EnterpriseAdminExtensionContext获取应用的沙箱路径、启动其他的组件。该上下文环境只能在当前EnterpriseAdminExtensionAbility中使用，不能传递到其他组件中使用。
-
 > **说明**：  
 >  
 > 本模块接口仅可在Stage模型下使用。  
 >  
-> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](docroot://mdm/mdm-kit-guide.md)。
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../mdm/mdm-kit-guide.md)。
 
 **继承/实现关系：** EnterpriseAdminExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
@@ -18,7 +17,6 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](arkts-mdm-en
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-<a id="startabilitybyadmin"></a>
 ## startAbilityByAdmin
 
 ```TypeScript
@@ -26,14 +24,13 @@ startAbilityByAdmin(admin: Want, want: Want): Promise<void>
 ```
 
 在[EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)组件中直接启动另外一个组件（页面没有弹窗提醒），目前支持[UIAbility](../../apis-ability-kit/arkts-apis/arkts-app-ability-uiability.md)，[AppServiceExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-appserviceextensionability-appserviceextensionability-c.md)。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 仅支持启动三方应用组件，不支持系统应用组件。  
 >  
 > 被启动的组件需要对外可见，即module.json5中的exported字段需要为true。  
 >  
-> 不支持[隐式Want启动](docroot://application-models/ability-terminology.md#隐式want启动)。  
+> 不支持[隐式Want启动](../../../application-models/ability-terminology.md#隐式want启动)。  
 >  
 > 如果被启动的UIAbility有权限保护，需要额外申请对应的权限。
 

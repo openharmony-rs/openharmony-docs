@@ -5,12 +5,11 @@ declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').defau
 ```
 
 光标样式。
-
 > **说明：**  
 >  
-> 直接使用cursorControl可能导致[UI上下文不明确](docroot://ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取  
+> 直接使用cursorControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取  
 > [UIContext](../arkts-apis/arkts-arkui-uicontext.md)实例，并使用  
-> [getCursorController](@ohos.arkui.UIContext:UIContext#getcursorcontroller)获取绑定实例  
+> [getCursorController](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getcursorcontroller)获取绑定实例  
 > 的cursorControl。
 
 **起始版本：** 11

@@ -66,7 +66,7 @@ import { screen } from '@kit.ArkUI';
 | [MultiScreenPositionOptions](arkts-arkui-screen-multiscreenpositionoptions-i-sys.md) | 屏幕位置信息。 |
 | [OrientationOptions](arkts-arkui-screen-orientationoptions-i-sys.md) | 设置旋转行为的参数 |
 | [Rect](arkts-arkui-screen-rect-i-sys.md) | 矩形信息。 |
-| [Screen](arkts-arkui-screen-screen-i-sys.md) | [物理屏](docroot://displaymanager/display-terminology.md#物理屏)屏幕实例。  下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens-1)、[createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen-1)中的任一方法获取到Screen实例，再通过此实例调用对应方法。 |
+| [Screen](arkts-arkui-screen-screen-i-sys.md) | [物理屏](../../../displaymanager/display-terminology.md#物理屏)屏幕实例。  下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens)、[createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen)中的任一方法获取到Screen实例，再通过此实例调用对应方法。 |
 | [ScreenModeInfo](arkts-arkui-screen-screenmodeinfo-i-sys.md) | 屏幕显示模式信息。 |
 | [VirtualScreenOption](arkts-arkui-screen-virtualscreenoption-i-sys.md) | 创建虚拟屏幕的参数。 |
 <!--DelEnd-->

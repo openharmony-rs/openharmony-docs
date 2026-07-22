@@ -6,7 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="decomposetopicture"></a>
 ## decomposeToPicture
 
 ```TypeScript

@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -35,7 +34,6 @@ Sets the color of the fill area.An invalid value is handled as the default value
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) \| ColorMetrics | 是 | Color of the fill area<br>Default value : Color.Black. |
 
-<a id="stroke"></a>
 ## stroke
 
 ```TypeScript

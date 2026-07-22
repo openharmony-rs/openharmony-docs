@@ -6,7 +6,6 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
-<a id="getextensionabilityresourceinfo"></a>
 ## getExtensionAbilityResourceInfo
 
 ```TypeScript

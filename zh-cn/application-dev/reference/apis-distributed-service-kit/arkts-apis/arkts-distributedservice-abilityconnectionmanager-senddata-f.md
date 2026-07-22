@@ -6,14 +6,13 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="senddata"></a>
 ## sendData
 
 ```TypeScript
 function sendData(sessionId: number, data: ArrayBuffer): Promise<void>
 ```
 
-应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](docroot://arkts-utils/arraybuffer-object.md)字节流。
+应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../../arkts-utils/arraybuffer-object.md)字节流。
 
 **起始版本：** 18
 

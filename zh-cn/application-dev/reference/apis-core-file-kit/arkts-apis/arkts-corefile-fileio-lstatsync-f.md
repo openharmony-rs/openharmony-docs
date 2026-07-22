@@ -1,6 +1,5 @@
 # lstatSync
 
-<a id="lstatsync"></a>
 ## lstatSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function lstatSync(path: string): Stat
 
 **废弃版本：** 9
 
-**替代接口：** [fs:lstatSync](arkts-corefile-file-fs-lstatsync-f.md#lstatsync-1)
+**替代接口：** [fs:lstatSync](arkts-corefile-fileio-lstatsync-f.md#lstatsync)
 
 <!--Device-unnamed-declare function lstatSync(path: string): Stat--><!--Device-unnamed-declare function lstatSync(path: string): Stat-End-->
 

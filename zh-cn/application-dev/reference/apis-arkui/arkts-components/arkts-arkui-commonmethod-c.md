@@ -8,7 +8,6 @@ CommonMethod.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="accessibilityactionoptions"></a>
 ## accessibilityActionOptions
 
 ```TypeScript
@@ -41,7 +40,6 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 | --- | --- |
 | T | 返回调用该接口的组件引用。 |
 
-<a id="accessibilitychecked"></a>
 ## accessibilityChecked
 
 ```TypeScript
@@ -74,7 +72,6 @@ accessibilityChecked(isCheck: boolean): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitycustomactions"></a>
 ## accessibilityCustomActions
 
 ```TypeScript
@@ -107,7 +104,6 @@ accessibilityCustomActions(actions: Array<AccessibilityCustomAction> | undefined
 | --- | --- |
 | T | 返回调用方法的组件实例。 |
 
-<a id="accessibilitydefaultfocus"></a>
 ## accessibilityDefaultFocus
 
 ```TypeScript
@@ -140,7 +136,6 @@ accessibilityDefaultFocus(focus: boolean): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitydescription"></a>
 ## accessibilityDescription
 
 ```TypeScript
@@ -173,7 +168,6 @@ accessibilityDescription(value: string): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form |
 
-<a id="accessibilitydescription-1"></a>
 ## accessibilityDescription
 
 ```TypeScript
@@ -206,7 +200,6 @@ accessibilityDescription(description: Resource): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilityfocusdrawlevel"></a>
 ## accessibilityFocusDrawLevel
 
 ```TypeScript
@@ -239,7 +232,6 @@ accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitygroup"></a>
 ## accessibilityGroup
 
 ```TypeScript
@@ -274,7 +266,6 @@ Sets whether to enable accessibility grouping.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitygroup-1"></a>
 ## accessibilityGroup
 
 ```TypeScript
@@ -312,7 +303,6 @@ Sets whether to enable accessibility grouping.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitylevel"></a>
 ## accessibilityLevel
 
 ```TypeScript
@@ -345,7 +335,6 @@ Sets the accessibility level.This property determines whether the component can 
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitynextfocusid"></a>
 ## accessibilityNextFocusId
 
 ```TypeScript
@@ -370,7 +359,7 @@ accessibilityNextFocusId(nextId: string): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| nextId | string | 是 | 下一个被指定聚焦组件的[唯一标识id](arkts-arkui-commonmethod-c.md#id-1)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
+| nextId | string | 是 | 下一个被指定聚焦组件的[唯一标识id](arkts-arkui-commonmethod-c.md#id)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
 
 **返回值：**
 
@@ -378,7 +367,6 @@ accessibilityNextFocusId(nextId: string): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitynextfocusid-1"></a>
 ## accessibilityNextFocusId
 
 ```TypeScript
@@ -403,7 +391,7 @@ accessibilityNextFocusId(nextId: string, nextFocusParams : AccessibilityNextFocu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| nextId | string | 是 | 下一个被指定聚焦组件的[唯一标识id](arkts-arkui-commonmethod-c.md#id-1)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
+| nextId | string | 是 | 下一个被指定聚焦组件的[唯一标识id](arkts-arkui-commonmethod-c.md#id)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
 | nextFocusParams | [AccessibilityNextFocusParams](../arkts-apis/arkts-arkui-accessibilitynextfocusparams-i.md) \| undefined | 是 | 无障碍下一个焦点处理的详细参数，用于配置是否在后代节点中查找可聚焦节点。<br>取值为**undefined**时，不配置下一个焦点处理的详细参数，不在后代节点中查找焦点。 |
 
 **返回值：**
@@ -412,7 +400,6 @@ accessibilityNextFocusId(nextId: string, nextFocusParams : AccessibilityNextFocu
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilityrole"></a>
 ## accessibilityRole
 
 ```TypeScript
@@ -445,7 +432,6 @@ accessibilityRole(role: AccessibilityRoleType): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilityscrolltriggerable"></a>
 ## accessibilityScrollTriggerable
 
 ```TypeScript
@@ -478,7 +464,6 @@ accessibilityScrollTriggerable(isTriggerable: boolean): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilityselected"></a>
 ## accessibilitySelected
 
 ```TypeScript
@@ -511,7 +496,6 @@ accessibilitySelected(isSelect: boolean): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitystatedescription"></a>
 ## accessibilityStateDescription
 
 ```TypeScript
@@ -544,7 +528,6 @@ accessibilityStateDescription(description: string | Resource | undefined): T
 | --- | --- |
 | T | 返回调用该接口的组件引用。 |
 
-<a id="accessibilitytext"></a>
 ## accessibilityText
 
 ```TypeScript
@@ -577,7 +560,6 @@ Sets the accessibility text.When a component does not contain a text attribute, 
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitytext-1"></a>
 ## accessibilityText
 
 ```TypeScript
@@ -610,7 +592,6 @@ Sets the accessibility text.<p><strong>NOTE</strong>If a component has both text
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilitytexthint"></a>
 ## accessibilityTextHint
 
 ```TypeScript
@@ -643,7 +624,6 @@ accessibilityTextHint(value: string): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilityusesamepage"></a>
 ## accessibilityUseSamePage
 
 ```TypeScript
@@ -676,7 +656,6 @@ accessibilityUseSamePage(pageMode: AccessibilitySamePageMode): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="accessibilityvirtualnode"></a>
 ## accessibilityVirtualNode
 
 ```TypeScript
@@ -709,14 +688,13 @@ accessibilityVirtualNode(builder: CustomBuilder): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form |
 
-<a id="align"></a>
 ## align
 
 ```TypeScript
 align(value: Alignment): T
 ```
 
-设置当前组件绘制区域内的子组件的对齐方式，支持 [attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置当前组件绘制区域内的子组件的对齐方式，支持 [attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -740,14 +718,13 @@ align(value: Alignment): T
 | --- | --- |
 | T | Current component. |
 
-<a id="align-1"></a>
 ## align
 
 ```TypeScript
 align(alignment: Alignment | LocalizedAlignment): T
 ```
 
-设置当前组件绘制区域内的子组件的对齐方式，增加支持镜像的能力，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)。
+设置当前组件绘制区域内的子组件的对齐方式，增加支持镜像的能力，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)。
 
 **起始版本：** 20
 
@@ -773,14 +750,13 @@ align(alignment: Alignment | LocalizedAlignment): T
 | --- | --- |
 | T | Current component. |
 
-<a id="alignrules"></a>
 ## alignRules
 
 ```TypeScript
 alignRules(value: AlignRuleOption): T
 ```
 
-指定设置在相对布局组件中子组件的对齐规则，仅当父组件为[RelativeContainer](RelativeContainer)时生效，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+指定设置在相对布局组件中子组件的对齐规则，仅当父组件为[RelativeContainer](RelativeContainer)时生效，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 9
 
@@ -804,14 +780,13 @@ alignRules(value: AlignRuleOption): T
 | --- | --- |
 | T | Current component. |
 
-<a id="alignrules-1"></a>
 ## alignRules
 
 ```TypeScript
 alignRules(alignRule: LocalizedAlignRuleOptions): T
 ```
 
-指定设置在相对布局组件中子组件的对齐规则，仅当父组件为[RelativeContainer](RelativeContainer)时生效。该方法水平方向上以start和end分别替代原方法的left和right，以便在RTL模式下能镜像显示，建议使用该方法指定设置在相对布局组件中子组件的对齐规则，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+指定设置在相对布局组件中子组件的对齐规则，仅当父组件为[RelativeContainer](RelativeContainer)时生效。该方法水平方向上以start和end分别替代原方法的left和right，以便在RTL模式下能镜像显示，建议使用该方法指定设置在相对布局组件中子组件的对齐规则，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 12
 
@@ -837,7 +812,6 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 | --- | --- |
 | T | Current component. |
 
-<a id="alignself"></a>
 ## alignSelf
 
 ```TypeScript
@@ -868,7 +842,6 @@ alignSelf(value: ItemAlign): T
 | --- | --- |
 | T | Current component. |
 
-<a id="allowdrop"></a>
 ## allowDrop
 
 ```TypeScript
@@ -899,7 +872,6 @@ allowDrop(value: Array<UniformDataType> | null | Array<string>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="allowforcedark"></a>
 ## allowForceDark
 
 ```TypeScript
@@ -930,7 +902,6 @@ Set whether the component enables the ability to invert colors.This interface ne
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@atomicservice |
 
-<a id="animation"></a>
 ## animation
 
 ```TypeScript
@@ -938,14 +909,13 @@ animation(value: AnimateParam): T
 ```
 
 设置组件的属性动画。
-
 > **说明：**  
 >  
-> - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](arkts-arkui-commonmethod-c.md#rendergroup-1)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考  
+> - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](arkts-arkui-commonmethod-c.md#rendergroup)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考  
 > [动画使用指导-使用renderGroup](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fair-use-animation#section1223162922415)。  
 >  
 >  
-> - 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> - 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -967,7 +937,6 @@ animation(value: AnimateParam): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="aspectratio"></a>
 ## aspectRatio
 
 ```TypeScript
@@ -979,7 +948,7 @@ aspectRatio(value: number): T
 - 仅设置height、aspectRatio时，width=height*aspectRatio。  
 - 同时设置width、height和aspectRatio时，height不生效，height=width/aspectRatio。
 
-设置aspectRatio属性后，组件宽高会受父组件内容区大小限制，[constraintSize](arkts-arkui-commonmethod-c.md#constraintsize-1)的优先级高于aspectRatio。
+设置aspectRatio属性后，组件宽高会受父组件内容区大小限制，[constraintSize](arkts-arkui-commonmethod-c.md#constraintsize)的优先级高于aspectRatio。
 
 **起始版本：** 7
 
@@ -1003,7 +972,6 @@ aspectRatio(value: number): T
 | --- | --- |
 | T | Current component. |
 
-<a id="attributemodifier"></a>
 ## attributeModifier
 
 ```TypeScript
@@ -1034,7 +1002,6 @@ Sets the attribute modifier.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="backdropblur"></a>
 ## backdropBlur
 
 ```TypeScript
@@ -1066,14 +1033,13 @@ backdropBlur(value: number, options?: BlurOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backdropblur-1"></a>
 ## backdropBlur
 
 ```TypeScript
 backdropBlur(radius: Optional<number>, options?: BlurOptions): T
 ```
 
-为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。与[backdropBlur](arkts-arkui-commonmethod-c.md#backdropblur-1)相比，radius参数新增了对undefined类型的支持。
+为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。与[backdropBlur](arkts-arkui-commonmethod-c.md#backdropblur)相比，radius参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -1100,14 +1066,13 @@ backdropBlur(radius: Optional<number>, options?: BlurOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backdropblur-2"></a>
 ## backdropBlur
 
 ```TypeScript
 backdropBlur(radius: Optional<number>, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。与[backdropBlur<sup>18+</sup>](arkts-arkui-commonmethod-c.md#backdropblur-1)相比，新增了sysOptions参数，即支持系统自适应调节参数。
+为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。与[backdropBlur<sup>18+</sup>](arkts-arkui-commonmethod-c.md#backdropblur)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 
 **起始版本：** 19
 
@@ -1135,7 +1100,6 @@ backdropBlur(radius: Optional<number>, options?: BlurOptions, sysOptions?: Syste
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="background"></a>
 ## background
 
 ```TypeScript
@@ -1169,7 +1133,6 @@ Anonymous Object Rectification.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="backgroundblurstyle"></a>
 ## backgroundBlurStyle
 
 ```TypeScript
@@ -1201,14 +1164,13 @@ backgroundBlurStyle(value: BlurStyle, options?: BackgroundBlurStyleOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backgroundblurstyle-1"></a>
 ## backgroundBlurStyle
 
 ```TypeScript
 backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOptions): T
 ```
 
-为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。与[backgroundBlurStyle<sup>9+</sup>](arkts-arkui-commonmethod-c.md#backgroundblurstyle-1)相比，style参数新增了对undefined类型的支持。
+为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。与[backgroundBlurStyle<sup>9+</sup>](arkts-arkui-commonmethod-c.md#backgroundblurstyle)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -1235,14 +1197,13 @@ backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOpt
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backgroundblurstyle-2"></a>
 ## backgroundBlurStyle
 
 ```TypeScript
 backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。与[backgroundBlurStyle<sup>18+</sup>](arkts-arkui-commonmethod-c.md#backgroundblurstyle-1)相比，新增了sysOptions参数，即支持系统自适应调节参数。
+为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。与[backgroundBlurStyle<sup>18+</sup>](arkts-arkui-commonmethod-c.md#backgroundblurstyle)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 
 **起始版本：** 19
 
@@ -1270,7 +1231,6 @@ backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOpt
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backgroundbrightness"></a>
 ## backgroundBrightness
 
 ```TypeScript
@@ -1301,14 +1261,13 @@ backgroundBrightness(params: BackgroundBrightnessOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backgroundbrightness-1"></a>
 ## backgroundBrightness
 
 ```TypeScript
 backgroundBrightness(options: Optional<BackgroundBrightnessOptions>): T
 ```
 
-设置组件背景提亮效果。与[backgroundBrightness<sup>12+</sup>](arkts-arkui-commonmethod-c.md#backgroundbrightness-1)相比，options参数新增了对undefined类型的支持。
+设置组件背景提亮效果。与[backgroundBrightness<sup>12+</sup>](arkts-arkui-commonmethod-c.md#backgroundbrightness)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -1332,7 +1291,6 @@ backgroundBrightness(options: Optional<BackgroundBrightnessOptions>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backgroundcolor"></a>
 ## backgroundColor
 
 ```TypeScript
@@ -1363,7 +1321,6 @@ Background color
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@form@atomicservice |
 
-<a id="backgroundcolor-1"></a>
 ## backgroundColor
 
 ```TypeScript
@@ -1396,7 +1353,6 @@ Background color
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="backgroundcolor-2"></a>
 ## backgroundColor
 
 ```TypeScript
@@ -1429,7 +1385,6 @@ Background color
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="backgroundeffect"></a>
 ## backgroundEffect
 
 ```TypeScript
@@ -1460,14 +1415,13 @@ backgroundEffect(options: BackgroundEffectOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backgroundeffect-1"></a>
 ## backgroundEffect
 
 ```TypeScript
 backgroundEffect(options: Optional<BackgroundEffectOptions>): T
 ```
 
-设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。与[backgroundEffect<sup>11+</sup>](arkts-arkui-commonmethod-c.md#backgroundeffect-1)相比，options参数新增了对undefined类型的支持。
+设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。与[backgroundEffect<sup>11+</sup>](arkts-arkui-commonmethod-c.md#backgroundeffect)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -1491,19 +1445,17 @@ backgroundEffect(options: Optional<BackgroundEffectOptions>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backgroundeffect-2"></a>
 ## backgroundEffect
 
 ```TypeScript
 backgroundEffect(options: Optional<BackgroundEffectOptions>, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。与[backgroundEffect<sup>18+</sup>](arkts-arkui-commonmethod-c.md#backgroundeffect-1)相比，新增了sysOptions参数，即支持系统自适应调节参数。
-
+设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。与[backgroundEffect<sup>18+</sup>](arkts-arkui-commonmethod-c.md#backgroundeffect)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 > **说明：**  
 >  
 > backgroundEffect接口为实时接口，每帧对模糊等效果执行实时渲染，性能负载较大。当组件背景模糊效果无需变动时，推荐采用静态模糊接口  
-> [blur](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-effectkit-filter-i.md#blur-1)实现模糊效果。最佳实践请参考：  
+> [blur](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-effectkit-filter-i.md#blur)实现模糊效果。最佳实践请参考：  
 > [图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
 
 **起始版本：** 19
@@ -1529,7 +1481,6 @@ backgroundEffect(options: Optional<BackgroundEffectOptions>, sysOptions?: System
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backgroundfilter"></a>
 ## backgroundFilter
 
 ```TypeScript
@@ -1537,10 +1488,9 @@ backgroundFilter(filter: Filter): T
 ```
 
 设置背景滤镜视觉效果。
-
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -1564,7 +1514,6 @@ backgroundFilter(filter: Filter): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="backgroundimage"></a>
 ## backgroundImage
 
 ```TypeScript
@@ -1596,7 +1545,6 @@ Background image src: Image address url
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@form@atomicservice |
 
-<a id="backgroundimage-1"></a>
 ## backgroundImage
 
 ```TypeScript
@@ -1630,7 +1578,6 @@ Background image
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="backgroundimageposition"></a>
 ## backgroundImagePosition
 
 ```TypeScript
@@ -1661,7 +1608,6 @@ Background image position x:Horizontal coordinate;y:Vertical axis coordinate.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@form@atomicservice |
 
-<a id="backgroundimageresizable"></a>
 ## backgroundImageResizable
 
 ```TypeScript
@@ -1692,7 +1638,6 @@ Background image resizable.value:resizable options
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="backgroundimagesize"></a>
 ## backgroundImageSize
 
 ```TypeScript
@@ -1723,7 +1668,6 @@ Background image size
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@form@atomicservice |
 
-<a id="bindcontentcover"></a>
 ## bindContentCover
 
 ```TypeScript
@@ -1731,10 +1675,9 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition
 ```
 
 给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 10
 
@@ -1750,7 +1693,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isShow | boolean | 是 | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](docroot://ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
+| isShow | boolean | 是 | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
 | builder | [CustomBuilder](arkts-arkui-custombuilder-t.md) | 是 | 配置全屏模态页面内容。builder里面的根节点需要唯一。 |
 | type | [ModalTransition](arkts-arkui-modaltransition-e.md) | 否 | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 与transition同时设置时，此属性不生效。 |
 
@@ -1760,7 +1703,6 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="bindcontentcover-1"></a>
 ## bindContentCover
 
 ```TypeScript
@@ -1783,7 +1725,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCover
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isShow | boolean | 是 | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](docroot://ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
+| isShow | boolean | 是 | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
 | builder | [CustomBuilder](arkts-arkui-custombuilder-t.md) | 是 | 配置全屏模态页面内容。 |
 | options | [ContentCoverOptions](arkts-arkui-contentcoveroptions-i.md) | 否 | 配置全屏模态页面的可选属性。 |
 
@@ -1793,7 +1735,6 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCover
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="bindcontextmenu"></a>
 ## bindContextMenu
 
 ```TypeScript
@@ -1824,7 +1765,6 @@ Binds a context menu to this component, which is displayed when the user long-pr
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@atomicservice |
 
-<a id="bindcontextmenu-1"></a>
 ## bindContextMenu
 
 ```TypeScript
@@ -1857,7 +1797,6 @@ ContextMenu control
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="bindcontextmenubyisshow"></a>
 ## bindContextMenuByIsShow
 
 ```TypeScript
@@ -1890,7 +1829,6 @@ bindContextMenuByIsShow(isShow: boolean, content: CustomBuilder | Array<MenuElem
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="bindcontextmenubyresponsetype"></a>
 ## bindContextMenuByResponseType
 
 ```TypeScript
@@ -1906,9 +1844,7 @@ bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement>, respo
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CommonMethod-bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement>, responseType: ResponseType,
-      options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement>, responseType: ResponseType,
-      options?: ContextMenuOptions): T-End-->
+<!--Device-CommonMethod-bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement>, responseType: ResponseType,      options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement>, responseType: ResponseType,      options?: ContextMenuOptions): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1926,7 +1862,6 @@ bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement>, respo
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="bindcontextmenuwithresponse"></a>
 ## bindContextMenuWithResponse
 
 ```TypeScript
@@ -1958,7 +1893,6 @@ bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | undefined, o
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="bindcontextmenuwithresponse-1"></a>
 ## bindContextMenuWithResponse
 
 ```TypeScript
@@ -1974,9 +1908,7 @@ bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | Array<MenuEl
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CommonMethod-bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | Array<MenuElement> | undefined,
-    options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | Array<MenuElement> | undefined,
-    options?: ContextMenuOptions): T-End-->
+<!--Device-CommonMethod-bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | Array<MenuElement> | undefined,    options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | Array<MenuElement> | undefined,    options?: ContextMenuOptions): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1993,7 +1925,6 @@ bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | Array<MenuEl
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="bindmenu"></a>
 ## bindMenu
 
 ```TypeScript
@@ -2023,7 +1954,6 @@ Menu control
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@atomicservice |
 
-<a id="bindmenu-1"></a>
 ## bindMenu
 
 ```TypeScript
@@ -2056,7 +1986,6 @@ Menu control
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="bindpopup"></a>
 ## bindPopup
 
 ```TypeScript
@@ -2086,7 +2015,6 @@ Popup control<p><strong>NOTE</strong>:<br>The popup can be displayed only after 
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@atomicservice |
 
-<a id="bindsheet"></a>
 ## bindSheet
 
 ```TypeScript
@@ -2094,10 +2022,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 ```
 
 给组件绑定半模态页面，点击后显示模态页面。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 10
 
@@ -2113,7 +2040,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isShow | boolean | 是 | 是否显示半模态页面。<br/>true：显示半模态页面。<br/>false：隐藏半模态页面。<br/>从API version 10开始，该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](docroot://ui/state-management/arkts-new-binding.md)双向绑定变量。 |
+| isShow | boolean | 是 | 是否显示半模态页面。<br/>true：显示半模态页面。<br/>false：隐藏半模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。 |
 | builder | [CustomBuilder](arkts-arkui-custombuilder-t.md) | 是 | 配置半模态页面内容。 |
 | options | [SheetOptions](arkts-arkui-sheetoptions-i.md) | 否 | 配置半模态页面的可选属性。 |
 
@@ -2123,7 +2050,6 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="bindtips"></a>
 ## bindTips
 
 ```TypeScript
@@ -2155,7 +2081,6 @@ Tips control
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="blendmode"></a>
 ## blendMode
 
 ```TypeScript
@@ -2179,7 +2104,7 @@ blendMode(value: BlendMode, type?: BlendApplyType): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [BlendMode](arkts-arkui-blendmode-e.md) | 是 | 混合模式。<br/>默认值：BlendMode.NONE<br/>**说明：**<br/>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
-| type | [BlendApplyType](arkts-arkui-blendapplytype-e.md) | 否 | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](arkts-arkui-commonmethod-c.md#lineargradientblur-1)、[backgroundEffect](arkts-arkui-commonmethod-c.md#backgroundeffect-1)、[brightness](arkts-arkui-commonmethod-c.md#brightness-1)、[blur](arkts-arkui-commonmethod-c.md#blur-1)等需要截屏的接口无法截取到正确的画面。 |
+| type | [BlendApplyType](arkts-arkui-blendapplytype-e.md) | 否 | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](arkts-arkui-commonmethod-c.md#lineargradientblur)、[backgroundEffect](arkts-arkui-commonmethod-c.md#backgroundeffect)、[brightness](arkts-arkui-commonmethod-c.md#brightness)、[blur](arkts-arkui-commonmethod-c.md#blur)等需要截屏的接口无法截取到正确的画面。 |
 
 **返回值：**
 
@@ -2187,14 +2112,13 @@ blendMode(value: BlendMode, type?: BlendApplyType): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="blendmode-1"></a>
 ## blendMode
 
 ```TypeScript
 blendMode(mode: Optional<BlendMode>, type?: BlendApplyType): T
 ```
 
-将当前控件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。与[blendMode<sup>11+</sup>](arkts-arkui-commonmethod-c.md#blendmode-1)相比，mode参数新增了对undefined类型的支持。
+将当前控件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。与[blendMode<sup>11+</sup>](arkts-arkui-commonmethod-c.md#blendmode)相比，mode参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2211,7 +2135,7 @@ blendMode(mode: Optional<BlendMode>, type?: BlendApplyType): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | [Optional](arkts-arkui-optional-t.md)&lt;BlendMode&gt; | 是 | 混合模式。<br/>默认值：BlendMode.NONE<br/>当mode的值为undefined时，恢复为内容不进行混合的效果。<br/>**说明：**<br/>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
-| type | [BlendApplyType](arkts-arkui-blendapplytype-e.md) | 否 | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](arkts-arkui-commonmethod-c.md#lineargradientblur-1)、[backgroundEffect](arkts-arkui-commonmethod-c.md#backgroundeffect-1)、[brightness](arkts-arkui-commonmethod-c.md#brightness-1)、[blur](arkts-arkui-commonmethod-c.md#blur-1)等需要截屏的接口无法截取到正确的画面。 |
+| type | [BlendApplyType](arkts-arkui-blendapplytype-e.md) | 否 | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](arkts-arkui-commonmethod-c.md#lineargradientblur)、[backgroundEffect](arkts-arkui-commonmethod-c.md#backgroundeffect)、[brightness](arkts-arkui-commonmethod-c.md#brightness)、[blur](arkts-arkui-commonmethod-c.md#blur)等需要截屏的接口无法截取到正确的画面。 |
 
 **返回值：**
 
@@ -2219,7 +2143,6 @@ blendMode(mode: Optional<BlendMode>, type?: BlendApplyType): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="blur"></a>
 ## blur
 
 ```TypeScript
@@ -2249,14 +2172,13 @@ blur(value: number, options?: BlurOptions): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="blur-1"></a>
 ## blur
 
 ```TypeScript
 blur(blurRadius: Optional<number>, options?: BlurOptions): T
 ```
 
-为组件添加内容模糊效果。与[blur](arkts-arkui-commonmethod-c.md#blur-1)相比，blurRadius参数新增了对undefined类型的支持。
+为组件添加内容模糊效果。与[blur](arkts-arkui-commonmethod-c.md#blur)相比，blurRadius参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2281,14 +2203,13 @@ blur(blurRadius: Optional<number>, options?: BlurOptions): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="blur-2"></a>
 ## blur
 
 ```TypeScript
 blur(blurRadius: Optional<number>, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-为组件添加内容模糊效果。与[blur<sup>18+</sup>](arkts-arkui-commonmethod-c.md#blur-1)相比，新增了sysOptions参数，即支持系统自适应调节参数。
+为组件添加内容模糊效果。与[blur<sup>18+</sup>](arkts-arkui-commonmethod-c.md#blur)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 
 **起始版本：** 19
 
@@ -2314,7 +2235,6 @@ blur(blurRadius: Optional<number>, options?: BlurOptions, sysOptions?: SystemAda
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="border"></a>
 ## border
 
 ```TypeScript
@@ -2322,10 +2242,9 @@ border(value: BorderOptions): T
 ```
 
 设置边框样式。
-
 > **说明：**  
 >  
-> color、radius缺省时，为了保证[borderColor](arkts-arkui-commonmethod-c.md#bordercolor-1)、[borderRadius](arkts-arkui-commonmethod-c.md#borderradius-1)生效，需要将[borderColor](arkts-arkui-commonmethod-c.md#bordercolor-1)、[borderRadius](arkts-arkui-commonmethod-c.md#borderradius-1)设置在[border](arkts-arkui-commonmethod-c.md#border-1)后。
+> color、radius缺省时，为了保证[borderColor](arkts-arkui-commonmethod-c.md#bordercolor)、[borderRadius](arkts-arkui-commonmethod-c.md#borderradius)生效，需要将[borderColor](arkts-arkui-commonmethod-c.md#bordercolor)、[borderRadius](arkts-arkui-commonmethod-c.md#borderradius)设置在[border](arkts-arkui-commonmethod-c.md#border)后。
 
 **起始版本：** 7
 
@@ -2349,7 +2268,6 @@ border(value: BorderOptions): T
 | --- | --- |
 | T | Current component. |
 
-<a id="bordercolor"></a>
 ## borderColor
 
 ```TypeScript
@@ -2380,7 +2298,6 @@ borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
 | --- | --- |
 | T | Current component. |
 
-<a id="borderimage"></a>
 ## borderImage
 
 ```TypeScript
@@ -2411,7 +2328,6 @@ Sets the border image of the component.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@form@atomicservice |
 
-<a id="borderradius"></a>
 ## borderRadius
 
 ```TypeScript
@@ -2434,7 +2350,7 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) \| BorderRadiuses \| LocalizedBorderRadiuses | 是 | Radius of the border corners. The value can be expressed as a percentage of the component's width. When combined with the [clip](arkts-arkui-commonmethod-c.md#clip-1)attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.<br>**起始版本：** 12 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) \| BorderRadiuses \| LocalizedBorderRadiuses | 是 | Radius of the border corners. The value can be expressed as a percentage of the component's width. When combined with the [clip](arkts-arkui-commonmethod-c.md#clip)attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -2442,7 +2358,6 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 | --- | --- |
 | T | Current component. |
 
-<a id="borderradius-1"></a>
 ## borderRadius
 
 ```TypeScript
@@ -2478,7 +2393,6 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: Re
 | --- | --- |
 | T | Current component. |
 
-<a id="borderstyle"></a>
 ## borderStyle
 
 ```TypeScript
@@ -2509,7 +2423,6 @@ borderStyle(value: BorderStyle | EdgeStyles): T
 | --- | --- |
 | T | Current component. |
 
-<a id="borderwidth"></a>
 ## borderWidth
 
 ```TypeScript
@@ -2540,7 +2453,6 @@ borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T
 | --- | --- |
 | T | Current component. |
 
-<a id="brightness"></a>
 ## brightness
 
 ```TypeScript
@@ -2569,14 +2481,13 @@ brightness(value: number): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="brightness-1"></a>
 ## brightness
 
 ```TypeScript
 brightness(brightness: Optional<number>): T
 ```
 
-为组件添加高光效果。不通过该接口设置时，默认无变化。与[brightness](arkts-arkui-commonmethod-c.md#brightness-1)相比，brightness参数新增了对undefined类型的支持。
+为组件添加高光效果。不通过该接口设置时，默认无变化。与[brightness](arkts-arkui-commonmethod-c.md#brightness)相比，brightness参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2600,7 +2511,6 @@ brightness(brightness: Optional<number>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="chainmode"></a>
 ## chainMode
 
 ```TypeScript
@@ -2632,7 +2542,6 @@ chainMode(direction: Axis, style: ChainStyle): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="chainweight"></a>
 ## chainWeight
 
 ```TypeScript
@@ -2640,10 +2549,9 @@ chainWeight(chainWeight: ChainWeightOptions): T
 ```
 
 对形成链的组件进行重新布局。仅当父组件为[RelativeContainer](RelativeContainer)时生效。
-
 > **说明：**  
 >  
-> 从API version 23开始，支持 [attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+> 从API version 23开始，支持 [attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 14
 
@@ -2667,7 +2575,6 @@ chainWeight(chainWeight: ChainWeightOptions): T
 | --- | --- |
 | T | Current component. |
 
-<a id="clickeffect"></a>
 ## clickEffect
 
 ```TypeScript
@@ -2698,14 +2605,13 @@ clickEffect(value: ClickEffect | null): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="clickeffect-1"></a>
 ## clickEffect
 
 ```TypeScript
 clickEffect(effect: Optional<ClickEffect | null>): T
 ```
 
-设置当前组件的点击回弹效果。与[clickEffect](arkts-arkui-commonmethod-c.md#clickeffect-1)相比，新增了对undefined类型的支持。
+设置当前组件的点击回弹效果。与[clickEffect](arkts-arkui-commonmethod-c.md#clickeffect)相比，新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2729,7 +2635,6 @@ clickEffect(effect: Optional<ClickEffect | null>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="clip"></a>
 ## clip
 
 ```TypeScript
@@ -2762,14 +2667,13 @@ clip(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="clip-1"></a>
 ## clip
 
 ```TypeScript
 clip(clip: Optional<boolean>): T
 ```
 
-是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。与[clip<sup>12+</sup>](arkts-arkui-commonmethod-c.md#clip-1)相比，新增了对undefined类型的支持。
+是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。与[clip<sup>12+</sup>](arkts-arkui-commonmethod-c.md#clip)相比，新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2795,7 +2699,6 @@ clip(clip: Optional<boolean>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="clip-2"></a>
 ## clip
 
 ```TypeScript
@@ -2803,14 +2706,13 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 ```
 
 按指定的形状对当前组件进行裁剪。
-
 > **说明：**
 
 **起始版本：** 7
 
 **废弃版本：** 12
 
-**替代接口：** [clipShape(value:](arkts-arkui-commonmethod-c.md#clipshape-1)
+**替代接口：** [clipShape(value:](arkts-arkui-commonmethod-c.md#clipshape)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2832,7 +2734,6 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="clipshape"></a>
 ## clipShape
 
 ```TypeScript
@@ -2840,14 +2741,13 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 ```
 
 按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。
-
 > **说明：**  
 >  
 > 不同的形状支持的属性范围不同，路径是一种形状，除此之外还有椭圆、矩形等形状。  
 >  
 > 路径的形状不支持设置宽度和高度。具体形状支持的属性参考具体形状的文档。  
 >  
-> 形状中的[fill](../arkts-apis/arkts-arkui-arkui-shape-commonshapemethod-c.md#fill-1)属性对clipShape接口不生效。
+> 形状中的[fill](arkts-arkui-commonshapemethod-c.md#fill)属性对clipShape接口不生效。
 
 **起始版本：** 12
 
@@ -2873,22 +2773,20 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="clipshape-1"></a>
 ## clipShape
 
 ```TypeScript
 clipShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T
 ```
 
-按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。与[clipShape<sup>12+</sup>](arkts-arkui-commonmethod-c.md#clipshape-1)相比，新增了对undefined类型的支持。
-
+按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。与[clipShape<sup>12+</sup>](arkts-arkui-commonmethod-c.md#clipshape)相比，新增了对undefined类型的支持。
 > **说明：**  
 >  
 > 不同的形状支持的属性范围不同，路径是一种形状，除此之外还有椭圆、矩形等形状。  
 >  
 > 路径的形状不支持设置宽度和高度。具体形状支持的属性参考具体形状的文档。  
 >  
-> 形状中的[fill](../arkts-apis/arkts-arkui-arkui-shape-commonshapemethod-c.md#fill-1)属性对clipShape接口不生效。
+> 形状中的[fill](arkts-arkui-commonshapemethod-c.md#fill)属性对clipShape接口不生效。
 
 **起始版本：** 18
 
@@ -2914,7 +2812,6 @@ clipShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): 
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="colorblend"></a>
 ## colorBlend
 
 ```TypeScript
@@ -2943,14 +2840,13 @@ colorBlend(value: Color | string | Resource): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="colorblend-1"></a>
 ## colorBlend
 
 ```TypeScript
 colorBlend(color: Optional<Color | string | Resource>): T
 ```
 
-为组件添加颜色叠加效果。与[colorBlend](arkts-arkui-commonmethod-c.md#colorblend-1)相比，color参数新增了对undefined类型的支持。
+为组件添加颜色叠加效果。与[colorBlend](arkts-arkui-commonmethod-c.md#colorblend)相比，color参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2974,7 +2870,6 @@ colorBlend(color: Optional<Color | string | Resource>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="compositingfilter"></a>
 ## compositingFilter
 
 ```TypeScript
@@ -2982,10 +2877,9 @@ compositingFilter(filter: Filter): T
 ```
 
 设置合成滤镜视觉效果。
-
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -3009,7 +2903,6 @@ compositingFilter(filter: Filter): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="constraintsize"></a>
 ## constraintSize
 
 ```TypeScript
@@ -3056,7 +2949,6 @@ constraintSize(value: ConstraintSizeOptions): T
 | --- | --- |
 | T | Current component. |
 
-<a id="contrast"></a>
 ## contrast
 
 ```TypeScript
@@ -3085,14 +2977,13 @@ contrast(value: number): T
 | --- | --- |
 | T | 返回当前组件。@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="contrast-1"></a>
 ## contrast
 
 ```TypeScript
 contrast(contrast: Optional<number>): T
 ```
 
-为组件添加对比度效果。不通过该接口设置时，默认无变化。与[contrast](arkts-arkui-commonmethod-c.md#contrast-1)相比，contrast参数新增了对undefined类型的支持。
+为组件添加对比度效果。不通过该接口设置时，默认无变化。与[contrast](arkts-arkui-commonmethod-c.md#contrast)相比，contrast参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -3116,7 +3007,6 @@ contrast(contrast: Optional<number>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="customproperty"></a>
 ## customProperty
 
 ```TypeScript
@@ -3125,7 +3015,7 @@ customProperty(name: string, value: Optional<Object>): T
 
 设置组件的自定义属性。
 
-API版本26.0.0之前，[自定义组件](docroot://ui/state-management/arkts-create-custom-components.md)不支持设置自定义属性。
+API版本26.0.0之前，[自定义组件](../../../ui/state-management/arkts-create-custom-components.md)不支持设置自定义属性。
 
 从API版本26.0.0开始，自定义组件支持设置并读取自定义属性。
 
@@ -3152,15 +3042,13 @@ API版本26.0.0之前，[自定义组件](docroot://ui/state-management/arkts-cr
 | --- | --- |
 | T | 当前控件 |
 
-<a id="defaultfocus"></a>
 ## defaultFocus
 
 ```TypeScript
 defaultFocus(value: boolean): T
 ```
 
-设置当前组件是否为当前[层级页面](docroot://ui/arkts-common-events-focus-event.md#基础概念)上的默认焦点。当未设置defaultFocus时，组件默认不为当前层级页面的默认焦点。
-
+设置当前组件是否为当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)上的默认焦点。当未设置defaultFocus时，组件默认不为当前层级页面的默认焦点。
 > **说明：**  
 >  
 > 可以设置默认焦点的页面指的是支持页面路由或是弹窗类的容器组件，例如Page、NaviDestination、NavBar、PopUp、Dialog等。
@@ -3177,7 +3065,7 @@ defaultFocus(value: boolean): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 设置当前组件是否为当前[层级页面](docroot://ui/arkts-common-events-focus-event.md#基础概念)上的默认焦点，仅在初次创建的层级页面第一次进入时生效。<br/>**说明：** <br/>值为true则表示为默认焦点，值为false时无效。<br/>若层级页面内无任何组件设置defaultFocus(true)，API version 11及之前，层级页面的默认焦点是当前层级页面上首个可获焦的非容器组件，API version 11之后，层级页面的默认焦点就是层级页面的根容器。<br/>若某层级页面内有多个组件设置了defaultFocus(true)，则以组件树深度遍历找到的第一个组件为默认焦点。 |
+| value | boolean | 是 | 设置当前组件是否为当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)上的默认焦点，仅在初次创建的层级页面第一次进入时生效。<br/>**说明：** <br/>值为true则表示为默认焦点，值为false时无效。<br/>若层级页面内无任何组件设置defaultFocus(true)，API version 11及之前，层级页面的默认焦点是当前层级页面上首个可获焦的非容器组件，API version 11之后，层级页面的默认焦点就是层级页面的根容器。<br/>若某层级页面内有多个组件设置了defaultFocus(true)，则以组件树深度遍历找到的第一个组件为默认焦点。 |
 
 **返回值：**
 
@@ -3185,14 +3073,13 @@ defaultFocus(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="direction"></a>
 ## direction
 
 ```TypeScript
 direction(value: Direction): T
 ```
 
-设置当前组件绘制区域内主轴方向上的布局，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置当前组件绘制区域内主轴方向上的布局，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -3216,7 +3103,6 @@ direction(value: Direction): T
 | --- | --- |
 | T | Current component. |
 
-<a id="displaypriority"></a>
 ## displayPriority
 
 ```TypeScript
@@ -3247,7 +3133,6 @@ displayPriority(value: number): T
 | --- | --- |
 | T | Current component. |
 
-<a id="doublesided"></a>
 ## doubleSided
 
 ```TypeScript
@@ -3278,7 +3163,6 @@ doubleSided(value: Optional<boolean>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="dragpreview"></a>
 ## dragPreview
 
 ```TypeScript
@@ -3301,7 +3185,7 @@ dragPreview(value: CustomBuilder | DragItemInfo | string): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-custombuilder-t.md) \| DragItemInfo \| string | 是 | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart-1)拖拽方式中有效。<br/>当组件支持拖拽并同时设置[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu-1)的预览图时，则长按浮起的预览图以[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu-1)设置的预览图为准。开发者在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart-1)中返回的背板图优先级低于[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview-1)设置的预览图，当设置了[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview-1)预览图时，拖拽过程中的背板图使用[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview-1)预览图。由于[CustomBuilder](docroot://reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](arkts-arkui-dragiteminfo-i.md)中的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)方式。<br/> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件[Visibility](../arkts-apis/arkts-arkui-visibility-e.md)属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。<br>**起始版本：** 12 |
+| value | [CustomBuilder](arkts-arkui-custombuilder-t.md) \| DragItemInfo \| string | 是 | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart)拖拽方式中有效。<br/>当组件支持拖拽并同时设置[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu)的预览图时，则长按浮起的预览图以[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu)设置的预览图为准。开发者在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart)中返回的背板图优先级低于[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview)设置的预览图，当设置了[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview)预览图时，拖拽过程中的背板图使用[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview)预览图。由于[CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](arkts-arkui-dragiteminfo-i.md)中的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)方式。<br/> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件[Visibility](../arkts-apis/arkts-arkui-visibility-e.md)属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -3309,7 +3193,6 @@ dragPreview(value: CustomBuilder | DragItemInfo | string): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="dragpreview-1"></a>
 ## dragPreview
 
 ```TypeScript
@@ -3317,10 +3200,9 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 ```
 
 自定义组件拖拽过程中的预览图，仅用于设置浮起效果或者禁用浮起效果。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 15
 
@@ -3336,8 +3218,8 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| preview | [CustomBuilder](arkts-arkui-custombuilder-t.md) \| DragItemInfo \| string | 是 | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart-1)拖拽方式中有效。<br/>当组件支持拖拽并同时设置[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu-1)的预览图时，则长按浮起的预览图以[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu-1)设置的预览图为准。开发者在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart-1)中返回的背板图优先级低于[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview-1)设置的预览图，当设置了[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview-1)预览图时，拖拽过程中的背板图使用[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview-1)预览图。由于[CustomBuilder](arkts-arkui-custombuilder-t.md)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](arkts-arkui-dragiteminfo-i.md)中的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)方式。<br/> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件[Visibility](../arkts-apis/arkts-arkui-visibility-e.md)属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。 |
-| config | [PreviewConfiguration](arkts-arkui-previewconfiguration-i.md) | 否 | 对自定义拖拽过程中的预览图进行配置。<br/>只对[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview-1)中的预览生效。 |
+| preview | [CustomBuilder](arkts-arkui-custombuilder-t.md) \| DragItemInfo \| string | 是 | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart)拖拽方式中有效。<br/>当组件支持拖拽并同时设置[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu)的预览图时，则长按浮起的预览图以[bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu)设置的预览图为准。开发者在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart)中返回的背板图优先级低于[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview)设置的预览图，当设置了[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview)预览图时，拖拽过程中的背板图使用[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview)预览图。由于[CustomBuilder](arkts-arkui-custombuilder-t.md)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](arkts-arkui-dragiteminfo-i.md)中的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)方式。<br/> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件[Visibility](../arkts-apis/arkts-arkui-visibility-e.md)属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。 |
+| config | [PreviewConfiguration](arkts-arkui-previewconfiguration-i.md) | 否 | 对自定义拖拽过程中的预览图进行配置。<br/>只对[dragPreview](arkts-arkui-commonmethod-c.md#dragpreview)中的预览生效。 |
 
 **返回值：**
 
@@ -3345,7 +3227,6 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="dragpreviewoptions"></a>
 ## dragPreviewOptions
 
 ```TypeScript
@@ -3353,10 +3234,9 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 ```
 
 设置拖拽过程中预览图处理模式，数量角标的显示以及预览图浮起的交互模式。不支持onItemDragStart拖拽方式。
-
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -3381,7 +3261,6 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="draggable"></a>
 ## draggable
 
 ```TypeScript
@@ -3412,7 +3291,6 @@ draggable(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="drawmodifier"></a>
 ## drawModifier
 
 ```TypeScript
@@ -3443,7 +3321,6 @@ Sets the drawModifier of the current component.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="enableclicksoundeffect"></a>
 ## enableClickSoundEffect
 
 ```TypeScript
@@ -3474,7 +3351,6 @@ enableClickSoundEffect(enabled: boolean | undefined): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="enabled"></a>
 ## enabled
 
 ```TypeScript
@@ -3505,7 +3381,6 @@ enabled(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="expandsafearea"></a>
 ## expandSafeArea
 
 ```TypeScript
@@ -3513,7 +3388,6 @@ expandSafeArea(types?: Array<SafeAreaType>, edges?: Array<SafeAreaEdge>): T
 ```
 
 控制组件扩展其安全区域。
-
 > **说明：**  
 >  
 > - 设置expandSafeArea属性进行组件绘制扩展时，建议组件尺寸不要设置固定宽高（百分比除外），当设置固定宽高（包括设置'auto'）时，扩展安全区域的方向只支持[SafeAreaEdge.TOP,SafeAreaEdge.START]，扩展后的组件尺寸保持不变。  
@@ -3561,7 +3435,6 @@ expandSafeArea(types?: Array<SafeAreaType>, edges?: Array<SafeAreaEdge>): T
 | --- | --- |
 | T | Current component. |
 
-<a id="flexbasis"></a>
 ## flexBasis
 
 ```TypeScript
@@ -3592,7 +3465,6 @@ flexBasis(value: number | string): T
 | --- | --- |
 | T | Current component. |
 
-<a id="flexgrow"></a>
 ## flexGrow
 
 ```TypeScript
@@ -3623,7 +3495,6 @@ flexGrow(value: number): T
 | --- | --- |
 | T | Current component. |
 
-<a id="flexshrink"></a>
 ## flexShrink
 
 ```TypeScript
@@ -3648,7 +3519,7 @@ flexShrink(value: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置父容器压缩尺寸分配给此属性所在组件的比例。<br>取值限定为整数，父容器为 [Column](Column) 、[Row](Row)时， 取值范围[0,+∞).<br/>父容器为[Flex](Flex)时，默认值：1<br/>[constraintSize](arkts-arkui-commonmethod-c.md#constraintsize-1)限制组件的尺寸范围.Column和Row即使设置了constraintSize，在未设置主轴尺寸width/height/size时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时flexShrink不生效.<br/>设置异常值时，该属性为默认值。 |
+| value | number | 是 | 设置父容器压缩尺寸分配给此属性所在组件的比例。<br>取值限定为整数，父容器为 [Column](Column) 、[Row](Row)时， 取值范围[0,+∞).<br/>父容器为[Flex](Flex)时，默认值：1<br/>[constraintSize](arkts-arkui-commonmethod-c.md#constraintsize)限制组件的尺寸范围.Column和Row即使设置了constraintSize，在未设置主轴尺寸width/height/size时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时flexShrink不生效.<br/>设置异常值时，该属性为默认值。 |
 
 **返回值：**
 
@@ -3656,7 +3527,6 @@ flexShrink(value: number): T
 | --- | --- |
 | T | Current component. |
 
-<a id="focusbox"></a>
 ## focusBox
 
 ```TypeScript
@@ -3687,7 +3557,6 @@ focusBox(style: FocusBoxStyle): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="focusontouch"></a>
 ## focusOnTouch
 
 ```TypeScript
@@ -3716,7 +3585,6 @@ focusOnTouch(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="focusscopeid"></a>
 ## focusScopeId
 
 ```TypeScript
@@ -3737,7 +3605,7 @@ focusScopeId(id: string, isGroup?: boolean): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 设置当前容器组件的id标识。<br/>**说明：** <br/>单个[层级页面](docroot://ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一，不可重复。 |
+| id | string | 是 | 设置当前容器组件的id标识。<br/>**说明：** <br/>单个[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一，不可重复。 |
 | isGroup | boolean | 否 | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br/>**说明：** <br/>焦点组不可嵌套，不可重复配置。<br/> 焦点组不能和tabIndex混用。<br/>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br/>1.焦点组容器内只能通过方向键走焦，tab键会使焦点跳出焦点组容器。<br/>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。 |
 
 **返回值：**
@@ -3746,7 +3614,6 @@ focusScopeId(id: string, isGroup?: boolean): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="focusscopeid-1"></a>
 ## focusScopeId
 
 ```TypeScript
@@ -3767,7 +3634,7 @@ focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 设置当前容器组件的id标识。<br/>**说明：** <br/>单个[层级页面](docroot://ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一，不可重复。 |
+| id | string | 是 | 设置当前容器组件的id标识。<br/>**说明：** <br/>单个[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一，不可重复。 |
 | isGroup | boolean | 否 | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br/>**说明：** <br/>焦点组不可嵌套，不可重复配置。<br/> 焦点组不能和tabIndex混用。<br/>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br/>1.焦点组容器内只能通过方向键走焦，tab键会使焦点跳出焦点组容器。<br/>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。 |
 | arrowStepOut | boolean | 否 | 设置能否使用方向键走焦出当前焦点组。true表示可以使用方向键走焦出当前焦点组，false表示不能使用方向键走焦出当前焦点组。默认值为true。 |
 
@@ -3777,14 +3644,13 @@ focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="focusscopepriority"></a>
 ## focusScopePriority
 
 ```TypeScript
 focusScopePriority(scopeId: string, priority?: FocusPriority): T
 ```
 
-设置当前组件在指定容器内获焦的优先级。需要配合[focusScopeId](arkts-arkui-commonmethod-c.md#focusscopeid-1)一起使用。
+设置当前组件在指定容器内获焦的优先级。需要配合[focusScopeId](arkts-arkui-commonmethod-c.md#focusscopeid)一起使用。
 
 **起始版本：** 12
 
@@ -3799,7 +3665,7 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | scopeId | string | 是 |  |
-| priority | [FocusPriority](../arkts-apis/arkts-arkui-focuspriority-e.md) | 否 | 获焦优先级。<br/>**说明：** <br/>未设置priority时，默认为AUTO优先级。<br/>优先级对走焦以及获焦组件的影响：<br/>1.容器整体获焦（[层级页面](docroot://ui/arkts-common-events-focus-event.md#基础概念)切换/焦点切换到焦点组/容器组件使用requestFocus申请焦点）时，若容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由容器内上次获焦的组件获焦。<br/>2.容器非整体获焦（非焦点组场景下使用tab键/方向键走焦）时，若容器为首次获焦，则容器内优先级最高的组件获焦，若容器非首次获焦，不考虑优先级按照位置顺序走焦。 |
+| priority | [FocusPriority](../arkts-apis/arkts-arkui-focuspriority-e.md) | 否 | 获焦优先级。<br/>**说明：** <br/>未设置priority时，默认为AUTO优先级。<br/>优先级对走焦以及获焦组件的影响：<br/>1.容器整体获焦（[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)切换/焦点切换到焦点组/容器组件使用requestFocus申请焦点）时，若容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由容器内上次获焦的组件获焦。<br/>2.容器非整体获焦（非焦点组场景下使用tab键/方向键走焦）时，若容器为首次获焦，则容器内优先级最高的组件获焦，若容器非首次获焦，不考虑优先级按照位置顺序走焦。 |
 
 **返回值：**
 
@@ -3807,7 +3673,6 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="focusable"></a>
 ## focusable
 
 ```TypeScript
@@ -3836,7 +3701,6 @@ focusable(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="foregroundblurstyle"></a>
 ## foregroundBlurStyle
 
 ```TypeScript
@@ -3844,10 +3708,9 @@ foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T
 ```
 
 为当前组件提供内容模糊能力。
-
 > **说明：**  
 >  
-> 从API version 18开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 18开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -3862,7 +3725,7 @@ foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [BlurStyle](arkts-arkui-blurstyle-e.md) | 是 | 内容模糊样式。 |
-| options | [ForegroundBlurStyleOptions](arkts-arkui-foregroundblurstyleoptions-i.md) | 否 | 内容模糊选项。默认值请参考[ForegroundBlurStyleOptions](docroot://reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyleoptions)。 |
+| options | [ForegroundBlurStyleOptions](arkts-arkui-foregroundblurstyleoptions-i.md) | 否 | 内容模糊选项。默认值请参考[ForegroundBlurStyleOptions](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyleoptions)。 |
 
 **返回值：**
 
@@ -3870,14 +3733,13 @@ foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="foregroundblurstyle-1"></a>
 ## foregroundBlurStyle
 
 ```TypeScript
 foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOptions): T
 ```
 
-为当前组件提供内容模糊能力。与[foregroundBlurStyle](arkts-arkui-commonmethod-c.md#foregroundblurstyle-1)相比，style参数新增了对undefined类型的支持。
+为当前组件提供内容模糊能力。与[foregroundBlurStyle](arkts-arkui-commonmethod-c.md#foregroundblurstyle)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -3900,19 +3762,17 @@ foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOpt
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="foregroundblurstyle-2"></a>
 ## foregroundBlurStyle
 
 ```TypeScript
 foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-为当前组件提供内容模糊能力。与[foregroundBlurStyle<sup>18+</sup>](arkts-arkui-commonmethod-c.md#foregroundblurstyle-1)相比，新增了sysOptions参数，即支持系统自适应调节参数。
-
+为当前组件提供内容模糊能力。与[foregroundBlurStyle<sup>18+</sup>](arkts-arkui-commonmethod-c.md#foregroundblurstyle)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 > **说明：**  
 >  
 > foregroundBlurStyle接口为实时模糊接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口  
-> [blur](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-effectkit-filter-i.md#blur-1)。最佳实践请参考：  
+> [blur](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-effectkit-filter-i.md#blur)。最佳实践请参考：  
 > [图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
 
 **起始版本：** 19
@@ -3937,7 +3797,6 @@ foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOpt
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="foregroundcolor"></a>
 ## foregroundColor
 
 ```TypeScript
@@ -3966,7 +3825,6 @@ Provides the general foreground color capability of UI components, and assigns c
 | --- | --- |
 | T | Current component.@stagemodelonly@crossplatform@atomicservice |
 
-<a id="foregroundcolor-1"></a>
 ## foregroundColor
 
 ```TypeScript
@@ -3995,7 +3853,6 @@ Provides the general foreground color capability of UI components, and assigns c
 | --- | --- |
 | T | Current component.@stagemodelonly@crossplatform@atomicservice |
 
-<a id="foregroundeffect"></a>
 ## foregroundEffect
 
 ```TypeScript
@@ -4024,7 +3881,6 @@ foregroundEffect(options: ForegroundEffectOptions): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="foregroundfilter"></a>
 ## foregroundFilter
 
 ```TypeScript
@@ -4032,10 +3888,9 @@ foregroundFilter(filter: Filter): T
 ```
 
 设置前景滤镜（内容）视觉效果。
-
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -4059,7 +3914,6 @@ foregroundFilter(filter: Filter): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="freeze"></a>
 ## freeze
 
 ```TypeScript
@@ -4067,10 +3921,9 @@ freeze(value: boolean): T
 ```
 
 设置当前控件和子控件是否整体离屏渲染绘制后重复绘制缓存，不再进行内部属性更新。
-
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -4092,18 +3945,16 @@ freeze(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@atomicservice |
 
-<a id="freeze-1"></a>
 ## freeze
 
 ```TypeScript
 freeze(freeze: Optional<boolean>): T
 ```
 
-设置当前控件和子控件是否整体离屏渲染绘制后重复绘制缓存，不再进行内部属性更新。与[freeze](arkts-arkui-commonmethod-c.md#freeze-1)相比，freeze参数新增了对undefined类型的支持。
-
+设置当前控件和子控件是否整体离屏渲染绘制后重复绘制缓存，不再进行内部属性更新。与[freeze](arkts-arkui-commonmethod-c.md#freeze)相比，freeze参数新增了对undefined类型的支持。
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 18
 
@@ -4125,7 +3976,6 @@ freeze(freeze: Optional<boolean>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@atomicservice |
 
-<a id="geometrytransition"></a>
 ## geometryTransition
 
 ```TypeScript
@@ -4154,7 +4004,6 @@ geometryTransition(id: string): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="geometrytransition-1"></a>
 ## geometryTransition
 
 ```TypeScript
@@ -4186,7 +4035,6 @@ geometryTransition(id: string, options?: GeometryTransitionOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="gesture"></a>
 ## gesture
 
 ```TypeScript
@@ -4194,10 +4042,9 @@ gesture(gesture: GestureType, mask?: GestureMask): T
 ```
 
 绑定手势。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 7
 
@@ -4220,7 +4067,6 @@ gesture(gesture: GestureType, mask?: GestureMask): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="gesturemodifier"></a>
 ## gestureModifier
 
 ```TypeScript
@@ -4229,7 +4075,7 @@ gestureModifier(modifier: GestureModifier): T
 
 动态设置组件绑定的手势。
 
-说明：gestureModifier不支持自定义组件。该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+说明：gestureModifier不支持自定义组件。该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -4253,7 +4099,6 @@ gestureModifier(modifier: GestureModifier): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="grayscale"></a>
 ## grayscale
 
 ```TypeScript
@@ -4282,14 +4127,13 @@ grayscale(value: number): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="grayscale-1"></a>
 ## grayscale
 
 ```TypeScript
 grayscale(grayscale: Optional<number>): T
 ```
 
-为组件添加灰度效果。上层渲染灰度会覆盖下层子组件渲染。不通过该接口设置时，默认无变化。与[grayscale](arkts-arkui-commonmethod-c.md#grayscale-1)相比，grayscale参数新增了对undefined类型的支持。
+为组件添加灰度效果。上层渲染灰度会覆盖下层子组件渲染。不通过该接口设置时，默认无变化。与[grayscale](arkts-arkui-commonmethod-c.md#grayscale)相比，grayscale参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -4313,7 +4157,6 @@ grayscale(grayscale: Optional<number>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="gridoffset"></a>
 ## gridOffset
 
 ```TypeScript
@@ -4346,7 +4189,6 @@ The default offset column number indicates the number of offset columns of the c
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@atomicservice |
 
-<a id="gridspan"></a>
 ## gridSpan
 
 ```TypeScript
@@ -4379,7 +4221,6 @@ Default number of occupied columns, indicating the number of occupied grid colum
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@atomicservice |
 
-<a id="groupdefaultfocus"></a>
 ## groupDefaultFocus
 
 ```TypeScript
@@ -4400,7 +4241,7 @@ groupDefaultFocus(value: boolean): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 设置当前组件是否为当前组件所在容器获焦时的默认焦点，仅在初次创建容器节点第一次获焦时生效。true表示当前组件为所在容器获焦时的默认焦点，false表示当前组件不是所在容器获焦时的默认焦点。<br/>**说明：** <br/>必须与[tabIndex](arkts-arkui-commonmethod-c.md#tabindex-1)联合使用，当某个容器设置了tabIndex，且容器内某子组件或容器自身设置了groupDefaultFocus(true)，当该容器首次TAB键获焦时，会自动将焦点转移至该指定的组件上。若容器内（包含容器本身）有多个组件设置了groupDefaultFocus(true)，则以组件树深度遍历找到的第一个组件为最终结果。 |
+| value | boolean | 是 | 设置当前组件是否为当前组件所在容器获焦时的默认焦点，仅在初次创建容器节点第一次获焦时生效。true表示当前组件为所在容器获焦时的默认焦点，false表示当前组件不是所在容器获焦时的默认焦点。<br/>**说明：** <br/>必须与[tabIndex](arkts-arkui-commonmethod-c.md#tabindex)联合使用，当某个容器设置了tabIndex，且容器内某子组件或容器自身设置了groupDefaultFocus(true)，当该容器首次TAB键获焦时，会自动将焦点转移至该指定的组件上。若容器内（包含容器本身）有多个组件设置了groupDefaultFocus(true)，则以组件树深度遍历找到的第一个组件为最终结果。 |
 
 **返回值：**
 
@@ -4408,7 +4249,6 @@ groupDefaultFocus(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="height"></a>
 ## height
 
 ```TypeScript
@@ -4439,7 +4279,6 @@ height(value: Length): T
 | --- | --- |
 | T | Current component. |
 
-<a id="height-1"></a>
 ## height
 
 ```TypeScript
@@ -4472,7 +4311,6 @@ height(heightValue: Length | LayoutPolicy): T
 | --- | --- |
 | T | Current component. |
 
-<a id="hittestbehavior"></a>
 ## hitTestBehavior
 
 ```TypeScript
@@ -4503,7 +4341,6 @@ hitTestBehavior(value: HitTestMode): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="hovereffect"></a>
 ## hoverEffect
 
 ```TypeScript
@@ -4532,7 +4369,6 @@ hoverEffect(value: HoverEffect): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="huerotate"></a>
 ## hueRotate
 
 ```TypeScript
@@ -4561,14 +4397,13 @@ hueRotate(value: number | string): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="huerotate-1"></a>
 ## hueRotate
 
 ```TypeScript
 hueRotate(rotation: Optional<number | string>): T
 ```
 
-色相旋转效果。不通过该接口设置时，默认无变化。与[hueRotate](arkts-arkui-commonmethod-c.md#huerotate-1)相比，rotation参数新增了对undefined类型的支持。
+色相旋转效果。不通过该接口设置时，默认无变化。与[hueRotate](arkts-arkui-commonmethod-c.md#huerotate)相比，rotation参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -4592,7 +4427,6 @@ hueRotate(rotation: Optional<number | string>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="id"></a>
 ## id
 
 ```TypeScript
@@ -4623,7 +4457,6 @@ Id. User can set an id to the component to identify it.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform@form@atomicservice |
 
-<a id="ignorelayoutsafearea"></a>
 ## ignoreLayoutSafeArea
 
 ```TypeScript
@@ -4631,7 +4464,6 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 ```
 
 扩展组件布局时的安全区。
-
 > **说明：**  
 >  
 >忽略布局安全区边缘的组件，如果其宽度或高度设置了 [LayoutPolicy.matchParent](arkts-arkui-layoutpolicy-c.md#matchparent)，其大小和位置都会改变，否则仅改变其位置。  
@@ -4665,7 +4497,6 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 | --- | --- |
 | T | Current component. |
 
-<a id="inspectorlabel"></a>
 ## inspectorLabel
 
 ```TypeScript
@@ -4696,7 +4527,6 @@ inspectorLabel(label: string | undefined): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@atomicservice |
 
-<a id="invert"></a>
 ## invert
 
 ```TypeScript
@@ -4725,14 +4555,13 @@ invert(value: number | InvertOptions): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="invert-1"></a>
 ## invert
 
 ```TypeScript
 invert(options: Optional<number | InvertOptions>): T
 ```
 
-反转输入的图像。与[invert](arkts-arkui-commonmethod-c.md#invert-1)相比，options参数新增了对undefined类型的支持。
+反转输入的图像。与[invert](arkts-arkui-commonmethod-c.md#invert)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -4756,7 +4585,6 @@ invert(options: Optional<number | InvertOptions>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="key"></a>
 ## key
 
 ```TypeScript
@@ -4787,7 +4615,6 @@ key(value: string): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="keyboardshortcut"></a>
 ## keyboardShortcut
 
 ```TypeScript
@@ -4820,14 +4647,13 @@ keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?:
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="layoutgravity"></a>
 ## layoutGravity
 
 ```TypeScript
 layoutGravity(alignment: LocalizedAlignment): T
 ```
 
-单独设置Stack组件中子组件的对齐规则，仅当父组件为Stack时生效。与align属性同时使用时，layoutGravity优先级更高，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+单独设置Stack组件中子组件的对齐规则，仅当父组件为Stack时生效。与align属性同时使用时，layoutGravity优先级更高，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 20
 
@@ -4853,7 +4679,6 @@ layoutGravity(alignment: LocalizedAlignment): T
 | --- | --- |
 | T | Current component. |
 
-<a id="layoutweight"></a>
 ## layoutWeight
 
 ```TypeScript
@@ -4876,7 +4701,7 @@ layoutWeight(value: number | string): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number \| string | 是 | 组件的布局权重。<br>父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的元素优先占位，这些元素占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeig ht属性生效值大于0的子元素会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略元素本身的尺寸设置。<br/>默认值：0<br/>**说明：** <br/>仅在[Row](Row)/[Column](Column)/[Flex](Flex)布局中生效。<br/>可选值为大于等于0的数字，或者可以转换为数字的字符串。<br/>如果容器中有子元素设置了layoutWeight属性，且设置的属性值大于0，则所有子元素不会再基于[flexShrink](arkts-arkui-commonmethod-c.md#flexshrink-1)和[flexGrow](arkts-arkui-commonmethod-c.md#flexgrow-1)布局。 |
+| value | number \| string | 是 | 组件的布局权重。<br>父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的元素优先占位，这些元素占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeig ht属性生效值大于0的子元素会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略元素本身的尺寸设置。<br/>默认值：0<br/>**说明：** <br/>仅在[Row](Row)/[Column](Column)/[Flex](Flex)布局中生效。<br/>可选值为大于等于0的数字，或者可以转换为数字的字符串。<br/>如果容器中有子元素设置了layoutWeight属性，且设置的属性值大于0，则所有子元素不会再基于[flexShrink](arkts-arkui-commonmethod-c.md#flexshrink)和[flexGrow](arkts-arkui-commonmethod-c.md#flexgrow)布局。 |
 
 **返回值：**
 
@@ -4884,7 +4709,6 @@ layoutWeight(value: number | string): T
 | --- | --- |
 | T | Current component. |
 
-<a id="lightupeffect"></a>
 ## lightUpEffect
 
 ```TypeScript
@@ -4905,7 +4729,7 @@ lightUpEffect(value: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`value < 0` 或者 `value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。 |
+| value | number | 是 | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`value &lt; 0` 或者 `value &gt; 1`为异常情况，`value &lt; 0`按0处理，`value &gt; 1`按1处理。 |
 
 **返回值：**
 
@@ -4913,14 +4737,13 @@ lightUpEffect(value: number): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="lightupeffect-1"></a>
 ## lightUpEffect
 
 ```TypeScript
 lightUpEffect(degree: Optional<number>): T
 ```
 
-设置组件图像亮起程度。与[lightUpEffect<sup>12+</sup>](arkts-arkui-commonmethod-c.md#lightupeffect-1)相比，degree参数新增了对undefined类型的支持。
+设置组件图像亮起程度。与[lightUpEffect<sup>12+</sup>](arkts-arkui-commonmethod-c.md#lightupeffect)相比，degree参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -4934,7 +4757,7 @@ lightUpEffect(degree: Optional<number>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| degree | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`degree < 0` 或者 `degree > 1`为异常情况，`degree < 0`按0处理，`degree > 1`按1处理。<br/>当degree的值为undefined时，恢复为亮起为1的效果。 |
+| degree | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`degree &lt; 0` 或者 `degree &gt; 1`为异常情况，`degree &lt; 0`按0处理，`degree &gt; 1`按1处理。<br/>当degree的值为undefined时，恢复为亮起为1的效果。 |
 
 **返回值：**
 
@@ -4942,7 +4765,6 @@ lightUpEffect(degree: Optional<number>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="lineargradient"></a>
 ## linearGradient
 
 ```TypeScript
@@ -4971,14 +4793,13 @@ linearGradient(value: LinearGradientOptions): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="lineargradient-1"></a>
 ## linearGradient
 
 ```TypeScript
 linearGradient(options: Optional<LinearGradientOptions>): T
 ```
 
-线性渐变。与[linearGradient](arkts-arkui-commonmethod-c.md#lineargradient-1)相比，options参数新增了对undefined类型的支持。
+线性渐变。与[linearGradient](arkts-arkui-commonmethod-c.md#lineargradient)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -5002,7 +4823,6 @@ linearGradient(options: Optional<LinearGradientOptions>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="lineargradientblur"></a>
 ## linearGradientBlur
 
 ```TypeScript
@@ -5032,14 +4852,13 @@ linearGradientBlur(value: number, options: LinearGradientBlurOptions): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@atomicservice |
 
-<a id="lineargradientblur-1"></a>
 ## linearGradientBlur
 
 ```TypeScript
 linearGradientBlur(blurRadius: Optional<number>, options: Optional<LinearGradientBlurOptions>): T
 ```
 
-为组件添加内容线性渐变模糊效果。与[linearGradientBlur<sup>12+</sup>](arkts-arkui-commonmethod-c.md#lineargradientblur-1)相比，新增了对undefined类型的支持。
+为组件添加内容线性渐变模糊效果。与[linearGradientBlur<sup>12+</sup>](arkts-arkui-commonmethod-c.md#lineargradientblur)相比，新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -5062,7 +4881,6 @@ linearGradientBlur(blurRadius: Optional<number>, options: Optional<LinearGradien
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@atomicservice |
 
-<a id="margin"></a>
 ## margin
 
 ```TypeScript
@@ -5095,14 +4913,13 @@ margin(value: Margin | Length | LocalizedMargin): T
 | --- | --- |
 | T | Current component. |
 
-<a id="markanchor"></a>
 ## markAnchor
 
 ```TypeScript
 markAnchor(value: Position | LocalizedPosition): T
 ```
 
-设置元素在位置定位时的锚点，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置元素在位置定位时的锚点，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -5118,7 +4935,7 @@ markAnchor(value: Position | LocalizedPosition): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Position](../arkts-apis/arkts-arkui-display-position-i.md) \| LocalizedPosition | 是 | Positioning anchor that offsets an element from the position specified by [position](arkts-arkui-commonmethod-c.md#position-1) or [offset](arkts-arkui-commonmethod-c.md#offset-1)**.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})** has the same effect as **.position({x: value1 - value3, y: value2 - value4})**. The same applies to **offset**.<br>If **.markAnchor({x: value1, y: value2})** is set separately, the effect is the same as that of **.offset({x: -value1, y: -value2})**.<br>API version 9 and earlier: The default value is **{x: 0, y: 0}**.<br>API version 10: no default value.<br>This attribute does not take effect when it is set to an abnormal value.<br>**起始版本：** 12 |
+| value | [Position](../arkts-apis/arkts-arkui-display-position-i.md) \| LocalizedPosition | 是 | Positioning anchor that offsets an element from the position specified by [position](arkts-arkui-commonmethod-c.md#position) or [offset](arkts-arkui-commonmethod-c.md#offset)**.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})** has the same effect as **.position({x: value1 - value3, y: value2 - value4})**. The same applies to **offset**.<br>If **.markAnchor({x: value1, y: value2})** is set separately, the effect is the same as that of **.offset({x: -value1, y: -value2})**.<br>API version 9 and earlier: The default value is **{x: 0, y: 0}**.<br>API version 10: no default value.<br>This attribute does not take effect when it is set to an abnormal value.<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -5126,7 +4943,6 @@ markAnchor(value: Position | LocalizedPosition): T
 | --- | --- |
 | T | Current component. |
 
-<a id="mask"></a>
 ## mask
 
 ```TypeScript
@@ -5157,14 +4973,13 @@ mask(value: ProgressMask): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="mask-1"></a>
 ## mask
 
 ```TypeScript
 mask(mask: Optional<ProgressMask>): T
 ```
 
-为组件上添加可调节进度的遮罩。与[mask<sup>12+</sup>](arkts-arkui-commonmethod-c.md#mask-1)相比，新增了对undefined类型的支持。
+为组件上添加可调节进度的遮罩。与[mask<sup>12+</sup>](arkts-arkui-commonmethod-c.md#mask)相比，新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -5188,7 +5003,6 @@ mask(mask: Optional<ProgressMask>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="mask-2"></a>
 ## mask
 
 ```TypeScript
@@ -5196,14 +5010,13 @@ mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute |
 ```
 
 为组件上添加指定形状的遮罩。
-
 > **说明：**
 
 **起始版本：** 7
 
 **废弃版本：** 12
 
-**替代接口：** [maskShape(value:](arkts-arkui-commonmethod-c.md#maskshape-1)
+**替代接口：** [maskShape(value:](arkts-arkui-commonmethod-c.md#maskshape)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5225,7 +5038,6 @@ mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute |
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="maskshape"></a>
 ## maskShape
 
 ```TypeScript
@@ -5258,14 +5070,13 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="maskshape-1"></a>
 ## maskShape
 
 ```TypeScript
 maskShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T
 ```
 
-为组件上添加指定形状的遮罩。与[maskShape<sup>12+</sup>](arkts-arkui-commonmethod-c.md#maskshape-1)相比，新增了对undefined类型的支持。
+为组件上添加指定形状的遮罩。与[maskShape<sup>12+</sup>](arkts-arkui-commonmethod-c.md#maskshape)相比，新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -5291,18 +5102,16 @@ maskShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): 
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="materialfilter"></a>
 ## materialFilter
 
 ```TypeScript
 materialFilter(filter: Filter | undefined): T
 ```
 
-设置系统材质滤镜效果，系统材质滤镜的绘制早于[backgroundFilter](arkts-arkui-commonmethod-c.md#backgroundfilter-1)绘制，即位于backgroundFilter的更底层。
-
+设置系统材质滤镜效果，系统材质滤镜的绘制早于[backgroundFilter](arkts-arkui-commonmethod-c.md#backgroundfilter)绘制，即位于backgroundFilter的更底层。
 > **说明：**  
 >  
-> 该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 23
 
@@ -5326,7 +5135,6 @@ materialFilter(filter: Filter | undefined): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="monopolizeevents"></a>
 ## monopolizeEvents
 
 ```TypeScript
@@ -5347,7 +5155,7 @@ monopolizeEvents(monopolize: boolean): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monopolize | boolean | 是 | 组件是否独占事件。true表示组件独占事件，false表示组件不独占事件。默认值：false说明：1、如果第一根手指触发了组件事件独占，在抬起前又按下了一根手指，则第二根手指的交互继续处于组件独占状态，依次类推。2、如果开发者通过[parallelGesture](arkts-arkui-commonmethod-c.md#parallelgesture-1)绑定了与子组件同时触发的手势，如PanGesture，子组件设置了独占控制且首个响应事件，则父组件的手势不会响应。 |
+| monopolize | boolean | 是 | 组件是否独占事件。true表示组件独占事件，false表示组件不独占事件。默认值：false说明：1、如果第一根手指触发了组件事件独占，在抬起前又按下了一根手指，则第二根手指的交互继续处于组件独占状态，依次类推。2、如果开发者通过[parallelGesture](arkts-arkui-commonmethod-c.md#parallelgesture)绑定了与子组件同时触发的手势，如PanGesture，子组件设置了独占控制且首个响应事件，则父组件的手势不会响应。 |
 
 **返回值：**
 
@@ -5355,7 +5163,6 @@ monopolizeEvents(monopolize: boolean): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="motionblur"></a>
 ## motionBlur
 
 ```TypeScript
@@ -5363,7 +5170,6 @@ motionBlur(value: MotionBlurOptions):T
 ```
 
 在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。
-
 > **说明：**  
 >  
 > - 不建议在组件内转场、共享元素转场、组件内隐式元素转场和粒子动画场景中使用该属性，否则会产生非预期效果。  
@@ -5398,14 +5204,13 @@ motionBlur(value: MotionBlurOptions):T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="motionblur-1"></a>
 ## motionBlur
 
 ```TypeScript
 motionBlur(motionBlur: Optional<MotionBlurOptions>):T
 ```
 
-在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。与[motionBlur](arkts-arkui-commonmethod-c.md#motionblur-1)相比，motionBlur参数新增了对undefined类型的支持。
+在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。与[motionBlur](arkts-arkui-commonmethod-c.md#motionblur)相比，motionBlur参数新增了对undefined类型的支持。
 
 1、不建议在组件内转场、共享元素转场、组件内隐式元素转场、粒子动画场景下使用该属性，否则会产生非预期效果。
 
@@ -5439,7 +5244,6 @@ motionBlur(motionBlur: Optional<MotionBlurOptions>):T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="motionpath"></a>
 ## motionPath
 
 ```TypeScript
@@ -5468,7 +5272,6 @@ motionPath(value: MotionPathOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="mouseresponseregion"></a>
 ## mouseResponseRegion
 
 ```TypeScript
@@ -5499,7 +5302,6 @@ mouseResponseRegion(value: Array<Rectangle> | Rectangle): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="nextfocus"></a>
 ## nextFocus
 
 ```TypeScript
@@ -5528,7 +5330,6 @@ nextFocus(nextStep: Optional<FocusMovement>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="obscured"></a>
 ## obscured
 
 ```TypeScript
@@ -5559,14 +5360,13 @@ Sets obscured
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="offset"></a>
 ## offset
 
 ```TypeScript
 offset(value: Position | Edges | LocalizedEdges): T
 ```
 
-相对偏移，组件相对原本的布局位置进行偏移。和position一起使用时，position生效，offset不生效，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+相对偏移，组件相对原本的布局位置进行偏移。和position一起使用时，position生效，offset不生效，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -5590,7 +5390,6 @@ offset(value: Position | Edges | LocalizedEdges): T
 | --- | --- |
 | T | Current component. |
 
-<a id="onaccessibilityactionintercept"></a>
 ## onAccessibilityActionIntercept
 
 ```TypeScript
@@ -5623,7 +5422,6 @@ onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): 
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="onaccessibilityfocus"></a>
 ## onAccessibilityFocus
 
 ```TypeScript
@@ -5656,7 +5454,6 @@ Register accessibility focus callback,when the component is focused or out of fo
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="onaccessibilityhover"></a>
 ## onAccessibilityHover
 
 ```TypeScript
@@ -5687,7 +5484,6 @@ Trigger a accessibility hover event.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onaccessibilityhovertransparent"></a>
 ## onAccessibilityHoverTransparent
 
 ```TypeScript
@@ -5718,7 +5514,6 @@ prompt for current component and descendants unable to handle accessibility hove
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onappear"></a>
 ## onAppear
 
 ```TypeScript
@@ -5726,7 +5521,6 @@ onAppear(event: () => void): T
 ```
 
 组件挂载后触发此回调。
-
 > **说明：**  
 >  
 > 回调的调用时机有可能发生在组件布局渲染后。
@@ -5753,7 +5547,6 @@ onAppear(event: () => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onareachange"></a>
 ## onAreaChange
 
 ```TypeScript
@@ -5762,11 +5555,10 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 组件区域变化时触发该回调。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。
 
-由绘制变化所导致的渲染属性变化不会响应回调，如[translate](arkts-arkui-commonmethod-c.md#translate-1)、[offset](arkts-arkui-commonmethod-c.md#offset-1)、[markAnchor](arkts-arkui-commonmethod-c.md#markanchor-1)、[scale](arkts-arkui-commonmethod-c.md#scale-1)、[transform](arkts-arkui-commonmethod-c.md#transform-1)。若组件自身位置由绘制变化决定也不会响应回调，如[bindSheet](arkts-arkui-commonmethod-c.md#bindsheet-1)。
-
+由绘制变化所导致的渲染属性变化不会响应回调，如[translate](arkts-arkui-commonmethod-c.md#translate)、[offset](arkts-arkui-commonmethod-c.md#offset)、[markAnchor](arkts-arkui-commonmethod-c.md#markanchor)、[scale](arkts-arkui-commonmethod-c.md#scale)、[transform](arkts-arkui-commonmethod-c.md#transform)。若组件自身位置由绘制变化决定也不会响应回调，如[bindSheet](arkts-arkui-commonmethod-c.md#bindsheet)。
 > **说明：**  
 >  
-> 当组件同时绑定onAreaChange事件和[position](arkts-arkui-commonmethod-c.md#position-1)属性时，onAreaChange事件响应设置  
+> 当组件同时绑定onAreaChange事件和[position](arkts-arkui-commonmethod-c.md#position)属性时，onAreaChange事件响应设置  
 > [Position](../arkts-apis/arkts-arkui-position-t.md)类型的position属性变化，不响应设置[Edges](../arkts-apis/arkts-arkui-graphics-edges-i.md)和[LocalizedEdges](../arkts-apis/arkts-arkui-localizededges-i.md)  
 > 类型的position属性变化。
 
@@ -5790,7 +5582,6 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onareachange-1"></a>
 ## onAreaChange
 
 ```TypeScript
@@ -5822,15 +5613,13 @@ onAreaChange(event: AreaChangeCallback, options?: AreaChangeOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onattach"></a>
 ## onAttach
 
 ```TypeScript
 onAttach(callback: Callback<void>): T
 ```
 
-组件挂载到组件树时触发此回调。由于以下说明中的限制，建议使用[onAppear](arkts-arkui-commonmethod-c.md#onappear-1)替代此接口。
-
+组件挂载到组件树时触发此回调。由于以下说明中的限制，建议使用[onAppear](arkts-arkui-commonmethod-c.md#onappear)替代此接口。
 > **说明：**  
 >  
 > - 回调在组件布局渲染前调用。  
@@ -5859,7 +5648,6 @@ onAttach(callback: Callback<void>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onaxisevent"></a>
 ## onAxisEvent
 
 ```TypeScript
@@ -5890,7 +5678,6 @@ onAxisEvent(event: Callback<AxisEvent>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onblur"></a>
 ## onBlur
 
 ```TypeScript
@@ -5919,7 +5706,6 @@ onBlur(event: () => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onchildtouchtest"></a>
 ## onChildTouchTest
 
 ```TypeScript
@@ -5927,12 +5713,11 @@ onChildTouchTest(event: (value: Array<TouchTestInfo>) => TouchResult): T
 ```
 
 当前组件通过设置回调，可自定义触摸测试并控制触摸测试中的子节点行为。
-
 > **说明：**  
 >  
 > - 子节点信息数组中仅包含命名节点的信息，即开发者通过id属性设置了id的节点。  
 >  
-> - 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> - 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -5956,7 +5741,6 @@ onChildTouchTest(event: (value: Array<TouchTestInfo>) => TouchResult): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onclick"></a>
 ## onClick
 
 ```TypeScript
@@ -5966,7 +5750,6 @@ onClick(event: (event: ClickEvent) => void): T
 点击动作触发该回调。
 
 触发点击事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown，事件的[SourceType](arkts-arkui-sourcetype-e.md)值为KEY，JOYSTICK。
-
 > **说明：**  
 >  
 > 从API version 9开始，使用卡片能力时存在以下限制：  
@@ -5997,7 +5780,6 @@ onClick(event: (event: ClickEvent) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onclick-1"></a>
 ## onClick
 
 ```TypeScript
@@ -6011,14 +5793,13 @@ onClick(event: Callback<ClickEvent>, distanceThreshold: number): T
 新增distanceThreshold参数，设置点击手势移动阈值。手指移动超出阈值时，点击手势识别失败。
 
 对于无手指移动距离限制的点击场景，建议使用原有接口。若需限制点击时手指移动范围，建议使用该接口。
-
 > **说明：**  
 >  
 > - 从API version 12开始，在使用卡片能力时，存在以下限制：  
 > > 1. 如果手指按下的持续时间超过800ms，不能触发点击事件。  
 > > 2. 如果手指按下后移动位移超过20px，不能触发点击事件。  
 >  
-> - 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> - 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -6045,14 +5826,13 @@ onClick(event: Callback<ClickEvent>, distanceThreshold: number): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondetach"></a>
 ## onDetach
 
 ```TypeScript
 onDetach(callback: Callback<void>): T
 ```
 
-组件从组件树卸载时触发此回调。建议使用[onDisAppear](arkts-arkui-commonmethod-c.md#ondisappear-1)替代此接口。
+组件从组件树卸载时触发此回调。建议使用[onDisAppear](arkts-arkui-commonmethod-c.md#ondisappear)替代此接口。
 
 **起始版本：** 12
 
@@ -6076,7 +5856,6 @@ onDetach(callback: Callback<void>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondigitalcrown"></a>
 ## onDigitalCrown
 
 ```TypeScript
@@ -6084,10 +5863,9 @@ onDigitalCrown(handler: Optional<Callback<CrownEvent>>): T
 ```
 
 组件获焦以后旋转表冠时触发该回调。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 18
 
@@ -6111,7 +5889,6 @@ onDigitalCrown(handler: Optional<Callback<CrownEvent>>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondisappear"></a>
 ## onDisAppear
 
 ```TypeScript
@@ -6142,7 +5919,6 @@ onDisAppear(event: () => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondragend"></a>
 ## onDragEnd
 
 ```TypeScript
@@ -6173,14 +5949,13 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondragenter"></a>
 ## onDragEnter
 
 ```TypeScript
 onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
 ```
 
-拖拽进入组件范围内时，触发回调，当监听了[onDrop](arkts-arkui-commonmethod-c.md#ondrop-1)事件时，此事件才有效。
+拖拽进入组件范围内时，触发回调，当监听了[onDrop](arkts-arkui-commonmethod-c.md#ondrop)事件时，此事件才有效。
 
 **起始版本：** 8
 
@@ -6202,14 +5977,13 @@ onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondragleave"></a>
 ## onDragLeave
 
 ```TypeScript
 onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
 ```
 
-拖拽离开组件范围内时，触发回调，当监听了[onDrop](arkts-arkui-commonmethod-c.md#ondrop-1)事件时，此事件才有效。
+拖拽离开组件范围内时，触发回调，当监听了[onDrop](arkts-arkui-commonmethod-c.md#ondrop)事件时，此事件才有效。
 
 **起始版本：** 8
 
@@ -6231,14 +6005,13 @@ onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondragmove"></a>
 ## onDragMove
 
 ```TypeScript
 onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
 ```
 
-拖拽在组件范围内移动时，触发回调，当监听了[onDrop](arkts-arkui-commonmethod-c.md#ondrop-1)事件时，此事件才有效。
+拖拽在组件范围内移动时，触发回调，当监听了[onDrop](arkts-arkui-commonmethod-c.md#ondrop)事件时，此事件才有效。
 
 **起始版本：** 8
 
@@ -6260,7 +6033,6 @@ onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondragspringloading"></a>
 ## onDragSpringLoading
 
 ```TypeScript
@@ -6269,7 +6041,7 @@ onDragSpringLoading(callback: Callback<SpringLoadingContext> | null, configurati
 
 绑定此事件的组件可作为具有悬停检测功能的拖拽响应目标。当拖拽对象悬停在目标上时，触发回调通知。此时只有一个目标可以成为响应方，并且子组件始终具有更高的响应优先级。
 
-关于悬停检测的触发机制及详细使用方法，请参考开发指南[支持悬停检测](docroot://ui/arkts-common-events-drag-event.md#支持悬停检测)。
+关于悬停检测的触发机制及详细使用方法，请参考开发指南[支持悬停检测](../../../ui/arkts-common-events-drag-event.md#支持悬停检测)。
 
 **起始版本：** 20
 
@@ -6294,7 +6066,6 @@ onDragSpringLoading(callback: Callback<SpringLoadingContext> | null, configurati
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondragstart"></a>
 ## onDragStart
 
 ```TypeScript
@@ -6309,10 +6080,9 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 - 如果开发者设置了拖拽数据，则不再使用系统默认填充的拖拽数据。
 
 文本类组件[Text](../../apis-arkgraphics2d/arkts-apis/arkts-graphics-text.md)、[Search](arkts-arkui-search.md)、[TextInput](arkts-arkui-textinput.md)、[TextArea](arkts-arkui-textarea.md)、[RichEditor](arkts-arkui-richeditor.md)对选中的文本内容进行拖拽时，不支持自定义预览图。当onDragStart与菜单预览一起使用或使用了默认支持拖拽能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
-
 > **说明：**  
 >  
-> 从API version 13开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 13开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 8
 
@@ -6334,7 +6104,6 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondrop"></a>
 ## onDrop
 
 ```TypeScript
@@ -6363,14 +6132,13 @@ onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ondrop-1"></a>
 ## onDrop
 
 ```TypeScript
 onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
 ```
 
-绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.[setResult](arkts-arkui-dragevent-i.md#setresult-1)()设置拖拽接收的结果，若拖拽组件为系统支持默认拖入的组件，以系统实际处理数据结果为准，其它组件则系统按照数据接收成功处理。
+绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.[setResult](arkts-arkui-dragevent-i.md#setresult)()设置拖拽接收的结果，若拖拽组件为系统支持默认拖入的组件，以系统实际处理数据结果为准，其它组件则系统按照数据接收成功处理。
 
 **起始版本：** 15
 
@@ -6395,7 +6163,6 @@ onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onfocus"></a>
 ## onFocus
 
 ```TypeScript
@@ -6424,7 +6191,6 @@ onFocus(event: () => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onfocusaxisevent"></a>
 ## onFocusAxisEvent
 
 ```TypeScript
@@ -6455,7 +6221,6 @@ onFocusAxisEvent(event: Callback<FocusAxisEvent>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ongesturecollectintercept"></a>
 ## onGestureCollectIntercept
 
 ```TypeScript
@@ -6486,7 +6251,6 @@ onGestureCollectIntercept(callback: GestureCollectInterceptCallback): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ongesturejudgebegin"></a>
 ## onGestureJudgeBegin
 
 ```TypeScript
@@ -6494,7 +6258,6 @@ onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent
 ```
 
 为组件绑定自定义手势判定回调。当手势即将成功时，触发用户定义的回调获取结果。
-
 > **说明：**  
 >  
 > 在Text组件中使用该接口时，不支持对点击事件进行自定义手势判定。
@@ -6521,7 +6284,6 @@ onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ongesturerecognizerjudgebegin"></a>
 ## onGestureRecognizerJudgeBegin
 
 ```TypeScript
@@ -6552,7 +6314,6 @@ onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ongesturerecognizerjudgebegin-1"></a>
 ## onGestureRecognizerJudgeBegin
 
 ```TypeScript
@@ -6563,7 +6324,7 @@ onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exp
 
 新增exposeInnerGesture参数作为是否将ArkUI系统组合组件的内置组件的手势暴露给开发者的标识。当该标识置为true时，将ArkUI系统组合组件的内置组件的手势暴露给开发者。
 
-对于不需要将ArkUI系统组合组件的内置组件的手势暴露给开发者的场景，建议采用原有[onGestureRecognizerJudgeBegin](arkts-arkui-commonmethod-c.md#ongesturerecognizerjudgebegin-1)接口。若要求将ArkUI系统组合组件的内置组件的手势暴露给开发者，建议使用该接口并将exposeInnerGesture设置为true。
+对于不需要将ArkUI系统组合组件的内置组件的手势暴露给开发者的场景，建议采用原有[onGestureRecognizerJudgeBegin](arkts-arkui-commonmethod-c.md#ongesturerecognizerjudgebegin)接口。若要求将ArkUI系统组合组件的内置组件的手势暴露给开发者，建议使用该接口并将exposeInnerGesture设置为true。
 
 **起始版本：** 13
 
@@ -6580,7 +6341,7 @@ onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [GestureRecognizerJudgeBeginCallback](arkts-arkui-gesturerecognizerjudgebegincallback-t.md) | 是 | 自定义手势识别器判定回调，当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
-| exposeInnerGesture | boolean | 是 | 暴露内部手势标识。<br/>默认值：false<br/>**说明：** <br/>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](arkts-arkui-tabs.md)，其他组件请不要设置此参数。<br/>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](arkts-arkui-commonmethod-c.md#ongesturerecognizerjudgebegin-1)相同。 |
+| exposeInnerGesture | boolean | 是 | 暴露内部手势标识。<br/>默认值：false<br/>**说明：** <br/>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](arkts-arkui-tabs.md)，其他组件请不要设置此参数。<br/>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](arkts-arkui-commonmethod-c.md#ongesturerecognizerjudgebegin)相同。 |
 
 **返回值：**
 
@@ -6588,7 +6349,6 @@ onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exp
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onhover"></a>
 ## onHover
 
 ```TypeScript
@@ -6617,7 +6377,6 @@ onHover(event: (isHover: boolean, event: HoverEvent) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onhovermove"></a>
 ## onHoverMove
 
 ```TypeScript
@@ -6648,7 +6407,6 @@ onHoverMove(event: Callback<HoverEvent>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onkeyevent"></a>
 ## onKeyEvent
 
 ```TypeScript
@@ -6677,7 +6435,6 @@ onKeyEvent(event: (event: KeyEvent) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onkeyevent-1"></a>
 ## onKeyEvent
 
 ```TypeScript
@@ -6708,7 +6465,6 @@ onKeyEvent(event: Callback<KeyEvent, boolean>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onkeyeventdispatch"></a>
 ## onKeyEventDispatch
 
 ```TypeScript
@@ -6717,7 +6473,7 @@ onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T
 
 对应组件收到按键事件时，会触发该回调，该按键事件不会分发给其子组件。不支持构造KeyEvent进行分发，只支持分发已有的按键事件。
 
-该回调的返回值为`true`时，视作该按键事件已被消费，不会[冒泡](docroot://ui/arkts-interaction-basic-principles.md#事件冒泡)给父组件处理。
+该回调的返回值为`true`时，视作该按键事件已被消费，不会[冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)给父组件处理。
 
 **起始版本：** 15
 
@@ -6741,7 +6497,6 @@ onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onkeypreime"></a>
 ## onKeyPreIme
 
 ```TypeScript
@@ -6774,7 +6529,6 @@ onKeyPreIme(event: Callback<KeyEvent, boolean>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onmouse"></a>
 ## onMouse
 
 ```TypeScript
@@ -6803,7 +6557,6 @@ onMouse(event: (event: MouseEvent) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onneedsoftkeyboard"></a>
 ## onNeedSoftkeyboard
 
 ```TypeScript
@@ -6834,7 +6587,6 @@ onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | unde
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onpredrag"></a>
 ## onPreDrag
 
 ```TypeScript
@@ -6842,10 +6594,9 @@ onPreDrag(callback: Callback<PreDragStatus>): T
 ```
 
 绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。拖拽发起前的各阶段可参考[PreDragStatus](arkts-arkui-predragstatus-e.md)。此接口不支持在鼠标拖拽中触发。
-
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -6869,7 +6620,6 @@ onPreDrag(callback: Callback<PreDragStatus>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onsizechange"></a>
 ## onSizeChange
 
 ```TypeScript
@@ -6877,15 +6627,14 @@ onSizeChange(event: SizeChangeCallback): T
 ```
 
 组件区域变化时触发该回调。仅会响应由布局变化所导致的组件尺寸发生变化时的回调。
-
 > **说明：**  
 >  
 > 1. 该接口在布局发生变化时触发，由于计算精度的关系，其返回值可能与真实物理尺寸存在细微的差异。  
 >  
 > 2. onSizeChange是布局过程中触发的同步回调，直接在其中更改状态变量存在被纳入动画闭包的风险。具体而言，动画会对比动画前的布局与动画闭包后的布局，若onSizeChange的回调在动画前的布局中同步触发，那么  
 > onSizeChange回调中所做的变更将与动画闭包中的变更一同纳入动画过程。为了避免此类问题，可在onSizeChange中使用延迟时间为0的  
-> [setTimeout](api/@internal/ets/global:setTimeout)或  
-> [postFrameCallback](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#postframecallback-1)，将UI处理逻辑  
+> [setTimeout](../arkts-apis/arkts-arkui-global-settimeout-f.md#settimeout)或  
+> [postFrameCallback](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#postframecallback)，将UI处理逻辑  
 > 延后至异步执行。
 
 **起始版本：** 12
@@ -6912,14 +6661,13 @@ onSizeChange(event: SizeChangeCallback): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ontouch"></a>
 ## onTouch
 
 ```TypeScript
 onTouch(event: (event: TouchEvent) => void): T
 ```
 
-手指触摸动作触发该回调。触摸事件默认[冒泡](docroot://ui/arkts-interaction-basic-principles.md#事件冒泡)，会被多个组件消费，如果需阻止冒泡，可参考[TouchEvent](arkts-arkui-touchevent-i.md)的stopPropagation方法。鼠标左键按下时，对应的事件也会转换成触摸事件并触发该回调。
+手指触摸动作触发该回调。触摸事件默认[冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)，会被多个组件消费，如果需阻止冒泡，可参考[TouchEvent](arkts-arkui-touchevent-i.md)的stopPropagation方法。鼠标左键按下时，对应的事件也会转换成触摸事件并触发该回调。
 
 **起始版本：** 7
 
@@ -6941,7 +6689,6 @@ onTouch(event: (event: TouchEvent) => void): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ontouchintercept"></a>
 ## onTouchIntercept
 
 ```TypeScript
@@ -6972,14 +6719,13 @@ onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="ontouchtestdone"></a>
 ## onTouchTestDone
 
 ```TypeScript
 onTouchTestDone(callback: TouchTestDoneCallback): T
 ```
 
-提供在[触摸测试](docroot://ui/arkts-interaction-basic-principles.md#触摸测试)结束后，指定手势识别器是否参与后续处理的能力。
+提供在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，指定手势识别器是否参与后续处理的能力。
 
 **起始版本：** 20
 
@@ -6995,7 +6741,7 @@ onTouchTestDone(callback: TouchTestDoneCallback): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [TouchTestDoneCallback](arkts-arkui-touchtestdonecallback-t.md) | 是 | 回调函数，用于指定手势识别器是否参与后续处理。在[触摸测试](docroot://ui/arkts-interaction-basic-principles.md#触摸测试)结束后，开始识别用户手势之前，会触发该回调来动态指定手势识别器是否参与后续处理。 |
+| callback | [TouchTestDoneCallback](arkts-arkui-touchtestdonecallback-t.md) | 是 | 回调函数，用于指定手势识别器是否参与后续处理。在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，开始识别用户手势之前，会触发该回调来动态指定手势识别器是否参与后续处理。 |
 
 **返回值：**
 
@@ -7003,7 +6749,6 @@ onTouchTestDone(callback: TouchTestDoneCallback): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onvisibleareaapproximatechange"></a>
 ## onVisibleAreaApproximateChange
 
 ```TypeScript
@@ -7011,10 +6756,9 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 ```
 
 设置onVisibleAreaApproximateChange事件的回调参数，限制它的执行间隔。
-
 > **说明：**  
 >  
-> 从API version 23开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 23开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 17
 
@@ -7039,29 +6783,27 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onvisibleareachange"></a>
 ## onVisibleAreaChange
 
 ```TypeScript
 onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback): T
 ```
 
-组件可见区域变化时触发该回调。开发指导及常见问题请参考[感知组件可见性](docroot://ui/arkts-manage-components-visibility.md)指南。
-
+组件可见区域变化时触发该回调。开发指导及常见问题请参考[感知组件可见性](../../../ui/arkts-manage-components-visibility.md)指南。
 > **说明：**  
 >  
-> - 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。  
+> - 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。  
 >  
 > - 仅提供自身节点相对于所有祖先节点（直到window边界）的相对裁切面积与自身面积的比值及其变化趋势。  
 >  
-> - 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如[Stack](../../apis-arkts/arkts-apis/arkts-arkts-util-stack-stack-c.md)、[Z序控制](arkts-arkui-commonmethod-c.md#zindex-1)、  
-> [rotate](arkts-arkui-commonmethod-c.md#rotate-1)等。  
+> - 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如[Stack](../../apis-arkts/arkts-apis/arkts-arkts-util-stack-stack-c.md)、[Z序控制](arkts-arkui-commonmethod-c.md#zindex)、  
+> [rotate](arkts-arkui-commonmethod-c.md#rotate)等。  
 >  
-> - 不支持非挂树节点的可见面积变化计算。例如，预加载的节点、通过[overlay](arkts-arkui-commonmethod-c.md#overlay-1)能力挂载的自定义节点。  
+> - 不支持非挂树节点的可见面积变化计算。例如，预加载的节点、通过[overlay](arkts-arkui-commonmethod-c.md#overlay)能力挂载的自定义节点。  
 >  
-> - 不支持[scale](arkts-arkui-commonmethod-c.md#scale-1)属性，如果想要支持  
-> [scale](arkts-arkui-commonmethod-c.md#scale-1)，则需使用  
-> [onVisibleAreaChange<sup>22+</sup>](arkts-arkui-commonmethod-c.md#onvisibleareachange-1)  
+> - 不支持[scale](arkts-arkui-commonmethod-c.md#scale)属性，如果想要支持  
+> [scale](arkts-arkui-commonmethod-c.md#scale)，则需使用  
+> [onVisibleAreaChange<sup>22+</sup>](arkts-arkui-commonmethod-c.md#onvisibleareachange)  
 > ，将measureFromViewport设置为true。
 
 **起始版本：** 9
@@ -7085,14 +6827,13 @@ onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onvisibleareachange-1"></a>
 ## onVisibleAreaChange
 
 ```TypeScript
 onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback, measureFromViewport: boolean): T
 ```
 
-组件可见区域变化时触发该回调。可以通过measureFromViewport设置可见区域计算模式。开发指导及常见问题请参考[感知组件可见性](docroot://ui/arkts-manage-components-visibility.md)指南。
+组件可见区域变化时触发该回调。可以通过measureFromViewport设置可见区域计算模式。开发指导及常见问题请参考[感知组件可见性](../../../ui/arkts-manage-components-visibility.md)指南。
 
 **起始版本：** 22
 
@@ -7110,7 +6851,7 @@ onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback, mea
 | --- | --- | --- | --- |
 | ratios | Array&lt;number&gt; | 是 | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**说明：**<br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
 | event | [VisibleAreaChangeCallback](arkts-arkui-visibleareachangecallback-t.md) | 是 | 组件可见区域变化事件的回调。 |
-| measureFromViewport | boolean | 是 | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](arkts-arkui-commonmethod-c.md#clip-1) 属性设置。如果父组件的[clip](arkts-arkui-commonmethod-c.md#clip-1)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](arkts-arkui-commonmethod-c.md#clip-1)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](arkts-arkui-commonmethod-c.md#clip-1)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>measureFromViewport设置为true时，祖先节点设置[scale](arkts-arkui-commonmethod-c.md#scale-1)属性，组件可见比例会被正确计算。 |
+| measureFromViewport | boolean | 是 | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](arkts-arkui-commonmethod-c.md#clip) 属性设置。如果父组件的[clip](arkts-arkui-commonmethod-c.md#clip)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](arkts-arkui-commonmethod-c.md#clip)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](arkts-arkui-commonmethod-c.md#clip)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>measureFromViewport设置为true时，祖先节点设置[scale](arkts-arkui-commonmethod-c.md#scale)属性，组件可见比例会被正确计算。 |
 
 **返回值：**
 
@@ -7118,7 +6859,6 @@ onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback, mea
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="opacity"></a>
 ## opacity
 
 ```TypeScript
@@ -7149,14 +6889,13 @@ opacity(value: number | Resource): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="opacity-1"></a>
 ## opacity
 
 ```TypeScript
 opacity(opacity: Optional<number | Resource>): T
 ```
 
-设置组件的不透明度。与[opacity](arkts-arkui-commonmethod-c.md#opacity-1)相比，opacity参数新增了对undefined类型的支持。
+设置组件的不透明度。与[opacity](arkts-arkui-commonmethod-c.md#opacity)相比，opacity参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7182,7 +6921,6 @@ opacity(opacity: Optional<number | Resource>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="outline"></a>
 ## outline
 
 ```TypeScript
@@ -7213,14 +6951,13 @@ outline(value: OutlineOptions): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="outline-1"></a>
 ## outline
 
 ```TypeScript
 outline(options: Optional<OutlineOptions>): T
 ```
 
-统一外描边样式设置接口。与[outline](arkts-arkui-commonmethod-c.md#outline-1)相比，options参数新增了对undefined类型的支持。
+统一外描边样式设置接口。与[outline](arkts-arkui-commonmethod-c.md#outline)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7244,7 +6981,6 @@ outline(options: Optional<OutlineOptions>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="outlinecolor"></a>
 ## outlineColor
 
 ```TypeScript
@@ -7275,14 +7011,13 @@ outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="outlinecolor-1"></a>
 ## outlineColor
 
 ```TypeScript
 outlineColor(color: Optional<ResourceColor | EdgeColors | LocalizedEdgeColors>): T
 ```
 
-设置元素的外描边颜色。不设置该接口时，默认显示为黑色。与[outlineColor](arkts-arkui-commonmethod-c.md#outlinecolor-1)相比，color参数新增了对undefined类型的支持。
+设置元素的外描边颜色。不设置该接口时，默认显示为黑色。与[outlineColor](arkts-arkui-commonmethod-c.md#outlinecolor)相比，color参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7306,7 +7041,6 @@ outlineColor(color: Optional<ResourceColor | EdgeColors | LocalizedEdgeColors>):
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="outlineradius"></a>
 ## outlineRadius
 
 ```TypeScript
@@ -7337,14 +7071,13 @@ outlineRadius(value: Dimension | OutlineRadiuses): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="outlineradius-1"></a>
 ## outlineRadius
 
 ```TypeScript
 outlineRadius(radius: Optional<Dimension | OutlineRadiuses>): T
 ```
 
-设置元素的外描边圆角半径。不设置该接口时，默认无变化。与[outlineRadius](arkts-arkui-commonmethod-c.md#outlineradius-1)相比，radius参数新增了对undefined类型的支持。
+设置元素的外描边圆角半径。不设置该接口时，默认无变化。与[outlineRadius](arkts-arkui-commonmethod-c.md#outlineradius)相比，radius参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7368,7 +7101,6 @@ outlineRadius(radius: Optional<Dimension | OutlineRadiuses>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="outlinestyle"></a>
 ## outlineStyle
 
 ```TypeScript
@@ -7399,14 +7131,13 @@ outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="outlinestyle-1"></a>
 ## outlineStyle
 
 ```TypeScript
 outlineStyle(style: Optional<OutlineStyle | EdgeOutlineStyles>): T
 ```
 
-设置元素的外描边样式。不设置该接口时，默认显示为一条实线。与[outlineStyle](arkts-arkui-commonmethod-c.md#outlinestyle-1)相比，style参数新增了对undefined类型的支持。
+设置元素的外描边样式。不设置该接口时，默认显示为一条实线。与[outlineStyle](arkts-arkui-commonmethod-c.md#outlinestyle)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7430,7 +7161,6 @@ outlineStyle(style: Optional<OutlineStyle | EdgeOutlineStyles>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="outlinewidth"></a>
 ## outlineWidth
 
 ```TypeScript
@@ -7461,14 +7191,13 @@ outlineWidth(value: Dimension | EdgeOutlineWidths): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="outlinewidth-1"></a>
 ## outlineWidth
 
 ```TypeScript
 outlineWidth(width: Optional<Dimension | EdgeOutlineWidths>): T
 ```
 
-设置元素的外描边宽度。不设置该接口时，默认无变化。与[outlineWidth](arkts-arkui-commonmethod-c.md#outlinewidth-1)相比，width参数新增了对undefined类型的支持。
+设置元素的外描边宽度。不设置该接口时，默认无变化。与[outlineWidth](arkts-arkui-commonmethod-c.md#outlinewidth)相比，width参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7492,7 +7221,6 @@ outlineWidth(width: Optional<Dimension | EdgeOutlineWidths>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="overlay"></a>
 ## overlay
 
 ```TypeScript
@@ -7500,7 +7228,6 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 ```
 
 在当前组件上，增加遮罩文本或者叠加自定义组件以及[ComponentContent](arkts-arkui-componentcontent-t.md)作为该组件的浮层。浮层的定位同样基于当前组件进行计算。浮层不通过组件树进行渲染，部分接口（例如[getRectangleById](api\@ohos.arkui.ComponentUtils#getRectangleById)）不支持获取浮层中的组件。
-
 > **说明：**  
 >  
 > - overlay会将浮层组件覆盖在所绑定的组件上方，阻塞用户对浮层下方组件的所有交互操作。  
@@ -7531,7 +7258,6 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="padding"></a>
 ## padding
 
 ```TypeScript
@@ -7564,7 +7290,6 @@ padding(value: Padding | Length | LocalizedPadding): T
 | --- | --- |
 | T | Current component. |
 
-<a id="parallelgesture"></a>
 ## parallelGesture
 
 ```TypeScript
@@ -7572,10 +7297,9 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 ```
 
 绑定可与子组件手势同时触发的手势。手势事件为非冒泡事件。父组件设置parallelGesture时，父子组件相同的手势事件都可以触发，实现类似冒泡效果。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 7
 
@@ -7598,7 +7322,6 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="pixelround"></a>
 ## pixelRound
 
 ```TypeScript
@@ -7606,7 +7329,6 @@ pixelRound(value: PixelRoundPolicy): T
 ```
 
 指定当前组件在指定方向上的像素取整对齐方式，某方向不设置时默认在该方向进行四舍五入取整。
-
 > **说明：**  
 >  
 > - 在API version 11，本接口采用半像素对齐方式（即0\~0.25取0，0.25\~0.75取0.5，0.75\~1.0取1）。从API version12开始，本接口采用四舍五入的取整方式，并支持组件级关闭像素取整的能力。  
@@ -7643,7 +7365,6 @@ pixelRound(value: PixelRoundPolicy): T
 | --- | --- |
 | T | Current component. |
 
-<a id="pixelstretcheffect"></a>
 ## pixelStretchEffect
 
 ```TypeScript
@@ -7672,14 +7393,13 @@ pixelStretchEffect(options: PixelStretchEffectOptions): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="pixelstretcheffect-1"></a>
 ## pixelStretchEffect
 
 ```TypeScript
 pixelStretchEffect(options: Optional<PixelStretchEffectOptions>): T
 ```
 
-设置组件的图像边缘像素扩展距离。与[pixelStretchEffect<sup>12+</sup>](arkts-arkui-commonmethod-c.md#pixelstretcheffect-1)相比，options参数新增了对undefined类型的支持。
+设置组件的图像边缘像素扩展距离。与[pixelStretchEffect<sup>12+</sup>](arkts-arkui-commonmethod-c.md#pixelstretcheffect)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7701,15 +7421,13 @@ pixelStretchEffect(options: Optional<PixelStretchEffectOptions>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="position"></a>
 ## position
 
 ```TypeScript
 position(value: Position | Edges | LocalizedEdges): T
 ```
 
-绝对定位，确定子组件相对父组件内容区的位置，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
-
+绝对定位，确定子组件相对父组件内容区的位置，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 > **说明：**  
 >  
 > - position对位置的影响作用在组件的尺寸测量完成之后。  
@@ -7734,7 +7452,7 @@ position(value: Position | Edges | LocalizedEdges): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Position](../arkts-apis/arkts-arkui-display-position-i.md) \| Edges \| LocalizedEdges | 是 | Absolute positioning that determines the child component's position relative to the parent's content area. The content area of the parent component is calculated by subtracting the [border](arkts-arkui-commonmethod-c.md#border-1), [padding](arkts-arkui-commonmethod-c.md#padding-1), and [safeAreaPadding](arkts-arkui-commonmethod-c.md#safeareapadding-1)values from the parent component's total size. This resulting content area defines the available layout space for child components. This attribute does not take effect when it is set to an abnormal value.<br>**起始版本：** 12 |
+| value | [Position](../arkts-apis/arkts-arkui-display-position-i.md) \| Edges \| LocalizedEdges | 是 | Absolute positioning that determines the child component's position relative to the parent's content area. The content area of the parent component is calculated by subtracting the [border](arkts-arkui-commonmethod-c.md#border), [padding](arkts-arkui-commonmethod-c.md#padding), and [safeAreaPadding](arkts-arkui-commonmethod-c.md#safeareapadding)values from the parent component's total size. This resulting content area defines the available layout space for child components. This attribute does not take effect when it is set to an abnormal value.<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -7742,7 +7460,6 @@ position(value: Position | Edges | LocalizedEdges): T
 | --- | --- |
 | T | Current component. |
 
-<a id="prioritygesture"></a>
 ## priorityGesture
 
 ```TypeScript
@@ -7752,10 +7469,9 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 绑定优先识别手势。
 
 1. 默认情况下，子组件优先识别通过gesture绑定的手势，当父组件配置priorityGesture时，父组件优先识别priorityGesture绑定的手势。2. 绑定长按手势时，设置触发长按的最短时间小的组件会优先响应，会忽略priorityGesture设置。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 7
 
@@ -7778,7 +7494,6 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="radialgradient"></a>
 ## radialGradient
 
 ```TypeScript
@@ -7809,14 +7524,13 @@ Anonymous Object Rectification.
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="radialgradient-1"></a>
 ## radialGradient
 
 ```TypeScript
 radialGradient(options: Optional<RadialGradientOptions>): T
 ```
 
-径向渐变。与[radialGradient](arkts-arkui-commonmethod-c.md#radialgradient-1)相比，options参数新增了对undefined类型的支持。
+径向渐变。与[radialGradient](arkts-arkui-commonmethod-c.md#radialgradient)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7840,7 +7554,6 @@ radialGradient(options: Optional<RadialGradientOptions>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="renderfit"></a>
 ## renderFit
 
 ```TypeScript
@@ -7873,14 +7586,13 @@ renderFit(fitMode: RenderFit): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="renderfit-1"></a>
 ## renderFit
 
 ```TypeScript
 renderFit(fitMode: Optional<RenderFit>): T
 ```
 
-设置宽高动画过程中的组件内容填充方式。不通过该接口设置，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。与[renderFit](arkts-arkui-commonmethod-c.md#renderfit-1)相比，fitMode参数新增了对undefined类型的支持。
+设置宽高动画过程中的组件内容填充方式。不通过该接口设置，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。与[renderFit](arkts-arkui-commonmethod-c.md#renderfit)相比，fitMode参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7906,7 +7618,6 @@ renderFit(fitMode: Optional<RenderFit>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="rendergroup"></a>
 ## renderGroup
 
 ```TypeScript
@@ -7939,7 +7650,6 @@ renderGroup(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="rendergroup-1"></a>
 ## renderGroup
 
 ```TypeScript
@@ -7948,7 +7658,7 @@ renderGroup(isGroup: Optional<boolean>): T
 
 设置是否组成节点组。节点组表示当前组件和子组件组成的子树先在离屏画布中渲染，再与父组件融合绘制。设置为节点组后，系统会缓存绘制结果，提升性能。但如果节点组内的组件频繁更新，缓存失效，可能导致性能下降。此外，设置为节点组后，当前组件的不透明度不为1时，绘制效果可能有差异。
 
-与[renderGroup<sup>10+</sup>](arkts-arkui-commonmethod-c.md#rendergroup-1)相比，isGroup参数新增了对undefined类型的支持。
+与[renderGroup<sup>10+</sup>](arkts-arkui-commonmethod-c.md#rendergroup)相比，isGroup参数新增了对undefined类型的支持。
 
 不设置该属性时，默认不组成节点组。
 
@@ -7974,7 +7684,6 @@ renderGroup(isGroup: Optional<boolean>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="responseregion"></a>
 ## responseRegion
 
 ```TypeScript
@@ -8005,14 +7714,13 @@ responseRegion(value: Array<Rectangle> | Rectangle): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="responseregionlist"></a>
 ## responseRegionList
 
 ```TypeScript
 responseRegionList(regions: Array<ResponseRegion>): T
 ```
 
-设置组件的触摸热区列表。调用该接口时，[responseRegion](arkts-arkui-commonmethod-c.md#responseregion-1)与[mouseResponseRegion](arkts-arkui-commonmethod-c.md#mouseresponseregion-1)接口不再生效。
+设置组件的触摸热区列表。调用该接口时，[responseRegion](arkts-arkui-commonmethod-c.md#responseregion)与[mouseResponseRegion](arkts-arkui-commonmethod-c.md#mouseresponseregion)接口不再生效。
 
 **起始版本：** 22
 
@@ -8036,7 +7744,6 @@ responseRegionList(regions: Array<ResponseRegion>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="restoreid"></a>
 ## restoreId
 
 ```TypeScript
@@ -8065,7 +7772,6 @@ id for distribute identification.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@atomicservice |
 
-<a id="reuse"></a>
 ## reuse
 
 ```TypeScript
@@ -8096,7 +7802,6 @@ Reuse id is used for identify the reuse type of each @ComponentV2 custom compone
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="reuseid"></a>
 ## reuseId
 
 ```TypeScript
@@ -8127,7 +7832,6 @@ Reuse id is used for identify the reuse type for each custom node.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
@@ -8150,7 +7854,7 @@ rotate(value: RotateOptions): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [RotateOptions](arkts-arkui-rotateoptions-i.md) | 是 | 可使组件在以组件左上角为坐标原点的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中进行旋转（坐标系如下图所示）。其中，(x, y, z）指定一个矢量，作为旋转轴。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>默认值: 在x、y、z都不指定时，x、y、z的默认值分别为0、0、1。指定了x、y、z任何一个值时，x、y、z中未指定的值默认为0。<br/>{<br/>centerX: '50%',<br/>centerY: '50%',<br/>centerZ: 0,<br/>perspective: 0<br/>}<br/>单位：vp<br/>![coordinates](docroot://reference/apis-arkui/arkui-ts/figures/coordinates.png) |
+| value | [RotateOptions](arkts-arkui-rotateoptions-i.md) | 是 | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行旋转（坐标系如下图所示）。其中，(x, y, z）指定一个矢量，作为旋转轴。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>默认值: 在x、y、z都不指定时，x、y、z的默认值分别为0、0、1。指定了x、y、z任何一个值时，x、y、z中未指定的值默认为0。<br/>{<br/>centerX: '50%',<br/>centerY: '50%',<br/>centerZ: 0,<br/>perspective: 0<br/>}<br/>单位：vp<br/>![coordinates](../../../reference/apis-arkui/arkui-ts/figures/coordinates.png) |
 
 **返回值：**
 
@@ -8158,14 +7862,13 @@ rotate(value: RotateOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="rotate-1"></a>
 ## rotate
 
 ```TypeScript
 rotate(options: Optional<RotateOptions>): T
 ```
 
-设置组件旋转。与[rotate](arkts-arkui-commonmethod-c.md#rotate-1)相比，options参数新增了对undefined类型的支持。
+设置组件旋转。与[rotate](arkts-arkui-commonmethod-c.md#rotate)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8183,7 +7886,7 @@ rotate(options: Optional<RotateOptions>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Optional](arkts-arkui-optional-t.md)&lt;RotateOptions&gt; | 是 | 可使组件在以组件左上角为坐标原点的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中进行旋转（坐标系如下图所示）。其中，(x, y, z）指定一个矢量，作为旋转轴。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>默认值: 在x、y、z都不指定时，x、y、z的默认值分别为0、0、1。指定了x、y、z任何一个值时，x、y、z中未指定的值默认为0。<br/>{<br/>centerX: '50%',<br/>centerY: '50%',<br/>centerZ: 0,<br/>perspective: 0<br/>}<br/>单位：vp<br/>![coordinates](docroot://reference/apis-arkui/arkui-ts/figures/coordinates.png)。<br/>当options的值为undefined时，恢复为无旋转效果。 |
+| options | [Optional](arkts-arkui-optional-t.md)&lt;RotateOptions&gt; | 是 | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行旋转（坐标系如下图所示）。其中，(x, y, z）指定一个矢量，作为旋转轴。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>默认值: 在x、y、z都不指定时，x、y、z的默认值分别为0、0、1。指定了x、y、z任何一个值时，x、y、z中未指定的值默认为0。<br/>{<br/>centerX: '50%',<br/>centerY: '50%',<br/>centerZ: 0,<br/>perspective: 0<br/>}<br/>单位：vp<br/>![coordinates](../../../reference/apis-arkui/arkui-ts/figures/coordinates.png)。<br/>当options的值为undefined时，恢复为无旋转效果。 |
 
 **返回值：**
 
@@ -8191,14 +7894,13 @@ rotate(options: Optional<RotateOptions>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="rotate-2"></a>
 ## rotate
 
 ```TypeScript
 rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
 ```
 
-设置组件旋转效果。与[rotate](arkts-arkui-commonmethod-c.md#rotate-1)相比，options参数新增了对RotateAngleOptions类型的支持。
+设置组件旋转效果。与[rotate](arkts-arkui-commonmethod-c.md#rotate)相比，options参数新增了对RotateAngleOptions类型的支持。
 
 **起始版本：** 20
 
@@ -8216,7 +7918,7 @@ rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Optional](arkts-arkui-optional-t.md)&lt;RotateOptions \| RotateAngleOptions&gt; | 是 | RotateOptions可使组件在以组件左上角为坐标原点的坐标系中进行旋转（坐标系如下图所示）。其中，(x, y, z）指定一个矢量，作为旋转轴。<br/>旋转轴和旋转中心点都基于[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)设定，组件发生位移时，坐标系不会随之移动。<br/>默认值：在x、y、z都不指定时，x、y、z的默认值分别为0、0、1。指定了x、y、z任何一个值时，x、y、z中未指定的值默认为0。<br/>{<br/>centerX: '50%',<br/>centerY: '50%',<br/>centerZ: 0,<br/>perspective: 0<br/>}<br/>RotateAngleOptions可使组件在以组件左上角为坐标原点的坐标系中进行旋转（坐标系如下图所示）。其中，(angleX, angleY, angleZ）指定三个轴方向上的旋转角。<br/>默认值：<br/>{<br/>angleX:0,<br />angleY:0,<br />angleZ:0,<br />centerX: '50%',<br/>centerY: '50%',<br/>centerZ: 0,<br/>perspective: 0<br/>}<br/>![coordinates](docroot://reference/apis-arkui/arkui-ts/figures/coordinates.png)<br/>当options的值为undefined时，恢复为无旋转效果。 |
+| options | [Optional](arkts-arkui-optional-t.md)&lt;RotateOptions \| RotateAngleOptions&gt; | 是 | RotateOptions可使组件在以组件左上角为坐标原点的坐标系中进行旋转（坐标系如下图所示）。其中，(x, y, z）指定一个矢量，作为旋转轴。<br/>旋转轴和旋转中心点都基于[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)设定，组件发生位移时，坐标系不会随之移动。<br/>默认值：在x、y、z都不指定时，x、y、z的默认值分别为0、0、1。指定了x、y、z任何一个值时，x、y、z中未指定的值默认为0。<br/>{<br/>centerX: '50%',<br/>centerY: '50%',<br/>centerZ: 0,<br/>perspective: 0<br/>}<br/>RotateAngleOptions可使组件在以组件左上角为坐标原点的坐标系中进行旋转（坐标系如下图所示）。其中，(angleX, angleY, angleZ）指定三个轴方向上的旋转角。<br/>默认值：<br/>{<br/>angleX:0,<br />angleY:0,<br />angleZ:0,<br />centerX: '50%',<br/>centerY: '50%',<br/>centerZ: 0,<br/>perspective: 0<br/>}<br/>![coordinates](../../../reference/apis-arkui/arkui-ts/figures/coordinates.png)<br/>当options的值为undefined时，恢复为无旋转效果。 |
 
 **返回值：**
 
@@ -8224,20 +7926,18 @@ rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="safeareapadding"></a>
 ## safeAreaPadding
 
 ```TypeScript
 safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T
 ```
 
-设置安全区边距属性。允许容器向自身添加组件级安全区域，供子组件延伸，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
-
+设置安全区边距属性。允许容器向自身添加组件级安全区域，供子组件延伸，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法。
 > **说明**  
 >  
 >当父辈和祖先容器设置了组件级安全区域时，子组件可以感知并利用该区域，称该区域为累计安全区延伸（accumulatedSafeAreaExpand，下文简称SAE），表示子组件在四个方向上各可延伸的长度。当祖辈与更上一级祖辈的saf eAreaPadding相邻接（即未被margin、border、padding分隔）时，SAE将递归地向外累积，直至不存在相邻的更外层safeAreaPadding或递归至页面容器外。系统级避让区域（如状态栏、导航条、挖孔区等，详情参见安全区域中的说明）可视为页面容器特有的safeAreaPadding，同样参与该延伸范围的计算。  
 >  
-> 通过与其他属性配合使用，可对上述计算得到的组件级安全区区域加以利用。例如，对子组件设置[ignoreLayoutSafeArea](arkts-arkui-commonmethod-c.md#ignorelayoutsafearea-1)属性，即可利用SAE延伸组件的布局范围。
+> 通过与其他属性配合使用，可对上述计算得到的组件级安全区区域加以利用。例如，对子组件设置[ignoreLayoutSafeArea](arkts-arkui-commonmethod-c.md#ignorelayoutsafearea)属性，即可利用SAE延伸组件的布局范围。
 
 **起始版本：** 14
 
@@ -8263,7 +7963,6 @@ safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T
 | --- | --- |
 | T | Current component. |
 
-<a id="saturate"></a>
 ## saturate
 
 ```TypeScript
@@ -8292,14 +7991,13 @@ saturate(value: number): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="saturate-1"></a>
 ## saturate
 
 ```TypeScript
 saturate(saturate: Optional<number>): T
 ```
 
-为组件添加饱和度效果。不通过该接口设置时，默认无变化。与[saturate](arkts-arkui-commonmethod-c.md#saturate-1)相比，saturate参数新增了对undefined类型的支持。
+为组件添加饱和度效果。不通过该接口设置时，默认无变化。与[saturate](arkts-arkui-commonmethod-c.md#saturate)相比，saturate参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8323,7 +8021,6 @@ saturate(saturate: Optional<number>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="scale"></a>
 ## scale
 
 ```TypeScript
@@ -8354,14 +8051,13 @@ scale(value: ScaleOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="scale-1"></a>
 ## scale
 
 ```TypeScript
 scale(options: Optional<ScaleOptions>): T
 ```
 
-设置组件缩放。与[scale](arkts-arkui-commonmethod-c.md#scale-1)相比，options参数新增了对undefined类型的支持。
+设置组件缩放。与[scale](arkts-arkui-commonmethod-c.md#scale)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8387,7 +8083,6 @@ scale(options: Optional<ScaleOptions>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="sepia"></a>
 ## sepia
 
 ```TypeScript
@@ -8416,14 +8111,13 @@ sepia(value: number): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="sepia-1"></a>
 ## sepia
 
 ```TypeScript
 sepia(sepia: Optional<number>): T
 ```
 
-将图像转换为深褐色。与[sepia](arkts-arkui-commonmethod-c.md#sepia-1)相比，sepia参数新增了对undefined类型的支持。
+将图像转换为深褐色。与[sepia](arkts-arkui-commonmethod-c.md#sepia)相比，sepia参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8447,7 +8141,6 @@ sepia(sepia: Optional<number>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="shadow"></a>
 ## shadow
 
 ```TypeScript
@@ -8476,14 +8169,13 @@ shadow(value: ShadowOptions | ShadowStyle): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="shadow-1"></a>
 ## shadow
 
 ```TypeScript
 shadow(options: Optional<ShadowOptions | ShadowStyle>): T
 ```
 
-为组件添加阴影效果。与[shadow](arkts-arkui-commonmethod-c.md#shadow-1)相比，options参数新增了对undefined类型的支持。
+为组件添加阴影效果。与[shadow](arkts-arkui-commonmethod-c.md#shadow)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8507,7 +8199,6 @@ shadow(options: Optional<ShadowOptions | ShadowStyle>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="sharedtransition"></a>
 ## sharedTransition
 
 ```TypeScript
@@ -8537,14 +8228,13 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="shouldbuiltinrecognizerparallelwith"></a>
 ## shouldBuiltInRecognizerParallelWith
 
 ```TypeScript
 shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback): T
 ```
 
-提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为[setInnerGestureParallelTo](docroot://reference/apis-arkui/capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)。
+提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为[setInnerGestureParallelTo](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)。
 
 **起始版本：** 12
 
@@ -8568,14 +8258,13 @@ shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWit
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="shouldrecognizerparallelwith"></a>
 ## shouldRecognizerParallelWith
 
 ```TypeScript
 shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCallback): T
 ```
 
-提供手势与响应链上其他组件的手势设置并行关系的回调事件。使用callback异步回调。此接口对应的C API接口为[setGestureParallelTo](docroot://reference/apis-arkui/capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。
+提供手势与响应链上其他组件的手势设置并行关系的回调事件。使用callback异步回调。此接口对应的C API接口为[setGestureParallelTo](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。
 
 **起始版本：** 26.0.0
 
@@ -8599,7 +8288,6 @@ shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCallback): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="size"></a>
 ## size
 
 ```TypeScript
@@ -8632,7 +8320,6 @@ size(value: SizeOptions): T
 | --- | --- |
 | T | Current component. |
 
-<a id="smartgestureshortcut"></a>
 ## smartGestureShortcut
 
 ```TypeScript
@@ -8663,7 +8350,6 @@ smartGestureShortcut(options?: SmartGestureShortcutOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="sphericaleffect"></a>
 ## sphericalEffect
 
 ```TypeScript
@@ -8684,7 +8370,7 @@ sphericalEffect(value: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置组件的图像球面化程度。<br/>取值范围：[0,1]。<br/>**说明：**<br/>1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。<br/>`value < 0 `或者` value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。<br/>2. 组件阴影和外描边不支持球面效果。<br>3. 设置value大于0时，组件冻屏并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把value设置为0。 |
+| value | number | 是 | 设置组件的图像球面化程度。<br/>取值范围：[0,1]。<br/>**说明：**<br/>1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。<br/>`value &lt; 0 `或者` value &gt; 1`为异常情况，`value &lt; 0`按0处理，`value &gt; 1`按1处理。<br/>2. 组件阴影和外描边不支持球面效果。<br>3. 设置value大于0时，组件冻屏并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把value设置为0。 |
 
 **返回值：**
 
@@ -8692,14 +8378,13 @@ sphericalEffect(value: number): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="sphericaleffect-1"></a>
 ## sphericalEffect
 
 ```TypeScript
 sphericalEffect(effect: Optional<number>): T
 ```
 
-设置组件的图像球面化程度。与[sphericalEffect<sup>12+</sup>](arkts-arkui-commonmethod-c.md#sphericaleffect-1)相比，effect参数新增了对undefined类型的支持。
+设置组件的图像球面化程度。与[sphericalEffect<sup>12+</sup>](arkts-arkui-commonmethod-c.md#sphericaleffect)相比，effect参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8713,7 +8398,7 @@ sphericalEffect(effect: Optional<number>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| effect | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 设置组件的图像球面化程度。<br/>取值范围：[0,1]。<br/>**说明：**<br/>1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。<br/>`effect < 0 `或者` effect > 1`为异常情况，`effect < 0`按0处理，`effect > 1`按1处理。<br/>2. 组件阴影和外描边不支持球面效果。<br/>3. 设置effect大于0时，组件冻屏并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把effect设置为0。<br/>当effect的值为undefined时，恢复为图像球面化程度为0的效果。 |
+| effect | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 设置组件的图像球面化程度。<br/>取值范围：[0,1]。<br/>**说明：**<br/>1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。<br/>`effect &lt; 0 `或者` effect &gt; 1`为异常情况，`effect &lt; 0`按0处理，`effect &gt; 1`按1处理。<br/>2. 组件阴影和外描边不支持球面效果。<br/>3. 设置effect大于0时，组件冻屏并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把effect设置为0。<br/>当effect的值为undefined时，恢复为图像球面化程度为0的效果。 |
 
 **返回值：**
 
@@ -8721,7 +8406,6 @@ sphericalEffect(effect: Optional<number>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="statestyles"></a>
 ## stateStyles
 
 ```TypeScript
@@ -8729,10 +8413,9 @@ stateStyles(value: StateStyles): T
 ```
 
 设置组件不同状态下的样式。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 8
 
@@ -8756,7 +8439,6 @@ stateStyles(value: StateStyles): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="sweepgradient"></a>
 ## sweepGradient
 
 ```TypeScript
@@ -8785,14 +8467,13 @@ sweepGradient(value: SweepGradientOptions): T
 | --- | --- |
 | T | 返回当前组件。@crossplatform@form@atomicservice |
 
-<a id="sweepgradient-1"></a>
 ## sweepGradient
 
 ```TypeScript
 sweepGradient(options: Optional<SweepGradientOptions>): T
 ```
 
-角度渐变。与[sweepGradient](arkts-arkui-commonmethod-c.md#sweepgradient-1)相比，options参数新增了对undefined类型的支持。
+角度渐变。与[sweepGradient](arkts-arkui-commonmethod-c.md#sweepgradient)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8816,7 +8497,6 @@ sweepGradient(options: Optional<SweepGradientOptions>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="systembareffect"></a>
 ## systemBarEffect
 
 ```TypeScript
@@ -8841,7 +8521,6 @@ systemBarEffect(): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="systemmaterial"></a>
 ## systemMaterial
 
 ```TypeScript
@@ -8864,7 +8543,7 @@ Set system-styled materials for the component. The material effect behaves diffe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| material | [SystemUiMaterial](arkts-arkui-systemuimaterial-t.md) \| undefined | 是 | 组件的系统材质对象。设置为undefined时恢复为无材质的效果，若同时设置了材质对象影响的通用属性，会恢复至对应通用属性设置的值，冲突的属性由材质对象决定，参考[ImmersiveMaterial](docroot://reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)。 |
+| material | [SystemUiMaterial](arkts-arkui-systemuimaterial-t.md) \| undefined | 是 | 组件的系统材质对象。设置为undefined时恢复为无材质的效果，若同时设置了材质对象影响的通用属性，会恢复至对应通用属性设置的值，冲突的属性由材质对象决定，参考[ImmersiveMaterial](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)。 |
 
 **返回值：**
 
@@ -8872,7 +8551,6 @@ Set system-styled materials for the component. The material effect behaves diffe
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="tabindex"></a>
 ## tabIndex
 
 ```TypeScript
@@ -8880,10 +8558,9 @@ tabIndex(index: number): T
 ```
 
 自定义组件tab键走焦能力。当组件未设置tabIndex时，默认按照预设的焦点移动规则进行焦点移动。
-
 > **说明：**  
 >  
-> - tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextFocus](arkts-arkui-commonmethod-c.md#nextfocus-1)。
+> - tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextFocus](arkts-arkui-commonmethod-c.md#nextfocus)。
 
 **起始版本：** 9
 
@@ -8897,7 +8574,7 @@ tabIndex(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 自定义组件tab键走焦能力。若有配置了tabIndex大于0的组件，则tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br />[UiExtension](../arkts-apis/arkts-arkui-uiextension.md)组件未适配tabIndex，在含有[UiExtension](../arkts-apis/arkts-arkui-uiextension.md)组件的[层级页面](docroot://ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br />- tabIndex >= 0：表示元素是可聚焦的，并且可以通过tab键走焦来访问到该元素。<br />- tabIndex < 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过tab键走焦来访问到该元素。<br/> **说明：**<br/>tabIndex与focusScopeId不能混用。 |
+| index | number | 是 | 自定义组件tab键走焦能力。若有配置了tabIndex大于0的组件，则tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br />[UiExtension](../arkts-apis/arkts-arkui-uiextension.md)组件未适配tabIndex，在含有[UiExtension](../arkts-apis/arkts-arkui-uiextension.md)组件的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br />- tabIndex >= 0：表示元素是可聚焦的，并且可以通过tab键走焦来访问到该元素。<br />- tabIndex < 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过tab键走焦来访问到该元素。<br/> **说明：**<br/>tabIndex与focusScopeId不能混用。 |
 
 **返回值：**
 
@@ -8905,7 +8582,6 @@ tabIndex(index: number): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="tabstop"></a>
 ## tabStop
 
 ```TypeScript
@@ -8934,7 +8610,6 @@ tabStop(isTabStop: boolean): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@atomicservice |
 
-<a id="toolbar"></a>
 ## toolbar
 
 ```TypeScript
@@ -8963,7 +8638,6 @@ Config toolbar for current component.
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform |
 
-<a id="touchable"></a>
 ## touchable
 
 ```TypeScript
@@ -8971,14 +8645,13 @@ touchable(value: boolean): T
 ```
 
 设置当前组件是否可以响应点击事件、触摸事件等手指交互事件。
-
 > **说明：**
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [hitTestBehavior](arkts-arkui-commonmethod-c.md#hittestbehavior-1)
+**替代接口：** [hitTestBehavior](arkts-arkui-commonmethod-c.md#hittestbehavior)
 
 <!--Device-CommonMethod-touchable(value: boolean): T--><!--Device-CommonMethod-touchable(value: boolean): T-End-->
 
@@ -8996,14 +8669,13 @@ touchable(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="transform"></a>
 ## transform
 
 ```TypeScript
 transform(value: object): T
 ```
 
-可用于显示二维变换时的矩阵变换。包含三维变换时应使用[transform3D](arkts-arkui-commonmethod-c.md#transform3d-1)接口。
+可用于显示二维变换时的矩阵变换。包含三维变换时应使用[transform3D](arkts-arkui-commonmethod-c.md#transform3d)接口。
 
 **起始版本：** 7
 
@@ -9025,14 +8697,13 @@ transform(value: object): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="transform-1"></a>
 ## transform
 
 ```TypeScript
 transform(transform: Optional<object>): T
 ```
 
-可用于显示二维变换时的矩阵变换。包含三维变换时应使用[transform3D](arkts-arkui-commonmethod-c.md#transform3d-1)接口。与[transform](arkts-arkui-commonmethod-c.md#transform-1)相比，transform<sup>18+</sup>参数新增了对undefined类型的支持。
+可用于显示二维变换时的矩阵变换。包含三维变换时应使用[transform3D](arkts-arkui-commonmethod-c.md#transform3d)接口。与[transform](arkts-arkui-commonmethod-c.md#transform)相比，transform<sup>18+</sup>参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -9056,7 +8727,6 @@ transform(transform: Optional<object>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="transform3d"></a>
 ## transform3D
 
 ```TypeScript
@@ -9087,7 +8757,6 @@ transform3D(transform: Optional<Matrix4Transit>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="transition"></a>
 ## transition
 
 ```TypeScript
@@ -9118,18 +8787,16 @@ transition(value: TransitionOptions | TransitionEffect): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="transition-1"></a>
 ## transition
 
 ```TypeScript
 transition(effect: TransitionEffect, onFinish: Optional<TransitionFinishCallback>): T
 ```
 
-组件插入显示和删除隐藏的过渡效果。同[transition](arkts-arkui-commonmethod-c.md#transition-1)相比，增加了转场动画结束的回调。
-
+组件插入显示和删除隐藏的过渡效果。同[transition](arkts-arkui-commonmethod-c.md#transition)相比，增加了转场动画结束的回调。
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -9156,7 +8823,6 @@ transition(effect: TransitionEffect, onFinish: Optional<TransitionFinishCallback
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="translate"></a>
 ## translate
 
 ```TypeScript
@@ -9179,7 +8845,7 @@ translate(value: TranslateOptions): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [TranslateOptions](arkts-arkui-translateoptions-i.md) | 是 | 可使组件在以组件左上角为坐标原点的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中进行移动（坐标系如下图所示）。其中，x，y，z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，'10%'）两种类型。<br/>默认值:<br/>{<br/>x:0,<br/>y: 0,<br/>z: 0<br/>}<br/>单位：vp<br/>![coordinates](docroot://reference/apis-arkui/arkui-ts/figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](docroot://reference/apis-arkui/arkui-ts/figures/coordinateNote.png) |
+| value | [TranslateOptions](arkts-arkui-translateoptions-i.md) | 是 | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行移动（坐标系如下图所示）。其中，x，y，z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，'10%'）两种类型。<br/>默认值:<br/>{<br/>x:0,<br/>y: 0,<br/>z: 0<br/>}<br/>单位：vp<br/>![coordinates](../../../reference/apis-arkui/arkui-ts/figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](../../../reference/apis-arkui/arkui-ts/figures/coordinateNote.png) |
 
 **返回值：**
 
@@ -9187,14 +8853,13 @@ translate(value: TranslateOptions): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="translate-1"></a>
 ## translate
 
 ```TypeScript
 translate(translate: Optional<TranslateOptions>): T
 ```
 
-设置组件平移。与[translate](arkts-arkui-commonmethod-c.md#translate-1)相比，translate参数新增了对undefined类型的支持。
+设置组件平移。与[translate](arkts-arkui-commonmethod-c.md#translate)相比，translate参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -9212,7 +8877,7 @@ translate(translate: Optional<TranslateOptions>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| translate | [Optional](arkts-arkui-optional-t.md)&lt;TranslateOptions&gt; | 是 | 可使组件在以组件左上角为坐标原点的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中进行移动（坐标系如下图所示）。其中，x，y，z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，'10%'）两种类型。<br/>默认值:<br/>{<br/>x: 0,<br/>y: 0,<br/>z: 0<br/>}<br/>单位：vp<br/>![coordinates](docroot://reference/apis-arkui/arkui-ts/figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](docroot://reference/apis-arkui/arkui-ts/figures/coordinateNote.png)<br/>当translate的值为undefined时，恢复为无平移效果。 |
+| translate | [Optional](arkts-arkui-optional-t.md)&lt;TranslateOptions&gt; | 是 | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行移动（坐标系如下图所示）。其中，x，y，z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，'10%'）两种类型。<br/>默认值:<br/>{<br/>x: 0,<br/>y: 0,<br/>z: 0<br/>}<br/>单位：vp<br/>![coordinates](../../../reference/apis-arkui/arkui-ts/figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](../../../reference/apis-arkui/arkui-ts/figures/coordinateNote.png)<br/>当translate的值为undefined时，恢复为无平移效果。 |
 
 **返回值：**
 
@@ -9220,7 +8885,6 @@ translate(translate: Optional<TranslateOptions>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="useeffect"></a>
 ## useEffect
 
 ```TypeScript
@@ -9252,14 +8916,13 @@ useEffect(useEffect: boolean, effectType: EffectType): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="useeffect-1"></a>
 ## useEffect
 
 ```TypeScript
 useEffect(useEffect: Optional<boolean>, effectType?: EffectType): T
 ```
 
-用于设置组件是否应用<!--Del-->父级[EffectComponent](arkts-arkui-effectcomponent.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](arkts-arkui-commonmethod-c.md#useeffect-1)相比，useEffect参数新增了对undefined类型的支持。
+用于设置组件是否应用<!--Del-->父级[EffectComponent](arkts-arkui-effectcomponent.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](arkts-arkui-commonmethod-c.md#useeffect)相比，useEffect参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -9284,7 +8947,6 @@ useEffect(useEffect: Optional<boolean>, effectType?: EffectType): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="useeffect-2"></a>
 ## useEffect
 
 ```TypeScript
@@ -9315,7 +8977,6 @@ useEffect(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="useshadowbatching"></a>
 ## useShadowBatching
 
 ```TypeScript
@@ -9346,14 +9007,13 @@ useShadowBatching(value: boolean): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="useshadowbatching-1"></a>
 ## useShadowBatching
 
 ```TypeScript
 useShadowBatching(use: Optional<boolean>): T
 ```
 
-控件内部子节点的阴影进行同层绘制，同层元素阴影重叠。与[useShadowBatching<sup>11+</sup>](arkts-arkui-commonmethod-c.md#useshadowbatching-1)相比，use参数新增了对undefined类型的支持。
+控件内部子节点的阴影进行同层绘制，同层元素阴影重叠。与[useShadowBatching<sup>11+</sup>](arkts-arkui-commonmethod-c.md#useshadowbatching)相比，use参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -9377,7 +9037,6 @@ useShadowBatching(use: Optional<boolean>): T
 | --- | --- |
 | T | 返回当前组件。@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="usesizetype"></a>
 ## useSizeType
 
 ```TypeScript
@@ -9397,17 +9056,7 @@ Sets the number of occupied columns and offset columns for a specific device wid
 
 **替代接口：** grid_col/GridColColumnOption
 
-<!--Device-CommonMethod-useSizeType(value: {
-    xs?: number | { span: number; offset: number };
-    sm?: number | { span: number; offset: number };
-    md?: number | { span: number; offset: number };
-    lg?: number | { span: number; offset: number };
-  }): T--><!--Device-CommonMethod-useSizeType(value: {
-    xs?: number | { span: number; offset: number };
-    sm?: number | { span: number; offset: number };
-    md?: number | { span: number; offset: number };
-    lg?: number | { span: number; offset: number };
-  }): T-End-->
+<!--Device-CommonMethod-useSizeType(value: {    xs?: number | { span: number; offset: number };    sm?: number | { span: number; offset: number };    md?: number | { span: number; offset: number };    lg?: number | { span: number; offset: number };  }): T--><!--Device-CommonMethod-useSizeType(value: {    xs?: number | { span: number; offset: number };    sm?: number | { span: number; offset: number };    md?: number | { span: number; offset: number };    lg?: number | { span: number; offset: number };  }): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9423,7 +9072,6 @@ Sets the number of occupied columns and offset columns for a specific device wid
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full |
 
-<a id="visibility"></a>
 ## visibility
 
 ```TypeScript
@@ -9446,7 +9094,7 @@ visibility(value: Visibility): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Visibility](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-visibility-e.md) | 是 | 控制当前组件显示或隐藏。根据具体场景需要可使用[条件渲染](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)代替。 |
+| value | [Visibility](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-visibility-e.md) | 是 | 控制当前组件显示或隐藏。根据具体场景需要可使用[条件渲染](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)代替。 |
 
 **返回值：**
 
@@ -9454,7 +9102,6 @@ visibility(value: Visibility): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="visualeffect"></a>
 ## visualEffect
 
 ```TypeScript
@@ -9462,10 +9109,9 @@ visualEffect(effect: VisualEffect): T
 ```
 
 设置非滤镜视觉效果。
-
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -9489,7 +9135,6 @@ visualEffect(effect: VisualEffect): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="width"></a>
 ## width
 
 ```TypeScript
@@ -9522,7 +9167,6 @@ width(value: Length): T
 | --- | --- |
 | T | Current component. |
 
-<a id="width-1"></a>
 ## width
 
 ```TypeScript
@@ -9555,7 +9199,6 @@ width(widthValue: Length | LayoutPolicy): T
 | --- | --- |
 | T | Current component. |
 
-<a id="zindex"></a>
 ## zIndex
 
 ```TypeScript

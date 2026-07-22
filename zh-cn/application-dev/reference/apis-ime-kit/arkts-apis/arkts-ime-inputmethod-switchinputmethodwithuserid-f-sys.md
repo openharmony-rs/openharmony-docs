@@ -6,7 +6,6 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="switchinputmethodwithuserid"></a>
 ## switchInputMethodWithUserId
 
 ```TypeScript

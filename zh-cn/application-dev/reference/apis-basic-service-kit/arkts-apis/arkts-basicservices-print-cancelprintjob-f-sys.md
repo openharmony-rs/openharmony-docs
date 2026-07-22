@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="cancelprintjob"></a>
 ## cancelPrintJob
 
 ```TypeScript
@@ -58,7 +57,6 @@ print.cancelPrintJob(jobId, (err: BusinessError) => {
 ```
 
 
-<a id="cancelprintjob-1"></a>
 ## cancelPrintJob
 
 ```TypeScript

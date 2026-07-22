@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="alignitems"></a>
 ## alignItems
 
 ```TypeScript
@@ -39,7 +38,6 @@ alignItems(value: ItemAlign)
 | --- | --- | --- | --- |
 | value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | 是 | GridRow中的GridCol垂直主轴方向对齐方式。<br/>默认值：ItemAlign.Start <br />非法值：按默认值处理。<br/>**说明**：<br/>ItemAlign支持的枚举：ItemAlign.Start、ItemAlign.Center、ItemAlign.End、ItemAlign.Stretch。 |
 
-<a id="onbreakpointchange"></a>
 ## onBreakpointChange
 
 ```TypeScript
@@ -47,11 +45,10 @@ onBreakpointChange(callback: (breakpoints: string) => void)
 ```
 
 断点发生变化时触发回调。
-
 > **说明：**  
 >  
 > - 当[断点参照物](arkts-arkui-breakpointsreference-e.md)设置为BreakpointsReference.ComponentSize时，不建议在onBreakpointChange回调中动态修改GridRow  
-> 组件的[padding](arkts-arkui-commonmethod-c.md#padding-1)或[margin](arkts-arkui-commonmethod-c.md#margin-1)属性值。
+> 组件的[padding](arkts-arkui-commonmethod-c.md#padding)或[margin](arkts-arkui-commonmethod-c.md#margin)属性值。
 
 **起始版本：** 9
 

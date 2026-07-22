@@ -1,7 +1,6 @@
 # Tag
 
 枚举，关键资产支持的属性名称类型，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md)的键。
-
 > **说明：**  
 >  
 > 以下为Tag类型的全量枚举值，每个接口可传的Tag枚举及对应的Value取值范围不同，详见  

@@ -14,7 +14,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="enablesystemrecordcontroller"></a>
 ## enableSystemRecordController
 
 ```TypeScript

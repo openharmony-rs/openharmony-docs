@@ -6,7 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createpixelmapfromsurfacewithtransformation"></a>
 ## createPixelMapFromSurfaceWithTransformation
 
 ```TypeScript

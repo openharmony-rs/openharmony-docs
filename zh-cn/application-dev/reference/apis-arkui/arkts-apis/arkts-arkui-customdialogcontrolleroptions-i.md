@@ -1,7 +1,6 @@
 # CustomDialogControllerOptions
 
 自定义弹窗的样式。
-
 > **说明：**  
 >  
 > - 按下返回键和ESC键时会让弹窗退出。  
@@ -15,8 +14,8 @@
 > > 需要注意：在动画播放过程中，页面不响应触摸、滑动、点击操作。关闭默认弹窗动画效果可设置openAnimation和closeAnimation的duration为0。  
 >  
 > - 当前，ArkUI弹出框默认为非页面级弹出框，在页面路由跳转时，如果开发者未调用close方法将其关闭，弹出框将不会自动关闭。若需实现在跳转页面时覆盖弹出框的场景，可以使用  
-> [组件导航子页面显示类型的弹窗类型](docroot://ui/arkts-navigation-navdestination.md#页面显示类型)或者  
-> [页面级弹出框](docroot://ui/arkts-embedded-dialog.md)。
+> [组件导航子页面显示类型的弹窗类型](../../../ui/arkts-navigation-navdestination.md#页面显示类型)或者  
+> [页面级弹出框](../../../ui/arkts-embedded-dialog.md)。
 
 **起始版本：** 7
 
@@ -318,7 +317,7 @@ cornerRadius?: Dimension | BorderRadiuses
 
 默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }
 
-**说明**：自定义弹窗默认的背板圆角半径为32vp，如果需要使用cornerRadius属性，请和[borderRadius](../arkts-components/arkts-arkui-commonmethod-c.md#borderradius-1)属性一起使用。
+**说明**：自定义弹窗默认的背板圆角半径为32vp，如果需要使用cornerRadius属性，请和[borderRadius](../arkts-components/arkts-arkui-commonmethod-c.md#borderradius)属性一起使用。
 
 **类型：** Dimension \| BorderRadiuses
 
@@ -450,7 +449,7 @@ focusable?: boolean
 gridCount?: number
 ```
 
-弹窗宽度占[栅格宽度](docroot://ui/arkts-layout-development-grid-layout.md)的个数。
+弹窗宽度占[栅格宽度](../../../ui/arkts-layout-development-grid-layout.md)的个数。
 
 默认为按照窗口大小自适应，异常值按默认值处理，最大栅格数为系统最大栅格数。
 
@@ -676,7 +675,7 @@ levelOrder?: LevelOrder
 levelUniqueId?: number
 ```
 
-设置页面级弹窗需要显示的层级下的节点UniqueID，UniqueID可以通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid-1)获取。
+设置页面级弹窗需要显示的层级下的节点UniqueID，UniqueID可以通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid)获取。
 
 取值范围：大于等于0的数字。
 
@@ -980,8 +979,8 @@ systemMaterial?: SystemUiMaterial
 
 **说明：**
 
-- 默认值：[ImmersiveOptions](docroot://reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](docroot://reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。  
-- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、背景模糊[backgroundBlurStyle](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundblurstyle-1)、背景效果[backgroundEffect](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundeffect-1)、边框颜色[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor-1)、边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth-1)、阴影[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)，不建议与上述接口一起使用。
+- 默认值：[ImmersiveOptions](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。  
+- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor)、背景模糊[backgroundBlurStyle](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundblurstyle)、背景效果[backgroundEffect](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundeffect)、边框颜色[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
 
 **类型：** SystemUiMaterial
 

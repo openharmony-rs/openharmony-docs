@@ -24,7 +24,7 @@ acceptButtonStyle?: PickerDialogButtonStyle
 
 1.acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效，保持默认值false。
 
-2.按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形[ROUNDED_RECTANGLE](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype)，呈现效果依然是胶囊型按钮[Capsule](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype)。
+2.按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形[ROUNDED_RECTANGLE](../../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype)，呈现效果依然是胶囊型按钮[Capsule](../../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype)。
 
 **类型：** PickerDialogButtonStyle
 
@@ -200,7 +200,7 @@ cancelButtonStyle?: PickerDialogButtonStyle
 
 1.acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效，保持默认值false。
 
-2.按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形[ROUNDED_RECTANGLE](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype)，呈现效果依然是胶囊型按钮[Capsule](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype)。
+2.按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形[ROUNDED_RECTANGLE](../../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype)，呈现效果依然是胶囊型按钮[Capsule](../../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype)。
 
 **类型：** PickerDialogButtonStyle
 

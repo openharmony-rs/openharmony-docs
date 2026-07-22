@@ -1,11 +1,10 @@
 # BadgeStyle
 
 Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸等。
-
 > **说明：**  
 >  
 > - 当`borderWidth`大于0且`borderColor`与`badgeColor`颜色不一致时，先绘制角标，再绘制描边。由于边缘像素经过抗锯齿处理，抗锯齿产生半透明像素，四角会出现 `badgeColor` 颜色的描边  
-> 线。如需实现相关场景，建议使用[Text](../../apis-arkgraphics2d/arkts-apis/arkts-graphics-text.md)组件设置[outline](arkts-arkui-commonmethod-c.md#outline-1)代替Badge组件。
+> 线。如需实现相关场景，建议使用[Text](../../apis-arkgraphics2d/arkts-apis/arkts-graphics-text.md)组件设置[outline](arkts-arkui-commonmethod-c.md#outline)代替Badge组件。
 
 **起始版本：** 7
 

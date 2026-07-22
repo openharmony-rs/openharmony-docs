@@ -6,7 +6,6 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
-<a id="on"></a>
 ## on('cooperate')
 
 ```TypeScript
@@ -61,7 +60,6 @@ try {
 ```
 
 
-<a id="on-1"></a>
 ## on('cooperateMessage')
 
 ```TypeScript
@@ -112,7 +110,6 @@ try {
 ```
 
 
-<a id="on-2"></a>
 ## on('cooperateMouse')
 
 ```TypeScript

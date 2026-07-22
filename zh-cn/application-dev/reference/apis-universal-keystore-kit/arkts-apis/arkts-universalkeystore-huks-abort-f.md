@@ -6,7 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="abort"></a>
 ## abort
 
 ```TypeScript
@@ -14,18 +13,17 @@ function abort(handle: number, options: HuksOptions, callback: AsyncCallback<Huk
 ```
 
 abort终止密钥操作。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)  
+> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [abortSession(handle:](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)
+**替代接口：** [abortSession(handle:](arkts-universalkeystore-huks-abortsession-f.md#abortsession)
 
 <!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -37,7 +35,7 @@ abort终止密钥操作。使用callback异步回调。
 | --- | --- | --- | --- |
 | handle | number | 是 | Abort操作的uint64类型的handle值。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Abort操作的参数集合。 |
-| callback | AsyncCallback&lt;HuksResult&gt; | 是 | 回调函数。当密钥操作abort成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksResult&gt; | 是 | 回调函数。当密钥操作abort成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例：**
 
@@ -135,7 +133,6 @@ async function huksAbort() {
 ```
 
 
-<a id="abort-1"></a>
 ## abort
 
 ```TypeScript
@@ -143,17 +140,16 @@ function abort(handle: number, options: HuksOptions): Promise<HuksResult>
 ```
 
 abort终止密钥操作。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)替代。
+> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [abortSession(handle:](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)
+**替代接口：** [abortSession(handle:](arkts-universalkeystore-huks-abortsession-f.md#abortsession)
 
 <!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>-End-->
 

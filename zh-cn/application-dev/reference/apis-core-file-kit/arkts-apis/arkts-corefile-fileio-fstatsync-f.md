@@ -1,6 +1,5 @@
 # fstatSync
 
-<a id="fstatsync"></a>
 ## fstatSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function fstatSync(fd: number): Stat
 
 **废弃版本：** 9
 
-**替代接口：** [fs:statSync](arkts-corefile-file-fs-statsync-f.md#statsync-1)
+**替代接口：** [fs:statSync](arkts-corefile-fileio-statsync-f.md#statsync)
 
 <!--Device-unnamed-declare function fstatSync(fd: number): Stat--><!--Device-unnamed-declare function fstatSync(fd: number): Stat-End-->
 

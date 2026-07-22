@@ -8,7 +8,6 @@ Defines the onWindowNew callback, related to {@link onWindowNew} method.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="setwebcontroller"></a>
 ## setWebController
 
 ```TypeScript

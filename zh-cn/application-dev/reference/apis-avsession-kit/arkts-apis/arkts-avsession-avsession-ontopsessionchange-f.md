@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="ontopsessionchange"></a>
 ## onTopSessionChange
 
 ```TypeScript

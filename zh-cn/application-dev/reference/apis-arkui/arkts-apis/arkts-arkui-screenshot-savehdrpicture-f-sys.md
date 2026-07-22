@@ -6,7 +6,6 @@
 import { screenshot } from '@kit.ArkUI';
 ```
 
-<a id="savehdrpicture"></a>
 ## saveHdrPicture
 
 ```TypeScript
@@ -16,7 +15,7 @@ function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.Pix
 获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。
 
 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。  
-- 当物理屏不存在HDR资源时，与[save](arkts-arkui-screenshot-save-f-sys.md#save-1)接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备[save](arkts-arkui-screenshot-save-f-sys.md#save-1)接口的裁剪、拉伸、旋转功能。
+- 当物理屏不存在HDR资源时，与[save](arkts-arkui-screenshot-save-f-sys.md#save)接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备[save](arkts-arkui-screenshot-save-f-sys.md#save)接口的裁剪、拉伸、旋转功能。
 
 **起始版本：** 20
 

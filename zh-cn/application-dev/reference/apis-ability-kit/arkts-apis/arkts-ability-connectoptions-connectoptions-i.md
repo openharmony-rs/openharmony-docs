@@ -1,6 +1,6 @@
 # ConnectOptions
 
-在连接指定的后台服务时作为入参，用于接收连接过程中的状态变化，如作为[connectServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#connectserviceextensionability-1)的入参，连接指定的ServiceExtensionAbility。
+在连接指定的后台服务时作为入参，用于接收连接过程中的状态变化，如作为[connectServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#connectserviceextensionability)的入参，连接指定的ServiceExtensionAbility。
 
 **起始版本：** 7
 
@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -30,7 +29,6 @@ onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void
 | elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | 目标Ability的elementName。 |
 | remote | rpc.IRemoteObject | 是 | 用于与目标Ability进行IPC通信的IRemoteObject实例。 |
 
-<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -51,7 +49,6 @@ onDisconnect(elementName: ElementName): void
 | --- | --- | --- | --- |
 | elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | 目标Ability的elementName。 |
 
-<a id="onfailed"></a>
 ## onFailed
 
 ```TypeScript

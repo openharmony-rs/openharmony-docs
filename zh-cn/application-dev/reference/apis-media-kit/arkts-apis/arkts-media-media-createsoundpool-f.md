@@ -6,7 +6,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="createsoundpool"></a>
 ## createSoundPool
 
 ```TypeScript
@@ -18,7 +17,6 @@ function createSoundPool(
 ```
 
 创建音频池实例。使用callback异步回调。
-
 > **说明：**  
 >  
 > - API version 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。  
@@ -27,15 +25,7 @@ function createSoundPool(
 
 **起始版本：** 10
 
-<!--Device-media-function createSoundPool(
-    maxStreams: number,
-    audioRenderInfo: audio.AudioRendererInfo,
-    callback: AsyncCallback<SoundPool>
-  ): void--><!--Device-media-function createSoundPool(
-    maxStreams: number,
-    audioRenderInfo: audio.AudioRendererInfo,
-    callback: AsyncCallback<SoundPool>
-  ): void-End-->
+<!--Device-media-function createSoundPool(    maxStreams: number,    audioRenderInfo: audio.AudioRendererInfo,    callback: AsyncCallback<SoundPool>  ): void--><!--Device-media-function createSoundPool(    maxStreams: number,    audioRenderInfo: audio.AudioRendererInfo,    callback: AsyncCallback<SoundPool>  ): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -77,7 +67,6 @@ media.createSoundPool(5, audioRendererInfo, (error, soundPool_: media.SoundPool)
 ```
 
 
-<a id="createsoundpool-1"></a>
 ## createSoundPool
 
 ```TypeScript
@@ -85,7 +74,6 @@ function createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendere
 ```
 
 创建音频池实例。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - API version 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。  

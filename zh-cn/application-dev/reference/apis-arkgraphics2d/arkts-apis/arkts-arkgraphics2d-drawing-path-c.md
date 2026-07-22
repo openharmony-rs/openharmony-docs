@@ -1,7 +1,6 @@
 # Path
 
 由直线、圆弧、二阶贝塞尔、三阶贝塞尔组成的复合几何路径。
-
 > **说明：**  
 >  
 > - 本模块使用屏幕物理像素单位px。  
@@ -20,7 +19,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="addarc"></a>
 ## addArc
 
 ```TypeScript
@@ -49,7 +47,6 @@ addArc(rect: common2D.Rect, startAngle: number, sweepAngle: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="addcircle"></a>
 ## addCircle
 
 ```TypeScript
@@ -79,7 +76,6 @@ addCircle(x: number, y: number, radius: number, pathDirection?: PathDirection): 
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="addoval"></a>
 ## addOval
 
 ```TypeScript
@@ -108,7 +104,6 @@ addOval(rect: common2D.Rect, start: number, pathDirection?: PathDirection): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="addpath"></a>
 ## addPath
 
 ```TypeScript
@@ -136,7 +131,6 @@ addPath(path: Path, matrix?: Matrix | null): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="addpolygon"></a>
 ## addPolygon
 
 ```TypeScript
@@ -164,7 +158,6 @@ addPolygon(points: Array<common2D.Point>, close: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="addrect"></a>
 ## addRect
 
 ```TypeScript
@@ -192,7 +185,6 @@ addRect(rect: common2D.Rect, pathDirection?: PathDirection): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="addroundrect"></a>
 ## addRoundRect
 
 ```TypeScript
@@ -220,7 +212,6 @@ addRoundRect(roundRect: RoundRect, pathDirection?: PathDirection): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="approximate"></a>
 ## approximate
 
 ```TypeScript
@@ -228,7 +219,6 @@ approximate(acceptableError: number): Array<number>
 ```
 
 将当前路径转化为由连续直线段构成的近似路径。
-
 > **说明：**  
 >  
 > - 当acceptableError为0时，曲线路径被极度细分，会严重影响性能和内存消耗，不建议设置误差值为0。  
@@ -261,7 +251,6 @@ approximate(acceptableError: number): Array<number>
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
-<a id="arcto"></a>
 ## arcTo
 
 ```TypeScript
@@ -295,7 +284,6 @@ arcTo(x1: number, y1: number, x2: number, y2: number, startDeg: number, sweepDeg
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="buildfromsvgstring"></a>
 ## buildFromSvgString
 
 ```TypeScript
@@ -328,7 +316,6 @@ buildFromSvgString(str: string): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -343,7 +330,6 @@ close(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-<a id="conicto"></a>
 ## conicTo
 
 ```TypeScript
@@ -368,7 +354,7 @@ conicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: number
 | ctrlY | number | 是 | 控制点的y坐标，该参数为浮点数。 |
 | endX | number | 是 | 目标点的x坐标，该参数为浮点数。 |
 | endY | number | 是 | 目标点的y坐标，该参数为浮点数。 |
-| weight | number | 是 | 表示曲线权重，决定了曲线的形状。值越大，曲线越接近控制点。小于等于0时，效果与[lineTo](arkts-arkgraphics2d-drawing-path-c.md#lineto-1)相同；值为1时，效果与[quadTo](arkts-arkgraphics2d-drawing-path-c.md#quadto-1)相同。该参数为浮点数。 |
+| weight | number | 是 | 表示曲线权重，决定了曲线的形状。值越大，曲线越接近控制点。小于等于0时，效果与[lineTo](arkts-arkgraphics2d-drawing-path-c.md#lineto)相同；值为1时，效果与[quadTo](arkts-arkgraphics2d-drawing-path-c.md#quadto)相同。该参数为浮点数。 |
 
 **错误码：**
 
@@ -376,7 +362,6 @@ conicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: number
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -393,7 +378,6 @@ constructor()
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -416,7 +400,6 @@ constructor(path: Path)
 | --- | --- | --- | --- |
 | path | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 待复制的路径对象。 |
 
-<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -450,7 +433,6 @@ contains(x: number, y: number): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="converttosvgstring"></a>
 ## convertToSvgString
 
 ```TypeScript
@@ -473,7 +455,6 @@ convertToSvgString(): string
 | --- | --- |
 | string | 转换后的SVG字符串结果。 |
 
-<a id="cubicto"></a>
 ## cubicTo
 
 ```TypeScript
@@ -507,7 +488,6 @@ cubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: number, endX: nu
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="getbounds"></a>
 ## getBounds
 
 ```TypeScript
@@ -528,14 +508,13 @@ getBounds(): common2D.Rect
 | --- | --- |
 | common2D.Rect | Minimum bounding rectangle. |
 
-<a id="getconicweightdata"></a>
 ## getConicWeightData
 
 ```TypeScript
 getConicWeightData(): Array<number>
 ```
 
-获取路径的圆锥曲线权重数据。在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示，其中每个控制点附带一个权重值（weight）。权重属于曲线定义的几何参数。主要作用如下：形状调控：权重值越大，曲线越靠近对应控制点；权重为1时退化为标准贝塞尔曲线；权重为0时该控制点不起作用。精确表示圆锥曲线：通过组合权重与二次贝塞尔曲线，可以精确表示圆弧、椭圆弧、抛物线等圆锥曲线段，无需使用分段逼近或专用椭圆弧指令。数据组织：权重通常以数组形式与点数据并列，按顺序对应每个控制点，与相应的指令verb（如[conicTo](arkts-arkgraphics2d-drawing-path-c.md#conicto-1)）配合使用。
+获取路径的圆锥曲线权重数据。在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示，其中每个控制点附带一个权重值（weight）。权重属于曲线定义的几何参数。主要作用如下：形状调控：权重值越大，曲线越靠近对应控制点；权重为1时退化为标准贝塞尔曲线；权重为0时该控制点不起作用。精确表示圆锥曲线：通过组合权重与二次贝塞尔曲线，可以精确表示圆弧、椭圆弧、抛物线等圆锥曲线段，无需使用分段逼近或专用椭圆弧指令。数据组织：权重通常以数组形式与点数据并列，按顺序对应每个控制点，与相应的指令verb（如[conicTo](arkts-arkgraphics2d-drawing-path-c.md#conicto)）配合使用。
 
 **起始版本：** 26.0.0
 
@@ -551,7 +530,6 @@ getConicWeightData(): Array<number>
 | --- | --- |
 | Array&lt;number&gt; | 类型为浮点数（取值范围为非负数）。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。 |
 
-<a id="getfilltype"></a>
 ## getFillType
 
 ```TypeScript
@@ -572,7 +550,6 @@ getFillType(): PathFillType
 | --- | --- |
 | [PathFillType](arkts-arkgraphics2d-drawing-pathfilltype-e.md) | 路径填充类型。 |
 
-<a id="getlastpoint"></a>
 ## getLastPoint
 
 ```TypeScript
@@ -595,7 +572,6 @@ getLastPoint(): common2D.Point
 | --- | --- |
 | common2D.Point | Returns the last point of the path. |
 
-<a id="getlength"></a>
 ## getLength
 
 ```TypeScript
@@ -622,7 +598,6 @@ getLength(forceClosed: boolean): number
 | --- | --- |
 | number | 路径长度。 |
 
-<a id="getmatrix"></a>
 ## getMatrix
 
 ```TypeScript
@@ -658,7 +633,6 @@ getMatrix(forceClosed: boolean, distance: number, matrix: Matrix, flags: PathMea
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
-<a id="getpathiterator"></a>
 ## getPathIterator
 
 ```TypeScript
@@ -679,14 +653,13 @@ getPathIterator(): PathIterator
 | --- | --- |
 | [PathIterator](arkts-arkgraphics2d-drawing-pathiterator-c.md) | 该路径的迭代器对象。 |
 
-<a id="getpointdata"></a>
 ## getPointData
 
 ```TypeScript
 getPointData(): Array<common2D.Point>
 ```
 
-获取路径的点数据。在路径（path）图元中，点数据以数值序列的形式存在，与动词verb指令一一对应，用来精确指定绘图操作的几何坐标位置。点数据的主要类型包括：终点坐标：与[moveTo](arkts-arkgraphics2d-drawing-path-c.md#moveto-1)、[lineTo](arkts-arkgraphics2d-drawing-path-c.md#lineto-1)等指令配合，定义线段或移动的目标位置。控制点坐标：与曲线指令配合，用于定义贝塞尔曲线的形状（如三次曲线需要两个控制点和一个终点）。闭合点：通常不单独提供坐标，由[close](arkts-arkgraphics2d-drawing-path-c.md#close-1)指令隐式使用路径起点。
+获取路径的点数据。在路径（path）图元中，点数据以数值序列的形式存在，与动词verb指令一一对应，用来精确指定绘图操作的几何坐标位置。点数据的主要类型包括：终点坐标：与[moveTo](arkts-arkgraphics2d-drawing-path-c.md#moveto)、[lineTo](arkts-arkgraphics2d-drawing-path-c.md#lineto)等指令配合，定义线段或移动的目标位置。控制点坐标：与曲线指令配合，用于定义贝塞尔曲线的形状（如三次曲线需要两个控制点和一个终点）。闭合点：通常不单独提供坐标，由[close](arkts-arkgraphics2d-drawing-path-c.md#close)指令隐式使用路径起点。
 
 **起始版本：** 26.0.0
 
@@ -702,7 +675,6 @@ getPointData(): Array<common2D.Point>
 | --- | --- |
 | Array&lt;common2D.Point&gt; | path points array. |
 
-<a id="getpositionandtangent"></a>
 ## getPositionAndTangent
 
 ```TypeScript
@@ -738,7 +710,6 @@ getPositionAndTangent(forceClosed: boolean, distance: number, position: common2D
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="getsegment"></a>
 ## getSegment
 
 ```TypeScript
@@ -760,7 +731,7 @@ getSegment(forceClosed: boolean, start: number, stop: number, startWithMoveTo: b
 | forceClosed | boolean | 是 | 表示是否按照闭合路径测量，true表示测量时路径会被强制视为已闭合，false表示会根据路径的实际闭合状态测量。 |
 | start | number | 是 | 表示与路径起始点的距离，距离路径起始点start距离的位置即为截取路径片段的起始点，小于0时会被视作0，大于等于stop时会截取失败。该参数为浮点数。 |
 | stop | number | 是 | 表示与路径起始点的距离，距离路径起始点stop距离的位置即为截取路径片段的终点，小于等于start时会截取失败，大于路径长度时会被视作路径长度。该参数为浮点数。 |
-| startWithMoveTo | boolean | 是 | 表示是否在目标路径执行[moveTo](arkts-arkgraphics2d-drawing-path-c.md#moveto-1)移动到截取路径片段的起始点位置。true表示执行，false表示不执行。 |
+| startWithMoveTo | boolean | 是 | 表示是否在目标路径执行[moveTo](arkts-arkgraphics2d-drawing-path-c.md#moveto)移动到截取路径片段的起始点位置。true表示执行，false表示不执行。 |
 | dst | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 目标路径，截取成功时会将得到的路径片段追加到目标路径上，截取失败时不做改变。 |
 
 **返回值：**
@@ -769,14 +740,13 @@ getSegment(forceClosed: boolean, start: number, stop: number, startWithMoveTo: b
 | --- | --- |
 | boolean | 表示是否成功截取路径片段。true表示截取成功，false表示截取失败。 |
 
-<a id="getverbdata"></a>
 ## getVerbData
 
 ```TypeScript
 getVerbData(): Array<PathIteratorVerb>
 ```
 
-获取路径的指令数据。在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。指令数据以枚举的形式存在，每个取值对应一种几何操作类型，例如：[moveTo](arkts-arkgraphics2d-drawing-path-c.md#moveto-1)：将当前绘图点移至指定坐标，不产生线段。[lineTo](arkts-arkgraphics2d-drawing-path-c.md#lineto-1)：从当前点向指定点绘制直线段。[close](arkts-arkgraphics2d-drawing-path-c.md#close-1)：将当前点与路径起点相连，形成封闭区域。
+获取路径的指令数据。在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。指令数据以枚举的形式存在，每个取值对应一种几何操作类型，例如：[moveTo](arkts-arkgraphics2d-drawing-path-c.md#moveto)：将当前绘图点移至指定坐标，不产生线段。[lineTo](arkts-arkgraphics2d-drawing-path-c.md#lineto)：从当前点向指定点绘制直线段。[close](arkts-arkgraphics2d-drawing-path-c.md#close)：将当前点与路径起点相连，形成封闭区域。
 
 **起始版本：** 26.0.0
 
@@ -792,7 +762,6 @@ getVerbData(): Array<PathIteratorVerb>
 | --- | --- |
 | Array&lt;PathIteratorVerb&gt; | 类型为浮点数。理论上取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。 |
 
-<a id="interpolate"></a>
 ## interpolate
 
 ```TypeScript
@@ -827,7 +796,6 @@ interpolate(other: Path, weight: number, interpolatedPath: Path): boolean
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
-<a id="isclosed"></a>
 ## isClosed
 
 ```TypeScript
@@ -848,7 +816,6 @@ isClosed(): boolean
 | --- | --- |
 | boolean | 表示当前路径是否闭合，true表示闭合，false表示不闭合。 |
 
-<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -869,7 +836,6 @@ isEmpty(): boolean
 | --- | --- |
 | boolean | 路径是否为空。true表示当前路径为空，false表示路径不为空。 |
 
-<a id="isequal"></a>
 ## isEqual
 
 ```TypeScript
@@ -898,7 +864,6 @@ Checks if two paths are equal.
 | --- | --- |
 | boolean | Returns true if the two paths are equal, otherwise returns false. |
 
-<a id="isinterpolate"></a>
 ## isInterpolate
 
 ```TypeScript
@@ -925,7 +890,6 @@ isInterpolate(other: Path): boolean
 | --- | --- |
 | boolean | 返回当前路径与另一条路径是否兼容插值的结果。true表示兼容插值，false表示不兼容插值。 |
 
-<a id="isinversefilltype"></a>
 ## isInverseFillType
 
 ```TypeScript
@@ -946,7 +910,6 @@ isInverseFillType(): boolean
 | --- | --- |
 | boolean | 检查当前路径填充类型是否是反向填充类型。true表示是反向填充类型，false表示不是反向填充类型。 |
 
-<a id="isrect"></a>
 ## isRect
 
 ```TypeScript
@@ -973,7 +936,6 @@ isRect(rect: common2D.Rect | null): boolean
 | --- | --- |
 | boolean | 返回路径是否构成矩形。true表示路径构成矩形，false表示路径不构成矩形。 |
 
-<a id="lineto"></a>
 ## lineTo
 
 ```TypeScript
@@ -1003,7 +965,6 @@ lineTo(x: number, y: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="moveto"></a>
 ## moveTo
 
 ```TypeScript
@@ -1033,7 +994,6 @@ moveTo(x: number, y: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="offset"></a>
 ## offset
 
 ```TypeScript
@@ -1067,7 +1027,6 @@ offset(dx: number, dy: number): Path
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="op"></a>
 ## op
 
 ```TypeScript
@@ -1101,7 +1060,6 @@ op(path: Path, pathOp: PathOp): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="quadto"></a>
 ## quadTo
 
 ```TypeScript
@@ -1133,7 +1091,6 @@ quadTo(ctrlX: number, ctrlY: number, endX: number, endY: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="rconicto"></a>
 ## rConicTo
 
 ```TypeScript
@@ -1158,7 +1115,7 @@ rConicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: numbe
 | ctrlY | number | 是 | 控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
 | endX | number | 是 | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
 | endY | number | 是 | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| weight | number | 是 | 表示曲线的权重，决定了曲线的形状，越大越接近控制点。若小于等于0则等同于使用[rLineTo](arkts-arkgraphics2d-drawing-path-c.md#rlineto-1)添加一条到结束点的线段，若为1则等同于[rQuadTo](arkts-arkgraphics2d-drawing-path-c.md#rquadto-1)，该参数为浮点数。 |
+| weight | number | 是 | 表示曲线的权重，决定了曲线的形状，越大越接近控制点。若小于等于0则等同于使用[rLineTo](arkts-arkgraphics2d-drawing-path-c.md#rlineto)添加一条到结束点的线段，若为1则等同于[rQuadTo](arkts-arkgraphics2d-drawing-path-c.md#rquadto)，该参数为浮点数。 |
 
 **错误码：**
 
@@ -1166,7 +1123,6 @@ rConicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: numbe
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="rcubicto"></a>
 ## rCubicTo
 
 ```TypeScript
@@ -1200,7 +1156,6 @@ rCubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: number, endX: n
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="rlineto"></a>
 ## rLineTo
 
 ```TypeScript
@@ -1230,7 +1185,6 @@ rLineTo(dx: number, dy: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="rmoveto"></a>
 ## rMoveTo
 
 ```TypeScript
@@ -1260,7 +1214,6 @@ rMoveTo(dx: number, dy: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="rquadto"></a>
 ## rQuadTo
 
 ```TypeScript
@@ -1292,7 +1245,6 @@ rQuadTo(dx1: number, dy1: number, dx2: number, dy2: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -1307,7 +1259,6 @@ reset(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-<a id="rewind"></a>
 ## rewind
 
 ```TypeScript
@@ -1322,7 +1273,6 @@ rewind(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -1345,7 +1295,6 @@ set(src: Path): void
 | --- | --- | --- | --- |
 | src | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 用于更新的路径。 |
 
-<a id="setfilltype"></a>
 ## setFillType
 
 ```TypeScript
@@ -1372,7 +1321,6 @@ setFillType(pathFillType: PathFillType): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="setlastpoint"></a>
 ## setLastPoint
 
 ```TypeScript
@@ -1394,7 +1342,6 @@ setLastPoint(x: number, y: number): void
 | x | number | 是 | 指定点的x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
 | y | number | 是 | 指定点的y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
 
-<a id="toggleinversefilltype"></a>
 ## toggleInverseFillType
 
 ```TypeScript
@@ -1409,7 +1356,6 @@ toggleInverseFillType(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-<a id="transform"></a>
 ## transform
 
 ```TypeScript

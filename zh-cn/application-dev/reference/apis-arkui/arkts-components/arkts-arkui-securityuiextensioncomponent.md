@@ -17,11 +17,7 @@ SecurityUIExtensionComponent(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SecurityUIExtensionComponentInterface-(
-    want: import('../api/options?: SecurityUIExtensionOptions
-  ): SecurityUIExtensionComponentAttribute--><!--Device-SecurityUIExtensionComponentInterface-(
-    want: import('../api/options?: SecurityUIExtensionOptions
-  ): SecurityUIExtensionComponentAttribute-End-->
+<!--Device-SecurityUIExtensionComponentInterface-(    want: import('../api/options?: SecurityUIExtensionOptions  ): SecurityUIExtensionComponentAttribute--><!--Device-SecurityUIExtensionComponentInterface-(    want: import('../api/options?: SecurityUIExtensionOptions  ): SecurityUIExtensionComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -6,7 +6,6 @@
 import { curves } from '@kit.ArkUI';
 ```
 
-<a id="initcurve"></a>
 ## initCurve
 
 ```TypeScript

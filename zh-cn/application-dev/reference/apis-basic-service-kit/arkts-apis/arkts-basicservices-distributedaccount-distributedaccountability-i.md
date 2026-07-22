@@ -14,7 +14,6 @@
 import { distributedAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="getosaccountdistributedinfo"></a>
 ## getOsAccountDistributedInfo
 
 ```TypeScript
@@ -68,7 +67,6 @@ try {
 
 ```
 
-<a id="getosaccountdistributedinfo-1"></a>
 ## getOsAccountDistributedInfo
 
 ```TypeScript
@@ -118,7 +116,6 @@ try {
 
 ```
 
-<a id="queryosaccountdistributedinfo"></a>
 ## queryOsAccountDistributedInfo
 
 ```TypeScript
@@ -126,18 +123,17 @@ queryOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void
 ```
 
 获取分布式账号信息。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getOsAccountDistributedInfo](arkts-basicservices-distributedaccount-distributedaccountability-i.md#getosaccountdistributedinfo-1)  
+> [getOsAccountDistributedInfo](arkts-basicservices-distributedaccount-distributedaccountability-i.md#getosaccountdistributedinfo)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountDistributedInfo(callback:](arkts-basicservices-distributedaccount-distributedaccountability-i.md#getosaccountdistributedinfo-1)
+**替代接口：** [getOsAccountDistributedInfo(callback:](arkts-basicservices-distributedaccount-distributedaccountability-i.md#getosaccountdistributedinfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -169,7 +165,6 @@ accountAbility.queryOsAccountDistributedInfo(
 
 ```
 
-<a id="queryosaccountdistributedinfo-1"></a>
 ## queryOsAccountDistributedInfo
 
 ```TypeScript
@@ -177,18 +172,17 @@ queryOsAccountDistributedInfo(): Promise<DistributedInfo>
 ```
 
 获取分布式账号信息。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [getOsAccountDistributedInfo](arkts-basicservices-distributedaccount-distributedaccountability-i.md#getosaccountdistributedinfo-1)  
+> [getOsAccountDistributedInfo](arkts-basicservices-distributedaccount-distributedaccountability-i.md#getosaccountdistributedinfo)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountDistributedInfo()](arkts-basicservices-distributedaccount-distributedaccountability-i.md#getosaccountdistributedinfo-1)
+**替代接口：** [getOsAccountDistributedInfo()](arkts-basicservices-distributedaccount-distributedaccountability-i.md#getosaccountdistributedinfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -217,7 +211,6 @@ accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.Di
 
 ```
 
-<a id="setosaccountdistributedinfo"></a>
 ## setOsAccountDistributedInfo
 
 ```TypeScript
@@ -276,7 +269,6 @@ try {
 
 ```
 
-<a id="setosaccountdistributedinfo-1"></a>
 ## setOsAccountDistributedInfo
 
 ```TypeScript
@@ -338,7 +330,6 @@ try {
 
 ```
 
-<a id="updateosaccountdistributedinfo"></a>
 ## updateOsAccountDistributedInfo
 
 ```TypeScript
@@ -346,18 +337,17 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
 ```
 
 更新分布式账号信息。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setOsAccountDistributedInfo](arkts-basicservices-distributedaccount-distributedaccountability-i.md#setosaccountdistributedinfo-1)  
+> [setOsAccountDistributedInfo](arkts-basicservices-distributedaccount-distributedaccountability-i.md#setosaccountdistributedinfo)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setOsAccountDistributedInfo(accountInfo:](arkts-basicservices-distributedaccount-distributedaccountability-i.md#setosaccountdistributedinfo-1)
+**替代接口：** [setOsAccountDistributedInfo(accountInfo:](arkts-basicservices-distributedaccount-distributedaccountability-i.md#setosaccountdistributedinfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -392,7 +382,6 @@ accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) 
 
 ```
 
-<a id="updateosaccountdistributedinfo-1"></a>
 ## updateOsAccountDistributedInfo
 
 ```TypeScript
@@ -400,18 +389,17 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 ```
 
 更新分布式账号信息。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用  
-> [setOsAccountDistributedInfo](arkts-basicservices-distributedaccount-distributedaccountability-i.md#setosaccountdistributedinfo-1)  
+> [setOsAccountDistributedInfo](arkts-basicservices-distributedaccount-distributedaccountability-i.md#setosaccountdistributedinfo)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setOsAccountDistributedInfo(accountInfo:](arkts-basicservices-distributedaccount-distributedaccountability-i.md#setosaccountdistributedinfo-1)
+**替代接口：** [setOsAccountDistributedInfo(accountInfo:](arkts-basicservices-distributedaccount-distributedaccountability-i.md#setosaccountdistributedinfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 

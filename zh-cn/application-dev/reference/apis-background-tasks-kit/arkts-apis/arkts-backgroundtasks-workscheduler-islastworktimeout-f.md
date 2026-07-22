@@ -6,7 +6,6 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="islastworktimeout"></a>
 ## isLastWorkTimeOut
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boole
 
 **废弃版本：** 10
 
-**替代接口：** [isLastWorkTimeOut(workId:](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout-1)
+**替代接口：** [isLastWorkTimeOut(workId:](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,7 +50,6 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boole
 | [9700004](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700004-workinfo校验失败) | Check on workInfo failed. |
 
 
-<a id="islastworktimeout-1"></a>
 ## isLastWorkTimeOut
 
 ```TypeScript
@@ -102,7 +100,6 @@ workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) => {
 ```
 
 
-<a id="islastworktimeout-2"></a>
 ## isLastWorkTimeOut
 
 ```TypeScript

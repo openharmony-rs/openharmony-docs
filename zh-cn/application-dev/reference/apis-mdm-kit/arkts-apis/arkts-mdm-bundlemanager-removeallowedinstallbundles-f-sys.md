@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="removeallowedinstallbundles"></a>
 ## removeAllowedInstallBundles
 
 ```TypeScript
@@ -19,7 +18,7 @@ function removeAllowedInstallBundles(admin: Want, appIds: Array<string>, callbac
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync-1)
+**替代接口：** [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -36,7 +35,7 @@ function removeAllowedInstallBundles(admin: Want, appIds: Array<string>, callbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| appIds | Array&lt;string&gt; | 是 | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)。 |
+| appIds | Array&lt;string&gt; | 是 | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../../quick-start/common-problem-of-application.md#什么是appid)。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
@@ -74,7 +73,6 @@ bundleManager.removeAllowedInstallBundles(wantTemp, appIds, (err) => {
 ```
 
 
-<a id="removeallowedinstallbundles-1"></a>
 ## removeAllowedInstallBundles
 
 ```TypeScript
@@ -87,7 +85,7 @@ function removeAllowedInstallBundles(admin: Want, appIds: Array<string>, userId:
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync-1)
+**替代接口：** [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -104,7 +102,7 @@ function removeAllowedInstallBundles(admin: Want, appIds: Array<string>, userId:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| appIds | Array&lt;string&gt; | 是 | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)。 |
+| appIds | Array&lt;string&gt; | 是 | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../../quick-start/common-problem-of-application.md#什么是appid)。 |
 | userId | number | 是 | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
@@ -143,7 +141,6 @@ bundleManager.removeAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
 ```
 
 
-<a id="removeallowedinstallbundles-2"></a>
 ## removeAllowedInstallBundles
 
 ```TypeScript
@@ -156,7 +153,7 @@ function removeAllowedInstallBundles(admin: Want, appIds: Array<string>, userId?
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync-1)
+**替代接口：** [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -173,7 +170,7 @@ function removeAllowedInstallBundles(admin: Want, appIds: Array<string>, userId?
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| appIds | Array&lt;string&gt; | 是 | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)。 |
+| appIds | Array&lt;string&gt; | 是 | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../../quick-start/common-problem-of-application.md#什么是appid)。 |
 | userId | number | 否 | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**

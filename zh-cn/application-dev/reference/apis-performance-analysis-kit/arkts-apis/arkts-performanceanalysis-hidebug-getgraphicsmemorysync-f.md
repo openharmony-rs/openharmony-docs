@@ -6,7 +6,6 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="getgraphicsmemorysync"></a>
 ## getGraphicsMemorySync
 
 ```TypeScript
@@ -14,7 +13,6 @@ function getGraphicsMemorySync(): number
 ```
 
 ʹ��ͬ����ʽ��ȡӦ���Դ��ܴ�С��gl + graph����
-
 > **ע��**  
 >  
 > ���ڸýӿ��漰��ο����ͨ�ţ����ʱ���ܴﵽ�뼶��Ϊ�˱��������������⣬���鲻Ҫ�����̵߳��øýӿڣ��Ƽ�ʹ���첽�ӿ�`getGraphicsMemory`��

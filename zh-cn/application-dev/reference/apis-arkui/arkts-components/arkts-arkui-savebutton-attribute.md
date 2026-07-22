@@ -1,6 +1,6 @@
 # SaveButton属性/事件
 
-不支持通用属性，除了继承[安全控件通用属性](./security_component)，还支持以下属性。不支持通用事件，仅支持以下事件。
+不支持通用属性，除了继承[安全控件通用属性](../arkts-apis/arkts-security_component.md)，还支持以下属性。不支持通用事件，仅支持以下事件。
 
 **继承/实现关系：** SaveButtonAttribute extends [SecurityComponentMethod<SaveButtonAttribute>](SecurityComponentMethod<SaveButtonAttribute>)
 
@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="iconborderradius"></a>
 ## iconBorderRadius
 
 ```TypeScript
@@ -37,7 +36,6 @@ iconBorderRadius(radius: Dimension | BorderRadiuses)
 | --- | --- | --- | --- |
 | radius | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) \| BorderRadiuses | 是 | 保存控件图标的圆角半径，支持设置四个圆角。<br>默认值：四个圆角均为0vp。支持像素单位（vp、px等），取值范围≥0。传入负值时自动修正为0。<br/>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则图标的圆角半径设置不生效。 |
 
-<a id="iconsize"></a>
 ## iconSize
 
 ```TypeScript
@@ -62,14 +60,13 @@ iconSize(size: Dimension | SizeOptions)
 | --- | --- | --- | --- |
 | size | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) \| SizeOptions | 是 | 图标尺寸，支持像素单位（vp、px等）。<br>不支持设置百分比字符串。若设置Dimension类型入参的百分比字符串，则图标尺寸显示为默认值；若设置SizeOptions类型入参的width或height属性为百分比字符串，则图标尺寸显示为0vp。<br/>对于保存控件提供的系统图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，若宽、高设定值不一致，则宽、高相等取两者较小值；若仅设定其中一个值，则取该值作为宽、高值。系统提供图标采用此规则是为保证图标的正方形显示和视觉一致性。<br/>对于自定义图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，建议同时设定宽和高，此时按照指定宽、高生效；若仅设定其中一个值，则宽高均显示为该设定值。自定义图标允许灵活设定尺寸以适应不同图片比例。<br/>- 当设定的宽高与自定义图标的宽高比例不一致时，图片按[ImageFit.Cover](../arkts-apis/arkts-arkui-imagefit-e.md)的方式填充显示区域。 |
 
-<a id="onclick"></a>
 ## onClick
 
 ```TypeScript
 onClick(event: SaveButtonCallback)
 ```
 
-点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见[SaveButton](docroot://reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#savebutton-1)构造函数说明）；点击拒绝或关闭弹窗则授权失败。
+点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见[SaveButton](../../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#savebutton-1)构造函数说明）；点击拒绝或关闭弹窗则授权失败。
 
 **起始版本：** 10
 
@@ -87,7 +84,6 @@ onClick(event: SaveButtonCallback)
 | --- | --- | --- | --- |
 | event | [SaveButtonCallback](arkts-arkui-savebuttoncallback-t.md) | 是 | 点击事件的回调对象，包含点击事件信息、授权结果和错误信息。<br>从APIversion 18开始，统一使用SaveButtonCallback，可额外获取error信息。<br>**起始版本：** 18 |
 
-<a id="seticon"></a>
 ## setIcon
 
 ```TypeScript
@@ -112,9 +108,8 @@ setIcon(icon: Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| icon | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 自定义图标资源信息，仅支持Resource类型的数据源。<br>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](./image)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。<br/>若应用不具备ohos.permission.CUS TOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。 |
+| icon | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 自定义图标资源信息，仅支持Resource类型的数据源。<br>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。<br/>若应用不具备ohos.permission.CUS TOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。 |
 
-<a id="settext"></a>
 ## setText
 
 ```TypeScript
@@ -141,7 +136,6 @@ setText(text: string | Resource)
 | --- | --- | --- | --- |
 | text | string \| Resource | 是 | 自定义文本信息。适用于需要使用与业务强相关的文本替代系统预置描述的场景。传入字符串时直接使用文本内容；传入Resource时，可配合资源管理实现多语言文本。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则该设置不生效，保存控件保持默认样式。 |
 
-<a id="stateeffect"></a>
 ## stateEffect
 
 ```TypeScript
@@ -168,7 +162,6 @@ stateEffect(enabled: boolean)
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | true表示保存控件按压时显示按压效果，false表示保存控件按压时不显示按压效果。<br>默认值：true。<br/>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，按压效果设置不生效。 |
 
-<a id="symbolfontweight"></a>
 ## symbolFontWeight
 
 ```TypeScript
@@ -198,7 +191,6 @@ symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 | --- | --- | --- | --- |
 | fontWeight | number \| FontWeight \| string \| Resource | 是 | 设置保存控件Symbol图标粗细。<br>支持number类型：取值范围为[100, 900]，取值间隔为100，数值越大字体越粗。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal（对应数值400）。<br/>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则该设置不生效。 |
 
-<a id="symboliconcolor"></a>
 ## symbolIconColor
 
 ```TypeScript
@@ -229,7 +221,6 @@ symbolIconColor(color: Array<ResourceColor>)
 | --- | --- | --- | --- |
 | color | Array&lt;ResourceColor&gt; | 是 | 设置保存控件Symbol图标颜色。适用于Symbol图标需要与业务视觉风格保持一致的场景。<br>默认值：随[symbolRenderingStrategy](SaveButtonAttribute#symbolRenderingStrategy)不同而变化。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则该设置不生效。 |
 
-<a id="symbolrenderingstrategy"></a>
 ## symbolRenderingStrategy
 
 ```TypeScript
@@ -260,7 +251,6 @@ symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 | --- | --- | --- | --- |
 | strategy | [SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md) | 是 | 保存控件Symbol图标渲染策略，用于控制Symbol图标的渲染方式。<br>默认值：SymbolRenderingStrategy.SINGLE。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则该设置不生效。 |
 
-<a id="usercancelevent"></a>
 ## userCancelEvent
 
 ```TypeScript

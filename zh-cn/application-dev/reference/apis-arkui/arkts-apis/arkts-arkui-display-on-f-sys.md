@@ -6,7 +6,6 @@
 import { display } from '@kit.ArkUI';
 ```
 
-<a id="on"></a>
 ## on('privateModeChange')
 
 ```TypeScript

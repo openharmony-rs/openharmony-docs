@@ -18,7 +18,6 @@
 import { CipherAesOptions, CipherResponse, CipherRsaOptions } from '@kit.CryptoArchitectureKit';
 ```
 
-<a id="aes"></a>
 ## aes
 
 ```TypeScript
@@ -43,7 +42,6 @@ static aes(options: CipherAesOptions): void
 | --- | --- | --- | --- |
 | options | [CipherAesOptions](arkts-cryptoarchitecture-cipher-cipheraesoptions-i.md) | 是 | AES 加解密参数。 |
 
-<a id="rsa"></a>
 ## rsa
 
 ```TypeScript

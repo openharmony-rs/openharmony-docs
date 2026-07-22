@@ -6,7 +6,6 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
-<a id="connectability"></a>
 ## connectAbility
 
 ```TypeScript
@@ -14,10 +13,9 @@ function connectAbility(request: Want, options: ConnectOptions): number
 ```
 
 将当前ability与指定的ServiceAbility进行连接。
-
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（FA模型）](docroot://application-models/component-startup-rules-fa.md)。  
+> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。  
 > > 跨应用连接serviceAbility，对端应用需配置关联启动。
 
 **起始版本：** 7

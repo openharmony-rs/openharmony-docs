@@ -36,7 +36,7 @@ fontColor?: ResourceColor
 fontConfigs?: FontConfigs
 ```
 
-字体配置。默认值继承[FontConfigs](docroot://reference/apis-arkui/arkui-ts/ts-text-common.md#fontconfigs24对象说明)。
+字体配置。默认值继承[FontConfigs](../../../reference/apis-arkui/arkui-ts/ts-text-common.md#fontconfigs24对象说明)。
 
 **类型：** FontConfigs
 
@@ -84,7 +84,7 @@ fontSize?: LengthMetrics
 
 如果LengthMetrics的unit值是PERCENT，当前设置不生效，处理为16fp。
 
-单位：[fp](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) 
+单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) 
 
 **类型：** LengthMetrics
 

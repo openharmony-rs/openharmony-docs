@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
-<a id="isusbdisabled"></a>
 ## isUsbDisabled
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isUsbDisabled(admin: Want): boolean
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 

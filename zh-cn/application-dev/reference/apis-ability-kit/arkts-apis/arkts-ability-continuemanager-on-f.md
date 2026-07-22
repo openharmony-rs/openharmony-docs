@@ -6,7 +6,6 @@
 import { continueManager } from '@kit.AbilityKit';
 ```
 
-<a id="on"></a>
 ## on('prepareContinue')
 
 ```TypeScript

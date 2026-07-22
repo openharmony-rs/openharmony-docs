@@ -16,7 +16,6 @@
 import { LazyVWaterFlowLayout, LazyWaterFlowLayoutAttribute, LazyVWaterFlowLayoutAttribute } from '@kit.ArkUI';
 ```
 
-<a id="columnsgap"></a>
 ## columnsGap
 
 ```TypeScript
@@ -47,7 +46,6 @@ columnsGap(value: LengthMetrics | undefined): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="footer"></a>
 ## footer
 
 ```TypeScript
@@ -78,7 +76,6 @@ footer(builder: CustomBuilder | undefined): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="header"></a>
 ## header
 
 ```TypeScript
@@ -109,7 +106,6 @@ header(builder: CustomBuilder | undefined): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onvisibleindexeschange"></a>
 ## onVisibleIndexesChange
 
 ```TypeScript
@@ -140,7 +136,6 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="rowsgap"></a>
 ## rowsGap
 
 ```TypeScript
@@ -171,7 +166,6 @@ rowsGap(value: LengthMetrics | undefined): T
 | --- | --- |
 | T | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="sticky"></a>
 ## sticky
 
 ```TypeScript

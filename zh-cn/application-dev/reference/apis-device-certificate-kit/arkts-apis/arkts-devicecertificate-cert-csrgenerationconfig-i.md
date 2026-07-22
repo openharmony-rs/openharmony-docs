@@ -1,7 +1,6 @@
 # CsrGenerationConfig
 
 用于生成CSR的配置参数，包含主体名称、扩展、摘要算法、输出格式等。
-
 > **说明：**  
 >  
 > - subject是X509定义的Name类型的对象。  

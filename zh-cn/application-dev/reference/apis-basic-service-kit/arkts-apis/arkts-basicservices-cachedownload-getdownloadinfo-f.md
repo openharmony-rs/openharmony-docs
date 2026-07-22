@@ -6,7 +6,6 @@
 import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
-<a id="getdownloadinfo"></a>
 ## getDownloadInfo
 
 ```TypeScript

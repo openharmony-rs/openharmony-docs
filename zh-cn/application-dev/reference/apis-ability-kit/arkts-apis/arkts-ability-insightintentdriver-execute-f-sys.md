@@ -6,7 +6,6 @@
 import { insightIntentDriver } from '@kit.AbilityKit';
 ```
 
-<a id="execute"></a>
 ## execute
 
 ```TypeScript
@@ -94,7 +93,6 @@ function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.Exec
 ```
 
 
-<a id="execute-1"></a>
 ## execute
 
 ```TypeScript

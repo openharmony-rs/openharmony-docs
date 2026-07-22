@@ -16,7 +16,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="completetransition"></a>
 ## completeTransition
 
 ```TypeScript

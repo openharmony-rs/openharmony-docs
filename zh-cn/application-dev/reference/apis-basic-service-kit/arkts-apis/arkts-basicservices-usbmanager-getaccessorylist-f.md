@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="getaccessorylist"></a>
 ## getAccessoryList
 
 ```TypeScript

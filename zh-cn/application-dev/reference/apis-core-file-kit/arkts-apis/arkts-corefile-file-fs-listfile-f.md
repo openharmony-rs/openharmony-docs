@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="listfile"></a>
 ## listFile
 
 ```TypeScript
@@ -24,13 +23,7 @@ declare function listFile(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function listFile(
-  path: string,
-  options?: ListFileOptions
-): Promise<string[]>--><!--Device-unnamed-declare function listFile(
-  path: string,
-  options?: ListFileOptions
-): Promise<string[]>-End-->
+<!--Device-unnamed-declare function listFile(  path: string,  options?: ListFileOptions): Promise<string[]>--><!--Device-unnamed-declare function listFile(  path: string,  options?: ListFileOptions): Promise<string[]>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -58,7 +51,6 @@ declare function listFile(
 | 13900042 | Unknown error |
 
 
-<a id="listfile-1"></a>
 ## listFile
 
 ```TypeScript
@@ -95,7 +87,6 @@ declare function listFile(path: string, callback: AsyncCallback<string[]>): void
 | 13900042 | Unknown error |
 
 
-<a id="listfile-2"></a>
 ## listFile
 
 ```TypeScript
@@ -114,15 +105,7 @@ declare function listFile(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function listFile(
-  path: string,
-  options: ListFileOptions,
-  callback: AsyncCallback<string[]>
-): void--><!--Device-unnamed-declare function listFile(
-  path: string,
-  options: ListFileOptions,
-  callback: AsyncCallback<string[]>
-): void-End-->
+<!--Device-unnamed-declare function listFile(  path: string,  options: ListFileOptions,  callback: AsyncCallback<string[]>): void--><!--Device-unnamed-declare function listFile(  path: string,  options: ListFileOptions,  callback: AsyncCallback<string[]>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

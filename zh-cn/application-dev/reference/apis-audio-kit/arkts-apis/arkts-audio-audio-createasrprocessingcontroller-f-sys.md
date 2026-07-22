@@ -6,7 +6,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="createasrprocessingcontroller"></a>
 ## createAsrProcessingController
 
 ```TypeScript

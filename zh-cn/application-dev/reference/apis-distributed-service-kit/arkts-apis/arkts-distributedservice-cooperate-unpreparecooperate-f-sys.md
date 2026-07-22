@@ -6,7 +6,6 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
-<a id="unpreparecooperate"></a>
 ## unprepareCooperate
 
 ```TypeScript
@@ -61,7 +60,6 @@ try {
 ```
 
 
-<a id="unpreparecooperate-1"></a>
 ## unprepareCooperate
 
 ```TypeScript

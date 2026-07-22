@@ -14,7 +14,6 @@ Buffer对象是处理二进制数据的缓存区。
 import { buffer } from '@kit.ArkTS';
 ```
 
-<a id="compare"></a>
 ## compare
 
 ```TypeScript
@@ -33,19 +32,7 @@ compare(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Buffer-compare(
-      target: Buffer | Uint8Array,
-      targetStart?: number,
-      targetEnd?: number,
-      sourceStart?: number,
-      sourceEnd?: number
-    ): -1 | 0 | 1--><!--Device-Buffer-compare(
-      target: Buffer | Uint8Array,
-      targetStart?: number,
-      targetEnd?: number,
-      sourceStart?: number,
-      sourceEnd?: number
-    ): -1 | 0 | 1-End-->
+<!--Device-Buffer-compare(      target: Buffer | Uint8Array,      targetStart?: number,      targetEnd?: number,      sourceStart?: number,      sourceEnd?: number    ): -1 | 0 | 1--><!--Device-Buffer-compare(      target: Buffer | Uint8Array,      targetStart?: number,      targetEnd?: number,      sourceStart?: number,      sourceEnd?: number    ): -1 | 0 | 1-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -88,7 +75,6 @@ console.info(buf1.compare(buf2, 5, 6, 5).toString());
 
 ```
 
-<a id="copy"></a>
 ## copy
 
 ```TypeScript
@@ -144,7 +130,6 @@ console.info(buf2.toString('ascii', 0, 25));
 
 ```
 
-<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -191,7 +176,6 @@ while (!next.done) {
 
 ```
 
-<a id="equals"></a>
 ## equals
 
 ```TypeScript
@@ -236,7 +220,6 @@ console.info(buf1.equals(buf3).toString());
 
 ```
 
-<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -254,17 +237,7 @@ fill(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Buffer-fill(
-      value: string | Buffer | Uint8Array | int | double | long,
-      offset?: int,
-      end?: int,
-      encoding?: BufferEncoding
-    ): Buffer--><!--Device-Buffer-fill(
-      value: string | Buffer | Uint8Array | int | double | long,
-      offset?: int,
-      end?: int,
-      encoding?: BufferEncoding
-    ): Buffer-End-->
+<!--Device-Buffer-fill(      value: string | Buffer | Uint8Array | int | double | long,      offset?: int,      end?: int,      encoding?: BufferEncoding    ): Buffer--><!--Device-Buffer-fill(      value: string | Buffer | Uint8Array | int | double | long,      offset?: int,      end?: int,      encoding?: BufferEncoding    ): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -289,7 +262,6 @@ fill(
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be >= 0 and <=[right range]. Received value is: [offset/end] |
 
-<a id="includes"></a>
 ## includes
 
 ```TypeScript
@@ -320,7 +292,6 @@ includes(value: string | number | number | number | Buffer | Uint8Array, byteOff
 | --- | --- |
 | boolean | 存在返回true，否则返回false。 |
 
-<a id="indexof"></a>
 ## indexOf
 
 ```TypeScript
@@ -351,7 +322,6 @@ indexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffs
 | --- | --- |
 | number | 第一次出现位置。 |
 
-<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -395,7 +365,6 @@ for (const key of keys) {
 
 ```
 
-<a id="lastindexof"></a>
 ## lastIndexOf
 
 ```TypeScript
@@ -426,7 +395,6 @@ lastIndexOf(value: string | number | number | number | Buffer | Uint8Array, byte
 | --- | --- |
 | number | 最后一次出现value值的索引。 |
 
-<a id="readbigint64be"></a>
 ## readBigInt64BE
 
 ```TypeScript
@@ -478,7 +446,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readbigint64le"></a>
 ## readBigInt64LE
 
 ```TypeScript
@@ -530,7 +497,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readbiguint64be"></a>
 ## readBigUInt64BE
 
 ```TypeScript
@@ -581,7 +547,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readbiguint64le"></a>
 ## readBigUInt64LE
 
 ```TypeScript
@@ -633,7 +598,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readdoublebe"></a>
 ## readDoubleBE
 
 ```TypeScript
@@ -683,7 +647,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readdoublele"></a>
 ## readDoubleLE
 
 ```TypeScript
@@ -733,7 +696,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readfloatbe"></a>
 ## readFloatBE
 
 ```TypeScript
@@ -783,7 +745,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readfloatle"></a>
 ## readFloatLE
 
 ```TypeScript
@@ -833,7 +794,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readint16be"></a>
 ## readInt16BE
 
 ```TypeScript
@@ -883,7 +843,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readint16le"></a>
 ## readInt16LE
 
 ```TypeScript
@@ -933,7 +892,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readint32be"></a>
 ## readInt32BE
 
 ```TypeScript
@@ -983,7 +941,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readint32le"></a>
 ## readInt32LE
 
 ```TypeScript
@@ -1033,7 +990,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readint8"></a>
 ## readInt8
 
 ```TypeScript
@@ -1085,7 +1041,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readintbe"></a>
 ## readIntBE
 
 ```TypeScript
@@ -1137,7 +1092,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readintle"></a>
 ## readIntLE
 
 ```TypeScript
@@ -1188,7 +1142,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readuint16be"></a>
 ## readUInt16BE
 
 ```TypeScript
@@ -1240,7 +1193,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readuint16le"></a>
 ## readUInt16LE
 
 ```TypeScript
@@ -1292,7 +1244,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readuint32be"></a>
 ## readUInt32BE
 
 ```TypeScript
@@ -1342,7 +1293,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readuint32le"></a>
 ## readUInt32LE
 
 ```TypeScript
@@ -1392,7 +1342,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readuint8"></a>
 ## readUInt8
 
 ```TypeScript
@@ -1444,7 +1393,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readuintbe"></a>
 ## readUIntBE
 
 ```TypeScript
@@ -1495,7 +1443,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="readuintle"></a>
 ## readUIntLE
 
 ```TypeScript
@@ -1546,7 +1493,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="subarray"></a>
 ## subarray
 
 ```TypeScript
@@ -1592,7 +1538,6 @@ console.info(buf2.toString('ascii', 0, buf2.length));
 
 ```
 
-<a id="swap16"></a>
 ## swap16
 
 ```TypeScript
@@ -1635,7 +1580,6 @@ console.info(buf1.toString('hex'));
 
 ```
 
-<a id="swap32"></a>
 ## swap32
 
 ```TypeScript
@@ -1678,7 +1622,6 @@ console.info(buf1.toString('hex'));
 
 ```
 
-<a id="swap64"></a>
 ## swap64
 
 ```TypeScript
@@ -1721,7 +1664,6 @@ console.info(buf1.toString('hex'));
 
 ```
 
-<a id="tojson"></a>
 ## toJSON
 
 ```TypeScript
@@ -1756,7 +1698,6 @@ console.info(JSON.stringify(obj));
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -1801,7 +1742,6 @@ console.info(buf1.toString('utf-8'));
 
 ```
 
-<a id="values"></a>
 ## values
 
 ```TypeScript
@@ -1847,7 +1787,6 @@ while (!next.done) {
 
 ```
 
-<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -1902,7 +1841,6 @@ console.info("length = " + length);
 
 ```
 
-<a id="writebigint64be"></a>
 ## writeBigInt64BE
 
 ```TypeScript
@@ -1950,7 +1888,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writebigint64le"></a>
 ## writeBigInt64LE
 
 ```TypeScript
@@ -1998,7 +1935,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writebiguint64be"></a>
 ## writeBigUInt64BE
 
 ```TypeScript
@@ -2046,7 +1982,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writebiguint64le"></a>
 ## writeBigUInt64LE
 
 ```TypeScript
@@ -2094,7 +2029,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writedoublebe"></a>
 ## writeDoubleBE
 
 ```TypeScript
@@ -2142,7 +2076,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writedoublele"></a>
 ## writeDoubleLE
 
 ```TypeScript
@@ -2190,7 +2123,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writefloatbe"></a>
 ## writeFloatBE
 
 ```TypeScript
@@ -2238,7 +2170,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writefloatle"></a>
 ## writeFloatLE
 
 ```TypeScript
@@ -2286,7 +2217,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeint16be"></a>
 ## writeInt16BE
 
 ```TypeScript
@@ -2334,7 +2264,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeint16le"></a>
 ## writeInt16LE
 
 ```TypeScript
@@ -2382,7 +2311,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeint32be"></a>
 ## writeInt32BE
 
 ```TypeScript
@@ -2430,7 +2358,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeint32le"></a>
 ## writeInt32LE
 
 ```TypeScript
@@ -2478,7 +2405,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeint8"></a>
 ## writeInt8
 
 ```TypeScript
@@ -2529,7 +2455,6 @@ console.info("result1 = " + result1);
 
 ```
 
-<a id="writeintbe"></a>
 ## writeIntBE
 
 ```TypeScript
@@ -2578,7 +2503,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeintle"></a>
 ## writeIntLE
 
 ```TypeScript
@@ -2627,7 +2551,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeuint16be"></a>
 ## writeUInt16BE
 
 ```TypeScript
@@ -2678,7 +2601,6 @@ console.info("result1 = " + result1);
 
 ```
 
-<a id="writeuint16le"></a>
 ## writeUInt16LE
 
 ```TypeScript
@@ -2729,7 +2651,6 @@ console.info("result1 = " + result1);
 
 ```
 
-<a id="writeuint32be"></a>
 ## writeUInt32BE
 
 ```TypeScript
@@ -2777,7 +2698,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeuint32le"></a>
 ## writeUInt32LE
 
 ```TypeScript
@@ -2825,7 +2745,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeuint8"></a>
 ## writeUInt8
 
 ```TypeScript
@@ -2882,7 +2801,6 @@ console.info("result3 = " + result3);
 
 ```
 
-<a id="writeuintbe"></a>
 ## writeUIntBE
 
 ```TypeScript
@@ -2931,7 +2849,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="writeuintle"></a>
 ## writeUIntLE
 
 ```TypeScript
@@ -3004,7 +2921,7 @@ ArrayBuffer对象。
 byteOffset: number
 ```
 
-当前Buffer所在内存池的偏移量。当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocuninitializedfrompool-1)创建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。当Buffer直接分配内存时（如使用[alloc](arkts-arkts-buffer-alloc-f.md#alloc-1)），返回值为0。
+当前Buffer所在内存池的偏移量。当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocuninitializedfrompool)创建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。当Buffer直接分配内存时（如使用[alloc](arkts-arkts-buffer-alloc-f.md#alloc)），返回值为0。
 
 **类型：** number
 

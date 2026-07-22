@@ -6,7 +6,6 @@
 import { resourceManager } from '@kit.LocalizationKit';
 ```
 
-<a id="getsystemresourcemanager"></a>
 ## getSystemResourceManager
 
 ```TypeScript
@@ -14,7 +13,6 @@ export function getSystemResourceManager(): ResourceManager
 ```
 
 获取系统资源管理ResourceManager对象。
-
 > **说明**  
 >  
 > 当前接口获取到的系统资源管理ResourceManager对象中的Configuration为默认值。默认值如下：  
@@ -24,7 +22,7 @@ export function getSystemResourceManager(): ResourceManager
 
 **废弃版本：** 20
 
-**替代接口：** [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md#getsysresourcemanager-1)
+**替代接口：** [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md#getsysresourcemanager)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

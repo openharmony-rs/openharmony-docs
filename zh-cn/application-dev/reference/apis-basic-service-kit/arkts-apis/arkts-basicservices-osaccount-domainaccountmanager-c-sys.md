@@ -14,7 +14,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="auth"></a>
 ## auth
 
 ```TypeScript
@@ -86,7 +85,6 @@ try {
 
 ```
 
-<a id="auth-1"></a>
 ## auth
 
 ```TypeScript
@@ -103,15 +101,7 @@ static auth(
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
-<!--Device-DomainAccountManager-static auth(
-      domainAccountInfo: DomainAccountInfo,
-      credential: Uint8Array,
-      options: DomainAccountAuthOptions,
-      callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static auth(
-      domainAccountInfo: DomainAccountInfo,
-      credential: Uint8Array,
-      options: DomainAccountAuthOptions,
-      callback: IUserAuthCallback): void-End-->
+<!--Device-DomainAccountManager-static auth(      domainAccountInfo: DomainAccountInfo,      credential: Uint8Array,      options: DomainAccountAuthOptions,      callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static auth(      domainAccountInfo: DomainAccountInfo,      credential: Uint8Array,      options: DomainAccountAuthOptions,      callback: IUserAuthCallback): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -177,7 +167,6 @@ try {
 
 ```
 
-<a id="authwithpopup"></a>
 ## authWithPopup
 
 ```TypeScript
@@ -241,7 +230,6 @@ try {
 
 ```
 
-<a id="authwithpopup-1"></a>
 ## authWithPopup
 
 ```TypeScript
@@ -307,7 +295,6 @@ try {
 
 ```
 
-<a id="getaccesstoken"></a>
 ## getAccessToken
 
 ```TypeScript
@@ -372,7 +359,6 @@ try {
 
 ```
 
-<a id="getaccesstoken-1"></a>
 ## getAccessToken
 
 ```TypeScript
@@ -440,7 +426,6 @@ try {
 
 ```
 
-<a id="getaccountinfo"></a>
 ## getAccountInfo
 
 ```TypeScript
@@ -507,7 +492,6 @@ try {
 
 ```
 
-<a id="getaccountinfo-1"></a>
 ## getAccountInfo
 
 ```TypeScript
@@ -577,7 +561,6 @@ try {
 
 ```
 
-<a id="hasaccount"></a>
 ## hasAccount
 
 ```TypeScript
@@ -643,7 +626,6 @@ try {
 
 ```
 
-<a id="hasaccount-1"></a>
 ## hasAccount
 
 ```TypeScript
@@ -712,7 +694,6 @@ try {
 
 ```
 
-<a id="isauthenticationexpired"></a>
 ## isAuthenticationExpired
 
 ```TypeScript
@@ -774,7 +755,6 @@ try {
 
 ```
 
-<a id="registerplugin"></a>
 ## registerPlugin
 
 ```TypeScript
@@ -841,7 +821,6 @@ try {
 
 ```
 
-<a id="unregisterplugin"></a>
 ## unregisterPlugin
 
 ```TypeScript
@@ -883,7 +862,6 @@ try {
 
 ```
 
-<a id="updateaccounttoken"></a>
 ## updateAccountToken
 
 ```TypeScript
@@ -900,15 +878,7 @@ static updateAccountToken(
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
-<!--Device-DomainAccountManager-static updateAccountToken(
-      domainAccountInfo: DomainAccountInfo,
-      token: Uint8Array,
-      callback: AsyncCallback<void>
-    ): void--><!--Device-DomainAccountManager-static updateAccountToken(
-      domainAccountInfo: DomainAccountInfo,
-      token: Uint8Array,
-      callback: AsyncCallback<void>
-    ): void-End-->
+<!--Device-DomainAccountManager-static updateAccountToken(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<void>    ): void--><!--Device-DomainAccountManager-static updateAccountToken(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<void>    ): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -959,7 +929,6 @@ try {
 
 ```
 
-<a id="updateaccounttoken-1"></a>
 ## updateAccountToken
 
 ```TypeScript

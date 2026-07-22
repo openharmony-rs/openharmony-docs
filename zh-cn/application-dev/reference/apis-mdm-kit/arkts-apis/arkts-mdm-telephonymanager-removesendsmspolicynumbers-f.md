@@ -6,7 +6,6 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
-<a id="removesendsmspolicynumbers"></a>
 ## removeSendSmsPolicyNumbers
 
 ```TypeScript

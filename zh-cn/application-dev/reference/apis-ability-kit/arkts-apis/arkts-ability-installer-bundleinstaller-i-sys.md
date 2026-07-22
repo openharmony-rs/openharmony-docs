@@ -16,7 +16,6 @@ Bundle installer interface, include install uninstall recover.
 import { installer } from '@kit.AbilityKit';
 ```
 
-<a id="addextresource"></a>
 ## addExtResource
 
 ```TypeScript
@@ -83,7 +82,6 @@ try {
 
 ```
 
-<a id="createappclone"></a>
 ## createAppClone
 
 ```TypeScript
@@ -157,7 +155,6 @@ try {
 
 ```
 
-<a id="destroyappclone"></a>
 ## destroyAppClone
 
 ```TypeScript
@@ -182,7 +179,7 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待删除应用分身的包名。 |
 | appIndex | number | 是 | 待删除应用分身的索引。 |
-| userId | number | 否 | 待删除应用分身所属用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。默认值：调用方所在用户。 |
+| userId | number | 否 | 待删除应用分身所属用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户。 |
 
 **返回值：**
 
@@ -229,7 +226,6 @@ try {
 
 ```
 
-<a id="destroyappclone-1"></a>
 ## destroyAppClone
 
 ```TypeScript
@@ -310,7 +306,6 @@ try {
 
 ```
 
-<a id="install"></a>
 ## install
 
 ```TypeScript
@@ -318,7 +313,6 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 ```
 
 安装指定应用。使用callback异步回调。
-
 > **说明：**  
 >  
 > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的  
@@ -411,7 +405,6 @@ try {
 
 ```
 
-<a id="install-1"></a>
 ## install
 
 ```TypeScript
@@ -419,7 +412,6 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 ```
 
 安装指定应用。使用callback异步回调。
-
 > **说明：**  
 >  
 > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的  
@@ -505,7 +497,6 @@ try {
 
 ```
 
-<a id="install-2"></a>
 ## install
 
 ```TypeScript
@@ -513,7 +504,6 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 ```
 
 安装指定应用。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的  
@@ -610,7 +600,6 @@ try {
 
 ```
 
-<a id="installplugin"></a>
 ## installPlugin
 
 ```TypeScript
@@ -696,7 +685,6 @@ try {
 
 ```
 
-<a id="installpreexistingapp"></a>
 ## installPreexistingApp
 
 ```TypeScript
@@ -704,7 +692,6 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 ```
 
 在指定用户下安装指定bundleName的应用。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 该接口不支持安装[签名证书的分发类型](arkts-ability-applicationinfo-i.md)为enterprise，enterprise_mdm和  
@@ -725,7 +712,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 需要安装应用的包名。 |
-| userId | number | 否 | 需要安装应用的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，userId需要大于0。默认值：调用方所在用户。 |
+| userId | number | 否 | 需要安装应用的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，userId需要大于0。默认值：调用方所在用户。 |
 
 **返回值：**
 
@@ -772,7 +759,6 @@ try {
 
 ```
 
-<a id="recover"></a>
 ## recover
 
 ```TypeScript
@@ -843,7 +829,6 @@ try {
 
 ```
 
-<a id="recover-1"></a>
 ## recover
 
 ```TypeScript
@@ -907,7 +892,6 @@ try {
 
 ```
 
-<a id="recover-2"></a>
 ## recover
 
 ```TypeScript
@@ -982,7 +966,6 @@ try {
 
 ```
 
-<a id="removeextresource"></a>
 ## removeExtResource
 
 ```TypeScript
@@ -1049,7 +1032,6 @@ try {
 
 ```
 
-<a id="uninstall"></a>
 ## uninstall
 
 ```TypeScript
@@ -1124,7 +1106,6 @@ try {
 
 ```
 
-<a id="uninstall-1"></a>
 ## uninstall
 
 ```TypeScript
@@ -1191,7 +1172,6 @@ try {
 
 ```
 
-<a id="uninstall-2"></a>
 ## uninstall
 
 ```TypeScript
@@ -1270,7 +1250,6 @@ try {
 
 ```
 
-<a id="uninstall-3"></a>
 ## uninstall
 
 ```TypeScript
@@ -1336,7 +1315,6 @@ try {
 
 ```
 
-<a id="uninstall-4"></a>
 ## uninstall
 
 ```TypeScript
@@ -1407,7 +1385,6 @@ try {
 
 ```
 
-<a id="uninstallnewpreinstalledapps"></a>
 ## uninstallNewPreinstalledApps
 
 ```TypeScript
@@ -1473,7 +1450,6 @@ try {
 
 ```
 
-<a id="uninstallplugin"></a>
 ## uninstallPlugin
 
 ```TypeScript
@@ -1546,7 +1522,6 @@ try {
 
 ```
 
-<a id="uninstallupdates"></a>
 ## uninstallUpdates
 
 ```TypeScript
@@ -1622,7 +1597,6 @@ try {
 
 ```
 
-<a id="updatebundleforself"></a>
 ## updateBundleForSelf
 
 ```TypeScript
@@ -1707,7 +1681,6 @@ try {
 
 ```
 
-<a id="updatebundleforself-1"></a>
 ## updateBundleForSelf
 
 ```TypeScript
@@ -1785,7 +1758,6 @@ try {
 
 ```
 
-<a id="updatebundleforself-2"></a>
 ## updateBundleForSelf
 
 ```TypeScript

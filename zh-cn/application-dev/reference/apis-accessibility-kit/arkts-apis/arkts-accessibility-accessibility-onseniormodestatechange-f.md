@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="onseniormodestatechange"></a>
 ## onSeniorModeStateChange
 
 ```TypeScript
@@ -14,7 +13,6 @@ function onSeniorModeStateChange(callback: Callback<boolean>): void
 ```
 
 监听关怀模式启用状态变化事件。使用callback异步回调。
-
 > **说明：**  
 >  
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。  

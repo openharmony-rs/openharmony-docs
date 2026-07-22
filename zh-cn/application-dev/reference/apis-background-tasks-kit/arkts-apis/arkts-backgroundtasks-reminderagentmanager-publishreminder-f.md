@@ -6,7 +6,6 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="publishreminder"></a>
 ## publishReminder
 
 ```TypeScript
@@ -14,11 +13,10 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 ```
 
 发布后台代理提醒。使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口需要申请通知弹窗权限  
-> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)  
+> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification)  
 > 后调用。  
 >
 
@@ -67,7 +65,6 @@ reminderAgentManager.publishReminder(timer, (err: BusinessError, reminderId: num
 ```
 
 
-<a id="publishreminder-1"></a>
 ## publishReminder
 
 ```TypeScript
@@ -75,11 +72,10 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 ```
 
 发布后台代理提醒。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 该接口需要申请通知弹窗权限  
-> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)  
+> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification)  
 > 后调用。  
 >
 

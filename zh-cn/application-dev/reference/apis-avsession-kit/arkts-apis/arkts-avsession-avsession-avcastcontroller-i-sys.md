@@ -1,7 +1,6 @@
 # AVCastController
 
-在投播建立后，调用[avSession.getAVCastController](arkts-avsession-avsession-getavcastcontroller-f-sys.md#getavcastcontroller-1)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
-
+在投播建立后，调用[avSession.getAVCastController](arkts-avsession-avsession-getavcastcontroller-f-sys.md#getavcastcontroller)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 10开始支持。
@@ -18,7 +17,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="setdisplaysurface"></a>
 ## setDisplaySurface
 
 ```TypeScript
@@ -70,7 +68,6 @@ media.createAVRecorder().then((avRecorder) => {
 
 ```
 
-<a id="setdisplaysurface-1"></a>
 ## setDisplaySurface
 
 ```TypeScript

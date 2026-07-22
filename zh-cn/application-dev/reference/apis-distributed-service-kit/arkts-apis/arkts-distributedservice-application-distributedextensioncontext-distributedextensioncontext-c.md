@@ -16,7 +16,6 @@
 import { DistributedExtensionContext } from '@kit.DistributedServiceKit';
 ```
 
-<a id="connectserviceextensionability"></a>
 ## connectServiceExtensionAbility
 
 ```TypeScript
@@ -66,7 +65,6 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | [16000053](../../apis-ability-kit/errorcode-ability.md#16000053-非顶层应用) | The ability is not on the top of the UI. |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 
-<a id="disconnectserviceextensionability"></a>
 ## disconnectServiceExtensionAbility
 
 ```TypeScript

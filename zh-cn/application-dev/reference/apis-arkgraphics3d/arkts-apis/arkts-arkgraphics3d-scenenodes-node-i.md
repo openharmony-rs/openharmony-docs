@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="getnodebypath"></a>
 ## getNodeByPath
 
 ```TypeScript

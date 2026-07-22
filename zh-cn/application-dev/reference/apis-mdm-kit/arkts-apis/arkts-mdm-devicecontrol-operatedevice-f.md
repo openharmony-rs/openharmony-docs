@@ -6,7 +6,6 @@
 import { deviceControl } from '@kit.MDMKit';
 ```
 
-<a id="operatedevice"></a>
 ## operateDevice
 
 ```TypeScript

@@ -10,14 +10,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="endpoint"></a>
 ## endPoint
 
 ```TypeScript
 endPoint(value: Array<any>)
 ```
 
-设置直线终点坐标点（相对坐标），支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法，异常值按照默认值处理。
+设置直线终点坐标点（相对坐标），支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。
 
 **起始版本：** 7
 
@@ -35,14 +34,13 @@ endPoint(value: Array<any>)
 | --- | --- | --- | --- |
 | value | Array&lt;any&gt; | 是 | 直线终点坐标点（相对坐标），单位vp。<br/>默认值：[0, 0] <br/>异常值undefined和null按照默认值处理。 |
 
-<a id="startpoint"></a>
 ## startPoint
 
 ```TypeScript
 startPoint(value: Array<any>)
 ```
 
-设置直线起点坐标点（相对坐标），支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法，异常值按照默认值处理。
+设置直线起点坐标点（相对坐标），支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。
 
 **起始版本：** 7
 

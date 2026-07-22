@@ -1,6 +1,5 @@
 # onSystemPanelStatusChange（系统接口）
 
-<a id="onsystempanelstatuschange"></a>
 ## onSystemPanelStatusChange
 
 ```TypeScript

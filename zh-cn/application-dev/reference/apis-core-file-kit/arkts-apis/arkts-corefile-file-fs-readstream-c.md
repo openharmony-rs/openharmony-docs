@@ -16,7 +16,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -51,7 +50,6 @@ rs.close();
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -66,7 +64,6 @@ constructor()
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-<a id="seek"></a>
 ## seek
 
 ```TypeScript

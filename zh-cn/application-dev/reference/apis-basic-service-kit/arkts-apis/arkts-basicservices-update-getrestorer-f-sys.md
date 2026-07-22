@@ -6,7 +6,6 @@
 import { update } from '@kit.BasicServicesKit';
 ```
 
-<a id="getrestorer"></a>
 ## getRestorer
 
 ```TypeScript
@@ -15,9 +14,9 @@ function getRestorer(): Restorer
 
 获取恢复出厂设置对象，用于执行恢复出厂设置相关操作。调用此方法后，系统返回Restorer工具类对象，提供三种恢复出厂方式：
 
-- factoryReset（普通恢复出厂，用于清除用户数据分区。详见[术语](docroot://basic-services/update/update-kit-term.md)）。  
-- forceFactoryReset（强制恢复出厂，用于清除用户数据分区并同步清除文件密钥。详见[术语](docroot://basic-services/update/update-kit-term.md)）。  
-- deepFactoryReset（深度恢复出厂，用于通过scope参数指定清除范围：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。详见[术语](docroot://basic-services/update/update-kit-term.md)）。
+- factoryReset（普通恢复出厂，用于清除用户数据分区。详见[术语](../../../basic-services/update/update-kit-term.md)）。  
+- forceFactoryReset（强制恢复出厂，用于清除用户数据分区并同步清除文件密钥。详见[术语](../../../basic-services/update/update-kit-term.md)）。  
+- deepFactoryReset（深度恢复出厂，用于通过scope参数指定清除范围：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。详见[术语](../../../basic-services/update/update-kit-term.md)）。
 
 获取对象后可调用相应方法执行恢复出厂操作，设备将重启恢复到出厂初始状态。
 

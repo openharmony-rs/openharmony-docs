@@ -1,6 +1,6 @@
 # RotationSpeed（系统接口）
 
-Rotational speed. A negative value indicates a clockwise rotation, and a positive value indicates a counterclockwise rotation.
+转速，负值表示顺时针旋转。正值表示逆时针旋转。
 
 **起始版本：** 20
 
@@ -22,7 +22,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 pitchSpeed?: number
 ```
 
-Pitch speed, measured in radians per second.
+俯仰速度，单位为弧度每秒。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ Pitch speed, measured in radians per second.
 rollSpeed?: number
 ```
 
-Roll speed, measured in radians per second.
+滚动速度，单位为弧度每秒。
 
 **类型：** number
 
@@ -58,7 +58,7 @@ Roll speed, measured in radians per second.
 yawSpeed?: number
 ```
 
-Yaw speed, measured in radians per second.
+偏航速度，单位为弧度每秒。
 
 **类型：** number
 

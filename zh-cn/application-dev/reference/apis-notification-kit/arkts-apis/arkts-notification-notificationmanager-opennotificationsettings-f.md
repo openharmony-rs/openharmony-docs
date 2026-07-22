@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="opennotificationsettings"></a>
 ## openNotificationSettings
 
 ```TypeScript

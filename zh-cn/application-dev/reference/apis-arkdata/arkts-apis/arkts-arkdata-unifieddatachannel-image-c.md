@@ -22,7 +22,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 set imageUri(value: string)
 ```
 
-本地图片数据uri或网络图片uri，本地图片数据uri可通过[getUriFromPath](@ohos.file.fileuri:fileUri.getUriFromPath)函数获取。
+本地图片数据uri或网络图片uri，本地图片数据uri可通过[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)函数获取。
 
 **类型：** string
 
