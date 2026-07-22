@@ -331,7 +331,7 @@ OH_Swapfs_ErrCode OH_Swapfs_RemoveAllData(OH_SwapfsManager *manager)
 
 **描述**
 
-删除管理器中的所有swapfs key。<br> 如果存在进行中的操作（[OH_Swapfs_SwapOut](capi-oh-swapfs-h-sys.md#oh_swapfs_swapout)或[OH_Swapfs_SwapIn](capi-oh-swapfs-h-sys.md#oh_swapfs_swapin)），或任何key处于OH_SWAPFS_KEY_STATUS_REMOVING状态,<br> 此函数返回[SWAPFS_E_BUSY](capi-swapfs-errcode-h-sys.md#oh_swapfs_errcode)而不开始任何删除操作。
+删除管理器中的所有swapfs key。<br> 如果存在进行中的操作（[OH_Swapfs_SwapOut](capi-oh-swapfs-h-sys.md#oh_swapfs_swapout)或[OH_Swapfs_SwapIn](capi-oh-swapfs-h-sys.md#oh_swapfs_swapin)），或任何key处于OH_SWAPFS_KEY_STATUS_REMOVING状态，<br> 此函数返回[SWAPFS_E_BUSY](capi-swapfs-errcode-h-sys.md#oh_swapfs_errcode)而不开始任何删除操作。
 
 **系统能力：** SystemCapability.FileManagement.File.Swapfs
 
