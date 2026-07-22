@@ -61,6 +61,8 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 
 ## LaunchController
 
+拉起原子化服务控制器。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
