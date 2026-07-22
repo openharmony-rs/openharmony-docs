@@ -905,7 +905,7 @@ Allows an application to query, set, and subscribe to the mating part status inf
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Since**: 26.1.0
 
@@ -921,7 +921,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Since**: 26.1.0
 
@@ -937,7 +937,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Since**: 26.1.0
 
@@ -953,7 +953,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Since**: 26.1.0
 
@@ -969,7 +969,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Since**: 26.1.0
 
@@ -985,7 +985,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Since**: 26.1.0
 
@@ -1001,7 +1001,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Since**: 26.1.0
 
