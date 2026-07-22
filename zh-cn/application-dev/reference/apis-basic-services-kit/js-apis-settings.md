@@ -453,7 +453,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.d
 
 getValueSync(context: Context, name: string, defValue: string): string
 
-获取数据库中DEVICE_SHARD域指定数据项的值。此方法相较getValue为同步方法。
+获取数据库中DEVICE_SHARED域指定数据项的值。此方法相较getValue为同步方法。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
