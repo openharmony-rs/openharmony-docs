@@ -338,7 +338,7 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', set
 
 getValue(context: Context, name: string, callback: AsyncCallback\<string>): void
 
-获取数据库中DEVICE_SHARED域指定数据项的值。使用callback异步回调。
+获取数据库中DEVICE_SHARD域指定数据项的值。使用callback异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -374,7 +374,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
 
 getValue(context: Context, name: string): Promise\<string>
 
-获取数据库中DEVICE_SHARED域指定数据项的值。使用Promise异步回调。
+获取数据库中DEVICE_SHARD域指定数据项的值。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -453,7 +453,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.d
 
 getValueSync(context: Context, name: string, defValue: string): string
 
-获取数据库中DEVICE_SHARED域指定数据项的值。此方法相较getValue为同步方法。
+获取数据库中DEVICE_SHARD域指定数据项的值。此方法相较getValue为同步方法。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -984,7 +984,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string): Promise\<object>
 
-获取数据库中DEVICE_SHARED域指定数据项的值。使用Promise异步回调。
+获取数据库中DEVICE_SHARD域指定数据项的值。使用Promise异步回调。
 
 > **说明：**
 >
