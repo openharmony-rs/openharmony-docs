@@ -191,7 +191,7 @@ DistributedExtensionAbility不支持以下模块的引用。
 | IME Kit（输入法开发服务）| [@ohos.inputMethod (输入法框架)](../apis-ime-kit/js-apis-inputmethod.md)  |
 |<!--DelRow-->Input Kit（多模输入服务）| [@ohos.multimodalInput.inputMonitor (输入监听)(系统接口)](../apis-input-kit/js-apis-inputmonitor-sys.md)  |
 |<!--DelRow-->Media Kit（媒体服务）| [@ohos.multimedia.media (媒体服务)(系统接口)](../apis-media-kit/js-apis-media-sys.md)  |
-| MultimediaKit | @ohos.multimedia.mediaLibrary （媒体库管理） |
+| MultimediaKit | @ohos.multimedia.mediaLibrary (媒体库管理) |
 |<!--DelRow-->Media Library Kit（媒体文件管理服务） | [@ohos.file.photoAccessHelper (相册管理模块)(系统接口)](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md) |
 |<!--DelRow-->Media Library Kit（媒体文件管理服务） | [@ohos.file.sendablePhotoAccessHelper (相册管理模块)(系统接口)](../apis-media-library-kit/js-apis-sendablePhotoAccessHelper-sys.md) |
 | Media Library Kit（媒体文件管理服务） | [@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](../apis-media-library-kit/js-apis-sendablePhotoAccessHelper.md) |
