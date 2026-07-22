@@ -3593,7 +3593,7 @@ export default class EntryAbility extends UIAbility {
     let instanceFlag = 'instance1';
 
     try {
-      // // 在当前进程中启动应用程序自己的UIAbility
+      // 在当前进程中启动应用程序自己的UIAbility
       this.context.startSelfUIAbilityInCurrentProcess(want, instanceFlag, options);
     } catch (err) {
       // 处理入参错误异常
