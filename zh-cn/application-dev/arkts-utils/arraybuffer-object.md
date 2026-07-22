@@ -30,7 +30,7 @@ ArrayBuffer常用于表示图片等二进制资源，在应用开发中，处理
 
 最后，UI主线程接收到Task执行完毕后返回的ArrayBuffer数据，进行拼接并展示。
 
-<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) --> 
+<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
