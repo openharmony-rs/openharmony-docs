@@ -145,7 +145,7 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContextInstance(): ApplicationContext
 
-获取应用上下文。开发者使用该接口时，无需依赖Context基类。
+获取应用上下文实例。开发者使用该接口时，无需依赖Context基类。
 
 重复调用该接口，将获取同一个ApplicationContext实例。
 
