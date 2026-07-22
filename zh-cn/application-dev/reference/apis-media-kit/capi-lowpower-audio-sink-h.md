@@ -62,7 +62,7 @@ OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)
 
 **描述**
 
-创建LowPowerAudioSink。
+创建LowPowerAudioSink实例。
 
 **起始版本：** 20
 
@@ -645,7 +645,7 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDeviceChangeListener(OH_LowPowerAud
 ### OH_LowPowerAudioSinkCallback_SetEosListener()
 
 ```c
-OH_AVErrCode OH_LowPowerAudioSinkCallback_SetEosListener(OH_LowPowerAudioSinkCallback *callback, OH_LowPowerAudioSink_OnEos onEos, void* userData)
+OH_AVErrCode OH_LowPowerAudioSinkCallback_SetEosListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnEos onEos, void* userData)
 ```
 
 **描述**
@@ -658,7 +658,7 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetEosListener(OH_LowPowerAudioSinkCal
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) *callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
 | [OH_LowPowerAudioSink_OnEos](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_oneos) onEos | OH_LowPowerAudioSink_OnEos方法，在Eos事件触发时调用。 |
 | void* userData | 用户执行回调所依赖的数据。 |
 
