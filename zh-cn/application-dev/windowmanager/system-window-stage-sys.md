@@ -262,8 +262,7 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 // xxx.ets 实现子窗口的属性设置
-import { window, router } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -294,7 +293,7 @@ struct transferCtrlSubWindow {
 
 ```ts
 // xxx.ets 实现子窗口的创建以及显示、隐藏窗口时的动效操作
-import { window, router } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AnimationConfig } from '../entryability/AnimationConfig';
