@@ -6516,6 +6516,34 @@ With this permission, the application can connect to or disconnect from network 
 
 **Valid since**: 26.0.0
 
+## ohos.permission.CREATE_SIGN_CONTENT_TRUST
+
+Allows an application to create a content trust signature.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.APPEND_SIGN_CONTENT_TRUST
+
+Allows an application to append a content trust signature.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
 ## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
 
 Allows an application to call the file management service APIs to perform operations on files.
