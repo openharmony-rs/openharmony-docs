@@ -341,7 +341,7 @@ Obtains the current system locale. To listen for system locale changes, enable l
 **Return value**
 | Type    | Description     |
 | ------ | ------- |
-| [Intl.Locale](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | System locale.|
+| [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | System locale.|
 
 **Example**
   ```ts
@@ -3104,7 +3104,7 @@ Localizes a file path for the specified locale.<br>For example, **/data/out/tmp*
 | ------ | ------ | ---- | ------------------------ |
 | path | string | Yes  | Path to mirror, for example, **/data/out/tmp**.|
 | delimiter | string | No  | Path delimiter. The default value is **/**.|
-| locale | [Intl.Locale](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | No  | **Locale** object. The default value is the current system locale.|
+| locale | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | No  | **Locale** object. The default value is the current system locale.|
 
 **Return value**
 
