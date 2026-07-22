@@ -28,6 +28,7 @@ import { InterstitialDialogAction, IconStyle, TitlePosition, BottomOffset } from
 不支持[通用属性](ts-component-general-attributes.md)
 
 ## 事件
+
 不支持[通用事件](ts-component-general-events.md)
 
 ## InterstitialDialogAction
