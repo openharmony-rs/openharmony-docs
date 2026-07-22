@@ -981,46 +981,50 @@ struct CustomDialogUser {
         let windowClass = window.getLastWindow(this.getUIContext().getHostContext());
         windowClass.then(window => {
           // 获取窗口信息，设置maskRect
-          let properties = window.getWindowProperties();
-          let maskRect = {
-            x: this.getUIContext().px2vp(properties.windowRect.left + 150),
-            y: this.getUIContext().px2vp(properties.windowRect.top + 350),
-            width: this.getUIContext().px2vp(properties.windowRect.width - 300),
-            height: this.getUIContext().px2vp(properties.windowRect.height - 700)
-          } as Rectangle
-          if (this.dialogController == null) {
-            this.dialogController = new CustomDialogController({
-              builder: LoadingDialogExample({
-                cancel: () => {
-                  this.onCancel();
+          try {
+            let properties = window.getWindowProperties();
+            let maskRect = {
+              x: this.getUIContext().px2vp(properties.windowRect.left + 150),
+              y: this.getUIContext().px2vp(properties.windowRect.top + 350),
+              width: this.getUIContext().px2vp(properties.windowRect.width - 300),
+              height: this.getUIContext().px2vp(properties.windowRect.height - 700)
+            } as Rectangle
+            if (this.dialogController == null) {
+              this.dialogController = new CustomDialogController({
+                builder: LoadingDialogExample({
+                  cancel: () => {
+                    this.onCancel();
+                  },
+                  confirm: () => {
+                    this.onAccept();
+                  },
+                }),
+                cancel: this.exitApp,
+                maskRect: maskRect,
+                autoCancel: false,
+                maskColor: "#33AA0000",
+                showInSubWindow: false,
+                backgroundBlurStyle: BlurStyle.NONE,
+                onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                  if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                    dismissDialogAction.dismiss();
+                  }
+                  if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                    dismissDialogAction.dismiss();
+                  }
                 },
-                confirm: () => {
-                  this.onAccept();
-                },
-              }),
-              cancel: this.exitApp,
-              maskRect: maskRect,
-              autoCancel: false,
-              maskColor: "#33AA0000",
-              showInSubWindow: false,
-              backgroundBlurStyle: BlurStyle.NONE,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss();
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss();
-                }
-              },
-              alignment: DialogAlignment.Center,
-              customStyle: false,
-              cornerRadius: 10,
-              openAnimation: { duration: 0, tempo: 0 },
-              closeAnimation: { duration: 0, tempo: 0 }
-            })
+                alignment: DialogAlignment.Center,
+                customStyle: false,
+                cornerRadius: 10,
+                openAnimation: { duration: 0, tempo: 0 },
+                closeAnimation: { duration: 0, tempo: 0 }
+              })
+            }
+            this.dialogController.close();
+            this.dialogController.open();
+          } catch (error) {
+            console.error('error is ' + error)
           }
-          this.dialogController.close();
-          this.dialogController.open();
         })
       }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
@@ -1125,13 +1129,17 @@ struct CustomDialogUser {
     windowClass.then(win => {
       this.windowClass = win;
       // 获取底部导航栏高度
-      let navigationArea = this.windowClass?.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
-      this.navigationBarHeight = navigationArea.bottomRect.height;
-      this.windowClass?.on('avoidAreaChange', (data) => {
-        if (data.type == window.AvoidAreaType.TYPE_KEYBOARD) {
-          this.isKeyboardShow = data.area.bottomRect.height > 0;
-        }
-      })
+      try {
+        let navigationArea = this.windowClass?.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
+        this.navigationBarHeight = navigationArea.bottomRect.height;
+        this.windowClass?.on('avoidAreaChange', (data) => {
+          if (data.type == window.AvoidAreaType.TYPE_KEYBOARD) {
+            this.isKeyboardShow = data.area.bottomRect.height > 0;
+          }
+        })
+      } catch (error) {
+        console.error('error is ' + error)
+      }
     });
   }
 
@@ -1540,3 +1548,4 @@ struct CustomDialogUser {
 ```
 
 ![zh-cn_image_custom-backgroundEffect](figures/image-dynamicRefreshwidth.gif)
+
