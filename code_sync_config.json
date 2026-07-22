@@ -8811,7 +8811,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/ArkUICustomNode.h",
 				"functions":[
 					{
-						"end_line":106,
+						"end_line":127,
 						"name":"custom-draw",
 						"start_line":15
 					}
@@ -18195,7 +18195,7 @@
 						"start_line":39
 					},
 					{
-						"end_line":108,
+						"end_line":111,
 						"name":"userdata_start",
 						"start_line":54
 					},
@@ -18205,7 +18205,7 @@
 						"start_line":75
 					},
 					{
-						"end_line":103,
+						"end_line":106,
 						"name":"drawCanvas_Start",
 						"start_line":82
 					}
@@ -18215,7 +18215,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h",
 				"functions":[
 					{
-						"end_line":285,
+						"end_line":316,
 						"name":"messageMaskNode_start",
 						"start_line":17
 					}
