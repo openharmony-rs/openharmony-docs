@@ -16,6 +16,20 @@
 ```ts
 import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
+## 常量
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| -------- | -------- | -------- | -------- |
+| ON_START | string | 'onStart' | 应用需要实现后台加载任务onStart的回调方法， 在这个回调方法中实现后台处理应用页面数据的加载逻辑。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。 |
+| ON_STOP | string | 'onStop' | 应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。|
 
 ## backgroundLoader.registerTask
 
@@ -23,11 +37,11 @@ registerTask(taskInfo: TaskInfo): void
 
 注册后台加载任务，成功后会把任务添加到后台加载任务队列，满足触发条件后由系统调度执行。
 
+**起始版本：**  26.0.0
+
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
-
-**起始版本：**  26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -79,11 +93,11 @@ unregisterTask(taskInfo: TaskInfo): void
 
 取消注册后台加载任务。
 
+**起始版本：**  26.0.0
+
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
-
-**起始版本：**  26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -133,11 +147,11 @@ getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 查询已经注册的后台加载任务，使用Promise形式返回。
 
+**起始版本：**  26.0.0
+
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
-
-**起始版本：**  26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -183,14 +197,14 @@ finishTask(taskInfo: TaskInfo): void
  
 应用需要实现后台加载任务的onStart的主业务回调方法，在完成业务加载任务后，需要通过调用finishTask方法通知系统加载任务完成。运行在异步回调函数或其他线程中执行finishTask调用。
 
+**起始版本：**  26.0.0
+
 **超时时间限制**：应用需要确保后台加载任务尽量在30秒内执行完成，从开始执行ON_START回调方法之后，需要在30秒内完成finishTask任务完成的调用。
 如果应用在执行后台加载任务时出现多次超时，系统将禁用后续的后台加载任务调度。
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
-
-**起始版本：**  26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -281,6 +295,10 @@ finishTask(taskInfo: TaskInfo): void
 
 应用定义和指定的后台加载任务信息。
 
+**起始版本：**  26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
@@ -292,6 +310,10 @@ finishTask(taskInfo: TaskInfo): void
 ## TaskStopInfo
 
 系统回调应用的onStop方法中，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
+
+**起始版本：**  26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -306,6 +328,10 @@ finishTask(taskInfo: TaskInfo): void
 
 系统回调应用的onStop方法的TaskStopInfo参数结构体中的错误码枚举定义。
 
+**起始版本：**  26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称                     | 值  | 说明                      |
@@ -315,19 +341,4 @@ finishTask(taskInfo: TaskInfo): void
 | PERCEPTIBLE_ERROR  | 2    | 表示任务执行中发生可感知任务错误。   |
 | TIMEOUT_ERROR | 3    | 表示任务执行超时。 |
 | EXECUTE_ERROR  | 4    | 表示任务执行异常。  |
-
-## 常量
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 类型 | 值 | 说明 |
-| -------- | -------- | -------- | -------- |
-| ON_START | string | 'onStart' | 应用需要实现后台加载任务onStart的回调方法， 在这个回调方法中实现后台处理应用页面数据的加载逻辑。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。 |
-| ON_STOP | string | 'onStop' | 应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。|
 
