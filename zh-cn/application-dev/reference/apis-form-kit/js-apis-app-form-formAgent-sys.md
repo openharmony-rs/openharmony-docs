@@ -179,12 +179,12 @@ updateFormCrossBundle(formId: string, formBindingData: formBindingData.FormBindi
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
-| 16500050 | IPC connection error. |
-| 16500060 | Service connection error. |
-| 16501000 | An internal functional error occurred. |
+| 16500050 | Possible cause IPC connection error. Such as the remote object dose not exist. |
+| 16500060 | Possible cause Service State error. Such as the form is recovering. |
+| 16501000 | Possible cause internal functional error. Such as virtualization failed. |
 | 16501001 | The ID of the form to be operated does not exist. |
-| 16501003 | The form cannot be operated by the current application. |
-| 16501007 | Form is not trust. |
+| 16501003 | The form to be operated has been deleted already. |
+| 16501007 | The form to be operated is not trusted. |
 
 **示例：**
 
