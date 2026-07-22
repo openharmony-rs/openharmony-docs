@@ -2,7 +2,7 @@
 
 CounterV2Type指定CounterV2类型。
 
-各类型CounterV2组件的展示效果可参考[示例1（列表型CounterV2）](docroot://reference/apis-arkui/arkui-ts/ohos-arkui-advanced-CounterV2.md#示例1列表型counterv2)、[示例2（紧凑型CounterV2）](docroot://reference/apis-arkui/arkui-ts/ohos-arkui-advanced-CounterV2.md#示例2紧凑型counterv2)、[示例3（数值内联型CounterV2）](docroot://reference/apis-arkui/arkui-ts/ohos-arkui-advanced-CounterV2.md#示例3数值内联型counterv2)、[示例4（日期内联型CounterV2）](docroot://reference/apis-arkui/arkui-ts/ohos-arkui-advanced-CounterV2.md#示例4日期内联型counterv2)。
+各类型CounterV2组件的展示效果可参考[示例1（列表型CounterV2）](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-CounterV2.md#示例1列表型counterv2)、[示例2（紧凑型CounterV2）](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-CounterV2.md#示例2紧凑型counterv2)、[示例3（数值内联型CounterV2）](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-CounterV2.md#示例3数值内联型counterv2)、[示例4（日期内联型CounterV2）](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-CounterV2.md#示例4日期内联型counterv2)。
 
 **起始版本：** 26.0.0
 

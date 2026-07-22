@@ -58,7 +58,7 @@ bundleName: string
 isFocused?: boolean
 ```
 
-窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-arkui-window-window-i.md#isfocused-1)接口一致。
+窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-arkui-window-window-i.md#isfocused)接口一致。
 
 **类型：** boolean
 

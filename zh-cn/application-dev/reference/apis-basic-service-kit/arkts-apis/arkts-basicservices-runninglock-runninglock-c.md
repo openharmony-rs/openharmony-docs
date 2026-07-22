@@ -14,7 +14,6 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
-<a id="hold"></a>
 ## hold
 
 ```TypeScript
@@ -80,7 +79,6 @@ class RunningLockTest {
 
 ```
 
-<a id="isholding"></a>
 ## isHolding
 
 ```TypeScript
@@ -129,7 +127,6 @@ class RunningLockTest {
 
 ```
 
-<a id="isused"></a>
 ## isUsed
 
 ```TypeScript
@@ -142,7 +139,7 @@ isUsed(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isHolding](arkts-basicservices-runninglock-runninglock-c.md#isholding-1)
+**替代接口：** [isHolding](arkts-basicservices-runninglock-runninglock-c.md#isholding)
 
 <!--Device-RunningLock-isUsed(): boolean--><!--Device-RunningLock-isUsed(): boolean-End-->
 
@@ -168,7 +165,6 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 ```
 
-<a id="lock"></a>
 ## lock
 
 ```TypeScript
@@ -181,7 +177,7 @@ lock(timeout: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [hold](arkts-basicservices-runninglock-runninglock-c.md#hold-1)
+**替代接口：** [hold](arkts-basicservices-runninglock-runninglock-c.md#hold)
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
@@ -209,7 +205,6 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 ```
 
-<a id="unhold"></a>
 ## unhold
 
 ```TypeScript
@@ -268,7 +263,6 @@ class RunningLockTest {
 
 ```
 
-<a id="unlock"></a>
 ## unlock
 
 ```TypeScript
@@ -281,7 +275,7 @@ unlock(): void
 
 **废弃版本：** 9
 
-**替代接口：** [unhold](arkts-basicservices-runninglock-runninglock-c.md#unhold-1)
+**替代接口：** [unhold](arkts-basicservices-runninglock-runninglock-c.md#unhold)
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 

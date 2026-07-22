@@ -35,7 +35,7 @@ import { power } from '@kit.BasicServicesKit';
 | [getPowerConfig](arkts-basicservices-power-getpowerconfig-f-sys.md#getpowerconfig) | 按场景名称查询电源配置值。 |
 | [hibernate](arkts-basicservices-power-hibernate-f-sys.md#hibernate) | 休眠设备。 |
 | [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot) | 重启设备。 |
-| [refreshActivity](arkts-basicservices-power-refreshactivity-f-sys.md#refreshactivity) | 刷新设备活动状态（如：重设屏幕超时息屏时间等）。  只有设备在活动状态下生效，设备活动状态见[power.isActive](arkts-basicservices-power-isactive-f.md#isactive-1)接口。 |
+| [refreshActivity](arkts-basicservices-power-refreshactivity-f-sys.md#refreshactivity) | 刷新设备活动状态（如：重设屏幕超时息屏时间等）。  只有设备在活动状态下生效，设备活动状态见[power.isActive](arkts-basicservices-power-isactive-f.md#isactive)接口。 |
 | [registerShutdownCallback](arkts-basicservices-power-registershutdowncallback-f-sys.md#registershutdowncallback) | 订阅电源关机或重启的回调提醒。使用callback异步回调。 |
 | [setPowerConfig](arkts-basicservices-power-setpowerconfig-f-sys.md#setpowerconfig) | 根据场景名称设置电源配置值。 |
 | [setPowerKeyFilteringStrategy](arkts-basicservices-power-setpowerkeyfilteringstrategy-f-sys.md#setpowerkeyfilteringstrategy) | 设置电源键过滤策略，在电源服务订阅电源键事件后，用于配置电源键事件的处理方式。  电源键过滤策略见[power.PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md)接口。 |

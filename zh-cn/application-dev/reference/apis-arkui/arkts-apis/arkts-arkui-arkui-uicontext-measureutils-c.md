@@ -16,7 +16,6 @@ class MeasureUtils
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="getparagraphs"></a>
 ## getParagraphs
 
 ```TypeScript
@@ -46,7 +45,6 @@ getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array<Pa
 | --- | --- |
 | Array&lt;Paragraph&gt; | 段落结果 |
 
-<a id="measuretext"></a>
 ## measureText
 
 ```TypeScript
@@ -77,7 +75,6 @@ Obtains the width of the specified text in a single line layout.
 | --- | --- |
 | number | - The unit is px. |
 
-<a id="measuretextsize"></a>
 ## measureTextSize
 
 ```TypeScript

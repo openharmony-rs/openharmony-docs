@@ -2,7 +2,7 @@
 
 标准悬浮窗控制器实例。用于启动、停止标准悬浮窗以及注册回调等操作。
 
-下列API示例中都需先使用[floatView.create()](arkts-arkui-floatview-create-f.md#create-1)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。
+下列API示例中都需先使用[floatView.create()](arkts-arkui-floatview-create-f.md#create)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。
 
 **起始版本：** 26.0.0
 
@@ -16,7 +16,6 @@
 import { floatView } from '@kit.ArkUI';
 ```
 
-<a id="getwindowproperties"></a>
 ## getWindowProperties
 
 ```TypeScript
@@ -59,7 +58,6 @@ try {
 
 ```
 
-<a id="offlimitschange"></a>
 ## offLimitsChange
 
 ```TypeScript
@@ -104,7 +102,6 @@ try {
 
 ```
 
-<a id="offrectchange"></a>
 ## offRectChange
 
 ```TypeScript
@@ -149,7 +146,6 @@ try {
 
 ```
 
-<a id="offstatechange"></a>
 ## offStateChange
 
 ```TypeScript
@@ -194,7 +190,6 @@ try {
 
 ```
 
-<a id="onlimitschange"></a>
 ## onLimitsChange
 
 ```TypeScript
@@ -240,7 +235,6 @@ try {
 
 ```
 
-<a id="onrectchange"></a>
 ## onRectChange
 
 ```TypeScript
@@ -286,7 +280,6 @@ try {
 
 ```
 
-<a id="onstatechange"></a>
 ## onStateChange
 
 ```TypeScript
@@ -332,7 +325,6 @@ try {
 
 ```
 
-<a id="restoremainwindow"></a>
 ## restoreMainWindow
 
 ```TypeScript
@@ -353,7 +345,7 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParameters | Record&lt;string, Object&gt; | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发[onNewWant](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitylifecyclecallback-abilitylifecyclecallback-c.md#onnewwant-1)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
+| wantParameters | Record&lt;string, Object&gt; | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发[onNewWant](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitylifecyclecallback-abilitylifecyclecallback-c.md#onabilitycreate)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
 
 **返回值：**
 
@@ -394,7 +386,6 @@ try {
 
 ```
 
-<a id="setfloatviewvisibilityinapp"></a>
 ## setFloatViewVisibilityInApp
 
 ```TypeScript
@@ -451,7 +442,6 @@ try {
 
 ```
 
-<a id="setuicontext"></a>
 ## setUIContext
 
 ```TypeScript
@@ -508,14 +498,13 @@ try {
 
 ```
 
-<a id="setuicontextbyname"></a>
 ## setUIContextByName
 
 ```TypeScript
 setUIContextByName(name: string, storage?: LocalStorage): Promise<void>
 ```
 
-根据指定路由页面名称为当前窗口加载[命名路由](docroot://ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
+根据指定路由页面名称为当前窗口加载[命名路由](../../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -595,14 +584,13 @@ export struct Hello {
 
 ```
 
-<a id="setwindowsize"></a>
 ## setWindowSize
 
 ```TypeScript
 setWindowSize(size: window.Size): Promise<void>
 ```
 
-设置标准悬浮窗窗口大小。建议先调用[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1)接口获取推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](floatView.FloatViewController.onRectChange(callback: Callback<FloatViewRectChangeInfo>))接口监听。使用Promise异步回调。
+设置标准悬浮窗窗口大小。建议先调用[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits)接口获取推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](floatView.FloatViewController.onRectChange(callback: Callback<FloatViewRectChangeInfo>))接口监听。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -616,7 +604,7 @@ setWindowSize(size: window.Size): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | window.Size | 是 | 表示窗口的大小。建议大小满足[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1)接口返回的限制。 |
+| size | window.Size | 是 | 表示窗口的大小。建议大小满足[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits)接口返回的限制。 |
 
 **返回值：**
 
@@ -656,14 +644,13 @@ try {
 
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
 start(): Promise<void>
 ```
 
-启动标准悬浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](floatView.FloatViewController.onStateChange(callback: Callback<FloatViewStateChangeInfo>))接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontext-1)或[setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontextbyname-1)后调用start()。使用Promise异步回调。
+启动标准悬浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](floatView.FloatViewController.onStateChange(callback: Callback<FloatViewStateChangeInfo>))接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontext)或[setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontextbyname)后调用start()。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -712,7 +699,6 @@ try {
 
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -763,14 +749,13 @@ try {
 
 ```
 
-<a id="switchtemplate"></a>
 ## switchTemplate
 
 ```TypeScript
 switchTemplate(templateProperty: TemplateProperty): Promise<void>
 ```
 
-切换标准悬浮窗的模板并改变其窗口尺寸。建议先调用[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1)接口获取目标模板类型推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](floatView.FloatViewController.onRectChange(callback: Callback<FloatViewRectChangeInfo>))接口监听。使用Promise异步回调。
+切换标准悬浮窗的模板并改变其窗口尺寸。建议先调用[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits)接口获取目标模板类型推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](floatView.FloatViewController.onRectChange(callback: Callback<FloatViewRectChangeInfo>))接口监听。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -784,7 +769,7 @@ switchTemplate(templateProperty: TemplateProperty): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| templateProperty | [TemplateProperty](arkts-arkui-floatview-templateproperty-i.md) | 是 | 表示需要切换的窗口模板类型及大小。建议大小满足[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1)接口返回的限制。 |
+| templateProperty | [TemplateProperty](arkts-arkui-floatview-templateproperty-i.md) | 是 | 表示需要切换的窗口模板类型及大小。建议大小满足[getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits)接口返回的限制。 |
 
 **返回值：**
 

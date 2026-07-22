@@ -6,7 +6,6 @@
 import { shortcutManager } from '@kit.AbilityKit';
 ```
 
-<a id="deletedesktopshortcutinfo"></a>
 ## deleteDesktopShortcutInfo
 
 ```TypeScript
@@ -30,7 +29,7 @@ function deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | shortcutInfo | [ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md) | 是 | 快捷方式信息。 |
-| userId | number | 是 | 用户id。可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
+| userId | number | 是 | 用户id。可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 
 **返回值：**
 

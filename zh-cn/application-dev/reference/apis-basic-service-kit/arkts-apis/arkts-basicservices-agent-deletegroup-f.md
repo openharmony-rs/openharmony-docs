@@ -6,7 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="deletegroup"></a>
 ## deleteGroup
 
 ```TypeScript
@@ -27,7 +26,7 @@ function deleteGroup(gid: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gid | string | 是 | 目标分组id。与创建的任务分组ID保持一致，即使用[request.agent.createGroup](arkts-basicservices-agent-creategroup-f.md#creategroup-1)接口成功创建任务分组时的返回值。 |
+| gid | string | 是 | 目标分组id。与创建的任务分组ID保持一致，即使用[request.agent.createGroup](arkts-basicservices-agent-creategroup-f.md#creategroup)接口成功创建任务分组时的返回值。 |
 
 **返回值：**
 

@@ -8,7 +8,6 @@ Defines the onDataResubmission callback, related to {@link onDataResubmission} m
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -25,7 +24,6 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -42,7 +40,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="resend"></a>
 ## resend
 
 ```TypeScript

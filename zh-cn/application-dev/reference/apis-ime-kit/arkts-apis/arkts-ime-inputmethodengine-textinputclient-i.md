@@ -18,7 +18,6 @@
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
-<a id="deletebackward"></a>
 ## deleteBackward
 
 ```TypeScript
@@ -35,7 +34,7 @@ deleteBackward(length: number, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [deleteBackward(length:](arkts-ime-inputmethodengine-inputclient-i.md#deletebackward-1)
+**替代接口：** [deleteBackward(length:](arkts-ime-inputmethodengine-inputclient-i.md#deletebackward)
 
 <!--Device-TextInputClient-deleteBackward(length: number, callback: AsyncCallback<boolean>): void--><!--Device-TextInputClient-deleteBackward(length: number, callback: AsyncCallback<boolean>): void-End-->
 
@@ -68,7 +67,6 @@ textInputClient.deleteBackward(length, (err: BusinessError, result: boolean) => 
 
 ```
 
-<a id="deletebackward-1"></a>
 ## deleteBackward
 
 ```TypeScript
@@ -81,7 +79,7 @@ deleteBackward(length: number): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [deleteBackward(length:](arkts-ime-inputmethodengine-inputclient-i.md#deletebackward-1)
+**替代接口：** [deleteBackward(length:](arkts-ime-inputmethodengine-inputclient-i.md#deletebackward)
 
 <!--Device-TextInputClient-deleteBackward(length: number): Promise<boolean>--><!--Device-TextInputClient-deleteBackward(length: number): Promise<boolean>-End-->
 
@@ -117,7 +115,6 @@ textInputClient.deleteBackward(length).then((result: boolean) => {
 
 ```
 
-<a id="deleteforward"></a>
 ## deleteForward
 
 ```TypeScript
@@ -134,7 +131,7 @@ deleteForward(length: number, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [deleteForward(length:](arkts-ime-inputmethodengine-inputclient-i.md#deleteforward-1)
+**替代接口：** [deleteForward(length:](arkts-ime-inputmethodengine-inputclient-i.md#deleteforward)
 
 <!--Device-TextInputClient-deleteForward(length: number, callback: AsyncCallback<boolean>): void--><!--Device-TextInputClient-deleteForward(length: number, callback: AsyncCallback<boolean>): void-End-->
 
@@ -167,7 +164,6 @@ textInputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
 
 ```
 
-<a id="deleteforward-1"></a>
 ## deleteForward
 
 ```TypeScript
@@ -180,7 +176,7 @@ deleteForward(length: number): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [deleteForward(length:](arkts-ime-inputmethodengine-inputclient-i.md#deleteforward-1)
+**替代接口：** [deleteForward(length:](arkts-ime-inputmethodengine-inputclient-i.md#deleteforward)
 
 <!--Device-TextInputClient-deleteForward(length: number): Promise<boolean>--><!--Device-TextInputClient-deleteForward(length: number): Promise<boolean>-End-->
 
@@ -216,7 +212,6 @@ textInputClient.deleteForward(length).then((result: boolean) => {
 
 ```
 
-<a id="getbackward"></a>
 ## getBackward
 
 ```TypeScript
@@ -229,7 +224,7 @@ getBackward(length: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getBackward(length:](arkts-ime-inputmethodengine-inputclient-i.md#getbackward-1)
+**替代接口：** [getBackward(length:](arkts-ime-inputmethodengine-inputclient-i.md#getbackward)
 
 <!--Device-TextInputClient-getBackward(length: number, callback: AsyncCallback<string>): void--><!--Device-TextInputClient-getBackward(length: number, callback: AsyncCallback<string>): void-End-->
 
@@ -258,7 +253,6 @@ textInputClient.getBackward(length, (err: BusinessError, text: string) => {
 
 ```
 
-<a id="getbackward-1"></a>
 ## getBackward
 
 ```TypeScript
@@ -271,7 +265,7 @@ getBackward(length: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [getBackward(length:](arkts-ime-inputmethodengine-inputclient-i.md#getbackward-1)
+**替代接口：** [getBackward(length:](arkts-ime-inputmethodengine-inputclient-i.md#getbackward)
 
 <!--Device-TextInputClient-getBackward(length: number): Promise<string>--><!--Device-TextInputClient-getBackward(length: number): Promise<string>-End-->
 
@@ -303,7 +297,6 @@ textInputClient.getBackward(length).then((text: string) => {
 
 ```
 
-<a id="geteditorattribute"></a>
 ## getEditorAttribute
 
 ```TypeScript
@@ -320,7 +313,7 @@ getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getEditorAttribute(callback:](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute-1)
+**替代接口：** [getEditorAttribute(callback:](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute)
 
 <!--Device-TextInputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void--><!--Device-TextInputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void-End-->
 
@@ -350,7 +343,6 @@ textInputClient.getEditorAttribute((err: BusinessError,
 
 ```
 
-<a id="geteditorattribute-1"></a>
 ## getEditorAttribute
 
 ```TypeScript
@@ -363,7 +355,7 @@ getEditorAttribute(): Promise<EditorAttribute>
 
 **废弃版本：** 9
 
-**替代接口：** [getEditorAttribute(callback:](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute-1)
+**替代接口：** [getEditorAttribute(callback:](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute)
 
 <!--Device-TextInputClient-getEditorAttribute(): Promise<EditorAttribute>--><!--Device-TextInputClient-getEditorAttribute(): Promise<EditorAttribute>-End-->
 
@@ -389,7 +381,6 @@ textInputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.Ed
 
 ```
 
-<a id="getforward"></a>
 ## getForward
 
 ```TypeScript
@@ -406,7 +397,7 @@ getForward(length: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getForward(length:](arkts-ime-inputmethodengine-inputclient-i.md#getforward-1)
+**替代接口：** [getForward(length:](arkts-ime-inputmethodengine-inputclient-i.md#getforward)
 
 <!--Device-TextInputClient-getForward(length: number, callback: AsyncCallback<string>): void--><!--Device-TextInputClient-getForward(length: number, callback: AsyncCallback<string>): void-End-->
 
@@ -435,7 +426,6 @@ textInputClient.getForward(length, (err: BusinessError, text: string) => {
 
 ```
 
-<a id="getforward-1"></a>
 ## getForward
 
 ```TypeScript
@@ -448,7 +438,7 @@ getForward(length: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [getForward(length:](arkts-ime-inputmethodengine-inputclient-i.md#getforward-1)
+**替代接口：** [getForward(length:](arkts-ime-inputmethodengine-inputclient-i.md#getforward)
 
 <!--Device-TextInputClient-getForward(length: number): Promise<string>--><!--Device-TextInputClient-getForward(length: number): Promise<string>-End-->
 
@@ -480,7 +470,6 @@ textInputClient.getForward(length).then((text: string) => {
 
 ```
 
-<a id="inserttext"></a>
 ## insertText
 
 ```TypeScript
@@ -497,7 +486,7 @@ insertText(text: string, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [insertText(text:](arkts-ime-inputmethodengine-inputclient-i.md#inserttext-1)
+**替代接口：** [insertText(text:](arkts-ime-inputmethodengine-inputclient-i.md#inserttext)
 
 <!--Device-TextInputClient-insertText(text: string, callback: AsyncCallback<boolean>): void--><!--Device-TextInputClient-insertText(text: string, callback: AsyncCallback<boolean>): void-End-->
 
@@ -529,7 +518,6 @@ textInputClient.insertText('test', (err: BusinessError, result: boolean) => {
 
 ```
 
-<a id="inserttext-1"></a>
 ## insertText
 
 ```TypeScript
@@ -542,7 +530,7 @@ insertText(text: string): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [insertText(text:](arkts-ime-inputmethodengine-inputclient-i.md#inserttext-1)
+**替代接口：** [insertText(text:](arkts-ime-inputmethodengine-inputclient-i.md#inserttext)
 
 <!--Device-TextInputClient-insertText(text: string): Promise<boolean>--><!--Device-TextInputClient-insertText(text: string): Promise<boolean>-End-->
 
@@ -577,7 +565,6 @@ textInputClient.insertText('test').then((result: boolean) => {
 
 ```
 
-<a id="sendkeyfunction"></a>
 ## sendKeyFunction
 
 ```TypeScript
@@ -590,7 +577,7 @@ sendKeyFunction(action: number, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [sendKeyFunction(action:](arkts-ime-inputmethodengine-inputclient-i.md#sendkeyfunction-1)
+**替代接口：** [sendKeyFunction(action:](arkts-ime-inputmethodengine-inputclient-i.md#sendkeyfunction)
 
 <!--Device-TextInputClient-sendKeyFunction(action: number, callback: AsyncCallback<boolean>): void--><!--Device-TextInputClient-sendKeyFunction(action: number, callback: AsyncCallback<boolean>): void-End-->
 
@@ -623,7 +610,6 @@ textInputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) =>
 
 ```
 
-<a id="sendkeyfunction-1"></a>
 ## sendKeyFunction
 
 ```TypeScript
@@ -636,7 +622,7 @@ sendKeyFunction(action: number): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [sendKeyFunction(action:](arkts-ime-inputmethodengine-inputclient-i.md#sendkeyfunction-1)
+**替代接口：** [sendKeyFunction(action:](arkts-ime-inputmethodengine-inputclient-i.md#sendkeyfunction)
 
 <!--Device-TextInputClient-sendKeyFunction(action: number): Promise<boolean>--><!--Device-TextInputClient-sendKeyFunction(action: number): Promise<boolean>-End-->
 

@@ -42,7 +42,7 @@ size?: SizeOptions
 src: ResourceStr
 ```
 
-图标图片或图片地址引用请参考[Image](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-image.md#image-1)。
+图标图片或图片地址引用请参考[Image](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#image-1)。
 
 **类型：** ResourceStr
 

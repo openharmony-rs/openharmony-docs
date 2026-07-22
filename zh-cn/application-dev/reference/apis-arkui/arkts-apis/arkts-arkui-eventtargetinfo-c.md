@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getid"></a>
 ## getId
 
 ```TypeScript
@@ -33,7 +32,6 @@ getId(): string
 | --- | --- |
 | string | 当前组件的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。 |
 
-<a id="getuniqueid"></a>
 ## getUniqueId
 
 ```TypeScript
@@ -58,7 +56,6 @@ Returns the component's unique id.
 | --- | --- |
 | number | - the unique id of the component |
 
-<a id="getuniqueid-1"></a>
 ## getUniqueId
 
 ```TypeScript

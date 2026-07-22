@@ -2,8 +2,7 @@
 
 空间音频管理。
 
-在使用AudioSpatializationManager的接口之前，需先通过[getSpatializationManager](arkts-audio-audio-audiomanager-i.md#getspatializationmanager-1)获取AudioSpatializationManager实例。
-
+在使用AudioSpatializationManager的接口之前，需先通过[getSpatializationManager](arkts-audio-audio-audiomanager-i.md#getspatializationmanager)获取AudioSpatializationManager实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 18开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="downloadpersonalizedhrtf"></a>
 ## downloadPersonalizedHRTF
 
 ```TypeScript
@@ -64,7 +62,6 @@ downloadPersonalizedHRTF(hrtfDescriptor: AudioHRTFAnonymousDescriptor): Promise<
 | [6800105](../errorcode-audio.md#6800105-处理超时) | Time out when saving HRTF on disk. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System internal error, fail to save HRTF on disk, like service died. |
 
-<a id="getcurrentspatialaudiosourcetype"></a>
 ## getCurrentSpatialAudioSourceType
 
 ```TypeScript
@@ -95,7 +92,6 @@ getCurrentSpatialAudioSourceType(): SpatialAudioSourceType
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 
-<a id="getspatializationscenetype"></a>
 ## getSpatializationSceneType
 
 ```TypeScript
@@ -140,7 +136,6 @@ try {
 
 ```
 
-<a id="isadaptivespatialrenderingenabled"></a>
 ## isAdaptiveSpatialRenderingEnabled
 
 ```TypeScript
@@ -176,7 +171,6 @@ Checks whether the adaptive spatial rendering is enabled by the specified device
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="isheadtrackingenabled"></a>
 ## isHeadTrackingEnabled
 
 ```TypeScript
@@ -225,7 +219,6 @@ try {
 
 ```
 
-<a id="isheadtrackingenabled-1"></a>
 ## isHeadTrackingEnabled
 
 ```TypeScript
@@ -293,7 +286,6 @@ try {
 
 ```
 
-<a id="isheadtrackingsupported"></a>
 ## isHeadTrackingSupported
 
 ```TypeScript
@@ -338,7 +330,6 @@ try {
 
 ```
 
-<a id="isheadtrackingsupportedfordevice"></a>
 ## isHeadTrackingSupportedForDevice
 
 ```TypeScript
@@ -406,7 +397,6 @@ try {
 
 ```
 
-<a id="ispersonalizedspatializationenabled"></a>
 ## isPersonalizedSpatializationEnabled
 
 ```TypeScript
@@ -444,7 +434,6 @@ isPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor):
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="ispersonalizedspatializationsupported"></a>
 ## isPersonalizedSpatializationSupported
 
 ```TypeScript
@@ -475,7 +464,6 @@ isPersonalizedSpatializationSupported(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-<a id="isspatializationenabled"></a>
 ## isSpatializationEnabled
 
 ```TypeScript
@@ -524,7 +512,6 @@ try {
 
 ```
 
-<a id="isspatializationenabled-1"></a>
 ## isSpatializationEnabled
 
 ```TypeScript
@@ -592,7 +579,6 @@ try {
 
 ```
 
-<a id="isspatializationsupported"></a>
 ## isSpatializationSupported
 
 ```TypeScript
@@ -636,7 +622,6 @@ try {
 
 ```
 
-<a id="isspatializationsupportedfordevice"></a>
 ## isSpatializationSupportedForDevice
 
 ```TypeScript
@@ -704,7 +689,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off('spatializationEnabledChange')
 
 ```TypeScript
@@ -757,7 +741,6 @@ audioSpatializationManager.off('spatializationEnabledChange', spatializationEnab
 
 ```
 
-<a id="off-1"></a>
 ## off('spatializationEnabledChangeForAnyDevice')
 
 ```TypeScript
@@ -809,7 +792,6 @@ audioSpatializationManager.off('spatializationEnabledChangeForAnyDevice', spatia
 
 ```
 
-<a id="off-2"></a>
 ## off('headTrackingEnabledChange')
 
 ```TypeScript
@@ -864,7 +846,6 @@ audioSpatializationManager.off('headTrackingEnabledChange', headTrackingEnabledC
 
 ```
 
-<a id="off-3"></a>
 ## off('headTrackingEnabledChangeForAnyDevice')
 
 ```TypeScript
@@ -916,7 +897,6 @@ audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice', headTrac
 
 ```
 
-<a id="offadaptivespatialrenderingenabledchangeforanydevice"></a>
 ## offAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
 ```TypeScript
@@ -946,7 +926,6 @@ Unsubscribes to the adaptive spatial rendering enable state change events.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="offpersonalizedspatializationenabledchangeforanydevice"></a>
 ## offPersonalizedSpatializationEnabledChangeForAnyDevice
 
 ```TypeScript
@@ -960,9 +939,7 @@ offPersonalizedSpatializationEnabledChangeForAnyDevice(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AudioSpatializationManager-offPersonalizedSpatializationEnabledChangeForAnyDevice(
-      callback?: Callback<AudioPersonalizedSpatialEnabledChangeForAnyDevice>): void--><!--Device-AudioSpatializationManager-offPersonalizedSpatializationEnabledChangeForAnyDevice(
-      callback?: Callback<AudioPersonalizedSpatialEnabledChangeForAnyDevice>): void-End-->
+<!--Device-AudioSpatializationManager-offPersonalizedSpatializationEnabledChangeForAnyDevice(      callback?: Callback<AudioPersonalizedSpatialEnabledChangeForAnyDevice>): void--><!--Device-AudioSpatializationManager-offPersonalizedSpatializationEnabledChangeForAnyDevice(      callback?: Callback<AudioPersonalizedSpatialEnabledChangeForAnyDevice>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -980,7 +957,6 @@ offPersonalizedSpatializationEnabledChangeForAnyDevice(
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-<a id="offspatialaudiosourcetypechange"></a>
 ## offSpatialAudioSourceTypeChange
 
 ```TypeScript
@@ -1012,7 +988,6 @@ offSpatialAudioSourceTypeChange(callback?: Callback<SpatialAudioSourceType>): vo
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on"></a>
 ## on('spatializationEnabledChange')
 
 ```TypeScript
@@ -1059,7 +1034,6 @@ audioSpatializationManager.on('spatializationEnabledChange', (isSpatializationEn
 
 ```
 
-<a id="on-1"></a>
 ## on('spatializationEnabledChangeForAnyDevice')
 
 ```TypeScript
@@ -1103,7 +1077,6 @@ audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', (audioS
 
 ```
 
-<a id="on-2"></a>
 ## on('headTrackingEnabledChange')
 
 ```TypeScript
@@ -1150,7 +1123,6 @@ audioSpatializationManager.on('headTrackingEnabledChange', (isHeadTrackingEnable
 
 ```
 
-<a id="on-3"></a>
 ## on('headTrackingEnabledChangeForAnyDevice')
 
 ```TypeScript
@@ -1194,7 +1166,6 @@ audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', (audioSpa
 
 ```
 
-<a id="onadaptivespatialrenderingenabledchangeforanydevice"></a>
 ## onAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
 ```TypeScript
@@ -1224,7 +1195,6 @@ Subscribes to the adaptive spatial rendering enable state change events.When the
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="onpersonalizedspatializationenabledchangeforanydevice"></a>
 ## onPersonalizedSpatializationEnabledChangeForAnyDevice
 
 ```TypeScript
@@ -1238,9 +1208,7 @@ onPersonalizedSpatializationEnabledChangeForAnyDevice(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AudioSpatializationManager-onPersonalizedSpatializationEnabledChangeForAnyDevice(
-      callback: Callback<AudioPersonalizedSpatialEnabledChangeForAnyDevice>): void--><!--Device-AudioSpatializationManager-onPersonalizedSpatializationEnabledChangeForAnyDevice(
-      callback: Callback<AudioPersonalizedSpatialEnabledChangeForAnyDevice>): void-End-->
+<!--Device-AudioSpatializationManager-onPersonalizedSpatializationEnabledChangeForAnyDevice(      callback: Callback<AudioPersonalizedSpatialEnabledChangeForAnyDevice>): void--><!--Device-AudioSpatializationManager-onPersonalizedSpatializationEnabledChangeForAnyDevice(      callback: Callback<AudioPersonalizedSpatialEnabledChangeForAnyDevice>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -1258,7 +1226,6 @@ onPersonalizedSpatializationEnabledChangeForAnyDevice(
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-<a id="onspatialaudiosourcetypechange"></a>
 ## onSpatialAudioSourceTypeChange
 
 ```TypeScript
@@ -1290,7 +1257,6 @@ onSpatialAudioSourceTypeChange(callback: Callback<SpatialAudioSourceType>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="setadaptivespatialrenderingenabled"></a>
 ## setAdaptiveSpatialRenderingEnabled
 
 ```TypeScript
@@ -1331,7 +1297,6 @@ Sets the adaptive spatial rendering enabled or disabled by the specified device.
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported on the device. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="setheadtrackingenabled"></a>
 ## setHeadTrackingEnabled
 
 ```TypeScript
@@ -1388,7 +1353,6 @@ audioSpatializationManager.setHeadTrackingEnabled(enable, (err: BusinessError) =
 
 ```
 
-<a id="setheadtrackingenabled-1"></a>
 ## setHeadTrackingEnabled
 
 ```TypeScript
@@ -1447,7 +1411,6 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 
 ```
 
-<a id="setheadtrackingenabled-2"></a>
 ## setHeadTrackingEnabled
 
 ```TypeScript
@@ -1518,7 +1481,6 @@ audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then
 
 ```
 
-<a id="setpersonalizedspatializationenabled"></a>
 ## setPersonalizedSpatializationEnabled
 
 ```TypeScript
@@ -1534,9 +1496,7 @@ setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AudioSpatializationManager-setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
-      enable: boolean): Promise<void>--><!--Device-AudioSpatializationManager-setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
-      enable: boolean): Promise<void>-End-->
+<!--Device-AudioSpatializationManager-setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,      enable: boolean): Promise<void>--><!--Device-AudioSpatializationManager-setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,      enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -1563,7 +1523,6 @@ setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability is not supported in this device. |
 
-<a id="setspatializationenabled"></a>
 ## setSpatializationEnabled
 
 ```TypeScript
@@ -1620,7 +1579,6 @@ audioSpatializationManager.setSpatializationEnabled(enable, (err: BusinessError)
 
 ```
 
-<a id="setspatializationenabled-1"></a>
 ## setSpatializationEnabled
 
 ```TypeScript
@@ -1679,7 +1637,6 @@ audioSpatializationManager.setSpatializationEnabled(enable).then(() => {
 
 ```
 
-<a id="setspatializationenabled-2"></a>
 ## setSpatializationEnabled
 
 ```TypeScript
@@ -1750,7 +1707,6 @@ audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).t
 
 ```
 
-<a id="setspatializationscenetype"></a>
 ## setSpatializationSceneType
 
 ```TypeScript
@@ -1800,7 +1756,6 @@ try {
 
 ```
 
-<a id="updatespatialdevicestate"></a>
 ## updateSpatialDeviceState
 
 ```TypeScript

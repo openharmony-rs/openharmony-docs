@@ -1,6 +1,6 @@
 # AttachStateChangeInfo
 
-Callback information about the device attachment state change.
+设备吸附状态回调信息
 
 **起始版本：** 20
 
@@ -36,7 +36,7 @@ Mechanical device information.
 state: AttachState
 ```
 
-Device attachment state.
+吸附状态
 
 **类型：** AttachState
 

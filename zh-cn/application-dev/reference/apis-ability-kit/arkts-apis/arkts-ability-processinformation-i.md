@@ -1,6 +1,6 @@
 # ProcessInformation
 
-运行进程信息，可以通过appManager的[getRunningProcessInformation](arkts-ability-appmanager-getrunningprocessinformation-f.md#getrunningprocessinformation-1)来获取运行进程信息。
+运行进程信息，可以通过appManager的[getRunningProcessInformation](arkts-ability-appmanager-getrunningprocessinformation-f.md#getrunningprocessinformation)来获取运行进程信息。
 
 **起始版本：** 9
 

@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -39,7 +38,6 @@
 | --- | --- |
 | [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -70,7 +68,6 @@
 | --- | --- |
 | [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onactioncancel"></a>
 ## onActionCancel
 
 ```TypeScript
@@ -99,14 +96,13 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 | --- | --- |
 | [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactioncancel-1"></a>
 ## onActionCancel
 
 ```TypeScript
 onActionCancel(event: Callback<GestureEvent>): RotationGestureInterface
 ```
 
-Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](arkts-arkui-rotationgestureinterface-i.md#onactioncancel-1)相比，该回调返回手势事件信息。
+Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](arkts-arkui-rotationgestureinterface-i.md#onactioncancel)相比，该回调返回手势事件信息。
 
 **起始版本：** 18
 
@@ -130,7 +126,6 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。与[on
 | --- | --- |
 | [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onactionend"></a>
 ## onActionEnd
 
 ```TypeScript
@@ -159,7 +154,6 @@ Rotation手势识别成功，当抬起最后一根满足手势触发条件的手
 | --- | --- |
 | [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactionstart"></a>
 ## onActionStart
 
 ```TypeScript
@@ -188,7 +182,6 @@ Rotation手势识别成功后触发的回调。
 | --- | --- |
 | [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactionupdate"></a>
 ## onActionUpdate
 
 ```TypeScript

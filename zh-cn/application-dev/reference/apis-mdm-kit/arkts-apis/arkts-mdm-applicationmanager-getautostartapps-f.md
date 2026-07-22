@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="getautostartapps"></a>
 ## getAutoStartApps
 
 ```TypeScript
@@ -47,7 +46,6 @@ function getAutoStartApps(admin: Want): Array<Want>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
-<a id="getautostartapps-1"></a>
 ## getAutoStartApps
 
 ```TypeScript
@@ -71,7 +69,7 @@ function getAutoStartApps(admin: Want, accountId: number): Array<Want>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **返回值：**
 

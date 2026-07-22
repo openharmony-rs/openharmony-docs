@@ -6,7 +6,6 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-<a id="disallowaddosaccountbyuser"></a>
 ## disallowAddOsAccountByUser
 
 ```TypeScript
@@ -19,7 +18,7 @@ function disallowAddOsAccountByUser(admin: Want, userId: number, disallow: boole
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowosaccountaddition-1)
+**替代接口：** [disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowosaccountaddition)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 

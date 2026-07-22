@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="createstream"></a>
 ## createStream
 
 ```TypeScript
@@ -69,7 +68,6 @@ declare function createStream(path: string, mode: string): Promise<Stream>
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="createstream-1"></a>
 ## createStream
 
 ```TypeScript

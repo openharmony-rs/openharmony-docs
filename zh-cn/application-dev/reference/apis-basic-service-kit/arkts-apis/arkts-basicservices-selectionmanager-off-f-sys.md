@@ -6,7 +6,6 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="off"></a>
 ## off('selectionCompleted')
 
 ```TypeScript

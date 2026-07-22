@@ -6,7 +6,6 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="cleardata"></a>
 ## clearData
 
 ```TypeScript

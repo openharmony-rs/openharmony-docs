@@ -6,7 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="deletecontact"></a>
 ## deleteContact
 
 ```TypeScript
@@ -19,7 +18,7 @@ function deleteContact(key: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [deleteContact(context:](arkts-contacts-contact-deletecontact-f.md#deletecontact-1)
+**替代接口：** [deleteContact(context:](arkts-contacts-contact-deletecontact-f.md#deletecontact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -57,7 +56,6 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="deletecontact-1"></a>
 ## deleteContact
 
 ```TypeScript
@@ -115,7 +113,6 @@ function deleteContact(context: Context, key: string, callback: AsyncCallback<vo
 ```
 
 
-<a id="deletecontact-2"></a>
 ## deleteContact
 
 ```TypeScript
@@ -128,7 +125,7 @@ function deleteContact(key: string): Promise<void>
 
 **废弃版本：** 10
 
-**替代接口：** [deleteContact(context:](arkts-contacts-contact-deletecontact-f.md#deletecontact-1)
+**替代接口：** [deleteContact(context:](arkts-contacts-contact-deletecontact-f.md#deletecontact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -165,7 +162,6 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="deletecontact-3"></a>
 ## deleteContact
 
 ```TypeScript

@@ -1,7 +1,6 @@
 # @ohos.notificationExtensionSubscription
 
 本模块提供管理通知扩展的能力，具体包括：打开通知扩展订阅设置界面、订阅和取消订阅通知扩展、获取和设置通知授权状态。
-
 > **说明：**  
 >  
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -57,6 +56,6 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 | [BundleOption](arkts-notification-notificationextensionsubscription-bundleoption-t.md) | 指定应用的包信息。 |
 | [GrantedBundleInfo](arkts-notification-notificationextensionsubscription-grantedbundleinfo-t.md) | 授权应用的包信息。 |
 | [NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscription-notificationextensionsubscriptioninfo-t.md) | 用于描述通知扩展订阅的信息。 |
-| [NotificationInfo](arkts-notification-notificationextensionsubscription-notificationinfo-t.md) | 通知订阅扩展能力中[onReceiveMessage](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#onreceivemessage-1)回调的通知信息。 |
+| [NotificationInfo](arkts-notification-notificationextensionsubscription-notificationinfo-t.md) | 通知订阅扩展能力中[onReceiveMessage](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#onreceivemessage)回调的通知信息。 |
 | [UserGrantSetting](arkts-notification-notificationextensionsubscription-usergrantsetting-t.md) | 用户授权的设置信息。 |
 

@@ -1,7 +1,6 @@
 # RowLayoutAlgorithm
 
 水平方向线性布局算法类。
-
 > **说明：**  
 >  
 > RowLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](arkts-arkui-components-arkdynamiclayout.md)组件的入参  
@@ -17,7 +16,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -78,7 +76,7 @@ constructor(option?: RowLayoutAlgorithmOptions)
 @Trace public isReverse?: boolean
 ```
 
-子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性[direction](../arkts-components/arkts-arkui-commonmethod-c.md#direction-1)影响，如果[direction](../arkts-components/arkts-arkui-commonmethod-c.md#direction-1)属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。
+子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性[direction](../arkts-components/arkts-arkui-commonmethod-c.md#direction)影响，如果[direction](../arkts-components/arkts-arkui-commonmethod-c.md#direction)属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。
 
 默认值：false
 

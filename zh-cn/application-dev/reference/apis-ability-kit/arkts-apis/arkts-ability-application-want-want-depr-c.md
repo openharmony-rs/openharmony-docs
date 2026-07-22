@@ -38,7 +38,7 @@ abilityName?: string
 action?: string
 ```
 
-表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。具体参考：[action说明](arkts-ability-wantconstant-action-depr-e.md)。隐式Want定义及匹配规则参考：[显式Want与隐式Want匹配规则](docroot://application-models/explicit-implicit-want-mappings.md)。
+表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。具体参考：[action说明](arkts-ability-wantconstant-action-depr-e.md)。隐式Want定义及匹配规则参考：[显式Want与隐式Want匹配规则](../../../application-models/explicit-implicit-want-mappings.md)。
 
 **类型：** string
 
@@ -118,7 +118,7 @@ entities?: Array<string>
 flags?: number
 ```
 
-表示处理Want的方式。默认传数字，具体参考：[flags说明](arkts-ability-wantconstant-flags-depr-e.md)。
+表示处理Want的方式。默认传数字，具体参考：[flags说明](arkts-ability-wantconstant-flags-e.md)。
 
 **类型：** number
 

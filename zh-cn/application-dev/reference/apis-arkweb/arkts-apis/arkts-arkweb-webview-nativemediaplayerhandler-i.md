@@ -1,7 +1,6 @@
 # NativeMediaPlayerHandler
 
 [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的参数。应用通过该对象，将播放器的状态通知给 ArkWeb 内核。
-
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 12开始支持。  
@@ -20,7 +19,6 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="handlebufferedendtimechanged"></a>
 ## handleBufferedEndTimeChanged
 
 ```TypeScript
@@ -43,7 +41,6 @@ handleBufferedEndTimeChanged(bufferedEndTime: number): void
 | --- | --- | --- | --- |
 | bufferedEndTime | number | 是 | 媒体缓冲的时长。<br>单位：秒，取值范围：[0, duration] |
 
-<a id="handledurationchanged"></a>
 ## handleDurationChanged
 
 ```TypeScript
@@ -66,7 +63,6 @@ handleDurationChanged(duration: number): void
 | --- | --- | --- | --- |
 | duration | number | 是 | 媒体的总时长。<br>单位：秒，取值范围：[0, +∞) |
 
-<a id="handleended"></a>
 ## handleEnded
 
 ```TypeScript
@@ -83,7 +79,6 @@ handleEnded(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="handleerror"></a>
 ## handleError
 
 ```TypeScript
@@ -107,7 +102,6 @@ handleError(error: MediaError, errorMessage: string): void
 | error | [MediaError](arkts-arkweb-webview-mediaerror-e.md) | 是 | 错误类型。 |
 | errorMessage | string | 是 | 错误的详细描述。 |
 
-<a id="handlefullscreenchanged"></a>
 ## handleFullscreenChanged
 
 ```TypeScript
@@ -130,7 +124,6 @@ handleFullscreenChanged(fullscreen: boolean): void
 | --- | --- | --- | --- |
 | fullscreen | boolean | 是 | 是否全屏。<br>true表示全屏，false表示未全屏。 |
 
-<a id="handlemutedchanged"></a>
 ## handleMutedChanged
 
 ```TypeScript
@@ -153,7 +146,6 @@ handleMutedChanged(muted: boolean): void
 | --- | --- | --- | --- |
 | muted | boolean | 是 | 当前播放器是否静音。<br>true表示当前播放器静音，false表示当前播放器未静音。 |
 
-<a id="handlenetworkstatechanged"></a>
 ## handleNetworkStateChanged
 
 ```TypeScript
@@ -176,7 +168,6 @@ handleNetworkStateChanged(state: NetworkState): void
 | --- | --- | --- | --- |
 | state | [NetworkState](arkts-arkweb-webview-networkstate-e.md) | 是 | 播放器的网络状态。 |
 
-<a id="handleplaybackratechanged"></a>
 ## handlePlaybackRateChanged
 
 ```TypeScript
@@ -199,7 +190,6 @@ handlePlaybackRateChanged(playbackRate: number): void
 | --- | --- | --- | --- |
 | playbackRate | number | 是 | 播放速率，取值范围：[0, +∞) |
 
-<a id="handlereadystatechanged"></a>
 ## handleReadyStateChanged
 
 ```TypeScript
@@ -222,7 +212,6 @@ handleReadyStateChanged(state: ReadyState): void
 | --- | --- | --- | --- |
 | state | [ReadyState](arkts-arkweb-webview-readystate-e.md) | 是 | 播放器的缓存状态。 |
 
-<a id="handleseekfinished"></a>
 ## handleSeekFinished
 
 ```TypeScript
@@ -239,7 +228,6 @@ handleSeekFinished(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="handleseeking"></a>
 ## handleSeeking
 
 ```TypeScript
@@ -256,7 +244,6 @@ handleSeeking(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="handlestatuschanged"></a>
 ## handleStatusChanged
 
 ```TypeScript
@@ -279,7 +266,6 @@ handleStatusChanged(status: PlaybackStatus): void
 | --- | --- | --- | --- |
 | status | [PlaybackStatus](arkts-arkweb-webview-playbackstatus-e.md) | 是 | 播放器的播放状态。 |
 
-<a id="handletimeupdate"></a>
 ## handleTimeUpdate
 
 ```TypeScript
@@ -302,7 +288,6 @@ handleTimeUpdate(currentPlayTime: number): void
 | --- | --- | --- | --- |
 | currentPlayTime | number | 是 | 当前播放时间。<br>单位：秒，取值范围：[0, duration] |
 
-<a id="handlevideosizechanged"></a>
 ## handleVideoSizeChanged
 
 ```TypeScript
@@ -326,7 +311,6 @@ handleVideoSizeChanged(width: number, height: number): void
 | width | number | 是 | 视频的宽，单位：像素，取值范围：[0, +∞) |
 | height | number | 是 | 视频的高，单位：像素，取值范围：[0, +∞) |
 
-<a id="handlevolumechanged"></a>
 ## handleVolumeChanged
 
 ```TypeScript

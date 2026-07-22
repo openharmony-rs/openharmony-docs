@@ -1,6 +1,5 @@
 # grantToolPermissionsByUser（系统接口）
 
-<a id="granttoolpermissionsbyuser"></a>
 ## grantToolPermissionsByUser
 
 ```TypeScript

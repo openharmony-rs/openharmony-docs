@@ -6,7 +6,6 @@
 import { batteryStats } from '@kit.BasicServicesKit';
 ```
 
-<a id="getbatterystats"></a>
 ## getBatteryStats
 
 ```TypeScript
@@ -50,7 +49,6 @@ batteryStats.getBatteryStats()
 ```
 
 
-<a id="getbatterystats-1"></a>
 ## getBatteryStats
 
 ```TypeScript
@@ -71,7 +69,7 @@ function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BatteryStatsInfo&gt;&gt; | 是 | 回调函数。当获取耗电信息列表成功，err为undefined，data为获取到的Array<[BatteryStatsInfo](arkts-basicservices-batterystats-batterystatsinfo-i-sys.md)>>；否则为错误对象；AsyncCallback封装了一个BatteryStatsInfo类型的接口。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BatteryStatsInfo&gt;&gt; | 是 | 回调函数。当获取耗电信息列表成功，err为undefined，data为获取到的Array&lt;[BatteryStatsInfo](arkts-basicservices-batterystats-batterystatsinfo-i-sys.md)&gt;>；否则为错误对象；AsyncCallback封装了一个BatteryStatsInfo类型的接口。 |
 
 **错误码：**
 

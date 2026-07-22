@@ -12,7 +12,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="onerror"></a>
 ## onError
 
 ```TypeScript
@@ -25,11 +24,7 @@ onError(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IsolatedComponentAttribute-onError(
-    callback: ErrorCallback
-  ): IsolatedComponentAttribute--><!--Device-IsolatedComponentAttribute-onError(
-    callback: ErrorCallback
-  ): IsolatedComponentAttribute-End-->
+<!--Device-IsolatedComponentAttribute-onError(    callback: ErrorCallback  ): IsolatedComponentAttribute--><!--Device-IsolatedComponentAttribute-onError(    callback: ErrorCallback  ): IsolatedComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

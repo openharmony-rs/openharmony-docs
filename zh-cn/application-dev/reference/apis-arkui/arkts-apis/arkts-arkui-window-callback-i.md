@@ -14,7 +14,6 @@ Defines the window callback.
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

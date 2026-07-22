@@ -6,7 +6,6 @@
 import { reminderAgent } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="removenotificationslot"></a>
 ## removeNotificationSlot
 
 ```TypeScript
@@ -19,7 +18,7 @@ function removeNotificationSlot(slotType: notification.SlotType, callback: Async
 
 **废弃版本：** 9
 
-**替代接口：** [removeNotificationSlot](arkts-backgroundtasks-reminderagentmanager-removenotificationslot-f.md#removenotificationslot-1)
+**替代接口：** [removeNotificationSlot](arkts-backgroundtasks-reminderagentmanager-removenotificationslot-f.md#removenotificationslot)
 
 <!--Device-reminderAgent-function removeNotificationSlot(slotType: notification.SlotType, callback: AsyncCallback<void>): void--><!--Device-reminderAgent-function removeNotificationSlot(slotType: notification.SlotType, callback: AsyncCallback<void>): void-End-->
 
@@ -46,7 +45,6 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION, 
 ```
 
 
-<a id="removenotificationslot-1"></a>
 ## removeNotificationSlot
 
 ```TypeScript
@@ -59,7 +57,7 @@ function removeNotificationSlot(slotType: notification.SlotType): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [removeNotificationSlot](arkts-backgroundtasks-reminderagentmanager-removenotificationslot-f.md#removenotificationslot-1)
+**替代接口：** [removeNotificationSlot](arkts-backgroundtasks-reminderagentmanager-removenotificationslot-f.md#removenotificationslot)
 
 <!--Device-reminderAgent-function removeNotificationSlot(slotType: notification.SlotType): Promise<void>--><!--Device-reminderAgent-function removeNotificationSlot(slotType: notification.SlotType): Promise<void>-End-->
 

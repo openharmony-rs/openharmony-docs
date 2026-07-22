@@ -22,7 +22,7 @@ generateThumbnailIfAbsent?: boolean
 
 指定图像无缩略图时是否生成缩略图。true表示生成，false表示不生成。默认值为true。
 
-当图片文件中无缩略图且generateThumbnailIfAbsent为false时，返回undefined（抛出错误码[7700303 图片不包含缩略图数据](docroot://reference/apis-image-kit/errorcode-image.md#7700303-图片不包含缩略图数据)）。
+当图片文件中无缩略图且generateThumbnailIfAbsent为false时，返回undefined（抛出错误码[7700303 图片不包含缩略图数据](../../../reference/apis-image-kit/errorcode-image.md#7700303-图片不包含缩略图数据)）。
 
 **类型：** boolean
 

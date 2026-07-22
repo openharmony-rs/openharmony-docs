@@ -1,8 +1,8 @@
 # TextClock属性/事件
 
-除支持[通用属性](docroot://reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)外，还支持以下属性。
+除支持[通用属性](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)外，还支持以下属性。
 
-除支持[通用事件](docroot://reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，还支持以下事件。
+除支持[通用事件](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，还支持以下事件。
 
 **继承/实现关系：** TextClockAttribute extends [CommonMethod<TextClockAttribute>](CommonMethod<TextClockAttribute>)
 
@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="contentmodifier"></a>
 ## contentModifier
 
 ```TypeScript
@@ -37,7 +36,6 @@ contentModifier(modifier: ContentModifier<TextClockConfiguration>)
 | --- | --- | --- | --- |
 | modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;TextClockConfiguration&gt; | 是 | 在TextClock组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
-<a id="datetimeoptions"></a>
 ## dateTimeOptions
 
 ```TypeScript
@@ -64,7 +62,6 @@ dateTimeOptions(dateTimeOptions: Optional<DateTimeOptions>)
 | --- | --- | --- | --- |
 | dateTimeOptions | [Optional](arkts-arkui-optional-t.md)&lt;DateTimeOptions&gt; | 是 | 设置小时是否显示前导0，只支持设置hour参数，参数值为{hour: "2-digit"}时表示显示前导0，参数值为{hour: "numeric"}时表示不显示前导0。<br/>默认值：undefined，默认状态下，24小时制显示前导0，12小时制不显示前导0。 |
 
-<a id="fontcolor"></a>
 ## fontColor
 
 ```TypeScript
@@ -89,7 +86,6 @@ fontColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 字体颜色。<br/>Wearable设备上默认值：'#c5ffffff'，其他设备默认值：'e6182431' |
 
-<a id="fontfamily"></a>
 ## fontFamily
 
 ```TypeScript
@@ -114,7 +110,6 @@ fontFamily(value: ResourceStr)
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../arkts-apis/arkts-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
-<a id="fontfeature"></a>
 ## fontFeature
 
 ```TypeScript
@@ -123,11 +118,11 @@ fontFeature(value: string)
 
 设置文字特性效果，比如数字等宽的特性。
 
-格式为：normal \| \<feature-tag-value\>
+格式为：normal \| \&lt;feature-tag-value\&gt;
 
-\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]
+\&lt;feature-tag-value\&gt;的格式为：\&lt;string\&gt; \[ \&lt;integer\&gt; \| on \| off ]
 
-\<feature-tag-value\>的个数可以有多个，中间用','隔开。
+\&lt;feature-tag-value\&gt;的个数可以有多个，中间用','隔开。
 
 例如，使用等宽时钟数字的输入格式为："ss01" on。
 
@@ -149,7 +144,6 @@ fontFeature(value: string)
 | --- | --- | --- | --- |
 | value | string | 是 | 文字特性效果。 |
 
-<a id="fontsize"></a>
 ## fontSize
 
 ```TypeScript
@@ -174,7 +168,6 @@ fontSize(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
 
-<a id="fontstyle"></a>
 ## fontStyle
 
 ```TypeScript
@@ -199,7 +192,6 @@ fontStyle(value: FontStyle)
 | --- | --- | --- | --- |
 | value | [FontStyle](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontstyle-e.md) | 是 | 字体样式。<br/>默认值：FontStyle.Normal，表示标准的字体样式（非斜体）。 |
 
-<a id="fontweight"></a>
 ## fontWeight
 
 ```TypeScript
@@ -224,7 +216,6 @@ fontWeight(value: number | FontWeight | string)
 | --- | --- | --- | --- |
 | value | number \| FontWeight \| string | 是 | 文本的字体粗细，number类型取值范围为[100, 900]，取值间隔为100，取值越大，字体越粗。number类型取值范围外的默认值为400。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal |
 
-<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -247,9 +238,9 @@ m：分钟
 
 s：秒
 
-SS：厘秒（format中S个数<3，全部按厘秒处理）
+SS：厘秒（format中S个数&lt;3，全部按厘秒处理）
 
-SSS：毫秒（format中S个数>=3，全部按毫秒处理）
+SSS：毫秒（format中S个数&gt;=3，全部按毫秒处理）
 
 a：上午/下午（当设置小时制式为H时，该参数不生效）
 
@@ -317,7 +308,6 @@ a：上午/下午（当设置小时制式为H时，该参数不生效）
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 显示时间格式。<br>**起始版本：** 20 |
 
-<a id="ondatechange"></a>
 ## onDateChange
 
 ```TypeScript
@@ -346,7 +336,6 @@ onDateChange(event: (value: number) => void)
 | --- | --- | --- | --- |
 | event | (value: number) =&gt; void | 是 | Unix Time Stamp，即自1970年1月1日（UTC）起经过的秒数。 |
 
-<a id="textshadow"></a>
 ## textShadow
 
 ```TypeScript

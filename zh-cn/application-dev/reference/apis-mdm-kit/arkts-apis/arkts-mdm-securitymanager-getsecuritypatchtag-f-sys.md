@@ -6,7 +6,6 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="getsecuritypatchtag"></a>
 ## getSecurityPatchTag
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getSecurityPatchTag(admin: Want): string
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getSecurityStatus](arkts-mdm-securitymanager-getsecuritystatus-f.md#getsecuritystatus-1)
+**替代接口：** [getSecurityStatus](arkts-mdm-securitymanager-getsecuritystatus-f.md#getsecuritystatus)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 

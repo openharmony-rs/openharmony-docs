@@ -52,7 +52,7 @@ callback: AsyncCallback<SubmitTransferCallback>
 devPipe: USBDevicePipe
 ```
 
-用于确定总线地址和设备地址，需要调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice-1)获取。
+用于确定总线地址和设备地址，需要调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice)获取。
 
 **类型：** USBDevicePipe
 

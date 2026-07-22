@@ -6,7 +6,6 @@
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="createdevicemanager"></a>
 ## createDeviceManager
 
 ```TypeScript

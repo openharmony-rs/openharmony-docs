@@ -14,7 +14,6 @@
 import { ssap } from '@kit.ConnectivityKit';
 ```
 
-<a id="callmethod"></a>
 ## callMethod
 
 ```TypeScript
@@ -58,7 +57,6 @@ callMethod(method: Method): Promise<Method>
 | [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="offeventnotify"></a>
 ## offEventNotify
 
 ```TypeScript
@@ -83,7 +81,6 @@ offEventNotify(callback?: Callback<Event>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Event&gt; | 否 | 用于监听事件通知事件的回调。 |
 
-<a id="oneventnotify"></a>
 ## onEventNotify
 
 ```TypeScript
@@ -110,7 +107,6 @@ onEventNotify(callback: Callback<Event>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Event&gt; | 是 | 用于监听事件通知事件的回调。 |
 
-<a id="readdescriptor"></a>
 ## readDescriptor
 
 ```TypeScript
@@ -154,7 +150,6 @@ readDescriptor(descriptor: PropertyDescriptor): Promise<PropertyDescriptor>
 | [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="setpropertyindication"></a>
 ## setPropertyIndication
 
 ```TypeScript
@@ -200,7 +195,6 @@ setPropertyIndication(property: Property, enable: boolean): Promise<void>
 | [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
 | [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
-<a id="writedescriptor"></a>
 ## writeDescriptor
 
 ```TypeScript
@@ -209,7 +203,7 @@ writeDescriptor(descriptor: PropertyDescriptor): Promise<void>
 
 写入服务端的描述符。
 
-此方法不支持写入客户端属性配置描述符。要写入客户端属性配置描述符，请改为调用[setPropertyNotification](arkts-connectivity-ssap-client-i.md#setpropertynotification-1)或[setPropertyIndication](arkts-connectivity-ssap-client-i-sys.md#setpropertyindication-1)。
+此方法不支持写入客户端属性配置描述符。要写入客户端属性配置描述符，请改为调用[setPropertyNotification](arkts-connectivity-ssap-client-i.md#setpropertynotification)或[setPropertyIndication](arkts-connectivity-ssap-client-i-sys.md#setpropertyindication)。
 
 **起始版本：** 26.0.0
 

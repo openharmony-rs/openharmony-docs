@@ -14,7 +14,7 @@
 GATT = 0
 ```
 
-[GATT协议](docroot://connectivity/terminology.md#gatt)。
+[GATT协议](../../../connectivity/terminology.md#gatt)。
 
 **起始版本：** 20
 
@@ -30,7 +30,7 @@ GATT = 0
 SPP = 1
 ```
 
-[SPP协议](docroot://connectivity/terminology.md#spp)。
+[SPP协议](../../../connectivity/terminology.md#spp)。
 
 **起始版本：** 20
 
@@ -46,7 +46,7 @@ SPP = 1
 OPP = 2
 ```
 
-[OPP协议](docroot://connectivity/terminology.md#opp)。
+[OPP协议](../../../connectivity/terminology.md#opp)。
 
 **起始版本：** 20
 

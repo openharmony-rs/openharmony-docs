@@ -6,7 +6,6 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
-<a id="getotaupdatepolicy"></a>
 ## getOtaUpdatePolicy
 
 ```TypeScript

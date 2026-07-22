@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="queryiccdiallingnumbers"></a>
 ## queryIccDiallingNumbers
 
 ```TypeScript
@@ -60,7 +59,6 @@ sim.queryIccDiallingNumbers(0, 1, (err: BusinessError, data: Array<sim.DiallingN
 ```
 
 
-<a id="queryiccdiallingnumbers-1"></a>
 ## queryIccDiallingNumbers
 
 ```TypeScript

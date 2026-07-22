@@ -1,7 +1,6 @@
 # ChipOptions
 
 ChipOptions定义Chip的样式及具体式样参数。
-
 > **说明：**  
 >  
 > 1. 当`suffixSymbol`有传入参数时，`suffixIcon`和`allowClose`不生效；当`suffixSymbol`没有传入参数而`suffixIcon`有传入参数时，`allowClose`不生效；当  
@@ -170,7 +169,7 @@ Chip激活时的背景颜色。
 activatedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)等视觉属性。
+设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow)等视觉属性。
 
 默认值：undefined
 
@@ -244,7 +243,7 @@ Chip背景颜色。
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)等视觉属性。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow)等视觉属性。
 
 默认值：undefined
 
@@ -587,7 +586,7 @@ Chip尺寸。
 
 SizeOptions类型参数不支持百分比设置，异常值按默认值处理。
 
-**说明**：[适老化](docroot://ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。
+**说明**：[适老化](../../../ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。
 
 **类型：** ChipSize \| SizeOptions
 

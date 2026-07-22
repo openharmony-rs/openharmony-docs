@@ -6,7 +6,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="getavscreencaptureconfigurableparameters"></a>
 ## getAVScreenCaptureConfigurableParameters
 
 ```TypeScript

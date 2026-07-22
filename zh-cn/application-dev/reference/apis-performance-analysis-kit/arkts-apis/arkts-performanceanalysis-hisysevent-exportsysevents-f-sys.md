@@ -6,7 +6,6 @@
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="exportsysevents"></a>
 ## exportSysEvents
 
 ```TypeScript

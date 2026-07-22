@@ -14,7 +14,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="register"></a>
 ## register
 
 ```TypeScript

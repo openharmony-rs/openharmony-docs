@@ -1,7 +1,6 @@
 # NotificationInfo
 
-通知订阅扩展能力中[onReceiveMessage](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#onreceivemessage-1)回调的通知信息。
-
+通知订阅扩展能力中[onReceiveMessage](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#onreceivemessage)回调的通知信息。
 > **说明：**  
 >  
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。

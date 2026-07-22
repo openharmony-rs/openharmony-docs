@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -27,7 +26,6 @@ Scroller的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="contentsize"></a>
 ## contentSize
 
 ```TypeScript
@@ -58,7 +56,6 @@ contentSize(): SizeResult
 | --- | --- |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
-<a id="currentoffset"></a>
 ## currentOffset
 
 ```TypeScript
@@ -83,7 +80,6 @@ currentOffset() : OffsetResult
 | --- | --- |
 | [OffsetResult](arkts-arkui-offsetresult-i.md) | 返回当前的滚动总偏移量。当Scroller没有和组件绑定时，返回值为undefined。 |
 
-<a id="fling"></a>
 ## fling
 
 ```TypeScript
@@ -115,7 +111,6 @@ fling(velocity: number): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
-<a id="getframenode"></a>
 ## getFrameNode
 
 ```TypeScript
@@ -140,7 +135,6 @@ getFrameNode(): FrameNode | undefined
 | --- | --- |
 | [FrameNode](../arkts-apis/arkts-arkui-framenode-c.md) | Returns the FrameNode bound to this scroller.If the scroller is not bound to a component, the return value is undefined. |
 
-<a id="getitemindex"></a>
 ## getItemIndex
 
 ```TypeScript
@@ -181,7 +175,6 @@ getItemIndex(x: number, y: number): number
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
-<a id="getitemrect"></a>
 ## getItemRect
 
 ```TypeScript
@@ -221,7 +214,6 @@ getItemRect(index: number): RectResult
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
-<a id="isatend"></a>
 ## isAtEnd
 
 ```TypeScript
@@ -248,7 +240,6 @@ isAtEnd(): boolean
 | --- | --- |
 | boolean | 返回是否已滚动到底部。true表示已经滚动到底部，false表示还没滚动到底部。 |
 
-<a id="offset"></a>
 ## offset
 
 ```TypeScript
@@ -273,7 +264,6 @@ offset() : OffsetResult | undefined
 | --- | --- |
 | [OffsetResult](arkts-arkui-offsetresult-i.md) | Returns the current scrolling offset.If the scroller not bound to a component, the return value is undefined. |
 
-<a id="scrollby"></a>
 ## scrollBy
 
 ```TypeScript
@@ -299,7 +289,6 @@ scrollBy(dx: Length, dy: Length)
 | dx | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 水平方向滚动距离，不支持百分比形式。 |
 | dy | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 竖直方向滚动距离，不支持百分比形式。 |
 
-<a id="scrolledge"></a>
 ## scrollEdge
 
 ```TypeScript
@@ -323,7 +312,6 @@ scrollEdge(value: Edge, options?: ScrollEdgeOptions)
 | value | [Edge](../arkts-apis/arkts-arkui-edge-e.md) | 是 | 滚动到的边缘位置。<br><em>原子化服务API</em>：该API可在原子化服务中使用，从API version 11开始。 |
 | options | [ScrollEdgeOptions](arkts-arkui-scrolledgeoptions-i.md) | 否 | 设置滚动到边缘位置的模式。<br><em>原子化服务API</em>：该API可在原子化服务中使用，从API version 12开始。<br>**起始版本：** 12 |
 
-<a id="scrollpage"></a>
 ## scrollPage
 
 ```TypeScript
@@ -346,7 +334,6 @@ scrollPage(value: ScrollPageOptions)
 | --- | --- | --- | --- |
 | value | [ScrollPageOptions](arkts-arkui-scrollpageoptions-i.md) | 是 | 翻页模式。<br>**起始版本：** 14 |
 
-<a id="scrollpage-1"></a>
 ## scrollPage
 
 ```TypeScript
@@ -359,7 +346,7 @@ scrollPage(value: { next: boolean; direction?: Axis })
 
 **废弃版本：** 9
 
-**替代接口：** [scrollPage](arkts-arkui-scroller-c.md#scrollpage-1)
+**替代接口：** [scrollPage](arkts-arkui-scroller-c.md#scrollpage)
 
 <!--Device-Scroller-scrollPage(value: { next: boolean; direction?: Axis })--><!--Device-Scroller-scrollPage(value: { next: boolean; direction?: Axis })-End-->
 
@@ -371,7 +358,6 @@ scrollPage(value: { next: boolean; direction?: Axis })
 | --- | --- | --- | --- |
 | value | { next: boolean; direction?: Axis } | 是 | next: Whether to turn to the next page.The value <em>true</em> means to scroll to the next page, and <em>false</em> means to scroll to the previous page.direction: Scrolling direction: horizontal or vertical. |
 
-<a id="scrollto"></a>
 ## scrollTo
 
 ```TypeScript
@@ -396,7 +382,6 @@ scrollTo(options: ScrollOptions)
 | --- | --- | --- | --- |
 | options | [ScrollOptions](arkts-arkui-scrolloptions-i.md) | 是 | 滑动到指定位置的参数。<br>**起始版本：** 18 |
 
-<a id="scrolltoindex"></a>
 ## scrollToIndex
 
 ```TypeScript

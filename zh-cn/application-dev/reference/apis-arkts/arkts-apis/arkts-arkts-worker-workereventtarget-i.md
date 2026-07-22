@@ -14,7 +14,6 @@
 import { MessageEvents, PostMessageOptions, MessageEvent, Priority, WorkerEventTarget, ThreadWorkerPriority, ThreadWorkerGlobalScope, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, WorkerOptions, EventTarget, WorkerEventListener } from '@kit.ArkTS';
 ```
 
-<a id="addeventlistener"></a>
 ## addEventListener
 
 ```TypeScript
@@ -61,7 +60,6 @@ workerPort.onmessage = (event: MessageEvents) => {
 
 ```
 
-<a id="dispatchevent"></a>
 ## dispatchEvent
 
 ```TypeScript
@@ -114,7 +112,6 @@ workerPort.onmessage = (event: MessageEvents) => {
 
 ```
 
-<a id="removealllistener"></a>
 ## removeAllListener
 
 ```TypeScript
@@ -155,7 +152,6 @@ workerPort.onmessage = (event: MessageEvents) => {
 
 ```
 
-<a id="removeeventlistener"></a>
 ## removeEventListener
 
 ```TypeScript

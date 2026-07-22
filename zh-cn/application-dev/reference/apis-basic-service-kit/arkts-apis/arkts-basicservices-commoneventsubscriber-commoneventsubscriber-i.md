@@ -8,14 +8,13 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-<a id="abortcommonevent"></a>
 ## abortCommonEvent
 
 ```TypeScript
 abortCommonEvent(callback: AsyncCallback<void>): void
 ```
 
-添加有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
+添加有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -35,14 +34,13 @@ abortCommonEvent(callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="abortcommonevent-1"></a>
 ## abortCommonEvent
 
 ```TypeScript
 abortCommonEvent(): Promise<void>
 ```
 
-添加有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
+添加有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -56,14 +54,13 @@ abortCommonEvent(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="abortcommoneventsync"></a>
 ## abortCommonEventSync
 
 ```TypeScript
 abortCommonEventSync(): void
 ```
 
-添加有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
+添加有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
 **起始版本：** 10
 
@@ -71,14 +68,13 @@ abortCommonEventSync(): void
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-<a id="clearabortcommonevent"></a>
 ## clearAbortCommonEvent
 
 ```TypeScript
 clearAbortCommonEvent(callback: AsyncCallback<void>): void
 ```
 
-清理有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
+清理有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -98,14 +94,13 @@ clearAbortCommonEvent(callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="clearabortcommonevent-1"></a>
 ## clearAbortCommonEvent
 
 ```TypeScript
 clearAbortCommonEvent(): Promise<void>
 ```
 
-清理有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
+清理有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -119,14 +114,13 @@ clearAbortCommonEvent(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="clearabortcommoneventsync"></a>
 ## clearAbortCommonEventSync
 
 ```TypeScript
 clearAbortCommonEventSync(): void
 ```
 
-清理有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以使该公共事件继续向下一个订阅者传递。
+清理有序公共事件的中止状态。当该接口与[finishCommonEvent](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md#finishcommonevent)配合使用时，可以使该公共事件继续向下一个订阅者传递。
 
 **起始版本：** 10
 
@@ -134,7 +128,6 @@ clearAbortCommonEventSync(): void
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-<a id="finishcommonevent"></a>
 ## finishCommonEvent
 
 ```TypeScript
@@ -161,7 +154,6 @@ finishCommonEvent(callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="finishcommonevent-1"></a>
 ## finishCommonEvent
 
 ```TypeScript
@@ -182,7 +174,6 @@ finishCommonEvent(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="getabortcommonevent"></a>
 ## getAbortCommonEvent
 
 ```TypeScript
@@ -209,7 +200,6 @@ getAbortCommonEvent(callback: AsyncCallback<boolean>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="getabortcommonevent-1"></a>
 ## getAbortCommonEvent
 
 ```TypeScript
@@ -230,7 +220,6 @@ getAbortCommonEvent(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
 
-<a id="getabortcommoneventsync"></a>
 ## getAbortCommonEventSync
 
 ```TypeScript
@@ -251,7 +240,6 @@ getAbortCommonEventSync(): boolean
 | --- | --- |
 | boolean | 返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
 
-<a id="getcode"></a>
 ## getCode
 
 ```TypeScript
@@ -280,7 +268,6 @@ getCode(callback: AsyncCallback<number>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="getcode-1"></a>
 ## getCode
 
 ```TypeScript
@@ -303,7 +290,6 @@ getCode(): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象。返回有序公共事件传递的数据（number类型）。 |
 
-<a id="getcodesync"></a>
 ## getCodeSync
 
 ```TypeScript
@@ -326,7 +312,6 @@ getCodeSync(): number
 | --- | --- |
 | number | 表示有序公共事件传递的数据（number类型）。 |
 
-<a id="getdata"></a>
 ## getData
 
 ```TypeScript
@@ -355,7 +340,6 @@ getData(callback: AsyncCallback<string>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="getdata-1"></a>
 ## getData
 
 ```TypeScript
@@ -378,7 +362,6 @@ getData(): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象。返回有序公共事件传递的数据（string类型）。 |
 
-<a id="getdatasync"></a>
 ## getDataSync
 
 ```TypeScript
@@ -401,7 +384,6 @@ getDataSync(): string
 | --- | --- |
 | string | 有序公共事件传递的数据（string类型）。 |
 
-<a id="getsubscribeinfo"></a>
 ## getSubscribeInfo
 
 ```TypeScript
@@ -430,7 +412,6 @@ getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="getsubscribeinfo-1"></a>
 ## getSubscribeInfo
 
 ```TypeScript
@@ -453,7 +434,6 @@ getSubscribeInfo(): Promise<CommonEventSubscribeInfo>
 | --- | --- |
 | Promise&lt;CommonEventSubscribeInfo&gt; | Promise对象。返回订阅者的订阅信息。 |
 
-<a id="getsubscribeinfosync"></a>
 ## getSubscribeInfoSync
 
 ```TypeScript
@@ -476,7 +456,6 @@ getSubscribeInfoSync(): CommonEventSubscribeInfo
 | --- | --- |
 | [CommonEventSubscribeInfo](arkts-basicservices-commoneventmanager-commoneventsubscribeinfo-t.md) | 表示订阅者的订阅信息。 |
 
-<a id="isorderedcommonevent"></a>
 ## isOrderedCommonEvent
 
 ```TypeScript
@@ -503,7 +482,6 @@ isOrderedCommonEvent(callback: AsyncCallback<boolean>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="isorderedcommonevent-1"></a>
 ## isOrderedCommonEvent
 
 ```TypeScript
@@ -524,7 +502,6 @@ isOrderedCommonEvent(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示有序公共事件；返回false表示无序公共事件。 |
 
-<a id="isorderedcommoneventsync"></a>
 ## isOrderedCommonEventSync
 
 ```TypeScript
@@ -545,7 +522,6 @@ isOrderedCommonEventSync(): boolean
 | --- | --- |
 | boolean | 返回true表示有序公共事件；返回false表示无序公共事件。 |
 
-<a id="isstickycommonevent"></a>
 ## isStickyCommonEvent
 
 ```TypeScript
@@ -572,7 +548,6 @@ isStickyCommonEvent(callback: AsyncCallback<boolean>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="isstickycommonevent-1"></a>
 ## isStickyCommonEvent
 
 ```TypeScript
@@ -593,7 +568,6 @@ isStickyCommonEvent(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示是粘性公共事件；返回false表示不是粘性公共事件。 |
 
-<a id="isstickycommoneventsync"></a>
 ## isStickyCommonEventSync
 
 ```TypeScript
@@ -614,7 +588,6 @@ isStickyCommonEventSync(): boolean
 | --- | --- |
 | boolean | 返回true表示是粘性公共事件；返回false表示不是粘性公共事件。 |
 
-<a id="setcode"></a>
 ## setCode
 
 ```TypeScript
@@ -644,7 +617,6 @@ setCode(code: number, callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="setcode-1"></a>
 ## setCode
 
 ```TypeScript
@@ -679,7 +651,6 @@ setCode(code: number): Promise<void>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="setcodeanddata"></a>
 ## setCodeAndData
 
 ```TypeScript
@@ -710,7 +681,6 @@ setCodeAndData(code: number, data: string, callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="setcodeanddata-1"></a>
 ## setCodeAndData
 
 ```TypeScript
@@ -746,7 +716,6 @@ setCodeAndData(code: number, data: string): Promise<void>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="setcodeanddatasync"></a>
 ## setCodeAndDataSync
 
 ```TypeScript
@@ -776,7 +745,6 @@ setCodeAndDataSync(code: number, data: string): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="setcodesync"></a>
 ## setCodeSync
 
 ```TypeScript
@@ -805,7 +773,6 @@ setCodeSync(code: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="setdata"></a>
 ## setData
 
 ```TypeScript
@@ -835,7 +802,6 @@ setData(data: string, callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="setdata-1"></a>
 ## setData
 
 ```TypeScript
@@ -870,7 +836,6 @@ setData(data: string): Promise<void>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="setdatasync"></a>
 ## setDataSync
 
 ```TypeScript

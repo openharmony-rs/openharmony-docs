@@ -6,7 +6,6 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
-<a id="isembeddedopenallowed"></a>
 ## isEmbeddedOpenAllowed
 
 ```TypeScript

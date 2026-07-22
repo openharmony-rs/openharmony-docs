@@ -1,6 +1,6 @@
 # SpeedGear（系统接口）
 
-Speed gear definition.
+速度档位定义
 
 **起始版本：** 26.0.0
 
@@ -16,7 +16,7 @@ Speed gear definition.
 LOW_SPEED = 0
 ```
 
-Low speed definition.
+低速档定义
 
 **起始版本：** 26.0.0
 
@@ -32,7 +32,7 @@ Low speed definition.
 MIDDLE_SPEED = 1
 ```
 
-Middle speed definition, default speed.
+中速档定义，默认值即为中速
 
 **起始版本：** 26.0.0
 
@@ -48,7 +48,7 @@ Middle speed definition, default speed.
 HIGH_SPEED = 2
 ```
 
-High speed definition.
+高速档定义
 
 **起始版本：** 26.0.0
 

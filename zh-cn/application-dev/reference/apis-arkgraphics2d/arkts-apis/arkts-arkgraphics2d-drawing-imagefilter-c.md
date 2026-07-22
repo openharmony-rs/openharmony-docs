@@ -1,7 +1,6 @@
 # ImageFilter
 
 图像滤波器。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 12开始支持。  
@@ -22,7 +21,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createblendimagefilter"></a>
 ## createBlendImageFilter
 
 ```TypeScript
@@ -57,7 +55,6 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
-<a id="createblurimagefilter"></a>
 ## createBlurImageFilter
 
 ```TypeScript
@@ -69,9 +66,7 @@ static createBlurImageFilter(sigmaX: number, sigmaY: number,
 
 **起始版本：** 12
 
-<!--Device-ImageFilter-static createBlurImageFilter(sigmaX: number, sigmaY: number,
-        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter--><!--Device-ImageFilter-static createBlurImageFilter(sigmaX: number, sigmaY: number,
-        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter-End-->
+<!--Device-ImageFilter-static createBlurImageFilter(sigmaX: number, sigmaY: number,        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter--><!--Device-ImageFilter-static createBlurImageFilter(sigmaX: number, sigmaY: number,        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -96,7 +91,6 @@ static createBlurImageFilter(sigmaX: number, sigmaY: number,
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createcomposeimagefilter"></a>
 ## createComposeImageFilter
 
 ```TypeScript
@@ -124,7 +118,6 @@ static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): Image
 | --- | --- |
 | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 返回创建的图像滤波器。 |
 
-<a id="createfromcolorfilter"></a>
 ## createFromColorFilter
 
 ```TypeScript
@@ -158,7 +151,6 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="createfromimage"></a>
 ## createFromImage
 
 ```TypeScript
@@ -187,7 +179,6 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 | --- | --- |
 | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 返回创建的图像滤波器。 |
 
-<a id="createfromshadereffect"></a>
 ## createFromShaderEffect
 
 ```TypeScript
@@ -214,7 +205,6 @@ static createFromShaderEffect(shader: ShaderEffect): ImageFilter
 | --- | --- |
 | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 返回创建的图像滤波器。 |
 
-<a id="createoffsetimagefilter"></a>
 ## createOffsetImageFilter
 
 ```TypeScript

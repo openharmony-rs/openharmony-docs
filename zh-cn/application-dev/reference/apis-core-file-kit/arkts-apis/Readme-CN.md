@@ -1,9 +1,59 @@
 # ArkTS API<!--arkts-corefilekit-->
 
+- [@ohos.application.BackupExtensionAbility](arkts-application-backupextensionability.md)
+  - [BackupExtensionAbility](arkts-corefile-application-backupextensionability-backupextensionability-c.md)
+  <!--Del-->
+  - [BackupExtensionAbility(系统接口)](arkts-corefile-application-backupextensionability-backupextensionability-c-sys.md)<!--DelEnd-->
+  - [BundleVersion](arkts-corefile-application-backupextensionability-bundleversion-i.md)
 - [@ohos.document](arkts-document.md)
   - [document](arkts-corefile-document-depr-n.md)
   - [choose](arkts-corefile-document-choose-f.md)
   - [show](arkts-corefile-document-show-f.md)
+- [@ohos.file.BackupExtensionContext](arkts-file-backupextensioncontext.md)
+  - [BackupExtensionContext](arkts-corefile-file-backupextensioncontext-backupextensioncontext-c.md)
+- [@ohos.file.backup](arkts-file-backup.md)
+  <!--Del-->
+  - [fileSystemServiceRequest(系统接口)](arkts-corefile-backup-filesystemservicerequest-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getBackupInfo(系统接口)](arkts-corefile-backup-getbackupinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getBackupVersion(系统接口)](arkts-corefile-backup-getbackupversion-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getLocalCapabilities(系统接口)](arkts-corefile-backup-getlocalcapabilities-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [updateSendRate(系统接口)](arkts-corefile-backup-updatesendrate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [updateTimer(系统接口)](arkts-corefile-backup-updatetimer-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [IncrementalBackupSession(系统接口)](arkts-corefile-backup-incrementalbackupsession-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SessionBackup(系统接口)](arkts-corefile-backup-sessionbackup-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SessionRestore(系统接口)](arkts-corefile-backup-sessionrestore-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BackupParams(系统接口)](arkts-corefile-backup-backupparams-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BackupPriority(系统接口)](arkts-corefile-backup-backuppriority-i-sys.md)<!--DelEnd-->
+  - [File](arkts-corefile-backup-file-i.md)
+  <!--Del-->
+  - [FileData(系统接口)](arkts-corefile-backup-filedata-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileManifestData(系统接口)](arkts-corefile-backup-filemanifestdata-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileMeta(系统接口)](arkts-corefile-backup-filemeta-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileSystemRequestConfig(系统接口)](arkts-corefile-backup-filesystemrequestconfig-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [GeneralCallbacks(系统接口)](arkts-corefile-backup-generalcallbacks-i-sys.md)<!--DelEnd-->
+  - [IncrementalBackupData](arkts-corefile-backup-incrementalbackupdata-i.md)
+  <!--Del-->
+  - [IncrementalBackupTime(系统接口)](arkts-corefile-backup-incrementalbackuptime-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PathInfo(系统接口)](arkts-corefile-backup-pathinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OnBackupSizeReport(系统接口)](arkts-corefile-backup-onbackupsizereport-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OnFileReadyBatch(系统接口)](arkts-corefile-backup-onfilereadybatch-t-sys.md)<!--DelEnd-->
 - [@ohos.file.cloudDiskManager](arkts-file-clouddiskmanager.md)
   <!--Del-->
   - [SyncFolderAccessor(系统接口)](arkts-corefile-clouddiskmanager-syncfolderaccessor-c-sys.md)<!--DelEnd-->
@@ -150,6 +200,9 @@
       - [常量(系统接口)](arkts-corefile-documentflag-con-sys.md)<!--DelEnd-->
     <!--Del-->
     - [DeviceType(系统接口)](arkts-corefile-fileextensioninfo-devicetype-e-sys.md)<!--DelEnd-->
+- [@ohos.file.fileuri](arkts-file-fileuri.md)
+  - [getUriFromPath](arkts-corefile-fileuri-geturifrompath-f.md)
+  - [FileUri](arkts-corefile-fileuri-fileuri-c.md)
 - [@ohos.file.fs](arkts-file-fs.md)
   - [fileIo](arkts-corefile-fileio-n.md)
     - [OpenMode](arkts-corefile-fileio-openmode-n.md)

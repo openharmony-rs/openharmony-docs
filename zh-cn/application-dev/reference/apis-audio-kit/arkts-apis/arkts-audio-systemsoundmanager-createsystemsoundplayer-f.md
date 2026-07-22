@@ -6,7 +6,6 @@
 import { systemSoundManager } from '@kit.AudioKit';
 ```
 
-<a id="createsystemsoundplayer"></a>
 ## createSystemSoundPlayer
 
 ```TypeScript

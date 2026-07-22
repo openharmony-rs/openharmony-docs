@@ -14,7 +14,6 @@
 import { linkEnhance } from '@kit.DistributedServiceKit';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -61,7 +60,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off('connectionAccepted')
 
 ```TypeScript
@@ -122,7 +120,6 @@ try {
 
 ```
 
-<a id="off-1"></a>
 ## off('serverStopped')
 
 ```TypeScript
@@ -183,7 +180,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on('connectionAccepted')
 
 ```TypeScript
@@ -244,7 +240,6 @@ try {
 
 ```
 
-<a id="on-1"></a>
 ## on('serverStopped')
 
 ```TypeScript
@@ -305,7 +300,6 @@ try {
 
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -353,7 +347,6 @@ try {
 
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript

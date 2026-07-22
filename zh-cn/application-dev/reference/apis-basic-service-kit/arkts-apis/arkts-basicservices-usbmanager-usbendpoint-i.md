@@ -1,7 +1,6 @@
 # USBEndpoint
 
 通过USB发送和接收数据的端口。通过[USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md)获取。
-
 > **说明：**  
 >  
 > 主机控制器按照Endpoint类型调度。  

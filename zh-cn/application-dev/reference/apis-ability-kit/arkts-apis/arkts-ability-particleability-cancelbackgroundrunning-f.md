@@ -6,7 +6,6 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
-<a id="cancelbackgroundrunning"></a>
 ## cancelBackgroundRunning
 
 ```TypeScript
@@ -19,7 +18,7 @@ function cancelBackgroundRunning(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [stopBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning-1)
+**替代接口：** [stopBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -52,7 +51,6 @@ particleAbility.cancelBackgroundRunning(callback);
 ```
 
 
-<a id="cancelbackgroundrunning-1"></a>
 ## cancelBackgroundRunning
 
 ```TypeScript
@@ -65,7 +63,7 @@ function cancelBackgroundRunning(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [stopBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning-1)
+**替代接口：** [stopBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

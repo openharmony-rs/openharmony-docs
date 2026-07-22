@@ -14,7 +14,6 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="clearallcookies"></a>
 ## clearAllCookies
 
 ```TypeScript
@@ -43,7 +42,6 @@ static clearAllCookies(): Promise<void>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 
-<a id="clearallcookies-1"></a>
 ## clearAllCookies
 
 ```TypeScript
@@ -72,7 +70,6 @@ static clearAllCookies(callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
-<a id="clearallcookiessync"></a>
 ## clearAllCookiesSync
 
 ```TypeScript
@@ -95,7 +92,6 @@ static clearAllCookiesSync(incognito?: boolean): void
 | --- | --- | --- | --- |
 | incognito | boolean | 否 | true表示清除隐私模式下Webview的所有内存cookies，false表示清除正常非隐私模式下的持久化cookies。 |
 
-<a id="clearsessioncookie"></a>
 ## clearSessionCookie
 
 ```TypeScript
@@ -124,7 +120,6 @@ static clearSessionCookie(): Promise<void>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 
-<a id="clearsessioncookie-1"></a>
 ## clearSessionCookie
 
 ```TypeScript
@@ -153,7 +148,6 @@ static clearSessionCookie(callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
-<a id="clearsessioncookiesync"></a>
 ## clearSessionCookieSync
 
 ```TypeScript
@@ -170,7 +164,6 @@ static clearSessionCookieSync(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="configcookie"></a>
 ## configCookie
 
 ```TypeScript
@@ -208,7 +201,6 @@ static configCookie(url: string, value: string): Promise<void>
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 | [17100005](../errorcode-webview.md#17100005-cookie-value格式错误) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
 
-<a id="configcookie-1"></a>
 ## configCookie
 
 ```TypeScript
@@ -246,7 +238,6 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 | [17100005](../errorcode-webview.md#17100005-cookie-value格式错误) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
 
-<a id="configcookie-2"></a>
 ## configCookie
 
 ```TypeScript
@@ -279,7 +270,6 @@ static configCookie(url: string, value: string, callback: AsyncCallback<void>): 
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 | [17100005](../errorcode-webview.md#17100005-cookie-value格式错误) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
 
-<a id="configcookiesync"></a>
 ## configCookieSync
 
 ```TypeScript
@@ -287,7 +277,6 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 ```
 
 为指定url设置单个cookie的值。
-
 > **说明：**  
 >  
 > - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。  
@@ -330,7 +319,6 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 | [17100005](../errorcode-webview.md#17100005-cookie-value格式错误) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
 
-<a id="configcookiesync-1"></a>
 ## configCookieSync
 
 ```TypeScript
@@ -338,7 +326,6 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 ```
 
 为指定url设置cookie的值。
-
 > **说明：**  
 >  
 > - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。  
@@ -378,7 +365,6 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 | [17100005](../errorcode-webview.md#17100005-cookie-value格式错误) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
 
-<a id="deleteentirecookie"></a>
 ## deleteEntireCookie
 
 ```TypeScript
@@ -397,7 +383,6 @@ static deleteEntireCookie(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="deletesessioncookie"></a>
 ## deleteSessionCookie
 
 ```TypeScript
@@ -416,7 +401,6 @@ static deleteSessionCookie(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="existcookie"></a>
 ## existCookie
 
 ```TypeScript
@@ -445,7 +429,6 @@ static existCookie(incognito?: boolean): boolean
 | --- | --- |
 | boolean | true表示存在cookie，false表示不存在cookie。 |
 
-<a id="fetchallcookies"></a>
 ## fetchAllCookies
 
 ```TypeScript
@@ -472,7 +455,6 @@ static fetchAllCookies(incognito: boolean):  Promise<Array<WebHttpCookie>>
 | --- | --- |
 | Promise&lt;Array&lt;WebHttpCookie&gt;&gt; | - Promise对象，用于获取所有cookie及其对应的字段值。 |
 
-<a id="fetchcookie"></a>
 ## fetchCookie
 
 ```TypeScript
@@ -508,7 +490,6 @@ static fetchCookie(url: string): Promise<string>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 
-<a id="fetchcookie-1"></a>
 ## fetchCookie
 
 ```TypeScript
@@ -543,7 +524,6 @@ static fetchCookie(url: string, incognito: boolean): Promise<string>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 
-<a id="fetchcookie-2"></a>
 ## fetchCookie
 
 ```TypeScript
@@ -574,7 +554,6 @@ static fetchCookie(url: string, callback: AsyncCallback<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 
-<a id="fetchcookiesync"></a>
 ## fetchCookieSync
 
 ```TypeScript
@@ -582,7 +561,6 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 ```
 
 获取指定url对应cookie的值。
-
 > **说明：**  
 >  
 > - 系统会自动清理过期的cookie，对于同名key的数据，新数据将会覆盖前一个数据。  
@@ -619,7 +597,6 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 
-<a id="getcookie"></a>
 ## getCookie
 
 ```TypeScript
@@ -657,7 +634,6 @@ static getCookie(url: string): string
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 
-<a id="iscookieallowed"></a>
 ## isCookieAllowed
 
 ```TypeScript
@@ -680,7 +656,6 @@ static isCookieAllowed(): boolean
 | --- | --- |
 | boolean | 是否拥有发送和接收cookie的权限。<br>true表示拥有发送和接收cookie的权限，false表示无发送和接收cookie的权限。<br>默认值：true。 |
 
-<a id="isthirdpartycookieallowed"></a>
 ## isThirdPartyCookieAllowed
 
 ```TypeScript
@@ -703,7 +678,6 @@ static isThirdPartyCookieAllowed(): boolean
 | --- | --- |
 | boolean | 是否拥有发送和接收第三方cookie的权限。<br>true表示拥有发送和接收第三方cookie的权限，false表示无发送和接收第三方cookie的权限。<br>默认值：false。 |
 
-<a id="putacceptcookieenabled"></a>
 ## putAcceptCookieEnabled
 
 ```TypeScript
@@ -732,7 +706,6 @@ static putAcceptCookieEnabled(accept: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
-<a id="putacceptthirdpartycookieenabled"></a>
 ## putAcceptThirdPartyCookieEnabled
 
 ```TypeScript
@@ -761,7 +734,6 @@ static putAcceptThirdPartyCookieEnabled(accept: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
-<a id="savecookieasync"></a>
 ## saveCookieAsync
 
 ```TypeScript
@@ -790,7 +762,6 @@ static saveCookieAsync(): Promise<void>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
-<a id="savecookieasync-1"></a>
 ## saveCookieAsync
 
 ```TypeScript
@@ -819,7 +790,6 @@ static saveCookieAsync(callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
-<a id="savecookiesync"></a>
 ## saveCookieSync
 
 ```TypeScript
@@ -827,7 +797,6 @@ static saveCookieSync(): void
 ```
 
 将当前可通过fetchCookie获取到的所有需要持久化的cookie同步保存到磁盘中。
-
 > **说明：**  
 >  
 > - saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieSync，也不会将session  
@@ -841,7 +810,6 @@ static saveCookieSync(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="setcookie"></a>
 ## setCookie
 
 ```TypeScript
@@ -875,7 +843,6 @@ static setCookie(url: string, value: string): void
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. No valid cookie found for the specified URL. |
 | [17100005](../errorcode-webview.md#17100005-cookie-value格式错误) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
 
-<a id="setlazyinitializewebengine"></a>
 ## setLazyInitializeWebEngine
 
 ```TypeScript

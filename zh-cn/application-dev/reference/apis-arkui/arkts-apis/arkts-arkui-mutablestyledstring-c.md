@@ -1,7 +1,6 @@
 # MutableStyledString
 
 继承于[StyledString](arkts-arkui-styledstring-c.md)类。
-
 > **以下接口异常入参处理统一说明：**  
 >  
 > 当start和length越界或者必填传入undefined时，会抛出异常；  
@@ -16,7 +15,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="appendstyledstring"></a>
 ## appendStyledString
 
 ```TypeScript
@@ -41,7 +39,6 @@ appendStyledString(other: StyledString): void
 | --- | --- | --- | --- |
 | other | [StyledString](arkts-arkui-styledstring-c.md) | 是 | 新的属性字符串对象。 |
 
-<a id="clearstyles"></a>
 ## clearStyles
 
 ```TypeScript
@@ -62,7 +59,6 @@ clearStyles(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="insertstring"></a>
 ## insertString
 
 ```TypeScript
@@ -94,7 +90,6 @@ insertString(start: number, other: string): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="insertstyledstring"></a>
 ## insertStyledString
 
 ```TypeScript
@@ -126,7 +121,6 @@ insertStyledString(start: number, other: StyledString): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="removestring"></a>
 ## removeString
 
 ```TypeScript
@@ -160,7 +154,6 @@ removeString(start: number, length: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="removestyle"></a>
 ## removeStyle
 
 ```TypeScript
@@ -197,7 +190,6 @@ removeStyle(start: number, length: number, styledKey: StyledStringKey): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="removestyles"></a>
 ## removeStyles
 
 ```TypeScript
@@ -233,7 +225,6 @@ removeStyles(start: number, length: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="replacestring"></a>
 ## replaceString
 
 ```TypeScript
@@ -266,7 +257,6 @@ replaceString(start: number, length: number, other: string): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="replacestyle"></a>
 ## replaceStyle
 
 ```TypeScript
@@ -297,7 +287,6 @@ replaceStyle(spanStyle: SpanStyle): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="replacestyledstring"></a>
 ## replaceStyledString
 
 ```TypeScript
@@ -330,7 +319,6 @@ replaceStyledString(start: number, length: number, other: StyledString): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="setstyle"></a>
 ## setStyle
 
 ```TypeScript

@@ -3,7 +3,6 @@
 UIServiceExtensionContext模块是[UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
 UIServiceExtensionContext模块提供访问[UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)特定资源以及具有的能力，包括启动、停止、绑定、解绑Ability。
-
 > **说明：**  
 >  
 > - 本模块接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
@@ -18,7 +17,6 @@ UIServiceExtensionContext模块提供访问[UIServiceExtension](../../apis-abili
 
 **系统接口：** 此接口为系统接口。
 
-<a id="connectserviceextensionability"></a>
 ## connectServiceExtensionAbility
 
 ```TypeScript
@@ -26,10 +24,9 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 ```
 
 连接到[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)，返回连接id。
-
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -73,14 +70,13 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | [16000053](../../apis-ability-kit/errorcode-ability.md#16000053-非顶层应用) | The ability is not on the top of the UI. |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 
-<a id="disconnectserviceextensionability"></a>
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
 disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 ```
 
-断开与[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的连接，与[connectServiceExtensionAbility](arkts-na-uiserviceextensioncontext-c-sys.md#connectserviceextensionability-1)功能相反。使用Promise异步回调。
+断开与[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的连接，与[connectServiceExtensionAbility](arkts-na-uiserviceextensioncontext-c-sys.md#connectserviceextensionability)功能相反。使用Promise异步回调。
 
 **起始版本：** 14
 
@@ -96,7 +92,7 @@ disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| connectionId | number | 是 | 从[connectServiceExtensionAbility](arkts-na-uiserviceextensioncontext-c-sys.md#connectserviceextensionability-1)接口返回的连接Id。 |
+| connectionId | number | 是 | 从[connectServiceExtensionAbility](arkts-na-uiserviceextensioncontext-c-sys.md#connectserviceextensionability)接口返回的连接Id。 |
 
 **返回值：**
 
@@ -112,7 +108,6 @@ disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -120,10 +115,9 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 ```
 
 启动Ability。使用Promise异步回调。
-
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -171,7 +165,6 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
-<a id="startabilitybytype"></a>
 ## startAbilityByType
 
 ```TypeScript
@@ -180,18 +173,15 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 ```
 
 按目标ability的类型启动[UIAbility](../../apis-ability-kit/arkts-apis/arkts-app-ability-uiability.md)或[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)。仅支持处于前台的应用调用。使用Promise异步回调。
-
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIServiceExtensionContext-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback): Promise<void>--><!--Device-UIServiceExtensionContext-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback): Promise<void>-End-->
+<!--Device-UIServiceExtensionContext-startAbilityByType(type: string, wantParam: Record<string, Object>,    abilityStartCallback: AbilityStartCallback): Promise<void>--><!--Device-UIServiceExtensionContext-startAbilityByType(type: string, wantParam: Record<string, Object>,    abilityStartCallback: AbilityStartCallback): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -218,7 +208,6 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-<a id="terminateself"></a>
 ## terminateSelf
 
 ```TypeScript

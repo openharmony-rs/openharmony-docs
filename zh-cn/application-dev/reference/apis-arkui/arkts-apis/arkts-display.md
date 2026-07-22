@@ -68,7 +68,7 @@ import { display } from '@kit.ArkUI';
 | --- | --- |
 | [addVirtualScreenBlocklist](arkts-arkui-display-addvirtualscreenblocklist-f-sys.md#addvirtualscreenblocklist) | 将窗口添加到禁止投屏显示的名单中，被添加的窗口无法在投屏时显示。仅对应用主窗或系统窗口生效。使用Promise异步回调。 |
 | [addVirtualScreenSurface](arkts-arkui-display-addvirtualscreensurface-f-sys.md#addvirtualscreensurface) | 为虚拟屏幕添加surface。 |
-| [hasPrivateWindow](arkts-arkui-display-hasprivatewindow-f-sys.md#hasprivatewindow) | 查询指定display对象上是否有可见的隐私窗口。可通过[setWindowPrivacyMode()](docroot://reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)接口设置隐私窗口。隐私窗口内容将无法被截屏或录屏。 |
+| [hasPrivateWindow](arkts-arkui-display-hasprivatewindow-f-sys.md#hasprivatewindow) | 查询指定display对象上是否有可见的隐私窗口。可通过[setWindowPrivacyMode()](../../../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)接口设置隐私窗口。隐私窗口内容将无法被截屏或录屏。 |
 | [off](arkts-arkui-display-off-f-sys.md#off-3) | 关闭屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。 |
 | [on](arkts-arkui-display-on-f-sys.md#on-3) | 开启屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。 |
 | [removeVirtualScreenBlocklist](arkts-arkui-display-removevirtualscreenblocklist-f-sys.md#removevirtualscreenblocklist) | 将窗口从禁止投屏显示的名单中移除，被移除的窗口可以在投屏时显示。仅对应用主窗或系统窗口生效。使用Promise异步回调。 |
@@ -84,7 +84,7 @@ import { display } from '@kit.ArkUI';
 | --- | --- |
 | [BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md) | 屏幕亮度信息。此类型中的信息均来自底层屏幕信息数据。 |
 | [CutoutInfo](arkts-arkui-display-cutoutinfo-i.md) | 挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。 |
-| [Display](arkts-arkui-display-display-i.md) | 屏幕实例。描述Display对象的属性和方法。  下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays-1)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync-1)中的任一方法获取到Display实例，再通过此实例调用对应方法。 |
+| [Display](arkts-arkui-display-display-i.md) | 屏幕实例。描述Display对象的属性和方法。  下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync)中的任一方法获取到Display实例，再通过此实例调用对应方法。 |
 | [DisplayPhysicalResolution](arkts-arkui-display-displayphysicalresolution-i.md) | 设备的显示模式以及对应的物理屏幕分辨率信息。 |
 | [FoldCreaseRegion](arkts-arkui-display-foldcreaseregion-i.md) | 折叠折痕区域。 |
 | [Position](arkts-arkui-display-position-i.md) | 坐标位置：在全局坐标系中，以主屏左上角为原点。在相对坐标系中，以指定屏幕左上角为原点。 |
@@ -99,7 +99,7 @@ import { display } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Display](arkts-arkui-display-display-i-sys.md) | 屏幕实例。描述Display对象的属性和方法。  下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays-1)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync-1)中的任一方法获取到Display实例，再通过此实例调用对应方法。 |
+| [Display](arkts-arkui-display-display-i-sys.md) | 屏幕实例。描述Display对象的属性和方法。  下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync)中的任一方法获取到Display实例，再通过此实例调用对应方法。 |
 <!--DelEnd-->
 
 ### 枚举

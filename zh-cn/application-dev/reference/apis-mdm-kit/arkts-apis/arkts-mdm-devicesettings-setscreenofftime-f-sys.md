@@ -6,7 +6,6 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
-<a id="setscreenofftime"></a>
 ## setScreenOffTime
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setScreenOffTime(admin: Want, time: number): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setvalue-1)
+**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_SCREENOFF_TIME
 

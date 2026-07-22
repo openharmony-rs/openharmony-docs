@@ -6,7 +6,6 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
-<a id="restartselfatomicservice"></a>
 ## restartSelfAtomicService
 
 ```TypeScript
@@ -14,14 +13,13 @@ function restartSelfAtomicService(context: Context): void
 ```
 
 重启当前原子化服务。
-
 > **说明：**  
 >  
 > - 当前仅支持以独立窗口方式拉起原子化服务。  
 >  
 > - 在调用本接口成功后的3秒内，再次调用本接口、  
-> [ApplicationContext.restartApp()](arkts-ability-applicationcontext-c.md#restartapp-1)或  
-> [UIAbilityContext.restartApp()](arkts-ability-uiabilitycontext-c.md#restartapp-1)接口中的任一接口，系统将返回错误码1  
+> [ApplicationContext.restartApp()](arkts-ability-applicationcontext-c.md#restartapp)或  
+> [UIAbilityContext.restartApp()](arkts-ability-uiabilitycontext-c.md#restartapp)接口中的任一接口，系统将返回错误码1  
 > 6000064。
 
 **起始版本：** 20

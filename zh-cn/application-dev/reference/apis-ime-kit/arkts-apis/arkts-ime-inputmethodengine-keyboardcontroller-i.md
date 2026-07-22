@@ -14,7 +14,6 @@
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
-<a id="exitcurrentinputtype"></a>
 ## exitCurrentInputType
 
 ```TypeScript
@@ -57,7 +56,6 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 
 ```
 
-<a id="exitcurrentinputtype-1"></a>
 ## exitCurrentInputType
 
 ```TypeScript
@@ -98,7 +96,6 @@ keyboardController.exitCurrentInputType().then(() => {
 
 ```
 
-<a id="hide"></a>
 ## hide
 
 ```TypeScript
@@ -140,7 +137,6 @@ keyboardController.hide((err: BusinessError) => {
 
 ```
 
-<a id="hide-1"></a>
 ## hide
 
 ```TypeScript
@@ -180,7 +176,6 @@ keyboardController.hide().then(() => {
 
 ```
 
-<a id="hidekeyboard"></a>
 ## hideKeyboard
 
 ```TypeScript
@@ -193,7 +188,7 @@ hideKeyboard(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [hide(callback:](arkts-ime-inputmethodengine-keyboardcontroller-i.md#hide-1)
+**替代接口：** [hide(callback:](arkts-ime-inputmethodengine-keyboardcontroller-i.md#hide)
 
 <!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void-End-->
 
@@ -220,7 +215,6 @@ keyboardController.hideKeyboard((err: BusinessError) => {
 
 ```
 
-<a id="hidekeyboard-1"></a>
 ## hideKeyboard
 
 ```TypeScript
@@ -233,7 +227,7 @@ hideKeyboard(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [hide()](arkts-ime-inputmethodengine-keyboardcontroller-i.md#hide-1)
+**替代接口：** [hide()](arkts-ime-inputmethodengine-keyboardcontroller-i.md#hide)
 
 <!--Device-KeyboardController-hideKeyboard(): Promise<void>--><!--Device-KeyboardController-hideKeyboard(): Promise<void>-End-->
 

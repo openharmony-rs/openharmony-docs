@@ -6,7 +6,6 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
-<a id="from"></a>
 ## from
 
 ```TypeScript
@@ -47,7 +46,6 @@ console.info(buf.toString('hex'));
 ```
 
 
-<a id="from-1"></a>
 ## from
 
 ```TypeScript
@@ -96,7 +94,6 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 ```
 
 
-<a id="from-2"></a>
 ## from
 
 ```TypeScript
@@ -144,7 +141,6 @@ console.info("uint8Array:", uint8Array);
 ```
 
 
-<a id="from-3"></a>
 ## from
 
 ```TypeScript
@@ -186,7 +182,6 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[116,104,105,115,3
 ```
 
 
-<a id="from-4"></a>
 ## from
 
 ```TypeScript

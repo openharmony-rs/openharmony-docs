@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="updateextensioninfo"></a>
 ## updateExtensionInfo
 
 ```TypeScript
@@ -58,7 +57,6 @@ print.updateExtensionInfo(info, (err: BusinessError) => {
 ```
 
 
-<a id="updateextensioninfo-1"></a>
 ## updateExtensionInfo
 
 ```TypeScript

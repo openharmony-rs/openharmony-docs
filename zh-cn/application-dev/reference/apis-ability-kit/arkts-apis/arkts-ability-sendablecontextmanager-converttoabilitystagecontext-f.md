@@ -6,7 +6,6 @@
 import { sendableContextManager } from '@kit.AbilityKit';
 ```
 
-<a id="converttoabilitystagecontext"></a>
 ## convertToAbilityStageContext
 
 ```TypeScript

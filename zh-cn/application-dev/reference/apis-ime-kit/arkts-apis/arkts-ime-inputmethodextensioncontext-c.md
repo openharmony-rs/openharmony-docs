@@ -28,7 +28,6 @@
 import { InputMethodExtensionContext } from '@kit.IMEKit';
 ```
 
-<a id="destroy"></a>
 ## destroy
 
 ```TypeScript
@@ -80,7 +79,6 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 
 ```
 
-<a id="destroy-1"></a>
 ## destroy
 
 ```TypeScript
@@ -130,7 +128,6 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 
 ```
 
-<a id="startability"></a>
 ## startAbility
 
 ```TypeScript

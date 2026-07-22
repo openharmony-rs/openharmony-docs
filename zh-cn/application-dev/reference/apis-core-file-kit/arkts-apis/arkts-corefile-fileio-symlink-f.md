@@ -1,6 +1,5 @@
 # symlink
 
-<a id="symlink"></a>
 ## symlink
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:symlink](arkts-corefile-file-fs-symlink-f.md#symlink-1)
+**替代接口：** [fs:symlink](arkts-corefile-fileio-symlink-f.md#symlink)
 
 <!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>--><!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>-End-->
 
@@ -33,7 +32,6 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="symlink-1"></a>
 ## symlink
 
 ```TypeScript
@@ -46,7 +44,7 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 
 **废弃版本：** 9
 
-**替代接口：** [fs:symlink](arkts-corefile-file-fs-symlink-f.md#symlink-1)
+**替代接口：** [fs:symlink](arkts-corefile-fileio-symlink-f.md#symlink)
 
 <!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void-End-->
 

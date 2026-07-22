@@ -6,7 +6,6 @@
 import { router } from '@kit.ArkUI';
 ```
 
-<a id="enablealertbeforebackpage"></a>
 ## enableAlertBeforeBackPage
 
 ```TypeScript
@@ -14,17 +13,16 @@ function enableAlertBeforeBackPage(options: EnableAlertOptions): void
 ```
 
 开启页面返回询问对话框。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [showAlertBeforeBackPage](arkts-arkui-arkui-uicontext-router-c.md#showalertbeforebackpage-1)替代。
+> [showAlertBeforeBackPage](arkts-arkui-arkui-uicontext-router-c.md#showalertbeforebackpage)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [showAlertBeforeBackPage](arkts-arkui-arkui-uicontext-router-c.md#showalertbeforebackpage-1)
+**替代接口：** [showAlertBeforeBackPage](arkts-arkui-arkui-uicontext-router-c.md#showalertbeforebackpage)
 
 <!--Device-router-function enableAlertBeforeBackPage(options: EnableAlertOptions): void--><!--Device-router-function enableAlertBeforeBackPage(options: EnableAlertOptions): void-End-->
 

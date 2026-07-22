@@ -6,7 +6,6 @@
 import { process } from '@kit.ArkTS';
 ```
 
-<a id="getthreadpriority"></a>
 ## getThreadPriority
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getThreadPriority(v: number): number
 
 **废弃版本：** 9
 
-**替代接口：** [getThreadPriority](arkts-arkts-process-processmanager-c.md#getthreadpriority-1)
+**替代接口：** [getThreadPriority](arkts-arkts-process-processmanager-c.md#getthreadpriority)
 
 <!--Device-process-function getThreadPriority(v: number): number--><!--Device-process-function getThreadPriority(v: number): number-End-->
 

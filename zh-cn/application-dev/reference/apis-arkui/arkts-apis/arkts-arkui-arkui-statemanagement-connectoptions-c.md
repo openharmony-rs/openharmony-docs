@@ -20,7 +20,7 @@ import { Binding, ComponentReuse, CustomComponentLifecycleState, ComponentInacti
 areaMode?: contextConstant.AreaMode
 ```
 
-加密级别：EL1-EL5，详见[加密级别](docroot://application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。
+加密级别：EL1-EL5，详见[加密级别](../../../application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。
 
 **类型：** contextConstant.AreaMode
 

@@ -6,7 +6,6 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
-<a id="on"></a>
 ## on('mission')
 
 ```TypeScript

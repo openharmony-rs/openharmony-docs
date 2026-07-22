@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="current"></a>
 ## current
 
 ```TypeScript
@@ -48,7 +47,6 @@ let currentPos: number = iterator.current(); // currentPos = 0
 
 ```
 
-<a id="first"></a>
 ## first
 
 ```TypeScript
@@ -82,7 +80,6 @@ let firstPos: number = iterator.first(); // firstPos = 0
 
 ```
 
-<a id="following"></a>
 ## following
 
 ```TypeScript
@@ -124,7 +121,6 @@ pos = iterator.current(); // pos = 27
 
 ```
 
-<a id="getlinebreaktext"></a>
 ## getLineBreakText
 
 ```TypeScript
@@ -158,7 +154,6 @@ let breakText: string = iterator.getLineBreakText(); // breakText = 'Apple is my
 
 ```
 
-<a id="isboundary"></a>
 ## isBoundary
 
 ```TypeScript
@@ -199,7 +194,6 @@ isBoundary = iterator.isBoundary(5); // isBoundary = false;
 
 ```
 
-<a id="last"></a>
 ## last
 
 ```TypeScript
@@ -233,7 +227,6 @@ let lastPos: number = iterator.last(); // lastPos = 27
 
 ```
 
-<a id="next"></a>
 ## next
 
 ```TypeScript
@@ -275,7 +268,6 @@ pos = iterator.next(10); // pos = -1
 
 ```
 
-<a id="previous"></a>
 ## previous
 
 ```TypeScript
@@ -311,7 +303,6 @@ pos = iterator.previous(); // pos = 9
 
 ```
 
-<a id="setlinebreaktext"></a>
 ## setLineBreakText
 
 ```TypeScript

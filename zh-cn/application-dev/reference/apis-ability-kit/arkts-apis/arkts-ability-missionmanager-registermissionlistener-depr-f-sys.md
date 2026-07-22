@@ -1,6 +1,5 @@
 # registerMissionListener（系统接口）
 
-<a id="registermissionlistener"></a>
 ## registerMissionListener
 
 ```TypeScript

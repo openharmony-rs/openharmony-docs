@@ -24,7 +24,7 @@ avoidArea: window.AvoidArea
 
 **注意：**
 
-通过[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontext-1)或[setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontextbyname-1)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。
+通过[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontext)或[setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontextbyname)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。
 
 **类型：** window.AvoidArea
 

@@ -1,7 +1,6 @@
 # CmsParser
 
 CmsParser对象用于对CMS签名或封装数据进行验签或解封装。
-
 > **说明：**  
 >  
 > PKCS #7是用于存储签名或加密数据的标准语法。注意CMS是PKCS #7的扩展，PKCS #7支持的数据类型包括数据、签名数据、封装数据、  
@@ -19,7 +18,6 @@ CmsParser对象用于对CMS签名或封装数据进行验签或解封装。
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="decryptenvelopeddata"></a>
 ## decryptEnvelopedData
 
 ```TypeScript
@@ -142,7 +140,6 @@ async function testCmsDecryptTest() {
 
 ```
 
-<a id="getcerts"></a>
 ## getCerts
 
 ```TypeScript
@@ -180,7 +177,6 @@ getCerts(type: CmsCertType): Promise<Array<X509Cert>>
 | [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br>1. type类型无效或不支持。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
-<a id="getcontentdata"></a>
 ## getContentData
 
 ```TypeScript
@@ -327,7 +323,6 @@ async function testCmsVerifyTest() {
 
 ```
 
-<a id="getcontenttype"></a>
 ## getContentType
 
 ```TypeScript
@@ -475,7 +470,6 @@ async function testCmsVerifyTest() {
 
 ```
 
-<a id="setrawdata"></a>
 ## setRawData
 
 ```TypeScript
@@ -483,7 +477,6 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise<void>
 ```
 
 用于把CMS格式的数据转成CMS对象。使用Promise方式返回结果。
-
 > **说明：**  
 >  
 > 支持PEM和DER格式的CMS消息。**string**对应PEM格式，**Uint8Array**对应DER格式。
@@ -633,7 +626,6 @@ async function testCmsVerifyTest() {
 
 ```
 
-<a id="verifysigneddata"></a>
 ## verifySignedData
 
 ```TypeScript

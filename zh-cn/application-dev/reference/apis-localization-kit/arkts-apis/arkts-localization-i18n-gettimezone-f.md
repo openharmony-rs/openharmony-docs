@@ -6,7 +6,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="gettimezone"></a>
 ## getTimeZone
 
 ```TypeScript

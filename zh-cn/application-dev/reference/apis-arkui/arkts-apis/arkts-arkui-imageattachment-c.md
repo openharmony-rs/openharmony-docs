@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -33,7 +32,6 @@ constructor(value: ImageAttachmentInterface)
 | --- | --- | --- | --- |
 | value | [ImageAttachmentInterface](arkts-arkui-imageattachmentinterface-i.md) | 是 | 图片设置项。 |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -170,7 +168,7 @@ readonly sizeInVp?: SizeOptions
 readonly supportSvg2?: boolean
 ```
 
-获取属性字符串是否开启[SVG标签解析能力增强功能](docroot://reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)。
+获取属性字符串是否开启[SVG标签解析能力增强功能](../../../reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)。
 
 true：支持SVG解析新能力；false：保持原有SVG解析能力。
 

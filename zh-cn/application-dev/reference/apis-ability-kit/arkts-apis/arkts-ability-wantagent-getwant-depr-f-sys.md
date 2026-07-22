@@ -1,6 +1,5 @@
 # getWant（系统接口）
 
-<a id="getwant"></a>
 ## getWant
 
 ```TypeScript
@@ -29,7 +28,6 @@ function getWant(agent: WantAgent, callback: AsyncCallback<Want>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Want&gt; | 是 | 获取WantAgent中的Want的回调方法。 |
 
 
-<a id="getwant-1"></a>
 ## getWant
 
 ```TypeScript

@@ -6,7 +6,7 @@ Ability生命周期状态。
 
 **废弃版本：** 9
 
-**替代接口：** [AbilityLifecycleState](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md)
+**替代接口：** [AbilityLifecycleState](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-depr-e.md)
 
 <!--Device-abilityDelegatorRegistry-export enum AbilityLifecycleState--><!--Device-abilityDelegatorRegistry-export enum AbilityLifecycleState-End-->
 
@@ -24,7 +24,7 @@ UNINITIALIZED = 0
 
 **废弃版本：** 9
 
-**替代接口：** [UNINITIALIZED](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#uninitialized)
+**替代接口：** [UNINITIALIZED](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-depr-e.md#uninitialized)
 
 <!--Device-AbilityLifecycleState-UNINITIALIZED = 0--><!--Device-AbilityLifecycleState-UNINITIALIZED = 0-End-->
 
@@ -42,7 +42,7 @@ CREATE = 1
 
 **废弃版本：** 9
 
-**替代接口：** [CREATE](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#create)
+**替代接口：** [CREATE](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-depr-e.md#create)
 
 <!--Device-AbilityLifecycleState-CREATE = 1--><!--Device-AbilityLifecycleState-CREATE = 1-End-->
 
@@ -60,7 +60,7 @@ FOREGROUND = 2
 
 **废弃版本：** 9
 
-**替代接口：** [FOREGROUND](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#foreground)
+**替代接口：** [FOREGROUND](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-depr-e.md#foreground)
 
 <!--Device-AbilityLifecycleState-FOREGROUND = 2--><!--Device-AbilityLifecycleState-FOREGROUND = 2-End-->
 
@@ -78,7 +78,7 @@ BACKGROUND = 3
 
 **废弃版本：** 9
 
-**替代接口：** [BACKGROUND](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#background)
+**替代接口：** [BACKGROUND](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-depr-e.md#background)
 
 <!--Device-AbilityLifecycleState-BACKGROUND = 3--><!--Device-AbilityLifecycleState-BACKGROUND = 3-End-->
 
@@ -96,7 +96,7 @@ DESTROY = 4
 
 **废弃版本：** 9
 
-**替代接口：** [DESTROY](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#destroy)
+**替代接口：** [DESTROY](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-depr-e.md#destroy)
 
 <!--Device-AbilityLifecycleState-DESTROY = 4--><!--Device-AbilityLifecycleState-DESTROY = 4-End-->
 

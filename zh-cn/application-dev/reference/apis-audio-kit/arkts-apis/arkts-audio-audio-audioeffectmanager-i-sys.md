@@ -16,7 +16,6 @@ Implements audio effect management.
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="getaudioeffectproperty"></a>
 ## getAudioEffectProperty
 
 ```TypeScript
@@ -64,7 +63,6 @@ try {
 
 ```
 
-<a id="getsupportedaudioeffectproperty"></a>
 ## getSupportedAudioEffectProperty
 
 ```TypeScript
@@ -112,7 +110,6 @@ try {
 
 ```
 
-<a id="isaudioseparationeffectsupported"></a>
 ## isAudioSeparationEffectSupported
 
 ```TypeScript
@@ -153,7 +150,6 @@ console.info(`Audio separation effect is supported: ${isSupported}`);
 
 ```
 
-<a id="offaudioseparationeffectenabledchange"></a>
 ## offAudioSeparationEffectEnabledChange
 
 ```TypeScript
@@ -194,7 +190,6 @@ audioEffectManager.offAudioSeparationEffectEnabledChange();
 
 ```
 
-<a id="onaudioseparationeffectenabledchange"></a>
 ## onAudioSeparationEffectEnabledChange
 
 ```TypeScript
@@ -236,7 +231,6 @@ audioEffectManager.onAudioSeparationEffectEnabledChange((isEnabled: boolean) => 
 
 ```
 
-<a id="setaudioeffectproperty"></a>
 ## setAudioEffectProperty
 
 ```TypeScript
@@ -286,7 +280,6 @@ try {
 
 ```
 
-<a id="setaudioseparationeffectenabled"></a>
 ## setAudioSeparationEffectEnabled
 
 ```TypeScript
@@ -345,7 +338,6 @@ audioEffectManager.setAudioSeparationEffectEnabled(true, 10001).then(() => {
 
 ```
 
-<a id="setaudioseparationeffectvolume"></a>
 ## setAudioSeparationEffectVolume
 
 ```TypeScript

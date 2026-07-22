@@ -6,7 +6,6 @@
 import { fastbuffer } from '@kit.ArkTS';
 ```
 
-<a id="allocuninitializedfrompool"></a>
 ## allocUninitializedFromPool
 
 ```TypeScript

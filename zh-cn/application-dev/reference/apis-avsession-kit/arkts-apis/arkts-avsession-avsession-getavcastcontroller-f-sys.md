@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="getavcastcontroller"></a>
 ## getAVCastController
 
 ```TypeScript
@@ -78,7 +77,6 @@ struct Index {
 ```
 
 
-<a id="getavcastcontroller-1"></a>
 ## getAVCastController
 
 ```TypeScript

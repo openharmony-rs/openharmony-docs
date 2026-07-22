@@ -16,7 +16,6 @@ GesturePath表示手势路径信息。
 import { GesturePath } from '@kit.AccessibilityKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

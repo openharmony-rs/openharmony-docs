@@ -8,7 +8,6 @@ Defined the draw modifier of node. Provides draw callbacks for the associated No
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="drawbehind"></a>
 ## drawBehind
 
 ```TypeScript
@@ -33,7 +32,6 @@ drawBehind Method. Executed before drawing associated Node.
 | --- | --- | --- | --- |
 | drawContext | [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) | 是 | The drawContext used to draw. |
 
-<a id="drawcontent"></a>
 ## drawContent
 
 ```TypeScript
@@ -58,7 +56,6 @@ drawContent Method. Executed when associated Node is drawing, the default drawCo
 | --- | --- | --- | --- |
 | drawContext | [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) | 是 | The drawContext used to draw. |
 
-<a id="drawforeground"></a>
 ## drawForeground
 
 ```TypeScript
@@ -83,7 +80,6 @@ drawForeground(drawContext: DrawContext): void
 | --- | --- | --- | --- |
 | drawContext | [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) | 是 | 用来绘制的drawContext |
 
-<a id="drawfront"></a>
 ## drawFront
 
 ```TypeScript
@@ -108,7 +104,6 @@ drawFront Method. Executed after drawing associated Node.
 | --- | --- | --- | --- |
 | drawContext | [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) | 是 | The drawContext used to draw. |
 
-<a id="drawoverlay"></a>
 ## drawOverlay
 
 ```TypeScript
@@ -137,7 +132,6 @@ drawOverlay(drawContext: DrawContext): void
 | --- | --- | --- | --- |
 | drawContext | [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) | 是 | 用于绘制的drawContext |
 
-<a id="invalidate"></a>
 ## invalidate
 
 ```TypeScript

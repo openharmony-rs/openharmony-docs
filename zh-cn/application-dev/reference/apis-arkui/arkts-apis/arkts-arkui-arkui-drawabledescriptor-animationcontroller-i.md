@@ -14,7 +14,6 @@
 import { DrawableDescriptor, AnimatedDrawableDescriptor, AnimationStopMode, AnimationOptions, AnimationController, DrawableDescriptorLoadedResult, LayeredDrawableDescriptor, PictureDrawableDescriptor, PixelMapDrawableDescriptor, HdrCompositionConfig } from '@kit.ArkUI';
 ```
 
-<a id="getstatus"></a>
 ## getStatus
 
 ```TypeScript
@@ -83,7 +82,6 @@ struct Example {
 
 ```
 
-<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -130,7 +128,6 @@ struct Example {
 
 ```
 
-<a id="resume"></a>
 ## resume
 
 ```TypeScript
@@ -177,7 +174,6 @@ struct Example {
 
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -224,7 +220,6 @@ struct Example {
 
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript

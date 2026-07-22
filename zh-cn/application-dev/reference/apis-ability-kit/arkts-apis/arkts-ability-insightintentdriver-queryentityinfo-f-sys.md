@@ -6,7 +6,6 @@
 import { insightIntentDriver } from '@kit.AbilityKit';
 ```
 
-<a id="queryentityinfo"></a>
 ## queryEntityInfo
 
 ```TypeScript

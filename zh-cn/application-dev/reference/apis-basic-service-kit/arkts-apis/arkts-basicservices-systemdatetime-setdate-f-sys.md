@@ -6,7 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="setdate"></a>
 ## setDate
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setDate(date: Date, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [setTime(time:](arkts-basicservices-systemdatetime-settime-f-sys.md#settime-1)
+**替代接口：** [setTime(time:](arkts-basicservices-systemdatetime-settime-f-sys.md#settime)
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -66,7 +65,6 @@ try {
 ```
 
 
-<a id="setdate-1"></a>
 ## setDate
 
 ```TypeScript
@@ -79,7 +77,7 @@ function setDate(date: Date): Promise<void>
 
 **废弃版本：** 10
 
-**替代接口：** [setTime(time:](arkts-basicservices-systemdatetime-settime-f-sys.md#settime-1)
+**替代接口：** [setTime(time:](arkts-basicservices-systemdatetime-settime-f-sys.md#settime)
 
 **需要权限：** ohos.permission.SET_TIME
 

@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="cleanbundlecachefiles"></a>
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -69,7 +68,6 @@ try {
 ```
 
 
-<a id="cleanbundlecachefiles-1"></a>
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -135,7 +133,6 @@ try {
 ```
 
 
-<a id="cleanbundlecachefiles-2"></a>
 ## cleanBundleCacheFiles
 
 ```TypeScript

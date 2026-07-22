@@ -6,14 +6,13 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="getallvalidreminders"></a>
 ## getAllValidReminders
 
 ```TypeScript
 function getAllValidReminders(): Promise<Array<ReminderInfo>>
 ```
 
-获取当前应用设置的所有[有效（未过期）的代理提醒](docroot://task-management/agent-powered-reminder.md#约束与限制)。使用Promise异步回调。该接口调用需要申请ohos.permission.PUBLISH_AGENT_REMINDER权限。
+获取当前应用设置的所有[有效（未过期）的代理提醒](../../../task-management/agent-powered-reminder.md#约束与限制)。使用Promise异步回调。该接口调用需要申请ohos.permission.PUBLISH_AGENT_REMINDER权限。
 
 **起始版本：** 12
 

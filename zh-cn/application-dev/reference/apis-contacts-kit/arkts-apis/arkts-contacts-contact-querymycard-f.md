@@ -6,7 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="querymycard"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -19,7 +18,7 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard(context:](arkts-contacts-contact-querymycard-f.md#querymycard-1)
+**替代接口：** [queryMyCard(context:](arkts-contacts-contact-querymycard-f.md#querymycard)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -51,7 +50,6 @@ contact.queryMyCard((err: BusinessError, data) => {
 ```
 
 
-<a id="querymycard-1"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -104,7 +102,6 @@ function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 ```
 
 
-<a id="querymycard-2"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -117,7 +114,7 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard(context:](arkts-contacts-contact-querymycard-f.md#querymycard-1)
+**替代接口：** [queryMyCard(context:](arkts-contacts-contact-querymycard-f.md#querymycard)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -152,7 +149,6 @@ contact.queryMyCard({
 ```
 
 
-<a id="querymycard-3"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -208,7 +204,6 @@ function queryMyCard(context: Context, attrs: ContactAttributes, callback: Async
 ```
 
 
-<a id="querymycard-4"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -221,7 +216,7 @@ function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard(context:](arkts-contacts-contact-querymycard-f.md#querymycard-1)
+**替代接口：** [queryMyCard(context:](arkts-contacts-contact-querymycard-f.md#querymycard)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -257,7 +252,6 @@ promise.then((data) => {
 ```
 
 
-<a id="querymycard-5"></a>
 ## queryMyCard
 
 ```TypeScript

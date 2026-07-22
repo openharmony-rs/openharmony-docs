@@ -6,7 +6,6 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="on"></a>
 ## on('connect')
 
 ```TypeScript
@@ -20,9 +19,7 @@ function on(type: 'connect', sessionId: number,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function on(type: 'connect', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'connect', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void-End-->
+<!--Device-abilityConnectionManager-function on(type: 'connect', sessionId: number,        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'connect', sessionId: number,        callback: Callback<EventCallbackInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -30,7 +27,7 @@ function on(type: 'connect', sessionId: number,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'connect' | 是 | 事件回调类型，支持的事件为'connect'，完成[abilityConnectionManager.connect()](arkts-distributedservice-abilityconnectionmanager-connect-f.md#connect-1)调用，触发该事件。 |
+| type | 'connect' | 是 | 事件回调类型，支持的事件为'connect'，完成[abilityConnectionManager.connect()](arkts-distributedservice-abilityconnectionmanager-connect-f.md#connect)调用，触发该事件。 |
 | sessionId | number | 是 | 创建的协同会话ID。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 是 | 注册的回调函数。 |
 
@@ -56,7 +53,6 @@ abilityConnectionManager.on("connect", sessionId,(callbackInfo) => {
 ```
 
 
-<a id="on-1"></a>
 ## on('disconnect')
 
 ```TypeScript
@@ -70,9 +66,7 @@ function on(type: 'disconnect', sessionId: number,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function on(type: 'disconnect', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'disconnect', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void-End-->
+<!--Device-abilityConnectionManager-function on(type: 'disconnect', sessionId: number,        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'disconnect', sessionId: number,        callback: Callback<EventCallbackInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -80,7 +74,7 @@ function on(type: 'disconnect', sessionId: number,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'disconnect' | 是 | 事件回调类型，支持的事件为'disconnect'，完成[abilityConnectionManager.disconnect()](arkts-distributedservice-abilityconnectionmanager-disconnect-f.md#disconnect-1)调用，触发该事件。 |
+| type | 'disconnect' | 是 | 事件回调类型，支持的事件为'disconnect'，完成[abilityConnectionManager.disconnect()](arkts-distributedservice-abilityconnectionmanager-disconnect-f.md#disconnect)调用，触发该事件。 |
 | sessionId | number | 是 | 创建的协同会话ID。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 是 | 注册的回调函数。 |
 
@@ -106,7 +100,6 @@ abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
 ```
 
 
-<a id="on-2"></a>
 ## on('receiveMessage')
 
 ```TypeScript
@@ -120,9 +113,7 @@ function on(type: 'receiveMessage', sessionId: number,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function on(type: 'receiveMessage', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'receiveMessage', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void-End-->
+<!--Device-abilityConnectionManager-function on(type: 'receiveMessage', sessionId: number,        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'receiveMessage', sessionId: number,        callback: Callback<EventCallbackInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -130,7 +121,7 @@ function on(type: 'receiveMessage', sessionId: number,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'receiveMessage' | 是 | 事件回调类型，支持的事件为'receiveMessage'，完成[abilityConnectionManager.sendMessage()](arkts-distributedservice-abilityconnectionmanager-sendmessage-f.md#sendmessage-1)调用，触发该事件。 |
+| type | 'receiveMessage' | 是 | 事件回调类型，支持的事件为'receiveMessage'，完成[abilityConnectionManager.sendMessage()](arkts-distributedservice-abilityconnectionmanager-sendmessage-f.md#sendmessage)调用，触发该事件。 |
 | sessionId | number | 是 | 创建的协同会话ID。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 是 | 注册的回调函数。 |
 
@@ -156,7 +147,6 @@ abilityConnectionManager.on("receiveMessage", sessionId,(callbackInfo) => {
 ```
 
 
-<a id="on-3"></a>
 ## on('receiveData')
 
 ```TypeScript
@@ -170,9 +160,7 @@ function on(type: 'receiveData', sessionId: number,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function on(type: 'receiveData', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'receiveData', sessionId: number,
-        callback: Callback<EventCallbackInfo>): void-End-->
+<!--Device-abilityConnectionManager-function on(type: 'receiveData', sessionId: number,        callback: Callback<EventCallbackInfo>): void--><!--Device-abilityConnectionManager-function on(type: 'receiveData', sessionId: number,        callback: Callback<EventCallbackInfo>): void-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -180,7 +168,7 @@ function on(type: 'receiveData', sessionId: number,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'receiveData' | 是 | 事件回调类型，支持的事件为'receiveData'，完成[abilityConnectionManager.sendData()](arkts-distributedservice-abilityconnectionmanager-senddata-f.md#senddata-1)调用，触发该事件。 |
+| type | 'receiveData' | 是 | 事件回调类型，支持的事件为'receiveData'，完成[abilityConnectionManager.sendData()](arkts-distributedservice-abilityconnectionmanager-senddata-f.md#senddata)调用，触发该事件。 |
 | sessionId | number | 是 | 创建的协同会话ID。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventCallbackInfo&gt; | 是 | 注册的回调函数。 |
 

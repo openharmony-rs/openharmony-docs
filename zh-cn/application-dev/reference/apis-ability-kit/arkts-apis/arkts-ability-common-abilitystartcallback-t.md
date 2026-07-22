@@ -4,7 +4,7 @@
 export type AbilityStartCallback = _AbilityStartCallback
 ```
 
-定义了拉起UIExtensionAbility的回调结果，通常作为[UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype-1)/[UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype-1)的入参传入。
+定义了拉起UIExtensionAbility的回调结果，通常作为[UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype)/[UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype)的入参传入。
 
 **起始版本：** 11
 

@@ -18,7 +18,7 @@ AUTO = 0
 
 [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)和[DrawableDescriptor](arkts-arkui-drawabledescriptor-t.md)类型的图片不包含头信息，调用该接口时图片显示效果不变化。
 
-![imageRotateOrientation_0](docroot://reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_0.png)
+![imageRotateOrientation_0](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_0.png)
 
 **起始版本：** 14
 
@@ -60,7 +60,7 @@ RIGHT = 2
 
 将当前图片顺时针旋转90度后显示。
 
-![imageRotateOrientation_2](docroot://reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_2.png)
+![imageRotateOrientation_2](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_2.png)
 
 **起始版本：** 14
 
@@ -82,7 +82,7 @@ DOWN = 3
 
 将当前图片顺时针旋转180度后显示。
 
-![imageRotateOrientation_3](docroot://reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_3.png)
+![imageRotateOrientation_3](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_3.png)
 
 **起始版本：** 14
 
@@ -104,7 +104,7 @@ LEFT = 4
 
 将当前图片顺时针旋转270度后显示。
 
-![imageRotateOrientation_4](docroot://reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_4.png)
+![imageRotateOrientation_4](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_4.png)
 
 **起始版本：** 14
 
@@ -126,7 +126,7 @@ UP_MIRRORED = 5
 
 将当前图片水平翻转后显示。
 
-![imageRotateOrientation_5](docroot://reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_5.png)
+![imageRotateOrientation_5](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_5.png)
 
 **起始版本：** 20
 
@@ -148,7 +148,7 @@ RIGHT_MIRRORED = 6
 
 将当前图片水平翻转再顺时针旋转90度后显示。
 
-![imageRotateOrientation_6](docroot://reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_6.png)
+![imageRotateOrientation_6](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_6.png)
 
 **起始版本：** 20
 
@@ -170,7 +170,7 @@ DOWN_MIRRORED = 7
 
 将当前图片垂直翻转后显示。
 
-![imageRotateOrientation_7](docroot://reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_7.png)
+![imageRotateOrientation_7](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_7.png)
 
 **起始版本：** 20
 
@@ -192,7 +192,7 @@ LEFT_MIRRORED = 8
 
 将当前图片水平翻转再顺时针旋转270度后显示。
 
-![imageRotateOrientation_8](docroot://reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_8.png)
+![imageRotateOrientation_8](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_8.png)
 
 **起始版本：** 20
 

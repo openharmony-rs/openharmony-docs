@@ -6,7 +6,6 @@
 import { startupManager } from '@kit.AbilityKit';
 ```
 
-<a id="removeallstartuptaskresults"></a>
 ## removeAllStartupTaskResults
 
 ```TypeScript

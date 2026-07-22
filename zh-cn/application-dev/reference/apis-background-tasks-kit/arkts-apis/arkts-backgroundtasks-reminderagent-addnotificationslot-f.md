@@ -6,7 +6,6 @@
 import { reminderAgent } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="addnotificationslot"></a>
 ## addNotificationSlot
 
 ```TypeScript
@@ -19,7 +18,7 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 
 **废弃版本：** 9
 
-**替代接口：** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md#addnotificationslot-1)
+**替代接口：** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md#addnotificationslot)
 
 <!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void--><!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void-End-->
 
@@ -50,7 +49,6 @@ reminderAgent.addNotificationSlot(mySlot, (err: BusinessError, data: void) => {
 ```
 
 
-<a id="addnotificationslot-1"></a>
 ## addNotificationSlot
 
 ```TypeScript
@@ -63,7 +61,7 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md#addnotificationslot-1)
+**替代接口：** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md#addnotificationslot)
 
 <!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot): Promise<void>--><!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot): Promise<void>-End-->
 

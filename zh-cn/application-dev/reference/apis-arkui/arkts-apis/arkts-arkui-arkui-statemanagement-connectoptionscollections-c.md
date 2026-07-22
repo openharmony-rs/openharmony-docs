@@ -1,6 +1,6 @@
 # ConnectOptionsCollections
 
-[globalConnect](PersistenceV2.globalConnect<T extends CollectionType<S>, S extends object>( type: ConnectOptionsCollections<T, S> | ConnectOptions<T> ))接口参数类型，ConnectOptionsCollections继承自[ConnectOptions\<T\>](arkts-arkui-arkui-statemanagement-connectoptions-c.md)。当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
+[globalConnect](PersistenceV2.globalConnect&lt;T extends CollectionType<S>, S extends object&gt;( type: ConnectOptionsCollections&lt;T, S&gt; | ConnectOptions<T> ))接口参数类型，ConnectOptionsCollections继承自[ConnectOptions\&lt;T\&gt;](arkts-arkui-arkui-statemanagement-connectoptions-c.md)。当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
 
 如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
 

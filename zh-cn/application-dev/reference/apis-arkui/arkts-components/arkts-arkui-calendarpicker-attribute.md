@@ -1,8 +1,8 @@
 # CalendarPicker属性/事件
 
-除支持[通用属性](./common)外，还支持以下属性：
+除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下属性：
 
-除支持[通用事件](./common)，还支持以下事件：
+除支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)，还支持以下事件：
 
 **继承/实现关系：** CalendarPickerAttribute extends [CommonMethod<CalendarPickerAttribute>](CommonMethod<CalendarPickerAttribute>)
 
@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="edgealign"></a>
 ## edgeAlign
 
 ```TypeScript
@@ -38,7 +37,6 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 | alignType | [CalendarAlign](arkts-arkui-calendaralign-e.md) | 是 | 对齐方式的类型。<br/>默认值：CalendarAlign.END |
 | offset | [Offset](../arkts-apis/arkts-arkui-componentutils-offset-i.md) | 否 | 按照对齐方式对齐后，选择器相对入口组件的偏移量。<br/>默认值：{dx: 0, dy: 0} |
 
-<a id="edgealign-1"></a>
 ## edgeAlign
 
 ```TypeScript
@@ -64,7 +62,6 @@ edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset)
 | alignType | [Optional](arkts-arkui-optional-t.md)&lt;CalendarAlign&gt; | 是 | 对齐方式的类型。默认值：CalendarAlign.END<br/>当alignType的值为undefined时，使用默认值。 |
 | offset | [Offset](../arkts-apis/arkts-arkui-componentutils-offset-i.md) | 否 | 按照对齐方式对齐后，选择器相对入口组件的偏移量。<br/>默认值：{dx: 0, dy: 0} |
 
-<a id="marktoday"></a>
 ## markToday
 
 ```TypeScript
@@ -89,7 +86,6 @@ markToday(enabled: boolean)
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 设置日历选择器中系统当前日期是否保持高亮显示。   - true：系统当前日期在日历选择器内保持高亮显示。<br/>- false：系统当前日期在日历选择器内不保持高亮显示。<br/>默认值：false |
 
-<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -114,7 +110,6 @@ onChange(callback: Callback<Date>)
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Date&gt; | 是 | 选中的日期值。<br>**起始版本：** 18 |
 
-<a id="onchange-1"></a>
 ## onChange
 
 ```TypeScript
@@ -122,10 +117,9 @@ onChange(callback: Optional<Callback<Date>>)
 ```
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。与[onChange](CalendarPickerAttribute#onChange(callback: Callback<Date>))相比，callback参数新增了对undefined类型的支持。
-
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 18
 
@@ -143,7 +137,6 @@ onChange(callback: Optional<Callback<Date>>)
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-optional-t.md)&lt;Callback&lt;Date&gt;&gt; | 是 | 选中的日期值。<br>当callback的值为undefined时，不使用回调函数。 |
 
-<a id="textstyle"></a>
 ## textStyle
 
 ```TypeScript
@@ -168,7 +161,6 @@ textStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-pickertextstyle-i.md) | 是 | 设置入口区的文本颜色、字号、字体粗细。默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size:'16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
-<a id="textstyle-1"></a>
 ## textStyle
 
 ```TypeScript

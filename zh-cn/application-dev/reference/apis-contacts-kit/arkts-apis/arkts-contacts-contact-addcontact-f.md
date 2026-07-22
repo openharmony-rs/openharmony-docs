@@ -6,7 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="addcontact"></a>
 ## addContact
 
 ```TypeScript
@@ -19,7 +18,7 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 
 **废弃版本：** 10
 
-**替代接口：** [addContact(context:](arkts-contacts-contact-addcontact-f.md#addcontact-1)
+**替代接口：** [addContact(context:](arkts-contacts-contact-addcontact-f.md#addcontact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -61,7 +60,6 @@ contact.addContact(context, {
 ```
 
 
-<a id="addcontact-1"></a>
 ## addContact
 
 ```TypeScript
@@ -124,7 +122,6 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 ```
 
 
-<a id="addcontact-2"></a>
 ## addContact
 
 ```TypeScript
@@ -137,7 +134,7 @@ function addContact(contact: Contact): Promise<number>
 
 **废弃版本：** 10
 
-**替代接口：** [addContact(context:](arkts-contacts-contact-addcontact-f.md#addcontact-1)
+**替代接口：** [addContact(context:](arkts-contacts-contact-addcontact-f.md#addcontact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -179,7 +176,6 @@ promise.then((data) => {
 ```
 
 
-<a id="addcontact-3"></a>
 ## addContact
 
 ```TypeScript

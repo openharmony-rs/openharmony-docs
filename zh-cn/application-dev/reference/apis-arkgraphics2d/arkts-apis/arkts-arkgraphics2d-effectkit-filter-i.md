@@ -1,6 +1,6 @@
 # Filter
 
-图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect-1)创建一个Filter实例。
+图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect)创建一个Filter实例。
 
 **起始版本：** 9
 
@@ -14,7 +14,6 @@
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
-<a id="blur"></a>
 ## blur
 
 ```TypeScript
@@ -22,10 +21,9 @@ blur(radius: number): Filter
 ```
 
 将模糊效果添加到效果链表中，返回链表的头节点。
-
 > **说明：**  
 >  
-> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](docroot://ui/arkts-blur-effect.md)。
+> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](../../../ui/arkts-blur-effect.md)。
 
 **起始版本：** 9
 
@@ -116,7 +114,6 @@ struct Index {
 
 ```
 
-<a id="blur-1"></a>
 ## blur
 
 ```TypeScript
@@ -124,10 +121,9 @@ blur(radius: number, tileMode: TileMode): Filter
 ```
 
 将模糊效果添加到效果链表中，返回链表的头节点。
-
 > **说明：**  
 >  
-> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](docroot://ui/arkts-blur-effect.md)。
+> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](../../../ui/arkts-blur-effect.md)。
 
 **起始版本：** 14
 
@@ -215,7 +211,6 @@ struct Index {
 
 ```
 
-<a id="brightness"></a>
 ## brightness
 
 ```TypeScript
@@ -313,7 +308,6 @@ struct Index {
 
 ```
 
-<a id="geteffectpixelmap"></a>
 ## getEffectPixelMap
 
 ```TypeScript
@@ -369,7 +363,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="geteffectpixelmap-1"></a>
 ## getEffectPixelMap
 
 ```TypeScript
@@ -427,7 +420,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="getpixelmap"></a>
 ## getPixelMap
 
 ```TypeScript
@@ -435,16 +427,15 @@ getPixelMap(): image.PixelMap
 ```
 
 获取已添加链表效果的源图像的image.PixelMap。
-
 > **说明：**  
 >  
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[getEffectPixelMap](arkts-arkgraphics2d-effectkit-filter-i.md#geteffectpixelmap-1)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[getEffectPixelMap](arkts-arkgraphics2d-effectkit-filter-i.md#geteffectpixelmap)替代。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** [getEffectPixelMap](arkts-arkgraphics2d-effectkit-filter-i.md#geteffectpixelmap-1)
+**替代接口：** [getEffectPixelMap](arkts-arkgraphics2d-effectkit-filter-i.md#geteffectpixelmap)
 
 <!--Device-Filter-getPixelMap(): image.PixelMap--><!--Device-Filter-getPixelMap(): image.PixelMap-End-->
 
@@ -478,7 +469,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="grayscale"></a>
 ## grayscale
 
 ```TypeScript
@@ -568,7 +558,6 @@ struct Index {
 
 ```
 
-<a id="invert"></a>
 ## invert
 
 ```TypeScript
@@ -654,7 +643,6 @@ struct Index {
 
 ```
 
-<a id="setcolormatrix"></a>
 ## setColorMatrix
 
 ```TypeScript

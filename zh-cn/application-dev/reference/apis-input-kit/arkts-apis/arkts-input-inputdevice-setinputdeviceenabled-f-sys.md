@@ -6,7 +6,6 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
-<a id="setinputdeviceenabled"></a>
 ## setInputDeviceEnabled
 
 ```TypeScript

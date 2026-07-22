@@ -4,7 +4,7 @@
 export type ElementAttributeKeys = keyof ElementAttributeValues
 ```
 
-表示[ElementAttributeValues](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i.md)的属性名称。
+表示[ElementAttributeValues](arkts-accessibility-elementattributevalues-t.md)的属性名称。
 
 **起始版本：** 10
 

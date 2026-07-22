@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="addfreezeexemptedapps"></a>
 ## addFreezeExemptedApps
 
 ```TypeScript

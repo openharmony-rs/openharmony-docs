@@ -6,7 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="deletekey"></a>
 ## deleteKey
 
 ```TypeScript
@@ -14,18 +13,17 @@ function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 ```
 
 删除密钥。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)  
+> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteKeyItem(keyAlias:](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)
+**替代接口：** [deleteKeyItem(keyAlias:](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem)
 
 <!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -37,7 +35,7 @@ function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，应为生成key时传入的别名。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于删除时指定密钥的属性TAG。 |
-| callback | AsyncCallback&lt;HuksResult&gt; | 是 | 回调函数。当删除密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksResult&gt; | 是 | 回调函数。当删除密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例：**
 
@@ -55,7 +53,6 @@ huks.deleteKey(keyAlias, emptyOptions, (err, data) => {
 ```
 
 
-<a id="deletekey-1"></a>
 ## deleteKey
 
 ```TypeScript
@@ -63,17 +60,16 @@ function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 ```
 
 删除密钥。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)替代。
+> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteKeyItem(keyAlias:](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)
+**替代接口：** [deleteKeyItem(keyAlias:](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem)
 
 <!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 

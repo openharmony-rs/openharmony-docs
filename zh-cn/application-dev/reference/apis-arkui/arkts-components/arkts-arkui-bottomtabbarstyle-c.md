@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -32,7 +31,6 @@ BottomTabBarStyle�Ĺ��캯����
 | icon | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) \| TabBarSymbol | 是 | ҳǩ�ڵ�ͼƬ���ݡ�<br>**起始版本：** 9 - 11 |
 | text | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | ҳǩ�ڵ��������ݡ� |
 
-<a id="iconstyle"></a>
 ## iconStyle
 
 ```TypeScript
@@ -63,7 +61,6 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 | --- | --- |
 | [BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md) | ����BottomTabBarStyle�������� |
 
-<a id="id"></a>
 ## id
 
 ```TypeScript
@@ -94,7 +91,6 @@ id(value: string): BottomTabBarStyle
 | --- | --- |
 | [BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md) | ����BottomTabBarStyle�������� |
 
-<a id="labelstyle"></a>
 ## labelStyle
 
 ```TypeScript
@@ -125,7 +121,6 @@ labelStyle(value: LabelStyle): BottomTabBarStyle
 | --- | --- |
 | [BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md) | ����BottomTabBarStyle�������� |
 
-<a id="layoutmode"></a>
 ## layoutMode
 
 ```TypeScript
@@ -156,7 +151,6 @@ layoutMode(value: LayoutMode): BottomTabBarStyle
 | --- | --- |
 | [BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md) | ����BottomTabBarStyle�������� |
 
-<a id="of"></a>
 ## of
 
 ```TypeScript
@@ -188,7 +182,6 @@ BottomTabBarStyle�ľ�̬���캯����
 | --- | --- |
 | [BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md) | ���ش�����BottomTabBarStyle���� |
 
-<a id="padding"></a>
 ## padding
 
 ```TypeScript
@@ -219,7 +212,6 @@ padding(value: Padding | Dimension | LocalizedPadding): BottomTabBarStyle
 | --- | --- |
 | [BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md) | ����BottomTabBarStyle�������� |
 
-<a id="symmetricextensible"></a>
 ## symmetricExtensible
 
 ```TypeScript
@@ -250,7 +242,6 @@ symmetricExtensible(value: boolean): BottomTabBarStyle
 | --- | --- |
 | [BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md) | ����BottomTabBarStyle�������� |
 
-<a id="verticalalign"></a>
 ## verticalAlign
 
 ```TypeScript

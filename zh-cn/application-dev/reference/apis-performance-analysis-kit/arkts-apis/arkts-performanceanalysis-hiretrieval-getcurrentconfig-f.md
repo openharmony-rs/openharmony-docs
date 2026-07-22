@@ -6,7 +6,6 @@
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="getcurrentconfig"></a>
 ## getCurrentConfig
 
 ```TypeScript

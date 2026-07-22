@@ -6,7 +6,6 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="getinputmethodsetting"></a>
 ## getInputMethodSetting
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getInputMethodSetting(): InputMethodSetting
 
 **废弃版本：** 9
 
-**替代接口：** [getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting-1)
+**替代接口：** [getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting)
 
 <!--Device-inputMethod-function getInputMethodSetting(): InputMethodSetting--><!--Device-inputMethod-function getInputMethodSetting(): InputMethodSetting-End-->
 

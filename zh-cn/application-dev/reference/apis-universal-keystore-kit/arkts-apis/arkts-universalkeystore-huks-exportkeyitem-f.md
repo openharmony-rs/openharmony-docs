@@ -6,7 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="exportkeyitem"></a>
 ## exportKeyItem
 
 ```TypeScript
@@ -14,7 +13,6 @@ function exportKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 ```
 
 导出密钥。使用callback异步回调。
-
 > **说明：**  
 >  
 > 导出[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别公钥需要ohos.permission.ACCESS_SE_KEY权限。
@@ -35,14 +33,14 @@ function exportKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，应与所用密钥生成时使用的别名相同。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于导出密钥时指定密钥的属性，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md)指定需导出密钥的安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
-| callback | AsyncCallback&lt;HuksReturnResult&gt; | 是 | 回调函数。当导出密钥成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象。HuksReturnResult中的outData返回从HUKS中导出的公钥。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksReturnResult&gt; | 是 | 回调函数。当导出密钥成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象。HuksReturnResult中的outData返回从HUKS中导出的公钥。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing<br>**适用版本：** 9 - 11 |
@@ -81,7 +79,6 @@ huks.exportKeyItem(keyAlias, emptyOptions, (error, data) => {
 ```
 
 
-<a id="exportkeyitem-1"></a>
 ## exportKeyItem
 
 ```TypeScript
@@ -89,7 +86,6 @@ function exportKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksRetu
 ```
 
 导出密钥。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 导出[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别公钥需要ohos.permission.ACCESS_SE_KEY权限。
@@ -120,7 +116,7 @@ function exportKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksRetu
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing<br>**适用版本：** 9 - 11 |

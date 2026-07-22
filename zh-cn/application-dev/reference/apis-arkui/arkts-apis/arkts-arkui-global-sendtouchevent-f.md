@@ -1,6 +1,5 @@
 # sendTouchEvent
 
-<a id="sendtouchevent"></a>
 ## sendTouchEvent
 
 ```TypeScript

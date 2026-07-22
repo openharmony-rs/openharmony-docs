@@ -6,7 +6,6 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
-<a id="enablecloud"></a>
 ## enableCloud
 
 ```TypeScript
@@ -65,7 +64,6 @@ cloudSyncManager.enableCloud(accountId, switches).then(() => {
 ```
 
 
-<a id="enablecloud-1"></a>
 ## enableCloud
 
 ```TypeScript
@@ -82,15 +80,7 @@ function enableCloud(
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
 
-<!--Device-cloudSyncManager-function enableCloud(
-    accountId: string,
-    switches: Record<string, boolean>,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-cloudSyncManager-function enableCloud(
-    accountId: string,
-    switches: Record<string, boolean>,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-cloudSyncManager-function enableCloud(    accountId: string,    switches: Record<string, boolean>,    callback: AsyncCallback<void>  ): void--><!--Device-cloudSyncManager-function enableCloud(    accountId: string,    switches: Record<string, boolean>,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

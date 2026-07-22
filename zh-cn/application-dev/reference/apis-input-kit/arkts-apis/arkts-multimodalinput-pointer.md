@@ -1,7 +1,6 @@
 # @ohos.multimodalInput.pointer
 
 本模块提供鼠标光标管理能力，包括查询、设置鼠标光标属性。
-
 > **说明**：
 
 **起始版本：** 9
@@ -28,12 +27,12 @@ import { pointer } from '@kit.InputKit';
 | [isPointerVisible](arkts-input-pointer-ispointervisible-f.md#ispointervisible) | 获取鼠标光标显示状态，使用callback异步回调。 |
 | [isPointerVisible](arkts-input-pointer-ispointervisible-f.md#ispointervisible-1) | 获取鼠标光标显示状态，使用Promise异步回调。 |
 | [isPointerVisibleSync](arkts-input-pointer-ispointervisiblesync-f.md#ispointervisiblesync) | 获取当前窗口鼠标光标的显示状态，使用同步方式。 |
-| [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md#setcustomcursor) | 设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](docroot://reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)，使用Promise异步回调。 |
-| [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md#setcustomcursor-1) | 设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](docroot://reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)，使用Promise异步回调。  应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。 |
-| [setCustomCursorSync](arkts-input-pointer-setcustomcursorsync-f.md#setcustomcursorsync) | 设置指定窗口的自定义光标样式，使用同步方式进行设置。此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](docroot://reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)。 |
-| [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle) | 设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](docroot://reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用callback异步回调。 |
-| [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle-1) | 设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](docroot://reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用Promise异步回调。 |
-| [setPointerStyleSync](arkts-input-pointer-setpointerstylesync-f.md#setpointerstylesync) | 设置指定窗口的鼠标样式类型，使用同步方式返回结果。此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](docroot://reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)。 |
+| [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md#setcustomcursor) | 设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../../../reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)，使用Promise异步回调。 |
+| [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md#setcustomcursor-1) | 设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../../../reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)，使用Promise异步回调。  应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。 |
+| [setCustomCursorSync](arkts-input-pointer-setcustomcursorsync-f.md#setcustomcursorsync) | 设置指定窗口的自定义光标样式，使用同步方式进行设置。此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../../../reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)。 |
+| [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle) | 设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../../reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用callback异步回调。 |
+| [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle-1) | 设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../../reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用Promise异步回调。 |
+| [setPointerStyleSync](arkts-input-pointer-setpointerstylesync-f.md#setpointerstylesync) | 设置指定窗口的鼠标样式类型，使用同步方式返回结果。此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../../reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)。 |
 | [setPointerVisible](arkts-input-pointer-setpointervisible-f.md#setpointervisible) | 设置当前窗口的鼠标光标是否显示，使用callback异步回调。 |
 | [setPointerVisible](arkts-input-pointer-setpointervisible-f.md#setpointervisible-1) | 设置当前窗口的鼠标光标是否显示，使用Promise异步回调。 |
 | [setPointerVisibleSync](arkts-input-pointer-setpointervisiblesync-f.md#setpointervisiblesync) | 设置当前窗口鼠标光标的显示状态，使用同步方式。 |
@@ -82,9 +81,9 @@ import { pointer } from '@kit.InputKit';
 | [setMouseScrollDirection](arkts-input-pointer-setmousescrolldirection-f-sys.md#setmousescrolldirection) | 设置鼠标滚轮滚动的方向，使用Promise异步回调。 |
 | [setMouseScrollRows](arkts-input-pointer-setmousescrollrows-f-sys.md#setmousescrollrows) | 设置鼠标滚动行数，使用callback异步回调。 |
 | [setMouseScrollRows](arkts-input-pointer-setmousescrollrows-f-sys.md#setmousescrollrows-1) | 设置鼠标滚动行数，使用Promise异步回调。 |
-| [setPointerColor](arkts-input-pointer-setpointercolor-f-sys.md#setpointercolor) | 设置鼠标光标颜色，使用callback异步回调。  > **说明**：  >  > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。 |
-| [setPointerColor](arkts-input-pointer-setpointercolor-f-sys.md#setpointercolor-1) | 设置鼠标光标颜色，使用Promise异步回调。  > **说明**：  >  > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。 |
-| [setPointerColorSync](arkts-input-pointer-setpointercolorsync-f-sys.md#setpointercolorsync) | 设置鼠标光标颜色，使用同步方式进行设置。  > **说明**：  >  > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。 |
+| [setPointerColor](arkts-input-pointer-setpointercolor-f-sys.md#setpointercolor) | 设置鼠标光标颜色，使用callback异步回调。 > **说明**：  >  > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。 |
+| [setPointerColor](arkts-input-pointer-setpointercolor-f-sys.md#setpointercolor-1) | 设置鼠标光标颜色，使用Promise异步回调。 > **说明**：  >  > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。 |
+| [setPointerColorSync](arkts-input-pointer-setpointercolorsync-f-sys.md#setpointercolorsync) | 设置鼠标光标颜色，使用同步方式进行设置。 > **说明**：  >  > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。 |
 | [setPointerSize](arkts-input-pointer-setpointersize-f-sys.md#setpointersize) | 设置鼠标光标大小，使用callback异步回调。 |
 | [setPointerSize](arkts-input-pointer-setpointersize-f-sys.md#setpointersize-1) | 设置鼠标光标大小，使用Promise异步回调。 |
 | [setPointerSizeSync](arkts-input-pointer-setpointersizesync-f-sys.md#setpointersizesync) | 设置鼠标光标大小，使用同步方式进行设置。 |

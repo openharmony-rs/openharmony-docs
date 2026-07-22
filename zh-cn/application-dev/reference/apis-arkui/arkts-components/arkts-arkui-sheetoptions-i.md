@@ -252,7 +252,7 @@ enableFloatingDragBar?: boolean
 
 悬浮效果只在控制条显示的场景生效，且控制条不占位。
 
-title传入[CustomBuilder](docroot://reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。
+title传入[CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。
 
 **类型：** boolean
 
@@ -462,7 +462,7 @@ mode?: SheetMode
 
 **说明：**
 
-1. 半模态显示期间mode属性不支持动态切换，两种模式的显示层级完全不同，无法做到显示期间同一个半模态从一个层级变换到另一个层级。建议在使用时明确诉求固定mode值。2. 设置SheetMode.EMBEDDED时不支持设置UIContext属性，两者对应的半模态显示层级效果互相冲突。3. 使用[openBindSheet](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)启动半模态页面，若未传入有效的targetId，则不支持设置为SheetMode.EMBEDDED，默认为SheetMode.OVERLAY。
+1. 半模态显示期间mode属性不支持动态切换，两种模式的显示层级完全不同，无法做到显示期间同一个半模态从一个层级变换到另一个层级。建议在使用时明确诉求固定mode值。2. 设置SheetMode.EMBEDDED时不支持设置UIContext属性，两者对应的半模态显示层级效果互相冲突。3. 使用[openBindSheet](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)启动半模态页面，若未传入有效的targetId，则不支持设置为SheetMode.EMBEDDED，默认为SheetMode.OVERLAY。
 
 **类型：** SheetMode
 
@@ -598,7 +598,7 @@ onWillDismiss?: Callback<DismissSheetAction>
 
 在onWillDismiss回调中，不能再做onWillDismiss拦截。
 
-建议在[二次确认](docroot://ui/arkts-sheet-page.md#二次确认能力)场景使用。
+建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。
 
 **类型：** Callback&lt;DismissSheetAction&gt;
 
@@ -714,7 +714,7 @@ preferType?: SheetType
 
 半模态在不同窗口所支持的显示类型：
 
-1. 宽度 < 600vp：底部、全屏。默认底部样式。2. 600vp <= 宽度 < 840vp：底部、居中、跟手、侧边、全屏。默认居中样式。3. 宽度 >= 840vp：底部、居中、跟手、侧边、全屏。默认跟手样式。4. API version 20开始，窗口宽度大于600vp时，preferType支持设置为SheetType.SIDE。5. API version 20开始，preferType支持设置为SheetType.CONTENT_COVER，支持设置为全屏模态样式。
+1. 宽度 < 600vp：底部、全屏。默认底部样式。2. 600vp <= 宽度 &lt; 840vp：底部、居中、跟手、侧边、全屏。默认居中样式。3. 宽度 &gt;= 840vp：底部、居中、跟手、侧边、全屏。默认跟手样式。4. API version 20开始，窗口宽度大于600vp时，preferType支持设置为SheetType.SIDE。5. API version 20开始，preferType支持设置为SheetType.CONTENT_COVER，支持设置为全屏模态样式。
 
 **类型：** SheetType
 
@@ -844,7 +844,7 @@ shouldDismiss?: (sheetDismiss: SheetDismiss) => void
 
 侧拉关闭又包含侧滑（左滑/右滑）、三键back、键盘ESC关闭。
 
-建议在[二次确认](docroot://ui/arkts-sheet-page.md#二次确认能力)场景使用。
+建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。
 
 **类型：** (sheetDismiss: SheetDismiss) =&gt; void
 
@@ -930,7 +930,7 @@ systemMaterial?: SystemUiMaterial
 
 默认值：undefined，会清除由该接口设置的材质效果。
 
-**说明**: 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](docroot://reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor-1)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth-1)、阴影[shadow](arkts-arkui-commonmethod-c.md#shadow-1)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](docroot://reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#示例10半模态设置系统材质)。
+**说明**: 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#示例10半模态设置系统材质)。
 
 **类型：** SystemUiMaterial
 
@@ -974,7 +974,7 @@ uiContext?: UIContext
 
 **说明：**
 
-使用[openBindSheet](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)启动的半模态页面，不支持设置、更新该属性。
+使用[openBindSheet](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)启动的半模态页面，不支持设置、更新该属性。
 
 **类型：** UIContext
 

@@ -8,7 +8,6 @@ Define the handler to exit the full screen mode, related to the {@link onFullScr
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="exitfullscreen"></a>
 ## exitFullScreen
 
 ```TypeScript

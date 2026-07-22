@@ -6,14 +6,13 @@
 import { JSON } from '@kit.ArkTS';
 ```
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
 function remove(obj: object, property: string): void
 ```
 
-从ArkTS对象中删除一个键。此API可用于[JSON.parse](arkts-arkts-json-parse-f.md#parse-1)解析JSON字符串后的相关操作。仅支持最外层为字典格式（大括号而非中括号）的有效JSON字符串。
+从ArkTS对象中删除一个键。此API可用于[JSON.parse](arkts-arkts-json-parse-f.md#parse)解析JSON字符串后的相关操作。仅支持最外层为字典格式（大括号而非中括号）的有效JSON字符串。
 
 **起始版本：** 12
 

@@ -1,6 +1,5 @@
 # px2fp
 
-<a id="px2fp"></a>
 ## px2fp
 
 ```TypeScript

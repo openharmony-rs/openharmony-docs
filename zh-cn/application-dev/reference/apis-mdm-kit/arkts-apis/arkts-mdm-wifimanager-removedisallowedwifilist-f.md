@@ -6,7 +6,6 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
-<a id="removedisallowedwifilist"></a>
 ## removeDisallowedWifiList
 
 ```TypeScript

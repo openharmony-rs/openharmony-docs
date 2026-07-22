@@ -6,7 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="queryappgroupsync"></a>
 ## queryAppGroupSync
 
 ```TypeScript
@@ -56,7 +55,6 @@ let priorityGroup: number = usageStatistics.queryAppGroupSync();
 ```
 
 
-<a id="queryappgroupsync-1"></a>
 ## queryAppGroupSync
 
 ```TypeScript

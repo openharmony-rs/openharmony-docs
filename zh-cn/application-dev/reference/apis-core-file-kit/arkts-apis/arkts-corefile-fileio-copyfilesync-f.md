@@ -1,6 +1,5 @@
 # copyFileSync
 
-<a id="copyfilesync"></a>
 ## copyFileSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function copyFileSync(src: string | number, dest: string | number, mode?
 
 **废弃版本：** 9
 
-**替代接口：** [fs:copyFileSync](arkts-corefile-file-fs-copyfilesync-f.md#copyfilesync-1)
+**替代接口：** [fs:copyFileSync](arkts-corefile-fileio-copyfilesync-f.md#copyfilesync)
 
 <!--Device-unnamed-declare function copyFileSync(src: string | number, dest: string | number, mode?: number): void--><!--Device-unnamed-declare function copyFileSync(src: string | number, dest: string | number, mode?: number): void-End-->
 

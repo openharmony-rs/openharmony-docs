@@ -38,7 +38,7 @@ theme?: CustomTheme
 
 用于自定义WithTheme作用域内组件缺省配色。
 
-默认值：undefined，缺省样式跟随系统[token默认样式](docroot://ui/theme_skinning.md#系统缺省token色值)。
+默认值：undefined，缺省样式跟随系统[token默认样式](../../../ui/theme_skinning.md#系统缺省token色值)。
 
 **类型：** CustomTheme
 

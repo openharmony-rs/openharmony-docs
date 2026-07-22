@@ -1,13 +1,12 @@
 # ConcatArray
 
 该接口定义了支持数组连接操作的对象，并继承了`ISendable`接口，使其兼具高效数组拼接和跨线程传递能力。
-
 > **说明**  
 >  
 > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  
 > 文档中存在泛型的使用，涉及以下泛型标记符：
 
-- T：Type，支持[Sendable支持的数据类型](docroot://arkts-utils/arkts-sendable.md#sendable支持的数据类型)。
+- T：Type，支持[Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。
 
 **继承/实现关系：** ConcatArray extends [ISendable](arkts-arkts-collections-isendable-t.md)
 
@@ -23,7 +22,6 @@
 import { collections } from '@kit.ArkTS';
 ```
 
-<a id="join"></a>
 ## join
 
 ```TypeScript
@@ -52,7 +50,6 @@ join(separator?: string): string
 | --- | --- |
 | string | 包含所有ConcatArray元素连接成的字符串。如果ConcatArray为空，则返回空字符串。 |
 
-<a id="slice"></a>
 ## slice
 
 ```TypeScript

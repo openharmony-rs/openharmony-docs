@@ -5,7 +5,6 @@ type SourceCloseCallback = (uuid: number) => void
 ```
 
 由应用实现此回调函数，应用应释放相关资源。
-
 > **注意：**  
 >  
 > 客户端在处理完请求后应立刻返回。

@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="movefile"></a>
 ## moveFile
 
 ```TypeScript
@@ -14,7 +13,6 @@ declare function moveFile(src: string, dest: string, mode?: number): Promise<voi
 ```
 
 移动文件，使用promise异步回调。
-
 > **说明：**  
 >  
 > 该接口不支持在分布式文件路径下操作。
@@ -64,7 +62,6 @@ declare function moveFile(src: string, dest: string, mode?: number): Promise<voi
 | 13900042 | Unknown error |
 
 
-<a id="movefile-1"></a>
 ## moveFile
 
 ```TypeScript
@@ -72,7 +69,6 @@ declare function moveFile(src: string, dest: string, callback: AsyncCallback<voi
 ```
 
 移动文件。如果移动位置存在同名文件，将强制覆盖。使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口不支持在分布式文件路径下操作。
@@ -116,7 +112,6 @@ declare function moveFile(src: string, dest: string, callback: AsyncCallback<voi
 | 13900042 | Unknown error |
 
 
-<a id="movefile-2"></a>
 ## moveFile
 
 ```TypeScript
@@ -124,7 +119,6 @@ declare function moveFile(src: string, dest: string, mode: number, callback: Asy
 ```
 
 移动文件，支持设置移动模式。使用callback异步回调。
-
 > **说明：**  
 >  
 > 该接口不支持在分布式文件路径下操作。

@@ -6,7 +6,6 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="getuserextcredential"></a>
 ## getUserExtCredential
 
 ```TypeScript

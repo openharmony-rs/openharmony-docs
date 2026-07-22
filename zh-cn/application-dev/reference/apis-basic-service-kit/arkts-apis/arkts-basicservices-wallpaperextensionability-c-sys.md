@@ -18,7 +18,6 @@ class of wallpaper extension ability.
 import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';
 ```
 
-<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -59,7 +58,6 @@ class WallpaperExt extends WallpaperExtensionAbility {
 
 ```
 
-<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript
@@ -93,7 +91,6 @@ class WallpaperExt extends WallpaperExtensionAbility {
 
 ```
 
-<a id="onwallpaperchange"></a>
 ## onWallpaperChange
 
 ```TypeScript

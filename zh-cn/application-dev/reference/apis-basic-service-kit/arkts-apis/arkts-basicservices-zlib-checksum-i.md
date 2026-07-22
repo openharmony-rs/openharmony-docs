@@ -14,7 +14,6 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
-<a id="adler32"></a>
 ## adler32
 
 ```TypeScript
@@ -71,7 +70,6 @@ checksum.adler32(0, arrayBufferIn).then(data => {
 
 ```
 
-<a id="adler32combine"></a>
 ## adler32Combine
 
 ```TypeScript
@@ -140,7 +138,6 @@ async function demo() {
 
 ```
 
-<a id="crc32"></a>
 ## crc32
 
 ```TypeScript
@@ -199,7 +196,6 @@ checksum.crc32(0, arrayBufferIn).then((data) => {
 
 ```
 
-<a id="crc32combine"></a>
 ## crc32Combine
 
 ```TypeScript
@@ -268,7 +264,6 @@ async function demo() {
 
 ```
 
-<a id="crc64"></a>
 ## crc64
 
 ```TypeScript
@@ -327,7 +322,6 @@ checksum.crc64(0, arrayBufferIn).then((data) => {
 
 ```
 
-<a id="getcrc64table"></a>
 ## getCrc64Table
 
 ```TypeScript
@@ -365,7 +359,6 @@ checksum.getCrc64Table().then((data) => {
 
 ```
 
-<a id="getcrctable"></a>
 ## getCrcTable
 
 ```TypeScript

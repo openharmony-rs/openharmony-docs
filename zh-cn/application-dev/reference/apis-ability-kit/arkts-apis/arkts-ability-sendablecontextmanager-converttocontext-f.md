@@ -6,7 +6,6 @@
 import { sendableContextManager } from '@kit.AbilityKit';
 ```
 
-<a id="converttocontext"></a>
 ## convertToContext
 
 ```TypeScript
@@ -35,7 +34,7 @@ function convertToContext(sendableContext: SendableContext): common.Context
 
 | 类型 | 说明 |
 | --- | --- |
-| common.Context | [Context](arkts-ability-context-context-depr-i.md) object. |
+| common.Context | [Context](arkts-ability-context-t.md) object. |
 
 **错误码：**
 

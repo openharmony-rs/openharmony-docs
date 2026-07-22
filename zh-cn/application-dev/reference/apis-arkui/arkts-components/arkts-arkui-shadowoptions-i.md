@@ -80,7 +80,7 @@ offsetX?: number | Resource
 
 **说明：**
 
-如需使用vp单位的数值可用[vp2px](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。
+如需使用vp单位的数值可用[vp2px](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。
 
 如果offsetX为Resource类型，则传入的值需为number类型。
 
@@ -110,7 +110,7 @@ offsetY?: number | Resource
 
 **说明：**
 
-如需使用vp单位的数值可用[vp2px](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。
+如需使用vp单位的数值可用[vp2px](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。
 
 如果offsetY为Resource类型，则传入的值需为number类型。
 
@@ -142,7 +142,7 @@ radius: number | Resource
 
 API版本26.0.0之前，设置小于0的值时，按值为0处理。从API版本26.0.0开始，设置的值即为最终取值，当设置负数值时阴影消失。
 
-如需使用vp单位的数值可用[vp2px](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。
+如需使用vp单位的数值可用[vp2px](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。
 
 如果radius为Resource类型，则传入的值需为number类型。
 

@@ -1,6 +1,5 @@
 # getAppMemorySize
 
-<a id="getappmemorysize"></a>
 ## getAppMemorySize
 
 ```TypeScript
@@ -40,7 +39,6 @@ appManager.getAppMemorySize().then((data) => {
 ```
 
 
-<a id="getappmemorysize-1"></a>
 ## getAppMemorySize
 
 ```TypeScript

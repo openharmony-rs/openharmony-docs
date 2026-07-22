@@ -10,7 +10,6 @@ Defines a UIScrollableCommonEvent which is used to set event to target component
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="setonreachend"></a>
 ## setOnReachEnd
 
 ```TypeScript
@@ -35,7 +34,6 @@ Set or reset the callback which is triggered when the scrolling reaches the end 
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; \| undefined | 是 | callback function, triggered when the scrolling reaches the end position. |
 
-<a id="setonreachstart"></a>
 ## setOnReachStart
 
 ```TypeScript
@@ -60,7 +58,6 @@ Set or reset the callback which is triggered when the scrolling reaches the star
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; \| undefined | 是 | callback function, triggered when the scrolling reaches the start position. |
 
-<a id="setonscrollframebegin"></a>
 ## setOnScrollFrameBegin
 
 ```TypeScript
@@ -85,7 +82,6 @@ Set or reset the callback which is triggered when scrolling begin each frame.
 | --- | --- | --- | --- |
 | callback | [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling begin each frame. |
 
-<a id="setonscrollstart"></a>
 ## setOnScrollStart
 
 ```TypeScript
@@ -110,7 +106,6 @@ Set or reset the callback which is triggered when the scrolling started.
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; \| undefined | 是 | callback function, triggered when the scrolling started. |
 
-<a id="setonscrollstop"></a>
 ## setOnScrollStop
 
 ```TypeScript

@@ -2,7 +2,7 @@
 
 当前窗口实例，窗口管理器管理的基本单元。
 
-下列API示例中都需先使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)、[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow-1)、[findWindow()](arkts-arkui-window-findwindow-f.md#findwindow-1)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
+下列API示例中都需先使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)、[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow)、[findWindow()](arkts-arkui-window-findwindow-f.md#findwindow)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
 
 **起始版本：** 6
 
@@ -16,7 +16,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="attachlayouttoparentwindow"></a>
 ## attachLayoutToParentWindow
 
 ```TypeScript
@@ -26,18 +25,17 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 设置一级子窗与主窗保持相对位置不变。使用Promise异步回调。
 
 该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
-
 > **说明：**  
 >  
 > - 只支持一级子窗调用该接口，子窗需处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）。  
 >  
 > - 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，并且可以监听主窗大小及模式切换。除非调用  
-> [detachLayoutToParentWindow()](arkts-arkui-window-window-i-sys.md#detachlayouttoparentwindow-1)接口解绑，否则效果将持续。  
+> [detachLayoutToParentWindow()](arkts-arkui-window-window-i-sys.md#detachlayouttoparentwindow)接口解绑，否则效果将持续。  
 >  
 > - 当子窗调用该接口后，再调用  
-> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto-1)、  
-> [maximize()](arkts-arkui-window-window-i.md#maximize-1)、  
-> [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled-1)等修改窗  
+> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、  
+> [maximize()](arkts-arkui-window-window-i.md#maximize)、  
+> [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)等修改窗  
 > 口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
 
 **起始版本：** 24
@@ -123,7 +121,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="binddialogtarget"></a>
 ## bindDialogTarget
 
 ```TypeScript
@@ -215,7 +212,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 ```
 
-<a id="binddialogtarget-1"></a>
 ## bindDialogTarget
 
 ```TypeScript
@@ -304,7 +300,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 ```
 
-<a id="binddialogtarget-2"></a>
 ## bindDialogTarget
 
 ```TypeScript
@@ -384,7 +379,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 ```
 
-<a id="binddialogtarget-3"></a>
 ## bindDialogTarget
 
 ```TypeScript
@@ -461,7 +455,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 ```
 
-<a id="detachlayouttoparentwindow"></a>
 ## detachLayoutToParentWindow
 
 ```TypeScript
@@ -469,7 +462,6 @@ detachLayoutToParentWindow(): Promise<void>
 ```
 
 解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 子窗调用接口时需保持子窗处于协同状态。  
@@ -477,9 +469,9 @@ detachLayoutToParentWindow(): Promise<void>
 > - 调用接口解除协同后，子窗将保持协同时的位置，可对子窗进行拖拽以修改子窗大小和位置。  
 >  
 > - 解除协同后，调用  
-> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto-1)、  
-> [maximize()](arkts-arkui-window-window-i.md#maximize-1)、  
-> [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled-1)修改窗口  
+> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、  
+> [maximize()](arkts-arkui-window-window-i.md#maximize)、  
+> [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)修改窗口  
 > 位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
 
 **起始版本：** 24
@@ -543,7 +535,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="enabledrag"></a>
 ## enableDrag
 
 ```TypeScript
@@ -584,14 +575,13 @@ enableDrag(enable: boolean): Promise<void>
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
-<a id="getrotationlocked"></a>
 ## getRotationLocked
 
 ```TypeScript
 getRotationLocked(): boolean
 ```
 
-仅支持[系统窗口](docroot://windowmanager/window-terminology.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
+仅支持[系统窗口](../../../windowmanager/window-terminology.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
 
 **起始版本：** 22
 
@@ -629,7 +619,6 @@ try {
 
 ```
 
-<a id="gettransitioncontroller"></a>
 ## getTransitionController
 
 ```TypeScript
@@ -667,7 +656,6 @@ let controller = windowClass.getTransitionController(); // 获取属性转换控
 
 ```
 
-<a id="hide"></a>
 ## hide
 
 ```TypeScript
@@ -713,7 +701,6 @@ windowClass.hide((err: BusinessError) => {
 
 ```
 
-<a id="hide-1"></a>
 ## hide
 
 ```TypeScript
@@ -757,7 +744,6 @@ promise.then(() => {
 
 ```
 
-<a id="hidenonsystemfloatingwindows"></a>
 ## hideNonSystemFloatingWindows
 
 ```TypeScript
@@ -840,7 +826,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="hidenonsystemfloatingwindows-1"></a>
 ## hideNonSystemFloatingWindows
 
 ```TypeScript
@@ -928,7 +913,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="hidewithanimation"></a>
 ## hideWithAnimation
 
 ```TypeScript
@@ -976,7 +960,6 @@ windowClass.hideWithAnimation((err: BusinessError) => {
 
 ```
 
-<a id="hidewithanimation-1"></a>
 ## hideWithAnimation
 
 ```TypeScript
@@ -1022,7 +1005,6 @@ promise.then(() => {
 
 ```
 
-<a id="ismainwindowfullscreenacrossdisplays"></a>
 ## isMainWindowFullScreenAcrossDisplays
 
 ```TypeScript
@@ -1073,7 +1055,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off('mainWindowFullScreenAcrossDisplaysChanged')
 
 ```TypeScript
@@ -1126,7 +1107,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on('mainWindowFullScreenAcrossDisplaysChanged')
 
 ```TypeScript
@@ -1174,14 +1154,13 @@ try {
 
 ```
 
-<a id="opacity"></a>
 ## opacity
 
 ```TypeScript
 opacity(opacity: number): void
 ```
 
-设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](docroot://windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
 
@@ -1217,7 +1196,6 @@ try {
 
 ```
 
-<a id="raiseabovetarget"></a>
 ## raiseAboveTarget
 
 ```TypeScript
@@ -1226,7 +1204,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 
 将同一个主窗口下的子窗口抬升到目标子窗口之上。使用callback异步回调。
 
-使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)并执行完毕。
+使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
 
@@ -1240,7 +1218,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | number | 是 | 目标子窗口的id，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties-1)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
+| windowId | number | 是 | 目标子窗口的id，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -1298,7 +1276,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="raiseabovetarget-1"></a>
 ## raiseAboveTarget
 
 ```TypeScript
@@ -1307,7 +1284,7 @@ raiseAboveTarget(windowId: number): Promise<void>
 
 将同一个主窗下的子窗口提升到目标子窗口之上。使用Promise异步回调。
 
-使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)并执行完毕。
+使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
 
@@ -1321,7 +1298,7 @@ raiseAboveTarget(windowId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | number | 是 | 目标子窗口的id，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties-1)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
+| windowId | number | 是 | 目标子窗口的id，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
 
 **返回值：**
 
@@ -1382,7 +1359,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="raisemainwindowabovetarget"></a>
 ## raiseMainWindowAboveTarget
 
 ```TypeScript
@@ -1410,7 +1386,7 @@ raiseMainWindowAboveTarget(windowId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | number | 是 | 目标主窗口的id，该参数为整数，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties-1)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
+| windowId | number | 是 | 目标主窗口的id，该参数为整数，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
 
 **返回值：**
 
@@ -1554,7 +1530,6 @@ export default class RaiseMainWindowAbility extends UIAbility {
 
 ```
 
-<a id="raisetoapptop"></a>
 ## raiseToAppTop
 
 ```TypeScript
@@ -1563,7 +1538,7 @@ raiseToAppTop(callback: AsyncCallback<void>): void
 
 提升应用子窗口到应用顶层。使用callback异步回调。
 
-使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)并执行完毕。
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
 
@@ -1623,7 +1598,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="requestfocus"></a>
 ## requestFocus
 
 ```TypeScript
@@ -1681,14 +1655,13 @@ promise.then(() => {
 
 ```
 
-<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
 rotate(rotateOptions: RotateOptions): void
 ```
 
-设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](docroot://windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
 
@@ -1731,14 +1704,13 @@ try {
 
 ```
 
-<a id="scale"></a>
 ## scale
 
 ```TypeScript
 scale(scaleOptions: ScaleOptions): void
 ```
 
-设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](docroot://windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
 
@@ -1780,7 +1752,6 @@ try {
 
 ```
 
-<a id="setbackdropblur"></a>
 ## setBackdropBlur
 
 ```TypeScript
@@ -1791,7 +1762,7 @@ setBackdropBlur(radius: number): void
 
 窗口背景是指窗口覆盖的下层区域，与窗口大小相同。
 
-需要通过[setWindowBackgroundColor](arkts-arkui-window-window-i.md#setwindowbackgroundcolor-1)将窗口内容背景设置成透明，否则无法看到模糊效果。
+需要通过[setWindowBackgroundColor](arkts-arkui-window-window-i.md#setwindowbackgroundcolor)将窗口内容背景设置成透明，否则无法看到模糊效果。
 
 **起始版本：** 9
 
@@ -1828,7 +1799,6 @@ try {
 
 ```
 
-<a id="setbackdropblurstyle"></a>
 ## setBackdropBlurStyle
 
 ```TypeScript
@@ -1871,7 +1841,6 @@ try {
 
 ```
 
-<a id="setblur"></a>
 ## setBlur
 
 ```TypeScript
@@ -1914,7 +1883,6 @@ try {
 
 ```
 
-<a id="setcornerradius"></a>
 ## setCornerRadius
 
 ```TypeScript
@@ -1957,18 +1925,17 @@ try {
 
 ```
 
-<a id="setdefaultdensityenabled"></a>
 ## setDefaultDensityEnabled
 
 ```TypeScript
 setDefaultDensityEnabled(enabled: boolean): void
 ```
 
-设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在[loadContent()](arkts-arkui-window-window-i.md#loadcontent-1)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent-1)调用生效后使用。
+设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在[loadContent()](arkts-arkui-window-window-i.md#loadcontent)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)调用生效后使用。
 
 不调用此接口进行设置，则表示不使用系统默认Density。
 
-当存在同时使用该接口、[setDefaultDensityEnabled(true)](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
+当存在同时使用该接口、[setDefaultDensityEnabled(true)](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
 
 **起始版本：** 20
 
@@ -2004,7 +1971,6 @@ try {
 
 ```
 
-<a id="setforbidsplitmove"></a>
 ## setForbidSplitMove
 
 ```TypeScript
@@ -2077,7 +2043,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="setforbidsplitmove-1"></a>
 ## setForbidSplitMove
 
 ```TypeScript
@@ -2153,7 +2118,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="sethandwritingflag"></a>
 ## setHandwritingFlag
 
 ```TypeScript
@@ -2211,7 +2175,6 @@ try {
 
 ```
 
-<a id="setmainwindowraisebyclickenabled"></a>
 ## setMainWindowRaiseByClickEnabled
 
 ```TypeScript
@@ -2286,7 +2249,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="setraisebyclickenabled"></a>
 ## setRaiseByClickEnabled
 
 ```TypeScript
@@ -2297,7 +2259,7 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback<void>): void
 
 通常来说，点击一个子窗口，会将该子窗口显示到最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口显示到最上方，而是保持不变。
 
-使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)并执行完毕。
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
 
@@ -2364,38 +2326,36 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="setrotationlocked"></a>
 ## setRotationLocked
 
 ```TypeScript
 setRotationLocked(locked: boolean): Promise<void>
 ```
 
-仅支持[系统窗口](docroot://windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
-
+仅支持[系统窗口](../../../windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
 > **说明：**  
 >  
 > - 如果在锁定期间主窗口通过  
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)  
+> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)  
 > 设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。  
 >  
 > - 如果在锁定期间系统窗口通过  
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)  
+> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)  
 > 设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用  
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)  
+> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)  
 > 设置显示方向。  
 >  
 > - 如果在锁定期间sensor方向发生了变化，则解除旋转锁定后还原到最后一次的sensor方向。  
 >  
 > - 如果在锁定期间应用调用  
-> [setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation-1)  
+> [setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation)  
 > 设置屏幕方向，忽略该次屏幕方向设置。  
 >  
 > - 解除锁定时，根据主窗口的显示方向属性  
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)  
-> 、sensor方向等决定应用显示方向，具体见[窗口旋转简介](docroot://windowmanager/window-rotation.md#窗口旋转简介)。  
+> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)  
+> 、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../../windowmanager/window-rotation.md#窗口旋转简介)。  
 >  
-> - 不影响应用[module.json5配置文件中的abilities标签](docroot://quick-start/module-configuration-file.md#abilities标签)  
+> - 不影响应用[module.json5配置文件中的abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)  
 > orientation属性设置的启动方向。
 
 **起始版本：** 22
@@ -2443,7 +2403,6 @@ promise.then(() => {
 
 ```
 
-<a id="setshadow"></a>
 ## setShadow
 
 ```TypeScript
@@ -2489,7 +2448,6 @@ try {
 
 ```
 
-<a id="setsingleframecomposerenabled"></a>
 ## setSingleFrameComposerEnabled
 
 ```TypeScript
@@ -2548,7 +2506,6 @@ try {
 
 ```
 
-<a id="setsnapshotskip"></a>
 ## setSnapshotSkip
 
 ```TypeScript
@@ -2593,7 +2550,6 @@ try {
 
 ```
 
-<a id="settitlebuttonvisible"></a>
 ## setTitleButtonVisible
 
 ```TypeScript
@@ -2669,7 +2625,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="settopmost"></a>
 ## setTopmost
 
 ```TypeScript
@@ -2733,7 +2688,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="settouchableareas"></a>
 ## setTouchableAreas
 
 ```TypeScript
@@ -2777,7 +2731,6 @@ setTouchableAreas(rects: Array<Rect>): Promise<void>
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Invalid parameter range. |
 
-<a id="setwakeupscreen"></a>
 ## setWakeUpScreen
 
 ```TypeScript
@@ -2821,7 +2774,6 @@ try {
 
 ```
 
-<a id="setwatermarkflag"></a>
 ## setWaterMarkFlag
 
 ```TypeScript
@@ -2876,7 +2828,6 @@ try {
 
 ```
 
-<a id="setwatermarkflag-1"></a>
 ## setWaterMarkFlag
 
 ```TypeScript
@@ -2934,16 +2885,15 @@ try {
 
 ```
 
-<a id="setwindowcontainermodalcolor"></a>
 ## setWindowContainerModalColor
 
 ```TypeScript
 setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 ```
 
-设置主窗口容器在焦点态和非焦点态时的背景色。该接口需在调用[loadContent()](arkts-arkui-window-window-i.md#loadcontent-1)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent-1)后使用。
+设置主窗口容器在焦点态和非焦点态时的背景色。该接口需在调用[loadContent()](arkts-arkui-window-window-i.md#loadcontent)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)后使用。
 
-窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。内容区域背景色默认跟随系统深浅色，当同时使用该接口和[setWindowBackgroundColor()](arkts-arkui-window-window-i.md#setwindowbackgroundcolor-1)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
+窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。内容区域背景色默认跟随系统深浅色，当同时使用该接口和[setWindowBackgroundColor()](arkts-arkui-window-window-i.md#setwindowbackgroundcolor)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
 
 **起始版本：** 26.0.0
 
@@ -2973,7 +2923,6 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
-<a id="setwindowmode"></a>
 ## setWindowMode
 
 ```TypeScript
@@ -3047,7 +2996,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="setwindowmode-1"></a>
 ## setWindowMode
 
 ```TypeScript
@@ -3118,7 +3066,6 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<a id="setwindowtype"></a>
 ## setWindowType
 
 ```TypeScript
@@ -3164,7 +3111,6 @@ promise.then(() => {
 
 ```
 
-<a id="setwindowtype-1"></a>
 ## setWindowType
 
 ```TypeScript
@@ -3207,7 +3153,6 @@ windowClass.setWindowType(type, (err: BusinessError) => {
 
 ```
 
-<a id="showwithanimation"></a>
 ## showWithAnimation
 
 ```TypeScript
@@ -3255,7 +3200,6 @@ windowClass.showWithAnimation((err: BusinessError) => {
 
 ```
 
-<a id="showwithanimation-1"></a>
 ## showWithAnimation
 
 ```TypeScript
@@ -3301,14 +3245,13 @@ promise.then(() => {
 
 ```
 
-<a id="translate"></a>
 ## translate
 
 ```TypeScript
 translate(translateOptions: TranslateOptions): void
 ```
 
-设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](docroot://windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
 

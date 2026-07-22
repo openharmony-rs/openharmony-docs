@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="createhdrcolor"></a>
 ## createHDRColor
 
 ```TypeScript
@@ -43,7 +42,6 @@ static createHDRColor(colorSpace: ColorSpace, red: number, green: number, blue: 
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c-sys.md) | ColorMetrics class instance with HDR color. |
 
-<a id="createhdrcolorwithlinearexposure"></a>
 ## createHDRColorWithLinearExposure
 
 ```TypeScript
@@ -57,9 +55,7 @@ static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: Colo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ColorMetrics-static createHDRColorWithLinearExposure(linearExposure: double, colorSpace: ColorSpace,
-    red: double, green: double, blue: double, alpha?: double): ColorMetrics--><!--Device-ColorMetrics-static createHDRColorWithLinearExposure(linearExposure: double, colorSpace: ColorSpace,
-    red: double, green: double, blue: double, alpha?: double): ColorMetrics-End-->
+<!--Device-ColorMetrics-static createHDRColorWithLinearExposure(linearExposure: double, colorSpace: ColorSpace,    red: double, green: double, blue: double, alpha?: double): ColorMetrics--><!--Device-ColorMetrics-static createHDRColorWithLinearExposure(linearExposure: double, colorSpace: ColorSpace,    red: double, green: double, blue: double, alpha?: double): ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,7 +78,6 @@ static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: Colo
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c-sys.md) | 带有HDR颜色的ColorMetrics类实例。 |
 
-<a id="createhdrcolorwithlogexposure"></a>
 ## createHDRColorWithLogExposure
 
 ```TypeScript
@@ -96,9 +91,7 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ColorMetrics-static createHDRColorWithLogExposure(exposure: double, colorSpace: ColorSpace,
-    red: double, green: double, blue: double, alpha?: double): ColorMetrics--><!--Device-ColorMetrics-static createHDRColorWithLogExposure(exposure: double, colorSpace: ColorSpace,
-    red: double, green: double, blue: double, alpha?: double): ColorMetrics-End-->
+<!--Device-ColorMetrics-static createHDRColorWithLogExposure(exposure: double, colorSpace: ColorSpace,    red: double, green: double, blue: double, alpha?: double): ColorMetrics--><!--Device-ColorMetrics-static createHDRColorWithLogExposure(exposure: double, colorSpace: ColorSpace,    red: double, green: double, blue: double, alpha?: double): ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,7 +114,6 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace,
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c-sys.md) | ColorMetrics class instance with HDR color. |
 
-<a id="getbluevalue"></a>
 ## getBlueValue
 
 ```TypeScript
@@ -146,7 +138,6 @@ getBlueValue(): number
 | --- | --- |
 | number | 蓝色值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),>1.0表示HDR亮度。 |
 
-<a id="getcolorspace"></a>
 ## getColorSpace
 
 ```TypeScript
@@ -171,7 +162,6 @@ getColorSpace(): ColorSpace
 | --- | --- |
 | [ColorSpace](arkts-arkui-window-colorspace-e.md) | The color space of the ColorMetrics.Possible value: ColorSpace.SRGB, ColorSpace.DISPLAY_P3, ColorSpace.BT2020. |
 
-<a id="getgreenvalue"></a>
 ## getGreenValue
 
 ```TypeScript
@@ -196,7 +186,6 @@ getGreenValue(): number
 | --- | --- |
 | number | 绿色的值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),>1.0表示HDR亮度。 |
 
-<a id="getredvalue"></a>
 ## getRedValue
 
 ```TypeScript
@@ -221,7 +210,6 @@ getRedValue(): number
 | --- | --- |
 | number | 红色的值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),>1.0表示HDR亮度。 |
 
-<a id="ishdr"></a>
 ## isHDR
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="isanimationreduceenabled"></a>
 ## isAnimationReduceEnabled
 
 ```TypeScript

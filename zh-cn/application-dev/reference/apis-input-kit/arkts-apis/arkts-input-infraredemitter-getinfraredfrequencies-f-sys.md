@@ -6,7 +6,6 @@
 import { infraredEmitter } from '@kit.InputKit';
 ```
 
-<a id="getinfraredfrequencies"></a>
 ## getInfraredFrequencies
 
 ```TypeScript

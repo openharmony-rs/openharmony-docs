@@ -1,6 +1,6 @@
 # MarchingMode（系统接口）
 
-Marching mode definition.
+行进模式定义
 
 **起始版本：** 26.0.0
 
@@ -16,7 +16,7 @@ Marching mode definition.
 TURN_THEN_MOVE = 0
 ```
 
-Turn first, then move.
+先转动再移动
 
 **起始版本：** 26.0.0
 
@@ -32,7 +32,7 @@ Turn first, then move.
 TURNING_MOVING = 1
 ```
 
-Move and rotate simultaneously.
+边移动边转动
 
 **起始版本：** 26.0.0
 

@@ -6,7 +6,6 @@
 import { bundleMonitor } from '@kit.AbilityKit';
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript

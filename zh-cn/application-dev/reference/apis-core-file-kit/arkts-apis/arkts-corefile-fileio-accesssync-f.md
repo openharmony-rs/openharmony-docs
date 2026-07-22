@@ -1,6 +1,5 @@
 # accessSync
 
-<a id="accesssync"></a>
 ## accessSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function accessSync(path: string, mode?: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:accessSync](arkts-corefile-file-fs-accesssync-f.md#accesssync-1)
+**替代接口：** [fs:accessSync](arkts-corefile-fileio-accesssync-f.md#accesssync)
 
 <!--Device-unnamed-declare function accessSync(path: string, mode?: number): void--><!--Device-unnamed-declare function accessSync(path: string, mode?: number): void-End-->
 

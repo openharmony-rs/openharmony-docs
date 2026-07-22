@@ -14,7 +14,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -38,7 +37,6 @@ let textEncoder = new util.TextEncoder();
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -68,7 +66,6 @@ let textEncoder = new util.TextEncoder("utf-8");
 
 ```
 
-<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -104,7 +101,6 @@ let textEncoder = util.TextEncoder.create("utf-8");
 
 ```
 
-<a id="encode"></a>
 ## encode
 
 ```TypeScript
@@ -145,7 +141,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="encodeinto"></a>
 ## encodeInto
 
 ```TypeScript
@@ -184,7 +179,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="encodeinto-1"></a>
 ## encodeInto
 
 ```TypeScript
@@ -197,7 +191,7 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 
 **废弃版本：** 9
 
-**替代接口：** [encodeIntoUint8Array](arkts-arkts-util-textencoder-c.md#encodeintouint8array-1)
+**替代接口：** [encodeIntoUint8Array](arkts-arkts-util-textencoder-c.md#encodeintouint8array)
 
 <!--Device-TextEncoder-encodeInto(input: string, dest: Uint8Array): { read: number; written: number }--><!--Device-TextEncoder-encodeInto(input: string, dest: Uint8Array): { read: number; written: number }-End-->
 
@@ -228,7 +222,6 @@ console.info("uint8 = " + uint8);
 
 ```
 
-<a id="encodeintouint8array"></a>
 ## encodeIntoUint8Array
 
 ```TypeScript

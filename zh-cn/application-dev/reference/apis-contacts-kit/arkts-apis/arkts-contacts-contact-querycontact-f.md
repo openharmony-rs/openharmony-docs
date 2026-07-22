@@ -6,7 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="querycontact"></a>
 ## queryContact
 
 ```TypeScript
@@ -19,7 +18,7 @@ function queryContact(key: string, callback: AsyncCallback<Contact>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact-1)
+**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -52,7 +51,6 @@ contact.queryContact('xxx', (err: BusinessError, data) => {
 ```
 
 
-<a id="querycontact-1"></a>
 ## queryContact
 
 ```TypeScript
@@ -106,7 +104,6 @@ contact.queryContact(context, 'xxx', (err: BusinessError, data) => {
 ```
 
 
-<a id="querycontact-2"></a>
 ## queryContact
 
 ```TypeScript
@@ -119,7 +116,7 @@ function queryContact(key: string, holder: Holder, callback: AsyncCallback<Conta
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact-1)
+**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -157,7 +154,6 @@ contact.queryContact('xxx', {
 ```
 
 
-<a id="querycontact-3"></a>
 ## queryContact
 
 ```TypeScript
@@ -216,7 +212,6 @@ contact.queryContact(context, 'xxx', {
 ```
 
 
-<a id="querycontact-4"></a>
 ## queryContact
 
 ```TypeScript
@@ -229,7 +224,7 @@ function queryContact(key: string, attrs: ContactAttributes, callback: AsyncCall
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact-1)
+**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -265,7 +260,6 @@ contact.queryContact('xxx', {
 ```
 
 
-<a id="querycontact-5"></a>
 ## queryContact
 
 ```TypeScript
@@ -322,7 +316,6 @@ contact.queryContact(context, 'xxx', {
 ```
 
 
-<a id="querycontact-6"></a>
 ## queryContact
 
 ```TypeScript
@@ -335,7 +328,7 @@ function queryContact(key: string, holder: Holder, attrs: ContactAttributes, cal
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact-1)
+**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -376,7 +369,6 @@ contact.queryContact('xxx', {
 ```
 
 
-<a id="querycontact-7"></a>
 ## queryContact
 
 ```TypeScript
@@ -438,7 +430,6 @@ function queryContact(context: Context, key: string, holder: Holder, attrs: Cont
 ```
 
 
-<a id="querycontact-8"></a>
 ## queryContact
 
 ```TypeScript
@@ -451,7 +442,7 @@ function queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): 
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact-1)
+**替代接口：** [queryContact(context:](arkts-contacts-contact-querycontact-f.md#querycontact)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -493,7 +484,6 @@ promise.then((data) => {
 ```
 
 
-<a id="querycontact-9"></a>
 ## queryContact
 
 ```TypeScript

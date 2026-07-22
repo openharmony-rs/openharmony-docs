@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="detectencoding"></a>
 ## detectEncoding
 
 ```TypeScript
@@ -55,7 +54,6 @@ let info = i18n.Unicode.detectEncoding(uint8Array); // info.encodingName = 'UTF-
 
 ```
 
-<a id="gettype"></a>
 ## getType
 
 ```TypeScript
@@ -93,7 +91,6 @@ let unicodeType: string = i18n.Unicode.getType('a'); // unicodeType = 'U_LOWERCA
 
 ```
 
-<a id="isdigit"></a>
 ## isDigit
 
 ```TypeScript
@@ -131,7 +128,6 @@ let isDigit: boolean = i18n.Unicode.isDigit('1'); // isDigit = true
 
 ```
 
-<a id="isideograph"></a>
 ## isIdeograph
 
 ```TypeScript
@@ -169,7 +165,6 @@ let isIdeograph: boolean = i18n.Unicode.isIdeograph('a'); // isIdeograph = false
 
 ```
 
-<a id="isletter"></a>
 ## isLetter
 
 ```TypeScript
@@ -207,7 +202,6 @@ let isLetter: boolean = i18n.Unicode.isLetter('a'); // isLetter = true
 
 ```
 
-<a id="islowercase"></a>
 ## isLowerCase
 
 ```TypeScript
@@ -245,7 +239,6 @@ let isLowercase: boolean = i18n.Unicode.isLowerCase('a'); // isLowercase = true
 
 ```
 
-<a id="isrtl"></a>
 ## isRTL
 
 ```TypeScript
@@ -283,7 +276,6 @@ let isRtl: boolean = i18n.Unicode.isRTL('a'); // isRtl = false
 
 ```
 
-<a id="isspacechar"></a>
 ## isSpaceChar
 
 ```TypeScript
@@ -321,7 +313,6 @@ let isSpacechar: boolean = i18n.Unicode.isSpaceChar('a'); // isSpacechar = false
 
 ```
 
-<a id="isuppercase"></a>
 ## isUpperCase
 
 ```TypeScript
@@ -359,7 +350,6 @@ let isUppercase: boolean = i18n.Unicode.isUpperCase('a'); // isUppercase = false
 
 ```
 
-<a id="iswhitespace"></a>
 ## isWhitespace
 
 ```TypeScript

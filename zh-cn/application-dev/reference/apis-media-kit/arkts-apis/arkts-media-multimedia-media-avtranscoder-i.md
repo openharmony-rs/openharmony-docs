@@ -1,9 +1,8 @@
 # AVTranscoder
 
-视频转码管理类，用于视频转码。在调用AVTranscoder的方法前，需要先通过[createAVTranscoder()](arkts-media-media-createavtranscoder-f.md#createavtranscoder-1)构建一个AVTranscoder实例。
+视频转码管理类，用于视频转码。在调用AVTranscoder的方法前，需要先通过[createAVTranscoder()](arkts-media-media-createavtranscoder-f.md#createavtranscoder)构建一个AVTranscoder实例。
 
-视频转码demo可参考：[视频转码开发指导](docroot://media/media/using-avtranscoder-for-transcodering.md)
-
+视频转码demo可参考：[视频转码开发指导](../../../media/media/using-avtranscoder-for-transcodering.md)
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 12开始支持。
@@ -20,7 +19,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="addwatermark"></a>
 ## addWatermark
 
 ```TypeScript
@@ -59,7 +57,6 @@ add a watermark for the AVTranscoder. This API uses a promise to return the resu
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The parameter check failed, parameter value out of range. |
 
-<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -92,7 +89,6 @@ cancel(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="off"></a>
 ## off('complete')
 
 ```TypeScript
@@ -116,7 +112,6 @@ off(type:'complete', callback?: Callback<void>):void
 | type | 'complete' | 是 | 转码完成事件回调类型，支持的事件：'complete'。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 完成事件回调方法。 |
 
-<a id="off-1"></a>
 ## off('error')
 
 ```TypeScript
@@ -140,7 +135,6 @@ off(type:'error', callback?: ErrorCallback):void
 | type | 'error' | 是 | 转码错误事件回调类型'error'。 <br>- 'error'：转码过程中发生错误，触发该事件。 |
 | callback | [ErrorCallback](../../apis-arkui/arkts-components/arkts-arkui-errorcallback-t-sys.md) | 否 | 错误事件回调方法。 |
 
-<a id="off-2"></a>
 ## off('progressUpdate')
 
 ```TypeScript
@@ -164,7 +158,6 @@ off(type:'progressUpdate', callback?: Callback<number>):void
 | type | 'progressUpdate' | 是 | 进度更新事件回调类型，支持的事件：'progressUpdate'。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 已注册的进度更新事件回调。由于当前回调注册时，仅会保留最后一次注册的回调，建议此参数缺省。 |
 
-<a id="on"></a>
 ## on('complete')
 
 ```TypeScript
@@ -190,7 +183,6 @@ on(type:'complete', callback: Callback<void>):void
 | type | 'complete' | 是 | 完成事件回调类型，支持的事件：'complete'，在转码过程中系统会自动触发此事件。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数，返回完成事件回调方法。 |
 
-<a id="on-1"></a>
 ## on('error')
 
 ```TypeScript
@@ -229,7 +221,6 @@ on(type:'error', callback: ErrorCallback):void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. |
 
-<a id="on-2"></a>
 ## on('progressUpdate')
 
 ```TypeScript
@@ -253,7 +244,6 @@ on(type:'progressUpdate', callback: Callback<number>):void
 | type | 'progressUpdate' | 是 | 进度更新事件回调类型，支持的事件：'progressUpdate'，在转码过程中系统会自动触发此事件。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数，返回进度更新事件，函数中的参数number，表示当前转码进度。 |
 
-<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -286,7 +276,6 @@ pause(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="prepare"></a>
 ## prepare
 
 ```TypeScript
@@ -325,7 +314,6 @@ prepare(config: AVTranscoderConfig): Promise<void>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by promise. |
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -357,7 +345,6 @@ release(): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="resume"></a>
 ## resume
 
 ```TypeScript
@@ -390,7 +377,6 @@ resume(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="start"></a>
 ## start
 
 ```TypeScript

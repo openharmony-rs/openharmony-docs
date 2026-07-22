@@ -12,7 +12,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ActionSheetButtonOptions](arkts-arkui-actionsheetbuttonoptions-i.md) | 弹窗中按钮的样式。  @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [ActionSheetButtonOptions](arkts-arkui-actionsheetbuttonoptions-i.md) | 弹窗中按钮的样式。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
 | [ActionSheetOffset](arkts-arkui-actionsheetoffset-i.md) | 弹窗的对齐方式。 |
 | [ActionSheetOptions](arkts-arkui-actionsheetoptions-i.md) | 列表选择弹窗的样式。 |
 | [DismissDialogAction](arkts-arkui-dismissdialogaction-i.md) | Dialog关闭的信息。 |

@@ -6,7 +6,6 @@
 import { display } from '@kit.ArkUI';
 ```
 
-<a id="setfolddisplaymode"></a>
 ## setFoldDisplayMode
 
 ```TypeScript
@@ -53,7 +52,6 @@ try {
 ```
 
 
-<a id="setfolddisplaymode-1"></a>
 ## setFoldDisplayMode
 
 ```TypeScript

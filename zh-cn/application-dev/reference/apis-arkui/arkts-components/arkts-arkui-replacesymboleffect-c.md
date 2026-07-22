@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -37,7 +36,6 @@ AppearSymbolEffect的构造函数，出现动效。
 | --- | --- | --- | --- |
 | scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。<br/>默认值：EffectScope.LAYER |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript

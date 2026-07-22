@@ -6,7 +6,6 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="setfingerprintauthdisabled"></a>
 ## setFingerprintAuthDisabled
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setFingerprintAuthDisabled(admin: Want, disabled: boolean): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 

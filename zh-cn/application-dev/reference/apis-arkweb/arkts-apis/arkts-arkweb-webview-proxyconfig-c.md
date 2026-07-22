@@ -14,7 +14,6 @@ The ProxyConfig used by applyProxyOverride.
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="bypasshostnameswithoutperiod"></a>
 ## bypassHostnamesWithoutPeriod
 
 ```TypeScript
@@ -31,7 +30,6 @@ bypassHostnamesWithoutPeriod(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="clearimplicitrules"></a>
 ## clearImplicitRules
 
 ```TypeScript
@@ -48,7 +46,6 @@ clearImplicitRules(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="enablereversebypass"></a>
 ## enableReverseBypass
 
 ```TypeScript
@@ -71,7 +68,7 @@ enableReverseBypass(reverse: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reverse | boolean | 是 | 参数值默认是false，表示与[insertBypassRule](arkts-arkweb-webview-proxyconfig-c.md#insertbypassrule-1)中的bypassRule匹配的URL会绕过代理，参数值为true时，表示与[insertBypassRule](arkts-arkweb-webview-proxyconfig-c.md#insertbypassrule-1)中的bypassRule匹配的URL会使用代理。 |
+| reverse | boolean | 是 | 参数值默认是false，表示与[insertBypassRule](arkts-arkweb-webview-proxyconfig-c.md#insertbypassrule)中的bypassRule匹配的URL会绕过代理，参数值为true时，表示与[insertBypassRule](arkts-arkweb-webview-proxyconfig-c.md#insertbypassrule)中的bypassRule匹配的URL会使用代理。 |
 
 **错误码：**
 
@@ -79,7 +76,6 @@ enableReverseBypass(reverse: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
-<a id="getbypassrules"></a>
 ## getBypassRules
 
 ```TypeScript
@@ -102,7 +98,6 @@ getBypassRules(): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | 不使用代理的URL列表。 |
 
-<a id="getproxyrules"></a>
 ## getProxyRules
 
 ```TypeScript
@@ -125,7 +120,6 @@ getProxyRules(): Array<ProxyRule>
 | --- | --- |
 | Array&lt;ProxyRule&gt; | 代理规则。 |
 
-<a id="insertbypassrule"></a>
 ## insertBypassRule
 
 ```TypeScript
@@ -154,7 +148,6 @@ insertBypassRule(bypassRule: string): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
-<a id="insertdirectrule"></a>
 ## insertDirectRule
 
 ```TypeScript
@@ -183,7 +176,6 @@ insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
-<a id="insertproxyrule"></a>
 ## insertProxyRule
 
 ```TypeScript
@@ -217,7 +209,6 @@ insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
-<a id="isreversebypassenabled"></a>
 ## isReverseBypassEnabled
 
 ```TypeScript

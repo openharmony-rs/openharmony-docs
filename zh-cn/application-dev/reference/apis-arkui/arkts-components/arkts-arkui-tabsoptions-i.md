@@ -22,9 +22,9 @@ barModifier?: CommonModifier
 
 由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。
 
-Tabs的[barWidth](TabsAttribute#barWidth)、[barHeight](TabsAttribute#barHeight(value: Length))、[barBackgroundColor](TabsAttribute#barBackgroundColor)、[barBackgroundBlurStyle](TabsAttribute#barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions))、[barBackgroundEffect](TabsAttribute#barBackgroundEffect)属性会覆盖CommonModifier的[width](arkts-arkui-commonmethod-c.md#width-1)、[height](arkts-arkui-commonmethod-c.md#height-1)、[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor-1)、[backgroundBlurStyle](arkts-arkui-commonmethod-c.md#backgroundblurstyle-1)、[backgroundEffect](arkts-arkui-commonmethod-c.md#backgroundeffect-1)属性。
+Tabs的[barWidth](TabsAttribute#barWidth)、[barHeight](TabsAttribute#barHeight(value: Length))、[barBackgroundColor](TabsAttribute#barBackgroundColor)、[barBackgroundBlurStyle](TabsAttribute#barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions))、[barBackgroundEffect](TabsAttribute#barBackgroundEffect)属性会覆盖CommonModifier的[width](arkts-arkui-commonmethod-c.md#width)、[height](arkts-arkui-commonmethod-c.md#height)、[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor)、[backgroundBlurStyle](arkts-arkui-commonmethod-c.md#backgroundblurstyle)、[backgroundEffect](arkts-arkui-commonmethod-c.md#backgroundeffect)属性。
 
-[align](arkts-arkui-commonmethod-c.md#align-1)属性仅在[BarMode.Scrollable](TabsAttribute#barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions))模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](arkts-arkui-scrollablebarmodeoptions-i.md)未设置或设置为异常值时才能生效。
+[align](arkts-arkui-commonmethod-c.md#align)属性仅在[BarMode.Scrollable](TabsAttribute#barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions))模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](arkts-arkui-scrollablebarmodeoptions-i.md)未设置或设置为异常值时才能生效。
 
 [TabContent](arkts-arkui-tabcontent.md)组件的[tabBar](TabContentAttribute#tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | TabBarOptions))属性为底部页签样式时不支持拖拽功能。
 
@@ -96,9 +96,9 @@ index?: number
 
 可选值为[0, TabContent子节点数量-1]。
 
-直接修改index跳页时，切换动效不生效。 使用TabController的[changeIndex](arkts-arkui-tabscontroller-c.md#changeindex-1)时，默认生效切换动效，可以设置[animationDuration](TabsAttribute#animationDuration)为0关闭动画。
+直接修改index跳页时，切换动效不生效。 使用TabController的[changeIndex](arkts-arkui-tabscontroller-c.md#changeindex)时，默认生效切换动效，可以设置[animationDuration](TabsAttribute#animationDuration)为0关闭动画。
 
-从API version 10开始，该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。
 

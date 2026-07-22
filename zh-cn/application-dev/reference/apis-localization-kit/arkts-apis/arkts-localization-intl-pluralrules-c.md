@@ -18,7 +18,6 @@
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -49,7 +48,6 @@ let pluralRules = new intl.PluralRules();
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -87,7 +85,6 @@ let pluralRules: intl.PluralRules = new intl.PluralRules('zh-CN', { localeMatche
 
 ```
 
-<a id="select"></a>
 ## select
 
 ```TypeScript

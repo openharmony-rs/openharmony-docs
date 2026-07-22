@@ -1,6 +1,5 @@
 # vp2px
 
-<a id="vp2px"></a>
 ## vp2px
 
 ```TypeScript

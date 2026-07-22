@@ -86,11 +86,11 @@ fontFeature?: string
 
 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。
 
-格式为：normal | <feature-tag-value>
+格式为：normal | &lt;feature-tag-value&gt;
 
-<feature-tag-value>的格式为：<string> [ <integer> | on | off ]
+&lt;feature-tag-value&gt;的格式为：<string> [ <integer> | on | off ]
 
-<feature-tag-value>的个数可以有多个，中间用','隔开。
+&lt;feature-tag-value&gt;的个数可以有多个，中间用','隔开。
 
 例如，使用等宽时钟数字的输入格式为："ss01" on。
 

@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="queryabilitybywant"></a>
 ## queryAbilityByWant
 
 ```TypeScript
@@ -24,9 +23,7 @@ function queryAbilityByWant(want: Want,
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
-<!--Device-bundle-function queryAbilityByWant(want: Want,
-    bundleFlags: number, userId: number, callback: AsyncCallback<Array<AbilityInfo>>): void--><!--Device-bundle-function queryAbilityByWant(want: Want,
-    bundleFlags: number, userId: number, callback: AsyncCallback<Array<AbilityInfo>>): void-End-->
+<!--Device-bundle-function queryAbilityByWant(want: Want,    bundleFlags: number, userId: number, callback: AsyncCallback<Array<AbilityInfo>>): void--><!--Device-bundle-function queryAbilityByWant(want: Want,    bundleFlags: number, userId: number, callback: AsyncCallback<Array<AbilityInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -40,7 +37,6 @@ function queryAbilityByWant(want: Want,
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AbilityInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
 
-<a id="queryabilitybywant-1"></a>
 ## queryAbilityByWant
 
 ```TypeScript
@@ -70,7 +66,6 @@ function queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCall
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AbilityInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
 
-<a id="queryabilitybywant-2"></a>
 ## queryAbilityByWant
 
 ```TypeScript

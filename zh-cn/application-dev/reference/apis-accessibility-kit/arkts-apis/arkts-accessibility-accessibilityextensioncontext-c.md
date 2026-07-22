@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-<a id="getfocuselement"></a>
 ## getFocusElement
 
 ```TypeScript
@@ -41,7 +40,6 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback<Accessibi
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="getfocuselement-1"></a>
 ## getFocusElement
 
 ```TypeScript
@@ -77,7 +75,6 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise<AccessibilityElement>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="getfocuselement-2"></a>
 ## getFocusElement
 
 ```TypeScript
@@ -107,7 +104,6 @@ getFocusElement(callback: AsyncCallback<AccessibilityElement>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="getwindowrootelement"></a>
 ## getWindowRootElement
 
 ```TypeScript
@@ -138,7 +134,6 @@ getWindowRootElement(windowId: number, callback: AsyncCallback<AccessibilityElem
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="getwindowrootelement-1"></a>
 ## getWindowRootElement
 
 ```TypeScript
@@ -174,7 +169,6 @@ getWindowRootElement(windowId?: number): Promise<AccessibilityElement>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="getwindowrootelement-2"></a>
 ## getWindowRootElement
 
 ```TypeScript
@@ -204,7 +198,6 @@ getWindowRootElement(callback: AsyncCallback<AccessibilityElement>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="getwindows"></a>
 ## getWindows
 
 ```TypeScript
@@ -235,7 +228,6 @@ getWindows(displayId: number, callback: AsyncCallback<Array<AccessibilityElement
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="getwindows-1"></a>
 ## getWindows
 
 ```TypeScript
@@ -271,7 +263,6 @@ getWindows(displayId?: number): Promise<Array<AccessibilityElement>>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="getwindows-2"></a>
 ## getWindows
 
 ```TypeScript
@@ -301,7 +292,6 @@ getWindows(callback: AsyncCallback<Array<AccessibilityElement>>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="injectgesture"></a>
 ## injectGesture
 
 ```TypeScript
@@ -314,7 +304,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [injectGestureSync](arkts-accessibility-accessibilityextensioncontext-c.md#injectgesturesync-1)
+**替代接口：** [injectGestureSync](arkts-accessibility-accessibilityextensioncontext-c.md#injectgesturesync)
 
 <!--Device-AccessibilityExtensionContext-injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void--><!--Device-AccessibilityExtensionContext-injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void-End-->
 
@@ -334,7 +324,6 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="injectgesture-1"></a>
 ## injectGesture
 
 ```TypeScript
@@ -347,7 +336,7 @@ injectGesture(gesturePath: GesturePath): Promise<void>
 
 **废弃版本：** 10
 
-**替代接口：** [injectGestureSync](arkts-accessibility-accessibilityextensioncontext-c.md#injectgesturesync-1)
+**替代接口：** [injectGestureSync](arkts-accessibility-accessibilityextensioncontext-c.md#injectgesturesync)
 
 <!--Device-AccessibilityExtensionContext-injectGesture(gesturePath: GesturePath): Promise<void>--><!--Device-AccessibilityExtensionContext-injectGesture(gesturePath: GesturePath): Promise<void>-End-->
 
@@ -372,7 +361,6 @@ injectGesture(gesturePath: GesturePath): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="injectgesturesync"></a>
 ## injectGestureSync
 
 ```TypeScript
@@ -402,7 +390,6 @@ injectGestureSync(gesturePath: GesturePath): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-<a id="settargetbundlename"></a>
 ## setTargetBundleName
 
 ```TypeScript
@@ -432,7 +419,6 @@ setTargetBundleName(targetNames: Array<string>, callback: AsyncCallback<void>): 
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
-<a id="settargetbundlename-1"></a>
 ## setTargetBundleName
 
 ```TypeScript

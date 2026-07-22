@@ -66,12 +66,12 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | [AuthResultInfo](arkts-userauthentication-userauth-authresultinfo-i.md) | 表示认证结果信息，用于描述认证结果。 |
 | [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md) | 用户认证中间状态。该接口用于描述认证过程中产生的各种中间状态信息，包括状态对应的认证类型和具体的状态码。应用可通过[AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md)获取这些中间状态，以便在认证过程中提供更精细的用户反馈和状态感知。 |
 | [Authenticator](arkts-userauthentication-userauth-authenticator-i.md) | 认证器对象。 |
-| [EnrolledState](arkts-userauthentication-userauth-enrolledstate-i.md) | 用户注册凭据的状态。该接口用于描述用户已注册的认证凭据（如人脸、指纹、伴随设备）的当前状态，包括凭据摘要和数量。应用可通过[getEnrolledState](arkts-userauthentication-userauth-getenrolledstate-f.md#getenrolledstate-1)接口查询凭据状态，用于检测用户凭据是否发生变化（如新增或删除指纹/人脸/伴随设备），以便做出相应的业务处理。 |
+| [EnrolledState](arkts-userauthentication-userauth-enrolledstate-i.md) | 用户注册凭据的状态。该接口用于描述用户已注册的认证凭据（如人脸、指纹、伴随设备）的当前状态，包括凭据摘要和数量。应用可通过[getEnrolledState](arkts-userauthentication-userauth-getenrolledstate-f.md#getenrolledstate)接口查询凭据状态，用于检测用户凭据是否发生变化（如新增或删除指纹/人脸/伴随设备），以便做出相应的业务处理。 |
 | [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md) | 返回认证结果的回调对象。该接口定义了认证结果的回调方法，用于在认证完成后获取认证结果。应用通过实现onResult方法，可以在认证通过时获取认证令牌，在认证不通过时获取错误码和相关信息。 |
 | [IUserAuthCallback](arkts-userauthentication-userauth-iuserauthcallback-i.md) | 返回认证结果的回调对象。 |
 | [ReuseUnlockResult](arkts-userauthentication-userauth-reuseunlockresult-i.md) | 复用解锁认证结果。该接口用于配置认证结果复用的相关参数，包括复用模式和有效时长。通过合理配置认证结果复用，可以在保证安全性的前提下提升用户体验，避免用户频繁重复认证。 |
 | [TipInfo](arkts-userauthentication-userauth-tipinfo-i.md) | 表示认证过程中的提示信息，用于提供认证过程的反馈。 |
-| [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md) | 用于执行用户身份认证，并支持使用统一用户身份认证控件。该接口提供了完整的用户认证能力，包括订阅认证结果、订阅认证中间状态、启动认证和取消认证等操作。通过统一认证控件，可以为用户提供标准化的认证界面和一致的认证体验。  使用以下接口前，需先通过[getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md#getuserauthinstance-1)方法获取UserAuthInstance对象。 |
+| [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md) | 用于执行用户身份认证，并支持使用统一用户身份认证控件。该接口提供了完整的用户认证能力，包括订阅认证结果、订阅认证中间状态、启动认证和取消认证等操作。通过统一认证控件，可以为用户提供标准化的认证界面和一致的认证体验。  使用以下接口前，需先通过[getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md#getuserauthinstance)方法获取UserAuthInstance对象。 |
 | [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md) | 用户认证结果。认证通过时，返回认证类型和认证通过的令牌信息；认证不通过时，返回相应的错误码。该接口用于描述认证完成后的结果信息，应用可通过[IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md)的onResult回调获取此结果。 |
 | [WidgetParam](arkts-userauthentication-userauth-widgetparam-i.md) | 用户认证界面配置相关参数。该接口用于配置认证界面的显示样式和交互方式，包括标题、导航按钮文本、窗口模式等。通过合理配置这些参数，可以为用户提供清晰的认证引导和良好的交互体验。 |
 

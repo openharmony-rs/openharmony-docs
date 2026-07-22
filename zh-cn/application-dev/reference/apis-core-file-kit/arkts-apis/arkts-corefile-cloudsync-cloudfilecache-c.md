@@ -14,7 +14,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="cleanfilecache"></a>
 ## cleanFileCache
 
 ```TypeScript
@@ -67,7 +66,6 @@ try {
 
 ```
 
-<a id="cleanfilecache-1"></a>
 ## cleanFileCache
 
 ```TypeScript
@@ -94,7 +92,6 @@ cleanFileCache(): Promise<void>
 | --- | --- |
 | 13900010 | Try again. |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -122,7 +119,6 @@ let fileCache = new cloudSync.CloudFileCache();
 
 ```
 
-<a id="getcachedtotalsize"></a>
 ## getCachedTotalSize
 
 ```TypeScript
@@ -166,7 +162,6 @@ fileCache.getCachedTotalSize().then((totalDownloadSize: number) => {
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -216,7 +211,6 @@ try {
 
 ```
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -265,7 +259,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -313,7 +306,6 @@ try {
 
 ```
 
-<a id="on-1"></a>
 ## on
 
 ```TypeScript
@@ -366,7 +358,6 @@ try {
 
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -430,7 +421,6 @@ fileCache.start(uri).then(() => {
 
 ```
 
-<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -482,7 +472,6 @@ fileCache.start(uri, (err: BusinessError) => {
 
 ```
 
-<a id="startbatch"></a>
 ## startBatch
 
 ```TypeScript
@@ -546,7 +535,6 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -603,7 +591,6 @@ fileCache.stop(uri, true).then(() => {
 
 ```
 
-<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -656,14 +643,13 @@ fileCache.stop(uri, (err: BusinessError) => {
 
 ```
 
-<a id="stopbatch"></a>
 ## stopBatch
 
 ```TypeScript
 stopBatch(downloadId: number, needClean?: boolean): Promise<void>
 ```
 
-停止由[startBatch](arkts-corefile-cloudsync-cloudfilecache-c.md#startbatch-1)启动的云文件批量缓存任务。使用Promise异步回调。
+停止由[startBatch](arkts-corefile-cloudsync-cloudfilecache-c.md#startbatch)启动的云文件批量缓存任务。使用Promise异步回调。
 
 调用stopBatch接口会终止当前文件批量缓存流程，未下载完成的缓存文件是否删除由needClean参数决定。
 

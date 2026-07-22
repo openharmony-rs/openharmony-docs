@@ -14,7 +14,6 @@
 import { url } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -40,7 +39,6 @@ URL的构造函数。
 | url | string | 是 | 一个表示绝对URL或相对URL的字符串。 <br/>如果 url 是相对URL，则需要指定 base，用于解析最终的URL。 <br/>如果 url 是绝对URL，则给定的 base 将不会生效。 |
 | base | string \| URL | 否 | 入参字符串或者对象，默认值是undefined。<br/>- string：字符串。<br/>- URL：URL对象。 |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -57,7 +55,6 @@ URL的无参构造函数。parseURL调用后返回一个URL对象，不单独使
 
 **系统能力：** SystemCapability.Utils.Lang
 
-<a id="parseurl"></a>
 ## parseURL
 
 ```TypeScript
@@ -111,7 +108,6 @@ url.URL.parseURL('https://www.example.com', urlObject); // Output 'https://www.e
 
 ```
 
-<a id="tojson"></a>
 ## toJSON
 
 ```TypeScript
@@ -144,7 +140,6 @@ let result = urlObject.toJSON();
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript

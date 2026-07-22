@@ -6,7 +6,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="getscreencapturemonitor"></a>
 ## getScreenCaptureMonitor
 
 ```TypeScript

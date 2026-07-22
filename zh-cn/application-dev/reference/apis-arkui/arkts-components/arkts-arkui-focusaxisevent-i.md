@@ -36,7 +36,7 @@ axisMap: Map<AxisModel, number>
 stopPropagation: Callback<void>
 ```
 
-阻塞[事件冒泡](docroot://ui/arkts-interaction-basic-principles.md#事件冒泡)传递。
+阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。
 
 **类型：** Callback&lt;void&gt;
 

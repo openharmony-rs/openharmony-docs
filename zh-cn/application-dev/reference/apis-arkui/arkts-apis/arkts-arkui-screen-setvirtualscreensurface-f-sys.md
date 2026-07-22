@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="setvirtualscreensurface"></a>
 ## setVirtualScreenSurface
 
 ```TypeScript
@@ -86,7 +85,6 @@ struct Index {
 ```
 
 
-<a id="setvirtualscreensurface-1"></a>
 ## setVirtualScreenSurface
 
 ```TypeScript

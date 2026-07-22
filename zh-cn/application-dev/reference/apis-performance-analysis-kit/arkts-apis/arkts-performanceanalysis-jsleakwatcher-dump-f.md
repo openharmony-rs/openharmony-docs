@@ -6,7 +6,6 @@
 import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="dump"></a>
 ## dump
 
 ```TypeScript

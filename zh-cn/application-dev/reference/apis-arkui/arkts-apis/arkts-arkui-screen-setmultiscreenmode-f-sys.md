@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="setmultiscreenmode"></a>
 ## setMultiScreenMode
 
 ```TypeScript
@@ -18,9 +17,7 @@ function setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number,
 
 **起始版本：** 13
 
-<!--Device-screen-function setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long,
-    secondaryScreenMode: MultiScreenMode): Promise<void>--><!--Device-screen-function setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long,
-    secondaryScreenMode: MultiScreenMode): Promise<void>-End-->
+<!--Device-screen-function setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long,    secondaryScreenMode: MultiScreenMode): Promise<void>--><!--Device-screen-function setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long,    secondaryScreenMode: MultiScreenMode): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getappclonebundleinfo"></a>
 ## getAppCloneBundleInfo
 
 ```TypeScript
@@ -34,7 +33,7 @@ function getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags
 | bundleName | string | 是 | 表示要查询的应用Bundle名称。 |
 | appIndex | number | 是 | 表示要查询的分身应用索引。<br>appIndex为0时，表示查询主应用信息。appIndex大于0时，表示查询指定分身应用信息。 |
 | bundleFlags | number | 是 | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。 |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 

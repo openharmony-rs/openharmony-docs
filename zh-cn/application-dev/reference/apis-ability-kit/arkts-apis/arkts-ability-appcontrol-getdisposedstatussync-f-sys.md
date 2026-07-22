@@ -6,7 +6,6 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
-<a id="getdisposedstatussync"></a>
 ## getDisposedStatusSync
 
 ```TypeScript
@@ -29,7 +28,7 @@ function getDisposedStatusSync(appId: string): Want
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](docroot://quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appId | string | 是 | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 
 **返回值：**
 

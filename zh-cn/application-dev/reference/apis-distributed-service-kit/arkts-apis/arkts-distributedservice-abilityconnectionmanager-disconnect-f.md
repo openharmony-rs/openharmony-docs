@@ -6,7 +6,6 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="disconnect"></a>
 ## disconnect
 
 ```TypeScript

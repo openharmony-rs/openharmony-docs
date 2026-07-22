@@ -6,7 +6,6 @@
 import { cdsm } from '@kit.ConnectivityKit';
 ```
 
-<a id="createcdsmclient"></a>
 ## createCdsmClient
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
-<a id="getalllauncherabilityresourceinfo"></a>
 ## getAllLauncherAbilityResourceInfo
 
 ```TypeScript
@@ -41,7 +40,6 @@ function getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: Asyn
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 
-<a id="getalllauncherabilityresourceinfo-1"></a>
 ## getAllLauncherAbilityResourceInfo
 
 ```TypeScript

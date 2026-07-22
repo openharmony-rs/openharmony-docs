@@ -80,7 +80,7 @@ selected?: Date
 
 默认值：当前系统时间
 
-从API version 10开始，该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 **类型：** Date
 

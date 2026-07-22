@@ -1,6 +1,6 @@
 # DragStartRequestStatus
 
-定义应用是否可以发起拖拽的枚举类型。仅在[onDragStart](../arkts-components/arkts-arkui-commonmethod-c.md#ondragstart-1)调用时有效。
+定义应用是否可以发起拖拽的枚举类型。仅在[onDragStart](../arkts-components/arkts-arkui-commonmethod-c.md#ondragstart)调用时有效。
 
 **起始版本：** 18
 

@@ -6,7 +6,6 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="setdisallowedpermission"></a>
 ## setDisallowedPermission
 
 ```TypeScript
@@ -32,7 +31,7 @@ function setDisallowedPermission(admin: Want, permission: string, disallow: bool
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | permission | string | 是 | 权限名称。 |
 | disallow | boolean | 是 | 是否禁用。true表示禁用，false表示取消禁用。 |
-| accountId | number | 是 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| accountId | number | 是 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **错误码：**
 

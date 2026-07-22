@@ -6,7 +6,6 @@
 import { display } from '@kit.ArkUI';
 ```
 
-<a id="addvirtualscreensurface"></a>
 ## addVirtualScreenSurface
 
 ```TypeScript
@@ -31,7 +30,7 @@ function addVirtualScreenSurface(screenId: number, surfaceId: string, surfaceReg
 | --- | --- | --- | --- |
 | screenId | number | 是 | 虚拟屏幕的屏幕ID。 |
 | surfaceId | string | 是 | 代表虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
-| surfaceRegion | [Rect](../../apis-test-kit/arkts-apis/arkts-test-uitest-rect-i.md) | 否 | surface显示的虚拟屏的矩形区域。如果虚拟屏幕未通过[setVirtualScreenSurface()](arkts-arkui-display-setvirtualscreensurface-f.md#setvirtualscreensurface-1) 或[addVirtualScreenSurface()](arkts-arkui-display-addvirtualscreensurface-f-sys.md#addvirtualscreensurface-1)绑定过surface，surfaceRegion无效，默认全屏。在镜像模式下，surfaceRegion无效，默认全屏。在异源模式下，surfaceRegion有效。 |
+| surfaceRegion | [Rect](../../apis-test-kit/arkts-apis/arkts-test-uitest-rect-i.md) | 否 | surface显示的虚拟屏的矩形区域。如果虚拟屏幕未通过[setVirtualScreenSurface()](arkts-arkui-display-setvirtualscreensurface-f.md#setvirtualscreensurface) 或[addVirtualScreenSurface()](arkts-arkui-display-addvirtualscreensurface-f-sys.md#addvirtualscreensurface)绑定过surface，surfaceRegion无效，默认全屏。在镜像模式下，surfaceRegion无效，默认全屏。在异源模式下，surfaceRegion有效。 |
 
 **返回值：**
 

@@ -6,7 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -14,10 +13,9 @@ function create(context: BaseContext, config: Config, callback: AsyncCallback<Ta
 ```
 
 创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用callback异步回调。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 
@@ -49,7 +47,6 @@ function create(context: BaseContext, config: Config, callback: AsyncCallback<Ta
 | [21900005](../../apis-basic-services-kit/errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode. |
 
 
-<a id="create-1"></a>
 ## create
 
 ```TypeScript
@@ -57,10 +54,9 @@ function create(context: BaseContext, config: Config): Promise<Task>
 ```
 
 创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用Promise异步回调。
-
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 10
 

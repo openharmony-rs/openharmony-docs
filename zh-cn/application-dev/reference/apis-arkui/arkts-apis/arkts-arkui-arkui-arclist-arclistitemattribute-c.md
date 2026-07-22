@@ -16,7 +16,6 @@
 import { ArcListItemAttribute, ArcList, ArcListItem, ArcListAttribute } from '@kit.ArkUI';
 ```
 
-<a id="autoscale"></a>
 ## autoScale
 
 ```TypeScript
@@ -45,7 +44,6 @@ autoScale(enable: Optional<boolean>): ArcListItemAttribute
 | --- | --- |
 | [ArcListItemAttribute](arkts-arkui-arkui-arclist-arclistitemattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="swipeaction"></a>
 ## swipeAction
 
 ```TypeScript

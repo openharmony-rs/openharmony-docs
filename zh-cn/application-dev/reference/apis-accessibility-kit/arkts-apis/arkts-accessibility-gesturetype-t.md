@@ -19,25 +19,7 @@ type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |
-  'right' | 'rightThenLeft' | 'rightThenUp' | 'rightThenDown' |
-  'up' | 'upThenLeft' | 'upThenRight' | 'upThenDown' |
-  'down' | 'downThenLeft' | 'downThenRight' | 'downThenUp' |
-  'twoFingerSingleTap' | 'twoFingerDoubleTap' | 'twoFingerDoubleTapAndHold' | 'twoFingerTripleTap' |
-  'twoFingerTripleTapAndHold' | 'threeFingerSingleTap' | 'threeFingerDoubleTap' | 'threeFingerDoubleTapAndHold' |
-  'threeFingerTripleTap' | 'threeFingerTripleTapAndHold' | 'fourFingerSingleTap' | 'fourFingerDoubleTap' |
-  'fourFingerDoubleTapAndHold' | 'fourFingerTripleTap' | 'fourFingerTripleTapAndHold' |
-  'threeFingerSwipeUp' | 'threeFingerSwipeDown' | 'threeFingerSwipeLeft' | 'threeFingerSwipeRight' |
-  'fourFingerSwipeUp' | 'fourFingerSwipeDown' | 'fourFingerSwipeLeft' | 'fourFingerSwipeRight' | 'oneFingerDoubleTap'--><!--Device-unnamed-type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |
-  'right' | 'rightThenLeft' | 'rightThenUp' | 'rightThenDown' |
-  'up' | 'upThenLeft' | 'upThenRight' | 'upThenDown' |
-  'down' | 'downThenLeft' | 'downThenRight' | 'downThenUp' |
-  'twoFingerSingleTap' | 'twoFingerDoubleTap' | 'twoFingerDoubleTapAndHold' | 'twoFingerTripleTap' |
-  'twoFingerTripleTapAndHold' | 'threeFingerSingleTap' | 'threeFingerDoubleTap' | 'threeFingerDoubleTapAndHold' |
-  'threeFingerTripleTap' | 'threeFingerTripleTapAndHold' | 'fourFingerSingleTap' | 'fourFingerDoubleTap' |
-  'fourFingerDoubleTapAndHold' | 'fourFingerTripleTap' | 'fourFingerTripleTapAndHold' |
-  'threeFingerSwipeUp' | 'threeFingerSwipeDown' | 'threeFingerSwipeLeft' | 'threeFingerSwipeRight' |
-  'fourFingerSwipeUp' | 'fourFingerSwipeDown' | 'fourFingerSwipeLeft' | 'fourFingerSwipeRight' | 'oneFingerDoubleTap'-End-->
+<!--Device-unnamed-type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |  'right' | 'rightThenLeft' | 'rightThenUp' | 'rightThenDown' |  'up' | 'upThenLeft' | 'upThenRight' | 'upThenDown' |  'down' | 'downThenLeft' | 'downThenRight' | 'downThenUp' |  'twoFingerSingleTap' | 'twoFingerDoubleTap' | 'twoFingerDoubleTapAndHold' | 'twoFingerTripleTap' |  'twoFingerTripleTapAndHold' | 'threeFingerSingleTap' | 'threeFingerDoubleTap' | 'threeFingerDoubleTapAndHold' |  'threeFingerTripleTap' | 'threeFingerTripleTapAndHold' | 'fourFingerSingleTap' | 'fourFingerDoubleTap' |  'fourFingerDoubleTapAndHold' | 'fourFingerTripleTap' | 'fourFingerTripleTapAndHold' |  'threeFingerSwipeUp' | 'threeFingerSwipeDown' | 'threeFingerSwipeLeft' | 'threeFingerSwipeRight' |  'fourFingerSwipeUp' | 'fourFingerSwipeDown' | 'fourFingerSwipeLeft' | 'fourFingerSwipeRight' | 'oneFingerDoubleTap'--><!--Device-unnamed-type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |  'right' | 'rightThenLeft' | 'rightThenUp' | 'rightThenDown' |  'up' | 'upThenLeft' | 'upThenRight' | 'upThenDown' |  'down' | 'downThenLeft' | 'downThenRight' | 'downThenUp' |  'twoFingerSingleTap' | 'twoFingerDoubleTap' | 'twoFingerDoubleTapAndHold' | 'twoFingerTripleTap' |  'twoFingerTripleTapAndHold' | 'threeFingerSingleTap' | 'threeFingerDoubleTap' | 'threeFingerDoubleTapAndHold' |  'threeFingerTripleTap' | 'threeFingerTripleTapAndHold' | 'fourFingerSingleTap' | 'fourFingerDoubleTap' |  'fourFingerDoubleTapAndHold' | 'fourFingerTripleTap' | 'fourFingerTripleTapAndHold' |  'threeFingerSwipeUp' | 'threeFingerSwipeDown' | 'threeFingerSwipeLeft' | 'threeFingerSwipeRight' |  'fourFingerSwipeUp' | 'fourFingerSwipeDown' | 'fourFingerSwipeLeft' | 'fourFingerSwipeRight' | 'oneFingerDoubleTap'-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

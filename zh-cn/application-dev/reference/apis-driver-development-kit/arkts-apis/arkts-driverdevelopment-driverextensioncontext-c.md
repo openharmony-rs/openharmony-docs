@@ -1,7 +1,6 @@
 # DriverExtensionContext
 
 DriverExtensionContext模块是DriverExtensionAbility的上下文环境，继承自ExtensionContext。DriverExtensionContext模块提供DriverExtensionAbility实现中需要主动发起的操作。
-
 > **说明：**  
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -13,7 +12,6 @@ DriverExtensionContext模块是DriverExtensionAbility的上下文环境，继承
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-<a id="updatedriverstate"></a>
 ## updateDriverState
 
 ```TypeScript

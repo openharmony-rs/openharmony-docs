@@ -14,7 +14,6 @@
 import { WithEnvAttribute, WithEnv } from '@kit.ArkUI';
 ```
 
-<a id="customenv"></a>
 ## customEnv
 
 ```TypeScript
@@ -46,7 +45,6 @@ customEnv<T>(key: CustomEnvKey<T>,  value: T): WithEnvAttribute
 | --- | --- |
 | [WithEnvAttribute](arkts-arkui-arkui-withenv-withenvattribute-c.md) | WithEnvAttribute对象。 |
 
-<a id="env"></a>
 ## env
 
 ```TypeScript

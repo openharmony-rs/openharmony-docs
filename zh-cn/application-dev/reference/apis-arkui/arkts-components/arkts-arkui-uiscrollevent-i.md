@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="setondidscroll"></a>
 ## setOnDidScroll
 
 ```TypeScript
@@ -35,7 +34,6 @@ setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 | --- | --- | --- | --- |
 | callback | [ScrollOnScrollCallback](arkts-arkui-scrollonscrollcallback-t.md) \| undefined | 是 | 回调函数，在Scroll滚动时触发。 |
 
-<a id="setonwillscroll"></a>
 ## setOnWillScroll
 
 ```TypeScript

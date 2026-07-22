@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="createcamera"></a>
 ## createCamera
 
 ```TypeScript
@@ -37,7 +36,6 @@ Create a camera.
 | --- | --- |
 | Promise&lt;Camera&gt; | 返回创建的相机 |
 
-<a id="createcamera-1"></a>
 ## createCamera
 
 ```TypeScript
@@ -65,7 +63,6 @@ Create a camera.
 | --- | --- |
 | Promise&lt;Camera&gt; | 返回创建的相机 |
 
-<a id="createeffect"></a>
 ## createEffect
 
 ```TypeScript
@@ -92,7 +89,6 @@ createEffect(params: EffectParameters): Promise<Effect>
 | --- | --- |
 | Promise&lt;Effect&gt; | 返回创建的特效. |
 
-<a id="createenvironment"></a>
 ## createEnvironment
 
 ```TypeScript
@@ -119,7 +115,6 @@ Create an environment.
 | --- | --- |
 | Promise&lt;Environment&gt; | 返回创建的环境 |
 
-<a id="creategeometry"></a>
 ## createGeometry
 
 ```TypeScript
@@ -147,7 +142,6 @@ createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise<Geometry
 | --- | --- |
 | Promise&lt;Geometry&gt; | 返回创建的几何体 |
 
-<a id="createlight"></a>
 ## createLight
 
 ```TypeScript
@@ -175,7 +169,6 @@ Create a light.
 | --- | --- |
 | Promise&lt;Light&gt; | 返回创建的光源 |
 
-<a id="creatematerial"></a>
 ## createMaterial
 
 ```TypeScript
@@ -203,7 +196,6 @@ Create a material.
 | --- | --- |
 | Promise&lt;Material&gt; | 返回创建的材质 |
 
-<a id="createnode"></a>
 ## createNode
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # addSlots（系统接口）
 
-<a id="addslots"></a>
 ## addSlots
 
 ```TypeScript
@@ -31,7 +30,6 @@ function addSlots(slots: Array<NotificationSlot>, callback: AsyncCallback<void>)
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
 
-<a id="addslots-1"></a>
 ## addSlots
 
 ```TypeScript

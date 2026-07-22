@@ -1,6 +1,6 @@
 # IntentResult
 
-意图执行的返回结果，支持[泛型类型](docroot://quick-start/introduction-to-arkts.md#泛型类和接口)。
+意图执行的返回结果，支持[泛型类型](../../../quick-start/introduction-to-arkts.md#泛型类和接口)。
 
 **起始版本：** 20
 

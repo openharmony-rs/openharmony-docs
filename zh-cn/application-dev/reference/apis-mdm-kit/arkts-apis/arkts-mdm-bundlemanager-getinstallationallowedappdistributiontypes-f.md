@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="getinstallationallowedappdistributiontypes"></a>
 ## getInstallationAllowedAppDistributionTypes
 
 ```TypeScript

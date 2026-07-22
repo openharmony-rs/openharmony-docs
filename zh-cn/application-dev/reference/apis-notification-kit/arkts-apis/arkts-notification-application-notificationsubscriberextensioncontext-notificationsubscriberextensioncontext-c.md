@@ -3,7 +3,6 @@
 NotificationSubscriberExtensionContext模块提供通知订阅者扩展能力。
 
 NotificationSubscriberExtensionContext继承自ExtensionContext类，是NotificationSubscriberExtensionAbility的上下文。
-
 > **说明**  
 >  
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  

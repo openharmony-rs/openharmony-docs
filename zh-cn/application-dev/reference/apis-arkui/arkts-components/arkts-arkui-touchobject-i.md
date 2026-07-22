@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getcurrentlocalposition"></a>
 ## getCurrentLocalPosition
 
 ```TypeScript
@@ -83,7 +82,7 @@ displayY: number
 globalDisplayX?: number
 ```
 
-触摸点在[全局坐标系](docroot://windowmanager/window-terminology.md#全局坐标系)中的X坐标。
+触摸点在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
 
 单位：vp
 
@@ -107,7 +106,7 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-点击位置在[全局坐标系](docroot://windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
+点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
 
 单位：vp
 
@@ -363,7 +362,7 @@ windowY: number
 x: number
 ```
 
-触摸点在事件响应组件为基准的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中的X坐标。
+触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。
 
 单位：vp
 
@@ -383,7 +382,7 @@ x: number
 y: number
 ```
 
-触摸点在事件响应组件为基准的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中的Y坐标。
+触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。
 
 单位：vp
 

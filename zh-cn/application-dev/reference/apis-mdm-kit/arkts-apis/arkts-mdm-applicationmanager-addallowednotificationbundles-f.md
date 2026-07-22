@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="addallowednotificationbundles"></a>
 ## addAllowedNotificationBundles
 
 ```TypeScript
@@ -14,17 +13,13 @@ function addAllowedNotificationBundles(admin: Want, bundleNames: Array<string>, 
 ```
 
 添加允许发送通知的应用名单。设置通知白名单后，不在此名单内的应用无法发送通知。
-
 > **说明：**  
 >  
 > 1.如果Kiosk模式与通知白名单策略同时设置，那么设置Kiosk模式的应用与通知白名单中的应用都可以发送通知。
-
 > 2.当已经通过  
-> [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)  
+> [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)  
 > 设置了禁用设备通知能力时，再通过本接口设置通知白名单，会抛出错误码9200010。
-
 > 3.通知白名单对系统服务不生效，系统服务始终可以发送通知。系统应用受通知白名单管控。
-
 > 4.支持跨用户设置，设置后跨用户立即生效。
 
 **起始版本：** 26.0.0
@@ -43,7 +38,7 @@ function addAllowedNotificationBundles(admin: Want, bundleNames: Array<string>, 
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleNames | Array&lt;string&gt; | 是 | 应用包名数组，指定允许发送通知的应用。最多支持200个应用。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **错误码：**
 

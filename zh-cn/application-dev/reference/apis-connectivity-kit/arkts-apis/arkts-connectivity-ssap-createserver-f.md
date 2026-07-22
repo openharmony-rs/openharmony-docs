@@ -6,7 +6,6 @@
 import { ssap } from '@kit.ConnectivityKit';
 ```
 
-<a id="createserver"></a>
 ## createServer
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="getipaddress"></a>
 ## getIpAddress
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getIpAddress(admin: Want, networkInterface: string, callback: AsyncCall
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getIpAddressSync](arkts-mdm-networkmanager-getipaddresssync-f.md#getipaddresssync-1)
+**替代接口：** [getIpAddressSync](arkts-mdm-networkmanager-getipaddresssync-f.md#getipaddresssync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -73,7 +72,6 @@ networkManager.getIpAddress(wantTemp, 'eth0', (err, result) => {
 ```
 
 
-<a id="getipaddress-1"></a>
 ## getIpAddress
 
 ```TypeScript
@@ -86,7 +84,7 @@ function getIpAddress(admin: Want, networkInterface: string): Promise<string>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getIpAddressSync](arkts-mdm-networkmanager-getipaddresssync-f.md#getipaddresssync-1)
+**替代接口：** [getIpAddressSync](arkts-mdm-networkmanager-getipaddresssync-f.md#getipaddresssync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 

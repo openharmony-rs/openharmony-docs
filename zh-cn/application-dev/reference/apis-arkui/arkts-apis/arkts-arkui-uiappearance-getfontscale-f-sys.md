@@ -6,7 +6,6 @@
 import { uiAppearance } from '@kit.ArkUI';
 ```
 
-<a id="getfontscale"></a>
 ## getFontScale
 
 ```TypeScript
@@ -16,11 +15,9 @@ function getFontScale(): number
 获取系统当前的字体大小缩放比例。
 
 <!--Del-->
-
 > **说明：**
-
 > 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请  
-> [ohos.permission.UPDATE_CONFIGURATION](docroot://security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)  
+> [ohos.permission.UPDATE_CONFIGURATION](../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)  
 > 权限。
 
 <!--DelEnd-->

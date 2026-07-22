@@ -6,7 +6,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="createvideorecorder"></a>
 ## createVideoRecorder
 
 ```TypeScript
@@ -54,7 +53,6 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 ```
 
 
-<a id="createvideorecorder-1"></a>
 ## createVideoRecorder
 
 ```TypeScript

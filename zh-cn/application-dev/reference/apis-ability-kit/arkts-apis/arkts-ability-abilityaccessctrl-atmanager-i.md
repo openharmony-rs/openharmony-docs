@@ -1,6 +1,6 @@
 # AtManager
 
-程序访问控制管理类，提供权限校验、运行时权限弹窗申请、设置页授权引导、全局开关请求和权限状态监听等能力。通过[createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md#createatmanager-1)获取实例。
+程序访问控制管理类，提供权限校验、运行时权限弹窗申请、设置页授权引导、全局开关请求和权限状态监听等能力。通过[createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md#createatmanager)获取实例。
 
 **起始版本：** 8
 
@@ -14,7 +14,6 @@
 import { Context, Permissions, PermissionRequestResult } from '@kit.AbilityKit';
 ```
 
-<a id="checkaccesstoken"></a>
 ## checkAccessToken
 
 ```TypeScript
@@ -37,7 +36,7 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSta
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync-1)获取。 |
+| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync)获取。 |
 | permissionName | Permissions | 是 | 需要校验的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
@@ -76,7 +75,6 @@ atManager.checkAccessToken(tokenID, permissionName).then((data: abilityAccessCtr
 
 ```
 
-<a id="checkaccesstokensync"></a>
 ## checkAccessTokenSync
 
 ```TypeScript
@@ -85,7 +83,7 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 校验应用是否已被授予指定权限，同步返回该权限的授权状态。开发者可据此决定直接执行后续业务流程，或继续发起权限申请，或引导用户前往设置页修改授权状态。
 
-与[checkAccessToken](arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstoken-1)相比，本接口同步返回授权状态，适用于无需异步处理的权限校验场景。
+与[checkAccessToken](arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstoken)相比，本接口同步返回授权状态，适用于无需异步处理的权限校验场景。
 
 适用于应用访问相机、麦克风、位置等受保护资源前进行前置权限判断的场景。
 
@@ -101,7 +99,7 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync-1)获取。 |
+| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync)获取。 |
 | permissionName | Permissions | 是 | 需要校验的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
@@ -136,14 +134,13 @@ console.info(`Result: ${data}`);
 
 ```
 
-<a id="getselfpermissionstatus"></a>
 ## getSelfPermissionStatus
 
 ```TypeScript
 getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 ```
 
-查询当前应用的权限状态，同步返回结果。调用成功后，返回当前权限的状态。与[checkAccessToken](arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstoken-1)不同，本接口无需传入应用身份标识，仅用于查询当前应用自身权限状态。
+查询当前应用的权限状态，同步返回结果。调用成功后，返回当前权限的状态。与[checkAccessToken](arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstoken)不同，本接口无需传入应用身份标识，仅用于查询当前应用自身权限状态。
 
 适用于在判断是否需要请求权限前、权限申请后确认授权结果、或监听到权限状态变化后重新查询等场景。
 
@@ -193,7 +190,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off('selfPermissionStateChange')
 
 ```TypeScript
@@ -207,7 +203,6 @@ off(
 取消订阅自身指定权限列表的权限状态变更事件。取消订阅成功后，将不再接收指定权限列表的状态变化通知。
 
 在无需继续监听权限变化、应用退出或切换页面等场景下，可调用该接口取消订阅。
-
 > **说明**  
 > 当不传入callback参数时，将批量删除与permissionList相关联的所有回调函数。  
 > 该接口通常与[on](abilityAccessCtrl.AtManager.on)配套使用，用于取消通过on创建的监听关系。
@@ -216,15 +211,7 @@ off(
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtManager-off(
-      type: 'selfPermissionStateChange',
-      permissionList: Array<Permissions>,
-      callback?: Callback<PermissionStateChangeInfo>
-    ): void--><!--Device-AtManager-off(
-      type: 'selfPermissionStateChange',
-      permissionList: Array<Permissions>,
-      callback?: Callback<PermissionStateChangeInfo>
-    ): void-End-->
+<!--Device-AtManager-off(      type: 'selfPermissionStateChange',      permissionList: Array<Permissions>,      callback?: Callback<PermissionStateChangeInfo>    ): void--><!--Device-AtManager-off(      type: 'selfPermissionStateChange',      permissionList: Array<Permissions>,      callback?: Callback<PermissionStateChangeInfo>    ): void-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -264,7 +251,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on('selfPermissionStateChange')
 
 ```TypeScript
@@ -279,7 +265,6 @@ on(
 
 - 多次调用本订阅接口时，如果订阅的权限列表相同，callback不同，允许订阅成功。  
 - 多次调用本订阅接口时，如果订阅的权限列表间有相同的子集，callback相同时，订阅失败。
-
 > **说明**  
 > 权限状态由“已授权”变更为“未授权”可能存在两种场景：  
 > - 用户主动撤销：系统会终止对应应用进程。  
@@ -290,15 +275,7 @@ on(
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtManager-on(
-      type: 'selfPermissionStateChange',
-      permissionList: Array<Permissions>,
-      callback: Callback<PermissionStateChangeInfo>
-    ): void--><!--Device-AtManager-on(
-      type: 'selfPermissionStateChange',
-      permissionList: Array<Permissions>,
-      callback: Callback<PermissionStateChangeInfo>
-    ): void-End-->
+<!--Device-AtManager-on(      type: 'selfPermissionStateChange',      permissionList: Array<Permissions>,      callback: Callback<PermissionStateChangeInfo>    ): void--><!--Device-AtManager-on(      type: 'selfPermissionStateChange',      permissionList: Array<Permissions>,      callback: Callback<PermissionStateChangeInfo>    ): void-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -343,7 +320,6 @@ try {
 
 ```
 
-<a id="openpermissiononsetting"></a>
 ## openPermissionOnSetting
 
 ```TypeScript
@@ -352,7 +328,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 
 用于[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)/[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)拉起权限设置页面。调用成功后会打开权限设置页面，用户在页面中操作后，返回用户在设置页面中的选择结果。使用Promise异步回调。
 
-适用于 [manual_settings](docroot://security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型权限无法通过普通授权弹窗申请、必须引导用户进入系统设置完成授权的场景。manual_settings类型权限是指只能由用户在系统设置中手动开启的权限，无法通过普通授权弹窗直接申请。
+适用于 [manual_settings](../../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型权限无法通过普通授权弹窗申请、必须引导用户进入系统设置完成授权的场景。manual_settings类型权限是指只能由用户在系统设置中手动开启的权限，无法通过普通授权弹窗直接申请。
 
 **起始版本：** 22
 
@@ -367,7 +343,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法打开设置页面。 |
-| permission | Permissions | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为[manual_settings](docroot://security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限，传入其他类型权限时返回错误码12100014。<br>取值约束：权限名长度不能超过256个字符。 |
+| permission | Permissions | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为[manual_settings](../../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限，传入其他类型权限时返回错误码12100014。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
@@ -404,7 +380,6 @@ atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').the
 
 ```
 
-<a id="requestglobalswitch"></a>
 ## requestGlobalSwitch
 
 ```TypeScript
@@ -419,7 +394,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 <!--RP5-->
 
-![requestGlobalSwitch](docroot://reference/apis-ability-kit/figures/requestGlobalSwitch.png)
+![requestGlobalSwitch](../../../reference/apis-ability-kit/figures/requestGlobalSwitch.png)
 
 <!--RP5End-->
 
@@ -476,7 +451,6 @@ atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then
 
 ```
 
-<a id="requestpermissiononsetting"></a>
 ## requestPermissionOnSetting
 
 ```TypeScript
@@ -487,11 +461,11 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 
 适用于用户在首次弹窗中已拒绝过该权限授予，需要通过设置页面继续申请权限的场景。
 
-在调用此接口前，应用需要先调用[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser-1)。如果用户已在首次弹窗中授权，则调用当前接口不会拉起授权弹窗。
+在调用此接口前，应用需要先调用[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser)。如果用户已在首次弹窗中授权，则调用当前接口不会拉起授权弹窗。
 
 <!--RP4-->
 
-![requestPermissionOnSetting](docroot://reference/apis-ability-kit/figures/requestPermissionOnSetting.png)
+![requestPermissionOnSetting](../../../reference/apis-ability-kit/figures/requestPermissionOnSetting.png)
 
 <!--RP4End-->
 
@@ -510,7 +484,7 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
-| permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。该数组不能为空，仅支持传入已声明且用户已撤销授权的user_grant权限，且传入权限需属于同一[权限组](docroot://security/AccessToken/app-permission-group-list.md)。<br>取值约束：权限名长度不能超过256个字符。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。该数组不能为空，仅支持传入已声明且用户已撤销授权的user_grant权限，且传入权限需属于同一[权限组](../../../security/AccessToken/app-permission-group-list.md)。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
@@ -550,22 +524,21 @@ atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((
 
 ```
 
-<a id="requestpermissionsfromuser"></a>
 ## requestPermissionsFromUser
 
 ```TypeScript
 requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>, requestCallback: AsyncCallback<PermissionRequestResult>) : void
 ```
 
-用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](docroot://security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用callback异步回调。
+用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](../../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用callback异步回调。
 
-适用于应用首次访问受保护资源前主动向用户申请[user_grant](docroot://security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权) 权限的场景。
+适用于应用首次访问受保护资源前主动向用户申请[user_grant](../../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权) 权限的场景。
 
-如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissiononsetting-1)拉起权限设置弹窗，引导用户完成授权。
+如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissiononsetting)拉起权限设置弹窗，引导用户完成授权。
 
 <!--RP3-->
 
-![requestPermissionsFromUser](docroot://reference/apis-ability-kit/figures/requestPermissionsFromUser.png)
+![requestPermissionsFromUser](../../../reference/apis-ability-kit/figures/requestPermissionsFromUser.png)
 
 <!--RP3End-->
 
@@ -622,20 +595,18 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
 
 ```
 
-<a id="requestpermissionsfromuser-1"></a>
 ## requestPermissionsFromUser
 
 ```TypeScript
 requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>) : Promise<PermissionRequestResult>
 ```
 
-用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](docroot://security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用Promise异步回调。
+用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](../../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用Promise异步回调。
 
 适用于应用首次访问受保护资源前主动向用户申请user_grant权限的场景。
-
 > **说明**  
 > 如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用  
-> [requestPermissionOnSetting](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissiononsetting-1)拉起权限设置弹窗，引导用户完成授权。
+> [requestPermissionOnSetting](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissiononsetting)拉起权限设置弹窗，引导用户完成授权。
 
 **起始版本：** 9
 
@@ -693,7 +664,6 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((
 
 ```
 
-<a id="verifyaccesstoken"></a>
 ## verifyAccessToken
 
 ```TypeScript
@@ -703,7 +673,6 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSt
 校验应用是否已被授予指定权限，调用成功后，返回当前权限的授权状态，开发者可据此决定直接执行后续业务、继续发起权限申请，或引导用户前往系统设置修改授权状态。使用Promise异步回调。
 
 适用于应用访问受保护资源前进行前置权限判断的场景。
-
 > **说明**  
 > 建议使用[checkAccessToken](#checkaccesstoken9)替代。
 
@@ -717,7 +686,7 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync-1)获取。 |
+| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync)获取。 |
 | permissionName | Permissions | 是 | 需要校验的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
@@ -749,7 +718,6 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 
 ```
 
-<a id="verifyaccesstoken-1"></a>
 ## verifyAccessToken
 
 ```TypeScript
@@ -757,7 +725,6 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>
 ```
 
 校验应用是否已被授予指定权限。调用成功后，返回当前权限的授权状态，开发者可据此决定后续操作。使用Promise异步回调。
-
 > **说明**  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[checkAccessToken](#checkaccesstoken9)替代。
 
@@ -775,7 +742,7 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync-1)获取。 |
+| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync)获取。 |
 | permissionName | string | 是 | 需要校验的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
@@ -807,7 +774,6 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 
 ```
 
-<a id="verifyaccesstokensync"></a>
 ## verifyAccessTokenSync
 
 ```TypeScript
@@ -818,7 +784,7 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 适用于应用访问相机、麦克风、位置等受保护资源前进行前置权限判断的场景。
 
-建议使用[checkAccessTokenSync](arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstokensync-1)替代。
+建议使用[checkAccessTokenSync](arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstokensync)替代。
 
 **起始版本：** 9
 
@@ -830,7 +796,7 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync-1)获取。 |
+| tokenID | number | 是 | 要校验的目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync)；<br>若校验本应用，也可通过[bundleManager.getBundleInfoForSelfSync](arkts-ability-bundlemanager-getbundleinfoforselfsync-f.md#getbundleinfoforselfsync)获取。 |
 | permissionName | Permissions | 是 | 需要校验的权限名称。权限名长度不能超过256个字符，传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**

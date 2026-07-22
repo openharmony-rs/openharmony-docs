@@ -1,6 +1,5 @@
 # fdatasync
 
-<a id="fdatasync"></a>
 ## fdatasync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function fdatasync(fd: number): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:fdatasync](arkts-corefile-file-fs-fdatasync-f.md#fdatasync-1)
+**替代接口：** [fs:fdatasync](arkts-corefile-fileio-fdatasync-f.md#fdatasync)
 
 <!--Device-unnamed-declare function fdatasync(fd: number): Promise<void>--><!--Device-unnamed-declare function fdatasync(fd: number): Promise<void>-End-->
 
@@ -32,7 +31,6 @@ declare function fdatasync(fd: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="fdatasync-1"></a>
 ## fdatasync
 
 ```TypeScript
@@ -45,7 +43,7 @@ declare function fdatasync(fd: number, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:fdatasync](arkts-corefile-file-fs-fdatasync-f.md#fdatasync-1)
+**替代接口：** [fs:fdatasync](arkts-corefile-fileio-fdatasync-f.md#fdatasync)
 
 <!--Device-unnamed-declare function fdatasync(fd: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function fdatasync(fd: number, callback: AsyncCallback<void>): void-End-->
 

@@ -1,7 +1,6 @@
 # RatingOptions
 
 评分组件的信息。
-
 > **说明：**  
 >  
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
@@ -54,7 +53,7 @@ rating: number
 
 小于0取0，大于[stars](RatingAttribute#stars(value: number))取最大值stars。
 
-该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 **类型：** number
 

@@ -6,7 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="querycontactsyncinfo"></a>
 ## queryContactSyncInfo
 
 ```TypeScript

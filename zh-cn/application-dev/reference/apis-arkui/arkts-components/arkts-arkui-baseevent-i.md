@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getmodifierkeystate"></a>
 ## getModifierKeyState
 
 ```TypeScript
@@ -16,7 +15,6 @@ getModifierKeyState?(keys: Array<string>): boolean
 ```
 
 获取功能键按压状态。报错信息请参考以下错误码。支持功能键'Ctrl'\|'Alt'\|'Shift'。
-
 > **说明：**  
 >  
 > 此接口不支持在手写笔场景下使用。

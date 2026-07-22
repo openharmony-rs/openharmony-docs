@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="baselineoffset"></a>
 ## baselineOffset
 
 ```TypeScript
@@ -41,7 +40,6 @@ baselineOffset(value: LengthMetrics): T
 | --- | --- |
 | T | 返回当前Span的属性。 |
 
-<a id="textbackgroundstyle"></a>
 ## textBackgroundStyle
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getcardtype"></a>
 ## getCardType
 
 ```TypeScript
@@ -52,7 +51,6 @@ sim.getCardType(0, (err: BusinessError, data: sim.CardType) => {
 ```
 
 
-<a id="getcardtype-1"></a>
 ## getCardType
 
 ```TypeScript

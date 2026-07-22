@@ -38,7 +38,7 @@ change: PermissionStateChangeType
 permissionName: Permissions
 ```
 
-当前授权状态发生变化的权限名，合法的权限名取值可在[应用权限列表](docroot://security/AccessToken/app-permissions.md)中查询。
+当前授权状态发生变化的权限名，合法的权限名取值可在[应用权限列表](../../../security/AccessToken/app-permissions.md)中查询。
 
 **类型：** Permissions
 
@@ -56,7 +56,7 @@ permissionName: Permissions
 tokenID: number
 ```
 
-被订阅的应用身份标识。该参数必须为大于0的整数，传入0时返回错误码12100001。BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。获取。
+被订阅的应用身份标识。该参数必须为大于0的整数，传入0时返回错误码12100001。BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync)。获取。
 
 **类型：** number
 

@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="removedockapp"></a>
 ## removeDockApp
 
 ```TypeScript
@@ -14,11 +13,9 @@ function removeDockApp(admin: Want, bundleName: string, abilityName: string): vo
 ```
 
 从快捷栏中移除应用。
-
 > **说明：**  
 >  
 > 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”，否则报错9201018错误码。
-
 > **说明**  
 > 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”，否则报错9201018错误码。
 

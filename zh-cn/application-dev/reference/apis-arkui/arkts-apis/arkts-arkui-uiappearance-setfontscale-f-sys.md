@@ -6,7 +6,6 @@
 import { uiAppearance } from '@kit.ArkUI';
 ```
 
-<a id="setfontscale"></a>
 ## setFontScale
 
 ```TypeScript

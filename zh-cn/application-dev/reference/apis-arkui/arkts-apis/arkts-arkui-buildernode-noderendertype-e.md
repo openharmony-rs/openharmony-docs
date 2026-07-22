@@ -33,7 +33,6 @@ RENDER_TYPE_TEXTURE = 1
 ```
 
 表示该节点将被导出为纹理。
-
 > **说明**  
 > > **说明：**  
 > >  
@@ -77,16 +76,16 @@ RENDER_TYPE_TEXTURE = 1
 > >  
 > > - 从API version 12开始，新增以下组件支持纹理导出：[DatePicker](../../apis-arkui/arkts-components/arkts-arkui-date_picker-i)、  
 > > [ForEach](../../apis-arkui/arkts-components/arkts-arkui-for_each-i)、[Grid](../../apis-arkui/arkts-components/arkts-arkui-grid-i)、  
-> > [if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)、  
+> > [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、  
 > > [LazyForEach](../../apis-arkui/arkts-components/arkts-arkui-lazy_for_each-i)、[List](../../apis-arkui/arkts-components/arkts-arkui-list-i)、  
 > > [Scroll](../../apis-arkui/arkts-components/arkts-arkui-scroll-i)、[Swiper](../../apis-arkui/arkts-components/arkts-arkui-swiper-i)、  
 > > [TimePicker](../../apis-arkui/arkts-components/arkts-arkui-time_picker-i)、  
-> > [@Component](docroot://ui/state-management/arkts-create-custom-components.md#component)修饰的自定义组件、  
+> > [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)修饰的自定义组件、  
 > > [NodeContainer](../../apis-arkui/arkts-components/arkts-arkui-node_container-i)以及  
 > > [NodeContainer](../../apis-arkui/arkts-components/arkts-arkui-node_container-i)下挂载的[FrameNode](arkts-arkui-framenode-c.md)和  
 > > [RenderNode](arkts-arkui-rendernode-c.md)。  
 > >  
-> > - 使用方式可参考[同层渲染绘制](docroot://web/web-same-layer.md)。
+> > - 使用方式可参考[同层渲染绘制](../../../web/web-same-layer.md)。
 
 **起始版本：** 11
 

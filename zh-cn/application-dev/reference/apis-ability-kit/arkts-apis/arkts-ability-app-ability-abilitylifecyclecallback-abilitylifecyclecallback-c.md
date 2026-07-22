@@ -14,14 +14,13 @@
 import { AbilityLifecycleCallback } from '@kit.AbilityKit';
 ```
 
-<a id="onabilitybackground"></a>
 ## onAbilityBackground
 
 ```TypeScript
 onAbilityBackground(ability: UIAbility): void
 ```
 
-在UIAbility的[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onbackground-1)触发后回调。
+在UIAbility的[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onbackground)触发后回调。
 
 **起始版本：** 9
 
@@ -43,14 +42,13 @@ onAbilityBackground(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitycontinue"></a>
 ## onAbilityContinue
 
 ```TypeScript
 onAbilityContinue(ability: UIAbility): void
 ```
 
-在UIAbility的[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue-1)触发后回调。
+在UIAbility的[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)触发后回调。
 
 **起始版本：** 9
 
@@ -72,14 +70,13 @@ onAbilityContinue(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitycreate"></a>
 ## onAbilityCreate
 
 ```TypeScript
 onAbilityCreate(ability: UIAbility): void
 ```
 
-在UIAbility的[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#oncreate-1)触发后回调。
+在UIAbility的[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#oncreate)触发后回调。
 
 **起始版本：** 9
 
@@ -101,14 +98,13 @@ onAbilityCreate(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitydestroy"></a>
 ## onAbilityDestroy
 
 ```TypeScript
 onAbilityDestroy(ability: UIAbility): void
 ```
 
-在UIAbility的[onDestroy](arkts-ability-app-ability-uiability-uiability-c.md#ondestroy-1)触发后回调。
+在UIAbility的[onDestroy](arkts-ability-app-ability-uiability-uiability-c.md#ondestroy)触发后回调。
 
 **起始版本：** 9
 
@@ -130,14 +126,13 @@ onAbilityDestroy(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilityforeground"></a>
 ## onAbilityForeground
 
 ```TypeScript
 onAbilityForeground(ability: UIAbility): void
 ```
 
-在UIAbility的[onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onforeground-1)触发后回调。
+在UIAbility的[onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onforeground)触发后回调。
 
 **起始版本：** 9
 
@@ -159,14 +154,13 @@ onAbilityForeground(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitysavestate"></a>
 ## onAbilitySaveState
 
 ```TypeScript
 onAbilitySaveState?(ability: UIAbility): void
 ```
 
-在UIAbility的[onSaveState](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate-1)触发后回调。
+在UIAbility的[onSaveState](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate)触发后回调。
 
 **起始版本：** 12
 
@@ -188,14 +182,13 @@ onAbilitySaveState?(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitywillbackground"></a>
 ## onAbilityWillBackground
 
 ```TypeScript
 onAbilityWillBackground?(ability: UIAbility): void
 ```
 
-在UIAbility的[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onbackground-1)触发前回调。
+在UIAbility的[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onbackground)触发前回调。
 
 **起始版本：** 12
 
@@ -217,14 +210,13 @@ onAbilityWillBackground?(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitywillcontinue"></a>
 ## onAbilityWillContinue
 
 ```TypeScript
 onAbilityWillContinue?(ability: UIAbility): void
 ```
 
-在UIAbility的[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue-1)触发前回调。
+在UIAbility的[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)触发前回调。
 
 **起始版本：** 12
 
@@ -246,14 +238,13 @@ onAbilityWillContinue?(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitywillcreate"></a>
 ## onAbilityWillCreate
 
 ```TypeScript
 onAbilityWillCreate?(ability: UIAbility): void
 ```
 
-在UIAbility的[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#oncreate-1)触发前回调。
+在UIAbility的[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#oncreate)触发前回调。
 
 **起始版本：** 12
 
@@ -275,14 +266,13 @@ onAbilityWillCreate?(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitywilldestroy"></a>
 ## onAbilityWillDestroy
 
 ```TypeScript
 onAbilityWillDestroy?(ability: UIAbility): void
 ```
 
-在UIAbility的[onDestroy](arkts-ability-app-ability-uiability-uiability-c.md#ondestroy-1)触发前回调。
+在UIAbility的[onDestroy](arkts-ability-app-ability-uiability-uiability-c.md#ondestroy)触发前回调。
 
 **起始版本：** 12
 
@@ -304,14 +294,13 @@ onAbilityWillDestroy?(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitywillforeground"></a>
 ## onAbilityWillForeground
 
 ```TypeScript
 onAbilityWillForeground?(ability: UIAbility): void
 ```
 
-在UIAbility的[onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onforeground-1)触发前回调。
+在UIAbility的[onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onforeground)触发前回调。
 
 **起始版本：** 12
 
@@ -333,14 +322,13 @@ onAbilityWillForeground?(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onabilitywillsavestate"></a>
 ## onAbilityWillSaveState
 
 ```TypeScript
 onAbilityWillSaveState?(ability: UIAbility): void
 ```
 
-在UIAbility的[onSaveState](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate-1)触发前回调。
+在UIAbility的[onSaveState](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate)触发前回调。
 
 **起始版本：** 12
 
@@ -362,14 +350,13 @@ onAbilityWillSaveState?(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onnewwant"></a>
 ## onNewWant
 
 ```TypeScript
 onNewWant?(ability: UIAbility): void
 ```
 
-在UIAbility的[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onnewwant-1)触发后回调。
+在UIAbility的[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)触发后回调。
 
 **起始版本：** 12
 
@@ -391,14 +378,13 @@ onNewWant?(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onwillnewwant"></a>
 ## onWillNewWant
 
 ```TypeScript
 onWillNewWant?(ability: UIAbility): void
 ```
 
-在UIAbility的[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onnewwant-1)触发前回调。
+在UIAbility的[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)触发前回调。
 
 **起始版本：** 12
 
@@ -420,7 +406,6 @@ onWillNewWant?(ability: UIAbility): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onwindowstageactive"></a>
 ## onWindowStageActive
 
 ```TypeScript
@@ -450,14 +435,13 @@ onWindowStageActive(ability: UIAbility, windowStage: window.WindowStage): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onwindowstagecreate"></a>
 ## onWindowStageCreate
 
 ```TypeScript
 onWindowStageCreate(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate-1)触发后回调。
+在UIAbility的[onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)触发后回调。
 
 **起始版本：** 9
 
@@ -480,14 +464,13 @@ onWindowStageCreate(ability: UIAbility, windowStage: window.WindowStage): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onwindowstagedestroy"></a>
 ## onWindowStageDestroy
 
 ```TypeScript
 onWindowStageDestroy(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagedestroy-1)触发后回调。
+在UIAbility的[onWindowStageDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagedestroy)触发后回调。
 
 **起始版本：** 9
 
@@ -510,7 +493,6 @@ onWindowStageDestroy(ability: UIAbility, windowStage: window.WindowStage): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onwindowstageinactive"></a>
 ## onWindowStageInactive
 
 ```TypeScript
@@ -540,14 +522,13 @@ onWindowStageInactive(ability: UIAbility, windowStage: window.WindowStage): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onwindowstagerestore"></a>
 ## onWindowStageRestore
 
 ```TypeScript
 onWindowStageRestore?(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageRestore](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagerestore-1)触发后回调。
+在UIAbility的[onWindowStageRestore](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagerestore)触发后回调。
 
 **起始版本：** 12
 
@@ -570,14 +551,13 @@ onWindowStageRestore?(ability: UIAbility, windowStage: window.WindowStage): void
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onwindowstagewillcreate"></a>
 ## onWindowStageWillCreate
 
 ```TypeScript
 onWindowStageWillCreate?(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate-1)触发前回调。
+在UIAbility的[onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)触发前回调。
 
 **起始版本：** 12
 
@@ -600,14 +580,13 @@ onWindowStageWillCreate?(ability: UIAbility, windowStage: window.WindowStage): v
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onwindowstagewilldestroy"></a>
 ## onWindowStageWillDestroy
 
 ```TypeScript
 onWindowStageWillDestroy?(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagedestroy-1)触发前回调。
+在UIAbility的[onWindowStageDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagedestroy)触发前回调。
 
 **起始版本：** 12
 
@@ -630,14 +609,13 @@ onWindowStageWillDestroy?(ability: UIAbility, windowStage: window.WindowStage): 
 
 参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
 
-<a id="onwindowstagewillrestore"></a>
 ## onWindowStageWillRestore
 
 ```TypeScript
 onWindowStageWillRestore?(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageRestore](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagerestore-1)触发前回调。
+在UIAbility的[onWindowStageRestore](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagerestore)触发前回调。
 
 **起始版本：** 12
 

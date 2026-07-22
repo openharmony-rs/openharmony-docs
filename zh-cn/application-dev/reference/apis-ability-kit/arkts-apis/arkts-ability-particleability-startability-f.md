@@ -6,7 +6,6 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
-<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -14,10 +13,9 @@ function startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<
 ```
 
 启动指定的particleAbility。使用callback异步回调。
-
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（FA模型）](docroot://application-models/component-startup-rules-fa.md)。
+> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
 
 **起始版本：** 7
 
@@ -65,7 +63,6 @@ particleAbility.startAbility(
 ```
 
 
-<a id="startability-1"></a>
 ## startAbility
 
 ```TypeScript
@@ -73,10 +70,9 @@ function startAbility(parameter: StartAbilityParameter): Promise<void>
 ```
 
 启动指定的particleAbility。使用Promise异步回调。
-
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（FA模型）](docroot://application-models/component-startup-rules-fa.md)。
+> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
 
 **起始版本：** 7
 

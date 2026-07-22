@@ -14,7 +14,6 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
-<a id="geneccsignature"></a>
 ## genEccSignature
 
 ```TypeScript
@@ -76,7 +75,6 @@ function testGenEccSignature() {
 
 ```
 
-<a id="geneccsignaturespec"></a>
 ## genEccSignatureSpec
 
 ```TypeScript

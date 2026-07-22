@@ -6,7 +6,6 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
-<a id="getwindow"></a>
 ## getWindow
 
 ```TypeScript
@@ -48,7 +47,6 @@ featureAbility.getWindow((error: BusinessError, data: window.Window) => {
 ```
 
 
-<a id="getwindow-1"></a>
 ## getWindow
 
 ```TypeScript

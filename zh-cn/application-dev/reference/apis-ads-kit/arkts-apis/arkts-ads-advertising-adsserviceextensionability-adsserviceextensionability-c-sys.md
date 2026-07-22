@@ -16,7 +16,6 @@
 import { RespCallback } from '@kit.AdsKit';
 ```
 
-<a id="onloadad"></a>
 ## onLoadAd
 
 ```TypeScript
@@ -57,7 +56,6 @@ export default class AdsExtensionAbility extends AdsServiceExtensionAbility {
 
 ```
 
-<a id="onloadadwithmultislots"></a>
 ## onLoadAdWithMultiSlots
 
 ```TypeScript
@@ -69,9 +67,7 @@ onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: adver
 
 **起始版本：** 11
 
-<!--Device-AdsServiceExtensionAbility-onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: advertising.AdOptions, 
-    respCallback: RespCallback)--><!--Device-AdsServiceExtensionAbility-onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: advertising.AdOptions, 
-    respCallback: RespCallback)-End-->
+<!--Device-AdsServiceExtensionAbility-onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: advertising.AdOptions,     respCallback: RespCallback)--><!--Device-AdsServiceExtensionAbility-onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: advertising.AdOptions,     respCallback: RespCallback)-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
 

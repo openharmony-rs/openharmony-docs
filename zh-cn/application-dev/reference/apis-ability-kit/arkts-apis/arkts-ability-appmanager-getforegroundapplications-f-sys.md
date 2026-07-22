@@ -6,14 +6,13 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="getforegroundapplications"></a>
 ## getForegroundApplications
 
 ```TypeScript
 function getForegroundApplications(callback: AsyncCallback<Array<AppStateData>>): void
 ```
 
-获取当前所有前台应用的信息。该应用信息由[AppStateData](arkts-ability-appstatedata-c.md)定义。使用callback异步回调。
+获取当前所有前台应用的信息。该应用信息由[AppStateData](arkts-ability-appmanager-appstatedata-t.md)定义。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -65,14 +64,13 @@ try {
 ```
 
 
-<a id="getforegroundapplications-1"></a>
 ## getForegroundApplications
 
 ```TypeScript
 function getForegroundApplications(): Promise<Array<AppStateData>>
 ```
 
-获取当前所有前台应用的信息。该应用信息由[AppStateData](arkts-ability-appstatedata-c.md)定义。使用Promise异步回调。
+获取当前所有前台应用的信息。该应用信息由[AppStateData](arkts-ability-appmanager-appstatedata-t.md)定义。使用Promise异步回调。
 
 **起始版本：** 9
 

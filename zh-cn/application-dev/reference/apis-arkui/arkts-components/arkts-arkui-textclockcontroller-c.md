@@ -14,7 +14,6 @@ controller: TextClockController = new TextClockController()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -33,7 +32,6 @@ TextClockController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -52,7 +50,6 @@ start()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript

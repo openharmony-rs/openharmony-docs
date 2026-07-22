@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="setconfiguration"></a>
 ## setConfiguration
 
 ```TypeScript
@@ -25,14 +24,14 @@ function setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 用于确定总线号和设备地址，需要调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice-1)获取。 |
-| config | [USBConfiguration](arkts-basicservices-usbmanager-usbconfiguration-i.md) | 是 | 用于确定需要设置的配置，需要调用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices-1)获取设备信息并通过id用于确定唯一设置。 |
+| pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 用于确定总线号和设备地址，需要调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice)获取。 |
+| config | [USBConfiguration](arkts-basicservices-usbmanager-usbconfiguration-i.md) | 是 | 用于确定需要设置的配置，需要调用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices)获取设备信息并通过id用于确定唯一设置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：* - 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。* - 88080486：服务初始化中，请稍后重试。* - 88080488：无设备访问权限，请先调用[usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestright-1)接口申请授权。* - -1：驱动异常。* - -17：I/O失败。 |
+| number | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：* - 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。* - 88080486：服务初始化中，请稍后重试。* - 88080488：无设备访问权限，请先调用[usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestright)接口申请授权。* - -1：驱动异常。* - -17：I/O失败。 |
 
 **错误码：**
 

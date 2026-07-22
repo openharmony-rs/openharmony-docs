@@ -1,11 +1,10 @@
 # ButtonType
 
 按钮的类型。
-
 > **说明：**  
 >  
 > - 按钮圆角通过  
-> [通用属性borderRadius](arkts-arkui-commonmethod-c.md#borderradius-1)设置。  
+> [通用属性borderRadius](arkts-arkui-commonmethod-c.md#borderradius)设置。  
 >  
 > - 当按钮类型为Capsule时，borderRadius设置不生效，按钮圆角始终为宽、高中较小值的一半。  
 >  
@@ -16,13 +15,13 @@
 > [fontStyle](ButtonAttribute#fontStyle)、[fontFamily](ButtonAttribute#fontFamily)、  
 > [fontWeight](ButtonAttribute#fontWeight)进行设置。  
 >  
-> - 设置[颜色渐变](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)需先设置[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor-1)为透明色。  
+> - 设置[颜色渐变](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)需先设置[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor)为透明色。  
 >  
 > - 在不设置borderRadius时，圆角矩形按钮的圆角大小保持默认值不变。圆角大小不会随按钮高度变化而变化，和controlSize属性有关，controlSize为NORMAL时圆角大小20vp，controlSize为  
 > SMALL时圆角大小14vp。  
 >  
-> - 设置Button的[border](arkts-arkui-commonmethod-c.md#border-1)时，会有默认的  
-> [borderRadius](arkts-arkui-commonmethod-c.md#borderradius-1)值。如果同时使用  
+> - 设置Button的[border](arkts-arkui-commonmethod-c.md#border)时，会有默认的  
+> [borderRadius](arkts-arkui-commonmethod-c.md#borderradius)值。如果同时使用  
 > `border`和`borderRadius`，需将`borderRadius`放在`border`之后，以确保`borderRadius`不会被`border`中的默认`radius`覆盖。
 
 **起始版本：** 7

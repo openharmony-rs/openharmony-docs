@@ -6,14 +6,13 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="startshortcut"></a>
 ## startShortcut
 
 ```TypeScript
 function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise<void>
 ```
 
-拉起指定[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)中的ability。使用Promise异步回调。
+拉起指定[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t-sys.md)中的ability。使用Promise异步回调。
 
 **起始版本：** 12
 

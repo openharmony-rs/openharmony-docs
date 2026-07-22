@@ -46,7 +46,7 @@ range: string[] | string[][] | Resource | TextPickerRangeContent[] | TextCascade
 
 **说明**：
 
-1. 单列数据选择器使用string[]，[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)，[TextPickerRangeContent](arkts-arkui-textpickerrangecontent-i.md)[]类型。2. 多列非联动数据选择器使用string[][]类型。3. 多列联动数据选择器使用[TextCascadePickerRangeContent](arkts-arkui-textcascadepickerrangecontent-i.md)[]类型。4. Resource类型只支持[strarray.json](docroot://quick-start/resource-categories-and-access.md#资源组目录)。5. range的类型及列数不可以动态修改。
+1. 单列数据选择器使用string[]，[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)，[TextPickerRangeContent](arkts-arkui-textpickerrangecontent-i.md)[]类型。2. 多列非联动数据选择器使用string[][]类型。3. 多列联动数据选择器使用[TextCascadePickerRangeContent](arkts-arkui-textcascadepickerrangecontent-i.md)[]类型。4. Resource类型只支持[strarray.json](../../../quick-start/resource-categories-and-access.md#资源组目录)。5. range的类型及列数不可以动态修改。
 
 **类型：** string[] \| string[][] \| Resource \| TextPickerRangeContent[] \| TextCascadePickerRangeContent[]
 
@@ -70,7 +70,7 @@ selected?: number | number[]
 
 **说明**：
 
-1. 单列数据选择器使用number类型。2. 多列数据选择器使用number[]类型。3. 从API version 10开始，该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+1. 单列数据选择器使用number类型。2. 多列数据选择器使用number[]类型。3. 从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 **类型：** number \| number[]
 
@@ -96,7 +96,7 @@ value?: ResourceStr | ResourceStr[]
 
 **说明**：
 
-1. 从API version 10开始，该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。2. 从API version 20开始，支持[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)类型。3. 只有显示文本列表时该值有效。显示图片或图文混排的列表时，该值无效。4. 单列数据选择器使用[ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)类型。5. 多列数据选择器使用[ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)[]类型。
+1. 从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。2. 从API version 20开始，支持[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)类型。3. 只有显示文本列表时该值有效。显示图片或图文混排的列表时，该值无效。4. 单列数据选择器使用[ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)类型。5. 多列数据选择器使用[ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)[]类型。
 
 **类型：** ResourceStr \| ResourceStr[]
 

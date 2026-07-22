@@ -6,7 +6,6 @@
 import { installer } from '@kit.AbilityKit';
 ```
 
-<a id="getbundleinstaller"></a>
 ## getBundleInstaller
 
 ```TypeScript
@@ -37,7 +36,6 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 
-<a id="getbundleinstaller-1"></a>
 ## getBundleInstaller
 
 ```TypeScript

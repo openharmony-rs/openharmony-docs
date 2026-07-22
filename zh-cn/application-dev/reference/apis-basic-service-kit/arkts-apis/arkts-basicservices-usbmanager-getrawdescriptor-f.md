@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="getrawdescriptor"></a>
 ## getRawDescriptor
 
 ```TypeScript
@@ -25,7 +24,7 @@ function getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 用于确定总线号和设备地址，需要调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice-1)获取。 |
+| pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 用于确定总线号和设备地址，需要调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice)获取。 |
 
 **返回值：**
 

@@ -8,7 +8,6 @@ Encompassed message information as parameters to {@link onConsole} method.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="getrequestheader"></a>
 ## getRequestHeader
 
 ```TypeScript
@@ -48,7 +46,6 @@ getRequestHeader(): Array<Header>
 | --- | --- |
 | Array&lt;Header&gt; | 返回资源请求头信息。 |
 
-<a id="getrequestmethod"></a>
 ## getRequestMethod
 
 ```TypeScript
@@ -71,7 +68,6 @@ getRequestMethod(): string
 | --- | --- |
 | string | 返回请求方法。 |
 
-<a id="getrequesturl"></a>
 ## getRequestUrl
 
 ```TypeScript
@@ -94,7 +90,6 @@ getRequestUrl(): string
 | --- | --- |
 | string | 返回资源请求的URL信息。 |
 
-<a id="ismainframe"></a>
 ## isMainFrame
 
 ```TypeScript
@@ -117,7 +112,6 @@ isMainFrame(): boolean
 | --- | --- |
 | boolean | 返回 {@code true} 表示请求为主frame; 返回 {@code false} 表示请求不为主frame。 |
 
-<a id="isredirect"></a>
 ## isRedirect
 
 ```TypeScript
@@ -140,7 +134,6 @@ isRedirect(): boolean
 | --- | --- |
 | boolean | 返回 {@code true} 表示请求被服务端重定向; 返回 {@code false} 表示请求未被服务端重定向。 |
 
-<a id="isrequestgesture"></a>
 ## isRequestGesture
 
 ```TypeScript

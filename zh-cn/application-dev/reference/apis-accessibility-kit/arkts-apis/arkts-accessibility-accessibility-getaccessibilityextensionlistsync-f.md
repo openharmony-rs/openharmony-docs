@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="getaccessibilityextensionlistsync"></a>
 ## getAccessibilityExtensionListSync
 
 ```TypeScript
@@ -24,13 +23,7 @@ function getAccessibilityExtensionListSync(
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-accessibility-function getAccessibilityExtensionListSync(
-    abilityType: AbilityType,
-    stateType: AbilityState
-  ): Array<AccessibilityAbilityInfo>--><!--Device-accessibility-function getAccessibilityExtensionListSync(
-    abilityType: AbilityType,
-    stateType: AbilityState
-  ): Array<AccessibilityAbilityInfo>-End-->
+<!--Device-accessibility-function getAccessibilityExtensionListSync(    abilityType: AbilityType,    stateType: AbilityState  ): Array<AccessibilityAbilityInfo>--><!--Device-accessibility-function getAccessibilityExtensionListSync(    abilityType: AbilityType,    stateType: AbilityState  ): Array<AccessibilityAbilityInfo>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

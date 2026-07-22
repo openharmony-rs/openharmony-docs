@@ -6,14 +6,13 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getalllauncherabilityinfo"></a>
 ## getAllLauncherAbilityInfo
 
 ```TypeScript
 function getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback<Array<LauncherAbilityInfo>>) : void
 ```
 
-查询指定用户下所有应用的[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)。使用callback异步回调。
+查询指定用户下所有应用的[LauncherAbilityInfo](arkts-ability-launcherbundlemanager-launcherabilityinfo-t.md)。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -29,8 +28,8 @@ function getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback<Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;LauncherAbilityInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为指定用户下所有应用的[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)信息。否则为错误对象。 |
+| userId | number | 是 | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;LauncherAbilityInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为指定用户下所有应用的[LauncherAbilityInfo](arkts-ability-launcherbundlemanager-launcherabilityinfo-t.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -66,14 +65,13 @@ try {
 ```
 
 
-<a id="getalllauncherabilityinfo-1"></a>
 ## getAllLauncherAbilityInfo
 
 ```TypeScript
 function getAllLauncherAbilityInfo(userId: number) : Promise<Array<LauncherAbilityInfo>>
 ```
 
-查询指定用户下所有应用的[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)。使用Promise异步回调。
+查询指定用户下所有应用的[LauncherAbilityInfo](arkts-ability-launcherbundlemanager-launcherabilityinfo-t.md)。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -89,13 +87,13 @@ function getAllLauncherAbilityInfo(userId: number) : Promise<Array<LauncherAbili
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
+| userId | number | 是 | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;LauncherAbilityInfo&gt;&gt; | Promise对象。返回指定用户下所有应用的[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)。 |
+| Promise&lt;Array&lt;LauncherAbilityInfo&gt;&gt; | Promise对象。返回指定用户下所有应用的[LauncherAbilityInfo](arkts-ability-launcherbundlemanager-launcherabilityinfo-t.md)。 |
 
 **错误码：**
 

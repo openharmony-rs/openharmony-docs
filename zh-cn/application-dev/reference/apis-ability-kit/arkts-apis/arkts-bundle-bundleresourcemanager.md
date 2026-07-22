@@ -1,7 +1,6 @@
 # @ohos.bundle.bundleResourceManager
 
 本模块提供应用资源数据查询能力，支持[BundleResourceInfo](arkts-ability-bundleresourceinfo-i-sys.md)和[LauncherAbilityResourceInfo](arkts-ability-launcherabilityresourceinfo-i-sys.md)等信息的查询。
-
 > **说明：**  
 >  
 > 本模块从API version 12 开始支持查询被禁用应用和设备上已安装应用(不区用户)的图标和名称资源。  

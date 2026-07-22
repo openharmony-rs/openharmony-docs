@@ -6,7 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="updatecontact"></a>
 ## updateContact
 
 ```TypeScript
@@ -19,7 +18,7 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [updateContact(context:](arkts-contacts-contact-updatecontact-f.md#updatecontact-1)
+**替代接口：** [updateContact(context:](arkts-contacts-contact-updatecontact-f.md#updatecontact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -31,7 +30,7 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-1)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -64,7 +63,6 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-1"></a>
 ## updateContact
 
 ```TypeScript
@@ -86,7 +84,7 @@ function updateContact(context: Context, contact: Contact, callback: AsyncCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-1)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
@@ -130,7 +128,6 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-2"></a>
 ## updateContact
 
 ```TypeScript
@@ -143,7 +140,7 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 **废弃版本：** 10
 
-**替代接口：** [updateContact(context:](arkts-contacts-contact-updatecontact-f.md#updatecontact-1)
+**替代接口：** [updateContact(context:](arkts-contacts-contact-updatecontact-f.md#updatecontact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -155,7 +152,7 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-1)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
@@ -190,7 +187,6 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-3"></a>
 ## updateContact
 
 ```TypeScript
@@ -212,7 +208,7 @@ function updateContact(context: Context, contact: Contact, attrs: ContactAttribu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-1)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
@@ -258,7 +254,6 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-4"></a>
 ## updateContact
 
 ```TypeScript
@@ -271,7 +266,7 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 **废弃版本：** 10
 
-**替代接口：** [updateContact(context:](arkts-contacts-contact-updatecontact-f.md#updatecontact-1)
+**替代接口：** [updateContact(context:](arkts-contacts-contact-updatecontact-f.md#updatecontact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -283,7 +278,7 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-1)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
@@ -318,7 +313,6 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-5"></a>
 ## updateContact
 
 ```TypeScript
@@ -340,7 +334,7 @@ function updateContact(context: Context, contact: Contact, attrs?: ContactAttrib
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-1)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**

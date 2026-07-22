@@ -6,14 +6,13 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="closeaccessory"></a>
 ## closeAccessory
 
 ```TypeScript
 function closeAccessory(accessoryHandle: USBAccessoryHandle): void
 ```
 
-关闭配件文件描述符。需要调用[usbManager.openAccessory](arkts-basicservices-usbmanager-openaccessory-f.md#openaccessory-1)获取配件列表，得到[USBAccessoryHandle](arkts-basicservices-usbmanager-usbaccessoryhandle-i.md)作为参数。
+关闭配件文件描述符。需要调用[usbManager.openAccessory](arkts-basicservices-usbmanager-openaccessory-f.md#openaccessory)获取配件列表，得到[USBAccessoryHandle](arkts-basicservices-usbmanager-usbaccessoryhandle-i.md)作为参数。
 
 **起始版本：** 14
 
@@ -25,7 +24,7 @@ function closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| accessoryHandle | [USBAccessoryHandle](arkts-basicservices-usbmanager-usbaccessoryhandle-i.md) | 是 | USB配件句柄。需要通过[openAccessory](arkts-basicservices-usbmanager-openaccessory-f.md#openaccessory-1)获取。 |
+| accessoryHandle | [USBAccessoryHandle](arkts-basicservices-usbmanager-usbaccessoryhandle-i.md) | 是 | USB配件句柄。需要通过[openAccessory](arkts-basicservices-usbmanager-openaccessory-f.md#openaccessory)获取。 |
 
 **错误码：**
 

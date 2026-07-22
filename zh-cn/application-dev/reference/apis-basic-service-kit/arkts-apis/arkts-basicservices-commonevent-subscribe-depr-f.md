@@ -1,6 +1,5 @@
 # subscribe
 
-<a id="subscribe"></a>
 ## subscribe
 
 ```TypeScript
@@ -13,7 +12,7 @@ function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<Co
 
 **废弃版本：** 9
 
-**替代接口：** [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe-1)
+**替代接口：** [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe)
 
 <!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void--><!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void-End-->
 

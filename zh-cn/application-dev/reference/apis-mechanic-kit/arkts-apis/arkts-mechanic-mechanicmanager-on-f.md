@@ -6,7 +6,6 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="on"></a>
 ## on('attachStateChange')
 
 ```TypeScript
@@ -52,7 +51,6 @@ console.info('Succeeded in registering callback.');
 ```
 
 
-<a id="on-1"></a>
 ## on('trackingStateChange')
 
 ```TypeScript

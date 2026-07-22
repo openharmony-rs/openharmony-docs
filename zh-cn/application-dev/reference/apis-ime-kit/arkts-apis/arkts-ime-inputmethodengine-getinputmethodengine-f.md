@@ -6,7 +6,6 @@
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
-<a id="getinputmethodengine"></a>
 ## getInputMethodEngine
 
 ```TypeScript
@@ -21,7 +20,7 @@ function getInputMethodEngine(): InputMethodEngine
 
 **废弃版本：** 9
 
-**替代接口：** [getInputMethodAbility()](arkts-ime-inputmethodengine-getinputmethodability-f.md#getinputmethodability-1)
+**替代接口：** [getInputMethodAbility()](arkts-ime-inputmethodengine-getinputmethodability-f.md#getinputmethodability)
 
 <!--Device-inputMethodEngine-function getInputMethodEngine(): InputMethodEngine--><!--Device-inputMethodEngine-function getInputMethodEngine(): InputMethodEngine-End-->
 

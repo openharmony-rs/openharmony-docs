@@ -1,14 +1,13 @@
 # @ohos.PiPWindow
 
 该模块提供画中画基础功能，包括判断当前系统是否支持画中画功能，以及创建画中画控制器用于启动或停止画中画等。适用于视频播放、视频通话或视频会议场景下，以小窗（画中画）模式呈现内容。
-
 > **说明：**  
 >  
-> - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0<!--RP2End--  
-> >开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。  
+> - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0&lt;!--RP2End--  
+> &gt;开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。  
 >  
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用  
-> [canIUse()](arkts-arkui-global-caniuse-f.md#caniuse-1)接口判断当前设备是否支持此syscap及对应接口。
+> [canIUse()](arkts-arkui-global-caniuse-f.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 **起始版本：** 11
 
@@ -38,7 +37,7 @@ import { PiPWindow } from '@kit.ArkUI';
 | --- | --- |
 | [ControlEventParam](arkts-arkui-pipwindow-controleventparam-i.md) | 画中画控制面板控件动作回调的参数。 |
 | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 创建画中画控制器时的参数。 |
-| [PiPController](arkts-arkui-pipwindow-pipcontroller-i.md) | 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。  下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md#create-1)方法获取到PiPController实例，再通过此实例调用对应方法。 |
+| [PiPController](arkts-arkui-pipwindow-pipcontroller-i.md) | 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。  下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md#create)方法获取到PiPController实例，再通过此实例调用对应方法。 |
 | [PiPWindowInfo](arkts-arkui-pipwindow-pipwindowinfo-i.md) | 画中画窗口信息。 |
 | [PiPWindowSize](arkts-arkui-pipwindow-pipwindowsize-i.md) | 画中画窗口大小。 |
 
@@ -47,7 +46,7 @@ import { PiPWindow } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [PiPController](arkts-arkui-pipwindow-pipcontroller-i-sys.md) | 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。  下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md#create-1)方法获取到PiPController实例，再通过此实例调用对应方法。 |
+| [PiPController](arkts-arkui-pipwindow-pipcontroller-i-sys.md) | 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。  下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md#create)方法获取到PiPController实例，再通过此实例调用对应方法。 |
 <!--DelEnd-->
 
 ### 枚举
@@ -70,7 +69,7 @@ import { PiPWindow } from '@kit.ArkUI';
 | [ControlPanelActionEventCallback](arkts-arkui-pipwindow-controlpanelactioneventcallback-t.md) | 描述画中画控制面板控件动作事件回调。 |
 | [PiPActionEventType](arkts-arkui-pipwindow-pipactioneventtype-t.md) | 画中画控制面板控件动作事件类型，支持以下四种。 |
 | [PiPCallActionEvent](arkts-arkui-pipwindow-pipcallactionevent-t.md) | 视频通话控制事件类型。 |
-| [PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md) | 画中画控制面板的可选控件组列表，应用可以配置是否显示可选控件。使用时必须和[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)对应，否则[create](arkts-arkui-pipwindow-create-f.md#create-1)接口抛出401错误码。 |
+| [PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md) | 画中画控制面板的可选控件组列表，应用可以配置是否显示可选控件。使用时必须和[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)对应，否则[create](arkts-arkui-pipwindow-create-f.md#create)接口抛出401错误码。 |
 | [PiPLiveActionEvent](arkts-arkui-pipwindow-pipliveactionevent-t.md) | 直播控制事件类型。 |
 | [PiPMeetingActionEvent](arkts-arkui-pipwindow-pipmeetingactionevent-t.md) | 视频会议控制事件类型。 |
 | [PiPVideoActionEvent](arkts-arkui-pipwindow-pipvideoactionevent-t.md) | 视频播放控制事件类型。 |

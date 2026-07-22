@@ -6,7 +6,6 @@
 import { Environment } from '@kit.CoreFileKit';
 ```
 
-<a id="getuserdownloaddir"></a>
 ## getUserDownloadDir
 
 ```TypeScript

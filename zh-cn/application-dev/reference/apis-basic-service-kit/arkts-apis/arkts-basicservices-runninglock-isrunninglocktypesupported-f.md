@@ -6,7 +6,6 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
-<a id="isrunninglocktypesupported"></a>
 ## isRunningLockTypeSupported
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallba
 
 **废弃版本：** 9
 
-**替代接口：** [isSupported](arkts-basicservices-runninglock-issupported-f.md#issupported-1)
+**替代接口：** [isSupported](arkts-basicservices-runninglock-issupported-f.md#issupported)
 
 <!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback<boolean>): void--><!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback<boolean>): void-End-->
 
@@ -46,7 +45,6 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
 ```
 
 
-<a id="isrunninglocktypesupported-1"></a>
 ## isRunningLockTypeSupported
 
 ```TypeScript
@@ -59,7 +57,7 @@ function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [isSupported](arkts-basicservices-runninglock-issupported-f.md#issupported-1)
+**替代接口：** [isSupported](arkts-basicservices-runninglock-issupported-f.md#issupported)
 
 <!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>--><!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>-End-->
 

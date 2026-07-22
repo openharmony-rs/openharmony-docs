@@ -6,7 +6,6 @@
 import { remoteDevice } from '@kit.ConnectivityKit';
 ```
 
-<a id="offconnectionstatechange"></a>
 ## offConnectionStateChange
 
 ```TypeScript

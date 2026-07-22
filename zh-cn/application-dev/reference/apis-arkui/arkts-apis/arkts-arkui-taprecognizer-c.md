@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="gettapcount"></a>
 ## getTapCount
 
 ```TypeScript

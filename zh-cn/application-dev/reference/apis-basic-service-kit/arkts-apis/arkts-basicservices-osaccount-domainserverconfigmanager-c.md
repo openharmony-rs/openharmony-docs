@@ -14,7 +14,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="addserverconfig"></a>
 ## addServerConfig
 
 ```TypeScript
@@ -73,7 +72,6 @@ osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
 
 ```
 
-<a id="getaccountserverconfig"></a>
 ## getAccountServerConfig
 
 ```TypeScript
@@ -129,7 +127,6 @@ osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo).then((
 
 ```
 
-<a id="getallserverconfigs"></a>
 ## getAllServerConfigs
 
 ```TypeScript
@@ -183,7 +180,6 @@ osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
 
 ```
 
-<a id="getserverconfig"></a>
 ## getServerConfig
 
 ```TypeScript
@@ -244,7 +240,6 @@ osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
 
 ```
 
-<a id="removeserverconfig"></a>
 ## removeServerConfig
 
 ```TypeScript
@@ -303,7 +298,6 @@ osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
 
 ```
 
-<a id="updateserverconfig"></a>
 ## updateServerConfig
 
 ```TypeScript

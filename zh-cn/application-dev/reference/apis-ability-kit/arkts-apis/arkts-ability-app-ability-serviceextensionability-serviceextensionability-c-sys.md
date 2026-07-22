@@ -16,7 +16,6 @@ ServiceExtensionAbility模块提供后台服务相关扩展能力，提供后台
 import { ServiceExtensionAbility } from '@kit.AbilityKit';
 ```
 
-<a id="onconfigurationupdate"></a>
 ## onConfigurationUpdate
 
 ```TypeScript
@@ -54,7 +53,6 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
-<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -134,7 +132,6 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
-<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -172,7 +169,6 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
-<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript
@@ -204,7 +200,6 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
-<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -258,7 +253,6 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
-<a id="ondump"></a>
 ## onDump
 
 ```TypeScript
@@ -303,7 +297,6 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
-<a id="onreconnect"></a>
 ## onReconnect
 
 ```TypeScript
@@ -341,7 +334,6 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ```
 
-<a id="onrequest"></a>
 ## onRequest
 
 ```TypeScript

@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="applynormalattribute"></a>
 ## applyNormalAttribute
 
 ```TypeScript
@@ -35,7 +34,6 @@ applyNormalAttribute?(instance: T): void
 | --- | --- | --- | --- |
 | instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。 |
 
-<a id="initializemodifier"></a>
 ## initializeModifier
 
 ```TypeScript
@@ -60,7 +58,6 @@ AttributeUpdater首次设置给组件时提供的样式。
 | --- | --- | --- | --- |
 | instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。 |
 
-<a id="oncomponentchanged"></a>
 ## onComponentChanged
 
 ```TypeScript

@@ -2,8 +2,7 @@
 
 提供音频渲染的相关接口。
 
-在使用AudioRenderer的接口之前，需先通过[createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-1)获取AudioRenderer实例。
-
+在使用AudioRenderer的接口之前，需先通过[createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)获取AudioRenderer实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 8开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="gettarget"></a>
 ## getTarget
 
 ```TypeScript
@@ -64,7 +62,6 @@ async function getTarget(){
 
 ```
 
-<a id="settarget"></a>
 ## setTarget
 
 ```TypeScript

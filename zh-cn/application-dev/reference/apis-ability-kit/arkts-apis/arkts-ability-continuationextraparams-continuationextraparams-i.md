@@ -1,6 +1,6 @@
 # ContinuationExtraParams
 
-流转管理入口中设备选择模块所需的过滤参数，可以作为[startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md#startcontinuationdevicemanager-1)的入参。
+流转管理入口中设备选择模块所需的过滤参数，可以作为[startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md#startcontinuationdevicemanager)的入参。
 
 **起始版本：** 8
 

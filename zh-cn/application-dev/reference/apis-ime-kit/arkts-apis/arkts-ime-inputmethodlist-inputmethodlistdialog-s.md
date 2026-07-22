@@ -8,7 +8,7 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 
 **使用后效果：** 调用此控件后，将弹出输入法切换列表弹窗。用户在弹窗中选择输入法后，系统将切换到指定的输入法；若用户选择了默认输入法的模式选项，系统将按指定模式显示键盘布局。
 
-**相似接口差异点及选取原则：** 与[inputMethod.switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod-1)接口相比，本控件提供了可视化的输入法选择界面，适用于需要交互式选择界面的场景；switchInputMethod接口适用于程序化切换输入法的场景，无需用户手动选择。
+**相似接口差异点及选取原则：** 与[inputMethod.switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod)接口相比，本控件提供了可视化的输入法选择界面，适用于需要交互式选择界面的场景；switchInputMethod接口适用于程序化切换输入法的场景，无需用户手动选择。
 
 **起始版本：** 11
 

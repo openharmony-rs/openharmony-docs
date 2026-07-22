@@ -1,6 +1,6 @@
 # ProcessMode
 
-UIAbility启动后的进程模式。ProcessMode作为[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)的一个属性，仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability-1)中生效，用来指定目标UIAbility的进程模式。该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
+UIAbility启动后的进程模式。ProcessMode作为[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)的一个属性，仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability)中生效，用来指定目标UIAbility的进程模式。该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
 
 **起始版本：** 12
 

@@ -6,14 +6,13 @@
 import { JSON } from '@kit.ArkTS';
 ```
 
-<a id="has"></a>
 ## has
 
 ```TypeScript
 function has(obj: object, property: string): boolean
 ```
 
-检查ArkTS对象中是否包含某个键。此API可用于[JSON.parse](arkts-arkts-json-parse-f.md#parse-1)解析JSON字符串后的相关操作。仅支持最外层为字典格式（大括号而非中括号）的有效JSON字符串。
+检查ArkTS对象中是否包含某个键。此API可用于[JSON.parse](arkts-arkts-json-parse-f.md#parse)解析JSON字符串后的相关操作。仅支持最外层为字典格式（大括号而非中括号）的有效JSON字符串。
 
 **起始版本：** 12
 

@@ -6,7 +6,6 @@
 import { dateTimeManager } from '@kit.MDMKit';
 ```
 
-<a id="setdatetime"></a>
 ## setDateTime
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setDateTime(admin: Want, time: number, callback: AsyncCallback<void>): 
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setvalue-1)
+**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -73,7 +72,6 @@ dateTimeManager.setDateTime(wantTemp, 1526003846000, (err) => {
 ```
 
 
-<a id="setdatetime-1"></a>
 ## setDateTime
 
 ```TypeScript
@@ -86,7 +84,7 @@ function setDateTime(admin: Want, time: number): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setvalue-1)
+**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 

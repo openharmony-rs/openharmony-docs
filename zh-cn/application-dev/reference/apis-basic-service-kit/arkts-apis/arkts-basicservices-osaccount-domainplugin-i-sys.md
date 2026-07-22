@@ -16,7 +16,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="auth"></a>
 ## auth
 
 ```TypeScript
@@ -92,7 +91,6 @@ try {
 
 ```
 
-<a id="authwithpopup"></a>
 ## authWithPopup
 
 ```TypeScript
@@ -152,7 +150,6 @@ osAccount.DomainAccountManager.registerPlugin(plugin)
 
 ```
 
-<a id="authwithtoken"></a>
 ## authWithToken
 
 ```TypeScript
@@ -213,7 +210,6 @@ osAccount.DomainAccountManager.registerPlugin(plugin)
 
 ```
 
-<a id="bindaccount"></a>
 ## bindAccount
 
 ```TypeScript
@@ -274,7 +270,6 @@ osAccount.DomainAccountManager.registerPlugin(plugin)
 
 ```
 
-<a id="getaccesstoken"></a>
 ## getAccessToken
 
 ```TypeScript
@@ -335,7 +330,6 @@ osAccount.DomainAccountManager.registerPlugin(plugin)
 
 ```
 
-<a id="getaccountinfo"></a>
 ## getAccountInfo
 
 ```TypeScript
@@ -400,7 +394,6 @@ osAccount.DomainAccountManager.registerPlugin(plugin)
 
 ```
 
-<a id="getauthstatusinfo"></a>
 ## getAuthStatusInfo
 
 ```TypeScript
@@ -462,7 +455,6 @@ osAccount.DomainAccountManager.registerPlugin(plugin)
 
 ```
 
-<a id="isaccounttokenvalid"></a>
 ## isAccountTokenValid
 
 ```TypeScript
@@ -477,15 +469,7 @@ isAccountTokenValid(
 
 **起始版本：** 10
 
-<!--Device-DomainPlugin-isAccountTokenValid(
-      domainAccountInfo: DomainAccountInfo,
-      token: Uint8Array,
-      callback: AsyncCallback<boolean>
-    ): void--><!--Device-DomainPlugin-isAccountTokenValid(
-      domainAccountInfo: DomainAccountInfo,
-      token: Uint8Array,
-      callback: AsyncCallback<boolean>
-    ): void-End-->
+<!--Device-DomainPlugin-isAccountTokenValid(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<boolean>    ): void--><!--Device-DomainPlugin-isAccountTokenValid(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<boolean>    ): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -535,7 +519,6 @@ osAccount.DomainAccountManager.registerPlugin(plugin)
 
 ```
 
-<a id="unbindaccount"></a>
 ## unbindAccount
 
 ```TypeScript

@@ -83,7 +83,7 @@ import { appManager } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md) | 应用生命周期变化事件的过滤器，可作为[on](appManager.on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStateFilter))的参数用于筛选所需监听的应用生命周期变化事件。 |
-| [KeepAliveBundleInfo](arkts-ability-appmanager-keepalivebundleinfo-i-sys.md) | 定义应用保活信息，可以通过[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md#getkeepalivebundles-1)或[getKeepAliveAppServiceExtensions](arkts-ability-appmanager-getkeepaliveappserviceextensions-f-sys.md#getkeepaliveappserviceextensions-1)获取。 |
+| [KeepAliveBundleInfo](arkts-ability-appmanager-keepalivebundleinfo-i-sys.md) | 定义应用保活信息，可以通过[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md#getkeepalivebundles)或[getKeepAliveAppServiceExtensions](arkts-ability-appmanager-getkeepaliveappserviceextensions-f-sys.md#getkeepaliveappserviceextensions)获取。 |
 <!--DelEnd-->
 
 ### 枚举

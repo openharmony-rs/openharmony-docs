@@ -36,7 +36,7 @@ area: Area
 id?: string
 ```
 
-开发者设置的节点[id](arkts-arkui-commonmethod-c.md#id-1)。默认值：undefined
+开发者设置的节点[id](arkts-arkui-commonmethod-c.md#id)。默认值：undefined
 
 **类型：** string
 

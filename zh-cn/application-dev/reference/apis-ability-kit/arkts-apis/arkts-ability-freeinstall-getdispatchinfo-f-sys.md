@@ -6,7 +6,6 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
-<a id="getdispatchinfo"></a>
 ## getDispatchInfo
 
 ```TypeScript
@@ -29,7 +28,7 @@ function getDispatchInfo(callback: AsyncCallback<DispatchInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DispatchInfo&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为获取到的[DispatchInfo](arkts-ability-dispatchinfo-i-sys.md)信息。否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DispatchInfo&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为获取到的[DispatchInfo](arkts-ability-freeinstall-dispatchinfo-t-sys.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -40,7 +39,6 @@ function getDispatchInfo(callback: AsyncCallback<DispatchInfo>): void
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
 
-<a id="getdispatchinfo-1"></a>
 ## getDispatchInfo
 
 ```TypeScript
@@ -63,7 +61,7 @@ function getDispatchInfo(): Promise<DispatchInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DispatchInfo&gt; | Promise对象，返回[DispatchInfo](arkts-ability-dispatchinfo-i-sys.md)信息。 |
+| Promise&lt;DispatchInfo&gt; | Promise对象，返回[DispatchInfo](arkts-ability-freeinstall-dispatchinfo-t-sys.md)信息。 |
 
 **错误码：**
 

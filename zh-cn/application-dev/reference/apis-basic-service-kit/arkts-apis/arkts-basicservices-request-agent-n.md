@@ -59,7 +59,7 @@ import { request } from '@kit.BasicServicesKit';
 | [Filter](arkts-basicservices-agent-filter-i.md) | 过滤条件。 |
 | [TaskInfo](arkts-basicservices-agent-taskinfo-i.md) | 查询结果的任务信息数据结构，提供普通查询和系统查询，两种字段的可见范围不同。 |
 | [HttpResponse](arkts-basicservices-agent-httpresponse-i.md) | 任务响应头的数据结构。 |
-| [Task](arkts-basicservices-agent-task-i.md) | 上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create-1)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create-1)获取。 |
+| [Task](arkts-basicservices-agent-task-i.md) | 上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取。 |
 | [GroupConfig](arkts-basicservices-agent-groupconfig-i.md) | 下载任务分组配置选项。 |
 
 <!--Del-->
@@ -79,7 +79,7 @@ import { request } from '@kit.BasicServicesKit';
 | [Action](arkts-basicservices-agent-action-e.md) | 定义操作选项。 |
 | [Mode](arkts-basicservices-agent-mode-e.md) | 定义模式选项。  当应用的前台任务切换到后台一段时间后会显示运行失败或暂停，而后台任务不受此操作影响。 |
 | [Network](arkts-basicservices-agent-network-e.md) | 定义网络选项。  网络不满足设置条件时，未执行的任务会等待执行，执行中的任务将失败或暂停。 |
-| [BroadcastEvent](arkts-basicservices-agent-broadcastevent-e.md) | 定义自定义系统事件。用户可以使用公共事件接口获取该事件。  上传下载SA具有'ohos.permission.SEND_TASK_COMPLETE_EVENT'权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。  调用CommonEventData类型传输公共事件相关数据，成员的内容填写和 [CommonEventData](arkts-basicservices-commoneventdata-commoneventdata-i.md) 介绍的有所区别，其中CommonEventData.code表示任务的状态，目前为0x40 COMPLETE或0x41 FAILED；CommonEventData.data表示任务的taskId。  <!--Del-->  请参考[静态订阅公共事件](docroot://basic-services/common-event/common-event-static-subscription-sys.md)以获取事件配置信息和二级配置文件的配置方式。<!--DelEnd--> |
+| [BroadcastEvent](arkts-basicservices-agent-broadcastevent-e.md) | 定义自定义系统事件。用户可以使用公共事件接口获取该事件。  上传下载SA具有'ohos.permission.SEND_TASK_COMPLETE_EVENT'权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。  调用CommonEventData类型传输公共事件相关数据，成员的内容填写和 [CommonEventData](arkts-basicservices-commoneventdata-commoneventdata-i.md) 介绍的有所区别，其中CommonEventData.code表示任务的状态，目前为0x40 COMPLETE或0x41 FAILED；CommonEventData.data表示任务的taskId。  <!--Del-->  请参考[静态订阅公共事件](../../../basic-services/common-event/common-event-static-subscription-sys.md)以获取事件配置信息和二级配置文件的配置方式。<!--DelEnd--> |
 | [State](arkts-basicservices-agent-state-e.md) | 定义任务当前的状态。 |
 | [Faults](arkts-basicservices-agent-faults-e.md) | 定义任务失败的原因。 |
 | [WaitingReason](arkts-basicservices-agent-waitingreason-e.md) | 枚举，定义任务等待的原因。 |

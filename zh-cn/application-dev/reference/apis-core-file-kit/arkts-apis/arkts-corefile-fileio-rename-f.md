@@ -1,6 +1,5 @@
 # rename
 
-<a id="rename"></a>
 ## rename
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:rename](arkts-corefile-file-fs-rename-f.md#rename-1)
+**替代接口：** [fs:rename](arkts-corefile-fileio-rename-f.md#rename)
 
 <!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>-End-->
 
@@ -33,7 +32,6 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="rename-1"></a>
 ## rename
 
 ```TypeScript
@@ -46,7 +44,7 @@ declare function rename(oldPath: string, newPath: string, callback: AsyncCallbac
 
 **废弃版本：** 9
 
-**替代接口：** [fs:rename](arkts-corefile-file-fs-rename-f.md#rename-1)
+**替代接口：** [fs:rename](arkts-corefile-fileio-rename-f.md#rename)
 
 <!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void-End-->
 

@@ -1,6 +1,5 @@
 # fsyncSync
 
-<a id="fsyncsync"></a>
 ## fsyncSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function fsyncSync(fd: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:fsyncSync](arkts-corefile-file-fs-fsyncsync-f.md#fsyncsync-1)
+**替代接口：** [fs:fsyncSync](arkts-corefile-fileio-fsyncsync-f.md#fsyncsync)
 
 <!--Device-unnamed-declare function fsyncSync(fd: number): void--><!--Device-unnamed-declare function fsyncSync(fd: number): void-End-->
 

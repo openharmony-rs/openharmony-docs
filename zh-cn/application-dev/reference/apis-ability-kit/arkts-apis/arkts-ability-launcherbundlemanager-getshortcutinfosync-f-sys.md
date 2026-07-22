@@ -6,14 +6,13 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getshortcutinfosync"></a>
 ## getShortcutInfoSync
 
 ```TypeScript
 function getShortcutInfoSync(bundleName: string): Array<ShortcutInfo>
 ```
 
-查询当前用户下指定应用的快捷方式信息[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md#getshortcutinfobyappindex-1)。
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md#getshortcutinfobyappindex)。
 
 获取调用方自身的信息时不需要权限。
 
@@ -37,7 +36,7 @@ function getShortcutInfoSync(bundleName: string): Array<ShortcutInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;ShortcutInfo&gt; | Array形式返回当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
+| Array&lt;ShortcutInfo&gt; | Array形式返回当前用户下指定应用的[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t-sys.md)。 |
 
 **错误码：**
 
@@ -68,14 +67,13 @@ try {
 ```
 
 
-<a id="getshortcutinfosync-1"></a>
 ## getShortcutInfoSync
 
 ```TypeScript
 function getShortcutInfoSync(bundleName: string, userId: number): Array<ShortcutInfo>
 ```
 
-查询指定用户下指定应用的快捷方式信息[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md#getshortcutinfobyappindex-1)。
+查询指定用户下指定应用的快捷方式信息[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md#getshortcutinfobyappindex)。
 
 获取调用方自身的信息时不需要权限。
 
@@ -94,13 +92,13 @@ function getShortcutInfoSync(bundleName: string, userId: number): Array<Shortcut
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;ShortcutInfo&gt; | Array形式返回指定用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
+| Array&lt;ShortcutInfo&gt; | Array形式返回指定用户下指定应用的[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t-sys.md)。 |
 
 **错误码：**
 

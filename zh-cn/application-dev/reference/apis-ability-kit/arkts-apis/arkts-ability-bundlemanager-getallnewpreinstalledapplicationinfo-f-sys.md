@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getallnewpreinstalledapplicationinfo"></a>
 ## getAllNewPreinstalledApplicationInfo
 
 ```TypeScript

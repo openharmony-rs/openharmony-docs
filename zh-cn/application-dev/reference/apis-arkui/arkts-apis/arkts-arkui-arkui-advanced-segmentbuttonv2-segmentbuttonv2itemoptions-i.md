@@ -1,7 +1,6 @@
 # SegmentButtonV2ItemOptions
 
 配置分段按钮选项参数。
-
 > **说明**  
 >  
 > 1. 当配置`symbol`和`icon`时，`symbol`的显示优先级更高。  
@@ -26,7 +25,7 @@ import { OnSelectedIndexesChange, TabSegmentButtonV2, SegmentButtonV2Items, Mult
 accessibilityDescription?: ResourceStr
 ```
 
-分段按钮选项的无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitydescription-1)。
+分段按钮选项的无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitydescription)。
 
 默认值：""
 
@@ -52,7 +51,7 @@ accessibilityDescription?: ResourceStr
 accessibilityLevel?: string
 ```
 
-分段按钮选项的无障碍重要性[accessibilityLevel](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitylevel-1)。
+分段按钮选项的无障碍重要性[accessibilityLevel](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitylevel)。
 
 默认值："auto"
 
@@ -78,7 +77,7 @@ accessibilityLevel?: string
 accessibilityText?: ResourceStr
 ```
 
-分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitytext-1)。
+分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitytext)。
 
 默认值：""
 

@@ -13,7 +13,7 @@
 
 **与闪控球联动：**
 
-本模块可与[@ohos.window.floatingBall](arkts-window-floatingball.md)（闪控球）联合使用。通过[floatView.bind](arkts-arkui-floatview-bind-f.md#bind-1)接口将标准悬浮窗控制器与闪控球控制器绑定后，用户点击闪控球可展开为标准悬浮窗，点击标准悬浮窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。
+本模块可与[@ohos.window.floatingBall](arkts-window-floatingball.md)（闪控球）联合使用。通过[floatView.bind](arkts-arkui-floatview-bind-f.md#bind)接口将标准悬浮窗控制器与闪控球控制器绑定后，用户点击闪控球可展开为标准悬浮窗，点击标准悬浮窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。
 
 **全局悬浮窗和标准悬浮窗对比**
 
@@ -24,11 +24,10 @@
 - 标准悬浮窗支持与[闪控球](arkts-window-floatingball.md)互相绑定联合使用，实现更复杂场景。
 
 **起始版本：** 26.0.0
-
 > **说明：**  
 >  
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用  
-> [canIUse()](docroot://reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。  
+> [canIUse()](../../../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。  
 >  
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -61,7 +60,7 @@ import { floatView } from '@kit.ArkUI';
 | 名称 | 说明 |
 | --- | --- |
 | [FloatViewConfiguration](arkts-arkui-floatview-floatviewconfiguration-i.md) | 创建标准悬浮窗控制器时需要提供的参数配置。 |
-| [FloatViewController](arkts-arkui-floatview-floatviewcontroller-i.md) | 标准悬浮窗控制器实例。用于启动、停止标准悬浮窗以及注册回调等操作。  下列API示例中都需先使用[floatView.create()](arkts-arkui-floatview-create-f.md#create-1)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。 |
+| [FloatViewController](arkts-arkui-floatview-floatviewcontroller-i.md) | 标准悬浮窗控制器实例。用于启动、停止标准悬浮窗以及注册回调等操作。  下列API示例中都需先使用[floatView.create()](arkts-arkui-floatview-create-f.md#create)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。 |
 | [FloatViewLimits](arkts-arkui-floatview-floatviewlimits-i.md) | 标准悬浮窗窗口的限制。 |
 | [FloatViewProperties](arkts-arkui-floatview-floatviewproperties-i.md) | 标准悬浮窗窗口的属性。 |
 | [FloatViewRectChangeInfo](arkts-arkui-floatview-floatviewrectchangeinfo-i.md) | 标准悬浮窗矩形区域变化信息。 |

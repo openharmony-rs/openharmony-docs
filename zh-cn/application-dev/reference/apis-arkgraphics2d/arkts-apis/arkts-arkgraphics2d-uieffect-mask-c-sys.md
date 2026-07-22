@@ -16,7 +16,6 @@ Mask效果类，作为Filter以及VisualEffect的输入使用。
 import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createpixelmapmask"></a>
 ## createPixelMapMask
 
 ```TypeScript
@@ -28,9 +27,7 @@ static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstR
 
 **起始版本：** 20
 
-<!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,
-      fillColor?: Color): Mask--><!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,
-      fillColor?: Color): Mask-End-->
+<!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,      fillColor?: Color): Mask--><!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,      fillColor?: Color): Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -99,7 +96,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
-<a id="createpixelmapmask-1"></a>
 ## createPixelMapMask
 
 ```TypeScript
@@ -226,7 +222,6 @@ struct Index {
 
 ```
 
-<a id="createradialgradientmask"></a>
 ## createRadialGradientMask
 
 ```TypeScript
@@ -238,9 +233,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 
 **起始版本：** 20
 
-<!--Device-Mask-static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY: double,
-      gradients: Array<[double, double]>): Mask--><!--Device-Mask-static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY: double,
-      gradients: Array<[double, double]>): Mask-End-->
+<!--Device-Mask-static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY: double,      gradients: Array<[double, double]>): Mask--><!--Device-Mask-static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY: double,      gradients: Array<[double, double]>): Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -267,7 +260,6 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-<a id="createripplemask"></a>
 ## createRippleMask
 
 ```TypeScript
@@ -312,7 +304,6 @@ static createRippleMask(center: common2D.Point, radius: number, width: number, o
 
 ```
 
-<a id="createuseeffectmask"></a>
 ## createUseEffectMask
 
 ```TypeScript
@@ -406,7 +397,6 @@ struct Index {
 
 ```
 
-<a id="createwavegradientmask"></a>
 ## createWaveGradientMask
 
 ```TypeScript
@@ -418,9 +408,7 @@ static createWaveGradientMask(center: common2D.Point, width: number, propagation
 
 **起始版本：** 20
 
-<!--Device-Mask-static createWaveGradientMask(center: common2D.Point, width: double, propagationRadius: double,
-      blurRadius: double, turbulenceStrength?: double): Mask--><!--Device-Mask-static createWaveGradientMask(center: common2D.Point, width: double, propagationRadius: double,
-      blurRadius: double, turbulenceStrength?: double): Mask-End-->
+<!--Device-Mask-static createWaveGradientMask(center: common2D.Point, width: double, propagationRadius: double,      blurRadius: double, turbulenceStrength?: double): Mask--><!--Device-Mask-static createWaveGradientMask(center: common2D.Point, width: double, propagationRadius: double,      blurRadius: double, turbulenceStrength?: double): Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

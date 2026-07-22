@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="animation"></a>
 ## animation
 
 ```TypeScript
@@ -41,7 +40,6 @@ animation(value: AnimateParam): TransitionEffect
 | --- | --- |
 | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 当前动画效果。 |
 
-<a id="asymmetric"></a>
 ## asymmetric
 
 ```TypeScript
@@ -51,7 +49,7 @@ static asymmetric(
   ): TransitionEffect<"asymmetric">
 ```
 
-设置非对称的转场效果，即出现、消失为两套独立不同的动画，效果不互为逆过程。具体效果可参考[示例2](docroot://reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#示例2使用不同接口实现图片出现消失)。
+设置非对称的转场效果，即出现、消失为两套独立不同的动画，效果不互为逆过程。具体效果可参考[示例2](../../../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#示例2使用不同接口实现图片出现消失)。
 
 **起始版本：** 10
 
@@ -61,13 +59,7 @@ static asymmetric(
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static asymmetric(
-    appear: TransitionEffect,
-    disappear: TransitionEffect
-  ): TransitionEffect<"asymmetric">--><!--Device-TransitionEffect-static asymmetric(
-    appear: TransitionEffect,
-    disappear: TransitionEffect
-  ): TransitionEffect<"asymmetric">-End-->
+<!--Device-TransitionEffect-static asymmetric(    appear: TransitionEffect,    disappear: TransitionEffect  ): TransitionEffect<"asymmetric">--><!--Device-TransitionEffect-static asymmetric(    appear: TransitionEffect,    disappear: TransitionEffect  ): TransitionEffect<"asymmetric">-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +76,6 @@ static asymmetric(
 | --- | --- |
 | [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"asymmetric"&gt; | 当前动画非对称的转场效果。 |
 
-<a id="combine"></a>
 ## combine
 
 ```TypeScript
@@ -117,7 +108,6 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 | --- | --- |
 | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 组合过渡效应。 |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -145,7 +135,6 @@ constructor(type: Type, effect: Effect)
 | type | [Type](../../apis-arkts/arkts-apis/arkts-arkts-util-type-e.md) | 是 | 转场类型。 |
 | effect | [Effect](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-effect-i.md) | 是 | 转场参数。 |
 
-<a id="move"></a>
 ## move
 
 ```TypeScript
@@ -178,7 +167,6 @@ static move(edge: TransitionEdge): TransitionEffect<"move">
 | --- | --- |
 | [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"move"&gt; | 当前动画从屏幕边缘滑入和滑出的效果。 |
 
-<a id="opacity"></a>
 ## opacity
 
 ```TypeScript
@@ -211,7 +199,6 @@ static opacity(alpha: number): TransitionEffect<"opacity">
 | --- | --- |
 | [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"opacity"&gt; | 当前动画透明度效果。 |
 
-<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
@@ -244,7 +231,6 @@ static rotate(options: RotateOptions): TransitionEffect<"rotate">
 | --- | --- |
 | [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"rotate"&gt; | 当前动画旋转效果。 |
 
-<a id="scale"></a>
 ## scale
 
 ```TypeScript
@@ -277,7 +263,6 @@ static scale(options: ScaleOptions): TransitionEffect<"scale">
 | --- | --- |
 | [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"scale"&gt; | 当前动画缩放效果。 |
 
-<a id="translate"></a>
 ## translate
 
 ```TypeScript
@@ -378,19 +363,7 @@ static readonly SLIDE: TransitionEffect<
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static readonly SLIDE: TransitionEffect<
-    "asymmetric",
-    {
-      appear: TransitionEffect<"move", TransitionEdge>;
-      disappear: TransitionEffect<"move", TransitionEdge>;
-    }
-  >--><!--Device-TransitionEffect-static readonly SLIDE: TransitionEffect<
-    "asymmetric",
-    {
-      appear: TransitionEffect<"move", TransitionEdge>;
-      disappear: TransitionEffect<"move", TransitionEdge>;
-    }
-  >-End-->
+<!--Device-TransitionEffect-static readonly SLIDE: TransitionEffect<    "asymmetric",    {      appear: TransitionEffect<"move", TransitionEdge>;      disappear: TransitionEffect<"move", TransitionEdge>;    }  >--><!--Device-TransitionEffect-static readonly SLIDE: TransitionEffect<    "asymmetric",    {      appear: TransitionEffect<"move", TransitionEdge>;      disappear: TransitionEffect<"move", TransitionEdge>;    }  >-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

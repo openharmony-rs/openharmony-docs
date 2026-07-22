@@ -1,6 +1,5 @@
 # lpx2px
 
-<a id="lpx2px"></a>
 ## lpx2px
 
 ```TypeScript

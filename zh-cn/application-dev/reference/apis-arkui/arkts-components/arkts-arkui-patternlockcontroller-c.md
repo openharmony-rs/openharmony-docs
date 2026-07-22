@@ -14,7 +14,6 @@ patternLockController: PatternLockController = new PatternLockController()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -31,7 +30,6 @@ PatternLockController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -48,7 +46,6 @@ reset()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="setchallengeresult"></a>
 ## setChallengeResult
 
 ```TypeScript

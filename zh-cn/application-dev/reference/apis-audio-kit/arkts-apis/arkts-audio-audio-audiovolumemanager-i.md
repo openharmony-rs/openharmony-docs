@@ -2,8 +2,7 @@
 
 音量管理。
 
-在使用AudioVolumeManager的接口之前，需先通过[getVolumeManager](arkts-audio-audio-audiomanager-i.md#getvolumemanager-1)获取AudioVolumeManager实例。
-
+在使用AudioVolumeManager的接口之前，需先通过[getVolumeManager](arkts-audio-audio-audiomanager-i.md#getvolumemanager)获取AudioVolumeManager实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 9开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="getappvolumepercentage"></a>
 ## getAppVolumePercentage
 
 ```TypeScript
@@ -43,7 +41,6 @@ getAppVolumePercentage(): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回应用的音量。 |
 
-<a id="getmaxvolumebystream"></a>
 ## getMaxVolumeByStream
 
 ```TypeScript
@@ -78,7 +75,6 @@ getMaxVolumeByStream(streamUsage: StreamUsage): number
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getminvolumebystream"></a>
 ## getMinVolumeByStream
 
 ```TypeScript
@@ -113,7 +109,6 @@ getMinVolumeByStream(streamUsage: StreamUsage): number
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getvolumebystream"></a>
 ## getVolumeByStream
 
 ```TypeScript
@@ -148,7 +143,6 @@ getVolumeByStream(streamUsage: StreamUsage): number
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getvolumegroupmanager"></a>
 ## getVolumeGroupManager
 
 ```TypeScript
@@ -170,7 +164,6 @@ getVolumeGroupManager(groupId: number, callback: AsyncCallback<AudioVolumeGroupM
 | groupId | number | 是 | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioVolumeGroupManager&gt; | 是 | 回调函数。当获取音频组音量管理器实例成功，err为undefined，data为获取到的音频组音量管理器实例；否则为错误对象。 |
 
-<a id="getvolumegroupmanager-1"></a>
 ## getVolumeGroupManager
 
 ```TypeScript
@@ -197,7 +190,6 @@ getVolumeGroupManager(groupId: number): Promise<AudioVolumeGroupManager>
 | --- | --- |
 | Promise&lt;AudioVolumeGroupManager&gt; | Promise对象，返回音频组音量管理器实例。 |
 
-<a id="getvolumegroupmanagersync"></a>
 ## getVolumeGroupManagerSync
 
 ```TypeScript
@@ -233,7 +225,6 @@ getVolumeGroupManagerSync(groupId: number): AudioVolumeGroupManager
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getvolumeinunitofdbbystream"></a>
 ## getVolumeInUnitOfDbByStream
 
 ```TypeScript
@@ -268,7 +259,6 @@ getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, devic
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="issystemmutedforstream"></a>
 ## isSystemMutedForStream
 
 ```TypeScript
@@ -301,7 +291,6 @@ isSystemMutedForStream(streamUsage: StreamUsage): boolean
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off"></a>
 ## off('volumeChange')
 
 ```TypeScript
@@ -334,7 +323,6 @@ off(type: 'volumeChange', callback?: Callback<VolumeEvent>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters missing;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off-1"></a>
 ## off('appVolumeChange')
 
 ```TypeScript
@@ -362,7 +350,6 @@ off(type: 'appVolumeChange', callback?: Callback<VolumeEvent>): void
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off-2"></a>
 ## off('streamVolumeChange')
 
 ```TypeScript
@@ -384,7 +371,6 @@ off(type: 'streamVolumeChange', callback?: Callback<StreamVolumeEvent>): void
 | type | 'streamVolumeChange' | 是 | 事件回调类型，支持的事件为'streamVolumeChange'，当取消监听系统音量变化事件时，触发该事件。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;StreamVolumeEvent&gt; | 否 | 回调函数，返回变化后的音量信息。 |
 
-<a id="on"></a>
 ## on('volumeChange')
 
 ```TypeScript
@@ -417,7 +403,6 @@ on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on-1"></a>
 ## on('appVolumeChange')
 
 ```TypeScript
@@ -445,7 +430,6 @@ on(type: 'appVolumeChange', callback: Callback<VolumeEvent>): void
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on-2"></a>
 ## on('streamVolumeChange')
 
 ```TypeScript
@@ -474,7 +458,6 @@ on(type: 'streamVolumeChange', streamUsage: StreamUsage, callback: Callback<Stre
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="setappvolumepercentage"></a>
 ## setAppVolumePercentage
 
 ```TypeScript

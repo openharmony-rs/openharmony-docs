@@ -1,6 +1,6 @@
 # ShortcutWant（系统接口）
 
-快捷方式内定义的目标[wants](docroot://quick-start/module-configuration-file.md#wants标签)信息集合。
+快捷方式内定义的目标[wants](../../../quick-start/module-configuration-file.md#wants标签)信息集合。
 
 **起始版本：** 20
 

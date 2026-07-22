@@ -70,7 +70,7 @@ displayY: number
 globalDisplayX: number
 ```
 
-鼠标位置在[全局坐标系](docroot://windowmanager/window-terminology.md#全局坐标系)中的X坐标。
+鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
 
 单位：vp
 
@@ -92,7 +92,7 @@ globalDisplayX: number
 globalDisplayY: number
 ```
 
-鼠标位置在[全局坐标系](docroot://windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
+鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
 
 单位：vp
 

@@ -6,7 +6,6 @@
 import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
-<a id="starttimer"></a>
 ## startTimer
 
 ```TypeScript
@@ -28,7 +27,7 @@ function startTimer(timer: number, triggerTime: number, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | timer | number | 是 | 定时器的ID。 |
-| triggerTime | number | 是 | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime(STARTUP)](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime-1)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](arkts-basicservices-systemdatetime-gettime-f.md#gettime-1)获取。 |
+| triggerTime | number | 是 | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime(STARTUP)](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](arkts-basicservices-systemdatetime-gettime-f.md#gettime)获取。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -71,7 +70,6 @@ try {
 ```
 
 
-<a id="starttimer-1"></a>
 ## startTimer
 
 ```TypeScript
@@ -93,7 +91,7 @@ function startTimer(timer: number, triggerTime: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | timer | number | 是 | 定时器的ID。 |
-| triggerTime | number | 是 | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime(STARTUP)](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime-1)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](arkts-basicservices-systemdatetime-gettime-f.md#gettime-1)获取。 |
+| triggerTime | number | 是 | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime(STARTUP)](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](arkts-basicservices-systemdatetime-gettime-f.md#gettime)获取。 |
 
 **返回值：**
 

@@ -1,6 +1,5 @@
 # openSync
 
-<a id="opensync"></a>
 ## openSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function openSync(path: string, flags?: number, mode?: number): number
 
 **废弃版本：** 9
 
-**替代接口：** [fs:openSync](arkts-corefile-file-fs-opensync-f.md#opensync-1)
+**替代接口：** [fs:openSync](arkts-corefile-fileio-opensync-f.md#opensync)
 
 <!--Device-unnamed-declare function openSync(path: string, flags?: number, mode?: number): number--><!--Device-unnamed-declare function openSync(path: string, flags?: number, mode?: number): number-End-->
 

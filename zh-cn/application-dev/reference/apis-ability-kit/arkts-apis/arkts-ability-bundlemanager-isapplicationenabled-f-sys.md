@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="isapplicationenabled"></a>
 ## isApplicationEnabled
 
 ```TypeScript
@@ -68,7 +67,6 @@ try {
 ```
 
 
-<a id="isapplicationenabled-1"></a>
 ## isApplicationEnabled
 
 ```TypeScript
@@ -125,7 +123,6 @@ try {
 ```
 
 
-<a id="isapplicationenabled-2"></a>
 ## isApplicationEnabled
 
 ```TypeScript

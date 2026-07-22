@@ -6,7 +6,6 @@
 import { linkEnhance } from '@kit.DistributedServiceKit';
 ```
 
-<a id="createserver"></a>
 ## createServer
 
 ```TypeScript

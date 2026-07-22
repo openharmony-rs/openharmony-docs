@@ -12,7 +12,6 @@
 import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
-<a id="bezierwarp"></a>
 ## bezierWarp
 
 ```TypeScript
@@ -72,7 +71,6 @@ struct BezierWarpExample {
 
 ```
 
-<a id="blurbubblesrise"></a>
 ## blurBubblesRise
 
 ```TypeScript
@@ -156,7 +154,6 @@ struct BlurBubblesRiseExample {
 
 ```
 
-<a id="colorgradient"></a>
 ## colorGradient
 
 ```TypeScript
@@ -168,9 +165,7 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 
 **起始版本：** 20
 
-<!--Device-Filter-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,
-        alphaMask?: Mask): Filter--><!--Device-Filter-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,
-        alphaMask?: Mask): Filter-End-->
+<!--Device-Filter-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,        alphaMask?: Mask): Filter--><!--Device-Filter-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,        alphaMask?: Mask): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -229,7 +224,6 @@ struct ColorGradientExample {
 
 ```
 
-<a id="contentlight"></a>
 ## contentLight
 
 ```TypeScript
@@ -241,9 +235,7 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 
 **起始版本：** 20
 
-<!--Device-Filter-contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,
-      displacementMap?: Mask): Filter--><!--Device-Filter-contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,
-      displacementMap?: Mask): Filter-End-->
+<!--Device-Filter-contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      displacementMap?: Mask): Filter--><!--Device-Filter-contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      displacementMap?: Mask): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -311,7 +303,6 @@ struct Index {
 
 ```
 
-<a id="directionlight"></a>
 ## directionLight
 
 ```TypeScript
@@ -389,7 +380,6 @@ struct Index {
 
 ```
 
-<a id="displacementdistort"></a>
 ## displacementDistort
 
 ```TypeScript
@@ -449,7 +439,6 @@ struct DisplacementDistortExample {
 
 ```
 
-<a id="distort"></a>
 ## distort
 
 ```TypeScript
@@ -493,7 +482,6 @@ filter.distort(-0.5)
 
 ```
 
-<a id="edgelight"></a>
 ## edgeLight
 
 ```TypeScript
@@ -557,7 +545,6 @@ struct EdgeLightExample {
 
 ```
 
-<a id="flyinflyouteffect"></a>
 ## flyInFlyOutEffect
 
 ```TypeScript
@@ -602,7 +589,6 @@ filter.flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP)
 
 ```
 
-<a id="hdrbrightnessratio"></a>
 ## hdrBrightnessRatio
 
 ```TypeScript
@@ -651,7 +637,6 @@ filter.hdrBrightnessRatio(2.0);
 
 ```
 
-<a id="heatdistortion"></a>
 ## heatDistortion
 
 ```TypeScript
@@ -715,7 +700,6 @@ struct HeatDistortionExample {
 
 ```
 
-<a id="maskdispersion"></a>
 ## maskDispersion
 
 ```TypeScript
@@ -727,9 +711,7 @@ maskDispersion(dispersionMap: Mask, alpha: number, rFactor?: [number, number], g
 
 **起始版本：** 20
 
-<!--Device-Filter-maskDispersion(dispersionMap: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double],
-      bFactor?: [double, double]): Filter--><!--Device-Filter-maskDispersion(dispersionMap: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double],
-      bFactor?: [double, double]): Filter-End-->
+<!--Device-Filter-maskDispersion(dispersionMap: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double],      bFactor?: [double, double]): Filter--><!--Device-Filter-maskDispersion(dispersionMap: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double],      bFactor?: [double, double]): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -757,7 +739,6 @@ maskDispersion(dispersionMap: Mask, alpha: number, rFactor?: [number, number], g
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-<a id="masktransition"></a>
 ## maskTransition
 
 ```TypeScript
@@ -841,7 +822,6 @@ struct Index {
 
 ```
 
-<a id="pixelstretch"></a>
 ## pixelStretch
 
 ```TypeScript
@@ -880,7 +860,6 @@ filter.pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP)
 
 ```
 
-<a id="radiusgradientblur"></a>
 ## radiusGradientBlur
 
 ```TypeScript
@@ -916,7 +895,6 @@ radiusGradientBlur(radius: number, gradientParam: LinearGradientBlurOptions): Fi
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-<a id="variableradiusblur"></a>
 ## variableRadiusBlur
 
 ```TypeScript
@@ -976,7 +954,6 @@ struct VariableRadiusBlurExample {
 
 ```
 
-<a id="waterripple"></a>
 ## waterRipple
 
 ```TypeScript

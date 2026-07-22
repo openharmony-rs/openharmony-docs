@@ -1,7 +1,6 @@
 # @ohos.multimodalInput.inputEventClient
 
 输入事件注入模块，提供输入按键、鼠标/触控板、触屏输入事件注入能力。
-
 > **说明：**  
 >  
 > - 本模块接口为系统接口。

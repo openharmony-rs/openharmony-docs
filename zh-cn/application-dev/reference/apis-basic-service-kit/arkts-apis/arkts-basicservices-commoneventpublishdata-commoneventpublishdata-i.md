@@ -1,7 +1,6 @@
 # CommonEventPublishData
 
 包含公共事件内容和属性。
-
 > **说明：**  
 >  
 > 如果不加限制，任何应用都可以订阅公共事件并读取相关信息，应避免在公共事件中携带敏感信息。通过本模块的subscriberPermissions和bundleName参数，可以限制公共事件接收方的范围。
@@ -102,7 +101,7 @@ isSticky?: boolean
 
 仅系统应用或系统服务允许发送粘性事件。
 
-[ohos.permission.COMMONEVENT_STICKY](docroot://security/AccessToken/permissions-for-all.md#ohospermissioncommonevent_sticky)
+[ohos.permission.COMMONEVENT_STICKY](../../../security/AccessToken/permissions-for-all.md#ohospermissioncommonevent_sticky)
 
 **类型：** boolean
 

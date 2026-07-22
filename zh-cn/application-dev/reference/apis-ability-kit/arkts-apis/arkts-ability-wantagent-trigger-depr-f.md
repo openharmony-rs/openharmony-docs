@@ -1,6 +1,5 @@
 # trigger
 
-<a id="trigger"></a>
 ## trigger
 
 ```TypeScript

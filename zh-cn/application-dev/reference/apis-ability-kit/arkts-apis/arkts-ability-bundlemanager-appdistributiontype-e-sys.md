@@ -1,6 +1,6 @@
 # AppDistributionType（系统接口）
 
-标识应用[HarmonyAppProvision配置文件说明](docroot://security/app-provision-structure.md)。
+标识应用[HarmonyAppProvision配置文件说明](../../../security/app-provision-structure.md)。
 
 **起始版本：** 12
 
@@ -64,7 +64,7 @@ ENTERPRISE_NORMAL = 3
 ENTERPRISE_MDM = 4
 ```
 
-企业MDM应用，只能安装在企业设备上。需要被激活[adminManager.enableAdmin](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin-1)后，才能安装普通企业应用。
+企业MDM应用，只能安装在企业设备上。需要被激活[adminManager.enableAdmin](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin)后，才能安装普通企业应用。
 
 **起始版本：** 12
 

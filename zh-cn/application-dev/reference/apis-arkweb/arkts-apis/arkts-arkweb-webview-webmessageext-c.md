@@ -14,7 +14,6 @@ The message received or sent from web message port.
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="getarray"></a>
 ## getArray
 
 ```TypeScript
@@ -43,7 +42,6 @@ getArray(): Array<string | number | boolean>
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="getarraybuffer"></a>
 ## getArrayBuffer
 
 ```TypeScript
@@ -72,7 +70,6 @@ getArrayBuffer(): ArrayBuffer
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="getboolean"></a>
 ## getBoolean
 
 ```TypeScript
@@ -101,7 +98,6 @@ getBoolean(): boolean
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="geterror"></a>
 ## getError
 
 ```TypeScript
@@ -130,7 +126,6 @@ getError(): Error
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="getnumber"></a>
 ## getNumber
 
 ```TypeScript
@@ -159,7 +154,6 @@ getNumber(): number
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="getstring"></a>
 ## getString
 
 ```TypeScript
@@ -188,7 +182,6 @@ getString(): string
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="gettype"></a>
 ## getType
 
 ```TypeScript
@@ -211,7 +204,6 @@ getType(): WebMessageType
 | --- | --- |
 | [WebMessageType](arkts-arkweb-webview-webmessagetype-e.md) | - 返回类型为 WebMessageType 的数据。 |
 
-<a id="setarray"></a>
 ## setArray
 
 ```TypeScript
@@ -241,7 +233,6 @@ setArray(message: Array<string | number | boolean>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="setarraybuffer"></a>
 ## setArrayBuffer
 
 ```TypeScript
@@ -271,7 +262,6 @@ setArrayBuffer(message: ArrayBuffer): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="setboolean"></a>
 ## setBoolean
 
 ```TypeScript
@@ -301,7 +291,6 @@ setBoolean(message: boolean): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="seterror"></a>
 ## setError
 
 ```TypeScript
@@ -331,7 +320,6 @@ setError(message: Error): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="setnumber"></a>
 ## setNumber
 
 ```TypeScript
@@ -361,7 +349,6 @@ setNumber(message: number): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="setstring"></a>
 ## setString
 
 ```TypeScript
@@ -391,7 +378,6 @@ setString(message: string): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="settype"></a>
 ## setType
 
 ```TypeScript

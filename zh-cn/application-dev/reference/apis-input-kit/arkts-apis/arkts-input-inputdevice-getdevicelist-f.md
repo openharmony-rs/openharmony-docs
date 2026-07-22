@@ -6,7 +6,6 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
-<a id="getdevicelist"></a>
 ## getDeviceList
 
 ```TypeScript
@@ -66,7 +65,6 @@ struct Index {
 ```
 
 
-<a id="getdevicelist-1"></a>
 ## getDeviceList
 
 ```TypeScript

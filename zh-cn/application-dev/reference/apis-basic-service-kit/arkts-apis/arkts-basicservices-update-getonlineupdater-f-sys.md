@@ -6,14 +6,13 @@
 import { update } from '@kit.BasicServicesKit';
 ```
 
-<a id="getonlineupdater"></a>
 ## getOnlineUpdater
 
 ```TypeScript
 function getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 ```
 
-获取在线升级对象，可用于在线检查新版本、下载升级包、安装升级包等操作。适用于设备厂商的OTA(详见[术语](docroot://basic-services/update/update-kit-term.md))升级客户端应用、在线系统升级等场景，帮助用户及时获取系统更新，提升升级效率和用户体验。
+获取在线升级对象，可用于在线检查新版本、下载升级包、安装升级包等操作。适用于设备厂商的OTA(详见[术语](../../../basic-services/update/update-kit-term.md))升级客户端应用、在线系统升级等场景，帮助用户及时获取系统更新，提升升级效率和用户体验。
 
 **原理说明**：
 

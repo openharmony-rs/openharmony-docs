@@ -1,13 +1,12 @@
 # AVCastPickerHelper
 
 投播半模态对象，可拉起半模态窗口，选择投播设备。在使用前，需要创建AVCastPickerHelper实例。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 14开始支持。  
 >  
 > - AVCastPickerHelper样式显示为半模态，实际会绑定  
-> [全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-commonmethod-c.md#bindcontentcover-1)  
+> [全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-commonmethod-c.md#bindcontentcover)  
 > 。
 
 **起始版本：** 14
@@ -22,14 +21,13 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
 constructor(context: Context)
 ```
 
-创建AVCastPickerHelper对象，获取context请参考[getHostContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#gethostcontext-1)。
+创建AVCastPickerHelper对象，获取context请参考[getHostContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#gethostcontext)。
 
 **起始版本：** 14
 
@@ -52,7 +50,6 @@ constructor(context: Context)
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
-<a id="off"></a>
 ## off('pickerStateChange')
 
 ```TypeScript
@@ -83,7 +80,6 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState>) : void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
-<a id="on"></a>
 ## on('pickerStateChange')
 
 ```TypeScript
@@ -116,7 +112,6 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState>) : void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
-<a id="resetcommunicationdevice"></a>
 ## resetCommunicationDevice
 
 ```TypeScript
@@ -139,7 +134,6 @@ resetCommunicationDevice(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-<a id="select"></a>
 ## select
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
-<a id="setusbpolicy"></a>
 ## setUsbPolicy
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setUsbPolicy(admin: Want, usbPolicy: UsbPolicy, callback: AsyncCallback
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy-1)
+**替代接口：** [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -73,7 +72,6 @@ usbManager.setUsbPolicy(wantTemp, policy, (err) => {
 ```
 
 
-<a id="setusbpolicy-1"></a>
 ## setUsbPolicy
 
 ```TypeScript
@@ -86,7 +84,7 @@ function setUsbPolicy(admin: Want, usbPolicy: UsbPolicy): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy-1)
+**替代接口：** [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 

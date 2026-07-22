@@ -6,7 +6,6 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
-<a id="getlauncherabilityresourceinfo"></a>
 ## getLauncherAbilityResourceInfo
 
 ```TypeScript
@@ -48,7 +47,6 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: numb
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
 
-<a id="getlauncherabilityresourceinfo-1"></a>
 ## getLauncherAbilityResourceInfo
 
 ```TypeScript

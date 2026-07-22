@@ -1,6 +1,5 @@
 # publish（系统接口）
 
-<a id="publish"></a>
 ## publish
 
 ```TypeScript
@@ -32,7 +31,6 @@ function publish(request: NotificationRequest, userId: number, callback: AsyncCa
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 被指定的回调方法。 |
 
 
-<a id="publish-1"></a>
 ## publish
 
 ```TypeScript

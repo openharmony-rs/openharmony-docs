@@ -14,7 +14,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="getparent"></a>
 ## getParent
 
 ```TypeScript
@@ -53,7 +52,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="lock"></a>
 ## lock
 
 ```TypeScript
@@ -108,7 +106,6 @@ file.lock(true).then(() => {
 
 ```
 
-<a id="lock-1"></a>
 ## lock
 
 ```TypeScript
@@ -158,7 +155,6 @@ file.lock((err: BusinessError) => {
 
 ```
 
-<a id="lock-2"></a>
 ## lock
 
 ```TypeScript
@@ -209,7 +205,6 @@ file.lock(true, (err: BusinessError) => {
 
 ```
 
-<a id="trylock"></a>
 ## tryLock
 
 ```TypeScript
@@ -252,7 +247,6 @@ fileIo.closeSync(file);
 
 ```
 
-<a id="unlock"></a>
 ## unlock
 
 ```TypeScript

@@ -18,7 +18,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -31,13 +30,12 @@ constructor()
 
 **废弃版本：** 9
 
-**替代接口：** [constructor](arkts-arkts-util-base64helper-c.md#constructor-1)
+**替代接口：** [constructor](arkts-arkts-util-base64helper-c.md#constructor)
 
 <!--Device-Base64-constructor()--><!--Device-Base64-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-<a id="decode"></a>
 ## decode
 
 ```TypeScript
@@ -50,7 +48,7 @@ decode(src: Uint8Array | string): Promise<Uint8Array>
 
 **废弃版本：** 9
 
-**替代接口：** [decode](arkts-arkts-util-base64helper-c.md#decode-1)
+**替代接口：** [decode](arkts-arkts-util-base64helper-c.md#decode)
 
 <!--Device-Base64-decode(src: Uint8Array | string): Promise<Uint8Array>--><!--Device-Base64-decode(src: Uint8Array | string): Promise<Uint8Array>-End-->
 
@@ -68,7 +66,6 @@ decode(src: Uint8Array | string): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
-<a id="decodesync"></a>
 ## decodeSync
 
 ```TypeScript
@@ -81,7 +78,7 @@ decodeSync(src: Uint8Array | string): Uint8Array
 
 **废弃版本：** 9
 
-**替代接口：** [decodeSync](arkts-arkts-util-base64helper-c.md#decodesync-1)
+**替代接口：** [decodeSync](arkts-arkts-util-base64helper-c.md#decodesync)
 
 <!--Device-Base64-decodeSync(src: Uint8Array | string): Uint8Array--><!--Device-Base64-decodeSync(src: Uint8Array | string): Uint8Array-End-->
 
@@ -99,7 +96,6 @@ decodeSync(src: Uint8Array | string): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
-<a id="encode"></a>
 ## encode
 
 ```TypeScript
@@ -112,7 +108,7 @@ encode(src: Uint8Array): Promise<Uint8Array>
 
 **废弃版本：** 9
 
-**替代接口：** [encode](arkts-arkts-util-base64helper-c.md#encode-1)
+**替代接口：** [encode](arkts-arkts-util-base64helper-c.md#encode)
 
 <!--Device-Base64-encode(src: Uint8Array): Promise<Uint8Array>--><!--Device-Base64-encode(src: Uint8Array): Promise<Uint8Array>-End-->
 
@@ -130,7 +126,6 @@ encode(src: Uint8Array): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
-<a id="encodesync"></a>
 ## encodeSync
 
 ```TypeScript
@@ -143,7 +138,7 @@ encodeSync(src: Uint8Array): Uint8Array
 
 **废弃版本：** 9
 
-**替代接口：** [encodeSync](arkts-arkts-util-base64helper-c.md#encodesync-1)
+**替代接口：** [encodeSync](arkts-arkts-util-base64helper-c.md#encodesync)
 
 <!--Device-Base64-encodeSync(src: Uint8Array): Uint8Array--><!--Device-Base64-encodeSync(src: Uint8Array): Uint8Array-End-->
 
@@ -161,7 +156,6 @@ encodeSync(src: Uint8Array): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
-<a id="encodetostring"></a>
 ## encodeToString
 
 ```TypeScript
@@ -174,7 +168,7 @@ encodeToString(src: Uint8Array): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [encodeToString](arkts-arkts-util-base64helper-c.md#encodetostring-1)
+**替代接口：** [encodeToString](arkts-arkts-util-base64helper-c.md#encodetostring)
 
 <!--Device-Base64-encodeToString(src: Uint8Array): Promise<string>--><!--Device-Base64-encodeToString(src: Uint8Array): Promise<string>-End-->
 
@@ -192,7 +186,6 @@ encodeToString(src: Uint8Array): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | 用于返回获取到的字符串的 promise。 |
 
-<a id="encodetostringsync"></a>
 ## encodeToStringSync
 
 ```TypeScript
@@ -205,7 +198,7 @@ encodeToStringSync(src: Uint8Array): string
 
 **废弃版本：** 9
 
-**替代接口：** [encodeToStringSync](arkts-arkts-util-base64helper-c.md#encodetostringsync-1)
+**替代接口：** [encodeToStringSync](arkts-arkts-util-base64helper-c.md#encodetostringsync)
 
 <!--Device-Base64-encodeToStringSync(src: Uint8Array): string--><!--Device-Base64-encodeToStringSync(src: Uint8Array): string-End-->
 

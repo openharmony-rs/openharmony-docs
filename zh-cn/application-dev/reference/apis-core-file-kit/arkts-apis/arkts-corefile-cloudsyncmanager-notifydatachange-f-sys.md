@@ -6,7 +6,6 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
-<a id="notifydatachange"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -60,7 +59,6 @@ cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
 ```
 
 
-<a id="notifydatachange-1"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -111,7 +109,6 @@ cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) =>
 ```
 
 
-<a id="notifydatachange-2"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -168,7 +165,6 @@ cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
 ```
 
 
-<a id="notifydatachange-3"></a>
 ## notifyDataChange
 
 ```TypeScript

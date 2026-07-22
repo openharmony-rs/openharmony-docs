@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="removeallslots"></a>
 ## removeAllSlots
 
 ```TypeScript
@@ -55,7 +54,6 @@ notificationManager.removeAllSlots(removeAllSlotsCallback);
 ```
 
 
-<a id="removeallslots-1"></a>
 ## removeAllSlots
 
 ```TypeScript

@@ -2,7 +2,7 @@
 
 描述段落基础文本行结构的载体。
 
-下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraphstyle-i.md)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines-1)接口或者[LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline-1)接口获取到TextLine对象实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraphstyle-i.md)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines)接口或者[LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline)接口获取到TextLine对象实例，再通过此实例调用对应方法。
 
 **起始版本：** 12
 
@@ -16,7 +16,6 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createtruncatedline"></a>
 ## createTruncatedLine
 
 ```TypeScript
@@ -81,7 +80,6 @@ struct Index {
 
 ```
 
-<a id="enumeratecaretoffsets"></a>
 ## enumerateCaretOffsets
 
 ```TypeScript
@@ -114,7 +112,6 @@ lines[0].enumerateCaretOffsets((offset: number, index: number, leadingEdge: bool
 
 ```
 
-<a id="getalignmentoffset"></a>
 ## getAlignmentOffset
 
 ```TypeScript
@@ -151,7 +148,6 @@ let alignmentOffset = lines[0].getAlignmentOffset(0.5, 500);
 
 ```
 
-<a id="getglyphcount"></a>
 ## getGlyphCount
 
 ```TypeScript
@@ -181,7 +177,6 @@ let glyphCount = lines[0].getGlyphCount();
 
 ```
 
-<a id="getglyphruns"></a>
 ## getGlyphRuns
 
 ```TypeScript
@@ -211,7 +206,6 @@ let runs = lines[0].getGlyphRuns();
 
 ```
 
-<a id="getimagebounds"></a>
 ## getImageBounds
 
 ```TypeScript
@@ -219,17 +213,16 @@ getImageBounds(): common2D.Rect
 ```
 
 获取文本行的图像边界。文本行图像边界与排版字体、排版字号、字符本身都有关，相当于视觉边界。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，用户在界面上只能看到"a b"，图像边界即为不包括带行首和末尾空格的边界。例如字符串为"j"或"E"，视觉边界不同，即与字符本身有关，"j"字符串的视觉边界宽度小于"E"字符串的视觉边界宽度，"j"字符串的视觉边界高度大于"E"字符串的视觉边界高度。
-
 > **说明：**  
 >  
 > 示意图展示了字符串为" a b "的图像边界。  
 >  
-> ![zh-ch_image_ImageBounds.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
+> ![zh-ch_image_ImageBounds.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
 >  
 > 示意图展示了字符串为"j"或"E"的图像边界。  
 >  
 > !  
-> [zh-ch_image_ImageBounds_Character.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds_Character.png)
+> [zh-ch_image_ImageBounds_Character.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds_Character.png)
 
 **起始版本：** 18
 
@@ -252,7 +245,6 @@ let imageBounds = lines[0].getImageBounds();
 
 ```
 
-<a id="getoffsetforstringindex"></a>
 ## getOffsetForStringIndex
 
 ```TypeScript
@@ -288,7 +280,6 @@ let offset = lines[0].getOffsetForStringIndex(3);
 
 ```
 
-<a id="getstringindexforposition"></a>
 ## getStringIndexForPosition
 
 ```TypeScript
@@ -325,7 +316,6 @@ let index = lines[0].getStringIndexForPosition(point);
 
 ```
 
-<a id="gettextrange"></a>
 ## getTextRange
 
 ```TypeScript
@@ -355,7 +345,6 @@ let textRange = lines[0].getTextRange();
 
 ```
 
-<a id="gettrailingspacewidth"></a>
 ## getTrailingSpaceWidth
 
 ```TypeScript
@@ -385,7 +374,6 @@ let trailingSpaceWidth = lines[0].getTrailingSpaceWidth();
 
 ```
 
-<a id="gettypographicbounds"></a>
 ## getTypographicBounds
 
 ```TypeScript
@@ -393,18 +381,17 @@ getTypographicBounds(): TypographicBounds
 ```
 
 获取文本行的排版边界。文本行排版边界与排版字体、排版字号有关，与字符本身无关。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。例如字符串为"j"或"E"，排版边界相同，即与字符本身无关。
-
 > **说明：**  
 >  
 > 示意图展示了字符串为" a b "的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds.png)  
+> [zh-ch_image_TypographicBounds.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds.png)  
 >  
 > 示意图展示了字符串为"j"或"E"的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds_Character.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds_Character.png)
+> [zh-ch_image_TypographicBounds_Character.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds_Character.png)
 
 **起始版本：** 18
 
@@ -428,7 +415,6 @@ console.info('textLine ascent:' + bounds.ascent + ', descent:' + bounds.descent 
 
 ```
 
-<a id="paint"></a>
 ## paint
 
 ```TypeScript

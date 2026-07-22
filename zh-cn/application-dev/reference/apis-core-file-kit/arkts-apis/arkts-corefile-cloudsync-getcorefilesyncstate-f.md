@@ -6,7 +6,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="getcorefilesyncstate"></a>
 ## getCoreFileSyncState
 
 ```TypeScript

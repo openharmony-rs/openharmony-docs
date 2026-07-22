@@ -1,7 +1,6 @@
 # AVMusicTemplate
 
-调用[avMusicTemplate.createAVMusicTemplate](arkts-avsession-avmusictemplate-createavmusictemplate-f.md#createavmusictemplate-1)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取方法。随后，同步数据给模板控制方，以完成后续操作。
-
+调用[avMusicTemplate.createAVMusicTemplate](arkts-avsession-avmusictemplate-createavmusictemplate-f.md#createavmusictemplate)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取方法。随后，同步数据给模板控制方，以完成后续操作。
 > **说明：**  
 >  
 > - 本模块仅适用于API version 23及以上版本的Car设备。
@@ -18,7 +17,6 @@
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
-<a id="destroy"></a>
 ## destroy
 
 ```TypeScript
@@ -47,7 +45,6 @@ destroy(): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.function destroy can not work correctly due to limited device capabilities. |
 
-<a id="offclearsearchhistory"></a>
 ## offClearSearchHistory
 
 ```TypeScript
@@ -78,7 +75,6 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offdownloadmediaentity"></a>
 ## offDownloadMediaEntity
 
 ```TypeScript
@@ -109,7 +105,6 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offexecuteaction"></a>
 ## offExecuteAction
 
 ```TypeScript
@@ -140,7 +135,6 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offfavoritemediaentity"></a>
 ## offFavoriteMediaEntity
 
 ```TypeScript
@@ -171,7 +165,6 @@ offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offhandlememberpurchase"></a>
 ## offHandleMemberPurchase
 
 ```TypeScript
@@ -202,7 +195,6 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offlogin"></a>
 ## offLogin
 
 ```TypeScript
@@ -233,7 +225,6 @@ offLogin(callback?: LoginEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offplayforsearch"></a>
 ## offPlayForSearch
 
 ```TypeScript
@@ -264,7 +255,6 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offplaymediaentity"></a>
 ## offPlayMediaEntity
 
 ```TypeScript
@@ -295,7 +285,6 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offproblemandadvice"></a>
 ## offProblemAndAdvice
 
 ```TypeScript
@@ -326,7 +315,6 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerycompilation"></a>
 ## offQueryCompilation
 
 ```TypeScript
@@ -357,7 +345,6 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerycompilationbykeyword"></a>
 ## offQueryCompilationByKeyword
 
 ```TypeScript
@@ -388,7 +375,6 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerycurrentsingle"></a>
 ## offQueryCurrentSingle
 
 ```TypeScript
@@ -419,7 +405,6 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerycustomcontent"></a>
 ## offQueryCustomContent
 
 ```TypeScript
@@ -450,7 +435,6 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offqueryhotwords"></a>
 ## offQueryHotWords
 
 ```TypeScript
@@ -481,7 +465,6 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerymaintabs"></a>
 ## offQueryMainTabs
 
 ```TypeScript
@@ -512,7 +495,6 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerymediaentity"></a>
 ## offQueryMediaEntity
 
 ```TypeScript
@@ -543,7 +525,6 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerymediaentitybykeyword"></a>
 ## offQueryMediaEntityByKeyword
 
 ```TypeScript
@@ -574,7 +555,6 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerymediatabcontent"></a>
 ## offQueryMediaTabContent
 
 ```TypeScript
@@ -605,7 +585,6 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerymemberpurchase"></a>
 ## offQueryMemberPurchase
 
 ```TypeScript
@@ -636,7 +615,6 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offqueryplaylist"></a>
 ## offQueryPlaylist
 
 ```TypeScript
@@ -667,7 +645,6 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offqueryrecommendmediaentitylist"></a>
 ## offQueryRecommendMediaEntityList
 
 ```TypeScript
@@ -698,7 +675,6 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offquerysearchhistory"></a>
 ## offQuerySearchHistory
 
 ```TypeScript
@@ -729,7 +705,6 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offrequestdialoginfo"></a>
 ## offRequestDialogInfo
 
 ```TypeScript
@@ -760,7 +735,6 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offsettingschange"></a>
 ## offSettingsChange
 
 ```TypeScript
@@ -791,7 +765,6 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onclearsearchhistory"></a>
 ## onClearSearchHistory
 
 ```TypeScript
@@ -822,7 +795,6 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="ondownloadmediaentity"></a>
 ## onDownloadMediaEntity
 
 ```TypeScript
@@ -853,7 +825,6 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onexecuteaction"></a>
 ## onExecuteAction
 
 ```TypeScript
@@ -884,7 +855,6 @@ onExecuteAction(callback: ExecuteActionEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onfavoritemediaentity"></a>
 ## onFavoriteMediaEntity
 
 ```TypeScript
@@ -915,7 +885,6 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onhandlememberpurchase"></a>
 ## onHandleMemberPurchase
 
 ```TypeScript
@@ -946,7 +915,6 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onlogin"></a>
 ## onLogin
 
 ```TypeScript
@@ -977,7 +945,6 @@ onLogin(callback: LoginEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onplayforsearch"></a>
 ## onPlayForSearch
 
 ```TypeScript
@@ -1008,7 +975,6 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onplaymediaentity"></a>
 ## onPlayMediaEntity
 
 ```TypeScript
@@ -1039,7 +1005,6 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onproblemandadvice"></a>
 ## onProblemAndAdvice
 
 ```TypeScript
@@ -1070,7 +1035,6 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerycompilation"></a>
 ## onQueryCompilation
 
 ```TypeScript
@@ -1101,7 +1065,6 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerycompilationbykeyword"></a>
 ## onQueryCompilationByKeyword
 
 ```TypeScript
@@ -1132,7 +1095,6 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerycurrentsingle"></a>
 ## onQueryCurrentSingle
 
 ```TypeScript
@@ -1163,7 +1125,6 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerycustomcontent"></a>
 ## onQueryCustomContent
 
 ```TypeScript
@@ -1194,7 +1155,6 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onqueryhotwords"></a>
 ## onQueryHotWords
 
 ```TypeScript
@@ -1225,7 +1185,6 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerymaintabs"></a>
 ## onQueryMainTabs
 
 ```TypeScript
@@ -1256,7 +1215,6 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerymediaentity"></a>
 ## onQueryMediaEntity
 
 ```TypeScript
@@ -1287,7 +1245,6 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerymediaentitybykeyword"></a>
 ## onQueryMediaEntityByKeyword
 
 ```TypeScript
@@ -1318,7 +1275,6 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerymediatabcontent"></a>
 ## onQueryMediaTabContent
 
 ```TypeScript
@@ -1349,7 +1305,6 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerymemberpurchase"></a>
 ## onQueryMemberPurchase
 
 ```TypeScript
@@ -1380,7 +1335,6 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onqueryplaylist"></a>
 ## onQueryPlaylist
 
 ```TypeScript
@@ -1411,7 +1365,6 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onqueryrecommendmediaentitylist"></a>
 ## onQueryRecommendMediaEntityList
 
 ```TypeScript
@@ -1442,7 +1395,6 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onquerysearchhistory"></a>
 ## onQuerySearchHistory
 
 ```TypeScript
@@ -1473,7 +1425,6 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onrequestdialoginfo"></a>
 ## onRequestDialogInfo
 
 ```TypeScript
@@ -1504,7 +1455,6 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onsettingschange"></a>
 ## onSettingsChange
 
 ```TypeScript
@@ -1535,7 +1485,6 @@ onSettingsChange(callback: SettingsChangeEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="reportexecuteaction"></a>
 ## reportExecuteAction
 
 ```TypeScript
@@ -1573,7 +1522,6 @@ reportExecuteAction(actionType: string, params: string): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="setcurrentsingle"></a>
 ## setCurrentSingle
 
 ```TypeScript
@@ -1610,7 +1558,6 @@ setCurrentSingle(single: Single): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="setcustomelements"></a>
 ## setCustomElements
 
 ```TypeScript
@@ -1624,9 +1571,7 @@ setCustomElements(actionType: ActionType, customType: CustomType,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVMusicTemplate-setCustomElements(actionType: ActionType, customType: CustomType,
-      customElement: CustomElement): Promise<void>--><!--Device-AVMusicTemplate-setCustomElements(actionType: ActionType, customType: CustomType,
-      customElement: CustomElement): Promise<void>-End-->
+<!--Device-AVMusicTemplate-setCustomElements(actionType: ActionType, customType: CustomType,      customElement: CustomElement): Promise<void>--><!--Device-AVMusicTemplate-setCustomElements(actionType: ActionType, customType: CustomType,      customElement: CustomElement): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -1652,7 +1597,6 @@ setCustomElements(actionType: ActionType, customType: CustomType,
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="setdialogcommand"></a>
 ## setDialogCommand
 
 ```TypeScript
@@ -1690,7 +1634,6 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="setdownloadmediaentitystatus"></a>
 ## setDownloadMediaEntityStatus
 
 ```TypeScript
@@ -1727,7 +1670,6 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="setextensionability"></a>
 ## setExtensionAbility
 
 ```TypeScript
@@ -1764,7 +1706,6 @@ setExtensionAbility(want: WantAgent): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="setmediaentities"></a>
 ## setMediaEntities
 
 ```TypeScript
@@ -1801,7 +1742,6 @@ setMediaEntities(entities: MediaEntity[]): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="setplaylist"></a>
 ## setPlaylist
 
 ```TypeScript
@@ -1838,7 +1778,6 @@ setPlaylist(playlist: PageMediaEntity): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="setsettings"></a>
 ## setSettings
 
 ```TypeScript
@@ -1875,7 +1814,6 @@ setSettings(settingItems: SettingItem[]): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="settabcontent"></a>
 ## setTabContent
 
 ```TypeScript
@@ -1913,7 +1851,6 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="setuserinfo"></a>
 ## setUserInfo
 
 ```TypeScript
@@ -1950,7 +1887,6 @@ setUserInfo(userInfo: UserInfo): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
 
-<a id="starttemplate"></a>
 ## startTemplate
 
 ```TypeScript

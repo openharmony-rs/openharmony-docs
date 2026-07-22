@@ -6,7 +6,6 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
-<a id="activate"></a>
 ## activate
 
 ```TypeScript
@@ -19,7 +18,7 @@ function activate(targetNetworkId: string, inputDeviceId: number, callback: Asyn
 
 **废弃版本：** 11
 
-**替代接口：** [activateCooperate(targetNetworkId:](arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-1)
+**替代接口：** [activateCooperate(targetNetworkId:](arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate)
 
 <!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback<void>): void--><!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback<void>): void-End-->
 
@@ -65,7 +64,6 @@ try {
 ```
 
 
-<a id="activate-1"></a>
 ## activate
 
 ```TypeScript
@@ -78,7 +76,7 @@ function activate(targetNetworkId: string, inputDeviceId: number): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [activateCooperate(targetNetworkId:](arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-1)
+**替代接口：** [activateCooperate(targetNetworkId:](arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate)
 
 <!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number): Promise<void>--><!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number): Promise<void>-End-->
 

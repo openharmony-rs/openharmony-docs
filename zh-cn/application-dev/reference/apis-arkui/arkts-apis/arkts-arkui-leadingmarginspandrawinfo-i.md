@@ -16,7 +16,7 @@ baseline: number
 
 当前行的基线与组件上边缘的距离。
 
-单位：[px](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 取值范围：大于等于0。
 
@@ -40,7 +40,7 @@ bottom: number
 
 行底与组件上边缘的距离。
 
-单位：[px](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 取值范围：大于等于0。
 
@@ -150,7 +150,7 @@ top: number
 
 行顶与组件上边缘的距离。
 
-单位：[px](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 取值范围：大于等于0。
 
@@ -174,7 +174,7 @@ x: number
 
 当前行相对于组件的水平偏移。direction为RTL时，返回当前行右侧与组件右边缘的距离。
 
-单位：[px](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 取值范围：大于等于0。
 

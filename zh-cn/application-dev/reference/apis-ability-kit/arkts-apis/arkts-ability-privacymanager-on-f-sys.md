@@ -6,7 +6,6 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
-<a id="on"></a>
 ## on('activeStateChange')
 
 ```TypeScript
@@ -15,10 +14,9 @@ function on(type: 'activeStateChange',
     callback: Callback<ActiveChangeResponse>): void
 ```
 
-订阅指定权限列表的权限使用状态变更事件。权限使用状态变更由[startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission-1)和[stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission-1)调用触发。订阅成功后，当权限使用状态变更时，回调函数会被触发，返回[ActiveChangeResponse](arkts-ability-privacymanager-activechangeresponse-i-sys.md)对象，包含权限使用状态变化的详情。使用callback异步回调。
+订阅指定权限列表的权限使用状态变更事件。权限使用状态变更由[startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission)和[stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission)调用触发。订阅成功后，当权限使用状态变更时，回调函数会被触发，返回[ActiveChangeResponse](arkts-ability-privacymanager-activechangeresponse-i-sys.md)对象，包含权限使用状态变化的详情。使用callback异步回调。
 
 允许相同permissionList订阅多个回调函数。
-
 > **说明**  
 > 不允许使用有交集的两个permissionList分别订阅同一个回调函数。即如果两个permissionList包含相同的权限名，则不能使用同一个回调函数进行订阅。该接口通常与[off](privacyManager.off)配套使用，在不再需要监听时应调用off取消订阅。
 
@@ -26,11 +24,7 @@ function on(type: 'activeStateChange',
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
-<!--Device-privacyManager-function on(type: 'activeStateChange',
-    permissionList: Array<Permissions>,
-    callback: Callback<ActiveChangeResponse>): void--><!--Device-privacyManager-function on(type: 'activeStateChange',
-    permissionList: Array<Permissions>,
-    callback: Callback<ActiveChangeResponse>): void-End-->
+<!--Device-privacyManager-function on(type: 'activeStateChange',    permissionList: Array<Permissions>,    callback: Callback<ActiveChangeResponse>): void--><!--Device-privacyManager-function on(type: 'activeStateChange',    permissionList: Array<Permissions>,    callback: Callback<ActiveChangeResponse>): void-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 

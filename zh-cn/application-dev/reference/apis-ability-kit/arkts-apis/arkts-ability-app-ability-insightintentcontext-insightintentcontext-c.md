@@ -14,7 +14,6 @@
 import { InsightIntentContext } from '@kit.AbilityKit';
 ```
 
-<a id="setreturnmodeforuiabilityforeground"></a>
 ## setReturnModeForUIAbilityForeground
 
 ```TypeScript
@@ -88,7 +87,6 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
 
 ```
 
-<a id="setreturnmodeforuiextensionability"></a>
 ## setReturnModeForUIExtensionAbility
 
 ```TypeScript
@@ -161,7 +159,6 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
 
 ```
 
-<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -249,7 +246,6 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
 
 ```
 
-<a id="startability-1"></a>
 ## startAbility
 
 ```TypeScript

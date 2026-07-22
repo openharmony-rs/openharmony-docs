@@ -56,7 +56,7 @@ height: Length
 position: Position
 ```
 
-目标元素左上角在以父元素为基准的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中的位置。
+目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。
 
 **类型：** Position
 

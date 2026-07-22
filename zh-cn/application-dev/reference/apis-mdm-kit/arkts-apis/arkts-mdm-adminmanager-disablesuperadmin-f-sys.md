@@ -6,7 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="disablesuperadmin"></a>
 ## disableSuperAdmin
 
 ```TypeScript
@@ -63,7 +62,6 @@ adminManager.disableSuperAdmin(bundleName, (err) => {
 ```
 
 
-<a id="disablesuperadmin-1"></a>
 ## disableSuperAdmin
 
 ```TypeScript

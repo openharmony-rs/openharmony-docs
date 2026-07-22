@@ -6,7 +6,6 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
-<a id="adddisallowedbluetoothdevices"></a>
 ## addDisallowedBluetoothDevices
 
 ```TypeScript
@@ -17,7 +16,7 @@ function addDisallowedBluetoothDevices(admin: Want, deviceIds: Array<string>): v
 
 以下情况下，通过本接口添加蓝牙设备禁用名单，会报策略冲突：
 
-1. 已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了蓝牙。通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口启用蓝牙后，可解除冲突。2. 已经通过[addAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-addallowedbluetoothdevices-f.md#addallowedbluetoothdevices-1)接口添加了蓝牙设备可用名单。通过[removeAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-removeallowedbluetoothdevices-f.md#removeallowedbluetoothdevices-1)移除蓝牙设备可用名单后，可解除冲突。
+1. 已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口禁用了蓝牙。通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口启用蓝牙后，可解除冲突。2. 已经通过[addAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-addallowedbluetoothdevices-f.md#addallowedbluetoothdevices)接口添加了蓝牙设备可用名单。通过[removeAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-removeallowedbluetoothdevices-f.md#removeallowedbluetoothdevices)移除蓝牙设备可用名单后，可解除冲突。
 
 **起始版本：** 20
 

@@ -17,25 +17,7 @@ type AxisType =
 
 **起始版本：** 9
 
-<!--Device-inputDevice-type AxisType =
-    'touchmajor'
-    | 'touchminor'
-    | 'orientation'
-    | 'x'
-    | 'y'
-    | 'pressure'
-    | 'toolminor'
-    | 'toolmajor'
-    | 'null'--><!--Device-inputDevice-type AxisType =
-    'touchmajor'
-    | 'touchminor'
-    | 'orientation'
-    | 'x'
-    | 'y'
-    | 'pressure'
-    | 'toolminor'
-    | 'toolmajor'
-    | 'null'-End-->
+<!--Device-inputDevice-type AxisType =    'touchmajor'    | 'touchminor'    | 'orientation'    | 'x'    | 'y'    | 'pressure'    | 'toolminor'    | 'toolmajor'    | 'null'--><!--Device-inputDevice-type AxisType =    'touchmajor'    | 'touchminor'    | 'orientation'    | 'x'    | 'y'    | 'pressure'    | 'toolminor'    | 'toolmajor'    | 'null'-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 

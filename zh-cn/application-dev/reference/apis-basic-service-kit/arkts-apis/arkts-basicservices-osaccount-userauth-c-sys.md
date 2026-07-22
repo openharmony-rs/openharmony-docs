@@ -16,7 +16,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="auth"></a>
 ## auth
 
 ```TypeScript
@@ -34,17 +33,7 @@ auth(
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
-<!--Device-UserAuth-auth(
-      challenge: Uint8Array,
-      authType: AuthType,
-      authTrustLevel: AuthTrustLevel,
-      callback: IUserAuthCallback
-    ): Uint8Array--><!--Device-UserAuth-auth(
-      challenge: Uint8Array,
-      authType: AuthType,
-      authTrustLevel: AuthTrustLevel,
-      callback: IUserAuthCallback
-    ): Uint8Array-End-->
+<!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array--><!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -115,7 +104,6 @@ try {
 
 ```
 
-<a id="auth-1"></a>
 ## auth
 
 ```TypeScript
@@ -134,19 +122,7 @@ auth(
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
-<!--Device-UserAuth-auth(
-      challenge: Uint8Array,
-      authType: AuthType,
-      authTrustLevel: AuthTrustLevel,
-      options: AuthOptions,
-      callback: IUserAuthCallback
-    ): Uint8Array--><!--Device-UserAuth-auth(
-      challenge: Uint8Array,
-      authType: AuthType,
-      authTrustLevel: AuthTrustLevel,
-      options: AuthOptions,
-      callback: IUserAuthCallback
-    ): Uint8Array-End-->
+<!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      options: AuthOptions,      callback: IUserAuthCallback    ): Uint8Array--><!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      options: AuthOptions,      callback: IUserAuthCallback    ): Uint8Array-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -222,7 +198,6 @@ try {
 
 ```
 
-<a id="authuser"></a>
 ## authUser
 
 ```TypeScript
@@ -241,19 +216,7 @@ authUser(
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
-<!--Device-UserAuth-authUser(
-      userId: int,
-      challenge: Uint8Array,
-      authType: AuthType,
-      authTrustLevel: AuthTrustLevel,
-      callback: IUserAuthCallback
-    ): Uint8Array--><!--Device-UserAuth-authUser(
-      userId: int,
-      challenge: Uint8Array,
-      authType: AuthType,
-      authTrustLevel: AuthTrustLevel,
-      callback: IUserAuthCallback
-    ): Uint8Array-End-->
+<!--Device-UserAuth-authUser(      userId: int,      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array--><!--Device-UserAuth-authUser(      userId: int,      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -327,7 +290,6 @@ try {
 
 ```
 
-<a id="cancelauth"></a>
 ## cancelAuth
 
 ```TypeScript
@@ -385,7 +347,6 @@ try {
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -415,7 +376,6 @@ let userAuth = new osAccount.UserAuth();
 
 ```
 
-<a id="getavailablestatus"></a>
 ## getAvailableStatus
 
 ```TypeScript
@@ -476,7 +436,6 @@ try {
 
 ```
 
-<a id="getproperty"></a>
 ## getProperty
 
 ```TypeScript
@@ -543,7 +502,6 @@ try {
 
 ```
 
-<a id="getproperty-1"></a>
 ## getProperty
 
 ```TypeScript
@@ -613,7 +571,6 @@ try {
 
 ```
 
-<a id="getpropertybycredentialid"></a>
 ## getPropertyByCredentialId
 
 ```TypeScript
@@ -696,7 +653,6 @@ async function getProperty() {
 
 ```
 
-<a id="getversion"></a>
 ## getVersion
 
 ```TypeScript
@@ -734,7 +690,6 @@ console.info('getVersion version = ' + version);
 
 ```
 
-<a id="prepareremoteauth"></a>
 ## prepareRemoteAuth
 
 ```TypeScript
@@ -803,7 +758,6 @@ distributedDeviceMgr.getAvailableDeviceList().then((data: Array<distributedDevic
 
 ```
 
-<a id="setproperty"></a>
 ## setProperty
 
 ```TypeScript
@@ -865,7 +819,6 @@ try {
 
 ```
 
-<a id="setproperty-1"></a>
 ## setProperty
 
 ```TypeScript

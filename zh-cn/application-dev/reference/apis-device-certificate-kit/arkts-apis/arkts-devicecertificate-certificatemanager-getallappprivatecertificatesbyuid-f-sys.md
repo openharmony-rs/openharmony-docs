@@ -6,7 +6,6 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="getallappprivatecertificatesbyuid"></a>
 ## getAllAppPrivateCertificatesByUid
 
 ```TypeScript

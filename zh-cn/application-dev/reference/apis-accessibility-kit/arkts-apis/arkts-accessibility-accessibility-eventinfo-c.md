@@ -14,7 +14,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -52,7 +51,6 @@ let eventInfo: accessibility.EventInfo = ({
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript

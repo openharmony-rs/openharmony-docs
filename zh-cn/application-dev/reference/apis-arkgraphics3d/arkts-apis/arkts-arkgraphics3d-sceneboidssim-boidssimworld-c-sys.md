@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="addboidssimcomponent"></a>
 ## addBoidsSimComponent
 
 ```TypeScript
@@ -36,7 +35,6 @@ addBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要添加组件的节点 |
 | param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 是 | 群组模拟参数 |
 
-<a id="addboidssimgravitycomponent"></a>
 ## addBoidsSimGravityComponent
 
 ```TypeScript
@@ -62,7 +60,6 @@ addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要添加组件的节点 |
 | param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 是 | 引力场参数 |
 
-<a id="addboidssimrepulsioncomponent"></a>
 ## addBoidsSimRepulsionComponent
 
 ```TypeScript
@@ -88,7 +85,6 @@ addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要添加组件的节点 |
 | param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 是 | 斥力场参数 |
 
-<a id="getboidssimcomponent"></a>
 ## getBoidsSimComponent
 
 ```TypeScript
@@ -119,7 +115,6 @@ getBoidsSimComponent(node: Node): BoidsSimParameters | null
 | --- | --- |
 | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 群组模拟参数，如果未找到则返回null |
 
-<a id="getboidssimgravitycomponent"></a>
 ## getBoidsSimGravityComponent
 
 ```TypeScript
@@ -150,7 +145,6 @@ getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null
 | --- | --- |
 | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 引力场参数，如果未找到则返回null |
 
-<a id="getboidssimrepulsioncomponent"></a>
 ## getBoidsSimRepulsionComponent
 
 ```TypeScript
@@ -181,7 +175,6 @@ getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null
 | --- | --- |
 | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 斥力场参数，如果未找到则返回null |
 
-<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -200,7 +193,6 @@ pause(): void
 
 **系统接口：** 此接口为系统接口。
 
-<a id="play"></a>
 ## play
 
 ```TypeScript
@@ -219,7 +211,6 @@ play(): void
 
 **系统接口：** 此接口为系统接口。
 
-<a id="removeboidssimcomponent"></a>
 ## removeBoidsSimComponent
 
 ```TypeScript
@@ -244,7 +235,6 @@ removeBoidsSimComponent(node: Node): void
 | --- | --- | --- | --- |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要移除组件的节点 |
 
-<a id="removeboidssimgravitycomponent"></a>
 ## removeBoidsSimGravityComponent
 
 ```TypeScript
@@ -269,7 +259,6 @@ removeBoidsSimGravityComponent(node: Node): void
 | --- | --- | --- | --- |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要移除组件的节点 |
 
-<a id="removeboidssimrepulsioncomponent"></a>
 ## removeBoidsSimRepulsionComponent
 
 ```TypeScript
@@ -294,7 +283,6 @@ removeBoidsSimRepulsionComponent(node: Node): void
 | --- | --- | --- | --- |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要移除组件的节点 |
 
-<a id="setboidssimcomponent"></a>
 ## setBoidsSimComponent
 
 ```TypeScript
@@ -320,7 +308,6 @@ setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要更新的节点 |
 | param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 是 | 群组模拟参数 |
 
-<a id="setboidssimgravitycomponent"></a>
 ## setBoidsSimGravityComponent
 
 ```TypeScript
@@ -346,7 +333,6 @@ setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要更新的节点 |
 | param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 是 | 引力场参数 |
 
-<a id="setboidssimrepulsioncomponent"></a>
 ## setBoidsSimRepulsionComponent
 
 ```TypeScript
@@ -372,7 +358,6 @@ setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要更新的节点 |
 | param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 是 | 斥力场参数 |
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript

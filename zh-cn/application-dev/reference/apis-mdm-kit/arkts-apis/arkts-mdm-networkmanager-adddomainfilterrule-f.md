@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="adddomainfilterrule"></a>
 ## addDomainFilterRule
 
 ```TypeScript
@@ -22,7 +21,6 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 添加了[Action](arkts-mdm-networkmanager-action-e.md)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。
 
 设备重启，将会清空域名过滤规则。
-
 > **说明：**  
 >  
 > 为避免DNS缓存导致拦截规则失效，建议系统启动后立即配置域名过滤规则。若已因DNS缓存导致拦截失效，重启系统可清除缓存，恢复拦截功能。

@@ -6,7 +6,6 @@
 import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
-<a id="closecustomdialog"></a>
 ## closeCustomDialog
 
 ```TypeScript
@@ -14,7 +13,6 @@ function closeCustomDialog(dialogId: number): void
 ```
 
 关闭自定义弹窗。
-
 > **说明：**  
 >  
 > - 从API version 11开始支持，从API version 18开始废弃，建议使用[closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12-1)替代。closeCustomDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用closeCustomDialog可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。  

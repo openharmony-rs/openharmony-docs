@@ -14,7 +14,6 @@ class PromptAction
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="closecustomdialog"></a>
 ## closeCustomDialog
 
 ```TypeScript
@@ -53,7 +52,6 @@ Closes a custom dialog box corresponding to dialogContent. This API uses a promi
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | Dialog content not found. The ComponentContent cannot be found. |
 
-<a id="closecustomdialog-1"></a>
 ## closeCustomDialog
 
 ```TypeScript
@@ -85,7 +83,6 @@ Close the custom dialog.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="closemenu"></a>
 ## closeMenu
 
 ```TypeScript
@@ -124,7 +121,6 @@ Close menu with frameNode.
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | The ComponentContent cannot be found. |
 
-<a id="closepopup"></a>
 ## closePopup
 
 ```TypeScript
@@ -163,7 +159,6 @@ Close popup with frameNode.
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | The ComponentContent cannot be found. |
 
-<a id="closetoast"></a>
 ## closeToast
 
 ```TypeScript
@@ -196,7 +191,6 @@ Close the notification text.
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [103401](../errorcode-promptAction.md#103401-无法找到对应的文本提示框) | Cannot find the toast. |
 
-<a id="getbottomorder"></a>
 ## getBottomOrder
 
 ```TypeScript
@@ -221,7 +215,6 @@ Get order value of bottom dialog.
 | --- | --- |
 | [LevelOrder](arkts-arkui-levelorder-t.md) | Order of the topmost dialog box. |
 
-<a id="gettoporder"></a>
 ## getTopOrder
 
 ```TypeScript
@@ -246,7 +239,6 @@ Get order value of top dialog.
 | --- | --- |
 | [LevelOrder](arkts-arkui-levelorder-t.md) | Order of the topmost dialog box. |
 
-<a id="opencustomdialog"></a>
 ## openCustomDialog
 
 ```TypeScript
@@ -286,7 +278,6 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103302](../errorcode-promptAction.md#103302-内容节点对应自定义弹窗已存在) | Dialog content already exist. The ComponentContent has already been opened. |
 
-<a id="opencustomdialog-1"></a>
 ## openCustomDialog
 
 ```TypeScript
@@ -326,7 +317,6 @@ isModal = true和showInSubWindow = true不能同时使用。* @param { promptAct
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="opencustomdialogwithcontroller"></a>
 ## openCustomDialogWithController
 
 ```TypeScript
@@ -344,9 +334,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PromptAction-openCustomDialogWithController<T extends Object>(dialogContent: ComponentContent<T>, controller: promptAction.DialogController,
-    options?: promptAction.BaseDialogOptions): Promise<void>--><!--Device-PromptAction-openCustomDialogWithController<T extends Object>(dialogContent: ComponentContent<T>, controller: promptAction.DialogController,
-    options?: promptAction.BaseDialogOptions): Promise<void>-End-->
+<!--Device-PromptAction-openCustomDialogWithController<T extends Object>(dialogContent: ComponentContent<T>, controller: promptAction.DialogController,    options?: promptAction.BaseDialogOptions): Promise<void>--><!--Device-PromptAction-openCustomDialogWithController<T extends Object>(dialogContent: ComponentContent<T>, controller: promptAction.DialogController,    options?: promptAction.BaseDialogOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -372,7 +360,6 @@ isModal = true和showInSubWindow = true不能同时使用。
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103302](../errorcode-promptAction.md#103302-内容节点对应自定义弹窗已存在) | Dialog content already exist. The ComponentContent has already been opened. |
 
-<a id="openmenu"></a>
 ## openMenu
 
 ```TypeScript
@@ -415,7 +402,6 @@ Open menu with frameNode.
 | [103304](../errorcode-promptAction.md#103304-指定的targetid不存在) | The targetId does not exist. |
 | [103305](../errorcode-promptAction.md#103305-指定的targetid对应的节点未挂载在组件树上) | The node of targetId is not in the component tree. |
 
-<a id="openpopup"></a>
 ## openPopup
 
 ```TypeScript
@@ -458,7 +444,6 @@ Open popup with frameNode.
 | [103304](../errorcode-promptAction.md#103304-指定的targetid不存在) | The targetId does not exist. |
 | [103305](../errorcode-promptAction.md#103305-指定的targetid对应的节点未挂载在组件树上) | The node of targetId is not in the component tree. |
 
-<a id="opentoast"></a>
 ## openToast
 
 ```TypeScript
@@ -496,7 +481,6 @@ Displays the notification text.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="presentcustomdialog"></a>
 ## presentCustomDialog
 
 ```TypeScript
@@ -514,9 +498,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PromptAction-presentCustomDialog(builder: CustomBuilder | CustomBuilderWithId, controller?: promptAction.DialogController,
-    options?: promptAction.DialogOptions): Promise<number>--><!--Device-PromptAction-presentCustomDialog(builder: CustomBuilder | CustomBuilderWithId, controller?: promptAction.DialogController,
-    options?: promptAction.DialogOptions): Promise<number>-End-->
+<!--Device-PromptAction-presentCustomDialog(builder: CustomBuilder | CustomBuilderWithId, controller?: promptAction.DialogController,    options?: promptAction.DialogOptions): Promise<number>--><!--Device-PromptAction-presentCustomDialog(builder: CustomBuilder | CustomBuilderWithId, controller?: promptAction.DialogController,    options?: promptAction.DialogOptions): Promise<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -541,7 +523,6 @@ isModal = true和showInSubWindow = true不能同时使用。
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="showactionmenu"></a>
 ## showActionMenu
 
 ```TypeScript
@@ -554,7 +535,7 @@ Shows an action menu in the given settings. This API uses an asynchronous callba
 
 **废弃版本：** 11
 
-**替代接口：** [showActionMenu](arkts-arkui-arkui-uicontext-promptaction-c.md#showactionmenu-1)
+**替代接口：** [showActionMenu](arkts-arkui-arkui-uicontext-promptaction-c.md#showactionmenu)
 
 <!--Device-PromptAction-showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.ActionMenuSuccessResponse): void--><!--Device-PromptAction-showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.ActionMenuSuccessResponse): void-End-->
 
@@ -574,7 +555,6 @@ Shows an action menu in the given settings. This API uses an asynchronous callba
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="showactionmenu-1"></a>
 ## showActionMenu
 
 ```TypeScript
@@ -607,7 +587,6 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="showactionmenu-2"></a>
 ## showActionMenu
 
 ```TypeScript
@@ -645,7 +624,6 @@ showActionMenu(options: promptAction.ActionMenuOptions): Promise<promptAction.Ac
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="showdialog"></a>
 ## showDialog
 
 ```TypeScript
@@ -678,7 +656,6 @@ showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<prom
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="showdialog-1"></a>
 ## showDialog
 
 ```TypeScript
@@ -716,7 +693,6 @@ showDialog(options: promptAction.ShowDialogOptions): Promise<promptAction.ShowDi
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="showtoast"></a>
 ## showToast
 
 ```TypeScript
@@ -748,7 +724,6 @@ Displays the notification text.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="updatecustomdialog"></a>
 ## updateCustomDialog
 
 ```TypeScript
@@ -788,7 +763,6 @@ Update the custom dialog with frameNode.
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | Dialog content not found. The ComponentContent cannot be found. |
 
-<a id="updatemenu"></a>
 ## updateMenu
 
 ```TypeScript
@@ -829,7 +803,6 @@ Update menu with frameNode.
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | The ComponentContent cannot be found. |
 
-<a id="updatepopup"></a>
 ## updatePopup
 
 ```TypeScript

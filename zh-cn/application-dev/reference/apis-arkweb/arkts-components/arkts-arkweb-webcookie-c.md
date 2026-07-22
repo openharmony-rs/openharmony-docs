@@ -12,7 +12,6 @@ Defines the Web cookie.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -33,7 +32,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="savecookie"></a>
 ## saveCookie
 
 ```TypeScript
@@ -52,7 +50,6 @@ saveCookie()
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="setcookie"></a>
 ## setCookie
 
 ```TypeScript

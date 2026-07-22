@@ -1,7 +1,6 @@
 # BundleResourceInfo（系统接口）
 
-应用配置的图标和名称信息，可以通过[getBundleResourceInfo](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md#getbundleresourceinfo-1)获取。
-
+应用配置的图标和名称信息，可以通过[getBundleResourceInfo](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md#getbundleresourceinfo)获取。
 > **说明：**  
 >  
 > 本模块为系统接口。

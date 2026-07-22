@@ -11,7 +11,6 @@
 仅支持[GridItem]{@link gridItem}子组件和自定义组件。自定义组件在Grid下使用时，建议使用GridItem作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
 
 支持通过渲染控制类型（[if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](docroot://ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](docroot://ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](docroot://ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
-
 > **说明：**  
 >  
 > Grid子组件的索引值计算规则：  
@@ -66,7 +65,6 @@ GridItem的对齐方式枚举。
 | ------ |------| -------------------------------------- |  
 | DEFAULT | 0 | 使用Grid的默认对齐方式。 |  
 | STRETCH | 1 | 以一行中的最高的GridItem作为其他GridItem的高度。 |
-
 > **说明：**  
 >  
 > 1、只有可滚动的Grid中，设置STRETCH参数会生效，其他场景不生效。<br/>  

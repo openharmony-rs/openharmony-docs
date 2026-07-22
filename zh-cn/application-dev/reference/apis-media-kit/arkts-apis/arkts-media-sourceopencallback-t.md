@@ -5,7 +5,6 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 ```
 
 由应用实现此回调函数，应用需处理传入的资源打开请求，并返回所打开资源对应的唯一句柄。
-
 > **注意：**  
 >  
 > 客户端在处理完请求后应立刻返回。

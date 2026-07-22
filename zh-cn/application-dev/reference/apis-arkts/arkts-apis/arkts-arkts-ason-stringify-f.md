@@ -6,7 +6,6 @@
 import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
-<a id="stringify"></a>
 ## stringify
 
 ```TypeScript

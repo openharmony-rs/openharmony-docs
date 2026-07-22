@@ -12,7 +12,6 @@ Calendar controller.
 
 **系统接口：** 此接口为系统接口。
 
-<a id="backtotoday"></a>
 ## backToToday
 
 ```TypeScript
@@ -33,7 +32,6 @@ Back to day.
 
 **系统接口：** 此接口为系统接口。
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -54,7 +52,6 @@ Constructor.
 
 **系统接口：** 此接口为系统接口。
 
-<a id="goto"></a>
 ## goTo
 
 ```TypeScript

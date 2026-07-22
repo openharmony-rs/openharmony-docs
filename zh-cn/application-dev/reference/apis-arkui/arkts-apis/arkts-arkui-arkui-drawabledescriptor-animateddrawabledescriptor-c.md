@@ -16,7 +16,6 @@
 import { DrawableDescriptor, AnimatedDrawableDescriptor, AnimationStopMode, AnimationOptions, AnimationController, DrawableDescriptorLoadedResult, LayeredDrawableDescriptor, PictureDrawableDescriptor, PixelMapDrawableDescriptor, HdrCompositionConfig } from '@kit.ArkUI';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -42,7 +41,6 @@ AnimatedDrawableDescriptor的构造函数。
 | pixelMaps | Array&lt;image.PixelMap&gt; | 是 | PixelMap 数组类型参数，存储 PixelMap 图片数据。 |
 | options | [AnimationOptions](arkts-arkui-arkui-drawabledescriptor-animationoptions-i.md) | 否 | 动画控制选项。 |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -101,7 +99,6 @@ struct Example {
 
 ```
 
-<a id="getanimationcontroller"></a>
 ## getAnimationController
 
 ```TypeScript
@@ -124,7 +121,7 @@ getAnimationController(id?: string): AnimationController | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 否 | 组件的id。<br/>当[Image](../../apis-arkui/arkts-components/arkts-arkui-image-i)组件与AnimatedDrawableDescriptor确保1比1持有（仅传入一个[Image](../../apis-arkui/arkts-components/arkts-arkui-image-i)组件）时，id非必填；<br/>若同一AnimatedDrawableDescriptor需绑定多个[Image](../../apis-arkui/arkts-components/arkts-arkui-image-i)组件，则必须设置唯一id以准确获取对应组件的动画控制器（唯一性由开发者保证）。<br/>此规则基于动画系统设计原则：动画数据可多组件共享，但各组件动画独立运行，AnimationController与组件严格1比1持有关系（一个组件一个AnimationController对象）。<br/>另外，[AnimatedDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)支持不可见时自动暂停播放功能，详见[onVisibleAreaChange](../arkts-components/arkts-arkui-commonmethod-c.md#onvisibleareachange-1)。 |
+| id | string | 否 | 组件的id。<br/>当[Image](../../apis-arkui/arkts-components/arkts-arkui-image-i)组件与AnimatedDrawableDescriptor确保1比1持有（仅传入一个[Image](../../apis-arkui/arkts-components/arkts-arkui-image-i)组件）时，id非必填；<br/>若同一AnimatedDrawableDescriptor需绑定多个[Image](../../apis-arkui/arkts-components/arkts-arkui-image-i)组件，则必须设置唯一id以准确获取对应组件的动画控制器（唯一性由开发者保证）。<br/>此规则基于动画系统设计原则：动画数据可多组件共享，但各组件动画独立运行，AnimationController与组件严格1比1持有关系（一个组件一个AnimationController对象）。<br/>另外，[AnimatedDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)支持不可见时自动暂停播放功能，详见[onVisibleAreaChange](../arkts-components/arkts-arkui-commonmethod-c.md#onvisibleareachange)。 |
 
 **返回值：**
 

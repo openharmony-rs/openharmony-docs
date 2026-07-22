@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="append"></a>
 ## append
 
 ```TypeScript
@@ -29,7 +28,6 @@ append(item: T): void
 | --- | --- | --- | --- |
 | item | T | 是 | 要追加到容器末尾的项目 |
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -44,7 +42,6 @@ clear(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="count"></a>
 ## count
 
 ```TypeScript
@@ -65,7 +62,6 @@ count(): number
 | --- | --- |
 | number | 容器的数量 |
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -92,7 +88,6 @@ get(index: number): T | null
 | --- | --- |
 | T | 返回由索引指定的项目 |
 
-<a id="insertafter"></a>
 ## insertAfter
 
 ```TypeScript
@@ -114,7 +109,6 @@ insertAfter(item: T, sibling: T | null): void
 | item | T | 是 | 要插入到容器的项目 |
 | sibling | T \| null | 是 | 在此项目后插入，如果sibling为null则插入到头部 |
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript

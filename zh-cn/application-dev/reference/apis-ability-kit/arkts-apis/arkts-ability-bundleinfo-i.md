@@ -30,7 +30,7 @@ readonly appIndex: number
 readonly appInfo: ApplicationInfo
 ```
 
-应用程序的配置信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION获取。
+应用程序的配置信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION获取。
 
 **类型：** ApplicationInfo
 
@@ -48,7 +48,7 @@ readonly appInfo: ApplicationInfo
 readonly buildVersion?: string
 ```
 
-应用包的构建版本号，用于标识相同发布版本下的不同构建版本包，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的buildVersion字段。**模型约束：** 此接口仅可在Stage模型下使用。
+应用包的构建版本号，用于标识相同发布版本下的不同构建版本包，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的buildVersion字段。**模型约束：** 此接口仅可在Stage模型下使用。
 
 **类型：** string
 
@@ -86,7 +86,7 @@ readonly firstInstallTime?: number
 readonly hapModulesInfo: Array<HapModuleInfo>
 ```
 
-模块的配置信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE获取。
+模块的配置信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE获取。
 
 **类型：** Array&lt;HapModuleInfo&gt;
 
@@ -126,7 +126,7 @@ readonly installTime: number
 readonly minCompatibleVersionCode: number
 ```
 
-分布式场景下的应用包兼容的最低版本，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的minCompatibleVersionCode字段。
+分布式场景下的应用包兼容的最低版本，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的minCompatibleVersionCode字段。
 
 **类型：** number
 
@@ -144,7 +144,7 @@ readonly minCompatibleVersionCode: number
 readonly name: string
 ```
 
-应用包的名称，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的bundleName字段。
+应用包的名称，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的bundleName字段。
 
 **类型：** string
 
@@ -162,7 +162,7 @@ readonly name: string
 readonly permissionGrantStates: Array<bundleManager.PermissionGrantState>
 ```
 
-申请权限的授予状态，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION获取。reqPermissionDetails数组和permissionGrantStates数组的索引顺序一一对应，即reqPermissionDetails[2]的授权状态为permissionGrantStates[2]。
+申请权限的授予状态，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION获取。reqPermissionDetails数组和permissionGrantStates数组的索引顺序一一对应，即reqPermissionDetails[2]的授权状态为permissionGrantStates[2]。
 
 **类型：** Array&lt;bundleManager.PermissionGrantState&gt;
 
@@ -180,7 +180,7 @@ readonly permissionGrantStates: Array<bundleManager.PermissionGrantState>
 readonly reqPermissionDetails: Array<ReqPermissionDetail>
 ```
 
-应用运行时需向系统申请的权限集合的详细信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION获取。reqPermissionDetails数组和permissionGrantStates数组的索引顺序一一对应，即reqPermissionDetails[2]的授权状态为permissionGrantStates[2]。
+应用运行时需向系统申请的权限集合的详细信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION获取。reqPermissionDetails数组和permissionGrantStates数组的索引顺序一一对应，即reqPermissionDetails[2]的授权状态为permissionGrantStates[2]。
 
 **类型：** Array&lt;ReqPermissionDetail&gt;
 
@@ -198,7 +198,7 @@ readonly reqPermissionDetails: Array<ReqPermissionDetail>
 readonly routerMap: Array<RouterItem>
 ```
 
-应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP获取。
+应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP获取。
 
 **类型：** Array&lt;RouterItem&gt;
 
@@ -216,7 +216,7 @@ readonly routerMap: Array<RouterItem>
 readonly signatureInfo: SignatureInfo
 ```
 
-应用包的签名信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_SIGNATURE_INFO获取。
+应用包的签名信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_SIGNATURE_INFO获取。
 
 **类型：** SignatureInfo
 
@@ -234,7 +234,7 @@ readonly signatureInfo: SignatureInfo
 readonly targetVersion: number
 ```
 
-应用运行目标版本，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的targetAPIVersion字段。
+应用运行目标版本，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的targetAPIVersion字段。
 
 **类型：** number
 
@@ -270,7 +270,7 @@ readonly updateTime: number
 readonly vendor: string
 ```
 
-应用包的供应商，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的vendor字段。
+应用包的供应商，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的vendor字段。
 
 **类型：** string
 
@@ -288,7 +288,7 @@ readonly vendor: string
 readonly versionCode: number
 ```
 
-应用包的版本号，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的versionCode字段。
+应用包的版本号，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的versionCode字段。
 
 **类型：** number
 
@@ -306,7 +306,7 @@ readonly versionCode: number
 readonly versionName: string
 ```
 
-应用包的版本文本描述信息，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的versionName字段。
+应用包的版本文本描述信息，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的versionName字段。
 
 **类型：** string
 

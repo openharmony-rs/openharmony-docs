@@ -1,6 +1,5 @@
 # mutableBuilder
 
-<a id="mutablebuilder"></a>
 ## mutableBuilder
 
 ```TypeScript

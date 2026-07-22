@@ -6,7 +6,6 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
-<a id="createcipher"></a>
 ## createCipher
 
 ```TypeScript
@@ -14,7 +13,6 @@ function createCipher(transformation: string): Cipher
 ```
 
 通过指定算法名称，获取相应的[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例。
-
 > **说明：**  
 >  
 > 1. 在对称加解密中，PKCS #5和PKCS #7的实现方式相同，即补位长度和块大小保持一致。3DES补位为8字节，AES补位为16字节。**NoPadding**  
@@ -50,7 +48,7 @@ function createCipher(transformation: string): Cipher
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 

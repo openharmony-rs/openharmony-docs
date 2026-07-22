@@ -184,7 +184,7 @@ FLAG_INSTALL_WITH_BACKGROUND_MODE = 0x80000000
 FLAG_ABILITY_CLEAR_MISSION = 0x00008000
 ```
 
-指示清除其他任务的操作。可以为传递给 **FeatureAbility** 中[startAbility](arkts-ability-featureability-startability-f.md#startability-1)方法的**Want**设置此标志，并且必须与**FLAG_ABILITY_NEW_MISSION**一起使用。
+指示清除其他任务的操作。可以为传递给 **FeatureAbility** 中[startAbility](arkts-ability-featureability-startability-f.md#startability)方法的**Want**设置此标志，并且必须与**FLAG_ABILITY_NEW_MISSION**一起使用。
 
 **起始版本：** 6
 

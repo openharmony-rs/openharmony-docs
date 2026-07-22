@@ -1,6 +1,6 @@
 # @ohos.data.uniformTypeDescriptor
 
-本模块对标准化数据类型进行了抽象定义与描述，用于统一表示和管理各类数据类型的层级与归属关系（如JPEG归属于IMAGE、IMAGE归属于MEDIA等），便于跨模块/跨应用的一致化数据交互。详细设计原理参见[UTD预置列表](docroot://database/uniform-data-type-list.md)。
+本模块对标准化数据类型进行了抽象定义与描述，用于统一表示和管理各类数据类型的层级与归属关系（如JPEG归属于IMAGE、IMAGE归属于MEDIA等），便于跨模块/跨应用的一致化数据交互。详细设计原理参见[UTD预置列表](../../../database/uniform-data-type-list.md)。
 
 **起始版本：** 10
 
@@ -45,5 +45,5 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md) | 标准化数据类型之间存在归属关系，例如JPEG图片类型归属于IMAGE类型。更多预置数据类型参考[UTD预置列表](docroot://database/uniform-data-type-list.md)。  下表以枚举形式，列举了常用的标准化数据类型定义。 |
+| [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md) | 标准化数据类型之间存在归属关系，例如JPEG图片类型归属于IMAGE类型。更多预置数据类型参考[UTD预置列表](../../../database/uniform-data-type-list.md)。  下表以枚举形式，列举了常用的标准化数据类型定义。 |
 

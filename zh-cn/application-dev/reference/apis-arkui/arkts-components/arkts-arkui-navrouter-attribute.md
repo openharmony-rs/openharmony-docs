@@ -14,7 +14,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="mode"></a>
 ## mode
 
 ```TypeScript
@@ -43,7 +42,6 @@ mode(mode: NavRouteMode)
 | --- | --- | --- | --- |
 | mode | [NavRouteMode](arkts-arkui-navroutemode-e.md) | 是 | 指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。<br/>默认值：NavRouteMode.PUSH_WITH_RECREATE |
 
-<a id="onstatechange"></a>
 ## onStateChange
 
 ```TypeScript

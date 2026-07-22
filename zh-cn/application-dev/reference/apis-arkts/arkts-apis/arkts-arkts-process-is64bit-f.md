@@ -6,7 +6,6 @@
 import { process } from '@kit.ArkTS';
 ```
 
-<a id="is64bit"></a>
 ## is64Bit
 
 ```TypeScript

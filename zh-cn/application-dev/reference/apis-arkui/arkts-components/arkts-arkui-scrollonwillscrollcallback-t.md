@@ -13,9 +13,7 @@ Scroll滚动前触发的回调。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type ScrollOnWillScrollCallback =
- (xOffset: number, yOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | OffsetResult--><!--Device-unnamed-declare type ScrollOnWillScrollCallback =
- (xOffset: number, yOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | OffsetResult-End-->
+<!--Device-unnamed-declare type ScrollOnWillScrollCallback = (xOffset: number, yOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | OffsetResult--><!--Device-unnamed-declare type ScrollOnWillScrollCallback = (xOffset: number, yOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | OffsetResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

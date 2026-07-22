@@ -9,9 +9,7 @@ export type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
 
 **起始版本：** 23
 
-<!--Device-unnamed-export type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
-'checkSelf' | 'checkSelfBypassDescendants'--><!--Device-unnamed-export type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
-'checkSelf' | 'checkSelfBypassDescendants'-End-->
+<!--Device-unnamed-export type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |'checkSelf' | 'checkSelfBypassDescendants'--><!--Device-unnamed-export type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |'checkSelf' | 'checkSelfBypassDescendants'-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

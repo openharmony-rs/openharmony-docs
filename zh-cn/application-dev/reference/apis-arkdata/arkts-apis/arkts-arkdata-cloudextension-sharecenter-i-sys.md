@@ -16,7 +16,6 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
-<a id="changeconfirmation"></a>
 ## changeConfirmation
 
 ```TypeScript
@@ -32,17 +31,7 @@ changeConfirmation(
 
 **起始版本：** 11
 
-<!--Device-ShareCenter-changeConfirmation(
-      userId: int,
-      bundleName: string,
-      sharingResource: string,
-      state: cloudData.sharing.State
-    ): Promise<Result<void>>--><!--Device-ShareCenter-changeConfirmation(
-      userId: int,
-      bundleName: string,
-      sharingResource: string,
-      state: cloudData.sharing.State
-    ): Promise<Result<void>>-End-->
+<!--Device-ShareCenter-changeConfirmation(      userId: int,      bundleName: string,      sharingResource: string,      state: cloudData.sharing.State    ): Promise<Result<void>>--><!--Device-ShareCenter-changeConfirmation(      userId: int,      bundleName: string,      sharingResource: string,      state: cloudData.sharing.State    ): Promise<Result<void>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -86,7 +75,6 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
-<a id="changeprivilege"></a>
 ## changePrivilege
 
 ```TypeScript
@@ -102,17 +90,7 @@ changePrivilege(
 
 **起始版本：** 11
 
-<!--Device-ShareCenter-changePrivilege(
-      userId: int,
-      bundleName: string,
-      sharingResource: string,
-      participants: Array<cloudData.sharing.Participant>
-    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>--><!--Device-ShareCenter-changePrivilege(
-      userId: int,
-      bundleName: string,
-      sharingResource: string,
-      participants: Array<cloudData.sharing.Participant>
-    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>-End-->
+<!--Device-ShareCenter-changePrivilege(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>--><!--Device-ShareCenter-changePrivilege(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -166,7 +144,6 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
-<a id="confirminvitation"></a>
 ## confirmInvitation
 
 ```TypeScript
@@ -182,17 +159,7 @@ confirmInvitation(
 
 **起始版本：** 11
 
-<!--Device-ShareCenter-confirmInvitation(
-      userId: int,
-      bundleName: string,
-      invitationCode: string,
-      state: cloudData.sharing.State
-    ): Promise<Result<string>>--><!--Device-ShareCenter-confirmInvitation(
-      userId: int,
-      bundleName: string,
-      invitationCode: string,
-      state: cloudData.sharing.State
-    ): Promise<Result<string>>-End-->
+<!--Device-ShareCenter-confirmInvitation(      userId: int,      bundleName: string,      invitationCode: string,      state: cloudData.sharing.State    ): Promise<Result<string>>--><!--Device-ShareCenter-confirmInvitation(      userId: int,      bundleName: string,      invitationCode: string,      state: cloudData.sharing.State    ): Promise<Result<string>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -237,7 +204,6 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
-<a id="exit"></a>
 ## exit
 
 ```TypeScript
@@ -291,7 +257,6 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
-<a id="queryparticipants"></a>
 ## queryParticipants
 
 ```TypeScript
@@ -306,15 +271,7 @@ queryParticipants(
 
 **起始版本：** 11
 
-<!--Device-ShareCenter-queryParticipants(
-      userId: int,
-      bundleName: string,
-      sharingResource: string
-    ): Promise<Result<Array<cloudData.sharing.Participant>>>--><!--Device-ShareCenter-queryParticipants(
-      userId: int,
-      bundleName: string,
-      sharingResource: string
-    ): Promise<Result<Array<cloudData.sharing.Participant>>>-End-->
+<!--Device-ShareCenter-queryParticipants(      userId: int,      bundleName: string,      sharingResource: string    ): Promise<Result<Array<cloudData.sharing.Participant>>>--><!--Device-ShareCenter-queryParticipants(      userId: int,      bundleName: string,      sharingResource: string    ): Promise<Result<Array<cloudData.sharing.Participant>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -387,7 +344,6 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
-<a id="queryparticipantsbyinvitation"></a>
 ## queryParticipantsByInvitation
 
 ```TypeScript
@@ -402,15 +358,7 @@ queryParticipantsByInvitation(
 
 **起始版本：** 11
 
-<!--Device-ShareCenter-queryParticipantsByInvitation(
-      userId: int,
-      bundleName: string,
-      invitationCode: string
-    ): Promise<Result<Array<cloudData.sharing.Participant>>>--><!--Device-ShareCenter-queryParticipantsByInvitation(
-      userId: int,
-      bundleName: string,
-      invitationCode: string
-    ): Promise<Result<Array<cloudData.sharing.Participant>>>-End-->
+<!--Device-ShareCenter-queryParticipantsByInvitation(      userId: int,      bundleName: string,      invitationCode: string    ): Promise<Result<Array<cloudData.sharing.Participant>>>--><!--Device-ShareCenter-queryParticipantsByInvitation(      userId: int,      bundleName: string,      invitationCode: string    ): Promise<Result<Array<cloudData.sharing.Participant>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -483,7 +431,6 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
-<a id="share"></a>
 ## share
 
 ```TypeScript
@@ -499,17 +446,7 @@ share(
 
 **起始版本：** 11
 
-<!--Device-ShareCenter-share(
-      userId: int,
-      bundleName: string,
-      sharingResource: string,
-      participants: Array<cloudData.sharing.Participant>
-    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>--><!--Device-ShareCenter-share(
-      userId: int,
-      bundleName: string,
-      sharingResource: string,
-      participants: Array<cloudData.sharing.Participant>
-    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>-End-->
+<!--Device-ShareCenter-share(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>--><!--Device-ShareCenter-share(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -563,7 +500,6 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 ```
 
-<a id="unshare"></a>
 ## unshare
 
 ```TypeScript
@@ -579,17 +515,7 @@ unshare(
 
 **起始版本：** 11
 
-<!--Device-ShareCenter-unshare(
-      userId: int,
-      bundleName: string,
-      sharingResource: string,
-      participants: Array<cloudData.sharing.Participant>
-    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>--><!--Device-ShareCenter-unshare(
-      userId: int,
-      bundleName: string,
-      sharingResource: string,
-      participants: Array<cloudData.sharing.Participant>
-    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>-End-->
+<!--Device-ShareCenter-unshare(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>--><!--Device-ShareCenter-unshare(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 

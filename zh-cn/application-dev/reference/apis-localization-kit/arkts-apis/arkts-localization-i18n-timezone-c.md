@@ -14,14 +14,13 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="getappdefaulttimezone"></a>
 ## getAppDefaultTimeZone
 
 ```TypeScript
 static getAppDefaultTimeZone(): TimeZone
 ```
 
-获取应用使用的默认时区对象。若调用[setAppDefaultTimeZoneById](arkts-localization-i18n-timezone-c.md#setappdefaulttimezonebyid-1)设置了默认时区，则返回设置的默认时区对象；否则，返回系统时区对象。
+获取应用使用的默认时区对象。若调用[setAppDefaultTimeZoneById](arkts-localization-i18n-timezone-c.md#setappdefaulttimezonebyid)设置了默认时区，则返回设置的默认时区对象；否则，返回系统时区对象。
 
 **起始版本：** 26.0.0
 
@@ -59,7 +58,6 @@ console.info(`getAppDefaultTimeZone success, time zone id: ${id}`);
 
 ```
 
-<a id="getavailableids"></a>
 ## getAvailableIDs
 
 ```TypeScript
@@ -92,7 +90,6 @@ let ids: Array<string> = i18n.TimeZone.getAvailableIDs();
 
 ```
 
-<a id="getavailablezonecityids"></a>
 ## getAvailableZoneCityIDs
 
 ```TypeScript
@@ -125,7 +122,6 @@ let cityIDs: Array<string> = i18n.TimeZone.getAvailableZoneCityIDs();
 
 ```
 
-<a id="getcitydisplayname"></a>
 ## getCityDisplayName
 
 ```TypeScript
@@ -147,7 +143,7 @@ static getCityDisplayName(cityID: string, locale: string): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | cityID | string | 是 | 时区城市ID。 |
-| locale | string | 是 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
+| locale | string | 是 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
 
 **返回值：**
 
@@ -164,7 +160,6 @@ let displayName: string = i18n.TimeZone.getCityDisplayName('Shanghai', 'zh-CN');
 
 ```
 
-<a id="getdisplayname"></a>
 ## getDisplayName
 
 ```TypeScript
@@ -185,7 +180,7 @@ getDisplayName(locale?: string, isDST?: boolean): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string | 否 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。默认值：系统当前区域ID。 |
+| locale | string | 否 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。默认值：系统当前区域ID。 |
 | isDST | boolean | 否 | true表示显示夏令时信息，false表示不显示夏令时信息。默认值：false。 |
 
 **返回值：**
@@ -204,7 +199,6 @@ let timezoneName: string = timezone.getDisplayName('zh-CN', false); // timezoneN
 
 ```
 
-<a id="getid"></a>
 ## getID
 
 ```TypeScript
@@ -237,7 +231,6 @@ let timezoneID: string = timezone.getID(); // timezoneID = 'Asia/Shanghai'
 
 ```
 
-<a id="getoffset"></a>
 ## getOffset
 
 ```TypeScript
@@ -276,7 +269,6 @@ let offset: number = timezone.getOffset(1234567890); // offset = 28800000
 
 ```
 
-<a id="getrawoffset"></a>
 ## getRawOffset
 
 ```TypeScript
@@ -309,7 +301,6 @@ let offset: number = timezone.getRawOffset(); // offset = 28800000
 
 ```
 
-<a id="gettimezonefromcity"></a>
 ## getTimezoneFromCity
 
 ```TypeScript
@@ -347,7 +338,6 @@ let timezone: i18n.TimeZone = i18n.TimeZone.getTimezoneFromCity('Shanghai');
 
 ```
 
-<a id="gettimezonesbylocation"></a>
 ## getTimezonesByLocation
 
 ```TypeScript
@@ -399,14 +389,13 @@ try {
 
 ```
 
-<a id="getzonerules"></a>
 ## getZoneRules
 
 ```TypeScript
 public getZoneRules(): ZoneRules
 ```
 
-获取时区跳变规则，时区的跳变逻辑参考[夏令时跳变](docroot://internationalization/i18n-dst-transition.md)。
+获取时区跳变规则，时区的跳变逻辑参考[夏令时跳变](../../../internationalization/i18n-dst-transition.md)。
 
 **起始版本：** 20
 
@@ -422,7 +411,6 @@ public getZoneRules(): ZoneRules
 | --- | --- |
 | [ZoneRules](arkts-localization-i18n-zonerules-c.md) | 时区跳变规则，包含跳变的时间点、跳变前后的偏移量信息。 |
 
-<a id="isdaylightsavingtime"></a>
 ## isDaylightSavingTime
 
 ```TypeScript
@@ -453,7 +441,6 @@ public isDaylightSavingTime(date: Date): boolean
 | --- | --- |
 | boolean | 是否处于夏令时。true表示处于夏令时，false表示不处于夏令时。 |
 
-<a id="setappdefaulttimezonebyid"></a>
 ## setAppDefaultTimeZoneById
 
 ```TypeScript
@@ -461,7 +448,6 @@ static setAppDefaultTimeZoneById(zoneID: string): void
 ```
 
 设置当前应用的默认时区，在应用运行时生命周期内有效。
-
 > **说明：**  
 >  
 > 进行日期时间格式化时，若未指定时区，会优先使用应用设置的默认时区。

@@ -1,6 +1,5 @@
 # setCustomWallpaper（系统接口）
 
-<a id="setcustomwallpaper"></a>
 ## setCustomWallpaper
 
 ```TypeScript
@@ -57,7 +56,6 @@ try {
 ```
 
 
-<a id="setcustomwallpaper-1"></a>
 ## setCustomWallpaper
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="getallowedinstallbundles"></a>
 ## getAllowedInstallBundles
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getAllowedInstallBundles(admin: Want, callback: AsyncCallback<Array<str
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync-1)
+**替代接口：** [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -71,7 +70,6 @@ bundleManager.getAllowedInstallBundles(wantTemp, (err, result) => {
 ```
 
 
-<a id="getallowedinstallbundles-1"></a>
 ## getAllowedInstallBundles
 
 ```TypeScript
@@ -84,7 +82,7 @@ function getAllowedInstallBundles(admin: Want, userId: number, callback: AsyncCa
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync-1)
+**替代接口：** [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -137,7 +135,6 @@ bundleManager.getAllowedInstallBundles(wantTemp, 100, (err, result) => {
 ```
 
 
-<a id="getallowedinstallbundles-2"></a>
 ## getAllowedInstallBundles
 
 ```TypeScript
@@ -150,7 +147,7 @@ function getAllowedInstallBundles(admin: Want, userId?: number): Promise<Array<s
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync-1)
+**替代接口：** [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 

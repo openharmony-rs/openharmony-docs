@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="applycontent"></a>
 ## applyContent
 
 ```TypeScript

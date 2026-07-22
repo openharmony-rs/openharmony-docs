@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="sendaccessibilityevent"></a>
 ## sendAccessibilityEvent
 
 ```TypeScript
@@ -122,7 +121,6 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
 ```
 
 
-<a id="sendaccessibilityevent-1"></a>
 ## sendAccessibilityEvent
 
 ```TypeScript

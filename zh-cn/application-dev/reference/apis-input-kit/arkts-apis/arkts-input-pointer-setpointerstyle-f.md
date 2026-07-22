@@ -6,14 +6,13 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="setpointerstyle"></a>
 ## setPointerStyle
 
 ```TypeScript
 function setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback<void>): void
 ```
 
-设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](docroot://reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用callback异步回调。
+设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../../reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用callback异步回调。
 
 **起始版本：** 9
 
@@ -25,7 +24,7 @@ function setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | number | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md#getpointerstyle-1)获取。 |
+| windowId | number | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md#getpointerstyle)获取。 |
 | pointerStyle | [PointerStyle](../../apis-arkui/arkts-apis/arkts-arkui-pointerstyle-t.md) | 是 | 鼠标样式。 不能传入DEVELOPER_DEFINED_ICON作为参数。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置鼠标样式类型成功，err为undefined，否则为错误对象。 |
 
@@ -78,14 +77,13 @@ struct Index {
 ```
 
 
-<a id="setpointerstyle-1"></a>
 ## setPointerStyle
 
 ```TypeScript
 function setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise<void>
 ```
 
-设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](docroot://reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用Promise异步回调。
+设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../../reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -97,7 +95,7 @@ function setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | number | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md#getpointerstyle-1)获取。 |
+| windowId | number | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md#getpointerstyle)获取。 |
 | pointerStyle | [PointerStyle](../../apis-arkui/arkts-apis/arkts-arkui-pointerstyle-t.md) | 是 | 鼠标样式。 |
 
 **返回值：**

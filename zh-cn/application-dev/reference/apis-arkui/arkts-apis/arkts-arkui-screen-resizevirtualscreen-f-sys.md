@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="resizevirtualscreen"></a>
 ## resizeVirtualScreen
 
 ```TypeScript

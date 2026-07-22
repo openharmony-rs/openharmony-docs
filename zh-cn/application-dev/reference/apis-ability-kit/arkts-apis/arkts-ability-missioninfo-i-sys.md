@@ -1,6 +1,6 @@
 # MissionInfo（系统接口）
 
-表示任务的详细信息，可以通过[getMissionInfo](arkts-ability-missionmanager-getmissioninfo-f-sys.md#getmissioninfo-1)获取。
+表示任务的详细信息，可以通过[getMissionInfo](arkts-ability-missionmanager-getmissioninfo-f-sys.md#getmissioninfo)获取。
 
 **起始版本：** 8
 

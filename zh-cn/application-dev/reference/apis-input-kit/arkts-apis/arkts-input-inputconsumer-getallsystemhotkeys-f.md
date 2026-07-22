@@ -6,7 +6,6 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-<a id="getallsystemhotkeys"></a>
 ## getAllSystemHotkeys
 
 ```TypeScript

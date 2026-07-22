@@ -6,7 +6,6 @@
 import { process } from '@kit.ArkTS';
 ```
 
-<a id="kill"></a>
 ## kill
 
 ```TypeScript
@@ -19,7 +18,7 @@ function kill(signal: number, pid: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [kill](arkts-arkts-process-processmanager-c.md#kill-1)
+**替代接口：** [kill](arkts-arkts-process-processmanager-c.md#kill)
 
 <!--Device-process-function kill(signal: number, pid: number): boolean--><!--Device-process-function kill(signal: number, pid: number): boolean-End-->
 

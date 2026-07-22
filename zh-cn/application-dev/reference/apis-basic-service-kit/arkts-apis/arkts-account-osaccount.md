@@ -69,7 +69,7 @@ import { osAccount } from '@kit.BasicServicesKit';
 | [AccountManager](arkts-basicservices-osaccount-accountmanager-i-sys.md) | 系统账号管理类。 |
 | [AcquireAuthorizationOptions](arkts-basicservices-osaccount-acquireauthorizationoptions-i-sys.md) | 表示获取授权的选项。 |
 | [AcquireAuthorizationResult](arkts-basicservices-osaccount-acquireauthorizationresult-i-sys.md) | 表示获取授权的结果。 |
-| [AuthOptions](arkts-basicservices-osaccount-authoptions-i-sys.md) | 表示[认证用户](arkts-basicservices-osaccount-userauth-c-sys.md#auth-1)的可选参数集合。 |
+| [AuthOptions](arkts-basicservices-osaccount-authoptions-i-sys.md) | 表示[认证用户](arkts-basicservices-osaccount-userauth-c-sys.md#auth)的可选参数集合。 |
 | [AuthResult](arkts-basicservices-osaccount-authresult-i-sys.md) | 表示认证结果的信息。 |
 | [AuthStatusInfo](arkts-basicservices-osaccount-authstatusinfo-i-sys.md) | 表示认证状态信息。 |
 | [AuthorizationManager](arkts-basicservices-osaccount-authorizationmanager-i-sys.md) | 系统账号授权管理类，用于管理系统账号授权。 |
@@ -83,11 +83,11 @@ import { osAccount } from '@kit.BasicServicesKit';
 | [DomainPlugin](arkts-basicservices-osaccount-domainplugin-i-sys.md) | 域插件，提供域账号认证功能。 |
 | [EnrolledCredInfo](arkts-basicservices-osaccount-enrolledcredinfo-i-sys.md) | 表示已注册凭据的信息。 |
 | [ExecutorProperty](arkts-basicservices-osaccount-executorproperty-i-sys.md) | 提供执行器的属性。 |
-| [GetAuthInfoOptions](arkts-basicservices-osaccount-getauthinfooptions-i-sys.md) | 表示[查询认证凭据信息](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo-1)的可选参数集合。 |
+| [GetAuthInfoOptions](arkts-basicservices-osaccount-getauthinfooptions-i-sys.md) | 表示[查询认证凭据信息](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo)的可选参数集合。 |
 | [GetDomainAccessTokenOptions](arkts-basicservices-osaccount-getdomainaccesstokenoptions-i-sys.md) | 表示获取域访问令牌的选项。 |
 | [GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md) | 表示查询域账号信息的选项。 |
 | [GetDomainAccountInfoPluginOptions](arkts-basicservices-osaccount-getdomainaccountinfopluginoptions-i-sys.md) | 表示插件查询域账号信息的选项。GetDomainAccountInfoPluginOptions类继承[GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md) |
-| [GetInputDataOptions](arkts-basicservices-osaccount-getinputdataoptions-i-sys.md) | 表示[通知调用者获取数据](docroot://reference/apis-basic-services-kit/js-apis-osAccount-sys.md#ongetdata8)的可选参数集合。 |
+| [GetInputDataOptions](arkts-basicservices-osaccount-getinputdataoptions-i-sys.md) | 表示[通知调用者获取数据](../../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#ongetdata8)的可选参数集合。 |
 | [GetPropertyRequest](arkts-basicservices-osaccount-getpropertyrequest-i-sys.md) | 提供获取属性请求的信息。 |
 | [IIdmCallback](arkts-basicservices-osaccount-iidmcallback-i-sys.md) | 表示身份管理回调类。 |
 | [IInputData](arkts-basicservices-osaccount-iinputdata-i-sys.md) | 密码数据回调。 |

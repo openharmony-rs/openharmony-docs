@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="install"></a>
 ## install
 
 ```TypeScript
@@ -19,7 +18,7 @@ function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallba
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [install(admin:](arkts-mdm-bundlemanager-install-f.md#install-3)
+**替代接口：** [install(admin:](arkts-mdm-bundlemanager-install-f.md#install)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -75,7 +74,6 @@ bundleManager.install(wantTemp, hapFilePaths, (err) => {
 ```
 
 
-<a id="install-1"></a>
 ## install
 
 ```TypeScript
@@ -88,7 +86,7 @@ function install(admin: Want, hapFilePaths: Array<string>, installParam: Install
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [install(admin:](arkts-mdm-bundlemanager-install-f.md#install-3)
+**替代接口：** [install(admin:](arkts-mdm-bundlemanager-install-f.md#install)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 

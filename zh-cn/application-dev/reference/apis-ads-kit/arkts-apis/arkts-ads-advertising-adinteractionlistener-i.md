@@ -14,7 +14,6 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
-<a id="onstatuschanged"></a>
 ## onStatusChanged
 
 ```TypeScript

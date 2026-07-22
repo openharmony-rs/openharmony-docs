@@ -1,6 +1,5 @@
 # unlink
 
-<a id="unlink"></a>
 ## unlink
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function unlink(path: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:unlink](arkts-corefile-file-fs-unlink-f.md#unlink-1)
+**替代接口：** [fs:unlink](arkts-corefile-fileio-unlink-f.md#unlink)
 
 <!--Device-unnamed-declare function unlink(path: string): Promise<void>--><!--Device-unnamed-declare function unlink(path: string): Promise<void>-End-->
 
@@ -32,7 +31,6 @@ declare function unlink(path: string): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="unlink-1"></a>
 ## unlink
 
 ```TypeScript
@@ -45,7 +43,7 @@ declare function unlink(path: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:unlink](arkts-corefile-file-fs-unlink-f.md#unlink-1)
+**替代接口：** [fs:unlink](arkts-corefile-fileio-unlink-f.md#unlink)
 
 <!--Device-unnamed-declare function unlink(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function unlink(path: string, callback: AsyncCallback<void>): void-End-->
 

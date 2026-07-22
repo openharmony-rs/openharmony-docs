@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Notification.Notification
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

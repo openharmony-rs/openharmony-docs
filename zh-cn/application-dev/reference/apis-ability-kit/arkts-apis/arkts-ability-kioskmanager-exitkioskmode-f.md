@@ -6,7 +6,6 @@
 import { kioskManager } from '@kit.AbilityKit';
 ```
 
-<a id="exitkioskmode"></a>
 ## exitKioskMode
 
 ```TypeScript

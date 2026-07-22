@@ -6,7 +6,6 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="isloggable"></a>
 ## isLoggable
 
 ```TypeScript

@@ -14,7 +14,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -41,7 +40,6 @@ console.info('retStr = ' + retStr);
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -54,7 +52,7 @@ constructor(encoding?: string, options?: { fatal?: boolean; ignoreBOM?: boolean 
 
 **废弃版本：** 9
 
-**替代接口：** [create](arkts-arkts-util-textdecoder-c.md#create-1)
+**替代接口：** [create](arkts-arkts-util-textdecoder-c.md#create)
 
 <!--Device-TextDecoder-constructor(encoding?: string, options?: { fatal?: boolean; ignoreBOM?: boolean })--><!--Device-TextDecoder-constructor(encoding?: string, options?: { fatal?: boolean; ignoreBOM?: boolean })-End-->
 
@@ -74,7 +72,6 @@ let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
 
 ```
 
-<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -118,7 +115,6 @@ console.info('retStr = ' + retStr);
 
 ```
 
-<a id="decode"></a>
 ## decode
 
 ```TypeScript
@@ -131,7 +127,7 @@ decode(input: Uint8Array, options?: { stream?: false }): string
 
 **废弃版本：** 9
 
-**替代接口：** [decodeToString](arkts-arkts-util-textdecoder-c.md#decodetostring-1)
+**替代接口：** [decodeToString](arkts-arkts-util-textdecoder-c.md#decodetostring)
 
 <!--Device-TextDecoder-decode(input: Uint8Array, options?: { stream?: false }): string--><!--Device-TextDecoder-decode(input: Uint8Array, options?: { stream?: false }): string-End-->
 
@@ -168,7 +164,6 @@ console.info("retStr = " + retStr);
 
 ```
 
-<a id="decodetostring"></a>
 ## decodeToString
 
 ```TypeScript
@@ -237,7 +232,6 @@ console.info("retJson = " + retJson);
 
 ```
 
-<a id="decodewithstream"></a>
 ## decodeWithStream
 
 ```TypeScript
@@ -250,7 +244,7 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 
 **废弃版本：** 12
 
-**替代接口：** [decodeToString](arkts-arkts-util-textdecoder-c.md#decodetostring-1)
+**替代接口：** [decodeToString](arkts-arkts-util-textdecoder-c.md#decodetostring)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

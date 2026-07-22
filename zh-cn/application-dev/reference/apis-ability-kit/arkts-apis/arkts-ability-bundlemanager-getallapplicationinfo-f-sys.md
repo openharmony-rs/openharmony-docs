@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getallapplicationinfo"></a>
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -65,7 +64,6 @@ try {
 ```
 
 
-<a id="getallapplicationinfo-1"></a>
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -79,9 +77,7 @@ function getAllApplicationInfo(appFlags: number,
 
 **需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST
 
-<!--Device-bundleManager-function getAllApplicationInfo(appFlags: int,
-    userId: int, callback: AsyncCallback<Array<ApplicationInfo>>): void--><!--Device-bundleManager-function getAllApplicationInfo(appFlags: int,
-    userId: int, callback: AsyncCallback<Array<ApplicationInfo>>): void-End-->
+<!--Device-bundleManager-function getAllApplicationInfo(appFlags: int,    userId: int, callback: AsyncCallback<Array<ApplicationInfo>>): void--><!--Device-bundleManager-function getAllApplicationInfo(appFlags: int,    userId: int, callback: AsyncCallback<Array<ApplicationInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -92,7 +88,7 @@ function getAllApplicationInfo(appFlags: number,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | appFlags | number | 是 | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md)。 |
-| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ApplicationInfo&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array<ApplicationInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -130,7 +126,6 @@ try {
 ```
 
 
-<a id="getallapplicationinfo-2"></a>
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -154,7 +149,7 @@ function getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | appFlags | number | 是 | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md)。 |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 

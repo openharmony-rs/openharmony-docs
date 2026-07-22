@@ -1,7 +1,6 @@
 # PathIterator
 
 表示路径操作迭代器，可通过遍历迭代器读取path的操作指令。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 18开始支持。  
@@ -22,7 +21,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -43,7 +41,6 @@ constructor(path: Path)
 | --- | --- | --- | --- |
 | path | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 迭代器绑定的路径对象。 |
 
-<a id="hasnext"></a>
 ## hasNext
 
 ```TypeScript
@@ -64,7 +61,6 @@ hasNext(): boolean
 | --- | --- |
 | boolean | 判断路径操作迭代器中是否还有下一个操作。true表示有，false表示没有。 |
 
-<a id="next"></a>
 ## next
 
 ```TypeScript
@@ -98,7 +94,6 @@ next(points: Array<common2D.Point>, offset?: number): PathIteratorVerb
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="peek"></a>
 ## peek
 
 ```TypeScript

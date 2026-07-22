@@ -1,13 +1,12 @@
 # Array
 
 一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。推荐使用引用传递以提升传递性能。
-
 > **说明**  
 >  
 > - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  
 > 本节使用以下标识来表示泛型的使用：
 
-- T：Type，支持[Sendable支持的数据类型](docroot://arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器**：\@Sendable
+- T：Type，支持[Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器**：\@Sendable
 
 **继承/实现关系：** Array implements [ConcatArray<T>](ConcatArray<T>)
 
@@ -25,7 +24,6 @@
 import { collections } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -54,7 +52,6 @@ import { collections } from '@kit.ArkTS';
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-<a id="at"></a>
 ## at
 
 ```TypeScript
@@ -90,7 +87,6 @@ at(index: number): T | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The at method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="concat"></a>
 ## concat
 
 ```TypeScript
@@ -126,7 +122,6 @@ concat(...items: ConcatArray<T>[]): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The concat method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -149,7 +144,6 @@ constructor()
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -179,7 +173,6 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
-<a id="constructor-2"></a>
 ## constructor
 
 ```TypeScript
@@ -208,7 +201,6 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
-<a id="copywithin"></a>
 ## copyWithin
 
 ```TypeScript
@@ -246,7 +238,6 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The copyWithin method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -282,7 +273,6 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The create method cannot be bound.<br>**适用版本：** 12 - 17 |
 
-<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -312,7 +302,6 @@ entries(): IterableIterator<[number, T]>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="every"></a>
 ## every
 
 ```TypeScript
@@ -348,7 +337,6 @@ every(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The every method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="extendto"></a>
 ## extendTo
 
 ```TypeScript
@@ -379,7 +367,6 @@ extendTo(arrayLength: number, initialValue: T): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The extendTo method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -417,7 +404,6 @@ fill(value: T, start?: number, end?: number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The fill method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="filter"></a>
 ## filter
 
 ```TypeScript
@@ -453,7 +439,6 @@ filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The filter method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="find"></a>
 ## find
 
 ```TypeScript
@@ -489,7 +474,6 @@ find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefi
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The find method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="findindex"></a>
 ## findIndex
 
 ```TypeScript
@@ -525,7 +509,6 @@ findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): numbe
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The findIndex method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -555,7 +538,6 @@ forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="from"></a>
 ## from
 
 ```TypeScript
@@ -590,7 +572,6 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
-<a id="from-1"></a>
 ## from
 
 ```TypeScript
@@ -625,7 +606,6 @@ static from<T>(iterable: Iterable<T>): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
-<a id="from-2"></a>
 ## from
 
 ```TypeScript
@@ -655,7 +635,6 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 | --- | --- |
 | Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
 
-<a id="from-3"></a>
 ## from
 
 ```TypeScript
@@ -685,7 +664,6 @@ static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U
 | --- | --- |
 | Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
 
-<a id="includes"></a>
 ## includes
 
 ```TypeScript
@@ -722,7 +700,6 @@ includes(searchElement: T, fromIndex?: number): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The includes method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="indexof"></a>
 ## indexOf
 
 ```TypeScript
@@ -759,7 +736,6 @@ indexOf(searchElement: T, fromIndex?: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The indexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="isarray"></a>
 ## isArray
 
 ```TypeScript
@@ -788,7 +764,6 @@ static isArray(value: Object | undefined | null): boolean
 | --- | --- |
 | boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**；否则返回**false**。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
 
-<a id="join"></a>
 ## join
 
 ```TypeScript
@@ -824,7 +799,6 @@ join(separator?: string): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The join method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -854,7 +828,6 @@ keys(): IterableIterator<number>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="lastindexof"></a>
 ## lastIndexOf
 
 ```TypeScript
@@ -891,7 +864,6 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The lastIndexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="map"></a>
 ## map
 
 ```TypeScript
@@ -927,7 +899,6 @@ map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The map method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="of"></a>
 ## of
 
 ```TypeScript
@@ -956,7 +927,6 @@ static of<T>(...items: T[]): Array<T>
 | --- | --- |
 | Array&lt;T&gt; | 新创建的ArkTS Array实例。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
 
-<a id="pop"></a>
 ## pop
 
 ```TypeScript
@@ -986,7 +956,6 @@ pop(): T | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The pop method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="push"></a>
 ## push
 
 ```TypeScript
@@ -1022,7 +991,6 @@ push(...items: T[]): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The push method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduce"></a>
 ## reduce
 
 ```TypeScript
@@ -1058,7 +1026,6 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduce-1"></a>
 ## reduce
 
 ```TypeScript
@@ -1074,13 +1041,7 @@ reduce<U>(
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-reduce<U>(
-      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,
-      initialValue: U
-    ): U--><!--Device-Array-reduce<U>(
-      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,
-      initialValue: U
-    ): U-End-->
+<!--Device-Array-reduce<U>(      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,      initialValue: U    ): U--><!--Device-Array-reduce<U>(      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,      initialValue: U    ): U-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1104,14 +1065,13 @@ reduce<U>(
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduceright"></a>
 ## reduceRight
 
 ```TypeScript
 reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U
 ```
 
-此API与[reduceRight](arkts-arkts-collections-array-c.md#reduceright-1)方法类似，但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
+此API与[reduceRight](arkts-arkts-collections-array-c.md#reduceright)方法类似，但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
 
 **起始版本：** 18
 
@@ -1141,7 +1101,6 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduceright-1"></a>
 ## reduceRight
 
 ```TypeScript
@@ -1177,7 +1136,6 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reverse"></a>
 ## reverse
 
 ```TypeScript
@@ -1207,7 +1165,6 @@ reverse(): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reverse method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="shift"></a>
 ## shift
 
 ```TypeScript
@@ -1237,7 +1194,6 @@ shift(): T | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The shift method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="shrinkto"></a>
 ## shrinkTo
 
 ```TypeScript
@@ -1267,7 +1223,6 @@ shrinkTo(arrayLength: number): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The shrinkTo method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="slice"></a>
 ## slice
 
 ```TypeScript
@@ -1304,7 +1259,6 @@ slice(start?: number, end?: number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The slice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="some"></a>
 ## some
 
 ```TypeScript
@@ -1340,7 +1294,6 @@ some(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The some method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="sort"></a>
 ## sort
 
 ```TypeScript
@@ -1376,7 +1329,6 @@ sort(compareFn?: (a: T, b: T) => number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The sort method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="splice"></a>
 ## splice
 
 ```TypeScript
@@ -1412,7 +1364,6 @@ splice(start: number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The splice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="splice-1"></a>
 ## splice
 
 ```TypeScript
@@ -1450,7 +1401,6 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The splice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="tolocalestring"></a>
 ## toLocaleString
 
 ```TypeScript
@@ -1480,7 +1430,6 @@ toLocaleString(): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toLocaleString method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -1510,7 +1459,6 @@ toString(): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toString method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="unshift"></a>
 ## unshift
 
 ```TypeScript
@@ -1546,7 +1494,6 @@ unshift(...items: T[]): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The unshift method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="values"></a>
 ## values
 
 ```TypeScript

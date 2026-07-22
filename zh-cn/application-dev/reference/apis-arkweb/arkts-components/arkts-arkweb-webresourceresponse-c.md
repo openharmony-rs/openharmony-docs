@@ -8,7 +8,6 @@ Web组件资源响应对象。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="getreasonmessage"></a>
 ## getReasonMessage
 
 ```TypeScript
@@ -48,7 +46,6 @@ getReasonMessage(): string
 | --- | --- |
 | string | 返回资源响应的状态码描述。 |
 
-<a id="getresponsecode"></a>
 ## getResponseCode
 
 ```TypeScript
@@ -71,7 +68,6 @@ getResponseCode(): number
 | --- | --- |
 | number | 返回资源响应的状态码。 |
 
-<a id="getresponsedata"></a>
 ## getResponseData
 
 ```TypeScript
@@ -94,7 +90,6 @@ getResponseData(): string
 | --- | --- |
 | string | 返回资源响应数据。 |
 
-<a id="getresponsedataex"></a>
 ## getResponseDataEx
 
 ```TypeScript
@@ -115,7 +110,6 @@ getResponseDataEx(): string | number | ArrayBuffer | Resource | undefined
 | --- | --- |
 | string | Return the response data.string type indicate string in HTML format.number type indicate file handle.Resource type indicate $rawfile resource.ArrayBuffer type indicate binary data. |
 
-<a id="getresponseencoding"></a>
 ## getResponseEncoding
 
 ```TypeScript
@@ -138,7 +132,6 @@ getResponseEncoding(): string
 | --- | --- |
 | string | 返回资源响应的编码。 |
 
-<a id="getresponseheader"></a>
 ## getResponseHeader
 
 ```TypeScript
@@ -161,7 +154,6 @@ getResponseHeader(): Array<Header>
 | --- | --- |
 | Array&lt;Header&gt; | 返回资源响应头。 |
 
-<a id="getresponseisready"></a>
 ## getResponseIsReady
 
 ```TypeScript
@@ -182,7 +174,6 @@ getResponseIsReady(): boolean
 | --- | --- |
 | boolean | `true`表示响应数据已准备好，`false`表示未准备好。 |
 
-<a id="getresponsemimetype"></a>
 ## getResponseMimeType
 
 ```TypeScript
@@ -205,7 +196,6 @@ getResponseMimeType(): string
 | --- | --- |
 | string | 返回资源响应的媒体（MIME）类型。 |
 
-<a id="setreasonmessage"></a>
 ## setReasonMessage
 
 ```TypeScript
@@ -228,7 +218,6 @@ setReasonMessage(reason: string): void
 | --- | --- | --- | --- |
 | reason | string | 是 | 要设置的资源响应的状态码描述。 |
 
-<a id="setresponsecode"></a>
 ## setResponseCode
 
 ```TypeScript
@@ -251,7 +240,6 @@ setResponseCode(code: number): void
 | --- | --- | --- | --- |
 | code | number | 是 | 要设置的资源响应的状态码。 |
 
-<a id="setresponsedata"></a>
 ## setResponseData
 
 ```TypeScript
@@ -274,7 +262,6 @@ setResponseData(data: string | number | Resource | ArrayBuffer): void
 | --- | --- | --- | --- |
 | data | string \| number \| Resource \| ArrayBuffer | 是 | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负责关闭。Resource表示应用rawfile目录下文件资源.<br>**起始版本：** 9 - 10 |
 
-<a id="setresponseencoding"></a>
 ## setResponseEncoding
 
 ```TypeScript
@@ -297,7 +284,6 @@ setResponseEncoding(encoding: string): void
 | --- | --- | --- | --- |
 | encoding | string | 是 | 要设置的资源响应的编码。 |
 
-<a id="setresponseheader"></a>
 ## setResponseHeader
 
 ```TypeScript
@@ -320,7 +306,6 @@ setResponseHeader(header: Array<Header>): void
 | --- | --- | --- | --- |
 | header | Array&lt;Header&gt; | 是 | 要设置的资源响应头。 |
 
-<a id="setresponseisready"></a>
 ## setResponseIsReady
 
 ```TypeScript
@@ -343,7 +328,6 @@ setResponseIsReady(IsReady: boolean): void
 | --- | --- | --- | --- |
 | IsReady | boolean | 是 | 资源响应数据是否已经就绪。 |
 
-<a id="setresponsemimetype"></a>
 ## setResponseMimeType
 
 ```TypeScript

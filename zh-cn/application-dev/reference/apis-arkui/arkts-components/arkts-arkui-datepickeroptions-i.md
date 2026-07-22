@@ -1,7 +1,6 @@
 # DatePickerOptions
 
 日期选择器组件的参数说明。
-
 > **说明：**  
 >  
 > - Date的使用请参考[TimePickerOptions](arkts-arkui-timepickeroptions-i.md)。  
@@ -48,7 +47,7 @@ mode?: DatePickerMode
 
 默认值：DatePickerMode.DATE，显示年、月、日三列。
 
-在[DatePickerDialog](./date_picker)中，当[DatePickerDialogOptions](docroot://reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions)的showTime设置为true时，此参数不生效，默认显示年、月、日三列。
+在[DatePickerDialog](arkts-arkui-datepicker.md)中，当[DatePickerDialogOptions](../../../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions)的showTime设置为true时，此参数不生效，默认显示年、月、日三列。
 
 **类型：** DatePickerMode
 
@@ -77,7 +76,7 @@ selected?: Date
 
 取值范围：[Date('1900-01-31'), Date('2100-12-31')]
 
-从API version 10开始，该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 **类型：** Date
 

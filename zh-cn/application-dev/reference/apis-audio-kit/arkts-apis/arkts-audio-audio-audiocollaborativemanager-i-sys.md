@@ -16,7 +16,6 @@ Implements audio collaborative management.
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="iscollaborativeplaybackenabledfordevice"></a>
 ## isCollaborativePlaybackEnabledForDevice
 
 ```TypeScript
@@ -83,7 +82,6 @@ try {
 
 ```
 
-<a id="iscollaborativeplaybacksupported"></a>
 ## isCollaborativePlaybackSupported
 
 ```TypeScript
@@ -128,7 +126,6 @@ try {
 
 ```
 
-<a id="iscollaborativeplaybacksupportedfordevice"></a>
 ## isCollaborativePlaybackSupportedForDevice
 
 ```TypeScript
@@ -165,7 +162,6 @@ isCollaborativePlaybackSupportedForDevice(deviceDescriptor: AudioDeviceDescripto
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-<a id="setcollaborativeplaybackenabledfordevice"></a>
 ## setCollaborativePlaybackEnabledForDevice
 
 ```TypeScript

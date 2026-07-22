@@ -1,6 +1,6 @@
 # AudioHapticPlayer
 
-音振播放器，提供音振协同播放功能。在调用AudioHapticPlayer的接口前，需要先通过[createPlayer](arkts-audio-audiohaptic-audiohapticmanager-i.md#createplayer-1)创建实例。
+音振播放器，提供音振协同播放功能。在调用AudioHapticPlayer的接口前，需要先通过[createPlayer](arkts-audio-audiohaptic-audiohapticmanager-i.md#createplayer)创建实例。
 
 **起始版本：** 11
 
@@ -14,7 +14,6 @@
 import { audioHaptic } from '@kit.AudioKit';
 ```
 
-<a id="ismuted"></a>
 ## isMuted
 
 ```TypeScript
@@ -56,7 +55,6 @@ let result: boolean = audioHapticPlayerInstance.isMuted(audioHapticType);
 
 ```
 
-<a id="off"></a>
 ## off('endOfStream')
 
 ```TypeScript
@@ -95,7 +93,6 @@ audioHapticPlayerInstance.off('endOfStream', endOfStreamCallback);
 
 ```
 
-<a id="off-1"></a>
 ## off('audioInterrupt')
 
 ```TypeScript
@@ -180,7 +177,6 @@ audioHapticPlayerInstance.off('audioInterrupt', audioInterruptCallback);
 
 ```
 
-<a id="on"></a>
 ## on('endOfStream')
 
 ```TypeScript
@@ -211,7 +207,6 @@ audioHapticPlayerInstance.on('endOfStream', () => {
 
 ```
 
-<a id="on-1"></a>
 ## on('audioInterrupt')
 
 ```TypeScript
@@ -289,7 +284,6 @@ audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptE
 
 ```
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -329,7 +323,6 @@ audioHapticPlayerInstance.release().then(() => {
 
 ```
 
-<a id="setloop"></a>
 ## setLoop
 
 ```TypeScript
@@ -337,7 +330,6 @@ setLoop(loop: boolean): Promise<void>
 ```
 
 设置音振播放器循环播放。使用Promise异步回调。
-
 > **注意：**  
 >  
 > 该方法需在音振播放器销毁前调用。
@@ -379,7 +371,6 @@ audioHapticPlayerInstance.setLoop(true).then(() => {
 
 ```
 
-<a id="setvolume"></a>
 ## setVolume
 
 ```TypeScript
@@ -387,7 +378,6 @@ setVolume(volume: number): Promise<void>
 ```
 
 设置音振播放器的音量。使用Promise异步回调。
-
 > **注意：**  
 >  
 > 该方法需在音振播放器释放前调用。
@@ -431,7 +421,6 @@ audioHapticPlayerInstance.setVolume(0.5).then(() => {
 
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -473,7 +462,6 @@ audioHapticPlayerInstance.start().then(() => {
 
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript

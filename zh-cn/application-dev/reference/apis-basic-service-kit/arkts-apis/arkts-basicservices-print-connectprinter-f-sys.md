@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="connectprinter"></a>
 ## connectPrinter
 
 ```TypeScript
@@ -59,7 +58,6 @@ print.connectPrinter(printerId, (err: BusinessError) => {
 ```
 
 
-<a id="connectprinter-1"></a>
 ## connectPrinter
 
 ```TypeScript

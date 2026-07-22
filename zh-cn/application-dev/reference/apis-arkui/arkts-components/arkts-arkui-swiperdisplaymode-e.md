@@ -78,7 +78,7 @@ AUTO_LINEAR
 
 **废弃版本：** 12
 
-**替代接口：** [scrollTo](arkts-arkui-scroller-c.md#scrollto-1)
+**替代接口：** [scrollTo](arkts-arkui-scroller-c.md#scrollto)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

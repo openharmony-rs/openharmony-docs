@@ -6,7 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="islocalcontact"></a>
 ## isLocalContact
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isLocalContact(id: number, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 10
 
-**替代接口：** [isLocalContact(context:](arkts-contacts-contact-islocalcontact-f.md#islocalcontact-1)
+**替代接口：** [isLocalContact(context:](arkts-contacts-contact-islocalcontact-f.md#islocalcontact)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -52,7 +51,6 @@ contact.isLocalContact(1, (err: BusinessError, data) => {
 ```
 
 
-<a id="islocalcontact-1"></a>
 ## isLocalContact
 
 ```TypeScript
@@ -106,7 +104,6 @@ contact.isLocalContact(context, 1, (err: BusinessError, data) => {
 ```
 
 
-<a id="islocalcontact-2"></a>
 ## isLocalContact
 
 ```TypeScript
@@ -119,7 +116,7 @@ function isLocalContact(id: number): Promise<boolean>
 
 **废弃版本：** 10
 
-**替代接口：** [isLocalContact(context:](arkts-contacts-contact-islocalcontact-f.md#islocalcontact-1)
+**替代接口：** [isLocalContact(context:](arkts-contacts-contact-islocalcontact-f.md#islocalcontact)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -153,7 +150,6 @@ promise.then((data) => {
 ```
 
 
-<a id="islocalcontact-3"></a>
 ## isLocalContact
 
 ```TypeScript

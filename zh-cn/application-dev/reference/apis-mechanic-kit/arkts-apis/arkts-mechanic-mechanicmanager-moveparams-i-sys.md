@@ -1,6 +1,6 @@
 # MoveParams（系统接口）
 
-Parameters for moving the target.
+设备移动参数
 
 **起始版本：** 26.0.0
 
@@ -22,7 +22,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 angle: number
 ```
 
-Turning angle, unit degree.
+转动角度。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ Turning angle, unit degree.
 distance: number
 ```
 
-Moving distance, unit cm.The value should be an integer.
+移动距离。取值限定为整数。
 
 **类型：** number
 
@@ -58,7 +58,7 @@ Moving distance, unit cm.The value should be an integer.
 mode?: MarchingMode
 ```
 
-Movement mode.
+行进方式。
 
 **类型：** MarchingMode
 
@@ -76,7 +76,7 @@ Movement mode.
 speedGear?: SpeedGear
 ```
 
-Speed gear.
+速度档位。
 
 **类型：** SpeedGear
 

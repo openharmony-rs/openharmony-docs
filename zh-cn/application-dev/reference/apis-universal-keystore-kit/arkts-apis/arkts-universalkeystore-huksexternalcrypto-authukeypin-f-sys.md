@@ -6,7 +6,6 @@
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="authukeypin"></a>
 ## authUkeyPin
 
 ```TypeScript
@@ -27,7 +26,7 @@ PIN码认证。使用Promise异步回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | Ukey中某容器的资源ID，可通过[导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-1)获取，其结果中附带resourceId。 |
+| resourceId | string | 是 | Ukey中某容器的资源ID，可通过[导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog)获取，其结果中附带resourceId。 |
 | params | Array&lt;HuksExternalCryptoParam&gt; | 是 | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)。 |
 
 **返回值：**

@@ -6,7 +6,6 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
-<a id="share"></a>
 ## share
 
 ```TypeScript
@@ -21,15 +20,7 @@ function share(
 
 **起始版本：** 11
 
-<!--Device-sharing-function share(
-      sharingResource: string,
-      participants: Array<Participant>,
-      callback: AsyncCallback<Result<Array<Result<Participant>>>>
-    ): void--><!--Device-sharing-function share(
-      sharingResource: string,
-      participants: Array<Participant>,
-      callback: AsyncCallback<Result<Array<Result<Participant>>>>
-    ): void-End-->
+<!--Device-sharing-function share(      sharingResource: string,      participants: Array<Participant>,      callback: AsyncCallback<Result<Array<Result<Participant>>>>    ): void--><!--Device-sharing-function share(      sharingResource: string,      participants: Array<Participant>,      callback: AsyncCallback<Result<Array<Result<Participant>>>>    ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -81,7 +72,6 @@ cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessEr
 ```
 
 
-<a id="share-1"></a>
 ## share
 
 ```TypeScript
@@ -95,13 +85,7 @@ function share(
 
 **起始版本：** 11
 
-<!--Device-sharing-function share(
-      sharingResource: string,
-      participants: Array<Participant>
-    ): Promise<Result<Array<Result<Participant>>>>--><!--Device-sharing-function share(
-      sharingResource: string,
-      participants: Array<Participant>
-    ): Promise<Result<Array<Result<Participant>>>>-End-->
+<!--Device-sharing-function share(      sharingResource: string,      participants: Array<Participant>    ): Promise<Result<Array<Result<Participant>>>>--><!--Device-sharing-function share(      sharingResource: string,      participants: Array<Participant>    ): Promise<Result<Array<Result<Participant>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

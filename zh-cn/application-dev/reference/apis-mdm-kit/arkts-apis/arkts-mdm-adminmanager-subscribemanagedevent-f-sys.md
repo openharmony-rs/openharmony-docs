@@ -6,7 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="subscribemanagedevent"></a>
 ## subscribeManagedEvent
 
 ```TypeScript
@@ -19,7 +18,7 @@ function subscribeManagedEvent(admin: Want, managedEvents: Array<ManagedEvent>, 
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+**替代接口：** [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -73,7 +72,6 @@ adminManager.subscribeManagedEvent(wantTemp, events, (err) => {
 ```
 
 
-<a id="subscribemanagedevent-1"></a>
 ## subscribeManagedEvent
 
 ```TypeScript
@@ -86,7 +84,7 @@ function subscribeManagedEvent(admin: Want, managedEvents: Array<ManagedEvent>):
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+**替代接口：** [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 

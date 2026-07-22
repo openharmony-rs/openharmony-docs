@@ -6,7 +6,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="is24hourclock"></a>
 ## is24HourClock
 
 ```TypeScript
@@ -19,7 +18,7 @@ export function is24HourClock(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [is24HourClock](arkts-localization-i18n-system-c.md#is24hourclock-1)
+**替代接口：** [is24HourClock](arkts-localization-i18n-system-c.md#is24hourclock)
 
 <!--Device-i18n-export function is24HourClock(): boolean--><!--Device-i18n-export function is24HourClock(): boolean-End-->
 

@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="setscreenrotationlocked"></a>
 ## setScreenRotationLocked
 
 ```TypeScript
@@ -56,7 +55,6 @@ screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
 ```
 
 
-<a id="setscreenrotationlocked-1"></a>
 ## setScreenRotationLocked
 
 ```TypeScript

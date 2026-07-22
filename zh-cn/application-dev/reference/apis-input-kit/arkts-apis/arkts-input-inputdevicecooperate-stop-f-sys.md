@@ -6,7 +6,6 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -14,11 +13,10 @@ function stop(callback: AsyncCallback<void>): void
 ```
 
 停止键鼠穿越，使用callback异步回调。
-
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用  
-> [cooperate.deactivateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate-1)  
+> [cooperate.deactivateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate)  
 > 替代。
 
 **起始版本：** 9
@@ -78,7 +76,6 @@ struct Index {
 ```
 
 
-<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -86,11 +83,10 @@ function stop(): Promise<void>
 ```
 
 停止键鼠穿越，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用  
-> [cooperate.deactivateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate-1)替代。
+> [cooperate.deactivateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate)替代。
 
 **起始版本：** 9
 

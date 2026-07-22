@@ -74,7 +74,7 @@ const bootCount: number
 const bootloaderVersion: string
 ```
 
-Bootloader版本号。
+Bootloader版本号，用于标识设备启动引导程序的版本信息。
 
 示例：bootloader
 
@@ -91,8 +91,6 @@ const brand: string
 ```
 
 设备品牌名称。
-
-示例：HUAWEI
 
 **起始版本：** 6
 
@@ -238,7 +236,7 @@ const deviceColor: string
 const deviceType: string
 ```
 
-设备类型。详细请参考[deviceTypes标签](docroot://quick-start/module-configuration-file.md#devicetypes标签)。
+设备类型。详细请参考[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)。
 
 示例：<!--RP1-->wearable<!--RP1End-->
 
@@ -424,7 +422,7 @@ const hardwareProfile: string
 
 **说明：**
 
-从API version 6 开始支持，从API version 9 开始废弃，建议使用[系统能力SystemCapability](docroot://reference/syscap.md)替代。
+从API version 6 开始支持，从API version 9 开始废弃，建议使用[系统能力SystemCapability](../../../reference/syscap.md)替代。
 
 示例：default
 
@@ -442,7 +440,7 @@ const hardwareProfile: string
 const incrementalVersion: string
 ```
 
-差异版本号。
+差异版本号，是编译时生成的ohos的版本号。
 
 示例：default
 
@@ -475,8 +473,6 @@ const manufacture: string
 ```
 
 设备厂家名称。
-
-示例：HUAWEI
 
 **起始版本：** 6
 
@@ -632,7 +628,7 @@ const sdkApiVersion: number
 const sdkMinorApiVersion: number
 ```
 
-系统软件Minor API版本。**从** API 26 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。
+系统软件Minor API版本。从API 26 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。
 
 26.0.0
 
@@ -654,7 +650,7 @@ const sdkMinorApiVersion: number
 const sdkPatchApiVersion: number
 ```
 
-系统软件Patch API版本。**从** API 26 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。
+系统软件Patch API版本。从API 26 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。
 
 26.0.0
 
@@ -769,8 +765,6 @@ const versionId: string
 ```
 
 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。如果需要获取其中的某个字段值，建议直接使用对应的字段（如deviceType、manufacture等），可提升效率，不建议解析versionId获取。
-
-示例：wearable/HUAWEI/HUAWEI/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog
 
 **起始版本：** 6
 

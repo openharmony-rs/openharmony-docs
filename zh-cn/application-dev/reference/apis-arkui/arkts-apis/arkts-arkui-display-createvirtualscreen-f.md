@@ -6,7 +6,6 @@
 import { display } from '@kit.ArkUI';
 ```
 
-<a id="createvirtualscreen"></a>
 ## createVirtualScreen
 
 ```TypeScript

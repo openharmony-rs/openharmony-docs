@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="rmdirsync"></a>
 ## rmdirSync
 
 ```TypeScript
@@ -14,7 +13,6 @@ declare function rmdirSync(path: string): void
 ```
 
 以同步方法删除目录及其所有子目录和文件。
-
 > **说明：**  
 >  
 > 该接口支持删除单个文件，但不推荐使用此方法删除单个文件，推荐使用unlinkSync接口删除单个文件。

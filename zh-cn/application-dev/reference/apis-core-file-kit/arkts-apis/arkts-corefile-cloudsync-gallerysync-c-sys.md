@@ -16,7 +16,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -40,7 +39,6 @@ let gallerySync = new cloudSync.GallerySync()
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -90,7 +88,6 @@ gallerySync.off('progress', callback);
 
 ```
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -137,7 +134,6 @@ gallerySync.off('progress');
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -183,7 +179,6 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 
 ```
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -238,7 +233,6 @@ gallerySync.start().then(() => {
 
 ```
 
-<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -291,7 +285,6 @@ gallerySync.start((err: BusinessError) => {
 
 ```
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -299,10 +292,9 @@ stop(): Promise<void>
 ```
 
 异步方法停止端云同步。使用Promise异步回调。
-
 > **说明：**  
 >  
-> 调用stop接口，同步流程会停止。再次调用[start](arkts-corefile-cloudsync-gallerysync-c-sys.md#start-1)接口会继续同步。
+> 调用stop接口，同步流程会停止。再次调用[start](arkts-corefile-cloudsync-gallerysync-c-sys.md#start)接口会继续同步。
 
 **起始版本：** 10
 
@@ -343,7 +335,6 @@ gallerySync.stop().then(() => {
 
 ```
 
-<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -351,10 +342,9 @@ stop(callback: AsyncCallback<void>): void
 ```
 
 异步方法停止端云同步。使用callback异步回调。
-
 > **说明：**  
 >  
-> 调用stop接口，同步流程会停止。再次调用[start](arkts-corefile-cloudsync-gallerysync-c-sys.md#start-1)接口会继续同步。
+> 调用stop接口，同步流程会停止。再次调用[start](arkts-corefile-cloudsync-gallerysync-c-sys.md#start)接口会继续同步。
 
 **起始版本：** 10
 

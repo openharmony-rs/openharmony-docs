@@ -6,7 +6,6 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
-<a id="enableability"></a>
 ## enableAbility
 
 ```TypeScript
@@ -66,7 +65,6 @@ config.enableAbility(name, capability).then(() => {
 ```
 
 
-<a id="enableability-1"></a>
 ## enableAbility
 
 ```TypeScript
@@ -83,15 +81,7 @@ function enableAbility(
 
 **需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-<!--Device-config-function enableAbility(
-    name: string,
-    capability: Array<accessibility.Capability>,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-config-function enableAbility(
-    name: string,
-    capability: Array<accessibility.Capability>,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-config-function enableAbility(    name: string,    capability: Array<accessibility.Capability>,    callback: AsyncCallback<void>  ): void--><!--Device-config-function enableAbility(    name: string,    capability: Array<accessibility.Capability>,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

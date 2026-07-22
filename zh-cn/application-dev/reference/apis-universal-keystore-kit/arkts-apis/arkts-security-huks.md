@@ -86,7 +86,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 | 名称 | 说明 |
 | --- | --- |
 | [anonAttestKeyItemAsUser](arkts-universalkeystore-huks-anonattestkeyitemasuser-f-sys.md#anonattestkeyitemasuser) | 指定用户身份获取匿名化密钥证书，使用Promise方式异步返回结果。  该操作需要联网进行，且耗时较长。 |
-| [anonAttestKeyItemOfflineAsUser](arkts-universalkeystore-huks-anonattestkeyitemofflineasuser-f-sys.md#anonattestkeyitemofflineasuser) | 离线获取匿名证明证书。该接口使用promise返回结果。此操作不需要每次都需要网络连接，比anonAttestKeyItemAsUser函数性能高。  > **说明**  > >  > -离线密钥证明依赖于网络。您需要定期连接网络才能使用此API更新离线证书。  > >  > -离线匿名密钥证明要求本地时间准确。否则，可能导致对端无法正常工作。验证证书过期。 |
+| [anonAttestKeyItemOfflineAsUser](arkts-universalkeystore-huks-anonattestkeyitemofflineasuser-f-sys.md#anonattestkeyitemofflineasuser) | 离线获取匿名证明证书。该接口使用promise返回结果。此操作不需要每次都需要网络连接，比anonAttestKeyItemAsUser函数性能高。 > **说明**  > >  > -离线密钥证明依赖于网络。您需要定期连接网络才能使用此API更新离线证书。  > >  > -离线匿名密钥证明要求本地时间准确。否则，可能导致对端无法正常工作。验证证书过期。 |
 | [attestKeyItemAsUser](arkts-universalkeystore-huks-attestkeyitemasuser-f-sys.md#attestkeyitemasuser) | 指定用户身份获取密钥证书，使用Promise方式异步返回结果。 |
 | [deleteKeyItemAsUser](arkts-universalkeystore-huks-deletekeyitemasuser-f-sys.md#deletekeyitemasuser) | 指定用户身份删除密钥，使用Promise方式异步返回结果。 |
 | [exportKeyItemAsUser](arkts-universalkeystore-huks-exportkeyitemasuser-f-sys.md#exportkeyitemasuser) | 指定用户身份导出密钥，使用Promise方式回调异步返回的结果。 |

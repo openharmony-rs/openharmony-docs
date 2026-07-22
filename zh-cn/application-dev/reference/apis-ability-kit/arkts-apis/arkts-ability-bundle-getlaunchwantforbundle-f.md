@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getlaunchwantforbundle"></a>
 ## getLaunchWantForBundle
 
 ```TypeScript
@@ -33,7 +32,6 @@ function getLaunchWantForBundle(bundleName: string, callback: AsyncCallback<Want
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Want&gt; | 是 | 程序启动作为入参的回调函数，返回拉起指定应用的want对象。 |
 
 
-<a id="getlaunchwantforbundle-1"></a>
 ## getLaunchWantForBundle
 
 ```TypeScript

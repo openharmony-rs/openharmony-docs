@@ -6,7 +6,6 @@
 import { PiPWindow } from '@kit.ArkUI';
 ```
 
-<a id="ispipenabled"></a>
 ## isPiPEnabled
 
 ```TypeScript

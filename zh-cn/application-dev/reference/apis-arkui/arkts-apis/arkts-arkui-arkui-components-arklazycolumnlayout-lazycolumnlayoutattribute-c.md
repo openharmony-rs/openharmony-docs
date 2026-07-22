@@ -16,7 +16,6 @@
 import { LazyColumnLayoutAttribute, LazyColumnLayout } from '@kit.ArkUI';
 ```
 
-<a id="alignitems"></a>
 ## alignItems
 
 ```TypeScript
@@ -47,7 +46,6 @@ alignItems(value: HorizontalAlign | undefined): LazyColumnLayoutAttribute
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="footer"></a>
 ## footer
 
 ```TypeScript
@@ -78,7 +76,6 @@ footer(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="header"></a>
 ## header
 
 ```TypeScript
@@ -109,7 +106,6 @@ header(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onvisibleindexeschange"></a>
 ## onVisibleIndexesChange
 
 ```TypeScript
@@ -140,7 +136,6 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): La
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="space"></a>
 ## space
 
 ```TypeScript
@@ -171,7 +166,6 @@ space(space: LengthMetrics | undefined): LazyColumnLayoutAttribute
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="sticky"></a>
 ## sticky
 
 ```TypeScript

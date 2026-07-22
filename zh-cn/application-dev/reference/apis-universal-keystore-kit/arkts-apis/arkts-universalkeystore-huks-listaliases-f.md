@@ -6,7 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="listaliases"></a>
 ## listAliases
 
 ```TypeScript
@@ -39,7 +38,7 @@ function listAliases(options: HuksOptions): Promise<HuksListAliasesReturnResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |

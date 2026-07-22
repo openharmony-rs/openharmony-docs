@@ -21,7 +21,7 @@ import { abilityManager } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f.md#getabilityrunninginfos) | 获取UIAbility运行时的相关信息。使用Promise异步回调。 |
-| [isEmbeddedUIExtensionSupported](arkts-ability-abilitymanager-isembeddeduiextensionsupported-f.md#isembeddeduiextensionsupported) | 开发者通过调用该接口判断[EmbeddedUIExtensionAbility](docroot://application-models/embeddeduiextensionability.md)是否可以在当前设备上使用。 |
+| [isEmbeddedUIExtensionSupported](arkts-ability-abilitymanager-isembeddeduiextensionsupported-f.md#isembeddeduiextensionsupported) | 开发者通过调用该接口判断[EmbeddedUIExtensionAbility](../../../application-models/embeddeduiextensionability.md)是否可以在当前设备上使用。 |
 | [restartSelfAtomicService](arkts-ability-abilitymanager-restartselfatomicservice-f.md#restartselfatomicservice) | 重启当前原子化服务。 |
 
 <!--Del-->
@@ -29,8 +29,8 @@ import { abilityManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md#acquiresharedata) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare-1)回调并返回分享数据。使用callback异步回调。 |
-| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md#acquiresharedata-1) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare-1)回调并返回分享数据。使用Promise异步回调。 |
+| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md#acquiresharedata) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用callback异步回调。 |
+| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md#acquiresharedata-1) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用Promise异步回调。 |
 | [clearPreloadedUIExtensionAbilities](arkts-ability-abilitymanager-clearpreloadeduiextensionabilities-f-sys.md#clearpreloadeduiextensionabilities) | 清除当前进程中所有已经预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例。使用Promise异步回调。 |
 | [clearPreloadedUIExtensionAbility](arkts-ability-abilitymanager-clearpreloadeduiextensionability-f-sys.md#clearpreloadeduiextensionability) | 清除指定的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例。使用Promise异步回调。 |
 | [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f-sys.md#getabilityrunninginfos-1) | 获取UIAbility运行相关信息。使用callback异步回调。 |

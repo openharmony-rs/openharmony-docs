@@ -1,10 +1,9 @@
 # ResultCode
 
 表示返回码的枚举。
-
 > **说明：**<br/>  
 > > 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看  
-> [账号管理错误码](docroot://reference/apis-basic-services-kit/errorcode-account.md)替代。
+> [账号管理错误码](../../../reference/apis-basic-services-kit/errorcode-account.md)替代。
 
 **起始版本：** 8
 

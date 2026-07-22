@@ -1,7 +1,6 @@
 # SegmentButtonItemOptionsArray
 
 用于保存按钮信息的数组。
-
 > **说明：**  
 >  
 > SegmentButtonItemOptionsArray仅支持保存2到5个按钮信息元素。
@@ -22,7 +21,6 @@
 import { CommonSegmentButtonOptions, SegmentButtonItemOptionsConstructorOptions, SegmentButtonIconTextItem, SegmentButtonItemOptions, SegmentButtonTextItem, CapsuleSegmentButtonOptions, SegmentButtonOptions, CapsuleSegmentButtonConstructionOptions, SegmentButtonItemTuple, SegmentButton, SegmentButtonItemArray, SegmentButtonItemOptionsArray, SegmentButtonIconItem, BorderRadiusMode, TabSegmentButtonConstructionOptions, TabSegmentButtonOptions, ItemRestriction, DimensionNoPercentage } from '@kit.ArkUI';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -47,7 +45,6 @@ constructor(elements: SegmentButtonItemTuple)
 | --- | --- | --- | --- |
 | elements | [SegmentButtonItemTuple](arkts-arkui-segmentbuttonitemtuple-t.md) | 是 | 按钮信息。 |
 
-<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -78,7 +75,6 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 | --- | --- |
 | [SegmentButtonItemOptionsArray](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonitemoptionsarray-c.md) | 返回创建的SegmentButtonItemOptionsArray对象。 |
 
-<a id="pop"></a>
 ## pop
 
 ```TypeScript
@@ -103,7 +99,6 @@ pop(): SegmentButtonItemOptions | undefined
 | --- | --- |
 | [SegmentButtonItemOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonitemoptions-c.md) | Element removed from the array. |
 
-<a id="push"></a>
 ## push
 
 ```TypeScript
@@ -134,7 +129,6 @@ push(...items: SegmentButtonItemArray): number
 | --- | --- |
 | number | 添加元素后数组的长度。 |
 
-<a id="shift"></a>
 ## shift
 
 ```TypeScript
@@ -159,7 +153,6 @@ shift(): SegmentButtonItemOptions | undefined
 | --- | --- |
 | [SegmentButtonItemOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonitemoptions-c.md) | Element removed from the array. |
 
-<a id="splice"></a>
 ## splice
 
 ```TypeScript
@@ -192,7 +185,6 @@ splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[])
 | --- | --- |
 | [SegmentButtonItemOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonitemoptions-c.md)[] | An array containing the removed elements. |
 
-<a id="unshift"></a>
 ## unshift
 
 ```TypeScript

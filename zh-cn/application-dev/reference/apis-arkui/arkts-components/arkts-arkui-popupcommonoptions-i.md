@@ -1,6 +1,6 @@
 # PopupCommonOptions
 
-配置弹出气泡的参数。使用[UIContext](../arkts-apis/arkts-arkui-uicontext.md)中的[getPromptAction()](@ohos.arkui.UIContext#getPromptAction)方法获取到[PromptAction](@ohos.arkui.UIContext#PromptAction)对象，再通过该对象调用[openPopup](docroot://reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18)和[updatePopup](docroot://reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)时传入的options参数。
+配置弹出气泡的参数。使用[UIContext](../arkts-apis/arkts-arkui-uicontext.md)中的[getPromptAction()](@ohos.arkui.UIContext#getPromptAction)方法获取到[PromptAction](@ohos.arkui.UIContext#PromptAction)对象，再通过该对象调用[openPopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18)和[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)时传入的options参数。
 
 **起始版本：** 18
 
@@ -278,7 +278,7 @@ colorMode?: AnchoredColorMode
 
 **说明：**
 
-1. 仅当绑定组件使用了[WithTheme](docroot://reference/apis-arkui/arkui-ts/ts-container-with-theme.md#接口)标签时，该属性才会生效。2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
+1. 仅当绑定组件使用了[WithTheme](../../../reference/apis-arkui/arkui-ts/ts-container-with-theme.md#接口)标签时，该属性才会生效。2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
 
 **类型：** AnchoredColorMode
 
@@ -362,7 +362,7 @@ true：气泡可以获焦；false：气泡不会获焦。
 
 **说明：**
 
-不支持通过[updatePopup](docroot://reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
+不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
 
 **类型：** boolean
 
@@ -486,7 +486,7 @@ onStateChange?: PopupStateChangeCallback
 
 **说明：**
 
-不支持通过[updatePopup](docroot://reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
+不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
 
 **类型：** PopupStateChangeCallback
 
@@ -512,7 +512,7 @@ onWillDismiss?: boolean | Callback<DismissPopupAction>
 
 **说明：**
 
-1. 在onWillDismiss回调中，不能再做onWillDismiss拦截。2. 不支持通过[updatePopup](docroot://reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
+1. 在onWillDismiss回调中，不能再做onWillDismiss拦截。2. 不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
 
 **类型：** boolean \| Callback&lt;DismissPopupAction&gt;
 
@@ -678,7 +678,7 @@ showInSubWindow?: boolean
 
 **说明：**
 
-不支持通过[updatePopup](docroot://reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
+不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
 
 **类型：** boolean
 
@@ -706,7 +706,7 @@ systemMaterial?: SystemUiMaterial
 
 **说明：**
 
-不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor-1)、边框颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor-1)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth-1)、阴影[shadow](arkts-arkui-commonmethod-c.md#shadow-1)，不建议与上述接口一起使用。
+不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
 
 **类型：** SystemUiMaterial
 
@@ -756,7 +756,7 @@ transition?: TransitionEffect
 
 1. 如果不设置，则使用默认的显示/退出动效。2. 显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。3. 退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。
 
-4.不支持通过[updatePopup](docroot://reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
+4.不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。
 
 **类型：** TransitionEffect
 

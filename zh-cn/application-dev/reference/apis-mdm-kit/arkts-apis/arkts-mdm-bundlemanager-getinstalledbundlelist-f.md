@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="getinstalledbundlelist"></a>
 ## getInstalledBundleList
 
 ```TypeScript
@@ -30,7 +29,7 @@ function getInstalledBundleList(admin: Want, accountId: number): Promise<Array<B
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| accountId | number | 是 | 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| accountId | number | 是 | 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **返回值：**
 
@@ -69,7 +68,6 @@ bundleManager.getInstalledBundleList(wantTemp, accountId).then((result) => {
 ```
 
 
-<a id="getinstalledbundlelist-1"></a>
 ## getInstalledBundleList
 
 ```TypeScript
@@ -93,7 +91,7 @@ function getInstalledBundleList(admin: Want, accountId: number, bundleInfoGetFla
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| accountId | number | 是 | 账号ID<br>取值应为≥0的整数。   - 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| accountId | number | 是 | 账号ID<br>取值应为≥0的整数。   - 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 | bundleInfoGetFlag | number | 是 | 指定返回的BundleInfo所包含的信息。<br>取值范围为全体整数。 |
 
 **返回值：**

@@ -1,6 +1,5 @@
 # clearTimeout
 
-<a id="cleartimeout"></a>
 ## clearTimeout
 
 ```TypeScript

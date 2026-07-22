@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="customrender"></a>
 ## customRender
 
 ```TypeScript
@@ -32,7 +31,6 @@ customRender(uri: ResourceStr, selfRenderUpdate: boolean)
 | uri | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 渲染管线配置文件的路径 |
 | selfRenderUpdate | boolean | 是 | 每帧触发动效渲染 |
 
-<a id="environment"></a>
 ## environment
 
 ```TypeScript
@@ -55,7 +53,6 @@ environment(uri: ResourceStr)
 | --- | --- | --- | --- |
 | uri | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 3D环境资源的路径 |
 
-<a id="renderheight"></a>
 ## renderHeight
 
 ```TypeScript
@@ -78,7 +75,6 @@ renderHeight(value: Dimension)
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | GPU渲染目标的高度，目标将上采样或下采样到视图高度. |
 
-<a id="renderwidth"></a>
 ## renderWidth
 
 ```TypeScript
@@ -101,7 +97,6 @@ renderWidth(value: Dimension)
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | GPU渲染目标的宽度，目标将上采样或下采样到视图宽度. |
 
-<a id="shader"></a>
 ## shader
 
 ```TypeScript
@@ -124,7 +119,6 @@ shader(uri: ResourceStr)
 | --- | --- | --- | --- |
 | uri | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 自定义着色器的路径 |
 
-<a id="shaderimagetexture"></a>
 ## shaderImageTexture
 
 ```TypeScript
@@ -147,7 +141,6 @@ shaderImageTexture(uri: ResourceStr)
 | --- | --- | --- | --- |
 | uri | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 着色器所用纹理的路径 |
 
-<a id="shaderinputbuffer"></a>
 ## shaderInputBuffer
 
 ```TypeScript

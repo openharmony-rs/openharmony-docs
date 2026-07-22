@@ -18,7 +18,6 @@
 import { DataType } from '@kit.ArkData';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -48,7 +47,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="getblob"></a>
 ## getBlob
 
 ```TypeScript
@@ -97,7 +95,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="getcolumnindex"></a>
 ## getColumnIndex
 
 ```TypeScript
@@ -141,7 +138,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="getcolumnname"></a>
 ## getColumnName
 
 ```TypeScript
@@ -185,7 +181,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="getdatatype"></a>
 ## getDataType
 
 ```TypeScript
@@ -234,7 +229,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="getdouble"></a>
 ## getDouble
 
 ```TypeScript
@@ -283,7 +277,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="getlong"></a>
 ## getLong
 
 ```TypeScript
@@ -332,7 +325,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="getstring"></a>
 ## getString
 
 ```TypeScript
@@ -381,7 +373,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="goto"></a>
 ## goTo
 
 ```TypeScript
@@ -423,7 +414,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="gotofirstrow"></a>
 ## goToFirstRow
 
 ```TypeScript
@@ -459,7 +449,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="gotolastrow"></a>
 ## goToLastRow
 
 ```TypeScript
@@ -494,7 +483,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="gotonextrow"></a>
 ## goToNextRow
 
 ```TypeScript
@@ -529,7 +517,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="gotopreviousrow"></a>
 ## goToPreviousRow
 
 ```TypeScript
@@ -564,7 +551,6 @@ if (resultSet != undefined) {
 
 ```
 
-<a id="gotorow"></a>
 ## goToRow
 
 ```TypeScript

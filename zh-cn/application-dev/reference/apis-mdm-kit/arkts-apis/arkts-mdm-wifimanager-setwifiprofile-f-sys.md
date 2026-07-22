@@ -6,7 +6,6 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
-<a id="setwifiprofile"></a>
 ## setWifiProfile
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setWifiProfile(admin: Want, profile: WifiProfile, callback: AsyncCallba
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md#setwifiprofilesync-1)
+**替代接口：** [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md#setwifiprofilesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -78,7 +77,6 @@ wifiManager.setWifiProfile(wantTemp, profile, (err) => {
 ```
 
 
-<a id="setwifiprofile-1"></a>
 ## setWifiProfile
 
 ```TypeScript
@@ -91,7 +89,7 @@ function setWifiProfile(admin: Want, profile: WifiProfile): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md#setwifiprofilesync-1)
+**替代接口：** [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md#setwifiprofilesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 

@@ -6,7 +6,6 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
-<a id="on"></a>
 ## on('continueStateChange')
 
 ```TypeScript

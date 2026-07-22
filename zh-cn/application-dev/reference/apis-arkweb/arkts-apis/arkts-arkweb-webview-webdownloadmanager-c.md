@@ -14,7 +14,6 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="resumedownload"></a>
 ## resumeDownload
 
 ```TypeScript
@@ -43,7 +42,6 @@ static resumeDownload(webDownloadItem: WebDownloadItem): void
 | --- | --- |
 | [17100018](../errorcode-webview.md#17100018-没有设置一个委托类来接收下载状态) | No WebDownloadDelegate has been set yet. |
 
-<a id="setdownloaddelegate"></a>
 ## setDownloadDelegate
 
 ```TypeScript

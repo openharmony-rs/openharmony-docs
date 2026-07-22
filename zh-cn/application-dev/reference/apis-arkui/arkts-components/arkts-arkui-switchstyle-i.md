@@ -94,7 +94,7 @@ unselectedColor?: ResourceColor
 
 设置Switch类型关闭状态的背景颜色。
 
-默认值：深色和浅色模式下均为0x337F7F7F。从API version 20开始，如果开启了[优化深浅色模式切换开销](docroot://ui/ui-dark-light-color-adaptation.md#优化深浅色模式切换开销)能力，浅色模式下默认值为0x19000000，表现效果为10%透明度的黑色；深色模式下默认值为0x19FFFFFF，表现效果为10%透明度的白色。
+默认值：深色和浅色模式下均为0x337F7F7F。从API version 20开始，如果开启了[优化深浅色模式切换开销](../../../ui/ui-dark-light-color-adaptation.md#优化深浅色模式切换开销)能力，浅色模式下默认值为0x19000000，表现效果为10%透明度的黑色；深色模式下默认值为0x19FFFFFF，表现效果为10%透明度的白色。
 
 **类型：** ResourceColor
 

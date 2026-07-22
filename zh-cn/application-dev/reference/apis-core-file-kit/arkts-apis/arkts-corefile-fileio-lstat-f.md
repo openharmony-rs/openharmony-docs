@@ -1,6 +1,5 @@
 # lstat
 
-<a id="lstat"></a>
 ## lstat
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function lstat(path: string): Promise<Stat>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:lstat](arkts-corefile-file-fs-lstat-f.md#lstat-1)
+**替代接口：** [fs:lstat](arkts-corefile-fileio-lstat-f.md#lstat)
 
 <!--Device-unnamed-declare function lstat(path: string): Promise<Stat>--><!--Device-unnamed-declare function lstat(path: string): Promise<Stat>-End-->
 
@@ -32,7 +31,6 @@ declare function lstat(path: string): Promise<Stat>
 | Promise&lt;Stat&gt; | promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
 
 
-<a id="lstat-1"></a>
 ## lstat
 
 ```TypeScript
@@ -45,7 +43,7 @@ declare function lstat(path: string, callback: AsyncCallback<Stat>): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:lstat](arkts-corefile-file-fs-lstat-f.md#lstat-1)
+**替代接口：** [fs:lstat](arkts-corefile-fileio-lstat-f.md#lstat)
 
 <!--Device-unnamed-declare function lstat(path: string, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function lstat(path: string, callback: AsyncCallback<Stat>): void-End-->
 

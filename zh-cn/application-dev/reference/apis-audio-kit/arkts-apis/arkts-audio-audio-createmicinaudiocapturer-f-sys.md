@@ -6,7 +6,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="createmicinaudiocapturer"></a>
 ## createMicInAudioCapturer
 
 ```TypeScript

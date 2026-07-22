@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="queryprintercapability"></a>
 ## queryPrinterCapability
 
 ```TypeScript
@@ -58,7 +57,6 @@ print.queryPrinterCapability(printerId, (err: BusinessError) => {
 ```
 
 
-<a id="queryprintercapability-1"></a>
 ## queryPrinterCapability
 
 ```TypeScript

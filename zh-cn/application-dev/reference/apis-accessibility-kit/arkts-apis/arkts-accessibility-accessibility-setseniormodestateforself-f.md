@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="setseniormodestateforself"></a>
 ## setSeniorModeStateForSelf
 
 ```TypeScript

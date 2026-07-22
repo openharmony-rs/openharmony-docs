@@ -16,7 +16,6 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="hide"></a>
 ## hide
 
 ```TypeScript
@@ -60,7 +59,6 @@ selectionPanel.hide().then(() => {
 
 ```
 
-<a id="moveto"></a>
 ## moveTo
 
 ```TypeScript
@@ -68,16 +66,15 @@ moveTo(x: number, y: number): Promise<void>
 ```
 
 移动划词面板至屏幕指定位置。使用Promise异步回调。
-
 > **说明：**  
 > 从API version 20开始支持，从API version 24开始废弃。建议使用  
-> [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#movetoglobaldisplay-1)替代。
+> [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#movetoglobaldisplay)替代。
 
 **起始版本：** 20
 
 **废弃版本：** 24
 
-**替代接口：** [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#movetoglobaldisplay-1)
+**替代接口：** [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#movetoglobaldisplay)
 
 <!--Device-Panel-moveTo(x: int, y: int): Promise<void>--><!--Device-Panel-moveTo(x: int, y: int): Promise<void>-End-->
 
@@ -123,7 +120,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off('destroyed')
 
 ```TypeScript
@@ -159,7 +155,6 @@ try {
 
 ```
 
-<a id="off-1"></a>
 ## off('hidden')
 
 ```TypeScript
@@ -195,7 +190,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on('destroyed')
 
 ```TypeScript
@@ -233,7 +227,6 @@ try {
 
 ```
 
-<a id="on-1"></a>
 ## on('hidden')
 
 ```TypeScript
@@ -271,7 +264,6 @@ try {
 
 ```
 
-<a id="setuicontent"></a>
 ## setUiContent
 
 ```TypeScript
@@ -327,7 +319,6 @@ try {
 
 ```
 
-<a id="show"></a>
 ## show
 
 ```TypeScript
@@ -373,7 +364,6 @@ selectionPanel.show().then(() => {
 
 ```
 
-<a id="startmoving"></a>
 ## startMoving
 
 ```TypeScript

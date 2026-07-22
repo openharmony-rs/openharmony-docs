@@ -6,7 +6,6 @@
 import { application } from '@kit.AbilityKit';
 ```
 
-<a id="createpluginmodulecontextforhostbundle"></a>
 ## createPluginModuleContextForHostBundle
 
 ```TypeScript
@@ -22,9 +21,7 @@ export function createPluginModuleContextForHostBundle(context: Context, pluginB
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-application-export function createPluginModuleContextForHostBundle(context: Context, pluginBundleName: string, pluginModuleName: string,
-    hostBundleName: string): Promise<Context>--><!--Device-application-export function createPluginModuleContextForHostBundle(context: Context, pluginBundleName: string, pluginModuleName: string,
-    hostBundleName: string): Promise<Context>-End-->
+<!--Device-application-export function createPluginModuleContextForHostBundle(context: Context, pluginBundleName: string, pluginModuleName: string,    hostBundleName: string): Promise<Context>--><!--Device-application-export function createPluginModuleContextForHostBundle(context: Context, pluginBundleName: string, pluginModuleName: string,    hostBundleName: string): Promise<Context>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

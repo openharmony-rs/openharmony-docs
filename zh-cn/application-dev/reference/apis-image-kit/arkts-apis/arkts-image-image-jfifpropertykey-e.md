@@ -1,10 +1,9 @@
 # JfifPropertyKey
 
 表示JFIF图片信息的枚举。
-
 > **说明：**  
 >  
-> 返回字段类型具体参考[JfifMetadata](docroot://reference/apis-image-kit/arkts-apis-image-JfifMetadata.md)。  
+> 返回字段类型具体参考[JfifMetadata](../../../reference/apis-image-kit/arkts-apis-image-JfifMetadata.md)。  
 > | 名称 | 值 | 说明 |  
 > | ---- | -- | ---- |  
 > | DENSITY_UNIT | 'JfifDensityUnit' | 用于定义JfifXDensity（水平像素密度）和JfifYDensity（垂直像素密度）的物理度量单位。

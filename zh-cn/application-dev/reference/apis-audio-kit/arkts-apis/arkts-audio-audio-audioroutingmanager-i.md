@@ -2,8 +2,7 @@
 
 音频路由管理。
 
-在使用AudioRoutingManager的接口之前，需先通过[getRoutingManager](arkts-audio-audio-audiomanager-i.md#getroutingmanager-1)获取AudioRoutingManager实例。
-
+在使用AudioRoutingManager的接口之前，需先通过[getRoutingManager](arkts-audio-audio-audiomanager-i.md#getroutingmanager)获取AudioRoutingManager实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 9开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="declaredevicetypescompatibility"></a>
 ## declareDeviceTypesCompatibility
 
 ```TypeScript
@@ -28,11 +26,10 @@ declareDeviceTypesCompatibility(deviceTypes: DeviceTypeArray): void
 ```
 
 声明应用需要兼容的设备类型。
-
 > **说明：**  
 >  
 > 对于API version 20及以上版本新增的设备类型，应用调用获取设备的相关接口时（例如  
-> [getAvailableDevices](arkts-audio-audio-audiosessionmanager-i.md#getavailabledevices-1)），默认返回的设备类型为匿名类型。如需获取具体设备类型，需先调用该方法进行  
+> [getAvailableDevices](arkts-audio-audio-audiosessionmanager-i.md#getavailabledevices)），默认返回的设备类型为匿名类型。如需获取具体设备类型，需先调用该方法进行  
 > 设备类型兼容声明。
 
 **起始版本：** 26.0.0
@@ -55,7 +52,6 @@ declareDeviceTypesCompatibility(deviceTypes: DeviceTypeArray): void
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, the param deviceTypes contains value that is invalid enum or is not a device type introduced in API 20 onwards. |
 
-<a id="getavailabledevices"></a>
 ## getAvailableDevices
 
 ```TypeScript
@@ -89,7 +85,6 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getdevices"></a>
 ## getDevices
 
 ```TypeScript
@@ -111,7 +106,6 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptor
 | deviceFlag | [DeviceFlag](arkts-audio-audio-deviceflag-e.md) | 是 | 音频设备类型。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数。当获取音频设备列表成功，err为undefined，data为获取到的音频设备列表；否则为错误对象。 |
 
-<a id="getdevices-1"></a>
 ## getDevices
 
 ```TypeScript
@@ -138,7 +132,6 @@ getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>
 | --- | --- |
 | Promise&lt;AudioDeviceDescriptors&gt; | Promise对象，返回设备列表。 |
 
-<a id="getdevicessync"></a>
 ## getDevicesSync
 
 ```TypeScript
@@ -172,7 +165,6 @@ getDevicesSync(deviceFlag: DeviceFlag): AudioDeviceDescriptors
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getpreferoutputdeviceforrendererinfo"></a>
 ## getPreferOutputDeviceForRendererInfo
 
 ```TypeScript
@@ -202,7 +194,6 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo, callback: 
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by callback. |
 
-<a id="getpreferoutputdeviceforrendererinfo-1"></a>
 ## getPreferOutputDeviceForRendererInfo
 
 ```TypeScript
@@ -237,7 +228,6 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo): Promise<A
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
-<a id="getpreferredinputdeviceforcapturerinfo"></a>
 ## getPreferredInputDeviceForCapturerInfo
 
 ```TypeScript
@@ -267,7 +257,6 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo, callback
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by callback. |
 
-<a id="getpreferredinputdeviceforcapturerinfo-1"></a>
 ## getPreferredInputDeviceForCapturerInfo
 
 ```TypeScript
@@ -302,7 +291,6 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo): Promise
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
-<a id="getpreferredinputdeviceforcapturerinfosync"></a>
 ## getPreferredInputDeviceForCapturerInfoSync
 
 ```TypeScript
@@ -336,7 +324,6 @@ getPreferredInputDeviceForCapturerInfoSync(capturerInfo: AudioCapturerInfo): Aud
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getpreferredoutputdeviceforrendererinfosync"></a>
 ## getPreferredOutputDeviceForRendererInfoSync
 
 ```TypeScript
@@ -370,7 +357,6 @@ getPreferredOutputDeviceForRendererInfoSync(rendererInfo: AudioRendererInfo): Au
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="iscommunicationdeviceactive"></a>
 ## isCommunicationDeviceActive
 
 ```TypeScript
@@ -392,7 +378,6 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType, callback: Async
 | deviceType | [CommunicationDeviceType](arkts-audio-audio-communicationdevicetype-e.md) | 是 | 活跃音频设备类型。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定通信设备的激活状态成功，err为undefined，data为true表示激活，false表示未激活；否则为错误对象。 |
 
-<a id="iscommunicationdeviceactive-1"></a>
 ## isCommunicationDeviceActive
 
 ```TypeScript
@@ -419,7 +404,6 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType): Promise<boolea
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示设备已激活；返回false表示设备未激活。 |
 
-<a id="iscommunicationdeviceactivesync"></a>
 ## isCommunicationDeviceActiveSync
 
 ```TypeScript
@@ -453,7 +437,6 @@ isCommunicationDeviceActiveSync(deviceType: CommunicationDeviceType): boolean
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="ismicblockdetectionsupported"></a>
 ## isMicBlockDetectionSupported
 
 ```TypeScript
@@ -474,7 +457,6 @@ isMicBlockDetectionSupported():Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示支持；返回false表示不支持。 |
 
-<a id="off"></a>
 ## off('deviceChange')
 
 ```TypeScript
@@ -503,7 +485,6 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off-1"></a>
 ## off('availableDeviceChange')
 
 ```TypeScript
@@ -532,7 +513,6 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): voi
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off-2"></a>
 ## off('preferOutputDeviceChangeForRendererInfo')
 
 ```TypeScript
@@ -561,7 +541,6 @@ off(type: 'preferOutputDeviceChangeForRendererInfo', callback?: Callback<AudioDe
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off-3"></a>
 ## off('preferredInputDeviceChangeForCapturerInfo')
 
 ```TypeScript
@@ -590,7 +569,6 @@ off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<Audio
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off-4"></a>
 ## off('micBlockStatusChanged')
 
 ```TypeScript
@@ -619,7 +597,6 @@ off(type: 'micBlockStatusChanged', callback?: Callback<DeviceBlockStatusInfo>): 
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on"></a>
 ## on('deviceChange')
 
 ```TypeScript
@@ -649,7 +626,6 @@ on(type: 'deviceChange', deviceFlag: DeviceFlag, callback: Callback<DeviceChange
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on-1"></a>
 ## on('availableDeviceChange')
 
 ```TypeScript
@@ -679,7 +655,6 @@ on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<D
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on-2"></a>
 ## on('preferOutputDeviceChangeForRendererInfo')
 
 ```TypeScript
@@ -709,7 +684,6 @@ on(type: 'preferOutputDeviceChangeForRendererInfo', rendererInfo: AudioRendererI
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on-3"></a>
 ## on('preferredInputDeviceChangeForCapturerInfo')
 
 ```TypeScript
@@ -739,7 +713,6 @@ on(type: 'preferredInputDeviceChangeForCapturerInfo', capturerInfo: AudioCapture
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on-4"></a>
 ## on('micBlockStatusChanged')
 
 ```TypeScript
@@ -748,7 +721,7 @@ on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo>): vo
 
 监听麦克风堵塞状态变化事件。使用callback异步回调。
 
-使用此功能前，请使用[isMicBlockDetectionSupported](arkts-audio-audio-audioroutingmanager-i.md#ismicblockdetectionsupported-1)查询设备是否支持检测。应用在使用麦克风录音时，若麦克风堵塞状态发生变化，将触发该事件。目前此检测功能仅支持麦克风位于本地设备上。
+使用此功能前，请使用[isMicBlockDetectionSupported](arkts-audio-audio-audioroutingmanager-i.md#ismicblockdetectionsupported)查询设备是否支持检测。应用在使用麦克风录音时，若麦克风堵塞状态发生变化，将触发该事件。目前此检测功能仅支持麦克风位于本地设备上。
 
 **起始版本：** 13
 
@@ -770,7 +743,6 @@ on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo>): vo
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="setcommunicationdevice"></a>
 ## setCommunicationDevice
 
 ```TypeScript
@@ -781,7 +753,7 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean, cal
 
 该接口由于功能设计变化，将在后续版本废弃，不建议开发者使用。
 
-推荐使用AVSession提供的[设备切换组件](docroot://media/avsession/using-switch-call-devices.md)，实现通话设备切换。
+推荐使用AVSession提供的[设备切换组件](../../../media/avsession/using-switch-call-devices.md)，实现通话设备切换。
 
 **起始版本：** 9
 
@@ -797,7 +769,6 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean, cal
 | active | boolean | 是 | 是否设置设备为激活状态。true表示激活，false表示未激活。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置通信设备激活状态成功，err为undefined，否则为错误对象。 |
 
-<a id="setcommunicationdevice-1"></a>
 ## setCommunicationDevice
 
 ```TypeScript
@@ -808,7 +779,7 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean): Pr
 
 该接口由于功能设计变化，将在后续版本废弃，不建议开发者使用。
 
-推荐开发者使用AVSession提供的[设备切换组件](docroot://media/avsession/using-switch-call-devices.md)，实现通话设备切换。
+推荐开发者使用AVSession提供的[设备切换组件](../../../media/avsession/using-switch-call-devices.md)，实现通话设备切换。
 
 **起始版本：** 9
 

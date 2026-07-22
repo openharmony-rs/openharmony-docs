@@ -80,7 +80,7 @@ COMMON_EVENT_BATTERY_LOW = 'usual.event.BATTERY_LOW'
 
 表示电池电量低的普通事件的动作。
 
-当电池电量低于设备设置的低电量百分比值时，将会触发事件通知服务发布该系统公共事件。<!--Del-->设备设置低电量百分比值请参考[电量等级定制开发指导](docroot://../../device-dev/subsystems/subsys-power-battery-level-customization.md)。<!--DelEnd-->
+当电池电量低于设备设置的低电量百分比值时，将会触发事件通知服务发布该系统公共事件。<!--Del-->设备设置低电量百分比值请参考[电量等级定制开发指导](../../../../../device-dev/subsystems/subsys-power-battery-level-customization.md)。<!--DelEnd-->
 
 **起始版本：** 9
 
@@ -176,7 +176,7 @@ COMMON_EVENT_THERMAL_LEVEL_CHANGED = 'usual.event.THERMAL_LEVEL_CHANGED'
 
 表示设备热状态的公共事件的动作。
 
-当设备热等级变化时，将会触发事件通知服务发布该系统公共事件。<!--Del-->设备热等级配置请参考[热等级定制开发指导](docroot://../../device-dev/subsystems/subsys-thermal_level.md)。<!--DelEnd-->
+当设备热等级变化时，将会触发事件通知服务发布该系统公共事件。<!--Del-->设备热等级配置请参考[热等级定制开发指导](../../../../../device-dev/subsystems/subsys-thermal_level.md)。<!--DelEnd-->
 
 **起始版本：** 9
 
@@ -349,7 +349,6 @@ COMMON_EVENT_PACKAGE_ADDED = 'usual.event.PACKAGE_ADDED'
 表示设备上已安装新应用包的公共事件的动作。
 
 在设备上指定用户下安装了新的应用程序，将会触发事件通知服务发布该系统公共事件。
-
 > **说明：**  
 >  
 > 三方应用只能监听自身应用的安装事件。
@@ -439,7 +438,6 @@ COMMON_EVENT_PACKAGE_CHANGED = 'usual.event.PACKAGE_CHANGED'
 表示应用包已更改的公共事件的动作（例如，包中的组件已启用或禁用）。
 
 在设备上安装的应用程序包更新或者包的组件被禁用使能，将会触发事件通知服务发布该系统公共事件。
-
 > **说明：**  
 >  
 > 三方应用只能监听自身应用的更改事件。
@@ -459,7 +457,6 @@ COMMON_EVENT_PACKAGE_RESTARTED = 'usual.event.PACKAGE_RESTARTED'
 表示用户重启应用包并终止其所有进程。
 
 在设备上指定用户重启应用包并终止其所有进程，将会触发事件通知服务发布该系统公共事件。
-
 > **说明：**  
 >  
 > 三方应用只能监听自身应用的重启事件。
@@ -479,7 +476,6 @@ COMMON_EVENT_PACKAGE_DATA_CLEARED = 'usual.event.PACKAGE_DATA_CLEARED'
 表示用户清除应用包数据。
 
 在设备上指定用户清除应用包数据，将会触发事件通知服务发布该系统公共事件。
-
 > **说明：**  
 >  
 > 三方应用只能监听自身应用的数据清理事件。
@@ -499,7 +495,6 @@ COMMON_EVENT_PACKAGE_CACHE_CLEARED = 'usual.event.PACKAGE_CACHE_CLEARED'
 表示用户清除应用包缓存数据的公共事件的动作。
 
 对设备上安装的应用程序包清除缓存时，将会触发事件通知服务发布该系统公共事件。
-
 > **说明：**  
 >  
 > 三方应用只能监听自身应用的缓存清理事件。
@@ -788,7 +783,7 @@ COMMON_EVENT_USER_SWITCHED = 'usual.event.USER_SWITCHED'
 
 切换系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：activateOsAccount, 为系统API，具体参看[@ohos.account.osAccount](docroot://reference/js-apis-osAccount.md)。
+与这个公共事件相关的接口：activateOsAccount, 为系统API，具体参看[@ohos.account.osAccount](../../../reference/js-apis-osAccount.md)。
 
 要订阅此事件，在API version 21之前，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS权限；从API version 21开始，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限
 
@@ -870,7 +865,7 @@ COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN = 'common.event.DISTRIBUTED_ACCOUNT_LOGIN
 
 分布式账号登录成功时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
-与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](docroot://reference/js-apis-distributed-account.md)。
+与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
 
 **起始版本：** 9
 
@@ -890,7 +885,7 @@ COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT = 'common.event.DISTRIBUTED_ACCOUNT_LOGO
 
 分布式账号登出时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
-与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](docroot://reference/js-apis-distributed-account.md)。
+与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
 
 **起始版本：** 9
 
@@ -910,7 +905,7 @@ COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID = 'common.event.DISTRIBUTED_ACCOU
 
 分布式账号的token令牌无效时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
-与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](docroot://reference/js-apis-distributed-account.md)。
+与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
 
 **起始版本：** 9
 
@@ -930,7 +925,7 @@ COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF = 'common.event.DISTRIBUTED_ACCOUNT_LOGO
 
 分布式账号注销成功会时触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
-与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](docroot://reference/js-apis-distributed-account.md)。
+与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
 
 **起始版本：** 9
 
@@ -1207,9 +1202,7 @@ COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE =
 
 **替代接口：** [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfree_ag_connect_state_change)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1228,9 +1221,7 @@ COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE =
-        'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE =
-        'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE =        'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE =        'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1249,9 +1240,7 @@ COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE =
-        'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE =
-        'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE =        'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE =        'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1272,9 +1261,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE =
 
 **替代接口：** [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsource_connect_state_change)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1293,9 +1280,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE =        'usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE =        'usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1314,9 +1299,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE =        'usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE =        'usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1337,9 +1320,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE =
 
 **替代接口：** [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsource_avrcp_connect_state_change)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1360,9 +1341,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE =
 
 **替代接口：** [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsource_codec_value_change)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE =
-        'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE =        'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE =        'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1381,9 +1360,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED =
-        'usual.event.bluetooth.remotedevice.DISCOVERED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED =
-        'usual.event.bluetooth.remotedevice.DISCOVERED'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED =        'usual.event.bluetooth.remotedevice.DISCOVERED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED =        'usual.event.bluetooth.remotedevice.DISCOVERED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1402,9 +1379,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE =
-        'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE =
-        'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE =        'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE =        'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1423,9 +1398,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED =
 
 **替代接口：** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_acl_state_change)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED =
-        'usual.event.bluetooth.remotedevice.ACL_CONNECTED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED =
-        'usual.event.bluetooth.remotedevice.ACL_CONNECTED'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED =        'usual.event.bluetooth.remotedevice.ACL_CONNECTED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED =        'usual.event.bluetooth.remotedevice.ACL_CONNECTED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1446,9 +1419,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED =
 
 **替代接口：** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_acl_state_change)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED =
-        'usual.event.bluetooth.remotedevice.ACL_DISCONNECTED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED =
-        'usual.event.bluetooth.remotedevice.ACL_DISCONNECTED'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED =        'usual.event.bluetooth.remotedevice.ACL_DISCONNECTED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED =        'usual.event.bluetooth.remotedevice.ACL_DISCONNECTED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1467,9 +1438,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE =
-        'usual.event.bluetooth.remotedevice.NAME_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE =
-        'usual.event.bluetooth.remotedevice.NAME_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE =        'usual.event.bluetooth.remotedevice.NAME_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE =        'usual.event.bluetooth.remotedevice.NAME_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1490,9 +1459,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE =
 
 **替代接口：** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_pair_state_change)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE =
-        'usual.event.bluetooth.remotedevice.PAIR_STATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE =
-        'usual.event.bluetooth.remotedevice.PAIR_STATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE =        'usual.event.bluetooth.remotedevice.PAIR_STATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE =        'usual.event.bluetooth.remotedevice.PAIR_STATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1511,9 +1478,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE =
-        'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE =
-        'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE =        'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE =        'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1530,9 +1495,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT =
-        'usual.event.bluetooth.remotedevice.SDP_RESULT'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT =
-        'usual.event.bluetooth.remotedevice.SDP_RESULT'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT =        'usual.event.bluetooth.remotedevice.SDP_RESULT'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT =        'usual.event.bluetooth.remotedevice.SDP_RESULT'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1551,9 +1514,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE =
-        'usual.event.bluetooth.remotedevice.UUID_VALUE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE =
-        'usual.event.bluetooth.remotedevice.UUID_VALUE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE =        'usual.event.bluetooth.remotedevice.UUID_VALUE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE =        'usual.event.bluetooth.remotedevice.UUID_VALUE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1572,9 +1533,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ =
-        'usual.event.bluetooth.remotedevice.PAIRING_REQ'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ =
-        'usual.event.bluetooth.remotedevice.PAIRING_REQ'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ =        'usual.event.bluetooth.remotedevice.PAIRING_REQ'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ =        'usual.event.bluetooth.remotedevice.PAIRING_REQ'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1591,9 +1550,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL =
-        'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL =
-        'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL =        'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL =        'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1610,9 +1567,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ =
-        'usual.event.bluetooth.remotedevice.CONNECT_REQ'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ =
-        'usual.event.bluetooth.remotedevice.CONNECT_REQ'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ =        'usual.event.bluetooth.remotedevice.CONNECT_REQ'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ =        'usual.event.bluetooth.remotedevice.CONNECT_REQ'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1629,9 +1584,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY =
-        'usual.event.bluetooth.remotedevice.CONNECT_REPLY'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY =
-        'usual.event.bluetooth.remotedevice.CONNECT_REPLY'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY =        'usual.event.bluetooth.remotedevice.CONNECT_REPLY'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY =        'usual.event.bluetooth.remotedevice.CONNECT_REPLY'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1648,9 +1601,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL =
-        'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL =
-        'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL =        'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL =        'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1667,9 +1618,7 @@ COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1686,9 +1635,7 @@ COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE =
-        'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE =
-        'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE =        'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE =        'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1705,9 +1652,7 @@ COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT =
-        'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT =
-        'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT =        'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT =        'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1724,9 +1669,7 @@ COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE =
-        'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE =
-        'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE =        'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE =        'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1743,9 +1686,7 @@ COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE =
-        'usual.event.bluetooth.host.STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE =
-        'usual.event.bluetooth.host.STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE =        'usual.event.bluetooth.host.STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE =        'usual.event.bluetooth.host.STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1762,9 +1703,7 @@ COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE =
-        'usual.event.bluetooth.host.REQ_DISCOVERABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE =
-        'usual.event.bluetooth.host.REQ_DISCOVERABLE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE =        'usual.event.bluetooth.host.REQ_DISCOVERABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE =        'usual.event.bluetooth.host.REQ_DISCOVERABLE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1801,9 +1740,7 @@ COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE =
-        'usual.event.bluetooth.host.REQ_DISABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE =
-        'usual.event.bluetooth.host.REQ_DISABLE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE =        'usual.event.bluetooth.host.REQ_DISABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE =        'usual.event.bluetooth.host.REQ_DISABLE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1822,9 +1759,7 @@ COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE =
-        'usual.event.bluetooth.host.SCAN_MODE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE =
-        'usual.event.bluetooth.host.SCAN_MODE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE =        'usual.event.bluetooth.host.SCAN_MODE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE =        'usual.event.bluetooth.host.SCAN_MODE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1843,9 +1778,7 @@ COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE =
 
 **起始版本：** 23
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE =
-        'usual.event.bluetooth.host.SCAN_MODE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE =
-        'usual.event.bluetooth.host.SCAN_MODE_CHANGE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE =        'usual.event.bluetooth.host.SCAN_MODE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE =        'usual.event.bluetooth.host.SCAN_MODE_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1864,9 +1797,7 @@ COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED =
-        'usual.event.bluetooth.host.DISCOVERY_STARTED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED =
-        'usual.event.bluetooth.host.DISCOVERY_STARTED'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED =        'usual.event.bluetooth.host.DISCOVERY_STARTED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED =        'usual.event.bluetooth.host.DISCOVERY_STARTED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1885,9 +1816,7 @@ COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED =
-        'usual.event.bluetooth.host.DISCOVERY_FINISHED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED =
-        'usual.event.bluetooth.host.DISCOVERY_FINISHED'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED =        'usual.event.bluetooth.host.DISCOVERY_FINISHED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED =        'usual.event.bluetooth.host.DISCOVERY_FINISHED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1906,9 +1835,7 @@ COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE =
-        'usual.event.bluetooth.host.NAME_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE =
-        'usual.event.bluetooth.host.NAME_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE =        'usual.event.bluetooth.host.NAME_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE =        'usual.event.bluetooth.host.NAME_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1927,9 +1854,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE =        'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1948,9 +1873,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE =        'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE =        'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1969,9 +1892,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE =
 
 **废弃版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE =
-        'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE =        'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE =        'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2113,7 +2034,7 @@ COMMON_EVENT_USER_ADDED = 'usual.event.USER_ADDED'
 
 创建系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：createOsAccount、createOsAccountForDomain, 这些为系统API，具体参看[@ohos.account.osAccount](docroot://reference/js-apis-osAccount.md)。
+与这个公共事件相关的接口：createOsAccount、createOsAccountForDomain, 这些为系统API，具体参看[@ohos.account.osAccount](../../../reference/js-apis-osAccount.md)。
 
 要订阅此事件，您的应用必须具备ohos.permission.MANAGE_LOCAL_ACCOUNTS权限（该权限仅系统应用可申请）
 
@@ -2133,7 +2054,7 @@ COMMON_EVENT_USER_REMOVED = 'usual.event.USER_REMOVED'
 
 删除系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：removeOsAccount, 为系统API，具体参看[@ohos.account.osAccount](docroot://reference/js-apis-osAccount.md)。
+与这个公共事件相关的接口：removeOsAccount, 为系统API，具体参看[@ohos.account.osAccount](../../../reference/js-apis-osAccount.md)。
 
 要订阅此事件，您的应用必须具备ohos.permission.MANAGE_LOCAL_ACCOUNTS权限（该权限仅系统应用可申请）
 
@@ -2760,7 +2681,6 @@ COMMON_EVENT_QUICK_FIX_APPLY_RESULT = 'usual.event.QUICK_FIX_APPLY_RESULT'
 表示快速修复应用。
 
 在设备上指定用户快速修复应用，将会触发事件通知服务发布该系统公共事件。
-
 > **说明：**  
 >  
 > 三方应用只能监听自身应用的快速修复事件。
@@ -2797,7 +2717,7 @@ COMMON_EVENT_USER_INFO_UPDATED = 'usual.event.USER_INFO_UPDATED'
 
 分布式账号信息变更、系统账号头像信息变更、系统账号名称变更将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto, 这些为系统API，setOsAccountDistributedInfo为公共API，具体参看[系统账号接口文档](docroot://reference/js-apis-osAccount.md)、[分布式账号接口文档](docroot://reference/js-apis-distributed-account.md)。
+与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto, 这些为系统API，setOsAccountDistributedInfo为公共API，具体参看[系统账号接口文档](../../../reference/js-apis-osAccount.md)、[分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
 
 **起始版本：** 9
 
@@ -2934,7 +2854,6 @@ COMMON_EVENT_CONNECTIVITY_CHANGE = 'usual.event.CONNECTIVITY_CHANGE'
 各类网络（以太网、Wi-Fi、蜂窝等）在发生连接状态状态变化时（断开、断开中、连接中、已连接等），将会触发事件通知服务发布该系统公共事件。
 
 具体枚举值及其对应的连接状态如下表所示：
-
 > **说明**  
 > 具体枚举值及其对应的连接状态如下表所示：  
 >  
@@ -2968,9 +2887,7 @@ COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE =
 
 **起始版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE =
-        'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE =
-        'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_CHANGE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE =        'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE =        'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -3043,9 +2960,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE =
 
 **起始版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE =
-        'usual.event.bluetooth.a2dpsource.CONNECT_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE =
-        'usual.event.bluetooth.a2dpsource.CONNECT_STATE_CHANGE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE =        'usual.event.bluetooth.a2dpsource.CONNECT_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE =        'usual.event.bluetooth.a2dpsource.CONNECT_STATE_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -3064,9 +2979,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE =
 
 **起始版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE =
-        'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE =
-        'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_CHANGE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE =        'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE =        'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -3085,9 +2998,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE =
 
 **起始版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE =
-        'usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE =
-        'usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE =        'usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE =        'usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -3108,9 +3019,7 @@ COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAY_STATE_CHANGE =
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAY_STATE_CHANGE =
-        'usual.event.bluetooth.a2dpsource.PLAY_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAY_STATE_CHANGE =
-        'usual.event.bluetooth.a2dpsource.PLAY_STATE_CHANGE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAY_STATE_CHANGE =        'usual.event.bluetooth.a2dpsource.PLAY_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAY_STATE_CHANGE =        'usual.event.bluetooth.a2dpsource.PLAY_STATE_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -3131,9 +3040,7 @@ COMMON_EVENT_BLUETOOTH_SCO_CONNECT_STATE_CHANGE =
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_SCO_CONNECT_STATE_CHANGE = 
-        'usual.event.bluetooth.SCO_CONNECT_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_SCO_CONNECT_STATE_CHANGE = 
-        'usual.event.bluetooth.SCO_CONNECT_STATE_CHANGE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_SCO_CONNECT_STATE_CHANGE =         'usual.event.bluetooth.SCO_CONNECT_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_SCO_CONNECT_STATE_CHANGE =         'usual.event.bluetooth.SCO_CONNECT_STATE_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -3152,9 +3059,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE =
 
 **起始版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE = 
-        'usual.event.bluetooth.remotedevice.ACL_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE = 
-        'usual.event.bluetooth.remotedevice.ACL_STATE_CHANGE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE =         'usual.event.bluetooth.remotedevice.ACL_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE =         'usual.event.bluetooth.remotedevice.ACL_STATE_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -3173,9 +3078,7 @@ COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE =
 
 **起始版本：** 20
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE =
-        'usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE =
-        'usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE =        'usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE =        'usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

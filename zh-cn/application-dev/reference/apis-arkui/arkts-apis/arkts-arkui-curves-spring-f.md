@@ -6,7 +6,6 @@
 import { curves } from '@kit.ArkUI';
 ```
 
-<a id="spring"></a>
 ## spring
 
 ```TypeScript
@@ -14,16 +13,15 @@ function spring(velocity: number, mass: number, stiffness: number, damping: numb
 ```
 
 构造弹簧曲线对象。
-
 > **说明：**  
 >  
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.springCurve](arkts-arkui-curves-springcurve-f.md#springcurve-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.springCurve](arkts-arkui-curves-springcurve-f.md#springcurve)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [springCurve](arkts-arkui-curves-springcurve-f.md#springcurve-1)
+**替代接口：** [springCurve](arkts-arkui-curves-springcurve-f.md#springcurve)
 
 <!--Device-curves-function spring(velocity: number, mass: number, stiffness: number, damping: number): string--><!--Device-curves-function spring(velocity: number, mass: number, stiffness: number, damping: number): string-End-->
 

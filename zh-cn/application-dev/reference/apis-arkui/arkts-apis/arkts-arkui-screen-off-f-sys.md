@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -51,7 +50,6 @@ screen.off('connect');
 ```
 
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -96,7 +94,6 @@ screen.off('connect');
 ```
 
 
-<a id="off-2"></a>
 ## off
 
 ```TypeScript

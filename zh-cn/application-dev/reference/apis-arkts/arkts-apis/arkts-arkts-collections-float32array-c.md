@@ -1,7 +1,6 @@
 # Float32Array
 
 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。
-
 > **说明：**  
 >  
 > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  
@@ -21,7 +20,6 @@
 import { collections } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -50,7 +48,6 @@ import { collections } from '@kit.ArkTS';
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-<a id="at"></a>
 ## at
 
 ```TypeScript
@@ -86,7 +83,6 @@ at(index: number): number | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The at method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -109,7 +105,6 @@ constructor()
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Float32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -138,7 +133,6 @@ constructor(length: number)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Float32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-2"></a>
 ## constructor
 
 ```TypeScript
@@ -167,7 +161,6 @@ constructor(elements: Iterable<number>)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Float32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-3"></a>
 ## constructor
 
 ```TypeScript
@@ -196,7 +189,6 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Float32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-4"></a>
 ## constructor
 
 ```TypeScript
@@ -227,7 +219,6 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Float32Array's constructor cannot be directly invoked. |
 
-<a id="copywithin"></a>
 ## copyWithin
 
 ```TypeScript
@@ -265,7 +256,6 @@ copyWithin(target: number, start: number, end?: number): Float32Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The copyWithin method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -295,7 +285,6 @@ entries(): IterableIterator<[number, number]>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="every"></a>
 ## every
 
 ```TypeScript
@@ -331,7 +320,6 @@ every(predicate: TypedArrayPredicateFn<number, Float32Array>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The every method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -369,7 +357,6 @@ fill(value: number, start?: number, end?: number): Float32Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The fill method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="filter"></a>
 ## filter
 
 ```TypeScript
@@ -405,7 +392,6 @@ filter(predicate: TypedArrayPredicateFn<number, Float32Array>): Float32Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The filter method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="find"></a>
 ## find
 
 ```TypeScript
@@ -441,7 +427,6 @@ find(predicate: TypedArrayPredicateFn<number, Float32Array>): number | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The find method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="findindex"></a>
 ## findIndex
 
 ```TypeScript
@@ -477,7 +462,6 @@ findIndex(predicate: TypedArrayPredicateFn<number, Float32Array>): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The findIndex method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -507,7 +491,6 @@ forEach(callbackFn: TypedArrayForEachCallback<number, Float32Array>): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="from"></a>
 ## from
 
 ```TypeScript
@@ -536,7 +519,6 @@ static from(arrayLike: ArrayLike<number>): Float32Array
 | --- | --- |
 | Float32Array | 新创建的ArkTS Float32Array对象。 |
 
-<a id="from-1"></a>
 ## from
 
 ```TypeScript
@@ -566,7 +548,6 @@ static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): 
 | --- | --- |
 | Float32Array | 新创建的ArkTS Float32Array对象。 |
 
-<a id="from-2"></a>
 ## from
 
 ```TypeScript
@@ -596,7 +577,6 @@ static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, num
 | --- | --- |
 | Float32Array | 新创建的ArkTS Float32Array对象。 |
 
-<a id="includes"></a>
 ## includes
 
 ```TypeScript
@@ -633,7 +613,6 @@ includes(searchElement: number, fromIndex?: number): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The includes method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="indexof"></a>
 ## indexOf
 
 ```TypeScript
@@ -670,7 +649,6 @@ indexOf(searchElement: number, fromIndex?: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The indexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="join"></a>
 ## join
 
 ```TypeScript
@@ -706,7 +684,6 @@ join(separator?: string): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The join method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -736,7 +713,6 @@ keys(): IterableIterator<number>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="lastindexof"></a>
 ## lastIndexOf
 
 ```TypeScript
@@ -773,7 +749,6 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The lastIndexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="map"></a>
 ## map
 
 ```TypeScript
@@ -809,7 +784,6 @@ map(callbackFn: TypedArrayMapCallback<number, Float32Array>): Float32Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The map method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="of"></a>
 ## of
 
 ```TypeScript
@@ -838,7 +812,6 @@ static of(...items: number[]): Float32Array
 | --- | --- |
 | Float32Array | 新的ArkTS Float32Array实例。可能的原因：1.必填参数未指定；<br>2.参数类型不正确；3.参数校验失败。 |
 
-<a id="reduce"></a>
 ## reduce
 
 ```TypeScript
@@ -874,7 +847,6 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Float32Array>): numb
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduce-1"></a>
 ## reduce
 
 ```TypeScript
@@ -911,7 +883,6 @@ reduce<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Float32Array>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduceright"></a>
 ## reduceRight
 
 ```TypeScript
@@ -948,7 +919,6 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Float32A
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduceright-1"></a>
 ## reduceRight
 
 ```TypeScript
@@ -984,7 +954,6 @@ reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Float32Array>):
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reverse"></a>
 ## reverse
 
 ```TypeScript
@@ -1014,7 +983,6 @@ reverse(): Float32Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reverse method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -1045,7 +1013,6 @@ set(array: ArrayLike<number>, offset?: number): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The set method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="slice"></a>
 ## slice
 
 ```TypeScript
@@ -1082,7 +1049,6 @@ slice(start?: number, end?: number): Float32Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The slice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="some"></a>
 ## some
 
 ```TypeScript
@@ -1118,7 +1084,6 @@ some(predicate: TypedArrayPredicateFn<number, Float32Array>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The some method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="sort"></a>
 ## sort
 
 ```TypeScript
@@ -1154,7 +1119,6 @@ sort(compareFn?: TypedArrayCompareFn<number>): Float32Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The sort method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="subarray"></a>
 ## subarray
 
 ```TypeScript
@@ -1191,7 +1155,6 @@ subarray(begin?: number, end?: number): Float32Array
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The subarray method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="tolocalestring"></a>
 ## toLocaleString
 
 ```TypeScript
@@ -1221,7 +1184,6 @@ toLocaleString(): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toLocaleString method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -1251,7 +1213,6 @@ ArkTS Float32Array转换为字符串。
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toString method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="values"></a>
 ## values
 
 ```TypeScript

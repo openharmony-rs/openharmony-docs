@@ -6,20 +6,19 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="sethdcdisabled"></a>
 ## setHdcDisabled
 
 ```TypeScript
 function setHdcDisabled(admin: Want, disabled: boolean, callback: AsyncCallback<void>): void
 ```
 
-使设备禁用或启用[HDC](docroot://../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。
+使设备禁用或启用[HDC](../../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。
 
 **起始版本：** 10
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -72,7 +71,6 @@ restrictions.setHdcDisabled(wantTemp, true, (err) => {
 ```
 
 
-<a id="sethdcdisabled-1"></a>
 ## setHdcDisabled
 
 ```TypeScript
@@ -85,7 +83,7 @@ function setHdcDisabled(admin: Want, disabled: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 

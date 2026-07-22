@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getcaretoffset"></a>
 ## getCaretOffset
 
 ```TypeScript
@@ -37,7 +36,6 @@ getCaretOffset(): number
 | --- | --- |
 | number | 当前光标所在位置。 |
 
-<a id="getpreviewtext"></a>
 ## getPreviewText
 
 ```TypeScript
@@ -62,7 +60,6 @@ getPreviewText?(): PreviewText
 | --- | --- |
 | [PreviewText](arkts-arkui-previewtext-i.md) | 预上屏信息。 |
 
-<a id="isediting"></a>
 ## isEditing
 
 ```TypeScript
@@ -87,7 +84,6 @@ isEditing(): boolean
 | --- | --- |
 | boolean | true为编辑态，false为非编辑态。 |
 
-<a id="setcaretoffset"></a>
 ## setCaretOffset
 
 ```TypeScript
@@ -118,7 +114,6 @@ setCaretOffset(offset: number): boolean
 | --- | --- |
 | boolean | 光标是否设置成功。<br/>true表示光标设置成功，false表示设置失败。 |
 
-<a id="stopediting"></a>
 ## stopEditing
 
 ```TypeScript

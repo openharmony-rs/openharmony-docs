@@ -6,7 +6,6 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
-<a id="gettotalsizeofvolume"></a>
 ## getTotalSizeOfVolume
 
 ```TypeScript
@@ -70,7 +69,6 @@ volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
 ```
 
 
-<a id="gettotalsizeofvolume-1"></a>
 ## getTotalSizeOfVolume
 
 ```TypeScript

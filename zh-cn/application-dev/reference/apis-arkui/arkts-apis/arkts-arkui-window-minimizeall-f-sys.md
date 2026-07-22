@@ -6,7 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="minimizeall"></a>
 ## minimizeAll
 
 ```TypeScript
@@ -67,7 +66,6 @@ try {
 ```
 
 
-<a id="minimizeall-1"></a>
 ## minimizeAll
 
 ```TypeScript

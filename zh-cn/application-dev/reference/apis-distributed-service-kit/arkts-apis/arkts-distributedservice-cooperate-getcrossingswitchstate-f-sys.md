@@ -6,7 +6,6 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
-<a id="getcrossingswitchstate"></a>
 ## getCrossingSwitchState
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getCrossingSwitchState(networkId: string, callback: AsyncCallback<boole
 
 **废弃版本：** 11
 
-**替代接口：** [getCooperateSwitchState(networkId:](arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate-1)
+**替代接口：** [getCooperateSwitchState(networkId:](arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate)
 
 <!--Device-cooperate-function getCrossingSwitchState(networkId: string, callback: AsyncCallback<boolean>): void--><!--Device-cooperate-function getCrossingSwitchState(networkId: string, callback: AsyncCallback<boolean>): void-End-->
 
@@ -62,7 +61,6 @@ try {
 ```
 
 
-<a id="getcrossingswitchstate-1"></a>
 ## getCrossingSwitchState
 
 ```TypeScript
@@ -75,7 +73,7 @@ function getCrossingSwitchState(networkId: string): Promise<boolean>
 
 **废弃版本：** 11
 
-**替代接口：** [getCooperateSwitchState(networkId:](arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate-1)
+**替代接口：** [getCooperateSwitchState(networkId:](arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate)
 
 <!--Device-cooperate-function getCrossingSwitchState(networkId: string): Promise<boolean>--><!--Device-cooperate-function getCrossingSwitchState(networkId: string): Promise<boolean>-End-->
 

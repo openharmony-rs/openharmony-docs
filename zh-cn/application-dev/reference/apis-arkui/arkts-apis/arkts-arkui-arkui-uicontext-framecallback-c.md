@@ -1,12 +1,11 @@
 # FrameCallback
 
 用于设置下一帧渲染时需要执行的任务。
-
 > **说明：**  
 >  
-> - 以下API需要配合[UIContext](arkts-arkui-uicontext.md)中的[postFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postframecallback-1)和  
-> [postDelayedFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postdelayedframecallback-1)使用。开发者需要继承该类并重写  
-> [onFrame](arkts-arkui-arkui-uicontext-framecallback-c.md#onframe-1)或[onIdle](arkts-arkui-arkui-uicontext-framecallback-c.md#onidle-1)方法，实现具体的业务逻辑。
+> - 以下API需要配合[UIContext](arkts-arkui-uicontext.md)中的[postFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postframecallback)和  
+> [postDelayedFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postdelayedframecallback)使用。开发者需要继承该类并重写  
+> [onFrame](arkts-arkui-arkui-uicontext-framecallback-c.md#onframe)或[onIdle](arkts-arkui-arkui-uicontext-framecallback-c.md#onidle)方法，实现具体的业务逻辑。
 
 **起始版本：** 12
 
@@ -20,7 +19,6 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="onframe"></a>
 ## onFrame
 
 ```TypeScript
@@ -45,7 +43,6 @@ onFrame(frameTimeInNano: number): void
 | --- | --- | --- | --- |
 | frameTimeInNano | number | 是 | 下一帧渲染开始执行的时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
 
-<a id="onidle"></a>
 ## onIdle
 
 ```TypeScript

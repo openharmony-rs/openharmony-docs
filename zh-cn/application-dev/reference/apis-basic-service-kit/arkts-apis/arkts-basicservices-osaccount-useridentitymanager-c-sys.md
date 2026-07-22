@@ -16,7 +16,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="addcredential"></a>
 ## addCredential
 
 ```TypeScript
@@ -97,7 +96,6 @@ userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
 
 ```
 
-<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -148,7 +146,6 @@ try {
 
 ```
 
-<a id="closesession"></a>
 ## closeSession
 
 ```TypeScript
@@ -193,7 +190,6 @@ userIDM.closeSession(accountId);
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -223,7 +219,6 @@ let userIDM = new osAccount.UserIdentityManager();
 
 ```
 
-<a id="delcred"></a>
 ## delCred
 
 ```TypeScript
@@ -284,7 +279,6 @@ try {
 
 ```
 
-<a id="deluser"></a>
 ## delUser
 
 ```TypeScript
@@ -341,7 +335,6 @@ try {
 
 ```
 
-<a id="getauthinfo"></a>
 ## getAuthInfo
 
 ```TypeScript
@@ -396,7 +389,6 @@ try {
 
 ```
 
-<a id="getauthinfo-1"></a>
 ## getAuthInfo
 
 ```TypeScript
@@ -454,7 +446,6 @@ try {
 
 ```
 
-<a id="getauthinfo-2"></a>
 ## getAuthInfo
 
 ```TypeScript
@@ -514,7 +505,6 @@ try {
 
 ```
 
-<a id="getauthinfo-3"></a>
 ## getAuthInfo
 
 ```TypeScript
@@ -579,7 +569,6 @@ try {
 
 ```
 
-<a id="getenrolledid"></a>
 ## getEnrolledId
 
 ```TypeScript
@@ -645,7 +634,6 @@ try {
 
 ```
 
-<a id="offcredentialchanged"></a>
 ## offCredentialChanged
 
 ```TypeScript
@@ -713,7 +701,6 @@ try {
 
 ```
 
-<a id="oncredentialchanged"></a>
 ## onCredentialChanged
 
 ```TypeScript
@@ -776,7 +763,6 @@ try {
 
 ```
 
-<a id="opensession"></a>
 ## openSession
 
 ```TypeScript
@@ -831,7 +817,6 @@ try {
 
 ```
 
-<a id="opensession-1"></a>
 ## openSession
 
 ```TypeScript
@@ -892,7 +877,6 @@ try {
 
 ```
 
-<a id="updatecredential"></a>
 ## updateCredential
 
 ```TypeScript

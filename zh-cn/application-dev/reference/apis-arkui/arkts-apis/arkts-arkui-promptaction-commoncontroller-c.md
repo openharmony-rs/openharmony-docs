@@ -14,7 +14,6 @@
 import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -33,7 +32,6 @@ close(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -52,7 +50,6 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getstate"></a>
 ## getState
 
 ```TypeScript

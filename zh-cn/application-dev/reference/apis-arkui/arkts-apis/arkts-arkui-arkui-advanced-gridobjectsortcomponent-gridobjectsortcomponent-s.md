@@ -1,7 +1,6 @@
 # GridObjectSortComponent
 
 网格对象排序组件，用于网格对象的编辑、拖动排序、新增和删除。
-
 > **说明：**  
 >  
 > - 该组件仅可在Stage模型下使用。  
@@ -24,7 +23,6 @@
 import { GridObjectSortComponentType, GridObjectSortComponentOptions, GridObjectSortComponent, GridObjectSortComponentItem } from '@kit.ArkUI';
 ```
 
-<a id="build"></a>
 ## build
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="acceptconnect"></a>
 ## acceptConnect
 
 ```TypeScript

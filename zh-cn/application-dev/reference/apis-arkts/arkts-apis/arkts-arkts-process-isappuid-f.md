@@ -6,7 +6,6 @@
 import { process } from '@kit.ArkTS';
 ```
 
-<a id="isappuid"></a>
 ## isAppUid
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isAppUid(v: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isAppUid](arkts-arkts-process-processmanager-c.md#isappuid-1)
+**替代接口：** [isAppUid](arkts-arkts-process-processmanager-c.md#isappuid)
 
 <!--Device-process-function isAppUid(v: number): boolean--><!--Device-process-function isAppUid(v: number): boolean-End-->
 

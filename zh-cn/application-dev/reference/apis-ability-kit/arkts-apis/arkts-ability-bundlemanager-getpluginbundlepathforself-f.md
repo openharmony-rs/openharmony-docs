@@ -6,14 +6,13 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getpluginbundlepathforself"></a>
 ## getPluginBundlePathForSelf
 
 ```TypeScript
 function getPluginBundlePathForSelf(pluginBundleName: string): string
 ```
 
-获取指定插件在当前[应用沙箱](docroot://file-management/app-sandbox-directory.md)内的安装路径。
+获取指定插件在当前[应用沙箱](../../../file-management/app-sandbox-directory.md)内的安装路径。
 
 **起始版本：** 22
 

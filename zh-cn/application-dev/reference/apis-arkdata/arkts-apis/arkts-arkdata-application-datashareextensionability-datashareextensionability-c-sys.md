@@ -16,7 +16,6 @@
 import { DataShareExtensionAbility } from '@kit.ArkData';
 ```
 
-<a id="batchinsert"></a>
 ## batchInsert
 
 ```TypeScript
@@ -67,7 +66,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 
 ```
 
-<a id="batchupdate"></a>
 ## batchUpdate
 
 ```TypeScript
@@ -83,13 +81,7 @@ batchUpdate?(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-batchUpdate?(
-    operations: Record<string, Array<UpdateOperation>>,
-    callback: AsyncCallback<Record<string, Array<number>>>
-  ): void--><!--Device-DataShareExtensionAbility-batchUpdate?(
-    operations: Record<string, Array<UpdateOperation>>,
-    callback: AsyncCallback<Record<string, Array<number>>>
-  ): void-End-->
+<!--Device-DataShareExtensionAbility-batchUpdate?(    operations: Record<string, Array<UpdateOperation>>,    callback: AsyncCallback<Record<string, Array<number>>>  ): void--><!--Device-DataShareExtensionAbility-batchUpdate?(    operations: Record<string, Array<UpdateOperation>>,    callback: AsyncCallback<Record<string, Array<number>>>  ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -137,7 +129,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 
 ```
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -187,7 +178,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 
 ```
 
-<a id="denormalizeuri"></a>
 ## denormalizeUri
 
 ```TypeScript
@@ -235,7 +225,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 
 ```
 
-<a id="insert"></a>
 ## insert
 
 ```TypeScript
@@ -287,7 +276,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 
 ```
 
-<a id="normalizeuri"></a>
 ## normalizeUri
 
 ```TypeScript
@@ -335,7 +323,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 
 ```
 
-<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -394,7 +381,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 
 ```
 
-<a id="query"></a>
 ## query
 
 ```TypeScript
@@ -412,17 +398,7 @@ query?(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-query?(
-    uri: string,
-    predicates: dataSharePredicates.DataSharePredicates,
-    columns: Array<string>,
-    callback: AsyncCallback<Object>
-  ): void--><!--Device-DataShareExtensionAbility-query?(
-    uri: string,
-    predicates: dataSharePredicates.DataSharePredicates,
-    columns: Array<string>,
-    callback: AsyncCallback<Object>
-  ): void-End-->
+<!--Device-DataShareExtensionAbility-query?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    columns: Array<string>,    callback: AsyncCallback<Object>  ): void--><!--Device-DataShareExtensionAbility-query?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    columns: Array<string>,    callback: AsyncCallback<Object>  ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -463,7 +439,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 
 ```
 
-<a id="update"></a>
 ## update
 
 ```TypeScript
@@ -481,17 +456,7 @@ update?(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-update?(
-    uri: string,
-    predicates: dataSharePredicates.DataSharePredicates,
-    valueBucket: ValuesBucket,
-    callback: AsyncCallback<number>
-  ): void--><!--Device-DataShareExtensionAbility-update?(
-    uri: string,
-    predicates: dataSharePredicates.DataSharePredicates,
-    valueBucket: ValuesBucket,
-    callback: AsyncCallback<number>
-  ): void-End-->
+<!--Device-DataShareExtensionAbility-update?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    valueBucket: ValuesBucket,    callback: AsyncCallback<number>  ): void--><!--Device-DataShareExtensionAbility-update?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    valueBucket: ValuesBucket,    callback: AsyncCallback<number>  ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 

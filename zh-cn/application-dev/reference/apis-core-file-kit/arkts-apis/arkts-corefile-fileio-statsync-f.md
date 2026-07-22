@@ -1,6 +1,5 @@
 # statSync
 
-<a id="statsync"></a>
 ## statSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function statSync(path: string): Stat
 
 **废弃版本：** 9
 
-**替代接口：** [fs:statSync](arkts-corefile-file-fs-statsync-f.md#statsync-1)
+**替代接口：** [fs:statSync](arkts-corefile-fileio-statsync-f.md#statsync)
 
 <!--Device-unnamed-declare function statSync(path: string): Stat--><!--Device-unnamed-declare function statSync(path: string): Stat-End-->
 

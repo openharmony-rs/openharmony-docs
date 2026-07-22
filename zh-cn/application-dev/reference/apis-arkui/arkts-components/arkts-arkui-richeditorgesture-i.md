@@ -38,7 +38,7 @@ onClick?: Callback<ClickEvent>
 onLongPress?: Callback<GestureEvent>
 ```
 
-[GestureEvent](docroot://reference/apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent对象说明)为用户长按事件。
+[GestureEvent](../../../reference/apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent对象说明)为用户长按事件。
 
 长按完成时回调事件。
 

@@ -16,7 +16,6 @@
 import { cloudDiskManager } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -69,7 +68,6 @@ struct Index {
 
 ```
 
-<a id="getallsyncfolders"></a>
 ## getAllSyncFolders
 
 ```TypeScript

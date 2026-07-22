@@ -1,11 +1,10 @@
 # HitTestMode
 
 定义触摸测试的响应逻辑及节点阻塞规则。
-
 > **说明：**  
 >  
 > 当Stack组件中有多个节点触摸区域重叠时，如果最上层节点的子组件命中，则默认只会对显示在最上层的节点做触摸测试。此时只有给显示在最上层的节点设置  
-> [hitTestBehavior](../arkts-components/arkts-arkui-commonmethod-c.md#hittestbehavior-1)为HitTestMode.Transparent时，才能使显示在下层的节点触发触摸测试。
+> [hitTestBehavior](../arkts-components/arkts-arkui-commonmethod-c.md#hittestbehavior)为HitTestMode.Transparent时，才能使显示在下层的节点触发触摸测试。
 
 **起始版本：** 9
 

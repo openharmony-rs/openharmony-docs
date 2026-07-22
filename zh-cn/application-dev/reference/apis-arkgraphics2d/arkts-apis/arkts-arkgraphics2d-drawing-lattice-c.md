@@ -1,7 +1,6 @@
 # Lattice
 
 矩形网格对象。该对象用于将图片按照矩形网格进行划分。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 12开始支持。  
@@ -22,7 +21,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createimagelattice"></a>
 ## createImageLattice
 
 ```TypeScript
@@ -34,9 +32,7 @@ static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: n
 
 **起始版本：** 12
 
-<!--Device-Lattice-static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: number, fYCount: number,
-        fBounds?: common2D.Rect | null, fRectTypes?: Array<RectType> | null, fColors?: Array<common2D.Color> | null): Lattice--><!--Device-Lattice-static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: number, fYCount: number,
-        fBounds?: common2D.Rect | null, fRectTypes?: Array<RectType> | null, fColors?: Array<common2D.Color> | null): Lattice-End-->
+<!--Device-Lattice-static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: number, fYCount: number,        fBounds?: common2D.Rect | null, fRectTypes?: Array<RectType> | null, fColors?: Array<common2D.Color> | null): Lattice--><!--Device-Lattice-static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: number, fYCount: number,        fBounds?: common2D.Rect | null, fRectTypes?: Array<RectType> | null, fColors?: Array<common2D.Color> | null): Lattice-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -64,7 +60,6 @@ static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: n
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createimagelattice-1"></a>
 ## createImageLattice
 
 ```TypeScript
@@ -76,9 +71,7 @@ static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: n
 
 **起始版本：** 18
 
-<!--Device-Lattice-static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: number, fYCount: number,
-        fBounds?: common2D.Rect | null, fRectTypes?: Array<RectType> | null, fColors?: Array<number> | null): Lattice--><!--Device-Lattice-static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: number, fYCount: number,
-        fBounds?: common2D.Rect | null, fRectTypes?: Array<RectType> | null, fColors?: Array<number> | null): Lattice-End-->
+<!--Device-Lattice-static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: number, fYCount: number,        fBounds?: common2D.Rect | null, fRectTypes?: Array<RectType> | null, fColors?: Array<number> | null): Lattice--><!--Device-Lattice-static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: number, fYCount: number,        fBounds?: common2D.Rect | null, fRectTypes?: Array<RectType> | null, fColors?: Array<number> | null): Lattice-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

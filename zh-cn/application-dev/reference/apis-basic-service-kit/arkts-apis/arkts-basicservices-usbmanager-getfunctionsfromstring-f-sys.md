@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="getfunctionsfromstring"></a>
 ## getFunctionsFromString
 
 ```TypeScript

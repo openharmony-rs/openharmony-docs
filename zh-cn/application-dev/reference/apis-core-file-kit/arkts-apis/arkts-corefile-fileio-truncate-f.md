@@ -1,6 +1,5 @@
 # truncate
 
-<a id="truncate"></a>
 ## truncate
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function truncate(path: string, len?: number): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:truncate](arkts-corefile-file-fs-truncate-f.md#truncate-1)
+**替代接口：** [fs:truncate](arkts-corefile-fileio-truncate-f.md#truncate)
 
 <!--Device-unnamed-declare function truncate(path: string, len?: number): Promise<void>--><!--Device-unnamed-declare function truncate(path: string, len?: number): Promise<void>-End-->
 
@@ -33,7 +32,6 @@ declare function truncate(path: string, len?: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="truncate-1"></a>
 ## truncate
 
 ```TypeScript
@@ -46,7 +44,7 @@ declare function truncate(path: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:truncate](arkts-corefile-file-fs-truncate-f.md#truncate-1)
+**替代接口：** [fs:truncate](arkts-corefile-fileio-truncate-f.md#truncate)
 
 <!--Device-unnamed-declare function truncate(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function truncate(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -60,7 +58,6 @@ declare function truncate(path: string, callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
 
 
-<a id="truncate-2"></a>
 ## truncate
 
 ```TypeScript
@@ -73,7 +70,7 @@ declare function truncate(path: string, len: number, callback: AsyncCallback<voi
 
 **废弃版本：** 9
 
-**替代接口：** [fs:truncate](arkts-corefile-file-fs-truncate-f.md#truncate-1)
+**替代接口：** [fs:truncate](arkts-corefile-fileio-truncate-f.md#truncate)
 
 <!--Device-unnamed-declare function truncate(path: string, len: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function truncate(path: string, len: number, callback: AsyncCallback<void>): void-End-->
 

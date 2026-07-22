@@ -1,6 +1,6 @@
 # Matrix2D
 
-用于画布绘制[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)、[OffscreenCanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md)、[CanvasPattern](docroot://reference/apis-arkui/arkui-ts/ts-components-canvas-canvaspattern.md)和[Path2D](docroot://reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)的矩阵对象，可以对矩阵进行缩放、旋转和平移等变换。
+用于画布绘制[CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)、[OffscreenCanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md)、[CanvasPattern](../../../reference/apis-arkui/arkui-ts/ts-components-canvas-canvaspattern.md)和[Path2D](../../../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)的矩阵对象，可以对矩阵进行缩放、旋转和平移等变换。
 
 **起始版本：** 8
 
@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -29,7 +28,6 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -54,9 +52,8 @@ constructor(unit: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| unit | [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
+| unit | [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
 
-<a id="identity"></a>
 ## identity
 
 ```TypeScript
@@ -81,7 +78,6 @@ identity(): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | - 单位矩阵。 |
 
-<a id="invert"></a>
 ## invert
 
 ```TypeScript
@@ -106,7 +102,6 @@ invert(): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | - 逆矩阵结果。 |
 
-<a id="multiply"></a>
 ## multiply
 
 ```TypeScript
@@ -137,7 +132,6 @@ multiply(other?: Matrix2D): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | - 相乘结果矩阵。 |
 
-<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
@@ -150,7 +144,7 @@ rotate(rx?: number, ry?: number): Matrix2D
 
 **废弃版本：** 10
 
-**替代接口：** [rotate](arkts-arkui-matrix2d-c.md#rotate-1)
+**替代接口：** [rotate](arkts-arkui-matrix2d-c.md#rotate)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -171,7 +165,6 @@ rotate(rx?: number, ry?: number): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@form |
 
-<a id="rotate-1"></a>
 ## rotate
 
 ```TypeScript
@@ -206,7 +199,6 @@ rotate(degree: number, rx?: number, ry?: number): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@form@atomicservice |
 
-<a id="scale"></a>
 ## scale
 
 ```TypeScript
@@ -238,7 +230,6 @@ scale(sx?: number, sy?: number): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@FaAndStageModel@crossplatform |
 
-<a id="translate"></a>
 ## translate
 
 ```TypeScript

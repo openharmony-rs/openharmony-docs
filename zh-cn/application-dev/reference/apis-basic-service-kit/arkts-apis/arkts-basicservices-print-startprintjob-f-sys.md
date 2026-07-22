@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="startprintjob"></a>
 ## startPrintJob
 
 ```TypeScript
@@ -74,7 +73,6 @@ print.startPrintJob(jobInfo, (err: BusinessError) => {
 ```
 
 
-<a id="startprintjob-1"></a>
 ## startPrintJob
 
 ```TypeScript

@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -27,7 +26,6 @@ protected constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="create"></a>
 ## create
 
 ```TypeScript

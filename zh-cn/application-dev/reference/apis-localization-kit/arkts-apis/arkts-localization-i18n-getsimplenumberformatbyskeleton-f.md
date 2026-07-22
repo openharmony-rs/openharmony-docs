@@ -6,7 +6,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="getsimplenumberformatbyskeleton"></a>
 ## getSimpleNumberFormatBySkeleton
 
 ```TypeScript
@@ -43,7 +42,6 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 
-<a id="getsimplenumberformatbyskeleton-1"></a>
 ## getSimpleNumberFormatBySkeleton
 
 ```TypeScript
@@ -56,7 +54,7 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.
 
 **废弃版本：** 20
 
-**替代接口：** [getSimpleNumberFormatBySkeleton(skeleton:](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton-1)
+**替代接口：** [getSimpleNumberFormatBySkeleton(skeleton:](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

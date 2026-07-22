@@ -6,7 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="setpointersize"></a>
 ## setPointerSize
 
 ```TypeScript
@@ -70,7 +69,6 @@ struct Index {
 ```
 
 
-<a id="setpointersize-1"></a>
 ## setPointerSize
 
 ```TypeScript

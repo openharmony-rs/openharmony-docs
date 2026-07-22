@@ -6,7 +6,6 @@
 import { windowAnimationManager } from '@kit.ArkUI';
 ```
 
-<a id="setcontroller"></a>
 ## setController
 
 ```TypeScript

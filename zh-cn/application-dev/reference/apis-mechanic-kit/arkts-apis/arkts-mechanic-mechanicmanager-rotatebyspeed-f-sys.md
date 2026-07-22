@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="rotatebyspeed"></a>
 ## rotateBySpeed
 
 ```TypeScript
 function rotateBySpeed(mechId: number, speed: RotationSpeed, duration: number): Promise<Result>
 ```
 
-Rotates a mechanical device at the specified speed.
+以指定的速度旋转机械设备
 
 **起始版本：** 20
 
@@ -27,15 +26,15 @@ Rotates a mechanical device at the specified speed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device. |
-| speed | [RotationSpeed](arkts-mechanic-mechanicmanager-rotationspeed-i-sys.md) | 是 | Rotation speed. |
-| duration | number | 是 | Rotation duration. Unit: millisecond. |
+| mechId | number | 是 | 机械设备ID |
+| speed | [RotationSpeed](arkts-mechanic-mechanicmanager-rotationspeed-i-sys.md) | 是 | 旋转速度 |
+| duration | number | 是 | 执行时间 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | Promise that return the execution result. |
+| Promise&lt;Result&gt; | 返回执行结果 |
 
 **错误码：**
 

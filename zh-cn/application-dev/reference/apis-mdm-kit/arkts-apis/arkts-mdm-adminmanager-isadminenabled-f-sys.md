@@ -6,7 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="isadminenabled"></a>
 ## isAdminEnabled
 
 ```TypeScript
@@ -62,7 +61,6 @@ adminManager.isAdminEnabled(wantTemp, (err, result) => {
 ```
 
 
-<a id="isadminenabled-1"></a>
 ## isAdminEnabled
 
 ```TypeScript
@@ -120,7 +118,6 @@ adminManager.isAdminEnabled(wantTemp, 100, (err, result) => {
 ```
 
 
-<a id="isadminenabled-2"></a>
 ## isAdminEnabled
 
 ```TypeScript

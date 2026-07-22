@@ -6,7 +6,6 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="setstaticsubscriberstate"></a>
 ## setStaticSubscriberState
 
 ```TypeScript
@@ -57,7 +56,6 @@ commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
 ```
 
 
-<a id="setstaticsubscriberstate-1"></a>
 ## setStaticSubscriberState
 
 ```TypeScript
@@ -111,7 +109,6 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 ```
 
 
-<a id="setstaticsubscriberstate-2"></a>
 ## setStaticSubscriberState
 
 ```TypeScript

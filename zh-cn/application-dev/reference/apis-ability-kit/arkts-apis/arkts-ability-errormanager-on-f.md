@@ -6,7 +6,6 @@
 import { errorManager } from '@kit.AbilityKit';
 ```
 
-<a id="on"></a>
 ## on('error')
 
 ```TypeScript
@@ -76,7 +75,6 @@ try {
 ```
 
 
-<a id="on-1"></a>
 ## on('loopObserver')
 
 ```TypeScript
@@ -132,7 +130,6 @@ try {
 ```
 
 
-<a id="on-2"></a>
 ## on('unhandledRejection')
 
 ```TypeScript
@@ -190,7 +187,6 @@ let promise1 = new Promise<void>(() => {}).then(() => {
 ```
 
 
-<a id="on-3"></a>
 ## on('globalUnhandledRejectionDetected')
 
 ```TypeScript
@@ -247,7 +243,6 @@ let promise1 = new Promise<void>(() => {}).then(() => {
 ```
 
 
-<a id="on-4"></a>
 ## on('freeze')
 
 ```TypeScript
@@ -257,7 +252,6 @@ function on(type: 'freeze', observer: FreezeObserver): void
 注册应用主线程freeze监听。多次注册情况下，取最后一次注册的结果。
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
-
 > **注意**：  
 >  
 > 如果该回调函数执行时间超过1s，可能导致[AppRecovery](arkts-app-ability-apprecovery.md)功能不可用。通过解析hilog日志中的begin与Freeze  
@@ -304,7 +298,6 @@ try {
 ```
 
 
-<a id="on-5"></a>
 ## on('globalErrorOccurred')
 
 ```TypeScript

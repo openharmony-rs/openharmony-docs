@@ -2,8 +2,7 @@
 
 音频会话管理。
 
-在使用AudioSessionManager的接口之前，需先通过[getSessionManager](arkts-audio-audio-audiomanager-i.md#getsessionmanager-1)获取AudioSessionManager实例。
-
+在使用AudioSessionManager的接口之前，需先通过[getSessionManager](arkts-audio-audio-audiomanager-i.md#getsessionmanager)获取AudioSessionManager实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 12开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="activateaudiosession"></a>
 ## activateAudioSession
 
 ```TypeScript
@@ -57,14 +55,13 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise<void>
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Possible causes:1.Focus preemption failure.2.Audio server process died. |
 
-<a id="clearselectedmediainputdevice"></a>
 ## clearSelectedMediaInputDevice
 
 ```TypeScript
 clearSelectedMediaInputDevice(): Promise<void>
 ```
 
-清空通过[selectMediaInputDevice](arkts-audio-audio-audiosessionmanager-i.md#selectmediainputdevice-1)设置的媒体输入设备。使用Promise异步回调。
+清空通过[selectMediaInputDevice](arkts-audio-audio-audiosessionmanager-i.md#selectmediainputdevice)设置的媒体输入设备。使用Promise异步回调。
 
 **起始版本：** 21
 
@@ -84,7 +81,6 @@ clearSelectedMediaInputDevice(): Promise<void>
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="deactivateaudiosession"></a>
 ## deactivateAudioSession
 
 ```TypeScript
@@ -113,7 +109,6 @@ deactivateAudioSession(): Promise<void>
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Possible causes:1.The audio session is not existed or has been released.2.Audio server process died. |
 
-<a id="enablemutesuggestionwhenmixwithothers"></a>
 ## enableMuteSuggestionWhenMixWithOthers
 
 ```TypeScript
@@ -128,7 +123,7 @@ enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 
 此功能仅支持已设置[AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md)并激活模式模式为CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。并且仅在激活音频会话期间生效一次，每次激活音频会话前都必须重新启用。
 
-详细说明请参考[启用混音播放下静音建议通知](docroot://media/audio/audio-session-management.md#启用混音播放下静音建议通知)。
+详细说明请参考[启用混音播放下静音建议通知](../../../media/audio/audio-session-management.md#启用混音播放下静音建议通知)。
 
 **起始版本：** 23
 
@@ -151,7 +146,6 @@ enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Function is called without setting {@link #AudioSessionScene} or called after audio session activation. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, system internal error. |
 
-<a id="getavailabledevices"></a>
 ## getAvailableDevices
 
 ```TypeScript
@@ -185,14 +179,13 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="getbluetoothandnearlinkpreferredrecordcategory"></a>
 ## getBluetoothAndNearlinkPreferredRecordCategory
 
 ```TypeScript
 getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredRecordCategory
 ```
 
-获取通过[setBluetoothAndNearlinkPreferredRecordCategory](arkts-audio-audio-audiosessionmanager-i.md#setbluetoothandnearlinkpreferredrecordcategory-1)设置的在使用蓝牙或星闪进行录音时的设备偏好分类。
+获取通过[setBluetoothAndNearlinkPreferredRecordCategory](arkts-audio-audio-audiosessionmanager-i.md#setbluetoothandnearlinkpreferredrecordcategory)设置的在使用蓝牙或星闪进行录音时的设备偏好分类。
 
 **起始版本：** 21
 
@@ -212,14 +205,13 @@ getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredR
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="getdefaultoutputdevice"></a>
 ## getDefaultOutputDevice
 
 ```TypeScript
 getDefaultOutputDevice(): DeviceType
 ```
 
-获取通过[setDefaultOutputDevice](arkts-audio-audio-audiosessionmanager-i.md#setdefaultoutputdevice-1)设置的默认发声设备。
+获取通过[setDefaultOutputDevice](arkts-audio-audio-audiosessionmanager-i.md#setdefaultoutputdevice)设置的默认发声设备。
 
 **起始版本：** 20
 
@@ -240,14 +232,13 @@ getDefaultOutputDevice(): DeviceType
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state. Return by promise. |
 
-<a id="getselectedmediainputdevice"></a>
 ## getSelectedMediaInputDevice
 
 ```TypeScript
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 ```
 
-获得通过[selectMediaInputDevice](arkts-audio-audio-audiosessionmanager-i.md#selectmediainputdevice-1)设置的媒体输入设备。如果没有设置，返回一个deviceType属性为INVALID的设备。
+获得通过[selectMediaInputDevice](arkts-audio-audio-audiosessionmanager-i.md#selectmediainputdevice)设置的媒体输入设备。如果没有设置，返回一个deviceType属性为INVALID的设备。
 
 **起始版本：** 21
 
@@ -267,7 +258,6 @@ getSelectedMediaInputDevice(): AudioDeviceDescriptor
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="isaudiosessionactivated"></a>
 ## isAudioSessionActivated
 
 ```TypeScript
@@ -290,7 +280,6 @@ isAudioSessionActivated(): boolean
 | --- | --- |
 | boolean | 音频会话是否处于激活状态。true表示已激活，false表示已停用。 |
 
-<a id="isothermediaplaying"></a>
 ## isOtherMediaPlaying
 
 ```TypeScript
@@ -313,7 +302,6 @@ isOtherMediaPlaying(): boolean
 | --- | --- |
 | boolean | 是否有其他应用正在播放媒体类型的音频。true表示有，false表示没有。 |
 
-<a id="off"></a>
 ## off('audioSessionDeactivated')
 
 ```TypeScript
@@ -344,7 +332,6 @@ off(type: 'audioSessionDeactivated', callback?: Callback<AudioSessionDeactivated
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off-1"></a>
 ## off('audioSessionStateChanged')
 
 ```TypeScript
@@ -373,7 +360,6 @@ off(type: 'audioSessionStateChanged', callback?: Callback<AudioSessionStateChang
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="off-2"></a>
 ## off('currentOutputDeviceChanged')
 
 ```TypeScript
@@ -402,7 +388,6 @@ off(type: 'currentOutputDeviceChanged', callback?: Callback<CurrentOutputDeviceC
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="off-3"></a>
 ## off('availableDeviceChange')
 
 ```TypeScript
@@ -430,7 +415,6 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): voi
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="off-4"></a>
 ## off('currentInputDeviceChanged')
 
 ```TypeScript
@@ -458,7 +442,6 @@ off(type: 'currentInputDeviceChanged', callback?: Callback<CurrentInputDeviceCha
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="on"></a>
 ## on('audioSessionDeactivated')
 
 ```TypeScript
@@ -489,7 +472,6 @@ on(type: 'audioSessionDeactivated', callback: Callback<AudioSessionDeactivatedEv
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters unspecified.2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on-1"></a>
 ## on('audioSessionStateChanged')
 
 ```TypeScript
@@ -519,7 +501,6 @@ on(type: 'audioSessionStateChanged', callback: Callback<AudioSessionStateChanged
 | [6800102](../errorcode-audio.md#6800102-分配内存失败) | Allocate memory failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="on-2"></a>
 ## on('currentOutputDeviceChanged')
 
 ```TypeScript
@@ -549,7 +530,6 @@ on(type: 'currentOutputDeviceChanged', callback: Callback<CurrentOutputDeviceCha
 | [6800102](../errorcode-audio.md#6800102-分配内存失败) | Allocate memory failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="on-3"></a>
 ## on('availableDeviceChange')
 
 ```TypeScript
@@ -579,7 +559,6 @@ on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<D
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="on-4"></a>
 ## on('currentInputDeviceChanged')
 
 ```TypeScript
@@ -608,7 +587,6 @@ on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChang
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="selectmediainputdevice"></a>
 ## selectMediaInputDevice
 
 ```TypeScript
@@ -616,12 +594,11 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void>
 ```
 
 设置媒体输入设备。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 本接口不适用于VoIP通话录音，即[SourceType](arkts-audio-audio-sourcetype-e.md)为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。  
 >  
-> - 本接口调用前需要先调用[getAvailableDevices](arkts-audio-audio-audiosessionmanager-i.md#getavailabledevices-1)接口查询到当前可用输入设备列表，从列表中选择输入  
+> - 本接口调用前需要先调用[getAvailableDevices](arkts-audio-audio-audiosessionmanager-i.md#getavailabledevices)接口查询到当前可用输入设备列表，从列表中选择输入  
 > 设备。  
 >  
 > - 当系统中存在其他更高优先级的应用录音流时，实际使用的输入设备会跟随其他高优先级应用所选的输入设备。  
@@ -655,7 +632,6 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void>
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, for example,the selected device does not exist. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="setaudiosessionbehavior"></a>
 ## setAudioSessionBehavior
 
 ```TypeScript
@@ -663,10 +639,9 @@ setAudioSessionBehavior(behavior: number): void
 ```
 
 设置音频会话行为参数，支持多种标志位的组合使用。
-
 > **说明：**  
 >  
-> 当音频会话在激活状态时调用此接口后，必须重新调用接口[activateAudioSession](arkts-audio-audio-audiosessionmanager-i.md#activateaudiosession-1)使其生效。
+> 当音频会话在激活状态时调用此接口后，必须重新调用接口[activateAudioSession](arkts-audio-audio-audiosessionmanager-i.md#activateaudiosession)使其生效。
 
 **起始版本：** 24
 
@@ -689,7 +664,6 @@ setAudioSessionBehavior(behavior: number): void
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted in the current state. |
 
-<a id="setaudiosessionscene"></a>
 ## setAudioSessionScene
 
 ```TypeScript
@@ -718,7 +692,6 @@ setAudioSessionScene(scene: AudioSessionScene): void
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="setbluetoothandnearlinkpreferredrecordcategory"></a>
 ## setBluetoothAndNearlinkPreferredRecordCategory
 
 ```TypeScript
@@ -726,7 +699,6 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 ```
 
 设置在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 应用程序可以在蓝牙或星闪连接之前设置此分类，系统将在设备连接时优先使用蓝牙或星闪进行录音。  
@@ -762,7 +734,6 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="setcapturermutehint"></a>
 ## setCapturerMuteHint
 
 ```TypeScript
@@ -770,14 +741,13 @@ setCapturerMuteHint(mute: boolean): Promise<void>
 ```
 
 应用将当前音频会话内录音流的自身静音状态传递给系统音频模块。<!--RP1-->该接口不会触发录音流静音，当前仅在部分PC/2in1设备上用于优化设备功耗。<!--RP1End-->使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 该接口用于向系统音频模块上报当前音频会话内录音流的静音状态，不会改变录音流的实际静音状态。  
 >  
 > - 该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回错误码6800103。  
 >  
-> - 若某条录音流同时调用了流级接口[AudioCapturer.setMuteHint](arkts-audio-audio-audiocapturer-i.md#setmutehint-1)和本接口，流级接口设置优先级更高，以流级接口设置值为准。
+> - 若某条录音流同时调用了流级接口[AudioCapturer.setMuteHint](arkts-audio-audio-audiocapturer-i.md#setmutehint)和本接口，流级接口设置优先级更高，以流级接口设置值为准。
 
 **起始版本：** 24
 
@@ -805,7 +775,6 @@ setCapturerMuteHint(mute: boolean): Promise<void>
 | --- | --- |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted at current state, there is no audio capturer running. |
 
-<a id="setdefaultoutputdevice"></a>
 ## setDefaultOutputDevice
 
 ```TypeScript
@@ -813,7 +782,6 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise<void>
 ```
 
 设置默认发声设备。使用Promise方式进行异步回调。
-
 > **说明：**  
 >  
 > - 本接口适用于以下情况：当设置的[AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md)为VoIP场景时，激活AudioSession后立即生效。若  
@@ -849,7 +817,6 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise<void>
 | [6800102](../errorcode-audio.md#6800102-分配内存失败) | Allocate memory failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
-<a id="setmediaoutputdevice"></a>
 ## setMediaOutputDevice
 
 ```TypeScript
@@ -857,7 +824,6 @@ setMediaOutputDevice(deviceType: DeviceType): Promise<void>
 ```
 
 当连接其他音频外设（如蓝牙耳机或有线耳机）时，将媒体输出设备切换为内置扬声器。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 本接口仅适用于媒体播放场景，并且会作用于应用内发起的所有媒体流。  

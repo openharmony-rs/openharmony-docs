@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="getavailableids"></a>
 ## getAvailableIDs
 
 ```TypeScript
@@ -48,7 +47,6 @@ let ids: string[] = i18n.Transliterator.getAvailableIDs();
 
 ```
 
-<a id="getinstance"></a>
 ## getInstance
 
 ```TypeScript
@@ -86,7 +84,6 @@ let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-L
 
 ```
 
-<a id="transform"></a>
 ## transform
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="requestenablenotification"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -14,18 +13,17 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 ```
 
 当前应用请求通知使能。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的  
-> [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)  
+> [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification)  
 > 替代。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
-**替代接口：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)
+**替代接口：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification)
 
 <!--Device-notificationManager-function requestEnableNotification(callback: AsyncCallback<void>): void--><!--Device-notificationManager-function requestEnableNotification(callback: AsyncCallback<void>): void-End-->
 
@@ -65,7 +63,6 @@ notificationManager.requestEnableNotification(requestEnableNotificationCallback)
 ```
 
 
-<a id="requestenablenotification-1"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -73,15 +70,14 @@ function requestEnableNotification(context: UIAbilityContext, callback: AsyncCal
 ```
 
 应用需要获取用户授权才能发送通知。在通知发布前调用该接口，可以拉起通知授权弹窗，让用户选择是否允许发送通知。使用callback异步回调。
-
 > **说明：**  
 >  
 > - 仅当应用界面加载完成后（即调用  
-> [loadContent](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#loadcontent-1)成功），方可使用该接口  
+> [loadContent](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#loadcontent)成功），方可使用该接口  
 > 。  
 >  
 > - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用  
-> [openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md#opennotificationsettingswithresult-1)二次申请授权，拉起通知管理弹窗  
+> [openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md#opennotificationsettingswithresult)二次申请授权，拉起通知管理弹窗  
 > 。
 
 **起始版本：** 10
@@ -142,7 +138,6 @@ class MyAbility extends UIAbility {
 ```
 
 
-<a id="requestenablenotification-2"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -150,17 +145,16 @@ function requestEnableNotification(): Promise<void>
 ```
 
 当前应用请求通知使能。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的  
-> [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)替代。
+> [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification)替代。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
-**替代接口：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)
+**替代接口：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification)
 
 <!--Device-notificationManager-function requestEnableNotification(): Promise<void>--><!--Device-notificationManager-function requestEnableNotification(): Promise<void>-End-->
 
@@ -196,7 +190,6 @@ notificationManager.requestEnableNotification().then(() => {
 ```
 
 
-<a id="requestenablenotification-3"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -204,15 +197,14 @@ function requestEnableNotification(context: UIAbilityContext): Promise<void>
 ```
 
 应用需要获取用户授权才能发送通知。在通知发布前调用该接口，可以拉起通知授权弹窗，让用户选择是否允许发送通知。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 仅当应用界面加载完成后（即调用  
-> [loadContent](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#loadcontent-1)成功），方可使用该接口  
+> [loadContent](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#loadcontent)成功），方可使用该接口  
 > 。  
 >  
 > - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用  
-> [openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md#opennotificationsettingswithresult-1)二次申请授权，拉起通知管理弹窗  
+> [openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md#opennotificationsettingswithresult)二次申请授权，拉起通知管理弹窗  
 > 。
 
 **起始版本：** 10

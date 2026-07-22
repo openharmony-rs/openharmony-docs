@@ -6,7 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="enableselfdeviceadmin"></a>
 ## enableSelfDeviceAdmin
 
 ```TypeScript

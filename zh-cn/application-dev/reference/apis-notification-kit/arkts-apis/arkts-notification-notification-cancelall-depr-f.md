@@ -1,6 +1,5 @@
 # cancelAll
 
-<a id="cancelall"></a>
 ## cancelAll
 
 ```TypeScript
@@ -26,7 +25,6 @@ function cancelAll(callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
 
-<a id="cancelall-1"></a>
 ## cancelAll
 
 ```TypeScript

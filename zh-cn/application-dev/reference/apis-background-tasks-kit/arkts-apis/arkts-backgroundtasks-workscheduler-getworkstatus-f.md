@@ -6,7 +6,6 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="getworkstatus"></a>
 ## getWorkStatus
 
 ```TypeScript
@@ -57,7 +56,6 @@ workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkIn
 ```
 
 
-<a id="getworkstatus-1"></a>
 ## getWorkStatus
 
 ```TypeScript

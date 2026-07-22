@@ -16,7 +16,6 @@
 import { dataSharePredicates } from '@kit.ArkData';
 ```
 
-<a id="beginwrap"></a>
 ## beginWrap
 
 ```TypeScript
@@ -56,7 +55,6 @@ predicates.equalTo("NAME", "lisi")
 
 ```
 
-<a id="beginswith"></a>
 ## beginsWith
 
 ```TypeScript
@@ -98,7 +96,6 @@ predicates.beginsWith("NAME", "os");
 
 ```
 
-<a id="between"></a>
 ## between
 
 ```TypeScript
@@ -141,7 +138,6 @@ predicates.between("AGE", 10, 50);
 
 ```
 
-<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -183,7 +179,6 @@ predicates.contains("NAME", "os");
 
 ```
 
-<a id="distinct"></a>
 ## distinct
 
 ```TypeScript
@@ -218,7 +213,6 @@ predicates.equalTo("NAME", "Rose").distinct();
 
 ```
 
-<a id="endwrap"></a>
 ## endWrap
 
 ```TypeScript
@@ -258,7 +252,6 @@ predicates.equalTo("NAME", "lisi")
 
 ```
 
-<a id="endswith"></a>
 ## endsWith
 
 ```TypeScript
@@ -300,7 +293,6 @@ predicates.endsWith("NAME", "os");
 
 ```
 
-<a id="glob"></a>
 ## glob
 
 ```TypeScript
@@ -342,7 +334,6 @@ predicates.glob("NAME", "?h*g");
 
 ```
 
-<a id="greaterthan"></a>
 ## greaterThan
 
 ```TypeScript
@@ -384,7 +375,6 @@ predicates.greaterThan("AGE", 10);
 
 ```
 
-<a id="greaterthanorequalto"></a>
 ## greaterThanOrEqualTo
 
 ```TypeScript
@@ -426,7 +416,6 @@ predicates.greaterThanOrEqualTo("AGE", 10);
 
 ```
 
-<a id="groupby"></a>
 ## groupBy
 
 ```TypeScript
@@ -467,7 +456,6 @@ predicates.groupBy(["AGE", "NAME"]);
 
 ```
 
-<a id="inkeys"></a>
 ## inKeys
 
 ```TypeScript
@@ -508,7 +496,6 @@ predicates.inKeys(["Lisa", "Rose"]);
 
 ```
 
-<a id="indexedby"></a>
 ## indexedBy
 
 ```TypeScript
@@ -549,7 +536,6 @@ predicates.indexedBy("SALARY_INDEX");
 
 ```
 
-<a id="isnotnull"></a>
 ## isNotNull
 
 ```TypeScript
@@ -590,7 +576,6 @@ predicates.isNotNull("NAME");
 
 ```
 
-<a id="isnull"></a>
 ## isNull
 
 ```TypeScript
@@ -631,7 +616,6 @@ predicates.isNull("NAME");
 
 ```
 
-<a id="lessthan"></a>
 ## lessThan
 
 ```TypeScript
@@ -673,7 +657,6 @@ predicates.lessThan("AGE", 50);
 
 ```
 
-<a id="lessthanorequalto"></a>
 ## lessThanOrEqualTo
 
 ```TypeScript
@@ -715,7 +698,6 @@ predicates.lessThanOrEqualTo("AGE", 50);
 
 ```
 
-<a id="like"></a>
 ## like
 
 ```TypeScript
@@ -757,7 +739,6 @@ predicates.like("NAME", "%os%");
 
 ```
 
-<a id="notbetween"></a>
 ## notBetween
 
 ```TypeScript
@@ -800,7 +781,6 @@ predicates.notBetween("AGE", 10, 50);
 
 ```
 
-<a id="notequalto"></a>
 ## notEqualTo
 
 ```TypeScript
@@ -842,7 +822,6 @@ predicates.notEqualTo("NAME", "Rose");
 
 ```
 
-<a id="notin"></a>
 ## notIn
 
 ```TypeScript
@@ -884,7 +863,6 @@ predicates.notIn("NAME", ["Lisa", "Rose"]);
 
 ```
 
-<a id="or"></a>
 ## or
 
 ```TypeScript
@@ -921,7 +899,6 @@ predicates.equalTo("NAME", "lisi")
 
 ```
 
-<a id="prefixkey"></a>
 ## prefixKey
 
 ```TypeScript
@@ -962,7 +939,6 @@ predicates.prefixKey("NAME");
 
 ```
 
-<a id="unlike"></a>
 ## unlike
 
 ```TypeScript

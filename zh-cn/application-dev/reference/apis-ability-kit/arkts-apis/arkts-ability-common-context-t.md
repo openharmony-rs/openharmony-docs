@@ -4,7 +4,7 @@
 export type Context = _Context.default
 ```
 
-[Stage模型](docroot://application-models/ability-terminology.md#stage模型)的上下文基类。
+[Stage模型](../../../application-models/ability-terminology.md#stage模型)的上下文基类。
 
 **起始版本：** 9
 

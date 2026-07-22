@@ -1,6 +1,5 @@
 # setVideo（系统接口）
 
-<a id="setvideo"></a>
 ## setVideo
 
 ```TypeScript
@@ -57,7 +56,6 @@ try {
 ```
 
 
-<a id="setvideo-1"></a>
 ## setVideo
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
-<a id="getalluninstalledbundleresourceinfo"></a>
 ## getAllUninstalledBundleResourceInfo
 
 ```TypeScript

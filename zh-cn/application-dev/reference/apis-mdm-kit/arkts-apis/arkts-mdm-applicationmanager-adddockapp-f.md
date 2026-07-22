@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="adddockapp"></a>
 ## addDockApp
 
 ```TypeScript
@@ -14,7 +13,6 @@ function addDockApp(admin: Want, bundleName: string, abilityName: string, index?
 ```
 
 根据位置索引添加应用到PC/2in1设备的底部快捷栏，添加后用户可以通过点击快捷栏的应用图标直接启动应用，应用图标为应用在桌面上显示的默认图标。
-
 > **说明：**  
 >  
 > 1.若位置0或1上已存在“应用中心”或“任务中心”，则尝试向该位置添加应用会返回错误码9201019；若该位置为其他应用，则可正常添加。  

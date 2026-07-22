@@ -6,7 +6,6 @@
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -59,7 +58,6 @@ try {
 ```
 
 
-<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -113,7 +111,6 @@ try {
 ```
 
 
-<a id="get-2"></a>
 ## get
 
 ```TypeScript

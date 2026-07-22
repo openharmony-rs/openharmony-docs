@@ -1,6 +1,5 @@
 # getMissionSnapShot（系统接口）
 
-<a id="getmissionsnapshot"></a>
 ## getMissionSnapShot
 
 ```TypeScript
@@ -54,7 +53,6 @@ try {
 ```
 
 
-<a id="getmissionsnapshot-1"></a>
 ## getMissionSnapShot
 
 ```TypeScript

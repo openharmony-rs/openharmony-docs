@@ -1,7 +1,6 @@
 # DataChangeListener
 
 数据变化监听器。
-
 > **说明：**  
 >  
 > DataChangeListener除onDatasetChange以外的方法中，当参数包含index且值为负数时，会默认用0来替换。onDatasetChange中，当单个DataOperation参数包含index且值在数据源  
@@ -13,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="ondataadd"></a>
 ## onDataAdd
 
 ```TypeScript
@@ -36,7 +34,6 @@ onDataAdd(index: number): void
 | --- | --- | --- | --- |
 | index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-<a id="ondataadded"></a>
 ## onDataAdded
 
 ```TypeScript
@@ -44,14 +41,13 @@ onDataAdded(index: number): void
 ```
 
 通知组件index的位置有数据添加。添加数据完成后调用。
-
 > **说明：**
 
 **起始版本：** 7
 
 **废弃版本：** 8
 
-**替代接口：** [onDataAdd](arkts-arkui-datachangelistener-i.md#ondataadd-1)
+**替代接口：** [onDataAdd](arkts-arkui-datachangelistener-i.md#ondataadd)
 
 <!--Device-DataChangeListener-onDataAdded(index: number): void--><!--Device-DataChangeListener-onDataAdded(index: number): void-End-->
 
@@ -63,7 +59,6 @@ onDataAdded(index: number): void
 | --- | --- | --- | --- |
 | index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-<a id="ondatachange"></a>
 ## onDataChange
 
 ```TypeScript
@@ -86,7 +81,6 @@ onDataChange(index: number): void
 | --- | --- | --- | --- |
 | index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-<a id="ondatachanged"></a>
 ## onDataChanged
 
 ```TypeScript
@@ -94,14 +88,13 @@ onDataChanged(index: number): void
 ```
 
 通知组件index的位置有数据变化。改变数据完成后调用。
-
 > **说明：**
 
 **起始版本：** 7
 
 **废弃版本：** 8
 
-**替代接口：** [onDataChange](arkts-arkui-datachangelistener-i.md#ondatachange-1)
+**替代接口：** [onDataChange](arkts-arkui-datachangelistener-i.md#ondatachange)
 
 <!--Device-DataChangeListener-onDataChanged(index: number): void--><!--Device-DataChangeListener-onDataChanged(index: number): void-End-->
 
@@ -113,7 +106,6 @@ onDataChanged(index: number): void
 | --- | --- | --- | --- |
 | index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-<a id="ondatadelete"></a>
 ## onDataDelete
 
 ```TypeScript
@@ -121,7 +113,6 @@ onDataDelete(index: number): void
 ```
 
 通知组件删除index位置的数据并刷新LazyForEach的展示内容。删除数据完成后调用。
-
 > **说明：**  
 >  
 > 需要保证dataSource中的对应数据已经在调用onDataDelete前删除，否则页面渲染将出现未定义的行为。
@@ -140,7 +131,6 @@ onDataDelete(index: number): void
 | --- | --- | --- | --- |
 | index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-<a id="ondatadeleted"></a>
 ## onDataDeleted
 
 ```TypeScript
@@ -148,14 +138,13 @@ onDataDeleted(index: number): void
 ```
 
 通知组件删除index位置的数据并刷新LazyForEach的展示内容。删除数据完成后调用。
-
 > **说明：**
 
 **起始版本：** 7
 
 **废弃版本：** 8
 
-**替代接口：** [onDataDelete](arkts-arkui-datachangelistener-i.md#ondatadelete-1)
+**替代接口：** [onDataDelete](arkts-arkui-datachangelistener-i.md#ondatadelete)
 
 <!--Device-DataChangeListener-onDataDeleted(index: number): void--><!--Device-DataChangeListener-onDataDeleted(index: number): void-End-->
 
@@ -167,7 +156,6 @@ onDataDeleted(index: number): void
 | --- | --- | --- | --- |
 | index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-<a id="ondatamove"></a>
 ## onDataMove
 
 ```TypeScript
@@ -175,7 +163,6 @@ onDataMove(from: number, to: number): void
 ```
 
 通知组件数据有移动。将from和to位置的数据进行交换。数据移动起始位置与数据移动目标位置交换完成后调用。
-
 > **说明：**  
 >  
 > 数据移动前后键值要保持不变，如果键值有变化，应使用删除数据和新增数据接口。
@@ -195,7 +182,6 @@ onDataMove(from: number, to: number): void
 | from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 | to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-<a id="ondatamoved"></a>
 ## onDataMoved
 
 ```TypeScript
@@ -203,7 +189,6 @@ onDataMoved(from: number, to: number): void
 ```
 
 通知组件数据有移动。将from和to位置的数据进行交换。
-
 > **说明：**  
 >  
 > -  
@@ -214,7 +199,7 @@ onDataMoved(from: number, to: number): void
 
 **废弃版本：** 8
 
-**替代接口：** [onDataMove](arkts-arkui-datachangelistener-i.md#ondatamove-1)
+**替代接口：** [onDataMove](arkts-arkui-datachangelistener-i.md#ondatamove)
 
 <!--Device-DataChangeListener-onDataMoved(from: number, to: number): void--><!--Device-DataChangeListener-onDataMoved(from: number, to: number): void-End-->
 
@@ -227,7 +212,6 @@ onDataMoved(from: number, to: number): void
 | from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 | to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。<br/>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-<a id="ondatareloaded"></a>
 ## onDataReloaded
 
 ```TypeScript
@@ -244,7 +228,6 @@ onDataReloaded(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="ondatasetchange"></a>
 ## onDatasetChange
 
 ```TypeScript
@@ -252,7 +235,6 @@ onDatasetChange(dataOperations: DataOperation[]): void
 ```
 
 进行批量的数据处理后，调用onDatasetChange接口通知组件按照dataOperations刷新组件。
-
 > **说明：**  
 >  
 > onDatasetChange接口不能与其他DataChangeListener的更新接口混用。例如，在同一个LazyForEach中，调用过onDataAdd接口后，不能再调用onDatasetChange接口；反之，调用过  

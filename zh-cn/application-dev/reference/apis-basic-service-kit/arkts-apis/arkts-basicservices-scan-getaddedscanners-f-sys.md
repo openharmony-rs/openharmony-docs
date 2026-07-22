@@ -6,7 +6,6 @@
 import { scan } from '@kit.BasicServicesKit';
 ```
 
-<a id="getaddedscanners"></a>
 ## getAddedScanners
 
 ```TypeScript

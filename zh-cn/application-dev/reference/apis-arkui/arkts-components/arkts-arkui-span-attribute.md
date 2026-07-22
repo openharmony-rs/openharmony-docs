@@ -2,7 +2,7 @@
 
 属性继承自[BaseSpan](arkts-arkui-basespan-c.md)。
 
-通用事件支持[点击事件onClick](arkts-arkui-commonmethod-c.md#onclick-1)、[悬浮事件onHover](arkts-arkui-commonmethod-c.md#onhover-1)。
+通用事件支持[点击事件onClick](arkts-arkui-commonmethod-c.md#onclick)、[悬浮事件onHover](arkts-arkui-commonmethod-c.md#onhover)。
 
 **继承/实现关系：** SpanAttribute extends [BaseSpan<SpanAttribute>](BaseSpan<SpanAttribute>)
 
@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="decoration"></a>
 ## decoration
 
 ```TypeScript
@@ -37,7 +36,6 @@ decoration(value: DecorationStyleInterface)
 | --- | --- | --- | --- |
 | value | [DecorationStyleInterface](../arkts-apis/arkts-arkui-decorationstyleinterface-i.md) | 是 | 文本装饰线样式对象。<br/>默认值：<br/>{<br/> type: TextDecorationType.None,<br/> color: Color.Black,<br/> style: TextDecorationStyle.SOLID <br/>}<br/>**说明：** <br/>style参数不支持卡片能力。<br>**起始版本：** 12 |
 
-<a id="font"></a>
 ## font
 
 ```TypeScript
@@ -62,7 +60,6 @@ font(value: Font)
 | --- | --- | --- | --- |
 | value | [Font](../arkts-apis/arkts-arkui-arkui-uicontext-font-c.md) | 是 | 文本样式。 |
 
-<a id="font-1"></a>
 ## font
 
 ```TypeScript
@@ -86,9 +83,8 @@ font(value: Font, fontConfigs?: FontConfigs)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [Font](../arkts-apis/arkts-arkui-arkui-uicontext-font-c.md) | 是 | 文本样式，包括字体大小、字体粗细、字体族和字体风格。 |
-| fontConfigs | [FontConfigs](../arkts-apis/arkts-arkui-fontconfigs-i.md) | 否 | 字体配置。默认值继承[FontConfigs](docroot://reference/apis-arkui/arkui-ts/ts-text-common.md#fontconfigs24对象说明)。 |
+| fontConfigs | [FontConfigs](../arkts-apis/arkts-arkui-fontconfigs-i.md) | 否 | 字体配置。默认值继承[FontConfigs](../../../reference/apis-arkui/arkui-ts/ts-text-common.md#fontconfigs24对象说明)。 |
 
-<a id="fontcolor"></a>
 ## fontColor
 
 ```TypeScript
@@ -113,7 +109,6 @@ fontColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 字体颜色。<br/>默认值：'#e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' |
 
-<a id="fontfamily"></a>
 ## fontFamily
 
 ```TypeScript
@@ -138,7 +133,6 @@ fontFamily(value: string | Resource)
 | --- | --- | --- | --- |
 | value | string \| Resource | 是 | 字体列表。<br>默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。 |
 
-<a id="fontsize"></a>
 ## fontSize
 
 ```TypeScript
@@ -163,7 +157,6 @@ fontSize(value: number | string | Resource)
 | --- | --- | --- | --- |
 | value | number \| string \| Resource | 是 | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"，不支持设置百分比字符串。<br/>Wearable设备上默认值为：15fp |
 
-<a id="fontstyle"></a>
 ## fontStyle
 
 ```TypeScript
@@ -188,7 +181,6 @@ fontStyle(value: FontStyle)
 | --- | --- | --- | --- |
 | value | [FontStyle](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontstyle-e.md) | 是 | 字体样式。<br/>默认值：FontStyle.Normal |
 
-<a id="fontvariations"></a>
 ## fontVariations
 
 ```TypeScript
@@ -213,7 +205,6 @@ fontVariations(fontVariations: Array<FontVariation>)
 | --- | --- | --- | --- |
 | fontVariations | Array&lt;FontVariation&gt; | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。fontVariations属性的优先级高于[fontWeight](SpanAttribute#fontWeight(weight: number \| FontWeight \| ResourceStr, fontWeightConfigs?: FontWeightConfigs))。 |
 
-<a id="fontweight"></a>
 ## fontWeight
 
 ```TypeScript
@@ -238,7 +229,6 @@ fontWeight(value: number | FontWeight | ResourceStr)
 | --- | --- | --- | --- |
 | value | number \| FontWeight \| ResourceStr | 是 | 文本的字体粗细，number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)类型。<br>**起始版本：** 20 |
 
-<a id="fontweight-1"></a>
 ## fontWeight
 
 ```TypeScript
@@ -264,9 +254,8 @@ fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | weight | number \| FontWeight \| ResourceStr | 是 | 文本的字体粗细，number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal |
-| fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | 否 | 字体粗细配置。默认值继承[FontWeightConfigs](docroot://reference/apis-arkui/arkui-ts/ts-text-common.md#fontweightconfigs24对象说明)。 |
+| fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | 否 | 字体粗细配置。默认值继承[FontWeightConfigs](../../../reference/apis-arkui/arkui-ts/ts-text-common.md#fontweightconfigs24对象说明)。 |
 
-<a id="letterspacing"></a>
 ## letterSpacing
 
 ```TypeScript
@@ -289,9 +278,8 @@ letterSpacing(value: number | ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number \| ResourceStr | 是 | 文本字符间距。<br/>单位：[fp](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>从API version 20开始，支持[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)类型。<br>**起始版本：** 20 |
+| value | number \| ResourceStr | 是 | 文本字符间距。<br/>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>从API version 20开始，支持[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)类型。<br>**起始版本：** 20 |
 
-<a id="lineheight"></a>
 ## lineHeight
 
 ```TypeScript
@@ -316,7 +304,6 @@ lineHeight(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 文本行高。 <br/> number类型时单位为fp。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。 |
 
-<a id="textcase"></a>
 ## textCase
 
 ```TypeScript
@@ -341,7 +328,6 @@ textCase(value: TextCase)
 | --- | --- | --- | --- |
 | value | [TextCase](../arkts-apis/arkts-arkui-textcase-e.md) | 是 | 文本大小写。<br/>默认值：TextCase.Normal |
 
-<a id="textshadow"></a>
 ## textShadow
 
 ```TypeScript

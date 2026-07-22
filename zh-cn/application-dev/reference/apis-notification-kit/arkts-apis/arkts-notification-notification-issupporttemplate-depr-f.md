@@ -1,6 +1,5 @@
 # isSupportTemplate
 
-<a id="issupporttemplate"></a>
 ## isSupportTemplate
 
 ```TypeScript
@@ -27,7 +26,6 @@ function isSupportTemplate(templateName: string, callback: AsyncCallback<boolean
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 查询模板是否存在的回调函数。 |
 
 
-<a id="issupporttemplate-1"></a>
 ## isSupportTemplate
 
 ```TypeScript

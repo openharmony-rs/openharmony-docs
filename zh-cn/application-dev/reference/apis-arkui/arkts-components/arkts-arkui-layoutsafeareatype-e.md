@@ -14,7 +14,7 @@
 SYSTEM = 0
 ```
 
-设置后，组件的布局范围可扩展至组件级安全区([safeAreaPadding](arkts-arkui-commonmethod-c.md#safeareapadding-1))和页面级安全区（状态栏、导航栏、挖孔区）。
+设置后，组件的布局范围可扩展至组件级安全区([safeAreaPadding](arkts-arkui-commonmethod-c.md#safeareapadding))和页面级安全区（状态栏、导航栏、挖孔区）。
 
 **起始版本：** 12
 

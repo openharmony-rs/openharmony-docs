@@ -6,14 +6,13 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
-<a id="setotaupdatepolicy"></a>
 ## setOtaUpdatePolicy
 
 ```TypeScript
 function setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 ```
 
-设置升级策略。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](arkts-mdm-systemmanager-notifyupdatepackages-f.md#notifyupdatepackages-1)接口通知系统更新包，再调用该接口设置升级策略。
+设置升级策略。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](arkts-mdm-systemmanager-notifyupdatepackages-f.md#notifyupdatepackages)接口通知系统更新包，再调用该接口设置升级策略。
 
 **起始版本：** 12
 

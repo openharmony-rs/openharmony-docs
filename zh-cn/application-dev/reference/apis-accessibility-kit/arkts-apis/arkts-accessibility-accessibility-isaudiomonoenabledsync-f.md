@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="isaudiomonoenabledsync"></a>
 ## isAudioMonoEnabledSync
 
 ```TypeScript

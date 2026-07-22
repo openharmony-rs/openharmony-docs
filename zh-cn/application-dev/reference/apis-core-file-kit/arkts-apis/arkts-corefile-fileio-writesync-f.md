@@ -1,6 +1,5 @@
 # writeSync
 
-<a id="writesync"></a>
 ## writeSync
 
 ```TypeScript
@@ -22,27 +21,9 @@ declare function writeSync(
 
 **废弃版本：** 9
 
-**替代接口：** [fs:writeSync](arkts-corefile-file-fs-writesync-f.md#writesync-1)
+**替代接口：** [fs:writeSync](arkts-corefile-fileio-writesync-f.md#writesync)
 
-<!--Device-unnamed-declare function writeSync(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options?: {
-    offset?: number;
-    length?: number;
-    position?: number;
-    encoding?: string;
-  }
-): number--><!--Device-unnamed-declare function writeSync(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options?: {
-    offset?: number;
-    length?: number;
-    position?: number;
-    encoding?: string;
-  }
-): number-End-->
+<!--Device-unnamed-declare function writeSync(  fd: number,  buffer: ArrayBuffer | string,  options?: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  }): number--><!--Device-unnamed-declare function writeSync(  fd: number,  buffer: ArrayBuffer | string,  options?: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  }): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

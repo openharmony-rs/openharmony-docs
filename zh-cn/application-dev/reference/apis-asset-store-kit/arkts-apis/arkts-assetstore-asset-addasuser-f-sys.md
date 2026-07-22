@@ -6,7 +6,6 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
-<a id="addasuser"></a>
 ## addAsUser
 
 ```TypeScript
@@ -46,7 +45,7 @@ function addAsUser(userId: number, attributes: AssetMap): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The caller doesn't have the permission. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 | [24000003](../errorcode-asset.md#24000003-关键资产已存在) | The asset already exists. |
 | [24000005](../errorcode-asset.md#24000005-锁屏状态不匹配) | The screen lock status does not match. |

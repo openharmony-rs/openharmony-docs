@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="getcameratrackingenabled"></a>
 ## getCameraTrackingEnabled
 
 ```TypeScript
 function getCameraTrackingEnabled(): boolean
 ```
 
-Checks whether camera tracking is enabled for this mechanical device.
+获取相机跟踪状态
 
 **起始版本：** 20
 
@@ -25,7 +24,7 @@ Checks whether camera tracking is enabled for this mechanical device.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Enabled status. The value true means that camera tracking is enabled, and false means the opposite. |
+| boolean | 返回是否启用摄像机跟踪 |
 
 **错误码：**
 

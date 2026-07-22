@@ -14,7 +14,6 @@
 import { ArcSwiperAttribute, ArcSwiper, ArcDirection, ArcSwiperController, ArcDotIndicator } from '@kit.ArkUI';
 ```
 
-<a id="arcdirection"></a>
 ## arcDirection
 
 ```TypeScript
@@ -43,7 +42,6 @@ arcDirection(direction: Optional<ArcDirection>): ArcDotIndicator
 | --- | --- |
 | [ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) | 提供弧形圆点指示器属性及功能。 |
 
-<a id="backgroundcolor"></a>
 ## backgroundColor
 
 ```TypeScript
@@ -72,7 +70,6 @@ backgroundColor(color: Optional<ResourceColor>): ArcDotIndicator
 | --- | --- |
 | [ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) | 提供弧形圆点指示器属性及功能。 |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -89,7 +86,6 @@ ArcDotIndicator的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-<a id="itemcolor"></a>
 ## itemColor
 
 ```TypeScript
@@ -118,7 +114,6 @@ itemColor(color: Optional<ResourceColor>): ArcDotIndicator
 | --- | --- |
 | [ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) | 提供弧形圆点指示器属性及功能。 |
 
-<a id="maskcolor"></a>
 ## maskColor
 
 ```TypeScript
@@ -147,7 +142,6 @@ maskColor(color: Optional<LinearGradient>): ArcDotIndicator
 | --- | --- |
 | [ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) | 提供弧形圆点指示器属性及功能。 |
 
-<a id="selecteditemcolor"></a>
 ## selectedItemColor
 
 ```TypeScript

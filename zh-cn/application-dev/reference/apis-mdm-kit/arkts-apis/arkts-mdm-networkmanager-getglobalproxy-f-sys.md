@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="getglobalproxy"></a>
 ## getGlobalProxy
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getGlobalProxy(admin: Want, callback: AsyncCallback<connection.HttpProx
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md#getglobalproxysync-1)
+**替代接口：** [getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md#getglobalproxysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -71,7 +70,6 @@ networkManager.getGlobalProxy(wantTemp, (err, result) => {
 ```
 
 
-<a id="getglobalproxy-1"></a>
 ## getGlobalProxy
 
 ```TypeScript
@@ -84,7 +82,7 @@ function getGlobalProxy(admin: Want): Promise<connection.HttpProxy>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md#getglobalproxysync-1)
+**替代接口：** [getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md#getglobalproxysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 

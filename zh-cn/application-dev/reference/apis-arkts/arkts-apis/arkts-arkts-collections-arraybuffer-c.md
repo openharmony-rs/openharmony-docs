@@ -1,7 +1,6 @@
 # ArrayBuffer
 
 ArkTS TypedArray（[Int8Array](arkts-collections.md)、[Uint8Array](arkts-collections.md)、[Int16Array](arkts-collections.md)、[Uint16Array](arkts-collections.md)、[Int32Array](arkts-collections.md)、[Uint32Array](arkts-collections.md)、[Uint8ClampedArray](arkts-collections.md)、[Float32Array](arkts-collections.md)）的底层数据结构。
-
 > **说明**  
 >  
 > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  
@@ -21,7 +20,6 @@ ArkTS TypedArray（[Int8Array](arkts-collections.md)、[Uint8Array](arkts-collec
 import { collections } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -50,7 +48,6 @@ constructor(byteLength: number)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The ArrayBuffer's constructor cannot be directly invoked. |
 
-<a id="slice"></a>
 ## slice
 
 ```TypeScript

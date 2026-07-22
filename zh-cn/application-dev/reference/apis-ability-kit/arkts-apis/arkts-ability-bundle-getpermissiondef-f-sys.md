@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getpermissiondef"></a>
 ## getPermissionDef
 
 ```TypeScript
@@ -37,7 +36,6 @@ function getPermissionDef(permissionName: string, callback: AsyncCallback<Permis
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PermissionDef&gt; | 是 | 程序启动作为入参的回调函数，返回定义的权限信息。 |
 
 
-<a id="getpermissiondef-1"></a>
 ## getPermissionDef
 
 ```TypeScript

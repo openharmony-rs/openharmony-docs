@@ -2,12 +2,11 @@
 
 OffscreenCanvas组件用于绘制自定义图形。
 
-使用[Canvas](docroot://reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件或[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)对象时，渲染、动画和用户交互通常发生在应用程序的主线程上，与画布动画和渲染相关的计算可能会影响应用程序性能。OffscreenCanvas提供了一个可以在屏幕外渲染的画布，这样可以在单独的线程中运行一些任务，从而避免影响应用程序主线程性能。
-
+使用[Canvas](../../../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件或[CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)对象时，渲染、动画和用户交互通常发生在应用程序的主线程上，与画布动画和渲染相关的计算可能会影响应用程序性能。OffscreenCanvas提供了一个可以在屏幕外渲染的画布，这样可以在单独的线程中运行一些任务，从而避免影响应用程序主线程性能。
 > **说明：**  
 >  
 > OffscreenCanvas无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用  
-> [Drawing模块](docroot://reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)  
+> [Drawing模块](../../../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)  
 > 进行离屏绘制。
 
 ## 子组件
@@ -20,7 +19,6 @@ OffscreenCanvas组件用于绘制自定义图形。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -46,7 +44,6 @@ constructor(width: number, height: number)
 | width | number | 是 | OffscreenCanvas组件的宽度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
 | height | number | 是 | OffscreenCanvas组件的高度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -73,9 +70,8 @@ constructor(width: number, height: number, unit: LengthMetricsUnit)
 | --- | --- | --- | --- |
 | width | number | 是 | OffscreenCanvas组件的宽度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
 | height | number | 是 | OffscreenCanvas组件的高度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
-| unit | [LengthMetricsUnit](../arkts-apis/arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置OffscreenCanvas对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。 |
+| unit | [LengthMetricsUnit](../arkts-apis/arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置OffscreenCanvas对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。 |
 
-<a id="getcontext"></a>
 ## getContext
 
 ```TypeScript
@@ -107,7 +103,6 @@ getContext(contextType: "2d", options?: RenderingContextSettings): OffscreenCanv
 | --- | --- |
 | [OffscreenCanvasRenderingContext2D](arkts-arkui-offscreencanvasrenderingcontext2d-c.md) | OffscreenCanvas组件的绘图上下文。如果getContext方法的入参contextType为"2d"以外类型（包括null或者undefined），返回undefined，使用前应判断返回值是否为undefined。 |
 
-<a id="transfertoimagebitmap"></a>
 ## transferToImageBitmap
 
 ```TypeScript

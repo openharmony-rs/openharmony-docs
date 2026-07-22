@@ -1,6 +1,5 @@
 # setWallpaper
 
-<a id="setwallpaper"></a>
 ## setWallpaper
 
 ```TypeScript
@@ -19,15 +18,7 @@ function setWallpaper(
 
 **需要权限：** ohos.permission.SET_WALLPAPER
 
-<!--Device-wallpaper-function setWallpaper(
-    source: string | image.PixelMap,
-    wallpaperType: WallpaperType,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-wallpaper-function setWallpaper(
-    source: string | image.PixelMap,
-    wallpaperType: WallpaperType,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-wallpaper-function setWallpaper(    source: string | image.PixelMap,    wallpaperType: WallpaperType,    callback: AsyncCallback<void>  ): void--><!--Device-wallpaper-function setWallpaper(    source: string | image.PixelMap,    wallpaperType: WallpaperType,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
 
@@ -78,7 +69,6 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 ```
 
 
-<a id="setwallpaper-1"></a>
 ## setWallpaper
 
 ```TypeScript

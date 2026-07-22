@@ -6,7 +6,6 @@
 import { LazyDynamicLayoutAttribute, LazyDynamicLayout } from '@kit.ArkUI';
 ```
 
-<a id="lazydynamiclayout"></a>
 ## LazyDynamicLayout
 
 ```TypeScript

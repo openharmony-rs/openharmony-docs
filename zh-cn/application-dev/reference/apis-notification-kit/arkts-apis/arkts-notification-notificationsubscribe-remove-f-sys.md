@@ -6,7 +6,6 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -24,17 +23,7 @@ function remove(
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notificationSubscribe-function remove(
-    bundle: BundleOption,
-    notificationKey: NotificationKey,
-    reason: RemoveReason,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-notificationSubscribe-function remove(
-    bundle: BundleOption,
-    notificationKey: NotificationKey,
-    reason: RemoveReason,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-notificationSubscribe-function remove(    bundle: BundleOption,    notificationKey: NotificationKey,    reason: RemoveReason,    callback: AsyncCallback<void>  ): void--><!--Device-notificationSubscribe-function remove(    bundle: BundleOption,    notificationKey: NotificationKey,    reason: RemoveReason,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -88,7 +77,6 @@ notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
 ```
 
 
-<a id="remove-1"></a>
 ## remove
 
 ```TypeScript
@@ -157,7 +145,6 @@ notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
 ```
 
 
-<a id="remove-2"></a>
 ## remove
 
 ```TypeScript
@@ -180,7 +167,7 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCode | string | 是 | 通知唯一ID。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
+| hashCode | string | 是 | 通知唯一ID。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscribe-subscribecallbackdata-t-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
@@ -215,7 +202,6 @@ notificationSubscribe.remove(hashCode, reason, removeCallback);
 ```
 
 
-<a id="remove-3"></a>
 ## remove
 
 ```TypeScript
@@ -238,7 +224,7 @@ function remove(hashCodes: Array<String>, reason: RemoveReason, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
+| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscribe-subscribecallbackdata-t-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
@@ -272,7 +258,6 @@ notificationSubscribe.remove(hashCodes, reason, removeCallback);
 ```
 
 
-<a id="remove-4"></a>
 ## remove
 
 ```TypeScript
@@ -295,7 +280,7 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCode | string | 是 | 通知唯一ID。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
+| hashCode | string | 是 | 通知唯一ID。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscribe-subscribecallbackdata-t-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
 
 **返回值：**
@@ -332,7 +317,6 @@ notificationSubscribe.remove(hashCode, reason).then(() => {
 ```
 
 
-<a id="remove-5"></a>
 ## remove
 
 ```TypeScript

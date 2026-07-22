@@ -8,7 +8,6 @@ Encompassed message information as parameters to {@link onConsole} method.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -36,7 +35,6 @@ Constructor.
 | lineNumber | number | 是 | ConsoleMessage的行号。 |
 | messageLevel | [MessageLevel](arkts-arkweb-messagelevel-e.md) | 是 | ConsoleMessage的日志级别。 |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -53,7 +51,6 @@ ConsoleMessage的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="getlinenumber"></a>
 ## getLineNumber
 
 ```TypeScript
@@ -76,7 +73,6 @@ getLineNumber(): number
 | --- | --- |
 | number | 返回ConsoleMessage的行数。 |
 
-<a id="getmessage"></a>
 ## getMessage
 
 ```TypeScript
@@ -99,7 +95,6 @@ getMessage(): string
 | --- | --- |
 | string | 返回ConsoleMessage的日志信息。 |
 
-<a id="getmessagelevel"></a>
 ## getMessageLevel
 
 ```TypeScript
@@ -122,7 +117,6 @@ getMessageLevel(): MessageLevel
 | --- | --- |
 | [MessageLevel](arkts-arkweb-messagelevel-e.md) | 返回ConsoleMessage的信息级别。 |
 
-<a id="getsource"></a>
 ## getSource
 
 ```TypeScript
@@ -143,7 +137,6 @@ getSource() : ConsoleMessageSource
 | --- | --- |
 | [ConsoleMessageSource](arkts-arkweb-consolemessagesource-e.md) | 返回ConsoleMessage的日志来源。 |
 
-<a id="getsourceid"></a>
 ## getSourceId
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # unregisterMissionListener（系统接口）
 
-<a id="unregistermissionlistener"></a>
 ## unregisterMissionListener
 
 ```TypeScript
@@ -69,7 +68,6 @@ missionManager.unregisterMissionListener(listenerId, (error) => {
 ```
 
 
-<a id="unregistermissionlistener-1"></a>
 ## unregisterMissionListener
 
 ```TypeScript

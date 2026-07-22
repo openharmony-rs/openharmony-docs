@@ -16,7 +16,6 @@ Sendable PixelMap instance.
 import { sendableImage } from '@kit.ImageKit';
 ```
 
-<a id="applycolorspace"></a>
 ## applyColorSpace
 
 ```TypeScript
@@ -73,7 +72,6 @@ async function ApplyColorSpace(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="createalphapixelmap"></a>
 ## createAlphaPixelmap
 
 ```TypeScript
@@ -114,7 +112,6 @@ async function CreateAlphaPixelmap(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="createalphapixelmapsync"></a>
 ## createAlphaPixelmapSync
 
 ```TypeScript
@@ -156,7 +153,6 @@ async function CreateAlphaPixelmapSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="crop"></a>
 ## crop
 
 ```TypeScript
@@ -206,7 +202,6 @@ async function Crop(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="cropsync"></a>
 ## cropSync
 
 ```TypeScript
@@ -251,7 +246,6 @@ async function CropSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="flip"></a>
 ## flip
 
 ```TypeScript
@@ -302,7 +296,6 @@ async function Flip(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="flipsync"></a>
 ## flipSync
 
 ```TypeScript
@@ -348,7 +341,6 @@ async function FlipSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="getbytesnumberperrow"></a>
 ## getBytesNumberPerRow
 
 ```TypeScript
@@ -382,7 +374,6 @@ async function GetBytesNumberPerRow(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="getcolorspace"></a>
 ## getColorSpace
 
 ```TypeScript
@@ -424,7 +415,6 @@ async function GetColorSpace(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="getdensity"></a>
 ## getDensity
 
 ```TypeScript
@@ -458,7 +448,6 @@ async function GetDensity(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="getimageinfo"></a>
 ## getImageInfo
 
 ```TypeScript
@@ -502,7 +491,6 @@ async function GetImageInfo(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="getimageinfosync"></a>
 ## getImageInfoSync
 
 ```TypeScript
@@ -545,7 +533,6 @@ async function GetImageInfoSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="getpixelbytesnumber"></a>
 ## getPixelBytesNumber
 
 ```TypeScript
@@ -579,7 +566,6 @@ async function GetPixelBytesNumber(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="marshalling"></a>
 ## marshalling
 
 ```TypeScript
@@ -668,7 +654,6 @@ async function Marshalling() {
 
 ```
 
-<a id="opacity"></a>
 ## opacity
 
 ```TypeScript
@@ -716,7 +701,6 @@ async function Opacity(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="opacitysync"></a>
 ## opacitySync
 
 ```TypeScript
@@ -760,7 +744,6 @@ async function OpacitySync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="readpixels"></a>
 ## readPixels
 
 ```TypeScript
@@ -814,7 +797,6 @@ async function ReadPixels(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="readpixelssync"></a>
 ## readPixelsSync
 
 ```TypeScript
@@ -864,7 +846,6 @@ async function ReadPixelsSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="readpixelstobuffer"></a>
 ## readPixelsToBuffer
 
 ```TypeScript
@@ -912,7 +893,6 @@ async function ReadPixelsToBuffer(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="readpixelstobuffersync"></a>
 ## readPixelsToBufferSync
 
 ```TypeScript
@@ -957,7 +937,6 @@ async function ReadPixelsToBufferSync(pixelMap: sendableImage.PixelMap) {
 
 ```
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -998,7 +977,6 @@ async function Release(pixelMap: sendableImage.PixelMap) {
 
 ```
 
-<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
@@ -1046,7 +1024,6 @@ async function Rotate(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="rotatesync"></a>
 ## rotateSync
 
 ```TypeScript
@@ -1090,7 +1067,6 @@ async function RotateSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="scale"></a>
 ## scale
 
 ```TypeScript
@@ -1141,7 +1117,6 @@ async function Scale(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="scalesync"></a>
 ## scaleSync
 
 ```TypeScript
@@ -1187,7 +1162,6 @@ async function ScaleSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="setcolorspace"></a>
 ## setColorSpace
 
 ```TypeScript
@@ -1233,7 +1207,6 @@ async function SetColorSpace(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="translate"></a>
 ## translate
 
 ```TypeScript
@@ -1283,7 +1256,6 @@ async function Translate(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="translatesync"></a>
 ## translateSync
 
 ```TypeScript
@@ -1329,7 +1301,6 @@ async function TranslateSync(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="unmarshalling"></a>
 ## unmarshalling
 
 ```TypeScript
@@ -1425,7 +1396,6 @@ async function Unmarshalling() {
 
 ```
 
-<a id="writebuffertopixels"></a>
 ## writeBufferToPixels
 
 ```TypeScript
@@ -1477,7 +1447,6 @@ async function WriteBufferToPixels(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="writebuffertopixelssync"></a>
 ## writeBufferToPixelsSync
 
 ```TypeScript
@@ -1526,7 +1495,6 @@ async function WriteBufferToPixelsSync(pixelMap: sendableImage.PixelMap) {
 
 ```
 
-<a id="writepixels"></a>
 ## writePixels
 
 ```TypeScript
@@ -1584,7 +1552,6 @@ async function WritePixels(pixelMap : sendableImage.PixelMap) {
 
 ```
 
-<a id="writepixelssync"></a>
 ## writePixelsSync
 
 ```TypeScript

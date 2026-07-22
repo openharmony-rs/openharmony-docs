@@ -6,7 +6,6 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
-<a id="setvalue"></a>
 ## setValue
 
 ```TypeScript

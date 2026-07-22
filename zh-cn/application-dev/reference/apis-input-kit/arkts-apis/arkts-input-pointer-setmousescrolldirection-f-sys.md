@@ -6,7 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="setmousescrolldirection"></a>
 ## setMouseScrollDirection
 
 ```TypeScript

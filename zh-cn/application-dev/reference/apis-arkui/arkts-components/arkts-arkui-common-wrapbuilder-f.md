@@ -1,6 +1,5 @@
 # wrapBuilder
 
-<a id="wrapbuilder"></a>
 ## wrapBuilder
 
 ```TypeScript

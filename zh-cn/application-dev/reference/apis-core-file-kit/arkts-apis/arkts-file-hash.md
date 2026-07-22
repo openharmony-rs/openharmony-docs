@@ -28,5 +28,5 @@ import { hash } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [HashStream](arkts-corefile-hash-hashstream-c.md) | HashStream 类是用于创建数据的哈希摘要的实用工具。由 [createHash](arkts-corefile-hash-createhash-f.md#createhash-1) 接口获得。 |
+| [HashStream](arkts-corefile-hash-hashstream-c.md) | HashStream 类是用于创建数据的哈希摘要的实用工具。由 [createHash](arkts-corefile-hash-createhash-f.md#createhash) 接口获得。 |
 

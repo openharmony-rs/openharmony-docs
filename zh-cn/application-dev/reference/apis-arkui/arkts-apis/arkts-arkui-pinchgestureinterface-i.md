@@ -1,7 +1,6 @@
 # PinchGestureInterface
 
 用于触发捏合手势，最少需要2指，最多5指，最小识别距离为5vp。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。
-
 > **说明：**  
 >  
 > 捏合手势触发成功后，抬起手指直至不再满足触发条件。再次满足条件时，可重新触发捏合手势。
@@ -14,7 +13,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -43,7 +41,6 @@
 | --- | --- |
 | [PinchGestureInterface](arkts-arkui-pinchgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -74,7 +71,6 @@
 | --- | --- |
 | [PinchGestureInterface](arkts-arkui-pinchgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onactioncancel"></a>
 ## onActionCancel
 
 ```TypeScript
@@ -103,14 +99,13 @@ Pinch手势识别成功，接收到触摸取消事件触发的回调，不返回
 | --- | --- |
 | [PinchGestureInterface](arkts-arkui-pinchgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactioncancel-1"></a>
 ## onActionCancel
 
 ```TypeScript
 onActionCancel(event: Callback<GestureEvent>): PinchGestureInterface
 ```
 
-Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCancel](arkts-arkui-pinchgestureinterface-i.md#onactioncancel-1)相比，该回调返回手势事件信息。
+Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCancel](arkts-arkui-pinchgestureinterface-i.md#onactioncancel)相比，该回调返回手势事件信息。
 
 **起始版本：** 18
 
@@ -134,7 +129,6 @@ Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCan
 | --- | --- |
 | [PinchGestureInterface](arkts-arkui-pinchgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 
-<a id="onactionend"></a>
 ## onActionEnd
 
 ```TypeScript
@@ -163,7 +157,6 @@ Pinch手势识别成功，当抬起最后一根满足手势触发条件的手指
 | --- | --- |
 | [PinchGestureInterface](arkts-arkui-pinchgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactionstart"></a>
 ## onActionStart
 
 ```TypeScript
@@ -192,7 +185,6 @@ Pinch手势识别成功后触发回调。
 | --- | --- |
 | [PinchGestureInterface](arkts-arkui-pinchgestureinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onactionupdate"></a>
 ## onActionUpdate
 
 ```TypeScript

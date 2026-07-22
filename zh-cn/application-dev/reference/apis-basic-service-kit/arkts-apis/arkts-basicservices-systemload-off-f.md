@@ -6,7 +6,6 @@
 import { systemLoad } from '@kit.BasicServicesKit';
 ```
 
-<a id="off"></a>
 ## off('systemLoadChange')
 
 ```TypeScript

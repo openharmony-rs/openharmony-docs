@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="listiptablesfilterrules"></a>
 ## listIptablesFilterRules
 
 ```TypeScript
@@ -67,7 +66,6 @@ networkManager.listIptablesFilterRules(wantTemp, (err, result) => {
 ```
 
 
-<a id="listiptablesfilterrules-1"></a>
 ## listIptablesFilterRules
 
 ```TypeScript

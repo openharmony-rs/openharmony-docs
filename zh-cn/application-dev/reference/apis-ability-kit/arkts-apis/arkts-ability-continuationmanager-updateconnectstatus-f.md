@@ -6,7 +6,6 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
-<a id="updateconnectstatus"></a>
 ## updateConnectStatus
 
 ```TypeScript
@@ -24,21 +23,11 @@ function updateConnectStatus(
 
 **废弃版本：** 9
 
-**替代接口：** [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)
+**替代接口：** [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-continuationManager-function updateConnectStatus(
-    token: number,
-    deviceId: string,
-    status: DeviceConnectState,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-continuationManager-function updateConnectStatus(
-    token: number,
-    deviceId: string,
-    status: DeviceConnectState,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-continuationManager-function updateConnectStatus(    token: number,    deviceId: string,    status: DeviceConnectState,    callback: AsyncCallback<void>  ): void--><!--Device-continuationManager-function updateConnectStatus(    token: number,    deviceId: string,    status: DeviceConnectState,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -69,7 +58,6 @@ continuationManager.updateConnectStatus(token, deviceId, continuationManager.Dev
 ```
 
 
-<a id="updateconnectstatus-1"></a>
 ## updateConnectStatus
 
 ```TypeScript
@@ -82,7 +70,7 @@ function updateConnectStatus(token: number, deviceId: string, status: DeviceConn
 
 **废弃版本：** 9
 
-**替代接口：** [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync-1)
+**替代接口：** [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

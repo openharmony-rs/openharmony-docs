@@ -14,7 +14,6 @@
 import { stream } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -38,14 +37,13 @@ let writableStream = new stream.Writable();
 
 ```
 
-<a id="cork"></a>
 ## cork
 
 ```TypeScript
 cork(): boolean
 ```
 
-强制将后续写入的数据缓存起来。调用此API可优化连续写入操作的性能。调用此API后，**writableCorked**的值加1。建议与[uncork()](arkts-arkts-stream-writable-c.md#uncork-1)配合使用。
+强制将后续写入的数据缓存起来。调用此API可优化连续写入操作的性能。调用此API后，**writableCorked**的值加1。建议与[uncork()](arkts-arkts-stream-writable-c.md#uncork)配合使用。
 
 **起始版本：** 12
 
@@ -80,7 +78,6 @@ console.info("Writable cork result", result); // Writable cork result true
 
 ```
 
-<a id="doinitialize"></a>
 ## doInitialize
 
 ```TypeScript
@@ -121,7 +118,6 @@ new MyWritable();
 
 ```
 
-<a id="dowrite"></a>
 ## doWrite
 
 ```TypeScript
@@ -165,7 +161,6 @@ writableStream.write("data", "utf8");
 
 ```
 
-<a id="dowritev"></a>
 ## doWritev
 
 ```TypeScript
@@ -213,7 +208,6 @@ writableStream.end();
 
 ```
 
-<a id="end"></a>
 ## end
 
 ```TypeScript
@@ -274,7 +268,6 @@ writableStream.end("finish", "utf8", () => {
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -326,7 +319,6 @@ setTimeout(() => {
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -373,7 +365,6 @@ writable.write("hello", "utf8", () => {
 
 ```
 
-<a id="setdefaultencoding"></a>
 ## setDefaultEncoding
 
 ```TypeScript
@@ -421,14 +412,13 @@ console.info("Writable is result", result); // Writable is result true
 
 ```
 
-<a id="uncork"></a>
 ## uncork
 
 ```TypeScript
 uncork(): boolean
 ```
 
-释放cork状态，刷新缓冲区中的数据并写入目标位置。调用此API后，**writableCorked**的值减1。如果值变为**0**，则流不再处于cork状态；否则，流仍处于cork状态。建议与[cork()](arkts-arkts-stream-writable-c.md#cork-1)配合使用。
+释放cork状态，刷新缓冲区中的数据并写入目标位置。调用此API后，**writableCorked**的值减1。如果值变为**0**，则流不再处于cork状态；否则，流仍处于cork状态。建议与[cork()](arkts-arkts-stream-writable-c.md#cork)配合使用。
 
 **起始版本：** 12
 
@@ -469,7 +459,6 @@ writableStream.on("finish", () => {
 
 ```
 
-<a id="write"></a>
 ## write
 
 ```TypeScript

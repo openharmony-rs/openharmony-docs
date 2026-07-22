@@ -1,7 +1,6 @@
 # GridRowDirection
 
 栅格元素排列方向。
-
 > **说明：**  
 >  
 > - 栅格元素仅支持Row/RowReverse排列，不支持column/ColumnReverse方向排列。  
@@ -15,7 +14,7 @@
 > - 例：Item1: GridCol({ span: 6 })， Item2: GridCol({ span: 8, offset:11 })。  
 > >  
 > > !  
-> [figures/gridRowOffsetToNextLine.png](docroot://reference/apis-arkui/arkui-ts/figures/gridRowOffsetToNextLine.png)
+> [figures/gridRowOffsetToNextLine.png](../../../reference/apis-arkui/arkui-ts/figures/gridRowOffsetToNextLine.png)
 
 **起始版本：** 9
 

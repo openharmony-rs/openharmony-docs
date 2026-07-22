@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="setdiscoverable"></a>
 ## setDiscoverable
 
 ```TypeScript
@@ -48,7 +47,6 @@ avSession.setDiscoverable(true, () => {
 ```
 
 
-<a id="setdiscoverable-1"></a>
 ## setDiscoverable
 
 ```TypeScript

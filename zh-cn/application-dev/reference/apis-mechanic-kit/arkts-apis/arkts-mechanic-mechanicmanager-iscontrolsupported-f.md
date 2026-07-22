@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="iscontrolsupported"></a>
 ## isControlSupported
 
 ```TypeScript
 function isControlSupported(mechDeviceType?: MechDeviceType): boolean
 ```
 
-Checks whether the current device supports embodied control for a specific type of device.
+判断当前设备是否支持某类设备的具身控制
 
 **起始版本：** 26.0.0
 
@@ -25,13 +24,13 @@ Checks whether the current device supports embodied control for a specific type 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechDeviceType | [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e.md) | 否 | Associated device type.<br>Default: If this parameter is not provided, it represents all device types. As long as one or more types are supported, the result returned will be supported. |
+| mechDeviceType | [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e.md) | 否 | 关联的设备类型<br>默认值:如果未提供该参数，则代表所有类型设备，只要支持其中一种以上则返回支持 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns whether embodied control is supported. |
+| boolean | Returns whether control is supported. |
 
 **示例：**
 

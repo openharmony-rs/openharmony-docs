@@ -6,7 +6,6 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
-<a id="getlistenercount"></a>
 ## getListenerCount
 
 ```TypeScript

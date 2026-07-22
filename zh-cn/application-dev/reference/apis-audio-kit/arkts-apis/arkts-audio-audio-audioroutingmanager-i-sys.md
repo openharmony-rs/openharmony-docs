@@ -2,8 +2,7 @@
 
 音频路由管理。
 
-在使用AudioRoutingManager的接口之前，需先通过[getRoutingManager](arkts-audio-audio-audiomanager-i.md#getroutingmanager-1)获取AudioRoutingManager实例。
-
+在使用AudioRoutingManager的接口之前，需先通过[getRoutingManager](arkts-audio-audio-audiomanager-i.md#getroutingmanager)获取AudioRoutingManager实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 9开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="excludeoutputdevices"></a>
 ## excludeOutputDevices
 
 ```TypeScript
@@ -94,7 +92,6 @@ async function excludeOutputDevices(){
 
 ```
 
-<a id="getactiveoutputdevicedescriptors"></a>
 ## getActiveOutputDeviceDescriptors
 
 ```TypeScript
@@ -137,7 +134,6 @@ audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescript
 
 ```
 
-<a id="getexcludeddevices"></a>
 ## getExcludedDevices
 
 ```TypeScript
@@ -187,7 +183,6 @@ async function getExcludedDevices(){
 
 ```
 
-<a id="getpreferredinputdevicebyfilter"></a>
 ## getPreferredInputDeviceByFilter
 
 ```TypeScript
@@ -246,7 +241,6 @@ async function getPreferredInputDeviceByFilter(){
 
 ```
 
-<a id="getpreferredoutputdevicebyfilter"></a>
 ## getPreferredOutputDeviceByFilter
 
 ```TypeScript
@@ -306,7 +300,6 @@ async function selectOutputDeviceByFilter(){
 
 ```
 
-<a id="off"></a>
 ## off('preferredOutputDeviceChangeByFilter')
 
 ```TypeScript
@@ -362,7 +355,6 @@ audioRoutingManager.off('preferredOutputDeviceChangeByFilter', preferredOutputDe
 
 ```
 
-<a id="offpreferredinputdevicechangebyfilter"></a>
 ## offPreferredInputDeviceChangeByFilter
 
 ```TypeScript
@@ -418,7 +410,6 @@ audioRoutingManager.offPreferredInputDeviceChangeByFilter(preferredInputDeviceCh
 
 ```
 
-<a id="on"></a>
 ## on('preferredOutputDeviceChangeByFilter')
 
 ```TypeScript
@@ -468,7 +459,6 @@ audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendere
 
 ```
 
-<a id="onpreferredinputdevicechangebyfilter"></a>
 ## onPreferredInputDeviceChangeByFilter
 
 ```TypeScript
@@ -518,7 +508,6 @@ audioRoutingManager.onPreferredInputDeviceChangeByFilter(inputAudioCapturerFilte
 
 ```
 
-<a id="restoreoutputdevicebyfilter"></a>
 ## restoreOutputDeviceByFilter
 
 ```TypeScript
@@ -579,7 +568,6 @@ audioRoutingManager.restoreOutputDeviceByFilter(outputAudioRendererFilter).then(
 
 ```
 
-<a id="selectinputdevice"></a>
 ## selectInputDevice
 
 ```TypeScript
@@ -636,7 +624,6 @@ async function selectInputDevice(){
 
 ```
 
-<a id="selectinputdevice-1"></a>
 ## selectInputDevice
 
 ```TypeScript
@@ -696,7 +683,6 @@ async function getRoutingManager(){
 
 ```
 
-<a id="selectinputdevicebyfilter"></a>
 ## selectInputDeviceByFilter
 
 ```TypeScript
@@ -774,7 +760,6 @@ async function selectInputDeviceByFilter(){
 
 ```
 
-<a id="selectoutputdevice"></a>
 ## selectOutputDevice
 
 ```TypeScript
@@ -830,7 +815,6 @@ async function selectOutputDevice(){
 
 ```
 
-<a id="selectoutputdevice-1"></a>
 ## selectOutputDevice
 
 ```TypeScript
@@ -890,7 +874,6 @@ async function selectOutputDevice(){
 
 ```
 
-<a id="selectoutputdevicebyfilter"></a>
 ## selectOutputDeviceByFilter
 
 ```TypeScript
@@ -956,7 +939,6 @@ async function selectOutputDeviceByFilter(){
 
 ```
 
-<a id="selectoutputdevicebyfilter-1"></a>
 ## selectOutputDeviceByFilter
 
 ```TypeScript
@@ -1026,7 +1008,6 @@ async function selectOutputDeviceByFilter(){
 
 ```
 
-<a id="selectoutputdevicebyfilter-2"></a>
 ## selectOutputDeviceByFilter
 
 ```TypeScript
@@ -1102,7 +1083,6 @@ audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, output
 
 ```
 
-<a id="unexcludeoutputdevices"></a>
 ## unexcludeOutputDevices
 
 ```TypeScript
@@ -1176,7 +1156,6 @@ async function unexcludeOutputDevices(){
 
 ```
 
-<a id="unexcludeoutputdevices-1"></a>
 ## unexcludeOutputDevices
 
 ```TypeScript

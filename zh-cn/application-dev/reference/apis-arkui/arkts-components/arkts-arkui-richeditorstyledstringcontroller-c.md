@@ -16,7 +16,6 @@ controller: RichEditorStyledStringController = new RichEditorStyledStringControl
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getselection"></a>
 ## getSelection
 
 ```TypeScript
@@ -41,7 +40,6 @@ getSelection(): RichEditorRange
 | --- | --- |
 | [RichEditorRange](arkts-arkui-richeditorrange-i.md) | 选中区域范围。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
-<a id="getstyledstring"></a>
 ## getStyledString
 
 ```TypeScript
@@ -66,14 +64,13 @@ getStyledString(): MutableStyledString
 | --- | --- |
 | [MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md) | 富文本组件显示的属性字符串。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
-<a id="oncontentchanged"></a>
 ## onContentChanged
 
 ```TypeScript
 onContentChanged(listener: StyledStringChangedListener): void
 ```
 
-注册文本内容变化回调，该回调仅在后端程序导致文本内容变更时触发，调用[setStyledString](arkts-arkui-richeditorstyledstringcontroller-c.md#setstyledstring-1)时不会触发。
+注册文本内容变化回调，该回调仅在后端程序导致文本内容变更时触发，调用[setStyledString](arkts-arkui-richeditorstyledstringcontroller-c.md#setstyledstring)时不会触发。
 
 **起始版本：** 12
 
@@ -91,7 +88,6 @@ onContentChanged(listener: StyledStringChangedListener): void
 | --- | --- | --- | --- |
 | listener | [StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md) | 是 | 文本内容变化回调监听器。 |
 
-<a id="setstyledstring"></a>
 ## setStyledString
 
 ```TypeScript
@@ -99,7 +95,6 @@ setStyledString(styledString: StyledString): void
 ```
 
 设置富文本组件显示的属性字符串。
-
 > **说明：**  
 >  
 > - 调用该接口时，会全量替换富文本组件的StyledString，并重新渲染。  

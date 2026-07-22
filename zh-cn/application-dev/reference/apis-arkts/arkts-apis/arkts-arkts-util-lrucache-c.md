@@ -14,7 +14,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -53,19 +52,17 @@ for (let value of pro) {
 
 ```
 
-<a id="afterremoval"></a>
 ## afterRemoval
 
 ```TypeScript
 afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 ```
 
-在移除值后执行后续操作。后续操作必须由开发者实现。该 API 在删除操作期间会被调用，例如[get<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#get-1)、[put<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#put-1)、[remove<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#remove-1)、[clear<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#clear-1) 和[updateCapacity<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#updatecapacity-1)。
-
+在移除值后执行后续操作。后续操作必须由开发者实现。该 API 在删除操作期间会被调用，例如[get<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#get)、[put<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#put)、[remove<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#remove)、[clear<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#clear) 和[updateCapacity<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#updatecapacity)。
 > **NOTE**  
 >  
-> 如果在调用 [clear<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#clear-1) 和  
-> [updateCapacity<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#updatecapacity-1) 后执行回调方法，并且输入的 **key** 和  
+> 如果在调用 [clear<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#clear) 和  
+> [updateCapacity<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#updatecapacity) 后执行回调方法，并且输入的 **key** 和  
 > **value** 参数为 MapIterator 类型，请参考示例 2 执行后续操作。
 
 **起始版本：** 9
@@ -85,7 +82,6 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 | value | V | 是 | 被移除的值。 |
 | newValue | V | 是 | 如果调用了 **put()** 方法并且要添加的 key 已存在时该 key 的新值。其他情况下此参数为空。 |
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -117,7 +113,6 @@ console.info('res = ' + res);
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -147,7 +142,6 @@ let lruCache = new util.LRUCache<number, number>();
 
 ```
 
-<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -187,7 +181,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="createdefault"></a>
 ## createDefault
 
 ```TypeScript
@@ -226,7 +219,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -265,14 +257,13 @@ for (let value of pair) {
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
 get(key: K): V | undefined
 ```
 
-获取 key 对应的值。如果该 key 不在缓存中，则调用[createDefault<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#createdefault-1) 创建该 key。如果 **createDefault** 中指定的值不为 **undefined**，则调用 [afterRemoval<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#afterremoval-1) 返回 **createDefault**中指定的值。
+获取 key 对应的值。如果该 key 不在缓存中，则调用[createDefault<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#createdefault) 创建该 key。如果 **createDefault** 中指定的值不为 **undefined**，则调用 [afterRemoval<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#afterremoval) 返回 **createDefault**中指定的值。
 
 **起始版本：** 9
 
@@ -305,7 +296,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="getcapacity"></a>
 ## getCapacity
 
 ```TypeScript
@@ -338,7 +328,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="getcreatecount"></a>
 ## getCreateCount
 
 ```TypeScript
@@ -384,7 +373,6 @@ console.info('res = ' + res);
 
 ```
 
-<a id="getmatchcount"></a>
 ## getMatchCount
 
 ```TypeScript
@@ -419,7 +407,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="getmisscount"></a>
 ## getMissCount
 
 ```TypeScript
@@ -454,7 +441,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="getputcount"></a>
 ## getPutCount
 
 ```TypeScript
@@ -488,7 +474,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="getremovalcount"></a>
 ## getRemovalCount
 
 ```TypeScript
@@ -524,7 +509,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -558,7 +542,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -602,7 +585,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="put"></a>
 ## put
 
 ```TypeScript
@@ -642,7 +624,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -682,7 +663,6 @@ console.info('result = ' + result);
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -718,7 +698,6 @@ console.info(pro.toString());
 
 ```
 
-<a id="updatecapacity"></a>
 ## updateCapacity
 
 ```TypeScript
@@ -749,7 +728,6 @@ pro.updateCapacity(100);
 
 ```
 
-<a id="values"></a>
 ## values
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="createcontroller"></a>
 ## createController
 
 ```TypeScript
@@ -74,7 +73,6 @@ avSession.createController(descriptors[0]?.sessionId, (avcontroller: avSession.A
 ```
 
 
-<a id="createcontroller-1"></a>
 ## createController
 
 ```TypeScript

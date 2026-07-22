@@ -1,7 +1,6 @@
 # Restorer（系统接口）
 
 提供清除用户数据分区、深度清除用户数据和操作系统分区、同步清除文件密钥等恢复出厂设置功能的工具类。
-
 > **恢复出厂设置流程**：
 
 - 开发者调用getRestorer方法获取Restorer对象。  
@@ -28,7 +27,6 @@
 import { update } from '@kit.BasicServicesKit';
 ```
 
-<a id="deepfactoryreset"></a>
 ## deepFactoryReset
 
 ```TypeScript
@@ -112,7 +110,6 @@ try {
 
 ```
 
-<a id="factoryreset"></a>
 ## factoryReset
 
 ```TypeScript
@@ -182,7 +179,6 @@ try {
 
 ```
 
-<a id="factoryreset-1"></a>
 ## factoryReset
 
 ```TypeScript
@@ -249,7 +245,6 @@ try {
 
 ```
 
-<a id="forcefactoryreset"></a>
 ## forceFactoryReset
 
 ```TypeScript
@@ -317,7 +312,6 @@ try {
 
 ```
 
-<a id="getdeepfactoryresetinfo"></a>
 ## getDeepFactoryResetInfo
 
 ```TypeScript

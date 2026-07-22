@@ -6,7 +6,6 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="createsubscriber"></a>
 ## createSubscriber
 
 ```TypeScript
@@ -22,13 +21,7 @@ function createSubscriber(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-commonEventManager-function createSubscriber(
-    subscribeInfo: CommonEventSubscribeInfo,
-    callback: AsyncCallback<CommonEventSubscriber>
-  ): void--><!--Device-commonEventManager-function createSubscriber(
-    subscribeInfo: CommonEventSubscribeInfo,
-    callback: AsyncCallback<CommonEventSubscriber>
-  ): void-End-->
+<!--Device-commonEventManager-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void--><!--Device-commonEventManager-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -76,7 +69,6 @@ try {
 ```
 
 
-<a id="createsubscriber-1"></a>
 ## createSubscriber
 
 ```TypeScript

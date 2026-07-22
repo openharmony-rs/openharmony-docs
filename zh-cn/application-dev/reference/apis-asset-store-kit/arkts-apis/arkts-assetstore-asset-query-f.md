@@ -6,14 +6,13 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
-<a id="query"></a>
 ## query
 
 ```TypeScript
 function query(query: AssetMap): Promise<Array<AssetMap>>
 ```
 
-查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery-1)接口，在本函数后调用[asset.postQuery](arkts-assetstore-asset-postquery-f.md#postquery-1)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。
+查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery)接口，在本函数后调用[asset.postQuery](arkts-assetstore-asset-postquery-f.md#postquery)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。
 
 如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。
 
@@ -41,7 +40,7 @@ function query(query: AssetMap): Promise<Array<AssetMap>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1. Incorrect parameter types.2. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Incorrect parameter types.2. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 | [24000002](../errorcode-asset.md#24000002-未找到关键资产) | The asset is not found. |
 | [24000004](../errorcode-asset.md#24000004-访问被拒绝) | Access denied. |

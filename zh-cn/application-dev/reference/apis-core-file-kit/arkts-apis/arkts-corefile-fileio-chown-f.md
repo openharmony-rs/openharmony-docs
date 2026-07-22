@@ -1,6 +1,5 @@
 # chown
 
-<a id="chown"></a>
 ## chown
 
 ```TypeScript
@@ -32,7 +31,6 @@ declare function chown(path: string, uid: number, gid: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="chown-1"></a>
 ## chown
 
 ```TypeScript

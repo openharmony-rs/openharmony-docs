@@ -6,7 +6,6 @@
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 ```
 
-<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -53,7 +52,6 @@ try {
 ```
 
 
-<a id="create-1"></a>
 ## create
 
 ```TypeScript

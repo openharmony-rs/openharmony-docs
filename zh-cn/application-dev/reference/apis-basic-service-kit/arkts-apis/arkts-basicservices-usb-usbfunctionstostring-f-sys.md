@@ -6,7 +6,6 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
-<a id="usbfunctionstostring"></a>
 ## usbFunctionsToString
 
 ```TypeScript
@@ -19,7 +18,7 @@ function usbFunctionsToString(funcs: FunctionType): string
 
 **废弃版本：** 9
 
-**替代接口：** [usbFunctionsToString](arkts-basicservices-usbmanager-usbfunctionstostring-f-sys.md#usbfunctionstostring-1)
+**替代接口：** [usbFunctionsToString](arkts-basicservices-usbmanager-usbfunctionstostring-f-sys.md#usbfunctionstostring)
 
 <!--Device-usb-function usbFunctionsToString(funcs: FunctionType): string--><!--Device-usb-function usbFunctionsToString(funcs: FunctionType): string-End-->
 

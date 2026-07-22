@@ -1,7 +1,6 @@
 # MediaSourceLoadingRequest
 
 用于定义加载请求的对象。应用程序通过该对象来获取请求的资源位置，通过该对象和播放器进行数据交互。
-
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 18开始支持。
@@ -18,7 +17,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="finishloading"></a>
 ## finishLoading
 
 ```TypeScript
@@ -42,7 +40,6 @@ finishLoading(uuid: number, state: LoadingRequestError): void
 | uuid | number | 是 | 资源句柄的标识。来源是[SourceOpenCallback](@ohos.multimedia.media:media.SourceOpenCallback)。 |
 | state | [LoadingRequestError](arkts-media-multimedia-media-loadingrequesterror-e.md) | 是 | 请求的状态。 |
 
-<a id="responddata"></a>
 ## respondData
 
 ```TypeScript
@@ -73,7 +70,6 @@ respondData(uuid: number, offset: number, buffer: ArrayBuffer): number
 | --- | --- |
 | number | 当前服务端接受的字节数。<br>- 返回值小于0表示操作失败。<br>- 返回值为-2时，表示播放器不再需要当前数据，客户端应停止当前读取过程。<br>- 返回值为-3时，表示播放器的缓冲区已满，客户端应等待下一次读取。 |
 
-<a id="respondheader"></a>
 ## respondHeader
 
 ```TypeScript

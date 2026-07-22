@@ -22,7 +22,7 @@ applyShadow?: boolean
 
 是否添加材质的阴影效果。
 
-当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。
+当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。
 
 **说明**：该参数仅对所有档位的算力设备的显示效果生效。
 

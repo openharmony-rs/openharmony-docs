@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-<a id="and"></a>
 ## and
 
 ```TypeScript
@@ -53,7 +52,6 @@ try {
 
 ```
 
-<a id="begingroup"></a>
 ## beginGroup
 
 ```TypeScript
@@ -94,7 +92,6 @@ try {
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -113,7 +110,6 @@ constructor()
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-<a id="deviceid"></a>
 ## deviceId
 
 ```TypeScript
@@ -121,13 +117,12 @@ deviceId(deviceId: string): Query
 ```
 
 添加设备ID作为key的前缀。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用<!--RP1-->  
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync-1)  
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)  
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。  
-> > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync-1)。
+> > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
 
 **起始版本：** 8
 
@@ -164,7 +159,6 @@ try {
 
 ```
 
-<a id="endgroup"></a>
 ## endGroup
 
 ```TypeScript
@@ -205,7 +199,6 @@ try {
 
 ```
 
-<a id="equalto"></a>
 ## equalTo
 
 ```TypeScript
@@ -251,7 +244,6 @@ try {
 
 ```
 
-<a id="getsqllike"></a>
 ## getSqlLike
 
 ```TypeScript
@@ -289,7 +281,6 @@ try {
 
 ```
 
-<a id="greaterthan"></a>
 ## greaterThan
 
 ```TypeScript
@@ -335,7 +326,6 @@ try {
 
 ```
 
-<a id="greaterthanorequalto"></a>
 ## greaterThanOrEqualTo
 
 ```TypeScript
@@ -381,7 +371,6 @@ try {
 
 ```
 
-<a id="innumber"></a>
 ## inNumber
 
 ```TypeScript
@@ -427,7 +416,6 @@ try {
 
 ```
 
-<a id="instring"></a>
 ## inString
 
 ```TypeScript
@@ -473,7 +461,6 @@ try {
 
 ```
 
-<a id="isnotnull"></a>
 ## isNotNull
 
 ```TypeScript
@@ -518,7 +505,6 @@ try {
 
 ```
 
-<a id="isnull"></a>
 ## isNull
 
 ```TypeScript
@@ -563,7 +549,6 @@ try {
 
 ```
 
-<a id="lessthan"></a>
 ## lessThan
 
 ```TypeScript
@@ -609,7 +594,6 @@ try {
 
 ```
 
-<a id="lessthanorequalto"></a>
 ## lessThanOrEqualTo
 
 ```TypeScript
@@ -655,7 +639,6 @@ try {
 
 ```
 
-<a id="like"></a>
 ## like
 
 ```TypeScript
@@ -701,7 +684,6 @@ try {
 
 ```
 
-<a id="limit"></a>
 ## limit
 
 ```TypeScript
@@ -750,7 +732,6 @@ try {
 
 ```
 
-<a id="notequalto"></a>
 ## notEqualTo
 
 ```TypeScript
@@ -796,7 +777,6 @@ try {
 
 ```
 
-<a id="notinnumber"></a>
 ## notInNumber
 
 ```TypeScript
@@ -842,7 +822,6 @@ try {
 
 ```
 
-<a id="notinstring"></a>
 ## notInString
 
 ```TypeScript
@@ -888,7 +867,6 @@ try {
 
 ```
 
-<a id="or"></a>
 ## or
 
 ```TypeScript
@@ -929,7 +907,6 @@ try {
 
 ```
 
-<a id="orderbyasc"></a>
 ## orderByAsc
 
 ```TypeScript
@@ -975,7 +952,6 @@ try {
 
 ```
 
-<a id="orderbydesc"></a>
 ## orderByDesc
 
 ```TypeScript
@@ -1021,7 +997,6 @@ try {
 
 ```
 
-<a id="prefixkey"></a>
 ## prefixKey
 
 ```TypeScript
@@ -1067,7 +1042,6 @@ try {
 
 ```
 
-<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -1108,7 +1082,6 @@ try {
 
 ```
 
-<a id="setsuggestindex"></a>
 ## setSuggestIndex
 
 ```TypeScript
@@ -1154,7 +1127,6 @@ try {
 
 ```
 
-<a id="unlike"></a>
 ## unlike
 
 ```TypeScript

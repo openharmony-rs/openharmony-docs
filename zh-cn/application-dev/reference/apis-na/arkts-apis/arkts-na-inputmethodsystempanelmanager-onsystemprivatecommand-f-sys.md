@@ -1,6 +1,5 @@
 # onSystemPrivateCommand（系统接口）
 
-<a id="onsystemprivatecommand"></a>
 ## onSystemPrivateCommand
 
 ```TypeScript

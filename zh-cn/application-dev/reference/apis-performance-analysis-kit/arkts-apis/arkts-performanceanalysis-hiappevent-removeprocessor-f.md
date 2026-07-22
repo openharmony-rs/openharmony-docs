@@ -6,7 +6,6 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="removeprocessor"></a>
 ## removeProcessor
 
 ```TypeScript
@@ -27,7 +26,7 @@ function removeProcessor(id: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | number | 是 | 上报事件数据处理者ID。值大于0。由调用[addProcessor](arkts-performanceanalysis-hiappevent-addprocessor-f.md#addprocessor-1)或[addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md#addprocessorfromconfig-1)接口返回值所得。 |
+| id | number | 是 | 上报事件数据处理者ID。值大于0。由调用[addProcessor](arkts-performanceanalysis-hiappevent-addprocessor-f.md#addprocessor)或[addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md#addprocessorfromconfig)接口返回值所得。 |
 
 **错误码：**
 

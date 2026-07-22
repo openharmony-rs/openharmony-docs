@@ -16,7 +16,6 @@
 import { dataSharePredicates } from '@kit.ArkData';
 ```
 
-<a id="and"></a>
 ## and
 
 ```TypeScript
@@ -53,7 +52,6 @@ predicates.equalTo("NAME", "lisi")
 
 ```
 
-<a id="equalto"></a>
 ## equalTo
 
 ```TypeScript
@@ -95,7 +93,6 @@ predicates.equalTo("NAME", "Rose");
 
 ```
 
-<a id="in"></a>
 ## in
 
 ```TypeScript
@@ -137,7 +134,6 @@ predicates.in("AGE", [18, 20]);
 
 ```
 
-<a id="limit"></a>
 ## limit
 
 ```TypeScript
@@ -162,8 +158,8 @@ limit(total: number, offset: number): DataSharePredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| total | number | 是 | 最大数据记录数。当使用键值型数据库且total为undefined或null时，会限制最大记录数为0。当使用关系型数据库且total为undefined或null时，不会限制最大记录数。当使用键值型数据库时，取值范围参考[键值型数据库limit接口](arkts-arkdata-distributedkvstore-query-c.md#limit-1)中的total参数说明。当使用关系型数据库时，取值范围参考[关系型数据库limitAs接口](@ohos.data.relationalStore:relationalStore.RdbPredicates.limitAs)中的value参数说明。 |
-| offset | number | 是 | 指定查询结果的起始位置。当offset为undefined或null时，起始位置为结果集的最前端。当使用键值型数据库时，取值范围参考[键值型数据库limit接口](arkts-arkdata-distributedkvstore-query-c.md#limit-1)中的offset参数说明。当使用关系型数据库时，取值范围参考[关系型数据库offsetAs接口](@ohos.data.relationalStore:relationalStore.RdbPredicates.offsetAs)中的rowOffset参数说明。 |
+| total | number | 是 | 最大数据记录数。当使用键值型数据库且total为undefined或null时，会限制最大记录数为0。当使用关系型数据库且total为undefined或null时，不会限制最大记录数。当使用键值型数据库时，取值范围参考[键值型数据库limit接口](arkts-arkdata-distributedkvstore-query-c.md#limit)中的total参数说明。当使用关系型数据库时，取值范围参考[关系型数据库limitAs接口](@ohos.data.relationalStore:relationalStore.RdbPredicates.limitAs)中的value参数说明。 |
+| offset | number | 是 | 指定查询结果的起始位置。当offset为undefined或null时，起始位置为结果集的最前端。当使用键值型数据库时，取值范围参考[键值型数据库limit接口](arkts-arkdata-distributedkvstore-query-c.md#limit)中的offset参数说明。当使用关系型数据库时，取值范围参考[关系型数据库offsetAs接口](@ohos.data.relationalStore:relationalStore.RdbPredicates.offsetAs)中的rowOffset参数说明。 |
 
 **返回值：**
 
@@ -179,7 +175,6 @@ predicates.equalTo("NAME", "Rose").limit(10, 3);
 
 ```
 
-<a id="orderbyasc"></a>
 ## orderByAsc
 
 ```TypeScript
@@ -220,7 +215,6 @@ predicates.orderByAsc("AGE");
 
 ```
 
-<a id="orderbydesc"></a>
 ## orderByDesc
 
 ```TypeScript

@@ -1,6 +1,6 @@
 # KVManager
 
-数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager-1)构建一个KVManager实例。
+数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager)构建一个KVManager实例。
 
 **起始版本：** 7
 
@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-<a id="closekvstore"></a>
 ## closeKVStore
 
 ```TypeScript
@@ -68,7 +67,6 @@ try {
 
 ```
 
-<a id="closekvstore-1"></a>
 ## closeKVStore
 
 ```TypeScript
@@ -133,7 +131,6 @@ try {
 
 ```
 
-<a id="deletekvstore"></a>
 ## deleteKVStore
 
 ```TypeScript
@@ -188,7 +185,6 @@ try {
 
 ```
 
-<a id="deletekvstore-1"></a>
 ## deleteKVStore
 
 ```TypeScript
@@ -252,14 +248,13 @@ try {
 
 ```
 
-<a id="getallkvstoreid"></a>
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-获取所有通过[getKVStore](distributedData.KVManager.getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#deletekvstore-1)方法删除的KVStore数据库的storeId，使用callback异步回调。
+获取所有通过[getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore)方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#deletekvstore)方法删除的KVStore数据库的storeId，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -293,14 +288,13 @@ try {
 
 ```
 
-<a id="getallkvstoreid-1"></a>
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-获取所有通过[getKVStore](distributedData.KVManager.getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#deletekvstore-1)方法删除的KVStore数据库的storeId，使用Promise异步回调。
+获取所有通过[getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore)方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributeddata-kvmanager-i.md#deletekvstore)方法删除的KVStore数据库的storeId，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -342,7 +336,6 @@ try {
 
 ```
 
-<a id="getkvstore"></a>
 ## getKVStore
 
 ```TypeScript
@@ -400,7 +393,6 @@ try {
 
 ```
 
-<a id="getkvstore-1"></a>
 ## getKVStore
 
 ```TypeScript
@@ -455,7 +447,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -498,7 +489,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript

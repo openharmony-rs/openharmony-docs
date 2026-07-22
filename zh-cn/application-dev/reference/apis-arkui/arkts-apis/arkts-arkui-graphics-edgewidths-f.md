@@ -1,6 +1,5 @@
 # edgeWidths
 
-<a id="edgewidths"></a>
 ## edgeWidths
 
 ```TypeScript

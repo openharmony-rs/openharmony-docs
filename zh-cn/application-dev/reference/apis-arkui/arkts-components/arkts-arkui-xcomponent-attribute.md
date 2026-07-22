@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="enableanalyzer"></a>
 ## enableAnalyzer
 
 ```TypeScript
@@ -35,7 +34,6 @@ enableAnalyzer(enable: boolean)
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 是否启用AI图像分析器。 |
 
-<a id="enablesecure"></a>
 ## enableSecure
 
 ```TypeScript
@@ -60,7 +58,6 @@ enableSecure(isSecure: boolean)
 | --- | --- | --- | --- |
 | isSecure | boolean | 是 | 是否启用安全surface。 |
 
-<a id="hdrbrightness"></a>
 ## hdrBrightness
 
 ```TypeScript
@@ -85,7 +82,6 @@ hdrBrightness(brightness: number)
 | --- | --- | --- | --- |
 | brightness | number | 是 | 控制HDR视频的亮度。 |
 
-<a id="hdrbrightness-1"></a>
 ## hdrBrightness
 
 ```TypeScript
@@ -111,7 +107,6 @@ hdrBrightness(brightness: number, type?: HdrType)
 | brightness | number | 是 | 控制HDR视频的亮度。 |
 | type | [HdrType](arkts-arkui-hdrtype-e.md) | 否 | XComponent的HDR类型。 |
 
-<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript
@@ -134,7 +129,6 @@ onDestroy(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | XComponent销毁后的回调。 |
 
-<a id="onload"></a>
 ## onLoad
 
 ```TypeScript

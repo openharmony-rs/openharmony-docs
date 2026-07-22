@@ -2,8 +2,7 @@
 
 音量管理。
 
-在使用AudioVolumeManager的接口之前，需先通过[getVolumeManager](arkts-audio-audio-audiomanager-i.md#getvolumemanager-1)获取AudioVolumeManager实例。
-
+在使用AudioVolumeManager的接口之前，需先通过[getVolumeManager](arkts-audio-audio-audiomanager-i.md#getvolumemanager)获取AudioVolumeManager实例。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 9开始支持。
@@ -20,7 +19,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="forcevolumekeycontroltype"></a>
 ## forceVolumeKeyControlType
 
 ```TypeScript
@@ -75,7 +73,6 @@ audioVolumeManager.forceVolumeKeyControlType(volumeTypeDefault, durationToCancel
 
 ```
 
-<a id="getactivestreamsvolumeinfo"></a>
 ## getActiveStreamsVolumeInfo
 
 ```TypeScript
@@ -107,7 +104,6 @@ getActiveStreamsVolumeInfo(): ActiveStreamsVolumeInfoArray
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error, crash or blocking occurs in system process. |
 
-<a id="getappvolumepercentageforuid"></a>
 ## getAppVolumePercentageForUid
 
 ```TypeScript
@@ -157,7 +153,6 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 ```
 
-<a id="getaudiovolumetypebystreamusage"></a>
 ## getAudioVolumeTypeByStreamUsage
 
 ```TypeScript
@@ -193,7 +188,6 @@ Obtains volume type by stream type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getmaxsystemvolume"></a>
 ## getMaxSystemVolume
 
 ```TypeScript
@@ -229,7 +223,6 @@ Obtains the maximum volume allowed for a volume type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getminsystemvolume"></a>
 ## getMinSystemVolume
 
 ```TypeScript
@@ -265,7 +258,6 @@ Obtains the minimum volume allowed for a volume type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getminsystemvolumepercentage"></a>
 ## getMinSystemVolumePercentage
 
 ```TypeScript
@@ -314,7 +306,6 @@ try {
 
 ```
 
-<a id="getstreamusagesbyvolumetype"></a>
 ## getStreamUsagesByVolumeType
 
 ```TypeScript
@@ -350,7 +341,6 @@ Obtains stream types by volume type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getsupportedaudiovolumetypes"></a>
 ## getSupportedAudioVolumeTypes
 
 ```TypeScript
@@ -379,7 +369,6 @@ Obtains system supported volume types.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 
-<a id="getsystemvolume"></a>
 ## getSystemVolume
 
 ```TypeScript
@@ -415,7 +404,6 @@ Obtains the volume of a volume type.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="getsystemvolumebyuid"></a>
 ## getSystemVolumeByUid
 
 ```TypeScript
@@ -453,7 +441,6 @@ Obtains the volume of streams in specific uid application.
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
-<a id="getsystemvolumepercentage"></a>
 ## getSystemVolumePercentage
 
 ```TypeScript
@@ -502,7 +489,6 @@ try {
 
 ```
 
-<a id="getvolumegroupinfos"></a>
 ## getVolumeGroupInfos
 
 ```TypeScript
@@ -541,7 +527,6 @@ audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessErr
 
 ```
 
-<a id="getvolumegroupinfos-1"></a>
 ## getVolumeGroupInfos
 
 ```TypeScript
@@ -580,7 +565,6 @@ async function getVolumeGroupInfos(){
 
 ```
 
-<a id="getvolumegroupinfossync"></a>
 ## getVolumeGroupInfosSync
 
 ```TypeScript
@@ -631,7 +615,6 @@ try {
 
 ```
 
-<a id="getvolumeinunitofdb"></a>
 ## getVolumeInUnitOfDb
 
 ```TypeScript
@@ -669,7 +652,6 @@ Gets the volume db value that system calculate by volume type, volume level and 
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="isappvolumemutedforuid"></a>
 ## isAppVolumeMutedForUid
 
 ```TypeScript
@@ -720,7 +702,6 @@ audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
 
 ```
 
-<a id="issystemmuted"></a>
 ## isSystemMuted
 
 ```TypeScript
@@ -756,7 +737,6 @@ Checks whether a volume type is muted.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="off"></a>
 ## off('appVolumeChangeForUid')
 
 ```TypeScript
@@ -809,7 +789,6 @@ audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 
 ```
 
-<a id="off-1"></a>
 ## off('activeVolumeTypeChange')
 
 ```TypeScript
@@ -857,7 +836,6 @@ audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback)
 
 ```
 
-<a id="off-2"></a>
 ## off('systemVolumeChange')
 
 ```TypeScript
@@ -905,7 +883,6 @@ audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
 
 ```
 
-<a id="offsystemvolumechangebyfilter"></a>
 ## offSystemVolumeChangeByFilter
 
 ```TypeScript
@@ -937,7 +914,6 @@ offSystemVolumeChangeByFilter(callback?: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="offvolumepercentagechange"></a>
 ## offVolumePercentageChange
 
 ```TypeScript
@@ -987,7 +963,6 @@ audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
 
 ```
 
-<a id="on"></a>
 ## on('appVolumeChangeForUid')
 
 ```TypeScript
@@ -1035,7 +1010,6 @@ audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEv
 
 ```
 
-<a id="on-1"></a>
 ## on('activeVolumeTypeChange')
 
 ```TypeScript
@@ -1075,7 +1049,6 @@ audioVolumeManager.on('activeVolumeTypeChange', (volumeType: audio.AudioVolumeTy
 
 ```
 
-<a id="on-2"></a>
 ## on('systemVolumeChange')
 
 ```TypeScript
@@ -1115,7 +1088,6 @@ audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => 
 
 ```
 
-<a id="onsystemvolumechangebyfilter"></a>
 ## onSystemVolumeChangeByFilter
 
 ```TypeScript
@@ -1148,7 +1120,6 @@ onSystemVolumeChangeByFilter(filter: SystemVolumeFilter, callback: Callback<Volu
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not a system app. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="onvolumepercentagechange"></a>
 ## onVolumePercentageChange
 
 ```TypeScript
@@ -1190,7 +1161,6 @@ onVolumePercentageChange((volumeEvent: audio.VolumeEvent) => {
 
 ```
 
-<a id="setappvolumemutedforuid"></a>
 ## setAppVolumeMutedForUid
 
 ```TypeScript
@@ -1242,7 +1212,6 @@ audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
 
 ```
 
-<a id="setappvolumepercentageforuid"></a>
 ## setAppVolumePercentageForUid
 
 ```TypeScript
@@ -1295,7 +1264,6 @@ audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
 
 ```
 
-<a id="setsystemvolumebyuid"></a>
 ## setSystemVolumeByUid
 
 ```TypeScript
@@ -1337,7 +1305,6 @@ Sets the volume for specific uid application. This method uses a promise to retu
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
-<a id="setsystemvolumepercentage"></a>
 ## setSystemVolumePercentage
 
 ```TypeScript

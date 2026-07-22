@@ -6,7 +6,6 @@
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="registerprovider"></a>
 ## registerProvider
 
 ```TypeScript

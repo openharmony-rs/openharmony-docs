@@ -6,7 +6,6 @@
 import { display } from '@kit.ArkUI';
 ```
 
-<a id="getalldisplay"></a>
 ## getAllDisplay
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getAllDisplay(callback: AsyncCallback<Array<Display>>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getAllDisplays(callback:](arkts-arkui-display-getalldisplays-f.md#getalldisplays-1)
+**替代接口：** [getAllDisplays(callback:](arkts-arkui-display-getalldisplays-f.md#getalldisplays)
 
 <!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void--><!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void-End-->
 
@@ -48,7 +47,6 @@ display.getAllDisplay((err: BusinessError, data: Array<display.Display>) => {
 ```
 
 
-<a id="getalldisplay-1"></a>
 ## getAllDisplay
 
 ```TypeScript
@@ -61,7 +59,7 @@ function getAllDisplay(): Promise<Array<Display>>
 
 **废弃版本：** 9
 
-**替代接口：** [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays-1)
+**替代接口：** [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays)
 
 <!--Device-display-function getAllDisplay(): Promise<Array<Display>>--><!--Device-display-function getAllDisplay(): Promise<Array<Display>>-End-->
 

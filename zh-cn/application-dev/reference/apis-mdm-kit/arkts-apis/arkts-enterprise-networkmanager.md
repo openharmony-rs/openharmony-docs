@@ -1,12 +1,11 @@
 # @ohos.enterprise.networkManager
 
 本模块提供设备网络管理能力，包括查询设备IP地址、MAC地址信息等。
-
 > **说明：**  
 >  
 > 本模块接口仅可在Stage模型下使用。  
 >  
-> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](docroot://mdm/mdm-kit-guide.md)。
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../mdm/mdm-kit-guide.md)。
 
 **起始版本：** 10
 
@@ -40,8 +39,8 @@ import { networkManager } from '@kit.MDMKit';
 | [isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md#isnetworkinterfacedisabledsync) | 查询指定网络接口是否被禁用。 |
 | [queryApn](arkts-mdm-networkmanager-queryapn-f.md#queryapn) | 查询符合特定APN信息的APN ID。 |
 | [queryApn](arkts-mdm-networkmanager-queryapn-f.md#queryapn-1) | 查询特定APN的APN参数信息。 |
-| [removeDomainFilterRule](arkts-mdm-networkmanager-removedomainfilterrule-f.md#removedomainfilterrule) | 移除设备域名过滤规则。  API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。  从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md)。  移除规则后如果不存在[Action](arkts-mdm-networkmanager-action-e.md)为ALLOW规则后，会将[addDomainFilterRule](arkts-mdm-networkmanager-adddomainfilterrule-f.md#adddomainfilterrule-1)添加的默认DENY规则清空。 |
-| [removeFirewallRule](arkts-mdm-networkmanager-removefirewallrule-f.md#removefirewallrule) | 移除设备防火墙过滤规则。  API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。  从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md)。  移除规则后如果不存在[Action](arkts-mdm-networkmanager-action-e.md)为ALLOW规则后，会将[addFirewallRule](arkts-mdm-networkmanager-addfirewallrule-f.md#addfirewallrule-1)添加的默认DENY规则清空。 |
+| [removeDomainFilterRule](arkts-mdm-networkmanager-removedomainfilterrule-f.md#removedomainfilterrule) | 移除设备域名过滤规则。  API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。  从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md)。  移除规则后如果不存在[Action](arkts-mdm-networkmanager-action-e.md)为ALLOW规则后，会将[addDomainFilterRule](arkts-mdm-networkmanager-adddomainfilterrule-f.md#adddomainfilterrule)添加的默认DENY规则清空。 |
+| [removeFirewallRule](arkts-mdm-networkmanager-removefirewallrule-f.md#removefirewallrule) | 移除设备防火墙过滤规则。  API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。  从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md)。  移除规则后如果不存在[Action](arkts-mdm-networkmanager-action-e.md)为ALLOW规则后，会将[addFirewallRule](arkts-mdm-networkmanager-addfirewallrule-f.md#addfirewallrule)添加的默认DENY规则清空。 |
 | [setEthernetConfig](arkts-mdm-networkmanager-setethernetconfig-f.md#setethernetconfig) | 设置特定以太网网络接口的IP地址。 |
 | [setGlobalProxyForAccount](arkts-mdm-networkmanager-setglobalproxyforaccount-f.md#setglobalproxyforaccount) | 设置指定用户下的网络代理。 |
 | [setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md#setglobalproxysync) | 设置网络全局代理。 |

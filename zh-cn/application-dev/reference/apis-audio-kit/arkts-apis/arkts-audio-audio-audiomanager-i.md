@@ -2,7 +2,7 @@
 
 音频音量和设备管理。
 
-在使用AudioManager的接口之前，需先通过[getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager-1)获取AudioManager实例。
+在使用AudioManager的接口之前，需先通过[getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager)获取AudioManager实例。
 
 **起始版本：** 7
 
@@ -16,7 +16,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="getaudioparameter"></a>
 ## getAudioParameter
 
 ```TypeScript
@@ -26,7 +25,6 @@ getAudioParameter(key: string, callback: AsyncCallback<string>): void
 获取指定音频参数值。使用callback异步回调。
 
 本接口的使用场景为：根据硬件设备的支持能力扩展音频配置。在不同的设备平台上，所支持的音频参数会存在差异。示例代码内使用样例参数，实际支持的音频配置参数见具体设备平台的资料描述。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 11开始废弃。
@@ -46,7 +44,6 @@ getAudioParameter(key: string, callback: AsyncCallback<string>): void
 | key | string | 是 | 待获取的音频参数的键。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取指定音频参数值成功，err为undefined，data为获取到的指定音频参数值；否则为错误对象。 |
 
-<a id="getaudioparameter-1"></a>
 ## getAudioParameter
 
 ```TypeScript
@@ -56,7 +53,6 @@ getAudioParameter(key: string): Promise<string>
 获取指定音频参数值。使用Promise异步回调。
 
 本接口的使用场景为：根据硬件设备的支持能力扩展音频配置。在不同的设备平台上，所支持的音频参数会存在差异。示例代码内使用样例参数，实际支持的音频配置参数见具体设备平台的资料描述。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 11开始废弃。
@@ -81,7 +77,6 @@ getAudioParameter(key: string): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回获取的音频参数值。 |
 
-<a id="getaudioscene"></a>
 ## getAudioScene
 
 ```TypeScript
@@ -102,7 +97,6 @@ getAudioScene(callback: AsyncCallback<AudioScene>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioScene&gt; | 是 | 回调函数。当获取音频场景模式成功，err为undefined，data为获取到的音频场景模式；否则为错误对象。 |
 
-<a id="getaudioscene-1"></a>
 ## getAudioScene
 
 ```TypeScript
@@ -123,7 +117,6 @@ getAudioScene(): Promise<AudioScene>
 | --- | --- |
 | Promise&lt;AudioScene&gt; | Promise对象，返回音频场景模式。 |
 
-<a id="getaudioscenesync"></a>
 ## getAudioSceneSync
 
 ```TypeScript
@@ -144,7 +137,6 @@ getAudioSceneSync(): AudioScene
 | --- | --- |
 | [AudioScene](arkts-audio-audio-audioscene-e.md) | 音频场景模式。 |
 
-<a id="getdebuggingmanager"></a>
 ## getDebuggingManager
 
 ```TypeScript
@@ -167,7 +159,6 @@ getDebuggingManager(): AudioDebuggingManager
 | --- | --- |
 | [AudioDebuggingManager](arkts-audio-audio-audiodebuggingmanager-i.md) | 返回AudioDebuggingManager实例。 |
 
-<a id="getdeviceenhancemanager"></a>
 ## getDeviceEnhanceManager
 
 ```TypeScript
@@ -190,7 +181,6 @@ getDeviceEnhanceManager(): AudioDeviceEnhanceManager
 | --- | --- |
 | [AudioDeviceEnhanceManager](arkts-audio-audio-audiodeviceenhancemanager-i.md) | 返回一个AudioDeviceEnhanceManager实例。 |
 
-<a id="getdevices"></a>
 ## getDevices
 
 ```TypeScript
@@ -216,7 +206,6 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptor
 | deviceFlag | [DeviceFlag](arkts-audio-audio-deviceflag-e.md) | 是 | 音频设备类型。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数。当获取音频设备列表成功，err为undefined，data为获取到的音频设备列表；否则为错误对象。 |
 
-<a id="getdevices-1"></a>
 ## getDevices
 
 ```TypeScript
@@ -247,7 +236,6 @@ getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>
 | --- | --- |
 | Promise&lt;AudioDeviceDescriptors&gt; | Promise对象，返回设备列表。 |
 
-<a id="getmaxvolume"></a>
 ## getMaxVolume
 
 ```TypeScript
@@ -255,7 +243,6 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 ```
 
 获取指定流的最大音量等级。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -277,7 +264,6 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
 
-<a id="getmaxvolume-1"></a>
 ## getMaxVolume
 
 ```TypeScript
@@ -285,7 +271,6 @@ getMaxVolume(volumeType: AudioVolumeType): Promise<number>
 ```
 
 获取指定流的最大音量等级。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -312,7 +297,6 @@ getMaxVolume(volumeType: AudioVolumeType): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回最大音量等级。 |
 
-<a id="getminvolume"></a>
 ## getMinVolume
 
 ```TypeScript
@@ -320,7 +304,6 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 ```
 
 获取指定流的最小音量等级。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -342,7 +325,6 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
 
-<a id="getminvolume-1"></a>
 ## getMinVolume
 
 ```TypeScript
@@ -350,7 +332,6 @@ getMinVolume(volumeType: AudioVolumeType): Promise<number>
 ```
 
 获取指定流的最小音量等级。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -377,7 +358,6 @@ getMinVolume(volumeType: AudioVolumeType): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回最小音量等级。 |
 
-<a id="getringermode"></a>
 ## getRingerMode
 
 ```TypeScript
@@ -402,7 +382,6 @@ getRingerMode(callback: AsyncCallback<AudioRingMode>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioRingMode&gt; | 是 | 回调函数。当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。 |
 
-<a id="getringermode-1"></a>
 ## getRingerMode
 
 ```TypeScript
@@ -427,7 +406,6 @@ getRingerMode(): Promise<AudioRingMode>
 | --- | --- |
 | Promise&lt;AudioRingMode&gt; | Promise对象，返回系统的铃声模式。 |
 
-<a id="getroutingmanager"></a>
 ## getRoutingManager
 
 ```TypeScript
@@ -448,7 +426,6 @@ getRoutingManager(): AudioRoutingManager
 | --- | --- |
 | [AudioRoutingManager](arkts-audio-audio-audioroutingmanager-i.md) | AudioRoutingManager实例。 |
 
-<a id="getsessionmanager"></a>
 ## getSessionManager
 
 ```TypeScript
@@ -471,7 +448,6 @@ getSessionManager(): AudioSessionManager
 | --- | --- |
 | [AudioSessionManager](arkts-audio-audio-audiosessionmanager-i.md) | AudioSessionManager实例。 |
 
-<a id="getspatializationmanager"></a>
 ## getSpatializationManager
 
 ```TypeScript
@@ -492,7 +468,6 @@ getSpatializationManager(): AudioSpatializationManager
 | --- | --- |
 | [AudioSpatializationManager](arkts-audio-audio-audiospatializationmanager-i.md) | AudioSpatializationManager实例。 |
 
-<a id="getstreammanager"></a>
 ## getStreamManager
 
 ```TypeScript
@@ -513,7 +488,6 @@ getStreamManager(): AudioStreamManager
 | --- | --- |
 | [AudioStreamManager](arkts-audio-audio-audiostreammanager-i.md) | AudioStreamManager实例。 |
 
-<a id="getvolume"></a>
 ## getVolume
 
 ```TypeScript
@@ -521,7 +495,6 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 ```
 
 获取指定流的音量等级。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -541,9 +514,8 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](arkts-audio-audio-audiomanager-i.md#getminvolume-1)和[getMaxVolume](arkts-audio-audio-audiomanager-i.md#getmaxvolume-1)获取。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](arkts-audio-audio-audiomanager-i.md#getminvolume)和[getMaxVolume](arkts-audio-audio-audiomanager-i.md#getmaxvolume)获取。 |
 
-<a id="getvolume-1"></a>
 ## getVolume
 
 ```TypeScript
@@ -551,7 +523,6 @@ getVolume(volumeType: AudioVolumeType): Promise<number>
 ```
 
 获取指定流的音量等级。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -576,9 +547,8 @@ getVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](arkts-audio-audio-audiomanager-i.md#getminvolume-1)和[getMaxVolume](arkts-audio-audio-audiomanager-i.md#getmaxvolume-1)获取。 |
+| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](arkts-audio-audio-audiomanager-i.md#getminvolume)和[getMaxVolume](arkts-audio-audio-audiomanager-i.md#getmaxvolume)获取。 |
 
-<a id="getvolumemanager"></a>
 ## getVolumeManager
 
 ```TypeScript
@@ -601,7 +571,6 @@ getVolumeManager(): AudioVolumeManager
 | --- | --- |
 | [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i.md) | AudioVolumeManager实例。 |
 
-<a id="isactive"></a>
 ## isActive
 
 ```TypeScript
@@ -609,7 +578,6 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 ```
 
 获取指定音量流的活跃状态。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -631,7 +599,6 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流的活跃状态成功，err为undefined，data为true表示活跃，false表示不活跃；否则为错误对象。 |
 
-<a id="isactive-1"></a>
 ## isActive
 
 ```TypeScript
@@ -639,7 +606,6 @@ isActive(volumeType: AudioVolumeType): Promise<boolean>
 ```
 
 获取指定音量流的活跃状态。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -666,7 +632,6 @@ isActive(volumeType: AudioVolumeType): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示流状态为活跃；返回false表示流状态不活跃。 |
 
-<a id="isdeviceactive"></a>
 ## isDeviceActive
 
 ```TypeScript
@@ -692,7 +657,6 @@ isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): 
 | deviceType | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | 是 | 活跃音频设备类型。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定设备的激活状态成功，err为undefined，data为true表示激活，false表示未激活；否则为错误对象。 |
 
-<a id="isdeviceactive-1"></a>
 ## isDeviceActive
 
 ```TypeScript
@@ -723,7 +687,6 @@ isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示设备已激活；返回false表示设备未激活。 |
 
-<a id="ismicrophonemute"></a>
 ## isMicrophoneMute
 
 ```TypeScript
@@ -750,7 +713,6 @@ isMicrophoneMute(callback: AsyncCallback<boolean>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
 
-<a id="ismicrophonemute-1"></a>
 ## isMicrophoneMute
 
 ```TypeScript
@@ -777,7 +739,6 @@ isMicrophoneMute(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示麦克风被静音；返回false表示麦克风未被静音。 |
 
-<a id="ismute"></a>
 ## isMute
 
 ```TypeScript
@@ -785,7 +746,6 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 ```
 
 获取指定音量流的静音状态。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -807,7 +767,6 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流的静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
 
-<a id="ismute-1"></a>
 ## isMute
 
 ```TypeScript
@@ -815,7 +774,6 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 ```
 
 获取指定音量流的静音状态。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19
@@ -842,7 +800,6 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示静音；返回false表示非静音。 |
 
-<a id="mute"></a>
 ## mute
 
 ```TypeScript
@@ -852,7 +809,6 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>):
 设置指定音量流静音。使用callback异步回调。
 
 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。
-
 > **说明：**  
 >  
 > - 从API version 7开始支持，从API version 9开始废弃。  
@@ -878,7 +834,6 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>):
 | mute | boolean | 是 | 是否设置指定音量流为静音状态。true表示静音，false表示非静音。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置指定音量流静音成功，err为undefined，否则为错误对象。 |
 
-<a id="mute-1"></a>
 ## mute
 
 ```TypeScript
@@ -888,7 +843,6 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
 设置指定音量流静音。使用Promise异步回调。
 
 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。
-
 > **说明：**  
 >  
 > - 从API version 7开始支持，从API version 9开始废弃。  
@@ -919,7 +873,6 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="off"></a>
 ## off('audioSceneChange')
 
 ```TypeScript
@@ -941,7 +894,6 @@ off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void
 | type | 'audioSceneChange' | 是 | 事件回调类型，支持的事件为'audioSceneChange'，当取消监听当前音频场景变化事件时，触发该事件。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioScene&gt; | 否 | 回调函数，返回当前音频场景模式。 |
 
-<a id="off-1"></a>
 ## off('deviceChange')
 
 ```TypeScript
@@ -967,7 +919,6 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void
 | type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'，当取消监听音频设备连接变化事件时，触发该事件。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceChangeAction&gt; | 否 | 回调函数，返回设备更新详情。 |
 
-<a id="off-2"></a>
 ## off('interrupt')
 
 ```TypeScript
@@ -994,7 +945,6 @@ off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptA
 | interrupt | [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | 是 | 音频打断事件类型的参数。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;InterruptAction&gt; | 否 | 回调函数，返回打断事件信息。 |
 
-<a id="on"></a>
 ## on('audioSceneChange')
 
 ```TypeScript
@@ -1016,7 +966,6 @@ on(type: 'audioSceneChange', callback: Callback<AudioScene>): void
 | type | 'audioSceneChange' | 是 | 事件回调类型，支持的事件为'audioSceneChange'，当音频场景模式发生变化时，触发该事件。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioScene&gt; | 是 | 回调函数，返回当前音频场景模式。 |
 
-<a id="on-1"></a>
 ## on('deviceChange')
 
 ```TypeScript
@@ -1042,7 +991,6 @@ on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void
 | type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'，当音频设备连接状态发生变化时，触发该事件。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceChangeAction&gt; | 是 | 回调函数，返回设备更新详情。 |
 
-<a id="on-2"></a>
 ## on('interrupt')
 
 ```TypeScript
@@ -1071,7 +1019,6 @@ on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAct
 | interrupt | [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | 是 | 音频打断事件类型的参数。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;InterruptAction&gt; | 是 | 回调函数，返回打断事件信息。 |
 
-<a id="setaudioparameter"></a>
 ## setAudioParameter
 
 ```TypeScript
@@ -1081,7 +1028,6 @@ setAudioParameter(key: string, value: string, callback: AsyncCallback<void>): vo
 音频参数设置。使用callback异步回调。
 
 接口根据硬件设备的支持能力扩展音频配置。支持的参数与产品和设备强相关，非通用参数，示例代码内使用样例参数。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 11开始废弃。
@@ -1104,7 +1050,6 @@ setAudioParameter(key: string, value: string, callback: AsyncCallback<void>): vo
 | value | string | 是 | 被设置的音频参数的值。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当音频参数设置成功，err为undefined，否则为错误对象。 |
 
-<a id="setaudioparameter-1"></a>
 ## setAudioParameter
 
 ```TypeScript
@@ -1114,7 +1059,6 @@ setAudioParameter(key: string, value: string): Promise<void>
 音频参数设置。使用Promise异步回调。
 
 接口根据硬件设备的支持能力扩展音频配置。支持的参数与产品和设备强相关，非通用参数，示例代码内使用样例参数。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 11开始废弃。
@@ -1142,7 +1086,6 @@ setAudioParameter(key: string, value: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="setdeviceactive"></a>
 ## setDeviceActive
 
 ```TypeScript
@@ -1169,7 +1112,6 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCa
 | active | boolean | 是 | 是否设置设备为激活状态。true表示已激活，false表示未激活。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置设备激活状态成功，err为undefined，否则为错误对象。 |
 
-<a id="setdeviceactive-1"></a>
 ## setDeviceActive
 
 ```TypeScript
@@ -1201,7 +1143,6 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="setmicrophonemute"></a>
 ## setMicrophoneMute
 
 ```TypeScript
@@ -1209,7 +1150,6 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback<void>): void
 ```
 
 设置麦克风静音状态。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。
@@ -1231,7 +1171,6 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback<void>): void
 | mute | boolean | 是 | 是否设置麦克风为静音状态。true表示静音，false表示非静音。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置麦克风静音状态成功，err为undefined，否则为错误对象。 |
 
-<a id="setmicrophonemute-1"></a>
 ## setMicrophoneMute
 
 ```TypeScript
@@ -1239,7 +1178,6 @@ setMicrophoneMute(mute: boolean): Promise<void>
 ```
 
 设置麦克风静音状态。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。
@@ -1266,7 +1204,6 @@ setMicrophoneMute(mute: boolean): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="setringermode"></a>
 ## setRingerMode
 
 ```TypeScript
@@ -1274,7 +1211,6 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback<void>): void
 ```
 
 设置铃声模式。使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。
@@ -1296,7 +1232,6 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback<void>): void
 | mode | [AudioRingMode](arkts-audio-audio-audioringmode-e.md) | 是 | 音频铃声模式。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置铃声模式成功，err为undefined，否则为错误对象。 |
 
-<a id="setringermode-1"></a>
 ## setRingerMode
 
 ```TypeScript
@@ -1304,7 +1239,6 @@ setRingerMode(mode: AudioRingMode): Promise<void>
 ```
 
 设置铃声模式。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃。
@@ -1331,7 +1265,6 @@ setRingerMode(mode: AudioRingMode): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="setvolume"></a>
 ## setVolume
 
 ```TypeScript
@@ -1339,7 +1272,6 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<v
 ```
 
 设置指定流的音量等级。使用callback异步回调。
-
 > **说明：**  
 >  
 > - 从API version 7开始支持，从API version 9开始废弃。  
@@ -1364,10 +1296,9 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](arkts-audio-audio-audiomanager-i.md#getminvolume-1)和[getMaxVolume](arkts-audio-audio-audiomanager-i.md#getmaxvolume-1)获取。 |
+| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](arkts-audio-audio-audiomanager-i.md#getminvolume)和[getMaxVolume](arkts-audio-audio-audiomanager-i.md#getmaxvolume)获取。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置指定流的音量成功，err为undefined，否则为错误对象。 |
 
-<a id="setvolume-1"></a>
 ## setVolume
 
 ```TypeScript
@@ -1375,7 +1306,6 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>
 ```
 
 设置指定流的音量等级。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 从API version 7开始支持，从API version 9开始废弃。  
@@ -1400,7 +1330,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](arkts-audio-audio-audiomanager-i.md#getminvolume-1)和[getMaxVolume](arkts-audio-audio-audiomanager-i.md#getmaxvolume-1)获取。 |
+| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](arkts-audio-audio-audiomanager-i.md#getminvolume)和[getMaxVolume](arkts-audio-audio-audiomanager-i.md#getmaxvolume)获取。 |
 
 **返回值：**
 

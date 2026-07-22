@@ -6,7 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="querybundlestatsinfobyinterval"></a>
 ## queryBundleStatsInfoByInterval
 
 ```TypeScript
@@ -24,17 +23,7 @@ function queryBundleStatsInfoByInterval(
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
-<!--Device-usageStatistics-function queryBundleStatsInfoByInterval(
-    byInterval: IntervalType,
-    begin: long,
-    end: long,
-    callback: AsyncCallback<Array<BundleStatsInfo>>
-  ): void--><!--Device-usageStatistics-function queryBundleStatsInfoByInterval(
-    byInterval: IntervalType,
-    begin: long,
-    end: long,
-    callback: AsyncCallback<Array<BundleStatsInfo>>
-  ): void-End-->
+<!--Device-usageStatistics-function queryBundleStatsInfoByInterval(    byInterval: IntervalType,    begin: long,    end: long,    callback: AsyncCallback<Array<BundleStatsInfo>>  ): void--><!--Device-usageStatistics-function queryBundleStatsInfoByInterval(    byInterval: IntervalType,    begin: long,    end: long,    callback: AsyncCallback<Array<BundleStatsInfo>>  ): void-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -85,7 +74,6 @@ usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000, (err: Busin
 ```
 
 
-<a id="querybundlestatsinfobyinterval-1"></a>
 ## queryBundleStatsInfoByInterval
 
 ```TypeScript
@@ -102,15 +90,7 @@ function queryBundleStatsInfoByInterval(
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
-<!--Device-usageStatistics-function queryBundleStatsInfoByInterval(
-    byInterval: IntervalType,
-    begin: long,
-    end: long
-  ): Promise<Array<BundleStatsInfo>>--><!--Device-usageStatistics-function queryBundleStatsInfoByInterval(
-    byInterval: IntervalType,
-    begin: long,
-    end: long
-  ): Promise<Array<BundleStatsInfo>>-End-->
+<!--Device-usageStatistics-function queryBundleStatsInfoByInterval(    byInterval: IntervalType,    begin: long,    end: long  ): Promise<Array<BundleStatsInfo>>--><!--Device-usageStatistics-function queryBundleStatsInfoByInterval(    byInterval: IntervalType,    begin: long,    end: long  ): Promise<Array<BundleStatsInfo>>-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 

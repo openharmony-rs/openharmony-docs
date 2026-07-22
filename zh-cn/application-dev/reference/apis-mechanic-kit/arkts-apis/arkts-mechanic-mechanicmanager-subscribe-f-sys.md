@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="subscribe"></a>
 ## subscribe
 
 ```TypeScript
 function subscribe(events: MechEventType[], callback: Callback<MechEvent>): void
 ```
 
-Subscribe to the specified events.
+订阅具身设备事件回调
 
 **起始版本：** 26.0.0
 
@@ -27,8 +26,8 @@ Subscribe to the specified events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| events | [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)[] | 是 | Events to subscribe to. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MechEvent&gt; | 是 | Callback of event. |
+| events | [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)[] | 是 | 订阅的事件列表。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MechEvent&gt; | 是 | 事件回调函数。 |
 
 **错误码：**
 

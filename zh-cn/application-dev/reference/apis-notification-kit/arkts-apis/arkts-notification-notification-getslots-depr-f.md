@@ -1,6 +1,5 @@
 # getSlots
 
-<a id="getslots"></a>
 ## getSlots
 
 ```TypeScript
@@ -26,7 +25,6 @@ function getSlots(callback: AsyncCallback<Array<NotificationSlot>>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;NotificationSlot&gt;&gt; | 是 | 以callback形式返回获取此应用程序的所有通知通道的结果。 |
 
 
-<a id="getslots-1"></a>
 ## getSlots
 
 ```TypeScript

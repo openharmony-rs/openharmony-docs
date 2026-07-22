@@ -6,7 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="registerappgroupcallback"></a>
 ## registerAppGroupCallBack
 
 ```TypeScript
@@ -71,7 +70,6 @@ usageStatistics.registerAppGroupCallBack(onBundleGroupChanged, (err: BusinessErr
 ```
 
 
-<a id="registerappgroupcallback-1"></a>
 ## registerAppGroupCallBack
 
 ```TypeScript

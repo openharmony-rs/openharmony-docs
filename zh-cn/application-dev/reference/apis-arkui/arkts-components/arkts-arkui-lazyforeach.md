@@ -24,15 +24,7 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyForEachInterface-(
-    dataSource: IDataSource,
-    itemGenerator: (item: any, index: number) => void,
-    keyGenerator?: (item: any, index: number) => string
-  ): LazyForEachAttribute--><!--Device-LazyForEachInterface-(
-    dataSource: IDataSource,
-    itemGenerator: (item: any, index: number) => void,
-    keyGenerator?: (item: any, index: number) => string
-  ): LazyForEachAttribute-End-->
+<!--Device-LazyForEachInterface-(    dataSource: IDataSource,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string  ): LazyForEachAttribute--><!--Device-LazyForEachInterface-(    dataSource: IDataSource,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string  ): LazyForEachAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,17 +55,7 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyForEachInterface-(
-    dataSource: IDataSource,
-    itemGenerator: (item: any, index: number) => void,
-    keyGenerator?: (item: any, index: number) => string,
-    options?: LazyForEachOptions
-  ): LazyForEachAttribute--><!--Device-LazyForEachInterface-(
-    dataSource: IDataSource,
-    itemGenerator: (item: any, index: number) => void,
-    keyGenerator?: (item: any, index: number) => string,
-    options?: LazyForEachOptions
-  ): LazyForEachAttribute-End-->
+<!--Device-LazyForEachInterface-(    dataSource: IDataSource,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string,    options?: LazyForEachOptions  ): LazyForEachAttribute--><!--Device-LazyForEachInterface-(    dataSource: IDataSource,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string,    options?: LazyForEachOptions  ): LazyForEachAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

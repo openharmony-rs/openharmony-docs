@@ -6,7 +6,6 @@
 import { distributedBundle } from '@kit.AbilityKit';
 ```
 
-<a id="getremoteabilityinfos"></a>
 ## getRemoteAbilityInfos
 
 ```TypeScript
@@ -24,9 +23,7 @@ function getRemoteAbilityInfos(elementNames: Array<ElementName>,
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-<!--Device-distributedBundle-function getRemoteAbilityInfos(elementNames: Array<ElementName>,
-    callback: AsyncCallback<Array<RemoteAbilityInfo>>): void--><!--Device-distributedBundle-function getRemoteAbilityInfos(elementNames: Array<ElementName>,
-    callback: AsyncCallback<Array<RemoteAbilityInfo>>): void-End-->
+<!--Device-distributedBundle-function getRemoteAbilityInfos(elementNames: Array<ElementName>,    callback: AsyncCallback<Array<RemoteAbilityInfo>>): void--><!--Device-distributedBundle-function getRemoteAbilityInfos(elementNames: Array<ElementName>,    callback: AsyncCallback<Array<RemoteAbilityInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -40,7 +37,6 @@ function getRemoteAbilityInfos(elementNames: Array<ElementName>,
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;RemoteAbilityInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回远程基本能力信息。 |
 
 
-<a id="getremoteabilityinfos-1"></a>
 ## getRemoteAbilityInfos
 
 ```TypeScript

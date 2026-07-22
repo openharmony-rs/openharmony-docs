@@ -1,6 +1,5 @@
 # getBundleName
 
-<a id="getbundlename"></a>
 ## getBundleName
 
 ```TypeScript
@@ -84,7 +83,6 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="getbundlename-1"></a>
 ## getBundleName
 
 ```TypeScript

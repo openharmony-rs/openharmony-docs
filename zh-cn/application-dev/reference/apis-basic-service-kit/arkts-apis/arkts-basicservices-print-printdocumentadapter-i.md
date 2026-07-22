@@ -14,7 +14,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="onjobstatechanged"></a>
 ## onJobStateChanged
 
 ```TypeScript
@@ -73,7 +72,6 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 
 ```
 
-<a id="onstartlayoutwrite"></a>
 ## onStartLayoutWrite
 
 ```TypeScript
@@ -87,9 +85,7 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 
 **需要权限：** ohos.permission.PRINT
 
-<!--Device-PrintDocumentAdapter-onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: int,
-      writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void--><!--Device-PrintDocumentAdapter-onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: int,
-      writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void-End-->
+<!--Device-PrintDocumentAdapter-onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: int,      writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void--><!--Device-PrintDocumentAdapter-onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: int,      writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="makeexpand"></a>
 ## makeExpand
 
 ```TypeScript
@@ -68,7 +67,6 @@ screen.makeExpand(expandOptionArray, (err: BusinessError, data: number) => {
 ```
 
 
-<a id="makeexpand-1"></a>
 ## makeExpand
 
 ```TypeScript

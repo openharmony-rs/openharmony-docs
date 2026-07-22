@@ -6,7 +6,6 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="getappnativememinfo"></a>
 ## getAppNativeMemInfo
 
 ```TypeScript
@@ -14,7 +13,6 @@ function getAppNativeMemInfo(): NativeMemInfo
 ```
 
 ��ȡӦ�ý����ڴ���Ϣ����ȡ/proc/{pid}/smaps_rollup��/proc/{pid}/statm�ڵ�����ݡ�
-
 > **ע��**  
 >  
 > ���ڶ�ȡ/proc/{pid}/smaps_rollup��ʱ�ϳ����Ƽ�ʹ���첽�ӿ�hidebug.getAppNativeMemInfoAsync���Ա���Ӧ�ö�֡�򿨶١�  

@@ -6,7 +6,6 @@
 import { systemTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getdate"></a>
 ## getDate
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getDate(callback: AsyncCallback<Date>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate-1)
+**替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate)
 
 <!--Device-systemTime-function getDate(callback: AsyncCallback<Date>): void--><!--Device-systemTime-function getDate(callback: AsyncCallback<Date>): void-End-->
 
@@ -58,7 +57,6 @@ try {
 ```
 
 
-<a id="getdate-1"></a>
 ## getDate
 
 ```TypeScript
@@ -71,7 +69,7 @@ function getDate(): Promise<Date>
 
 **废弃版本：** 9
 
-**替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate-1)
+**替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate)
 
 <!--Device-systemTime-function getDate(): Promise<Date>--><!--Device-systemTime-function getDate(): Promise<Date>-End-->
 

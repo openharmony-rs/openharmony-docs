@@ -6,7 +6,6 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="querycurrentbundleactivestates"></a>
 ## queryCurrentBundleActiveStates
 
 ```TypeScript
@@ -23,15 +22,7 @@ Queries state data of the current bundle within a specified period.
 
 **废弃版本：** 9
 
-<!--Device-bundleState-function queryCurrentBundleActiveStates(
-    begin: number,
-    end: number,
-    callback: AsyncCallback<Array<BundleActiveState>>
-  ): void--><!--Device-bundleState-function queryCurrentBundleActiveStates(
-    begin: number,
-    end: number,
-    callback: AsyncCallback<Array<BundleActiveState>>
-  ): void-End-->
+<!--Device-bundleState-function queryCurrentBundleActiveStates(    begin: number,    end: number,    callback: AsyncCallback<Array<BundleActiveState>>  ): void--><!--Device-bundleState-function queryCurrentBundleActiveStates(    begin: number,    end: number,    callback: AsyncCallback<Array<BundleActiveState>>  ): void-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -64,7 +55,6 @@ bundleState.queryCurrentBundleActiveStates(0, 20000000000000, (err: BusinessErro
 ```
 
 
-<a id="querycurrentbundleactivestates-1"></a>
 ## queryCurrentBundleActiveStates
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # getMinWidthSync（系统接口）
 
-<a id="getminwidthsync"></a>
 ## getMinWidthSync
 
 ```TypeScript

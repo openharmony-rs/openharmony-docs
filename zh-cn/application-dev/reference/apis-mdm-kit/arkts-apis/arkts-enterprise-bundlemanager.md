@@ -1,12 +1,11 @@
 # @ohos.enterprise.bundleManager
 
 本模块提供包管理能力，包括添加包安装允许名单、获取包安装允许名单、移除包安装允许名单等。
-
 > **说明：**  
 >  
 > 本模块接口仅可在Stage模型下使用。  
 >  
-> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](docroot://mdm/mdm-kit-guide.md)。
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../mdm/mdm-kit-guide.md)。
 
 **起始版本：** 10
 
@@ -37,7 +36,7 @@ import { bundleManager } from '@kit.MDMKit';
 | [getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md#getinstalledbundlelist) | 获取设备指定用户下已安装应用列表。使用Promise异步回调。 |
 | [getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md#getinstalledbundlelist-1) | 根据给定的bundleInfoGetFlag获取设备指定用户下已安装应用列表。使用Promise异步回调。 |
 | [getInstalledBundleStorageStats](arkts-mdm-bundlemanager-getinstalledbundlestoragestats-f.md#getinstalledbundlestoragestats) | 获取设备指定用户下已安装应用的存储占用信息。使用Promise异步回调。 |
-| [install](arkts-mdm-bundlemanager-install-f.md#install-2) | 安装指定路径下的应用包。使用Promise异步回调。</br>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口查询应用自身的[BundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-i.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。 |
+| [install](arkts-mdm-bundlemanager-install-f.md#install-2) | 安装指定路径下的应用包。使用Promise异步回调。</br>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接口查询应用自身的[BundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-i.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。 |
 | [installForResult](arkts-mdm-bundlemanager-installforresult-f.md#installforresult) | 安装应用 |
 | [installMarketApps](arkts-mdm-bundlemanager-installmarketapps-f.md#installmarketapps) | 下载并安装应用市场应用。 |
 | [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync) | 在应用程序包安装允许名单中移除应用，在允许名单存在的情况下，不在应用程序包安装允许名单中的应用不允许在当前/指定用户下安装。 |

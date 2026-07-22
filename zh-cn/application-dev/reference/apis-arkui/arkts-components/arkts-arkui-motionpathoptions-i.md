@@ -40,7 +40,7 @@ from?: number
 path: string
 ```
 
-位移动画的运动路径，使用[svg路径字符串](docroot://reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。path中支持使用start和end进行起点和终点的替代，如：'Mstart.x start.y L50 50 Lend.x end.y Z'，更多说明请参考[绘制路径](docroot://ui/ui-js-components-svg-path.md)。
+位移动画的运动路径，使用[svg路径字符串](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。path中支持使用start和end进行起点和终点的替代，如：'Mstart.x start.y L50 50 Lend.x end.y Z'，更多说明请参考[绘制路径](../../../ui/ui-js-components-svg-path.md)。
 
 设置为空字符串时相当于不设置路径动画。
 

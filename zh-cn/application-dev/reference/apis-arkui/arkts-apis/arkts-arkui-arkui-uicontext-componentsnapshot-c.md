@@ -1,12 +1,11 @@
 # ComponentSnapshot
 
 提供获取组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 12开始支持。  
 >  
-> - 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot-1)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。  
+> - 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。  
 >  
 > - 缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的还是图形变换前的效果。
 
@@ -22,7 +21,6 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="createfrombuilder"></a>
 ## createFromBuilder
 
 ```TypeScript
@@ -31,7 +29,6 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 ```
 
 传入[CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md)自定义组件，系统对其进行离屏构建后进行截图。使用callback异步回调。
-
 > **说明：**  
 >  
 > - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟，不适宜使用在对性能敏感的场景。  
@@ -44,9 +41,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ComponentSnapshot-createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>,
-    delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void--><!--Device-ComponentSnapshot-createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>,
-    delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void-End-->
+<!--Device-ComponentSnapshot-createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>,    delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void--><!--Device-ComponentSnapshot-createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>,    delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +65,6 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 | [160003](../errorcode-snapshot.md#160003-截图选项不支持的色彩空间或动态范围模式) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 | [160004](../errorcode-snapshot.md#160004-离屏节点截图不支持色彩空间或动态范围模式的isauto参数设置为true) | isAuto(true) is not supported for offscreen node snapshots.<br>**适用版本：** 23+ |
 
-<a id="createfrombuilder-1"></a>
 ## createFromBuilder
 
 ```TypeScript
@@ -79,7 +73,6 @@ createFromBuilder(builder: CustomBuilder, delay?: number,
 ```
 
 传入[CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md)自定义组件，系统对其进行离屏构建后进行截图。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟，不适宜使用在对性能敏感的场景。  
@@ -92,9 +85,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number,
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ComponentSnapshot-createFromBuilder(builder: CustomBuilder, delay?: number,
-    checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>--><!--Device-ComponentSnapshot-createFromBuilder(builder: CustomBuilder, delay?: number,
-    checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>-End-->
+<!--Device-ComponentSnapshot-createFromBuilder(builder: CustomBuilder, delay?: number,    checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>--><!--Device-ComponentSnapshot-createFromBuilder(builder: CustomBuilder, delay?: number,    checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,7 +114,6 @@ createFromBuilder(builder: CustomBuilder, delay?: number,
 | [160003](../errorcode-snapshot.md#160003-截图选项不支持的色彩空间或动态范围模式) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 | [160004](../errorcode-snapshot.md#160004-离屏节点截图不支持色彩空间或动态范围模式的isauto参数设置为true) | isAuto(true) is not supported for offscreen node snapshots.<br>**适用版本：** 23+ |
 
-<a id="createfromcomponent"></a>
 ## createFromComponent
 
 ```TypeScript
@@ -139,9 +129,7 @@ createFromComponent<T extends Object>(content: ComponentContent<T>, delay?: numb
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ComponentSnapshot-createFromComponent<T extends Object>(content: ComponentContent<T>, delay?: number,
-    checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>--><!--Device-ComponentSnapshot-createFromComponent<T extends Object>(content: ComponentContent<T>, delay?: number,
-    checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>-End-->
+<!--Device-ComponentSnapshot-createFromComponent<T extends Object>(content: ComponentContent<T>, delay?: number,    checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>--><!--Device-ComponentSnapshot-createFromComponent<T extends Object>(content: ComponentContent<T>, delay?: number,    checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -170,7 +158,6 @@ createFromComponent<T extends Object>(content: ComponentContent<T>, delay?: numb
 | [160003](../errorcode-snapshot.md#160003-截图选项不支持的色彩空间或动态范围模式) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 | [160004](../errorcode-snapshot.md#160004-离屏节点截图不支持色彩空间或动态范围模式的isauto参数设置为true) | isAuto(true) is not supported for offscreen node snapshots.<br>**适用版本：** 23+ |
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -178,7 +165,6 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 ```
 
 获取已加载的组件的截图，传入组件的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)，找到对应组件进行截图。使用callback异步回调。
-
 > **说明：**  
 >  
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
@@ -209,7 +195,6 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Invalid ID. |
 | [160003](../errorcode-snapshot.md#160003-截图选项不支持的色彩空间或动态范围模式) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 
-<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -217,7 +202,6 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 ```
 
 获取已加载的组件的截图，传入组件的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)，找到对应组件进行截图。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
@@ -253,7 +237,6 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Invalid ID. |
 | [160003](../errorcode-snapshot.md#160003-截图选项不支持的色彩空间或动态范围模式) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 
-<a id="getsizelimitation"></a>
 ## getSizeLimitation
 
 ```TypeScript
@@ -278,7 +261,6 @@ getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
 | --- | --- |
 | componentSnapshot.SnapshotSizeLimitation | Size limit of a component screenshot. |
 
-<a id="getsync"></a>
 ## getSync
 
 ```TypeScript
@@ -286,7 +268,6 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 ```
 
 获取已加载的组件的截图。传入组件的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)，找到对应组件进行截图，同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。本方法会阻塞主线程，请谨慎使用。接口的最大等待时间为3s，如果3s后未返回将会抛出异常。
-
 > **说明：**  
 >  
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
@@ -323,7 +304,6 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 | [160002](../errorcode-snapshot.md#160002-截图超时) | Timeout. |
 | [160003](../errorcode-snapshot.md#160003-截图选项不支持的色彩空间或动态范围模式) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 
-<a id="getsyncwithuniqueid"></a>
 ## getSyncWithUniqueId
 
 ```TypeScript
@@ -331,7 +311,6 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 ```
 
 获取已加载的组件的截图，传入组件的uniqueId，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。
-
 > **说明：**  
 >  
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
@@ -350,7 +329,7 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uniqueId | number | 是 | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid-1)接口获取。<br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
+| uniqueId | number | 是 | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid)接口获取。<br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
 | options | componentSnapshot.SnapshotOptions | 否 | 截图相关的自定义参数。 |
 
 **返回值：**
@@ -368,7 +347,6 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 | [160002](../errorcode-snapshot.md#160002-截图超时) | Timeout. |
 | [160003](../errorcode-snapshot.md#160003-截图选项不支持的色彩空间或动态范围模式) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 
-<a id="getwithuniqueid"></a>
 ## getWithUniqueId
 
 ```TypeScript
@@ -376,7 +354,6 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 ```
 
 获取已加载的组件的截图，传入组件的uniqueId，找到对应组件进行截图。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
@@ -395,7 +372,7 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uniqueId | number | 是 | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid-1)接口获取。 <br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
+| uniqueId | number | 是 | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid)接口获取。 <br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
 | options | componentSnapshot.SnapshotOptions | 否 | 截图相关的自定义参数。 |
 
 **返回值：**

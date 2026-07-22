@@ -6,7 +6,6 @@
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="openresource"></a>
 ## openResource
 
 ```TypeScript
@@ -14,10 +13,9 @@ function openResource(resourceId: string, params?: HuksExternalCryptoParam[]): P
 ```
 
 打开指定资源ID的资源。使用Promise异步回调。
-
 > **说明：**  
 >  
-> 打开的资源必须使用[closeResource](arkts-universalkeystore-huksexternalcrypto-closeresource-f.md#closeresource-1)关闭。
+> 打开的资源必须使用[closeResource](arkts-universalkeystore-huksexternalcrypto-closeresource-f.md#closeresource)关闭。
 
 **起始版本：** 26.0.0
 
@@ -31,7 +29,7 @@ function openResource(resourceId: string, params?: HuksExternalCryptoParam[]): P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | 资源ID。可通过[证书选择接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-1)获取keyUri作为resourceId，或通过[getResourceId](arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid-1)获取外部密钥管理扩展的资源ID。 |
+| resourceId | string | 是 | 资源ID。可通过[证书选择接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog)获取keyUri作为resourceId，或通过[getResourceId](arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid)获取外部密钥管理扩展的资源ID。 |
 | params | [HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)[] | 否 | 需要传递给[Extension Ability](arkts-security-cryptoextensionability.md)的输入参数。不传入时，不向Extension Ability传递额外参数。 |
 
 **返回值：**

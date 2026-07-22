@@ -12,7 +12,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md) | 警告弹窗中按钮的样式。  @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md) | 警告弹窗中按钮的样式。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
 | [AlertDialogButtonOptions](arkts-arkui-alertdialogbuttonoptions-i.md) | 继承自[AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md)。 |
 | [AlertDialogParam](arkts-arkui-alertdialogparam-i.md) | 警告弹窗的样式。 |
 | [AlertDialogParamWithButtons](arkts-arkui-alertdialogparamwithbuttons-i.md) | 继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md)。 |

@@ -6,7 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="isidlestatesync"></a>
 ## isIdleStateSync
 
 ```TypeScript

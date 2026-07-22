@@ -25,7 +25,7 @@ import { sendableContextManager } from '@kit.AbilityKit';
 | [convertToApplicationContext](arkts-ability-sendablecontextmanager-converttoapplicationcontext-f.md#converttoapplicationcontext) | 将SendableContext对象转换为ApplicationContext。 |
 | [convertToContext](arkts-ability-sendablecontextmanager-converttocontext-f.md#converttocontext) | 将SendableContext对象转换为Context。 |
 | [convertToUIAbilityContext](arkts-ability-sendablecontextmanager-converttouiabilitycontext-f.md#converttouiabilitycontext) | 将SendableContext对象转换为UIAbilityContext。 |
-| [setEventHubMultithreadingEnabled](arkts-ability-sendablecontextmanager-seteventhubmultithreadingenabled-f.md#seteventhubmultithreadingenabled) | 设置[Context](arkts-ability-context-context-depr-i.md)中的[EventHub](arkts-ability-eventhub-c.md)是否启用跨线程通信能力。 |
+| [setEventHubMultithreadingEnabled](arkts-ability-sendablecontextmanager-seteventhubmultithreadingenabled-f.md#seteventhubmultithreadingenabled) | 设置[Context](arkts-ability-context-t.md)中的[EventHub](arkts-ability-eventhub-c.md)是否启用跨线程通信能力。 |
 
 ### 类型
 

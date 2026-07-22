@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ FileSelectorParam的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="getaccepttype"></a>
 ## getAcceptType
 
 ```TypeScript
@@ -48,7 +46,6 @@ getAcceptType(): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | Return an array of acceptable MIME type. |
 
-<a id="getacceptablefiletypes"></a>
 ## getAcceptableFileTypes
 
 ```TypeScript
@@ -69,7 +66,6 @@ getAcceptableFileTypes(): Array<Array<AcceptableFileType>>
 | --- | --- |
 | Array&lt;Array&lt;AcceptableFileType&gt;&gt; | Return an array of selected types for web page files. |
 
-<a id="getdefaultpath"></a>
 ## getDefaultPath
 
 ```TypeScript
@@ -90,7 +86,6 @@ getDefaultPath(): string
 | --- | --- |
 | string | Return to the default path opened when pulling up the selector. |
 
-<a id="getdescriptions"></a>
 ## getDescriptions
 
 ```TypeScript
@@ -111,7 +106,6 @@ getDescriptions(): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | Return an array of description of the file type. |
 
-<a id="getmimetypes"></a>
 ## getMimeTypes
 
 ```TypeScript
@@ -132,7 +126,6 @@ getMimeTypes(): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | Return an array of raw acceptable MIME type. |
 
-<a id="getmode"></a>
 ## getMode
 
 ```TypeScript
@@ -155,7 +148,6 @@ getMode(): FileSelectorMode
 | --- | --- |
 | [FileSelectorMode](arkts-arkweb-fileselectormode-e.md) | Return the FileSelectorMode of this file selector. |
 
-<a id="getsuggestedname"></a>
 ## getSuggestedName
 
 ```TypeScript
@@ -176,7 +168,6 @@ getSuggestedName(): string
 | --- | --- |
 | string | Return the suggested file names. |
 
-<a id="gettitle"></a>
 ## getTitle
 
 ```TypeScript
@@ -199,7 +190,6 @@ getTitle(): string
 | --- | --- |
 | string | Return the title of this file selector. |
 
-<a id="isacceptalloptionexcluded"></a>
 ## isAcceptAllOptionExcluded
 
 ```TypeScript
@@ -220,7 +210,6 @@ isAcceptAllOptionExcluded(): boolean
 | --- | --- |
 | boolean | Return whether to filter all matching file types. |
 
-<a id="iscapture"></a>
 ## isCapture
 
 ```TypeScript

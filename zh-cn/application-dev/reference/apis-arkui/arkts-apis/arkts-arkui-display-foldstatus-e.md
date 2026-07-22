@@ -1,13 +1,9 @@
 # FoldStatus
 
 当前可折叠设备的折叠状态枚举。如果是双折轴设备，则在充电口朝下的状态下，从右到左分别是折轴一和折轴二。
-
 > **说明：**
-
 > 只有一个折轴的产品包含FOLD_STATUS_EXPANDED、FOLD_STATUS_FOLDED、FOLD_STATUS_HALF_FOLDED三种折叠状态。
-
 > 具有两个折轴的产品包含上表除FOLD_STATUS_UNKNOWN以外的九种折叠状态。
-
 > FOLD_STATUS_UNKNOWN是一种不可用的折叠状态。
 
 **起始版本：** 10

@@ -6,7 +6,6 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="installprivatecertificate"></a>
 ## installPrivateCertificate
 
 ```TypeScript
@@ -24,7 +23,7 @@ function installPrivateCertificate(
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
-<!--Device-certificateManager-function installPrivateCertificate( keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback<CMResult>): void--><!--Device-certificateManager-function installPrivateCertificate(keystore: Uint8Array,keystorePwd: string,certAlias: string,callback: AsyncCallback<CMResult>: void-End-->
+<!--Device-certificateManager-function installPrivateCertificate(    keystore: Uint8Array,    keystorePwd: string,    certAlias: string,    callback: AsyncCallback<CMResult>  ): void--><!--Device-certificateManager-function installPrivateCertificate(    keystore: Uint8Array,    keystorePwd: string,    certAlias: string,    callback: AsyncCallback<CMResult>  ): void-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -35,14 +34,14 @@ function installPrivateCertificate(
 | keystore | Uint8Array | 是 | 表示带有密钥对和证书的密钥库文件，* <br>最大长度为20480字节。 |
 | keystorePwd | string | 是 | 表示密钥库文件的密码，长度限制32字节以内。 |
 | certAlias | string | 是 | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，长度建议32字节以内。 |
-| callback | AsyncCallback&lt;CMResult&gt; | 是 | 回调函数。当安装私有凭据成功时，err为null，data为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的uri属性；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CMResult&gt; | 是 | 回调函数。当安装私有凭据成功时，err为null，data为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的uri属性；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500003](../errorcode-certManager.md#17500003-证书或凭据无效) | The keystore is in an invalid format or the keystore password is incorrect. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | The number of certificates or credentials reaches the maximum allowed.<br>**适用版本：** 12+ |
@@ -73,7 +72,6 @@ try {
 ```
 
 
-<a id="installprivatecertificate-1"></a>
 ## installPrivateCertificate
 
 ```TypeScript
@@ -109,7 +107,7 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500003](../errorcode-certManager.md#17500003-证书或凭据无效) | The keystore is in an invalid format or the keystore password is incorrect. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | The number of certificates or credentials reaches the maximum allowed.<br>**适用版本：** 12+ |
@@ -140,7 +138,6 @@ try {
 ```
 
 
-<a id="installprivatecertificate-2"></a>
 ## installPrivateCertificate
 
 ```TypeScript
@@ -177,7 +174,7 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500003](../errorcode-certManager.md#17500003-证书或凭据无效) | The keystore is in an invalid format or the keystore password is incorrect. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | The number of certificates or credentials reaches the maximum allowed. |

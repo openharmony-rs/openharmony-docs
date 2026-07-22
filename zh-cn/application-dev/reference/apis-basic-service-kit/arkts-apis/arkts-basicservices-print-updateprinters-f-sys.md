@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="updateprinters"></a>
 ## updatePrinters
 
 ```TypeScript
@@ -66,7 +65,6 @@ print.updatePrinters([printerInfo], (err: BusinessError) => {
 ```
 
 
-<a id="updateprinters-1"></a>
 ## updatePrinters
 
 ```TypeScript

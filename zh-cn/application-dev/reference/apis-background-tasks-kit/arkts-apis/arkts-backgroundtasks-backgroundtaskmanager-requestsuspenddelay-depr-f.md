@@ -1,6 +1,5 @@
 # requestSuspendDelay
 
-<a id="requestsuspenddelay"></a>
 ## requestSuspendDelay
 
 ```TypeScript
@@ -15,7 +14,7 @@ function requestSuspendDelay(reason: string, callback: Callback<void>): DelaySus
 
 **废弃版本：** 9
 
-**替代接口：** [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-f.md#requestsuspenddelay-1)
+**替代接口：** [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md#requestsuspenddelay)
 
 <!--Device-backgroundTaskManager-function requestSuspendDelay(reason: string, callback: Callback<void>): DelaySuspendInfo--><!--Device-backgroundTaskManager-function requestSuspendDelay(reason: string, callback: Callback<void>): DelaySuspendInfo-End-->
 

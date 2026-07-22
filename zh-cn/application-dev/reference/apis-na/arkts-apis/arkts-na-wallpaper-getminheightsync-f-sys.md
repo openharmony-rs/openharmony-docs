@@ -1,6 +1,5 @@
 # getMinHeightSync（系统接口）
 
-<a id="getminheightsync"></a>
 ## getMinHeightSync
 
 ```TypeScript

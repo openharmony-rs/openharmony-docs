@@ -274,7 +274,7 @@ onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
 onNotificationSwitchChanged?: NotificationSwitchChangedCallback
 ```
 
-返回由[notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md#setnotificationswitch-1)接口设置的通知开关状态变化。
+返回由[notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md#setnotificationswitch)接口设置的通知开关状态变化。
 
 **类型：** NotificationSwitchChangedCallback
 

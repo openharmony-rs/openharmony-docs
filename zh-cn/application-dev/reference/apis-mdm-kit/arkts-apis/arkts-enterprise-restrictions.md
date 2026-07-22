@@ -1,12 +1,11 @@
 # @ohos.enterprise.restrictions
 
 本模块提供设置通用限制类策略能力。可以全局禁用和解除禁用蓝牙、HDC、USB、Wi-Fi等特性。
-
 > **说明**：  
 >  
 > 本模块接口仅可在Stage模型下使用。  
 >  
-> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](docroot://mdm/mdm-kit-guide.md)。
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../mdm/mdm-kit-guide.md)。
 
 **起始版本：** 10
 
@@ -55,7 +54,7 @@ import { restrictions } from '@kit.MDMKit';
 | [isPrinterDisabled](arkts-mdm-restrictions-isprinterdisabled-f-sys.md#isprinterdisabled) | 查询设备打印能力是否被禁用。使用callback异步回调。 |
 | [isPrinterDisabled](arkts-mdm-restrictions-isprinterdisabled-f-sys.md#isprinterdisabled-1) | 查询设备打印能力是否被禁用。使用Promise异步回调。 |
 | [setFingerprintAuthDisabled](arkts-mdm-restrictions-setfingerprintauthdisabled-f-sys.md#setfingerprintauthdisabled) | 禁用或启用指纹认证。 |
-| [setHdcDisabled](arkts-mdm-restrictions-sethdcdisabled-f-sys.md#sethdcdisabled) | 使设备禁用或启用[HDC](docroot://../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。 |
+| [setHdcDisabled](arkts-mdm-restrictions-sethdcdisabled-f-sys.md#sethdcdisabled) | 使设备禁用或启用[HDC](../../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。 |
 | [setHdcDisabled](arkts-mdm-restrictions-sethdcdisabled-f-sys.md#sethdcdisabled-1) | 使设备禁用或启用HDC。使用Promise异步回调。 |
 | [setPrinterDisabled](arkts-mdm-restrictions-setprinterdisabled-f-sys.md#setprinterdisabled) | 使设备禁用或启用打印能力。使用callback异步回调。 |
 | [setPrinterDisabled](arkts-mdm-restrictions-setprinterdisabled-f-sys.md#setprinterdisabled-1) | 使设备禁用或启用打印能力。使用Promise异步回调。 |

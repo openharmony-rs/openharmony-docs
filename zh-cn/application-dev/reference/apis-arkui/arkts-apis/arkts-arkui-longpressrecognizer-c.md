@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getallowablemovement"></a>
 ## getAllowableMovement
 
 ```TypeScript
@@ -35,7 +34,6 @@ getAllowableMovement(): number
 | --- | --- |
 | number | 长按手势识别器识别的手势的最大移动距离，单位为px。<br/>取值范围：(0, +∞) |
 
-<a id="getduration"></a>
 ## getDuration
 
 ```TypeScript
@@ -60,7 +58,6 @@ getDuration(): number
 | --- | --- |
 | number | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。<br/>取值范围：[0, +∞) |
 
-<a id="isrepeat"></a>
 ## isRepeat
 
 ```TypeScript

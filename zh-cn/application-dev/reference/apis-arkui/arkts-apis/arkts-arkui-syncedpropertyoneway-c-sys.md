@@ -12,7 +12,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="abouttobedeleted"></a>
 ## aboutToBeDeleted
 
 ```TypeScript
@@ -35,7 +34,6 @@ aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void
 | --- | --- | --- | --- |
 | unsubscribeMe | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 否 | 被取消的订阅者。 |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -60,7 +58,6 @@ constructor(source: SubscribedAbstractProperty<T>, subscribeMe?: IPropertySubscr
 | subscribeMe | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 否 | 订阅者。 |
 | info | string | 否 | 订阅者信息。 |
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -83,7 +80,6 @@ get(): T
 | --- | --- |
 | T | - T类型实例。 |
 
-<a id="haschanged"></a>
 ## hasChanged
 
 ```TypeScript
@@ -106,7 +102,6 @@ hasChanged(newValue: T): void
 | --- | --- | --- | --- |
 | newValue | T | 是 | T类型实例。 |
 
-<a id="set"></a>
 ## set
 
 ```TypeScript

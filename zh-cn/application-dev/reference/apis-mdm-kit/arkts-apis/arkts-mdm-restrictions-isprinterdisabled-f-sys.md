@@ -6,7 +6,6 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="isprinterdisabled"></a>
 ## isPrinterDisabled
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isPrinterDisabled(admin: Want, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -71,7 +70,6 @@ restrictions.isPrinterDisabled(wantTemp, (err, result) => {
 ```
 
 
-<a id="isprinterdisabled-1"></a>
 ## isPrinterDisabled
 
 ```TypeScript
@@ -84,7 +82,7 @@ function isPrinterDisabled(admin: Want): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 

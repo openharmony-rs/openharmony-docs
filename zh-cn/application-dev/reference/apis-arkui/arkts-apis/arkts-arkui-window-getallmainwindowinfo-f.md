@@ -6,7 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="getallmainwindowinfo"></a>
 ## getAllMainWindowInfo
 
 ```TypeScript

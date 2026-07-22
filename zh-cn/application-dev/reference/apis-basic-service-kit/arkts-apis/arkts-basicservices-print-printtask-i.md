@@ -14,7 +14,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="off"></a>
 ## off('block')
 
 ```TypeScript
@@ -81,7 +80,6 @@ struct Index {
 
 ```
 
-<a id="off-1"></a>
 ## off('succeed')
 
 ```TypeScript
@@ -148,7 +146,6 @@ struct Index {
 
 ```
 
-<a id="off-2"></a>
 ## off('fail')
 
 ```TypeScript
@@ -215,7 +212,6 @@ struct Index {
 
 ```
 
-<a id="off-3"></a>
 ## off('cancel')
 
 ```TypeScript
@@ -282,7 +278,6 @@ struct Index {
 
 ```
 
-<a id="on"></a>
 ## on('block')
 
 ```TypeScript
@@ -349,7 +344,6 @@ struct Index {
 
 ```
 
-<a id="on-1"></a>
 ## on('succeed')
 
 ```TypeScript
@@ -416,7 +410,6 @@ struct Index {
 
 ```
 
-<a id="on-2"></a>
 ## on('fail')
 
 ```TypeScript
@@ -483,7 +476,6 @@ struct Index {
 
 ```
 
-<a id="on-3"></a>
 ## on('cancel')
 
 ```TypeScript

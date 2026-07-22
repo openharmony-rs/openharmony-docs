@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="queryallprintjobs"></a>
 ## queryAllPrintJobs
 
 ```TypeScript
@@ -43,7 +42,6 @@ function queryAllPrintJobs(callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
 
 
-<a id="queryallprintjobs-1"></a>
 ## queryAllPrintJobs
 
 ```TypeScript

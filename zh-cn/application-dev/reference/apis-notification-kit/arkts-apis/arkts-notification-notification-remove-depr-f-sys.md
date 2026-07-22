@@ -1,6 +1,5 @@
 # remove（系统接口）
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -22,17 +21,7 @@ function remove(
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function remove(
-    bundle: BundleOption,
-    notificationKey: NotificationKey,
-    reason: RemoveReason,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-notification-function remove(
-    bundle: BundleOption,
-    notificationKey: NotificationKey,
-    reason: RemoveReason,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-notification-function remove(    bundle: BundleOption,    notificationKey: NotificationKey,    reason: RemoveReason,    callback: AsyncCallback<void>  ): void--><!--Device-notification-function remove(    bundle: BundleOption,    notificationKey: NotificationKey,    reason: RemoveReason,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -48,7 +37,6 @@ function remove(
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
 
-<a id="remove-1"></a>
 ## remove
 
 ```TypeScript
@@ -86,7 +74,6 @@ function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: 
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 
-<a id="remove-2"></a>
 ## remove
 
 ```TypeScript
@@ -118,7 +105,6 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
 
-<a id="remove-3"></a>
 ## remove
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
-<a id="setdisposedrules"></a>
 ## setDisposedRules
 
 ```TypeScript

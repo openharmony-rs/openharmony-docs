@@ -1,6 +1,5 @@
 # publish
 
-<a id="publish"></a>
 ## publish
 
 ```TypeScript
@@ -13,7 +12,7 @@ function publish(event: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [publish(event:](arkts-basicservices-commoneventmanager-publish-f.md#publish-1)
+**替代接口：** [publish(event:](arkts-basicservices-commoneventmanager-publish-f.md#publish)
 
 <!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void-End-->
 
@@ -46,7 +45,6 @@ commonEvent.publish("event", publishCallBack);
 ```
 
 
-<a id="publish-1"></a>
 ## publish
 
 ```TypeScript
@@ -59,7 +57,7 @@ function publish(event: string, options: CommonEventPublishData, callback: Async
 
 **废弃版本：** 9
 
-**替代接口：** [publish(event:](arkts-basicservices-commoneventmanager-publish-f.md#publish-1)
+**替代接口：** [publish(event:](arkts-basicservices-commoneventmanager-publish-f.md#publish)
 
 <!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void-End-->
 

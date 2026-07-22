@@ -1,6 +1,6 @@
 # DataProxyHandle
 
-数据代理操作句柄的实例，可使用此实例访问或管理共享配置信息。在调用DataProxyHandle提供的方法前，需要先通过[createDataProxyHandle](arkts-arkdata-datashare-createdataproxyhandle-f.md#createdataproxyhandle-1)构建一个实例。
+数据代理操作句柄的实例，可使用此实例访问或管理共享配置信息。在调用DataProxyHandle提供的方法前，需要先通过[createDataProxyHandle](arkts-arkdata-datashare-createdataproxyhandle-f.md#createdataproxyhandle)构建一个实例。
 
 **起始版本：** 20
 
@@ -14,7 +14,6 @@
 import { dataShare } from '@kit.ArkData';
 ```
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -69,7 +68,6 @@ dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyR
 
 ```
 
-<a id="deletemypublisheddata"></a>
 ## deleteMyPublishedData
 
 ```TypeScript
@@ -121,7 +119,6 @@ dataProxyHandle.deleteMyPublishedData(config).then((results: dataShare.DataProxy
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -176,7 +173,6 @@ dataProxyHandle.get(urisToGet, config).then((results: dataShare.DataProxyGetResu
 
 ```
 
-<a id="getvalues"></a>
 ## getValues
 
 ```TypeScript
@@ -247,7 +243,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -265,17 +260,7 @@ off(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataProxyHandle-off(
-      event: 'dataChange',
-      uris: string[],
-      config: DataProxyConfig,
-      callback?: AsyncCallback<DataProxyChangeInfo[]>
-    ): DataProxyResult[]--><!--Device-DataProxyHandle-off(
-      event: 'dataChange',
-      uris: string[],
-      config: DataProxyConfig,
-      callback?: AsyncCallback<DataProxyChangeInfo[]>
-    ): DataProxyResult[]-End-->
+<!--Device-DataProxyHandle-off(      event: 'dataChange',      uris: string[],      config: DataProxyConfig,      callback?: AsyncCallback<DataProxyChangeInfo[]>    ): DataProxyResult[]--><!--Device-DataProxyHandle-off(      event: 'dataChange',      uris: string[],      config: DataProxyConfig,      callback?: AsyncCallback<DataProxyChangeInfo[]>    ): DataProxyResult[]-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -325,7 +310,6 @@ results.forEach((result) => {
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -339,23 +323,13 @@ on(
 
 订阅指定URI对应共享配置变更事件。若订阅者已注册变更通知，当配置发布方修改配置时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的URI、变更的共享配置内容。使用callback异步回调。该功能不允许跨用户订阅通知，不允许订阅未发布的配置。订阅成功后若权限被收回，则后续不再通知订阅者。
 
-触发通知：配置发布方调用[publish](arkts-arkdata-datashare-dataproxyhandle-i.md#publish-1)、[delete](arkts-arkdata-datashare-dataproxyhandle-i.md#delete-1)、[delete](arkts-arkdata-datashare-dataproxyhandle-i.md#delete-1)接口发布、删除指定配置或者删除所有配置时会自动触发通知。
+触发通知：配置发布方调用[publish](arkts-arkdata-datashare-dataproxyhandle-i.md#publish)、[delete](arkts-arkdata-datashare-dataproxyhandle-i.md#delete)、[delete](arkts-arkdata-datashare-dataproxyhandle-i.md#delete)接口发布、删除指定配置或者删除所有配置时会自动触发通知。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataProxyHandle-on(
-      event: 'dataChange',
-      uris: string[],
-      config: DataProxyConfig,
-      callback: AsyncCallback<DataProxyChangeInfo[]>
-    ): DataProxyResult[]--><!--Device-DataProxyHandle-on(
-      event: 'dataChange',
-      uris: string[],
-      config: DataProxyConfig,
-      callback: AsyncCallback<DataProxyChangeInfo[]>
-    ): DataProxyResult[]-End-->
+<!--Device-DataProxyHandle-on(      event: 'dataChange',      uris: string[],      config: DataProxyConfig,      callback: AsyncCallback<DataProxyChangeInfo[]>    ): DataProxyResult[]--><!--Device-DataProxyHandle-on(      event: 'dataChange',      uris: string[],      config: DataProxyConfig,      callback: AsyncCallback<DataProxyChangeInfo[]>    ): DataProxyResult[]-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -405,7 +379,6 @@ results.forEach((result) => {
 
 ```
 
-<a id="publish"></a>
 ## publish
 
 ```TypeScript
@@ -467,7 +440,6 @@ dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProx
 
 ```
 
-<a id="putvalue"></a>
 ## putValue
 
 ```TypeScript
@@ -540,7 +512,6 @@ try {
 
 ```
 
-<a id="removevalue"></a>
 ## removeValue
 
 ```TypeScript

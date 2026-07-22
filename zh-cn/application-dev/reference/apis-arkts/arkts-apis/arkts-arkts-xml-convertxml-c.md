@@ -14,7 +14,6 @@ ConvertXML 表示可扩展标记语言。
 import { convertxml } from '@kit.ArkTS';
 ```
 
-<a id="convert"></a>
 ## convert
 
 ```TypeScript
@@ -27,7 +26,7 @@ convert(xml: string, options?: ConvertOptions): Object
 
 **废弃版本：** 9
 
-**替代接口：** [fastConvertToJSObject](arkts-arkts-xml-convertxml-c.md#fastconverttojsobject-1)
+**替代接口：** [fastConvertToJSObject](arkts-arkts-xml-convertxml-c.md#fastconverttojsobject)
 
 <!--Device-ConvertXML-convert(xml: string, options?: ConvertOptions): Object--><!--Device-ConvertXML-convert(xml: string, options?: ConvertOptions): Object-End-->
 
@@ -81,7 +80,6 @@ console.info(result);
 
 ```
 
-<a id="converttojsobject"></a>
 ## convertToJSObject
 
 ```TypeScript
@@ -94,7 +92,7 @@ convertToJSObject(xml: string, options?: ConvertOptions): Object
 
 **废弃版本：** 14
 
-**替代接口：** [fastConvertToJSObject](arkts-arkts-xml-convertxml-c.md#fastconverttojsobject-1)
+**替代接口：** [fastConvertToJSObject](arkts-arkts-xml-convertxml-c.md#fastconverttojsobject)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -163,7 +161,6 @@ try {
 
 ```
 
-<a id="fastconverttojsobject"></a>
 ## fastConvertToJSObject
 
 ```TypeScript
@@ -171,7 +168,6 @@ fastConvertToJSObject(xml: string, options?: ConvertOptions): Object
 ```
 
 转换XML文本为Object类型对象。
-
 > **说明**  
 >  
 > - 该接口无法满足解析大数据量的XML文件，当单元素文本内容超过10M时，会打印异常信息并返回一个仅包含XML标签头的基础Object对象。  
@@ -246,7 +242,6 @@ try {
 
 ```
 
-<a id="largeconverttojsobject"></a>
 ## largeConvertToJSObject
 
 ```TypeScript

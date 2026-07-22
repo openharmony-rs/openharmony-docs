@@ -6,7 +6,6 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="switchcurrentinputmethodandsubtype"></a>
 ## switchCurrentInputMethodAndSubtype
 
 ```TypeScript
@@ -24,15 +23,7 @@ function switchCurrentInputMethodAndSubtype(
 **需要权限：** 
 - API版本9 - 10：ohos.permission.CONNECT_IME_ABILITY
 
-<!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(
-    inputMethodProperty: InputMethodProperty,
-    inputMethodSubtype: InputMethodSubtype,
-    callback: AsyncCallback<boolean>
-  ): void--><!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(
-    inputMethodProperty: InputMethodProperty,
-    inputMethodSubtype: InputMethodSubtype,
-    callback: AsyncCallback<boolean>
-  ): void-End-->
+<!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(    inputMethodProperty: InputMethodProperty,    inputMethodSubtype: InputMethodSubtype,    callback: AsyncCallback<boolean>  ): void--><!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(    inputMethodProperty: InputMethodProperty,    inputMethodSubtype: InputMethodSubtype,    callback: AsyncCallback<boolean>  ): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -76,7 +67,6 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: Busi
 ```
 
 
-<a id="switchcurrentinputmethodandsubtype-1"></a>
 ## switchCurrentInputMethodAndSubtype
 
 ```TypeScript
@@ -93,13 +83,7 @@ function switchCurrentInputMethodAndSubtype(
 **需要权限：** 
 - API版本9 - 10：ohos.permission.CONNECT_IME_ABILITY
 
-<!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(
-    inputMethodProperty: InputMethodProperty,
-    inputMethodSubtype: InputMethodSubtype
-  ): Promise<boolean>--><!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(
-    inputMethodProperty: InputMethodProperty,
-    inputMethodSubtype: InputMethodSubtype
-  ): Promise<boolean>-End-->
+<!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(    inputMethodProperty: InputMethodProperty,    inputMethodSubtype: InputMethodSubtype  ): Promise<boolean>--><!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(    inputMethodProperty: InputMethodProperty,    inputMethodSubtype: InputMethodSubtype  ): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

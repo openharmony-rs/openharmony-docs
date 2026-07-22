@@ -18,7 +18,6 @@
 ## ScrollBarOptions对象说明
 
 滚动条组件参数。
-
 > **说明：**  
 >  
 > - ScrollBar组件负责定义可滚动区域的行为样式，ScrollBar的子节点负责定义滚动条的行为样式。  

@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -105,7 +104,7 @@ readonly fontSize?: number
 
 获取属性字符串的文本字体大小。
 
-单位：[vp](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) 
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) 
 
 **类型：** number
 
@@ -237,7 +236,7 @@ readonly strokeWidth?: number
 
 获取属性字符串的文本描边宽度。
 
-默认返回0，单位为[vp](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。
+默认返回0，单位为[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。
 
 **类型：** number
 

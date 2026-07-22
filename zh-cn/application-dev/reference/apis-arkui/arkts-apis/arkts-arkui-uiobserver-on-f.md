@@ -6,7 +6,6 @@
 import { uiObserver } from '@kit.ArkUI';
 ```
 
-<a id="on"></a>
 ## on('navDestinationUpdate')
 
 ```TypeScript
@@ -91,7 +90,6 @@ struct Index {
 ```
 
 
-<a id="on-1"></a>
 ## on('navDestinationUpdate')
 
 ```TypeScript
@@ -174,7 +172,6 @@ struct Index {
 ```
 
 
-<a id="on-2"></a>
 ## on('scrollEvent')
 
 ```TypeScript
@@ -202,7 +199,6 @@ Registers a callback function to be called when the scroll event start or stop.
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll event start or stop. |
 
 
-<a id="on-3"></a>
 ## on('scrollEvent')
 
 ```TypeScript
@@ -229,7 +225,6 @@ Registers a callback function to be called when the scroll event start or stop.
 | callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll event start or stop. |
 
 
-<a id="on-4"></a>
 ## on('routerPageUpdate')
 
 ```TypeScript
@@ -294,7 +289,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="on-5"></a>
 ## on('densityUpdate')
 
 ```TypeScript
@@ -354,7 +348,6 @@ struct Index {
 ```
 
 
-<a id="on-6"></a>
 ## on('willDraw')
 
 ```TypeScript
@@ -405,7 +398,6 @@ struct Index {
 ```
 
 
-<a id="on-7"></a>
 ## on('didLayout')
 
 ```TypeScript
@@ -456,14 +448,13 @@ struct Index {
 ```
 
 
-<a id="on-8"></a>
 ## on('tabContentUpdate')
 
 ```TypeScript
 export function on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback<TabContentInfo>): void
 ```
 
-监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange',callback: Callback<observer.TabContentInfo>))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange',callback: Callback&lt;observer.TabContentInfo&gt;))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 
@@ -536,14 +527,13 @@ struct TabsExample {
 ```
 
 
-<a id="on-9"></a>
 ## on('tabContentUpdate')
 
 ```TypeScript
 export function on(type: 'tabContentUpdate', callback: Callback<TabContentInfo>): void
 ```
 
-监听TabContent页面的切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange', callback:Callback<observer.TabContentInfo>))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听TabContent页面的切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange', callback:Callback&lt;observer.TabContentInfo&gt;))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 
@@ -615,7 +605,6 @@ struct TabsExample {
 ```
 
 
-<a id="on-10"></a>
 ## on('navDestinationSwitch')
 
 ```TypeScript
@@ -634,15 +623,7 @@ export function on(
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-uiObserver-export function on(
-    type: 'navDestinationSwitch',
-    context: UIAbilityContext | UIContext,
-    callback: Callback<NavDestinationSwitchInfo>
-  ): void--><!--Device-uiObserver-export function on(
-    type: 'navDestinationSwitch',
-    context: UIAbilityContext | UIContext,
-    callback: Callback<NavDestinationSwitchInfo>
-  ): void-End-->
+<!--Device-uiObserver-export function on(    type: 'navDestinationSwitch',    context: UIAbilityContext | UIContext,    callback: Callback<NavDestinationSwitchInfo>  ): void--><!--Device-uiObserver-export function on(    type: 'navDestinationSwitch',    context: UIAbilityContext | UIContext,    callback: Callback<NavDestinationSwitchInfo>  ): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -765,7 +746,6 @@ struct Index {
 ```
 
 
-<a id="on-11"></a>
 ## on('navDestinationSwitch')
 
 ```TypeScript
@@ -785,17 +765,7 @@ export function on(
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-uiObserver-export function on(
-    type: 'navDestinationSwitch',
-    context: UIAbilityContext | UIContext,
-    observerOptions: NavDestinationSwitchObserverOptions,
-    callback: Callback<NavDestinationSwitchInfo>
-  ): void--><!--Device-uiObserver-export function on(
-    type: 'navDestinationSwitch',
-    context: UIAbilityContext | UIContext,
-    observerOptions: NavDestinationSwitchObserverOptions,
-    callback: Callback<NavDestinationSwitchInfo>
-  ): void-End-->
+<!--Device-uiObserver-export function on(    type: 'navDestinationSwitch',    context: UIAbilityContext | UIContext,    observerOptions: NavDestinationSwitchObserverOptions,    callback: Callback<NavDestinationSwitchInfo>  ): void--><!--Device-uiObserver-export function on(    type: 'navDestinationSwitch',    context: UIAbilityContext | UIContext,    observerOptions: NavDestinationSwitchObserverOptions,    callback: Callback<NavDestinationSwitchInfo>  ): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

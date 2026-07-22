@@ -6,7 +6,6 @@
 import { hichecker } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="removecheckrule"></a>
 ## removeCheckRule
 
 ```TypeScript

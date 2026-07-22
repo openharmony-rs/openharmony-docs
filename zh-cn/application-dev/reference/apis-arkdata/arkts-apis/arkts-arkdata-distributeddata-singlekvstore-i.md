@@ -1,6 +1,6 @@
 # SingleKVStore
 
-单版本数据库，继承自[KVStore](arkts-arkdata-distributeddata-kvstoretype-e.md)数据库，提供查询数据和同步数据的方法。单版本数据库，不对数据所属设备进行区分，不同设备使用相同键写入数据会互相覆盖。比如，可以使用单版本数据库实现个人日历、联系人数据在不同设备间的数据同步。在调用SingleKVStore的方法前，需要先通过[getKVStore](distributedData.KVManager.getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>))构建一个SingleKVStore实例。
+单版本数据库，继承自[KVStore](arkts-arkdata-distributeddata-kvstoretype-e.md)数据库，提供查询数据和同步数据的方法。单版本数据库，不对数据所属设备进行区分，不同设备使用相同键写入数据会互相覆盖。比如，可以使用单版本数据库实现个人日历、联系人数据在不同设备间的数据同步。在调用SingleKVStore的方法前，需要先通过[getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore)构建一个SingleKVStore实例。
 
 **继承/实现关系：** SingleKVStore extends [KVStore](arkts-arkdata-distributeddata-kvstore-i.md)
 
@@ -14,14 +14,13 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-<a id="closeresultset"></a>
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由[SingleKVStore.getResultSet](arkts-arkdata-distributeddata-singlekvstore-i.md#getresultset-1)返回的KvStoreResultSet对象，使用callback异步回调。
+关闭由[SingleKVStore.getResultSet](arkts-arkdata-distributeddata-singlekvstore-i.md#getresultset)返回的KvStoreResultSet对象，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -59,14 +58,13 @@ try {
 
 ```
 
-<a id="closeresultset-1"></a>
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 ```
 
-关闭由[SingleKVStore.getResultSet](arkts-arkdata-distributeddata-singlekvstore-i.md#getresultset-1)返回的KvStoreResultSet对象，使用Promise异步回调。
+关闭由[SingleKVStore.getResultSet](arkts-arkdata-distributeddata-singlekvstore-i.md#getresultset)返回的KvStoreResultSet对象，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -107,7 +105,6 @@ try {
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -156,7 +153,6 @@ try {
 
 ```
 
-<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -210,7 +206,6 @@ try {
 
 ```
 
-<a id="getentries"></a>
 ## getEntries
 
 ```TypeScript
@@ -267,7 +262,6 @@ try {
 
 ```
 
-<a id="getentries-1"></a>
 ## getEntries
 
 ```TypeScript
@@ -336,7 +330,6 @@ try {
 
 ```
 
-<a id="getentries-2"></a>
 ## getEntries
 
 ```TypeScript
@@ -398,7 +391,6 @@ try {
 
 ```
 
-<a id="getentries-3"></a>
 ## getEntries
 
 ```TypeScript
@@ -467,7 +459,6 @@ try {
 
 ```
 
-<a id="getresultset"></a>
 ## getResultSet
 
 ```TypeScript
@@ -527,7 +518,6 @@ try {
 
 ```
 
-<a id="getresultset-1"></a>
 ## getResultSet
 
 ```TypeScript
@@ -598,7 +588,6 @@ try {
 
 ```
 
-<a id="getresultset-2"></a>
 ## getResultSet
 
 ```TypeScript
@@ -657,7 +646,6 @@ try {
 
 ```
 
-<a id="getresultset-3"></a>
 ## getResultSet
 
 ```TypeScript
@@ -725,7 +713,6 @@ try {
 
 ```
 
-<a id="getresultsize"></a>
 ## getResultSize
 
 ```TypeScript
@@ -782,7 +769,6 @@ try {
 
 ```
 
-<a id="getresultsize-1"></a>
 ## getResultSize
 
 ```TypeScript
@@ -848,7 +834,6 @@ try {
 
 ```
 
-<a id="getsecuritylevel"></a>
 ## getSecurityLevel
 
 ```TypeScript
@@ -887,7 +872,6 @@ try {
 
 ```
 
-<a id="getsecuritylevel-1"></a>
 ## getSecurityLevel
 
 ```TypeScript
@@ -928,7 +912,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -976,7 +959,6 @@ class KvstoreModel {
 
 ```
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -1024,7 +1006,6 @@ class KvstoreModel {
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -1061,7 +1042,6 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
 
 ```
 
-<a id="on-1"></a>
 ## on
 
 ```TypeScript
@@ -1108,7 +1088,6 @@ try {
 
 ```
 
-<a id="removedevicedata"></a>
 ## removeDeviceData
 
 ```TypeScript
@@ -1116,13 +1095,12 @@ removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
 删除指定设备的数据，使用callback异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用<!--RP1-->  
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync-1)  
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)  
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。  
-> > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync-1)。
+> > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
 
 **起始版本：** 8
 
@@ -1168,7 +1146,6 @@ try {
 
 ```
 
-<a id="removedevicedata-1"></a>
 ## removeDeviceData
 
 ```TypeScript
@@ -1176,13 +1153,12 @@ removeDeviceData(deviceId: string): Promise<void>
 ```
 
 删除指定设备的数据，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 其中deviceId通过调用<!--RP1-->  
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync-1)  
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)  
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。  
-> > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync-1)。
+> > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
 
 **起始版本：** 8
 
@@ -1235,7 +1211,6 @@ try {
 
 ```
 
-<a id="setsyncparam"></a>
 ## setSyncParam
 
 ```TypeScript
@@ -1276,7 +1251,6 @@ try {
 
 ```
 
-<a id="setsyncparam-1"></a>
 ## setSyncParam
 
 ```TypeScript
@@ -1324,7 +1298,6 @@ try {
 
 ```
 
-<a id="sync"></a>
 ## sync
 
 ```TypeScript
@@ -1332,12 +1305,11 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 ```
 
 在手动同步方式下，触发数据库同步。
-
 > **说明：**  
 >  
 > 其中deviceIds为<!--RP2-->[DeviceInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-deviceinfo-i-sys.md)中的  
 > networkId, 通过调用  
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync-1)  
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)  
 > 方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **起始版本：** 7

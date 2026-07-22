@@ -1,6 +1,6 @@
 # AudioHapticManager
 
-管理音振协同功能。在调用AudioHapticManager的接口前，需要先通过[getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md#getaudiohapticmanager-1)创建实例。
+管理音振协同功能。在调用AudioHapticManager的接口前，需要先通过[getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md#getaudiohapticmanager)创建实例。
 
 **起始版本：** 11
 
@@ -14,7 +14,6 @@
 import { audioHaptic } from '@kit.AudioKit';
 ```
 
-<a id="createplayer"></a>
 ## createPlayer
 
 ```TypeScript
@@ -73,7 +72,6 @@ audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.Au
 
 ```
 
-<a id="registersource"></a>
 ## registerSource
 
 ```TypeScript
@@ -81,7 +79,6 @@ registerSource(audioUri: string, hapticUri: string): Promise<number>
 ```
 
 通过Uri注册音频和振动资源。使用Promise异步回调。
-
 > **注意：**  
 >  
 > 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
@@ -96,8 +93,8 @@ registerSource(audioUri: string, hapticUri: string): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| audioUri | string | 是 | 音频资源的Uri。<br>- 对普通时延模式，音频资源格式和路径格式的支持可参考[AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。<br>- 对低时延模式，音频资源格式支持可参考[SoundPool](../../apis-media-kit/arkts-apis/arkts-media-soundpool-soundpool-i.md)，路径格式需满足[fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open-1)的要求。<br>- 对两种时延模式，均建议传入文件的绝对路径。 |
-| hapticUri | string | 是 | 振动资源的Uri。<br>振动资源格式支持可参考[HapticFileDescriptor](@ohos.vibrator:vibrator.HapticFileDescriptor)，路径格式需满足[fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open-1)的要求。<br>建议传入文件的绝对路径。 |
+| audioUri | string | 是 | 音频资源的Uri。<br>- 对普通时延模式，音频资源格式和路径格式的支持可参考[AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。<br>- 对低时延模式，音频资源格式支持可参考[SoundPool](../../apis-media-kit/arkts-apis/arkts-media-soundpool-soundpool-i.md)，路径格式需满足[fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open)的要求。<br>- 对两种时延模式，均建议传入文件的绝对路径。 |
+| hapticUri | string | 是 | 振动资源的Uri。<br>振动资源格式支持可参考[HapticFileDescriptor](@ohos.vibrator:vibrator.HapticFileDescriptor)，路径格式需满足[fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open)的要求。<br>建议传入文件的绝对路径。 |
 
 **返回值：**
 
@@ -129,7 +126,6 @@ audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: numb
 
 ```
 
-<a id="registersourcefromfd"></a>
 ## registerSourceFromFd
 
 ```TypeScript
@@ -137,7 +133,6 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 ```
 
 通过文件描述符注册音频和振动资源。使用Promise异步回调。
-
 > **注意：**  
 >  
 > 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
@@ -194,7 +189,6 @@ audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: 
 
 ```
 
-<a id="setaudiolatencymode"></a>
 ## setAudioLatencyMode
 
 ```TypeScript
@@ -236,7 +230,6 @@ audioHapticManagerInstance.setAudioLatencyMode(id, latencyMode);
 
 ```
 
-<a id="setstreamusage"></a>
 ## setStreamUsage
 
 ```TypeScript
@@ -279,7 +272,6 @@ audioHapticManagerInstance.setStreamUsage(id, usage);
 
 ```
 
-<a id="unregistersource"></a>
 ## unregisterSource
 
 ```TypeScript
@@ -287,7 +279,6 @@ unregisterSource(id: number): Promise<void>
 ```
 
 取消注册音频和振动资源。使用Promise异步回调。
-
 > **注意：**  
 >  
 > 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。

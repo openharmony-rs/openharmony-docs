@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getallapplicationinfo"></a>
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -22,9 +21,7 @@ function getAllApplicationInfo(bundleFlags: number,
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-<!--Device-bundle-function getAllApplicationInfo(bundleFlags: number,
-    userId: number, callback: AsyncCallback<Array<ApplicationInfo>>): void--><!--Device-bundle-function getAllApplicationInfo(bundleFlags: number,
-    userId: number, callback: AsyncCallback<Array<ApplicationInfo>>): void-End-->
+<!--Device-bundle-function getAllApplicationInfo(bundleFlags: number,    userId: number, callback: AsyncCallback<Array<ApplicationInfo>>): void--><!--Device-bundle-function getAllApplicationInfo(bundleFlags: number,    userId: number, callback: AsyncCallback<Array<ApplicationInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -37,7 +34,6 @@ function getAllApplicationInfo(bundleFlags: number,
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ApplicationInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回应用信息列表。 |
 
 
-<a id="getallapplicationinfo-1"></a>
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -64,7 +60,6 @@ function getAllApplicationInfo(bundleFlags: number, callback: AsyncCallback<Arra
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ApplicationInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回应用信息列表。 |
 
 
-<a id="getallapplicationinfo-2"></a>
 ## getAllApplicationInfo
 
 ```TypeScript

@@ -20,7 +20,7 @@ import { osAccount } from '@kit.BasicServicesKit';
 constraints: Array<string>
 ```
 
-系统账号[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)，默认为空。
+系统账号[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)，默认为空。
 
 **类型：** Array&lt;string&gt;
 

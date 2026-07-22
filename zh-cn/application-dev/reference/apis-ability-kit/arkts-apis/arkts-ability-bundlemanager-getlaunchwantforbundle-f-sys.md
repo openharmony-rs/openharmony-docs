@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getlaunchwantforbundle"></a>
 ## getLaunchWantForBundle
 
 ```TypeScript
@@ -30,7 +29,7 @@ function getLaunchWantForBundle(bundleName: string, userId: number, callback: As
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
-| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Want&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Want；否则为错误对象。 |
 
 **错误码：**
@@ -70,7 +69,6 @@ try {
 ```
 
 
-<a id="getlaunchwantforbundle-1"></a>
 ## getLaunchWantForBundle
 
 ```TypeScript
@@ -131,7 +129,6 @@ try {
 ```
 
 
-<a id="getlaunchwantforbundle-2"></a>
 ## getLaunchWantForBundle
 
 ```TypeScript
@@ -155,7 +152,7 @@ function getLaunchWantForBundle(bundleName: string, userId?: number): Promise<Wa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 

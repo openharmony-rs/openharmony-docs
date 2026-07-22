@@ -6,7 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getuptime"></a>
 ## getUptime
 
 ```TypeScript

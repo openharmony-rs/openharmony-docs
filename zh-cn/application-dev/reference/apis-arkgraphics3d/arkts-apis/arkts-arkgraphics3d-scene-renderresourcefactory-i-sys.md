@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="createscene"></a>
 ## createScene
 
 ```TypeScript

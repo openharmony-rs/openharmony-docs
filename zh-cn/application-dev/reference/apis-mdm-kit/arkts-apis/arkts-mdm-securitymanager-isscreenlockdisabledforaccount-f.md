@@ -6,7 +6,6 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="isscreenlockdisabledforaccount"></a>
 ## isScreenLockDisabledForAccount
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getsimlabelsync"></a>
 ## getSimLabelSync
 
 ```TypeScript

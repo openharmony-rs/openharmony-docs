@@ -16,7 +16,6 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -60,7 +59,6 @@ config.highContrastText.get().then((data: boolean) => {
 
 ```
 
-<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -105,7 +103,6 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -148,7 +145,6 @@ config.highContrastText.off((data: boolean) => {
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -192,7 +188,6 @@ config.highContrastText.on((data: boolean) => {
 
 ```
 
-<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -247,7 +242,6 @@ config.highContrastText.set(value).then(() => {
 
 ```
 
-<a id="set-1"></a>
 ## set
 
 ```TypeScript

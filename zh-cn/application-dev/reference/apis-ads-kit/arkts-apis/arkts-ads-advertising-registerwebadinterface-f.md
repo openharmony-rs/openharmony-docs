@@ -6,7 +6,6 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
-<a id="registerwebadinterface"></a>
 ## registerWebAdInterface
 
 ```TypeScript
@@ -68,7 +67,6 @@ struct Index {
 ```
 
 
-<a id="registerwebadinterface-1"></a>
 ## registerWebAdInterface
 
 ```TypeScript
@@ -82,9 +80,7 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 **原子化服务API：** 从API版本16开始，该接口支持在原子化服务API中使用。
 
-<!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext, 
-    needRefresh: boolean): void--><!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext, 
-    needRefresh: boolean): void-End-->
+<!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext,     needRefresh: boolean): void--><!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext,     needRefresh: boolean): void-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
 

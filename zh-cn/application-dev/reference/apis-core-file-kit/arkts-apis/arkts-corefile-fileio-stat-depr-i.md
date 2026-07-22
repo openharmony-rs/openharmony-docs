@@ -1,18 +1,17 @@
 # Stat
 
-文件具体信息，在调用Stat的方法前，需要先通过[stat()](arkts-corefile-fileio-stat-f.md#stat-1)方法（同步或异步）来构建一个Stat实例。
+文件具体信息，在调用Stat的方法前，需要先通过[stat()](arkts-corefile-fileio-stat-f.md#stat)方法（同步或异步）来构建一个Stat实例。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [fs:Stat](arkts-corefile-file-fs-stat-i.md)
+**替代接口：** [fs:Stat](arkts-corefile-fileio-stat-depr-i.md)
 
 <!--Device-unnamed-declare interface Stat--><!--Device-unnamed-declare interface Stat-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-<a id="isblockdevice"></a>
 ## isBlockDevice
 
 ```TypeScript
@@ -25,7 +24,7 @@ isBlockDevice(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isBlockDevice](arkts-corefile-file-fs-stat-i.md#isblockdevice-1)
+**替代接口：** [isBlockDevice](arkts-corefile-fileio-stat-depr-i.md#isblockdevice)
 
 <!--Device-Stat-isBlockDevice(): boolean--><!--Device-Stat-isBlockDevice(): boolean-End-->
 
@@ -45,7 +44,6 @@ let isBLockDevice = fileio.statSync(filePath).isBlockDevice();
 
 ```
 
-<a id="ischaracterdevice"></a>
 ## isCharacterDevice
 
 ```TypeScript
@@ -58,7 +56,7 @@ isCharacterDevice(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isCharacterDevice](arkts-corefile-file-fs-stat-i.md#ischaracterdevice-1)
+**替代接口：** [isCharacterDevice](arkts-corefile-fileio-stat-depr-i.md#ischaracterdevice)
 
 <!--Device-Stat-isCharacterDevice(): boolean--><!--Device-Stat-isCharacterDevice(): boolean-End-->
 
@@ -78,7 +76,6 @@ let isCharacterDevice = fileio.statSync(filePath).isCharacterDevice();
 
 ```
 
-<a id="isdirectory"></a>
 ## isDirectory
 
 ```TypeScript
@@ -91,7 +88,7 @@ isDirectory(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isDirectory](arkts-corefile-file-fs-stat-i.md#isdirectory-1)
+**替代接口：** [isDirectory](arkts-corefile-fileio-stat-depr-i.md#isdirectory)
 
 <!--Device-Stat-isDirectory(): boolean--><!--Device-Stat-isDirectory(): boolean-End-->
 
@@ -111,7 +108,6 @@ let isDirectory = fileio.statSync(dirPath).isDirectory();
 
 ```
 
-<a id="isfifo"></a>
 ## isFIFO
 
 ```TypeScript
@@ -124,7 +120,7 @@ isFIFO(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isFIFO](arkts-corefile-file-fs-stat-i.md#isfifo-1)
+**替代接口：** [isFIFO](arkts-corefile-fileio-stat-depr-i.md#isfifo)
 
 <!--Device-Stat-isFIFO(): boolean--><!--Device-Stat-isFIFO(): boolean-End-->
 
@@ -144,7 +140,6 @@ let isFIFO = fileio.statSync(filePath).isFIFO();
 
 ```
 
-<a id="isfile"></a>
 ## isFile
 
 ```TypeScript
@@ -157,7 +152,7 @@ isFile(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isFile](arkts-corefile-file-fs-stat-i.md#isfile-1)
+**替代接口：** [isFile](arkts-corefile-fileio-stat-depr-i.md#isfile)
 
 <!--Device-Stat-isFile(): boolean--><!--Device-Stat-isFile(): boolean-End-->
 
@@ -177,7 +172,6 @@ let isFile = fileio.statSync(filePath).isFile();
 
 ```
 
-<a id="issocket"></a>
 ## isSocket
 
 ```TypeScript
@@ -190,7 +184,7 @@ isSocket(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isSocket](arkts-corefile-file-fs-stat-i.md#issocket-1)
+**替代接口：** [isSocket](arkts-corefile-fileio-stat-depr-i.md#issocket)
 
 <!--Device-Stat-isSocket(): boolean--><!--Device-Stat-isSocket(): boolean-End-->
 
@@ -210,7 +204,6 @@ let isSocket = fileio.statSync(filePath).isSocket();
 
 ```
 
-<a id="issymboliclink"></a>
 ## isSymbolicLink
 
 ```TypeScript
@@ -223,7 +216,7 @@ isSymbolicLink(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isSymbolicLink](arkts-corefile-file-fs-stat-i.md#issymboliclink-1)
+**替代接口：** [isSymbolicLink](arkts-corefile-fileio-stat-depr-i.md#issymboliclink)
 
 <!--Device-Stat-isSymbolicLink(): boolean--><!--Device-Stat-isSymbolicLink(): boolean-End-->
 
@@ -257,7 +250,7 @@ readonly atime: number
 
 **废弃版本：** 9
 
-**替代接口：** [atime](arkts-corefile-file-fs-stat-i.md#atime)
+**替代接口：** [atime](arkts-corefile-fileio-stat-depr-i.md#atime)
 
 <!--Device-Stat-readonly atime: number--><!--Device-Stat-readonly atime: number-End-->
 
@@ -295,7 +288,7 @@ readonly ctime: number
 
 **废弃版本：** 9
 
-**替代接口：** [ctime](arkts-corefile-file-fs-stat-i.md#ctime)
+**替代接口：** [ctime](arkts-corefile-fileio-stat-depr-i.md#ctime)
 
 <!--Device-Stat-readonly ctime: number--><!--Device-Stat-readonly ctime: number-End-->
 
@@ -333,7 +326,7 @@ readonly gid: number
 
 **废弃版本：** 9
 
-**替代接口：** [gid](arkts-corefile-file-fs-stat-i.md#gid)
+**替代接口：** [gid](arkts-corefile-fileio-stat-depr-i.md#gid)
 
 <!--Device-Stat-readonly gid: number--><!--Device-Stat-readonly gid: number-End-->
 
@@ -393,7 +386,7 @@ readonly mode: number
 
 **废弃版本：** 9
 
-**替代接口：** [mode](arkts-corefile-file-fs-stat-i.md#mode)
+**替代接口：** [mode](arkts-corefile-fileio-stat-depr-i.md#mode)
 
 <!--Device-Stat-readonly mode: number--><!--Device-Stat-readonly mode: number-End-->
 
@@ -413,7 +406,7 @@ readonly mtime: number
 
 **废弃版本：** 9
 
-**替代接口：** [mtime](arkts-corefile-file-fs-stat-i.md#mtime)
+**替代接口：** [mtime](arkts-corefile-fileio-stat-depr-i.md#mtime)
 
 <!--Device-Stat-readonly mtime: number--><!--Device-Stat-readonly mtime: number-End-->
 
@@ -469,7 +462,7 @@ readonly size: number
 
 **废弃版本：** 9
 
-**替代接口：** [size](arkts-corefile-file-fs-stat-i.md#size)
+**替代接口：** [size](arkts-corefile-fileio-stat-depr-i.md#size)
 
 <!--Device-Stat-readonly size: number--><!--Device-Stat-readonly size: number-End-->
 
@@ -489,7 +482,7 @@ readonly uid: number
 
 **废弃版本：** 9
 
-**替代接口：** [uid](arkts-corefile-file-fs-stat-i.md#uid)
+**替代接口：** [uid](arkts-corefile-fileio-stat-depr-i.md#uid)
 
 <!--Device-Stat-readonly uid: number--><!--Device-Stat-readonly uid: number-End-->
 

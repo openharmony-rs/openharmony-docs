@@ -1,7 +1,6 @@
 # ReqPermissionDetail
 
 应用运行时需向系统申请的权限集合的详细信息。
-
 > **说明：**  
 >  
 > - 如果应用内多包申请的权限名称一样，但是权限申请理由不一致，系统只会返回一个权限申请理由，优先级从高到低顺序为entry类型HAP、feature类型HAP、应用内HSP。
@@ -36,7 +35,7 @@ moduleName: string
 name: string
 ```
 
-需要使用的[权限名称](docroot://security/AccessToken/app-permissions.md)。
+需要使用的[权限名称](../../../security/AccessToken/app-permissions.md)。
 
 **类型：** string
 

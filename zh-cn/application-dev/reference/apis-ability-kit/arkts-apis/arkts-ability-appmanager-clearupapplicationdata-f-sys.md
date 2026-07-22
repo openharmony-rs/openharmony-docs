@@ -6,7 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="clearupapplicationdata"></a>
 ## clearUpApplicationData
 
 ```TypeScript
@@ -69,7 +68,6 @@ try {
 ```
 
 
-<a id="clearupapplicationdata-1"></a>
 ## clearUpApplicationData
 
 ```TypeScript

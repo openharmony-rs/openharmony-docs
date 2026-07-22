@@ -6,7 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getdate"></a>
 ## getDate
 
 ```TypeScript
@@ -58,7 +57,6 @@ try {
 ```
 
 
-<a id="getdate-1"></a>
 ## getDate
 
 ```TypeScript

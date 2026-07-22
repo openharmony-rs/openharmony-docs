@@ -6,7 +6,6 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
-<a id="bulktransfer"></a>
 ## bulkTransfer
 
 ```TypeScript
@@ -20,25 +19,15 @@ function bulkTransfer(
 
 批量传输。
 
-需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息列表以及endpoint；再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；然后调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到返回数据devicepipe之后，再次获取接口[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface-1)；再调用usb.bulkTransfer接口。
+需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices)获取设备信息列表以及endpoint；再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright)获取设备请求权限；然后调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice)接口得到返回数据devicepipe之后，再次获取接口[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface)；再调用usb.bulkTransfer接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [bulkTransfer](arkts-basicservices-usbmanager-bulktransfer-f.md#bulktransfer-1)
+**替代接口：** [bulkTransfer](arkts-basicservices-usbmanager-bulktransfer-f.md#bulktransfer)
 
-<!--Device-usb-function bulkTransfer(
-    pipe: USBDevicePipe,
-    endpoint: USBEndpoint,
-    buffer: Uint8Array,
-    timeout?: number
-  ): Promise<number>--><!--Device-usb-function bulkTransfer(
-    pipe: USBDevicePipe,
-    endpoint: USBEndpoint,
-    buffer: Uint8Array,
-    timeout?: number
-  ): Promise<number>-End-->
+<!--Device-usb-function bulkTransfer(    pipe: USBDevicePipe,    endpoint: USBEndpoint,    buffer: Uint8Array,    timeout?: number  ): Promise<number>--><!--Device-usb-function bulkTransfer(    pipe: USBDevicePipe,    endpoint: USBEndpoint,    buffer: Uint8Array,    timeout?: number  ): Promise<number>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

@@ -1,15 +1,13 @@
 # UIContext
 
 UIContext实例对象。
-
 > **说明：**
-
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。  
 >  
 > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的  
-> [getUIContext()](docroot://reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定  
-> 义组件内置方法[getUIContext()](docroot://reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext  
-> 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#getcallingscopeuicontext-1)获取UIContext实例。本文中  
+> [getUIContext()](../../../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定  
+> 义组件内置方法[getUIContext()](../../../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext  
+> 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#getcallingscopeuicontext)获取UIContext实例。本文中  
 > UIContext对象以uiContext表示。
 
 **起始版本：** 10
@@ -24,7 +22,6 @@ UIContext实例对象。
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="addlocalinputeventmonitor"></a>
 ## addLocalInputEventMonitor
 
 ```TypeScript
@@ -34,7 +31,6 @@ addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): Inpu
 注册本地输入事件监视器。
 
 接口名中的“Local”表示监视器只在当前UIContext内有效。并且不影响其他UIContext实例。每个UIContext都维护自己独立的监视器列表。
-
 > **说明**  
 > >性能警告：不要在回调中执行耗时操作！  
 > >监控对象注释：  
@@ -72,7 +68,6 @@ addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): Inpu
 | --- | --- |
 | [InputEventMonitor](../arkts-components/arkts-arkui-inputeventmonitor-i.md) | Unique identifier object for the monitor, used for subsequent cancellation of registration. |
 
-<a id="animateto"></a>
 ## animateTo
 
 ```TypeScript
@@ -80,25 +75,24 @@ animateTo(value: AnimateParam, event: () => void): void
 ```
 
 提供animateTo接口，用于为闭包代码中的状态变化添加过渡动画效果。
-
 > **说明：**  
 >  
 > - 不推荐在aboutToAppear、aboutToDisappear中调用动画。  
 >  
-> - 如果在[aboutToAppear](docroot://reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中调用动  
+> - 如果在[aboutToAppear](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中调用动  
 > 画，自定义组件内的build还未执行，内部组件还未创建，动画时机过早，动画属性没有初值无法对组件产生动画。  
 >  
-> - 执行[aboutToDisappear](docroot://reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)  
+> - 执行[aboutToDisappear](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)  
 > 时，组件即将销毁，不能在aboutToDisappear里面做动画。  
 >  
 > - 在组件出现和消失时，可以通过[组件内转场](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)添加动画效果。  
 >  
 > - 组件内转场不支持的属性，可以参考[显式动画](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)中的  
-> [示例2](docroot://reference/apis-arkui/arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效  
+> [示例2](../../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效  
 > 果。  
 >  
-> - 某些场景下，在[状态管理V2](docroot://ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，  
-> 具体可参考：[在状态管理V2中使用animateTo动画效果异常](docroot://ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。  
+> - 某些场景下，在[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，  
+> 具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。  
 >  
 > - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发动画播放完成回调[onFinish](../arkts-components/arkts-arkui-animateparam-i.md)。  
 >  
@@ -121,7 +115,6 @@ animateTo(value: AnimateParam, event: () => void): void
 | value | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
 | event | () =&gt; void | 是 | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
-<a id="bindtabstonestedscrollable"></a>
 ## bindTabsToNestedScrollable
 
 ```TypeScript
@@ -148,7 +141,6 @@ Bind tabs to nested scrollable container components to automatically hide tab ba
 | parentScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the parent scrollable container component. |
 | childScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the child scrollable container component. |
 
-<a id="bindtabstoscrollable"></a>
 ## bindTabsToScrollable
 
 ```TypeScript
@@ -174,7 +166,6 @@ Bind tabs to scrollable container component to automatically hide tab bar.
 | tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | 是 | The controller of the tabs. |
 | scroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the scrollable container component. |
 
-<a id="closebindsheet"></a>
 ## closeBindSheet
 
 ```TypeScript
@@ -182,7 +173,6 @@ closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise
 ```
 
 关闭bindSheetContent对应的半模态页面，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 使用此接口关闭半模态页面时，不会触发shouldDismiss回调。
@@ -217,7 +207,6 @@ closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
 | [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -225,7 +214,6 @@ constructor()
 ```
 
 构造UIContext对象。
-
 > **说明：**  
 >  
 > 通过构造函数创建的UIContext对象指向不明确的UI上下文，即不指向任何UI实例。该UIContext对应实例的唯一标识ID为-1。
@@ -240,7 +228,6 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="createanimator"></a>
 ## createAnimator
 
 ```TypeScript
@@ -277,14 +264,13 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="createanimator-1"></a>
 ## createAnimator
 
 ```TypeScript
 createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-创建animator动画结果对象（AnimatorResult）。与[createAnimator](arkts-arkui-arkui-uicontext-uicontext-c.md#createanimator-1)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
+创建animator动画结果对象（AnimatorResult）。与[createAnimator](arkts-arkui-arkui-uicontext-uicontext-c.md#createanimator)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
 
 **起始版本：** 18
 
@@ -314,7 +300,6 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="createuicontextwithoutwindow"></a>
 ## createUIContextWithoutWindow
 
 ```TypeScript
@@ -322,10 +307,9 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 ```
 
 创建一个不依赖窗口的UI实例，并返回其UI上下文。该接口所创建的UI实例是单例。
-
 > **说明：**  
 >  
-> 返回的UI上下文只可用于创建[自定义节点](docroot://ui/arkts-user-defined-node.md)，不能执行其他UI操作。
+> 返回的UI上下文只可用于创建[自定义节点](../../../ui/arkts-user-defined-node.md)，不能执行其他UI操作。
 
 **起始版本：** 17
 
@@ -356,14 +340,13 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. The number of parameters is incorrect.<br> 2. Invalid parameter type of context. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
-<a id="destroyuicontextwithoutwindow"></a>
 ## destroyUIContextWithoutWindow
 
 ```TypeScript
 static destroyUIContextWithoutWindow(): void
 ```
 
-销毁[createUIContextWithoutWindow](arkts-arkui-arkui-uicontext-uicontext-c.md#createuicontextwithoutwindow-1)创建的UI实例。
+销毁[createUIContextWithoutWindow](arkts-arkui-arkui-uicontext-uicontext-c.md#createuicontextwithoutwindow)创建的UI实例。
 
 **起始版本：** 17
 
@@ -375,7 +358,6 @@ static destroyUIContextWithoutWindow(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="dispatchkeyevent"></a>
 ## dispatchKeyEvent
 
 ```TypeScript
@@ -407,7 +389,6 @@ Dispach keyboard event to the frameNode with inspector key.
 | --- | --- |
 | boolean | Returns whether the key event is consumed. |
 
-<a id="enableeventpassthrough"></a>
 ## enableEventPassthrough
 
 ```TypeScript
@@ -433,7 +414,6 @@ enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
 | enabled | boolean | 是 | 启用或禁用事件透传。默认值为false。 |
 | eventType | [RawInputEventType](arkts-arkui-rawinputeventtype-e.md) | 是 | 原始输入事件的类型。 |
 
-<a id="enableswipeback"></a>
 ## enableSwipeBack
 
 ```TypeScript
@@ -456,7 +436,6 @@ whether to enable or disable swipe to back event.
 | --- | --- | --- | --- |
 | enabled | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | enable or disable swipe to back event. |
 
-<a id="fp2px"></a>
 ## fp2px
 
 ```TypeScript
@@ -469,12 +448,11 @@ fp2px(value: number): number
 
 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md).density。
 
-字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](docroot://reference/apis-arkui/arkui-ts/ts-types.md#configuration)。
-
+字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../../../reference/apis-arkui/arkui-ts/ts-types.md#configuration)。
 > **说明：**  
 >  
 > getUIContext需在windowStage.  
-> [loadContent](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
+> [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -497,7 +475,6 @@ fp2px(value: number): number
 | --- | --- |
 | number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
-<a id="getalluicontexts"></a>
 ## getAllUIContexts
 
 ```TypeScript
@@ -522,7 +499,6 @@ static getAllUIContexts(): UIContext[]
 | --- | --- |
 | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md)[] | Array of all currently valid UIContext instances. Returns an empty array if no valid UIContext instance exists. |
 
-<a id="getatomicservicebar"></a>
 ## getAtomicServiceBar
 
 ```TypeScript
@@ -547,7 +523,6 @@ Get AtomicServiceBar.
 | --- | --- |
 | [Nullable](arkts-arkui-nullable-t.md)&lt;AtomicServiceBar&gt; | The atomic service bar. |
 
-<a id="getattachedframenodebyid"></a>
 ## getAttachedFrameNodeById
 
 ```TypeScript
@@ -578,18 +553,16 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 | --- | --- |
 | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | The instance of FrameNode. |
 
-<a id="getcallingscopeuicontext"></a>
 ## getCallingScopeUIContext
 
 ```TypeScript
 static getCallingScopeUIContext(): UIContext | undefined
 ```
 
-获取当前[调用作用域](docroot://ui/arkts-global-interface.md#基本概念)的UIContext，调用作用域不明确时返回undefined。
-
+获取当前[调用作用域](../../../ui/arkts-global-interface.md#基本概念)的UIContext，调用作用域不明确时返回undefined。
 > **说明：**  
 >  
-> 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](arkts-arkui-arkui-uicontext-uicontext-c.md#isavailable-1)接口判断其有效性。
+> 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](arkts-arkui-arkui-uicontext-uicontext-c.md#isavailable)接口判断其有效性。
 
 **起始版本：** 22
 
@@ -605,9 +578,8 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | UIContext of the current [calling scope](docroot://ui/arkts-global-interface.md#basic-concepts). Returns **undefined** if the calling scope is ambiguous. |
+| [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | UIContext of the current [calling scope](../../../ui/arkts-global-interface.md#basic-concepts). Returns **undefined** if the calling scope is ambiguous. |
 
-<a id="getcomponentsnapshot"></a>
 ## getComponentSnapshot
 
 ```TypeScript
@@ -632,7 +604,6 @@ getComponentSnapshot(): ComponentSnapshot
 | --- | --- |
 | [ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md) | 组件快照。 |
 
-<a id="getcomponentutils"></a>
 ## getComponentUtils
 
 ```TypeScript
@@ -657,7 +628,6 @@ get object ComponentUtils.
 | --- | --- |
 | [ComponentUtils](arkts-arkui-arkui-uicontext-componentutils-c.md) | object ComponentUtils. |
 
-<a id="getcontextmenucontroller"></a>
 ## getContextMenuController
 
 ```TypeScript
@@ -682,7 +652,6 @@ Get object context menu controller.
 | --- | --- |
 | [ContextMenuController](arkts-arkui-arkui-uicontext-contextmenucontroller-c.md) | object context menu controller. |
 
-<a id="getcursorcontroller"></a>
 ## getCursorController
 
 ```TypeScript
@@ -707,7 +676,6 @@ Get object cursor controller.
 | --- | --- |
 | [CursorController](arkts-arkui-arkui-uicontext-cursorcontroller-c.md) | object cursor controller. |
 
-<a id="getdialogpresenter"></a>
 ## getDialogPresenter
 
 ```TypeScript
@@ -732,7 +700,6 @@ getDialogPresenter(): DialogPresenter
 | --- | --- |
 | [DialogPresenter](arkts-arkui-arkui-uicontext-dialogpresenter-c.md) | Dialog对象。 |
 
-<a id="getdragcontroller"></a>
 ## getDragController
 
 ```TypeScript
@@ -757,7 +724,6 @@ Get DragController.
 | --- | --- |
 | [DragController](arkts-arkui-arkui-uicontext-dragcontroller-c.md) | the DragController |
 
-<a id="getfilteredinspectortree"></a>
 ## getFilteredInspectorTree
 
 ```TypeScript
@@ -786,7 +752,7 @@ get the filtered attributes of the component tree.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | JSON string of the component tree and component attributes. For details about each field in the component, see the return value description of [getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo-1). |
+| string | JSON string of the component tree and component attributes. For details about each field in the component, see the return value description of [getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo). |
 
 **错误码：**
 
@@ -794,7 +760,6 @@ get the filtered attributes of the component tree.
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="getfilteredinspectortreebyid"></a>
 ## getFilteredInspectorTreeById
 
 ```TypeScript
@@ -817,7 +782,7 @@ get the filtered attributes of the component tree with the specified id and dept
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | [ID](../arkts-components/arkts-arkui-commonmethod-c.md#id-1) of the target component. |
+| id | string | 是 | [ID](../arkts-components/arkts-arkui-commonmethod-c.md#id) of the target component. |
 | depth | number | 是 | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of<br>the specified component are obtained. If the value is **2**, the attributes of<br>the specified component and its<br>level-1 child components are obtained. The rest can be deduced by analogy. |
 | filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported:<br>**"id"**: unique ID of the component.<br>**"src"**: source of the resource.<br>**"content"**: information or data contained in the element, component, or object.<br>**"editable"**: whether the component is editable.<br>**"scrollable"**: whether the component is scrollable.<br>**"selectable"**: whether the component is selectable.<br>**"focusable"**: whether the component is focusable.<br>**"focused"**: whether the component is currently focused.<br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results.<br>If **filters** is not provided or is an empty array, none of the aforementioned fields<br>will be filtered out.<br>Other filter fields are used only in testing scenarios. |
 
@@ -825,7 +790,7 @@ get the filtered attributes of the component tree with the specified id and dept
 
 | 类型 | 说明 |
 | --- | --- |
-| string | JSON string of the attributes of the specified component and its child components. For details about each field in the component, see the return value<br>description of [getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo-1). |
+| string | JSON string of the attributes of the specified component and its child components. For details about each field in the component, see the return value<br>description of [getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo). |
 
 **错误码：**
 
@@ -833,7 +798,6 @@ get the filtered attributes of the component tree with the specified id and dept
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-<a id="getfocuscontroller"></a>
 ## getFocusController
 
 ```TypeScript
@@ -858,7 +822,6 @@ getFocusController(): FocusController
 | --- | --- |
 | [FocusController](arkts-arkui-arkui-uicontext-focuscontroller-c.md) | 焦点控制器 |
 
-<a id="getfont"></a>
 ## getFont
 
 ```TypeScript
@@ -883,7 +846,6 @@ get object font.
 | --- | --- |
 | [Font](arkts-arkui-arkui-uicontext-font-c.md) | object Font. |
 
-<a id="getframenodebyid"></a>
 ## getFrameNodeById
 
 ```TypeScript
@@ -914,7 +876,6 @@ getFrameNodeById(id: string): FrameNode | null
 | --- | --- |
 | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | The instance of FrameNode. |
 
-<a id="getframenodebyuniqueid"></a>
 ## getFrameNodeByUniqueId
 
 ```TypeScript
@@ -924,8 +885,8 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 提供getFrameNodeByUniqueId接口通过组件的uniqueId获取组件树的实体节点。
 
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；2. 当uniqueId对应的是自定义组件时：  
-- 若其有渲染内容，且没有被[@Reusable装饰器](docroot://ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。  
-- 若其无渲染内容，或者被[@Reusable装饰器](docroot://ui/state-management/arkts-reusable.md)修饰时，在该自定义组件的子组件创建完成前调用此接口，将返回null；在该自定义组件的子组件创建完成后调用，返回其第一个子组件的FrameNode。3. 当uniqueId无对应的组件时，返回null。
+- 若其有渲染内容，且没有被[@Reusable装饰器](../../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。  
+- 若其无渲染内容，或者被[@Reusable装饰器](../../../ui/state-management/arkts-reusable.md)修饰时，在该自定义组件的子组件创建完成前调用此接口，将返回null；在该自定义组件的子组件创建完成后调用，返回其第一个子组件的FrameNode。3. 当uniqueId无对应的组件时，返回null。
 
 **起始版本：** 12
 
@@ -949,7 +910,6 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 | --- | --- |
 | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | - The FrameNode with the target uniqueId, or null if the frameNode is not existed. |
 
-<a id="gethostcontext"></a>
 ## getHostContext
 
 ```TypeScript
@@ -974,7 +934,6 @@ getHostContext(): Context | undefined
 | --- | --- |
 | [Context](../arkts-components/arkts-arkui-context-t.md) | Context of the ability. The context type depends on the ability type. For example,if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md). If the ability context does not exist,**undefined** is returned. |
 
-<a id="getid"></a>
 ## getId
 
 ```TypeScript
@@ -999,7 +958,6 @@ getId(): number
 | --- | --- |
 | number | 后端实例的唯一标识。取值范围为[-1, +∞)。 |
 
-<a id="getkeyboardavoidmode"></a>
 ## getKeyboardAvoidMode
 
 ```TypeScript
@@ -1024,7 +982,6 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 | --- | --- |
 | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | 返回虚拟键盘抬起时的页面避让模式。 |
 
-<a id="getlastfocuseduicontext"></a>
 ## getLastFocusedUIContext
 
 ```TypeScript
@@ -1049,7 +1006,6 @@ static getLastFocusedUIContext(): UIContext | undefined
 | --- | --- |
 | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | UIContext of the UI instance that most recently switched to the focused state.Returns **undefined** if the most recently focused instance has been destroyed or if no instance has ever been focused. |
 
-<a id="getlastforegrounduicontext"></a>
 ## getLastForegroundUIContext
 
 ```TypeScript
@@ -1074,7 +1030,6 @@ static getLastForegroundUIContext(): UIContext | undefined
 | --- | --- |
 | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | UIContext of the UI instance that most recently switched to the foreground state. Returns **undefined** if the most recently foreground UI instance has been destroyed or if no UI instance has ever been in the foreground. |
 
-<a id="getmagnifier"></a>
 ## getMagnifier
 
 ```TypeScript
@@ -1099,7 +1054,6 @@ getMagnifier(): Magnifier
 | --- | --- |
 | [Magnifier](arkts-arkui-arkui-uicontext-magnifier-c.md) | Magnifier对象，可用于控制放大镜的显示和隐藏。 |
 
-<a id="getmaxfontscale"></a>
 ## getMaxFontScale
 
 ```TypeScript
@@ -1124,7 +1078,6 @@ Get the max font scale.
 | --- | --- |
 | number | The max font scale. |
 
-<a id="getmeasureutils"></a>
 ## getMeasureUtils
 
 ```TypeScript
@@ -1149,7 +1102,6 @@ Get MeasureUtils.
 | --- | --- |
 | [MeasureUtils](arkts-arkui-arkui-uicontext-measureutils-c.md) | the MeasureUtils |
 
-<a id="getmediaquery"></a>
 ## getMediaQuery
 
 ```TypeScript
@@ -1174,7 +1126,6 @@ get object mediaQuery.
 | --- | --- |
 | [MediaQuery](arkts-arkui-arkui-uicontext-mediaquery-c.md) | object MediaQuery. |
 
-<a id="getnavigationinfobyuniqueid"></a>
 ## getNavigationInfoByUniqueId
 
 ```TypeScript
@@ -1205,7 +1156,6 @@ Get navigation information of the frameNode with uniqueId.
 | --- | --- |
 | observer.NavigationInfo | - The navigation information of the frameNode with the target uniqueId, or undefined if the frameNode is not existed or does not have navigation information. |
 
-<a id="getoverlaymanager"></a>
 ## getOverlayManager
 
 ```TypeScript
@@ -1230,7 +1180,6 @@ Obtains the OverlayManager object.
 | --- | --- |
 | [OverlayManager](arkts-arkui-arkui-uicontext-overlaymanager-c.md) | OverlayManager instance obtained. |
 
-<a id="getoverlaymanageroptions"></a>
 ## getOverlayManagerOptions
 
 ```TypeScript
@@ -1255,7 +1204,6 @@ Get object OverlayManagerOptions.
 | --- | --- |
 | [OverlayManagerOptions](arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md) | object OverlayManagerOptions. |
 
-<a id="getpageinfobyuniqueid"></a>
 ## getPageInfoByUniqueId
 
 ```TypeScript
@@ -1286,7 +1234,6 @@ Get page information of the frameNode with uniqueId.
 | --- | --- |
 | [PageInfo](arkts-arkui-arkui-uicontext-pageinfo-i.md) | - The page information of the frameNode with the target uniqueId, includes navDestination and router page information. If the frame node does not have navDestination and router page information, it will return an empty object. |
 
-<a id="getpagerootnode"></a>
 ## getPageRootNode
 
 ```TypeScript
@@ -1315,7 +1262,6 @@ getPageRootNode(): FrameNode | null
 | --- | --- |
 | [120007](../errorcode-uicontext.md#120007-实例不存在) | The UIContext is not available. |
 
-<a id="getpixelroundmode"></a>
 ## getPixelRoundMode
 
 ```TypeScript
@@ -1340,7 +1286,6 @@ getPixelRoundMode(): PixelRoundMode
 | --- | --- |
 | [PixelRoundMode](arkts-arkui-pixelroundmode-e.md) | Pixel rounding mode of the current page. |
 
-<a id="getpromptaction"></a>
 ## getPromptAction
 
 ```TypeScript
@@ -1365,7 +1310,6 @@ get object PromptAction.
 | --- | --- |
 | [PromptAction](arkts-arkui-arkui-uicontext-promptaction-c.md) | PromptAction object. |
 
-<a id="getrouter"></a>
 ## getRouter
 
 ```TypeScript
@@ -1390,7 +1334,6 @@ Obtains a Router object.
 | --- | --- |
 | [Router](arkts-arkui-router-router-c.md) | Router object. |
 
-<a id="getsharedlocalstorage"></a>
 ## getSharedLocalStorage
 
 ```TypeScript
@@ -1415,7 +1358,6 @@ getSharedLocalStorage(): LocalStorage | undefined
 | --- | --- |
 | [LocalStorage](arkts-arkui-localstorage-c.md) | **LocalStorage** instance if it exists; **undefined** if it does not exist. |
 
-<a id="getsmartgesturecontroller"></a>
 ## getSmartGestureController
 
 ```TypeScript
@@ -1440,7 +1382,6 @@ getSmartGestureController(): SmartGestureController
 | --- | --- |
 | [SmartGestureController](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md) | 智能手势控制器对象。 |
 
-<a id="gettextmenucontroller"></a>
 ## getTextMenuController
 
 ```TypeScript
@@ -1465,7 +1406,6 @@ Get object text menu controller.
 | --- | --- |
 | [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.md) | object text menu controller. |
 
-<a id="getuiinspector"></a>
 ## getUIInspector
 
 ```TypeScript
@@ -1490,7 +1430,6 @@ get object UIInspector.
 | --- | --- |
 | [UIInspector](arkts-arkui-arkui-uicontext-uiinspector-c.md) | **UIInspector** object. |
 
-<a id="getuiobserver"></a>
 ## getUIObserver
 
 ```TypeScript
@@ -1515,7 +1454,6 @@ getUIObserver(): UIObserver
 | --- | --- |
 | [UIObserver](arkts-arkui-arkui-uicontext-uiobserver-c.md) | 返回UIObserver实例对象。 |
 
-<a id="getwindowheightbreakpoint"></a>
 ## getWindowHeightBreakpoint
 
 ```TypeScript
@@ -1540,7 +1478,6 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 | --- | --- |
 | [HeightBreakpoint](arkts-arkui-heightbreakpoint-e.md) | 当前实例所在窗口的宽高比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
 
-<a id="getwindowid"></a>
 ## getWindowId
 
 ```TypeScript
@@ -1548,7 +1485,6 @@ getWindowId(): number | undefined
 ```
 
 获取当前应用实例所属的窗口ID。
-
 > **说明：**  
 >  
 > 若UIContext位于主应用程序进程中的[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)内，则返回主应用程  
@@ -1570,7 +1506,6 @@ getWindowId(): number | undefined
 | --- | --- |
 | number | ID of the window to which the current application instance belongs. If the window does not exist, **undefined** is returned. |
 
-<a id="getwindowname"></a>
 ## getWindowName
 
 ```TypeScript
@@ -1595,7 +1530,6 @@ getWindowName(): string | undefined
 | --- | --- |
 | string | Name of the window where the current instance is located. If the window does not exist, **undefined** is returned. |
 
-<a id="getwindowwidthbreakpoint"></a>
 ## getWindowWidthBreakpoint
 
 ```TypeScript
@@ -1620,14 +1554,13 @@ getWindowWidthBreakpoint(): WidthBreakpoint
 | --- | --- |
 | [WidthBreakpoint](arkts-arkui-widthbreakpoint-e.md) | 当前实例所在窗口的宽度断点枚举值。若窗口宽度为 0vp，则返回WIDTH_XS。 |
 
-<a id="isavailable"></a>
 ## isAvailable
 
 ```TypeScript
 isAvailable(): boolean
 ```
 
-判断UIContext对象对应的UI实例是否有效。使用[getUIContext](docroot://reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext对象。后端UI实例存在时，该UI实例有效。通过new UIContext()创建的UIContext对象无对应的UI实例；多次[loadContent](docroot://reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)后，旧的UI实例会失效。多窗口应用场景，当窗口关闭后，该窗口的UI实例失效。总而言之，当UIContext对象没有对应的后端UI实例时，该对象是无效的。
+判断UIContext对象对应的UI实例是否有效。使用[getUIContext](../../../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext对象。后端UI实例存在时，该UI实例有效。通过new UIContext()创建的UIContext对象无对应的UI实例；多次[loadContent](../../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)后，旧的UI实例会失效。多窗口应用场景，当窗口关闭后，该窗口的UI实例失效。总而言之，当UIContext对象没有对应的后端UI实例时，该对象是无效的。
 
 **起始版本：** 20
 
@@ -1645,7 +1578,6 @@ isAvailable(): boolean
 | --- | --- |
 | boolean | 返回UIContext对象对应的UI实例是否有效。true表示有效，false表示无效。 |
 
-<a id="iseasysplit"></a>
 ## isEasySplit
 
 ```TypeScript
@@ -1670,7 +1602,6 @@ isEasySplit(): boolean
 | --- | --- |
 | boolean | 返回当前UI实例是否处于分栏模式。true表示处于分栏模式，false表示未处于分栏模式。 |
 
-<a id="isfollowingsystemfontscale"></a>
 ## isFollowingSystemFontScale
 
 ```TypeScript
@@ -1695,7 +1626,6 @@ Checks whether current font scale follows the system.
 | --- | --- |
 | boolean | Returns true if current font scale follows the system; returns false otherwise. |
 
-<a id="keyframeanimateto"></a>
 ## keyframeAnimateTo
 
 ```TypeScript
@@ -1721,7 +1651,6 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>):
 | param | [KeyframeAnimateParam](../arkts-components/arkts-arkui-keyframeanimateparam-i.md) | 是 | 关键帧动画的整体动画参数。 |
 | keyframes | Array&lt;KeyframeState&gt; | 是 | 所有的关键帧状态的列表。 |
 
-<a id="lpx2px"></a>
 ## lpx2px
 
 ```TypeScript
@@ -1730,12 +1659,11 @@ lpx2px(value: number): number
 
 将lpx单位的数值转换为以px为单位的数值。
 
-转换公式为：px值 = lpx值 × 实际屏幕宽度与逻辑宽度（通过[designWidth](docroot://quick-start/module-configuration-file.md#pages标签)配置）的比值。
-
+转换公式为：px值 = lpx值 × 实际屏幕宽度与逻辑宽度（通过[designWidth](../../../quick-start/module-configuration-file.md#pages标签)配置）的比值。
 > **说明：**  
 >  
 > getUIContext需在windowStage.  
-> [loadContent](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
+> [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -1758,7 +1686,6 @@ lpx2px(value: number): number
 | --- | --- |
 | number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
-<a id="openbindsheet"></a>
 ## openBindSheet
 
 ```TypeScript
@@ -1766,12 +1693,11 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 ```
 
 创建并弹出以bindSheetContent作为内容的半模态页面，使用Promise异步回调。通过该接口弹出的半模态页面样式完全按照bindSheetContent中设置的样式显示。
-
 > **说明：**  
 >  
 > 1. 使用该接口时，若未传入有效的targetId，则不支持设置SheetOptions.preferType为POPUP模式、不支持设置SheetOptions.mode为EMBEDDED模式。  
 >  
-> 2. 由于[updateBindSheet](arkts-arkui-arkui-uicontext-uicontext-c.md#updatebindsheet-1)和[closeBindSheet](arkts-arkui-arkui-uicontext-uicontext-c.md#closebindsheet-1)依赖  
+> 2. 由于[updateBindSheet](arkts-arkui-arkui-uicontext-uicontext-c.md#updatebindsheet)和[closeBindSheet](arkts-arkui-arkui-uicontext-uicontext-c.md#closebindsheet)依赖  
 > bindSheetContent去更新或者关闭指定的半模态页面，开发者需自行维护传入的bindSheetContent。  
 >  
 > 3. 不支持设置SheetOptions.UIContext。
@@ -1811,7 +1737,6 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 | [120005](../errorcode-bindSheet.md#120005-指定的targetid对应的节点未挂载在节点树上) | The node of targetId is not in the component tree. |
 | [120006](../errorcode-bindSheet.md#120006-指定的targetid对应的节点并不是page节点或navdestination节点的子节点) | The node of targetId is not a child of the page node or NavDestination node. |
 
-<a id="postdelayedframecallback"></a>
 ## postDelayedFrameCallback
 
 ```TypeScript
@@ -1837,7 +1762,6 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 | frameCallback | [FrameCallback](arkts-arkui-arkui-uicontext-framecallback-c.md) | 是 | 下一帧需要执行的回调。 |
 | delayTime | number | 是 | 延迟的时间，以毫秒为单位。传入null、undefined或小于0的值，会按0处理。 |
 
-<a id="postframecallback"></a>
 ## postFrameCallback
 
 ```TypeScript
@@ -1862,7 +1786,6 @@ postFrameCallback(frameCallback: FrameCallback): void
 | --- | --- | --- | --- |
 | frameCallback | [FrameCallback](arkts-arkui-arkui-uicontext-framecallback-c.md) | 是 | 下一帧需要执行的回调。 |
 
-<a id="px2fp"></a>
 ## px2fp
 
 ```TypeScript
@@ -1875,12 +1798,11 @@ px2fp(value: number): number
 
 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md).density。
 
-字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](docroot://reference/apis-arkui/arkui-ts/ts-types.md#configuration)。
-
+字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../../../reference/apis-arkui/arkui-ts/ts-types.md#configuration)。
 > **说明：**  
 >  
 > getUIContext需在windowStage.  
-> [loadContent](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
+> [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -1903,7 +1825,6 @@ px2fp(value: number): number
 | --- | --- |
 | number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
-<a id="px2lpx"></a>
 ## px2lpx
 
 ```TypeScript
@@ -1912,12 +1833,11 @@ px2lpx(value: number): number
 
 将px单位的数值转换为以lpx为单位的数值。
 
-转换公式为：lpx值 = px值 ÷ 实际屏幕宽度与逻辑宽度（通过[designWidth](docroot://quick-start/module-configuration-file.md#pages标签)配置）的比值。
-
+转换公式为：lpx值 = px值 ÷ 实际屏幕宽度与逻辑宽度（通过[designWidth](../../../quick-start/module-configuration-file.md#pages标签)配置）的比值。
 > **说明：**  
 >  
 > getUIContext需在windowStage.  
-> [loadContent](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
+> [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -1940,7 +1860,6 @@ px2lpx(value: number): number
 | --- | --- |
 | number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
-<a id="px2vp"></a>
 ## px2vp
 
 ```TypeScript
@@ -1952,15 +1871,14 @@ px2vp(value: number): number
 转换公式为：vp值 = px值 ÷ 像素密度
 
 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md).density。
-
 > **说明：**  
 >  
 > 1. getUIContext需在windowStage.  
-> [loadContent](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
+> [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
 > 调用此接口，否则无法返回准确结果。  
 >  
 > 2. UI实例未创建时，[像素单位](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考  
-> [像素单位转换接口替换为UIContext接口](docroot://ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
+> [像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 **起始版本：** 12
 
@@ -1982,7 +1900,6 @@ px2vp(value: number): number
 | --- | --- |
 | number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
-<a id="removelocalinputeventmonitor"></a>
 ## removeLocalInputEventMonitor
 
 ```TypeScript
@@ -2012,7 +1929,6 @@ removeLocalInputEventMonitor(monitor: InputEventMonitor): void
 | --- | --- | --- | --- |
 | monitor | [InputEventMonitor](../arkts-components/arkts-arkui-inputeventmonitor-i.md) | 是 | 监控标识对象（由addLocalInputEventMonitor返回）。 |
 
-<a id="requiredynamicsyncscene"></a>
 ## requireDynamicSyncScene
 
 ```TypeScript
@@ -2043,7 +1959,6 @@ requireDynamicSyncScene(id: string): Array<DynamicSyncScene>
 | --- | --- |
 | Array&lt;DynamicSyncScene&gt; | The instance of SwiperDynamicSyncScene. |
 
-<a id="resolveuicontext"></a>
 ## resolveUIContext
 
 ```TypeScript
@@ -2051,7 +1966,6 @@ static resolveUIContext(): ResolvedUIContext
 ```
 
 使用优先级策略获取带有解析策略的UIContext实例对象。
-
 > **说明：**  
 >  
 > 按照预定义的优先级顺序解析并返回UIContext实例和UIContext的解析策略。  
@@ -2086,7 +2000,6 @@ static resolveUIContext(): ResolvedUIContext
 | --- | --- |
 | [ResolvedUIContext](arkts-arkui-arkui-uicontext-resolveduicontext-c.md) | 返回带有解析策略的UIContext实例对象。 |
 
-<a id="runscopedtask"></a>
 ## runScopedTask
 
 ```TypeScript
@@ -2111,7 +2024,6 @@ runScopedTask(callback: () => void): void
 | --- | --- | --- | --- |
 | callback | () =&gt; void | 是 | 回调函数 |
 
-<a id="setcustomkeyboardcontinuefeature"></a>
 ## setCustomKeyboardContinueFeature
 
 ```TypeScript
@@ -2136,7 +2048,6 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 | --- | --- | --- | --- |
 | feature | [CustomKeyboardContinueFeature](arkts-arkui-arkui-uicontext-customkeyboardcontinuefeature-e.md) | 是 | 自定义键盘接续特性。 |
 
-<a id="setimagecachecount"></a>
 ## setImageCacheCount
 
 ```TypeScript
@@ -2161,7 +2072,6 @@ setImageCacheCount(value: number): void
 | --- | --- | --- | --- |
 | value | number | 是 | 内存中缓存解码后图片的数量上限 |
 
-<a id="setimagerawdatacachesize"></a>
 ## setImageRawDataCacheSize
 
 ```TypeScript
@@ -2186,7 +2096,6 @@ setImageRawDataCacheSize(value: number): void
 | --- | --- | --- | --- |
 | value | number | 是 | capacity of raw image data size in bytes. |
 
-<a id="setkeyboardavoidmode"></a>
 ## setKeyboardAvoidMode
 
 ```TypeScript
@@ -2194,7 +2103,6 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 ```
 
 控制虚拟键盘抬起时页面的避让模式。
-
 > **说明：**  
 >  
 >KeyboardAvoidMode.RESIZE模式会压缩页面大小，页面中设置百分比宽高的组件会跟随页面压缩，而直接设置宽高的组件会按设置的固定大小布局。设置KeyboardAvoidMode的RESIZE模式时，expandSa feArea([SafeAreaType.KEYBOARD],[SafeAreaEdge.BOTTOM])不生效。  
@@ -2219,7 +2127,6 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 | --- | --- | --- | --- |
 | value | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | 是 | 配置虚拟键盘抬起时页面的避让模式。<br />默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br/>setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
 
-<a id="setoverlaymanageroptions"></a>
 ## setOverlayManagerOptions
 
 ```TypeScript
@@ -2250,7 +2157,6 @@ Init OverlayManager.
 | --- | --- |
 | boolean | Returns true if it is called first and before getting an OverlayManager instance; returns false otherwise. |
 
-<a id="setpixelroundmode"></a>
 ## setPixelRoundMode
 
 ```TypeScript
@@ -2275,7 +2181,6 @@ setPixelRoundMode(mode: PixelRoundMode): void
 | --- | --- | --- | --- |
 | mode | [PixelRoundMode](arkts-arkui-pixelroundmode-e.md) | 是 | 像素取整模式。<br />默认值：PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH<br/>设置异常值时，该属性为默认值。 |
 
-<a id="setresourcemanagercachemaxcountforhsp"></a>
 ## setResourceManagerCacheMaxCountForHSP
 
 ```TypeScript
@@ -2310,7 +2215,6 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 | [100102](../errorcode-uicontext.md#100102-参数类型错误) | The parameter value cannot be a floating point number. |
 | [100103](../errorcode-uicontext.md#100103-调用线程错误) | The function cannot be called from a non main thread. |
 
-<a id="settextselectionclearpolicy"></a>
 ## setTextSelectionClearPolicy
 
 ```TypeScript
@@ -2335,7 +2239,6 @@ setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
 | --- | --- | --- | --- |
 | policy | [TextSelectionClearPolicy](arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md) | 是 | 文本选择清除策略。 |
 
-<a id="showactionsheet"></a>
 ## showActionSheet
 
 ```TypeScript
@@ -2360,7 +2263,6 @@ Shows an action sheet in the given settings.
 | --- | --- | --- | --- |
 | value | [ActionSheetOptions](arkts-arkui-actionsheetoptions-i.md) | 是 | Parameters of the action sheet. |
 
-<a id="showalertdialog"></a>
 ## showAlertDialog
 
 ```TypeScript
@@ -2385,7 +2287,6 @@ alertDialog display.
 | --- | --- | --- | --- |
 | options | [AlertDialogParamWithConfirm](arkts-arkui-alertdialogparamwithconfirm-i.md) \| AlertDialogParamWithButtons \| AlertDialogParamWithOptions | 是 | Shows an AlertDialog component in the given settings. |
 
-<a id="showdatepickerdialog"></a>
 ## showDatePickerDialog
 
 ```TypeScript
@@ -2410,7 +2311,6 @@ datePickerDialog display.
 | --- | --- | --- | --- |
 | options | [DatePickerDialogOptions](../arkts-components/arkts-arkui-datepickerdialogoptions-i.md) | 是 | Options. |
 
-<a id="showtextpickerdialog"></a>
 ## showTextPickerDialog
 
 ```TypeScript
@@ -2435,7 +2335,6 @@ textPickerDialog display.
 | --- | --- | --- | --- |
 | options | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpickerdialogoptions-i.md) | 是 | Options. |
 
-<a id="showtextpickerdialog-1"></a>
 ## showTextPickerDialog
 
 ```TypeScript
@@ -2460,7 +2359,6 @@ textPickerDialog display.
 | --- | --- | --- | --- |
 | style | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpickerdialogoptions-i.md) \| TextPickerDialogOptionsExt | 是 | Dialog style. |
 
-<a id="showtimepickerdialog"></a>
 ## showTimePickerDialog
 
 ```TypeScript
@@ -2485,7 +2383,6 @@ timePickerDialog display.
 | --- | --- | --- | --- |
 | options | [TimePickerDialogOptions](../arkts-components/arkts-arkui-timepickerdialogoptions-i.md) | 是 | Options. |
 
-<a id="unbindtabsfromnestedscrollable"></a>
 ## unbindTabsFromNestedScrollable
 
 ```TypeScript
@@ -2512,7 +2409,6 @@ Unbind tabs from nested scrollable container components.
 | parentScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the parent scrollable container component. |
 | childScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the child scrollable container component. |
 
-<a id="unbindtabsfromscrollable"></a>
 ## unbindTabsFromScrollable
 
 ```TypeScript
@@ -2538,7 +2434,6 @@ Unbind tabs from scrollable container component.
 | tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | 是 | The controller of the tabs. |
 | scroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the scrollable container component. |
 
-<a id="updatebindsheet"></a>
 ## updateBindSheet
 
 ```TypeScript
@@ -2546,7 +2441,6 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 ```
 
 更新bindSheetContent对应的半模态页面的样式，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 不支持更新SheetOptions.UIContext、SheetOptions.mode、回调函数。
@@ -2583,7 +2477,6 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
 | [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
-<a id="vp2px"></a>
 ## vp2px
 
 ```TypeScript
@@ -2595,15 +2488,14 @@ vp2px(value: number): number
 转换公式为：px值 = vp值 × 像素密度
 
 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md).density。
-
 > **说明：**  
 >  
 > 1. getUIContext需在windowStage.  
-> [loadContent](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
+> [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后  
 > 调用此接口，否则无法返回准确结果。  
 >  
 > 2. UI实例未创建时，[像素单位](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考  
-> [像素单位转换接口替换为UIContext接口](docroot://ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
+> [像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 **起始版本：** 12
 

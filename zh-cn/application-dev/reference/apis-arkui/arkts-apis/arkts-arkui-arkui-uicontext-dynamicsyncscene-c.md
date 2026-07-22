@@ -14,7 +14,6 @@ Represents a dynamic synchronization scene.
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
-<a id="getframeraterange"></a>
 ## getFrameRateRange
 
 ```TypeScript
@@ -39,7 +38,6 @@ Gets the FrameRateRange of the DynamicSyncScene.
 | --- | --- |
 | [ExpectedFrameRateRange](../arkts-components/arkts-arkui-expectedframeraterange-i.md) | The range of frameRate. |
 
-<a id="setframeraterange"></a>
 ## setFrameRateRange
 
 ```TypeScript

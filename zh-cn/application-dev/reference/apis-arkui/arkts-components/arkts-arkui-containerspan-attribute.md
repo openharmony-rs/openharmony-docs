@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="attributemodifier"></a>
 ## attributeModifier
 
 ```TypeScript
@@ -35,7 +34,6 @@ attributeModifier(modifier: AttributeModifier<ContainerSpanAttribute>)
 | --- | --- | --- | --- |
 | modifier | [AttributeModifier](arkts-arkui-attributemodifier-i.md)&lt;ContainerSpanAttribute&gt; | 是 | 动态设置组件的属性。 |
 
-<a id="textbackgroundstyle"></a>
 ## textBackgroundStyle
 
 ```TypeScript

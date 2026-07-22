@@ -2,7 +2,7 @@
 
 保存文本内容及样式的载体，支持排版与绘制操作。
 
-下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build-1)接口获取到Paragraph对象实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build)接口获取到Paragraph对象实例，再通过此实例调用对应方法。
 
 **起始版本：** 12
 
@@ -16,7 +16,6 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
-<a id="didexceedmaxlines"></a>
 ## didExceedMaxLines
 
 ```TypeScript
@@ -46,7 +45,6 @@ let didExceed = paragraph.didExceedMaxLines();
 
 ```
 
-<a id="forcereuserasterresult"></a>
 ## forceReuseRasterResult
 
 ```TypeScript
@@ -119,7 +117,6 @@ struct Index {
 
 ```
 
-<a id="getactualtextrange"></a>
 ## getActualTextRange
 
 ```TypeScript
@@ -140,7 +137,7 @@ getActualTextRange(lineNumber: number, includeSpaces: boolean): Range
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lineNumber | number | 是 | 要获取文本范围的行索引，行索引从0开始。该接口只能获取已有行的边界，即输入行索引从0开始。最大行索引为文本行数量-1，文本行数量可通过[getLineCount](arkts-arkgraphics2d-text-paragraph-c.md#getlinecount-1)接口获取。 |
+| lineNumber | number | 是 | 要获取文本范围的行索引，行索引从0开始。该接口只能获取已有行的边界，即输入行索引从0开始。最大行索引为文本行数量-1，文本行数量可通过[getLineCount](arkts-arkgraphics2d-text-paragraph-c.md#getlinecount)接口获取。 |
 | includeSpaces | boolean | 是 | 表示是否应包含空白字符。true表示包含空白字符，false表示不包含空白字符。 |
 
 **返回值：**
@@ -156,7 +153,6 @@ let rang = paragraph.getActualTextRange(0, true);
 
 ```
 
-<a id="getalphabeticbaseline"></a>
 ## getAlphabeticBaseline
 
 ```TypeScript
@@ -186,7 +182,6 @@ let alphabeticBaseline = paragraph.getAlphabeticBaseline();
 
 ```
 
-<a id="getcharacterpositionatcoordinate"></a>
 ## getCharacterPositionAtCoordinate
 
 ```TypeScript
@@ -262,7 +257,6 @@ struct Index {
 
 ```
 
-<a id="getcharacterrangeforglyphrange"></a>
 ## getCharacterRangeForGlyphRange
 
 ```TypeScript
@@ -336,7 +330,6 @@ struct Index {
 
 ```
 
-<a id="getglyphpositionatcoordinate"></a>
 ## getGlyphPositionAtCoordinate
 
 ```TypeScript
@@ -373,7 +366,6 @@ let positionWithAffinity = paragraph.getGlyphPositionAtCoordinate(0, 0);
 
 ```
 
-<a id="getglyphrangeforcharacterrange"></a>
 ## getGlyphRangeForCharacterRange
 
 ```TypeScript
@@ -447,7 +439,6 @@ struct Index {
 
 ```
 
-<a id="getheight"></a>
 ## getHeight
 
 ```TypeScript
@@ -477,7 +468,6 @@ let height = paragraph.getHeight();
 
 ```
 
-<a id="getideographicbaseline"></a>
 ## getIdeographicBaseline
 
 ```TypeScript
@@ -507,7 +497,6 @@ let ideographicBaseline = paragraph.getIdeographicBaseline();
 
 ```
 
-<a id="getlinecount"></a>
 ## getLineCount
 
 ```TypeScript
@@ -537,7 +526,6 @@ let lineCount = paragraph.getLineCount();
 
 ```
 
-<a id="getlineheight"></a>
 ## getLineHeight
 
 ```TypeScript
@@ -573,7 +561,6 @@ let lineHeight = paragraph.getLineHeight(0);
 
 ```
 
-<a id="getlinemetrics"></a>
 ## getLineMetrics
 
 ```TypeScript
@@ -603,7 +590,6 @@ let arrLineMetric =  paragraph.getLineMetrics();
 
 ```
 
-<a id="getlinemetrics-1"></a>
 ## getLineMetrics
 
 ```TypeScript
@@ -639,7 +625,6 @@ let lineMetrics =  paragraph.getLineMetrics(0);
 
 ```
 
-<a id="getlinewidth"></a>
 ## getLineWidth
 
 ```TypeScript
@@ -675,7 +660,6 @@ let lineWidth = paragraph.getLineWidth(0);
 
 ```
 
-<a id="getlongestline"></a>
 ## getLongestLine
 
 ```TypeScript
@@ -705,7 +689,6 @@ let longestLine = paragraph.getLongestLine();
 
 ```
 
-<a id="getlongestlinewithindent"></a>
 ## getLongestLineWithIndent
 
 ```TypeScript
@@ -735,7 +718,6 @@ let longestLineWithIndent = paragraph.getLongestLineWithIndent();
 
 ```
 
-<a id="getmaxintrinsicwidth"></a>
 ## getMaxIntrinsicWidth
 
 ```TypeScript
@@ -765,7 +747,6 @@ let maxIntrinsicWidth = paragraph.getMaxIntrinsicWidth();
 
 ```
 
-<a id="getmaxwidth"></a>
 ## getMaxWidth
 
 ```TypeScript
@@ -795,7 +776,6 @@ let maxWidth = paragraph.getMaxWidth();
 
 ```
 
-<a id="getminintrinsicwidth"></a>
 ## getMinIntrinsicWidth
 
 ```TypeScript
@@ -825,7 +805,6 @@ let minIntrinsicWidth = paragraph.getMinIntrinsicWidth();
 
 ```
 
-<a id="getparagraphstyle"></a>
 ## getParagraphStyle
 
 ```TypeScript
@@ -899,7 +878,6 @@ function numberToRGBA(colorNum: number): common2D.Color {
 
 ```
 
-<a id="getprocessstate"></a>
 ## getProcessState
 
 ```TypeScript
@@ -960,7 +938,6 @@ struct Index {
 
 ```
 
-<a id="getrectsforplaceholders"></a>
 ## getRectsForPlaceholders
 
 ```TypeScript
@@ -990,7 +967,6 @@ let placeholderRects = paragraph.getRectsForPlaceholders();
 
 ```
 
-<a id="getrectsforrange"></a>
 ## getRectsForRange
 
 ```TypeScript
@@ -1029,7 +1005,6 @@ let rects = paragraph.getRectsForRange(range, text.RectWidthStyle.TIGHT, text.Re
 
 ```
 
-<a id="gettextdisplaystate"></a>
 ## getTextDisplayState
 
 ```TypeScript
@@ -1090,7 +1065,6 @@ struct Index {
 
 ```
 
-<a id="gettextlines"></a>
 ## getTextLines
 
 ```TypeScript
@@ -1120,7 +1094,6 @@ let lines = paragraph.getTextLines();
 
 ```
 
-<a id="getvisibletextranges"></a>
 ## getVisibleTextRanges
 
 ```TypeScript
@@ -1152,7 +1125,6 @@ let visibleRanges = paragraph.getVisibleTextRanges();
 
 ```
 
-<a id="getwordboundary"></a>
 ## getWordBoundary
 
 ```TypeScript
@@ -1188,7 +1160,6 @@ let wordRange = paragraph.getWordBoundary(0);
 
 ```
 
-<a id="layout"></a>
 ## layout
 
 ```TypeScript
@@ -1297,7 +1268,6 @@ async prepareLayoutPromise() {
 
 ```
 
-<a id="layoutsync"></a>
 ## layoutSync
 
 ```TypeScript
@@ -1327,7 +1297,6 @@ paragraph.layoutSync(100);
 
 ```
 
-<a id="layoutwithconstraints"></a>
 ## layoutWithConstraints
 
 ```TypeScript
@@ -1370,7 +1339,6 @@ for (let i = 0; i < result.fitStrRange.length; ++i) {
 
 ```
 
-<a id="paint"></a>
 ## paint
 
 ```TypeScript
@@ -1406,7 +1374,6 @@ paragraph.paint(canvas, 0, 0);
 
 ```
 
-<a id="paintonpath"></a>
 ## paintOnPath
 
 ```TypeScript
@@ -1445,7 +1412,6 @@ paragraph.paintOnPath(canvas, path, 0, 0);
 
 ```
 
-<a id="updatecolor"></a>
 ## updateColor
 
 ```TypeScript
@@ -1475,7 +1441,6 @@ paragraph.updateColor({ alpha: 255, red: 255, green: 0, blue: 0 });
 
 ```
 
-<a id="updatedecoration"></a>
 ## updateDecoration
 
 ```TypeScript

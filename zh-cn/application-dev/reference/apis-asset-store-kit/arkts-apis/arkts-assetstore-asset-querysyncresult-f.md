@@ -6,7 +6,6 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
-<a id="querysyncresult"></a>
 ## querySyncResult
 
 ```TypeScript

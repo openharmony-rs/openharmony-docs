@@ -1,7 +1,6 @@
 # AVCastPicker
 
 本模块提供创建投播组件AVCastPicker的功能，提供设备发现连接的统一入口。
-
 > **说明：**  
 >  
 > - 示例效果请以真机为准，当前DevEco Studio预览器无实际投播功能。<!--Del-->  

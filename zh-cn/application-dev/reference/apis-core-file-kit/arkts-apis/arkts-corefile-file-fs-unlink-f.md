@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="unlink"></a>
 ## unlink
 
 ```TypeScript
@@ -56,7 +55,6 @@ declare function unlink(path: string): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="unlink-1"></a>
 ## unlink
 
 ```TypeScript

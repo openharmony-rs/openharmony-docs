@@ -6,7 +6,6 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
-<a id="injectmouseevent"></a>
 ## injectMouseEvent
 
 ```TypeScript
@@ -30,7 +29,7 @@ function injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mouseEvent | [MouseEventData](arkts-input-inputeventclient-mouseeventdata-i-sys.md) | 是 | 鼠标/触控板事件注入描述信息。此参数中[Action](arkts-input-multimodalinput-mouseevent-action-e.md)属性不支持设置为CANCEL。 |
+| mouseEvent | [MouseEventData](arkts-input-inputeventclient-mouseeventdata-i-sys.md) | 是 | 鼠标/触控板事件注入描述信息。此参数中[Action](arkts-input-multimodalinput-keyevent-action-e.md)属性不支持设置为CANCEL。 |
 
 **错误码：**
 

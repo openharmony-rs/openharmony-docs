@@ -35,7 +35,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 | [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on-2) | 注册receiveMessage事件的回调监听。 |
 | [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on-3) | 注册receiveData事件的回调监听。 |
 | [reject](arkts-distributedservice-abilityconnectionmanager-reject-f.md#reject) | 在跨端应用协同过程中，在拒绝对端的连接请求后，向对端发送拒绝原因。 |
-| [sendData](arkts-distributedservice-abilityconnectionmanager-senddata-f.md#senddata) | 应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](docroot://arkts-utils/arraybuffer-object.md)字节流。 |
+| [sendData](arkts-distributedservice-abilityconnectionmanager-senddata-f.md#senddata) | 应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../../arkts-utils/arraybuffer-object.md)字节流。 |
 | [sendMessage](arkts-distributedservice-abilityconnectionmanager-sendmessage-f.md#sendmessage) | 应用连接成功后，设备A或设备B可向对端设备发送文本信息。 |
 
 <!--Del-->

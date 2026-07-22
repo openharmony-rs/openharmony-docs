@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="destroyvirtualscreen"></a>
 ## destroyVirtualScreen
 
 ```TypeScript
@@ -59,7 +58,6 @@ screen.destroyVirtualScreen(screenId, (err: BusinessError) => {
 ```
 
 
-<a id="destroyvirtualscreen-1"></a>
 ## destroyVirtualScreen
 
 ```TypeScript

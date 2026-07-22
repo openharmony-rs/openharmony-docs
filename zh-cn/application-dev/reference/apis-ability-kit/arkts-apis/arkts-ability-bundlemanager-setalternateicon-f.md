@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="setalternateicon"></a>
 ## setAlternateIcon
 
 ```TypeScript
@@ -27,7 +26,7 @@ function setAlternateIcon(alternateIconName: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alternateIconName | string | 是 | 要设置的备用图标名称。备用图标名称须在app.json5中[alternateIcons标签](docroot://quick-start/app-configuration-file.md#alternateicons标签)的name字段内。<br/>alternateIconName为空时表示取消备用图标。 |
+| alternateIconName | string | 是 | 要设置的备用图标名称。备用图标名称须在app.json5中[alternateIcons标签](../../../quick-start/app-configuration-file.md#alternateicons标签)的name字段内。<br/>alternateIconName为空时表示取消备用图标。 |
 
 **返回值：**
 

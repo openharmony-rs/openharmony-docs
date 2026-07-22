@@ -1,6 +1,6 @@
 # SubscribedAbstractProperty（系统接口）
 
-SubscribedAbstractProperty是[AppStorage](docroot://ui/state-management/arkts-appstorage.md)/[LocalStorage](docroot://ui/state-management/arkts-localstorage.md)中同步的属性。
+SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中同步的属性。
 
 **起始版本：** 9
 
@@ -10,14 +10,13 @@ SubscribedAbstractProperty是[AppStorage](docroot://ui/state-management/arkts-ap
 
 **系统接口：** 此接口为系统接口。
 
-<a id="abouttobedeleted"></a>
 ## aboutToBeDeleted
 
 ```TypeScript
 abstract aboutToBeDeleted(): void
 ```
 
-取消[SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c-sys.md)实例对[AppStorage](docroot://ui/state-management/arkts-appstorage.md)/[LocalStorage](docroot://ui/state-management/arkts-localstorage.md)的单/双向同步关系，并无效化SubscribedAbstractProperty实例，即当调用aboutToBeDeleted方法之后不能再使用SubscribedAbstractProperty实例调用[set](arkts-arkui-localstorage-c.md#set-1)或[get](arkts-arkui-localstorage-c.md#get-1)方法。
+取消[SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c-sys.md)实例对[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)的单/双向同步关系，并无效化SubscribedAbstractProperty实例，即当调用aboutToBeDeleted方法之后不能再使用SubscribedAbstractProperty实例调用[set](arkts-arkui-localstorage-c.md#set)或[get](arkts-arkui-localstorage-c.md#get)方法。
 
 **起始版本：** 10
 
@@ -27,14 +26,13 @@ abstract aboutToBeDeleted(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
 abstract get(): T
 ```
 
-读取从[AppStorage](docroot://ui/state-management/arkts-appstorage.md)/[LocalStorage](docroot://ui/state-management/arkts-localstorage.md)同步属性的数据。
+读取从[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)同步属性的数据。
 
 **起始版本：** 9
 
@@ -52,7 +50,6 @@ abstract get(): T
 | --- | --- |
 | T | AppStorage/LocalStorage同步属性的数据。 |
 
-<a id="info"></a>
 ## info
 
 ```TypeScript
@@ -75,17 +72,14 @@ info(): string
 | --- | --- |
 | string | 属性名称。 |
 
-<a id="set"></a>
 ## set
 
 ```TypeScript
 abstract set(newValue: T): void
 ```
 
-设置[AppStorage](docroot://ui/state-management/arkts-appstorage.md)/[LocalStorage](docroot://ui/state-management/arkts-localstorage.md)同步属性的数据，newValue必须是T类型，从API version 12开始可以为null或undefined。
-
+设置[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)同步属性的数据，newValue必须是T类型，从API version 12开始可以为null或undefined。
 > **说明：**
-
 > 从API version 12开始，AppStorage/LocalStorage支持Map、Set、Date类型，支持null、undefined以及联合类型。
 
 **起始版本：** 9

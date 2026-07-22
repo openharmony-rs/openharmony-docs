@@ -1,6 +1,5 @@
 # opendir
 
-<a id="opendir"></a>
 ## opendir
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function opendir(path: string): Promise<Dir>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:listFile](arkts-corefile-file-fs-listfile-f.md#listfile-1)
+**替代接口：** [fs:listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-unnamed-declare function opendir(path: string): Promise<Dir>--><!--Device-unnamed-declare function opendir(path: string): Promise<Dir>-End-->
 
@@ -32,7 +31,6 @@ declare function opendir(path: string): Promise<Dir>
 | Promise&lt;Dir&gt; | Promise对象。返回Dir对象。 |
 
 
-<a id="opendir-1"></a>
 ## opendir
 
 ```TypeScript
@@ -45,7 +43,7 @@ declare function opendir(path: string, callback: AsyncCallback<Dir>): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:listFile](arkts-corefile-file-fs-listfile-f.md#listfile-1)
+**替代接口：** [fs:listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-unnamed-declare function opendir(path: string, callback: AsyncCallback<Dir>): void--><!--Device-unnamed-declare function opendir(path: string, callback: AsyncCallback<Dir>): void-End-->
 

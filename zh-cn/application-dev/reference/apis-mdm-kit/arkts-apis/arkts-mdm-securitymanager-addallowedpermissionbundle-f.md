@@ -6,14 +6,13 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="addallowedpermissionbundle"></a>
 ## addAllowedPermissionBundle
 
 ```TypeScript
 function addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance: common.ApplicationInstance): void
 ```
 
-添加允许使用已禁用指定权限的应用到权限使用例外名单，权限使用例外名单中的应用可以不受[setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setdisallowedpermission-1)的策略限制。
+添加允许使用已禁用指定权限的应用到权限使用例外名单，权限使用例外名单中的应用可以不受[setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setdisallowedpermission)的策略限制。
 
 **起始版本：** 26.0.0
 

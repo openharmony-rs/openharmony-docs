@@ -1,7 +1,6 @@
 # ShaderEffect
 
 着色器。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画笔和画刷的透明度属性仍然生效。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 12开始支持。  
@@ -22,7 +21,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createcolorshader"></a>
 ## createColorShader
 
 ```TypeScript
@@ -55,7 +53,6 @@ static createColorShader(color: number): ShaderEffect
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="createcomposeshader"></a>
 ## createComposeShader
 
 ```TypeScript
@@ -67,9 +64,7 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 
 **起始版本：** 20
 
-<!--Device-ShaderEffect-static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect,
-        blendMode: BlendMode): ShaderEffect--><!--Device-ShaderEffect-static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect,
-        blendMode: BlendMode): ShaderEffect-End-->
+<!--Device-ShaderEffect-static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect,        blendMode: BlendMode): ShaderEffect--><!--Device-ShaderEffect-static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect,        blendMode: BlendMode): ShaderEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -93,7 +88,6 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
-<a id="createconicalgradient"></a>
 ## createConicalGradient
 
 ```TypeScript
@@ -106,11 +100,7 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 
 **起始版本：** 12
 
-<!--Device-ShaderEffect-static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt: common2D.Point,
-        endRadius: number, colors: Array<number>, mode: TileMode,
-        pos?: Array<number> | null, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt: common2D.Point,
-        endRadius: number, colors: Array<number>, mode: TileMode,
-        pos?: Array<number> | null, matrix?: Matrix | null): ShaderEffect-End-->
+<!--Device-ShaderEffect-static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt: common2D.Point,        endRadius: number, colors: Array<number>, mode: TileMode,        pos?: Array<number> | null, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt: common2D.Point,        endRadius: number, colors: Array<number>, mode: TileMode,        pos?: Array<number> | null, matrix?: Matrix | null): ShaderEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -139,7 +129,6 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createimageshader"></a>
 ## createImageShader
 
 ```TypeScript
@@ -151,9 +140,7 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 
 **起始版本：** 20
 
-<!--Device-ShaderEffect-static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode,
-        samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode,
-        samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect-End-->
+<!--Device-ShaderEffect-static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode,        samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode,        samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -179,7 +166,6 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
-<a id="createlineargradient"></a>
 ## createLinearGradient
 
 ```TypeScript
@@ -191,9 +177,7 @@ static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colo
 
 **起始版本：** 12
 
-<!--Device-ShaderEffect-static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colors: Array<int>,
-        mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colors: Array<int>,
-        mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect-End-->
+<!--Device-ShaderEffect-static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colors: Array<int>,        mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colors: Array<int>,        mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -220,7 +204,6 @@ static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colo
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createradialgradient"></a>
 ## createRadialGradient
 
 ```TypeScript
@@ -232,9 +215,7 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 
 **起始版本：** 12
 
-<!--Device-ShaderEffect-static createRadialGradient(centerPt: common2D.Point, radius: double, colors: Array<int>,
-      mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createRadialGradient(centerPt: common2D.Point, radius: double, colors: Array<int>,
-      mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect-End-->
+<!--Device-ShaderEffect-static createRadialGradient(centerPt: common2D.Point, radius: double, colors: Array<int>,      mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createRadialGradient(centerPt: common2D.Point, radius: double, colors: Array<int>,      mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -261,7 +242,6 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="createsweepgradient"></a>
 ## createSweepGradient
 
 ```TypeScript
@@ -274,11 +254,7 @@ static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,
 
 **起始版本：** 12
 
-<!--Device-ShaderEffect-static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,
-        mode: TileMode, startAngle: number, endAngle: number, pos?: Array<number> | null,
-        matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,
-        mode: TileMode, startAngle: number, endAngle: number, pos?: Array<number> | null,
-        matrix?: Matrix | null): ShaderEffect-End-->
+<!--Device-ShaderEffect-static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,        mode: TileMode, startAngle: number, endAngle: number, pos?: Array<number> | null,        matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,        mode: TileMode, startAngle: number, endAngle: number, pos?: Array<number> | null,        matrix?: Matrix | null): ShaderEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

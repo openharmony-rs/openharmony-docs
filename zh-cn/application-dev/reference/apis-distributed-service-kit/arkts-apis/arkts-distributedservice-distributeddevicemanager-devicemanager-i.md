@@ -14,7 +14,6 @@
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="bindtarget"></a>
 ## bindTarget
 
 ```TypeScript
@@ -86,7 +85,6 @@ try {
 
 ```
 
-<a id="getavailabledevicelist"></a>
 ## getAvailableDeviceList
 
 ```TypeScript
@@ -140,7 +138,6 @@ try {
 
 ```
 
-<a id="getavailabledevicelist-1"></a>
 ## getAvailableDeviceList
 
 ```TypeScript
@@ -192,7 +189,6 @@ try {
 
 ```
 
-<a id="getavailabledevicelistsync"></a>
 ## getAvailableDeviceListSync
 
 ```TypeScript
@@ -240,7 +236,6 @@ try {
 
 ```
 
-<a id="getdevicename"></a>
 ## getDeviceName
 
 ```TypeScript
@@ -298,7 +293,6 @@ try {
 
 ```
 
-<a id="getdevicetype"></a>
 ## getDeviceType
 
 ```TypeScript
@@ -356,7 +350,6 @@ try {
 
 ```
 
-<a id="getlocaldeviceid"></a>
 ## getLocalDeviceId
 
 ```TypeScript
@@ -405,7 +398,6 @@ try {
 
 ```
 
-<a id="getlocaldevicename"></a>
 ## getLocalDeviceName
 
 ```TypeScript
@@ -454,7 +446,6 @@ try {
 
 ```
 
-<a id="getlocaldevicenetworkid"></a>
 ## getLocalDeviceNetworkId
 
 ```TypeScript
@@ -503,7 +494,6 @@ try {
 
 ```
 
-<a id="getlocaldevicetype"></a>
 ## getLocalDeviceType
 
 ```TypeScript
@@ -552,7 +542,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off('deviceStateChange')
 
 ```TypeScript
@@ -613,7 +602,6 @@ try {
 
 ```
 
-<a id="off-1"></a>
 ## off('discoverSuccess')
 
 ```TypeScript
@@ -673,7 +661,6 @@ try {
 
 ```
 
-<a id="off-2"></a>
 ## off('deviceNameChange')
 
 ```TypeScript
@@ -728,7 +715,6 @@ try {
 
 ```
 
-<a id="off-3"></a>
 ## off('discoverFailure')
 
 ```TypeScript
@@ -783,7 +769,6 @@ try {
 
 ```
 
-<a id="off-4"></a>
 ## off('serviceDie')
 
 ```TypeScript
@@ -834,7 +819,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on('deviceStateChange')
 
 ```TypeScript
@@ -895,7 +879,6 @@ try {
 
 ```
 
-<a id="on-1"></a>
 ## on('discoverSuccess')
 
 ```TypeScript
@@ -955,7 +938,6 @@ try {
 
 ```
 
-<a id="on-2"></a>
 ## on('deviceNameChange')
 
 ```TypeScript
@@ -1010,7 +992,6 @@ try {
 
 ```
 
-<a id="on-3"></a>
 ## on('discoverFailure')
 
 ```TypeScript
@@ -1065,7 +1046,6 @@ try {
 
 ```
 
-<a id="on-4"></a>
 ## on('serviceDie')
 
 ```TypeScript
@@ -1116,7 +1096,6 @@ try {
 
 ```
 
-<a id="startdiscovering"></a>
 ## startDiscovering
 
 ```TypeScript
@@ -1175,7 +1154,6 @@ try {
 
 ```
 
-<a id="stopdiscovering"></a>
 ## stopDiscovering
 
 ```TypeScript
@@ -1217,7 +1195,6 @@ try {
 
 ```
 
-<a id="unbindtarget"></a>
 ## unbindTarget
 
 ```TypeScript

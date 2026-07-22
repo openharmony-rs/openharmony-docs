@@ -14,7 +14,6 @@ Queue的特点是先进先出，在尾部增加元素，在头部删除元素。
 import { Queue } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -77,7 +76,6 @@ while(temp != undefined) {
 
 ```
 
-<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -132,7 +130,6 @@ console.info("result:", queue.length);  // result: 4
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -164,7 +161,6 @@ console.info("queue length:", queue.length);  // queue length: 0
 
 ```
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -213,7 +209,6 @@ queue.forEach((value: number, index: number): void => {
 
 ```
 
-<a id="getfirst"></a>
 ## getFirst
 
 ```TypeScript
@@ -257,7 +252,6 @@ console.info("result:", result);  // result: 2
 
 ```
 
-<a id="pop"></a>
 ## pop
 
 ```TypeScript

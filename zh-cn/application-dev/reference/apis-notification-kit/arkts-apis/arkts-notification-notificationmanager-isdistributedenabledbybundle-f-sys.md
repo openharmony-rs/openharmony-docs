@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="isdistributedenabledbybundle"></a>
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md#isdistributedenabledbybundle-1)
+**替代接口：** [isDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md#isdistributedenabledbybundle)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -70,7 +69,6 @@ notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByB
 ```
 
 
-<a id="isdistributedenabledbybundle-1"></a>
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -83,7 +81,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md#isdistributedenabledbybundle-1)
+**替代接口：** [isDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md#isdistributedenabledbybundle)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -136,7 +134,6 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 ```
 
 
-<a id="isdistributedenabledbybundle-2"></a>
 ## isDistributedEnabledByBundle
 
 ```TypeScript

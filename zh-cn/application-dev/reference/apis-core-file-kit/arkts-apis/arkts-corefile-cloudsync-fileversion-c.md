@@ -14,7 +14,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="clearfileconflict"></a>
 ## clearFileConflict
 
 ```TypeScript
@@ -79,7 +78,6 @@ fileVersion.clearFileConflict(uri).then(() => {
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -107,7 +105,6 @@ let fileVersion = new cloudSync.FileVersion();
 
 ```
 
-<a id="downloadhistoryversion"></a>
 ## downloadHistoryVersion
 
 ```TypeScript
@@ -127,7 +124,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 文件的URI。 |
-| versionId | string | 是 | 文件某一版本的版本号，格式以接口[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist-1)返回为准。 |
+| versionId | string | 是 | 文件某一版本的版本号，格式以接口[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist)返回为准。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VersionDownloadProgress&gt; | 是 | 回调函数，返回下载进度。 |
 
 **返回值：**
@@ -149,7 +146,6 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 | 22400002 | Network unavailable. |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
-<a id="gethistoryversionlist"></a>
 ## getHistoryVersionList
 
 ```TypeScript
@@ -216,7 +212,6 @@ fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync
 
 ```
 
-<a id="isfileconflict"></a>
 ## isFileConflict
 
 ```TypeScript
@@ -225,7 +220,7 @@ isFileConflict(uri: string): Promise<boolean>
 
 获取本地文件版本冲突标志。使用Promise异步回调。此方法只有应用在配置手动解冲突后才会生效，否则默认自动解冲突，返回值为false，由同步流程自动完成解冲突；
 
-当应用配置手动解冲突后，调用此方法会返回当前文件是否与云侧文件产生冲突，并且由应用提示用户对冲突进行处理，在冲突解决前不会再自动同步上云。当处理完冲突后，需要调用[clearFileConflict](arkts-corefile-cloudsync-fileversion-c.md#clearfileconflict-1)方法来清除冲突标志，后续才会继续触发同步，与云端保持一致。
+当应用配置手动解冲突后，调用此方法会返回当前文件是否与云侧文件产生冲突，并且由应用提示用户对冲突进行处理，在冲突解决前不会再自动同步上云。当处理完冲突后，需要调用[clearFileConflict](arkts-corefile-cloudsync-fileversion-c.md#clearfileconflict)方法来清除冲突标志，后续才会继续触发同步，与云端保持一致。
 
 **起始版本：** 20
 
@@ -276,14 +271,13 @@ fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
 
 ```
 
-<a id="replacefilewithhistoryversion"></a>
 ## replaceFileWithHistoryVersion
 
 ```TypeScript
 replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<void>
 ```
 
-提供使用历史版本文件替换本地文件的能力。在替换前，需要调用[downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadhistoryversion-1)方法对选择的历史版本进行下载并拿到versionUri；直接调用此接口或者versionUri非法会产生异常；替换完成后会删除临时存储文件。使用Promise异步回调。
+提供使用历史版本文件替换本地文件的能力。在替换前，需要调用[downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadhistoryversion)方法对选择的历史版本进行下载并拿到versionUri；直接调用此接口或者versionUri非法会产生异常；替换完成后会删除临时存储文件。使用Promise异步回调。
 
 **起始版本：** 20
 

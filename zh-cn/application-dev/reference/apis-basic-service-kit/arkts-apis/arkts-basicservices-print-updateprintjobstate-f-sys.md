@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="updateprintjobstate"></a>
 ## updatePrintJobState
 
 ```TypeScript
@@ -22,9 +21,7 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 - API版本24+：ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
 - API版本10 - 23：ohos.permission.MANAGE_PRINT_JOB
 
-<!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,
-    callback: AsyncCallback<void>): void--><!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,
-    callback: AsyncCallback<void>): void-End-->
+<!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,    callback: AsyncCallback<void>): void--><!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,    callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -67,7 +64,6 @@ print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
 ```
 
 
-<a id="updateprintjobstate-1"></a>
 ## updatePrintJobState
 
 ```TypeScript

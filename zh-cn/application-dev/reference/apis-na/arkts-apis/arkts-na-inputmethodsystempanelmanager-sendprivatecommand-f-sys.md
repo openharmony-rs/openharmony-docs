@@ -1,6 +1,5 @@
 # sendPrivateCommand（系统接口）
 
-<a id="sendprivatecommand"></a>
 ## sendPrivateCommand
 
 ```TypeScript

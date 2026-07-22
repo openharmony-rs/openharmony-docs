@@ -6,7 +6,6 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="setminloglevel"></a>
 ## setMinLogLevel
 
 ```TypeScript
@@ -14,10 +13,9 @@ function setMinLogLevel(level: LogLevel): void
 ```
 
 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。
-
 > **注意：**  
 >  
-> 如果设置的日志级别低于[全局日志级别](docroot://dfx/hilog.md#查看和设置日志级别)，设置不生效。  
+> 如果设置的日志级别低于[全局日志级别](../../../dfx/hilog.md#查看和设置日志级别)，设置不生效。  
 >  
 > debug版本应用下，此函数不生效。
 

@@ -6,7 +6,6 @@
 import { serialManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="read"></a>
 ## read
 
 ```TypeScript
@@ -25,7 +24,7 @@ function read(portId: number, buffer: Uint8Array, timeout?: number): Promise<num
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| portId | number | 是 | 目标设备的端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getportlist-1)获取的串口参数SerialPort。 |
+| portId | number | 是 | 目标设备的端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getportlist)获取的串口参数SerialPort。 |
 | buffer | Uint8Array | 是 | 读取数据的缓冲区，最大长度为8192比特。 |
 | timeout | number | 否 | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 

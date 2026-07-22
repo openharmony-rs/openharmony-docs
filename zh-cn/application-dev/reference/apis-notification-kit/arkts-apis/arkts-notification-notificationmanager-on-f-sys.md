@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="on"></a>
 ## on('checkNotification')
 
 ```TypeScript
@@ -66,7 +65,6 @@ try{
 ```
 
 
-<a id="on-1"></a>
 ## on('checkNotification')
 
 ```TypeScript
@@ -82,9 +80,7 @@ function on(type: 'checkNotification', checkRequest: NotificationCheckRequest,
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
-<!--Device-notificationManager-function on(type: 'checkNotification', checkRequest: NotificationCheckRequest,
-    callback: (checkInfo: NotificationCheckInfo) => Promise<NotificationCheckResult>): void--><!--Device-notificationManager-function on(type: 'checkNotification', checkRequest: NotificationCheckRequest,
-    callback: (checkInfo: NotificationCheckInfo) => Promise<NotificationCheckResult>): void-End-->
+<!--Device-notificationManager-function on(type: 'checkNotification', checkRequest: NotificationCheckRequest,    callback: (checkInfo: NotificationCheckInfo) => Promise<NotificationCheckResult>): void--><!--Device-notificationManager-function on(type: 'checkNotification', checkRequest: NotificationCheckRequest,    callback: (checkInfo: NotificationCheckInfo) => Promise<NotificationCheckResult>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

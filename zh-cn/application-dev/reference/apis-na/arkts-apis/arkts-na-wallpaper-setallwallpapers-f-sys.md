@@ -1,6 +1,5 @@
 # setAllWallpapers（系统接口）
 
-<a id="setallwallpapers"></a>
 ## setAllWallpapers
 
 ```TypeScript

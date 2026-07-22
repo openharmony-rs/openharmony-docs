@@ -1,6 +1,6 @@
 # PermissionStatus
 
-程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](docroot://security/AccessToken/app-permission-mgmt-overview.md)。
+程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../../security/AccessToken/app-permission-mgmt-overview.md)。
 
 该模块主要用于以下场景：
 
@@ -26,7 +26,7 @@
 
 - **[AtManager](arkts-ability-abilityaccessctrl-atmanager-i.md)：** 程序访问控制管理类，提供权限校验、权限弹窗申请、设置页授权引导和权限状态监听等能力。
 
-![image_abilityAccessCtrl](docroot://reference/apis-ability-kit/figures/abilityAccessCtrl.png)
+![image_abilityAccessCtrl](../../../reference/apis-ability-kit/figures/abilityAccessCtrl.png)
 
 **起始版本：** 20
 
@@ -72,7 +72,7 @@ GRANTED = 0
 NOT_DETERMINED = 1
 ```
 
-表示未操作。应用声明[用户授权权限](permissions:Permissions)但暂未调用[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser-1)接口请求授权，或用户在设置中将权限状态修改为每次询问时，查询权限状态返回此值。
+表示未操作。应用声明[用户授权权限](permissions:Permissions)但暂未调用[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser)接口请求授权，或用户在设置中将权限状态修改为每次询问时，查询权限状态返回此值。
 
 **起始版本：** 20
 
@@ -88,7 +88,7 @@ NOT_DETERMINED = 1
 INVALID = 2
 ```
 
-表示无效。应用未[声明权限](docroot://security/AccessToken/declare-permissions.md)或当前无法处理。例如：当模糊位置权限的状态为NOT_DETERMINED时，查询精确位置权限状态，返回此值。
+表示无效。应用未[声明权限](../../../security/AccessToken/declare-permissions.md)或当前无法处理。例如：当模糊位置权限的状态为NOT_DETERMINED时，查询精确位置权限状态，返回此值。
 
 **起始版本：** 20
 
@@ -104,7 +104,7 @@ INVALID = 2
 RESTRICTED = 3
 ```
 
-表示受限。<!--RP2-->应用被禁止通过[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser-1)接口请求用户授权。<!--RP2End-->
+表示受限。<!--RP2-->应用被禁止通过[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser)接口请求用户授权。<!--RP2End-->
 
 **起始版本：** 20
 

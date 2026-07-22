@@ -6,7 +6,6 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
-<a id="turnoffwifi"></a>
 ## turnOffWifi
 
 ```TypeScript
@@ -17,7 +16,7 @@ function turnOffWifi(admin: Want): void
 
 以下情况下，通过本接口关闭Wi-Fi开关，会提示"系统功能被禁用"：
 
-?已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口启用Wi-Fi，解决"系统功能被禁用"报错。
+?已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
 
 **起始版本：** 20
 

@@ -6,7 +6,6 @@
 import { display } from '@kit.ArkUI';
 ```
 
-<a id="setvirtualscreensurface"></a>
 ## setVirtualScreenSurface
 
 ```TypeScript
@@ -27,7 +26,7 @@ function setVirtualScreenSurface(screenId: number, surfaceId: string): Promise<v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| screenId | number | 是 | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](arkts-arkui-display-createvirtualscreen-f.md#createvirtualscreen-1)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
+| screenId | number | 是 | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](arkts-arkui-display-createvirtualscreen-f.md#createvirtualscreen)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
 | surfaceId | string | 是 | 代表虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
 
 **返回值：**

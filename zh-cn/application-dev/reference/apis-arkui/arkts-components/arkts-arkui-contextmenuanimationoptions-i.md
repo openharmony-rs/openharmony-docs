@@ -20,7 +20,7 @@ hoverScale?: AnimationRange<number>
 
 倍率设置参数小于等于0时，不生效。
 
-[bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu-1)场景下，不生效。
+[bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu)场景下，不生效。
 
 设置transition接口时，不生效。
 

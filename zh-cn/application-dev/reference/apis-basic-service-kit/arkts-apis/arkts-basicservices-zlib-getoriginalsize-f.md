@@ -6,7 +6,6 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
-<a id="getoriginalsize"></a>
 ## getOriginalSize
 
 ```TypeScript
@@ -27,7 +26,7 @@ function getOriginalSize(compressedFile: string): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| compressedFile | string | 是 | 指定的压缩文件的文件路径，只支持zip格式压缩文件。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)，[Stage模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)。 |
+| compressedFile | string | 是 | 指定的压缩文件的文件路径，只支持zip格式压缩文件。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-t.md)，[Stage模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-t.md)。 |
 
 **返回值：**
 

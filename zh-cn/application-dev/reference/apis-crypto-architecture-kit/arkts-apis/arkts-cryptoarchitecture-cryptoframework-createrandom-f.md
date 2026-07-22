@@ -6,7 +6,6 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
-<a id="createrandom"></a>
 ## createRandom
 
 ```TypeScript

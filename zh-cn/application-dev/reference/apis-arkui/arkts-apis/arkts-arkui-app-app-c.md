@@ -14,7 +14,6 @@
 import { AppResponse, ScreenOnVisibleOptions, RequestFullWindowOptions } from '@kit.ArkUI';
 ```
 
-<a id="getinfo"></a>
 ## getInfo
 
 ```TypeScript
@@ -23,7 +22,7 @@ static getInfo(): AppResponse
 
 获取当前应用配置文件中声明的信息。在Stage模型下接口返回值为null。
 
-从API version9开始，推荐使用[bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)。
+从API version9开始，推荐使用[bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)。
 
 **起始版本：** 3
 
@@ -158,7 +157,6 @@ export default {
 
 ```
 
-<a id="requestfullwindow"></a>
 ## requestFullWindow
 
 ```TypeScript
@@ -197,7 +195,6 @@ export default class Req {
 
 ```
 
-<a id="screenonvisible"></a>
 ## screenOnVisible
 
 ```TypeScript
@@ -222,7 +219,6 @@ static screenOnVisible(options?: ScreenOnVisibleOptions): void
 | --- | --- | --- | --- |
 | options | [ScreenOnVisibleOptions](arkts-arkui-app-screenonvisibleoptions-i.md) | 否 | 当启动保活时，锁屏时将阻止系统返回桌面显示，以保持屏幕唤醒时应用可见。 |
 
-<a id="setimagecachecount"></a>
 ## setImageCacheCount
 
 ```TypeScript
@@ -275,7 +271,6 @@ struct Index {
 
 ```
 
-<a id="setimagefilecachesize"></a>
 ## setImageFileCacheSize
 
 ```TypeScript
@@ -319,7 +314,6 @@ export default class OnC {
 
 ```
 
-<a id="setimagerawdatacachesize"></a>
 ## setImageRawDataCacheSize
 
 ```TypeScript
@@ -372,7 +366,6 @@ struct Index {
 
 ```
 
-<a id="terminate"></a>
 ## terminate
 
 ```TypeScript

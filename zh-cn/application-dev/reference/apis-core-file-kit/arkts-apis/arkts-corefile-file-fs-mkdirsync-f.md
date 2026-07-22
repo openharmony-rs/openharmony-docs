@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="mkdirsync"></a>
 ## mkdirSync
 
 ```TypeScript
@@ -50,7 +49,6 @@ declare function mkdirSync(path: string): void
 | 13900042 | Unknown error |
 
 
-<a id="mkdirsync-1"></a>
 ## mkdirSync
 
 ```TypeScript

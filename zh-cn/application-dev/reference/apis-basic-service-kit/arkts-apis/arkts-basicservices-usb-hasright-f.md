@@ -6,7 +6,6 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
-<a id="hasright"></a>
 ## hasRight
 
 ```TypeScript
@@ -19,7 +18,7 @@ function hasRight(deviceName: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasright-1)
+**替代接口：** [hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasright)
 
 <!--Device-usb-function hasRight(deviceName: string): boolean--><!--Device-usb-function hasRight(deviceName: string): boolean-End-->
 

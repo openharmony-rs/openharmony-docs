@@ -8,7 +8,6 @@ Swiper自定义切换动画执行过程中，返回给开发者的proxy对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="finishtransition"></a>
 ## finishTransition
 
 ```TypeScript

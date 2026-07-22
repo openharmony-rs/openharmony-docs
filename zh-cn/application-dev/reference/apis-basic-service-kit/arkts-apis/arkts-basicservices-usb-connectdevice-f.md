@@ -6,7 +6,6 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
-<a id="connectdevice"></a>
 ## connectDevice
 
 ```TypeScript
@@ -15,13 +14,13 @@ function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 
 打开USB设备。
 
-需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息以及device，再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限。
+需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices)获取设备信息以及device，再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright)获取设备请求权限。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice-1)
+**替代接口：** [connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice)
 
 <!--Device-usb-function connectDevice(device: USBDevice): Readonly<USBDevicePipe>--><!--Device-usb-function connectDevice(device: USBDevice): Readonly<USBDevicePipe>-End-->
 

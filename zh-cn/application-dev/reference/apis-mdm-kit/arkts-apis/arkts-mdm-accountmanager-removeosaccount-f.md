@@ -6,7 +6,6 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-<a id="removeosaccount"></a>
 ## removeOsAccount
 
 ```TypeScript

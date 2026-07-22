@@ -6,7 +6,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="isdomainaccountsupported"></a>
 ## isDomainAccountSupported
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # clearMission（系统接口）
 
-<a id="clearmission"></a>
 ## clearMission
 
 ```TypeScript
@@ -53,7 +52,6 @@ try {
 ```
 
 
-<a id="clearmission-1"></a>
 ## clearMission
 
 ```TypeScript

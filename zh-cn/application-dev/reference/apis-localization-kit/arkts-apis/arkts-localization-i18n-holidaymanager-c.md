@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -60,7 +59,6 @@ try {
 
 ```
 
-<a id="getholidayinfoitemarray"></a>
 ## getHolidayInfoItemArray
 
 ```TypeScript
@@ -96,7 +94,6 @@ getHolidayInfoItemArray(year?: number): Array<HolidayInfoItem>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
-<a id="isholiday"></a>
 ## isHoliday
 
 ```TypeScript

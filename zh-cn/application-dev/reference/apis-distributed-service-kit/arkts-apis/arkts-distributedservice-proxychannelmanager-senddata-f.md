@@ -6,7 +6,6 @@
 import { proxyChannelManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="senddata"></a>
 ## sendData
 
 ```TypeScript

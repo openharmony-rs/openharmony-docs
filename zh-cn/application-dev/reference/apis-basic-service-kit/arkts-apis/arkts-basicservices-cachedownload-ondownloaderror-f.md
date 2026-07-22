@@ -6,7 +6,6 @@
 import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
-<a id="ondownloaderror"></a>
 ## onDownloadError
 
 ```TypeScript

@@ -14,7 +14,6 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="getarray"></a>
 ## getArray
 
 ```TypeScript
@@ -43,7 +42,6 @@ getArray(): Array<string | number | boolean>
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="getarraybuffer"></a>
 ## getArrayBuffer
 
 ```TypeScript
@@ -72,7 +70,6 @@ getArrayBuffer(): ArrayBuffer
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="getboolean"></a>
 ## getBoolean
 
 ```TypeScript
@@ -101,7 +98,6 @@ getBoolean(): boolean
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="geterrordescription"></a>
 ## getErrorDescription
 
 ```TypeScript
@@ -120,9 +116,8 @@ getErrorDescription(): string | null
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - If an exception occurs, or the returned type is object, return the serialized string in the format of "Not support type: <{exception\|object}>", Parts exceeding a length of2048 will be truncated; otherwise, return null. |
+| string | - If an exception occurs, or the returned type is object, return the serialized string in the format of "Not support type: &lt;{exception\|object}&gt;", Parts exceeding a length of2048 will be truncated; otherwise, return null. |
 
-<a id="getnumber"></a>
 ## getNumber
 
 ```TypeScript
@@ -151,7 +146,6 @@ getNumber(): number
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="getstring"></a>
 ## getString
 
 ```TypeScript
@@ -180,7 +174,6 @@ getString(): string
 | --- | --- |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
-<a id="gettype"></a>
 ## getType
 
 ```TypeScript

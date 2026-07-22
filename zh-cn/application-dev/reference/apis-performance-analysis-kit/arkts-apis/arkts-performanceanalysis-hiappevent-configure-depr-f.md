@@ -1,6 +1,5 @@
 # configure
 
-<a id="configure"></a>
 ## configure
 
 ```TypeScript

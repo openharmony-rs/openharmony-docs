@@ -132,7 +132,7 @@ HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用P
 url: string
 ```
 
-资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](docroot://basic-services/request/app-file-upload-download.md#http拦截)功能。
+资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../../basic-services/request/app-file-upload-download.md#http拦截)功能。
 
 **类型：** string
 

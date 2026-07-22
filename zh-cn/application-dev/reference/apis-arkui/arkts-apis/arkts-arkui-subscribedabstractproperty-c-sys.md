@@ -1,6 +1,6 @@
 # SubscribedAbstractProperty（系统接口）
 
-SubscribedAbstractProperty是[AppStorage](docroot://ui/state-management/arkts-appstorage.md)/[LocalStorage](docroot://ui/state-management/arkts-localstorage.md)中同步的属性。
+SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中同步的属性。
 
 **起始版本：** 9
 
@@ -10,7 +10,6 @@ SubscribedAbstractProperty是[AppStorage](docroot://ui/state-management/arkts-ap
 
 **系统接口：** 此接口为系统接口。
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -34,33 +33,7 @@ Constructor.
 
 **起始版本：** 7
 
-<!--Device-SubscribedAbstractProperty-constructor(
-    /**
-     * Subscriber IPropertySubscriber.
-     *
-     **** 
-     */
-    subscribeMe?: IPropertySubscriber,
-    /**
-     * Subscriber info.
-     *
-     **** 
-     */
-    info?: string,
-  )--><!--Device-SubscribedAbstractProperty-constructor(
-    /**
-     * Subscriber IPropertySubscriber.
-     *
-     **** 
-     */
-    subscribeMe?: IPropertySubscriber,
-    /**
-     * Subscriber info.
-     *
-     **** 
-     */
-    info?: string,
-  )-End-->
+<!--Device-SubscribedAbstractProperty-constructor(    /**     * Subscriber IPropertySubscriber.     *     ****      */    subscribeMe?: IPropertySubscriber,    /**     * Subscriber info.     *     ****      */    info?: string,  )--><!--Device-SubscribedAbstractProperty-constructor(    /**     * Subscriber IPropertySubscriber.     *     ****      */    subscribeMe?: IPropertySubscriber,    /**     * Subscriber info.     *     ****      */    info?: string,  )-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +46,6 @@ Constructor.
 | subscribeMe | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 否 | Variable properties. |
 | info | string | 否 | Variable information. |
 
-<a id="createonewaysync"></a>
 ## createOneWaySync
 
 ```TypeScript
@@ -103,7 +75,6 @@ createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 | --- | --- |
 | [SyncedPropertyOneWay](arkts-arkui-syncedpropertyoneway-c-sys.md)&lt;T&gt; | 返回单向同步属性。 |
 
-<a id="createtwowaysync"></a>
 ## createTwoWaySync
 
 ```TypeScript
@@ -133,7 +104,6 @@ createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 | --- | --- |
 | [SyncedPropertyTwoWay](arkts-arkui-syncedpropertytwoway-c-sys.md)&lt;T&gt; | 返回双向同步属性。 |
 
-<a id="id"></a>
 ## id
 
 ```TypeScript
@@ -156,7 +126,6 @@ id(): number
 | --- | --- |
 | number | @syscap SystemCapability.ArkUI.ArkUI.Full@systemapi@FaAndStageModel |
 
-<a id="notifyhaschanged"></a>
 ## notifyHasChanged
 
 ```TypeScript
@@ -179,7 +148,6 @@ protected notifyHasChanged(newValue: T): void
 | --- | --- | --- | --- |
 | newValue | T | 是 | 更改后的新值。 |
 
-<a id="notifypropertyread"></a>
 ## notifyPropertyRead
 
 ```TypeScript
@@ -196,7 +164,6 @@ protected notifyPropertyRead(): void
 
 **系统接口：** 此接口为系统接口。
 
-<a id="numberofsubscrbers"></a>
 ## numberOfSubscrbers
 
 ```TypeScript
@@ -219,7 +186,6 @@ numberOfSubscrbers(): number
 | --- | --- |
 | number | 返回订阅者数量。 |
 
-<a id="unlinksuscriber"></a>
 ## unlinkSuscriber
 
 ```TypeScript

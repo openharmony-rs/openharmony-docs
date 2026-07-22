@@ -6,7 +6,6 @@
 import { process } from '@kit.ArkTS';
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript

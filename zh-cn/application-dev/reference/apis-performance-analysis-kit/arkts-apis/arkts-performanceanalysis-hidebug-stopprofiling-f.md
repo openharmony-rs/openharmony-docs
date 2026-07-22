@@ -6,7 +6,6 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="stopprofiling"></a>
 ## stopProfiling
 
 ```TypeScript
@@ -19,7 +18,7 @@ function stopProfiling(): void
 
 **废弃版本：** 9
 
-**替代接口：** [stopJsCpuProfiling](arkts-performanceanalysis-hidebug-stopjscpuprofiling-f.md#stopjscpuprofiling-1)
+**替代接口：** [stopJsCpuProfiling](arkts-performanceanalysis-hidebug-stopjscpuprofiling-f.md#stopjscpuprofiling)
 
 <!--Device-hidebug-function stopProfiling(): void--><!--Device-hidebug-function stopProfiling(): void-End-->
 

@@ -1,6 +1,5 @@
 # sendKeyEvent
 
-<a id="sendkeyevent"></a>
 ## sendKeyEvent
 
 ```TypeScript

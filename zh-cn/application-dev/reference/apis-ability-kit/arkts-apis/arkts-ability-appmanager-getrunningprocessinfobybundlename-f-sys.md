@@ -6,7 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="getrunningprocessinfobybundlename"></a>
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
@@ -64,7 +63,6 @@ try {
 ```
 
 
-<a id="getrunningprocessinfobybundlename-1"></a>
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
@@ -124,7 +122,6 @@ try {
 ```
 
 
-<a id="getrunningprocessinfobybundlename-2"></a>
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
@@ -184,7 +181,6 @@ try {
 ```
 
 
-<a id="getrunningprocessinfobybundlename-3"></a>
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript

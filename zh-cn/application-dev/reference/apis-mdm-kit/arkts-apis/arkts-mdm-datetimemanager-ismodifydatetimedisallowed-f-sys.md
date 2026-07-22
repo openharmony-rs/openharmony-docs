@@ -6,7 +6,6 @@
 import { dateTimeManager } from '@kit.MDMKit';
 ```
 
-<a id="ismodifydatetimedisallowed"></a>
 ## isModifyDateTimeDisallowed
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isModifyDateTimeDisallowed(admin: Want, callback: AsyncCallback<boolean
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -71,7 +70,6 @@ dateTimeManager.isModifyDateTimeDisallowed(wantTemp, (err, result) => {
 ```
 
 
-<a id="ismodifydatetimedisallowed-1"></a>
 ## isModifyDateTimeDisallowed
 
 ```TypeScript
@@ -84,7 +82,7 @@ function isModifyDateTimeDisallowed(admin: Want): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 

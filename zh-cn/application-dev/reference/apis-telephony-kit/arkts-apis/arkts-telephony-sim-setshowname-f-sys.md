@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="setshowname"></a>
 ## setShowName
 
 ```TypeScript
@@ -60,7 +59,6 @@ sim.setShowName(0, name, (err: BusinessError) => {
 ```
 
 
-<a id="setshowname-1"></a>
 ## setShowName
 
 ```TypeScript

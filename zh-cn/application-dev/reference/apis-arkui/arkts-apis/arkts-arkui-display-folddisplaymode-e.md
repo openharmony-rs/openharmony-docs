@@ -1,11 +1,8 @@
 # FoldDisplayMode
 
 可折叠设备的显示模式枚举。
-
 > **说明：**
-
 > 对于内外屏均可作为主屏幕使用的折叠产品，例如大折叠、阔折叠，内屏显示状态为FOLD_DISPLAY_MODE_FULL，外屏显示状态为FOLD_DISPLAY_MODE_MAIN。
-
 > 对于外屏只有简单的辅助显示作用的折叠产品，例如小折叠，内屏显示状态为FOLD_DISPLAY_MODE_MAIN，外屏显示状态为FOLD_DISPLAY_MODE_SUB。
 
 **起始版本：** 10

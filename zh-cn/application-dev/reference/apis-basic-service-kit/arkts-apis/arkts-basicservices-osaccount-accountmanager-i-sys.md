@@ -14,7 +14,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="activateosaccount"></a>
 ## activateOsAccount
 
 ```TypeScript
@@ -78,7 +77,6 @@ try {
 
 ```
 
-<a id="activateosaccount-1"></a>
 ## activateOsAccount
 
 ```TypeScript
@@ -145,7 +143,6 @@ try {
 
 ```
 
-<a id="activateosaccount-2"></a>
 ## activateOsAccount
 
 ```TypeScript
@@ -215,7 +212,6 @@ try {
 
 ```
 
-<a id="binddomainaccount"></a>
 ## bindDomainAccount
 
 ```TypeScript
@@ -284,7 +280,6 @@ try {
 
 ```
 
-<a id="createosaccount"></a>
 ## createOsAccount
 
 ```TypeScript
@@ -348,7 +343,6 @@ try {
 
 ```
 
-<a id="createosaccount-1"></a>
 ## createOsAccount
 
 ```TypeScript
@@ -422,7 +416,6 @@ try {
 
 ```
 
-<a id="createosaccountfordomain"></a>
 ## createOsAccountForDomain
 
 ```TypeScript
@@ -439,15 +432,7 @@ createOsAccountForDomain(
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
-<!--Device-AccountManager-createOsAccountForDomain(
-      type: OsAccountType,
-      domainInfo: DomainAccountInfo,
-      callback: AsyncCallback<OsAccountInfo>
-    ): void--><!--Device-AccountManager-createOsAccountForDomain(
-      type: OsAccountType,
-      domainInfo: DomainAccountInfo,
-      callback: AsyncCallback<OsAccountInfo>
-    ): void-End-->
+<!--Device-AccountManager-createOsAccountForDomain(      type: OsAccountType,      domainInfo: DomainAccountInfo,      callback: AsyncCallback<OsAccountInfo>    ): void--><!--Device-AccountManager-createOsAccountForDomain(      type: OsAccountType,      domainInfo: DomainAccountInfo,      callback: AsyncCallback<OsAccountInfo>    ): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -501,7 +486,6 @@ try {
 
 ```
 
-<a id="createosaccountfordomain-1"></a>
 ## createOsAccountForDomain
 
 ```TypeScript
@@ -576,7 +560,6 @@ try {
 
 ```
 
-<a id="deactivateosaccount"></a>
 ## deactivateOsAccount
 
 ```TypeScript
@@ -641,7 +624,6 @@ try {
 
 ```
 
-<a id="getbundleidforuid"></a>
 ## getBundleIdForUid
 
 ```TypeScript
@@ -697,7 +679,6 @@ try {
 
 ```
 
-<a id="getbundleidforuid-1"></a>
 ## getBundleIdForUid
 
 ```TypeScript
@@ -755,7 +736,6 @@ try {
 
 ```
 
-<a id="getbundleidforuidsync"></a>
 ## getBundleIdForUidSync
 
 ```TypeScript
@@ -809,7 +789,6 @@ try {
 
 ```
 
-<a id="getenabledosaccountconstraints"></a>
 ## getEnabledOsAccountConstraints
 
 ```TypeScript
@@ -838,7 +817,7 @@ getEnabledOsAccountConstraints(localId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号已使能的全部[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号已使能的全部[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)。 |
 
 **错误码：**
 
@@ -872,7 +851,6 @@ try {
 
 ```
 
-<a id="getforegroundosaccountdisplayid"></a>
 ## getForegroundOsAccountDisplayId
 
 ```TypeScript
@@ -932,7 +910,6 @@ try {
 
 ```
 
-<a id="getforegroundosaccountlocalid"></a>
 ## getForegroundOsAccountLocalId
 
 ```TypeScript
@@ -992,7 +969,6 @@ try {
 
 ```
 
-<a id="getosaccountconstraintsourcetypes"></a>
 ## getOsAccountConstraintSourceTypes
 
 ```TypeScript
@@ -1016,8 +992,8 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 要查询的系统账号ID。 |
-| constraint | string | 是 | 要查询的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt; | 是 | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)来源信息；否则为错误对象。 |
+| constraint | string | 是 | 要查询的[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt; | 是 | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)来源信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -1052,7 +1028,6 @@ try {
 
 ```
 
-<a id="getosaccountconstraintsourcetypes-1"></a>
 ## getOsAccountConstraintSourceTypes
 
 ```TypeScript
@@ -1076,13 +1051,13 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 要查询的系统账号ID。 |
-| constraint | string | 是 | 要查询的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint | string | 是 | 要查询的[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)来源信息。 |
+| Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)来源信息。 |
 
 **错误码：**
 
@@ -1115,7 +1090,6 @@ try {
 
 ```
 
-<a id="getosaccountprofilephoto"></a>
 ## getOsAccountProfilePhoto
 
 ```TypeScript
@@ -1176,7 +1150,6 @@ try {
 
 ```
 
-<a id="getosaccountprofilephoto-1"></a>
 ## getOsAccountProfilePhoto
 
 ```TypeScript
@@ -1240,7 +1213,6 @@ try {
 
 ```
 
-<a id="getosaccounttype"></a>
 ## getOsAccountType
 
 ```TypeScript
@@ -1301,7 +1273,6 @@ try {
 
 ```
 
-<a id="ismainosaccount"></a>
 ## isMainOsAccount
 
 ```TypeScript
@@ -1356,7 +1327,6 @@ try {
 
 ```
 
-<a id="ismainosaccount-1"></a>
 ## isMainOsAccount
 
 ```TypeScript
@@ -1408,7 +1378,6 @@ try {
 
 ```
 
-<a id="isosaccountactivated"></a>
 ## isOsAccountActivated
 
 ```TypeScript
@@ -1471,7 +1440,6 @@ try {
 
 ```
 
-<a id="isosaccountconstraintenabled"></a>
 ## isOsAccountConstraintEnabled
 
 ```TypeScript
@@ -1495,7 +1463,7 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise<boole
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraint | string | 是 | 指定的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint | string | 是 | 指定的[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)名称。 |
 
 **返回值：**
 
@@ -1536,7 +1504,6 @@ try {
 
 ```
 
-<a id="isosaccountunlocked"></a>
 ## isOsAccountUnlocked
 
 ```TypeScript
@@ -1597,7 +1564,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off('activate' | 'activating')
 
 ```TypeScript
@@ -1654,7 +1620,6 @@ try {
 
 ```
 
-<a id="off-1"></a>
 ## off('activate' | 'activating')
 
 ```TypeScript
@@ -1711,7 +1676,6 @@ try {
 
 ```
 
-<a id="off-2"></a>
 ## off('switching')
 
 ```TypeScript
@@ -1763,7 +1727,6 @@ try {
 
 ```
 
-<a id="off-3"></a>
 ## off('switched')
 
 ```TypeScript
@@ -1815,7 +1778,6 @@ try {
 
 ```
 
-<a id="offconstraintchanged"></a>
 ## offConstraintChanged
 
 ```TypeScript
@@ -1872,7 +1834,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on('activate' | 'activating')
 
 ```TypeScript
@@ -1929,7 +1890,6 @@ try {
 
 ```
 
-<a id="on-1"></a>
 ## on('activate' | 'activating')
 
 ```TypeScript
@@ -1986,7 +1946,6 @@ try {
 
 ```
 
-<a id="on-2"></a>
 ## on('switching')
 
 ```TypeScript
@@ -2043,7 +2002,6 @@ try {
 
 ```
 
-<a id="on-3"></a>
 ## on('switched')
 
 ```TypeScript
@@ -2100,7 +2058,6 @@ try {
 
 ```
 
-<a id="onconstraintchanged"></a>
 ## onConstraintChanged
 
 ```TypeScript
@@ -2121,7 +2078,7 @@ onConstraintChanged(constraints: string[], callback: Callback<ConstraintChangeIn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| constraints | string[] | 是 | 表示待订阅的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
+| constraints | string[] | 是 | 表示待订阅的[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ConstraintChangeInfo&gt; | 是 | 表示用于接收约束变更事件的回调函数。 |
 
 **错误码：**
@@ -2152,7 +2109,6 @@ try {
 
 ```
 
-<a id="queryallcreatedosaccounts"></a>
 ## queryAllCreatedOsAccounts
 
 ```TypeScript
@@ -2207,7 +2163,6 @@ try {
 
 ```
 
-<a id="queryallcreatedosaccounts-1"></a>
 ## queryAllCreatedOsAccounts
 
 ```TypeScript
@@ -2259,7 +2214,6 @@ try {
 
 ```
 
-<a id="querymaxloggedinosaccountnumber"></a>
 ## queryMaxLoggedInOsAccountNumber
 
 ```TypeScript
@@ -2308,7 +2262,6 @@ try {
 
 ```
 
-<a id="querymaxosaccountnumber"></a>
 ## queryMaxOsAccountNumber
 
 ```TypeScript
@@ -2360,7 +2313,6 @@ try {
 
 ```
 
-<a id="querymaxosaccountnumber-1"></a>
 ## queryMaxOsAccountNumber
 
 ```TypeScript
@@ -2409,7 +2361,6 @@ try {
 
 ```
 
-<a id="queryosaccount"></a>
 ## queryOsAccount
 
 ```TypeScript
@@ -2461,7 +2412,6 @@ try {
 
 ```
 
-<a id="queryosaccountbyid"></a>
 ## queryOsAccountById
 
 ```TypeScript
@@ -2522,7 +2472,6 @@ try {
 
 ```
 
-<a id="queryosaccountbyid-1"></a>
 ## queryOsAccountById
 
 ```TypeScript
@@ -2586,7 +2535,6 @@ try {
 
 ```
 
-<a id="removeosaccount"></a>
 ## removeOsAccount
 
 ```TypeScript
@@ -2650,7 +2598,6 @@ try {
 
 ```
 
-<a id="removeosaccount-1"></a>
 ## removeOsAccount
 
 ```TypeScript
@@ -2717,7 +2664,6 @@ try {
 
 ```
 
-<a id="removeosaccount-2"></a>
 ## removeOsAccount
 
 ```TypeScript
@@ -2789,7 +2735,6 @@ try {
 
 ```
 
-<a id="setosaccountconstraints"></a>
 ## setOsAccountConstraints
 
 ```TypeScript
@@ -2813,7 +2758,7 @@ setOsAccountConstraints(localId: number, constraints: Array<string>, enable: boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraints | Array&lt;string&gt; | 是 | 待设置/删除的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
+| constraints | Array&lt;string&gt; | 是 | 待设置/删除的[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
 | enable | boolean | 是 | 设置(true)/删除(false) 。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
@@ -2854,7 +2799,6 @@ try {
 
 ```
 
-<a id="setosaccountconstraints-1"></a>
 ## setOsAccountConstraints
 
 ```TypeScript
@@ -2878,7 +2822,7 @@ setOsAccountConstraints(localId: number, constraints: Array<string>, enable: boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraints | Array&lt;string&gt; | 是 | 待设置/删除的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
+| constraints | Array&lt;string&gt; | 是 | 待设置/删除的[约束](../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)列表。 |
 | enable | boolean | 是 | 设置(true)/删除(false)。 |
 
 **返回值：**
@@ -2921,7 +2865,6 @@ try {
 
 ```
 
-<a id="setosaccountname"></a>
 ## setOsAccountName
 
 ```TypeScript
@@ -2985,7 +2928,6 @@ try {
 
 ```
 
-<a id="setosaccountname-1"></a>
 ## setOsAccountName
 
 ```TypeScript
@@ -3052,7 +2994,6 @@ try {
 
 ```
 
-<a id="setosaccountprofilephoto"></a>
 ## setOsAccountProfilePhoto
 
 ```TypeScript
@@ -3119,7 +3060,6 @@ try {
 
 ```
 
-<a id="setosaccountprofilephoto-1"></a>
 ## setOsAccountProfilePhoto
 
 ```TypeScript
@@ -3189,7 +3129,6 @@ try {
 
 ```
 
-<a id="setosaccounttype"></a>
 ## setOsAccountType
 
 ```TypeScript

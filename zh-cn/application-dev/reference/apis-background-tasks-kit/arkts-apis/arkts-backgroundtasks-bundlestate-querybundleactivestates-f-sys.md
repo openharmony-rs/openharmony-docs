@@ -6,7 +6,6 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="querybundleactivestates"></a>
 ## queryBundleActiveStates
 
 ```TypeScript
@@ -56,7 +55,6 @@ bundleState.queryBundleActiveStates(0, 20000000000000, (err: BusinessError, res:
 ```
 
 
-<a id="querybundleactivestates-1"></a>
 ## queryBundleActiveStates
 
 ```TypeScript

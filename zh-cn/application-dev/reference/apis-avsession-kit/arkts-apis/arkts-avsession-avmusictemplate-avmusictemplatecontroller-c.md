@@ -1,7 +1,6 @@
 # AVMusicTemplateController
 
 音频模板控制器，可以获得音频模板控制器唯一的标识，用于与接入音频模板的媒体应用数据交互。
-
 > **说明：**  
 >  
 > - 本模块仅适用于API version 23及以上版本的Car设备。
@@ -18,7 +17,6 @@
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
-<a id="clearsearchhistory"></a>
 ## clearSearchHistory
 
 ```TypeScript
@@ -50,7 +48,6 @@ clearSearchHistory(): Promise<OperResult>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="destroy"></a>
 ## destroy
 
 ```TypeScript
@@ -79,7 +76,6 @@ destroy(): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | capability not supported. |
 
-<a id="downloadmediaentity"></a>
 ## downloadMediaEntity
 
 ```TypeScript
@@ -118,7 +114,6 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="executeaction"></a>
 ## executeAction
 
 ```TypeScript
@@ -157,7 +152,6 @@ executeAction(actionType: string, params: string): Promise<string>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="favoritemediaentity"></a>
 ## favoriteMediaEntity
 
 ```TypeScript
@@ -196,7 +190,6 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="handlememberpurchase"></a>
 ## handleMemberPurchase
 
 ```TypeScript
@@ -234,7 +227,6 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise<DialogInfo>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="login"></a>
 ## login
 
 ```TypeScript
@@ -273,7 +265,6 @@ login(controlType: LoginType, id?: string): Promise<QrCodeInfo[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="offcurrentsinglechange"></a>
 ## offCurrentSingleChange
 
 ```TypeScript
@@ -304,7 +295,6 @@ offCurrentSingleChange(callback?: Callback<Single>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offcustomelementschange"></a>
 ## offCustomElementsChange
 
 ```TypeScript
@@ -335,7 +325,6 @@ offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offdialogcommandchange"></a>
 ## offDialogCommandChange
 
 ```TypeScript
@@ -366,7 +355,6 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offdownloadmediaentitystatuschange"></a>
 ## offDownloadMediaEntityStatusChange
 
 ```TypeScript
@@ -397,7 +385,6 @@ offDownloadMediaEntityStatusChange(callback?: Callback<MediaEntity>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offextensionabilitychange"></a>
 ## offExtensionAbilityChange
 
 ```TypeScript
@@ -428,7 +415,6 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offmediaentitieschange"></a>
 ## offMediaEntitiesChange
 
 ```TypeScript
@@ -459,7 +445,6 @@ offMediaEntitiesChange(callback?: Callback<MediaEntity[]>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offplaylistchange"></a>
 ## offPlaylistChange
 
 ```TypeScript
@@ -490,7 +475,6 @@ offPlaylistChange(callback?: Callback<PageMediaEntity>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offreportexecuteaction"></a>
 ## offReportExecuteAction
 
 ```TypeScript
@@ -521,7 +505,6 @@ offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offsettingschange"></a>
 ## offSettingsChange
 
 ```TypeScript
@@ -552,7 +535,6 @@ offSettingsChange(callback?: Callback<SettingItem[]>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offtabcontentchange"></a>
 ## offTabContentChange
 
 ```TypeScript
@@ -583,7 +565,6 @@ offTabContentChange(callback?: ReportTabContentEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="offuserinfochange"></a>
 ## offUserInfoChange
 
 ```TypeScript
@@ -614,7 +595,6 @@ offUserInfoChange(callback?: Callback<UserInfo>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="oncurrentsinglechange"></a>
 ## onCurrentSingleChange
 
 ```TypeScript
@@ -645,7 +625,6 @@ onCurrentSingleChange(callback: Callback<Single>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="oncustomelementschange"></a>
 ## onCustomElementsChange
 
 ```TypeScript
@@ -676,7 +655,6 @@ onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="ondialogcommandchange"></a>
 ## onDialogCommandChange
 
 ```TypeScript
@@ -707,7 +685,6 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="ondownloadmediaentitystatuschange"></a>
 ## onDownloadMediaEntityStatusChange
 
 ```TypeScript
@@ -738,7 +715,6 @@ onDownloadMediaEntityStatusChange(callback: Callback<MediaEntity>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onextensionabilitychange"></a>
 ## onExtensionAbilityChange
 
 ```TypeScript
@@ -769,7 +745,6 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onmediaentitieschange"></a>
 ## onMediaEntitiesChange
 
 ```TypeScript
@@ -800,7 +775,6 @@ onMediaEntitiesChange(callback: Callback<MediaEntity[]>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onplaylistchange"></a>
 ## onPlaylistChange
 
 ```TypeScript
@@ -831,7 +805,6 @@ onPlaylistChange(callback: Callback<PageMediaEntity>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onreportexecuteaction"></a>
 ## onReportExecuteAction
 
 ```TypeScript
@@ -862,7 +835,6 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onsettingschange"></a>
 ## onSettingsChange
 
 ```TypeScript
@@ -893,7 +865,6 @@ onSettingsChange(callback: Callback<SettingItem[]>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="ontabcontentchange"></a>
 ## onTabContentChange
 
 ```TypeScript
@@ -924,7 +895,6 @@ onTabContentChange(callback: ReportTabContentEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="onuserinfochange"></a>
 ## onUserInfoChange
 
 ```TypeScript
@@ -955,7 +925,6 @@ onUserInfoChange(callback: Callback<UserInfo>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
-<a id="playforsearch"></a>
 ## playForSearch
 
 ```TypeScript
@@ -994,7 +963,6 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise<OperRe
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="playmediaentity"></a>
 ## playMediaEntity
 
 ```TypeScript
@@ -1032,7 +1000,6 @@ playMediaEntity(mediaEntity: MediaEntity): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querycompilation"></a>
 ## queryCompilation
 
 ```TypeScript
@@ -1071,7 +1038,6 @@ queryCompilation(compilationId: string, pageIndex: number): Promise<PageMediaEnt
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querycompilationbykeyword"></a>
 ## queryCompilationByKeyword
 
 ```TypeScript
@@ -1109,7 +1075,6 @@ queryCompilationByKeyword(keyword: string): Promise<Compilation[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querycurrentsingle"></a>
 ## queryCurrentSingle
 
 ```TypeScript
@@ -1141,7 +1106,6 @@ queryCurrentSingle(): Promise<Single>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querycustomcontent"></a>
 ## queryCustomContent
 
 ```TypeScript
@@ -1179,7 +1143,6 @@ queryCustomContent(queryType: CustomType[]): Promise<CustomElement>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="queryhotwords"></a>
 ## queryHotWords
 
 ```TypeScript
@@ -1211,7 +1174,6 @@ queryHotWords(): Promise<string[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querymaintabs"></a>
 ## queryMainTabs
 
 ```TypeScript
@@ -1243,7 +1205,6 @@ queryMainTabs(): Promise<MediaTab[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querymediaentity"></a>
 ## queryMediaEntity
 
 ```TypeScript
@@ -1281,7 +1242,6 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise<PageMediaEntity>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querymediaentitybykeyword"></a>
 ## queryMediaEntityByKeyword
 
 ```TypeScript
@@ -1321,7 +1281,6 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querymediatabcontent"></a>
 ## queryMediaTabContent
 
 ```TypeScript
@@ -1359,7 +1318,6 @@ queryMediaTabContent(tabId: string): Promise<MediaTabContent>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querymemberpurchase"></a>
 ## queryMemberPurchase
 
 ```TypeScript
@@ -1397,7 +1355,6 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise<MemberPurch
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="queryplaylist"></a>
 ## queryPlaylist
 
 ```TypeScript
@@ -1436,7 +1393,6 @@ queryPlaylist(pageIndex: number, sort: Sort): Promise<PageMediaEntity>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="queryrecommendmediaentitylist"></a>
 ## queryRecommendMediaEntityList
 
 ```TypeScript
@@ -1468,7 +1424,6 @@ queryRecommendMediaEntityList(): Promise<MediaEntity[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="querysearchhistory"></a>
 ## querySearchHistory
 
 ```TypeScript
@@ -1500,7 +1455,6 @@ querySearchHistory(): Promise<string[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="reportproblemandadvice"></a>
 ## reportProblemAndAdvice
 
 ```TypeScript
@@ -1538,7 +1492,6 @@ reportProblemAndAdvice(advice: string): Promise<OperResult>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="requestdialoginfo"></a>
 ## requestDialogInfo
 
 ```TypeScript
@@ -1577,7 +1530,6 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
-<a id="updatesettings"></a>
 ## updateSettings
 
 ```TypeScript

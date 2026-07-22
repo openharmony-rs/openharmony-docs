@@ -6,7 +6,6 @@
 import { distributedAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="getdistributedaccountability"></a>
 ## getDistributedAccountAbility
 
 ```TypeScript

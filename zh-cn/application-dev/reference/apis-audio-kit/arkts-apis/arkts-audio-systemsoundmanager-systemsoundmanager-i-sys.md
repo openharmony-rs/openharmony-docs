@@ -1,6 +1,6 @@
 # SystemSoundManager（系统接口）
 
-管理系统声音。在调用SystemSoundManager的接口前，需要先通过[getSystemSoundManager](arkts-audio-systemsoundmanager-getsystemsoundmanager-f-sys.md#getsystemsoundmanager-1)创建实例。
+管理系统声音。在调用SystemSoundManager的接口前，需要先通过[getSystemSoundManager](arkts-audio-systemsoundmanager-getsystemsoundmanager-f-sys.md#getsystemsoundmanager)创建实例。
 
 **起始版本：** 10
 
@@ -16,7 +16,6 @@
 import { systemSoundManager } from '@kit.AudioKit';
 ```
 
-<a id="addcustomizedtone"></a>
 ## addCustomizedTone
 
 ```TypeScript
@@ -90,7 +89,6 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((val
 
 ```
 
-<a id="addcustomizedtone-1"></a>
 ## addCustomizedTone
 
 ```TypeScript
@@ -104,9 +102,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 
 **需要权限：** ohos.permission.WRITE_RINGTONE
 
-<!--Device-SystemSoundManager-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int, offset?: long, length?: long)
-      : Promise<string>--><!--Device-SystemSoundManager-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int, offset?: long, length?: long)
-      : Promise<string>-End-->
+<!--Device-SystemSoundManager-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int, offset?: long, length?: long)      : Promise<string>--><!--Device-SystemSoundManager-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int, offset?: long, length?: long)      : Promise<string>-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -118,7 +114,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-basecontext-t.md) | 是 | 当前应用的上下文。 |
 | toneAttr | [ToneAttrs](arkts-audio-systemsoundmanager-toneattrs-i-sys.md) | 是 | 铃音属性。 |
-| fd | number | 是 | 文件描述符，可通过[fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open-1)获取。 |
+| fd | number | 是 | 文件描述符，可通过[fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open)获取。 |
 | offset | number | 否 | 读取数据的偏移量（以字节为单位）。默认情况下为0。 |
 | length | number | 否 | 读取的数据的长度（以字节为单位）。默认情况下，长度为偏移后的剩余全部字节数。 |
 
@@ -171,7 +167,6 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, fd, offset, len
 
 ```
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -192,7 +187,7 @@ close(fd: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | number | 是 | 文件描述符，通过[openAlarmTone](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#openalarmtone-1)获取。 |
+| fd | number | 是 | 文件描述符，通过[openAlarmTone](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#openalarmtone)获取。 |
 
 **返回值：**
 
@@ -227,7 +222,6 @@ systemSoundManagerInstance.close(fd).then(() => {
 
 ```
 
-<a id="getalarmtoneattrlist"></a>
 ## getAlarmToneAttrList
 
 ```TypeScript
@@ -282,7 +276,6 @@ systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoun
 
 ```
 
-<a id="getalarmtoneuri"></a>
 ## getAlarmToneUri
 
 ```TypeScript
@@ -337,7 +330,6 @@ systemSoundManagerInstance.getAlarmToneUri(context).then((value: string) => {
 
 ```
 
-<a id="getcurrentringtoneattribute"></a>
 ## getCurrentRingtoneAttribute
 
 ```TypeScript
@@ -389,7 +381,6 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((value: system
 
 ```
 
-<a id="getdefaultalarmtoneattrs"></a>
 ## getDefaultAlarmToneAttrs
 
 ```TypeScript
@@ -444,7 +435,6 @@ systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: system
 
 ```
 
-<a id="getdefaultringtoneattrs"></a>
 ## getDefaultRingtoneAttrs
 
 ```TypeScript
@@ -501,7 +491,6 @@ systemSoundManagerInstance.getDefaultRingtoneAttrs(context, type).then((value: s
 
 ```
 
-<a id="getdefaultsystemtoneattrs"></a>
 ## getDefaultSystemToneAttrs
 
 ```TypeScript
@@ -558,7 +547,6 @@ systemSoundManagerInstance.getDefaultSystemToneAttrs(context, type).then((value:
 
 ```
 
-<a id="gethapticsattrssyncedwithtone"></a>
 ## getHapticsAttrsSyncedWithTone
 
 ```TypeScript
@@ -580,7 +568,7 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise<To
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-basecontext-t.md) | 是 | 当前应用的上下文。 |
-| toneUri | string | 是 | 待获取同步振动的系统铃声Uri,可通过[getRingtoneAttrList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneattrlist-1)或[getSystemToneAttrList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getsystemtoneattrlist-1)等获取。 |
+| toneUri | string | 是 | 待获取同步振动的系统铃声Uri,可通过[getRingtoneAttrList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneattrlist)或[getSystemToneAttrList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getsystemtoneattrlist)等获取。 |
 
 **返回值：**
 
@@ -617,7 +605,6 @@ systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then(
 
 ```
 
-<a id="getmockhapticringtoneplayer"></a>
 ## getMockHapticRingtonePlayer
 
 ```TypeScript
@@ -626,21 +613,18 @@ getMockHapticRingtonePlayer(
 ```
 
 获取模拟触觉铃声播放器，根据指定的铃声类型和铃音文件URI，播放该铃音文件对应的振动文件及其模拟触觉声音文件。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 调用该接口前，请确保传入的ringtoneUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。  
 >  
 > - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的  
-> [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release-1)方法释放播放器资源。
+> [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SystemSoundManager-getMockHapticRingtonePlayer(
-      context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>--><!--Device-SystemSoundManager-getMockHapticRingtonePlayer(
-      context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>-End-->
+<!--Device-SystemSoundManager-getMockHapticRingtonePlayer(      context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>--><!--Device-SystemSoundManager-getMockHapticRingtonePlayer(      context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -652,7 +636,7 @@ getMockHapticRingtonePlayer(
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-basecontext-t.md) | 是 | 当前应用的上下文。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 待获取播放器的铃声类型。 |
-| ringtoneUri | string | 是 | 铃音文件的URI，需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#addcustomizedtone-1)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
+| ringtoneUri | string | 是 | 铃音文件的URI，需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#addcustomizedtone)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
 
 **返回值：**
 
@@ -692,7 +676,6 @@ systemSoundManagerInstance.getMockHapticRingtonePlayer(context, type, ringtoneUr
 
 ```
 
-<a id="getmockhapticringtoneplayer-1"></a>
 ## getMockHapticRingtonePlayer
 
 ```TypeScript
@@ -700,13 +683,12 @@ getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<Ri
 ```
 
 获取模拟触觉铃声播放器，根据指定的触觉文件URI播放振动文件及其对应的模拟触觉声音文件。使用Promise异步回调。
-
 > **说明：**  
 >  
 > - 调用该接口前，请确保传入的hapticUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。  
 >  
 > - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的  
-> [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release-1)方法释放播放器资源。
+> [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
@@ -762,7 +744,6 @@ systemSoundManagerInstance.getMockHapticRingtonePlayer(context, hapticUri).then(
 
 ```
 
-<a id="getringtoneattrlist"></a>
 ## getRingtoneAttrList
 
 ```TypeScript
@@ -819,7 +800,6 @@ systemSoundManagerInstance.getRingtoneAttrList(context, type).then((value: syste
 
 ```
 
-<a id="getringtoneplayer"></a>
 ## getRingtonePlayer
 
 ```TypeScript
@@ -877,7 +857,6 @@ systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemS
 
 ```
 
-<a id="getringtoneuri"></a>
 ## getRingtoneUri
 
 ```TypeScript
@@ -934,7 +913,6 @@ systemSoundManagerInstance.getRingtoneUri(context, type).then((value: string) =>
 
 ```
 
-<a id="getsystemringtoneplayer"></a>
 ## getSystemRingtonePlayer
 
 ```TypeScript
@@ -947,7 +925,7 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 
 **废弃版本：** 11
 
-**替代接口：** [getRingtonePlayer](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneplayer-1)
+**替代接口：** [getRingtonePlayer](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneplayer)
 
 <!--Device-SystemSoundManager-getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCallback<RingtonePlayer>): void--><!--Device-SystemSoundManager-getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCallback<RingtonePlayer>): void-End-->
 
@@ -986,7 +964,6 @@ systemSoundManagerInstance.getSystemRingtonePlayer(context, type, (err: Business
 
 ```
 
-<a id="getsystemringtoneplayer-1"></a>
 ## getSystemRingtonePlayer
 
 ```TypeScript
@@ -999,7 +976,7 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtoneP
 
 **废弃版本：** 11
 
-**替代接口：** [getRingtonePlayer](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneplayer-1)
+**替代接口：** [getRingtonePlayer](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneplayer)
 
 <!--Device-SystemSoundManager-getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtonePlayer>--><!--Device-SystemSoundManager-getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtonePlayer>-End-->
 
@@ -1041,7 +1018,6 @@ systemSoundManagerInstance.getSystemRingtonePlayer(context, type).then((value: s
 
 ```
 
-<a id="getsystemringtoneuri"></a>
 ## getSystemRingtoneUri
 
 ```TypeScript
@@ -1054,7 +1030,7 @@ getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallba
 
 **废弃版本：** 11
 
-**替代接口：** [getRingtoneUri](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneuri-1)
+**替代接口：** [getRingtoneUri](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneuri)
 
 <!--Device-SystemSoundManager-getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallback<string>): void--><!--Device-SystemSoundManager-getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallback<string>): void-End-->
 
@@ -1091,7 +1067,6 @@ systemSoundManagerInstance.getSystemRingtoneUri(context, type, (err: BusinessErr
 
 ```
 
-<a id="getsystemringtoneuri-1"></a>
 ## getSystemRingtoneUri
 
 ```TypeScript
@@ -1104,7 +1079,7 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>
 
 **废弃版本：** 11
 
-**替代接口：** [getRingtoneUri](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneuri-1)
+**替代接口：** [getRingtoneUri](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneuri)
 
 <!--Device-SystemSoundManager-getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>--><!--Device-SystemSoundManager-getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>-End-->
 
@@ -1144,7 +1119,6 @@ systemSoundManagerInstance.getSystemRingtoneUri(context, type).then((value: stri
 
 ```
 
-<a id="getsystemtoneattrlist"></a>
 ## getSystemToneAttrList
 
 ```TypeScript
@@ -1201,7 +1175,6 @@ systemSoundManagerInstance.getSystemToneAttrList(context, type).then((value: sys
 
 ```
 
-<a id="getsystemtoneplayer"></a>
 ## getSystemTonePlayer
 
 ```TypeScript
@@ -1259,7 +1232,6 @@ systemSoundManagerInstance.getSystemTonePlayer(context, type).then((value: syste
 
 ```
 
-<a id="getsystemtoneuri"></a>
 ## getSystemToneUri
 
 ```TypeScript
@@ -1316,7 +1288,6 @@ systemSoundManagerInstance.getSystemToneUri(context, type).then((value: string) 
 
 ```
 
-<a id="gettonehapticslist"></a>
 ## getToneHapticsList
 
 ```TypeScript
@@ -1373,7 +1344,6 @@ systemSoundManagerInstance.getToneHapticsList(context, false).then((value: syste
 
 ```
 
-<a id="gettonehapticssettings"></a>
 ## getToneHapticsSettings
 
 ```TypeScript
@@ -1431,7 +1401,6 @@ systemSoundManagerInstance.getToneHapticsSettings(context, type).then((value: sy
 
 ```
 
-<a id="openalarmtone"></a>
 ## openAlarmTone
 
 ```TypeScript
@@ -1489,7 +1458,6 @@ systemSoundManagerInstance.openAlarmTone(context, uri).then((value: number) => {
 
 ```
 
-<a id="opentonehaptics"></a>
 ## openToneHaptics
 
 ```TypeScript
@@ -1548,7 +1516,6 @@ systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: num
 
 ```
 
-<a id="opentonelist"></a>
 ## openToneList
 
 ```TypeScript
@@ -1605,7 +1572,6 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) =>
 
 ```
 
-<a id="removecustomizedtone"></a>
 ## removeCustomizedTone
 
 ```TypeScript
@@ -1629,7 +1595,7 @@ removeCustomizedTone(context: BaseContext, uri:string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-basecontext-t.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 铃音uri，可通过[addCustomizedTone](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#addcustomizedtone-1)或[getAlarmToneAttrList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getalarmtoneattrlist-1)等方法获取。 |
+| uri | string | 是 | 铃音uri，可通过[addCustomizedTone](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#addcustomizedtone)或[getAlarmToneAttrList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getalarmtoneattrlist)等方法获取。 |
 
 **返回值：**
 
@@ -1666,7 +1632,6 @@ systemSoundManagerInstance.removeCustomizedTone(context, uri).then(() => {
 
 ```
 
-<a id="removecustomizedtonelist"></a>
 ## removeCustomizedToneList
 
 ```TypeScript
@@ -1726,7 +1691,6 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) =>
 
 ```
 
-<a id="setalarmtoneuri"></a>
 ## setAlarmToneUri
 
 ```TypeScript
@@ -1784,7 +1748,6 @@ systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
 
 ```
 
-<a id="setringtoneuri"></a>
 ## setRingtoneUri
 
 ```TypeScript
@@ -1843,7 +1806,6 @@ systemSoundManagerInstance.setRingtoneUri(context, uri, type).then(() => {
 
 ```
 
-<a id="setsystemringtoneuri"></a>
 ## setSystemRingtoneUri
 
 ```TypeScript
@@ -1856,7 +1818,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 
 **废弃版本：** 11
 
-**替代接口：** [setRingtoneUri](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#setringtoneuri-1)
+**替代接口：** [setRingtoneUri](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#setringtoneuri)
 
 <!--Device-SystemSoundManager-setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback: AsyncCallback<void>): void--><!--Device-SystemSoundManager-setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback: AsyncCallback<void>): void-End-->
 
@@ -1895,7 +1857,6 @@ systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type, (err: Busine
 
 ```
 
-<a id="setsystemringtoneuri-1"></a>
 ## setSystemRingtoneUri
 
 ```TypeScript
@@ -1908,7 +1869,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 
 **废弃版本：** 11
 
-**替代接口：** [setRingtoneUri](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#setringtoneuri-1)
+**替代接口：** [setRingtoneUri](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#setringtoneuri)
 
 <!--Device-SystemSoundManager-setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise<void>--><!--Device-SystemSoundManager-setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise<void>-End-->
 
@@ -1950,7 +1911,6 @@ systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type).then(() => {
 
 ```
 
-<a id="setsystemtoneuri"></a>
 ## setSystemToneUri
 
 ```TypeScript
@@ -2009,7 +1969,6 @@ systemSoundManagerInstance.setSystemToneUri(context, uri, type).then(() => {
 
 ```
 
-<a id="settonehapticssettings"></a>
 ## setToneHapticsSettings
 
 ```TypeScript

@@ -1,6 +1,6 @@
 # LaunchType
 
-标识组件的[启动模式](docroot://application-models/uiability-launch-type.md)。
+标识组件的[启动模式](../../../application-models/uiability-launch-type.md)。
 
 **起始版本：** 9
 

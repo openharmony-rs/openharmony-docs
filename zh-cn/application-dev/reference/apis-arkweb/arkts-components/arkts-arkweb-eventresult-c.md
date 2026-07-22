@@ -1,6 +1,6 @@
 # EventResult
 
-通知Web组件同层事件消费结果，支持的事件：[触摸事件的类型](../../apis-arkui/arkts-apis/arkts-arkui-touchtype-e.md)和[鼠标事件的类型](../../apis-arkui/arkts-apis/arkts-arkui-mouseaction-e.md)，鼠标仅支持[左中右按键](../../apis-arkui/arkts-apis/arkts-arkui-mousebutton-e.md)。
+通知Web组件同层事件消费结果，支持的事件：[触摸事件的类型](../../apis-arkui/arkts-apis/arkts-arkui-touchtype-e.md)和[鼠标事件的类型](../../apis-arkui/arkts-apis/arkts-arkui-mouseaction-e.md)，鼠标仅支持[左中右按键](../../apis-test-kit/arkts-apis/arkts-test-uitest-mousebutton-e.md)。
 
 如果应用不消费该事件，则应设置消费结果为false，事件将会被Web组件消费；反之如果应用消费了该事件，则应将消费结果设置为true，Web组件将不消费该事件。若应用设置消费结果不符合以上使用规格，将产生与开发者预期不匹配的现象。
 
@@ -14,7 +14,6 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -31,7 +30,6 @@ EventResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="setgestureeventresult"></a>
 ## setGestureEventResult
 
 ```TypeScript
@@ -54,7 +52,6 @@ setGestureEventResult(result: boolean): void
 | --- | --- | --- | --- |
 | result | boolean | 是 | 是否消费该手势事件。<br>true表示消费该手势事件，false表示不消费该手势事件。<br>传入null或undefined时为true。 |
 
-<a id="setgestureeventresult-1"></a>
 ## setGestureEventResult
 
 ```TypeScript
@@ -76,7 +73,6 @@ setGestureEventResult(result: boolean, stopPropagation: boolean): void
 | result | boolean | 是 | 是否消费该手势事件。<br>true表示消费该手势事件，false表示不消费该手势事件。<br>传入null或undefined时为true。 |
 | stopPropagation | boolean | 是 | 是否阻止冒泡，在result为true时生效。<br>true表示阻止冒泡，false表示不阻止冒泡。<br>传入null或undefined时为true。 |
 
-<a id="setmouseeventresult"></a>
 ## setMouseEventResult
 
 ```TypeScript

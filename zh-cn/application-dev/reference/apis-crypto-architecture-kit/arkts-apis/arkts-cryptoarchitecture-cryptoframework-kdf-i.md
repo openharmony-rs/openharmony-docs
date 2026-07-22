@@ -16,7 +16,6 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
-<a id="generatesecret"></a>
 ## generateSecret
 
 ```TypeScript
@@ -40,13 +39,13 @@ generateSecret(params: KdfSpec, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | params | [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md) | 是 | 设置密钥派生函数的参数。 |
-| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当密钥派生成功时，err为undefined，data为派生的密钥；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当密钥派生成功时，err为undefined，data为派生的密钥；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 参数中的密钥长度无效；<br>2. 参数中的info长度无效；<br>3. 参数中的keySize无效。<br>**适用版本：** 22+ |
@@ -99,7 +98,6 @@ kdf.generateSecret(spec, (err, secret) => {
 
 ```
 
-<a id="generatesecret-1"></a>
 ## generateSecret
 
 ```TypeScript
@@ -134,7 +132,7 @@ generateSecret(params: KdfSpec): Promise<DataBlob>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 参数中的密钥长度无效；<br>2. 参数中的info长度无效；<br>3. 参数中的keySize无效。<br>**适用版本：** 22+ |
@@ -187,7 +185,6 @@ kdfPromise.then(secret => {
 
 ```
 
-<a id="generatesecretsync"></a>
 ## generateSecretSync
 
 ```TypeScript
@@ -222,7 +219,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |

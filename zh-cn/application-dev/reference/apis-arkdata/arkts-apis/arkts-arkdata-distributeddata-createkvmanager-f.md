@@ -1,6 +1,5 @@
 # createKVManager
 
-<a id="createkvmanager"></a>
 ## createKVManager
 
 ```TypeScript
@@ -54,7 +53,6 @@ try {
 ```
 
 
-<a id="createkvmanager-1"></a>
 ## createKVManager
 
 ```TypeScript

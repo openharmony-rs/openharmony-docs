@@ -16,7 +16,6 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
-<a id="presskey"></a>
 ## pressKey
 
 ```TypeScript
@@ -89,7 +88,6 @@ struct Index {
 
 ```
 
-<a id="releasekey"></a>
 ## releaseKey
 
 ```TypeScript

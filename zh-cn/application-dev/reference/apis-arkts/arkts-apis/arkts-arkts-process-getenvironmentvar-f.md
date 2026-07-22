@@ -6,7 +6,6 @@
 import { process } from '@kit.ArkTS';
 ```
 
-<a id="getenvironmentvar"></a>
 ## getEnvironmentVar
 
 ```TypeScript
@@ -19,7 +18,7 @@ function getEnvironmentVar(name: string): string
 
 **废弃版本：** 9
 
-**替代接口：** [getEnvironmentVar](arkts-arkts-process-processmanager-c.md#getenvironmentvar-1)
+**替代接口：** [getEnvironmentVar](arkts-arkts-process-processmanager-c.md#getenvironmentvar)
 
 <!--Device-process-function getEnvironmentVar(name: string): string--><!--Device-process-function getEnvironmentVar(name: string): string-End-->
 

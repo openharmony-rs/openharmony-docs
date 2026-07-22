@@ -14,7 +14,6 @@
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -41,7 +40,6 @@ let formatter: intl.NumberFormat = new intl.NumberFormat();
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -75,7 +73,6 @@ let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'deci
 
 ```
 
-<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -122,7 +119,6 @@ let result: string = formatter.format(1.23456); // result = 1.23
 
 ```
 
-<a id="formatrange"></a>
 ## formatRange
 
 ```TypeScript
@@ -162,7 +158,6 @@ let formattedRange: string = formatter.formatRange(0, 3); // formattedRange: 0â€
 
 ```
 
-<a id="resolvedoptions"></a>
 ## resolvedOptions
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # getContext
 
-<a id="getcontext"></a>
 ## getContext
 
 ```TypeScript

@@ -14,7 +14,6 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
-<a id="arraybuffer"></a>
 ## arrayBuffer
 
 ```TypeScript
@@ -52,7 +51,6 @@ pro.then((val: ArrayBuffer) => {
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -92,7 +90,6 @@ let blob1: buffer.Blob = new buffer.Blob(['a', 'b', 'c'], o1);
 
 ```
 
-<a id="slice"></a>
 ## slice
 
 ```TypeScript
@@ -135,7 +132,6 @@ console.info("type:", blob3.type); // type: MIME
 
 ```
 
-<a id="text"></a>
 ## text
 
 ```TypeScript

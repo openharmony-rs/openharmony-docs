@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="sendterminalresponsecmd"></a>
 ## sendTerminalResponseCmd
 
 ```TypeScript
@@ -59,7 +58,6 @@ sim.sendTerminalResponseCmd(0, "ls", (err: BusinessError) => {
 ```
 
 
-<a id="sendterminalresponsecmd-1"></a>
 ## sendTerminalResponseCmd
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="decapsulate"></a>
 ## decapsulate
 
 ```TypeScript
@@ -18,7 +17,7 @@ Post-Quantum Cryptography密钥解封装操作，支持HUKS密钥管理或由应
 
 **起始版本：** 26.0.0
 
-<!--Device-huks-function decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array,sharedKeyAlias?: string, sharedKeyParams?:  HuksParam[]): Promise<HuksReturnResult>--><!--Device-huks-function decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array,sharedKeyAlias?: string, sharedKeyParams?:  HuksParam[]): Promise<HuksReturnResult>-End-->
+<!--Device-huks-function decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array,      sharedKeyAlias?: string, sharedKeyParams?:  HuksParam[]): Promise<HuksReturnResult>--><!--Device-huks-function decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array,      sharedKeyAlias?: string, sharedKeyParams?:  HuksParam[]): Promise<HuksReturnResult>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -54,7 +53,7 @@ Post-Quantum Cryptography密钥解封装操作，支持HUKS密钥管理或由应
 | [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | Queried credential does not exist |
 | [12000014](../errorcode-huks.md#12000014-内存不足) | Insufficient memory. |
 | [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information using UserIAM. |
-| 12000016 | The lock screen password is not set. |
+| [12000016](../errorcode-huks.md#12000016-设备密码未设置) | The lock screen password is not set. |
 | [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | A key with the same alias already exists. |
 | [12000018](../errorcode-huks.md#12000018-输入参数非法) | Invalid input parameter. |
 

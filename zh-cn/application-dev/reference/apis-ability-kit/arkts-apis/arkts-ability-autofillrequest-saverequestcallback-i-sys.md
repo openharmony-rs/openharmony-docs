@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="onfailure"></a>
 ## onFailure
 
 ```TypeScript
@@ -36,7 +35,6 @@ onFailure(): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-<a id="onsuccess"></a>
 ## onSuccess
 
 ```TypeScript

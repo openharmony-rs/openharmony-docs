@@ -16,7 +16,6 @@
 import { stream } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -40,14 +39,13 @@ let duplex = new stream.Duplex();
 
 ```
 
-<a id="cork"></a>
 ## cork
 
 ```TypeScript
 cork(): boolean
 ```
 
-强制将后续写入的数据缓存起来。调用此API可优化连续写入操作的性能。调用此API后，**writableCorked**的值加1。建议与[uncork()](arkts-arkts-stream-writable-c.md#uncork-1)配合使用。
+强制将后续写入的数据缓存起来。调用此API可优化连续写入操作的性能。调用此API后，**writableCorked**的值加1。建议与[uncork()](arkts-arkts-stream-writable-c.md#uncork)配合使用。
 
 **起始版本：** 12
 
@@ -72,7 +70,6 @@ console.info("duplexStream cork result", result); // duplexStream cork result tr
 
 ```
 
-<a id="dowrite"></a>
 ## doWrite
 
 ```TypeScript
@@ -119,7 +116,6 @@ duplexStream.write("data", "utf8");
 
 ```
 
-<a id="dowritev"></a>
 ## doWritev
 
 ```TypeScript
@@ -173,7 +169,6 @@ duplexStream.end();
 
 ```
 
-<a id="end"></a>
 ## end
 
 ```TypeScript
@@ -234,7 +229,6 @@ duplexStream.end("test", "utf8", () => {
 
 ```
 
-<a id="setdefaultencoding"></a>
 ## setDefaultEncoding
 
 ```TypeScript
@@ -285,14 +279,13 @@ console.info("duplexStream is result", result); // duplexStream is result true
 
 ```
 
-<a id="uncork"></a>
 ## uncork
 
 ```TypeScript
 uncork(): boolean
 ```
 
-释放cork状态，刷新缓冲区中的数据并写入目标位置。调用此API后，**writableCorked**的值减1。如果值变为**0**，则流不再处于cork状态；否则，流仍处于cork状态。建议与[cork()](arkts-arkts-stream-writable-c.md#cork-1)配合使用。
+释放cork状态，刷新缓冲区中的数据并写入目标位置。调用此API后，**writableCorked**的值减1。如果值变为**0**，则流不再处于cork状态；否则，流仍处于cork状态。建议与[cork()](arkts-arkts-stream-writable-c.md#cork)配合使用。
 
 **起始版本：** 12
 
@@ -335,7 +328,6 @@ console.info("Duplex test uncork", dataWritten); // Duplex test uncork ab
 
 ```
 
-<a id="write"></a>
 ## write
 
 ```TypeScript

@@ -1,6 +1,6 @@
 # Random
 
-Random类，调用Random方法生成随机数。调用前，需要通过[createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md#createrandom-1)构造Random实例。
+Random类，调用Random方法生成随机数。调用前，需要通过[createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md#createrandom)构造Random实例。
 
 **起始版本：** 9
 
@@ -16,7 +16,6 @@ Random类，调用Random方法生成随机数。调用前，需要通过[createR
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
-<a id="enablehardwareentropy"></a>
 ## enableHardwareEntropy
 
 ```TypeScript
@@ -68,7 +67,6 @@ rand.generateRandom(12, (err, randData) => {
 
 ```
 
-<a id="generaterandom"></a>
 ## generateRandom
 
 ```TypeScript
@@ -96,13 +94,13 @@ generateRandom(len: number, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | len | number | 是 | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
-| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当生成随机数成功时，err为undefined，data为获取到的随机数；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当生成随机数成功时，err为undefined，data为获取到的随机数；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
@@ -122,7 +120,6 @@ rand.generateRandom(12, (err, randData) => {
 
 ```
 
-<a id="generaterandom-1"></a>
 ## generateRandom
 
 ```TypeScript
@@ -159,7 +156,7 @@ generateRandom(len: number): Promise<DataBlob>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
@@ -250,7 +247,6 @@ export default {
 
 ```
 
-<a id="generaterandomsync"></a>
 ## generateRandomSync
 
 ```TypeScript
@@ -291,7 +287,7 @@ generateRandomSync(len: number): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
@@ -388,7 +384,6 @@ export default {
 
 ```
 
-<a id="setseed"></a>
 ## setSeed
 
 ```TypeScript

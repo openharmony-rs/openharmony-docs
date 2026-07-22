@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="maxpulldowndistance"></a>
 ## maxPullDownDistance
 
 ```TypeScript
@@ -37,7 +36,6 @@ maxPullDownDistance(distance: Optional<number>)
 | --- | --- | --- | --- |
 | distance | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 最大下拉距离。最大下拉距离的最小值为0，小于0按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。<br/>默认值：undefined<br/>单位：vp |
 
-<a id="maxpulldowndistance-1"></a>
 ## maxPullDownDistance
 
 ```TypeScript
@@ -64,7 +62,6 @@ maxPullDownDistance(distance: number | Resource | undefined)
 | --- | --- | --- | --- |
 | distance | number \| Resource \| undefined | 是 | 最大下拉距离。<br/>默认值：undefined<br/>单位：vp<br/>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量[refreshOffset](RefreshAttribute#refreshOffset(value: number))时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理，即没有最大下拉距离限制。 |
 
-<a id="onoffsetchange"></a>
 ## onOffsetChange
 
 ```TypeScript
@@ -72,10 +69,9 @@ onOffsetChange(callback: Callback<number>)
 ```
 
 下拉距离发生变化时触发回调。
-
 > **说明：**  
 >  
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -93,7 +89,6 @@ onOffsetChange(callback: Callback<number>)
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数，用于监听下拉距离的变化。当下拉距离发生变化时触发，回调参数为当前的下拉距离。<br/>单位：vp |
 
-<a id="onrefreshing"></a>
 ## onRefreshing
 
 ```TypeScript
@@ -116,7 +111,6 @@ onRefreshing(callback: () => void)
 | --- | --- | --- | --- |
 | callback | () =&gt; void | 是 | 进入刷新状态时触发的回调。 |
 
-<a id="onstatechange"></a>
 ## onStateChange
 
 ```TypeScript
@@ -139,7 +133,6 @@ onStateChange(callback: (state: RefreshStatus) => void)
 | --- | --- | --- | --- |
 | callback | (state: RefreshStatus) =&gt; void | 是 |  |
 
-<a id="pulldownratio"></a>
 ## pullDownRatio
 
 ```TypeScript
@@ -164,7 +157,6 @@ pullDownRatio(ratio: Optional<number>)
 | --- | --- | --- | --- |
 | ratio | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 下拉跟手系数。数值越大，跟随手势下拉的反应越灵敏。0表示不跟随手势下拉，1表示等比例跟随手势下拉。<br/>没有设置或设置为undefined时，默认使用动态下拉跟手系数，下拉距离越大，跟手系数越小。<br/>有效值为0-1之间的值，小于0的值会被视为0，大于1的值会被视为1。 |
 
-<a id="pulltorefresh"></a>
 ## pullToRefresh
 
 ```TypeScript
@@ -189,7 +181,6 @@ pullToRefresh(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 当下拉距离超过[refreshOffset](RefreshAttribute#refreshOffset(value: number))时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br/>默认值：true |
 
-<a id="pulluptocancelrefresh"></a>
 ## pullUpToCancelRefresh
 
 ```TypeScript
@@ -214,7 +205,6 @@ pullUpToCancelRefresh(enabled: boolean | undefined)
 | --- | --- | --- | --- |
 | enabled | boolean \| undefined | 是 | 设置上划是否取消刷新。<br/>true表示取消刷新；false表示不取消刷新。<br/>值为undefined时，上划取消刷新。 |
 
-<a id="refreshoffset"></a>
 ## refreshOffset
 
 ```TypeScript
@@ -237,9 +227,8 @@ refreshOffset(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 下拉偏移量，单位vp。<br/>默认值：未设置[promptText](docroot://reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)参数时为64vp，设置了[promptText](docroot://reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。 |
+| value | number | 是 | 下拉偏移量，单位vp。<br/>默认值：未设置[promptText](../../../reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)参数时为64vp，设置了[promptText](../../../reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。 |
 
-<a id="refreshoffset-1"></a>
 ## refreshOffset
 
 ```TypeScript
@@ -248,7 +237,7 @@ refreshOffset(value: number | Resource)
 
 设置触发刷新的下拉偏移量，当下拉距离小于该属性设置值时离手不会触发刷新，支持Resource资源类型。
 
-未通过该接口设置时，当未设置[promptText](docroot://reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)参数时，默认偏移量为64vp；设置了[promptText](docroot://reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)参数时，默认偏移量为96vp。
+未通过该接口设置时，当未设置[promptText](../../../reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)参数时，默认偏移量为64vp；设置了[promptText](../../../reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)参数时，默认偏移量为96vp。
 
 **起始版本：** 26.0.0
 

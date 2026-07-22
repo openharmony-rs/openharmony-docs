@@ -8,7 +8,6 @@ NavDestination上下文信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getconfiginroutemap"></a>
 ## getConfigInRouteMap
 
 ```TypeScript

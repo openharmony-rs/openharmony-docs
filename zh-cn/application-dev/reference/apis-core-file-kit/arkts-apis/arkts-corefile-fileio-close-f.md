@@ -1,6 +1,5 @@
 # close
 
-<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function close(fd: number): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:close](arkts-corefile-file-fs-close-f.md#close-1)
+**替代接口：** [fs:close](arkts-corefile-fileio-close-f.md#close)
 
 <!--Device-unnamed-declare function close(fd: number): Promise<void>--><!--Device-unnamed-declare function close(fd: number): Promise<void>-End-->
 
@@ -32,7 +31,6 @@ declare function close(fd: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="close-1"></a>
 ## close
 
 ```TypeScript
@@ -45,7 +43,7 @@ declare function close(fd: number, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:close](arkts-corefile-file-fs-close-f.md#close-1)
+**替代接口：** [fs:close](arkts-corefile-fileio-close-f.md#close)
 
 <!--Device-unnamed-declare function close(fd: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function close(fd: number, callback: AsyncCallback<void>): void-End-->
 

@@ -16,7 +16,6 @@
 import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -33,7 +32,6 @@ constructor()
 
 **系统能力：** SystemCapability.Utils.Lang
 
-<a id="notifyall"></a>
 ## notifyAll
 
 ```TypeScript
@@ -50,7 +48,6 @@ notifyAll(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
-<a id="notifyone"></a>
 ## notifyOne
 
 ```TypeScript
@@ -67,7 +64,6 @@ notifyOne(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
-<a id="request"></a>
 ## request
 
 ```TypeScript
@@ -96,7 +92,6 @@ static request(name: string): ConditionVariable
 | --- | --- |
 | [ConditionVariable](arkts-arkts-locks-conditionvariable-c.md) | 返回ConditionVariable实例。 |
 
-<a id="wait"></a>
 ## wait
 
 ```TypeScript
@@ -119,7 +114,6 @@ wait(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 一旦ConditionVariable被通知，Promise将被解决。 |
 
-<a id="waitfor"></a>
 ## waitFor
 
 ```TypeScript

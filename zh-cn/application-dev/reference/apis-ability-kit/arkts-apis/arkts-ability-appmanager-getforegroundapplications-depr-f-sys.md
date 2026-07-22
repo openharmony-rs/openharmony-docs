@@ -1,13 +1,12 @@
 # getForegroundApplications（系统接口）
 
-<a id="getforegroundapplications"></a>
 ## getForegroundApplications
 
 ```TypeScript
 function getForegroundApplications(callback: AsyncCallback<Array<AppStateData>>): void
 ```
 
-获取所有当前处于前台的应用信息。该应用信息由[AppStateData](application/AppStateData:AppStateData)定义。使用callback异步回调。
+获取所有当前处于前台的应用信息。该应用信息由[AppStateData](arkts-ability-appstatedata-c.md)定义。使用callback异步回调。
 
 **起始版本：** 8
 
@@ -45,14 +44,13 @@ appManager.getForegroundApplications((err, data) => {
 ```
 
 
-<a id="getforegroundapplications-1"></a>
 ## getForegroundApplications
 
 ```TypeScript
 function getForegroundApplications(): Promise<Array<AppStateData>>
 ```
 
-获取所有当前处于前台的应用信息。该应用信息由[AppStateData](application/AppStateData:AppStateData)定义。使用Promise异步回调。
+获取所有当前处于前台的应用信息。该应用信息由[AppStateData](arkts-ability-appstatedata-c.md)定义。使用Promise异步回调。
 
 **起始版本：** 8
 

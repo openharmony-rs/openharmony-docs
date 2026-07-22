@@ -6,7 +6,6 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
-<a id="settextundefinedglyphdisplay"></a>
 ## setTextUndefinedGlyphDisplay
 
 ```TypeScript

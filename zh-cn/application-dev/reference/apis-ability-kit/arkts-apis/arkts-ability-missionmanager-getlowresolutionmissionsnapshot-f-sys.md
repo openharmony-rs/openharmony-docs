@@ -6,7 +6,6 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
-<a id="getlowresolutionmissionsnapshot"></a>
 ## getLowResolutionMissionSnapShot
 
 ```TypeScript
@@ -23,15 +22,7 @@ function getLowResolutionMissionSnapShot(
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
-<!--Device-missionManager-function getLowResolutionMissionSnapShot(
-    deviceId: string,
-    missionId: int,
-    callback: AsyncCallback<MissionSnapshot>
-  ): void--><!--Device-missionManager-function getLowResolutionMissionSnapShot(
-    deviceId: string,
-    missionId: int,
-    callback: AsyncCallback<MissionSnapshot>
-  ): void-End-->
+<!--Device-missionManager-function getLowResolutionMissionSnapShot(    deviceId: string,    missionId: int,    callback: AsyncCallback<MissionSnapshot>  ): void--><!--Device-missionManager-function getLowResolutionMissionSnapShot(    deviceId: string,    missionId: int,    callback: AsyncCallback<MissionSnapshot>  ): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -79,7 +70,6 @@ try {
 ```
 
 
-<a id="getlowresolutionmissionsnapshot-1"></a>
 ## getLowResolutionMissionSnapShot
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
-<a id="stopsyncremotemissions"></a>
 ## stopSyncRemoteMissions
 
 ```TypeScript
@@ -67,7 +66,6 @@ try {
 ```
 
 
-<a id="stopsyncremotemissions-1"></a>
 ## stopSyncRemoteMissions
 
 ```TypeScript

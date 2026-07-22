@@ -6,7 +6,6 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
-<a id="getcurrentbundlestats"></a>
 ## getCurrentBundleStats
 
 ```TypeScript
@@ -51,7 +50,6 @@ storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: stor
 ```
 
 
-<a id="getcurrentbundlestats-1"></a>
 ## getCurrentBundleStats
 
 ```TypeScript

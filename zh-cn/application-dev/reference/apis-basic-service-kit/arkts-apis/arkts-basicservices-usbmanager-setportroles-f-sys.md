@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="setportroles"></a>
 ## setPortRoles
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 
 **废弃版本：** 12
 
-**替代接口：** [setPortRoleTypes(portId:](arkts-basicservices-usbmanager-setportroletypes-f-sys.md#setportroletypes-1)
+**替代接口：** [setPortRoleTypes(portId:](arkts-basicservices-usbmanager-setportroletypes-f-sys.md#setportroletypes)
 
 <!--Device-usbManager-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<void>--><!--Device-usbManager-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<void>-End-->
 

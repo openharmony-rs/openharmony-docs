@@ -6,7 +6,6 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
-<a id="preloaduiextensionability"></a>
 ## preloadUIExtensionAbility
 
 ```TypeScript

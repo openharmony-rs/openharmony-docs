@@ -1,7 +1,6 @@
 # AVCastController
 
-在投播建立后，调用[avSession.getAVCastController](arkts-avsession-avsession-getavcastcontroller-f-sys.md#getavcastcontroller-1)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
-
+在投播建立后，调用[avSession.getAVCastController](arkts-avsession-avsession-getavcastcontroller-f-sys.md#getavcastcontroller)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 > **说明：**  
 >  
 > - 本Interface首批接口从API version 10开始支持。
@@ -18,7 +17,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="getavplaybackstate"></a>
 ## getAVPlaybackState
 
 ```TypeScript
@@ -45,7 +43,6 @@ getAVPlaybackState(callback: AsyncCallback<AVPlaybackState>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="getavplaybackstate-1"></a>
 ## getAVPlaybackState
 
 ```TypeScript
@@ -74,7 +71,6 @@ getAVPlaybackState(): Promise<AVPlaybackState>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="getcurrentitem"></a>
 ## getCurrentItem
 
 ```TypeScript
@@ -101,7 +97,6 @@ getCurrentItem(callback: AsyncCallback<AVQueueItem>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="getcurrentitem-1"></a>
 ## getCurrentItem
 
 ```TypeScript
@@ -130,7 +125,6 @@ getCurrentItem(): Promise<AVQueueItem>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="getrecommendedresolutionlevel"></a>
 ## getRecommendedResolutionLevel
 
 ```TypeScript
@@ -165,7 +159,6 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise<ResolutionLevel
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="getsupporteddecoders"></a>
 ## getSupportedDecoders
 
 ```TypeScript
@@ -194,7 +187,6 @@ getSupportedDecoders(): Promise<Array<DecoderType>>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="getsupportedhdrcapabilities"></a>
 ## getSupportedHdrCapabilities
 
 ```TypeScript
@@ -223,7 +215,6 @@ getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="getsupportedplayspeeds"></a>
 ## getSupportedPlaySpeeds
 
 ```TypeScript
@@ -252,7 +243,6 @@ getSupportedPlaySpeeds(): Promise<Array<number>>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="getvalidcommands"></a>
 ## getValidCommands
 
 ```TypeScript
@@ -279,7 +269,6 @@ getValidCommands(callback: AsyncCallback<Array<AVCastControlCommandType>>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
-<a id="getvalidcommands-1"></a>
 ## getValidCommands
 
 ```TypeScript
@@ -306,7 +295,6 @@ getValidCommands(): Promise<Array<AVCastControlCommandType>>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
-<a id="off"></a>
 ## off('playbackStateChange')
 
 ```TypeScript
@@ -337,7 +325,6 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -367,7 +354,6 @@ off(type: 'mediaItemChange'): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="off-2"></a>
 ## off
 
 ```TypeScript
@@ -397,7 +383,6 @@ off(type: 'playNext'): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="off-3"></a>
 ## off
 
 ```TypeScript
@@ -427,7 +412,6 @@ off(type: 'playPrevious'): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="off-4"></a>
 ## off('requestPlay')
 
 ```TypeScript
@@ -456,7 +440,6 @@ off(type: 'requestPlay', callback?: Callback<AVQueueItem>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="off-5"></a>
 ## off('endOfStream')
 
 ```TypeScript
@@ -485,7 +468,6 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="off-6"></a>
 ## off
 
 ```TypeScript
@@ -515,7 +497,6 @@ off(type: 'seekDone'): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="off-7"></a>
 ## off('validCommandChange')
 
 ```TypeScript
@@ -545,7 +526,6 @@ off(type: 'validCommandChange', callback?: Callback<Array<AVCastControlCommandTy
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
-<a id="off-8"></a>
 ## off
 
 ```TypeScript
@@ -580,7 +560,6 @@ avCastController.off('videoSizeChange');
 
 ```
 
-<a id="off-9"></a>
 ## off
 
 ```TypeScript
@@ -616,7 +595,6 @@ off(type: 'error'): void
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-不支持的规格) | Unsupport format. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="off-10"></a>
 ## off('castControlGenericError')
 
 ```TypeScript
@@ -646,7 +624,6 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
-<a id="off-11"></a>
 ## off('castControlIoError')
 
 ```TypeScript
@@ -676,7 +653,6 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
-<a id="off-12"></a>
 ## off('castControlParsingError')
 
 ```TypeScript
@@ -706,7 +682,6 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
-<a id="off-13"></a>
 ## off('castControlDecodingError')
 
 ```TypeScript
@@ -736,7 +711,6 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
-<a id="off-14"></a>
 ## off('castControlAudioRendererError')
 
 ```TypeScript
@@ -766,7 +740,6 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
-<a id="off-15"></a>
 ## off('castControlDrmError')
 
 ```TypeScript
@@ -796,7 +769,6 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter check failed. 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
 
-<a id="off-16"></a>
 ## off('keyRequest')
 
 ```TypeScript
@@ -827,7 +799,6 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="off-17"></a>
 ## off('customDataChange')
 
 ```TypeScript
@@ -857,7 +828,6 @@ off(type: 'customDataChange', callback?: Callback<Record<string, Object>>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on"></a>
 ## on('playbackStateChange')
 
 ```TypeScript
@@ -881,7 +851,7 @@ on(type: 'playbackStateChange', filter: Array<keyof AVPlaybackState> | 'all', ca
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playbackStateChange' | 是 |  |
-| filter | Array&lt;keyof AVPlaybackState&gt; \| 'all' | 是 | 'all'表示关注播放状态所有字段变化；Array<keyof AVPlaybackState>表示关注Array中的字段变化。 |
+| filter | Array&lt;keyof AVPlaybackState&gt; \| 'all' | 是 | 'all'表示关注播放状态所有字段变化；Array&lt;keyof AVPlaybackState&gt;表示关注Array中的字段变化。 |
 | callback | (state: AVPlaybackState) =&gt; void | 是 | 回调函数，参数state是变化后的播放状态。 |
 
 **错误码：**
@@ -891,7 +861,6 @@ on(type: 'playbackStateChange', filter: Array<keyof AVPlaybackState> | 'all', ca
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on-1"></a>
 ## on('mediaItemChange')
 
 ```TypeScript
@@ -924,7 +893,6 @@ on(type: 'mediaItemChange', callback: Callback<AVQueueItem>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on-2"></a>
 ## on('playNext')
 
 ```TypeScript
@@ -957,7 +925,6 @@ on(type: 'playNext', callback: Callback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on-3"></a>
 ## on('playPrevious')
 
 ```TypeScript
@@ -990,7 +957,6 @@ on(type: 'playPrevious', callback: Callback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on-4"></a>
 ## on('requestPlay')
 
 ```TypeScript
@@ -1021,7 +987,6 @@ on(type: 'requestPlay', callback: Callback<AVQueueItem>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on-5"></a>
 ## on('endOfStream')
 
 ```TypeScript
@@ -1052,7 +1017,6 @@ on(type: 'endOfStream', callback: Callback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on-6"></a>
 ## on('seekDone')
 
 ```TypeScript
@@ -1085,7 +1049,6 @@ on(type: 'seekDone', callback: Callback<number>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on-7"></a>
 ## on('validCommandChange')
 
 ```TypeScript
@@ -1117,7 +1080,6 @@ on(type: 'validCommandChange', callback: Callback<Array<AVCastControlCommandType
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
-<a id="on-8"></a>
 ## on('videoSizeChange')
 
 ```TypeScript
@@ -1158,7 +1120,6 @@ avCastController.on('videoSizeChange', (width: number, height: number) => {
 
 ```
 
-<a id="on-9"></a>
 ## on('error')
 
 ```TypeScript
@@ -1197,7 +1158,6 @@ on(type: 'error', callback: ErrorCallback): void
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-不支持的规格) | Unsupport format. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on-10"></a>
 ## on('castControlGenericError')
 
 ```TypeScript
@@ -1243,7 +1203,6 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 | [6611107](../errorcode-avsession.md#6611107-内存分配失败) | Allocation of memory failed. |
 | [6611108](../errorcode-avsession.md#6611108-不允许进行当前操作) | Operation is not allowed. |
 
-<a id="on-11"></a>
 ## on('castControlIoError')
 
 ```TypeScript
@@ -1292,7 +1251,6 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 | [6612106](../errorcode-avsession.md#6612106-资源使用频繁) | The number of times this content has been used as requested has reached the maximum allowed number of uses. |
 | [6612107](../errorcode-avsession.md#6612107-本端向远端发送资源包失败) | An error occurs when sending packet from source device to sink device. |
 
-<a id="on-12"></a>
 ## on('castControlParsingError')
 
 ```TypeScript
@@ -1329,7 +1287,6 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 | [6613003](../errorcode-avsession.md#6613003-不支持该媒体格式) | An error occurs when attempting to extract a file with an unsupported media container format or an unsupported media container feature. |
 | [6613004](../errorcode-avsession.md#6613004-媒体清单中不支持此功能) | Unsupported feature in the media manifest. |
 
-<a id="on-13"></a>
 ## on('castControlDecodingError')
 
 ```TypeScript
@@ -1367,7 +1324,6 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 | [6614004](../errorcode-avsession.md#6614004-所需解码的内容格式超出设备能力) | The format of the content to decode exceeds the capabilities of the device. |
 | [6614005](../errorcode-avsession.md#6614005-解码不支持的内容格式) | The format of the content to decode is not supported. |
 
-<a id="on-14"></a>
 ## on('castControlAudioRendererError')
 
 ```TypeScript
@@ -1402,7 +1358,6 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 | [6615001](../errorcode-avsession.md#6615001-音频渲染器初始化异常) | Initializing the audio renderer failed. |
 | [6615002](../errorcode-avsession.md#6615002-音频渲染器写数据异常) | The audio renderer fails to write data. |
 
-<a id="on-15"></a>
 ## on('castControlDrmError')
 
 ```TypeScript
@@ -1444,7 +1399,6 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 | [6616008](../errorcode-avsession.md#6616008-已过期的drm许可证被加载到打开的drm会话中) | The DRM license being loaded into the open DRM session has expired. |
 | [6616100](../errorcode-avsession.md#6616100-drm进程秘钥响应错误) | An error occurs when the DRM processes the key response. |
 
-<a id="on-16"></a>
 ## on('keyRequest')
 
 ```TypeScript
@@ -1477,7 +1431,6 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="on-17"></a>
 ## on('customDataChange')
 
 ```TypeScript
@@ -1507,7 +1460,6 @@ on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="prepare"></a>
 ## prepare
 
 ```TypeScript
@@ -1537,7 +1489,6 @@ prepare(item: AVQueueItem, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
-<a id="prepare-1"></a>
 ## prepare
 
 ```TypeScript
@@ -1574,7 +1525,6 @@ prepare(item: AVQueueItem): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
-<a id="processmediakeyresponse"></a>
 ## processMediaKeyResponse
 
 ```TypeScript
@@ -1611,7 +1561,6 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -1638,7 +1587,6 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
-<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -1667,7 +1615,6 @@ release(): Promise<void>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
-<a id="sendcontrolcommand"></a>
 ## sendControlCommand
 
 ```TypeScript
@@ -1698,7 +1645,6 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback<void>)
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
-<a id="sendcontrolcommand-1"></a>
 ## sendControlCommand
 
 ```TypeScript
@@ -1736,7 +1682,6 @@ sendControlCommand(command: AVCastControlCommand): Promise<void>
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
-<a id="sendcustomdata"></a>
 ## sendCustomData
 
 ```TypeScript
@@ -1771,7 +1716,6 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -1779,11 +1723,10 @@ start(item: AVQueueItem, callback: AsyncCallback<void>): void
 ```
 
 启动播放某个媒体资源。结果通过callback异步回调方式返回。
-
 > **说明：**  
 >  
 > 在音视频投播场景下，当应用程序顺序调用  
-> [prepare](arkts-avsession-avsession-avcastcontroller-i.md#prepare-1)和start接口，且  
+> [prepare](arkts-avsession-avsession-avcastcontroller-i.md#prepare)和start接口，且  
 > assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **起始版本：** 10
@@ -1807,7 +1750,6 @@ start(item: AVQueueItem, callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
-<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -1815,11 +1757,10 @@ start(item: AVQueueItem): Promise<void>
 ```
 
 启动播放某个媒体资源。结果通过Promise异步回调方式返回。
-
 > **说明：**  
 >  
 > 在音视频投播场景下，当应用程序顺序调用  
-> [prepare](arkts-avsession-avsession-avcastcontroller-i.md#prepare-1)和start接口，且  
+> [prepare](arkts-avsession-avsession-avcastcontroller-i.md#prepare)和start接口，且  
 > assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **起始版本：** 10
@@ -1850,7 +1791,6 @@ start(item: AVQueueItem): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
-<a id="update"></a>
 ## update
 
 ```TypeScript

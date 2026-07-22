@@ -6,7 +6,6 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
-<a id="getdisposedstatus"></a>
 ## getDisposedStatus
 
 ```TypeScript
@@ -29,7 +28,7 @@ function getDisposedStatus(appId: string, callback: AsyncCallback<Want>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](docroot://quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appId | string | 是 | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Want&gt; | 是 | 回调函数。当获取应用的处置状态成功时，err为null，data为获取到的处置状态；否则为错误对象。 |
 
 **错误码：**
@@ -67,7 +66,6 @@ try {
 ```
 
 
-<a id="getdisposedstatus-1"></a>
 ## getDisposedStatus
 
 ```TypeScript
@@ -90,7 +88,7 @@ function getDisposedStatus(appId: string): Promise<Want>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](docroot://quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appId | string | 是 | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 
 **返回值：**
 

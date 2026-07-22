@@ -6,7 +6,6 @@
 import { router } from '@kit.ArkUI';
 ```
 
-<a id="getparams"></a>
 ## getParams
 
 ```TypeScript
@@ -14,16 +13,15 @@ function getParams(): Object
 ```
 
 获取发起跳转的页面往当前页传入的参数。
-
 > **说明：**  
 >  
-> - 从API version 8开始支持，从API version 18开始废弃，建议使用[getParams](arkts-arkui-arkui-uicontext-router-c.md#getparams-1)替代。  
+> - 从API version 8开始支持，从API version 18开始废弃，建议使用[getParams](arkts-arkui-arkui-uicontext-router-c.md#getparams)替代。  
 > getParams需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。  
 >  
 > getParams只获取当前页面的参数，并不会清除页面关联的参数。
@@ -32,7 +30,7 @@ function getParams(): Object
 
 **废弃版本：** 18
 
-**替代接口：** [getParams](arkts-arkui-arkui-uicontext-router-c.md#getparams-1)
+**替代接口：** [getParams](arkts-arkui-arkui-uicontext-router-c.md#getparams)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

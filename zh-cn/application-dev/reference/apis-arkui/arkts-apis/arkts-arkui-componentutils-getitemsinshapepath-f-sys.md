@@ -6,7 +6,6 @@
 import { componentUtils } from '@kit.ArkUI';
 ```
 
-<a id="getitemsinshapepath"></a>
 ## getItemsInShapePath
 
 ```TypeScript

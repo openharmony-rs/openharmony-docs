@@ -27,8 +27,8 @@ import { print } from '@kit.BasicServicesKit';
 | [notifyWatermarkComplete](arkts-basicservices-print-notifywatermarkcomplete-f.md#notifywatermarkcomplete) | 通知水印处理完成。 |
 | [off](arkts-basicservices-print-off-f.md#off-3) | 取消注册打印机变动事件回调，使用callback回调。 |
 | [on](arkts-basicservices-print-on-f.md#on-3) | 注册打印机变动事件回调，使用callback回调。 |
-| [print](arkts-basicservices-print-f.md#print) | 打印接口，传入文件进行打印，使用callback异步回调。拉起系统打印预览界面，需要使用[print](arkts-basicservices-print-f.md#print-1)接口，传入context。 |
-| [print](arkts-basicservices-print-f.md#print-1) | 打印接口，传入文件进行打印，使用Promise异步回调。拉起系统打印预览界面，需要使用[print](arkts-basicservices-print-f.md#print-1)接口，传入context。 |
+| [print](arkts-basicservices-print-f.md#print) | 打印接口，传入文件进行打印，使用callback异步回调。拉起系统打印预览界面，需要使用[print](arkts-basicservices-print-f.md#print)接口，传入context。 |
+| [print](arkts-basicservices-print-f.md#print-1) | 打印接口，传入文件进行打印，使用Promise异步回调。拉起系统打印预览界面，需要使用[print](arkts-basicservices-print-f.md#print)接口，传入context。 |
 | [print](arkts-basicservices-print-f.md#print-2) | 打印接口，传入文件进行打印，使用callback异步回调。 |
 | [print](arkts-basicservices-print-f.md#print-3) | 打印接口，传入文件进行打印，使用Promise异步回调。 |
 | [print](arkts-basicservices-print-f.md#print-4) | 打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。当前支持的文件类型：".pdf"。 |

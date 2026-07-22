@@ -6,7 +6,6 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
-<a id="disableability"></a>
 ## disableAbility
 
 ```TypeScript
@@ -63,7 +62,6 @@ config.disableAbility(name).then(() => {
 ```
 
 
-<a id="disableability-1"></a>
 ## disableAbility
 
 ```TypeScript

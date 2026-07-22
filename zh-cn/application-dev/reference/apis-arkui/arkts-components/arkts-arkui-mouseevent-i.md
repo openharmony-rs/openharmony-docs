@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getcurrentlocalposition"></a>
 ## getCurrentLocalPosition
 
 ```TypeScript
@@ -35,7 +34,6 @@ getCurrentLocalPosition?(): Coordinate2D
 | --- | --- |
 | [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | - 点击位置相对于当前组件实时位置的左上角坐标。 |
 
-<a id="gethistoricalpoints"></a>
 ## getHistoricalPoints
 
 ```TypeScript
@@ -44,7 +42,7 @@ getHistoricalPoints?(): Array<MouseHistoricalPoint>
 
 获取当前帧的所有历史点信息。历史点可用于实现更平滑的绘制效果。
 
-该接口仅能在[MouseEvent](arkts-arkui-mouseevent-i.md)中调用，用于获取触发[onMouse](arkts-arkui-commonmethod-c.md#onmouse-1)时当前帧历史点的相关信息，不同设备每帧的鼠标事件上报频率不同，一帧通常只会上报一个鼠标事件，如果当前帧收到的[MouseEvent](arkts-arkui-mouseevent-i.md)数目大于1，会将该帧最后一个点通过[onMouse](arkts-arkui-commonmethod-c.md#onmouse-1)返回，其余点作为历史点。
+该接口仅能在[MouseEvent](arkts-arkui-mouseevent-i.md)中调用，用于获取触发[onMouse](arkts-arkui-commonmethod-c.md#onmouse)时当前帧历史点的相关信息，不同设备每帧的鼠标事件上报频率不同，一帧通常只会上报一个鼠标事件，如果当前帧收到的[MouseEvent](arkts-arkui-mouseevent-i.md)数目大于1，会将该帧最后一个点通过[onMouse](arkts-arkui-commonmethod-c.md#onmouse)返回，其余点作为历史点。
 
 **起始版本：** 26.0.0
 
@@ -152,7 +150,7 @@ eventHandleId?: number
 
 取值范围：[0, +∞)
 
-**说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy-1)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。
+**说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。
 
 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
 
@@ -174,7 +172,7 @@ eventHandleId?: number
 globalDisplayX?: number
 ```
 
-鼠标位置在[全局坐标系](docroot://windowmanager/window-terminology.md#全局坐标系)中的X坐标。
+鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
 
 单位：vp
 
@@ -198,7 +196,7 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-鼠标光标在[全局坐标系](docroot://windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
+鼠标光标在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
 
 单位：vp
 
@@ -330,7 +328,7 @@ screenY: number
 stopPropagation: () => void
 ```
 
-阻塞[事件冒泡](docroot://ui/arkts-interaction-basic-principles.md#事件冒泡)。
+阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
 
 **类型：** () =&gt; void
 
@@ -392,7 +390,7 @@ windowY: number
 x: number
 ```
 
-鼠标位置在事件响应组件为基准的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中的X坐标。
+鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。
 
 单位：vp
 
@@ -412,7 +410,7 @@ x: number
 y: number
 ```
 
-鼠标位置在事件响应组件为基准的[组件坐标系](docroot://ui/arkui-glossary.md#组件坐标系)中的Y坐标。
+鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。
 
 单位：vp
 

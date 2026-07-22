@@ -22,7 +22,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 set videoUri(value: string)
 ```
 
-本地视频数据uri或网络视频uri，本地视频数据uri可通过[getUriFromPath](@ohos.file.fileuri:fileUri.getUriFromPath)函数获取。
+本地视频数据uri或网络视频uri，本地视频数据uri可通过[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)函数获取。
 
 **类型：** string
 

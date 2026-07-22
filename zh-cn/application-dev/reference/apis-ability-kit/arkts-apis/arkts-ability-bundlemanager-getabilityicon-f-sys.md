@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getabilityicon"></a>
 ## getAbilityIcon
 
 ```TypeScript
@@ -16,11 +15,10 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)，使用callback异步回调。
 
 获取调用方信息时不需要权限。
-
 > **说明：**  
 >  
 > 从API version 9开始支持，从API version 10开始废弃，建议使用  
-> [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)  
+> [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)  
 > 替代。
 
 **起始版本：** 9
@@ -60,7 +58,6 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 | [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
 
 
-<a id="getabilityicon-1"></a>
 ## getAbilityIcon
 
 ```TypeScript
@@ -70,11 +67,10 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)，使用Promise异步回调。
 
 获取调用方信息时不需要权限。
-
 > **说明：**  
 >  
 > 从API version 9开始支持，从API version 10开始废弃，建议使用  
-> [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-1)  
+> [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)  
 > 替代。
 
 **起始版本：** 9

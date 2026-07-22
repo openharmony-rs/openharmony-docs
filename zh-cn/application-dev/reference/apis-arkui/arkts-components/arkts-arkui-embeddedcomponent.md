@@ -19,11 +19,7 @@ EmbeddedComponent(
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EmbeddedComponentInterface-(
-    loader: import('../api/type: EmbeddedType
-  ): EmbeddedComponentAttribute--><!--Device-EmbeddedComponentInterface-(
-    loader: import('../api/type: EmbeddedType
-  ): EmbeddedComponentAttribute-End-->
+<!--Device-EmbeddedComponentInterface-(    loader: import('../api/type: EmbeddedType  ): EmbeddedComponentAttribute--><!--Device-EmbeddedComponentInterface-(    loader: import('../api/type: EmbeddedType  ): EmbeddedComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,13 +47,7 @@ EmbeddedComponent(
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EmbeddedComponentInterface-(
-    loader: import('../api/type: EmbeddedType,
-    options?: EmbeddedOptions
-  ): EmbeddedComponentAttribute--><!--Device-EmbeddedComponentInterface-(
-    loader: import('../api/type: EmbeddedType,
-    options?: EmbeddedOptions
-  ): EmbeddedComponentAttribute-End-->
+<!--Device-EmbeddedComponentInterface-(    loader: import('../api/type: EmbeddedType,    options?: EmbeddedOptions  ): EmbeddedComponentAttribute--><!--Device-EmbeddedComponentInterface-(    loader: import('../api/type: EmbeddedType,    options?: EmbeddedOptions  ): EmbeddedComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

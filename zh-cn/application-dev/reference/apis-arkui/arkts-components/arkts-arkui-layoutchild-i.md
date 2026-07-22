@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="layout"></a>
 ## layout
 
 ```TypeScript
@@ -39,7 +38,6 @@ layout(childLayoutInfo: LayoutInfo)
 | --- | --- | --- | --- |
 | childLayoutInfo | [LayoutInfo](arkts-arkui-layoutinfo-i.md) | 是 |  |
 
-<a id="measure"></a>
 ## measure
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { appMemoryOptimizer } from '@kit.AbilityKit';
 ```
 
-<a id="evictfilepages"></a>
 ## evictFilePages
 
 ```TypeScript

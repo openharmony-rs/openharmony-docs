@@ -8,7 +8,6 @@ TextContentControllerBase
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="addtext"></a>
 ## addText
 
 ```TypeScript
@@ -40,7 +39,6 @@ Add a text.
 | --- | --- |
 | number | caret index |
 
-<a id="clearpreviewtext"></a>
 ## clearPreviewText
 
 ```TypeScript
@@ -59,7 +57,6 @@ Clear the content of preview.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="deletebackward"></a>
 ## deleteBackward
 
 ```TypeScript
@@ -78,7 +75,6 @@ deleteBackward(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="deletetext"></a>
 ## deleteText
 
 ```TypeScript
@@ -103,7 +99,6 @@ Delete text in TextRange.
 | --- | --- | --- | --- |
 | range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | range for deleting. |
 
-<a id="getcaretoffset"></a>
 ## getCaretOffset
 
 ```TypeScript
@@ -130,7 +125,6 @@ Get the index and relative position of the CaretOffset.
 | --- | --- |
 | [CaretOffset](arkts-arkui-caretoffset-i.md) | index and relative position of the CaretOffset. |
 
-<a id="getselection"></a>
 ## getSelection
 
 ```TypeScript
@@ -155,7 +149,6 @@ Gets the selected range of text content.
 | --- | --- |
 | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | range for selecting. |
 
-<a id="gettextcontentlinecount"></a>
 ## getTextContentLineCount
 
 ```TypeScript
@@ -180,7 +173,6 @@ Get the lines number of the text content.The getTextContentLineCount type is use
 | --- | --- |
 | number | Text content line count |
 
-<a id="gettextcontentrect"></a>
 ## getTextContentRect
 
 ```TypeScript
@@ -207,7 +199,6 @@ Get the start and end positions of the text content.
 | --- | --- |
 | [RectResult](arkts-arkui-rectresult-i.md) | Text content rect.The unit of the return value is pixel. |
 
-<a id="scrolltovisible"></a>
 ## scrollToVisible
 
 ```TypeScript
@@ -232,7 +223,6 @@ scrollToVisible(range?: TextRange): void
 | --- | --- | --- | --- |
 | range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | 可见区范围。若该参数非法，则本方法不会生效。 |
 
-<a id="setstyledplaceholder"></a>
 ## setStyledPlaceholder
 
 ```TypeScript

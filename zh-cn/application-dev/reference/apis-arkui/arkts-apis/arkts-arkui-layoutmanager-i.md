@@ -1,7 +1,6 @@
 # LayoutManager
 
 布局管理器对象。
-
 > **说明：**  
 >  
 > 文本内容变更后，需等待布局完成才可获取到最新的布局信息。
@@ -12,7 +11,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getcharacterpositionatcoordinate"></a>
 ## getCharacterPositionAtCoordinate
 
 ```TypeScript
@@ -35,8 +33,8 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br/>单位：[px](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
-| y | number | 是 | 相对于组件的纵坐标。<br/>单位：[px](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| x | number | 是 | 相对于组件的横坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| y | number | 是 | 相对于组件的纵坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
@@ -44,7 +42,6 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) | Character position. Returns **undefined** when [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component. |
 
-<a id="getcharacterrangeforglyphrange"></a>
 ## getCharacterRangeForGlyphRange
 
 ```TypeScript
@@ -75,7 +72,6 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefi
 | --- | --- |
 | Array&lt;TextRange&gt; | Contains two elements: the first is the character range, and the second is the actual glyph range. When the returned range is invalid, the element in the range is **-1**. Returns **undefined** when [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component. |
 
-<a id="getglyphpositionatcoordinate"></a>
 ## getGlyphPositionAtCoordinate
 
 ```TypeScript
@@ -98,8 +94,8 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br/>单位：[px](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
-| y | number | 是 | 相对于组件的纵坐标。<br/>单位：[px](docroot://reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| x | number | 是 | 相对于组件的横坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| y | number | 是 | 相对于组件的纵坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
@@ -107,7 +103,6 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) | 字形位置信息。 |
 
-<a id="getglyphrangeforcharacterrange"></a>
 ## getGlyphRangeForCharacterRange
 
 ```TypeScript
@@ -138,7 +133,6 @@ getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefin
 | --- | --- |
 | Array&lt;TextRange&gt; | Contains two elements: the first is the glyph range, and the second is the actual character range. When the returned range is invalid, the element in the range is **-1**. Returns **undefined** when [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component. |
 
-<a id="getlinecount"></a>
 ## getLineCount
 
 ```TypeScript
@@ -163,7 +157,6 @@ getLineCount(): number
 | --- | --- |
 | number | 组件内容的总行数。 |
 
-<a id="getlinemetrics"></a>
 ## getLineMetrics
 
 ```TypeScript
@@ -194,7 +187,6 @@ getLineMetrics(lineNumber: number): LineMetrics
 | --- | --- |
 | [LineMetrics](arkts-arkui-linemetrics-t.md) | 行信息、文本样式信息、以及字体属性信息。<br/>当行号小于0或超出实际行，返回无效值。 |
 
-<a id="getrectsforrange"></a>
 ## getRectsForRange
 
 ```TypeScript

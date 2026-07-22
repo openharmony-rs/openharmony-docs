@@ -14,7 +14,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -38,7 +37,6 @@ let type = new util.types();
 
 ```
 
-<a id="isanyarraybuffer"></a>
 ## isAnyArrayBuffer
 
 ```TypeScript
@@ -77,7 +75,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isargumentsobject"></a>
 ## isArgumentsObject
 
 ```TypeScript
@@ -119,7 +116,6 @@ let f = foo();
 
 ```
 
-<a id="isarraybuffer"></a>
 ## isArrayBuffer
 
 ```TypeScript
@@ -158,7 +154,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isarraybufferview"></a>
 ## isArrayBufferView
 
 ```TypeScript
@@ -197,7 +192,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isasyncfunction"></a>
 ## isAsyncFunction
 
 ```TypeScript
@@ -268,7 +262,6 @@ console.info("result = " + result2);
 
 ```
 
-<a id="isbigint64array"></a>
 ## isBigInt64Array
 
 ```TypeScript
@@ -307,7 +300,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isbiguint64array"></a>
 ## isBigUint64Array
 
 ```TypeScript
@@ -346,7 +338,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isbooleanobject"></a>
 ## isBooleanObject
 
 ```TypeScript
@@ -354,7 +345,6 @@ isBooleanObject(value: Object): boolean
 ```
 
 判断入参是否为 Boolean 类型。
-
 > **NOTE**  
 >  
 > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
@@ -391,7 +381,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isboxedprimitive"></a>
 ## isBoxedPrimitive
 
 ```TypeScript
@@ -399,7 +388,6 @@ isBoxedPrimitive(value: Object): boolean
 ```
 
 判断入参是否为 Boolean、Number、String 或 Symbol 类型。
-
 > **NOTE**  
 >  
 > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
@@ -436,7 +424,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isdataview"></a>
 ## isDataView
 
 ```TypeScript
@@ -476,7 +463,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isdate"></a>
 ## isDate
 
 ```TypeScript
@@ -515,7 +501,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isexternal"></a>
 ## isExternal
 
 ```TypeScript
@@ -594,7 +579,6 @@ console.info("result01 = " + result01);
 
 ```
 
-<a id="isfloat32array"></a>
 ## isFloat32Array
 
 ```TypeScript
@@ -633,7 +617,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isfloat64array"></a>
 ## isFloat64Array
 
 ```TypeScript
@@ -672,7 +655,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isgeneratorfunction"></a>
 ## isGeneratorFunction
 
 ```TypeScript
@@ -741,7 +723,6 @@ console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : "
 
 ```
 
-<a id="isgeneratorobject"></a>
 ## isGeneratorObject
 
 ```TypeScript
@@ -789,7 +770,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isint16array"></a>
 ## isInt16Array
 
 ```TypeScript
@@ -828,7 +808,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isint32array"></a>
 ## isInt32Array
 
 ```TypeScript
@@ -867,7 +846,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isint8array"></a>
 ## isInt8Array
 
 ```TypeScript
@@ -906,7 +884,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="ismap"></a>
 ## isMap
 
 ```TypeScript
@@ -945,7 +922,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="ismapiterator"></a>
 ## isMapIterator
 
 ```TypeScript
@@ -985,7 +961,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="ismodulenamespaceobject"></a>
 ## isModuleNamespaceObject
 
 ```TypeScript
@@ -1034,7 +1009,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isnativeerror"></a>
 ## isNativeError
 
 ```TypeScript
@@ -1073,7 +1047,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isnumberobject"></a>
 ## isNumberObject
 
 ```TypeScript
@@ -1081,7 +1054,6 @@ isNumberObject(value: Object): boolean
 ```
 
 判断入参是否为 Number 类型。
-
 > **NOTE**  
 >  
 > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
@@ -1118,7 +1090,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="ispromise"></a>
 ## isPromise
 
 ```TypeScript
@@ -1157,7 +1128,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isproxy"></a>
 ## isProxy
 
 ```TypeScript
@@ -1200,7 +1170,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isregexp"></a>
 ## isRegExp
 
 ```TypeScript
@@ -1239,7 +1208,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isset"></a>
 ## isSet
 
 ```TypeScript
@@ -1279,7 +1247,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="issetiterator"></a>
 ## isSetIterator
 
 ```TypeScript
@@ -1319,7 +1286,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="issharedarraybuffer"></a>
 ## isSharedArrayBuffer
 
 ```TypeScript
@@ -1358,7 +1324,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isstringobject"></a>
 ## isStringObject
 
 ```TypeScript
@@ -1366,7 +1331,6 @@ isStringObject(value: Object): boolean
 ```
 
 判断入参是否为字符串对象。
-
 > **NOTE**  
 >  
 > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
@@ -1403,7 +1367,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="issymbolobject"></a>
 ## isSymbolObject
 
 ```TypeScript
@@ -1411,7 +1374,6 @@ isSymbolObject(value: Object): boolean
 ```
 
 判断入参是否为 symbol 对象。
-
 > **NOTE**  
 >  
 > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
@@ -1456,7 +1418,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="istypedarray"></a>
 ## isTypedArray
 
 ```TypeScript
@@ -1495,7 +1456,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isuint16array"></a>
 ## isUint16Array
 
 ```TypeScript
@@ -1534,7 +1494,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isuint32array"></a>
 ## isUint32Array
 
 ```TypeScript
@@ -1573,7 +1532,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isuint8array"></a>
 ## isUint8Array
 
 ```TypeScript
@@ -1612,7 +1570,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isuint8clampedarray"></a>
 ## isUint8ClampedArray
 
 ```TypeScript
@@ -1651,7 +1608,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isweakmap"></a>
 ## isWeakMap
 
 ```TypeScript
@@ -1691,7 +1647,6 @@ console.info("result = " + result);
 
 ```
 
-<a id="isweakset"></a>
 ## isWeakSet
 
 ```TypeScript

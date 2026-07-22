@@ -14,7 +14,6 @@ Deque（double ended queue）是基于队列数据结构实现的序列容器，
 import { Deque } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -81,7 +80,6 @@ value:2
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -112,7 +110,6 @@ let deque = new Deque<string | number | boolean | Object>();
 
 ```
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -164,7 +161,6 @@ deque.forEach((value: number, index: number): void => {
 
 ```
 
-<a id="getfirst"></a>
 ## getFirst
 
 ```TypeScript
@@ -209,7 +205,6 @@ console.info("result:", result);  // result: 4
 
 ```
 
-<a id="getlast"></a>
 ## getLast
 
 ```TypeScript
@@ -254,7 +249,6 @@ console.info("result:", result);  // result: 2
 
 ```
 
-<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -302,7 +296,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="insertend"></a>
 ## insertEnd
 
 ```TypeScript
@@ -354,7 +347,6 @@ console.info("result:", deque[0]);  // result: a
 
 ```
 
-<a id="insertfront"></a>
 ## insertFront
 
 ```TypeScript
@@ -406,7 +398,6 @@ console.info("result:", deque[0]);  // result: false
 
 ```
 
-<a id="popfirst"></a>
 ## popFirst
 
 ```TypeScript
@@ -452,7 +443,6 @@ console.info("result:", result);  // result: 4
 
 ```
 
-<a id="poplast"></a>
 ## popLast
 
 ```TypeScript

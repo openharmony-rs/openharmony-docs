@@ -14,7 +14,6 @@ LightWeightMap可用于存储具有关联关系的key-value键值对集合，存
 import { LightWeightMap } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -87,7 +86,6 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -122,7 +120,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -152,7 +149,6 @@ let lightWeightMap = new LightWeightMap<string, number>();
 
 ```
 
-<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -209,7 +205,6 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -265,7 +260,6 @@ for (let i = 0; i < 10; i++) {
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -311,7 +305,6 @@ console.info("result:", result);  // result: 356
 
 ```
 
-<a id="getindexofkey"></a>
 ## getIndexOfKey
 
 ```TypeScript
@@ -357,7 +350,6 @@ console.info("result:", result);  // result: 0
 
 ```
 
-<a id="getindexofvalue"></a>
 ## getIndexOfValue
 
 ```TypeScript
@@ -403,7 +395,6 @@ console.info("result:", result);  // result: 1
 
 ```
 
-<a id="getkeyat"></a>
 ## getKeyAt
 
 ```TypeScript
@@ -450,7 +441,6 @@ console.info("result:", result);  // result: squirrel
 
 ```
 
-<a id="getvalueat"></a>
 ## getValueAt
 
 ```TypeScript
@@ -497,7 +487,6 @@ console.info("result:", result);  // result: 123
 
 ```
 
-<a id="hasall"></a>
 ## hasAll
 
 ```TypeScript
@@ -545,7 +534,6 @@ console.info("result = ", result); // result = true
 
 ```
 
-<a id="haskey"></a>
 ## hasKey
 
 ```TypeScript
@@ -590,7 +578,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="hasvalue"></a>
 ## hasValue
 
 ```TypeScript
@@ -635,7 +622,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="increasecapacityto"></a>
 ## increaseCapacityTo
 
 ```TypeScript
@@ -672,7 +658,6 @@ lightWeightMap.increaseCapacityTo(10);
 
 ```
 
-<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -710,7 +695,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -755,7 +739,6 @@ for (let key of keys) {
 
 ```
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -800,7 +783,6 @@ console.info("result:", result);  // result: 356
 
 ```
 
-<a id="removeat"></a>
 ## removeAt
 
 ```TypeScript
@@ -846,7 +828,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -891,7 +872,6 @@ console.info("result:", result);  // result: squirrel:123
 
 ```
 
-<a id="setall"></a>
 ## setAll
 
 ```TypeScript
@@ -933,7 +913,6 @@ console.info("result:", result);  // result: 356
 
 ```
 
-<a id="setvalueat"></a>
 ## setValueAt
 
 ```TypeScript
@@ -981,7 +960,6 @@ console.info("result:", lightWeightMap.get("squirrel"));  // result: 3546
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -1021,7 +999,6 @@ console.info("result:", result);  // result: sparrow:356,squirrel:123
 
 ```
 
-<a id="values"></a>
 ## values
 
 ```TypeScript

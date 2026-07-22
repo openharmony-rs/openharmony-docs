@@ -128,7 +128,7 @@ icon: ChipV2ImageIconConfig
 
 Chip大小是ChipV2Size.SMALL时，图标尺寸为：{ width: 16, height: 16 }。
 
-Chip大小是ChipV2Size.NORMAL时，图标尺寸为：{ width: 24, height: 24 }。</br> 如果想动态修改图标尺寸，那么必须在引入[ChipGroupV2IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2icongroupsuffix-s.md)时，使用[SymbolGlyphModifier](./arkui/SymbolGlyphModifier:SymbolGlyphModifier)类型。
+Chip大小是ChipV2Size.NORMAL时，图标尺寸为：{ width: 24, height: 24 }。</br> 如果想动态修改图标尺寸，那么必须在引入[ChipGroupV2IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2icongroupsuffix-s.md)时，使用[SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)类型。
 
 **类型：** ChipV2ImageIconConfig
 

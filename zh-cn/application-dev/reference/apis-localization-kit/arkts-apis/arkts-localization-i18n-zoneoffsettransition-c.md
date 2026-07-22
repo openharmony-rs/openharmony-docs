@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="getmilliseconds"></a>
 ## getMilliseconds
 
 ```TypeScript
@@ -35,9 +34,8 @@ public getMilliseconds(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 从1970年1月1日0时0分0秒到时区跳变点之间的毫秒数，例如：1762074000000，单位为毫秒（ms）。如果当前时区[原始偏移量](arkts-localization-i18n-timezone-c.md#getrawoffset-1)保持不变并且不使用夏令时，则返回0。 |
+| number | 从1970年1月1日0时0分0秒到时区跳变点之间的毫秒数，例如：1762074000000，单位为毫秒（ms）。如果当前时区[原始偏移量](arkts-localization-i18n-timezone-c.md#getrawoffset)保持不变并且不使用夏令时，则返回0。 |
 
-<a id="getoffsetafter"></a>
 ## getOffsetAfter
 
 ```TypeScript
@@ -60,7 +58,6 @@ public getOffsetAfter(): number
 | --- | --- |
 | number | 时区跳变后的偏移量，表示跳变后的时间相对于标准时间（协调世界时UTC）的时间差，单位为毫秒（ms）。例如：-28800000表示跳变后的时间比标准时间慢28800000毫秒（8小时）。 |
 
-<a id="getoffsetbefore"></a>
 ## getOffsetBefore
 
 ```TypeScript

@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="show"></a>
 ## show
 
 ```TypeScript
@@ -21,7 +20,7 @@ static show(options?: TimePickerDialogOptions)
 
 showTimePickerDialog需先获取[UIContext](../arkts-apis/arkts-arkui-uicontext.md)实例后再进行调用。
 
-- 从API version 10开始，可以通过使用[UIContext](../arkts-apis/arkts-arkui-uicontext.md)中的[showTimePickerDialog](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtimepickerdialog)来明确UI的执行上下文。
+- 从API version 10开始，可以通过使用[UIContext](../arkts-apis/arkts-arkui-uicontext.md)中的[showTimePickerDialog](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtimepickerdialog)来明确UI的执行上下文。
 
 **起始版本：** 8
 

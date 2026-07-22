@@ -6,7 +6,6 @@
 import { scan } from '@kit.ConnectivityKit';
 ```
 
-<a id="startscan"></a>
 ## startScan
 
 ```TypeScript

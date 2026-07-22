@@ -6,7 +6,6 @@
 import { hichecker } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="removerule"></a>
 ## removeRule
 
 ```TypeScript
@@ -15,7 +14,7 @@ function removeRule(rule: bigint): void
 
 > **˵����**  
 >  
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule-1)�����
+> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule)�����
 
 ɾ��һ�����������ɾ���Ĺ��������������Ч��
 
@@ -23,7 +22,7 @@ function removeRule(rule: bigint): void
 
 **废弃版本：** 9
 
-**替代接口：** [removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule-1)
+**替代接口：** [removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule)
 
 <!--Device-hichecker-function removeRule(rule: bigint): void--><!--Device-hichecker-function removeRule(rule: bigint): void-End-->
 

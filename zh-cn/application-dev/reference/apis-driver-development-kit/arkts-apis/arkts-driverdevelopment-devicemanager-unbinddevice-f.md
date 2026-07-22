@@ -6,7 +6,6 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
-<a id="unbinddevice"></a>
 ## unbindDevice
 
 ```TypeScript
@@ -19,7 +18,7 @@ function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void
 
 **废弃版本：** 19
 
-**替代接口：** [unbindDriverWithDeviceId(deviceId:](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid-1)
+**替代接口：** [unbindDriverWithDeviceId(deviceId:](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid)
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -64,7 +63,6 @@ try {
 ```
 
 
-<a id="unbinddevice-1"></a>
 ## unbindDevice
 
 ```TypeScript
@@ -77,7 +75,7 @@ function unbindDevice(deviceId: number): Promise<number>
 
 **废弃版本：** 19
 
-**替代接口：** [unbindDriverWithDeviceId(deviceId:](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid-1)
+**替代接口：** [unbindDriverWithDeviceId(deviceId:](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid)
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 

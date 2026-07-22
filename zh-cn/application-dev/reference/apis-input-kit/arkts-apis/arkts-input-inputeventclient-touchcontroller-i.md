@@ -16,7 +16,6 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
-<a id="touchdown"></a>
 ## touchDown
 
 ```TypeScript
@@ -110,7 +109,6 @@ struct Index {
 
 ```
 
-<a id="touchmove"></a>
 ## touchMove
 
 ```TypeScript
@@ -153,7 +151,6 @@ touchMove(touch: TouchPoint): Promise<void>
 
 参见[touchDown](#touchdown)示例。
 
-<a id="touchup"></a>
 ## touchUp
 
 ```TypeScript

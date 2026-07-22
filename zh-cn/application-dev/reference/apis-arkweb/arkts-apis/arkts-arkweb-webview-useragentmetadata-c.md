@@ -14,7 +14,6 @@ Holds User-Agent metadata information and uses to generate User-Agent client hin
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="getarchitecture"></a>
 ## getArchitecture
 
 ```TypeScript
@@ -37,7 +36,6 @@ Gets the value for sec-ch-ua-architecture.
 | --- | --- |
 | string | - Returns the value for sec-ch-ua-architecture. |
 
-<a id="getbitness"></a>
 ## getBitness
 
 ```TypeScript
@@ -60,7 +58,6 @@ Gets the value for the sec-ch-ua-bitness.
 | --- | --- |
 | string | - Returns the value for the sec-ch-ua-bitness. |
 
-<a id="getbrandversionlist"></a>
 ## getBrandVersionList
 
 ```TypeScript
@@ -83,7 +80,6 @@ Returns the current list of UserAgentBrandVersion which are used to generate the
 | --- | --- |
 | Array&lt;UserAgentBrandVersion&gt; | - Returns the current list of UserAgentBrandVersion. |
 
-<a id="getformfactors"></a>
 ## getFormFactors
 
 ```TypeScript
@@ -106,7 +102,6 @@ Gets the value for the sec-ch-ua-form-factors.
 | --- | --- |
 | Array&lt;UserAgentFormFactor&gt; | - Returns the form factors. |
 
-<a id="getfullversion"></a>
 ## getFullVersion
 
 ```TypeScript
@@ -129,7 +124,6 @@ Gets the value for the sec-ch-ua-full-version.
 | --- | --- |
 | string | - Returns the value for the sec-ch-ua-full-version. |
 
-<a id="getmobile"></a>
 ## getMobile
 
 ```TypeScript
@@ -152,7 +146,6 @@ Gets the value for the sec-ch-ua-mobile.
 | --- | --- |
 | boolean | - Returns the value for the sec-ch-ua-mobile. |
 
-<a id="getmodel"></a>
 ## getModel
 
 ```TypeScript
@@ -175,7 +168,6 @@ Gets the value for the sec-ch-ua-model.
 | --- | --- |
 | string | - Returns the value for the sec-ch-ua-model. |
 
-<a id="getplatform"></a>
 ## getPlatform
 
 ```TypeScript
@@ -198,7 +190,6 @@ Gets the value for the sec-ch-ua-platform.
 | --- | --- |
 | string | - Returns the value for the sec-ch-ua-platform. |
 
-<a id="getplatformversion"></a>
 ## getPlatformVersion
 
 ```TypeScript
@@ -221,7 +212,6 @@ Gets the value for the sec-ch-ua-platform-version.
 | --- | --- |
 | string | - Returns the value for the sec-ch-ua-platform-version. |
 
-<a id="getwow64"></a>
 ## getWow64
 
 ```TypeScript
@@ -244,7 +234,6 @@ Gets the value for the sec-ch-ua-wow64.
 | --- | --- |
 | boolean | - Returns the value for the sec-ch-ua-wow64. |
 
-<a id="setarchitecture"></a>
 ## setArchitecture
 
 ```TypeScript
@@ -269,7 +258,6 @@ Sets User-Agent metadata architecture.
 | --- | --- | --- | --- |
 | arch | string | 是 | The arch is used to generate User-Agent client hints sec-ch-ua-architecture. |
 
-<a id="setbitness"></a>
 ## setBitness
 
 ```TypeScript
@@ -292,7 +280,6 @@ Sets User-Agent metadata bitness default is "".
 | --- | --- | --- | --- |
 | bitness | string | 是 | The bitness is used to generate User-Agent client hints sec-ch-ua-bitness. |
 
-<a id="setbrandversionlist"></a>
 ## setBrandVersionList
 
 ```TypeScript
@@ -317,7 +304,6 @@ Sets User-Agent metadata brands and their versions.
 | --- | --- | --- | --- |
 | brandVersionList | Array&lt;UserAgentBrandVersion&gt; | 是 | The brandVersionList is used to generate User-Agent client hints sec-ch-ua-full-version-list. |
 
-<a id="setformfactors"></a>
 ## setFormFactors
 
 ```TypeScript
@@ -342,7 +328,6 @@ Sets User-Agent metadata form factors.
 | --- | --- | --- | --- |
 | formFactors | Array&lt;UserAgentFormFactor&gt; | 是 | The formFactors is used to generate User-Agent client hints sec-ch-ua-form-factors. |
 
-<a id="setfullversion"></a>
 ## setFullVersion
 
 ```TypeScript
@@ -367,7 +352,6 @@ Sets User-Agent metadata full version.
 | --- | --- | --- | --- |
 | fullVersion | string | 是 | The fullVersion is used to generate User-Agent client hints sec-ch-ua-full-version. |
 
-<a id="setmobile"></a>
 ## setMobile
 
 ```TypeScript
@@ -390,7 +374,6 @@ Sets User-Agent metadata mobile, default is true.
 | --- | --- | --- | --- |
 | isMobile | boolean | 是 | The isMobile is used to generate User-Agent client hints sec-ch-ua-mobile. |
 
-<a id="setmodel"></a>
 ## setModel
 
 ```TypeScript
@@ -415,7 +398,6 @@ Sets User-Agent metadata model.
 | --- | --- | --- | --- |
 | model | string | 是 | The model is used to generate User-Agent client hints sec-ch-ua-model. |
 
-<a id="setplatform"></a>
 ## setPlatform
 
 ```TypeScript
@@ -440,7 +422,6 @@ Sets User-Agent metadata platform.
 | --- | --- | --- | --- |
 | platform | string | 是 | The platform is used to generate User-Agent client hints sec-ch-ua-platform. |
 
-<a id="setplatformversion"></a>
 ## setPlatformVersion
 
 ```TypeScript
@@ -465,7 +446,6 @@ Sets User-Agent metadata platform version.
 | --- | --- | --- | --- |
 | platformVersion | string | 是 | The platformVersion is used to generate User-Agent client hints sec-ch-ua-platform-version. |
 
-<a id="setwow64"></a>
 ## setWow64
 
 ```TypeScript

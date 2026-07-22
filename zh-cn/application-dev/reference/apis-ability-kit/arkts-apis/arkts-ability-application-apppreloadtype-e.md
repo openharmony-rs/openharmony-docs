@@ -78,7 +78,7 @@ TYPE_CREATE_WINDOW_STAGE = 3
 TYPE_CREATE_BACKGROUND_ABILITY = 4
 ```
 
-进程最终预加载到[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onbackground-1)执行完成阶段。
+进程最终预加载到[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onbackground)执行完成阶段。
 
 **起始版本：** 23
 

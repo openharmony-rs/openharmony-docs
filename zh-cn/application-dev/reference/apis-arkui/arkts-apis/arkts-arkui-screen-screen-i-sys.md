@@ -1,8 +1,8 @@
 # Screen（系统接口）
 
-[物理屏](docroot://displaymanager/display-terminology.md#物理屏)屏幕实例。
+[物理屏](../../../displaymanager/display-terminology.md#物理屏)屏幕实例。
 
-下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens-1)、[createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen-1)中的任一方法获取到Screen实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens)、[createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen)中的任一方法获取到Screen实例，再通过此实例调用对应方法。
 
 **起始版本：** 9
 
@@ -18,7 +18,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="setdensitydpi"></a>
 ## setDensityDpi
 
 ```TypeScript
@@ -93,7 +92,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
-<a id="setdensitydpi-1"></a>
 ## setDensityDpi
 
 ```TypeScript
@@ -170,14 +168,13 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
-<a id="setorientation"></a>
 ## setOrientation
 
 ```TypeScript
 setOrientation(orientation: Orientation, callback: AsyncCallback<void>): void
 ```
 
-设置屏幕方向，使用callback异步回调。当设置的方向符合[应用旋转策略](docroot://quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
+设置屏幕方向，使用callback异步回调。当设置的方向符合[应用旋转策略](../../../quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
 **起始版本：** 9
 
@@ -244,14 +241,13 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
-<a id="setorientation-1"></a>
 ## setOrientation
 
 ```TypeScript
 setOrientation(orientation: Orientation): Promise<void>
 ```
 
-设置屏幕方向，使用Promise异步回调。当设置的方向符合[应用旋转策略](docroot://quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
+设置屏幕方向，使用Promise异步回调。当设置的方向符合[应用旋转策略](../../../quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
 **起始版本：** 9
 
@@ -321,7 +317,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
-<a id="setorientation-2"></a>
 ## setOrientation
 
 ```TypeScript
@@ -391,7 +386,6 @@ screensPromise.then((data: Array<screen.Screen>) => {
 
 ```
 
-<a id="setscreenactivemode"></a>
 ## setScreenActiveMode
 
 ```TypeScript
@@ -466,7 +460,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
-<a id="setscreenactivemode-1"></a>
 ## setScreenActiveMode
 
 ```TypeScript

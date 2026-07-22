@@ -1,6 +1,5 @@
 # lchown
 
-<a id="lchown"></a>
 ## lchown
 
 ```TypeScript
@@ -32,7 +31,6 @@ declare function lchown(path: string, uid: number, gid: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="lchown-1"></a>
 ## lchown
 
 ```TypeScript

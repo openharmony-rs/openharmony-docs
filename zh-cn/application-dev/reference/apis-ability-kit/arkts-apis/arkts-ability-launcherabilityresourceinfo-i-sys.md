@@ -1,7 +1,6 @@
 # LauncherAbilityResourceInfo（系统接口）
 
-应用配置的入口图标和名称信息，可以通过[getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md#getlauncherabilityresourceinfo-1)获取。
-
+应用配置的入口图标和名称信息，可以通过[getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md#getlauncherabilityresourceinfo)获取。
 > **说明：**  
 >  
 > 本模块为系统接口。

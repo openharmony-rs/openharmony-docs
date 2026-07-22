@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getdirection"></a>
 ## getDirection
 
 ```TypeScript
@@ -35,7 +34,6 @@ getDirection(): SwipeDirection
 | --- | --- |
 | [SwipeDirection](arkts-arkui-swipedirection-e.md) | 预设快滑手势识别器触发快滑手势滑动方向。 |
 
-<a id="getvelocitythreshold"></a>
 ## getVelocityThreshold
 
 ```TypeScript

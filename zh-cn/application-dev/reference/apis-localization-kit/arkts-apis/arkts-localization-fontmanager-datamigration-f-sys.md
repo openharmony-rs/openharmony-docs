@@ -6,7 +6,6 @@
 import { fontManager } from '@kit.LocalizationKit';
 ```
 
-<a id="datamigration"></a>
 ## dataMigration
 
 ```TypeScript

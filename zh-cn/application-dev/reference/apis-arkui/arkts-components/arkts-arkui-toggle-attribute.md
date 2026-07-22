@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="contentmodifier"></a>
 ## contentModifier
 
 ```TypeScript
@@ -37,7 +36,6 @@ contentModifier(modifier: ContentModifier<ToggleConfiguration>)
 | --- | --- | --- | --- |
 | modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;ToggleConfiguration&gt; | 是 | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
-<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -62,7 +60,6 @@ onChange(callback: (isOn: boolean) => void)
 | --- | --- | --- | --- |
 | callback | (isOn: boolean) =&gt; void | 是 |  |
 
-<a id="selectedcolor"></a>
 ## selectedColor
 
 ```TypeScript
@@ -87,7 +84,6 @@ selectedColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 组件打开状态的背景颜色。<br/>默认值：<br/>当ToggleType为Switch时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Checkbox时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Button时，默认值为`$r('sys.color.ohos_id_color_emphasize')`混合`$r('sys.float.ohos_id_alpha_highlight_bg')`的透明度。 |
 
-<a id="switchpointcolor"></a>
 ## switchPointColor
 
 ```TypeScript
@@ -110,9 +106,8 @@ switchPointColor(color: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary')<br/>**说明：**<br/>同时设置了[systemMaterial](arkts-arkui-commonmethod-c.md#systemmaterial-1)新材质时，设置此属性后会出现点光源效果，点光源颜色跟随此属性的设置。 |
+| color | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary')<br/>**说明：**<br/>同时设置了[systemMaterial](arkts-arkui-commonmethod-c.md#systemmaterial)新材质时，设置此属性后会出现点光源效果，点光源颜色跟随此属性的设置。 |
 
-<a id="switchstyle"></a>
 ## switchStyle
 
 ```TypeScript

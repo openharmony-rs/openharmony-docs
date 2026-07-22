@@ -28,7 +28,6 @@
 import { update } from '@kit.BasicServicesKit';
 ```
 
-<a id="applynewversion"></a>
 ## applyNewVersion
 
 ```TypeScript
@@ -103,7 +102,6 @@ try {
 
 ```
 
-<a id="applynewversion-1"></a>
 ## applyNewVersion
 
 ```TypeScript
@@ -181,7 +179,6 @@ try {
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -246,7 +243,6 @@ try {
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -316,7 +312,6 @@ try {
 
 ```
 
-<a id="verifyupgradepackage"></a>
 ## verifyUpgradePackage
 
 ```TypeScript
@@ -399,7 +394,6 @@ try {
 
 ```
 
-<a id="verifyupgradepackage-1"></a>
 ## verifyUpgradePackage
 
 ```TypeScript

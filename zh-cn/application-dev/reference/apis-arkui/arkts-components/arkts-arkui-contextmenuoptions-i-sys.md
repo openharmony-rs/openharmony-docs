@@ -24,11 +24,11 @@
 **表3：enableArrow为true且placement未设置或者值为非法值的菜单默认位置**  
 | 接口 | 菜单默认位置 |  
 |------|-------------|  
-| [bindMenu](arkts-arkui-commonmethod-c.md#bindmenu-1) | Placement.BottomLeft |  
-| [bindMenu<sup>11+</sup>](arkts-arkui-commonmethod-c.md#bindmenu-1) | Placement.BottomLeft |  
-| [bindContextMenu<sup>8+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu-1) | Placement.Top |  
-| [bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu-1) | Placement.BottomLeft |  
-| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse-1) | Placement.Top |
+| [bindMenu](arkts-arkui-commonmethod-c.md#bindmenu) | Placement.BottomLeft |  
+| [bindMenu<sup>11+</sup>](arkts-arkui-commonmethod-c.md#bindmenu) | Placement.BottomLeft |  
+| [bindContextMenu<sup>8+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu) | Placement.Top |  
+| [bindContextMenu<sup>12+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenu) | Placement.BottomLeft |  
+| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse) | Placement.Top |
 
 **起始版本：** 10
 
@@ -86,7 +86,7 @@ edgeLightMode?: EdgeLightMode
 systemMaterial?: SystemUiMaterial
 ```
 
-设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor-1)、边框颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor-1)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth-1)、阴影[shadow](arkts-arkui-commonmethod-c.md#shadow-1)，不建议与上述接口一起使用。材质设置为非法值、undefined时，按照不设置系统材质处理。
+设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。材质设置为非法值、undefined时，按照不设置系统材质处理。
 
 默认值： undefined
 

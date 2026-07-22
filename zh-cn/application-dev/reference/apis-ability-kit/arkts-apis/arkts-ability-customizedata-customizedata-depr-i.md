@@ -1,7 +1,6 @@
 # CustomizeData
 
 自定义元数据。
-
 > **说明：**  
 >  
 > 从API version 9开始，该模块不再维护，建议使用[Metadata](arkts-ability-metadata-i.md)替代。

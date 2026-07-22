@@ -16,7 +16,6 @@
 import { DrawableDescriptor, AnimatedDrawableDescriptor, AnimationStopMode, AnimationOptions, AnimationController, DrawableDescriptorLoadedResult, LayeredDrawableDescriptor, PictureDrawableDescriptor, PixelMapDrawableDescriptor, HdrCompositionConfig } from '@kit.ArkUI';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -41,7 +40,6 @@ PixelMapDrawableDescriptor的构造函数。
 | --- | --- | --- | --- |
 | src | image.PixelMap | 否 | PixelMap类型参数，存储 PixelMap 图片数据。 |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="authorizeadmin"></a>
 ## authorizeAdmin
 
 ```TypeScript
@@ -71,7 +70,6 @@ adminManager.authorizeAdmin(wantTemp, bundleName, (err) => {
 ```
 
 
-<a id="authorizeadmin-1"></a>
 ## authorizeAdmin
 
 ```TypeScript

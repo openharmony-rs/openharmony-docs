@@ -6,7 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="getallscreens"></a>
 ## getAllScreens
 
 ```TypeScript
@@ -58,7 +57,6 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 ```
 
 
-<a id="getallscreens-1"></a>
 ## getAllScreens
 
 ```TypeScript

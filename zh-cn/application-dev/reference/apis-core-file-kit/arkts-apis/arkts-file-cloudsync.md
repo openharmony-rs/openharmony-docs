@@ -64,9 +64,9 @@ import { cloudSync } from '@kit.CoreFileKit';
 | [ChangeData](arkts-corefile-cloudsync-changedata-i.md) | 定义变更数据。 |
 | [DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md) | 云文件下载过程。 |
 | [FailedFileInfo](arkts-corefile-cloudsync-failedfileinfo-i.md) | 云文件批量缓存失败列表及失败原因。 |
-| [HistoryVersion](arkts-corefile-cloudsync-historyversion-i.md) | 端云文件历史版本信息，调用端云文件版本管理类[FileVersion](arkts-corefile-cloudsync-fileversion-c.md)的[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist-1)方法时，历史版本列表中的属性。 |
+| [HistoryVersion](arkts-corefile-cloudsync-historyversion-i.md) | 端云文件历史版本信息，调用端云文件版本管理类[FileVersion](arkts-corefile-cloudsync-fileversion-c.md)的[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist)方法时，历史版本列表中的属性。 |
 | [SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md) | 端云同步过程。 |
-| [VersionDownloadProgress](arkts-corefile-cloudsync-versiondownloadprogress-i.md) | 历史版本文件下载状态和进度信息，调用端云文件版本管理类[FileVersion](arkts-corefile-cloudsync-fileversion-c.md)的[downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadhistoryversion-1)方法时，回调函数的入参类型。 |
+| [VersionDownloadProgress](arkts-corefile-cloudsync-versiondownloadprogress-i.md) | 历史版本文件下载状态和进度信息，调用端云文件版本管理类[FileVersion](arkts-corefile-cloudsync-fileversion-c.md)的[downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadhistoryversion)方法时，回调函数的入参类型。 |
 
 <!--Del-->
 ### 接口（系统接口）

@@ -6,7 +6,6 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
-<a id="createtouchcontroller"></a>
 ## createTouchController
 
 ```TypeScript

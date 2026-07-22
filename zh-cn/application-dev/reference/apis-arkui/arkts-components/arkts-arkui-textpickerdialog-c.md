@@ -8,7 +8,6 @@ A text picker dialog box is a dialog box that allows users to select text from t
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="show"></a>
 ## show
 
 ```TypeScript
@@ -16,13 +15,11 @@ static show(options?: TextPickerDialogOptions)
 ```
 
 定义文本滑动选择器弹窗并弹出。
-
 > **说明：**
 
 showTextPickerDialog需先获取[UIContext](../arkts-apis/arkts-arkui-uicontext.md)实例后再进行调用。
-
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis/arkts-arkui-uicontext.md)中的  
-> [showTextPickerDialog](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtextpickerdialog)  
+> [showTextPickerDialog](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtextpickerdialog)  
 > 来明确UI的执行上下文。
 
 **起始版本：** 8

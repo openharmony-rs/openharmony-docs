@@ -6,7 +6,6 @@
 import { hardwareManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="pausedistributedhardware"></a>
 ## pauseDistributedHardware
 
 ```TypeScript

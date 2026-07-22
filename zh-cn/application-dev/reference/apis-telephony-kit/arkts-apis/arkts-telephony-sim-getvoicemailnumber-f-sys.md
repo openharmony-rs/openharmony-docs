@@ -6,7 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getvoicemailnumber"></a>
 ## getVoiceMailNumber
 
 ```TypeScript
@@ -58,7 +57,6 @@ sim.getVoiceMailNumber(0, (err: BusinessError, data: string) => {
 ```
 
 
-<a id="getvoicemailnumber-1"></a>
 ## getVoiceMailNumber
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # truncateSync
 
-<a id="truncatesync"></a>
 ## truncateSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function truncateSync(path: string, len?: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:truncateSync](arkts-corefile-file-fs-truncatesync-f.md#truncatesync-1)
+**替代接口：** [fs:truncateSync](arkts-corefile-fileio-truncatesync-f.md#truncatesync)
 
 <!--Device-unnamed-declare function truncateSync(path: string, len?: number): void--><!--Device-unnamed-declare function truncateSync(path: string, len?: number): void-End-->
 

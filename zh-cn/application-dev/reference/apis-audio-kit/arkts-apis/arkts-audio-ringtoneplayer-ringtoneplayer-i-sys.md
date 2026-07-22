@@ -1,6 +1,6 @@
 # RingtonePlayer（系统接口）
 
-系统铃声播放器，提供系统铃声的参数设置、参数获取、播放、停止等功能。在调用RingtonePlayer的接口前，需要先通过[getRingtonePlayer](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneplayer-1)创建实例。
+系统铃声播放器，提供系统铃声的参数设置、参数获取、播放、停止等功能。在调用RingtonePlayer的接口前，需要先通过[getRingtonePlayer](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneplayer)创建实例。
 
 **起始版本：** 10
 
@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="configure"></a>
 ## configure
 
 ```TypeScript
@@ -34,7 +33,6 @@ configure(options: RingtoneOptions, callback: AsyncCallback<void>): void
 | options | [RingtoneOptions](arkts-audio-systemsoundmanager-ringtoneoptions-t-sys.md) | 是 | 指定铃声参数。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当配置铃声播放参数成功，err为undefined，否则为错误对象。 |
 
-<a id="configure-1"></a>
 ## configure
 
 ```TypeScript
@@ -63,7 +61,6 @@ configure(options: RingtoneOptions): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="getaudiorendererinfo"></a>
 ## getAudioRendererInfo
 
 ```TypeScript
@@ -86,7 +83,6 @@ getAudioRendererInfo(callback: AsyncCallback<audio.AudioRendererInfo>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;audio.AudioRendererInfo&gt; | 是 | 回调函数。当获取音频渲染器信息成功，err为undefined data为获取到的音频渲染器信息；否则为错误对象。 |
 
-<a id="getaudiorendererinfo-1"></a>
 ## getAudioRendererInfo
 
 ```TypeScript
@@ -109,7 +105,6 @@ getAudioRendererInfo(): Promise<audio.AudioRendererInfo>
 | --- | --- |
 | Promise&lt;audio.AudioRendererInfo&gt; | Promise对象，返回获取的音频渲染器信息。 |
 
-<a id="gettitle"></a>
 ## getTitle
 
 ```TypeScript
@@ -132,7 +127,6 @@ getTitle(callback: AsyncCallback<string>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取铃声标题成功，err为undefined，data为获取到的铃声标题；否则为错误对象。 |
 
-<a id="gettitle-1"></a>
 ## getTitle
 
 ```TypeScript
@@ -155,7 +149,6 @@ getTitle(): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回获取的系统铃声标题。 |
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -185,7 +178,6 @@ off(type: 'audioInterrupt'): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="on"></a>
 ## on('audioInterrupt')
 
 ```TypeScript
@@ -216,7 +208,6 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -239,7 +230,6 @@ release(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当释放铃声播放器成功，err为undefined，否则为错误对象。 |
 
-<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -262,7 +252,6 @@ release(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -285,7 +274,6 @@ start(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当开始播放铃声成功，err为undefined，否则为错误对象。 |
 
-<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -308,7 +296,6 @@ start(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -331,7 +318,6 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止播放铃声成功，err为undefined，否则为错误对象。 |
 
-<a id="stop-1"></a>
 ## stop
 
 ```TypeScript

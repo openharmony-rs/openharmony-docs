@@ -16,7 +16,6 @@
 import { ArcListItemAttribute, ArcList, ArcListItem, ArcListAttribute } from '@kit.ArkUI';
 ```
 
-<a id="cachedcount"></a>
 ## cachedCount
 
 ```TypeScript
@@ -45,7 +44,6 @@ cachedCount(count: Optional<number>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="chainanimation"></a>
 ## chainAnimation
 
 ```TypeScript
@@ -74,7 +72,6 @@ chainAnimation(enable: Optional<boolean>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="childrenmainsize"></a>
 ## childrenMainSize
 
 ```TypeScript
@@ -103,7 +100,6 @@ childrenMainSize(size: Optional<ChildrenMainSize>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="digitalcrownsensitivity"></a>
 ## digitalCrownSensitivity
 
 ```TypeScript
@@ -132,7 +128,6 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcListAttribu
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="enablescrollinteraction"></a>
 ## enableScrollInteraction
 
 ```TypeScript
@@ -161,7 +156,6 @@ enableScrollInteraction(enable: Optional<boolean>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="fadingedge"></a>
 ## fadingEdge
 
 ```TypeScript
@@ -190,7 +184,6 @@ fadingEdge(enable: Optional<boolean>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="flingspeedlimit"></a>
 ## flingSpeedLimit
 
 ```TypeScript
@@ -219,7 +212,6 @@ flingSpeedLimit(speed: Optional<number>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="friction"></a>
 ## friction
 
 ```TypeScript
@@ -248,7 +240,6 @@ friction(friction: Optional<number>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="ondidscroll"></a>
 ## onDidScroll
 
 ```TypeScript
@@ -277,7 +268,6 @@ onDidScroll(handler: Optional<OnScrollCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onreachend"></a>
 ## onReachEnd
 
 ```TypeScript
@@ -306,7 +296,6 @@ onReachEnd(handler: Optional<VoidCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onreachstart"></a>
 ## onReachStart
 
 ```TypeScript
@@ -335,7 +324,6 @@ onReachStart(handler: Optional<VoidCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onscrollindex"></a>
 ## onScrollIndex
 
 ```TypeScript
@@ -364,7 +352,6 @@ onScrollIndex(handler: Optional<ArcScrollIndexHandler>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onscrollstart"></a>
 ## onScrollStart
 
 ```TypeScript
@@ -393,7 +380,6 @@ onScrollStart(handler: Optional<VoidCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onscrollstop"></a>
 ## onScrollStop
 
 ```TypeScript
@@ -422,7 +408,6 @@ onScrollStop(handler: Optional<VoidCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="onwillscroll"></a>
 ## onWillScroll
 
 ```TypeScript
@@ -451,7 +436,6 @@ onWillScroll(handler: Optional<OnWillScrollCallback>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="scrollbar"></a>
 ## scrollBar
 
 ```TypeScript
@@ -480,7 +464,6 @@ scrollBar(status: Optional<BarState>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="scrollbarcolor"></a>
 ## scrollBarColor
 
 ```TypeScript
@@ -509,7 +492,6 @@ scrollBarColor(color: Optional<ColorMetrics>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="scrollbarwidth"></a>
 ## scrollBarWidth
 
 ```TypeScript
@@ -538,7 +520,6 @@ scrollBarWidth(width: Optional<LengthMetrics>): ArcListAttribute
 | --- | --- |
 | [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
-<a id="space"></a>
 ## space
 
 ```TypeScript

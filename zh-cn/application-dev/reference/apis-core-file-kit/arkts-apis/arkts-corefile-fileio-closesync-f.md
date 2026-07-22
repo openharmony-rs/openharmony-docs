@@ -1,6 +1,5 @@
 # closeSync
 
-<a id="closesync"></a>
 ## closeSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function closeSync(fd: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:closeSync](arkts-corefile-file-fs-closesync-f.md#closesync-1)
+**替代接口：** [fs:closeSync](arkts-corefile-fileio-closesync-f.md#closesync)
 
 <!--Device-unnamed-declare function closeSync(fd: number): void--><!--Device-unnamed-declare function closeSync(fd: number): void-End-->
 

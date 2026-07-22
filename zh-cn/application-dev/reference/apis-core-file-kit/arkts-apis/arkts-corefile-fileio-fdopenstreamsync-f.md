@@ -1,6 +1,5 @@
 # fdopenStreamSync
 
-<a id="fdopenstreamsync"></a>
 ## fdopenStreamSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function fdopenStreamSync(fd: number, mode: string): Stream
 
 **废弃版本：** 9
 
-**替代接口：** [fs:fdopenStreamSync](arkts-corefile-file-fs-fdopenstreamsync-f.md#fdopenstreamsync-1)
+**替代接口：** [fs:fdopenStreamSync](arkts-corefile-fileio-fdopenstreamsync-f.md#fdopenstreamsync)
 
 <!--Device-unnamed-declare function fdopenStreamSync(fd: number, mode: string): Stream--><!--Device-unnamed-declare function fdopenStreamSync(fd: number, mode: string): Stream-End-->
 

@@ -1,6 +1,6 @@
 # Environment
 
-Environment具体使用说明，详见[Environment(设备环境查询)](docroot://ui/state-management/arkts-environment.md)
+Environment具体使用说明，详见[Environment(设备环境查询)](../../../ui/state-management/arkts-environment.md)
 
 ## 内置环境变量说明
 
@@ -19,14 +19,13 @@ Environment具体使用说明，详见[Environment(设备环境查询)](docroot:
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="envprop"></a>
 ## EnvProp
 
 ```TypeScript
 static EnvProp<S>(key: string, value: S): boolean
 ```
 
-将[Environment](docroot://ui/state-management/arkts-environment.md)的内置环境变量key存入[AppStorage](docroot://ui/state-management/arkts-appstorage.md)中。如果系统中未查询到Environment环境变量key的值，则使用默认值value，存入成功，返回true。如果AppStorage中已经有对应的key，则返回false。
+将[Environment](../../../ui/state-management/arkts-environment.md)的内置环境变量key存入[AppStorage](../../../ui/state-management/arkts-appstorage.md)中。如果系统中未查询到Environment环境变量key的值，则使用默认值value，存入成功，返回true。如果AppStorage中已经有对应的key，则返回false。
 
 所以建议在程序启动的时候调用该接口。
 
@@ -36,7 +35,7 @@ static EnvProp<S>(key: string, value: S): boolean
 
 **废弃版本：** 10
 
-**替代接口：** [envProp](arkts-arkui-environment-c.md#envprop-1)
+**替代接口：** [envProp](arkts-arkui-environment-c.md#envprop)
 
 <!--Device-Environment-static EnvProp<S>(key: string, value: S): boolean--><!--Device-Environment-static EnvProp<S>(key: string, value: S): boolean-End-->
 
@@ -55,7 +54,6 @@ static EnvProp<S>(key: string, value: S): boolean
 | --- | --- |
 | boolean | 如果key对应的属性在AppStorage中存在，则返回false。不存在则在AppStorage中用value作为默认值创建key对应的属性，返回true。 |
 
-<a id="envprops"></a>
 ## EnvProps
 
 ```TypeScript
@@ -67,25 +65,15 @@ static EnvProps(
   ): void
 ```
 
-和[EnvProp](arkts-arkui-environment-c.md#envprop-1)类似，不同点在于参数为数组，可以一次性初始化多个数据。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](docroot://ui/state-management/arkts-appstorage.md)中。
+和[EnvProp](arkts-arkui-environment-c.md#envprop)类似，不同点在于参数为数组，可以一次性初始化多个数据。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management/arkts-appstorage.md)中。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [envProps](arkts-arkui-environment-c.md#envprops-1)
+**替代接口：** [envProps](arkts-arkui-environment-c.md#envprops)
 
-<!--Device-Environment-static EnvProps(
-    props: {
-      key: string;
-      defaultValue: any;
-    }[],
-  ): void--><!--Device-Environment-static EnvProps(
-    props: {
-      key: string;
-      defaultValue: any;
-    }[],
-  ): void-End-->
+<!--Device-Environment-static EnvProps(    props: {      key: string;      defaultValue: any;    }[],  ): void--><!--Device-Environment-static EnvProps(    props: {      key: string;      defaultValue: any;    }[],  ): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +83,6 @@ static EnvProps(
 | --- | --- | --- | --- |
 | props | {       key: string;       defaultValue: any;     }[] | 是 |  |
 
-<a id="keys"></a>
 ## Keys
 
 ```TypeScript
@@ -108,7 +95,7 @@ static Keys(): Array<string>
 
 **废弃版本：** 10
 
-**替代接口：** [keys](arkts-arkui-environment-c.md#keys-1)
+**替代接口：** [keys](arkts-arkui-environment-c.md#keys)
 
 <!--Device-Environment-static Keys(): Array<string>--><!--Device-Environment-static Keys(): Array<string>-End-->
 
@@ -120,14 +107,13 @@ static Keys(): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | 返回关联的系统项数组。 |
 
-<a id="envprop"></a>
 ## envProp
 
 ```TypeScript
 static envProp<S>(key: string, value: S): boolean
 ```
 
-将[Environment](docroot://ui/state-management/arkts-environment.md)的内置环境变量key存入[AppStorage](docroot://ui/state-management/arkts-appstorage.md)中。如果系统中未查询到Environment环境变量key的值，则使用默认值value，存入成功，返回true。如果AppStorage中已经有对应的key，则返回false。
+将[Environment](../../../ui/state-management/arkts-environment.md)的内置环境变量key存入[AppStorage](../../../ui/state-management/arkts-appstorage.md)中。如果系统中未查询到Environment环境变量key的值，则使用默认值value，存入成功，返回true。如果AppStorage中已经有对应的key，则返回false。
 
 所以建议在程序启动的时候调用该接口。
 
@@ -154,14 +140,13 @@ static envProp<S>(key: string, value: S): boolean
 | --- | --- |
 | boolean | 如果key对应的属性在AppStorage中存在，则返回false。不存在则在AppStorage中用value作为默认值创建key对应的属性，返回true。 |
 
-<a id="envprops"></a>
 ## envProps
 
 ```TypeScript
 static envProps(props: EnvPropsOptions[]): void
 ```
 
-和[envProp](arkts-arkui-environment-c.md#envprop-1)类似，不同点在于参数为数组，可以一次性初始化多个数据。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](docroot://ui/state-management/arkts-appstorage.md)中。
+和[envProp](arkts-arkui-environment-c.md#envprop)类似，不同点在于参数为数组，可以一次性初始化多个数据。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management/arkts-appstorage.md)中。
 
 **起始版本：** 10
 
@@ -177,7 +162,6 @@ static envProps(props: EnvPropsOptions[]): void
 | --- | --- | --- | --- |
 | props | [EnvPropsOptions](arkts-arkui-envpropsoptions-i.md)[] | 是 | 系统环境变量和默认值的键值对的数组。 |
 
-<a id="keys"></a>
 ## keys
 
 ```TypeScript

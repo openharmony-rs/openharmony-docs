@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="querytrafficstats"></a>
 ## queryTrafficStats
 
 ```TypeScript
@@ -20,7 +19,6 @@ function queryTrafficStats(
 ```
 
 查询当前用户下指定应用在特定时间段内使用流量情况。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 传入的网络类型（networkInfo.type）仅支持蜂窝网络（connection.NetBearType.BEARER_CELLULAR）和Wi-Fi网络（  
@@ -38,19 +36,7 @@ function queryTrafficStats(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-applicationManager-function queryTrafficStats(
-    admin: Want,
-    bundleName: string,
-    appIndex: number,
-    accountId: number,
-    networkInfo: statistics.NetworkInfo
-  ): Promise<statistics.NetStatsInfo>--><!--Device-applicationManager-function queryTrafficStats(
-    admin: Want,
-    bundleName: string,
-    appIndex: number,
-    accountId: number,
-    networkInfo: statistics.NetworkInfo
-  ): Promise<statistics.NetStatsInfo>-End-->
+<!--Device-applicationManager-function queryTrafficStats(    admin: Want,    bundleName: string,    appIndex: number,    accountId: number,    networkInfo: statistics.NetworkInfo  ): Promise<statistics.NetStatsInfo>--><!--Device-applicationManager-function queryTrafficStats(    admin: Want,    bundleName: string,    appIndex: number,    accountId: number,    networkInfo: statistics.NetworkInfo  ): Promise<statistics.NetStatsInfo>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -60,8 +46,8 @@ function queryTrafficStats(
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 应用的包名。 |
-| appIndex | number | 是 | 应用分身索引<br>取值应为≥0的整数。   - 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getappcloneidentity-f.md#getappcloneidentity-1)等接口来获取。 |
-| accountId | number | 是 | 用户ID<br>取值应为≥0的整数。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| appIndex | number | 是 | 应用分身索引<br>取值应为≥0的整数。   - 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getappcloneidentity-f.md#getappcloneidentity)等接口来获取。 |
+| accountId | number | 是 | 用户ID<br>取值应为≥0的整数。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 | networkInfo | statistics.NetworkInfo | 是 | 网络信息。 |
 
 **返回值：**

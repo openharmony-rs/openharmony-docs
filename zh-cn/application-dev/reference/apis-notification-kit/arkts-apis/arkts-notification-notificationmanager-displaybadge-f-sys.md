@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="displaybadge"></a>
 ## displayBadge
 
 ```TypeScript
@@ -66,7 +65,6 @@ notificationManager.displayBadge(bundle, false, displayBadgeCallback);
 ```
 
 
-<a id="displaybadge-1"></a>
 ## displayBadge
 
 ```TypeScript

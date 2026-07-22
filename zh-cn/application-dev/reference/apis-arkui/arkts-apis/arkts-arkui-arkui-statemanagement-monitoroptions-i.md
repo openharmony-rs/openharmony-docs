@@ -1,6 +1,6 @@
 # MonitorOptions
 
-[addMonitor](arkts-arkui-arkui-statemanagement-uiutils-c.md#addmonitor-1)的可选参数，用于配置回调类型以及是否使能通配符能力。
+[addMonitor](arkts-arkui-arkui-statemanagement-uiutils-c.md#addmonitor)的可选参数，用于配置回调类型以及是否使能通配符能力。
 
 **起始版本：** 20
 

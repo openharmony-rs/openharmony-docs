@@ -1,8 +1,8 @@
 # TimePicker属性/事件
 
-除支持[通用属性](./common)外，还支持以下属性：
+除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下属性：
 
-除支持[通用事件](./common)外，还支持以下事件：
+除支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下事件：
 
 **继承/实现关系：** TimePickerAttribute extends [CommonMethod<TimePickerAttribute>](CommonMethod<TimePickerAttribute>)
 
@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="datetimeoptions"></a>
 ## dateTimeOptions
 
 ```TypeScript
@@ -37,7 +36,6 @@ dateTimeOptions(value: DateTimeOptions)
 | --- | --- | --- | --- |
 | value | [DateTimeOptions](../../apis-localization-kit/arkts-apis/arkts-localization-intl-datetimeoptions-i.md) | 是 | 设置时分秒是否显示前导0。默认值：<br/>hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；12小时制默认为"numeric"，即没有前导0。minute: 默认为"2-digit"，设置minute是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。second: 默认为"2-digit"，设置second是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。当hour、minute、second的值设置为undefined时，显示效果与其默认值规则一致。 |
 
-<a id="datetimeoptions-1"></a>
 ## dateTimeOptions
 
 ```TypeScript
@@ -62,7 +60,6 @@ dateTimeOptions(timeFormat: Optional<DateTimeOptions>)
 | --- | --- | --- | --- |
 | timeFormat | [Optional](arkts-arkui-optional-t.md)&lt;DateTimeOptions&gt; | 是 | 设置时分秒是否显示前导0，目前只支持设置hour、minute和second参数。默认值：<br/>hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；12小时制默认为"numeric"，即没有前导0。minute: 默认为"2-digit"，设置minute是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。second: 默认为"2-digit"，设置second是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。<br/> 当hour、minute、second的值设置为undefined时，显示效果与其默认值规则一致。 |
 
-<a id="digitalcrownsensitivity"></a>
 ## digitalCrownSensitivity
 
 ```TypeScript
@@ -87,7 +84,6 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>)
 | --- | --- | --- | --- |
 | sensitivity | [Optional](arkts-arkui-optional-t.md)&lt;CrownSensitivity&gt; | 是 | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，表示响应速度适中。 |
 
-<a id="disappeartextstyle"></a>
 ## disappearTextStyle
 
 ```TypeScript
@@ -112,7 +108,6 @@ disappearTextStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-pickertextstyle-i.md) | 是 | 边缘项的文本颜色、字号和字体粗细。默认值：{ color: '#ff182431', font: { size: '14fp', weight: FontWeight.Regular } } |
 
-<a id="disappeartextstyle-1"></a>
 ## disappearTextStyle
 
 ```TypeScript
@@ -137,7 +132,6 @@ disappearTextStyle(style: Optional<PickerTextStyle>)
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-optional-t.md)&lt;PickerTextStyle&gt; | 是 | 边缘项的文本颜色、字号、字体粗细。默认值：{ color: '#ff182431', font: { size: '14fp', weight: FontWeight.Regular } }当style的值为undefined时，使用默认值。 |
 
-<a id="enablecascade"></a>
 ## enableCascade
 
 ```TypeScript
@@ -162,7 +156,6 @@ enableCascade(enabled: boolean)
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。   - true：自动切换。- false：不自动切换。默认值：false当enabled设置为true时，仅在loop参数同时为true时生效。 |
 
-<a id="enablehapticfeedback"></a>
 ## enableHapticFeedback
 
 ```TypeScript
@@ -172,10 +165,9 @@ enableHapticFeedback(enable: boolean)
 设置是否支持触控反馈。
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限。
-
 > **说明：**  
 >  
-> 从API version 18开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 从API version 18开始，该接口支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -193,7 +185,6 @@ enableHapticFeedback(enable: boolean)
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 设置是否开启触控反馈。- true：开启触控反馈。- false：不开启触控反馈。默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 |
 
-<a id="enablehapticfeedback-1"></a>
 ## enableHapticFeedback
 
 ```TypeScript
@@ -220,7 +211,6 @@ enableHapticFeedback(enable: Optional<boolean>)
 | --- | --- | --- | --- |
 | enable | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 设置是否开启触控反馈。- true：开启触控反馈。- false：不开启触控反馈。默认值：true<br/>当enable的值为undefined时，使用默认值。设置为true后，其生效情况取决于系统的硬件是否支持。 |
 
-<a id="loop"></a>
 ## loop
 
 ```TypeScript
@@ -245,7 +235,6 @@ loop(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否启用循环模式。<br/>- true：启用循环模式。<br/>- false：不启用循环模式。<br/>默认值：true |
 
-<a id="loop-1"></a>
 ## loop
 
 ```TypeScript
@@ -270,7 +259,6 @@ loop(isLoop: Optional<boolean>)
 | --- | --- | --- | --- |
 | isLoop | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否启用循环模式。- true：启用循环模式。- false：不启用循环模式。默认值：true当isLoop的值为undefined时，使用默认值。 |
 
-<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -295,7 +283,6 @@ onChange(callback: (value: TimePickerResult) => void)
 | --- | --- | --- | --- |
 | callback | (value: TimePickerResult) =&gt; void | 是 | 24小时制时间。 |
 
-<a id="onchange-1"></a>
 ## onChange
 
 ```TypeScript
@@ -322,7 +309,6 @@ onChange(callback: Optional<OnTimePickerChangeCallback>)
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-optional-t.md)&lt;OnTimePickerChangeCallback&gt; | 是 | 选择时间时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
-<a id="onenterselectedarea"></a>
 ## onEnterSelectedArea
 
 ```TypeScript
@@ -332,10 +318,9 @@ onEnterSelectedArea(callback: Callback<TimePickerResult>)
 滑动TimePicker过程中，选项进入分割线区域内，触发该回调。
 
 与[onChange](TimePickerAttribute#onChange(callback: Optional<OnTimePickerChangeCallback>))事件的差别在于，该事件的触发时机早于[onChange](TimePickerAttribute#onChange(callback: Optional<OnTimePickerChangeCallback>))事件，当当前滑动列滑动距离超过选中项高度的一半时，选项此时已经进入分割线区域内，会触发该事件。当[enableCascade](TimePickerAttribute#enableCascade)设置为true时，由于上午/下午列与小时列存在联动关系，不建议使用该回调。该回调标识的是滑动过程中选项进入分割线区域内的节点，而联动变化的选项并不涉及滑动，因此，回调的返回值中，仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
-
 > **说明：**  
 >  
-> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 18
 
@@ -353,7 +338,6 @@ onEnterSelectedArea(callback: Callback<TimePickerResult>)
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;TimePickerResult&gt; | 是 | 滑动TimePicker过程中，选项进入分割线区域时触发的回调。 |
 
-<a id="selectedtextstyle"></a>
 ## selectedTextStyle
 
 ```TypeScript
@@ -378,7 +362,6 @@ selectedTextStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-pickertextstyle-i.md) | 是 | 选中项的文本颜色、字号、字体粗细。默认值：{ color: '#ff007dff', font: { size: '20fp', weight: FontWeight.Medium } } |
 
-<a id="selectedtextstyle-1"></a>
 ## selectedTextStyle
 
 ```TypeScript
@@ -403,7 +386,6 @@ selectedTextStyle(style: Optional<PickerTextStyle>)
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-optional-t.md)&lt;PickerTextStyle&gt; | 是 | 选中项的文本颜色、字号、字体粗细。默认值：{ color: '#ff007dff', font: { size: '20fp', weight: FontWeight.Medium } }当style的值为undefined时，使用默认值。 |
 
-<a id="textstyle"></a>
 ## textStyle
 
 ```TypeScript
@@ -428,7 +410,6 @@ textStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-pickertextstyle-i.md) | 是 | 待选项的文本颜色、字号、字体粗细。默认值：{ color: '#ff182431', font: { size: '16fp', weight: FontWeight.Regular } } |
 
-<a id="textstyle-1"></a>
 ## textStyle
 
 ```TypeScript
@@ -453,7 +434,6 @@ textStyle(style: Optional<PickerTextStyle>)
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-optional-t.md)&lt;PickerTextStyle&gt; | 是 | 待选项的文本颜色、字号、字体粗细。默认值：{ color: '#ff182431', font: { size: '16fp', weight: FontWeight.Regular } }当style的值为undefined时，使用默认值。 |
 
-<a id="usemilitarytime"></a>
 ## useMilitaryTime
 
 ```TypeScript
@@ -476,7 +456,6 @@ useMilitaryTime(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 时间是否以24小时制展示。<br/>- true：时间以24小时制展示。<br/>- false：时间以12小时制展示。 |
 
-<a id="usemilitarytime-1"></a>
 ## useMilitaryTime
 
 ```TypeScript

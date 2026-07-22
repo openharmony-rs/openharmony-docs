@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="equals"></a>
 ## equals
 
 ```TypeScript
@@ -39,7 +38,6 @@ equals(id: TextMenuItemId): boolean
 | --- | --- |
 | boolean | 两个TextMenuItemId是否相等。<br/>true表示相等，false表示不相等。 |
 
-<a id="of"></a>
 ## of
 
 ```TypeScript

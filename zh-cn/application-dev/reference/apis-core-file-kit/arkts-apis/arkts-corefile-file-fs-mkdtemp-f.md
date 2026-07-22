@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="mkdtemp"></a>
 ## mkdtemp
 
 ```TypeScript
@@ -54,7 +53,6 @@ declare function mkdtemp(prefix: string): Promise<string>
 | 13900042 | Unknown error |
 
 
-<a id="mkdtemp-1"></a>
 ## mkdtemp
 
 ```TypeScript

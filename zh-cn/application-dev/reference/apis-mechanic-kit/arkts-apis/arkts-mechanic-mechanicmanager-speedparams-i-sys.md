@@ -1,6 +1,6 @@
 # SpeedParams（系统接口）
 
-Parameters for moving or turning at a speed.
+速度控制参数
 
 **起始版本：** 26.0.0
 
@@ -22,7 +22,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 angle: number
 ```
 
-Turning angle, unit degree.
+转动角度。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ Turning angle, unit degree.
 mode?: MarchingMode
 ```
 
-Movement mode.
+行进方式。
 
 **类型：** MarchingMode
 
@@ -58,7 +58,7 @@ Movement mode.
 speed: number
 ```
 
-Turning or moving speed, unit cm.The value should be an integer.
+转动或移动速度。取值限定为整数。
 
 **类型：** number
 

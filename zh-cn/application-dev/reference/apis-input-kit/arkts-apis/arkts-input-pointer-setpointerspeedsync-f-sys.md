@@ -6,7 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="setpointerspeedsync"></a>
 ## setPointerSpeedSync
 
 ```TypeScript

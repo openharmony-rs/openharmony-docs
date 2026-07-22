@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -23,15 +22,7 @@ declare function write(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function write(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options?: WriteOptions
-): Promise<number>--><!--Device-unnamed-declare function write(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options?: WriteOptions
-): Promise<number>-End-->
+<!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options?: WriteOptions): Promise<number>--><!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options?: WriteOptions): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -67,7 +58,6 @@ declare function write(
 | 13900042 | Unknown error |
 
 
-<a id="write-1"></a>
 ## write
 
 ```TypeScript
@@ -110,7 +100,6 @@ declare function write(fd: number, buffer: ArrayBuffer | string, callback: Async
 | 13900042 | Unknown error |
 
 
-<a id="write-2"></a>
 ## write
 
 ```TypeScript
@@ -128,17 +117,7 @@ declare function write(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function write(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options: WriteOptions,
-  callback: AsyncCallback<number>
-): void--><!--Device-unnamed-declare function write(
-  fd: number,
-  buffer: ArrayBuffer | string,
-  options: WriteOptions,
-  callback: AsyncCallback<number>
-): void-End-->
+<!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options: WriteOptions,  callback: AsyncCallback<number>): void--><!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options: WriteOptions,  callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

@@ -1,6 +1,6 @@
 # BatchResult
 
-[batchAdd](arkts-assetstore-asset-batchadd-f.md#batchadd-1)、[batchUpdate](arkts-assetstore-asset-batchupdate-f.md#batchupdate-1)和[batchRemove](arkts-assetstore-asset-batchremove-f.md#batchremove-1)批量操作的结果。
+[batchAdd](arkts-assetstore-asset-batchadd-f.md#batchadd)、[batchUpdate](arkts-assetstore-asset-batchupdate-f.md#batchupdate)和[batchRemove](arkts-assetstore-asset-batchremove-f.md#batchremove)批量操作的结果。
 
 **起始版本：** 26.0.0
 

@@ -9,10 +9,10 @@
 - [FontDescriptor](arkts-arkgraphics2d-text-fontdescriptor-i.md)：字体描述符信息。  
 - [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md)：段落样式，控制整个段落的断行策略、断词策略等属性。  
 - [ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)：段落生成器，控制生成不同的段落对象。  
-- [Paragraph](arkts-arkgraphics2d-text-paragraph-c.md)：段落，由ParagraphBuilder类调用[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build-1)接口构建而成。  
-- [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)：行排版器，由ParagraphBuilder类调用[buildLineTypeset()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#buildlinetypeset-1)接口构建而成。  
-- [TextLine](arkts-arkgraphics2d-text-textline-c.md)：以行为单位的段落文本的载体，由Paragraph类调用[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines-1)接口获取。  
-- [Run](arkts-arkgraphics2d-text-runmetrics-i.md)：文本排版单元，由TextLine类调用[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns-1)接口获取。
+- [Paragraph](arkts-arkgraphics2d-text-paragraph-c.md)：段落，由ParagraphBuilder类调用[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build)接口构建而成。  
+- [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)：行排版器，由ParagraphBuilder类调用[buildLineTypeset()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#buildlinetypeset)接口构建而成。  
+- [TextLine](arkts-arkgraphics2d-text-textline-c.md)：以行为单位的段落文本的载体，由Paragraph类调用[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines)接口获取。  
+- [Run](arkts-arkgraphics2d-text-runmetrics-i.md)：文本排版单元，由TextLine类调用[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接口获取。
 
 **起始版本：** 12
 
@@ -48,11 +48,11 @@ import { text } from '@kit.ArkGraphics2D';
 | 名称 | 说明 |
 | --- | --- |
 | [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | 字体集。 |
-| [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md) | 保存着文本内容以及样式的载体，可以用于计算单行排版信息。  下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[buildLineTypeset()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#buildlinetypeset-1)接口获取到LineTypeset对象实例，再通过此实例调用对应方法。 |
-| [Paragraph](arkts-arkgraphics2d-text-paragraph-c.md) | 保存文本内容及样式的载体，支持排版与绘制操作。  下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build-1)接口获取到Paragraph对象实例，再通过此实例调用对应方法。 |
+| [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md) | 保存着文本内容以及样式的载体，可以用于计算单行排版信息。  下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[buildLineTypeset()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#buildlinetypeset)接口获取到LineTypeset对象实例，再通过此实例调用对应方法。 |
+| [Paragraph](arkts-arkgraphics2d-text-paragraph-c.md) | 保存文本内容及样式的载体，支持排版与绘制操作。  下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build)接口获取到Paragraph对象实例，再通过此实例调用对应方法。 |
 | [ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md) | 段落生成器。 |
-| [Run](arkts-arkgraphics2d-text-run-c.md) | 文本排版单元。  下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns-1)接口获取Run对象实例，再通过此实例调用对应方法。 |
-| [TextLine](arkts-arkgraphics2d-text-textline-c.md) | 描述段落基础文本行结构的载体。  下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraphstyle-i.md)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines-1)接口或者[LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline-1)接口获取到TextLine对象实例，再通过此实例调用对应方法。 |
+| [Run](arkts-arkgraphics2d-text-run-c.md) | 文本排版单元。  下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接口获取Run对象实例，再通过此实例调用对应方法。 |
+| [TextLine](arkts-arkgraphics2d-text-textline-c.md) | 描述段落基础文本行结构的载体。  下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraphstyle-i.md)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines)接口或者[LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline)接口获取到TextLine对象实例，再通过此实例调用对应方法。 |
 
 ### 接口
 
@@ -91,7 +91,7 @@ import { text } from '@kit.ArkGraphics2D';
 | [FontWeight](arkts-arkgraphics2d-text-fontweight-e.md) | 字重枚举。 |
 | [FontWidth](arkts-arkgraphics2d-text-fontwidth-e.md) | 字体宽度的枚举。 |
 | [LineHeightStyle](arkts-arkgraphics2d-text-lineheightstyle-e.md) | 行高缩放基数枚举。 |
-| [PlaceholderAlignment](arkts-arkgraphics2d-text-placeholderalignment-e.md) | 占位符相对于周围文本的纵向对齐方式。  ![zh-ch_image_PlaceholderAlignment.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_PlaceholderAlignment.png) |
+| [PlaceholderAlignment](arkts-arkgraphics2d-text-placeholderalignment-e.md) | 占位符相对于周围文本的纵向对齐方式。  ![zh-ch_image_PlaceholderAlignment.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_PlaceholderAlignment.png) |
 | [RectHeightStyle](arkts-arkgraphics2d-text-rectheightstyle-e.md) | 矩形区域高度规格枚举。 |
 | [RectWidthStyle](arkts-arkgraphics2d-text-rectwidthstyle-e.md) | 矩形区域宽度规格枚举。 |
 | [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 字体类型枚举，通过位或运算可实现组合类型。 |

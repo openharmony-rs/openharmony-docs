@@ -8,7 +8,6 @@ Defines the client certificate request result, related to {@link onClientAuthent
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -25,7 +24,6 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="confirm"></a>
 ## confirm
 
 ```TypeScript
@@ -49,7 +47,6 @@ confirm(priKeyFile: string, certChainFile: string): void
 | priKeyFile | string | 是 | The file that store private key. |
 | certChainFile | string | 是 | The file that store client certificate chain. |
 
-<a id="confirm-1"></a>
 ## confirm
 
 ```TypeScript
@@ -72,7 +69,6 @@ confirm(authUri: string): void
 | --- | --- | --- | --- |
 | authUri | string | 是 | is the key of credentials.The credentials contain sign info and client certificates info. |
 
-<a id="confirm-2"></a>
 ## confirm
 
 ```TypeScript
@@ -100,7 +96,6 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -117,7 +112,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="ignore"></a>
 ## ignore
 
 ```TypeScript

@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="getattachedmechdevices"></a>
 ## getAttachedMechDevices
 
 ```TypeScript
 function getAttachedMechDevices(): MechInfo[]
 ```
 
-Obtain the list of connected mechanical devices.
+获取已连接的机械设备列表
 
 **起始版本：** 20
 
@@ -25,7 +24,7 @@ Obtain the list of connected mechanical devices.
 
 | 类型 | 说明 |
 | --- | --- |
-| [MechInfo](arkts-mechanic-mechanicmanager-mechinfo-i.md)[] | List of connected mechanical devices. |
+| [MechInfo](arkts-mechanic-mechanicmanager-mechinfo-i.md)[] | 返回已连接的机械设备列表 |
 
 **错误码：**
 

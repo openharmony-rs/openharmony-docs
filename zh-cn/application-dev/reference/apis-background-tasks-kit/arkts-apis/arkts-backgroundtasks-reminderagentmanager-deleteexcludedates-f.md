@@ -6,7 +6,6 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="deleteexcludedates"></a>
 ## deleteExcludeDates
 
 ```TypeScript
@@ -25,7 +24,7 @@ function deleteExcludeDates(reminderId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reminderId | number | 是 | 需要删除不提醒日期的代理提醒id。代理提醒id会在[发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md#publishreminder-1)时作为返回值返回。 |
+| reminderId | number | 是 | 需要删除不提醒日期的代理提醒id。代理提醒id会在[发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md#publishreminder)时作为返回值返回。 |
 
 **返回值：**
 

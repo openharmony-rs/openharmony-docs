@@ -1,6 +1,5 @@
 # getInspectorByKey
 
-<a id="getinspectorbykey"></a>
 ## getInspectorByKey
 
 ```TypeScript

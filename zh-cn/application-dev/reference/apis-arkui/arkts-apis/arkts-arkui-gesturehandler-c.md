@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="allowedtypes"></a>
 ## allowedTypes
 
 ```TypeScript
@@ -41,7 +40,6 @@ allowedTypes(types: Array<SourceTool>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="tag"></a>
 ## tag
 
 ```TypeScript

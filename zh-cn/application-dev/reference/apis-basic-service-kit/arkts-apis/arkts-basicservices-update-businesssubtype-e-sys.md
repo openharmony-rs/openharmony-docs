@@ -16,7 +16,7 @@
 FIRMWARE = 1
 ```
 
-固件。表示升级类型为固件升级，用于升级系统固件而非应用。详见[术语](docroot://basic-services/update/update-kit-term.md)。
+固件。表示升级类型为固件升级，用于升级系统固件而非应用。详见[术语](../../../basic-services/update/update-kit-term.md)。
 
 **起始版本：** 9
 

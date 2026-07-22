@@ -6,7 +6,6 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
-<a id="getkeyboardtypesync"></a>
 ## getKeyboardTypeSync
 
 ```TypeScript

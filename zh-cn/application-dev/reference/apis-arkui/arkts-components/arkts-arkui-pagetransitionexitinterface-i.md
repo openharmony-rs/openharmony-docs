@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -39,7 +38,6 @@
 | --- | --- |
 | [PageTransitionExitInterface](arkts-arkui-pagetransitionexitinterface-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform |
 
-<a id="onexit"></a>
 ## onExit
 
 ```TypeScript

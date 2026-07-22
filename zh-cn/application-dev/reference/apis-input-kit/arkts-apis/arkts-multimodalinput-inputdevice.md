@@ -1,7 +1,6 @@
 # @ohos.multimodalInput.inputDevice
 
 本模块提供输入设备管理能力，包括监听输入设备的连接和断开状态，查询设备名称等输入设备信息。
-
 > **说明**：
 
 **起始版本：** 8
@@ -22,10 +21,10 @@ import { inputDevice } from '@kit.InputKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDevice](arkts-input-inputdevice-getdevice-f.md#getdevice) | 获取指定id的输入设备信息，使用callback异步回调。  > **说明**： |
-| [getDevice](arkts-input-inputdevice-getdevice-f.md#getdevice-1) | 获取指定id的输入设备信息，使用Promise异步回调。  > **说明**： |
-| [getDeviceIds](arkts-input-inputdevice-getdeviceids-f.md#getdeviceids) | 获取所有输入设备的ID列表，使用callback异步回调。  > **说明**： |
-| [getDeviceIds](arkts-input-inputdevice-getdeviceids-f.md#getdeviceids-1) | 获取所有输入设备的ID列表，使用Promise异步回调。  > **说明**： |
+| [getDevice](arkts-input-inputdevice-getdevice-f.md#getdevice) | 获取指定id的输入设备信息，使用callback异步回调。 > **说明**： |
+| [getDevice](arkts-input-inputdevice-getdevice-f.md#getdevice-1) | 获取指定id的输入设备信息，使用Promise异步回调。 > **说明**： |
+| [getDeviceIds](arkts-input-inputdevice-getdeviceids-f.md#getdeviceids) | 获取所有输入设备的ID列表，使用callback异步回调。 > **说明**： |
+| [getDeviceIds](arkts-input-inputdevice-getdeviceids-f.md#getdeviceids-1) | 获取所有输入设备的ID列表，使用Promise异步回调。 > **说明**： |
 | [getDeviceInfo](arkts-input-inputdevice-getdeviceinfo-f.md#getdeviceinfo) | 获取指定输入设备的信息，使用callback异步回调。 |
 | [getDeviceInfo](arkts-input-inputdevice-getdeviceinfo-f.md#getdeviceinfo-1) | 获取指定id的输入设备信息，使用Promise异步回调。 |
 | [getDeviceInfoSync](arkts-input-inputdevice-getdeviceinfosync-f.md#getdeviceinfosync) | 获取指定输入设备的信息。 |

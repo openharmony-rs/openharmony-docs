@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="gethistoricalavqueueinfos"></a>
 ## getHistoricalAVQueueInfos
 
 ```TypeScript
@@ -52,7 +51,6 @@ avSession.getHistoricalAVQueueInfos(3, 5, (avQueueInfos: avSession.AVQueueInfo[]
 ```
 
 
-<a id="gethistoricalavqueueinfos-1"></a>
 ## getHistoricalAVQueueInfos
 
 ```TypeScript

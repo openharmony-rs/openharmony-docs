@@ -16,7 +16,6 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="createosaccountsubprofile"></a>
 ## createOsAccountSubProfile
 
 ```TypeScript
@@ -83,7 +82,6 @@ try {
 
 ```
 
-<a id="deleteosaccountsubprofile"></a>
 ## deleteOsAccountSubProfile
 
 ```TypeScript
@@ -152,7 +150,6 @@ try {
 
 ```
 
-<a id="getosaccountforegroundsubprofileid"></a>
 ## getOsAccountForegroundSubProfileId
 
 ```TypeScript
@@ -204,7 +201,6 @@ try {
 
 ```
 
-<a id="getosaccountforegroundsubprofileid-1"></a>
 ## getOsAccountForegroundSubProfileId
 
 ```TypeScript
@@ -266,7 +262,6 @@ try {
 
 ```
 
-<a id="getosaccountlocalidforsubprofile"></a>
 ## getOsAccountLocalIdForSubProfile
 
 ```TypeScript
@@ -327,7 +322,6 @@ try {
 
 ```
 
-<a id="getosaccountsubprofile"></a>
 ## getOsAccountSubProfile
 
 ```TypeScript
@@ -391,7 +385,6 @@ try {
 
 ```
 
-<a id="getosaccountsubprofile-1"></a>
 ## getOsAccountSubProfile
 
 ```TypeScript
@@ -457,7 +450,6 @@ try {
 
 ```
 
-<a id="getosaccountsubprofileids"></a>
 ## getOsAccountSubProfileIds
 
 ```TypeScript
@@ -511,7 +503,6 @@ try {
 
 ```
 
-<a id="getosaccountsubprofileids-1"></a>
 ## getOsAccountSubProfileIds
 
 ```TypeScript
@@ -575,7 +566,6 @@ try {
 
 ```
 
-<a id="offosaccountsubprofileevent"></a>
 ## offOsAccountSubProfileEvent
 
 ```TypeScript
@@ -622,7 +612,6 @@ try {
 
 ```
 
-<a id="onosaccountsubprofileevent"></a>
 ## onOsAccountSubProfileEvent
 
 ```TypeScript
@@ -637,11 +626,7 @@ onOsAccountSubProfileEvent(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OsAccountSubProfileManager-onOsAccountSubProfileEvent(
-      events: OsAccountSubProfileEvent[],
-      callback: Callback<OsAccountSubProfileEventData>): void--><!--Device-OsAccountSubProfileManager-onOsAccountSubProfileEvent(
-      events: OsAccountSubProfileEvent[],
-      callback: Callback<OsAccountSubProfileEventData>): void-End-->
+<!--Device-OsAccountSubProfileManager-onOsAccountSubProfileEvent(      events: OsAccountSubProfileEvent[],      callback: Callback<OsAccountSubProfileEventData>): void--><!--Device-OsAccountSubProfileManager-onOsAccountSubProfileEvent(      events: OsAccountSubProfileEvent[],      callback: Callback<OsAccountSubProfileEventData>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -682,7 +667,6 @@ try {
 
 ```
 
-<a id="switchosaccountsubprofile"></a>
 ## switchOsAccountSubProfile
 
 ```TypeScript

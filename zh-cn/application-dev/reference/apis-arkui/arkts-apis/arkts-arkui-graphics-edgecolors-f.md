@@ -1,6 +1,5 @@
 # edgeColors
 
-<a id="edgecolors"></a>
 ## edgeColors
 
 ```TypeScript

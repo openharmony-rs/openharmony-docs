@@ -1,6 +1,5 @@
 # borderStyles
 
-<a id="borderstyles"></a>
 ## borderStyles
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="obtainallworks"></a>
 ## obtainAllWorks
 
 ```TypeScript
@@ -19,7 +18,7 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 
 **废弃版本：** 10
 
-**替代接口：** [obtainAllWorks(callback:](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks-1)
+**替代接口：** [obtainAllWorks(callback:](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,7 +48,6 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 | [9700003](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 
 
-<a id="obtainallworks-1"></a>
 ## obtainAllWorks
 
 ```TypeScript
@@ -98,7 +96,6 @@ workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.Wor
 ```
 
 
-<a id="obtainallworks-2"></a>
 ## obtainAllWorks
 
 ```TypeScript

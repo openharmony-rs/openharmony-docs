@@ -6,7 +6,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="renamesync"></a>
 ## renameSync
 
 ```TypeScript
@@ -14,7 +13,6 @@ declare function renameSync(oldPath: string, newPath: string): void
 ```
 
 以同步方法重命名文件或目录。
-
 > **说明：**  
 >  
 > 该接口不支持在分布式文件路径下操作。

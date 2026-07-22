@@ -18,7 +18,6 @@
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -53,7 +52,6 @@ let localeID = locale.toString();
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -94,7 +92,6 @@ let localeID = locale.toString(); // localeID = 'zh-CN'
 
 ```
 
-<a id="maximize"></a>
 ## maximize
 
 ```TypeScript
@@ -142,7 +139,6 @@ localeID = maximizedLocale.toString(); // localeID = 'en-Latn-US'
 
 ```
 
-<a id="minimize"></a>
 ## minimize
 
 ```TypeScript
@@ -190,7 +186,6 @@ localeID = minimizedLocale.toString(); // localeID = 'en'
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -264,7 +259,7 @@ calendar: string
 
 "buddhist", "chinese", "coptic","dangi", "ethioaa", "ethiopic", "gregory", "hebrew", "indian", "islamic","islamic-umalqura", "islamic-tbla", "islamic-civil", "islamic-rgsa", "iso8601", "japanese", "persian", "roc","islamicc"。
 
-不同取值表示的含义请参考[设置日历和历法表1](docroot://internationalization/i18n-calendar.md)。
+不同取值表示的含义请参考[设置日历和历法表1](../../../internationalization/i18n-calendar.md)。
 
 **类型：** string
 
@@ -378,7 +373,7 @@ hourCycle: string
 
 "h11"、"h12"、"h23"、"h24"。
 
-不同取值的显示效果可参考[附录表5](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果可参考[附录表5](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 

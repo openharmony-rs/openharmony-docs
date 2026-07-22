@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="doaction"></a>
 ## doAction
 
 ```TypeScript
 function doAction(mechId: number, actionType: ActionType): Promise<Result>
 ```
 
-Execute an action sequence.
+执行一个动作序列
 
 **起始版本：** 26.0.0
 
@@ -27,14 +26,14 @@ Execute an action sequence.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device.<br>The value should be an integer. |
-| actionType | [ActionType](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-actiontype-t.md) | 是 | Type of action sequence. |
+| mechId | number | 是 | 具身设备ID。<br>取值限定为整数。 |
+| actionType | [ActionType](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-actiontype-t.md) | 是 | 动作序列类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | Promise that returns the execution result. |
+| Promise&lt;Result&gt; | 202 - 非系统应用 |
 
 **错误码：**
 

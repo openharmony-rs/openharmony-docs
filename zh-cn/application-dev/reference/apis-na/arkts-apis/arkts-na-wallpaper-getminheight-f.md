@@ -1,6 +1,5 @@
 # getMinHeight
 
-<a id="getminheight"></a>
 ## getMinHeight
 
 ```TypeScript
@@ -39,7 +38,6 @@ wallpaper.getMinHeight((error: BusinessError, data: Number) => {
 ```
 
 
-<a id="getminheight-1"></a>
 ## getMinHeight
 
 ```TypeScript

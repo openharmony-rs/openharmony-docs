@@ -6,7 +6,6 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
-<a id="getallowedusbdevices"></a>
 ## getAllowedUsbDevices
 
 ```TypeScript

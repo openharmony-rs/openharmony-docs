@@ -12,7 +12,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [backgroundTaskManager:backgroundTaskManager](arkts-resourceschedule-backgroundtaskmanager.md)
+**替代接口：** [backgroundTaskManager:backgroundTaskManager](arkts-backgroundtaskmanager.md)
 
 <!--Device-unnamed-declare namespace backgroundTaskManager--><!--Device-unnamed-declare namespace backgroundTaskManager-End-->
 

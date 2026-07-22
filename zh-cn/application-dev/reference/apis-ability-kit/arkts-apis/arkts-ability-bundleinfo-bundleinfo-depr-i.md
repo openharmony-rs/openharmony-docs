@@ -22,7 +22,7 @@ readonly abilityInfos: Array<AbilityInfo>
 
 Ability的配置信息
 
-通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-1)接口时，传入GET_BUNDLE_WITH_ABILITIES获取。
+通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo)接口时，传入GET_BUNDLE_WITH_ABILITIES获取。
 
 **类型：** Array&lt;AbilityInfo&gt;
 
@@ -299,7 +299,7 @@ readonly reqPermissionDetails: Array<ReqPermissionDetail>
 
 应用运行时需向系统申请的权限集合的详细信息
 
-通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-1)接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
+通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo)接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
 
 **类型：** Array&lt;ReqPermissionDetail&gt;
 
@@ -345,7 +345,7 @@ readonly reqPermissions: Array<string>
 
 应用运行时需向系统申请的权限集合
 
-通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-1)接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
+通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo)接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
 
 **类型：** Array&lt;string&gt;
 

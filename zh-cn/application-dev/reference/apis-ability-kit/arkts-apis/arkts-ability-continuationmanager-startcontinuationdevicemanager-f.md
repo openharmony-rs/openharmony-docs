@@ -6,7 +6,6 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
-<a id="startcontinuationdevicemanager"></a>
 ## startContinuationDeviceManager
 
 ```TypeScript
@@ -66,7 +65,6 @@ try {
 ```
 
 
-<a id="startcontinuationdevicemanager-1"></a>
 ## startContinuationDeviceManager
 
 ```TypeScript
@@ -89,15 +87,7 @@ function startContinuationDeviceManager(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-continuationManager-function startContinuationDeviceManager(
-    token: number,
-    options: ContinuationExtraParams,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-continuationManager-function startContinuationDeviceManager(
-    token: number,
-    options: ContinuationExtraParams,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-continuationManager-function startContinuationDeviceManager(    token: number,    options: ContinuationExtraParams,    callback: AsyncCallback<void>  ): void--><!--Device-continuationManager-function startContinuationDeviceManager(    token: number,    options: ContinuationExtraParams,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -144,7 +134,6 @@ try {
 ```
 
 
-<a id="startcontinuationdevicemanager-2"></a>
 ## startContinuationDeviceManager
 
 ```TypeScript

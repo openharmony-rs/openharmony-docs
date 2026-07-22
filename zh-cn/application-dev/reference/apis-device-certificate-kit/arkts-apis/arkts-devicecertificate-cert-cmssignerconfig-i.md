@@ -99,7 +99,6 @@ rsaSignaturePadding?: CmsRsaSignaturePadding
 ```
 
 RSA 签名填充方式。默认值为：PKCS1_PADDING。当设置为 PKCS1_PSS_PADDING 时，mdName 必须为 "SHA256"、"SHA384" 或 "SHA512"。
-
 > **说明：**  
 >  
 > 仅当签名者私钥类型为RSA时有效。

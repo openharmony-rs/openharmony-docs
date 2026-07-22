@@ -6,7 +6,6 @@
 import { BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
-<a id="off"></a>
 ## off('BundleStatusChange')
 
 ```TypeScript
@@ -14,7 +13,6 @@ function off(type: 'BundleStatusChange', callback: AsyncCallback<string>): void
 ```
 
 取消注册Callback。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
@@ -43,7 +41,6 @@ function off(type: 'BundleStatusChange', callback: AsyncCallback<string>): void
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回正确结果或错误信息。 |
 
 
-<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -51,7 +48,6 @@ function off(type: 'BundleStatusChange'): Promise<string>
 ```
 
 取消注册Callback。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  

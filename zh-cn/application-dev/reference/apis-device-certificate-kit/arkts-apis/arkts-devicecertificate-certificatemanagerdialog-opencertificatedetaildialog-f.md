@@ -6,7 +6,6 @@
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="opencertificatedetaildialog"></a>
 ## openCertificateDetailDialog
 
 ```TypeScript
@@ -44,7 +43,7 @@ function openCertificateDetailDialog(context: common.Context,cert: Uint8Array, p
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [29700001](../errorcode-certManagerDialog.md#29700001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [29700003](../errorcode-certManagerDialog.md#29700003-证书安装失败错误) | Show the certificate detail dialog failed, such as the certificate is in an invalid format. |
 | [29700004](../errorcode-certManagerDialog.md#29700004-设备类型不支持) | The API is not supported on this device. |

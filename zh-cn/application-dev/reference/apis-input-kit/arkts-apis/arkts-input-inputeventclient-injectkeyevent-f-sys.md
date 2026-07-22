@@ -6,7 +6,6 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
-<a id="injectkeyevent"></a>
 ## injectKeyEvent
 
 ```TypeScript

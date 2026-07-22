@@ -14,7 +14,6 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -45,7 +44,6 @@ let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -53,7 +51,6 @@ constructor(name: string, runningCapacity: number, waitingCapacity?: number)
 ```
 
 AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一个全局异步队列，如果队列名称与已有名称相同，将返回同一个异步队列。
-
 > **说明**  
 >  
 > - 底层通过单例模式确保创建同名的异步队列时，获取同一个实例。  
@@ -83,7 +80,6 @@ let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
 
 ```
 
-<a id="execute"></a>
 ## execute
 
 ```TypeScript
@@ -91,7 +87,6 @@ execute(task: Task, priority?: Priority): Promise<Object>
 ```
 
 执行异步任务。使用该方法前需要先构造**AsyncRunner**实例。使用Promise异步回调。
-
 > **说明**  
 >  
 > - 不支持执行任务组中的任务。  

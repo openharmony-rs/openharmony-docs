@@ -6,7 +6,6 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
-<a id="querydevices"></a>
 ## queryDevices
 
 ```TypeScript

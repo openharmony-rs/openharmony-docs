@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="adddisallowedrunningbundlessync"></a>
 ## addDisallowedRunningBundlesSync
 
 ```TypeScript
@@ -17,7 +16,7 @@ function addDisallowedRunningBundlesSync(
   ): void
 ```
 
-添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md#addallowedrunningbundles-1)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。
+添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md#addallowedrunningbundles)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。
 
 **起始版本：** 12
 
@@ -25,15 +24,7 @@ function addDisallowedRunningBundlesSync(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-applicationManager-function addDisallowedRunningBundlesSync(
-    admin: Want,
-    appIds: Array<string>,
-    accountId?: number
-  ): void--><!--Device-applicationManager-function addDisallowedRunningBundlesSync(
-    admin: Want,
-    appIds: Array<string>,
-    accountId?: number
-  ): void-End-->
+<!--Device-applicationManager-function addDisallowedRunningBundlesSync(    admin: Want,    appIds: Array<string>,    accountId?: number  ): void--><!--Device-applicationManager-function addDisallowedRunningBundlesSync(    admin: Want,    appIds: Array<string>,    accountId?: number  ): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -42,8 +33,8 @@ function addDisallowedRunningBundlesSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| appIds | Array&lt;string&gt; | 是 | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)。 |
-| accountId | number | 否 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。<br>   - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
+| appIds | Array&lt;string&gt; | 是 | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../../quick-start/common-problem-of-application.md#什么是appid)。 |
+| accountId | number | 否 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。<br>   - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **错误码：**
 

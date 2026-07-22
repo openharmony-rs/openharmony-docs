@@ -1,6 +1,5 @@
 # fchmodSync
 
-<a id="fchmodsync"></a>
 ## fchmodSync
 
 ```TypeScript

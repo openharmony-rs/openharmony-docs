@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -27,7 +26,6 @@ clear(): void
 
 **系统接口：** 此接口为系统接口。
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -51,7 +49,6 @@ constructor(needCrossThread?: boolean, file?: string)
 | needCrossThread | boolean | 否 |  |
 | file | string | 否 |  |
 
-<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -74,7 +71,6 @@ delete(key: string): void
 | --- | --- | --- | --- |
 | key | string | 是 |  |
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -103,7 +99,6 @@ get(key: string): string | undefined
 | --- | --- |
 | string | @syscap SystemCapability.ArkUI.ArkUI.Full@systemapi@FaAndStageModel |
 
-<a id="set"></a>
 ## set
 
 ```TypeScript

@@ -5,7 +5,6 @@ type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLengt
 ```
 
 由应用实现此回调函数，应用需记录读取请求，并在数据充足时通过对应的MediaSourceLoadingRequest对象的[respondData](@ohos.multimedia.media:media.MediaSourceLoadingRequest.respondData(uuid: number, offset: number, buffer: ArrayBuffer))方法推送数据。
-
 > **注意：**  
 >  
 > 客户端在处理完请求后应立刻返回。

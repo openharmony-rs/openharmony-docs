@@ -6,7 +6,6 @@
 import { application } from '@kit.AbilityKit';
 ```
 
-<a id="getapplicationcontext"></a>
 ## getApplicationContext
 
 ```TypeScript

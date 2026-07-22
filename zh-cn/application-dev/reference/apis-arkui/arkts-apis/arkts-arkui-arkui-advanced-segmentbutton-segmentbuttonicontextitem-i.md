@@ -1,7 +1,6 @@
 # SegmentButtonIconTextItem
 
 图标与文本按钮信息。
-
 > **说明：**  
 >  
 > 未选中态的图标`icon`和选中态的图标`selectedIcon`都需设置，单独设置无效。

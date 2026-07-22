@@ -6,7 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="gettask"></a>
 ## getTask
 
 ```TypeScript

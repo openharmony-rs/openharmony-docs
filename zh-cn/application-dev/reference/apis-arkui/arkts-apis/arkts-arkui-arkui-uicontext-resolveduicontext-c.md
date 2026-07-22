@@ -1,7 +1,6 @@
 # ResolvedUIContext
 
 ResolvedUIContext实例对象。
-
 > **说明：**  
 >  
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。  

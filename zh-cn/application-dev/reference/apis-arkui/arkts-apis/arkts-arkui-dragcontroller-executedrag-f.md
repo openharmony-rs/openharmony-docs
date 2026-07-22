@@ -6,7 +6,6 @@
 import { dragController } from '@kit.ArkUI';
 ```
 
-<a id="executedrag"></a>
 ## executeDrag
 
 ```TypeScript
@@ -26,9 +25,7 @@ Execute a drag event.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-dragController-function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,
-    callback: AsyncCallback<DragEventParam>): void--><!--Device-dragController-function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,
-    callback: AsyncCallback<DragEventParam>): void-End-->
+<!--Device-dragController-function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,    callback: AsyncCallback<DragEventParam>): void--><!--Device-dragController-function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,    callback: AsyncCallback<DragEventParam>): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,7 +127,6 @@ struct DragControllerPage {
 ```
 
 
-<a id="executedrag-1"></a>
 ## executeDrag
 
 ```TypeScript
@@ -138,11 +134,10 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 ```
 
 主动发起拖拽能力，传入拖拽发起后跟手效果所拖拽的对象以及携带拖拽信息。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 11开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller-1)方法获取当前UI  
+> [getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller)方法获取当前UI  
 > 上下文关联的[DragController](arkts-arkui-arkui-uicontext-dragcontroller-c.md)对象。
 
 **起始版本：** 10

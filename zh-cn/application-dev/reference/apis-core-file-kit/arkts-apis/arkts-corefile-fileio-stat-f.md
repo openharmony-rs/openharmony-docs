@@ -1,6 +1,5 @@
 # stat
 
-<a id="stat"></a>
 ## stat
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function stat(path: string): Promise<Stat>
 
 **废弃版本：** 9
 
-**替代接口：** [fs:stat](arkts-corefile-file-fs-stat-f.md#stat-1)
+**替代接口：** [fs:stat](arkts-corefile-fileio-stat-f.md#stat)
 
 <!--Device-unnamed-declare function stat(path: string): Promise<Stat>--><!--Device-unnamed-declare function stat(path: string): Promise<Stat>-End-->
 
@@ -32,7 +31,6 @@ declare function stat(path: string): Promise<Stat>
 | Promise&lt;Stat&gt; | Promise对象。返回文件的具体信息。 |
 
 
-<a id="stat-1"></a>
 ## stat
 
 ```TypeScript
@@ -45,7 +43,7 @@ declare function stat(path: string, callback: AsyncCallback<Stat>): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:stat](arkts-corefile-file-fs-stat-f.md#stat-1)
+**替代接口：** [fs:stat](arkts-corefile-fileio-stat-f.md#stat)
 
 <!--Device-unnamed-declare function stat(path: string, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function stat(path: string, callback: AsyncCallback<Stat>): void-End-->
 

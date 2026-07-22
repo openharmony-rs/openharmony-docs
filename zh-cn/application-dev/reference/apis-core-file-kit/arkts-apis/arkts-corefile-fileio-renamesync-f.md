@@ -1,6 +1,5 @@
 # renameSync
 
-<a id="renamesync"></a>
 ## renameSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function renameSync(oldPath: string, newPath: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:renameSync](arkts-corefile-file-fs-renamesync-f.md#renamesync-1)
+**替代接口：** [fs:renameSync](arkts-corefile-fileio-renamesync-f.md#renamesync)
 
 <!--Device-unnamed-declare function renameSync(oldPath: string, newPath: string): void--><!--Device-unnamed-declare function renameSync(oldPath: string, newPath: string): void-End-->
 

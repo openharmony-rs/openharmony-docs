@@ -8,7 +8,6 @@ Defines the http auth request result, related to {@link onHttpAuthRequest} metho
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -25,7 +24,6 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="confirm"></a>
 ## confirm
 
 ```TypeScript
@@ -55,7 +53,6 @@ confirm(userName: string, password: string): boolean
 | --- | --- |
 | boolean | **true** is returned if the authentication is successful; otherwise, **false** is returned. |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -72,7 +69,6 @@ Constructor.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="ishttpauthinfosaved"></a>
 ## isHttpAuthInfoSaved
 
 ```TypeScript

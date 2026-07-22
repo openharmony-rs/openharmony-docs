@@ -56,7 +56,7 @@ desiredDynamicRange?: DecodingDynamicRange
 
 目标动态范围，默认值为SDR。
 
-通过[CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md#createincrementalsource-1)创建的ImageSource不支持设置此属性，默认解码为SDR内容。
+通过[CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md#createincrementalsource)创建的ImageSource不支持设置此属性，默认解码为SDR内容。
 
 如果平台不支持HDR，设置无效，默认解码为SDR内容。
 

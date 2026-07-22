@@ -1,9 +1,7 @@
 # RenderNode
 
 提供自绘制渲染节点RenderNode，支持开发者通过C API进行开发，完成自定义绘制需求。
-
 > **说明：**
-
 > - 不建议对[BuilderNode](arkts-arkui-buildernode-c.md)中的RenderNode进行修改操作。BuilderNode中持有的[FrameNode](arkts-arkui-framenode-c.md)仅用于将该  
 > BuilderNode作为子节点挂载到其他FrameNode上，对该FrameNode或对应的RenderNode进行属性设置与子节点操作可能会产生未定义行为，包括但不限于显示异常、事件异常、稳定性问题等。  
 >  
@@ -15,7 +13,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="appendchild"></a>
 ## appendChild
 
 ```TypeScript
@@ -46,7 +43,6 @@ appendChild(node: RenderNode): void
 | --- | --- |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
 
-<a id="clearchildren"></a>
 ## clearChildren
 
 ```TypeScript
@@ -65,7 +61,6 @@ clearChildren(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -84,7 +79,6 @@ RenderNode的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="dispose"></a>
 ## dispose
 
 ```TypeScript
@@ -103,7 +97,6 @@ dispose(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="draw"></a>
 ## draw
 
 ```TypeScript
@@ -112,8 +105,7 @@ draw(context: DrawContext): void
 
 绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。
 
-该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](docroot://ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
-
+该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
 > **说明：**  
 >  
 > RenderNode初始化时，会调用两次draw方法。第一次调用是在首次创建FrameNode时触发Render流程，第二次调用是在首次设置modifier时触发绘制。后续绘制流程皆由modifier触发。
@@ -134,7 +126,6 @@ draw(context: DrawContext): void
 | --- | --- | --- | --- |
 | context | [DrawContext](../arkts-components/arkts-arkui-drawcontext-t.md) | 是 | 图形绘制上下文。 |
 
-<a id="getchild"></a>
 ## getChild
 
 ```TypeScript
@@ -165,7 +156,6 @@ getChild(index: number): RenderNode | null
 | --- | --- |
 | [RenderNode](arkts-arkui-rendernode-c.md) | Child node obtained. If the RenderNode does not contain the specified child node,null is returned. |
 
-<a id="getfirstchild"></a>
 ## getFirstChild
 
 ```TypeScript
@@ -190,7 +180,6 @@ getFirstChild(): RenderNode | null
 | --- | --- |
 | [RenderNode](arkts-arkui-rendernode-c.md) | First child node. If the RenderNode does not contain any child node, null is returned. |
 
-<a id="getnextsibling"></a>
 ## getNextSibling
 
 ```TypeScript
@@ -215,7 +204,6 @@ getNextSibling(): RenderNode | null
 | --- | --- |
 | [RenderNode](arkts-arkui-rendernode-c.md) | Next sibling node of the current RenderNode. If the RenderNode does not have the next sibling node, null is returned. |
 
-<a id="getprevioussibling"></a>
 ## getPreviousSibling
 
 ```TypeScript
@@ -240,7 +228,6 @@ getPreviousSibling(): RenderNode | null
 | --- | --- |
 | [RenderNode](arkts-arkui-rendernode-c.md) | Previous sibling node of the current RenderNode. If the RenderNode does not have the previous sibling node, null is returned. |
 
-<a id="insertchildafter"></a>
 ## insertChildAfter
 
 ```TypeScript
@@ -272,7 +259,6 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 | --- | --- |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
 
-<a id="invalidate"></a>
 ## invalidate
 
 ```TypeScript
@@ -291,7 +277,6 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="isdisposed"></a>
 ## isDisposed
 
 ```TypeScript
@@ -316,7 +301,6 @@ isDisposed(): boolean
 | --- | --- |
 | boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
-<a id="removechild"></a>
 ## removeChild
 
 ```TypeScript

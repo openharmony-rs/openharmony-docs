@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getbundleinfo"></a>
 ## getBundleInfo
 
 ```TypeScript
@@ -26,9 +25,7 @@ function getBundleInfo(bundleName: string,
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
-<!--Device-bundle-function getBundleInfo(bundleName: string,
-    bundleFlags: number, options: BundleOptions, callback: AsyncCallback<BundleInfo>): void--><!--Device-bundle-function getBundleInfo(bundleName: string,
-    bundleFlags: number, options: BundleOptions, callback: AsyncCallback<BundleInfo>): void-End-->
+<!--Device-bundle-function getBundleInfo(bundleName: string,    bundleFlags: number, options: BundleOptions, callback: AsyncCallback<BundleInfo>): void--><!--Device-bundle-function getBundleInfo(bundleName: string,    bundleFlags: number, options: BundleOptions, callback: AsyncCallback<BundleInfo>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -42,7 +39,6 @@ function getBundleInfo(bundleName: string,
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInfo&gt; | 是 | 程序启动作为入参的回调函数，返回包信息。 |
 
 
-<a id="getbundleinfo-1"></a>
 ## getBundleInfo
 
 ```TypeScript
@@ -74,7 +70,6 @@ function getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncC
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInfo&gt; | 是 | 程序启动作为入参的回调函数，返回包信息。 |
 
 
-<a id="getbundleinfo-2"></a>
 ## getBundleInfo
 
 ```TypeScript

@@ -1,15 +1,14 @@
 # Path2D
 
 路径对象，支持通过对象的接口进行路径的描述，并通过Canvas的stroke接口或者fill接口进行绘制。
-
 > **说明：**  
 >  
 > Path2D对象不支持重置已设置的路径，如需新路径可重新创建一个空的Path2D对象。  
 >  
 > Path2D对象的方法无法对  
-> [CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)  
+> [CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)  
 > 和  
-> [OffscreenCanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md)  
+> [OffscreenCanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md)  
 > 对象中设置的路径生效。
 
 **继承/实现关系：** Path2D extends [CanvasPath](arkts-arkui-canvaspath-c.md)
@@ -20,7 +19,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="addpath"></a>
 ## addPath
 
 ```TypeScript
@@ -46,7 +44,6 @@ addPath(path: Path2D, transform?: Matrix2D): void
 | path | [Path2D](arkts-arkui-path2d-c.md) | 是 | 需要添加到当前路径的路径对象，路径单位：px。<br>异常值undefined和null按无效值处理。 |
 | transform | [Matrix2D](../arkts-apis/arkts-arkui-canvaspattern-matrix2d-c.md) | 否 | 新增路径的变换矩阵对象。<br>异常值undefined和null按无效值处理。<br>默认值：null。 |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -65,7 +62,6 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -90,9 +86,8 @@ constructor(unit: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| unit | [LengthMetricsUnit](../arkts-apis/arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。 |
+| unit | [LengthMetricsUnit](../arkts-apis/arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。 |
 
-<a id="constructor-2"></a>
 ## constructor
 
 ```TypeScript
@@ -117,7 +112,6 @@ constructor(path: Path2D)
 | --- | --- | --- | --- |
 | path | [Path2D](arkts-arkui-path2d-c.md) | 是 | 路径对象。 |
 
-<a id="constructor-3"></a>
 ## constructor
 
 ```TypeScript
@@ -143,9 +137,8 @@ constructor(path: Path2D, unit: LengthMetricsUnit)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | [Path2D](arkts-arkui-path2d-c.md) | 是 | 路径对象。 |
-| unit | [LengthMetricsUnit](../arkts-apis/arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。 |
+| unit | [LengthMetricsUnit](../arkts-apis/arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。 |
 
-<a id="constructor-4"></a>
 ## constructor
 
 ```TypeScript
@@ -168,9 +161,8 @@ constructor(d: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| d | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考[SVG路径描述规范](docroot://reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)，异常值按无效值处理。 |
+| d | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考[SVG路径描述规范](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)，异常值按无效值处理。 |
 
-<a id="constructor-5"></a>
 ## constructor
 
 ```TypeScript
@@ -195,6 +187,6 @@ constructor(description: string, unit: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| description | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考[SVG路径描述规范](docroot://reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)，异常值按无效值处理。 |
-| unit | [LengthMetricsUnit](../arkts-apis/arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](docroot://reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。 |
+| description | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考[SVG路径描述规范](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)，异常值按无效值处理。 |
+| unit | [LengthMetricsUnit](../arkts-apis/arkts-arkui-graphics-lengthmetricsunit-e.md) | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。 |
 

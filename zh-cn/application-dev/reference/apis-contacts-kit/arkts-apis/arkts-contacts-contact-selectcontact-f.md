@@ -6,7 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="selectcontact"></a>
 ## selectContact
 
 ```TypeScript
@@ -19,7 +18,7 @@ function selectContact(callback: AsyncCallback<Array<Contact>>): void
 
 **废弃版本：** 10
 
-**替代接口：** [selectContacts(callback:](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-1)
+**替代接口：** [selectContacts(callback:](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)
 
 <!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void-End-->
 
@@ -49,7 +48,6 @@ contact.selectContact((err: BusinessError, data) => {
 ```
 
 
-<a id="selectcontact-1"></a>
 ## selectContact
 
 ```TypeScript
@@ -62,7 +60,7 @@ function selectContact(): Promise<Array<Contact>>
 
 **废弃版本：** 10
 
-**替代接口：** [selectContacts()](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-1)
+**替代接口：** [selectContacts()](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)
 
 <!--Device-contact-function selectContact(): Promise<Array<Contact>>--><!--Device-contact-function selectContact(): Promise<Array<Contact>>-End-->
 

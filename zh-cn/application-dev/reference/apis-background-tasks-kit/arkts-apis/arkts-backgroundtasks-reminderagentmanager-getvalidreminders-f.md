@@ -6,14 +6,13 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="getvalidreminders"></a>
 ## getValidReminders
 
 ```TypeScript
 function getValidReminders(callback: AsyncCallback<Array<ReminderRequest>>): void
 ```
 
-获取当前应用设置的所有[有效（未过期）的代理提醒](docroot://task-management/agent-powered-reminder.md#约束与限制)。使用callback异步回调。
+获取当前应用设置的所有[有效（未过期）的代理提醒](../../../task-management/agent-powered-reminder.md#约束与限制)。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -71,14 +70,13 @@ reminderAgentManager.getValidReminders((err: BusinessError, reminders: Array<rem
 ```
 
 
-<a id="getvalidreminders-1"></a>
 ## getValidReminders
 
 ```TypeScript
 function getValidReminders(): Promise<Array<ReminderRequest>>
 ```
 
-获取当前应用设置的所有[有效（未过期）的代理提醒](docroot://task-management/agent-powered-reminder.md#约束与限制)。使用Promise异步回调。
+获取当前应用设置的所有[有效（未过期）的代理提醒](../../../task-management/agent-powered-reminder.md#约束与限制)。使用Promise异步回调。
 
 **起始版本：** 9
 

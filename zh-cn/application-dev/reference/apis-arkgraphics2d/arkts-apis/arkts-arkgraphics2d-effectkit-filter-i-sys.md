@@ -1,6 +1,6 @@
 # Filter
 
-图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect-1)创建一个Filter实例。
+图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect)创建一个Filter实例。
 
 **起始版本：** 9
 
@@ -14,7 +14,6 @@
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
-<a id="ellipticalgradientblur"></a>
 ## ellipticalGradientBlur
 
 ```TypeScript

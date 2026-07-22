@@ -14,7 +14,6 @@ LinkedList底层基于双向链表实现。双向链表的每个节点都有一�
 import { LinkedList } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -75,7 +74,6 @@ while(!temp.done) {
 
 ```
 
-<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -133,7 +131,6 @@ console.info("result = ", result4); // result =  true
 
 ```
 
-<a id="addfirst"></a>
 ## addFirst
 
 ```TypeScript
@@ -182,7 +179,6 @@ console.info("result:", result);  // result: 1,2,3
 
 ```
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -219,7 +215,6 @@ console.info("result:", result);  // result: false
 
 ```
 
-<a id="clone"></a>
 ## clone
 
 ```TypeScript
@@ -261,7 +256,6 @@ console.info("result:", result.has(4));  // result: true
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -291,7 +285,6 @@ let linkedList = new LinkedList<string | number | boolean | object>();
 
 ```
 
-<a id="converttoarray"></a>
 ## convertToArray
 
 ```TypeScript
@@ -333,7 +326,6 @@ console.info("result:", result);  // result: 2,4,5,4
 
 ```
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -381,7 +373,6 @@ linkedList.forEach((value: number, index: number) => {
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -433,7 +424,6 @@ console.info("result:", result);  // result: 5
 
 ```
 
-<a id="getfirst"></a>
 ## getFirst
 
 ```TypeScript
@@ -476,7 +466,6 @@ console.info("result:", result);  // result: 2
 
 ```
 
-<a id="getindexof"></a>
 ## getIndexOf
 
 ```TypeScript
@@ -527,7 +516,6 @@ console.info("result:", result);  // result: 0
 
 ```
 
-<a id="getlast"></a>
 ## getLast
 
 ```TypeScript
@@ -570,7 +558,6 @@ console.info("result:", result);  // result: 4
 
 ```
 
-<a id="getlastindexof"></a>
 ## getLastIndexOf
 
 ```TypeScript
@@ -621,7 +608,6 @@ console.info("result:", result);  // result: 5
 
 ```
 
-<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -666,7 +652,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="insert"></a>
 ## insert
 
 ```TypeScript
@@ -709,7 +694,6 @@ console.info("result:", result);  // result: 0
 
 ```
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -757,7 +741,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="removebyindex"></a>
 ## removeByIndex
 
 ```TypeScript
@@ -807,7 +790,6 @@ console.info("result:", result);  // result: 5
 
 ```
 
-<a id="removefirst"></a>
 ## removeFirst
 
 ```TypeScript
@@ -851,7 +833,6 @@ console.info("result:", result);  // result: 2
 
 ```
 
-<a id="removefirstfound"></a>
 ## removeFirstFound
 
 ```TypeScript
@@ -901,7 +882,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="removelast"></a>
 ## removeLast
 
 ```TypeScript
@@ -945,7 +925,6 @@ console.info("result:", result);  // result: 4
 
 ```
 
-<a id="removelastfound"></a>
 ## removeLastFound
 
 ```TypeScript
@@ -995,7 +974,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="set"></a>
 ## set
 
 ```TypeScript

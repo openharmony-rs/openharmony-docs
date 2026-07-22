@@ -6,7 +6,6 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="unsubscribereminderstate"></a>
 ## unsubscribeReminderState
 
 ```TypeScript

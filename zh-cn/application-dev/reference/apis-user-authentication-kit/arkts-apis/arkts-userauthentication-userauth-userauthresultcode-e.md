@@ -158,7 +158,7 @@ INVALID_PARAMETERS = 12500008
 LOCKED = 12500009
 ```
 
-认证器已锁定。表示认证器因连续多次认证不通过而进入冻结状态，用户需等待冻结解除或使用PIN解锁后才能继续认证。可通过[getAuthLockState](arkts-userauthentication-userauth-getauthlockstate-f.md#getauthlockstate-1)查询具体冻结状态。
+认证器已锁定。表示认证器因连续多次认证不通过而进入冻结状态，用户需等待冻结解除或使用PIN解锁后才能继续认证。可通过[getAuthLockState](arkts-userauthentication-userauth-getauthlockstate-f.md#getauthlockstate)查询具体冻结状态。
 
 **起始版本：** 9
 

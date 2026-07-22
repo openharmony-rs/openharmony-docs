@@ -6,7 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="search"></a>
 ## search
 
 ```TypeScript
@@ -35,7 +34,6 @@ function search(callback: AsyncCallback<Array<string>>): void
 | [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
 
-<a id="search-1"></a>
 ## search
 
 ```TypeScript
@@ -65,7 +63,6 @@ function search(filter: Filter, callback: AsyncCallback<Array<string>>): void
 | [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
 
-<a id="search-2"></a>
 ## search
 
 ```TypeScript

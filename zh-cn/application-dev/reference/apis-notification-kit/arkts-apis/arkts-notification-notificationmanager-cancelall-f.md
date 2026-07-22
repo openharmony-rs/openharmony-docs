@@ -6,7 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="cancelall"></a>
 ## cancelAll
 
 ```TypeScript
@@ -56,7 +55,6 @@ notificationManager.cancelAll(cancelAllCallback);
 ```
 
 
-<a id="cancelall-1"></a>
 ## cancelAll
 
 ```TypeScript

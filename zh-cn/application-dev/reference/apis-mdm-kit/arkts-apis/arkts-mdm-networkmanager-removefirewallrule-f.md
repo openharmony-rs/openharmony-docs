@@ -6,7 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="removefirewallrule"></a>
 ## removeFirewallRule
 
 ```TypeScript
@@ -19,7 +18,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md)。
 
-移除规则后如果不存在[Action](arkts-mdm-networkmanager-action-e.md)为ALLOW规则后，会将[addFirewallRule](arkts-mdm-networkmanager-addfirewallrule-f.md#addfirewallrule-1)添加的默认DENY规则清空。
+移除规则后如果不存在[Action](arkts-mdm-networkmanager-action-e.md)为ALLOW规则后，会将[addFirewallRule](arkts-mdm-networkmanager-addfirewallrule-f.md#addfirewallrule)添加的默认DENY规则清空。
 
 **起始版本：** 12
 

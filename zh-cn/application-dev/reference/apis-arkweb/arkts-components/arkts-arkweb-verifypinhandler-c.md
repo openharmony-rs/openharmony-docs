@@ -8,7 +8,6 @@ Handle the result of PIN verification.
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="confirm"></a>
 ## confirm
 
 ```TypeScript
@@ -29,7 +28,6 @@ Passes the PIN verify result.
 | --- | --- | --- | --- |
 | result | [PinVerifyResult](arkts-arkweb-pinverifyresult-e.md) | 是 | The PIN code verify result. |
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

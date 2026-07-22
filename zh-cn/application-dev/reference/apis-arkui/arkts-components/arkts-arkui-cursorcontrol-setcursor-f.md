@@ -1,6 +1,5 @@
 # setCursor
 
-<a id="setcursor"></a>
 ## setCursor
 
 ```TypeScript

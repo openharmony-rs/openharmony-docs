@@ -6,7 +6,6 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="error"></a>
 ## error
 
 ```TypeScript

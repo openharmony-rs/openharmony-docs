@@ -6,7 +6,6 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
-<a id="bytelength"></a>
 ## byteLength
 
 ```TypeScript
@@ -22,13 +21,7 @@ function byteLength(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-buffer-function byteLength(
-    string: string | Buffer | TypedArray | DataView | ArrayBuffer | SharedArrayBuffer,
-    encoding?: BufferEncoding
-  ): number--><!--Device-buffer-function byteLength(
-    string: string | Buffer | TypedArray | DataView | ArrayBuffer | SharedArrayBuffer,
-    encoding?: BufferEncoding
-  ): number-End-->
+<!--Device-buffer-function byteLength(    string: string | Buffer | TypedArray | DataView | ArrayBuffer | SharedArrayBuffer,    encoding?: BufferEncoding  ): number--><!--Device-buffer-function byteLength(    string: string | Buffer | TypedArray | DataView | ArrayBuffer | SharedArrayBuffer,    encoding?: BufferEncoding  ): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

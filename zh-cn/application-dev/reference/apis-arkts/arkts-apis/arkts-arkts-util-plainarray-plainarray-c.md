@@ -14,7 +14,6 @@ PlainArray可用于存储具有关联关系的key-value键值对集合，其中k
 import { PlainArray } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -71,7 +70,6 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
-<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -110,7 +108,6 @@ console.info("result:", plainArray.get(1));  // result: squirrel
 
 ```
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -145,7 +142,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="clone"></a>
 ## clone
 
 ```TypeScript
@@ -185,7 +181,6 @@ console.info("result:", newPlainArray.get(1));  // result: squirrel
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -215,7 +210,6 @@ let plainArray = new PlainArray<string>();
 
 ```
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -272,7 +266,6 @@ for (let i = 0; i < 10; i++) {
 
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -318,7 +311,6 @@ console.info("result:", result);  // result: squirrel
 
 ```
 
-<a id="getindexofkey"></a>
 ## getIndexOfKey
 
 ```TypeScript
@@ -364,7 +356,6 @@ console.info("result:", result); // result: 1
 
 ```
 
-<a id="getindexofvalue"></a>
 ## getIndexOfValue
 
 ```TypeScript
@@ -410,7 +401,6 @@ console.info("result:", result);  // result: 0
 
 ```
 
-<a id="getkeyat"></a>
 ## getKeyAt
 
 ```TypeScript
@@ -456,7 +446,6 @@ console.info("result:", result); // result: 2
 
 ```
 
-<a id="getvalueat"></a>
 ## getValueAt
 
 ```TypeScript
@@ -503,7 +492,6 @@ console.info("result:", result);  // result: sparrow
 
 ```
 
-<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -548,7 +536,6 @@ console.info("result:", result); // result: true
 
 ```
 
-<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -586,7 +573,6 @@ console.info("result:", result); // result: true
 
 ```
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -632,7 +618,6 @@ console.info("result:", result);  // result: sparrow
 
 ```
 
-<a id="removeat"></a>
 ## removeAt
 
 ```TypeScript
@@ -678,7 +663,6 @@ console.info("result:", result);  // result: sparrow
 
 ```
 
-<a id="removerangefrom"></a>
 ## removeRangeFrom
 
 ```TypeScript
@@ -727,7 +711,6 @@ console.info("result:", result);  // result: 1
 
 ```
 
-<a id="setvalueat"></a>
 ## setValueAt
 
 ```TypeScript
@@ -772,7 +755,6 @@ console.info("result:", result);  // result: 3546
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript

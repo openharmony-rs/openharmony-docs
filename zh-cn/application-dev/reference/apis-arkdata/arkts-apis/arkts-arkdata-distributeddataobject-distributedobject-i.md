@@ -1,6 +1,6 @@
 # DistributedObject
 
-表示一个分布式数据对象。在使用以下接口前，需调用[createDistributedObject()](arkts-arkdata-distributeddataobject-createdistributedobject-f.md#createdistributedobject-1)获取DistributedObject对象。
+表示一个分布式数据对象。在使用以下接口前，需调用[createDistributedObject()](arkts-arkdata-distributeddataobject-createdistributedobject-f.md#createdistributedobject)获取DistributedObject对象。
 
 **起始版本：** 8
 
@@ -18,7 +18,6 @@
 import { distributedDataObject } from '@kit.ArkData';
 ```
 
-<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -75,7 +74,6 @@ g_object.off('change');
 
 ```
 
-<a id="off-1"></a>
 ## off('status')
 
 ```TypeScript
@@ -93,13 +91,7 @@ off(
 
 **替代接口：** off(
 
-<!--Device-DistributedObject-off(
-      type: 'status',
-      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
-    ): void--><!--Device-DistributedObject-off(
-      type: 'status',
-      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
-    ): void-End-->
+<!--Device-DistributedObject-off(      type: 'status',      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void    ): void--><!--Device-DistributedObject-off(      type: 'status',      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void    ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -136,7 +128,6 @@ g_object.off('status');
 
 ```
 
-<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -190,7 +181,6 @@ g_object.on('change', (sessionId: string, fields: Array<string>) => {
 
 ```
 
-<a id="on-1"></a>
 ## on('status')
 
 ```TypeScript
@@ -208,13 +198,7 @@ on(
 
 **替代接口：** on(
 
-<!--Device-DistributedObject-on(
-      type: 'status',
-      callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
-    ): void--><!--Device-DistributedObject-on(
-      type: 'status',
-      callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
-    ): void-End-->
+<!--Device-DistributedObject-on(      type: 'status',      callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void    ): void--><!--Device-DistributedObject-on(      type: 'status',      callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void    ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -249,7 +233,6 @@ g_object.on('status', (sessionId: string, networkId: string, status: 'online' | 
 
 ```
 
-<a id="setsessionid"></a>
 ## setSessionId
 
 ```TypeScript
@@ -262,7 +245,7 @@ setSessionId(sessionId?: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [setSessionId(sessionId:](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid-1)
+**替代接口：** [setSessionId(sessionId:](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 

@@ -6,7 +6,6 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
-<a id="adddisallowedbluetoothprotocols"></a>
 ## addDisallowedBluetoothProtocols
 
 ```TypeScript
@@ -30,7 +29,7 @@ function addDisallowedBluetoothProtocols(admin: Want, accountId: number,  protoc
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 | protocols | Array&lt;Protocol&gt; | 是 | 蓝牙协议的数组。数组长度上限为10000。 |
 
 **错误码：**
@@ -68,7 +67,6 @@ try {
 ```
 
 
-<a id="adddisallowedbluetoothprotocols-1"></a>
 ## addDisallowedBluetoothProtocols
 
 ```TypeScript
@@ -76,7 +74,6 @@ function addDisallowedBluetoothProtocols(admin: Want, accountId: number, protoco
 ```
 
 添加蓝牙协议至禁用名单。添加后，指定用户将无法根据指定的传输策略使用该禁用名单中的蓝牙协议。
-
 > **说明：**  
 >
 
@@ -95,7 +92,7 @@ function addDisallowedBluetoothProtocols(admin: Want, accountId: number, protoco
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 | protocols | Array&lt;Protocol&gt; | 是 | 蓝牙协议数组，指定需要添加至禁用名单的协议。 |
 | policy | [TransferPolicy](arkts-mdm-bluetoothmanager-transferpolicy-e.md) | 是 | 传输策略。 |
 

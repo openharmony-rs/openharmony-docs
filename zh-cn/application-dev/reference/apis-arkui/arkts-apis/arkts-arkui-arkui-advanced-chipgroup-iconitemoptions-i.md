@@ -130,7 +130,7 @@ icon: IconOptions
 
 Chip大小是ChipSize.SMALL时，suffix默认值：{width: 16,height: 16}。
 
-Chip大小是ChipSize.NORMAL时，suffix默认值：{width: 24,height: 24}。</br> 如果想动态修改size，那么必须在引入[IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md)时，使用[SymbolGlyphModifier](./arkui/SymbolGlyphModifier:SymbolGlyphModifier)类型。
+Chip大小是ChipSize.NORMAL时，suffix默认值：{width: 24,height: 24}。</br> 如果想动态修改size，那么必须在引入[IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md)时，使用[SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)类型。
 
 值为undefined时，按默认值处理。
 

@@ -6,7 +6,6 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
-<a id="getcontext"></a>
 ## getContext
 
 ```TypeScript

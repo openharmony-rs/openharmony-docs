@@ -10,7 +10,6 @@ RichEditor组件控制器基类。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="closeselectionmenu"></a>
 ## closeSelectionMenu
 
 ```TypeScript
@@ -31,7 +30,6 @@ closeSelectionMenu(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="deletebackward"></a>
 ## deleteBackward
 
 ```TypeScript
@@ -52,7 +50,6 @@ deleteBackward(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getcaretoffset"></a>
 ## getCaretOffset
 
 ```TypeScript
@@ -79,7 +76,6 @@ getCaretOffset(): number
 | --- | --- |
 | number | 当前光标所在位置。 |
 
-<a id="getcaretrect"></a>
 ## getCaretRect
 
 ```TypeScript
@@ -104,7 +100,6 @@ getCaretRect(): RectResult | undefined
 | --- | --- |
 | [RectResult](arkts-arkui-rectresult-i.md) | 当前光标与RichEditor的相对位置。 |
 
-<a id="getlayoutmanager"></a>
 ## getLayoutManager
 
 ```TypeScript
@@ -129,7 +124,6 @@ getLayoutManager(): LayoutManager
 | --- | --- |
 | [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | 布局管理器对象，可用于获取组件内容的布局位置等信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
-<a id="getpreviewtext"></a>
 ## getPreviewText
 
 ```TypeScript
@@ -154,7 +148,6 @@ getPreviewText(): PreviewText
 | --- | --- |
 | [PreviewText](../arkts-apis/arkts-arkui-previewtext-i.md) | 预上屏文本信息，包含输入法预显示的候选文本内容及起始位置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
-<a id="gettypingstyle"></a>
 ## getTypingStyle
 
 ```TypeScript
@@ -179,7 +172,6 @@ getTypingStyle(): RichEditorTextStyle
 | --- | --- |
 | [RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md) | 用户预设的文本输入样式对象，包含字体颜色、大小、粗细等样式属性，可用于查询当前组件的输入文本样式配置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
-<a id="isediting"></a>
 ## isEditing
 
 ```TypeScript
@@ -204,7 +196,6 @@ isEditing(): boolean
 | --- | --- |
 | boolean | true表示编辑态，false表示非编辑态。 |
 
-<a id="scrolltovisible"></a>
 ## scrollToVisible
 
 ```TypeScript
@@ -227,7 +218,6 @@ scrollToVisible(range?: TextRange): void
 | --- | --- | --- | --- |
 | range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | 滚动到可视区域的内容范围，包括内容起始位置和终止位置。<br>起始位置应小于等于结束位置，否则接口调用无效。起始位置小于0视为0，结束位置大于全文长度视为全文长度。<br>未指定范围时，默认为全部内容。未指定起始位置，默认起始位置为0；未指定结束位置，默认结束位置为全文长度。 |
 
-<a id="setcaretoffset"></a>
 ## setCaretOffset
 
 ```TypeScript
@@ -260,7 +250,6 @@ setCaretOffset(offset: number): boolean
 | --- | --- |
 | boolean | 光标是否设置成功。<br/>true表示光标位置设置成功，false表示未成功。 |
 
-<a id="setselection"></a>
 ## setSelection
 
 ```TypeScript
@@ -295,7 +284,6 @@ selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选
 | selectionEnd | number | 是 | 选中结束位置。 |
 | options | [SelectionOptions](arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置，用于控制选中操作时的菜单弹出策略。<br>当需要自定义菜单弹出行为（如强制显示或隐藏菜单）时传入此参数；<br>省略时默认使用MenuPolicy.DEFAULT，遵循系统默认菜单弹出策略。<br>各MenuPolicy取值的适用场景请参考SelectionOptions对象说明。<br>**起始版本：** 12 |
 
-<a id="setstyledplaceholder"></a>
 ## setStyledPlaceholder
 
 ```TypeScript
@@ -320,7 +308,6 @@ setStyledPlaceholder(styledString: StyledString): void
 | --- | --- | --- | --- |
 | styledString | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | 是 | 设置属性字符串样式的提示文本，其优先级高于[placeholder](RichEditorAttribute#placeholder)属性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](../arkts-apis/arkts-arkui-gesturestyle-c.md)样式绑定的手势事件，以及[UrlStyle](../arkts-apis/arkts-arkui-urlstyle-c.md)样式的超链接跳转能力。 |
 
-<a id="settypingparagraphstyle"></a>
 ## setTypingParagraphStyle
 
 ```TypeScript
@@ -345,7 +332,6 @@ setTypingParagraphStyle(style: RichEditorParagraphStyle): void
 | --- | --- | --- | --- |
 | style | [RichEditorParagraphStyle](arkts-arkui-richeditorparagraphstyle-i.md) | 是 | 预设段落样式。 |
 
-<a id="settypingstyle"></a>
 ## setTypingStyle
 
 ```TypeScript
@@ -372,7 +358,6 @@ setTypingStyle(value: RichEditorTextStyle): void
 | --- | --- | --- | --- |
 | value | [RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md) | 是 | 预设的文本输入样式，包含字体颜色、大小、粗细等属性，用于设置后续输入文本的默认样式。 |
 
-<a id="stopediting"></a>
 ## stopEditing
 
 ```TypeScript

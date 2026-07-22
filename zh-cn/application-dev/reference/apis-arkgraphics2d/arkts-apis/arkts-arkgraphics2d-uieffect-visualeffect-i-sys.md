@@ -14,7 +14,6 @@ VisualEffect效果类，用于将相应的效果添加到指定的组件上。�
 import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
-<a id="backgroundcolorblender"></a>
 ## backgroundColorBlender
 
 ```TypeScript
@@ -58,7 +57,6 @@ visualEffect.backgroundColorBlender(blender)
 
 ```
 
-<a id="borderlight"></a>
 ## borderLight
 
 ```TypeScript
@@ -70,9 +68,7 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 
 **起始版本：** 20
 
-<!--Device-VisualEffect-borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,
-      borderWidth: double): VisualEffect--><!--Device-VisualEffect-borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,
-      borderWidth: double): VisualEffect-End-->
+<!--Device-VisualEffect-borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      borderWidth: double): VisualEffect--><!--Device-VisualEffect-borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      borderWidth: double): VisualEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -143,7 +139,6 @@ struct Index {
 
 ```
 
-<a id="colorgradient"></a>
 ## colorGradient
 
 ```TypeScript
@@ -155,9 +150,7 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 
 **起始版本：** 20
 
-<!--Device-VisualEffect-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,
-      alphaMask?: Mask): VisualEffect--><!--Device-VisualEffect-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,
-      alphaMask?: Mask): VisualEffect-End-->
+<!--Device-VisualEffect-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,      alphaMask?: Mask): VisualEffect--><!--Device-VisualEffect-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,      alphaMask?: Mask): VisualEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -224,7 +217,6 @@ struct ColorGradientExample {
 
 ```
 
-<a id="distortioncollapse"></a>
 ## distortionCollapse
 
 ```TypeScript
@@ -286,7 +278,6 @@ struct Index {
 
 ```
 
-<a id="liquidmaterial"></a>
 ## liquidMaterial
 
 ```TypeScript
@@ -298,9 +289,7 @@ liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMa
 
 **起始版本：** 22
 
-<!--Device-VisualEffect-liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask,
-      brightnessParam?: BrightnessParam): VisualEffect--><!--Device-VisualEffect-liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask,
-      brightnessParam?: BrightnessParam): VisualEffect-End-->
+<!--Device-VisualEffect-liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask,      brightnessParam?: BrightnessParam): VisualEffect--><!--Device-VisualEffect-liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask,      brightnessParam?: BrightnessParam): VisualEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

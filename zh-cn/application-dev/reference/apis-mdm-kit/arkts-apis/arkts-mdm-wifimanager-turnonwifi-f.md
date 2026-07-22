@@ -6,7 +6,6 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
-<a id="turnonwifi"></a>
 ## turnOnWifi
 
 ```TypeScript
@@ -17,7 +16,7 @@ function turnOnWifi(admin: Want, isForce: boolean): void
 
 以下情况下，通过本接口打开Wi-Fi开关，会打开失败并提示"系统功能被禁用"：
 
-?已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口启用Wi-Fi，解决"系统功能被禁用"报错。
+?已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
 
 **起始版本：** 20
 
@@ -34,7 +33,7 @@ function turnOnWifi(admin: Want, isForce: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| isForce | boolean | 是 | 是否强制打开Wi-Fi功能。<br/>true表示强制开启Wi-Fi，强制开启后不支持用户在设备上手动关闭Wi-Fi开关，必须采用[turnOffWifi](arkts-mdm-wifimanager-turnoffwifi-f.md#turnoffwifi-1)接口关闭。false表示非强制开启Wi-Fi，此时用户可以在设备上手动操作关闭Wi-Fi开关。 |
+| isForce | boolean | 是 | 是否强制打开Wi-Fi功能。<br/>true表示强制开启Wi-Fi，强制开启后不支持用户在设备上手动关闭Wi-Fi开关，必须采用[turnOffWifi](arkts-mdm-wifimanager-turnoffwifi-f.md#turnoffwifi)接口关闭。false表示非强制开启Wi-Fi，此时用户可以在设备上手动操作关闭Wi-Fi开关。 |
 
 **错误码：**
 

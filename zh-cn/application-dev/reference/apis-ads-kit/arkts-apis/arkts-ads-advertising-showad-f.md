@@ -6,7 +6,6 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
-<a id="showad"></a>
 ## showAd
 
 ```TypeScript

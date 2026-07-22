@@ -6,7 +6,6 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
-<a id="getuserauthinstance"></a>
 ## getUserAuthInstance
 
 ```TypeScript
@@ -14,7 +13,6 @@ function getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): Us
 ```
 
 获取[UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md)对象，执行用户身份认证，并支持使用统一用户身份认证控件。该接口用于创建一个用户认证实例，配置认证参数和界面参数后，可通过返回的实例对象启动认证、订阅认证结果等。
-
 > **说明：**  
 >  
 > 每个UserAuthInstance只能进行一次认证，需要再次认证时，必须重新获取UserAuthInstance。认证完成后（无论成功或失败），该实例将无法再次使用。
@@ -44,7 +42,7 @@ function getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): Us
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 | [12500005](../errorcode-useriam.md#12500005-认证类型不支持) | The authentication type is not supported. |
 | [12500006](../errorcode-useriam.md#12500006-认证信任等级不支持) | The authentication trust level is not supported. |

@@ -14,7 +14,6 @@ LightWeightSet可用于存储一系列值的集合，存储元素中value值唯�
 import { LightWeightSet } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -81,7 +80,6 @@ for (let i = 0; i < 10; i++) {
 
 ```
 
-<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -126,7 +124,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="addall"></a>
 ## addAll
 
 ```TypeScript
@@ -176,7 +173,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -212,7 +208,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -243,7 +238,6 @@ let lightWeightSet = new LightWeightSet<number | string>();
 
 ```
 
-<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -299,7 +293,6 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
-<a id="equal"></a>
 ## equal
 
 ```TypeScript
@@ -307,7 +300,6 @@ equal(obj: Object): boolean
 ```
 
 判断此容器与obj的构成元素是否相同。
-
 > **说明**  
 >  
 > 此接口从API version 8开始支持，从API version 12开始废弃。无替代接口。
@@ -351,7 +343,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -408,7 +399,6 @@ for (let i = 0; i < 10; i++) {
 
 ```
 
-<a id="getindexof"></a>
 ## getIndexOf
 
 ```TypeScript
@@ -455,7 +445,6 @@ console.info("result:", result);  // result: 0
 
 ```
 
-<a id="getvalueat"></a>
 ## getValueAt
 
 ```TypeScript
@@ -502,7 +491,6 @@ console.info("result:", result);  // result: squirrel
 
 ```
 
-<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -548,7 +536,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="hasall"></a>
 ## hasAll
 
 ```TypeScript
@@ -597,7 +584,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="increasecapacityto"></a>
 ## increaseCapacityTo
 
 ```TypeScript
@@ -636,7 +622,6 @@ lightWeightSet.increaseCapacityTo(10);
 
 ```
 
-<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -675,7 +660,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -722,7 +706,6 @@ console.info("result:", result);  // result: sparrow
 
 ```
 
-<a id="removeat"></a>
 ## removeAt
 
 ```TypeScript
@@ -769,7 +752,6 @@ console.info("result:", result);  // result: true
 
 ```
 
-<a id="toarray"></a>
 ## toArray
 
 ```TypeScript
@@ -811,7 +793,6 @@ console.info(result.toString());
 
 ```
 
-<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -846,7 +827,6 @@ console.info("result:", result);  // result: sparrow,squirrel
 
 ```
 
-<a id="values"></a>
 ## values
 
 ```TypeScript

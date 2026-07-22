@@ -6,7 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="on"></a>
 ## on('applicationState')
 
 ```TypeScript
@@ -86,7 +85,6 @@ try {
 ```
 
 
-<a id="on-1"></a>
 ## on('applicationState')
 
 ```TypeScript

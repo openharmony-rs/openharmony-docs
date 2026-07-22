@@ -6,7 +6,6 @@
 import { JSON } from '@kit.ArkTS';
 ```
 
-<a id="parse"></a>
 ## parse
 
 ```TypeScript

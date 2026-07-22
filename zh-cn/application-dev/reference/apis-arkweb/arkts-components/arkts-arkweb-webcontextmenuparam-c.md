@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ WebContextMenuParam的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="existsimagecontents"></a>
 ## existsImageContents
 
 ```TypeScript
@@ -48,7 +46,6 @@ existsImageContents(): boolean
 | --- | --- |
 | boolean | 返回当前上下文菜单位置是否存在图片内容。 |
 
-<a id="getcontextmenumediatype"></a>
 ## getContextMenuMediaType
 
 ```TypeScript
@@ -69,7 +66,6 @@ getContextMenuMediaType(): ContextMenuDataMediaType
 | --- | --- |
 | [ContextMenuDataMediaType](arkts-arkweb-contextmenudatamediatype-e.md) | 返回上下文节点的类型。 |
 
-<a id="geteditstateflags"></a>
 ## getEditStateFlags
 
 ```TypeScript
@@ -92,7 +88,6 @@ getEditStateFlags(): number
 | --- | --- |
 | number | @syscap SystemCapability.Web.Webview.Core@atomicservice |
 
-<a id="getinputfieldtype"></a>
 ## getInputFieldType
 
 ```TypeScript
@@ -115,7 +110,6 @@ getInputFieldType(): ContextMenuInputFieldType
 | --- | --- |
 | [ContextMenuInputFieldType](arkts-arkweb-contextmenuinputfieldtype-e.md) | 输入框上触发菜单时返回输入框类型。 |
 
-<a id="getlinkurl"></a>
 ## getLinkUrl
 
 ```TypeScript
@@ -138,7 +132,6 @@ getLinkUrl(): string
 | --- | --- |
 | string | 关联链接时返回链接地址，否则返回 null。 |
 
-<a id="getmediatype"></a>
 ## getMediaType
 
 ```TypeScript
@@ -161,7 +154,6 @@ getMediaType(): ContextMenuMediaType
 | --- | --- |
 | [ContextMenuMediaType](arkts-arkweb-contextmenumediatype-e.md) | 返回上下文节点的类型。 |
 
-<a id="getpreviewheight"></a>
 ## getPreviewHeight
 
 ```TypeScript
@@ -182,7 +174,6 @@ getPreviewHeight(): number
 | --- | --- |
 | number | 预览菜单高度。单位：像素。 |
 
-<a id="getpreviewwidth"></a>
 ## getPreviewWidth
 
 ```TypeScript
@@ -203,7 +194,6 @@ getPreviewWidth(): number
 | --- | --- |
 | number | 菜单预览宽度。单位：像素。 |
 
-<a id="getselectiontext"></a>
 ## getSelectionText
 
 ```TypeScript
@@ -226,7 +216,6 @@ getSelectionText(): string
 | --- | --- |
 | string | 返回选中文本，未选中任何文本时返回 null。 |
 
-<a id="getsourcetype"></a>
 ## getSourceType
 
 ```TypeScript
@@ -249,7 +238,6 @@ getSourceType(): ContextMenuSourceType
 | --- | --- |
 | [ContextMenuSourceType](arkts-arkweb-contextmenusourcetype-e.md) | @syscap SystemCapability.Web.Webview.Core@atomicservice |
 
-<a id="getsourceurl"></a>
 ## getSourceUrl
 
 ```TypeScript
@@ -272,7 +260,6 @@ getSourceUrl(): string
 | --- | --- |
 | string | 若当前上下文菜单源自元素 src 属性，则返回资源链接地址，否则返回 null。 |
 
-<a id="getunfilteredlinkurl"></a>
 ## getUnfilteredLinkUrl
 
 ```TypeScript
@@ -295,7 +282,6 @@ getUnfilteredLinkUrl(): string
 | --- | --- |
 | string | 关联链接时返回未过滤的链接地址，否则返回 null。 |
 
-<a id="iseditable"></a>
 ## isEditable
 
 ```TypeScript
@@ -318,7 +304,6 @@ isEditable(): boolean
 | --- | --- |
 | boolean | @syscap SystemCapability.Web.Webview.Core@atomicservice |
 
-<a id="x"></a>
 ## x
 
 ```TypeScript
@@ -341,7 +326,6 @@ x(): number
 | --- | --- |
 | number | 上下文菜单X坐标。正常情况下返回非负整数，否则返回 -1。单位：像素。 |
 
-<a id="y"></a>
 ## y
 
 ```TypeScript

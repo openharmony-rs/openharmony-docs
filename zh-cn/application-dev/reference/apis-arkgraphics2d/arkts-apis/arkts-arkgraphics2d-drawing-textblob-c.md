@@ -1,7 +1,6 @@
 # TextBlob
 
 由一个或多个具有相同字体的字符组成的字块。
-
 > **说明：**  
 >  
 > - 本模块使用屏幕物理像素单位px。  
@@ -20,7 +19,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="bounds"></a>
 ## bounds
 
 ```TypeScript
@@ -41,7 +39,6 @@ bounds(): common2D.Rect
 | --- | --- |
 | common2D.Rect | Rectangular bounding box. |
 
-<a id="makefrompostext"></a>
 ## makeFromPosText
 
 ```TypeScript
@@ -61,7 +58,7 @@ static makeFromPosText(text: string, len: number, points: common2D.Point[], font
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | 绘制字形的文本内容。 |
-| len | number | 是 | 字形个数，由[countText](arkts-arkgraphics2d-drawing-font-c.md#counttext-1)获取，该参数为整数。 |
+| len | number | 是 | 字形个数，由[countText](arkts-arkgraphics2d-drawing-font-c.md#counttext)获取，该参数为整数。 |
 | points | common2D.Point[] | 是 | 点数组，用于指定每个字形的坐标，长度必须为len。 |
 | font | [Font](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-font-c.md) | 是 | 字型对象。 |
 
@@ -77,7 +74,6 @@ static makeFromPosText(text: string, len: number, points: common2D.Point[], font
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="makefromrunbuffer"></a>
 ## makeFromRunBuffer
 
 ```TypeScript
@@ -112,7 +108,6 @@ static makeFromRunBuffer(pos: Array<TextBlobRunBuffer>, font: Font, bounds?: com
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="makefromstring"></a>
 ## makeFromString
 
 ```TypeScript
@@ -147,7 +142,6 @@ static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBl
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="uniqueid"></a>
 ## uniqueID
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getapplicationinfosync"></a>
 ## getApplicationInfoSync
 
 ```TypeScript
@@ -33,7 +32,7 @@ function getApplicationInfoSync(bundleName: string, applicationFlags: number, us
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
 | applicationFlags | number | 是 | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考[ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md)。 |
-| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 
 **返回值：**
 
@@ -74,7 +73,6 @@ try {
 ```
 
 
-<a id="getapplicationinfosync-1"></a>
 ## getApplicationInfoSync
 
 ```TypeScript

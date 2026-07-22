@@ -8,7 +8,7 @@
 
 <!--Del-->
 
-请参考[静态订阅公共事件](docroot://basic-services/common-event/common-event-static-subscription-sys.md)以获取事件配置信息和二级配置文件的配置方式。<!--DelEnd-->
+请参考[静态订阅公共事件](../../../basic-services/common-event/common-event-static-subscription-sys.md)以获取事件配置信息和二级配置文件的配置方式。<!--DelEnd-->
 
 **起始版本：** 11
 

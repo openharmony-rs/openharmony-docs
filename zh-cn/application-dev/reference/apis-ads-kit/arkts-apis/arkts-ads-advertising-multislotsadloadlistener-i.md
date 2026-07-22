@@ -14,7 +14,6 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
-<a id="onadloadfailure"></a>
 ## onAdLoadFailure
 
 ```TypeScript
@@ -55,7 +54,6 @@ const multiSlotsAdLoadListener: advertising.MultiSlotsAdLoadListener = {
 
 ```
 
-<a id="onadloadsuccess"></a>
 ## onAdLoadSuccess
 
 ```TypeScript

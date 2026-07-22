@@ -1,6 +1,6 @@
 # CalendarManager
 
-下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md#getcalendarmanager-1)方法获取CalendarManager对象，再通过此对象调用对应方法，进行Calendar的创建、删除、修改、查询等操作。
+下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md#getcalendarmanager)方法获取CalendarManager对象，再通过此对象调用对应方法，进行Calendar的创建、删除、修改、查询等操作。
 
 **起始版本：** 10
 
@@ -14,7 +14,6 @@
 import { calendarManager } from '@kit.CalendarKit';
 ```
 
-<a id="createcalendar"></a>
 ## createCalendar
 
 ```TypeScript
@@ -74,7 +73,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 
 ```
 
-<a id="createcalendar-1"></a>
 ## createCalendar
 
 ```TypeScript
@@ -134,7 +132,6 @@ try {
 
 ```
 
-<a id="deletecalendar"></a>
 ## deleteCalendar
 
 ```TypeScript
@@ -205,7 +202,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 
 ```
 
-<a id="deletecalendar-1"></a>
 ## deleteCalendar
 
 ```TypeScript
@@ -274,7 +270,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 
 ```
 
-<a id="editevent"></a>
 ## editEvent
 
 ```TypeScript
@@ -323,7 +318,6 @@ calendarMgr?.editEvent(event).then((eventId: number): void => {
 
 ```
 
-<a id="getallcalendars"></a>
 ## getAllCalendars
 
 ```TypeScript
@@ -377,7 +371,6 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 ```
 
-<a id="getallcalendars-1"></a>
 ## getAllCalendars
 
 ```TypeScript
@@ -431,7 +424,6 @@ calendarMgr?.getAllCalendars((err: BusinessError, data: calendarManager.Calendar
 
 ```
 
-<a id="getcalendar"></a>
 ## getCalendar
 
 ```TypeScript
@@ -489,7 +481,6 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
 
 ```
 
-<a id="getcalendar-1"></a>
 ## getCalendar
 
 ```TypeScript
@@ -554,7 +545,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 
 ```
 
-<a id="getcalendar-2"></a>
 ## getCalendar
 
 ```TypeScript

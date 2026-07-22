@@ -1,8 +1,8 @@
 # UIPickerComponent属性/事件
 
-除支持[通用属性](./common)外，还支持以下属性：
+除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下属性：
 
-除支持[通用事件](./common)外，还支持以下事件：
+除支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下事件：
 
 **继承/实现关系：** UIPickerComponentAttribute extends [CommonMethod<UIPickerComponentAttribute>](CommonMethod<UIPickerComponentAttribute>)
 
@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="canloop"></a>
 ## canLoop
 
 ```TypeScript
@@ -42,7 +41,6 @@ canLoop(isLoop: Optional<boolean>)
 | --- | --- | --- | --- |
 | isLoop | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否可循环滚动。 |
 
-<a id="displayeditemcount"></a>
 ## displayedItemCount
 
 ```TypeScript
@@ -73,7 +71,6 @@ displayedItemCount(count: Optional<number>)
 | --- | --- | --- | --- |
 | count | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 可见选项数量。 |
 
-<a id="enablehapticfeedback"></a>
 ## enableHapticFeedback
 
 ```TypeScript
@@ -105,7 +102,6 @@ enableHapticFeedback(enable: Optional<boolean>)
 | --- | --- | --- | --- |
 | enable | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 设置是否开启触控反馈。 |
 
-<a id="itemheight"></a>
 ## itemHeight
 
 ```TypeScript
@@ -136,7 +132,6 @@ itemHeight(height: Optional<LengthMetrics>)
 | --- | --- | --- | --- |
 | height | [Optional](arkts-arkui-optional-t.md)&lt;LengthMetrics&gt; | 是 | 选项高度。 |
 
-<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -167,7 +162,6 @@ onChange(callback: Optional<OnUIPickerComponentCallback>)
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-optional-t.md)&lt;OnUIPickerComponentCallback&gt; | 是 | 当选中项发生变化时触发的回调函数。当callback的值为undefined时，不使用回调函数。 |
 
-<a id="onscrollstop"></a>
 ## onScrollStop
 
 ```TypeScript
@@ -192,7 +186,6 @@ onScrollStop(callback: Optional<OnUIPickerComponentCallback>)
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-optional-t.md)&lt;OnUIPickerComponentCallback&gt; | 是 | 当选择器滑动停止时触发的回调函数。当callback的值为undefined时，不使用回调函数。 |
 
-<a id="selectionindicator"></a>
 ## selectionIndicator
 
 ```TypeScript

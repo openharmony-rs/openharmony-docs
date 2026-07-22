@@ -20,7 +20,6 @@ Worker类包含所有Worker功能。
 import { MessageEvents, PostMessageOptions, MessageEvent, Priority, WorkerEventTarget, ThreadWorkerPriority, ThreadWorkerGlobalScope, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, WorkerOptions, EventTarget, WorkerEventListener } from '@kit.ArkTS';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -59,7 +58,6 @@ const workerInstance = new worker.Worker('entry/ets/workers/worker.ets', {name: 
 
 ```
 
-<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -97,7 +95,6 @@ workerInstance.off("alert");
 
 ```
 
-<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -136,7 +133,6 @@ workerInstance.on("alert", () => {
 
 ```
 
-<a id="once"></a>
 ## once
 
 ```TypeScript
@@ -175,7 +171,6 @@ workerInstance.once("alert", () => {
 
 ```
 
-<a id="postmessage"></a>
 ## postMessage
 
 ```TypeScript
@@ -214,7 +209,6 @@ workerInstance.postMessage(buffer, [buffer]);
 
 ```
 
-<a id="postmessage-1"></a>
 ## postMessage
 
 ```TypeScript
@@ -255,7 +249,6 @@ workerInstance.postMessage(buffer, [buffer]);
 
 ```
 
-<a id="terminate"></a>
 ## terminate
 
 ```TypeScript

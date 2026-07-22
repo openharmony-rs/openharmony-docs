@@ -6,7 +6,6 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
-<a id="unregistermissionlistener"></a>
 ## unRegisterMissionListener
 
 ```TypeScript
@@ -65,7 +64,6 @@ try {
 ```
 
 
-<a id="unregistermissionlistener-1"></a>
 ## unRegisterMissionListener
 
 ```TypeScript

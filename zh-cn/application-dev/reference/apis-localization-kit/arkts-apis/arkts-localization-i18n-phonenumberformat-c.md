@@ -14,7 +14,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -35,7 +34,7 @@ constructor(country: string, options?: PhoneNumberFormatOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| country | string | 是 | 表示电话号码所属的国家地区代码，要求是[合法的国家地区码](docroot://internationalization/i18n-locale-culture.md#实现原理)。 |
+| country | string | 是 | 表示电话号码所属的国家地区代码，要求是[合法的国家地区码](../../../internationalization/i18n-locale-culture.md#实现原理)。 |
 | options | [PhoneNumberFormatOptions](arkts-localization-i18n-phonenumberformatoptions-i.md) | 否 | 电话号码格式化时设置的配置项。默认值：NATIONAL。 |
 
 **示例：**
@@ -48,7 +47,6 @@ let phoneNumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN',
 
 ```
 
-<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -56,7 +54,6 @@ format(phoneNumber: string): string
 ```
 
 对电话号码进行格式化。
-
 > **说明**  
 >  
 > 从API version 12开始，支持对拨号中的电话号码进行格式化。
@@ -102,7 +99,6 @@ for (let i = 0; i < phoneNumber.length; i++) {
 
 ```
 
-<a id="getlocationname"></a>
 ## getLocationName
 
 ```TypeScript
@@ -110,7 +106,6 @@ getLocationName(phoneNumber: string, locale: string): string
 ```
 
 获取电话号码归属地。
-
 > **说明**  
 >  
 > 从API version 23开始，支持对拨号中的电话号码实时获取归属地。
@@ -128,7 +123,7 @@ getLocationName(phoneNumber: string, locale: string): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。获取其他地区电话号码的归属地时，需要在电话号码前加00+国际区号。<br>**起始版本：** 12 |
-| locale | string | 是 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
+| locale | string | 是 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
 
 **返回值：**
 
@@ -158,7 +153,6 @@ formatResult = typingFormatter.getLocationName('133426', 'en'); // formatResult 
 
 ```
 
-<a id="isvalidnumber"></a>
 ## isValidNumber
 
 ```TypeScript

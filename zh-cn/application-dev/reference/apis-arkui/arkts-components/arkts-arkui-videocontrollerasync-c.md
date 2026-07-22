@@ -8,7 +8,6 @@ Video playback controller class for asynchronous operations.Provides methods to 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -27,7 +26,6 @@ Creates a VideoControllerAsync instance.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="exitfullscreen"></a>
 ## exitFullscreen
 
 ```TypeScript
@@ -46,7 +44,6 @@ Exits fullscreen display mode.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -71,7 +68,6 @@ Pauses video playback asynchronously.
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
-<a id="requestfullscreen"></a>
 ## requestFullscreen
 
 ```TypeScript
@@ -96,7 +92,6 @@ Requests fullscreen display for the video.
 | --- | --- | --- | --- |
 | value | boolean | 是 | true to enter fullscreen, false otherwise. |
 
-<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -121,7 +116,6 @@ Resets the video controller asynchronously.Restores the controller to its initia
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
-<a id="setcurrenttime"></a>
 ## setCurrentTime
 
 ```TypeScript
@@ -146,7 +140,6 @@ Sets the current playback time without specifying seek mode.
 | --- | --- | --- | --- |
 | value | number | 是 | The target time in seconds<br>Unit: Seconds, The value must be greater than or equal to 0, The maximum value is the total duration of the video. If the duration exceeds the maximum value, the system jumps to the end of the video. |
 
-<a id="setcurrenttime-1"></a>
 ## setCurrentTime
 
 ```TypeScript
@@ -172,7 +165,6 @@ Sets the current playback time with specified seek mode.
 | value | number | 是 | The target time in seconds<br>Unit: Seconds, The value must be greater than or equal to 0, The maximum value is the total duration of the video. If the duration exceeds the maximum value, the system jumps to the end of the video. |
 | seekMode | [SeekMode](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media-seekmode-e.md) | 是 | The seek mode to use for time adjustment. |
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -197,7 +189,6 @@ Starts video playback asynchronously.
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript

@@ -1,6 +1,5 @@
 # createWatcher
 
-<a id="createwatcher"></a>
 ## createWatcher
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function createWatcher(filename: string, events: number, callback: Async
 
 **废弃版本：** 10
 
-**替代接口：** [fs:createWatcher](arkts-corefile-file-fs-createwatcher-f.md#createwatcher-1)
+**替代接口：** [fs:createWatcher](arkts-corefile-fileio-createwatcher-f.md#createwatcher)
 
 <!--Device-unnamed-declare function createWatcher(filename: string, events: number, callback: AsyncCallback<number>): Watcher--><!--Device-unnamed-declare function createWatcher(filename: string, events: number, callback: AsyncCallback<number>): Watcher-End-->
 

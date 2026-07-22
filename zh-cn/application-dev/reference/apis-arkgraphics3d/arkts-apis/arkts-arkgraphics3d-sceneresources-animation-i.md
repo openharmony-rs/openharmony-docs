@@ -10,7 +10,6 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="finish"></a>
 ## finish
 
 ```TypeScript
@@ -25,7 +24,6 @@ finish(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="onfinished"></a>
 ## onFinished
 
 ```TypeScript
@@ -46,7 +44,6 @@ onFinished(callback: Callback<void>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 动画完成时调用的回调 |
 
-<a id="onstarted"></a>
 ## onStarted
 
 ```TypeScript
@@ -67,7 +64,6 @@ onStarted(callback: Callback<void>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 动画开始时调用的回调 |
 
-<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -82,7 +78,6 @@ pause(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="restart"></a>
 ## restart
 
 ```TypeScript
@@ -97,7 +92,6 @@ restart(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="seek"></a>
 ## seek
 
 ```TypeScript
@@ -118,7 +112,6 @@ seek(position: number): void
 | --- | --- | --- | --- |
 | position | number | 是 | 跳转到0~1之间的位置 |
 
-<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -133,7 +126,6 @@ start(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="stop"></a>
 ## stop
 
 ```TypeScript

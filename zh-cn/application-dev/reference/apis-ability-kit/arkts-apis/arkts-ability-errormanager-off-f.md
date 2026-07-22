@@ -6,7 +6,6 @@
 import { errorManager } from '@kit.AbilityKit';
 ```
 
-<a id="off"></a>
 ## off('error')
 
 ```TypeScript
@@ -65,7 +64,6 @@ try {
 ```
 
 
-<a id="off-1"></a>
 ## off('error')
 
 ```TypeScript
@@ -129,7 +127,6 @@ try {
 ```
 
 
-<a id="off-2"></a>
 ## off('loopObserver')
 
 ```TypeScript
@@ -179,7 +176,6 @@ try {
 ```
 
 
-<a id="off-3"></a>
 ## off('unhandledRejection')
 
 ```TypeScript
@@ -266,7 +262,6 @@ errorManager.off('unhandledRejection', observer);
 ```
 
 
-<a id="off-4"></a>
 ## off('globalUnhandledRejectionDetected')
 
 ```TypeScript
@@ -328,7 +323,6 @@ errorManager.off('globalUnhandledRejectionDetected', promiseFunc);
 ```
 
 
-<a id="off-5"></a>
 ## off('freeze')
 
 ```TypeScript
@@ -384,7 +378,6 @@ try {
 ```
 
 
-<a id="off-6"></a>
 ## off('globalErrorOccurred')
 
 ```TypeScript

@@ -16,7 +16,7 @@
 | [LetterSpacingStyle](arkts-arkui-letterspacingstyle-c.md) | 文本字符间距对象说明。 |
 | [LineHeightStyle](arkts-arkui-lineheightstyle-c.md) | 文本行高对象说明。 |
 | [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | 文本行间距对象说明。 |
-| [MutableStyledString](arkts-arkui-mutablestyledstring-c.md) | 继承于[StyledString](arkts-arkui-styledstring-c.md)类。  > **以下接口异常入参处理统一说明：**  >  > 当start和length越界或者必填传入undefined时，会抛出异常；  >  > 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。 |
+| [MutableStyledString](arkts-arkui-mutablestyledstring-c.md) | 继承于[StyledString](arkts-arkui-styledstring-c.md)类。 > **以下接口异常入参处理统一说明：**  >  > 当start和length越界或者必填传入undefined时，会抛出异常；  >  > 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。 |
 | [ParagraphStyle](arkts-arkui-paragraphstyle-c.md) | 文本段落样式对象说明。  除首个段落外，后续段落按'\n'划分。  每个段落的段落样式按首个占位设置的段落样式生效，未设置时，段落按被绑定组件的段落样式生效。  在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](arkts-arkui-customspan-c.md)或[ImageAttachment](arkts-arkui-imageattachment-c.md)时，设置在该段落上的段落样式不生效。从API版本26.0.0开始，设置段落样式生效。 |
 | [StyledString](arkts-arkui-styledstring-c.md) | StyledString |
 | [TextShadowStyle](arkts-arkui-textshadowstyle-c.md) | 文本阴影对象说明。 |

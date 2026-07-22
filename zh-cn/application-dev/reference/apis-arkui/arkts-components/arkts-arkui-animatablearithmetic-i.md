@@ -1,6 +1,6 @@
 # AnimatableArithmetic
 
-该接口定义非number数据类型的动画运算规则。对非number类型的数据（如数组、结构体、颜色等）做动画，需要实现AnimatableArithmetic\<T\>接口中加法、减法、乘法和判断相等函数，使得该数据能参与动画的插值运算和识别该数据是否发生改变。即定义它们为实现了AnimatableArithmetic\<T\>接口的类型。
+该接口定义非number数据类型的动画运算规则。对非number类型的数据（如数组、结构体、颜色等）做动画，需要实现AnimatableArithmetic\&lt;T\&gt;接口中加法、减法、乘法和判断相等函数，使得该数据能参与动画的插值运算和识别该数据是否发生改变。即定义它们为实现了AnimatableArithmetic\&lt;T\&gt;接口的类型。
 
 **起始版本：** 10
 
@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="equals"></a>
 ## equals
 
 ```TypeScript
@@ -39,7 +38,6 @@ equals(rhs: AnimatableArithmetic<T>): boolean
 | --- | --- |
 | boolean | 是否相等。返回true表示相等，返回false表示不相等。 |
 
-<a id="multiply"></a>
 ## multiply
 
 ```TypeScript
@@ -70,7 +68,6 @@ multiply(scale: number): AnimatableArithmetic<T>
 | --- | --- |
 | [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md)&lt;T&gt; | 乘法运算的结果。 |
 
-<a id="plus"></a>
 ## plus
 
 ```TypeScript
@@ -101,7 +98,6 @@ plus(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>
 | --- | --- |
 | [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md)&lt;T&gt; | 加法运算的结果。 |
 
-<a id="subtract"></a>
 ## subtract
 
 ```TypeScript

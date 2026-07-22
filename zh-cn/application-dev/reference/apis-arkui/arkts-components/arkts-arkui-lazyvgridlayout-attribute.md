@@ -12,7 +12,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="columnstemplate"></a>
 ## columnsTemplate
 
 ```TypeScript

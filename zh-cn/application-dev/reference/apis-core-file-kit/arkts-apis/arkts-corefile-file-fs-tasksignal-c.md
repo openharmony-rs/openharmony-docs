@@ -14,7 +14,6 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -80,7 +79,6 @@ try {
 
 ```
 
-<a id="oncancel"></a>
 ## onCancel
 
 ```TypeScript

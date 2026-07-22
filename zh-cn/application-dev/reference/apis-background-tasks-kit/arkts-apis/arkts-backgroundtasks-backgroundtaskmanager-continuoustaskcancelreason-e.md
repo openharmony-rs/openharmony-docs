@@ -70,7 +70,7 @@ SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4
 SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5
 ```
 
-申请AUDIO_PLAYBACK类型长时任务，但是未接入[AVSession](docroot://media/avsession/avsession-overview.md)。预留接口，暂未启用。
+申请AUDIO_PLAYBACK类型长时任务，但是未接入[AVSession](../../../media/avsession/avsession-overview.md)。预留接口，暂未启用。
 
 **起始版本：** 15
 

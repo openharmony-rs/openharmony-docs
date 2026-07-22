@@ -6,7 +6,6 @@
 import { batteryStats } from '@kit.BasicServicesKit';
 ```
 
-<a id="gethardwareunitpowerpercent"></a>
 ## getHardwareUnitPowerPercent
 
 ```TypeScript

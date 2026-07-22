@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getabilitylabel"></a>
 ## getAbilityLabel
 
 ```TypeScript
@@ -36,7 +35,6 @@ function getAbilityLabel(bundleName: string, abilityName: string, callback: Asyn
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回应用名称信息。 |
 
 
-<a id="getabilitylabel-1"></a>
 ## getAbilityLabel
 
 ```TypeScript

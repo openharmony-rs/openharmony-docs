@@ -6,7 +6,6 @@
 import { browser } from '@kit.MDMKit';
 ```
 
-<a id="setpolicies"></a>
 ## setPolicies
 
 ```TypeScript
@@ -19,7 +18,7 @@ function setPolicies(admin: Want, appId: string, policies: string, callback: Asy
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setpolicysync-1)
+**替代接口：** [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setpolicysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -75,7 +74,6 @@ browser.setPolicies(wantTemp, appId, policies, (err) => {
 ```
 
 
-<a id="setpolicies-1"></a>
 ## setPolicies
 
 ```TypeScript
@@ -88,7 +86,7 @@ function setPolicies(admin: Want, appId: string, policies: string): Promise<void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setpolicysync-1)
+**替代接口：** [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setpolicysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 

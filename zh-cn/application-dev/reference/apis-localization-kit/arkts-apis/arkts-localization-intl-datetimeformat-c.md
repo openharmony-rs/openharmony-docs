@@ -18,7 +18,6 @@
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -51,7 +50,6 @@ let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 
 ```
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -94,7 +92,6 @@ formatter = new intl.DateTimeFormat(['ban', 'zh'], { dateStyle: 'full', timeStyl
 
 ```
 
-<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -145,7 +142,6 @@ formattedDate = formatter.format(date); // formattedDate "Friday, 17 December 20
 
 ```
 
-<a id="formatrange"></a>
 ## formatRange
 
 ```TypeScript
@@ -194,7 +190,6 @@ let formattedDateRange: string = formatter.formatRange(startDate, endDate); // f
 
 ```
 
-<a id="resolvedoptions"></a>
 ## resolvedOptions
 
 ```TypeScript

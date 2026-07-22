@@ -1,7 +1,6 @@
 # NavigationMode
 
 导航页显示模式。Navigation处于分栏显示状态时，导航页和内容区之间会显示分割线。
-
 > **说明：**  
 >  
 > 为了简化表示，可以将`组件宽度 - minContentWidth - 分割线宽度 (1px)`称为calcNavBarWidth。
@@ -10,13 +9,13 @@
 
 | 开发者设置的navBarWidth值 | calcNavBarWidth计算值 | navBarWidth最终取值 |  
 | --- | --- | --- |  
-| navBarWidth < minNavBarWidth | NA | minNavBarWidth |  
-| navBarWidth > maxNavBarWidth | calcNavBarWidth > maxNavBarWidth | maxNavBarWidth |  
-| navBarWidth > maxNavBarWidth | calcNavBarWidth < minNavBarWidth | minNavBarWidth |  
-| navBarWidth > maxNavBarWidth | minNavBarWidth ≤ calcNavBarWidth ≤ maxNavBarWidth | calcNavBarWidth |  
+| navBarWidth &lt; minNavBarWidth | NA | minNavBarWidth |  
+| navBarWidth &gt; maxNavBarWidth | calcNavBarWidth > maxNavBarWidth | maxNavBarWidth |  
+| navBarWidth > maxNavBarWidth | calcNavBarWidth &lt; minNavBarWidth | minNavBarWidth |  
+| navBarWidth &gt; maxNavBarWidth | minNavBarWidth ≤ calcNavBarWidth ≤ maxNavBarWidth | calcNavBarWidth |  
 | minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | calcNavBarWidth ≤ minNavBarWidth | minNavBarWidth |  
-| minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | minNavBarWidth < calcNavBarWidth <= navBarWidth | calcNavBarWidth |  
-| minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | calcNavBarWidth > navBarWidth | navBarWidth |
+| minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | minNavBarWidth < calcNavBarWidth &lt;= navBarWidth | calcNavBarWidth |  
+| minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | calcNavBarWidth &gt; navBarWidth | navBarWidth |
 
 **起始版本：** 9
 
@@ -74,9 +73,9 @@ Split
 Auto
 ```
 
-API version 9及之前版本，Navigation宽度>=520vp时，采用Split模式显示；Navigation宽度<520vp时，采用Stack模式显示。
+API version 9及之前版本，Navigation宽度>=520vp时，采用Split模式显示；Navigation宽度&lt;520vp时，采用Stack模式显示。
 
-从API version 10开始：Navigation宽度>=600vp时，采用Split模式显示；Navigation宽度<600vp时，采用Stack模式显示，600vp等于minNavBarWidth(240vp) +minContentWidth (360vp)。
+从API version 10开始：Navigation宽度&gt;=600vp时，采用Split模式显示；Navigation宽度<600vp时，采用Stack模式显示，600vp等于minNavBarWidth(240vp) +minContentWidth (360vp)。
 
 **起始版本：** 9
 

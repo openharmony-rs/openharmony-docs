@@ -68,10 +68,10 @@ errorReasons?: Array<number>
 - 0：本次申请合法。  
 - 1：权限名非法，请检查权限名格式和取值。  
 - 2：权限未声明，请在module.json中声明该权限。  
-- 3：不满足对应权限的申请条件，例如部分位置权限需要满足额外前提。当前仅位置权限涉及，包括[ohos.permission.LOCATION](docroot://security/AccessToken/permissions-for-all-user.md#ohospermissionlocation)与[ohos.permission.APPROXIMATELY_LOCATION](docroot://security/AccessToken/permissions-for-all-user.md#ohospermissionapproximately_location)。  
+- 3：不满足对应权限的申请条件，例如部分位置权限需要满足额外前提。当前仅位置权限涉及，包括[ohos.permission.LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionlocation)与[ohos.permission.APPROXIMATELY_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionapproximately_location)。  
 - 4：用户未同意隐私声明，请引导用户同意隐私声明后再申请权限。  
 - 5：该权限不支持通过权限弹窗进行申请，可能是申请方式受限或被系统策略管控。请改用该权限支持的授权方式。  
-- 6：该权限为[manual_settings](docroot://security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型，只能通过设置页授权。从API version 21开始支持该原因码。  
+- 6：该权限为[manual_settings](../../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型，只能通过设置页授权。从API version 21开始支持该原因码。  
 - 12：服务异常，请稍后重试。
 
 **类型：** Array&lt;number&gt;

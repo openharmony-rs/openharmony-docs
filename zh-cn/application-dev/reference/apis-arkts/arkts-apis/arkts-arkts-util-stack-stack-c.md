@@ -14,7 +14,6 @@ Stack基于数组的数据结构实现，特点是先进后出，只能在一端
 import { Stack } from '@kit.ArkTS';
 ```
 
-<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -78,7 +77,6 @@ while (currentValue != undefined) {
 
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -110,7 +108,6 @@ console.info("length:", stack.length);  // length: 0
 
 ```
 
-<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -159,7 +156,6 @@ stack.forEach((value: number, index: number): void => {
 
 ```
 
-<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -202,7 +198,6 @@ console.info("result:", result);  // result: false
 
 ```
 
-<a id="locate"></a>
 ## locate
 
 ```TypeScript
@@ -251,7 +246,6 @@ console.info("result:", result);  // result: 2
 
 ```
 
-<a id="peek"></a>
 ## peek
 
 ```TypeScript
@@ -295,7 +289,6 @@ console.info("result:", result);  // result: 2
 
 ```
 
-<a id="pop"></a>
 ## pop
 
 ```TypeScript
@@ -340,7 +333,6 @@ console.info("result = " + result); // result = 4
 
 ```
 
-<a id="push"></a>
 ## push
 
 ```TypeScript

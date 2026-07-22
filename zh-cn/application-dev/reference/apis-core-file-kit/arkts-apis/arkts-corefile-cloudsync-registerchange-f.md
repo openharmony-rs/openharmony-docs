@@ -6,7 +6,6 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="registerchange"></a>
 ## registerChange
 
 ```TypeScript

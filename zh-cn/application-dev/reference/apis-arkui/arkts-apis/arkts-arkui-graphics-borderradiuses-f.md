@@ -1,6 +1,5 @@
 # borderRadiuses
 
-<a id="borderradiuses"></a>
 ## borderRadiuses
 
 ```TypeScript

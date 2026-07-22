@@ -6,7 +6,6 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="createx509cert"></a>
 ## createX509Cert
 
 ```TypeScript
@@ -28,13 +27,13 @@ function createX509Cert(inStream: EncodingBlob, callback: AsyncCallback<X509Cert
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | X509证书序列化数据。 |
-| callback | AsyncCallback&lt;X509Cert&gt; | 是 | 回调函数。当创建X509证书对象成功时，err为undefined，data为获取到的X509Cert实例；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;X509Cert&gt; | 是 | 回调函数。当创建X509证书对象成功时，err为undefined，data为获取到的X509Cert实例；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该操作。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
@@ -81,7 +80,6 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 ```
 
 
-<a id="createx509cert-1"></a>
 ## createX509Cert
 
 ```TypeScript
@@ -114,7 +112,7 @@ function createX509Cert(inStream: EncodingBlob): Promise<X509Cert>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该操作。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |

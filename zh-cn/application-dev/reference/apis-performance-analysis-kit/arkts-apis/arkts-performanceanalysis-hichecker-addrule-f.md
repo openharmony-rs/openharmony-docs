@@ -6,7 +6,6 @@
 import { hichecker } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="addrule"></a>
 ## addRule
 
 ```TypeScript
@@ -15,7 +14,7 @@ function addRule(rule: bigint): void
 
 > **˵����**  
 >  
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule-1)�����
+> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule)�����
 
 ����һ�����������ϵͳ��ϵͳ�������ӵĹ�����м�������
 
@@ -23,7 +22,7 @@ function addRule(rule: bigint): void
 
 **废弃版本：** 9
 
-**替代接口：** [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule-1)
+**替代接口：** [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule)
 
 <!--Device-hichecker-function addRule(rule: bigint): void--><!--Device-hichecker-function addRule(rule: bigint): void-End-->
 

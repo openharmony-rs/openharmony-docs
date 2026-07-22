@@ -6,7 +6,6 @@
 import { BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
-<a id="getalllauncherabilityinfos"></a>
 ## getAllLauncherAbilityInfos
 
 ```TypeScript
@@ -14,18 +13,17 @@ function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Arra
 ```
 
 获取所有的LauncherAbilityInfos，使用callback异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo-1)  
+> [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllLauncherAbilityInfo(userId:](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo-1)
+**替代接口：** [getAllLauncherAbilityInfo(userId:](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -43,7 +41,6 @@ function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Arra
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;LauncherAbilityInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回程序信息。 |
 
 
-<a id="getalllauncherabilityinfos-1"></a>
 ## getAllLauncherAbilityInfos
 
 ```TypeScript
@@ -51,18 +48,17 @@ function getAllLauncherAbilityInfos(userId: number): Promise<Array<LauncherAbili
 ```
 
 获取LauncherAbilityInfos，使用Promise异步回调。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo-1)  
+> [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo)  
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllLauncherAbilityInfo(userId:](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo-1)
+**替代接口：** [getAllLauncherAbilityInfo(userId:](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

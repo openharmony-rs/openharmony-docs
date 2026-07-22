@@ -18,7 +18,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="gettype"></a>
 ## getType
 
 ```TypeScript
@@ -31,7 +30,7 @@ getType(ch: string): string
 
 **废弃版本：** 9
 
-**替代接口：** [getType](arkts-localization-i18n-unicode-c.md#gettype-1)
+**替代接口：** [getType](arkts-localization-i18n-unicode-c.md#gettype)
 
 <!--Device-Character-getType(ch: string): string--><!--Device-Character-getType(ch: string): string-End-->
 
@@ -49,7 +48,6 @@ getType(ch: string): string
 | --- | --- |
 | string | 输入字符的一般类别值。 |
 
-<a id="isdigit"></a>
 ## isDigit
 
 ```TypeScript
@@ -62,7 +60,7 @@ isDigit(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isDigit](arkts-localization-i18n-unicode-c.md#isdigit-1)
+**替代接口：** [isDigit](arkts-localization-i18n-unicode-c.md#isdigit)
 
 <!--Device-Character-isDigit(ch: string): boolean--><!--Device-Character-isDigit(ch: string): boolean-End-->
 
@@ -80,7 +78,6 @@ isDigit(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是数字，false表示输入的字符不是数字。 |
 
-<a id="isideograph"></a>
 ## isIdeograph
 
 ```TypeScript
@@ -93,7 +90,7 @@ isIdeograph(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isIdeograph](arkts-localization-i18n-unicode-c.md#isideograph-1)
+**替代接口：** [isIdeograph](arkts-localization-i18n-unicode-c.md#isideograph)
 
 <!--Device-Character-isIdeograph(ch: string): boolean--><!--Device-Character-isIdeograph(ch: string): boolean-End-->
 
@@ -111,7 +108,6 @@ isIdeograph(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是表意文字，false表示输入的字符不是表意文字。 |
 
-<a id="isletter"></a>
 ## isLetter
 
 ```TypeScript
@@ -124,7 +120,7 @@ isLetter(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isLetter](arkts-localization-i18n-unicode-c.md#isletter-1)
+**替代接口：** [isLetter](arkts-localization-i18n-unicode-c.md#isletter)
 
 <!--Device-Character-isLetter(ch: string): boolean--><!--Device-Character-isLetter(ch: string): boolean-End-->
 
@@ -142,7 +138,6 @@ isLetter(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是字母，false表示输入的字符不是字母。 |
 
-<a id="islowercase"></a>
 ## isLowerCase
 
 ```TypeScript
@@ -155,7 +150,7 @@ isLowerCase(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isLowerCase](arkts-localization-i18n-unicode-c.md#islowercase-1)
+**替代接口：** [isLowerCase](arkts-localization-i18n-unicode-c.md#islowercase)
 
 <!--Device-Character-isLowerCase(ch: string): boolean--><!--Device-Character-isLowerCase(ch: string): boolean-End-->
 
@@ -173,7 +168,6 @@ isLowerCase(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是小写字母，false表示输入的字符不是小写字母。 |
 
-<a id="isrtl"></a>
 ## isRTL
 
 ```TypeScript
@@ -186,7 +180,7 @@ isRTL(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isRTL](arkts-localization-i18n-unicode-c.md#isrtl-1)
+**替代接口：** [isRTL](arkts-localization-i18n-unicode-c.md#isrtl)
 
 <!--Device-Character-isRTL(ch: string): boolean--><!--Device-Character-isRTL(ch: string): boolean-End-->
 
@@ -204,7 +198,6 @@ isRTL(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是从右到左语言的字符，false表示输入的字符不是从右到左语言的字符。 |
 
-<a id="isspacechar"></a>
 ## isSpaceChar
 
 ```TypeScript
@@ -217,7 +210,7 @@ isSpaceChar(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isSpaceChar](arkts-localization-i18n-unicode-c.md#isspacechar-1)
+**替代接口：** [isSpaceChar](arkts-localization-i18n-unicode-c.md#isspacechar)
 
 <!--Device-Character-isSpaceChar(ch: string): boolean--><!--Device-Character-isSpaceChar(ch: string): boolean-End-->
 
@@ -235,7 +228,6 @@ isSpaceChar(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是空格符，false表示输入的字符不是空格符。 |
 
-<a id="isuppercase"></a>
 ## isUpperCase
 
 ```TypeScript
@@ -248,7 +240,7 @@ isUpperCase(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isUpperCase](arkts-localization-i18n-unicode-c.md#isuppercase-1)
+**替代接口：** [isUpperCase](arkts-localization-i18n-unicode-c.md#isuppercase)
 
 <!--Device-Character-isUpperCase(ch: string): boolean--><!--Device-Character-isUpperCase(ch: string): boolean-End-->
 
@@ -266,7 +258,6 @@ isUpperCase(ch: string): boolean
 | --- | --- |
 | boolean | true表示输入的字符是大写字母，false表示输入的字符不是大写字母。 |
 
-<a id="iswhitespace"></a>
 ## isWhitespace
 
 ```TypeScript
@@ -279,7 +270,7 @@ isWhitespace(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isWhitespace](arkts-localization-i18n-unicode-c.md#iswhitespace-1)
+**替代接口：** [isWhitespace](arkts-localization-i18n-unicode-c.md#iswhitespace)
 
 <!--Device-Character-isWhitespace(ch: string): boolean--><!--Device-Character-isWhitespace(ch: string): boolean-End-->
 

@@ -40,63 +40,7 @@ Defines the length constrain property.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type LengthConstrain = {
-  /**
-   * minimum length.
-   *
-   *****/
-  /**
-   * minimum length.
-   *
-   ******/
-  /**
-   * minimum length.
-   *
-   *******/
-  minLength: Length;
-
-  /**
-   * maximum length.
-   *
-   *****/
-  /**
-   * maximum length.
-   *
-   ******/
-  /**
-   * maximum length.
-   *
-   *******/
-  maxLength: Length;
-}--><!--Device-unnamed-declare type LengthConstrain = {
-  /**
-   * minimum length.
-   *
-   *****/
-  /**
-   * minimum length.
-   *
-   ******/
-  /**
-   * minimum length.
-   *
-   *******/
-  minLength: Length;
-
-  /**
-   * maximum length.
-   *
-   *****/
-  /**
-   * maximum length.
-   *
-   ******/
-  /**
-   * maximum length.
-   *
-   *******/
-  maxLength: Length;
-}-End-->
+<!--Device-unnamed-declare type LengthConstrain = {  /**   * minimum length.   *   *****/  /**   * minimum length.   *   ******/  /**   * minimum length.   *   *******/  minLength: Length;  /**   * maximum length.   *   *****/  /**   * maximum length.   *   ******/  /**   * maximum length.   *   *******/  maxLength: Length;}--><!--Device-unnamed-declare type LengthConstrain = {  /**   * minimum length.   *   *****/  /**   * minimum length.   *   ******/  /**   * minimum length.   *   *******/  minLength: Length;  /**   * maximum length.   *   *****/  /**   * maximum length.   *   ******/  /**   * maximum length.   *   *******/  maxLength: Length;}-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

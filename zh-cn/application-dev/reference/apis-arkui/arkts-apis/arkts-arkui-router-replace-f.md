@@ -6,7 +6,6 @@
 import { router } from '@kit.ArkUI';
 ```
 
-<a id="replace"></a>
 ## replace
 
 ```TypeScript
@@ -14,17 +13,16 @@ function replace(options: RouterOptions): void
 ```
 
 用应用内的某个页面替换当前页面，并销毁被替换的页面。
-
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)替代。
+> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [replaceUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)
+**替代接口：** [replaceUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)
 
 <!--Device-router-function replace(options: RouterOptions): void--><!--Device-router-function replace(options: RouterOptions): void-End-->
 

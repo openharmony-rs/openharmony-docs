@@ -11,9 +11,7 @@ ArkTS TypedArray转换映射函数类型。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-collections-type TypedArrayMapCallback<ElementType, ArrayType> =
-    (value: ElementType, index: number, array: ArrayType) => ElementType--><!--Device-collections-type TypedArrayMapCallback<ElementType, ArrayType> =
-    (value: ElementType, index: number, array: ArrayType) => ElementType-End-->
+<!--Device-collections-type TypedArrayMapCallback<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => ElementType--><!--Device-collections-type TypedArrayMapCallback<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => ElementType-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

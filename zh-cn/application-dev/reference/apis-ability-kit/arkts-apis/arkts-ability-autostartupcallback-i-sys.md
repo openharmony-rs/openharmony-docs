@@ -10,7 +10,6 @@
 
 **系统接口：** 此接口为系统接口。
 
-<a id="onautostartupoff"></a>
 ## onAutoStartupOff
 
 ```TypeScript
@@ -35,7 +34,6 @@ onAutoStartupOff(info: AutoStartupInfo): void
 | --- | --- | --- | --- |
 | info | [AutoStartupInfo](arkts-ability-common-autostartupinfo-t-sys.md) | 是 | 取消开机自启动的应用组件信息。 |
 
-<a id="onautostartupon"></a>
 ## onAutoStartupOn
 
 ```TypeScript

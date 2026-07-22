@@ -6,7 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="issharedbundlerunning"></a>
 ## isSharedBundleRunning
 
 ```TypeScript
@@ -65,7 +64,6 @@ appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
 ```
 
 
-<a id="issharedbundlerunning-1"></a>
 ## isSharedBundleRunning
 
 ```TypeScript

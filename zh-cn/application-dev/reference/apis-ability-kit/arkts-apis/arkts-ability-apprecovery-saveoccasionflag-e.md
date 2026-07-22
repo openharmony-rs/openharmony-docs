@@ -1,6 +1,6 @@
 # SaveOccasionFlag
 
-保存条件标志，[enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md#enableapprecovery-1)接口状态保存时的选项参数，该类型为枚举。
+保存条件标志，[enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md#enableapprecovery)接口状态保存时的选项参数，该类型为枚举。
 
 **起始版本：** 9
 

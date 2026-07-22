@@ -6,7 +6,6 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="getuserproperty"></a>
 ## getUserProperty
 
 ```TypeScript

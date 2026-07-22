@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -25,7 +24,6 @@ FileSelectorResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="handlefilelist"></a>
 ## handleFileList
 
 ```TypeScript

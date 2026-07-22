@@ -6,7 +6,6 @@
 import { appRecovery } from '@kit.AbilityKit';
 ```
 
-<a id="enableapprecovery"></a>
 ## enableAppRecovery
 
 ```TypeScript

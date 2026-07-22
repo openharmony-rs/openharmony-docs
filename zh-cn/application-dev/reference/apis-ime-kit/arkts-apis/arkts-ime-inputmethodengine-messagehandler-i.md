@@ -14,7 +14,6 @@
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
-<a id="onmessage"></a>
 ## onMessage
 
 ```TypeScript
@@ -57,7 +56,6 @@ inputMethodEngine.getInputMethodAbility()
 
 ```
 
-<a id="onterminated"></a>
 ## onTerminated
 
 ```TypeScript

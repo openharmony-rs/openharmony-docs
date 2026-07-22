@@ -6,7 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="isabilityenabled"></a>
 ## isAbilityEnabled
 
 ```TypeScript
@@ -31,7 +30,6 @@ function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): 
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，返回boolean代表是否启用。 |
 
 
-<a id="isabilityenabled-1"></a>
 ## isAbilityEnabled
 
 ```TypeScript

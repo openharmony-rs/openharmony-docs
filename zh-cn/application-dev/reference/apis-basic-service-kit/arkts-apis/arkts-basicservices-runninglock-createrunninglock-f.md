@@ -6,7 +6,6 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
-<a id="createrunninglock"></a>
 ## createRunningLock
 
 ```TypeScript
@@ -19,7 +18,7 @@ function createRunningLock(name: string, type: RunningLockType, callback: AsyncC
 
 **废弃版本：** 9
 
-**替代接口：** [create](arkts-basicservices-runninglock-create-f.md#create-1)
+**替代接口：** [create](arkts-basicservices-runninglock-create-f.md#create)
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
@@ -49,7 +48,6 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 ```
 
 
-<a id="createrunninglock-1"></a>
 ## createRunningLock
 
 ```TypeScript
@@ -62,7 +60,7 @@ function createRunningLock(name: string, type: RunningLockType): Promise<Running
 
 **废弃版本：** 9
 
-**替代接口：** [create](arkts-basicservices-runninglock-create-f.md#create-1)
+**替代接口：** [create](arkts-basicservices-runninglock-create-f.md#create)
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 

@@ -6,7 +6,6 @@
 import { identifySensitiveContent } from '@kit.DataProtectionKit';
 ```
 
-<a id="scanfile"></a>
 ## scanFile
 
 ```TypeScript

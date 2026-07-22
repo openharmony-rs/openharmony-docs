@@ -16,7 +16,7 @@
 ALL = 0
 ```
 
-三方应用和系统应用。此选项只能作为[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md#getkeepalivebundles-1)接口的入参被调用。
+三方应用和系统应用。此选项只能作为[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md#getkeepalivebundles)接口的入参被调用。
 
 **起始版本：** 14
 

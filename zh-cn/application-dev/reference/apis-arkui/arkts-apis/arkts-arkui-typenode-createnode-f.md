@@ -1,6 +1,5 @@
 # createNode
 
-<a id="createnode"></a>
 ## createNode
 
 ```TypeScript
@@ -33,7 +32,6 @@ function createNode(context: UIContext, nodeType: 'Text'): Text
 | [Text](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-text-c.md) | Text类型的FrameNode节点。 |
 
 
-<a id="createnode-1"></a>
 ## createNode
 
 ```TypeScript
@@ -66,7 +64,6 @@ function createNode(context: UIContext, nodeType: 'Column'): Column
 | [Column](arkts-arkui-typenode-column-t.md) | Column类型的FrameNode节点。 |
 
 
-<a id="createnode-2"></a>
 ## createNode
 
 ```TypeScript
@@ -99,7 +96,6 @@ function createNode(context: UIContext, nodeType: 'Row'): Row
 | [Row](arkts-arkui-typenode-row-t.md) | Row类型的FrameNode节点。 |
 
 
-<a id="createnode-3"></a>
 ## createNode
 
 ```TypeScript
@@ -132,7 +128,6 @@ function createNode(context: UIContext, nodeType: 'Stack'): Stack
 | [Stack](../../apis-arkts/arkts-apis/arkts-arkts-util-stack-stack-c.md) | Stack类型的FrameNode节点。 |
 
 
-<a id="createnode-4"></a>
 ## createNode
 
 ```TypeScript
@@ -165,7 +160,6 @@ function createNode(context: UIContext, nodeType: 'GridRow'): GridRow
 | [GridRow](arkts-arkui-typenode-gridrow-t.md) | GridRow类型的FrameNode节点。 |
 
 
-<a id="createnode-5"></a>
 ## createNode
 
 ```TypeScript
@@ -198,7 +192,6 @@ function createNode(context: UIContext, nodeType: 'GridCol'): GridCol
 | [GridCol](arkts-arkui-typenode-gridcol-t.md) | GridCol类型的FrameNode节点。 |
 
 
-<a id="createnode-6"></a>
 ## createNode
 
 ```TypeScript
@@ -231,7 +224,6 @@ function createNode(context: UIContext, nodeType: 'Flex'): Flex
 | [Flex](arkts-arkui-typenode-flex-t.md) | Flex类型的FrameNode节点。 |
 
 
-<a id="createnode-7"></a>
 ## createNode
 
 ```TypeScript
@@ -264,7 +256,6 @@ function createNode(context: UIContext, nodeType: 'Swiper'): Swiper
 | [Swiper](arkts-arkui-typenode-swiper-t.md) | Swiper类型的FrameNode节点。 |
 
 
-<a id="createnode-8"></a>
 ## createNode
 
 ```TypeScript
@@ -297,7 +288,6 @@ function createNode(context: UIContext, nodeType: 'Progress'): Progress
 | [Progress](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-progress-i.md) | Progress类型的FrameNode节点。 |
 
 
-<a id="createnode-9"></a>
 ## createNode
 
 ```TypeScript
@@ -330,7 +320,6 @@ function createNode(context: UIContext, nodeType: 'Scroll'): Scroll
 | [Scroll](arkts-arkui-typenode-scroll-t.md) | Scroll类型的FrameNode节点。 |
 
 
-<a id="createnode-10"></a>
 ## createNode
 
 ```TypeScript
@@ -363,7 +352,6 @@ function createNode(context: UIContext, nodeType: 'RelativeContainer'): Relative
 | [RelativeContainer](arkts-arkui-typenode-relativecontainer-t.md) | RelativeContainer类型的FrameNode节点。 |
 
 
-<a id="createnode-11"></a>
 ## createNode
 
 ```TypeScript
@@ -396,7 +384,6 @@ function createNode(context: UIContext, nodeType: 'Divider'): Divider
 | [Divider](arkts-arkui-typenode-divider-t.md) | Divider类型的FrameNode节点。 |
 
 
-<a id="createnode-12"></a>
 ## createNode
 
 ```TypeScript
@@ -429,7 +416,6 @@ function createNode(context: UIContext, nodeType: 'LoadingProgress'): LoadingPro
 | [LoadingProgress](arkts-arkui-typenode-loadingprogress-t.md) | LoadingProgress类型的FrameNode节点。 |
 
 
-<a id="createnode-13"></a>
 ## createNode
 
 ```TypeScript
@@ -462,7 +448,6 @@ function createNode(context: UIContext, nodeType: 'Search'): Search
 | [Search](arkts-arkui-typenode-search-t.md) | Search类型的FrameNode节点。 |
 
 
-<a id="createnode-14"></a>
 ## createNode
 
 ```TypeScript
@@ -495,7 +480,6 @@ function createNode(context: UIContext, nodeType: 'Blank'): Blank
 | [Blank](arkts-arkui-typenode-blank-t.md) | Blank类型的FrameNode节点。 |
 
 
-<a id="createnode-15"></a>
 ## createNode
 
 ```TypeScript
@@ -528,7 +512,6 @@ function createNode(context: UIContext, nodeType: 'Image'): Image
 | [Image](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-image-i.md) | Image类型的FrameNode节点。 |
 
 
-<a id="createnode-16"></a>
 ## createNode
 
 ```TypeScript
@@ -561,7 +544,6 @@ function createNode(context: UIContext, nodeType: 'List'): List
 | [List](../../apis-arkts/arkts-apis/arkts-arkts-util-list-list-c.md) | List类型的FrameNode节点。 |
 
 
-<a id="createnode-17"></a>
 ## createNode
 
 ```TypeScript
@@ -594,7 +576,6 @@ function createNode(context: UIContext, nodeType: 'ListItem'): ListItem
 | [ListItem](arkts-arkui-typenode-listitem-t.md) | ListItem类型的FrameNode节点。 |
 
 
-<a id="createnode-18"></a>
 ## createNode
 
 ```TypeScript
@@ -627,7 +608,6 @@ function createNode(context: UIContext, nodeType: 'TextInput'): TextInput
 | [TextInput](arkts-arkui-typenode-textinput-t.md) | TextInput类型的FrameNode节点。 |
 
 
-<a id="createnode-19"></a>
 ## createNode
 
 ```TypeScript
@@ -657,10 +637,9 @@ function createNode(context: UIContext, nodeType: 'Button'): Button
 
 | 类型 | 说明 |
 | --- | --- |
-| [Button](arkts-arkui-promptaction-button-i.md) | Button类型的FrameNode节点。 |
+| [Button](arkts-arkui-prompt-button-i.md) | Button类型的FrameNode节点。 |
 
 
-<a id="createnode-20"></a>
 ## createNode
 
 ```TypeScript
@@ -693,7 +672,6 @@ function createNode(context: UIContext, nodeType: 'ListItemGroup'): ListItemGrou
 | [ListItemGroup](arkts-arkui-typenode-listitemgroup-t.md) | ListItemGroup类型的FrameNode节点。 |
 
 
-<a id="createnode-21"></a>
 ## createNode
 
 ```TypeScript
@@ -726,7 +704,6 @@ function createNode(context: UIContext, nodeType: 'WaterFlow'): WaterFlow
 | [WaterFlow](arkts-arkui-typenode-waterflow-t.md) | WaterFlow类型的FrameNode节点。 |
 
 
-<a id="createnode-22"></a>
 ## createNode
 
 ```TypeScript
@@ -759,7 +736,6 @@ function createNode(context: UIContext, nodeType: 'FlowItem'): FlowItem
 | [FlowItem](arkts-arkui-typenode-flowitem-t.md) | FlowItem类型的FrameNode节点。 |
 
 
-<a id="createnode-23"></a>
 ## createNode
 
 ```TypeScript
@@ -792,7 +768,6 @@ function createNode(context: UIContext, nodeType: 'XComponent'): XComponent
 | [XComponent](arkts-arkui-typenode-xcomponent-t.md) | XComponent类型的FrameNode节点。 |
 
 
-<a id="createnode-24"></a>
 ## createNode
 
 ```TypeScript
@@ -826,7 +801,6 @@ function createNode(context: UIContext, nodeType: 'XComponent', options: XCompon
 | [XComponent](arkts-arkui-typenode-xcomponent-t.md) | XComponent类型的FrameNode节点。 |
 
 
-<a id="createnode-25"></a>
 ## createNode
 
 ```TypeScript
@@ -860,7 +834,6 @@ function createNode(context: UIContext, nodeType: 'XComponent', parameters: Nati
 | [XComponent](arkts-arkui-typenode-xcomponent-t.md) | XComponent类型的FrameNode节点。 |
 
 
-<a id="createnode-26"></a>
 ## createNode
 
 ```TypeScript
@@ -893,7 +866,6 @@ function createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 | [Checkbox](arkts-arkui-typenode-checkbox-t.md) | Checkbox类型的FrameNode节点。 |
 
 
-<a id="createnode-27"></a>
 ## createNode
 
 ```TypeScript
@@ -926,7 +898,6 @@ function createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGrou
 | [CheckboxGroup](arkts-arkui-typenode-checkboxgroup-t.md) | CheckboxGroup类型的FrameNode节点。 |
 
 
-<a id="createnode-28"></a>
 ## createNode
 
 ```TypeScript
@@ -959,7 +930,6 @@ function createNode(context: UIContext, nodeType: 'Radio'): Radio
 | [Radio](arkts-arkui-typenode-radio-t.md) | Radio类型的FrameNode节点。 |
 
 
-<a id="createnode-29"></a>
 ## createNode
 
 ```TypeScript
@@ -992,7 +962,6 @@ function createNode(context: UIContext, nodeType: 'Rating'): Rating
 | [Rating](arkts-arkui-typenode-rating-t.md) | Rating类型的FrameNode节点。 |
 
 
-<a id="createnode-30"></a>
 ## createNode
 
 ```TypeScript
@@ -1025,7 +994,6 @@ function createNode(context: UIContext, nodeType: 'Select'): Select
 | [Select](arkts-arkui-typenode-select-t.md) | Select类型的FrameNode节点。 |
 
 
-<a id="createnode-31"></a>
 ## createNode
 
 ```TypeScript
@@ -1058,7 +1026,6 @@ function createNode(context: UIContext, nodeType: 'Slider'): Slider
 | [Slider](arkts-arkui-typenode-slider-t.md) | Slider类型的FrameNode节点。 |
 
 
-<a id="createnode-32"></a>
 ## createNode
 
 ```TypeScript
@@ -1092,7 +1059,6 @@ function createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOpti
 | [Toggle](arkts-arkui-typenode-toggle-t.md) | Toggle类型的FrameNode节点。 |
 
 
-<a id="createnode-33"></a>
 ## createNode
 
 ```TypeScript
@@ -1125,7 +1091,6 @@ function createNode(context: UIContext, nodeType: 'Marquee'): Marquee
 | [Marquee](arkts-arkui-typenode-marquee-t.md) | Marquee类型的FrameNode节点。 |
 
 
-<a id="createnode-34"></a>
 ## createNode
 
 ```TypeScript
@@ -1158,7 +1123,6 @@ function createNode(context: UIContext, nodeType: 'TextArea'): TextArea
 | [TextArea](arkts-arkui-typenode-textarea-t.md) | TextArea类型的FrameNode节点。 |
 
 
-<a id="createnode-35"></a>
 ## createNode
 
 ```TypeScript
@@ -1191,7 +1155,6 @@ function createNode(context: UIContext, nodeType: 'SymbolGlyph'): SymbolGlyph
 | [SymbolGlyph](arkts-arkui-typenode-symbolglyph-t.md) | SymbolGlyph类型的FrameNode节点。 |
 
 
-<a id="createnode-36"></a>
 ## createNode
 
 ```TypeScript
@@ -1224,7 +1187,6 @@ function createNode(context: UIContext, nodeType: 'QRCode'): QRCode
 | [QRCode](arkts-arkui-typenode-qrcode-t.md) | QRCode类型的FrameNode节点。 |
 
 
-<a id="createnode-37"></a>
 ## createNode
 
 ```TypeScript
@@ -1257,7 +1219,6 @@ function createNode(context: UIContext, nodeType: 'Badge'): Badge
 | [Badge](arkts-arkui-typenode-badge-t.md) | Badge类型的FrameNode节点。 |
 
 
-<a id="createnode-38"></a>
 ## createNode
 
 ```TypeScript
@@ -1290,7 +1251,6 @@ function createNode(context: UIContext, nodeType: 'TextClock'): TextClock
 | [TextClock](arkts-arkui-typenode-textclock-t.md) | TextClock类型的FrameNode节点。 |
 
 
-<a id="createnode-39"></a>
 ## createNode
 
 ```TypeScript
@@ -1323,7 +1283,6 @@ function createNode(context: UIContext, nodeType: 'TextTimer'): TextTimer
 | [TextTimer](arkts-arkui-typenode-texttimer-t.md) | TextTimer类型的FrameNode节点。 |
 
 
-<a id="createnode-40"></a>
 ## createNode
 
 ```TypeScript
@@ -1356,7 +1315,6 @@ function createNode(context: UIContext, nodeType: 'Grid'): Grid
 | [Grid](arkts-arkui-typenode-grid-t.md) | Grid类型的FrameNode节点。 |
 
 
-<a id="createnode-41"></a>
 ## createNode
 
 ```TypeScript

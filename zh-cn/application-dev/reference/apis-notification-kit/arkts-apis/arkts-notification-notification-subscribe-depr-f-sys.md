@@ -1,6 +1,5 @@
 # subscribe（系统接口）
 
-<a id="subscribe"></a>
 ## subscribe
 
 ```TypeScript
@@ -31,7 +30,6 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
 
 
-<a id="subscribe-1"></a>
 ## subscribe
 
 ```TypeScript
@@ -52,15 +50,7 @@ function subscribe(
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function subscribe(
-    subscriber: NotificationSubscriber,
-    info: NotificationSubscribeInfo,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-notification-function subscribe(
-    subscriber: NotificationSubscriber,
-    info: NotificationSubscribeInfo,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-notification-function subscribe(    subscriber: NotificationSubscriber,    info: NotificationSubscribeInfo,    callback: AsyncCallback<void>  ): void--><!--Device-notification-function subscribe(    subscriber: NotificationSubscriber,    info: NotificationSubscribeInfo,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -75,7 +65,6 @@ function subscribe(
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
 
 
-<a id="subscribe-2"></a>
 ## subscribe
 
 ```TypeScript

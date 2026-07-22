@@ -1,6 +1,5 @@
 # write
 
-<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -54,7 +53,6 @@ hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams).then(() 
 ```
 
 
-<a id="write-1"></a>
 ## write
 
 ```TypeScript

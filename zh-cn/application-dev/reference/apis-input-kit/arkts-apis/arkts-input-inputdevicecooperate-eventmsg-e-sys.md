@@ -1,7 +1,6 @@
 # EventMsg（系统接口）
 
 键鼠穿越事件。
-
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用[CooperateMessage](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-cooperatemessage-i-sys.md)替  

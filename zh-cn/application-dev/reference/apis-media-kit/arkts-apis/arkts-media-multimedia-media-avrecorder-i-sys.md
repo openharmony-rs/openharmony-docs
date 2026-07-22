@@ -1,14 +1,13 @@
 # AVRecorder
 
-音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-media-media-createavrecorder-f.md#createavrecorder-1)接口构建一个AVRecorder实例。
+音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-media-media-createavrecorder-f.md#createavrecorder)接口构建一个AVRecorder实例。
 
-音视频录制demo可参考：[音频录制开发指导](docroot://media/media/using-avrecorder-for-recording.md)、[视频录制开发指导](docroot://media/media/video-recording.md)。
-
+音视频录制demo可参考：[音频录制开发指导](../../../media/media/using-avrecorder-for-recording.md)、[视频录制开发指导](../../../media/media/video-recording.md)。
 > **说明：**  
 >  
 > - 本Interface首批API从API version 9开始支持。  
 >  
-> - 相机视频录制功能需配合相机模块使用，相机模块接口的使用详情请参考[相机管理](@ohos.multimedia.camera:camera)。
+> - 相机视频录制功能需配合相机模块使用，相机模块接口的使用详情请参考[相机管理](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenenodes-camera-i.md)。
 
 **起始版本：** 9
 
@@ -22,7 +21,6 @@
 import { media } from '@kit.MediaKit';
 ```
 
-<a id="getinputmetasurface"></a>
 ## getInputMetaSurface
 
 ```TypeScript
@@ -61,7 +59,6 @@ getInputMetaSurface(type: MetaSourceType): Promise<string>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
-<a id="iswatermarksupported"></a>
 ## isWatermarkSupported
 
 ```TypeScript
@@ -99,7 +96,6 @@ avRecorder.isWatermarkSupported().then((isWatermarkSupported: boolean) => {
 
 ```
 
-<a id="setmetadata"></a>
 ## setMetadata
 
 ```TypeScript
@@ -133,7 +129,6 @@ setMetadata(metadata: Record<string, string>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed.<br>**适用版本：** 26.0.0+ |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
-<a id="setwatermark"></a>
 ## setWatermark
 
 ```TypeScript

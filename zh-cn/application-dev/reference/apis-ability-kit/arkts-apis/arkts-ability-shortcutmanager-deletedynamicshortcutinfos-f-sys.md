@@ -6,7 +6,6 @@
 import { shortcutManager } from '@kit.AbilityKit';
 ```
 
-<a id="deletedynamicshortcutinfos"></a>
 ## deleteDynamicShortcutInfos
 
 ```TypeScript
@@ -31,7 +30,7 @@ function deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 要删除的动态快捷方式所属的包名。 |
 | appIndex | number | 是 | 要删除的动态快捷方式所属的分身索引。支持取值为：1、2、3、4、5。 |
-| userId | number | 是 | 要删除的动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | number | 是 | 要删除的动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户，取值范围：大于等于0。 |
 | ids | Array&lt;string&gt; | 否 | 要删除的动态快捷方式id列表。缺省或传入列表为空时，表示删除所有符合条件的动态快捷方式。 |
 
 **返回值：**

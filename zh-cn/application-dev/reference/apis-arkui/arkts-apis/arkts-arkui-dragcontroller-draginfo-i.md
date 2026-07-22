@@ -26,7 +26,7 @@ autoHideComponentUniqueIds?: number | number[]
 
 若主动拖拽源本身也需要被隐藏，需要同时传入其uniqueId。
 
-组件的uniqueId可通过[UIContext.getFrameNodeById()](arkts-arkui-arkui-uicontext-uicontext-c.md#getframenodebyid-1)配合[FrameNode.getUniqueId()](arkts-arkui-framenode-c.md#getuniqueid-1)获取。
+组件的uniqueId可通过[UIContext.getFrameNodeById()](arkts-arkui-arkui-uicontext-uicontext-c.md#getframenodebyid)配合[FrameNode.getUniqueId()](arkts-arkui-framenode-c.md#getuniqueid)获取。
 
 开发者需要在拖拽结束回调中按需恢复组件显示状态。
 

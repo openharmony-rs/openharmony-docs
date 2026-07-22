@@ -6,7 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="on"></a>
 ## on('sessionCreate')
 
 ```TypeScript
@@ -68,7 +67,6 @@ struct Index {
 ```
 
 
-<a id="on-1"></a>
 ## on('sessionDestroy')
 
 ```TypeScript
@@ -127,7 +125,6 @@ struct Index {
 ```
 
 
-<a id="on-2"></a>
 ## on('topSessionChange')
 
 ```TypeScript
@@ -188,7 +185,6 @@ struct Index {
 ```
 
 
-<a id="on-3"></a>
 ## on('sessionServiceDie')
 
 ```TypeScript
@@ -230,7 +226,6 @@ avSession.on('sessionServiceDie', () => {
 ```
 
 
-<a id="on-4"></a>
 ## on('distributedSessionChange')
 
 ```TypeScript
@@ -272,7 +267,6 @@ avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_S
 ```
 
 
-<a id="on-5"></a>
 ## on('deviceAvailable')
 
 ```TypeScript
@@ -315,7 +309,6 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 ```
 
 
-<a id="on-6"></a>
 ## on('deviceOffline')
 
 ```TypeScript
@@ -358,7 +351,6 @@ avSession.on('deviceOffline', (deviceId: string) => {
 ```
 
 
-<a id="on-7"></a>
 ## on('deviceLogEvent')
 
 ```TypeScript
@@ -401,7 +393,6 @@ avSession.on('deviceLogEvent', (eventCode: avSession.DeviceLogEventCode) => {
 ```
 
 
-<a id="on-8"></a>
 ## on('deviceStateChanged')
 
 ```TypeScript

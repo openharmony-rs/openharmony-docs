@@ -6,7 +6,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="promisify"></a>
 ## promisify
 
 ```TypeScript

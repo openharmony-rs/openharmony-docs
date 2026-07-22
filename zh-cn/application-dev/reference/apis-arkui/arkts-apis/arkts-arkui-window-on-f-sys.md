@@ -6,7 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="on"></a>
 ## on('systemBarTintChange')
 
 ```TypeScript
@@ -51,7 +50,6 @@ try {
 ```
 
 
-<a id="on-1"></a>
 ## on('gestureNavigationEnabledChange')
 
 ```TypeScript
@@ -98,7 +96,6 @@ try {
 ```
 
 
-<a id="on-2"></a>
 ## on('waterMarkFlagChange')
 
 ```TypeScript

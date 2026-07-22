@@ -14,14 +14,13 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
-<a id="onstatus"></a>
 ## onStatus
 
 ```TypeScript
 onStatus(networkId: string, status: number): void
 ```
 
-事件回调类。参数由[connectDfs](arkts-corefile-file-fs-connectdfs-f.md#connectdfs-1)传入。
+事件回调类。参数由[connectDfs](arkts-corefile-file-fs-connectdfs-f.md#connectdfs)传入。
 
 **起始版本：** 12
 

@@ -1,7 +1,6 @@
 # Region
 
 区域对象，用于描述所绘制图形的区域信息。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 12开始支持。  
@@ -22,7 +21,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -37,7 +35,6 @@ constructor()
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -58,7 +55,6 @@ constructor(region: Region)
 | --- | --- | --- | --- |
 | region | [Region](../../apis-image-kit/arkts-apis/arkts-image-image-region-i.md) | 是 | 用于拷贝的区域。 |
 
-<a id="constructor-2"></a>
 ## constructor
 
 ```TypeScript
@@ -82,7 +78,6 @@ constructor(left: number, top: number, right: number, bottom: number)
 | right | number | 是 | 矩形区域的右侧位置（矩形右下角横坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
 | bottom | number | 是 | 矩形区域的底部位置（矩形右下角纵坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
 
-<a id="getboundarypath"></a>
 ## getBoundaryPath
 
 ```TypeScript
@@ -103,7 +98,6 @@ getBoundaryPath(): Path
 | --- | --- |
 | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 返回当前区域边界的路径。 |
 
-<a id="getbounds"></a>
 ## getBounds
 
 ```TypeScript
@@ -124,7 +118,6 @@ getBounds(): common2D.Rect
 | --- | --- |
 | common2D.Rect | Bounding rectangle of this region. |
 
-<a id="iscomplex"></a>
 ## isComplex
 
 ```TypeScript
@@ -145,7 +138,6 @@ isComplex(): boolean
 | --- | --- |
 | boolean | 返回当前区域是否包含多个矩形的结果。true表示当前区域包含多个矩形，false表示当前区域不包含多个矩形。 |
 
-<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -166,7 +158,6 @@ isEmpty(): boolean
 | --- | --- |
 | boolean | 返回当前区域是否为空。true表示当前区域为空，false表示当前区域不为空。 |
 
-<a id="isequal"></a>
 ## isEqual
 
 ```TypeScript
@@ -193,7 +184,6 @@ isEqual(other: Region): boolean
 | --- | --- |
 | boolean | 返回其他区域是否与当前区域相等的结果。true表示相等，false表示不相等。 |
 
-<a id="ispointcontained"></a>
 ## isPointContained
 
 ```TypeScript
@@ -227,7 +217,6 @@ isPointContained(x: number, y:number): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="isrect"></a>
 ## isRect
 
 ```TypeScript
@@ -250,7 +239,6 @@ isRect(): boolean
 | --- | --- |
 | boolean | 返回当前区域是否等同于单个矩形的结果。true表示当前区域等同于单个矩形，false表示当前区域不等同于单个矩形。 |
 
-<a id="isregioncontained"></a>
 ## isRegionContained
 
 ```TypeScript
@@ -283,7 +271,6 @@ isRegionContained(other: Region): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="offset"></a>
 ## offset
 
 ```TypeScript
@@ -305,7 +292,6 @@ offset(dx: number, dy: number): void
 | dx | number | 是 | x轴方向平移量，正数往x轴正方向平移，负数往x轴负方向平移，该参数为整数。 |
 | dy | number | 是 | y轴方向平移量，正数往y轴正方向平移，负数往y轴负方向平移，该参数为整数。 |
 
-<a id="op"></a>
 ## op
 
 ```TypeScript
@@ -339,7 +325,6 @@ op(region: Region, regionOp: RegionOp): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="quickcontains"></a>
 ## quickContains
 
 ```TypeScript
@@ -371,7 +356,6 @@ quickContains(left: number, top: number, right: number, bottom: number): boolean
 | --- | --- |
 | boolean | 返回当前区域是否等同于单个矩形并且包含指定矩形的结果。true表示当前区域等同于单个矩形并且包含指定矩形，false表示当前区域不等同于单个矩形或不包含指定矩形。 |
 
-<a id="quickreject"></a>
 ## quickReject
 
 ```TypeScript
@@ -407,7 +391,6 @@ quickReject(left: number, top: number, right: number, bottom: number): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="quickrejectregion"></a>
 ## quickRejectRegion
 
 ```TypeScript
@@ -434,7 +417,6 @@ quickRejectRegion(region: Region): boolean
 | --- | --- |
 | boolean | 返回是否当前区域与另外的区域不相交的结果。true表示不相交，false表示相交。仅点和边相交返回true。 |
 
-<a id="setempty"></a>
 ## setEmpty
 
 ```TypeScript
@@ -449,7 +431,6 @@ setEmpty(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-<a id="setpath"></a>
 ## setPath
 
 ```TypeScript
@@ -483,7 +464,6 @@ setPath(path: Path, clip: Region): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="setrect"></a>
 ## setRect
 
 ```TypeScript
@@ -519,7 +499,6 @@ setRect(left: number, top: number, right: number, bottom: number): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="setregion"></a>
 ## setRegion
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
-<a id="startdevicemanager"></a>
 ## startDeviceManager
 
 ```TypeScript
@@ -19,7 +18,7 @@ function startDeviceManager(token: number, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [startDiscovering(discoverParam:](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering-1)
+**替代接口：** [startDiscovering(discoverParam:](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,7 +50,6 @@ continuationManager.startDeviceManager(token, (err) => {
 ```
 
 
-<a id="startdevicemanager-1"></a>
 ## startDeviceManager
 
 ```TypeScript
@@ -64,7 +62,7 @@ function startDeviceManager(token: number, options: ContinuationExtraParams, cal
 
 **废弃版本：** 9
 
-**替代接口：** [startDiscovering(discoverParam:](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering-1)
+**替代接口：** [startDiscovering(discoverParam:](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -102,7 +100,6 @@ continuationManager.startDeviceManager(
 ```
 
 
-<a id="startdevicemanager-2"></a>
 ## startDeviceManager
 
 ```TypeScript
@@ -115,7 +112,7 @@ function startDeviceManager(token: number, options?: ContinuationExtraParams): P
 
 **废弃版本：** 9
 
-**替代接口：** [startDiscovering(discoverParam:](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering-1)
+**替代接口：** [startDiscovering(discoverParam:](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

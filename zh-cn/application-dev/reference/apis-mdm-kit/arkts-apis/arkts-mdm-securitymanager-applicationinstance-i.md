@@ -20,7 +20,7 @@ import { securityManager } from '@kit.MDMKit';
 accountId: number
 ```
 
-Account ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1) of **@ohos.account.osAccount** to obtain the account ID.
+Account ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) of **@ohos.account.osAccount** to obtain the account ID.
 
 **类型：** number
 
@@ -38,7 +38,7 @@ Account ID, which must be greater than or equal to 0. You can call [getOsAccount
 appIdentifier: string
 ```
 
-应用[唯一标识符](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-signatureinfo-i.md)，如果应用没有appIdentifier可使用appId代替，可以通过接口[bundleManager.getBundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-1)获取bundleInfo.signatureInfo.appIdentifier和bundleInfo.signatureInfo.appId。
+应用[唯一标识符](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-signatureinfo-i.md)，如果应用没有appIdentifier可使用appId代替，可以通过接口[bundleManager.getBundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo)获取bundleInfo.signatureInfo.appIdentifier和bundleInfo.signatureInfo.appId。
 
 **类型：** string
 

@@ -6,7 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="setspecificsystemwindowzindex"></a>
 ## setSpecificSystemWindowZIndex
 
 ```TypeScript

@@ -14,7 +14,6 @@
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="enablelocalhandledetection"></a>
 ## enableLocalHandleDetection
 
 ```TypeScript
@@ -111,7 +110,6 @@ napi_value dangerous_function(napi_env env, napi_callback_info info) {
 
 ```
 
-<a id="getallvmheapmemoryinfo"></a>
 ## getAllVMHeapMemoryInfo
 
 ```TypeScript
@@ -152,7 +150,6 @@ util.ArkTSVM.getAllVMHeapMemoryInfo().then(
 
 ```
 
-<a id="offvmheapmemorypressure"></a>
 ## offVMHeapMemoryPressure
 
 ```TypeScript
@@ -178,7 +175,6 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 
 ```
 
-<a id="onvmheapmemorypressure"></a>
 ## onVMHeapMemoryPressure
 
 ```TypeScript
@@ -230,7 +226,6 @@ console.info('Registration result: ' + result);
 
 ```
 
-<a id="setmultithreadingdetectionenabled"></a>
 ## setMultithreadingDetectionEnabled
 
 ```TypeScript
@@ -278,7 +273,6 @@ util.ArkTSVM.setMultithreadingDetectionEnabled(true, {
 
 ```
 
-<a id="settrackglobalref"></a>
 ## setTrackGlobalRef
 
 ```TypeScript

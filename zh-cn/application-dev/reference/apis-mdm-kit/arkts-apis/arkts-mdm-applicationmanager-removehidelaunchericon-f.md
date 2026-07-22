@@ -6,7 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="removehidelaunchericon"></a>
 ## removeHideLauncherIcon
 
 ```TypeScript
@@ -14,7 +13,6 @@ function removeHideLauncherIcon(admin: Want, bundleNames: Array<string>): void
 ```
 
 取消隐藏桌面应用图标名单。
-
 > **说明：**  
 >  
 > 取消隐藏的应用会从桌面第2屏开始找空位显示；如果第2~18屏无空位，则在第1屏找空位；如果第1屏无空位，则在第2屏第1个应用的位置创建小文件夹放置应用。

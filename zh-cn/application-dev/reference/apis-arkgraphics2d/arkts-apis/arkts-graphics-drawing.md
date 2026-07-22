@@ -1,7 +1,6 @@
 # @ohos.graphics.drawing
 
 应用在开发中，经常需要针对不同的元素内容进行绘制，开发者通常可以选择直接使用ArkUI组件来绘制想要的元素或效果，但有些自定义图形或效果无法满足，此时可以选择使用Drawing来实现灵活的自定义绘制效果。Drawing模块提供基本的绘制能力，如绘制矩形、圆形、点、直线、自定义Path和字体等。
-
 > **说明：**  
 >  
 > - 本模块使用屏幕物理像素单位px。  
@@ -33,7 +32,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 图像滤波器。 |
 | [Lattice](arkts-arkgraphics2d-drawing-lattice-c.md) | 矩形网格对象。该对象用于将图片按照矩形网格进行划分。 |
 | [MaskFilter](arkts-arkgraphics2d-drawing-maskfilter-c.md) | 蒙版滤镜对象。 |
-| [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 矩阵对象。表示为3*3的矩阵，如下图所示：![matrix_3x3](docroot://reference/apis-arkgraphics2d/figures/matrix3X3.PNG)矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：![matrix_xy](docroot://reference/apis-arkgraphics2d/figures/matrix_xy.PNG) |
+| [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 矩阵对象。表示为3*3的矩阵，如下图所示：![matrix_3x3](../../../reference/apis-arkgraphics2d/figures/matrix3X3.PNG)矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：![matrix_xy](../../../reference/apis-arkgraphics2d/figures/matrix_xy.PNG) |
 | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 由直线、圆弧、二阶贝塞尔、三阶贝塞尔组成的复合几何路径。 |
 | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 路径效果对象。 |
 | [PathIterator](arkts-arkgraphics2d-drawing-pathiterator-c.md) | 表示路径操作迭代器，可通过遍历迭代器读取path的操作指令。 |
@@ -63,7 +62,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 | 名称 | 说明 |
 | --- | --- |
 | [BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md) | 混合模式枚举。混合模式会将两种颜色（源色、目标色）以特定的方式混合生成一种新的颜色，通常用于叠加、滤镜和遮罩等图形操作场景。混合操作会分别作用于红、绿、蓝三个颜色通道，采用相同的混合逻辑，而透明度（Alpha通道）则根据各模式的定义另行处理。为简洁起见，我们使用以下缩写：  s : source 源的缩写。d : destination 目标的缩写。sa : source alpha 源透明度的缩写。da : destination alpha 目标透明度的缩写。  计算结果用如下缩写表示：  r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用r表示。ra : 如果只操作透明度通道，用ra表示。rc : 如果操作3个颜色通道，用rc表示。  以黄色矩形为源图像，蓝色圆形为目标图像，各混合模式枚举生成的效果示意图请参考下表。 |
-| [BlurType](arkts-arkgraphics2d-drawing-blurtype-e.md) | 定义蒙版滤镜模糊中操作类型的枚举。  \| 名称 \| 值 \| 说明 \| 示意图 \|  \| ------ \| - \| ------------------ \| -------- \|  \| NORMAL \| 0 \| 全面模糊，外圈边缘和内部实体一起模糊。 \| ![image_BlueType_Normal.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Normal.png) \|  \| SOLID \| 1 \| 内部实体不变，只模糊外圈边缘部分。 \| ![image_BlueType_Solid.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Solid.png) \|  \| OUTER \| 2 \| 只有外圈边缘模糊，内部实体完全透明。 \| ![image_BlueType_Outer.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Outer.png) \|  \| INNER \| 3 \| 只有内部实体模糊，外圈边缘清晰。 \| ![image_BlueType_Inner.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Inner.png) \| |
+| [BlurType](arkts-arkgraphics2d-drawing-blurtype-e.md) | 定义蒙版滤镜模糊中操作类型的枚举。  \| 名称 \| 值 \| 说明 \| 示意图 \|  \| ------ \| - \| ------------------ \| -------- \|  \| NORMAL \| 0 \| 全面模糊，外圈边缘和内部实体一起模糊。 \| ![image_BlueType_Normal.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Normal.png) \|  \| SOLID \| 1 \| 内部实体不变，只模糊外圈边缘部分。 \| ![image_BlueType_Solid.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Solid.png) \|  \| OUTER \| 2 \| 只有外圈边缘模糊，内部实体完全透明。 \| ![image_BlueType_Outer.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Outer.png) \|  \| INNER \| 3 \| 只有内部实体模糊，外圈边缘清晰。 \| ![image_BlueType_Inner.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Inner.png) \| |
 | [CapStyle](arkts-arkgraphics2d-drawing-capstyle-e.md) | 定义线帽样式的枚举，即画笔在绘制线段时，在线段头尾端点的样式。 |
 | [ClipOp](arkts-arkgraphics2d-drawing-clipop-e.md) | 画布裁剪方式的枚举。 |
 | [CornerPos](arkts-arkgraphics2d-drawing-cornerpos-e.md) | 圆角位置枚举。 |

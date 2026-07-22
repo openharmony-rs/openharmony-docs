@@ -13,9 +13,7 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' |
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-accessibility-type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' |
-     'monospacedSansSerif' | 'sansSerif' | 'casual' | 'cursive' | 'smallCapitals'--><!--Device-accessibility-type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' |
-     'monospacedSansSerif' | 'sansSerif' | 'casual' | 'cursive' | 'smallCapitals'-End-->
+<!--Device-accessibility-type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' |     'monospacedSansSerif' | 'sansSerif' | 'casual' | 'cursive' | 'smallCapitals'--><!--Device-accessibility-type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' |     'monospacedSansSerif' | 'sansSerif' | 'casual' | 'cursive' | 'smallCapitals'-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 

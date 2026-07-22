@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="uninstall"></a>
 ## uninstall
 
 ```TypeScript
@@ -14,11 +13,10 @@ function uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?
 ```
 
 卸载当前/指定用户下的指定包接口，选择是否保留包数据（由isKeepData指定）。使用Promise异步回调。
-
 > **说明：**  
 >  
 > 当应用为不可卸载的预置应用或者通过  
-> [addDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-adddisalloweduninstallbundlessync-f.md#adddisalloweduninstallbundlessync-1)  
+> [addDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-adddisalloweduninstallbundlessync-f.md#adddisalloweduninstallbundlessync)  
 > 接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
 
 **起始版本：** 12

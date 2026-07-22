@@ -1,7 +1,6 @@
 # NotificationCapsule
 
 描述通知胶囊，用于在实况窗中展示胶囊形态。
-
 > **说明：**  
 >  
 > 实际显示效果依赖于设备能力和通知中心UI样式。
@@ -34,7 +33,7 @@ backgroundColor?: string
 icon?: image.PixelMap
 ```
 
-胶囊图标。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1)获取），建议图标像素长宽为128*128。
+胶囊图标。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），建议图标像素长宽为128*128。
 
 **类型：** image.PixelMap
 

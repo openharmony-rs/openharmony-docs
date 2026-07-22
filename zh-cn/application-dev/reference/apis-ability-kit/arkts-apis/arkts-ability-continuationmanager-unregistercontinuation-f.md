@@ -6,7 +6,6 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
-<a id="unregistercontinuation"></a>
 ## unregisterContinuation
 
 ```TypeScript
@@ -66,7 +65,6 @@ try {
 ```
 
 
-<a id="unregistercontinuation-1"></a>
 ## unregisterContinuation
 
 ```TypeScript

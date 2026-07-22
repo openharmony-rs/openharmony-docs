@@ -1,6 +1,5 @@
 # publishAsUser（系统接口）
 
-<a id="publishasuser"></a>
 ## publishAsUser
 
 ```TypeScript
@@ -13,7 +12,7 @@ function publishAsUser(event: string, userId: number, callback: AsyncCallback<vo
 
 **废弃版本：** 9
 
-**替代接口：** [publishAsUser(event:](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser-1)
+**替代接口：** [publishAsUser(event:](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser)
 
 <!--Device-commonEvent-function publishAsUser(event: string, userId: number, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publishAsUser(event: string, userId: number, callback: AsyncCallback<void>): void-End-->
 
@@ -52,7 +51,6 @@ commonEvent.publishAsUser('event', userId, publishCallBack);
 ```
 
 
-<a id="publishasuser-1"></a>
 ## publishAsUser
 
 ```TypeScript
@@ -70,19 +68,9 @@ function publishAsUser(
 
 **废弃版本：** 9
 
-**替代接口：** [publishAsUser(](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser-1)
+**替代接口：** [publishAsUser(](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser)
 
-<!--Device-commonEvent-function publishAsUser(
-    event: string,
-    userId: number,
-    options: CommonEventPublishData,
-    callback: AsyncCallback<void>
-  ): void--><!--Device-commonEvent-function publishAsUser(
-    event: string,
-    userId: number,
-    options: CommonEventPublishData,
-    callback: AsyncCallback<void>
-  ): void-End-->
+<!--Device-commonEvent-function publishAsUser(    event: string,    userId: number,    options: CommonEventPublishData,    callback: AsyncCallback<void>  ): void--><!--Device-commonEvent-function publishAsUser(    event: string,    userId: number,    options: CommonEventPublishData,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

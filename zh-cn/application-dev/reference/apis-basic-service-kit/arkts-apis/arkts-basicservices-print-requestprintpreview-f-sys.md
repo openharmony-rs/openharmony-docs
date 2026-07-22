@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="requestprintpreview"></a>
 ## requestPrintPreview
 
 ```TypeScript
@@ -70,7 +69,6 @@ print.requestPrintPreview(jobInfo, (num : number) => {
 ```
 
 
-<a id="requestprintpreview-1"></a>
 ## requestPrintPreview
 
 ```TypeScript

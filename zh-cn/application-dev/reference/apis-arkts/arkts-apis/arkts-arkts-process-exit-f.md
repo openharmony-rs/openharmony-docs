@@ -6,7 +6,6 @@
 import { process } from '@kit.ArkTS';
 ```
 
-<a id="exit"></a>
 ## exit
 
 ```TypeScript
@@ -21,7 +20,7 @@ function exit(code: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [exit](arkts-arkts-process-processmanager-c.md#exit-1)
+**替代接口：** [exit](arkts-arkts-process-processmanager-c.md#exit)
 
 <!--Device-process-function exit(code: number): void--><!--Device-process-function exit(code: number): void-End-->
 

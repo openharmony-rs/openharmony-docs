@@ -25,12 +25,12 @@ import { asset } from '@kit.AssetStoreKit';
 | [batchAdd](arkts-assetstore-asset-batchadd-f.md#batchadd) | 批量新增关键资产。使用Promise异步回调。  设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。  批量新增的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。  批量新增的关键资产数量最大值为100。 |
 | [batchRemove](arkts-assetstore-asset-batchremove-f.md#batchremove) | 批量删除符合条件的关键资产。使用Promise异步回调。  批量删除的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。  批量删除的关键资产数量最大值为100。 |
 | [batchUpdate](arkts-assetstore-asset-batchupdate-f.md#batchupdate) | 批量更新符合条件的关键资产。使用Promise异步回调。  批量更新的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。  批量更新的关键资产数量最大值为100。 |
-| [postQuery](arkts-assetstore-asset-postquery-f.md#postquery) | 查询的后置处理，用于需要用户认证的关键资产（与[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery-1)函数成对出现）。使用Promise异步回调。 |
-| [postQuerySync](arkts-assetstore-asset-postquerysync-f.md#postquerysync) | 查询的后置处理，用于需要用户认证的关键资产。需与[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md#prequerysync-1)函数成对出现。使用同步方式返回结果。 |
-| [preQuery](arkts-assetstore-asset-prequery-f.md#prequery) | 查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.query](arkts-assetstore-asset-query-f.md#query-1)和[asset.postQuery](arkts-assetstore-asset-postquery-f.md#postquery-1)接口。使用Promise异步回调。 |
-| [preQuerySync](arkts-assetstore-asset-prequerysync-f.md#prequerysync) | 查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.querySync](arkts-assetstore-asset-querysync-f.md#querysync-1)、[asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md#postquerysync-1)。使用同步方式返回结果。 |
-| [query](arkts-assetstore-asset-query-f.md#query) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery-1)接口，在本函数后调用[asset.postQuery](arkts-assetstore-asset-postquery-f.md#postquery-1)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。  如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。 |
-| [querySync](arkts-assetstore-asset-querysync-f.md#querysync) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md#prequerysync-1)，在本函数后调用[asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md#postquerysync-1)，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用同步方式返回结果。  如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。 |
+| [postQuery](arkts-assetstore-asset-postquery-f.md#postquery) | 查询的后置处理，用于需要用户认证的关键资产（与[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery)函数成对出现）。使用Promise异步回调。 |
+| [postQuerySync](arkts-assetstore-asset-postquerysync-f.md#postquerysync) | 查询的后置处理，用于需要用户认证的关键资产。需与[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md#prequerysync)函数成对出现。使用同步方式返回结果。 |
+| [preQuery](arkts-assetstore-asset-prequery-f.md#prequery) | 查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.query](arkts-assetstore-asset-query-f.md#query)和[asset.postQuery](arkts-assetstore-asset-postquery-f.md#postquery)接口。使用Promise异步回调。 |
+| [preQuerySync](arkts-assetstore-asset-prequerysync-f.md#prequerysync) | 查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.querySync](arkts-assetstore-asset-querysync-f.md#querysync)、[asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md#postquerysync)。使用同步方式返回结果。 |
+| [query](arkts-assetstore-asset-query-f.md#query) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery)接口，在本函数后调用[asset.postQuery](arkts-assetstore-asset-postquery-f.md#postquery)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。  如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。 |
+| [querySync](arkts-assetstore-asset-querysync-f.md#querysync) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md#prequerysync)，在本函数后调用[asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md#postquerysync)，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用同步方式返回结果。  如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。 |
 | [querySyncResult](arkts-assetstore-asset-querysyncresult-f.md#querysyncresult) | 执行同步操作后，查询同步执行结果。使用Promise异步回调。 |
 | [remove](arkts-assetstore-asset-remove-f.md#remove) | 删除符合条件的一条或多条关键资产。使用Promise异步回调。 |
 | [removeSync](arkts-assetstore-asset-removesync-f.md#removesync) | 删除符合条件的一条或多条关键资产，使用同步方式。 |
@@ -43,9 +43,9 @@ import { asset } from '@kit.AssetStoreKit';
 | 名称 | 说明 |
 | --- | --- |
 | [addAsUser](arkts-assetstore-asset-addasuser-f-sys.md#addasuser) | 在指定用户空间中新增一条关键资产。使用Promise异步回调。  设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性，需申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。 |
-| [postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md#postqueryasuser) | 在指定用户空间中查询的后置处理，用于需要用户认证的关键资产（与[asset.preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md#prequeryasuser-1)函数成对出现）。使用Promise异步回调。 |
-| [preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md#prequeryasuser) | 在指定用户空间中查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.queryAsUser](arkts-assetstore-asset-queryasuser-f-sys.md#queryasuser-1)和[asset.postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md#postqueryasuser-1)接口。使用Promise异步回调。 |
-| [queryAsUser](arkts-assetstore-asset-queryasuser-f-sys.md#queryasuser) | 在指定用户空间中查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md#prequeryasuser-1)接口，在本函数后调用[asset.postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md#postqueryasuser-1)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。 |
+| [postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md#postqueryasuser) | 在指定用户空间中查询的后置处理，用于需要用户认证的关键资产（与[asset.preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md#prequeryasuser)函数成对出现）。使用Promise异步回调。 |
+| [preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md#prequeryasuser) | 在指定用户空间中查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.queryAsUser](arkts-assetstore-asset-queryasuser-f-sys.md#queryasuser)和[asset.postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md#postqueryasuser)接口。使用Promise异步回调。 |
+| [queryAsUser](arkts-assetstore-asset-queryasuser-f-sys.md#queryasuser) | 在指定用户空间中查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md#prequeryasuser)接口，在本函数后调用[asset.postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md#postqueryasuser)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。 |
 | [removeAsUser](arkts-assetstore-asset-removeasuser-f-sys.md#removeasuser) | 从指定用户空间中删除符合条件的一条或多条关键资产。使用Promise异步回调。 |
 | [updateAsUser](arkts-assetstore-asset-updateasuser-f-sys.md#updateasuser) | 在指定用户空间中更新符合条件的一条关键资产。使用Promise异步回调。 |
 <!--DelEnd-->
@@ -55,7 +55,7 @@ import { asset } from '@kit.AssetStoreKit';
 | 名称 | 说明 |
 | --- | --- |
 | [BatchErrInfo](arkts-assetstore-asset-batcherrinfo-i.md) | 批量操作中单个关键资产的错误信息。 |
-| [BatchResult](arkts-assetstore-asset-batchresult-i.md) | [batchAdd](arkts-assetstore-asset-batchadd-f.md#batchadd-1)、[batchUpdate](arkts-assetstore-asset-batchupdate-f.md#batchupdate-1)和[batchRemove](arkts-assetstore-asset-batchremove-f.md#batchremove-1)批量操作的结果。 |
+| [BatchResult](arkts-assetstore-asset-batchresult-i.md) | [batchAdd](arkts-assetstore-asset-batchadd-f.md#batchadd)、[batchUpdate](arkts-assetstore-asset-batchupdate-f.md#batchupdate)和[batchRemove](arkts-assetstore-asset-batchremove-f.md#batchremove)批量操作的结果。 |
 | [SyncResult](arkts-assetstore-asset-syncresult-i.md) | 关键资产同步的结果。 |
 
 ### 枚举

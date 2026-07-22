@@ -6,20 +6,19 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="querycontactsbyemail"></a>
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据email查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail-1)
+**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -51,14 +50,13 @@ contact.queryContactsByEmail('xxx@email.com', (err: BusinessError, data) => {
 ```
 
 
-<a id="querycontactsbyemail-1"></a>
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(context: Context, email: string, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据email查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 10
 
@@ -105,20 +103,19 @@ contact.queryContactsByEmail(context, 'xxx@email.com', (err: BusinessError, data
 ```
 
 
-<a id="querycontactsbyemail-2"></a>
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据email和holder查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email和holder查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail-1)
+**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -155,7 +152,6 @@ contact.queryContactsByEmail('xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail-3"></a>
 ## queryContactsByEmail
 
 ```TypeScript
@@ -163,15 +159,13 @@ function queryContactsByEmail(context: Context, email: string, holder: Holder,
     callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据email和holder查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email和holder查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
-<!--Device-contact-function queryContactsByEmail(context: Context, email: string, holder: Holder,
-    callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function queryContactsByEmail(context: Context, email: string, holder: Holder,
-    callback: AsyncCallback<Array<Contact>>): void-End-->
+<!--Device-contact-function queryContactsByEmail(context: Context, email: string, holder: Holder,    callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function queryContactsByEmail(context: Context, email: string, holder: Holder,    callback: AsyncCallback<Array<Contact>>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -217,20 +211,19 @@ contact.queryContactsByEmail(context, 'xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail-4"></a>
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据email和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail-1)
+**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -265,7 +258,6 @@ contact.queryContactsByEmail('xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail-5"></a>
 ## queryContactsByEmail
 
 ```TypeScript
@@ -273,15 +265,13 @@ function queryContactsByEmail(context: Context, email: string, attrs: ContactAtt
     callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据email和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
-<!--Device-contact-function queryContactsByEmail(context: Context, email: string, attrs: ContactAttributes,
-    callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function queryContactsByEmail(context: Context, email: string, attrs: ContactAttributes,
-    callback: AsyncCallback<Array<Contact>>): void-End-->
+<!--Device-contact-function queryContactsByEmail(context: Context, email: string, attrs: ContactAttributes,    callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function queryContactsByEmail(context: Context, email: string, attrs: ContactAttributes,    callback: AsyncCallback<Array<Contact>>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -325,20 +315,19 @@ contact.queryContactsByEmail(context, 'xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail-6"></a>
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据email、holder和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail-1)
+**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -378,14 +367,13 @@ contact.queryContactsByEmail('xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail-7"></a>
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(context: Context, email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据email、holder和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 10
 
@@ -440,20 +428,19 @@ contact.queryContactsByEmail(context, 'xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail-8"></a>
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes): Promise<Array<Contact>>
 ```
 
-根据email、holder和attrs查询联系人。使用Promise异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用Promise异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail-1)
+**替代接口：** [queryContactsByEmail(context:](arkts-contacts-contact-querycontactsbyemail-f.md#querycontactsbyemail)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -494,14 +481,13 @@ promise.then((data) => {
 ```
 
 
-<a id="querycontactsbyemail-9"></a>
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(context: Context, email: string, holder?: Holder, attrs?: ContactAttributes): Promise<Array<Contact>>
 ```
 
-根据email、holder和attrs查询联系人。使用Promise异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-1)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用Promise异步回调。该接口返回的列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。
 
 **起始版本：** 10
 

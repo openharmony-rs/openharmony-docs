@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="unsubscribe"></a>
 ## unSubscribe
 
 ```TypeScript
 function unSubscribe(events: MechEventType[]): void
 ```
 
-Unsubscribes the specified events.
+取消事件注册
 
 **起始版本：** 26.0.0
 
@@ -27,7 +26,7 @@ Unsubscribes the specified events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| events | [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)[] | 是 | Events to be unsubscribed. |
+| events | [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)[] | 是 | 取消注册的事件列表。 |
 
 **错误码：**
 

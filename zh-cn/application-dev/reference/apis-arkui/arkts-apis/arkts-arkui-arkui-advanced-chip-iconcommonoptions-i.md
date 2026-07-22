@@ -1,7 +1,6 @@
 # IconCommonOptions
 
 IconCommonOptions定义图标的共通属性。
-
 > **说明：**  
 >  
 > 仅在图片格式为SVG时，fillColor和activatedFillColor属性才生效。

@@ -1,6 +1,5 @@
 # unlinkSync
 
-<a id="unlinksync"></a>
 ## unlinkSync
 
 ```TypeScript
@@ -13,7 +12,7 @@ declare function unlinkSync(path: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [fs:unlinkSync](arkts-corefile-file-fs-unlinksync-f.md#unlinksync-1)
+**替代接口：** [fs:unlinkSync](arkts-corefile-fileio-unlinksync-f.md#unlinksync)
 
 <!--Device-unnamed-declare function unlinkSync(path: string): void--><!--Device-unnamed-declare function unlinkSync(path: string): void-End-->
 

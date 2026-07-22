@@ -6,7 +6,6 @@
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
 
-<a id="releaseaccess"></a>
 ## releaseAccess
 
 ```TypeScript
@@ -15,7 +14,7 @@ function releaseAccess(dataType: DataType): ReleaseStatus
 
 以同步方法释放锁屏下指定类型敏感数据访问权限。释放成功后，敏感数据密钥的引用计数减少，当引用计数归零时，密钥可以在锁屏达到系统配置的时长阈值后被销毁。
 
-调用此接口前，请确保应用已开启锁屏下敏感数据保护功能，并且先调用[acquireAccess](arkts-ability-screenlockfilemanager-acquireaccess-f.md#acquireaccess-1)接口成功申请权限后才能使用。
+调用此接口前，请确保应用已开启锁屏下敏感数据保护功能，并且先调用[acquireAccess](arkts-ability-screenlockfilemanager-acquireaccess-f.md#acquireaccess)接口成功申请权限后才能使用。
 
 **起始版本：** 12
 

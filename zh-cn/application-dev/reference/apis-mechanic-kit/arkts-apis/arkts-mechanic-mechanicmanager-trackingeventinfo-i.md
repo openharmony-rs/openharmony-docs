@@ -20,7 +20,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 event: TrackingEvent
 ```
 
-Tracking event.
+跟踪事件
 
 **类型：** TrackingEvent
 

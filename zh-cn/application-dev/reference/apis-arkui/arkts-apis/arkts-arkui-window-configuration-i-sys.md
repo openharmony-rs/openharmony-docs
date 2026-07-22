@@ -22,9 +22,9 @@ defaultDensityEnabled?: boolean
 
 是否使用系统默认Density，使用系统默认Density之后，窗口不会跟随系统显示大小变化重新布局。
 
-当创建的系统窗口设置此参数为true时，表示当前窗口使用系统默认Density，且不会受到[setDefaultDensityEnabled()](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](arkts-arkui-window-window-i-sys.md#setdefaultdensityenabled-1)设置的本窗口的相关影响。
+当创建的系统窗口设置此参数为true时，表示当前窗口使用系统默认Density，且不会受到[setDefaultDensityEnabled()](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](arkts-arkui-window-window-i-sys.md#setdefaultdensityenabled)设置的本窗口的相关影响。
 
-当创建的系统窗口设置此参数为false时，表示当前窗口不使用系统默认Density，且会受到[setDefaultDensityEnabled()](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](docroot://reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](arkts-arkui-window-window-i-sys.md#setdefaultdensityenabled-1)设置的本窗口的相关影响。
+当创建的系统窗口设置此参数为false时，表示当前窗口不使用系统默认Density，且会受到[setDefaultDensityEnabled()](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](arkts-arkui-window-window-i-sys.md#setdefaultdensityenabled)设置的本窗口的相关影响。
 
 默认为false。
 

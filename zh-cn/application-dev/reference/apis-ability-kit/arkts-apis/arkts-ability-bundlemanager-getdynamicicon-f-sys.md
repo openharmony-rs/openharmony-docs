@@ -6,7 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getdynamicicon"></a>
 ## getDynamicIcon
 
 ```TypeScript

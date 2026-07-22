@@ -1,13 +1,9 @@
 # DigitIndicator
 
 构造数字指示器的样式，继承自[Indicator](arkts-arkui-indicator-c.md)。
-
 > **说明：**
-
 > 按组翻页时，数字导航点显示的子节点数量不包括占位节点。
-
 > 数字导航点文本最大的字体缩放倍数[maxFontScale](TextAttribute#maxFontScale)为2。
-
 > 页码的镜像显示依据为系统的RTL状态。
 
 **继承/实现关系：** DigitIndicator extends [Indicator<DigitIndicator>](Indicator<DigitIndicator>)
@@ -18,7 +14,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -26,9 +21,7 @@ constructor()
 ```
 
 DotIndicator的构造函数。
-
 > **说明：**
-
 > - 按压导航点时，导航点会放大至1.33倍显示，因此非按压态时导航点的可见范围边界至实际范围边界存在一定距离，该距离会随着itemWidth、itemHeight、selectedItemWidth、  
 > selectedItemHeight等参数变大而变大。  
 >  
@@ -46,7 +39,6 @@ DotIndicator的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="digitfont"></a>
 ## digitFont
 
 ```TypeScript
@@ -79,7 +71,6 @@ Swiper组件数字导航点的字体样式。
 | --- | --- |
 | [DigitIndicator](arkts-arkui-digitindicator-c.md) | 返回当前数字指示器。 |
 
-<a id="fontcolor"></a>
 ## fontColor
 
 ```TypeScript
@@ -112,7 +103,6 @@ Swiper组件数字导航点的字体颜色。
 | --- | --- |
 | [DigitIndicator](arkts-arkui-digitindicator-c.md) | 返回当前数字指示器。 |
 
-<a id="selecteddigitfont"></a>
 ## selectedDigitFont
 
 ```TypeScript
@@ -145,7 +135,6 @@ selectedDigitFont(value: Font): DigitIndicator
 | --- | --- |
 | [DigitIndicator](arkts-arkui-digitindicator-c.md) | 返回当前数字指示器。 |
 
-<a id="selectedfontcolor"></a>
 ## selectedFontColor
 
 ```TypeScript

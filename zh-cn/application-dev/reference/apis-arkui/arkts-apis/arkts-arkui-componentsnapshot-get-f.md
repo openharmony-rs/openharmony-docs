@@ -6,7 +6,6 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
-<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -14,11 +13,10 @@ function get(id: string, callback: AsyncCallback<image.PixelMap>, options?: Snap
 ```
 
 获取已加载的组件的截图，传入组件的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)，找到对应组件进行截图。通过回调返回结果。
-
 > **说明：**  
 >  
 > - 从API version 12开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot-1)方法  
+> [getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot)方法  
 > 获取当前UI上下文关联的[ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md)对象。  
 >  
 > - 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
@@ -97,7 +95,6 @@ struct SnapshotExample {
 ```
 
 
-<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -105,11 +102,10 @@ function get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 ```
 
 获取已加载的组件的截图，传入组件的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)，找到对应组件进行截图。通过Promise返回结果。
-
 > **说明：**  
 >  
 > - 从API version 12开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot-1)方法  
+> [getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot)方法  
 > 获取当前UI上下文关联的[ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md)对象。  
 >  
 > - 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。

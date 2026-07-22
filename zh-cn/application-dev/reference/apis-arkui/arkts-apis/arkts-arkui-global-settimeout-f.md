@@ -1,6 +1,5 @@
 # setTimeout
 
-<a id="settimeout"></a>
 ## setTimeout
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="cancelsuspenddelay"></a>
 ## cancelSuspendDelay
 
 ```TypeScript
@@ -25,7 +24,7 @@ function cancelSuspendDelay(requestId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| requestId | number | 是 | 短时任务的请求ID。通过申请短时任务[requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-f.md#requestsuspenddelay-1)接口获取。 |
+| requestId | number | 是 | 短时任务的请求ID。通过申请短时任务[requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-f.md#requestsuspenddelay)接口获取。 |
 
 **错误码：**
 

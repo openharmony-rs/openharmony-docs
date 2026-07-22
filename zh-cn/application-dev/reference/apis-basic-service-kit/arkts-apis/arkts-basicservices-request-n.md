@@ -34,22 +34,22 @@ import { request } from '@kit.BasicServicesKit';
 | [download](arkts-basicservices-request-download-f.md#download-1) | 创建并启动一个下载任务，使用Promise异步回调。 |
 | [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1) | 创建并启动一个下载任务，使用Promise异步回调，支持HTTP协议。通过[on('complete'\|'pause'\|'remove')](request.DownloadTask.on(type: 'complete' \| 'pause' \| 'remove', callback: () => void))可以获取任务下载时的状态信息，包括任务完成、暂停或移除。通过[on('fail')](request.DownloadTask.on(type: 'fail', callback: (err: int) => void))可以获取任务下载时的错误信息。 |
 | [upload](arkts-basicservices-request-upload-f.md#upload) | 创建并启动一个上传任务，使用callback异步回调。 |
-| [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile) | 创建并启动一个上传任务，使用callback异步回调，支持HTTP协议。通过[on('complete'\|'fail')](request.UploadTask.on(type: 'complete' \| 'fail', callback: Callback<Array<TaskState>>))可获取任务上传时的成功信息或错误信息。 |
+| [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile) | 创建并启动一个上传任务，使用callback异步回调，支持HTTP协议。通过[on('complete'\|'fail')](request.UploadTask.on(type: 'complete' \| 'fail', callback: Callback&lt;Array<TaskState>&gt;))可获取任务上传时的成功信息或错误信息。 |
 | [upload](arkts-basicservices-request-upload-f.md#upload-1) | 创建并启动一个上传任务，使用Promise异步回调。 |
-| [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1) | 创建并启动一个上传任务，使用Promise异步回调，支持HTTP协议。通过[on('complete'\|'fail')](request.UploadTask.on(type: 'complete' \| 'fail', callback: Callback<Array<TaskState>>))可获取任务上传时的成功信息或错误信息。 |
+| [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1) | 创建并启动一个上传任务，使用Promise异步回调，支持HTTP协议。通过[on('complete'\|'fail')](request.UploadTask.on(type: 'complete' \| 'fail', callback: Callback&lt;Array<TaskState>&gt;))可获取任务上传时的成功信息或错误信息。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
 | [DownloadConfig](arkts-basicservices-request-downloadconfig-i.md) | 下载任务的配置信息。 |
-| [DownloadInfo](arkts-basicservices-request-downloadinfo-i.md) | 下载任务信息，[getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo-1)接口的回调参数。 |
-| [DownloadTask](arkts-basicservices-request-downloadtask-i.md) | 下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)获取。 |
+| [DownloadInfo](arkts-basicservices-request-downloadinfo-i.md) | 下载任务信息，[getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo)接口的回调参数。 |
+| [DownloadTask](arkts-basicservices-request-downloadtask-i.md) | 下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile)获取。 |
 | [File](arkts-basicservices-request-file-i.md) | [UploadConfig](arkts-basicservices-request-uploadconfig-i.md)中的文件列表。 |
 | [RequestData](arkts-basicservices-request-requestdata-i.md) | [UploadConfig](arkts-basicservices-request-uploadconfig-i.md)中的表单数据。 |
 | [UploadConfig](arkts-basicservices-request-uploadconfig-i.md) | 上传任务的配置信息。 |
-| [TaskState](arkts-basicservices-request-taskstate-i.md) | 上传任务的任务信息，是[on('complete' \| 'fail')](request.UploadTask.on(type: 'complete' \| 'fail', callback: Callback<Array<TaskState>>))和[off('complete' \| 'fail')](request.UploadTask.off(type: 'complete' \| 'fail', callback?: Callback<Array<TaskState>>))接口的回调参数。 |
-| [UploadTask](arkts-basicservices-request-uploadtask-i.md) | 上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)获取，callback形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)获取。 |
+| [TaskState](arkts-basicservices-request-taskstate-i.md) | 上传任务的任务信息，是[on('complete' \| 'fail')](request.UploadTask.on(type: 'complete' \| 'fail', callback: Callback&lt;Array<TaskState>&gt;))和[off('complete' \| 'fail')](request.UploadTask.off(type: 'complete' \| 'fail', callback?: Callback&lt;Array<TaskState>&gt;))接口的回调参数。 |
+| [UploadTask](arkts-basicservices-request-uploadtask-i.md) | 上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)获取，callback形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)获取。 |
 
 ### 常量
 

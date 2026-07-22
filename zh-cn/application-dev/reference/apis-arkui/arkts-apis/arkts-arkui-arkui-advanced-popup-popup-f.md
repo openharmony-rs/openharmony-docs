@@ -6,7 +6,6 @@
 import { Popup, PopupOptions, PopupButtonOptions, PopupIconOptions, PopupTextOptions } from '@kit.ArkUI';
 ```
 
-<a id="popup"></a>
 ## Popup
 
 ```TypeScript

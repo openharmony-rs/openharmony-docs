@@ -6,7 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createpixelmapusingallocatorsync"></a>
 ## createPixelMapUsingAllocatorSync
 
 ```TypeScript
@@ -18,9 +17,7 @@ Create pixelmap by data buffer based on opts, the memory type used by the PixelM
 
 **起始版本：** 20
 
-<!--Device-image-function createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptions,
-    allocatorType?: AllocatorType): PixelMap--><!--Device-image-function createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptions,
-    allocatorType?: AllocatorType): PixelMap-End-->
+<!--Device-image-function createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptions,    allocatorType?: AllocatorType): PixelMap--><!--Device-image-function createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptions,    allocatorType?: AllocatorType): PixelMap-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -71,7 +68,6 @@ function createPixelMapUsingAllocatorSync() {
 ```
 
 
-<a id="createpixelmapusingallocatorsync-1"></a>
 ## createPixelMapUsingAllocatorSync
 
 ```TypeScript

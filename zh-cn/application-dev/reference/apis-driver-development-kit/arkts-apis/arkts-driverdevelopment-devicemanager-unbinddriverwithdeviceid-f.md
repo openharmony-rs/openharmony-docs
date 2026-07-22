@@ -6,7 +6,6 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
-<a id="unbinddriverwithdeviceid"></a>
 ## unbindDriverWithDeviceId
 
 ```TypeScript
@@ -27,7 +26,7 @@ function unbindDriverWithDeviceId(deviceId: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | number | 是 | 设备ID，通过[queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md#querydevices-1)获得。 |
+| deviceId | number | 是 | 设备ID，通过[queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md#querydevices)获得。 |
 
 **返回值：**
 

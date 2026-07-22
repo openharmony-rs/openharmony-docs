@@ -8,7 +8,6 @@ LazyForEach的数据源。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getdata"></a>
 ## getData
 
 ```TypeScript
@@ -37,7 +36,6 @@ getData(index: number): any
 | --- | --- |
 | any | 获取索引值index对应的数据，由数据源决定具体类型。 |
 
-<a id="registerdatachangelistener"></a>
 ## registerDataChangeListener
 
 ```TypeScript
@@ -60,7 +58,6 @@ registerDataChangeListener(listener: DataChangeListener): void
 | --- | --- | --- | --- |
 | listener | [DataChangeListener](arkts-arkui-datachangelistener-i.md) | 是 | 数据变化监听器。 |
 
-<a id="totalcount"></a>
 ## totalCount
 
 ```TypeScript
@@ -83,7 +80,6 @@ totalCount(): number
 | --- | --- |
 | number | 获得数据总数，由数据源决定实际大小。 |
 
-<a id="unregisterdatachangelistener"></a>
 ## unregisterDataChangeListener
 
 ```TypeScript

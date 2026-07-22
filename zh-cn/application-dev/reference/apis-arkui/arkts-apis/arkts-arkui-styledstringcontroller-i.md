@@ -8,7 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="getstyledstring"></a>
 ## getStyledString
 
 ```TypeScript
@@ -33,7 +32,6 @@ getStyledString(): MutableStyledString
 | --- | --- |
 | [MutableStyledString](arkts-arkui-mutablestyledstring-c.md) | 富文本组件显示的属性字符串。 |
 
-<a id="setstyledstring"></a>
 ## setStyledString
 
 ```TypeScript

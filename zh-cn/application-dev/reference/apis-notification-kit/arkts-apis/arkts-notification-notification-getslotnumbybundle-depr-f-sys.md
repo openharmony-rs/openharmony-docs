@@ -1,6 +1,5 @@
 # getSlotNumByBundle（系统接口）
 
-<a id="getslotnumbybundle"></a>
 ## getSlotNumByBundle
 
 ```TypeScript
@@ -31,7 +30,6 @@ function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<number
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取通知通道数量回调函数。 |
 
 
-<a id="getslotnumbybundle-1"></a>
 ## getSlotNumByBundle
 
 ```TypeScript

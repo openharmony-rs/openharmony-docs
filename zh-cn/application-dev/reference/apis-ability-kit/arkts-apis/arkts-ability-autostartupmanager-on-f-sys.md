@@ -6,7 +6,6 @@
 import { autoStartupManager } from '@kit.AbilityKit';
 ```
 
-<a id="on"></a>
 ## on('systemAutoStartup')
 
 ```TypeScript

@@ -6,7 +6,6 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
-<a id="getpermissionusedrecordtogglestatus"></a>
 ## getPermissionUsedRecordToggleStatus
 
 ```TypeScript
@@ -37,7 +36,7 @@ function getPermissionUsedRecordToggleStatus(): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
-| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus-1).<br>**适用版本：** 26.1.0+ |
+| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus).<br>**适用版本：** 26.1.0+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
 **示例：**
@@ -61,7 +60,6 @@ privacyManager.getPermissionUsedRecordToggleStatus().then((status) => {
 ```
 
 
-<a id="getpermissionusedrecordtogglestatus-1"></a>
 ## getPermissionUsedRecordToggleStatus
 
 ```TypeScript

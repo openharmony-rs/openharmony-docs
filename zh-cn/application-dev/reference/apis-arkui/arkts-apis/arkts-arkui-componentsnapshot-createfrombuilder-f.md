@@ -6,7 +6,6 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
-<a id="createfrombuilder"></a>
 ## createFromBuilder
 
 ```TypeScript
@@ -15,11 +14,10 @@ function createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image
 ```
 
 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过回调返回结果并支持在回调中获取离屏组件绘制区域坐标和大小。
-
 > **说明：**  
 >  
 > - 从API version 12开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot-1)方法  
+> [getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot)方法  
 > 获取当前UI上下文关联的[ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md)对象。  
 >  
 > - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟。  
@@ -38,9 +36,7 @@ function createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-componentSnapshot-function createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>,
-    delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): void--><!--Device-componentSnapshot-function createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>,
-    delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): void-End-->
+<!--Device-componentSnapshot-function createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>,    delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): void--><!--Device-componentSnapshot-function createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>,    delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +122,6 @@ struct OffscreenSnapshotExample {
 ```
 
 
-<a id="createfrombuilder-1"></a>
 ## createFromBuilder
 
 ```TypeScript
@@ -135,11 +130,10 @@ function createFromBuilder(builder: CustomBuilder, delay?: number,
 ```
 
 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过Promise返回结果，支持获取离屏组件绘制区域的坐标和大小。
-
 > **说明：**  
 >  
 > - 从API version 12开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot-1)方法  
+> [getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot)方法  
 > 获取当前UI上下文关联的[ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md)对象。  
 >  
 > - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟。  
@@ -158,9 +152,7 @@ function createFromBuilder(builder: CustomBuilder, delay?: number,
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-componentSnapshot-function createFromBuilder(builder: CustomBuilder, delay?: number,
-    checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>--><!--Device-componentSnapshot-function createFromBuilder(builder: CustomBuilder, delay?: number,
-    checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>-End-->
+<!--Device-componentSnapshot-function createFromBuilder(builder: CustomBuilder, delay?: number,    checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>--><!--Device-componentSnapshot-function createFromBuilder(builder: CustomBuilder, delay?: number,    checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

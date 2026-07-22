@@ -20,7 +20,7 @@ import { window } from '@kit.ArkUI';
 brightness: number
 ```
 
-窗口亮度。通过[setWindowBrightness()](arkts-arkui-window-window-i.md#setwindowbrightness-1)设置窗口的亮度值。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]或-1.0，其取值1.0时表示最大亮度，取值-1.0时，表示亮度跟随系统。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1.0。
+窗口亮度。通过[setWindowBrightness()](arkts-arkui-window-window-i.md#setwindowbrightness)设置窗口的亮度值。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]或-1.0，其取值1.0时表示最大亮度，取值-1.0时，表示亮度跟随系统。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1.0。
 
 **类型：** number
 
@@ -76,7 +76,7 @@ displayId?: number
 drawableRect: Rect
 ```
 
-窗口内的可绘制区域尺寸，其中左边界上边界是相对于窗口左上顶点计算。在Stage模型下，需要在调用[loadContent()](arkts-arkui-window-window-i.md#loadcontent-1)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent-1)加载页面内容后获取该属性。
+窗口内的可绘制区域尺寸，其中左边界上边界是相对于窗口左上顶点计算。在Stage模型下，需要在调用[loadContent()](arkts-arkui-window-window-i.md#loadcontent)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)加载页面内容后获取该属性。
 
 **类型：** Rect
 
@@ -182,9 +182,9 @@ isKeepScreenOn: boolean
 isLayoutFullScreen: boolean
 ```
 
-对于子窗，如果设置了[沉浸式布局](docroot://windowmanager/window-terminology.md#沉浸式布局)，返回值为true。
+对于子窗，如果设置了[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)，返回值为true。
 
-对于主窗，如果设置了[沉浸式布局](docroot://windowmanager/window-terminology.md#沉浸式布局)且处于全屏模式，返回值为true。
+对于主窗，如果设置了[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)且处于全屏模式，返回值为true。
 
 其他情况下均返回false
 
@@ -204,7 +204,7 @@ isLayoutFullScreen: boolean
 isPrivacyMode: boolean
 ```
 
-窗口是否为隐私模式。true表示窗口为隐私模式；false表示窗口为非隐私模式。可通过[setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode-1)设置窗口的隐私模式。
+窗口是否为隐私模式。true表示窗口为隐私模式；false表示窗口为非隐私模式。可通过[setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode)设置窗口的隐私模式。
 
 **类型：** boolean
 
@@ -298,7 +298,7 @@ type: WindowType
 
 窗口类型。
 
-当前存在主窗使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties-1)接口返回type不准确的问题，开发者在创建窗口时已指明窗口类型，无需通过getWindowProperties()接口获取窗口类型。
+当前存在主窗使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)接口返回type不准确的问题，开发者在创建窗口时已指明窗口类型，无需通过getWindowProperties()接口获取窗口类型。
 
 **类型：** WindowType
 
@@ -320,7 +320,7 @@ type: WindowType
 windowRect: Rect
 ```
 
-窗口尺寸，其中左边界上边界是相对于窗口所在屏幕左上顶点计算，可在页面生命周期[onPageShow](docroot://reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或应用生命周期[onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground-1)阶段获取。
+窗口尺寸，其中左边界上边界是相对于窗口所在屏幕左上顶点计算，可在页面生命周期[onPageShow](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或应用生命周期[onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground)阶段获取。
 
 **类型：** Rect
 

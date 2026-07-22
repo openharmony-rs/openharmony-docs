@@ -6,7 +6,6 @@
 import { installer } from '@kit.AbilityKit';
 ```
 
-<a id="getbundleinstallersync"></a>
 ## getBundleInstallerSync
 
 ```TypeScript

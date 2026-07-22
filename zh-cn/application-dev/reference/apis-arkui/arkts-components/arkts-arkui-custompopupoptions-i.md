@@ -307,7 +307,7 @@ builder: CustomBuilder
 
 **说明：**
 
-1. Popup为通用属性，自定义Popup中不支持再次弹出Popup。对builder下的第一层容器组件不支持使用position属性，如果使用将导致气泡不显示。2. builder中若使用自定义组件，自定义组件的aboutToAppear和aboutToDisappear生命周期与Popup气泡的显隐无关，不能使用其生命周期判断Popup气泡的显隐。3. 该构造器的builder仅支持定义在UI组件中，例如可以定义在Builder函数、方法或者[build](docroot://reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#build)方法里。
+1. Popup为通用属性，自定义Popup中不支持再次弹出Popup。对builder下的第一层容器组件不支持使用position属性，如果使用将导致气泡不显示。2. builder中若使用自定义组件，自定义组件的aboutToAppear和aboutToDisappear生命周期与Popup气泡的显隐无关，不能使用其生命周期判断Popup气泡的显隐。3. 该构造器的builder仅支持定义在UI组件中，例如可以定义在Builder函数、方法或者[build](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#build)方法里。
 
 **类型：** CustomBuilder
 
@@ -331,7 +331,7 @@ colorMode?: AnchoredColorMode
 
 **说明：**
 
-1. 仅当绑定组件使用了[WithTheme](docroot://reference/apis-arkui/arkui-ts/ts-container-with-theme.md#接口)标签时，该属性才会生效。2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
+1. 仅当绑定组件使用了[WithTheme](../../../reference/apis-arkui/arkui-ts/ts-container-with-theme.md#接口)标签时，该属性才会生效。2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
 
 **类型：** AnchoredColorMode
 
@@ -598,27 +598,7 @@ onStateChange?: (event: {
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CustomPopupOptions-onStateChange?: (event: {
-    /**
-     * is Visible.
-     *
-     ******/
-    /**
-     * is Visible.
-     *
-     *******/
-    isVisible: boolean
-  }) => void--><!--Device-CustomPopupOptions-onStateChange?: (event: {
-    /**
-     * is Visible.
-     *
-     ******/
-    /**
-     * is Visible.
-     *
-     *******/
-    isVisible: boolean
-  }) => void-End-->
+<!--Device-CustomPopupOptions-onStateChange?: (event: {    /**     * is Visible.     *     ******/    /**     * is Visible.     *     *******/    isVisible: boolean  }) => void--><!--Device-CustomPopupOptions-onStateChange?: (event: {    /**     * is Visible.     *     ******/    /**     * is Visible.     *     *******/    isVisible: boolean  }) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -835,7 +815,7 @@ systemMaterial?: SystemUiMaterial
 
 **说明：**
 
-不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor-1)、边框颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor-1)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth-1)、阴影[shadow](arkts-arkui-commonmethod-c.md#shadow-1)，不建议与上述接口一起使用。
+不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
 
 **类型：** SystemUiMaterial
 

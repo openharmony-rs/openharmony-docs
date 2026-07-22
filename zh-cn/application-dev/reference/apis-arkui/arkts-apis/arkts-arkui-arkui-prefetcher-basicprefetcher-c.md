@@ -18,7 +18,6 @@ BasicPrefetcher对象不支持使用JSON序列化。
 import { IDataSourcePrefetching, BasicPrefetcher, IPrefetcher } from '@kit.ArkUI';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -43,7 +42,6 @@ constructor(dataSource?: IDataSourcePrefetching)
 | --- | --- | --- | --- |
 | dataSource | [IDataSourcePrefetching](arkts-arkui-arkui-prefetcher-idatasourceprefetching-i.md) | 否 | 支持预取能力的数据源。 |
 
-<a id="setdatasource"></a>
 ## setDataSource
 
 ```TypeScript
@@ -68,7 +66,6 @@ setDataSource(dataSource: IDataSourcePrefetching): void
 | --- | --- | --- | --- |
 | dataSource | [IDataSourcePrefetching](arkts-arkui-arkui-prefetcher-idatasourceprefetching-i.md) | 是 | 支持预取能力的数据源。 |
 
-<a id="visibleareachanged"></a>
 ## visibleAreaChanged
 
 ```TypeScript

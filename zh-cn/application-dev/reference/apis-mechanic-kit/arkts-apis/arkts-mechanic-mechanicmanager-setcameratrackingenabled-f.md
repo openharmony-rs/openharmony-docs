@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="setcameratrackingenabled"></a>
 ## setCameraTrackingEnabled
 
 ```TypeScript
 function setCameraTrackingEnabled(isEnabled: boolean): void
 ```
 
-Enables or disables camera tracking.
+启用或禁用摄像机跟踪
 
 **起始版本：** 20
 
@@ -25,7 +24,7 @@ Enables or disables camera tracking.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isEnabled | boolean | 是 | Whether to enable camera tracking. |
+| isEnabled | boolean | 是 | 是否启用摄像机跟踪 |
 
 **错误码：**
 

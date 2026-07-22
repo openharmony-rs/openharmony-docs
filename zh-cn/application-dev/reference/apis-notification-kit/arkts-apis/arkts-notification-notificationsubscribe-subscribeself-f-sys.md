@@ -6,7 +6,6 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-<a id="subscribeself"></a>
 ## subscribeSelf
 
 ```TypeScript

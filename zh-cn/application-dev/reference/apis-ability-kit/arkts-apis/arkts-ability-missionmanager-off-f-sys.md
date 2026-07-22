@@ -6,7 +6,6 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
-<a id="off"></a>
 ## off('mission')
 
 ```TypeScript
@@ -131,7 +130,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="off-1"></a>
 ## off('mission')
 
 ```TypeScript

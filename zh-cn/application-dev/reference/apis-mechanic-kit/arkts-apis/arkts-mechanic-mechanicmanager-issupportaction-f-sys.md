@@ -6,14 +6,13 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
-<a id="issupportaction"></a>
 ## isSupportAction
 
 ```TypeScript
 function isSupportAction(mechId: number, actionType: ActionType): boolean
 ```
 
-Check whether the specific action type is supported.
+判断是否支持某个动作
 
 **起始版本：** 26.0.0
 
@@ -27,14 +26,14 @@ Check whether the specific action type is supported.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | number | 是 | ID of the mechanical device.<br>The value should be an integer. |
-| actionType | [ActionType](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-actiontype-t.md) | 是 | Type of action sequence. |
+| mechId | number | 是 | 具身设备ID。<br>取值限定为整数。 |
+| actionType | [ActionType](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-actiontype-t.md) | 是 | 动作序列类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Indicates whether the action type is supported. |
+| boolean | 是否支持该特定动作 |
 
 **错误码：**
 

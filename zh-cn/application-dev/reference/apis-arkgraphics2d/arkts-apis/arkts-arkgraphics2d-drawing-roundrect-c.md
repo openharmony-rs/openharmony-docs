@@ -1,7 +1,6 @@
 # RoundRect
 
 圆角矩形对象。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 12开始支持。  
@@ -22,7 +21,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -43,7 +41,6 @@ constructor(roundRect: RoundRect)
 | --- | --- | --- | --- |
 | roundRect | [RoundRect](arkts-arkgraphics2d-drawing-roundrect-c.md) | 是 | 用于拷贝的圆角矩形。 |
 
-<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -72,7 +69,6 @@ constructor(rect: common2D.Rect, xRadii: number, yRadii: number)
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="getcorner"></a>
 ## getCorner
 
 ```TypeScript
@@ -105,7 +101,6 @@ getCorner(pos: CornerPos): common2D.Point
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-<a id="offset"></a>
 ## offset
 
 ```TypeScript
@@ -133,7 +128,6 @@ offset(dx: number, dy: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-<a id="setcorner"></a>
 ## setCorner
 
 ```TypeScript

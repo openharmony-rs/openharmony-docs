@@ -6,7 +6,6 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
-<a id="getfontpathsbytype"></a>
 ## getFontPathsByType
 
 ```TypeScript

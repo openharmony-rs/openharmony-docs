@@ -6,7 +6,6 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-<a id="createabilityconnectionsession"></a>
 ## createAbilityConnectionSession
 
 ```TypeScript
@@ -22,9 +21,7 @@ function createAbilityConnectionSession(serviceName: string, context: Context, p
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-abilityConnectionManager-function createAbilityConnectionSession(serviceName: string, context: Context, peerInfo: PeerInfo,
-        connectOptions: ConnectOptions): int--><!--Device-abilityConnectionManager-function createAbilityConnectionSession(serviceName: string, context: Context, peerInfo: PeerInfo,
-        connectOptions: ConnectOptions): int-End-->
+<!--Device-abilityConnectionManager-function createAbilityConnectionSession(serviceName: string, context: Context, peerInfo: PeerInfo,        connectOptions: ConnectOptions): int--><!--Device-abilityConnectionManager-function createAbilityConnectionSession(serviceName: string, context: Context, peerInfo: PeerInfo,        connectOptions: ConnectOptions): int-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 

@@ -14,7 +14,6 @@ textTimerController: TextTimerController = new TextTimerController()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -33,7 +32,6 @@ TextTimerController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -52,7 +50,6 @@ pause()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -71,7 +68,6 @@ reset()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="start"></a>
 ## start
 
 ```TypeScript

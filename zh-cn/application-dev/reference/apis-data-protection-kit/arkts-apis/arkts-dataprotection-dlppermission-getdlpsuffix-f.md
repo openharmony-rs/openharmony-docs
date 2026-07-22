@@ -6,7 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="getdlpsuffix"></a>
 ## getDLPSuffix
 
 ```TypeScript

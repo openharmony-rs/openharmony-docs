@@ -1,7 +1,6 @@
 # WebStorage
 
 通过WebStorage可管理Web SQL数据库接口和HTML5 Web存储接口，每个应用中的所有Web组件共享一个WebStorage。
-
 > **说明：**  
 >  
 > - 本Class首批接口从API version 9开始支持。  
@@ -11,7 +10,7 @@
 > - 目前调用WebStorage下的方法，都需要先加载Web组件。  
 >  
 > - 本Class下的接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的管理失效。ArkWeb内核版本参考ArkWeb简介  
-> [约束与限制](docroot://web/web-component-overview.md#约束与限制)。
+> [约束与限制](../../../web/web-component-overview.md#约束与限制)。
 
 **起始版本：** 9
 
@@ -25,7 +24,6 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="deletealldata"></a>
 ## deleteAllData
 
 ```TypeScript
@@ -48,7 +46,6 @@ static deleteAllData(incognito?: boolean): void
 | --- | --- | --- | --- |
 | incognito | boolean | 否 | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下Web的SQL数据库当前使用的所有存储。<br>默认值：false。<br>传入undefined或null时为false。<br>**起始版本：** 11 |
 
-<a id="deleteorigin"></a>
 ## deleteOrigin
 
 ```TypeScript
@@ -69,7 +66,7 @@ static deleteOrigin(origin: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | 指定源的字符串索引，来自于[getOrigins](webview.WebStorage.static getOrigins(callback: AsyncCallback<Array<WebStorageOrigin>>))。 |
+| origin | string | 是 | 指定源的字符串索引，来自于[getOrigins](webview.WebStorage.static getOrigins(callback: AsyncCallback&lt;Array<WebStorageOrigin>&gt;))。 |
 
 **错误码：**
 
@@ -78,7 +75,6 @@ static deleteOrigin(origin: string): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
-<a id="getoriginquota"></a>
 ## getOriginQuota
 
 ```TypeScript
@@ -114,7 +110,6 @@ static getOriginQuota(origin: string): Promise<number>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
-<a id="getoriginquota-1"></a>
 ## getOriginQuota
 
 ```TypeScript
@@ -145,7 +140,6 @@ static getOriginQuota(origin: string, callback: AsyncCallback<number>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
-<a id="getoriginusage"></a>
 ## getOriginUsage
 
 ```TypeScript
@@ -181,7 +175,6 @@ static getOriginUsage(origin: string): Promise<number>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
-<a id="getoriginusage-1"></a>
 ## getOriginUsage
 
 ```TypeScript
@@ -212,7 +205,6 @@ static getOriginUsage(origin: string, callback: AsyncCallback<number>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
-<a id="getorigins"></a>
 ## getOrigins
 
 ```TypeScript
@@ -242,7 +234,6 @@ static getOrigins(): Promise<Array<WebStorageOrigin>>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100012](../errorcode-webview.md#17100012-无可获取的webstorage源) | Invalid web storage origin. |
 
-<a id="getorigins-1"></a>
 ## getOrigins
 
 ```TypeScript

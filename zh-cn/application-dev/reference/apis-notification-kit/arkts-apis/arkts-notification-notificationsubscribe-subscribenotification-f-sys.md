@@ -6,7 +6,6 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-<a id="subscribenotification"></a>
 ## subscribeNotification
 
 ```TypeScript
@@ -69,7 +68,6 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 ```
 
 
-<a id="subscribenotification-1"></a>
 ## subscribeNotification
 
 ```TypeScript

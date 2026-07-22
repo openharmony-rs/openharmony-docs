@@ -6,7 +6,6 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
-<a id="isopentouchguide"></a>
 ## isOpenTouchGuide
 
 ```TypeScript
@@ -19,7 +18,7 @@ function isOpenTouchGuide(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 10
 
-**替代接口：** [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md#isopentouchguidesync-1)
+**替代接口：** [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md#isopentouchguidesync)
 
 <!--Device-accessibility-function isOpenTouchGuide(callback: AsyncCallback<boolean>): void--><!--Device-accessibility-function isOpenTouchGuide(callback: AsyncCallback<boolean>): void-End-->
 
@@ -48,7 +47,6 @@ accessibility.isOpenTouchGuide((err: BusinessError, data: boolean) => {
 ```
 
 
-<a id="isopentouchguide-1"></a>
 ## isOpenTouchGuide
 
 ```TypeScript
@@ -61,7 +59,7 @@ function isOpenTouchGuide(): Promise<boolean>
 
 **废弃版本：** 10
 
-**替代接口：** [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md#isopentouchguidesync-1)
+**替代接口：** [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md#isopentouchguidesync)
 
 <!--Device-accessibility-function isOpenTouchGuide(): Promise<boolean>--><!--Device-accessibility-function isOpenTouchGuide(): Promise<boolean>-End-->
 

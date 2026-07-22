@@ -6,7 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="queryprintercapabilitybyuri"></a>
 ## queryPrinterCapabilityByUri
 
 ```TypeScript
