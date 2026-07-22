@@ -4446,25 +4446,6 @@ Allows a system application to obtain the page information of a specified applic
 
 **Valid since**: 18
 
-## ohos.permission.ACCESS_DDK_USB_SERIAL
-
-Allows a peripheral extension driver to access the USB Serial DDK APIs.
-
-The APIs can be used to develop the following types of peripheral extension drivers:
-
-Peripherals connected to the host via a USB bus and:
-
-1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
-2. The peripheral can simulate traditional serial communication through a USB interface.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Valid since**: 18
-
 ## ohos.permission.ACCESS_CUSTOM_RINGTONE
 
 Allows an application to access the RBT library.

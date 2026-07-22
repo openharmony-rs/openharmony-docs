@@ -25,7 +25,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;CollaborateEventInfo&gt;):&nbsp;void
 
-注册collaborateEvent事件的回调监听,使用callback异步回调。该监听需与off('collaborateEvent')成对使用，在不再需要接收事件时及时取消监听以释放资源。
+注册collaborateEvent事件的回调监听，使用callback异步回调。该监听需与off('collaborateEvent')成对使用，在不再需要接收事件时及时取消监听以释放资源。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -44,7 +44,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'，当协同状态发生变化时触发该事件。   |
-| sessionId | number  | 是    | 表示创建的协同会话ID。    |
+| sessionId | number  | 是    | 表示创建的协同会话ID，需先创建协同会话后获取。    |
 | callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 是    | 回调函数，返回协同事件的信息。    |
 
 **错误码：**
@@ -93,7 +93,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'receiveImage'，当接收到对端设备发送的图片时触发该事件。   |
-| sessionId | number  | 是    | 表示创建的协同会话ID。    |
+| sessionId | number  | 是    | 表示创建的协同会话ID，需先创建协同会话后获取。    |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 回调函数，用于接收图片接收事件信息。    |
 
 **错误码：**
@@ -140,7 +140,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'。    |
-| sessionId | number  | 是    | 表示创建的协同会话ID。    |
+| sessionId | number  | 是    | 表示创建的协同会话ID，需先创建协同会话后获取。    |
 | callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则取消该callback的监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
 
 **错误码：**
@@ -186,7 +186,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'receiveImage'。    |
-| sessionId | number  | 是    | 表示创建的协同会话ID。    |
+| sessionId | number  | 是    | 表示创建的协同会话ID，需先创建协同会话后获取。    |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则取消该callback的监听。如果未传入该参数，则取消所有'receiveImage'事件监听。    |
 
 **错误码：**
@@ -486,7 +486,7 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| sessionId | number | 是    | 表示协同会话ID，需先创建协同会话后获取。 |
 | param | [StreamParam](#streamparam) | 是    | 表示传输流的配置信息。 |
 
 **返回值：**
@@ -722,9 +722,9 @@ destroyStream(streamId:&nbsp;number):&nbsp;void
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  let streamId = 100;
   hilog.info(0x0000, 'testTag', 'destroyStream called');
-  abilityConnectionManager.destroyStream(sessionId)
+  abilityConnectionManager.destroyStream(streamId)
   ```
 
 ## abilityConnectionManager.startStream
@@ -763,9 +763,9 @@ startStream(streamId:&nbsp;number):&nbsp;void
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  let streamId = 100;
   hilog.info(0x0000, 'testTag', 'startStream called');
-  abilityConnectionManager.startStream(sessionId)
+  abilityConnectionManager.startStream(streamId)
   ```
 
 ## abilityConnectionManager.stopStream
@@ -803,9 +803,9 @@ stopStream(streamId:&nbsp;number):&nbsp;void
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  let streamId = 100;
   hilog.info(0x0000, 'testTag', 'stopStream called');
-  abilityConnectionManager.stopStream(sessionId)
+  abilityConnectionManager.stopStream(streamId)
   ```
 
 ## StreamParam

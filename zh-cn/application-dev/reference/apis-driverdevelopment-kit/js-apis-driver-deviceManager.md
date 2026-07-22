@@ -77,7 +77,7 @@ try {
 
 bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;
 
-根据queryDevices()返回的设备信息绑定设备。使用Promise异步回调。
+根据queryDevices()返回的设备信息绑定设备，必须与unbindDriverWithDeviceId接口成对使用。使用Promise异步回调。
 
 需要调用[deviceManager.queryDevices](#devicemanagerquerydevices)获取设备信息列表。
 
@@ -133,7 +133,7 @@ try {
 
 unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt;
 
-解除设备绑定。使用Promise异步回调。
+解除设备绑定，调用前需要先通过bindDriverWithDeviceId绑定设备。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_DDK_DRIVERS
 
@@ -183,7 +183,7 @@ try {
 
 bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, callback: AsyncCallback&lt;{deviceId: number; remote: rpc.IRemoteObject;}&gt;): void
 
-根据queryDevices()返回的设备信息绑定设备。
+根据queryDevices()返回的设备信息绑定设备。必须和unbindDevice接口成对使用。
 
 需要调用[deviceManager.queryDevices()](#devicemanagerquerydevices)获取设备信息以及device。
 
@@ -243,7 +243,7 @@ try {
 ## deviceManager.bindDeviceDriver<sup>(deprecated)</sup>
 bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, callback: AsyncCallback&lt;RemoteDeviceDriver&gt;): void
 
-根据queryDevices()返回的设备信息绑定设备。
+根据queryDevices()返回的设备信息绑定设备。必须与unbindDevice接口成对使用。
 
 需要调用[deviceManager.queryDevices()](#devicemanagerquerydevices)获取设备信息以及device。
 
@@ -298,7 +298,7 @@ try {
 
 bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;{deviceId: number; remote: rpc.IRemoteObject;}&gt;
 
-根据queryDevices()返回的设备信息绑定设备。
+根据queryDevices()返回的设备信息绑定设备。必须和unbindDevice接口成对使用。使用Promise异步回调。
 
 需要调用[deviceManager.queryDevices](#devicemanagerquerydevices)获取设备信息以及device。
 
@@ -352,11 +352,12 @@ try {
   console.error(`bindDevice fail. Code is ${error.code}, message is ${error.message}`);
 }
 ```
+
 ## deviceManager.bindDeviceDriver<sup>(deprecated)</sup>
 
 bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;
 
-根据queryDevices()返回的设备信息绑定设备。
+根据queryDevices()返回的设备信息绑定设备。必须与unbindDevice接口成对使用。使用Promise异步回调。
 
 需要调用[deviceManager.queryDevices](#devicemanagerquerydevices)获取设备信息以及device。
 
@@ -415,7 +416,7 @@ try {
 
 unbindDevice(deviceId: number, callback: AsyncCallback&lt;number&gt;): void
 
-解除设备绑定。
+解除设备绑定。必须先通过bindDevice接口绑定设备。
 
 > **说明**
 > 从API version 10开始支持，从API version 19开始废弃。建议使用[deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19)替代。
@@ -460,11 +461,12 @@ try {
   console.error(`unbindDevice fail. Code is ${error.code}, message is ${error.message}`);
 }
 ```
+
 ## deviceManager.unbindDevice<sup>(deprecated)</sup>
 
 unbindDevice(deviceId: number): Promise&lt;number&gt;
 
-解除设备绑定。该接口使用一个Promise对象来返回结果。
+解除设备绑定。必须先通过bindDevice接口绑定设备。使用Promise异步回调。
 
 > **说明**
 > 从API version 10开始支持，从API version 19开始废弃。建议使用[deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19)替代。

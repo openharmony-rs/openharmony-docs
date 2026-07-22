@@ -194,7 +194,7 @@
       - [边框设置](arkui-ts/ts-universal-attributes-border.md)
       - [图片边框设置](arkui-ts/ts-universal-attributes-border-image.md)
     - 视效与模糊<!--visual-effect-property-->
-      - [透明度设置](arkui-ts/ts-universal-attributes-opacity.md)
+      - [不透明度设置](arkui-ts/ts-universal-attributes-opacity.md)
       - [图形变换](arkui-ts/ts-universal-attributes-transformation.md)
       - [图像效果](arkui-ts/ts-universal-attributes-image-effect.md)
       - [形状裁剪](arkui-ts/ts-universal-attributes-sharp-clipping.md)
@@ -324,6 +324,7 @@
     <!--Del-->
     - [Grid (系统接口)](arkui-ts/ts-container-grid-sys.md)
     - [List (系统接口)](arkui-ts/ts-container-list-sys.md)
+    - [Swiper (系统接口)](arkui-ts/ts-container-swiper-sys.md)
     <!--DelEnd-->
   - 导航与切换<!--navigation-and-switching-->
     - [Indicator](arkui-ts/ts-swiper-components-indicator.md)

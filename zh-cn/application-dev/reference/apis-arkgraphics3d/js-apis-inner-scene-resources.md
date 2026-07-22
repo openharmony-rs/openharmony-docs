@@ -6,7 +6,7 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供3D图形中常用的基本资源类型。
+本模块提供3D图形中常用的基本资源类型，包括着色器、材质、网格、动画、环境或图片等用于构建3D场景的各类资源。
 
 > **说明：**
 >
@@ -16,9 +16,9 @@
 ## 导入模块
 
 ```ts
-import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
-  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream } from '@kit.ArkGraphics3D';
+import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, PolygonMode, Material, MaterialProperty,
+  MetallicRoughnessMaterial, ShaderMaterial, UnlitMaterial, OcclusionMaterial, SamplerFilter, SamplerAddressMode, Sampler, SubMesh,
+  Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream, Effect } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceType
@@ -166,7 +166,7 @@ function setinputs(): void {
         "uTime": 1.0,
         "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
         "uTexture": image
-      })
+      });
     }
   });
 }
@@ -819,7 +819,7 @@ function finish(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| surfaceId | string | 是 | 否 | 流ID，取值范围大于0。 |
+| surfaceId | string | 是 | 否 | 流ID，由数字字符组成，数字取值必须为大于0的整数。 |
 
 ## Effect<sup>21+</sup>
 

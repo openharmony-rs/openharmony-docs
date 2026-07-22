@@ -993,6 +993,7 @@ ArkTS-Dyn示例：
 @Component
 struct PopupExample {
   @State handlePopup: boolean = false;
+  private timer: number = -1;
 
   build() {
     Column() {
@@ -1016,12 +1017,16 @@ struct PopupExample {
           // 气泡跟随按钮的平移、缩放等变换同步变动
           followTransformOfTarget: true,
           onStateChange: (e) => {
-            let timer = setTimeout(() => {
+            if (e.isVisible) {
+              this.timer = setTimeout(() => {
+                this.handlePopup = false;
+              }, 6000);
+            } else {
               this.handlePopup = false;
-            }, 6000);
-            if (!e.isVisible) {
-              this.handlePopup = false;
-              clearTimeout(timer);
+              if (this.timer !== -1) {
+                clearTimeout(this.timer);
+                this.timer = -1;
+              }
             }
           },
           // 不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数值为false时才退出

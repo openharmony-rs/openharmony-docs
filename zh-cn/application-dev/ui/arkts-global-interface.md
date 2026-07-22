@@ -822,8 +822,8 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 // common/Utils.ets
-import hilog from '@ohos.hilog';
-import { UIContext } from '@ohos.arkui';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
 
 export function GetUIContextByAtomicInterface(): UIContext {
   let callingScopeUIContext = UIContext.getCallingScopeUIContext();
@@ -956,6 +956,7 @@ ArkTS-Dyn示例：
 ``` TypeScript
 // common/Utils.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
@@ -988,7 +989,7 @@ export class PixelUtil {
     return _uiContext.fp2px(fpValue)
   }
 
-  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+  static lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
     let _uiContext = uiContext ?? PixelUtil.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
@@ -1281,7 +1282,7 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 // common/WindowUtils.ets
-import { display, window } from '@kit.ArkUI';
+import { display, window, UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1818,7 +1819,7 @@ ArkTS-Dyn示例：
 ``` TypeScript
 // Common/UIContext.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { display } from '@kit.ArkUI';
+import { display, UIContext } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
@@ -1848,7 +1849,7 @@ export class PixelUtils {
     return _uiContext.fp2px(fpValue)
   }
 
-  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+  static lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
     let _uiContext = uiContext ?? PixelUtils.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);

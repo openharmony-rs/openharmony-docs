@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现序列化类时不丢失属性的复杂类型，开发者可以使用\@Type装饰器装饰类属性。
+为了实现序列化类时不丢失属性的复杂类型，开发者可以使用[\@Type](../../reference/apis-arkui/arkui-ts/ts-state-management-type.md#type)装饰器装饰类属性。
 
 \@Type的目的是标记类属性，配合PersistenceV2使用，防止序列化时类丢失。在阅读本文档前，建议提前阅读：[PersistenceV2](./arkts-new-persistencev2.md)。
 

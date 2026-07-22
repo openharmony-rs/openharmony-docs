@@ -741,7 +741,7 @@ struct Index {
 
 ### 示例4（设置分割线样式）
 
-该示例通过设置menuItemGroupDivider属性实现分割线样式。
+该示例通过设置menuItemDivider和menuItemGroupDivider属性实现分割线样式。
 
 ArkTS-Dyn示例：
 ```ts

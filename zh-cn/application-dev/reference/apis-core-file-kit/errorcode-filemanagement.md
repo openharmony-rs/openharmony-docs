@@ -1753,6 +1753,28 @@ Format partition failed.
 
 2.<!--RP1-->请向OpenHarmony团队反馈，获取支持。<!--RP1End-->
 
+### 13600033 卷占用状态查询执行失败
+
+**错误信息**
+
+Failed to query the occupancy status of the specified volume.
+
+**错误描述**
+
+查询指定卷是否被占用的操作执行失败。
+
+**可能原因**
+
+1. 指定的卷路径不存在。
+
+2. 内部流程执行失败或内部错误。
+
+**处理步骤**
+
+1. 建议重新插拔该卷所属外盘后重试。
+
+2. <!--RP1-->请向OpenHarmony团队反馈，获取支持。<!--RP1End-->
+
 ## 公共文件访问错误码
 
 ### 14300001 IPC通信失败

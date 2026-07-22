@@ -727,7 +727,7 @@ notificationManager.setNotificationEnable(bundle, false).then(() => {
 
 getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
-获取允许通知的应用程序列表。使用Promise异步回调。
+获取允许通知的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -743,7 +743,7 @@ getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用程序列表。 | 
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用列表。 | 
 
 **错误码：**
 
@@ -796,7 +796,7 @@ ArkTS-Dyn: getAllNotificationEnabledBundles(userId: number): Promise<Array<Bundl
 
 ArkTS-Sta: getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
 
-获取指定用户下允许通知的应用程序列表。使用Promise异步回调。
+获取指定用户下允许通知的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -812,13 +812,13 @@ ArkTS-Sta: getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOp
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 要获取允许通知的应用程序列表的用户。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 要获取允许通知的应用列表的用户。 |
 
 **返回值：**
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用程序列表。 | 
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用列表。 | 
 
 **错误码：**
 
@@ -2267,6 +2267,74 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
 });
 ```
 
+
+## notificationManager.getActiveNotification
+
+getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
+
+根据通知的唯一标识hashCode获取当前未删除的通知信息。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型    | 必填 | 说明                           |
+| --------- | ------- | ---- | ----------------------------- |
+| hashCode  | string  | 是   | 通知的唯一标识。                |
+
+**返回值：**
+
+| 类型                                                        | 说明                                                         |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | 以Promise形式返回获取通知信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.                  |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.|
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600007  | The notification does not exist.    |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
+  console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
+  console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`getAllActiveNotifications failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+
 ## notificationManager.getActiveNotificationByFilter<sup>11+</sup>
 
 ArkTS-Dyn: getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest\>): void
@@ -3560,7 +3628,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
 | enable   | boolean                  | 是   | 指定应用是否支持分布式通知（true：支持，false：不支持）。|
-| callback | AsyncCallback\<void\> | 是   | 应用程序是否支持分布式通知的回调函数。 |
+| callback | AsyncCallback\<void\> | 是   | 应用是否支持分布式通知的回调函数。 |
 
 **错误码：**
 
@@ -3704,7 +3772,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
-根据应用的包获取应用程序是否支持分布式通知。使用callback异步回调。
+根据应用的包获取应用是否支持分布式通知。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4036,7 +4104,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
-| 1600014  | The right of liveView is not enabled. |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
@@ -4162,7 +4230,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
-| 1600014  | The right of liveView is not enabled. |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
@@ -4278,7 +4346,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
-| 1600014  | The right of liveView is not enabled. |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
@@ -5184,7 +5252,7 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 | ------ | ----------------------------- | ---- | -------------- |
 | userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。   |
 | enable | boolean | 是   | 是否启用（true：使能，false：禁止）。   |
-| callback | AsyncCallback\<void\>    | 是   | 设置是否将通知同步到未安装应用程序的设备的回调函数。 |
+| callback | AsyncCallback\<void\>    | 是   | 设置是否将通知同步到未安装应用的设备的回调函数。 |
 
 **错误码：**
 
@@ -5268,7 +5336,7 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<void\> | 以Promise形式返回设置是否将通知同步到未安装应用程序的设备的结果。 |
+| Promise\<void\> | 以Promise形式返回设置是否将通知同步到未安装应用的设备的结果。 |
 
 **错误码：**
 
@@ -5341,7 +5409,7 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 | 参数名 | 类型                          | 必填 | 说明           |
 | ------ | ----------------------------- | ---- | -------------- |
 | userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。   |
-| callback | AsyncCallback\<boolean\>         | 是   | 获取同步通知到未安装应用程序设备的开关是否开启的回调函数（true：开启，false：未开启）。 |
+| callback | AsyncCallback\<boolean\>         | 是   | 获取同步通知到未安装应用设备的开关是否开启的回调函数（true：开启，false：未开启）。 |
 
 **错误码：**
 
@@ -5422,7 +5490,7 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | 以Promise形式返回获取同步通知到未安装应用程序设备的开关是否开启的结果（true：开启，false：未开启）。 |
+| Promise\<boolean\> | 以Promise形式返回获取同步通知到未安装应用设备的开关是否开启的结果（true：开启，false：未开启）。 |
 
 **错误码：**
 
@@ -9975,6 +10043,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SlotType
 
+通知渠道类型。
+
+不同类型对应不同的[SlotLevel](js-apis-notificationManager.md#slotlevel)，决定通知的提醒行为。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 | 名称                                | 值     | 说明                                                         |
@@ -9983,6 +10055,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 
 ## NotificationControlFlagStatus<sup>12+</sup>
+
 每个bit位都可以控制通知的提示方式。当notificationControlFlags和下表中枚举值进行按位或操作，则表示关闭其提示方式。
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -10004,6 +10077,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DoNotDisturbProfile<sup>12+</sup>
 
+勿扰模式的配置信息。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -10020,7 +10095,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
-type NotificationLiveViewContent = _NotificationLiveViewContent
+type NotificationLiveViewContent = _NotificationLiveViewContent 
 
 描述普通实况通知。
 
@@ -10070,7 +10145,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称          | 类型                                                       | 只读 | 可选 | 说明              |
 | --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
 | bundleName   | string | 否 | 否 | 包名。          |
-| uid          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 应用程序的UID。          |
+| uid          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 应用的UID。          |
 | enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
 
 ## RingtoneType<sup>21+</sup>
@@ -10189,8 +10264,8 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
-| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。 |
-| ENABLE   | 2   | 应用通知的优先级开关为全部通知状态。 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。 |
+| ENABLE   | 2   | 应用通知均设置为优先通知。 |
 
 ## NotificationIconButton<sup>23+</sup>
 

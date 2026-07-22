@@ -62,8 +62,8 @@
 | [void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setiterations) | 设置动画播放次数。 |
 | [void OH_ArkUI_AnimateOption_SetPlayMode(ArkUI_AnimateOption* option, ArkUI_AnimationPlayMode value)](#oh_arkui_animateoption_setplaymode) | 设置动画播放模式。 |
 | [void OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(ArkUI_AnimateOption* option, ArkUI_ExpectedFrameRateRange* value)](#oh_arkui_animateoption_setexpectedframeraterange) | 设置动画的期望帧率。 |
-| [void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHandle value)](#oh_arkui_animateoption_seticurve) | 设置动画的动画曲线。 |
-| [ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_geticurve) | 获取动画的动画曲线。 |
+| [void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHandle value)](#oh_arkui_animateoption_seticurve) | 设置动画的插值曲线。 |
+| [ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_geticurve) | 获取动画的插值曲线。 |
 | [ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)](#oh_arkui_keyframeanimateoption_create) | 创建关键帧动画参数。 |
 | [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | 销毁关键帧动画参数。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | 设置关键帧动画的整体延时时间，单位为ms（毫秒），默认不延时播放。 |
@@ -517,7 +517,7 @@ void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHa
 **描述：**
 
 
-设置动画的动画曲线。
+设置动画的插值曲线。
 
 > **说明：**
 >
@@ -542,7 +542,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 **描述：**
 
 
-获取动画的动画曲线。
+获取动画的插值曲线。
 
 **起始版本：** 12
 
@@ -557,7 +557,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画的动画曲线。参数option异常时返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画的插值曲线。参数option异常时返回NULL。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_Create()
 
@@ -1551,7 +1551,7 @@ float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int3
 **描述：**
 
 
-获取animator动画关键帧时间，单位为ms（毫秒）。
+获取animator动画关键帧时间，取值范围[0, 1]，为归一化时间比例。
 
 **起始版本：** 12
 
@@ -1567,7 +1567,7 @@ float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 关键帧时间，单位为ms（毫秒）。 |
+| float | 关键帧时间，取值范围[0, 1]，为归一化时间比例。 |
 
 ### OH_ArkUI_AnimatorOption_GetKeyframeValue()
 
