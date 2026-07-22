@@ -35455,12 +35455,12 @@
 						"start_line":18
 					},
 					{
-						"end_line":120,
+						"end_line":122,
 						"name":"display_soloist_frame_rate_setting_and_subscription_function_registration",
 						"start_line":74
 					},
 					{
-						"end_line":470,
+						"end_line":472,
 						"name":"display_soloist_napi_register_and_unregister",
 						"start_line":25
 					}
