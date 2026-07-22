@@ -6,9 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=59b65fcc65a22b7c940ca535023658111a023e22 translatedAt=2026-06-29T10:55:40.337Z pushedAt=2026-06-29T12:08:49.843Z -->
+<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T01:59:51.954Z pushedAt=2026-07-22T03:30:59.368Z -->
 
-ArkUI provides a lightweight UI element reuse mechanism \@Builder. The internal UI structure of ArkUI is fixed and only data is transferred with the user. Developers can abstract UI elements that are repeatedly used as functions and call them in the build function.
+ArkUI provides a lightweight UI element reuse mechanism, [\@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder), whose internal UI structure is fixed and only performs data transfer with the caller. You can abstract reusable UI elements into functions and call them in the **build** function.
 
 Functions decorated by \@Builder are also called custom build functions.
 
@@ -74,7 +74,7 @@ Invocation pattern:
 
 - Private custom builder functions can be called in custom components, **build()**, and other custom builder functions.
 
-- In a custom component, **this** indicates the component to which the component belongs. The status variables of the component can be accessed in the custom builder functions. It is recommended that **this** be used to access the status variable of the component instead of being transferred through parameters.
+- In a custom component, **this** indicates the owning component. The state variables of the component can be accessed in the custom builder functions. It is recommended that **this** be used to access the status variable of the component instead of being transferred through parameters.
 
 ### Global Custom Builder Function
 
@@ -124,7 +124,7 @@ Parameters for custom builder functions can be passed [by callback](#passing-par
 
 From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh state variables in the \@Builder function. For details, see [State Variables Can Be Refreshed in the \@Builder](#state-variables-can-be-refreshed-in-the-builder).
 
-Use **UIUtils.makeBinding()** to wrap the callback function for reading status variables and transfer the callback function as a parameter to the @Builder function. The UI component in the @Builder function can be refreshed. The callback function of the write status variable transferred in **UIUtils.makeBinding()** can transfer the parameter changes in @Builder to the component that calls the @Builder function.
+Use **UIUtils.makeBinding()** to wrap the callback function for reading state variables and transfer the callback function as a parameter to the @Builder function. The UI component in the @Builder function can be refreshed. The callback function of the write status variable transferred in **UIUtils.makeBinding()** can transfer the parameter changes in @Builder to the component that calls the @Builder function.
 
 <!-- @[by_makebinding_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterMakeBinding.ets) -->
 
@@ -1692,7 +1692,7 @@ struct MakeBindingTest1 {
 }
 ```
 
-For details, see [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) in the statement management API reference.
+For details, see [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) in the stat management API reference.
 
 **Correct Usage**
 
@@ -2001,3 +2001,5 @@ struct Child2 {
 Example effect:
 
 ![arkts-builder-faq-watch-builder.gif](./figures/arkts-builder-faq-watch-builder.gif)
+
+<!--no_check-->
