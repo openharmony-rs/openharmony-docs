@@ -55,7 +55,7 @@ function sendableCompareFunc(firstValue: number, secondValue: number): boolean {
 @Concurrent
 function treeSetTestFunc(treeSet: TreeSet<number>) {
   for (let value of treeSet) {
-    console.info('value:', value);
+    console.info(`value: ${value}`);
   }
 }
 
@@ -77,7 +77,6 @@ struct Index {
         .onClick(() => {
           // 1. 创建TreeSet实例
           let treeSet: TreeSet<number> = new TreeSet<number>(sendableCompareFunc);
-
           treeSet.add(1);
           treeSet.add(5);
           treeSet.add(3);
