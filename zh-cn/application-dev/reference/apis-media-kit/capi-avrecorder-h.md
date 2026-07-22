@@ -510,7 +510,7 @@ OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的参数recorder或amplitude为nullptr。<br>         AV_ERR_INVALID_STATE：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>         AV_ERR_NO_MEMORY：内存不足，请释放资源后重试。<br>         AV_ERR_UNKNOWN：未知错误，请联系技术支持或查看日志信息。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的参数recorder或amplitude为nullptr。<br>         AV_ERR_INVALID_STATE：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>         AV_ERR_NO_MEMORY：内存不足，请释放资源后重试。<br>         AV_ERR_UNKNOWN：未知错误，请查看日志获取详细信息。 |
 
 ### OH_AVRecorder_SetMetadata()
 
@@ -537,6 +537,6 @@ OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVForma
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的参数recorder或metadata为nullptr，或者metadata中的值长度超过256字节。<br>         AV_ERR_INVALID_STATE：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>         AV_ERR_NO_MEMORY：内存不足，请释放资源后重试。<br>         AV_ERR_UNKNOWN：未知错误，请联系技术支持或查看日志信息。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的参数recorder或metadata为nullptr，或者metadata中的值长度超过256字节。<br>         AV_ERR_INVALID_STATE：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>         AV_ERR_NO_MEMORY：内存不足，请释放资源后重试。<br>         AV_ERR_UNKNOWN：未知错误，请查看日志获取详细信息。 |
 
 
