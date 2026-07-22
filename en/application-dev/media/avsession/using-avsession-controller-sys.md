@@ -6,7 +6,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b05dcf4516f8cf4d9f7a7e45d9561a73d2ebee04 translatedAt=2026-07-22T01:45:17.022Z pushedAt=2026-07-22T03:48:40.744Z -->
+<!-- md-trans-meta sourceCommit=b05dcf4516f8cf4d9f7a7e45d9561a73d2ebee04 translatedAt=2026-07-22T01:45:17.022Z pushedAt=2026-07-22T03:57:56.170Z -->
 
 Media Controller preset in OpenHarmony functions as the controller to interact with audio and video applications, for example, obtaining and displaying media information and delivering playback control commands.
 
@@ -14,7 +14,7 @@ You can develop a system application (for example, a new playback control center
 
 ## Basic Concepts
 
-- AVSessionDescriptor: session information, including the session ID, session type (audio/video), custom session name (**sessionTag**), information about the corresponding application (**elementName**), and whether the session is pined on top (isTopSession).
+- AVSessionDescriptor: session information, including the session ID, session type (audio/video), custom session name (**sessionTag**), information about the corresponding application (**elementName**), and whether the session is pinned on top (isTopSession).
 
 - Top session: session with the highest priority in the system, for example, a session that is being played. Generally, the controller must hold an AVSessionController object to communicate with a session. However, the controller can directly communicate with the top session, for example, directly sending a playback control command or key event, without holding an AVSessionController object.
 
