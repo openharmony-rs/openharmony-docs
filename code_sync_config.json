@@ -32792,7 +32792,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/ContainerObject.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":70,
 						"name":"example_container_obj",
 						"start_line":16
 					}
@@ -41832,7 +41832,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolCancel.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":69,
 						"name":"taskpool_cancel",
 						"start_line":16
 					}
@@ -51068,7 +51068,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":88,
 						"name":"copy_arraybuffer_transfer",
 						"start_line":16
 					}
@@ -51434,7 +51434,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/NormalObject.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":60,
 						"name":"example_normal_obj",
 						"start_line":16
 					}
@@ -51478,7 +51478,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/SharedArrayBufferObject.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":63,
 						"name":"example_pass_obj",
 						"start_line":16
 					}
