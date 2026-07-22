@@ -5812,7 +5812,7 @@ async function test(){
 }
 ```
 
-### getCurrentTrack
+## getCurrentTrack
 
 getCurrentTrack(trackType: MediaType): Promise\<number>
 
