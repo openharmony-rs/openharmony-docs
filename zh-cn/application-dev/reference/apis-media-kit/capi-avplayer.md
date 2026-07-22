@@ -16,6 +16,7 @@
 - [使用AVPlayer播放视频](../../media/media/using-ndk-avplayer-for-video-playback.md)
 
 **起始版本：** 11
+
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 ## 文件汇总
