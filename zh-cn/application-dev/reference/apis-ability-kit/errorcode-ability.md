@@ -335,6 +335,26 @@ The context is not ability context.
 使用UIAbilityContext或ExtensionContext对象作为入参，或者使用继承了UIAbilityContext或ExtensionContext类的对象作为入参。
 <!--DelEnd-->
 
+## 16000021 模块名不存在
+
+**错误信息**
+
+The module name does not exist.
+
+**错误描述**
+
+模块名不存在。
+
+**可能原因**
+
+1. 传入的moduleName参数为空。
+2. HAP包中不存在moduleName对应的模块。
+
+**处理步骤**
+
+1. 确保传入的moduleName参数不为空。
+2. 确保传入的moduleName是在HAP包中存在的模块名。
+
 ## 16000050 内部错误
 
 **错误信息**
