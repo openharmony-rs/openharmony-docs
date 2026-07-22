@@ -15,7 +15,7 @@ This module provides system-related and enhanced [i18n](../../internationalizati
 >
 >  - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [date and time formatting API](#simplenumberformat18) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the [official CLDR documentation](https://cldr.unicode.org/).
+>  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [date and time formatting API](#simplenumberformat18) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/downloads/cldr-42). For details about data changes, see the [official CLDR documentation](https://cldr.unicode.org/).
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 
