@@ -866,7 +866,7 @@ stopDiscovering(): void
 
 bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}&gt;): void
 
-认证设备，将发现的不可信设备通过认证流程绑定为可信设备。认证过程中，系统会根据bindParam中指定的认证类型发起认证请求，认证成功后设备将加入可信设备列表，可通过getAvailableDeviceListSync查询。当不再需要与目标设备进行分布式业务时，可调用unbindTarget解除绑定。使用callback异步回调。
+认证设备，将发现的不可信设备通过认证流程绑定为可信设备<!--RP3--><!--RP3End-->。认证过程中，系统会根据bindParam中指定的认证类型发起认证请求，认证成功后设备将加入可信设备列表，可通过getAvailableDeviceListSync查询。当不再需要与目标设备进行分布式业务时，可调用unbindTarget解除绑定。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -934,7 +934,7 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 
 unbindTarget(deviceId: string): void
 
-解除认证设备，用于在不再需要与目标设备进行分布式业务时，解除与该设备的认证关系。与bindTarget方法配合使用，仅能解除已通过bindTarget认证绑定的可信设备。解除后设备将从可信设备列表中移除，可通过getAvailableDeviceListSync或getAvailableDeviceList查询确认。
+解除认证设备，用于在不再需要与目标设备进行分布式业务时，解除与该设备的认证关系<!--RP4--><!--RP4End-->。与bindTarget方法配合使用，仅能解除已通过bindTarget认证绑定的可信设备。解除后设备将从可信设备列表中移除，可通过getAvailableDeviceListSync或getAvailableDeviceList查询确认。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
