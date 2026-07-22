@@ -6,7 +6,7 @@
 <!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=9f53a9e77747af975b5a889ab884bf4bcac288aa translatedAt=2026-06-30T10:23:08.270Z pushedAt=2026-07-01T07:49:10.162Z -->
+<!-- md-trans-meta sourceCommit=b05dcf4516f8cf4d9f7a7e45d9561a73d2ebee04 translatedAt=2026-07-22T01:43:11.396Z pushedAt=2026-07-22T03:44:57.429Z -->
 
 ## Overview
 
@@ -22,7 +22,7 @@ The interaction between the two devices is implemented as follows. After the [li
 
 ![linkEnhance-process](figures/linkEnhance-process.png)
 
-### For details, see Notes and Constraints.
+### Constraints
 
 - Bluetooth must be enabled for device interconnection.
 
@@ -45,9 +45,9 @@ Bluetooth is enabled on the client and server devices.
 
 ### Environment Setup
 
-1. Install [DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio) 4.1 or later on the PC.
+1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 4.1 or later on the PC.
 
-2. Update the public-SDK to API version 20 or later<!--Del-->. For details, see OpenHarmony SDK upgrade assistant<!--DelEnd-->.
+2. Update the public-SDK to API version 20 or later<!--Del-->. For details, see [OpenHarmony SDK Upgrade Assistant](../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->.
 
 3. Connect device A and device B to the PC using USB cables.
 
@@ -66,9 +66,9 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 | sendData(data:ArrayBuffer)                 | Sends data to the peer device.                                                                                    |
 | on(type: 'connectResult')                  | Subscribes to connection events.                                                                             |
 | on(type: 'disconnected')                   | Subscribes to disconnection events.                                                                                 |
-| on(type: 'dataReceived')                   | Subscribes to data receiving events.                                                                                   |
+| on(type: 'dataReceived')                   | Subscribes to data receiving events.                                                                                    |
 | createConnection(deviceId: string,name:string)| Creates a **Connection** object.                                                                             |
-| start()                                    | Starts the server.                                                                                        |   
+| start()                                    | Starts the server.                                                                                        |
 | stop()                                     | Stops the server.                                                                                          |
 | close()                                    | Destroys a **Server** object and cancels all subscribed event callbacks. The **Server** object cannot be used after this API is called.                   |
 | on(type: 'connectionAccepted')                | Subscribes to **acceptConnected** events.                                                                          |
@@ -198,7 +198,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
     }
     // Stop the server and cancel all subscribed event callbacks.
     linkEnhanceClose(server: linkEnhance.Server) {
-      console.info(TAG + 'close server' );
+      console.info(TAG + 'close server');
       try {
         server.close();
       } catch (err) {
