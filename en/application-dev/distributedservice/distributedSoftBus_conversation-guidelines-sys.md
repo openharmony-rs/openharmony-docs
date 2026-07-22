@@ -1,12 +1,12 @@
 # Cross-Device Agent Wake-Up and Message Transmission
 
 <!--Kit: Distributed Service Kit-->
-<!--Subsystem: DistributedSched-->
+<!--Subsystem: Communication-->
 <!--Owner: @wangrui7-->
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T08:41:06.205Z pushedAt=2026-07-07T12:15:52.498Z -->
+<!-- md-trans-meta sourceCommit=b05dcf4516f8cf4d9f7a7e45d9561a73d2ebee04 translatedAt=2026-07-22T01:43:43.702Z pushedAt=2026-07-22T03:38:51.278Z -->
 
 ## Overview
 
@@ -28,7 +28,7 @@ By registering a conversation listener, an app can receive messages from other d
 
 - The target device must be a trusted device under the same account.
 
-- The system's native fast device wake-up capability is supported. For nearby devices, Bluetooth and Wi-Fi must be enabled, and the devices must be connected to the same local area network (LAN) over Wi-Fi.
+- Supports the system's native fast device wakeup capability. This requires Bluetooth and Wi-Fi to be turned on at close range and the devices to be connected to the same Wi-Fi LAN.
 
 - This capability is supported since API version 26.1.0.
 
@@ -54,7 +54,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 | Name                                      | Description                                                                                               |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| getTrustedDevices()                        | Obtains the list of all trusted devices.                                                                               |
+| getTrustedDevices()                        | Obtains the list of previously trusted devices (up to the latest 20 devices).                                                                               |
 | postConversationData(deviceId, bundleName, abilityName, msg) | Sends conversation data to the specified Ability on the specified device.                                                                                     |
 | registerConversationListener(bundleName, abilityName, dataCallback) | Registers a conversation listener to receive data from trusted devices.                                                                              |
 | unregisterConversationListener(bundleName, abilityName) | Unregisters the conversation listener to stop receiving data.                                                                                  |
@@ -110,9 +110,10 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 3. Define the conversation listener callback function.
 
-   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // Define the message callback.
    let messageCallback: conversation.DataCallback = (deviceId: string, msg: ArrayBuffer): void => {
      hilog.info(DOMAIN, TAG, 'Received message from: %{public}s', deviceId);
      hilog.info(DOMAIN, TAG, 'Message length: %{public}d', msg.byteLength);
@@ -127,9 +128,10 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 4. Register the conversation listener to receive data from trusted devices.
 
-   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // Register the listener.
    registerListener(): void {
      hilog.info(DOMAIN, TAG, 'registerListener called');
      try {
@@ -144,9 +146,10 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 5. Unregister the conversation listener.
 
-   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // Unregister the listener.
    unregisterListener(): void {
      hilog.info(DOMAIN, TAG, 'unregisterListener called');
      try {
@@ -202,9 +205,10 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 3. Obtain the trusted device list and select the target device.
 
-   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // Obtain trusted devices.
    getTrustedDevices(): void {
      hilog.info(DOMAIN, TAG, 'getTrustedDevices called');
      try {
@@ -214,9 +218,9 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
            `${idx + 1}. ${d.deviceName} (${d.networkId}) - Type:${d.deviceTypeId} - Nearby:${d.nearby}`
          ).join('\n');
          hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
-           hilog.info(DOMAIN, TAG, 'Devices list: \n %{public}s', deviceInfo);
-         } else {
-           hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
+         hilog.info(DOMAIN, TAG, 'Devices list: \n %{public}s', deviceInfo);
+       } else {
+         hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
        }
      } catch (err) {
        let error = err as BusinessError;
@@ -227,9 +231,10 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 4. Send conversation data to the specified device.
 
-   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // Send a message.
    sendMessage(): void {
      hilog.info(DOMAIN, TAG, 'sendMessage called');
      try {
@@ -252,4 +257,3 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
      }
    }
    ```
-   <!--no_check-->
