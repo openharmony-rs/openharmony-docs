@@ -7,7 +7,7 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供后台加载任务的注册、取消、查询的能力。在开发过程中，期望通过后台预先加载应用数据实现优化应用启动体验的开发者，可以调用本模块接口注册的后台加载任务，在系统空闲时根据内存、电量、壳温等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
+本模块支持后台加载任务的注册、取消及查询操作。在开发过程中，如果需要通过预先加载应用数据来提升应用启动速度，可调用本模块提供的接口来注册后台加载任务。系统将在空闲时段，综合当前内存占用、剩余电量及设备温度等因素进行智能调度与 执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
 **起始版本：**  26.0.0
 
@@ -35,7 +35,7 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 
 registerTask(taskInfo: TaskInfo): void
 
-注册后台加载任务，成功后会把任务添加到后台加载任务队列，满足触发条件后由系统调度执行。
+注册后台加载任务，成功后会将任务添加到后台加载任务队列，满足触发条件后由系统调度执行。
 
 **起始版本：**  26.0.0
 
@@ -159,13 +159,13 @@ getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | -------- |
-| taskId | int   | 是    | 需要查询的后台加载任务ID |
+| taskId | number   | 是    | 需要查询的后台加载任务ID，取值范围为整数。 |
 
 **返回值**：
 
 | 类型                              | 说明                                       |
 | ------------------------------- | ---------------------------------------- |
-| Promise\<[TaskInfo](#taskinfo)> | Promise对象，如果taskId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
+| Promise\<[TaskInfo](#taskinfo)> | Promise对象，如果传入的taskId是已经注册过的taskId，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
 **错误码**：
 
@@ -195,7 +195,7 @@ getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 finishTask(taskInfo: TaskInfo): void
  
-应用需要实现后台加载任务的onStart的主业务回调方法，在完成业务加载任务后，需要通过调用finishTask方法通知系统加载任务完成。运行在异步回调函数或其他线程中执行finishTask调用。
+应用需要实现后台加载任务的[onStart](#常量)的主业务回调方法，在完成业务加载任务后，需要通过调用finishTask方法通知系统加载任务完成。运行在异步回调函数或其他线程中执行finishTask调用。
 
 **起始版本：**  26.0.0
 
@@ -303,7 +303,7 @@ finishTask(taskInfo: TaskInfo): void
 
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
-| taskId          | int                            | 否    | 否    |应用指定标识任务ID。          |
+| taskId          | number                            | 否    | 否    |应用指定标识任务ID。          |
 | abilityName     | string                            | 否    | 否    |应用需要实现后台加载主UIAbility名称，当前每个应用仅支持自身的主UIAbility。 |
 
 
@@ -319,7 +319,7 @@ finishTask(taskInfo: TaskInfo): void
 
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
-| taskId          | int                            | 否    | 否    |应用指定标识任务ID。          |
+| taskId          | number                            | 否    | 否    |应用指定标识任务ID。          |
 | abilityName     | string                            | 否    | 否    |应用需要实现后台加载主UIAbility名称，当前每个应用仅支持自身的主UIAbility。 |
 | stopCode        | [StopCode](#stopcode)                            | 否    | 否    |任务停止的错误码。          |
 | stopMessage     | string                            | 否    | 否    |任务停止的错误码描述。 |
