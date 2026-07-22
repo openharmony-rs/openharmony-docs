@@ -64377,5 +64377,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/troubleshooting-state-manage.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/StateValueChangePage.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"StateValueChange",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/ObservabilityPage.ets",
+				"functions":[
+					{
+						"end_line":69,
+						"name":"V1ObserveCorrect",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/ObservabilityV2Page.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"V2Observe",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/ForEachSyncPage.ets",
+				"functions":[
+					{
+						"end_line":86,
+						"name":"ForEachSyncCorrect",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/RenderUpdatePage.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"RenderUpdateCorrect",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
