@@ -1817,7 +1817,7 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 **设备行为差异：**
 
-- 针对Phone、Tablet设备：在[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)下调用不生效不报错；在非[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
+- 针对Phone、Tablet设备：在[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)下调用不生效不报错；在非[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
 - 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
 - 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
 
