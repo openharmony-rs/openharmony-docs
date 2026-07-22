@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=227499a15769ff89e238d0afb653f1633e59b877 translatedAt=2026-07-21T08:36:10.955Z pushedAt=2026-07-22T06:40:36.402Z -->
+<!-- md-trans-meta sourceCommit=227499a15769ff89e238d0afb653f1633e59b877 translatedAt=2026-07-21T08:36:10.955Z pushedAt=2026-07-22T09:00:29.164Z -->
 
 > **NOTE**
 > - This module supports both ArkTS-Dyn and ArkTS-Sta.
@@ -1831,7 +1831,7 @@ Uses an ArkTS-Sta **CommonEventSubscriber** object in ArkTS-Dyn.
     let dynamicHandler = transfer.transferDynamic(subscriber, 'CommonEventManager.CommonEventSubscriber');
     CommonEventSubscriberStaticToDynamic(dynamicHandler as commonEventManager.CommonEventSubscriber);
   } catch (err) {
-    console.error('transferDynamic catch error：-----------' + err.message);
+    console.error('transferDynamic catch error:-----------' + err.message);
   }
   ```
 
@@ -1878,7 +1878,7 @@ Uses the ArkTS-Dyn **CommonEventSubscriber** object in ArkTS-Sta.
     dynamicSubscriber = commonEventManager.createSubscriberSync(subscribeInfo);
     CommonEventSubscriberDynamicToStatic(dynamicSubscriber);
   } catch (err) {
-    console.error('transferDynamic catch error：' + err.message);
+    console.error('transferDynamic catch error:' + err.message);
   }
   ```
 
@@ -1903,7 +1903,7 @@ Uses the ArkTS-Dyn **CommonEventSubscriber** object in ArkTS-Sta.
       let subscribeInfo = staticSubscriber.getSubscribeInfoSync();
       console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
     } catch (err) {
-        console.error('CommonEventSubscriberDynamicToStatic catch error：' + err.message);
+        console.error('CommonEventSubscriberDynamicToStatic catch error:' + err.message);
     }
   }
   ```
