@@ -104,7 +104,7 @@ LowPowerAudioSink需要数据时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* samples | 即将写入的AVSamplesBuffer实例。 |
+| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* samples | 即将写入的 AVSamplesBuffer实例。 |
 | void* userData | 用户自定义数据。 |
 
 ### OH_LowPowerAudioSink_OnInterrupted()
@@ -115,7 +115,7 @@ typedef void (*OH_LowPowerAudioSink_OnInterrupted)(OH_LowPowerAudioSink* sink, O
 
 **描述**
 
-LowPowerAudioSink焦点打断时调用该方法。
+LowPowerAudioSink音频焦点被打断时调用该方法。
 
 **起始版本：** 20
 
@@ -137,7 +137,7 @@ typedef void (*OH_LowPowerAudioSink_OnDeviceChanged)(OH_LowPowerAudioSink* sink,
 
 **描述**
 
-LowPowerAudioSink设备切换时调用该方法。
+LowPowerAudioSink 设备切换时调用该方法。
 
 **起始版本：** 20
 
@@ -168,6 +168,6 @@ LowPowerAudioSink播放完成时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-|  void* userData | 用户自定义数据。 |
+| void* userData | 用户自定义数据。 |
 
 
