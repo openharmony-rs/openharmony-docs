@@ -66,7 +66,7 @@ OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)
 
 **描述**
 
-创建低功耗LowPowerVideoSink。
+创建LowPowerVideoSink。
 
 **起始版本：** 20
 
@@ -165,7 +165,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetVideoSurface(OH_LowPowerVideoSink* sink, co
 
 **描述**
 
-为LowPowerVideoSink设置渲染画面窗口。 需要在[OH_LowPowerVideoSink_Prepare](#oh_lowpowervideosink_prepare)前完成。
+为LowPowerVideoSink设置渲染画面窗口。需要在[OH_LowPowerVideoSink_Prepare](#oh_lowpowervideosink_prepare)前完成。
 
 **起始版本：** 20
 
@@ -464,9 +464,9 @@ OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| const int64_t framePts | 渲染的目标视频帧的pts。单位为微秒。 |
+| const int64_t framePts | 渲染的目标视频帧的pts。单位：μs。 |
 | [OH_LowPowerVideoSink_OnTargetArrived](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ontargetarrived) onTargetArrived | OH_LowPowerVideoSink_OnTargetArrived方法，当目标帧渲染时触发该方法。 |
-| const int64_t timeoutMs | 如果等待第一帧的时间超过timeoutMs，则直接调用onTargetArrived。单位为毫秒。 |
+| const int64_t timeoutMs | 等待目标帧的时间超过timeoutMs，则直接调用onTargetArrived。单位：ms。 |
 | void* userData | 用户数据。 |
 
 **返回：**
@@ -492,7 +492,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, c
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| const float speed | 播放速率的值。当前版本有效范围为[0.25, 4.0]。 |
+| const float speed | 播放倍速的值。当前版本有效范围为[0.25, 4.0]。 |
 
 **返回：**
 
@@ -541,8 +541,8 @@ OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) *sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| int64_t *pts | 当前播放的pts。单位为微秒。 |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| int64_t *pts | 当前播放的pts。单位：μs。 |
 
 **返回：**
 
