@@ -98,7 +98,7 @@ export default function abilityTest() {
 }
 ```
 **ArkTS-Sta示例：**
- 1. 示例中的sleep函数参数[sleep](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/Util.test.ets)
+ 1. 示例中的导入的sleep函数参数示例代码。
 <!-- @[basic_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
 
 ``` TypeScript
@@ -828,7 +828,7 @@ interface PromiseInfo {
 ```
 
 **ArkTS-Sta示例：**
-1. 示例中的promiseReject函数参数[promiseReject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/Util.test.ets)
+1. 示例中引入的promiseReject函数参数示例代码。
 <!-- @[assert_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/assertExampleTest/AssertExample.test.ets) -->
 
 ``` TypeScript
