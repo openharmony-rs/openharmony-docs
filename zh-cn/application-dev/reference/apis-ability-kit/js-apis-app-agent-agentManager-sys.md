@@ -555,6 +555,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { AgentExtensionAbility, agentManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let TAG = 'DemoAgentForDisConnect';
 
@@ -842,7 +843,7 @@ disconnectAgentExtensionAbility(proxy: AgentProxy): Promise\<void>
 **示例：**
 
 ```ts
-import { common, Want, agentManager } from '@kit.AbilityKit';
+import { common, agentManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
