@@ -195,7 +195,7 @@ getTaskInfo(taskId: number): Promise\<TaskInfo>
 
 finishTask(taskInfo: TaskInfo): void
  
-应用需要实现后台加载任务的[onStart](#常量)的主业务回调方法，在完成业务加载任务后，需要通过调用finishTask方法通知系统加载任务完成。运行在异步回调函数或其他线程中执行finishTask调用。
+应用需要实现后台加载任务的[常量](#常量)的主业务回调方法，在完成业务加载任务后，需要通过调用finishTask方法通知系统加载任务完成。运行在异步回调函数或其他线程中执行finishTask调用。
 
 **起始版本：**  26.0.0
 
