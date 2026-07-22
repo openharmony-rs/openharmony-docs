@@ -49,7 +49,7 @@ ArkTS-Sta: setDynamicDimming(id: string, value: double): void
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
 | id | string | 是 | 组件id。 |
-| value | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 组件压暗程度取值范围[0,1], 由0到1逐渐变亮。 |
+| value | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 组件压暗程度取值范围[0, 1]，由0到1逐渐变亮。 |
 
 **示例：**
 
