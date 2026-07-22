@@ -9744,7 +9744,9 @@ operateAttribute(operation: AlbumOperation): void
 
 **系统接口**：此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+**需要权限**：
+- API版本26.1.0+：ohos.permission.ACCESS_MEDIALIB_THUMB_DB 或 ohos.permission.WRITE_IMAGEVIDEO
+- API版本26.0.0：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -9762,7 +9764,7 @@ operateAttribute(operation: AlbumOperation): void
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values or operation is incorrect. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values of operation is incorrect. |
 | 23800201 | Unsupported operation type. It is recommended to check the logs.<br>Possible causes:<br>1. Unsupported AlbumAttribute for the album.<br>2. Unsupported AlbumOperationType for the AlbumAttribute.<br>3. Other operation limit. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -13468,6 +13470,7 @@ async function example(context: Context) {
 | NICK_NAME_ATTR | 'nickname' | 相册昵称。<br>**系统接口**：此接口为系统接口。 |
 | EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。<br>**系统接口**：此接口为系统接口。 |
 | IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。<br>**系统接口**：此接口为系统接口。 |
+| FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumOperationType
 
