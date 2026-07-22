@@ -943,7 +943,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
 
-允许应用设置车内灯光对手件状态信息。
+允许应用设置车内灯光对手件状态。
 
 申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
 
