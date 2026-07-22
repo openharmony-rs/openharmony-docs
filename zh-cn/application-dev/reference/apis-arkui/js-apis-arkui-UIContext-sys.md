@@ -6,9 +6,9 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在Stage模型中，WindowStage/Window可以通过loadContent接口加载页面并创建UI的实例，并将页面内容渲染到关联的窗口中，所以UI实例和窗口是一一关联的。一些全局的UI接口是和具体UI实例的执行上下文相关的，在当前接口调用时，通过追溯调用链跟踪到UI的上下文，来确定具体的UI实例。若在非UI页面中或者一些异步回调中调用这类接口，可能无法跟踪到当前UI的上下文，导致接口执行失败。
+在Stage模型中，WindowStage/Window可以通过[loadContent](arkts-apis-window-Window.md#loadcontent9)接口加载页面并创建UI实例，并将页面内容渲染到关联窗口中，因此UI实例和窗口一一关联。与具体UI实例执行上下文相关的全局UI接口，在调用时会通过追溯调用链跟踪UI上下文，确定具体的UI实例。若在非UI页面中或者未绑定当前UI上下文的异步回调中调用这类接口，可能无法跟踪到当前UI上下文，导致接口执行失败。
 
-UIContext用于获取与具体UI实例关联的上下文，使开发者可在对应UI实例上调用上下文相关的UI接口。
+UIContext用于获取与具体UI实例关联的上下文，使开发者可在对应UI实例上调用上下文相关的UI接口。本模块提供组件压暗和冻结、键盘样式配置、资源缓存清理、背景亮度取色、不可见Image组件图像内存回收以及组件截图等系统能力。
 
 > **说明：**
 >
@@ -67,7 +67,7 @@ struct Index {
   }
 }
 ```
-![api-switch-overview](../apis-arkui/figures/dynamicDinning.gif)
+![api-switch-overview](../apis-arkui/figures/dynamicDimming.gif)
 
 ### freezeUINode<sup>18+</sup>
 
@@ -88,7 +88,7 @@ freezeUINode(id: string, isFrozen: boolean): void
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
 | id | string | 是 | 组件的id。|
-| isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。|
+| isFrozen | boolean | 是 | 是否冻结组件。<br>true表示冻结组件，false表示不冻结组件。<br>默认值为false，传入`undefined`时按false处理。|
 
 **错误码：**
 
@@ -210,7 +210,7 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
 | uniqueId | number | 是 | 组件的uniqueId。|
-| isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。|
+| isFrozen | boolean | 是 | 是否冻结组件。<br>true表示冻结组件，false表示不冻结组件。<br>默认值为false，传入`undefined`时按false处理。|
 
 **错误码：**
 

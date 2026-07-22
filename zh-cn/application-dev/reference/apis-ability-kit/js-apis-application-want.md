@@ -27,7 +27,7 @@ import Want from '@ohos.application.Want';
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
 | deviceId    | string               | 否   | 是   | 表示运行指定Ability的设备ID。如果未设置该字段，则表明指定本设备。                                |
 | bundleName   | string               | 否   | 是   | 表示Bundle名称。 |
-| abilityName  | string               | 否   | 是   | 表示待启动的Ability名称。如果在Want中该字段同时指定了BundleName和AbilityName，则Want可以直接匹配到指定的Ability。AbilityName需要在一个应用的范围内保证唯一。 |
+| abilityName  | string               | 否   | 是   | 表示待启动的Ability名称。如果在Want中该字段同时指定了BundleName和AbilityName，则Want可以直接匹配到指定的Ability。如需进一步精确匹配，还可配合moduleName字段使用。AbilityName需要在一个应用的范围内保证唯一。 |
 | uri          | string               | 否   | 是   | 表示Uri描述。如果在Want中指定了Uri，则Want将匹配指定的Uri信息，包括scheme、schemeSpecificPart、authority和path信息。 |
 | type         | string               | 否   | 是   | 表示MIME type类型描述，打开文件的类型，主要用于文管打开文件。比如：'text/xml' 、 'image/*'等，MIME定义参考：https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com。   |
 | flags        | number               | 否   | 是   | 表示处理Want的方式。默认传数字，具体参考：[flags说明](js-apis-ability-wantConstant.md#flags)。 |
@@ -50,13 +50,15 @@ import Want from '@ohos.application.Want';
     'bundleName': 'com.example.myapplication',
     'abilityName': 'EntryAbility',
     };
-    class MyAbility extends UIAbility{
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
-        this.context.startAbility(want, (error: BusinessError) => {
-        // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
-        console.error(`error.code = ${error.code}`);
-        });
-    }
+    class MyAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+          this.context.startAbility(want, (error: BusinessError) => {
+            // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
+            if (error) {
+              console.error(`StartAbility failed, error code: ${error.code}, error msg: ${error.message}.`);
+            }
+          });
+        }
     }
     ```
 
@@ -67,11 +69,11 @@ import Want from '@ohos.application.Want';
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForString: 'str',
-            },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForString: 'str',
+          },
         };
         ```
     * 数字（Number）
@@ -79,12 +81,12 @@ import Want from '@ohos.application.Want';
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForInt: 100,
-                keyForDouble: 99.99,
-            },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForInt: 100,
+            keyForDouble: 99.99,
+          },
         };
         ```
     * 布尔（Boolean）
@@ -92,11 +94,11 @@ import Want from '@ohos.application.Want';
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForBool: true,
-            },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForBool: true,
+          },
         };
         ```
     * 对象（Object）
@@ -104,16 +106,16 @@ import Want from '@ohos.application.Want';
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForObject: {
-                    keyForObjectString: 'str',
-                    keyForObjectInt: -200,
-                    keyForObjectDouble: 35.5,
-                    keyForObjectBool: false,
-                },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForObject: {
+              keyForObjectString: 'str',
+              keyForObjectInt: -200,
+              keyForObjectDouble: 35.5,
+              keyForObjectBool: false,
             },
+          },
         };
         ```
     * 数组（Array）
@@ -121,14 +123,14 @@ import Want from '@ohos.application.Want';
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForArrayString: ['str1', 'str2', 'str3'],
-                keyForArrayInt: [100, 200, 300, 400],
-                keyForArrayDouble: [0.1, 0.2],
-                keyForArrayObject: [{obj1: 'aaa'}, {obj2: 100}],
-            },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForArrayString: ['str1', 'str2', 'str3'],
+            keyForArrayInt: [100, 200, 300, 400],
+            keyForArrayDouble: [0.1, 0.2],
+            keyForArrayObject: [{obj1: 'aaa'}, {obj2: 100}],
+          },
         };
         ```
     * 文件描述符（FD）
@@ -141,25 +143,27 @@ import Want from '@ohos.application.Want';
 
         let fd: number = 0;
         try {
-            fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
+          fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
         } catch (e) {
-            console.error(`OpenSync failed, error code: ${e.code}, error msg: ${e.message}.`);
+          console.error(`OpenSync failed, error code: ${e.code}, error msg: ${e.message}.`);
         }
         let want: Want = {
-            deviceId: '', // deviceId为空表示本设备
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                'keyFd': { 'type': 'FD', 'value': fd }
-            }
+          deviceId: '', // deviceId为空表示本设备
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            'keyFd': { 'type': 'FD', 'value': fd }
+          }
         };
 
         class MyAbility extends UIAbility {
-            onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-                this.context.startAbility(want, (error: BusinessError) => {
-                    // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
-                    console.error(`StartAbility failed, error.code: ${error.code}, err msg: ${error.message}.`);
-                });
-            }
+          onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+            this.context.startAbility(want, (error: BusinessError) => {
+              // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
+              if (error) {
+                console.error(`StartAbility failed, error code: ${error.code}, error msg: ${error.message}.`);
+              }
+            });
+          }
         }
         ```

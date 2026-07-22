@@ -28,9 +28,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle)](#oh_arkui_getnodehandlefromnapivalue) | 获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle，适用于Native侧需要操作或管理ArkTS侧FrameNode节点的场景。 |
-| [int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_ContextHandle* context)](#oh_arkui_getcontextfromnapivalue) | 获取ArkTS侧创建的[UIContext](arkts-apis-uicontext-uicontext.md)对象映射到Native侧的ArkUI_ContextHandle，适用于Native侧需要基于UIContext调用ArkUI能力的场景。 |
-| [int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)](#oh_arkui_getnodecontentfromnapivalue) | 获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle，适用于Native侧需要操作或挂载ArkTS侧NodeContent内容的场景。 |
+| [int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle)](#oh_arkui_getnodehandlefromnapivalue) | 将ArkTS侧创建的FrameNode节点对象映射为Native侧的ArkUI_NodeHandle，适用于Native侧需要操作或管理ArkTS侧FrameNode节点的场景。 |
+| [int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_ContextHandle* context)](#oh_arkui_getcontextfromnapivalue) | 将ArkTS侧创建的[UIContext](arkts-apis-uicontext-uicontext.md)对象映射为Native侧的ArkUI_ContextHandle，适用于Native侧需要基于UIContext调用ArkUI能力的场景。 |
+| [int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)](#oh_arkui_getnodecontentfromnapivalue) | 将ArkTS侧创建的NodeContent对象映射为Native侧的ArkUI_NodeContentHandle，适用于Native侧需要操作或挂载ArkTS侧NodeContent内容的场景。 |
 | [int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)](#oh_arkui_getdrawabledescriptorfromnapivalue) | 将ArkTS侧创建的[DrawableDescriptor](arkui-ts/ts-basic-components-image.md#drawabledescriptor10)对象映射到Native侧的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)，适用于Native侧需要使用ArkTS侧图片资源描述对象的场景。 |
 | [int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)](#oh_arkui_getdrawabledescriptorfromresourcenapivalue) | 将ArkTS侧通过$r()获取的资源对象转换为Native侧可使用的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象，适用于Native侧需要使用ArkTS资源对象作为图片资源描述的场景。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavigationid) | 获取当前节点所在的Navigation组件的ID。 |
@@ -39,7 +39,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int32_t index, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationnamebyindex) | 根据给定索引值，获取当前节点所在的Navigation栈中对应位置的页面名称。索引值从0开始计数，0为栈底。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationid) | 获取当前节点所在的NavDestination组件的ID。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)](#oh_arkui_getnavdestinationstate) | 获取当前节点所在的NavDestination组件的状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getnavdestinationindex) | 获取当前节点所在的NavDestination组件在页面栈的索引。 |
+| [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getnavdestinationindex) | 获取当前节点所在的NavDestination组件在页面栈中的索引。 |
 | [napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)](#oh_arkui_getnavdestinationparam) | 获取当前节点所在的NavDestination组件的参数。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getrouterpageindex) | 获取当前节点所在页面在Router页面栈中的索引。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpagename) | 获取当前节点所在页面的名称。 |
@@ -47,9 +47,9 @@
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterPageState* state)](#oh_arkui_getrouterpagestate) | 获取当前节点所在页面的Page组件的状态。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpageid) | 获取当前节点所在页面的Page组件的ID。 |
 | [ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)](#oh_arkui_initmoduleforarktsenv) | 初始化指定上下文环境的ArkUI相关接口，适用于在Native侧使用ArkUI相关接口前进行上下文环境初始化的场景。该函数禁止在非UI线程中调用，否则程序将主动中止。使用该函数初始化指定上下文环境后，在对应环境销毁时调用[OH_ArkUI_NotifyArkTSEnvDestroy()](#oh_arkui_notifyarktsenvdestroy)通知环境已销毁。 |
-| [void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)](#oh_arkui_notifyarktsenvdestroy) | 通知指定的上下文环境已销毁，适用于ArkTS上下文环境销毁时在Native侧同步清理相关状态的场景。该函数禁止在非UI线程中调用，否则程序将主动中止。 |
-| [int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData,void (\*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))](#oh_arkui_postframecallback) | 注册一个回调函数，以便在下一帧渲染时执行，适用于Native侧在下一帧执行界面刷新或渲染相关任务的场景。不允许在非UI线程调用；如果检查到在非UI线程调用，程序会主动中止。 |
-| [int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,void (\*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))](#oh_arkui_postidlecallback) | 注册一个回调函数，适用于需要在Native侧利用帧间空闲时间处理非紧急任务的场景。下一帧渲染结束后，如果距离该帧之后的下一个VSync信号到来的剩余时间大于1ms，该回调函数将被执行；如果剩余时间小于1ms，回调函数将顺延至后续某一帧渲染结束后剩余时间大于1ms时执行。如果当前没有下一帧，将自动请求下一帧。 |
+| [void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)](#oh_arkui_notifyarktsenvdestroy) | 通知指定的上下文环境已销毁，适用于ArkTS上下文环境销毁时在Native侧同步清理相关状态的场景。使用[OH_ArkUI_InitModuleForArkTSEnv()](#oh_arkui_initmoduleforarktsenv)初始化上下文环境后，应在该环境销毁时调用此函数。该函数禁止在非UI线程中调用，否则程序将主动中止。 |
+| [int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData, void (\*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))](#oh_arkui_postframecallback) | 注册一个回调函数，以便在下一帧渲染时执行，适用于Native侧在下一帧执行界面刷新或渲染相关任务的场景。不允许在非UI线程调用；如果检查到在非UI线程调用，程序会主动中止。 |
+| [int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData, void (\*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))](#oh_arkui_postidlecallback) | 注册一个回调函数，适用于需要在Native侧利用帧间空闲时间处理非紧急任务的场景。下一帧渲染结束后，如果距离该帧之后的下一个VSync信号到来的剩余时间大于1ms，该回调函数将被执行；如果剩余时间小于1ms，回调函数将顺延至后续某一帧渲染结束后剩余时间大于1ms时执行。如果当前没有下一帧，将自动请求下一帧。不允许在非UI线程调用；如果检查到在非UI线程调用，程序会主动中止。 |
 | [ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, bool enabled, ArkUI_RawInputEventType type)](#oh_arkui_enableeventpassthrough) | 启用或禁用事件直通。事件直通表示在事件分发过程中，不经过[重采样](../../ui/arkts-interaction-development-guide-touch-screen.md#重采样与历史点)直接下发给组件。 |
 
 ## 函数说明
@@ -63,7 +63,7 @@ int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, 
 **描述：**
 
 
-获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle，适用于Native侧需要操作或管理ArkTS侧FrameNode节点的场景。
+将ArkTS侧创建的FrameNode节点对象映射为Native侧的ArkUI_NodeHandle，适用于Native侧需要操作或管理ArkTS侧FrameNode节点的场景。
 
 **起始版本：** 12
 
@@ -91,7 +91,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 **描述：**
 
 
-获取ArkTS侧创建的[UIContext](arkts-apis-uicontext-uicontext.md)对象映射到Native侧的ArkUI_ContextHandle，适用于Native侧需要基于UIContext调用ArkUI能力的场景。
+将ArkTS侧创建的[UIContext](arkts-apis-uicontext-uicontext.md)对象映射为Native侧的ArkUI_ContextHandle，适用于Native侧需要基于UIContext调用ArkUI能力的场景。
 
 **起始版本：** 12
 
@@ -101,7 +101,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 | 参数项 | 描述 |
 | -- | -- |
 | napi_env env | Node-API的环境指针。 |
-| napi_value value | ArkTS侧创建的context对象。 |
+| napi_value value | ArkTS侧创建的UIContext对象。 |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)* context | ArkUI_ContextHandle指针。 |
 
 **返回：**
@@ -119,7 +119,7 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 **描述：**
 
 
-获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle，适用于Native侧需要操作或挂载ArkTS侧NodeContent内容的场景。
+将ArkTS侧创建的NodeContent对象映射为Native侧的ArkUI_NodeContentHandle，适用于Native侧需要操作或挂载ArkTS侧NodeContent内容的场景。
 
 **起始版本：** 12
 
@@ -185,7 +185,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 | 参数项 | 描述 |
 | -- | -- |
 | napi_env env | Node-API的环境指针。 |
-| napi_value value | ArkTS侧创建的$r资源对象。 |
+| napi_value value | ArkTS侧通过$r()获取的资源对象。 |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)** drawableDescriptor | 接受ArkUI_DrawableDescriptor指针的对象。 |
 
 **返回：**
@@ -374,7 +374,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* 
 **描述：**
 
 
-获取当前节点所在的NavDestination组件在页面栈的索引。
+获取当前节点所在的NavDestination组件在页面栈中的索引。
 
 **起始版本：** 12
 
@@ -594,7 +594,7 @@ void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)
 **描述：**
 
 
-通知指定的上下文环境已销毁，适用于ArkTS上下文环境销毁时在Native侧同步清理相关状态的场景。该函数禁止在非UI线程中调用，否则程序将主动中止。
+通知指定的上下文环境已销毁，适用于ArkTS上下文环境销毁时在Native侧同步清理相关状态的场景。使用[OH_ArkUI_InitModuleForArkTSEnv()](#oh_arkui_initmoduleforarktsenv)初始化上下文环境后，应在该环境销毁时调用此函数。该函数禁止在非UI线程中调用，否则程序将主动中止。
 
 **起始版本：** 20
 
@@ -608,7 +608,7 @@ void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)
 ### OH_ArkUI_PostFrameCallback()
 
 ```c
-int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData,void (*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))
+int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData, void (*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))
 ```
 
 **描述：**
@@ -638,13 +638,13 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 ### OH_ArkUI_PostIdleCallback()
 
 ```c
-int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,void (*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))
+int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData, void (*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))
 ```
 
 **描述：**
 
 
-注册一个回调函数，适用于需要在Native侧利用帧间空闲时间处理非紧急任务的场景。下一帧渲染结束后，如果距离该帧之后的下一个VSync信号到来的剩余时间大于1ms，该回调函数将被执行；如果剩余时间小于1ms，回调函数将顺延至后续某一帧渲染结束后剩余时间大于1ms时执行。如果当前没有下一帧，将自动请求下一帧。
+注册一个回调函数，适用于需要在Native侧利用帧间空闲时间处理非紧急任务的场景。下一帧渲染结束后，如果距离该帧之后的下一个VSync信号到来的剩余时间大于1ms，该回调函数将被执行；如果剩余时间小于1ms，回调函数将顺延至后续某一帧渲染结束后剩余时间大于1ms时执行。如果当前没有下一帧，将自动请求下一帧。不允许在非UI线程调用；如果检查到在非UI线程调用，程序会主动中止。
 
 **起始版本：** 20
 
@@ -655,8 +655,8 @@ int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,
 | -- | -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UIContext对象指针，用以绑定实例。 |
 | void* userData | 自定义事件参数，当自定义回调函数触发时在回调参数中携带回来。 |
-| callback | 自定义回调函数，签名为void (\*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void\* userData)，用于在下一帧渲染结束后，剩余时间大于1ms时执行。其中nanoTimeLeft表示当前帧的剩余时间，frameCount表示帧号，userData表示注册时传入并在回调触发时携带回来的自定义数据。 |
-| uint64_t nanoTimeLeft | 当前帧的剩余时间，单位：ns。 |
+| callback | 自定义回调函数，签名为void (\*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void\* userData)，用于在下一帧渲染结束后，剩余时间大于1ms时执行。其中nanoTimeLeft表示距离当前帧截止时间的剩余时间，frameCount表示帧号，userData表示注册时传入并在回调触发时携带回来的自定义数据。 |
+| uint64_t nanoTimeLeft | 距离当前帧截止时间的剩余时间，单位：ns。 |
 | uint32_t frameCount | 帧号。 |
 
 **返回：**

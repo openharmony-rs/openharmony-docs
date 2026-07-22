@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines the APIs and structs related to the uniform data structs.
+Defines the APIs and structs related to the uniform data structs. If the parameter type is char*, the string must end with a null character ('\0').
 
 **File to include**: <database/udmf/uds.h>
 
@@ -35,6 +35,12 @@ Defines the APIs and structs related to the uniform data structs.
 | [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) | OH_UdsArrayBuffer | Defines a struct for the unified data of the ArrayBuffer type.   |
 | [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) | OH_UdsContentForm | Defines a struct for the unified data of the content card type.      |
 | [OH_UdsDetails](capi-udmf-oh-udsdetails.md) | OH_UdsDetails | Defines a struct for the unified data of the dictionary type.|
+
+### Enums
+
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [Udmf_AuthPermission](#udmf_authpermission) | Udmf_AuthPermission | Enumerates the URI authorization policies in the drag scenario.<br>Note: This authorization policy takes effect only in drag scenarios.|
 
 ### Functions
 
@@ -92,7 +98,7 @@ Defines the APIs and structs related to the uniform data structs.
 | [int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)](#oh_udsarraybuffer_destroy) | Destroys an [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) instance.|
 | [int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, unsigned int len)](#oh_udsarraybuffer_setdata) | Sets the data content for an [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) instance.|
 | [int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, unsigned int* len)](#oh_udsarraybuffer_getdata) | Obtains the custom ArrayBuffer data from an [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) instance.|
-| [OH_UdsContentForm* OH_UdsContentForm_Create()](#oh_udscontentform_create) | Creates an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance and a pointer to it.|
+| [OH_UdsContentForm* OH_UdsContentForm_Create()](#oh_udscontentform_create) | Creates an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance and a pointer to it. If this pointer is no longer required, use [OH_UdsContentForm_Destroy](capi-uds-h.md#oh_udscontentform_destroy) to destroy it. Otherwise, memory leaks may occur.|
 | [void OH_UdsContentForm_Destroy(OH_UdsContentForm* pThis)](#oh_udscontentform_destroy) | Destroys an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance.|
 | [const char* OH_UdsContentForm_GetType(OH_UdsContentForm* pThis)](#oh_udscontentform_gettype) | Obtains the type ID from an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance.|
 | [int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thumbData, unsigned int* len)](#oh_udscontentform_getthumbdata) | Obtains the image data from an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance.|
@@ -127,7 +133,62 @@ Defines the APIs and structs related to the uniform data structs.
 | [int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* value)](#oh_udsdetails_setvalue) | Adds a KV pair to an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
 | [const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_getvalue) | Obtains the value of a specified key from an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
 | [char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)](#oh_udsdetails_getallkeys) | Obtains the result set of all keys from an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| [int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)](#oh_udshtml_setauthpolicy) | Sets an authorization policy for an [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.<br>Note: This authorization policy takes effect only in drag scenarios.|
+| [int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)](#oh_udsfileuri_setauthpolicy) | Sets an authorization policy for an [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.<br>Note: This authorization policy takes effect only in drag scenarios.|
 
+
+## Enum Description
+
+### Udmf_AuthPermission
+
+```c
+enum Udmf_AuthPermission
+```
+
+**Description**
+
+Enumerates the URI authorization policies in the drag scenario.
+
+> **NOTE**
+>
+> This authorization policy takes effect only in drag scenarios.
+
+The **NONE**, **READ**, **WRITE**, and **PERSIST** policies are supported. They can be combined, and only the following combinations take effect:
+
+- **NONE**: No file permission is granted.
+
+- **READ**: Only one-time read permission is granted.
+
+- **WRITE**: Only one-time read and write permissions are granted. (Write permission includes read permission.)
+
+- **READ+WRITE**: One-time read and write authorization is performed, which is equivalent to **WRITE** authorization.
+
+- **READ+PERSIST**: Persistent read permission is granted.
+
+- **WRITE+PERSIST**: Persistent read and write permissions are granted.
+
+- **READ+WRITE+PERSIST**: Persistent read and write permissions are granted.
+
+The rules for applying the drag authorization policies are as follows (in descending order of priority):
+
+- Single data level: The **FileUri** and **HTML** (UDSs) support the configuration of authorization policy parameters, which take effect only once for a single record and have the highest priority.
+
+- [OH_UdmfData](capi-udmf-oh-udmfdata.md) level: The authorization parameters provided in [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) are valid for a single drag operation. If an authorization policy is configured for a piece of data, the configuration of the data is preferentially used. This level has the second highest priority.
+
+- Default level: If no authorization policy is configured for a single piece of data or [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md), proxy authorization is performed based on the default drag logic. The default logic is as follows:
+
+- FileUri data: By default, the **READ**, **WRITE**, and **PERSIST** permissions are granted in drag scenarios.
+
+- HTML data: Read permission is granted only for URIs under the **img** tag in HTML text.
+
+**Since:** 26.0.0
+
+| Value| Description|
+| -- | -- |
+| UDMF_PERM_NONE = 0 | No permission granted.|
+| UDMF_PERM_READ = 1u << 0 | Permission to read or view data.|
+| UDMF_PERM_WRITE = 1u << 1 | Permission to modify data (including **READ**).|
+| UDMF_PERM_PERSIST = 1u << 2 | Permission to persist files.|
 
 ## Function Description
 
@@ -243,8 +304,6 @@ Obtains the abstract from an [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) ins
 | ----------- | ------------------------------------------------------------ |
 | const char* | Returns a pointer to the abstract obtained if the operation is successful; returns **nullptr** otherwise.|
 
-OH_UdsPlainText
-
 ### OH_UdsPlainText_SetContent()
 
 ```c
@@ -269,7 +328,7 @@ Sets the plaintext content for an [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsPlainText_SetAbstract()
 
@@ -295,7 +354,7 @@ Sets the abstract for an [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instanc
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsHyperlink_Create()
 
@@ -433,7 +492,7 @@ Sets the URL for an [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsHyperlink_SetDescription()
 
@@ -459,7 +518,7 @@ Sets the description for an [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) inst
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsHtml_Create()
 
@@ -597,7 +656,7 @@ Sets the HTML content for an [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsHtml_SetPlainContent()
 
@@ -623,7 +682,7 @@ Sets the plaintext content for an [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsAppItem_Create()
 
@@ -861,7 +920,7 @@ Sets the application ID for an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) insta
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsAppItem_SetName()
 
@@ -887,7 +946,7 @@ Sets the application name for an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) ins
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsAppItem_SetIconId()
 
@@ -913,7 +972,7 @@ Sets the icon ID for an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsAppItem_SetLabelId()
 
@@ -939,7 +998,7 @@ Sets the label ID for an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsAppItem_SetBundleName()
 
@@ -965,7 +1024,7 @@ Sets the bundle name for an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instance
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  |Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsAppItem_SetAbilityName()
 
@@ -991,7 +1050,7 @@ Sets the ability name for an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instanc
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsFileUri_Create()
 
@@ -1129,7 +1188,7 @@ Sets the URI information for an [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) inst
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsFileUri_SetFileType()
 
@@ -1155,7 +1214,7 @@ Sets the file type for an [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsPixelMap_Create()
 
@@ -1263,7 +1322,7 @@ Sets the pixel image content for an [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsArrayBuffer_Create()
 
@@ -1306,7 +1365,7 @@ Destroys an [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsArrayBuffer_SetData()
 
@@ -1333,7 +1392,7 @@ Sets the data content for an [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsArrayBuffer_GetData()
 
@@ -1360,7 +1419,7 @@ Obtains the custom ArrayBuffer data from an [OH_UdsArrayBuffer](capi-udmf-oh-uds
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsContentForm_Create()
 
@@ -1370,7 +1429,7 @@ OH_UdsContentForm* OH_UdsContentForm_Create()
 
 **Description**
 
-Creates an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance and a pointer to it.
+Creates an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance and a pointer to it. If this pointer is no longer required, use [OH_UdsContentForm_Destroy](capi-uds-h.md#oh_udscontentform_destroy) to destroy it. Otherwise, memory leaks may occur.
 
 **Since**: 14
 
@@ -1449,7 +1508,7 @@ Obtains the image data from an [OH_UdsContentForm](capi-udmf-oh-udscontentform.m
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal system error occurs.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsContentForm_GetDescription()
 
@@ -1526,7 +1585,7 @@ Obtains the application icon data from an [OH_UdsContentForm](capi-udmf-oh-udsco
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal system error occurs.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsContentForm_GetAppName()
 
@@ -1603,7 +1662,7 @@ Sets the image data for an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) i
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsContentForm_SetDescription()
 
@@ -1629,7 +1688,7 @@ Sets the description for an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) 
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsContentForm_SetTitle()
 
@@ -1655,7 +1714,7 @@ Sets the title for an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instan
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsContentForm_SetAppIcon()
 
@@ -1682,7 +1741,7 @@ Sets the application icon data for an [OH_UdsContentForm](capi-udmf-oh-udsconten
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsContentForm_SetAppName()
 
@@ -1708,7 +1767,7 @@ Sets the application name for an [OH_UdsContentForm](capi-udmf-oh-udscontentform
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsContentForm_SetLinkUri()
 
@@ -1734,7 +1793,7 @@ Sets the hyperlink for an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) in
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int  | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 
 ### OH_UdsPlainText_GetDetails()
@@ -1760,7 +1819,7 @@ Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance 
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsPlainText_SetDetails()
 
@@ -1779,13 +1838,13 @@ Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsPla
 | Name| Description|
 | -- | -- |
 | [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)* pThis | Pointer to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instance.|
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsHyperlink_GetDetails()
 
@@ -1810,7 +1869,7 @@ Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance 
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsHyperlink_SetDetails()
 
@@ -1829,13 +1888,13 @@ Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsHyp
 | Name| Description|
 | -- | -- |
 | [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)* pThis | Pointer to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.|
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsHtml_GetDetails()
 
@@ -1860,7 +1919,7 @@ Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance 
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsHtml_SetDetails()
 
@@ -1879,13 +1938,13 @@ Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsHtm
 | Name| Description|
 | -- | -- |
 | [OH_UdsHtml](capi-udmf-oh-udshtml.md)* pThis | Pointer to the [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.|
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsAppItem_GetDetails()
 
@@ -1910,7 +1969,7 @@ Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance 
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsAppItem_SetDetails()
 
@@ -1929,13 +1988,13 @@ Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsApp
 | Name| Description|
 | -- | -- |
 | [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | Pointer to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instance.|
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsFileUri_GetDetails()
 
@@ -1960,7 +2019,7 @@ Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance 
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsFileUri_SetDetails()
 
@@ -1979,13 +2038,13 @@ Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsFil
 | Name| Description|
 | -- | -- |
 | [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* pThis | Pointer to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.|
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsPixelMap_GetDetails()
 
@@ -2010,7 +2069,7 @@ Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance 
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsPixelMap_SetDetails()
 
@@ -2029,13 +2088,13 @@ Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsPix
 | Name| Description|
 | -- | -- |
 | [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | Pointer to the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) instance.|
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsDetails_Create()
 
@@ -2055,7 +2114,7 @@ If this pointer is no longer required, use [OH_UdsDetails_Destroy](capi-uds-h.md
 
 | Type| Description|
 | -- | -- |
-| [OH_UdsDetails*](capi-udmf-oh-udsdetails.md) | Returns a pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance if the operation is successful; returns **nullptr** otherwise.|
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* | Returns a pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance if the operation is successful; returns **nullptr** otherwise.|
 
 ### OH_UdsDetails_Destroy()
 
@@ -2091,7 +2150,7 @@ Checks whether the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance contains
 
 | Name| Description|
 | -- | -- |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
 | const char* key | Key in a KV pair of the dictionary type.|
 
 **Returns**
@@ -2123,7 +2182,7 @@ Deletes the specified KV pair from the [OH_UdsDetails](capi-udmf-oh-udsdetails.m
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsDetails_Clear()
 
@@ -2147,7 +2206,7 @@ Clears all data from the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsDetails_SetValue()
 
@@ -2173,7 +2232,7 @@ Adds a KV pair to an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
 
 ### OH_UdsDetails_GetValue()
 
@@ -2191,7 +2250,7 @@ Obtains the value of a specified key from an [OH_UdsDetails](capi-udmf-oh-udsdet
 
 | Name| Description|
 | -- | -- |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
 | const char* key | Key in a KV pair of the dictionary type.|
 
 **Returns**
@@ -2224,3 +2283,61 @@ Obtains the result set of all keys from an [OH_UdsDetails](capi-udmf-oh-udsdetai
 | Type| Description|
 | -- | -- |
 | char** | Returns a double pointer to the result set if the operation is successful; returns **nullptr** otherwise.<br>When [OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy) is used to destroy the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, the return value is also released.|
+
+### OH_UdsHtml_SetAuthPolicy()
+
+```c
+int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)
+```
+
+**Description**
+
+Sets an authorization policy for an [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.
+
+> **NOTE**
+>
+> This authorization policy takes effect only in drag scenarios.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsHtml](capi-udmf-oh-udshtml.md)* pThis | Pointer to the [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.|
+| uint32_t authPolicy | URI authorization policy in drag scenarios. The default value is **READ** (read-only authorization), which takes effect only in scenarios such as the **img** tag. This policy is used only for a single record and has the highest priority. For details about the policy, see [Udmf_AuthPermission](capi-uds-h.md#udmf_authpermission).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
+
+### OH_UdsFileUri_SetAuthPolicy()
+
+```c
+int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)
+```
+
+**Description**
+
+Sets an authorization policy for an [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.
+
+> **NOTE**
+>
+> This authorization policy takes effect only in drag scenarios.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* pThis | Pointer to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.|
+| uint32_t authPolicy | URI authorization policy in the drag scenario. The default value is **READ+WRITE+PERSIST**, which is used only for a single record and has the highest priority. For details about the policy, see [Udmf_AuthPermission](capi-uds-h.md#udmf_authpermission).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|

@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_AttributeItem
 
 ## 概述
 
-定义[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)函数通用入参结构。各个属性设置接口可选择使用其中的成员变量来存储特定类型的参数数据。
+定义[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)函数的通用入参结构。各个属性设置接口可选择使用其中的成员变量来存储特定类型的参数数据。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ typedef struct {...} ArkUI_AttributeItem
 
 | 名称                                 | 描述 |
 | ---------------------------------- | --- |
-| const [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | 数字类型数组，用于存储数字数组类型的参数，数组长度由size指定。 |
+| const [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | 数字数组，用于存储数字类型的属性参数，数组长度由size指定。 |
 | int32_t size                       | value数组的长度，需配合变量value使用。 |
-| const char* string                 | 字符串类型，用于存储字符串类型的参数。 |
-| void* object                       | 对象类型，用于存储对象类型的参数。 |
+| const char* string                 | 字符串，用于存储字符串类型的属性参数。 |
+| void* object                       | 对象数据，用于存储对象类型的属性参数。 |

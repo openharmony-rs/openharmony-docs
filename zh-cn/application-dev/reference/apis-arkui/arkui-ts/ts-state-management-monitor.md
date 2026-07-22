@@ -41,12 +41,12 @@ type MonitorDecorator = (value: string | MonitorDecoratorOptions, ...args: strin
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型     | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| value  | string \| [MonitorDecoratorOptions](#monitordecoratoroptions) | 是   | 在API版本26.0.0之前，该参数为监听的变量名路径，内容由开发者指定。当开发者仅传入一个字符串时，入参为string类型。从API版本26.0.0开始，该参数也可以为MonitorDecoratorOptions类型的对象，用于配置通配符能力。 |
-| ...args   | string[] | 否   | 用于监听的变量名路径数组，内容由开发者指定。当开发者已使用MonitorDecoratorOptions或传入多个字符串时，入参为该类型。 |
+| value  | string \| [MonitorDecoratorOptions](#monitordecoratoroptions) | 是   | 在API版本26.0.0之前，该参数为监听的变量名路径，路径以点号（.）分隔表示嵌套属性（如'a.b.c'），内容由开发者指定。当开发者仅传入一个字符串时，入参为string类型。从API版本26.0.0开始，该参数也可以为MonitorDecoratorOptions类型的对象，用于配置通配符能力。 |
+| ...args   | string[] | 否   | 用于监听的变量名路径数组，路径以点号（.）分隔表示嵌套属性（如'a.b.c'），内容由开发者指定。当开发者已使用MonitorDecoratorOptions或传入多个字符串时，入参为该类型。不传该参数时默认为空，当value为string类型时，仅监听value参数指定的变量路径；当value为MonitorDecoratorOptions类型时，需通过该参数指定监听的变量路径。传入undefined时，对应的监听不生效。 |
 
 **返回值：**
 
@@ -70,7 +70,7 @@ class Info {
   }
 
   // 监听多个变量
-  @Monitor('age','height')
+  @Monitor('age', 'height')
   onRecordChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
       console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
@@ -117,12 +117,12 @@ struct Index {
 
 | 名称           | 类型    | 只读 | 可选 | 说明                                                         |
 | -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| enableWildcard | boolean | 否   | 是   | 是否支持通配符能力。true：使能通配符能力，false：关闭通配符能力。默认值为true，即默认使能通配符能力。 |
+| enableWildcard | boolean | 否   | 是   | 是否支持通配符能力。true：使能通配符能力，路径中可使用通配符（'*'）进行模糊监听；false：关闭通配符能力。默认值为true。 |
 
 
 ## IMonitor
 
-当监听的变量变化时，状态管理框架侧将回调开发者注册的函数，并传入变化信息。变化信息的类型即为IMonitor类型。
+当监听的变量变化时，状态管理框架侧将回调开发者注册的函数，并传入变化信息。变化信息的类型为IMonitor。
 
 ### 属性
 
@@ -136,7 +136,7 @@ struct Index {
 
 | 名称                | 类型            | 只读 | 可选 | 说明             |
 | ------------------- | --------------- | ---- | ---- | ---------------- |
-| dirty | Array\<string\> | 否   | 否   | 变化路径的数组。 |
+| dirty | Array\<string\> | 否   | 否   | 被监听变量中发生变化的属性路径数组，路径格式与@Monitor装饰器指定的变量名路径一致，支持点号分隔的嵌套属性路径（如'a.b.c'）。从API版本26.0.0开始，当通配符能力开启时，该数组中可能包含通配符路径，通过[value](#value)()方法查询通配符路径将返回undefined。 |
 
 ### value
 
@@ -156,13 +156,13 @@ value\<T\>(path?: string): IMonitorValue\<T\> | undefined
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 否   | 可选，被监听的变量路径名。未指定时默认使用变化路径数组dirty中的第一个路径。 |
+| path   | string | 否   | 被监听的变量路径名。未指定时默认使用变化路径数组dirty中的第一个路径。从API版本26.0.0开始，默认使用dirty中第一个非通配符路径。当指定路径为通配符路径时，返回undefined。 |
 
 **返回值：**
 
 | 类型                                                  | 说明                                                         |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| [IMonitorValue\<T\>](#imonitorvaluet)  \| undefined | @Monitor监听变量的路径以及变化前后值信息。<br>T为监听变量的类型。<br>当监听的路径不存在时，返回undefined。<br>API版本26.0.0之前，当未指定路径时，默认返回变化路径数组dirty中第一个路径对应的信息。<br>从API版本26.0.0开始，当未指定路径时，默认返回变化路径数组dirty中第一个非通配符路径。<br>当指定路径为通配符路径时，返回undefined。<br>当未指定路径，且变化路径数组dirty中所有路径均为通配符路径时，返回undefined。 |
+| [IMonitorValue\<T\>](#imonitorvaluet)  \| undefined | @Monitor监听变量的路径以及变化前后值信息。<br>T为监听变量的类型。<br>当监听的路径不存在时，返回undefined。<br>API版本26.0.0之前，当未指定路径时，默认返回变化路径数组dirty中第一个路径对应的信息。<br>从API版本26.0.0开始，当未指定路径时，默认返回变化路径数组dirty中第一个非通配符路径对应的信息。<br>当指定路径为通配符路径时，返回undefined。<br>当未指定路径，且变化路径数组dirty中所有路径均为通配符路径时，返回undefined。 |
 
 **示例：**
 
@@ -181,7 +181,7 @@ class Info {
   }
 
   // 监听多个变量
-  @Monitor('age','height')
+  @Monitor('age', 'height')
   onRecordChange(monitor: IMonitor) {
     // 指定value的入参时，将返回入参路径path对应的变量变化值信息
     monitor.dirty.forEach((path: string) => {

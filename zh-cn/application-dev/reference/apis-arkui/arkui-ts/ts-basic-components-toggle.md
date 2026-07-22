@@ -90,6 +90,7 @@ selectedColor(value: ResourceColor)
 设置组件在打开状态下的背景颜色。
 
 > **说明：**
+>
 > 设置systemMaterial系统材质时对背景色的影响，请参考组件开篇说明。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -129,6 +130,7 @@ switchStyle(value: SwitchStyle)
 设置Switch类型的样式。仅当type为ToggleType.Switch生效。
 
 > **说明：**
+>
 > 与systemMaterial系统材质同时设置时，请参考组件开篇说明及通用系统材质属性文档。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -168,6 +170,7 @@ contentModifier(modifier: ContentModifier\<ToggleConfiguration>)
 Switch类型的样式。
 
 > **说明：**
+>
 > 与systemMaterial系统材质同时设置时，请参考组件开篇说明及通用系统材质属性文档。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。

@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供控制焦点的能力，如清除、移动和激活焦点等功能。
+提供控制焦点的能力，如清除、移动和激活焦点等功能，适用于需要管理页面或组件焦点状态、控制焦点流转的场景，可帮助开发者优化键盘等输入方式下的焦点交互体验。
 
 > **说明：**
 >
@@ -36,7 +36,7 @@ clearFocus(): void
 @Entry
 @Component
 struct ClearFocusExample {
-  @State btColor: Color = Color.Blue;
+  @State buttonColor: Color = Color.Blue;
 
   build() {
     Column({ space: 20 }) {
@@ -52,13 +52,13 @@ struct ClearFocusExample {
           .height(70)
           .fontColor(Color.White)
           .focusOnTouch(true)
-          .backgroundColor(this.btColor)
+          .backgroundColor(this.buttonColor)
           .defaultFocus(true)
           .onFocus(() => {
-            this.btColor = Color.Red;
+            this.buttonColor = Color.Red;
           })
           .onBlur(() => {
-            this.btColor = Color.Blue;
+            this.buttonColor = Color.Blue;
           })
         Button('clearFocus')
           .width(200)
@@ -127,11 +127,11 @@ struct RequestExample {
           .onBlur(() => {
             this.btColor = Color.Blue;
           })
-          .id("testButton")
+          .id('testButton')
 
         Divider()
           .vertical(false)
-          .width("80%")
+          .width('80%')
           .backgroundColor(Color.Black)
           .height(10)
 
@@ -139,7 +139,7 @@ struct RequestExample {
           .width(200)
           .height(70)
           .onClick(() => {
-            this.getUIContext().getFocusController().requestFocus("testButton");
+            this.getUIContext().getFocusController().requestFocus('testButton');
           })
 
         Button('requestFocus fail')
@@ -147,7 +147,7 @@ struct RequestExample {
           .height(70)
           .onClick(() => {
             try {
-              this.getUIContext().getFocusController().requestFocus("eee");
+              this.getUIContext().getFocusController().requestFocus('eee');
             } catch (error) {
               console.error(`requestFocus failed code is ${error.code} message is ${error.message}`);
             }
@@ -174,10 +174,10 @@ activate(isActive: boolean, autoInactive?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| isActive| boolean| 是 | 设置是否进入/退出焦点激活态。<br/>true表示设置进入焦点激活态，false表示设置退出焦点激活态。 |
-| autoInactive | boolean | 否 | 设置焦点激活态退出逻辑。<br/>为true时，会自动在触摸事件、鼠标事件触发时退出，为false时，仅受开发者API控制。<br/>默认值：true |
+| isActive| boolean| 是 | 设置是否进入/退出焦点激活态。<br>true表示设置进入焦点激活态，false表示设置退出焦点激活态。 |
+| autoInactive | boolean | 否 | 设置焦点激活态退出逻辑。<br>为true时，会自动在触摸事件、鼠标事件触发时退出，为false时，仅受开发者API控制。<br>默认值：true |
 
-**示例：** 
+**示例：**
 
 ```ts
 // 该示例表示在页面加载完成时进入焦点激活态，可按方向键在button间走焦
@@ -252,7 +252,7 @@ struct ClearFocusExample {
           .focusOnTouch(true)
           .backgroundColor(Color.Blue)
           .onClick(() => {
-            console.info("button1 onClick");
+            console.info('button1 onClick');
             this.getUIContext().getFocusController().activate(true);
             console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
@@ -264,7 +264,7 @@ struct ClearFocusExample {
           .backgroundColor(this.btColor)
           .defaultFocus(true)
           .onClick(() => {
-            console.info("button2 onClick");
+            console.info('button2 onClick');
             this.getUIContext().getFocusController().activate(false);
             console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
@@ -298,7 +298,7 @@ setAutoFocusTransfer(isAutoFocusTransfer: boolean): void
 | ------- | ------- | ------- | ------- |
 | isAutoFocusTransfer | boolean| 是 | 设置页面切换时，新的页面是否需要主动获取焦点，例如[Router](js-apis-router.md)、[Navigation](arkui-ts/ts-basic-components-navigation.md)、[Menu](arkui-ts/ts-basic-components-menu.md)、[Dialog](arkui-ts/ohos-arkui-advanced-Dialog.md)、[Popup](arkui-ts/ohos-arkui-advanced-Popup.md)等。true表示需要主动获取焦点，false表示不需要主动获取焦点。默认值为true。 |
 
-**示例：** 
+**示例：**
 
 ```ts
 @CustomDialog
@@ -366,11 +366,11 @@ setKeyProcessingMode(mode: KeyProcessingMode): void
 | ------- | ------- | ------- | ------- |
 | mode | [KeyProcessingMode](./arkui-ts/ts-universal-attributes-focus.md#keyprocessingmode15)| 是 | 按键处理模式。 |
 
-**示例：** 
+**示例：**
 
 ```ts
 
-// 该示例演示了在页面加载完成后设置走焦类型的实现方式。
+// 该示例演示了在页面加载完成后设置按键事件处理优先级的实现方式。
 @Entry
 @Component
 struct Index {
@@ -382,11 +382,11 @@ struct Index {
     Row() {
       Row() {
         Button('Button1').id('Button1').onKeyEvent((event) => {
-          console.info("Button1");
+          console.info('Button1');
           return true;
         })
         Button('Button2').id('Button2').onKeyEvent((event) => {
-          console.info("Button2");
+          console.info('Button2');
           return true;
         })
       }

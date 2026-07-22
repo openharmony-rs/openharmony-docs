@@ -536,19 +536,19 @@ MultithreadingDetectionOptions是一个接口类，用于配置[ArkTSVM.setMulti
 | -------- | -------- | -------- | -------- | -------- |
 | abort  | boolean  | 否       | 是       | 控制检测到多线程问题时是否崩溃。传入true表示检测到多线程问题时立即崩溃，适用于开发调试阶段需要快速暴露多线程问题的场景；传入false表示不崩溃仅上报故障信息，适用于生产环境需要保持服务可用性的场景。默认true。|
 | frequency  | number  | 否       | 是       | 多线程安全检测的粒度，表示每发生多少次函数调用进行一次多线程安全检测，该值越大采样频率越低，对应用性能影响越小，但可能漏检部分多线程安全使用问题场景，范围为[100, 2147483647]，默认100。|
-| interval  | number  | 否       | 是       | 多线程检测的上报故障时间间隔，仅不崩溃时生效，范围为[0,1440]，单位为分钟，默认5分钟。（不建议设为5分钟以下，有严重的性能影响。）|
+| interval  | number  | 否       | 是       | 多线程安全检测的上报故障时间间隔，仅不崩溃时生效，范围为[0,1440]，单位为分钟，默认5分钟。（不建议设为5分钟以下，有严重的性能影响。）|
 
 ## ArkTSVM<sup>23+</sup>
 
-ArkTSVM是一个类，用于给开发者提供虚拟机的诊断与维护能力，包括多线程检测、堆内存信息获取、内存泄漏防护、全局引用追踪和堆内存预警等功能。
+ArkTSVM是一个类，用于给开发者提供虚拟机的诊断与维护能力，包括多线程安全检测、堆内存信息获取、内存泄漏防护、全局引用追踪和堆内存预警等功能。
 
 ### setMultithreadingDetectionEnabled<sup>23+</sup>
 
 static setMultithreadingDetectionEnabled(enabled: boolean, options?: MultithreadingDetectionOptions): void
 
-若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的C/C++崩溃转储文件（cppcrash文件）里会包含多线程信息（如线程ID、锁状态等）。关闭多线程检测，则C/C++崩溃转储文件（cppcrash文件）里不会包含多线程信息。
+若enabled为true则开启，为false则关闭。开启多线程安全检测，多线程问题的C/C++崩溃转储文件（cppcrash文件）里会包含多线程信息（如线程ID、锁状态等）。关闭多线程安全检测，则C/C++崩溃转储文件（cppcrash文件）里不会包含多线程信息。
 
-options是用于配置多线程检测的行为参数。
+options是用于配置多线程安全检测的行为参数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -558,17 +558,17 @@ options是用于配置多线程检测的行为参数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭。true表示开启，false表示关闭。|
-| options  | [MultithreadingDetectionOptions](#multithreadingdetectionoptions)  | 否       | 多线程检测的参数配置，此参数不填时，对应各属性取[MultithreadingDetectionOptions](#multithreadingdetectionoptions)的默认值。**起始版本：** 26.0.0|
+| enabled  | boolean  | 是       | 控制多线程安全检测开关的开启或关闭。true表示开启，false表示关闭。|
+| options  | [MultithreadingDetectionOptions](#multithreadingdetectionoptions)  | 否       | 多线程安全检测的参数配置，此参数不填时，对应各属性取[MultithreadingDetectionOptions](#multithreadingdetectionoptions)的默认值。**起始版本：** 26.0.0|
 
 **示例：**
 
 ```ts
 import { util } from '@kit.ArkTS';
 
-// 打开多线程检测开关
+// 打开多线程安全检测开关
 util.ArkTSVM.setMultithreadingDetectionEnabled(true);
-// 关闭多线程检测开关
+// 关闭多线程安全检测开关
 util.ArkTSVM.setMultithreadingDetectionEnabled(false);
 // 设置崩溃行为
 util.ArkTSVM.setMultithreadingDetectionEnabled(true, { abort: false });

@@ -38,7 +38,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
   // 获取应用多开运行态信息
   appManager.getRunningMultiAppInfo(bundleName)
     .then((info: appManager.RunningMultiAppInfo) => {
@@ -46,7 +46,7 @@ try {
     // 
     }).catch((err: BusinessError) => {
     console.error(`getRunningMultiAppInfo failed, code: ${err.code}, msg:${err.message}`);
-  })
+  });
 } catch (err) {
   // 处理入参错误异常
   let code = (err as BusinessError).code;

@@ -2,12 +2,12 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong; @yangcan18-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ListItem用于展示列表中的具体item，支持设置划出菜单、选中状态、鼠标框选和卡片样式等能力，必须配合List组件使用，适用于需要在列表中展示内容并对单个item进行交互操作（如滑动删除、选中标记）的场景。
+ListItem用于展示列表中的具体列表项，支持设置划出菜单、选中状态、鼠标框选和卡片样式等能力，必须配合List组件使用，适用于需要在列表中展示内容并对单个列表项进行交互操作（如滑动删除、选中标记）的场景。
 
 > **说明：**
 >
@@ -153,7 +153,7 @@ swipeAction(value: SwipeActionOptions)
 
 | 参数名 | 类型                                              | 必填 | 说明                 |
 | ------ | ------------------------------------------------- | ---- | -------------------- |
-| value  | [SwipeActionOptions](#swipeactionoptions9对象说明) | 是   | ListItem的划出组件。 |
+| value  | [SwipeActionOptions](#swipeactionoptions9对象说明) | 是   | ListItem的划出组件配置，用于设置划出时显示的组件、滑动效果和滑动状态回调等。 |
 
 ## Sticky<sup>(deprecated)</sup>枚举说明
 

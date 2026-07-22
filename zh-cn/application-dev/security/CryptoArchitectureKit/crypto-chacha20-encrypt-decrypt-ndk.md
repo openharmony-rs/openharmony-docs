@@ -35,11 +35,11 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 5. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取加密后的数据。
    
-    > **说明**
+    > **说明：**
     >
     > 由于已使用update传入数据，此处data传入null。
     >
-    > doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
+    > final输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
 
 6. 调用[OH_CryptoSymKeyGenerator_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy)、[OH_CryptoSymCipher_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy)、[OH_CryptoSymCipherParams_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_destroy)销毁各对象。
 

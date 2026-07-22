@@ -6,11 +6,11 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-动态布局容器组件，支持在运行时动态切换不同的布局算法，不改变子组件的状态。
+动态布局容器组件，支持在运行时动态切换不同的布局算法，不改变子组件的状态。使用DynamicLayout可以提升布局灵活性，简化界面适配和多视图切换的开发流程。适用于响应式布局（适配不同屏幕尺寸）、多视图模式切换（如列表/网格/瀑布流切换）、用户自定义布局等场景。
 
 > **说明：**
 >
-> - 该组件从API version 24开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -24,11 +24,11 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 动态布局容器。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +36,8 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | 是 | 指定动态布局容器的布局算法。取非法值时，按照[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)布局子组件，子组件堆叠排列。|
+| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | 是 | 指定动态布局容器的布局算法。支持使用[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)（水平线性布局，适用于水平排列场景）、[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)（垂直线性布局，适用于垂直排列场景）、[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)（堆叠布局，适用于层叠覆盖场景）、[GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)（网格布局，适用于规整网格场景）和[CustomLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm)（自定义布局，适用于复杂特殊布局场景）等布局算法实例，详见[LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1)。取非法值（如null、undefined或无效的布局算法对象）时，按照[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)布局子组件，子组件堆叠排列。|
+
 
 ## 属性
 
@@ -44,11 +45,13 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 > **说明：**
 >
-> - 当布局算法为[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)或[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性生效。
+> - 当布局算法为[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)或[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性生效，设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性不生效。
 >
-> - 当布局算法为[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)时，子组件设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性生效。
+> - 当布局算法为[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)时，子组件设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性生效，设置[Flex布局](ts-universal-attributes-flex-layout.md)属性不生效。
 >
 > - 当布局算法为[CustomLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm)时，DynamicLayout组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12)方法优先级高于[尺寸设置](ts-universal-attributes-size.md)和[边框](ts-universal-attributes-border.md)属性，子组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[measure](../js-apis-arkui-frameNode.md#measure12)和[layout](../js-apis-arkui-frameNode.md#layout12)方法优先级高于[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性。
+>
+> - 当布局算法为[GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性不生效，设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性不生效，子组件通过GridLayoutAlgorithm参数控制位置。
 
 ## 事件
 
@@ -58,7 +61,7 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 ### 示例1（自定义布局算法实现瀑布流布局）
 
-该示例展示如何重写[onMeasure](../js-apis-arkui-layoutAlgorithm.md#onmeasure)、[onLayout](../js-apis-arkui-layoutAlgorithm.md#onlayout)函数，实现瀑布流布局展示商品列表的功能。
+该示例展示如何重写[onMeasure](../js-apis-arkui-layoutAlgorithm.md#onmeasure)、[onLayout](../js-apis-arkui-layoutAlgorithm.md#onlayout)函数，实现瀑布流布局展示商品列表的功能。瀑布流布局通过测量阶段计算子组件高度并记录每列累计高度，在布局阶段将子组件分配到当前高度最小的列，实现自动填充效果。
 
 从API version 24开始，新增onMeasure、onLayout。
 
@@ -231,7 +234,11 @@ interface Product {
 
 ### 示例2（切换布局算法）
 
-该示例通过改变[@Local](../../../ui/state-management/arkts-new-local.md)装饰的[LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1)类型变量，实现动态切换DynamicLayout组件布局算法的功能。示例展示如何切换布局算法为水平线性布局算法[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)、垂直线性布局算法[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)、堆叠布局算法[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)和网格布局算法[GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)。
+该示例通过改变[@Local](../../../ui/state-management/arkts-new-local.md)装饰的[LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1)类型变量，实现动态切换DynamicLayout组件布局算法的功能。示例展示如何切换布局算法为[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)（水平线性布局）、[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)（垂直线性布局）、[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)（堆叠布局）和[GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)（网格布局）。
+
+> **说明：**
+>
+> 示例中预置的layoutGravity属性仅在Stack布局算法下生效，在Row/Column布局算法下该属性不生效。
 
 从API version 24开始，新增RowLayoutAlgorithm、ColumnLayoutAlgorithm、StackLayoutAlgorithm、GridLayoutAlgorithm。
 
@@ -402,6 +409,7 @@ struct PropertyChangeExample {
         Button('两端对齐')
           .fontSize(14)
           .onClick(() => {
+            // 修改justifyContent属性为两端对齐
             this.algorithm.justifyContent = FlexAlign.SpaceBetween;
           })
       }

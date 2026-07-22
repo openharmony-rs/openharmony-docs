@@ -17,7 +17,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - Particle在息屏之后再次打开或者切换后台再次唤起，粒子动画会自动暂停。
+> - Particle在熄屏之后再次打开或者切换后台再次唤起，粒子动画会自动暂停。
 
 
 ## 子组件
@@ -228,7 +228,7 @@ interface EmitterOptions<PARTICLE extends ParticleType> {
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | -------- | ------- | ------- | -------- | -------- |
 | src      | [ResourceStr](ts-types.md#resourcestr) | 否 | 否    | 图片路径，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>暂不支持svg图片类型。<br>src未发生变化时，会优先使用缓存的资源，无法动态切换资源。如需动态切换资源建议切换为不同的src。 |
-| size     | [ParticleTuple](#particletuple18)<[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)> | 否 | 否    | 图像尺寸。<br/>默认值：[0, 0] |
+| size     | [ParticleTuple](#particletuple18)<[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)> | 否 | 否    | 图像尺寸，第一个参数为图像宽度，第二个参数为图像高度。<br/>默认值：[0, 0] |
 | objectFit| [ImageFit](ts-appendix-enums.md#imagefit)| 否 | 是   | 图片显示模式。<br/>默认值：ImageFit.Cover |
 
 ## ParticleColorPropertyOptions
@@ -284,10 +284,10 @@ interface ParticlePropertyOptions<TYPE, UPDATER extends ParticleUpdater> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
 | range | [ParticleTuple](#particletuple18)<TYPE, TYPE> | 否 | 否 | 粒子初始属性值区间，粒子发射器生成粒子的属性值在range区间随机取值。<br/>**说明**<br/>各项属性的非法输入取默认值，当最大值小于最小值的时候取默认区间。TYPE为number。<br/>不同属性的默认值不同：<br>1、opacity属性：range:[1.0,1.0]，取值范围为[0, 1]，默认值为1.0。<br/>2、scale属性：range:[1.0,1.0]，取值范围为[0, 10000]，默认值为1.0。<br/>3、acceleration加速度speed属性：range:[0.0,0.0]，取值范围为[0, 10000]，默认值为0.0。<br/>4、acceleration加速度angle属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。<br/>5、spin属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。|
-| updater | [ParticleUpdaterOptions](#particleupdateroptions18)<TYPE, UPDATER> | 否 | 是 | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.CURVE] <br>默认值：type默认为ParticleUpdater.NONE。 |
+| updater | [ParticleUpdaterOptions](#particleupdateroptions18)<TYPE, UPDATER> | 否 | 是 | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.CURVE] <br>默认值：type默认为ParticleUpdater.NONE。 |
 
 
-## ParticlePropertyUpdaterConfigs
+## ParticlePropertyUpdaterConfigs\<T>
 ```typescript
 interface ParticlePropertyUpdaterConfigs<T> {
     [ParticleUpdater.NONE]: void;
@@ -401,7 +401,7 @@ interface ParticlePropertyAnimation<T> {
 | ------ | ------- | ---- | ------- | --------------------- |
 | strength  | number | 否 | 是   |场强，表示场从中心向外的排斥力的强度，默认值0。正数表示排斥力方向朝外，负数表示吸引力，方向朝内。<br/>取值范围：(-∞, +∞)。 |
 | shape  |   [DisturbanceFieldShape](#disturbancefieldshape12) | 否 | 是   | 场的形状。<br/>默认为DisturbanceFieldShape.RECT。 |
-| size  | [SizeT\<T>](#sizett12)&lt;number&gt;| 否 | 是  |场的大小，单位：vp。<br/>默认值 {width:0, height:0}。<br/>width和height的取值范围：[0, +∞)。|
+| size  | [SizeT](#sizett12)&lt;number&gt;| 否 | 是  |场的大小，单位：vp。<br/>默认值 {width:0, height:0}。<br/>width和height的取值范围：[0, +∞)。|
 | position  | [PositionT](#positiontt12)&lt;number&gt; | 否 | 是   |场的位置，单位：vp。<br/>默认值{x:0, y:0}。<br/>x、y的取值范围：(-∞, +∞)。 |
 | feather  | number | 否 | 是   |羽化值，表示场从中心点到场边缘的衰减程度，取值范围0到100的整数，如果0则表示场是一个刚体，所有范围内的粒子都被排斥在外。羽化值越大场的缓和程度越大，场范围内出现越多靠近中心点的粒子。<br/>默认值为0。 |
 | noiseScale  | number | 否 | 是   |噪声尺度，用于控制噪声图案的整体大小，取值大于等于0。<br/>默认值1。 |
@@ -433,7 +433,7 @@ interface ParticlePropertyAnimation<T> {
 | index   | number | 否 | 否   |索引，取整，按初始化参数中发射器的数组索引指定对应的发射器。异常默认值为0。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | emitRate  | number  | 否 | 是   | 发射器发射速率，即每秒发射粒子的数量。<br/>未传入时保持其当前的发射速率， 传入值小于0时取默认值5。emitRate值超过5000时会极大影响性能，建议设置参数小于5000。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | position  | [PositionT](#positiontt12)&lt;number&gt; | 否 | 是  |发射器位置的数组，只支持number类型。<br/>未传入时保持其当前的发射器位置。需传入两个有效参数，若其中一个为异常值，则position不生效。<br/>x、y的取值范围：(-∞, +∞)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| size  | [SizeT\<T>](#sizett12)&lt;number&gt;| 否 | 是  |发射窗口的大小，只支持number类型。<br/>未传入时保持其当前发射窗口大小。需传入两个有效参数且都大于0，若其中一个为异常值，则size不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| size  | [SizeT](#sizett12)&lt;number&gt;| 否 | 是  |发射窗口的大小，只支持number类型。<br/>未传入时保持其当前发射窗口大小。需传入两个有效参数且都大于0，若其中一个为异常值，则size不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | annulusRegion<sup>20+</sup>  | [ParticleAnnulusRegion](ts-particle-animation.md#particleannulusregion20)| 否 | 是 |环形发射器参数。需要对应index的发射器形状为环形才生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## ParticleTuple<sup>18+</sup>
@@ -588,7 +588,7 @@ interface ParticleUpdaterOptions<TYPE, UPDATER extends ParticleUpdater> {
 | 名称    | 类型                                                | 只读 | 可选 | 说明                                                       |
 | ------ | ----------------------------------- | ---------------- | ---- | --------------------------------------------------------- |
 | type<sup>10+</sup>  | UPDATER | 否 | 否   | 表示属性变化类型。 <br>默认值：type默认为ParticleUpdater.NONE。    **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
-| config<sup>10+</sup>  | [ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)\<TYPE>[UPDATER] | 否 | 否   | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.CURVE]。 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| config<sup>10+</sup>  | [ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)\<TYPE>[UPDATER] | 否 | 否   | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.CURVE]。 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## ParticleColorUpdaterOptions<sup>18+</sup>
 
@@ -676,7 +676,7 @@ type Vector2T\<T> = import('../api/arkui/Graphics').Vector2T\<T>
 
 ## PositionT\<T><sup>12+</sup>
 
-type PositionT\<T> = import('../api/arkui/Graphics').Position\<T>
+type PositionT\<T> = import('../api/arkui/Graphics').PositionT\<T>
 
 用于设置或返回组件的位置。
 
@@ -716,7 +716,7 @@ type SizeT\<T> = import('../api/arkui/Graphics').SizeT\<T>
 | ------ | ------ | -- | -- | ---- |
 | shape      | [DisturbanceFieldShape](#disturbancefieldshape12) | 否 | 是  | 粒子场的区域形状。<br/>默认值：DisturbanceFieldShape.RECT  |
 | position      | [PositionT](#positiontt12)&lt;number&gt; | 否 | 是 | 粒子场的区域中心位置。坐标单位为vp。<br/>默认值：{x:0, y:0}  |
-| size  | [SizeT\<T>](#sizett12)&lt;number&gt; | 否 | 是  | 粒子场的区域大小。值的单位为vp。<br/>默认值：{width:0, height:0}<br/>取值范围：<br/>width：[0, +∞)<br/>height：[0, +∞)<br/>当size的width（或height）设置为负值时取width（或height）的默认值。  |
+| size  | [SizeT](#sizett12)&lt;number&gt; | 否 | 是  | 粒子场的区域大小。值的单位为vp。<br/>默认值：{width:0, height:0}<br/>取值范围：<br/>width：[0, +∞)<br/>height：[0, +∞)<br/>当size的width（或height）设置为负值时取width（或height）的默认值。  |
 
 ## RippleFieldOptions<sup>22+</sup>
 
@@ -985,7 +985,7 @@ struct ParticleExample {
 
 该示例主要演示如何通过粒子扰动场的干扰下来实现运动轨迹发生变化的效果。
 
-<!-- @[particle_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template3/Index.ets) -->
+<!-- @[particle_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template3/Index.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -1093,15 +1093,16 @@ struct ParticleExample3 {
 
           }
         ]
+      // 设置粒子扰动场，干扰粒子运动轨迹
       }).width(300).height(300).disturbanceFields([{
-        strength: 10,
-        shape: DisturbanceFieldShape.RECT,
-        size: { width: 100, height: 100 },
-        position: { x: 100, y: 100 },
-        feather: 15,
-        noiseScale: 10,
-        noiseFrequency: 15,
-        noiseAmplitude: 5
+        strength: 10, // 场强，表示排斥力或吸引力的强度
+        shape: DisturbanceFieldShape.RECT, // 扰动场形状为矩形
+        size: { width: 100, height: 100 }, // 扰动场大小
+        position: { x: 100, y: 100 }, // 扰动场位置
+        feather: 15, // 羽化值，表示场从中心点到场边缘的衰减程度
+        noiseScale: 10, // 噪声尺度
+        noiseFrequency: 15, // 噪声频率
+        noiseAmplitude: 5 // 噪声振幅
       }])
     }.width('100%').height('100%').align(Alignment.Center)
   }
@@ -1275,7 +1276,7 @@ struct ParticleExample5 {
 
 ### 示例6（环形发射器更新）
 描述粒子动画环形发射器更新的基础用法。
-<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
+<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->  
 
 ``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1301,7 +1302,7 @@ struct ParticleExample6 {
       index: 0,
       emitRate: 100,
       annulusRegion: {
-        center:{x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
+        center: {x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
         outerRadius: this.outRadius, // 圆环的外圆半径
         innerRadius: this.inRadius, // 圆环的内圆半径
         startAngle: this.startAngle, // 圆环的起始角度
@@ -1312,7 +1313,7 @@ struct ParticleExample6 {
 
   // 创建的时候，环形发射器的初始设置
   @State region: ParticleAnnulusRegion = {
-    center:{x:this.centerX, y: this.centerY},
+    center: {x:this.centerX, y: this.centerY},
     outerRadius: this.outRadius,
     innerRadius: this.inRadius,
     startAngle: -90,

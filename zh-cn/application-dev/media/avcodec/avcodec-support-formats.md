@@ -41,7 +41,7 @@
 
 例如可以通过<!--RP15-->OH_AVCODEC_MIMETYPE_VIDEO_AVC、OH_AVCODEC_MIMETYPE_VIDEO_HEVC<!--RP15End-->来查询系统平台支持的<!--RP16-->H.264、H.265的硬件解码能力。<!--RP16End-->
 
-具体开发指导请参考[视频解码](video-decoding.md)。
+具体开发指导请参考[异步模式视频解码](video-decoding.md)。
 
 ### 视频编码
 当前支持的编码能力如下：
@@ -56,7 +56,7 @@
 
 系统平台支持情况和每种编码的能力范围，可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取。
 
-具体开发指导请参考[视频编码](video-encoding.md)。
+具体开发指导请参考[异步模式视频编码](video-encoding.md)。
 
 ### 音频解码
 当前支持的解码能力：
@@ -84,7 +84,7 @@
 
 从API version 23开始支持：TWINVQ、ILBC、TRUEHD、DVAUDIO、DTS、COOK。
 
-具体开发指导请参考[音频解码](audio-decoding.md)。
+具体开发指导请参考[异步模式音频解码](audio-decoding.md)。
 
 ### 音频编码
 当前支持的编码能力：
@@ -102,7 +102,7 @@
 
 系统平台提供的编码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统平台支持的编码能力和能力规格。
 
-具体开发指导请参考[音频编码](audio-encoding.md)。
+具体开发指导请参考[异步模式音频编码](audio-encoding.md)。
 
 ## 媒体数据封装与解封装
 

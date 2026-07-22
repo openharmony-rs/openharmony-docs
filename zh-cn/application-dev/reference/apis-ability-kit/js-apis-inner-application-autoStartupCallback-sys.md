@@ -39,13 +39,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义开机自启动回调对象
 let autoStartupCallback: common.AutoStartupCallback = {
-  onAutoStartupOn(data: common.AutoStartupInfo) {
-    console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
+  onAutoStartupOn(info: common.AutoStartupInfo) {
+    console.info(`autostartupmanager onAutoStartupOn, info: ${JSON.stringify(info)}.`);
   },
-  onAutoStartupOff(data: common.AutoStartupInfo) {
-    console.info(`autostartupmanager onAutoStartupOff, data: ${JSON.stringify(data)}.`);
+  onAutoStartupOff(info: common.AutoStartupInfo) {
+    console.info(`autostartupmanager onAutoStartupOff, info: ${JSON.stringify(info)}.`);
   }
-}
+};
 
 // 订阅系统开机自启动事件
 try {
@@ -81,13 +81,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义开机自启动回调对象
 let autoStartupCallback: common.AutoStartupCallback = {
-  onAutoStartupOn(data: common.AutoStartupInfo) {
-    console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
+  onAutoStartupOn(info: common.AutoStartupInfo) {
+    console.info(`autostartupmanager onAutoStartupOn, info: ${JSON.stringify(info)}.`);
   },
-  onAutoStartupOff(data: common.AutoStartupInfo) {
-    console.info(`autostartupmanager onAutoStartupOff, data: ${JSON.stringify(data)}.`);
+  onAutoStartupOff(info: common.AutoStartupInfo) {
+    console.info(`autostartupmanager onAutoStartupOff, info: ${JSON.stringify(info)}.`);
   }
-}
+};
 
 // 订阅系统开机自启动事件
 try {

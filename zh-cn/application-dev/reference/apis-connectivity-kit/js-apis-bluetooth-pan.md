@@ -43,7 +43,7 @@ createPanProfile(): PanProfile
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
+**返回值**：
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -58,7 +58,7 @@ createPanProfile(): PanProfile
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
-**示例：**
+**示例**：
 
 ```js
 try {
@@ -82,8 +82,6 @@ isPanSupported(): boolean
 本端作为NAP角色时使用，获取本端网络共享状态。
 
 **起始版本**：26.0.0
-
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

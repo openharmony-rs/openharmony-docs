@@ -185,9 +185,9 @@ type Margin = Padding
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                |  必填   | 说明                   |
-| ------ | ----------------- | ---- | -------- |
-| Margin    | [Padding](#padding) | 否 | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
+| 类型                | 说明                   |
+| ----------------- | -------- |
+| [Padding](#padding) | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
 
 ## LocalizedMargin<sup>12+</sup>
 
@@ -205,9 +205,9 @@ type LocalizedMargin = LocalizedPadding
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                | 必填 | 说明                   |
-| ------ | ----------------- | ---- | -------- |
-| LocalizedMargin    | [LocalizedPadding](#localizedpadding12) | 否 | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
+| 类型                | 说明                   |
+| ----------------- | -------- |
+| [LocalizedPadding](#localizedpadding12) | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
 
 ## EdgeWidths<sup>9+</sup>
 
@@ -244,9 +244,9 @@ type EdgeWidth = EdgeWidths
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型 | 必填 | 说明             |
-| ------ | ---- | ------| ---------------- |
-| EdgeWidth    | [EdgeWidths](#edgewidths9) | 否 | 组件边框不同方向的宽度。 |
+| 类型 | 说明             |
+| ---- | ---------------- |
+| [EdgeWidths](#edgewidths9) | 组件边框不同方向的宽度。 |
 
 ## LocalizedEdgeWidths<sup>12+</sup>
 
@@ -836,7 +836,11 @@ type LPX = { number }lpx
 
 ## Percentage<sup>10+</sup>
 
+type Percentage = { number }%
+
 长度类型，用于描述以百分比单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -846,13 +850,13 @@ type LPX = { number }lpx
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}%               | 需要指定以百分比单位，如'10%'。 |
+| { number }%               | 需要指定以百分比单位，如'10%'。 |
 
 ## Degree<sup>10+</sup>
 
 type Degree = `${number}deg`
 
-角度类型，用于描述以deg像素单位为单位的长度。
+角度类型，用于描述以deg为单位的角度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -862,7 +866,7 @@ type Degree = `${number}deg`
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}deg               | 需要指定以deg像素单位，如'10deg'。 |
+| { number }deg               | 需要指定以deg为单位，如'10deg'。 |
 
 ## TouchPoint<sup>11+</sup>
 

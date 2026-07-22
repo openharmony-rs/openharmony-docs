@@ -1,4 +1,4 @@
-# Global Floating Window Development Guide
+# Global Floating Window Development
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
