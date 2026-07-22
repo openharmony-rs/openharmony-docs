@@ -233,3 +233,4 @@ DistributedExtensionAbility不支持以下模块的引用。
 |<!--DelRow-->User Authentication Kit（用户认证服务）| [@ohos.userIAM.faceAuth (人脸认证)(系统接口)](../apis-user-authentication-kit/js-apis-useriam-faceauth-sys.md)  |
 |<!--DelRow-->User Authentication Kit（用户认证服务）| [@ohos.userIAM.userAuth (用户认证)(系统接口)](../apis-user-authentication-kit/js-apis-useriam-userauth-sys.md)  |
 | User Authentication Kit（用户认证服务）| [@ohos.userIAM.userAuth (用户认证)](../apis-user-authentication-kit/js-apis-useriam-userauth.md)  |
+<!--RP1--><!--RP1End-->
