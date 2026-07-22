@@ -471,7 +471,7 @@
 
 ## ohos.permission.vehicle.CONTROL_HVAC
 
-允许应用设置空调对手件状态信息。
+允许应用设置空调对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -503,7 +503,7 @@
 
 ## ohos.permission.vehicle.CONTROL_FRIDGE
 
-允许应用设置冰箱对手件状态信息。
+允许应用设置冰箱对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -535,7 +535,7 @@
 
 ## ohos.permission.vehicle.CONTROL_SEAT
 
-允许应用设置座椅对手件状态信息。
+允许应用设置座椅对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -567,7 +567,7 @@
 
 ## ohos.permission.vehicle.CONTROL_DOOR
 
-允许应用设置车门对手件状态信息。
+允许应用设置车门对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -599,7 +599,7 @@
 
 ## ohos.permission.vehicle.CONTROL_LOCK
 
-允许应用设置车锁对手件状态信息。
+允许应用设置车锁对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -631,7 +631,7 @@
 
 ## ohos.permission.vehicle.CONTROL_WINDOW
 
-允许应用设置车窗对手件状态信息。
+允许应用设置车窗对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -663,7 +663,7 @@
 
 ## ohos.permission.vehicle.CONTROL_SUNROOF
 
-允许应用设置天窗对手件状态信息。
+允许应用设置天窗对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -679,7 +679,7 @@
 
 ## ohos.permission.vehicle.CONTROL_STEERINGWHEEL
 
-允许应用设置方向盘对手件状态信息。
+允许应用设置方向盘对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -711,7 +711,7 @@
 
 ## ohos.permission.vehicle.CONTROL_ENERGY_PORT_COVER
 
-允许应用设置补能口盖对手件状态信息。
+允许应用设置补能口盖对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -743,7 +743,7 @@
 
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_LIGHT
 
-允许应用设置车外灯光对手件状态信息。
+允许应用设置车外灯光对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -775,7 +775,7 @@
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_CAMERA
 
-允许应用设置车内摄像头对手件状态信息。
+允许应用设置车内摄像头对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -807,7 +807,7 @@
 
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_CAMERA
 
-允许应用设置车外摄像头对手件状态信息。
+允许应用设置车外摄像头对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -839,7 +839,7 @@
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_SPEAKER
 
-允许应用设置车内扬声器对手件状态信息。
+允许应用设置车内扬声器对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -871,7 +871,7 @@
 
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_SPEAKER
 
-允许应用设置车外扬声器对手件状态信息。
+允许应用设置车外扬声器对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -887,7 +887,7 @@
 
 ## ohos.permission.vehicle.WIPER_INFO
 
-允许应用订阅、获取雨刮器对手件状态信息
+允许应用订阅、获取雨刮器对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -903,7 +903,7 @@
 
 ## ohos.permission.vehicle.CONTROL_WIPER
 
-允许应用设置雨刮器对手件状态信息。
+允许应用设置雨刮器对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -935,7 +935,7 @@
 
 ## ohos.permission.vehicle.CONTROL_MIRROR
 
-允许应用设置后视镜对手件状态信息。
+允许应用设置后视镜对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -967,7 +967,7 @@
 
 ## ohos.permission.vehicle.CONTROL_HORN
 
-允许应用设置喇叭对手件状态信息。
+允许应用设置喇叭对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -999,7 +999,7 @@
 
 ## ohos.permission.vehicle.CONTROL_CHB
 
-允许应用设置冷暖箱对手件状态信息。
+允许应用设置冷暖箱对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1031,7 +1031,7 @@
 
 ## ohos.permission.vehicle.CONTROL_CODEBOX
 
-允许应用设置密码箱对手件状态信息。
+允许应用设置密码箱对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1063,7 +1063,7 @@
 
 ## ohos.permission.vehicle.CONTROL_STANDEMBLEM
 
-允许应用设置立标对手件状态信息。
+允许应用设置立标对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1095,7 +1095,7 @@
 
 ## ohos.permission.vehicle.CONTROL_GRILLE
 
-允许应用设置进气格栅对手件状态信息。
+允许应用设置进气格栅对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1127,7 +1127,7 @@
 
 ## ohos.permission.vehicle.CONTROL_WIRELESSCHARGER
 
-允许应用设置无线充电对手件状态信息。
+允许应用设置无线充电对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1159,7 +1159,7 @@
 
 ## ohos.permission.vehicle.CONTROL_PROJECTORSCREEN
 
-允许应用设置投影幕布对手件状态信息。
+允许应用设置投影幕布对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1175,7 +1175,7 @@
 
 ## ohos.permission.vehicle.CONTROL_DRIVE_INFORMATION
 
-允许应用设置行车信息模块对手件状态信息。
+允许应用设置行车信息模块对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1207,7 +1207,7 @@
 
 ## ohos.permission.vehicle.CONTROL_BODY_SENSOR
 
-允许应用设置车身传感器对手件状态信息。
+允许应用设置车身传感器对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1239,7 +1239,7 @@
 
 ## ohos.permission.vehicle.CONTROL_VSC_SYSTEM
 
-允许应用设置车身稳定系统对手件状态信息。
+允许应用设置车身稳定系统对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1271,7 +1271,7 @@
 
 ## ohos.permission.vehicle.CONTROL_CHG_DISCHG
 
-允许应用设置充放电控制系统对手件状态信息。
+允许应用设置充放电控制系统对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1303,7 +1303,7 @@
 
 ## ohos.permission.vehicle.CONTROL_EPB
 
-允许应用设置电子驻车系统对手件状态信息。
+允许应用设置电子驻车系统对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1335,7 +1335,7 @@
 
 ## ohos.permission.vehicle.CONTROL_PBS
 
-允许应用设置动力电池系统对手件状态信息。
+允许应用设置动力电池系统对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1367,7 +1367,7 @@
 
 ## ohos.permission.vehicle.CONTROL_TIRE_SYSTEM
 
-允许应用设置轮胎系统对手件状态信息。
+允许应用设置轮胎系统对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1399,7 +1399,7 @@
 
 ## ohos.permission.vehicle.CONTROL_TOW_SYSTEM
 
-允许应用设置拖车系统对手件状态信息。
+允许应用设置拖车系统对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1431,7 +1431,7 @@
 
 ## ohos.permission.vehicle.CONTROL_SUSPENSION_SYSTEM
 
-允许应用设置悬架系统对手件状态信息。
+允许应用设置悬架系统对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1447,7 +1447,7 @@
 
 ## ohos.permission.vehicle.CONTROL_ACCELERATOR_PEDAL
 
-允许应用设置加速踏板对手件状态信息。
+允许应用设置加速踏板对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1463,7 +1463,7 @@
 
 ## ohos.permission.vehicle.CONTROL_BRAKE_PEDAL
 
-允许应用设置制动踏板对手件状态信息。
+允许应用设置制动踏板对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1495,7 +1495,7 @@
 
 ## ohos.permission.vehicle.CONTROL_CAR_MODE
 
-允许应用设置车辆模式对手件状态信息。
+允许应用设置车辆模式对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1527,7 +1527,7 @@
 
 ## ohos.permission.vehicle.CONTROL_DRIVING_MODE
 
-允许应用设置驾驶模式对手件状态信息。
+允许应用设置驾驶模式对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1559,7 +1559,7 @@
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_HEATING_MODULE
 
-允许应用设置内饰加热模块对手件状态信息。
+允许应用设置内饰加热模块对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1591,7 +1591,7 @@
 
 ## ohos.permission.vehicle.CONTROL_SPECIAL_MOBILITY_MODE
 
-允许应用设置特殊机动模式对手件状态信息。
+允许应用设置特殊机动模式对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1623,7 +1623,7 @@
 
 ## ohos.permission.vehicle.CONTROL_BUTTON_LEVER
 
-允许应用设置物理按键与拨杆对手件状态信息。
+允许应用设置物理按键与拨杆对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1655,7 +1655,7 @@
 
 ## ohos.permission.vehicle.CONTROL_WHC
 
-允许应用设置饮水机对手件状态信息。
+允许应用设置饮水机对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1687,7 +1687,7 @@
 
 ## ohos.permission.vehicle.CONTROL_PRIVACYCURTAIN
 
-允许应用设置隐私帘对手件状态信息。
+允许应用设置隐私帘对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1719,7 +1719,7 @@
 
 ## ohos.permission.vehicle.CONTROL_POWER_MANAGEMENT
 
-允许应用设置整车电源管理对手件状态信息。
+允许应用设置整车电源管理对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1751,7 +1751,7 @@
 
 ## ohos.permission.vehicle.CONTROL_SMARTKEY
 
-允许应用设置智能钥匙对手件状态信息。
+允许应用设置智能钥匙对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1783,7 +1783,7 @@
 
 ## ohos.permission.vehicle.CONTROL_ETC
 
-允许应用设置ETC对手件状态信息。
+允许应用设置ETC对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1815,7 +1815,7 @@
 
 ## ohos.permission.vehicle.CONTROL_HUD
 
-允许应用设置HUD对手件状态信息。
+允许应用设置HUD对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1847,7 +1847,7 @@
 
 ## ohos.permission.vehicle.CONTROL_NAVIGATION
 
-允许应用设置导航对手件状态信息。
+允许应用设置导航对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1879,7 +1879,7 @@
 
 ## ohos.permission.vehicle.CONTROL_OXYGEN_CONCENTRATOR
 
-允许应用设置制氧机对手件状态信息。
+允许应用设置制氧机对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1911,7 +1911,7 @@
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_SEAT_BELT
 
-允许应用设置电动安全带对手件状态信息。
+允许应用设置电动安全带对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1943,7 +1943,7 @@
 
 ## ohos.permission.vehicle.CONTROL_FRONT_REAR_TRUNK
 
-允许应用设置前后备箱对手件状态信息。
+允许应用设置前后备箱对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -1975,7 +1975,7 @@
 
 ## ohos.permission.vehicle.CONTROL_RANGE_EXTENDER
 
-允许应用设置增程器对手件状态信息。
+允许应用设置增程器对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -2007,7 +2007,7 @@
 
 ## ohos.permission.vehicle.CONTROL_DIFFERENTIAL_LOCK
 
-允许应用设置差速锁对手件状态信息。
+允许应用设置差速锁对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -2039,7 +2039,7 @@
 
 ## ohos.permission.vehicle.CONTROL_ARMREST_SCREEN
 
-允许应用设置扶手屏对手件状态信息。
+允许应用设置扶手屏对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -2069,9 +2069,9 @@
 
 **起始版本**：26.1.0
 
-## hos.permission.vehicle.CONTROL_ARMREST_BOX
+## ohos.permission.vehicle.CONTROL_ARMREST_BOX
 
-允许应用设置扶手箱对手件状态信息。
+允许应用设置扶手箱对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -2103,7 +2103,7 @@
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_REAR_SPOILER
 
-允许应用设置电动尾翼对手件状态信息。
+允许应用设置电动尾翼对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -2135,7 +2135,7 @@
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_PEDAL
 
-允许应用设置电动踏板对手件状态信息。
+允许应用设置电动踏板对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -2167,7 +2167,7 @@
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_DRIVE_SYSTEM
 
-允许应用设置电驱系统对手件状态信息。
+允许应用设置电驱系统对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -2199,7 +2199,7 @@
 
 ## ohos.permission.vehicle.CONTROL_SPACE_PARTITIONING
 
-允许应用设置空间隔断对手件状态信息。
+允许应用设置空间隔断对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 
@@ -2231,7 +2231,7 @@
 
 ## ohos.permission.vehicle.CONTROL_USB
 
-允许应用设置USB对手件状态信息。
+允许应用设置USB对手件状态。
 
 申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
 

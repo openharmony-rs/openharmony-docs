@@ -465,7 +465,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -481,7 +481,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -497,7 +497,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -513,7 +513,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -529,7 +529,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -545,7 +545,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -561,7 +561,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -577,7 +577,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -593,7 +593,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -609,7 +609,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -625,7 +625,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -641,7 +641,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -657,7 +657,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -673,7 +673,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -689,7 +689,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -705,7 +705,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -721,7 +721,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -737,7 +737,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -753,7 +753,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -769,7 +769,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -785,7 +785,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -801,7 +801,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -817,7 +817,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -833,7 +833,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -849,7 +849,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -865,7 +865,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -881,7 +881,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -897,7 +897,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -913,7 +913,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -929,7 +929,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -945,7 +945,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -961,7 +961,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -977,7 +977,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -993,7 +993,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1009,7 +1009,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1025,7 +1025,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1041,7 +1041,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1057,7 +1057,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1073,7 +1073,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1089,7 +1089,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1105,7 +1105,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1121,7 +1121,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1137,7 +1137,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1153,7 +1153,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1169,7 +1169,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1185,7 +1185,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1201,7 +1201,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1217,7 +1217,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1233,7 +1233,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1249,7 +1249,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1265,7 +1265,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1281,7 +1281,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1297,7 +1297,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1313,7 +1313,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1329,7 +1329,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1345,7 +1345,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1361,7 +1361,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1377,7 +1377,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1393,7 +1393,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1409,7 +1409,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1425,7 +1425,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1441,7 +1441,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1457,7 +1457,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1473,7 +1473,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1489,7 +1489,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1505,7 +1505,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1521,7 +1521,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1537,7 +1537,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1553,7 +1553,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1569,7 +1569,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1585,7 +1585,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1601,7 +1601,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1617,7 +1617,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1633,7 +1633,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1649,7 +1649,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1665,7 +1665,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1681,7 +1681,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1697,7 +1697,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1713,7 +1713,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1729,7 +1729,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1745,7 +1745,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1761,7 +1761,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1777,7 +1777,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1793,7 +1793,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1809,7 +1809,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1825,7 +1825,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1841,7 +1841,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1857,7 +1857,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1873,7 +1873,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1889,7 +1889,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1905,7 +1905,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1921,7 +1921,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1937,7 +1937,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1953,7 +1953,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1969,7 +1969,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -1985,7 +1985,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2001,7 +2001,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2017,7 +2017,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2033,7 +2033,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2049,7 +2049,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2065,11 +2065,11 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
-## hos.permission.vehicle.CONTROL_ARMREST_BOX
+## ohos.permission.vehicle.CONTROL_ARMREST_BOX
 
 Allows an application to set the status of the mating part (armrest box).
 
@@ -2081,7 +2081,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2097,7 +2097,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2113,7 +2113,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2129,7 +2129,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2145,7 +2145,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2161,7 +2161,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2177,7 +2177,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2193,7 +2193,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2209,7 +2209,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2225,7 +2225,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
@@ -2241,7 +2241,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.1.0
 
