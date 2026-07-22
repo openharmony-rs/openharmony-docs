@@ -324,3 +324,5 @@ async enumerateNamespaceTags(xmpMetadata: image.XMPMetadata): Promise<void> {
   }
 }
 ```
+
+<!--no_check-->
