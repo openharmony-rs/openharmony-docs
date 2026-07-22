@@ -1,15 +1,10 @@
 # @ohos.settingsLite (设置信息)
 
 <!--Kit: Basic Services Kit-->
-
 <!--Subsystem: Applications-->
-
 <!--Owner: @guo_san_quan-->
-
 <!--Designer: @tuonixiaositing-->
-
 <!--Tester: @c30034487-->
-
 <!--Adviser: @fang-jinxu-->
 
 本模块提供轻量级设置能力，支持跳转至设置页面。
