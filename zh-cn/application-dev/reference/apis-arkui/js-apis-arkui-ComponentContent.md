@@ -70,7 +70,7 @@ ComponentContent的构造函数。
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需要的UI上下文。 |
 | builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参builder函数的WrappedBuilder对象。 |
-| args     |     T     |   是   |   WrappedBuilder对象封装的builder函数的参数，类型T需与WrappedBuilder<[T]>中指定的参数类型保持一致，用于将外部数据传递给builder函数以构建UI内容。 |
+| args     |     T     |   是   |   WrappedBuilder对象封装的builder函数的参数，类型T需与`WrappedBuilder<[T]>`中指定的参数类型保持一致，用于将外部数据传递给builder函数以构建UI内容。 |
 
 ### constructor
 
@@ -88,7 +88,7 @@ ComponentContent的构造函数。
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需要的UI上下文。 |
 | builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参builder函数的WrappedBuilder对象。 |
-| args     |     T     |   是   |   WrappedBuilder对象封装的builder函数的参数，类型T需与WrappedBuilder<[T]>中指定的参数类型保持一致，用于将外部数据传递给builder函数以构建UI内容。 |
+| args     |     T     |   是   |   WrappedBuilder对象封装的builder函数的参数，类型T需与`WrappedBuilder<[T]>`中指定的参数类型保持一致，用于将外部数据传递给builder函数以构建UI内容。 |
 | options | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)                                                    | 是   |  构建配置参数，用于配置Builder的构建行为，BuildOptions中所有属性都是可选的。                                         |
 
 **示例：**
@@ -656,9 +656,9 @@ struct Index {
                     contentNode.dispose(); // 释放contentNode
                   }
                 }).catch((error: BusinessError) => {
-                let message = error.message;
-                let code = error.code;
-                console.error(`Failed to close customDialog. Code: ${code}, message: ${message}`);
+                  let message = error.message;
+                  let code = error.code;
+                  console.error(`Failed to close customDialog. Code: ${code}, message: ${message}`);
               })
             }, 2000); // 2秒后自动关闭
           })
@@ -897,7 +897,7 @@ inheritFreezeOptions(enabled: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| enabled  | boolean | 是  | ComponentContent对象是否设置为继承父组件中自定义组件的冻结策略。true为继承父组件中自定义组件的冻结策略，false为不继承父组件中自定义组件的冻结策略。说明：仅当父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，设置true才会继承父组件的冻结策略。 |
+| enabled  | boolean | 是  | ComponentContent对象是否设置为继承父组件中自定义组件的冻结策略。<br>true：继承父组件中自定义组件的冻结策略；false：不继承父组件中自定义组件的冻结策略。<br>**说明：** 仅当父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，设置true才会继承父组件的冻结策略。 |
 
 **示例：**
 
@@ -1942,7 +1942,7 @@ inheritFreezeOptions(enabled: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| enabled  | boolean | 是  | ReactiveComponentContent对象是否设置为继承父组件中自定义组件的冻结策略。<br>true：继承父组件中自定义组件的冻结策略；false：不继承父组件中自定义组件的冻结策略。说明：仅当父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，设置true才会继承父组件的冻结策略。 |
+| enabled  | boolean | 是  | ReactiveComponentContent对象是否设置为继承父组件中自定义组件的冻结策略。<br>true：继承父组件中自定义组件的冻结策略；false：不继承父组件中自定义组件的冻结策略。<br>**说明：** 仅当父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，设置true才会继承父组件的冻结策略。 |
 
 **示例：**
 

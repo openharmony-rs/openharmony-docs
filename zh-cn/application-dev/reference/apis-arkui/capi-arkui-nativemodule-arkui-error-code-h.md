@@ -95,3 +95,5 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  无效的回调函数。错误码的详细介绍请参见[UI上下文错误码](errorcode-uicontext.md)。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 |  不支持手势识别器类型。错误码的详细介绍请参见[交互事件错误码](errorcode-event.md)。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 |  当前阶段不允许该操作。错误码的详细介绍请参见[拖拽事件错误码](errorcode-drag-event.md)。<br>**起始版本：** 19 |
+| ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE = 103306 |  由于节点挂载失败，弹窗无法打开。错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE = 103308 |  由于子窗口创建失败，弹窗无法打开。错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。<br>**起始版本：** 26.1.0 |

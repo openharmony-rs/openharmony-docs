@@ -69,8 +69,8 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 | 参数名      | 类型  | 必填   | 说明    |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | settings | [RenderingContextSettings](#renderingcontextsettings) | 否    | 用于配置CanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，不传入时使用默认配置（不开启抗锯齿）。见[RenderingContextSettings](#renderingcontextsettings)。<br>异常值undefined和null按[RenderingContextSettings](#renderingcontextsettings)的默认值处理。 |
-
 | unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否    | 用于配置CanvasRenderingContext2D对象的单位模式，配置后无法更改。DEFAULT（默认vp单位，适合大多数场景）、PX（px像素单位，适合需要精确像素控制的场景）。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
+
 **示例：**
 
 以下示例展示了配置CanvasRenderingContext2D对象的单位模式，默认单位模式为LengthMetricsUnit.DEFAULT，对应默认单位vp，配置后无法动态更改。详细说明见[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)。

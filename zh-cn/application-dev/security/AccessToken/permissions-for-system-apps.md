@@ -5792,6 +5792,20 @@
 
 **起始版本**：24
 
+ ## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
+ 
+ 允许系统应用开启智能体相关的权限管理特性。
+ 
+ **权限级别**：system_basic
+ 
+ **授权方式**：系统授权（system_grant）
+ 
+ **是否支持证书授权**：true
+ 
+ **支持设备**：Phone | PC/2in1 | Tablet
+ 
+ **起始版本**：26.0.0
+
 ## ohos.permission.MODIFY_AGENT_CARD
 
 允许系统应用更新和删除AgentCard。
@@ -6766,7 +6780,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.TBOX_CELLULAR_INFO
 
@@ -6780,7 +6794,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.MANAGE_TBOX_WIFI
 
@@ -6794,7 +6808,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.TBOX_WIFI_INFO
 
@@ -6808,7 +6822,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.PACKET_CAPTURE_INFO
 
@@ -6822,7 +6836,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.CCN_SELF_HEALING
 
@@ -6836,7 +6850,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.AUTO_OTA_PROXY
 
@@ -6967,6 +6981,20 @@
 **是否支持证书授权**：true
 
 **支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.UPDATE_FORM_CROSS_BUNDLE
+
+允许应用更新其他应用的卡片。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Car
 
 **起始版本**：26.0.0
 

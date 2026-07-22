@@ -200,3 +200,102 @@ async function correctSharedImageSourceExample(filePath: string): Promise<void> 
   imageSource.release();
 }
 ```
+
+## 异步调用getComponent接口后尚未执行完成即被释放
+
+**典型崩溃堆栈示例：**
+
+``` text
+Fault thread info:
+Tid:9589, Name:OS_FFRT_2_0
+#00 pc 00000000000a431c /system/lib64/platformsdk/libimage_native.z.so(OHOS::Media::NativeImage::GetComponent(int)+48)(915bf0936fb72b5d73478ab6f47e091f)
+#01 pc 00000000000910e8 /system/lib64/platformsdk/libimage_napi.z.so(OHOS::Media::JsGetComponentExec(napi_env__, OHOS::Media::ImageAsyncContext)+44)(5aea949db77850d22719993f9fa30591)
+#02 pc 0000000000061880 /system/lib64/platformsdk/libace_napi.z.so(NativeAsyncWork::AsyncWorkCallback(uv_work_s*)+264)(eb4e54d33bdc523abe3e5a5c8e57df7b)
+#03 pc 0000000000014c80 /system/lib64/platformsdk/libuv.so(uv__queue_work+48)(d25bc8d4fd1cdf784a3645c9a4b124f6)
+#04 pc 00000000000827d8 /system/lib64/ndk/libffrt.so(ffrt::UVTask::ExecuteImpl(ffrt::UVTask*, void ()(ffrt_executor_task, int))+148)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#05 pc 000000000007f5a4 /system/lib64/ndk/libffrt.so(ffrt::ExecuteTask(ffrt::TaskBase*)+184)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#06 pc 000000000004c270 /system/lib64/ndk/libffrt.so(ffrt::CPUWorker::RunTask(ffrt::TaskBase*, ffrt::CPUWorker*)+84)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#07 pc 000000000004c494 /system/lib64/ndk/libffrt.so(ffrt::CPUWorker::WorkerLooper()+268)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#08 pc 000000000004c0f8 /system/lib64/ndk/libffrt.so(ffrt::CPUWorker::Dispatch(ffrt::CPUWorker*)+152)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#09 pc 000000000004bedc /system/lib64/ndk/libffrt.so(ffrt::CPUWorker::WrapDispatch(void*)+52)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#10 pc 00000000001f8e00 /system/lib/ld-musl-aarch64.so.1(start+236)(d4dce499aee129fd4449af41d61ee794)
+...
+```
+**崩溃原因：**
+image.getComponent()是异步操作，而image.release()也是异步操作，其complete回调会删除（delete）底层原生ImageNapi对象。由于image.getComponent()还在执行，导致释放后使用（Use After Free）。
+
+**解决措施：**
+
+对同一Image对象，必须所有异步操作完成后，才能调用release()释放资源。
+
+
+**错误代码示例：**
+
+``` TypeScript
+import { image } from '@kit.ImageKit';
+import { camera } from '@kit.CameraKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, common } from '@kit.AbilityKit';
+
+/**
+ * UAF写法：getComponent异步 + 立即release。
+ * getComponent投递到FFRT线程，release不等待直接释放原生对象 → UAF崩溃。
+ */
+function onImageArrivalUAF(receiver: image.ImageReceiver): void {
+  let frame = 0;
+  receiver.on('imageArrival', () => {
+    frame++;
+    const cur = frame;
+    receiver.readNextImage((err, img: image.Image) => {
+      if (err || !img) {
+        console.info(`[UAF] #${cur} readNextImage err: ${err?.code}`);
+        return;
+      }
+      img.getComponent(image.ComponentType.JPEG).then(() => {
+        console.info(`[UAF] #${cur} getComponent done`);
+      }).catch((e: BusinessError) => {
+        console.info(`[UAF] #${cur} getComponent err: ${e.code}`);
+      });
+      // BUG：不等待getComponent完成就release → UAF。
+      img.release().catch(() => {});
+    });
+  });
+}
+```
+
+**正确代码示例：**
+
+``` TypeScript
+import { image } from '@kit.ImageKit';
+import { camera } from '@kit.CameraKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, common } from '@kit.AbilityKit';
+
+/**
+ * 安全写法：getComponent完成后再release。
+ * Promise链式调用保证顺序，不会UAF。
+ */
+function onImageArrivalSafe(receiver: image.ImageReceiver): void {
+  let frame = 0;
+  receiver.on('imageArrival', () => {
+    frame++;
+    const cur = frame;
+    receiver.readNextImage((err, img: image.Image) => {
+      if (err || !img) {
+        console.info(`[Safe] #${cur} readNextImage err: ${err?.code}`);
+        return;
+      }
+      // FIX：getComponent完成后再release。
+      img.getComponent(image.ComponentType.JPEG).then(() => {
+        console.info(`[Safe] #${cur} getComponent done`);
+        return img.release();
+      }).then(() => {
+        console.info(`[Safe] #${cur} released`);
+      }).catch((e: BusinessError) => {
+        console.info(`[Safe] #${cur} err: ${e.code}`);
+        img.release().catch(() => {});
+      });
+    });
+  });
+}
+```

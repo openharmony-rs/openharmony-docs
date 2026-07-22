@@ -126,7 +126,7 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针, 否则返回NULL。<br> 可能的故障原因：<br> 1. 网络异常。<br> 2. 资源无效。<br> 3. 文件格式不支持。<br> 4. 应用配置明文拦截。 |
+| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针，否则返回NULL。<br> 可能的故障原因：<br> 1. 网络异常。<br> 2. 资源无效。<br> 3. 文件格式不支持。<br> 4. 应用配置明文拦截。 |
 
 ### OH_AVSource_CreateWithFD()
 
@@ -136,7 +136,7 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 
 **描述**
 
-为文件描述符对应的资源对象创建OH_AVSource实例。可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。<br> 接口如果传入offset不为文件起始位置，或size不为文件大小时，可能会因数据获取不完整导致OH_AVSource创建失败、后续解封装失败等未定义错误。
+为文件描述符对应的资源对象创建OH_AVSource实例。可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。<br> 调用该接口时，如果传入的offset不是文件起始位置，或size不是文件大小，可能会因数据获取不完整导致OH_AVSource创建失败或后续解封装失败。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -148,14 +148,14 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t fd | 数据资源的文件描述符。 |
-| int64_t offset | 开始读取数据的位置。 |
-| int64_t size | 文件的字节数大小。 |
+| int64_t offset | 开始读取数据的位置，单位为字节。 |
+| int64_t size | 文件的字节数大小，表示从offset指定位置开始可读取的数据长度。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针, 否则返回NULL。<br> 可能的故障原因：<br> 1. fd无效。<br> 2. 传入offset不是文件起始位置。<br> 3. size错误。<br> 4. 资源无效。<br> 5. 文件格式不支持。 |
+| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针，否则返回NULL。<br> 可能的故障原因：<br> 1. fd无效。<br> 2. 传入offset不是文件起始位置。<br> 3. size错误。<br> 4. 资源无效。<br> 5. 文件格式不支持。 |
 
 ### OH_AVSource_Destroy()
 
@@ -182,7 +182,7 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br>         AV_ERR_INVALID_VAL：<br>                          1. source指针无效，空指针。<br>                          2. 非OH_AVSource实例。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br>AV_ERR_INVALID_VAL：<br>1. source指针无效，空指针。<br>2. 非OH_AVSource实例。 |
 
 ### OH_AVSource_GetSourceFormat()
 
@@ -247,7 +247,7 @@ OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 
 **描述**
 
-获取自定义元数据的基础信息。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
+获取自定义元数据的基础信息。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需调用者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 

@@ -56,7 +56,7 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getAllSubscriptionBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getAllSubscriptionBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -111,7 +111,7 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
     console.info('GrantedState false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedState fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -163,7 +163,7 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
 notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then(() => {
   console.info(`setUserGrantedState successfully.`);
 }).catch((err: BusinessError) => {
-  console.error(`setUserGrantedState fail: ${JSON.stringify(err)}`);
+  console.error(`setUserGrantedState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -214,7 +214,7 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
 notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -273,6 +273,58 @@ let enabledBundles: notificationExtensionSubscription.BundleOption[] = [
 notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enabledBundles, true).then(() => {
   console.info(`setUserGrantedBundleState successfully.`);
 }).catch((err: BusinessError) => {
-  console.error(`setUserGrantedBundleState fail: ${JSON.stringify(err)}`);
+  console.error(`setUserGrantedBundleState fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+## notificationExtensionSubscription.subscribeNotification
+
+subscribeNotification(priorityStrategy?: number): Promise\<void\>
+
+根据优先通知过滤条件订阅通知。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名               | 类型       | 必填 | 说明                 |
+| ------------------- | ---------- | ---- | -------------------- |
+| priorityStrategy    | number     | 否   | 优先通知过滤条件。默认为0。与[PriorityStrategyStatus](js-apis-notificationManager-sys.md#prioritystrategystatus23)的枚举进行按位或运算得到该参数。<br>订阅某条优先通知策略后，应用发布通知时，只返回符合对应策略的通知。<br>当订阅默认优先策略`STATUS_SYSTEM_DEFAULT`时,表示同时订阅优先规则`STATUS_SYSTEM_RULE`、智能识别`STATUS_INTELLIGENT`、用户自定义`STATUS_USER_DEFINED`和应用自定义`STATUS_APPLICATION_DEFINED`策略。<br>当`priorityStrategy`为0时，表示不过滤优先通知策略，可以收到应用发布的所有通知。|
+
+**返回值：**
+
+| 类型     | 说明        | 
+| ------- |-----------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | ----------------------------------- |
+| 201      | Permission denied or current device not supported. |
+| 202      | Not system application to call the interface.      |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600022  |  The application does not implement the NotificationSubscriberExtensionAbility.   |
+
+**示例：**
+
+```ts
+notificationExtensionSubscription.subscribeNotification(0).then(() => {
+  console.info(`subscribeNotification successfully.`);
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```

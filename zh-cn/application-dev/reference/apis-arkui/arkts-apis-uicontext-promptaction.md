@@ -214,7 +214,7 @@ openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 该示例通过调用openToast和closeToast接口，展示了弹出以及关闭Toast的功能。
 
 ```ts
-import { PromptAction } from '@kit.ArkUI';
+import { PromptAction, promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -231,6 +231,7 @@ struct Index {
           this.promptAction.openToast({
             message: 'Toast Message',
             duration: 10000,
+            showMode:promptAction.ToastShowMode.DEFAULT,
           }).then((toastId: number) => {
             this.toastId = toastId;
           })
@@ -321,7 +322,7 @@ showToast(options: promptAction.ShowToastOptions): void
 从API版本26.0.0开始，参数options的类型[promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions)中新增了systemMaterial属性。
 
 ```ts
-import { PromptAction, uiMaterial } from '@kit.ArkUI';
+import { PromptAction, promptAction, uiMaterial } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -338,6 +339,7 @@ struct Index {
             this.promptAction.showToast({
               message: 'Message Info',
               duration: 2000,
+              showMode:promptAction.ToastShowMode.DEFAULT,
               // 设置系统材质
               systemMaterial: new uiMaterial.ImmersiveMaterial({
                 style: uiMaterial.ImmersiveStyle.THIN
