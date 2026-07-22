@@ -143,7 +143,7 @@ unregisterTask(taskInfo: TaskInfo): void
 
 ## backgroundLoader.getTaskInfo
 
-getTaskInfo(taskId: int): Promise\<TaskInfo>
+getTaskInfo(taskId: number): Promise\<TaskInfo>
 
 查询已经注册的后台加载任务，使用Promise形式返回。
 
@@ -161,7 +161,7 @@ getTaskInfo(taskId: int): Promise\<TaskInfo>
 | ------ | ------ | ---- | -------- |
 | taskId | number   | 是    | 需要查询的后台加载任务ID，取值范围为整数。 |
 
-**返回值**：
+**返回值**： 
 
 | 类型                              | 说明                                       |
 | ------------------------------- | ---------------------------------------- |
