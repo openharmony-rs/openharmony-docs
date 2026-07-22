@@ -92,7 +92,7 @@ libEGL.so
 
 **修改app.json5配置文件**
 
-```json
+```json5
 "appEnvironments": [
  {
    "name":"NEED_OPENGL",
@@ -103,7 +103,7 @@ libEGL.so
 
 ## 相关参考
 
-针对OpenGL的使用和相关开发，需要同步了解NDK的开发过程，以及XComponent组件等的使用。具体可参考:
+针对OpenGL的使用和相关开发，需要同步了解NDK的开发过程，以及XComponent组件等的使用。具体可参考：
 
 - [NDK开发参考](../../napi/ndk-development-overview.md)
 
