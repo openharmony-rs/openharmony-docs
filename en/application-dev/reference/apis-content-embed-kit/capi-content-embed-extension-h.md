@@ -6,7 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=1b37f75d465392a2b5313139510e8515d4fddd3d translatedAt=2026-07-17T07:41:43.999Z pushedAt=2026-07-22T11:58:09.083Z -->
+<!-- md-trans-meta sourceCommit=1b37f75d465392a2b5313139510e8515d4fddd3d translatedAt=2026-07-17T07:41:43.999Z pushedAt=2026-07-22T12:24:15.565Z -->
 
 ## Overview
 
@@ -33,7 +33,7 @@ Defines the data structures and operation APIs related to the OE Extension of th
 | [ContentEmbed_ExtensionContext*](capi-contentembed-contentembed-extensioncontext8h.md) | ContentEmbed_ExtensionContextHandle | Defines the context object pointer of the OE Extension.|
 | [ContentEmbed_ExtensionInstance](capi-contentembed-contentembed-extensioninstance.md) | ContentEmbed_ExtensionInstance | Defines a struct for the OE Extension instance, which manages core functions such as the lifecycle of extensions, callback registration, and association with the OE objects on the client side.|
 | [ContentEmbed_ExtensionInstance*](capi-contentembed-contentembed-extensioninstance8h.md) | ContentEmbed_ExtensionInstanceHandle | Defines the object pointer of the OE Extension instance.|
-| [ContentEmbed_Object](capi-contentembed-contentembed-object.md) | ContentEmbed_Object | Defines a **ContentEmbed_Object** struct, which points to the document embedding and editing object (server-side OE object) encapsulated by the OE document on the server.|
+| [ContentEmbed_Object](capi-contentembed-contentembed-object.md) | ContentEmbed_Object | Defines a **ContentEmbed_Object** struct, which points to the document embedding and editing object (server OE object) encapsulated by the OE document on the server.|
 | [ContentEmbed_Object*](capi-contentembed-contentembed-object8h.md) | ContentEmbed_ObjectHandle | Defines the object pointer of **ContentEmbed_Object**.|
 
 ### Functions
@@ -50,8 +50,8 @@ Defines the data structures and operation APIs related to the OE Extension of th
 | [typedef void (\*OH_ContentEmbed_Extension_OnWriteToDataStreamFunc)(ContentEmbed_ObjectHandle object)](#oh_contentembed_extension_onwritetodatastreamfunc) | OH_ContentEmbed_Extension_OnWriteToDataStreamFunc | This callback function is triggered when the server OE object writes a data stream to the OE document.<br> You need to implement this function and register it with the server OE object through [OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronwritetodatastreamfunc).|
 | [typedef void (\*OH_ContentEmbed_Extension_OnGetSnapshotFunc)(ContentEmbed_ObjectHandle object)](#oh_contentembed_extension_ongetsnapshotfunc) | OH_ContentEmbed_Extension_OnGetSnapshotFunc | This callback function is triggered when the client OE object requests to obtain the OE document snapshot.<br> You need to implement this function and register it with the server OE object through [OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongetsnapshotfunc).|
 | [typedef void (\*OH_ContentEmbed_Extension_OnDoEditFunc)(ContentEmbed_ObjectHandle object)](#oh_contentembed_extension_ondoeditfunc) | OH_ContentEmbed_Extension_OnDoEditFunc | This callback function is triggered when the client OE object requests to edit the OE document.<br> You need to implement this function and register it with the server OE object through [OH_ContentEmbed_Extension_RegisterOnDoEditFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerondoeditfunc).|
-| [typedef void (\*OH_ContentEmbed_Extension_OnGetEditStatusFunc)(ContentEmbed_ObjectHandle object, bool *isEditing, bool *isModified)](#oh_contentembed_extension_ongeteditstatusfunc) | OH_ContentEmbed_Extension_OnGetEditStatusFunc | This callback function is triggered when the client OE object requests the editing state of the OE document.<br> You need to implement this function and register it with the server-side OE object through [OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongeteditstatusfunc).|
-| [typedef void (\*OH_ContentEmbed_Extension_OnGetCapabilityFunc)(ContentEmbed_ObjectHandle object, uint32_t *bitmask)](#oh_contentembed_extension_ongetcapabilityfunc) | OH_ContentEmbed_Extension_OnGetCapabilityFunc | This callback function is triggered when the client OE object queries the capabilities supported by the OE Extension instance.<br> You need to implement this function and register it with the server-side OE object through [OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongetcapabilityfunc).|
+| [typedef void (\*OH_ContentEmbed_Extension_OnGetEditStatusFunc)(ContentEmbed_ObjectHandle object, bool *isEditing, bool *isModified)](#oh_contentembed_extension_ongeteditstatusfunc) | OH_ContentEmbed_Extension_OnGetEditStatusFunc | This callback function is triggered when the client OE object requests the editing state of the OE document.<br> You need to implement this function and register it with the server OE object through [OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongeteditstatusfunc).|
+| [typedef void (\*OH_ContentEmbed_Extension_OnGetCapabilityFunc)(ContentEmbed_ObjectHandle object, uint32_t *bitmask)](#oh_contentembed_extension_ongetcapabilityfunc) | OH_ContentEmbed_Extension_OnGetCapabilityFunc | This callback function is triggered when the client OE object queries the capabilities supported by the OE Extension instance.<br> You need to implement this function and register it with the server OE object through [OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongetcapabilityfunc).|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnCreateFunc(ContentEmbed_ExtensionInstanceHandle instance, OH_ContentEmbed_Extension_OnCreateFunc onCreateFunc)](#oh_contentembed_extension_registeroncreatefunc) | - | Registers the lifecycle function when an OE Extension instance is created.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnDestroyFunc(ContentEmbed_ExtensionInstanceHandle instance, OH_ContentEmbed_Extension_OnDestroyFunc onDestroyFunc)](#oh_contentembed_extension_registerondestroyfunc) | - | Registers the lifecycle function when an OE Extension instance is destroyed.|
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle instance, OH_ContentEmbed_Extension_OnObjectAttachFunc onObjectAttachFunc)](#oh_contentembed_extension_registeronobjectattachfunc) | - | Registers the callback function when the client OE object is connected.<br> You can call [OH_ContentEmbed_Extension_UnRegisterOnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_unregisteronobjectattachfunc) to cancel the registration.|
@@ -287,7 +287,7 @@ typedef void (*OH_ContentEmbed_Extension_OnGetEditStatusFunc)(ContentEmbed_Objec
 
 **Description**
 
-This callback function is triggered when the client OE object requests the editing state of the OE document.<br> You need to implement this function and register it with the server-side OE object through [OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongeteditstatusfunc).
+This callback function is triggered when the client OE object requests the editing state of the OE document.<br> You need to implement this function and register it with the server OE object through [OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongeteditstatusfunc).
 
 **Since**: 24
 
@@ -307,7 +307,7 @@ typedef void (*OH_ContentEmbed_Extension_OnGetCapabilityFunc)(ContentEmbed_Objec
 
 **Description**
 
-This callback function is triggered when the client OE object queries the capabilities supported by the OE Extension instance.<br> You need to implement this function and register it with the server-side OE object through [OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongetcapabilityfunc).
+This callback function is triggered when the client OE object queries the capabilities supported by the OE Extension instance.<br> You need to implement this function and register it with the server OE object through [OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongetcapabilityfunc).
 
 **Since**: 24
 
@@ -722,7 +722,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_SetSnapshot(ContentEmbed_Object
 
 **Description**
 
-Sets the snapshot image of the OE document associated with the client-side OE object.
+Sets the snapshot image of the OE document associated with the client OE object.
 
 **Since**: 24
 
