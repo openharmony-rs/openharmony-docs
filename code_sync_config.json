@@ -39627,5 +39627,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/displaymanager/native-display-manager.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"add_display_target_link",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
