@@ -14,7 +14,7 @@ typedef struct {...} OH_MIDICallbacks
 
 ## Overview
 
-Client callback struct，containing pointers to callback functions for device change events and error handling.
+Client callback struct, containing pointers to callback functions for device change events and error handling.
 
 **Since:** 24
 
