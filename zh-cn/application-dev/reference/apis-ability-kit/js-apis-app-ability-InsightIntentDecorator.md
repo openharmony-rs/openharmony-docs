@@ -161,7 +161,7 @@ export class ClassForLink {
 | displayDescription | string         | 否        | 是   | 表示显示给用户的意图描述。                                       |
 | schema             | string         | 否        | 是   | 表示接入的标准意图的名称。开发者[接入标准意图](../../application-models/insight-intent-definition.md#接入标准意图)时，需要配置该字段，[创建自定义意图](../../application-models/insight-intent-definition.md#创建自定义意图)时，无需配置该字段。标准意图列表参见[附录：标准意图接入规范](../../application-models/insight-intent-access-specifications.md)。 |
 | icon               | ResourceStr | 否   | 是   | 表示意图图标，用于在AI入口显示。<br/>- 当取值为字符串类型时，表示图标读取网络资源。<br/>- 当取值为[Resource](../../reference/apis-localization-kit/js-apis-resource-manager.md)时，表示图标读取本地资源。 |
-| llmDescription     | string      | 否           | 是   | 表示意图的功能，用于大型语言模型理解该意图。                  |
+| llmDescription     | string      | 否           | 是   | 表示意图的功能描述，用于大型语言模型理解该意图。                  |
 | keywords           | string[]     | 否          | 是   | 表示意图的搜索关键字。                                       |
 | parameters         | Record<string, Object>| 否 | 是   | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。取值参见[各垂域意图Schema](https://developer.huawei.com/consumer/cn/doc/service/intents-schema-0000001901962713) |
 | result           | Record<string, Object>     | 否          | 是   | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。                                       |

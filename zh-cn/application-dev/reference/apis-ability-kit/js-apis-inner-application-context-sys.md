@@ -224,7 +224,7 @@ createSystemHspModuleResourceManager(bundleName: string, moduleName: string): re
 
 | 参数名       | 类型     | 必填   | 说明   |
 | -------- |--------| ---- |------|
-| bundleName | string | 是    | 包名。  |
+| bundleName | string | 是    | Bundle名称。  |
 | moduleName | string | 是    | 模块名。 |
 
 **错误码**：
