@@ -386,7 +386,7 @@ export default function exampleTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[order1_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) -->
+<!-- @[order1_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/ExecuteOrder1.test.ets) -->
 
 ``` TypeScript
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '../../../../hypium/index';
@@ -469,7 +469,7 @@ export default function exampleTest() {
 ```
 
 **ArkTS-Sta示例：**
-<!-- @[order2_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) -->
+<!-- @[order2_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/ExecuteOrder2.test.ets) -->
 
 ``` TypeScript
 import { afterItSpecified, beforeItSpecified, describe, expect, it, Level } from '../../../../hypium/index';
@@ -524,7 +524,7 @@ export default function describeExampleTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[order3_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) -->
+<!-- @[order3_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/ExecuteOrder3.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, xit } from '../../../../hypium/index';
@@ -586,7 +586,7 @@ export default function test() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[order4_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
+<!-- @[order4_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/ExecuteOrder4.test.ets) -->
 
 ``` TypeScript
 import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect } from '../../../../hypium/index';
