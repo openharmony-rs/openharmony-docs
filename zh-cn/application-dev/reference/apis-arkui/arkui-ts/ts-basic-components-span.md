@@ -10,13 +10,15 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  该组件从API version 10开始支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的属性。支持继承的属性仅包括：fontColor、fontSize、fontStyle、fontWeight、decoration、letterSpacing、textCase、fontFamily、textShadow。
+> - 该组件从API version 10开始支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的属性。支持继承的属性仅包括：fontColor、fontSize、fontStyle、fontWeight、decoration、letterSpacing、textCase、fontFamily、textShadow。
 >
->  不支持[通用属性](ts-component-general-attributes.md)。若需设置通用属性，应使用[Text](ts-basic-components-text.md)进行设置，或改用[属性字符串](ts-universal-styled-string.md)中的[CustomSpan](ts-universal-styled-string.md#customspan)自行绘制。
+> - 支持[通用属性](ts-component-general-attributes.md)中的[无障碍属性](ts-universal-attributes-accessibility.md)（[accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)）、[组件标识](ts-universal-attributes-component-id.md)（[id](ts-universal-attributes-component-id.md#id)、[key](ts-universal-attributes-component-id.md#key12)）和[禁用反色能力](ts-allow-force-dark.md)（[allowForceDark](ts-allow-force-dark.md#allowforcedark)），不支持其他通用属性。若需设置其他通用属性，应使用[Text](ts-basic-components-text.md)进行设置，或改用[属性字符串](ts-universal-styled-string.md)中的[CustomSpan](ts-universal-styled-string.md#customspan)自行绘制。
 >
->  [通用事件](ts-component-general-events.md)只支持点击事件[onClick](ts-universal-events-click.md#onclick)和悬浮事件[onHover](ts-universal-events-hover.md#onhover)。
+> - [accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)仅在Span设置了[onClick](ts-universal-events-click.md#onclick)事件时生效，配置的文本只会体现在无障碍服务识别到的内嵌链接弹窗中。直接播报时，仍播报Span的内容，不会替换为accessibilityText配置的文本。
+>
+> - [通用事件](ts-component-general-events.md)只支持点击事件[onClick](ts-universal-events-click.md#onclick)和悬浮事件[onHover](ts-universal-events-hover.md#onhover)。
 
 
 ## 子组件
