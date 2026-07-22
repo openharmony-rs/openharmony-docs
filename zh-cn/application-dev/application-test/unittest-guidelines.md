@@ -1,4 +1,4 @@
-# 单元测试框架使用指导
+# 单元测试框架使用指导 
 
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
@@ -24,9 +24,9 @@
 |  [数据驱动能力](#数据驱动) | 提供数据驱动能力，支持复用同一个测试脚本，使用不同输入数据驱动测试脚本执行。 |
 |  [专项能力](#命令行执行测试脚本) | 支持测试套与用例筛选、随机执行、压力测试、超时设置、遇错即停模式和跳过执行模式。 |
 
-**图1.单元测试框架主要功能**
+  **图1.单元测试框架主要功能**
 
-![](figures/UnitTest.PNG)
+  ![](figures/UnitTest.PNG)
 
 
 ## 单元测试框架发布方式
@@ -192,7 +192,7 @@ export default function abilityTest(): void {
 >
 > 下文参数配置和命令示例均基于Stage模型。
 >
-> 执行命令参数需基于@ohos/hypium框架发布版本，且测试应用包需集成该版本，否则命令参数无法响应，具体配置方式参考[发布方式](#单元测试框架发布方式)。
+> 执行命令参数需基于@ohos/hypium框架发布版本，且测试应用包需集成该版本，否则命令参数无法响应，具体配置方式参考[发布方式](#单元测试框架发布方式)。  
 
 
 **示例代码1**：执行所有测试用例
@@ -282,16 +282,16 @@ export default function abilityTest(): void {
     OHOS_REPORT_STATUS_CODE: 0
     OHOS_REPORT_STATUS: consuming=4
     ```
-   | 日志输出字段               | 日志输出字段含义       |
-       | -------           | -------------------------|
-   | OHOS_REPORT_SUM    | 当前执行的测试套中用例总数。 |
-   | OHOS_REPORT_STATUS: class | 当前执行用例所属测试套名称。|
-   | OHOS_REPORT_STATUS: id | 当前用例执行语言，默认JS。  |
-   | OHOS_REPORT_STATUS: numtests | 当前测试包中测试用例总数。|
-   | OHOS_REPORT_STATUS: stream | 当前用例发生错误时，记录错误信息。 |
-   | OHOS_REPORT_STATUS: test| 当前用例执行的it name。 |
-   | OHOS_REPORT_STATUS_CODE | 当前用例执行状态。1表示用例开始执行，0表示用例执行通过，-1表示用例执行报错，-2表示用例执行失败。|
-   | OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
+    | 日志输出字段               | 日志输出字段含义       |
+    | -------           | -------------------------|
+    | OHOS_REPORT_SUM    | 当前执行的测试套中用例总数。 |
+    | OHOS_REPORT_STATUS: class | 当前执行用例所属测试套名称。|
+    | OHOS_REPORT_STATUS: id | 当前用例执行语言，默认JS。  |
+    | OHOS_REPORT_STATUS: numtests | 当前测试包中测试用例总数。|
+    | OHOS_REPORT_STATUS: stream | 当前用例发生错误时，记录错误信息。 |
+    | OHOS_REPORT_STATUS: test| 当前用例执行的it name。 |
+    | OHOS_REPORT_STATUS_CODE | 当前用例执行状态。1表示用例开始执行，0表示用例执行通过，-1表示用例执行报错，-2表示用例执行失败。|
+    | OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
 2. 命令行执行完成后，框架会打印如下相关日志信息。
     ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
@@ -300,18 +300,18 @@ export default function abilityTest(): void {
     OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
     OHOS_REPORT_STATUS: taskconsuming=16029
     ```
-   | 日志输出字段               | 日志输出字段含义           |
-       | ------------------| -------------------------|
-   | run    | 当前测试包用例总数。 |
-   | Failure | 当前测试失败用例数量。 |
-   | Error | 当前执行用例发生错误用例数量。  |
-   | Pass | 当前执行用例通过用例数量。|
-   | Ignore | 当前未执行用例数量。 |
-   | taskconsuming| 执行当前测试用例总耗时（ms）。 |
+    | 日志输出字段               | 日志输出字段含义           |
+    | ------------------| -------------------------|
+    | run    | 当前测试包用例总数。 |
+    | Failure | 当前测试失败用例数量。 |
+    | Error | 当前执行用例发生错误用例数量。  |
+    | Pass | 当前执行用例通过用例数量。|
+    | Ignore | 当前未执行用例数量。 |
+    | taskconsuming| 执行当前测试用例总耗时（ms）。 |
 
-   > **说明：**
-   >
-   > 当按照遇错即停方式执行时，用例发生错误时，注意查看Ignore字段以及错误中断时的提示信息。
+    > **说明：**
+    >
+    > 当按照遇错即停方式执行时，用例发生错误时，注意查看Ignore字段以及错误中断时的提示信息。
 
 ## 单元测试框架能力使用说明
 ### 基础流程能力
@@ -1679,7 +1679,7 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
-
+ 
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  
@@ -1699,7 +1699,7 @@ export default class TestAbility extends UIAbility {
    value: string
  }
  ```
->**说明:**
+>**说明:** 
 >
 >若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
 
@@ -1732,7 +1732,7 @@ export default class TestAbility extends UIAbility {
 
 1. 用例执行异步接口时，如果未调用done函数，会导致用例无法正常结束，最终超时。
 2. 用例调用函数耗时过长，超过用例执行设置的超时时间（默认5000ms）。
-3. 用例调用函数时断言失败抛出异常，导致用例执行超时终止。
+3. 用例调用函数时断言失败抛出异常，导致用例执行超时终止。  
 
 **解决方法**
 
@@ -1741,5 +1741,5 @@ export default class TestAbility extends UIAbility {
 3. 检查用例代码逻辑，确保断言通过。
 ## 完整示例
 <!--RP3-->
-[测试框架](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit)
+[测试框架](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/jsunit)
 <!--RP3End-->
