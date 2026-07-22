@@ -1263,7 +1263,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let promise = window.getVisibleWindowInfo();
   promise.then((data) => {
-    data.forEach(windowInfo=>{
+    data.forEach((windowInfo) => {
       console.info(`left:${windowInfo.rect.left}`);
       console.info(`top:${windowInfo.rect.top}`);
       console.info(`width:${windowInfo.rect.width}`);
@@ -1276,7 +1276,7 @@ try {
       console.info(`displayId:${windowInfo.displayId}`);
       console.info(`globalDisplayRect:${JSON.stringify(windowInfo.globalDisplayRect)}`);
       console.info(`globalRect:${JSON.stringify(windowInfo.globalRect)}`);
-    })
+    });
   }).catch((err: BusinessError) => {
     console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));
   });
