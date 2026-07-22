@@ -995,7 +995,6 @@ interface SampleTest {
 interface PromiseInfo {
   res: string;
 }
-
 ```
 
 ### Mock能力
