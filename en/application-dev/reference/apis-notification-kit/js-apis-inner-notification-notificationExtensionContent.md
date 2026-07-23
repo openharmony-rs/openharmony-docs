@@ -5,6 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:08.135Z pushedAt=2026-06-30T10:57:36.994Z -->
 
 The **NotificationExtensionContent** module describes the notification extension content.
 
@@ -16,7 +17,7 @@ The **NotificationExtensionContent** module describes the notification extension
 
 **System capability**: SystemCapability.Notification.Notification
 
-| Name| Type| Read-Only| Optional| Description| 
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| title | string | No| No|Notification title. It cannot be empty or exceed 1024 bytes. Excess content will be truncated.|
-| text | string | No| No|Notification content. It cannot be empty or exceed 3072 bytes. Excess content will be truncated.|
+| title | string | No | No | Notification title.<br>It cannot be an empty string. The size cannot exceed 1024 bytes, and any excess will be truncated. |
+| text | string | No | No | Notification body content.<br>It cannot be an empty string. The size cannot exceed 3072 bytes, and any excess will be truncated. |

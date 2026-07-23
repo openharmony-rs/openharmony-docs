@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS是一种设计用于构建高性能应用的编程语言。它在继承TypeScript语法的基础上进行了优化，以提供更高的性能和开发效率。
 
@@ -441,12 +441,12 @@ if (condition1) {
 ``` TypeScript
 let s1 = 'Hello';
 if (s1) {
-  console.info(s1); // 打印"Hello"
+  console.info(s1); // 打印“Hello”
 }
 
 let s2 = 'World';
 if (s2.length != 0) {
-  console.info(s2); // 打印"World"
+  console.info(s2); // 打印“World”
 }
 ```
 
@@ -460,13 +460,13 @@ if (s2.length != 0) {
 
 ``` TypeScript
 switch (expression) {
-  case label1: // 如果label1匹配,则执行
+  case label1: // 如果label1匹配，则执行
     // ...
     // 语句1
     // ...
     break; // 可省略
   case label2:
-  case label3: // 如果label2或label3匹配,则执行
+  case label3: // 如果label2或label3匹配，则执行
     // ...
     // 语句23
     // ...
@@ -688,6 +688,7 @@ throw new Error('this error')
 
 ``` TypeScript
 try {
+  // 可能发生异常的语句块
   // ...
 } catch (e) {
   // 异常处理
@@ -1107,7 +1108,7 @@ class Person3 {
 
 let jack = new Person3();
 // 假设代码中没有对name赋值，即没有调用"jack.setName('Jack')"
-jack.getName().length; // 0, 没有运行时异常
+jack.getName().length; // 0，没有运行时异常
 ```
 
 接下来的代码示例展示了当`name`的值可能为`undefined`时，如何正确编写代码。
@@ -1824,10 +1825,10 @@ function last(x: number[]): number {
 
 如果需要为任何数组定义相同的函数，使用类型参数将该函数定义为泛型：
 
-<!-- @[generic_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
+<!-- @[generic_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericArray.ets) -->   
 
 ``` TypeScript
-function last1<T>(x: T[]): T {
+function last<T>(x: T[]): T {
   return x[x.length - 1];
 }
 ```
@@ -2038,7 +2039,7 @@ export default new Demo();
 <!-- @[module_import_as](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
 ``` TypeScript
-import * as Utils from './utils';
+import * as Utils from './Utils';
 // ...
 Utils.X // 表示来自Utils的X
 Utils.Y // 表示来自Utils的Y
@@ -2049,10 +2050,10 @@ Utils.Y // 表示来自Utils的Y
 <!-- @[module_import_ident](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
 ``` TypeScript
-import { X, Y } from './utils';
+import { X, Y } from './Utils';
 // ...
-X // 表示来自utils的X
-Y // 表示来自utils的Y
+X // 表示来自Utils的X
+Y // 表示来自Utils的Y
 ```
 
 如果标识符列表定义了`ident as alias`，则实体`ident`将绑定在名称`alias`下：
@@ -2115,7 +2116,7 @@ export function bye() {
 
 ``` TypeScript
 async function test() {
-  let ns = await import('./say');
+  let ns = await import('./Say');
   let hi = ns.hi;
   let bye = ns.bye;
   hi();
@@ -2189,7 +2190,7 @@ function foo(arg1: number) {
 ``` TypeScript
 // 注解的声明：
 @interface ClassAuthor {
-  authorName: string
+  authorName: string;
 }
 
 // 注解的使用：
@@ -2656,7 +2657,7 @@ class C {
 同一个实体不能重复使用同一注解，否则会导致编译错误。
 ```typescript
 @MyAnno({name: "123", value: 456})
-@MyAnno({name: "321", value: 654}) // 编译错误：不允许重复注释
+@MyAnno({name: "321", value: 654}) // 编译错误：不允许重复注解
 class C {
   // ...
 }
@@ -2678,7 +2679,7 @@ abstract class C {
 
 源码态注解为一类特殊形式的注解。源码态注解的生命周期只在编译期，不会影响编译产物。
 
-开发者可以通过使用ArkTS提供的[Retention API](../reference/apis-arkts/js-apis-arkts-lang.md#retention24)来构造自定义源码态注解。源码态注解有更广的使用范围，支持在以下声明上使用：
+开发者可以通过使用ArkTS提供的[Retention](../reference/apis-arkts/js-apis-arkts-lang.md#retention24)接口来构造自定义源码态注解。源码态注解有更广的使用范围，支持在以下声明上使用：
 - 类
 - 类成员（除构造函数外）
 - 变量声明

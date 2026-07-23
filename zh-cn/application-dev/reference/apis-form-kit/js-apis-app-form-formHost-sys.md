@@ -122,7 +122,7 @@ try {
     console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1345,7 +1345,7 @@ try {
 
 deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
-根据列表删除应用程序的无效卡片。使用callback异步回调。
+根据有效的卡片列表，删除应用程序不在有效列表中的卡片。使用callback异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -1355,7 +1355,7 @@ deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;numb
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | 是   | 有效卡片标识列表。 |
+| formIds | Array&lt;string&gt; | 是   | 有效卡片列表。 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当根据列表删除应用程序的无效卡片成功，error为undefined，data为删除的卡片个数；否则为错误对象。 |
 
 **错误码：**
@@ -1763,7 +1763,7 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, c
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | 是   | 卡片标识列表。 |
-| isEnableUpdate | boolean | 是   | 表示卡片是否使能更新状态。<br>true: 表示卡片使能更新状态。false: 表示卡片没有使能更新状态。|
+| isEnableUpdate | boolean | 是   | 表示卡片是否启用更新状态。<br>true: 表示卡片启用更新状态。false: 表示卡片没有启用更新状态。|
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当通知卡片是否启用更新状态成功，error为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1813,7 +1813,7 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | 是   | 卡片标识列表。 |
-| isEnableUpdate | boolean | 是   | 表示卡片是否使能更新状态。<br>true: 表示卡片使能更新状态。<br>false: 表示卡片没有使能更新状态。 |
+| isEnableUpdate | boolean | 是   | 表示卡片是否启用更新状态。<br>true: 表示卡片启用更新状态。<br>false: 表示卡片没有启用更新状态。 |
 
 **返回值：**
 
@@ -2077,7 +2077,7 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | formId | string | 是   | 卡片标识。 |
-| callback | AsyncCallback\<Record\<string, Object>> | 是   | 以callback方式返回接口运行结果及分享数据。 |
+| callback | AsyncCallback\<Record\<string, Object>> | 是   | 以callback方式返回接口运行结果及卡片提供方数据。 |
 
 **错误码：**
 
@@ -2099,7 +2099,7 @@ import { formHost } from '@kit.FormKit';
 
 let formId: string = '12400633174999288';
 try {
-  formHost.acquireFormData(formId, (error, data) => {
+  formHost.acquireFormData(formId, (error: BusinessError, data: Record<string, Object>) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
@@ -2107,7 +2107,7 @@ try {
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -2133,7 +2133,7 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise\<Record\<string, Object>>| 以Promise方式返回接口运行结果及分享数据。 |
+| Promise\<Record\<string, Object>> | 以Promise方式返回接口运行结果及卡片提供方数据。 |
 
 **错误码：**
 
@@ -2162,7 +2162,7 @@ try {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (e) {
-  console.error(`catch error, code: ${e.code}, message: ${e.message}`);
+  console.error(`catch error, code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
 }
 ```
 
@@ -2251,7 +2251,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.error(`formHost setRouterProxy, code: ${e.code}, message: ${e.message}`);
+            console.error(`formHost setRouterProxy, code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
           }
         })
     }
@@ -2265,7 +2265,7 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。使用Promise异步回调。
+设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。
 
 > **说明：**
 >
@@ -2344,7 +2344,7 @@ struct CardExample {
               console.info('formHost recv router event.');
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
-                console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
+                console.error(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
               });
             }).then(() => {
               console.info('formHost set router proxy success');
@@ -2377,7 +2377,7 @@ clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&g
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | formIds  | Array&lt;string&gt;      | 是   | 卡片标识数组。                                               |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，当指定卡片取消router跳转代理成功时，error为undefined；否则抛出异常。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，当指定卡片清除router跳转代理成功时，error为undefined；否则抛出异常。 |
 
 **错误码：**
 
@@ -2572,7 +2572,7 @@ try {
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-恢复卡片。使用callback异步回调。
+恢复被回收的卡片，并将它的状态更新为不可回收。如果卡片未被回收，则只更新状态为不可回收。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2664,7 +2664,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.recoverForms(formIds).then(() => {
-    console.info('recover forms success');
+    console.info('formHost recoverForms success');
   }).catch((err: BusinessError) => {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });
@@ -3216,8 +3216,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllTemplateFormsInfo().then((data: formInfo.FormInfo[]) => {
-    for (let formInfo of data) {
-      console.info(`getAllTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    for (let info of data) {
+      console.info(`getAllTemplateFormsInfo bundleName: ${info.bundleName}, moduleName: ${info.moduleName}, name: ${info.name}`);
     }
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
@@ -3271,8 +3271,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getTemplateFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    for (let formInfo of data) {
-      console.info(`getTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    for (let info of data) {
+      console.info(`getTemplateFormsInfo bundleName: ${info.bundleName}, moduleName: ${info.moduleName}, name: ${info.name}`);
     }
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);

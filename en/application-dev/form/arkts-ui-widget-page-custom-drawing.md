@@ -93,5 +93,6 @@ struct CustomCanvasDrawingCard {
 }
 ```
 
-The figure below shows the effect. 
+The figure below shows the effect.
+
 ![WidgetCanvasDemo](figures/WidgetCanvasDemo.jpeg)

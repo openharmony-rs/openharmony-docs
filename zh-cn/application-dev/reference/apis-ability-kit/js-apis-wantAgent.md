@@ -101,7 +101,7 @@ getWantAgent(info: WantAgentInfo): Promise\<WantAgent\>
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<WantAgent\> | 以Promise形式返回WantAgent。 |
+| Promise\<WantAgent\> | Promise对象，返回用于触发指定操作的WantAgent实例。 |
 
 **示例：**
 
@@ -153,7 +153,7 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 | 参数名     | 类型                    | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | 是   | WantAgent对象。                     |
-| callback | AsyncCallback\<string\> | 是   | 获取WantAgent实例的包名的回调方法。 |
+| callback | AsyncCallback\<string\> | 是   | 获取WantAgent实例的Bundle名称的回调方法。 |
 
 **示例：**
 
@@ -512,7 +512,7 @@ cancel(agent: WantAgent): Promise\<void\>
 
 | 类型            | 说明                            |
 | --------------- | ------------------------------- |
-| Promise\<void\> | 以Promise形式获取异步返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **示例：**
 

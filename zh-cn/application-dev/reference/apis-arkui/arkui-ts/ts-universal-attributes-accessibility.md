@@ -6,11 +6,11 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件的无障碍属性和事件，以充分利用无障碍功能。
+设置组件的无障碍属性和事件，以充分利用无障碍功能。支持设置无障碍分组、无障碍文本、无障碍说明、无障碍重要性、无障碍虚拟子节点、无障碍组件类型、屏幕朗读焦点控制、状态播报、自定义无障碍操作等能力，适用于需要为视障用户提供屏幕朗读辅助、提升应用无障碍可达性的场景。
 
 >  **说明：**
 >
-> - 从API version 10 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -18,11 +18,15 @@
 
 accessibilityGroup(value: boolean): T
 
-设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
+设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选中组件，无障碍服务不再关注子组件内容。
 
 若组件启用无障碍分组，当组件不包含通用文本属性，同时未设置无障碍文本[accessibilityText](#accessibilitytext)时，将默认拼接其子组件的通用文本属性作为组件的合并文本。若某一子组件没有通用文本属性，则忽略该子组件不进行拼接，此时合并文本不使用子组件的无障碍文本。
 
 当子组件[accessibilityLevel](#accessibilitylevel)设置为"yes"时则不受accessibilityGroup约束，在满足屏幕朗读其他规则下，子组件可聚焦。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -46,15 +50,15 @@ accessibilityGroup(value: boolean): T
 
 accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions): T
 
-设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
+设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选中组件，无障碍服务不再关注子组件内容。
 
-若组件启用无障碍分组，当组件不包含通用文本属性，同时未设置无障碍文本[accessibilityText](#accessibilitytext)时，将默认拼接其子组件的通用文本属性作为组件的合并文本。若某一子组件没有通用文本属性，则忽略该子组件不进行拼接。
+若组件启用无障碍分组，当组件不包含通用文本属性，同时未设置无障碍文本[accessibilityText](#accessibilitytext)时，将默认拼接其子组件的通用文本属性作为组件的合并文本。若某一子组件没有通用文本属性，则忽略该子组件不进行拼接，此时合并文本不使用子组件的无障碍文本。
 
 当子组件[accessibilityLevel](#accessibilitylevel)设置为"yes"时则不受accessibilityGroup约束，在满足屏幕朗读其他规则下，子组件可聚焦。
 
 通过[accessibilityPreferred](ts-types.md#accessibilityoptions14对象说明)启用优先拼接无障碍文本进行朗读后，将优先拼接其子组件的无障碍文本属性作为组件的合并文本。若某一子组件未设置无障碍文本，则继续拼接该子组件的通用文本属性，若该子组件没有通用文本属性，则忽略该子组件不进行拼接。
 
-从API version 23开始，通过stateController和actionController参数，可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。
+从API version 23开始，通过accessibilityOptions中的相关配置项（stateControllerRoleType或stateControllerId、actionControllerRoleType或actionControllerId），可以指定一个特定子组件，由该子组件的状态信息和点击事件来接管当前聚合组件的无障碍能力。
 
 > **说明：**
 >
@@ -71,7 +75,7 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 | 参数名               | 类型                                                    | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isGroup              | boolean                                                 | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
-| accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14对象说明) | 是   | accessibilityPreferred设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>stateController和actionController可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。|
+| accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14对象说明) | 是   | 无障碍分组的配置选项对象，包含以下属性：<br/>- accessibilityPreferred：设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>- stateControllerRoleType或stateControllerId：从API version 23开始支持，指定一个特定子组件，使用该子组件的状态信息作为当前聚合组件的无障碍状态。<br/>- actionControllerRoleType或actionControllerId：从API version 23开始支持，指定一个特定子组件，使用该子组件的点击事件作为当前聚合组件的无障碍操作。|
 
 **返回值：**
 
@@ -84,6 +88,10 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 accessibilityText(value: string): T
 
 设置无障碍文本。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -123,7 +131,7 @@ accessibilityText(text: Resource): T
 
 | 参数名 | 类型   | 必填 | 说明                                                                                                                                                                                                                                                                   |
 | ------ | ------ | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| text  | [Resource](ts-types.md#resource) | 是   | 无障碍文本引用资源，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置accessibilityGroup的accessibilityPreferred。 |
+| text  | [Resource](ts-types.md#resource) | 是   | 无障碍文本引用资源，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置[accessibilityGroup](#accessibilitygroup14)的accessibilityPreferred。 |
 
 **返回值：**
 
@@ -137,6 +145,10 @@ accessibilityText(text: Resource): T
 accessibilityDescription(value: string): T
 
 设置无障碍说明。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -201,7 +213,7 @@ accessibilityLevel(value: string): T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | string | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
+| value  | string | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。当父组件启用无障碍分组时，设置为"yes"的子组件不受分组约束，在满足屏幕朗读其他规则下仍可聚焦。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
 
 **返回值：**
 
@@ -213,7 +225,7 @@ accessibilityLevel(value: string): T
 
 accessibilityVirtualNode(builder: CustomBuilder): T
 
-设置无障碍虚拟子节点。对自绘制组件传入一个自定义的CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。如使用画布组件[Canvas](./ts-components-canvas-canvas.md)时，可以通过虚拟节点设置相应位置和大小匹配的占位组件，让无障碍服务识别到对应区域的自绘制信息。
+设置无障碍虚拟子节点。对自绘制组件传入一个CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。如使用画布组件[Canvas](ts-components-canvas-canvas.md)时，可以通过虚拟节点设置相应位置和大小匹配的占位组件，让无障碍服务识别到对应区域的自绘制信息。
 
 > **说明：**
 >
@@ -229,7 +241,7 @@ accessibilityVirtualNode(builder: CustomBuilder): T
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| builder  | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 无障碍虚拟子节点，使开发者可以对自绘制组件传入一个自定义的CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。 |
+| builder  | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 无障碍虚拟子节点，使开发者可以对自绘制组件传入一个CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。 |
 
 **返回值：**
 
@@ -241,7 +253,7 @@ accessibilityVirtualNode(builder: CustomBuilder): T
 
 accessibilityChecked(isCheck: boolean): T
 
-无障碍节点是否选中的状态维护，用于支持多选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
+无障碍节点是否选中的状态维护，用于支持多选，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
 
 >**说明：**
 >
@@ -258,7 +270,7 @@ accessibilityChecked(isCheck: boolean): T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名  | 类型    | 必填 | 说明                                                         |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
-| isCheck | boolean | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. 使用该接口设置true或false后，会默认修改该组件的checkable属性为true。<br/>2. accessibilityChecked属性代表组件是多选模式，而[accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13)属性代表组件是单选模式，组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。如使用当前接口设置组件为多选模式（设置为true、false），则需要保证未使用accessibilitySelected函数设置属性为true或者false，如果已设置，需使用accessibilitySelected函数设置accessibilitySelected属性为undefined模式。 |
+| isCheck | boolean | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. 使用该接口设置true或false后，会默认修改该组件的checkable属性为true。<br/>2. accessibilityChecked属性代表组件是多选模式，而[accessibilitySelected](#accessibilityselected13)属性代表组件是单选模式。组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。如使用当前接口设置组件为多选模式（设置为true、false），则需要保证未使用accessibilitySelected函数设置属性为true或者false，如果已设置，需使用accessibilitySelected函数设置accessibilitySelected属性为undefined模式。 |
 
 **返回值：**
 
@@ -270,7 +282,7 @@ accessibilityChecked(isCheck: boolean): T
 
 accessibilitySelected(isSelect: boolean): T
 
-无障碍节点是否选中的状态维护，用于支持单选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
+无障碍节点是否选中的状态维护，用于支持单选，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
 
 >**说明：**
 >
@@ -287,7 +299,7 @@ accessibilitySelected(isSelect: boolean): T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| isSelect | boolean | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)属性代表组件是多选模式，而accessibilitySelected属性代表组件是单选模式，组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。<br/>如使用当前接口设置组件为单选模式（true、false），则需要保证未使用accessibilityChecked函数设置属性为true或者false；<br/>如果已设置，需使用accessibilityChecked函数设置accessibilityChecked属性为undefined模式。 |
+| isSelect | boolean | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. [accessibilityChecked](#accessibilitychecked13)属性代表组件是多选模式，而accessibilitySelected属性代表组件是单选模式。组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。<br/>如使用当前接口设置组件为单选模式（true、false），则需要保证未使用accessibilityChecked函数设置属性为true或者false；<br/>如果已设置，需使用accessibilityChecked函数设置accessibilityChecked属性为undefined模式。 |
 
 **返回值：**
 
@@ -299,7 +311,7 @@ accessibilitySelected(isSelect: boolean): T
 
 accessibilityRole(role: AccessibilityRoleType): T
 
-设置无障碍组件类型，特定组件类型有特定的朗读方式，可以根据应用诉求，修改组件类型，用于控制无障碍模式下对组件的朗读方式和朗读内容。
+设置无障碍组件类型，不同组件类型有对应的朗读方式，可以根据应用诉求，修改组件类型，用于控制无障碍模式下对组件的朗读方式和朗读内容。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -311,7 +323,7 @@ accessibilityRole(role: AccessibilityRoleType): T
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| role | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 是   | 屏幕朗读播报的组件类型，如按钮、图表。具体类型可由开发者自定义。 |
+| role | [AccessibilityRoleType](#accessibilityroletype18枚举说明) | 是   | 屏幕朗读播报的组件类型，如按钮、图表。具体类型可由开发者根据需要选择。 |
 
 **返回值：**
 
@@ -373,8 +385,8 @@ accessibilityRole(role: AccessibilityRoleType): T
 | HYPERLINK | 39 | 超链接组件。 |
 | IMAGE | 40 | 图片组件。 |
 | IMAGE_ANIMATOR | 41 | 提供帧动画组件。 |
-| IMAGE_BITMAP | 42 | 存储canvas渲染的像素数据。 |
-| IMAGE_DATA | 43 | 存储canvas渲染的像素数据。 |
+| IMAGE_BITMAP | 42 | 可在画布上绘制的位图图像对象。 |
+| IMAGE_DATA | 43 | 存储画布区域的像素数据。 |
 | IMAGE_SPAN | 44 | 用于显示行内图片。 |
 | LABEL | 45 | 标签。 |
 | LINE | 46 | 线型。 |
@@ -407,7 +419,7 @@ accessibilityRole(role: AccessibilityRoleType): T
 | POLYGON | 73 | 多边形绘制组件。 |
 | POLYLINE | 74 | 折线绘制组件。 |
 | POPUP | 75 | 显示特定样式气泡。 |
-| PROGRESS | 76 | 进度条。 |
+| PROGRESS | 76 | 进度条组件。 |
 | QRCODE | 77 | 二维码。 |
 | RADIO | 78 | 单选框。 |
 | RATING | 79 | 提供在给定范围内选择评分的组件。 |
@@ -427,7 +439,7 @@ accessibilityRole(role: AccessibilityRoleType): T
 | SELECT | 93 | 下拉选择菜单组件。 |
 | SHAPE | 94 | 绘制组件的父组件。 |
 | SIDEBAR_CONTAINER | 95 | 提供侧边栏可以显示和隐藏的侧边栏容器。 |
-| SLIDER | 96 | 垂直方向的滑动条。 |
+| SLIDER | 96 | 滑动条组件。 |
 | SPAN | 97 | 用于显示行内文本的组件。 |
 | STACK | 98 | 堆叠容器。 |
 | STEPPER | 99 | 步骤导航器组件。 |
@@ -455,7 +467,7 @@ accessibilityRole(role: AccessibilityRoleType): T
 | WATER_FLOW | 121 | 瀑布流容器。 |
 | WEB | 122 | 加载网页组件。 |
 | XCOMPONENT | 123 | 自定义渲染。 |
-| ROLE_NONE | 124 | NULL。 |
+| ROLE_NONE | 124 | 不设置特定的无障碍组件类型，组件按照自身默认类型进行屏幕朗读播报。 |
 
 ## accessibilityNextFocusId<sup>18+</sup>
 
@@ -499,10 +511,10 @@ accessibilityNextFocusId(nextId: string, nextFocusParams: AccessibilityNextFocus
 
 **参数：**
 
-| 参数名 | 类型 | 只读 | 可选 | 说明                                                         |
-| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| nextId | string | 否 | 否   | 下一个被指定聚焦组件的[唯一标识id](ts-universal-attributes-component-id.md#id)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
-| nextFocusParams | [AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams) \| undefined | 否 | 否   | 无障碍下一个焦点处理的详细参数，用于配置是否在后代节点中查找可聚焦节点。<br/>取值为undefined时，不配置下一个焦点处理的详细参数，不在后代节点中查找焦点。 |
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| nextId | string | 是   | 下一个被指定聚焦组件的[唯一标识id](ts-universal-attributes-component-id.md#id)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
+| nextFocusParams | [AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams) \| undefined | 是   | 无障碍下一个焦点处理的详细参数，用于配置是否在后代节点中查找可聚焦节点。<br/>取值为undefined时，不配置下一个焦点处理的详细参数，不在后代节点中查找焦点。 |
 
 **返回值：**
 
@@ -514,7 +526,7 @@ accessibilityNextFocusId(nextId: string, nextFocusParams: AccessibilityNextFocus
 
 accessibilityDefaultFocus(focus: boolean): T
 
-为页面设置屏幕朗读初始焦点。
+为页面设置屏幕朗读初始焦点。屏幕朗读首次进入当前页面时，会将焦点定位到设置为true的组件，便于开发者引导用户优先关注页面核心内容。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -526,7 +538,7 @@ accessibilityDefaultFocus(focus: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| focus  | boolean | 是   | 为页面设置屏幕朗读初始焦点。值为true则表示该组件为当前页默认首焦点，值为false或其他值无效。 |
+| focus  | boolean | 是   | 为页面设置屏幕朗读初始焦点。值为true则表示该组件为当前页默认首焦点，值为false则不设置该组件为默认首焦点。 |
 
 **返回值：**
 
@@ -572,7 +584,7 @@ accessibilityUseSamePage(pageMode: AccessibilitySamePageMode): T
 
 | 名称        | 值   | 说明                                                         |
 | ----------- | ---- | ------------------------------------------------------------ |
-| SEMI_SILENT | 0    | 跨进程嵌入式显示的组件拉起来的进程的page事件中如果是首次加载页面或者该事件页面的根节点发送的page事件会被忽略。 |
+| SEMI_SILENT | 0    | 跨进程嵌入式显示的组件所启动的进程中，首次加载页面时发送的page事件，以及该页面根节点发送的page事件，将被忽略。 |
 | FULL_SILENT | 1    | 跨进程嵌入式显示的组件将忽略所有的page事件。                                      |
 
 ## accessibilityScrollTriggerable<sup>18+</sup>
@@ -592,7 +604,7 @@ accessibilityScrollTriggerable(isTriggerable: boolean): T
 <!--Table: auto; 10%; 10%; auto-->
 | 参数名         |  类型    | 必填 | 说明                                                         |
 | -------------- | ------- | ---- | ------------------------------------------------------------ |
-| isTriggerable  | boolean | 是   | 用于表示组件是否支持该能力。<br/>支持的值为：<br/>true：屏幕朗读焦点切换而容器内当前页面无可聚焦的组件时，需要自动滚动操作。<br/>false：屏幕朗读焦点切换而容器内当前页面无可聚焦的组件时，不需要自动滚动操作。<br/>undefined：还原默认值。<br/>默认值：true。<br/>**说明：**<br/>1. 该属性不影响原先无障碍节点属性[ElementAttributeValues](../../apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues)中的scrollable。<br/>2. 组件最终在屏幕朗读下的滚动逻辑由屏幕朗读最终根据该属性和组件是否支持scroll来决定。<br/>3. 该属性为通用属性，所有基础组件均可配置。建议配置的滚动组件类型，如[List](./ts-container-list.md)，[Grid](./ts-container-grid.md)，[Scroll](./ts-container-scroll.md)，[WaterFlow](./ts-container-waterflow.md)等。|
+| isTriggerable  | boolean | 是   | 用于表示组件是否支持该能力。<br/>支持的值为：<br/>true：屏幕朗读焦点切换而容器内当前页面无可聚焦的组件时，需要自动滚动操作。<br/>false：屏幕朗读焦点切换而容器内当前页面无可聚焦的组件时，不需要自动滚动操作。<br/>undefined：还原默认值。<br/>默认值：true。<br/>**说明：**<br/>1. 该属性不影响原先无障碍节点属性[ElementAttributeValues](../../apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues)中的scrollable。<br/>2. 组件在屏幕朗读下的滚动逻辑由屏幕朗读根据该属性和组件是否支持scroll来决定。<br/>3. 该属性为通用属性，所有基础组件均可配置。建议配置的滚动组件类型，如[List](./ts-container-list.md)、[Grid](./ts-container-grid.md)、[Scroll](./ts-container-scroll.md)、[WaterFlow](./ts-container-waterflow.md)等。|
 
 **返回值：**
 
@@ -604,11 +616,11 @@ accessibilityScrollTriggerable(isTriggerable: boolean): T
 
 accessibilityTextHint(value: string): T
 
-设置组件的文本提示信息，供无障碍辅助应用查询。
+设置组件的文本提示信息，仅在与车机交互的场景下供车机的无障碍服务监听并响应。
 
 >**说明：**
 >
-> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。该接口为组件通用属性设置，通过该属性接口进行配置的文本内容仅会被车机的无障碍服务所监听并响应，因此该接口仅在与车机交互的场景下生效<!--RP1--><!--RP1End-->。
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。该接口用于设置组件通用属性，通过该属性接口进行配置的文本内容仅会被车机的无障碍服务所监听并响应，因此该接口仅在与车机交互的场景下生效<!--RP1--><!--RP1End-->。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -620,7 +632,7 @@ accessibilityTextHint(value: string): T
 
 | 参数名         |  类型    | 必填 | 说明                                                         |
 | -------------- | ------- | ---- | ------------------------------------------------------------ |
-| value  | string | 是   | 组件的文本提示信息，供无障碍辅助应用查询。 |
+| value  | string | 是   | 组件的文本提示信息，仅在与车机交互的场景下供车机的无障碍服务监听并响应。 |
 
 **返回值：**
 
@@ -632,13 +644,13 @@ accessibilityTextHint(value: string): T
 
 accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel): T
 
-无障碍焦点绿框的绘制层级设置功能。
+设置无障碍焦点绿框的绘制层级。
 
 > **说明：**
 >
-> 1. 在聚焦节点层级绘制获焦无障碍绿框，默认使用该层级绘制，由于绘制组件数顺序以及图形绘制顺序，绘制绿框会被父组件或者[Z序控制](./ts-universal-attributes-z-order.md)更高的兄弟组件遮挡裁切。
+> 1. 在聚焦节点层级绘制获焦无障碍绿框，默认使用该层级绘制，由于组件的绘制顺序以及图形绘制顺序，绘制的绿框会被父组件或者[Z序控制](./ts-universal-attributes-z-order.md)更高的兄弟组件遮挡裁切。
 >
-> 2. 在[Z序控制](./ts-universal-attributes-z-order.md)顶层绘制绿框情况下，可以避免由于组件遮挡[overlay](./ts-universal-attributes-overlay.md#overlay)、裁切[clip](./ts-universal-attributes-sharp-clipping.md#clip12)导致无障碍绿框被裁切遮挡。但由于具备较高的绘制层级，如果需要交互过程中，需要遮挡当前获焦的组件，并且不希望显示无障碍绿框则不适合使用这种配置。
+> 2. 在[Z序控制](./ts-universal-attributes-z-order.md)顶层绘制绿框情况下，可以避免由于组件遮挡[overlay](./ts-universal-attributes-overlay.md#overlay)、裁切[clip](./ts-universal-attributes-sharp-clipping.md#clip12)导致无障碍绿框无法正常显示。但由于具备较高的绘制层级，如果在交互过程中需要遮挡当前获焦的组件，且不希望显示无障碍绿框，则不适合使用该配置。
 
 
 **卡片能力：** 从API version 19开始，该接口支持在ArkTS卡片中使用。
@@ -651,7 +663,7 @@ accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel): T
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| drawLevel | [FocusDrawLevel](ts-appendix-enums.md#focusdrawlevel19) | 是   | 无障碍绘制能力，默认情况下绘制聚焦节点本身。 |
+| drawLevel | [FocusDrawLevel](ts-appendix-enums.md#focusdrawlevel19) | 是   | 无障碍焦点绿框的绘制层级，用于控制绿框的绘制位置。默认情况下在聚焦节点层级绘制（即绘制聚焦节点本身）。可选值及含义参见[FocusDrawLevel](ts-appendix-enums.md#focusdrawlevel19)枚举，包括在聚焦节点层级绘制和在Z序控制顶层绘制两种模式。 |
 
 **返回值：**
 
@@ -687,7 +699,7 @@ accessibilityStateDescription(description: string | Resource | undefined): T
 
 accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 
-设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。
+设置组件无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -733,7 +745,7 @@ accessibilityCustomActions(actions: Array&lt;AccessibilityCustomAction&gt; | und
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前对象。 |
 
 ## 示例
 
@@ -758,7 +770,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("文本1")
+        Text('文本1')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         Text("文本2")
@@ -787,7 +799,7 @@ struct Index {
 // xxx.ets
 @Entry
 @Component
-struct Focus {
+struct Index {
   build() {
     Column({ space: 10 }) {
       Text('123456')
@@ -798,7 +810,7 @@ struct Focus {
       Button().accessibilityLevel("yes").accessibilityText("accessibility无text 读accessibility")
       Button("无accessibility有text 读text").accessibilityLevel("yes")
       Button()
-      Button('btn123').accessibilityText("有accessibility有text btn123").accessibilityLevel("yes")
+      Button('btn123').accessibilityText('有accessibility有text btn123').accessibilityLevel('yes')
       Button('btn123').accessibilityLevel("yes")
     }
     .accessibilityGroup(true, { accessibilityPreferred: true })
@@ -885,7 +897,7 @@ struct Index {
 
 ### 示例5（设置无障碍屏幕朗读滚动和焦点绿框绘制）
 
-该示例主要演示accessibilityScrollTriggerable设置无障碍节点是否支持屏幕朗读滚动、accessibilityFocusDrawLevel设置无障碍焦点绿框的绘制层级和accessibilityUseSamePage设置跨进程嵌入式显示的组件,如[EmbeddedComponent](ts-container-embedded-component.md)的accessibilityUseSamePage属性。
+该示例主要演示accessibilityScrollTriggerable设置无障碍节点是否支持屏幕朗读滚动、accessibilityFocusDrawLevel设置无障碍焦点绿框的绘制层级和accessibilityUseSamePage为跨进程嵌入式显示的组件（如[EmbeddedComponent](ts-container-embedded-component.md)）设置同page模式。
 
 ```ts
 // xxx.ets
@@ -1003,7 +1015,7 @@ struct Index {
   build() {
     Column({ space: 20 }) {
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
-        Text("是否开启功能")
+        Text('是否开启功能')
         Toggle({ type: ToggleType.Switch, isOn: false })
           .selectedColor('#007DFF')
           .switchPointColor('#FFFFFF')
@@ -1044,7 +1056,7 @@ struct Index {
 
 ### 示例7（设置无障碍组件状态播报信息）
 
-该示例主要通过[accessibilityStateDescription](ts-universal-attributes-accessibility.md#accessibilitystatedescription23)接口修改组件的状态播报。在开启无障碍功能后，组件发生聚焦或者点击后，屏幕朗读进行组件的状态信息播报。
+该示例主要通过[accessibilityStateDescription](#accessibilitystatedescription23)接口修改组件的状态播报。在开启无障碍功能后，组件发生聚焦或者点击后，屏幕朗读进行组件的状态信息播报。
 
 从API version 23开始，新增accessibilityStateDescription接口。
 

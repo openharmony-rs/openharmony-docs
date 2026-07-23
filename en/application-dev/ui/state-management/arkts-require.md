@@ -156,7 +156,7 @@ struct ParentPage {
 ```
 ![](figures/arkts-require-1.gif)
 
-Since API version 18, \@Require can decorate state variables decorated with \@State, \@Prop, or \@Provide) without requiring a local initial value. These variables can be used directly in the component without compilation errors.
+Since API version 18, \@Require can decorate state variables decorated with \@State, \@Prop, or \@Provide without requiring a local initial value. These variables can be used directly in the component without compilation errors.
 
 <!-- @[page_one_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/PageOne.ets) -->
 

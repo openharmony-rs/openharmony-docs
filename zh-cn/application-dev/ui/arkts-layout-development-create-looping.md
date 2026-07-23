@@ -25,33 +25,33 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 - loop为true
 
-<!-- @[loop_with_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperLoop.ets) -->
+<!-- @[loop_with_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperLoop.ets) -->   
 
 ``` TypeScript
-  Swiper() {
-    Text('0')
-      .width('90%')
-      .height('100%')
-      .backgroundColor(Color.Gray)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
+Swiper() {
+  Text('0')
+    .width('90%')
+    .height('100%')
+    .backgroundColor(Color.Gray)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
 
-    Text('1')
-      .width('90%')
-      .height('100%')
-      .backgroundColor(Color.Green)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
+  Text('1')
+    .width('90%')
+    .height('100%')
+    .backgroundColor(Color.Green)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
 
-    Text('2')
-      .width('90%')
-      .height('100%')
-      .backgroundColor(Color.Pink)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-  }
-// ···
-  .loop(true)
+  Text('2')
+    .width('90%')
+    .height('100%')
+    .backgroundColor(Color.Pink)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
+}
+// ...
+.loop(true)
 ```
 
 ![loop_true](figures/loop_true.gif)
@@ -339,39 +339,38 @@ Swiper(
 
 Swiper支持在一个页面内同时显示多个子组件，通过[displayCount](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displaycount8)属性设置。
 
-<!-- @[each_page_displays_multiple_subpages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperMultiPage.ets) -->
+<!-- @[each_page_displays_multiple_subpages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperMultiPage.ets) -->  
 
 ``` TypeScript
-  Swiper() {
-    Text('0')
-      .width(250)
-      .height(250)
-      .backgroundColor(Color.Gray)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-    Text('1')
-      .width(250)
-      .height(250)
-      .backgroundColor(Color.Green)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-    Text('2')
-      .width(250)
-      .height(250)
-      .backgroundColor(Color.Pink)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-    Text('3')
-      .width(250)
-      .height(250)
-      .backgroundColor(Color.Yellow)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-  }
-// ···
-  .indicator(true)
-  .displayCount(2)
+Swiper() {
+  Text('0')
+    .width(250)
+    .height(250)
+    .backgroundColor(Color.Gray)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
+  Text('1')
+    .width(250)
+    .height(250)
+    .backgroundColor(Color.Green)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
+  Text('2')
+    .width(250)
+    .height(250)
+    .backgroundColor(Color.Pink)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
+  Text('3')
+    .width(250)
+    .height(250)
+    .backgroundColor(Color.Yellow)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
 }
+// ...
+.indicator(true)
+.displayCount(2)
 ```
 
 ![two](figures/two.PNG)

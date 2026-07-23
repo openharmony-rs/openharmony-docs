@@ -1122,7 +1122,7 @@ Calculates the hash value of a file. This API uses a promise to return the resul
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [hash.write](js-apis-file-hash.md#hashhash) instead.
+> This API is deprecated since API version 9. Use [hash.hash](js-apis-file-hash.md#hashhash) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1160,7 +1160,7 @@ Calculates the hash value of a file. This API uses an asynchronous callback to r
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [hash.write](js-apis-file-hash.md#hashhash-1) instead.
+> This API is deprecated since API version 9. Use [hash.hash](js-apis-file-hash.md#hashhash-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3609,7 +3609,7 @@ Reads data from a stream file. This API uses an asynchronous callback to return 
   | Name     | Type                                      | Mandatory  | Description                                      |
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | buffer   | ArrayBuffer                              | Yes   | Buffer used to store the file read.                             |
-  | options  | Object                                   | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer relative to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file, in bytes. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
+  | options  | Object                                   | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer relative to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position in the file to read from, in bytes. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
   | callback | AsyncCallback&lt;[ReadOut](#readout)&gt; | Yes   | Callback invoked when data is read asynchronously from the stream file.                        |
 
 **Example**

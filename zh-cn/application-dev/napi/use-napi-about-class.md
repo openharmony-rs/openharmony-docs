@@ -1,10 +1,10 @@
 # 使用Node-API进行class相关开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -132,6 +132,7 @@ hilog.info(0x0000, 'Node-API', 'napi_new_instance %{public}s', JSON.stringify(ob
 > **说明：**
 >
 > 参数js_object不为object类型或function类型时返回napi_object_expected。
+> 如果封装中关联有finalize回调，本接口将在移除封装前调用它。
 
 cpp部分代码
 

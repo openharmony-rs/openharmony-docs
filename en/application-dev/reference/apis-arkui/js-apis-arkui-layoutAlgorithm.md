@@ -143,7 +143,7 @@ Constructs the horizontal linear layout algorithm class.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| option | [RowLayoutAlgorithmOptions](#rowlayoutalgorithmoptions)| No| Input parameters for constructing the horizontal linear layout algorithm, which are used to set the spacing, main axis alignment method, cross axis alignment method, and main axis arrangement direction of the layout algorithm.|
+| option | [RowLayoutAlgorithmOptions](#rowlayoutalgorithmoptions) | No| Input parameters for constructing the horizontal linear layout algorithm, which are used to set the spacing, main axis alignment method, cross axis alignment method, and main axis arrangement direction of the layout algorithm.|
 
 **Example**
 
@@ -213,7 +213,7 @@ Constructs the vertical linear layout algorithm class.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| option | [ColumnLayoutAlgorithmOptions](#columnlayoutalgorithmoptions)| No| Input parameters for constructing the vertical linear layout algorithm, which are used to set the spacing, main axis alignment method, cross axis alignment method, and main axis arrangement direction of the layout algorithm.|
+| option | [ColumnLayoutAlgorithmOptions](#columnlayoutalgorithmoptions) | No| Input parameters for constructing the vertical linear layout algorithm, which are used to set the spacing, main axis alignment method, cross axis alignment method, and main axis arrangement direction of the layout algorithm.|
 
 **Example**
 
@@ -280,7 +280,7 @@ Constructs the stack layout algorithm class.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| option | [StackLayoutAlgorithmOptions](#stacklayoutalgorithmoptions)| No| Input parameters for constructing the stack layout algorithm, which are used to set the nine-box grid alignment mode.|
+| option | [StackLayoutAlgorithmOptions](#stacklayoutalgorithmoptions) | No| Input parameters for constructing the stack layout algorithm, which are used to set the nine-box grid alignment mode.|
 
 **Example**
 
@@ -342,7 +342,7 @@ Constructs the grid layout algorithm class.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| option | [GridLayoutAlgorithmOptions](#gridlayoutalgorithmoptions)| No| Input parameters for constructing the grid layout algorithm, which are used to set the number of columns, column spacing, and row spacing of the grid layout.|
+| option | [GridLayoutAlgorithmOptions](#gridlayoutalgorithmoptions) | No| Input parameters for constructing the grid layout algorithm, which are used to set the number of columns, column spacing, and row spacing of the grid layout.|
 
 **Example**
 

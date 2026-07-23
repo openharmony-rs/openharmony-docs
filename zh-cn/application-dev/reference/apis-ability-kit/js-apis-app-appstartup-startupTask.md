@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供[应用启动框架](../../application-models/app-startup.md)任务的相关能力。
+本模块提供[应用启动框架](../../application-models/app-startup.md)任务的相关能力。开发者可继承StartupTask创建启动任务，并通过init执行初始化逻辑，通过onDependencyCompleted感知依赖任务完成。
 
 > **说明：**
 >
@@ -84,7 +84,7 @@ init(context: AbilityStageContext): Promise\<Object \| void\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<Object \| void\> | Promise对象，返回启动任务执行结果对象。 |
+| Promise\<Object \| void\> | Promise对象，用于返回启动任务执行结果对象或void。 |
 
 **示例：**
 
@@ -100,7 +100,7 @@ export default class StartupTask_001 extends StartupTask {
   async init(context: common.AbilityStageContext) {
     hilog.info(0x0000, 'testTag', 'StartupTask_001 init.');
     // ...
-    
+
     return "StartupTask_001";
   }
 

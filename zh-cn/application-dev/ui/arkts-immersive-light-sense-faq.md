@@ -108,7 +108,7 @@ new uiMaterial.ImmersiveMaterial({
 
 **可能原因**
 
-沉浸式系统材质的效果会根据设备算力档位自动适配。在高算力和中算力设备上，影响材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)效果和阴影效果；在低算力设备上，仅影响背景色、边框颜色、边框宽度和阴影效果。
+沉浸式系统材质的效果会根据设备算力档位自动适配。在高算力和中算力设备上，影响材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)效果和阴影效果；在低算力设备上，仅影响背景色、边框颜色、边框宽度和阴影效果。此外，材质样式[style](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)和自动反色[colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数仅在高算力和中算力设备上生效，在低算力设备上设置这两个参数不会产生视觉效果差异。
 
 **解决措施**
 
@@ -126,7 +126,7 @@ new uiMaterial.ImmersiveMaterial({
 
 - 材质样式需要为THIN或ULTRA_THIN，在REGULAR、THICK、ULTRA_THICK样式下不生效。
 - 系统沉浸光感的强弱配置影响反色触发阈值，材质越薄、系统沉浸光感设置越强，越容易触发自动反色。
-- 自动反色仅对通过资源接口设置的颜色值生效，包括[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor)、[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件的[fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor)等。使用代码中硬编码的颜色值（如`Color.White`、`'#FFFFFFFF'`）不会触发自动反色。
+- 自动反色仅对通过资源接口设置的颜色值生效，包括[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor)、[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件的[fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor)、TextInput、TextArea、Chip、ChipGroup、SegmentButton、Swiper等组件的颜色属性，完整生效属性清单请参见[colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数说明。使用代码中硬编码的颜色值（如`Color.White`、`'#FFFFFFFF'`）不会触发自动反色。
 
 **解决措施**
 

@@ -52,7 +52,7 @@ import { formInfo } from '@kit.FormKit';
 | TEMPLATE_FORM_DETAIL_ID<sup>23+</sup>    | 'ohos.extra.param.key.template_form_detail_id'   | 模板卡片id。 <br>**系统接口：** 此接口为系统接口。  |
 | TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | 模板卡片数据。 <br>**系统接口：** 此接口为系统接口。  |
 | TEMPLATE_FORM_DISPLAY_NAME<sup>23+</sup>    | 'ohos.extra.param.key.template_form_display_name'   | 模板卡片显示名称。 <br>**系统接口：** 此接口为系统接口。  |
-| TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | 模板卡片描述　　。 <br>**系统接口：** 此接口为系统接口。  |
+| TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | 模板卡片描述。 <br>**系统接口：** 此接口为系统接口。  |
 | FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | 卡片字体大小缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
 | FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | 卡片字重缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
 
@@ -216,7 +216,7 @@ import { formInfo } from '@kit.FormKit';
 |-----|-----|----|-----|--------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName | string | 否  | 是   | 趣味交互场景 extensionAbility 名称，默认为空。 |
 | targetBundleName  | string | 否  | 否   | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。        |
-| subBundleName  | string | 否  | 否   | 趣味交互场景趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。 |
+| subBundleName  | string | 否  | 否   | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。 |
 | keepStateDuration  | number | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为(0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。 |
 
 ## SceneAnimationParams<sup>20+</sup>
@@ -253,7 +253,7 @@ type GetFormRectInfoCallback = (formId: string) => Promise&lt;formInfo.Rect&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。 |
 
 **错误码：**
 
@@ -271,7 +271,7 @@ import { formInfo } from '@kit.FormKit';
 // 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
 let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
   (formId: string): Promise<formInfo.Rect> => {
-    return new Promise<formInfo.Rect>((resolve: Function) => {
+    return new Promise<formInfo.Rect>((resolve: (value: formInfo.Rect) => void) => {
       console.info(`formId is ${formId}`);
       let formRect: formInfo.Rect = {
         left: 0,

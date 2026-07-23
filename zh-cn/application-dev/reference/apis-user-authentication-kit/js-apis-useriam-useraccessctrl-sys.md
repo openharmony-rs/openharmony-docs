@@ -7,14 +7,12 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
 **userAccessCtrl**模块是OpenHarmony用户身份认证体系（UserIAM）的核心组件，专门用于认证令牌的验证和管理。该模块提供了验证认证令牌（AuthToken）的API，能够解析和验证用户身份认证结果，并返回详细的认证信息。
 
 该模块主要用于以下场景：
-- 系统级应用需要验证用户身份认证令牌的有效性。
-- 需要获取认证令牌的详细信息（如认证类型、信任级别、用户ID等）。
-- 需要基于认证结果进行访问控制决策的场景。
+- 系统级应用需要验证用户身份认证令牌的有效性，确保访问的安全性。
+- 需要获取认证令牌的详细信息（如认证类型、信任级别、用户ID等），用于精确识别用户身份。
+- 需要基于认证结果进行访问控制决策的场景，实现精细化权限管理。
 
 
 > **说明：**
@@ -55,9 +53,9 @@ let allowableDuration = 3600000; // 1小时
 let parsedToken = await userAccessCtrl.verifyAuthToken(authToken, allowableDuration);
 
 // 4. 根据返回的AuthToken信息进行后续处理。
-// - 检查authTrustLevel确定信任级别。
+// - 检查authTrustLevel确定认证信任等级。
 // - 检查authType确定认证方式。
-// - 检查tokenType确定令牌类型。
+// - 检查tokenType确定认证令牌类型。
 // - 使用userId进行用户相关操作。
 ```
 
@@ -83,7 +81,7 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 ## AuthToken
 
-认证令牌数据。表示校验通过后返回解析的AuthToken数据结果，包含认证的详细信息，如挑战值、认证信任等级、认证类型、用户ID等。
+认证令牌数据。表示校验通过后返回解析后的AuthToken数据，包含认证的详细信息，如挑战值、认证信任等级、认证类型、用户ID等。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -92,10 +90,10 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 | 名称           | 类型                               | 只读 | 可选 | 说明                                       |
 | -------------- | ---------------------------------- | ----- | ----- |------------------------------------------------------------ |
 | challenge | Uint8Array | 否 | 否 | 认证随机挑战值。用于防重放攻击，认证时传入的挑战值会被包含在AuthToken中，业务可通过验证此字段确认认证结果的有效性。|
-| authTrustLevel | [userAuth.AuthTrustLevel](js-apis-useriam-userauth.md#authtrustlevel8) | 否 | 否 | 认证信任等级。表示本次认证达到的安全强度等级，值为ATL1(10000)、ATL2(20000)、ATL3(30000)或ATL4(40000)。等级越高，表示活体检测能力越强、身份识别越精确。|
-| authType | [userAuth.UserAuthType](js-apis-useriam-userauth.md#userauthtype8) | 否 | 否  | 身份认证的凭据类型。表示本次认证使用的认证方式，如PIN(1)、FACE(2)、FINGERPRINT(4)等。|
+| authTrustLevel | [userAuth.AuthTrustLevel](js-apis-useriam-userauth.md#authtrustlevel8) | 否 | 否 | 认证信任等级。表示本次认证达到的安全强度等级，值为ATL1（10000）、ATL2（20000）、ATL3（30000）或ATL4（40000）。等级越高，表示活体检测能力越强、身份识别越精确。|
+| authType | [userAuth.UserAuthType](js-apis-useriam-userauth.md#userauthtype8) | 否 | 否  | 身份认证的凭据类型。表示本次认证使用的认证方式，如PIN（1）、FACE（2）、FINGERPRINT（4）等。|
 | tokenType | [AuthTokenType](#authtokentype) | 否 | 否 | 认证令牌类型。标识令牌的签发来源，如本地认证、复用认证或协同认证。|
-| userId | number | 否 | 否  | 用户ID。表示完成认证的用户标识，为大于等于0的正整数。|
+| userId | number | 否 | 否  | 用户ID。表示完成认证的用户标识，取值为非负整数。|
 | timeInterval | bigint | 否  | 否  | AuthToken签发后经过的时间。自AuthToken签发至当前的时间间隔，单位为毫秒。|
 | secureUid | bigint    | 否  | 是  | 安全用户ID。系统内部用于标识用户的安全标识，仅在特定认证场景下返回。|
 | enrolledId | bigint   | 否  | 是  | 凭据注册ID。enrolledState中credentialDigest的原始值，反映了凭据的变更情况。|
@@ -107,6 +105,8 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<AuthToken>
 
 验证认证令牌。该接口用于校验AuthToken的有效性，包括完整性校验和时效性校验，校验通过后返回解析后的AuthToken详细信息。使用Promise异步回调。
+
+完整性校验通过验证AuthToken的数字签名确保令牌未被篡改；时效性校验通过比对AuthToken的签发时间与当前时间，并结合allowableDuration参数判断令牌是否在有效期内。
 
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
@@ -154,14 +154,14 @@ try {
   const len: number = 16;
   let randData: Uint8Array | null = null;
   let retryCount = 0;
-  while(retryCount < 3){
+  while (retryCount < 3) {
     randData = rand?.generateRandomSync(len)?.data;
-    if(randData){
+    if (randData) {
       break;
     }
     retryCount++;
   }
-  if(!randData){
+  if (!randData) {
     return;
   }
   const authParam: userAuth.AuthParam = {
@@ -177,7 +177,7 @@ try {
   console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
-    onResult (result) {
+    onResult: (result) => {
         if (!result.token) {
             console.error('userAuthInstance callback result.token is null');
             return;

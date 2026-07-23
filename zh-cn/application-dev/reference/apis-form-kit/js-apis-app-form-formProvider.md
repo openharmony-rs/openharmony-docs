@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
+formProvider模块提供了获取卡片信息、更新卡片、设置卡片刷新时间等能力。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { formProvider } from '@kit.FormKit';
 
 setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定卡片的下一次更新时间，使用callback异步回调。
+设置指定卡片的下一次刷新时间，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -33,7 +33,7 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
+| minute | number |  是   | 指定卡片多久之后刷新，取值范围：大于等于5，单位：min。     |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -61,13 +61,13 @@ let formId: string = '12400633174999288'; // 表示卡片formId，根据实际fo
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider setFormNextRefreshTime success`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -75,7 +75,7 @@ try {
 
 setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
-设置指定卡片的下一次更新时间，使用Promise异步回调。
+设置指定卡片的下一次刷新时间，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -86,7 +86,7 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
+| minute | number | 是   | 指定卡片多久之后刷新，取值范围：大于等于5，单位：min。     |
 
 **返回值：**
 
@@ -120,10 +120,10 @@ try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info(`formProvider setFormNextRefreshTime success`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -177,13 +177,13 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.updateForm(formId, obj, (error: BusinessError) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider updateForm success`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -243,10 +243,10 @@ try {
   formProvider.updateForm(formId, obj).then(() => {
     console.info(`formProvider updateForm success`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -286,13 +286,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.getFormsInfo((error, data) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 ## formProvider.getFormsInfo
@@ -336,13 +336,13 @@ const filter: formInfo.FormInfoFilter = {
 try {
   formProvider.getFormsInfo(filter, (error, data) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -393,10 +393,10 @@ try {
   formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
     console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -584,7 +584,7 @@ const want: Want = {
 try {
   formProvider.openFormManager(want);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -598,7 +598,7 @@ getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
 
 > **说明：**
 >
-> 该字段从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfoById](#formprovidergetpublishedrunningforminfobyid20)替代。
+> 该接口从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfoById](#formprovidergetpublishedrunningforminfobyid20)替代。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -635,10 +635,10 @@ try {
   formProvider.getPublishedFormInfoById(formId).then((data: formInfo.FormInfo) => {
     console.info(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -652,7 +652,7 @@ getPublishedFormInfos(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 > **说明：**
 >
-> 该字段从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfos](#formprovidergetpublishedrunningforminfos20)替代。
+> 该接口从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfos](#formprovidergetpublishedrunningforminfos20)替代。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -682,10 +682,10 @@ try {
   formProvider.getPublishedFormInfos().then((data: formInfo.FormInfo[]) => {
     console.info(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -709,7 +709,7 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 
 | 参数名 | 类型                                                                 | 必填 | 说明        |
 | ------ |--------------------------------------------------------------------| ---- |-----------|
-| formId | string                                                             | 是 | 卡片id标识。|
+| formId | string                                                             | 是 | 卡片标识。|
 | overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 是 | 动效请求参数信息。|
 
 **返回值：**
@@ -755,10 +755,10 @@ try {
   formProvider.requestOverflow(formId, overflowInfo).then(() => {
     console.info('requestOverflow succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -778,7 +778,7 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。|
+| formId | string | 是 | 卡片标识。|
 
 **返回值：**
 
@@ -813,10 +813,10 @@ try {
   formProvider.cancelOverflow(formId).then(() => {
     console.info('cancelOverflow succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -834,7 +834,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 参数名 | 类型         | 必填 | 说明        |
 | ------ |-------------| ---- |-----------|
-| formId | string      | 是 | 卡片id标识。|
+| formId | string      | 是 | 卡片标识。|
 
 **返回值：**
 
@@ -867,9 +867,11 @@ let formId: string = '12400633174999288'; // 表示卡片formId，根据实际fo
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {
     console.info(`getFormRect succeed, data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -963,10 +965,10 @@ try {
   formProvider.getPublishedRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
     console.info(`formProvider getPublishedRunningFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1022,10 +1024,10 @@ try {
   formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
     console.info(`reloadForms success, reload number: ${reloadNum}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 ## formProvider.reloadAllForms<sup>22+</sup>
@@ -1073,9 +1075,9 @@ try {
   formProvider.reloadAllForms(context).then((reloadNum: number) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```

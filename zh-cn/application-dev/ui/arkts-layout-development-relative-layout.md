@@ -183,7 +183,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             left: { anchor: '__container__', align: HorizontalAlign.Start }
           })
           .id('row1')
-
+  
           Row() {
             Text('row2')
           }
@@ -196,7 +196,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             bottom: { anchor: 'row1', align: VerticalAlign.Center },
           })
           .id('row2')
-
+  
           Row() {
             Text('row3')
           }
@@ -209,7 +209,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             right: { anchor: 'row2', align: HorizontalAlign.Start }
           })
           .id('row3')
-
+  
           Row() {
             Text('row4')
           }.justifyContent(FlexAlign.Center)
@@ -381,7 +381,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   struct RelativeContainerExample {
     build() {
       Row() {
-
+  
         RelativeContainer() {
           Row()
             .width(100)
@@ -392,7 +392,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
               left: { anchor: '__container__', align: HorizontalAlign.Start }
             })
             .id('row1')
-
+  
           Column()
             .width('50%')
             .height(30)
@@ -402,7 +402,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
               left: { anchor: '__container__', align: HorizontalAlign.Center }
             })
             .id('row2')
-
+  
           Flex({ direction: FlexDirection.Row }) {
             Text('1').width('20%').height(50).backgroundColor('#0a59f7')
             Text('2').width('20%').height(50).backgroundColor('#2ca9e0')
@@ -418,7 +418,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             right: { anchor: 'row2', align: HorizontalAlign.Center }
           })
           .id('row3')
-
+  
           Stack({ alignContent: Alignment.Bottom }) {
             Text('First child, show in bottom')
               .width('90%')
@@ -435,7 +435,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             right: { anchor: 'row3', align: HorizontalAlign.End }
           })
           .id('row4')
-
+  
         }
         .width(300).height(300)
         .margin({ left: 50 })

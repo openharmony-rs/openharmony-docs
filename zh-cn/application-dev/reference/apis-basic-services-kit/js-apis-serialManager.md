@@ -7,21 +7,23 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供串口管理功能，包括打开和关闭设备的串口、写入和读取数据、设置和获取串口的配置参数、权限管理等。
+本模块主要用于管理串口设备的访问和通信，提供打开和关闭设备、读写数据、配置参数、权限管理等功能，解决了应用与串口设备通信时的权限申请、设备配置、数据传输等问题，使用该模块可以简化串口设备访问流程，提高开发效率。
 
 **典型使用流程：**
-1. 调用getPortList获取串口列表
-2. 调用requestSerialRight请求权限
-3. 调用open打开串口
-4. 调用getAttribute/setAttribute配置串口参数（可选）
-5. 调用read/write或readSync/writeSync进行数据读写
-6. 调用close关闭串口
-7. 如需移除权限，调用cancelSerialRight
+```mermaid
+graph LR
+    A[调用getPortList获取串口列表] --> B[调用requestSerialRight请求权限]
+    B --> C[调用open打开串口]
+    C --> D[调用getAttribute/setAttribute配置串口参数（可选）]
+    D --> E[调用read/write或readSync/writeSync进行数据读写]
+    E --> F[调用close关闭串口]
+    F --> G[如需移除权限，调用cancelSerialRight]
+```
 
 **使用场景**：
-- 嵌入式设备通信
-- 工业设备调试
-- 串口外设数据交互
+- **嵌入式设备通信**：与各类嵌入式设备进行数据交互，如传感器数据采集、设备状态监控等
+- **工业设备调试**：连接工业控制设备，进行参数配置、命令下发、日志输出等调试操作
+- **串口外设数据交互**：与串口外设进行数据通信，如打印机、扫描仪、调制解调器等设备的数据收发
 
 > **说明：**
 >
@@ -45,15 +47,11 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 
 | 类型                                        | 说明          |
 |-------------------------------------------|-------------|
-| Readonly&lt;[SerialPort](#serialport)&gt;[] | 串口信息列表。 |
+| Readonly&lt;[SerialPort](#serialport)&gt;[] | 返回可用串口设备的列表，每个元素包含串口的端口号和设备名称等属性信息。可用于获取当前系统中的所有串口设备，以便用户选择需要进行操作的串口。 |
 
-**错误码:**
+**错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 31400001 | Serial port management exception.                             |
 
 **示例：**
 
@@ -67,7 +65,7 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口设备清单 
-function getPortList() {
+function getPortListExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -81,7 +79,10 @@ function getPortList() {
 
 hasSerialRight(portId: number): boolean
 
-检查应用程序是否具有访问串口设备的权限。应用退出后再拉起时，需要重新申请授权。通常在打开串口设备、执行串口操作前调用此接口检查权限状态。
+检查应用是否具有访问串口设备的权限。应用退出后再拉起时，需要重新申请授权。通常在打开串口设备、执行串口操作前调用此接口检查权限状态。
+
+**前置条件：**
+- 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -89,26 +90,24 @@ hasSerialRight(portId: number): boolean
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，传入无效值时返回错误码31400003。 |
 
 **返回值：**
 
-| 返回值（类型：boolean） | 说明               |
+| 类型      | 说明               |
 |---------|------------------|
-| true | 表示已授权。 |
-| false | 表示未授权。 |
+| boolean | true表示已授权，false表示未授权。 |
 
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 14400005 | Database operation exception. | 数据库操作异常。请尝试重新调用接口。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：程序出现异常导致进程退出。处理步骤：检查是否连接设备，重新通过串口列表获取端口号。 |
-| 31400003 | PortId does not exist. | 端口号不存在。可能原因：设备连接异常导致原有端口号失效。处理步骤：插拔设备，再次尝试打开。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14400005 | Database operation exception. Possible cause: Invalid portId provided. Solution: Call getPortList to get valid portIds first. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400003 | PortId does not exist. |
 
 **示例：**
 
@@ -122,13 +121,14 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function hasSerialRight() {
+function hasSerialRightExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('portList: ', JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('portList is empty');
     return;
   }
+  let portId: number = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (serialManager.hasSerialRight(portId)) {
@@ -145,13 +145,16 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 请求应用程序访问串口设备的权限。应用退出时自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。通常在首次访问串口设备前、检测到无权限时调用此接口向用户申请授权。
 
+**前置条件：**
+- 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
+
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
 
 **返回值：**
 
@@ -163,12 +166,12 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 14400005 | Database operation exception. | 数据库操作异常。请尝试重新调用接口。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：程序出现异常导致进程退出。处理步骤：检查是否连接设备，重新通过串口列表获取端口号。 |
-| 31400003 | PortId does not exist. | 端口号不存在。可能原因：设备连接异常导致原有端口号失效。处理步骤：插拔设备，再次尝试打开。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14400005 | Database operation exception. Possible cause: Invalid portId provided. Solution: Call getPortList to get valid portIds first. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400003 | PortId does not exist. |
 
 **示例：**
 
@@ -180,9 +183,10 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function requestSerialRight() {
+function requestSerialRightExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -201,6 +205,8 @@ function requestSerialRight() {
       } else {
         console.info('grant permission successfully');
       }
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to request serial right. Code: ${err.code}, message: ${err.message}`);
     });
   }
 }
@@ -226,25 +232,19 @@ open(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| void | 无返回值。打开串口设备成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
 
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：程序出现异常导致进程退出。处理步骤：检查是否连接设备，重新通过串口列表获取端口号。 |
-| 31400002 | Access denied. Call requestSerialRight to request user authorization first. | 没有串口设备访问权限。可能原因：没有申请串口设备访问权限。处理步骤：调用requestSerialRight申请访问权限。 |
-| 31400003 | PortId does not exist. | 端口号不存在。可能原因：设备连接异常导致原有端口号失效。处理步骤：插拔设备，再次尝试打开。 |
-| 31400004 | The serial port device is occupied. | 串口设备已被占用。可能原因：重复打开串口设备。处理步骤：插拔设备，再次尝试打开。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first. |
+| 31400003 | PortId does not exist. |
+| 31400004 | The serial port device is occupied. |
 
 **示例：**
 
@@ -256,9 +256,10 @@ open(portId: number): void
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function open() {
+async function openExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -269,15 +270,14 @@ function open() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -285,7 +285,8 @@ function open() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 关闭串口
@@ -293,7 +294,8 @@ function open() {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('close usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -315,7 +317,7 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
 
 **返回值：**
 
@@ -327,12 +329,12 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
 
 **示例：**
 
@@ -344,9 +346,10 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function getAttribute() {
+async function getAttributeExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -357,15 +360,14 @@ function getAttribute() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -373,8 +375,8 @@ function getAttribute() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
-    return;
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 获取串口配置
@@ -386,7 +388,8 @@ function getAttribute() {
       console.info('getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
     }
   } catch (error) {
-    console.error('getAttribute usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to get attribute. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 关闭串口
@@ -394,7 +397,8 @@ function getAttribute() {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('close usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -403,7 +407,7 @@ function getAttribute() {
 
 setAttribute(portId: number, attribute: SerialAttribute): void
 
-设置串口的配置参数。如果未调用该方法，使用默认配置参数(波特率:9600bps;数据位:8;校验位:0;停止位:1)。需先调用[open](#serialmanageropen)打开串口后才能设置配置。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
+设置指定串口的配置参数。需先调用[open](#serialmanageropen)打开串口后才能设置配置。配置参数对象包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认None）、停止位（stopBits，可选，默认1）等配置项。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
@@ -416,19 +420,19 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 
 | 参数名       | 类型                                  | 必填 | 说明          |
 |-----------|-------------------------------------|----|-------------|
-| portId    | number                              | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。 |
-| attribute | [SerialAttribute](#serialattribute) | 是  | 串口配置参数对象，包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认None）、停止位（stopBits，可选，默认1）等配置项。     |
+| portId    | number                              | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| attribute | [SerialAttribute](#serialattribute) | 是  | 串口配置参数对象，包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认None）、停止位（stopBits，可选，默认1）。     |
 
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。可能原因：设备连接异常导致原有端口号失效。处理步骤：插拔设备，再次尝试打开。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
 
 **示例：**
 
@@ -440,9 +444,10 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function setAttribute() {
+async function setAttributeExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -453,15 +458,14 @@ function setAttribute() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -469,8 +473,8 @@ function setAttribute() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
-    return;
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 设置串口配置
@@ -484,7 +488,8 @@ function setAttribute() {
     serialManager.setAttribute(portId, attribute);
     console.info('setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
   } catch (error) {
-    console.error('setAttribute usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to set attribute. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 关闭串口
@@ -492,7 +497,8 @@ function setAttribute() {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('close usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -514,9 +520,10 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。      |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
+
 **返回值：**
 
 | 类型                    | 说明             |
@@ -527,14 +534,14 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
-| 31400006 | Data transfer timed out. | 数据传输超时。可能原因：1. 数据接收/发送时间超过设定的timeout值；2. 设备响应慢。建议：增加timeout参数值，或检查设备连接状态。 |
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. | IO异常。可能原因：1. 传输任务被异常取消；2. 用户接收的单次传输数据量超过了设置的缓冲区大小。处理步骤：设置符合传输场景要求的缓冲区大小后，重新启动传输任务。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
+| 31400006 | Data transfer timed out. |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -546,9 +553,10 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function read() {
+async function readExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -559,15 +567,14 @@ function read() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -575,23 +582,24 @@ function read() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 异步读取
   let readBuffer: Uint8Array = new Uint8Array(64);
-  serialManager.read(portId, readBuffer, 2000).then((size: number) => {
+  let size: number = await serialManager.read(portId, readBuffer, 2000);
+  if (size > 0) {
     console.info('read usbSerial success, readBuffer: ' + readBuffer.toString());
-  }).catch((error: Error) => {
-    console.error('read usbSerial error, ' + JSON.stringify(error));
-  })
+  }
 
   // 关闭串口
   try {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('close usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -620,9 +628,9 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。|
+| portId  | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。取值范围≥0，默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
 
 **返回值：**
 
@@ -634,14 +642,14 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
-| 31400006 | Data transfer timed out. | 数据传输超时。可能原因：1. 数据接收/发送时间超过设定的timeout值；2. 设备响应慢。建议：增加timeout参数值，或检查设备连接状态。 |
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. | IO异常。可能原因：1. 传输任务被异常取消；2. 用户接收的单次传输数据量超过了设置的缓冲区大小。处理步骤：设置符合传输场景要求的缓冲区大小后，重新启动传输任务。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
+| 31400006 | Data transfer timed out. |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -653,9 +661,10 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function readSync() {
+async function readSyncExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -666,15 +675,14 @@ function readSync() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -682,7 +690,8 @@ function readSync() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 同步读取
@@ -691,7 +700,8 @@ function readSync() {
     serialManager.readSync(portId, readSyncBuffer, 2000);
     console.info('readSync usbSerial success, readSyncBuffer: ' + readSyncBuffer.toString());
   } catch (error) {
-    console.error('readSync usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to readSync usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 关闭串口
@@ -699,7 +709,8 @@ function readSync() {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('close usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -721,9 +732,9 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。      |
+| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。|
-| timeout | number     | 否  |  超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。建议取值范围≥0，具体值需根据设备写入速度合理设置。传入负数时抛出参数错误异常。|
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。|
 
 **返回值：**
 
@@ -735,14 +746,14 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
-| 31400006 | Data transfer timed out. | 数据传输超时。可能原因：1. 数据接收/发送时间超过设定的timeout值；2. 设备响应慢。建议：增加timeout参数值，或检查设备连接状态。|
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. | IO异常。可能原因：1. 传输任务被异常取消；2. 用户接收的单次传输数据量超过了设置的缓冲区大小。处理步骤：设置符合传输场景要求的缓冲区大小后，重新启动传输任务。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
+| 31400006 | Data transfer timed out. |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -755,9 +766,10 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function write() {
+async function writeExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -768,15 +780,14 @@ function write() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -784,23 +795,24 @@ function write() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 异步写入
   let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-  serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
+  let size: number = await serialManager.write(portId, writeBuffer, 2000);
+  if (size > 0) {
     console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
-  }).catch((error: Error) => {
-    console.error('write usbSerial error, ' + JSON.stringify(error));
-  })
+  }
 
   // 关闭串口
   try {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('close usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -816,7 +828,7 @@ function write() {
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-向串口设备同步写数据，使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
+向串口设备同步写数据，使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
@@ -829,9 +841,9 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。     |
+| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。传入负数时抛出参数错误异常，建议取值范围≥0，具体值需根据设备写入速度合理设置。|
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。|
 
 **返回值：**
 
@@ -843,14 +855,14 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
-| 31400006 | Data transfer timed out. | 可能原因：1. 数据接收/发送时间超过设定的timeout值；2. 设备响应慢。建议：增加timeout参数值，或检查设备连接状态。 |
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. | IO异常。可能原因：1. 传输任务被异常取消；2. 用户接收的单次传输数据量超过了设置的缓冲区大小。处理步骤：设置符合传输场景要求的缓冲区大小后，重新启动传输任务。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
+| 31400006 | Data transfer timed out. |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -863,9 +875,10 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function writeSync() {
+async function writeSyncExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -876,15 +889,14 @@ function writeSync() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -892,7 +904,8 @@ function writeSync() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 同步写入
@@ -901,7 +914,8 @@ function writeSync() {
     serialManager.writeSync(portId, writeSyncBuffer, 2000);
     console.info('writeSync usbSerial success, writeSyncBuffer: ' + writeSyncBuffer.toString());
   } catch (error) {
-    console.error('writeSync usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to writeSync usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
   
   // 关闭串口
@@ -909,7 +923,8 @@ function writeSync() {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('close usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -935,24 +950,18 @@ close(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| void | 无返回值。关闭串口成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
 
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
 
 **示例：**
 
@@ -964,9 +973,10 @@ close(portId: number): void
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function close() {
+async function closeExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -977,15 +987,14 @@ function close() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -993,16 +1002,18 @@ function close() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
-    return;
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
+
 
   // 关闭串口
   try {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('close usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1027,25 +1038,19 @@ cancelSerialRight(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| void | 无返回值。取消权限成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
 
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 14400005 | Database operation exception. | 数据库操作异常。请检查系统数据库服务是否正常运行，或重启应用后重试。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400002 | Access denied. Call requestSerialRight to request user authorization first. | 没有串口设备访问权限。可能原因：没有申请串口设备访问权限。处理步骤：调用requestSerialRight申请访问权限。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14400005 | Database operation exception. Possible cause: Invalid portId provided. Solution: Call getPortList to get valid portIds first. |
+| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first. |
+| 31400003 | PortId does not exist. |
 
 **示例：**
 
@@ -1057,9 +1062,10 @@ cancelSerialRight(portId: number): void
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function cancelSerialRight() {
+async function cancelSerialRightExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -1070,15 +1076,14 @@ function cancelSerialRight() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 取消已经授予的权限
@@ -1086,7 +1091,8 @@ function cancelSerialRight() {
     serialManager.cancelSerialRight(portId);
     console.info('cancelSerialRight success, portId: ', portId);
   } catch (error) {
-    console.error('cancelSerialRight error, ', JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to cancel serial right. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1101,7 +1107,7 @@ function cancelSerialRight() {
 |----------|--------|----------|-----------|----------------------|
 | baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率，表示数据传输速率，单位：比特/秒  |
 | dataBits | [DataBits](#databits)   |   否   | 是  | 串口数据位，表示报文中的有效数据位数，默认值为8，单位：比特  |
-| parity   | [Parity](#parity)       |   否   | 是  | 串口奇偶校验，用于检测数据传输错误，默认值为None，无奇偶校验。 |
+| parity   | [Parity](#parity)       |   否   | 是  | 串口奇偶校验，用于检测数据传输错误，默认值为PARITY_NONE（无奇偶校验）。 |
 | stopBits | [StopBits](#stopbits)   |   否   | 是  | 串口停止位，表示报文结束标志，默认值为1，单位：比特  |
 
 ## SerialPort
@@ -1112,8 +1118,8 @@ function cancelSerialRight() {
 
 | 名称     | 类型  |  只读 | 可选 | 说明    |
 |--------|--------|------|-------|--------|
-| portId | number | 否  |  否 | 端口号。 |
-| deviceName | string | 否  |  否 | 串口设备名称。 |
+| portId | number | 否  |  否 | 串口端口号，用于唯一标识串口设备。该值来自getPortList返回的SerialPort对象，用于指定要操作的串口设备。 |
+| deviceName | string | 否  |  否 | 串口设备的名称，用于显示和识别具体的串口设备。可用于在用户界面中展示设备信息，帮助用户区分不同的串口设备。 |
 
 ## BaudRates
 
@@ -1189,5 +1195,5 @@ function cancelSerialRight() {
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
-| STOPBIT_1 | 0 | 报文的有效停止位宽为1比特。 |
-| STOPBIT_2 | 1 | 报文的有效停止位宽为2比特。 |
+| STOPBIT_1 | 0 | 表示停止位宽为1比特。 |
+| STOPBIT_2 | 1 | 表示停止位宽为2比特。 |

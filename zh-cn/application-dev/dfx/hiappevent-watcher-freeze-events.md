@@ -1,7 +1,7 @@
 # 应用冻屏事件介绍
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -70,7 +70,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位为ms。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
-| release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持 |
+| release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持。 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
@@ -79,26 +79,28 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | pid | number | 应用的进程ID。 |
 | uid | number | 应用的用户ID。 |
 | uuid | string | 根据故障信息生成的故障特征码，用于标识特征相同的崩溃故障。 |
-| exception | object | 异常信息，详见exception属性。 |
+| exception | object | 异常信息，详见[exception字段说明](#exception字段说明)。 |
 | hilog | string[] | 日志信息。当生成应用无响应事件日志时，从hilog缓冲区中获取最多100行故障进程日志信息。 |
 | event_handler | string[] | 主线程未处理消息。 |
 | event_handler_size_3s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s应用主线程卡死超时)（仅在应用无响应事件生效）中3s时任务栈中任务数量。 |
 | event_handler_size_6s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s应用主线程卡死超时)（仅在应用无响应事件生效）中6s时任务栈中任务数量。 |
 | peer_binder | string[] | binder调用信息。 |
-| threads | object[] | 全量线程调用栈，详见thread属性。 |
-| memory | object | 内存信息，详见memory属性。 |
+| threads | object[] | 全量线程调用栈，详见[thread字段说明](#thread字段说明)。 |
+| memory | object | 内存信息，详见[memory字段说明](#memory字段说明)。 |
 | external_log<sup>12+</sup> | string[] | 故障日志文件路径。**为避免目录空间超限（参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
-| log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
-| process_life_time | number | 故障进程存活时间。<br>**说明**：从API 22开始支持。 |
+| log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5MB上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用[minidump](performance-analysis-kit-terminology.md#minidump)时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
+| process_life_time | number | 故障进程存活时间。<br>**说明**：从API version 22开始支持。 |
 | external_callback_log | string | 自定义回调日志信息，可通过[OH_HiCollie_SetFreezeCallback](../reference/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback)写入。<br>**说明**：从API version 24开始支持。 |
 | page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
+| application_gc_info | object | 应用GC信息，详见[application_gc_info字段说明](#application_gc_info字段说明)。<br>**说明**：从API版本26.0.0开始支持。 |
+| application_io_info | object | I/O信息，详见[application_io_info字段说明](#application_io_info字段说明)。<br>**说明**：从API版本26.0.0开始支持。 |
 
 ### exception字段说明
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| name | string | 异常类型 |
-| message | string | 异常原因 |
+| name | string | 异常类型。 |
+| message | string | 异常原因。 |
 
 ### thread字段说明
 
@@ -106,7 +108,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | -------- | -------- | -------- |
 | thread_name | string | 线程名。 |
 | tid | number | 线程id。 |
-| frames | object[] | 线程调用栈，详见frame属性。 |
+| frames | object[] | 线程调用栈，详见[frame字段说明](#frame字段说明)。 |
 | state | string | 线程运行状态。读取自/proc/pid/stat的state的值。<br>**说明**：从API version 23开始支持。 |
 | utime | number | 线程在用户态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的utime的值。<br>**说明**：从API version 23开始支持。|
 | stime | number | 线程在内核态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的stime的值。<br>**说明**：从API version 23开始支持。|
@@ -132,11 +134,11 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| file | string | 文件名 |
-| packageName | string | 模块的包名 |
-| symbol | string | 函数名称 |
-| line | number | 代码行号 |
-| column | number | 代码列号 |
+| file | string | 文件名。 |
+| packageName | string | 模块的包名。 |
+| symbol | string | 函数名称。 |
+| line | number | 代码行号。 |
+| column | number | 代码列号。 |
 
 详细说明请参见[JS混合栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
@@ -150,8 +152,33 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | sys_free_mem | number | 空闲内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Free。|
 | sys_avail_mem | number | 可用内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Available。|
 | sys_total_mem | number | 总内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Total。|
-| vm_heap_total_size | number | 主虚拟机总堆内存大小，单位KB。<br>**说明**：从API 22开始支持。 |
-| vm_heap_used_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。<br>**说明**：从API 22开始支持。 |
+| vm_heap_total_size | number | 主虚拟机总堆内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志主干通用信息)中MainHeap(bytes)字段的Total。<br>**说明**：从API version 22开始支持。|
+| vm_heap_used_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志主干通用信息)中MainHeap(bytes)字段的Used。<br>**说明**：从API version 22开始支持。|
+| vm_heap_shared_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志主干通用信息)中SharedHeap(bytes)字段的Used。<br>**说明**：从API版本26.0.0开始支持。|
+
+### application_gc_info字段说明
+
+| 名称 | 类型 | 说明 |
+| -------- | -------- | -------- |
+| count | number | 进程发生GC的次数，单位：个。<br>**说明**：从API版本26.0.0开始支持。|
+| maxPause | number | 进程发生GC的最大暂停时长，单位：ms。<br>**说明**：从API版本26.0.0开始支持。|
+| minPause | number | 进程发生GC的最小暂停时长，单位：ms。<br>**说明**：从API版本26.0.0开始支持。|
+| averagePause | number | 进程发生GC的平均暂停时长，单位：ms。<br>**说明**：从API版本26.0.0开始支持。|
+| lastStartTime | number | 进程上一次发生GC的开始时间，单位：ms。<br>**说明**：从API版本26.0.0开始支持。|
+| lastEndTime | number | 进程上一次发生GC的结束时间，单位：ms。<br>**说明**：从API版本26.0.0开始支持。|
+| lastType | number | 进程上一次发生GC的类型，GC类型：[HPP YoungGC]、[HPP OldGC]、[CompressGC]、[SharedGC]。<br>**说明**：从API版本26.0.0开始支持。|
+
+### application_io_info字段说明
+
+| 名称 | 类型 | 说明 |
+| -------- | -------- | -------- |
+| rchar | number | 进程从存储层读取的总字节数（包括缓存读），单位：字节。<br>**说明**：从API版本26.0.0开始支持。|
+| wchar | number | 进程向存储层写入的总字节数（包括缓存写），单位：字节。<br>**说明**：从API版本26.0.0开始支持。 |
+| syscr | number | 进程发起的物理读系统调用次数（read/pread/readv等），单位：次数。<br>**说明**：从API版本26.0.0开始支持。 |
+| syscw | number | 进程发起的物理写系统调用次数（write/pwrite/writev等），单位：次数。<br>**说明**：从API版本26.0.0开始支持。|
+| read_bytes | number | 进程从块设备实际读取的字节数，单位：字节。对应I/O真实落盘读取量。<br>**说明**：从API版本26.0.0开始支持。|
+| write_bytes | number | 进程向块设备实际写入的字节数，单位：字节。对应I/O真实落盘写入量。<br>**说明**：从API版本26.0.0开始支持。|
+| cancelled_write_bytes | number | 进程因截断或覆盖而取消的写入字节数，单位：字节。<br>**说明**：从API版本26.0.0开始支持。|
 
 ## 应用冻屏规格自定义参数设置
 

@@ -1,12 +1,14 @@
 # @ohos.commonEventManager (Common Event) (System API)
+
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=5b716a0e1c062ed98c8e1f363a9507fe09b52f56 translatedAt=2026-07-21T02:32:52.027Z pushedAt=2026-07-21T07:45:40.309Z -->
 
-This module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
+This module provides system APIs related to common events, including publishing common events to specified users, removing sticky common events, and enabling or disabling static subscription events.
 
 > **NOTE**
 >
@@ -22,11 +24,11 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 ## Support
 
-A system common event is an event that is published by a system service or system application and requires specific permissions to subscribe to. To publish or subscribe to this type of event, you must follow the event-specific definitions.
+A system common event is an event that is published by a system service or system app and requires specific permissions to subscribe to. To publish or subscribe to this type of event, you must follow the event-specific definitions.
 
-For details about the enum definitions of all system common events, see [System Common Events](./common_event/commonEventManager-definitions.md).
+For details about the enums of all system common events, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md).
 
-## commonEventManager.publishAsUser<sup>
+## commonEventManager.publishAsUser
 
 publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): void
 
@@ -40,19 +42,19 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 | Name    | Type                | Mandatory| Description                              |
 | -------- | -------------------- | ---- | ---------------------------------- |
-| event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).            |
-| userId   | number               | Yes  | User ID.|
+| event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md).            |
+| userId   | number               | Yes  | ID of the user who will receive the common event.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.            |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.                     |  
-| 1500003  | The common event sending frequency too high. |
-| 1500006  | Invalid userId. |
+| 1500003  | The common event sending frequency too high.<br> Applicable versions: 20+|
+| 1500006  | Invalid userId.<br> Applicable versions: 21+|
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -94,8 +96,8 @@ Publishes a common event to a specified user and specifies the information to be
 
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
-| userId   | number | Yes| User ID.|
+| event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). |
+| userId   | number | Yes| ID of the user who will receive the common event.|
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
@@ -103,11 +105,11 @@ Publishes a common event to a specified user and specifies the information to be
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.                     |  
-| 1500003  | The common event sending frequency too high. |
-| 1500006  | Invalid userId. |
+| 1500003  | The common event sending frequency too high.<br> Applicable versions: 20+|
+| 1500006  | Invalid userId.<br> Applicable versions: 21+|
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -118,10 +120,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Information of the common event.
-let options:commonEventManager.CommonEventPublishData = {
+let options: commonEventManager.CommonEventPublishData = {
   code: 0,       // Initial code of the common event.
-  data: 'initial data',// Initial data of the common event.
-}
+  data: 'initial data', // Initial data of the common event.
+};
 
 // Specify the user to whom the common event will be published.
 let userId = 100;
@@ -156,14 +158,14 @@ Removes a sticky common event. This API uses an asynchronous callback to return 
 
 | Name  | Type                | Mandatory| Description                            |
 | -------- | -------------------- | ---- | -------------------------------- |
-| event    | string               | Yes  | Sticky common event to remove. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).      |
+| event    | string               | Yes  | Sticky common event to remove. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md).      |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the sticky common event is successfully removed, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |  
 | 202      | Permission verification failed. A non-system application calls a system API.                     |  
@@ -179,7 +181,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.removeStickyCommonEvent('sticky_event', (err: BusinessError) => {
   if (err) {
-    console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMes: ${err.message}`);
+    console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMsg: ${err.message}`);
     return;
   }
   console.info(`removeStickyCommonEvent success`);
@@ -190,7 +192,7 @@ commonEventManager.removeStickyCommonEvent('sticky_event', (err: BusinessError) 
 
 removeStickyCommonEvent(event: string): Promise\<void>
 
-Removes a sticky common event. This API uses a promise to return the result.
+Removes a sticky common event that has been published. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -214,7 +216,7 @@ Removes a sticky common event. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |  
 | 202      | Permission verification failed. A non-system application calls a system API.                     |  
@@ -230,8 +232,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
   console.info(`removeStickyCommonEvent success`);
-}).catch ((err: BusinessError) => {
-  console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMes: ${err.message}`);
+}).catch((err: BusinessError) => {
+  console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMsg: ${err.message}`);
 });
 ```
 
@@ -239,7 +241,7 @@ commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
 
 setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
-Enables or disables static subscription for an application. This API uses an asynchronous callback to return the result.
+Enables or disables static subscription for an app. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -251,14 +253,14 @@ Enables or disables static subscription for an application. This API uses an asy
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | Yes  | Whether static subscription is enabled.<br> **true**: enabled.<br>**false**: disabled.|
+| enable  | boolean | Yes  | Whether static subscription is enabled.<br> **true**: enabled; **false**: disabled.|
 | callback  | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.                     |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
@@ -272,7 +274,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
   if (err.code != 0) {
-    console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
+    console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMsg: ${err.message}`);
     return;
   }
   console.info(`setStaticSubscriberState success`);
@@ -283,7 +285,7 @@ commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
 
 setStaticSubscriberState(enable: boolean): Promise\<void>
 
-Enables or disables static subscription for an application. This API uses a promise to return the result.
+Enables or disables static subscription for an app. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -295,7 +297,7 @@ Enables or disables static subscription for an application. This API uses a prom
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | Yes  | Whether static subscription is enabled.<br> **true**: enabled.<br>**false**: disabled.|
+| enable  | boolean | Yes  | Whether static subscription is enabled.<br> **true**: enabled; **false**: disabled.|
 
 **Return value**
 
@@ -307,7 +309,7 @@ Enables or disables static subscription for an application. This API uses a prom
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.                     |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
@@ -316,14 +318,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.setStaticSubscriberState(false).then(() => {
   console.info(`setStaticSubscriberState success`);
-}).catch ((err: BusinessError) => {
-  console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
+}).catch((err: BusinessError) => {
+  console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMsg: ${err.message}`);
 });
 ```
 
@@ -331,7 +332,7 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 
 setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<void>
 
-Enables or disables the static subscription event for the current application and records the event name. This API uses a promise to return the result.
+Enables or disables static subscription to a common event for the current app. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -343,8 +344,8 @@ Enables or disables the static subscription event for the current application an
 
 | Name| Type         | Mandatory| Description                                                |
 | ------ | ------------- | ---- | ---------------------------------------------------- |
-| enable | boolean       | Yes  | Whether static subscription is enabled.<br> **true**: enabled.<br>**false**: disabled.|
-| events | Array\<string> | No  | Name of a recorded event.                                  |
+| enable | boolean       | Yes  | Whether static subscription is enabled.<br> **true**: enabled; **false**: disabled.|
+| events | Array\<string> | No  | List of common event names to be set. By default, the list is empty, indicating that the status of all common events subscribed to in static mode by the current app is to be set.                                 |
 
 **Return value**
 
@@ -356,7 +357,7 @@ Enables or disables the static subscription event for the current application an
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                                              |
+| ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API.                     |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
@@ -368,10 +369,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let evenName: string[] = ['usual.event.SEND_DATA'];
-commonEventManager.setStaticSubscriberState(true, evenName).then(() => {
-  console.info(`setStaticSubscriberState success, state is ${true}`);
+let eventName: string[] = ['usual.event.SEND_DATA'];
+commonEventManager.setStaticSubscriberState(true, eventName).then(() => {
+  console.info(`setStaticSubscriberState success`);
 }).catch((err: BusinessError) => {
-  console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
+  console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMsg: ${err.message}`);
 });
 ```

@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -11,11 +11,11 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 29800001 系统服务获取失败
+## 29800001 错误的线程上下文
 
 **错误信息**
 
-Wrong thread context.The function can not be called from main thread.
+Wrong thread context. The function cannot be called from main thread.
 
 **错误描述**
 
@@ -109,7 +109,7 @@ Wrong timer id output param.
 
 **错误描述**
 
-错误的任务id值参数。
+错误的timer id值参数。
 
 **可能原因**
 

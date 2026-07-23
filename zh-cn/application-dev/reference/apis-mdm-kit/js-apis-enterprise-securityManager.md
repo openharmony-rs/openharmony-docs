@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供设备安全管理的能力，包括查询安全补丁状态、查询文件加密状态等。
+本模块提供企业设备安全管理能力，支持证书管理、设备安全策略管理、口令策略管理、剪贴板策略管理、水印策略管理、权限管理等功能。企业可使用本模块实现设备安全状态的实时监控、企业证书的生命周期管理、设备口令策略的统一配置、应用剪贴板使用行为的管控、屏幕和应用水印的设置以防止信息泄露、以及应用权限的精细化管理等场景，帮助企业提升设备安全防护能力，降低数据泄露风险。
 
 > **说明：**
 >
@@ -26,7 +26,7 @@ import { securityManager } from '@kit.MDMKit';
 
 uninstallUserCertificate(admin: Want, certUri: string): Promise&lt;void&gt;
 
-卸载用户证书，使用Promise异步回调。
+卸载用户证书，使用Promise异步回调。适用于企业证书管理场景，如证书过期更换、撤销员工对企业资源的访问权限等。企业可在证书过期、更换或不再需要时调用此接口卸载证书，确保设备证书管理的灵活性和安全性。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -84,7 +84,7 @@ securityManager.uninstallUserCertificate(wantTemp, aliasStr).then(() => {
 
 installUserCertificate(admin: Want, certificate: CertBlob): Promise&lt;string&gt;
 
-安装用户证书，使用Promise异步回调。
+安装用户证书，使用Promise异步回调。企业可通过此接口将证书安装到设备上，用于企业VPN连接、安全认证、数字签名等场景，实现企业级的安全通信和数据保护。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -153,7 +153,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 
 installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): string
 
-支持按系统账户安装用户证书。
+支持按系统账户安装用户证书。企业可为不同用户账户安装独立的证书，实现多用户环境下的安全隔离和个性化证书管理，满足多用户设备的安全管控需求。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -218,7 +218,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 
 getUserCertificates(admin: Want, accountId: number): Array&lt;string&gt;
 
-获取指定系统账户下的用户证书信息。
+获取指定系统账户下的用户证书信息。企业可通过此接口查询设备上已安装的用户证书列表，用于证书审计、证书有效期管理等场景，确保证书管理的可追溯性。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -274,7 +274,7 @@ try {
 
 getSecurityStatus(admin: Want, item: string): string
 
-获取当前设备安全策略信息。
+获取当前设备安全策略信息。适用于设备合规性检查、安全状态审计、策略执行效果验证等场景，帮助企业管理员确认设备是否符合安全要求。企业可通过此接口实时监控设备的安全补丁状态和文件加密状态，及时发现设备安全风险并采取相应措施，保障企业设备和数据安全。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -330,7 +330,7 @@ try {
 
 setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
-设置设备锁屏口令策略。当用户设置锁屏口令时，如果设置的锁屏口令不符合要求，会有安全提示重新设置锁屏口令。
+设置设备锁屏口令策略。策略设置后，当用户设置锁屏口令时，如果设置的锁屏口令不符合要求，会有安全提示重新设置锁屏口令。适用于企业安全合规场景，如强制要求员工使用强密码、定期更换密码等，降低企业数据泄露风险。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -389,7 +389,7 @@ try {
 
 getPasswordPolicy(admin: Want | null): PasswordPolicy
 
-获取设备锁屏口令策略。
+获取设备锁屏口令策略。企业可通过此接口查询当前配置的口令策略，用于策略审计、合规性检查等场景，确保设备口令策略符合企业安全规范。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -444,7 +444,7 @@ try {
 
 setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 
-禁用/启用当前用户的滑动解锁能力。启用时：设备灭屏后再亮屏，用户需要在屏幕上滑动后才能进入桌面。禁用时：设备灭屏后再亮屏会直接进入桌面。
+禁用/启用当前用户的滑动解锁能力。启用时：设备灭屏后再亮屏，用户需要在屏幕上滑动后才能进入桌面。禁用时：设备灭屏后再亮屏会直接进入桌面。适用于企业设备管理场景，如在特定安全环境下禁用滑动解锁简化操作，或在通用场景下启用滑动解锁作为基础安全措施。
 
 > **说明：**
 >
@@ -568,7 +568,7 @@ try {
 
 setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): void
 
-设置设备剪贴板策略。
+设置设备剪贴板策略。策略设置后，应用将按照设置的策略限制剪贴板的使用范围。适用于企业数据防泄露场景，如限制敏感应用（如企业邮箱、财务系统）的剪贴板使用范围，防止敏感数据被复制到非授权应用，降低数据泄露风险。企业可通过此接口控制应用的剪贴板使用权限，防止敏感数据通过剪贴板泄露到未授权应用，增强企业数据安全防护能力。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -622,7 +622,7 @@ try {
 
 getAppClipboardPolicy(admin: Want | null, tokenId?: number): string
 
-获取设备剪贴板策略。
+获取设备剪贴板策略。企业可通过此接口查询当前配置的剪贴板策略，用于策略审计和合规性检查，确保剪贴板管控策略符合企业安全要求。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -671,7 +671,7 @@ try {
   let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
   console.info(`Succeeded in getting clipboard policy, result : ${result}`);
 } catch(err) {
-  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -679,7 +679,7 @@ try {
 
 setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy: ClipboardPolicy): void
 
-设置指定用户下指定应用的设备剪贴板策略。
+设置指定用户下指定应用的设备剪贴板策略。策略设置后，指定应用的剪贴板将按照策略限制使用范围。企业可为不同用户的不同应用配置差异化的剪贴板使用权限，实现精细化的数据访问控制，满足多用户多应用场景下的安全管控需求。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -734,7 +734,7 @@ try {
 
 getAppClipboardPolicy(admin: Want | null, bundleName: string, accountId: number): string
 
-获取指定用户下指定应用的设备剪贴板策略。
+获取指定用户下指定应用的设备剪贴板策略。企业可通过此接口查询特定应用的剪贴板使用权限配置，用于策略审计和合规性检查。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -784,7 +784,7 @@ try {
   let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
   console.info(`Succeeded in getting clipboard policy, result : ${result}`);
 } catch(err) {
-  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -844,7 +844,7 @@ let source: string = '/data/storage/el1/base/test.png';
 let accountId: number = 100;
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
-  console.info(`Succeeded in setting set watermarkImage policy.`);
+  console.info(`Succeeded in setting watermarkImage policy.`);
 } catch(err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
@@ -854,7 +854,7 @@ try {
 
 cancelWatermarkImage(admin: Want, bundleName: string, accountId: number): void
 
-取消指定用户的水印策略。
+取消指定用户的水印策略。当应用不再需要水印保护或需要更换水印时，企业可调用此接口取消水印策略。<!--RP4--><!--RP4End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -897,7 +897,7 @@ let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
   securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
-  console.info(`Succeeded in setting cancel watermarkImage policy.`);
+  console.info(`Succeeded in cancelling watermarkImage policy.`);
 } catch(err) {
   console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
@@ -907,7 +907,7 @@ try {
 
 setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permissions: Array\<string>, managedState: PermissionManagedState): void
 
-设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。
+设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -1031,7 +1031,7 @@ try {
 
 setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): void
 
-设置外部来源扩展程序的管控策略。
+设置外部来源扩展程序的管控策略。策略设置后，系统将按照设置的策略控制外部来源扩展程序的运行行为。适用于企业安全管控场景，如防止员工安装非授权浏览器扩展程序，或强制开启企业批准的扩展程序功能，保障企业终端安全。
 
 - DEFAULT：
 
@@ -1155,7 +1155,7 @@ try {
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
 
-安装企业应用重签名证书。
+安装企业应用重签名证书。安装成功后，企业可使用该证书对应用进行重签名。
 
 同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](#securitymanageruninstallenterpriseresignaturecertificate24)进行卸载。
 
@@ -1231,7 +1231,13 @@ try {
 
 uninstallEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, accountId: number): void
 
-卸载企业应用重签名证书。
+卸载企业应用重签名证书。卸载企业重签名证书后，使用该证书签名的应用在设备重启前正常运行，设备重启后无法运行。
+
+使用场景：<br>1.安装新证书：调用[installEnterpriseReSignatureCertificate](#securitymanagerinstallenterpriseresignaturecertificate24)接口安装新证书后，经新证书重签名的应用可正常运行。如果旧签名证书对应的应用为超级设备管理应用，需先取消激活后才能卸载证书，否则卸载证书后该应用无法卸载且无法运行。<br>2.恢复误删证书：调用[installEnterpriseReSignatureCertificate](#securitymanagerinstallenterpriseresignaturecertificate24)接口重新安装误删除的证书后，已重签名的应用可正常运行，不受影响。
+
+> **注意：**
+>
+> 删除证书常见证书过期和证书泄露场景，建议开发者在实现该功能时，强提示管理员谨慎删除证书，并确保删除证书前加载新的重签名证书，并完成所有应用更新切换到新的重签名证书，否则重启后历史安装的应用将无法运行。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1359,7 +1365,7 @@ imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
 
 cancelScreenWatermarkImage(admin: Want): void
 
-取消屏幕水印策略，对所有用户生效。
+取消屏幕水印策略，对所有用户生效。取消成功后，设备屏幕上的水印消失。当设备不再需要屏幕水印保护时，企业可调用此接口取消水印策略。只有设置屏幕水印的用户才能取消该水印，例如用户100设置的屏幕水印，用户101无法取消。
 
 **起始版本**：26.0.0
 
@@ -1408,7 +1414,7 @@ try {
 
 setDisallowedPermission(admin: Want, permission: string, disallow: boolean, accountId: number): void
 
-禁用指定用户下的指定权限，禁用后指定用户下的所有应用申请和使用指定权限时默认拒绝。
+禁用指定用户下的指定权限，禁用后指定用户下的所有应用申请和使用指定权限时默认拒绝。适用于企业安全合规场景，如禁用相机、麦克风等高风险权限防止隐私泄露，或禁用特定功能（如蓝牙分享）防止企业数据外传。
 
 > **说明：**
 >
@@ -1535,7 +1541,7 @@ try {
 
 addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance: common.ApplicationInstance): void
 
-将应用添加至权限使用例外名单，例外名单中的应用不受[setDisallowedPermission](#securitymanagersetdisallowedpermission)设置的权限禁用策略限制。
+将应用添加至权限使用例外名单，例外名单中的应用不受[setDisallowedPermission](#securitymanagersetdisallowedpermission)设置的权限禁用策略限制。适用于企业应用场景，如相机权限被禁用时，允许考勤应用、协作办公应用继续使用相机功能，保障企业关键业务正常运行。
 
 > **说明：**
 >
@@ -1770,7 +1776,7 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | bundleName | string    | 是   | 被设置水印的应用包名。                                                       |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径。<br>image.PixelMap表示图像对象。<br>图像像素占用大小不得超过500KB。<br>图像像素占用大小计算公式：图像宽度(像素)×图像高度 (像素)×每个像素占用的字节数（通常为4）。例如：一张 100x100 的图片，图像像素占用大小为100×100×4=40000字节。                                                       |
-| accountId     | number     | 是   | 用户ID，指定具体用户，取值范围：大于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+| accountId     | number     | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 | properties     | [WatermarkProperties](#watermarkproperties)     | 是   | 配置水印的行列数。|
 
 **错误码**：
@@ -1883,7 +1889,7 @@ getWatermarkImageApps(admin: Want, accountId: number): Array\<string\>
 | 参数名      | 类型                                                    | 必填 | 说明           |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
-| accountId   | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+| accountId   | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
 

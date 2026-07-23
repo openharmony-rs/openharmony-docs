@@ -73,13 +73,13 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.requestPublishForm(want, obj, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -130,13 +130,13 @@ let want: Want = {
 try {
   formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -194,10 +194,10 @@ try {
   formProvider.requestPublishForm(want).then((data: string) => {
     console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -205,7 +205,7 @@ try {
 
 isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
-查询是否可以添加卡片到卡片使用方，使用callback异步回调。
+查询是否可以发布卡片到卡片使用方，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -215,7 +215,7 @@ isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 返回查询结果的回调函数。<br>true: 表示可以添加卡片到卡片使用方。<br>false: 表示不可以添加卡片到卡片使用方。|
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 返回查询结果的回调函数。<br>true: 表示可以发布卡片到卡片使用方。<br>false: 表示不可以发布卡片到卡片使用方。|
 
 **错误码：**
 
@@ -238,7 +238,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.isRequestPublishFormSupported((error: BusinessError, isSupported: boolean) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
     } else {
       if (isSupported) {
         let want: Want = {
@@ -252,19 +252,19 @@ try {
         try {
           formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
             if (error) {
-              console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+              console.error(`callback error, code: ${error.code}, message: ${error.message}`);
               return;
             }
             console.info(`formProvider requestPublishForm, form ID is: ${data}`);
           });
         } catch (error) {
-          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
         }
       }
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -272,7 +272,7 @@ try {
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
-查询是否可以添加卡片到卡片使用方，使用Promise异步回调。
+查询是否可以发布卡片到卡片使用方，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -282,7 +282,7 @@ isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回是否可以添加卡片到卡片使用方的结果。<br>true: 表示可以添加卡片到卡片使用方。<br>false: 表示不可以添加卡片到卡片使用方。|
+| Promise&lt;boolean&gt; | Promise对象。返回是否可以发布卡片到卡片使用方的结果。<br>true: 表示可以发布卡片到卡片使用方。<br>false: 表示不可以发布卡片到卡片使用方。|
 
 **错误码：**
 
@@ -316,17 +316,17 @@ try {
         formProvider.requestPublishForm(want).then((data: string) => {
           console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
         }).catch((error: BusinessError) => {
-          console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+          console.error(`promise error, code: ${error.code}, message: ${error.message}`);
         });
       } catch (error) {
-        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       }
     }
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -346,7 +346,7 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。 |
+| formId | string | 是 | 卡片标识。 |
 
 **返回值：**
 
@@ -382,10 +382,10 @@ try {
   formProvider.activateSceneAnimation(formId).then(() => {
     console.info('activateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -405,7 +405,7 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。|
+| formId | string | 是 | 卡片标识。|
 
 **返回值：**
 
@@ -441,10 +441,10 @@ try {
   formProvider.deactivateSceneAnimation(formId).then(() => {
     console.info('deactivateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -502,10 +502,10 @@ try {
   formProvider.updateTemplateFormDetailInfo(templateFormInfo).then(() => {
     console.info('updateTemplateFormDetailInfo succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -513,7 +513,7 @@ try {
 
 onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
 
-订阅跨应用加桌管控，使用callback异步回调。
+订阅跨应用加桌管控。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -527,7 +527,7 @@ onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControl
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 是 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 是 | 跨应用加桌管控的回调函数。|
 
 **错误码：**
 
@@ -551,7 +551,7 @@ try {
   });
   console.info(`onPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -560,7 +560,7 @@ try {
 
 offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
 
-取消订阅跨应用加桌管控，使用callback异步回调。
+取消订阅跨应用加桌管控。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -574,7 +574,7 @@ offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleContr
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 跨应用加桌管控的回调函数，不传则取消所有已订阅的回调。|
 
 **错误码：**
 
@@ -596,6 +596,6 @@ try {
   formProvider.offPublishFormCrossBundleControl();
   console.info(`offPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```

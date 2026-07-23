@@ -45,7 +45,7 @@ Starts the widget provider page to be edited. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -108,7 +108,7 @@ Starts UIAbility of the application to which a widget belongs. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

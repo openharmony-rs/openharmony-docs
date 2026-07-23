@@ -6,13 +6,13 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于显示加载动效的组件。
+LoadingProgress是用于显示加载进度条的组件，在数据加载过程中为用户提供视觉反馈，提升用户体验。该组件支持设置前景色、控制动画显示状态等特性，适用于需要在应用内展示加载进度的场景。
 
-加载动效在组件不可见时停止，组件的可见状态基于[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)处理，可见阈值ratios大于0即视为可见状态。
+加载进度条的动效在组件不可见时停止，组件的可见状态基于[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)处理，可见阈值ratios大于0即视为可见状态。
 
 >  **说明：**
 >
-> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 >
@@ -40,7 +40,7 @@ LoadingProgress()
 
 >  **说明：**
 >
-> 组件应设置合理的宽高，当组件宽高设置过大时加载动效可能不符合预期效果。
+> 组件应设置合理的宽高，当组件宽高设置过大时加载进度条的动效可能不符合预期效果。
 
 ### color
 
@@ -58,14 +58,13 @@ color(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 加载进度条的前景色。<br/>默认值：<br/>API version 10及以下：'#99666666'<br/>API version 11及以上：'#ff666666' |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 加载进度条的前景色。<br>默认值：<br>API version 10及以下：'#99666666'<br>API version 11及以上：'#ff666666' |
 
 ### enableLoading<sup>10+</sup>
 
 enableLoading(value: boolean)
 
 设置LoadingProgress动画是否显示。LoadingProgress动画不显示时，该组件依旧占位。通用属性[Visibility](ts-appendix-enums.md#visibility).Hidden隐藏的是包括[border](ts-universal-attributes-border.md#border)、[padding](ts-universal-attributes-size.md#padding)等整个组件范围，而enableLoading=false只隐藏LoadingProgress本身动画内容，不包括border等。
-
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -77,7 +76,7 @@ enableLoading(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                           |
 | ------ | ------- | ---- | ---------------------------------------------- |
-| value  | boolean | 是   | LoadingProgress动画是否显示。<br/>默认值：true，true表示显示LoadingProgress动画，false表示不显示LoadingProgress动画。 |
+| value  | boolean | 是   | LoadingProgress动画是否显示。<br>默认值：true，true表示显示LoadingProgress动画，false表示不显示LoadingProgress动画。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -95,7 +94,7 @@ contentModifier(modifier: ContentModifier\<LoadingProgressConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ContentModifier\<[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)> | 是   | 在LoadingProgress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ContentModifier\<[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)> | 是   | 在LoadingProgress组件上，定制内容区的方法。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## 事件
 
@@ -113,7 +112,7 @@ contentModifier(modifier: ContentModifier\<LoadingProgressConfiguration>)
 
 | 名称  | 类型    |    只读    |    可选    |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| enableLoading | boolean | 否 | 否 |LoadingProgress动画是否显示。<br/>默认值：true，true表示显示LoadingProgress动画，false表示不显示LoadingProgress动画。 |
+| enableLoading | boolean | 否 | 否 | LoadingProgress动画是否显示。<br>默认值：true，true表示显示LoadingProgress动画，false表示不显示LoadingProgress动画。 |
 
 ## LoadingProgressStyle枚举说明
 
@@ -135,7 +134,7 @@ contentModifier(modifier: ContentModifier\<LoadingProgressConfiguration>)
 
 ### 示例1（设置颜色）
 
-该示例通过[color](#color)接口，实现了设置加载动效颜色的功能。
+该示例通过[color](#color)接口，实现了设置加载进度条颜色的功能。
 
 ```ts
 // xxx.ets
@@ -177,9 +176,7 @@ class MyLoadingProgressStyle implements ContentModifier<LoadingProgressConfigura
   }
 }
 
-let arr1: string[] =
-  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
-let arr2: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+let arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 @Builder
 function buildLoadingProgress(config: LoadingProgressConfiguration) {
@@ -240,7 +237,7 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
 
     Column() {
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(arr2, (item: string) => {
+        ForEach(arr, (item: string) => {
           ListItem() {
             Text((config.contentModifier as MyLoadingProgressStyle).enableLoading ? '' + item : Number(item) * 2 + '')
               .width('100%')
@@ -276,7 +273,6 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
 @Component
 struct LoadingProgressDemoExample {
   @State loadingProgressList: (boolean | undefined | null)[] = [undefined, true, null, false];
-  @State widthList: (number | string)[] = ['110%', 220, '40%', 80];
   @State loadingProgressIndex: number = 0;
   @State clickFlag: number = 0;
   scroller: Scroller = new Scroller();
@@ -294,7 +290,7 @@ struct LoadingProgressDemoExample {
         }.width('100%').margin({ top: 5 })
       }.height('85%')
 
-      Button('点击切换config.enableloading').onClick(() => {
+      Button('点击切换config.enableLoading').onClick(() => {
         this.clickFlag++;
         this.loadingProgressIndex = (this.loadingProgressIndex + 1) % this.loadingProgressList.length;
         console.info('enableLoading:' + this.loadingProgressList[this.loadingProgressIndex]);

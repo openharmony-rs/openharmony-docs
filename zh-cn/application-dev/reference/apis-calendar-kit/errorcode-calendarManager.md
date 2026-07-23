@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -63,7 +63,7 @@ The specified account was not found.
 
 **错误信息**
 
-Internal program error.
+Internal program errors.
 
 **错误描述**
 

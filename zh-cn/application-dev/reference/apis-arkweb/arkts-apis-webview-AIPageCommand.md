@@ -19,18 +19,19 @@
 
 | method | 功能 | 入参格式 | 返回格式 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
+| [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。适用于需要完整层级结构的场景。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
-| [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | [ScreenCaptureResult](#screencaptureresult) | 返回Base64编码图片数据，支持获取当前网页视口截图或视口内目标元素截图。 |
+| [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | JSON字符串 | 返回JSON字符串，图片数据为Base64编码。支持获取当前网页视口截图或视口内目标元素截图。 |
+| [getZoomLevel](#getzoomlevel) | 获取网页缩放比例 | [GetZoomLevelCommand](#getzoomlevelcommand) | [ZoomLevelResult](#zoomlevelresult) | 获取当前网页的缩放比例。 |
 
-交互类命令（click、focus、cursor_position、type、send_keys）请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
+交互类命令请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
 
 ## 通用命令格式
 
 | 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | method | - | - | string | 是 | 命令名称。支持的取值请参见[命令总览](#命令总览)。 |
-| params | - | - | Object | 否 | 命令参数。不同`method`对应的`params`格式不同。 |
+| params | - | - | Object | 否 | 命令参数。不同`method`对应的`params`格式不同。不传入时具体行为由各命令定义。 |
 
 ## getFullDom
 
@@ -76,28 +77,28 @@
 | aria-description | aria-description | string | 节点`aria-description`属性值。字段值为空时不返回该字段。 |
 | rect | rect | Object | 节点矩形信息，包含`x`、`y`、`width`、`height`。 |
 | bounds | bounds | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
-| visible | visible | boolean | 节点是否可见。 |
-| isInViewport | isInViewport | boolean | 节点是否在当前视口内。 |
-| clickable | clickable | boolean | 节点是否可点击。 |
-| touchable | touchable | boolean | 节点是否可触控。当前判断逻辑与`clickable`一致。 |
-| scrollable | scrollable | boolean | 节点是否可滚动。 |
-| inputable | inputable | boolean | 节点是否可输入。 |
+| visible | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| isInViewport | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| clickable | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| touchable | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。当前判断逻辑与`clickable`一致。 |
+| scrollable | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| inputable | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | url | url | string | 节点关联URL。按`href`、`src`、`action`、`data`、`poster`顺序读取并转换为完整URL。字段值为空时不返回该字段。 |
 | xpath | xpath | string | 节点XPath。字段值为空时不返回该字段。 |
 | hover | hover | string | 节点`cursor`样式值。字段值为空时不返回该字段。 |
-| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | value | value | string | 当节点为`select`元素时，返回当前选中值。 |
 | options | options | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
 | value_text | value_text | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
-| focusable | focusable | boolean | 节点是否可获取焦点。 |
-| editable | editable | boolean | 节点是否可编辑。 |
-| settable | settable | boolean | 节点是否可设置值。 |
-| checked | checked | boolean | 节点是否处于选中状态。 |
-| expanded | expanded | boolean | 节点是否处于展开状态。 |
-| pressed | pressed | boolean | 节点是否处于按下状态。 |
-| selected | selected | boolean | 节点是否处于选择状态。 |
-| required | required | boolean | 节点是否为必填项。 |
+| focusable | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| editable | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| settable | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| checked | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| expanded | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| pressed | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| selected | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| required | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | autocomplete | autocomplete | string | 节点自动完成信息，优先读取`aria-autocomplete`属性，其次读取`autocomplete`属性。字段值为空时不返回该字段。 |
 | keyshortcuts | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。字段值为空时不返回该字段。 |
 
@@ -116,43 +117,43 @@
 | children_nodes | - | role | string | 节点语义角色。 |
 | children_nodes | - | aria-description | string | 节点`aria-description`属性值。 |
 | children_nodes | - | rect | Object | 节点矩形信息。 |
-| children_nodes | rect | x | number | 节点矩形左上角x坐标。 |
-| children_nodes | rect | y | number | 节点矩形左上角y坐标。 |
-| children_nodes | rect | width | number | 节点矩形宽度。 |
-| children_nodes | rect | height | number | 节点矩形高度。 |
+| children_nodes | rect | x | number | 节点矩形左上角x坐标。单位：px。 |
+| children_nodes | rect | y | number | 节点矩形左上角y坐标，相对于当前节点所属frame的视口左上角。单位：px。 |
+| children_nodes | rect | width | number | 节点矩形宽度。单位：px。 |
+| children_nodes | rect | height | number | 节点矩形高度。单位：px。 |
 | children_nodes | - | bounds | Object | 节点矩形信息。 |
-| children_nodes | bounds | x | number | 节点矩形左上角x坐标。 |
-| children_nodes | bounds | y | number | 节点矩形左上角y坐标。 |
-| children_nodes | bounds | left | number | 节点矩形左边界。 |
-| children_nodes | bounds | top | number | 节点矩形上边界。 |
-| children_nodes | bounds | right | number | 节点矩形右边界。 |
-| children_nodes | bounds | bottom | number | 节点矩形下边界。 |
-| children_nodes | bounds | width | number | 节点矩形宽度。 |
-| children_nodes | bounds | height | number | 节点矩形高度。 |
-| children_nodes | - | visible | boolean | 节点是否可见。 |
-| children_nodes | - | isInViewport | boolean | 节点是否在当前视口内。 |
-| children_nodes | - | clickable | boolean | 节点是否可点击。 |
-| children_nodes | - | touchable | boolean | 节点是否可触控。 |
-| children_nodes | - | scrollable | boolean | 节点是否可滚动。 |
-| children_nodes | - | inputable | boolean | 节点是否可输入。 |
+| children_nodes | bounds | x | number | 节点矩形左上角x坐标。单位：px。 |
+| children_nodes | bounds | y | number | 节点矩形左上角y坐标。单位：px。 |
+| children_nodes | bounds | left | number | 节点矩形左边界。单位：px。 |
+| children_nodes | bounds | top | number | 节点矩形上边界。单位：px。 |
+| children_nodes | bounds | right | number | 节点矩形右边界。单位：px。 |
+| children_nodes | bounds | bottom | number | 节点矩形下边界。单位：px。 |
+| children_nodes | bounds | width | number | 节点矩形宽度。单位：px。 |
+| children_nodes | bounds | height | number | 节点矩形高度。单位：px。 |
+| children_nodes | - | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| children_nodes | - | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| children_nodes | - | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| children_nodes | - | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。 |
+| children_nodes | - | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| children_nodes | - | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | children_nodes | - | url | string | 节点关联URL。 |
 | children_nodes | - | xpath | string | 节点XPath。 |
 | children_nodes | - | hover | string | 节点`cursor`样式值。 |
-| children_nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| children_nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| children_nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| children_nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | children_nodes | - | value | string | `select`元素当前选中值。 |
 | children_nodes | - | options | Array\<Object> | `select`元素选项列表。 |
 | children_nodes | - | value_text | Array\<Object> | `select`元素选项列表。 |
 | children_nodes | options/value_text | value | string | `select`元素选项值。 |
 | children_nodes | options/value_text | text | string | `select`元素选项文本。 |
-| children_nodes | - | focusable | boolean | 节点是否可获取焦点。 |
-| children_nodes | - | editable | boolean | 节点是否可编辑。 |
-| children_nodes | - | settable | boolean | 节点是否可设置值。 |
-| children_nodes | - | checked | boolean | 节点是否处于选中状态。 |
-| children_nodes | - | expanded | boolean | 节点是否处于展开状态。 |
-| children_nodes | - | pressed | boolean | 节点是否处于按下状态。 |
-| children_nodes | - | selected | boolean | 节点是否处于选择状态。 |
-| children_nodes | - | required | boolean | 节点是否为必填项。 |
+| children_nodes | - | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| children_nodes | - | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| children_nodes | - | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| children_nodes | - | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| children_nodes | - | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| children_nodes | - | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| children_nodes | - | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| children_nodes | - | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | children_nodes | - | autocomplete | string | 节点自动完成信息。 |
 | children_nodes | - | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。 |
 | children_nodes | - | attributes | Object | HTML属性集合。 |
@@ -270,12 +271,12 @@
 | method | - | - | string | 是 | 命令名称，固定为`getLiteDom`。 |
 | params | - | - | Object | 否 | 命令参数。不传入时不按规则筛选节点，并使用默认返回字段。 |
 | params | rules | - | Object | 否 | 节点筛选规则。不传入时返回所有未被跳过的元素节点。 |
-| params | rules | tags | Array\<string> | 否 | 按HTML标签名称筛选节点。 |
+| params | rules | tags | Array\<string> | 否 | 按HTML标签名称筛选节点。当需要筛选特定类型的HTML元素时使用（如只获取按钮或链接），不传此条件时不按标签筛选。 |
 | params | rules | attributes | Array\<string> \| Object | 否 | 按HTML属性筛选节点。传入Array时，判断节点是否包含指定属性；传入Object时，key表示属性名，value为非空字符串时表示属性值需要包含该字符串。 |
 | params | rules | roles | Array\<string> | 否 | 按节点语义角色筛选节点。 |
-| params | rules | clickable | boolean | 否 | 按节点是否可点击筛选。 |
-| params | rules | scrollable | boolean | 否 | 按节点是否可滚动筛选。 |
-| params | rules | isInViewport | boolean | 否 | 按节点是否在当前视口内筛选。 |
+| params | rules | clickable | boolean | 否 | 按节点是否可点击筛选。true表示筛选可点击的节点，false表示筛选不可点击的节点。 |
+| params | rules | scrollable | boolean | 否 | 按节点是否可滚动筛选。true表示筛选可滚动的节点，false表示筛选不可滚动的节点。 |
+| params | rules | isInViewport | boolean | 否 | 按节点是否在当前视口内筛选。true表示筛选在当前视口内的节点，false表示筛选不在当前视口内的节点。 |
 | params | wants | - | Array\<string \| Object> | 否 | 指定需要在节点中追加返回的字段。`getLiteDom`会默认请求`tag`、`text`和`xpath`。 |
 | params | wants | - | string | 否 | 数组项为string时，表示需要追加返回的节点信息字段，取值请参见[getLiteDom的params.wants字段取值说明](#getlitedom的paramswants字段取值说明)。 |
 | params | wants | attributes | Array\<string> | 否 | 数组项为Object且包含`attributes`时，指定需要返回的HTML属性。 |
@@ -300,28 +301,28 @@
 | aria-description | aria-description | string | 节点`aria-description`属性值。字段值为空时不返回该字段。 |
 | rect | rect | Object | 节点矩形信息，包含`x`、`y`、`width`、`height`。 |
 | bounds | bounds | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
-| visible | visible | boolean | 节点是否可见。 |
-| isInViewport | isInViewport | boolean | 节点是否在当前视口内。 |
-| clickable | clickable | boolean | 节点是否可点击。 |
-| touchable | touchable | boolean | 节点是否可触控。当前判断逻辑与`clickable`一致。 |
-| scrollable | scrollable | boolean | 节点是否可滚动。 |
-| inputable | inputable | boolean | 节点是否可输入。 |
+| visible | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| isInViewport | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| clickable | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| touchable | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。当前判断逻辑与`clickable`一致。 |
+| scrollable | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| inputable | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | url | url | string | 节点关联URL。按`href`、`src`、`action`、`data`、`poster`顺序读取并转换为完整URL。字段值为空时不返回该字段。 |
 | xpath | xpath | string | 节点XPath。字段值为空时不返回该字段。 |
 | hover | hover | string | 节点`cursor`样式值。字段值为空时不返回该字段。 |
-| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | value | value | string | 当节点为`select`元素时，返回当前选中值。 |
 | options | options | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
 | value_text | value_text | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
-| focusable | focusable | boolean | 节点是否可获取焦点。 |
-| editable | editable | boolean | 节点是否可编辑。 |
-| settable | settable | boolean | 节点是否可设置值。 |
-| checked | checked | boolean | 节点是否处于选中状态。 |
-| expanded | expanded | boolean | 节点是否处于展开状态。 |
-| pressed | pressed | boolean | 节点是否处于按下状态。 |
-| selected | selected | boolean | 节点是否处于选择状态。 |
-| required | required | boolean | 节点是否为必填项。 |
+| focusable | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| editable | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| settable | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| checked | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| expanded | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| pressed | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| selected | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| required | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | autocomplete | autocomplete | string | 节点自动完成信息，优先读取`aria-autocomplete`属性，其次读取`autocomplete`属性。字段值为空时不返回该字段。 |
 | keyshortcuts | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。字段值为空时不返回该字段。 |
 
@@ -340,43 +341,43 @@
 | nodes | - | role | string | 节点语义角色。 |
 | nodes | - | aria-description | string | 节点`aria-description`属性值。 |
 | nodes | - | rect | Object | 节点矩形信息。 |
-| nodes | rect | x | number | 节点矩形左上角x坐标。 |
-| nodes | rect | y | number | 节点矩形左上角y坐标。 |
-| nodes | rect | width | number | 节点矩形宽度。 |
-| nodes | rect | height | number | 节点矩形高度。 |
+| nodes | rect | x | number | 节点矩形左上角x坐标。单位：px。 |
+| nodes | rect | y | number | 节点矩形左上角y坐标，相对于当前节点所属frame的视口左上角。单位：px。 |
+| nodes | rect | width | number | 节点矩形宽度。单位：px。 |
+| nodes | rect | height | number | 节点矩形高度。单位：px。 |
 | nodes | - | bounds | Object | 节点矩形信息。 |
-| nodes | bounds | x | number | 节点矩形左上角x坐标。 |
-| nodes | bounds | y | number | 节点矩形左上角y坐标。 |
-| nodes | bounds | left | number | 节点矩形左边界。 |
-| nodes | bounds | top | number | 节点矩形上边界。 |
-| nodes | bounds | right | number | 节点矩形右边界。 |
-| nodes | bounds | bottom | number | 节点矩形下边界。 |
-| nodes | bounds | width | number | 节点矩形宽度。 |
-| nodes | bounds | height | number | 节点矩形高度。 |
-| nodes | - | visible | boolean | 节点是否可见。 |
-| nodes | - | isInViewport | boolean | 节点是否在当前视口内。 |
-| nodes | - | clickable | boolean | 节点是否可点击。 |
-| nodes | - | touchable | boolean | 节点是否可触控。 |
-| nodes | - | scrollable | boolean | 节点是否可滚动。 |
-| nodes | - | inputable | boolean | 节点是否可输入。 |
+| nodes | bounds | x | number | 节点矩形左上角x坐标。单位：px。 |
+| nodes | bounds | y | number | 节点矩形左上角y坐标。单位：px。 |
+| nodes | bounds | left | number | 节点矩形左边界。单位：px。 |
+| nodes | bounds | top | number | 节点矩形上边界。单位：px。 |
+| nodes | bounds | right | number | 节点矩形右边界。单位：px。 |
+| nodes | bounds | bottom | number | 节点矩形下边界。单位：px。 |
+| nodes | bounds | width | number | 节点矩形宽度。单位：px。 |
+| nodes | bounds | height | number | 节点矩形高度。单位：px。 |
+| nodes | - | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| nodes | - | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| nodes | - | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| nodes | - | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。 |
+| nodes | - | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| nodes | - | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | nodes | - | url | string | 节点关联URL。 |
 | nodes | - | xpath | string | 节点XPath。 |
 | nodes | - | hover | string | 节点`cursor`样式值。 |
-| nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | nodes | - | value | string | `select`元素当前选中值。 |
 | nodes | - | options | Array\<Object> | `select`元素选项列表。 |
 | nodes | - | value_text | Array\<Object> | `select`元素选项列表。 |
 | nodes | options/value_text | value | string | `select`元素选项值。 |
 | nodes | options/value_text | text | string | `select`元素选项文本。 |
-| nodes | - | focusable | boolean | 节点是否可获取焦点。 |
-| nodes | - | editable | boolean | 节点是否可编辑。 |
-| nodes | - | settable | boolean | 节点是否可设置值。 |
-| nodes | - | checked | boolean | 节点是否处于选中状态。 |
-| nodes | - | expanded | boolean | 节点是否处于展开状态。 |
-| nodes | - | pressed | boolean | 节点是否处于按下状态。 |
-| nodes | - | selected | boolean | 节点是否处于选择状态。 |
-| nodes | - | required | boolean | 节点是否为必填项。 |
+| nodes | - | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| nodes | - | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| nodes | - | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| nodes | - | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| nodes | - | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| nodes | - | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| nodes | - | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| nodes | - | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | nodes | - | autocomplete | string | 节点自动完成信息。 |
 | nodes | - | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。 |
 | nodes | - | attributes | Object | HTML属性集合。 |
@@ -444,7 +445,7 @@
 
 ## screenCapture
 
-获取当前网页视口截图或视口内目标元素截图，返回Base64编码的图片数据。
+获取当前网页视口截图或视口内目标元素截图或视口内目标区域截图，返回Base64编码的图片数据。
 
 ### ScreenCaptureCommand
 
@@ -456,22 +457,42 @@
 | params | - | - | Object | 否 | 命令参数。不传或为空时获取当前网页视口截图。|
 | params | nodeid | - | string | 否 | 目标元素的节点标识，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段获取。 |
 | params | xpath | - | string | 否 | 目标元素的XPath，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`xpath`字段获取。 |
+| params | clip | - | Object | 否 | 基于当前网页视口的目标截图区域信息，包含`x`、`y`、`width`、`height`、`scale`。 |
+| params | clip | x | number | 是 | 目标截图区域矩形左上角x坐标，<br>单位：vp。入参要求大于等于0，当入参大于当前网页视口的宽度时，返回空白像素图片数据。 |
+| params | clip | y | number | 是 | 目标截图区域矩形左上角y坐标，<br>单位：vp。入参要求大于等于0，当入参大于当前网页视口的高度时，返回空白像素图片数据。 |
+| params | clip | width | number | 是 | 目标截图区域矩形宽度。<br>单位：vp。入参要求大于0，当入参大于当前网页视口的宽度时将根据超出的宽度继续从头开始截图并拼接图片，如果设置的x参数大于0时，拼接的图片的前x宽度范围的像素是空白的。 |
+| params | clip | height | number | 是 | 目标截图区域矩形高度。<br>单位：vp。入参要求大于0，当入参大于当前网页视口的高度时将根据超出的高度继续从头开始截图并拼接图片，如果设置的y参数大于0时，拼接的图片的前y高度范围的像素是空白的。 |
+| params | clip | scale | number | 是 | 指定截图结果缩放比例。入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。 |
 
 > **说明：**
 >
-> - `nodeid`与`xpath`互斥，均传入时以`nodeid`为准。两者均未传入时，默认获取当前网页视口截图。
+> - `nodeid`、`xpath`、`clip`不能同时生效，当存在两个以上设置时，生效优先级`nodeid` > `xpath` > `clip`; 三者都不存在时，默认获取当前网页视口截图。
 > - 支持获取iframe元素截图，不支持跨域获取iframe内部元素截图；不支持获取同层渲染ArkUI组件的截图。
 
-### ScreenCaptureResult
+### 返回说明
 
-成功时返回PNG格式的Base64编码字符串。
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| code | number | 执行结果码。取值请参见[命令执行结果码说明](./arkts-apis-webview-AIPageResult.md#命令执行结果码说明)。 |
+| message | string | 执行结果描述。成功时为`"success"`；失败时为错误描述。 |
+| data | string | PNG格式的Base64编码字符串。成功时返回。 |
 
-> **说明：**
->
-> - `nodeid`格式错误，返回`{"code": 392, "message": "invalid param: nodeid"}`；`nodeid`中的`frameToken`或`documentToken`与当前页面不匹配，返回`{"code": 392, "message": "invalid param: nodeid, token mismatch"}`。
-> - 根据`nodeid`或`xpath`在页面中未找到目标元素，返回`{"code": 352, "message": "element not found"}`。
 
-### 示例
+命令执行成功时返回`{"code":10,"message":"success","data":"PNG格式的Base64编码字符串"}`；失败时返回错误码JSON，常见错误码见下表：
+
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11  | 截图数据获取或编码失败。 |
+| 131 | 目标元素不在当前网页视口内。 |
+| 132 | browser或host为空，通常表示Web实例不可用。 |
+| 160 | 页面未就绪。 |
+| 350 | 截图获取命令下发失败。 |
+| 351 | 截图获取通道初始化失败。 |
+| 352 | 截图获取执行失败（含XPath定位目标元素失败，目标元素不在当前网页内）。 |
+| 353 | 截图获取响应解析失败。 |
+| 392 | `nodeid`格式错误、`frameToken`或`documentToken`不匹配、DOM节点不存在于当前网页、`clip`中五个参数其中任意一个参数格式错误或者任意一个参数未设置。 |
+
+### 请求示例
 
 通过节点标识获取目标元素截图：
 
@@ -495,23 +516,88 @@
 }
 ```
 
+通过clip获取目标区域截图：
+
+```json
+{
+  "method": "screenCapture",
+  "params": {
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 200,
+      "height": 200,
+      "scale": 1
+    }
+  }
+}
+```
+
 > **说明：**
 >
 > - 开发者使用时需自行替换`nodeid`或`xpath`，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段或`xpath`字段获取。
 
+### 返回示例
+
+成功时：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "data": "PNG格式的Base64编码字符串"
+}
+```
+
+失败时：
+
+`131`（目标元素不在当前网页视口内）：
+
+```json
+{
+  "code": 131,
+  "message": "element not in viewport"
+}
+```
+
+`392`（`nodeid`格式错误）：
+
+```json
+{
+  "code": 392,
+  "message": "invalid param: nodeid"
+}
+```
+
+### 示例代码
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+interface ClipParams {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  scale: number;
+}
+
 interface CaptureParams {
   xpath?: string;
   nodeid?: string;
+  clip?: ClipParams;
 }
 
 interface PageCommand {
   method: string;
   params?: CaptureParams;
+}
+
+interface AiCommandResponse {
+  code: number;
+  message?: string;
+  data?: string;
 }
 
 @Entry
@@ -529,22 +615,31 @@ struct Index {
       const cmd: PageCommand = {
         method: 'screenCapture',
         params: {
-          xpath: "/html/body/div/p[2]/a"
+          xpath: '/html/body/div/p[2]/a'
         }
       };
 
       const res = await this.controller.executeAIPageCommand(JSON.stringify(cmd)) as string;
 
-      if (res.includes('"code"')) {
-        this.statusMsg = `截图失败：${res} `;
+      if (!res || res.length === 0) {
+        this.statusMsg = `❌ 错误：内核返回空响应`;
         return;
       }
 
-      this.imgData = res;
-      this.statusMsg = '✅ 截图成功';
+      const responseObj = JSON.parse(res) as AiCommandResponse;
+
+      if (responseObj.code === 10) {
+        const base64Result = responseObj.data ?? '';
+        this.imgData = base64Result.replace(/\s/g, '');
+        this.statusMsg = '✅ 截图成功';
+      } else {
+        const errorMsg = responseObj.message ?? '未知内核错误';
+        this.statusMsg = `❌ 截图失败 (Code: ${responseObj.code})：${errorMsg}`;
+      }
+
     } catch (e) {
       const error = e as BusinessError;
-      this.statusMsg = `截图失败：${error.message}`;
+      this.statusMsg = `❌ 接口调用或解析失败：${error.message}`;
     }
   }
 
@@ -586,3 +681,84 @@ struct Index {
   }
 }
 ```
+
+
+## getZoomLevel
+
+获取当前网页的缩放比例。该命令为纯查询操作，不受[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)限制。
+
+### GetZoomLevelCommand
+
+```json
+{
+  "method": "getZoomLevel",
+  "params": {}
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`getZoomLevel`。 |
+| params | - | - | Object | 否 | 命令参数。本命令不读取`params`内容，可传入空对象或不传入。 |
+
+> **说明：**
+>
+> - 返回的`zoomLevel`字段为当前网页的缩放比例（1.0=100%），与[setZoomLevel](./arkts-apis-webview-AIPageInteraction.md#setzoomlevel)传入的语义一致。
+> - [setZoomLevel](./arkts-apis-webview-AIPageInteraction.md#setzoomlevel)设置任意合法值后通过本命令读取，返回值误差不超过0.001。
+> - 用户先通过CTRL+Wheel缩放，再调用本命令，返回用户当前缩放比例。
+
+### ZoomLevelResult
+
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| code | number | 执行结果码。取值请参见[命令执行结果码说明](./arkts-apis-webview-AIPageResult.md#命令执行结果码说明)。 |
+| message | string | 执行结果描述。成功时为`"success"`。 |
+| zoomLevel | number | 当前网页缩放比例。成功时返回。 |
+
+### 测试页面
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Zoom Level Demo</h1>
+    <p>当前缩放比例可通过getZoomLevel查询，通过setZoomLevel（详见AIPageInteraction）修改。</p>
+  </body>
+</html>
+```
+
+### 请求示例
+
+```json
+{
+  "method": "getZoomLevel",
+  "params": {}
+}
+```
+
+### 返回示例
+
+成功时（页面当前缩放比例为1.5）：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "zoomLevel": 1.5
+}
+```
+
+失败：
+
+`132`（browser或host为空，通常表示Web实例不可用）：
+
+```json
+{
+  "code": 132,
+  "message": "browser or host is null"
+}
+```
+

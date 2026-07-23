@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -14,6 +14,8 @@
 使用列表可以轻松高效地显示结构化、可滚动的信息。通过在[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件中按垂直或者水平方向线性排列子组件[ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)或[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)，为列表中的行或列提供单个视图，或使用[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)迭代一组行或列，或混合任意数量的单个视图和ForEach结构，构建一个列表。List组件支持使用[条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)、循环渲染、[懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)等[渲染控制](../ui/rendering-control/arkts-rendering-control-overview.md)方式生成子组件。
 
 在圆形屏幕设备上，推荐使用[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)组件，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)。
+
+以下各步骤示例为片段代码，可通过点击示例代码右下方的链接获取完整示例。
 
 ## 布局与约束
 
@@ -959,18 +961,42 @@ ListItem() {
    
      aboutToAppear(): void {
        const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-       const reading = context.resourceManager.getStringByNameSync('Reading')
-       this.availableThings.push(reading)
-       const exercise = context.resourceManager.getStringByNameSync('Exercise')
-       this.availableThings.push(exercise)
-       const travel = context.resourceManager.getStringByNameSync('Travel')
-       this.availableThings.push(travel)
-       const listening = context.resourceManager.getStringByNameSync('Listening_Music')
-       this.availableThings.push(listening)
-       const watching = context.resourceManager.getStringByNameSync('Watching_Films')
-       this.availableThings.push(watching)
-       const singing = context.resourceManager.getStringByNameSync('Singing')
-       this.availableThings.push(singing)
+       try {
+         const reading = context.resourceManager.getStringByNameSync('Reading')
+         this.availableThings.push(reading)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Reading: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const exercise = context.resourceManager.getStringByNameSync('Exercise')
+         this.availableThings.push(exercise)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Exercise: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const travel = context.resourceManager.getStringByNameSync('Travel')
+         this.availableThings.push(travel)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Travel: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const listening = context.resourceManager.getStringByNameSync('Listening_Music')
+         this.availableThings.push(listening)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Listening_Music: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const watching = context.resourceManager.getStringByNameSync('Watching_Films')
+         this.availableThings.push(watching)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Watching_Films: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const singing = context.resourceManager.getStringByNameSync('Singing')
+         this.availableThings.push(singing)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Singing: %{public}s', JSON.stringify(e) ?? '');
+       }
      }
    
      onEditModeChange() {
@@ -1257,14 +1283,14 @@ List(
            },
            {
              index: 3,
-             // app.string.birthday 资源文件中的value值为'性别'
+             // app.string.birthday 资源文件中的value值为'生日'
              name: $r('app.string.birthday'),
              label: 'xxxxxxxxx',
              type: 'Text'
            },
            {
              index: 4,
-             // app.string.gender 资源文件中的value值为''
+             // app.string.gender 资源文件中的value值为'性别'
              name: $r('app.string.gender'),
              label: 'xxxxxxxx',
              type: 'Text'
@@ -1414,33 +1440,34 @@ List(
    <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
    
    ``` TypeScript
-   @Builder
-   MessageItem(message: Message) {
-     Column() {
-       Text(`${message.sender}: ${message.content}`)
-         .fontSize(16)
-         .textAlign(TextAlign.Start)
-         .padding(10)
-         .backgroundColor(message.sender === 'system' ? '#F0F0F0' : '#E6F3FF')
-         .borderRadius(8)
-     }
-     .width('100%')
-     .alignItems(HorizontalAlign.Start)
-     .margin({ bottom: 8 })
-   }
-
    @State messages: Message[] = [];
    
    aboutToAppear(): void {
      const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-     // app.string.welcome_live_room资源文件中的value值为'欢迎来到直播间'
-     const welcomeLiveRoom = context.resourceManager.getStringByNameSync('welcome_live_room');
-     // app.string.system资源文件中的value值为'系统'
-     const system = context.resourceManager.getStringByNameSync('system');
-     // app.string.hello_everyone资源文件中的value值为'大家好啊~'
-     const helloEveryone = context.resourceManager.getStringByNameSync('hello_everyone');
-     // app.string.anchors资源文件中的value值为'主播'
-     const anchors = context.resourceManager.getStringByNameSync('anchors');
+     let welcomeLiveRoom = '';
+     let system = '';
+     let helloEveryone = '';
+     let anchors = '';
+     try {
+       welcomeLiveRoom = context.resourceManager.getStringByNameSync('welcome_live_room');
+     } catch (e) {
+       hilog.error(0x0000, 'testTag', 'Failed to get welcome_live_room: %{public}s', JSON.stringify(e) ?? '');
+     }
+     try {
+       system = context.resourceManager.getStringByNameSync('system');
+     } catch (e) {
+       hilog.error(0x0000, 'testTag', 'Failed to get system: %{public}s', JSON.stringify(e) ?? '');
+     }
+     try {
+       helloEveryone = context.resourceManager.getStringByNameSync('hello_everyone');
+     } catch (e) {
+       hilog.error(0x0000, 'testTag', 'Failed to get hello_everyone: %{public}s', JSON.stringify(e) ?? '');
+     }
+     try {
+       anchors = context.resourceManager.getStringByNameSync('anchors');
+     } catch (e) {
+       hilog.error(0x0000, 'testTag', 'Failed to get anchors: %{public}s', JSON.stringify(e) ?? '');
+     }
      this.messages = [
        { id: 1, content: welcomeLiveRoom, sender: system },
        { id: 2, content: helloEveryone, sender: anchors }

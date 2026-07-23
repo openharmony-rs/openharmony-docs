@@ -45,7 +45,7 @@ Defines the parameter used to execute an intent call.
 | executeMode | [insightIntent.ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) | No| No| Intent execution mode. If an intent defined by the [@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this parameter must be filled (with any value that conforms to the definition), although it will not actually take effect.|
 | displayId<sup>12+</sup> | number | No| Yes| Physical screen ID specified during intent call. The value must be an integer. This parameter is valid only when **executeMode** is set to **UI_ABILITY_FOREGROUND**.|
 | uris<sup>18+</sup> | Array&lt;string&gt; | No| Yes| List of URIs authorized by the intent caller to the intent executor during the call. If an intent defined by the [@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this field is mandatory. Only the first element in the array is read as the URI of [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12).|
-| flags<sup>18+</sup> | number | No| Yes| [Flags](js-apis-app-ability-wantConstant.md#flags) of the URIs authorized by the intent caller to the intent executor during the call.<br>**NOTE**<br>This parameter supports only **FLAG_AUTH_READ_URI_PERMISSION**, **FLAG_AUTH_WRITE_URI_PERMISSION**, and FLAG_AUTH_READ_URI_PERMISSION\||FLAG_AUTH_WRITE_URI_PERMISSION.|
+| flags<sup>18+</sup> | number | No| Yes| [Flags](js-apis-app-ability-wantConstant.md#flags) of the URIs authorized by the intent caller to the intent executor during the call.<br>**NOTE**<br>This parameter supports only **FLAG_AUTH_READ_URI_PERMISSION**, **FLAG_AUTH_WRITE_URI_PERMISSION**, and FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION.|
 | userId<sup>23+</sup> | number | No| Yes| ID of the user to which the intent belongs.<br>**NOTE**<br>If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.   |
 
 ## InsightIntentInfoFilter<sup>23+<sup>
@@ -273,7 +273,7 @@ Defines the intent information, which is the specific parameter configuration of
 | bundleName | string | Yes| No| Bundle name of the application.|
 | moduleName | string | Yes| No| Module name.|
 | intentName | string | Yes| No| Intent name.|
-| domain | string | Yes| No| Vertical domain of the intent. It is used to categorize intents by vertical fields (for example, video, music, and games). For details about the value range, see the vertical domain fields in [smart distribution features in different vertical domains](https://developer.huawei.com/consumer/en/doc/service/intents-ai-distribution-characteristic-0000001901922213#section2656133582215).|
+| domain | string | Yes| No| Vertical domain of the intent. It is used to categorize intents by vertical fields (for example, video, music, and games). For details about the value range, see the vertical domain fields in smart distribution features in different vertical domains.|
 | intentVersion | string | Yes| No| Version number of the intent. It is used to distinguish and manage intents when their capabilities evolve.|
 | displayName | string | Yes| No| Name of the intent displayed in the InsightIntent framework.|
 | displayDescription | string | Yes| No| Description of the intent displayed in the InsightIntent framework.|

@@ -1,12 +1,14 @@
 # NotificationRequest (System API)
+
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:09:28.180Z pushedAt=2026-07-21T09:31:55.846Z -->
 
-The **NotificationRequest** module provides APIs for defining the notification request.
+The **NotificationRequest** module defines the data structure of the notification request, which is used to describe all information about a notification, including its content, identifier, display style, and interaction behavior.
 
 > **NOTE**
 >
@@ -16,13 +18,15 @@ The **NotificationRequest** module provides APIs for defining the notification r
 
 ## NotificationRequest
 
+Defines the data structure of the notification request, which is used to describe all information about a notification, including its content, identifier, display style, and interaction behavior.
+
 **System capability**: SystemCapability.Notification.Notification
 
 | Name                           | Type                                                   |  Read Only| Optional| Description                                                                   |
 |-------------------------------| -------------------------------------------------------- | ----- | --- |-----------------------------------------------------------------------|
 | trigger<sup>23+</sup>          | [Trigger](#trigger23) |   No | Yes | Condition object. This parameter is left empty by default.<br>**System API**: This is a system API.|
-| overlayIcon<sup>11+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   No | Yes | Notification overlay icon. This parameter is left empty by default. The total number of bytes of image pixels cannot exceed 192 KB.<br>**System API**: This is a system API.                                                |
-| classification                | string                                                   |   No | Yes | Notification category.<br>**System API**: This is a system API. Not supported currently.                              |
+| overlayIcon<sup>11+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   No  | Yes  | Notification overlay icon. This parameter is left empty by default. The total bytes of the icon pixels cannot exceed 192 KB.<br>**System API**: This API is a system API.                                                 |
+| classification                | string                                                   |   No | Yes | Notification classification.<br>**System API**: This is a system API. Not supported currently.                              |
 | isRemoveAllowed<sup>8+</sup>   | boolean                                                  |   No | Yes | Whether the notification can be removed. If a notification is not removable, it will not be deleted when the user touches the delete button below the notification, and it also cannot be deleted by swiping left on the notification and touching the delete button. The default value is **true**.<br> - **true**: The notification can be removed.<br> - **false**: The notification cannot be removed.<br>**System API**: This is a system API.<br>**Required permissions**: ohos.permission.SET_UNREMOVABLE_NOTIFICATION|
 | source<sup>8+</sup>            | number                                                   |   Yes | Yes | Notification source.<br>**System API**: This is a system API. Not supported currently.                               |
 | deviceId<sup>8+</sup>          | string                                                   |   Yes | Yes | Device ID of the notification source.<br>**System API**: This is a system API. Not supported currently.                      |
@@ -47,7 +51,6 @@ Describes distributed notification options.
 | ---------------------- | -------------- | ---- | ---- | ---------------------------------- |
 | remindType             | number         |  Yes |  Yes  | Notification reminder type.<br>**System API**: This is a system API. |
 
-
 ## NotificationFilter<sup>11+</sup>
 
 Describes the filter criteria for querying the live view.
@@ -61,7 +64,6 @@ Describes the filter criteria for querying the live view.
 | bundle          | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| No  | Bundle information of the live view.|
 | notificationKey | [notificationSubscribe.NotificationKey](js-apis-notificationSubscribe-sys.md#notificationkey) | No| No  | Notification information, including the notification ID and label.  |
 | extraInfoKeys   | Array\<string>                        | No|   Yes  | List of extra keys. If this parameter is left empty, all extra information is included.|
-
 
 ## NotificationCheckRequest<sup>11+</sup>
 
@@ -143,8 +145,8 @@ Defines the configuration of a geofence.
 | --------- | -------------------- | ---- | ---- | ---------------- |
 | longitude | number | No| No| Longitude of the geofence center. The value ranges from -180 to 180.|
 | latitude | number | No| No| Latitude of the geofence center. The value ranges from -90 to 90.|
-| radius | number | No| No| Geofence radius, in meters. The value ranges from 200 to 2000.|
-| delayTime | number | No| Yes| Delay time from geofence entry to event trigger, in seconds. The value ranges from 0 to 300. The default value is **0**.|
+| radius | number | No | No | Radius of the geofence, in meters. Value range: [200, 2000]. |
+| delayTime | number | No | Yes | Delay time of the geofence, in seconds. That is, the delay time before the geofence is triggered after entering the geofence. Value range: [0, 300]. Default value: **0** |
 | coordinateSystemType | [CoordinateSystemType](#coordinatesystemtype23) | No| No| Coordinate system type of the center point. |
 | monitorEvent | [MonitorEvent](#monitorevent23) | No  | No| Event type for monitoring a geofence.|
 

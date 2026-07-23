@@ -57,14 +57,14 @@
 | [typedef void (\*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)](#arkweb_onjavascriptproxycallback)                                        | ArkWeb_OnJavaScriptProxyCallback           | Proxy方法被执行的回调。 |
 | [typedef ArkWeb_JavaScriptValuePtr (\*ArkWeb_OnJavaScriptProxyCallbackWithResult)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)](#arkweb_onjavascriptproxycallbackwithresult) | ArkWeb_OnJavaScriptProxyCallbackWithResult | Proxy方法被执行的回调。 |
 | [typedef void (\*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)](#arkweb_oncomponentcallback)                                                                                                                    | ArkWeb_OnComponentCallback                 | 组件事件通知相关的通用回调。 |
-| [typedef void (\*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)](#arkweb_onscrollcallback)                                                                                                      | ArkWeb_OnScrollCallback                    | 定义Web组件滚动时的回调函数的类型。 |
+| [typedef void (\*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)](#arkweb_onscrollcallback)                                                                                                      | ArkWeb_OnScrollCallback                    | Web组件滚动时的回调。 |
 | [typedef void (\*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void* userData)](#arkweb_onmessageeventhandler)                                       | ArkWeb_OnMessageEventHandler               | 处理HTML发送过来的Post Message数据。 |
 
 ### 宏定义
 
 | 名称 | 描述 |
 | ---- | ---- |
-| ARKWEB_MEMBER_EXISTS(s, f)&nbsp;&nbsp;&nbsp;&nbsp;((intptr_t) &amp; ((s)-&gt;f) - (intptr_t)(s) + sizeof((s)-&gt;f) &lt;= \*reinterpret_cast&lt;size_t\*&gt;(s)) | 检查结构体中是否存在该成员变量。<br>**起始版本：** 12 |
+| ARKWEB_MEMBER_EXISTS(s, f)&nbsp;&nbsp;&nbsp;&nbsp;((intptr_t) &amp; ((s)-&gt;f) - (intptr_t)(s) + sizeof((s)-&gt;f) &lt;= \*(size_t \*)(s)) | 检查结构体中是否存在该成员变量。<br>**起始版本：** 12 |
 | ARKWEB_MEMBER_MISSING(s, f)&nbsp;&nbsp;&nbsp;(\!ARKWEB_MEMBER_EXISTS(s, f) \|\| !((s)-&gt;f)) | 当前结构体存在该成员变量则返回false，否则返回true<br/>**起始版本：** 12 |
 
 ## 枚举类型说明
@@ -201,7 +201,7 @@ typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, doub
 
 **描述**
 
-定义Web组件滚动时的回调函数的类型。
+Web组件滚动时的回调函数。
 
 **起始版本：** 18
 

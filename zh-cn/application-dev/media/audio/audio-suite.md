@@ -18,7 +18,7 @@
 
 [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)中的引擎是一个统一管理音频管线、控制[离线编辑(C/C++)](audio-suite-manual-rendering.md)和[实时预览(C/C++)](audio-suite-real-time-rendering.md)的对象，开发者可以根据自身的需求搭建音频处理链。调用方式如上图所示，由应用发起，先调用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)的接口依次创建引擎、管线、节点，再把创建的节点在管线内连接起来，用于传输PCM（Pulse Code Modulation）音频数据，使对应的效果节点实现音效处理能力。当管线停止时，开发者可以有限制地（具体规则请参考[管线的使用规则](#管线的使用规则)）连接、断开和移除节点，通过调节节点编排实现复杂的音效处理。
 
-引擎最多支持创建10条管线，其中实时预览管线最多创建1条。
+引擎最多支持创建10条管线。在API版本26.0.0之前，实时预览管线最多创建1条；在API版本26.0.0及以后，不再对实时预览管线的数量做单独限制，但管线的总数仍不得超过10条。
 
 ## 节点
 
@@ -44,7 +44,7 @@
 
 - [离线编辑(C/C++)](audio-suite-manual-rendering.md)场景支持均衡器、音源分离、声场效果、降噪、声音美化、环境效果、混音等音效节点。
     
-- [实时预览(C/C++)](audio-suite-real-time-rendering.md)场景支持均衡器音效节点。
+- [实时预览(C/C++)](audio-suite-real-time-rendering.md)场景在API版本23之前，仅支持均衡器效果节点；在API版本23及以后，支持所有效果节点。
 
 - 均衡器、音源分离、声场效果、降噪等音效节点支持对应的音效处理功能和多音频混音操作，最终输出的PCM音频数据支持格式设置（如[OH_Audio_SampleFormat(位深度)](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[OH_Audio_SampleRate(采样率)](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)和[OH_AudioChannelLayout(声道数)](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)等）。
 
@@ -63,8 +63,8 @@
 
 |状态名  | 功能    |
 |----------|----------|
-| stopped  | 初始状态，或者工作状态经过[OH_AudioSuiteEngine_StopPipeline()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_stoppipeline)命令进入该状态。<br>切换到stopped状态下，各节点将释放缓存。  |
-| running  | 工作状态，或者初始状态执行[OH_AudioSuiteEngine_StartPipeline()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline)命令进入该状态。<br>该函数会对管线进行完整性检查，包含是否有有效连接、节点是否连接错误等。 |
+| stopped  | 初始状态，或者工作状态经过[OH_AudioSuiteEngine_StopPipeline()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_stoppipeline)命令进入该状态。<br>切换到stopped状态后，各节点将释放缓存。  |
+| running  | 工作状态，或者初始状态执行[OH_AudioSuiteEngine_StartPipeline()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline)命令进入该状态。<br>该函数会对管线进行完整性检查，包含是否有有效连接、节点是否存在连接错误等。 |
 
 ### 管线的作用
 
@@ -72,7 +72,7 @@
 
 - 管线使用的场景如下：
 
-  创建一个输入节点、一个效果节点（如均衡器节点[EFFECT_NODE_TYPE_EQUALIZER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)）和一个输出节点，按节点连接顺序（输入节点 -> 效果节点 -> 输出节点）连接组成管线，实现均衡器功能（具体代码用例参考[基础离线编辑](audio-suite-manual-rendering.md#基础离线编辑)）。同时，管线也支持多输入场景（具体代码用例参考[混音与级联](audio-suite-manual-rendering.md#混音与级联)），每条管线输入的PCM数据经过各自的效果节点，在进行混音处理后进行输出。
+  创建一个输入节点、一个效果节点（如均衡器节点[EFFECT_NODE_TYPE_EQUALIZER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)）和一个输出节点，按节点连接顺序（输入节点 -> 效果节点 -> 输出节点）连接组成管线，实现均衡器功能（具体代码用例参考[基础离线编辑](audio-suite-manual-rendering.md#基础离线编辑)）。同时，管线也支持多输入场景（具体代码用例参考[混音与级联](audio-suite-manual-rendering.md#混音与级联)），各路输入的PCM数据经过各自的效果节点，在进行混音处理后输出。
 
 ### 管线的使用规则
 

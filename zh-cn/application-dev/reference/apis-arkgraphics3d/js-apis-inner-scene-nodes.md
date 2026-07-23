@@ -1,7 +1,7 @@
 # SceneNode
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
@@ -124,7 +124,7 @@ function layerMask(): void {
 
 append(item: T): void
 
-追加一个对象到容器。
+追加一个对象到容器。如果追加的对象已存在于容器中，容器会先移除该对象再插入，因此数量不会增加。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -160,7 +160,7 @@ function append(): void {
 
 insertAfter(item: T, sibling: T | null): void
 
-在兄弟节点后面插入对象。
+在兄弟节点后面插入对象。如果插入的对象已存在于容器中，容器会先移除该对象再插入，因此数量不会增加。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -388,6 +388,32 @@ function getNode(): void {
       let geo : Node | null = result.root.getNodeByPath("scene/node");
     }
   });
+}
+```
+
+调用getNodeByPath时需传入节点路径参数path。可通过遍历节点树并打印各节点的属性获取可用的path值，示例如下：
+
+```ts
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+// 打印给定节点的树状结构，每行表示一个节点的路径。
+function printNodeTreeInRelativePath(node: Node | null): void {
+  if (!node) {
+    return;
+  }
+  let basePath: string = node.path + node.name + '/';
+  let printRelative = (n: Node | null): void => {
+    if (!n) {
+      return;
+    }
+    console.info(n.path.substring(basePath.length + 1) + n.name);
+    for (let i = 0; i < n.children.count(); i++) {
+      printRelative(n.children.get(i));
+    }
+  }
+  for (let i = 0; i < node.children.count(); i++) {
+    printRelative(node.children.get(i));
+  }
 }
 ```
 

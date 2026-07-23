@@ -13,9 +13,10 @@
     - [@ohos.app.ability.abilityLifecycleCallback (UIAbility生命周期回调监听器)](js-apis-app-ability-abilityLifecycleCallback.md)
     - [@ohos.app.ability.AbilityStage (AbilityStage组件管理器)](js-apis-app-ability-abilityStage.md)
     - [@ohos.app.ability.ActionExtensionAbility (支持业务操作自定义的ExtensionAbility组件)](js-apis-app-ability-actionExtensionAbility.md)
-    - [@ohos.app.ability.AgentUIExtensionAbility (带界面的智能体拓展组件)](js-apis-agent-agentUIExtensionAbility.md)
+    - [@ohos.app.ability.AgentUIExtensionAbility (带界面的智能体扩展组件)](js-apis-agent-agentUIExtensionAbility.md)
     - [@ohos.app.ability.application (应用工具类)](js-apis-app-ability-application.md)
     - [@ohos.app.ability.ApplicationStateChangeCallback (应用进程状态变化监听器)](js-apis-app-ability-applicationStateChangeCallback.md)
+    - [@ohos.app.ability.appMemoryOptimizer (应用内存优化器)](js-apis-app-ability-appMemoryOptimizer.md)
     - [@ohos.app.ability.AppServiceExtensionAbility (应用后台服务扩展组件)](js-apis-app-ability-appServiceExtensionAbility.md)
     - [@ohos.app.ability.AtomicServiceOptions (openAtomicService可选参数)](js-apis-app-ability-atomicServiceOptions.md)
     - [@ohos.app.ability.autoFillManager (自动填充框架)](js-apis-app-ability-autoFillManager.md)
@@ -117,6 +118,7 @@
     - [@ohos.app.ability.wantConstant (Want常量)](js-apis-app-ability-wantConstant.md)
     <!--Del-->
     - [@ohos.abilityAccessCtrl (程序访问控制管理)(系统接口)](js-apis-abilityAccessCtrl-sys.md)
+    - [@ohos.abilityToolAccessCtrl (工具访问控制)(系统接口)](js-apis-abilityToolAccessCtrl-sys.md)
     - [@ohos.ability.screenLockFileManager (锁屏敏感数据管理)(系统接口)](js-apis-screenLockFileManager-sys.md)
     - [@ohos.app.ability.abilityManager (AbilityManager)(系统接口)](js-apis-app-ability-abilityManager-sys.md)
     - [@ohos.app.ability.appManager (appManager)(系统接口)](js-apis-app-ability-appManager-sys.md)
@@ -373,6 +375,7 @@
     - [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)
     - [OH_AbilityRuntime_ModularObjectExtensionContext*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md)
     - [OH_AbilityRuntime_ModularObjectExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)
+    - [OH_AbilityRuntime_ModObjExtensionInstance*](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance8h.md)
 - 错误码<!--ability-arkts-errcode-->
   - [元能力子系统错误码](errorcode-ability.md)
   - [DistributedSchedule错误码](errorcode-DistributedSchedule.md)
@@ -381,4 +384,6 @@
   - [锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)
   <!--Del-->
   - [应用域名校验错误码](errorcode-appDomainVerify-sys.md)
+  - [工具访问控制错误码](errorcode-abilityToolAccessCtrl-sys.md)
+
   <!--DelEnd-->
