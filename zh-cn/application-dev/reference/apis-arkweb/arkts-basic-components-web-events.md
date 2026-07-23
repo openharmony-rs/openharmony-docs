@@ -8381,13 +8381,13 @@ ArkTS-Dyn: onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 ArkTS-Sta: onOverrideErrorPage(callback: OnOverrideErrorPageCallback | undefined)
 
-网页加载遇到错误时触发，只有主资源出错才会回调该接口，可以使用该接口自定义错误展示页。
+网页加载遇到错误时触发该回调，可用于设置自定义错误页替换ArkWeb提供的默认错误页。默认仅mainframe加载出错时触发；启用subframe错误页功能后，subframe加载出错时也会触发。
 
 > **说明：**
 >
-> 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)接口启用默认错误页后，才会生效。
->
-> 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
+> - 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)<sup>20+</sup>启用mainframe错误页功能后才会生效。如需同时启用subframe错误页功能，请调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)接口并将includeSubframe设置为true。
+> - 通过[errorPageEvent.request.isMainFrame()](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)判断请求来源是mainframe还是subframe，以便在回调中分别设置对应的自定义错误页。
+> - 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8413,25 +8413,26 @@ ArkTS-Dyn示例：
     controller: webview.WebviewController = new webview.WebviewController();
     build() {
       Column() {
-        Web({ src: "www.error-test.com", controller: this.controller })
-         .onControllerAttached(() => {
-              this.controller.setErrorPageEnabled(true);
-              if (!this.controller.getErrorPageEnabled()) {
-                  this.controller.setErrorPageEnabled(true);
-              }
+        Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
+          .onControllerAttached(() => {
+            // 启用mainframe错误页功能，并同时启用subframe错误页功能
+            this.controller.setErrorPageEnabled(true, true);
           })
-          .onOverrideErrorPage(event => {
-                let htmlStr = "<html><h1>error occur : ";
-                htmlStr += event.error.getErrorCode();
-                htmlStr += "</h1></html>";
-                return htmlStr;
+          .onOverrideErrorPage((event) => {
+            let errorCode: number = event.error.getErrorCode();
+            if (event.request.isMainFrame()) {
+              // mainframe加载失败，返回mainframe自定义错误页
+              return "<html><body><h1>主页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
+            }
+            // subframe加载失败，返回subframe自定义错误页
+            return "<html><body><h1>子页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
           })
       }
     }
   }
   ```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
   ```ts
   'use static'
   import { webview } from '@kit.ArkWeb';
@@ -8442,23 +8443,27 @@ ArkTS-Dyn示例：
     controller: webview.WebviewController = new webview.WebviewController(undefined);
     build() {
       Column() {
-        Web({ src: "www.error-test.com", controller: this.controller })
+        Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
           .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true);
-            if (!this.controller.getErrorPageEnabled()) {
-              this.controller.setErrorPageEnabled(true);
-            }
+            // 启用mainframe错误页功能，并同时启用subframe错误页功能
+            this.controller.setErrorPageEnabled(true, true);
           })
-          .onOverrideErrorPage(event => {
-            let htmlStr = "<html><h1>error occur : ";
-            htmlStr += event.error.getErrorCode();
-            htmlStr += "</h1></html>";
-            return htmlStr;
+          .onOverrideErrorPage((event) => {
+            let errorCode: number = event.error.getErrorCode();
+            if (event.request.isMainFrame()) {
+              // mainframe加载失败，返回mainframe自定义错误页
+              return "<html><body><h1>主页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
+            }
+            // subframe加载失败，返回subframe自定义错误页
+            return "<html><body><h1>子页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
           })
       }
     }
   }
   ```
+
+> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+
 ## onSslErrorReceive<sup>(deprecated)</sup>
 
 onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void)
