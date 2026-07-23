@@ -21,7 +21,7 @@ You can use \@Event, a variable decorator in state management V2, to enable a ch
 
 ## Overview
 
-Since the variables decorated with \@Param cannot be changed locally, you can use the \@Event decorator todefine a callback for updating the data source. Combined with the synchronization mechanism of [\@Local](arkts-new-local.md), it allows changes to propagate back to \@Param decorated variables, achieving active updates to @Param decorated variables.
+Since the variables decorated with \@Param cannot be changed locally, you can use the \@Event decorator to define a callback for updating the data source. Combined with the synchronization mechanism of [\@Local](arkts-new-local.md), it allows changes to propagate back to \@Param decorated variables, achieving active updates to @Param decorated variables.
 
 \@Event is used to decorate a component's output methods. When using this decorator, note the following:
 
