@@ -32,4 +32,4 @@
 | level<sup>(deprecated)</sup> | ArkTS-Dyn: [notification.SlotLevel](js-apis-notificationManager.md#slotlevel) | 否 | 是  | 通知级别。<br>从API version 7开始支持，从API version 20开始废弃，建议使用notificationLevel替代。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本**：7 |
 | lockscreenVisibility | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 是  | 在锁定屏幕上显示通知的模式。预留能力，暂不支持。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
 | lightColor           | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 是  | 通知灯颜色。预留能力，暂不支持。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23                |
-| vibrationValues      | ArkTS-Dyn: Array\<number\> <br/>ArkTS-Sta: Array\<long\> | 否 | 是  | 通知振动样式。预留能力，暂不支持。              |
+| vibrationValues      | ArkTS-Dyn: Array\<number\> <br/>ArkTS-Sta: Array\<long\> | 否 | 是  | 通知振动样式。预留能力，暂不支持。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23              |
