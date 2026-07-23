@@ -18,7 +18,7 @@ Init error. The WebviewController must be associated with a Web component.
 
 **错误描述**
 
-WebviewController还没有和具体的Web组件关联，无法进行相应的操作。
+WebviewController尚未与具体Web组件关联，无法进行相应操作。
 
 **可能原因**
 
@@ -92,7 +92,7 @@ Function not enabled.
 
 **处理步骤**
 
-请检查相关功能开关是否已配置打开，如该功能对应的XXXAccess是否配置为true，或检测当前接口是否支持并发。
+请检查相关功能开关是否已配置为true，或检测当前接口是否支持并发。
 
 
 ## 17100005 cookie value格式错误

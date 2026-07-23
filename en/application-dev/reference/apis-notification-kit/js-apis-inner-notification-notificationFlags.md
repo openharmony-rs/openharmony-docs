@@ -6,9 +6,9 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:24.620Z pushedAt=2026-06-30T10:57:37.000Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:08:31.066Z pushedAt=2026-07-21T09:31:51.864Z -->
 
-The **NotificationFlags** module implements a **NotificationFlags** instance.
+The **NotificationFlags** module describes the notification flags. An application can use **NotificationFlags** to reduce the notification reminder types as needed.
 
 > **NOTE**
 >
@@ -35,6 +35,6 @@ Enumerates the notification flag states.
 
 | Name          | Value | Description                              |
 | -------------- | --- | --------------------------------- |
-| TYPE_NONE      | 0   | Default flag, which has the same effect as **TYPE_OPEN**.         |
+| TYPE_NONE      | 0   | Default flag when no flag is set. It has the same effect as **TYPE_OPEN**.     |
 | TYPE_OPEN      | 1   | The notification flag is opened.                    |
 | TYPE_CLOSE     | 2   | The notification flag is closed.                    |

@@ -125,10 +125,17 @@ type=time：
 
 ```js
 /* xxx.js */
+import app from '@system.app';
+
 export default {
   data: {
     defaultTime: "",
     time: "",
+  },
+  handleSwipe(event) {
+    if (event.direction === "right") {
+      app.terminate();
+    }
   },
   onInit() {
     this.defaultTime = this.now();

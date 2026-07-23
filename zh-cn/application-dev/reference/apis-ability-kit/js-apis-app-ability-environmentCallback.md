@@ -27,7 +27,11 @@ import { EnvironmentCallback } from '@kit.AbilityKit';
 
 onConfigurationUpdated(config: Configuration): void
 
-[注册系统环境变化的监听](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)后，在系统环境变化时触发回调。
+注册系统环境变化的监听[ApplicationContext.on('environment')](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)后，在系统环境变化时触发回调。
+
+> **说明：**
+> 
+> onConfigurationUpdated回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务。因此，不建议在该回调中释放UI组件。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -47,11 +51,11 @@ onConfigurationUpdated(config: Configuration): void
 
 onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
-[注册系统环境变化的监听](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)后，在系统内存变化时触发回调。
+注册系统环境变化的监听[ApplicationContext.on('environment')](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)后，在系统内存变化时触发回调。
 
 > **说明：**
 > 
-> onMemoryLevel回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务，因此不建议在该回调中释放UI组件。
+> onMemoryLevel回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务。因此，不建议在该回调中释放UI组件。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 

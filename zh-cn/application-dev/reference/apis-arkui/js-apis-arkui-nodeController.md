@@ -24,7 +24,7 @@ import { NodeController } from '@kit.ArkUI';
 
 ## NodeController
 
-通常搭配[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)使用。用于创建控制器，管理绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)组件。一个NodeController只允许与一个[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)进行绑定。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations)。
+通常搭配[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)使用。用于创建控制器，管理绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)组件。一个NodeController只允许与一个[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)进行绑定。最佳实践请参考组件动态创建-[组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-ui-component-dynamic-creation#组件动态添加更新和删除)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
