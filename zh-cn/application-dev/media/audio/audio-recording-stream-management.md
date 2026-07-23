@@ -74,13 +74,19 @@
 1. 创建AudioStreamManager实例。
 
    <!-- @[get_StreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    
    let audioManager = audio.getAudioManager();
    let audioStreamManager = audioManager.getStreamManager();
+   let audioVolumeGroupManager: audio.AudioVolumeGroupManager | undefined;
+   const micCapturerInfo: audio.AudioCapturerInfo = {
+     source: audio.SourceType.SOURCE_TYPE_MIC,
+     capturerFlags: 0
+   };
+   const MIC_OCCUPATION_AMPLITUDE_SAMPLE_INTERVAL_MS: number = 500;
    ```
 
 2. 使用[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)监听音频录制流变化事件。如果应用需要在音频录制流状态变化、设备变化时获取通知，可以订阅该事件。
