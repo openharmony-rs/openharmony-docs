@@ -1,5 +1,4 @@
 # @ohos.batteryInfo (电量信息)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: PowerManager-->
 <!--Owner: @zhang-yinglie; @volcano_wang-->
