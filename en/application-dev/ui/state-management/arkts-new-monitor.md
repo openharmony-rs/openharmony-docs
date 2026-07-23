@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:12:52.061Z pushedAt=2026-07-23T01:32:24.366Z -->
+<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:12:52.061Z pushedAt=2026-07-23T04:53:23.763Z -->
 
 To enhance the state management framework's capability of monitoring State Variable changes, you can use the [\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitor) decorator to listen for State Variable changes.
 
@@ -44,7 +44,7 @@ The @Monitor decorator is used to listen for changes to state variables, enablin
 
 Since API version 26.0.0, you can configure [MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitordecoratoroptions) to obtain the following capability enhancements:
 
-- Supports setting the wildcard "*" in the listening path for fuzzy monitoring of internal object changes, including changes to any \@Trace property in \@ObservedV2, changes caused by API calls of built-in types (Array, Map, Date, Set), and more. For details, see [Listening for Paths Containing Wildcards](#listening-for-paths-containing-wildcards).
+- Supports setting the wildcard "*" in the listening path for fuzzy monitoring of internal object changes, including changes to any \@Trace property in \@ObservedV2, changes caused by API calls of built-in types (Array, Map, Date, Set), and more. For details, see [Listening for Paths with Wildcards](#listening-for-paths-with-wildcards).
 
 - Corrects some capabilities of \@Monitor. For details, see [Comparison of \@Monitor Before and After Using Configuration Options](#comparison-of-monitor-before-and-after-using-configuration-options).
 

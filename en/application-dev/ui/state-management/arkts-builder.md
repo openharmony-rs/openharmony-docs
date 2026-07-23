@@ -2001,3 +2001,5 @@ struct Child2 {
 Example effect:
 
 ![arkts-builder-faq-watch-builder.gif](./figures/arkts-builder-faq-watch-builder.gif)
+
+<!--no_check-->

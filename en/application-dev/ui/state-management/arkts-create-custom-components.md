@@ -984,4 +984,4 @@ Static code blocks are used to initialize static attributes.
 
 For details about how to mix \@Component decorated custom components with \@ComponentV2 decorated custom components, <!--RP1-->see [Mixed Use of State Management V1 and V2](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP1End-->.
 
-ts-custom-component-decorator-component.md
+<!--no_check-->
