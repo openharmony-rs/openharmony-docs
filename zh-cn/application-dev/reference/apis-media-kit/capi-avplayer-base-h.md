@@ -148,7 +148,7 @@ enum AVPlayerSeekMode
 | 枚举项 | 描述 |
 | -- | -- |
 | AV_SEEK_NEXT_SYNC = 0 | 同步到时间点之后的关键帧。 |
-| AV_SEEK_PREVIOUS_SYNC | 同步到时间点之前的关键帧。 |
+| AV_SEEK_PREVIOUS_SYNC = 1 | 同步到时间点之前的关键帧。 |
 | AV_SEEK_CLOSEST = 2 | 同步到距离指定时间点最近的帧。<br>**起始版本：** 12 |
 | AV_SEEK_CONTINUOUS = 3 | 连续拖动模式下的跳转（seek），适用于播放器进度条拖动等需要连续跳转的场景。该模式可提供更流畅的拖拽体验，但要求设备支持对当前流执行连续跳转。在调用连续跳转前，请先检查是否支持，参见[OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported)。<br>**起始版本：** 23 |
 
@@ -172,11 +172,11 @@ enum AVPlaybackSpeed
 | AV_SPEED_FORWARD_1_25_X = 2 | 1.25倍速播放。 |
 | AV_SPEED_FORWARD_1_75_X = 3 | 1.75倍速播放。 |
 | AV_SPEED_FORWARD_2_00_X = 4 | 2.0倍速播放。 |
-| AV_SPEED_FORWARD_0_50_X | 0.5倍速播放。<br>**起始版本：** 12 |
-| AV_SPEED_FORWARD_1_50_X | 1.5倍速播放。<br>**起始版本：** 12 |
-| AV_SPEED_FORWARD_3_00_X | 3.0倍速播放。<br>**起始版本：** 13 |
-| AV_SPEED_FORWARD_0_25_X | 0.25倍速播放。<br>**起始版本：** 13 |
-| AV_SPEED_FORWARD_0_125_X | 0.125倍速播放。<br>**起始版本：** 13 |
+| AV_SPEED_FORWARD_0_50_X = 5 | 0.5倍速播放。<br>**起始版本：** 12 |
+| AV_SPEED_FORWARD_1_50_X = 6 | 1.5倍速播放。<br>**起始版本：** 12 |
+| AV_SPEED_FORWARD_3_00_X = 7 | 3.0倍速播放。<br>**起始版本：** 13 |
+| AV_SPEED_FORWARD_0_25_X = 8 | 0.25倍速播放。<br>**起始版本：** 13 |
+| AV_SPEED_FORWARD_0_125_X = 9 | 0.125倍速播放。<br>**起始版本：** 13 |
 
 ### AVPlayerOnInfoType
 
