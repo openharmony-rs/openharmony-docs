@@ -617,8 +617,8 @@ NODE_TEXT_INPUT_CARET_OFFSET = 7023
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 光标所在位置的索引值。 |
-| .value[1].f32 | 光标相对输入框的x坐标位值。 |
-| .value[2].f32 | 光标相对输入框的y坐标位值。 |
+| .value[1].f32 | 光标相对输入框的x坐标值。 |
+| .value[2].f32 | 光标相对输入框的y坐标值。 |
 
 ## NODE_TEXT_INPUT_CONTENT_RECT
 
@@ -1641,8 +1641,8 @@ NODE_TEXT_AREA_CARET_OFFSET = 8015
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 光标所在位置的索引值。 |
-| .value[1].f32 | 光标相对输入框的x坐标位值。 |
-| .value[2].f32 | 光标相对输入框的y坐标位值。 |
+| .value[1].f32 | 光标相对输入框的x坐标值。 |
+| .value[2].f32 | 光标相对输入框的y坐标值。 |
 
 ## NODE_TEXT_AREA_CONTENT_RECT
 
