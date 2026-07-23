@@ -645,8 +645,83 @@ ArkTS-Sta: type ButtonTriggerClickCallback = (xPos: double, yPos: double) => voi
 
 该示例实现了两种创建按钮的方式，包含子组件或使用文本内容创建相应的按钮。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct ButtonExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
+      Text('Normal button').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('OK', { type: ButtonType.Normal, stateEffect: true })
+          .borderRadius(8)
+          .backgroundColor(0x317aff)
+          .width(90)
+          .onClick(() => {
+            console.info('ButtonType.Normal');
+          })
+        Button({ type: ButtonType.Normal, stateEffect: true }) {
+          Row() {
+            LoadingProgress().width(20).height(20).margin({ left: 12 }).color(0xFFFFFF)
+            Text('loading').fontSize(12).fontColor(0xffffff).margin({ left: 5, right: 12 })
+          }.alignItems(VerticalAlign.Center)
+        }.borderRadius(8).backgroundColor(0x317aff).width(90).height(40)
+
+        Button('Disable', { type: ButtonType.Normal, stateEffect: false }).opacity(0.4)
+          .borderRadius(8).backgroundColor(0x317aff).width(90)
+      }
+
+      Text('Capsule button').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('OK', { type: ButtonType.Capsule, stateEffect: true }).backgroundColor(0x317aff).width(90)
+        Button({ type: ButtonType.Capsule, stateEffect: true }) {
+          Row() {
+            LoadingProgress().width(20).height(20).margin({ left: 12 }).color(0xFFFFFF)
+            Text('loading').fontSize(12).fontColor(0xffffff).margin({ left: 5, right: 12 })
+          }.alignItems(VerticalAlign.Center).width(90).height(40)
+        }.backgroundColor(0x317aff)
+
+        Button('Disable', { type: ButtonType.Capsule, stateEffect: false }).opacity(0.4)
+          .backgroundColor(0x317aff).width(90)
+      }
+
+      Text('Circle button').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap }) {
+        Button({ type: ButtonType.Circle, stateEffect: true }) {
+          LoadingProgress().width(20).height(20).color(0xFFFFFF)
+        }.width(55).height(55).backgroundColor(0x317aff)
+
+        Button({ type: ButtonType.Circle, stateEffect: true }) {
+          LoadingProgress().width(20).height(20).color(0xFFFFFF)
+        }.width(55).height(55).margin({ left: 20 }).backgroundColor(0xF55A42)
+      }
+    }.height(400).padding({ left: 35, right: 35, top: 35 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Flex,
+  Text,
+  Button,
+  Row,
+  LoadingProgress,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  ButtonType,
+  VerticalAlign,
+  FlexWrap
+} from '@kit.ArkUI';
+
 @Entry
 @Component
 struct ButtonExample {
@@ -707,6 +782,8 @@ struct ButtonExample {
 
 该示例通过if/else控制按钮的显示文本。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -733,11 +810,50 @@ struct ButtonRenderControlExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Text,
+  Button,
+  FlexAlign,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ButtonRenderControlExample {
+  @State count: int = 0;
+
+  build() {
+    Column() {
+      Text(`${this.count}`)
+        .fontSize(30)
+        .onClick(() => {
+          this.count++;
+        })
+      if (this.count <= 0) {
+        Button('count is negative').fontSize(30).height(50)
+      } else if (this.count % 2 === 0) {
+        Button('count is even').fontSize(30).height(50)
+      } else {
+        Button('count is odd').fontSize(30).height(50)
+      }
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ![ifButton](figures/ifButton.gif)
 
 ### 示例3 （设置按钮文本样式）
 
 该示例通过配置labelStyle自定义按钮文本的显示样式。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -775,11 +891,63 @@ struct ButtonTestDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Row,
+  Column,
+  Button,
+  ButtonType,
+  TextOverflow,
+  FontWeight,
+  FontStyle,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ButtonTestDemo {
+  @State txt: string = 'overflowTextOverLengthTextOverflow.Clip';
+  @State widthShortSize: int = 205;
+
+  build() {
+    Row() {
+      Column() {
+        Button(this.txt)
+          .type(ButtonType.Capsule)
+          .width(this.widthShortSize)
+          .height(100)
+          .backgroundColor(0x317aff)
+          .labelStyle({ overflow: TextOverflow.Clip,
+            maxLines: 1,
+            minFontSize: 20,
+            maxFontSize: 20,
+            font: {
+              size: 20,
+              weight: FontWeight.Bolder,
+              family: 'cursive',
+              style: FontStyle.Italic
+            }
+          })
+          .fontSize(40)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![image-20230711171138661](figures/imageButtonLabelStyle.png)
 
 ### 示例4（设置不同尺寸按钮的重要程度）
 
 该示例通过配置controlSize、buttonStyle实现不同尺寸按钮的重要程度。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -813,11 +981,61 @@ struct ButtonExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Flex,
+  Text,
+  Button,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  ButtonStyleMode,
+  ControlSize
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ButtonExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
+      Text('Normal size button').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('Emphasized', { buttonStyle: ButtonStyleMode.EMPHASIZED });
+        Button('Normal', { buttonStyle: ButtonStyleMode.NORMAL });
+        Button('Textual', { buttonStyle: ButtonStyleMode.TEXTUAL });
+      }
+
+      Text('Small size button').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('Emphasized', { controlSize: ControlSize.SMALL, buttonStyle: ButtonStyleMode.EMPHASIZED });
+        Button('Normal', { controlSize: ControlSize.SMALL, buttonStyle: ButtonStyleMode.NORMAL });
+        Button('Textual', { controlSize: ControlSize.SMALL, buttonStyle: ButtonStyleMode.TEXTUAL });
+      }
+
+      Text('Small size button').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('Emphasized').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.EMPHASIZED);
+        Button('Normal').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.NORMAL);
+        Button('Textual').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.TEXTUAL);
+      }
+
+    }.height(400).padding({ left: 35, right: 35, top: 35 })
+  }
+}
+```
+
 ![image-20230711171138661](figures/buttonstyleandsize.jpeg)
 
 ### 示例5（设置按钮的角色）
 
 该示例通过配置role实现按钮的角色。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -842,10 +1060,52 @@ struct ButtonExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Flex,
+  Text,
+  Button,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  ButtonStyleMode,
+  ButtonRole
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ButtonExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
+      Text('Role is Normal button').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('Emphasized', { buttonStyle: ButtonStyleMode.EMPHASIZED, role: ButtonRole.NORMAL });
+        Button('Normal', { buttonStyle: ButtonStyleMode.NORMAL, role: ButtonRole.NORMAL });
+        Button('Textual', { buttonStyle: ButtonStyleMode.TEXTUAL, role: ButtonRole.NORMAL });
+      }
+      Text('Role is Error button').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('Emphasized', { buttonStyle: ButtonStyleMode.EMPHASIZED, role: ButtonRole.ERROR});
+        Button('Normal', { buttonStyle: ButtonStyleMode.NORMAL, role: ButtonRole.ERROR });
+        Button('Textual', { buttonStyle: ButtonStyleMode.TEXTUAL, role: ButtonRole.ERROR });
+      }
+    }.height(200).padding({ left: 15, right: 15, top: 35 })
+  }
+}
+```
+
 ![buttonrole](figures/buttonrole.jpeg)
 
 ### 示例6（设置自定义样式按钮）
 该示例实现了自定义样式的功能，自定义样式实现了一个圆圈替换原本的按钮样式。如果按压，圆圈将变成红色，标题会显示按压字样；如果没有按压，圆圈将变成黑色，标题会显示非按压字样。
+
+ArkTS-Dyn示例：
+
 ```ts
 class MyButtonStyle implements ContentModifier<ButtonConfiguration> {
   x: number = 0;
@@ -910,10 +1170,106 @@ struct ButtonExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Row,
+  Text,
+  Button,
+  Circle,
+  Toggle,
+  ToggleType,
+  Color,
+  FlexAlign,
+  ContentModifier,
+  ButtonConfiguration,
+  WrappedBuilder,
+  wrapBuilder,
+  TapGesture,
+  GestureEvent,
+  ClickEvent,
+  ColumnOptions,
+  State
+} from '@kit.ArkUI';
+
+@Builder
+function buildButton1(config: ButtonConfiguration) {
+  Column({ space: 30 } as ColumnOptions) {
+    Text(config.enabled ? "enabled true" : "enabled false")
+    Text('圆圈状态' + (config.pressed ? "（ 按压 ）" : "（ 非按压 ）"))
+    Text('点击位置x坐标：' + (config.enabled ? (config.contentModifier as MyButtonStyle).x : "0"))
+    Text('点击位置y坐标：' + (config.enabled ? (config.contentModifier as MyButtonStyle).y : "0"))
+    Circle({ width: 50, height: 50 })
+      .fill(config.pressed ? (config.contentModifier as MyButtonStyle).selectedColor : Color.Black)
+      .gesture(
+        TapGesture({ count: 1 }).onAction((event: GestureEvent) => {
+          config.triggerClick(event.fingerList[0].localX, event.fingerList[0].localY)
+        })).opacity(config.enabled ? 1 : 0.1)
+  }
+}
+
+type ButtonBuilder = @Builder (config: ButtonConfiguration) => void;
+
+class MyButtonStyle implements ContentModifier<ButtonConfiguration> {
+  x: double = 0;
+  y: double = 0;
+  selectedColor: Color = Color.Black;
+
+  constructor(x: double, y: double, colorType: Color) {
+    this.x = x;
+    this.y = y;
+    this.selectedColor = colorType;
+  }
+
+  applyContent(): WrappedBuilder<ButtonBuilder> {
+    return wrapBuilder(buildButton1);
+  }
+}
+
+@Entry
+@Component
+struct ButtonExample {
+  @State buttonEnabled: boolean = true;
+  @State positionX: double = 0;
+  @State positionY: double = 0;
+  @State state: boolean[] = [true, false];
+  @State index: int = 0;
+
+  build() {
+    Column() {
+      Button('OK')
+        .contentModifier(new MyButtonStyle(this.positionX, this.positionY, Color.Red))
+        .onClick((event: ClickEvent) => {
+          console.info('change' + JSON.stringify(event));
+          this.positionX = event.displayX;
+          this.positionY = event.displayY;
+        }).enabled(this.buttonEnabled)
+      Row() {
+        Toggle({ type: ToggleType.Switch, isOn: true }).onChange((value: boolean) => {
+          if (value) {
+            this.buttonEnabled = true;
+          } else {
+            this.buttonEnabled = false;
+          }
+        }).margin({ left: -80 })
+      }
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ![buttonrole](figures/buttonbuilder.gif)
 
 ### 示例7（设置圆角矩形按钮）
 该示例通过配置ButtonType.ROUNDED_RECTANGLE创建圆角矩形按钮。
+
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -949,12 +1305,68 @@ struct ButtonExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Flex,
+  Text,
+  Button,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  ButtonType,
+  ControlSize,
+  TextOverflow
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ButtonExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
+      Text('Rounded rectangle button with rounded corners by default.').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('Rounded rectangle')
+          .type(ButtonType.ROUNDED_RECTANGLE)
+          .backgroundColor(0x317aff)
+          .controlSize(ControlSize.NORMAL)
+          .width(180)
+      }
+      Text('Rounded rectangle button configured with a borderRadius of 5.').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('Rounded rectangle')
+          .type(ButtonType.ROUNDED_RECTANGLE)
+          .backgroundColor(0x317aff)
+          .controlSize(ControlSize.NORMAL)
+          .width(180)
+          .borderRadius(5)
+      }
+      Text('Rounded rectangle button configured extra long text.').fontSize(9).fontColor(0xCCCCCC)
+      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Button('Rounded rectangle Rounded rectangle Rounded rectangle Rounded rectangle')
+          .type(ButtonType.ROUNDED_RECTANGLE)
+          .backgroundColor(0x317aff)
+          .width(180)
+          .labelStyle({overflow:TextOverflow.Ellipsis, maxLines:3, minFontSize: 0})
+      }
+    }.height(400).padding({ left: 35, right: 35, top: 35 })
+  }
+}
+```
+
 ![roundedrectbutton](figures/roundedrectbutton.jpeg)
 
 ### 示例8（设置label文本水平对齐方式）
 该示例通过配置[LabelStyle](#labelstyle10对象说明)的textAlign，设置文本对齐方式。
 
 从API version 23开始，新增textAlign接口。
+
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -972,4 +1384,34 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  TextAlign,
+  HorizontalAlign
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      Button('helloWorld helloWorld helloWorld helloWorld helloWorld helloWorld')
+        .width(200)
+        .labelStyle({
+          textAlign: TextAlign.Center
+        })
+    }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
 ![buttontextalign](figures/buttontextalign.jpeg)
