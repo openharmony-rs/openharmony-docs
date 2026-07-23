@@ -864,7 +864,7 @@ OH_AVErrCode OH_AVCapability_GetVideoSupportedPixelFormats(OH_AVCapability *capa
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | 视频编解码能力指针。如果给的是音频编解码器能力指针，会导致未定义行为。 |
-| const int32_t **pixelFormats | 输出参数。指向视频像素格式数组的指针。参考[OH_AVPixelFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md#oh_avpixelformat) |
+| const int32_t **pixelFormats | 输出参数。指向视频像素格式数组的指针。参考[OH_AVPixelFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md#oh_avpixelformat)。 |
 | uint32_t *pixelFormatNum | 输出参数。像素格式数组的元素数目。 |
 
 **返回：**
