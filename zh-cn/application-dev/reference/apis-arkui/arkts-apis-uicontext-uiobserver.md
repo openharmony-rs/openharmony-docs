@@ -663,7 +663,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -1948,7 +1948,7 @@ on(type: 'willClick', callback: GestureEventListenerCallback): void
 // Index.ets
 // 演示uiObserver.on('willClick', callback)
 // uiObserver.off('willClick', callback)
-// uiObserver.off('didClick', callback)
+// uiObserver.on('didClick', callback)
 // uiObserver.off('didClick', callback)
 
 // 定义监听回调函数
@@ -4034,13 +4034,13 @@ struct Index {
   private removeGlobalListeners() {
     const observer = this.getUIContext().getUIObserver();
     if (this.tapCallback) {
-      observer.removeGlobalGestureListener(0, this.tapCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.TAP, this.tapCallback);
     }
     if (this.panCallback) {
-      observer.removeGlobalGestureListener(2, this.panCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.PAN, this.panCallback);
     }
     if (this.longPressCallback) {
-      observer.removeGlobalGestureListener(1, this.longPressCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.LONG_PRESS, this.longPressCallback);
     }
   }
 

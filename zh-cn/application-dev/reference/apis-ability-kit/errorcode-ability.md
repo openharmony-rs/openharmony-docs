@@ -295,7 +295,7 @@ Redirection to a third-party application is not allowed in API version greater t
 
 使用隐式启动方式或通过[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)跳转其他应用。
 
-## 16000019 隐式启动未查找到匹配应用
+## 16000019 隐式启动未查找到匹配Ability
 
 **错误信息**
 
@@ -361,7 +361,7 @@ Internal error.
 3. 确保设备上已安装应用市场App，或者在拉起应用前检查应用市场App是否已安装。
 4. 对于开发者无法处理的系统内部错误，请尝试重新调用该接口，或者重启设备。
 
-## 16000053 非顶层应用
+## 16000053 非顶层Ability
 
 **错误信息**
 
@@ -369,17 +369,17 @@ The ability is not on the top of the UI.
 
 **错误描述**
 
-当前应用未显示在界面顶层时，方法将返回该错误码。
+当前Ability未显示在界面顶层时，方法将返回该错误码。
 
 **可能原因**
 
-用户执行免安装启动时需要确保应用在前台，但应用未显示在界面顶层。
+用户执行免安装启动时需要确保Ability在前台，但Ability未显示在界面顶层。
 
 **处理步骤**
 
-1. 请确保当前应用已启动并处于前台运行状态。
-2. 请核实应用界面是否完全显示，且未被其他应用窗口遮挡或最小化。
-3. 如设备启用了分屏或多窗口模式，请确保当前应用为焦点窗口。
+1. 请确保当前Ability已启动并处于前台运行状态。
+2. 请核实Ability界面是否完全显示，且未被其他Ability窗口遮挡或最小化。
+3. 如设备启用了分屏或多窗口模式，请确保当前Ability为焦点窗口。
 
 ## 16000055 免安装超时
 
@@ -749,7 +749,7 @@ BackToCaller is not supported.
 
 **错误信息**
 
-The app instance key is invalid.
+The app instance key does not exist.
 
 **错误描述**
 
@@ -1263,7 +1263,7 @@ Want中的deviceId不为空且非本机的设备ID。
 
 将Want中的deviceId字段设为空，或配置为本机的deviceId。
 
-## 16000125 不支持启动插件
+## 16000125 不支持启动插件UIAbility
 
 **错误信息**
 
@@ -1660,7 +1660,7 @@ The target application is not the current application.
 
 **错误信息**
 
-The bundle does not exist or no patch has been applied.
+Invalid bundle name.
 
 **错误描述**
 
@@ -1738,15 +1738,15 @@ The observer does not exist.
 
 **错误描述**
 
-当监听器不存在时，方法将返回该错误码。
+当observer不存在时，方法将返回该错误码。
 
 **可能原因**
 
-当前监听器不存在或者已注销。
+当前observer不存在或者已注销。
 
 **处理步骤**
 
-请检查是否有重复注销监听器。
+请检查是否有重复注销observer。
 
 <!--Del-->
 ## 16300005 指定的包信息不存在
@@ -1771,7 +1771,7 @@ The target bundle does not exist.
 
 **错误信息**
 
-The target bundle has no MainAbility.
+The target bundle has no main UIAbility.
 
 **错误描述**
 
@@ -1841,7 +1841,7 @@ Internal error.
 1. 确认系统内存是否足够，设备使用的系统版本是否存在异常。
 2. 尝试重启设备。
 
-## 29600002 图片编辑内部错误
+## 29600002 图片输入错误
 
 **错误信息**
 
@@ -1993,7 +1993,7 @@ The input bundleName is not a system HSP.
 
 **错误信息**
 
-Invalid main element type.
+The main element is not an appService ExtensionAbility.
 
 **错误描述**
 
@@ -2815,7 +2815,7 @@ No tool with the specified name exists.
 
 **错误信息**
 
-Maximum number of processes has been reached.
+Maximum number of concurrent tools has been reached.
 
 **错误描述**
 
@@ -2941,7 +2941,7 @@ The function execution timed out.
 检查函数执行过程和执行环境，稍后重试。
 <!--DelEnd-->
 
-## 16000161 当前进程的处理流程尚未结束，无法调用此API
+## 16000161 当前进程延迟退出未处于等待状态，无法调用此API
 
 **错误信息**
 

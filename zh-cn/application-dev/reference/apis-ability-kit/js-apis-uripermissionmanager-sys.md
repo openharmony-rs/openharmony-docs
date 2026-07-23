@@ -510,7 +510,7 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 |
-| targetBundleName | string | 是 | 被撤销授权URI的应用包名。 |
+| targetBundleName | string | 是 | 被授权URI的应用包名。 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示撤销成功，返回-1表示撤销失败。 |
 
 **错误码：**

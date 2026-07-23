@@ -23,7 +23,8 @@ enum EnumName {
   Member3
 }
 ```
-数字枚举是成员值为数字类型的枚举，默认从0开始自动递增，也可以手动指定初始值。
+
+数值枚举是成员值为数字类型的枚举，默认从0开始自动递增，也可以手动指定初始值。
 
 字符串枚举是成员值为字符串类型的枚举，必须为每个成员显式赋值，不支持自动递增和反向映射。
 
@@ -1155,7 +1156,7 @@ let tsUeBad: TsUeCircle = { kind: TsShapeKind.Square, radius: 10 };
 
 ## const enum
 
-`const enum`在编译时内联成员值，不生成运行时枚举对象。ArkTS支持`const enum`。但需注意：在跨项目共享时（通过`.d.ts`文件），存在`isolatedModules`不兼容和版本不匹配风险。`isolatedModules`是编译器选项，要求每个文件可独立编译——`const enum`的成员值在编译时被内联到使用处，跨文件使用时消费方无法看到原始`const enum`定义，导致类型信息丢失。推荐项目内部使用`const enum`，跨项目共享时使用普通枚举。
+`const enum`在编译时内联成员值，不生成运行时枚举对象。ArkTS支持`const enum`。但需注意：在跨项目共享时（通过`.d.ts`文件）存在版本依赖风险——`const enum`的成员值在编译时被内联到消费方的代码中，若`const enum`源定义变更，消费方需重新编译才能获取新值。推荐项目内部使用`const enum`，跨项目共享时使用普通枚举。
 
 <!-- @[const_enum_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
 

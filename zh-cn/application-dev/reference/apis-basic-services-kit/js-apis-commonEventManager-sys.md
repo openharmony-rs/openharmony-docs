@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供了公共事件相关的系统接口能力，包括发布公共事件到指定用户、移除粘性公共事件以及设置静态订阅公共事件的使能状态。粘性公共事件是指发布后会被系统保留的公共事件，当新的订阅者注册后仍可接收到该事件；非粘性事件仅投递给发布时已注册的订阅者。
+本模块提供了公共事件相关的系统接口能力，包括发布公共事件到指定用户、移除粘性公共事件以及设置静态订阅公共事件的使能状态。
 
 > **说明：**
 >
@@ -59,7 +59,7 @@ ArkTS-Sta: publishAsUser(event: string, userId: int, callback: AsyncCallback\<vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -143,7 +143,7 @@ ArkTS-Sta: publishAsUser(event: string, userId: int, options: CommonEventPublish
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -235,7 +235,7 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -304,7 +304,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -365,7 +365,7 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -432,7 +432,7 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -499,7 +499,7 @@ setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[公共事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |

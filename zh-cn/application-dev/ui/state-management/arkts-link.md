@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-子组件中被\@Link装饰的变量与其父组件中对应的数据源建立双向数据绑定。
+子组件中被[\@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link.md#link)装饰的变量与其父组件中对应的数据源建立双向数据绑定。
 
 在阅读\@Link文档前，建议先熟悉[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 

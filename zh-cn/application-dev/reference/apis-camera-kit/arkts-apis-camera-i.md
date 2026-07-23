@@ -195,11 +195,11 @@
 
 | 名称      | 类型                            | 只读 | 可选 | 说明                                                                   |
 | -------- | ------------------------------- | ---- | ---- |----------------------------------------------------------------------|
-| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | 否   | 是   | 图片质量。<br>当quality未下发时，默认按CompressionQuality下发生效；若quality与CompressionQuality同时下发则按CompressionQuality下发生效；若quality与CompressionQuality均未下发则图片质量默认是高等。                                                           |
+| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | 否   | 是   | 图片质量。<br>当quality未下发时，默认按compressionQuality下发生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与compressionQuality均未下发则图片质量默认是高等。                                                           |
 | rotation | [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 否   | 是   | 图片旋转角度（默认0度，顺时针旋转）。                                                  |
 | location | [Location](#location)           | 否   | 是   | 图片地理位置信息（默认以设备硬件信息为准）。                                               |
 | mirror   | boolean                         | 否   | 是   | 镜像使能开关（默认关）。使用之前需要使用[isMirrorSupported](arkts-apis-camera-PhotoOutput.md#ismirrorsupported)进行判断是否支持。true表示使能，false表示不使能。 |
-| CompressionQuality   | number                         | 否   | 是   | 图片压缩质量值，取值范围为(1, 100)。<br>当CompressionQuality未下发时，默认按quality生效；若quality与CompressionQuality同时下发则按CompressionQuality下发生效；若quality与CompressionQuality均未下发则图片质量默认是高等。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
+| compressionQuality   | number                         | 否   | 是   | 图片压缩质量值，取值范围为(1, 100)。<br>当compressionQuality未下发时，默认按quality生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与compressionQuality均未下发则图片质量默认是高等。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
 
 ## FrameShutterInfo
 
@@ -267,7 +267,7 @@
 
 ## Rect
 
-矩形定义，返回的检测点坐标系以设备充电口在右侧时的横向设备方向为基准。该坐标系左上角为（0，0），右下角为（1，1），其中（topLeftX，topLeftY）表示矩形区域的左上角坐标，width和height分别表示矩形区域的宽和高。因此在实际使用中根据业务诉求需要裁剪或者选择人脸区域时，必须将矩形区域的x坐标和y坐标分别乘以实际相机预览输出流的宽和高，即可得到裁剪后的人脸矩形区域。
+相机矩形。用于各类检测对象的矩形框绘制。返回的检测点坐标系以设备充电口在右侧时的横向设备方向为基准。该坐标系左上角为（0，0），右下角为（1，1），其中（topLeftX，topLeftY）表示矩形区域的左上角坐标，width和height分别表示矩形区域的宽和高。因此在实际使用中根据业务诉求需要裁剪或者选择人脸区域时，必须将矩形区域的x坐标和y坐标分别乘以实际相机预览输出流的宽和高，即可得到裁剪后的人脸矩形区域。
 
 实际预览流的宽高指的是相机输出流的分辨率，请参考[profile](arkts-apis-camera-i.md#profile)中的size。
 

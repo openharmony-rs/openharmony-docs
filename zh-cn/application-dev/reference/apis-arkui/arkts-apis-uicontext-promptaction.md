@@ -88,7 +88,7 @@ struct Index {
               .then(() => {
                 let topOrder: LevelOrder = this.promptAction.getTopOrder();
                 if (topOrder !== undefined) {
-                  console.error('topOrder: ' + topOrder.getOrder());
+                  console.info('topOrder: ' + topOrder.getOrder());
                 }
               })
           })
@@ -168,7 +168,7 @@ struct Index {
               .then(() => {
                 let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
                 if (bottomOrder !== undefined) {
-                  console.error('bottomOrder: ' + bottomOrder.getOrder());
+                  console.info('bottomOrder: ' + bottomOrder.getOrder());
                 }
               })
           })
@@ -1179,7 +1179,7 @@ struct Index {
                   console.info('succeeded');
                 })
                 .catch((error: BusinessError) => {
-                  console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+                  console.error(`CloseCustomDialog args error code is ${error.code}, message is ${error.message}`);
                 })
             }, 2000); // 2秒后自动关闭
           })

@@ -323,7 +323,7 @@ try {
 
 isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
-查询是否可以添加卡片到卡片使用方，使用callback异步回调。
+查询是否可以发布卡片到卡片使用方，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -337,7 +337,7 @@ isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 返回查询结果的回调函数。<br>true: 表示可以添加卡片到卡片使用方。<br>false: 表示不可以添加卡片到卡片使用方。|
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 返回查询结果的回调函数。<br>true: 表示可以发布卡片到卡片使用方。<br>false: 表示不可以发布卡片到卡片使用方。|
 
 **错误码：**
 
@@ -441,7 +441,7 @@ try {
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
-查询是否可以添加卡片到卡片使用方，使用Promise异步回调。
+查询是否可以发布卡片到卡片使用方，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -455,7 +455,7 @@ isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回是否可以添加卡片到卡片使用方的结果。<br>true: 表示可以添加卡片到卡片使用方。<br>false: 表示不可以添加卡片到卡片使用方。|
+| Promise&lt;boolean&gt; | Promise对象。返回是否可以发布卡片到卡片使用方的结果。<br>true: 表示可以发布卡片到卡片使用方。<br>false: 表示不可以发布卡片到卡片使用方。|
 
 **错误码：**
 
@@ -814,7 +814,7 @@ try {
 
 onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
 
-订阅跨应用加桌管控，使用callback异步回调。
+订阅跨应用加桌管控。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -832,7 +832,7 @@ onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControl
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 是 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 是 | 跨应用加桌管控的回调函数。|
 
 **错误码：**
 
@@ -965,7 +965,7 @@ try {
 
 offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
 
-取消订阅跨应用加桌管控，使用callback异步回调。
+取消订阅跨应用加桌管控。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -983,7 +983,7 @@ offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleContr
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 跨应用加桌管控的回调函数，不传则取消所有已订阅的回调。|
 
 **错误码：**
 

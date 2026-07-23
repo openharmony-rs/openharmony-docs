@@ -329,6 +329,8 @@ Operation timeout.
 
 4. 服务器负载过高，处理速度缓慢。
 
+5. 调用[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，导致域名解析到过期或错误的IP地址，连接无法建立。
+
 **处理步骤**
 
 1. 检查网络连接状态，确认网络稳定。
@@ -337,7 +339,9 @@ Operation timeout.
 
 3. 排查服务器负载情况。
 
-4. 可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
+4. 检查是否通过[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，若设置的IP地址已过期或错误，调用[removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11)或[clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11)清除规则后重试。
+
+5. 可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
 
 ## 2300047 重定向次数达到最大值
 
@@ -411,6 +415,8 @@ Failed to receive data from the peer.
 
 3. 对端发送数据过程中出现异常。
 
+4. 调用[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，但规则中IP地址已失效，导致向错误的地址发送请求后无法接收响应。
+
 **处理步骤**
 
 1. 检查网络连接状态。
@@ -419,7 +425,9 @@ Failed to receive data from the peer.
 
 3. 重新发起请求尝试。
 
-4. 可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
+4. 检查是否通过[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，若设置的IP地址已过期或错误，调用[removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11)或[clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11)清除规则后重试，确保域名解析到正确的IP地址。
+
+5. 可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
 
 ## 2300058 本地SSL证书错误
 

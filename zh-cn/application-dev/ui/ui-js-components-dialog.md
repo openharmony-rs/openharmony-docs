@@ -60,7 +60,7 @@ button{
 ```js
 // xxx.js
 export default {
-  //Touch to open the dialog box.
+  // Click to open the dialog box.
   openDialog(){
     this.$element('dialogId').show()
   },
@@ -306,13 +306,11 @@ export default {
       message: 'Event setting canceled.'
     })
   },
-//    Touch OK to save the data.
+  // Click OK to save the data.
   setSchedule(e) {
-    if (e.text === '') {
-      this.schedule = info
-    } else {
-      this.schedule = info
-      var addItem =  {schedule: this.schedule,}
+    this.schedule = info
+    if (e.text !== '') {
+      var addItem = {schedule: this.schedule}
       this.scheduleList.push(addItem)
     }
     this.$element('dateDialog').close()

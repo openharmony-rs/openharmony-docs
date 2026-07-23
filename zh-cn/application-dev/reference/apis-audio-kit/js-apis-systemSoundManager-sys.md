@@ -470,7 +470,7 @@ getMediaType(): MediaType
 
 | 类型    | 说明     |
 |--------|--------|
-| [MediaType](#mediatype20) | 媒体类型，如果应用未调用过setMediaType设置mediatype，则此函数返回的默认值为AUDIO。|
+| [MediaType](#mediatype20) | 媒体类型，如果应用未调用过setMediaType设置媒体类型，则此函数返回的默认值为AUDIO。|
 
 **错误码：**
 
@@ -731,7 +731,7 @@ getGentleUri(): string | null
 
 | 类型    | 说明  |
 |--------|-----|
-| string \| null | 柔和振动的uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则uri为空。 柔和振动是指马达振动强度较标准较弱。|
+| string \| null | 柔和振动的URI（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则URI为空。 柔和振动是指马达振动强度较标准振动弱。|
 
 **错误码：**
 
@@ -1225,7 +1225,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
 | 参数名   | 类型                             | 必填 | 说明                     |
 | -------- | -------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)| 是   | 当前应用的上下文。         |
-| type     | [RingtoneType](#ringtonetype)  | 是   | 被设置的系统铃声的类型。   |
+| type     | [RingtoneType](#ringtonetype)  | 是   | 待获取的系统铃声的类型。   |
 
 **返回值：**
 
@@ -1530,7 +1530,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 | -------- |-------------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。         |
 | uri      | string                              | 是   | 被设置的系统提示音的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
-| type     | [SystemToneType](#systemtonetype11) | 是   | 被设置的系统提示音的类型。   |
+| type     | [SystemToneType](#systemtonetype11) | 是   | 待获取的系统提示音的类型。   |
 
 **返回值：**
 
@@ -2840,7 +2840,7 @@ ArkTS-Dyn: openToneList(uriList: Array&lt;string&gt;): Promise&lt;Array&lt;[stri
 
 ArkTS-Sta: openToneList(uriList: Array&lt;string&gt;): Promise&lt;Array&lt;[string, long, SystemSoundError]&gt;&gt;
 
-获取系统铃声的属性列表。使用Promise异步回调。
+批量打开铃声文件。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 

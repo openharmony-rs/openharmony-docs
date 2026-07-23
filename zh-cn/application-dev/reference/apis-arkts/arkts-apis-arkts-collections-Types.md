@@ -17,7 +17,7 @@
 
 type ISendable = lang.ISendable
 
-ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有定义任何必须实现的方法和属性。
+ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有定义任何必需实现的方法和属性。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

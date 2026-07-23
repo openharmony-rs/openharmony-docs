@@ -1281,7 +1281,7 @@ async function testGenerateAesKeyFun() {
   console.info('key blob: '+ encodedKey.data);
   key.clearMem();
   encodedKey = key.getEncoded();
-  console.info('key blob：' + encodedKey.data);
+  console.info('key blob: ' + encodedKey.data);
 }
 ```
 
@@ -2838,7 +2838,7 @@ function testConvertKeySync() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
   let key = symKeyGenerator.convertKeySync(keyBlob);
   let encodedKey = key.getEncoded();
-  console.info('key encoded data：' + encodedKey.data);
+  console.info('key encoded data: ' + encodedKey.data);
 }
 ```
 
@@ -4797,8 +4797,8 @@ async function doTest() {
   let keyPair = await generator.generateKeyPair();
   let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
   let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
-  console.info('ECC_PK_X_BN 16：' + eccPkX.toString(16));
-  console.info('ECC_PK_Y_BN 16：' + eccPkY.toString(16));
+  console.info('ECC_PK_X_BN 16: ' + eccPkX.toString(16));
+  console.info('ECC_PK_Y_BN 16: ' + eccPkY.toString(16));
   // 将eccPkX.toString(16)结果放入x，eccPkY.toString(16)结果放入y。
   let returnPoint: cryptoFramework.Point = {
     x: BigInt('0x' + eccPkX.toString(16)),
@@ -5072,7 +5072,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let cipherAlgName = '3DES192|ECB|PKCS7';
 try {
   let cipher = cryptoFramework.createCipher(cipherAlgName);
-  console.info('cipher algName：' + cipher.algName);
+  console.info('cipher algName: ' + cipher.algName);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);

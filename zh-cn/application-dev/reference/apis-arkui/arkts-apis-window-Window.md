@@ -3435,7 +3435,7 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 | 参数名              | 类型                                        | 必填 | 说明                   |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | 是   | 要设置的状态栏颜色值。 |
+| color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | 是   | 要设置的状态栏文字颜色值。 |
 
 **返回值：**
 
@@ -3461,7 +3461,6 @@ ArkTS-Dyn示例：
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ColorMetrics, window } from '@kit.ArkUI';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -12229,7 +12228,7 @@ resetAspectRatio(): Promise&lt;void&gt;
 
 取消设置窗口内容布局的比例，使用Promise异步回调。
 
-仅主窗可设置，调用后将清除持久化储存的比例信息。
+仅主窗可设置，调用后将清除持久化存储的比例信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -12324,7 +12323,7 @@ resetAspectRatio(callback: AsyncCallback&lt;void&gt;): void
 
 取消设置窗口内容布局的比例，使用callback异步回调。
 
-仅主窗可设置，调用后将清除持久化储存的比例信息。
+仅主窗可设置，调用后将清除持久化存储的比例信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

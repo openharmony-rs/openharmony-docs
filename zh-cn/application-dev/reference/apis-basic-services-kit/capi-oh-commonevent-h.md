@@ -152,15 +152,14 @@ enum CommonEvent_ErrCode
 | 枚举项 | 描述 |
 | -- | -- |
 | COMMONEVENT_ERR_OK = 0 | 成功。 |
-| COMMONEVENT_ERR_PERMISSION_ERROR = 201 | 权限错误。 |
-| COMMONEVENT_ERR_INVALID_PARAMETER = 401 | 参数错误。 |
-| COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED = 1500003| 事件发送频率过高。<br>**起始版本：** 20 |
-| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 | 三方应用无法发送系统公共事件。 |
-| COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 | IPC发送失败。|
-| COMMONEVENT_ERR_INIT_UNDONE = 1500008 | 服务未初始化。 |
-| COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 | 系统错误。 |
-| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 | 进程内订阅者数量超过系统限制（200个）。 |
-| COMMONEVENT_ERR_ALLOC_MEMORY_FAILED = 1500011 | 内存分配失败。 |
+| COMMONEVENT_ERR_INVALID_PARAMETER = 401 | 参数错误。参数不合法，请检查参数类型、取值范围或参数是否为空。 |
+| COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED = 1500003| 事件发送频率过高。请检查应用是否过于频繁地发送公共事件，如发送频率超过每5毫秒20个，请降低公共事件发送频率或增加发送间隔后重新尝试。<br>**起始版本：** 20 |
+| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 | 三方应用无法发送系统公共事件。请检查当前应用是否为系统应用，或当前服务是否为系统服务。 |
+| COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 | IPC发送失败。请勿频繁建立连接，稍后重新尝试。|
+| COMMONEVENT_ERR_INIT_UNDONE = 1500008 | 服务未初始化。请稍后重新尝试。 |
+| COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 | 系统错误。请稍后重新尝试。 |
+| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 | 进程内订阅者数量超过系统限制（200个）。请检查应用内是否存在订阅者未取消订阅，如存在则取消订阅后重新尝试；不存在请稍后重新尝试。 |
+| COMMONEVENT_ERR_ALLOC_MEMORY_FAILED = 1500011 | 内存分配失败。请稍后重新尝试。 |
 
 
 ## 函数说明
@@ -201,14 +200,14 @@ CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* events[] | 订阅的公共事件，实际订阅的公共事件数量为`eventsNum`与`events`数组长度的最小值。 |
-| int32_t eventsNum | 订阅的公共事件数量，取值为`events`数组长度。 |
+| const char* events[] | 订阅的公共事件，实际订阅的数量为`eventsNum`与`events`数组长度的最小值。 |
+| int32_t eventsNum | 订阅的公共事件数量，非负整数，取值为`events`数组长度。 |
 
 **返回：**
 
 | 类型                             | 说明 |
 |--------------------------------| -- |
-| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* | 成功则返回订阅者信息，失败则返回NULL。 |
+| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* | 成功则返回订阅者信息，失败则返回NULL。该指针由内部管理，在[OH_CommonEvent_DestroySubscribeInfo()](#oh_commonevent_destroysubscribeinfo)时释放。 |
 
 ### OH_CommonEvent_SetPublisherPermission()
 
@@ -227,8 +226,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeI
 
 | 参数项 | 描述 |
 | -- | -- |
-| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | 订阅者信息。 |
-| const char* permission | 权限名称。 |
+| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | 待设置发布方权限的订阅者信息对象。 |
+| const char* permission | 权限名称。取值为系统已定义的权限名，订阅方将只能接收到具有该权限的发送方发布的事件。不设置时，可接收所有发送方发布的事件。 |
 
 **返回：**
 
@@ -253,8 +252,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeI
 
 | 参数项 | 描述 |
 | -- | -- |
-| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | 订阅者信息。 |
-| const char* bundleName | 包名称。 |
+| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | 待设置发布方权限的订阅者信息对象。 |
+| const char* bundleName | 包名称。用于限制订阅方只接收该bundleName的发布者发布的公共事件。不设置时，可接收所有应用发布的公共事件。 |
 
 **返回：**
 
@@ -299,13 +298,13 @@ CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_Subscr
 | 参数项                                                                  | 描述 |
 |----------------------------------------------------------------------| -- |
 | const [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info                            | 订阅者信息。 |
-| [CommonEvent_ReceiveCallback](#commonevent_receivecallback) callback | 公共事件回调函数。 |
+| [CommonEvent_ReceiveCallback](#commonevent_receivecallback) callback | 公共事件回调函数。当公共事件订阅成功后，事件触发时通过data返回公共事件数据。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_Subscriber](#变量)* | 成功则返回订阅者，失败则返回NULL。 |
+| [CommonEvent_Subscriber](#变量)* | 成功则返回订阅者，失败则返回NULL。该指针由内部管理，在[OH_CommonEvent_DestroySubscriber()](#oh_commonevent_destroysubscriber)时释放。 |
 
 ### OH_CommonEvent_DestroySubscriber()
 
@@ -349,7 +348,7 @@ CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subsc
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](#commonevent_errcode) | 返回错误码。<br>         返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>         返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数subscriber无效。<br>         返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。<br>         返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。<br>         返回[COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)进程内订阅者数量超过系统限制（200个）。<br>         返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示系统分配内存失败。 |
+| [CommonEvent_ErrCode](#commonevent_errcode) | 返回错误码。<br>         返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>         返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数subscriber无效。<br>         返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。<br>         返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。<br>         返回[COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)表示进程内订阅者数量超过系统限制（200个）。<br>         返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示系统分配内存失败。 |
 
 ### OH_CommonEvent_UnSubscribe()
 
@@ -399,7 +398,7 @@ const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvDat
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 返回公共事件名称。 |
+| const char* | 返回公共事件名称。该指针由系统产生，回调函数[CommonEvent_ReceiveCallback](#commonevent_receivecallback)结束后即刻释放，不可在回调函数外部使用。 |
 
 ### OH_CommonEvent_GetCodeFromRcvData()
 
@@ -449,7 +448,7 @@ const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvD
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 返回接收到的公共事件数据，字符串类型。 |
+| const char* | 返回接收到的公共事件数据，字符串类型。该指针由系统产生，回调函数[CommonEvent_ReceiveCallback](#commonevent_receivecallback)结束后即刻释放，不可在回调函数外部使用。 |
 
 ### OH_CommonEvent_GetBundleNameFromRcvData()
 
@@ -474,7 +473,7 @@ const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* r
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 返回公共事件的包名称。 |
+| const char* | 返回公共事件的包名称。该指针由系统产生，回调函数[CommonEvent_ReceiveCallback](#commonevent_receivecallback)结束后即刻释放，不可在回调函数外部使用。 |
 
 ### OH_CommonEvent_GetParametersFromRcvData()
 
@@ -524,7 +523,7 @@ CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)
 
 | 类型                           | 说明 |
 |------------------------------| -- |
-| [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* | 创建的公共事件属性对象，创建失败时，返回NULL。 |
+| [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* | 创建的公共事件属性对象，创建失败时，返回NULL。该指针由内部管理，在[OH_CommonEvent_DestroyPublishInfo()](#oh_commonevent_destroypublishinfo)时释放。 |
 
 ### OH_CommonEvent_DestroyPublishInfo()
 
@@ -589,7 +588,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_Publish
 | 参数项 | 描述 |
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | 公共事件属性对象。 |
-| const char* permissions[] | 订阅者权限名称数组，生效数量为`num`与`permissions`数组长度的最小值。 |
+| const char* permissions[] | 订阅者权限名称数组，只有具备这些权限的订阅者才能收到该公共事件。生效数量为`num`与`permissions`数组长度的最小值。 |
 | int32_t num | 权限名称的数量，取值为`permissions`数组长度。 |
 
 **返回：**
@@ -693,7 +692,7 @@ CommonEvent_Parameters* OH_CommonEvent_CreateParameters()
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_Parameters](#变量)* | 返回公共事件附加信息，创建失败时，返回NULL。 |
+| [CommonEvent_Parameters](#变量)* | 返回公共事件附加信息，创建失败时，返回NULL。该指针由内部管理，在[OH_CommonEvent_DestroyParameters()](#oh_commonevent_destroyparameters)时释放。 |
 
 ### OH_CommonEvent_DestroyParameters()
 
@@ -840,7 +839,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameter
 | -- | -- |
 | [CommonEvent_Parameters](#变量)* param | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| const int* value | 设置的int数组内容。 |
+| const int* value | 设置的int数组内容。实际设置的数量为`num`，value数组长度需大于`num`，否则会有越界访问风险。 |
 | size_t num | 设置的int数组内容中元素的个数。 |
 
 **返回：**
@@ -949,7 +948,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Paramete
 | -- | -- |
 | [CommonEvent_Parameters](#变量)* param | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| const long* value | 设置的long数组内容。 |
+| const long* value | 设置的long数组内容。实际设置的数量为`num`，value数组长度需大于`num`，否则会有越界访问风险。 |
 | size_t num | 设置的long数组内容中元素的个数。 |
 
 **返回：**
@@ -1058,7 +1057,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Paramete
 | -- | -- |
 | [CommonEvent_Parameters](#变量)* param | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| const bool* value | 设置的布尔数组内容。 |
+| const bool* value | 设置的布尔数组内容。实际设置的数量为`num`，value数组长度需大于`num`，否则会有越界访问风险。 |
 | size_t num | 设置的布尔数组内容中元素的个数。 |
 
 **返回：**
@@ -1167,7 +1166,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Paramete
 | -- | -- |
 | [CommonEvent_Parameters](#变量)* param | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| const char* value | 设置的字符数组内容。 |
+| const char* value | 设置的字符数组内容。实际设置的数量为`num`与`value`数组长度的最小值。 |
 | size_t num | 设置的字符数组内容中元素的个数。 |
 
 **返回：**
@@ -1276,7 +1275,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parame
 | -- | -- |
 | [CommonEvent_Parameters](#变量)* param | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| const double* value | 设置的double数组内容。 |
+| const double* value | 设置的double数组内容。实际设置的数量为`num`，value数组长度需大于`num`，否则会有越界访问风险。 |
 | size_t num | 设置的double数组内容中元素的个数。 |
 
 **返回：**
@@ -1308,7 +1307,7 @@ CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](#commonevent_errcode) | 返回错误码。<br>         返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>         返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。<br>         返回[COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)表示事件发送频率过高。<br>   返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。<br>         返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。 |
+| [CommonEvent_ErrCode](#commonevent_errcode) | 返回错误码。<br>         返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>         返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。<br>         返回[COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)表示事件发送频率过高。<br>   返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。<br>         返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。         返回[COMMONEVENT_ERR_NOT_SYSTEM_SERVICE](capi-oh-commonevent-h.md#commonevent_errcode)表示三方应用无法发送系统公共事件。 |
 
 ### OH_CommonEvent_PublishWithInfo()
 

@@ -26,7 +26,7 @@
   - 视频转码<!--media-transcoder-arkts-->
     - [使用AVTranscoder实现视频转码(ArkTS)](using-avtranscoder-for-transcodering.md)
     - [创建异步线程执行AVTranscoder视频转码(ArkTS)](avtranscoder-practice.md)
-    - [转码常见问题](avtranscoder-faq.md)
+    - [转码常见问题](avtranscoder-faq.md)<!--RP2--><!--RP2End-->
 - 媒体开发指导(C/C++)<!--media-kit-dev--c-->
   - 播放<!--media-playback-c-->
     - [使用AVPlayer播放音频(C/C++)](using-ndk-avplayer-for-playback.md)
@@ -41,7 +41,7 @@
       - [AVScreenCapture录屏自定义场景](avscreencapture-c-custom-scenarios.md)
       - [录屏常见问题](avscreencapture-faqs.md)
     - [使用AVScreenCapture录屏写文件(C/C++)](using-avscreencapture-for-file.md)
-    - [使用AVScreenCapture实现窗口级录屏(C/C++)](using-avscreencapture-for-file-with-window.md)
+    - [使用AVScreenCapture实现窗口级录屏(C/C++)](using-avscreencapture-for-file-with-window.md)<!--RP3--><!--RP3End-->
     - [屏幕录制支持矩形区域录制(C/C++)](video-supports-rectangular-area-recording.md)
   - 媒体信息查询<!--media-info-c-->
     - [使用AVMetadataExtractor获取元数据(C/C++)](using-ndk-avmetadataextractor-for-media.md)

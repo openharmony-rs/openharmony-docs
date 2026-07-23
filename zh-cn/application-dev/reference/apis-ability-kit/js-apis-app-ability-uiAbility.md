@@ -1085,9 +1085,9 @@ export default class EntryAbility extends UIAbility {
     // 开发者定义预关闭动作
     // 例如拉起另一个ability，根据ability处理结果执行异步关闭
     let want: Want = {
-      bundleName: "com.example.myapplication",
-      moduleName: "entry",
-      abilityName: "SecondAbility"
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'SecondAbility'
     }
     this.context.startAbilityForResult(want)
       .then((result: common.AbilityResult) => {
@@ -1101,7 +1101,7 @@ export default class EntryAbility extends UIAbility {
       let err = error as BusinessError;
       console.error(`startAbilityForResult failed, err: ${err.code} , ${err.message}`);
       this.context.terminateSelf();
-    })
+    });
 
     return true; // 已定义预关闭操作后，返回true表示UIAbility取消关闭
   }
