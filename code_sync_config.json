@@ -35513,6 +35513,11 @@
 						"end_line":556,
 						"name":"strict_equality_preferred",
 						"start_line":550
+					},
+					{
+						"end_line":620,
+						"name":"loose_equality_not_recommended",
+						"start_line":615
 					}
 				]
 			},
@@ -36028,6 +36033,11 @@
 						"end_line":1674,
 						"name":"mixin_interface_alternative",
 						"start_line":1646
+					},
+					{
+						"end_line":1693,
+						"name":"string_builder_explicit_return",
+						"start_line":1676
 					}
 				]
 			},
@@ -36493,6 +36503,16 @@
 						"end_line":894,
 						"name":"version_feature_platform_check",
 						"start_line":807
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Control.ts",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"ts_for_in_loop",
+						"start_line":18
 					}
 				]
 			}
@@ -37388,6 +37408,11 @@
 						"end_line":259,
 						"name":"ts_string_utils",
 						"start_line":253
+					},
+					{
+						"end_line":271,
+						"name":"ts_thistype_usage",
+						"start_line":261
 					}
 				]
 			}
@@ -37923,6 +37948,11 @@
 						"end_line":1336,
 						"name":"interface_extends_base",
 						"start_line":1325
+					},
+					{
+						"end_line":1368,
+						"name":"map_replaces_index_signature",
+						"start_line":1360
 					}
 				]
 			},
@@ -38493,13 +38523,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleDelaration.ts",
-				"functions":[
-					{
-						"end_line":21,
-						"name":"ts_declaration_comparison",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/UseModuleNotNamespace.ets",
@@ -38528,6 +38552,16 @@
 						"end_line":22,
 						"name":"import_constant",
 						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleDeclaration.ts",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"ts_declaration_comparison",
+						"start_line":16
 					}
 				]
 			}
@@ -39093,6 +39127,11 @@
 						"end_line":999,
 						"name":"function_compatibility",
 						"start_line":992
+					},
+					{
+						"end_line":1009,
+						"name":"generic_type_compatibility",
+						"start_line":1001
 					}
 				]
 			}
