@@ -14,19 +14,19 @@ OpenHarmony提供了两种驱动适配方式：使用外设驱动子系统、使
   
 ```text
 base/iothardware/peripheral/
-├── BUILD.gn
-├── bundle.json
+├── BUILD.gn                              # 模块的构建规则（依赖关系、条件编译等）
+├── bundle.json                           # 模块的元数据（如名称、版本、权限等）
 └── interfaces
-    └── inner_api
-        ├── iot_errno.h
-        ├── iot_flash.h
-        ├── iot_gpio.h
-        ├── iot_i2c.h
-        ├── iot_pwm.h
-        ├── iot_uart.h
-        ├── iot_watchdog.h
-        ├── lowpower.h
-        └── reset.h
+    └── inner_api                         # 内部API头文件
+        ├── iot_errno.h                   # 错误码定义
+        ├── iot_flash.h                   # 闪存操作接口
+        ├── iot_gpio.h                    # GPIO（通用输入输出）控制接口
+        ├── iot_i2c.h                     # I²C总线通信接口
+        ├── iot_pwm.h                     # pwm接口
+        ├── iot_uart.h                    # UART（通用异步收发器）通信接口
+        ├── iot_watchdog.h                # 看门狗定时器接口
+        ├── lowpower.h                    # 低功耗管理接口
+        └── reset.h                       # 系统重置相关接口
 ```
 
 其中“base/iothardware/peripheral/BUILD.gn”文件如下：
@@ -35,9 +35,9 @@ base/iothardware/peripheral/
 ```gn
 import("//build/lite/ndk/ndk.gni")
        
-group("iothardware") {
+group("iothardware") {      
   deps = [
-  "$ohos_board_adapter_dir/hals/iot_hardware/wifiiot_lite:hal_iothardware", 
+  "$ohos_board_adapter_dir/hals/iot_hardware/wifiiot_lite:hal_iothardware",    # 定义逻辑分组
   ]
 }
 if (ohos_kernel_type == "liteos_m") {
