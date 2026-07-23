@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6b4681121c8c0a0b9c6d7090c0aa91698a4b9fcf translatedAt=2026-07-21T01:10:22.479Z pushedAt=2026-07-21T01:14:16.383Z -->
 
 > **NOTE**
 >
@@ -61,7 +62,6 @@ import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
 struct Index {
-  private avsessionController !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() { 
@@ -125,7 +125,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  private avsessioncontroller !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() {
@@ -191,7 +190,6 @@ import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
 struct Index {
-  private avsessioncontroller !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() {

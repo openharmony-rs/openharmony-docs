@@ -109,7 +109,7 @@
         dateTime: {
           // 指明提醒的目标时间
           year: date.getFullYear(),
-          month: date.getUTCMonth() + 1,
+          month: date.getMonth() + 1,
           day: date.getDate(),
           hour: date.getHours(),
           minute: date.getMinutes(),

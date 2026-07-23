@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6b4681121c8c0a0b9c6d7090c0aa91698a4b9fcf translatedAt=2026-07-21T01:09:48.601Z pushedAt=2026-07-21T01:14:16.380Z -->
 
 Through the AV session controller, you can query the session ID, send commands and events to a session, and obtain session metadata and playback state information.
 
@@ -42,7 +43,7 @@ import { avSession } from '@kit.AVSessionKit';
 struct Index {
   private tag: string = "createNewSession";
   private sessionId: string = "";
-  private AVSessionController?: avSession.AVSessionController;
+  private avsessionController?: avSession.AVSessionController;
   private currentAVSession?: avSession.AVSession;
   context = this.getUIContext();
 
