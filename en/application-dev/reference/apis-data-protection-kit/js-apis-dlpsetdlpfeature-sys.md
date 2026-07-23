@@ -6,15 +6,14 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-This module controls the Data Loss Prevention (DLP) feature, including enabling or disabling DLP and returning the DLP status.
+This module provides APIs for controlling the Data Loss Prevention (DLP) feature, including enabling or disabling the DLP feature and returning the DLP status. It helps enterprises meet data security compliance requirements and implement access control and encryption protection for confidential files.
 
 **Use scenarios**
 - Data security compliance requirements must be met.
 - Access control and encryption protection are provided for confidential files.
-
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 26. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 26.0.0. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs provided by this module are system APIs.
 
 ## Key Classes and APIs
@@ -39,9 +38,9 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
 Sets the DLP status. This API uses a promise to return the result. The system enables or disables the DLP protection function based on the DLP status specified using this API.
 
-When this feature is enabled, right-click the file to be encrypted, and the encryption option is displayed in the shortcut menu. Files in .txt, .pdf, .xls, .xlsx, .ppt, .pptx, .doc, and .docx formats can be encrypted.
+When this feature is enabled, right-click a file that can be encrypted, and the encryption option is displayed in the shortcut menu. Files in .txt, .pdf, .xls, .xlsx, .ppt, .pptx, .doc, and .docx formats can be encrypted.
 
-This API is used to enable or disable the DLP function in enterprise policies.
+This API is used to enable or disable the DLP feature for enterprise policies.
 
 **Since:** 26.0.0
 
@@ -55,7 +54,7 @@ This API is used to enable or disable the DLP function in enterprise policies.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| status | [DlpFeatureStatus](#dlpfeaturestatus) | Yes| DLP status. The value **ENABLED_FEATURE** indicates the DLP feature is enabled, and the encryption option is displayed in the menu. The value **NOT_ENABLED_FEATURE** indicates the DLP feature is disabled, and the encryption option is not displayed in the menu. If the value is out of range, error code 19100001 is thrown.|
+| status | [DlpFeatureStatus](#dlpfeaturestatus) | Yes| DLP status. The value **ENABLED_FEATURE** indicates the DLP feature is enabled, and the encryption option is displayed in the menu. The value **NOT_ENABLED_FEATURE** indicates the DLP feature is disabled, and the encryption option is not displayed in the menu. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -80,8 +79,8 @@ import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 
 async function exampleFunction() {
   let statusInfoResult: dlpSetDlpFeature.StatusInfoResult =
-    await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE); // Record the execution result.
-  console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult));
+    await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE);
+  console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult)); 
 } // Set the DLP status.
 
 exampleFunction();
@@ -103,7 +102,7 @@ Describes the DLP settings.
 | -------- | -------- | -------- | -------- | -------- |
 | isSuccess | boolean | No| No| Whether the DLP setting is successful. The value **true** indicates that the setting is successful, and the value **false** indicates that the setting fails.|
 
-## DLPFeatureInfo
+## DlpFeatureInfo
 
 Sets the DLP status.
 
