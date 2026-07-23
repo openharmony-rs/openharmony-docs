@@ -164,7 +164,7 @@ JSVM CreateArrayWithLength success
 ```
 ### OH_JSVM_CreateTypedarray
 
-在现有的 ArrayBuffer上 创建一个 JavaScript TypedArray 对象,TypedArray 对象在底层数据缓冲区上提供类似数组的视图，其中每个元素都具有相同的底层二进制标量数据类型。
+在现有的 ArrayBuffer上 创建一个 JavaScript TypedArray 对象，TypedArray 对象在底层数据缓冲区上提供类似数组的视图，其中每个元素都具有相同的底层二进制标量数据类型。
 
 cpp 部分代码：
 
@@ -558,7 +558,7 @@ JSVM GetTypedArrayInfo success, byteOffset: 0
 ```
 ### OH_JSVM_GetDataviewInfo
 
-获取 Dataview 对象的信息。
+获取 DataView 对象的信息。
 
 cpp 部分代码：
 
@@ -932,7 +932,7 @@ JSVM DeleteElement: 1
 ```
 ### OH_JSVM_IsDataview
 
-判断一个 JavaScript 对象是否为 Dataview 类型对象。
+判断一个 JavaScript 对象是否为 DataView 类型对象。
 
 cpp 部分代码：
 

@@ -678,7 +678,7 @@ addEntry(type: string, value: ValueType): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[剪贴板错误码](errorcode-pasteboard.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[剪贴板错误码](errorcode-pasteboard.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -715,7 +715,7 @@ getValidTypes(types: Array&lt;string&gt;): Array&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[剪贴板错误码](errorcode-pasteboard.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[剪贴板错误码](errorcode-pasteboard.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -759,7 +759,7 @@ getData(type: string): Promise&lt;ValueType&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[剪贴板错误码](errorcode-pasteboard.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[剪贴板错误码](errorcode-pasteboard.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
