@@ -706,6 +706,8 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
+'use static';
+
 import {
   Entry,
   Component,
@@ -813,6 +815,8 @@ struct ButtonRenderControlExample {
 ArkTS-Sta示例：
 
 ```ts
+'use static';
+
 import {
   Entry,
   Component,
@@ -894,6 +898,8 @@ struct ButtonTestDemo {
 ArkTS-Sta示例：
 
 ```ts
+'use static';
+
 import {
   Entry,
   Component,
@@ -985,6 +991,8 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
+'use static';
+
 import {
   Entry,
   Component,
@@ -1064,6 +1072,8 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
+'use static';
+
 import {
   Entry,
   Component,
@@ -1174,6 +1184,8 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
+'use static';
+
 import {
   Entry,
   Component,
@@ -1309,6 +1321,8 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
+'use static';
+
 import {
   Entry,
   Component,
@@ -1388,6 +1402,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static';
+
 import {
   Entry,
   Component,
