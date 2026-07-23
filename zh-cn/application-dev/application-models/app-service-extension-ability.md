@@ -27,7 +27,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 - AppServiceExtensionAbility组件内不支持调用[window](../reference/apis-arkui/arkts-apis-window.md)相关API。
 
-> 针对 AppServiceExtensionAbility接口调用限制，详细请参考[约束限制](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)。
+> 针对AppServiceExtensionAbility接口调用限制，详细请参考[约束限制](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)。
 
 ## 运作机制
 
