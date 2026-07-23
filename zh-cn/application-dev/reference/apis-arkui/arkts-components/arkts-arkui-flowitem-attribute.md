@@ -2,7 +2,7 @@
 
 定义瀑布流子组件的属性
 
-**继承/实现关系：** FlowItemAttribute extends [CommonMethod<FlowItemAttribute>](CommonMethod<FlowItemAttribute>)
+**继承/实现关系：** FlowItemAttribute extends [CommonMethod<FlowItemAttribute>]
 
 **起始版本：** 9
 

@@ -2,7 +2,7 @@
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-commonconfiguration-i.md)。
 
-**继承/实现关系：** SliderConfiguration extends [CommonConfiguration<SliderConfiguration>](CommonConfiguration<SliderConfiguration>)
+**继承/实现关系：** SliderConfiguration extends [CommonConfiguration<SliderConfiguration>]
 
 **起始版本：** 12
 

@@ -5,7 +5,7 @@
 >  
 > 捏合手势触发成功后，抬起手指直至不再满足触发条件。再次满足条件时，可重新触发捏合手势。
 
-**继承/实现关系：** PinchGestureInterface extends [GestureInterface<PinchGestureInterface>](GestureInterface<PinchGestureInterface>)
+**继承/实现关系：** PinchGestureInterface extends [GestureInterface<PinchGestureInterface>]
 
 **起始版本：** 7
 

@@ -2,7 +2,7 @@
 
 除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下属性：
 
-**继承/实现关系：** MarqueeAttribute extends [CommonMethod<MarqueeAttribute>](CommonMethod<MarqueeAttribute>)
+**继承/实现关系：** MarqueeAttribute extends [CommonMethod<MarqueeAttribute>]
 
 **起始版本：** 8
 

@@ -8,7 +8,7 @@
 
 - T：Type，支持[Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器**：\@Sendable
 
-**继承/实现关系：** Array implements [ConcatArray<T>](ConcatArray<T>)
+**继承/实现关系：** Array implements [ConcatArray<T>]
 
 **起始版本：** 12
 

@@ -2,7 +2,7 @@
 
 用于触发旋转手势，最少需要2指，最多5指，最小改变度数为1度。该手势不支持通过触控板双指旋转操作触发。
 
-**继承/实现关系：** RotationGestureInterface extends [GestureInterface<RotationGestureInterface>](GestureInterface<RotationGestureInterface>)
+**继承/实现关系：** RotationGestureInterface extends [GestureInterface<RotationGestureInterface>]
 
 **起始版本：** 7
 

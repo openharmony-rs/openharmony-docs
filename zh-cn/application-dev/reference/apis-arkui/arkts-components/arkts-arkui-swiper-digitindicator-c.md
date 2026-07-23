@@ -10,7 +10,7 @@
 
 > 页码的镜像显示依据为系统的RTL状态。
 
-**继承/实现关系：** DigitIndicator extends [Indicator<DigitIndicator>](Indicator<DigitIndicator>)
+**继承/实现关系：** DigitIndicator extends [Indicator<DigitIndicator>]
 
 **起始版本：** 10
 

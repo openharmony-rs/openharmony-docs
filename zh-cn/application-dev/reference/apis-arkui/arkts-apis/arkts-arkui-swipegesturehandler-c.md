@@ -2,7 +2,7 @@
 
 快滑手势处理器对象类型。
 
-**继承/实现关系：** SwipeGestureHandler extends [GestureHandler<SwipeGestureHandler>](GestureHandler<SwipeGestureHandler>)
+**继承/实现关系：** SwipeGestureHandler extends [GestureHandler<SwipeGestureHandler>]
 
 **起始版本：** 12
 

@@ -2,7 +2,7 @@
 
 不支持通用属性，除了继承[安全控件通用属性](../arkts-apis/arkts-security_component.md)，还支持以下属性。不支持通用事件，仅支持以下事件。
 
-**继承/实现关系：** SaveButtonAttribute extends [SecurityComponentMethod<SaveButtonAttribute>](SecurityComponentMethod<SaveButtonAttribute>)
+**继承/实现关系：** SaveButtonAttribute extends [SecurityComponentMethod<SaveButtonAttribute>]
 
 **起始版本：** 10
 

@@ -2,7 +2,7 @@
 
 定义Scroll组件的属性函数。
 
-**继承/实现关系：** ScrollAttribute extends [ScrollableCommonMethod<ScrollAttribute>](ScrollableCommonMethod<ScrollAttribute>)
+**继承/实现关系：** ScrollAttribute extends [ScrollableCommonMethod<ScrollAttribute>]
 
 **起始版本：** 7
 

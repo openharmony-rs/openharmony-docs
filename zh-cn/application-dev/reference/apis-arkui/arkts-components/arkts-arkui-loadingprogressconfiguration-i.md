@@ -2,7 +2,7 @@
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-commonconfiguration-i.md)。
 
-**继承/实现关系：** LoadingProgressConfiguration extends [CommonConfiguration<LoadingProgressConfiguration>](CommonConfiguration<LoadingProgressConfiguration>)
+**继承/实现关系：** LoadingProgressConfiguration extends [CommonConfiguration<LoadingProgressConfiguration>]
 
 **起始版本：** 12
 

@@ -2,7 +2,7 @@
 
 长按手势处理器对象类型。
 
-**继承/实现关系：** LongPressGestureHandler extends [GestureHandler<LongPressGestureHandler>](GestureHandler<LongPressGestureHandler>)
+**继承/实现关系：** LongPressGestureHandler extends [GestureHandler<LongPressGestureHandler>]
 
 **起始版本：** 12
 

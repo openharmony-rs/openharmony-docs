@@ -4,7 +4,7 @@
 
 通用事件支持[点击事件onClick](arkts-arkui-commonmethod-c.md#onclick)、[悬浮事件onHover](arkts-arkui-commonmethod-c.md#onhover)。
 
-**继承/实现关系：** SpanAttribute extends [BaseSpan<SpanAttribute>](BaseSpan<SpanAttribute>)
+**继承/实现关系：** SpanAttribute extends [BaseSpan<SpanAttribute>]
 
 **起始版本：** 7
 

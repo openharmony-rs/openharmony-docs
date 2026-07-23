@@ -2,7 +2,7 @@
 
 定义DynamicComponent的属性方法。
 
-**继承/实现关系：** DynamicComponentAttribute extends [CommonMethod<DynamicComponentAttribute>](CommonMethod<DynamicComponentAttribute>)
+**继承/实现关系：** DynamicComponentAttribute extends [CommonMethod<DynamicComponentAttribute>]
 
 **起始版本：** 26.0.0
 

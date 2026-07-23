@@ -4,7 +4,7 @@
 
 继承自[BaseShape](arkts-arkui-arkui-shape-baseshape-c.md)。
 
-**继承/实现关系：** RectShape extends [BaseShape<RectShape>](BaseShape<RectShape>)
+**继承/实现关系：** RectShape extends [BaseShape<RectShape>]
 
 **起始版本：** 12
 

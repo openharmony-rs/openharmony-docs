@@ -2,7 +2,7 @@
 
 定义可写的系统环境变量键。
 
-**继承/实现关系：** WritableSystemEnvKey extends [SystemEnvKey<T>](SystemEnvKey<T>)
+**继承/实现关系：** WritableSystemEnvKey extends [SystemEnvKey<T>]
 
 **起始版本：** 26.0.0
 

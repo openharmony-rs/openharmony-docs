@@ -2,7 +2,7 @@
 
 定义插件组件的属性方法。
 
-**继承/实现关系：** PluginComponentAttribute extends [CommonMethod<PluginComponentAttribute>](CommonMethod<PluginComponentAttribute>)
+**继承/实现关系：** PluginComponentAttribute extends [CommonMethod<PluginComponentAttribute>]
 
 **起始版本：** 9
 

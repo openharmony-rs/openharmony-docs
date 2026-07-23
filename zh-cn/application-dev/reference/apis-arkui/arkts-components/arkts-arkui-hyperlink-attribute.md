@@ -2,7 +2,7 @@
 
 除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下属性：
 
-**继承/实现关系：** HyperlinkAttribute extends [CommonMethod<HyperlinkAttribute>](CommonMethod<HyperlinkAttribute>)
+**继承/实现关系：** HyperlinkAttribute extends [CommonMethod<HyperlinkAttribute>]
 
 **起始版本：** 7
 

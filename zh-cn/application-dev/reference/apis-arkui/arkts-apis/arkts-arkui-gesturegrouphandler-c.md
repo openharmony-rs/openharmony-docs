@@ -2,7 +2,7 @@
 
 手势组处理器对象类型。
 
-**继承/实现关系：** GestureGroupHandler extends [GestureHandler<GestureGroupHandler>](GestureHandler<GestureGroupHandler>)
+**继承/实现关系：** GestureGroupHandler extends [GestureHandler<GestureGroupHandler>]
 
 **起始版本：** 12
 

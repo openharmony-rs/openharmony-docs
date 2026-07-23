@@ -2,7 +2,7 @@
 
 Defines the Web attribute functions.
 
-**继承/实现关系：** WebAttribute extends [CommonMethod<WebAttribute>](CommonMethod<WebAttribute>)
+**继承/实现关系：** WebAttribute extends [CommonMethod<WebAttribute>]
 
 **起始版本：** 11
 

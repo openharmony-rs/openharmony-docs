@@ -2,7 +2,7 @@
 
 开发者必须自定义此类以实现ContentModifier接口，使用方法见[contentModifier](CheckboxGroupAttribute#contentModifier)。
 
-**继承/实现关系：** CheckBoxGroupConfiguration extends [CommonConfiguration<CheckBoxGroupConfiguration>](CommonConfiguration<CheckBoxGroupConfiguration>)
+**继承/实现关系：** CheckBoxGroupConfiguration extends [CommonConfiguration<CheckBoxGroupConfiguration>]
 
 **起始版本：** 21
 

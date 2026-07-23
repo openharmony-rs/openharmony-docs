@@ -2,8 +2,7 @@
 
 除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下属性：
 
-**继承/实现关系：** ShapeAttribute extends [CommonMethod<ShapeAttribute>](CommonMethod<ShapeAttribute>)
-
+**继承/实现关系：** ShapeAttribute extends [CommonMethod<ShapeAttribute>]
 **起始版本：** 7
 
 <!--Device-unnamed-declare class ShapeAttribute extends CommonMethod<ShapeAttribute>--><!--Device-unnamed-declare class ShapeAttribute extends CommonMethod<ShapeAttribute>-End-->

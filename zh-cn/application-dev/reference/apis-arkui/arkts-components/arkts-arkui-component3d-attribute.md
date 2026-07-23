@@ -1,6 +1,6 @@
 # Component3D属性/事件
 
-**继承/实现关系：** Component3DAttribute extends [CommonMethod<Component3DAttribute>](CommonMethod<Component3DAttribute>)
+**继承/实现关系：** Component3DAttribute extends [CommonMethod<Component3DAttribute>]
 
 **起始版本：** 12
 

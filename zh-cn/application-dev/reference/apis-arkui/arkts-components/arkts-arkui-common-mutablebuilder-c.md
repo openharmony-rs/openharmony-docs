@@ -2,7 +2,7 @@
 
 定义MutableBuilder类。
 
-**继承/实现关系：** MutableBuilder extends [WrappedBuilder<Args>](WrappedBuilder<Args>)
+**继承/实现关系：** MutableBuilder extends [WrappedBuilder<Args>]
 
 **起始版本：** 22
 

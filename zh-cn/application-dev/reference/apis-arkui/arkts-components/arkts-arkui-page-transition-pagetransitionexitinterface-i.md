@@ -2,7 +2,7 @@
 
 当前页面的自定义退场动效。继承自[CommonTransition](arkts-arkui-page-transition-commontransition-c.md)。
 
-**继承/实现关系：** PageTransitionExitInterface extends [CommonTransition<PageTransitionExitInterface>](CommonTransition<PageTransitionExitInterface>)
+**继承/实现关系：** PageTransitionExitInterface extends [CommonTransition<PageTransitionExitInterface>]
 
 **起始版本：** 7
 

@@ -4,7 +4,7 @@
 
 支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
 
-**继承/实现关系：** StackAttribute extends [CommonMethod<StackAttribute>](CommonMethod<StackAttribute>)
+**继承/实现关系：** StackAttribute extends [CommonMethod<StackAttribute>]
 
 **起始版本：** 7
 

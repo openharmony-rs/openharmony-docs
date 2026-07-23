@@ -2,7 +2,7 @@
 
 定义EmbeddedComponent的属性函数。
 
-**继承/实现关系：** EmbeddedComponentAttribute extends [CommonMethod<EmbeddedComponentAttribute>](CommonMethod<EmbeddedComponentAttribute>)
+**继承/实现关系：** EmbeddedComponentAttribute extends [CommonMethod<EmbeddedComponentAttribute>]
 
 **起始版本：** 12
 

@@ -4,7 +4,7 @@
 
 不支持通用事件。
 
-**继承/实现关系：** EffectComponentAttribute extends [CommonMethod<EffectComponentAttribute>](CommonMethod<EffectComponentAttribute>)
+**继承/实现关系：** EffectComponentAttribute extends [CommonMethod<EffectComponentAttribute>]
 
 **起始版本：** 10
 

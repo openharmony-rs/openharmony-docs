@@ -4,7 +4,7 @@
 
 支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
 
-**继承/实现关系：** ColumnAttribute extends [CommonMethod<ColumnAttribute>](CommonMethod<ColumnAttribute>)
+**继承/实现关系：** ColumnAttribute extends [CommonMethod<ColumnAttribute>]
 
 **起始版本：** 7
 

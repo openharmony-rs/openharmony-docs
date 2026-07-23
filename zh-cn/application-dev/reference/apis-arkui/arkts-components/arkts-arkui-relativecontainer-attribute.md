@@ -4,7 +4,7 @@
 
 支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
 
-**继承/实现关系：** RelativeContainerAttribute extends [CommonMethod<RelativeContainerAttribute>](CommonMethod<RelativeContainerAttribute>)
+**继承/实现关系：** RelativeContainerAttribute extends [CommonMethod<RelativeContainerAttribute>]
 
 **起始版本：** 9
 

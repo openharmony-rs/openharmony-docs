@@ -2,7 +2,7 @@
 
 支持[拖拽排序](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)属性。
 
-**继承/实现关系：** ForEachAttribute extends [DynamicNode<ForEachAttribute>](DynamicNode<ForEachAttribute>)
+**继承/实现关系：** ForEachAttribute extends [DynamicNode<ForEachAttribute>]
 
 **起始版本：** 12
 

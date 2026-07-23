@@ -4,7 +4,7 @@
 
 除支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持如下事件：
 
-**继承/实现关系：** NavDestinationAttribute extends [CommonMethod<NavDestinationAttribute>](CommonMethod<NavDestinationAttribute>)
+**继承/实现关系：** NavDestinationAttribute extends [CommonMethod<NavDestinationAttribute>]
 
 **起始版本：** 9
 

@@ -4,7 +4,7 @@
 
 支持[通用事件](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)。
 
-**继承/实现关系：** ProgressAttribute extends [CommonMethod<ProgressAttribute<Type>>](CommonMethod<ProgressAttribute<Type>>)
+**继承/实现关系：** ProgressAttribute extends [CommonMethod<ProgressAttribute<Type>>]
 
 **起始版本：** 7
 
