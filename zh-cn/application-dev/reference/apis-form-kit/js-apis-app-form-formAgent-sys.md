@@ -234,11 +234,11 @@ try {
 }
 ```
 
-## updateFormCrossBundle<sup>26+</sup>
+## updateFormCrossBundle
 
 updateFormCrossBundle(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
-跨应用更新一张卡片，使用Promise异步回调。
+跨应用更新卡片，使用Promise异步回调。
 
 **需要权限：** ohos.permission.UPDATE_FORM_CROSS_BUNDLE
 
@@ -248,9 +248,9 @@ updateFormCrossBundle(formId: string, formBindingData: formBindingData.FormBindi
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -293,8 +293,8 @@ try {
   let param: Record<string, string> = {
     'temperature': '22c',
     'time': '22:00'
-  }
-  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  };
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formAgent.updateFormCrossBundle(formId, obj).then(() => {
     console.info('formAgent updateFormCrossBundle success');
   }).catch((error: BusinessError) => {
@@ -318,8 +318,8 @@ try {
   let param: Record<string, string> = {
     'temperature': '22c',
     'time': '22:00'
-  }
-  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  };
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formAgent.updateFormCrossBundle(formId, obj).then(() => {
     console.info('formAgent updateFormCrossBundle success');
   }).catch((error: BusinessError) => {
