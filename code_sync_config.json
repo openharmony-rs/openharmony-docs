@@ -39642,5 +39642,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hilog-guidelines-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/Hilog/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":111,
+						"name":"HiLog_ArkTS",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/Hilog_Static/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":94,
+						"name":"arkts_static",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
