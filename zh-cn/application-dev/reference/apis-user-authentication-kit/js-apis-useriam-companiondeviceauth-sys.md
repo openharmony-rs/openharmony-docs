@@ -8,6 +8,8 @@
 
 **companionDeviceAuth**模块是OpenHarmony用户身份认证体系（UserIAM）的重要组成部分，专门用于伴随设备认证管理。该模块为系统应用提供伴随设备查询、订阅和服务范围管理等能力。
 
+设计逻辑：伴随设备认证采用主设备（Host）与伴随设备（Companion）协作的模式。主设备通过绑定流程将另一台设备添加为伴随设备，绑定过程中双端完成密钥协商并分发初始认证令牌。认证模式包括令牌认证和委托认证：令牌认证基于主设备签发至伴随设备的令牌计算消息认证码（MAC）完成身份校验；委托认证由主设备委托伴随设备执行本地认证并返回结果。主设备签发的令牌携带认证可信等级（authTrustLevel），令牌生命周期包括签发、超时、吊销及关联设备离线等阶段。伴随设备的认证状态由令牌生命周期与认证保持状态（如佩戴状态、连接状态等）共同决定。应用通过状态监听器订阅模板状态、可用设备变化和持续认证状态，系统通过回调主动通知变化。
+
 该模块主要用于以下场景：
 - 管理伴随设备与主设备之间的认证关系。
 - 查询和订阅伴随设备的状态变化。
@@ -106,7 +108,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 不同业务ID的伴随设备关系是独立的，互不干扰，可以独立添加、删除、认证。
 
-当前伴随设备模块的业务有：OH默认业务、锁屏解锁、解锁应用锁以及语音指令在锁屏执行前的身份鉴权等。
+当前伴随设备模块的业务包括锁屏解锁、解锁应用锁、语音指令在锁屏执行前的身份鉴权等业务场景。
 
 业务的添加对于服务端设备支持的场景有要求，如多屏协同业务，要求服务端设备支持委托认证场景。
 
@@ -122,8 +124,8 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 | 名称 | 值 | 说明 |
 | ----------- | ---- | ---------- |
-| DEFAULT | 0 | 默认业务ID。系统预设的默认业务标识，用于基本的伴随设备认证场景。 |
-| VENDOR_BEGIN | 10000 | 厂商自定义业务标识取值起点。厂商可在此值基础上自定义扩展业务ID，实际取值需大于等于10000，避免与系统保留值\[0-9999\]冲突。 |
+| DEFAULT | 0 | 默认业务ID。系统预设的默认业务，用于基本的伴随设备认证场景。 |
+| VENDOR_BEGIN | 10000 | 厂商自定义业务ID取值起点。厂商可在此值基础上自定义扩展业务ID，实际取值需大于等于10000，避免与系统保留值\[0-9999\]冲突。 |
 
 ## DeviceIdType
 
@@ -166,7 +168,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 ## DeviceKey
 
-设备标识。
+设备标识。用于唯一标识一个设备及其用户，包含设备ID类型、设备ID和设备用户ID等信息。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -182,7 +184,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 | ------------ | ---------- | ---- | ---- | -------------------- |
 | deviceIdType | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否 | 设备ID类型。用于指定设备业务标识的类型，可在[DeviceIdType](#deviceidtype)基础上自定义扩展，如使用UNIFIED_DEVICE_ID(1)表示统一设备ID，或使用厂商自定义值（≥10000）。 |
 | deviceId | string | 否 | 否 | 设备ID。设备的唯一标识字符串，具体格式由deviceIdType决定。 |
-| deviceUserId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否 | 设备用户ID。设备上的用户标识，为大于等于0的正整数，用于区分设备上的不同用户。 |
+| deviceUserId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否 | 设备用户ID。设备上的用户标识，为非负整数，用于区分设备上的不同用户。 |
 
 ## DeviceStatus
 
@@ -226,8 +228,8 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 | templateId | Uint8Array | 否 | 否 | 模板ID。伴随设备认证模板的唯一标识，用于在更新业务范围或订阅认证状态时指定目标模板。 |
 | isConfirmed | boolean | 否 | 否 | 数据确认状态。true表示数据是实时数据，已与设备确认同步；false表示数据是缓存数据，可能与设备实际状态存在差异。 |
 | isValid | boolean | 否 | 否 | 模板有效性。true表示模板有效，可用于认证；false表示模板无效，可能已被删除或失效，无法用于认证。 |
-| localUserId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否 | 本地用户ID。主设备上与该模板关联的用户标识，为大于等于0的正整数。 |
-| addedTime | Date | 否 | 否 | 模板添加时间。模板创建的时间戳，格式为Unix时间戳，即自1970年1月1日起经过的毫秒数。 |
+| localUserId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否 | 本地用户ID。主设备上与该模板关联的用户标识，为非负整数。 |
+| addedTime | Date | 否 | 否 | 模板添加时间，类型为Date对象。 |
 | enabledBusinessIds | ArkTS-Dyn: number[]<br />ArkTS-Sta: int[] | 否 | 否 | 支持的业务ID列表。该模板已启用的业务场景范围，可通过[updateEnabledBusinessIds](#companiondeviceauthupdateenabledbusinessids)接口更新。 |
 | deviceStatus | [DeviceStatus](#devicestatus) | 否 | 否 | 设备状态信息。与该模板关联的伴随设备的当前状态，包括在线状态、设备名等。 |
 
@@ -274,7 +276,7 @@ type ContinuousAuthStatusCallback = (isAuthPassed: boolean, authTrustLevel?: Use
 | 参数名 | 类型 | 必填 | 说明 |
 | -------------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | isAuthPassed | boolean | 是 | 认证是否通过。true表示伴随设备认证通过，用户身份已确认；false表示认证未通过，用户身份未确认或认证已失效。 |
-| authTrustLevel | [UserAuth.AuthTrustLevel](./js-apis-useriam-userauth.md#authtrustlevel8) | 否 | 伴随设备当前能达到的最高认证可信等级。值为ATL1（10000）、ATL2（20000）、ATL3（30000）或ATL4（40000），等级越高表示认证安全性越强。<br>**说明**：<br>仅当isAuthPassed为true时提供此参数。<br>典型操作需要的身份认证可信等级，具体请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。 |
+| authTrustLevel | [UserAuth.AuthTrustLevel](./js-apis-useriam-userauth.md#authtrustlevel8) | 否 | 伴随设备当前能达到的最高认证可信等级。值为ATL1（10000）、ATL2（20000）、ATL3（30000）或ATL4（40000），等级越高表示认证安全性越强。<br>**说明**：<br>仅当isAuthPassed为true时提供此参数；不提供时默认为undefined。<br>典型操作需要的身份认证可信等级，具体请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。 |
 
 ## AvailableDeviceStatusCallback
 
@@ -326,6 +328,10 @@ getTemplateStatus(): Promise&lt;TemplateStatus[]&gt;
 
 获取伴随设备模板状态。用于查询当前用户下所有已注册的伴随设备认证模板的状态信息，包括模板有效性、支持的业务范围、关联设备状态等。使用Promise异步回调。
 
+数据来源：返回系统服务（UserIAM）维护的模板状态内存快照，非实时跨设备查询。
+
+与onTemplateChange的区别：getTemplateStatus用于一次性获取当前模板状态快照，适合主动查询；onTemplateChange用于持续订阅模板状态变化，适合实时响应。仅需获取一次状态时使用getTemplateStatus，需要持续监听变化时使用onTemplateChange。
+
 **需要权限：** ohos.permission.USE_USER_IDM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -346,7 +352,7 @@ getTemplateStatus(): Promise&lt;TemplateStatus[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -366,7 +372,7 @@ statusMonitor.getTemplateStatus()
     console.info(`templateStatus: ${JSON.stringify(templateStatus)}`);
   })
   .catch((error: BusinessError) => {
-    console.error(`error has been captured: message:${error?.message}`);
+    console.error(`error has been captured. Code: ${error.code}, message: ${error.message}`);
   })
 ```
 
@@ -390,6 +396,8 @@ onTemplateChange(callback: TemplateStatusCallback): void
 
 订阅模板的状态变化。使用callback异步回调。
 
+触发时机：模板状态变化时触发，包括启用业务ID变更、有效性变更、关联设备上下线/状态变更、模板加入或移除IDM等。订阅时立即推送一次当前状态快照；状态未变化时不重复通知。
+
 **需要权限：** ohos.permission.USE_USER_IDM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -406,11 +414,11 @@ onTemplateChange(callback: TemplateStatusCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | --------------------------------------------------- | ---- | ---------------------------- |
-| callback | [TemplateStatusCallback](#templatestatuscallback) | 是 | 回调函数，用于接收模板状态。 |
+| callback | [TemplateStatusCallback](#templatestatuscallback) | 是 | 回调函数。当模板状态发生变化（如添加、删除、有效性变更等）时触发，回调参数为模板状态列表。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -430,7 +438,7 @@ try {
   statusMonitor.onTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured: message:${message}`);
+  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -438,7 +446,7 @@ try {
 
 offTemplateChange(callback?: TemplateStatusCallback): void
 
-取消订阅模板的状态变化。使用callback异步回调。
+取消订阅模板的状态变化。
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -456,11 +464,11 @@ offTemplateChange(callback?: TemplateStatusCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [TemplateStatusCallback](#templatestatuscallback) | 否 | 指定取消注册的回调函数。若不填此参数，则取消onTemplateChange注册的全部回调。 |
+| callback | [TemplateStatusCallback](#templatestatuscallback) | 否 | 回调函数，指定该参数时，仅取消指定的这一个回调；省略该参数时，取消全部已注册的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -481,7 +489,7 @@ try {
   statusMonitor.offTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured: message:${message}`);
+  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -490,6 +498,8 @@ try {
 onAvailableDeviceChange(callback: AvailableDeviceStatusCallback): void
 
 订阅可添加的伴随设备状态变化。使用callback异步回调。
+
+触发机制：当可添加的伴随设备列表发生变化（如新设备上线、设备离线、设备绑定关系变化等）时触发回调。订阅时立即推送一次当前列表。
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -507,11 +517,11 @@ onAvailableDeviceChange(callback: AvailableDeviceStatusCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | [AvailableDeviceStatusCallback](#availabledevicestatuscallback) | 是 | 处理可选设备更新的回调函数。 |
+| callback | [AvailableDeviceStatusCallback](#availabledevicestatuscallback) | 是 | 处理可用设备状态变化的回调函数。当可添加设备列表变化（如新设备上线、设备离线等）时触发，回调参数为设备状态列表。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -531,7 +541,7 @@ try {
   statusMonitor.onAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured: message:${message}`);
+  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -539,7 +549,7 @@ try {
 
 offAvailableDeviceChange(callback?: AvailableDeviceStatusCallback): void
 
-取消订阅可添加的伴随设备状态变化，使用callback异步回调。
+取消订阅可添加的伴随设备状态变化。callback参数用于指定要取消的回调函数，不传入则取消全部已注册的回调。
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -557,11 +567,11 @@ offAvailableDeviceChange(callback?: AvailableDeviceStatusCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [AvailableDeviceStatusCallback](#availabledevicestatuscallback) | 否 | 需要取消的目标回调。不传入callback时默认移除当前应用注册的全部相关回调。 |
+| callback | [AvailableDeviceStatusCallback](#availabledevicestatuscallback) | 否 | 此前通过onAvailableDeviceChange注册的回调函数。指定该参数时，仅取消指定的这一个回调；省略该参数时，取消全部已注册的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -582,7 +592,7 @@ try {
   statusMonitor.offAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured: message:${message}`);
+  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -591,6 +601,8 @@ try {
 onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatusCallback): void
 
 订阅伴随设备的持续认证状态。使用callback异步回调。
+
+持续认证：持续认证状态指伴随设备是否持有有效认证令牌。当令牌签发（认证通过）、令牌超时、关联设备离线或令牌被吊销时状态发生变化并触发回调。authTrustLevel为当前有效令牌中的最高认证可信等级。仅当认证可信等级变化时通知；订阅时立即推送一次当前状态。
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -608,12 +620,12 @@ onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| param | [ContinuousAuthParam](#continuousauthparam) | 是 | 用于指定订阅的设备。 |
-| callback | [ContinuousAuthStatusCallback](#continuousauthstatuscallback) | 是 | 订阅的设备持续认证状态发生变化时执行此回调。 |
+| param | [ContinuousAuthParam](#continuousauthparam) | 是 | 用于指定订阅参数，可通过templateId字段指定目标模板。 |
+| callback | [ContinuousAuthStatusCallback](#continuousauthstatuscallback) | 是 | 回调函数。当持续认证状态变化时触发，回调参数为认证结果（isAuthPassed）和认证可信等级（authTrustLevel）。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -643,7 +655,7 @@ try {
   statusMonitor.onContinuousAuthChange(continuousAuthParam, handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured: message:${message}`);
+  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -651,7 +663,7 @@ try {
 
 offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void
 
-取消订阅伴随设备的持续认证状态变化事件。取消后，应用将不再接收持续认证状态变化通知。使用callback异步回调。
+取消订阅伴随设备的持续认证状态变化事件。取消后，应用将不再接收持续认证状态变化通知。callback参数用于指定要取消的回调函数，不传入则取消全部已注册的回调。
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -669,11 +681,11 @@ offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ContinuousAuthStatusCallback](#continuousauthstatuscallback) | 否 | 指定取消注册的回调函数。若传入此参数，仅取消该特定回调的注册；若不传入此参数，则取消onContinuousAuthChange注册的全部回调。 |
+| callback | [ContinuousAuthStatusCallback](#continuousauthstatuscallback) | 否 | 此前通过onContinuousAuthChange注册的回调函数。指定该参数时，仅取消指定的这一个回调；省略该参数时，取消全部已注册的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -703,7 +715,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured: message:${message}`);
+  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -714,6 +726,8 @@ ArkTS-Dyn: getStatusMonitor(localUserId: number): StatusMonitor
 ArkTS-Sta: getStatusMonitor(localUserId: int): StatusMonitor
 
 获取状态监听器。用于获取指定用户的状态监听器对象，通过该对象可查询和订阅伴随设备的模板状态、持续认证状态、可添加设备状态等信息。
+
+生命周期：订阅在系统服务侧按用户维护。使用完毕应调用对应的off方法取消订阅以释放资源；应用进程退出时已注册的订阅会自动清理。
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -731,7 +745,7 @@ ArkTS-Sta: getStatusMonitor(localUserId: int): StatusMonitor
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ---- | ---- | ------------ |
-| localUserId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是 | 本地用户ID。主设备上的用户标识，为大于等于0的正整数。用于获取该用户对应的伴随设备状态监听器。 |
+| localUserId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是 | 本地用户ID。主设备上的用户标识，为非负整数，用于获取该用户对应的伴随设备状态监听器。传入不存在的用户ID时抛出异常，错误码为32600002。 |
 
 **返回值：**
 
@@ -774,7 +788,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured: message:${message}`);
+  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -795,7 +809,7 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------------- | --------------------------- | ---- | ---- | ------------------------------------------ |
 | deviceKeys | [DeviceKey](#devicekey)[] | 否 | 否 | 设备信息列表。包含用户选择的设备业务标识信息，每个DeviceKey包含设备ID类型、设备ID和设备用户ID。系统会根据这些信息执行后续的添加模板或认证操作。|
-| selectionContext | Uint8Array | 否 | 是 | 设备选择上下文。携带JSON格式的扩展信息，可用于传递设备选择过程中的额外参数，如认证配置、业务场景标识等。 |
+| selectionContext | Uint8Array | 否 | 是 | 设备选择上下文。携带JSON格式的扩展信息（具体字段由业务方自行定义），可用于传递设备选择过程中的额外参数。不提供此字段时默认为空，不携带扩展信息。 |
 
 ## DeviceSelectCallback
 
@@ -819,13 +833,13 @@ ArkTS-Sta: type DeviceSelectCallback = (selectPurpose: int) => DeviceSelectResul
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------- | ---- | ---- | ------------------------------------------------------------ |
-| selectPurpose | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是 | 选择目的。用于标识当前设备选择的意图，取值参见[SelectPurpose](#selectpurpose)。SELECT_ADD_DEVICE(1)表示选择添加模板的设备，SELECT_AUTH_DEVICE(2)表示选择认证设备。厂商可自定义扩展值（大于等于10000）。应用应根据选择目的返回相应的设备列表。 |
+| selectPurpose | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是 | 选择目的。用于标识当前设备选择的意图，取值参见[SelectPurpose](#selectpurpose)。SELECT_ADD_DEVICE(1)表示选择添加模板的设备，SELECT_AUTH_DEVICE(2)表示选择认证设备。厂商可自定义扩展值（大于等于10000）。应用应根据selectPurpose返回包含对应设备信息的DeviceSelectResult。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ------------------------------------------- | -------------------- |
-| [DeviceSelectResult](#deviceselectresult) | 设备选择结果。包含用户选择的设备信息列表（deviceKeys）和可选的扩展上下文（selectionContext）。 |
+| [DeviceSelectResult](#deviceselectresult) | 用于向系统返回用户选择的设备信息，以便系统执行后续的添加模板或认证操作。包含用户选择的设备信息列表（deviceKeys）和可选的扩展上下文（selectionContext）。 |
 
 ## companionDeviceAuth.registerDeviceSelectCallback
 
@@ -849,7 +863,7 @@ registerDeviceSelectCallback(callback: DeviceSelectCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ----------------------------------------------- | ---- | -------------------- |
-| callback | [DeviceSelectCallback](#deviceselectcallback) | 是 | 伴随设备选择回调函数。系统调用时会传入选择目的（selectPurpose），应用需根据目的返回相应的DeviceSelectResult，包含用户选择的设备信息。 |
+| callback | [DeviceSelectCallback](#deviceselectcallback) | 是 | 伴随设备选择回调函数。系统调用时会传入选择目的（selectPurpose），应用需根据selectPurpose返回包含对应设备信息的DeviceSelectResult。 |
 
 **错误码：**
 
@@ -868,11 +882,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   companionDeviceAuth.registerDeviceSelectCallback((purpose) => {
-    const addDeviceId = 'addDeviceId';
-    const otherDeviceId = 'otherDeviceId';
-    const addDeviceUserId = 100;
-    const otherDeviceUserId = 100;
+    const addDeviceId = 'addDeviceId'; // 用于添加模板的设备ID
+    const otherDeviceId = 'otherDeviceId'; // 用于认证的设备ID
+    const addDeviceUserId = 100; // 添加模板设备的用户ID
+    const otherDeviceUserId = 100; // 认证设备的用户ID
+    // 根据选择目的返回对应的设备信息
     if (purpose === companionDeviceAuth.SelectPurpose.SELECT_ADD_DEVICE) {
+      // 选择添加模板时，返回添加模板的设备信息
       return {
         deviceKeys: [{
           deviceIdType: companionDeviceAuth.DeviceIdType.UNIFIED_DEVICE_ID,
@@ -891,7 +907,7 @@ try {
   })
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured: ${err.code} ${err.message}`);
+  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -932,7 +948,7 @@ try {
   companionDeviceAuth.unregisterDeviceSelectCallback();
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured: ${err.code} ${err.message}`);
+  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -943,6 +959,8 @@ ArkTS-Dyn: updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: 
 ArkTS-Sta: updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: int[]): Promise&lt;void&gt;
 
 更新指定伴随设备模板支持的业务范围。用于修改已注册模板的启用业务ID列表，从而控制该模板可参与的业务场景。使用Promise异步回调。
+
+生效机制：更新立即生效，下一次认证按新的业务范围判断，无需重启应用或重新认证。
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -961,7 +979,7 @@ ArkTS-Sta: updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------------ | ---------- | ---- | ------------------------ |
 | templateId | Uint8Array | 是 | 目标模板ID。要更新业务范围的模板的唯一标识，可通过[getTemplateStatus](#gettemplatestatus)获取。 |
-| enabledBusinessIds | ArkTS-Dyn: number[]<br />ArkTS-Sta: int[] | 是 | 模板支持的业务ID集合。要启用的业务场景列表，如[DEFAULT]、[解锁锁屏业务ID]等。不同业务ID对应不同的认证场景，应用可根据业务需求配置。 |
+| enabledBusinessIds | ArkTS-Dyn: number[]<br />ArkTS-Sta: int[] | 是 | 模板支持的业务ID集合。要启用的业务场景列表，如[BusinessId.DEFAULT]。不同业务ID对应不同的认证场景，应用可根据业务需求配置（厂商自定义业务ID需 ≥ 10000）。 |
 
 **返回值：**
 
@@ -994,7 +1012,7 @@ companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.Bu
     console.info('business scope updated');
   })
   .catch((err: BusinessError) => {
-    console.error(`error has been captured: code: ${err.code}, message: ${err.message}`);
+    console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
