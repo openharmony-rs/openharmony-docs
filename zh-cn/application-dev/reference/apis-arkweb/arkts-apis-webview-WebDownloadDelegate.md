@@ -40,7 +40,7 @@ onBeforeDownload(callback: Callback\<WebDownloadItem>): void
 
 | 参数名  | 类型   | 必填 | 说明           |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 触发下载的回调。 |
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载开始前的回调。 |
 
 **示例：**
 
