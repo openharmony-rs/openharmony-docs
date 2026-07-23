@@ -90,7 +90,7 @@ struct Child {
 ```
 
 
-The **ChildPage** component customized using [\@ComponentV2](./arkts-create-custom-components.md#componentv2) is initialized using the **ParentPage** component. Because \@Require is used to decorate \@Param, the parent component must be constructed and assigned a value.
+The **ChildPage** component customized using [\@ComponentV2](./arkts-create-custom-components.md#componentv2) is initialized using the **ParentPage** component. Because \@Require is used to decorate \@Param, the parent component must assign a value to it during construction.
 
 <!-- @[parent_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/ParentPage.ets) -->
 

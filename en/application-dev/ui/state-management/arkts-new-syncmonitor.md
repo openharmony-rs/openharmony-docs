@@ -57,7 +57,7 @@ Similar to the [\@Watch](arkts-watch.md) decorator, you must define the callback
 
 Functions decorated by \@Monitor are executed asynchronously after the event handler is executed. After the \@SyncMonitor and \@Watch functions detect the change of the status variable, the callback function is executed immediately.
 
-\@The execution of the Monitor function can be triggered by the value change of one or more specific tracing object attributes. \@The Watch function is executed when any observed object attribute or array item changes. It cannot listen to one or more specific attributes.
+The execution of the \@Monitor function can be triggered by the value change of one or more specific tracing object attributes. The \@Watch function is executed when any observed object attribute or array item changes. It cannot listen to one or more specific attributes.
 
 The behavior of \@SyncMonitor with wildcard characters in the path is the same as that of \@Watch. This makes it easier for applications to migrate from V1 state management to V2 state management. The following is an example:
 
@@ -212,7 +212,7 @@ When the status variable monitored by \@SyncMonitor changes, the callback method
    }
    ```
 
-- \@When the status variable monitored by SyncMonitor is a class object, only the changes of the entire object can be monitored. To listen to the changes of class attributes, the class attributes must be decorated by \@Trace. The changes of non-state variables cannot be listened to.
+- When the status variable monitored by \@SyncMonitor is a class object, only the changes of the entire object can be monitored. To listen to the changes of class attributes, the class attributes must be decorated by \@Trace. The changes of non-state variables cannot be listened to.
   
     <!-- @[monitor_object_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorObjectVariable.ets) -->
     

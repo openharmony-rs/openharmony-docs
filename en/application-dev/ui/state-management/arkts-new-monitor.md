@@ -21,14 +21,14 @@ You can use \@Monitor, a method decorator in state management V2, to enhance the
 
 ## Overview
 
-To listen for value changes of the state variables in a lower level, you can use the \@Monitor decorator:
+To listen for value changes of the deep state variables, you can use the \@Monitor decorator:
 
 - The \@Monitor decorator can be used in custom components decorated by \@ComponentV2. But it cannot listen for the changes of the state variables that are not decorated by these decorators: [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Provider](arkts-new-provider-and-consumer.md), [\@Consumer](arkts-new-provider-and-consumer.md) and [\@Computed](arkts-new-computed.md).
 
 - The \@Monitor decorator can be used in a class together with [\@ObservedV2 and \@Trace](arkts-new-observedV2-and-trace.md) decorators. But it cannot be used in a class that is not decorated by \@ObservedV2. \@Monitor cannot listen for the properties that are not decorated by \@Trace.
-- When the listened property changes, the callback defined by \@Monitor will be called. Strict equality (===) is used to determine whether a property is changed. If **false** is return, the \@Monitor decorated callback is triggered. When a property is changed for multiple times in an event, the initial value will be compared with the final value to determine whether the property is changed.
+- When the listened property changes, the callback defined by \@Monitor will be called. Strict equality (===) is used to determine whether a property is changed. If **false** is returned, the \@Monitor decorated callback is triggered. When a property is changed for multiple times in an event, the initial value will be compared with the final value to determine whether the property is changed.
 - A single \@Monitor decorator can listen for the changes of multiple properties at the same time. When these properties change together in an event, the \@Monitor callback method is triggered only once.
-- The \@Monitor decorator has lower-level listening capability and can listen for changes of specified items in nested classes, multi-dimensional arrays, and object arrays. The observation requires that \@ObservedV2 decorate the nested class and \@Trace decorate the member properties in an object array.
+- The \@Monitor decorator has deep listening capability and can listen for changes of specified items in nested classes, multi-dimensional arrays, and object arrays. The observation requires that \@ObservedV2 decorate the nested class and \@Trace decorate the member properties in an object array.
 - When \@Monitor observes an entire array, changes to individual array items are not observed. \@Monitor cannot listen for changes caused by calling APIs of built-in types (Array, Map, Date, and Set).
 - In the inheritance scenario, you can define \@Monitor for the same property in the parent and child components for listening. When the property changes, the \@Monitor callback defined in the parent and child components is called.
 - Similar to the [\@Watch](arkts-watch.md) decorator, you should define the callback functions by yourselves. The difference is that the \@Watch decorator uses the function name as a parameter, while the \@Monitor directly decorates the callback function. For details about the comparison between \@Monitor and \@Watch, see [Comparing \@Monitor with \@Watch](#comparing-monitor-with-watch).
@@ -94,7 +94,7 @@ In the preceding code, when you click **change info name** to change the **name*
 
 | \@Monitor Property Decorator| Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| Parameters         | Object property name of the string type. This decorator can listen for multiple object properties at the same time. Each property is separated by commas (,), for example, @Monitor('prop1', 'prop2'). In addition, properties such as an element in a multi-dimensional array, a property in a nested object, and a property in an object array can be listened in a lower level. For details, see [Listened Changes](#listened-changes).|
+| Parameters         | Object property name of the string type. This decorator can listen for multiple object properties at the same time. Each property is separated by commas (,), for example, @Monitor('prop1', 'prop2'). In addition, properties such as an element in a multi-dimensional array, a property in a nested object, and a property in an object array can be listened deeply. For details, see [Listened Changes](#listened-changes).|
 | Decorated object           | \@Monitor decorated member method. This callback is triggered when the listened property changes. The callback method takes a variable of the [IMonitor type](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#imonitor12) as a parameter, from which you can retrieve information before and after the change.|
 
 ## Available APIs
@@ -258,7 +258,7 @@ When the properties listened by \@Monitor change, the callback is triggered.
   }
   ```
 
-- \@Monitor can listen for the changes of lower-level properties which should be decorated by @Trace.
+- \@Monitor can listen for the changes of deep properties which should be decorated by @Trace.
   <!-- @[monitor_decorator_object_trace_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceObservedV2.ets) -->
   
   ``` TypeScript
@@ -350,7 +350,7 @@ When the properties listened by \@Monitor change, the callback is triggered.
 
 \@Monitor also has some general listening capabilities.
 
-- \@Monitor can listen for items in arrays, including multi-dimensional arrays and object arrays. \@Monitor cannot listen for changes caused by calling APIs of built-in types (Array, Map, Date, and Set). When \@Monitor listens for the entire array, only the value changes to the entire array can be observed. But you can listen for the length change of the array to determine whether the array is inserted or deleted. Currently, only periods (.) can be used to listen for lower-level properties and array items.
+- \@Monitor can listen for items in arrays, including multi-dimensional arrays and object arrays. \@Monitor cannot listen for changes caused by calling APIs of built-in types (Array, Map, Date, and Set). When \@Monitor listens for the entire array, only the value changes to the entire array can be observed. But you can listen for the length change of the array to determine whether the array is inserted or deleted. Currently, only periods (.) can be used to listen for deep properties and array items.
   <!-- @[monitor_decorator_array_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorArraySupport.ets) -->
   
   ``` TypeScript
@@ -763,16 +763,16 @@ The following table compares the usage and functions of \@Monitor and \@Watch.
 | ------------------ | ----------------------------------------- | ------------------------------------------------------------ |
 | Parameter              | Callback method name.                             | Listened state variable name and property name.                                    |
 | Number of listened targets        | A single state variable.                   | Multiple state variables.                                    |
-| Listening capability          | Listen for the top-level state variables.           | Listen for the lower-level state variables.                              |
+| Listening capability          | Listen for the top-level state variables.           | Listen for the deep state variables.                              |
 | Obtain the value before change| No.                     | Yes.                                          |
 | Listening Condition          | The listened object is a state variable.                     | The listened object is a state variable or a class member property decorated by \@Trace.             |
 | Constraints          | Used only in \@Component decorated custom components.| Used in \@ComponentV2 decorated custom components and \@ObservedV2 decorated classes.|
 
 ## When to Use
 
-### Listening for Lower-level Property Changes
+### Listening for Deep Property Changes
 
-\@Monitor can listen for the lower-level property changes and classify them based on the values before and after the changes.
+\@Monitor can listen for the deep property changes and classify them based on the values before and after the changes.
 
 In the following example, the change of property **value** is listened and the display style of the **Text** component is changed based on the change amplitude.
 
