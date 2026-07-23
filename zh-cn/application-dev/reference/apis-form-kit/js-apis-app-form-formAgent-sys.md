@@ -196,12 +196,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let formId: string = '123456789'; // 卡片的formId，请替换为实际的formId。
 try {
-let param: Record<string, string> = {
-  'temperature': '22c',
-  'time': '22:00'
-};
-let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-formAgent.updateFormCrossBundle(formId, obj).then(() => {
+  let param: Record<string, string> = {
+    'temperature': '22c',
+    'time': '22:00'
+  };
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  formAgent.updateFormCrossBundle(formId, obj).then(() => {
     console.info('formAgent updateFormCrossBundle success');
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error?.code}, message: ${error?.message}`);
