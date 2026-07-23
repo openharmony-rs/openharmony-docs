@@ -64,7 +64,7 @@ setPropertyIndication(property: Property, enable: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -133,14 +133,14 @@ callMethod(method: Method): Promise&lt;Method&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications are not allowed to use system APIs. |
 | 36100003 | NearLink disabled. |
-| 36100043 | Invalid UUID in property. |
+| 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
 | 36100099 | Operation failed. |
 
@@ -208,7 +208,7 @@ readDescriptor(descriptor: PropertyDescriptor): Promise&lt;PropertyDescriptor&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -285,7 +285,7 @@ writeDescriptor(descriptor: PropertyDescriptor): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
