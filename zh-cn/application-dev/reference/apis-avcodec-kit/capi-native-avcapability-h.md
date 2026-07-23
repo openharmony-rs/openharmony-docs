@@ -920,7 +920,7 @@ OH_AVErrCode OH_AVCapability_GetSupportedProfiles(OH_AVCapability *capability, c
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | 编解码能力指针。 |
-| const int32_t **profiles | 输出参数。指向档次数组的指针。参考[OH_AVCProfile](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile)。 |
+| const int32_t **profiles | 输出参数。指向档次数组的指针。例如，H.264档次参考[OH_AVCProfile](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile)。 |
 | uint32_t *profileNum | 输出参数。档次数组的元素数目。 |
 
 **返回：**
@@ -949,7 +949,7 @@ OH_AVErrCode OH_AVCapability_GetSupportedLevelsForProfile(OH_AVCapability *capab
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | 编解码能力指针。 |
 | int32_t profile | 编解码器档次。 |
-| const int32_t **levels | 输出参数。指向级别数组的指针。参考[OH_AVCLevel](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel)。 |
+| const int32_t **levels | 输出参数。指向级别数组的指针。例如，H.264级别参考[OH_AVCLevel](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel)。 |
 | uint32_t *levelNum | 输出参数。级别数组的元素数目。 |
 
 **返回：**
