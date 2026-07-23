@@ -41,6 +41,7 @@
     <!--DelEnd-->
   - Data File Processing<!--data-file-processing-arkts-->
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability)](js-apis-app-ability-PrintExtensionAbility.md)
+    - [PrintExtensionContext](js-apis-PrintExtensionContext.md)
     - [@ohos.pasteboard (Pasteboard)](js-apis-pasteboard.md)
     - [@ohos.print (Print)](js-apis-print.md)
     - [@ohos.scan (Scan)](js-apis-scan.md)
@@ -82,6 +83,7 @@
     - [@ohos.annotation (Annotation)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (Custom Configurations)](js-apis-customization-customConfig.md)
     - [@ohos.settings (Data Item Settings)](js-apis-settings.md)
+    - [@ohos.settingsLite (Setting Information)](js-apis-settings-lite.md)
     - [@ohos.wallpaper (Wallpaper)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (System Load Level Management)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (System Time and Time Zone)](js-apis-date-time.md)
@@ -172,7 +174,7 @@
   - [Thermal Manager Error Codes](errorcode-thermal.md)
   - [Upload and Download Error Codes](errorcode-request.md)
   - [Time and Time Zone Service Error Codes](errorcode-time.md)
-  - [Event Error Codes](errorcode-CommonEventService.md)
+  - [Common Event Error Codes](errorcode-CommonEventService.md)
   <!--Del-->
   - [System Parameter Error Codes](errorcode-system-parameterV9.md)
   <!--DelEnd-->
