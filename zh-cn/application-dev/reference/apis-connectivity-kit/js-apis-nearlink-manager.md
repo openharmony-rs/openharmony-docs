@@ -20,7 +20,7 @@ import { manager } from '@kit.ConnectivityKit';
 ```
 
 
-## getState
+## manager.getState
 
 getState(): NearlinkState
 
@@ -60,7 +60,7 @@ try {
 }
 ```
 
-## isNearLinkSupported
+## manager.isNearLinkSupported
 
 isNearLinkSupported(): boolean
 
@@ -96,7 +96,7 @@ try {
 ```
 
 
-## getLocalName
+## manager.getLocalName
 
 getLocalName(): string
 
@@ -141,9 +141,9 @@ try {
 ```
 
 
-## getPairedDevices
+## manager.getPairedDevices
 
-getPairedDevices(): Array&lt;string&gt;
+getPairedDevices(): string[]
 
 获取与当前设备配对的设备列表。
 
@@ -159,7 +159,7 @@ getPairedDevices(): Array&lt;string&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Array&lt;string&gt; | 配对设备地址的列表。 |
+| string[] | 配对设备地址的列表。 |
 
 **错误码：**
 
@@ -190,7 +190,7 @@ try {
 ```
 
 
-## onStateChange
+## manager.onStateChange
 
 onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
@@ -241,7 +241,7 @@ try {
 ```
 
 
-## offStateChange
+## manager.offStateChange
 
 offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
