@@ -130,7 +130,7 @@ ArkTS中常用类型的**类型Mangling参考**如下所示：
 以`namespaceInvokeFunction`为例的Mangling的函数签名示例如下所示：
 ```typescript
 // ArkTS-Dyn
-let nsp = STValue.findNamespace('stvalue_invoke.Invoke');
+let nsp = STValue.findNamespace('staHar.src.main.ets.components.stvalue_test.Invoke');
 let b1 = STValue.wrapBoolean(false);
 let b2 = STValue.wrapBoolean(false);
 let b = nsp.namespaceInvokeFunction('BooleanInvoke', 'zz:z', [b1, b2]); // BooleanInvoke(b1: boolean, b2: boolean): boolean
