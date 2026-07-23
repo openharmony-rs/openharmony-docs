@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-LiveFormExtensionAbility模块提供互动卡片功能，包括创建、销毁互动卡片等，继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)。
+LiveFormExtensionAbility(互动卡片扩展能力)模块提供互动卡片功能，包括接收创建和销毁互动卡片的通知等，继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)。该模块主要实现可拖动、可交互的动态卡片功能，支持手势拖动、数据更新、实时交互等特性，常用于天气卡片、音乐控制卡片、实时数据展示卡片等需要用户直接交互的场景，能够提升用户体验和增强应用交互性。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@ LiveFormExtensionAbility模块提供互动卡片功能，包括创建、销毁�
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见[附录](js-apis-app-form-LiveFormExtensionAbility.md#附录)。
+> 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见[附录](#附录)。
 
 ## 导入模块
 
@@ -22,9 +22,13 @@ LiveFormExtensionAbility模块提供互动卡片功能，包括创建、销毁�
 import { LiveFormExtensionAbility } from '@kit.FormKit';
 ```
 ## LiveFormExtensionAbility
-互动卡片扩展类。包含互动卡片提供方接收创建和销毁互动卡片的通知接口。
+互动卡片扩展类，用于实现互动卡片的提供方功能。包含互动卡片提供方接收创建和销毁互动卡片的通知接口，开发者可在这些回调中实现卡片的初始化、数据绑定、资源清理等逻辑。onLiveFormCreate在添加卡片时触发，用于初始化和数据绑定；onLiveFormDestroy在移除卡片时触发，用于资源清理。两者形成完整的生命周期管理，应确保在create中分配的资源在destroy中正确释放。
 
 ### 属性
+
+> **说明：**
+>
+> 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见[附录](#附录)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +44,12 @@ import { LiveFormExtensionAbility } from '@kit.FormKit';
 
 onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void
 
-LiveFormExtensionAbility界面内容对象创建后调用。
+创建互动卡片时的回调。当用户添加互动卡片时，系统会自动调用此回调，开发者可在此回调中进行卡片初始化、数据绑定等操作。
+
+**配对调用：**
+- 与onLiveFormDestroy()方法成对使用，构成完整的互动卡片生命周期
+- 当卡片被移除时，系统会自动调用onLiveFormDestroy()进行资源清理
+- 开发者应确保在onLiveFormCreate中申请的资源在onLiveFormDestroy中正确释放，避免内存泄漏
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,8 +61,14 @@ LiveFormExtensionAbility界面内容对象创建后调用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| liveFormInfo | [LiveFormInfo](#liveforminfo) | 是 | 互动卡片信息，包括卡片id等信息。|
-| session      | [UIExtensionContentSession](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md) | 是 | LiveFormExtensionAbility界面内容相关信息。 |
+| liveFormInfo | [LiveFormInfo](#liveforminfo) | 是 | 互动卡片信息，用于标识需要创建的互动卡片，包括卡片id等信息。|
+| session      | [UIExtensionContentSession](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md) | 是 | LiveFormExtensionAbility的界面会话对象，用于管理与卡片的交互会话。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| void | 无返回值。 |
 
 **示例：**
 
@@ -86,7 +101,13 @@ LiveFormExtensionAbility生命周期回调，在销毁时回调，执行资源�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| liveFormInfo | [LiveFormInfo](#liveforminfo) | 是 | 互动卡片信息，包括卡片id等信息。|
+| liveFormInfo | [LiveFormInfo](#liveforminfo) | 是 | 互动卡片信息，用于标识需要销毁的互动卡片，包括卡片id等信息。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| void | 无返回值。 |
 
 **示例：**
 
@@ -115,7 +136,7 @@ export default class LiveFormExtAbility extends LiveFormExtensionAbility {
 | ------ | ------ | ---- | ---- | -------- |
 | formId | string | 否 | 否 | 卡片id。 |
 | rect | [formInfo.Rect](js-apis-app-form-formInfo.md#rect20) | 否 | 否 | 卡片位置和大小信息。 |
-| borderRadius | number | 否 | 否 | 卡片圆角半径信息。取值大于等于0，单位vp。 |
+| borderRadius | number | 否 | 否 | 卡片圆角半径信息，取值范围[0, +∞)，单位vp。传入负数时自动修正为0。 |
 
 ## 附录
 

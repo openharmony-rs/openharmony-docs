@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。它提供访问特定于LiveFormExtensionAbility资源的能力，支持在互动卡片中拉起应用页面，适用于需要在互动卡片中响应用户点击并跳转到应用页面的场景，解决了互动卡片无法主动拉起应用页面的限制问题。
 
 > **说明：**
 >
@@ -20,19 +20,23 @@ import { common } from '@kit.AbilityKit';
 
 >  **说明：**
 >
-> - 在API version 22以前，需要通过`import LiveFormExtensionContext from 'application/LiveFormExtensionContext'; `导入LiveFormExtensionContext。该导入方式在DevEco Studio中标红，但不影响编译运行，可以直接使用LiveFormExtensionContext。
+> - 在API version 22以前，需要通过`import LiveFormExtensionContext from 'application/LiveFormExtensionContext';`导入。该导入方式在DevEco Studio中标红，但不影响编译运行，可以直接使用LiveFormExtensionContext。
 >
-> - 在API version 22及以后，支持通过`import { common } from '@kit.AbilityKit'; `导入LiveFormExtensionContext，并通过common.LiveFormExtensionContext的方式使用。
+> - 在API version 22及以后，支持通过`import { common } from '@kit.AbilityKit';`导入，并通过common.LiveFormExtensionContext的方式使用。
 
 ## LiveFormExtensionContext
 
-LiveFormExtensionContext提供允许访问特定于LiveFormExtensionAbility资源的能力，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+LiveFormExtensionContext提供访问特定于LiveFormExtensionAbility资源的能力，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 ### startAbilityByLiveForm
 
 startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
 
 拉起互动卡片提供方（应用）的页面，使用Promise异步回调。
+
+**使用场景：**
+- 互动卡片中点击跳转到应用主页或详情页
+- 卡片交互场景中跳转到应用特定功能页
 
 该接口仅支持拉起互动卡片提供方（应用）的页面，不支持拉起其他应用的页面，否则会抛出错误码16501011。
 
@@ -48,7 +52,7 @@ startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
 
   | 参数名 | 类型    | 必填 | 说明                                   |
   | ------ | ------ | ---- | ------------------------------------- |
-  | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是   | 需要被拉起的应用页面信息。[仅支持使用显式want。](../../../application-dev/application-models/ability-startup-with-explicit-want.md) |
+  | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是   | 需要被拉起的应用页面信息。取值原则：仅支持使用显式Want，必须包含bundleName和abilityName字段。[详见显式Want使用说明](../../../application-dev/application-models/ability-startup-with-explicit-want.md)。仅支持拉起互动卡片提供方（应用）的页面，不支持拉起其他应用的页面。该接口仅限在点击事件回调中直接调用，不支持延时后调用，否则会抛出错误码16501011。 |
 
 **返回值：**  
   | 类型 | 说明    |
@@ -61,17 +65,17 @@ startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported due to limited device capabilities.                 |
-| 16500050 | An IPC connection error happened.                            |
-| 16500100 | Failed to obtain the configuration information.                        |
-| 16501000 | An internal functional error occurred.                       |
-| 16501011 | The form can not support this operation.                       |
+| 801      | Capability not supported due to limited device capabilities. 请检查设备能力是否支持该特性。                 |
+| 16500050 | IPC connection error. 请检查IPC连接状态并重试。                            |
+| 16500100 | Failed to obtain configuration information. 请检查配置信息是否正确。                        |
+| 16501000 | An internal functional error occurred. 请检查系统状态或联系技术支持。                       |
+| 16501011 | The form can not support this operation. 请确保仅在点击事件回调中直接调用该接口，且仅拉起互动卡片提供方的页面。                       |
 
 **示例：**
 
 ```ts
 // MyLiveFormExtensionAbility.ets
-import { formInfo, LiveFormInfo, LiveFormExtensionAbility } from '@kit.FormKit';
+import { LiveFormInfo, LiveFormExtensionAbility } from '@kit.FormKit';
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility {
@@ -100,7 +104,7 @@ struct MyLiveFormPage {
     this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
   }
 
-   private startAbilityByLiveForm(): void {
+  private startAbilityByLiveForm(): void {
     try {
       // 请开发者替换为实际的want信息
       this.liveFormContext?.startAbilityByLiveForm({
@@ -113,8 +117,8 @@ struct MyLiveFormPage {
         .catch((err: BusinessError) => {
           console.error(`startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
         });
-    } catch (e) {
-      console.error(`startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
+    } catch (err) {
+      console.error(`startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
     }
   }
 
@@ -136,7 +140,7 @@ struct MyLiveFormPage {
         return;
       }
       this.startAbilityByLiveForm();
-    })
+    });
   }
 }
 ```
