@@ -98,14 +98,13 @@ export default function abilityTest() {
 }
 ```
 **ArkTS-Sta示例：**
- 1. 示例中的导入的sleep函数参数示例代码。
 <!-- @[basic_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
 
 ``` TypeScript
 import { describe, expect, it, TestType, Level, Size } from '../../../../hypium/index';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility, Want } from '@kit.AbilityKit';
-import { sleep } from '../Util.test'
+import { sleep } from '../Util.test';
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
 export default function abilityTest(): void {
@@ -828,12 +827,11 @@ interface PromiseInfo {
 ```
 
 **ArkTS-Sta示例：**
-1. 示例中引入的promiseReject函数参数示例代码。
 <!-- @[assert_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/assertExampleTest/AssertExample.test.ets) -->
 
 ``` TypeScript
 import { describe, expect, it, Level } from '../../../../hypium/index';
-import { promiseReject } from '../Util.test'
+import { promiseReject } from '../Util.test';
 
 
 export default function exampleTest(): void {
