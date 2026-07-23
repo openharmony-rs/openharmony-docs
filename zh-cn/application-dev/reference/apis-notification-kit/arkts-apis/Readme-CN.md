@@ -431,10 +431,6 @@
   - [VoiceContentOptions(系统接口)](arkts-notification-notificationsubscribe-voicecontentoptions-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [RemoveReason(系统接口)](arkts-notification-notificationsubscribe-removereason-e-sys.md)<!--DelEnd-->
-- [@system.notification](arkts-notification.md)
-  - [Notification](arkts-notification-notification-notification-c.md)
-  - [ActionResult](arkts-notification-notification-actionresult-i.md)
-  - [ShowNotificationOptions](arkts-notification-notification-shownotificationoptions-i.md)
 - notification<!--arkts-notificationkit-notification-->
   - [NotificationCommonDef](arkts-notificationcommondef.md)
     - [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)
