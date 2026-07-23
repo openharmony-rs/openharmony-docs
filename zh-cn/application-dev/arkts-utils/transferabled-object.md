@@ -47,21 +47,26 @@ struct Index {
 
   private async loadImageFromThread(): Promise<void> {
     const resourceMgr = this.uiContext?.getHostContext()?.resourceManager;
-    // 此处‘startIcon.png’为media下复制到rawfile文件夹中，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+    // 此处‘startIcon.png’为media下复制到工程中的resources/rawfile文件夹中，请开发者自行替换，
+    // 否则imageSource创建失败会导致后续无法正常执行（日志中会打印Failed to get RawFd）。
     await resourceMgr?.getRawFd('startIcon.png').then(async rawFileDescriptor => {
       await taskpool.execute(loadPixelMap, rawFileDescriptor).then(pixelMap => {
         if (pixelMap) {
           this.pixelMap = pixelMap as PixelMap;
+          this.message = 'success';
           console.info('Succeeded in creating pixelMap.');
           // 主线程释放pixelMap。由于子线程返回pixelMap时已调用setTransferDetached，所以此处能够立即释放pixelMap。
           this.pixelMap.release();
         } else {
+          this.message = 'failed';
           console.error('Failed to create pixelMap.');
         }
       }).catch((e: BusinessError) => {
-        console.error('taskpool execute loadPixelMap failed. Code: ' + e.code + ', message: ' + e.message);
+        this.message = 'failed';
+           console.error(`taskpool execute loadPixelMap failed. Code: ${e.code}, message: ${e.message}`);
       });
     }).catch(() => {
+      this.message = 'failed';
       console.error(`Failed to get RawFd`);
     });
   }
@@ -77,12 +82,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          this.loadImageFromThread().then(() => {
-            this.message = 'success';
-          }).catch((e: BusinessError) => {
-            this.message = 'failed';
-            console.error('taskpool execute loadImageFromThread failed. Code: ' + e.code + ', message: ' + e.message);
-          })
+          this.loadImageFromThread();
         })
     }
     .height('100%')
