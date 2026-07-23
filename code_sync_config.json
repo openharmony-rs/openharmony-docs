@@ -37014,7 +37014,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets",
 				"functions":[
 					{
-						"end_line":21,
+						"end_line":27,
 						"name":"get_StreamManager",
 						"start_line":15
 					},
