@@ -381,7 +381,7 @@ getData(callback: AsyncCallback\<string>): void
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<string> | 是   | 回调函数。当获取有序公共事件传递的数据（string类型）成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
+| callback | AsyncCallback\<string> | 是   | 回调函数。当获取有序公共事件传递的数据成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
 
 **错误码：**
 
@@ -397,7 +397,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-// 获取有序公共事件传递的数据（string类型）回调
+// 获取有序公共事件传递的数据回调
 subscriber.getData((err: BusinessError, data: string) => {
   if (err) {
     console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
@@ -411,7 +411,7 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-// 获取有序公共事件传递的数据（string类型）回调
+// 获取有序公共事件传递的数据回调
 subscriber.getData((err: BusinessError | null, data: string | undefined | null) => {
   if (err) {
     console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
@@ -439,7 +439,7 @@ getData(): Promise\<string>
 
 | 类型             | 说明               |
 | ---------------- | ------------------ |
-| Promise\<string> | Promise对象。返回有序公共事件传递的数据（string类型）。 |
+| Promise\<string> | Promise对象。返回有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -514,7 +514,7 @@ setData(data: string, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                 | 必填 | 说明                 |
 | -------- | -------------------- | ---- | -------------------- |
 | data     | string               | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。   |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据（string类型）成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
