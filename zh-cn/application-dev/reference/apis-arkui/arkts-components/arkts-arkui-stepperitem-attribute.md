@@ -1,6 +1,6 @@
 # StepperItem属性/事件
 
-**继承/实现关系：** StepperItemAttribute extends [CommonMethod<StepperItemAttribute>](CommonMethod<StepperItemAttribute>)
+**继承/实现关系：** StepperItemAttribute extends [CommonMethod<StepperItemAttribute>]
 
 **起始版本：** 8
 

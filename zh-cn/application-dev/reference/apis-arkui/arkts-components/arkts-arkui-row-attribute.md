@@ -4,7 +4,7 @@
 
 支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
 
-**继承/实现关系：** RowAttribute extends [CommonMethod<RowAttribute>](CommonMethod<RowAttribute>)
+**继承/实现关系：** RowAttribute extends [CommonMethod<RowAttribute>]
 
 **起始版本：** 7
 

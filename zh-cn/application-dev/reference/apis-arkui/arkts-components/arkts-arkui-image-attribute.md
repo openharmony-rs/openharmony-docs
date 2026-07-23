@@ -31,7 +31,7 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 > performance#section91526132216)。  
 >
 
-**继承/实现关系：** ImageAttribute extends [CommonMethod<ImageAttribute>](CommonMethod<ImageAttribute>)
+**继承/实现关系：** ImageAttribute extends [CommonMethod<ImageAttribute>]
 
 **起始版本：** 7
 

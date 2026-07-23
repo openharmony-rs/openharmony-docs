@@ -2,7 +2,7 @@
 
 继承自[SubscribedAbstractProperty<T>](arkts-arkui-subscribedabstractproperty-c-sys.md)。用来定义父组件的状态值。
 
-**继承/实现关系：** SyncedPropertyOneWay extends [SubscribedAbstractProperty<T>](SubscribedAbstractProperty<T>) implements [ISinglePropertyChangeSubscriber<T>](ISinglePropertyChangeSubscriber<T>)
+**继承/实现关系：** SyncedPropertyOneWay extends [SubscribedAbstractProperty<T>] implements [ISinglePropertyChangeSubscriber<T>]
 
 **起始版本：** 7
 

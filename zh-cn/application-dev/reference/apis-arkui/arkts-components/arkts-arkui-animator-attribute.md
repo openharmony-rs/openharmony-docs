@@ -2,7 +2,7 @@
 
 定义Animator属性。
 
-**继承/实现关系：** AnimatorAttribute extends [CommonMethod<AnimatorAttribute>](CommonMethod<AnimatorAttribute>)
+**继承/实现关系：** AnimatorAttribute extends [CommonMethod<AnimatorAttribute>]
 
 **起始版本：** 7
 

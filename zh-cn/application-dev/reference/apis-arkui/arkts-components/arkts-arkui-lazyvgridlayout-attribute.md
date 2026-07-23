@@ -4,7 +4,7 @@
 
 除支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下事件：
 
-**继承/实现关系：** LazyVGridLayoutAttribute extends [LazyGridLayoutAttribute<LazyVGridLayoutAttribute>](LazyGridLayoutAttribute<LazyVGridLayoutAttribute>)
+**继承/实现关系：** LazyVGridLayoutAttribute extends [LazyGridLayoutAttribute<LazyVGridLayoutAttribute>]
 
 **起始版本：** 19
 

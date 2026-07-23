@@ -5,7 +5,7 @@
 >  
 > 当组件同时绑定双击和单击手势且双击手势先绑定时，单击手势会有300ms的延时。
 
-**继承/实现关系：** TapGestureInterface extends [GestureInterface<TapGestureInterface>](GestureInterface<TapGestureInterface>)
+**继承/实现关系：** TapGestureInterface extends [GestureInterface<TapGestureInterface>]
 
 **起始版本：** 7
 

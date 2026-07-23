@@ -2,7 +2,7 @@
 
 定义懒加载垂直瀑布流布局属性。
 
-**继承/实现关系：** LazyVWaterFlowLayoutAttribute extends [LazyWaterFlowLayoutAttribute<LazyVWaterFlowLayoutAttribute>](LazyWaterFlowLayoutAttribute<LazyVWaterFlowLayoutAttribute>)
+**继承/实现关系：** LazyVWaterFlowLayoutAttribute extends [LazyWaterFlowLayoutAttribute<LazyVWaterFlowLayoutAttribute>]
 
 **起始版本：** 26.0.0
 

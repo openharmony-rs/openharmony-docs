@@ -2,7 +2,7 @@
 
 定义IsolatedComponent的属性方法。
 
-**继承/实现关系：** IsolatedComponentAttribute extends [CommonMethod<IsolatedComponentAttribute>](CommonMethod<IsolatedComponentAttribute>)
+**继承/实现关系：** IsolatedComponentAttribute extends [CommonMethod<IsolatedComponentAttribute>]
 
 **起始版本：** 12
 

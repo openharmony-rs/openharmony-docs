@@ -4,8 +4,7 @@
 
 ��֧��[ͨ���¼�](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)�⣬��֧�������¼���
 
-**继承/实现关系：** TabContentAttribute extends [CommonMethod<TabContentAttribute>](CommonMethod<TabContentAttribute>)
-
+**继承/实现关系：** TabContentAttribute extends [CommonMethod<TabContentAttribute>]
 **起始版本：** 7
 
 <!--Device-unnamed-declare class TabContentAttribute extends CommonMethod<TabContentAttribute>--><!--Device-unnamed-declare class TabContentAttribute extends CommonMethod<TabContentAttribute>-End-->

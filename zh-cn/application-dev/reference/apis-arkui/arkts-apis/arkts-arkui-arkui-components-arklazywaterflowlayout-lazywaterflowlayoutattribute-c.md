@@ -2,7 +2,7 @@
 
 定义懒加载瀑布流布局属性。
 
-**继承/实现关系：** LazyWaterFlowLayoutAttribute extends [CommonMethod<T>](CommonMethod<T>)
+**继承/实现关系：** LazyWaterFlowLayoutAttribute extends [CommonMethod<T>]
 
 **起始版本：** 26.0.0
 

@@ -4,7 +4,7 @@
 
 支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
 
-**继承/实现关系：** GridColAttribute extends [CommonMethod<GridColAttribute>](CommonMethod<GridColAttribute>)
+**继承/实现关系：** GridColAttribute extends [CommonMethod<GridColAttribute>]
 
 **起始版本：** 9
 

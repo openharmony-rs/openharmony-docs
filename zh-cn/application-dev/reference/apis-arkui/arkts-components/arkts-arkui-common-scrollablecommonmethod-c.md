@@ -2,7 +2,7 @@
 
 CommonScrollableMethod
 
-**继承/实现关系：** ScrollableCommonMethod extends [CommonMethod<T>](CommonMethod<T>)
+**继承/实现关系：** ScrollableCommonMethod extends [CommonMethod<T>]
 
 **起始版本：** 12
 

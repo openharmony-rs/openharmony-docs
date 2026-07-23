@@ -2,7 +2,7 @@
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-common-commonconfiguration-i.md)。
 
-**继承/实现关系：** CheckBoxConfiguration extends [CommonConfiguration<CheckBoxConfiguration>](CommonConfiguration<CheckBoxConfiguration>)
+**继承/实现关系：** CheckBoxConfiguration extends [CommonConfiguration<CheckBoxConfiguration>]
 
 **起始版本：** 12
 

@@ -2,7 +2,7 @@
 
 窗格属性。
 
-**继承/实现关系：** PanelAttribute extends [CommonMethod<PanelAttribute>](CommonMethod<PanelAttribute>)
+**继承/实现关系：** PanelAttribute extends [CommonMethod<PanelAttribute>]
 
 **起始版本：** 7
 

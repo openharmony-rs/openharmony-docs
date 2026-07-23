@@ -2,7 +2,7 @@
 
 除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外还支持以下属性：
 
-**继承/实现关系：** ParticleAttribute extends [CommonMethod<ParticleAttribute>](CommonMethod<ParticleAttribute>)
+**继承/实现关系：** ParticleAttribute extends [CommonMethod<ParticleAttribute>]
 
 **起始版本：** 10
 

@@ -4,7 +4,7 @@
 
 除支持[通用事件](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，还支持以下事件。
 
-**继承/实现关系：** TextTimerAttribute extends [CommonMethod<TextTimerAttribute>](CommonMethod<TextTimerAttribute>)
+**继承/实现关系：** TextTimerAttribute extends [CommonMethod<TextTimerAttribute>]
 
 **起始版本：** 8
 

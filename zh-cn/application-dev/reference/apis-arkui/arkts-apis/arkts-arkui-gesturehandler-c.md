@@ -2,7 +2,7 @@
 
 手势处理器的基础类型。
 
-**继承/实现关系：** GestureHandler implements [GestureInterface<T>](GestureInterface<T>)
+**继承/实现关系：** GestureHandler implements [GestureInterface<T>]
 
 **起始版本：** 12
 

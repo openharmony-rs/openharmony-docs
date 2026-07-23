@@ -2,7 +2,7 @@
 
 构造圆点指示器的样式，继承自[Indicator](arkts-arkui-swiper-indicator-c.md)。
 
-**继承/实现关系：** DotIndicator extends [Indicator<DotIndicator>](Indicator<DotIndicator>)
+**继承/实现关系：** DotIndicator extends [Indicator<DotIndicator>]
 
 **起始版本：** 10
 

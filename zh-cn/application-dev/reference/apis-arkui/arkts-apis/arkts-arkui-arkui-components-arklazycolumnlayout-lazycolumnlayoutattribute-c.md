@@ -2,7 +2,7 @@
 
 定义懒加载列布局属性。
 
-**继承/实现关系：** LazyColumnLayoutAttribute extends [CommonMethod<LazyColumnLayoutAttribute>](CommonMethod<LazyColumnLayoutAttribute>)
+**继承/实现关系：** LazyColumnLayoutAttribute extends [CommonMethod<LazyColumnLayoutAttribute>]
 
 **起始版本：** 26.0.0
 

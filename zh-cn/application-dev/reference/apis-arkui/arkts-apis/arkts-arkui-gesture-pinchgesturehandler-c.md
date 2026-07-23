@@ -2,7 +2,7 @@
 
 捏合手势处理器对象类型。
 
-**继承/实现关系：** PinchGestureHandler extends [GestureHandler<PinchGestureHandler>](GestureHandler<PinchGestureHandler>)
+**继承/实现关系：** PinchGestureHandler extends [GestureHandler<PinchGestureHandler>]
 
 **起始版本：** 12
 

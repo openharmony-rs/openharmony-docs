@@ -2,7 +2,7 @@
 
 定义XComponentAttribute。
 
-**继承/实现关系：** XComponentAttribute extends [CommonMethod<XComponentAttribute>](CommonMethod<XComponentAttribute>)
+**继承/实现关系：** XComponentAttribute extends [CommonMethod<XComponentAttribute>]
 
 **起始版本：** 12
 

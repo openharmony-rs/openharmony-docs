@@ -2,7 +2,7 @@
 
 继承自[SubscribedAbstractProperty<T>](arkts-arkui-common-ts-ets-api-subscribedabstractproperty-c-sys.md)。用来定义变量状态的值。
 
-**继承/实现关系：** SyncedPropertyTwoWay extends [SubscribedAbstractProperty<T>](SubscribedAbstractProperty<T>) implements [ISinglePropertyChangeSubscriber<T>](ISinglePropertyChangeSubscriber<T>)
+**继承/实现关系：** SyncedPropertyTwoWay extends [SubscribedAbstractProperty<T>] implements [ISinglePropertyChangeSubscriber<T>]
 
 **起始版本：** 7
 

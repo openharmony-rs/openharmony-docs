@@ -4,7 +4,7 @@ ContentModifier接口使用的TextTimer配置。
 
 开发者需要自定义class实现ContentModifier接口。
 
-**继承/实现关系：** TextTimerConfiguration extends [CommonConfiguration<TextTimerConfiguration>](CommonConfiguration<TextTimerConfiguration>)
+**继承/实现关系：** TextTimerConfiguration extends [CommonConfiguration<TextTimerConfiguration>]
 
 **起始版本：** 12
 

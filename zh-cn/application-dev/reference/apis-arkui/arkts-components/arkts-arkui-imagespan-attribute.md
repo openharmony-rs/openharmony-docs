@@ -4,7 +4,7 @@
 
 通用事件仅支持[点击控制事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。还支持以下事件：
 
-**继承/实现关系：** ImageSpanAttribute extends [BaseSpan<ImageSpanAttribute>](BaseSpan<ImageSpanAttribute>)
+**继承/实现关系：** ImageSpanAttribute extends [BaseSpan<ImageSpanAttribute>]
 
 **起始版本：** 10
 

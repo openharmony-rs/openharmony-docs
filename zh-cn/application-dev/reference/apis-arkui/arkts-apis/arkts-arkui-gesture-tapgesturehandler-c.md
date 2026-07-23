@@ -2,7 +2,7 @@
 
 点击手势处理器对象类型。
 
-**继承/实现关系：** TapGestureHandler extends [GestureHandler<TapGestureHandler>](GestureHandler<TapGestureHandler>)
+**继承/实现关系：** TapGestureHandler extends [GestureHandler<TapGestureHandler>]
 
 **起始版本：** 12
 

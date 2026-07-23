@@ -4,7 +4,7 @@
 
 支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
 
-**继承/实现关系：** RowSplitAttribute extends [CommonMethod<RowSplitAttribute>](CommonMethod<RowSplitAttribute>)
+**继承/实现关系：** RowSplitAttribute extends [CommonMethod<RowSplitAttribute>]
 
 **起始版本：** 7
 

@@ -4,7 +4,7 @@
 
 支持[通用事件](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)。
 
-**继承/实现关系：** NodeContainerAttribute extends [CommonMethod<NodeContainerAttribute>](CommonMethod<NodeContainerAttribute>)
+**继承/实现关系：** NodeContainerAttribute extends [CommonMethod<NodeContainerAttribute>]
 
 **起始版本：** 11
 

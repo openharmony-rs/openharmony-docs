@@ -4,7 +4,7 @@
 
 支持[通用事件](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)。
 
-**继承/实现关系：** QRCodeAttribute extends [CommonMethod<QRCodeAttribute>](CommonMethod<QRCodeAttribute>)
+**继承/实现关系：** QRCodeAttribute extends [CommonMethod<QRCodeAttribute>]
 
 **起始版本：** 7
 

@@ -2,7 +2,7 @@
 
 定义BaseSpan基础类，包含Span的通用属性。
 
-**继承/实现关系：** BaseSpan extends [CommonMethod<T>](CommonMethod<T>)
+**继承/实现关系：** BaseSpan extends [CommonMethod<T>]
 
 **起始版本：** 11
 

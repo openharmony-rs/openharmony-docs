@@ -1,6 +1,6 @@
 # GridItem属性/事件
 
-**继承/实现关系：** GridItemAttribute extends [CommonMethod<GridItemAttribute>](CommonMethod<GridItemAttribute>)
+**继承/实现关系：** GridItemAttribute extends [CommonMethod<GridItemAttribute>]
 
 **起始版本：** 7
 

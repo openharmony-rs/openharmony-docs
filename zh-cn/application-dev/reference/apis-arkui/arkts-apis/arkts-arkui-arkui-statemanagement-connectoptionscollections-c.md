@@ -4,7 +4,7 @@
 
 如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
 
-**继承/实现关系：** ConnectOptionsCollections extends [ConnectOptions<T>](ConnectOptions<T>)
+**继承/实现关系：** ConnectOptionsCollections extends [ConnectOptions<T>]
 
 **起始版本：** 23
 

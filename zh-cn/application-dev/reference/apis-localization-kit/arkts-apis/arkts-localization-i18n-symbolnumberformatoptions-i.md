@@ -2,7 +2,7 @@
 
 创建自定义符号数字格式化对象时的可选配置项。继承自Intl.NumberFormatOptions，支持Intl.NumberFormatOptions的所有配置项，并且功能与其一致。
 
-**继承/实现关系：** SymbolNumberFormatOptions extends [Intl.NumberFormatOptions](Intl.NumberFormatOptions)
+**继承/实现关系：** SymbolNumberFormatOptions extends [Intl.NumberFormatOptions]
 
 **起始版本：** 26.0.0
 
