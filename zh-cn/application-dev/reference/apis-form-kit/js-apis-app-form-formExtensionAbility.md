@@ -15,7 +15,7 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 > FormExtensionAbility创建后10秒内无操作将会被清理。
 
 ## 约束限制
- 	 	 
+
 为保障系统安全性和稳定性，防止 FormExtensionAbility 滥用系统资源，系统对其能力进行管控， 不支持以下模块的引用：
 
 - [@ohos.ability.particleAbility (ParticleAbility模块)](../apis-ability-kit/js-apis-ability-particleAbility.md)
@@ -23,7 +23,7 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 - [@ohos.multimedia.camera (相机管理)](../apis-camera-kit/arkts-apis-camera.md)
 - [@ohos.multimedia.media (媒体服务)](../apis-media-kit/arkts-apis-media.md)
 - [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)
- 	  	 
+
 ## 导入模块
 
 ```ts
