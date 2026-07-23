@@ -24,7 +24,7 @@
 | 模式 | 实现原理 | 使用场景 |
 | :--- | :--- | :--- |
 | **感知自适应（ADAPTIVE）** | 系统依据应用传入的当前倍速，动态分析视频运动特征，优先剔除视觉感知权重较低的非关键帧。| **推荐使用本模式**。主要用于高倍速播放场景，提供比无内容差别均匀抽帧更符合人眼视觉连贯性的平滑体验。|
-| **全量直通（FULL）** | 解码器透明直通，对所有输入帧进行全量解码输出，不进行丢帧处理。| 适用于正常倍速或慢速播放场景，确保画质绝对无损；同时作为初始化阶段的基线配置。|
+| **全量直通（FULL）** | 解码器透明直通，对所有输入帧进行全量解码输出，不进行丢帧处理。| 适用于正常倍速或慢速播放场景，确保画质绝对无损；可作为运行态倍速恢复1.0x时的动态切换目标。|
 | **平滑定比（UNIFORM）** | 系统按开发者指定的固定比例均匀地进行抽帧。| 适用于特殊的降载与提速场景，如高温场景下的降载降温，以及编辑预览场景下的拖拽流畅性提升。|
 
 ## 参数说明
@@ -51,18 +51,19 @@
 - **格式支持**：此能力仅在视频解码链路生效，当前仅支持H.264、H.265及H.266码流格式。
 - **参数异常兜底**：在`UNIFORM`模式下，若传入的保留比例非法或未明确指定，系统将默认以30fps为目标输出帧率进行解码与送显。
 - **硬件能力降级**：`ADAPTIVE`模式依赖硬件解码器上报运动矢量（MV）的能力。在无法提供MV数据的硬件平台上，系统将在底层自动触发基础降级策略（对外仍保留`ADAPTIVE`模式状态）。此时系统仍能维持基础的流畅播放效果，但无法获得基于内容感知的最佳收益。
+- **MV上报链路启停**：MV上报不支持动态启停，仅在configure阶段配置`ADAPTIVE`模式时才会启用。若在configure阶段配置了其他模式，后续运行态动态切入`ADAPTIVE`模式时MV上报不会启用，感知自适应丢帧收益将降低。建议需要使用`ADAPTIVE`模式的业务在configure阶段即完成配置。
 - **音视频同步（AV Sync）安全**：智能倍速丢帧机制仅决定帧的存留，不会修改保留帧原始的PTS（显示时间戳）与DTS（解码时间戳）信息，不影响音画同步。
 
 ## 倍速播放场景开发实践
 
-对于常规视频播放业务，建议采用**初始化配置与动态切换结合**的策略。
+对于常规视频播放业务，建议采用**初始化阶段配置感知自适应模式与运行态动态切换结合**的策略。
 
-- **初始化配置**：在视频起播前的初始化阶段，统一配置为全量直通（`FULL`）模式，完成底层特征链路的准备工作。
-- **动态切换**：在播放过程中，当目标倍速大于1.0x时，动态切入感知自适应（`ADAPTIVE`）模式，交由系统接管丢帧决策；当恢复至1.0x及以下倍速时，切回全量直通（`FULL`）模式，恢复全量帧解码输出。
+- **初始化配置**：建议在视频起播前的configure阶段直接配置为感知自适应（`ADAPTIVE`）模式并同步设置初始倍速。MV上报不支持动态启停，仅在configure阶段配置`ADAPTIVE`模式时才会启用MV上报链路；若在configure阶段未配置`ADAPTIVE`模式，后续运行态动态切入时MV上报链路不会启用，感知自适应丢帧收益将降低。
+- **动态切换**：在播放过程中，当倍速变化时，仍可通过`OH_VideoDecoder_SetParameter`动态切换模式与倍速参数；当恢复至1.0x及以下倍速时，可切回全量直通（`FULL`）模式，恢复全量帧解码输出。
 
-### 初始化状态基线准备
+### 初始化阶段配置感知自适应模式
 
-在视频起播前，配置初始模式。
+在视频起播前的configure阶段，直接配置`ADAPTIVE`模式并同步设置初始倍速，以确保MV上报链路在起播阶段建立。
 
 <!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
 
@@ -81,9 +82,12 @@ int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codecSyncMode);
     }
     if (sampleInfo.isSmartFluencySupported) {
-        // 配置FULL模式，为后续ADAPTIVE模式性能体验最大化准备好运行环境。
+        // 在configure阶段配置ADAPTIVE模式，确保MV上报链路在起播时即建立。
+        // MV上报不支持动态启停，仅在configure阶段配置ADAPTIVE模式时才会启用。
+        // 若中途动态切入ADAPTIVE模式，MV上报不会启用，感知自适应丢帧收益将降低。
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
-                                OH_FRAME_RETENTION_MODE_FULL);
+                                OH_FRAME_RETENTION_MODE_ADAPTIVE);
+        OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_VIDEO_DECODER_SPEED, sampleInfo.speed);
     }
 
     int ret = OH_VideoDecoder_Configure(decoder_, format);
@@ -95,6 +99,8 @@ int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
 ```
 
 ### 运行态按需切换
+
+**注意**：若在configure阶段未配置`ADAPTIVE`模式，运行态动态切入`ADAPTIVE`时MV上报链路不会启用，感知自适应丢帧收益将降低。建议需要使用`ADAPTIVE`模式的业务在configure阶段即完成配置。
 
 系统支持在运行态下动态切换帧保留模式。开发者可通过调用`OH_VideoDecoder_SetParameter`实时下发配置，参数的生效时机与该接口的标准行为一致。
 
