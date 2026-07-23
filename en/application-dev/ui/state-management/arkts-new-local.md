@@ -22,7 +22,7 @@ Before reading this document, you are advised to read [\@ComponentV2](./arkts-cr
 
 \@Local establishes the internal state of custom components with change observation capabilities.
 
-- Variables decorated by \@Local must be initialized inside the component declaration. They cannot be initialized externally..
+- Variables decorated by \@Local must be initialized inside the component declaration. They cannot be initialized externally.
 
 - When a variable decorated by \@Local changes, the component that uses the variable is re-rendered.
 
@@ -329,7 +329,7 @@ The following table compares the usage and functionality of \@Local and \@State.
 
 | Usage| \@State                      | \@Local                         |
 | ------------------ | ---------------------------- | --------------------------------- |
-| Feature              | None.                         | None.                      |
+| Parameters              | None.                         | None.                      |
 | Initialization from the parent component        | Optional.                 | Not allowed.          |
 | Observation capability| Variables and top-level member properties can be observed, but lower-level member properties cannot.| The variable itself can be observed. Lower-level observation requires use of the \@Trace decorator.|
 | Data transfer| It can be used as a data source to synchronize with the state variables in a child component.| It can be used as a data source to synchronize with the state variables in a child component.|
