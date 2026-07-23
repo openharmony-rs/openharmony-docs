@@ -377,7 +377,7 @@ function count(): void {
 
 ## Node
 
-3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)。
+3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource)。
 
 ### 属性
 
