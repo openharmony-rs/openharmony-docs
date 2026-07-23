@@ -288,7 +288,7 @@ ArkTS-Dyn示例：
 import { formBindingData, formAgent } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '123456789'; // 表示卡片formId，根据实际formId调整
+let formId: string = '123456789'; // 卡片的formId，请替换为实际的formId。
 try {
   let param: Record<string, string> = {
     'temperature': '22c',
