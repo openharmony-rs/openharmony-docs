@@ -8,31 +8,11 @@
 
 播放管理接口，用于管理和播放媒体资源。支持音视频播放、播放控制（播放、暂停、停止、跳转、倍速等）、状态管理和事件监听。适用于本地音视频播放、网络流媒体播放、直播等多种场景。使用AVPlayer可以快速实现播放功能，简化开发流程，提升应用性能和用户体验。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)构建一个AVPlayer实例。
 
-**AVPlayer状态机：**
-
-```mermaid
-stateDiagram-v2
-    [*] --> idle: createAVPlayer()
-    idle --> initialized: 设置url/fdSrc/dataSrc
-    initialized --> prepared: prepare()
-    prepared --> playing: play()
-    playing --> paused: pause()
-    paused --> playing: play()
-    playing --> completed: 播放完成
-    completed --> playing: play()
-    prepared/playing/paused/completed --> stopped: stop()
-    stopped --> prepared: prepare()
-    initialized/prepared/playing/paused/completed/stopped --> idle: reset()
-    Any --> released: release()
-    Any --> error: 发生错误
-    error --> idle: reset()
-```
-
 在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](#onstatechange9)：监听播放状态机AVPlayerState切换。[on('error')](#onerror9)：监听错误事件。
 
-建议同时持有的AVPlayer实例数量不超过5个，避免内存消耗过大触发系统保护机制终止应用。
+应用需要控制AVPlayer实例数量，播放结束后应及时调用release()释放资源。建议同时持有的AVPlayer实例数量不超过合理范围，避免内存消耗过大触发系统保护机制终止应用。
 
-音视频播放开发指导请参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
+音视频播放开发指导请参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和状态机[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
 
 > **说明：**
 >
@@ -185,14 +165,14 @@ on(type: 'error', callback: ErrorCallback): void
 | 801      | Capability not supported. 当前设备不支持该能力。请检查系统能力SystemCapability是否支持，或确认设备型号是否具备该功能。 |
 | 5400101  | No memory. 可能原因：系统内存不足或AVPlayer实例过多。处理建议：1.及时调用release()释放不再使用的AVPlayer实例。2.控制同时持有的AVPlayer实例数量。3.关闭其他占用内存的应用。 |
 | 5400102  | Operation not allowed. 可能原因：当前播放器状态不支持该操作，或调用顺序不正确。处理建议：请检查接口的调用状态要求，通过[stateChange](#onstatechange9)事件确认当前状态后再调用。 |
-| 5400103  | I/O error. 可能原因：网络连接异常、文件读取失败或资源不存在。处理建议：1.检查网络连接状态。2.确认媒体文件路径或URL是否正确。3.检查文件是否存在且可读。适用版本：9-13。 |
+| 5400103  | I/O error. 可能原因：网络连接异常、文件读取失败或资源不存在。处理建议：1.检查网络连接状态。2.确认媒体文件路径或URL是否正确。3.检查文件是否存在且可读。<br>适用版本：9-13。 |
 | 5400104  | Time out.              |
 | 5400105  | Service died. 播放服务异常终止。处理建议：请调用[release()](#release9)释放资源后，重新创建AVPlayer实例并重试播放操作。 |
 | 5400106  | Unsupported format. 媒体文件格式不支持。请检查文件格式是否在支持范围内，支持的格式请参见[url](#属性)属性说明。 |
 | 5410002  | Seek continuous unsupported.  <br>适用版本：18+     |
-| 5411001  | IO can not find host. 无法找到主机。可能原因：域名解析失败或URL地址错误。处理建议：1.检查URL域名是否正确。2.检查网络DNS配置。3.确认主机是否可访问。适用版本：14+。 |
-| 5411002  | IO connection timeout. 连接超时。可能原因：网络不稳定或服务器响应慢。处理建议：1.检查网络连接状态。2.重试播放操作。3.检查服务器状态。适用版本：14+。 |
-| 5411003  | IO network abnormal. 网络异常。可能原因：网络连接中断或信号不稳定。处理建议：1.检查网络连接状态。2.切换网络后重试。3.稍后重试播放。适用版本：14+。 |
+| 5411001  | IO can not find host. 无法找到主机。可能原因：域名解析失败或URL地址错误。处理建议：1.检查URL域名是否正确。2.检查网络DNS配置。3.确认主机是否可访问。<br>适用版本：14+。 |
+| 5411002  | IO connection timeout. 连接超时。可能原因：网络不稳定或服务器响应慢。处理建议：1.检查网络连接状态。2.重试播放操作。3.检查服务器状态。<br>适用版本：14+。 |
+| 5411003  | IO network abnormal. 网络异常。可能原因：网络连接中断或信号不稳定。处理建议：1.检查网络连接状态。2.切换网络后重试。3.稍后重试播放。<br>适用版本：14+。 |
 | 5411004  | IO network unavailable.  <br>适用版本：14+  |
 | 5411005  | IO no permission.  <br>适用版本：14+        |
 | 5411006  | IO request denied.  <br>适用版本：14+  |
@@ -844,7 +824,7 @@ setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Prom
 | -------- | ---------------------- | ---- | --------------------------- |
 | startTimeMs | number | 是   | 区间开始位置，单位为毫秒（ms）。<br>取值原则：该值必须为整数，范围为[0, duration)。可以取值-1，表示从0位置开始播放。小于-1的其他值不满足要求会报错。|
 | endTimeMs | number | 是   | 区间结束位置，单位为毫秒（ms）。<br>取值原则：该值必须为整数，范围为(startTimeMs, duration]。可以取值-1，表示播放到资源末尾。|
-| mode | [SeekMode](arkts-apis-media-e.md#seekmode8) | 否   | 支持SeekMode.SEEK_PREV_SYNC和SeekMode.SEEK_CLOSEST。若不传递此参数，默认值为SeekMode.SEEK_PREV_SYNC。|
+| mode | [SeekMode](arkts-apis-media-e.md#seekmode8) | 否   | 支持SeekMode.SEEK_PREV_SYNC和SeekMode.SEEK_CLOSEST。<br>若不传递此参数，默认值为SeekMode.SEEK_PREV_SYNC。|
 
 **返回值：**
 
@@ -1609,7 +1589,7 @@ getPlaybackPosition(): number
 
 | 类型                                                   | 说明                                              |
 | ------------------------------------------------------ | ------------------------------------------------- |
-| number | 返回当前播放位置的时间，单位为毫秒。|
+| number | 返回当前播放位置的时间，单位为毫秒（ms）。|
 
 **错误码：**
 
@@ -1876,7 +1856,7 @@ async function  test(){
   console.info('GetMediaKeySystemInfos count: ' + infos.length);
   for (let i = 0; i < infos.length; i++) {
     console.info('GetMediaKeySystemInfos uuid: ' + infos[i]['uuid']);
-    console.info('GetMediaKeySystemInfos pssh: ' + infos[i]["pssh"]);
+    console.info('GetMediaKeySystemInfos pssh: ' + infos[i]['pssh']);
   }
 }
 ```
@@ -2151,14 +2131,6 @@ getPlaybackRate(): Promise<number>
 | ---------------- | -------------- |
 | Promise<number> | Promise对象，返回播放倍速速率。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                  |
-| -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-
 **示例：**
 
 ```ts
@@ -2249,14 +2221,6 @@ getLoadedTimeRanges(): Promise<Array<Range>>
 | ---------------- | -------------- |
 | Promise<Array<[Range](arkts-apis-media-i.md#range11)>> | Promise对象，返回播放器当前已加载的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒（ms）。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                  |
-| -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-
 **示例：**
 
 ```ts
@@ -2294,14 +2258,6 @@ getSeekableTimeRanges(): Promise<Array<Range>>
 | 类型             | 说明           |
 | ---------------- | -------------- |
 | Promise<Array<[Range](arkts-apis-media-i.md#range11)>> | Promise对象，返回播放器当前可跳转的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒（ms）。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                  |
-| -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
 
 **示例：**
 
@@ -2742,12 +2698,12 @@ async function test(){
 
 on(type: 'timeUpdate', callback: Callback\<number>): void
 
-监听资源播放当前时间，单位为毫秒，用于刷新进度条当前位置，默认每隔100ms上报一次，因用户操作产生的时间变化会立刻上报。
+监听资源播放当前时间，单位为毫秒（ms），用于刷新进度条当前位置，默认每隔100ms上报一次，因用户操作（seek）产生的时间变化会立刻上报。
 
 >**注意：**
 >
 >- 直播场景不支持timeUpdate上报。
->- 操作时必须等待seekDone结束才能根据timeUpdate来更新进度条。
+>- 操作（seek）时必须等待seekDone结束才能根据timeUpdate来更新进度条。
 >- 在pause状态下，缓冲结束时播放器会上报timeUpdate事件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -2844,7 +2800,7 @@ async function test(){
 
 on(type: 'durationUpdate', callback: Callback\<number>): void
 
-监听播放资源的时长，单位为毫秒，用于刷新进度条长度，默认只在prepared上报一次，同时允许一些特殊码流刷新多次时长。
+监听播放资源的时长，单位为毫秒（ms），用于刷新进度条长度，默认只在prepared上报一次，同时允许一些特殊码流刷新多次时长。
 
 > **注意：**
 >

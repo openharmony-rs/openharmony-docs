@@ -87,8 +87,8 @@
 | const char * OH_PLAYER_SEI_PAYLOAD_TYPE | SEI消息中表示负载类型的关键字。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SEI_PAYLOAD_CONTENT | SEI消息中表示负载内容的关键字。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE | 超分辨率功能启用状态关键字，值类型为int32_t。值为1表示已启用，0表示未启用；用于超分辨率状态变化时的信息回调。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_TRACK_CHANGE_INFO_TRACK_INDEX | 轨道切换信息中表示轨道索引的关键字，值类型为int32_t。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_TRACK_CHANGE_INFO_TRACK_SELECTED | 轨道切换信息中表示轨道是否被选中的标志关键字，值类型为int32_t。值为1表示选中，0表示未选中。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_TRACH_CHANGE_INFO_TRACK_INDEX | 轨道切换信息中表示轨道索引的关键字，值类型为int32_t。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_TRACH_CHANGE_INFO_TRACK_SELECTED | 轨道切换信息中表示轨道是否被选中的标志关键字，值类型为int32_t。值为1表示选中，0表示未选中。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_DURATION | 字幕更新信息中表示持续时间的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_START_TIME | 字幕更新信息中表示起始时间的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_TEXT | 字幕更新信息中表示字幕文本内容的关键字，值类型为字符串（string）。<br>**起始版本：** 23 |
@@ -117,23 +117,7 @@ enum AVPlayerState
 
 **描述**
 
-播放状态。状态转换关系如下图所示：
-
-```mermaid
-stateDiagram-v2
-    [*] --> AV_IDLE
-    AV_IDLE --> AV_INITIALIZED : 设置数据源
-    AV_INITIALIZED --> AV_PREPARED : 准备播放
-    AV_PREPARED --> AV_PLAYING : 开始播放
-    AV_PLAYING --> AV_PAUSED : 暂停
-    AV_PAUSED --> AV_PLAYING : 恢复播放
-    AV_PLAYING --> AV_STOPPED : 停止
-    AV_PLAYING --> AV_COMPLETED : 播放完成
-    AV_STOPPED --> AV_PREPARED : 重新准备
-    AV_COMPLETED --> AV_PREPARED : 重播
-    AV_IDLE --> AV_RELEASED : 释放资源
-    * --> AV_ERROR : 发生错误
-```
+播放状态。状态转换关系[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)
 
 **起始版本：** 11
 
@@ -166,7 +150,7 @@ enum AVPlayerSeekMode
 | AV_SEEK_NEXT_SYNC = 0 | 同步到时间点之后的关键帧。 |
 | AV_SEEK_PREVIOUS_SYNC | 同步到时间点之前的关键帧。 |
 | AV_SEEK_CLOSEST = 2 | 同步到距离指定时间点最近的帧。<br>**起始版本：** 12 |
-| AV_SEEK_CONTINUOUS = 3 | 连续拖动模式下的跳转，适用于播放器进度条拖动等需要连续跳转的场景。该模式可提供更流畅的拖拽体验，但要求设备支持对当前流执行连续跳转。在调用连续跳转前，请先检查是否支持，参见[OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported)。<br>**起始版本：** 23 |
+| AV_SEEK_CONTINUOUS = 3 | 连续拖动模式下的跳转（seek），适用于播放器进度条拖动等需要连续跳转的场景。该模式可提供更流畅的拖拽体验，但要求设备支持对当前流执行连续跳转。在调用连续跳转前，请先检查是否支持，参见[OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported)。<br>**起始版本：** 23 |
 
 
 ### AVPlaybackSpeed
@@ -217,12 +201,12 @@ OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPl
 | AV_INFO_TYPE_MESSAGE = 6 | 视频开始渲染时返回消息。<br> key为OH_PLAYER_MESSAGE_TYPE：取值类型int32_t。系统通过int32_t传递value，应用需通过int32_t获取。1表示视频开始渲染。 |
 | AV_INFO_TYPE_VOLUME_CHANGE = 7 | 音量改变时返回消息。<br> key为OH_PLAYER_VOLUME：取值类型float。系统通过float传递value，应用需通过float获取。取值范围[0.0, 1.0]。 |
 | AV_INFO_TYPE_RESOLUTION_CHANGE = 8 | 首次获取视频大小或视频大小更新时返回消息。<br> key为OH_PLAYER_VIDEO_WIDTH 或 OH_PLAYER_VIDEO_HEIGHT：取值类型int32_t，单位为像素。系统通过int32_t传递value，应用需通过int32_t获取。 |
-| AV_INFO_TYPE_BUFFERING_UPDATE = 9 | 返回多队列缓冲时间。<br>key为OH_PLAYER_BUFFERING_TYPE：取值类型为[AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype)。系统通过int32_t传递value，应用需先通过int32_t获取，再强制转为[AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype)。<br>key为OH_PLAYER_BUFFERING_VALUE：取值类型为int32_t。系统通过int32_t传递value，应用需通过int32_t获取。<br>仅当缓冲更新消息类型为AVPLAYER_BUFFERING_PERCENT、AVPLAYER_BUFFERING_CACHED_DURATION时有效，分别表示缓冲进度完成百分比、缓冲数据可播放时长，单位为毫秒。 |
+| AV_INFO_TYPE_BUFFERING_UPDATE = 9 | 返回多队列缓冲时间。<br>key为OH_PLAYER_BUFFERING_TYPE：取值类型为[AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype)。系统通过int32_t传递value，应用需先通过int32_t获取，再强制转为[AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype)。<br>key为OH_PLAYER_BUFFERING_VALUE：取值类型为int32_t。系统通过int32_t传递value，应用需通过int32_t获取。<br>仅当缓冲更新消息类型为AVPLAYER_BUFFERING_PERCENT、AVPLAYER_BUFFERING_CACHED_DURATION时有效，分别表示缓冲进度完成百分比、缓冲数据可播放时长，单位为毫秒（ms）。 |
 | AV_INFO_TYPE_BITRATE_COLLECT = 10 | 上报HLS（HTTP Live Streaming）视频比特率列表消息。<br>key为OH_PLAYER_BITRATE_ARRAY：取值类型为uint8_t字节数组。<br>应用需先使用uint8_t类型指针变量保存比特率列表，使用size_t类型变量保存字节数组长度；然后分配若干个uint32_t类型的存储空间，将uint8_t字节数组转换为uint32_t类型比特率整数值。 |
 | AV_INFO_TYPE_INTERRUPT_EVENT = 11 | 音频焦点改变时返回消息。<br> 取值类型int32_t。系统通过int32_t传递value，应用需通过int32_t获取。<br> key为：<br> OH_PLAYER_AUDIO_INTERRUPT_TYPE：取值1表示中断事件开始；2表示结束。<br> OH_PLAYER_AUDIO_INTERRUPT_FORCE：取值0表示强制打断，系统改变音频播放状态；1表示共享打断，应用改变音频播放状态。<br> OH_PLAYER_AUDIO_INTERRUPT_HINT：取值0表示NONE，无提示；1表示RESUME，提示音频恢复；2表示PAUSE，提示音频暂停暂时失去焦点；3表示STOP，提示音频停止；4表示DUCK，音频降低音量；5表示UNDUCK，音频恢复音量。 |
 | AV_INFO_TYPE_DURATION_UPDATE = 12 | 返回播放时长。<br> key为OH_PLAYER_DURATION：取值类型int64_t。系统通过int64_t传递value，应用需通过int64_t获取。 |
 | AV_INFO_TYPE_IS_LIVE_STREAM = 13 | 播放为直播流时返回消息。 key为OH_PLAYER_IS_LIVE_STREAM：取值类型int32_t。系统通过int32_t传递value，应用需通过int32_t获取。0表示非直播流，1表示直播流。 |
-| AV_INFO_TYPE_TRACKCHANGE = 14 | 轨道改变时返回消息。<br> key为OH_PLAYER_TRACK_CHANGE_INFO_TRACK_INDEX：取值类型int32_t，表示切换后的轨道索引。<br> key为OH_PLAYER_TRACK_CHANGE_INFO_TRACK_SELECTED：取值类型int32_t，值为1表示该轨道被选中，0表示未选中。 |
+| AV_INFO_TYPE_TRACKCHANGE = 14 | 轨道改变时返回消息。<br> key为OH_PLAYER_TRACH_CHANGE_INFO_TRACK_INDEX：取值类型int32_t，表示切换后的轨道索引。<br> key为OH_PLAYER_TRACH_CHANGE_INFO_TRACK_SELECTED：取值类型int32_t，值为1表示该轨道被选中，0表示未选中。 |
 | AV_INFO_TYPE_TRACK_INFO_UPDATE = 15 | 轨道更新时返回消息。<br> key为OH_PLAYER_MD_KEY_HAS_VIDEO：取值类型int32_t，值为1表示包含视频轨，0表示不包含视频轨。<br> key为OH_PLAYER_MD_KEY_HAS_AUDIO：取值类型int32_t，值为1表示包含音频轨，0表示不包含音频轨。<br> key为OH_PLAYER_MD_KEY_HAS_SUBTITLE：取值类型int32_t，值为1表示包含字幕轨，0表示不包含字幕轨。<br> key为OH_PLAYER_MD_KEY_TRACK_INDEX：取值类型int32_t，表示当前轨道索引。 |
 | AV_INFO_TYPE_SUBTITLE_UPDATE = 16 | 字幕信息更新时返回消息。<br> key为OH_PLAYER_SUBTITLE_UPDATE_INFO_DURATION：取值类型int32_t，表示字幕持续时间，单位为毫秒。<br> key为OH_PLAYER_SUBTITLE_UPDATE_INFO_START_TIME：取值类型int32_t，表示字幕起始时间，单位为毫秒。<br> key为OH_PLAYER_SUBTITLE_UPDATE_INFO_TEXT：取值类型string，表示字幕文本内容。 |
 | AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE = 17 | 音频输出设备改变时返回消息。<br> key为OH_PLAYER_AUDIO_DEVICE_CHANGE_REASON：取值类型int32_t。系统通过int32_t传递value，应用需通过int32_t获取。 |
@@ -498,23 +482,3 @@ typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
 | OH_AVBuffer \*pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放。 |
 | void \*userData | 指向用户指定数据的指针。 |
-
-## 错误码汇总
-
-[OH_AVPlayerOnError](#oh_avplayeronerror)和[OH_AVPlayerOnErrorCallback](#oh_avplayeronerrorcallback)函数可能返回的所有错误码如下表所示。
-
-| 错误码ID | 错误信息 | 返回接口 |
-| -- | -- | -- |
-| 1 | AV_ERR_NO_MEMORY：无内存。可能原因：系统内存不足。处理方法：释放不必要的资源后重试。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 2 | AV_ERR_OPERATE_NOT_PERMIT：操作不允许。可能原因：当前状态下不允许执行该操作。处理方法：检查当前状态，在合适的状态下执行操作。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 3 | AV_ERR_INVALID_VAL：无效值。可能原因：传入的参数值无效。处理方法：检查参数值是否在有效范围内。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 4 | AV_ERR_IO：IO错误。API version 12-13取值为4；API version 14及以后，对应错误细化为错误码5411001~5411011。可能原因：文件读写失败或网络IO异常。处理方法：检查文件是否存在或网络连接是否正常。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 5 | AV_ERR_TIMEOUT：超时错误。可能原因：操作超时。处理方法：检查网络状况或增大超时时间。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 6 | AV_ERR_UNKNOWN：未知错误。可能原因：发生未知错误。处理方法：查看日志或联系技术支持。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 7 | AV_ERR_SERVICE_DIED：服务死亡。可能原因：媒体服务异常终止。处理方法：重新创建播放器实例。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 8 | AV_ERR_INVALID_STATE：当前状态不支持此操作。可能原因：在错误的状态下调用了该方法。处理方法：检查播放器当前状态是否支持该操作。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 9 | AV_ERR_UNSUPPORT：未支持的接口。可能原因：调用了不支持的接口。处理方法：检查API版本支持情况。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 100 | AV_ERR_EXTEND_START：扩展错误码初始值。可能原因：扩展错误。处理方法：根据具体错误码进行处理。 | OH_AVPlayerOnError、OH_AVPlayerOnErrorCallback |
-| 5411001~5411011 | AV_ERR_IO扩展错误码（API version 14及以后）。可能原因：文件读写失败或网络IO异常。处理方法：检查文件是否存在或网络连接是否正常。 | OH_AVPlayerOnErrorCallback |
-
-
