@@ -194,7 +194,7 @@ try {
 
 ## networkManager.isNetworkInterfaceDisabledSync
 
-isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean
+isNetworkInterfaceDisabledSync(admin: Want | null, networkInterface: string): boolean
 
 查询指定网络接口是否被禁用。
 
@@ -208,7 +208,7 @@ isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean
 
 | 参数名           | 类型                                                    | 必填 | 说明           |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | networkInterface | string                                                  | 是   | 指定网络接口。 |
 
 **返回值：**
@@ -522,7 +522,7 @@ getGlobalProxyForAccount(admin: Want | null, accountId: number): connection.Http
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. <br>适用版本：20+ |
 
 **示例：**
 
@@ -550,15 +550,17 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-为设备添加防火墙过滤规则。
+为设备添加防火墙过滤规则。<!--RP3--><!--RP3End-->适用于企业网络安全管控场景，例如限制特定IP地址的网络访问、防止恶意网络攻击、控制应用程序的网络通信、实现网络访问的允许名单或禁用名单管理，帮助企业精细化控制网络访问，防止网络攻击和数据泄露。
 
 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
 
 从API version 23开始，支持[LogType](#logtype23)。
 
-添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。
-
-设备重启，将会清空防火墙过滤规则。
+> **说明：**
+>
+> - 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。
+> - 设备重启，将会清空防火墙过滤规则。
+> - 规则匹配顺序：先匹配域名过滤规则（由[addDomainFilterRule](#networkmanageradddomainfilterrule)添加），再匹配本接口添加的IP防火墙规则；在域名规则或IP规则中，均按[Action](#action)为ALLOW、DENY、REJECT的顺序进行匹配。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -763,18 +765,18 @@ try {
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-为设备添加域名过滤规则。
+为设备添加域名过滤规则。<!--RP3--><!--RP3End-->
 
 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
 
 从API version 23开始，支持[LogType](#logtype23)。
 
-添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。
-
-设备重启，将会清空域名过滤规则。
 > **说明：**
 >
->为避免DNS缓存导致拦截规则失效，建议系统启动后立即配置域名过滤规则。若已因DNS缓存导致拦截失效，重启系统可清除缓存，恢复拦截功能。
+> - 添加[Action](#action)为ALLOW规则后会自动添加默认DENY规则，不在ALLOW规则之内的域名解析数据包将被丢弃或拦截。
+> - 添加的规则在设备重启后会被清空。
+> - 为避免DNS缓存导致拦截规则失效，建议系统启动后立即配置域名过滤规则。若已因DNS缓存导致拦截失效，重启系统可清除缓存，恢复拦截功能。
+> - 规则匹配顺序：先匹配本接口添加的域名过滤规则，再匹配IP防火墙规则（由[addFirewallRule](#networkmanageraddfirewallrule)添加）；在域名规则或IP规则中，均按[Action](#action)为ALLOW、DENY、REJECT的顺序进行匹配。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -959,7 +961,7 @@ let wantTemp: Want = {
 let domainFilterRule: Array<networkManager.DomainFilterRule>;
 try {
   domainFilterRule = networkManager.getDomainFilterRules(wantTemp);
-  console.info('Succeeded in getting  domain filter rules');
+  console.info('Succeeded in getting domain filter rules');
 } catch (err) {
   console.error(`Failed to get domain filter rules. Code: ${err.code}, message: ${err.message}`);
 }
@@ -1140,7 +1142,7 @@ deleteApn(admin: Want, apnId: string): void
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| apnId  | string | 是   | 需要删除的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
+| apnId  | string | 是   | 需要删除的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备APN信息。 |
 
 **错误码**：
 
@@ -1192,7 +1194,7 @@ updateApn(admin: Want, apnInfo: Record\<string, string>, apnId: string): void
 | ------ | ------------------------------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnInfo  | Record\<string, string> | 是   | 需要更新的APN参数信息。<br/>- apnName：APN配置的名称标识符，可选。<br/>- mcc：3位数字的移动国家代码，可选。<br/>- mnc：2-3位数字的移动网络代码，可选。<br/>- APN：接入点名称，可选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- password：APN身份验证的密码，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
-| apnId  | string | 是   | 需要更新的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
+| apnId  | string | 是   | 需要更新的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备APN信息。 |
 
 **错误码**：
 
@@ -1250,7 +1252,7 @@ setPreferredApn(admin: Want, apnId: string): void
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| apnId  | string | 是   | 需要设置成优选的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
+| apnId  | string | 是   | 需要设置成优选的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备APN信息。 |
 
 **错误码**：
 
@@ -1416,7 +1418,7 @@ setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface  | string | 是   | 要设置的网络接口名。 |
 | config  | [InterfaceConfig](#interfaceconfig23) | 是   | 要设置的网络接口配置信息。 |
 

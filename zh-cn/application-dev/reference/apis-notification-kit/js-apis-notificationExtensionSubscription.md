@@ -18,7 +18,6 @@
 ArkTS-Dyn示例：
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
@@ -60,7 +59,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or current device not supported.     |  
+| 201      | Permission denied or current device not supported.     |
 | 1600001  | Internal error.                     |
 | 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -75,13 +74,13 @@ try {
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    console.info(`openSubscriberSettings success`);
-  }).catch((e:Error) => {
+    console.info(`openSubscriptionSettings success`);
+  }).catch((e: Error) => {
     let error = e as BusinessError
-    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
-  console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -93,13 +92,14 @@ try {
   // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    console.info(`openSubscriberSettings success`);
-  }).catch((e:Error) => {
+    console.info(`openSubscriptionSettings success`);
+  }).catch((e: Error) => {
     let error = e as BusinessError
-    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
-  console.error(`failed to call openSubscriptionSettings ${error}`)
+  let err = error as BusinessError
+  console.error(`failed to call openSubscriptionSettings, code is ${err.code}, message is ${err.message}`)
 }
 ```
 
@@ -137,7 +137,7 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or current device not supported.     |  
+| 201      | Permission denied or current device not supported.     |
 | 1600001  | Internal error.                     |
 | 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -153,12 +153,12 @@ try {
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
-  }).catch((e:Error) => {
+  }).catch((e: Error) => {
     let error = e as BusinessError
-    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
-  console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -171,12 +171,13 @@ try {
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
-  }).catch((e:Error) => {
+  }).catch((e: Error) => {
     let error = e as BusinessError
     console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
   });
 } catch (error) {
-  console.error(`failed to call openSubscriptionSettingsWithResult ${error}`)
+  let err = error as BusinessError
+  console.error(`failed to call openSubscriptionSettingsWithResult, code is ${err.code}, message is ${err.message}`)
 }
 ```
 
@@ -230,7 +231,7 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
 notificationExtensionSubscription.subscribe(infos).then(() => {
   console.info(`subscribe success`);
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 
 ```
@@ -247,7 +248,7 @@ notificationExtensionSubscription.subscribe(infos).then(() => {
   console.info("subscribe success");
 }).catch((err: Error) => {
   let error = err as BusinessError
-  console.error(`subscribe fail: ${JSON.stringify(error)}`);
+  console.error(`subscribe fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -289,7 +290,7 @@ ArkTS-Dyn示例：
 notificationExtensionSubscription.unsubscribe().then(() => {
   console.info(`unsubscribe success`);
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -299,7 +300,7 @@ notificationExtensionSubscription.unsubscribe().then(() => {
   console.info("unsubscribe success");
 }).catch((error: Error) => {
   let err = error as BusinessError
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -340,7 +341,7 @@ ArkTS-Dyn示例：
 notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
   console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  console.error(`getSubscribeInfo fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -350,7 +351,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExt
   console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((error: Error) => {
   let err = error as BusinessError
-  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  console.error(`getSubscribeInfo fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -380,7 +381,7 @@ isUserGranted(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied or current device not supported. | 
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                           |
 
@@ -395,7 +396,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
     console.info('isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
+  console.error(`isUserGranted fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -409,7 +410,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   }
 }).catch((error: Error) => {
   let err = error as BusinessError
-  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
+  console.error(`isUserGranted fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -417,7 +418,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-获取指定应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。
+获取本应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -429,9 +430,9 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 **返回值：**
 
-| 类型     | 说明        | 
+| 类型     | 说明        |
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中“已获取的本机通知”通知开关开启的应用列表。        |
+| Promise\<[GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)[]\>   | Promise对象，返回本应用中“已获取的本机通知”通知开关开启的应用列表。        |
 
 **错误码：**
 
@@ -439,7 +440,7 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or current device not supported.     |  
+| 201      | Permission denied or current device not supported.     |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 
@@ -450,7 +451,7 @@ ArkTS-Dyn示例：
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -460,7 +461,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: not
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((error: Error) => {
   let err = error as BusinessError
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -470,7 +471,7 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 
 用于描述通知扩展订阅的信息。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -516,7 +517,7 @@ type BundleOption = _BundleOption
 
 指定应用的包信息。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -532,7 +533,7 @@ type GrantedBundleInfo = _GrantedBundleInfo
 
 授权应用的包信息。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -550,7 +551,7 @@ type UserGrantSetting = _UserGrantSetting
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

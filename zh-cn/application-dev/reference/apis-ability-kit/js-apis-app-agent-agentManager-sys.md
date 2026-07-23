@@ -168,6 +168,7 @@ import { agentManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.example.myapplication';
+// 设置待查询的Agent标识
 let agentId = 'agent_001';
 
 agentManager.getAgentCardByAgentId(bundleName, agentId)
@@ -193,7 +194,7 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 >
 > - 同一个AgentExtensionAbility中，不允许重复连接同一个LOW_CODE类型的Agent。
 
-**系统接口**：该接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -253,7 +254,7 @@ struct Index {
       console.info(`onData, data: ${data}.`);
     },
     onAuth: (handShakeData: string): void => {
-      console.info(`onData, data: ${handShakeData}.`);
+      console.info(`onAuth, data: ${handShakeData}.`);
     },
     onDisconnect: () => {
       console.info(`onDisconnect.`);
@@ -271,6 +272,7 @@ struct Index {
               bundleName: 'com.acts.agentextensionability',
               abilityName: 'AgentExtAbility',
             };
+            // 设置待连接的Agent标识
             let agentId: string = 'test';
             try {
               // 连接AgentExtensionAbility
@@ -359,9 +361,13 @@ ArkTS-Sta: connectServiceExtensionAbility(context: AgentExtensionContext, want: 
 
 将AgentExtensionAbility连接到ServiceExtensionAbility。若目标ServiceExtensionAbility可见，可直接连接；若不可见，需申请`ohos.permission.START_INVISIBLE_ABILITY`权限；若目标ServiceExtensionAbility位于远程设备上，需申请`ohos.permission.DISTRIBUTED_DATASYNC`权限。
 
+> **说明：**
+>
+> 在ArkTS-Dyn中该接口不支持在多线程和子进程中调用。在多线程中调用将引发CppCrash；在子进程中调用将返回16000050错误码。
+
 **系统接口**：该接口为系统接口。
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -410,6 +416,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { common, Want, AgentExtensionAbility, agentManager, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
 import { rpc } from '@kit.IPCKit';
 
@@ -435,7 +442,9 @@ export default class DemoAgentForConnect extends AgentExtensionAbility {
       console.info(`${TAG} connect end, connectId=${connectId} `);
       return connectId;
     } catch (err) {
-      console.error(`${TAG} connectServiceExtensionAbility failed.`);
+      let code = (err as BusinessError).code;
+      let msg = (err as BusinessError).message;
+      console.error(`${TAG} connectServiceExtensionAbility failed. Code: ${code}, message: ${message}`);
     }
     return -1;
   }
@@ -557,7 +566,8 @@ export default class DemoAgentForDisConnect extends AgentExtensionAbility {
       agentManager.disconnectServiceExtensionAbility(this.context, connectId);
       console.info(`${TAG} disconnect end:${connectId}`);
     } catch (err) {
-      console.error(`${TAG} client disconnectServiceExtensionAbility failed.`);
+      const error = err as BusinessError;
+      console.error(`${TAG} disconnectServiceExtensionAbility failed. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }
@@ -846,17 +856,17 @@ struct Index {
           .enabled(true)
           .onClick(() => {
             try {
-              // 连接AgentExtensionAbility
+              // 断开AgentExtensionAbility连接
               agentManager.disconnectAgentExtensionAbility(this.comProxy)
                 .then(() => {
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`connectAgentExtensionAbility failed, error code: ${err.code}, error msg: ${err.message}.`);
+                  console.error(`disconnectAgentExtensionAbility failed, error code: ${err.code}, error msg: ${err.message}.`);
                 });
             } catch (err) {
               let code = (err as BusinessError).code;
               let msg = (err as BusinessError).message;
-              console.error(`connectAgentExtensionAbility failed, error code: ${code}, error msg: ${msg}.`);
+              console.error(`disconnectAgentExtensionAbility failed, error code: ${code}, error msg: ${msg}.`);
             }
           })
       }

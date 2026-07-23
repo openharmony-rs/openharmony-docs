@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供包管理能力，包括添加包安装允许名单、获取包安装允许名单、移除包安装允许名单等。
+本模块提供包管理能力，包括安装和卸载应用包，管理包安装允许名单、包安装禁止名单、包卸载禁止名单、可安装应用的分发类型等。在企业设备管理场景中，通过这些能力可以实现应用安装卸载的精细化管控，防止未授权应用的安装和卸载，保障企业设备安全，降低安全风险。
 
 > **说明：**
 >
@@ -134,7 +134,7 @@ try {
 
 ## bundleManager.getAllowedInstallBundlesSync
 
-getAllowedInstallBundlesSync(admin: Want, accountId?: number): Array&lt;string&gt;
+getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
 
 获取当前/指定用户下的应用程序包安装允许名单。
 
@@ -148,14 +148,14 @@ getAllowedInstallBundlesSync(admin: Want, accountId?: number): Array&lt;string&g
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | 返回当前用户下的应用程序包安装允许名单。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
 
 **错误码**：
 
@@ -300,7 +300,7 @@ try {
 
 ## bundleManager.getDisallowedInstallBundlesSync
 
-getDisallowedInstallBundlesSync(admin: Want, accountId?: number): Array&lt;string&gt;
+getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
 
 获取当前/指定用户下的应用程序包安装禁止名单。
 
@@ -314,14 +314,14 @@ getDisallowedInstallBundlesSync(admin: Want, accountId?: number): Array&lt;strin
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | 返回当前用户下的应用程序包安装禁止名单。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
 
 **错误码**：
 
@@ -469,7 +469,7 @@ try {
 
 ## bundleManager.getDisallowedUninstallBundlesSync
 
-getDisallowedUninstallBundlesSync(admin: Want, accountId?: number): Array&lt;string&gt;
+getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
 
 获取当前/指定用户下包卸载禁止名单。
 
@@ -483,14 +483,14 @@ getDisallowedUninstallBundlesSync(admin: Want, accountId?: number): Array&lt;str
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | 返回当前用户下的包卸载禁止名单。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
 
 **错误码**：
 
@@ -517,7 +517,7 @@ let wantTemp: Want = {
 
 try {
   // 参数需根据实际情况进行替换
-  let result: Array<String> = bundleManager.getDisallowedUninstallBundlesSync(wantTemp, 100);
+  let result: Array<string> = bundleManager.getDisallowedUninstallBundlesSync(wantTemp, 100);
   console.info(`Succeeded in getting disallowed uninstall bundles, result : ${JSON.stringify(result)}`);
 } catch (err) {
   console.error(`Failed to get disallowed uninstall bundles. Code is ${err.code}, message is ${err.message}`);
@@ -814,7 +814,7 @@ getInstalledBundleList(admin: Want, accountId: number): Promise\<Array\<BundleIn
 
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | accountId    | number                                                  | 是   | 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
@@ -1021,7 +1021,7 @@ try {
 
 ## bundleManager.getInstallationAllowedAppDistributionTypes<sup>20+</sup>
 
-getInstallationAllowedAppDistributionTypes(admin: Want): Array&lt;AppDistributionType&gt;
+getInstallationAllowedAppDistributionTypes(admin: Want | null): Array&lt;AppDistributionType&gt;
 
 获取可安装的应用程序签名证书的分发类型。
 
@@ -1035,7 +1035,7 @@ getInstallationAllowedAppDistributionTypes(admin: Want): Array&lt;AppDistributio
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -1220,7 +1220,7 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 | 名称                     | 类型                   | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
 | userId                   | number                 | 否   | 是 | 指示用户ID，默认值：调用方所在用户，取值范围：大于等于0。    |
-| installFlag              | number                 | 否   | 是 |安装标志。枚举值：0：应用初次安装，1：应用覆盖安装，2：应用免安装，默认值为应用初次安装。 |
+| installFlag              | number                 | 否   | 是 |安装标志。枚举值：0：应用初次安装，1：应用覆盖安装，2：应用免安装，默认值为0(应用初次安装)。 |
 | parameters<sup>19+</sup> | Record&lt;string, string&gt; | 否   | 是 | 扩展参数，默认值为空。key取值支持"ohos.bms.param.enterpriseForAllUser"，若对应的value值为"true"，表示为所有用户安装应用。 |
 
 ## AppDistributionType<sup>20+</sup>
@@ -1349,4 +1349,4 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | bundleName| string         | 否   | 否   | 应用的包名。                 |
 | appSize   | number         | 否   | 否   | 应用安装文件大小，单位为Byte。<br/>应用安装文件保存在以下目录：<br/>/data/storage/el1/bundle         |
-| dataSize  | number         | 否   | 否   | 应用的本地数据、分布式数据和数据库数据大小，单位为Byte。<br/>本地文件保存在以下目录（注意缓存文件目录为以下目录的子目录）：<br/>/data/storage/\${el1-el5}/base<br/>分布式文件保存在以下目录：<br/>/data/storage/el2/distributedfiles<br/>数据库文件保存在以下目录：<br/>/data/storage/\${el1-el5}/database<br/> **说明**：\${el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../application-dev/file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。 |
+| dataSize  | number         | 否   | 否   | 应用的本地数据、分布式数据和数据库数据大小，单位为Byte。<br/>本地文件保存在以下目录（注意缓存文件目录为以下目录的子目录）：<br/>/data/storage/\${el1-el5}/base<br/>分布式文件保存在以下目录：<br/>/data/storage/el2/distributedfiles<br/>数据库文件保存在以下目录：<br/>/data/storage/\${el1-el5}/database<br/> **说明：**\${el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../application-dev/file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。 |

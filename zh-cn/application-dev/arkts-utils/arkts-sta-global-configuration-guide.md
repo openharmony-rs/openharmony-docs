@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 全局配置项通常指同一应用进程内需要被多个业务模块共享的运行时状态，例如登录状态、当前用户、网络开关、功能开关等。ArkTS-Sta可以通过模块级导出的单例对象保存这类配置，并由[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务或[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)任务在线程间共享。
 

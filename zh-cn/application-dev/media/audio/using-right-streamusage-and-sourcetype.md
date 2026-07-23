@@ -27,6 +27,7 @@
 | STREAM_USAGE_NAVIGATION | 适用于导航场景的语音播报功能。 |
 | STREAM_USAGE_VOICE_MESSAGE | 适用于播放语音短消息。 |
 | STREAM_USAGE_VOICE_COMMUNICATION | 适用于VoIP语音通话。 |
+| STREAM_USAGE_VIDEO_COMMUNICATION | 适用于VoIP视频通话。 |
 | STREAM_USAGE_ALARM | 适用于播放闹铃。 |
 | STREAM_USAGE_RINGTONE | 适用于VoIP来电响铃等。 |
 | STREAM_USAGE_NOTIFICATION | 适用于播放通知音、提示音。 |
@@ -69,7 +70,7 @@
 
 当应用启动音频播放或录制时，系统会根据音频流类型自动申请焦点，这可能会中断其他音频或降低其音量。音频焦点的具体介绍可参考[音频焦点介绍](audio-playback-concurrency.md)。
 
-此处仅说明常见的音频流类型影响音频焦点的表现。
+此处仅说明常见的音频流类型影响音频焦点的表现。更多音频焦点场景表现见[音频焦点和音频会话开发概述](audio-playback-concurrency-audio-session-overview.md)。
 
 - 启动导航（Navigation）时，正在播放的音乐（Music）音量会自动调低，待导航（Navigation）结束后，音乐（Music）音量将自动恢复。
 
@@ -93,7 +94,7 @@
 
 - 闹铃（Alarm）类型音频流的默认输出设备为扬声器‌。若先连接蓝牙耳机，再开始播放Alarm音频，则扬声器和蓝牙耳机会同时播放。
 
-若默认的输入/输出设备不符合使用诉求，应用也可以调用相关接口主动修改。应用[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)时，可以调用[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口，设置默认发声设备。
+若默认的输入/输出设备不符合使用诉求，应用也可以调用相关接口主动修改。应用[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)时，可以调用[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口，设置默认发声设备。
 
 ## 设置音频流类型
 
@@ -101,7 +102,7 @@
 
 常见的设置播放音频流类型的方法有：
 
-- **[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)**：
+- **[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)**：
 
    可以在调用[createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)以获取音频渲染器时，传入对应的[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)。
 
@@ -130,7 +131,7 @@
 
 常见的设置录制音频流类型的方法有：
 
-- **[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)**：
+- **[使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)**：
   
   可以在调用[createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8)接口时，传入对应的[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)。
 

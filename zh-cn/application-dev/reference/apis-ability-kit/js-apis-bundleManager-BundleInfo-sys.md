@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 应用包信息，应用可以通过[bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)获取指定包名的应用包信息，其中入参[bundleFlags](js-apis-bundleManager.md#bundleflag)指定所返回的[BundleInfo](js-apis-bundleManager-bundleInfo.md)中所包含的信息。
@@ -21,6 +21,24 @@
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 ```
+
+## BundleInfo
+
+应用包信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                               | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| sandboxCreatorBundleName          | string                                                       | 是   | 是   | 沙箱分身的创建方包名。 |
 
 ## DynamicIconInfo
 

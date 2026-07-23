@@ -28,6 +28,8 @@ getTopOrder(): LevelOrder
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型                | 说明                                    |
@@ -86,7 +88,7 @@ struct Index {
               .then(() => {
                 let topOrder: LevelOrder = this.promptAction.getTopOrder();
                 if (topOrder !== undefined) {
-                  console.error('topOrder: ' + topOrder.getOrder());
+                  console.info('topOrder: ' + topOrder.getOrder());
                 }
               })
           })
@@ -105,6 +107,8 @@ getBottomOrder(): LevelOrder
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -164,7 +168,7 @@ struct Index {
               .then(() => {
                 let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
                 if (bottomOrder !== undefined) {
-                  console.error('bottomOrder: ' + bottomOrder.getOrder());
+                  console.info('bottomOrder: ' + bottomOrder.getOrder());
                 }
               })
           })
@@ -183,6 +187,8 @@ openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -261,6 +267,8 @@ closeToast(toastId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数**
 
 | 参数名  | 类型   | 必填 | 说明                          |
@@ -290,6 +298,8 @@ showToast(options: promptAction.ShowToastOptions): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -349,11 +359,13 @@ showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback&lt;p
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明           |
 | -------- | ---------------------------------------- | ---- | ------------ |
-| options  | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | 是    | 页面显示对话框信息描述。 |
+| options  | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | 是    | 对话框选项。 |
 | callback | AsyncCallback&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | 是    | 回调函数。弹出对话框成功，err为undefined，data为获取到的对话框响应结果，否则为错误对象。 |
 
 **错误码：**
@@ -423,6 +435,8 @@ showDialog(options: promptAction.ShowDialogOptions): Promise&lt;promptAction.Sho
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -497,6 +511,8 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback&
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
@@ -569,6 +585,8 @@ showActionMenu(options: promptAction.ActionMenuOptions): Promise&lt;promptAction
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -640,6 +658,8 @@ openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -665,7 +685,7 @@ openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options
 
 **示例：**
 
-该示例通过监听[环境变量](../apis-ability-kit/js-apis-app-ability-configuration.md)（系统语言、深浅色等）的变化，调用[ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) 的[update](../apis-arkui/js-apis-arkui-builderNode.md#update)和[updateConfiguration](../apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)实现自定义弹窗的数据更新及节点的全量刷新。
+该示例通过监听[@ohos.app.ability.Configuration (环境变量)](../apis-ability-kit/js-apis-app-ability-configuration.md)（系统语言、深浅色等）的变化，调用[ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) 的[update](../apis-arkui/js-apis-arkui-builderNode.md#update)和[updateConfiguration](../apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)实现自定义弹窗的数据更新及节点的全量刷新。
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, EnvironmentCallback, ConfigurationConstant } from '@kit.AbilityKit';
@@ -770,11 +790,13 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | 是   | 自定义弹窗的内容。<br>**说明：** 如果BaseDialogOptions中的[isModal](js-apis-promptAction.md#basedialogoptions11)与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11)同时设置为true，则只生效showInSubWindow = true，此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。|
+| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | 是   | 自定义弹窗选项。<br>**说明：** 如果BaseDialogOptions中的[isModal](js-apis-promptAction.md#basedialogoptions11)与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11)同时设置为true，则只生效showInSubWindow = true，此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。|
 
 **返回值：**
 
@@ -878,6 +900,8 @@ openCustomDialogWithController\<T extends Object>(dialogContent: ComponentConten
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -978,6 +1002,8 @@ updateCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, optio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -1077,6 +1103,8 @@ closeCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>): Promi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -1151,7 +1179,7 @@ struct Index {
                   console.info('succeeded');
                 })
                 .catch((error: BusinessError) => {
-                  console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+                  console.error(`CloseCustomDialog args error code is ${error.code}, message is ${error.message}`);
                 })
             }, 2000); // 2秒后自动关闭
           })
@@ -1175,6 +1203,8 @@ closeCustomDialog(dialogId: number): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1260,6 +1290,8 @@ presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1379,6 +1411,8 @@ openPopup\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1506,6 +1540,8 @@ updatePopup\<T extends Object>(content: ComponentContent\<T>, options: PopupComm
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -1543,6 +1579,8 @@ closePopup\<T extends Object>(content: ComponentContent\<T>): Promise&lt;void&gt
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1589,6 +1627,8 @@ openMenu\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, o
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1685,6 +1725,8 @@ updateMenu\<T extends Object>(content: ComponentContent\<T>, options: MenuOption
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -1777,6 +1819,8 @@ closeMenu\<T extends Object>(content: ComponentContent\<T>): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -1867,6 +1911,8 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.
 > 从API version 10开始支持，从API version 11开始废弃，建议使用[showActionMenu](#showactionmenu11)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 

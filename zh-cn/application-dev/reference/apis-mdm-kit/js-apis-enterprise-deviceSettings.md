@@ -1,4 +1,4 @@
-# @ohos.enterprise.deviceSettings （设备设置管理）
+# @ohos.enterprise.deviceSettings（设备设置管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -100,7 +100,7 @@ getValue(admin: Want, item: string): string
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| string | 策略类型值。<br/>当item为screenOff时，返回设备息屏时间（单位：毫秒），对于PC/2in1设备，返回设备电池供电下的息屏时间（单位：毫秒）。<br/>当item为powerPolicy时，返回电源策略，对于PC/2in1设备，返回设备电池供电下的电源策略，格式为JSON字符串:{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。powerScene为电源策略场景；delayTime为延迟时间（单位：毫秒）；powerPolicyAction为休眠策略。<br/>电源策略场景：<br/>- 0：超时灭屏场景。<br/>休眠策略：<br/>- 0：不执行动作。<br/>- 1：自动进入睡眠。<br/>- 2：强制进入睡眠。<br/>- 3：进入休眠，该策略暂不生效。<br/>- 4：关机。<br/>当item为eyeComfort时，value为护眼模式开关状态的字符串。<br/>- on：全天开启护眼模式。<br/>- off：关闭护眼模式。<br/>- unknown：其他模式。 |
+| string | 策略类型值。<br/>当item为screenOff时，返回设备息屏时间（单位：毫秒），对于PC/2in1设备，返回设备电池供电下的息屏时间（单位：毫秒）。<br/>当item为powerPolicy时，返回电源策略，对于PC/2in1设备，返回设备电池供电下的电源策略，格式为JSON字符串:{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。powerScene为电源策略场景；delayTime为延迟时间（单位：毫秒）；powerPolicyAction为休眠策略。<br/>电源策略场景：<br/>- 0：超时灭屏场景。<br/>休眠策略：<br/>- 0：不执行动作。<br/>- 1：自动进入睡眠。<br/>- 2：强制进入睡眠。<br/>- 3：进入休眠，该策略暂不生效。<br/>- 4：关机。<br/>当item为eyeComfort时，返回的value为护眼模式开关状态的字符串。<br/>- on：全天开启护眼模式。<br/>- off：关闭护眼模式。<br/>- unknown：其他模式。 |
 
 **错误码**：
 
@@ -260,6 +260,8 @@ deviceSettings.setUnlockWallpaper(wantTemp, fd).then(() => {
   console.info('Succeeded in setting lock wallpaper');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set lock wallpaper. Code: ${err.code}, message: ${err.message}`);
+}).finally(() => {
+  fs.closeSync(fd);
 });
 ```
 
@@ -281,7 +283,7 @@ setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: st
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item   | [SettingsItem](#settingsitem24)                                                  | 是   | 设备设置策略类型。|
-| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。                       |
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。                       |
 | value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。只允许设置当前用户的设备名称，设置其他用户的设备名称返回9200012错误码。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。只允许设置当前用户的三键导航，设置其他用户的三键导航不会生效，value为三键导航的开关状态。<br/>- '0'：表示开启三键导航（通过接口[enterKioskMode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)进入Kiosk模式下，三键导航显示依赖底部手势开启；即三键导航开关和底部手势开关同时开启时，三键导航才会显示。底部手势可通过接口[applicationManager.setKioskFeatures](./js-apis-enterprise-applicationManager.md#applicationmanagersetkioskfeatures20)设置开启或关闭）。<br/>- '1'：表示关闭三键导航。|
 
 **错误码**：
@@ -337,7 +339,7 @@ getValueForAccount(admin: Want, item: SettingsItem, accountId: number): string
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item   | [SettingsItem](#settingsitem24)                         | 是   | 设备设置策略类型。|
-| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。  |
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。  |
 
 **返回值：**
 
@@ -445,6 +447,8 @@ removeHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
 
 将设置项从当前用户下的隐藏设置项列表中移除。隐藏设置项列表中的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到，如果通过某种方式搜索到该设置项，点击后也无法打开。若移除后剩余的隐藏设置项列表为空，则设置项会全部显示。调用接口后即刻生效，无需重启设置应用。
 
+从API版本26.0.0开始，调用[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount)接口禁用[SUPER_HUB](./js-apis-enterprise-restrictions.md#featureforaccount)后，再调用该接口将中转站从隐藏设置项列表中移除时，会发生策略冲突，抛出9200010错误码。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -468,6 +472,7 @@ removeHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. <br>适用版本：26.0.0+ |
 | 9200012  | Parameter verification failed.  |
 | 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -586,7 +591,7 @@ setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供通知管理的能力，包括发布、取消发布通知，创建、获取、移除通知渠道，获取通知的使能状态、角标使能状态，获取通知的相关信息等。
+本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布代理通知、取消代理通知，创建、获取、移除通知渠道，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理分布式通知协同，管理通知发布权限管控，获取活动通知信息，设置通知提醒方式，订阅系统实况窗，注册通知校验回调，管理通知优先级策略，以及设置地理围栏、铃声信息、静默提醒等高级功能。
 
 > **说明：**
 >
@@ -55,25 +55,26 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 | -------- | ---------------------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801  | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801  | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                    |
 | 1600004  | Notification disabled.                               |
 | 1600005  | Notification slot disabled.                    |
-| 1600007  | The notification does not exist.                       |
+| 1600007  | The notification does not exist.<br> 适用版本：11+                       |
 | 1600008  | The user does not exist.                               |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                   |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
-| 2300007  | Network unreachable.                              |
+| 1600014  | No permission.<br> 适用版本：11+                                   |
+| 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11+ |
+| 1600016  | The notification version for this update is too low.<br> 适用版本：11+ |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：18+ |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
+| 2300007  | Network unreachable.<br> 适用版本：11+                              |
 
 **示例：**
 
@@ -174,25 +175,26 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 | -------- | ---------------------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801  | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801  | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                           |
 | 1600004  | Notification disabled.                         |
 | 1600005  | Notification slot disabled.                    |
-| 1600007  | The notification does not exist.                       |
+| 1600007  | The notification does not exist.<br> 适用版本：11+                       |
 | 1600008  | The user does not exist.                               |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                   |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
-| 2300007  | Network unreachable.                              |
+| 1600014  | No permission.<br> 适用版本：11+                                   |
+| 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11+ |
+| 1600016  | The notification version for this update is too low.<br> 适用版本：11+ |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：18+ |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
+| 2300007  | Network unreachable.<br> 适用版本：11+                              |
 
 **示例：**
 
@@ -224,6 +226,7 @@ notificationManager.publish(notificationRequest, userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let notificationRequest: notificationManager.NotificationRequest = {
     id: 1,
@@ -279,7 +282,7 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -361,7 +364,7 @@ addSlot(slot: NotificationSlot): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -386,6 +389,7 @@ notificationManager.addSlot(notificationSlot).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 通知slot对象
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -430,7 +434,7 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -521,7 +525,7 @@ addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -550,6 +554,7 @@ notificationManager.addSlots(notificationSlotArray).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 通知slot对象
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -600,7 +605,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -680,7 +685,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -704,6 +709,8 @@ notificationManager.setNotificationEnable(bundle, false).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
     bundle: "bundleName1",
@@ -720,7 +727,7 @@ notificationManager.setNotificationEnable(bundle, false).then(() => {
 
 getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
-获取允许通知的应用程序列表。使用Promise异步回调。
+获取允许通知的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -736,7 +743,7 @@ getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用程序列表。 | 
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用列表。 | 
 
 **错误码：**
 
@@ -769,6 +776,7 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getAllNotificationEnabledBundles().then((data: Array<notificationManager.BundleOption>) => {
     console.info(`Enable bundle data is ${JSON.stringify(data)}`);
@@ -788,7 +796,7 @@ ArkTS-Dyn: getAllNotificationEnabledBundles(userId: number): Promise<Array<Bundl
 
 ArkTS-Sta: getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
 
-获取指定用户下允许通知的应用程序列表。使用Promise异步回调。
+获取指定用户下允许通知的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -804,13 +812,13 @@ ArkTS-Sta: getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOp
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 要获取允许通知的应用程序列表的用户。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 要获取允许通知的应用列表的用户。 |
 
 **返回值：**
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用程序列表。 | 
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用列表。 | 
 
 **错误码：**
 
@@ -887,7 +895,7 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -970,7 +978,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -994,6 +1002,7 @@ notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1040,7 +1049,7 @@ ArkTS-Sta: isNotificationEnabled(userId: int, callback: AsyncCallback\<boolean\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1122,7 +1131,7 @@ ArkTS-Sta: isNotificationEnabled(userId: int): Promise\<boolean\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1146,6 +1155,7 @@ notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
@@ -1192,8 +1202,8 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1275,8 +1285,8 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1300,6 +1310,7 @@ notificationManager.displayBadge(bundle, false).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1346,8 +1357,8 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1428,8 +1439,8 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1454,6 +1465,7 @@ notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1509,8 +1521,8 @@ ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long): Promise\
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1537,6 +1549,7 @@ notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1589,8 +1602,8 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1680,8 +1693,8 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1710,6 +1723,7 @@ notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1768,8 +1782,8 @@ ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption): Promise\<long\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1793,6 +1807,7 @@ notificationManager.getSlotFlagsByBundle(bundle).then((data : number) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1839,8 +1854,8 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1921,8 +1936,8 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1947,6 +1962,7 @@ notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManag
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1986,7 +2002,7 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<lon
 | 参数名     | 类型                      | 必填 | 说明                   |
 | -------- | ------------------------- | ---- | ---------------------- |
 | bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)              | 是   | 指定应用的包信息。             |
-| callback | ArkTS-Dyn: AsyncCallback\<number\><br/>ArkTS-Sta: AsyncCallback\<long\ | 是   | 获取通知渠道数量回调函数。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number\><br/>ArkTS-Sta: AsyncCallback\<long\> | 是   | 获取通知渠道数量回调函数。 |
 
 **错误码：**
 
@@ -1996,8 +2012,8 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<lon
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2074,7 +2090,7 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| ArkTS-Dyn: Promise\<number\><br/>ArkTS-Sta: Promise\<long\ | 以Promise形式返回获取指定应用的通知渠道数量。 |
+| ArkTS-Dyn: Promise\<number\><br/>ArkTS-Sta: Promise\<long\> | 以Promise形式返回获取指定应用的通知渠道数量。 |
 
 **错误码：**
 
@@ -2084,8 +2100,8 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2110,6 +2126,7 @@ notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -2154,7 +2171,7 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2240,6 +2257,7 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getAllActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
     console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
@@ -2248,6 +2266,74 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
     console.error(`getAllActiveNotifications failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
+
+
+## notificationManager.getActiveNotification
+
+getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
+
+根据通知的唯一标识hashCode获取当前未删除的通知信息。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型    | 必填 | 说明                           |
+| --------- | ------- | ---- | ----------------------------- |
+| hashCode  | string  | 是   | 通知的唯一标识。                |
+
+**返回值：**
+
+| 类型                                                        | 说明                                                         |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | 以Promise形式返回获取通知信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.                  |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.|
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600007  | The notification does not exist.    |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
+  console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
+  console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`getAllActiveNotifications failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 
 ## notificationManager.getActiveNotificationByFilter<sup>11+</sup>
 
@@ -2281,7 +2367,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter, callback: A
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600007  | The notification does not exist.           |
 | 17700001 | The specified bundle name was not found. |
 
@@ -2381,7 +2467,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<N
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600007  | The notification does not exist.         |
 | 17700001 | The specified bundle name was not found. |
 
@@ -2413,6 +2499,7 @@ notificationManager.getActiveNotificationByFilter(filter).then((data: notificati
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
@@ -2470,7 +2557,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2551,7 +2638,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2575,6 +2662,7 @@ notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 需根据实际情况进行替换
 let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
@@ -2622,8 +2710,8 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2712,8 +2800,8 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2739,6 +2827,7 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
     type: notificationManager.DoNotDisturbType.TYPE_ONCE,
@@ -2789,8 +2878,8 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: As
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2888,8 +2977,8 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise\<vo
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2920,6 +3009,7 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
     type: notificationManager.DoNotDisturbType.TYPE_ONCE,
@@ -2970,8 +3060,8 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3041,7 +3131,7 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3062,6 +3152,7 @@ notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotD
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotDisturbDate) => {
   console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
@@ -3095,8 +3186,8 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int, callback: AsyncCallback\<DoNotDistur
 
 | 参数名     | 类型                              | 必填 | 说明                   |
 | -------- | --------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate)\> | 是   | 查询免打扰时间回调函数。 |
 | userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 用户ID。 |
+| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate)\> | 是   | 查询免打扰时间回调函数。 |
 
 **错误码：**
 
@@ -3106,8 +3197,8 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int, callback: AsyncCallback\<DoNotDistur
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3192,8 +3283,8 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int): Promise\<DoNotDisturbDate\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3218,6 +3309,7 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
@@ -3262,7 +3354,7 @@ isSupportDoNotDisturbMode(callback: AsyncCallback\<boolean\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -3352,6 +3444,7 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
     console.info(`isSupportDoNotDisturbMode success, data: ${JSON.stringify(data)}`);
@@ -3396,8 +3489,8 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3475,8 +3568,8 @@ setDistributedEnable(enable: boolean): Promise\<void>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3498,6 +3591,7 @@ notificationManager.setDistributedEnable(enable).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
 notificationManager.setDistributedEnable(enable).then(() => {
@@ -3534,7 +3628,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
 | enable   | boolean                  | 是   | 指定应用是否支持分布式通知（true：支持，false：不支持）。|
-| callback | AsyncCallback\<void\> | 是   | 应用程序是否支持分布式通知的回调函数。 |
+| callback | AsyncCallback\<void\> | 是   | 应用是否支持分布式通知的回调函数。 |
 
 **错误码：**
 
@@ -3544,8 +3638,8 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3632,8 +3726,8 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3659,6 +3753,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -3677,7 +3772,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
-根据应用的包获取应用程序是否支持分布式通知。使用callback异步回调。
+根据应用的包获取应用是否支持分布式通知。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3708,8 +3803,8 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3793,8 +3888,8 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3819,6 +3914,7 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -3864,8 +3960,8 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3932,7 +4028,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3952,6 +4048,7 @@ notificationManager.getDeviceRemindType().then((data: notificationManager.Device
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getDeviceRemindType().then((data: notificationManager.DeviceRemindType) => {
     console.info(`getDeviceRemindType success, data: ${JSON.stringify(data)}`);
@@ -3996,8 +4093,8 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | -------- | ----------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801     | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801     | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -4007,12 +4104,14 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -4120,8 +4219,8 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | -------- | ----------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801     | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801     | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -4131,12 +4230,14 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -4170,6 +4271,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
 let representativeBundle: string = "bundleName1";
@@ -4233,8 +4335,8 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | -------- | ----------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801     | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801     | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -4244,12 +4346,14 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -4283,6 +4387,7 @@ notificationManager.publishAsBundle(representativeBundle, request).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包信息
 let representativeBundle: notificationManager.BundleOption = {
@@ -4343,7 +4448,7 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int, ca
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4430,7 +4535,7 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int): P
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4457,6 +4562,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
 let representativeBundle: string = "bundleName1";
@@ -4510,7 +4616,7 @@ ArkTS-Sta: cancelAsBundle(representativeBundle: BundleOption, id: int): Promise\
 | -------- | ----------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -4537,6 +4643,7 @@ notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let representativeBundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -4588,7 +4695,7 @@ ArkTS-Sta: cancel(representativeBundle: BundleOption, id: int): Promise\<void\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4615,6 +4722,7 @@ notificationManager.cancel(bundle, id).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -4664,12 +4772,12 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600012  | No memory space.<br> 适用版本：11+                         |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4749,8 +4857,8 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4841,12 +4949,12 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600012  | No memory space.<br> 适用版本：11+                         |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4866,6 +4974,7 @@ notificationManager.setNotificationEnableSlot({ bundle: "ohos.samples.notificati
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setNotificationEnableSlot({ bundle: "ohos.samples.notification"},
     notificationManager.SlotType.SOCIAL_COMMUNICATION, true).then(() => {
@@ -4910,8 +5019,8 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4996,8 +5105,8 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -5020,6 +5129,7 @@ notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notificati
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
@@ -5027,6 +5137,92 @@ notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`isNotificationSlotEnabled failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+## notificationManager.isNotificationSlotEnabledByBundles
+
+isNotificationSlotEnabledByBundles(bundles: Array\<BundleOption\>, type: SlotType): Promise\<Map\<BundleOption, boolean\>\>
+
+批量获取多个应用的指定渠道类型的使能状态。使用Promise异步回调。所有应用共享同一个渠道类型。未创建渠道的应用不会出现在返回结果中。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| bundles | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | 是 | 应用包信息数组。最大长度为1000且不能为空。 |
+| type | [SlotType](./js-apis-notificationManager.md#slottype) | 是 | 渠道类型。所有应用共享同一个渠道类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean\>\> | 以Promise形式返回批量查询结果，key为应用包信息，value为渠道使能状态（true：使能，false：禁止）。未创建渠道的应用不会出现在返回结果中。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 801 | Capability not supported. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 批量查询多个应用的实况窗开关状态
+const bundles: Array<notificationManager.BundleOption> = [
+    { bundle: 'com.example.app1', uid: 10001 },
+    { bundle: 'com.example.app2', uid: 10002 },
+];
+
+notificationManager.isNotificationSlotEnabledByBundles(
+    bundles, notificationManager.SlotType.LIVE_VIEW).then((data) => {
+    data.forEach((value: boolean, key: notificationManager.BundleOption) => {
+        console.info(`bundle: ${key.bundle}, enabled: ${value}`);
+    });
+}).catch((err: BusinessError) => {
+    console.error(`isNotificationSlotEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 批量查询多个应用的实况窗开关状态
+const bundles: Array<notificationManager.BundleOption> = [
+    { bundle: 'bundleName1', uid: 10001 },
+    { bundle: 'bundleName2', uid: 10002 },
+];
+
+notificationManager.isNotificationSlotEnabledByBundles(
+    bundles, notificationManager.SlotType.LIVE_VIEW).then((data) => {
+    data.forEach((value: boolean, key: notificationManager.BundleOption) => {
+        console.info(`bundle: ${key.bundle}, enabled: ${value}`);
+    });
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isNotificationSlotEnabledByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5056,7 +5252,7 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 | ------ | ----------------------------- | ---- | -------------- |
 | userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。   |
 | enable | boolean | 是   | 是否启用（true：使能，false：禁止）。   |
-| callback | AsyncCallback\<void\>    | 是   | 设置是否将通知同步到未安装应用程序的设备的回调函数。 |
+| callback | AsyncCallback\<void\>    | 是   | 设置是否将通知同步到未安装应用的设备的回调函数。 |
 
 **错误码：**
 
@@ -5066,8 +5262,8 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5140,7 +5336,7 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<void\> | 以Promise形式返回设置是否将通知同步到未安装应用程序的设备的结果。 |
+| Promise\<void\> | 以Promise形式返回设置是否将通知同步到未安装应用的设备的结果。 |
 
 **错误码：**
 
@@ -5150,8 +5346,8 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5175,6 +5371,7 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
@@ -5212,7 +5409,7 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 | 参数名 | 类型                          | 必填 | 说明           |
 | ------ | ----------------------------- | ---- | -------------- |
 | userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。   |
-| callback | AsyncCallback\<boolean\>         | 是   | 获取同步通知到未安装应用程序设备的开关是否开启的回调函数（true：开启，false：未开启）。 |
+| callback | AsyncCallback\<boolean\>         | 是   | 获取同步通知到未安装应用设备的开关是否开启的回调函数（true：开启，false：未开启）。 |
 
 **错误码：**
 
@@ -5222,7 +5419,8 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：26.0.0+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5292,7 +5490,7 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | 以Promise形式返回获取同步通知到未安装应用程序设备的开关是否开启的结果（true：开启，false：未开启）。 |
+| Promise\<boolean\> | 以Promise形式返回获取同步通知到未安装应用设备的开关是否开启的结果（true：开启，false：未开启）。 |
 
 **错误码：**
 
@@ -5302,7 +5500,8 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：26.0.0+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5325,6 +5524,7 @@ notificationManager.getSyncNotificationEnabledWithoutApp(userId).then((data: boo
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
@@ -5372,7 +5572,7 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 
 **示例：**
@@ -5435,7 +5635,7 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -5664,10 +5864,9 @@ offCheckNotification(callback?: (checkInfo: NotificationCheckInfo) => Notificati
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | Not system application. |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1600001  | Internal error. |
+| 202      | Not system application to call the interface.                                      |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 1600001  | Internal error.                     |
 
 **示例：**
 
@@ -5724,8 +5923,8 @@ ArkTS-Sta: triggerSystemLiveView(bundle: BundleOption, notificationId: int, butt
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5757,6 +5956,7 @@ notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions)
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 包信息
 let bundle: notificationManager.BundleOption = {
@@ -5813,8 +6013,8 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5841,6 +6041,7 @@ notificationManager.subscribeSystemLiveView(subscriber).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let onResponseCallback = (id: int, option: notificationManager.ButtonOptions) => {
     console.info(`notificationId: ${id},onResponseCallback: ${JSON.stringify(option)}`);
@@ -5896,8 +6097,8 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -5926,6 +6127,7 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -6019,6 +6221,7 @@ notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() =
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle1: notificationManager.DistributedBundleEnableInfo = {
     bundleName: "bundleName1",
@@ -6057,7 +6260,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本**：12
 
 **ArkTS-Sta起始版本**：23
 
@@ -6082,8 +6285,8 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -6111,6 +6314,7 @@ notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data:
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -6165,8 +6369,8 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -6191,6 +6395,7 @@ notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceType: string = "phone";
 let enable: boolean = true;
@@ -6240,8 +6445,8 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -6265,6 +6470,7 @@ notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceType: string = "phone";
 notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
@@ -6315,8 +6521,8 @@ ArkTS-Sta: setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: int): Promi
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -6344,6 +6550,7 @@ notificationManager.setBadgeNumberByBundle(bundle, badgeNumber).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -6392,7 +6599,7 @@ ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)> | 以Promise形式返回获取指定应用指定类型的通知渠道。 |
+| ArkTS-Dyn: Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)></br>ArkTS-Sta: Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)\|null>  | 以Promise形式返回获取指定应用指定类型的通知渠道。 |
 
 **错误码：**
 
@@ -6402,8 +6609,8 @@ ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -6431,6 +6638,7 @@ notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationMa
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -6485,8 +6693,8 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -6525,6 +6733,7 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let trustlist: Array<notificationManager.BundleOption> = [
   {
@@ -6707,8 +6916,8 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -6735,6 +6944,7 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let templates: Array<notificationManager.DoNotDisturbProfile> = [
   {
@@ -6878,8 +7088,8 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -6899,6 +7109,7 @@ notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundl
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundleName2]').then((data: int) => {
   console.info(`setAdditionalConfig success, data: ${JSON.stringify(data)}`);
@@ -6948,8 +7159,8 @@ ArkTS-Sta: getDoNotDisturbProfile(id: long): Promise\<DoNotDisturbProfile\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |
 | 202      | Not system application to call the interface.                                      |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -6970,6 +7181,7 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.DoNotDisturbProfile) => {
   console.info(`getDoNotDisturbProfile success: ${JSON.stringify(data)}`);
@@ -7098,7 +7310,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001      | Internal error.                     |
 | 1600002      | Marshalling or unmarshalling error. |
@@ -7125,6 +7337,7 @@ try {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let disabled: boolean = true;
 let bundleList: Array<string> = ["com.example.myapplication"];
@@ -7176,7 +7389,7 @@ ArkTS-Sta: disableNotificationFeature(disabled: boolean, bundleList: Array\<stri
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 1600001      | Internal error.                     |
 | 1600002      | Marshalling or unmarshalling error. |
@@ -7204,6 +7417,7 @@ try {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let disabled: boolean = true;
 let bundleList: Array<string> = ["com.example.myapplication"];
@@ -7255,7 +7469,7 @@ ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<voi
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -7272,6 +7486,7 @@ notificationManager.setTargetDeviceStatus("current", 1).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setTargetDeviceStatus("current", 1).then(() => {
   console.info('Succeeded in setting target device status.');
@@ -7319,7 +7534,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -7341,6 +7556,7 @@ notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let slot: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 let deviceType: string = 'wearable';
@@ -7391,7 +7607,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -7412,6 +7628,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let slot: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 let deviceType: string = 'wearable';
@@ -7486,9 +7703,6 @@ notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
 let bundle: notificationManager.BundleOption = {
     bundle: "bundleName",
 };
@@ -7560,8 +7774,6 @@ notificationManager.isSilentReminderEnabled(bundle).then((data: notificationMana
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundle: notificationManager.BundleOption = {
     bundle: "bundleName1",
@@ -7582,8 +7794,6 @@ ArkTS-Dyn: setNotificationSwitch(switchName: string, switchState: boolean, userI
 ArkTS-Sta: setNotificationSwitch(switchName: string, switchState: boolean, userId: int): Promise\<void\>
 
 设置通知开关状态。使用Promise异步回调。
-
-**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -7665,8 +7875,6 @@ ArkTS-Dyn: getNotificationSwitch(switchName: string, userId: number): Promise\<S
 ArkTS-Sta: getNotificationSwitch(switchName: string, userId: int): Promise\<SwitchState\>
 
 获取通知开关状态。使用Promise异步回调。
-
-**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -7894,6 +8102,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -8073,6 +8282,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
   bundle: "bundleName",
@@ -8164,6 +8374,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     bundle: "bundleName",
@@ -8238,7 +8449,6 @@ notificationManager.setBadgeDisplayStatusByBundles(badges).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let badges = new Map<notificationManager.BundleOption, boolean>();
 let bundle: notificationManager.BundleOption = {
@@ -8319,6 +8529,7 @@ notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<noti
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundles: Array<notificationManager.BundleOption> = [
     {
@@ -8405,6 +8616,7 @@ notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     bundle: "bundleName",
@@ -8489,6 +8701,8 @@ notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notifica
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundles: Array<notificationManager.BundleOption> = [
     {
         bundle: 'bundleName',
@@ -8554,6 +8768,8 @@ notificationManager.isPriorityEnabled().then((result : boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 notificationManager.isPriorityEnabled().then((result: boolean) => {
   console.info(`isPriorityEnabled result is ${result}`);
 }).catch((err: Error) => {
@@ -8598,7 +8814,7 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 
@@ -8618,6 +8834,8 @@ notificationManager.setPriorityEnabled(false).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 notificationManager.setPriorityEnabled(false).then(() => {
   console.info(`setPriorityEnabled success`);
 }).catch((err: Error) => {
@@ -8662,7 +8880,7 @@ isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -8684,6 +8902,7 @@ notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notif
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
@@ -8731,7 +8950,7 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -8753,6 +8972,8 @@ notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
   console.info(`setPriorityEnabledByBundle success`);
@@ -8798,7 +9019,7 @@ getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -8820,6 +9041,7 @@ notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) =
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
@@ -8867,7 +9089,7 @@ setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -8889,6 +9111,8 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
     console.info(`setBundlePriorityConfig success`);
@@ -8932,7 +9156,7 @@ isPriorityIntelligentEnabled(): Promise\<boolean\>
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 
 **示例：**
 
@@ -8950,6 +9174,8 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
   console.info(`isPriorityIntelligentEnabled result: ${result}`);
 }).catch((err: Error) => {
@@ -8998,7 +9224,7 @@ setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 
 **示例：**
 
@@ -9016,6 +9242,8 @@ notificationManager.setPriorityIntelligentEnabled(false).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 notificationManager.setPriorityIntelligentEnabled(false).then(() => {
     console.info(`setPriorityIntelligentEnabled success`);
 }).catch((err: Error) => {
@@ -9064,7 +9292,7 @@ getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bundl
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -9087,6 +9315,8 @@ notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<not
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
 let bundles: Array<notificationManager.BundleOption> = [bundleOption];
 notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<notificationManager.BundleOption, boolean>) => {
@@ -9139,7 +9369,7 @@ setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<vo
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -9160,6 +9390,8 @@ notificationManager.setPriorityEnabledByBundles(switches).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
 let switches: Map<notificationManager.BundleOption, boolean> = new Map<notificationManager.BundleOption, boolean>([[bundleOption, false]]);
 notificationManager.setPriorityEnabledByBundles(switches).then(() => {
@@ -9212,7 +9444,7 @@ ArkTS-Sta: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -9235,6 +9467,8 @@ notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
 let bundles: Array<notificationManager.BundleOption> = [bundleOption];
 notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<notificationManager.BundleOption, long>) => {
@@ -9289,7 +9523,7 @@ ArkTS-Sta: setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): 
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -9310,6 +9544,8 @@ notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
 let strategies: Map<notificationManager.BundleOption, long> =
     new Map<notificationManager.BundleOption, long>([[bundleOption, notificationManager.PriorityStrategyStatus.STATUS_APPLICATION_DEFINED]]);
@@ -9343,7 +9579,7 @@ ArkTS-Sta: onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<number\> | 是  | 应用角标数量查询函数。 |
+| callback   | ArkTS-Dyn: (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<number\><br/>ArkTS-Sta: (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<long\> | 是  | 应用角标数量查询函数。 |
 
 **错误码**：
 
@@ -9374,7 +9610,6 @@ try{
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try{
     notificationManager.onBadgeNumberQuery(
@@ -9428,7 +9663,6 @@ try{
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try{
     notificationManager.offBadgeNumberQuery();
@@ -9494,6 +9728,8 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 notificationManager.setGeofenceEnabled(true).then(() => {
     console.info("setGeofenceEnabled success");
 }).catch((err: Error) => {
@@ -9637,8 +9873,11 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
   console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // 此处应改为开发者需要设定稍后提醒通知的唯一标识
 let hashCode: string = "hashCode";
 let delayTime: long = 60;
@@ -9651,6 +9890,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 ```
 
 ## DoNotDisturbDate
+
+免打扰时间选项。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9667,6 +9908,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | end   | Date                                  | 否   |  否  | 免打扰设置的终点时间。 |
 
 ## DoNotDisturbType
+
+免打扰设置的时间类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9686,6 +9929,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DeviceRemindType
 
+通知提醒方式。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -9704,6 +9949,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SourceType
 
+通知来源类型。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -9720,15 +9967,13 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationCheckInfo<sup>10+</sup>
 
+通知校验参数。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本**：10
-
-**ArkTS-Sta起始版本**：23
 
 | 名称                         | 类型                          | 只读 | 可选 | 说明            |
 | ---------------------------- | ---------------------------- | ---- | ---- |--------------- |
@@ -9741,6 +9986,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>       |  否  | 是   | 实况通知的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 
 ## NotificationCheckResult<sup>10+</sup>
+
+通知校验结果。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9796,18 +10043,19 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SlotType
 
+通知渠道类型。
+
+不同类型对应不同的[SlotLevel](js-apis-notificationManager.md#slotlevel)，决定通知的提醒行为。
+
 **系统能力**：SystemCapability.Notification.Notification
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
 
 | 名称                                | 值     | 说明                                                         |
 | ----------------------------------- | ------ | ------------------------------------------------------------ |
-| EMERGENCY_INFORMATION<sup>12+</sup> | 10     | 紧急事件。**系统接口**：此接口为系统接口。                               |
+| EMERGENCY_INFORMATION<sup>12+</sup> | 10     | 紧急事件。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                               |
 
 
 ## NotificationControlFlagStatus<sup>12+</sup>
+
 每个bit位都可以控制通知的提示方式。当notificationControlFlags和下表中枚举值进行按位或操作，则表示关闭其提示方式。
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -9829,6 +10077,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DoNotDisturbProfile<sup>12+</sup>
 
+勿扰模式的配置信息。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -9845,7 +10095,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
-type NotificationLiveViewContent = _NotificationLiveViewContent
+type NotificationLiveViewContent = _NotificationLiveViewContent 
 
 描述普通实况通知。
 
@@ -9895,7 +10145,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称          | 类型                                                       | 只读 | 可选 | 说明              |
 | --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
 | bundleName   | string | 否 | 否 | 包名。          |
-| uid          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 应用程序的UID。          |
+| uid          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 应用的UID。          |
 | enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
 
 ## RingtoneType<sup>21+</sup>
@@ -9905,6 +10155,10 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
@@ -9947,7 +10201,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。 |
+| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
 ## BundleNotificationStatistics
@@ -9965,8 +10219,8 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| lastTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 应用最后一次发布通知的时间。数据格式：时间戳。单位：ms。 |
-| recentCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否 | 否 | 应用最近7天发布的通知总量。 |
+| lastTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 应用最后一次发布通知的时间。<br>数据格式：时间戳。<br>单位：毫秒。 |
+| recentCount |  ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否 | 否 | 应用最近7天发布的通知总量。 |
 
 ## PriorityNotificationType<sup>23+</sup>
 
@@ -10010,8 +10264,8 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
-| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。 |
-| ENABLE   | 2   | 应用通知的优先级开关为全部通知状态。 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。 |
+| ENABLE   | 2   | 应用通知均设置为优先通知。 |
 
 ## NotificationIconButton<sup>23+</sup>
 

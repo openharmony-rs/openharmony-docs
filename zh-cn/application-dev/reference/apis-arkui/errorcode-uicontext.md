@@ -112,9 +112,8 @@ The UIContext is not available.
 
 **可能原因**
 
-传入的实例非法或者对应的示例已销毁。
+传入的实例非法或者对应的实例已销毁。
 
 **处理步骤**
 
 传入有效的UIContext对象。
-

@@ -156,7 +156,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
    ArkTS-Dyn示例：
 
-   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
@@ -165,7 +165,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
        new Params(this.message, dialogController));
    this.getUIContext().getPromptAction().openCustomDialogWithController(
      contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController',
+     hilog.error(DOMAIN, 'dialogController',
        'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
    });
    ```
@@ -246,14 +246,14 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
    ArkTS-Dyn示例：
 
-   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
    this.getUIContext().getPromptAction().presentCustomDialog(() => {
      this.customDialogComponent(dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+     hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
    });
    ```
 
@@ -342,14 +342,14 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
    ArkTS-Dyn示例：
 
-   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
    this.getUIContext().getPromptAction().presentCustomDialog((dialogId: number) => {
      this.customDialogComponentWithId(dialogId, dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+     hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
    });
    ```
 
@@ -390,7 +390,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
            .fontSize(30)
          Button('Close Dialog(Built-in Controller)')
            .onClick(() => {
-             let dialogController: PromptActionDialogController = this.getDialogController();
+             let dialogController: promptAction.DialogController = this.getDialogController();
              if (dialogController !== undefined) {
                dialogController.close();
              }
@@ -470,7 +470,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 > 
 > 详细变量定义请参考[完整示例](#完整示例)。
 
-初始化一个自定义弹出框内容区，内部包含一个Text组件和一个按钮，该按钮通过调用getState获取当前弹出框状态。
+初始化一个自定义弹出框内容区，内部包含一个Text组件和两个按钮，一个按钮通过调用getState获取当前弹出框状态，另一个按钮通过弹出框控制器关闭弹出框。
 
 ArkTS-Dyn示例：
 
@@ -600,7 +600,7 @@ struct CustomDialogExample {
         .fontSize(30)
       Button('Close Dialog(Built-in Controller)')
         .onClick(() => {
-          let dialogController: PromptActionDialogController = this.getDialogController();
+          let dialogController: promptAction.DialogController = this.getDialogController();
           if (dialogController !== undefined) {
             dialogController.close();
           }

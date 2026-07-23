@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-路径效果对象。
+路径效果对象，用于创建多种路径效果，包括虚线、圆角、离散、叠加和组合路径效果等。可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上，从而在绘制路径时改变路径的渲染样式。
 
 > **说明：**
 >
@@ -33,7 +33,7 @@ ArkTS-Dyn: static createDashPathEffect(intervals:  Array\<number>, phase: number
 
 ArkTS-Sta: static createDashPathEffect(intervals: Array\<double>, phase: double): PathEffect | undefined
 
-创建将路径变为虚线的路径效果对象。
+创建将路径变为虚线的路径效果对象，通过指定ON/OFF长度数组生成规则间距的虚线。当需要自定义形状作为虚线段填充时，可使用[createPathDashEffect](#createpathdasheffect18)。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -45,14 +45,14 @@ ArkTS-Sta: static createDashPathEffect(intervals: Array\<double>, phase: double)
 
 | 参数名     | 类型           | 必填    | 说明                                               |
 | ---------- | ------------- | ------- | -------------------------------------------------- |
-| intervals  | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> | 是      | 表示虚线的ON（实线部分）和OFF（空白部分）长度的数组，数组个数必须是偶数，且>=2，该参数为正整数。|
-| phase      | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 绘制时的偏移量，该参数为浮点数。                                     |
+| intervals  | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> | 是      | 表示虚线的ON（实线部分）和OFF（空白部分）长度的数组，数组元素个数必须是偶数且>=2，数组元素为正整数。单位为物理像素px。|
+| phase      | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 绘制时的偏移量，用于调整虚线图案沿路径的起始位置，该参数为浮点数，偏移量会相对于intervals定义的虚线模式产生位移效果。单位为物理像素px。                                     |
 
 **返回值：**
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的虚线路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -98,7 +98,7 @@ ArkTS-Dyn: static createPathDashEffect(path: Path, advance: number, phase: numbe
 
 ArkTS-Sta: static createPathDashEffect(path: Path, advance: double, phase: double, style: PathDashStyle): PathEffect | undefined
 
-通过路径描述的形状创建一个虚线路径效果。
+创建一个虚线路径效果对象，通过路径描述的形状生成。与[createDashPathEffect](#createdashpatheffect12)使用intervals数组指定ON/OFF长度创建规则间距虚线不同，本接口通过Path指定虚线段的图形形状。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -111,15 +111,15 @@ ArkTS-Sta: static createPathDashEffect(path: Path, advance: double, phase: doubl
 | 参数名     | 类型           | 必填    | 说明                                               |
 | ---------- | ------------- | ------- | -------------------------------------------------- |
 | path  | [Path](arkts-apis-graphics-drawing-Path.md) | 是 | 通过该路径生成一个图形，用来填充每个虚线段。|
-| advance | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 虚线段的步长，该参数为大于0的浮点数，否则会抛错误码。 |
-| phase | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 表示虚线段内图形在虚线步长范围内的偏移量，该参数为浮点数，效果为先对偏移量取绝对值，然后对步长取模。 |
-| style | [PathDashStyle](arkts-apis-graphics-drawing-e.md#pathdashstyle18) | 是 | 指定虚线效果的样式。 |
+| advance | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 虚线段的步长，取值范围>0，该参数为浮点数，否则会抛错误码。单位为物理像素px。 |
+| phase | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 表示虚线段内图形在虚线步长范围内的偏移量，该参数为浮点数，效果为先对偏移量取绝对值，然后对步长取模。单位为物理像素px。 |
+| style | [PathDashStyle](arkts-apis-graphics-drawing-e.md#pathdashstyle18) | 是 | 指定虚线效果的样式，决定虚线段图形在路径上的变换方式。 |
 
 **返回值：**
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -133,17 +133,16 @@ ArkTS-Sta: static createPathDashEffect(path: Path, advance: double, phase: doubl
 
 ArkTS-Dyn示例：
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     let pen = new drawing.Pen();
-    const penColor: common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 }
+    const penColor: common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
     pen.setColor(penColor);
     pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
     pen.setAntiAlias(true);
 
     const path = new drawing.Path();
@@ -151,15 +150,15 @@ class DrawingRenderNode extends RenderNode {
     path.lineTo(150, 50);
     path.lineTo(200, 100);
 
-    const path1 = new drawing.Path();
-    path1.moveTo(0, 0);
-    path1.lineTo(10, 0);
-    path1.lineTo(20, 10);
-    path1.lineTo(0,10);
+    const dashShapePath = new drawing.Path();
+    dashShapePath.moveTo(0, 0);
+    dashShapePath.lineTo(10, 0);
+    dashShapePath.lineTo(20, 10);
+    dashShapePath.lineTo(0, 10);
 
-    let pathEffect1: drawing.PathEffect = drawing.PathEffect.createPathDashEffect(path1, 50, -30,
+    let pathEffect: drawing.PathEffect = drawing.PathEffect.createPathDashEffect(dashShapePath, 50, -30,
         drawing.PathDashStyle.MORPH);
-    pen.setPathEffect(pathEffect1);
+    pen.setPathEffect(pathEffect);
 
     canvas.attachPen(pen);
     canvas.drawPath(path);
@@ -213,7 +212,7 @@ ArkTS-Dyn: static createSumPathEffect(firstPathEffect: PathEffect, secondPathEff
 
 ArkTS-Sta: static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEffect): PathEffect | undefined
 
-创建一个叠加的路径效果。与createComposePathEffect不同，此接口会分别对两个参数的效果各自独立进行表现，然后将两个效果简单重叠显示。
+创建一个叠加的路径效果。与[createComposePathEffect](#createcomposepatheffect18)不同，此接口会分别对两个参数的效果各自独立进行表现，然后将两个效果简单重叠显示。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -232,7 +231,7 @@ ArkTS-Sta: static createSumPathEffect(firstPathEffect: PathEffect, secondPathEff
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -245,9 +244,9 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     let intervals = [10, 5];
-    let pathEffectOne = drawing.PathEffect.createDashPathEffect(intervals, 5);
-    let pathEffectTwo = drawing.PathEffect.createDashPathEffect(intervals, 10);
-    let effect = drawing.PathEffect.createSumPathEffect(pathEffectOne, pathEffectTwo);
+    let firstPathEffect = drawing.PathEffect.createDashPathEffect(intervals, 5);
+    let secondPathEffect = drawing.PathEffect.createDashPathEffect(intervals, 10);
+    let effect = drawing.PathEffect.createSumPathEffect(firstPathEffect, secondPathEffect);
   }
 }
 ```
@@ -277,7 +276,7 @@ ArkTS-Dyn: static createCornerPathEffect(radius: number): PathEffect
 
 ArkTS-Sta: static createCornerPathEffect(radius: double): PathEffect | undefined
 
-创建将路径的夹角变成指定半径的圆角的路径效果对象。
+创建将路径的夹角变成指定半径的圆角的路径效果对象。该效果会在路径的每个夹角处插入指定半径的弧线段，将原有的尖锐转角替换为平滑的圆角过渡。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -289,13 +288,13 @@ ArkTS-Sta: static createCornerPathEffect(radius: double): PathEffect | undefined
 
 | 参数名     | 类型           | 必填    | 说明                                               |
 | ---------- | ------------- | ------- | -------------------------------------------------- |
-| radius     | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 圆角的半径，必须大于0，该参数为浮点数。                |
+| radius     | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 圆角的半径，取值范围>0，该参数为浮点数。单位为物理像素px。                |
 
 **返回值：**
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -339,7 +338,7 @@ ArkTS-Dyn: static createDiscretePathEffect(segLength: number, dev: number, seedA
 
 ArkTS-Sta: static createDiscretePathEffect(segLength: double, dev: double, seedAssist?: int): PathEffect | undefined
 
-创建一种将路径打散，并且在路径上产生不规则分布的效果。
+创建将路径打散为离散线段并对端点进行随机偏移的路径效果对象。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -351,15 +350,15 @@ ArkTS-Sta: static createDiscretePathEffect(segLength: double, dev: double, seedA
 
 | 参数名     | 类型           | 必填    | 说明                                               |
 | ---------- | ------------- | ------- | -------------------------------------------------- |
-| segLength  | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 路径中每进行一次打散操作的长度，该长度为浮点数，负数和0时无效果。 |
-| dev        | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 绘制时的末端点的最大移动偏离量，该偏移量为浮点数。 |
+| segLength  | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 路径中每进行一次打散操作的长度，该参数为浮点数，传入负数或0时无效果。单位为物理像素px。 |
+| dev        | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 绘制时每个离散线段端点的最大移动偏离量，该偏离量为浮点数。单位为物理像素px。 |
 | seedAssist | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 否      | ArkTS-Dyn: 生成效果伪随机种子辅助变量。当seedAssist传入undefined时，该方法将抛错误码。不传该参数时，默认值为0，该参数为32位无符号整数。<br/>ArkTS-Sta: 生成效果伪随机种子辅助变量。当不传该参数，或者seedAssist传入undefined时，默认值为0，该参数为32位无符号整数。 |
 
 **返回值：**
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -381,7 +380,7 @@ ArkTS-Dyn: static createComposePathEffect(outer: PathEffect, inner: PathEffect):
 
 ArkTS-Sta: static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect | undefined
 
-创建路径组合的路径效果对象，首先应用内部路径效果，然后应用外部路径效果。
+创建组合路径效果对象，首先应用内部路径效果，然后应用外部路径效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -393,14 +392,14 @@ ArkTS-Sta: static createComposePathEffect(outer: PathEffect, inner: PathEffect):
 
 | 参数名 | 类型                        | 必填 | 说明                             |
 | ------ | --------------------------- | ---- | -------------------------------- |
-| outer  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) | 是   | 组合路径效果中外部路径效果。 |
-| inner  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) | 是   | 组合路径效果中内部路径效果。 |
+| outer  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) | 是   | 组合路径效果中的外部路径效果，在内部路径效果应用之后进行叠加处理，决定最终呈现的叠加效果。 |
+| inner  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) | 是   | 组合路径效果中的内部路径效果，首先应用于原始路径，作为第一层效果处理，随后再由外部路径效果进行叠加。 |
 
 **返回值：**
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -412,9 +411,9 @@ import { drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    let pathEffect1 = drawing.PathEffect.createCornerPathEffect(100);
-    let pathEffect2 = drawing.PathEffect.createCornerPathEffect(10);
-    let effect = drawing.PathEffect.createComposePathEffect(pathEffect1, pathEffect2);
+    let outerPathEffect = drawing.PathEffect.createCornerPathEffect(100);
+    let innerPathEffect = drawing.PathEffect.createCornerPathEffect(10);
+    let effect = drawing.PathEffect.createComposePathEffect(outerPathEffect, innerPathEffect);
   }
 }
 ```

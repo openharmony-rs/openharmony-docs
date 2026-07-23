@@ -31,7 +31,7 @@
 
 1. 获取该示例工程依赖的jsoncpp文件，打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，点击“下载当前目录”，下载EventSub工程文件。
 
-2. 新建Native C++工程，并将上述文件导入到新建工程，目录结构如下。
+2. 在DevEco Studio新建Native C++模板工程，并将上述文件导入到新建工程，目录结构如下。
 
    ```yml
    entry:
@@ -228,6 +228,10 @@
                           eventInfo["crash_type"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d",
                           eventInfo["foreground"].asBool());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.release_type=%{public}s",
+                          eventInfo["release_type"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.cpu_abi=%{public}s",
+                          eventInfo["cpu_abi"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s",
                           eventInfo["app_running_unique_id"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
@@ -420,6 +424,8 @@ HiAppEvent eventInfo.eventType=1
 HiAppEvent eventInfo.params.time=1503045716054
 HiAppEvent eventInfo.params.crash_type=JsError
 HiAppEvent eventInfo.params.foreground=1
+HiAppEvent eventInfo.params.release_type=debug
+HiAppEvent eventInfo.params.cpu_abi=armeabi-v7a
 HiAppEvent eventInfo.params.app_running_unique_id=365426736245712514
 HiAppEvent eventInfo.params.bundle_version=1.0.0
 HiAppEvent eventInfo.params.bundle_name=com.samples.eventsub
@@ -430,7 +436,7 @@ HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON: Empty
 HiAppEvent eventInfo.params.hilog.size=100
 HiAppEvent eventInfo.params.process_life_time=25
 HiAppEvent eventInfo.params.memory={"rss":181964,"sys_avail_mem":1230456,"sys_free_mem":676940,"sys_total_mem":2001932}
-HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log","/data/storage/el2/log/hiappevent/APP_CRASH_1503045716409_2610.dmp"]
+HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log"]
 HiAppEvent eventInfo.params.log_over_limit=0
 ```
 

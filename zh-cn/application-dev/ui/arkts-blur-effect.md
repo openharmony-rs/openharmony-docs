@@ -1,4 +1,4 @@
-# 模糊
+# 动态模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
@@ -453,7 +453,7 @@ struct ForegroundBlurStyleDemo {
           // BlurStyle.Thin: 为组件添加轻薄材质模糊效果
           // ThemeColorMode.LIGHT: 固定使用浅色模式效果
           // AdaptiveColor.DEFAULT: 不使用取色模糊，使用默认的颜色作为蒙版颜色
-          // scale: 背景材质模糊效果程度，默认值是1
+          // scale: 前景材质模糊效果程度，默认值是1
           .foregroundBlurStyle(BlurStyle.Thin, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,

@@ -19,7 +19,7 @@
 
 2. 方舟运行时收集故障信息，并将其上报给维测进程Hiview。
 
-3. 维测进程Hiview补充仅其有权限获取的信息(如整机内存状态、应用页面切换轨迹)，生成对应的崩溃日志文件, 存储在“/data/log/faultlog/faultlogger”目录下。
+3. 维测进程Hiview补充仅其有权限获取的信息（如整机内存状态、应用页面切换轨迹），生成对应的崩溃日志文件，存储在“/data/log/faultlog/faultlogger”目录下。
 
 4. 上报崩溃事件，开发者可通过HiAppEvent订阅[崩溃事件](hiappevent-watcher-crash-events.md)。如需了解JS Crash问题分析方法，请参见[JS Crash类问题分析方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-crash-js-way)。
 
@@ -83,6 +83,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | HiLog | 故障之前打印的流水日志，最多1000行 | 20 | 是 | - |
 | AsyncStack | Promise异步栈 | 23 | 否 | ARM 64位系统下，若开启Promise异步栈开关，则包含此字段。 |
 | ModuleImportStack | 模块加载链路 | 26.0.0 | 否 | ARM 64位系统下，若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则包含此字段。 |
+| NativeModuleErrorInfo | so加载失败信息，最多20个加载失败信息 | 26.0.0 | 是 | - |
 
 以下是JS Crash崩溃日志规格。
 ```text
@@ -103,7 +104,7 @@ Process name:com.example.myapplication <- 进程名
 App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s  <- 进程存活时间
 Process Memory(kB): 1897(Rss) <- 进程占用内存
-Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息
+Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息（非必选）
 Page switch history: <- 页面切换轨迹
   14:08:30:327 /ets/pages/Index:JsError
   14:08:28:986 /ets/pages/Index
@@ -371,6 +372,23 @@ HiLog:
 ...
 ```
 
+### NativeModuleErrorInfo 
+JS Crash日志中的NativeModuleErrorInfo可记录最早的20条so加载失败信息，如果总数超出20个，请在hilog根据'Load native module failed'关键字查找是否so加载失败。NativeModuleErrorInfo信息格式如下：
+
+```text
+...
+Stacktrace:
+...
+HybridStack:
+...
+NativeModuleErrorInfo:
+There are a total of 2 SO loading failure messages, and 2 of them are displayed here.
+#1 ModuleName:module1 Reason:dlopen failed: load module default/module1 failed.
+#2 ModuleName:module2 Reason:dlopen failed: load module default/module2 failed.
+...
+HiLog:
+...
+```
 ## JsCrash聚类
 
 Js Crash聚类信息以“Stacktrace:”字段开始，包含ARM 64系统的“HybridStack:”的调用栈。

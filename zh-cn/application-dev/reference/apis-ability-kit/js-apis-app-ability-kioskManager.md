@@ -27,7 +27,7 @@ import { kioskManager } from '@kit.AbilityKit';
 
 enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
-进入Kiosk模式。使用Promise异步回调。
+调用此接口进入Kiosk模式，采用Promise异步回调方式。若触发进入Kiosk模式的应用进程被终止，系统将自动退出该模式。
 
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
@@ -41,7 +41,7 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要进入kiosk模式的UIAbility的上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要进入kiosk模式的UIAbility的上下文，用于指定执行进入Kiosk模式的Ability实例。 |
 
 **返回值：**
 
@@ -85,7 +85,7 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'enterKioskMode success');
             })
             .catch((error: BusinessError) => {
-              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed:${JSON.stringify(error)}`);
+              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
     }
@@ -151,7 +151,7 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要退出kiosk模式的UIAbility的上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要退出kiosk模式的UIAbility的上下文，用于指定执行退出Kiosk模式的Ability实例。 |
 
 **返回值：**
 
@@ -194,7 +194,7 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'exitKioskMode success');
             })
             .catch((error: BusinessError) => {
-              hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed:${JSON.stringify(error)}`);
+              hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
     }

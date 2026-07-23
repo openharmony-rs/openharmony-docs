@@ -42,7 +42,7 @@ import { LiveFormExtensionAbility } from '@kit.FormKit';
 | ------ | ------ | ---- | ---- | ---- |
 | context |  [LiveFormExtensionContext](./js-apis-application-LiveFormExtensionContext.md) | 否   | 否 |LiveFormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。|
 
-## onLiveFormCreate
+### onLiveFormCreate
 
 onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void
 
@@ -153,7 +153,7 @@ export default class LiveFormExtAbility extends LiveFormExtensionAbility {
 }
 ```
 
-### LiveFormInfo
+## LiveFormInfo
 
 互动卡片信息。
 

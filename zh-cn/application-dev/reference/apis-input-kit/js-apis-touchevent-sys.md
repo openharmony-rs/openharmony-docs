@@ -25,7 +25,7 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 
 ## FixedMode
 
-修正坐标的模式。
+修正坐标的模式。默认值为NONE。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Core
 
@@ -50,9 +50,9 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 
 | 名称          | 类型   | 只读   | 可选   | 说明                                  |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
-| fixedDisplayX | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 适配单手模式下screenX坐标的修正值，单位为像素（px）。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23  |
-| fixedDisplayY | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 适配单手模式下screenY坐标的修正值，单位为像素（px）。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23  |
-| blobId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 触摸点属性标识。当前仅支持单指触摸：左手触摸为1，右手触摸为2。 <br>**ArkTS-Dyn起始版本**: 24 <br>**ArkTS-Sta起始版本**：24|
+| fixedDisplayX | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 适配单手模式下screenX坐标的修正值，单位为像素（px）。默认值为0。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23  |
+| fixedDisplayY | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 适配单手模式下screenY坐标的修正值，单位为像素（px）。默认值为0。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23  |
+| blobId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 触摸点属性标识。当前仅支持单指触摸：左手触摸为1，右手触摸为2。默认值为系统自动识别。默认情况下不设置此属性。 <br>**ArkTS-Dyn起始版本**: 24 <br>**ArkTS-Sta起始版本**：24|
 
 ## TouchEvent
 
@@ -68,5 +68,5 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 
 | 名称         | 类型       | 只读   | 可选   | 说明        |
 | ---------- | ---------- | ---- | ---- | --------- |
-| fixedMode  | [FixedMode](#fixedmode)   | 否    | 是    | 修正坐标的模式。|
-| isInject<sup>20+</sup>  | boolean   | 否    | 是    | 表示该触屏输入事件是否为注入事件。注入事件详细介绍可参考[@ohos.multimodalInput.inputEventClient](js-apis-inputeventclient-sys.md)。|
+| fixedMode | [FixedMode](#fixedmode) | 否 | 是 | 修正坐标的模式。默认值为FixedMode.NONE。|
+| isInject<sup>20+</sup> | boolean | 否 | 是 | 表示该触屏输入事件是否为注入事件。默认值为false。注入事件详细介绍可参考[@ohos.multimodalInput.inputEventClient](js-apis-inputeventclient-sys.md)。|

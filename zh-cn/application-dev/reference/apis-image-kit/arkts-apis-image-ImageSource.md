@@ -1107,8 +1107,8 @@ ArkTS-Sta: updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length
 | ---------- | ----------- | ---- | ------------ |
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
-| offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 当前buffer的长度。单位：字节（byte）。            |
+| offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节（Byte）。             |
+| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 当前buffer的长度。单位：字节（Byte）。            |
 
 **返回值：**
 
@@ -1164,8 +1164,8 @@ ArkTS-Sta: updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length
 | ---------- | ------------------- | ---- | -------------------- |
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
-| offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 当前buffer的长度。单位：字节（byte）。            |
+| offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节（Byte）。             |
+| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 当前buffer的长度。单位：字节（Byte）。            |
 | callback   | AsyncCallback\<void> | 是   |  回调函数，当更新增量数据成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -1999,6 +1999,7 @@ ArkTS-Sta: createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 当调用方所在进程启用沙箱隔离，且指定AllocatorType.DMA或由AllocatorType.AUTO选择DMA内存时，需为该沙箱进程配置访问DMA内存相关资源的SELinux权限；否则可能因SELinux策略拦截导致接口调用阻塞或失败。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2096,7 +2097,8 @@ ArkTS-Sta: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocator
 
 > **说明：**
 >
-> 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+> - 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+> - 当调用方所在进程启用沙箱隔离，且指定AllocatorType.DMA或由AllocatorType.AUTO选择DMA内存时，需为该沙箱进程配置访问DMA内存相关资源的SELinux权限；否则可能因SELinux策略拦截导致接口调用阻塞或失败。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2860,7 +2862,7 @@ async function ReleaseFunc(imageSource: image.ImageSource): Promise<void> {
 
 getImageProperty(key: string, options?: GetImagePropertyOptions): Promise\<string>
 
-获取图片中给定索引处图像的指定属性键的值。用Promise异步回调。
+获取图片中给定索引处图像的指定属性键的值。使用Promise异步回调。
 
 该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 

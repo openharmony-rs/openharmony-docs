@@ -176,8 +176,8 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 | 名称      | 类型                   | 只读 | 可选 | 说明                                                   |
 | --------- | ---------------------- | ---- | ---- | ------------------------------------------------------ |
 | value     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的初始值。<br>默认值：0。 <br>取值范围：[min, max]内的整数，其中min和max分别对应下述Counter的最小值和最大值。 <br>超出取值范围时，如果值为undefined，按默认值处理，否则按最大值处理。                  |
-| min       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最小值。<br>默认值：0。 <br>取值范围：(-∞, +∞)内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。  |
-| max       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最大值。<br>默认值：999。  <br>取值范围：(-∞, +∞)内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。   |
+| min       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最小值。<br>默认值：0。 <br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。  |
+| max       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最大值。<br>默认值：999。  <br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。   |
 | textWidth | ArkTS-Dyn: number <br>ArkTS-Sta: double | 否  | 是 | 设置数值文本的宽度。<br>默认值：自适应文本宽度。<br>取值范围：[0, +∞)。 <br>单位：vp。  <br>超出取值范围时，如果值为undefined，按默认值处理，否则按最大值处理。  |
 | onChange  | ArkTS-Dyn: (value: number) => void <br>ArkTS-Sta: [OnInlineCounterChange](#oninlinecounterchange23) | 否  | 是 | 当数值改变时，返回当前值。<br>value：当前显示的数值。<br>默认值：数值改变时，不返回值。 <br>值为undefined时，按默认值处理。 |
 

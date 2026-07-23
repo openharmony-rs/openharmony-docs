@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供技能（Skill）信息的查询能力，支持查询应用自身的技能信息、指定应用的技能信息以及所有应用的技能信息。AI代理框架在规划任务时，可通过本模块查询设备上所有应用可用的技能，选择合适的技能来完成用户请求。通过技能信息查询，可以实现智能任务调度、能力匹配优化，提升AI代理的任务执行效率，降低开发者的技能集成复杂度。
@@ -128,6 +128,14 @@ getSkillInfosForSelf(flags: number): Promise\<Array\<[SkillInfo](js-apis-bundleM
 | ----------------------------------------------------------- | ------------------------------------- |
 | Promise\<Array\<[SkillInfo](js-apis-bundleManager-SkillInfo.md)\>\> | Promise对象，返回调用方所在应用的所有技能信息数组。|
 
+
+**错误码：**
+
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                              |
+| -------- | ------------------------------------- |
+| 17700101 | Bundle manager service is exception. Possible causes: 1. Failed to connect to the system service. 2. IPC data transmission failed. 3. Failed to obtain the object constructor. |
 
 **示例：**
 

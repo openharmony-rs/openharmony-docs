@@ -22,7 +22,7 @@ Invalid parameter value.
 
 **可能原因**
 
-1. 账号为空或账号长度大于1024。
+1. 账号为空或账号长度大于1024字符。
 
 2. 账号类型错误。
 
@@ -336,7 +336,7 @@ The uri field is missing in the want parameter.
 
 **可能原因**
 
-调用DLP文件打开相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
+调用DLP文件相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
 
 **处理步骤**
 
@@ -524,3 +524,39 @@ A system error has occurred.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试或重启设备。
+
+## 19100023 指定的用户ID与当前用户ID不一致
+
+**错误信息**
+
+The specified userId is inconsistent with the current userId.
+
+**错误描述**
+
+指定的用户ID与当前用户ID不一致。
+
+**可能原因**
+
+指定的用户ID与当前用户ID不一致。
+
+**处理步骤**
+
+请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。
+
+## 19100024 个人空间用户不支持设置受控应用
+
+**错误信息**
+
+The specified userId belongs to a personal space user and cannot be managed.
+
+**错误描述**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**可能原因**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**处理步骤**
+
+请确保传入的用户ID不属于个人空间用户。

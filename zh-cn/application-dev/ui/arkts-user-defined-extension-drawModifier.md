@@ -427,7 +427,7 @@ struct DrawModifierExample {
   build(): void {
     Column() {
       Row() {
-        // $r('app.string.Modifier')需要替换为开发者所需的资源文件
+        // $r('app.string.app_name')需要替换为开发者所需的资源文件
         Text($r('app.string.app_name'))
           .width(100)
           .height(100)
@@ -607,7 +607,7 @@ struct DrawModifierExample {
 
   build(): void {
     Column() {
-      // $r('app.string.TestNode')需要替换为开发者所需的资源文件。
+      // $r('app.string.app_name')需要替换为开发者所需的资源文件。
       Text($r('app.string.app_name'))
         .fontSize(36)
         .width('100%')

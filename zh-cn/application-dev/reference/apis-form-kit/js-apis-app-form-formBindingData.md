@@ -37,8 +37,7 @@ import { formBindingData } from '@kit.FormKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | key | string | 否 | 否 | 卡片代理刷新的订阅标识，与数据发布者保持一致。|
-| subscriberId | string | 否 | 是 | 卡片代理刷新的订阅条件，默认值为当前卡片的formId。|
-
+| subscriberId | string | 否 | 是 | 卡片代理刷新的订阅者标识，默认值为当前卡片的formId。|
 
 ## FormBindingData
 
@@ -111,11 +110,12 @@ struct Index {
   pathDir: string = this.content.filesDir;
 
   createFormBindingData() {
+    let filePath = this.pathDir + "/form.png";
+    let fd: number = -1;
     try {
-      let filePath = this.pathDir + "/form.png";
-      let file = fileIo.openSync(filePath);
+      fd = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
       let formImagesParam: Record<string, number> = {
-        'image': file.fd
+        'image': fd
       };
       let createFormBindingDataParam: Record<string, string | Record<string, number>> = {
         'name': '21°',
@@ -124,7 +124,11 @@ struct Index {
       };
       let formBindingDataObj = formBindingData.createFormBindingData(createFormBindingDataParam);
     } catch (error) {
-      console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+    } finally {
+      if (fd !== -1) {
+        fileIo.closeSync(fd);
+      }
     }
   }
 
@@ -146,8 +150,8 @@ import { formBindingData } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 
+let file = fileIo.openSync('/path/to/form.png');
 try {
-  let file = fileIo.openSync('/path/to/form.png');
   let formImagesParam: Record<string, number> = {
     'image': file.fd
   };
@@ -162,5 +166,7 @@ try {
   let code = e.code;
   let message = e.message;
   console.error(`catch error, code: ${code}, message: ${message}`);
+} finally {
+  fileIo.closeSync(file.fd);
 }
 ```

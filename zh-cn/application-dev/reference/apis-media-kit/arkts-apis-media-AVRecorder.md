@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 
-音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9)接口构建一个AVRecorder实例。
+AVRecorder是音视频录制管理类，用于音视频录制的全流程管理，支持音频录制、视频录制及音视频混合录制，可灵活配置编码参数、添加水印、监听录制状态。适用于录制音视频并保存到文件的场景。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9)接口构建一个AVRecorder实例。
 
 音视频录制demo可参考：[音频录制开发指导](../../media/media/using-avrecorder-for-recording.md)、[视频录制开发指导](../../media/media/video-recording.md)。
 
@@ -194,7 +194,7 @@ ArkTS-Dyn: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 
 ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<int>
 
-在录制视频过程中添加自定义水印图像。使用Promise异步回调。
+添加自定义水印图像到录制视频中。使用Promise异步回调。
 
 > **说明：**
 >
@@ -353,7 +353,7 @@ ArkTS-Sta: getInputSurface(): Promise\<string | undefined>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| ArkTS-Dyn: Promise\<string><br>ArkTS-Sta: Promise\<string \| undefined> | Promise对象，返回surface中获取的surfaceBuffer。 |
+| ArkTS-Dyn: Promise\<string><br>ArkTS-Sta: Promise\<string \| undefined> | Promise对象，返回获取的surfaceId。 |
 
 **错误码：**
 
@@ -441,7 +441,7 @@ setMetadata(metadata: Record&lt;string, string&gt;): void
 
 设置录制的元数据信息。如果这些信息的键相同，会覆盖config.metadata.customInfo（参考[prepare()](#prepare9-1)和[AVRecorderConfig](arkts-apis-media-i.md#avrecorderconfig9)）中的值。
 
-该方法只能在[prepare()](#prepare9-1)事件成功触发后，且必须在[stop()](#stop9)之前调用。
+该接口只能在[prepare()](#prepare9-1)接口成功调用后，且必须在[stop()](#stop9)接口之前调用。
 
 **起始版本：** 26.0.0
 
@@ -466,6 +466,8 @@ setMetadata(metadata: Record&lt;string, string&gt;): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let metadata: Record<string, string> = {
   'com.openharmony.userdefine': '10',
   'com.openharmony.userdefine2': '20'
@@ -475,7 +477,8 @@ try {
   avRecorder.setMetadata(metadata);
   console.info('set metadata successfully');
 } catch (err) {
-  console.error(`set metadata failed with error: ${err.code}, ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`set metadata failed with error: ${error.code}, ${error.message}`);
 }
 ```
 
@@ -483,7 +486,9 @@ try {
 
 setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
-设置当前录制音频流是否启用静音打断模式。使用Promise异步回调。
+设置当前录制音频流是否启用静音打断模式。启用后，录制音频流被更高优先级音频打断时将录制静音而非停止录制，适用于需要在打断期间保持录制连续性的场景（如会议录音、语音备忘）；不启用则保持默认打断模式。使用Promise异步回调。
+
+此接口需要在[prepare()](#prepare9-1)接口之前调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -495,7 +500,7 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
 | ---------- |---------------- | ------ |---------------------------------------------------------|
-| muteWhenInterrupted | boolean | 是  | 设置当前录制音频流是否启用静音打断模式, true表示启用，false表示不启用，保持为默认打断模式。 |
+| muteWhenInterrupted | boolean | 是  | 设置当前录制音频流是否启用静音打断模式。true表示启用，音频流被打断时录制静音；false表示不启用，音频流被打断时停止录制。 |
 
 **返回值：**
 
@@ -529,7 +534,7 @@ avRecorder.setWillMuteWhenInterrupted(true).then(() => {
 
 start(callback: AsyncCallback\<void>): void
 
-开始视频录制。使用callback异步回调。
+开始录制。使用callback异步回调。
 
 纯音频录制需在[prepare](#prepare9)接口成功调用后，才能调用start接口。纯视频录制，音视频录制需在[getInputSurface](#getinputsurface9)接口成功调用后，才能调用start接口。
 
@@ -573,7 +578,7 @@ avRecorder.start((err: BusinessError) => {
 
 start(): Promise\<void>
 
-开始视频录制。使用Promise异步回调。
+开始录制。使用Promise异步回调。
 
 纯音频录制需在[prepare](#prepare9-1)接口成功调用后，才能调用start接口。纯视频录制，音视频录制需在[getInputSurface](#getinputsurface9-1)接口成功调用后，才能调用start接口。
 
@@ -618,7 +623,7 @@ avRecorder.start().then(() => {
 
 pause(callback: AsyncCallback\<void>): void
 
-暂停视频录制。使用callback异步回调。
+暂停录制。使用callback异步回调。
 
 需要[start](#start9)接口成功调用后，才能调用pause接口，可以通过调用[resume](#resume9)接口来恢复录制。
 
@@ -662,7 +667,7 @@ avRecorder.pause((err: BusinessError) => {
 
 pause(): Promise\<void>
 
-暂停视频录制。使用Promise异步回调。
+暂停录制。使用Promise异步回调。
 
 需要[start](#start9-1)接口成功调用后，才能调用pause接口，可以通过调用[resume](#resume9-1)接口来恢复录制。
 
@@ -707,7 +712,7 @@ avRecorder.pause().then(() => {
 
 resume(callback: AsyncCallback\<void>): void
 
-恢复视频录制。使用callback异步回调。
+恢复录制。使用callback异步回调。
 
 需要在[pause](#pause9)接口成功调用后，才能调用resume接口。
 
@@ -751,7 +756,7 @@ avRecorder.resume((err: BusinessError) => {
 
 resume(): Promise\<void>
 
-恢复视频录制。使用Promise异步回调。
+恢复录制。使用Promise异步回调。
 
 需要在[pause](#pause9-1)接口成功调用后，才能调用resume接口。
 
@@ -796,7 +801,7 @@ avRecorder.resume().then(() => {
 
 stop(callback: AsyncCallback\<void>): void
 
-停止视频录制。使用callback异步回调。
+停止录制。使用callback异步回调。
 
 需要在[start](#start9)或[pause](#pause9)接口成功调用后，才能调用stop接口。
 
@@ -842,7 +847,7 @@ avRecorder.stop((err: BusinessError) => {
 
 stop(): Promise\<void>
 
-停止视频录制。使用Promise异步回调。
+停止录制。使用Promise异步回调。
 
 需要在[start](#start9-1)或[pause](#pause9-1)接口成功调用后，才能调用stop接口。
 
@@ -1257,7 +1262,7 @@ avRecorder.getAudioCapturerMaxAmplitude().then((amplitude: number) => {
 
 getAvailableEncoder(callback: AsyncCallback\<Array\<EncoderInfo>>): void
 
-获取可用的编码器参数。使用callback异步回调。
+获取可用的编码器参数。适用于需要根据设备能力选择合适编码器的场景。使用callback异步回调。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1305,7 +1310,7 @@ avRecorder.getAvailableEncoder((err: BusinessError, info: media.EncoderInfo[]) =
 
 getAvailableEncoder(): Promise\<Array\<EncoderInfo>>
 
-获取可用的编码器参数。使用Promise异步回调。
+获取可用的编码器参数。适用于需要根据设备能力选择合适编码器的场景。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1466,7 +1471,7 @@ on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 录制状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 是   | 回调函数，返回录制状态机切换事件。 |
+| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 是   | 回调函数，用于接收录制状态机切换事件。 |
 
 **错误码：**
 
@@ -1506,7 +1511,7 @@ off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录制状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback<sup>12+</sup> | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 否   | 回调函数，返回录制状态机切换事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。 |
+| callback<sup>12+</sup> | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 否   | 回调函数，用于接收录制状态机切换事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。 |
 
 **示例：**
 
@@ -1537,7 +1542,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 参数名   | 类型          | 必填 | 说明                                                         |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
 | type     | string        | 是   | 录制错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，返回录制错误事件。                                       |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于接收录制错误事件。                                       |
 
 **错误码：**
 
@@ -1554,7 +1559,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 5400104  | Time out.              |
 | 5400105  | Service died.          |
 | 5400106  | Unsupported format.    |
-| 5400107  | Audio interrupted.     |
+| 5400107  | Audio interrupted. <br>适用版本：11+     |
 
 **示例：**
 
@@ -1587,7 +1592,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录制错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
-| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，返回录制错误事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。                   |
+| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，用于接收录制错误事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。                   |
 
 **示例：**
 
@@ -1615,8 +1620,8 @@ on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   |录音配置变化的回调类型，支持的事件：'audioCapturerChange'。 |
-| callback | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 是 | 回调函数，返回变化后的录音配置全量信息。|
+| type     | string   | 是   | 录音配置变化的回调类型，支持的事件：'audioCapturerChange'。 |
+| callback | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 是 | 回调函数，用于接收变化后的录音配置全量信息。|
 
 **错误码：**
 
@@ -1629,7 +1634,7 @@ on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit'
+import { audio } from '@kit.AudioKit';
 
 let capturerChangeInfo: audio.AudioCapturerChangeInfo;
 
@@ -1658,7 +1663,7 @@ off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeIn
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录音配置变化的回调类型，支持的事件：'audioCapturerChange'。 |
-| callback<sup>12+</sup> | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 否 | 回调函数，返回变化后的录音配置全量信息。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。|
+| callback<sup>12+</sup> | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 否 | 回调函数，用于接收变化后的录音配置全量信息。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。|
 
 **示例：**
 
@@ -1687,7 +1692,7 @@ on(type: 'photoAssetAvailable', callback: Callback\<photoAccessHelper.PhotoAsset
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   |录像资源的回调类型，支持的事件：'photoAssetAvailable'。 |
-| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | 是 | 回调函数，返回系统创建的资源文件对应的PhotoAsset对象。|
+| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | 是 | 回调函数，用于接收系统创建的资源文件对应的PhotoAsset对象。|
 
 **错误码：**
 
@@ -1715,7 +1720,8 @@ async function saveVideo(context: Context, asset: photoAccessHelper.PhotoAsset) 
     await phAccessHelper.applyChanges(assetChangeRequest);
     console.info('apply saveVideo successfully');
   } catch (err) {
-    console.error(`apply saveVideo failed with error: ${err.code}, ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`apply saveVideo failed with error: ${error.code}, ${error.message}`);
   }
 }
 // 注册photoAsset监听。
@@ -1749,8 +1755,8 @@ off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsse
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| type   | string | 是   | 录音配置变化的回调类型，支持的事件：'photoAssetAvailable'。 |
-| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | 否 | 回调函数，返回系统创建的资源文件对应的PhotoAsset对象。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。|
+| type   | string | 是   | 媒体资源创建完成的回调类型，支持的事件：'photoAssetAvailable'。 |
+| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | 否 | 回调函数，用于接收系统创建的资源文件对应的PhotoAsset对象。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。|
 
 **示例：**
 

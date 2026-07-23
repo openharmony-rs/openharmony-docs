@@ -37,7 +37,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 
 **添加头文件**
 
-<!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
+<!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->  
 
 ``` C
 #include "hilog/log.h"
@@ -57,13 +57,13 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 
 示例中的变量说明如下：
 
-- capture：指向[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)实例的指针。
-- displayId：需要捕获区域所在的屏幕Id。
-- area：需要捕获区域的坐标和宽高。类型为OH_Rect，包括成员变量x、y、width、height。
+- g_avCapture：指向[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)实例的指针。
+- regionDisplayId：需要捕获区域所在的屏幕ID。
+- region：需要捕获区域的坐标和宽高。类型为OH_Rect，包括成员变量x、y、width、height。
   - x、y分别为矩形区域起点的横坐标、纵坐标位置。
-  - width、height分别为矩形区域的宽度和长度。
+  - width、height分别为矩形区域的宽度和高度。
   - 多个参数之间通过";"连接，所有参数均为整数。
-  - 使用前请确保传入参数有效，并尽量避免坐标和宽高为负数。
+  - 使用前请确保传入参数有效，避免坐标和宽高为负数。
 
 > **注意**
 > 
@@ -72,9 +72,9 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 > - 不支持跨屏（一边在左边/一边在右边）录制。
 > **录制区域更改**：支持录制过程中，更新录制区域。
 > **设置失败的处理**：如果区域位置设置失败，系统将按照上一次的区域进行捕获。建议开发者在设置区域时进行错误检查和处理，以确保捕获区域的准确性。
-> **参数设置非负**：该接口设置的坐标和宽高不能为负数，捕获区域不能跨屏幕，区域位置设置失败后仍按照上一次的区域进行捕获。
+> **参数设置非负**：该接口设置的坐标和宽高不能为负数。
 
-<!-- @[screenCapture_startScreenCapture_rectangular](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[screenCapture_startScreenCapture_rectangular](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 g_avCapture = OH_AVScreenCapture_Create();
@@ -97,9 +97,11 @@ region->x = 0;
 region->y = 0;
 region->width = CAPTURE_REGION_SIZE;
 region->height = CAPTURE_REGION_SIZE;
-// 2.传入矩形区域所在的屏幕Id。
+// 2.传入矩形区域所在的屏幕ID。
 uint64_t regionDisplayId = 0;
 OH_AVScreenCapture_SetCaptureArea(g_avCapture, regionDisplayId, region);
 // 开始录屏。
 result = OH_AVScreenCapture_StartScreenCapture(g_avCapture);
+delete region;
+region = nullptr;
 ```

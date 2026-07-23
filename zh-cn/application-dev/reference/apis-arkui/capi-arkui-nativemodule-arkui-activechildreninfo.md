@@ -12,7 +12,7 @@ typedef struct ArkUI_ActiveChildrenInfo ArkUI_ActiveChildrenInfo
 
 ## 概述
 
-定义ActiveChildrenInfo类信息。
+定义ActiveChildrenInfo结构体信息。
 
 **起始版本：** 14
 

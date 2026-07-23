@@ -725,7 +725,7 @@ Dialog关闭的信息。
 
 ## Button
 
-菜单中的菜单项按钮。
+弹窗或菜单中的按钮信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1246,7 +1246,7 @@ struct DialogExample {
           console.info("showDialog,is onDidDisappear!");
         },
         onWillAppear: () => {
-          this.log = 'Log information:#onWillAppear';
+          this.log = 'Log information:# onWillAppear';
           console.info("showDialog,is onWillAppear!");
         },
         onWillDisappear: () => {
@@ -1436,7 +1436,7 @@ showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse
 
 | 参数名  | 类型                                    | 必填 | 说明           |
 | ------- | --------------------------------------- | ---- | -------------- |
-| options | [ActionMenuOptions](#actionmenuoptions) | 是   | Promise对象，返回菜单的响应结果。 |
+| options | [ActionMenuOptions](#actionmenuoptions) | 是   | 操作菜单选项。 |
 
 **返回值：**
 

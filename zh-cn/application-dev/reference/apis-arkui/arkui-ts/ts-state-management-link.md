@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Link用于状态管理V1中，接收外部传入值，并与父组件中的数据源建立双向数据绑定。
+@Link用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，接收父组件传入的状态变量的引用，建立父子组件间的双向数据绑定。适用于需要在子组件中直接修改父组件状态、简化父子组件通信的场景。
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Link装饰器：父子双向同步（ArkTS-Dyn）](../../../ui/state-management/arkts-link.md)。
 
@@ -54,7 +54,7 @@ struct LinkExample {
   build() {
     Column() {
       // 创建子组件Child，通过@Link将message双向绑定到子组件的msg
-      Child({msg: this.message})
+      Child({ msg: this.message })
     }
   }
 }

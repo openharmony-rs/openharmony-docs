@@ -1701,7 +1701,7 @@ ArkTS-Sta: showDefaultSelectedIcon(show: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show  | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean \| undefined | 是   | 是否显示默认选定的图标。取值为undefined时，按默认值处理。<br>默认值为false，true代表显示默认选择的图标，false代表不显示默认选择的图标。<br>当show为true，并且通过selectedOptionBgColor设置选中项的背景色时，同时显示所设置的选中项的背景色和默认选定的图标；当show为true，但未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。false代表不显示默认选定的图标，通过突出显示背景色来表示选中。 |
+| show  | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean \| undefined | 是   | 是否显示默认选定的图标。取值为undefined时，按默认值处理。<br>默认值为false，true代表显示默认选定的图标，false代表不显示默认选定的图标。<br>当show为true，并且通过selectedOptionBgColor设置选中项的背景色时，同时显示所设置的选中项的背景色和默认选定的图标；当show为true，但未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。false代表不显示默认选定的图标，通过突出显示背景色来表示选中。 |
 
 ### textModifier<sup>20+</sup>
 
@@ -1827,7 +1827,7 @@ optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-at
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。<br/> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 在Select组件上，定制Select下拉菜单未选中项文本样式的方法。<br/> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
 
 ### optionTextModifier<sup>23+</sup>
 
@@ -1849,7 +1849,7 @@ optionTextModifier(modifier: [TextModifier](ts-universal-attributes-attribute-mo
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。取值为undefined时，则不使用此选项修改器。|
+| modifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 在Select组件上，定制Select下拉菜单未选中项文本样式的方法。取值为undefined时，则不使用此选项修改器。|
 
 ### selectedOptionTextModifier<sup>20+</sup>
 
@@ -1879,7 +1879,7 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 <br/> 当modifier的值为undefined时，不自定义下拉菜单项选中项的文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 设置下拉菜单选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 <br/> 当modifier的值为undefined时，不自定义下拉菜单选中项的文本样式。 |
 
 ### selectedOptionTextModifier<sup>23+</sup>
 
@@ -1901,7 +1901,7 @@ selectedOptionTextModifier(modifier: TextModifier | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。取值为undefined时，则不使用选中项文本修改器。 |
+| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 设置下拉菜单选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。取值为undefined时，则不使用选中项文本修改器。 |
 
 ### showInSubWindow<sup>20+</sup>
 
@@ -1916,8 +1916,6 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 在PC/2in1设备中可生效，在其他设备类型中不生效。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -2001,7 +1999,7 @@ ArkTS-Dyn: menuBackgroundBlurStyleOptions(blurStyle: Optional\<BackgroundBlurSty
 
 ArkTS-Sta: menuBackgroundBlurStyleOptions(blurStyle: BackgroundBlurStyleOptions | undefined)
 
-设置Select组件的背景模糊效果。
+设置Select下拉菜单的背景模糊效果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -2017,7 +2015,7 @@ ArkTS-Sta: menuBackgroundBlurStyleOptions(blurStyle: BackgroundBlurStyleOptions 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| blurStyle  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)><br/>ArkTS-Sta: [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) \| undefined | 是   | 设置Select组件的背景模糊效果。<br/>当blurStyle的值为undefined时，恢复默认值，默认值请参考BackgroundBlurStyleOptions类型说明。 |
+| blurStyle  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)><br/>ArkTS-Sta: [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) \| undefined | 是   | 设置Select下拉菜单的背景模糊效果。<br/>当blurStyle的值为undefined时，恢复默认值，默认值请参考BackgroundBlurStyleOptions类型说明。 |
 
 ### menuBackgroundEffect
 
@@ -2025,7 +2023,7 @@ ArkTS-Dyn: menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
 
 ArkTS-Sta: menuBackgroundEffect(effect: BackgroundEffectOptions | undefined)
 
-设置Select组件的背景属性。
+设置Select下拉菜单的背景属性。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -2041,7 +2039,7 @@ ArkTS-Sta: menuBackgroundEffect(effect: BackgroundEffectOptions | undefined)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                       |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| effect | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)><br/>ArkTS-Sta: [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) \| undefined | 是   | 设置Select组件的背景属性，包括：模糊半径、亮度、饱和度和颜色。<br/>当effect的值为undefined时，恢复默认值，默认值请参考BackgroundEffectOptions类型说明。 |
+| effect | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)><br/>ArkTS-Sta: [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) \| undefined | 是   | 设置Select下拉菜单的背景属性，包括：模糊半径、亮度、饱和度和颜色。<br/>当effect的值为undefined时，恢复默认值，默认值请参考BackgroundEffectOptions类型说明。 |
 
 ## ArrowPosition<sup>10+</sup>枚举说明
 
@@ -2337,7 +2335,7 @@ struct SelectExample {
 ![](figures/SelectSymbol.png)
 
 ### 示例3（自定义下拉菜单）
-该示例实现了一个自定义下拉菜选项的Select组件。自定义下拉菜单选项样式为"文本 + Symbol图片 + 空白间隔 + 文本 + 绘制三角形"，点击菜单选项后Select组件显示菜单选项的文本内容。
+该示例实现了一个自定义下拉菜单选项的Select组件。自定义下拉菜单选项样式为"文本 + Symbol图片 + 空白间隔 + 文本 + 绘制三角形"，点击菜单选项后Select组件显示菜单选项的文本内容。
 
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -2690,7 +2688,7 @@ struct Index {
     RelativeContainer() {
       Select([{ value: "SelectItem" }, { value: "SelectItem" }, { value: "SelectItem" },])
         .value("请选择")
-        **
+        /**
          * 自定义下拉选项分割线完整样式
          * strokeWidth：分割线粗细，使用vp单位统一适配不同屏幕
          * color：分割线浅灰色

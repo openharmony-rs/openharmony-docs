@@ -414,23 +414,32 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
       const helper = photoAccessHelper.getPhotoAccessHelper(this.context);
       const uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'png');
       const file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-      const imagePackerApi: image.ImagePacker = image.createImagePacker();
-      const packOpts: image.PackingOption = {
-        format: 'image/png',
-        quality: 100,
-      };
-      imagePackerApi.packToData(this.mergedImage, packOpts).then((data) => {
+      try {
+        const imagePackerApi: image.ImagePacker = image.createImagePacker();
+        const packOpts: image.PackingOption = {
+          format: 'image/png',
+          quality: 100,
+        };
+        const data = await imagePackerApi.packToData(this.mergedImage, packOpts);
         fileIo.writeSync(file.fd, data);
-        fileIo.closeSync(file.fd);
         Logger.info(TAG, `Succeeded in packToFile`);
         this.getUIContext().getPromptAction().showToast({
           // 请将$r('app.string.save_album_success')替换为实际资源文件，在本示例中该资源文件的value值为"Saved to album"
           message: $r('app.string.save_album_success'),
           duration: 1800
         })
-      }).catch((error: BusinessError) => {
-        Logger.error(TAG, `Failed to packToFile. Error code is ${error.code}, message is ${error.message}`);
-      });
+      } catch (error) {
+        let businessError = error as BusinessError;
+        Logger.error(TAG,
+          `Failed to packToFile. Error code is ${businessError.code}, message is ${businessError.message}`);
+      } finally {
+        try {
+          fileIo.closeSync(file.fd);
+        } catch (err) {
+          let error = err as BusinessError;
+          Logger.error(TAG, `Failed to close file. Error code is ${error.code}, message is ${error.message}`);
+        }
+      }
     }
     // ...
   } catch (err) {

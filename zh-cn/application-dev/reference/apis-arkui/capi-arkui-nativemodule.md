@@ -35,4 +35,12 @@
 | [native_node.h](capi-native-node-h.md) | 提供NativeNode接口的类型定义。 |
 | [native_node_napi.h](capi-native-node-napi-h.md) | 提供ArkTS侧的FrameNode转换NodeHandle的方式。 |
 | [native_type.h](capi-native-type-h.md) | 提供NativeModule公共的类型定义。 |
+| [text.h](capi-text-h.md) | 定义Text相关的枚举和接口。 |
+| [text_common.h](capi-text-common-h.md) | 定义一组文本公共的枚举和接口。 |
+| [text_input.h](capi-text-input-h.md) | 定义TextInput相关的枚举和接口。 |
+| [text_area.h](capi-text-area-h.md) | 定义TextArea相关的枚举和接口。 |
+| [image_span.h](capi-image-span-h.md) | 定义ImageSpan相关的枚举和接口。 |
+| [progress.h](capi-progress-h.md) | 定义Progress相关的枚举和接口。 |
+| [rich_editor.h](capi-rich-editor-h.md) | 定义RichEditor相关的枚举和接口。 |
+| [custom_span.h](capi-custom-span-h.md) | 定义CustomSpan相关的枚举和接口。 |
 | [styled_string.h](capi-styled-string-h.md) | 提供ArkUI在Native侧的属性字符串能力。 |

@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 EAWorker类为开发者提供了以独占线程模式执行异步任务的接口。通过创建EAWorker实例，系统会自动分配专属工作线程，开发者可重用该实例执行不同任务，有效提升线程资源利用率。  
 > **说明：**

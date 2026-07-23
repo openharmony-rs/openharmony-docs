@@ -51,7 +51,7 @@ Device not paired.
 
 2. 检查目标设备服务监听情况。
 
-3. 检查输入的MAC和UUID的有效性，MAC应为XX:XX:XX:XX:XX:XX格式的蓝牙MAC地址字符串，UUID应为标准UUID格式字符串。
+3. 检查输入的MAC和UUID的有效性，MAC应为XX:XX:XX:XX:XX:XX格式的蓝牙MAC地址字符串，UUID应为标准UUID格式字符串，如xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx。
 
 ## 32390004 通道ID非法或者不可用
 
@@ -67,7 +67,7 @@ ChannelId is invalid or unavailable.
 
 1. 传入了非法的channelId，channelId应为openProxyChannel返回的number类型通道标识。
 
-2. 该channelId对应的通道已通过closeProxyChannel关闭，关闭后channelId不可再用。
+2. 该channelId对应的通道已通过closeProxyChannel关闭，关闭后channelId不再可用。
 
 **处理步骤**
 
@@ -87,13 +87,13 @@ Parameter error.
 
 **可能原因**
 
-1. 传入的MAC或者UUID格式异常（MAC应为XX:XX:XX:XX:XX:XX格式的蓝牙MAC地址字符串，UUID应为标准UUID格式字符串）。
+1. 传入的MAC或者UUID格式异常（MAC应为XX:XX:XX:XX:XX:XX格式的蓝牙MAC地址字符串，UUID应为标准UUID格式字符串，如xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx）。
 
 2. 函数入参类型错误。
 
 **处理步骤**
 
-1. 检查代码逻辑，确认MAC为XX:XX:XX:XX:XX:XX格式的蓝牙MAC地址字符串，UUID为标准UUID格式字符串。
+1. 检查代码逻辑，确认MAC为XX:XX:XX:XX:XX:XX格式的蓝牙MAC地址字符串，UUID为标准UUID格式字符串，如xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx。
 
 2. 检查代码逻辑，确认入参类型与接口定义一致。
 

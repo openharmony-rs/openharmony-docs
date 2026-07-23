@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta采用共享内存模型。普通ArkTS-Sta对象作为[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)任务入参传递时，宿主线程和EAWorker线程访问的是同一对象引用。EAWorker修改对象状态后，宿主线程可以读取到同一对象上的最新数据。
 

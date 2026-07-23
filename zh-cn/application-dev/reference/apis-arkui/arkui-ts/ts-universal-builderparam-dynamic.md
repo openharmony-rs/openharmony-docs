@@ -7,7 +7,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@BuilderParam用于装饰指向[@Builder](./ts-universal-builder-dynamic.md)方法的变量。开发指南见[\@BuilderParam装饰器：引用\@Builder函数](../../../ui/state-management/arkts-builderparam.md)。
+\@BuilderParam用于装饰指向[@Builder](./ts-universal-builder-dynamic.md)函数的变量，使自定义组件能够接收外部传入的\@Builder函数，实现UI内容的自定义渲染。适用于需要将父组件的UI构建逻辑传递给子组件、实现组件内容动态定制的场景。
+
+开发指南参考：[@BuilderParam装饰器：引用@Builder函数](../../../ui/state-management/arkts-builderparam.md)。
 
 > **说明：**
 >

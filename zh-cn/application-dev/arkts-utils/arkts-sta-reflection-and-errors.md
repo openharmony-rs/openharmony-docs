@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta运行时提供完整的反射系统和错误处理机制，反射方面，ArkTS-Sta通过Class.from\<T\>()获取运行时类型信息；错误处理方面，ArkTS-Sta定义了以Error为基类的完整ETS Error类型层级。
 

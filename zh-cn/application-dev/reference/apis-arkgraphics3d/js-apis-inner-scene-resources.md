@@ -1,12 +1,12 @@
 # SceneResource
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供3D图形中常用的基本资源类型。
+本模块提供3D图形中常用的基本资源类型，包括着色器、材质、网格、动画、环境或图片等用于构建3D场景的各类资源。
 
 > **说明：**
 >
@@ -16,9 +16,9 @@
 ## 导入模块
 
 ```ts
-import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
-  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream } from '@kit.ArkGraphics3D';
+import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, PolygonMode, Material, MaterialProperty,
+  MetallicRoughnessMaterial, ShaderMaterial, UnlitMaterial, OcclusionMaterial, SamplerFilter, SamplerAddressMode, Sampler, SubMesh,
+  Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream, Effect } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceType
@@ -166,7 +166,7 @@ function setinputs(): void {
         "uTime": 1.0,
         "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
         "uTexture": image
-      })
+      });
     }
   });
 }
@@ -789,7 +789,7 @@ function finish(): void {
 | environmentImage | [Image](#image) \| null | 否 | 是 | 环境图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | radianceImage | [Image](#image) \| null | 否 | 是 | 辐射图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | 否 | 是 | 辐射系数，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
+| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Image
 
@@ -819,7 +819,7 @@ function finish(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| surfaceId | string | 是 | 否 | 流ID，取值范围大于0。 |
+| surfaceId | string | 是 | 否 | 流ID，由数字字符组成，数字取值必须为大于0的整数。 |
 
 ## Effect<sup>21+</sup>
 

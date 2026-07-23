@@ -25,21 +25,21 @@
 | src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否    | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件（文件支持html和txt类型），请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
 | controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9) <br>ArkTS-Sta: [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | 否    | 否   | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用[WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9)替代。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否    | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示支持Web组件同步渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>传入undefined或null时为false。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>传入undefined或null时为false。<!--RP1--><!--RP1End--><br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
 | sharedRenderProcessToken<sup>12+</sup> | string | 否    | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
-| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否被转换成触摸事件。<br> 默认值：false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23<br> |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否转换为触摸事件。true表示转换成触摸事件，适用于需要统一触摸和鼠标交互行为的场景；false表示不转换成触摸事件。<br>默认值：false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23<br> |
 
 ## WebMediaOptions<sup>10+</sup>
 
-Web媒体策略的配置。
+用于配置 Web 组件的媒体策略，包括音频续播有效期、音频独占模式等。适用于需要优化音频播放体验和多实例音频管理的场景，提升媒体播放的稳定性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选  | 说明                                       |
 | -------------- | ------- | ---- | ---- | ---------------------------------------- |
-| resumeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>|
-| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。<br>默认值：true。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>                    |
-| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23<br>|
+| resumeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br>默认值：0。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>|
+| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示不独占。<br>默认值：true。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>|
+| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应系统音频流类型[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)中的STREAM_USAGE_MUSIC。用于改变组件音频类型与系统音频类型映射关系，影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23<br>|
 
 ## ScriptItem<sup>11+</sup>
 
@@ -72,7 +72,7 @@ Web媒体策略的配置。
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
-通过NestedScrollOptionsExt可以设置上下左右四个方向的嵌套滚动规则。
+用于设置Web组件嵌套滚动规则，支持上下左右四个方向的滚动选项。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -89,7 +89,7 @@ Web媒体策略的配置。
 
 ## NativeMediaPlayerConfig<sup>12+</sup>
 
-用于[开启应用接管网页媒体播放功能](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)的配置信息。
+用于配置应用接管网页媒体播放功能接口[enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)的功能，支持是否开启及是否覆盖网页内容。适用于需要自定义媒体播放行为的场景，提升媒体播放的集成度和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -99,15 +99,16 @@ Web媒体策略的配置。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|------|------|------|------|
-|  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
-|  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的高度，使其覆盖网页内容。false表示不覆盖网页内容，跟原视频图层高度一样，嵌入在网页中。<br>默认值：false。 |
+|  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭该功能。<br/> 默认值：false。 |
+|  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的层级，覆盖网页内容。false表示保持原层级，嵌入在网页中。<br>默认值：false。 |
 
 ## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+自定义菜单扩展项。
+
 > **说明：**
 >
-> 从API version 12开始支持，从API version 20开始废弃，建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
-自定义菜单扩展项。
+> 从API version 12开始支持，从API version 20开始废弃。建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -119,7 +120,7 @@ Web媒体策略的配置。
 | ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
 | content   | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否     | 否     | 显示内容。     |
 | startIcon | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否     | 是     | 显示图标。默认值为空，不显示图标。     |
-| action    | (selectedText: {plainText: string}) => void                    | 否     | 否     | 选中的文本信息。|
+| action    | (selectedText: {plainText: string}) => void                    | 否     | 否     | 回调函数，用于接收用户选择菜单扩展项后的操作。回调参数selectedText包含plainText字段，表示用户选中的文本内容。|
 
 ## AdsBlockedDetails<sup>12+</sup>
 
@@ -154,7 +155,7 @@ Web媒体策略的配置。
 
 ## PreviewMenuOptions<sup>20+</sup>
 
-预览菜单选项。
+用于配置预览菜单选项，支持设置菜单弹出时的振动效果。适用于需要增强菜单交互反馈的场景，提升用户体验。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -329,7 +330,7 @@ Web同层渲染的配置。
 
 ## OnShowFileSelectorEvent<sup>12+</sup>
 
-定义文件选择器结果。
+定义文件选择器结果的回调信息，包括结果和参数详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -403,7 +404,7 @@ Web同层渲染的配置。
 
 ## OnPermissionRequestEvent<sup>12+</sup>
 
-定义通知收到获取权限请求。
+定义收到权限请求时触发的回调信息，包括请求详情。适用于需要处理权限授予的场景，提升权限管理的灵活性和安全性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -417,7 +418,7 @@ Web同层渲染的配置。
 
 ## OnScreenCaptureRequestEvent<sup>12+</sup>
 
-定义通知收到屏幕捕获请求。
+定义收到屏幕捕获请求时触发的回调信息。适用于需要处理屏幕录制权限的场景，提升录屏流程的可控性和安全性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -431,7 +432,7 @@ Web同层渲染的配置。
 
 ## OnContextMenuShowEvent<sup>12+</sup>
 
-定义调用时触发的回调，以允许自定义显示上下文菜单。
+定义调用时触发的回调信息，以允许自定义显示上下文菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -462,7 +463,7 @@ Web同层渲染的配置。
 
 ## OnScrollEvent<sup>12+</sup>
 
-定义滚动条滑动到指定位置时触发。
+定义滚动条滑动到指定位置时触发的回调信息，包括水平和垂直偏移量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -525,6 +526,10 @@ Web同层渲染的配置。
 
 ## VerifyPinEvent<sup>22+</sup>
 定义当需要用户进行PIN码认证时触发回调。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -645,7 +650,7 @@ Web同层渲染的配置。
 
 ## OnAudioStateChangedEvent<sup>12+</sup>
 
-定义网页上的音频播放状态发生改变时的回调函数。
+定义网页音频播放状态改变时触发的回调信息，包括播放状态。适用于需要监控音频播放行为的场景，提升音频管理的可见性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -688,7 +693,7 @@ Web同层渲染的配置。
 
 ## OnOverScrollEvent<sup>12+</sup>
 
-定义网页过度滚动时触发的回调。
+定义网页过度滚动时触发的回调信息，包括水平和垂直偏移量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -716,7 +721,7 @@ Web同层渲染的配置。
 | ArkTS-Dyn: object<br>ArkTS-Sta: jsObject     | object                                   | 否 | 否    | 参与注册的对象。只能声明方法，不能声明属性。                   |
 | name       | string                                   | 否 | 否    | 注册对象的名称，与window中调用的对象名一致。                |
 | methodList | Array\<string\>                          | 否 | 否    | 参与注册的应用侧JavaScript对象的同步方法。                 |
-| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) <br/>ArkTS-Sta: [WebviewController<sup>22+</sup>](./arkts-apis-webview-WebviewController.md)| 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
+| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9) <br/>ArkTS-Sta:  [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)| 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | 否 | 是    | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。   |
 | permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 
@@ -776,7 +781,7 @@ Web同层渲染的配置。
 
 ## OnGeolocationShowEvent<sup>12+</sup>
 
-定义通知用户收到地理位置信息获取请求。
+定义收到地理位置获取请求时触发的回调信息，包括源信息和地理对象。适用于需要处理地理位置权限的场景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -786,7 +791,7 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选    | 说明                                       |
 | -------------- | ---- | ---- | -------------|--------------------------- |
-| origin | string | 否 | 否 | 指定源的字符串索引。                       |
+| origin | string | 否 | 否 | 发起地理位置权限请求的网页源，用于标识特定网站的地理位置请求来源。 |
 | geolocation | [JsGeolocation](./arkts-basic-components-web-JsGeolocation.md) | 否 | 否 | 通知Web组件用户操作行为。                       |
 
 ## NativeEmbedVisibilityInfo<sup>12+</sup>
@@ -822,7 +827,7 @@ Web同层渲染的配置。
 
 ## FullScreenEnterEvent<sup>12+</sup>
 
-Web组件进入全屏回调事件的详情。
+提供 Web 组件进入全屏的回调信息，包括视频尺寸和退出句柄。适用于需要处理全屏视频的场景，提升视频播放的沉浸式体验和可控性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -906,7 +911,7 @@ Web组件进入全屏回调事件的详情。
 
 ## WebKeyboardCallbackInfo<sup>12+</sup>
 
-拦截网页可编辑元素拉起软键盘的回调入参，其中包括[WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)、可编辑元素的属性。
+拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -921,7 +926,7 @@ Web组件进入全屏回调事件的详情。
 
 ## WebKeyboardOptions<sup>12+</sup>
 
-拦截网页可编辑元素拉起软键盘的回调返回值，可以指定使用的键盘类型，并返回给web内核，以控制拉起不同类型的软键盘；
+拦截网页可编辑元素拉起软键盘的回调返回值，包括键盘类型和自定义键盘。适用于需要控制软键盘行为的场景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1105,7 +1110,7 @@ Web组件返回的请求/响应头对象。
 
 ## ScreenCaptureConfig<sup>10+</sup>
 
-Web屏幕捕获的配置。
+提供 Web 屏幕捕获的配置选项，包括捕获模式。适用于需要自定义网页录屏行为的场景，提升录屏功能的灵活性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1166,7 +1171,7 @@ Web屏幕捕获的配置。
 
 ## CameraCaptureStateChangeInfo<sup>23+</sup>
 
-定义摄像头触发回调时的改变前后的状态信息。
+提供摄像头触发回调时的状态变化信息，包括改变前的状态和改变后的状态。适用于需要监控摄像头状态变化的场景，提升摄像头管理的可见性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1176,12 +1181,12 @@ Web屏幕捕获的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 原来的状态   |
+| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 改变前的状态   |
 | newState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 改变后的状态   |
 
 ## MicrophoneCaptureStateChangeInfo<sup>23+</sup>
 
-定义麦克风触发回调时的改变前后的状态信息。
+提供麦克风触发回调时的状态变化信息，包括改变前的状态和改变后的状态。适用于需要监控麦克风状态变化的场景，提升麦克风管理的可见性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1191,12 +1196,12 @@ Web屏幕捕获的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
+| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变前的状态。   |
 | newState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
 
 ## AcceptableFileType<sup>23+</sup>
 
-定义文件选择器拉取文件时网页推荐的文件类型信息。
+提供文件选择器推荐的文件类型信息，包括MIME类型和类型数组。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1227,7 +1232,7 @@ Web屏幕捕获的配置。
 
 ## AISessionEvent
 
-自定义AI会话配置对象，用于定义AI会话的生命周期回调。
+自定义AI会话配置对象，用于定义AI会话的生命周期回调，包括创建、执行和销毁。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

@@ -78,6 +78,10 @@ type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -410,7 +414,7 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 
 ## OnCameraCaptureStateChangeCallback<sup>23+</sup>
 
-type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
+type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void
 
 当页面摄像设备状态发生改变时触发此回调。
 
@@ -428,7 +432,7 @@ type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) 
 
 ## OnMicrophoneCaptureStateChangeCallback<sup>23+</sup>
 
-type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void;
+type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void
 
 当页面麦克风状态发生改变时触发此回调。
 
@@ -507,7 +511,7 @@ AI会话创建回调函数类型。允许自定义模型初始化和结果处理
 | 参数名    | 类型                                            | 必填 | 说明                 |
 | ------ | --------------------------------------------- | -- | ------------------ |
 | id     | string                                        | 是  | 会话任务ID。            |
-| params | string                                        | 是  | 会话创建时传递的上下文数据。     |
+| params | string                                        | 是  | 会话创建时传递的上下文数据，JSON字符串格式。|
 | result | [OnAISessionCallback](#onaisessioncallback) | 是  | 用于通知系统会话创建结果的回调函数。 |
 
 **返回值：**
@@ -535,7 +539,7 @@ AI会话执行操作回调函数类型。用于自定义实现AI模型执行。
 | 参数名    | 类型                                            | 必填 | 说明                 |
 | ------ | --------------------------------------------- | -- | ------------------ |
 | id     | string                                        | 是  | 会话任务ID。            |
-| params | string                                        | 是  | 执行操作时传递的上下文数据。     |
+| params | string                                        | 是  | 执行操作时传递的上下文数据，JSON字符串格式。|
 | result | [OnAISessionCallback](#onaisessioncallback) | 是  | 用于通知系统操作执行结果的回调函数。 |
 
 ## OnDestroyAISession
@@ -577,7 +581,7 @@ AI会话操作结果回调函数类型。用于报告会话创建或执行的结
 | 参数名     | 类型                                                                             | 必填 | 说明              |
 | ------- | ------------------------------------------------------------------------------ | -- | --------------- |
 | state   | [AISessionResultType](./arkts-basic-components-web-e.md#aisessionresulttype) | 是  | AI会话创建或执行的状态结果。 |
-| content | string                                                                         | 是  | AI会话的响应内容。      |
+| content | string                                                                         | 是  | AI会话的响应内容，文本或JSON格式，包含AI模型生成的回复内容。|
 
 ## OnInputmethodAttachedCallback
 

@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 定长数组是一种特殊类型，其元素类型在编译阶段不会被擦除，这意味着`FixedArray<int>`和`FixedArray<double>`在字节码和语言层面是不兼容的。编译器会为不同的元素生成不同的底层结构，因此在native层需要使用**类型匹配的API进行操作**。
 

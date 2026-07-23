@@ -6,21 +6,15 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
-## 模块简介
-
-**@ohos.sensor** 模块是鸿蒙操作系统提供的传感器服务模块，属于 SensorServiceKit。该模块为开发者提供了统一的传感器数据访问能力，涵盖设备上各类物理传感器的数据订阅、查询以及传感器算法计算。
+@ohos.sensor 模块是鸿蒙操作系统提供的传感器服务模块，属于 SensorServiceKit。该模块为开发者提供了统一的传感器数据访问能力，涵盖设备上各类物理传感器的数据订阅、查询以及传感器算法计算。
 
 sensor 模块是传感器数据访问的统一接口，定义了设备上各类物理传感器的订阅、查询和算法计算能力。
 
 当应用需要感知设备运动状态（如摇一摇、翻转）、检测环境条件（如自动调节屏幕亮度、测量气压估算海拔）、获取设备方向（如指南针导航）、监测健康数据（如心率计步）时，应使用本模块订阅对应传感器数据。当需要进行传感器数据相关的数学变换和计算时，应使用传感器算法接口。
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> **说明**：
 >
-> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。订阅前可使用[getSingleSensor](#sensorgetsinglesensor9)接口获取该传感器的信息，订阅传感器数据时确保on订阅和off取消订阅成对出现。
-
-## 概述
+> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。订阅前可使用[getSingleSensor](#sensorgetsinglesensor9)接口获取该传感器的信息，获取该传感器信息成功时可正常订阅传感器，异常情况详见[getSingleSensor](#sensorgetsinglesensor9)错误码说明，具体使用方法可参考[指南开发步骤](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/sensor-guidelines#开发步骤)；订阅传感器数据时确保on订阅和off取消订阅成对出现。
 
 sensor模块提供传感器数据订阅与查询能力，核心使用流程如下：
 
@@ -39,186 +33,6 @@ sensor.on与sensor.once的区别：
 - 订阅前建议先使用getSingleSensor确认设备支持该传感器。
 - on订阅和off取消订阅必须成对出现，避免资源泄漏。
 - 对于需要权限的传感器（加速度、陀螺仪、心率、计步等），须先申请相应权限。
-
-## UML 类图
-下图展示了模块内关键 Enum/Interface 之间的关系。所有 Response 子接口继承自 Response 基接口； SensorId 和 SensorAccuracy 为独立枚举； SensorFrequency 为类型别名； 其他接口为独立定义。
-
-### 枚举与类型定义
-```mermaid
-classDiagram
-    class SensorId {
-        <<enumeration>>
-        ACCELEROMETER
-        GYROSCOPE
-        ORIENTATION
-        AMBIENT_LIGHT
-        BAROMETER
-        HALL
-        PROXIMITY
-        PEDOMETER
-    }
-
-    class SensorAccuracy {
-        <<enumeration>>
-        ACCURACY_UNRELIABLE
-        ACCURACY_LOW
-        ACCURACY_MEDIUM
-        ACCURACY_HIGH
-    }
-
-    class SensorFrequency {
-        <<type>>
-        game
-        ui
-        normal
-    }
-```
-
-### 传感器数据 Response 继承体系
-```mermaid
-classDiagram
-    class Response {
-        timestamp : long
-        accuracy : SensorAccuracy
-    }
-
-    class AccelerometerResponse {
-        x : double
-        y : double
-        z : double
-    }
-
-    class GyroscopeResponse {
-        x : double
-        y : double
-        z : double
-    }
-
-    class OrientationResponse {
-        alpha : double
-        beta : double
-        gamma : double
-    }
-
-    class MagneticFieldResponse {
-        x : double
-        y : double
-        z : double
-    }
-
-    class LightResponse {
-        intensity : double
-        colorTemperature : double
-    }
-
-    class BarometerResponse {
-        pressure : double
-    }
-
-    class HeartRateResponse {
-        heartRate : double
-    }
-
-    class SensorAccuracy {
-        <<enumeration>>
-        ACCURACY_UNRELIABLE
-        ACCURACY_LOW
-        ACCURACY_MEDIUM
-        ACCURACY_HIGH
-    }
-
-    Response <|-- AccelerometerResponse
-    Response <|-- GyroscopeResponse
-    Response <|-- OrientationResponse
-    Response <|-- MagneticFieldResponse
-    Response <|-- LightResponse
-    Response <|-- BarometerResponse
-    Response <|-- HeartRateResponse
-    Response --> SensorAccuracy
-```
-
-### 传感器属性与订阅参数
-```mermaid
-classDiagram
-    class Sensor {
-        sensorName : string
-        vendorName : string
-        sensorId : int
-        maxRange : double
-        precision : double
-        power : double
-    }
-
-    class SensorId {
-        <<enumeration>>
-        ACCELEROMETER
-        GYROSCOPE
-        ORIENTATION
-        AMBIENT_LIGHT
-        BAROMETER
-        HALL
-        PROXIMITY
-        PEDOMETER
-    }
-
-    class Options {
-        interval : long | SensorFrequency
-        sensorInfoParam : SensorInfoParam
-    }
-
-    class SensorInfoParam {
-        deviceId : int
-        sensorIndex : int
-    }
-
-    class SensorFrequency {
-        <<type>>
-        game
-        ui
-        normal
-    }
-
-    Sensor --> SensorId
-    Options *-- SensorInfoParam
-    Options --> SensorFrequency
-```
-
-### 传感器算法与状态事件
-```mermaid
-classDiagram
-    class GeomagneticResponse {
-        x : double
-        y : double
-        z : double
-        geomagneticDip : double
-    }
-
-    class LocationOptions {
-        latitude : double
-        longitude : double
-        altitude : double
-    }
-
-    class RotationMatrixResponse {
-        rotation : Array~double~
-        inclination : Array~double~
-    }
-
-    class SensorStatusEvent {
-        timestamp : long
-        sensorId : int
-        isSensorOnline : boolean
-        deviceId : int
-    }
-
-    GeomagneticResponse ..> LocationOptions
-```
-
-
-> **注意**
->
-> 1. 上图中只展示了部分关键Enum/Interface及其关系，完整的Response继承体系包含所有22种传感器数据Response接口，均继承自Response。
-> 2. SensorId用于标识传感器类型，在on/once/off函数以及getSingleSensor/getSensorList中作为参数传入；SensorAccuracy用于标识数据精度等级，在Response中作为accuracy字段；SensorFrequency用于标识数据上报频率模式，在Options中作为 interval字段。所有传感器数据Response接口均继承自Response，包含timestamp和accuracy字段。
 
 ## 导入模块
 
@@ -2182,7 +1996,7 @@ on(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, option
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).PROXIMITY                        | 是   | 传感器类型，该值固定为SensorId.PROXIMITY。                   |
 | callback | Callback&lt;[ProximityResponse](#proximityresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为ProximityResponse。      |
-| options  | [Options](#options)                                     | 否   | 可选参数列表，默认值为200000000ns。当接近光事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
+| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。当接近光事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
 
 **错误码**：
 
@@ -2590,7 +2404,7 @@ on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): voi
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     |  'sensorStatusChange'         | 是   | 固定传入'sensorStatusChange',状态监听固定参数。             |
+| type     | string         | 是   | 固定传入'sensorStatusChange', 状态监听固定参数。             |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | 是   | 回调函数，异步上报的传感器事件数据SensorStatusEvent。 |
 
 **错误码**：
@@ -7353,7 +7167,7 @@ off(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerome
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | [SensorId](#sensorid9).LINEAR_ACCELEROMETER                  | 是   | 传感器类型，该值固定为SensorId.LINEAR_ACCELERATION。         |
+| type     | [SensorId](#sensorid9).LINEAR_ACCELEROMETER                  | 是   | 传感器类型，该值固定为SensorId.LINEAR_ACCELEROMETER。         |
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -9167,7 +8981,7 @@ off(type: SensorId.SIGNIFICANT_MOTION, sensorInfoParam?: SensorInfoParam, callba
 
 **相关接口**：该接口对应的接口ArkTS-Sta是[offSignificantMotionChange](#sensoroffsignificantmotionchange23)
 
-**系统能力**:SystemCapability.Sensors.Sensor
+**系统能力**：SystemCapability.Sensors.Sensor
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -9710,7 +9524,7 @@ ArkTS-Dyn: getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array
 
 ArkTS-Sta: getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array&lt;Sensor&gt;
 
-同步获取指定设备和类型的传感器信息，使用同步方式返回结果。
+同步获取指定设备和类型的传感器信息，使用同步方式返回结果。如果存在外设且未指定设备ID，获取到的传感器将是所有符合指定传感器类型的本地和外设传感器。如果不存在外设，则仅获取本地的传感器。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -10952,7 +10766,7 @@ ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;): Promise&lt;Array&
 
 | 类型                               | 说明         |
 | ---------------------------------- | ------------ |
-| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;| Promise，使用异步方式对象返归一化回四元数。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;| Promise对象，使用异步方式返回归一化四元数。 |
 
 **错误码**：
 
@@ -11519,7 +11333,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **示例**：
 
@@ -11582,7 +11396,7 @@ try {
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **示例**：
 
@@ -12353,7 +12167,7 @@ on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER_UNCALIBRATED](#sensoronaccelerometer_uncalibrated9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER_UNCALIBRATED](#sensoronaccelerometer_uncalibrated9)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -13572,7 +13386,7 @@ once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightR
 import { sensor } from '@kit.SensorServiceKit';
 
 sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightResponse) => {
-  console.info('Succeeded in invoking once. invoking once. Illumination: ' + data.intensity);
+  console.info('Succeeded in invoking once. Illumination: ' + data.intensity);
 });
 ```
 
@@ -15090,7 +14904,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const promise = sensor.getDirection([1, 0, 0, 0, 1, 0, 0, 0, 1]);
 promise.then((data: Array<number>) => {
-  console.info('Succeeded in getting sensor_getAltitude_Promise', data);
+  console.info('Succeeded in getting sensor_getDirection_Promise', data);
   for (let i = 1; i < data.length; i++) {
     console.info("Succeeded in getting sensor_getDirection_promise" + data[i]);
   }

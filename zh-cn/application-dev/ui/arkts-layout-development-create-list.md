@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -14,6 +14,8 @@
 使用列表可以轻松高效地显示结构化、可滚动的信息。通过在[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件中按垂直或者水平方向线性排列子组件[ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)或[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)，为列表中的行或列提供单个视图，或使用[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)迭代一组行或列，或混合任意数量的单个视图和ForEach结构，构建一个列表。List组件支持使用[条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)、循环渲染、[懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)等[渲染控制](../ui/rendering-control/arkts-rendering-control-overview.md)方式生成子组件。
 
 在圆形屏幕设备上，推荐使用[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)组件，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)。
+
+以下各步骤示例为片段代码，可通过点击示例代码右下方的链接获取完整示例。
 
 ## 布局与约束
 
@@ -1609,18 +1611,42 @@ ListItem() {
    
      aboutToAppear(): void {
        const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-       const reading = context.resourceManager.getStringByNameSync('Reading')
-       this.availableThings.push(reading)
-       const exercise = context.resourceManager.getStringByNameSync('Exercise')
-       this.availableThings.push(exercise)
-       const travel = context.resourceManager.getStringByNameSync('Travel')
-       this.availableThings.push(travel)
-       const listening = context.resourceManager.getStringByNameSync('Listening_Music')
-       this.availableThings.push(listening)
-       const watching = context.resourceManager.getStringByNameSync('Watching_Films')
-       this.availableThings.push(watching)
-       const singing = context.resourceManager.getStringByNameSync('Singing')
-       this.availableThings.push(singing)
+       try {
+         const reading = context.resourceManager.getStringByNameSync('Reading')
+         this.availableThings.push(reading)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Reading: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const exercise = context.resourceManager.getStringByNameSync('Exercise')
+         this.availableThings.push(exercise)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Exercise: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const travel = context.resourceManager.getStringByNameSync('Travel')
+         this.availableThings.push(travel)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Travel: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const listening = context.resourceManager.getStringByNameSync('Listening_Music')
+         this.availableThings.push(listening)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Listening_Music: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const watching = context.resourceManager.getStringByNameSync('Watching_Films')
+         this.availableThings.push(watching)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Watching_Films: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const singing = context.resourceManager.getStringByNameSync('Singing')
+         this.availableThings.push(singing)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Singing: %{public}s', JSON.stringify(e) ?? '');
+       }
      }
    
      onEditModeChange() {

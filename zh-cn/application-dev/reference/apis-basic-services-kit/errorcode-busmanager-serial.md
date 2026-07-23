@@ -16,14 +16,15 @@
 > 本文档提供串口通信接口调用的错误码说明，帮助开发者快速定位和解决串口通信问题。适用于开发串口通信应用、调试串口通信异常等场景。以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 错误码汇总
+
 | 错误码ID | 错误信息 | 触发接口 |
 | --- | --- | --- |
-| 35700001 | Service error. | open、close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、sendBrk、onDisconnect、setDtr|
-| 35700002 | Invalid parameter. | close |
-| 35700003 | Virtual serial port disconnected. |close、write、offDataRead、flush、drain、setRts、getCts、offDisconnect、setDtr|
+| 35700001 | Service error. | getSerialPortList, open, close, write, onDataRead, offDataRead, flush, drain, setRts, getCts, getDsr, sendBrk, onDisconnect, offDisconnect, setDtr |
+| 35700002 | Invalid parameter. | open, write |
+| 35700003 | Virtual serial port disconnected. |open, write, onDataRead, flush, drain, setRts, getCts, sendBrk, getDsr, setDtr |
 | 35700004 | Port already in use. | open |
-| 35700005 | Port not open. | open、close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、sendBrk、onDisconnect、offDisconnect、setDtr |
-| 35700006 | Transmission timeout. | close |
+| 35700005 | Port not open. | close, write, onDataRead, offDataRead, flush, drain, setRts, getCts, sendBrk, getDsr, setDtr, onDisconnect, offDisconnect |
+| 35700006 | Transmission timeout. | write |
 | 35700007 | User authorization required. | open |
 | 35700008 | Permission denied. | addPortAuthorization |
 
@@ -61,7 +62,7 @@ Invalid parameter.
 
 **可能原因**
 
-1. 波特率取值不在支持的范围内。
+1. 波特率取值不在支持的范围内（标准值为9600/19200/38400/57600/115200等常用波特率，或[1, 115200]范围内的正整数）。
 
 2. 写入数据长度超出(0, 4096]范围（单位：字节）。
 
@@ -112,9 +113,9 @@ Port already in use.
 调用[open](js-apis-busmanager-serial.md#open)接口打开串口时，需确保串口端口未被其他应用或进程占用，否则会因端口已被占用而报错。
 
 **配对调用说明：**
-- 调用open()打开串口后，必须在使用完毕后调用close()关闭串口释放资源
-- 未正确关闭串口可能导致端口被占用，影响后续使用
-- 建议在finally块中调用close()确保资源释放
+- 调用open()打开串口后，必须在使用完毕后调用close()关闭串口释放资源。
+- 未正确关闭串口可能导致端口被占用，影响后续使用。
+- 建议在finally块中调用close()确保资源释放。
 
 **可能原因**
 
@@ -139,9 +140,9 @@ Port not open.
 操作串口通信相关接口时，串口端口未打开。
 
 **状态转换说明：**
-- 调用open()后，串口处于打开状态，可以调用read()、write()等接口
-- 调用close()后，串口处于关闭状态，上述接口将无法使用
-- 必须在串口打开状态下才能进行读写等操作
+- 调用open()后，串口处于打开状态，可以调用read()、write()等接口。
+- 调用close()后，串口处于关闭状态，上述接口将无法使用。
+- 必须在串口打开状态下才能进行读写等操作。
 
 **可能原因**
 
@@ -166,8 +167,8 @@ Transmission timeout.
 调用[write](js-apis-busmanager-serial.md#write)接口写入数据时（需确保串口已打开），若数据传输超时则会报此错误。
 
 **前置条件：**
-- 必须先调用[open](js-apis-busmanager-serial.md#open)打开串口，才能调用write()接口
-- write()接口依赖串口处于打开状态
+- 必须先调用[open](js-apis-busmanager-serial.md#open)打开串口，才能调用write()接口。
+- write()接口依赖串口处于打开状态。
 
 **可能原因**
 
@@ -190,9 +191,9 @@ Transmission timeout.
 4. 在确保串口正常打开的情况下，可降低写入频率或在每次写入之间调用[drain](js-apis-busmanager-serial.md#drain)接口等待前次数据发送完成后再发送，避免硬件缓冲区拥塞。
 
 **write和drain的配合使用：**
-- drain()用于等待串口发送缓冲区中的数据全部发送完成
-- 在连续写入大量数据时，建议在write()之间调用drain()，确保数据按顺序完整发送
-- 典型调用流程：write() → drain() → write() → drain() → ...
+- drain()用于等待串口发送缓冲区中的数据全部发送完成。
+- 在连续写入大量数据时，建议在write()之间调用drain()，确保数据按顺序完整发送。
+- 典型调用流程：write() → drain() → write() → drain() → ...。
 
 ## 35700007 用户授权被拒绝
 
@@ -220,7 +221,7 @@ Permission denied.
 
 **错误描述**
 
-调用serial.addPortAuthorization接口时，该接口仅允许串口授权弹窗应用调用，若当前应用不是串口授权弹窗应用则会报权限被拒绝错误。
+调用serial.addPortAuthorization接口时，该接口仅允许串口授权弹窗应用（系统指定的用于处理串口设备授权弹窗的预置应用）调用，若当前应用不是串口授权弹窗应用则会报权限被拒绝错误。
 
 **可能原因**
 

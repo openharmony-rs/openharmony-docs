@@ -100,9 +100,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class TotalTimeSkill {
   // 入口函数第一个参数必须为scriptManager.ArkTSScriptInfo，后续参数为开发者自定义
   public async RemoteTotalTimeModel(arkTSScriptInfo: scriptManager.ArkTSScriptInfo, ...argv: string[]): Promise<void> {
-    // 参数解析
-    const ruleId = argv[1] ? parseInt(argv[1], 10) : null;
-    const childInfoStr = argv[2] || '{}'; 
+    // 参数解析示例（根据实际业务需求使用解析后的参数）
+    // const ruleId = argv[1] ? parseInt(argv[1], 10) : null;
+    // const childInfoStr = argv[2] || '{}'; 
     // 实现用户功能 输出结果data
     let result: scriptManager.ExecuteResult = {
       code: 0,

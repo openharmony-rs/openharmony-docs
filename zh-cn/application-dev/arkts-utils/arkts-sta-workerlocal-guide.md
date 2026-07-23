@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 [WorkerLocal (工作线程本地存储)](../reference/apis-arkts/arkts-sta-workerlocal.md)用于为每个工作线程维护独立的数据副本。不同线程访问同一个WorkerLocal实例时，读取和写入的是当前线程自己的本地值，适合保存线程级缓存、统计上下文、临时缓冲区等不需要跨线程共享的状态。
 

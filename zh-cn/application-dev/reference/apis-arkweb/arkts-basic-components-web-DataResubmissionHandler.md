@@ -10,6 +10,8 @@ DataResubmissionHandler是Web组件中处理网页表单数据重新提交的处
 
 > **说明：**
 >
+> - 该组件同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
@@ -24,6 +26,10 @@ DataResubmissionHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## resend<sup>9+</sup>
 
 resend(): void
@@ -32,8 +38,13 @@ resend(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -55,6 +66,30 @@ resend(): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onDataResubmitted((event) => {
+            console.info('onDataResubmitted');
+            event.handler.resend();
+          })
+      }
+    }
+  }
+  ```
+
 ## cancel<sup>9+</sup>
 
 cancel(): void
@@ -63,8 +98,13 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -73,6 +113,30 @@ cancel(): void
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onDataResubmitted((event) => {
+            console.info('onDataResubmitted');
+            event.handler.cancel();
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {

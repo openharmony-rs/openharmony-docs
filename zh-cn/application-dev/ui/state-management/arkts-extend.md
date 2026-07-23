@@ -6,8 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-在前文的示例中，可以使用[\@Styles](arkts-style.md)用于样式的重用，在\@Styles的基础上，我们提供了\@Extend，用于扩展组件样式。
-
+在前文的示例中，可以使用[\@Styles](arkts-style.md)复用样式，在\@Styles的基础上，我们提供了[\@Extend](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-extend.md#extend)，用于扩展组件样式。
 
 > **说明：**
 >
@@ -24,7 +23,7 @@
 
 
 ```ts
-@Extend(UIComponentName) function functionName { ... }
+@Extend(UIComponentName) function functionName() { ... }
 ```
 
 
@@ -89,9 +88,10 @@
   ```
 
 - \@Extend装饰的方法的参数可以为function，作为Event事件的句柄。
-  <!-- @[Extend_Function_handle_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendFunctionHandle.ets) -->
+  <!-- @[Extend_Function_handle_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendFunctionHandle.ets) --> 
   
   ``` TypeScript
+  // @Extend装饰的方法支持function参数
   @Extend(Text)
   function makeMeClick(onClick: () => void) {
     .backgroundColor(Color.Blue)
@@ -119,9 +119,10 @@
   ```
 
 - \@Extend的参数可以为[状态变量](arkts-state-management-overview.md)，当状态变量改变时，UI可以正常的被刷新渲染。
-  <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) -->
+  <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) --> 
   
   ``` TypeScript
+  // 将状态变量作为@Extend参数，状态变化驱动Text样式刷新
   @Extend(Text)
   function fancy(fontSize: number) {
     .fontColor(Color.Blue)
@@ -202,7 +203,7 @@ struct FancyUse {
 ## 使用场景
 
 以下示例声明了3个Text组件，每个Text组件均设置了[fontStyle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontstyle)、[fontWeight](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontweight) 和[backgroundColor](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)样式。
-<!-- @[Extend_Usage_Scenario_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenario.ets) -->
+<!-- @[Extend_Usage_Scenario_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenario.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -212,6 +213,7 @@ struct FancyUse {
 
   build() {
     Row({ space: 10 }) {
+      // Text组件重复设置样式
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
         .fontWeight(500)
@@ -231,9 +233,10 @@ struct FancyUse {
 ![](figures/arkts-extend-2.png)
 
 使用@Extend将样式组合复用，示例如下。
-<!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->
+<!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) --> 
 
 ``` TypeScript
+// 使用@Extend封装Text样式组合，便于复用
 @Extend(Text)
 function fancyText(weightValue: number, color: Color) {
   .fontStyle(FontStyle.Italic)
@@ -243,7 +246,7 @@ function fancyText(weightValue: number, color: Color) {
 ```
 
 通过\@Extend组合样式后，使得代码更加简洁，增强可读性。
-<!-- @[Extend_Usage_Scenario_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->
+<!-- @[Extend_Usage_Scenario_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -253,6 +256,7 @@ struct FancyUse {
 
   build() {
     Row({ space: 10 }) {
+      // 调用@Extend封装的fancyText复用样式
       Text(`${this.label}`)
         .fancyText(100, Color.Blue)
       Text(`${this.label}`)

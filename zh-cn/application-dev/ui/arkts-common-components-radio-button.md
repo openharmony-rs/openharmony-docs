@@ -114,16 +114,20 @@ export struct RadioExample {
   @State sst: promptAction.ShowToastOptions = { 'message': 'Silent mode.' };
 
   build() {
-    // ···
+    // ...
       Row() {
         Column() {
           Radio({ value: 'Ringing', group: 'radioGroup' }).checked(true)
             .height(50)
             .width(50)
-            .onChange((isChecked: boolean) => {
+            .onChange(async (isChecked: boolean) => {
               if (isChecked) {
-                // 切换为响铃模式
-                this.getUIContext().getPromptAction().openToast(this.rst);
+                try {
+                  // 切换为响铃模式
+                  await this.getUIContext().getPromptAction().openToast(this.rst);
+                } catch (err) {
+                  console.error('Failed to show toast: ${err.code}');
+                }
               }
             })
           Text('Ringing')
@@ -133,10 +137,14 @@ export struct RadioExample {
           Radio({ value: 'Vibration', group: 'radioGroup' })
             .height(50)
             .width(50)
-            .onChange((isChecked: boolean) => {
+            .onChange(async (isChecked: boolean) => {
               if (isChecked) {
-                // 切换为振动模式
-                this.getUIContext().getPromptAction().openToast(this.vst);
+                try {
+                  // 切换为振动模式
+                  await this.getUIContext().getPromptAction().openToast(this.vst);
+                } catch (err) {
+                  console.error('Failed to show toast: ${err.code}');
+                }
               }
             })
           Text('Vibration')
@@ -146,16 +154,20 @@ export struct RadioExample {
           Radio({ value: 'Silent', group: 'radioGroup' })
             .height(50)
             .width(50)
-            .onChange((isChecked: boolean) => {
+            .onChange(async (isChecked: boolean) => {
               if (isChecked) {
-                // 切换为静音模式
-                this.getUIContext().getPromptAction().openToast(this.sst);
+                try {
+                  // 切换为静音模式
+                  await this.getUIContext().getPromptAction().openToast(this.sst);
+                } catch (err) {
+                  console.error('Failed to show toast: ${err.code}');
+                }
               }
             })
           Text('Silent')
         }
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```

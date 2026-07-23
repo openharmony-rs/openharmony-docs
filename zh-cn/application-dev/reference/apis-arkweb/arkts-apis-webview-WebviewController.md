@@ -751,6 +751,7 @@ data数据必须使用base64编码或将内容中的任何#字符编码为%23。
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048. <br/>适用版本：9-10 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
@@ -5682,7 +5683,7 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。<br>默认为false。 |
+| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。 |
 
 **错误码：**
 
@@ -6377,7 +6378,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除与当前Webview上下文相关的资源缓存。
+清除与当前WebView上下文相关的资源缓存。
 
 > **说明：**
 >
@@ -6792,7 +6793,7 @@ struct WebComponent {
 
 getBackForwardEntries(): BackForwardList
 
-获取当前Webview的历史信息列表。
+获取当前WebView的历史信息列表。
 
 > **说明：**
 >
@@ -6808,7 +6809,7 @@ getBackForwardEntries(): BackForwardList
 
 | 类型                                | 说明                        |
 | ----------------------------------- | --------------------------- |
-| [BackForwardList](./arkts-apis-webview-BackForwardList.md) | 当前Webview的历史信息列表。 |
+| [BackForwardList](./arkts-apis-webview-BackForwardList.md) | 当前WebView的历史信息列表。 |
 
 **错误码：**
 
@@ -6879,7 +6880,7 @@ struct WebComponent {
 
 serializeWebState(): Uint8Array
 
-将当前Webview的页面状态历史记录信息序列化。
+将当前WebView的页面状态历史记录信息序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -6892,7 +6893,7 @@ serializeWebState(): Uint8Array
 
 | 类型       | 说明                                          |
 | ---------- | --------------------------------------------- |
-| Uint8Array | 当前Webview的页面状态历史记录序列化后的数据。 |
+| Uint8Array | 当前WebView的页面状态历史记录序列化后的数据。 |
 
 **错误码：**
 
@@ -7016,7 +7017,7 @@ export default class EntryAbility extends UIAbility {
 
 restoreWebState(state: Uint8Array): void
 
-当前Webview从序列化数据中恢复页面状态历史记录。
+当前WebView从序列化数据中恢复页面状态历史记录。
 
 如果state过大，可能会导致异常。建议state大于512k时，放弃恢复页面状态历史记录。
 
@@ -8004,7 +8005,7 @@ struct Index {
 
 setAudioMuted(mute: boolean): void
 
-设置网页静音。
+设置网页静音。典型使用场景包括：应用需要控制网页音量（如提供静音开关）、后台播放时需要静音等。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8099,6 +8100,8 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions
 > - prefetchPage对302重定向页面同样正常预取。
 >
 > - 先执行prefetchPage再加载页面时，已预取的资源将直接从缓存中加载。
+>
+> - prefetchPage会缓存所有资源，但具有Cache-Control: no-store标头的资源除外。如果存在Vary响应标头、Cache-Control: no-store标头，或者下载的页面资源已超过五分钟，则在使用之前会重新验证资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8206,6 +8209,8 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
 > - 连续prefetchPage多个URL只有第一个生效。
 >
 > - prefetchPage有时间限制，500ms内不能多次预取。
+>
+> - prefetchPage会缓存所有资源，但具有Cache-Control: no-store标头的资源除外。如果存在Vary响应标头、Cache-Control: no-store标头，或者下载的页面资源已超过五分钟，则在使用之前会重新验证资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8366,7 +8371,7 @@ import { AppStorage } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     webview.WebviewController.initializeWebEngine();
-    // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+    // 预获取时，需要将"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
     webview.WebviewController.prefetchResource(
       {
         url: "https://www.example1.com/post?e=f&g=h",
@@ -8417,7 +8422,7 @@ struct WebComponent {
     Column() {
       Web({ src: "https://www.example.com/", controller: this.controller })
         .onAppear(() => {
-          // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+          // 预获取时，需要将"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
           webview.WebviewController.prefetchResource(
             {
               url: "https://www.example1.com/post?e=f&g=h",
@@ -8520,7 +8525,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
-    // 预连接时，需要將'https://www.example.com'替换成一个真实的网站地址。
+    // 预连接时，需要将'https://www.example.com'替换成一个真实的网站地址。
     webview.WebviewController.prepareForPageLoad("https://www.example.com", true, 2);
     AppStorage.setOrCreate("abilityWant", want);
     console.info("EntryAbility onCreate done");
@@ -8554,15 +8559,15 @@ setCustomUserAgent(userAgent: string): void
 
 设置自定义用户代理，会覆盖系统的用户代理。
 
-当Web组件src设置了URL时，建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，会概率性出现设置失败。
-
-当Web组件src设置为空字符串时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
-
-默认User-Agent定义与使用场景请参考[User-Agent开发指导](../../web/web-default-userAgent.md)
-
 > **说明：**
 >
->当Web组件src设置了URL，且未在onControllerAttached回调事件中设置User-Agent。再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
+> - 当Web组件src设置了URL时，建议在[onControllerAttached](./arkts-basic-components-web-events.md#oncontrollerattached10)回调中设置User-Agent。不要在onLoadIntercept回调中设置，否则可能会设置失败或导致不可预期的后果。
+>
+> - 若未在onControllerAttached回调中设置User-Agent，再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
+>
+> - 当Web组件src未设置URL时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
+>
+> - 默认User-Agent定义与使用场景请参考[User-Agent开发指导](../../web/web-default-userAgent.md)
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -10579,7 +10584,7 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 返回打印文档的适配器。 |
+| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 打印文档的适配器，用于控制打印行为和打印任务，可通过打印服务打印当前网页内容。 |
 
 **错误码：**
 
@@ -12387,6 +12392,10 @@ struct WebComponent {
   aboutToAppear(): void {
     let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
     atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
+      if (err) {
+        console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+        return;
+      }
       console.info('data:' + JSON.stringify(data));
       console.info('data permissions:' + data.permissions);
       console.info('data authResults:' + data.authResults);
@@ -12468,6 +12477,10 @@ struct WebComponent {
     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
     atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'],
       (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (err) {
+          console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+          return;
+        }
         if (data) {
           console.info('data:' + JSON.stringify(data));
           console.info('data permissions:' + data.permissions);
@@ -15193,6 +15206,10 @@ struct Index {
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                if (error) {
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
                 fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
                   console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
@@ -15248,9 +15265,13 @@ struct Index {
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                if (error) {
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
                 let arrayBuffer: Uint8Array = result?.pdfArrayBuffer() as Uint8Array;
                 fileIo.write(file.fd, arrayBuffer.buffer).then((writeLen: long) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                  console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: Error) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
@@ -15290,7 +15311,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 | 类型                           | 说明                          |
 | ------------------------------ | ----------------------------- |
-| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise实例，返回网页数据流。 |
+| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise实例，返回网页PDF数据流（PdfData对象，包含ArrayBuffer表示的PDF二进制数据）。 |
 
 **错误码：**
 
@@ -15391,7 +15412,7 @@ struct Index {
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
                 fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: long) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                  console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: Error) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
@@ -15425,7 +15446,7 @@ getScrollOffset(): ScrollOffset
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（包含过滚动偏移量）。 |
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（包含过滚动偏移量），包含x和y坐标，单位为vp。 |
 
 **示例：**
 
@@ -15577,7 +15598,7 @@ getPageOffset(): ScrollOffset
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（不包含过滚动偏移量）。 |
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（不包含过滚动偏移量），包含x和y坐标，单位为vp。 |
 
 **错误码：**
 
@@ -16329,7 +16350,7 @@ getHitTest(): WebHitTestType
 
 > **说明：**
 >
-> 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -16388,7 +16409,7 @@ getHitTestValue(): HitTestValue
 
 > **说明：**
 >
-> 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -16706,6 +16727,10 @@ static enablePrivateNetworkAccess(enable: boolean): void
 
 启用后，Web组件将对私有网络请求（如访问本地服务器或内网资源）进行CORS预检。它会先发送OPTIONS预检请求，获取目标服务器的显式授权，然后传输实际数据。禁用此功能将跳过安全检查。
 
+> **说明：**
+>
+> 当前私有网络访问检查功能主要针对Web Worker场景生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 20
@@ -16769,6 +16794,10 @@ struct WebComponent {
 static isPrivateNetworkAccessEnabled(): boolean
 
 获取Web组件是否启用了私有网络访问检查功能。
+
+> **说明：**
+>
+> 当前私有网络访问检查功能主要针对Web Worker场景生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -16880,7 +16909,7 @@ getBlanklessInfoWithKey(key: string): BlanklessInfo
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20) | 页面首屏加载预测信息，主要包括首屏相似度预测值，首屏加载耗时预测值，应用需根据此信息来决策是否启用无白屏加载插帧。 |
+| [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20) | 页面首屏加载预测信息对象，应用需根据此信息来决策是否启用无白屏加载插帧。 |
 
 **错误码：**
 
@@ -17552,7 +17581,7 @@ Scroll Test
 
 static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
-设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)）。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
+设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)）。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。典型使用场景：使用特定内核版本的特性或兼容性需求时，可切换到对应内核版本。
 
 **遗留内核适配：**
 
@@ -18077,7 +18106,7 @@ class EntryAbility extends UIAbility {
 
 setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
 
-设置软键盘自动控制模式，当接口没有显式调用时，Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起。
+设置软键盘自动控制模式，当接口没有显式调用时，Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起。典型使用场景：不希望Web组件在inactive或active状态切换时自动隐藏或重新拉起软键盘时，可使用DISABLE_AUTO_KEYBOARD_ON_ACTIVE；需要保留默认自动管理行为时，可使用DEFAULT。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -18189,6 +18218,10 @@ struct WebComponent {
   aboutToAppear(): void {
     let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
     atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+      if (err) {
+        console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+        return;
+      }
       console.info('data:' + JSON.stringify(data));
       console.info('data permissions:' + data.permissions);
       console.info('data authResults:' + data.authResults);
@@ -18272,6 +18305,10 @@ struct WebComponent {
     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
     atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'],
       (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (err) {
+          console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+          return;
+        }
         if (data) {
           console.info('data:' + JSON.stringify(data));
           console.info('data permissions:' + data.permissions);
@@ -18377,6 +18414,12 @@ struct WebComponent {
 pauseMicrophone(): void
 
 暂停当前网页麦克风捕获。
+
+> **说明：**
+>
+> 与 resumeMicrophone 和 stopMicrophone 的区别：
+>
+> pauseMicrophone 仅暂停麦克风捕获，可通过 resumeMicrophone 恢复；stopMicrophone 会停止捕获并释放资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

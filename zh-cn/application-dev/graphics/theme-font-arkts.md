@@ -48,10 +48,10 @@
    let fontCollection = text.FontCollection.getGlobalInstance();
    ```
 
-4. 创建段落样式，并使用字体管理器实例构造段落生成器ParagraphBuilder实例，用于生成段落。
+4. 创建段落样式，并使用字体集实例构造段落生成器ParagraphBuilder实例，用于生成段落。
    > **说明：**
    >
-   > 在生成段落对象设置段落样式入参时，不能指定fontFamilies属性，否则会变为优先使用指定字体而非主题字体。
+   > 在生成段落对象设置段落样式入参时，不能指定fontFamilies属性，否则系统会优先使用指定字体而非主题字体。
    > 
    > 若未在系统**主题应用**中设置一项主题字体，则将使用系统默认字体进行绘制。
 
@@ -68,10 +68,10 @@
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
      align: 3,
-     wordBreak:text.WordBreak.NORMAL
+     wordBreak: text.WordBreak.NORMAL
    };
    // 创建一个段落生成器
-   let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
 
    ArkTS-Sta示例：
@@ -100,11 +100,11 @@
    
    ``` TypeScript
    // 在段落生成器中设置文本样式
-   paragraphGraphBuilder.pushStyle(myTextStyle);
+   paragraphBuilder.pushStyle(myTextStyle);
    // 在段落生成器中设置文本内容
-   paragraphGraphBuilder.addText("Hello World. \nThis is the theme font.");
+   paragraphBuilder.addText("Hello World. \nThis is the theme font.");
    // 通过段落生成器生成段落
-   let paragraph = paragraphGraphBuilder.build();
+   let paragraph = paragraphBuilder.build();
    ```
 
 6. 创建渲染节点，并保存到数组。（此处示例代码为简化逻辑，采用数组作为容器，实际开发中应结合应用情况选择更恰当的容器来保证节点的添加与删除对应。）

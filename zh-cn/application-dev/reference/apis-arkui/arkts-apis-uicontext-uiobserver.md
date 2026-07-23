@@ -7,7 +7,7 @@
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供UI组件行为变化的无感监听能力。
+UIObserver提供了UI组件行为变化的无感监听能力，支持监听Navigation页面状态变化（NavDestination）、滚动事件、路由页面状态、屏幕像素密度变化、绘制指令下发、布局完成、页面切换等多种UI组件行为。开发者可以通过该模块实现对UI组件状态的实时感知和追踪，适用于需要监控页面生命周期、处理滚动事件、优化渲染性能等场景，帮助开发者更好地理解和管理UI组件的行为变化。无感监听是指在组件状态变化时，系统自动触发回调函数通知开发者，无需开发者手动轮询或主动查询组件状态。监听器通过注册回调函数实现，当目标组件状态改变时，系统内部的事件分发机制会调用已注册的回调函数，携带状态变化信息。
 
 > **说明：**
 >
@@ -21,13 +21,13 @@
 >
 > - 以下API需先使用UIContext中的[getUIObserver()](arkts-apis-uicontext-uicontext.md#getuiobserver11)方法获取到UIObserver对象，再通过该对象调用对应方法。
 >
-> - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
+> - UIObserver仅能监听到本进程内的UI组件状态变化信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
 
 ## on('navDestinationUpdate')<sup>11+</sup>
 
 on(type: 'navDestinationUpdate', callback: Callback\<observer.NavDestinationInfo\>): void
 
-监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。
+监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。监听器通过注册回调函数实现，当NavDestination组件的状态发生变化（如显示、隐藏、销毁等）时，系统会自动调用已注册的回调函数，携带状态变化信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -58,8 +58,8 @@ on(type: 'navDestinationUpdate', callback: Callback\<observer.NavDestinationInfo
 struct PageOne {
   build() {
     NavDestination() {
-      Text("pageOne")
-    }.title("pageOne")
+      Text('pageOne')
+    }.title('pageOne')
   }
 }
 
@@ -88,12 +88,12 @@ struct Index {
   build() {
     Column() {
       Navigation(this.stack) {
-        Button("push").onClick(() => {
+        Button('push').onClick(() => {
           // 将PageOne的NavDestination入栈
-          this.stack.pushPath({ name: "pageOne" });
+          this.stack.pushPath({ name: 'pageOne' });
         })
       }
-      .title("Navigation")
+      .title('Navigation')
       .navDestination(this.PageBuilder)
     }
     .width('100%')
@@ -140,7 +140,7 @@ offNavDestinationUpdate(callback?: Callback\<observer.NavDestinationInfo\>): voi
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要取消的监听回调，不传参数时，取消所有的Navigation监听回调。                 |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要取消的监听回调。不指定具体的回调函数时，取消所有[Navigation](arkui-ts/ts-basic-components-navigation.md)组件的监听回调。                 |
 
 ## onNavDestinationUpdate<sup>23+</sup>
 
@@ -174,8 +174,8 @@ onNavDestinationUpdate(options: observer.NavDestinationSwitchObserverOptions, ca
 struct PageOne {
   build() {
     NavDestination() {
-      Text("pageOne")
-    }.title("pageOne")
+      Text('pageOne')
+    }.title('pageOne')
   }
 }
 
@@ -190,24 +190,24 @@ struct Index {
   }
 
   aboutToAppear() {
-    this.getUIContext().getUIObserver().on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
+    this.getUIContext().getUIObserver().on('navDestinationUpdate', { navigationId: 'testId' }, (info) => {
       console.info('NavDestination state update', JSON.stringify(info));
     });
   }
 
   aboutToDisappear() {
-    this.getUIContext().getUIObserver().off('navDestinationUpdate', { navigationId: "testId" });
+    this.getUIContext().getUIObserver().off('navDestinationUpdate', { navigationId: 'testId' });
   }
 
   build() {
     Column() {
       Navigation(this.stack) {
-        Button("push").onClick(() => {
-          this.stack.pushPath({ name: "pageOne" });
+        Button('push').onClick(() => {
+          this.stack.pushPath({ name: 'pageOne' });
         })
       }
-      .id("testId")
-      .title("Navigation")
+      .id('testId')
+      .title('Navigation')
       .navDestination(this.PageBuilder)
     }
     .width('100%')
@@ -262,7 +262,7 @@ off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationIn
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'navDestinationUpdate'，即[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。 |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要取消的监听回调，不传参数时，取消所有的[Navigation](arkui-ts/ts-basic-components-navigation.md)监听回调。                 |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要取消的监听回调。不指定具体的回调函数时，取消所有[Navigation](arkui-ts/ts-basic-components-navigation.md)组件的监听回调。                 |
 
 **示例：** 
 
@@ -304,8 +304,8 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 struct PageOne {
   build() {
     NavDestination() {
-      Text("pageOne")
-    }.title("pageOne")
+      Text('pageOne')
+    }.title('pageOne')
   }
 }
 
@@ -321,26 +321,26 @@ struct Index {
 
   aboutToAppear() {
     // 添加监听，指定Navigation的id
-    this.getUIContext().getUIObserver().on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
+    this.getUIContext().getUIObserver().on('navDestinationUpdate', { navigationId: 'testId' }, (info) => {
       console.info('NavDestination state update', JSON.stringify(info));
     });
   }
 
   aboutToDisappear() {
     // 取消监听，不选择回调时，取消所有监听的回调
-    this.getUIContext().getUIObserver().off('navDestinationUpdate', { navigationId: "testId" });
+    this.getUIContext().getUIObserver().off('navDestinationUpdate', { navigationId: 'testId' });
   }
 
   build() {
     Column() {
       Navigation(this.stack) {
-        Button("push").onClick(() => {
+        Button('push').onClick(() => {
           // 将PageOne的NavDestination入栈
-          this.stack.pushPath({ name: "pageOne" });
+          this.stack.pushPath({ name: 'pageOne' });
         })
       }
-      .id("testId")
-      .title("Navigation")
+      .id('testId')
+      .title('Navigation')
       .navDestination(this.PageBuilder)
     }
     .width('100%')
@@ -371,7 +371,7 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationUpdate'，即[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。 |
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | 是   | 指定监听的[Navigation](arkui-ts/ts-basic-components-navigation.md)的id。                                   |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | 否   |需要取消的监听回调，不传参数时，取消该[Navigation](arkui-ts/ts-basic-components-navigation.md)上所有的监听回调。                 |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | 否   |需要取消的监听回调。不指定具体的回调函数时，取消该[Navigation](arkui-ts/ts-basic-components-navigation.md)上所有的监听回调。                 |
 
 **示例：**
 
@@ -403,7 +403,7 @@ on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback:
 
 **示例：**
 
-通过[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId，可以触发[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。
+通过[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId，可以监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。
 
 ```ts
 // Index.ets
@@ -413,32 +413,32 @@ on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback:
 @Component
 struct PageOne {
   private text = '';
-  private uniqueid = -1;
+  private uniqueId = -1;
   aboutToAppear() {
     // 获取Navigation的uniqueId
     let navigationUniqueId = this.queryNavigationInfo()?.uniqueId;
     if (navigationUniqueId) {
-      this.uniqueid = navigationUniqueId.valueOf();
+      this.uniqueId = navigationUniqueId.valueOf();
     }
-    this.text = JSON.stringify(this.uniqueid);
+    this.text = JSON.stringify(this.uniqueId);
     // 添加监听，指定Navigation的uniqueId
-    this.getUIContext().getUIObserver().on('navDestinationUpdateByUniqueId', this.uniqueid, (info) => {
+    this.getUIContext().getUIObserver().on('navDestinationUpdateByUniqueId', this.uniqueId, (info) => {
       console.info('NavDestination state update navigationId', JSON.stringify(info));
     });
   }
   aboutToDisappear() {
     // 取消监听，不选择回调时，取消所有监听的回调
-    this.getUIContext().getUIObserver().off('navDestinationUpdateByUniqueId', this.uniqueid);
+    this.getUIContext().getUIObserver().off('navDestinationUpdateByUniqueId', this.uniqueId);
   }
   build() {
     NavDestination() {
-      Text("pageOne")
+      Text('pageOne')
       Text('navigationUniqueId是:' + this.text)
         .width('80%')
         .height(50)
         .margin(50)
         .fontSize(20)
-    }.title("pageOne")
+    }.title('pageOne')
   }
 }
 
@@ -455,13 +455,13 @@ struct Index {
   build() {
     Column() {
       Navigation(this.stack) {
-        Button("push").onClick(() => {
+        Button('push').onClick(() => {
           // 将PageOne的NavDestination入栈
-          this.stack.pushPath({ name: "pageOne" });
+          this.stack.pushPath({ name: 'pageOne' });
         })
       }
-      .id("testId")
-      .title("Navigation")
+      .id('testId')
+      .title('Navigation')
       .navDestination(this.PageBuilder)
     }
     .width('100%')
@@ -474,7 +474,7 @@ struct Index {
 
 off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
 
-取消通过[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的变化。
+取消通过[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -618,9 +618,11 @@ on(type: 'scrollEvent', callback: Callback\<observer.ScrollEventInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScrollEvent](#onscrollevent23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -661,7 +663,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -704,6 +706,26 @@ struct Index {
 }
 ```
 
+## onScrollEvent<sup>23+</sup>
+
+onScrollEvent(callback: Callback<observer.ScrollEventInfo>): void
+
+监听所有滚动组件滚动事件的开始和结束。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('scrollEvent')](#onscrollevent12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | 是   | 回调函数。滚动事件开始和结束时触发。                               |
+
 ## off('scrollEvent')<sup>12+</sup>
 
 off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
@@ -714,9 +736,11 @@ off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScrollEvent](#offscrollevent23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -729,6 +753,26 @@ off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
 
 参考[on('scrollEvent')](#onscrollevent12)接口示例。
 
+## offScrollEvent<sup>23+</sup>
+
+offScrollEvent(callback?: Callback<observer.ScrollEventInfo>): void
+
+取消监听所有滚动组件滚动事件的开始和结束。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('scrollEvent')](#offscrollevent12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该UIContext下所有scrollEvent事件监听。 |
+
 ## on('scrollEvent')<sup>12+</sup>
 
 on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<observer.ScrollEventInfo\>): void
@@ -739,9 +783,11 @@ on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScrollEvent](#onscrollevent23-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -755,6 +801,27 @@ on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<o
 
 参考[on('scrollEvent')](#onscrollevent12)接口示例。
 
+## onScrollEvent<sup>23+</sup>
+
+onScrollEvent(options: observer.ObserverOptions, callback: Callback<observer.ScrollEventInfo>): void
+
+监听指定id的滚动组件滚动事件的开始和结束。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('scrollEvent')](#onscrollevent12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                                                    | 必填 | 说明                                     |
+| ------- | ----------------------------------------------------------------------- | ---- | ---------------------------------------- |
+| options | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | Observer选项，包含指定监听的滚动组件的id。 |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | 是   | 回调函数。滚动事件开始和结束时触发。            |
+
 ## off('scrollEvent')<sup>12+</sup>
 
 off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\<observer.ScrollEventInfo\>): void
@@ -765,9 +832,11 @@ off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScrollEvent](#offscrollevent23-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -781,11 +850,32 @@ off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\
 
 参考[on('scrollEvent')](#onscrollevent12)接口示例。
 
+## offScrollEvent<sup>23+</sup>
+
+offScrollEvent(options: observer.ObserverOptions, callback?: Callback<observer.ScrollEventInfo>): void
+
+取消监听指定id的滚动组件滚动事件的开始和结束。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('scrollEvent')](#offscrollevent12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                    | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | Observer选项，包含指定监听的滚动组件的id。                    |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | 否   | 回调函数。返回滚动事件的信息。不传参数时，取消该id下所有滚动事件的监听回调。 |
+
 ## on('routerPageUpdate')<sup>11+</sup>
 
 on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): void
 
-监听[Router](arkts-apis-uicontext-router.md)中page页面的状态变化。
+监听[Router](arkts-apis-uicontext-router.md)中page页面的状态变化。典型使用场景包括页面路由生命周期管理、页面跳转埋点、页面切换状态跟踪等。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -815,7 +905,7 @@ on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): voi
 struct PageOne {
   build() {
     Column() {
-      Text("pageOne")
+      Text('pageOne')
     }
   }
 }
@@ -844,7 +934,7 @@ struct Index {
 
   build() {
     Column() {
-      Button("pushUrl").onClick(() => {
+      Button('pushUrl').onClick(() => {
         // router跳转到PageOne.ets页面
         this.getUIContext().getRouter().pushUrl({ url: 'pages/PageOne' })
       })
@@ -1391,7 +1481,7 @@ struct Index {
           // 添加监听
           this.getUIContext().getUIObserver().on('didLayout', this.didLayoutCallback);
         })
-      Button('解除注册注册布局完成监听')
+      Button('解除注册布局完成监听')
         .onClick(() => {
           // 取消监听
           this.getUIContext().getUIObserver().off('didLayout', this.didLayoutCallback);
@@ -1556,8 +1646,8 @@ import { uiObserver } from '@kit.ArkUI';
 struct PageOne {
   build() {
     NavDestination() {
-      Text("pageOne")
-    }.title("pageOne")
+      Text('pageOne')
+    }.title('pageOne')
   }
 }
 
@@ -1591,12 +1681,12 @@ struct Index {
   build() {
     Column() {
       Navigation(this.stack) {
-        Button("push").onClick(() => {
+        Button('push').onClick(() => {
           // 将PageOne的NavDestination入栈
-          this.stack.pushPath({ name: "pageOne" });
+          this.stack.pushPath({ name: 'pageOne' });
         })
       }
-      .title("Navigation")
+      .title('Navigation')
       .navDestination(this.PageBuilder)
     }
     .width('100%')
@@ -1709,8 +1799,8 @@ import { uiObserver } from '@kit.ArkUI';
 struct PageOne {
   build() {
     NavDestination() {
-      Text("pageOne")
-    }.title("pageOne")
+      Text('pageOne')
+    }.title('pageOne')
   }
 }
 
@@ -1732,25 +1822,25 @@ struct Index {
   aboutToAppear() {
     let obs = this.getUIContext().getUIObserver();
     // 添加监听，指定Navigation的id
-    obs.on('navDestinationSwitch', { navigationId: "myNavId" }, callbackFunc);
+    obs.on('navDestinationSwitch', { navigationId: 'myNavId' }, callbackFunc);
   }
 
   aboutToDisappear() {
     let obs = this.getUIContext().getUIObserver();
     // 取消监听
-    obs.off('navDestinationSwitch', { navigationId: "myNavId" }, callbackFunc);
+    obs.off('navDestinationSwitch', { navigationId: 'myNavId' }, callbackFunc);
   }
 
   build() {
     Column() {
       Navigation(this.stack) {
-        Button("push").onClick(() => {
+        Button('push').onClick(() => {
           // 将PageOne的NavDestination入栈
-          this.stack.pushPath({ name: "pageOne" });
+          this.stack.pushPath({ name: 'pageOne' });
         })
       }
-      .id("myNavId")
-      .title("Navigation")
+      .id('myNavId')
+      .title('Navigation')
       .navDestination(this.PageBuilder)
     }
     .width('100%')
@@ -1858,7 +1948,7 @@ on(type: 'willClick', callback: GestureEventListenerCallback): void
 // Index.ets
 // 演示uiObserver.on('willClick', callback)
 // uiObserver.off('willClick', callback)
-// uiObserver.off('didClick', callback)
+// uiObserver.on('didClick', callback)
 // uiObserver.off('didClick', callback)
 
 // 定义监听回调函数
@@ -3944,13 +4034,13 @@ struct Index {
   private removeGlobalListeners() {
     const observer = this.getUIContext().getUIObserver();
     if (this.tapCallback) {
-      observer.removeGlobalGestureListener(0, this.tapCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.TAP, this.tapCallback);
     }
     if (this.panCallback) {
-      observer.removeGlobalGestureListener(2, this.panCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.PAN, this.panCallback);
     }
     if (this.longPressCallback) {
-      observer.removeGlobalGestureListener(1, this.longPressCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.LONG_PRESS, this.longPressCallback);
     }
   }
 
@@ -4377,19 +4467,19 @@ struct SwiperExample {
     Column({ space: 5 }) {
       Swiper(this.swiperController) {
         Column() {
-          Text("SwiperItem1")
+          Text('SwiperItem1')
         }.width('100%').height('100%').backgroundColor('#00CB87')
 
         Column() {
-          Text("SwiperItem2")
+          Text('SwiperItem2')
         }.width('100%').height('100%').backgroundColor('#007DFF')
 
         Column() {
-          Text("SwiperItem3")
+          Text('SwiperItem3')
         }.width('100%').height('100%').backgroundColor('#FFBF00')
 
         Column() {
-          Text("SwiperItem4")
+          Text('SwiperItem4')
         }.width('100%').height('100%').backgroundColor('#E67C92')
       }
       .width(360)
@@ -4474,22 +4564,22 @@ struct SwiperExample {
     Column({ space: 5 }) {
       Swiper(this.swiperController) {
         Column() {
-          Text("SwiperItem1")
+          Text('SwiperItem1')
         }.width('100%').height('100%').backgroundColor('#00CB87')
 
         Column() {
-          Text("SwiperItem2")
+          Text('SwiperItem2')
         }.width('100%').height('100%').backgroundColor('#007DFF')
 
         Column() {
-          Text("SwiperItem3")
+          Text('SwiperItem3')
         }.width('100%').height('100%').backgroundColor('#FFBF00')
 
         Column() {
-          Text("SwiperItem4")
+          Text('SwiperItem4')
         }.width('100%').height('100%').backgroundColor('#E67C92')
       }
-      .id("swiperId")
+      .id('swiperId')
       .width(360)
       .height(300)
     }.width('100%')

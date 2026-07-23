@@ -51,7 +51,7 @@ isWifiActiveSync(admin: Want): boolean
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -102,7 +102,7 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -570,7 +570,7 @@ try {
 
 ## wifiManager.getAllowedWifiList<sup>19+</sup>
 
-getAllowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
+getAllowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
 
 获取Wi-Fi允许名单。
 
@@ -585,7 +585,7 @@ getAllowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -740,7 +740,7 @@ try {
 
 ## wifiManager.getDisallowedWifiList<sup>19+</sup>
 
-getDisallowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
+getDisallowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
 
 获取Wi-Fi禁用名单。
 
@@ -755,7 +755,7 @@ getDisallowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -808,6 +808,8 @@ turnOnWifi(admin: Want, isForce: boolean): void
 
 **冲突规则：** 任意MDM应用​通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi，则无法通过本接口直接打开Wi-Fi开关。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
@@ -817,7 +819,7 @@ turnOnWifi(admin: Want, isForce: boolean): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -862,6 +864,8 @@ turnOffWifi(admin: Want): void
 
 **冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi，则无法通过本接口直接关闭Wi-Fi开关。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
@@ -870,7 +874,7 @@ turnOffWifi(admin: Want): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1016,7 +1020,7 @@ IP配置信息。
 
 表示EAP认证方式的枚举。
 
-> **说明**：
+> **说明：**
 >
 > 当前仅支持使用EAP_PEAP、EAP_TLS两种认证方式，其他暂不支持。
 

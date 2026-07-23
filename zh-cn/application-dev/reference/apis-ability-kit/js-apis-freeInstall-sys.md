@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供免安装相关的设置和查询能力，支持BundlePackInfo、DispatchInfo等信息的查询。
@@ -32,6 +32,13 @@ import { freeInstall } from '@kit.AbilityKit';
 权限等级参考[权限APL等级说明](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)。
 ## UpgradeFlag
 
+应用模块升级策略的标志。
+
+> 
+> **说明：**
+> 
+> 不支持组合使用，如：let flag = UpgradeFlag.NOT_UPGRADE | UpgradeFlag.SINGLE_UPGRADE，只支持单个枚举类型传入。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -47,6 +54,13 @@ import { freeInstall } from '@kit.AbilityKit';
 | RELATION_UPGRADE | 2    | 关系模块需要升级。 |
 
 ## BundlePackFlag
+
+应用包pack.info的信息标志。
+
+> 
+> **说明：**
+> 
+> 不支持组合使用，如：let flag = BundlePackFlag.GET_PACKAGES | BundlePackFlag.GET_BUNDLE_SUMMARY，只支持单个枚举类型传入。
 
 **系统接口：** 此接口为系统接口。
 

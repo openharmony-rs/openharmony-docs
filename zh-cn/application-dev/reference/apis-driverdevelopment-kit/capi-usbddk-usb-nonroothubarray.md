@@ -12,7 +12,7 @@ typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
 
 ## 概述
 
-非根集线器列表，用于存放[OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs)接口获取到的非根集线器设备ID列表和数量。
+非根集线器列表，用于存放[OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs)接口获取到的非根集线器设备ID列表和数量。开发者申请非根集线器ID数组，使用完结构体后需释放成员内存，否则会造成资源泄漏。
 
 **起始版本：** 26.0.0
 

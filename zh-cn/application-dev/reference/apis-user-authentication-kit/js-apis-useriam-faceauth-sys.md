@@ -7,9 +7,7 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
-**faceAuth**模块是OpenHarmony用户身份认证体系（UserIAM）的重要组成部分，用于管理人脸录入功能。该模块提供了面部认证管理的核心API，使开发者能够在应用内录入和管理人脸信息。
+**faceAuth**模块是OpenHarmony用户身份认证体系（UserIAM）的重要组成部分，用于管理人脸录入功能。该模块提供了人脸认证管理的核心API，使开发者能够在应用内录入和管理人脸信息。
 
 该模块主要用于以下场景：
 - 需要实现人脸录入功能的应用。
@@ -31,8 +29,8 @@
 - **[FaceAuthManager](#faceauthmanager)**：faceAuth模块的核心管理类，提供了人脸录入过程中所需的基本功能。
 
 主要功能包括：
-- 创建面部认证管理器实例。
-- 将人脸录入时预览页面的surface对象设置到人脸认证服务。
+- 创建人脸认证管理器实例。
+- 将人脸录入时预览界面的surface对象设置到人脸认证服务。
 
 ![类关系图](figures/uml_faceauth.png)
 
@@ -48,7 +46,7 @@ let faceAuthManager = new faceAuth.FaceAuthManager();
 // 2. 获取XComponent的surfaceId（通过XComponentController）。
 let surfaceId = xComponentController.getXComponentSurfaceId();
 
-// 3. 设置surfaceId用于人脸预览页面。
+// 3. 设置surfaceId用于人脸预览界面。
 faceAuthManager.setSurfaceId(surfaceId);
 
 // 4. 配合osAccount模块的addCredential完成人脸录入。
@@ -63,7 +61,7 @@ import { faceAuth } from '@kit.UserAuthenticationKit';
 
 ## FaceAuthManager
 
-人脸认证管理器对象。用于提供人脸录入过程中的管理功能，包括设置人脸预览界面的Surface ID等。
+人脸认证管理器对象。用于提供人脸录入过程中的管理功能，目前支持设置人脸预览界面的Surface ID。
 
 ### constructor
 
@@ -113,11 +111,11 @@ setSurfaceId(surfaceId: string): void
 
 | 参数名         | 类型                               | 必填 | 说明                       |
 | -------------- | ---------------------------------- | ---- | -------------------------- |
-| surfaceId       | string     | 是   | [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) 持有 Surface 的 ID。用于在人脸录入过程中显示人脸预览画面，该ID需通过XComponentController的getXComponentSurfaceId方法获取。 |
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+| surfaceId       | string     | 是   | [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)持有Surface的ID。用于在人脸录入过程中显示人脸预览画面。<br>**说明**：需在XComponent完成初始化后，通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)方法获取有效的surfaceId，若传入无效的surfaceId可能导致预览画面无法正常显示或接口调用失败。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
@@ -131,7 +129,7 @@ setSurfaceId(surfaceId: string): void
 import { faceAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 该surfaceId应该从XComponent控件获取，此处仅用作示例。
+// 该surfaceId应通过XComponentController.getXComponentSurfaceId()方法从XComponent控件获取，此处仅用作示例。
 let surfaceId = '123456';
 let manager = new faceAuth.FaceAuthManager();
 try {

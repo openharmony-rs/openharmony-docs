@@ -7,9 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-AbilityStageContext是AbilityStage的上下文环境，继承自[Context](js-apis-inner-application-context.md)。
-
-AbilityStageContext提供允许访问特定于abilityStage的资源的能力，包括获取AbilityStage对应的ModuleInfo对象、环境变化对象。
+AbilityStageContext是AbilityStage的上下文环境，继承自[Context](js-apis-inner-application-context.md)。AbilityStageContext提供访问特定于AbilityStage的资源的能力，适用于需要在AbilityStage生命周期中访问模块信息和环境配置的场景，可帮助开发者快速获取模块信息和环境配置。
 
 > **说明：**
 >
@@ -34,7 +32,7 @@ import { common } from '@kit.AbilityKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | 否 | 否 | AbilityStage对应的ModuleInfo对象。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| config | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 环境变量。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| config | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 环境配置对象。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | launchElement<sup>24+</sup> | [ElementName](js-apis-bundleManager-elementName.md) | 否 | 是 | 创建AbilityStage时的ElementName。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
 
 **示例：**
@@ -45,6 +43,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // 获取AbilityStageContext上下文
     let abilityStageContext = this.context;
     // 获取当前模块名
     let name = abilityStageContext.currentHapModuleInfo.name;

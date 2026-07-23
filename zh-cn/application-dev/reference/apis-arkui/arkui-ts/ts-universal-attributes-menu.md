@@ -228,7 +228,7 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 | ------------------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | value                    | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 否   | 菜单项文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | icon<sup>10+</sup>       | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 菜单项图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| enabled<sup>11+</sup>    | boolean                                                      | 否   | 是   | 菜单条目是否可进行交互。<br/>true：菜单条目可以进行交互；false：菜单条目不可以进行交互。<br/>默认值：true<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| enabled<sup>11+</sup>    | boolean                                                      | 否   | 是   | 菜单项是否可进行交互。<br/>true：菜单项可以进行交互；false：菜单项不可以进行交互。<br/>默认值：true<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | action                   | ()&nbsp;=&gt;&nbsp;void                                      | 否   | 否   | 点击菜单项的事件回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | 否   | 是   | 设置菜单项图标。通过Modifier配置菜单项图标，若同时配置symbolIcon和icon的情况下，icon图标不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 
@@ -243,7 +243,7 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 | 名称                          | 类型                                   | 只读 | 可选 | 说明                                                         |
 | ----------------------------- | -------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | title                         | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 菜单标题。<br>**说明：**<br/>仅在content设置为Array\<[MenuElement](#menuelement)\> 时生效。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| showInSubWindow<sup>11+</sup> | boolean                                | 否   | 是   | 是否在子窗口显示菜单。<br/>true：在子窗口显示菜单；false：不在子窗显示菜单。<br/>默认值：2in1设备上为true，其他设备为false。<br>**说明：** <br/>仅对2in1设备生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| showInSubWindow<sup>11+</sup> | boolean                                | 否   | 是   | 是否在子窗口显示菜单。<br/>true：在子窗口显示菜单；false：不在子窗口显示菜单。<br/>默认值：2in1设备上为true，其他设备为false。<br>**说明：** <br/>仅对2in1设备生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ContextMenuOptions<sup>10+</sup>
 
@@ -264,7 +264,7 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 | preview<sup>11+</sup> | [MenuPreviewMode](#menupreviewmode11)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 长按悬浮菜单或使用[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)显示菜单的预览内容样式，可以为目标组件的截图，也可以为用户自定义的内容。<br/>默认值：MenuPreviewMode.NONE，无预览内容。<br/>**说明：**<br />- 不支持[responseType](ts-appendix-enums.md#responsetype8)为ResponseType.RightClick时触发，如果[responseType](ts-appendix-enums.md#responsetype8)为ResponseType.RightClick，则不会显示预览内容。<br />- 当未设置preview参数或preview参数设置为MenuPreviewMode.NONE时，enableArrow参数生效。<br />- 当preview参数设置为MenuPreviewMode.IMAGE或CustomBuilder时，enableArrow为true时也不显示箭头。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | previewAnimationOptions<sup>11+</sup> | [ContextMenuAnimationOptions](#contextmenuanimationoptions11) | 否   | 是   | 控制长按预览的显示效果。<br/>默认值：{ scale: [0.95, 1.1], transition: undefined, hoverScale: undefined }。<br/>**说明：**<br />倍率设置参数小于等于0时，不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | previewBorderRadius<sup>19+</sup>  | [BorderRadiusType](#borderradiustype19) | 否   | 是   | 设置预览图边框圆角半径。<br/>默认值：16vp <br />**说明：** <br /> 当水平方向上两个圆角半径之和的最大值超过预览图的宽度，或者垂直方向上两个圆角半径之和的最大值超过预览图的高度时，应采用预览图所能允许的最大圆角半径值。<br/>圆角设置越大，圆角动画变化越快。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19 <br/>**ArkTS-Sta起始版本：** 23 |
-| layoutRegionMargin<sup>13+</sup>  | [Margin](ts-types.md#margin) | 否   | 是   | 设置预览图与菜单布局时距上下左右边界的最小边距。<br />**说明：** <br/> 仅支持vp、px、fp、lpx、百分比。<br/> 当margin设置异常值或负值时，按默认值处理。<br/> 若preview为CustomBuilder，设置margin.left或margin.right时，预览图取消最大栅格的宽度限制。<br/> 注意应避免设置过大的margin导致布局区域变小，使得预览图和菜单无法正常布局。<br />当水平方向上margin之和超过布局最大宽度时，margin.left和margin.right均不生效，按默认值处理。<br/> 当垂直方向上margin之和超过布局最大高度时，margin.top和margin.bottom均不生效，按默认值处理。<br/>边距默认值为左右边距16vp，上边距16vp, 下边距为4vp。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 13 <br/>**ArkTS-Sta起始版本：** 23 |
+| layoutRegionMargin<sup>13+</sup>  | [Margin](ts-types.md#margin) | 否   | 是   | 设置预览图与菜单布局时距上下左右边界的最小边距。<br />**说明：** <br/> 仅支持vp、px、fp、lpx、百分比。<br/> 当margin设置异常值或负值时，按默认值处理。<br/> 若preview为CustomBuilder，设置margin.left或margin.right时，预览图取消最大栅格的宽度限制。<br/> 注意应避免设置过大的margin导致布局区域变小，使得预览图和菜单无法正常布局。<br />当水平方向上margin之和超过布局最大宽度时，margin.left和margin.right均不生效，按默认值处理。<br/> 当垂直方向上margin之和超过布局最大高度时，margin.top和margin.bottom均不生效，按默认值处理。<br/>边距默认值为左右边距16vp，上边距16vp，下边距为4vp。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 13 <br/>**ArkTS-Sta起始版本：** 23 |
 | previewScaleMode<sup>20+</sup> | [PreviewScaleMode](#previewscalemode20枚举说明) | 否 | 是 | 预览图缩放方式。<br />默认值：PreviewScaleMode.AUTO<br />**说明：**<br />布局空间不足时，控制预览图的缩放方式。未设置或设置undefined按照PreviewScaleMode.AUTO处理。当设置成PreviewScaleMode.CONSTANT时，如果预览图过大，剩余的空间不足以放置菜单时，菜单将重叠显示在预览图之下。<br />预览图的最大宽高不会超过预览图最大可布局区域（窗口大小减去上下左右的安全边距）。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 | availableLayoutArea<sup>20+</sup> | [AvailableLayoutArea](#availablelayoutarea20枚举说明) | 否 | 是 | 设置预览图宽高的可布局区域，预览图的百分比依据此设置计算，最终可能因安全区限制而被压缩或裁剪。<br /> **说明：** <br />未设置或设置为undefined时，百分比依据窗口大小计算。若设置为AvailableLayoutArea.SAFE_AREA，预览图的可布局区域为窗口大小减去上下左右的安全边距。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 | onAppear              | ()&nbsp;=&gt;&nbsp;void                                      | 否   | 是   | 菜单弹出后的事件回调。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23                                       |
@@ -1607,9 +1607,9 @@ struct Index {
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
     }
   }
 
@@ -1687,9 +1687,9 @@ struct Index {
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" } as MenuItemOptions)
     }
   }
 

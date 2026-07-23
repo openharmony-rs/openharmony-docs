@@ -1,8 +1,8 @@
 # @ohos.screen (屏幕)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -28,7 +28,7 @@ import { screen } from '@kit.ArkUI';
 
 getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 
-获取所有的屏幕，使用callback异步回调。
+获取所有的屏幕对象，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -99,7 +99,7 @@ screen.getAllScreens((err: BusinessError | null, data: Array<screen.Screen> | un
 
 getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 
-获取所有的屏幕，使用Promise异步回调。
+获取所有的屏幕对象，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1166,7 +1166,7 @@ ArkTS-Dyn: setVirtualScreenSurface(screenId:number, surfaceId: string, callback:
 
 ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-设置虚拟屏幕的surface，表示当前虚拟屏用于显示对应surface中的内容，使用callback异步回调。
+设置虚拟屏幕的surface，表示虚拟屏幕内容显示在对应surface上。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1264,7 +1264,7 @@ ArkTS-Dyn: setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&
 
 ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt;void&gt;
 
-设置虚拟屏幕的surface，表示当前虚拟屏用于显示对应surface中的内容，使用Promise异步回调。
+设置虚拟屏幕的surface，表示虚拟屏幕内容显示在对应surface上。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2560,9 +2560,7 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 **设备行为差异：**
 
-- 针对Phone、Tablet设备：在[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)下调用不生效不报错；在非[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
-- 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
-- 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
+仅支持有线连接的外接显示器作为[扩展屏](../../displaymanager/display-terminology.md#扩展屏)时设置屏幕方向。在其他屏幕上调用，或该外接显示器作为[镜像屏](../../displaymanager/display-terminology.md#镜像屏)时，返回1400001错误码。
 
 **参数：**
 
@@ -2584,6 +2582,7 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
+| 1400001 | Invalid display or screen. Possible cause: The screen is not a wired external display in extended mode. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -145,7 +145,7 @@ The shared element transition requires the [geometryTransition](../reference/api
 - Execute navigation operations inside an [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) closure.
 - Apply [geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) to the content components, not to the **NavDestination** itself.
 
-For details, see [Shared Element Transition](./arkts-navigation-animation.md#shared-element-transition).
+For details, see [Shared Element Transition](./arkts-navigation-animation.md#defining-a-shared-element-transition).
 
 ## Navigation Animation Becomes Abnormal After zIndex Is Set on NavDestination
 

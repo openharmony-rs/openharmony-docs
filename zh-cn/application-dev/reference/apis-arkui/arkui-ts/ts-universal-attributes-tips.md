@@ -16,7 +16,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 目前支持通过外接鼠标、手写笔以及触控板触发。
+> - Tips控制依赖设备可以触发[悬浮事件](./ts-universal-events-hover.md)，对于无法触发[悬浮事件](./ts-universal-events-hover.md)的硬件设备无法使用Tips控制。
 
 ## bindTips
 
@@ -28,7 +28,7 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 > **说明：**
 >
-> 当绑定bindTips的组件设置通用属性[enable](ts-universal-attributes-enable.md#enabled)为false时，仍支持弹出悬浮气泡。
+> 当绑定bindTips的组件设置通用属性[enabled](ts-universal-attributes-enable.md#enabled)为false时，仍支持弹出悬浮气泡。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -44,7 +44,7 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| message|  ArkTS-Dyn: [TipsMessageType](#tipsmessagetype)<br/>ArkTS-Sta: [TipsMessageType](#tipsmessagetype) \| undefined                                                     | 是   | 弹窗信息内容。设置为undefined时，默认不显示信息内容。 |
+| message|  ArkTS-Dyn: [TipsMessageType](#tipsmessagetype)<br/>ArkTS-Sta: [TipsMessageType](#tipsmessagetype) \| undefined                                                     | 是   | 悬浮气泡信息内容。设置为undefined时，默认不显示信息内容。 |
 | options  | [TipsOptions](#tipsoptions类型说明) | 否   | 配置悬浮气泡的参数。<br/>默认值：<br/>{<br/>appearingTime: 700,<br/>disappearingTime: 300,<br/>appearingTimeWithContinuousOperation: 300,<br/>disappearingTimeWithContinuousOperation: 0, enableArrow: true,<br/>arrowPointPosition: ArrowPointPosition.CENTER,<br/>arrowWidth: 16,arrowHeight: 8,<br/>showAtAnchor: TipsAnchorType.TARGET<br/>} |
 
 **返回值：**
@@ -75,7 +75,7 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 type TipsMessageType = ResourceStr | StyledString
 
-悬浮气泡弹窗信息。
+悬浮气泡信息类型。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 

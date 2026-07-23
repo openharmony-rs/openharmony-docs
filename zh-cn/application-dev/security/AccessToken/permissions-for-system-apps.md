@@ -525,7 +525,7 @@
 
 ## ohos.permission.SET_ABILITY_CONTROLLER
 
-允许应用拦截Ability组件启动，主要用测试调试，比如：稳定性金刚测试。
+允许应用拦截Ability组件启动，主要用于测试调试，比如：稳定性金刚测试。
 
 **权限级别**：system_basic
 
@@ -4104,7 +4104,7 @@
 
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
-允许系统应用或者系统服务为三方应用授予存图片和视频的短时访问权限。
+允许系统应用或者系统服务为三方应用授予存储图片和视频的短时访问权限。
 
 **权限级别**：system_core
 
@@ -4439,25 +4439,6 @@
 允许系统应用获取指定应用页面信息。
 
 **权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**起始版本**：18
-
-## ohos.permission.ACCESS_DDK_USB_SERIAL
-
-允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
-
-支持以下类型的外设扩展驱动开发：
-
-外设以USB总线接入主机，且满足：
-
-1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
-2. 外设支持通过USB接口模拟传统的串行通信。
-
-**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -5463,7 +5444,7 @@
 
 允许系统应用拉起其他应用卡片添加到桌面的预览面板。
 
-获取该权限后，应用可以拉起其他应用卡片加桌预览面板，以引导用户将希望分发的卡片添加到桌面。
+获取该权限后，应用可以拉起其他应用卡片添加到桌面预览面板，以引导用户将希望分发的卡片添加到桌面。
 
 **权限级别**：system_basic
 

@@ -2,7 +2,7 @@
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
 <!--Owner: @qxqxqxqxqx-->
-<!--Designer: @Marssssss-->
+<!--Designer: @peter__1024-->
 <!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
 
