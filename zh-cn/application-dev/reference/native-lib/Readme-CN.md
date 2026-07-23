@@ -42,8 +42,8 @@
 <!--RP1-->
 <!--RP1End-->    
 - 附录<!--appendixes-->
-  - [libc中没有导出的符号列表](musl-peculiar-symbol.md)
-  - [NDK musl-libc接口受权限影响的说明](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)
+  - [Native api中没有导出的符号列表](musl-peculiar-symbol.md)
+  - [NDK涉及的musl libc接口使用限制的说明](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)
   - [Native api中导出的EGL符号列表](egl-symbol.md)
   - [Native api中导出的ICU4C符号列表](icu4c-symbol.md)
   - [Native api中导出的OpenGL ES 3.2符号列表](openglesv3-symbol.md)
