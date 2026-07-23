@@ -15,7 +15,7 @@ The key concepts involved in this module are as follows:
 
 **APIs used in combination**
 
-The event communication of this module invovles three processes: subscription, publishing, and ordered event. The subscription process and publishing process are associated through the event name. The publisher and subscriber do not need to be aware of each other.
+The event communication of this module involves three processes: subscription, publishing, and ordered event. The subscription process and publishing process are associated through the event name. The publisher and subscriber do not need to be aware of each other.
 
 **Subscription process: Create a subscriber, subscribe to an event, receive the event, and cancel the subscription.**
 
