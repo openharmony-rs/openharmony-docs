@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=62b5c3450a87bdc5e575e58aa760685da7a65e8a translatedAt=2026-07-01T11:08:58.625Z pushedAt=2026-07-02T02:07:18.676Z -->
+<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:13:35.947Z pushedAt=2026-07-23T02:26:57.219Z -->
 
 In ArkUI application development, proper use of state management within components directly affects the application performance and development efficiency. However, developers often have insufficient understanding of the update mechanism in practice. As a result, the component behavior is abnormal or the rendering efficiency is reduced. This section describes the common problems and solutions of component state management.
 
@@ -22,7 +22,7 @@ The rendering process is as follows:
 
    - Create a **Column** component.
 
-   - Create a Text component. **this.count++** is triggered when the **Text** component is created.
+   - Create a **Text** component. **this.count++** is triggered when the **Text** component is created.
 
    - The value change of **count** triggers the re-render of the **Text** component.
 
@@ -99,13 +99,13 @@ The rendering process in the preceding example is as follows:
 
 Therefore, modifying state variables within the build method constitutes a critical error. When the error "FIX THIS APPLICATION ERROR: @Component ...has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!" log is found, immediate correction is required even if no immediate severe consequences are observed.
 
-## The state variable is not deregistered during registration callback. As a result, memory leakage occurs.
+## Memory Leak Caused by Changing State Variables in Callbacks Without Unregistering
 
 You can register the arrow function in [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) to change the state variables in the component.
 
 >**NOTE**
 >
->The registered function needs to be left empty in [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) to prevent the arrow function from capturing the **this** instance of the custom component. As a result, the custom component cannot be released, causing memory leakage.
+>The registered function needs to be left empty in [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) to prevent the arrow function from capturing the **this** instance of the custom component. Otherwise, the custom component cannot be released, causing a memory leak.
 
 <!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->     
 
@@ -275,7 +275,7 @@ struct Index {
 
 ### State Management (V1)
 
-In state management V1, a layer of proxy is added to class objects decorated by \@Observed and objects of the Class, Date, Map, Set, and Array types decorated by state variables such as @State to observe the changes of layer-1 attributes or API calls. When a complex constant is repeatedly assigned to a state variable, the system may determine that the old and new values are different because a proxy is added. As a result, unnecessary update occurs.
+In state management V1, a layer of proxy is added to class objects decorated by \@Observed and objects of the Class, Date, Map, Set, and Array types decorated by state variables such as @State to observe the changes of layer-1 attributes or API calls. When a complex constant is repeatedly assigned to a state variable, the system may determine that the old and new values are different because a proxy is added. As a result, an unnecessary update occurs.
 
 <!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) -->  
 
@@ -598,7 +598,7 @@ struct Parent {
 
 ## Performance Deteriorates Due to Too Many Components Associated with State Variables
 
-It is recommended that the number of components associated with each state variable be fewer than 20. Precisely controlling the number of components associated with a state variable can reduce unnecessary component refreshes and improve refresh efficiency. Sometimes, developers bind the same state variable to multiple sibling component attributes. When the state changes, these components are updated synchronously, causing unnecessary refreshes. When component complexity is high, this significantly affects overall performance. Conversely, binding the state variable to the parent component of these components can reduce the number of components that need to be refreshed, improving performance. In app development, you can use HiDumper to view the number of components associated with a state variable.
+It is recommended that the number of components associated with each state variable be fewer than 20. Precisely controlling the number of components associated with a state variable can reduce unnecessary component refreshes and improve refresh efficiency. Sometimes developers bind the same state variable to multiple sibling component attributes. When the state changes, these components are updated synchronously, causing unnecessary refreshes. When component complexity is high, this significantly affects overall performance. Conversely, binding the state variable to the parent component of these components can reduce the number of components that need to be refreshed, thereby improving performance. During app development, HiDumper can be used to view the number of components associated with a state variable.<!--Del--> For details, see [State Variable Component Locating Tool Practice](../../performance/state-variable-dfx-practice.md).<!--DelEnd-->
 
 **Incorrect Usage**
 
@@ -850,7 +850,7 @@ struct Index {
 }
 ```
 
-Directly operating on the state variable invokes the computation function three times. The [time consumption](../ui-inspector-profiler.md#trace-debugging-capability) command. The result is as follows:
+Directly operating the state variable invokes the computation function three times. The [time consumption](../ui-inspector-profiler.md#trace-debugging-capability) result is as follows:
 
 ![hp_arkui_use_state_var](figures/hp_arkui_use_state_var.png)
 
