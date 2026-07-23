@@ -294,7 +294,7 @@ try {
     'temperature': '22c',
     'time': '22:00'
   };
-let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formAgent.updateFormCrossBundle(formId, obj).then(() => {
     console.info('formAgent updateFormCrossBundle success');
   }).catch((error: BusinessError) => {
@@ -319,7 +319,7 @@ try {
     'temperature': '22c',
     'time': '22:00'
   };
-let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formAgent.updateFormCrossBundle(formId, obj).then(() => {
     console.info('formAgent updateFormCrossBundle success');
   }).catch((error: BusinessError) => {
