@@ -78,7 +78,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 
 <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
 
-```typescript
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
@@ -88,28 +88,29 @@ class Options {
   public offset?: number;
   public length?: number;
 }
+
 // ...
-let writtenBytes: number = 0;
-pendingRecordingWrite = Promise.resolve();
-let path = context.cacheDir;
-let filePath = path + '/S16LE_2_48000.pcm';
-recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-onReadData = (buffer: ArrayBuffer) => {
-  let recordingBuffer = buffer.slice(0);
-  let writeOffset = writtenBytes;
-  writtenBytes += recordingBuffer.byteLength;
-  let options: Options = {
-    offset: writeOffset,
-    length: recordingBuffer.byteLength
-  }
-  pendingRecordingWrite = pendingRecordingWrite.then(async () => {
-    await fs.write(recordingFile.fd, recordingBuffer, options);
-  }).catch((error: BusinessError) => {
-    console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
-  });
-};
-// ...
-audioCapturer.on('readData', onReadData);
+  let writtenBytes: number = 0;
+  pendingRecordingWrite = Promise.resolve();
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  onReadData = (buffer: ArrayBuffer) => {
+    let recordingBuffer = buffer.slice(0);
+    let writeOffset = writtenBytes;
+    writtenBytes += recordingBuffer.byteLength;
+    let options: Options = {
+      offset: writeOffset,
+      length: recordingBuffer.byteLength
+    }
+    pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+      await fs.write(recordingFile.fd, recordingBuffer, options);
+    }).catch((error: BusinessError) => {
+      console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+    });
+  };
+  // ...
+      audioCapturer.on('readData', onReadData);
 ```
 
 3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8)方法进入running状态，开始录制音频。
