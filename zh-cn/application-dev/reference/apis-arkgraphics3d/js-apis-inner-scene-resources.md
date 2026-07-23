@@ -500,7 +500,7 @@ function restart(): void {
 
 seek(position: number): void
 
-将动画进度跳转到指定位置，不改变播放状态（已播放仍继续播放，已暂停仍暂停）。
+将动画进度跳转到指定位置，不改变动画的播放状态（已播放仍继续播放，已暂停仍暂停）。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
