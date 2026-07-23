@@ -12,7 +12,7 @@
 
 应用需要控制AVPlayer实例数量，播放结束后应及时调用release()释放资源。建议同时持有的AVPlayer实例数量不超过合理范围，避免内存消耗过大触发系统保护机制终止应用。
 
-音视频播放开发指导请参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和状态机[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
+音视频播放开发指导请参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和状态转换[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
 
 > **说明：**
 >
@@ -1540,14 +1540,6 @@ getPlaybackInfo(): Promise<PlaybackInfo>
 | ------------------------------------------------------ | ------------------------------------------------- |
 | Promise<[PlaybackInfo](arkts-apis-media-i.md#playbackinfo12)> | Promise对象。resolve返回PlaybackInfo对象，包含播放过程中的信息，如播放状态、缓冲状态等详细播放信息；reject返回错误信息。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                  |
-| -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-
 **示例：**
 
 ```ts
@@ -1590,14 +1582,6 @@ getPlaybackPosition(): number
 | 类型                                                   | 说明                                              |
 | ------------------------------------------------------ | ------------------------------------------------- |
 | number | 返回当前播放位置的时间，单位为毫秒（ms）。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                  |
-| -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. |
 
 **示例：**
 
@@ -3624,8 +3608,8 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| width    | number | 是   | 超分算法的目标输出视频宽度，取值范围为[320, 1920]，单位为像素。 |
-| height    | number | 是   | 超分算法的目标输出视频高度，取值范围为[320, 1080]，单位为像素。 |
+| width    | number | 是   | 超分算法的目标输出视频宽度，取值范围为[320, 1920]，单位为像素（px）。 |
+| height    | number | 是   | 超分算法的目标输出视频高度，取值范围为[320, 1080]，单位为像素（px）。 |
 
 **返回值：**
 
@@ -3795,14 +3779,6 @@ getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>
 | 类型                                                         | 说明                                               |
 | ------------------------------------------------------------ | -------------------------------------------------- |
 | Promise<[PlaybackMetrics](arkts-apis-media-t.md#playbackmetrics23)> | Promise对象。resolve返回PlaybackMetrics对象，包含播放器统计指标信息，如播放时长、缓冲时长、错误次数等统计数据；reject返回错误信息。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                  |
-| -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
 
 **示例：**
 
