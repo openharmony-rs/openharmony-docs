@@ -1,12 +1,14 @@
 # \@BuilderParam Decorator: Referencing the \@Builder Function
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:00:14.298Z pushedAt=2026-07-22T03:40:07.033Z -->
 
-When you create a [custom component](./arkts-create-custom-components.md) and add a specific function, for example, [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) to the component, if you directly embed an event method in the component, the function is added to all instances of the custom component. To solve this problem, ArkUI introduces the \@BuilderParam decorator. \@BuilderParam is used to decorate variables pointing to the \@Builder method. When initializing a custom component, you can use different methods (such as parameter modification, trailing closure, and borrowing arrow functions) to pass parameters to the custom build function decorated by \@BuilderParam. In the custom component, call \@BuilderParam to add specific functions to the component.
+When a developer creates a [custom component](./arkts-create-custom-components.md) and needs to add specific functions (such as [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)) to it, embedding event methods directly in the component causes all instances of that custom component to include this function. To address this issue, ArkUI introduces the [\@BuilderParam](../../reference/apis-arkui/arkui-ts/ts-universal-builderparam-dynamic.md#builderparam) decorator. \@BuilderParam is used to decorate variables that point to \@Builder methods. When initializing a custom component, you can use different methods (such as parameter modification, trailing closure, borrowing arrow functions, etc.) to pass parameters and assign values to the custom builder function decorated by \@BuilderParam. Inside the custom component, the specific function is added by calling \@BuilderParam.
 
 Before reading this topic, you are advised to read [\@Builder](./arkts-builder.md).
 
@@ -18,9 +20,7 @@ Before reading this topic, you are advised to read [\@Builder](./arkts-builder.m
 >
 > This decorator can be used in atomic services since API version 11.
 
-
 ## How to Use
-
 
 ### Initializing \@BuilderParam Decorated Methods
 
@@ -29,7 +29,7 @@ An \@BuilderParam decorated method can be initialized only by an \@Builder funct
 - Use the custom build function of the custom component or the global custom build function to initialize the method decorated by \@BuilderParam locally.
 
   <!-- @[builder_param_init_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethod.ets) -->
-  
+
   ``` TypeScript
   @Builder
   function overBuilder() {
@@ -51,11 +51,10 @@ An \@BuilderParam decorated method can be initialized only by an \@Builder funct
   }
   ```
 
-
 - Initialization from the parent component
 
   <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->  
-  
+
   ``` TypeScript
   @Component
   struct Child {
@@ -93,13 +92,12 @@ Effect
 
 ![builderparam-demo1](figures/builderparam-demo1.png)
 
-
 - **this** in the function body must point to the correct object.
 
   Example:
 
   <!-- @[builder_param_init_method_demo02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo02.ets) -->
-  
+
   ``` TypeScript
   @Component
   struct Child {
@@ -156,7 +154,6 @@ Effect
 
 ![builderparam-demo2](figures/builderparam-demo2.png)
 
-
 ## Constraints
 
 - The variable decorated with \@BuilderParam can be initialized only through the \@Builder function. For details, see [Initialized Value of @BuilderParam Must Be @Builder](#initialized-value-of-builderparam-must-be-builder).
@@ -169,7 +166,7 @@ Effect
 
 ### Component Initialization Through Parameters
 
-The method decorated by \@BuilderParam must match the type of the \@Builder method it points to.
+The method decorated with \@BuilderParam may be either parameterized or parameterless, but it must match the type of the \@Builder method it points to.
 
 <!-- @[builder_param_scene_init_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInitComponent.ets) -->
 
@@ -225,10 +222,10 @@ struct Parent {
   }
 }
 ```
+
 Effect
 
 ![builderparam-demo3](figures/builderparam-demo3.png)
-
 
 ### Component Initialization Through Trailing Closure
 
@@ -298,6 +295,7 @@ struct CustomContainerUser {
   }
 }
 ```
+
 Effect
 
 ![builderparam-demo4](figures/builderparam-demo4.gif)
@@ -375,6 +373,7 @@ struct ParentPage {
   }
 }
 ```
+
 Effect
 
 ![builderparam-demo8](figures/builderparam-demo8.png)
@@ -470,7 +469,6 @@ struct ChildPage_BuilderParam {
 }
 ```
 
-
 <!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) --> 
 
 ``` TypeScript
@@ -499,9 +497,9 @@ struct HelloWorldPage {
 }
 ```
 
-
 **router_map.json**
 This file is stored in the **resources/base/profile** directory of the project.
+
 ```ts
 {
   "routerMap": [
@@ -513,6 +511,7 @@ This file is stored in the **resources/base/profile** directory of the project.
   ]
 }
 ```
+
 **module.json5**
 This file is located in the root directory of the application module, for example, **entry/src/main/module.json5**.
 
@@ -612,6 +611,7 @@ struct ParentPage {
   }
 }
 ```
+
 Effect
 
 ![builderparam-demo5](figures/builderparam-demo5.png)
@@ -675,7 +675,7 @@ struct ParentPage {
         // Pass this.componentBuilder to @BuilderParam customBuilderParam of the child component ChildPage.
         // this points to ChildPage, that is, the value of the label variable is 'Child Page'.
         customBuilderParam: this.componentBuilder,
-        // Pass ():void=>{this.componentBuilder()} to @BuilderParam customChangeThisBuilderPara of the ChildPage component.
+        // Pass ():void=>{this.componentBuilder()} to the @BuilderParam customChangeThisBuilderParam of the child component ChildPage.
         // this of the arrow function points to the host object, so the value of the label variable is 'Parent Page'.
         customChangeThisBuilderParam: (): void => {
           this.componentBuilder()
@@ -699,10 +699,10 @@ struct ParentPage {
   }
 }
 ```
+
 Effect
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
-
 
 ## FAQs
 
@@ -852,7 +852,7 @@ struct ChildPage {
 }
 ```
 
-The variables decorated by \@Require must be initialized from external systems.
+The variables decorated with \@Require must be initialized from outside.
 
 [Correct usage]
 
@@ -958,3 +958,5 @@ struct ChildPage {
   }
 }
 ```
+
+<!--no_check-->
