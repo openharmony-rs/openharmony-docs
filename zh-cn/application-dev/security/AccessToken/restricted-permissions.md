@@ -1496,3 +1496,17 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.DEFAULT_WEB_BROWSER
+
+一个表明该应用能否作为用户默认浏览器的 Entitlement（授权）
+
+<!--RP101--><!--RP101End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0
