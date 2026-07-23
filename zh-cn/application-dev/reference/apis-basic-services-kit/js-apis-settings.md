@@ -966,7 +966,7 @@ settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => 
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback\<object>): void
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用callback异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用callback异步回调。
 
 > **说明：**
 >
