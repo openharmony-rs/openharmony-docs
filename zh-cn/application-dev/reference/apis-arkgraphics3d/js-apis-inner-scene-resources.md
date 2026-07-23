@@ -1,4 +1,4 @@
-# SceneResource
+# SceneResources
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
