@@ -158,7 +158,7 @@ updateFormCrossBundle(formId: string, formBindingData: formBindingData.FormBindi
 
 **系统接口：** 此接口为系统接口。
 
-**起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 
