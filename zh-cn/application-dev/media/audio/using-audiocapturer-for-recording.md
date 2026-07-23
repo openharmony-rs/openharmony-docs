@@ -71,40 +71,46 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 2. 调用[on('readData')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onreaddata11)方法，订阅监听音频数据读入回调。
    > **注意：**
    > 
-   > - **线程管理**：不建议使用多线程来处理数据读取。若需使用多线程读取数据，需要做好线程管理。
-   > - **线程耗时**：`readData` 方法所在的线程中，不建议执行耗时任务。否则可能会导致数据处理线程响应回调延迟，进而引发录音数据缺失、卡顿、杂音等音频效果问题。
-   > - **注册回调**：开发者应避免在主线程中注册回调，以免被其他业务阻塞导致响应回调不及时造成卡顿。建议使用独立的异步线程池处理回调。
+   > - **主线程阻塞风险**：录音流会持续产生音频数据，对回调响应的及时性要求较高。ArkTS应用的主线程通常负责UI刷新、用户交互和部分业务回调，如果在主线程中执行同步文件读写、复杂计算、频繁日志打印等耗时任务，会导致主线程无法及时处理录音数据回调。对于AudioCapturer，`readData`回调执行不及时会影响音频缓冲区流转，可能造成录音数据缺失、卡顿或杂音。因此，应该避免在主线程中注册回调，以免被其他业务阻塞导致响应回调不及时造成卡顿。录音数据回调中只做必要的轻量处理，例如复制数据、更新少量状态，然后尽快返回。文件保存、编码、网络传输等耗时处理应按业务需要投递到异步任务或Worker中执行。
+   > - **线程管理**：不建议直接使用多线程处理数据读取。如果需要将数据保存、编码、网络传输等耗时任务投递到异步任务或Worker中处理，要求做好线程管理。
+   > - **数据缓存**：`readData`回调返回的ArrayBuffer对应底层音频缓冲区，回调返回后该缓冲区可能被系统复用。如果需要在回调结束后继续处理数据，应先复制ArrayBuffer，再投递到异步任务中处理。
+   > - **接口调用**：`readData`回调仅用于获取音频数据，不建议在回调中调用AudioCapturer的start、stop、release、off等接口。注册`readData`回调后，同一个AudioCapturer实例不建议再调用已废弃的read接口读取数据。
 
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->   
-   
-   ``` TypeScript
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
-   import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
-   
-   // ...
-   class Options {
-     public offset?: number;
-     public length?: number;
-   }
-   
-   // ...
-     let writtenBytes: number = 0;
-     let path = context.cacheDir;
-     let filePath = path + '/S16LE_2_48000.pcm';
-     file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-     onReadData = (buffer: ArrayBuffer) => {
-       // ...
-       let options: Options = {
-         offset: writtenBytes,
-         length: buffer.byteLength
-       }
-       fs.writeSync(file.fd, buffer, options);
-       writtenBytes += buffer.byteLength;
-     };
-     // ...
-         audioCapturer.on('readData', onReadData);
-   ```
+<!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
+
+```typescript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
+
+// ...
+class Options {
+  public offset?: number;
+  public length?: number;
+}
+// ...
+let writtenBytes: number = 0;
+pendingRecordingWrite = Promise.resolve();
+let path = context.cacheDir;
+let filePath = path + '/S16LE_2_48000.pcm';
+recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+onReadData = (buffer: ArrayBuffer) => {
+  let recordingBuffer = buffer.slice(0);
+  let writeOffset = writtenBytes;
+  writtenBytes += recordingBuffer.byteLength;
+  let options: Options = {
+    offset: writeOffset,
+    length: recordingBuffer.byteLength
+  }
+  pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+    await fs.write(recordingFile.fd, recordingBuffer, options);
+  }).catch((error: BusinessError) => {
+    console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+  });
+};
+// ...
+audioCapturer.on('readData', onReadData);
+```
 
 3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8)方法进入running状态，开始录制音频。
 
@@ -143,24 +149,25 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 
 5. 调用[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)方法销毁实例，释放资源。
-   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->   
-   
-   ``` TypeScript
-   import { BusinessError } from '@kit.BasicServicesKit';
-   // ...
-       try {
-         await audioCapturer.release();
-         capturerMuteHintEnabledByApp = false;
-         console.info(`${TAG}: Capturer release success.`);
-         // ...
-       } catch (err) {
-         let error = err as BusinessError;
-         // ...
-         console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
-       } finally {
-         fs.closeSync(file.fd);
-       }
-   ```
+<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->   
+
+```typescript
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+try {
+  await audioCapturer.release();
+  capturerMuteHintEnabledByApp = false;
+  console.info(`${TAG}: Capturer release success.`);
+  // ...
+} catch (err) {
+  let error = err as BusinessError;
+  // ...
+  console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
+} finally {
+  await pendingRecordingWrite;
+  fs.closeSync(recordingFile.fd);
+}
+```
 
 ### 完整示例
 
@@ -208,29 +215,32 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 };
 
 let file: fs.File;
+let recordingFile: fs.File;
 let onReadData: Callback<ArrayBuffer>;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
+let pendingRecordingWrite: Promise<void> = Promise.resolve();
 
 // ...
 
 async function initRecordingResources(context: common.UIAbilityContext): Promise<void> {
   let writtenBytes: number = 0;
+  pendingRecordingWrite = Promise.resolve();
   let path = context.cacheDir;
   let filePath = path + '/S16LE_2_48000.pcm';
-  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   onReadData = (buffer: ArrayBuffer) => {
-    if (capturerMuteHintEnabledByApp) {
-      let view = new DataView(buffer);
-      for (let i = 0; i < buffer.byteLength; i++) {
-        view.setUint8(i, 0);
-      }
-    }
+    let recordingBuffer = buffer.slice(0);
+    let writeOffset = writtenBytes;
+    writtenBytes += recordingBuffer.byteLength;
     let options: Options = {
-      offset: writtenBytes,
-      length: buffer.byteLength
+      offset: writeOffset,
+      length: recordingBuffer.byteLength
     }
-    fs.writeSync(file.fd, buffer, options);
-    writtenBytes += buffer.byteLength;
+    pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+      await fs.write(recordingFile.fd, recordingBuffer, options);
+    }).catch((error: BusinessError) => {
+      console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+    });
   };
 }
 
@@ -467,7 +477,8 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
       // ...
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
     } finally {
-      fs.closeSync(file.fd);
+      await pendingRecordingWrite;
+      fs.closeSync(recordingFile.fd);
     }
   }
 }
@@ -483,7 +494,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
 
 ### 设置录音流静音提示
 
-从API version 24开始，当应用已在业务侧将某条录音流静音时，可以调用[setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24)接口将该状态上报给系统音频模块，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口不会实际触发静音，也不会对录音数据做静音处理。它只是告知系统音频模块，应用已将当前录音流进行过静音。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
+从API version 24开始，当应用已在业务侧将某条录音流静音时，可以调用[setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24)接口将该状态上报给系统音频模块，并记录最近一次设置成功的值，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口不会实际触发静音，也不会对录音数据做静音处理。它只是告知系统音频模块，应用已将当前录音流进行过静音。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
 
 该接口仅允许在AudioCapturer处于running状态时调用，否则会返回错误码`6800103`。如果同一录音流同时设置了流级静音提示和会话级静音提示[setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24)，流级静音提示优先级更高，以流级设置值为准。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。以下示例中，`muteHint`为`true`表示上报静音提示，`false`表示解除静音提示；`capturerMuteHintEnabledByApp`为应用本地维护的状态，记录当前设置的muteHint的值。
 
@@ -506,4 +517,4 @@ try {
 
 回声消除功能可在支持的设备上有效消除录音过程中的回声干扰，提升音频采集质量。开发者可通过指定特定的Mic音频源[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)（SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_LIVE）来启用该功能，系统将会自动对采集的音频信号进行回声消除处理。
 
-在启用前，建议先调用[isAcousticEchoCancelerSupported](../../reference//apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isacousticechocancelersupported20)接口（从API version 20开始支持）查询当前设备对音频输入源类型[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)是否支持回声消除功能，以确保功能的可用性。若支持，则可在创建音频录制构造器时设置相应的Mic音频源，从而激活回声消除处理流程。
+在启用前，建议先调用[isAcousticEchoCancelerSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isacousticechocancelersupported20)接口（从API version 20开始支持）查询当前设备对音频输入源类型[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)是否支持回声消除功能，以确保功能的可用性。若支持，则可在创建音频录制构造器时设置相应的Mic音频源，从而激活回声消除处理流程。
