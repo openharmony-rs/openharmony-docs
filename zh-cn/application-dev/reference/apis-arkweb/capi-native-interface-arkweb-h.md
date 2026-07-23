@@ -351,7 +351,7 @@ ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag, const char* data, 
 | const char* data | "Base64"或"URL"编码的字符串，不能为空。 |
 | const char* mimeType | 媒体类型，例如"text/html"，不能为空。 |
 | const char* encoding | 编码类型，例如"UTF-8"，不能为空。 |
-| const char* baseUrl | 指定的URL路径("http"/"https"/"data"协议),由Web组件分配给window.origin。 |
+| const char* baseUrl | 指定的URL路径（"http"/"https"/"data"协议），由Web组件分配给window.origin。 |
 | const char* historyUrl | 历史URL，当它不为空时，可以通过历史记录来管理，实现前进和后退功能。 |
 
 **返回：**
