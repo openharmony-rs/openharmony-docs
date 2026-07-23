@@ -69,7 +69,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
-| 801      | Capability not supported. |
+| 801      | Capability not supported. [since 18] |
 
 **示例：**
 
@@ -159,7 +159,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.|
 
 **示例：**
@@ -217,7 +217,7 @@ hasRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -264,7 +264,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -313,7 +313,7 @@ removeRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -370,7 +370,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -438,7 +438,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -501,7 +501,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -565,7 +565,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -627,7 +627,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -681,7 +681,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -739,7 +739,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -824,7 +824,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -1111,7 +1111,7 @@ closePipe(pipe: USBDevicePipe): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -1167,7 +1167,7 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400005 | Database operation exception. |
 | 14401001 | The target USBAccessory not matched. |
@@ -1213,7 +1213,7 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400005 | Database operation exception. |
 | 14401001 | The target USBAccessory not matched. |
@@ -1255,7 +1255,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400005 | Database operation exception. |
 | 14401001 | The target USBAccessory not matched. |
@@ -1299,7 +1299,7 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
@@ -1342,7 +1342,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14401001 | The target USBAccessory not matched. |
@@ -1395,7 +1395,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**

@@ -91,7 +91,7 @@ type AcbState = nearlinkConstant.AcbState
 | [nearlinkConstant.AcbState](js-apis-nearlink-constant.md#acbstate) | 和远端设备的逻辑链路连接状态。 |
 
 
-## createRemoteDevice
+## remoteDevice.createRemoteDevice
 
 createRemoteDevice(address: string): RemoteDevice
 
@@ -117,7 +117,7 @@ createRemoteDevice(address: string): RemoteDevice
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -142,7 +142,7 @@ try {
 
 ## RemoteDevice
 
-提供远端设备的操作方法，使用前需要使用[remoteDevice.createRemoteDevice](#createremotedevice)方法创建一个远端设备[RemoteDevice](#remotedevice)实例。
+提供远端设备的操作方法，使用前需要使用[remoteDevice.createRemoteDevice](#remotedevicecreateremotedevice)方法创建一个远端设备[RemoteDevice](#remotedevice)实例。
 
 一个设备只需要创建一次，无需多次创建。
 
@@ -174,7 +174,7 @@ startPairing(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -224,7 +224,7 @@ getPairingState(): PairingState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -271,7 +271,7 @@ getDeviceName(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -318,7 +318,7 @@ getDeviceClass(): DeviceClass
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -365,7 +365,7 @@ getConnectionState(): ConnectionState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -412,7 +412,7 @@ getAcbState(): AcbState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -459,7 +459,7 @@ getDeviceInformation(): DeviceInformation
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -501,7 +501,7 @@ try {
 | manufacturerData | string | 否 | 否 | 厂商信息。 |
 | modelData | string | 否 | 否 | 设备型号信息。 |
 
-### onPairingStateChange
+### remoteDevice.onPairingStateChange
 
 onPairingStateChange(callback: Callback&lt;PairingStateParam&gt;): void
 
@@ -523,7 +523,7 @@ onPairingStateChange(callback: Callback&lt;PairingStateParam&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -546,7 +546,7 @@ try {
 ```
 
 
-### offPairingStateChange
+### remoteDevice.offPairingStateChange
 
 offPairingStateChange(callback?: Callback&lt;PairingStateParam&gt;): void
 
@@ -566,7 +566,7 @@ offPairingStateChange(callback?: Callback&lt;PairingStateParam&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -585,7 +585,7 @@ try {
 }
 ```
 
-### onConnectionStateChange
+### remoteDevice.onConnectionStateChange
 
 onConnectionStateChange(callback: Callback&lt;ConnectionStateParam&gt;): void
 
@@ -607,7 +607,7 @@ onConnectionStateChange(callback: Callback&lt;ConnectionStateParam&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -630,7 +630,7 @@ try {
 ```
 
 
-### offConnectionStateChange
+### remoteDevice.offConnectionStateChange
 
 offConnectionStateChange(callback?: Callback&lt;ConnectionStateParam&gt;): void
 
@@ -650,7 +650,7 @@ offConnectionStateChange(callback?: Callback&lt;ConnectionStateParam&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -701,14 +701,14 @@ try {
 | -------- | -------- | -------- |
 | CONNECTION_SUCCESS | 0 | 表示连接成功。 |
 | CONNECTION_FAILURE | 1 | 表示连接失败。 |
-| CONNECTION_USER_DISCONNECT | 2 | 表示用户主动断连。 |
-| CONNECTION_FAIL_ACB_NUM_LIMITED | 3 | 表示ACB连接数量超过限制。 |
+| CONNECTION_LOCAL_DISCONNECT | 2 | 表示本地设备主动断连。 |
+| CONNECTION_REMOTE_DISCONNECT | 3 | 表示远端设备主动断连。 |
 | CONNECTION_FAIL_ACB_CONNECTION | 4 | 表示ACB连接失败（可能因为远端设备关闭、设备距离过远）。 |
 | CONNECTION_FAIL_SERVICE_DISCOVERY | 5 | 表示服务发现失败（可能服务发现超时）。 |
 | CONNECTION_FAIL_NO_AVAILABLE_SERVICE | 6 | 表示没有可连接/可用的profile。 |
 | CONNECTION_FAIL_CONNECTION_NUM_LIMITED | 7 | 表示连接数超出限制。 |
 
-### onAcbStateChange
+### remoteDevice.onAcbStateChange
 
 onAcbStateChange(callback: Callback&lt;AcbStateParam&gt;): void
 
@@ -730,7 +730,7 @@ onAcbStateChange(callback: Callback&lt;AcbStateParam&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -753,7 +753,7 @@ try {
 ```
 
 
-### offAcbStateChange
+### remoteDevice.offAcbStateChange
 
 offAcbStateChange(callback?: Callback&lt;AcbStateParam&gt;): void
 
@@ -773,7 +773,7 @@ offAcbStateChange(callback?: Callback&lt;AcbStateParam&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

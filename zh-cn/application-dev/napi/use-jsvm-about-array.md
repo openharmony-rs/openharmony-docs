@@ -384,7 +384,7 @@ const char *SRC_CALL_NATIVE = R"JS(
 
 预计的输出结果：
 ```txt
-CreateDataView success, returnLength: 12
+JSVM CreateDataView success, returnLength: 12
 JSVM CreateDataView success, isArraybuffer: 1
 JSVM CreateDataView success, returnOffset: 4
 ```

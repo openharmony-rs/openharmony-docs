@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Require是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）是否需要构造传参的一个装饰器。
+[\@Require](../../reference/apis-arkui/arkui-ts/ts-universal-require-dynamic.md#require)是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）是否需要构造传参的一个装饰器。
 
 > **说明：**
 >
