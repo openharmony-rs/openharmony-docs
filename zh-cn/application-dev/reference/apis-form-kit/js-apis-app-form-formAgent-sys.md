@@ -201,7 +201,7 @@ let param: Record<string, string> = {
 let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formAgent.updateFormCrossBundle(formId, obj).then(() => {
     console.info('formAgent updateFormCrossBundle success');
-  }).catch((error) => {
+  }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error?.code}, message: ${error?.message}`);
   });
 } catch (error) {
