@@ -19317,7 +19317,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 import { webview } from '@kit.ArkWeb';
-import { Entry, Column, Component, Web } from '@kit.ArkUI';
+import { Entry, Column, Component, Web, $rawfile } from '@kit.ArkUI';
 @Entry
 @Component
 struct WebComponent {
@@ -19419,7 +19419,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 import { webview } from '@kit.ArkWeb';
-import { Web, Column, Component, Entry } from '@kit.ArkUI';
+import { Web, Column, Component, Entry, $rawfile } from '@kit.ArkUI';
 
 @Entry
 @Component
