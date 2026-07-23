@@ -6,7 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=062c28151b892e304a4ebc8988ff611dc5ebc4e9 translatedAt=2026-07-22T12:03:06.719Z pushedAt=2026-07-23T03:04:55.895Z -->
+<!-- md-trans-meta sourceCommit=062c28151b892e304a4ebc8988ff611dc5ebc4e9 translatedAt=2026-07-22T12:03:06.719Z pushedAt=2026-07-23T05:57:14.873Z -->
 
 ## Overview
 
@@ -739,7 +739,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetCapability(ContentEmbed_Extensio
 
 **Description**
 
-Obtains the capabilities of the server OE Extension instance, returned as a bitmask. For details, see [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed-capabilitycode).
+Obtains the capabilities of the server OE Extension instance, returned as a bitmask. For details, see [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode).
 
 **Since**: 24
 
@@ -748,7 +748,7 @@ Obtains the capabilities of the server OE Extension instance, returned as a bitm
 | Name | Description |
 | -- | -- |
 | [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) *proxy | Pointer to a [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) object. |
-| uint32_t *bitmask | Output parameter, which indicates the capabilities of the server OE Extension instance. This parameter includes the values in [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed-capabilitycode). |
+| uint32_t *bitmask | Output parameter, which indicates the capabilities of the server OE Extension instance. This parameter includes the values in [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode). |
 
 **Returns**
 
