@@ -329,7 +329,7 @@ ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| ArkTS-Dyn: Promise\<number>  <br/> ArkTS-Sta: Promise\<int> | Promise对象，返回所添加水印的编号ID。 |
+| ArkTS-Dyn: Promise\<number>  <br/> ArkTS-Sta: Promise\<int> | Promise对象，返回所添加水印的编号ID表示添加水印成功，失败时返回错误码。 |
 
 **错误码：**
 
