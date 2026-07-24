@@ -32,9 +32,9 @@
 | MULTI_DEVICE_CONNECTION | 多设备互联。<br> **说明：** 从API version 12开始，支持在原子化服务中使用。 | multiDeviceConnection | 分布式业务连接、投播。 |
 | <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放）。 | wifiInteraction  | 通过WLAN传输文件时退后台。 |
 | VOIP | 音视频通话。<br/>**说明：** 从API version 13开始支持。 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
-| TASK_KEEPING | 计算任务。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
+| TASK_KEEPING | 计算任务。<br/>**说明：** 从API version 21开始，对非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放；对PC/2in1设备，应用不需要申请ACL权限。API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
 | MODE_AV_PLAYBACK_AND_RECORD | 多媒体相关业务。<br/>**说明：** 从API version 22开始支持。<br>从API版本26.0.0开始，支持在原子化服务中使用。 | avPlaybackAndRecord  | 音视频播放，录制，音视频通话时退后台。在上述三种场景下，选择本类型或对应类型的长时任务均可。例如：音视频播放场景下，选择AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD任意一个即可。 |
-| MODE_SPECIAL_SCENARIO_PROCESSING | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>**说明：** 从API version 22开始支持。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播。|
+| MODE_SPECIAL_SCENARIO_PROCESSING | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>**说明：** 从API version 22开始支持。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播，应用在后台有室内运动场景。|
 | MODE_NEARLINK | 星闪业务。<br/>**起始版本：** 26.0.0  | nearlink | 通过星闪传输文件时退后台。 |
 
 关于DATA_TRANSFER（数据传输）说明：
@@ -51,11 +51,11 @@
 
 - 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请AUDIO_PLAYBACK类型长时任务，无需接入AVSession。
 
-- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并冻结，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
+- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并挂起，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
 
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
 
-- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统冻结。
+- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统挂起。
 
 - 建议应用设置监听音频暂停事件[on('pause')](../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onpause10)，如果收到音频暂停事件上报且后续不再需要继续音频播放时，推荐取消已经申请的音视频播放长时任务。
 
@@ -82,13 +82,13 @@
 
 ### 约束与限制
 
-**申请限制**：Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
+**申请限制：** Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
 
-**数量限制**：
+**数量限制：**
 - 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21)。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
 - 如果一个应用创建了多个UIAbility，一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
 
-**运行限制**：
+**运行限制：**
 
 - 申请长时任务后，应用未执行相应的业务，系统会对应用进行管控，即应用退至后台会被挂起。如系统检测到应用申请了AUDIO_PLAYBACK（音视频播放），但实际未播放音乐。
 

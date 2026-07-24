@@ -81,6 +81,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 | .value[0].u32 | Width, in px.|
 | .value[1].u32 | Height, in px.|
 
+
 ## NODE_XCOMPONENT_SURFACE_RECT
 
 ```c

@@ -146,7 +146,7 @@ Unsubscribes from the newly detected devices.
 
 ## Common Error Codes
 
-| Error Code| Description|
+| ID| Description|
 | -------- | -------- |
 | 1100 | The Bluetooth adapter is not initialized.|
 | 1101 | The Bluetooth adapter is unavailable.|

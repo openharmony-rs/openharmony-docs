@@ -49,7 +49,7 @@ Sets the battery configuration based on the specified scenario.
 
 For details about the error codes, see [Battery Info Error Codes](errorcode-battery-info.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 5100101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -93,7 +93,7 @@ Obtains the battery configuration based on the specified scenario.
 
 For details about the error codes, see [Battery Info Error Codes](errorcode-battery-info.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 5100101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -136,7 +136,7 @@ Checks whether the battery configuration is enabled based on the specified scena
 
 For details about the error codes, see [Battery Info Error Codes](errorcode-battery-info.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 5100101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |

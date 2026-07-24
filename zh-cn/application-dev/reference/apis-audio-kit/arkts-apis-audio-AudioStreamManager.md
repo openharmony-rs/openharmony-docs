@@ -526,7 +526,7 @@ getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback&lt;AudioEffe
 | 参数名    | 类型                                | 必填     | 说明                         |
 | -------- | ----------------------------------- | -------- | --------------------------- |
 | usage    | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                    | 是     |  音频流使用类型。                |
-| callback | AsyncCallback<[AudioEffectInfoArray](arkts-apis-audio-AudioStreamManager.md#getaudioeffectinfoarray10)> | 是     | 回调函数。当获取当前音效模式的信息成功，err为undefined，data为获取到的当前音效模式的信息；否则为错误对象。|
+| callback | AsyncCallback<[AudioEffectInfoArray](arkts-apis-audio-t.md#audioeffectinfoarray10)> | 是     | 回调函数。当获取当前音效模式的信息成功，err为undefined，data为获取到的当前音效模式的信息；否则为错误对象。|
 
 **错误码：**
 
@@ -569,7 +569,7 @@ getAudioEffectInfoArray(usage: StreamUsage): Promise&lt;AudioEffectInfoArray&gt;
 
 | 类型                                                                      | 说明                                    |
 | --------------------------------------------------------------------------| --------------------------------------- |
-| Promise<[AudioEffectInfoArray](arkts-apis-audio-AudioStreamManager.md#getaudioeffectinfoarray10)>                  | Promise对象，返回当前音效模式的信息。      |
+| Promise<[AudioEffectInfoArray](arkts-apis-audio-t.md#audioeffectinfoarray10)>                  | Promise对象，返回当前音效模式的信息。      |
 
 **错误码：**
 
@@ -610,7 +610,7 @@ getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray
 
 | 类型                                                                      | 说明                                    |
 | --------------------------------------------------------------------------| --------------------------------------- |
-| [AudioEffectInfoArray](arkts-apis-audio-AudioStreamManager.md#getaudioeffectinfoarray10)                  | 返回当前音效模式的信息。      |
+| [AudioEffectInfoArray](arkts-apis-audio-t.md#audioeffectinfoarray10)                  | 返回当前音效模式的信息。      |
 
 **错误码：**
 
@@ -639,7 +639,7 @@ try {
 
 isAcousticEchoCancelerSupported(sourceType: SourceType): boolean
 
-查询指定的source type是否支持回声消除。
+查询指定的音源类型是否支持回声消除。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

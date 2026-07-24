@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:38:20.363Z pushedAt=2026-06-30T10:57:37.018Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:09:34.229Z pushedAt=2026-07-21T09:32:02.622Z -->
 
 The **NotificationSubscriber** module serves as the input parameter of [subscribeNotification](js-apis-notificationSubscribe-sys.md#notificationsubscribesubscribenotification) and provides callbacks for receiving or removing notifications.
 
@@ -359,7 +359,7 @@ Listens for the notification enabled state changes.
 
 | Name| Type                                                                                                          | Mandatory| Description|
 | ------------ |--------------------------------------------------------------------------------------------------------------| ---- | -------------------------- |
-| onEnabledNotificationChanged | (callbackData: [EnabledNotificationCallbackData](#enablednotificationcallbackdata8)) => void | No| Callback used to return the listened application information.|
+| onEnabledNotificationChanged | (callbackData: [EnabledNotificationCallbackData](#enablednotificationcallbackdata8)) => void | No| Callback used to return the subscribed application information.|
 
 **Example**
 
@@ -629,7 +629,7 @@ Returns the notification priority switch state.
 | ----------- | ------ | ---- | ---- | ------------ |
 | bundle      | string | Yes  | No  | Bundle name of the application.|
 | uid         | number | Yes  | No  | UID of the application. |
-| enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | Yes | No | Whether the priority notification for an application is enabled.<br> - **DISABLE**: The priority notification is disabled.<br> - **ENABLE_BY_INTELLIGENT**: The priority notification can be enabled through intelligent recognition, user keyword matching, or application rule matching.<br> - **ENABLE**: The priority notification is enabled for all applications.|
+| enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | Yes | No | Whether the priority notification for an application is enabled. |
 
 ## NotificationSwitchChangedCallbackData
 

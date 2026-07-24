@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-计数器组件，提供相应的增加或者减少的计数操作。
+计数器组件，提供增加或减少的计数操作。适用于商品数量选择、参数调整等需要频繁修改数值的场景，帮助用户快速直观地调整数值。
 
 >  **说明：**
 >
@@ -50,7 +50,7 @@ enableInc(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | “增加”按钮禁用或使能。<br/>默认值：true，true表示使能“增加”按钮，false表示禁用“增加”按钮。 |
+| value  | boolean | 是   | “增加”按钮禁用或使能。<br>默认值：true，true表示使能“增加”按钮，false表示禁用“增加”按钮。 |
 
 ### enableDec<sup>10+</sup>
 
@@ -68,7 +68,7 @@ enableDec(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | “减少”按钮禁用或使能。<br/>默认值：true，true表示使能“减少”按钮，false表示禁用“减少”按钮。 |
+| value  | boolean | 是   | “减少”按钮禁用或使能。<br>默认值：true，true表示使能“减少”按钮，false表示禁用“减少”按钮。 |
 
 ## 事件
 
@@ -90,7 +90,7 @@ onInc(event:&nbsp;VoidCallback)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | Counter数值增加的回调函数。        |
+| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | Counter 数值增加的回调函数。 |
 
 ### onDec
 
@@ -108,41 +108,42 @@ onDec(event:&nbsp;VoidCallback)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | Counter数值减少的回调函数。        |
+| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | Counter 数值减少的回调函数。 |
+
 
 
 ## 示例
 
-该示例展示了Counter组件的基本使用方法。点击+、-按钮可以修改value值。
+该示例展示了Counter组件的基本使用方法。点击+、-按钮可以修改计数器的数值。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct CounterExample {
-  @State value1: number = 0;
-  @State value2: number = 0;
+  @State counterValue1: number = 0;
+  @State counterValue2: number = 0;
 
   build() {
     Column({ space: 50 }) {
       Counter() {
-        Text(this.value1.toString())
+        Text(this.counterValue1.toString())
       }
       .onInc(() => {
-        this.value1++;
+        this.counterValue1++;
       })
       .onDec(() => {
-        this.value1--;
+        this.counterValue1--;
       })
 
       Counter() {
-        Text(this.value2.toString())
+        Text(this.counterValue2.toString())
       }
       .onInc(() => {
-        this.value2++;
+        this.counterValue2++;
       })
       .onDec(() => {
-        this.value2--;
+        this.counterValue2--;
       })
       .enableInc(true)
       .enableDec(false)

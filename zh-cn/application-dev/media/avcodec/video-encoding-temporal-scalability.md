@@ -1,4 +1,4 @@
-# 时域可分层视频编码
+# 具有抗弱网丢包能力的时域可分层编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -63,7 +63,7 @@
 
   参考帧仅在GOP内有效，刷新I帧后，DPB随之清空，参考帧也会被清空，因此参考关系的指定受I帧刷新位置影响很大。
 
-  使能时域分层能力后，若需要通过`OH_MD_KEY_REQUEST_I_FRAME`临时请求I帧，应使用生效时机确定的随帧通路配置方式准确告知系统I帧刷新位置以避免参考关系错乱，参考随帧通路配置相关指导，避免使用生效时机不确定的`OH_VideoEncoder_SetParameter`方式。详情请参考[视频编码Surface模式](video-encoding.md#surface模式)"步骤-4"。
+  使能时域分层能力后，若需要通过`OH_MD_KEY_REQUEST_I_FRAME`临时请求I帧，应使用生效时机确定的随帧通路配置方式准确告知系统I帧刷新位置以避免参考关系错乱，参考随帧通路配置相关指导，避免使用生效时机不确定的`OH_VideoEncoder_SetParameter`方式。详情请参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)"步骤-4"。
 
 - 支持`OH_AVBuffer`回调通路，不支持`OH_AVMemory`回调通路。
 
@@ -111,7 +111,7 @@
 
 ### 开发指导
 
-基础编码流程请参考[视频编码开发指导](video-encoding.md)。下面将重点说明与基础视频编码流程中的不同之处。
+基础编码流程请参考[异步模式视频编码开发指导](video-encoding.md)。下面将重点说明与基础视频编码流程中的不同之处。
 
 1. 在初始阶段创建编码实例时，校验视频编码器是否支持全局时域可分层特性。
 
@@ -247,7 +247,33 @@
     }
     ```
 
-5. （可选）在输出轮转中，使用步骤3获取的时域层级信息，自适应传输或自适应解码。
+    从API版本26.0.0开始，可以通过OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID字段获取时域层级信息，无需根据TGOP参数及出帧信息自行计算所属时域层级信息。时域层号为0时，表示基础层，1及以上时表示增强层。
+
+    示例代码如下：
+    <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+    
+    ``` C++
+    static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)
+    {
+        int32_t layerID = -1;
+        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
+        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID, &layerID);
+        return layerID;
+    }
+    
+    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+    {
+        if (userData == nullptr) {
+            return;
+        }
+        // ...
+    
+        // 从AVBuffer中获取时域层级信息。
+        int32_t layerID = GetTemporalLayerID(buffer);
+    }
+    ```
+
+5. （可选）在输出过程中，使用步骤4获取的时域层级信息，开发者可根据实际带宽或业务场景实现自适应传输或自适应解码。
 
     根据获取的时域可分层码流和对应的层级信息，开发者可选择需要的层级进行传输，或携带至对端自适应选帧解码。
 
@@ -280,7 +306,7 @@
 
 ### 开发指导
 
-基础编码流程请参考[视频编码开发指导](video-encoding.md)，下面仅针对与基础视频编码过程中存在的区别做具体说明。
+基础编码流程请参考[异步模式视频编码开发指导](video-encoding.md)，下面仅针对与基础视频编码过程中存在的区别做具体说明。
 
 1. 在初始阶段创建编码实例时，校验当前视频编码器是否支持LTR特性。
 

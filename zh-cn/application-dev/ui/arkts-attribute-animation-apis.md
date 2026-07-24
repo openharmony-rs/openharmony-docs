@@ -1,8 +1,8 @@
 # 实现属性动画
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,8 +14,8 @@
 
 | 动画接口 | 作用域 | 原理 | 使用场景 |
 | -------- | -------- | -------- | -------- |
-| animateTo | 闭包内改变属性引起的界面变化。 | 通用函数，对闭包前界面和闭包中的状态变量引起的界面之间的差异做动画。<br/>支持多次调用，支持嵌套。 | 适用对多个可动画属性配置相同动画参数的动画。<br/>需要嵌套使用动画的场景。<br/>如果需要实现多段动画循环的效果，建议通过设置[AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)的playMode和iterations属性实现，或使用keyframeAnimateTo实现。 |
-| animation | 组件通过属性接口绑定的属性变化引起的界面变化。 | 识别组件的可动画属性变化，自动添加动画。<br/>组件的接口调用是从下往上执行，animation只会作用于在其之上的属性调用。<br/>组件可以根据调用顺序对多个属性设置不同的animation。 | 适用于对多个可动画属性配置不同参数动画的场景。 |
+| animateTo | 闭包内改变属性引起的界面变化。 | 通用函数，对闭包前界面和闭包中的状态变量引起的界面之间的差异做动画。<br/>支持多次调用，支持嵌套。 | 适用于多个可动画属性配置相同动画参数的场景，或命令式显式触发动画的场景。<br/>需要嵌套使用动画的场景。<br/>如果需要实现多段动画循环的效果，建议通过设置[AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)的playMode和iterations属性实现，或使用keyframeAnimateTo实现。 |
+| animation | 组件通过属性接口绑定的属性变化引起的界面变化。 | 声明式属性动画，识别组件的可动画属性变化并自动添加动画。<br/>组件接口调用从下往上执行，animation仅作用于在其之上调用的属性。<br/>组件可根据调用顺序对多个属性设置不同的animation参数。 | 适用于对不同可动画属性配置不同动画参数的场景，以及希望属性改变时隐式触发动画的声明式写法。 |
 | keyframeAnimateTo | 多个闭包内改变属性引起的分段属性动画。 | 通用函数，每一段闭包中的状态变量与前一次的差异做动画。<br/>支持多次调用，不推荐嵌套。 | 适用于同一属性需要做连续多个动画的场景。 |
 
 ## 使用animateTo产生属性动画
@@ -94,7 +94,7 @@ struct attrAnimateToDemo2 {
 
 相比于animateTo接口需要将属性修改封装在闭包中执行，[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)接口无需使用闭包，只需将其加在要做动画的可动画属性后即可。animation只要检测到其绑定的可动画属性发生变化，就会自动添加属性动画，animateTo则必须在动画闭包内改变可动画属性的值从而生成动画。
 
-<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->
+<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->  
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -105,7 +105,7 @@ struct attrAnimationDemo3 {
   // 第一步: 声明相关状态变量
   @State rotateValue: number = 0; // 组件一旋转角度
   @State translateX: number = 0; // 组件二偏移量
-  @State opacityValue: number = 1; // 组件二透明度
+  @State opacityValue: number = 1; // 组件一、组件二透明度
 
   // 第二步：将状态变量设置到相关可动画属性接口
   build() {
@@ -130,7 +130,7 @@ struct attrAnimationDemo3 {
         this.rotateValue = this.animate ? 90 : 0;
         // 组件二的translate属性发生变化，所以会给组件二添加translate偏移动画
         this.translateX = this.animate ? 50 : 0;
-        // 父组件column的opacity属性有变化，会导致其子节点的透明度也变化，所以这里会给column和其子节点的透明度属性都添加动画
+        // 组件一、组件二的opacity属性发生变化，所以会给组件一、组件二添加透明度动画
         this.opacityValue = this.animate ? 0.6 : 1;
       })
 

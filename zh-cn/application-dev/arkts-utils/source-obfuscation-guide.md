@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 本指南旨在帮助开发者了解和使用ArkGuard源码混淆功能，保护应用代码安全。通过启用源码混淆，开发者可以对ArkTS代码中的变量名、属性名、文件名等进行混淆处理，增加代码逆向难度，提升应用的安全性。文章将详细介绍如何在DevEco Studio中开启混淆、配置混淆规则、适配不同混淆场景，以及如何查看混淆效果和还原混淆后的报错堆栈。
 

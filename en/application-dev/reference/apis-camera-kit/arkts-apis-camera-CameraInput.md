@@ -40,7 +40,7 @@ Opens this camera device. This API uses an asynchronous callback to return the r
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400107                |  Can not use camera cause of conflict.               |
 | 7400108                |  Camera disabled cause of security reason.                                  |
@@ -82,7 +82,7 @@ Opens this camera device. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                                     |
+| ID  | Error Message                                     |
 |---------|-------------------------------------------|
 | 7400102 | Operation not allowed.                    |
 | 7400107 | Can not use camera cause of conflict.     |
@@ -129,7 +129,7 @@ Opens this camera device. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400107                |  Can not use camera cause of conflict.               |
 | 7400108                |  Camera disabled cause of security reason.                                  |
@@ -175,7 +175,7 @@ Opens the camera with the specified concurrency type. This API uses a promise to
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                                     |
+| ID  | Error Message                                     |
 |---------|-------------------------------------------|
 | 7400102 | Operation not allowed.                    |
 | 7400107 | Can not use camera cause of conflict.     |
@@ -216,7 +216,7 @@ Closes this camera device. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400201                |  Camera service fatal error.                                  |
 
@@ -256,7 +256,7 @@ Closes this camera device. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400201                |  Camera service fatal error.                                  |
 
@@ -406,7 +406,7 @@ Enables or disables the use of the physical camera orientation.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                                     |
+| ID  | Error Message                                     |
 |---------|-------------------------------------------|
 | 7400102 | Operation not allowed.                    |
 | 7400201 | Camera service fatal error.               |

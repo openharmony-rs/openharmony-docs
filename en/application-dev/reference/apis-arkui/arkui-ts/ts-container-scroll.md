@@ -16,7 +16,7 @@ The **Scroll** component scrolls the content when the layout size of a component
 >  - The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md#clip12) is **true** for the **Scroll** component.
 >  - If the **Scroll** component's height exceeds the screen height, use the [layoutWeight](ts-universal-attributes-size.md#layoutweight) attribute to make it fill the remaining main-axis space.
 >  - A touch on the screen stops all ongoing scroll animations within the touch area (except those triggered by [scrollTo](#scrollto) or [scrollToIndex](#scrolltoindex)), including edge bounce effects.
->  - The component includes built-in gesture recognition for finger‑following and other interactive features. For details about how to add custom gestures, see [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
+>  - The component includes built-in gesture recognition for finger-following and other interactive features. For details about how to add custom gestures, see [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
 
 ## Child Components
 
@@ -104,6 +104,8 @@ Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), this 
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -161,6 +163,8 @@ During the snap animation, the scroll operation source type reported by the [onW
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -184,7 +188,7 @@ Sets the effect used when the scroll boundary is reached.
 | Name               | Type                                             | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | [EdgeEffect](ts-appendix-enums.md#edgeeffect)     | Yes  | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: **EdgeEffect.None**|
-| options<sup>11+</sup> | [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11) | No  | Whether to enable the scroll effect when the component content is smaller than the component itself. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value: **{ alwaysEnabled: true }**|
+| options<sup>11+</sup> | [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11) | No  | Whether to enable the scroll effect when the component content is smaller than the component itself. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value: **{ alwaysEnabled: true }**<br>**Model restriction:** This API can be used only in the stage model.|
 
 ### enableScrollInteraction<sup>10+</sup>
 
@@ -193,6 +197,8 @@ enableScrollInteraction(value: boolean)
 Sets whether to enable scroll gestures.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,6 +220,8 @@ Sets the nested scrolling mode in the forward and backward directions to impleme
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -229,6 +237,8 @@ friction(value: number | Resource)
 Sets the friction coefficient. It applies only to gestures in the scrolling area, and it affects only indirectly the scroll chaining during the inertial scrolling process.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,6 +256,8 @@ Sets whether to enable the swipe-to-turn-pages feature. If both **enablePaging**
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -262,6 +274,8 @@ Sets the initial scrolling offset. This attribute takes effect only during the i
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -274,9 +288,11 @@ Sets the initial scrolling offset. This attribute takes effect only during the i
 
 maxZoomScale(scale: number)
 
-Sets the maximum gesture‑based zoom scale for the **Scroll** component's content.
+Sets the maximum gesture-based zoom scale for the **Scroll** component's content.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,7 +300,7 @@ Sets the maximum gesture‑based zoom scale for the **Scroll** component's conte
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| scale  | number  | Yes  |Maximum gesture‑based zoom scale for the **Scroll** component's content.<br>Default value: **1**.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value 1 is used.|
+| scale  | number  | Yes  |Maximum gesture-based zoom scale for the **Scroll** component's content.<br>Default value: **1**.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value 1 is used.|
 
 ### minZoomScale<sup>20+</sup>
 
@@ -293,6 +309,8 @@ minZoomScale(scale: number)
 Sets the minimum gesture-based zoom scale for the **Scroll** component's content.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,6 +332,8 @@ Sets the zoom scale of the **Scroll** component's content.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -329,6 +349,8 @@ enableBouncesZoom(enable: boolean)
 Sets whether to enable the zoom bounce effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -350,7 +372,7 @@ Enumerates the scrolling directions.
 | Horizontal | 1  | Horizontal scrolling only.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | Free<sup>(deprecated) </sup> | 2 | Both vertical and horizontal scrolling.<br> Note: This API is supported since API version 7 and deprecated since API version 9. You are advised to use **FREE** instead. The enum value **FREE** is supported since API version 20.|
 | None       | 3 | Scrolling disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| FREE<sup>20+</sup>   | 4 | Free scrolling in both directions.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| FREE<sup>20+</sup>   | 4 | Free scrolling in both directions.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction:** This API can be used only in the stage model.|
 
 **Capabilities Supported in Free Scrolling Mode**
 
@@ -369,7 +391,7 @@ Enumerates the scrolling directions.
 
 >  **NOTE**
 >  - The **edgeEffect** attribute supports only **Spring** and **None**. Other edge effects are not available.
->  - The **onWillScroll** callback can only modify the offset during the follow‑up (inertial) scrolling phase, not during direct dragging.
+>  - The **onWillScroll** callback can only modify the offset during the follow-up (inertial) scrolling phase, not during direct dragging.
 >  - The **onScrollEdge** callback is triggered once when the content reaches the edge, but not again during the subsequent bounce animation.
 >  - Changing the edge effect mode during a flick animation does not interrupt that animation.
 
@@ -378,6 +400,8 @@ Enumerates the scrolling directions.
 Defines a scroll snapping mode object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -478,6 +502,8 @@ Trigger conditions:
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -503,6 +529,8 @@ Trigger conditions:
 3. This event supports the out-of-bounds bounce effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -602,6 +630,8 @@ Triggered when the zoom operation of each frame is completed.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -617,6 +647,8 @@ onZoomStart(event: VoidCallback)
 Triggered when a zoom gesture starts.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -634,6 +666,8 @@ Triggered when a zoom gesture stops.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -649,6 +683,8 @@ type ScrollOnScrollCallback = (xOffset: number, yOffset: number, scrollState: Sc
 Represents the callback triggered when the **Scroll** component scrolls.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -671,6 +707,8 @@ type ScrollOnWillScrollCallback = (xOffset: number, yOffset: number, scrollState
 Callback triggered before scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -697,6 +735,8 @@ Represents the callback triggered when scrolling reaches an edge.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -712,6 +752,8 @@ type OnScrollFrameBeginCallback = (offset: number, state: ScrollState) => OnScro
 Represents the callback triggered before each frame scrolling starts.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -738,6 +780,8 @@ Represents the actual scroll offset relative to the previous frame returned by [
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Type | Read Only| Optional| Description |
@@ -751,6 +795,8 @@ type ScrollOnDidZoomCallback = (scale: number) => void
 Defines the callback triggered when the scroll scaling of each frame is complete.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -792,8 +838,19 @@ A constructor used to create a **Scroller** object.
 
 scrollTo(options: ScrollOptions)
 
-
 Scrolls to the specified position.
+
+>  **NOTE**
+>
+> - If the scrolling speed of the **scrollTo** animation exceeds 200 vp/s, the components within the scrollable area will not respond to click events.
+>
+> - Component behavior varies:
+>
+>   - The [ArcList](ts-container-arclist.md) and [List](ts-container-list.md) components load and lay out all items that are passed through.
+>
+>   - The **Grid** components and the [WaterFlow](ts-container-waterflow.md) components in [SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12) mode directly estimate the items to be displayed when the jump distance is large (greater than twice the component main axis height). A jump refers to a one-frame scroll.
+>
+>   - The [WaterFlow](ts-container-waterflow.md) components in [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12) mode load and lay out all items passed through when jumping backward (when **dx** or **dy** is positive), and jump directly to the corresponding position when jumping forward (when **dx** or **dy** is negative). A jump refers to a one-frame scroll.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -804,11 +861,6 @@ Scrolls to the specified position.
 | Name  | Type| Mandatory  | Description     |
 | ----- | ---- | ---- | --------- |
 | options | [ScrollOptions](#scrolloptions18) | Yes   | Parameters for scrolling to the specified position.|
-
->  **NOTE**
->
-> If the scrolling speed of the **scrollTo** animation exceeds 200 vp/s, the components within the scrollable area will not respond to click events.
->
 
 ### scrollEdge
 
@@ -827,7 +879,7 @@ By default, the **Scroll** component comes with an animation, while the **Grid**
 | Name  | Type| Mandatory  | Description     |
 | ----- | ---- | ---- | --------- |
 | value | [Edge](ts-appendix-enums.md#edge) | Yes   | Edge position to scroll to.|
-| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12)| No   | Mode of scrolling to the edge position.|
+| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12)| No   | Mode of scrolling to the edge position.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ### fling<sup>12+</sup>
 
@@ -837,6 +889,8 @@ fling(velocity: number): void
 Performs inertial scrolling based on the initial velocity passed in.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -910,7 +964,7 @@ Obtains the current scroll offset.
 
 | Type | Description|
 | -------- | -------- |
-|  [OffsetResult<sup>11+</sup>](#offsetresult11) | Current scroll offset.|
+|  [OffsetResult<sup>11+</sup>](#offsetresult11) | Current scroll offset.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ### offset<sup>23+</sup>
 
@@ -919,6 +973,8 @@ offset(): OffsetResult | undefined
 Obtains the current scroll offset. Except for **undefined** in the API declaration, other information is the same as that of the [currentOffset](#currentoffset) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -963,19 +1019,25 @@ When smooth scrolling is enabled, all items encountered during the scroll are lo
 | value | number   | Yes  | Index of the item to be scrolled to in the container.<br>**NOTE**<br>If the value set is a negative value or greater than the maximum index of the items in the container, the value is deemed abnormal, and no scrolling will be performed.                    |
 | smooth | boolean  | No  | Whether to enable the smooth animation for scrolling to the item with the specified index. The value **true** means to enable that the smooth animation, and **false** means the opposite.<br>Default value: **false**|
 | align | [ScrollAlign](#scrollalign10)  | No  | How the list item to scroll to is aligned with the container.<br>Default value when the container is **List**: **ScrollAlign.START**<br> Default value when the container is **Grid**: **ScrollAlign.AUTO**<br> Default value when the container is **WaterFlow**: **ScrollAlign.START**<br>**NOTE**<br>This parameter is only available for the **List**, **Grid**, and **WaterFlow** components.|
-| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12)  | No  | Options for scrolling to a specified index, for example, an extra offset for the scroll.<br>Default value: **0**, in vp|
+| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12)  | No  | Options for scrolling to a specified index, for example, an extra offset for the scroll.<br>Default value: **0**, in vp<br>**Model restriction:** This API can be used only in the stage model.|
 
 ### scrollBy<sup>9+</sup>
 
 scrollBy(dx: Length, dy: Length)
 
-
 Scrolls by the specified amount.
 
-
->  **NOTE**
+> **NOTE**
 >
->  This API is available for the **ArcList**, **Scroll**, **List**, **Grid**, and **WaterFlow** components.
+> - This API is available for the **ArcList**, **Scroll**, **List**, **Grid**, and **WaterFlow** components.
+>
+> - Component behavior varies:
+>
+>   - The [ArcList](ts-container-arclist.md) and [List](ts-container-list.md) components load and lay out all items that are passed through.
+>
+>   - The **Grid** components and the **WaterFlow** components in [SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12) mode directly estimate the items to be displayed when the jump distance is large (greater than twice the component main axis height). A jump refers to a one-frame scroll.
+>
+>   - The [WaterFlow](ts-container-waterflow.md) components in [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12) mode load and lay out all items passed through when jumping backward (when **dx** or **dy** is positive), and jump directly to the corresponding position when jumping forward (when **dx** or **dy** is negative). A jump refers to a one-frame scroll.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1000,6 +1062,8 @@ Checks whether the component has scrolled to the bottom.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -1019,6 +1083,8 @@ Obtains the size and position of a child component relative to its container.
 >  This API is available for the **ArcList**, **Scroll**, **List**, **Grid**, and **WaterFlow** components.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1058,6 +1124,8 @@ Obtains the index of a child component based on coordinates.
 >  This API is available for the **List**, **Grid**, and **WaterFlow** components.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1109,6 +1177,8 @@ Obtains the total size of the scrollable component's content.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -1131,7 +1201,9 @@ getFrameNode(): FrameNode | undefined
 
 Obtains the **FrameNode** bound to the current **Scroller**.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1149,6 +1221,8 @@ Represents the offset values resulting from a scroll operation.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name    | Type  | Read Only| Optional| Description                            |
@@ -1161,6 +1235,8 @@ Represents the offset values resulting from a scroll operation.
 Provides parameters for customizing scroll animations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1175,6 +1251,8 @@ Provides parameters for customizing scroll animations.
 Enumerates alignment modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1191,6 +1269,8 @@ Provides parameters for scrolling to a specific index.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type | Read Only| Optional| Description             |
@@ -1202,6 +1282,8 @@ Provides parameters for scrolling to a specific index.
 Provides parameters for page scrolling behavior.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1216,6 +1298,8 @@ Provides parameters for setting the initial scrolling offset.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type | Read Only| Optional| Description             |
@@ -1228,6 +1312,8 @@ Provides parameters for setting the initial scrolling offset.
 Provides parameters for scrolling to the edge of a scrollable container.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1244,6 +1330,8 @@ Provides parameters for scrolling to a specific position in a scrollable contain
 > To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1269,6 +1357,8 @@ Passing **undefined** as the input parameter resets the event callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1286,6 +1376,8 @@ Sets the callback for the [onDidScroll](#ondidscroll12) event.
 Passing **undefined** as the input parameter resets the event callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供应用信息的查询能力，支持应用包信息[BundleInfo](js-apis-bundleManager-bundleInfo.md)、应用程序信息[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)、UIAbility组件信息[AbilityInfo](js-apis-bundleManager-abilityInfo.md)、ExtensionAbility组件信息[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)等信息的查询。
@@ -1428,7 +1428,7 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity数组。 |
+| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity信息。 |
 
 **错误码：**
 
@@ -1771,8 +1771,6 @@ try {
     hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
   });
 } catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
 }
 ```
@@ -1914,7 +1912,7 @@ getAlternateIcons(): Promise<Array\<AlternateIconInfo>>
 
 | 错误码ID | 错误信息                         |
 | -------- | ---------------------------------- |
-| 17700311 | Failed to obtain alternate icon. |
+| 17700311 | Failed to obtain the alternate icon. |
 
 **示例：**
 
@@ -2165,7 +2163,7 @@ ElementName信息。
 
 type Skill = _Skill.Skill
 
-skill信息。
+Skill信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2173,7 +2171,7 @@ skill信息。
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |skill信息。 |
+| [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |Skill信息。 |
 
 ## SkillUrl<sup>12+</sup>
 
@@ -2208,6 +2206,8 @@ type AlternateIconInfo = _BundleInfo.AlternateIconInfo
 应用备用图标信息。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

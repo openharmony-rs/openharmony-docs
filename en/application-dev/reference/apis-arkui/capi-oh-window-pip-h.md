@@ -1,14 +1,14 @@
 # oh_window_pip.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4-->
+<!--Owner: @betafringe007-->
+<!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
 ## Overview
 
-The file declares the APIs related to the Picture in Picture (PiP) feature, including creating and deleting a PiP controller, and starting and stopping PiP. PiP is mainly used in video playback, live streaming, video calls, or video meetings.
+The file declares the APIs related to the Picture in Picture (PiP) feature, including creating and deleting a PiP controller, and starting and stopping PiP. PiP is mainly used in video playback, live streaming, video calls, or video meetings. Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones, PCs/2-in-1 devices, and tablets. Since OpenHarmony 7.0.0, the PiP feature is supported only on phones, PCs/2-in-1 devices, tablets, and cars.
 
 **File to include**: <window_manager/oh_window_pip.h>
 
@@ -571,6 +571,7 @@ Updates the media content size when the media content changes.
 
 **Since**: 20
 
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices, but does not take effect or report errors when being called on other devices.
 
 **Parameters**
 

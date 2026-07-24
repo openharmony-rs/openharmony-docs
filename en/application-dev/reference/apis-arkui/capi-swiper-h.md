@@ -10,7 +10,7 @@
 
 Defines the enumerations and APIs of the **Swiper** component.
 
-**File to include:** <arkui/swiper.h>
+**File to include:** <arkui/node_attributes/swiper.h>
 
 **Library:** libace_ndk.z.so
 
@@ -28,9 +28,9 @@ Defines the enumerations and APIs of the **Swiper** component.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | Defines the navigation indicator style of the **Swiper** component.|
-| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the style of the digit navigation indicator for the **Swiper** component.|
-| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the navigation arrow style for the **Swiper** component.|
+| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | Defines the navigation indicator style of the **Swiper** component, which is used to display the current position and switching status in scenarios such as carousel.|
+| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the style of the digit navigation indicator for the **Swiper** component, which is used to display the current position and total number of pages in digits.|
+| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the navigation arrow style of the **Swiper** component, which is used to provide more intuitive page turning instructions in scenarios such as carousel.|
 
 ### Enums
 
@@ -110,6 +110,9 @@ Defines the enumerations and APIs of the **Swiper** component.
 | [float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getspace) | Obtains the spacing between navigation indicators.|
 | [void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator, int32_t ignoreSize)](#oh_arkui_swiperdigitindicator_setignoresizeofbottom) | Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
 | [int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getignoresizeofbottom) | Obtains whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
+| [int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_showprevious) | Displays the previous page of the **ArcSwiper** node.|
+| [int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_shownext) | Displays the next page of the **ArcSwiper** node.|
+| [int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_finishanimation) | Finishes the animation being executed by the **ArcSwiper** node.|
 
 ## Enumeration Description
 
@@ -460,6 +463,78 @@ Obtains whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores t
 | -- | -- |
 | int32_t | Whether the indicator size is ignored when positioning the indicator.|
 
+### OH_ArkUI_ArcSwiper_ShowPrevious()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)
+```
+
+**Description**
+
+Displays the previous page of the **ArcSwiper** node.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Error code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_ArcSwiper_ShowNext()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)
+```
+
+**Description**
+
+Displays the next page of the **ArcSwiper** node.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Error code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_ArcSwiper_FinishAnimation()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)
+```
+
+**Description**
+
+Finishes the animation being executed by the **ArcSwiper** node.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Error code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
 ### OH_ArkUI_SwiperIndicator_SetItemWidth()
 
 ```c
@@ -784,7 +859,7 @@ Sets the maximum number of dots for a dot-style navigation indicator.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if **maxDisplayCount** is set to an invalid value.|
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the value range of **maxDisplayCount** is incorrect.|
 
 ### OH_ArkUI_SwiperIndicator_GetMaxDisplayCount()
 

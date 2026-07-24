@@ -4,15 +4,24 @@
 <!--Owner: @jokerxd-liu-->
 <!--Designer: @huyunhui1; @k1ngqaquuu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 
 DevEco Studio编译构建后，会将模块内所有源文件的SourceMap信息打包进一个聚合文件`sourceMaps.map`中。由于该文件未采用标准的[SourceMap v3](https://tc39.es/ecma426/#sec-source-map-format)格式，Chrome DevTools、`source-map`库等标准工具无法直接识别，给开发者还原崩溃堆栈、定位源码带来了困难。
 
-SourceMap Splitter是一款专为此场景设计的命令行工具，可将聚合的`sourceMaps.map`快速拆分为独立的、符合SourceMap v3规范的`.map`文件，并自动按源码目录结构导出，便于使用标准工具链定位问题。该工具零外部运行时依赖，编译产物仅为一个JS文件，需要在Node.js 20及以上环境中运行。
+SourceMap Splitter是一款专为此场景设计的命令行工具，可将聚合的`sourceMaps.map`快速拆分为独立的、符合SourceMap v3规范的`.map`文件，并自动按源码目录结构导出，便于使用标准工具链定位问题。该工具零外部运行时依赖，整个工具仅为一个JS文件。
 
-本工具支持全平台运行。从[SourceMap拆分工具](https://gitcode.com/OpenHarmonyToolkitsPlaza/OpenHarmony-SourceMap-Splitter/releases)下载单文件产物`split-sourcemaps.js`后即可直接运行。
+从[SourceMap拆分工具](https://gitcode.com/OpenHarmonyToolkitsPlaza/OpenHarmony-SourceMap-Splitter/releases)下载单文件`split-sourcemaps.js`后即可直接运行。
+
+## 环境要求
+
+使用本工具前，请确认运行环境满足以下要求：
+
+- 操作系统：支持 Windows、macOS、Linux 全平台。
+- 运行环境：Node.js 20 及以上版本。
+- 依赖：零外部运行时依赖，无需安装任何第三方包。
+- 工具文件：单一 JS 文件`split-sourcemaps.js`，下载后无需额外配置即可直接运行。
 
 ## 工具规格
 
@@ -72,10 +81,10 @@ node split-sourcemaps.js --project /path/to/project --module entry
 
 ### 指定输出目录
 
-通过`--output`将拆分结果输出到指定目录。
+通过`--output`将拆分结果输出到自定义目录，而非默认的`.split-sourcemaps`。该参数支持绝对路径与相对路径。
 
 ```bash
-node split-sourcemaps.js --project /path/to/project --module entry --output .split-sourcemaps
+node split-sourcemaps.js --project /path/to/project --module entry --output ./sourcemap-output
 ```
 
 ### 在项目根目录下直接运行
@@ -132,15 +141,17 @@ sourceMaps.map
 
 拆分后将按模块与源码目录结构生成独立的`.map`文件：
 
+> **输出文件命名规则**：每个条目的输出文件在其原始源文件名的基础上，于原始扩展名后追加`.map`。例如源文件`Index.ts`对应`Index.ts.map`，`Helper.no-sources.ts`对应`Helper.no-sources.ts.map`，即原扩展名保留不变，仅在末尾追加`.map`。
+
 ```text
 .split-sourcemaps/
 ├── entry/
-│   ├── src/main/ets/pages/Index.ets.map
-│   ├── src/main/ets/entryability/EntryAbility.ets.map
+│   ├── src/main/ets/pages/Index.ts.map
+│   ├── src/main/ets/entryability/EntryAbility.ts.map
 │   ├── generated/ets/routerMap.ts.map
-│   └── src/main/ets/utils/Helper.no-sources.ets.map
+│   └── src/main/ets/utils/Helper.no-sources.ts.map
 └── library/
-    └── src/main/ets/components/MainPage.ets.map
+    └── src/main/ets/components/MainPage.ts.map
 ```
 
 ## 常见问题
@@ -168,7 +179,7 @@ sourceMaps.map
 **问题现象**<br>
 工具运行时报错`Invalid module name: ...`。<br>
 **可能原因**<br>
-`--module`参数为空、为`.`、包含`..`、包含路径分隔符（`/`、`\`）或为绝对路径。<br>
+`--module`参数为`.`、包含`..`、包含路径分隔符（`/`、`\`）或为绝对路径。<br>
 **处理措施**<br>
 将`--module`修改为不含路径分隔符的合法模块名，例如`entry`。
 

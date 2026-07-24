@@ -41,7 +41,7 @@ Sets the screen brightness.
 
 For details about the error codes, see [Brightness Error Codes](errorcode-brightness.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4700101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -78,7 +78,7 @@ Sets the screen brightness. This API is used for continuous brightness adjustmen
 
 For details about the error codes, see [Brightness Error Codes](errorcode-brightness.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4700101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |

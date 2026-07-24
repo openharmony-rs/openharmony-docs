@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。
 
 当需要在ArkTS上并发实例间传递Array时，可以通过传递Array引用提升传递性能。

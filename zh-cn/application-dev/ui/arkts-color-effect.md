@@ -116,7 +116,7 @@
 ## 为组件添加角度渐变效果
 
 
-  <!-- @[Direction_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/DirectionGradientEffect.ets) -->
+  <!-- @[Direction_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/DirectionGradientEffect.ets) -->  
   
   ``` TypeScript
   @Entry
@@ -208,7 +208,7 @@
             center: [50, 50],
             start: 0,
             end: 360,
-            repeating: false, //只在颜色断点角度覆盖范围内产生颜色渐变效果，其余范围内不重复
+            repeating: false, // 只在颜色断点角度覆盖范围内产生颜色渐变效果，其余范围内不重复
             colors: [
               [0xf56c6c, 0],
               [0xffffff, 0.125],
@@ -226,6 +226,7 @@
     }
   }
   ```
+
 ![zh-cn_image_0000001641177073](figures/zh-cn_image_0000001641177073.png)
 
 
@@ -336,4 +337,5 @@
     }
   }
   ```
+
 ![zh-cn_image_0000001592904050](figures/zh-cn_image_0000001592904050.png)

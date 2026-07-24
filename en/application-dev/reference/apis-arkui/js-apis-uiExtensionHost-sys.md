@@ -295,10 +295,10 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal. |
-| 1300003  | This window manager service works abnormally. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal.<br>Applicable versions: 12+|
+| 1300003  | This window manager service works abnormally.<br>Applicable versions: 12+|
 
 **Example**
 
@@ -765,7 +765,7 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
         })
         Button("Obtain Avoid Area Info").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let avoidArea: window.AvoidArea | undefined = this.extensionHostWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`Avoidance area: ${JSON.stringify(avoidArea)}`);
+          console.info(`Avoid area: ${JSON.stringify(avoidArea)}`);
         })
         Button("Create Subwindow").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {

@@ -109,7 +109,7 @@ struct FontExample {
       Text(this.message)
         .align(Alignment.Center)
         .fontSize(20)
-        .fontFamily('medium') // medium: name of the registered custom font. (Registered fonts such as $r('app.string.mediumFamilyName') and 'mediumRawFile' can also be used.)
+        .fontFamily('medium') // medium: name of the registered custom font. (Registered fonts such as $r('app.string.font_name') and 'mediumRawFile' can also be used.)
 
       // Two methods of using iconFont
       Text(this.unicode)
@@ -254,7 +254,6 @@ import { font } from '@kit.ArkUI';
 @Entry
 @Component
 struct FontExample {
-  fontList: Array<string> = new Array<string>();
   uiFont = this.getUIContext().getFont();
   fontInfo: font.FontInfo = this.uiFont.getFontByName(''); // You are advised to use the this.getUIContext().getFont().getFontByName() API.
 

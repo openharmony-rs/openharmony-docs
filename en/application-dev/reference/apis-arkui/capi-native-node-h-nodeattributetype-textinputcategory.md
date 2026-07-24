@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType (Text Input Component Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6; @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -180,13 +180,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Type of the **Enter** key, specified using the [ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype) enum. The default value is **ARKUI_ENTER_KEY_TYPE_DONE**.|
+| .value[0].i32 | Type of the **Enter** key. The value is an enumerated value of [ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype). The default value is **ARKUI_ENTER_KEY_TYPE_DONE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Type of the **Enter** key, specified using the [ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype) enum.|
+| .value[0].i32 | Type of the **Enter** key. The value is an enumerated value of [ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype).|
 
 ## NODE_TEXT_INPUT_PLACEHOLDER_COLOR
 
@@ -229,8 +229,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0]?.f32 | Font size, in fp. This parameter is optional. The default value is **16.0**.|
-| .value[1]?.i32 | Font style, specified using the [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle) enum. This parameter is optional. The default value is **ARKUI_FONT_STYLE_NORMAL**.|
-| .value[2]?.i32 | Font weight, specified using the [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight) enum. This parameter is optional. The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
+| .value[1]?.i32 | Font style. This parameter is optional. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
+| .value[2]?.i32 | Font weight. This parameter is optional. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
 | ?.string | Font family. Multiple font families are separated by commas (,). For example, "font weight; font family 1, font family 2".|
 
 **Returns**
@@ -238,8 +238,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Font size, in fp.|
-| .value[1].i32 | Font style, specified using the [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle) enum.|
-| .value[2].i32 | Font weight, specified using the [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight) enum.|
+| .value[1].i32 | Font style. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle).|
+| .value[2].i32 | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight).|
 | .string | Font family. Multiple font families are separated by commas (,).|
 
 ## NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS
@@ -282,13 +282,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text input type, specified using the [ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype) enum. The default value is **ARKUI_TEXTINPUT_TYPE_NORMAL**.|
+| .value[0].i32 | Text input type. The value is an enumerated value of [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype). The default value is **ARKUI_TEXTINPUT_TYPE_NORMAL**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text input type, specified using the [ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype) enum.|
+| .value[0].i32 | Text input type. The value is an enumerated value of [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype).|
 
 ## NODE_TEXT_INPUT_SELECTED_BACKGROUND_COLOR
 
@@ -378,7 +378,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Button style, specified using the [ArkUI_CancelButtonStyle](capi-native-type-h.md#arkui_cancelbuttonstyle) enum. The default value is **ARKUI_CANCELBUTTON_STYLE_INPUT**.|
+| .value[0].i32 | Button style. The value is an enumerated value of [ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle). The default value is **ARKUI_CANCELBUTTON_STYLE_INPUT**.|
 | .value[1]?.f32 | Button icon size, in vp.|
 | .value[2]?.u32 | Button icon color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
 | ?.string | Button icon address. The value is the local address of an image, for example, **/pages/icon.png**.|
@@ -387,7 +387,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Button style, specified using the [ArkUI_CancelButtonStyle](capi-native-type-h.md#arkui_cancelbuttonstyle) enum.|
+| .value[0].i32 | Button style. The value is an enumerated value of [ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle).|
 | .value[1].f32 | Button icon size, in vp.|
 | .value[2].u32 | Button icon color, in 0xARGB format.|
 | .string | Button icon address.|
@@ -488,13 +488,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Autofill type. The parameter type is [ArkUI_TextInputContentType](capi-native-type-h.md#arkui_textinputcontenttype).|
+| .value[0].i32 | The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Autofill type. The parameter type is [ArkUI_TextInputContentType](capi-native-type-h.md#arkui_textinputcontenttype).|
+| .value[0].i32 | The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype).|
 
 ## NODE_TEXT_INPUT_PASSWORD_RULES
 
@@ -574,7 +574,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_INPUT_STYLE = 7022
 ```
 
-Text box style (default style or inline input style). The inline input style is only available when [ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype) is set to **ARKUI_TEXTINPUT_TYPE_NORMAL**.<br>
+Text box style (default style or inline input style). The inline input style is only available when [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype) is set to **ARKUI_TEXTINPUT_TYPE_NORMAL**.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -584,13 +584,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text input style. The parameter type is [ArkUI_TextInputStyle](capi-native-type-h.md#arkui_textinputstyle). The default value is **ARKUI_TEXTINPUT_STYLE_DEFAULT**.|
+| .value[0].i32 | The parameter type is [ArkUI_TextInputStyle](capi-text-input-h.md#arkui_textinputstyle). The default value is **ARKUI_TEXTINPUT_STYLE_DEFAULT**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text input style. The parameter type is [ArkUI_TextInputStyle](capi-native-type-h.md#arkui_textinputstyle).|
+| .value[0].i32 | The parameter type is [ArkUI_TextInputStyle](capi-text-input-h.md#arkui_textinputstyle).|
 
 ## NODE_TEXT_INPUT_CARET_OFFSET
 
@@ -749,13 +749,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Line break rule. The parameter type is [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak). The default value is **ARKUI_WORD_BREAK_BREAK_WORD**.|
+| .value[0].i32 | The parameter type is [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak). The default value is **ARKUI_WORD_BREAK_BREAK_WORD**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Line break rule. The parameter type is [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak).|
+| .value[0].i32 | The parameter type is [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak).|
 
 ## NODE_TEXT_INPUT_SHOW_KEYBOARD_ON_FOCUS
 
@@ -893,13 +893,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Appearance of the keyboard. The parameter type is [ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance).|
+| .value[0].i32 | Keyboard appearance. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Appearance of the keyboard. The parameter type is [ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance). The default value is **ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE**.|
+| .value[0].i32 | Keyboard appearance. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance). The default value is **ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE**.|
 
 ## NODE_TEXT_INPUT_ENABLE_FILL_ANIMATION
 
@@ -923,7 +923,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the autofill animation is enabled. When enabled, the animation only takes effect for text boxes whose [ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype) is set to **ARKUI_TEXTINPUT_TYPE_PASSWORD**, **ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD**, or **ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD**.|
+| .value[0].i32 | Whether the autofill animation is enabled. When enabled, the animation only takes effect for text boxes whose [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype) is set to **ARKUI_TEXTINPUT_TYPE_PASSWORD**, **ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD**, or **ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD**.|
 
 ## NODE_TEXT_INPUT_LINE_HEIGHT
 
@@ -1043,13 +1043,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Ellipsis position. The parameter type is [ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode). The default value is **ARKUI_ELLIPSIS_MODE_END**.|
+| .value[0].i32 | The parameter type is [ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode). The default value is **ARKUI_ELLIPSIS_MODE_END**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Ellipsis position. The parameter type is [ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode).|
+| .value[0].i32 | The parameter type is [ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode).|
 
 ## NODE_TEXT_INPUT_ORPHAN_CHAR_OPTIMIZATION
 
@@ -1057,7 +1057,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_INPUT_ORPHAN_CHAR_OPTIMIZATION = 7043
 ```
 
-Whether to enable orphan character optimization for text layout in the **TextInput** component. When set, the orphan character (the first character in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break points to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
+Whether to enable orphan character optimization for text layout in the **TextInput** component. When set, the orphan character (the first character in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break points to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
@@ -1163,13 +1163,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text layout direction. The value is an enumerated value of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection). The default value is **ARKUI_TEXT_DIRECTION_DEFAULT**.|
+| .value[0].i32 | Text layout direction. The value is an enumerated value of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection). The default value is **ARKUI_TEXT_DIRECTION_DEFAULT**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text layout direction. For details about the values and meanings, see the enumerated values of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection).|
+| .value[0].i32 | Text layout direction. For details about the values and meanings, see the enumerated values of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection).|
 
 ## NODE_TEXT_INPUT_SELECTED_DRAG_PREVIEW_STYLE
 
@@ -1274,13 +1274,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Display mode when the text is too long, specified using the [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow) enum. The default value is **ARKUI_TEXT_OVERFLOW_ELLIPSIS** in the non-editing state for the inline mode and **ARKUI_TEXT_OVERFLOW_CLIP** in the editing state for the inline mode.|
+| .value[0].i32 | Display mode when the text is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow). The default value is **ARKUI_TEXT_OVERFLOW_ELLIPSIS** in the non-editing state for the inline mode and **ARKUI_TEXT_OVERFLOW_CLIP** in the editing state for the inline mode.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Display mode when the text is too long, specified using the [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow) enum.|
+| .value[0].i32 | Display mode when the text is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow).|
 
 ## NODE_TEXT_INPUT_DECORATION
 
@@ -1444,8 +1444,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0]?.f32 | Font size, in fp. This parameter is optional. The default value is **16.0**.|
-| .value[1]?.i32 | Font style, specified using the [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle) enum. This parameter is optional. The default value is **ARKUI_FONT_STYLE_NORMAL**.|
-| .value[2]?.i32 | Font weight, specified using the [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight) enum. This parameter is optional. The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
+| .value[1]?.i32 | Font style. This parameter is optional. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
+| .value[2]?.i32 | Font weight. This parameter is optional. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
 | ?.string | Font family. Multiple font families are separated by commas (,). For example, "font weight; font family 1, font family 2".|
 
 **Returns**
@@ -1453,8 +1453,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Font size, in fp.|
-| .value[1].i32 | Font style, specified using the [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle) enum.|
-| .value[2].i32 | Font weight, specified using the [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight) enum.|
+| .value[1].i32 | Font style. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle).|
+| .value[2].i32 | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight).|
 | .string | Font family. Multiple font families are separated by commas (,).|
 
 ## NODE_TEXT_AREA_CARET_COLOR
@@ -1521,13 +1521,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text area type, specified using the [ArkUI_TextAreaType](capi-native-type-h.md#arkui_textareatype) enum. The default value is **ARKUI_TEXTAREA_TYPE_NORMAL**.|
+| .value[0].i32 | Text area type. The value is an enumerated value of [ArkUI_TextAreaType](capi-text-area-h.md#arkui_textareatype). The default value is **ARKUI_TEXTAREA_TYPE_NORMAL**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text area type, specified using the [ArkUI_TextAreaType](capi-native-type-h.md#arkui_textareatype) enum.|
+| .value[0].i32 | Text area type. The value is an enumerated value of [ArkUI_TextAreaType](capi-text-area-h.md#arkui_textareatype).|
 
 ## NODE_TEXT_AREA_SHOW_COUNTER
 
@@ -1671,13 +1671,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Type of the **Enter** key, specified using the [ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype) enum. The default value is **ARKUI_ENTER_KEY_TYPE_DONE**.|
+| .value[0].i32 | Type of the **Enter** key. The value is an enumerated value of [ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype). The default value is **ARKUI_ENTER_KEY_TYPE_DONE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Type of the **Enter** key, specified using the [ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype) enum.|
+| .value[0].i32 | Type of the **Enter** key. The value is an enumerated value of [ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype).|
 
 ## NODE_TEXT_AREA_ENABLE_KEYBOARD_ON_FOCUS
 
@@ -1836,13 +1836,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Autofill type. The parameter type is [ArkUI_TextInputContentType](capi-native-type-h.md#arkui_textinputcontenttype).|
+| .value[0].i32 | The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Autofill type. The parameter type is [ArkUI_TextInputContentType](capi-native-type-h.md#arkui_textinputcontenttype).|
+| .value[0].i32 | The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype).|
 
 ## NODE_TEXT_AREA_SHOW_KEYBOARD_ON_FOCUS
 
@@ -1980,13 +1980,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Appearance of the keyboard. The parameter type is [ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance).|
+| .value[0].i32 | Keyboard appearance. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Appearance of the keyboard. The parameter type is [ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance).|
+| .value[0].i32 | Keyboard appearance. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance).|
 
 ## NODE_TEXT_AREA_MAX_LINES
 
@@ -2124,13 +2124,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Scrollbar status of the text input box. The parameter type is [ArkUI_BarState](capi-native-type-h.md#arkui_barstate). The default value is **ARKUI_BAR_STATE_AUTO**.|
+| .value[0].i32 | Scrollbar status of the text input box. The parameter type is [ArkUI_BarState](capi-scroll-h.md#arkui_barstate). The default value is **ARKUI_BAR_STATE_AUTO**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Scrollbar status of the text input box. The parameter type is [ArkUI_BarState](capi-native-type-h.md#arkui_barstate).|
+| .value[0].i32 | Scrollbar status of the text input box. The parameter type is [ArkUI_BarState](capi-scroll-h.md#arkui_barstate).|
 
 ## NODE_TEXT_AREA_ENABLE_SELECTED_DATA_DETECTOR
 
@@ -2246,13 +2246,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Ellipsis position. The parameter type is [ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode). The default value is **ARKUI_ELLIPSIS_MODE_END**.|
+| .value[0].i32 | The parameter type is [ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode). The default value is **ARKUI_ELLIPSIS_MODE_END**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Ellipsis position. The parameter type is [ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode).|
+| .value[0].i32 | The parameter type is [ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode).|
 
 ## NODE_TEXT_AREA_ORPHAN_CHAR_OPTIMIZATION
 
@@ -2260,7 +2260,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_AREA_ORPHAN_CHAR_OPTIMIZATION = 8039
 ```
 
-Whether to enable orphan character optimization for text layout in the **TextArea** component. When set, the orphan character (the first character in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break points to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
+Whether to enable orphan character optimization for text layout in the **TextArea** component. When set, the orphan character (the first character in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break points to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
@@ -2390,13 +2390,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text layout direction. The value is an enumerated value of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection). The default value is **ARKUI_TEXT_DIRECTION_DEFAULT**.|
+| .value[0].i32 | Text layout direction. The value is an enumerated value of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection). The default value is **ARKUI_TEXT_DIRECTION_DEFAULT**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text layout direction. For details about the values and meanings, see the enumerated values of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection).|
+| .value[0].i32 | Text layout direction. For details about the values and meanings, see the enumerated values of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection).|
 
 ## NODE_TEXT_AREA_SELECTED_DRAG_PREVIEW_STYLE
 
@@ -2438,13 +2438,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Display mode when the text is too long, specified using the [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow) enum. The default value is **ARKUI_TEXT_OVERFLOW_CLIP**.|
+| .value[0].i32 | Display mode when the text is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow). The default value is **ARKUI_TEXT_OVERFLOW_CLIP**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Display mode when the text is too long, specified using the [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow) enum.|
+| .value[0].i32 | Display mode when the text is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow).|
 
 ## NODE_TEXT_AREA_DECORATION
 

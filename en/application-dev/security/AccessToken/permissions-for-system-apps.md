@@ -17,18 +17,6 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
-## ohos.permission.RUNNING_LOCK
-
-Allows an application to obtain a running lock to keep running in the background.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Since**: 7
-
 ## ohos.permission.SET_WALLPAPER
 
 Allows an application to set wallpapers.
@@ -4520,25 +4508,6 @@ Allows a system application to obtain the page information of a specified applic
 
 **Since**: 18
 
-## ohos.permission.ACCESS_DDK_USB_SERIAL
-
-Allows a peripheral extension driver to access the USB Serial DDK APIs.
-
-The APIs can be used to develop the following types of peripheral extension drivers:
-
-Peripherals connected to the host via a USB bus and:
-
-1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
-2. The peripheral can simulate traditional serial communication through a USB interface.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Since**: 18
-
 ## ohos.permission.ACCESS_CUSTOM_RINGTONE
 
 Allows an application to access the RBT library.
@@ -5693,6 +5662,20 @@ With this permission, the application can call the API to obtain the local accou
 
 **Valid since**: 24
 
+ ## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
+ 
+ Allows a system application to enable agent-related permission management features.
+ 
+ **Permission level**: system_basic
+ 
+ **Authorization mode**: system_grant
+ 
+ **Certificate-based authorization**: true
+ 
+ **Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+ **Valid since**: 26.0.0
+
 ## ohos.permission.GET_AGENT_CARD
 
 Allows a system application to obtain AgentCard information.
@@ -5847,7 +5830,7 @@ Allows a system application to read directory logs of the vehicle log service, B
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.AUTO_UPDATER
 
@@ -5875,7 +5858,7 @@ Allows a system application to send commands to collect logs.
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
@@ -6301,7 +6284,7 @@ Allows a system application to access available functions.
 
 **Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.0
 
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
@@ -6318,6 +6301,160 @@ With this permission, the application can access and modify the offline map data
 **Supported devices**: phones
 
 **Valid since**: 20
+
+## ohos.permission.TV_MANAGE_SOURCE
+
+Allows a system application to manage and control Vision input sources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_PICTURE_QUALITY
+
+Allows a system application to manage the Vision picture quality.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_GET_AUDIO_DEVICE_INFO
+
+Allows a system application to read Vision audio output device information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_SET_AUDIO_DEVICE_INFO
+
+Allows a system application to set Vision audio output device information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_SOUND_EFFECT
+
+Allows a system application to query and set Vision sound effects.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_AI_AQ
+
+Allows a system application to query and set Vision computational audio.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_CEC
+
+Allows a system application to control CEC devices through HDMI CEC.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_CAMERA_AI
+
+Allows a system application to access camera AI algorithms of Vision.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_DIAGNOSIS
+
+Allows a system application to perform smart diagnostics on Vision faults.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_ACCESS_PROJECTION
+
+Allows a system application to access Vision projection.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_LOGSYNC
+
+Allows a system application to manage Vision log synchronization.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
 
 ## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
 
@@ -6573,6 +6710,34 @@ Allows a system application to access the file cache path of the file transfer s
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.CREATE_SIGN_CONTENT_TRUST
+ 	 
+Allows an application to create a content trust signature.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.APPEND_SIGN_CONTENT_TRUST
+
+Allows an application to append a content trust signature.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
 ## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
 
 Allows an application to set cellular network information.
@@ -6585,7 +6750,7 @@ Allows an application to set cellular network information.
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.TBOX_CELLULAR_INFO
 
@@ -6599,7 +6764,7 @@ Allows an application to read cellular network information.
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.MANAGE_TBOX_WIFI
 
@@ -6613,7 +6778,7 @@ Allows an application to set TBox WiFi related information.
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.TBOX_WIFI_INFO
 
@@ -6627,7 +6792,7 @@ Allows an application to obtain T-Box Wi-Fi–related information.
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.PACKET_CAPTURE_INFO
 
@@ -6641,7 +6806,7 @@ Allows an application to trigger network packet capture.
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.CCN_SELF_HEALING
 
@@ -6654,7 +6819,35 @@ Allows the triggering of network self-check and self-healing.
 
 **Supported devices**: cars
 
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.AUTO_OTA_PROXY
+
+Allows a system application to send OTA-related vehicle control and domain control commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
 **Since**: 26.0.0
+
+## ohos.permission.vehicle.CAMERA_EVS
+
+Allows an application to access the vehicle camera.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
  	 
@@ -6669,3 +6862,123 @@ Allows an application to manage clone preferences.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
  	 
 **Valid since**: 26.1.0
+
+## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
+
+Allows an application to obtain configurations related to device unlocking via enterprise accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_ENTERPRISE_UNLOCK_CONFIGS
+
+Allows an application to configure the capability of unlocking devices via enterprise accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
+
+Allows an application to access associated assistant service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
+
+## ohos.permission.SAMBA_CLIENT_ACCESS
+
+Allows an application to connect to the network neighborhood client and manage network neighborhood files.
+
+With this permission, the application can connect to or disconnect from network neighborhood, perform operations on network neighborhood files, and obtain basic information about network neighborhood connections.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
+
+Allows an application to call the file management service APIs to perform operations on files.
+
+With this permission, the application can use file management functions, including the recycle bin, frequently used folders, favorites, USB device queries, and shortcuts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
+
+Allows an application to obtain and manage smart files.
+
+With this permission, the application can manage smart file categorization, generate file summaries, and provide file recommendations.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.UPDATE_FORM_CROSS_BUNDLE
+
+Allows an application to update widgets of other applications.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | TV | Car
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
+
+Allows an application to obtain and operate files of the file management application.
+
+With this permission, the application can add file event records, search for files, manage recent files, and obtain music files, duplicate files, and aggregated files.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0

@@ -100,7 +100,7 @@ layoutOptions: GridLayoutOptions = {
   regularSize: [1, 1],
   onGetRectByIndex: (index: number) => {
   // ···
-    if (index = = key1) { // key1 is the index of the 0 key.
+    if (index == key1) { // key1 is the index of the 0 key.
       return [6, 0, 1, 2];
     } else if (index == key2) { // key2 is the index of the = key.
       return [5, 3, 2, 1];

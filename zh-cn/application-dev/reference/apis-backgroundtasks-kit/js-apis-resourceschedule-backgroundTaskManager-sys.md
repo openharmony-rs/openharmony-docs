@@ -25,11 +25,11 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
-申请能效资源。
+申请或释放能效资源。释放操作仅对本次申请的资源生效。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -62,7 +62,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let request: backgroundTaskManager.EfficiencyResourcesRequest = {
     resourceTypes: backgroundTaskManager.ResourceType.CPU, // 申请CPU资源
     isApply: true, // 申请资源
-    timeOut: 0, // 资源使用超时时间（ms）
+    timeOut: 0, // 资源使用时间（ms）
     reason: 'apply', // 申请资源原因
     isPersist: true, // 永久持有资源
     isProcess: false, // 应用申请
@@ -84,7 +84,7 @@ resetAllEfficiencyResources(): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **错误码：**
 
@@ -122,7 +122,7 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **返回值：**
 
@@ -170,7 +170,7 @@ setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -222,7 +222,7 @@ getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -279,7 +279,7 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **返回值：**
 
@@ -327,13 +327,13 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名     | 类型      | 必填   | 说明                    |
 | ------- | ------- | ---- |-----------------------|
-| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 后台任务监听对象，包含长时任务开始，长时任务更新，长时任务结束。 |
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 长时任务状态变化监听对象，包含长时任务开始，长时任务更新，长时任务结束的回调接口。 |
 
 **错误码：**
 
@@ -384,13 +384,13 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名     | 类型      | 必填   | 说明                    |
 | ------- | ------- | ---- |-----------------------|
-| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 后台任务监听对象，包含长时任务开始，长时任务更新，长时任务结束。 |
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 长时任务状态变化监听对象，包含长时任务开始，长时任务更新，长时任务结束的回调接口。 |
 
 **错误码：**
 
@@ -437,7 +437,7 @@ try {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| WIFI_INTERACTION        | 7    | WLAN相关。<br>**系统API**: 此接口为系统接口。 |
+| WIFI_INTERACTION        | 7    | WLAN相关。<br>**系统接口：** 此接口为系统接口。 |
 
 ## EfficiencyResourcesRequest
 
@@ -445,15 +445,15 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | resourceTypes   | number  | 否    | 否    | 申请的资源类型。取值参考[ResourceType](#resourcetype)。                               |
 | isApply         | boolean | 否    | 否    | 申请或释放资源。<br>- true表示申请资源。<br>- false表示释放部分资源。 |
-| timeOut         | number  | 否    | 否    | 资源使用时间，单位：ms。                |
+| timeOut         | number  | 否    | 否    | 资源使用时间，单位：ms。设置后能效资源会在指定时间后自动释放。当isPersist为true时，此字段不生效。             |
 | isPersist       | boolean | 否    | 是    | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。|
-| isProcess       | boolean | 否    | 是    | 进程或应用申请，默认为false。<br>- true表示进程申请。<br>- false表示应用申请。         |
+| isProcess       | boolean | 否    | 是    | 进程或应用申请，默认为false。<br>- true表示进程申请，能效资源只对当前进程有效。<br>- false表示应用申请，能效资源对整个应用的所有进程有效。         |
 | reason          | string  | 否    | 否    | 申请资源原因。                |
 | cpuLevel<sup>23+</sup> | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23) | 否    | 是    | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。 |
 
@@ -463,7 +463,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -483,18 +483,18 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                             | 类型      | 只读   | 可选   | 说明          |
 |--------------------------------|---------| ---- | ---- |-------------|
 | [resourceTypes](#resourcetype) | number  | 否    | 否    | 能效资源类型。     |
 | timeout                        | number  | 否    | 否    | 超时时间，单位：ms。 |
 | isPersistent                   | boolean | 否    | 否    | 是否永久持有资源，默认为false。取值为true表示永久持有。取值为false表示有限时间内持有。      |
-| isForProcess                   | boolean | 否    | 否    | 进程或应用申请，取值为true表示进程申请。取值为false表示应用申请。   |
+| isForProcess                   | boolean | 否    | 否    | 进程或应用申请，取值为true表示进程申请，能效资源只对当前进程有效。取值为false表示应用申请，能效资源对整个应用的所有进程有效。   |
 | reason                         | string  | 否    | 否    | 申请资源原因。       |
 | uid                            | number  | 否    | 否    | 应用的UID。     |
 | pid                            | number  | 否    | 否    | 应用进程的PID。   |
-| cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | 否    | 是    |  指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。 |
+| cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | 否    | 是    | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。 |
 
 ## EfficiencyResourcesCpuLevel<sup>23+</sup>
 
@@ -516,7 +516,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
 | ------------------------ | ---- | --------------------- |
@@ -530,7 +530,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型                                  | 只读   | 可选 | 说明      |
 |--|-------------------------------------| ---- |----|---------|
@@ -547,7 +547,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 ### onContinuousTaskStart<sup>23+</sup>
 
@@ -559,7 +559,7 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -595,7 +595,7 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -631,7 +631,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 

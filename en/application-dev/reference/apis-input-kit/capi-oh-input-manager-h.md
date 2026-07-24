@@ -1225,7 +1225,7 @@ Obtains the action of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Mouse action. For details, see [Input_MouseEventAction](#input_mouseeventaction).|
+| int32_t | Mouse action. Returns **-1** if **mouseEvent** is NULL. For details, see [Input_MouseEventAction](#input_mouseeventaction).|
 
 ### OH_Input_SetMouseEventDisplayX()
 
@@ -1272,7 +1272,7 @@ Obtains the X coordinate of the mouse event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | The X coordinate of the mouse event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| int32_t | The X coordinate of the mouse event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). Returns **-1** if **mouseEvent** is NULL. |
 
 ### OH_Input_SetMouseEventDisplayY()
 
@@ -1319,7 +1319,7 @@ Obtains the Y coordinate of the mouse event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | Y-coordinate of the mouse event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| int32_t | Y-coordinate of the mouse event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). Returns **-1** if **mouseEvent** is NULL. |
 
 ### OH_Input_SetMouseEventButton()
 
@@ -1366,7 +1366,7 @@ Obtains the button of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Mouse button. For details, see [Input_MouseEventButton](#input_mouseeventbutton).|
+| int32_t | Mouse button. Returns **-1** if **mouseEvent** is NULL.<br>For details, see [Input_MouseEventButton](#input_mouseeventbutton).|
 
 ### OH_Input_SetMouseEventAxisType()
 
@@ -1413,7 +1413,7 @@ Obtains the axis type of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Enumerates mouse axis types. For details, see [InputEvent_MouseAxis](#inputevent_mouseaxis).|
+| int32_t | Enumerates mouse axis types. Returns **-1** if **mouseEvent** is NULL.<br>For details, see [InputEvent_MouseAxis](#inputevent_mouseaxis).|
 
 ### OH_Input_SetMouseEventAxisValue()
 
@@ -1460,7 +1460,7 @@ Obtains the axis value of a mouse axis event.
 
 | Type| Description|
 | -- | -- |
-| float | Axis event value.|
+| float | Axis event value. Returns **-1** if **mouseEvent** is NULL.|
 
 ### OH_Input_SetMouseEventActionTime()
 
@@ -3340,7 +3340,7 @@ Registers a listener for device hot swap events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_RegisterDeviceListener** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the listener is null.|
+| [Input_Result](#input_result) | Return value of the **OH_Input_RegisterDeviceListener** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the listener is null;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
 
 ### OH_Input_UnregisterDeviceListener()
 
@@ -4820,7 +4820,7 @@ Obtains the pressure of a touchscreen input event.
 
 | Type| Description|
 | -- | -- |
-| double | Pressure value, without a unit.|
+| double | Pressure value, without a unit. When **touchEvent** is NULL, the default pressure **0.0** is returned.|
 
 ### OH_Input_SetTouchEventWindowX()
 
@@ -4863,7 +4863,7 @@ Obtains the X coordinate of the touch event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | X coordinate in the relative coordinate system with the upper left corner of the specified window as the origin, in pixels (px). |
+| int32_t | X coordinate in the relative coordinate system with the upper left corner of the specified window as the origin, in pixels (px). When **touchEvent** is NULL, the default value **0** is returned. |
 
 ### OH_Input_SetTouchEventWindowY()
 
@@ -4906,7 +4906,7 @@ Obtains the Y coordinate of the touch event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | Y-coordinate in the relative coordinate system with the origin at the upper left corner of the window, in pixels (px). |
+| int32_t | Y-coordinate in the relative coordinate system with the origin at the upper left corner of the window, in pixels (px). When **touchEvent** is NULL, the default value **0** is returned. |
 
 ### OH_Input_SetTouchEventDownTime()
 
@@ -4949,7 +4949,7 @@ Obtains the time when the most recent down event occurred for the finger or othe
 
 | Type| Description|
 | -- | -- |
-| int64_t | The time when the most recent press event of the finger or other touch peripherals corresponding to the current touch screen input occurred, representing the number of microseconds elapsed since system startup, in microseconds (μs). |
+| int64_t | The time when the most recent press event of the finger or other touch peripherals corresponding to the current touch screen input occurred, representing the number of microseconds elapsed since system startup, in microseconds (μs). When **touchEvent** is NULL, **0** is returned. |
 
 ### OH_Input_SetTouchEventToolType()
 
@@ -4998,7 +4998,7 @@ Obtains the tool type of a touchscreen input event.
 
 | Type| Description|
 | -- | -- |
-| [Input_TouchEventToolType](#input_toucheventtooltype) | Tool type.|
+| [Input_TouchEventToolType](#input_toucheventtooltype) | Tool type. When **touchEvent** is NULL, the default tool type [TOOL_TYPE_FINGER](#input_toucheventtooltype) is returned.|
 
 ### OH_Input_BindInputDeviceToDisplay()
 

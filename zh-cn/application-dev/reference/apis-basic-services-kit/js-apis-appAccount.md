@@ -461,15 +461,15 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
 | 12300003 | Account not found. |
-| 12400005 | The size of authorization list reaches the upper limit. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
+| 12400005 | The size of authorization list reaches the upper limit. <br>适用版本：14+ |
 
 **示例：**
 
@@ -514,15 +514,15 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
 | 12300003 | Account not found. |
-| 12400005 | The size of authorization list reaches the upper limit. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
+| 12400005 | The size of authorization list reaches the upper limit. <br>适用版本：14+ |
 
 **示例：**
 
@@ -1368,13 +1368,13 @@ getAccountsByOwner(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccount
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 
 **示例：**
 
@@ -1418,13 +1418,13 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 
 **示例：**
 
@@ -1462,13 +1462,13 @@ on(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Arr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid type or owners. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 
 **示例：**
 
@@ -2014,15 +2014,15 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
 | 12300003 | Account not found. |
 | 12300107 | AuthType not found. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 | 12400005 | The size of authorization list reaches the upper limit. |
 
 **示例：**
@@ -2070,15 +2070,15 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
 | 12300003 | Account not found. |
 | 12300107 | AuthType not found. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 | 12400005 | The size of authorization list reaches the upper limit. |
 
 **示例：**

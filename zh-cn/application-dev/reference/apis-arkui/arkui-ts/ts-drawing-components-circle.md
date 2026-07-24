@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 子组件
@@ -23,7 +23,7 @@
 
 new Circle(value?: CircleOptions)
 
-用于绘制圆形的构造函数。 
+用于绘制圆形的构造函数。调用后创建一个Circle对象，可设置宽高属性。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -35,13 +35,13 @@ new Circle(value?: CircleOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸。当需要自定义圆形大小时传入此参数，不传入时width和height默认为0。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ### Circle
 
 Circle(value?: CircleOptions)
 
-用于绘制圆形的构造函数。 
+用于绘制圆形的构造函数。调用后创建一个Circle对象，可设置宽高属性。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -53,7 +53,7 @@ Circle(value?: CircleOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸。当需要自定义圆形大小时传入此参数，不传入时width和height默认为0。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## CircleOptions对象说明
 
@@ -67,18 +67,18 @@ Circle(value?: CircleOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| width | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
-| height | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| width | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。当需要自定义圆形大小时设置此属性，不传入时默认为0。<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| height | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。当需要自定义圆形大小时设置此属性，不传入时默认为0。<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。 |
 
 ## 属性
 
-支持[通用属性](ts-component-general-attributes.md)以及[图形绘制通用属性](ts-drawing-components-common.md)外，还支持以下属性：
+除支持[通用属性](ts-component-general-attributes.md)以及[图形绘制通用属性](ts-drawing-components-common.md)外，还支持以下属性：
 
 ### stroke
 
 stroke(value: ResourceColor | ColorMetrics): CircleAttribute
 
-设置边框颜色，支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色，可进行HDR提亮，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，不设置时，默认边框透明度为0，即没有边框。
+设置边框颜色，支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色，可进行HDR提亮。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性。不设置时，默认边框颜色为[Color](ts-appendix-enums.md#color).Transparent，即没有边框。异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。
 
 **起始版本：** 26.0.0
 
@@ -92,13 +92,13 @@ stroke(value: ResourceColor | ColorMetrics): CircleAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 边框颜色。<br>默认值：[Color](ts-appendix-enums.md#color).Transparent<br>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
 
 ### fill
 
-fill(value: ResourceColor | ColorMetrics)
+fill(value: ResourceColor | ColorMetrics): CircleAttribute
 
-设置填充区域的颜色，支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色，可进行HDR提亮，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
+设置填充区域的颜色，支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色，可进行HDR提亮。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性。不设置时，默认填充颜色为[Color](ts-appendix-enums.md#color).Black。异常值undefined、null、NaN和Infinity按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
 
 **起始版本：** 26.0.0
 
@@ -112,7 +112,7 @@ fill(value: ResourceColor | ColorMetrics)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 填充区域颜色。<br>默认值：[Color](ts-appendix-enums.md#color).Black <br>异常值undefined、null、NaN和Infinity按照默认值处理。 |
 
 ## 示例
 
@@ -176,7 +176,7 @@ struct CircleTypeExample {
 // xxx.ets
 class MyCircleModifier implements AttributeModifier<CircleAttribute> {
   applyNormalAttribute(instance: CircleAttribute): void {
-    // 填充颜色#707070，填充透明度0.5，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，边框透明度0.5，边框宽度10，抗锯齿开启
+    // 填充颜色#707070，填充透明度0.5，边框颜色#2787D9，虚线样式[20]，起点偏移量15，端点样式为圆头，边框透明度0.5，边框宽度10，抗锯齿开启
     instance.fill("#707070")
     instance.fillOpacity(0.5)
     instance.stroke("#2787D9")
@@ -208,7 +208,7 @@ struct CircleModifierDemo {
 
 ### 示例4（使用ColorMetrics设置HDR填充和边框颜色）
 
-通过[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)可为Circle组件设置HDR颜色，实现超出普通显示范围的亮度效果。其中，[fill](#fill)接口用于设置填充区域的颜色，[stroke](#stroke)接口用于设置边框颜色。以下示例左侧使用HDR暖金色填充和冰蓝色边框（亮度倍数大于1.0），右侧使用普通SDR颜色作为对照，在支持HDR的屏幕上可观察到左侧明显比右侧更亮且色彩更鲜艳。
+通过[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)可为Circle组件设置HDR颜色，实现超出普通显示范围的亮度效果。其中，[fill](#fill)接口用于设置填充区域的颜色，[stroke](#stroke)接口用于设置边框颜色。以下示例左侧使用HDR暖金色填充和冰蓝色边框（亮度倍数大于1.0），右侧使用普通SDR颜色作为对照。在支持HDR的屏幕上可观察到左侧明显比右侧更亮且色彩更鲜艳。
 
 从API版本26.0.0开始，新增Circle组件专有的[fill](#fill)和[stroke](#stroke)接口，支持传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型以实现HDR提亮效果。
 

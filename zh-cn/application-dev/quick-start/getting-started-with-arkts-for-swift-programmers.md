@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 对于熟悉Swift的开发者而言，ArkTS作为新的开发语言，带来了全新的开发体验与机遇。ArkTS在语法和编程范式上不仅继承了现代语言的特性，还针对生态进行了深度优化。理解Swift与ArkTS的差异和共性，能够帮助开发者快速上手应用开发，避开常见的编程误区。
 
@@ -36,12 +36,12 @@ let version = 5.0;
 | Swift类型       | ArkTS类型            | 示例代码                          | 核心差异说明                  |  
 |----------------|----------------------|-----------------------------------|-------------------------------|  
 | `Bool`    | `boolean`     | `let isDone: boolean = false;`    | 定义方式相似，均用于逻辑判断。                      |  
-| `Int8`    | `number`      | `let count: number = 10;`         | Swift的`Int8`为8位整数。<br>ArkTS统一用`number`表示小整数类型。  |  
-| `Int16`   | `number`      | `let count: number = 10;`         | Swift的`Int16`为16位整数。<br>ArkTS统一用`number`表示小整数类型。|  
-| `Int32`   | `number`      | `let count: number = 10;`         | Swift的`Int32`为32位整数。<br>ArkTS的`number`是双精度浮点型，可存储整数和浮点数。       |  
-| `Int64`        | `number`             | `let largeNum: number = 9007199254740991;` | Swift需处理大整数。<br>ArkTS用同一类型表示。          |  
-| `Float`        | `number`             | `let pi: number = 3.14;`          | Swift需显式指定`Float`。<br>ArkTS直接使用`number`。       |  
-| `Double`       | `number`             | `let e: number = 2.71828;`        | Swift区分`Float`和`Double`。<br>ArkTS统一用`number`表示所有数值类型。         |  
+| `Int8`    | `number`      | `let count: number = 10;`         | Swift的`Int8`为8位整数。<br>ArkTS统一用`number`表示，`number`为双精度浮点型，可存储整数和浮点数。  |  
+| `Int16`   | `number`      | `let count: number = 10;`         | Swift的`Int16`为16位整数。<br>ArkTS统一用`number`表示，`number`为双精度浮点型，可存储整数和浮点数。|  
+| `Int32`   | `number`      | `let count: number = 10;`         | Swift的`Int32`为32位整数。<br>ArkTS统一用`number`表示，`number`为双精度浮点型，可存储整数和浮点数。       |  
+| `Int64`        | `number`             | `let largeNum: number = 9007199254740991;` | Swift需处理大整数。<br>ArkTS统一用`number`表示，`number`为双精度浮点型。          |  
+| `Float`        | `number`             | `let pi: number = 3.14;`          | Swift需显式指定`Float`。<br>ArkTS统一用`number`表示，`number`为双精度浮点型。       |  
+| `Double`       | `number`             | `let e: number = 2.71828;`        | Swift区分`Float`和`Double`。<br>ArkTS统一用`number`表示，`number`为双精度浮点型。         |  
 | `Character`    | `string`             | `let c: string = 'a';`            | ArkTS无`Character`类型，单字符场景使用`string`。   |  
 | `String`       | `string`             | `let message: string = 'Hello';`  | 定义方式类似，但ArkTS字符串支持模板字面量和更灵活的操作。  |  
 
@@ -49,10 +49,10 @@ let version = 5.0;
 | Swift类型体系                | ArkTS类型体系            | ArkTS示例代码                                                                 | 核心差异说明                                                                 |  
 |-----------------------------|--------------------------|-------------------------------------------------------------------------|-----------------------------------------------------------------------------|  
 | **数组**：`var arr: [Int] = [1, 2, 3]` | **Array**：`let arr: number[] = [1, 2, 3];` | ```// 动态长度语法糖```<br>```let dynamicArr = [4, 5, 6];```<br> | Swift数组长度可变。<br>ArkTS的`Array`是动态数组，支持`push`/`pop`等操作；可直接用`[]`简化初始化。数组不会越界，当数组下标超过数组长度时会得到undefined。 |  
-| **集合 - Set**：`var mySet: Set<String> = ["a", "b"]` | **Set**：`let mySet: Set<string> = new Set(["a", "b"]);` | ```mySet.add('c'); // 向集合内添加元素```<br>```for (const item of mySet) {...); // 迭代访问```<br> | Swift集合通过类型声明。<br>ArkTS中集合的类型较灵活，适合动态场景。 |  
+| **集合 - Set**：`var mySet: Set<String> = ["a", "b"]` | **Set**：`let mySet: Set<string> = new Set(["a", "b"]);` | ```mySet.add('c'); // 向集合内添加元素```<br>```for (const item of mySet) {...} // 迭代访问```<br> | Swift集合通过类型声明。<br>ArkTS中集合的类型较灵活，适合动态场景。 |  
 | **字典 - Dictionary**：`var dict: [String: Int] = ["key": 1]` | **Map**：`let map: Map<string, number> = new Map();` | ```map.set('key', 1); // 添加键值对```<br>```let value = map.get('key'); // 获取值```<br>```map.has('key'); // 检查键是否存在```<br> | Swift的`Dictionary`需显式声明类型。<br>ArkTS的`Map`操作更直接，支持链式调用。 |  
-| **协议**：`protocol Shape { func area() -> Double }` | **interface**：`interface Shapes { area(): number; }` | ```class Rectangles implements Shapes {```<br>```  public width: number = 0;```<br>```  public height: number = 0;```<br>```  area(): number { return this.width * this.height; }```<br>```}```<br> | 语法结构相似，但ArkTS接口实现无需显式修饰符，且支持可选属性。 |  
-| **类**：`class Circle: Shape { /* 类定义 */ }` | **class**：`class Circles implements Shape { /* 类定义 */ }` | ```class Circles {```<br>```  radius: number;```<br>```  constructor(radius: number = 10) { // 支持参数默认值```<br>```    this.radius = radius;```<br>```  }```<br>```}```<br> | ArkTS类支持属性默认值、可选参数，语法更简洁。 |  
+| **协议**：`protocol Shape { func area() -> Double }` | **interface**：`interface Shape { area(): number; }` | ```class Rectangle implements Shape {```<br>```  public width: number = 0;```<br>```  public height: number = 0;```<br>```  area(): number { return this.width * this.height; }```<br>```}```<br> | 语法结构相似，但ArkTS接口实现无需显式修饰符，且支持可选属性。 |  
+| **类**：`class Circle: Shape { /* 类定义 */ }` | **class**：`class Circle implements Shape { /* 类定义 */ }` | ```class Circle {```<br>```  radius: number;```<br>```  constructor(radius: number = 10) { // 支持参数默认值```<br>```    this.radius = radius;```<br>```  }```<br>```}```<br> | ArkTS类支持属性默认值、可选参数，语法更简洁。 |  
 | **枚举**：`enum Color { case red, green, blue }` | **enum**：`enum Colors { Red, Green, Blue }` | ```enum Colors { Red = 1, Green, Blue };```<br>```let color = Colors.Green; // 值为2（自动递增）```<br> | 基本概念一致，但ArkTS枚举不支持Swift中的自定义构造函数和方法，仅支持简单的数值或字符串枚举。 |  
 
 ### 函数与闭包
@@ -70,6 +70,7 @@ Swift和ArkTS在函数方面语法趋同，细节上有差别。
 function add(x: number, y: number): number {
   return x + y;
 }
+  // ...
   // 简洁的箭头函数形式，类似Swift的闭包语法
   const multiply = (a: number, b: number): number => a * b;
 ```
@@ -83,10 +84,11 @@ function add(x: number, y: number): number {
    <!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
 
    ``` TypeScript
-   function foo(x: number): void;            /* 第一个函数定义。 */
-   function foo(x: string): void;            /* 第二个函数定义。 */
-   function foo(x: number | string): void {  /* 函数实现。 */
+   function foo(x: number): void;            /* 第一个函数定义 */
+   function foo(x: string): void;            /* 第二个函数定义 */
+   function foo(x: number | string): void {  /* 函数实现 */
    }
+     // ...
      foo(123);     // OK，使用第一个定义
      foo('aa'); // OK，使用第二个定义
    ```
@@ -96,7 +98,8 @@ function add(x: number, y: number): number {
    <!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
 
    ``` TypeScript
-   function foo2(name?: string) {}  /* name为可选参数。 */
+   function foo2(name?: string) {}  /* name为可选参数 */
+     // ...
      foo2('hello');     // OK，传入name参数
      foo2();     // OK，不传name参数
    ```
@@ -137,7 +140,7 @@ ArkTS的类系统在语法层面与Swift相似，但在高阶特性上展现出�
 |------------|------------|------------------|-------------------------------|
 | 命名空间组织    | 嵌套结构/内部类     | `namespace`关键字或模块文件结构。           | 支持显式命名空间与模块化组织的混合模式。   |
 | 类继承机制        | 基于类的继承体系        | 基于原型链的继承机制。           | 语法相似但底层机制不同。        |
-| 类成员可见性    | public/private/internal       | 同Swift，但支持模块级可见性控制。          | 增加了模块导出控制的维度。|
+| 类成员可见性    | public/private/internal       | public/private/protected          | Swift使用`internal`控制模块内可见性，ArkTS使用`protected`控制类及子类可见性，并通过模块导出控制可见范围。|
 
 **命名空间管理** 
 
@@ -151,6 +154,7 @@ ArkTS支持显式命名空间（namespace）和模块化组织。
 namespace Models {
   export class User {
     // 实现细节
+    // ...
   }
 
   export interface Repository {
@@ -184,7 +188,7 @@ Swift的方法中，`self`始终指向类的实例对象，由代码结构在编
 ```swift
 class MyClass {
   func method() {
-    print(self) // 始终指向MyClass的实例。
+    print(self) // 始终指向MyClass的实例
   }
 }
 ```
@@ -219,8 +223,8 @@ function callFunction(fn: () => void) {
   let a: A = new A();
   let b: B = new B();
 
-  // callFunction(a.foo); // 程序crash。this的上下文发生了变化
-  // b.callFunction(a.foo); // 程序crash。this的上下文发生了变化
+  // callFunction(a.foo); // 程序crash，this的上下文发生了变化
+  // b.callFunction(a.foo); // 程序crash，this的上下文发生了变化
   b.callFunction(a.foo.bind(b)) // 输出'I am B'
 ```
 

@@ -8,7 +8,7 @@
 
 UserAgentBrandVersion是ArkWeb框架中用于配置User-Agent客户端提示信息中品牌名称和版本号的数据类，配合[UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md)使用。在User-Agent Client Hints机制中，浏览器通过Sec-CH-UA-Full-Version-List等请求标头向服务器报告品牌和版本信息，UserAgentBrandVersion用于定义其中的单个品牌条目。
 
-UserAgentBrandVersion提供品牌名称和版本号的设置与获取方法：setBrand/getBrand用于设置和获取品牌名称（如"Chromium"、"ArkWeb"等），setMajorVersion/getMajorVersion用于设置和获取主版本号（如"126"），setFullVersion/getFullVersion用于设置和获取完整版本号（如"126.0.0.0"）。应用可通过修改这些值来定制Web组件向服务器报告的浏览器身份信息。
+UserAgentBrandVersion提供品牌名称和版本号的设置与获取方法：setBrand/getBrand用于设置和获取品牌名称（如“ArkWeb”等），setMajorVersion/getMajorVersion用于设置和获取主版本号（如“126”），setFullVersion/getFullVersion用于设置和获取完整版本号（如“126.0.0.0”）。应用可通过修改这些值来定制Web组件向服务器报告的浏览器身份信息。
 
 > **说明：**
 >
@@ -52,7 +52,7 @@ getBrand(): string
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| string | 品牌名称。 |
+| string | 返回品牌名称字符串。 |
 
 **示例：**
 
@@ -92,7 +92,7 @@ getMajorVersion(): string
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| string | 主版本号。 |
+| string | 返回主版本号字符串。 |
 
 **示例：**
 
@@ -132,7 +132,7 @@ getFullVersion(): string
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| string | 完整版本号。 |
+| string | 返回完整版本号字符串。 |
 
 **示例：**
 

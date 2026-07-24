@@ -5,7 +5,7 @@
 <!--Owner: @li-weifeng2024; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ShellCmdResult是测试框架中用于封装Shell命令执行结果的数据对象，它包含stdResult（标准输出内容）和exitCode（退出码）两个关键属性，为测试脚本提供了结构化的命令执行结果访问方式。
 
@@ -33,14 +33,14 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let shellCommand = 'cmd';
+let shellCommand: string = 'cmd';
 
 // 获取AbilityDelegator实例
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 // 执行Shell命令，通过回调获取执行结果
 abilityDelegator.executeShellCommand(shellCommand, (error: BusinessError, data) => {
   if (error) {
-    console.error(`executeShellCommand fail, error: ${JSON.stringify(error)}`);
+    console.error(`executeShellCommand fail. Code: ${error.code}, message: ${error.message}`);
   } else {
     console.info(`executeShellCommand success, data: ${JSON.stringify(data)}`);
   }
@@ -51,7 +51,7 @@ abilityDelegator.executeShellCommand(shellCommand, (error: BusinessError, data) 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |

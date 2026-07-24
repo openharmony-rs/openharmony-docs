@@ -38,7 +38,7 @@ Starts video recording. This API uses an asynchronous callback to return the res
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
@@ -79,7 +79,7 @@ Starts video recording. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
@@ -397,7 +397,7 @@ which can be obtained by calling [getSupportedFrameRates](#getsupportedframerate
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code       | Error Message       |
+| ID       | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400110                |  Unresolved conflicts with current configurations.     |
@@ -457,7 +457,7 @@ Obtains the profile that takes effect currently.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                        |
+| ID  | Error Message                        |
 |---------|------------------------------|
 | 7400201 | Camera service fatal error.  |
 
@@ -528,7 +528,7 @@ Enables or disables mirror recording.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code   | Error Message                                          |
+| ID   | Error Message                                          |
 | -------- |------------------------------------------------|
 | 7400101  | Parameter missing or parameter type incorrect. |
 | 7400103  | Session not config.                    |
@@ -582,7 +582,7 @@ Obtains the video rotation angle.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                        |
+| ID  | Error Message                        |
 |---------|------------------------------|
 | 7400101 | Parameter missing or parameter type incorrect.<br>Applicable versions: 12-22   |
 | 7400201 | Camera service fatal error.  |

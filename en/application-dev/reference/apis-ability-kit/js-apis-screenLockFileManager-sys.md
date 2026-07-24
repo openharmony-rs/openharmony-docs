@@ -4,26 +4,32 @@
 <!--Subsystem: Security-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @leiyuqian-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b3b9565f7623db31a9a79d262270bc48838be44e translatedAt=2026-06-29T11:43:06.142Z pushedAt=2026-07-01T02:26:15.158Z -->
 
-Once the screen is locked, the keys for sensitive data are destroyed, preventing any read or write operations on that data. These keys can be restored only after the screen is unlocked. To facilitate data access on the lock screen, the screenLockFileManager module has been introduced. This module provides APIs to request and release the permission to access sensitive data on the lock screen, thereby managing sensitive data access securely.
+This module provides the capability of protecting app sensitive data under the lock screen, supporting requesting and releasing the permission to access app sensitive data under the lock screen, and querying the state of sensitive data keys. When the reference count of a sensitive data key reaches zero and the screen has been locked for the system-configured duration threshold, the key is destroyed, and no operations can be performed on the data. These keys can be restored only after the screen is unlocked. By calling the [acquireAccess](#screenlockfilemanageracquireaccess) API of this module, you can prevent the key from being destroyed after the screen has been locked for the system-configured duration threshold.
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.ability.screenLockFileManager](js-apis-screenLockFileManager.md).
+> - This page contains only the system APIs of this module. For other public APIs, see [@ohos.ability.screenLockFileManager](js-apis-screenLockFileManager.md).
+>
+> - To enable the sensitive data protection under lock screen feature for an app, you need to configure the ohos.permission.PROTECT_SCREEN_LOCK_DATA permission in [requestPermissions](../../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 ## Modules to Import
 
 ```ts
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
+
 ## screenLockFileManager.acquireAccess
 
 acquireAccess(dataType: DataType): AccessStatus
 
-Requests the permission to access a specified type of sensitive data on the lock screen. This API returns the result synchronously. Generally, sensitive data cannot be accessed once the screen is locked. However, you can call this API to access sensitive data of the specified type on the lock screen.
+Requests the permission to access a specified type of sensitive data under the lock screen synchronously. After the request is successful, the reference count of the sensitive data key increases, preventing the key from being destroyed after the screen has been locked for the system-configured duration threshold. This method must be used in pair with [releaseAccess](#screenlockfilemanagerreleaseaccess).
+
+Before calling this API, ensure that the app has enabled the sensitive data protection under lock screen feature and that the key state queried through the [queryAppKeyState](#screenlockfilemanagerqueryappkeystate18) API is KEY_EXIST.
 
 **System API**: This is a system API.
 
@@ -41,11 +47,11 @@ Requests the permission to access a specified type of sensitive data on the lock
 
 | Type                                                       | Description                                 |
 | ----------------------------------------------------------- | ------------------------------------- |
-| [AccessStatus](js-apis-screenLockFileManager.md#accessstatus) | State for requesting access to sensitive data on the lock screen.|
+| [AccessStatus](js-apis-screenLockFileManager.md#accessstatus) | Application status for sensitive data access under lock screen. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [ohos.screenLockFileManager](errorcode-screenLockFileManager.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [ohos.screenLockFileManager Error Codes](errorcode-screenLockFileManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -54,7 +60,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801 | The specified SystemCapability name was not found. |
 | 29300001 | Invalid DataType. |
-| 29300002 | The system ability work abnormally. |
+| 29300002 | The system ability works abnormally. |
 | 29300003 | The application is not enabled the data protection under lock screen. |
 | 29300004 | File access is denied. |
 
@@ -67,6 +73,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
+    // Request access permission
     let acquireStatus = screenLockFileManager.acquireAccess(screenLockFileManager.DataType.MEDIA_DATA);
     if (acquireStatus === screenLockFileManager.AccessStatus.ACCESS_GRANTED) {
         hilog.info(0x0000, 'testTag', 'acquireAccess successfully.');
@@ -81,7 +88,9 @@ try {
 
 releaseAccess(dataType: DataType): ReleaseStatus
 
-Releases the permission to access a specified type of sensitive data on the lock screen. This API returns the result synchronously.
+Releases the permission to access a specified type of sensitive data under the lock screen synchronously. After the release is successful, the reference count of the sensitive data key decreases. When the reference count reaches zero, the key can be destroyed after the screen has been locked for the system-configured duration threshold.
+
+Before calling this API, ensure that the app has enabled the sensitive data protection under lock screen feature and that the permission has been successfully requested by calling the [acquireAccess](#screenlockfilemanageracquireaccess) API first.
 
 **System API**: This is a system API.
 
@@ -93,17 +102,17 @@ Releases the permission to access a specified type of sensitive data on the lock
 
 | Name | Type  | Mandatory| Description                      |
 | ----------- | ------ | ---- | ---------------------------- |
-| dataType | [DataType](js-apis-screenLockFileManager.md#datatype) | Yes  | Type of sensitive data that is accessible on the lock screen.|
+| dataType | [DataType](js-apis-screenLockFileManager.md#datatype) | Yes | Sensitive data type accessed under lock screen. The dataType must be consistent with the dataType used in the acquireAccess API. |
 
 **Return value**
 
 | Type                                                        | Description                          |
 | ------------------------------------------------------------ | ------------------------------ |
-| [ReleaseStatus](js-apis-screenLockFileManager.md#releasestatus) | State for releasing access permissions to sensitive data on the lock screen.|
+| [ReleaseStatus](js-apis-screenLockFileManager.md#releasestatus) | Release status of sensitive data access permission under lock screen. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [ohos.screenLockFileManager](errorcode-screenLockFileManager.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [ohos.screenLockFileManager Error Codes](errorcode-screenLockFileManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -112,7 +121,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | The specified SystemCapability name was not found.           |
 | 29300001 | Invalid DataType.                                           |
-| 29300002 | The system ability work abnormally.                          |
+| 29300002 | The system ability works abnormally.                          |
 | 29300003 | The application is not enabled the data protection under lock screen. |
 | 29300005 | File access was not acquired.                                |
 
@@ -125,6 +134,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
+    // Release access permission
     let releaseStatus = screenLockFileManager.releaseAccess(screenLockFileManager.DataType.MEDIA_DATA);
     if (releaseStatus === screenLockFileManager.ReleaseStatus.RELEASE_GRANTED) {
         hilog.info(0x0000, 'testTag', 'releaseAccess successfully.');
@@ -139,7 +149,7 @@ try {
 
 queryAppKeyState(dataType: DataType): KeyStatus
 
-Obtains the state of access permissions for a specified type of sensitive data on the lock screen. This API returns the result synchronously.
+Queries the state of a specified type of sensitive data key under the lock screen synchronously.
 
 **System API**: This is a system API.
 
@@ -157,11 +167,11 @@ Obtains the state of access permissions for a specified type of sensitive data o
 
 | Type                                                        | Description                          |
 | ------------------------------------------------------------ | ------------------------------ |
-| [KeyStatus](js-apis-screenLockFileManager.md#keystatus18) | State of access permissions for sensitive data on the lock screen.|
+| [KeyStatus](js-apis-screenLockFileManager.md#keystatus18) | Status of the key for sensitive data under lock screen. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [ohos.screenLockFileManager](errorcode-screenLockFileManager.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [ohos.screenLockFileManager Error Codes](errorcode-screenLockFileManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -170,7 +180,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | The specified SystemCapability name was not found.           |
 | 29300001 | Invalid DataType.                                           |
-| 29300002 | The system ability work abnormally.                          |
+| 29300002 | The system ability works abnormally.                          |
 
 **Example**
 
@@ -181,7 +191,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
+    // Query the key status
     let keyStatus = screenLockFileManager.queryAppKeyState(screenLockFileManager.DataType.MEDIA_DATA);
+    // Determine the key status and handle different situations
     if (keyStatus === screenLockFileManager.KeyStatus.KEY_NOT_EXIST) {
         hilog.info(0x0000, 'testTag', 'Key does not exist.');
     } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_RELEASED) {

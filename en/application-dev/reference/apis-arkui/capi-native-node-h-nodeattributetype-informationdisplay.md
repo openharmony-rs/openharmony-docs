@@ -156,13 +156,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Type of the progress indicator, specified using the [ArkUI_ProgressType](capi-native-type-h.md#arkui_progresstype) enum. The default value is **ARKUI_PROGRESS_TYPE_LINEAR**.|
+| .value[0].i32 | Type of the progress indicator. The value is an enumerated value of [ArkUI_ProgressType](capi-progress-h.md#arkui_progresstype). The default value is **ARKUI_PROGRESS_TYPE_LINEAR**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Type of the progress indicator, specified using the [ArkUI_ProgressType](capi-native-type-h.md#arkui_progresstype) enum.|
+| .value[0].i32 | Type of the progress indicator. The value is an enumerated value of [ArkUI_ProgressType](capi-progress-h.md#arkui_progresstype).|
 
 ## NODE_PROGRESS_LINEAR_STYLE
 

@@ -9,7 +9,7 @@
 
 ## 概述
 
-提供NativeBuffer模块的公共类型定义。
+提供NativeBuffer模块的公共类型定义，包括颜色空间、元数据类型、像素格式、转换类型等枚举定义，用于图形处理中的缓冲区配置和管理。支持多种颜色空间标准（如BT601、BT709、BT2020、P3等）和像素格式（如RGB、YUV、RGBA等），适用于视频编解码、图像处理、相机预览等需要灵活配置缓冲区属性的图形场景，帮助开发者实现不同格式间的兼容转换和高效处理。
 
 **引用文件：** <native_buffer/buffer_common.h>
 
@@ -38,9 +38,11 @@
 | -- | -- | -- |
 | [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。 |
 | [OH_NativeBuffer_MetadataType](#oh_nativebuffer_metadatatype) | OH_NativeBuffer_MetadataType | OH_NativeBuffer的图像标准。 |
-| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。 |
+| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的描述信息的键值，如HDR元数据、ROI元数据等。 |
 | [OH_NativeBuffer_Format](#oh_nativebuffer_format) | OH_NativeBuffer_Format | OH_NativeBuffer格式的枚举。 |
 | [OH_NativeBuffer_TransformType](#oh_nativebuffer_transformtype) | OH_NativeBuffer_TransformType | OH_NativeBuffer转换类型的枚举。 |
+| [OH_NativeBuffer_VideoDimensionType](#oh_nativebuffer_videodimensiontype) | OH_NativeBuffer_VideoDimensionType | 视频维度类型枚举。 |
+| [OH_NativeBuffer_3D_MetadataKey](#oh_nativebuffer_3d_metadatakey) | OH_NativeBuffer_3D_MetadataKey | NativeBuffer的3D元数据属性枚举。 |
 
 ## 枚举类型说明
 
@@ -96,6 +98,8 @@ API version 12之前，使用该枚举请引用native_buffer.h头文件；从API
 | OH_COLORSPACE_DISPLAY_BT2020_SRGB | 色域范围为BT2020，传递函数为SRGB，转换矩阵为BT2020，数据范围为RANGE_FULL。 |
 | OH_COLORSPACE_DISPLAY_BT2020_HLG | 等同于 OH_COLORSPACE_BT2020_HLG_FULL。 |
 | OH_COLORSPACE_DISPLAY_BT2020_PQ | 等同于OH_COLORSPACE_BT2020_PQ_FULL。 |
+| OH_COLORSPACE_BT2020_LOG_FULL | 色域范围为BT2020，传递函数为PRIV_LOG，转换矩阵为BT2020，数据范围为RANGE_FULL。 <br/>**起始版本：** 26.0.0|
+| OH_COLORSPACE_BT2020_LOG_LIMIT | 色域范围为BT2020，传递函数为PRIV_LOG，转换矩阵为BT2020，数据范围为RANGE_LIMIT。 <br/>**起始版本：** 26.0.0|
 
 ### OH_NativeBuffer_MetadataType
 
@@ -119,7 +123,7 @@ OH_NativeBuffer的图像标准。
 | OH_IMAGE_HDR_VIVID_DUAL | 图片HDR VIVID DUAL。<br/>**起始版本：** 22 |
 | OH_IMAGE_HDR_VIVID_SINGLE | 图片HDR VIVID SINGLE。<br/>**起始版本：** 22 |
 | OH_IMAGE_HDR_ISO_DUAL | 图片HDR ISO DUAL。<br/>**起始版本：** 23 |
-| OH_IMAGE_HDR_ISO_SINGLE | 图片HDR ISO SINGLE。<br/>**起始版本：** 23|
+| OH_IMAGE_HDR_ISO_SINGLE | 图片HDR ISO SINGLE。<br/>**起始版本：** 23 |
 | OH_VIDEO_NONE = -1 |  无元数据。<br/>**起始版本：** 13 |
 
 ### OH_NativeBuffer_MetadataKey
@@ -141,7 +145,7 @@ enum OH_NativeBuffer_MetadataKey
 | OH_HDR_METADATA_TYPE | 元数据类型，其值见[OH_NativeBuffer_MetadataType](capi-buffer-common-h.md#oh_nativebuffer_metadatatype)，size为OH_NativeBuffer_MetadataType大小。 |
 | OH_HDR_STATIC_METADATA | 静态元数据，其值见[OH_NativeBuffer_StaticMetadata](capi-oh-nativebuffer-oh-nativebuffer-staticmetadata.md)，size为OH_NativeBuffer_StaticMetadata大小。 |
 | OH_HDR_DYNAMIC_METADATA | 动态元数据，其值见视频流中SEI的字节流，size的取值范围为1-3000。 |
-| OH_REGION_OF_INTEREST_METADATA | 视频编解码感兴趣区域（ROI）元数据，配置格式示例：“Top1,Left1-Bottom1,Right1=QpOffset1;Top2,Left2-Bottom2,Right2=QpOffset2;”。<br>每个ROI框由位置信息（Top,Left-Bottom,Right），编码质量偏移信息（QpOffset）组成，到分号结束。<br>ROI框的编码质量偏移信息可以缺省，缺省值为-3，缺省时配置示例：“Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2;”。<br>每组ROI元数据最多支持同时配置6个ROI，且其累计面积不超过全图的1/5。<br>该枚举值仅支持通过[OH_NativeBuffer_SetMetadataValue()](capi-native-buffer-h.md#oh_nativebuffer_setmetadatavalue)接口调用。<br>**起始版本：** 22|
+| OH_REGION_OF_INTEREST_METADATA | 感兴趣区域（ROI）元数据，用于配置视频编码的ROI特性，也包含从相机预览中获取相机系统识别的ROI信息。值类型为字符串，格式为"Top1,Left1-Bottom1,Right1[=Params1];Top2,Left2-Bottom2,Right2[=Params2];"。<br>每个"Top,Left-Bottom,Right"代表一个ROI的坐标信息。<br>"[=Params]"是可选的。 "[=Params]"的格式随版本变化：<br>- 在API版本26.0.0之前：仅支持单个代表量化参数偏移量的int32_t值（例如"=QpOffset"）。<br>- 从API版本26.0.0开始：额外支持并推荐使用键值对（Key-Value）格式。<br>参数使用逗号分隔键值对（例如，"=dqp:-6,slb:1"）。支持的键包括：<br>- "dqp"：量化参数偏移量。<br>- "slb"：语义标签。该值必须与[OH_VideoMetadataRoiSemanticLabel](../apis-avcodec-kit/capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)对应。<br>如果完全省略"=Params"，例如"Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2=dqp:-6;"，编码器对第一个ROI使用默认参数进行编码，对第二个ROI使用指定参数进行编码。<br>请注意，可同时应用的ROI数量不得超过6个，且总面积不得超过图像面积的1/5，详情请参考ROI视频编码的[参数要求说明](../../media/avcodec/video-encoding-ROI.md#参数要求说明)。<br>**起始版本：** 22<br> **说明：** 从API版本26.0.0开始，推荐使用[OH_VideoMetadata_AppendRoiString](../apis-avcodec-kit/capi-native-avcodec-videobase-h.md#oh_videometadata_appendroistring)来安全地转化和追加ROI配置，而不是手动拼接字符串。 |
 
 ### OH_NativeBuffer_Format
 
@@ -205,7 +209,7 @@ API version 22之前，使用该枚举请引用native_buffer.h头文件；从API
 | NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float格式。<br/>**起始版本：** 15 |
 | NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8格式。<br/>**起始版本：** 20 |
 | NATIVEBUFFER_PIXEL_FMT_Y16 = 41 | Y16格式。<br/>**起始版本：** 20 |
-| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask 格式。<br/>**起始版本：** 12|
+| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask 格式。<br/>**起始版本：** 12 |
 | NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF | 无效格式。 |
 
 ### OH_NativeBuffer_TransformType
@@ -240,3 +244,41 @@ API version 22之前，使用该枚举请引用native_buffer.h头文件；从API
 | NATIVEBUFFER_FLIP_V_ROT180 | 垂直翻转并旋转180度。 |
 | NATIVEBUFFER_FLIP_H_ROT270 | 水平翻转并旋转270度。 |
 | NATIVEBUFFER_FLIP_V_ROT270 | 垂直翻转并旋转270度。 |
+
+### OH_NativeBuffer_VideoDimensionType
+
+```c
+enum OH_NativeBuffer_VideoDimensionType
+```
+
+**描述**
+
+视频维度类型枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_VIDEO_DIM_TYPE_2D = 0 | 二维视频。 |
+| OH_VIDEO_DIM_TYPE_3D_SBS | 三维视频，格式：左右排列。 |
+| OH_VIDEO_DIM_TYPE_3D_TAB | 三维视频，格式：上下排列。 |
+
+### OH_NativeBuffer_3D_MetadataKey
+
+```c
+enum OH_NativeBuffer_3D_MetadataKey
+```
+
+**描述**
+
+NativeBuffer的3D元数据属性枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_VIDEO_DIM_TYPE | NativeBuffer视频维度类型，具体取值范围可见[OH_NativeBuffer_VideoDimensionType](capi-buffer-common-h.md#oh_nativebuffer_videodimensiontype)。 |

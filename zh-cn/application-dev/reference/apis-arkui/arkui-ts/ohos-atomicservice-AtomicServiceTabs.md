@@ -66,7 +66,7 @@ AtomicServiceTabs({
 | --------------- | ------ | ---- | ----|----|
 | tabContents | [[TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder)] | 否 | @BuilderParam| 内容视图容器数组，默认值为空，无内容展示。 |
 | tabBarOptionsArray | [[TabBarOptions](#tabbaroptions),[TabBarOptions](#tabbaroptions), [TabBarOptions?](#tabbaroptions),[TabBarOptions?](#tabbaroptions), [TabBarOptions?](#tabbaroptions)]  | 是 | @Prop | 页签容器数组。 |
-| tabBarPosition | [TabBarPosition](#tabbarposition) | 否   |@Prop | 设置页签栏位置，默认值为TabBarPosition.Bottom。 |
+| tabBarPosition | [TabBarPosition](#tabbarposition) | 否   |@Prop | 设置页签栏位置，默认值为TabBarPosition.BOTTOM。 |
 | layoutMode<sup>18+</sup> | [LayoutMode](ts-container-tabcontent.md#layoutmode10) | 否   |@Prop | 设置底部页签的图片、文字排布的方式，默认值为LayoutMode.VERTICAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | barBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | @Prop | 设置TabBar的背景颜色，默认值为透明。 |
 | index | number | 否 | @Prop | 设置当前显示页签的索引，索引值从0开始。默认值为0。 |
@@ -88,6 +88,8 @@ type TabContentBuilder = () => void
 
 ## TabBarOptions
 
+页签容器。
+
 ### constructor
 constructor(icon: ResourceStr | TabBarSymbol, text: ResourceStr, unselectedColor?: ResourceColor, selectedColor?: ResourceColor)
 
@@ -107,6 +109,8 @@ TabBarOptions的构造函数。
 | selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 被选择时的页签颜色，默认值：#FF007DFF。 |
 
 ## TabBarPosition 
+
+设置页签栏位置，默认值为TabBarPosition.BOTTOM。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

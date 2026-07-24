@@ -84,7 +84,7 @@ isRunningInStabilityTest(): Promise&lt;boolean&gt;
   ```
 
 
-## appManager.isRamConstrainedDevice<sup>7+<sup>
+## appManager.isRamConstrainedDevice<sup>7+</sup>
 
 isRamConstrainedDevice(): Promise\<boolean>
 
@@ -111,7 +111,7 @@ isRamConstrainedDevice(): Promise\<boolean>
   });
   ```
 
-## appManager.isRamConstrainedDevice<sup>7+<sup>
+## appManager.isRamConstrainedDevice<sup>7+</sup>
 
 isRamConstrainedDevice(callback: AsyncCallback\<boolean>): void
 
@@ -123,7 +123,7 @@ isRamConstrainedDevice(callback: AsyncCallback\<boolean>): void
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 以回调方式返回接口运行结果及当前设备是否为RAM受限设备，可进行错误处理或其他自定义处理。true：当前设备为RAM受限设备，false：当前设备为非RAM受限设备。 |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 以回调方式返回接口运行结果及当前设备是否为RAM受限设备，可进行错误处理或其他自定义处理。返回true表示当前设备为RAM受限设备，返回false表示当前设备为非RAM受限设备。 |
 
 **示例：**
     
@@ -139,7 +139,7 @@ isRamConstrainedDevice(callback: AsyncCallback\<boolean>): void
   });
   ```
 
-## appManager.getAppMemorySize<sup>7+<sup>
+## appManager.getAppMemorySize<sup>7+</sup>
 
 getAppMemorySize(): Promise\<number>
 
@@ -151,7 +151,7 @@ getAppMemorySize(): Promise\<number>
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象，返回当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是M。|
+  | Promise&lt;number&gt; | Promise对象，返回当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是MB。|
 
 **示例：**
     
@@ -166,7 +166,7 @@ getAppMemorySize(): Promise\<number>
   });
   ```
 
-## appManager.getAppMemorySize<sup>7+<sup>
+## appManager.getAppMemorySize<sup>7+</sup>
 
 getAppMemorySize(callback: AsyncCallback\<number>): void
 
@@ -178,7 +178,7 @@ getAppMemorySize(callback: AsyncCallback\<number>): void
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;number&gt; | 是 | 获取当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是M。使用callback异步回调。|
+  | callback | AsyncCallback&lt;number&gt; | 是 | 以回调方式返回当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是MB。|
 
 **示例：**
     

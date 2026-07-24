@@ -8,11 +8,15 @@
 
 可以与容器组件联动，用于按逻辑结构快速定位容器显示区域，适用于通讯录、城市列表、分类列表等需要快速定位内容的场景。
 
->  **说明：**
+> **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  从API version 12开始，触控反馈默认开启；使用前请按[enableHapticFeedback](#enablehapticfeedback12)的说明配置振动权限。
+> - 一级索引项：索引条上的字母索引，如'#'、'A'、'B'、'C'等。
+>
+> - 二级索引项：提示弹窗中显示的具体内容列表项，通过onRequestPopupData回调返回。
+>
+> - 从API version 12开始，触控反馈默认开启；使用前请按[enableHapticFeedback](#enablehapticfeedback12)的说明配置振动权限。
 
 
 ## 子组件
@@ -95,7 +99,7 @@ selectedColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为半透明蓝色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为不透明的蓝色。 |
 
 ### popupColor
 
@@ -111,7 +115,7 @@ popupColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为半透明蓝色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为不透明的蓝色。 |
 
 ### selectedBackgroundColor
 
@@ -137,7 +141,7 @@ popupBackground(value: ResourceColor)
 该接口未被主动调用或参数value传入undefined时：<br />
 API version 11及以前版本，提示弹窗背景颜色默认为0xFFFFFFFF，显示为白色。<br />
 对于API version 12至API version 24版本，默认为#66808080，显示为半透明的灰色。<br />
-从API版本26.0.0开始，如果[popupBackground](#popupbackground)和[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)均未被主动调用或参数value传入undefined，高档、中档算力设备默认显示为沉浸式材质[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)的THIN样式，低档算力设备默认显示为白色背景。<br />
+从API版本26.0.0开始，如果[popupBackground](#popupbackground)和[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)均未被主动调用，或调用时参数value均传入undefined，高算力、中算力设备默认显示为沉浸式系统材质[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)的THICK样式，低算力设备默认显示为白色背景。<br />
 如果popupBackgroundBlurStyle被主动调用且参数value传入有效值，提示弹窗背景颜色默认为#66808080，显示为半透明的灰色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -269,7 +273,7 @@ selected(index: number)
 
 popupPosition(value: Position)
 
-设置弹出窗口相对于索引条上边框中点的位置。
+设置提示弹窗相对于索引条上边框中点的位置。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -279,7 +283,7 @@ popupPosition(value: Position)
 
 | 参数名 | 类型                              | 必填 | 说明                                                         |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) | 是   | 弹出窗口相对于索引条上边框中点的位置。与[alignStyle](#alignstyle)同时设置时，水平方向由[alignStyle](#alignstyle)的offset参数控制，竖直方向上value.y生效。<br/>默认值：{x: 60.0, y: 48.0}<br/>单位：vp |
+| value  | [Position](ts-types.md#position) | 是   | 提示弹窗相对于索引条上边框中点的位置。与[alignStyle](#alignstyle)同时设置时，水平方向由[alignStyle](#alignstyle)的offset参数控制，竖直方向上value.y生效。<br/>默认值：{x: 60.0, y: 48.0}<br/>单位：vp |
 
 ### popupSelectedColor<sup>10+</sup>
 
@@ -351,7 +355,7 @@ popupItemBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                     | 必填 | 说明                                            |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引项背景颜色。 <br/>默认值：<br />API version 11及以前：#FFFFFFFF，显示为白色。<br />API version 12及以后：#00000000，显示为透明色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引项背景颜色。<br/>默认值：<br />API version 11及以前：#FFFFFFFF，显示为白色。<br />API version 12及以后：#00000000，显示为透明色。 |
 
 ### autoCollapse<sup>11+</sup>   
 
@@ -419,7 +423,7 @@ itemBorderRadius(value: number)
 
 popupBackgroundBlurStyle(value: BlurStyle)
 
-设置提示弹窗的背景模糊材质。API版本26.0.0之前版本，未通过该接口设置时，默认为组件普通材质模糊，对应取值为BlurStyle中的COMPONENT_REGULAR。从API版本26.0.0开始，[popupBackground](#popupbackground)和popupBackgroundBlurStyle均未被主动调用或者传入undefined时，在高档、中档算力设备默认显示为沉浸式材质[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)的THIN样式，低档算力设备默认显示为白色背景。
+设置提示弹窗的背景模糊材质。API版本26.0.0之前版本，未通过该接口设置时，默认为组件普通材质模糊，对应取值为BlurStyle中的COMPONENT_REGULAR。从API版本26.0.0开始，[popupBackground](#popupbackground)和[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)均未被主动调用，或调用时参数value均传入undefined时，在高算力、中算力设备默认显示为沉浸式系统材质[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)的THICK样式，低算力设备默认显示为白色背景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -490,7 +494,7 @@ enableHapticFeedback(value: boolean)
 
 onSelected(callback:&nbsp;(index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-索引项选中事件，回调参数为当前选中项索引。 
+注册索引项选中事件回调，回调参数为当前选中项索引。 
 
 > **说明：**
 >
@@ -605,7 +609,7 @@ type OnAlphabetIndexerRequestPopupDataCallback = (index: number) => Array\<strin
 | ------------- | -------------------- |
 | Array\<string\> | 索引项对应的提示弹窗二级索引字符串数组，此字符串数组在弹窗中竖排显示，字符串列表最多显示5个，超出部分可以滑动显示。 |
 
-## 示例 
+## 示例
  
 ### 示例1（设置提示弹窗显示文本内容）
 

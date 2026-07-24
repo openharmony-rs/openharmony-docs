@@ -90,7 +90,7 @@
 
 ### 使用Native接口获取API结构体
 
-在ArkWeb Native侧，需要先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数[OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)获取，根据入参type不同，可分别获取[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)结构体。其中，[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)对应ArkTS侧[web_webview.WebviewController API](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md)，[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)对应ArkTS侧[ArkWeb组件API](../reference/apis-arkweb/arkts-basic-components-web.md)。
+在ArkWeb Native侧，需要先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数[OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)获取，根据入参type不同，可分别获取[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)结构体。其中，[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)对应ArkTS侧[WebviewController](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md) API，[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)对应ArkTS侧[ArkWeb组件API](../reference/apis-arkweb/arkts-basic-components-web.md)。
 
   ```c++
   static ArkWeb_ControllerAPI *controller = nullptr;
@@ -137,25 +137,26 @@
 
 通过[registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)将应用侧函数注册至前端页面，注册后在下次加载或者重新加载后生效。
 
-  <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp) -->
+  <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp) -->    
   
   ``` C++
   // 注册对象
   OH_LOG_Print(
-      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit RegisterJavaScriptProxy begin");
+      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit registerJavaScriptProxyEx begin");
   ArkWeb_ProxyMethodWithResult method1 = {
       "method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult method2 = {
       "method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult methodList[2] = {method1, method2};
   // 调用Native Development Kit接口注册对象
-  // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method1调用此文件下的ProxyMethod1和ProxyMethod2方法了
+  // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method2调用此文件下的ProxyMethod1和ProxyMethod2方法了
   ArkWeb_ProxyObjectWithResult proxyObject = {"ndkProxy", methodList, 2};
+  // 参数permission为空，表示不进行权限管控
   controller->registerJavaScriptProxyEx(webTag, &proxyObject, "");
   ```
 
   - 参数permission是一个JSON字符串，示例如下：
-  ```json
+  ```json5
   {
     "javascriptProxyPermission": {
       "urlPermissionList": [       // Object级权限，如果匹配，所有Method都授权
@@ -357,9 +358,10 @@
 
 * Node-API侧暴露ArkTS接口
 
-  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts) -->
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts) -->    
   
   ``` TypeScript
+  // entry4/src/main/cpp/types/libentry4/index.d.ts
   export const nativeWebInit: (webName: string) => void;
   export const runJavaScript: (webName: string, jsCode: string) => void;
   ```
@@ -810,7 +812,7 @@
 
 ### 使用Native接口获取API结构体
 
-ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数[OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)获取，根据入参type不同，可分别获取[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)函数指针结构体。其中，[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)对应ArkTS侧[web_webview.WebviewController API](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md)，[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)对应ArkTS侧[ArkWeb组件API](../reference/apis-arkweb/arkts-basic-components-web.md)。
+ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数[OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)获取，根据入参type不同，可分别获取[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)函数指针结构体。其中，[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)对应ArkTS侧[WebviewController](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md) API，[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)对应ArkTS侧[ArkWeb组件API](../reference/apis-arkweb/arkts-basic-components-web.md)。
 
   ```c++
   static ArkWeb_ControllerAPI *controller = nullptr;

@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @tsj_20201-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
+MultiNavigation是一个支持分栏导航的组件，提供多层页面栈管理能力，通过MultiNavPathStack统一管理主页、详情页、全屏页等不同类型页面的导航栈。支持左起右清栈等智能路由策略，适用于平板、折叠屏等大尺寸设备的复杂导航场景，能够优化页面跳转体验、提升用户操作效率。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 由于MultiNavigation存在多层次的页面栈结构（主页、详情页、全屏页各自维护子栈，并由MultiNavPathStack统一管理），调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如[getParent](ts-basic-components-navigation.md#getparent11)、[setInterception](ts-basic-components-navigation.md#setinterception12)、[pushDestination](ts-basic-components-navigation.md#pushdestination11)等)，可能会发生无法预期的问题。
+> - 由于MultiNavigation存在多层次的页面栈结构（主页、详情页、全屏页各自维护子栈，并由MultiNavPathStack统一管理），调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口（例如[getParent](ts-basic-components-navigation.md#getparent11)、[setInterception](ts-basic-components-navigation.md#setinterception12)、[pushDestination](ts-basic-components-navigation.md#pushdestination11)等），可能会发生无法预期的问题。
 >
 > - MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
 
@@ -178,7 +178,7 @@ replacePath(info: NavPathInfo, options?: NavigationOptions): void
 |  参数名   |             类型                | 必填 | 说明           |
 | :-----: | :----------------------------------------------------------: | :--: | ------------------------------------------ |
 |  info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  是  | NavDestination页面的信息。                 |
-| options | [NavigationOptions](./ts-basic-components-navigation.md#navigationoptions12) |  否  | 页面栈操作选项。仅支持其中的animated字段。 |
+| options | [NavigationOptions](./ts-basic-components-navigation.md#navigationoptions12) |  否  | 页面栈操作选项。仅支持其中的animated字段，使用其他字段将被忽略。省略时使用默认动画配置。 |
 
 ### replacePathByName
 
@@ -195,7 +195,7 @@ replacePathByName(name: string, param: Object, animated?: boolean): void
 |  参数名   |             类型                | 必填 | 说明           |
 |:--------:|:---------:|:------:|----------------------|
 |   name   |  string   |   是    | NavDestination页面名称。  |
-|  param   |  Object   |   是    | NavDestination页面详细参数。 |
+|  param   |  Object   |   是    | NavDestination页面详细参数，用于向目标页面传递自定义数据。具体字段规格请参考NavDestination相关文档。 |
 | animated |  boolean  |  否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。   |
 
 ### removeByIndexes
@@ -266,7 +266,7 @@ pop(animated?: boolean): NavPathInfo | undefined
 
 | 类型          | 说明                       |
 | ----------- | ------------------------ |
-| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | 返回栈顶NavDestination页面的信息。 |
+| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | 返回栈顶NavDestination页面的信息。栈为空时返回undefined。 |
 
 ### pop
 
@@ -293,7 +293,7 @@ pop(result?: Object, animated?: boolean): NavPathInfo | undefined
 
 | 类型          | 说明                       |
 | ----------- | ------------------------ |
-| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | 返回栈顶NavDestination页面的信息。 |
+| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | 返回栈顶NavDestination页面的信息。栈为空时返回undefined。 |
 
 ### popToName
 
@@ -363,7 +363,7 @@ popToIndex(index: number, animated?: boolean): void
 
 popToIndex(index: number, result: Object, animated?: boolean): void
 
-回退路由栈到index指定的NavDestination页面，并触发onPop回调传入页面处理结果。
+回退路由栈到index指定的NavDestination页面，并触发onPop回调传入页面处理结果。当index无效（超出范围）时，不执行回退操作。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -444,7 +444,7 @@ moveIndexToTop(index: number, animated?: boolean): void
 
 |  参数名   |             类型                | 必填 | 说明           |
 |:---------:|:-------:|:------:| ------------------- |
-|   index    | number  |   是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
+|   index    | number  |   是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞)。超出范围时操作不生效。 |
 | animated  | boolean |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ### clear
@@ -481,7 +481,7 @@ getAllPathName(): Array<string\>
 
 |        类型        | 说明                         |
 |:----------------:| -------------------------- |
-|  Array<string\>  | 返回栈中所有NavDestination页面的名称。 |
+|  Array<string\>  | 返回栈中所有NavDestination页面的名称，数组元素按栈底到栈顶的顺序排列。 |
 
 ### getParamByIndex
 
@@ -653,7 +653,7 @@ setPlaceholderPage(info: NavPathInfo): void
 
 > **说明：**
 >
-> 占位页面为特殊页面类型，当应用设置后，在一些大屏设备上会和主页默认形成左右分栏的效果，即左边主页，右边占位页。
+> 占位页面为特殊页面类型，当应用设置后，在支持分栏显示的大屏设备上会和主页默认形成左右分栏的效果，即左边主页，右边占位页。
 > 
 > 当应用可绘制区域小于600vp、折叠屏由展开态切换为折叠态及平板横屏转竖屏等场景时，会自动将占位页出栈，只显示主页；
 > 
@@ -801,7 +801,6 @@ export struct PageHome1 {
   controller: TextInputController = new TextInputController();
   text: string = '';
   param: Object = new Object();
-  lastBackTime: number = 0;
 
   build() {
     if (this.log()) {
@@ -917,7 +916,7 @@ export struct PageHome1 {
                 .margin(20)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
-                    // 删除栈中index为0，1，3，5的页面
+                    // 删除栈中index为0、1、3、5的页面
                     this.pageStack.removeByIndexes([0,1,3,5]);
                   }
                 })
@@ -1092,7 +1091,7 @@ export struct PageDetail1 {
                 .margin(20)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
-                    // 删除栈中index为0，1，3，5的页面
+                    // 删除栈中index为0、1、3、5的页面
                     this.pageStack.removeByIndexes([0,1,3,5]);
                   }
                 })
@@ -1497,7 +1496,7 @@ export struct PageFull1 {
                 .margin(20)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
-                    // 删除栈中index为0，1，3，5的页面
+                    // 删除栈中index为0、1、3、5的页面
                     this.pageStack.removeByIndexes([0, 1, 3, 5]);
                   }
                 })
@@ -1566,7 +1565,6 @@ export struct PagePlaceholder {
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
   text: string = '';
-  lastBackTime: number = 0;
 
   build() {
     if (this.log()) {

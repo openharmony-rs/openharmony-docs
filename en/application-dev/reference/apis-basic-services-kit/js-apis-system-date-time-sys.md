@@ -52,7 +52,7 @@ Sets the system time. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
@@ -108,7 +108,7 @@ Sets the system time. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
@@ -161,7 +161,7 @@ Sets the system date. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                                                        |
+| ID| Error Message                                                                                                                                        |
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                                                           |
 | 202       | Permission verification failed. A non-system application calls a system API.                                                                 |
@@ -219,7 +219,7 @@ Sets the system date. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                                                        |
+| ID| Error Message                                                                                                                                        |
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                                                           |
 | 202       | Permission verification failed. A non-system application calls a system API.                                                                 |
@@ -266,7 +266,7 @@ Sets the system time zone. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
@@ -320,7 +320,7 @@ Sets the system time zone. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
@@ -364,7 +364,7 @@ Updates the NTP time from the NTP server This API returns the result asynchronou
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                   |
+| ID| Error Message                                                                                                   |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 13000001    | Network connection error or OS error.                                                                 |
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
@@ -406,7 +406,7 @@ Obtains the actual time calculated based on the last updated NTP time. This API 
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                   |
+| ID| Error Message                                                                                                   |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 13000002    | updateNtpTime() is not called successfully.                                                           |
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
@@ -457,7 +457,7 @@ Sets the status of the automatic time setting. This API uses a promise to return
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |

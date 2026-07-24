@@ -6,11 +6,11 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于触发捏合手势，最少需要2指，最多5指，最小识别距离为5vp。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。
+用于触发捏合手势，常用于实现图片、页面内容等对象的缩放交互。最少需要2指，最多5指，最小识别距离为5vp。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  捏合手势触发成功后，抬起手指直至不再满足触发条件。再次满足条件时，可重新触发捏合手势。
 
@@ -21,7 +21,7 @@
 
 PinchGesture(value?: { fingers?: number; distance?: number })
 
-继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)，设置捏合手势事件。
+继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)，设置捏合手势事件。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -31,13 +31,13 @@ PinchGesture(value?: { fingers?: number; distance?: number })
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; distance?: number } | 否 | 设置捏合手势事件参数。<br> - fingers：触发捏合的最少手指数，最小为2指，最大为5指。<br/>默认值：2 <br/>取值范围：[2, 5]。当设置的值不在该范围内时，会被转化为默认值。<br/>触发手势的手指数量可以多于fingers数目，但只有最先落下的与fingers相同数目的手指参与手势计算。<br> - distance：最小识别距离，单位为vp。该距离是指当前多根手指位置与手指中心位置的平均距离，与手指落下时的平均距离之间的差值。当这一差值大于或等于最小识别距离时，捏合手势被视为成功。<br/>默认值：5 <br/>**说明：** <br/>取值范围：[0, +∞)。当识别距离的值小于等于0时，会被转化为默认值。|
+| value | { fingers?: number; distance?: number } | 否 | 设置捏合手势事件参数。<br> - fingers：触发捏合的最少手指数，最小为2指，最大为5指。<br/>默认值：2 <br/>取值范围：[2, 5]。当设置的值不在该范围内时，会被转化为默认值。<br/>触发手势的手指数量可以多于fingers数目，但只有最先落下的与fingers相同数目的手指参与手势计算。<br> - distance：最小识别距离，单位为vp。该距离是指当前参与手势计算的多根手指相对手指中心位置的平均横向偏移量与平均纵向偏移量计算得到的缩放距离，与手指落下时对应缩放距离之间的差值。当这一差值大于或等于最小识别距离时，捏合手势被视为成功。<br/>默认值：5 <br/>**说明：** <br/>取值范围：(0, +∞)。当识别距离的值小于等于0时，会被转化为默认值。 |
 
 ### PinchGesture<sup>15+</sup>
 
 PinchGesture(options?: PinchGestureHandlerOptions)
 
-设置捏合手势事件。与[PinchGesture](#pinchgesture-1)相比，options参数新增isFingerCountLimited，表示是否检查触摸屏幕的手指数量。
+设置捏合手势事件。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。与[PinchGesture](#pinchgesture-1)相比，options参数新增isFingerCountLimited，表示是否检查触摸屏幕的手指数量。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -49,7 +49,7 @@ PinchGesture(options?: PinchGestureHandlerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [PinchGestureHandlerOptions](./ts-gesturehandler.md#pinchgesturehandleroptions) | 否 | 捏合手势处理器配置参数。 |
+| options | [PinchGestureHandlerOptions](./ts-gesturehandler.md#pinchgesturehandleroptions) | 否 | 捏合手势处理器配置参数。当需要自定义触发捏合的最少手指数、最小识别距离或手指数量校验行为时传入；不传入时使用捏合手势默认配置（触发手指数为2、最小识别距离为5vp，手指数量校验采用PinchGestureHandlerOptions的默认行为）。 |
 
 
 ## 事件
@@ -62,7 +62,7 @@ PinchGesture(options?: PinchGestureHandlerOptions)
 
 onActionStart(event: (event: GestureEvent) => void)
 
-Pinch手势识别成功后触发回调。
+捏合手势识别成功后触发回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -78,7 +78,7 @@ Pinch手势识别成功后触发回调。
 
 onActionUpdate(event: (event: GestureEvent) => void)
 
-Pinch手势移动过程中回调。
+捏合手势移动过程中触发回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -94,7 +94,7 @@ Pinch手势移动过程中回调。
 
 onActionEnd(event: (event: GestureEvent) => void)
 
-Pinch手势识别成功，当抬起最后一根满足手势触发条件的手指后，触发回调。
+捏合手势识别成功后，当抬起最后一根满足手势触发条件的手指时，触发回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -104,13 +104,13 @@ Pinch手势识别成功，当抬起最后一根满足手势触发条件的手指
 
 | 参数名 | 类型                                       | 必填 | 说明                      |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 手势事件回调函数。 |
+| event | (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是 | 手势事件回调函数。 |
 
 ### onActionCancel
 
 onActionCancel(event: () => void)
 
-Pinch手势识别成功，接收到触摸取消事件触发的回调，不返回手势事件信息。
+捏合手势识别成功后，接收到触摸取消事件时触发回调，不返回手势事件信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -126,7 +126,7 @@ Pinch手势识别成功，接收到触摸取消事件触发的回调，不返回
 
 onActionCancel(event: Callback\<GestureEvent\>)
 
-Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
+捏合手势识别成功并接收到触摸取消事件的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -171,19 +171,21 @@ struct PinchGestureExample {
       // 三指捏合触发该手势事件
       .gesture(
       PinchGesture({ fingers: 3 }) // 三指捏合手势，用于缩放操作
-        .onActionStart((event: GestureEvent) => {
-          console.info('Pinch start')
+        .onActionStart(() => {
+          console.info('Pinch start');
         })
+        // 捏合手势更新时，根据缩放比例和中心点坐标更新展示状态
         .onActionUpdate((event: GestureEvent) => {
           if (event) {
-            this.scaleValue = this.pinchValue * event.scale
-            this.pinchX = event.pinchCenterX
-            this.pinchY = event.pinchCenterY
+            this.scaleValue = this.pinchValue * event.scale;
+            this.pinchX = event.pinchCenterX;
+            this.pinchY = event.pinchCenterY;
           }
         })
-        .onActionEnd((event: GestureEvent) => {
-          this.pinchValue = this.scaleValue
-          console.info('Pinch end')
+        // 手势结束时保存当前缩放比例，作为下一次缩放的基准值
+        .onActionEnd(() => {
+          this.pinchValue = this.scaleValue;
+          console.info('Pinch end');
         })
       )
     }.width('100%')
@@ -211,8 +213,8 @@ struct PinchGestureExample {
   private scaleMax: number = 30.0;
   private screenWidth: number = 0;
   private screenHeight: number = 0;
-  @State pntX: number = 0;
-  @State pntY: number = 0;
+  @State pointRatioX: number = 0;
+  @State pointRatioY: number = 0;
   @State curScale: number = 1;
   @State preScale: number = 1;
   @State offsetX: number = 0;
@@ -256,9 +258,9 @@ struct PinchGestureExample {
           // 图片本次缩放前左上角顶点
           const left = (this.screenWidth - displayWidth) / 2 + this.offsetX;
           const top = (this.screenHeight - displayHeight) / 2 + this.offsetY;
-          // 本次缩放前手指终点相对图片左上角顶点尺寸占图片展示尺寸的百分比
-          this.pntX = (event.pinchCenterX - left) / displayWidth;
-          this.pntY = (event.pinchCenterY - top) / displayHeight;
+          // 本次缩放前手指中点相对图片左上角顶点尺寸占图片展示尺寸的百分比
+          this.pointRatioX = (event.pinchCenterX - left) / displayWidth;
+          this.pointRatioY = (event.pinchCenterY - top) / displayHeight;
           // 图片本次缩放前的缩放比例
           this.preScale = this.curScale;
         })
@@ -268,14 +270,15 @@ struct PinchGestureExample {
           let targetDisplayWidth = this.contentWidth * this.curScale;
           let targetDisplayHeight = this.contentHeight * this.curScale;
           // 本次缩放前手指中点在本次缩放后的坐标
-          const pointX = (this.screenWidth - targetDisplayWidth) / 2 + targetDisplayWidth * this.pntX;
-          const pointY = (this.screenHeight - targetDisplayHeight) / 2 + targetDisplayHeight * this.pntY;
+          const pointX = (this.screenWidth - targetDisplayWidth) / 2 + targetDisplayWidth * this.pointRatioX;
+          const pointY = (this.screenHeight - targetDisplayHeight) / 2 + targetDisplayHeight * this.pointRatioY;
           // 将pointX、pointY移动到缩放后的手指中点，需要移动的距离
           this.offsetX = event.pinchCenterX - pointX;
           this.offsetY = event.pinchCenterY - pointY;
           this.updateMatrix();
         })
         .onActionEnd((event: GestureEvent) => {
+          // 缩放比例超出允许范围时，重置图片的缩放比例和偏移量
           if (this.curScale < this.scaleMin || this.curScale > this.scaleMax) {
             this.curScale = 1;
             this.offsetX = 0;

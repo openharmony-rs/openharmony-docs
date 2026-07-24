@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 > **说明：**
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -15,7 +15,7 @@
 
 type ISendable = lang.ISendable
 
-ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有定义任何必须实现的方法和属性。
+ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有定义任何必需实现的方法和属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -38,7 +38,7 @@ ArkTS Array映射函数类型，被Array类的[from](arkts-apis-arkts-collection
 
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
-| value | FromElementType | 是 | 当前正在处理的元素。|
+| value | FromElementType | 是 | 当前遍历的ArkTS Array元素，用于映射转换为新的数组元素。|
 | index | number | 是 | 当前遍历的ArkTS Array元素索引，从0开始。 |
 
 **返回值：**
@@ -60,7 +60,7 @@ ArkTS Array断言函数类型，被Array类的[some](arkts-apis-arkts-collection
 
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
-| value | ElementType | 是 | 当前正在处理的元素，用于判断是否满足测试条件。|
+| value | ElementType | 是 | 当前遍历的ArkTS Array元素，用于判断是否满足测试条件。|
 | index | number | 是 | 当前遍历的ArkTS Array元素索引，从0开始。 |
 | array | ArrayType | 是 | 当前遍历的ArkTS Array本身。 |
 
@@ -68,7 +68,7 @@ ArkTS Array断言函数类型，被Array类的[some](arkts-apis-arkts-collection
 
 | 类型   | 说明                          |
 | ------ | --------------------------- |
-| boolean | 归约函数的结果，该结果作为判断当前元素是否通过测试条件。为true时表示当前或之前的某个元素已满足条件，为false时表示尚未找到符合条件的元素。 |
+| boolean | 断言函数的结果，该结果作为判断当前元素是否通过测试条件。为true时表示当前或之前的某个元素已满足条件，为false时表示尚未找到符合条件的元素。 |
 
 ## ArrayReduceCallback<sup>18+</sup>
 type ArrayReduceCallback<AccType, ElementType, ArrayType> = (previousValue: AccType, currentValue: ElementType, currentIndex: number, array: ArrayType) => AccType
@@ -121,7 +121,7 @@ ArkTS TypedArray映射函数类型，被TypedArray类的from()接口使用。
 ## TypedArrayPredicateFn
 type TypedArrayPredicateFn\<ElementType, ArrayType> = (value: ElementType, index: number, array: ArrayType) => boolean
 
-ArkTS TypedArray断言测试函数类型，被TypedArray类的some()、every()、filter()、find()和findIndex()接口使用。
+ArkTS TypedArray断言函数类型，被TypedArray类的some()、every()、filter()、find()和findIndex()接口使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -139,7 +139,7 @@ ArkTS TypedArray断言测试函数类型，被TypedArray类的some()、every()�
 
 | 类型   | 说明                          |
 | ------ | --------------------------- |
-| boolean | 如果值符合条件，则为true，否则为false。 |
+| boolean | 断言函数的结果，该结果作为判断当前元素是否通过测试条件。为true时表示当前元素已满足测试条件，为false时表示当前元素不满足测试条件。  |
 
 ## TypedArrayForEachCallback
 type TypedArrayForEachCallback\<ElementType, ArrayType> = (value: ElementType, index: number, array: ArrayType) => void
@@ -161,7 +161,7 @@ ArkTS TypedArray遍历函数类型，被TypedArray类的forEach()接口使用。
 ## TypedArrayMapCallback
 type TypedArrayMapCallback\<ElementType, ArrayType> = (value: ElementType, index: number, array: ArrayType) => ElementType
 
-ArkTS TypedArray转换映射函数类型，被TypedArray类的map()接口使用。
+ArkTS TypedArray映射函数类型，被TypedArray类的map()接口使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

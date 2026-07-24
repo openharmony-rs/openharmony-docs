@@ -41,7 +41,7 @@ Checks whether the system DND mode is enabled. This API uses a promise to return
 
 For details about the error codes, see [Intelligent Scene Error Codes](errorcode-intelligentScene.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 35200001 | Internal error.                            |
@@ -89,7 +89,7 @@ Checks whether this application is allowed to push notifications in DND mode. If
 
 For details about the error codes, see [Intelligent Scene Error Codes](errorcode-intelligentScene.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 35200001 | Internal error.                            |

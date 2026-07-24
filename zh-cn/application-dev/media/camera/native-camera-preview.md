@@ -77,7 +77,7 @@
 
 4. 根据传入的SurfaceId，通过[OH_CameraManager_GetSupportedCameraOutputCapability()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability)方法获取当前设备支持的预览能力。通过[OH_CameraManager_CreatePreviewOutput()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createpreviewoutput)方法创建预览输出流，其中，OH_CameraManager_CreatePreviewOutput()方法中的参数分别是cameraManager指针，previewProfiles数组中的第一项，步骤三中获取的surfaceId，以及返回的previewOutput指针。
 
-   <!-- @[create_preview_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @[create_preview_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->    
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePreviewOutput(void)
@@ -93,8 +93,8 @@
            OH_LOG_ERROR(LOG_APP, "CreatePreviewOutput failed.");
            return CAMERA_INVALID_ARGUMENT;
        }
-       return ret_;
        PreviewOutputRegisterCallback();
+       return ret_;
    }
    ```
 

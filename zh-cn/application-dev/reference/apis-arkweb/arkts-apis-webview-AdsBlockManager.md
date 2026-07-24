@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-AdsBlockManager是ArkWeb框架中用于管理Web组件广告过滤功能的类，提供对广告过滤规则的设置、域名黑白名单管理及过滤策略控制等能力。每个应用中的所有Web组件共享一个AdsBlockManager实例，开发者可通过该类向Web组件注入符合通用EasyList语法规则的广告过滤配置文件，并灵活控制特定网站的广告过滤启用状态。
+AdsBlockManager是ArkWeb框架中用于管理Web组件广告过滤功能的类，提供对广告过滤规则的设置、域名黑白名单管理及过滤策略控制等能力。每个应用中的所有Web组件共享一个AdsBlockManager静态类，开发者可通过该类向Web组件注入符合通用EasyList语法规则的广告过滤配置文件，并灵活控制特定网站的广告过滤启用状态。
 
 AdsBlockManager的核心机制基于域名后缀匹配的AllowedList/DisallowedList双层策略：DisallowedList用于禁用特定网站的广告过滤，而AllowedList具有更高优先级，可在DisallowedList的范围内重新开启部分子域名的广告过滤。广告过滤规则内部解析成功后会被持久化存储，应用重启后无需重复设置；而域名黑白名单不会持久化，应用重启后需重新配置。
 
@@ -30,7 +30,7 @@ import { webview } from '@kit.ArkWeb';
 
 static setAdsBlockRules(rulesFile: string, replace: boolean): void
 
-向Web组件中设置自定义的符合通用easylist语法规则的广告过滤配置文件。
+向Web组件中设置自定义的符合通用EasyList语法规则的广告过滤配置文件。
 
 > **说明：**
 >
@@ -42,7 +42,7 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | -------------------------------- |
-| rulesFile | string | 是   | 指定了符合easylist通用语法的规则文件路径，应用需要有此文件的读权限。 |
+| rulesFile | string | 是   | 指定了符合EasyList通用语法的规则文件路径，应用需要有此文件的读权限。 |
 | replace   | boolean | 是   | true表示强制替换掉内置的默认规则，false表示设置的自定义规则将与内置规则共同工作。 |
 
 **错误码：**
@@ -56,7 +56,7 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -65,7 +65,7 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 import { webview } from '@kit.ArkWeb';
 import { picker, fileUri } from '@kit.CoreFileKit';
 
-// 演示点击按钮，通过filepicker打开一个easylist规则文件并设置到Web组件中
+// 演示点击按钮，通过filepicker打开一个EasyList规则文件并设置到Web组件中
 @Entry
 @Component
 struct WebComponent {
@@ -89,7 +89,7 @@ struct WebComponent {
               }
             })
           } catch (err) {
-            console.error('DocumentViewPicker.select failed with err:' + err);
+            console.error(`DocumentViewPicker.select failed, Error code: ${err.code}, message: ${err.message}`);
           }
         })
       }
@@ -129,7 +129,7 @@ static addAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -211,7 +211,7 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -270,19 +270,21 @@ static clearAdsBlockDisallowedList(): void
 
 清空AdsBlockManager的DisallowedList。
 
+> **说明：**
+>
+> AdsBlockManager的DisallowedList不会持久化，应用重启需要重新设置。
+>
+> 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **错误码：**
-
-> **说明：**
->
-> 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -362,7 +364,7 @@ static addAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -399,6 +401,7 @@ struct WebComponent {
 
           Button({type: ButtonType.Capsule}) { Text("addAdsBlockAllowedList") }
           .onClick(() => {
+            // 演示AllowedList优先级：先禁用example.com所有子域名，再重新启用news.example.com
             let arrDisallowDomainSuffixes = new Array<string>();
             arrDisallowDomainSuffixes.push('example.com');
             webview.AdsBlockManager.addAdsBlockDisallowedList(arrDisallowDomainSuffixes);
@@ -411,7 +414,7 @@ struct WebComponent {
       }
       Web({ src: this.main_url, controller: this.controller })
         .onControllerAttached(()=>{
-          this.controller.enableAdsBlock(true)
+          this.controller.enableAdsBlock(true);
         })
     }
   }
@@ -447,7 +450,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -506,19 +509,21 @@ static clearAdsBlockAllowedList(): void
 
 清空AdsBlockManager的AllowedList。
 
+> **说明：**
+>
+> AdsBlockManager的AllowedList不会持久化，应用重启需要重新设置。
+>
+> 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **错误码：**
-
-> **说明：**
->
-> 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 

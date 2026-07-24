@@ -33,7 +33,7 @@ struct WebComponent {
 
   build() {
     Column() {
-      Button('loadData')
+      Button('backward')
         .onClick(() => {
           if (this.webviewController.accessBackward()) {
             this.webviewController.backward();

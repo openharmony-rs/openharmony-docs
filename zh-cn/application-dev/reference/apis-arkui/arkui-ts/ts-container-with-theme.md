@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-WithTheme组件用于设置应用局部页面自定义主题风格，可设置子组件深浅色模式和自定义配色，适用于在应用内特定区域实现独立主题风格或局部换肤的场景。
+WithTheme组件用于设置应用局部页面自定义主题风格，可设置子组件深浅色模式和自定义配色。当全局主题无法满足局部区域独立风格需求时，可使用该组件在不影响其他区域的前提下实现局部换肤或独立主题风格的定制。
 
 > **说明：**
 >
@@ -36,7 +36,7 @@ WithTheme(options: WithThemeOptions)
 
 | 参数名                            | 类型                                  | 必填  | 说明     |
 |--------------------------------|---------------------------------------|-----|---------------|
-| options | [WithThemeOptions](#withthemeoptions) | 是   | 配置WithTheme作用域内组件的主题配色和深浅色模式，支持范围见上方说明中的组件列表。 |
+| options | [WithThemeOptions](#withthemeoptions) | 是   | 用于配置WithTheme作用域内组件的主题配色和深浅色模式，支持范围见上方说明中的组件列表。 |
 
 ## 属性
 
@@ -48,7 +48,7 @@ WithTheme(options: WithThemeOptions)
 
 ## WithThemeOptions
 
-设置WithTheme作用域内组件默认配色及深浅色模式。
+用于设置WithTheme作用域内组件主题配色及深浅色模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -57,13 +57,13 @@ WithTheme(options: WithThemeOptions)
 | 名称        | 类型                               | 只读  | 可选 | 说明                |
 |------------------------|---------------------------------------------------------| ---- | ---- |------------------------------------------------------------------|
 | theme     | [CustomTheme](#customtheme)    | 否 | 是  | 用于设置WithTheme作用域内组件的自定义主题配色。<br/>默认值：undefined，默认配色跟随系统[token默认样式](../../../ui/theme_skinning.md#系统缺省token色值)。 |
-| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 是  | 用于指定WithTheme作用域内组件配色的深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM |
+| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 是  | 用于指定WithTheme作用域内组件配色的深浅色模式。取值原则：ThemeColorMode.SYSTEM跟随系统深浅色设置，ThemeColorMode.DARK强制使用深色模式，ThemeColorMode.LIGHT强制使用浅色模式。设置深浅色模式时需要添加dark.json资源文件才能生效。<br/>默认值：ThemeColorMode.SYSTEM |
 
 ## CustomTheme
 
 type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
 
-自定义配色。
+用于自定义WithTheme作用域内组件的配色方案，具体配色项通过CustomColors接口配置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -71,16 +71,16 @@ type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| import('../api/@ohos.arkui.theme').[CustomTheme](../js-apis-arkui-theme.md#customtheme)  | 自定义WithTheme作用域内组件默认配色。 |
+| import('../api/@ohos.arkui.theme').[CustomTheme](../js-apis-arkui-theme.md#customtheme)  | 自定义WithTheme作用域内组件默认主题配色。 |
 
 ## 示例
 
-设置局部深浅色时，需要添加dark.json资源文件，深浅色模式才会生效。
+设置局部深浅色模式时，需要添加dark.json资源文件，深浅色模式才会生效。
 
 ![resources_dark](figures/resources_dark.png)
 
 dark.json数据示例：
-  ```ts
+  ```json
     {
       "color": [
         {
@@ -148,7 +148,7 @@ struct Index {
 ```
 ![withThemeColorMode](figures/witheThemeColorMode.png)
 
-### 示例2（自定义WithTheme作用域内组件缺省配色）
+### 示例2（自定义WithTheme作用域内组件默认配色）
 
 ```ts
 // 自定义WithTheme作用域内组件缺省配色
@@ -173,10 +173,10 @@ class RedColors implements CustomColors {
 }
 
 class PageCustomTheme implements CustomTheme {
-  colors?: CustomColors
+  colors?: CustomColors;
 
   constructor(colors: CustomColors) {
-    this.colors = colors
+    this.colors = colors;
   }
 }
 
@@ -189,7 +189,7 @@ struct IndexPage {
     undefined, // System
     new PageCustomTheme(new GreenColors()),
     new PageCustomTheme(new RedColors())
-  ]
+  ];
   @State themeIndex: number = 0;
 
   build() {

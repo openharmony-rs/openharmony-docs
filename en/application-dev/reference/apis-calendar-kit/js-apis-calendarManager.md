@@ -165,7 +165,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                                                                                                                         |
+| ID   | Error Message                                                                                                                         |
 |----------| ------------------------------ |
 | 201      | Permission denied.                                                                                                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                 |
@@ -226,7 +226,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -277,7 +277,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -347,7 +347,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -410,7 +410,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -460,7 +460,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -527,7 +527,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
@@ -574,7 +574,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -624,7 +624,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
@@ -736,7 +736,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -803,7 +803,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -863,7 +863,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -937,7 +937,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1390,7 +1390,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1446,7 +1446,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1538,7 +1538,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1639,7 +1639,7 @@ Sets the calendar configuration information. This API uses an asynchronous callb
 
 For details about the error codes, see [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                  |
+| ID   | Error Message                  |
 |----------|------------------------|
 | 23900001 | Parameter value error. |
 
@@ -1699,7 +1699,7 @@ Sets the calendar configuration information. This API uses a promise to return t
 
 For details about the error codes, see [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                  |
+| ID   | Error Message                  |
 |----------|------------------------|
 | 23900001 | Parameter value error. |
 
@@ -1802,7 +1802,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1879,7 +1879,7 @@ This API can be used to view and edit calendar events in the system calendar.
 
 For details about the error codes, see [Calendar Error Codes](errorcode-calendarManager.md).
 
-| Error Code   | Error Message                       |
+| ID   | Error Message                       |
 |----------| ------------------------------ |
 | 23900001 | Parameter value error. |
 | 23900005 | This event cannot be edited. |

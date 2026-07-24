@@ -7,11 +7,15 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-以下权限仅对MDM（Mobile Device Management）设备管理应用开放。MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
+以下权限仅对MDM（Mobile Device Management）设备管理应用开放。
+
+<!--RP2-->
+MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
 
 > **注意：**
 > 
 > 以下权限不支持自动签名，因此在调试和发布阶段，均需参照[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的步骤，完成手动签名。
+<!--RP2End-->
 
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -691,7 +695,7 @@
 
 允许设备管理应用设置user_grant类权限策略。
 
-获取该权限后，设备管理应用可设置被管理应用user_grant类权限策略，策略支持静默授予，拒绝授予以及默认（即不影响应用申请）。
+获取该权限后，设备管理应用可设置被管理应用user_grant类权限策略，策略支持静默授予、拒绝授予以及默认（即不影响应用申请）。
 
 <!--RP1--><!--RP1End-->
 

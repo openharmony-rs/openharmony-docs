@@ -299,7 +299,7 @@ In the responsive grid layout, you can set the **direction** attribute of **Grid
 
     ![gridLayoutDirectionRow](figures/gridLayoutDirectionRow.png)
 
-- When child components are arranged from right to left (default):
+- When child components are arranged from right to left:
 
 
     <!-- @[GridLayoutDirectionRowReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutDirectionRowReverse.ets) -->

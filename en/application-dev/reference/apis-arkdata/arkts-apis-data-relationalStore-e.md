@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **NOTE**
@@ -16,7 +16,7 @@ Enumerates the KV store security levels. Use the enum name rather than the enum 
 
 > **NOTE**
 >
-> To perform data sync operations, the RDB store security level must be lower than or equal to that of the peer device. For details, see [Access Control Mechanism in Cross-Device Sync](../../database/sync-app-data-across-devices-overview.md#access-control-mechanism-in-cross-device-sync).
+> To perform data sync operations, the RDB store security level must be lower than or equal to that of the target device. For details, see [Access Control Mechanism in Cross-Device Sync](../../database/sync-app-data-across-devices-overview.md#access-control-mechanism-in-cross-device-sync).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -84,12 +84,12 @@ For details about the definition of **this.context** in the sample code, see the
 The following is an example of the table creation statement when **ICU_TOKENIZER** is used:
 
 ```ts
-import { relationalStore } from '@kit.ArkData'; // Import a module.
+import { relationalStore } from '@kit.ArkData'; // Import modules.
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 // In this example, Ability is used to obtain an RdbStore instance in the stage model. You can use other implementations as required.
-class EntryAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
     let store: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -99,7 +99,7 @@ class EntryAbility extends UIAbility {
     };
     store = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
 
-    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize=icu zh_CN)";
+    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize='icu zh_CN')";
     if (store != undefined) {
       (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
@@ -116,12 +116,12 @@ class EntryAbility extends UIAbility {
 The following is an example of the table creation statement when **CUSTOM_TOKENIZER** is used:
 
 ```ts
-import { relationalStore } from '@kit.ArkData'; // Import a module.
+import { relationalStore } from '@kit.ArkData'; // Import modules.
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 // In this example, Ability is used to obtain an RdbStore instance in the stage model. You can use other implementations as required.
-class EntryAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
     let store: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -148,7 +148,7 @@ class EntryAbility extends UIAbility {
 The following is an example of the table creation statement when **CUSTOM_TOKENIZER** is used:
 
 ```ts
-import { relationalStore } from '@kit.ArkData'; // Import a module.
+import { relationalStore } from '@kit.ArkData'; // Import modules.
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -156,24 +156,24 @@ export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('custom tokenizer example: window stage create begin.');
     let store: relationalStore.RdbStore | undefined = undefined;
-    const storeConfig: relationalStore.StoreConfig = {
+    const SQL_CREATE_TABLE: relationalStore.StoreConfig = {
       name: "MyStore.db",
       securityLevel: relationalStore.SecurityLevel.S3
     };
     let customType = relationalStore.Tokenizer.CUSTOM_TOKENIZER;
     let customTypeSupported = relationalStore.isTokenizerSupported(customType);
     if (customTypeSupported) {
-      storeConfig.tokenizer = customType;
+      SQL_CREATE_TABLE.tokenizer = customType;
     } else {
       console.info('custom tokenizer example: not support custom tokenizer.');
       return;
     }
     store = await relationalStore.getRdbStore(this.context, storeConfig);
 
-    const sqlCreateTable =
+    const SQL_CREATE_TABLE =
       "CREATE VIRTUAL TABLE example USING fts5(name, content, tokenize='customtokenizer cut_mode short_words')";
     if (store != undefined) {
-      (store as relationalStore.RdbStore).executeSql(sqlCreateTable, (err) => {
+      (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
           console.error(`custom tokenizer example: ExecuteSql failed, code is ${err.code},message is ${err.message}`);
           return;
@@ -199,6 +199,7 @@ Enumerates the asset statuses. Use the enum name rather than the enum value.
 | ASSET_DELETE | 4 | The asset is to be deleted from the cloud.|
 | ASSET_ABNORMAL    | 5   | The asset is in abnormal status.     |
 | ASSET_DOWNLOADING | 6   | The asset is being downloaded to a local device.|
+| ASSET_TO_DOWNLOAD | 7 | The asset is to be downloaded.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## SyncMode
 
@@ -261,7 +262,7 @@ Enumerates the RDB store rebuild types. Use the enum name rather than the enum v
 | ------- | ---- |----------------------------------------------------------------------------------------------------------------|
 | NONE    | 0    | The RDB store is not rebuilt.                                                                                                   |
 | REBUILT | 1    | The RDB store is rebuilt and creates an empty database. You need to create tables and restore data.                                                                            |
-| REPAIRED | 2    | The database is repaired and the undamaged data is restored. Currently, only the [vector store](arkts-apis-data-relationalStore-i.md#storeconfig) supports this capability.|
+| REPAIRED | 2    | The RDB store is repaired and the undamaged data is restored. Currently, only the vector store (with **vector** set to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)) supports this capability.|
 
 ## ChangeType<sup>10+</sup>
 
@@ -298,6 +299,22 @@ Enumerates the resolutions used when a conflict occurs during data insertion or 
 | ON_CONFLICT_IGNORE   | 4    | Skip the rows that contain constraint violations and continue to process the subsequent rows of the SQL statement.|
 | ON_CONFLICT_REPLACE  | 5    | Delete pre-existing rows that cause the constraint violation before inserting or updating the current row, and continue to execute the command normally.|
 
+## AssetConflictPolicy
+
+Enumerates asset conflict policies. Use the enum name rather than the enum value.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+|------|---|--------------------|
+| CONFLICT_POLICY_DEFAULT | 0 | Default conflict policy, which is executed based on the device-cloud sync mode [SyncMode](#syncmode).|
+| CONFLICT_POLICY_TIME_FIRST | 1 | Time-first conflict policy.|
+| CONFLICT_POLICY_TEMP_PATH | 2 | Temporary path-based conflict policy.|
+
 ## Progress<sup>10+</sup>
 
 Enumerates the stages in the device-cloud sync progress. Use the enum name rather than the enum value.
@@ -312,20 +329,21 @@ Enumerates the stages in the device-cloud sync progress. Use the enum name rathe
 
 ## ProgressCode<sup>10+</sup>
 
-Enumerates the device-cloud sync states. Use the enum name rather than the enum value.
+Enumerates the device-cloud sync state codes. Use the enum name rather than the enum value.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| Name                 | Value  | Description                                                        |
-| --------------------- | ---- | ------------------------------------------------------------ |
-| SUCCESS               | 0    | The device-cloud sync is successful.                                      |
-| UNKNOWN_ERROR         | 1    | An unknown error occurs during the device-cloud sync.                              |
-| NETWORK_ERROR         | 2    | A network error occurs during the device-cloud sync.                              |
-| CLOUD_DISABLED        | 3    | The cloud is unavailable.                                            |
+| Name                 | Value  | Description                                                           |
+| --------------------- | ---- |---------------------------------------------------------------|
+| SUCCESS               | 0    | The device-cloud sync is successful.                                                  |
+| UNKNOWN_ERROR         | 1    | An unknown error occurs during the device-cloud sync.                                              |
+| NETWORK_ERROR         | 2    | A network error occurs during the device-cloud sync.                                              |
+| CLOUD_DISABLED        | 3    | The cloud is unavailable.                                                     |
 | LOCKED_BY_OTHERS      | 4    | The device-cloud sync of another device is being performed.<br>The sync of the local device can be performed only when the cloud resources are available.|
-| RECORD_LIMIT_EXCEEDED | 5    | The number of records or size of the data to be synced exceeds the maximum. The maximum value is configured on the cloud.|
-| NO_SPACE_FOR_ASSET    | 6    | The remaining cloud space is less than the size of the data to be synced.                    |
-| BLOCKED_BY_NETWORK_STRATEGY<sup>12+</sup>    | 7    | The device-cloud sync is blocked due to the network strategy.                    |
+| RECORD_LIMIT_EXCEEDED | 5    | The number of records or size of the data to be synced exceeds the maximum. The maximum value is configured on the cloud.                            |
+| NO_SPACE_FOR_ASSET    | 6    | The remaining cloud space is less than the size of the data to be synced.                                         |
+| BLOCKED_BY_NETWORK_STRATEGY<sup>12+</sup>    | 7    | The device-cloud sync is blocked due to the network strategy.                                               |
+| STOP_CLOUD_SYNC    | 8    | The device-cloud sync is stopped.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.                                                   |
 
 ## TransactionType<sup>14+</sup>
 
@@ -367,5 +385,30 @@ Enumerates the distributed table types. Use the enum name rather than the enum v
 
 | Name               | Value  | Description                                   |
 | ------------------ | --- | ---------------------------------------- |
-| DEVICE_COLLABORATION | 0  | Multi-device collaboration table. Data on each device is stored in an independent distributed table in an isolated manner instead of being written to the local table. The name of the distributed table is formed by prepending the peer device's device ID to the original table name.|
-| SINGLE_VERSION  | 1   | Single version table. Data is directly written to the local table of the peer device through the distributed data management framework.|
+| DEVICE_COLLABORATION | 0  | Multi-device collaboration table. Data on each device is stored in an independent distributed table in an isolated manner instead of being written to the local table. The name of the distributed table is formed by prepending the target device's device ID to the original table name.|
+| SINGLE_VERSION  | 1   | Single version table. Data is directly written to the local table of the target device through the distributed data management framework.|
+
+## SyncResultCode
+
+Enumerates the device syn result codes. Use the enum name rather than the enum value.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name               | Value  | Description                                   |
+| ------------------ | --- | ---------------------------------------- |
+| SUCCESS | 0  | The sync is successful.|
+| FAIL  | 1   | The sync fails.|
+| OFFLINE | 2  | The remote device is offline.|
+| INVALID_ARGS  | 3  | The parameter is invalid.|
+| DISTRIBUTED_TABLE_NOT_SET | 4  | The distributed table is not set on the local device or remote device.|
+| TABLE_FIELD_MISMATCH  | 5   | The sync fields in the local table of the target device are inconsistent with those of the local device.|
+| DISTRIBUTED_SCHEMA_MISMATCH | 6  | The schema fields in the distributed table of the target device are inconsistent with those of the local device, or no schema is configured for a distributed table.|
+| BUSY  | 7   | The RDB store is busy.|
+| CORRUPTED | 8  | The RDB store is damaged.|
+| TIMEOUT  | 9   | The sync operation fails due to timeout. Common causes: The RDB store of the target device is not created, the connection is interrupted, or packet loss occurs due to network jitter.|
+| SCHEMA_CHANGED | 10  | The table structure has been changed during the sync.|
+| CONSTRAINT_VIOLATION  | 11   | The constraints are violated during data sync.|

@@ -84,7 +84,7 @@ When @ObjectLink receives an object, if the object is decorated with @State or o
 
 When \@ObjectLink receives a nested object, the inner object must be of the class type decorated by \@Observed. Since API version 19, inner objects also support return values processed by [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). For details, see [Nested Object](#nested-object).
 
-\@ObjectLink You are advised to design an independent custom component to render each array or object. In this case, an object array or nested object requires two custom components. One custom component presents an external array/object, and the other custom component presents a class object nested within the array/object. The following can be observed:
+It is recommended that separate custom components be designed to render each array or individual object when @ObjectLink is used. In this case, an object array or nested object requires two custom components. One custom component presents an external array/object, and the other custom component presents a class object nested within the array/object. The following can be observed:
 
 - Value changes of the properties that **Object.keys(observedObject)** returns. For details, see [Nested Object](#nested-object).
 
@@ -452,7 +452,7 @@ In the preceding example:
 - For the state variable **@ObjectLink book: Book** in the **BookCard** component, **Book** is decorated with \@Observed, and **book** is received by \@ObjectLink. Changes to **book.name** can be observed by @ObjectLink. Therefore, whether you click **change bag.book.name** in the parent component **Index** or click **change book.name** in the child component **BookCard**, the **Text('BookCard: ${this.book.name}')** inside **BookCard** will update.
 - \@State is responsible for detecting the first-level changes of the outer object **Bag**, while @Observed + @ObjectLink is responsible for detecting the property changes of the inner object **Book**.
 
-### Object array
+### Object Array
 
 An object array is a frequently used data structure. The following example shows how to use an object array.
 

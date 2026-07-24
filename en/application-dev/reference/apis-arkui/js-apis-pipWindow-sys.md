@@ -6,13 +6,13 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. It is applicable to video playback, video calls, and video conferences.
+The module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. This module is mainly used to display content in PiP mode in video playback, video calls, video meetings, or in-vehicle video.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones and tablets. Starting from <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported on phones, PCs/2-in-1 devices, tablets, but is unavailable on all other devices.
+> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones and tablets. Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones, PCs/2-in-1 devices, and tablets. Since OpenHarmony 7.0.0, the PiP feature is supported only on phones, PCs/2-in-1 devices, tablets, and cars.
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 >
@@ -23,6 +23,19 @@ The module provides basic APIs for manipulating Picture in Picture (PiP). For ex
 ```ts
 import { PiPWindow } from '@kit.ArkUI';
 ```
+
+
+## PiPTemplateType
+
+Enumerates the PiP template types.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name           | Value  | Description                                  |
+|---------------|-----|--------------------------------------|
+| VIDEO_DRIVE   | 4   | In-vehicle video template, which is loaded when a PiP window is started on cars.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br> **Device behavior differences:** This template type can be properly called on cars. If it is called on other device types, error code 801 is returned.|
 
 ## PiPController
 

@@ -13,7 +13,7 @@
 > - 快照信息的内容和格式后续会根据开发者使用情况和反馈建议优化调整，随版本迭代可能发生变化，所以仅供人工调试参考，**不建议开发者依据快照信息开发功能逻辑**。
 > - 音频快照能力同时提供C/C++ API和ArkTS API，开发者可根据开发语言选择对应接口。
 
-### 音频快照使用场景
+**音频快照使用场景**
 
 | 模块 | 接口类型 | 说明 | 典型使用场景 |
 | :--- | :--- | :--- | :--- |
@@ -130,12 +130,14 @@ OH_AudioDebuggingManager_PrintAppInfo(debugManager, -1);
 
 **ArkTS接口：**
 
-<!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 打印应用快照到文件。
 const path = this.context.filesDir + '/audio_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644); // O_WRONLY | O_CREAT
+// READ_WRITE表示可读写，CREATE表示文件不存在时创建，TRUNC表示打开时清空原有内容。
+const file = fileio.openSync(path,
+  fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
 debugManager.printAppInfo(file.fd);
 fileio.closeSync(file);
 
@@ -202,12 +204,13 @@ if (fd >= 0) {
 
 **ArkTS接口：**
 
-<!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 打印指定播放实例的快照。
 const path = this.context.filesDir + '/renderer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
+const file = fileio.openSync(path,
+  fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
 debugManager.printRendererInfo(renderer, file.fd);
 fileio.closeSync(file);
 ```
@@ -299,12 +302,13 @@ if (fd >= 0) {
 
 **ArkTS接口：**
 
-<!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 打印指定录音实例的快照。
 const path = this.context.filesDir + '/capturer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
+const file = fileio.openSync(path,
+  fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
 debugManager.printCapturerInfo(capturer, file.fd);
 fileio.closeSync(file);
 ```
@@ -369,7 +373,7 @@ audioCapturer {
 
 **ArkTS接口：**
 
-<!-- @[print_loopback_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopbackDebugInfo.ets) -->
+<!-- @[print_loopback_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopbackDebugInfo.ets) -->  
 
 ``` TypeScript
 // audioLoopback为已创建的AudioLoopback实例。
@@ -437,20 +441,30 @@ audioLoopback {
 
 **C/C++接口：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->  
 
 ``` C++
-// audioSessionManager为已创建并激活的OH_AudioSessionManager实例。
-// 输出到hilog日志。
-OH_AudioDebuggingManager_PrintSessionInfo(debugManager, audioSessionManager, -1);
-
-// 输出到文件。
-int32_t fd = open("/data/storage/el2/base/cache/audio_session_snapshot.txt",
-    O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSION);
-if (fd >= 0) {
-    OH_AudioDebuggingManager_PrintSessionInfo(debugManager, audioSessionManager, fd);
-    close(fd);
-}
+#include "ohaudio/native_audio_debugging_manager.h"
+// ...
+OH_AudioSessionManager *audioSessionManager;
+// ...
+    // 创建音频会话管理器。
+    OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
+    // 设置音频并发模式。
+    OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+    // 激活音频会话。
+    OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
+    
+    // 创建音频调试管理器。
+    OH_AudioDebuggingManager *audioDebuggingManager;
+    OH_AudioManager_GetAudioDebuggingManager(&audioDebuggingManager);
+    
+    // 输出到hilog日志。
+    OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, -1);
+    
+    // fd 文件描述符，实际使用时请根据具体情况获取
+    // 输出到文件
+    OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, fd);
 ```
 
 **ArkTS接口：**
@@ -458,15 +472,30 @@ if (fd >= 0) {
 <!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// audioSessionManager为已创建并激活的audio.AudioSessionManager实例。
-// 输出到hilog日志。
-debugManager.printSessionInfo(audioSessionManager, -1);
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+import { fileIo as fs } from '@kit.CoreFileKit';
+// ...
+  // 设置音频并发模式。
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  };
+  // 激活音频会话。
+  await audioSessionManager.activateAudioSession(strategy);
 
-// 输出到文件。
-const path = this.context.filesDir + '/audio_session_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
-debugManager.printSessionInfo(audioSessionManager, file.fd);
-fileio.closeSync(file);
+  // 创建音频调试管理器。
+  let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+
+  // 输出到hilog日志。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, -1);
+
+  // fd 文件描述符，实际使用时请根据具体情况获取
+  let filePath = context.filesDir + '/audio_session_info.txt';
+  let fd = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.WRITE_ONLY | fs.OpenMode.TRUNC).fd;
+  // 输出到文件。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
+  fs.closeSync(fd);
 ```
 
 **输出示例：**
@@ -511,18 +540,28 @@ audioSession {
 <!-- @[audioSuite_PrintInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/print_info_to_file.cpp) -->
 
 ``` C++
-// engine为已创建的OH_AudioSuiteEngine实例。
-// 打印编创快照到文件。
-const char *filePath = "/data/storage/el2/base/cache/audio_suite_snapshot.txt";
-int32_t fd = open(filePath, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSION);
-if (fd >= 0) {
-    // pipeline为nullptr时输出所有管线，传入具体管线实例则仅输出该管线。
-    OH_AudioSuite_PrintInfo(engine, nullptr, fd);
-    close(fd);
+// engine为已创建的OH_AudioSuiteEngine实例，必须确保engine参数有效，否则输出内容为空。
+// pipeline为nullptr时输出所有管线，传入具体管线实例则仅输出该管线。
+OH_AudioSuiteEngine *engine = audioSuiteEngine;
+if (!engine) {
+    OH_AudioSuiteEngine_Create(&g_printInfoEngine);
+    engine = g_printInfoEngine;
 }
-
-// 也可将快照信息输出到日志（fd < 0时输出到日志）。
-OH_AudioSuite_PrintInfo(engine, nullptr, -1);
+// 打印编创快照到文件。
+const char *filePath =
+    "/storage/Users/currentUser/Download/com.example.audiosuitesample/printfile/audio_snapshot.txt";
+int fd = open(filePath, O_WRONLY | O_CREAT | O_APPEND, FILE_PERMISSION);
+if (fd < 0) {
+    // 文件打开失败，回退到日志输出。
+    // fd < 0表示输出到日志。
+    OH_AudioSuite_PrintInfo(engine, nullptr, -1);
+    napi_get_boolean(env, true, &result);
+    return result;
+}
+// 输出所有管线信息到文件。
+// nullptr表示输出engine下所有pipeline，fd为文件描述符。
+OH_AudioSuite_Result ret = OH_AudioSuite_PrintInfo(engine, nullptr, fd);
+close(fd);
 ```
 
 **输出示例：**

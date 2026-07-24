@@ -1,5 +1,10 @@
 # Enums
-
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -14,7 +19,7 @@
 
 | 名称                       | 值   | 说明            |
 | ------------------------- | ---- | ------------    |
-| ERROR_UNKNOWN       | 24700101    | 未知错误。   |
+| ERROR_UNKNOWN       | 24700101    | 未知错误，当发生无法归类的异常时返回。   |
 | MAX_SYSTEM_NUM_REACHED   | 24700103    | MediaKeySystem实例数量超过上限（64个）。    |
 | MAX_SESSION_NUM_REACHED    | 24700104    | MediaKeySession实例数量超过上限（64个）。     |
 | SERVICE_FATAL_ERROR  | 24700201    | DRM服务异常。     |
@@ -47,8 +52,8 @@
 
 | 名称                       | 值   | 说明            |
 | ------------------------- | ---- | ------------    |
-| MEDIA_KEY_TYPE_OFFLINE        | 0    | 离线。   |
-| MEDIA_KEY_TYPE_ONLINE   | 1    | 在线。     |
+| MEDIA_KEY_TYPE_OFFLINE        | 0    | 离线媒体密钥，用于离线播放场景。   |
+| MEDIA_KEY_TYPE_ONLINE   | 1    | 在线媒体密钥，用于在线播放场景。     |
 
 ## OfflineMediaKeyStatus
 

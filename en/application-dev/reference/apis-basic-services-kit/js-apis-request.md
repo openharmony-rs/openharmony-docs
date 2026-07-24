@@ -102,7 +102,7 @@ Uploads a file. This API uses a promise to return the result. HTTP is supported.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
   | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -162,7 +162,7 @@ Uploads a file. This API uses an asynchronous callback to return the result. HTT
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
   | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -229,7 +229,7 @@ Uploads a file. This API uses a promise to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -279,7 +279,7 @@ Uploads a file. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -332,9 +332,9 @@ Subscribes to upload progress events. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
 
@@ -366,9 +366,9 @@ Subscribes to HTTP response events for the upload task.This API uses an asynchro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
 
@@ -401,9 +401,9 @@ Subscribes to upload completion or failure events. This API uses an asynchronous
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
 
@@ -444,9 +444,9 @@ Unsubscribes from upload progress events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
 
@@ -486,9 +486,9 @@ Unsubscribes from HTTP response events for the upload task.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
 
@@ -527,9 +527,9 @@ Unsubscribes from upload completion or failure events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | the parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | the parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
 
@@ -597,7 +597,7 @@ Deletes the upload task. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -637,7 +637,7 @@ Deletes the upload task. This API uses an asynchronous callback to return the re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -679,7 +679,7 @@ Deletes the upload task. This API uses a promise to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -718,7 +718,7 @@ Deletes the upload task. This API uses an asynchronous callback to return the re
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -836,7 +836,7 @@ Downloads a file. This API uses a promise to return the result. HTTP is supporte
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
   | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -891,7 +891,7 @@ Downloads a file. This API uses an asynchronous callback to return the result. H
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
   | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -955,7 +955,7 @@ Downloads a file. This API uses a promise to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -999,7 +999,7 @@ Downloads a file. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | The permissions check fails. |
 
@@ -1046,9 +1046,9 @@ Subscribes to download progress events. This API uses an asynchronous callback t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
   <!--code_no_check-->
@@ -1095,9 +1095,9 @@ Unsubscribes from download progress events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
   <!--code_no_check-->
@@ -1151,9 +1151,9 @@ Subscribes to download events. This API uses an asynchronous callback to return 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
   <!--code_no_check-->
@@ -1209,9 +1209,9 @@ Unsubscribes from download events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
   <!--code_no_check-->
@@ -1291,9 +1291,9 @@ Subscribes to download failure events. This API uses an asynchronous callback to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
   <!--code_no_check-->
@@ -1339,9 +1339,9 @@ Unsubscribes from download failure events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> Applicable versions: 12+|
 
 **Example**
   <!--code_no_check-->
@@ -1399,7 +1399,7 @@ Deletes the download task. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1451,7 +1451,7 @@ Deletes the download task. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1507,7 +1507,7 @@ Obtains the information about this download task. This API uses a promise to ret
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1561,7 +1561,7 @@ Obtains the information about this download task. This API uses an asynchronous 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1616,7 +1616,7 @@ Obtains the MIME type (that is, media type of resources in HTTP) of a download t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1669,7 +1669,7 @@ Obtains the MIME type (that is, media type of resources in HTTP) of a download t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1724,7 +1724,7 @@ Suspends this download task. You can use [restore](#restore9) to restore the dow
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1777,7 +1777,7 @@ Suspends this download task. You can use [restore](#restore9) to restore the dow
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1832,7 +1832,7 @@ Restores the download task. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1885,7 +1885,7 @@ Restores the download task. This API uses an asynchronous callback to return the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1940,7 +1940,7 @@ Deletes the download task. This API uses a promise to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -1979,7 +1979,7 @@ Deletes the download task. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -2020,7 +2020,7 @@ Queries this download task. This API uses a promise to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -2059,7 +2059,7 @@ Queries this download task. This API uses an asynchronous callback to return the
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -2100,7 +2100,7 @@ Queries the MIME type of this download task. This API uses a promise to return t
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -2139,7 +2139,7 @@ Queries the MIME type of this download task. This API uses an asynchronous callb
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -2180,7 +2180,7 @@ Pauses this download task. This API uses a promise to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -2219,7 +2219,7 @@ Pauses this download task. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -2260,7 +2260,7 @@ Restores the download task. This API uses a promise to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -2299,7 +2299,7 @@ Restores the download task. This API uses an asynchronous callback to return the
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | The permissions check fails. |
 
@@ -2329,7 +2329,7 @@ Defines the download task configuration.
 | enableRoaming | boolean | No| Yes| Whether download is allowed on a roaming network. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.|
 | description | string | No| Yes| Description of the download session. The default value is an empty string.|
 | filePath<sup>7+</sup> | string | No| Yes| Path where the downloaded file is stored. The default value is the cache directory of the caller (that is, the input **context**). The default file name is the part truncated from the last slash (/) in the URL.<br>- In the FA model, use the [Context.getCacheDir](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir) method to obtain the application storage path.<br>- In the Stage model, use the **AbilityContext** class in [Context (Context Base Class of the Stage Model)](../apis-ability-kit/js-apis-inner-application-context.md) to obtain the file path.|
-| networkType | number | No| Yes| Network type that can be used for download. The allowed network type is determined by bitwise operation of [network type constants](#constants). The following settings are supported:<br>- Only the cellular network is supported. The parameter is **NETWORK_MOBILE** or **0x00000001**.<br>- Only WLAN is supported. The parameter is **NETWORK_WIFI** or **0x00010000**.<br>- Both cellular network and WLAN are supported, which is the default settings. The parameter can be set to **NETWORK_MOBILE | NETWORK_WIFI** or **0x00010001**.<br>When the parameter is set to **NETWORK_MOBILE | NETWORK_WIFI**, **enableMetered** and **enableRoaming** do not take effect.|
+| networkType | number | No| Yes| Network type that can be used for download. The allowed network type is determined by bitwise operation of [network type constants](#constants). The following settings are supported:<br>- Only the cellular network is supported. The parameter is **NETWORK_MOBILE** or **0x00000001**.<br>- Only WLAN is supported. The parameter is **NETWORK_WIFI** or **0x00010000**.<br>- Both cellular network and WLAN are supported, which is the default settings. The parameter can be set to **NETWORK_MOBILE \| NETWORK_WIFI** or **0x00010001**.<br>When the parameter is set to **NETWORK_MOBILE \| NETWORK_WIFI**, **enableMetered** and **enableRoaming** do not take effect.|
 | title | string | No| Yes| Download task name. The default value is **download**.|
 | background<sup>9+</sup> | boolean | No| Yes| Whether to enable the background task notification. When this parameter is enabled, the download status is displayed in the notification panel. The value **true** means the parameter is enabled, and **false** means the opposite. The default value is **false**.|
 
@@ -2471,7 +2471,7 @@ Provides the configuration information of an upload or download task.
 | network | [Network](#requestagentnetwork10) | No| Yes| Network used for the task. The default value is **ANY** (Wi-Fi or cellular).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | metered | boolean | No| Yes| Whether the task is allowed on a metered network. The default value is **false**.<br>- **true**: allowed<br>- **false**: not allowed<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | roaming | boolean | No| Yes| Whether the task is allowed on a roaming network. The default value is **true**.<br>- **true**: allowed<br>- **false**: not allowed<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| retry | boolean | No| Yes| Whether automatic retry is enabled for the task. This parameter is only applicable to background tasks. The default value is **true**.<br>- **true**: enabled<br>- **false**: disabled<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| retry | boolean | No| Yes| Whether automatic retry is enabled for the task. This parameter is only applicable to background tasks. The default value is **true**.<br>- **true**: enabled<br>- **false**: not allowed<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | redirect | boolean | No| Yes| Whether redirection is allowed. The default value is **true**.<br>- **true**: allowed<br>- **false**: not allowed<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | proxy<sup>12+</sup> | string | No| Yes| Proxy address. The value contains a maximum of 512 characters.<br>It is in the format of **http://\<***domain or address***\>:\<***port***\>**. By default, this parameter is left empty.|
 | index | number | No| Yes| Path index of the task. It is usually used for resumable transfers. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -2612,7 +2612,7 @@ Describes the custom information of the notification bar.
 |------|--------|----|----|-------------------------------|
 | title   | string | No| Yes| Custom title, with a maximum of 1024 bytes. The default title is used if this parameter is not set.  |
 | text    | string | No| Yes| Custom body text, with a maximum of 3072 bytes. The default text is used if this parameter is not set.   |
-| visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on the [VISIBILITY constant](#constants-1). The options are as follows:<br>- Only the completion notification is displayed. The parameter is **VISIBILITY_COMPLETION** or **1**. The corresponding notification is displayed after the task is complete or fails. <br>- Only the progress notification is displayed when the task is in progress. The parameter is **VISIBILITY_PROGRESS** or **2**. Completion notification is not displayed when the download task is complete or fails.<br>- Only the progress or completion notification is displayed when the task is in progress. The parameter can be set to **VISIBILITY_COMPLETION | VISIBILITY_PROGRESS** or **3**. Completion notification is displayed when the download task is complete or fails.<br>If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed.|
+| visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on the [VISIBILITY constant](#constants-1). The options are as follows:<br>- Only the completion notification is displayed. The parameter is **VISIBILITY_COMPLETION** or **1**. The corresponding notification is displayed after the task is complete or fails. <br>- Only the progress notification is displayed when the task is in progress. The parameter is **VISIBILITY_PROGRESS** or **2**. Completion notification is not displayed when the download task is complete or fails.<br>- Only the progress or completion notification is displayed when the task is in progress. The parameter can be set to **VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS** or **3**. Completion notification is displayed when the download task is complete or fails.<br>If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed.|
 | wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | No| Yes| Notification parameter, which is used to implement redirection after a task notification is tapped. The default value is empty.|
 
 
@@ -2759,9 +2759,10 @@ Subscribes to task progress changes. This API uses an asynchronous callback to r
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | task mode error.<br> Applicable versions: 10|
 
 **Example**
   <!--code_no_check-->
@@ -2837,9 +2838,10 @@ Subscribes to task completion events. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | task mode error.<br> Applicable versions: 10|
 
 **Example**
   <!--code_no_check-->
@@ -2915,9 +2917,10 @@ Subscribes to task failure events. This API uses an asynchronous callback to ret
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | Operation with wrong task mode.<br> Applicable versions: 10|
 
 **Example**
   <!--code_no_check-->
@@ -2991,7 +2994,7 @@ Subscribes to task pause events. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -3072,7 +3075,7 @@ Subscribes to task resume events. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -3158,7 +3161,7 @@ Subscribes to task removal events. This API uses an asynchronous callback to ret
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -3241,7 +3244,7 @@ Subscribes to task response headers. This API uses an asynchronous callback to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -3317,7 +3320,7 @@ Subscribes to task failure events. This API uses a callback to return the result
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -3393,7 +3396,7 @@ Subscribes to task wait events. This API uses a callback to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -3472,9 +3475,10 @@ Unsubscribes from task progress events.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | task mode error.<br> Applicable versions: 10|
 
 **Example**
   <!--code_no_check-->
@@ -3559,9 +3563,10 @@ Unsubscribes from task completion events.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | Operation with wrong task mode.<br> Applicable versions: 10|
 
 **Example**
   <!--code_no_check-->
@@ -3645,9 +3650,10 @@ Unsubscribes from task failure events.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | Operation with wrong task mode.<br> Applicable versions: 10|
 
 **Example**
   <!--code_no_check-->
@@ -3729,7 +3735,7 @@ Unsubscribes from the foreground task pause event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -3813,7 +3819,7 @@ Unsubscribes from foreground task resume events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -3897,9 +3903,9 @@ Unsubscribes from the task removal event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
-  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3983,7 +3989,7 @@ Unsubscribes from task response headers.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -4068,7 +4074,7 @@ Unsubscribes from task failure events.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -4153,7 +4159,7 @@ Unsubscribes from task waiting events.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -4244,7 +4250,7 @@ Tasks in the following states can be started:
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
@@ -4324,10 +4330,11 @@ Tasks in the following states can be started:
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> Applicable versions: 10|
   | 21900007 | Operation with wrong task state. |
 
 **Example**
@@ -4390,9 +4397,10 @@ Pauses a task that is waiting, running, or retrying. A paused task can be resume
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> Applicable versions: 10|
   | 21900007 | Operation with wrong task state. |
 
 **Example**
@@ -4462,9 +4470,10 @@ Pauses a task that is waiting, running, or retrying. A paused task can be resume
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> Applicable versions: 10|
   | 21900007 | Operation with wrong task state. |
 
 **Example**
@@ -4534,10 +4543,11 @@ Resumes a paused task. This API uses an asynchronous callback to return the resu
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> Applicable versions: 10|
   | 21900007 | Operation with wrong task state. |
 
 **Example**
@@ -4614,7 +4624,7 @@ Resumes a paused task. This API uses a promise to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
@@ -4692,7 +4702,7 @@ Stops a task that is running, waiting, or retrying. A paused task can be resumed
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 13400003 | Task service ability error. |
   | 21900007 | Operation with wrong task state. |
@@ -4767,7 +4777,7 @@ Stops a task that is running, waiting, or retrying. A paused task can be resumed
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 13400003 | Task service ability error. |
   | 21900007 | Operation with wrong task state. |
@@ -4843,7 +4853,7 @@ Sets the maximum number of bytes that can be transmitted by a task per second. T
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message                |
+| ID   | Error Message                |
 |----------|------------------------------------------------------------------------------------------------------|
 | 401      | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 | 13400003 | Task service ability error.     |
@@ -4902,7 +4912,7 @@ Creates an upload or download task and adds it to the queue. This API uses an as
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | Permission denied. |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -4994,7 +5004,7 @@ Creates an upload or download task and adds it to the queue. This API uses a pro
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | Permission denied. |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -5076,7 +5086,7 @@ Obtains task information based on the task ID. This API uses a promise to return
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
   | 13400003 | Task service ability error. |
@@ -5118,7 +5128,7 @@ Removes a specified task of the invoker. If the task is being executed, the task
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
   | 13400003 | Task service ability error. |
@@ -5165,7 +5175,7 @@ Removes a specified task of the invoker. If the task is being executed, the task
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
   | 13400003 | Task service ability error. |
@@ -5203,7 +5213,7 @@ Queries the task details based on the task ID. This API uses an asynchronous cal
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
   | 13400003 | Task service ability error. |
@@ -5248,7 +5258,7 @@ Queries the task details based on the task ID. This API uses a promise to return
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
   | 13400003 | Task service ability error. |
@@ -5287,7 +5297,7 @@ Queries the task details based on the task ID and token. This API uses an asynch
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
   | 13400003 | Task service ability error. |
@@ -5333,7 +5343,7 @@ Queries the task details based on the task ID and token. This API uses a promise
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
   | 13400003 | Task service ability error. |
@@ -5369,7 +5379,7 @@ Searches for task IDs based on [Filter](#requestagentfilter10). The IDs of all t
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Incorrect parameter type. 2. Parameter verification failed. |
   | 13400003 | Task service ability error. |
@@ -5407,7 +5417,7 @@ Searches for task IDs based on [Filter](#requestagentfilter10). This API uses an
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Incorrect parameter type. 2. Parameter verification failed. |
   | 13400003 | Task service ability error. |
@@ -5455,7 +5465,7 @@ Searches for task IDs based on [Filter](#requestagentfilter10). This API uses a 
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Incorrect parameter type. 2. Parameter verification failed. |
   | 13400003 | Task service ability error. |
@@ -5500,7 +5510,7 @@ Creates a group based on [GroupConfig](#requestagentgroupconfig15). This API use
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message                                                                                          |
+| ID   | Error Message                                                                                          |
 |----------|------------------------------------------------------------------------------------------------|
 | 401      | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 | 13400003 | Task service ability error.             |
@@ -5549,7 +5559,7 @@ If any task ID does not meet the attachment conditions, all tasks in the list wi
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message                                                                                          |
+| ID   | Error Message                                                                                          |
 |----------|------------------------------------------------------------------------------------------------|
 | 401      | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 | 13400003 | Task service ability error.               |
@@ -5600,7 +5610,7 @@ When all tasks in a group are succeeded, failed, or removed and the group is del
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message                                                                                          |
+| ID   | Error Message                                                                                          |
 |----------|------------------------------------------------------------------------------------------------|
 | 401      | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 | 13400003 | Task service ability error.           |

@@ -101,7 +101,7 @@ Creates a [GattClientDevice](#gattclientdevice) instance, which represents the c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -138,7 +138,7 @@ Obtains the BLE devices that have been connected to the local device via GATT.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -186,7 +186,7 @@ Obtains the BLE devices that have been connected to the local device via GATT ac
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -231,7 +231,7 @@ Starts BLE scanning.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -291,7 +291,7 @@ Stops BLE scanning.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -339,7 +339,7 @@ Starts sending BLE advertising packets.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -418,7 +418,7 @@ Stops sending BLE advertising packets.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -464,7 +464,7 @@ Starts sending BLE advertising packets for the first time. This API uses an asyn
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------------------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
@@ -570,7 +570,7 @@ Starts sending BLE advertising packets for the first time. This API uses a promi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------------------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
@@ -665,7 +665,7 @@ Enables BLE advertising based on the specified **advertisingId**. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                     |
@@ -778,7 +778,7 @@ Enables BLE advertising based on the specified **advertisingId**. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                   |
@@ -884,7 +884,7 @@ Disables BLE advertising based on the specified **advertisingId**. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                     |
@@ -993,7 +993,7 @@ Disables BLE advertising based on the specified **advertisingId**. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                  |
@@ -1096,7 +1096,7 @@ Stops sending BLE advertising packets. This API uses an asynchronous callback to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                  |
@@ -1203,7 +1203,7 @@ Stops sending BLE advertising packets. This API uses a promise to return the res
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                 |
@@ -1300,7 +1300,7 @@ Subscribes to BLE advertising status. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
@@ -1343,7 +1343,7 @@ Unsubscribes from BLE advertising status. No BLE advertising state change events
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
@@ -1389,7 +1389,7 @@ Subscribes to BLE scan result reporting events. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1436,7 +1436,7 @@ Unsubscribes from BLE scan result reporting events.
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1489,7 +1489,7 @@ Adds a service to this GATT server. This operation registers the service with th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1556,7 +1556,7 @@ Removes a service from the server.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1598,7 +1598,7 @@ Removes all services from the server.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.          |
@@ -1646,7 +1646,7 @@ Obtains the service capabilities of a specified server.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1695,7 +1695,7 @@ Obtains the service capabilities that have been added to the local end on the se
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1736,7 +1736,7 @@ Closes the server instance. The instance created by calling [ble.createGattServe
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1786,7 +1786,7 @@ Sends a characteristic change notification or indication from the server to the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1854,7 +1854,7 @@ Sends a characteristic change event from the server to the client. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1914,7 +1914,7 @@ A client request is received through the following APIs:
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1970,7 +1970,7 @@ Subscribes to characteristic read request events of the client. After receiving 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2025,7 +2025,7 @@ Unsubscribes from characteristic read request events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2067,7 +2067,7 @@ Subscribes to characteristic write request events of the client. After receiving
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2125,7 +2125,7 @@ Unsubscribes from characteristic write request events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2167,7 +2167,7 @@ Subscribes to descriptor read request events of the client. After receiving the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2222,7 +2222,7 @@ Unsubscribes from descriptor read request events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2264,7 +2264,7 @@ Subscribes to descriptor write request events of the client. After receiving suc
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2322,7 +2322,7 @@ Unsubscribes from descriptor write request events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2364,7 +2364,7 @@ Subscribes to GATT profile connection state change events on the server. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2411,7 +2411,7 @@ Unsubscribes from GATT profile connection state change events on the server.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2451,7 +2451,7 @@ Subscribes to MTU change events on the server. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2493,7 +2493,7 @@ Unsubscribes from MTU change events on the server.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -2537,7 +2537,7 @@ Obtains the current connection status with the client device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -2589,7 +2589,7 @@ Obtains the physical channel type of the link between the server and a specified
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -2643,7 +2643,7 @@ Sets the physical channel type of the link between the server and a specified de
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -2689,7 +2689,7 @@ Subscribes to physical channel type change events. This API uses an asynchronous
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -2730,7 +2730,7 @@ Unsubscribes from physical channel type change events. This API uses an asynchro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -2776,7 +2776,7 @@ Initiates a GATT connection to the server.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -2815,7 +2815,7 @@ Disconnects the GATT connection from the server.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -2852,7 +2852,7 @@ Closes a client instance. The instance created by calling [GattClientDevice](#ga
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -2895,7 +2895,7 @@ Obtains the device name of the server. This API uses an asynchronous callback to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.          |
@@ -2950,7 +2950,7 @@ Obtains the name of the peer BLE device. This API uses a promise to return the r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.             |
@@ -3014,7 +3014,7 @@ Before invoking characteristic or descriptor read and write APIs, call this API 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.            |
@@ -3078,7 +3078,7 @@ Obtains all services of the peer BLE device. This API uses a promise to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.          |
@@ -3138,7 +3138,7 @@ Reads the value of the specified characteristic. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3222,7 +3222,7 @@ Reads the value of the specified characteristic. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3292,7 +3292,7 @@ Reads data from the specified descriptor. This API uses an asynchronous callback
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3369,7 +3369,7 @@ Reads data from the specified descriptor. This API uses a promise to return the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3433,7 +3433,7 @@ Writes a value to the specified characteristic. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3514,7 +3514,7 @@ Writes a value to the specified characteristic. This API uses a promise to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3584,7 +3584,7 @@ Writes data to the specified descriptor. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3659,7 +3659,7 @@ Writes data to the specified descriptor. This API uses a promise to return the r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3721,7 +3721,7 @@ Obtains the RSSI of a GATT connection. This API uses an asynchronous callback to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.         |
@@ -3770,7 +3770,7 @@ Obtains the RSSI of a GATT connection. This API uses a promise to return the res
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.               |
@@ -3819,7 +3819,7 @@ Negotiates the MTU size between the client and server. For details, see [MTU](..
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3871,7 +3871,7 @@ Sets whether to enable the client to receive characteristic change notifications
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -3949,7 +3949,7 @@ Sets whether to enable the client to receive characteristic change notifications
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4016,7 +4016,7 @@ Sets whether to enable the client to receive characteristic change indications f
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4094,7 +4094,7 @@ Sets whether to enable the client to receive characteristic change indications f
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4154,7 +4154,7 @@ Subscribes to the characteristic change events of the server. This API uses an a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4201,7 +4201,7 @@ Unsubscribes from the characteristic change events of the server.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4243,7 +4243,7 @@ Subscribes to connection state change events of GATT profile on the client. This
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4289,7 +4289,7 @@ Unsubscribes from connection state change events of GATT profile on the client.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4331,7 +4331,7 @@ Subscribes to MTU change events on the client. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4375,7 +4375,7 @@ Unsubscribes from MTU change events on the client.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4417,7 +4417,7 @@ Subscribes to service change events of the server device on the client. This API
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -4462,7 +4462,7 @@ Unsubscribes from service change events of the server device on the client.<br>
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -4506,7 +4506,7 @@ Obtains the current connection status with the server device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -4554,7 +4554,7 @@ Initiates a connection parameter update request to the peer device. After this A
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -4599,7 +4599,7 @@ Obtains the physical channel type of the link on the client. This API uses a pro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -4651,7 +4651,7 @@ Sets the physical channel type of the link on the client. This API uses a promis
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -4696,7 +4696,7 @@ Subscribes to physical channel type change events. This API uses an asynchronous
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -4737,7 +4737,7 @@ Unsubscribes from physical channel type change events. This API uses an asynchro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -4820,7 +4820,7 @@ Starts BLE scanning. This API uses a promise to return the result.<br>
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4840,24 +4840,27 @@ let bleScanner: ble.BleScanner = ble.createBleScanner();
 function onReceiveEvent(scanReport: ble.ScanReport) {
     console.info('BLE scan device find result = '+ JSON.stringify(scanReport));
 }
-try {
-    bleScanner.on("BLEDeviceFind", onReceiveEvent);
-    let scanFilter: ble.ScanFilter = {
+async function startscan() {
+    try {
+        bleScanner.on("BLEDeviceFind", onReceiveEvent);
+        let scanFilter: ble.ScanFilter = {
             deviceId:"XX:XX:XX:XX:XX:XX",
             name:"test",
             serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"
         };
-    let scanOptions: ble.ScanOptions = {
-        interval: 500,
-        dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
-        matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
-        reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
+        let scanOptions: ble.ScanOptions = {
+            interval: 500,
+            dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
+            matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
+            reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
+        }
+        await bleScanner.startScan([scanFilter],scanOptions);
+        console.info('startScan success');
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
-    bleScanner.startScan([scanFilter],scanOptions);
-    console.info('startScan success');
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
+startscan();
 ```
 
 ### stopScan<sup>15+</sup>
@@ -4884,7 +4887,7 @@ Stops an ongoing BLE scan. This API uses a promise to return the result.<br>
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -4898,12 +4901,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
-try {
-    bleScanner.stopScan();
-    console.info('stopScan success');
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+async function stopScan() {
+    try {
+        await bleScanner.stopScan();
+        console.info('stopScan success');
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    }
 }
+stopScan();
 ```
 
 ### on('BLEDeviceFind')<sup>15+</sup>
@@ -4929,7 +4935,7 @@ Subscribes to BLE scan result reporting events. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -4976,7 +4982,7 @@ Unsubscribes from BLE scan result reporting events.<br>
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |

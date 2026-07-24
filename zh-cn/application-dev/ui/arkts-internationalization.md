@@ -136,7 +136,7 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
               this.drawText();
             })
           } else {
-              console.error(`Need create subscriber`);
+            console.error(`Need create subscriber`);
           }
         })
     }

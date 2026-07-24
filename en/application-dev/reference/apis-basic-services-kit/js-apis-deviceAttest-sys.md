@@ -39,7 +39,7 @@ Obtains details about the device attestation result from the cloud. This API use
 
 **Error codes** 
 For details about error codes, see [Device Attestation Error Codes](./errorcode-deviceAttest.md) and [Universal Error Codes](../errorcode-universal.md). 
-| Error Code | Error Message            |
+| ID | Error Message            |
 |----------|----------------------|
 | 202     | This api is system api, Please use the system application to call this api. |
 | 401     | Input parameters wrong, the number of parameters is incorrect, or the type of parameters is incorrect. |
@@ -86,7 +86,7 @@ Obtains details about the device attestation result from the cloud. This API use
 
 **Error codes** 
 For details about error codes, see [Device Attestation Error Codes](./errorcode-deviceAttest.md) and [Universal Error Codes](../errorcode-universal.md). 
-| Error Code | Error Message            |
+| ID | Error Message            |
 |----------|----------------------|
 | 202     | This api is system api, Please use the system application to call this api. |
 | 401     | Input parameters wrong, the number of parameters is incorrect, or the type of parameters is incorrect. |
@@ -131,7 +131,7 @@ Obtains details about the device attestation result from the cloud synchronously
 
 **Error codes** 
 For details about error codes, see [Device Attestation Error Codes](./errorcode-deviceAttest.md) and [Universal Error Codes](../errorcode-universal.md). 
-| Error Code | Error Message            |
+| ID | Error Message            |
 |----------|----------------------|
 | 202     | This api is system api, Please use the system application to call this api. |
 | 401     | Input parameters wrong, the number of parameters is incorrect, or the type of parameters is incorrect. |

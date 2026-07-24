@@ -81,7 +81,7 @@ Queries a task details based on the task ID. This API uses an asynchronous callb
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Upload and Download Error Codes](errorcode-request.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | permission verification failed, application which is not a system application uses system API. |
@@ -132,7 +132,7 @@ Queries a task details based on the task ID. This API uses a promise to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Upload and Download Error Codes](errorcode-request.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | permission verification failed, application which is not a system application uses system API. |

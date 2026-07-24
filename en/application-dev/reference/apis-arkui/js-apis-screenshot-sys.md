@@ -85,15 +85,15 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 
 Obtains a screenshot. This API uses an asynchronous callback to return the result.
 
+The returned **PixelMap** object must be manually released. After using the object, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Required permissions**:
-- API version 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
-- API version 14-21: **ohos.permission.CAPTURE_SCREEN**
-
-**Resource management**: The returned **PixelMap** object needs to be manually released. After using the object, you must call the [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) API to release the memory. Otherwise, memory leakage may occur.
+- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 7-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
 
@@ -109,8 +109,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 1400001 | Invalid display or screen. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 11+|
+| 1400001 | Invalid display or screen.<br>Applicable versions: 11+|
 
 **Example**
 
@@ -135,7 +135,7 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 // Call the save method to obtain the screenshot.
 screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error(`Failed to save screenshot. Code: ${err.code}, message : ${err.message}`);
+    console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
@@ -149,15 +149,15 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 Obtains a screenshot. This API uses an asynchronous callback to return the result.
 
+The returned **PixelMap** object must be manually released. After using the object, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Required permissions**:
-- API version 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
-- API version 14-21: **ohos.permission.CAPTURE_SCREEN**
-
-**Resource management**: The returned **PixelMap** object needs to be manually released. After using the object, you must call the [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) API to release the memory. Otherwise, memory leakage may occur.
+- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 7-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
 
@@ -198,15 +198,15 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 Obtains a screenshot. This API uses a promise to return the result.
 
+The returned **PixelMap** object must be manually released. After using the object, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Required permissions**:
-- API version 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
-- API version 14-21: **ohos.permission.CAPTURE_SCREEN**
-
-**Resource management**: The returned **PixelMap** object needs to be manually released. After using the object, you must call the [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) API to release the memory. Otherwise, memory leakage may occur.
+- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 7-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
 
@@ -254,8 +254,8 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 try {
   let promise = screenshot.save(screenshotOptions);
   promise.then((pixelMap: image.PixelMap) => {
-    let pixelNumber = pixelMap.getPixelBytesNumber();
-    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelNumber}`);
+    let pixelBytesNumber = pixelMap.getPixelBytesNumber();
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelBytesNumber}`);
     pixelMap.release(); // Release the memory in time after the PixelMap is used.
   }).catch((err: BusinessError) => {
     console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
@@ -272,17 +272,16 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 Obtains a screenshot. This API uses a promise to return the result. SDR stands for Standard Dynamic Range, and HDR stands for High Dynamic Range.
 - If the screen contains HDR resources (even if they are partially obscured), this API returns an array with both SDR and HDR PixelMaps, regardless of whether HDR is enabled.
 - If there are no HDR resources, it returns an array with a single SDR PixelMap. Unlike the [save](#screenshotsave) API, which returns a single SDR PixelMap, this API always returns an array. Additionally, this API does not support cropping, stretching, or rotating features available in the [save](#screenshotsave) API.
-<br><br>
+
+Each **PixelMap** object in the returned object array must be manually released. After using the objects, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Window.SessionManager
 
 **Required permissions**:
-- API version 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
-- API version 14-21: **ohos.permission.CAPTURE_SCREEN**
-
-**Resource management**: Each **PixelMap** object in the returned PixelMap object array needs to be manually released. After using the objects, you must call the [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) API to release the memory. Otherwise, memory leakage may occur.
+- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 20-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
 

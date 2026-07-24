@@ -657,7 +657,9 @@ promise.then(() => {
 
 setAutoStartEnabled(enable: boolean): void
 
-设置拉起画中画的应用主窗退后台时是否自动启动画中画，默认不自动拉起。
+设置在拉起画中画的应用主窗退后台时是否自动启动画中画，默认不自动拉起。
+
+在开启自动拉起的情况下，当应用主窗为[智慧多窗悬浮窗](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro#悬浮窗)状态且被收入侧边栏时，应用主窗虽退后台，但不会自动拉起画中画。
 
 在使用XComponent方案实现画中画功能并结合Navigation进行路由管理时，首次调用setAutoStartEnabled(true)方法，系统会缓存当前应用传入的NavigationId的栈顶信息。
 
@@ -688,7 +690,7 @@ updateContentSize(width: number, height: number): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中不报错也不生效。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用；在Car设备中，<!--Del-->仅支持特定模板类型（具体可见[PiPTemplateType](js-apis-pipWindow-sys.md#piptemplatetype)）的画中画调用此接口更新尺寸，只能以固定大小尺寸更新，当宽高比>=1时更新为横屏小窗类型，当宽高比<1时更新为竖屏大窗类型，其他模板类型的画中画<!--DelEnd-->调用此接口不报错也不生效。
 
 **参数：**
 

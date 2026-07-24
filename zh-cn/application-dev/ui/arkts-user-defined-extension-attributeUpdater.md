@@ -86,7 +86,7 @@ struct updaterDemo {
 
 ## 通过modifier更新组件的构造参数
 
-可以通过`AttributeUpdater`实例的`updateConstructorParams`方法，直接更新组件的构造参数。
+可以通过`AttributeUpdater`实例的`updateConstructorParams`属性，直接更新组件的构造参数。
 
 <!-- @[att_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttUpdate.ets) -->
 
@@ -117,7 +117,7 @@ struct updaterDemo {
           .height(50)
           .backgroundColor('#2787D9')
           .onClick(() => {
-            // 调用updateConstructorParams方法，直接更新组件的构造参数
+            // 调用updateConstructorParams属性，直接更新组件的构造参数
             this.modifier.updateConstructorParams('Update');
           })
       }

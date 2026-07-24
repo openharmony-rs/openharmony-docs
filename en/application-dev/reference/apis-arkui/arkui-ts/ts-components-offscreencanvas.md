@@ -80,6 +80,8 @@ The following attributes are supported.
 
 ### width
 
+**Example**
+
 ```ts
 // xxx.ets
 @Entry
@@ -115,6 +117,8 @@ struct OffscreenCanvasPage {
 ![en-us_image_0000001194032666](figures/offscreen_canvas_width.png)
 
 ### height
+
+**Example**
 
 ```ts
 // xxx.ets

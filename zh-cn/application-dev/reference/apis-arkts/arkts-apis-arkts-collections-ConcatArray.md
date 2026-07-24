@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 该接口定义了支持数组连接操作的对象，并继承了`ISendable`接口，使其兼具高效数组拼接和跨线程传递能力。
 
 > **说明：**
@@ -93,7 +93,7 @@ join(separator?: string): string
 **示例：**
 
 ```ts
-let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
+let concatArray: collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
 let joinedString = concatArray.join('-'); // 返回 "a-b-c"
 ```
 
@@ -122,6 +122,6 @@ slice(start?: number, end?: number): ConcatArray\<T>
 **示例：**
 
 ```ts
-let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
-let slicedArray = concatArray.slice(1, 3); // 返回[2, 3]，原Array保持不变
+let concatArray: collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
+let slicedArray = concatArray.slice(1, 3); // 返回[2, 3]，原ConcatArray保持不变
 ```

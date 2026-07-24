@@ -1,10 +1,10 @@
 # Node-API支持的数据类型和接口
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## Node-API的数据类型
 
@@ -246,7 +246,7 @@ typedef enum {
 
 ### 事件循环模式
 
-napi提供了运行底层事件循环的两种模式, 其定义如下：
+napi提供了运行底层事件循环的两种模式，其定义如下：
 
 ```c
 typedef enum {
@@ -257,12 +257,12 @@ typedef enum {
 
 | 事件循环运行模式 | 解释说明 |
 | -------- | -------- |
-| napi_event_mode_default | 阻塞式的运行底层事件循环，直到循环中没有或活跃的uv_handle句柄时退出事件循环。 |
+| napi_event_mode_default | 阻塞式的运行底层事件循环，直到循环中没有活跃的uv_handle句柄时退出事件循环。 |
 | napi_event_mode_nowait | 非阻塞式的运行底层事件循环，尝试去处理一个任务，处理完之后退出事件循环；如果事件循环中没有任务，立刻退出事件循环。 |
 
 ### 线程安全任务优先级
 
-napi提供了线程安全任务的优先级, 底层任务队列中的任务会根据其优先级被依次执行, 优先级的定义如下：
+napi提供了线程安全任务的优先级，底层任务队列中的任务会根据其优先级被依次执行，优先级的定义如下：
 
 ```c
 typedef enum {
@@ -381,8 +381,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_element | 获取给定Object指定索引处的元素。 |
 | napi_has_element | 若给定Object的指定索引处拥有属性。 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 |
-| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypeArray。 |
-| napi_is_typedarray | 判断给定ArkTS value是否为TypeArray。|
+| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 |
+| napi_is_typedarray | 判断给定ArkTS value是否为TypedArray。|
 | napi_get_typedarray_info | 获取给定TypedArray的各种属性（例如：类型，长度，字节偏移量，ArrayBuffer等）。 |
 | napi_create_dataview | 通过现有的ArrayBuffer创建一个ArkTS DataView。 |
 | napi_is_dataview | 判断给定ArkTS value是否为DataView。|
@@ -469,7 +469,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_is_exception_pending | 判断是否出现了异常。 |
 | napi_fatal_error | 引发致命错误以立即终止进程。 |
 | napi_get_last_error_info | 获取napi_extended_error_info结构体，其中包含最近一次出现的error信息。 |
-| napi_fatal_exception | 抛出一个致命异常并终止进程, 同时产生相应的crash日志。 |
+| napi_fatal_exception | 抛出一个致命异常并终止进程，同时产生相应的crash日志。 |
 
 ### 属性相关
 
@@ -566,7 +566,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_wrap_sendable | 包裹一个native实例到ArkTS对象中。 |
 | napi_wrap_sendable_with_size | 包裹一个native实例到ArkTS对象中并指定大小。 |
 | napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。 |
-| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。 |
+| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。 |
 | napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 |
 | napi_create_ark_context| 创建一个新的上下文环境。 |
 | napi_switch_ark_context| 切换到指定的运行时上下文环境。 |
@@ -580,7 +580,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 |
 | napi_delete_strong_sendable_reference | 删除Sendable强引用。 |
 | napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 |
-| napi_throw_business_error | 抛出一个带文本信息的ArkTS Error, 其错误对象的code属性类型为number。 |
+| napi_throw_business_error | 抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。 |
 | napi_create_callsite_info | 创建调用点信息句柄，用于缓存属性访问信息。 |
 | napi_delete_callsite_info | 删除调用点信息句柄，释放关联的缓存资源。 |
 | napi_get_property_with_callsite_info | 使用调用点信息快速获取对象属性值。 |

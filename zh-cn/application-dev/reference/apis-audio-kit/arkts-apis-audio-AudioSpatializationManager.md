@@ -40,6 +40,7 @@ isSpatializationEnabledForCurrentDevice(): boolean
 ```ts
 import { audio } from '@kit.AudioKit';
 
+let audioSpatializationManager = audio.getSpatializationManager();
 let isSpatializationEnabledForCurrentDevice: boolean = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
 console.info(`AudioSpatializationManager isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}`);
 ```
@@ -57,7 +58,7 @@ on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback<boole
 | 参数名   | 类型                                                 | 必填 | 说明                                           |
 | :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
 | type     | string | 是   | 事件回调类型，支持的事件为'spatializationEnabledChangeForCurrentDevice'，当空间音频渲染开关状态变化时，触发该事件。 |
-| callback | Callback<boolean\> | 是   | 回调函数。返回true表示打开空间音频渲染状态；返回false表示关闭空间音频渲染状态。   |
+| callback | Callback<boolean\> | 是   | 回调函数。参数为true表示打开空间音频渲染状态；参数为false表示关闭空间音频渲染状态。   |
 
 **错误码：**
 
@@ -81,7 +82,7 @@ audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', (is
 
 off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boolean\>): void
 
-取消监听当前设备空间音频渲染开关状态变化事件。使用callback异步回调。
+取消监听当前设备空间音频渲染开关状态变化事件。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -89,8 +90,8 @@ off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boo
 
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string | 是   | 事件回调类型，支持的事件为'spatializationEnabledChangeForCurrentDevice'，当取消订阅当前设备空间音频渲染开关状态变化事件时，触发该事件。 |
-| callback | Callback<boolean\> | 否   | 回调函数。返回true表示打开空间音频渲染状态；返回false表示关闭空间音频渲染状态。   |
+| type     | string | 是   | 事件回调类型，支持的事件为'spatializationEnabledChangeForCurrentDevice'。 |
+| callback | Callback<boolean\> | 否   | 待注销的回调函数。参数为true表示打开空间音频渲染状态；参数为false表示关闭空间音频渲染状态。   |
 
 **错误码：**
 

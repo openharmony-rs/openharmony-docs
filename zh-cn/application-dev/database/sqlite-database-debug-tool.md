@@ -238,7 +238,7 @@ sqlite>.tables
 
 ### 查询数据
 
-在sqlite>提示符下,可通过` SELECT`查询数据，支持以下几种数据查询：
+在sqlite>提示符下，可通过` SELECT`查询数据，支持以下几种数据查询：
 
 - 可通过SQL语句`SELECT * FROM 表的名称`查询所有数据
 

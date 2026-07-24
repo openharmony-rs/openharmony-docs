@@ -72,7 +72,7 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 import { window } from '@kit.ArkUI';
 
 // 监听面板大小变化
-panel.on('sizeUpdate', (size: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
   // 打印面板大小和键盘区域信息
   console.info(`panel size changed, windowSize: ${windowSize.width}, ${windowSize.height}, ` +
     `keyboardArea: ${keyboardArea.top}, ${keyboardArea.bottom}, ${keyboardArea.left}, ${keyboardArea.right}`);
@@ -103,7 +103,7 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                                     |
 | -------- | ------------------------------------------- | ---- | -------------------------------------------------------- |
-| type     | string                                      | 是   | 监听当前面板的大小是否产生变化，固定值为'sizeUpdate'。 |
+| type     | string                                      | 是   | 取消监听当前面板的大小是否产生变化，固定值为'sizeUpdate'。 |
 | callback | [SizeUpdateCallback](#sizeupdatecallback14) | 否   | 回调函数。用于指定要取消监听的回调函数，如果不填则取消所有sizeUpdate监听。 |
 
 **示例：**
@@ -112,7 +112,7 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 import { window } from '@kit.ArkUI';
 
 // 取消监听面板大小变化
-panel.off('sizeUpdate', (size: window.Size, _keyboardArea: inputMethodEngine.KeyboardArea) => {
+panel.off('sizeUpdate', (windowSize: window.Size, _keyboardArea: inputMethodEngine.KeyboardArea) => {
   // 打印面板宽度、高度信息
   console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
 });
