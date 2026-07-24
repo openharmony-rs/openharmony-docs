@@ -121,7 +121,7 @@ Parameters for \@LocalBuilder functions can be passed [by callback](#passing-par
 
 ### Passing Parameters by Callback
 
-From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh status variables in the \@Builder function. For details, see [state management APIs](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20).
+From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh state variables in the \@Builder function. For details, see [state management APIs](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20).
 <!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) -->
 
 ``` TypeScript

@@ -178,7 +178,7 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
 
 5. Before API version 23, the data to be persisted must be a **class** object. Container types (such as **Array**, **Set**, and **Map**), built-in constructed objects (such as **String** and **Number**), and basic types (such as **string**, **number**, and **boolean**) are not supported. To persist non-class objects, you need to use [Preferences](../../database/preferences-guidelines.md) for data persistence.
 
-- Since API version 23, class types and container types (**Array**, **Set**, **Map**, and **Date**) can be persisted. Built-in constructed types (such as **String** and **Number**) and basic types (such as **string**, **number**, and **boolean**) can be persisted as **class** attributes. **String** and **Number** are immutable data objects and cannot be directly persisted as [top-level data types](#globalconnect-top-level-persistent-data-types-and-non-top-level-persistent-data-types). For supported types, a runtime error is reported. Since API version 23, the error code [140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2-and-persistencev2-use-unsupported-data-types) will be returned in this case.
+- Since API version 23, class types and container types (**Array**, **Set**, **Map**, and **Date**) can be persisted. Built-in constructed types (such as **String** and **Number**) and basic types (such as **string**, **number**, and **boolean**) can be persisted as **class** attributes. **String** and **Number** are immutable data objects and cannot be directly persisted as [top-level data types](#globalconnect-top-level-persistent-data-types-and-non-top-level-persistent-data-types). For unsupported types, a runtime error is reported. Since API version 23, the error code [140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2-and-persistencev2-use-unsupported-data-types) will be returned in this case.
 
    The following is an example of newly added globalConnect that supports the persistence of the **Array\<ClassA>** type:
 
@@ -204,7 +204,7 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
      @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
        type: Array<ClassA>,
        defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
-       // Add defaultSubCreator to notify the status management framework of how to create an array item.
+       // Add defaultSubCreator to notify the state management framework of how to create an array item.
        // In addition, makeObserved needs to be added to the persistent data. Because the JSON object does not have the observation capability, automatic persistence will fail.
        defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
      })!;
@@ -432,7 +432,7 @@ struct Page1 {
   @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
     type: Array<ClassA>,
     defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
-    // Add defaultSubCreator to notify the status management framework of how to create an array item.
+    // Add defaultSubCreator to notify the state management framework of how to create an array item.
     // Add makeObserved to the persisted data. Otherwise, the persistence will fail.
     defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
   })!;
@@ -1122,7 +1122,7 @@ struct Page1 {
         .fontColor(Color.Red)
 
       // save() API.
-      // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
+      // Variables that are not decorated by @Trace can be refreshed only by using the state variable refresh.
       Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
@@ -1204,7 +1204,7 @@ struct Page1 {
         .fontColor(Color.Red)
 
       // save() API.
-      // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
+      // Variables that are not decorated by @Trace can be refreshed only by using the state variable refresh.
       Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.

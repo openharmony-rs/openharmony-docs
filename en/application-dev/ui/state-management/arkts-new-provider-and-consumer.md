@@ -18,7 +18,7 @@
 >
 > \@Provider and \@Consumer decorators can be used in atomic services since API version 12.
 >
-> Since API version 22, you can set the [BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) parameter **enableProvideConsumeCrossing** to **true** in [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to enable cross-[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) two-way synchronization for \@Provider and \@Consumer. After BuilderNode is mounted to the custom component node tree, \@Consumer re-obtains the latest \@Provider data and establishes a two-way synchronization relationship with it. For details, see [Using \@Consumer to Establish Two-Way Synchronization with \@Provider in the Cross-BuilderNode Scenario](#using-consumer-to-establish-two-way-synchronization-with-provider-in-the-cross-buildernode-scenario).
+> Since API version 23, you can set the [BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) parameter **enableProvideConsumeCrossing** to **true** in [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to enable cross-[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) two-way synchronization for \@Provider and \@Consumer. After BuilderNode is mounted to the custom component node tree, \@Consumer re-obtains the latest \@Provider data and establishes a two-way synchronization relationship with it. For details, see [Using \@Consumer to Establish Two-Way Synchronization with \@Provider in the Cross-BuilderNode Scenario](#using-consumer-to-establish-two-way-synchronization-with-provider-in-the-cross-buildernode-scenario).
 >
 > \@Provider and \@Consumer decorators can be used in ArkTS cards since API version 23.
 
@@ -712,7 +712,7 @@ In the preceding example:
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 The following provides an example to implement the following functions:
 1. BuilderNode constructs the component tree through a [global custom builder function](arkts-builder.md#global-custom-builder-function). The root [FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md) of the component tree can be obtained via [getFrameNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode), and this node can be directly returned by [NodeController](../../reference/apis-arkui/js-apis-arkui-nodeController.md) and mounted under the [NodeContainer](../../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) node.

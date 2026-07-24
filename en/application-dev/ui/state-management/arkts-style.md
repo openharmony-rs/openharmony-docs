@@ -22,7 +22,7 @@ The \@Styles decorator addresses repetitive style configuration in components, i
 
 - Currently, \@Styles supports only [universal attributes](../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md) and [universal events](../../reference/apis-arkui/arkui-ts/ts-component-general-events.md).
 
-- \@Styles can be defined either within a component or globally. When it is defined globally, the **function** keyword must precede the method name. For details, see [Using Component-Local and Global \@Styles](#using-component-local-and-global-styles).
+- \@Styles can be defined either within a component or globally. When it is defined globally, the **function** keyword must precede the method name. When it is defined within a component, the **function** keyword does not need to be added. For details, see [Using Component-Local and Global \@Styles](#using-component-local-and-global-styles).
 
 - The priority of \@Styles defined inside a component declaration is higher than that of \@Styles defined outside a component declaration. The framework preferentially searches for \@Styles within the current component.
 

@@ -16,7 +16,7 @@ Before using this API, you are advised to read [State Management Overview](./ark
 
 ## Overview
 
-During development and debugging, you may encounter issues where the UI page does not refresh after modifying an object's value (for details, see [State Management Development](./arkts-state-management-faq.md)). Troubleshooting such issues is particularly inconvenient in complex business scenarios. To address this, the **canBeObserved** API is provided to help you locate and analyze problems. Using this API, you cannot only determine whether an object is observable, but also obtain component information associated with the object.
+During development and debugging, you may encounter issues where the UI page does not refresh after modifying an object's value (for details, see [State Management Development](./arkts-state-management-faq.md)). Troubleshooting such issues is particularly inconvenient in complex business scenarios. To address this, the **canBeObserved** API is provided to help you locate and analyze problems. Using this API, you can not only determine whether an object is observable, but also obtain component information associated with the object.
 
 To use the **canBeObserved** API, you need to import the UIUtils.
 

@@ -106,22 +106,22 @@ In the preceding example, \@State can only receive the reference of info during 
 | \@Param Variable Decorator | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
 | Parameters        | None                                                        |
-| Allowed local modification      | No If you need to change the value, you can use \@Param with [\@Once](./arkts-new-once.md) to change the local value of the child component. Alternatively, you can use the [\@Event](./arkts-new-event.md) decorator to change the value of the \@Param data source.|
+| Allowed local modification      | No. If you need to change the value, you can use \@Param with [\@Once](./arkts-new-once.md) to change the local value of the child component. Alternatively, you can use the [\@Event](./arkts-new-event.md) decorator to change the value of the \@Param data source.|
 | Synchronization type          | One-way synchronization from the parent to the child component.                                          |
-| Allowed variable types| Basic types, such as object, class, string, number, boolean, and enum, and built-in types such as Array, Date, Map, and Set. null, undefined, and union types.|
+| Allowed decorated variable types| Basic types, such as object, class, string, number, boolean, and enum, and built-in types such as Array, Date, Map, and Set. It supports null, undefined, and union types.|
 | Initial value for the decorated variable| Local initialization is allowed. If local initialization is not performed, this parameter must be used together with the [\@Require](./arkts-require.md) decorator and initialization must be passed from the external.|
 
 ## Variable Passing
 
 | Behavior      | Description                                                        |
 | -------------- | ------------------------------------------------------------ |
-| Initialization from the parent component| \@Param decorated variables can be initialized locally. If local initialization does not performed, the variables must be initialized from the external. When both the local initial value and external input value exist, the latter is preferentially used for initialization.|
+| Initialization from the parent component| \@Param decorated variables can be initialized locally. If local initialization is not performed, the variables must be initialized from the external. When both the local initial value and external input value exist, the latter is preferentially used for initialization.|
 | Child component initialization  | \@Param decorated variables can initialize themselves in the child components.      |
 | Synchronization          | \@Param can be synchronized with the state variable data source passed in by the parent component (that is, the variable decorated by \@Local or \@Param). When the data source changes, the changes will be synchronized to \@Param of the child component.|
 
 ## Observed Changes
 
-\@Param decorated variables enjoys observation capability. When a decorated variable changes, the UI component bound to the variable will be re-rendered.
+\@Param decorated variables enjoy observation capability. When a decorated variable changes, the UI component bound to the variable will be re-rendered.
 
 - When the decorated variable is of the boolean, string, or number type, the synchronized change of the data source can be observed.
   <!-- @[Param_Observe_Change_Variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeVariable.ets) -->
@@ -412,7 +412,7 @@ The \@Param decorator has the following constraints:
   }
   ```
 
-- The \@Param decorated variable indicates the external input of the component and needs to be initialized. The local initial value or the value transferred from the outside can be used for initialization. When an external value is transferred, the external value is preferentially used. The local initial value and the value transferred from the outside cannot be used at the same time.
+- The \@Param decorated variable indicates the external input of the component and needs to be initialized. The local initial value or the value transferred from the outside can be used for initialization. When an external value is transferred, the external value is preferentially used. You must provide either a local initial value or an externally passed‑in value.
 
   ```ts
   @ComponentV2

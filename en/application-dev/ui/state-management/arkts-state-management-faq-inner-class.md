@@ -6,14 +6,14 @@
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
-A large number of data objects need to be encapsulated in large-scale applications. The use of internal status variables of data objects greatly affects the development efficiency of developers. This document describes common problems and solutions of data object status management.
+A large number of data objects need to be encapsulated in large-scale applications. The use of internal state variables of data objects greatly affects the development efficiency of developers. This document describes common problems and solutions of data object state management.
 
 In state management, a class is wrapped by a layer of "proxy." When a member variable of a class is modified, the agent intercepts the operation and performs the following tasks:
 
 - Update the data source synchronously to ensure that the original data is correctly modified.
 - Trigger UI refresh: Instruct all components that depend on this variable to re-render.
 
-You can use the [getTarget](./arkts-new-getTarget.md) API to obtain the original object and use the following method to determine whether the object is wrapped by the state manager. If the expression result is **false**, the value is an object wrapped by the status management module. Otherwise, the value is not an object wrapped by the status management module.
+You can use the [getTarget](./arkts-new-getTarget.md) API to obtain the original object and use the following method to determine whether the object is wrapped by the state manager. If the expression result is **false**, the value is an object wrapped by the state management module. Otherwise, the value is not an object wrapped by the state management module.
 
 ``` ts
 UIUtils.getTarget(value) === value
@@ -134,7 +134,7 @@ In the preceding example, the state variable is changed through a method of the 
 
 ## Failure to Change a State Variable Using an Arrow Function
 
-Changing the state variable in an arrow function does not trigger UI update. This is because the **this** object in the arrow function body is the object to which the scope where the function is defined points, not the object to which the scope where the function is called points. Therefore, in this scenario, **this** of **changeCoverUrl** points to **PlayDetailViewModel** instead of the status variable itself.
+Changing the state variable in an arrow function does not trigger UI update. This is because the **this** object in the arrow function body is the object to which the scope where the function is defined points, not the object to which the scope where the function is called points. Therefore, in this scenario, **this** of **changeCoverUrl** points to **PlayDetailViewModel** instead of the state variable itself.
 
 **Incorrect Usage**
 <!-- @[play_detail_opposite_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets) --> 
@@ -178,7 +178,7 @@ struct PlayDetailPage {
 }
 ```
 
-Solution: Transfer the proxy object of the status variable to the arrow function and call the proxy attribute to assign a value.
+Solution: Transfer the proxy object of the state variable to the arrow function and call the proxy attribute to assign a value.
 
 **Correct Usage**
 
@@ -443,7 +443,7 @@ Below you can see how the preceding code snippet works.
 
 ![properly-use-state-management-to-develop-2](figures/properly-use-state-management-to-develop-2.gif)
 
-After optimization, an object array is used in place of the original attribute arrays. For an array, changes in an object cannot be observed and therefore do not cause re-renders. Specifically, only changes at the top level of array items can be observed, for example, adding, modifying, or deleting an item. For a common array, modifying a data item means to change the item's value. For an object array, it means to assign a new value to the entire object, which means that changes to a property in an object are not observable to the array and consequently do not cause a re-render. In the observation capability of current status management, changes cannot be observed in scenarios where objects are nested in arrays. For details, see [Redundant Updates Caused by Objects with Multiple Attributes](#redundant-updates-caused-by-objects-with-multiple-attributes). When the code is modified, the combination of the customized component and ForEach is used. For details, see [UI Is Not Refreshed Due to the Combination of ForEach and Object Arrays](./arkts-state-management-faq-inner-component.md#ui-is-not-refreshed-due-to-the-combination-of-foreach-and-object-arrays).
+After optimization, an object array is used in place of the original attribute arrays. For an array, changes in an object cannot be observed and therefore do not cause re-renders. Specifically, only changes at the top level of array items can be observed, for example, adding, modifying, or deleting an item. For a common array, modifying a data item means to change the item's value. For an object array, it means to assign a new value to the entire object, which means that changes to a property in an object are not observable to the array and consequently do not cause a re-render. In the observation capability of current state management, changes cannot be observed in scenarios where objects are nested in arrays. For details, see [Redundant Updates Caused by Objects with Multiple Attributes](#redundant-updates-caused-by-objects-with-multiple-attributes). When the code is modified, the combination of the customized component and ForEach is used. For details, see [UI Is Not Refreshed Due to the Combination of ForEach and Object Arrays](./arkts-state-management-faq-inner-component.md#ui-is-not-refreshed-due-to-the-combination-of-foreach-and-object-arrays).
 
 ### Redundant Updates Caused by Objects with Multiple Attributes
 

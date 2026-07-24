@@ -132,10 +132,10 @@ For synchronization between \@State and \@Prop decorated variables:
 
 - The value of an \@State decorated variable in the parent component is used to initialize an \@Prop decorated variable in the child component. Any change to an \@State decorated variable is updated to the @Prop decorated variable.
 - However, any change to the @Prop decorated variable does not affect the value of its source @State decorated variable.
-- In addition to \@State, the source can also be decorated with \@Link or \@Prop, where the mechanisms for syncing the \@Prop decorated variable is the same.
+- In addition to \@State, the source can also be decorated with \@Link or \@Prop, where the mechanisms for syncing the \@Prop decorated variable are the same.
 - The type of the source and the @Prop decorated variable must be the same.
 
-- When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-map-type).
+- When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
 
 - When the decorated object is of the **Map** type, the following changes can be observed: (1) complete **Map** object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
 
@@ -293,7 +293,7 @@ In the preceding example:
 
 2. When the "+1" or "-1" button is touched, the \@State decorated **countDownStartValue** of the **ParentComponent** changes. This will cause the **ParentComponent** to re-render. At the minimum, the **CountDownComponent** will be updated because of the change in the **count** variable value.
 
-3. Because of the change in the **count** variable value, the **CountDownComponent** child component will re-render. At a minimum, the **if** statement's condition (**this.counter > 0**) is evaluated, and the **Text** child component inside the **if** statement would be updated.
+3. Because of the change in the **count** variable value, the **CountDownComponent** child component will re-render. At a minimum, the **if** statement's condition (**this.count &gt; 0**) is evaluated, and the **Text** child component inside the **if** statement would be updated.
 
 4. When **Try again** in the **CountDownComponent** child component is touched, its variable **count** decorated with @Prop will be changed, but the change to the **count** value will not affect the **countDownStartValue** of the parent component.
 

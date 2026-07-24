@@ -18,7 +18,7 @@ To enhance the listening capability of the state management framework for state 
 
 ## Overview
 
-The \@SyncMonitor decorator is used to synchronously listen to the modification of status variables so that the status variables have the deep listening capability.
+The \@SyncMonitor decorator is used to synchronously listen to the modification of state variables so that the state variables have the deep listening capability.
 
 - The \@SyncMonitor decorator can be used in custom components decorated by \@ComponentV2. But it cannot listen for the changes of the state variables that are not decorated by these decorators: [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Provider](arkts-new-provider-and-consumer.md), [\@Consumer](arkts-new-provider-and-consumer.md) and [\@Computed](arkts-new-computed.md).
 
@@ -42,7 +42,7 @@ Similar to the [\@Watch](arkts-watch.md) decorator, you must define the callback
 
 | Category                  | \@Watch                                 | \@Monitor                                                    |\@SyncMonitor                                                  |
 | ------------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Parameters             | Callback method name.                            | Listened status variable name and attribute name                                     | Listened status variable name and attribute name                                     |
+| Parameters             | Callback method name.                            | Listened state variable name and attribute name                                     | Listened state variable name and attribute name                                     |
 | Number of Intercepted Targets       | Single state variable                  | Multiple state variables                                     | Multiple state variables    |
 | Type         | Fuzzy Listening         | Precise in-depth listening                               | Fuzzy interception and precise interception are supported.                               |
 | Whether to Obtain the Value Before the Change| No                    | Yes                                           | Yes                                           |
@@ -53,15 +53,15 @@ Similar to the [\@Watch](arkts-watch.md) decorator, you must define the callback
 
 [addMonitor and clearMonitor](./arkts-new-addMonitor-clearMonitor.md) APIs allows you to dynamically add and clear listeners during application execution. When **isSynchronous** is set to **true**, **addMonitor** is similar to \@SyncMonitor. When **isSynchronous** is set to **false**, **addMonitor** is similar to \@Monitor.
 
-\@Monitor and \@SyncMonitor are member function decorators of the \@ComponentV2 and \@ObservedV2 classes, respectively. They are part of V2 status management. \@Watch is a variable decorator used in \[@Component](./arkts-create-custom-components.md#component). It is a part of V1 status management.
+\@Monitor and \@SyncMonitor are member function decorators of the \@ComponentV2 and \@ObservedV2 classes, respectively. They are part of V2 state management. \@Watch is a variable decorator used in \[@Component](./arkts-create-custom-components.md#component). It is a part of V1 state management.
 
-Functions decorated by \@Monitor are executed asynchronously after the event handler is executed. After the \@SyncMonitor and \@Watch functions detect the change of the status variable, the callback function is executed immediately.
+Functions decorated by \@Monitor are executed asynchronously after the event handler is executed. After the \@SyncMonitor and \@Watch functions detect the change of the state variable, the callback function is executed immediately.
 
-\@The execution of the Monitor function can be triggered by the value change of one or more specific tracing object attributes. \@The Watch function is executed when any observed object attribute or array item changes. It cannot listen to one or more specific attributes.
+The execution of the \@Monitor function can be triggered by the value change of one or more specific tracing object attributes. The \@Watch function is executed when any observed object attribute or array item changes. It cannot listen to one or more specific attributes.
 
 The behavior of \@SyncMonitor with wildcard characters in the path is the same as that of \@Watch. This makes it easier for applications to migrate from V1 state management to V2 state management. The following is an example:
 
-\@Watch sample code for V1 status management:
+\@Watch sample code for V1:
 
 ```typescript
 @Component 
@@ -73,7 +73,7 @@ struct CompV1 {
 }
 ```
 
-Sample code for migrating to the V2 status management \@SyncMonitor:
+Sample code for migrating to the V2 \@SyncMonitor:
 ```typescript
 @ComponentV2 
 struct CompV2 {
@@ -176,9 +176,9 @@ For details about the APIs of the IMonitor and IMonitorValue\<T\> types, see [St
 
 ### Using \@SyncMonitor in a Custom Component Decorated by \@ComponentV2
 
-When the status variable monitored by \@SyncMonitor changes, the callback method of \@SyncMonitor is triggered.
+When the state variable monitored by \@SyncMonitor changes, the callback method of \@SyncMonitor is triggered.
 
-- Variables listened by \@SyncMonitor must be decorated by \@Local, \@Param, \@Provider, \@Consumer, and \@Computed. Variables that are not decorated by the state variable decorator cannot be listened when they change. \@SyncMonitor can listen to multiple status variables at the same time. The variable names are separated by commas (,).
+- Variables listened by \@SyncMonitor must be decorated by \@Local, \@Param, \@Provider, \@Consumer, and \@Computed. Variables that are not decorated by the state variable decorator cannot be listened when they change. \@SyncMonitor can listen to multiple state variables at the same time. The variable names are separated by commas (,).
 
    <!-- @[monitor_multiple_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorMultipleVariables.ets) -->
    
@@ -212,7 +212,7 @@ When the status variable monitored by \@SyncMonitor changes, the callback method
    }
    ```
 
-- \@When the status variable monitored by SyncMonitor is a class object, only the changes of the entire object can be monitored. To listen to the changes of class attributes, the class attributes must be decorated by \@Trace. The changes of non-state variables cannot be listened to.
+- When the state variable monitored by \@SyncMonitor is a class object, only the changes of the entire object can be monitored. To listen to the changes of class attributes, the class attributes must be decorated by \@Trace. The changes of non-state variables cannot be listened to.
   
     <!-- @[monitor_object_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorObjectVariable.ets) -->
     
@@ -1679,7 +1679,7 @@ class Info {
   public name: string = 'John';
   @Trace public age: number = 24;
 
-  // Run only the listening status variable age and the non-state variable name. A compilation alarm "Cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios." is displayed.
+  // Run only the listening state variable age and the non-state variable name. A compilation alarm "Cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios." is displayed.
   @SyncMonitor('age', 'name')
   onPropertyChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
