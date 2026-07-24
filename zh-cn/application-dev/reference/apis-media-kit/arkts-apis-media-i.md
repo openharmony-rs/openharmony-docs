@@ -83,7 +83,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 
 function printfItemDescription(obj: media.MediaDescription, key: string) {
-  let property: Object = obj[key];
+  let property: Object | undefined = obj[key];
   console.info('audio key is ' + key); // 通过key值获取对应的value。key值具体可见MediaDescriptionKey。
   console.info('audio value is ' + property); // 对应key值的value。其类型可为任意类型，具体key对应value的类型可参考MediaDescriptionKey。
 }
