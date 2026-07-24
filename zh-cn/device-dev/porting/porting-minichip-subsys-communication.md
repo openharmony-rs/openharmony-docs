@@ -24,28 +24,28 @@ group("wifi") {
 
   **表1** wifi_device.h
 
-| 接口 | 作用 | 
-| -------- | -------- |
-| EnableWifi | 启用Wi-Fista模式。 | 
-| DisableWifi | 禁用Wi-Fi&nbsp;sta模式。 | 
-| IsWifiActive | 检查Wi-Fi&nbsp;sta模式是否启用。 | 
-| Scan | 扫描热点信息。 | 
-| GetScanInfoList | 获取所有扫描到的热点列表。 | 
-| AddDeviceConfig | 配置连接到的热点信息。 | 
-| GetDeviceConfigs | 获取配置连接到的热点信息。 | 
-| RemoveDevice | 删除指定的热点配置信息。 | 
-| DisableDeviceConfig | 禁用指定的热点配置信息。 | 
-| EnableDeviceConfig | 启用指定的热点配置信息。 | 
-| ConnectTo | 接到指定的热点。 | 
-| ConnectToDevice | 通过指定的配置连接到热点。 |
-| Disconnect | 断开Wi-Fi连接。 | 
-| GetLinkedInfo | 获取热点连接信息。 | 
-| GetIpInfo | 获取ip地址。 | 
+| 接口 | 作用                             | 
+| -------- |--------------------------------|
+| EnableWifi | 启用Wi-Fista模式。                  | 
+| DisableWifi | 禁用Wi-Fi&nbsp;sta模式。            | 
+| IsWifiActive | 检查Wi-Fi&nbsp;sta模式是否启用。        | 
+| Scan | 扫描热点信息。                        | 
+| GetScanInfoList | 获取所有扫描到的热点列表。                  | 
+| AddDeviceConfig | 配置连接到的热点信息。                    | 
+| GetDeviceConfigs | 获取配置连接到的热点信息。                  | 
+| RemoveDevice | 删除指定的热点配置信息。                   | 
+| DisableDeviceConfig | 禁用指定的热点配置信息。                   | 
+| EnableDeviceConfig | 启用指定的热点配置信息。                   | 
+| ConnectTo | 接到指定的热点。                       | 
+| ConnectToDevice | 通过指定的配置连接到热点。                  |
+| Disconnect | 断开Wi-Fi连接。                     | 
+| GetLinkedInfo | 获取热点连接信息。                      | 
+| GetIpInfo | 获取IP地址。                        | 
 | GetSignalLevel | 获取指定接收信号强度指示器（RSSI）和频带指示的信号电平。 |  
-| RegisterWifiEvent | 为指定的Wi-Fi事件注册回调。 | 
-| UnRegisterWifiEvent | 取消注册以前为指定Wi-Fi事件注册的回调。 | 
-| GetDeviceMacAddress | 获取设备的MAC地址。 | 
-| AdvanceScan | 根据指定参数启动Wi-Fi扫描。 | 
+| RegisterWifiEvent | 为指定的Wi-Fi事件注册回调。               | 
+| UnRegisterWifiEvent | 取消注册以前为指定Wi-Fi事件注册的回调。         | 
+| GetDeviceMacAddress | 获取设备的MAC地址。                    | 
+| AdvanceScan | 根据指定参数启动Wi-Fi扫描。               | 
 
   **表2** wifi_hotspot_config.h
 
