@@ -709,3 +709,5 @@ struct Page {
 ```
 
 ![localBuilder_parameter_transmission_in_correct_form.png](./figures/localBuilder_parameter_transmission_in_correct_form.png)
+
+<!--no_check-->

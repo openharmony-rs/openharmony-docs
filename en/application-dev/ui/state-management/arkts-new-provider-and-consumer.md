@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:09:21.867Z pushedAt=2026-07-23T10:40:42.312Z -->
+<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:09:21.867Z pushedAt=2026-07-25T01:58:46.607Z -->
 
 [\@Provider](../../reference/apis-arkui/arkui-ts/ts-state-management-provider.md#provider) and [\@Consumer](../../reference/apis-arkui/arkui-ts/ts-state-management-consumer.md#consumer) are used for two-way synchronization of data across component levels, freeing you from the constraints of the component hierarchy.
 
@@ -721,7 +721,7 @@ struct Child {
 
 1. \@Provider and \@Consumer can only observe changes to the data itself. If you need to observe attribute changes of the decorated complex data type, you can use \@Trace together, or use [makeObserved](./arkts-new-makeObserved.md) to convert non-observable data into observable data.
 
-2. When decorating built-in types, such as Array, Map, Set, and Date, you can observe the changes of some APIs. The observation capability is the same as that of [\@Trace](./arkts-new-observedV2-and-trace.md#observed-changes).
+2. When decorating built-in types, such as Array, Map, Set, and Date, you can observe the changes of some APIs. The observation capability is the same as that of [\@Trace](./arkts-new-observedV2-and-trace.md#observing-changes).
 
 <!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->  
 

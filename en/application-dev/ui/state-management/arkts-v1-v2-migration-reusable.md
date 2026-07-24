@@ -328,7 +328,7 @@ export struct OneMoment {
 
 In state management V2, you are advised to use the [full loading mode](../rendering-control/arkts-new-rendering-control-repeat.md#lazy-loading-capability) instead of [ForEach](../rendering-control/arkts-rendering-control-foreach.md) to implement cyclic rendering.
 
-For details about the \@Reusable usage example, see [List Scrolling with ForEach](./arkts-reusable.md#list-scrolling-with-foreach).
+For details about the \@Reusable usage example, see [List Scrolling with ForEach](./arkts-reusable.md#).
 
 The sample code snippet of list scrolling with **Repeat** full loading for \@ReusableV2 is as follows:
 
@@ -754,7 +754,7 @@ class DataSrc {
 
 ### Multiple Item Types
 
-For details about the \@Reusable usage example, see [Multiple Item Types](./arkts-reusable.md#multiple-item-types).
+For details about the \@Reusable usage example, see [Multiple Item Types](./arkts-reusable.md#scenarios-Involving-multiple-item-types).
 
 The sample code for using multiple item types of \@ReusableV2 is as follows:
 
@@ -982,3 +982,5 @@ struct ChildComponentD {
 ```
 
 ![](figures/v1_v2_reusable_group.png)
+
+<!--no_check-->

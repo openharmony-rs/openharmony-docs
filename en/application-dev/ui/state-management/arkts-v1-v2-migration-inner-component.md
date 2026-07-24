@@ -1616,3 +1616,5 @@ struct TextInputExampleV2 {
 Example effect:
 
 ![sync](figures/migration-sync.gif)
+
+<!--no_check-->

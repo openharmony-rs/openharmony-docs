@@ -363,7 +363,7 @@ struct PersistedMap {
           .width('60%')
           .height('5%')
           .onClick(() => {
-            // 点击Button改变persistedMapString的值，视图会随之刷新
+            // Clicking Button changes the value of persistedMapString and refreshes the view.
             this.persistMapString();
           })
         }

@@ -1039,3 +1039,5 @@ struct MyComponent {
 ```
 
 ![param-sync-10](figures/param-sync-10.gif)
+
+<!--no_check-->

@@ -161,3 +161,5 @@ struct GlobalFancy {
 ```
 
 ![](figures/arkts-style-2.gif)
+
+<!--no_check-->
