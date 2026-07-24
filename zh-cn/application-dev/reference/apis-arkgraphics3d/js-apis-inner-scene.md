@@ -203,9 +203,9 @@ createImageStream(params: SceneResourceParameters): Promise\<ImageStream>
 
 根据指定场景名称参数创建流图片，使用Promise异步回调。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
