@@ -8554,7 +8554,7 @@ windowClass?.setUIContent('pages/Index', (error: BusinessError<void> | null) => 
 });
 ```
 
-## on('windowTitleBuRectChangetton')<sup>11+</sup>
+## on('windowTitleButtonRectChange')<sup>11+</sup>
 
 on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt;): void
 
