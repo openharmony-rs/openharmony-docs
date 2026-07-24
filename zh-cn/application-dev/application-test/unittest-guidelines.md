@@ -98,7 +98,6 @@ export default function abilityTest() {
 }
 ```
 **ArkTS-Sta示例：**
- 1. 示例中的导入的sleep函数参数示例代码。
 <!-- @[basic_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
 
 ``` TypeScript
@@ -839,6 +838,11 @@ interface PromiseInfo {
 
 ``` TypeScript
 import { describe, expect, it, Level } from '../../../../hypium/index';
+<<<<<<< HEAD
+=======
+import { promiseReject } from '../Util.test';
+
+>>>>>>> b791c6573a5dac59ae08ff422c93df541fb11263
 
 export default function exampleTest(): void {
   describe('ExampleTest', (): void => {
