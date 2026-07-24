@@ -37,7 +37,7 @@ type ConnectionState = nearlinkConstant.ConnectionState
 | [nearlinkConstant.ConnectionState](js-apis-nearlink-constant.md#connectionstate) | 和远端设备的连接状态。 |
 
 
-## createPort
+## dataTransfer.createPort
 
 createPort(uuid: string): void
 
@@ -87,7 +87,7 @@ try {
 ```
 
 
-## destroyPort
+## dataTransfer.destroyPort
 
 destroyPort(uuid: string): void
 
@@ -136,7 +136,7 @@ try {
 ```
 
 
-## connect
+## dataTransfer.connect
 
 connect(params: ConnectionParams): Promise&lt;void&gt;
 
@@ -198,7 +198,7 @@ try {
 ```
 
 
-## disconnect
+## dataTransfer.disconnect
 
 disconnect(params: ConnectionParams): Promise&lt;void&gt;
 
@@ -260,7 +260,7 @@ try {
 ```
 
 
-## onConnectionStateChanged
+## dataTransfer.onConnectionStateChanged
 
 onConnectionStateChanged(callback: Callback&lt;ConnectionResult&gt;): void
 
@@ -305,7 +305,7 @@ try {
 ```
 
 
-## offConnectionStateChanged
+## dataTransfer.offConnectionStateChanged
 
 offConnectionStateChanged(callback?: Callback&lt;ConnectionResult&gt;): void
 
@@ -345,7 +345,7 @@ try {
 ```
 
 
-## getConnectionState
+## dataTransfer.getConnectionState
 
 getConnectionState(params: ConnectionStateParams): ConnectionState
 
@@ -403,7 +403,7 @@ try {
 ```
 
 
-## writeData
+## dataTransfer.writeData
 
 writeData(params: DataParams): Promise&lt;void&gt;
 
@@ -472,7 +472,7 @@ try {
 ```
 
 
-## onReadData
+## dataTransfer.onReadData
 
 onReadData(callback: Callback&lt;DataParams&gt;): void
 
@@ -517,7 +517,7 @@ try {
 ```
 
 
-## offReadData
+## dataTransfer.offReadData
 
 offReadData(callback?: Callback&lt;DataParams&gt;): void
 

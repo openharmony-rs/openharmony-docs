@@ -24,7 +24,7 @@ import { manager } from '@kit.ConnectivityKit';
 ```
 
 
-## enable
+## manager.enable
 
 enable(): void
 
@@ -64,7 +64,7 @@ try {
 }
 ```
 
-## disable
+## manager.disable
 
 disable(): void
 
@@ -103,7 +103,7 @@ try {
 }
 ```
 
-## getLocalAddress
+## manager.getLocalAddress
 
 getLocalAddress(): string
 
@@ -150,7 +150,7 @@ try {
 }
 ```
 
-## factoryReset
+## manager.factoryReset
 
 factoryReset(): Promise&lt;void&gt;
 
@@ -216,7 +216,7 @@ try {
 | SLE_MODE_UNCONNECTABLE | 0 | 表示该设备不可连接。 |
 | SLE_MODE_CONNECTABLE | 1 | 表示该设备可连接。 |
 
-## setConnectionMode
+## manager.setConnectionMode
 
 setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 

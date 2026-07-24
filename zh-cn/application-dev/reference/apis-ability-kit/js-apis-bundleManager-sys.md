@@ -12,7 +12,7 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[应用程序包管理模块](js-apis-bundleManager.md)。
 
@@ -1118,7 +1118,7 @@ ArkTS-Sta: queryAbilityInfoSync(want: Want, abilityFlags: int, userId?: int): Ar
 
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
-| Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)> | Array\<AbilityInfo>信息。 |
+| Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)> | 返回查询到的Ability信息列表。 |
 
 **错误码：**
 
@@ -1631,7 +1631,7 @@ ArkTS-Sta: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: Exten
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)> | Array\<ExtensionAbilityInfo>信息。 |
+| Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)> | 返回查询到的ExtensionAbility信息列表。 |
 
 **错误码：**
 
@@ -1873,7 +1873,7 @@ ArkTS-Sta: getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): Bund
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| [BundleInfo](js-apis-bundleManager-bundleInfo.md) | 返回BundleInfo对象。 |
+| [BundleInfo](js-apis-bundleManager-bundleInfo.md) | 返回查询到的应用包信息。 |
 
 **错误码：**
 
@@ -3997,7 +3997,7 @@ getPermissionDef(permissionName: string): Promise\<PermissionDef>
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| Promise\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | Promise对象，返回Array\<PermissionDef>对象。 |
+| Promise\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | Promise对象，返回查询到的权限结构体PermissionDef信息。 |
 
 **错误码：**
 
@@ -4076,7 +4076,7 @@ getPermissionDefSync(permissionName: string): PermissionDef;
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-|[PermissionDef](js-apis-bundleManager-permissionDef-sys.md) | PermissionDef对象。 |
+|[PermissionDef](js-apis-bundleManager-permissionDef-sys.md) | 返回查询到的权限定义结构体PermissionDef信息。 |
 
 **错误码：**
 
@@ -4098,8 +4098,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let permissionName = "ohos.permission.GET_BUNDLE_INFO";
 try {
-  let PermissionDef = bundleManager.getPermissionDefSync(permissionName);
-  hilog.info(0x0000, 'testTag', 'getPermissionDefSync successfully. Data: %{public}s', JSON.stringify(PermissionDef));
+  let permissionDef = bundleManager.getPermissionDefSync(permissionName);
+  hilog.info(0x0000, 'testTag', 'getPermissionDefSync successfully. Data: %{public}s', JSON.stringify(permissionDef));
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getPermissionDefSync failed. Cause: %{public}s', message);
@@ -4538,7 +4538,7 @@ getSharedBundleInfo(bundleName: string, moduleName: string): Promise\<Array\<Sha
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4676,7 +4676,7 @@ getAllSharedBundleInfo(): Promise\<Array\<SharedBundleInfo\>\>
 
 获取所有的共享包信息。使用Promise异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4874,7 +4874,7 @@ ArkTS-Sta: getAppProvisionInfo(bundleName: string, userId?: int): Promise\<AppPr
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4988,7 +4988,7 @@ ArkTS-Sta: getAppProvisionInfoSync(bundleName: string, userId?: int): AppProvisi
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

@@ -25,11 +25,11 @@
       - 自定义组件复用<!--arkts-component-reusable-->
         - [\@Reusable装饰器：V1组件复用](state-management/arkts-reusable.md)
         - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md)
-        - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)
+        - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）（ArkTS-Dyn）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V1）（ArkTS-Sta）](../ui/state-management-static/arkts-static-freeze.md)
-        - [自定义组件冻结（V2）（ArkTS-Dyn）](state-management/arkts-custom-components-freezeV2.md)
+        - [自定义组件冻结（V2）（ArkTS-Dyn）](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
         - [自定义组件冻结（V2）（ArkTS-Sta）](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
     - UI装饰器<!--arkts-ui-decorators-->
       - [装饰器总览](../ui/state-management/arkts-ui-decorators-overview.md)
@@ -205,7 +205,7 @@
     - [创建弧形列表 (ArcList)](arkts-layout-development-create-arclist.md)（圆形屏幕推荐使用）
     - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)<!--RP11--><!--RP11End-->
     - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)<!--RP12--><!--RP12End-->
-    - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)
+    - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)<!--RP4--><!--RP4End-->
   - 使用文本<!--arkts-use-text-->
     - [文本概述](arkts-text-introduction.md)
     - [文本显示 (Text/Span)](arkts-common-components-text-display.md)
@@ -214,7 +214,7 @@
     - [图标小符号 (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [属性字符串 (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [图文混排](arkts-text-image-layout.md)
-    - [管理软键盘](arkts-manage-keyboard.md)
+    - [管理软键盘](arkts-manage-keyboard.md)<!--RP5--><!--RP5End-->
   - 媒体展示<!--arkts-media-display-->
     - [显示图片 (Image)](arkts-graphics-display.md)
     - [视频播放 (Video)](arkts-common-components-video-player.md)
@@ -314,7 +314,7 @@
       - [自定义渲染节点 (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [自定义声明式节点 (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
       - [自定义声明式节点 (BuilderNode)(ArkTS-Sta)](arkts-v1.2-user-defined-arktsNode-builderNode.md)
-      - [设置自定义节点跨语言属性](arkts-user-defined-arktsNode-crossLanguage.md)
+      - [设置自定义节点跨语言属性](arkts-user-defined-arktsNode-crossLanguage.md)<!--RP3--><!--RP3End-->
     - 自定义绘制<!--arkts-draw-->
       - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
       - [自定义绘制修改器 (DrawModifier)](arkts-user-defined-extension-drawModifier.md)
@@ -528,7 +528,7 @@
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
-    - [UI并行化常见问题](multi-thread-ui-build-faq.md)
+    - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)

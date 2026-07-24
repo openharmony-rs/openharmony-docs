@@ -1750,7 +1750,7 @@ ArkTS-Sta: getAppCloneIdentity(uid: int): Promise\<AppCloneIdentity>
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity数组。 |
+| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity信息。 |
 
 **错误码：**
 
@@ -2171,8 +2171,6 @@ try {
     hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
   });
 } catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
 }
 ```
@@ -2663,7 +2661,7 @@ ArkTS-Dyn: type Skill = _Skill.Skill
 
 ArkTS-Sta: type Skill = _Skill
 
-skill信息。
+Skill信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2675,7 +2673,7 @@ skill信息。
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| ArkTS-Dyn: [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1)<br>ArkTS-Sta: [_Skill](js-apis-bundleManager-skill.md#skill-1) |skill信息。 |
+| ArkTS-Dyn: [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1)<br>ArkTS-Sta: [_Skill](js-apis-bundleManager-skill.md#skill-1) |Skill信息。 |
 
 ## SkillUrl<sup>12+</sup>
 
