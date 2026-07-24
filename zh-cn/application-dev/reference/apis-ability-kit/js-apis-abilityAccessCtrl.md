@@ -372,7 +372,7 @@ on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, 
 | 12100001 | Invalid parameter. Possible causes: 1. The permissionList exceeds the size limit; 2. The permissionNames in the list are all invalid. |
 | 12100004 | The API is used repeatedly with the same input. |
 | 12100005 | The registration time has exceeded the limit. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -432,7 +432,7 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100004 | The API is not used in pair with "on". |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -487,7 +487,7 @@ onSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback: 
 | 12100001 | Invalid parameter. Possible causes: 1. The permissionList exceeds the size limit; 2. The permissionNames in the list are all invalid. |
 | 12100004 | The API is used repeatedly with the same input. |
 | 12100005 | The registration time has exceeded the limit. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -539,7 +539,7 @@ offSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback?
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12100004 | The API is not used in pair with "onSelfPermissionStateChange". |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -668,7 +668,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation results. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. [since 11] |
 
 **示例：**
 
@@ -740,10 +740,11 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. |
+| 12100010 | The request already exists. [since 12 - 20]. |
 | 12100011 | All permissions in the permission list have been granted. |
 | 12100012 | The permission list contains the permission that has not been revoked by the user. |
-| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. |
+| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. [since 21]. |
 
 **示例：**
 
@@ -809,7 +810,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12100001 | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not support. |
+| 12100001 | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not supported. |
 | 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100013 | The specific global switch is already open. |
 
@@ -868,7 +869,7 @@ getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -1182,6 +1183,8 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称               |    值 | 说明        |
 | ------------------ | ----- | ----------- |
 | CAMERA  | 0    | 表示相机全局开关。 |
@@ -1296,6 +1299,8 @@ type Context = _Context
 **ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称               |    值 | 说明        |
 | ------------------ | ----- | ----------- |
