@@ -63,7 +63,7 @@ onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebSchemeHandlerRequest&gt; | 是 | 对应请求结束的回调函数。 |
+| callback | Callback&lt;WebSchemeHandlerRequest&gt; | 是 | 对应请求结束的回调函数。 |
 
 **错误码：**
 

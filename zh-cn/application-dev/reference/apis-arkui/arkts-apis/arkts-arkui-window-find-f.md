@@ -32,7 +32,7 @@ function find(id: string, callback: AsyncCallback<Window>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | 窗口名字，即[Configuration](arkts-arkui-window-configuration-i.md)中的name。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Window&gt; | 是 | 回调函数。返回当前查找到的窗口对象。 |
+| callback | AsyncCallback&lt;Window&gt; | 是 | 回调函数。返回当前查找到的窗口对象。 |
 
 **示例：**
 

@@ -1,6 +1,6 @@
 # ScrollType
 
-Scroll滚动类型，用于[setScrollable](setScrollable)。
+Scroll滚动类型，用于setScrollable。
 
 **起始版本：** 12
 

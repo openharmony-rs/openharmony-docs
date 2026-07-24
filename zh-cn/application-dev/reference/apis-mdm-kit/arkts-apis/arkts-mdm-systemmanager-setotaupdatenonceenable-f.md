@@ -28,7 +28,7 @@ function setOtaUpdateNonceEnable(admin: Want, isEnable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件 |
+| admin | Want | 是 | 企业设备管理扩展组件 |
 | isEnable | boolean | 是 | 随机标记 |
 
 **错误码：**

@@ -20,10 +20,10 @@ import { window } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createWindow](arkts-arkui-window-createwindow-f.md#createwindow) | 创建子窗口或者系统窗口，使用callback异步回调。  非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)。  自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。 |
-| [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1) | 创建子窗口或者系统窗口，使用Promise异步回调。  非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)。  自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。 |
-| [create](arkts-arkui-window-create-f.md#create) | 创建子窗口，使用callback异步回调。  子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)。 |
-| [create](arkts-arkui-window-create-f.md#create-1) | 创建子窗口，使用Promise异步回调。  子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)。 |
+| [createWindow](arkts-arkui-window-createwindow-f.md#createwindow) | 创建子窗口或者系统窗口，使用callback异步回调。  非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是沉浸式布局。  自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。 |
+| [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1) | 创建子窗口或者系统窗口，使用Promise异步回调。  非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是沉浸式布局。  自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。 |
+| [create](arkts-arkui-window-create-f.md#create) | 创建子窗口，使用callback异步回调。  子窗口创建后默认是沉浸式布局。 |
+| [create](arkts-arkui-window-create-f.md#create-1) | 创建子窗口，使用Promise异步回调。  子窗口创建后默认是沉浸式布局。 |
 | [create](arkts-arkui-window-create-f.md#create-2) | 创建系统窗口，使用Promise异步回调。 |
 | [create](arkts-arkui-window-create-f.md#create-3) | 创建系统窗口，使用callback异步回调。 |
 | [find](arkts-arkui-window-find-f.md#find) | 查找id所对应的窗口，使用callback异步回调。 |
@@ -36,8 +36,8 @@ import { window } from '@kit.ArkUI';
 | [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow) | 获取当前应用内层级最高的子窗口，使用callback异步回调。  若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)进行显示，则返回应用主窗口。 |
 | [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1) | 获取当前应用内层级最高的子窗口，使用Promise异步回调。  若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)进行显示，则返回应用主窗口。 |
 | [shiftAppWindowFocus](arkts-arkui-window-shiftappwindowfocus-f.md#shiftappwindowfocus) | 在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。  目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-arkui-window-window-i.md#setwindowfocusable)设置），并确保调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)成功且执行完毕。 |
-| [shiftAppWindowPointerEvent](arkts-arkui-window-shiftappwindowpointerevent-f.md#shiftappwindowpointerevent) | 主窗口和子窗口可正常调用，用于将鼠标输入事件从源窗口转移到目标窗口。使用Promise异步回调。  源窗口仅在[onTouch](../../../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件（事件类型必须为TouchType.Down）的回调方法中调用此接口才会有鼠标输入事件转移效果，成功调用此接口后，系统会向源窗口补发鼠标按键抬起（TouchType.Up）事件，并且向目标窗口补发鼠标按键按下（TouchType.Down）事件。 |
-| [shiftAppWindowTouchEvent](arkts-arkui-window-shiftappwindowtouchevent-f.md#shiftappwindowtouchevent) | 主窗口和子窗口可正常调用，用于将触屏输入事件从源窗口转移到目标窗口。使用Promise异步回调。  源窗口仅在[onTouch](../../../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件（事件类型必须为TouchType.Down）的回调方法中调用此接口才会有触屏输入事件转移效果，成功调用此接口后，系统会向源窗口补发触屏抬起（TouchType.Up）事件，并且向目标窗口补发触屏按下（TouchType.Down）事件。 |
+| [shiftAppWindowPointerEvent](arkts-arkui-window-shiftappwindowpointerevent-f.md#shiftappwindowpointerevent) | 主窗口和子窗口可正常调用，用于将鼠标输入事件从源窗口转移到目标窗口。使用Promise异步回调。  源窗口仅在onTouch事件（事件类型必须为TouchType.Down）的回调方法中调用此接口才会有鼠标输入事件转移效果，成功调用此接口后，系统会向源窗口补发鼠标按键抬起（TouchType.Up）事件，并且向目标窗口补发鼠标按键按下（TouchType.Down）事件。 |
+| [shiftAppWindowTouchEvent](arkts-arkui-window-shiftappwindowtouchevent-f.md#shiftappwindowtouchevent) | 主窗口和子窗口可正常调用，用于将触屏输入事件从源窗口转移到目标窗口。使用Promise异步回调。  源窗口仅在onTouch事件（事件类型必须为TouchType.Down）的回调方法中调用此接口才会有触屏输入事件转移效果，成功调用此接口后，系统会向源窗口补发触屏抬起（TouchType.Up）事件，并且向目标窗口补发触屏按下（TouchType.Down）事件。 |
 | [getWindowsByCoordinate](arkts-arkui-window-getwindowsbycoordinate-f.md#getwindowsbycoordinate) | 查询本应用指定坐标下的可见窗口数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。 |
 | [getAllWindowLayoutInfo](arkts-arkui-window-getallwindowlayoutinfo-f.md#getallwindowlayoutinfo) | 获取指定屏幕上可见的窗口布局信息数组，其中返回的每个Rect的宽、高是已经过缩放计算后的值，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。 |
 | [getAllWindowLayoutInfo](arkts-arkui-window-getallwindowlayoutinfo-f.md#getallwindowlayoutinfo-1) | 根据option指定的过滤条件获取指定屏幕上可见的窗口布局信息数组，其中返回的每个Rect的宽、高是已经过缩放计算后的值，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。当未传入option或其中的字段都为默认值时，当前接口与[getAllWindowLayoutInfo](arkts-arkui-window-getallwindowlayoutinfo-f.md#getallwindowlayoutinfo)等价。 |
@@ -92,8 +92,8 @@ import { window } from '@kit.ArkUI';
 | [Rect](arkts-arkui-window-rect-i.md) | 窗口矩形区域。 |
 | [RectInVP](arkts-arkui-window-rectinvp-i.md) | 窗口矩形区域，单位为vp。 |
 | [Position](arkts-arkui-window-position-i.md) | 窗口或组件的位置。 |
-| [AvoidArea](arkts-arkui-window-avoidarea-i.md) | 窗口内容的避让区域。  窗口内容做[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)对应的AvoidArea做窗口内容避让。  在避让区域内，应用窗口内容被遮挡且无法响应用户点击事件。 |
-| [UIEnvAvoidAreaVP](arkts-arkui-window-uienvavoidareavp-i.md) | 以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)适配时需关注。 |
+| [AvoidArea](arkts-arkui-window-avoidarea-i.md) | 窗口内容的避让区域。  窗口内容做沉浸式布局适配时，需要按照[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)对应的AvoidArea做窗口内容避让。  在避让区域内，应用窗口内容被遮挡且无法响应用户点击事件。 |
+| [UIEnvAvoidAreaVP](arkts-arkui-window-uienvavoidareavp-i.md) | 以vp为单位表示的窗口避让区域信息，在进行沉浸式布局适配时需关注。 |
 | [Size](arkts-arkui-window-size-i.md) | 窗口大小，单位为px。 |
 | [SizeInVP](arkts-arkui-window-sizeinvp-i.md) | 窗口大小，单位为vp。 |
 | [WindowInfo](arkts-arkui-window-windowinfo-i.md) | 当前窗口的详细信息。 |
@@ -158,10 +158,10 @@ import { window } from '@kit.ArkUI';
 | 名称 | 说明 |
 | --- | --- |
 | [WindowType](arkts-arkui-window-windowtype-e.md) | 窗口类型枚举。 |
-| [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md) | 窗口内容的避让区域的类型枚举。  窗口内容做[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-arkui-window-avoidarea-i.md)做窗口内容避让。  <!--RP13-->  <!--RP13End--> |
+| [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md) | 窗口内容的避让区域的类型枚举。  窗口内容做沉浸式布局适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-arkui-window-avoidarea-i.md)做窗口内容避让。  <!--RP13-->  <!--RP13End--> |
 | [SplitRatioPreference](arkts-arkui-window-splitratiopreference-e.md) | 描述分屏窗口分屏比例 |
 | [WindowStatusType](arkts-arkui-window-windowstatustype-e.md) | 窗口模式枚举。 |
-| [PixelUnit](arkts-arkui-window-pixelunit-e.md) | 像素单位枚举。  物理像素单位和虚拟像素单位换算可使用[px2vp](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#px2vp12)和[vp2px](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#vp2px12)。 |
+| [PixelUnit](arkts-arkui-window-pixelunit-e.md) | 像素单位枚举。  物理像素单位和虚拟像素单位换算可使用px2vp和vp2px。 |
 | [WindowAnimationCurve](arkts-arkui-window-windowanimationcurve-e.md) | 窗口动画曲线类型。 |
 | [WindowTransitionType](arkts-arkui-window-windowtransitiontype-e.md) | 窗口转场动画类型枚举。 |
 | [AnimationType](arkts-arkui-window-animationtype-e.md) | 窗口动画类型枚举。 |

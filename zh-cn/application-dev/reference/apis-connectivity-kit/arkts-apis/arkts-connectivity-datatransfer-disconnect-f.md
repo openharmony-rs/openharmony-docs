@@ -42,9 +42,9 @@ function disconnect(params: ConnectionParams): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100041](../errorcode-nearlink.md#36100041-无效地址) | Invalid address. |
-| [36100043](../errorcode-nearlink.md#36100043-无效uuid) | Invalid UUID. |
-| [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100041 | Invalid address. |
+| 36100043 | Invalid UUID. |
+| 36100044 | NearLink standard UUID not allowed. |
+| 36100099 | Operation failed. |
 

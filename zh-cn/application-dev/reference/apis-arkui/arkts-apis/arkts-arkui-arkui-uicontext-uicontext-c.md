@@ -1332,7 +1332,7 @@ Obtains a Router object.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Router](arkts-arkui-router-router-c.md) | Router object. |
+| Router | Router object. |
 
 ## getSharedLocalStorage
 

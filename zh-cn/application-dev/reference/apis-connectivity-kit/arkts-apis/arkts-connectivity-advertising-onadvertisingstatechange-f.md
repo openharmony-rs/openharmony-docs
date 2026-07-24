@@ -28,7 +28,7 @@ function onAdvertisingStateChange(callback: Callback<AdvertisingStateChangeInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;AdvertisingStateChangeInfo&gt; | 是 | 用于监听广播状态的回调。 |
+| callback | Callback&lt;AdvertisingStateChangeInfo&gt; | 是 | 用于监听广播状态的回调。 |
 
 **错误码：**
 

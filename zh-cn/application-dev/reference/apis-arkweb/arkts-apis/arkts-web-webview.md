@@ -32,7 +32,7 @@ import { webview } from '@kit.ArkWeb';
 | [GeolocationPermissions](arkts-arkweb-webview-geolocationpermissions-c.md) | Provides a method for managing web geographic location permissions. |
 | [JsMessageExt](arkts-arkweb-webview-jsmessageext-c.md) | 该消息用于指示JavaScript代码执行结果的状态。 |
 | [MediaSourceInfo](arkts-arkweb-webview-mediasourceinfo-c.md) | 表示媒体源的信息。 |
-| [NativeMediaPlayerSurfaceInfo](arkts-arkweb-webview-nativemediaplayersurfaceinfo-c.md) | [应用接管网页媒体播放功能](../../../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativemediaplayer12)中用于同层渲染的 surface 信息。 |
+| [NativeMediaPlayerSurfaceInfo](arkts-arkweb-webview-nativemediaplayersurfaceinfo-c.md) | 应用接管网页媒体播放功能中用于同层渲染的 surface 信息。 |
 | [PdfData](arkts-arkweb-webview-pdfdata-c.md) | Defines the callback of createPdf, related to {@link createPDF} method. |
 | [PrefetchOptions](arkts-arkweb-webview-prefetchoptions-c.md) | Defines the PrefetchOptions class. |
 | [ProxyConfig](arkts-arkweb-webview-proxyconfig-c.md) | The ProxyConfig used by applyProxyOverride. |
@@ -101,7 +101,7 @@ import { webview } from '@kit.ArkWeb';
 | [ProxySchemeFilter](arkts-arkweb-webview-proxyschemefilter-e.md) | Enum type supplied to {@link insertProxyRule} for indicating the scheme filter for proxy. |
 | [ReadyState](arkts-arkweb-webview-readystate-e.md) | 播放器的缓存状态。 |
 | [RenderProcessMode](arkts-arkweb-webview-renderprocessmode-e.md) | Defines the render process mode. |
-| [ScrollType](arkts-arkweb-webview-scrolltype-e.md) | Scroll滚动类型，用于[setScrollable](setScrollable)。 |
+| [ScrollType](arkts-arkweb-webview-scrolltype-e.md) | Scroll滚动类型，用于setScrollable。 |
 | [ScrollbarMode](arkts-arkweb-webview-scrollbarmode-e.md) | Web页面场景下，全局滚动条模式。 |
 | [SecureDnsMode](arkts-arkweb-webview-securednsmode-e.md) | Web组件使用HTTPDNS的模式。 |
 | [SecurityLevel](arkts-arkweb-webview-securitylevel-e.md) | 当前网页的安全级别。 |

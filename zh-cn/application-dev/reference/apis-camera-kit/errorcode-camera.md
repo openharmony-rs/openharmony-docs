@@ -40,7 +40,7 @@ Operation not allowed.
 
 **可能原因**
 
-接口执行顺序错误，比如在未调用[beginConfig](arkts-apis-camera-Session.md#beginconfig11)前就开始进行[commitConfig](arkts-apis-camera-Session.md#commitconfig11)操作等。
+接口执行顺序错误，比如在未调用beginConfig前就开始进行commitConfig操作等。
 
 **处理步骤**
 
@@ -58,7 +58,7 @@ Session not config.
 
 **可能原因**
 
-会话配置前，调用[start](arkts-apis-camera-Session.md#start11-1)操作等。
+会话配置前，调用start操作等。
 
 **处理步骤**
 
@@ -76,7 +76,7 @@ Session not running.
 
 **可能原因**
 
-会话运行前，调用[capture](arkts-apis-camera-PhotoOutput.md#capture)操作等。
+会话运行前，调用capture操作等。
 
 **处理步骤**
 

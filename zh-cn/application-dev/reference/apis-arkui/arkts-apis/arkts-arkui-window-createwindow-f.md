@@ -14,7 +14,7 @@ function createWindow(config: Configuration, callback: AsyncCallback<Window>): v
 
 创建子窗口或者系统窗口，使用callback异步回调。
 
-非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)。
+非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是沉浸式布局。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -34,7 +34,7 @@ function createWindow(config: Configuration, callback: AsyncCallback<Window>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | [Configuration](arkts-arkui-window-configuration-i.md) | 是 | 创建窗口时的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Window&gt; | 是 | 回调函数。返回当前创建的窗口对象。 |
+| callback | AsyncCallback&lt;Window&gt; | 是 | 回调函数。返回当前创建的窗口对象。 |
 
 **错误码：**
 
@@ -47,7 +47,7 @@ function createWindow(config: Configuration, callback: AsyncCallback<Window>): v
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal.Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>**适用版本：** 12+ |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br>**适用版本：** 12+ |
 | [1300006](../errorcode-window.md#1300006-窗口上下文异常) | This window context is abnormal. |
-| [1300008](../errorcode-window.md#1300008-显示设备异常) | The display device is abnormal.<br>**适用版本：** 9 - 16 |
+| 1300008 | The display device is abnormal.<br>**适用版本：** 9 - 16 |
 | [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
 
 **示例：**
@@ -93,7 +93,7 @@ function createWindow(config: Configuration): Promise<Window>
 
 创建子窗口或者系统窗口，使用Promise异步回调。
 
-非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)。
+非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是沉浸式布局。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -131,7 +131,7 @@ function createWindow(config: Configuration): Promise<Window>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal.Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>**适用版本：** 12+ |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br>**适用版本：** 12+ |
 | [1300006](../errorcode-window.md#1300006-窗口上下文异常) | This window context is abnormal. |
-| [1300008](../errorcode-window.md#1300008-显示设备异常) | The display device is abnormal.<br>**适用版本：** 9 - 16 |
+| 1300008 | The display device is abnormal.<br>**适用版本：** 9 - 16 |
 | [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
 
 **示例：**

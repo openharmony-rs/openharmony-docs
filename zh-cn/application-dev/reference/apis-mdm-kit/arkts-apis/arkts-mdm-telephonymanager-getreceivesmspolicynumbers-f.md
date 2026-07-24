@@ -28,7 +28,7 @@ function getReceiveSmsPolicyNumbers(admin: Want | null, policy: adminManager.Pol
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) \| null | 是 | 企业设备管理扩展组件 |
+| admin | Want \| null | 是 | 企业设备管理扩展组件 |
 | policy | adminManager.Policy | 是 | 允许或禁用名单策略。 |
 
 **返回值：**

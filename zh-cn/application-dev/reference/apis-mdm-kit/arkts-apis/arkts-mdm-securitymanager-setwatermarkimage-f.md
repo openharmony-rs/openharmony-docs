@@ -31,10 +31,10 @@ function setWatermarkImage(admin: Want, bundleName: string, source: string | ima
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 被设置水印的应用包名。 |
 | source | string \| image.PixelMap | 是 | string表示图像路径，图像路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径。<br>image.PixelMap表示图像对象，图像像素占用大小不得超过500KB。<br>图像像素占用大小计算公式：图像宽度(像素)×图像高度 (像素)×每个像素占用的字节数（通常为4）。例如：一张 100x100 的图片，图像像素占用大小为100×100×4=40000字节。 |
-| accountId | number | 是 | 用户ID。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。*@ohos.account.osAccount** to obtain the account ID. |
+| accountId | number | 是 | 用户ID。accountId可以通过@ohos.account.osAccount中的getOsAccountLocalId等接口来获取。*@ohos.account.osAccount** to obtain the account ID. |
 
 **错误码：**
 
@@ -92,7 +92,7 @@ function setWatermarkImage(admin: Want, bundleName: string, source: string | ima
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件 |
+| admin | Want | 是 | 企业设备管理扩展组件 |
 | bundleName | string | 是 | 被设置水印的应用包名。 |
 | source | string \| image.PixelMap | 是 | 水印图片或者路径 |
 | accountId | number | 是 | 系统账号ID<br>取值应为≥0的整数。 |

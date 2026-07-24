@@ -98,7 +98,7 @@ Virtual serial port disconnected.
 
 1. 检查USB转串口线缆连接是否正常，确保设备连接稳定。
 
-2. 重新插拔USB设备后，重新调用[getSerialPortList](js-apis-busmanager-serial.md#serialgetserialportlist)获取设备列表，再调用[open](js-apis-busmanager-serial.md#open)接口打开设备，以恢复串口通信功能。
+2. 重新插拔USB设备后，重新调用getSerialPortList获取设备列表，再调用open接口打开设备，以恢复串口通信功能。
 
 ## 35700004 端口已被占用
 
@@ -108,7 +108,7 @@ Port already in use.
 
 **错误描述**
 
-调用[open](js-apis-busmanager-serial.md#open)接口打开串口时，需确保串口端口未被其他应用或进程占用，否则会因端口已被占用而报错。
+调用open接口打开串口时，需确保串口端口未被其他应用或进程占用，否则会因端口已被占用而报错。
 
 **配对调用说明：**
 - 调用open()打开串口后，必须在使用完毕后调用close()关闭串口释放资源
@@ -125,7 +125,7 @@ Port already in use.
 
 1. 关闭占用该串口的其他应用。
 
-2. 调用[close](js-apis-busmanager-serial.md#close)关闭串口后重新打开。
+2. 调用close关闭串口后重新打开。
 
 ## 35700005 端口未打开
 
@@ -144,13 +144,13 @@ Port not open.
 
 **可能原因**
 
-1. 未调用[open](js-apis-busmanager-serial.md#open)方法打开串口。
+1. 未调用open方法打开串口。
 
 2. 串口已被关闭。
 
 **处理步骤**
 
-1. 先调用[open](js-apis-busmanager-serial.md#open)方法打开串口。
+1. 先调用open方法打开串口。
 
 2. 检查串口是否已被关闭，若已关闭则重新打开。
 
@@ -162,10 +162,10 @@ Transmission timeout.
 
 **错误描述**
 
-调用[write](js-apis-busmanager-serial.md#write)接口写入数据时（需确保串口已打开），若数据传输超时则会报此错误。
+调用write接口写入数据时（需确保串口已打开），若数据传输超时则会报此错误。
 
 **前置条件：**
-- 必须先调用[open](js-apis-busmanager-serial.md#open)打开串口，才能调用write()接口
+- 必须先调用open打开串口，才能调用write()接口
 - write()接口依赖串口处于打开状态
 
 **可能原因**
@@ -186,7 +186,7 @@ Transmission timeout.
 
 3. 检查串口通信参数（波特率等）是否与对端一致。
 
-4. 在确保串口正常打开的情况下，可降低写入频率或在每次写入之间调用[drain](js-apis-busmanager-serial.md#drain)接口等待前次数据发送完成后再发送，避免硬件缓冲区拥塞。
+4. 在确保串口正常打开的情况下，可降低写入频率或在每次写入之间调用drain接口等待前次数据发送完成后再发送，避免硬件缓冲区拥塞。
 
 **write和drain的配合使用：**
 - drain()用于等待串口发送缓冲区中的数据全部发送完成
@@ -201,7 +201,7 @@ User authorization required.
 
 **错误描述**
 
-调用[open](js-apis-busmanager-serial.md#open)接口打开串口时，系统会校验用户是否已允许应用访问目标串口，若用户拒绝授权，则抛出该错误码。
+调用open接口打开串口时，系统会校验用户是否已允许应用访问目标串口，若用户拒绝授权，则抛出该错误码。
 
 **可能原因**
 

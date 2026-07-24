@@ -22,7 +22,7 @@ import { common } from '@kit.MDMKit';
 accountId: number
 ```
 
-用户ID。取值范围：大于等于0的整数。accountId可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)接口获取。取值应为≥0的整数。
+用户ID。取值范围：大于等于0的整数。accountId可以通过getOsAccountLocalId接口获取。取值应为≥0的整数。
 
 **类型：** number
 

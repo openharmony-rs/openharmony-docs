@@ -17,7 +17,7 @@ function setPermissionManagedState(
   ): void
 ```
 
-设置指定应用的[user_grant权限](permissions:Permissions)的管理策略。
+设置指定应用的user_grant权限的管理策略。
 
 **起始版本：** 20
 
@@ -33,9 +33,9 @@ function setPermissionManagedState(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | applicationInstance | [ApplicationInstance](arkts-mdm-securitymanager-applicationinstance-i.md) | 是 | 指定应用实例。 |
-| permissions | Array&lt;string&gt; | 是 | 需要管理的权限名称列表，仅支持[user_grant权限](permissions:Permissions)。权限名称列表以[应用权限组](../../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
+| permissions | Array&lt;string&gt; | 是 | 需要管理的权限名称列表，仅支持user_grant权限。权限名称列表以[应用权限组](../../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
 | managedState | [PermissionManagedState](arkts-mdm-securitymanager-permissionmanagedstate-e.md) | 是 | 应用权限的管理策略。 |
 
 **错误码：**

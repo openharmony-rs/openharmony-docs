@@ -5,7 +5,7 @@
 该模块提供以下音频相关的常用功能：
 
 - [AudioManager](arkts-audio-audio-audiomanager-i.md)：音频管理器。  
-- [AudioDeviceEnhanceManager](../../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md)：音频设备增强管理器。  
+- AudioDeviceEnhanceManager：音频设备增强管理器。  
 - [AudioRenderer](arkts-audio-audio-audiorenderer-i.md)：音频渲染，用于播放PCM（Pulse Code Modulation）音频数据。  
 - [AudioCapturer](arkts-audio-audio-audiocapturer-i.md)：音频采集，用于录制PCM音频数据。
 

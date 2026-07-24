@@ -28,7 +28,7 @@ function getSwitchStatus(admin: Want, key: SwitchKey): SwitchStatus
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件 |
+| admin | Want | 是 | 企业设备管理扩展组件 |
 | key | [SwitchKey](arkts-mdm-devicesettings-switchkey-e.md) | 是 | 开关名称 |
 
 **返回值：**

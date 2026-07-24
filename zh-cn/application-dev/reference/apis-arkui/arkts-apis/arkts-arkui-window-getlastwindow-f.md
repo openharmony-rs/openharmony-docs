@@ -29,7 +29,7 @@ function getLastWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | ctx | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-basecontext-t.md) | 是 | Current application context. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Window&gt; | 是 | Callback used to return the top window obtained. |
+| callback | AsyncCallback&lt;Window&gt; | 是 | Callback used to return the top window obtained. |
 
 **错误码：**
 

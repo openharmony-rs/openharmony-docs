@@ -28,7 +28,7 @@ function addSendSmsPolicyNumbers(admin: Want, policy: adminManager.Policy, numbe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件 |
+| admin | Want | 是 | 企业设备管理扩展组件 |
 | policy | adminManager.Policy | 是 | 允许或禁用名单策略。 |
 | numbers | Array&lt;string&gt; | 是 | 通话号码列表，当前仅支持全号码匹配。 |
 

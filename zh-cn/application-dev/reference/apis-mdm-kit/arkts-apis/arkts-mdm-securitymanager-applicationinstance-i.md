@@ -20,7 +20,7 @@ import { securityManager } from '@kit.MDMKit';
 accountId: number
 ```
 
-Account ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) of **@ohos.account.osAccount** to obtain the account ID.
+Account ID, which must be greater than or equal to 0. You can call getOsAccountLocalId of **@ohos.account.osAccount** to obtain the account ID.
 
 **类型：** number
 

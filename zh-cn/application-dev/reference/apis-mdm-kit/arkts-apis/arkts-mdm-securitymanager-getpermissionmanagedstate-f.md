@@ -16,7 +16,7 @@ function getPermissionManagedState(
   ): PermissionManagedState
 ```
 
-获取指定应用的指定[user_grant权限](permissions:Permissions)的管理策略。
+获取指定应用的指定user_grant权限的管理策略。
 
 **起始版本：** 20
 
@@ -32,7 +32,7 @@ function getPermissionManagedState(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | applicationInstance | [ApplicationInstance](arkts-mdm-securitymanager-applicationinstance-i.md) | 是 | 指定应用实例。 |
 | permission | string | 是 | 需要获取管理策略的权限名称，仅支持user_grant权限。 |
 

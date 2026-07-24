@@ -28,7 +28,7 @@ function setEthernetConfig(admin: Want, networkInterface: string, config: Interf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。 |
+| admin | Want | 是 | 企业设备管理扩展组件。 |
 | networkInterface | string | 是 | 要设置的网络接口名。 |
 | config | [InterfaceConfig](arkts-mdm-networkmanager-interfaceconfig-i.md) | 是 | 要设置的网络接口配置信息。 |
 

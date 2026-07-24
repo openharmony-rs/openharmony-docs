@@ -323,7 +323,7 @@ off(type: 'audioSessionDeactivated', callback?: Callback<AudioSessionDeactivated
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioSessionDeactivated' | 是 | 事件回调类型，支持的事件为'audioSessionDeactivated'，当取消监听音频会话停用事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSessionDeactivatedEvent&gt; | 否 | 回调函数，返回音频会话停用原因。 |
+| callback | Callback&lt;AudioSessionDeactivatedEvent&gt; | 否 | 回调函数，返回音频会话停用原因。 |
 
 **错误码：**
 
@@ -351,7 +351,7 @@ off(type: 'audioSessionStateChanged', callback?: Callback<AudioSessionStateChang
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioSessionStateChanged' | 是 | 事件回调类型，支持的事件为'audioSessionStateChanged'，当音频会话状态变更时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSessionStateChangedEvent&gt; | 否 | 回调函数，返回音频会话变更提示信息。 |
+| callback | Callback&lt;AudioSessionStateChangedEvent&gt; | 否 | 回调函数，返回音频会话变更提示信息。 |
 
 **错误码：**
 
@@ -379,7 +379,7 @@ off(type: 'currentOutputDeviceChanged', callback?: Callback<CurrentOutputDeviceC
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'currentOutputDeviceChanged' | 是 | 事件回调类型，支持的事件为'currentOutputDeviceChanged'，当前输出设备发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CurrentOutputDeviceChangedEvent&gt; | 否 | 回调函数，用于返回当前输出设备变化的信息。 |
+| callback | Callback&lt;CurrentOutputDeviceChangedEvent&gt; | 否 | 回调函数，用于返回当前输出设备变化的信息。 |
 
 **错误码：**
 
@@ -407,7 +407,7 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'availableDeviceChange' | 是 | 事件回调类型，支持的事件为'availableDeviceChange'，当取消监听音频可选设备连接变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceChangeAction&gt; | 否 | 回调函数，返回可选设备更新详情。 |
+| callback | Callback&lt;DeviceChangeAction&gt; | 否 | 回调函数，返回可选设备更新详情。 |
 
 **错误码：**
 
@@ -434,7 +434,7 @@ off(type: 'currentInputDeviceChanged', callback?: Callback<CurrentInputDeviceCha
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'currentInputDeviceChanged' | 是 | 事件回调类型，支持的事件为'currentInputDeviceChanged'，当前输入设备发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CurrentInputDeviceChangedEvent&gt; | 否 | 回调函数，用于返回当前输入设备变化的信息。 |
+| callback | Callback&lt;CurrentInputDeviceChangedEvent&gt; | 否 | 回调函数，用于返回当前输入设备变化的信息。 |
 
 **错误码：**
 
@@ -463,7 +463,7 @@ on(type: 'audioSessionDeactivated', callback: Callback<AudioSessionDeactivatedEv
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioSessionDeactivated' | 是 | 事件回调类型，支持的事件为'audioSessionDeactivated'，当音频会话停用时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSessionDeactivatedEvent&gt; | 是 | 回调函数，返回音频会话停用原因。 |
+| callback | Callback&lt;AudioSessionDeactivatedEvent&gt; | 是 | 回调函数，返回音频会话停用原因。 |
 
 **错误码：**
 
@@ -491,7 +491,7 @@ on(type: 'audioSessionStateChanged', callback: Callback<AudioSessionStateChanged
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioSessionStateChanged' | 是 | 事件回调类型，支持的事件为'audioSessionStateChanged'，当音频会话状态变更时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioSessionStateChangedEvent&gt; | 是 | 回调函数，返回音频会话变更提示信息。 |
+| callback | Callback&lt;AudioSessionStateChangedEvent&gt; | 是 | 回调函数，返回音频会话变更提示信息。 |
 
 **错误码：**
 
@@ -520,7 +520,7 @@ on(type: 'currentOutputDeviceChanged', callback: Callback<CurrentOutputDeviceCha
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'currentOutputDeviceChanged' | 是 | 事件回调类型，支持的事件为'currentOutputDeviceChanged'，当前输出设备变更时触发。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CurrentOutputDeviceChangedEvent&gt; | 是 | 回调函数，返回当前输出设备信息。 |
+| callback | Callback&lt;CurrentOutputDeviceChangedEvent&gt; | 是 | 回调函数，返回当前输出设备信息。 |
 
 **错误码：**
 
@@ -550,7 +550,7 @@ on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<D
 | --- | --- | --- | --- |
 | type | 'availableDeviceChange' | 是 | 事件回调类型，支持的事件为'availableDeviceChange'，当音频可选设备连接状态发生变化时，触发该事件。 |
 | deviceUsage | [DeviceUsage](arkts-audio-audio-deviceusage-e.md) | 是 | 音频设备类型（根据用途分类）。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceChangeAction&gt; | 是 | 回调函数，返回设备更新详情。 |
+| callback | Callback&lt;DeviceChangeAction&gt; | 是 | 回调函数，返回设备更新详情。 |
 
 **错误码：**
 
@@ -578,7 +578,7 @@ on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChang
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'currentInputDeviceChanged' | 是 | 事件回调类型，支持的事件为'currentInputDeviceChanged'，当前输入设备发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CurrentInputDeviceChangedEvent&gt; | 是 | 回调函数，返回当前输入设备信息。 |
+| callback | Callback&lt;CurrentInputDeviceChangedEvent&gt; | 是 | 回调函数，返回当前输入设备信息。 |
 
 **错误码：**
 

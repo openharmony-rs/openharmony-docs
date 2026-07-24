@@ -30,7 +30,7 @@ export function off(type: 'navDestinationUpdate', options: { navigationId: Resou
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
 | options | { navigationId: ResourceStr } | 是 | 指定监听的Navigation的id。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationInfo&gt; | 否 | 回调函数。返回当前的NavDestination组件状态。 |
+| callback | Callback&lt;NavDestinationInfo&gt; | 否 | 回调函数。返回当前的NavDestination组件状态。 |
 
 
 ## off('navDestinationUpdate')
@@ -56,7 +56,7 @@ export function off(type: 'navDestinationUpdate', callback?: Callback<NavDestina
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationInfo&gt; | 否 | 回调函数。返回当前的NavDestination组件状态。 |
+| callback | Callback&lt;NavDestinationInfo&gt; | 否 | 回调函数。返回当前的NavDestination组件状态。 |
 
 
 ## off('scrollEvent')
@@ -83,7 +83,7 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to remove the listener for. Must be 'scrollEvent'. |
 | options | [ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | The options object. |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and scroll ID will be removed. |
+| callback | Callback&lt;ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and scroll ID will be removed. |
 
 **示例：**
 
@@ -179,7 +179,7 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to remove the listener for. Must be 'scrollEvent'. |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| callback | Callback&lt;ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
 
 
 ## off('routerPageUpdate')
@@ -206,7 +206,7 @@ export function off(type: 'routerPageUpdate', context: UIAbilityContext | UICont
 | --- | --- | --- | --- |
 | type | 'routerPageUpdate' | 是 | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
 | context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) \| UIContext | 是 | 上下文信息，用以指定监听页面的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;RouterPageInfo&gt; | 否 | 需要被注销的回调函数。 |
+| callback | Callback&lt;RouterPageInfo&gt; | 否 | 需要被注销的回调函数。 |
 
 **示例：**
 
@@ -260,8 +260,8 @@ export function off(type: 'densityUpdate', context: UIContext, callback?: Callba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'densityUpdate' | 是 | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
-| context | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 上下文信息，用以指定监听页面的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DensityInfo&gt; | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
+| context | UIContext | 是 | 上下文信息，用以指定监听页面的范围。 |
+| callback | Callback&lt;DensityInfo&gt; | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
 
 
 ## off('willDraw')
@@ -287,8 +287,8 @@ export function off(type: 'willDraw', context: UIContext, callback?: Callback<vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'willDraw' | 是 | 监听事件，固定为'willDraw'，即是否将要绘制。 |
-| context | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 上下文信息，用以指定监听页面的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 需要被注销的回调函数。 |
+| context | UIContext | 是 | 上下文信息，用以指定监听页面的范围。 |
+| callback | Callback&lt;void&gt; | 否 | 需要被注销的回调函数。 |
 
 
 ## off('didLayout')
@@ -314,8 +314,8 @@ export function off(type: 'didLayout', context: UIContext, callback?: Callback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'didLayout' | 是 | 监听事件，固定为'didLayout'，即是否布局完成。 |
-| context | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 上下文信息，用以指定监听页面的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 需要被注销的回调函数。 |
+| context | UIContext | 是 | 上下文信息，用以指定监听页面的范围。 |
+| callback | Callback&lt;void&gt; | 否 | 需要被注销的回调函数。 |
 
 
 ## off('tabContentUpdate')
@@ -342,7 +342,7 @@ export function off(type: 'tabContentUpdate', options: ObserverOptions, callback
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
 | options | [ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | 指定监听的Tabs组件的id。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;TabContentInfo&gt; | 否 | 需要被注销的回调函数。 |
+| callback | Callback&lt;TabContentInfo&gt; | 否 | 需要被注销的回调函数。 |
 
 
 ## off('tabContentUpdate')
@@ -368,7 +368,7 @@ export function off(type: 'tabContentUpdate', callback?: Callback<TabContentInfo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;TabContentInfo&gt; | 否 | 需要被注销的回调函数。 |
+| callback | Callback&lt;TabContentInfo&gt; | 否 | 需要被注销的回调函数。 |
 
 
 ## off('navDestinationSwitch')
@@ -399,7 +399,7 @@ export function off(
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
 | context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) \| UIContext | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationSwitchInfo&gt; | 否 | 需要被注销的回调函数。 |
+| callback | Callback&lt;NavDestinationSwitchInfo&gt; | 否 | 需要被注销的回调函数。 |
 
 
 ## off('navDestinationSwitch')
@@ -432,5 +432,5 @@ export function off(
 | type | 'navDestinationSwitch' | 是 | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
 | context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) \| UIContext | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
 | observerOptions | [NavDestinationSwitchObserverOptions](arkts-arkui-uiobserver-navdestinationswitchobserveroptions-i.md) | 是 | 监听选项。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationSwitchInfo&gt; | 否 | 需要被注销的回调函数。 |
+| callback | Callback&lt;NavDestinationSwitchInfo&gt; | 否 | 需要被注销的回调函数。 |
 

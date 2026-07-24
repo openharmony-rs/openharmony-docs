@@ -43,8 +43,8 @@ getCdsmInfo(): CdsmInfo
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## offCdsmInfoChange
 
@@ -66,7 +66,7 @@ offCdsmInfoChange(callback?: Callback<CdsmInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;CdsmInfo&gt; | 否 | 用于监听合作设备集信息的回调。 |
+| callback | Callback&lt;CdsmInfo&gt; | 否 | 用于监听合作设备集信息的回调。 |
 
 ## onCdsmInfoChange
 
@@ -90,5 +90,5 @@ onCdsmInfoChange(callback: Callback<CdsmInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;CdsmInfo&gt; | 是 | 用于监听合作设备集信息的回调。 |
+| callback | Callback&lt;CdsmInfo&gt; | 是 | 用于监听合作设备集信息的回调。 |
 
