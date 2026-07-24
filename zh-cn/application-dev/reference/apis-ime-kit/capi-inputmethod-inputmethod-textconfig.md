@@ -31,16 +31,16 @@ InputMethod_TextConfig内部包含以下子结构体信息：
 - [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)：光标信息，包括光标位置、高度等。可通过[OH_TextConfig_GetCursorInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getcursorinfo)获取，返回双指针（函数内部分配内存）。
 - [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)：避让信息，包括避让区域的位置和尺寸。可通过[OH_TextConfig_GetTextAvoidInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_gettextavoidinfo)获取，返回双指针（函数内部分配内存）。
 
-## 相关函数列表
+相关函数：
 
-### 创建/销毁函数
+- 创建/销毁函数：
 
 | 函数 | 描述 |
 | -- | -- |
 | [OH_TextConfig_Create](capi-inputmethod-text-config-capi-h.md#oh_textconfig_create) | 创建一个新的InputMethod_TextConfig实例。 |
 | [OH_TextConfig_Destroy](capi-inputmethod-text-config-capi-h.md#oh_textconfig_destroy) | 销毁一个InputMethod_TextConfig实例。 |
 
-### 设置函数（Set*）
+- 设置函数（Set*）：
 
 | 函数 | 描述 |
 | -- | -- |
@@ -51,9 +51,9 @@ InputMethod_TextConfig内部包含以下子结构体信息：
 | [OH_TextConfig_SetWindowId](capi-inputmethod-text-config-capi-h.md#oh_textconfig_setwindowid) | 设置所属窗口的窗口ID。 |
 | [OH_TextConfig_SetPlaceholder](capi-inputmethod-text-config-capi-h.md#oh_textconfig_setplaceholder) | 设置占位符文本信息（since 20）。 |
 | [OH_TextConfig_SetAbilityName](capi-inputmethod-text-config-capi-h.md#oh_textconfig_setabilityname) | 设置abilityName信息（since 20）。 |
-| [OH_TextConfig_SetConsumeKeyEvents](capi-inputmethod-text-config-capi-h.md#OH_TextConfig_SetConsumeKeyEvents) | 将编辑框是否具有完整处理字母、字符、功能等按键的能力设置到文本配置信息中。<br/>**起始版本：**26.0.0。 |
+| [OH_TextConfig_SetConsumeKeyEvents](capi-inputmethod-text-config-capi-h.md#oh_textconfig_setconsumekeyevents) | 将编辑框是否具有完整处理字母、字符、功能等按键的能力设置到文本配置信息中。<br/>**起始版本：** 26.0.0 |
 
-### 获取函数（Get*）
+- 获取函数（Get*）：
 
 | 函数 | 描述 |
 | -- | -- |
@@ -66,4 +66,4 @@ InputMethod_TextConfig内部包含以下子结构体信息：
 | [OH_TextConfig_GetWindowId](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getwindowid) | 获取所属窗口的窗口ID。 |
 | [OH_TextConfig_GetPlaceholder](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getplaceholder) | 获取占位符文本信息（两步调用策略，since 20）。 |
 | [OH_TextConfig_GetAbilityName](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getabilityname) | 获取abilityName信息（两步调用策略，since 20）。 |
-| [OH_TextConfig_GetConsumeKeyEvents](capi-inputmethod-text-config-capi-h.md#OH_TextConfig_GetConsumeKeyEvents) | 获取文本配置中编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>**起始版本：**26.0.0。 |
+| [OH_TextConfig_GetConsumeKeyEvents](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getconsumekeyevents) | 获取文本配置中编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>**起始版本：** 26.0.0 |

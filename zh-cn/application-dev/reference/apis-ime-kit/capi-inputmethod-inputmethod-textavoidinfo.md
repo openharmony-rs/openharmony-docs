@@ -24,7 +24,7 @@ typedef struct InputMethod_TextAvoidInfo InputMethod_TextAvoidInfo
 
 **所在头文件：** [inputmethod_text_avoid_info_capi.h](capi-inputmethod-text-avoid-info-capi-h.md)
 
-相关函数列表：
+相关函数：
 | 函数 | 说明 |
 | --- | --- |
 | [OH_TextAvoidInfo_Create](capi-inputmethod-text-avoid-info-capi-h.md#oh_textavoidinfo_create) | 创建InputMethod_TextAvoidInfo实例 |

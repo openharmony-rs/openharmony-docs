@@ -45,7 +45,7 @@
 | [InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)](#oh_attachoptions_createwithrequestkeyboardreason) | 创建一个InputMethod_AttachOptions实例，同时指定键盘显示状态和请求键盘的原因，适用于需要标识触发输入法拉起场景的绑定场景。 |
 | [void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)](#oh_attachoptions_destroy) | 销毁一个InputMethod_AttachOptions实例，释放由OH_AttachOptions_Create函数分配的内存资源。 |
 | [InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)](#oh_attachoptions_isshowkeyboard) | 从InputMethod_AttachOptions中获取是否显示键盘的值。 |
-| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, InputMethod_RequestKeyboardReason *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | 从InputMethod_AttachOptions中获取请求键盘的原因。 |
+| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | 从InputMethod_AttachOptions中获取请求键盘的原因。 |
 
 ## 函数说明
 
