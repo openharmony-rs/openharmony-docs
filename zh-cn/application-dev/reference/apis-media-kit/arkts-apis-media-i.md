@@ -90,7 +90,7 @@ function printfItemDescription(obj: media.MediaDescription, key: string) {
 
 let avPlayer: media.AVPlayer | undefined = undefined;
 media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
-  if(player != null) {
+  if (player != null) {
     avPlayer = player;
     console.info(`Succeeded in creating AVPlayer`);
     avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
@@ -425,7 +425,7 @@ async function setupPlayer() {
 | mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 关闭输出的媒体类型。<br>API version 12-19，仅支持设置MediaType.MEDIA_TYPE_AUD。API version 20起，增加支持MediaType.MEDIA_TYPE_VID。 |
 | preferredAudioLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选音轨语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | preferredSubtitleLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选字幕语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| preferredBufferDurationForPlaying<sup>18+</sup> | number | 否   | 是   | 播放策略首选起播缓冲水线。当起播缓冲时间超过该值，开始播放。单位为秒（s），取值范围[0, 20]。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| preferredBufferDurationForPlaying<sup>18+</sup> | number | 否   | 是   | 播放策略首选起播缓冲水线。当起播缓冲时间超过该值，开始播放。单位为秒（s），取值范围[0, 20]。超出范围时自动修正为边界值或使用默认值。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | thresholdForAutoQuickPlay<sup>18+</sup> | number | 否   | 是   | 智能追帧水线，单位为秒（s），取值应不小于2s，且需大于起播缓冲水线，默认设置为5s。<br>播放策略可以通过设置智能追帧水线来保证直播的实时性。flv直播场景下应用可按需设置，非flv直播场景暂不支持。网络状态的变化可能会导致播放器在某段时间内积压大量数据。播放器会定期检查当前播放时间与缓存中最新的帧时间戳之间的差值，当这个差值过大时，播放器将以1.2倍速开始智能追帧。[on('speedDone')](arkts-apis-media-AVPlayer.md#onspeeddone9)事件会回调特定值100，表示智能追帧开启成功。当差值小于起播缓冲水线时，则停止追帧并恢复到正常播放速度。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | keepDecodingOnMute<sup>20+</sup>  | boolean | 否   | 是   | 表示在关闭视频媒体时解码器是否继续运行，用于方便快速打开媒体。目前仅支持视频。默认设置为false，表示当媒体关闭时，相应的解码器将停止运行以减少功耗。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
@@ -472,7 +472,7 @@ async function setupPlayer() {
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | 否   | 否   | 指标事件的类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | timeStamp | number | 否   | 否   | 事件发生时的系统时间。 |
-| playbackPosition | number | 否   | 否   | 事件发生时的播放进度位置。 |
+| playbackPosition | number | 否   | 否   | 事件发生时的播放进度位置。单位：毫秒。 |
 | details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>卡顿事件包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。<br/>音画不同步事件包含不同步类型（视频帧超前或滞后音频帧）和不同步起止时间。<br/>加载速率变化事件包含变化前后的数据下载速率。<br/>加载数据请求错误事件包含请求阶段（连接、请求流媒体播放列表、请求流媒体数据）、请求时间和网络错误码。<br/>播放内容切换事件包含切换前后的资源参数信息（视频分辨率、视频帧率、音频采样率、音频通道数等）。<br/>播放内容不连续事件包含不连续类型（PTS跳变或者音频参数变化）、跳变前后的PTS/变化前后的音频参数（音频采样率、音频通道数、音频位深）。<br/>音频状态变化事件包括失焦事件发生时的前/后状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## VideoSize
@@ -535,7 +535,7 @@ async function setupPlayer() {
 | location                            | [Location](#location)                        | 否   | 是   | 音频采集的地理位置。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVMetadata](#avmetadata11)中的location替代。 |
 | uri                                 | string                                       | 否   | 否   | 音频输出URI：fd://xx&nbsp;(fd&nbsp;number)<br/>![](figures/image-url.png) <br/>文件需要由调用者创建，并赋予适当的权限。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderConfig](#avrecorderconfig9)中的url替代。 |
 | audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否   | 是   | 容器编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioCodec替代。 |
-| fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否   | 是   | 音频编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的fileFormat替代。 |
+| fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否   | 是   | 音频输出封装格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的fileFormat替代。 |
 
 ## AVTimedMetaData
 
