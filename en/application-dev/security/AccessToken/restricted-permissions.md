@@ -1508,4 +1508,4 @@ An entitlement that determines if the application is allowed to be set as the de
 
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 26.1.0
+**Since**: 26.0.0
