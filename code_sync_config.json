@@ -61800,7 +61800,7 @@
 						"start_line":869
 					},
 					{
-						"end_line":936,
+						"end_line":934,
 						"name":"assertion_function_alternative",
 						"start_line":911
 					}
@@ -62985,7 +62985,7 @@
 						"start_line":127
 					},
 					{
-						"end_line":1031,
+						"end_line":1035,
 						"name":"this_binding_and_arrow_function",
 						"start_line":975
 					},
@@ -63065,9 +63065,9 @@
 						"start_line":813
 					},
 					{
-						"end_line":1076,
+						"end_line":1084,
 						"name":"method_as_callback",
-						"start_line":1034
+						"start_line":1038
 					},
 					{
 						"end_line":933,
@@ -63759,9 +63759,9 @@
 						"start_line":421
 					},
 					{
-						"end_line":454,
+						"end_line":455,
 						"name":"string_search_methods",
-						"start_line":439
+						"start_line":440
 					},
 					{
 						"end_line":471,
