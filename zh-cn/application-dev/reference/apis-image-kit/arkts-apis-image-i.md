@@ -245,7 +245,7 @@ PixelMap的初始化选项。
 | 名称          | 类型                             | 只读 | 可选 | 说明         |
 | ------------- | -------------------------------- | ---- | ---- | ------------ |
 | componentType | [ComponentType](arkts-apis-image-e.md#componenttype9) | 是   | 否   | 组件类型。   |
-| rowStride     | number                           | 是   | 否   | 行距。单位为字节（Byte）。读取相机预览流数据时，需要按stride进行读取，使用详情请参考[相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。       |
+| rowStride     | number                           | 是   | 否   | 行距。单位为字节（Byte）。读取相机预览流数据时，需要按stride进行读取，使用详情请参考[相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/camera-preview-glitch-solution)。       |
 | pixelStride   | number                           | 是   | 否   | 像素间距。单位为字节（Byte）。   |
 | byteBuffer    | ArrayBuffer                      | 是   | 否   | 组件缓冲区。 |
 
