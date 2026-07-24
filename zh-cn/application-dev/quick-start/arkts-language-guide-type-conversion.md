@@ -160,7 +160,7 @@ console.info(`${assertUser.name}`); // Alice
 
 类型断言仅在编译时生效，不改变运行时类型；不能在不相关的类型间直接断言，需要先经过unknown或运行时转换。
 
-<!-- @[assertion_runtime_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
+<!-- @[ts_assertion_runtime_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 let runtimeTypeValue: Object = 123;
