@@ -1645,7 +1645,7 @@ off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&g
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | eventType  | string                                                       | 是   | 监听事件，固定为'windowStageEvent'，即WindowStage生命周期变化事件。 |
-| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 否   | 回调函数。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
+| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 否   | 回调函数，用于指定要注销的监听。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
 
 **错误码：**
 
