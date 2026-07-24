@@ -260,8 +260,10 @@ function get(): void {
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // 从children中get 0号节点
-      result.root?.children.get(0)?.children.insertAfter(node, null);
+      if (node) {
+        // 从children中get 0号节点
+        result.root?.children.get(0)?.children.insertAfter(node, null);
+      }
     }
   }).catch((error: Error) => {
     console.error('Scene load failed:', error);
@@ -437,7 +439,7 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
 | DIRECTIONAL | 1 | 平行光类型。 |
-| SPOT | 2 | 点光源类型。 |
+| SPOT | 2 | 聚光灯类型。 |
 
 ## Light
 
@@ -449,7 +451,7 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 | ---- | ---- | ---- | ---- | ---- |
 | lightType | [LightType](#lighttype) | 是 | 否 | 光源类型。 |
 | color | [Color](js-apis-inner-scene-types.md#color) | 否 | 否 | 颜色。 |
-| intensity | number | 否 | 否 | 光照密度，单位为坎德拉（cd），取值范围是大于0的实数。 |
+| intensity | number | 否 | 否 | 光照强度，单位为坎德拉（cd），取值范围是大于0的实数。 |
 | shadowEnabled | boolean | 否 | 否 | 是否使能阴影。true表示添加阴影，false表示没有阴影效果。 |
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
 
@@ -554,7 +556,7 @@ function Sub(l: Vec3, r: Vec3): Vec3 {
 }
 // 向量点积，返回l和r的内积
 function Dot(l: Vec3, r: Vec3): number {
-  return l.x * r.x + l.y * r.y + r.z * l.z;
+  return l.x * r.x + l.y * r.y + l.z * r.z;
 }
 // 向量归一化，返回l的单位向量
 function Normalize(l: Vec3): Vec3 {
@@ -623,7 +625,7 @@ function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
         y: m2.x - m0.z,
         z: m0.y - m1.x,
         w: t
-      }
+      };
     }
   }
   node.position = eye;
