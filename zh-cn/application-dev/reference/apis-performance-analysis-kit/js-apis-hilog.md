@@ -551,9 +551,11 @@ hilog.info(0x0001, "testTag", 'last output type:%{public}d', last);
 **打印结果：**
 
 控制台输出。
+<!--RP9-->
 ```text
 05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  last output type:4
 ```
+<!--RP9End-->
 
 ## hilog.getOutputDir
 
@@ -583,9 +585,11 @@ hilog.info(0x0001, "testTag", 'sandbox output dir:%{public}s', dir);
 **打印结果：**
 
 控制台输出。
+<!--RP10-->
 ```text
 05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  sandbox output dir:/data/storage/el2/log/hiapplog/
 ```
+<!--RP10End-->
 
 ## hilog.clean
 
@@ -649,11 +653,12 @@ getLogFile(latestSeconds: number): Array&lt;string&gt;
 
 获取5分钟之内修改过的文件。
 ```js
-hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
-hilog.flush();
-let logs = hilog.getLogFile(300);
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+let timeInterval
+let logs = hilog.getLogFile(timeInterval);
 hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
+hilog.flush();
 ```
 
 **打印结果：**

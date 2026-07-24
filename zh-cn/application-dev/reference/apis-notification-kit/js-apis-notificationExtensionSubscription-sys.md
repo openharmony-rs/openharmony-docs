@@ -56,7 +56,7 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getAllSubscriptionBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getAllSubscriptionBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -76,7 +76,7 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md),否则返回1600022错误码。|
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
 
 **返回值：**
 
@@ -111,7 +111,7 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
     console.info('GrantedState false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedState fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -163,7 +163,7 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
 notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then(() => {
   console.info(`setUserGrantedState successfully.`);
 }).catch((err: BusinessError) => {
-  console.error(`setUserGrantedState fail: ${JSON.stringify(err)}`);
+  console.error(`setUserGrantedState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -214,7 +214,7 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
 notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -273,6 +273,6 @@ let enabledBundles: notificationExtensionSubscription.BundleOption[] = [
 notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enabledBundles, true).then(() => {
   console.info(`setUserGrantedBundleState successfully.`);
 }).catch((err: BusinessError) => {
-  console.error(`setUserGrantedBundleState fail: ${JSON.stringify(err)}`);
+  console.error(`setUserGrantedBundleState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```

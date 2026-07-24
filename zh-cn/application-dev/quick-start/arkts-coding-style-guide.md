@@ -143,7 +143,7 @@ function findUser(userName: string) {
 
 **【描述】**
 
-常量命名，应该由全大写单词与下划线组成，单词间用下划线分割。常量命名要尽量表达完整的语义。
+常量命名，应该由全大写单词与下划线组成，单词间用下划线分隔。常量命名要尽量表达完整的语义。
 
 **【正例】**
 
@@ -591,7 +591,7 @@ try {
   doSomething();
 }
 catch (err) {
-  // 处理错误。
+  // 处理错误
 }
 ```
 
@@ -603,7 +603,7 @@ catch (err) {
 try {
   doSomething();
 } catch (err) {
-  // 处理错误。
+  // 处理错误
 }
 ```
 
@@ -931,7 +931,7 @@ let y: Array<string> = ['a', 'b', 'c'];
 <!-- @[use_T_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-// 统一使用T[]语法。
+// 统一使用T[]语法
 let x: number[] = [1, 2, 3];
 let y: string[] = ['a', 'b', 'c'];
 ```

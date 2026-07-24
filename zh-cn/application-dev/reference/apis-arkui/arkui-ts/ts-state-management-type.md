@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Type装饰类属性，用于状态管理V1中，可以实现序列化类时不丢失属性的复杂类型。
+@Type装饰类属性，用于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)，确保序列化类时不丢失属性的复杂类型。在使用[PersistenceV2](../js-apis-stateManagement.md#persistencev2)等持久化能力对复杂类对象进行序列化和反序列化时，类的属性类型信息可能会丢失。通过@Type标记属性的原始类型，可确保在序列化过程中正确保留和还原属性的复杂类型信息，适用于需要持久化或序列化复杂对象的场景，例如应用状态持久化存储、跨组件复杂数据传递等。
 
 开发指南参考：[@Type装饰器：标记类属性的类型](../../../ui/state-management/arkts-new-type.md)。
 
@@ -19,17 +19,19 @@
 
 const Type: TypeDecorator
 
+@Type标记属性的原始类型，可确保在序列化过程中正确保留和还原属性的复杂类型信息。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型               | 必填 | 说明               |
 | ------ | ------------------ | ---- | ------------------ |
-| type   | [TypeConstructor\<T\>](../js-apis-stateManagement.md#typeconstructort) | 是   | 标记类属性的类型。 |
+| type   | [TypeConstructor\<T\>](../js-apis-stateManagement.md#typeconstructort) | 是   | 标记类属性的原始类型，取值为对应类的构造函数，需与被装饰属性的类型一致。 |
 
 **示例：**
 

@@ -124,7 +124,7 @@ function layerMask(): void {
 
 append(item: T): void
 
-追加一个对象到容器。
+追加一个对象到容器。如果追加的对象已存在于容器中，容器会先移除该对象再插入，因此数量不会增加。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -160,7 +160,7 @@ function append(): void {
 
 insertAfter(item: T, sibling: T | null): void
 
-在兄弟节点后面插入对象。
+在兄弟节点后面插入对象。如果插入的对象已存在于容器中，容器会先移除该对象再插入，因此数量不会增加。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -336,7 +336,7 @@ function count(): void {
 
 ## Node
 
-3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)。
+3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource)。
 
 ### 属性
 

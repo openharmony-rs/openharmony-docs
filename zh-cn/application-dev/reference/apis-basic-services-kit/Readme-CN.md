@@ -61,7 +61,7 @@
   - 进程线程通信<!--process-thread-communi-arkts-->
     - [系统定义的公共事件](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [系统定义的公共事件(系统接口)](common_event/commonEventManager-definitions-sys.md)
+    - [系统定义的公共事件（系统接口）](common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
     - [@ohos.commonEventManager (公共事件模块)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
@@ -174,7 +174,7 @@
   - [热管理错误码](errorcode-thermal.md)
   - [上传下载错误码](errorcode-request.md)
   - [时间时区服务错误码](errorcode-time.md)
-  - [事件错误码](errorcode-CommonEventService.md)
+  - [公共事件错误码](errorcode-CommonEventService.md)
   <!--Del-->
   - [系统参数错误码](errorcode-system-parameterV9.md)
   <!--DelEnd-->

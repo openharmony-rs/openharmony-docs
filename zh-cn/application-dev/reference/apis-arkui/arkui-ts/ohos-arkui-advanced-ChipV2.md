@@ -29,9 +29,7 @@ import { ChipV2, ChipV2Options, ChipV2Size } from '@kit.ArkUI';
 
 ## ChipV2
 
-```ts
 ChipV2({ chipV2Options: ChipV2Options })
-```
 
 **起始版本：** 26.0.0
 

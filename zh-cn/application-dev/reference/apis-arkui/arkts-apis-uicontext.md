@@ -24,4 +24,4 @@ import {
 } from '@kit.ArkUI';
 ```
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

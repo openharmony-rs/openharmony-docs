@@ -1,7 +1,7 @@
 # @ohos.identifier.oaid (开放匿名设备标识服务)
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->

@@ -1,4 +1,4 @@
-# SceneResource
+# SceneResources
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
@@ -6,7 +6,7 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供3D图形中常用的基本资源类型。
+本模块提供3D图形中常用的基本资源类型，包括着色器、材质、网格、动画、环境或图片等用于构建3D场景的各类资源。
 
 > **说明：**
 >
@@ -15,9 +15,9 @@
 ## 导入模块
 
 ```ts
-import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
-  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream } from '@kit.ArkGraphics3D';
+import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, PolygonMode, Material, MaterialProperty,
+  MetallicRoughnessMaterial, ShaderMaterial, UnlitMaterial, OcclusionMaterial, SamplerFilter, SamplerAddressMode, Sampler, SubMesh,
+  Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream, Effect } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceType
@@ -87,7 +87,7 @@ function destroy(): void {
 
 ## Shader
 
-着色器，继承自[SceneResource](#sceneresource-1)。
+着色器，继承自[SceneResource](#sceneresource)。
 
 ### 属性
 
@@ -146,7 +146,7 @@ function setinputs(): void {
         "uTime": 1.0,
         "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
         "uTexture": image
-      })
+      });
     }
   });
 }
@@ -212,7 +212,7 @@ function setinputs(): void {
 
 ## Material
 
-材质类型，继承自[SceneResource](#sceneresource-1)。
+材质类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -344,7 +344,7 @@ function setinputs(): void {
 
 ## Mesh
 
-网格类型，继承自[SceneResource](#sceneresource-1)。
+网格类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -356,13 +356,13 @@ function setinputs(): void {
 
 ## MeshResource<sup>18+</sup>
 
-网格资源，继承自[SceneResource](#sceneresource-1)。
+网格资源，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## Animation
 
-动画类型，继承自[SceneResource](#sceneresource-1)。
+动画类型，继承自[SceneResource](#sceneresource)。
 
 ### 属性
 
@@ -621,7 +621,7 @@ function finish(): void {
 
 ## Environment
 
-环境类型，继承自[SceneResource](#sceneresource-1)。
+环境类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -638,7 +638,7 @@ function finish(): void {
 
 ## Image
 
-图片类型，继承自[SceneResource](#sceneresource-1)。
+图片类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -658,11 +658,11 @@ function finish(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| surfaceId | string | 是 | 否 | 流ID，取值范围大于0。 |
+| surfaceId | string | 是 | 否 | 流ID，由数字字符组成，数字取值必须为大于0的整数。 |
 
 ## Effect<sup>21+</sup>
 
-特效类型，继承自[SceneResource](#sceneresource-1)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
+特效类型，继承自[SceneResource](#sceneresource)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
 
 ### 属性
 

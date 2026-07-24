@@ -91,7 +91,7 @@ changeRenderType(type: NodeRenderType): boolean
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 12开始废弃，建议使用新typeNode方式下XComponent对应的能力替代。
+> 从API version 11开始支持，从API version 12开始废弃，建议使用[appendChild](./js-apis-arkui-frameNode.md#appendchild12)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -35,7 +35,7 @@ struct Index {
       Button('Button')
           .onClick(() => {
             // 通过自定义组件内置方法获取
-            this.getUIContext()
+            this.getUIContext();
             // 通过UIContext类的静态方法获取
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
@@ -51,7 +51,7 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 通过ohos.window获取
-    windowStage.getMainWindowSync().getUIContext()
+    windowStage.getMainWindowSync().getUIContext();
     // 其他运行逻辑
   }
 }
@@ -1880,8 +1880,8 @@ export default class EntryAbility extends UIAbility{
 
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-        let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-        console.info("KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+        let currentKeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
+        console.info("KeyboardAvoidMode:", JSON.stringify(currentKeyboardAvoidMode));
       });
     }
 }
@@ -2828,7 +2828,7 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 
 | 类型   | 说明                                         |
 | ------ | -------------------------------------------- |
-| [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13) | 当前实例所在窗口的宽高比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
+| [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13) | 当前实例所在窗口的高宽比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
 
 **示例：**
 
@@ -3953,7 +3953,7 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 >  **说明：**
 >
-> 如果缓存上限设置的太大，有内存开销过大的风险，建议合理配置。
+> 如果缓存上限设置得太大，有内存开销过大的风险，建议合理配置。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 

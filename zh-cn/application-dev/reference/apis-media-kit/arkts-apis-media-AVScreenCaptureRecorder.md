@@ -34,7 +34,7 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 
 | 参数名 | 类型                                                         | 必填 | 说明                     |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------ |
-| config | [AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12) | 是   | 配置屏幕录制的相关参数。 |
+| config | [AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12) | 是   | 配置屏幕录制的相关参数。关键配置项包括：fd（文件描述符）、frameWidth（视频宽度）、frameHeight（视频高度）等。详细配置说明请参考[AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12)。 |
 
 **返回值：**
 
@@ -306,7 +306,7 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 | 参数名 | 类型                                   | 必填 | 说明                       |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像，取值原则：PixelMap对象不能为空。 |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像，取值原则：PixelMap对象不能为空。支持透明度设置。图像格式和尺寸要求请参考[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。 |
 | config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。各字段取值范围请参考WatermarkConfiguration定义。 |
 
 **返回值：**
@@ -416,7 +416,8 @@ setMicEnabled(enable: boolean): Promise\<void>
 
 > **说明：**
 >
-> 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
+> - 在需要录制或静音麦克风音频时调用此接口，例如用户需要临时关闭麦克风或重新开启麦克风录制。
+> - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -525,6 +526,8 @@ excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
 
 设置在Picker中隐藏的窗口列表，在下一次显示Picker时生效。使用Promise异步回调。
 
+在需要排除特定窗口不被用户选择时调用此接口，例如隐藏应用自身窗口、隐私窗口或不相关的后台窗口。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **参数：**
@@ -579,6 +582,8 @@ async function testExcludePickerWindows() {
 presentPicker(): Promise\<void>
 
 录屏开始后，调用该接口再次弹出Picker，可动态更新录制源（窗口、屏幕）。使用Promise异步回调。
+
+使用前需要先调用[startRecording](#startrecording12)接口。
 
 > **说明：**
 >
@@ -692,6 +697,8 @@ release(): Promise\<void>
 
 释放录屏。使用Promise异步回调。
 
+在录屏功能不再使用时调用此接口释放资源，例如应用退出或录屏功能模块卸载时。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **返回值：**
@@ -736,7 +743,7 @@ async function testRelease() {
 
 on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 
-订阅录屏状态切换的事件，当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调方法为准。
+订阅录屏状态切换的事件，当状态发生变化时，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调方法为准。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 

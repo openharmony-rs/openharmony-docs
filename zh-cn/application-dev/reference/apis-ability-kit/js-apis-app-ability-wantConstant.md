@@ -28,7 +28,7 @@ import { wantConstant } from '@kit.AbilityKit';
 
 | 名称                    | 值                                 | 说明                                                                           |
 | ----------------------- | ---------------------------------- | ------------------------------------------------------------------------------ |
-| ABILITY_BACK_TO_OTHER_MISSION_STACK   | ability.params.backToOtherMissionStack     | 表示是否支持跨任务链返回。<br>该参数用于控制跨应用的UIAbility返回逻辑，其核心作用是改变用户执行返回键时的应用跳转行为。例如现有UIAbility A和UIAbility B，当前前台显示的是UIAbility A，随后系统服务又拉起UIAbility B（同时在Want的Params字段配置该参数为true），那么，当UIAbility B退出时，会返回到UIAbility A（即返回到最近一次的访问任务）。如果未配置该参数，则默认直接返回桌面。需要注意的是，该字段仅支持系统设置，三方应用传入该字段不生效。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。  |
+| ABILITY_BACK_TO_OTHER_MISSION_STACK   | ability.params.backToOtherMissionStack     | 表示是否支持跨任务栈返回。<br>该参数用于控制跨应用的UIAbility返回逻辑，其核心作用是改变用户执行返回键时的应用跳转行为。例如现有UIAbility A和UIAbility B，当前前台显示的是UIAbility A，随后系统服务又拉起UIAbility B（同时在Want的Params字段配置该参数为true），那么，当UIAbility B退出时，会返回到UIAbility A（即返回到最近一次的访问任务）。如果未配置该参数，则默认直接返回桌面。需要注意的是，该字段仅支持系统设置，三方应用传入该字段不生效。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。  |
 | ABILITY_RECOVERY_RESTART<sup>10+</sup> | ohos.ability.params.abilityRecoveryRestart | 表示当前Ability是否发生了故障恢复重启。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | CONTENT_TITLE_KEY<sup>10+</sup>       | ohos.extra.param.key.contentTitle  | 表示原子化服务分享的标题。<br>在跨端分享的[onShare](js-apis-app-ability-uiAbility.md#onshare10)回调中，开发者可通过该字段设置分享的标题。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。  |
 | SHARE_ABSTRACT_KEY<sup>10+</sup>      | ohos.extra.param.key.shareAbstract | 表示原子化服务分享的内容摘要。<br>在跨端分享的[onShare](js-apis-app-ability-uiAbility.md#onshare10)回调中，开发者可通过该字段设置分享的摘要。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。  |

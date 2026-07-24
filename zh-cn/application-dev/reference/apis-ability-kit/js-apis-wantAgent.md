@@ -153,7 +153,7 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 | 参数名     | 类型                    | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | 是   | WantAgent对象。                     |
-| callback | AsyncCallback\<string\> | 是   | 获取WantAgent实例的包名的回调方法。 |
+| callback | AsyncCallback\<string\> | 是   | 获取WantAgent实例的Bundle名称的回调方法。 |
 
 **示例：**
 

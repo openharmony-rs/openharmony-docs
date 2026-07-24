@@ -59,7 +59,7 @@ ArkUI的弹出框节点默认直接挂载在根节点上，会根据层级从小
                 levelOrder: LevelOrder.clamp(0),
               })
                 .catch((err: BusinessError) => {
-                  hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + '' + err.message);
+                  hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + ' ' + err.message);
                 });
               this.dialogIndex++;
             })
@@ -130,7 +130,7 @@ ArkUI的弹出框节点默认直接挂载在根节点上，会根据层级从小
                levelOrder: LevelOrder.clamp(0),
              })
                .catch((err: BusinessError) => {
-                 hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + '' + err.message);
+                 hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + ' ' + err.message);
                });
              this.dialogIndex++;
            })

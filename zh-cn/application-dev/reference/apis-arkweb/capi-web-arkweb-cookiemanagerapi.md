@@ -58,7 +58,7 @@ ArkWeb_ErrorCode (*fetchCookieSync)(const char* url, bool incognito, bool includ
 | 参数项 | 描述 |
 | -- | -- |
 | const char* url | 要获取的cookie所属的URL，建议使用完整的URL。 |
-|  bool incognito | true表示获取隐私模式下webview的内存cookie, false表示获取非隐私模式下的cookie。 |
+|  bool incognito | true表示获取隐私模式下webview的内存cookie，false表示获取非隐私模式下的cookie。 |
 |  bool includeHttpOnly | 如果为true，则标记为HTTP-Only属性的cookie也将包含在cookieValue中。 |
 |  char** cookieValue |  获取与URL对应的cookie值。 |
 

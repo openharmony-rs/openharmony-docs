@@ -29,20 +29,18 @@ import { ChipV2Size, ChipGroupV2 } from '@kit.ArkUI';
 
 ## ChipGroupV2
 
-```ts
-ChipGroupV2({
-  items: ChipGroupV2Items,
-  $items?: Callback<ChipGroupV2Items>,
-  itemStyle?: ChipGroupV2ItemStyle,
-  selectedIndexes?: Array<number>,
-  $selectedIndexes?: Callback<Array<number>>,
-  multiple?: boolean,
-  chipGroupSpace?: ChipGroupV2Space,
-  chipGroupPadding?: ChipGroupV2Padding,
-  onChange?: Callback<Array<number>>,
-  suffix?: Callback<void>
+ChipGroupV2({ <br>
+  items: ChipGroupV2Items, <br>
+  $items?: Callback<ChipGroupV2Items\>, <br>
+  itemStyle?: ChipGroupV2ItemStyle, <br>
+  selectedIndexes?: Array<number\>, <br>
+  $selectedIndexes?: Callback<Array<number\>\>, <br>
+  multiple?: boolean, <br>
+  chipGroupSpace?: ChipGroupV2Space, <br>
+  chipGroupPadding?: ChipGroupV2Padding, <br>
+  onChange?: Callback<Array<number\>\>, <br>
+  suffix?: Callback<void\> <br>
 })
-```
  
 **起始版本：** 26.0.0
  
