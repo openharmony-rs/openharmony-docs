@@ -34,7 +34,7 @@ want的Params操作的常量。
 | DLP_PARAMS_SANDBOX      | ohos.dlp.params.sandbox            | 指示沙盒标志的参数的操作。<br>**系统接口**：此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | DLP_PARAMS_BUNDLE_NAME  | ohos.dlp.params.bundleName         | 指示DLP Bundle名称的参数的操作。 <br>**系统接口**：此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | DLP_PARAMS_MODULE_NAME  | ohos.dlp.params.moduleName         | 指示DLP模块名称的参数的操作。 <br>**系统接口**：此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| DLP_PARAMS_ABILITY_NAME | ohos.dlp.params.abilityName        | 指示DLP能力名称的参数的操作。 <br>**系统接口**：此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| DLP_PARAMS_ABILITY_NAME | ohos.dlp.params.abilityName        | 指示DLP Ability名称的参数的操作。 <br>**系统接口**：此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | DLP_PARAMS_INDEX        | ohos.dlp.params.index              | 指示DLP索引参数的操作。 <br>**系统接口**：此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | HIDE_SENSITIVE_TYPE<sup>15+</sup>     | ohos.media.params.hideSensitiveType | 指示隐藏敏感信息的类型。 <br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | ASSERT_FAULT_SESSION_ID<sup>12+</sup>  | ohos.ability.params.assertFaultSessionId      | 指示AssertFault的会话ID。 <br>**系统接口**：此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |

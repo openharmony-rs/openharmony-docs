@@ -2060,7 +2060,7 @@ ArkTS-Sta: moveMissionsToForeground(missionIds: Array&lt;int&gt;, topMission: in
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | missionIds | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;int> | 是 | 任务ID数组。 |
-| topMission | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 待移动到最顶层的任务ID。默认值为-1，表示不指定特定任务，系统按照默认逻辑将任务移动到最顶层。 |
+| topMission | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 待移动到最顶层的任务ID。传入-1表示不指定特定任务，系统按照默认逻辑将任务移动到最顶层。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码**：

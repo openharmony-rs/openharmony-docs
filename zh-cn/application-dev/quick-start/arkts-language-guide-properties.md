@@ -257,7 +257,7 @@ AppConfig.APP_NAME = 'NewApp';  // 编译错误
 
 ### 存储属性的访问控制
 
-属性访问控制通过 `public`、`private`、`protected` 修饰符限制可访问范围，`public` 允许外部访问，`private` 仅限类内部，`protected` 限类及子类，三者均可与 `readonly` 组合使用。
+存储属性可通过 `public`、`private`、`protected` 修饰符限制可访问范围，三者均可与 `readonly` 组合使用。访问控制的详细说明和示例见[属性的访问控制](#属性的访问控制)章节。
 
 <!-- @[ts_property_access_modifiers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
 
@@ -469,8 +469,6 @@ console.info(`${temp.celsius}`);      // ~37.78
 console.info(`${temp.fahrenheit}`);   // 100
 ```
 
-存储属性分配字段占用内存且可直接访问，计算属性不分配字段、每次访问时通过getter/setter动态求值。
-
 ### 计算属性的使用场景
 
 计算属性有多种典型使用场景，例如数据组合、格式转换、验证控制和派生计算。
@@ -530,7 +528,7 @@ console.info(`${product.priceInCents}`);    // 1999
 
 ### TypeScript中模拟属性监听的方案
 
-TypeScript/ArkTS没有原生属性观察器，通过在getter/setter中比较新旧值并触发监听器来模拟属性变化监听。
+TypeScript/ArkTS没有原生属性观察器，需通过在getter/setter中比较新旧值并触发监听器来模拟属性变化监听。
 
 <!-- @[property_observer_simulation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
 
@@ -704,7 +702,7 @@ observed.value = 20;  // 输出: Value: 10 -> 20
 
 ## 静态属性与实例属性的对比
 
-静态属性用 `static` 声明并通过 `类名.属性名` 访问，在类加载时初始化且全局共享；实例属性通过 `实例.属性名` 访问，每个实例持有独立副本。
+静态属性与实例属性的区别见[实例属性与静态属性的区别](#实例属性与静态属性的区别)章节。以下通过对比示例进一步展示两者在共享和独立方面的差异。
 
 ### 静态属性与实例属性的对比示例
 
@@ -1103,7 +1101,7 @@ if (isAppName !== undefined) {
 
 ## declare仅类型字段声明
 
-子类中重新声明继承字段的更精确类型时，使用`declare`避免运行时覆盖父类值。
+子类中重新声明继承字段的更精确类型时，使用`declare`避免运行时覆盖父类值。若不使用`declare`，子类字段的初始化器会在构造时执行，覆盖父类构造函数已设置的值，可能导致数据丢失或类型不一致。
 
 <!-- @[declare_field](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
 

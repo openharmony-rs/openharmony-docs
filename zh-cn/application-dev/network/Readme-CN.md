@@ -23,7 +23,7 @@
 - 连接网络<!--network-kit-network-connecttion-->
     - [管理网络连接](net-connection-manager.md)
     - [管理网络连接(C/C++)](native-netmanager-guidelines.md)
-    - [连接VPN](net-vpnExtension.md)
+    - [连接VPN](net-vpnExtension.md)<!--RP1--><!--RP1End-->
 
 - 管理网络<!--network-kit-network-management-->
     - [统计网络流量消耗](net-statistics.md)

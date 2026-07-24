@@ -624,9 +624,11 @@ hilog.info(0x0001, "testTag", 'last output type:%{public}d', last);
 **打印结果：**
 
 控制台输出。
+<!--RP9-->
 ```text
 05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  last output type:4
 ```
+<!--RP9End-->
 
 ## hilog.getOutputDir
 
@@ -658,9 +660,11 @@ hilog.info(0x0001, "testTag", 'sandbox output dir:%{public}s', dir);
 **打印结果：**
 
 控制台输出。
+<!--RP10-->
 ```text
 05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  sandbox output dir:/data/storage/el2/log/hiapplog/
 ```
+<!--RP10End-->
 
 ## hilog.clean
 
@@ -734,22 +738,22 @@ ArkTS-Sta: getLogFile(latestSeconds: int): Array&lt;string&gt;
 
 ArkTS-Dyn示例：
 ```js
-hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
-hilog.flush();
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 let timeInterval = 300
 let logs = hilog.getLogFile(timeInterval);
 hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
+hilog.flush();
 ```
 
 ArkTS-Sta示例：
 ```js
-hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
-hilog.flush();
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 let timeInterval:int = 300
 let logs:Array<string> = hilog.getLogFile(timeInterval);
 hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
+hilog.flush();
 ```
 
 **打印结果：**

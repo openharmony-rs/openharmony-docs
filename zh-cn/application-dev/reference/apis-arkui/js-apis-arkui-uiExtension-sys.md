@@ -24,7 +24,7 @@ import { uiExtension } from '@kit.ArkUI';
 
 ## WindowProxy
 
-UIExtension宿主窗代理。
+UIExtension宿主窗口代理。
 
 ### hideNonSecureWindows
 
