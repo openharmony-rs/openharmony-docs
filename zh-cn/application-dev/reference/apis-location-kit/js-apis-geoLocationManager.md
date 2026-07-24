@@ -547,7 +547,7 @@ POI信息结构体。
 | RUNNING   | 1 |  表示跑步。 |
 | WALKING    | 2 | 表示步行。 |
 | CYCLING     | 3 | 表示骑行。 |
-| SKIING     | 4 | 表示滑雪。<br/>**起始版本：** 26.0.0 |
+| SKIING     | 4 | 表示滑雪。<br/>**起始版本：** 26.0.0  <br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 
 ## BeaconFenceInfoType<sup>20+</sup>
@@ -650,6 +650,8 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
+  
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -758,7 +760,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -775,7 +777,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.  从API 26.0.0开始无需申请权限，不涉及此错误码。|
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('locationChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
@@ -3048,7 +3050,7 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -3071,7 +3073,7 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.  从26.0.0开始无需申请权限，不涉及此错误码。 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.removeBeaconFence} due to limited device capabilities.          |
 |3501602 | Failed to delete the fence due to incorrect beacon fence information. |
 
@@ -3422,6 +3424,8 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 获取当前设备所在区域的信息。使用Promise异步回调。
 
 **起始版本：** 26.0.0
+  
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3433,7 +3437,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | request | [DistrictRequestParams](#districtrequestparams) | 否 | 设置区域信息请求参数。 |
+  | params | [DistrictRequestParams](#districtrequestparams) | 否 | 设置区域信息请求参数。 |
 
 **返回值**：
 
@@ -3498,6 +3502,8 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 根据传入的[sportsType](#sportstype18)获取特定运动模式下的后处理轨迹。在调用此接口之前，需要先调用[geoLocationManager.on('locationChange')](#geolocationmanageronlocationchange)，并在[ContinuousLocationRequest](#continuouslocationrequest12)入参中的[SportsType](#sportstype18)配置正确的运动模式。当前仅支持滑雪模式。记录的运动轨迹会在24小时之后清除。
 
 **起始版本：** 26.0.0
+  
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -3509,7 +3515,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | sportsType | [SportsType](#sportstype18) | 否 | 设置要获取后处理轨迹的运动模式。当前仅支持滑雪模式。 |
+  | sportsType | [SportsType](#sportstype18) | 是 | 设置要获取后处理轨迹的运动模式。当前仅支持滑雪模式。 |
 
 **返回值**：
 
@@ -3525,10 +3531,10 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
-|801 | Capability not supported. Failed to call ${geoLocationManager.getPostProcessingTrack} due to limited device capabilities.          |
+|801 | Capability not supported. Failed to call this API due to limited device capabilities          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.  |
-|3301200 | Failed to obtain the geographical location.  |
+|3301200 | Failed to obtain the post processing track because sports type is not supported.  |
 
 **示例**
 
