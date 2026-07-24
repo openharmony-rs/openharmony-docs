@@ -1,6 +1,6 @@
 # Matrix
 
-矩阵对象。表示为3*3的矩阵，如下图所示：![matrix_3x3](../../../reference/apis-arkgraphics2d/figures/matrix3X3.PNG)矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：![matrix_xy](../../../reference/apis-arkgraphics2d/figures/matrix_xy.PNG)
+矩阵对象。表示为3*3的矩阵，如下图所示：![matrix_3x3](../../../reference/apis-arkgraphics2d/figures/matrix3X3.PNG)矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：
 > **说明：**  
 >  
 > - 本Class首批接口从API version 12开始支持。  
@@ -275,7 +275,7 @@ mapRadius(radius: number): number
 mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 ```
 
-将目标矩形设置为源矩形通过矩阵变换后的图形的外接矩形。如下图所示，蓝色矩形为源矩形，假设黄色矩形为源矩形通过矩阵变换形成的图形，此时黄色矩形的边不与坐标轴平行，无法使用矩形对象表示，因此，将目标矩形设置为黄色矩形的外接矩形，即黑色矩形。![mapRect](../../../reference/apis-arkgraphics2d/figures/zh-ch_matrix_mapRect.png)
+将目标矩形设置为源矩形通过矩阵变换后的图形的外接矩形。如下图所示，蓝色矩形为源矩形，假设黄色矩形为源矩形通过矩阵变换形成的图形，此时黄色矩形的边不与坐标轴平行，无法使用矩形对象表示，因此，将目标矩形设置为黄色矩形的外接矩形，即黑色矩形。
 
 **起始版本：** 12
 

@@ -209,7 +209,7 @@ getImageBounds(): common2D.Rect
 >  
 > 示意图展示了字符串为" a b "的图像边界。  
 >  
-> ![zh-ch_image_ImageBounds.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
+>   
 >  
 > 示意图展示了字符串为"j"或"E"的图像边界。  
 >  

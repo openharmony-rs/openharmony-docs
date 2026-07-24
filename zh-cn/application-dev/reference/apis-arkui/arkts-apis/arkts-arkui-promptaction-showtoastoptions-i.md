@@ -20,7 +20,7 @@ import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 alignment?: Alignment
 ```
 
-对齐方式。<br/>默认值：undefined，当未设置alignment且存在导航条或软键盘时，Toast会自动根据导航条或软键盘位置进行调整，可参考bottom的说明。<br>**说明：**<br/>不同alignment下，Toast位置对齐效果，如下图所示。<br/>![zh-cn_image_0001](figures/toast_alignment.PNG)<br/>Toast的文本显示默认自左向右，不支持其他对齐方式。
+对齐方式。<br/>默认值：undefined，当未设置alignment且存在导航条或软键盘时，Toast会自动根据导航条或软键盘位置进行调整，可参考bottom的说明。<br>**说明：**<br/>不同alignment下，Toast位置对齐效果，如下图所示。<br/><br/>Toast的文本显示默认自左向右，不支持其他对齐方式。
 
 **类型：** Alignment
 

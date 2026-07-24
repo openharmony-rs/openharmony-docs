@@ -91,7 +91,7 @@ import { text } from '@kit.ArkGraphics2D';
 | [FontWeight](arkts-arkgraphics2d-text-fontweight-e.md) | 字重枚举。 |
 | [FontWidth](arkts-arkgraphics2d-text-fontwidth-e.md) | 字体宽度的枚举。 |
 | [LineHeightStyle](arkts-arkgraphics2d-text-lineheightstyle-e.md) | 行高缩放基数枚举。 |
-| [PlaceholderAlignment](arkts-arkgraphics2d-text-placeholderalignment-e.md) | 占位符相对于周围文本的纵向对齐方式。  ![zh-ch_image_PlaceholderAlignment.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_PlaceholderAlignment.png) |
+| [PlaceholderAlignment](arkts-arkgraphics2d-text-placeholderalignment-e.md) | 占位符相对于周围文本的纵向对齐方式。   |
 | [RectHeightStyle](arkts-arkgraphics2d-text-rectheightstyle-e.md) | 矩形区域高度规格枚举。 |
 | [RectWidthStyle](arkts-arkgraphics2d-text-rectwidthstyle-e.md) | 矩形区域宽度规格枚举。 |
 | [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 字体类型枚举，通过位或运算可实现组合类型。 |
