@@ -576,7 +576,7 @@ module.json5配置示例如下：
 若需要对隐私窗口进行截图，可使用[snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18)接口。
 
 ## APP退后台在多任务窗口展示时，如何实现模糊效果
-APP可以通过监听主窗口生命周期状态，并用[AppStorage]( ../ui/state-management/arkts-appstorage.md)存储该状态，当状态为前台不可交互状态或后台状态时，设置组件[foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle)。
+APP可以通过监听主窗口生命周期状态，并用[AppStorage](../ui/state-management/arkts-appstorage.md)存储该状态，当状态为前台不可交互状态或后台状态时，设置组件[foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle)。
 
 示例代码如下所示：
 
