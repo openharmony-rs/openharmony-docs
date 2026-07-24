@@ -173,7 +173,7 @@ struct FreezeChild {
 
   @Monitor('message')
   onMessageUpdated(mon: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', `FreezeChild message callback func ${this.message}, index: ${this.index}`);
+    hilog.info(DOMAIN, 'FreezeChild', `FreezeChild message callback func ${this.message}, index: ${this.index}`);
   }
 
   build() {
@@ -220,7 +220,7 @@ struct MyNavigationTestStack {
 
   @Monitor('message')
   info() {
-    hilog.info(DOMAIN, 'testTag', `freeze-test MyNavigation message callback ${this.message}`);
+    hilog.info(DOMAIN, 'FreezeChild', `freeze-test MyNavigation message callback ${this.message}`);
   }
 
   @Builder
@@ -350,8 +350,8 @@ struct NavigationContentMsgStack {
 
   @Monitor('message')
   info() {
-    hilog.info(DOMAIN, 'testTag', `freeze-test NavigationContent message callback ${this.message}`);
-    hilog.info(DOMAIN, 'testTag', `freeze-test ---- called by content ${this.index}`);
+    hilog.info(DOMAIN, 'FreezeChild', `freeze-test NavigationContent message callback ${this.message}`);
+    hilog.info(DOMAIN, 'FreezeChild', `freeze-test ---- called by content ${this.index}`);
   }
 
   build() {
@@ -879,7 +879,7 @@ struct BuildNodeChild {
   // 使用@Monitor装饰器监听storage.message的变化
   @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
-    hilog.info(DOMAIN, 'onMessageChange',
+    hilog.info(DOMAIN, 'FreezeChild',
       `FreezeBuildNode BuildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
   }
 
@@ -958,7 +958,7 @@ struct FreezeBuildNode {
   // 使用@Monitor装饰器监听storage.message的变化
   @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
-    hilog.info(DOMAIN, 'onMessageChange',
+    hilog.info(DOMAIN, 'FreezeChild',
       `FreezeBuildNode message callback func ${this.storage.message}, index: ${this.index}`);
   }
 

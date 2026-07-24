@@ -320,11 +320,12 @@
    @Entry
    @Component
    struct Index {
-     @Provide message: string = 'hello';
+     @Provide message: string = 'Hello World';
      controller: TextNodeController = new TextNodeController();
    
      build() {
        Column() {
+         Text(`@Provide: ${this.message}`)
          NodeContainer(this.controller)
            .width('100%')
            .height(100)
@@ -334,16 +335,19 @@
      }
    }
    
-   
    @Component
    struct Child {
-     // Child通过BuilderNode上树后，@Consume和Index中的@Provide建立连接时发现类型不一致，抛出运行时错误
-     @Consume message: number = 0;
+     // 错误用法：Child通过BuilderNode上树后，@Consume和Index中的@Provide建立连接时发现类型不一致，抛出运行时错误
+     // @Consume message: number = 0;
+   
+     // 正确用法：@Consume和@Provide保持类型一致
+     @Consume message: string = 'Hello ArkUI';
    
      build() {
        Column() {
-         Text(`@Consume ${this.message}`)
+         Text(`@Consume: ${this.message}`)
        }
+       .width('100%')
      }
    }
    ```
