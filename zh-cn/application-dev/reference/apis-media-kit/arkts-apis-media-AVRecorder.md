@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 
-音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9)接口构建一个AVRecorder实例。
+AVRecorder是音视频录制管理类，用于音视频录制的全流程管理，支持音频录制、视频录制及音视频混合录制，可灵活配置编码参数、添加水印、监听录制状态。适用于录制音视频并保存到文件的场景。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9)接口构建一个AVRecorder实例。
 
 音视频录制demo可参考：[音频录制开发指导](../../media/media/using-avrecorder-for-recording.md)、[视频录制开发指导](../../media/media/video-recording.md)。
 
@@ -304,7 +304,7 @@ getInputSurface(): Promise\<string>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<string> | Promise对象，返回surface中获取的surfaceBuffer。 |
+| Promise\<string> | Promise对象，返回获取的surfaceId。 |
 
 **错误码：**
 
@@ -431,7 +431,9 @@ try {
 
 setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
-设置当前录制音频流是否启用静音打断模式。使用Promise异步回调。
+设置当前录制音频流是否启用静音打断模式。启用后，录制音频流被更高优先级音频打断时将录制静音而非停止录制，适用于需要在打断期间保持录制连续性的场景（如会议录音、语音备忘）；不启用则保持默认打断模式。使用Promise异步回调。
+
+此接口需要在[prepare()](#prepare9-1)接口之前调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -439,7 +441,7 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
 | ---------- |---------------- | ------ |---------------------------------------------------------|
-| muteWhenInterrupted | boolean | 是  | 设置当前录制音频流是否启用静音打断模式, true表示启用，false表示不启用，保持为默认打断模式。 |
+| muteWhenInterrupted | boolean | 是  | 设置当前录制音频流是否启用静音打断模式。true表示启用，音频流被打断时录制静音；false表示不启用，音频流被打断时停止录制。 |
 
 **返回值：**
 
@@ -1129,7 +1131,7 @@ avRecorder.getAudioCapturerMaxAmplitude().then((amplitude: number) => {
 
 getAvailableEncoder(callback: AsyncCallback\<Array\<EncoderInfo>>): void
 
-获取可用的编码器参数。使用callback异步回调。
+获取可用的编码器参数。适用于需要根据设备能力选择合适编码器的场景。使用callback异步回调。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1173,7 +1175,7 @@ avRecorder.getAvailableEncoder((err: BusinessError, info: media.EncoderInfo[]) =
 
 getAvailableEncoder(): Promise\<Array\<EncoderInfo>>
 
-获取可用的编码器参数。使用Promise异步回调。
+获取可用的编码器参数。适用于需要根据设备能力选择合适编码器的场景。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 

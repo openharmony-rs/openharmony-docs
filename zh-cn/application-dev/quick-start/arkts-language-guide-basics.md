@@ -102,7 +102,7 @@ let outputName: string = 'ArkTS';
 const version: number = 1.0;
 
 console.info(`${outputName}`);              // ArkTS
-console.info(`${version.toString()}`);      // 1
+console.info(`${version}`);      // 1
 console.info(`Name: ${outputName}`);   // Name: ArkTS
 console.info(`Version: ${version}, Name: ${outputName}`);  // Version: 1, Name: ArkTS
 console.warn(`Version: ${version}, Name: ${outputName}`);  // Version: 1, Name: ArkTS
@@ -238,7 +238,7 @@ let user: IfaceDefUser = { id: 1, name: 'Alice' };
 
 ArkTS提供number、boolean、string、数组、枚举等类型，约束值的范围和操作。
 
-### 数字类型
+### number类型
 
 number类型表示IEEE 754双精度浮点数（64位），没有独立的整数类型。支持十进制、十六进制、二进制和八进制字面量。
 
@@ -251,7 +251,7 @@ let binary: number = 0b1010;   // 二进制 (10)
 let octal: number = 0o755;     // 八进制 (493)
 ```
 
-### 布尔类型
+### boolean类型
 
 boolean类型表示逻辑值true或false，由直接赋值、比较运算（`===`、`!==`、`>`、`<`）和逻辑运算（`&&`、`||`、`!`）产生。布尔类型不可与其他类型隐式转换，避免JavaScript的类型混淆问题。
 
@@ -647,7 +647,7 @@ nullHandleGreet('Alice', 'Dr.');    // Hello, Dr. Alice
 
 ## 非空断言
 
-非空断言(Non-null Assertion)使用`!`操作符，告诉编译器"此处按非空处理"。非空断言会绕过编译器的空值检查，但不会在运行时生成任何验证代码。应优先使用类型守卫、可选链或空值合并，仅在确信非空时使用非空断言。
+非空断言（Non-null Assertion）使用`!`操作符，告诉编译器“此处按非空处理”。非空断言会绕过编译器的空值检查，但不会在运行时生成任何验证代码。应优先使用类型守卫、可选链或空值合并，仅在确信非空时使用非空断言。
 
 <!-- @[non_null_assertion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 

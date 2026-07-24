@@ -335,7 +335,7 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | Promise对象，返回主动激发WantAgent获得的数据。 |
+| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | Promise对象，返回主动触发WantAgent获得的数据。 |
 
 **错误码：**
 
@@ -589,4 +589,4 @@ try {
 
 | 名称                      | 值 | 说明                                            |
 |-------------------------|---|-----------------------------------------------|
-| START_SERVICE_EXTENSION<sup>12+</sup> | 6 | 开启一个ServiceExtension。<br/>**系统接口**：该接口为系统接口。 |
+| START_SERVICE_EXTENSION<sup>12+</sup> | 6 | 启动一个ServiceExtension。<br/>**系统接口**：该接口为系统接口。 |

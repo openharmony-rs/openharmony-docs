@@ -49,10 +49,12 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef bool (\*ArkUI_OnWillDismissEvent)(int32_t reason)](#arkui_onwilldismissevent) | ArkUI_OnWillDismissEvent | 弹窗关闭的回调函数。 |
+| [typedef void (\*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, void* userData)](#arkui_opendialogcallback) | ArkUI_OpenDialogCallback | 弹窗显示时的回调函数。 |
 | [void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)](#oh_arkui_dialogdismissevent_setshouldblockdismiss) | - | 设置是否需要屏蔽系统关闭弹窗行为，true表示屏蔽系统行为，不关闭弹窗，false表示不屏蔽。 |
 | [void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getuserdata) | - | 获取弹窗关闭事件对象中的用户自定义数据指针。 |
 | [int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getdismissreason) | - | 获取弹窗关闭事件对象中的关闭原因。 |
 | [int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (\*callback)(int32_t dialogId))](#oh_arkui_customdialog_opendialog) | - | 弹出自定义弹窗。 |
+| [void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* options, void* userData, ArkUI_OpenDialogCallback callback)](#oh_arkui_customdialog_opendialogwithcallback) | - | 弹出自定义弹窗，可通过回调函数返回调用结果、弹窗ID。 |
 | [int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))](#oh_arkui_customdialog_updatedialog) | - | 更新自定义弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)](#oh_arkui_customdialog_closedialog) | - | 关闭自定义弹窗。 |
 | [ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)](#oh_arkui_customdialog_createoptions) | - | 创建自定义弹窗配置。 |
@@ -315,6 +317,47 @@ int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, voi
 | 类型 | 说明 |
 | -- | -- |
 | int32_t  | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### ArkUI_OpenDialogCallback()
+
+```c
+typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, void* userData)
+```
+
+**描述：**
+
+
+弹窗显示时的回调函数。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| errorCode | 打开弹窗的操作结果。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 由于节点挂载失败，弹窗无法打开。<br>         [ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 由于子窗口创建失败，弹窗无法打开。|
+| dialogId | 弹窗ID。当弹窗无法显示时返回-1。|
+| userData | 表示指向自定义数据的指针。|
+
+### OH_ArkUI_CustomDialog_OpenDialogWithCallback()
+
+```c
+void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* options, void* userData, ArkUI_OpenDialogCallback callback)
+```
+
+**描述：**
+
+弹出自定义弹窗。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
+| void* userData | 表示指向自定义数据的指针。|
+| [ArkUI_OpenDialogCallback](#arkui_opendialogcallback) callback | 弹窗显示时的回调，返回入参为错误码和弹窗ID。|
 
 ### OH_ArkUI_CustomDialog_UpdateDialog()
 
