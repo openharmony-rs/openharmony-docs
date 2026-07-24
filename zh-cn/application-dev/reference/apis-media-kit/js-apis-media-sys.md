@@ -326,7 +326,7 @@ media.createParallelSoundPool(5, audioRendererInfo).then((soundpool_: media.Soun
 
 | 名称     | 类型   |  只读   |   可选    |  说明                   |
 | -------- | ------ |   ------| ------ | ---------------------- |
-| colorFormat  | [PixelFormat](#pixelformat11) |  否   |  是   | 输出的缩略图颜色格式。<br>**系统接口：** 该接口为系统接口。      |
+| colorFormat  | [PixelFormat](#pixelformat11) |  否   |  是   | 输出的缩略图颜色格式。<br/>**系统接口：** 该接口为系统接口。      |
 
 ## PixelFormat<sup>11+</sup>
 
@@ -491,7 +491,7 @@ setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise\<void>
 
 | 参数名   | 类型                  | 必填 | 说明                         |
 | -------- | -------------------- | ---- | --------------------------- |
-| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)      | 是   | 图像PixelMap数据。<br>当前支持规格:<br>-当前仅支持pixelformat为RGBA8888。<br>-原图像为8K时->水印图像限制范围3072x288,原图像为4K时->水印图像限制范围1536x144。 |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)      | 是   | 图像PixelMap数据。<br/>当前支持规格:<br/>-当前仅支持pixelformat为RGBA8888。<br/>-原图像为8K时->水印图像限制范围3072x288,原图像为4K时->水印图像限制范围1536x144。 |
 | config    | [WatermarkConfig](#watermarkconfig13)   | 是   | 水印的相关配置参数。 |
 
 **返回值：**
@@ -1528,7 +1528,7 @@ Audio/Video播放示例可参考：[使用AVPlayer播放音频(ArkTS)](../../med
 
 | 名称               | 类型                                   | 只读 | 可选 | 说明             |
 | ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
-| enableStartFrameRateOpt | boolean | 否   | 是   |是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br>true表示采用，false表示不采用，默认值为false。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| enableStartFrameRateOpt | boolean | 否   | 是   |是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br/>true表示采用，false表示不采用，默认值为false。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### forceLoadVideo
 
