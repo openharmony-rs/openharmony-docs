@@ -130,7 +130,7 @@ ArkTS-Sta: setShaderInputs(inputs: Record<string, double \| Vec2 \| Vec3 \| Vec4
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| inputs | ArkTS-Dyn: Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image><br> ArkTS-Sta: Record<string, double \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | 是 | 一个字符串到值的映射，用于设置shader输入。 |
+| inputs | ArkTS-Dyn: Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image><br> ArkTS-Sta: Record<string, double \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | 是 | 一个字符串到值的映射，用于设置着色器输入。 |
 
 **示例：**
 
@@ -159,7 +159,7 @@ function setinputs(): void {
       if (!image) {
         return;
       }
-      // 绑定shader到纹理上
+      // 设置材质的着色器
       material.colorShader = shader;
       // 设置shader输入
       material.colorShader.setShaderInputs({
@@ -435,7 +435,7 @@ function setinputs(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | 否 | 否 | 名称，没有特殊格式要求。 |
 | material | [Material](#material) | 否 | 否 | 材质。 |
-| aabb | [Aabb](js-apis-inner-scene-types.md#aabb) | 是 | 否 | 轴对齐边界盒。 |
+| aabb | [Aabb](js-apis-inner-scene-types.md#aabb) | 是 | 否 | 轴对齐包围盒。 |
 
 ## Morpher<sup>20+</sup>
 
@@ -487,7 +487,7 @@ function setinputs(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| enabled | boolean | 否 | 否 | 动画是否使能。true表示可以播放动画，false表示不可以播放动画。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| enabled | boolean | 否 | 否 | 动画是否启用。true表示可以播放动画，false表示不可以播放动画。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | speed<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 动画的播放速度因子。默认值为1.0，表示正常速度播放。如果设置为负值，动画将以反向速度播放。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 否 | 动画持续时间，单位为秒（s），取值范围大于等于0。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | running | boolean | 是 | 否 | 动画运行状态。true表示动画正在播放，false表示动画停止播放。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
