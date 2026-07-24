@@ -14682,7 +14682,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets",
 				"functions":[
 					{
-						"end_line":187,
+						"end_line":200,
 						"name":"arcAlphabetIndexer_start",
 						"start_line":21
 					}
