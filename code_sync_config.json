@@ -33800,6 +33800,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationSyncDollarDollar.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"Migration_Sync_Dollar_Dollar",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -39711,6 +39721,96 @@
 					{
 						"end_line":94,
 						"name":"arkts_static",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-custom-components-freezeV2.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets",
+				"functions":[
+					{
+						"end_line":64,
+						"name":"freeze_template2_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets",
+				"functions":[
+					{
+						"end_line":172,
+						"name":"freeze_template3_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template7/BuilderNode.ets",
+				"functions":[
+					{
+						"end_line":144,
+						"name":"freeze_template7_start",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-mvvm.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"thing_view_model",
+						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-local.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalAnimateToV2Problem.ets",
+				"functions":[
+					{
+						"end_line":50,
+						"name":"Local_AnimateTo_V2_Problem",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalApplySyncEffect.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"Local_ApplySync_Effect",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-state-management-introduce.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateManagementIntroduce.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"state_management_introduce",
 						"start_line":16
 					}
 				]
