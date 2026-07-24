@@ -270,7 +270,7 @@ enum OH_VideoOutputResult
 
 ## 函数说明
 
-### OH_AVPlayerOnInfo<sup>(deprecated)</sup>()
+### OH_AVPlayerOnInfo()
 
 ```c
 typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)
@@ -342,7 +342,7 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 | [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 | 
 | void *userData | 原样返回用户设置回调时传入的userData数据。 |
 
-### OH_AVPlayerOnError<sup>(deprecated)</sup>()
+### OH_AVPlayerOnError()
 
 ```c
 typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)

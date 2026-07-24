@@ -1284,7 +1284,7 @@ async function  test(){
 
 ## reset<sup>9+</sup>
 
-reset(): Promise<void>
+reset(): Promise\<void\>
 
 重置播放，将播放器恢复到idle状态并清除已设置的媒体资源，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用Promise异步回调。
 
@@ -1528,7 +1528,7 @@ async function  test(){
 
 ## getPlaybackInfo<sup>12+</sup>
 
-getPlaybackInfo(): Promise<PlaybackInfo>
+getPlaybackInfo(): Promise\<PlaybackInfo\>
 
 获取播放过程信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。
 
@@ -2111,7 +2111,7 @@ async function test(){
 
 ## getPlaybackRate<sup>23+</sup>
 
-getPlaybackRate(): Promise<number>
+getPlaybackRate(): Promise\<number\>
 
 获取当前播放器的播放速率。可以在任意状态下调用。使用Promise异步回调。
 
@@ -2121,7 +2121,7 @@ getPlaybackRate(): Promise<number>
 
 | 类型             | 说明           |
 | ---------------- | -------------- |
-| Promise<number> | Promise对象，返回播放倍速速率。 |
+| Promise\<number\> | Promise对象，返回播放倍速速率。 |
 
 **示例：**
 
@@ -2192,7 +2192,7 @@ async function test(){
 
 ## getLoadedTimeRanges
 
-getLoadedTimeRanges(): Promise<Array<Range>>
+getLoadedTimeRanges(): Promise<Array\<Range\>>
 
 获取已加载的时间区间段的列表。可以在prepared/playing/paused/completed状态调用。使用Promise异步回调。
 
@@ -2230,7 +2230,7 @@ async function test(){
 
 ## getSeekableTimeRanges
 
-getSeekableTimeRanges(): Promise<Array<Range>>
+getSeekableTimeRanges(): Promise<Array\<Range\>>
 
 获取可跳转的时间区间段的列表。可以在prepared/playing/paused/completed状态调用。使用Promise异步回调。
 
@@ -3776,7 +3776,7 @@ async function test(){
 
 ## getPlaybackStatisticMetrics<sup>23+</sup>
 
-getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>
+getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics\>
 
 获取当前播放器的统计指标信息，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。
 

@@ -1013,7 +1013,7 @@ OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)
 | -- | -- |
 | [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置循环播放。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者player SetLooping执行失败。 |
 
-### OH_AVPlayer_SetPlayerCallback()<sup>(deprecated)</sup>
+### OH_AVPlayer_SetPlayerCallback()
 
 ```c
 OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)
