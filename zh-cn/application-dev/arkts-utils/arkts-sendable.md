@@ -203,21 +203,19 @@ struct enumusage {
 <!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/class/Index.ets) --> 
 
 ``` TypeScript
-export { MainPage } from './src/main/ets/components/MainPage';
-
 @Sendable
 class SendableTestClass {
   desc: string = 'sendable: this is SendableTestClass ';
   num: number = 5;
   printName() {
-    console.info('sendable: SendableTestClass desc is: ' + this.desc);
+    console.info(`sendable: SendableTestClass desc is: ${this.desc}`);
   }
   get getNum(): number {
     return this.num;
   }
 }
 
-let object = new SendableTestClass;
+let object = new SendableTestClass();
 export { object }
 ```
 
@@ -232,7 +230,7 @@ type SendableFuncType = () => void;
 class TopLevelSendableClass {
   num: number = 1;
 
-  PrintNum() {
+  printNum() {
     console.info('Top level sendable class');
   }
 }
@@ -245,7 +243,7 @@ function topLevelSendableFunction() {
 @Sendable
 function sendableTestFunction() {
   const topClass = new TopLevelSendableClass(); // 顶层sendable class
-  topClass.PrintNum();
+  topClass.printNum();
   topLevelSendableFunction(); // 顶层sendable function
   console.info('Sendable test function');
 }
@@ -258,7 +256,7 @@ class SendableTestClass {
 
   callback: SendableFuncType; // 顶层sendable function
 
-  CallSendableFunc() {
+  callSendableFunc() {
     sendableTestFunction(); // 顶层sendable function
   }
 }
