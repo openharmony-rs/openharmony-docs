@@ -42001,7 +42001,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/AsynchronousWaiting/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":83,
 						"name":"sendable_object",
 						"start_line":15
 					}
@@ -50914,7 +50914,7 @@
 					{
 						"end_line":33,
 						"name":"example_modify_class",
-						"start_line":16
+						"start_line":18
 					}
 				]
 			},
@@ -51019,7 +51019,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableScenarios/bigdata/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":88,
 						"name":"across_concurrent_instance_transfer_large_data",
 						"start_line":16
 					}
@@ -51039,7 +51039,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableScenarios/crossconcurrency/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":71,
 						"name":"across_concurrent_instance_pass_class_method",
 						"start_line":16
 					}
