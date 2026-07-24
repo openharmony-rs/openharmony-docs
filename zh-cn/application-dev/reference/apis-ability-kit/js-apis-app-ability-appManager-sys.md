@@ -1484,7 +1484,7 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 
 > **说明：**
 >
-> 该接口不支持预加载分身应用，参数appIndex只能传0，传其他值会返回16000050错误码。
+> 该接口不支持预加载分身应用，参数appIndex只能传0，传其他值无法生效。
 
 **需要权限**：ohos.permission.PRELOAD_APPLICATION
 
