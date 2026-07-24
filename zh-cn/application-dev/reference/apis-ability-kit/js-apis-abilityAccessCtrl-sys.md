@@ -979,7 +979,7 @@ onPermissionStateChange(tokenIDList: Array&lt;int&gt;, permissionList: Array&lt;
 | 202 | Not System App. Interface caller is not a system app. |
 | 12100001 | Invalid parameter. Possible causes: 1. The tokenIDList or permissionList exceeds the size limit; 2. The tokenIDs or permissionNames in the list are all invalid. |
 | 12100005 | The registration time has exceeded the limit. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **示例：**
@@ -1040,7 +1040,7 @@ offPermissionStateChange(tokenIDList: Array&lt;int&gt;, permissionList: Array&lt
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
 | 12100001 | Invalid parameter. The tokenIDList or permissionList is not in the listening list. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
