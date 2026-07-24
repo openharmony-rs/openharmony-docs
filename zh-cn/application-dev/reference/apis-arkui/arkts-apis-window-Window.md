@@ -8398,8 +8398,8 @@ setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: nu
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------- | :--- | :----------------------------- |
 | windowMask   | Uint8Array  | 是   | 异形窗口的掩码，为按像素顺序排列的Alpha数组，该数组中每个元素代表对应像素的透明度，取值范围[0, 255]，0表示完全透明，255表示完全不透明，数组长度等于maskWidth乘以maskHeight。 |
-| maskWidth    | number      | 是   | 表示异形窗口掩码的宽度，必须等于窗口宽度。 |
-| maskHeight   | number      | 是   | 表示异形窗口掩码的高度，必须等于窗口高度。 |
+| maskWidth    | number      | 是   | 表示异形窗口掩码的宽度，必须等于窗口宽度，单位为px。 |
+| maskHeight   | number      | 是   | 表示异形窗口掩码的高度，必须等于窗口高度，单位为px。 |
 
 **返回值：**
 
@@ -9960,7 +9960,7 @@ setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| enabled    | boolean | 是   | 是否响应手势返回事件。<br>true表示响应手势返回事件，触发onBackPress回调；false表示不响应手势返回事件，不触发onBackPress回调。</br> |
+| enabled    | boolean | 是   | 是否响应手势返回事件。<br>true表示响应手势返回事件，触发onBackPress回调；false表示不响应手势返回事件，不触发onBackPress回调。<br> |
 
 **返回值：**
 
@@ -10473,11 +10473,11 @@ setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置当前窗口是否支持事件分离状态，使用Promise异步回调。默认场景下为true，支持事件分离状态。
 
-当enable为true，支持事件分离状态下：
+当enabled为true，支持事件分离状态下：
 
 - 所有手指点击产生的事件均会发送给其手指命中的窗口。
 
-当enable为false，不支持事件分离状态下：
+当enabled为false，不支持事件分离状态下：
 
 - 当第一根手指点击持续命中该窗口未抬起时，后续其他手指无论是否点击命中该窗口，其产生的事件均会分发给该窗口。
 
@@ -10542,7 +10542,7 @@ isSeparationTouchEnabled():boolean
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| boolean          |  当前窗口是否支持事件分离。</br>true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
+| boolean          |  当前窗口是否支持事件分离。<br>true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
 
 **错误码：**
 
@@ -10575,7 +10575,7 @@ setReceiveDragEventEnabled(enabled: boolean): Promise&lt;void&gt;
 
 默认场景下为true，能够接收拖拽事件。
 
-当enable为false，当前窗口不能接收拖拽事件。
+当enabled为false，当前窗口不能接收拖拽事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -10636,7 +10636,7 @@ isReceiveDragEventEnabled():boolean
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| boolean          |  当前窗口是否能接收拖拽事件的状态。</br>true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
+| boolean          |  当前窗口是否能接收拖拽事件的状态。<br>true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
 
 **错误码：**
 
