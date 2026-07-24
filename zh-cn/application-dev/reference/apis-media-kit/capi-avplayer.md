@@ -17,6 +17,8 @@
 
 **起始版本：** 11
 
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
 ## 文件汇总
 
 | 名称 | 描述 |
