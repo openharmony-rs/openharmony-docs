@@ -1195,7 +1195,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004 | Unauthorized operation.                      |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -1268,8 +1268,8 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -4089,7 +4089,7 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'screenshot'，即截屏事件，对控制中心截屏、hdc命令截屏、整屏截屏接口生效。 |
+| type     | string              | 是   | 监听事件，固定为'screenshot'，即截屏事件，对控制中心截屏、hdc命令截屏、[screenshot.capture()](js-apis-screenshot.md#screenshotcapture14)接口截屏生效。 |
 | callback | Callback&lt;void&gt; | 是   | 回调函数。发生截屏事件时的回调。                               |
 
 **错误码：**
@@ -4157,7 +4157,7 @@ try {
 
 on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): void
 
-开启屏幕截屏事件类型的监听。
+开启截屏事件类型的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4165,7 +4165,7 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即屏幕截屏的事件类型，对控制中心截屏、快捷键截屏以及滚动截屏生效。 |
+| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即截屏的事件类型，对控制中心截屏、快捷键截屏以及滚动截屏生效。 |
 | callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 是   | 回调函数。返回触发的截屏事件类型。                 |
 
 **错误码：**
@@ -4174,7 +4174,7 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4194,7 +4194,7 @@ try {
 
 off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;): void
 
-关闭屏幕截屏事件类型的监听。
+关闭截屏事件类型的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4202,8 +4202,8 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即屏幕截屏的事件类型。 |
-| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 否   | 回调函数。返回触发的截屏事件类型。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口截图事件的监听。                 |
+| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即截屏的事件类型。 |
+| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 否   | 回调函数。返回触发的截屏事件类型。若传入参数，则关闭该监听。若未传入参数，则关闭所有截屏事件的监听。                 |
 
 **错误码：**
 
@@ -4211,7 +4211,7 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4415,7 +4415,7 @@ on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -4453,7 +4453,7 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -4502,7 +4502,7 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4532,7 +4532,7 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- |----------------------------| ---- |--------------------------------------|
 | type     | string                     | 是   | 监听事件，固定为'windowVisibilityChange'，即本窗口可见状态变化的事件。 |
-| callback | Callback&lt;boolean&gt;    | 否   | 回调函数。当本窗口可见状态发生变化时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口可见状态变化事件的回调。            |
+| callback | Callback&lt;boolean&gt;    | 否   | 回调函数。当本窗口可见状态发生变化时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口可见状态变化事件的监听。            |
 
 **错误码：**
 
@@ -4542,7 +4542,7 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4567,7 +4567,7 @@ try {
 
 on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): void
 
-开启窗口可见性状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
+开启窗口可见性状态变化事件的监听，相较于[on('windowVisibilityChange')](#onwindowvisibilitychange11)接口，此接口回调函数参数可以判断部分可见状态。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
 - 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
 - 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
@@ -4580,7 +4580,7 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'occlusionStateChanged'，即窗口可见性变化事件。 |
-| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 是   | 窗口可见性变化时的回调函数。详情见[可见性状态](arkts-apis-window-e.md#occlusionstate22)。|
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 是   | 窗口可见性变化时的回调函数。|
 
 **错误码：**
 
@@ -4589,7 +4589,7 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4627,7 +4627,7 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4672,7 +4672,7 @@ on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -4709,7 +4709,7 @@ off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -4757,7 +4757,7 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -4801,7 +4801,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -5098,7 +5098,7 @@ setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
 | ------- | --------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6213,7 +6213,7 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 
 **设备行为差异：**
 - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
-- 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)或[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下生效，在其他设备中返回801错误码。
+- 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)或[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -6237,9 +6237,9 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                      |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -6582,7 +6582,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&g
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6636,7 +6636,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
