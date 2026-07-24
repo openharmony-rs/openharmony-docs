@@ -2138,8 +2138,8 @@ class MyNodeController extends NodeController {
     });
 
     // 设置OnDidScroll事件
-    scrollEvent?.setOnDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-      console.info('onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}');
+    scrollEvent?.setOnDidScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
+      console.info(`onDidScroll xOffset = ${xOffset}, yOffset = ${yOffset}, scrollState = ${scrollState}`);
     });
 
     // 设置OnReachStart事件
