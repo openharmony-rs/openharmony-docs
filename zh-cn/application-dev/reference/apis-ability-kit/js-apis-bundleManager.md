@@ -2385,7 +2385,7 @@ type Metadata = _Metadata
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: SystemCapability.BundleManager.BundleFramework.Core
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **ArkTS-Dyn起始版本：** 9
 
