@@ -105,7 +105,7 @@ LowPowerVideoSink到达指定的播放目标位置时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| const int64_t targetPts | 目标点的pts值。单位为微秒。 |
+| const int64_t targetPts | 目标点的pts值。单位为微秒（μs）。 |
 | const bool isTimeout | 表示等待目标点是否超时。若为true，表示等待目标点超时；若为false，则表示未超时。 |
 | void* userData | 用户执行回调所依赖的数据。 |
 
