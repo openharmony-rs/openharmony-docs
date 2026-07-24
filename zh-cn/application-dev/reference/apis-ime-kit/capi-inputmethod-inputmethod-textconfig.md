@@ -51,6 +51,7 @@ InputMethod_TextConfig内部包含以下子结构体信息：
 | [OH_TextConfig_SetWindowId](capi-inputmethod-text-config-capi-h.md#oh_textconfig_setwindowid) | 设置所属窗口的窗口ID。 |
 | [OH_TextConfig_SetPlaceholder](capi-inputmethod-text-config-capi-h.md#oh_textconfig_setplaceholder) | 设置占位符文本信息（since 20）。 |
 | [OH_TextConfig_SetAbilityName](capi-inputmethod-text-config-capi-h.md#oh_textconfig_setabilityname) | 设置abilityName信息（since 20）。 |
+| [OH_TextConfig_SetConsumeKeyEvents](capi-inputmethod-text-config-capi-h.md#OH_TextConfig_SetConsumeKeyEvents) | 将编辑框是否具有完整处理字母、字符、功能等按键的能力设置到文本配置信息中。<br/>**起始版本：**26.0.0。 |
 
 ### 获取函数（Get*）
 
@@ -65,3 +66,4 @@ InputMethod_TextConfig内部包含以下子结构体信息：
 | [OH_TextConfig_GetWindowId](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getwindowid) | 获取所属窗口的窗口ID。 |
 | [OH_TextConfig_GetPlaceholder](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getplaceholder) | 获取占位符文本信息（两步调用策略，since 20）。 |
 | [OH_TextConfig_GetAbilityName](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getabilityname) | 获取abilityName信息（两步调用策略，since 20）。 |
+| [OH_TextConfig_GetConsumeKeyEvents](capi-inputmethod-text-config-capi-h.md#OH_TextConfig_GetConsumeKeyEvents) | 获取文本配置中编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>**起始版本：**26.0.0。 |

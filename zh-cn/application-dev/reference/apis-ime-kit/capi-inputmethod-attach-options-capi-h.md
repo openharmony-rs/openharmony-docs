@@ -164,7 +164,7 @@ InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions 
 ### OH_AttachOptions_GetRequestKeyboardReason()
 
 ```c
-InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, InputMethod_RequestKeyboardReason *requestKeyboardReason)
+InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)
 ```
 
 **描述**
