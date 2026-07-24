@@ -487,7 +487,7 @@ onSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback: 
 | 12100001 | Invalid parameter. Possible causes: 1. The permissionList exceeds the size limit; 2. The permissionNames in the list are all invalid. |
 | 12100004 | The API is used repeatedly with the same input. |
 | 12100005 | The registration time has exceeded the limit. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -539,7 +539,7 @@ offSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback?
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12100004 | The API is not used in pair with "onSelfPermissionStateChange". |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
