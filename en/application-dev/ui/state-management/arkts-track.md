@@ -195,12 +195,12 @@ struct AddLog {
 
 In the preceding example:
 
-1. All properties in the **LogTrack** class are decorated with \@Track. After the **change logTrack.str1** button is clicked, **Text1** is updated, but **Text2** is not, as indicated by that only one log record is generated.
+1. All properties in the **LogTrack** class are decorated with \@Track. After the **change logTrack.str1** button is clicked, **Text1** is updated, but **Text2** is not, as only one log record is generated.
     ```ts
     Text 1 is rendered
     ```
 
-2. None of the properties in the **logNotTrack** class is decorated with \@Track. After the **change logTrack.str1** button is clicked, both **Text3** and **Text4** are updated, as indicated by that two log records are generated. Redundant updates occur.
+2. None of the properties in the **logNotTrack** class is decorated with \@Track. After the **change logTrack.str1** button is clicked, both **Text3** and **Text4** are updated, as two log records are generated. Redundant updates occur.
     ```ts
     Text 3 is rendered
     Text 4 is rendered
@@ -208,9 +208,9 @@ In the preceding example:
 
 ## Constraints
 
-- If the \@Track decorator is used in a class, the properties that are not decorated with the \@Track decorator in the class cannot be used in the \@Component decorated UI. For example, these properties cannot be bound to components or used to initialize child components. If the properties are incorrectly used, an error is reported during runtime. To be specific, since API version 23, error code [140110](../../reference/apis-arkui/errorcode-stateManagement.md#140110-using-non-track-decorated-properties-in-the-ui-causes-errors) is returned. For details, see [Improperly Using Non-\@Track Decorated Properties Causes Errors](#improperly-using-non-track-decorated-properties-causes-errors). You can use a non-\@Track decorated properties in non-UI functions, such as event callbacks and lifecycle callbacks.
+- If the \@Track decorator is used in a class, the properties that are not decorated with the \@Track decorator in the class cannot be used in the \@Component decorated UI. For example, these properties cannot be bound to components or used to initialize child components. If the properties are incorrectly used, an error is reported during runtime. To be specific, since API version 23, error code [140110](../../reference/apis-arkui/errorcode-stateManagement.md#140110-using-non-track-decorated-properties-in-the-ui-causes-errors) is returned. For details, see [Improperly Using Non-\@Track Decorated Properties Causes Errors](#improperly-using-non-track-decorated-properties-causes-errors). You can use a non-\@Track decorated property in non-UI functions, such as event callbacks and lifecycle callbacks.
 
-- Since API version 19, \@Track is used in the [\@ComponentV2](./arkts-create-custom-components.md#componentv2) decorated UI. In this case, no error is reported during runtime, but the refresh is not responded. For details, see [\@Observed+\@Track Decorated Class (V1->V2)](./arkts-v1-v2-mixusage.md#transferring-the-class-type-v1-v2) and [@Observed+\@Track Decorated Class (V2->V1)](./arkts-v1-v2-mixusage.md#transferring-the-class-type-v2-v1).
+- Since API version 19, \@Track is used in the [\@ComponentV2](./arkts-create-custom-components.md#componentv2) decorated UI. In this case, no runtime error is reported, but the UI still does not refresh. For details, see [\@Observed+\@Track Decorated Class (V1->V2)](./arkts-v1-v2-mixusage.md#transferring-the-class-type-v1-v2) and [@Observed+\@Track Decorated Class (V2->V1)](./arkts-v1-v2-mixusage.md#transferring-the-class-type-v2-v1).
 
 - Whenever possible, avoid any combination of class objects that contain \@Track and those that do not in, for example, union types and class inheritance. Otherwise, non-\@Track-decorated attributes may be misused in the UI, causing a runtime error.
 
@@ -282,7 +282,7 @@ Procedure:
 
 1. The click event **Text.onClick** of the **AddLog** custom component increases the value of **info**.
 
-2. In response to the change of the \@State decorated variable **log**, the \@Track decorated property **logInfo** is updated, and the **Text** component is re-rendered.
+2. The **Text** component is re-rendered because the \@Track decorated property **logInfo** of \@State decorated variable **log** is changed.
 
 ## FAQs
 
