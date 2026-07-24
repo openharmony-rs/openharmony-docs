@@ -1104,7 +1104,7 @@ off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&g
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | eventType  | string                                                       | 是   | 监听事件，固定为'windowStageEvent'，即WindowStage生命周期变化事件。 |
-| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 否   | 回调函数。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
+| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 否   | 回调函数，用于指定要注销的监听。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
 
 **错误码：**
 
@@ -1245,7 +1245,7 @@ off(eventType: 'windowStageLifecycleEvent', callback?: Callback&lt;WindowStageLi
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | eventType  | string                                                       | 是   | 监听事件，固定为'windowStageLifecycleEvent'，即WindowStage生命周期变化事件。 |
-| callback | Callback&lt;[WindowStageLifecycleEventType](arkts-apis-window-e.md#windowstagelifecycleeventtype20)&gt; | 否   | 回调函数。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
+| callback | Callback&lt;[WindowStageLifecycleEventType](arkts-apis-window-e.md#windowstagelifecycleeventtype20)&gt; | 否   | 回调函数，用于指定要注销的监听。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
 
 **错误码：**
 
@@ -1376,7 +1376,7 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | eventType  | string                                                       | 是   | 监听事件，固定为'windowStageClose'，即关闭主窗口关闭事件的监听。 |
-| callback | Callback&lt;void&gt; | 否   | 回调函数，当点击主窗口右上角关闭按钮事件发生时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭主窗口所有关闭事件的监听。 |
+| callback | Callback&lt;void&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭主窗口所有关闭事件的监听。 |
 
 **错误码：**
 
