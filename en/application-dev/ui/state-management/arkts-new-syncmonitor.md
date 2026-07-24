@@ -55,7 +55,7 @@ Similar to the [\@Watch](arkts-watch.md) decorator, you must define the callback
 
 [addMonitor and clearMonitor](./arkts-new-addMonitor-clearMonitor.md) APIs allows you to dynamically add and clear listeners during application execution. When **isSynchronous** is set to **true**, **addMonitor** is similar to \@SyncMonitor. When **isSynchronous** is set to **false**, **addMonitor** is similar to \@Monitor.
 
-\@Monitor and \@SyncMonitor are member function decorators of the \@ComponentV2 and \@ObservedV2 classes, respectively. They are part of V2 status management. \@Watch is a variable decorator used in [@Component](./arkts-create-custom-components.md#component). It is a part of V1 status management.
+\@Monitor and \@SyncMonitor are member function decorators of the \@ComponentV2 and \@ObservedV2 classes, respectively. They are part of V2 state management. \@Watch is a variable decorator used in [@Component](./arkts-create-custom-components.md#component). It is a part of V1 state management.
 
 Functions decorated by \@Monitor are executed asynchronously after the event handler is executed. After the \@SyncMonitor and \@Watch functions detect the change of the state variable, the callback function is executed immediately.
 

@@ -208,7 +208,7 @@ struct Child {
 
 ## Passing Parameters by Reference
 
-When parameters are transferred by reference, the change of the status variable causes the UI in the \@Builder method to be refreshed.
+When parameters are transferred by reference, the change of the state variable causes the UI in the \@Builder method to be refreshed.
 
 <!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->  
 
