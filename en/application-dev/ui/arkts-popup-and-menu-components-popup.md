@@ -46,7 +46,7 @@ export struct TextPopupExample {
 }
 ```
 
-![en-us_image_0000001511740524](figures/en-us_image_0000001511740524.png)
+![en-us_image_0000001511740524](figures/Creating-Text-Popup.png)
 
 ## Adding an Event Listener for Popup State Changes
 
@@ -136,7 +136,7 @@ export struct ButtonPopupExample {
 }
 ```
 
-![en-us_other_0000001500740342](figures/en-us_other_0000001500740342.jpeg)
+![en-us_other_0000001500740342](figures/Creating-Popup-with-Buttons.jpeg)
 
 ## Implementing Popup Animation
 
@@ -266,7 +266,7 @@ export struct CustomPopupExample {
 
 To place the popup in a specific position, set the **placement** parameter. The popup builder triggers a popup message to instruct the user to complete the operation.
 
-![en-us_other_0000001500900234](figures/en-us_other_0000001500900234.jpeg)
+![en-us_other_0000001500900234](figures/Custom-Popup.jpeg)
 
 ## Defining the Popup Style
 

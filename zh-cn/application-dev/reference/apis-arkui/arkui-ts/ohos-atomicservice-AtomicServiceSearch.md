@@ -70,10 +70,10 @@ AtomicServiceSearch中“选择区”的可选属性。
 | font                    | [Font](ts-types.md#font) | 否 | 是 | 下拉按钮本身的文本样式。默认值：`{size: $r('sys.float.ohos_id_text_size_body1')}`。 |
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单选中项的文本颜色。默认值：`{fontColor: $r('sys.color.ohos_id_color_text_primary')}`。   |
 | selectedOptionBgColor   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单选中项的背景色。默认值：`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_alpha_highlight_bg')`的透明度。 |
-| selectedOptionFont      | [Font](ts-types.md#font) | 否 | 是 | 下拉菜单选中项的文本样式。默认值：`{size:&nbsp;$r('sys.color.ohos_id_text_size_body1'), weight:&nbsp;FontWeight.Regular}`。 |
+| selectedOptionFont      | [Font](ts-types.md#font) | 否 | 是 | 下拉菜单选中项的文本样式。默认值：`{size: $r('sys.color.ohos_id_text_size_body1'), weight: FontWeight.Regular}`。 |
 | selectedOptionFontColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单选中项的文本颜色。默认值：`$r('sys.color.ohos_id_color_text_primary_activated')`。 |
 | optionBgColor           | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单项的背景色。默认值：`Color.Transparent`。 |
-| optionFont              | [Font](ts-types.md#font) | 否 | 是 | 下拉菜单项的文本样式。默认值：`{size:&nbsp;$r('sys.float.ohos_id_text_size_body1'), weight:&nbsp;FontWeight.Regular}`。 |
+| optionFont              | [Font](ts-types.md#font) | 否 | 是 | 下拉菜单项的文本样式。默认值：`{size: $r('sys.float.ohos_id_text_size_body1'), weight: FontWeight.Regular}`。 |
 | optionFontColor         | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单项的文本颜色。默认值：`$r('sys.color.ohos_id_color_text_primary')`。 |
 | optionWidth             | [Dimension](ts-types.md#dimension10) \| [OptionWidthMode](ts-appendix-enums.md#optionwidthmode11) | 否 | 是 | 设置下拉菜单项的宽度，不支持设置百分比。OptionWidthMode类型为枚举类型，OptionWidthMode决定下拉菜单是否继承下拉按钮宽度。当设置为异常值或小于最小宽度56vp时，属性不生效，菜单项宽度设为默认值，即菜单默认宽度为2栅格。 |
 | optionHeight            | [Dimension](ts-types.md#dimension10) | 否 | 是 | 设置下拉菜单显示的最大高度，不支持设置百分比。下拉菜单的默认最大高度是屏幕可用高度的80%，设置的菜单最大高度不能超过默认最大高度。 |
@@ -107,7 +107,7 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | cancelIcon               | [IconOptions](ts-basic-components-search.md#iconoptions10对象说明) | 否 | 是 | 右侧清除按钮样式。默认值：`{style: CancelButtonStyle.INPUT, icon: {size: '16vp', color: '#99ffffff', src: ' '}}`。<br/>当style为CancelButtonStyle.CONSTANT时，默认显示清除样式。   |
 | fontColor                | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 |  输入文本的字体颜色。默认值：`$r('sys.color.ohos_id_color_text_secondary')`。 |
 | caretStyle               | [CaretStyle](ts-text-common.md#caretstyle10) | 否 | 是 | 光标样式。默认值：`{width: '1.5vp', color: '#007DFF'}`。   |
-| enableKeyboardOnFocus    | boolean | 否 | 是 | Search获焦时，是否主动拉起软键盘。true表示Search获焦时主动拉起软键盘。默认值：`true`。   |
+| enableKeyboardOnFocus    | boolean | 否 | 是 | Search获焦时，是否主动拉起软键盘。true表示Search获焦时主动拉起软键盘。false表示Search获焦时不主动拉起键盘。默认值：`true`。   |
 | hideSelectionMenu        | boolean | 否 | 是 |是否不弹出系统文本选择菜单。<br />设置为true时，单击输入框光标、长按输入框、双击输入框、三击输入框或者右键输入框，不弹出系统文本选择菜单。设置为false时，弹出系统文本选择菜单。默认值：`false`。   |
 | type                     | [SearchType](ts-basic-components-search.md#searchtype11枚举说明) | 否 | 是 | 输入框类型。默认值：`SearchType.Normal`。   |
 | maxLength                | number | 否 | 是 | 设置文本的最大输入字符数。默认不设置最大输入字符数限制。到达文本最大字符限制，将无法继续输入字符。默认值：`-1`。  |
@@ -121,8 +121,8 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | minFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本最小显示字号。需要配合maxFontSize以及布局大小限制使用，单独设置不生效。默认值为`undefined`。   |
 | maxFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本最大显示字号。需要配合minFontSize以及布局大小限制使用，单独设置不生效。默认值为`undefined`。   |
 | editMenuOptions          | [EditMenuOptions](ts-text-common.md#editmenuoptions) | 否 | 是 | 设置自定义菜单扩展项，允许用户设置扩展项的文本内容、图标、回调方法。默认值为`undefined`。   |
-| enablePreviewText        | boolean | 否 | 是 | 是否开启输入预上屏。true表示开启输入预上屏。默认值：`true`。 <br/> 需要配合开启输入法的预上屏功能。预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此该值为true时不触发onWillInsert、onDidInsert回调。  |
-| enableHapticFeedback     | boolean | 否 | 是 | 是否开启触控反馈。true表示开启。默认值：`true`。   |
+| enablePreviewText        | boolean | 否 | 是 | 是否开启输入预上屏。true表示开启输入预上屏。false表示不开启输入预上屏。默认值：`true`。 <br/> 需要配合开启输入法的预上屏功能。预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此该值为true时不触发onWillInsert、onDidInsert回调。  |
+| enableHapticFeedback     | boolean | 否 | 是 | 是否开启触控反馈。true表示开启触控反馈。false表示不开启触控反馈。默认值：`true`。   |
 | onSubmit                 | Callback&lt;string&gt; \| [SearchSubmitCallback](ts-basic-components-search.md#searchsubmitcallback14) | 否 | 是 | 点击搜索图标、搜索按钮或者按下软键盘搜索按钮时触发该回调。默认值为`undefined`。   |
 | onChange                 | [EditableTextOnChangeCallback](ts-text-common.md#editabletextonchangecallback12) | 否 | 是 | 输入内容发生变化时，触发该回调。默认值为`undefined`。   |
 | onCopy                   | Callback&lt;string&gt; | 否 | 是 | 进行复制操作时，触发该回调。默认值为`undefined`。   |
@@ -793,7 +793,7 @@ struct Index {
 该示例通过fontFeature属性实现了文本在不同文字特性下的展示效果。
 
 ```ts
-​​​​import { AtomicServiceSearch } from '@kit.ArkUI';
+import { AtomicServiceSearch } from '@kit.ArkUI';
 
 @Entry
 @Component

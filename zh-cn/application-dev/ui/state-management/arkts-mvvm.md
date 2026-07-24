@@ -227,7 +227,7 @@ struct ThingComponent2 {
   @Prop isFinished: boolean;
 
   build() {
-    // 待办事项1
+      // 待办事项2
     Row({ space: 15 }) {
       if (this.isFinished) {
         // 请将$r('app.media.finished')替换为实际资源文件
@@ -336,7 +336,7 @@ struct ForEachThingComponent {
   @Prop thing: string;
 
   build() {
-    // 待办事项1
+      // 待办事项
     Row({ space: 15 }) {
       if (this.isFinished) {
         // 请将$r('app.media.finished')替换为实际资源文件
@@ -388,7 +388,6 @@ struct ForEachIndex {
     // 请将$r('app.string.sleep')替换为实际资源文件，在本示例中该资源文件的value值为"1.30 睡觉"
     $r('app.string.sleep')
   ];
-  context1 = this.getUIContext().getHostContext();
 
   aboutToAppear(): void {
     for (let i = 0; i < this.planList.length; i++) {
@@ -406,7 +405,7 @@ struct ForEachIndex {
 
       List() {
         ForEach(this.planList, (item: string) => {
-          // 待办事项1
+          // 待办事项
           ForEachThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
@@ -505,7 +504,7 @@ struct BuilderThingComponent {
   }
 
   build() {
-    // 待办事项1
+      // 待办事项
     Row({ space: 15 }) {
       if (this.isFinished) {
         // 请将$r('app.media.finished')替换为实际资源文件
@@ -555,7 +554,7 @@ struct BuilderIndex {
 
       List() {
         ForEach(this.data.planList, (item: string) => {
-          // 待办事项1
+          // 待办事项
           BuilderThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
@@ -583,20 +582,6 @@ struct BuilderIndex {
 ## 通过MVVM开发备忘录实战
 
 上一章节展示了非MVVM模式下的代码组织方式。随着主页面代码的增加，应该采取合理的分层策略，使项目结构清晰，组件之间不互相引用，避免后期维护时牵一发而动全身，增加功能更新的困难。本章将通过对MVVM的核心文件组织模式，向开发者展示如何使用MVVM来重构上一章节的代码。
-
-### MVVM文件结构说明
-
-```txt
-├── src
-│   ├── ets
-│   │   ├── pages 存放页面组件。
-│   │   ├── views 存放业务组件。
-│   │   ├── shares 存放通用组件。
-│   │   └── viewmodel 数据服务。
-│   │   │   ├── LoginViewModel.ets 登录页ViewModel。
-│   │   │   └── xxxViewModel.ets 其他页ViewModel。
-│
-```
 
 ### 分层设计技巧
 
@@ -635,17 +620,17 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 ```txt
 ├── src
 │   ├── ets
-│   │   ├── model
+│   │   ├── model // 存放数据结构
 │   │   │   ├── ThingModel.ets
 │   │   │   └── TodoListModel.ets
-│   │   ├── pages
+│   │   ├── pages // 存放页面组件
 │   │   │   ├── Index.ets
-│   │   ├── views
+│   │   ├── views // 存放业务组件
 │   │   │   ├── AllChooseComponent.ets
 │   │   │   ├── ThingComponent.ets
 │   │   │   ├── TodoComponent.ets
 │   │   │   └── TodoListComponent.ets
-│   │   ├── viewmodel
+│   │   ├── viewmodel // 存放数据服务
 │   │   │   ├── ThingViewModel.ets
 │   │   │   └── TodoListViewModel.ets
 │   └── resources

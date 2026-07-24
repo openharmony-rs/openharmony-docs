@@ -1,8 +1,8 @@
 # native_animate.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -33,7 +33,7 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [ArkUI_NativeAnimateAPI_1](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md) | ArkUI_NativeAnimateAPI_1 | Defines a struct for the animation APIs of ArkUI on the native side.|
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md) | ArkUI_AnimateOption | Animation settings.|
 | [ArkUI_Curve](capi-arkui-nativemodule-arkui-curve.md) | ArkUI_Curve | Defines an interpolation curve.|
-| [ArkUI_Curve*](capi-arkui-nativemodule-arkui-curve8h.md) | ArkUI_CurveHandle | Defines a struct for the pointer to an interpolation curve.|
+| [ArkUI_Curve*](capi-arkui-nativemodule-arkui-curve8h.md) | ArkUI_CurveHandle | Defines the pointer to an interpolation curve.|
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md) | ArkUI_KeyframeAnimateOption | Defines the keyframe animation parameter object.|
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md) | ArkUI_AnimatorOption | Defines the animator parameter object.|
 | [ArkUI_Animator*](capi-arkui-nativemodule-arkui-animator8h.md) | ArkUI_AnimatorHandle | Defines the pointer to an animator object.|
@@ -103,7 +103,7 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframetime) | Obtains the keyframe time of the animator playback, in milliseconds.|
 | [float OH_ArkUI_AnimatorOption_GetKeyframeValue(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframevalue) | Obtains the keyframe value of an animation.|
 | [ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetKeyframeCurve(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframecurve) | Obtains the interpolation curve for a keyframe in the animation of an animator.|
-| [void* OH_ArkUI_AnimatorEvent_GetUserData(ArkUI_AnimatorEvent* event)](#oh_arkui_animatorevent_getuserdata) | Obtains the custom object in an animation event object.|
+| [void* OH_ArkUI_AnimatorEvent_GetUserData(ArkUI_AnimatorEvent* event)](#oh_arkui_animatorevent_getuserdata) | Obtains the user-defined object in an animation event object.|
 | [void* OH_ArkUI_AnimatorOnFrameEvent_GetUserData(ArkUI_AnimatorOnFrameEvent* event)](#oh_arkui_animatoronframeevent_getuserdata) | Obtains the user-defined object in the frame event of an animation.|
 | [float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)](#oh_arkui_animatoronframeevent_getvalue) | Obtains the interpolation result in the animation frame callback event object.|
 | [int32_t OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(ArkUI_AnimatorOption* option, void* userData, void (\*callback)(ArkUI_AnimatorOnFrameEvent* event))](#oh_arkui_animatoroption_registeronframecallback) | Sets the callback invoked when the animator receives a frame.|
@@ -125,12 +125,13 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float mass, float stiffness, float damping)](#oh_arkui_curve_createinterpolatingspring) | Creates an interpolating spring curve animated from 0 to 1. The actual animation value is calculated based on the curve.|
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateCustomCurve(void* userData, float (\*interpolate)(float fraction, void* userdata))](#oh_arkui_curve_createcustomcurve) | Creates a custom curve.|
 | [void OH_ArkUI_Curve_DisposeCurve(ArkUI_CurveHandle curveHandle)](#oh_arkui_curve_disposecurve) | Disposes of a custom curve.|
-| [ArkUI_TransitionEffect* OH_ArkUI_CreateOpacityTransitionEffect(float opacity)](#oh_arkui_createopacitytransitioneffect) | Creates an opacity object for component transition.|
+| [ArkUI_TransitionEffect* OH_ArkUI_CreateOpacityTransitionEffect(float opacity)](#oh_arkui_createopacitytransitioneffect) | Creates an opacity effect object for component transition.|
 | [ArkUI_TransitionEffect* OH_ArkUI_CreateTranslationTransitionEffect(ArkUI_TranslationOptions* translate)](#oh_arkui_createtranslationtransitioneffect) | Creates a translation effect object for component transition.|
 | [ArkUI_TransitionEffect* OH_ArkUI_CreateScaleTransitionEffect(ArkUI_ScaleOptions* scale)](#oh_arkui_createscaletransitioneffect) | Creates a scaling object for component transition.|
 | [ArkUI_TransitionEffect* OH_ArkUI_CreateRotationTransitionEffect(ArkUI_RotationOptions* rotate)](#oh_arkui_createrotationtransitioneffect) | Creates a rotation effect object for component transition.|
-| [ArkUI_TransitionEffect* OH_ArkUI_CreateMovementTransitionEffect(ArkUI_TransitionEdge edge)](#oh_arkui_createmovementtransitioneffect) | Creates a movement object for component transition.|
+| [ArkUI_TransitionEffect* OH_ArkUI_CreateMovementTransitionEffect(ArkUI_TransitionEdge edge)](#oh_arkui_createmovementtransitioneffect) | Creates a movement transition effect object for the component.|
 | [ArkUI_TransitionEffect* OH_ArkUI_CreateAsymmetricTransitionEffect(ArkUI_TransitionEffect* appear, ArkUI_TransitionEffect* disappear)](#oh_arkui_createasymmetrictransitioneffect) | Creates an asymmetric transition effect.|
+| [ArkUI_TransitionEffect* OH_ArkUI_CreateIdentityTransitionEffect(void)](#oh_arkui_createidentitytransitioneffect) | Creates an effect object with no transition.|
 | [void OH_ArkUI_TransitionEffect_Dispose(ArkUI_TransitionEffect* effect)](#oh_arkui_transitioneffect_dispose) | Disposes of a transition effect.|
 | [int32_t OH_ArkUI_TransitionEffect_Combine(ArkUI_TransitionEffect* firstEffect, ArkUI_TransitionEffect* secondEffect)](#oh_arkui_transitioneffect_combine) | Sets a combination of transition effects.|
 | [int32_t OH_ArkUI_TransitionEffect_SetAnimation(ArkUI_TransitionEffect* effect, ArkUI_AnimateOption* animation)](#oh_arkui_transitioneffect_setanimation) | Sets transition effect animation settings.|
@@ -253,7 +254,7 @@ Obtains an animation curve.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) | Animation curve. If **option** is invalid,**-1** is returned.|
+| [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve) | Animation curve. If **option** is invalid,**-1** is returned.|
 
 ### OH_ArkUI_AnimateOption_GetDelay()
 
@@ -331,7 +332,7 @@ Obtains the playback mode of an animation.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) | Animation playback mode. If **option** is invalid,**-1** is returned.|
+| [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode) | Animation playback mode. If **option** is invalid,**-1** is returned.|
 
 ### OH_ArkUI_AnimateOption_GetExpectedFrameRateRange()
 
@@ -357,7 +358,7 @@ Obtains the expected frame rate range of an animation.
 
 | Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | Expected frame rate range of the animation, in fps. If **option** is invalid, **NULL** is returned.|
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | Pointer to the expected frame rate range of the animation, in fps. If **option** is invalid, **NULL** is returned.|
 
 ### OH_ArkUI_AnimateOption_SetDuration()
 
@@ -421,7 +422,7 @@ Animation curve.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration.<br>If **option** is set to **NULL**, the operation is invalid.|
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) value | Animation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve) to obtain a smoother animation effect.<br>If the value is abnormal, the setting is invalid.|
+| [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve) value | Animation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve) to obtain a smoother animation effect.<br>If the value is abnormal, the setting is invalid.|
 
 ### OH_ArkUI_AnimateOption_SetDelay()
 
@@ -484,7 +485,7 @@ Sets the playback mode for an animation.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration.<br>If **option** is set to **NULL**, the operation is invalid.|
-| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) value | Animation playback mode. Default value: [ARKUI_ANIMATION_PLAY_MODE_NORMAL](capi-native-type-h.md#arkui_animationplaymode).<br>If the value is abnormal, the operation is invalid.|
+| [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode) value | Animation playback mode. Default value: [ARKUI_ANIMATION_PLAY_MODE_NORMAL](capi-native-type-visual-h.md#arkui_animationplaymode).<br>If the value is abnormal, the operation is invalid.|
 
 ### OH_ArkUI_AnimateOption_SetExpectedFrameRateRange()
 
@@ -505,7 +506,7 @@ Defines a struct for the expected frame rate range of the animation.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration.<br>If **option** is set to **NULL**, the operation is invalid.|
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | Expected frame rate range of the animation, in fps.<br>If **value** is set to **NULL**, the operation is invalid.|
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | Pointer to the expected frame rate range of the animation, in fps.<br>If **value** is set to **NULL**, the operation is invalid.|
 
 ### OH_ArkUI_AnimateOption_SetICurve()
 
@@ -529,7 +530,7 @@ Sets the animation curve for an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Animation settings.<br>If **option** is set to **NULL**, the operation is invalid.|
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration.<br>If **option** is set to **NULL**, the operation is invalid.|
 | [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve parameters.<br>If **value** is set to **NULL**, the operation is invalid.|
 
 ### OH_ArkUI_AnimateOption_GetICurve()
@@ -550,7 +551,7 @@ Obtains the animation curve of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Animation settings.<br>If **option** is set to **NULL**, **NULL** is returned.|
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration.<br>If **option** is set to **NULL**, **NULL** is returned.|
 
 **Return value**
 
@@ -582,7 +583,7 @@ Creates a keyframe animation parameter object.
 
 | Type                              | Description|
 |----------------------------------| -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* | Keyframe animation parameter object. If the value of **size** is less than 0 or if **option** is abnormal, **NULL** is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* | Pointer to the keyframe animation parameter object. If the value of **size** is less than 0 or if **option** is abnormal, **NULL** is returned.|
 
 ### OH_ArkUI_KeyframeAnimateOption_Dispose()
 
@@ -602,7 +603,7 @@ Disposes of a keyframe animation parameter object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameter object.<br>If **option** is set to **NULL**, the operation is invalid.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to the keyframe animation parameter object.<br>If **option** is set to **NULL**, the operation is invalid.|
 
 ### OH_ArkUI_KeyframeAnimateOption_SetDelay()
 
@@ -622,14 +623,14 @@ Sets the overall delay of a keyframe animation, in milliseconds. By default, the
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | int32_t value | Animation delay, in milliseconds. Value range: (-∞, +∞). Default value: **0**, indicating no animation delay. A value greater than 0 means to begin the animation after the specified amount of time has elapsed. A value less than 0 means to begin the animation in advance. If **value** is less than **0** and the absolute value of **value** is less than the actual animation duration, the animation starts its first frame from the state at the absolute value. If the absolute value of **value** is greater than or equal to the actual animation duration, the animation starts its first frame from the end state. The actual animation duration is equal to the duration of a single animation multiplied by the number of animation playback times.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_KeyframeAnimateOption_SetIterations()
 
@@ -649,15 +650,15 @@ Sets the number of times that the keyframe animation is played. By default, the 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| int32_t value | Number of times that the animation is played. Value range: [-1, +∞). If this parameter is set to **0**, the animation is not played. If this parameter is set to **-1**, the animation is played for an infinite number of times. Default value: **1**, indicating that the animation is played once.<br>If the value is less than **-1**, the operation is invalid, and the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| int32_t value | Number of times that the animation is played. Value range: [-1, +∞). If this parameter is set to **0**, the animation is not played. If this parameter is set to **-1**, the animation is played for an infinite number of times. Default value: **1**, indicating that the animation is played once.<br>If the value is less than -1, the operation is invalid, and the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback()
 
@@ -677,15 +678,15 @@ Sets the callback invoked when the keyframe animation playback is complete. This
 
 | Name                                    | Description|
 |-----------------------------------------| -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| void* userData                          | Pointer to a custom object.<br>Abnormal value processing is not involved.|
-| void (\*onFinish)(void\* userData)                                | Callback function.<br>**userData**: input parameter of the callback function, a user-defined object pointer.<br>If **onFinish** is set to **NULL**, the operation is invalid.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| void* userData                          | Pointer to a user-defined object.<br>Abnormal value processing is not involved.|
+| void (\*onFinish)(void\* userData)                                | Pointer to the callback function.<br>**userData**: input parameter of the callback function, a user-defined object pointer.<br>If **onFinish** is set to **NULL**, the operation is invalid.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate()
 
@@ -705,14 +706,14 @@ Sets the expected frame rate for a keyframe animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | Expected frame rate for the keyframe animation. <br>If **frameRate** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | Pointer to the expected frame rate for the keyframe animation.<br>If **frameRate** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_KeyframeAnimateOption_SetDuration()
 
@@ -732,15 +733,15 @@ Sets the duration of a keyframe animation, in milliseconds.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | int32_t value | Keyframe animation duration, in ms. The default value is 1000 ms. Value range: [0, +∞).<br>If the value is less than 0, **0** is used.|
-| int32_t index | Index of the keyframe state segment.<br>If the value of **index** is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t index | Index of the keyframe state segment.<br>If the value of **index** is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_KeyframeAnimateOption_SetCurve()
 
@@ -765,15 +766,15 @@ Sets the animation curve for a specific keyframe animation segment.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve to set. Default value: [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve).|
-| int32_t index | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states.<br>If the value of **index** is less than 0 or out of range, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve to set. Default value: [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve).|
+| int32_t index | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states.<br>If the value of **index** is less than 0 or out of range, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback()
 
@@ -793,16 +794,16 @@ Sets the closure function of the state at the time of the keyframe, that is, the
 
 | Name                                    | Description|
 |-----------------------------------------| -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | void* userData                          | Pointer to a user-defined object.<br>Abnormal value processing is not involved.|
-| void (\*event)(void\* userData)                                   | Closure function.<br>If **event** is set to **NULL**, the operation is invalid.|
-| int32_t index                           | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states.<br>If the value of **index** is less than 0 or out of range, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| void (\*event)(void\* userData)                                   | Pointer to the closure function.<br>If **event** is set to **NULL**, the operation is invalid.|
+| int32_t index                           | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states.<br>If the value of **index** is less than 0 or out of range, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_KeyframeAnimateOption_GetDelay()
 
@@ -822,7 +823,7 @@ Obtains the overall delay of a keyframe animation, in milliseconds.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, **0** is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, **0** is returned.|
 
 **Return value**
 
@@ -848,7 +849,7 @@ Obtains the number of times that a keyframe animation is played.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, **0** is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, **0** is returned.|
 
 **Return value**
 
@@ -874,13 +875,13 @@ Obtains the expected frame rate from keyframe animation parameters.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, **NULL** is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, **NULL** is returned.|
 
 **Return value**
 
 | Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | Returns the expected frame rate obtained. If **option** is invalid, **NULL** is returned.|
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | Pointer to the expected frame rate obtained. If **option** is invalid, **NULL** is returned.|
 
 ### OH_ArkUI_KeyframeAnimateOption_GetDuration()
 
@@ -900,7 +901,7 @@ Obtains the duration of a specific state in a keyframe animation, in millisecond
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, **0** is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, **0** is returned.|
 | int32_t index | Index of the keyframe state segment.<br>If the value of **index** is less than 0, **0** is returned.|
 
 **Return value**
@@ -927,7 +928,7 @@ Obtains the animation curve of a specific state in a keyframe animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, **NULL** is returned.|
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration.<br>If **option** is set to **NULL**, **NULL** is returned.|
 | int32_t index | Index of the keyframe state segment.<br>If the value of **index** is less than 0, **NULL** is returned.|
 
 **Return value**
@@ -983,7 +984,7 @@ Disposes of an **AnimatorOption** object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the operation is invalid.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the operation is invalid.|
 
 ### OH_ArkUI_AnimatorOption_SetDuration()
 
@@ -994,7 +995,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_
 **Description**
 
 
-Sets the duration of an animator animation, in milliseconds.
+Sets the duration of the animator playback, in milliseconds.
 
 **Since**: 12
 
@@ -1003,14 +1004,14 @@ Sets the duration of an animator animation, in milliseconds.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| int32_t value | Playback duration, in ms. The default value is 0 ms. Value range: [0, +∞).<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| int32_t value | Playback duration, in ms. The default value is 0 ms. Value range: [0, +∞).<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetDelay()
 
@@ -1030,14 +1031,14 @@ Sets the delay time of the animator playback, in milliseconds.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | int32_t value | Animation delay, in milliseconds. Value range: (-∞, +∞). Default value: **0**, indicating no animation delay. A value greater than 0 means to begin the animation after the specified amount of time has elapsed. A value less than 0 means to begin the animation in advance. If **value** is less than **0** and the absolute value of **value** is less than the actual animation duration, the animation starts its first frame from the state at the absolute value. If the absolute value of **value** is greater than or equal to the actual animation duration, the animation starts its first frame from the end state. The actual animation duration is equal to the duration of a single animation multiplied by the number of animation playback times.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetIterations()
 
@@ -1061,7 +1062,7 @@ Sets the number of times that an animator animation is played. By default, the a
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | int32_t value | Value range: [-1, +∞). If this parameter is set to **0**, the animation is not played. If this parameter is set to **-1**, the animation is played for an infinite number of times. Default value: **1** (played once).<br>If the value is less than -1, the operation is invalid.|
 
 
@@ -1069,7 +1070,7 @@ Sets the number of times that an animator animation is played. By default, the a
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetFill()
 
@@ -1089,14 +1090,14 @@ Sets the status of the component before and after the animator animation executi
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) value | Status of the component before and after the animator animation execution. Default value: [ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-h.md#arkui_animationfillmode).<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode) value | Status of the component before and after the animator animation execution. Default value: [ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-visual-h.md#arkui_animationfillmode).<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetDirection()
 
@@ -1116,14 +1117,14 @@ Set the playback direction.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) value | Animation playback direction.<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimationDirection](capi-native-type-visual-h.md#arkui_animationdirection) value | Animation playback direction.<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetCurve()
 
@@ -1148,14 +1149,14 @@ Sets the interpolation curve for the animation of an animator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve) to obtain a smoother animation effect.<br>If **value** is set to **NULL**, the default curve [ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve) is used.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve) to obtain a smoother animation effect.<br>If **value** is set to **NULL**, the default curve [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetBegin()
 
@@ -1179,14 +1180,14 @@ Sets the interpolation start point of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | float value | Interpolation start point of the animation. Value range: (-∞, +∞).|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetEnd()
 
@@ -1210,14 +1211,14 @@ Sets the interpolation end point for the animation of an animator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | float value | Interpolation end point of the animation. Value range: (-∞, +∞).|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange()
 
@@ -1237,14 +1238,14 @@ Sets the expected frame rate range of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | Expected frame rate range.<br>If **value** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | Pointer to the expected frame rate range.<br>If the value is **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetKeyframe()
 
@@ -1264,16 +1265,16 @@ Sets the keyframe parameters of an animator animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| float time | Keyframe time. Value range: [0, 1]. The value must be in ascending order. Default value: evenly distributed by index (for example, **0.0** for the first frame, **0.5** for the second frame, and **1.0** for the third frame).<br>If the value of **time** is less than 0 or greater than 1, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| float time | Keyframe time. Value range: [0, 1]. The value must be in ascending order. Default value: evenly distributed by index (for example, **0.0** for the first frame, **0.5** for the second frame, and **1.0** for the third frame).<br>If the value of **time** is less than 0 or greater than 1, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | float value | Keyframe value. Value range: (-∞, +∞).|
-| int32_t index | Keyframe index.<br>If the value of **index** is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t index | Keyframe index.<br>If the value of **index** is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_SetKeyframeCurve()
 
@@ -1297,15 +1298,15 @@ Sets the keyframe curve type for the animation of an animator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: **NULL**, indicating linear interpolation.|
-| int32_t index | Keyframe index.<br>If the value of **index** is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t index | Keyframe index.<br>If the value of **index** is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_GetDuration()
 
@@ -1325,7 +1326,7 @@ Obtains the duration for playing an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.<br>If **option** is set to **NULL**, **0** is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.<br>If **option** is set to **NULL**, **0** is returned.|
 
 **Return value**
 
@@ -1351,7 +1352,7 @@ Obtains the delay for playing an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters. If **option** is set to **NULL**, **0** is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration. If **option** is set to **NULL**, **0** is returned.|
 
 **Return value**
 
@@ -1377,7 +1378,7 @@ Obtains the number of times that an animator animation is played.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. If **option** is set to **NULL**, **0** is returned.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration. If **option** is set to **NULL**, **0** is returned.|
 
 **Return value**
 
@@ -1403,13 +1404,13 @@ Obtains the status of the component before and after the animator animation exec
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | Status of the component before and after the animator animation execution. If **option** is invalid,**-1** is returned.|
+| [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode) | Status of the component before and after the animator animation execution. If **option** is invalid,**-1** is returned.|
 
 ### OH_ArkUI_AnimatorOption_GetDirection()
 
@@ -1429,13 +1430,13 @@ Obtains the playback direction of an animator animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) | Animation playback direction. If **option** is invalid,**-1** is returned.|
+| [ArkUI_AnimationDirection](capi-native-type-visual-h.md#arkui_animationdirection) | Animation playback direction. If **option** is invalid,**-1** is returned.|
 
 ### OH_ArkUI_AnimatorOption_GetCurve()
 
@@ -1455,7 +1456,7 @@ Obtains the interpolation curve of the animation of an animator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 
 **Return value**
 
@@ -1481,7 +1482,7 @@ Obtains the interpolation start point of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 
 **Return value**
 
@@ -1507,7 +1508,7 @@ Obtains the interpolation end point of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 
 **Return value**
 
@@ -1533,7 +1534,7 @@ Obtains the expected frame rate range of an animator animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 
 **Return value**
 
@@ -1559,7 +1560,7 @@ Obtains the keyframe time of the animator playback, in milliseconds.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 | int32_t index | Keyframe index.|
 
 **Return value**
@@ -1586,7 +1587,7 @@ Obtains the keyframe value of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 | int32_t index | Keyframe index.|
 
 **Return value**
@@ -1613,7 +1614,7 @@ Obtains the interpolation curve for a keyframe in the animation of an animator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 | int32_t index | Keyframe index.|
 
 **Return value**
@@ -1640,13 +1641,13 @@ Obtains the user-defined object in an animation event object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md)* event | Animation event object.|
+| [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md)* event | Pointer to the animation event object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| void* | User-defined object.|
+| void* | Pointer to the user-defined object.|
 
 ### OH_ArkUI_AnimatorOnFrameEvent_GetUserData()
 
@@ -1665,13 +1666,13 @@ Obtains the user-defined object in the frame event of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md)* event | Animation event object.|
+| [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md)* event | Pointer to the animation event object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| void* | User-defined object.|
+| void* | Pointer to the user-defined object.|
 
 ### OH_ArkUI_AnimatorOnFrameEvent_GetValue()
 
@@ -1690,7 +1691,7 @@ Obtains the interpolation result in the animation frame callback event object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md)* event | Animation event object.|
+| [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md)* event | Pointer to the animation event object.|
 
 **Return value**
 
@@ -1716,15 +1717,15 @@ Sets the callback invoked when the animator receives a frame.
 
 | Name                             | Description|
 |----------------------------------| -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
-| void* userData                         | User-defined parameter.|
-| void (\*callback)(ArkUI_AnimatorOnFrameEvent\* event)                         | Callback function.<br>- **event**: input parameter of the callback function, an animation event object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
+| void* userData                         | Pointer to a user-defined configuration.|
+| void (\*callback)(ArkUI_AnimatorOnFrameEvent\* event)                         | Pointer to the callback function.<br>- **event**: input parameter of the callback function, an animation event object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_RegisterOnFinishCallback()
 
@@ -1744,15 +1745,15 @@ Sets the callback invoked when the animation playback is complete.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
-| void* userData | User-defined parameter.|
-| void (\*callback)(ArkUI_AnimatorEvent\* event) | Callback function.<br>- **event**: input parameter of the callback function, an animation event object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
+| void* userData | Pointer to a user-defined configuration.|
+| void (\*callback)(ArkUI_AnimatorEvent\* event) | Pointer to the callback function.<br>- **event**: input parameter of the callback function, an animation event object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_RegisterOnCancelCallback()
 
@@ -1772,15 +1773,15 @@ Sets the callback invoked when the animation playback is canceled.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
-| void* userData | User-defined parameter.|
-| void (\*callback)(ArkUI_AnimatorEvent\* event) | Callback function.<br>- **event**: input parameter of the callback function, an animation event object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
+| void* userData | Pointer to a user-defined configuration.|
+| void (\*callback)(ArkUI_AnimatorEvent\* event) | Pointer to the callback function.<br>- **event**: input parameter of the callback function, an animation event object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback()
 
@@ -1800,15 +1801,15 @@ Sets the callback invoked when the animation playback is repeated.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
-| void* userData | User-defined parameter.|
-| void (\*callback)(ArkUI_AnimatorEvent\* event) | Callback function.<br>- **event**: input parameter of the callback function, an animation event object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
+| void* userData | Pointer to a user-defined configuration.|
+| void (\*callback)(ArkUI_AnimatorEvent\* event) | Pointer to the callback function.<br>- **event**: input parameter of the callback function, an animation event object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_Animator_ResetAnimatorOption()
 
@@ -1829,13 +1830,13 @@ Resets the animation of an animator.
 | Name                                                                            | Description|
 |---------------------------------------------------------------------------------| -- |
 | [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle                                         | Animator object.|
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_Animator_Play()
 
@@ -1861,7 +1862,7 @@ Starts the animation of an animator.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_Animator_Finish()
 
@@ -1887,7 +1888,7 @@ Ends the animation of an animator.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_Animator_Pause()
 
@@ -1913,7 +1914,7 @@ Pauses the animation of an animator.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_Animator_Cancel()
 
@@ -1939,7 +1940,7 @@ Cancels the animation of an animator.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_Animator_Reverse()
 
@@ -1965,7 +1966,7 @@ Plays this animation in reverse order.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_Curve_CreateCurveByType()
 
@@ -1985,7 +1986,7 @@ Implements initialization for the interpolation curve, which is used to create a
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) curve | Curve type.|
+| [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve) curve | Curve type.|
 
 **Return value**
 
@@ -2194,7 +2195,7 @@ Creates a custom curve.
 | Name| Description|
 | -- | -- |
 | void* userData | Pointer to user-defined data.|
-| float (\*interpolate)(float fraction, void\* userdata) | User-defined interpolation callback. **fraction** indicates the input x value for interpolation when the animation starts; value range: [0, 1]. The return value is the **y** value of the curve. value range: [0, 1]. If **fraction** is **0**, the return value **0** corresponds to the animation start point; any other return value means that the animation jumps at the start point. If **fraction** is **1**, the return value **1** corresponds to the animation end point; any other return value means that the end value of the animation is not the value of the state variable, which will result in an effect of transition from that end value to the value of the state variable.|
+| float (\*interpolate)(float fraction, void\* userdata) | Pointer to the user-defined interpolation callback. **fraction** indicates the input x value for interpolation when the animation starts; value range: [0, 1]. The return value is the **y** value of the curve. value range: [0, 1]. If **fraction** is **0**, the return value **0** corresponds to the animation start point; any other return value means that the animation jumps at the start point. If **fraction** is **1**, the return value **1** corresponds to the animation end point; any other return value means that the end value of the animation is not the value of the state variable, which will result in an effect of transition from that end value to the value of the state variable.|
 
 **Return value**
 
@@ -2231,7 +2232,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateOpacityTransitionEffect(float opacity)
 **Description**
 
 
-Creates an opacity effect object for component transitions.
+Creates an opacity effect object for component transition.
 
 **Since**: 12
 
@@ -2246,7 +2247,7 @@ Creates an opacity effect object for component transitions.
 
 | Type                         | Description|
 |-----------------------------| -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Opacity effect object for component transitions.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Pointer to the opacity effect object for component transition.|
 
 ### OH_ArkUI_CreateTranslationTransitionEffect()
 
@@ -2257,7 +2258,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateTranslationTransitionEffect(ArkUI_Transla
 **Description**
 
 
-Creates a translation effect object for component transitions.
+Creates a translation effect object for component transition.
 
 **Since**: 12
 
@@ -2266,13 +2267,13 @@ Creates a translation effect object for component transitions.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md)* translate | Translation parameter object for component transitions.|
+| [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md)* translate | Pointer to the translation parameter object for component transition.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Translation effect object for component transitions. Returns **NULL** if a parameter error occurs.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Pointer to the translation effect object for component transition. Returns **NULL** if a parameter error occurs.|
 
 ### OH_ArkUI_CreateScaleTransitionEffect()
 
@@ -2292,13 +2293,13 @@ Creates a scaling effect object for component transitions.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md)* scale | Scaling parameter object for component transitions.|
+| [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md)* scale | Pointer to the scaling parameter object for component transition.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Scaling effect object for component transitions. Returns **NULL** if a parameter error occurs.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Pointer to the scaling effect object for component transition. Returns **NULL** if a parameter error occurs.|
 
 ### OH_ArkUI_CreateRotationTransitionEffect()
 
@@ -2318,13 +2319,13 @@ Creates a rotation effect object for component transition.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md)* rotate | Rotation parameter object for component transitions.|
+| [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md)* rotate | Pointer to the rotation parameter object for component transition.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Rotation effect object for component transitions. Returns **NULL** if a parameter error occurs.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Pointer to the rotation effect object for component transition. Returns **NULL** if a parameter error occurs.|
 
 ### OH_ArkUI_CreateMovementTransitionEffect()
 
@@ -2344,13 +2345,13 @@ Creates a movement transition effect object for the component.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TransitionEdge](capi-native-type-h.md#arkui_transitionedge) edge | Movement transition type.|
+| [ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge) edge | Movement transition type.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Translation effect object for component transitions. Returns **NULL** if a parameter error occurs.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Pointer to the translation effect object for component transition. Returns **NULL** if a parameter error occurs.|
 
 ### OH_ArkUI_CreateAsymmetricTransitionEffect()
 
@@ -2374,14 +2375,34 @@ Creates an asymmetric transition effect.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* appear | Transition effect for appearance.|
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* disappear | Transition effect for disappearance.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* appear | Pointer to the transition effect for appearance.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* disappear | Pointer to the transition effect for disappearance.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Asymmetric transition effect. Returns **NULL** if a parameter error occurs.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Pointer to the asymmetric transition effect. Returns **NULL** if a parameter error occurs.|
+
+### OH_ArkUI_CreateIdentityTransitionEffect()
+
+```c
+ArkUI_TransitionEffect* OH_ArkUI_CreateIdentityTransitionEffect(void)
+```
+
+**Description**
+
+
+Creates an effect object with no transition.
+
+**Since:** 26.0.0
+
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | Pointer to the effect object with no transition. The caller needs to call [OH_ArkUI_TransitionEffect_Dispose](#oh_arkui_transitioneffect_dispose) to release the object.|
 
 ### OH_ArkUI_TransitionEffect_Dispose()
 
@@ -2421,14 +2442,14 @@ Sets a combination of transition effects.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* firstEffect | Transition effect.|
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* secondEffect | Combination of transition effects.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* firstEffect | Pointer to the transition effect.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* secondEffect | Pointer to the combination of transition effects.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_TransitionEffect_SetAnimation()
 
@@ -2452,11 +2473,11 @@ Sets transition effect animation settings.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* effect | Transition effect.|
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* animation | Animation settings.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* effect | Pointer to the transition effect.|
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* animation | Pointer to an animation configuration.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|

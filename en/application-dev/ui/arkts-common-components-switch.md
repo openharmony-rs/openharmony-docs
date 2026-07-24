@@ -36,7 +36,7 @@ The API can be called in either of the following ways:
   Toggle({ type: ToggleType.Checkbox, isOn: true }).id('toggle2') // Replace the value of id with the actual ID.
   ```
 
-  ![en-us_image_0000001562940485](figures/en-us_image_0000001562940485.png)
+  ![switch-checkbox-default](figures/switch-checkbox-default.png)
   
   <!-- @[create_toggle_with_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
   
@@ -45,7 +45,7 @@ The API can be called in either of the following ways:
   Toggle({ type: ToggleType.Switch, isOn: true }).id('toggle4') // Replace the value of id with the actual ID.
   ```
   
-    ![en-us_image_0000001511421228](figures/en-us_image_0000001511421228.png)
+    ![switch-create](figures/switch-create.png)
   
 - Create a toggle that contains a child component.
 
@@ -67,7 +67,7 @@ The API can be called in either of the following ways:
   }.width(100).id('toggle6') // Replace the value of id with the actual ID.
   ```
 
-    ![en-us_image_0000001511900404](figures/en-us_image_0000001511900404.png)
+    ![switch-checkbox](figures/switch-checkbox.png)
 
 
 ## Setting Styles
@@ -93,7 +93,7 @@ The API can be called in either of the following ways:
       // ···
   ```
 
-  ![en-us_image_0000001563060657](figures/en-us_image_0000001563060657.png)
+  ![switch-style](figures/switch-style.png)
 
 - Use the **switchPointColor** attribute to set the color of the circular slider. This attribute is valid only when **type** of the toggle is set to **ToggleType.Switch**.
 
@@ -108,7 +108,7 @@ The API can be called in either of the following ways:
     // ···
   ```
 
-  ![en-us_image_0000001511421232](figures/en-us_image_0000001511421232.png)
+  ![switch-custom](figures/switch-custom.png)
 
 
 ## Adding Events
@@ -185,5 +185,5 @@ export struct ToggleSample {
 ```
 
 
-![en-us_image_0000001511740448](figures/en-us_image_0000001511740448.gif)
+![switch-example](figures/switch-example.gif)
   

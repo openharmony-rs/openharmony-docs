@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 Bundle Manager（包管理工具，简称bm）是实现应用安装、卸载、更新、查询等功能的工具，bm为开发者提供基本的应用安装包的调试能力。
@@ -784,7 +784,7 @@ error: fail to verify pkcs7 file.
 
 error: install parse profile prop check error.
 
-![示例图](figures/zh-cn_image_0000001585361412.png)
+![示例图](figures/error-message02.png)
 
 **错误描述**
 
@@ -809,7 +809,7 @@ error: install parse profile prop check error.
 
            新的.cer文件格式如下图（仅作为格式示意，内容以实际为准）：
 
-           ![示例图](figures/zh-cn_image_0000001585521364.png)
+           ![示例图](figures/cer-file-example.png)
 
         * 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
 
@@ -820,7 +820,7 @@ error: install parse profile prop check error.
 
            如下图（仅作为格式示意，内容以实际为准）：
 
-           ![示例图](figures/zh-cn_image_0000001635921233.png)
+           ![示例图](figures/sha-256-fingerprint.png)
 
            去掉冒号后的签名指纹为：5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB。
 
@@ -846,7 +846,7 @@ error: install parse profile prop check error.
 
     3. 将步骤1获取到的签名指纹配置到install_list_capability.json文件的app_signature中，注意要配置到对应的bundleName下。
 
-       ![示例图](figures/zh-cn_image_0000001635641893.png)
+       ![示例图](figures/error-message05.png)
 
     4. 将修改后的install_list_capability.json文件重新推到设备上，并重启设备。
 
@@ -878,15 +878,15 @@ error: Failed to install the HAP or HSP because the dependent module does not ex
 
 * 方法一：先通过[bm install -p](#安装命令install)命令安装依赖的动态共享包（HSP）模块，再在应用运行配置页勾选Keep Application Data，点击OK保存配置，再运行/调试。
 
-  ![示例图](figures/zh-cn_image_0000001560201786.png)
+  ![示例图](figures/method1.png)
 
 * 方法二：在运行配置页，选择Deploy Multi Hap标签页，勾选Deploy Multi Hap Packages，选择依赖的模块，点击OK保存配置，再进行运行/调试。
 
-  ![示例图](figures/zh-cn_image_0000001610761941.png)
+  ![示例图](figures/method2.png)
 
 * 方法三：单击Run > Edit Configurations，在General中，勾选Auto Dependencies。点击OK保存配置，再运行/调试。
 
-  ![示例图](figures/zh-cn_image_9568305.png)
+  ![示例图](figures/method3.png)
 
 场景二：依赖的HSP与HAP不在同一工程内：
 
@@ -906,7 +906,7 @@ DevEco Studio自动安装运行应用时，查看`Run`中的日志，如果存�
 
 error: install parse profile missing prop.
 
-![示例图](figures/zh-cn_image_0000001559130596.png)
+![示例图](figures/error-message.png)
 
 **错误描述**
 
@@ -936,7 +936,7 @@ error: install parse profile missing prop.
 
 error: install releaseType target not same.
 
-![示例图](figures/zh-cn_image_0000001609976041.png)
+![示例图](figures/error-message03.png)
 
 **错误描述**
 
@@ -1121,7 +1121,7 @@ error: install file path invalid.
 
 error: signature verification failed due to not trusted app source.
 
-![示例图](figures/zh-cn_image_0000001585042216.png)
+![示例图](figures/error-message01.png)
 
 **错误描述**
 
@@ -1212,7 +1212,7 @@ hdc shell df -h /data
 
 error: install failed due to grant request permissions failed.<br>
 
-![示例图](figures/zh-cn_image_9568289.png)
+![示例图](figures/error-message07.png)
 
 **错误描述**
 
@@ -1315,7 +1315,7 @@ error: install failed due to apptype not same.
 
 error: install failed due to older sdk version in the device.
 
-![示例图](figures/zh-cn_image_0000001635521909.png)
+![示例图](figures/error-message04.png)
 
 **错误描述**
 
@@ -1377,7 +1377,7 @@ error: moduleName is not unique.
 
 error: install sign info inconsistent.
 
-![示例图](figures/zh-cn_image_0000001635761329.png)
+![示例图](figures/error-message06.png)
 
 **错误描述**
 
@@ -1400,7 +1400,7 @@ error: install sign info inconsistent.
 
 error: verify signature failed.
 
-![示例图](figures/zh-cn_image_155401.png)
+![示例图](figures/error-message08.png)
 
 **错误描述**
 
@@ -1425,7 +1425,7 @@ error: verify signature failed.
 
 error: install permission denied.
 
-![示例图](figures/zh-cn_image_9568266.png)
+![示例图](figures/error-message09.png)
 
 **错误描述**
 
@@ -2523,11 +2523,11 @@ error: installd set selinux label failed.
 
 1. 确认签名文件p7b中apl字段是否有误。
 
-    ![示例图](figures/zh-cn_image_9568359.png)
+    ![示例图](figures/error-message10.png)
 
 2. 若apl字段有误，修改UnsgnedReleasedProfileTemplate.json文件中apl字段，并重新签名。
 
-    ![示例图](figures/zh-cn_image_9568359_2.png)
+    ![示例图](figures/error-message11.png)
 
 
 ### 9568360 安装overlay应用出现错误
@@ -3161,7 +3161,7 @@ error: install parse native so failed.
       cd /system/
       ls
       ```
-      ![示例图](figures/zh-cn_image_0000001609001262.png)
+      ![示例图](figures/check-lib64.png)
       * 存在lib64文件夹：则“abiFilters”参数中需要包含arm64-v8a类型。
       * 不存在lib64文件夹：则“abiFilters”参数中需要至少包含armeabi/armeabi-v7a中的一个类型。<!--DelEnd-->
 

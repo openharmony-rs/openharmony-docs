@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Rating** component provides a rating bar.
+The **Rating** component is used to select a rating within a given range, which is typically suitable for application scenarios such as product reviews and content rating.
 
 >  **NOTE**
 >
@@ -42,7 +42,7 @@ Rating(options?: RatingOptions)
 
 stars(value: number)
 
-Sets the total number of stars. Values less than 0 are treated as the default value.
+Sets the total number of stars. The default value is **5**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -54,17 +54,19 @@ Sets the total number of stars. Values less than 0 are treated as the default va
 
 | Name| Type  | Mandatory| Description                        |
 | ------ | ------ | ---- | ---------------------------- |
-| value  | number | Yes  | Total number of stars.<br>Default value: **5**|
+| value  | number | Yes  | Total number of stars.<br>Value range: greater than 0. Values less than or equal to 0 are treated as **5**.|
 
 ### stars<sup>18+</sup>
 
 stars(starCount: Optional\<number>)
 
-Sets the total number of stars. Values less than 0 are treated as the default value. Compared with [stars](#stars), this API supports the **undefined** type for the **starCount** parameter.
+Sets the total number of stars. Compared with [stars](#stars), this API supports the **undefined** type for the **starCount** parameter. If **starCount** is set to **undefined**, the default value **5** is used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,13 +74,13 @@ Sets the total number of stars. Values less than 0 are treated as the default va
 
 | Name   | Type                                                        | Mandatory| Description                                                      |
 | --------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| starCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | Yes  | Total number of stars.<br>If **starCount** is set to **undefined**, the default value **5** is used.|
+| starCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | Yes  | Total number of stars.<br>Value range: greater than 0. If the value is less than or equal to 0 or is **undefined**, the value **5** is displayed.|
 
 ### stepSize
 
 stepSize(value: number)
 
-Sets the step for rating. Values less than 0.1 are treated as the default value.
+Sets the step for rating. Values less than 0.1 are treated as the default value. The default value is **0.5**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -90,17 +92,19 @@ Sets the step for rating. Values less than 0.1 are treated as the default value.
 
 | Name| Type  | Mandatory| Description                                                       |
 | ------ | ------ | ---- | ----------------------------------------------------------- |
-| value  | number | Yes  | Step for rating.<br>Default value: **0.5**<br>Value range: [0.1, stars]|
+| value  | number | Yes  | Step for rating.<br>Value range: [0.1, stars]|
 
 ### stepSize<sup>18+</sup>
 
 stepSize(size: Optional\<number>)
 
-Sets the step for rating. Values less than 0.1 are treated as the default value. Compared with [stepSize](#stepsize), this API supports the **undefined** type for the **size** parameter.
+Sets the step for rating. Values less than 0.1 are treated as the default value. Compared with [stepSize](#stepsize), this API supports the **undefined** type for the **size** parameter. If **size** is set to **undefined**, the default value **0.5** is used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,6 +152,8 @@ Compared with [starStyle](#starstyle), this API supports the **undefined** type 
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -166,9 +172,11 @@ Compared with [starStyle](#starstyle), this API supports the **undefined** type 
 
 contentModifier(modifier: ContentModifier\<RatingConfiguration>)
 
-Creates a content modifier.
+Creates a content modifier. You need to customize a class to implement the **ContentModifier** API and return **WrappedBuilder** in the **applyContent** API to redefine the rendering logic of the content area of the **Rating** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,15 +184,17 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<RatingConfiguration>](#ratingconfiguration12) | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | ContentModifier\<[RatingConfiguration](#ratingconfiguration12)>| Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
 
 ### contentModifier<sup>18+</sup>
 
 contentModifier(modifier: Optional<ContentModifier\<RatingConfiguration>>)
 
-Creates a content modifier. Compared with [contentModifier](#contentmodifier12), this API supports the **undefined** type for the **modifier** parameter.
+Creates a content modifier. Compared with [contentModifier](#contentmodifier12), this API supports the **undefined** type for the **modifier** parameter. If **modifier** is set to **undefined**, no content modifier is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,7 +202,7 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier12),
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier\<RatingConfiguration>](#ratingconfiguration12)> | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<ContentModifier\<[RatingConfiguration](#ratingconfiguration12)>>| Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
 
 ## Events
 
@@ -200,7 +210,7 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier12),
 
 onChange(callback:(value:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-Triggered when the rating value changes.
+Called when the rating value changes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -212,17 +222,19 @@ Triggered when the rating value changes.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| value  | number | Yes  | Rating value.|
+| value  | number | Yes  | Rating value. The value range is [0, **stars**], and the precision is affected by **stepSize**.|
 
 ### onChange<sup>18+</sup>
 
 onChange(callback:Optional\<OnRatingChangeCallback>)
 
-Triggered when the rating value changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Called when the rating value changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter. If **callback** is set to **undefined**, the callback function is not used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,15 +242,17 @@ Triggered when the rating value changes. Compared with [onChange](#onchange), th
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRatingChangeCallback](#onratingchangecallback18)> | Yes  | Defines the callback triggered when the rating value changes.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRatingChangeCallback](#onratingchangecallback18)> | Yes  | Called when the rating value changes.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ## OnRatingChangeCallback<sup>18+</sup>
 
 type OnRatingChangeCallback = (rating: number) => void
 
-Defines the callback triggered when the rating value changes.
+Called when the rating value changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,16 +260,16 @@ Defines the callback triggered when the rating value changes.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rating | number | Yes  | Rating value.|
+| rating | number | Yes  | Rating value. The value range is [0, **stars**].|
 
 ## Sequential Keyboard Navigation Specifications                                   
 | Key        | Description                       |
 |------------|-----------------------------|
 | Tab        | Switch the focus between components.                   |
-| Left and right arrow keys  | Increase or decrease the rating on preview at the specified step, without changing the actual rating.|
+| Left and right arrow keys  | Increase or decrease the rating on preview at the specified step (set by **stepSize**), without changing the actual rating.|
 | Home       | Move the focus to the first star, without changing the actual rating.         |
 | End        | Move the focus to the last star, without changing the actual rating.        |
-| Space/Enter | Submit the rating result based on the current rating.              |
+| Space/Enter | Set the currently previewed rating value as the actual rating.              |
 
 ## RatingConfiguration<sup>12+</sup>
 
@@ -263,15 +277,17 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| rating    | number  | No| No| Value to rate.<br>Default value: **0**<br>Value range: [0, stars]<br>Values less than 0 are treated as **0**, and values greater than the value of [stars](#stars) are treated as the value of **stars**.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
+| rating    | number  | No| No| Value to rate.<br>Default value: **0**<br>Value range: [0, stars]<br>If the value is less than 0, 0 is used. If the value is greater than the value of [stars](#stars), the value of [stars](#stars) is used.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
 | indicator | boolean | No| No| Whether the rating bar is used as an indicator. **true**: used as an indicator. **false**: not used as an indicator.<br>Default value: **false**|
-| stars | number | No| No|Total number of ratings.<br>Default value: **5**|
-| stepSize | number | No| No|Step of an operation.<br>Default value: **0.5**|
-| triggerChange | Callback\<number> | No| No|Callback triggered when the rating value changes.|
+| stars | number | No| No|Total number of stars.<br>Default value: **5**<br>Value range: greater than 0. Values less than or equal to 0 are treated as the default value.<br>This parameter also defines the maximum values of both **rating** and **stepSize**.|
+| stepSize | number | No| No|Step of an operation.<br>Default value: **0.5**<br>Value range: [0.1, stars]|
+| triggerChange | [Callback](ts-types.md#callback12)\<number> | No| No|Called when the rating value changes. The parameter is the new rating value.|
 
 ## RatingOptions<sup>18+</sup>
 
@@ -285,12 +301,14 @@ Provides configuration options for the **Rating** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                  | Type   | Read-Only| Optional| Description                                                        |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | rating<sup>7+</sup>    | number  | No  | No  | Value to rate.<br>Default value: **0**<br>Value range: [0, stars]<br>Values less than 0 are treated as **0**, and values greater than the value of [stars](#stars) are treated as the value of **stars**.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| indicator<sup>7+</sup> | boolean | No  | Yes  | Whether the component is used as an indicator. If this parameter is set to **true**, the rating value cannot be changed.<br>Default value: **false**<br>**NOTE**<br>When **indicator** is set to **true**, the default component height is 12.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>When **indicator** is set to **false**, the default component height is 28.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| indicator<sup>7+</sup> | boolean | No  | Yes  | Whether the **Rating** component is used as an indicator. The value **true** indicates the component is used as an indicator without changing the rating. The value **false** indicates the component is not used as an indicator and the rating can be changed.<br>Default value: **false**<br>**NOTE**<br>When **indicator** is set to **true**, the default component height is 12.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>When **indicator** is set to **false**, the default component height is 28.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## StarStyleOptions<sup>18+</sup>
 
@@ -304,17 +322,19 @@ Provides style settings for the selected, unselected, and partially selected sta
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                      | Type  | Read-Only| Optional| Description                                                        |
 | -------------------------- | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the unselected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](#example-3-setting-the-rating-style-through-resource-configuration).|
-| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](#example-3-setting-the-rating-style-through-resource-configuration).|
-| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Image path for the partially selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](#example-3-setting-the-rating-style-through-resource-configuration).|
+| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the unselected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Since API version 20, this parameter supports **Resource** configuration. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](#example-3-setting-the-rating-style-through-resource-configuration).|
+| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Since API version 20, this parameter supports **Resource** configuration. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](#example-3-setting-the-rating-style-through-resource-configuration).|
+| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Image path for the partially selected star. You can use the default system image or a custom image. If this parameter is not set, **backgroundUri** is used preferentially. The effect is the same as that when only **foregroundUri** and **backgroundUri** are set.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Since API version 20, this parameter supports **Resource** configuration. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](#example-3-setting-the-rating-style-through-resource-configuration).|
 
 > **NOTE**
 >
-> The string type can be used to load network images and local images. When a relative path is used to reference a local image, for example, **Image("common/test.jpg")**, the **common** directory must be placed at the same level as the **pages** directory. Base64-encoded strings are also supported.
+> The string type can be used to load network images and local images, and also supports Base64 strings. When a local image is referenced through a relative path, for example, Image("common/test.jpg"), the **common** directory must be at the same level as the **pages** directory.
 
 ## Example
 
@@ -332,6 +352,7 @@ struct RatingExample {
   build() {
     Column() {
       Column() {
+        // Create a Rating component and set the initial rating and interaction mode.
         Rating({ rating: this.rating, indicator: false })
           .stars(5)
           .stepSize(0.5)
@@ -377,10 +398,11 @@ struct RatingExample {
 ![rating](figures/rating.gif)
 
 ### Example 2: Implementing a Custom Rating Bar
-This example implements a custom rating bar, with each circle representing 0.5 point. When **ratingIndicator** is set to **true**, the rating bar acts as an indicator and the value cannot be changed. When **ratingIndicator** is set to **false**, the rating is interactive. **ratingStars** sets the total number of stars, and **ratingStepSize** sets the increment step.
+This example implements a custom rating bar, where each circle represents 0.5 points. When **ratingIndicator** is set to **true**, the rating bar is used as an indicator and the rating cannot be changed. **ratingStars** sets the total number of stars, and **ratingStepSize** sets the increment step.
 
 ```ts
 // xxx.ets
+// Set a rating style class and implement the **ContentModifier** API to customize the content area of the Rating component.
 class MyRatingStyle implements ContentModifier<RatingConfiguration> {
   name: string = "";
   style: number = 0;
@@ -401,6 +423,7 @@ function buildRating(config: RatingConfiguration) {
     Row() {
       Circle({ width: 25, height: 25 })
         .fill(config.rating >= 0.4 ? Color.Black : Color.Red)
+        // In non-indicator mode, trigger the corresponding rating change based on the step.
         .onClick((event: ClickEvent) => {
           if (!config.indicator) {
             if (config.stepSize === 0.5) {
@@ -512,12 +535,11 @@ function buildRating(config: RatingConfiguration) {
 
 @Entry
 @Component
-struct ratingExample {
+struct RatingExample {
   @State rating: number = 0;
   @State ratingIndicator: boolean = true;
   @State ratingStars: number = 0;
   @State ratingStepSize: number = 0.5;
-  @State ratingEnabled: boolean = true;
 
   build() {
     Row() {
@@ -593,14 +615,15 @@ struct RatingExample {
 
   build() {
     Column() {
+      // Create a Rating component and set the star style through Resource configuration.
       Rating({ rating: this.rating, indicator: false })
         .stars(5)
         .stepSize(0.5)
         .starStyle({
           // Replace $r('app.media.xxx') with the image resource file you use.
-          backgroundUri: $r('app.media.imag1'),
-          foregroundUri: $r('app.media.imag2'),
-          secondaryUri: $r('app.media.imag3')
+          backgroundUri: $r('app.media.image1'),
+          foregroundUri: $r('app.media.image2'),
+          secondaryUri: $r('app.media.image3')
         })
         .margin({ top: 24 })
         .onChange((value: number) => {
@@ -623,7 +646,7 @@ This example shows how to customize the star images by configuring **starStyle**
 
 > **Note**
 >
-> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** > **resOptions** > **copyCodeResource** in the module's **build-profile.json5** file, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348).
 
 ```ts
 // xxx.ets
@@ -634,6 +657,7 @@ struct RatingExample {
 
   build() {
     Column() {
+      // Create a Rating component and set the star style through the local image path.
       Rating({ rating: this.rating, indicator: false })
         .stars(5)
         .stepSize(0.5)

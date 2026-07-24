@@ -136,7 +136,7 @@ struct RepeatExampleWithTemplates {
           .key((item: string, index: number): string => JSON.stringify(item)) // 键值生成函数
           .virtualScroll({ totalCount: this.dataArr.length }) // 打开懒加载，totalCount为期望加载的数据长度
           .templateId((item: string, index: number): string => { // 根据返回值寻找对应的模板子组件进行渲染
-            return index <= 4 ? 'A' : (index <= 10 ? 'B' : ''); // 前5个节点模板为A，接下来的5个为B，其余为默认模板
+            return index <= 4 ? 'A' : (index <= 10 ? 'B' : ''); // 前5个节点模板为A，接下来的6个为B，其余为默认模板
           })
           .template('A', (ri: RepeatItem<string>) => { // 'A'模板
             ListItem() {
@@ -706,17 +706,6 @@ struct PreInsertDemo {
 
 从API version 24开始，当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)时，Repeat支持通过[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口为其显示区域内的子组件设置过渡动画效果。
 
-该能力默认关闭。可以在工程的[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置[metadata](../../quick-start/module-configuration-file.md#配置文件标签)字段控制是否启用该能力，配置如下：
-
-```json
-"metadata": [
-  {
-    "name": "enableRepeatAnimation",
-    "value": "true"
-  }
-]
-```
-
 Repeat子组件过渡动画的判定规则如下：
 1. 子组件从外部进入显示区域和预加载区域时，将被判定为插入组件。
 2. 子组件从内部离开显示区域和预加载区域时，将被判定为删除组件（仅懒加载模式）。
@@ -938,23 +927,27 @@ struct RepeatVirtualScroll {
           })
           .virtualScroll({ totalCount: this.simpleList.length })
           .templateId((item: Repeat006Clazz, index: number) => {
-            return (index % 2 === 0) ? 'odd' : 'even';
+            return (index % 2 === 0) ? 'even' : 'odd';
           })
           .template('odd', (ri) => {
-            Text(`[odd] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
-              .fontColor(Color.Blue)
-              .onClick(() => {
-                this.handleExchange(ri.index);
-              })
+            ListItem() {
+              Text(`[odd] index${ri.index}: ${ri.item.message}`)
+                .fontSize(25)
+                .fontColor(Color.Blue)
+                .onClick(() => {
+                  this.handleExchange(ri.index);
+                })
+            }
           }, { cachedCount: 3 })
           .template('even', (ri) => {
-            Text(`[even] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
-              .fontColor(Color.Green)
-              .onClick(() => {
-                this.handleExchange(ri.index);
-              })
+            ListItem() {
+              Text(`[even] index${ri.index}: ${ri.item.message}`)
+                .fontSize(25)
+                .fontColor(Color.Green)
+                .onClick(() => {
+                  this.handleExchange(ri.index);
+                })
+            }
           }, { cachedCount: 1 })
       }
       .cachedCount(2)
@@ -969,7 +962,7 @@ struct RepeatVirtualScroll {
 }
 ```
 
-该示例代码展示了100项自定义类`RepeatClazz`的`message`字符串属性，[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性设为2，模板'odd'和'even'的空闲节点缓存池大小分别设为3和1。运行后界面如下图所示：
+该示例代码展示了100项自定义类`Repeat006Clazz`的`message`字符串属性，[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性设为2，模板'odd'和'even'的空闲节点缓存池大小分别设为3和1。运行后界面如下图所示：
 
 ![Repeat-VirtualScroll-2T-Demo](figures/Repeat-VirtualScroll-2T-Demo.gif)
 

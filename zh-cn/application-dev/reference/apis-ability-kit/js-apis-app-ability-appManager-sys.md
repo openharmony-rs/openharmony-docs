@@ -40,7 +40,7 @@ import { appManager } from '@kit.AbilityKit';
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | 名称        | 值  | 说明 |
 | -------- | ---------- | -------- |
@@ -54,7 +54,7 @@ import { appManager } from '@kit.AbilityKit';
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | 名称        | 值  | 说明 |
 | -------- | ---------- | -------- |
@@ -73,8 +73,8 @@ import { appManager } from '@kit.AbilityKit';
 | ------------------------- | ------ | ---- | ---- | --------- |
 | bundleName   | string | 否 | 否  | Bundle名称。 |
 | type       | [KeepAliveAppType](#keepaliveapptype14) | 否 | 否 | 表示被保活应用的应用类型。   |
-| setter       | [KeepAliveSetter](#keepalivesetter14) | 否 | 否 | 表示应用保活设置者类型。   |
-| setterUserId<sup>20+</sup>   | number | 否 | 是  | 应用保活设置者的用户ID。 |
+| setter       | [KeepAliveSetter](#keepalivesetter14) | 否 | 否 | 表示应用保活设置方类型。   |
+| setterUserId<sup>20+</sup>   | number | 否 | 是  | 应用保活设置方的用户ID。 |
 | allowUserToCancel<sup>20+</sup>   | boolean | 否 | 是  | 表示是否允许用户取消保活。true表示允许，false表示不允许。 |
 
 ## appManager.isSharedBundleRunning<sup>10+</sup>
@@ -100,7 +100,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<boolean> | Promise对象。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
+| Promise\<boolean> | Promise对象。返回true表示共享库正在使用，返回false表示共享库不在使用中。 |
 
 **错误码**：
 
@@ -119,7 +119,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const bundleName = "this is a bundleName";
+const bundleName = 'this is a bundleName';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
@@ -147,7 +147,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCa
 | --------- | ---------------------------------------- | ---- | -------------- |
 | bundleName    | string   | 是    | 表示要查询的共享库包名。 |
 | versionCode   | number   | 是    | 表示要查询的共享库版本号。      |
-| callback    | AsyncCallback\<boolean>> | 是    | 回调函数。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
+| callback    | AsyncCallback\<boolean> | 是    | 回调函数。返回true表示共享库正在使用，返回false表示共享库不在使用中。 |
 
 **错误码**：
 
@@ -165,7 +165,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCa
 ```ts
 import { appManager } from '@kit.AbilityKit';
 
-const bundleName = "this is a bundleName";
+const bundleName = 'this is a bundleName';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
@@ -181,7 +181,7 @@ appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
 
 on(type: 'appForegroundState', observer: AppForegroundStateObserver): void
 
-注册应用启动和退出的监听器，可用于系统应用监听所有应用的启动和退出。
+注册应用启动、前后台和退出的监听器，可用于系统应用监听所有应用的启动、前后台和退出。
 
 **系统接口**：此接口为系统接口。
 
@@ -194,7 +194,7 @@ on(type: 'appForegroundState', observer: AppForegroundStateObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 调用接口类型，固定填'appForegroundState'字符串。 |
-| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 是 | 应用状态监听器，用于监听应用的启动和退出。 |
+| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 是 | 应用状态监听器，用于监听应用的启动、前后台和退出。 |
 
 **错误码**：
 
@@ -267,7 +267,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityFirstFrameStateObserverForAll: appManager.AbilityFirstFrameStateObserver = {
   onAbilityFirstFrameDrawn(abilityStateData: appManager.AbilityFirstFrameStateData) {
-    console.info("abilityFirstFrame: ", JSON.stringify(abilityStateData));
+    console.info('abilityFirstFrame: ', JSON.stringify(abilityStateData));
   }
 };
 
@@ -284,7 +284,7 @@ try {
 
 off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 
-注销应用启动和退出的监听器。
+注销应用启动、前后台和退出的监听器。
 
 **系统接口**：此接口为系统接口。
 
@@ -297,7 +297,7 @@ off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 调用接口类型，固定填'appForegroundState'字符串。|
-| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 否 | 取消注册的应用启动和退出监听器。|
+| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 否 | 取消注册的应用启动、前后台和退出监听器，不填表示取消所有监听对象。|
 
 **错误码**：
 
@@ -316,7 +316,7 @@ off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let observer_: appManager.AppForegroundStateObserver | undefined;
+let savedObserver: appManager.AppForegroundStateObserver | undefined;
 // 1.注册应用启动和退出的监听器
 let observer: appManager.AppForegroundStateObserver = {
   onAppStateChanged(appStateData: appManager.AppStateData) {
@@ -327,7 +327,7 @@ let observer: appManager.AppForegroundStateObserver = {
 try {
   appManager.on('appForegroundState', observer);
   // 保存observer对象，用于注销
-  observer_ = observer;
+  savedObserver = observer;
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -336,7 +336,7 @@ try {
 
 // 2.注销监听器
 try {
-  appManager.off('appForegroundState',  observer_);
+  appManager.off('appForegroundState',  savedObserver);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -382,7 +382,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityFirstFrameStateObserverForAll: appManager.AbilityFirstFrameStateObserver = {
   onAbilityFirstFrameDrawn(abilityStateData: appManager.AbilityFirstFrameStateData) {
-    console.info("abilityFirstFrame: ", JSON.stringify(abilityStateData));
+    console.info('abilityFirstFrame: ', JSON.stringify(abilityStateData));
   }
 };
 
@@ -437,6 +437,7 @@ on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStat
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.|
 
 **示例：**
@@ -588,13 +589,16 @@ appManager.getForegroundApplications().then((data) => {
 
 killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 
-终止account进程。使用Promise异步回调。
+终止指定系统账号下的应用进程。使用Promise异步回调。
 
 > **说明：**
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.KILL_APP_PROCESSES或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -611,7 +615,7 @@ killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 
 | 类型             | 说明              |
 | -------------- | --------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -650,13 +654,13 @@ try {
 
 killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: boolean, appIndex?: number): Promise\<void\>
 
-终止account进程。使用Promise异步回调。
+终止指定系统账号下的应用进程。使用Promise异步回调。
 
 > **说明：**
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.KILL_APP_PROCESSES或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -669,7 +673,7 @@ killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: bo
 | bundleName | string | 是 | Bundle名称。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)。 |
 | clearPageStack | boolean | 是 | 表示是否清除页面堆栈。true表示清除，false表示不清除。 |
-| appIndex | number | 否 | 应用分身ID。 |
+| appIndex | number | 否 | 应用分身ID。取值范围：≥0，默认值为0表示主应用。当需要终止指定分身应用的进程时传入此参数，不传入时默认处理主应用。 |
 
 **返回值：**
 
@@ -685,7 +689,7 @@ killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: bo
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -722,7 +726,10 @@ killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCal
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.KILL_APP_PROCESSES或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -769,11 +776,14 @@ appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountC
 
 ## appManager.killProcessesByBundleName
 
-killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
+killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>): void
 
 通过Bundle名称终止进程。使用callback异步回调。
 
-**需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.KILL_APP_PROCESSES或ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -828,7 +838,10 @@ killProcessesByBundleName(bundleName: string): Promise\<void>
 
 通过Bundle名称终止进程。使用Promise异步回调。
 
-**需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.KILL_APP_PROCESSES或ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1126,7 +1139,7 @@ getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback\<A
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
   if (err) {
     console.error(`getRunningProcessInfoByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
@@ -1182,7 +1195,7 @@ getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessIn
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 
 try {
   appManager.getRunningProcessInfoByBundleName(bundleName).then((data) => {
@@ -1231,7 +1244,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: 
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 let userId = 0;
 function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
   if (err) {
@@ -1289,7 +1302,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 let userId = 0;
 
 try {
@@ -1346,7 +1359,7 @@ isApplicationRunning(bundleName: string): Promise\<boolean>
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "com.example.myapplication";
+let bundleName = 'com.example.myapplication';
 
 appManager.isApplicationRunning(bundleName).then((data) => {
   console.info(`The application running is: ${JSON.stringify(data)}`);
@@ -1391,7 +1404,7 @@ isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): voi
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "com.example.myapplication";
+let bundleName = 'com.example.myapplication';
 
 try {
   appManager.isApplicationRunning(bundleName, (err, data) => {
@@ -1429,7 +1442,7 @@ try {
 
 getRunningProcessInformationByBundleType(bundleType: bundleManager.BundleType): Promise\<Array\<ProcessInformation>>
 
-根据包类型获取当前运行进程的有关信息。使用Promise异步回调。
+根据包类型获取当前运行进程的有关信息，可用于运行进程的分类管理或资源监控等。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1486,6 +1499,10 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 
 预加载应用进程。接口返回成功并不代表预加载成功，具体结果以目标应用进程是否创建成功为准。使用Promise异步回调。
 
+> **说明：**
+>
+> 该接口不支持预加载分身应用，参数appIndex只能传0，传其他值会返回16000050错误码。
+
 **需要权限**：ohos.permission.PRELOAD_APPLICATION
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -1501,7 +1518,7 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 | bundleName | string | 是 | 预加载的应用包名。 |
 | userId | number | 是 | 预加载的用户Id。 |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | 是 | 预加载模式。 |
-| appIndex | number | 否 | 预加载应用分身的appIndex。 |
+| appIndex | number | 否 | 预加载应用分身的appIndex，该参数只能传0，当前不支持预加载分身应用。 |
 
 **返回值：**
 
@@ -1517,7 +1534,7 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 | ------- | -------- |
 | 201 | The application does not have permission to call the interface. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16300005 | The target bundle does not exist. |
 
@@ -1529,7 +1546,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
   let userId = 100;
   let mode = appManager.PreloadMode.PRESS_DOWN;
   let appIndex = 0;
@@ -1549,7 +1566,7 @@ try {
 
 getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
-根据应用包名获取系统中运行态的应用多开（即在一个设备上运行多个相同的应用）的相关信息。使用Promise异步回调。
+根据应用包名获取系统中运行态的应用多开（即在一个设备上运行多个相同的应用）的相关信息，可用于多实例管理或资源分配等。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -1579,7 +1596,7 @@ getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000072 | App clone or multi-instance is not supported. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 
@@ -1591,7 +1608,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
   appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
       hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
     }).catch((err: BusinessError) => {
@@ -1672,7 +1689,7 @@ struct Index {
 
 getSupportedProcessCachePids(bundleName : string): Promise\<Array\<number>>
 
-查询当前应用中支持缓存后快速启动的进程PID。使用Promise异步回调。
+查询当前应用中支持缓存后快速启动的进程PID，可用于进程管理。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1718,7 +1735,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.processcache";
+  let bundleName = 'ohos.samples.processcache';
   appManager.getSupportedProcessCachePids(bundleName).then((pids: Array<number>) => {
       hilog.info(0x0000, 'testTag', `pids: ${JSON.stringify(pids)}`);
     }).catch((err: BusinessError) => {
@@ -1746,7 +1763,7 @@ clearUpAppData(bundleName: string, appCloneIndex?: number): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| appCloneIndex | number | 否 | 表示应用分身索引。 |
+| appCloneIndex | number | 否 | 表示应用分身索引。当需要清除指定分身应用的数据时传入此参数，不传入时默认清除主应用数据（appCloneIndex为0）。 |
 
 **返回值：**
 
@@ -1797,14 +1814,14 @@ setKeepAliveForBundle(bundleName: string, userId: number, enable: boolean): Prom
 > **说明：**
 >
 >- 应用如果需要支持保活，其[module.json5配置文件](../../quick-start/module-configuration-file.md)中的mainElement必须是UIAbility。只有当mainElement启动后，系统才会执行应用保活操作。
->- 在2in1设备上，被保活的应用需要在启动后5秒内添加至状态栏。否则，系统将取消该应用的保活设置，并杀死保活重启的进程。
+>- 在PC/2in1设备上，被保活的应用需要在启动后5秒内添加至状态栏。否则，系统将取消该应用的保活设置，并杀死保活重启的进程。
 >- 当被保活的应用进程退出时，系统将尝试重启该进程，连续3次重启失败后将不再继续重启。
 
 **需要权限**：ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：从API version 18开始，该接口仅在2in1和Wearable设备上生效。对于API version 18之前版本，该接口仅在2in1设备上生效。其他情况下调用该接口将返回错误码801。
+**设备行为差异**：从API version 18开始，该接口仅在2in1和Wearable设备上生效。对于API version 18之前版本，该接口仅在PC/2in1设备上生效。其他情况下调用该接口将返回错误码801。
 
 **系统接口**：此接口为系统接口。
 
@@ -1845,7 +1862,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.keepaliveapp";
+  let bundleName = 'ohos.samples.keepaliveapp';
   let userId = 100;
   appManager.setKeepAliveForBundle(bundleName, userId, true).then(() => {
     console.info(`setKeepAliveForBundle success`);
@@ -1863,7 +1880,7 @@ try {
 
 getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<KeepAliveBundleInfo>>
 
-获取指定用户下指定类型的保活应用信息。该应用信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义。使用Promise异步回调。
+获取指定用户下指定类型的保活应用信息，可用于保活应用管理或资源监控等。该应用信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -1878,7 +1895,7 @@ getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<Ke
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type    | [KeepAliveAppType](#keepaliveapptype14)   | 是    | 表示要查询的保活应用类型。 |
-| userId    | number   | 否    | 表示要设置保活应用所属的用户ID。 |
+| userId    | number   | 否    | 表示要查询保活应用所属的用户ID。当需要查询特定用户下的保活应用时传入此参数，不传入时默认查询当前用户下的保活应用。 |
 
 **返回值：**
 
@@ -2030,7 +2047,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.keepaliveapp";
+  let bundleName = 'ohos.samples.keepaliveapp';
   appManager.setKeepAliveForAppServiceExtension(bundleName, true).then(() => {
     console.info(`setKeepAliveForAppServiceExtension success`);
   }).catch((err: BusinessError) => {
@@ -2047,8 +2064,7 @@ try {
 
 getKeepAliveAppServiceExtensions(): Promise\<Array\<KeepAliveBundleInfo>>
 
-获取所有保活的AppServiceExtensionAbility应用信息，此信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义。使用Promise异步回调。
-
+获取所有保活的AppServiceExtensionAbility应用信息，此信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义，可用于服务管理或资源监控。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -2118,9 +2134,11 @@ getProcessRunningInfos(): Promise\<Array\<ProcessInformation>>
 
 **错误码**：
 
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例：**
     
@@ -2164,7 +2182,7 @@ getProcessRunningInfos(callback: AsyncCallback\<Array\<ProcessInformation>>): vo
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例：**
     
@@ -2182,19 +2200,19 @@ getProcessRunningInfos(callback: AsyncCallback\<Array\<ProcessInformation>>): vo
 
 ## AppForegroundStateObserver<sup>11+</sup>
 
-type AppForegroundStateObserver = _AppForegroundStateObserver
+type AppForegroundStateObserver = _AppForegroundStateObserver.default
 
-应用启动和退出的状态监听。
+应用启动、前后台和退出的状态监听。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 应用启动和退出的状态监听。 |
+| [_AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md).default | 应用启动、前后台和退出的状态监听。 |
 
 ## AbilityFirstFrameStateObserver<sup>12+</sup>
 
-type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver
+type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver.default
 
 UIAbility首帧绘制完成事件监听对象。
 
@@ -2202,11 +2220,11 @@ UIAbility首帧绘制完成事件监听对象。
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md#abilityfirstframestateobserver) | UIAbility首帧绘制完成事件监听对象。 |
+| [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md#abilityfirstframestateobserver).default | UIAbility首帧绘制完成事件监听对象。 |
 
 ## AbilityFirstFrameStateData<sup>12+</sup>
 
-type AbilityFirstFrameStateData = _AbilityFirstFrameStateData
+type AbilityFirstFrameStateData = _AbilityFirstFrameStateData.default
 
 UIAbility首帧绘制完成回调上报数据结构。
 
@@ -2214,7 +2232,7 @@ UIAbility首帧绘制完成回调上报数据结构。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成回调上报数据结构。 |
+| [_AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | UIAbility首帧绘制完成回调上报数据结构。 |
 
 ## RunningMultiAppInfo<sup>12+</sup>
 
@@ -2230,7 +2248,7 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 ## FilterBundleType<sup>21+</sup>
 
-表示要监听的的应用类型，该类型为枚举。可配合[AppStateFilter](#appstatefilter21)过滤想要监听的应用类型。
+表示要监听的应用类型，该类型为枚举。可配合[AppStateFilter](#appstatefilter21)过滤想要监听的应用类型。
 
 **系统接口**：此接口为系统接口。
 
@@ -2238,8 +2256,8 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称        | 值  | 说明 |
 | -------- | ---------- | -------- |
-| APP | 1 | 应用。 |
-| ATOMIC_SERVICE | 2 | 原子化服务。|
+| APP | 1 << 0 | 应用。 |
+| ATOMIC_SERVICE | 1 << 1 | 原子化服务。|
 
 ## FilterAppStateType<sup>21+</sup>
 
@@ -2251,10 +2269,10 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称        | 值  | 说明 |
 | -------- | ---------- | -------- |
-| CREATE | 1 | 应用正在初始化，对应AppStateData[属性](js-apis-inner-application-appStateData.md#属性)中state取值为0的状态。 |
-| FOREGROUND | 2 | 应用位于前台，对应AppStateData[属性](js-apis-inner-application-appStateData.md#属性)中state取值为2的状态。|
-| BACKGROUND | 4 | 应用位于后台，对应AppStateData[属性](js-apis-inner-application-appStateData.md#属性)中state取值为4的状态。|
-| DESTROY | 8 | 应用已退出，对应AppStateData[属性](js-apis-inner-application-appStateData.md#属性)中state取值为5的状态。|
+| CREATE | 1 << 0 | 应用正在初始化，对应AppStateData[属性](js-apis-inner-application-appStateData.md#属性)中state取值为0的状态。 |
+| FOREGROUND | 1 << 1 | 应用位于前台，对应AppStateData[属性](js-apis-inner-application-appStateData.md#属性)中state取值为2的状态。|
+| BACKGROUND | 1 << 2 | 应用位于后台，对应AppStateData[属性](js-apis-inner-application-appStateData.md#属性)中state取值为4的状态。|
+| DESTROY | 1 << 3 | 应用已退出，对应AppStateData[属性](js-apis-inner-application-appStateData.md#属性)中state取值为5的状态。|
 
 ## FilterProcessStateType<sup>21+</sup>
 
@@ -2266,10 +2284,10 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称        | 值  | 说明 |
 | -------- | ---------- | -------- |
-| CREATE | 1 | 进程刚创建完成，对应ProcessData[属性](js-apis-inner-application-processData.md#属性)中state取值为0的状态。 |
-| FOREGROUND | 2 | 进程处于前台，对应ProcessData[属性](js-apis-inner-application-processData.md#属性)中state取值为2的状态。|
-| BACKGROUND | 4 | 进程处于后台，对应ProcessData[属性](js-apis-inner-application-processData.md#属性)中state取值为4的状态。|
-| DESTROY | 8 | 进程已终止，对应ProcessData[属性](js-apis-inner-application-processData.md#属性)中state取值为5的状态。|
+| CREATE | 1 << 0 | 进程刚创建完成，对应ProcessData[属性](js-apis-inner-application-processData.md#属性)中state取值为0的状态。 |
+| FOREGROUND | 1 << 1 | 进程处于前台，对应ProcessData[属性](js-apis-inner-application-processData.md#属性)中state取值为2的状态。|
+| BACKGROUND | 1 << 2 | 进程处于后台，对应ProcessData[属性](js-apis-inner-application-processData.md#属性)中state取值为4的状态。|
+| DESTROY | 1 << 3 | 进程已终止，对应ProcessData[属性](js-apis-inner-application-processData.md#属性)中state取值为5的状态。|
 
 ## FilterAbilityStateType<sup>21+</sup>
 
@@ -2281,10 +2299,10 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称        | 值  | 说明 |
 | -------- | ---------- | -------- |
-| CREATE | 1 | Ability正在创建中，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_CREATE。 |
-| FOREGROUND | 2 | Ability处于前台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_FOREGROUND。|
-| BACKGROUND | 4 | Ability处于后台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_BACKGROUND。|
-| DESTROY | 8 | Ability已经销毁，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_TERMINATED。|
+| CREATE | 1 << 0 | Ability正在创建中，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)、[ExtensionAbility状态](js-apis-inner-application-abilityStateData.md#extensionability状态)以及[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为0的状态。 |
+| FOREGROUND | 1 << 1 | Ability处于前台，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)和[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为2的状态。|
+| BACKGROUND | 1 << 2 | Ability处于后台，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)和[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为4的状态。|
+| DESTROY | 1 << 3 | Ability已经销毁，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)、[ExtensionAbility状态](js-apis-inner-application-abilityStateData.md#extensionability状态)以及[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为5的状态和[ExtensionAbility状态](js-apis-inner-application-abilityStateData.md#extensionability状态)中state取值为4的状态。|
 
 ## FilterCallback<sup>21+</sup>
 
@@ -2296,13 +2314,13 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称        | 值  | 说明 |
 | -------- | ---------- | -------- |
-| ON_FOREGROUND_APPLICATION_CHANGED | 1 | 该枚举对应应用前后台状态发生变化时执行的回调函数[ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged)。|
-| ON_ABILITY_STATE_CHANGED | 2 | 该枚举对应Ability状态发生变化时执行的回调函数[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)。|
-| ON_PROCESS_CREATED | 4 | 该枚举对应进程创建时执行的回调函数[ApplicationStateObserver.onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated)。|
-| ON_PROCESS_DIED | 8 | 该枚举对应进程销毁时执行的回调函数[ApplicationStateObserver.onProcessDied](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessdied)。|
-| ON_PROCESS_STATE_CHANGED | 16 | 该枚举对应进程状态更新时执行的回调函数[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。|
-| ON_APP_STARTED | 32 | 该枚举对应应用第一个进程创建时执行的回调函数[ApplicationStateObserver.onAppStarted](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted)。|
-| ON_APP_STOPPED | 64 | 该枚举对应应用最后一个进程销毁时执行的回调函数[ApplicationStateObserver.onAppStopped](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped)。|
+| ON_FOREGROUND_APPLICATION_CHANGED | 1 << 0 | 该枚举对应应用前后台状态发生变化时执行的回调函数[ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged)。|
+| ON_ABILITY_STATE_CHANGED | 1 << 1 | 该枚举对应Ability状态发生变化时执行的回调函数[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)。|
+| ON_PROCESS_CREATED | 1 << 2 | 该枚举对应进程创建时执行的回调函数[ApplicationStateObserver.onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated)。|
+| ON_PROCESS_DIED | 1 << 3 | 该枚举对应进程销毁时执行的回调函数[ApplicationStateObserver.onProcessDied](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessdied)。|
+| ON_PROCESS_STATE_CHANGED | 1 << 4 | 该枚举对应进程状态更新时执行的回调函数[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。|
+| ON_APP_STARTED | 1 << 5 | 该枚举对应应用第一个进程创建时执行的回调函数[ApplicationStateObserver.onAppStarted](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted)。|
+| ON_APP_STOPPED | 1 << 6 | 该枚举对应应用最后一个进程销毁时执行的回调函数[ApplicationStateObserver.onAppStopped](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped)。|
 
 ## AppStateFilter<sup>21+</sup>
 
@@ -2314,8 +2332,8 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------------------------- | ------ | ---- | ---- | --------- |
-| bundleTypes  | [FilterBundleType](#filterbundletype21) | 否 | 是  | 表示要监听的应用类型。取值范围是：<br> - 0：表示不监听任何类型的应用。<br> - [FilterBundleType](#filterbundletype21)中枚举的按位或运算组合：例如 "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" ，表示同时监听应用和原子化服务的生命周期变化事件。<br> - 如果该项不设置，则默认监听所有的应用类型。|
-| appStateTypes | [FilterAppStateType](#filterappstatetype21) | 否 | 是 | 表示要监听的应用状态。 取值范围是：<br> - 0：表示不监听任何应用状态。<br> - [FilterAppStateType](#filterappstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" ，表示同时监听应用的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的应用状态。|
-| processStateTypes | [FilterProcessStateType](#filterprocessstatetype21) | 否 | 是 | 表示要监听的进程状态。取值范围是：<br> - 0：表示不监听任何进程状态。<br> - [FilterProcessStateType](#filterprocessstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" ，表示同时监听进程的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的进程状态。|
-| abilityStateTypes | [FilterAbilityStateType](#filterabilitystatetype21) | 否 | 是  | 表示要监听的Ability状态。取值范围是：<br> - 0：表示不监听任何Ability状态。<br> - [FilterAbilityStateType](#filterabilitystatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" ，表示同时监听Ability的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的Ability状态。|
-| callbacks | [FilterCallback](#filtercallback21) | 否 | 是  | 表示要监听的回调函数。取值范围是：<br> - 0：表示不监听任何回调函数。<br> - [FilterCallback](#filtercallback21)中枚举的按位或运算组合：例如 "appManager.FilterCallback.ON_ABILITY_STATE_CHANGED \| appManager.FilterCallback.ON_PROCESS_STATE_CHANGED" ，表示同时监听[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)和[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。 <br> - 如果该项不设置，则默认监听[FilterCallback](#filtercallback21)中对应的所有回调函数。|
+| bundleTypes  | number | 否 | 是  | 表示要监听的应用类型。取值范围是：<br> - 0：表示不监听任何类型的应用。<br> - [FilterBundleType](#filterbundletype21)中枚举的按位或运算组合：例如 "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" ，表示同时监听普通应用和原子化服务的生命周期变化事件。<br> - 如果该项不设置，则默认监听所有的应用类型。|
+| appStateTypes | number | 否 | 是 | 表示要监听的应用状态。 取值范围是：<br> - 0：表示不监听任何应用状态。<br> - [FilterAppStateType](#filterappstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" ，表示同时监听应用的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的应用状态。|
+| processStateTypes | number | 否 | 是 | 表示要监听的进程状态。取值范围是：<br> - 0：表示不监听任何进程状态。<br> - [FilterProcessStateType](#filterprocessstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" ，表示同时监听进程的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的进程状态。|
+| abilityStateTypes | number | 否 | 是  | 表示要监听的Ability状态。取值范围是：<br> - 0：表示不监听任何Ability状态。<br> - [FilterAbilityStateType](#filterabilitystatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" ，表示同时监听Ability的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的Ability状态。|
+| callbacks | number | 否 | 是  | 表示要监听的回调函数。取值范围是：<br> - 0：表示不监听任何回调函数。<br> - [FilterCallback](#filtercallback21)中枚举的按位或运算组合：例如 "appManager.FilterCallback.ON_ABILITY_STATE_CHANGED \| appManager.FilterCallback.ON_PROCESS_STATE_CHANGED" ，表示同时监听[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)和[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。 <br> - 如果该项不设置，则默认监听[FilterCallback](#filtercallback21)中对应的所有回调函数。|

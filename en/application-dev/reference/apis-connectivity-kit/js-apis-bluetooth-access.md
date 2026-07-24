@@ -556,6 +556,43 @@ try {
 }
 ```
 
+## access.isBluetoothSupported
+
+isBluetoothSupported(): boolean
+
+Check whether a device supports Bluetooth.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Return value**
+
+| Type                             | Description             |
+| --------------------------------- | ---------------- |
+| boolean | Whether a device supports Bluetooth. The value **true** indicates that the device supports Bluetooth, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+try {
+    let isSupported: boolean = access.isBluetoothSupported();
+    console.info("isSupported: " + isSupported);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
 ## BluetoothState
 
 Enumerates the Bluetooth states.

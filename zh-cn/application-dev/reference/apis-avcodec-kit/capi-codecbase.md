@@ -9,7 +9,19 @@
 
 ## 概述
 
-CodecBase模块提供用于音视频封装、解封装、编解码基础功能的变量、属性以及函数。
+CodecBase模块提供用于音视频封装、解封装、编解码基础功能的变量、属性以及函数，包括编解码器基础结构体、异步回调机制、MIME类型定义、媒体描述键、用户自定义数据源以及视频特定配置等。本模块是AVCodec Kit的基础模块，为视频编码器、视频解码器、音频编码器、音频解码器、封装器、解封装器等模块提供通用的类型定义和属性键。
+
+本模块提供的主要能力包括：
+
+- **编解码器基础结构体**：定义编解码器实例 `OH_AVCodec` 和图形接口 `OHNativeWindow`，是音视频编解码操作的核心对象。
+- **异步回调机制**：提供错误回调、流变化回调、输入缓冲区回调、输出缓冲区回调等函数指针类型，以及回调集合结构体 `OH_AVCodecCallback`，用于处理编解码过程中的异步事件。
+- **用户自定义数据源**：支持通过回调函数 `OH_AVDataSourceReadAt` 和结构体 `OH_AVDataSource` 自定义媒体数据读取方式。
+- **MIME 类型定义**：定义视频编解码（H.264、H.265等）、音频编解码（MP3、FLAC、OGG、WAV等）、字幕（SRT、WEBVTT）等格式的MIME类型常量。
+- **媒体描述键**：提供统一的键名常量（`OH_MD_KEY_*`）用于配置和查询媒体参数，涵盖视频分辨率、帧率、码率、档次、像素格式、色彩空间，音频采样率、声道数、声道布局，编解码特性（分层编码、长期参考帧、B帧、低时延），以及媒体元数据（标题、艺术家、专辑等）。
+- **视频 ROI 配置**：支持感兴趣区域（ROI）编码配置，包括ROI区域坐标、量化参数偏移、语义标签等，并提供ROI字符串解析与格式化函数。
+- **音频声道布局**：定义音频声道集合和声道布局枚举。
+
+适用场景包括：音视频编解码、媒体封装与解封装、媒体数据处理等需要使用通用编解码基础类型和属性键的场景。
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -165,10 +177,10 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_TOP          | 视频编码前处理裁剪区域顶部坐标（y）的键，值类型为int32_t。该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能，默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
 | OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_RIGHT        | 视频编码前处理裁剪区域右边坐标（x）的键，值类型为int32_t。该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能，默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
 | OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_BOTTOM       | 视频编码前处理裁剪区域底部坐标（y）的键，值类型为int32_t。该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能，默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
-| OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE | 视频编码前处理丢帧目标帧率的键，值类型为double，数值精度保留2位小数。该键是可选的，丢帧功能默认关闭。当设置0.00时则关闭丢帧功能，配置值时自动四舍五入保留两位小数。可独立使用，也可与降采样或裁剪组合使用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
-| OH_MD_KEY_VIDEO_ENCODER_NUMBER_OF_PENDING_FRAMES | 视频编码器待处理帧数量的键值，值类型为int32_t。该键是只读的，用于查询当前待编码帧的数量。可通过[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)获取。<br>**起始版本：** 26.0.0 |
-| OH_MD_KEY_VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER | 解码器输出模式的键值。值类型为int32_t，取值为0或1。1表示解码器按解码顺序输出帧；0表示解码器按显示顺序输出帧，默认值为0。该键是可选的，仅用于视频解码，且仅可在Configure阶段使用。设置该键前，可通过[OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)和[OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature).VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER查询是否支持该特性。如果视频解码不支持该特性，通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)设置该键将返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
-| OH_MD_KEY_VIDEO_ENCODER_MAX_FRAME_DELAY_COUNT | 视频编码器在输出压缩帧前允许缓存的最大帧数的键值。值类型为int32_t，取值范围为[1，5]。该键是可选的，仅用于视频编码，且仅可在Configure阶段使用。取值在[1，5]区间内时可正常生效；若超出该范围（小于1或大于5），调用[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)会返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
+| OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE | 视频编码前处理丢帧目标帧率的键，单位为fps，值类型为double，数值精度保留2位小数。该键是可选的，丢帧功能默认关闭。当设置0.00时则关闭丢帧功能，配置值时自动四舍五入保留两位小数。可独立使用，也可与降采样或裁剪组合使用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
+| OH_MD_KEY_VIDEO_ENCODER_NUMBER_OF_PENDING_FRAMES | 视频编码器待处理帧数量的键值，值类型为int32_t。该键是只读的，用于查询当前待编码帧的数量。可通过[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口获取。<br>**起始版本：** 26.0.0 |
+| OH_MD_KEY_VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER | 解码器输出模式的键值。值类型为int32_t，取值为0或1。1表示解码器按解码顺序输出帧；0表示解码器按显示顺序输出帧，默认值为0。该键是可选的，仅用于视频解码，且仅可在Configure阶段使用。设置该键前，可通过[OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)接口和枚举值[OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature).VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER查询是否支持该特性。如果视频解码不支持该特性，通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)接口设置该键将返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
+| OH_MD_KEY_VIDEO_ENCODER_MAX_FRAME_DELAY_COUNT | 视频编码器在输出压缩帧前允许缓存的最大帧数的键值。值类型为int32_t，取值范围为[1，5]。该键是可选的，仅用于视频编码，且仅可在Configure阶段使用。取值在[1，5]区间内时可正常生效；若超出该范围（小于1或大于5），调用[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)接口会返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
 | OH_MD_KEY_VIDEO_ENCODER_REPEAT_HEADER_BEFORE_SYNC_FRAMES | 码流同步帧前置参数集的键值。值类型为int32_t，取值为0或1，1表示使能，0表示不使能，默认值为0。该键是可选的，仅用于视频编码，且仅可在Configure阶段使用。开启后，编码器会在每个同步帧前插入前置参数集数据（例如H.264/H.265格式对应的SPS、PPS）。<br>**起始版本：** 26.0.0 |
 
 ### 音频专有的键值对

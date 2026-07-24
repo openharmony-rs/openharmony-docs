@@ -1,8 +1,8 @@
 # Path2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -89,7 +89,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125208](figures/zh-cn_image_0000001127125208.png)
+![Yellow-Triangle-01](figures/Yellow-Triangle-01.png)
 
 
 ## closePath
@@ -123,7 +123,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125202](figures/zh-cn_image_0000001127125202.png)
+![Yellow-Triangle](figures/Yellow-Triangle.png)
 
 
 ## moveTo
@@ -339,16 +339,16 @@ export default {
 
 arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
 
-依据圆弧经过的点和圆弧半径创建圆弧路径。
+依据圆弧控制的点和圆弧半径创建圆弧路径。
 
 **参数：** 
 
 | 参数     | 类型     | 描述              |
 | ------ | ------ | --------------- |
-| x1     | number | 圆弧经过的第一个点的x坐标值。 |
-| y1     | number | 圆弧经过的第一个点的y坐标值。 |
-| x2     | number | 圆弧经过的第二个点的x坐标值。 |
-| y2     | number | 圆弧经过的第二个点的y坐标值。 |
+| x1     | number | 圆弧控制的第一个点的x坐标值。 |
+| y1     | number | 圆弧控制的第一个点的y坐标值。 |
+| x2     | number | 圆弧控制的第二个点的x坐标值。 |
+| y2     | number | 圆弧控制的第二个点的y坐标值。 |
 | radius | number | 圆弧的圆半径值。        |
 
 **示例：**  
@@ -373,14 +373,14 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125204](figures/zh-cn_image_0000001127125204.png)
+![yellow-curve](figures/yellow-curve.png)
 
 
 ## ellipse
 
 ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise?: number): void
 
-在规定的矩形区域绘制一个椭圆。
+在规定的区域绘制一个椭圆。
 
 **参数：** 
 
@@ -457,4 +457,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125212](figures/zh-cn_image_0000001127125212.png)
+![Yellow-square](figures/Yellow-square.png)

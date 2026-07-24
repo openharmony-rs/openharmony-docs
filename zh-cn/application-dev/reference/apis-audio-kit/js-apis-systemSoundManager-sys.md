@@ -45,7 +45,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | 名称                            | 值  | 说明                                                                     |
 | ------------------------------- |----|------------------------------------------------------------------------|
 | RINGTONE_TYPE_DEFAULT<sup>(deprecated)</sup>           | 0  | 默认铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_0替代。 |
-| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | sim卡1的铃声。                                                              |
+| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | SIM卡1的铃声。                                                              |
 | RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | 多SIM卡铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_1替代。 |
 | RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | sim卡2的铃声。                                                              |
 | RINGTONE_TYPE_ESIM_CARD_0<sup>26+</sup> | 2  | esim卡1的铃声。                                                              |
@@ -413,7 +413,7 @@ getMediaType(): MediaType
 
 | 类型    | 说明     |
 |--------|--------|
-| [MediaType](#mediatype20) | 媒体类型，如果应用未调用过setMediaType设置mediatype，则此函数返回的默认值为AUDIO。|
+| [MediaType](#mediatype20) | 媒体类型，如果应用未调用过setMediaType设置媒体类型，则此函数返回的默认值为AUDIO。|
 
 **错误码：**
 
@@ -638,7 +638,7 @@ getGentleUri(): string | null
 
 | 类型    | 说明  |
 |--------|-----|
-| string \| null | 柔和振动的uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则uri为空。 柔和振动是指马达振动强度较标准较弱。|
+| string \| null | 柔和振动的URI（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则URI为空。 柔和振动是指马达振动强度较标准振动弱。|
 
 **错误码：**
 
@@ -1084,7 +1084,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
 | 参数名   | 类型                             | 必填 | 说明                     |
 | -------- | -------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)| 是   | 当前应用的上下文。         |
-| type     | [RingtoneType](#ringtonetype)  | 是   | 被设置的系统铃声的类型。   |
+| type     | [RingtoneType](#ringtonetype)  | 是   | 待获取的系统铃声的类型。   |
 
 **返回值：**
 
@@ -1318,7 +1318,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 | -------- |-------------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。         |
 | uri      | string                              | 是   | 被设置的系统提示音的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
-| type     | [SystemToneType](#systemtonetype11) | 是   | 被设置的系统提示音的类型。   |
+| type     | [SystemToneType](#systemtonetype11) | 是   | 待获取的系统提示音的类型。   |
 
 **返回值：**
 
@@ -2475,7 +2475,7 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((value: system
 
 openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSoundError]>>
 
-获取系统铃声的属性列表。使用Promise异步回调。
+批量打开铃声文件。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 

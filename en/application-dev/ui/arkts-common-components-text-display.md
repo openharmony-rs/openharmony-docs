@@ -27,7 +27,7 @@ You can create text in either of the following ways:
   ```
 
 
-![en-us_image_0000001563060685](figures/en-us_image_0000001563060685.png)
+![text-basic](figures/text-basic.png)
 
 
 - Referencing Resource objects
@@ -57,7 +57,7 @@ You can create text in either of the following ways:
     .width(300)
   ```
 
-  ![en-us_image_0000001511580872](figures/en-us_image_0000001511580872.png)
+  ![text-create](figures/text-create.png)
 
 
 ## Adding Child Components
@@ -81,7 +81,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   .borderWidth(1)
   ```
 
-  ![en-us_image_0000001562700441](figures/en-us_image_0000001562700441.png)
+  ![text-child-component](figures/text-child-component.png)
 
 - Setting the text decoration
 
@@ -113,7 +113,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   .padding(10)
   ```
 
-  ![en-us_image_0000001562700437](figures/en-us_image_0000001562700437.png)
+  ![text-child-span](figures/text-child-span.png)
 
 - Use the [textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#textcase) attribute to set the text case.
 
@@ -128,7 +128,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   .padding(10)
   ```
 
-  ![en-us_image_0000001562940525](figures/en-us_image_0000001562940525.png)
+  ![text-child-image](figures/text-child-image.png)
 
 - Adding events
 
@@ -246,7 +246,7 @@ The following examples demonstrate usage of common APIs.
     .padding(10)
   ```
 
-  ![en-us_image_0000001511421260](figures/en-us_image_0000001511421260.png)
+  ![text-styled](figures/text-styled.png)
 
 - Use the [textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow) attribute to set the display mode for when the text is too long. This attribute must be used together with [maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines). By default, the text is automatically wrapped. Since API version 18, when text overflow is set to marquee mode, you can configure marquee parameters such as enabled status, scroll step, loop count, and direction.
 
@@ -302,7 +302,7 @@ The following examples demonstrate usage of common APIs.
     })
   ```
 
-  ![en-us_image_0000001563060701](figures/en-us_image_0000001563060701.gif)
+  ![text-custom-style](figures/text-custom-style.gif)
 
 - Use the [lineHeight](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#lineheight) attribute to set the text line height.
 
@@ -319,7 +319,7 @@ The following examples demonstrate usage of common APIs.
     .lineHeight(20)
   ```
 
-  ![en-us_image_0000001511740480](figures/en-us_image_0000001511740480.png)
+  ![radio-default](figures/radio-default.png)
 
 - Use the [decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration) attribute to set the style, color, and thickness of the text decoration line.
 
@@ -405,7 +405,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-  ![en-us_image_0000001562820789](figures/en-us_image_0000001562820789.png)
+  ![text-styled-span](figures/text-styled-span.png)
 
 - Use the [letterSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#letterspacing) attribute to set the letter spacing.
 
@@ -435,7 +435,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-  ![en-us_image_0000001562940513](figures/en-us_image_0000001562940513.png)
+  ![text-styled-span2](figures/text-styled-span2.png)
 
 - Use the [minFontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#minfontsize) and [maxFontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxfontsize) attributes
 
@@ -490,7 +490,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-  ![en-us_image_0000001511740472](figures/en-us_image_0000001511740472.png)
+  ![radio-styled](figures/radio-styled.png)
 
 - Use the [textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcase) attribute to set the text case.
 
@@ -519,7 +519,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
   
-  ![en-us_image_0000001562940529](figures/en-us_image_0000001562940529.png)
+  ![text-styled-span3](figures/text-styled-span3.png)
 
 - Use the [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9) attribute to set whether copy and paste is allowed.
 
@@ -532,7 +532,7 @@ The following examples demonstrate usage of common APIs.
     .copyOption(CopyOptions.InApp)
   ```
 
-  ![en-us_image_0000001511580868](figures/en-us_image_0000001511580868.png)
+  ![text-copy-option](figures/text-copy-option.png)
 
 - Use the [fontFamily](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontfamily) attribute to specify font families. The 'HarmonyOS Sans' font and [registered custom fonts](../reference/apis-arkui/js-apis-font.md) are supported for applications.
 
@@ -1474,5 +1474,5 @@ This example demonstrates how to implement a hot search list using the [maxLines
   ```
   
 
-![en-us_image_0000001562820805](figures/en-us_image_0000001562820805.png)
+![text-hot-search](figures/text-hot-search.png)
 <!--RP1--><!--RP1End-->

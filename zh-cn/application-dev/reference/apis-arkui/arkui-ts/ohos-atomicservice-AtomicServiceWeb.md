@@ -32,6 +32,10 @@ import { AtomicServiceWeb } from '@kit.ArkUI';
 
 不支持[通用属性](ts-component-general-attributes.md)
 
+## 事件
+
+不支持[通用事件](ts-component-general-events.md)
+
 ## AtomicServiceWeb
 
 ```ts
@@ -49,7 +53,7 @@ AtomicServiceWeb({
   onPageBegin?: Callback<OnPageBeginEvent>,
   onPageEnd?: Callback<OnPageEndEvent>,
   onControllerAttached?: Callback<void>,
-  onLoadIntercept?: Callback<OnLoadInterceptEvent, boolean>,
+  onLoadIntercept?: OnLoadInterceptCallback,
   onProgressChange?: Callback<OnProgressChangeEvent>
 })
 ```
@@ -60,7 +64,7 @@ AtomicServiceWeb({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数**：
+**参数：**
 
 | 名称                   | 类型                                                                                                               | 必填 | 装饰器类型       | 说明                                                                                                                  |
 |----------------------|------------------------------------------------------------------------------------------------------------------|----|-------------|----------------------------------------------------------------------------------------------------------------------|
@@ -73,10 +77,10 @@ AtomicServiceWeb({
 | nestedScroll<sup>15+</sup>      | [NestedScrollOptions](../../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](../../apis-arkweb/arkts-basic-components-web-i.md#nestedscrolloptionsext14) | 否  | @Prop       | 设置嵌套滚动选项。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。                                                                              |
 | onMessage            | Callback\<[OnMessageEvent](#onmessageevent)\>                                                                    | 否  | -           | H5页面通过JS SDK的postMessage()发送消息后，Web组件对应的页面返回或销毁时，触发该回调。                                                              |
 | onErrorReceive       | Callback\<[OnErrorReceiveEvent](#onerrorreceiveevent)\>                                                          | 否  | -           | 网页加载遇到错误时触发该回调。出于性能考虑，建议此回调中尽量执行简单逻辑。在无网络的情况下，触发此回调。                                                                 |
-| onHttpErrorReceive   | Callback\<[OnHttpErrorReceiveEvent](#onhttperrorreceiveevent)\>                                                  | 否  | -           | 网页加载资源遇到的HTTP错误（响应码>=400)时触发该回调。                                                                                     |
+| onHttpErrorReceive   | Callback\<[OnHttpErrorReceiveEvent](#onhttperrorreceiveevent)\>                                                  | 否  | -           | 网页加载资源遇到的HTTP错误（响应码>=400）时触发该回调。                                                                                     |
 | onPageBegin          | Callback\<[OnPageBeginEvent](#onpagebeginevent)\>                                                                | 否  | -           | 网页开始加载时触发该回调，且只在主frame触发，iframe或者frameset的内容加载时不会触发此回调。                                                              |
 | onPageEnd            | Callback\<[OnPageEndEvent](#onpageendevent)\>                                                                    | 否  | -           | 网页加载完成时触发该回调，且只在主frame触发。                                                                                            |
-| onControllerAttached | Callback\<void\>                                                                                                 | 否  | -           | 当Controller成功绑定到Web组件时触发该回调。                                                                                         |
+| onControllerAttached | Callback\<void\>                                                                                                 | 否  | -           | 当Controller成功绑定到Web组件时触发该回调，此回调中不能使用操作网页的相关接口。                                                                                         |
 | onLoadIntercept      | [OnLoadInterceptCallback](#onloadinterceptcallback) | 否  | -  | 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。默认允许加载。                                                                              |
 | onProgressChange     | Callback\<[OnProgressChangeEvent](../../apis-arkweb/arkts-basic-components-web-i.md#onprogresschangeevent12)\>        | 否  | -           | 网页加载进度变化时触发该回调。                                                                                                      |
 
@@ -132,7 +136,7 @@ getCustomUserAgent(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md).
+以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md)。
 
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
@@ -162,7 +166,7 @@ setCustomUserAgent(userAgent: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md).
+以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md)。
 
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
@@ -181,7 +185,7 @@ refresh(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md).
+以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md)。
 
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
@@ -199,7 +203,7 @@ forward(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md).
+以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md)。
 
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
@@ -217,7 +221,7 @@ backward(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md).
+以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md)。
 
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
@@ -241,7 +245,7 @@ accessForward(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md).
+以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md)。
 
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
@@ -265,7 +269,7 @@ accessBackward(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md).
+以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md)。
 
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
@@ -295,7 +299,7 @@ accessStep(step: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md).
+以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md)。
 
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
@@ -321,7 +325,7 @@ loadUrl(url: string | Resource, headers?: Array\<WebHeader>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md).
+以下错误码的详细介绍请参见[错误码](../../apis-arkweb/errorcode-webview.md)。
 
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
@@ -450,10 +454,6 @@ type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 | 类型      | 说明        |
 |---------|-----------|
 | boolean | 返回资源是否被拦截，true表示被拦截。 |
-
-## 事件
-
-不支持[通用事件](ts-component-general-events.md)
 
 ## 示例
 
@@ -772,6 +772,7 @@ struct WebComponent {
 设置嵌套滚动。
 
 ```ts
+// xxx.ets
 import { AtomicServiceWeb, AtomicServiceWebController } from '@kit.ArkUI';
 
 @Entry

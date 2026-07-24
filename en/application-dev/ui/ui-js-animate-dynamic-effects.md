@@ -78,7 +78,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001174756776](figures/en-us_image_0000001174756776.gif)
+![animationEffect1](figures/animationEffect1.gif)
 
 > **NOTE**
 > - When you use **createAnimator** to create an animation object, you must pass the **options** parameter.
@@ -233,7 +233,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001220635059](figures/en-us_image_0000001220635059.gif)
+![animationEffect](figures/animationEffect.gif)
 
 > **NOTE**
 >

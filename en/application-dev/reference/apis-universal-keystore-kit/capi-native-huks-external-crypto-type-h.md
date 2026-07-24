@@ -9,7 +9,7 @@
 
 ## Overview
 
-Defines the structs and enums for external key management extensions.
+Defines the structs, enums, and macros for external key management extensions.
 
 **File to include**: <huks/native_huks_external_crypto_type.h>
 
@@ -35,12 +35,13 @@ Defines the structs and enums for external key management extensions.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_Huks_ExternalCryptoTag](#oh_huks_externalcryptotag) | OH_Huks_ExternalCryptoTag | Enumerates the tag values used in a parameter set.|
+| [OH_Huks_ExternalPinAuthState](#oh_huks_externalpinauthstate) | OH_Huks_ExternalPinAuthState | Enumerates the UKey PIN authentication states.|
 
 ### Macros
 
 | Name| Description|
-| -- | -- |
-| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | Defines the maximum length of the provider name.<br>**Since**: 22|
+|---|---|
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | Defines the maximum length of the provider name.<br>**Since**: 22| 
 | OH_HUKS_EXTERNAL_CRYPTO_MAX_RESOURCE_ID_LEN   512 | Defines the maximum length of the resource ID.<br>**Since**: 22|
 
 ## Enum Description
@@ -74,7 +75,7 @@ enum OH_Huks_ExternalPinAuthState
 
 **Description**
 
-Enumerates the Ukey PIN authentication states.
+Enumerates the UKey PIN authentication states.
 
 **Since**: 22
 

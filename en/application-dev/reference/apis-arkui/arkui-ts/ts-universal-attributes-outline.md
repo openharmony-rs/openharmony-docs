@@ -317,7 +317,7 @@ struct OutlineExample {
 }
 ```
 
-![en-us_image_0000001219982706](figures/en-us_image_0000001219982706.png)
+![outlineStyling1](figures/outlineStyling1.png)
 
 ### Example 2: Using the LocalizedEdgeColors Type
 

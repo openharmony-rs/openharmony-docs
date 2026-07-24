@@ -39,7 +39,7 @@ This section uses the classic producer-consumer pattern as an example to analyze
 
 The following figure illustrates how to solve the producer-consumer issue using the shared memory model.
 
-![image_0000002001497485](figures/image_0000002001497485.png)
+![Shared-Memory-Model](figures/Shared-Memory-Model.png)
 
 To prevent problems like dirty reads and writes caused by simultaneous access, only one producer or consumer can access a shared memory container at any given moment. This means that producers and consumers need to compete for the lock of the container. Once a role secures the lock, others must wait until the lock is released before they can attempt to access the container.
 
@@ -150,7 +150,7 @@ function Main(): void {
 
 The following figure demonstrates how to use the TaskPool concurrency capability based on the actor model to solve the producer-consumer issue.
 
-![image_0000001964697544](figures/image_0000001964697544.png)
+![Actor-Model](figures/Actor-Model.png)
 
 In the actor model, different roles operate independently without sharing memory. Each role, such as the producer thread and the UI thread, runs within its own virtual machine instance, each with its own exclusive memory space. After generating a result, the producer sends the result to the UI thread through serialization. The UI thread processes the result and then sends a new task to the producer thread.
 

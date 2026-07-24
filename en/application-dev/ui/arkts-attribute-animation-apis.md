@@ -87,7 +87,7 @@ struct attrAnimateToDemo2 {
 }
 ```
 
-![en-us_image_0000001599958466](figures/en-us_image_0000001599958466.gif)
+![en-us_image_0000001599958466](figures/animateTo-01.gif)
 
 
 ## animation
@@ -154,7 +154,7 @@ struct attrAnimationDemo3 {
 ```
 
 
-![en-us_image_0000001649279705](figures/en-us_image_0000001649279705.gif)
+![en-us_image_0000001649279705](figures/animation-01.gif)
 
 ## keyframeAnimateTo
 

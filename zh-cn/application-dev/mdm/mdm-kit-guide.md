@@ -69,7 +69,7 @@ MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用)提供设备管理能力，包
 
 2. 调用接口，实现相应的功能。以下为禁用设备Wi-Fi的示例。
 
-   <!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
+   <!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->   
    
    ``` TypeScript
    import { adminManager, restrictions } from '@kit.MDMKit';
@@ -82,7 +82,7 @@ MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用)提供设备管理能力，包
      };
      // ...
        try {
-         restrictions.setDisallowedPolicy(this.wantTemp, 'wifi', isDisallow);
+         restrictions.setDisallowedPolicy(this.wantTemp, restrictions.FeatureForDevice.WIFI, isDisallow);
          console.info(isDisallow ? 'disable wifi success.' : 'enable wifi success.');
          // ...
        } catch (err) {
@@ -108,6 +108,8 @@ hdc shell edm disable-admin -n 包名
 ```
 
 > **说明**
+>
+> MDM应用必须在首用户（账户ID为100）下安装才能正常激活。
 >
 > 正式使用时，在同一设备上只能激活一个超级设备管理应用。
 >

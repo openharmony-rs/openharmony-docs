@@ -20,7 +20,7 @@ Provides ArkUI event definitions on the native side.
 
 **Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
-**Sample**: <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->, <!--RP2-->[CoastingAxisEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/CoastingAxisEventNDK)<!--RP2End-->
+**Sample**: <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->, <!--RP2-->[CoastingAxisEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/CoastingAxisEventNDK)<!--RP2End-->
 
 ## Summary
 
@@ -121,7 +121,7 @@ Provides ArkUI event definitions on the native side.
 | [int32_t OH_ArkUI_MouseEvent_GetMouseButton(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getmousebutton) | Obtains the button type of a mouse event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [int32_t OH_ArkUI_MouseEvent_GetMouseAction(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getmouseaction) | Obtains the action type of a mouse event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_pointerevent_setstoppropagation) | Sets whether to stop event propagation. This API only applies to scenarios raw input events are received, such as when **NODE_ON_TOUCH** is used for touch event handling. It cannot be used with **ArkUI_UIInputEvent** objects obtained from gesture events through [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent).                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| [int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_getdeviceid) | Obtains the ID of the input device that triggers a key event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_getdeviceid) | Obtains the device ID of the current UI input event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [int32_t OH_ArkUI_UIInputEvent_GetPressedKeys(const ArkUI_UIInputEvent* event, int32_t* pressedKeyCodes, int32_t* length)](#oh_arkui_uiinputevent_getpressedkeys) | Obtains all pressed keys. Currently, only key events are supported.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | [double OH_ArkUI_FocusAxisEvent_GetAxisValue(const ArkUI_UIInputEvent* event, int32_t axis)](#oh_arkui_focusaxisevent_getaxisvalue) | Obtains the axis value of a focus axis event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [int32_t OH_ArkUI_FocusAxisEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_focusaxisevent_setstoppropagation) | Sets whether to prevent a focus axis event from bubbling up.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -165,8 +165,8 @@ Provides ArkUI event definitions on the native side.
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetWindowPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setwindowpositionbyindex) | Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned event relative to the upper left corner of the current window. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedScreenPosition(const ArkUI_UIInputEvent* event, float x, float y)](#oh_arkui_clonedevent_setchangedscreenposition) | Sets the X-coordinate and Y-coordinate of a cloned event relative to the upper left corner of the current screen. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetScreenPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setscreenpositionbyindex) | Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned event relative to the upper left corner of the current screen. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition(const ArkUI_UIInputEvent* event, float x, float y)](#oh_arkui_clonedevent_setchangedglobaldisplayposition) | Sets the coordinates of a cloned event in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system). This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setglobaldisplaypositionbyindex) | Sets the coordinates of a cloned event in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system). This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition(const ArkUI_UIInputEvent* event, float x, float y)](#oh_arkui_clonedevent_setchangedglobaldisplayposition) | Sets the coordinates for a cloned event in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system). This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setglobaldisplaypositionbyindex) | Sets the coordinates for a cloned event in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system). This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetHandleId(const ArkUI_UIInputEvent* event, int32_t eventHandleId)](#oh_arkui_clonedevent_sethandleid) | Sets the unique handle of an event processing session. This handle must be used for any further operations on the event. For a given finger, only one event with this handle is in the active state at a time. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTiltAngle(const ArkUI_UIInputEvent* event, float tiltX, float tiltY)](#oh_arkui_clonedevent_settiltangle) | Sets the tilt angle of a cloned event relative to the XZ and YZ planes. The value range is [-90, 90]. A positive value indicates a tilt to the right. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRollAngle(const ArkUI_UIInputEvent* event, float rollAngle)](#oh_arkui_clonedevent_setrollangle) | Sets the rotation angle of the stylus around the Z-axis in a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -328,7 +328,7 @@ Enumerates the action types of the mouse event.
 
 | Value| Description|
 | -- | -- |
-| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | Unknown action.|
+| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | Unknown action.<br>Note: This action is processed by the system. You do not need to focus on it.|
 | UI_MOUSE_EVENT_ACTION_PRESS = 1 | The mouse button is pressed.|
 | UI_MOUSE_EVENT_ACTION_RELEASE = 2 | The mouse button is released.|
 | UI_MOUSE_EVENT_ACTION_MOVE = 3 | The mouse cursor moves.|
@@ -756,7 +756,7 @@ Obtains the ID of the touch pointer that triggers the current touch event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PointerEvent_GetX()
 
@@ -1406,7 +1406,7 @@ Obtains the rotation angle of the stylus around the z-axis from a UI input event
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PointerEvent_GetTouchAreaWidth()
 
@@ -1487,7 +1487,7 @@ Checks whether an event is triggered by a left-hand or right-hand tap. This API 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PointerEvent_GetInteractionHandByIndex()
 
@@ -1515,7 +1515,7 @@ Checks whether an event is triggered by a left-hand or right-hand tap. This API 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PointerEvent_GetHistorySize()
 
@@ -1998,7 +1998,7 @@ double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the value of the vertical scroll axis for this axis event. This value is typically generated by mouse wheel scrolling or two-finger vertical swiping on a touchpad. If the value is generated by mouse wheel scrolling: 1. The reported value is in degrees and represents the angular increment of a single scroll, not the total accumulation. 2. The reported value includes the user's scroll step configuration (see [OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)). 3. The sign of the value indicates the direction: positive for backward scrolling and negative for forward scrolling. If the value is generated by two-finger vertical swiping on a touchpad: 1. The reported value is in px and represents the scroll increment, not the total accumulation. 2. The reported value does not include the user's scroll step configuration [OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep). 3. The sign of the value indicates the direction: positive for swiping up and negative for swiping down. 4. The direction is affected by the system settings for natural scrolling. Under normal circumstances, vertical scroll axis events only drive vertical swipe gestures. However, if the mouse pointer is over a scrollable area where the scrollable directions are consistent, the vertical scroll axis event can drive the swipe gestures in this scrollable area, even if they are defined as horizontal.
+Obtains the value of the vertical scroll axis for this axis event. This value is typically generated by mouse wheel scrolling or two-finger vertical swiping on a touchpad. If the value is generated by mouse wheel scrolling: 1. The reported value is in degrees and represents the angular increment of a single scroll, not the total accumulation. 2. The reported value includes the user's scroll step configuration (see [OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)). 3. The sign of the value indicates the direction: positive for forward scrolling and negative for backward scrolling. If the value is generated by two-finger vertical swiping on a touchpad: 1. The reported value is in px and represents the scroll increment, not the total accumulation. 2. The reported value does not include the user's scroll step configuration [OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep). 3. The sign of the value indicates the direction: positive for swiping up and negative for swiping down. 4. The direction is affected by the system settings for natural scrolling. Under normal circumstances, vertical scroll axis events only drive vertical swipe gestures. However, if the mouse pointer is over a scrollable area where the scrollable directions are consistent, the vertical scroll axis event can drive the swipe gestures in this scrollable area, even if they are defined as horizontal.
 
 **Since**: 12
 
@@ -2278,7 +2278,7 @@ Obtains all pressed keys. Currently, only key events are supported.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-native-type-h.md#arkui_errorcode) if the memory is insufficient.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the memory is insufficient.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_FocusAxisEvent_GetAxisValue()
 
@@ -2332,7 +2332,7 @@ Sets whether to prevent a focus axis event from bubbling up.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_UIInputEvent_GetModifierKeyStates()
 
@@ -2359,7 +2359,7 @@ Obtains the modifier key states for a UI input event. This API outputs the state
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AxisEvent_SetPropagation()
 
@@ -2386,7 +2386,7 @@ Sets whether to enable axis event propagation (bubbling). By default, axis event
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_AxisEvent_GetScrollStep()
 
@@ -2675,7 +2675,7 @@ Obtains the pressed buttons from a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the input buffer size is invalid.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input buffer size is invalid.|
 
 ### OH_ArkUI_UIInputEvent_GetTargetDisplayId()
 
@@ -2754,7 +2754,7 @@ Creates a cloned event pointer based on an event pointer. This API is effective 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.|
 
 ### OH_ArkUI_PointerEvent_DestroyClonedEvent()
 
@@ -2780,7 +2780,7 @@ Destroys a cloned event pointer.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_PointerEvent_SetClonedEventLocalPosition()
 
@@ -2808,7 +2808,7 @@ Sets the x-coordinate and y-coordinate of a cloned event relative to the upper l
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex()
 
@@ -2837,7 +2837,7 @@ Sets the x-coordinate and y-coordinate of a specific contact point of a cloned e
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_PointerEvent_SetClonedEventActionType()
 
@@ -2864,7 +2864,7 @@ Sets the action type of a cloned event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId()
 
@@ -2891,7 +2891,7 @@ Sets the touch point ID of a cloned pointer event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex()
 
@@ -2919,7 +2919,7 @@ Sets the touch point ID of a specific contact point of a cloned event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_PointerEvent_PostClonedEvent()
 
@@ -2946,7 +2946,7 @@ Posts a cloned event to a specific node.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL](capi-native-type-h.md#arkui_errorcode) if the component status is abnormal.<br>         Returns [ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT](capi-native-type-h.md#arkui_errorcode) if no component is hit to respond to the event.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the component status is abnormal.<br>         Returns [ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if no component is hit to respond to the event.|
 
 ### OH_ArkUI_PointerEvent_CreateClonedPointerEvent()
 
@@ -2973,7 +2973,7 @@ Creates a clone event for a specified event. This API applies to touch, mouse, a
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.|
 
 ### OH_ArkUI_PointerEvent_CreatePointerEvent()
 
@@ -3000,7 +3000,7 @@ Creates a new event (not clone the existing event). This API applies to touch, m
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.|
 
 ### OH_ArkUI_PointerEvent_DestroyClonedPointerEvent()
 
@@ -3026,7 +3026,7 @@ Destroys a cloned event pointer. This API applies to touch, mouse, and axis even
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetActionType()
 
@@ -3053,7 +3053,7 @@ Sets an action type for a cloned event. This API applies to touch, mouse, and ax
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetSourceType()
 
@@ -3080,7 +3080,7 @@ Sets a source type for a cloned event. This API applies to touch, mouse, and axi
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetToolType()
 
@@ -3107,7 +3107,7 @@ Sets a tool type for a cloned event. This API applies to touch, mouse, and axis 
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetPressure()
 
@@ -3134,7 +3134,7 @@ Sets the pressure applied to a touchscreen for a cloned event. This API applies 
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetPressureByIndex()
 
@@ -3162,7 +3162,7 @@ Sets the pressure applied to a touchscreen for a specific touch point in a clone
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetEventTime()
 
@@ -3189,7 +3189,7 @@ Sets the time when a cloned UI input event occurs. This API applies to touch, mo
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetDeviceId()
 
@@ -3216,7 +3216,7 @@ Sets the ID of the device that triggers a cloned UI input event. This API applie
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetTargetDisplayId()
 
@@ -3243,7 +3243,7 @@ Sets the ID of the display where a cloned UI input event occurs. This API applie
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetChangedFingerId()
 
@@ -3270,7 +3270,7 @@ Sets the touch point ID for a cloned pointer event. This API applies to touch ev
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetFingerIdByIndex()
 
@@ -3281,7 +3281,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetFingerIdByIndex(const ArkUI_UIInputEvent
 **Description**
 
 
-Sets the touch point ID of a specific contact point in a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).
+Sets the touch point ID of a specific contact point for a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).
 
 **Since**: 24
 
@@ -3298,7 +3298,7 @@ Sets the touch point ID of a specific contact point in a cloned event. This API 
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetChangedWindowPosition()
 
@@ -3326,7 +3326,7 @@ Sets the X-coordinate and Y-coordinate of a cloned event relative to the upper l
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetWindowPositionByIndex()
 
@@ -3355,7 +3355,7 @@ Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned e
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetChangedScreenPosition()
 
@@ -3383,7 +3383,7 @@ Sets the X-coordinate and Y-coordinate of a cloned event relative to the upper l
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetScreenPositionByIndex()
 
@@ -3412,7 +3412,7 @@ Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned e
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition()
 
@@ -3423,7 +3423,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition(const ArkUI
 **Description**
 
 
-Sets the coordinates of a cloned event in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system). This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).
+Sets the coordinates for a cloned event in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system). This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).
 
 **Since**: 24
 
@@ -3440,7 +3440,7 @@ Sets the coordinates of a cloned event in the [global coordinate system](../../w
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex()
 
@@ -3451,7 +3451,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex(const ArkUI
 **Description**
 
 
-Sets the coordinates of a cloned event in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system). This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).
+Sets the coordinates for a cloned event in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system). This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).
 
 **Since**: 24
 
@@ -3469,7 +3469,7 @@ Sets the coordinates of a cloned event in the [global coordinate system](../../w
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetHandleId()
 
@@ -3496,7 +3496,7 @@ Sets the unique handle of an event processing session. This handle must be used 
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetTiltAngle()
 
@@ -3524,7 +3524,7 @@ Sets the tilt angle of a cloned event relative to the XZ and YZ planes. The valu
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetRollAngle()
 
@@ -3551,7 +3551,7 @@ Sets the rotation angle of the stylus around the Z-axis in a cloned event. This 
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetPressedKeys()
 
@@ -3579,7 +3579,7 @@ Sets all pressed keys in a cloned event. This API applies to touch, mouse, and a
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.|
 
 ### OH_ArkUI_ClonedEvent_SetChangedTouchArea()
 
@@ -3607,7 +3607,7 @@ Sets the width and height of the finger contact area for a cloned event. This AP
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetTouchAreaByIndex()
 
@@ -3636,7 +3636,7 @@ Sets the width and height of the finger contact area for a specific contact poin
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetChangedInteractionHand()
 
@@ -3663,7 +3663,7 @@ Sets whether a cloned event is triggered by the left or right hand. This API app
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetInteractionHandByIndex()
 
@@ -3691,7 +3691,7 @@ Sets whether a specific contact point of a cloned event is triggered by the left
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetPressedTimeByIndex()
 
@@ -3719,7 +3719,7 @@ Sets the time when a specific touch point is pressed in a cloned event. This API
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetPinchAxisScaleValue()
 
@@ -3746,7 +3746,7 @@ Sets the pinch axis scaling value for a cloned event. This API applies to axis e
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetHorizontalAxisScaleValue()
 
@@ -3773,7 +3773,7 @@ Sets the horizontal axis scaling value for a cloned event. This API applies to a
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetVerticalAxisScaleValue()
 
@@ -3800,7 +3800,7 @@ Sets the vertical axis scaling value for a cloned event. This API applies to axi
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetScrollStep()
 
@@ -3827,7 +3827,7 @@ Sets the scrolling step coefficient for a cloned event. This API applies to axis
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetMouseButton()
 
@@ -3854,7 +3854,7 @@ Sets a button type for a cloned event. This API applies to mouse events. This AP
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetRawDeltaX()
 
@@ -3881,7 +3881,7 @@ Sets the movement delta of the mouse along the x-axis in a two-dimensional plane
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetRawDeltaY()
 
@@ -3908,7 +3908,7 @@ Sets the movement delta of the mouse along the y-axis in a two-dimensional plane
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_ClonedEvent_SetPressedButtons()
 
@@ -3936,7 +3936,7 @@ Sets the pressed keys in a cloned event. This API applies to mouse events. This 
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the event type is not supported.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the event type is not supported.|
 
 ### OH_ArkUI_PointerEvent_PostClonedEventWithStrategy()
 
@@ -3964,7 +3964,7 @@ Posts a cloned event to a specific node using a specified competition strategy. 
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL](capi-native-type-h.md#arkui_errorcode) if the component status is abnormal.<br>         Returns [ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT](capi-native-type-h.md#arkui_errorcode) if no component is hit to respond to the event.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event pointer.<br>         Returns [ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the component status is abnormal.<br>         Returns [ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if no component is hit to respond to the event.|
 
 ### OH_ArkUI_UIInputEvent_GetLatestStatus()
 
@@ -3983,7 +3983,7 @@ Obtains the result code of the most recent API call related to an **ArkUI_UIInpu
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code of the most recent API call related to the **ArkUI_UIInputEvent** object.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code of the most recent API call related to the **ArkUI_UIInputEvent** object.|
 
 ### OH_ArkUI_UIInputEvent_GetCoastingAxisEvent()
 
@@ -4129,7 +4129,7 @@ Sets whether to enable event propagation for the specified coasting axis event. 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>        |
 
 ### OH_ArkUI_TouchTestInfo_GetTouchTestInfoList
 
@@ -4155,7 +4155,7 @@ Obtains the array of touch test information items.
 
 | Type| Description|
 | -- | -- |
-| ArkUI_ErrorCode | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        |
+| ArkUI_ErrorCode | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>        |
 
 ### OH_ArkUI_TouchTestInfoItem_GetX
 
@@ -4318,7 +4318,7 @@ Obtains the boundary rectangle information of the child component from the touch
 
 | Type| Description|
 | -- | -- |
-| ArkUI_ErrorCode | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>     |
+| ArkUI_ErrorCode | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>     |
 
 ### OH_ArkUI_TouchTestInfoItem_GetChildId
 
@@ -4345,7 +4345,7 @@ Obtains the ID of the child component from the touch test information item.
 
 | Type| Description|
 | -- | -- |
-| ArkUI_ErrorCode | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-native-type-h.md#arkui_errorcode) if the buffer space is insufficient.|
+| ArkUI_ErrorCode | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.<br>Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the buffer space is insufficient.|
 
 ### OH_ArkUI_TouchTestInfo_SetTouchResultStrategy
 
@@ -4369,7 +4369,7 @@ Sets the touch test policy, that is, the behavior of a component and its child c
 
 | Type| Description|
 | -- | -- |
-| ArkUI_ErrorCode | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| ArkUI_ErrorCode | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.|
 
 ### OH_ArkUI_TouchTestInfo_SetTouchResultId
 
@@ -4394,7 +4394,7 @@ Sets the ID of a child component involved in a hit test.
 
 | Type| Description|
 | -- | -- |
-| ArkUI_ErrorCode | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| ArkUI_ErrorCode | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the input parameter is incorrect.|
 
 ### OH_ArkUI_DigitalCrownEvent_GetEventTime()
 
@@ -4515,4 +4515,4 @@ Sets whether to stop event propagation. This API applies only when the input par
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>|

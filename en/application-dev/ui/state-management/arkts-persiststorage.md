@@ -122,7 +122,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
   **Figure 1** PersistProp initialization process 
 
-  ![en-us_image_0000001553348833](figures/en-us_image_0000001553348833.png)
+  ![en-us_image_0000001553348833](figures/PersistProp-initialization.png)
 
 - After a click event is triggered:
   1. The state variable **\@StorageLink('aProp') aProp** is updated, triggering the **Text** component to be re-rendered.

@@ -4,7 +4,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 This module provides APIs for collecting statistics on device usage.
 
@@ -40,7 +40,8 @@ Checks whether the application specified by **bundleName** is in the idle state.
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 // When a third-party application uses the sample code, change bundleName to its own bundle name.
 bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) => {
   if (err) {
@@ -75,7 +76,8 @@ Checks whether the application specified by **bundleName** is in the idle state.
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 // When a third-party application uses the sample code, change bundleName to its own bundle name.
 bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
   console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));

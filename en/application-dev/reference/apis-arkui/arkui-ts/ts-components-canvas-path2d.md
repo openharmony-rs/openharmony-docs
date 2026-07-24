@@ -173,7 +173,7 @@ Adds a path to this path.
   }
   ```
 
-  ![en-us_image_0000001211898520](figures/en-us_image_0000001211898520.png)
+  ![addPath](figures/addPath.png)
 
 
 ### closePath
@@ -219,7 +219,7 @@ Moves the current point of the path back to the start point of the path, and dra
   }
   ```
 
-  ![en-us_image_0000001212218482](figures/en-us_image_0000001212218482.png)
+  ![closePath2](figures/closePath2.png)
 
 
 ### moveTo
@@ -278,7 +278,7 @@ Moves the current coordinate point of the path to the target point, without draw
   }
   ```
 
-  ![en-us_image_0000001257138389](figures/en-us_image_0000001257138389.png)
+  ![moveTo3](figures/moveTo3.png)
 
 
 ### lineTo
@@ -332,7 +332,7 @@ Draws a straight line from the current point to the target point.
   }
   ```
 
-  ![en-us_image_0000001256858435](figures/en-us_image_0000001256858435.png)
+  ![lineTo3](figures/lineTo3.png)
 
 
 ### bezierCurveTo
@@ -387,7 +387,7 @@ Draws a cubic Bezier curve on the canvas.
   }
   ```
 
-  ![en-us_image_0000001257058445](figures/en-us_image_0000001257058445.png)
+  ![bezierCurveTo3](figures/bezierCurveTo3.png)
 
 
 ### quadraticCurveTo
@@ -440,7 +440,7 @@ Creates a quadratic Bezier curve path.
   }
   ```
 
-  ![en-us_image_0000001212058512](figures/en-us_image_0000001212058512.png)
+  ![quadraticCurveTo3](figures/quadraticCurveTo3.png)
 
 
 ### arc
@@ -494,7 +494,7 @@ Draws an arc on the canvas.
   }
   ```
 
-  ![en-us_image_0000001212378446](figures/en-us_image_0000001212378446.png)
+  ![arc](figures/arc.png)
 
 
 ### arcTo
@@ -548,7 +548,7 @@ Draws an arc based on the radius and points on the arc.
   }
   ```
 
-  ![en-us_image_0000001212058510](figures/en-us_image_0000001212058510.png)
+  ![arcTo2](figures/arcTo2.png)
 
 
 ### ellipse
@@ -604,7 +604,7 @@ Draws an ellipse in the specified rectangular region on the canvas.
   }
   ```
 
-  ![en-us_image_0000001257138391](figures/en-us_image_0000001257138391.png)
+  ![ellipse](figures/ellipse.png)
 
 
 ### rect
@@ -656,7 +656,7 @@ Creates a rectangle on the canvas.
   }
   ```
 
-  ![en-us_image_0000001256978385](figures/en-us_image_0000001256978385.png)
+  ![rect](figures/rect.png)
 
 ### roundRect<sup>20+</sup>
 

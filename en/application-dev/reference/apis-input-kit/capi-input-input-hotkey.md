@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:19:58.840Z pushedAt=2026-06-12T02:42:36.721Z -->
 
 ```c
 typedef struct Input_Hotkey Input_Hotkey
@@ -13,7 +14,7 @@ typedef struct Input_Hotkey Input_Hotkey
 
 ## Overview
 
-Defines the shortcut key structure.
+Defines the hotkey struct, which describes the hotkey design logic such as the key combination, trigger conditions, and callback handling. Applications can register and manage custom hotkeys.
 
 **Since**: 14
 

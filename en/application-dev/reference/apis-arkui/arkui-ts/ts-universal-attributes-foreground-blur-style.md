@@ -176,4 +176,4 @@ struct ForegroundBlurStyleDemo {
 }
 ```
 
-![en-us_image_background_blur_style](figures/en-us_image_foreground_blur_style.png)
+![image-foreground-blur-style](figures/image-foreground-blur-style.png)

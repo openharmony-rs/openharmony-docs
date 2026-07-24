@@ -13,14 +13,16 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > FormExtensionAbility创建后10秒内无操作将会被清理。
->
-> 如下模块不支持在FormExtensionAbility引用，可能会导致程序异常退出。
-> - @ohos.ability.particleAbility (ParticleAbility模块)
-> - @ohos.multimedia.audio (音频管理)
-> - @ohos.multimedia.camera (相机管理)
-> - @ohos.multimedia.media (媒体服务)
-> - @ohos.resourceschedule.backgroundTaskManager (后台任务管理)
 
+## 约束限制
+
+为保障系统安全性和稳定性，防止 FormExtensionAbility 滥用系统资源，系统对其能力进行管控， 不支持以下模块的引用：
+
+- [@ohos.ability.particleAbility (ParticleAbility模块)](../apis-ability-kit/js-apis-ability-particleAbility.md)
+- [@ohos.multimedia.audio (音频管理)](../apis-audio-kit/arkts-apis-audio.md)
+- [@ohos.multimedia.camera (相机管理)](../apis-camera-kit/arkts-apis-camera.md)
+- [@ohos.multimedia.media (媒体服务)](../apis-media-kit/arkts-apis-media.md)
+- [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)
 
 ## 导入模块
 
@@ -32,19 +34,17 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 卡片扩展类。包含卡片提供方接收创建卡片、修改可见性等的通知接口。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.Form
-
 ### 属性
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务。
 
 **系统能力：** SystemCapability.Ability.Form
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。|
 
 ### FormExtensionAbility.onAddForm
 
@@ -118,7 +118,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     // 卡片提供方收到卡片使用方将临时卡片转常态卡片的通知时触发，开发者需根据实际需求做相应的处理
     console.info(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
   }
-};
+}
 ```
 
 ### FormExtensionAbility.onUpdateForm
@@ -161,7 +161,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       console.error(`FormExtensionAbility context updateForm failed, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
     });
   }
-};
+}
 ```
 
 ### FormExtensionAbility.onChangeFormVisibility
@@ -209,11 +209,11 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       formProvider.updateForm(keys[i], obj2).then(() => {
         console.info('FormExtensionAbility context updateForm');
       }).catch((error: BusinessError) => {
-        console.error(`Operation updateForm failed. , code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`Operation updateForm failed, code: ${error.code}, message: ${error.message}`);
       });
     }
   }
-};
+}
 ```
 
 ### FormExtensionAbility.onFormEvent
@@ -244,7 +244,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
   }
-};
+}
 ```
 
 ### FormExtensionAbility.onRemoveForm
@@ -274,7 +274,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onRemoveForm(formId: string) {
     console.info(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
   }
-};
+}
 ```
 
 ### FormExtensionAbility.onConfigurationUpdate
@@ -307,7 +307,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     // 需要注意：formExtensionAbility创建后10秒内无操作将会被清理。
     console.info(`onConfigurationUpdate, config: ${newConfig?.language}`);
   }
-};
+}
 ```
 
 ### FormExtensionAbility.onAcquireFormState
@@ -345,7 +345,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     console.info(`FormExtensionAbility onAcquireFormState, want: ${want}`);
     return formInfo.FormState.UNKNOWN;
   }
-};
+}
 ```
 
 ### FormExtensionAbility.onStop<sup>12+</sup>

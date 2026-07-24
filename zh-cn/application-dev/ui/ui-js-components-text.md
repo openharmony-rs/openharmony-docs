@@ -32,7 +32,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考[tex
 }
 ```
 
-![zh-cn_image_0000001211383427](figures/zh-cn_image_0000001211383427.png)
+![text-Component](figures/text-Component.png)
 
 
 ## 设置text组件样式和属性
@@ -66,7 +66,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考[tex
   }
   ```
 
-  ![zh-cn_image_0000001220778205](figures/zh-cn_image_0000001220778205.png)
+  ![Text-Style](figures/Text-Style.png)
 
 
 
@@ -100,7 +100,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考[tex
   }
   ```
 
-  ![zh-cn_image_0000001220856725](figures/zh-cn_image_0000001220856725.png)
+  ![Text-Style-2](figures/Text-Style-2.png)
 
 
 
@@ -139,7 +139,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考[tex
   > - max-lines属性设置文本最多可以展示的行数。
 
 
-  ​    ![zh-cn_image_0000001163656706](figures/zh-cn_image_0000001163656706.png)
+  ​    ![Text-Style-3](figures/Text-Style-3.png)
 
 - text组件支持[span](../reference/apis-arkui/arkui-js/js-components-basic-span.md)子组件
 
@@ -158,7 +158,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考[tex
   </div>
   ```
 
-  ![zh-cn_image_0000001163372568](figures/zh-cn_image_0000001163372568.png)
+  ![Text-Style-1](figures/Text-Style-1.png)
     > **说明：**
     > - 当使用span子组件组成文本段落时，如果span属性样式异常（例如：font-weight设置为1000），将导致文本段落显示异常。
     >
@@ -220,4 +220,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001208636379](figures/zh-cn_image_0000001208636379.gif)
+![Example-Scenario-14](figures/Example-Scenario-14.gif)

@@ -1,15 +1,16 @@
 # Listening for Device Online/Offline Events (C/C++)
+
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
-<!--Owner: @zhaoshuhao123-->
+<!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
-<!--Tester: @csp1992-->
+<!--Tester: @fei_0805-->
 <!--Adviser: @luwy2025-->
+<!-- md-trans-meta sourceCommit=ae8fea910c203d6791a838e7a3fb4d5339bb907d translatedAt=2026-06-22T10:07:23.987Z pushedAt=2026-06-22T10:09:52.126Z -->
 
 ## When to Use
 
 Game Controller Kit allows you to monitor game device online/offline events and query information about online devices. After registering a listener for these events, you can receive real-time callback notifications when devices are plugged in or unplugged. It also supports querying specific information about all online devices.
-
 
 ## Service Flow
 
@@ -31,10 +32,9 @@ Game Controller Kit allows you to monitor game device online/offline events and 
 
 8. Unregister via **OH_GameDevice_UnregisterDeviceMonitor** if monitoring is no longer needed.
 
-
 ## Available APIs
 
-For details about the APIs, please refer to the [API reference](../reference/apis-game-controller-kit/capi-game-controller.md).
+For detailed API descriptions, see [GameController](../reference/apis-game-controller-kit/capi-gamecontroller.md).
 
 | API| Description| 
 | -------- | -------- |
@@ -42,9 +42,7 @@ For details about the APIs, please refer to the [API reference](../reference/api
 | GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void) | Unregisters the listening callback for device status change events.| 
 | GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceInfos \*\*allDeviceInfos) | Obtains information about all online devices.| 
 
-
 ## How to Develop
-
 
 ### Linking the Dynamic Library
 
@@ -52,13 +50,11 @@ For details about the APIs, please refer to the [API reference](../reference/api
 target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
-
 ### Importing the Module
 
 ```c
 #include <GameControllerKit/game_device.h>
 ```
-
 
 ### Registering a Listener for Device Status Changes
 
@@ -90,7 +86,6 @@ void DeviceApi::OnDeviceChanged(const struct GameDevice_DeviceEvent *deviceEvent
 }
 ```
 
-
 ### Unregistering a Listener for Device Status Changes
 
 If subscription is no longer needed, call **OH_GameDevice_UnregisterDeviceMonitor** to unregister the listener for device status change events.
@@ -109,7 +104,6 @@ napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info i
     return result;
 }
 ```
-
 
 ### Querying All Online Devices
 

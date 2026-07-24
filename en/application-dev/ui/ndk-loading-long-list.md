@@ -26,7 +26,7 @@ The NDK provides the **NodeAdapter** object as an alternative to [LazyForEach](.
 
 - **NodeAdapter** notifies you of on-demand generation of components through relevant events. Similar to the component event mechanism, you need to register an [event listener](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver) when using **NodeAdapter** and handle logic in the listener events. Relevant events are defined by [ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype). **NodeAdapter** does not actively release off-screen component objects; you must release or cache and reuse component objects in the [NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype) event. The following image illustrates the event triggering mechanism in a typical list scrolling scenario.
 
-  ![en-us_image_0000001949769409](figures/en-us_image_0000001949769409.png)
+  ![en-us_image_0000001949769409](figures/NodeAdapter-Overview.png)
 
 <!--RP1-->
 This example demonstrates how to implement an adapter for lazy loading.

@@ -1146,14 +1146,6 @@ Sets whether the multicast socket supports address reuse. This API is called in 
 | ------------- | ------- | ---- | ---------------------------- |
 | reuse         | boolean |  Yes | Whether to enable address reuse. **true** to enable, **false** otherwise.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                |
-| ------- | ----------------------- |
-| 401     | Parameter error.        |
-
 **Example**
 
 ```ts
@@ -5407,8 +5399,8 @@ Defines base properties of the **LocalSocket** object.
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | receiveBufferSize | number  | No  | Yes  | Size of the RX buffer, in bytes. The value ranges from 0 to 262144. If this parameter is left unspecified or the unspecified value exceeds the value range, the default value **8192** is used.    |
 | sendBufferSize    | number  | No  | Yes  | Size of the TX buffer, in bytes. The value ranges from 0 to 262144. If this parameter is left unspecified or the unspecified value exceeds the value range, the default value **8192** is used.    |
-| reuseAddress      | boolean | No  | Yes  | Whether to reuse addresses. The value **true** means to reuse addresses, and the value **false** means the opposite.                  |
-| socketTimeout     | number  | No  | Yes  | Timeout duration of the local socket connection, in ms.   |
+| reuseAddress      | boolean | No  | Yes  | Whether to reuse addresses. The value **true** means to reuse addresses, and the value **false** means the opposite. The default value is **false**.                  |
+| socketTimeout     | number  | No  | Yes  | Timeout duration of the local socket connection, in ms. The default value is **0**, indicating that the timeout period is not set.   |
 
 ## socket.constructLocalSocketServerInstance<sup>11+</sup>
 

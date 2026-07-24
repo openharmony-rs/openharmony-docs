@@ -1,4 +1,4 @@
-# 系统定义的公共事件(系统接口)
+# 系统定义的公共事件（系统接口）
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
@@ -8,7 +8,7 @@
 
 本文档提供了系统定义的公共事件清单。
 
-公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager.md#support)中。
+公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager-sys.md#support)中。
 
 > **说明：**
 >
@@ -150,6 +150,40 @@
 **取值：** "usual.event.APP_FIRST_LAUNCH"
 
 
+### COMMON_EVENT_SANDBOX_BUNDLE_ADDED
+
+表示设备上已安装新的沙箱应用的公共事件。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.SANDBOX_BUNDLE_ADDED"
+
+
+### COMMON_EVENT_SANDBOX_BUNDLE_REMOVED
+
+表示设备上安装的沙箱应用被卸载的公共事件。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.SANDBOX_BUNDLE_REMOVED"
+
+
 ## Background Tasks Kit 
 
 ### COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED<sup>10+</sup>
@@ -217,6 +251,21 @@
 
 **取值：** "usual.event.CHARGE_TYPE_CHANGED"
 
+### COMMON_EVENT_SCREEN_LOCK_EXITING
+
+表示锁屏退出的公共事件。
+
+锁屏退出时将会触发事件通知服务发布该系统公共事件，此公共事件不关注文件系统是否解密。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**取值：** "usual.event.SCREEN_LOCK_EXITING"
+
+## Basic Services Kit-账号
 
 ### COMMON_EVENT_USER_ADDED
 
@@ -224,7 +273,7 @@
 
 创建系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：createOsAccount、createOsAccountForDomain, 这些为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
+与这个公共事件相关的接口：createOsAccount、createOsAccountForDomain，这些为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -241,7 +290,7 @@
 
 删除系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：removeOsAccount, 为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
+与这个公共事件相关的接口：removeOsAccount，为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -258,7 +307,7 @@
 
 域账号认证、删除、令牌更新、令牌失效将会触发事件通知服务发布该系统公共事件，事件携带域账号名、域名、域账号状态等信息。
 
-与这个公共事件相关的接口：removeOsAccount、DomainAccountManager.auth、updateAccountToken, 这些为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
+与这个公共事件相关的接口：removeOsAccount、DomainAccountManager.auth、updateAccountToken，这些为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -275,7 +324,7 @@
 
 切换系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：activateOsAccount, 为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
+与这个公共事件相关的接口：activateOsAccount，为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -312,20 +361,113 @@
 **取值：** "usual.event.USER_LOCKED"
 
 
-### COMMON_EVENT_SCREEN_LOCK_EXITING
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_CREATED
 
-表示锁屏退出的公共事件。
+表示创建系统账号子身份。
 
-锁屏退出时将会触发事件通知服务发布该系统公共事件，此公共事件不关注文件系统是否解密。
+系统账号子身份创建成功时，会触发公共事件服务发布该事件，携带系统账号ID和子身份ID。
+
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**模型约束：** 此接口仅可在Stage模型下使用
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**取值：** "usual.event.SCREEN_LOCK_EXITING"
+**订阅者所需权限：** 无
 
+**取值：** "usual.event.OS_ACCOUNT_SUB_PROFILE_CREATED"
+
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_DELETED
+
+表示删除系统账号子身份。
+
+系统账号子身份被删除时，触发公共事件服务发布该事件，携带系统账号ID和子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.OS_ACCOUNT_SUB_PROFILE_DELETED"
+
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHING
+
+表示系统账号子身份开始切换。
+
+系统账号子身份开始切换时，触发公共事件服务发布该事件，携带系统账号ID、切换到的子身份ID和切换前的子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHING"
+
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHED
+
+表示系统账号子身份切换完成。
+
+系统账号子身份切换完成时，触发公共事件服务发布此事件，携带系统账号ID、切换到的子身份ID和切换前的子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHED"
+
+### COMMON_EVENT_DISTRIBUTED_ACCOUNT_BOUND
+
+表示绑定分布式账号。
+
+分布式账号绑定时，会触发公共事件服务发布该事件，携带系统账号ID和子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.DISTRIBUTED_ACCOUNT_BOUND"
+
+### COMMON_EVENT_DISTRIBUTED_ACCOUNT_UNBOUND
+
+表示已解绑分布式账号。
+
+分布式账号解绑时，会触发公共事件服务发布该事件，携带系统账号ID和子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.DISTRIBUTED_ACCOUNT_UNBOUND"
 
 ## Core File Kit
 
@@ -405,6 +547,24 @@
 
 **取值：** "usual.event.data.VOLUME_EJECT"
 
+
+### COMMON_EVENT_DISK_VOLUME_STATE_CHANGE
+
+表示系统数据盘卷状态发生变化的公共事件。
+
+当系统数据盘卷在格式化或修复等操作过程中状态发生变化（如操作开始、成功或失败）时，会发送此公共事件。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.DISK_VOLUME_STATE_CHANGE"
 
 ### COMMON_EVENT_RESTORE_START<sup>13+</sup>
 
@@ -699,7 +859,7 @@
 
 提示音频质量发生变化。
 
-在设备音频质量发送变化时，将会触发事件通知服务发布该系统公共事件。
+在设备音频质量发生变化时，将会触发事件通知服务发布该系统公共事件。
 
 **系统接口：** 此接口为系统接口。
 

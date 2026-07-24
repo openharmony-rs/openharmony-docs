@@ -12,7 +12,7 @@ typedef struct ArkUI_RectShape ArkUI_RectShapeOption
 
 ## Overview
 
-Defines a rectangle shape option.
+Defines a rectangle shape.
 
 **Since**: 20
 

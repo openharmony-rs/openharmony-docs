@@ -495,7 +495,7 @@ getWriteCacheHandler(): Promise&lt;number&gt;
 | -------- | ---------------------------------------- |
 | 201   | Permission denied.        |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.        |
+| 14000011 |  System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.        |
 | 14000016 |  Operation Not Support.     |
 
 **示例：**
@@ -789,6 +789,57 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('apply setOrientation successfully');
   }).catch((err: BusinessError) => {
     console.error(`apply setOrientation failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+## setFavorite
+
+setFavorite(favoriteState: boolean): void
+
+将文件设置为收藏文件。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| favoriteState | boolean | 是    | 是否设置为收藏文件，true表示设置为收藏文件；false表示取消收藏。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 14000011       | System inner fail.         |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setFavoriteDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset = await fetchResult.getFirstObject();
+  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+  assetChangeRequest.setFavorite(true);
+  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
+    console.info('apply setFavorite successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`apply setFavorite failed with error: ${err.code}, ${err.message}`);
   });
 }
 ```

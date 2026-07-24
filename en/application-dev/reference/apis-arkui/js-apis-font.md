@@ -109,7 +109,7 @@ struct FontExample {
       Text(this.message)
         .align(Alignment.Center)
         .fontSize(20)
-        .fontFamily('medium') // medium: name of the registered custom font. (Registered fonts such as $r('app.string.mediumFamilyName') and 'mediumRawFile' can also be used.)
+        .fontFamily('medium') // medium: name of the registered custom font. (Registered fonts such as $r('app.string.font_name') and 'mediumRawFile' can also be used.)
 
       // Two methods of using iconFont
       Text(this.unicode)
@@ -245,7 +245,7 @@ Information about the system font.
 
 > **NOTE**
 >
-> Directly using **font** can lead to the issue of ambiguous UI context. To avoid this, obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](./arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](./arkts-apis-uicontext-uicontext.md).
+> Directly using **font** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](./arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](./arkts-apis-uicontext-uicontext.md).
 
 ```ts
 // xxx.ets
@@ -254,7 +254,6 @@ import { font } from '@kit.ArkUI';
 @Entry
 @Component
 struct FontExample {
-  fontList: Array<string> = new Array<string>();
   uiFont = this.getUIContext().getFont();
   fontInfo: font.FontInfo = this.uiFont.getFontByName(''); // You are advised to use the this.getUIContext().getFont().getFontByName() API.
 

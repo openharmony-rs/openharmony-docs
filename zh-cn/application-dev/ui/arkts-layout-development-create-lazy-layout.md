@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArkUI提供了[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)四种滚动类组件。其中，Scroll不支持懒加载，List、Grid、WaterFlow虽支持配合[LazyForEach](./rendering-control/arkts-rendering-control-lazyforeach.md)实现懒加载，但各自仅支持特定的布局模式。在实际业务场景中，一个滚动页面往往需要混合使用多种布局模式。例如，电商首页可能同时包含多列网格分类入口、瀑布流商品卡片、线性列表推荐；社交应用信息流可能同时包含文本列表、九宫格图片、视频卡片。此时单一滚动组件无法灵活适配，存在一定局限性。
@@ -17,7 +17,7 @@ ArkUI提供了[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)�
 
 懒加载布局容器适用于以下典型场景。
 
-- **混合布局页面**：一个滚动页面中需要同时展示多种布局方式的内容，如电商首页、社交应用信息流。List、Grid、WaterFlow分别支持线性、网格、瀑布流布局模式，通过懒加载布局容器可以将不同布局方式灵活组合在同一个可滚动父组件中，每个容器独立配置各自的布局参数（如分组、列数），所有区域共享父组件的统一滚动，无需额外处理滚动组件嵌套导致的手势冲突。
+- **混合布局页面**：一个滚动页面中需要同时展示多种布局模式的内容，如电商首页、社交应用信息流。List、Grid、WaterFlow分别支持线性、网格、瀑布流布局模式，通过懒加载布局容器可以将不同布局模式灵活组合在同一个可滚动父组件中，每个容器独立配置各自的布局参数（如分组、列数），所有区域共享父组件的统一滚动，无需额外处理滚动组件嵌套导致的手势冲突。
 
 - **独立数据源管理**：页面中不同区域的数据来源不同，需要分别管理各自的数据。每个懒加载布局容器可以使用独立的数据源，不同业务模块的数据无需耦合在一起，降低数据管理的复杂度。
 
@@ -34,14 +34,17 @@ ArkUI提供了[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)�
 | 设置列间距（[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnsgap)） | 支持 | 支持 | 不支持 |
 | 设置列数（[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnstemplate)） | 支持 | 支持 | 不支持 |
 | 设置子组件水平对齐方式（[alignItems](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md#alignitems)） | 不支持 | 不支持 | 支持 |
+| 设置头部组件（[header](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#header)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
+| 设置尾部组件（[footer](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#footer)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
+| 设置吸附效果（[sticky](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#sticky)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
 | 监听可视区域子组件索引变化（[onVisibleIndexesChange](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#onvisibleindexeschange)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
 | 嵌套懒加载布局容器 | 不支持 | 不支持 | 支持 |
 | 布局模式 | 垂直网格布局 | 垂直瀑布流布局 | 垂直线性布局 |
-| 示例图 | ![lazy_vgrid_layout.png](figures/lazy_vgrid_layout.png) | ![lazy_vwaterflow_layout.png](figures/lazy_vwaterflow_layout.png) | ![lazy_column_layout.png](figures/lazy_column_layout.png) |
+| 示例图 | ![lazy-vgrid-layout.png](figures/lazy-vgrid-layout.png) | ![lazy-vwaterflow-layout.png](figures/lazy-vwaterflow-layout.png) | ![lazy-column-layout.png](figures/lazy-column-layout.png) |
 
 ## 约束与限制
 
-1. 三种懒加载布局容器的高度均默认自适应内容，不建议设置高度、高度约束或宽高比，设置后会导致显示异常。
+1. 三种懒加载布局容器的高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[size](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)中的height、[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)，以及[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height15)取[LayoutPolicy](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutpolicy15)值的场景。
 
 2. 三种懒加载布局容器均需要配合可滚动父组件使用，不同容器支持的父组件范围有所差异。
 
@@ -51,7 +54,7 @@ ArkUI提供了[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)�
 
 3. 三种懒加载布局容器在不同父组件下的懒加载支持条件如下。
 
-   - 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用懒加载布局容器会导致应用崩溃。当List设置了[lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9)、[chainAnimation](../reference/apis-arkui/arkui-ts/ts-container-list.md#chainanimation)、[scrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10)属性中的任意一个时，懒加载布局容器的懒加载功能会失效。
+   - 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用懒加载布局容器会导致应用崩溃。当List设置了[lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9)、[chainAnimation](../reference/apis-arkui/arkui-ts/ts-container-list.md#chainanimation)、[scrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10)属性中的任意一个或多个时，懒加载布局容器的懒加载功能会失效。
 
    - 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollable)属性设置为ScrollDirection.Vertical），在非竖直方向的Scroll中使用懒加载布局容器会导致应用崩溃。
 
@@ -86,7 +89,7 @@ columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字
 
 **图1** 列数占比示例图
 
-![lazy_vgrid_layout_columnsTemplate](figures/lazy_vgrid_layout_columnsTemplate.png)
+![lazy-vgrid-layout-columns-template](figures/lazy-vgrid-layout-columns-template.png)
 
 如上图所示，构建的是一个三行三列的网格布局，其在水平方向上分为四等份，第一列占一份，第二列占两份，第三列占一份。只要将columnsTemplate设置为'1fr 2fr 1fr'，即可实现上述网格布局。
 
@@ -106,7 +109,7 @@ LazyVGridLayout() {
 .columnsTemplate('1fr 2fr') // 设置为2列，第一列占1份，第二列占2份
 ```
 
-columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'repeat(auto-fit/auto-fill/auto-stretch, track-size)'`，其中repeat、auto-fit、auto-fill、auto-stretch为关键字，track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包含一个有效列宽。
+columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'repeat(auto-fit/auto-fill/auto-stretch, track-size)'`，其中repeat、auto-fit、auto-fill、auto-stretch为关键字，track-size为列宽，支持px、vp、%等单位，默认单位为vp，也支持无单位的有效数字。track-size至少包含一个有效列宽。
 
 | 模式 | 示例 | 说明 |
 |------|------|------|
@@ -120,7 +123,7 @@ columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'rep
 
 **图2** 网格的行列间距示例图
 
-![zh-cn_image_0000001511580908](figures/zh-cn_image_0000001511580908.png)
+![grid8](figures/grid8.png)
 
 LazyVGridLayout组件提供了[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnsgap)属性分别设置行间距和列间距。默认值均为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
 
@@ -181,7 +184,7 @@ LazyVWaterFlowLayout() {
 .columnsTemplate('1fr 2fr') // 设置为2列，第一列占1份，第二列占2份
 ```
 
-columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'repeat(auto-fit/auto-fill/auto-stretch, track-size)'`，其中repeat、auto-fit、auto-fill、auto-stretch为关键字，track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包含一个有效列宽。
+columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'repeat(auto-fit/auto-fill/auto-stretch, track-size)'`，其中repeat、auto-fit、auto-fill、auto-stretch为关键字，track-size为列宽，支持px、vp、%等单位，默认单位为vp，也支持无单位的有效数字。track-size至少包含一个有效列宽。
 
 与LazyVGridLayout组件不同的是，LazyVWaterFlowLayout组件的columnsTemplate属性还支持设置为[ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22)类型的枚举值，此时会根据组件宽度对应的[栅格容器断点](./arkts-layout-development-grid-layout.md#栅格容器断点)类型自动确定列数。例如，设置为ItemFillPolicy.BREAKPOINT_DEFAULT，组件宽度属于sm及更小的断点区间时LazyVWaterFlowLayout显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
 
@@ -340,6 +343,7 @@ LazyVWaterFlowLayout() {
 ``` TypeScript
 List({ space: 10 }) {
   // ...
+  // 瀑布流布局
   LazyVWaterFlowLayout() {
     LazyForEach(this.flowData, (item: number) => {
       // ...
@@ -459,6 +463,7 @@ export struct ListNestedLazyLayout {
               .fontColor(Color.Gray)
           }
 
+          // 等宽的网格布局
           LazyVGridLayout() {
             LazyForEach(this.gridData, (item: number) => {
               Text('item' + item.toString())
@@ -476,6 +481,7 @@ export struct ListNestedLazyLayout {
             console.info('LazyVGridLayout visible indexes: start: ' + start + ', end: ' + end);
           })
 
+          // 不等宽的网格布局
           LazyVGridLayout() {
             LazyForEach(this.gridData, (item: number) => {
               Text('item' + (this.gridData.totalCount() + item).toString())
@@ -503,6 +509,7 @@ export struct ListNestedLazyLayout {
               .fontColor(Color.Gray)
           }
 
+          // 瀑布流布局
           LazyVWaterFlowLayout() {
             LazyForEach(this.flowData, (item: number) => {
               Text('item' + item.toString())
@@ -548,7 +555,7 @@ export struct ListNestedLazyLayout {
 
 **图3** List嵌套懒加载布局容器效果示例图
 
-![list_nested_lazy_layout.gif](figures/list_nested_lazy_layout.gif)
+![list-nested-lazy-layout.gif](figures/list-nested-lazy-layout.gif)
 
 - 通过LazyColumnLayout嵌套组合多种懒加载布局容器
 
@@ -780,4 +787,319 @@ export struct LazyColumnLayoutNestedLazyLayout {
 
 **图4** LazyColumnLayout嵌套懒加载布局容器效果示例图
 
-![lazy_column_layout_nested_lazy_layout.gif](figures/lazy_column_layout_nested_lazy_layout.gif)
+![lazy-column-layout-nested-lazy-layout.gif](figures/lazy-column-layout-nested-lazy-layout.gif)
+
+## 分组展示与粘性标题
+
+在混合布局页面中，不同内容区域通常需要分组展示，并配以独立的标题或操作栏，方便用户快速识别和定位内容。从API版本26.0.0开始，三种懒加载布局容器均提供了[header](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#header)和[footer](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#footer)属性，分别用于展示分组标题，提示数据加载完毕（如“已经到底了”）或提供快捷操作（如“查看更多”）。同时，三种容器还提供了[sticky](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#sticky)属性，可以将header或footer在滚动过程中分别吸附在可视区域的顶部或底部，实现粘性标题效果，帮助用户识别当前所在的内容区域。
+
+### 添加分组标题
+
+可以通过[header](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#header)属性为懒加载布局容器添加头部组件，用于展示分组标题。以下示例使用[@Builder](state-management/arkts-builder.md)构建了一个带参数的分组标题组件，并通过header属性设置到[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)中。
+
+<!-- @[lazy_layout_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets) -->
+
+``` TypeScript
+// 内层分组header：显示月份标题，滚动时吸顶
+@Builder
+MonthHeaderBuilder(title: string, count: number) {
+  Row() {
+    Text(title)
+      .fontSize(16)
+      .fontWeight(FontWeight.Bold)
+    Blank()
+    // 请将$r('app.string.lazyLayout_photo_count')替换为实际资源文件，在本示例中该资源文件的value值为"%d张"，表示照片的张数
+    Text($r('app.string.lazyLayout_photo_count', count))
+      .fontSize(14)
+      .fontColor(Color.Gray)
+  }
+  .width('100%')
+  .height(48)
+  .padding({ left: 16, right: 16 })
+  .backgroundColor(Color.White)
+  .alignItems(VerticalAlign.Center)
+}
+
+// ...
+
+build() {
+  // ...
+          // 通过LazyForEach动态创建每个月份分组
+          LazyForEach(this.groupData, (group: PhotoGroup, index: number) => {
+            // 内层：每个分组为一个网格布局
+            LazyVGridLayout() {
+              LazyForEach(group.photos, (item: number) => {
+                // ...
+              }, (item: number) => `${index}_${item}`)
+            }
+            // ...
+            .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount())) // 内层分组header：显示月份标题
+            // ...
+          }, (group: PhotoGroup) => group.title)
+          // ...
+}
+```
+
+### 添加末尾提示
+
+可以通过[footer](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md#footer)属性为懒加载布局容器添加尾部组件，用于提示数据加载完毕。以下示例使用[@Builder](state-management/arkts-builder.md)构建了一个尾部提示组件，并通过footer属性设置到[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)中。
+
+<!-- @[lazy_layout_footer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets) -->
+
+``` TypeScript
+// 外层footer：显示"已经到底了"
+@Builder
+GroupFooterBuilder() {
+  // 请将$r('app.string.lazyLayout_no_more_content')替换为实际资源文件，在本示例中该资源文件的value值为"—— 已经到底了 ——"
+  Text($r('app.string.lazyLayout_no_more_content'))
+    .fontSize(14)
+    .fontColor(Color.Gray)
+    .width('100%')
+    .height(48)
+    .textAlign(TextAlign.Center)
+}
+
+build() {
+  // ...
+      Scroll() {
+        LazyColumnLayout() {
+          // ...
+        }
+        // ...
+        .footer(this.GroupFooterBuilder()) // 外层footer：显示"已经到底了"
+      }
+      .scrollable(ScrollDirection.Vertical)
+      .width('100%')
+      .layoutWeight(1)
+      // ...
+}
+```
+
+### 设置粘性标题
+
+通过[sticky](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#sticky)属性，可以将[header](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#header)或[footer](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#footer)在滚动过程中吸附在可视区域的顶部或底部，帮助用户在滚动时识别当前所在的内容区域。sticky属性支持以下模式。
+
+- StickyStyle.Header：仅header吸附在可视区域顶部，常用于分组标题吸顶。
+- StickyStyle.Footer：仅footer吸附在可视区域底部，常用于汇总信息或操作入口吸底。
+- StickyStyle.BOTH：同时支持header吸附在顶部和footer吸附在底部。
+
+**图5** 三种StickyStyle效果示例图
+
+| StickyStyle.Header | StickyStyle.Footer | StickyStyle.BOTH |
+| :---: | :---: | :---: |
+| ![lazy-layout-sticky-header](figures/lazy-layout-sticky-header.gif) | ![lazy-layout-sticky-footer](figures/lazy-layout-sticky-footer.gif) | ![lazy-layout-sticky-both](figures/lazy-layout-sticky-both.gif) |
+
+由于浮点数计算精度，设置sticky后，在滚动过程中小概率产生缝隙，可以通过[pixelRound](../reference/apis-arkui/arkui-ts/ts-universal-attributes-pixelRoundForComponent.md#pixelround)指定当前组件向下像素取整解决该问题。
+
+以下示例模拟图库页面，展示了分组展示与粘性标题的效果。外层[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)通过footer显示”已经到底了”，提示数据已全部加载；内层通过[LazyForEach](./rendering-control/arkts-rendering-control-lazyforeach.md)动态创建多个[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)展示各月份照片网格，每个LazyVGridLayout设置了header和sticky(StickyStyle.Header)，使月份标题在滚动时吸顶。
+
+<!-- @[lazy_layout_group](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets) -->
+
+``` TypeScript
+import { LengthMetrics, LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
+
+class BasicDataSource<T> implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  protected dataArray: T[] = [];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): T {
+    return this.dataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+}
+
+class MyDataSource<T> extends BasicDataSource<T> {
+  public pushData(data: T): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+class PhotoGroup {
+  public title: string
+  public photos: MyDataSource<number> = new MyDataSource<number>()
+
+  constructor(title: string) {
+    this.title = title
+  }
+}
+
+@Entry
+@Component
+export struct LazyLayoutGroup {
+  private groupData: MyDataSource<PhotoGroup> = new MyDataSource<PhotoGroup>();
+
+  aboutToAppear(): void {
+    // 初始化数据
+    const months: string[] = ['2026年1月', '2026年2月', '2026年3月'];
+    for (let m = 0; m < months.length; m++) {
+      let group = new PhotoGroup(months[m]);
+      let photoCount = 6 + m * 3;
+      for (let i = 0; i < photoCount; i++) {
+        group.photos.pushData(i);
+      }
+      this.groupData.pushData(group);
+    }
+  }
+
+  // 底部工具栏
+  @Builder
+  BottomToolBarBuilder() {
+    Row() {
+      Column() {
+        SymbolGlyph($r('sys.symbol.picture_fill'))
+          .fontSize(24)
+          .fontColor(['#FF007DFF'])
+        // 请将$r('app.string.lazyLayout_photo')替换为实际资源文件，在本示例中该资源文件的value值为"照片"
+        Text($r('app.string.lazyLayout_photo'))
+          .fontSize(12)
+          .fontColor('#FF007DFF')
+          .margin({ top: 2 })
+      }
+
+      Column() {
+        SymbolGlyph($r('sys.symbol.square_fill_grid_2x2'))
+          .fontSize(24)
+          .fontColor([Color.Gray])
+        // 请将$r('app.string.lazyLayout_album')替换为实际资源文件，在本示例中该资源文件的value值为"相册"
+        Text($r('app.string.lazyLayout_album'))
+          .fontSize(12)
+          .fontColor(Color.Gray)
+          .margin({ top: 2 })
+      }
+      .margin({ left: 36 })
+
+      Blank()
+      // 请将$r('app.string.lazyLayout_select')替换为实际资源文件，在本示例中该资源文件的value值为"选择"
+      Text($r('app.string.lazyLayout_select'))
+        .fontSize(14)
+        .fontColor('#FF007DFF')
+    }
+    .width('100%')
+    .height(64)
+    .padding({ left: 16, right: 16 })
+    .backgroundColor(Color.White)
+    .alignItems(VerticalAlign.Center)
+  }
+
+  // 内层分组header：显示月份标题，滚动时吸顶
+  @Builder
+  MonthHeaderBuilder(title: string, count: number) {
+    Row() {
+      Text(title)
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+      Blank()
+      // 请将$r('app.string.lazyLayout_photo_count')替换为实际资源文件，在本示例中该资源文件的value值为"%d张"，表示照片的张数
+      Text($r('app.string.lazyLayout_photo_count', count))
+        .fontSize(14)
+        .fontColor(Color.Gray)
+    }
+    .width('100%')
+    .height(48)
+    .padding({ left: 16, right: 16 })
+    .backgroundColor(Color.White)
+    .alignItems(VerticalAlign.Center)
+  }
+
+  // 外层footer：显示"已经到底了"
+  @Builder
+  GroupFooterBuilder() {
+    // 请将$r('app.string.lazyLayout_no_more_content')替换为实际资源文件，在本示例中该资源文件的value值为"—— 已经到底了 ——"
+    Text($r('app.string.lazyLayout_no_more_content'))
+      .fontSize(14)
+      .fontColor(Color.Gray)
+      .width('100%')
+      .height(48)
+      .textAlign(TextAlign.Center)
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Scroll() {
+          LazyColumnLayout() {
+            // 通过LazyForEach动态创建每个月份分组
+            LazyForEach(this.groupData, (group: PhotoGroup, index: number) => {
+              // 内层：每个分组为一个网格布局
+              LazyVGridLayout() {
+                LazyForEach(group.photos, (item: number) => {
+                  Column() {
+                    SymbolGlyph($r('sys.symbol.picture'))
+                      .fontSize(24)
+                      .fontColor([Color.Gray])
+                  }
+                  .width('100%')
+                  .aspectRatio(1)
+                  .borderRadius(4)
+                  .backgroundColor('#e8e8e8')
+                  .justifyContent(FlexAlign.Center)
+                }, (item: number) => `${index}_${item}`)
+              }
+              .columnsTemplate('1fr 1fr 1fr')
+              .rowsGap(LengthMetrics.vp(2))
+              .columnsGap(LengthMetrics.vp(2))
+              .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount())) // 内层分组header：显示月份标题
+              .sticky(StickyStyle.Header) // header吸顶
+            }, (group: PhotoGroup) => group.title)
+          }
+          .space(LengthMetrics.vp(12))
+          .footer(this.GroupFooterBuilder()) // 外层footer：显示"已经到底了"
+        }
+        .scrollable(ScrollDirection.Vertical)
+        .width('100%')
+        .layoutWeight(1)
+        .scrollBar(BarState.Off)
+        .backgroundColor(Color.White)
+
+        // 底部工具栏
+        this.BottomToolBarBuilder()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.lazyLayout_group_title')替换为实际资源文件
+    // 在本示例中该资源文件的value值为"分组展示与粘性标题"
+    .title($r('app.string.lazyLayout_group_title'))
+  }
+}
+```
+
+**图6** 分组展示与粘性标题效果示例图
+
+![lazy-layout-group.gif](figures/lazy-layout-group.gif)

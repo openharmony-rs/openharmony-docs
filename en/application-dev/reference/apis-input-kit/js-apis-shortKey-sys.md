@@ -36,7 +36,7 @@ Sets the delay for starting an ability using shortcut keys. This API uses an asy
 | ---------- | ------------------- | ---- | ------------------------------------------------------------ |
 | businessKey| string              | Yes  | Unique service ID registered on the multimodal side. It corresponds to **businessId** in the **ability_launch_config.json** file. You need to query this parameter on your own before calling the API.|
 | delay      | number              | Yes  | Delay for starting an ability using shortcut keys, in milliseconds. This field is invalid only when shortcut keys are used.|
-| callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is undefined. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -45,7 +45,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -61,15 +61,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the delay for starting the ability to 500 ms.
             shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
               if (error) {
-                console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set key down duration success`);
+              console.info(`Succeeded in setting key down duration.`);
             });
           } catch (error) {
-            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -105,7 +106,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -121,13 +122,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the delay for starting the ability to 500 ms.
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
-              console.info(`Set key down duration success`);
+              console.info(`Succeeded in setting key down duration.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set key down failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -158,5 +160,5 @@ Provides fingerprint gesture event types and the offset of the fingerprint senso
 | Name     | Type                                      |Read Only  | Optional |Description                   |
 | --------  | ------------------------                  |-------|------ |--------               |
 | action    | [FingerprintAction](#fingerprintaction12)   | No   |  No  | Enumeration of fingerprint gesture event types.          |
-| distanceX | double                                    | No   |  No  | Offset of the X axis for the fingerprint sensor relative to the side edge (a positive number indicates that a rightward offset, and a negative number indicates a leftward offset).|
-| distanceY | double                                    | No   |  No  | Offset of the Y axis for the fingerprint sensor relative to the side edge (a positive number indicates an upward offset, and a negative number indicates a downward offset).|
+| distanceX | number                                    | No   |  No  | Offset of the X axis for the fingerprint sensor relative to the side edge (a positive number indicates that a rightward offset, and a negative number indicates a leftward offset).|
+| distanceY | number                                    | No   |  No  | Offset of the Y axis for the fingerprint sensor relative to the side edge (a positive number indicates an upward offset, and a negative number indicates a downward offset).|

@@ -1,16 +1,19 @@
 # Class (PhotoViewPicker)
+
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xuchangda-->
 <!--Designer: @guxinggang-->
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:55.030Z pushedAt=2026-06-23T09:25:46.749Z -->
 
 PhotoViewPicker provides APIs for the user to select images and videos. Before using the APIs of PhotoViewPicker, you need to create a PhotoViewPicker instance.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - To launch **PhotoViewPicker** repeatedly, you need to destroy the previous **photoViewPicker** through **NavDestination** or when the process is destroyed.
 
 ## Modules to Import
 

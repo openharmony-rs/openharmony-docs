@@ -275,7 +275,7 @@ Operation failed.
 
 **Description**
 
-The operation failed.
+The operation failed. An internal system error occurred, such as an SA or IPC exception.
 
 **Possible Causes**
 
@@ -285,7 +285,7 @@ Common error code for Bluetooth API calling failures. The possible causes are as
 
 **Solution**
 
-Perform this operation again.
+1. Check the prerequisites for calling the API. For details, see [2900099 Bluetooth API Call Error](../../connectivity/bluetooth/bluetooth-faq-2900099-errorcode.md).
 
 ## 2900100
 

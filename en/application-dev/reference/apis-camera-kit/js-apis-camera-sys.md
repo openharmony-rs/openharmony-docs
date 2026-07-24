@@ -547,7 +547,6 @@ Enumerates the camera output formats.
 
 | Name                    | Value       | Description        |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup> |    5    | Image in extreme digital format.  |
 | CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | Depth map in DEPTH_16 format.     |
 | CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | Depth map in DEPTH_32 format.     |
 
@@ -2053,33 +2052,6 @@ function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
 
 Implements metadata streams. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
-## MetadataObjectType
-
-Enumerates the types of metadata objects used for camera detection.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                      | Value  | Description             |
-| -------------------------- | ---- | ----------------- |
-| HUMAN_BODY<sup>13+</sup>                 | 1    | Metadata object used for human body detection.|
-| CAT_FACE<sup>13+</sup>                   | 2    | Metadata object used for cat face detection.|
-| CAT_BODY<sup>13+</sup>                   | 3    | Metadata object used for cat body detection.|
-| DOG_FACE<sup>13+</sup>                   | 4    | Metadata object used for dog face detection.|
-| DOG_BODY<sup>13+</sup>                   | 5    | Metadata object used for dog body detection.|
-| SALIENT_DETECTION<sup>13+</sup>          | 6    | Metadata object used for salient detection.|
-
-## Emotion<sup>13+</sup>
-Enumerates the types of emotions in the detected human face information.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                      | Value  | Description             |
-| -------------------------- | ---- | ----------------- |
-| NEUTRAL                 | 0    | Quiet and calm.|
-| SADNESS                   | 1    | Sad.|
-| SMILE                   | 2    | Smile.|
-| SURPRISE                   | 3    | Surprise.|
-
 ## MetadataObject
 
 Implements the basic metadata object used for camera detection. It serves as the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
@@ -2090,74 +2062,6 @@ Implements the basic metadata object used for camera detection. It serves as the
 | -----------  | ------------------------------------------- | ---- | ---- | ----------------- |
 | objectId<sup>13+</sup>     | number                                      |  Yes |  No | Metadata object ID.|
 | confidence<sup>13+</sup>   | number                                      |  Yes |  No | Confidence of the detection, with a value range of [0, 1].|
-
-## MetadataFaceObject<sup>13+</sup>
-
-Implements the human face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                   | Type                             | Read-only| Optional|Description               |
-| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
-| leftEyeBoundingBox     | [Rect](arkts-apis-camera-i.md#rect)                             |  Yes |  No | Left eye area.|
-| rightEyeBoundingBox    | [Rect](arkts-apis-camera-i.md#rect)                            |  Yes |  No | Right eye area.|
-| emotion                | [Emotion](#emotion13)             |  Yes |  No | Detected emotion.|
-| emotionConfidence      | number                            |  Yes |  No | Confidence of the emotion detection, with a value range of [0, 1].|
-| pitchAngle             | number                            |  Yes |  No | Pitch angle, with a value range of [-90, 90], where downward is positive.|
-| yawAngle               | number                            |  Yes |  No | Yaw angle, with a value range of [-90, 90], where rightward is positive.|
-| rollAngle              | number                            |  Yes |  No | Row angle, with a value range of [-180, 180], where clockwise direction is positive.|
-
-## MetadataHumanBodyObject<sup>13+</sup>
-
-Implements the human body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-## MetadataCatFaceObject<sup>13+</sup>
-
-Implements the cat face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                   | Type                             | Read-only| Optional|Description               |
-| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
-| leftEyeBoundingBox     | [Rect](arkts-apis-camera-i.md#rect)                              |  Yes |  No | Left eye area.|
-| rightEyeBoundingBox    | [Rect](arkts-apis-camera-i.md#rect)                              |  Yes |  No | Right eye area.|
-
-## MetadataCatBodyObject<sup>13+</sup>
-
-Implements the cat body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-## MetadataDogFaceObject<sup>13+</sup>
-
-Implements the dog face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                   | Type                             | Read-only| Optional|Description               |
-| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
-| leftEyeBoundingBox     | [Rect](arkts-apis-camera-i.md#rect)                              |  Yes |  No | Left eye area.|
-| rightEyeBoundingBox    | [Rect](arkts-apis-camera-i.md#rect)                              |  Yes |  No | Right eye area.|
-
-## MetadataDogBodyObject<sup>13+</sup>
-
-Implements the dog body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-## MetadataSalientDetectionObject<sup>13+</sup>
-
-Implements the salient detection metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-## MetadataBarcodeObject<sup>14+</sup>
-
-Implements the barcode metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## PortraitEffect
 
@@ -2556,70 +2460,13 @@ function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput
 }
 ```
 
-## ZoomPointInfo<sup>12+</sup>
-
-Describes the equivalent focal length information.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name    | Type       |   Read-only  | Optional | Description      |
-| -------- | ---------- | -------- |-----| ---------- |
-| zoomRatio |   number   |   Yes    | No  | Zoom ratio.|
-| equivalentFocalLength |   number   |   Yes    | No  | Equivalent focal length corresponding to the current focal length ratio.|
-
 ## ZoomQuery<sup>12+</sup>
 
 Provides the API to obtain the equivalent focal length information list in the current mode.
 
-### getZoomPointInfos<sup>12+</sup>
-
-getZoomPointInfos(): Array\<ZoomPointInfo\>
-
-Obtains the equivalent focal length information list in the current mode.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type               | Description                                                 |
-| ----------          | -----------------------------                         |
-|  Array\<[ZoomPointInfo](#zoompointinfo12)\>| Equivalent focal length information list in the current mode.                  |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202                    |  Not System Application.                      |
-| 7400103                |  Session not config, only throw in session usage.      |
-
-**Example**
-
-```ts
-import { camera } from '@kit.CameraKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getZoomPointInfos(photoSessionForSys: camera.PhotoSessionForSys): Array<camera.ZoomPointInfo> {
-  let zoomPointInfos: Array<camera.ZoomPointInfo> = [];
-  try {
-    zoomPointInfos = photoSessionForSys.getZoomPointInfos();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getZoomPointInfos call failed. error code: ${err.code}`);
-  }
-  return zoomPointInfos;
-}
-```
-
 ## Zoom<sup>11+</sup>
 
-Zoom extend [ZoomQuery](#zoomquery12)
+Zoom extends [ZoomQuery](#zoomquery12)
 
 Provides APIs to process the zoom effect of a camera device, including obtaining the current zoom ratio, setting a zoom ratio, setting a zoom ratio in a smooth manner, and preparing or unpreparing for zooming.
 
@@ -5056,16 +4903,6 @@ Describes the illumination information.
 | Name       | Type   | Read-only| Optional | Description      |
 | ----------- | ------- | ---- |-----| ---------- |
 | lumination  | number  | Yes  | Yes  | Illumination. The value range is [0, 1].|
-
-## CameraFormat
-
-Enumerates the camera output formats.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                    | Value       | Description        |
-| ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup>  | 5         | Enhanced raw image in DNG format, where JPG and raw images are packaged in the same file, and up to 16-bit raw data is supported. **System API**: This is a system API.        |
 
 ## ExposureMeteringMode<sup>12+</sup>
 

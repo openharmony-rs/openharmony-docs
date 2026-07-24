@@ -1,8 +1,8 @@
 # Motion Blur
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,9 @@ You can apply a motion blur effect to a component being scaled or moved. This ef
 
 >  **NOTE**
 >
->  This feature is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This feature is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## motionBlur
 
@@ -97,7 +99,7 @@ Defines motion blur options.
 
 ## MotionBlurAnchor
 
-Describes the coordinates of the motion blur anchor.
+Defines the coordinates of the motion blur anchor.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

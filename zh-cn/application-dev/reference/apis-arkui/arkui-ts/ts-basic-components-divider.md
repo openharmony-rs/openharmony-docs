@@ -192,7 +192,7 @@ struct DividerExample {
 }
 ```
 
-![zh-cn_image_0000001174422926](figures/zh-cn_image_0000001174422926.png)
+![divider](figures/divider.png)
 
 ### 示例2（定义Divider的lineCap样式）
 

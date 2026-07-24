@@ -348,4 +348,4 @@ struct PanelExample {
 }
 ```
 
-![en-us_image_0000001174422896](figures/en-us_image_0000001174422896.gif)
+![panel](figures/panel.gif)

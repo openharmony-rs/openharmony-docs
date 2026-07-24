@@ -937,8 +937,6 @@ try {
 
 When the **showInSubWindow** attribute is set to **true**, the toast can be displayed outside the window.
 
-The **displayModeInSubWindow** attribute is added to [BaseDialogOptions](#basedialogoptions11) since API version 26.0.0.
-
 ```ts
 import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -949,8 +947,6 @@ try {
     message: 'Message Info',
     isModal: true,
     showInSubWindow: true,
-    // The displayModeInSubWindow is added since API version 26.0.0.
-    displayModeInSubWindow: DialogDisplayMode.SCREEN_BASED,
     buttons: [
       {
         text: 'button1',

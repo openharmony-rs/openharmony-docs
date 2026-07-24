@@ -1,4 +1,4 @@
-# 格物开发指导
+# 格物服务开发指导
 <!--Kit: Kernel Enhance Kit-->
 <!--Subsystem: Kernel-->
 <!--Owner: @gatieme-->
@@ -17,7 +17,7 @@
 
 ### 会话句柄
 
-会话句柄用于会话的管理。通过`OH_QoS_GewuSession`成功创建会话时可获得会话句柄，可用于提交/中止请求和销毁会话。
+会话句柄用于会话的管理。通过`OH_QoS_GewuCreateSession`成功创建会话时可获得会话句柄，可用于提交/中止请求和销毁会话。
 
 ```C
 typedef unsigned int OH_QoS_GewuSession;
@@ -63,10 +63,10 @@ OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes);
 
 **参数**
 
-* `const char* attributes`参数表示会话属性的json字符串。该json字符串支持以下字段：
+* `const char* attributes`参数表示会话属性的JSON字符串。该JSON字符串支持以下字段：
     * "model": string 表示会话使用的模型的路径。
 
-`attributes` json字符串例子：
+`attributes` JSON字符串例子：
 
 ```json
 {
@@ -76,7 +76,7 @@ OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes);
 
 **返回值**
 
-如果创建会话成功，返回值`OH_QoS_GewuCreateSessionResult`里的`error`为`OH_QOS_GEWU_OK`，而`session`为创建出来的会话句柄。
+如果创建会话成功，返回值`OH_QoS_GewuCreateSessionResult`里的`error`为`OH_QOS_GEWU_OK`，而`session`为创建的会话句柄。
 
 如果创建会话失败，返回值`OH_QoS_GewuCreateSessionResult`里的`error`为错误原因，其中`OH_QOS_GEWU_NOMEM`表示没有足够的内存创建会话。
 
@@ -129,22 +129,22 @@ OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession sessi
 `OH_QoS_GewuSubmitRequest`函数的各参数如下：
 
 * `OH_QoS_GewuSession session`参数是会话句柄，表示请求要提交到哪个会话。
-* `const char* request`参数为请求的json字符串，支持以下字段：
-    * "messages": array. 表示消息的数组，其中每个元素支持以下字段：
-        * "role": string. 消息的角色类型。其中"developer"表示开发者或系统提供的指示，"user"表示用户输入，"assistant"表示模型生成结果。
-        * "content": string. 消息内容。
-    * "stream": boolean or null. 是否使能流式推理，默认为非流式。
+* `const char* request`参数为请求的JSON字符串，支持以下字段：
+    * "messages": array，表示消息的数组，其中每个元素支持以下字段：
+        * "role": string，消息的角色类型。其中"developer"表示开发者或系统提供的指示，"user"表示用户输入，"assistant"表示模型生成结果。
+        * "content": string，消息内容。
+    * "stream": boolean or null，是否使能流式推理。true表示流式推理，false或null表示非流式。
 * `OH_QoS_GewuOnResponse callback`参数为请求的回调函数。
 * `void* context`参数为用户提供的上下文指针，用于传递给回调函数。一般用法中，用户代码可通过该参数找到与收到的回复对应的请求，从而进行相应的处理。
 
 另外，`OH_QoS_GewuOnResponse`回调函数的各参数如下：
 
 * `void* context`参数是调用`OH_QoS_GewuSubmitRequest`时传进来的`context`指针。
-* `const char* response`参数是回复的json字符串，包含以下字段：
+* `const char* response`参数是回复的JSON字符串，包含以下字段：
     * "message": 回复消息，包含以下字段：
-        * "role": string. 消息的角色类型，应为"assistant"。
-        * "content": string. 消息内容。
-    * "finish_reason": string or null. 停止原因，可能的值如下：
+        * "role": string，消息的角色类型，应为"assistant"。
+        * "content": string，消息内容。
+    * "finish_reason": string or null，停止原因，可能的值如下：
         * null: 表示没有停止。流式推理中会有多次回复，只有最后一次回复有非空的"finish_reason"。而非流式推理只有一次回复，且"finish_reason"非空。
         * "stop": 正常停止。
         * "abort": 用户主动提前中止。
@@ -286,6 +286,7 @@ int Demo(void)
                                                                            OnChatResponse, &context);
     if (submitResult.error != OH_QOS_GEWU_OK) {
         DEMO_LOGE("failed to submit request, error=%d", (int)submitResult.error);
+        OH_QoS_GewuDestroySession(session);
         return -1;
     }
     OH_QoS_GewuRequest request = submitResult.request;
@@ -296,6 +297,7 @@ int Demo(void)
         OH_QoS_GewuErrorCode error = OH_QoS_GewuAbortRequest(session, request);
         if (error != OH_QOS_GEWU_OK) {
             DEMO_LOGE("failed to abort request, error=%d", (int)error);
+            OH_QoS_GewuDestroySession(session);
             return -1;
         }
     }
@@ -313,7 +315,7 @@ int Demo(void)
 }
 ```
 > **说明：**
-> 
-> 在demo代码中，使用了第三方库nlohmann/json来简化JSON数据的解析与构造。nlohmann/json是一个现代C++的JSON库，提供了直观、简洁的方式来处理JSON数据。
+>
+> 在Demo代码中，使用了第三方库nlohmann/json来简化JSON数据的解析与构造。nlohmann/json是一个现代C++的JSON库，提供了直观、简洁的方式来处理JSON数据。
 > 它的设计理念是让JSON操作像使用STL容器一样自然。
 > 开发者可以下载json.hpp文件并放入项目的include目录即可使用，无需额外链接库文件。

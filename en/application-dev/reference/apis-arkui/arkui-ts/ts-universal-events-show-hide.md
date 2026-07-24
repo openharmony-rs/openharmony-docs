@@ -160,4 +160,4 @@ struct AppearExample {
 }
 ```
 
-![en-us_image_0000001219864151](figures/en-us_image_0000001219864151.gif)
+![onDisAppear](figures/onDisAppear.gif)

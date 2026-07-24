@@ -1,8 +1,8 @@
 # Canvas对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -144,10 +144,10 @@ export default {
         ctx.strokeRect(100, 100, 300, 300);
     },
     getUrl() {
-        let el = this.$refs.canvas1
-        let dataUrl = el.toDataURL()
+        let el = this.$refs.canvas1;
+        let dataUrl = el.toDataURL();
         this.dataURL = dataUrl;
-        promptAction.showToast({ duration: 2000, message: "long press,get dataURL" })
+        promptAction.showToast({ duration: 2000, message: "long press,get dataURL" });
     }
 }
 ```

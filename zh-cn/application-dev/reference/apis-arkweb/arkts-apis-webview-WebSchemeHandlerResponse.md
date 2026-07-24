@@ -6,7 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-请求的响应，可以为被拦截的请求创建一个Response并填充自定义的内容返回给Web组件。
+WebSchemeHandlerResponse是自定义scheme拦截场景中用于构造HTTP响应数据的类。开发者通过该类创建Response对象，设置HTTP状态码、状态文本、媒体类型、字符集、自定义响应头、网络错误码以及重定向URL等属性，然后通过WebResourceHandler将自定义响应返回给Web组件。该类是自定义资源拦截的核心数据载体。
+
+WebSchemeHandlerResponse与WebResourceHandler配合使用：开发者构造WebSchemeHandlerResponse对象并填充响应属性，然后通过WebResourceHandler的didReceiveResponse方法将响应头发送给被拦截的请求。
 
 > **说明：**
 >
@@ -60,7 +62,7 @@ struct WebComponent {
           console.info("[schemeHandler] getStatusText:" + response.getStatusText())
           console.info("[schemeHandler] getMimeType:" + response.getMimeType())
           console.info("[schemeHandler] getEncoding:" + response.getEncoding())
-          console.info("[schemeHandler] getHeaderByValue:" + response.getHeaderByName("header1"))
+          console.info("[schemeHandler] getHeaderByName:" + response.getHeaderByName("header1"))
           console.info("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
 
         } catch (error) {
@@ -86,7 +88,7 @@ setUrl(url: string): void
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  url | string | 是   | 即将要跳转的URL。 |
+|  url | string | 是   | 重定向或因HSTS而更改后的URL。 |
 
 **示例：**
 
@@ -262,9 +264,9 @@ setHeaderByName(name: string, value: string, overwrite: boolean): void
 
 getUrl(): string
 
-获取重定向或由于HSTS而更改后的URL。
+获取重定向或因HSTS而更改后的URL。
 
-风险提示：如果想获取URL来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12)。
+风险提示：若想获取URL来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -272,7 +274,7 @@ getUrl(): string
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| string | 获取经过重定向或由于HSTS而更改后的URL。|
+| string | 获取经过重定向或因HSTS而更改后的URL。|
 
 **示例：**
 

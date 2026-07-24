@@ -38,6 +38,7 @@ import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 获取任务快照信息
   missionManager.getMissionInfos('', 10, (error, missions) => {
     if (error) {
       console.error(`getMissionInfos failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}`);
@@ -45,6 +46,10 @@ try {
     }
     console.info(`size = ${missions.length}`);
     console.info(`missions = ${JSON.stringify(missions)}`);
+    if (missions.length === 0) {
+      console.error('missions is empty');
+      return;
+    }
     let id = missions[0].missionId;
 
     missionManager.getMissionSnapShot('', id, (err, snapshot) => {

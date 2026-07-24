@@ -305,7 +305,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![en-us_image_0000001219864159](figures/en-us_image_listitemgroup.gif)
+![image-listitemgroup](figures/image-listitemgroup.gif)
 
 ### Example 2: Applying a Card-style Effect
 

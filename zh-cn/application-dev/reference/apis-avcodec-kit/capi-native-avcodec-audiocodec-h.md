@@ -47,7 +47,7 @@
 | [OH_AVErrCode OH_AudioCodec_Reset(OH_AVCodec *codec)](#oh_audiocodec_reset) | 重置编解码器。此时会清空已配置的参数和输入输出数据。<br> 如果要继续编解码，需要再次调用Configure接口配置编解码器实例。 |
 | [OH_AVFormat *OH_AudioCodec_GetOutputDescription(OH_AVCodec *codec)](#oh_audiocodec_getoutputdescription) | 获取编解码器输出数据的OH_AVFormat信息。<br> 需要注意的是，返回值所指向的OH_AVFormat实例需要开发者调用[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)接口手动释放。 |
 | [OH_AVErrCode OH_AudioCodec_SetParameter(OH_AVCodec *codec, const OH_AVFormat *format)](#oh_audiocodec_setparameter) | 配置编解码器的动态参数。<br> 注意，该接口必须在编解码器启动后才能调用。另外，参数配置错误可能会导致编解码失败。 |
-| [OH_AVErrCode OH_AudioCodec_PushInputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_audiocodec_pushinputbuffer) | 通知音频编解码器已完成对index所对应缓冲区进行输入数据的填充。<br> [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)回调将报告可用的输入缓冲区和对应的索引值。<br> 一旦具有指定索引的缓冲区被提交给音频编解码器，该缓冲区将无法再次访问，直到再次收到[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)回调，收到相同索引时此缓冲区才可使用。<br> 此外，对于某些编解码器，需要在开始时向编解码器输入编解码特定配置数据(Codec-Specific-Data)，以初始化编解码器的编解码过程。<br> 注意：当返回值为AV_ERR_UNKNOWN时此次调用不生效，输入缓冲区仍为未处理状态，需根据返回的特定错误代码处理后输入相同的index重新调用OH_AudioCodec_PushInputBuffer。 |
+| [OH_AVErrCode OH_AudioCodec_PushInputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_audiocodec_pushinputbuffer) | 通知音频编解码器已完成对index所对应缓冲区进行输入数据的填充。<br> [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)回调将报告可用的输入缓冲区和对应的索引值。<br> 一旦具有指定索引的缓冲区被提交给音频编解码器，该缓冲区将无法再次访问，直到再次收到[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)回调，收到相同索引时此缓冲区才可使用。<br> 注意：当返回值为AV_ERR_UNKNOWN时此次调用不生效，输入缓冲区仍为未处理状态，需根据返回的特定错误代码处理后输入相同的index重新调用OH_AudioCodec_PushInputBuffer。 |
 | [OH_AVErrCode OH_AudioCodec_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_audiocodec_freeoutputbuffer) | 将处理后的输出缓冲区返回给编解码器。使用完输出缓冲区后需及时调用此接口进行释放，否则会阻塞编解码流程。 |
 | [OH_AVErrCode OH_AudioCodec_IsValid(OH_AVCodec *codec, bool *isValid)](#oh_audiocodec_isvalid) | 检查当前编解码器实例是否有效。<br> 可用于后台故障恢复或应用程序从后台恢复时检测编解码器有效状态。 |
 | [OH_AVErrCode OH_AudioCodec_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession, bool secureAudio)](#oh_audiocodec_setdecryptionconfig) | 设置解密信息。 |
@@ -357,7 +357,7 @@ OH_AVFormat *OH_AudioCodec_GetOutputDescription(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 返回OH_AVFormat句柄指针，生命周期将使用下一个[OH_AudioCodec_GetOutputDescription](#oh_audiocodec_getoutputdescription)刷新，或使用OH_AVCodec销毁。 |
+| OH_AVFormat * | 返回OH_AVFormat句柄指针。 |
 
 ### OH_AudioCodec_SetParameter()
 
@@ -395,7 +395,7 @@ OH_AVErrCode OH_AudioCodec_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 **描述**
 
-通知音频编解码器已完成对index所对应缓冲区进行输入数据的填充。<br> [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)回调将报告可用的输入缓冲区和对应的索引值。<br> 一旦具有指定索引的缓冲区被提交给音频编解码器，该缓冲区将无法再次访问，直到再次收到[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)回调，收到相同索引时此缓冲区才可使用。<br> 此外，对于某些编解码器，需要在开始时向编解码器输入编解码特定配置数据(Codec-Specific-Data)，以初始化编解码器的编解码过程。<br> 注意：当返回值为AV_ERR_UNKNOWN时此次调用不生效，输入缓冲区仍为未处理状态，需根据返回的特定错误代码处理后输入相同的index重新调用OH_AudioCodec_PushInputBuffer。
+通知音频编解码器已完成对index对应缓冲区进行输入数据的填充。<br> [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)回调将报告可用的输入缓冲区和对应的索引值。<br> 一旦具有指定索引的缓冲区被提交给音频编解码器，该缓冲区将无法再次访问，直到再次收到[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)回调，收到相同索引时此缓冲区才可使用。<br> 注意：当返回值为AV_ERR_UNKNOWN时此次调用不生效，输入缓冲区仍为未处理状态，需根据返回的特定错误代码处理后输入相同的index重新调用OH_AudioCodec_PushInputBuffer。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioCodec
 

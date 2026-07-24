@@ -24,11 +24,15 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-## accountManager.disallowAddLocalAccount
+## accountManager.disallowAddLocalAccount<sup>(deprecated)</sup>
 
 disallowAddLocalAccount(admin: Want, disallow: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 禁止设备创建本地账号。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [disallowOsAccountAddition](./js-apis-enterprise-accountManager.md#accountmanagerdisallowosaccountaddition)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -79,11 +83,15 @@ accountManager.disallowAddLocalAccount(wantTemp, true, (err) => {
 });
 ```
 
-## accountManager.disallowAddLocalAccount
+## accountManager.disallowAddLocalAccount<sup>(deprecated)</sup>
 
 disallowAddLocalAccount(admin: Want, disallow: boolean): Promise&lt;void&gt;
 
 禁止设备创建本地账号。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [disallowOsAccountAddition](./js-apis-enterprise-accountManager.md#accountmanagerdisallowosaccountaddition)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -138,11 +146,15 @@ accountManager.disallowAddLocalAccount(wantTemp, true).then(() => {
 });
 ```
 
-## accountManager.disallowAddOsAccountByUser<sup>11+</sup>
+## accountManager.disallowAddOsAccountByUser<sup>(deprecated)</sup>
 
 disallowAddOsAccountByUser(admin: Want, userId: number, disallow: boolean): void
 
 禁止用户添加账号。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [disallowOsAccountAddition](./js-apis-enterprise-accountManager.md#accountmanagerdisallowosaccountaddition)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -193,11 +205,15 @@ try {
 }
 ```
 
-## accountManager.isAddOsAccountByUserDisallowed<sup>11+</sup>
+## accountManager.isAddOsAccountByUserDisallowed<sup>(deprecated)</sup>
 
 isAddOsAccountByUserDisallowed(admin: Want, userId: number): boolean
 
 查询是否禁止某用户添加账号。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [isOsAccountAdditionDisallowed](./js-apis-enterprise-accountManager.md#accountmanagerisosaccountadditiondisallowed)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -253,11 +269,15 @@ try {
 }
 ```
 
-## accountManager.addOsAccount<sup>11+</sup>
+## accountManager.addOsAccount<sup>(deprecated)</sup>
 
 addOsAccount(admin: Want, name: string, type: osAccount.OsAccountType): osAccount.OsAccountInfo
 
 后台添加账号。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addOsAccountAsync](./js-apis-enterprise-accountManager.md#accountmanageraddosaccountasync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 

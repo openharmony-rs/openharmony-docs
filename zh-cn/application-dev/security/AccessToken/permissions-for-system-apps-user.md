@@ -274,3 +274,39 @@
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_TOGGLE
+
+允许应用通过CLI命令设置Wi-Fi开关。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_SCAN
+
+允许应用通过CLI命令设置Wi-Fi扫描。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_CONNECT
+
+允许应用通过CLI命令设置Wi-Fi连接。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**起始版本**：26.0.0

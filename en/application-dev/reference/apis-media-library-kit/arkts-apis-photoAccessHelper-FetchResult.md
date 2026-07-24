@@ -1,10 +1,12 @@
 # Interface (FetchResult)
+
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:19.161Z pushedAt=2026-06-23T09:25:46.741Z -->
 
 FetchResult provides APIs to manage the file retrieval result.
 
@@ -77,7 +79,7 @@ Checks whether the cursor is in the last row of the result set.
 
 | Type     | Description                                |
 | ------- | ---------------------------------- |
-| boolean | **true** is returned if the cursor is in the last row of the result set; **false** otherwise.|
+| boolean | Whether the cursor is in the last row of the result set. Returns **true** if it is; returns **false** otherwise.|
 
 **Error codes**
 
@@ -117,7 +119,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(): void
 
-Closes this FetchResult instance to invalidate it. After this instance is released, the APIs in this instance cannot be invoked.
+Releases the **FetchResult** instance and invalidates it. After release, no other methods can be called.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

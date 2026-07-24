@@ -8,6 +8,8 @@
 
 The RecentPhotoComponent embedded in the UI of an application allows the application to access the recent image or video in the user directory without the required permission. This component grants the application only the read permission.
 
+Note that **RecentPhotoComponent** does not support nesting. Additionally, prevent overlaying components with the **overlay** attribute or of higher levels on top it, as this will prevent it from receiving gesture events.
+
 > **NOTE**
 >
 > - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
@@ -93,7 +95,7 @@ Called to return the query result of the recent image or video.
 
 type RecentPhotoClickCallback = (recentPhotoInfo: BaseItemInfo) => boolean
 
-Called when the recent image or video is selected.
+Called when the recent image or video is selected. No special processing is performed on the return value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -146,7 +148,11 @@ Enumerates the sources of the image or video data.
 
 ```ts
 // xxx.ets
-// In versions earlier than API version 23, you need to use the 'import { api1, api2, ... } from @ohos.file.RecentPhotoComponent' import mode.
+// Since API version 23, you are advised to import required modules from '@kit.MediaLibraryKit'.
+// In versions earlier than API version 23, you need to import the required modules separately.
+// import { RecentPhotoComponent, RecentPhotoOptions, PhotoSource, RecentPhotoInfo, RecentPhotoCheckResultCallback, RecentPhotoClickCallback, RecentPhotoCheckInfoCallback } from '@ohos.file.RecentPhotoComponent';
+// import { BaseItemInfo } from '@ohos.file.PhotoPickerComponent';
+// import { photoAccessHelper } from '@ohos.file.photoAccessHelper';
 import {
   photoAccessHelper,
   RecentPhotoComponent, 

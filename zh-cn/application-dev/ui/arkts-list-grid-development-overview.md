@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -17,7 +17,7 @@ List适合单列和多列宽度相同的场景，如通讯录、音乐列表、�
 
 直播评论、即时聊天等应用场景需要在列表底部插入数据时，内容应自动向上滚动，以展示新插入的节点，此功能可通过配置[stackFromEnd](../reference/apis-arkui/arkui-ts/ts-container-list.md#stackfromend19)实现。
 
-![](figures/zh-cn_image_0000001511580940.png)
+![list2](figures/list2.png)
 
 ## 网格
 
@@ -25,7 +25,7 @@ List适合单列和多列宽度相同的场景，如通讯录、音乐列表、�
 
 对于部分项目占用多行或多列的场景，可以通过在创建Grid时传入合适的[GridLayoutOptions](../reference/apis-arkui/arkui-ts/ts-container-grid.md#gridlayoutoptions10对象说明)来实现。
 
-![](figures/zh-cn_image_0000001562700473.png)
+![grid2](figures/grid2.png)
 
 ## 瀑布流
 
@@ -43,9 +43,9 @@ List适合单列和多列宽度相同的场景，如通讯录、音乐列表、�
 
 ## 懒加载布局
 
-懒加载布局容器是一类嵌套在可滚动父组件（Scroll、List、WaterFlow）内部，负责按需加载子组件的布局容器。这类容器本身不提供滚动能力，由父组件统一处理滚动。它仅创建和布局处于可滚动父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容，从而减少首帧渲染时间和内存开销。ArkUI提供了三种支持懒加载的布局容器组件：垂直线性布局[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)、垂直网格布局[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)、垂直瀑布流布局[LazyVWaterFlowLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md)。不同的懒加载布局容器提供不同的布局模式，开发者可以将多种类型的懒加载布局容器组合在同一个父组件中使用，灵活实现混合布局。
+懒加载布局容器是一类嵌套在可滚动父组件（Scroll、List、WaterFlow）内部，负责按需加载子组件的布局容器。这类容器本身不提供滚动能力，由父组件统一处理滚动。它仅创建和布局处于可滚动父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容，从而减少首帧渲染时间和内存开销。ArkUI提供了四种支持懒加载的布局容器组件：垂直线性布局[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)（从API版本26.0.0开始支持）、垂直网格布局[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)（从API version 19开始支持）、垂直瀑布流布局[LazyVWaterFlowLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md)（从API版本26.0.0开始支持）、自定义布局[LazyDynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md)（从API版本26.0.0开始支持）。不同的懒加载布局容器提供不同的布局模式，开发者可以将多种类型的懒加载布局容器组合在同一个父组件中使用，灵活实现混合布局。
 
-![](figures/lazy_column_layout_nested_lazy_layout.gif)
+![](figures/list-nested-lazy-layout.gif)
 
 ## 能力对比
 

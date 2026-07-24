@@ -89,7 +89,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 7400102                | Operation not allowed.                                 |
+| 7400102                | Operation not allowed.<br>Applicable versions: 19 and later                                |
 | 7400103                |  Session not config.                                   |
 
 **Example**
@@ -217,7 +217,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>Applicable versions: 12 and later                |
 | 7400103                |  Session not config.                                   |
 
 **Example**
@@ -384,22 +384,18 @@ Listens to exposure state change events. This API uses an asynchronous callback 
 
 | Name     | Type                   | Mandatory| Description                                      |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | Yes  | Callback used to return the exposure state.           |
+| callback | Callback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | Yes  | Callback used to return the exposure state.           |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callback(err: BusinessError, exposureState: camera.ExposureState): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
+function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function registerPhotoOutputCaptureStart(captureSession: camera.captureSession): void {
+function registerPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
   captureSession.onExposureStateChange(callback);
 }
 ```
@@ -422,26 +418,22 @@ Unregisters the listener for exposure state change events. This API uses an asyn
 
 | Name     | Type                   | Mandatory| Description                                      |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. If the callback object is null or an anonymous function, the subscriptions to the specified event with all the callbacks are canceled.    |
+| callback | Callback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. If the callback object is null or an anonymous function, the subscriptions to the specified event with all the callbacks are canceled.    |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callback(err: BusinessError, exposureState: camera.ExposureState): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
+function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function unregisterPhotoOutputCaptureStart(captureSession: camera.captureSession): void {
+function unregisterPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange(callback);
 }
 
-function unregisterPhotoOutputCaptureStartWithOutParam(captureSession: camera.captureSession): void {
+function unregisterPhotoOutputCaptureStartWithoutParam(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange();
 }
 ```

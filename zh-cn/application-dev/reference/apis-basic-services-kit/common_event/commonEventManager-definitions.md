@@ -126,7 +126,7 @@
 
 ### COMMON_EVENT_BUNDLE_REMOVED
 
-表示现有的应用程序包从设备中移除的事件。
+（预留事件，暂未支持）表示现有的应用程序包从设备中移除的事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -150,7 +150,7 @@
 
 表示应用包已更改的公共事件的动作（例如，包中的组件已启用或禁用）。
 
-在设备上安装的应用程序包更新或者包的组件被禁用使能，将会触发事件通知服务发布该系统公共事件。
+在设备上安装的应用程序包更新或者包的组件被启用/禁用，将会触发事件通知服务发布该系统公共事件。
 
 > **说明：** 
 > 
@@ -186,7 +186,7 @@
 
 ### COMMON_EVENT_PACKAGES_SUSPENDED
 
-表示包已经被挂起。
+（预留事件，暂未支持）表示包已经被挂起。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -197,7 +197,7 @@
 
 ### COMMON_EVENT_MY_PACKAGE_SUSPENDED
 
-发送到已被系统挂起的包。
+（预留事件，暂未支持）发送到已被系统挂起的包。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -208,7 +208,7 @@
 
 ### COMMON_EVENT_MY_PACKAGE_UNSUSPENDED
 
-发送到已被系统解除挂起的包。
+（预留事件，暂未支持）发送到已被系统解除挂起的包。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -290,6 +290,8 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **订阅者所需权限：** 无
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **取值：** "usual.event.DATA_SHARE_READY"
 
@@ -470,7 +472,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示分布式账号登录成功的动作。
 
-分布式账号登录成功时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+分布式账号登录成功时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
@@ -487,7 +489,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示分布式账号登出成功的动作。
 
-分布式账号登出时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+分布式账号登出时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
@@ -504,7 +506,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示分布式账号token令牌无效的动作。
 
-分布式账号的token令牌无效时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+分布式账号的token令牌无效时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
@@ -522,7 +524,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示分布式账号注销的动作。
 
-分布式账号注销成功会时触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+分布式账号注销成功会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
@@ -570,7 +572,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
   > 说明：
   >
-  > 从API Version 10开始废弃，替代接口为[COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked)。
+  > 从API version 9 开始支持，从API version 10 开始废弃，建议使用[COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked)代替。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -594,7 +596,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 ### COMMON_EVENT_BATTERY_LOW
 
-表示电池电量低的普通事件的动作。
+表示电池电量低的公共事件的动作。
 
 当电池电量低于设备设置的低电量百分比值时，将会触发事件通知服务发布该系统公共事件。<!--Del-->设备设置低电量百分比值请参考[电量等级定制开发指导](../../../../device-dev/subsystems/subsys-power-battery-level-customization.md)。<!--DelEnd-->
 
@@ -609,7 +611,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示电池退出低电量状态的公共事件的动作。
 
-当电池电量从低电量等级变化到电池电量高于低电量等级时，将会触发事件通知服务发布该系统公共事件。
+当电池电量从低电量等级上升到高于低电量等级时，将会触发事件通知服务发布该系统公共事件。
 
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -621,7 +623,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 ### COMMON_EVENT_POWER_CONNECTED
 
-设备连接到外部电源的公共事件的动作。
+表示设备连接到外部电源的公共事件的动作。
 
 当设备连接到外部可识别的充电器类型充电时，将会触发事件通知服务发布该系统公共事件。
 
@@ -634,7 +636,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 ### COMMON_EVENT_POWER_DISCONNECTED
 
-设备与外部电源断开的公共事件的动作。
+表示设备与外部电源断开的公共事件的动作。
 
 当设备与外部电源断开时，将会触发事件通知服务发布该系统公共事件。
 
@@ -964,9 +966,9 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 ### COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED
 
-指示设备NFC状态已更改的公共事件的操作。
+表示设备NFC状态已更改的公共事件的操作。
 
-指示设备NFC状态更改时，将会触发事件通知服务发布该系统公共事件。
+表示设备NFC状态更改时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1108,7 +1110,7 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**订阅者需要的权限：** 无
+**订阅者所需权限：** 无
 
 **取值：** "usual.event.wifi.mplink.STATE_CHANGE"
 
@@ -1227,9 +1229,9 @@ Wi-Fi状态变化。
 
 ### COMMON_EVENT_CONNECTIVITY_CHANGE<sup>10+</sup>
 
-指示网络连接状态变化。
+表示网络连接状态变化。
 
-各类网络（以太网、Wi-Fi、蜂窝等）在发生连接状态状态变化时（断开、断开中、连接中、已连接等），将会触发事件通知服务发布该系统公共事件。
+各类网络（以太网、Wi-Fi、蜂窝等）在连接状态变化时（断开、断开中、连接中、已连接等），将会触发事件通知服务发布该系统公共事件。
 具体枚举值及其对应的连接状态如下表所示：
 
 | 枚举值  |  连接状态  |
@@ -1250,7 +1252,7 @@ Wi-Fi状态变化。
 
 ### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+</sup>
 
-指示飞行模式状态变化。
+表示飞行模式状态变化。
 
 在开启或者关闭系统飞行模式状态后，将会触发事件通知服务发布该系统公共事件。
 
@@ -1263,7 +1265,7 @@ Wi-Fi状态变化。
 
 ### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+</sup>
 
-指示网络Http代理配置信息更新。
+表示网络Http代理配置信息更新。
 
 在系统全局代理或者各类网络（以太网、Wi-Fi、蜂窝等）Http代理配置信息发生变化时，将会触发事件通知服务发布该系统公共事件。
 
@@ -1334,8 +1336,10 @@ Wi-Fi状态变化。
 AppGallery Kit面向应用发布如下系统公共事件。
 
 ### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+</sup>
+
 表示隐私签署结果的公共事件。
-隐私弹框场景下，用户点击同意，会发送此事件。
+
+隐私弹框场景下，用户点击同意，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1353,7 +1357,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**取值：** "usual.event.TABLET_MODE_CHANGED "
+**取值：** "usual.event.TABLET_MODE_CHANGED"
 
 ### COMMON_EVENT_LID_STATE_CHANGED<sup>23+</sup>
 
@@ -1815,7 +1819,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.USER_FOREGROUND“
+**取值：** "usual.event.USER_FOREGROUND"
 
 
 
@@ -2179,7 +2183,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE<sup>(deprecated)</sup>
-指示设备蓝牙适配器名称已更改的公共事件的操作。
+表示设备蓝牙适配器名称已更改的公共事件的操作。
 
   > **说明：**
   >
@@ -2277,7 +2281,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 
 ### COMMON_EVENT_IVI_SLEEP
-（预留事件，暂未支持）表示表示车辆的车载信息娱乐（IVI）系统正在休眠的常见事件的动作。
+（预留事件，暂未支持）表示车辆的车载信息娱乐（IVI）系统正在休眠的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2351,7 +2355,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 
 ### COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL
-（预留事件，暂未支持）表示车载系统具有极端温度的常见事件的动作。
+（预留事件，暂未支持）表示车载系统具有极端温度的公共事件的动作。
 
 
 **系统能力：** SystemCapability.Notification.CommonEvent

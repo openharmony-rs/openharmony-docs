@@ -154,7 +154,7 @@ transform动效，支持的组件范围：
 ```
 
 
-![zh-cn_image_0000001127125192](figures/zh-cn_image_0000001127125192.gif)
+![Dynamic-Triangle](figures/Dynamic-Triangle.gif)
 
 
 涉及组件示例

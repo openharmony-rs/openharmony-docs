@@ -28,7 +28,7 @@ geometryTransition(id: string): T
 
 | 参数名  | 类型                 | 必填 | 说明                                                     |
 | ------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。 |
+| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。 |
 
 **返回值：**
 
@@ -52,7 +52,7 @@ geometryTransition(id: string, options?: GeometryTransitionOptions): T
 
 | 参数名  | 类型                 | 必填 | 说明                                                     |
 | ------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。 |
+| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。 |
 | options | [GeometryTransitionOptions](#geometrytransitionoptions11) | 否   | 组件内共享元素转场动画参数。<br>默认值为 { follow: false }。                                    |
 
 **返回值：**
@@ -92,7 +92,7 @@ struct Index {
           .width(300)
           .height(400)
           .offset({ y: 100 })
-          .geometryTransition("picture", { follow: false })
+          .geometryTransition('picture', { follow: false })
           .transition(TransitionEffect.OPACITY)
       } else {
         // geometryTransition此处绑定的是容器，那么容器内的子组件需设为相对布局跟随父容器变化，
@@ -110,7 +110,7 @@ struct Index {
         // 则对容器本身有圆角同步而不会操作容器内部子组件的borderRadius
         .borderRadius(20)
         .clip(true)
-        .geometryTransition("picture")
+        .geometryTransition('picture')
         // transition保证组件离场不被立即析构，可设置其他转场效果
         .transition(TransitionEffect.OPACITY)
       }

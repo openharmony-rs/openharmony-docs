@@ -134,12 +134,12 @@ Adds a firewall rule for the system user ID. The supported rule types are IP, Do
 
 > **Description**
 > 
-> 1. The priority of firewall rules is described as follows (there is no requirement on the call sequence of [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) and [addNetFirewallRule](#netfirewalladdnetfirewallrule)):
->    - Call [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **DENY** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
+> 1. The priority of firewall rules is described as follows (there is no requirement on the call sequence of [setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy) and [addNetFirewallRule](#netfirewalladdnetfirewallrule)):
+>    - Call [setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **DENY** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
 >      - Explicit denying rule
 >      - Explicit allowing rule
 >      - Default denying policy
->    - Call [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **ALLOW** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
+>    - Call [setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **ALLOW** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
 >      - Explicit allowing rule
 >      - Explicit denying rule
 >      - Default allowing policy
@@ -550,8 +550,8 @@ Defines a firewall rule.
 | localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Local IP addresses. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.        |
 | remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Remote IP addresses. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.|
 | protocol    | number                                                      | No| Yes|Protocol, which can be TCP (value **6**) or UDP (value **17**). This parameter is valid only when **type** is set to **RULE_IP**. |
-| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|Local ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.  |
-| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|Remote ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 ports can be specified.  |
+| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|Local ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 port ranges can be specified.  |
+| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|Remote ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 port ranges can be specified.  |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **type** is set to **RULE_DOMAIN**. Currently, domain names cannot contain Chinese characters.        |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **type** is set to **RULE_DNS**. This parameter cannot be empty when **type** is set to **RULE_DNS**.                |
 

@@ -12,7 +12,7 @@ typedef union {...} ArkUI_NumberValue
 
 ## Overview
 
-Defines the number types of ArkUI on the native side.
+Defines a numeric type used by ArkUI on the native side, including floating-point, signed integer, and unsigned integer types.
 
 **Since**: 12
 

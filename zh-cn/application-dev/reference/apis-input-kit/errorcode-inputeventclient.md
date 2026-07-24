@@ -42,13 +42,13 @@ Input service exception.
 
 该错误码在不同接口中表示不同的状态错误：
 
-- **pressKey 接口**：The key is already pressed and is not the most recently pressed key.
+- **pressKey 接口**：The key is already pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
 
-  当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，会产生此错误码。
+  当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，或已按下的按键数超过了5个，会产生此错误码。
 
-  **可能原因**：按键已经被按下且不是最近按下的按键。
+  **可能原因**：按键已经被按下且不是最近按下的按键，或已按下的按键数超过了5个。
 
-  **处理步骤**：确保按键在抬起状态下才能被按下；如果按键已被按下，确保它是最近按下的按键。
+  **处理步骤**：确保按键在抬起状态下才能被按下；如果按键已被按下，确保它是最近按下的按键；确保同时按下的按键数量不超过5个。
 
 - **releaseKey 接口**：The key is not pressed.
 
@@ -74,7 +74,7 @@ Input service exception.
 
   **处理步骤**：确保只抬起已经被按下的鼠标按键。
 
-- **beginAxis 接口**：The axis event in progress.
+- **beginAxis 接口**：The axis event is in progress.
 
   当调用鼠标控制器的beginAxis接口时，如果已有轴事件正在进行中，会产生此错误码。
 

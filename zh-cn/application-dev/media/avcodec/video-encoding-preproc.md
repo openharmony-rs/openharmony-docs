@@ -1,4 +1,4 @@
-# 编码支持前处理
+# 视频编码前处理
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -19,7 +19,7 @@
 | 裁剪（Crop） | 从原始画面中提取指定矩形区域进行编码。 | ROI区域关注、局部特写。 |
 | 丢帧（Drop Frame） | 按目标帧率选择性丢弃输入帧。 | 降低带宽占用、自适应码率。 |
 
-> **互斥规则**：降采样参数与裁剪参数**不能同时使用**。丢帧可与降采样或裁剪**组合使用**。
+**互斥规则**：降采样参数与裁剪参数**不能同时使用**。丢帧可与降采样或裁剪**组合使用**。
 
 
 ### 使用场景
@@ -28,7 +28,7 @@
 
 通过降采样缩放到低分辨率编码输出。
 
-**场景二：ROI 区域关注编码**
+**场景二：ROI区域关注编码**
 
 - 对大尺寸摄像头画面使用**裁剪**功能，仅提取感兴趣区域进行编码。
 
@@ -46,14 +46,14 @@
 |--------|------|
 | 支持的MIME类型 | 和普通视频编码器支持范围一致，可通过`OH_AVCodec_GetCapability`查询是否支持指定MIME类型编码器。 |
 | 创建方式 | 必须通过`OH_VideoEncoder_CreatePrimaryWithPreproc`创建，不支持普通创建方式。 |
-| 数据通路 | **仅支持 Surface 异步模式**，Buffer模式和同步模式均不支持（返回`AV_ERR_OPERATE_NOT_PERMIT`）。 |
+| 数据通路 | **仅支持Surface异步模式**，Buffer模式和同步模式均不支持（返回`AV_ERR_OPERATE_NOT_PERMIT`）。 |
 | 随帧参数 | 不支持`RegisterParameterCallback`接口（返回`AV_ERR_OPERATE_NOT_PERMIT`）。 |
 
 **降采样（Downsampling）约束**
 
 | 序号 | 约束规则 |
 |------|----------|
-| 1 | 必须成对配置：降采样目标宽度和降采样目标高度必须同时配置或同时设置。若仅配置其中一个，Configure/SetParameter 将返回 `AV_ERR_INVALID_VAL`。 |
+| 1 | 必须成对配置：降采样目标宽度和降采样目标高度必须同时配置或同时设置。若仅配置其中一个，Configure/SetParameter将返回`AV_ERR_INVALID_VAL`。 |
 | 2 | 关闭条件：当降采样目标宽度与降采样目标高度均配置为合法的零值时，降采样功能被关闭。 |
 | 3 | 有效范围：当降采样目标宽度与降采样目标高度在支持的范围内时，降采样功能被启用。建议通过`OH_AVCapability_IsVideoSizeSupported`接口查询支持的降采样范围。 |
 | 4 | 越界处理：当降采样目标宽度或降采样目标高度不在支持范围内时，Configure/SetParameter返回`AV_ERR_INVALID_VAL`。 |
@@ -62,16 +62,16 @@
 **裁剪（Crop）约束**
 
 坐标系统说明：
-- `(left, top)` 为裁剪矩形的左上角坐标。
-- `(right, bottom)` 为裁剪矩形的右下角坐标。
-- 行/列索引从 **0** 开始。
+- `(left, top)`为裁剪矩形的左上角坐标。
+- `(right, bottom)`为裁剪矩形的右下角坐标。
+- 行/列索引从**0**开始。
 - **裁剪区域宽度 = right - left + 1**。
 - **裁剪区域高度 = bottom - top + 1**。
 
 | 序号 | 约束规则 |
 |------|----------|
 | 1 | 必须完整配置：left、top、right、bottom四个参数必须同时配置。若仅配置其中部分参数，返回`AV_ERR_INVALID_VAL`。 |
-| 2 | 关闭条件：当 left、top、right、bottom **全部为0** 时，裁剪功能被关闭。 |
+| 2 | 关闭条件：当 left、top、right、bottom**全部为0**时，裁剪功能被关闭。 |
 | 3 | 有效范围：当裁剪区域宽度、高度在支持的范围内时，裁剪功能被启用。建议通过`OH_AVCapability_IsVideoSizeSupported`查询支持的裁剪范围。 |
 | 4 | 越界处理：当裁剪区域宽度、高度不在支持范围内时，返回`AV_ERR_INVALID_VAL`。 |
 | 5 | 与降采样互斥：不能与降采样参数（`DOWNSAMPLING_WIDTH/HEIGHT`）同时使用。若同时设置，返回`AV_ERR_INVALID_VAL`。 |
@@ -82,12 +82,12 @@
 | 序号 | 约束规则 |
 |------|----------|
 | 1 | 前置条件：调用方必须已设置原始帧率（`OH_MD_KEY_FRAME_RATE`）。 |
-| 2 | 精度要求：数值精度保留到小数点后 **2 位**（采用**四舍五入**方式）。 |
-| 3 | 值为 0.00：丢帧功能被关闭。 |
-| 4 | 合法正值：设置为大于 0 且小于原始帧率的正数时，将按设定帧率进行丢帧。 |
-| 5 | 非法值：设置为负数或大于等于原始帧率的值时，返回 `AV_ERR_INVALID_VAL`。 |
+| 2 | 精度要求：数值精度保留到小数点后**2位**（采用**四舍五入**方式）。 |
+| 3 | 值为0.00：丢帧功能被关闭。 |
+| 4 | 合法正值：设置为大于0且小于原始帧率的正数时，将按设定帧率进行丢帧。 |
+| 5 | 非法值：设置为负数或大于等于原始帧率的值时，返回`AV_ERR_INVALID_VAL`。 |
 | 6 | 可组合性：可与降采样参数**同时使用**。 |
-| 7 | 可组合性：可与裁剪参数**同时使用** 。|
+| 7 | 可组合性：可与裁剪参数**同时使用**。|
 
 **接口可用性约束**
 
@@ -165,16 +165,16 @@ OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080);        // 输入图像�
 OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 30.0); // 原始帧率（丢帧功能的前置依赖）。
 
 // 前处理参数（按需选用，先通过IsFeatureSupported确认特性支持后再配置）。
-// 方案 A：降采样示例。
-// 以下示例为将 1920x1080 缩放到 640x360 后编码。
-// 注意：width 和 height 必须成对出现。
+// 方案A：降采样示例。
+// 以下示例为将1920x1080缩放到640x360后编码。
+// 注意：width和height必须成对出现。
 if (supportDownsampling) {
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH, 640); // 降采样目标宽度。
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT, 360); // 降采样目标高度。
 }
 
-// 方案 B：裁剪示例。
-// 以下示例为从 1920x1080 中裁剪中心 1280x720 区域。
+// 方案B：裁剪示例。
+// 以下示例为从1920x1080中裁剪中心1280x720区域。
 // 注意：left/top/right/bottom 必须全部同时出现。
 // 降采样与裁剪互斥，不能同时使用。
 // 举例：left = 320, top = 180, right = 1599, bottom = 899; 对应：宽=1599-320+1=1280, 高=899-180+1=720。
@@ -185,8 +185,8 @@ if (supportDownsampling) {
 //     OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_BOTTOM, 899);
 // }
 
-// 方案 C：丢帧示例。
-// 以下示例为从 30fps 降到 15fps（可单独使用或与降采样/裁剪组合）。
+// 方案C：丢帧示例。
+// 以下示例为从30fps降到15fps（可单独使用或与降采样/裁剪组合）。
 // OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0);
 
 // 执行配置。
@@ -202,7 +202,7 @@ OH_AVFormat_Destroy(format);
 ### 获取 Surface
 
 ```c++
-// 关键：只能通过主编码器句柄获取 Surface。
+// 关键：只能通过主编码器句柄获取Surface。
 OHNativeWindow *window = nullptr;
 OH_AVErrCode ret = OH_VideoEncoder_GetSurface(encoder, &window);
 if (ret != AV_ERR_OK || window == nullptr) {
@@ -216,7 +216,7 @@ if (ret != AV_ERR_OK || window == nullptr) {
 ```
 
 > **重要规则**：
-> - **仅主编码器**可以调用 `GetSurface`，副编码器调用将返回`AV_ERR_OPERATE_NOT_PERMIT`。
+> - **仅主编码器**可以调用`GetSurface`，副编码器调用将返回`AV_ERR_OPERATE_NOT_PERMIT`。
 > - 对于一入二出场景，只需获取一次Surface即可（主/副共享同一输入源）。
 
 ### 准备、启动、写入编码图像
@@ -224,7 +224,7 @@ if (ret != AV_ERR_OK || window == nullptr) {
 
 ### 运行时动态调整（可选）
 
-可通过 `SetParameter` 在运行时动态修改前处理参数：
+可通过`SetParameter`在运行时动态修改前处理参数：
 
 ```c++
 // 动态调整丢帧目标帧率（例如响应网络状态变化）。
@@ -237,7 +237,7 @@ void AdjustDropFrameRate(OH_AVCodec *enc, double targetFps)
         OH_AVFormat_SetDoubleValue(param,
             OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, targetFps);
     } else {
-        // 设置为 0.00关闭丢帧功能。
+        // 设置为0.00关闭丢帧功能。
         OH_AVFormat_SetDoubleValue(param,
             OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 0.0);
     }
@@ -260,9 +260,9 @@ void AdjustDownsampling(OH_AVCodec *enc, int newWidth, int newHeight)
 ### 通知编码结束、释放编码帧、销毁编码器
 和普通编码器一致，参考视频编码[Surface模式](video-encoding.md#surface模式)的步骤12、13、17。
 
-## GetInputDescription 查询
+## GetInputDescription查询
 
-启用前处理后，可通过 `GetInputDescription`查询预处理后的实际输入信息及配置参数：
+启用前处理后，可通过`GetInputDescription`查询预处理后的实际输入信息及配置参数：
 
 ```c++
 OH_AVFormat *inputDesc = OH_VideoEncoder_GetInputDescription(encoder);

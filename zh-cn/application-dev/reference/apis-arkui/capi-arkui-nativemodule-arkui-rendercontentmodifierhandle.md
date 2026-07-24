@@ -12,7 +12,7 @@ typedef struct ArkUI_RenderContentModifier* ArkUI_RenderContentModifierHandle
 
 ## 概述
 
-定义内容修改器指针。
+定义渲染内容修改器指针，用于引用内容修改器。内容修改器可挂载到渲染节点，并附加渲染属性或设置onDraw回调。
 
 **起始版本：** 20
 

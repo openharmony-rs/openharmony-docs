@@ -52,7 +52,8 @@ queryBundleStateInfos(begin: number, end: number, callback: AsyncCallback&lt;Bun
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfos(0, 20000000000000, (err: BusinessError ,
   res: bundleState.BundleActiveInfoResponse ) => {
@@ -94,7 +95,8 @@ queryBundleStateInfos(begin: number, end: number): Promise&lt;BundleActiveInfoRe
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfos(0, 20000000000000).then((res: bundleState.BundleActiveInfoResponse) => {
   console.info('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
@@ -129,7 +131,8 @@ queryBundleStateInfoByInterval(byInterval: IntervalType, begin: number, end: num
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleStateInfo>) => {
   if (err) {
@@ -174,7 +177,8 @@ queryBundleStateInfoByInterval(byInterval: IntervalType, begin: number, end: num
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000).then((res: Array<bundleState.BundleStateInfo>) => {
   console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise success.');
@@ -211,7 +215,8 @@ queryBundleActiveStates(begin: number, end: number, callback: AsyncCallback&lt;A
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleActiveStates(0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleActiveState>) => {
   if (err) {
@@ -255,7 +260,8 @@ queryBundleActiveStates(begin: number, end: number): Promise&lt;Array&lt;BundleA
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
   console.info('BUNDLE_ACTIVE queryBundleActiveStates promise success.');
@@ -288,7 +294,8 @@ queryAppUsagePriorityGroup(): Promise&lt;number&gt;
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryAppUsagePriorityGroup().then((res: number) => {
   console.info('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
@@ -317,7 +324,8 @@ queryAppUsagePriorityGroup(callback: AsyncCallback&lt;number&gt;): void
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
   if(err) {
@@ -350,7 +358,8 @@ queryCurrentBundleActiveStates(begin: number, end: number, callback: AsyncCallba
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleActiveState>) => {
   if (err) {
@@ -392,7 +401,8 @@ queryCurrentBundleActiveStates(begin: number, end: number): Promise&lt;Array&lt;
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
   console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise success.');

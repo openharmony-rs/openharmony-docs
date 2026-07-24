@@ -19,7 +19,7 @@
 
 调用[phAccessHelper.getSupportedPhotoFormats](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getsupportedphotoformats18)接口获取支持保存的图片类型资源格式。
 
-<!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) -->
+<!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -58,7 +58,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
   try {
     let outputText = 'Supported formats:\n';
     // The value 1 means the supported image formats, and 2 means the supported video formats.
-    let imageFormat = await phAccessHelper.getSupportedPhotoFormats(1);
+    let imageFormat = await phAccessHelper.getSupportedPhotoFormats(photoAccessHelper.PhotoType.IMAGE);
     let result = '';
     for (let i = 0; i < imageFormat.length; i++) {
       result += imageFormat[i];
@@ -199,7 +199,7 @@ export struct Scene2 {
    弹框需要显示应用名称，无法直接获取应用名称，依赖于配置项的label和icon，因此调用此接口时请确保module.json5文件中的abilities标签中配置了label和icon项。当传入uri为沙箱路径时，可正常保存图片/视频，但无界面预览。
 4. 将应用沙箱的照片内容写入媒体库的目标URI。
 
-<!-- @[Saving_MediaAsset_Using_Authorization_Popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene3.ets) -->
+<!-- @[Saving_MediaAsset_Using_Authorization_Popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene3.ets) --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -212,6 +212,8 @@ async function example(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   context: common.UIAbilityContext
 ): Promise<string> {
+  let desFile: fileIo.File | null = null;
+  let srcFile: fileIo.File | null = null;
   try {
     // 指定要保存到应用程序沙盒目录中的图片的URI。
     let srcFileUri = context.filesDir + '/test.jpg';
@@ -234,16 +236,21 @@ async function example(
       await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('Destination URIs: ' + JSON.stringify(desFileUris));
     // 将图片从沙盒目录写入媒体库中的目标URI。
-    let desFile: fileIo.File = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
-    let srcFile: fileIo.File = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
+    desFile = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
+    srcFile = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
     await fileIo.copyFile(srcFile.fd, desFile.fd);
-    fileIo.closeSync(srcFile);
-    fileIo.closeSync(desFile);
     console.info('create asset by dialog successfully');
     return 'create asset by dialog successfully';
   } catch (err) {
     console.error(`failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`);
     return `failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`;
+  } finally {
+    if (srcFile) {
+      fileIo.closeSync(srcFile);
+    }
+    if (desFile) {
+      fileIo.closeSync(desFile);
+    }
   }
 }
 ```

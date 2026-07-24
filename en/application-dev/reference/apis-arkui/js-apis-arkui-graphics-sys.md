@@ -20,11 +20,13 @@ The **Graphics** module provides APIs for defining attributes of a custom node.
 
 Mixes colors.
 
-### createHDRColorWithLinearExposure<sup>24+</sup>
+### createHDRColorWithLinearExposure
 
 static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
 Instantiates the HDR-supported **ColorMetrics** class using the [color space](./arkui-ts/ts-appendix-enums.md#colorspace20), linear exposure coefficient, and RGBA color.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,11 +49,13 @@ Instantiates the HDR-supported **ColorMetrics** class using the [color space](./
 | ------------- | ---------------- |
 | [ColorMetrics](#colormetrics) | Instance of the **ColorMetrics** class.|
 
-### createHDRColorWithLogExposure<sup>24+</sup>
+### createHDRColorWithLogExposure
 
 static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
 Instantiates the HDR-supported **ColorMetrics** class using the [color space](./arkui-ts/ts-appendix-enums.md#colorspace20), exponential exposure coefficient, and RGBA color.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,11 +78,13 @@ Instantiates the HDR-supported **ColorMetrics** class using the [color space](./
 | ------------- | ---------------- |
 | [ColorMetrics](#colormetrics) | Instance of the **ColorMetrics** class.|
 
-### createHDRColor<sup>24+</sup>
+### createHDRColor
 
-static createHDRColorWithLogExposure(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
+static createHDRColor(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
 Instantiates the HDR-supported **ColorMetrics** class using the [color space](./arkui-ts/ts-appendix-enums.md#colorspace20) and RGBA color.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,11 +106,13 @@ Instantiates the HDR-supported **ColorMetrics** class using the [color space](./
 | ------------- | ---------------- |
 | [ColorMetrics](#colormetrics) | Instance of the **ColorMetrics** class.|
 
-### getColorSpace<sup>24+</sup>
+### getColorSpace
 
 getColorSpace(): ColorSpace
 
 Obtains the color space of the **ColorMetrics** object.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,11 +124,13 @@ Obtains the color space of the **ColorMetrics** object.
 | ------------- | ---------------- |
 | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | Color space.|
 
-### isHDR<sup>24+</sup>
+### isHDR
 
 isHDR(): boolean
 
 Checks whether the HDR color is displayed for the **ColorMetrics** object.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,13 +140,15 @@ Checks whether the HDR color is displayed for the **ColorMetrics** object.
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| boolean | Whether the HDR color is displayed for the **ColorMetrics** object. If the color is created using the **createHDRColorWithXx** method, for example, [createHDRColorWithLinearExposure](#createhdrcolorwithlinearexposure24), or any RGB component value is greater than 1.0, **true** is returned. Otherwise, **false** is returned, indicating that the HDR color is not displayed for the **ColorMetrics** object.|
+| boolean | Whether the HDR color is displayed for the **ColorMetrics** object. If the color is created using the **createHDRColorWithXx** method, for example, [createHDRColorWithLinearExposure](#createhdrcolorwithlinearexposure), or any RGB component value is greater than 1.0, **true** is returned. Otherwise, **false** is returned, indicating that the HDR color is not displayed for the **ColorMetrics** object.|
 
-### getRedValue<sup>24+</sup>
+### getRedValue
 
 getRedValue(): number
 
 Obtains the red component of the **ColorMetrics** object.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,11 +160,13 @@ Obtains the red component of the **ColorMetrics** object.
 | ------------- | ---------------- |
 | number | Red component of the color. The value is a floating point number greater than or equal to 0.|
 
-### getGreenValue<sup>24+</sup>
+### getGreenValue
 
 getGreenValue(): number
 
 Obtains the green component of the **ColorMetrics** object.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,11 +178,13 @@ Obtains the green component of the **ColorMetrics** object.
 | ------------- | ---------------- |
 | number | Green component of the color. The value is a floating point number greater than or equal to 0.|
 
-### getBlueValue<sup>24+</sup>
+### getBlueValue
 
 getBlueValue(): number
 
 Obtains the blue component of the **ColorMetrics** object.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

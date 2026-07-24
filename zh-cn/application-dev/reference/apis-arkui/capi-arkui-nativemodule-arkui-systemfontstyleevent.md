@@ -12,11 +12,10 @@ typedef struct ArkUI_SystemFontStyleEvent ArkUI_SystemFontStyleEvent
 
 ## 概述
 
-系统字体变更事件定义。
+系统字体样式变更事件定义，用于在系统字体大小或字体粗细发生变化时，向已注册的系统字体样式变更回调传递事件信息。
 
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **所在头文件：** [native_type.h](capi-native-type-h.md)
-

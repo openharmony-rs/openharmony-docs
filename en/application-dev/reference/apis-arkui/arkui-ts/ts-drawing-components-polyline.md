@@ -309,7 +309,7 @@ struct PolylineExample {
 }
 ```
 
-![en-us_image_0000001219744185](figures/en-us_image_0000001219744185.png)
+![polyline1](figures/polyline1.png)
 
 ### Example 2: Drawing a Polyline with Different Parameter Types for Width and Height
 

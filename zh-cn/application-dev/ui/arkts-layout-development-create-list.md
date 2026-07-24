@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -14,6 +14,8 @@
 使用列表可以轻松高效地显示结构化、可滚动的信息。通过在[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件中按垂直或者水平方向线性排列子组件[ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)或[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)，为列表中的行或列提供单个视图，或使用[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)迭代一组行或列，或混合任意数量的单个视图和ForEach结构，构建一个列表。List组件支持使用[条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)、循环渲染、[懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)等[渲染控制](../ui/rendering-control/arkts-rendering-control-overview.md)方式生成子组件。
 
 在圆形屏幕设备上，推荐使用[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)组件，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)。
+
+以下各步骤示例为片段代码，可通过点击示例代码右下方的链接获取完整示例。
 
 ## 布局与约束
 
@@ -25,7 +27,7 @@ ListItemGroup用于列表数据的分组展示，其子组件也是ListItem。Li
 
   **图1** List、ListItemGroup和ListItem组件关系  
 
-![zh-cn_image_0000001562940589](figures/zh-cn_image_0000001562940589.png)
+![list1](figures/list1.png)
 
 >**说明：**
 >
@@ -40,13 +42,13 @@ List除了提供垂直和水平布局能力、超出屏幕时可以滚动的自�
 
   **图2** 垂直滚动列表（左：单列；右：多列）  
 
-![zh-cn_image_0000001511580940](figures/zh-cn_image_0000001511580940.png)
+![list2](figures/list2.png)
 
 利用水平布局能力可以构建单行或多行水平滚动列表，如下图所示。
 
   **图3** 水平滚动列表（左：单行；右：多行）  
 
-![zh-cn_image_0000001511421344](figures/zh-cn_image_0000001511421344.png)
+![list3](figures/list3.png)
 
 
 Grid和WaterFlow也可以实现单列、多列布局，如果布局每列等宽，且不需要跨行跨列布局，相比Grid和WaterFlow，则更推荐使用List。
@@ -59,7 +61,7 @@ Grid和WaterFlow也可以实现单列、多列布局，如果布局每列等宽�
 
   **图4** 列表的主轴与交叉轴  
 
-![zh-cn_image_0000001562940581](figures/zh-cn_image_0000001562940581.png)
+![list4](figures/list4.png)
 
 如果List组件主轴或交叉轴方向设置了尺寸，则其对应方向上的尺寸为设置值。
 
@@ -69,7 +71,7 @@ Grid和WaterFlow也可以实现单列、多列布局，如果布局每列等宽�
 
   **图5** 列表主轴高度约束示例1（**A**: List的父组件; **B**: List组件; **C**: List的所有子组件）  
 
-![zh-cn_image_0000001511580956](figures/zh-cn_image_0000001511580956.png)
+![list5](figures/list5.png)
 
 如果子组件主轴方向总尺寸超过List父组件尺寸时，List主轴方向尺寸适应List的父组件尺寸。
 
@@ -209,7 +211,7 @@ List组件创建时，所有ListItem均被创建。显示区域内的ListItem在
 
   **图11** 城市列表  
 
-![zh-cn_image_0000001563060761](figures/zh-cn_image_0000001563060761.png)
+![list11](figures/list11.png)
 
 <!-- @[list_statically_creates_the_contents_of_list_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DataInList.ets) -->
 
@@ -249,7 +251,7 @@ export struct DataInList {
 
   **图12** 联系人列表项示例  
 
-![zh-cn_image_0000001511421328](figures/zh-cn_image_0000001511421328.png)
+![list12](figures/list12.png)
 
 如上图所示，联系人列表的列表项中，每个联系人都有头像和名称。此时，需要将Image和Text封装到一个Row容器内。
 
@@ -370,7 +372,7 @@ List({ space: 10 }) {
 
   **图13** 设置列表分隔线样式  
 
-![zh-cn_image_0000001511580960](figures/zh-cn_image_0000001511580960.png)
+![list13](figures/list13.png)
 
 List提供了[divider](../reference/apis-arkui/arkui-ts/ts-container-list.md#divider)属性用于给列表项之间添加分隔线。在设置divider属性时，可以通过strokeWidth和color属性设置分隔线的粗细和颜色。
 
@@ -494,7 +496,7 @@ List(
 
   **图16** 联系人分组列表 
 
-![zh-cn_image_0000001511580948](figures/zh-cn_image_0000001511580948.png)
+![list16](figures/list16.png)
 
 在List组件中使用ListItemGroup对项目进行分组，可以构建二维列表。
 
@@ -671,7 +673,7 @@ export struct StickyHeaderList {
 
   **图18** 返回列表顶部  
 
-![zh-cn_image_0000001511900520](figures/zh-cn_image_0000001511900520.gif)
+![list18](figures/list18.gif)
 
 List组件初始化时，可以通过scroller参数绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex方法使列表滚动到指定的列表项索引位置。
 
@@ -715,7 +717,7 @@ Stack({ alignContent: Alignment.Bottom }) {
 
 **图19** 字母索引响应联系人列表滚动  
 
-![zh-cn_image_0000001563060769](figures/zh-cn_image_0000001563060769.gif)
+![list19](figures/list19.gif)
 
 如上图所示，当联系人列表从A滚动到B时，右侧索引栏也需要同步从选中A状态变成选中B状态。此场景可以通过监听List组件的[onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)事件来实现，右侧索引栏需要使用字母表索引组件[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)。
 
@@ -773,7 +775,7 @@ export struct ResponsiveScrollPositionList {
 
 **图20** 侧滑删除列表项  
 
-![zh-cn_image_0000001563060773](figures/zh-cn_image_0000001563060773.gif)
+![list20](figures/list20.gif)
 
 ListItem的[swipeAction](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#swipeaction9)属性可用于实现列表项的左右滑动功能。swipeAction属性方法初始化时有必填参数SwipeActionOptions，其中，start参数表示设置列表项右滑时起始端滑出的组件，end参数表示设置列表项左滑时尾端滑出的组件。
 
@@ -825,7 +827,7 @@ ListItem的[swipeAction](../reference/apis-arkui/arkui-ts/ts-container-listitem.
 
   **图21** 给列表项添加标记  
 
-![zh-cn_image_0000001511580952](figures/zh-cn_image_0000001511580952.png)
+![list21](figures/list21.png)
 
 在ListItem中使用[Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md)组件可实现给列表项添加标记功能。Badge是可以附加在单个组件上用于信息标记的容器组件。
 
@@ -959,18 +961,42 @@ ListItem() {
    
      aboutToAppear(): void {
        const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-       const reading = context.resourceManager.getStringByNameSync('Reading')
-       this.availableThings.push(reading)
-       const exercise = context.resourceManager.getStringByNameSync('Exercise')
-       this.availableThings.push(exercise)
-       const travel = context.resourceManager.getStringByNameSync('Travel')
-       this.availableThings.push(travel)
-       const listening = context.resourceManager.getStringByNameSync('Listening_Music')
-       this.availableThings.push(listening)
-       const watching = context.resourceManager.getStringByNameSync('Watching_Films')
-       this.availableThings.push(watching)
-       const singing = context.resourceManager.getStringByNameSync('Singing')
-       this.availableThings.push(singing)
+       try {
+         const reading = context.resourceManager.getStringByNameSync('Reading')
+         this.availableThings.push(reading)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Reading: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const exercise = context.resourceManager.getStringByNameSync('Exercise')
+         this.availableThings.push(exercise)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Exercise: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const travel = context.resourceManager.getStringByNameSync('Travel')
+         this.availableThings.push(travel)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Travel: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const listening = context.resourceManager.getStringByNameSync('Listening_Music')
+         this.availableThings.push(listening)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Listening_Music: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const watching = context.resourceManager.getStringByNameSync('Watching_Films')
+         this.availableThings.push(watching)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Watching_Films: %{public}s', JSON.stringify(e) ?? '');
+       }
+       try {
+         const singing = context.resourceManager.getStringByNameSync('Singing')
+         this.availableThings.push(singing)
+       } catch (e) {
+         hilog.error(0x0000, 'testTag', 'Failed to get Singing: %{public}s', JSON.stringify(e) ?? '');
+       }
      }
    
      onEditModeChange() {
@@ -1041,7 +1067,7 @@ ListItem() {
 
   **图23** 长按删除待办事项  
 
-![zh-cn_image_0000001562820877](figures/zh-cn_image_0000001562820877.gif)
+![list23](figures/list23.gif)
 
 删除列表项功能实现主要流程如下：
 
@@ -1199,7 +1225,7 @@ List(
 
   **图24** 列表项的折叠与展开 
 
-![zh-cn_image_0000001949866104](figures/zh-cn_image_0000001949866104.gif)
+![list24](figures/list24.gif)
 
 列表项折叠与展开效果实现主要流程如下：
 
@@ -1257,14 +1283,14 @@ List(
            },
            {
              index: 3,
-             // app.string.birthday 资源文件中的value值为'性别'
+             // app.string.birthday 资源文件中的value值为'生日'
              name: $r('app.string.birthday'),
              label: 'xxxxxxxxx',
              type: 'Text'
            },
            {
              index: 4,
-             // app.string.gender 资源文件中的value值为''
+             // app.string.gender 资源文件中的value值为'性别'
              name: $r('app.string.gender'),
              label: 'xxxxxxxx',
              type: 'Text'
@@ -1395,7 +1421,7 @@ List(
 
   **图25** 实时消息滚动显示
 
-![zh-cn_image_0000001949866105](figures/zh-cn_image_0000001949866105.gif)
+![list25](figures/list25.gif)
 
 1. 定义列表项数据结构。
 
@@ -1414,33 +1440,34 @@ List(
    <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
    
    ``` TypeScript
-   @Builder
-   MessageItem(message: Message) {
-     Column() {
-       Text(`${message.sender}: ${message.content}`)
-         .fontSize(16)
-         .textAlign(TextAlign.Start)
-         .padding(10)
-         .backgroundColor(message.sender === 'system' ? '#F0F0F0' : '#E6F3FF')
-         .borderRadius(8)
-     }
-     .width('100%')
-     .alignItems(HorizontalAlign.Start)
-     .margin({ bottom: 8 })
-   }
-
    @State messages: Message[] = [];
    
    aboutToAppear(): void {
      const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-     // app.string.welcome_live_room资源文件中的value值为'欢迎来到直播间'
-     const welcomeLiveRoom = context.resourceManager.getStringByNameSync('welcome_live_room');
-     // app.string.system资源文件中的value值为'系统'
-     const system = context.resourceManager.getStringByNameSync('system');
-     // app.string.hello_everyone资源文件中的value值为'大家好啊~'
-     const helloEveryone = context.resourceManager.getStringByNameSync('hello_everyone');
-     // app.string.anchors资源文件中的value值为'主播'
-     const anchors = context.resourceManager.getStringByNameSync('anchors');
+     let welcomeLiveRoom = '';
+     let system = '';
+     let helloEveryone = '';
+     let anchors = '';
+     try {
+       welcomeLiveRoom = context.resourceManager.getStringByNameSync('welcome_live_room');
+     } catch (e) {
+       hilog.error(0x0000, 'testTag', 'Failed to get welcome_live_room: %{public}s', JSON.stringify(e) ?? '');
+     }
+     try {
+       system = context.resourceManager.getStringByNameSync('system');
+     } catch (e) {
+       hilog.error(0x0000, 'testTag', 'Failed to get system: %{public}s', JSON.stringify(e) ?? '');
+     }
+     try {
+       helloEveryone = context.resourceManager.getStringByNameSync('hello_everyone');
+     } catch (e) {
+       hilog.error(0x0000, 'testTag', 'Failed to get hello_everyone: %{public}s', JSON.stringify(e) ?? '');
+     }
+     try {
+       anchors = context.resourceManager.getStringByNameSync('anchors');
+     } catch (e) {
+       hilog.error(0x0000, 'testTag', 'Failed to get anchors: %{public}s', JSON.stringify(e) ?? '');
+     }
      this.messages = [
        { id: 1, content: welcomeLiveRoom, sender: system },
        { id: 2, content: helloEveryone, sender: anchors }

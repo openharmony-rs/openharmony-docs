@@ -1,9 +1,8 @@
 # @ohos.commonEvent (Common Event) (Deprecated)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -29,7 +28,7 @@ For details about the definitions of all system common events, see [System Commo
 
 publish(event: string, callback: AsyncCallback\<void>): void
 
-Publishes a common event. This API uses an asynchronous callback to return the result.
+Publishes a common event with given properties. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish) instead.
@@ -41,7 +40,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 | Name    | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
 | event    | string               | Yes  | Name of the common event to publish.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result of publishing a common event.|
 
 **Example**
 
@@ -49,16 +48,16 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 import Base from '@ohos.base';
 
 // Callback for common event publication.
-function publishCB(err:Base.BusinessError) {
+let publishCallBack = (err: Base.BusinessError) => {
     if (err.code) {
-        console.error(`publish failed, code is ${err.code}`);
+        console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publish");
+        console.info('publish');
     }
 }
 
 // Publish a common event.
-commonEvent.publish("event", publishCB);
+commonEvent.publish("event", publishCallBack);
 ```
 
 ## commonEvent.publish<sup>(deprecated)</sup>
@@ -78,7 +77,7 @@ Publishes a common event with given properties. This API uses an asynchronous ca
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | Yes  | Name of the common event to publish. |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
-| callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. |
+| callback | AsyncCallback\<void>   | Yes  | Callback used to return the result of publishing a common event. |
 
 **Example**
 
@@ -92,19 +91,19 @@ let options:CommonEventManager.CommonEventPublishData = {
     code: 0,             // Initial code of the common event.
     data: "initial data", // Initial data of the common event.
     isOrdered: true  // The common event is an ordered one.
-}
+};
 
 // Callback for common event publication.
-function publishCB(err:Base.BusinessError) {
+let publishCallBack = (err: Base.BusinessError) => {
     if (err.code) {
-        console.error(`publish failed, code is ${err.code}`);
+        console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
     } else {
         console.info("publish");
     }
 }
 
 // Publish a common event.
-commonEvent.publish("event", options, publishCB);
+commonEvent.publish("event", options, publishCallBack);
 ```
 
 ## commonEvent.createSubscriber<sup>(deprecated)</sup>
@@ -140,9 +139,9 @@ let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
 };
 
 // Callback for subscriber creation.
-function createCB(err:Base.BusinessError, commonEventSubscriber:CommonEventManager.CommonEventSubscriber) {
+let createCallBack = (err:Base.BusinessError, commonEventSubscriber:CommonEventManager.CommonEventSubscriber) => {
     if (err.code) {
-        console.error(`createSubscriber failed, code is ${err.code}`);
+        console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
     } else {
         console.info("createSubscriber");
         subscriber = commonEventSubscriber;
@@ -150,7 +149,7 @@ function createCB(err:Base.BusinessError, commonEventSubscriber:CommonEventManag
 }
 
 // Create a subscriber.
-commonEvent.createSubscriber(subscribeInfo, createCB);
+commonEvent.createSubscriber(subscribeInfo, createCallBack);
 ```
 
 ## commonEvent.createSubscriber<sup>(deprecated)</sup>
@@ -193,7 +192,7 @@ commonEvent.createSubscriber(subscribeInfo).then((commonEventSubscriber:CommonEv
     console.info("createSubscriber");
     subscriber = commonEventSubscriber;
 }).catch((err:Base.BusinessError) => {
-    console.error(`createSubscriber failed, code is ${err.code}`);
+    console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -213,7 +212,7 @@ Subscribes to common events. This API uses an asynchronous callback to return th
 | Name      | Type                                               | Mandatory| Description                            |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)     | Yes  | Subscriber object.                |
-| callback   | AsyncCallback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback used to return the result.|
+| callback   | AsyncCallback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback to be invoked when a common event is subscribed to.|
 
 **Example**
 
@@ -221,7 +220,7 @@ Subscribes to common events. This API uses an asynchronous callback to return th
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-let subscriber:CommonEventManager.CommonEventSubscriber;// Used to save the created subscriber object for subsequent subscription and unsubscription.
+let subscriber:CommonEventManager.CommonEventSubscriber; // Used to save the created subscriber object for subsequent subscription and unsubscription.
 
 // Subscriber information.
 let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
@@ -229,28 +228,28 @@ let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
 };
 
 // Callback for common event subscription.
-function subscribeCB(err:Base.BusinessError, data:CommonEventManager.CommonEventData) {
+let subscribeCallBack = (err:Base.BusinessError, data:CommonEventManager.CommonEventData) => {
     if (err.code) {
-        console.error(`subscribe failed, code is ${err.code}`);
+        console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
     } else {
         console.info("subscribe " + JSON.stringify(data));
     }
 }
 
 // Callback for subscriber creation.
-function createCB(err:Base.BusinessError, commonEventSubscriber:CommonEventManager.CommonEventSubscriber) {
+let createCallBack = (err:Base.BusinessError, commonEventSubscriber:CommonEventManager.CommonEventSubscriber) => {
     if (err.code) {
-        console.error(`createSubscriber failed, code is ${err.code}`);
+        console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
     } else {
         console.info("createSubscriber");
         subscriber = commonEventSubscriber;
-        // Subscribe to a common event.
-        commonEvent.subscribe(subscriber, subscribeCB);
+         // Subscribe to a common event.
+        commonEvent.subscribe(subscriber, subscribeCallBack);
     }
 }
 
 // Create a subscriber.
-commonEvent.createSubscriber(subscribeInfo, createCB);
+commonEvent.createSubscriber(subscribeInfo, createCallBack);
 ```
 
 ## commonEvent.unsubscribe<sup>(deprecated)</sup>
@@ -285,38 +284,39 @@ let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
 };
 
 // Callback for common event subscription.
-function subscribeCB(err:Base.BusinessError, data:CommonEventManager.CommonEventData) {
+let subscribeCallBack = (err:Base.BusinessError, data:CommonEventManager.CommonEventData) => {
     if (err.code) {
-        console.error(`subscribe failed, code is ${err.code}`);
+        console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
     } else {
         console.info("subscribe " + JSON.stringify(data));
     }
 }
 
 // Callback for subscriber creation.
-function createCB(err:Base.BusinessError, commonEventSubscriber:CommonEventManager.CommonEventSubscriber) {
+let createCallBack = (err:Base.BusinessError, commonEventSubscriber:CommonEventManager.CommonEventSubscriber) => {
     if (err.code) {
-        console.error(`createSubscriber failed, code is ${err.code}`);
+        console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
     } else {
         console.info("createSubscriber");
         subscriber = commonEventSubscriber;
-        // Subscribe to a common event.
-        commonEvent.subscribe(subscriber, subscribeCB);
+         // Subscribe to a common event.
+        commonEvent.subscribe(subscriber, subscribeCallBack);
     }
 }
 
 // Callback for common event unsubscription.
-function unsubscribeCB(err:Base.BusinessError) {
+let unsubscribeCallback = (err: Base.BusinessError) => {
     if (err.code) {
-        console.error(`unsubscribe failed, code is ${err.code}`);
+        console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
     } else {
         console.info("unsubscribe");
     }
 }
 
 // Create a subscriber.
-commonEvent.createSubscriber(subscribeInfo, createCB);
+commonEvent.createSubscriber(subscribeInfo, createCallBack);
 
 // Unsubscribe from the common event.
-commonEvent.unsubscribe(subscriber, unsubscribeCB);
+// Note: This API must be called after the subscriber is successfully created (that is, after the createCallBack callback is executed). Only the API usage is displayed here.
+commonEvent.unsubscribe(subscriber, unsubscribeCallback);
 ```

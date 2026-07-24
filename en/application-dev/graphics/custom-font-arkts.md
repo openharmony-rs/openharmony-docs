@@ -263,5 +263,5 @@ struct RenderTest {
 
 ## Effect
 
-![image_load](figures/image_load.png)
-![image_unload](figures/image_unload.png)
+![image-load](figures/image-load.png)
+![image-unload](figures/image-unload.png)

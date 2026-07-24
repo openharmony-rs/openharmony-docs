@@ -5,6 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:11:27.410Z pushedAt=2026-07-21T09:29:20.042Z -->
 
 The **notificationSubscribe** module provides APIs for notification subscription, notification unsubscription, subscription removal, and more. In general cases, only system applications can call these APIs.
 
@@ -52,9 +53,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -117,9 +118,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -185,9 +186,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -358,9 +359,9 @@ Subscribes to notifications of the application and specifies subscription inform
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
-| -------- | ----------------------------------- | 
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| -------- | ----------------------------------- |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -409,8 +410,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.<br> Applicable versions: 9-19                                      |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -464,8 +466,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.<br> Applicable versions: 9-19                                      |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -484,7 +487,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.unsubscribe(subscriber).then(() => {
   console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -515,9 +518,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -582,9 +585,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -608,7 +611,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -638,9 +641,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -694,9 +697,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -712,7 +715,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCode, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -742,9 +745,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -797,9 +800,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -814,7 +817,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCodes, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -843,9 +846,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -893,9 +896,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -945,9 +948,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -962,7 +965,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 notificationSubscribe.removeAll().then(() => {
   console.info("removeAll success");
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -991,9 +994,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1046,9 +1049,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1063,7 +1066,7 @@ let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
   console.info("removeAll success");
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1098,9 +1101,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600010  | Distributed operation failed.                     |
 | 1600021  | Distributed operation timed out.                    |
 
@@ -1119,11 +1122,13 @@ let operationInfo: notificationSubscribe.OperationInfo = {
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
   console.info("distributeOperation success");
 }).catch((err: BusinessError) => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+  console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
 ## NotificationKey
+
+Defines the notification key value.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1136,6 +1141,8 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 ## RemoveReason
 
+Defines the reasons for notification removal.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
@@ -1146,6 +1153,8 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 | CANCEL_REASON_REMOVE | 2   | The notification is removed by the user.        |
 
 ## OperationInfo<sup>18+</sup>
+
+Defines cross-device collaborative operation information.
 
 **System capability**: SystemCapability.Notification.Notification
 

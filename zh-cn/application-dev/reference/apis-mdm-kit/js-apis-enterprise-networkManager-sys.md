@@ -24,11 +24,15 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-## networkManager.getAllNetworkInterfaces
+## networkManager.getAllNetworkInterfaces<sup>(deprecated)</sup>
 
 getAllNetworkInterfaces(admin: Want, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取所有激活的有线网络接口。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getAllNetworkInterfacesSync](./js-apis-enterprise-networkManager.md#networkmanagergetallnetworkinterfacessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -78,11 +82,15 @@ networkManager.getAllNetworkInterfaces(wantTemp, (err, result) => {
 });
 ```
 
-## networkManager.getAllNetworkInterfaces
+## networkManager.getAllNetworkInterfaces<sup>(deprecated)</sup>
 
 getAllNetworkInterfaces(admin: Want): Promise&lt;Array&lt;string&gt;&gt;
 
 获取所有激活的有线网络接口。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getAllNetworkInterfacesSync](./js-apis-enterprise-networkManager.md#networkmanagergetallnetworkinterfacessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -136,11 +144,15 @@ networkManager.getAllNetworkInterfaces(wantTemp).then((result) => {
 });
 ```
 
-## networkManager.getIpAddress
+## networkManager.getIpAddress<sup>(deprecated)</sup>
 
 getIpAddress(admin: Want, networkInterface: string, callback: AsyncCallback&lt;string&gt;): void
 
 根据网络接口获取设备IP地址。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getIpAddressSync](./js-apis-enterprise-networkManager.md#networkmanagergetipaddresssync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -192,11 +204,15 @@ networkManager.getIpAddress(wantTemp, 'eth0', (err, result) => {
 });
 ```
 
-## networkManager.getIpAddress
+## networkManager.getIpAddress<sup>(deprecated)</sup>
 
 getIpAddress(admin: Want, networkInterface: string): Promise&lt;string&gt;
 
 根据网络接口获取设备IP地址。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getIpAddressSync](./js-apis-enterprise-networkManager.md#networkmanagergetipaddresssync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -252,11 +268,15 @@ networkManager.getIpAddress(wantTemp, 'eth0').then((result) => {
 });
 ```
 
-## networkManager.getMac
+## networkManager.getMac<sup>(deprecated)</sup>
 
 getMac(admin: Want, networkInterface: string, callback: AsyncCallback&lt;string&gt;): void
 
 根据网络接口获取设备MAC地址。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getMacSync](./js-apis-enterprise-networkManager.md#networkmanagergetmacsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -308,11 +328,15 @@ networkManager.getMac(wantTemp, 'eth0', (err, result) => {
 });
 ```
 
-## networkManager.getMac
+## networkManager.getMac<sup>(deprecated)</sup>
 
 getMac(admin: Want, networkInterface: string): Promise\<string>
 
 根据网络接口获取设备MAC地址。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getMacSync](./js-apis-enterprise-networkManager.md#networkmanagergetmacsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -368,11 +392,15 @@ networkManager.getMac(wantTemp, 'eth0').then((result) => {
 });
 ```
 
-## networkManager.isNetworkInterfaceDisabled
+## networkManager.isNetworkInterfaceDisabled<sup>(deprecated)</sup>
 
 isNetworkInterfaceDisabled(admin: Want, networkInterface: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 查询指定网络接口是否被禁用。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [isNetworkInterfaceDisabledSync](./js-apis-enterprise-networkManager.md#networkmanagerisnetworkinterfacedisabledsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -424,11 +452,15 @@ networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0', (err, result) => {
 });
 ```
 
-## networkManager.isNetworkInterfaceDisabled
+## networkManager.isNetworkInterfaceDisabled<sup>(deprecated)</sup>
 
 isNetworkInterfaceDisabled(admin: Want, networkInterface: string): Promise&lt;boolean&gt;
 
 查询指定网络接口是否被禁用。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [isNetworkInterfaceDisabledSync](./js-apis-enterprise-networkManager.md#networkmanagerisnetworkinterfacedisabledsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -484,11 +516,15 @@ networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0').then((result) => {
 });
 ```
 
-## networkManager.setNetworkInterfaceDisabled
+## networkManager.setNetworkInterfaceDisabled<sup>(deprecated)</sup>
 
 setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 禁止设备使用指定网络。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setNetworkInterfaceDisabledSync](./js-apis-enterprise-networkManager.md#networkmanagersetnetworkinterfacedisabledsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_NETWORK
 
@@ -541,11 +577,15 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true, (err) => {
 });
 ```
 
-## networkManager.setNetworkInterfaceDisabled
+## networkManager.setNetworkInterfaceDisabled<sup>(deprecated)</sup>
 
 setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: boolean): Promise&lt;void&gt;
 
 禁止设备使用指定网络。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setNetworkInterfaceDisabledSync](./js-apis-enterprise-networkManager.md#networkmanagersetnetworkinterfacedisabledsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_NETWORK
 
@@ -602,11 +642,15 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true).then(() => {
 });
 ```
 
-## networkManager.setGlobalProxy
+## networkManager.setGlobalProxy<sup>(deprecated)</sup>
 
 setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: AsyncCallback\<void>): void
 
 设置网络全局代理，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagersetglobalproxysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -667,11 +711,15 @@ networkManager.setGlobalProxy(wantTemp, httpProxy, (err) => {
 });
 ```
 
-## networkManager.setGlobalProxy
+## networkManager.setGlobalProxy<sup>(deprecated)</sup>
 
 setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise\<void>
 
 设置网络全局代理，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagersetglobalproxysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -736,11 +784,15 @@ networkManager.setGlobalProxy(wantTemp, httpProxy).then(() => {
 });
 ```
 
-## networkManager.getGlobalProxy
+## networkManager.getGlobalProxy<sup>(deprecated)</sup>
 
 getGlobalProxy(admin: Want, callback: AsyncCallback\<connection.HttpProxy>): void
 
 获取网络全局代理，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagergetglobalproxysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -790,11 +842,15 @@ networkManager.getGlobalProxy(wantTemp, (err, result) => {
 });
 ```
 
-## networkManager.getGlobalProxy
+## networkManager.getGlobalProxy<sup>(deprecated)</sup>
 
 getGlobalProxy(admin: Want): Promise\<connection.HttpProxy>
 
 获取网络全局代理，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagergetglobalproxysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 

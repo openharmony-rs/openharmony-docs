@@ -10,7 +10,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-##  15700000 内部错误
+## 15700000 内部错误
 
 **错误信息**
 
@@ -152,3 +152,21 @@ The parameter format is incorrect or the value range is invalid.
 
 5. 检查接口传入的URI数组或者proxyData数组中的URI是否满足格式校验：<br/>
     URI的固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写。
+
+## 15700015 访问URI权限错误
+
+**错误信息**
+
+No permission to access the data specified by the URI.
+
+**错误描述**
+
+没有权限访问URI所指定的数据。
+
+**可能原因**
+
+未申请访问指定数据所需的权限。
+
+**处理步骤**
+
+咨询数据提供方访问指定数据所需的权限。

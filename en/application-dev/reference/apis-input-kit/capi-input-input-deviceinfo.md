@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:19:53.418Z pushedAt=2026-06-12T02:35:26.964Z -->
 
 ```c
 typedef struct Input_DeviceInfo Input_DeviceInfo
@@ -13,7 +14,7 @@ typedef struct Input_DeviceInfo Input_DeviceInfo
 
 ## Overview
 
-Defines the input device information.
+Defines input device information, which is used to describe the basic information and capability characteristics of an input device, including attributes such as the device type and device ID. You can use this struct to obtain and manage detailed information about input devices, facilitating device identification and configuration management.
 
 **Since**: 13
 

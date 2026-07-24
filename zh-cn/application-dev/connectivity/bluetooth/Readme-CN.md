@@ -18,4 +18,4 @@
   - [查找设备](ble-development-guide.md)
   - [连接和传输数据](gatt-development-guide.md)
 - 蓝牙常见问题<!--bluetooth-faq-->
-  - [蓝牙接口调用报错2900099](bluetooth-faq-2900099-errorcode.md)
+  - [蓝牙接口调用报错2900099](bluetooth-faq-2900099-errorcode.md)<!--RP1--><!--RP1End-->

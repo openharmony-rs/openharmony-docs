@@ -79,12 +79,12 @@ MindSpore Lite模型转换工具提供了多种参数设置，用户可根据需
 |    --outputFile    | 是                  | 输出模型的路径，不需加后缀，可自动生成`.ms`后缀。            | -                                                |
 |    --weightFile    | 转换CAFFE模型时必选 | 输入模型权重文件的路径。                                     | -                                                |
 |    --configFile    | 否                  | 1）可作为训练后量化配置文件路径；2）可作为扩展功能配置文件路径。 | -                                                |
-|       --fp16       | 否                  | 设定在模型序列化时是否需要将float32数据格式的权重存储为float16数据格式。<br/>默认值为off。 | on、off                                          |
+|       --fp16       | 否                  | 设定在模型序列化时是否需要将float32数据格式的权重存储为float16数据格式。<br>默认值为off。 | on、off                                          |
 |    --inputShape    | 否                  | 设定模型输入的维度，输入维度的顺序和原始模型保持一致。对某些特定的模型可以进一步优化模型结构，但是转化后的模型将可能失去动态shape的特性。输入名和shape之间用`:`分割，多个输入用`;`分割，同时加上双引号`""`。例如配置为"inTensorName_1: 1,32,32,4;inTensorName_2:1,64,64,4;"。 | -                                                |
-| --inputDataFormat  | 否                  | 设定导出模型的输入format，只对四维输入有效。<br/>默认值为NHWC。 | NHWC、NCHW                                       |
-|  --inputDataType   | 否                  | 设定量化模型输入tensor的数据类型。仅当模型输入tensor的量化参数（scale和zero point）配置时有效。默认与原始模型输入tensor的数据类型保持一致。<br/>默认值为DEFAULT。 | FLOAT32、INT8、UINT8、DEFAULT                    |
-|  --outputDataType  | 否                  | 设定量化模型输出tensor的数据类型。仅当模型输出tensor的量化参数（scale和zero point）配置时有效。默认与原始模型输出tensor的数据类型保持一致。<br/>默认值为DEFAULT。 | FLOAT32、INT8、UINT8、DEFAULT                    |
-| --outputDataFormat | 否                  | 设定导出模型的输出format，只对四维输出有效。                 | NHWC、NCHW                                       |
+| --inputDataFormat  | 否                  | 设定导出模型的输入format，只对四维输入有效。<br>默认值为NHWC。 | NHWC、NCHW                                       |
+|  --inputDataType   | 否                  | 设定量化模型输入tensor的数据类型。仅当模型输入tensor的量化参数（scale和zero point）配置时有效。默认与原始模型输入tensor的数据类型保持一致。<br>默认值为DEFAULT。 | FLOAT32、INT8、UINT8、DEFAULT                    |
+|  --outputDataType  | 否                  | 设定量化模型输出tensor的数据类型。仅当模型输出tensor的量化参数（scale和zero point）配置时有效。默认与原始模型输出tensor的数据类型保持一致。<br>默认值为DEFAULT。 | FLOAT32、INT8、UINT8、DEFAULT                    |
+| --outputDataFormat | 否                  | 设定导出模型的输出format，只对四维输出有效。<br>默认值为NHWC。 | NHWC、NCHW                                       |
 
 > **说明：**
 > - 参数名和参数值之间用等号连接，中间不能有空格。

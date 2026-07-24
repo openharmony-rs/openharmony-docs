@@ -12,7 +12,7 @@
 
 ## 约束限制
 
-- 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为128MB~2GB。
+- 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为1MB~2GB。
 - 为保证剪贴板数据的准确性，同一时间只能支持一个复制操作。
 - API version 12及之后，系统为提升用户隐私安全保护能力，剪贴板读取接口增加[权限管控](get-pastedata-permission-guidelines.md)。
 
@@ -28,7 +28,7 @@
 - Entry对应同一份数据的不同格式； </br>
 - pasteDataProperty定义了剪贴板中数据内容的属性，包含时间戳、数据类型、可粘贴范围以及一些附加数据等。
 
-为了复制应用和粘贴应用对剪贴板数据内容理解一致，更好的实现不同应用间的复制粘贴体验，应用适配剪贴板时需按如下原则处理：
+为了复制应用和粘贴应用对剪贴板数据内容理解一致，更好地实现不同应用间的复制粘贴体验，应用适配剪贴板时需按如下原则处理：
 
 **应用复制时向剪贴板写入数据**
 
@@ -68,9 +68,9 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------|
 | [setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setdata9) | 将数据写入系统剪贴板，使用callback异步回调。 |
 | [setData(data: PasteData): Promise&lt;void&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setdata9-1) | 将数据写入系统剪贴板，使用Promise异步回调。 |
-| [getData( callback: AsyncCallback&lt;PasteData&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9) | 读取系统剪贴板内容，使用callback异步回调。 |
+| [getData(callback: AsyncCallback&lt;PasteData&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9) | 读取系统剪贴板内容，使用callback异步回调。 |
 | [getData(): Promise&lt;PasteData&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9-1) | 读取系统剪贴板内容，使用Promise异步回调。 |
-| [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | 读取系统剪贴板内容, 此接口为同步接口，不能与SetData同线程调用。 |
+| [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | 读取系统剪贴板内容，此接口为同步接口，不能与SetData同线程调用。 |
 
 ### 示例代码
 
@@ -88,7 +88,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
       await systemPasteboard.setData(pasteData);
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Set data to pasteboard successfully');
     } catch (error) {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set data to pasteboard, error:' + error);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to set data to pasteboard, error: ${error}`);
     }
   }
   export async function getPlainData(type: string): Promise<string> {
@@ -101,12 +101,12 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
       let result = '';
       for (let i = 0; i < recordCount; i++) {
         let record = data.getRecord(i).toPlainText();
-        hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
+        hilog.info(0xFF00, '[Sample_pasteboard]', `Get data success, record: ${record}`);
         result = record;
       }
       return result;
     } catch (error) {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get data from pasteboard, error:' + error);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get data from pasteboard, error: ${error}`);
       return '';
     }
   }
@@ -154,7 +154,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in setting UnifiedData.');
       // 存入成功，处理正常场景
     }).catch((err: BusinessError) => {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set UnifiedData. Cause: ' + err.message);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to set UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
     });
     // 3.从系统剪贴板中读取这条text数据
@@ -167,7 +167,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
         }
       }
     }).catch((err: BusinessError) => {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get UnifiedData. Cause: ' + err.message);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
     });
   }

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -231,4 +231,4 @@ struct BackExample {
 }
 ```
 
-![en-us_image_0000001212058486](figures/en-us_image_0000001212058486.gif)
+![navigator](figures/navigator.gif)

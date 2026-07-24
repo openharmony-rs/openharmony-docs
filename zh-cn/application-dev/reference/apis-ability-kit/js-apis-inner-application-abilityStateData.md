@@ -6,6 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
+
 AbilityStateData是Ability状态信息的数据结构。使用[on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)注册生命周期变化监听后，可以通过[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)的onAbilityStateChanged回调的入参获取该数据结构。
 
 > **说明：**
@@ -28,64 +29,65 @@ import { appManager } from '@kit.AbilityKit';
 | pid                     | number   | 否   | 否   | 进程ID。                    |
 | bundleName              | string   | 否   | 否  | 应用Bundle名称。          |
 | abilityName            | string   | 否   | 否   | Ability名称。               |
-| uid                    | number   | 否   | 否   | 所属应用程序的UID。                  |
-| state                   | number   | 否   | 否   | Ability状态。<br>- [Stage模型](../../application-models/ability-terminology.md#stage模型)：[UIAbility](js-apis-app-ability-uiAbility.md)的状态参见[UIAbility状态](#uiability状态)；[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的状态参见[ExtensionAbility状态](#extensionability状态)；[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的状态参见[UIExtensionAbility状态](#uiextensionability状态)。<br>- [FA模型](../../application-models/ability-terminology.md#fa模型)：参见[Ability状态](#ability状态)。                |
+| uid                    | number   | 否   | 否   | 所属应用的UID。                  |
+| state                   | number   | 否   | 否   | Ability状态。<br>- [Stage模型](../../application-models/ability-terminology.md#stage模型)：[UIAbility](js-apis-app-ability-uiAbility.md)的状态参见[UIAbility状态](#uiability状态)；[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的状态参见[ExtensionAbility状态](#extensionability状态)；[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的状态参见[UIExtensionAbility状态](#uiextensionability状态)。<br>- [FA模型](../../application-models/ability-terminology.md#fa模型)：参见[Ability状态](#ability状态fa模型)。                |
 | moduleName | string   | 否   | 否   | Ability所属的模块名称。    |
 | abilityType | number | 否   | 否   | [Ability类型](#ability类型)：[UIAbility](js-apis-app-ability-uiAbility.md)或[ExtensionAbility](js-apis-app-ability-extensionAbility.md)等。 |
 | isAtomicService | boolean | 否 | 否 | 判断Ability所属应用是否为原子化服务。<br>true: 是原子化服务。<br>false: 不是原子化服务。 |
-| appCloneIndex          | number   | 否   | 是   | 应用包的[分身](../../quick-start/app-clone.md)索引标识。                  |
+| appCloneIndex          | number   | 否   | 是   | 应用包的[分身](../../quick-start/app-clone.md)索引标识。0表示主实例，1及以上表示分身实例。不返回时默认为主实例。 |
 | callerBundleName<sup>23+</sup> | string | 否 | 是 | Ability创建时的拉起方Bundle名称。 |
 
 ### UIAbility状态
 
-| 值   | 状态                       | 说明                   |
-| ---- | -------------------------- | ---------------------- |
-| 0    | ABILITY_STATE_CREATE       | UIAbility正在创建中。      |
-| 1    | ABILITY_STATE_READY        | UIAbility已创建完成。      |
-| 2    | ABILITY_STATE_FOREGROUND   | UIAbility处于前台。        |
-| 3    | ABILITY_STATE_FOCUS        | UIAbility已获得焦点。        |
-| 4    | ABILITY_STATE_BACKGROUND   | UIAbility处于后台。        |
-| 5    | ABILITY_STATE_TERMINATED   | UIAbility已经销毁。        |
+| 值   | 说明                   |
+| ---- | ---------------------- |
+| 0    | UIAbility正在创建中。 |
+| 1    | UIAbility已创建完成。 |
+| 2    | UIAbility处于前台。 |
+| 3    | UIAbility已获得焦点。 |
+| 4    | UIAbility处于后台。 |
+| 5    | UIAbility已经销毁。 |
 
 ### ExtensionAbility状态
-| 值   | 状态    | 说明                  |
-| ---- | -------------------------- | ---------------------- |
-| 0    | EXTENSION_STATE_CREATE     | ExtensionAbility正在创建中。  |
-| 1    | EXTENSION_STATE_READY      | ExtensionAbility已创建完成。  |
-| 2    | EXTENSION_STATE_CONNECTED  | ExtensionAbility已与客户端建立连接。 |
-| 3    | EXTENSION_STATE_DISCONNECTED | ExtensionAbility与客户端断开连接。 |
-| 4    | EXTENSION_STATE_TERMINATED  | ExtensionAbility已经销毁。  |
+| 值   | 说明                  |
+| ---- | ---------------------- |
+| 0    | ExtensionAbility正在创建中。 |
+| 1    | ExtensionAbility已创建完成。 |
+| 2    | ExtensionAbility已与客户端建立连接。|
+| 3    | ExtensionAbility与客户端断开连接。|
+| 4    | 所有客户端断连导致ExtensionAbility正常销毁。 |
+| 5    | ExtensionAbility已销毁。涵盖正常销毁（含所有客户端断连触发）及异常销毁（如所在进程被杀死等）。 |
 
 ### UIExtensionAbility状态
 
-| 值   | 状态                       | 说明                   |
-| ---- | -------------------------- | ---------------------- |
-| 0    | ABILITY_STATE_CREATE       | UIExtensionAbility正在创建中。      |
-| 1    | ABILITY_STATE_READY        | UIExtensionAbility已创建完成。      |
-| 2    | ABILITY_STATE_FOREGROUND   | UIExtensionAbility处于前台。        |
-| 4    | ABILITY_STATE_BACKGROUND   | UIExtensionAbility处于后台。        |
-| 5    | ABILITY_STATE_TERMINATED   | UIExtensionAbility已经销毁。        |
+| 值   | 说明                   |
+| ---- | ---------------------- |
+| 0    | UIExtensionAbility正在创建中。 |
+| 1    | UIExtensionAbility已创建完成。 |
+| 2    | UIExtensionAbility处于前台。 |
+| 4    | UIExtensionAbility处于后台。 |
+| 5    | UIExtensionAbility已经销毁。 |
 
-### Ability状态
+### Ability状态（FA模型）
 
-| 值   | 状态                       | 说明                   |
-| ---- | -------------------------- | ---------------------- |
-| 0    | ABILITY_STATE_CREATE       | Ability正在创建中。      |
-| 1    | ABILITY_STATE_READY        | Ability已创建完成。      |
-| 2    | ABILITY_STATE_FOREGROUND   | Ability处于前台。        |
-| 3    | ABILITY_STATE_FOCUS        | Ability已获得焦点。       |
-| 4    | ABILITY_STATE_BACKGROUND   | Ability处于后台。        |
-| 5    | ABILITY_STATE_TERMINATED   | Ability已经销毁。        |
-| 7    | ABILITY_STATE_CONNECTED    | 后台服务已被客户端连接。 |
-| 8    | ABILITY_STATE_DISCONNECTED | 后台服务与客户端断开连接。 |
+| 值   | 说明                   |
+| ---- | ---------------------- |
+| 0    | Ability正在创建中。      |
+| 1    | Ability已创建完成。      |
+| 2    | Ability处于前台。        |
+| 3    | Ability已获得焦点。       |
+| 4    | Ability处于后台。        |
+| 5    | Ability已经销毁。        |
+| 7    | 后台服务已被客户端连接。 |
+| 8    | 后台服务与客户端断开连接。 |
 
 ### Ability类型
 
-| 值   | 状态    | 说明                  |
-| ---- | ------- | --------------------- |
-| 0    | UNKNOWN | 未知类型。（系统错误）              |
-| 1    | PAGE    | UI界面类型的Ability，即[UIAbility](js-apis-app-ability-uiAbility.md)。  |
-| 2    | SERVICE | 后台服务类型的Ability。（FA模型） |
-| 3    | DATA | 数据类型的Ability。（FA模型）               |
-| 4    | FORM    | 卡片类型的Ability。（FA模型）    |
-| 5    | EXTENSION | 扩展类型的Ability。（Stage模型）  |
+| 值   | 说明                  |
+| ---- | --------------------- |
+| 0    | 未知类型。（系统错误）              |
+| 1    | UI界面类型的Ability，即[UIAbility](js-apis-app-ability-uiAbility.md)。  |
+| 2    | 后台服务类型的Ability。（FA模型） |
+| 3    | 数据类型的Ability。（FA模型）               |
+| 4    | 卡片类型的Ability。（FA模型）    |
+| 5    | 扩展类型的Ability。（Stage模型）  |

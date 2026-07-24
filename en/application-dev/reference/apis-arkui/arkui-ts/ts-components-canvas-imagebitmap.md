@@ -115,7 +115,7 @@ This example demonstrates how to load a local image using the **ImageBitmap** ob
 
 > **NOTE**
 >
-> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348) in **resOptions**.
 
   ```ts
   // xxx.ets
@@ -144,7 +144,7 @@ This example demonstrates how to load a local image using the **ImageBitmap** ob
   }
   ```
 
-  ![en-us_image_0000001194352442](figures/en-us_image_0000001194352442.png)
+  ![imageBitmap1](figures/imageBitmap1.png)
 
 ### Example 2: Creating an ImageBitmap Object
 
@@ -183,7 +183,7 @@ struct Demo {
 }
 ```
 
-  ![en-us_image_0000001194352442](figures/en-us_image_0000001194352444.png)
+  ![imageBitmap2](figures/imageBitmap2.png)
 
 
 ### Example 3: Supporting Concurrent Thread Drawing
@@ -246,4 +246,4 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-  ![en-us_image_0000001194352442](figures/en-us_image_0000001194352442.png)
+  ![imageBitmap1](figures/imageBitmap1.png)

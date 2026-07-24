@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @rongShao-Z; @guozejun-->
-<!--Designer: @zcdqs-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -22,7 +22,7 @@ ArkUI提供了[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)容�
 Grid组件为网格容器，其中容器内各条目对应一个GridItem组件，如下图所示。
 
   **图1** Grid与GridItem组件关系  
-![zh-cn_image_0000001511900472](figures/zh-cn_image_0000001511900472.png)
+![grid](figures/grid.png)
 
 >**说明：**
 >
@@ -31,7 +31,7 @@ Grid组件为网格容器，其中容器内各条目对应一个GridItem组件�
 网格布局是一种二维布局。Grid组件支持自定义行列数和每行每列尺寸占比、设置子组件横跨几行或者几列，同时提供了垂直和水平布局能力。当网格容器组件尺寸发生变化时，所有子组件以及间距会等比例调整，从而实现网格布局的自适应能力。根据Grid的这些布局能力，可以构建出不同样式的网格布局，如下图所示。
 
   **图2** 网格布局  
-![zh-cn_image_0000001562700473](figures/zh-cn_image_0000001562700473.png)
+![grid2](figures/grid2.png)
 
 如果Grid组件设置了宽高属性，则其尺寸为设置值。如果没有设置宽高属性，Grid组件的尺寸默认适应其父组件的尺寸。
 
@@ -54,7 +54,7 @@ Grid组件根据行列数量与占比属性的设置，可以分为三种布局�
 rowsTemplate和columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字符串，fr的个数即网格布局的行或列数，fr前面的数值大小，用于计算该行或列在网格布局宽度上的占比，最终决定该行或列宽度。
 
   **图3** 行列数量占比示例  
-![zh-cn_image_0000001562820833](figures/zh-cn_image_0000001562820833.png)
+![grid3](figures/grid3.png)
 
 如上图所示，构建的是一个三行三列的网格布局，其在垂直方向上分为三等份，每行占一份；在水平方向上分为四等份，第一列占一份，第二列占两份，第三列占一份。
 
@@ -81,13 +81,13 @@ Grid() {
 
   **图4** 不均匀网格布局 
 
-![zh-cn_image_0000001511900480](figures/zh-cn_image_0000001511900480.png)
+![grid4](figures/grid4.png)
 
 例如计算器的按键布局就是常见的不均匀网格布局场景。如下图，计算器中的按键“0”和“=”，按键“0”横跨第一、二两列，按键“=”横跨第五、六两行。使用Grid构建的网格布局，其行列标号从0开始，依次编号。
 
   **图5** 计算器  
 
-![zh-cn_image_0000001511421292](figures/zh-cn_image_0000001511421292.png)
+![grid5](figures/grid5.png)
 
 在网格中，可以通过onGetRectByIndex返回的[rowStart,columnStart,rowSpan,columnSpan]来实现跨行跨列布局，其中rowStart和columnStart属性表示指定当前元素起始行号和起始列号，rowSpan和columnSpan属性表示指定当前元素的占用行数和占用列数。
 
@@ -123,7 +123,7 @@ Grid(undefined, this.layoutOptions) {
 
   **图6** 主轴方向示意图  
 
-![zh-cn_image_0000001562700469](figures/zh-cn_image_0000001562700469.png)
+![grid6](figures/grid6.png)
 
 当前layoutDirection设置为Row时，先从左到右排列，排满一行再排下一行。当前layoutDirection设置为Column时，先从上到下排列，排满一列再排下一列，如上图所示。此时，将maxCount属性设为3，表示主轴方向上最大显示的网格单元数量为3。
 
@@ -150,7 +150,7 @@ Grid() {
 
 **图7** 通用办公服务  
 
-![zh-cn_image_0000001563060729](figures/zh-cn_image_0000001563060729.png)
+![grid7](figures/grid7.png)
 
 Grid组件可以通过二维布局的方式显示一组GridItem子组件。
 
@@ -238,7 +238,7 @@ export struct DataInGrid {
 
 **图8** 网格的行列间距  
 
-![zh-cn_image_0000001511580908](figures/zh-cn_image_0000001511580908.png)
+![grid8](figures/grid8.png)
 
 通过Grid的[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#columnsgap)可以设置网格布局的行列间距。在图5所示的计算器中，行间距为15vp，列间距为10vp。
 
@@ -310,7 +310,7 @@ export struct ScrollableGrid {
 
   **图10** 日历翻页  
 
-![zh-cn_image_0000001562940549](figures/zh-cn_image_0000001562940549.gif)
+![grid10](figures/grid10.gif)
 
 Grid组件初始化时，可以绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，用于进行滚动控制，例如通过Scroller对象的[scrollPage](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollpage9)方法进行翻页。
 
@@ -401,7 +401,7 @@ private scroller: Scroller = new Scroller();
 
 ### 设置编辑模式
 
-通过[enableEditMode](../reference/apis-arkui/arkui-ts/ts-container-grid.md#enableeditmode)设置是否进入编辑模式。设置为true，Grid进入编辑模式，用户可以单指滑动经过多个GridItem进行批量选择或取消选择；设置为false，Grid退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)监听编辑模式变化，将侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
+通过[enableEditMode](../reference/apis-arkui/arkui-ts/ts-container-grid.md#enableeditmode)设置是否进入编辑模式。设置为true，Grid进入编辑模式，用户可以单指滑动经过多个GridItem进行批量选择或取消选择；设置为false，Grid退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
 
 通过[editModeOptions](../reference/apis-arkui/arkui-ts/ts-container-grid.md#editmodeoptions23)配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示GridItem右下角的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
 <!-- @[Add_grid_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->

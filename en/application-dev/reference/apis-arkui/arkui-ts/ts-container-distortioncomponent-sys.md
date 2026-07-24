@@ -1,12 +1,14 @@
 # DistortionComponent (System API)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:26:34.123Z pushedAt=2026-07-02T09:00:14.733Z -->
 
-Defines a distortion component that provides spatial distortion visual effects.
+The **DistortionComponent** component is a container-type visual effect component that applies spatial distortion to its child components on a two-dimensional plane, simulating visual effects such as perspective projection, lens barrel/pincushion distortion, and corner stretching. By changing the normalized coordinates of the four corners and the barrel distortion coefficients of the four edges, the component content can present a sense of warping, bulging, indentation, or shearing that approximates three-dimensional space.
 
 >  **NOTE**
 >
@@ -81,8 +83,7 @@ Defines the spatial distortion parameters.
 | topRight       | [Vector2](#vector2) | No | No  | Coordinates of the top-right corner.<br>Default value: **[1, 0]**                                                                                    |
 | bottomLeft     | [Vector2](#vector2) | No | No  | Coordinates of the bottom-left corner.<br>Default value: **[0, 1]**                                                                                    |
 | bottomRight    | [Vector2](#vector2) | No | No  | Coordinates of the bottom-right corner.<br>Default value: **[1, 1]**                                                                                  |
-| barrelDistortion | [Vector4](#vector4) | No  | No  | Barrel distortion degree of the four edges.<br>The four values in **Vector4** are as follows: **x** indicates the left edge, **y** indicates the right edge, **z** indicates the top edge, and **w** indicates the bottom edge.<br>Default value: **[0, 0, 0, 0]**<br>A positive value indicates outward distortion, and a negative value indicates inward distortion. When the absolute value of the distortion parameter reaches 1, the distortion degree is extreme.<br> Recommended value range for x, y, z, and w: **[-1, 1]**|
-
+| barrelDistortion | [Vector4](#vector4) | No  | No  | Barrel distortion parameters for the four edges.<br/>The four values in Vector4: **x** for the left edge, **y** for the right edge, **z** for the top edge, and **w** for the bottom edge.<br/>Default value: **[0, 0, 0, 0]** <br/>A positive value indicates the edge is convex, while a negative value indicates it is concave. When the absolute value of the distortion parameter is 1, the distortion is at its extreme.<br/> Recommended value range for x, y, z, and w: [-1, 1] <br/>Note:<br/>The four components of **barrelDistortion** jointly determine the barrel distortion intensity of the four edges and can be used in combination with the four corner coordinates to create more various spatial distortion.<br/>Geometrically, **x** and **y** determine the bending direction and magnitude of the left and right vertical edges, while **z** and **w** determine those of the top and bottom horizontal edges. When a component is positive, the corresponding edge bulges outward from the component, creating a convex barrel distortion; when negative, the corresponding edge curves inward toward the component, creating a concave pincushion distortion. When the four component values are similar, the overall effect presents a uniform barrel distortion similar to that of a wide-angle lens; when **x**, **y** differ significantly from **z**, **w**, asymmetric distortion with horizontal or vertical stretching occurs.<br/>Because extreme values may cause image folding or sampling anomalies, it is recommended to keep **x**, **y**, **z**, and **w** within the range of [-1, 1].|
 
 ## Vector2
 
@@ -102,7 +103,6 @@ Defines the two-dimensional vector, which contains the x and y coordinates and i
 | ------ | -------- |
 | [Vector2](../../apis-arkui/js-apis-arkui-graphics.md#vector2)   | A vector that contains two values: **x** and **y**.<br>**x** and **y** indicate the coordinate values.<br>Value range: (-∞, +∞)|
 
-
 ## Vector4
 
 type Vector4 = Vector4
@@ -121,66 +121,223 @@ Defines the four-dimensional vector, which contains x, y, z, and w coordinates t
 | ------ | -------- |
 | [Vector4](../../apis-arkui/js-apis-arkui-graphics.md#vector4)   | A vector that contains four values: **x**, **y**, **z**, and **w**.<br>The values of **x**, **y**, **z**, and **w** indicate the barrel distortion degree on the left, right, top, and bottom sides of the component, respectively.<br>Value range: (-∞, +∞)|
 
-
 ## Attributes
 
-Only the system material attribute [systemMaterial](ts-universal-attributes-image-effect-sys.md#systemmaterial23) is supported.
+Only the system material attribute [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) is supported.
 
 ## Examples
 
-### Example 1: Dynamically Changing the Distortion Visual Effect
+### Example 1: Dynamically Changing Corner Distortion
 
-This example demonstrates how to use the [DistortionComponent](#distortioncomponent) component to change the value of the **distortion** parameter to produce different distortion effects.
+This example demonstrates how to use the [DistortionComponent](#distortioncomponent) component to present a spatial distortion effect caused by corner stretching by changing the coordinates of the four corners. After the button is tapped, **animateTo** is used to play the distortion animation.
 
 Since API version 26.0.0, the system component **DistortionComponent** is added.
 
 ```ts
-// Example: Dynamically update the distortion effect. The foreground content of the custom component will be distorted.
 @Entry
 @Component
-struct DistortionExample {
+struct DistortionCornerExample {
   @State distortionParam: DistortionParam = {
-    topLeft: { x: 0.8, y: 0.8 },
-    topRight: { x: 1, y: 0.8 },
-    bottomLeft: { x: 0.8, y: 1 },
+    topLeft: { x: 0, y: 0 },
+    topRight: { x: 1, y: 0 },
+    bottomLeft: { x: 0, y: 1 },
     bottomRight: { x: 1, y: 1 },
-    barrelDistortion: {
-      x: 0,
-      y: 0,
-      z: 0,
-      w: 0
-    },
+    barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
   }
 
   build() {
-    Column() {
+    Column({ space: 40 }) {
+      // Dynamically update corner distortion. The foreground content of the component will distort following the corner positions.
       DistortionComponent({
         distortion: this.distortionParam
       }) {
         Column() {
+          Text('Distortion')
+            .fontSize(20)
+            .fontColor(Color.White)
+          Text('Component')
+            .fontSize(16)
+            .fontColor(Color.White)
         }
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Pink)
+        .width(150)
+        .height(150)
+        .backgroundColor(0xFF6750A4)
+        .borderRadius(12)
+        .justifyContent(FlexAlign.Center)
       }
 
-      Button('Change Distortion')
+      Button('Change corner distortion')
         .onClick(() => {
-          this.distortionParam = {
-            topLeft: { x: 0, y: 0 },
-            topRight: { x: 1, y: 0 },
-            bottomLeft: { x: 0.8, y: 1 },
-            bottomRight: { x: 1, y: 1 },
-            barrelDistortion: {
-              x: 0,
-              y: 0,
-              z: 0,
-              w: 0
-            },
-          }
+          this.getUIContext()?.animateTo({ duration: 800, curve: Curve.EaseInOut }, () => {
+            this.distortionParam = {
+              topLeft: { x: 0.2, y: 0.2 },
+              topRight: { x: 0.9, y: 0.1 },
+              bottomLeft: { x: 0.1, y: 0.9 },
+              bottomRight: { x: 0.8, y: 1.1 },
+              barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
+            }
+          })
         })
     }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
-![distortionComponent](figures/distortionComponent.gif)
+
+![distortionComponent](figures/distortionComponent1.gif)
+
+### Example 2: Setting Four-Edge Barrel Distortion
+
+This example demonstrates the effect of **z** and **w** in the **barrelDistortion** parameter on the top and bottom horizontal edges, while setting **x** and **y** to control the left and right vertical edges, showcasing the overall barrel distortion effect.
+
+Since API version 26.0.0, the **barrelDistortion** attribute of [DistortionParam](#distortionparam) is added.
+
+```ts
+@Entry
+@Component
+struct DistortionBarrelExample {
+  @State barrelValue: number = 0.5
+
+  build() {
+    Column({ space: 40 }) {
+      // Independently control the barrel distortion of the four edges, highlighting the effect of z/w on the top and bottom edges
+      DistortionComponent({
+        distortion: {
+          topLeft: { x: 0, y: 0 },
+          topRight: { x: 1, y: 0 },
+          bottomLeft: { x: 0, y: 1 },
+          bottomRight: { x: 1, y: 1 },
+          barrelDistortion: {
+            x: this.barrelValue,
+            y: this.barrelValue,
+            z: this.barrelValue,
+            w: this.barrelValue
+          }
+        }
+      }) {
+        Column() {
+          Text('Barrel')
+            .fontSize(24)
+            .fontColor(Color.White)
+          Text('Distortion')
+            .fontSize(18)
+            .fontColor(Color.White)
+        }
+        .width(180)
+        .height(180)
+        .backgroundColor(0xFF4CAF50)
+        .borderRadius(16)
+        .justifyContent(FlexAlign.Center)
+      }
+
+      Row({ space: 20 }) {
+        Button('Convex')
+          .onClick(() => {
+            this.getUIContext()?.animateTo({ duration: 600 }, () => {
+              this.barrelValue = 0.6
+            })
+          })
+        Button('Concave')
+          .onClick(() => {
+            this.getUIContext()?.animateTo({ duration: 600 }, () => {
+              this.barrelValue = -0.6
+            })
+          })
+        Button('Restore')
+          .onClick(() => {
+            this.getUIContext()?.animateTo({ duration: 600 }, () => {
+              this.barrelValue = 0
+            })
+          })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![distortionComponent](figures/distortionComponent2.gif)
+
+### Example 3: Setting Combined Corner and Barrel Distortion Animation
+
+This example demonstrates how the [DistortionComponent](#distortioncomponent) component combines corner coordinate distortion with four-edge barrel distortion, and implements a transition animation from a normal state to a spatially distorted state through **animateTo**.
+
+Since API version 26.0.0, the system component **DistortionComponent** is added.
+
+```ts
+@Entry
+@Component
+struct DistortionCombinedExample {
+  @State isDistorted: boolean = false
+  @State distortionParam: DistortionParam = {
+    topLeft: { x: 0, y: 0 },
+    topRight: { x: 1, y: 0 },
+    bottomLeft: { x: 0, y: 1 },
+    bottomRight: { x: 1, y: 1 },
+    barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
+  }
+
+  handleToggle() {
+    this.isDistorted = !this.isDistorted
+    this.getUIContext()?.animateTo({ duration: 1000, curve: Curve.EaseInOut }, () => {
+      if (this.isDistorted) {
+        this.distortionParam = {
+          topLeft: { x: 0.1, y: 0.15 },
+          topRight: { x: 0.85, y: 0.05 },
+          bottomLeft: { x: 0.05, y: 0.9 },
+          bottomRight: { x: 0.95, y: 0.85 },
+          barrelDistortion: { x: 0.3, y: 0.3, z: 0.5, w: 0.5 }
+        }
+      } else {
+        this.distortionParam = {
+          topLeft: { x: 0, y: 0 },
+          topRight: { x: 1, y: 0 },
+          bottomLeft: { x: 0, y: 1 },
+          bottomRight: { x: 1, y: 1 },
+          barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
+        }
+      }
+    })
+  }
+
+  build() {
+    Column({ space: 40 }) {
+      // Combine corner distortion with barrel distortion to create a stronger sense of spatial perspective
+      DistortionComponent({
+        distortion: this.distortionParam
+      }) {
+        Stack() {
+          Column()
+            .width(200)
+            .height(200)
+            // 'app.media.icon' needs to be replaced with the required image resource file
+            .backgroundImage($r('app.media.icon'))
+            .backgroundImageSize(ImageSize.Cover)
+            .opacity(0.8)
+          Text('3D Feel')
+            .fontSize(28)
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Bold)
+        }
+        .width(200)
+        .height(200)
+        .borderRadius(20)
+        .clip(true)
+      }
+
+      Button(this.isDistorted ? 'Restore original state' : 'Play combined distortion')
+        .onClick(() => this.handleToggle())
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![distortionComponent](figures/distortionComponent3.gif)
+<!--no_check-->

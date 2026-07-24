@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现序列化类时不丢失属性的复杂类型，开发者可以使用\@Type装饰器装饰类属性。
+为了实现序列化类时不丢失属性的复杂类型，开发者可以使用[\@Type](../../reference/apis-arkui/arkui-ts/ts-state-management-type.md#type)装饰器装饰类属性。
 
 \@Type的目的是标记类属性，配合PersistenceV2使用，防止序列化时类丢失。在阅读本文档前，建议提前阅读：[PersistenceV2](./arkts-new-persistencev2.md)。
 
@@ -31,9 +31,9 @@
 
 1. 只能用在[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类中，不能用在自定义组件中。
 
-   <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
-
-   ```ts
+   <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) --> 
+   
+   ``` TypeScript
    class Sample {
      private data: number = 0;
    }
@@ -71,7 +71,7 @@
 
 ### 持久化数据
 
-<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { PersistenceV2, Type } from '@kit.ArkUI';
@@ -98,13 +98,17 @@ struct TestCase {
   build() {
     Column() {
       Text('childNumber value:' + this.sample.sampleChild?.childNumber)
+        .fontSize(30)
+        .margin(10)
         .onClick(() => {
           this.sample.sampleChild = new SampleChild();
           this.sample.sampleChild.childNumber = 2;
           PersistenceV2.save(Sample);
         })
-        .fontSize(30)
     }
+    .width('100%')
   }
 }
 ```
+
+![type-sync-0](./figures/type-sync-0.gif)

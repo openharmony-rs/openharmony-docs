@@ -262,7 +262,7 @@ up to 30 minutes after obtaining the permission. If it exceeds 30 minutes, a dia
 
 **Permission level**: system_basic
 
-**Authorization mode**: user_grant
+**Authorization mode**: system_grant
 
 **Since**: 12
 
@@ -628,6 +628,27 @@ Peripherals connected to the host via a USB bus and:
 
 **Since**: 18
 
+## ohos.permission.ACCESS_DDK_USB_SERIAL
+
+Allows a peripheral extension driver to access the USB Serial DDK APIs.
+
+The USB Serial DDK APIs can be used to develop the following types of peripheral extension drivers:
+
+Peripherals connected to the host via a USB bus and:
+
+1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
+2. The peripheral can simulate traditional serial communication through a USB interface.
+
+<!--RP101--><!--RP101End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices: ** PCs/2-in-1 devices | tablets
+
+**Since**: 18
+
 ## ohos.permission.kernel.SUPPORT_PLUGIN
 
 Allows an application to install plugins.
@@ -651,6 +672,20 @@ Allows an application to set the sandbox type to dynamic sandbox.
 **Authorization mode**: system_grant
 
 **Since**: 18
+
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+Allows a mini game of the atomic service type to manage its storage space.
+
+<!--RP96--><!--RP96End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
 
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 
@@ -718,9 +753,11 @@ Allows an application to use the global floating ball.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
+
+**Changelog**: Since API version 26.0.0, this permission is also available on PCs/2-in-1 devices.
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
@@ -870,7 +907,7 @@ With this permission, the application can choose the target applications for sys
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 21
 
@@ -1302,6 +1339,21 @@ Allows an application to install the PCIe driver.
 
 **Since**: 26.0.0
 
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+Allows an application to access the game buddy service. 
+With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+
+<!--RP93--><!--RP93End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones
+
+**Since**: 26.0.0
+
 ## ohos.permission.KNOCK_COLLABORATION
 
 Allows an application to connect to a specific device using Tap-to-Transfer for information exchange and cross-device interaction.
@@ -1329,3 +1381,117 @@ Allows an application to manage the printing system.
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
 **Since**: 24
+
+## ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+Allows an application to install and load self-distributed plug-ins.
+
+<!--RP90--><!--RP90End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+Allows an application to register audio accessories with the system.
+
+<!--RP99--><!--RP99End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
+
+## ohos.permission.ALLOW_USE_BM
+
+Allows an application to call BM tools in developer mode.
+
+<!--RP94--><!--RP94End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY
+
+Allows an application to import digital credentials using the digital identity service.
+
+With this permission, the application can import the user's digital identity credentials into the device for secure storage and convenient presentation afterward.
+
+<!--RP91--><!--RP91End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.CAPTURE_PLAYBACK_DOWNLINK
+
+Allows an application to record downlink data of cellular calls.
+
+<!--RP95--><!--RP95End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_SANDBOX_BUNDLE
+
+Allows an application to manage sandbox applications.
+
+<!--RP97--><!--RP97End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.DETECT_DEVICE
+
+Allows an application to invoke the smart diagnosis service to obtain data.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_SE_KEY
+
+Allows an application to generate, use, and delete secure element keys.
+
+<!--RP100--><!--RP100End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.0.0

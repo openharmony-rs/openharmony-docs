@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于渲染并管理Native层使用C-API创建的组件。
+用于渲染Native侧使用C-API创建的组件，并通过Content管理器管理这些组件。
 
 支持混合模式开发，当容器是ArkTS组件，子组件在Native侧创建时，推荐使用ContentSlot占位组件。
 
@@ -20,7 +20,7 @@
 
 ContentSlot(content: Content)
 
-当内容添加到占位符组件时调用。
+创建ContentSlot占位组件，用于渲染Content管理器中Native侧创建的组件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -30,11 +30,11 @@ ContentSlot(content: Content)
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| content | [Content](#content)  | 是   | Content作为ContentSlot的管理器，通过Native侧提供的接口，可以注册并触发ContentSlot的上下树事件回调以及管理ContentSlot的子组件。 |
+| content | [Content](#content)  | 是   | Content作为ContentSlot的管理器，通过Native侧提供的接口，可以注册并触发ContentSlot的上下树（即组件节点加入或移出组件渲染树）事件回调以及管理ContentSlot的子组件。 |
 
 ## Content
 
-type Content = Content
+type Content = import('../api/@ohos.arkui.node').Content
 
 定义ComponentContent和NodeContent的基类。
 
@@ -44,7 +44,7 @@ type Content = Content
 
 | 类型 | 说明                                                     |
 | ---- | ------------------------------------------------------------ |
-| [Content](../js-apis-arkui-Content.md)   | 定义ComponentContent和NodeContent的基类。 |
+| import('../api/@ohos.arkui.node').[Content](../js-apis-arkui-Content.md)   | 定义ComponentContent和NodeContent的基类。 |
 
 ## 示例
 
@@ -52,7 +52,7 @@ type Content = Content
 
 ```ts
 import { nativeNode } from 'libNativeNode.so'; // 开发者自己实现的so
-import { NodeContent } from '@kit.ArkUI';
+import { NodeContent, Content } from '@kit.ArkUI';
 
 @Entry
 @Component

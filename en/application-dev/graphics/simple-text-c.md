@@ -91,4 +91,4 @@ In a simple user interface, only a few lines of static text need to be displayed
 
 ## Effect
 
-![image_0000002211443916](figures/image_0000002211443916.png)
+![Simple-text-drawing](figures/Simple-text-drawing.png)

@@ -27,7 +27,7 @@
 该示例演示了FrameNode抛出[dispose](../reference/apis-arkui/js-apis-arkui-frameNode.md#dispose12)相关异常的场景。运行示例代码后会出现jscrash报错，参考下方的动图，跳转至具体的报错场景，发现报错的原因是调用dispose后不能调用[getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12)，在本示例中，删除dispose相关代码即可正常运行。
 
 ```ts
-import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+import { NodeController, FrameNode } from '@kit.ArkUI';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {

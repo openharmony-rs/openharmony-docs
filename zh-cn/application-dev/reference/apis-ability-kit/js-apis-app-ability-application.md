@@ -145,7 +145,7 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContextInstance(): ApplicationContext
 
-获取应用上下文。开发者使用该接口时，无需依赖Context基类。
+获取应用上下文实例。开发者使用该接口时，无需依赖Context基类。
 
 重复调用该接口，将获取同一个ApplicationContext实例。
 
@@ -371,7 +371,7 @@ exitMasterProcessRole(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异：** 该接口仅在2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口仅在PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 

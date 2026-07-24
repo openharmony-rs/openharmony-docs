@@ -84,7 +84,7 @@ This API is used to obtain the DLP sandbox gathering policy of the current syste
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -127,7 +127,7 @@ This API is used to obtain the DLP sandbox gathering policy of the current syste
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -141,7 +141,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPGatheringPolicy((err, gatheringPolicy) => {
-  if (err !== undefined) {
+  if (err) {
     console.error('getDLPGatheringPolicy error,', err.code, err.message);
   } else {
     console.info('gatheringPolicy: ', JSON.stringify(gatheringPolicy));
@@ -155,7 +155,7 @@ installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri
 
 Installs a DLP sandbox application for an application. The DLP sandbox creates an independent running environment for protected DLP files, which is isolated from the original application process. This ensures that data is securely transferred within the authorized scope. The sandbox application inherits the functions of the original application but can access only authorized DLP files. This API uses a promise to return the result.
 
-After calling **installDLPSandbox** to install a sandbox, the system must call **uninstallDLPSandbox** to uninstall the sandbox after using it.
+After calling **installDLPSandbox** to install a sandbox, the system must call [uninstallDLPSandbox](#dlppermissionuninstalldlpsandbox) to uninstall the sandbox after using it.
 
 Before a DLP file management application opens a protected file, the system needs to install a DLP sandbox for the target application.
 
@@ -169,10 +169,10 @@ Before a DLP file management application opens a protected file, the system need
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
-| access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | Yes| Permission on the DLP file. The permissions on a DLP file determine the access scope of the file. If the value is out of range, error code 19100001 is thrown.|
-| userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. If the input value is invalid, error code 19100001 is thrown.|
-| uri | string | Yes|  URI of the DLP file. The value contains up to 4095 bytes. If the value is out of range, error code 19100001 is thrown.|
+| bundleName | string | Yes| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 401 is thrown.|
+| access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | Yes| Permission on the DLP file. The permissions on a DLP file determine the access scope of the file.|
+| userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**.<br>The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated. If the value of the passed parameter is less than 0, an error log is generated.|
+| uri | string | Yes|  URI of the DLP file. The value contains up to 4095 bytes. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -184,7 +184,7 @@ Before a DLP file management application opens a protected file, the system need
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -212,7 +212,7 @@ installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri
 
 Installs a DLP sandbox application for an application. This API uses an asynchronous callback to return the result. After the API is called, the system creates a DLP sandbox for the application and returns the sandbox information.
 
-After calling **installDLPSandbox** to install a sandbox, the system must call **uninstallDLPSandbox** to uninstall the sandbox after using it.
+After calling **installDLPSandbox** to install a sandbox, the system must call [uninstallDLPSandbox](#dlppermissionuninstalldlpsandbox) to uninstall the sandbox after using it.
 
 Before a DLP file management application opens a protected file, the system needs to install a DLP sandbox for the target application.
 
@@ -226,17 +226,17 @@ Before a DLP file management application opens a protected file, the system need
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
-| access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | Yes| Permission on the DLP file. The permissions on a DLP file determine the access scope of the file. If the value is out of range, error code 19100001 is thrown.|
-| userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. If the value is out of range, error code 19100001 is thrown.|
-| uri | string | Yes| URI of the DLP file. The value contains up to 4095 bytes. If the value is out of range, error code 19100001 is thrown.|
+| bundleName | string | Yes| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 401 is thrown.|
+| access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | Yes| Permission on the DLP file. The permissions on a DLP file determine the access scope of the file.|
+| userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**.<br>The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated. If the value of the passed parameter is less than 0, an error log is generated.|
+| uri | string | Yes| URI of the DLP file. The value contains up to 4095 bytes. If the value is out of range, error code 401 is thrown.|
 | callback | AsyncCallback&lt;[DLPSandboxInfo](#dlpsandboxinfo)&gt; | Yes| Callback used to return the result. If the DLP sandbox is installed successfully, **err** is **undefined** and **data** is the sandbox information obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -251,7 +251,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100, uri, (err, res) => {
-  if (err !== undefined) {
+  if (err) {
     console.error('installDLPSandbox error,', err.code, err.message);
   } else {
     console.info('res', JSON.stringify(res));
@@ -267,7 +267,7 @@ Uninstalls a DLP sandbox application for an application. This API uses a promise
 
 Use this API to clear the corresponding sandbox environment.
 
-This API can be called only after a DLP sandbox is installed by calling **installDLPSandbox**.
+This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](#dlppermissioninstalldlpsandbox).
 
 **System API**: This is a system API.
 
@@ -279,9 +279,9 @@ This API can be called only after a DLP sandbox is installed by calling **instal
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
-| userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. If the value is out of range, error code 19100001 is thrown.|
-| appIndex | number | Yes| DLP sandbox index, which is the value returned after **installDLPSandbox** is successfully called. It is used to identify the installed DLP sandbox. If the value is out of range, error code 19100001 is thrown.|
+| bundleName | string | Yes| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 401 is thrown.|
+| userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**.<br>The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated. If the value of the passed parameter is less than 0, an error log is generated.|
+| appIndex | number | Yes| DLP sandbox index, which is the value returned after **installDLPSandbox** is successfully called. It is used to identify the installed DLP sandbox. The value range is [1000, 1100]. If the value is out of range, an error log is generated.|
 
 **Return value**
 
@@ -293,7 +293,7 @@ This API can be called only after a DLP sandbox is installed by calling **instal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -324,6 +324,8 @@ Uninstalls a DLP sandbox application for an application. This API uses an asynch
 
 Use this API to clear the sandbox environment.
 
+This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](#dlppermissioninstalldlpsandbox).
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.ACCESS_DLP_FILE
@@ -334,16 +336,16 @@ Use this API to clear the sandbox environment.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
-| userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. If the value is out of range, error code 19100001 is thrown.|
-| appIndex | number | Yes| DLP sandbox index, which is the value returned after **installDLPSandbox** is successfully called. It is used to identify the installed DLP sandbox. The value range is [1000, 1100]. If the value is out of range, error code 19100001 is thrown.|
+| bundleName | string | Yes| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 401 is thrown.|
+| userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated. |
+| appIndex | number | Yes| DLP sandbox index, which is the value returned after **installDLPSandbox** is successfully called. It is used to identify the installed DLP sandbox. The value range is [1000, 1100]. If the value is out of range, an error log is generated.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the DLP sandbox is uninstalled successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -361,7 +363,7 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
   uri).then((dlpSandboxInfo: dlpPermission.DLPSandboxInfo) => {
   console.info('dlpSandboxInfo: ', JSON.stringify(dlpSandboxInfo));
   dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, dlpSandboxInfo.appIndex, (err, res) => {
-    if (err !== undefined) {
+    if (err) {
       console.error('uninstallDLPSandbox error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -378,7 +380,7 @@ on(type: 'uninstallDLPSandbox', listener: Callback&lt;DLPSandboxState&gt;): void
 
 Registers a listener for the DLP sandbox uninstall event, which is used to detect changes in the sandbox environment. After the registration, the system notifies the application using a callback when the DLP sandbox is uninstalled.
 
-After a listener is registered by calling **on()**, you are advised to call **off()** to unregister the listener and release resources when the listener is no longer needed.
+After a listener is registered by calling **on**, you are advised to call **[off](#dlppermissionoffuninstalldlpsandbox)** to unregister the listener and release resources when the listener is no longer needed.
 
 The DLP management application needs to track the creation and destruction status of the sandbox to maintain the sandbox list or release resources.
 
@@ -398,7 +400,7 @@ The DLP management application needs to track the creation and destruction statu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -422,7 +424,7 @@ off(type: 'uninstallDLPSandbox', listener?: Callback&lt;DLPSandboxState&gt;): vo
 
 Unsubscribes from the DLP sandbox uninstall event. After the API is successfully called, the application will no longer receive callback notifications for the DLP sandbox uninstall event.
 
-This API can be called only after a listener is registered using **on()**.
+This API can be called only after a listener is registered using [on](#dlppermissiononuninstalldlpsandbox).
 
 When the DLP management application exits or no longer needs to track sandbox status changes, unregister the listener to release resources.
 
@@ -442,7 +444,7 @@ When the DLP management application exits or no longer needs to track sandbox st
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -462,7 +464,7 @@ dlpPermission.off('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) =
 
 ## DLPFile
 
-Provides APIs for managing DLP files. A **DLPFile** instance indicates a DLP file object. You can use [generateDLPFile](#dlppermissiongeneratedlpfile) or [openDLPFile](#dlppermissionopendlpfile11) to obtain a **DLPFile** instance. The **DLPFile** object represents an opened DLP file handle, which encapsulates all operation APIs for DLP files. After using the object, the system must call the **closeDLPFile** API to release resources to prevent file handle leaks. Authorization is required when the **DLPFile** object is transferred across processes.
+Provides APIs for managing DLP files. A **DLPFile** instance indicates a DLP file object. You can use [generateDLPFile](#dlppermissiongeneratedlpfile) or [openDLPFile](#dlppermissionopendlpfile11) to obtain a **DLPFile** instance. The **DLPFile** object represents an opened DLP file handle, which encapsulates all operation APIs for DLP files. After using the object, the system must call the [closeDLPFile](#closedlpfile) API to release resources to prevent file handle leaks. Authorization is required when the **DLPFile** object is transferred across processes.
 
 ### Properties
 
@@ -480,6 +482,8 @@ addDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
 Adds a link file to the Filesystem in Userspace (FUSE). FUSE allows you to implement custom logic of the file system in user space. The link file is a virtual file in the FUSE, which is used to map to the DLP file. The read and write on the link file will be synchronized to the actual DLP file. This API uses a promise to return the result.
 
+After calling **addDLPLinkFile** to add a link file, the system needs to call [deleteDLPLinkFile](#deletedlplinkfile) to remove the DLP link file.
+
 When a DLP application needs to access a DLP file using a standard file API, it can add a link file as the virtual plaintext file to map the DLP file, and then perform read and write on the link file as it does on a common file.
 
 **System API**: This is a system API.
@@ -492,7 +496,7 @@ When a DLP application needs to access a DLP file using a standard file API, it 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 19100001 is returned.|
+| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -504,7 +508,7 @@ When a DLP application needs to access a DLP file using a standard file API, it 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -536,7 +540,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
 
-  dlpFile?.closeDLPFile(); // Close the DLP object.
+  await dlpFile?.closeDLPFile(); // Close the DLP object.
   if (file) {
     fileIo.closeSync(file);
   }
@@ -551,6 +555,8 @@ addDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): void
 
 Adds a link file to the FUSE. This API uses an asynchronous callback to return the result. After this API is successfully called, a virtual file used to map the DLP file is created in the FUSE.
 
+After calling **addDLPLinkFile** to add a link file, the system needs to call [deleteDLPLinkFile](#deletedlplinkfile) to remove the DLP link file.
+
 This API is called when a DLP application needs to access a DLP file using a standard file API.
 
 **System API**: This is a system API.
@@ -563,14 +569,14 @@ This API is called when a DLP application needs to access a DLP file using a sta
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 401 is thrown.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of adding a link file.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -601,7 +607,7 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   dlpFile.addDLPLinkFile('test.txt.dlp.link', async (err, res) => {
-    if (err !== undefined) {
+    if (err) {
       console.error('addDLPLinkFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -620,7 +626,7 @@ stopFuseLink(): Promise&lt;void&gt;
 
 Stops the read and write on the FUSE. This API uses a promise to return the result. After the API is successfully called, the read and write on the link file are stopped.
 
-After calling **stopFuseLink()** to stop the read and write on the FUSE, the system must call **resumeFuseLink()** to resume the read and write.
+After calling **stopFuseLink** to stop the read and write operations on the FUSE, the system must call [resumeFuseLink](#resumefuselink) to resume the read and write operations.
 
 Before deleting a link file, stop the read and write to ensure secure file operations.
 
@@ -640,7 +646,7 @@ Before deleting a link file, stop the read and write to ensure secure file opera
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -668,10 +674,10 @@ async function ExampleFunction() {
   appId = data.signatureInfo.appId;
 
   file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId) // Open a DLP file.
-  dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  dlpFile.stopFuseLink(); // Stop read/write on the link file.
-  dlpFile?.closeDLPFile(); // Close the DLP object.
+  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+  await dlpFile.stopFuseLink(); // Stop the read and write on the link file.
+  await dlpFile?.closeDLPFile(); // Close the DLP object.
   if (file) {
     fileIo.closeSync(file);
   }
@@ -685,6 +691,8 @@ ExampleFunction();
 stopFuseLink(callback: AsyncCallback&lt;void&gt;): void
 
 Stops the read and write on the FUSE. This API uses an asynchronous callback to return the result. After the API is successfully called, the read and write on the link file are stopped.
+
+After calling **stopFuseLink** to stop the read and write operations on the FUSE, the system must call [resumeFuseLink](#resumefuselink) to resume the read and write operations.
 
 Before deleting a link file, stop the read and write.
 
@@ -704,7 +712,7 @@ Before deleting a link file, stop the read and write.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -736,7 +744,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
   dlpFile.stopFuseLink(async (err, res) => {
-    if (err !== undefined) {
+    if (err) {
       console.error('stopFuseLink error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -755,7 +763,7 @@ resumeFuseLink(): Promise&lt;void&gt;
 
 Resumes the read and write on the FUSE. This API uses a promise to return the result. After the API is successfully called, the read and write on the link file are resumed.
 
-This API can be called to resume read and write only after **stopFuseLink()** is called to stop the read and write operations.
+This API can be called to resume read and write only after [stopFuseLink](#stopfuselink) is called to stop the read and write operations.
 
 After the link file is replaced, the read and write need to be resumed for normal file access.
 
@@ -775,7 +783,7 @@ After the link file is replaced, the read and write need to be resumed for norma
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -808,7 +816,7 @@ async function ExampleFunction() {
   await dlpFile.stopFuseLink(); // Stop the read and write on the link file.
   await dlpFile.resumeFuseLink(); // Resume read/write on the link file.
   
-  dlpFile?.closeDLPFile(); // Close the DLP object.
+  await dlpFile?.closeDLPFile(); // Close the DLP object.
   if (file) {
     fileIo.closeSync(file);
   }
@@ -823,6 +831,8 @@ resumeFuseLink(callback: AsyncCallback&lt;void&gt;): void
 
 Resumes the read and write on the FUSE. This API uses an asynchronous callback to return the result. After the API is successfully called, the read and write on the link file are resumed.
 
+This API can be called to resume read and write only after [stopFuseLink](#stopfuselink) is called to stop the read and write operations.
+
 After the link file is replaced, the read and write need to be resumed.
 
 **System API**: This is a system API.
@@ -835,13 +845,13 @@ After the link file is replaced, the read and write need to be resumed.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of resume the read and write on the FUSE.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of resuming the read and write on the FUSE.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -874,7 +884,7 @@ async function ExampleFunction() {
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
   await dlpFile.stopFuseLink(); // Stop the read and write on the link file.
   dlpFile.resumeFuseLink(async (err, res) => {
-    if (err !== undefined) {
+    if (err) {
       console.error('resumeFuseLink error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -891,7 +901,7 @@ ExampleFunction();
 
 replaceDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
-Replaces a link file. This API uses a promise to return the result. After the API is successfully called, the current link file is replaced with the new link file.
+Replaces a link file. This API uses a promise to return the result. After the API is successfully called, the current link file is replaced with the new link file. Before performing this operation, you need to create a link file and stop the read and write operation on the FUSE.
 
 When you need to access a different DLP file, you can replace the link file to change the file mapping.
 
@@ -905,7 +915,7 @@ When you need to access a different DLP file, you can replace the link file to c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -917,7 +927,7 @@ When you need to access a different DLP file, you can replace the link file to c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -967,7 +977,7 @@ replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): v
 
 Replaces a link file. This API uses an asynchronous callback to return the result. After the API is successfully called, the current link file is replaced with the new link file.
 
-When you need to access a different DLP file, you can replace the link file.
+When you need to access a different DLP file, you can replace the link file. Before performing this operation, you need to create a link file and stop the read and write operation on the FUSE.
 
 **System API**: This is a system API.
 
@@ -979,14 +989,14 @@ When you need to access a different DLP file, you can replace the link file.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 401 is thrown.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of replacing a link file. The callback parameter is **err**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1019,7 +1029,7 @@ async function ExampleFunction() {
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
   await dlpFile.stopFuseLink(); // Stop the read and write on the link file.
   dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link', async (err, res) => { // Replace a link file.
-    if (err !== undefined) {
+    if (err) {
       console.error('replaceDLPLinkFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -1039,6 +1049,8 @@ deleteDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
 Deletes a link file from the FUSE. This API uses a promise to return the result. After the API is successfully called, the specified link file is deleted from the FUSE.
 
+Before calling **deleteDLPLinkFile**, the system must call [addDLPLinkFile](#adddlplinkfile) to add a DLP link file.
+
 This API is used to clear the link file mapping after DLP file access is complete.
 
 **System API**: This is a system API.
@@ -1051,7 +1063,7 @@ This API is used to clear the link file mapping after DLP file access is complet
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -1063,7 +1075,7 @@ This API is used to clear the link file mapping after DLP file access is complet
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1111,6 +1123,8 @@ deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): vo
 
 Deletes a link file from the FUSE. This API uses an asynchronous callback to return the result. After the API is successfully called, the specified link file is deleted from the FUSE.
 
+Before calling **deleteDLPLinkFile**, the system must call [addDLPLinkFile](#adddlplinkfile) to add a DLP link file.
+
 This API is used to clear the link file mapping after DLP file access is complete.
 
 **System API**: This is a system API.
@@ -1123,14 +1137,14 @@ This API is used to clear the link file mapping after DLP file access is complet
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 401 is thrown.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of deleting a link file.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1162,7 +1176,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
   dlpFile.deleteDLPLinkFile('test.txt.dlp.link', async (err, res) => { // Delete a link file.
-    if (err !== undefined) {
+    if (err) {
       console.error('deleteDLPLinkFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -1193,7 +1207,7 @@ This API is used when the file owner decides to disable the DLP protection for a
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | Yes| FD of the target plaintext file.|
+| plaintextFd | number | Yes| FD of the target plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 
 **Return value**
 
@@ -1205,7 +1219,7 @@ This API is used when the file owner decides to disable the DLP protection for a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1241,10 +1255,10 @@ async function ExampleFunction() {
   appId = data.signatureInfo.appId;
 
   file = fileIo.openSync(uri).fd;
-  destFile = fileIo.openSync('destUri').fd;
+  destFile = fileIo.openSync('file://docs/storage/Users/currentUser/Desktop/dest.txt').fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   await dlpFile.recoverDLPFile(destFile); // Recover the plaintext of a DLP file.
-  dlpFile?.closeDLPFile(); // Close the DLP object.
+  await dlpFile?.closeDLPFile(); // Close the DLP object.
   if (file) {
     fileIo.closeSync(file);
   }
@@ -1274,14 +1288,14 @@ This API is used when the file owner decides to disable the DLP protection for a
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | Yes| FD of the target plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
+| plaintextFd | number | Yes| FD of the target plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of recovering the plaintext of a DLP file. The callback parameter is **err**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1320,7 +1334,7 @@ async function ExampleFunction() {
   destFile = fileIo.openSync('destUri').fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   dlpFile.recoverDLPFile(destFile, async (err, res) => { // Recover the plaintext of a DLP file.
-    if (err !== undefined) {
+    if (err) {
       console.error('recoverDLPFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -1340,7 +1354,7 @@ closeDLPFile(): Promise&lt;void&gt;
 
 Closes a **DLPFile** object. This API uses a promise to return the result.
 
-After calling **openDLPFile()** to return a **DLPFile** object, the system must call **closeDLPFile()** to release resources after using the object.
+After calling [openDLPFile](#dlppermissionopendlpfile11) to return a **DLPFile** object, the system must call **closeDLPFile()** to release resources after using the object.
 
 This API is used when the file owner decides to close a DLP file.
 
@@ -1364,7 +1378,7 @@ This API is used when the file owner decides to close a DLP file.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1394,7 +1408,7 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
 
-  dlpFile?.closeDLPFile(); // Close the DLP object.
+  await dlpFile?.closeDLPFile(); // Close the DLP object.
   if (file) {
     fileIo.closeSync(file);
   }
@@ -1433,7 +1447,7 @@ This API is used when the file owner decides to close a DLP file.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1464,7 +1478,7 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   dlpFile.closeDLPFile((err, res) => {// Close the DLP file.
-    if (err !== undefined) {
+    if (err) {
       console.error('closeDLPFile error,', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
@@ -1494,8 +1508,8 @@ After calling **generateDLPFile** to return a **DLPFile** object, the system mus
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | Yes| FD of the plaintext file to be encrypted. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
-| ciphertextFd | number | Yes| FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
+| plaintextFd | number | Yes| FD of the plaintext file to be encrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| ciphertextFd | number | Yes| FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 | property | [DLPProperty](js-apis-dlppermission.md#dlpproperty21) | Yes| Authorization information, which includes the authorized user list, owner account, and contact account information.|
 
 **Return value**
@@ -1508,7 +1522,7 @@ After calling **generateDLPFile** to return a **DLPFile** object, the system mus
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1547,7 +1561,7 @@ async function ExampleFunction() {
   };
   dlpFile = await dlpPermission.generateDLPFile(file, dlp, dlpProperty); // Generate a DLP file.
 
-  dlpFile?.closeDLPFile(); // Close the DLP object.
+  await dlpFile?.closeDLPFile(); // Close the DLP object.
   if (file) {
     fileIo.closeSync(file);
   }
@@ -1577,8 +1591,8 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | Yes| FD of the plaintext file to be encrypted. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
-| ciphertextFd | number | Yes| FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
+| plaintextFd | number | Yes| FD of the plaintext file to be encrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| ciphertextFd | number | Yes| FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 | property | [DLPProperty](js-apis-dlppermission.md#dlpproperty21) | Yes| Authorization information, which includes the authorized user list, owner account, and contact account information.|
 | callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | Yes|Callback used to return the result. If the DLP file is generated successfully, **err** is **undefined** and **data** is the DLP file information obtained; otherwise, **err** is an error object.|
 
@@ -1586,7 +1600,7 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1622,7 +1636,7 @@ let dlpProperty: dlpPermission.DLPProperty = {
   everyoneAccessList: []
 };
 dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // Generate a DLP file.
-  if (err !== undefined) {
+  if (err) {
     console.error('generateDLPFile error,', err.code, err.message);
   } else {
     console.info('res', JSON.stringify(res));
@@ -1638,7 +1652,7 @@ openDLPFile(ciphertextFd: number, appId: string): Promise&lt;DLPFile&gt;
 
 Opens a DLP file. After the API is successfully called, the **DLPFile** object is returned, which can be used to manage the permissions on the DLP file and perform related operations. This API uses a promise to return the result.
 
-After calling **openDLPFile()** to return a **DLPFile** object, the system must call **closeDLPFile** to release resources after using the object.
+After calling **openDLPFile()** to return a **DLPFile** object, the system must call [closeDLPFile](#closedlpfile) to release resources after using the object.
 
 When a DLP management application or an authorized application needs to access a DLP file, it must first open the file to obtain the managed object.
 
@@ -1652,8 +1666,8 @@ When a DLP management application or an authorized application needs to access a
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| ciphertextFd | number | Yes| FD of the encrypted file.|
-| appId | string | Yes| ID of the caller. The value contains 8 to 1024 bytes.|
+| ciphertextFd | number | Yes| FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| appId | string | Yes| ID of the caller. The value contains 8 to 1024 bytes. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -1665,7 +1679,7 @@ When a DLP management application or an authorized application needs to access a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1703,6 +1717,7 @@ async function ExampleFunction() {
 
   file = fileIo.openSync(uri).fd; // The FD is obtained by opening a file.
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+  await dlpFile?.closeDLPFile(); // Close the DLP object.
 
   if (file) {
     fileIo.closeSync(file);
@@ -1728,15 +1743,15 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| ciphertextFd | number | Yes| FD of the encrypted file.|
-| appId | string | Yes| ID of the caller. The value contains 8 to 1024 bytes. If the value is out of range, error code 19100001 is returned.|
+| ciphertextFd | number | Yes| FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| appId | string | Yes| ID of the caller. The value contains 8 to 1024 bytes. If the value is out of range, error code 401 is thrown.|
 | callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | Yes| Callback used to receive the result of opening a DLP file. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object. **res** is a **DLPFile** object that represents the DLP file opened.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1771,12 +1786,13 @@ let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
 appId = data.signatureInfo.appId; // The app ID is obtained from the application package.
 
 file = fileIo.openSync(uri).fd; // The FD is obtained by opening a file.
-dlpPermission.openDLPFile(file, appId, (err, res) => { // Open a DLP file.
-  if (err !== undefined) {
+dlpPermission.openDLPFile(file, appId, async (err, res) => { // Open a DLP file.
+  if (err) {
     console.error('openDLPFile error,', err.code, err.message);
   } else {
     console.info('res', JSON.stringify(res));
   }
+  await res?.closeDLPFile(); // Close the DLP object.
   if (file) {
     fileIo.closeSync(file);
   }
@@ -1807,8 +1823,8 @@ Represents the DLP sandbox state information.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| bundleName | string | No| No| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
-| appIndex | number | No| No| Index of the DLP sandbox application. The value range is [1000, 1100]. If the value is out of range, error code 19100001 is thrown.|
+| bundleName | string | No| No| Bundle name of the application.|
+| appIndex | number | No| No| Index of the DLP sandbox application. The value range is [1000, 1100]. If the value is out of range, an error log is generated.|
 
 ## GatheringPolicyType
 
@@ -1822,5 +1838,5 @@ Enumerates the DLP sandbox gathering policy types. **GATHERING** allows the DLP 
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| GATHERING | 1 | Allows the DLP files of the same permission type to be opened in a sandbox. For example, the files of the same permission type can be opened in tab pages of a window.|
+| GATHERING | 1 | Allows the DLP files of the same permission type to be opened in a sandbox.|
 | NON_GATHERING | 2 | Allows the DLP files of different permission types to be opened in different sandboxes.|

@@ -89,7 +89,7 @@ Since API version 19, the custom dialog box provides lifecycle callbacks to noti
    ```
    
    
-   ![en-us_image_0000001562700493](figures/en-us_image_0000001562700493.png)
+   ![custom-dialog-create](figures/custom-dialog-create.png)
 
 ## Implementing Dialog Box Interaction
 
@@ -169,7 +169,7 @@ Custom dialog boxes support data interactions to complete various operations.
    }
    ```
 
-   ![en-us_image_0000001511421320](figures/en-us_image_0000001511421320.png)
+   ![custom-dialog-interaction](figures/custom-dialog-interaction.png)
 
 
 3. Use dialog box buttons to implement navigation and obtain parameters from the target page.

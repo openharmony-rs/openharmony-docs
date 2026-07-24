@@ -581,11 +581,10 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
-import { ElementName } from './bundleManager/ElementName'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-let element: ElementName;
+let element: bundleManager.ElementName;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, param: AbilityConstant.LaunchParam) {
@@ -668,7 +667,7 @@ Unsubscribes from events indicating receiving of APDUs from the peer card reader
 | Name  | Type                   | Mandatory| Description                                        |
 | -------- | ----------------------- | ---- | -------------------------------------------- |
 | type     | string                  | Yes  | Event type. It has a fixed value of **hceCmd**.                        |
-| callback | AsyncCallback\<number[]> | No  | Event callback. Each number is represented in hexadecimal notation, with values ranging from 0x00 to 0xFF.|
+| callback | AsyncCallback\<number[]> | No  | Event callback. Each number is represented in hexadecimal notation, with values ranging from 0x00 to 0xFF. If this parameter is not set, this API unregisters the callback for the specified **type**.|
 
 **Error codes**
 
@@ -685,11 +684,10 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
-import { ElementName } from './bundleManager/ElementName'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-let element: ElementName;
+let element: bundleManager.ElementName;
 const apduCallback: AsyncCallback<number[]> = (err, data) => {
   // Implement data processing and handle exceptions.
   console.info("AsyncCallback got apdu data");

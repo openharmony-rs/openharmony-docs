@@ -23,7 +23,7 @@
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | ------------------- | ---- | ---- | ------------------------------------------------------------ |
-| moduleName    | string            | 否   | 否   | 模块名称。                               |
-| abilityName   | string            | 否   | 否   | Ability名称。    |
+| moduleName    | string            | 否   | 否   | 模块名称，用于指定自动填充数据所属的模块。          |
+| abilityName   | string            | 否   | 否   | Ability名称，用于指定自动填充数据所属的Ability。    |
 | isUserSelected<sup>12+</sup> | boolean | 否   | 否   | 表示填充内容是否由用户选择。true为用户选择，false为非用户选择。 |
 | isOtherAccount<sup>12+</sup> | boolean | 否   | 否   | 表示是否拉起密码箱中其他账号信息供用户选择。true为拉起其他账号信息，false为不拉起其他账号信息。 |

@@ -467,13 +467,13 @@ SetResizeByDragEnabled: This is not main window or decor enabled sub window
 关键信息：
 - 错误码：1300002（窗口状态异常）
 - 错误信息：This is not main window or decor enabled sub window
-- 原因：子窗口未启用装饰栏，不支持拖拽缩放
+- 原因：子窗口未启用标题栏，不支持拖拽缩放
 
 **分析定位及解决**
 
 检查创建子窗口时是否在SubWindowOptions中将`decorEnabled`设置为`true`。
 
-对于调用该接口的子窗口，要保证子窗口已开启窗口装饰栏。
+对于调用该接口的子窗口，要保证子窗口已开启窗口标题栏。
 
 **正反案例**
 
@@ -482,7 +482,7 @@ SetResizeByDragEnabled: This is not main window or decor enabled sub window
 ```ts
 windowStage.createSubWindowWithOptions('mySubWindow', {
   title: "",
-  decorEnabled: false,    // 错误：未开启装饰栏
+  decorEnabled: false,    // 错误：未开启标题栏
   isModal: false,
   maximizeSupported: true
 });
@@ -493,7 +493,7 @@ windowStage.createSubWindowWithOptions('mySubWindow', {
 ```ts
 let options: window.SubWindowOptions = {
   title: "",
-  decorEnabled: true,   // 开启窗口装饰栏
+  decorEnabled: true,   // 开启窗口标题栏
   isModal: false,
   maximizeSupported: true
 };
@@ -564,7 +564,7 @@ if (currWindow) {
 }
 ```
 
-### 销毁未完成导致createSubWindow创建同名子窗失败
+### 销毁未完成导致createSubWindow创建同名子窗口失败
 
 开发者在[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)创建窗口对象后，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)，在窗口还未销毁的情况下，再次调用[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)，且使用相同名称，导致窗口创建失败，报错1300002。
 
@@ -689,7 +689,7 @@ onPageHide() {
 错误码1300004表示无权限操作，常见于窗口类型与接口不匹配场景。
 
 
-### 子窗调用restore失败
+### 子窗口调用restore失败
 
 开发者对子窗口调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口，导致操作失败，报错1300004。
 

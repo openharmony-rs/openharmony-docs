@@ -89,7 +89,7 @@ text {
 ```
 
 
-![zh-cn_image_0000001217168141](figures/zh-cn_image_0000001217168141.gif)
+![animation3](figures/animation3.gif)
 
 
 > **说明：** 

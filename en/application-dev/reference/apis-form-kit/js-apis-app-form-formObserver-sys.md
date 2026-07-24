@@ -563,7 +563,7 @@ Obtains the information about all non-temporary widgets running on the device. T
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -614,7 +614,7 @@ Obtains the information about all non-temporary widgets running on the device. T
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -669,7 +669,7 @@ Obtains the information about all non-temporary widgets running on the device. T
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -721,7 +721,7 @@ Obtains the information about all non-temporary widgets running on the device. T
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -774,7 +774,7 @@ Obtains the information about widgets based on the widget provider. This API use
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -830,7 +830,7 @@ Obtains the information about widgets based on the widget provider. This API use
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -895,7 +895,7 @@ Obtains the information about the widget based on the widget ID. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -951,7 +951,7 @@ Obtains the information about the widget based on the widget ID. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1001,7 +1001,7 @@ Obtains the information about the widget based on the widget ID. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1054,7 +1054,7 @@ Obtains the information about the widget based on the widget ID. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |

@@ -48,7 +48,7 @@ Provides a collection of native-side custom dialog box APIs provided by ArkUI.
 | [int32_t (\*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)](#setcustomshadow) | Sets the shadow of the custom dialog box's backdrop.|
 | [int32_t (\*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)](#setbackgroundblurstyle) | Sets the backdrop blur style of the custom dialog box.|
 | [int32_t (\*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)](#setkeyboardavoidmode) | Sets the keyboard avoidance mode of the custom dialog box.|
-| [int32_t (\*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)](#enablehovermode) | Sets whether the custom dialog box responds when the device is in semi-folded mode.|
+| [int32_t (\*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)](#enablehovermode) | Sets whether the custom dialog box responds when the device is in hover mode.|
 | [int32_t (\*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)](#sethovermodearea) | Sets the default display area of the custom dialog box in hover mode.|
 | [int32_t (\*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)](#setfocusable) | Sets whether the custom dialog box can gain focus.|
 | [int32_t (\*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)](#setbackgroundblurstyleoptions) | Sets the background blur effect of the custom dialog box.|
@@ -84,7 +84,7 @@ Sets the display order of the custom dialog box.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### registerOnWillAppear()
 
@@ -115,7 +115,7 @@ Registers a callback function that is triggered before the custom dialog box app
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### registerOnDidAppear()
 
@@ -146,7 +146,7 @@ Registers a callback function that is triggered after the custom dialog box appe
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### registerOnWillDisappear()
 
@@ -177,7 +177,7 @@ Registers a callback function that is triggered before the custom dialog box dis
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### registerOnDidDisappear()
 
@@ -208,7 +208,7 @@ Registers a callback function that is triggered after the custom dialog box disa
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setBorderWidth()
 
@@ -242,7 +242,7 @@ Sets the border width of the custom dialog box.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setBorderColor()
 
@@ -275,7 +275,7 @@ Sets the border color of the custom dialog box.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setBorderStyle()
 
@@ -308,7 +308,7 @@ Sets the border style of the custom dialog box.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setWidth()
 
@@ -339,7 +339,7 @@ Sets the backdrop width of the custom dialog box.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setHeight()
 
@@ -370,7 +370,7 @@ Sets the backdrop height of the custom dialog box.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setShadow()
 
@@ -394,13 +394,13 @@ Sets the shadow of the custom dialog box's backdrop.
 | Name                                                                               | Description|
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-| [ArkUI_ShadowStyle](capi-native-type-h.md#arkui_shadowstyle) shadow                | Backdrop shadow style, specified by an enumerated value.|
+| [ArkUI_ShadowStyle](capi-native-type-visual-h.md#arkui_shadowstyle) shadow                | Backdrop shadow style, specified by an enumerated value.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setCustomShadow()
 
@@ -430,7 +430,7 @@ Sets the shadow of the custom dialog box's backdrop.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setBackgroundBlurStyle()
 
@@ -454,13 +454,13 @@ Sets the backdrop blur style of the custom dialog box.
 | Name                                                                               | Description|
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-| [ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle) blurStyle                 | Backdrop blur material, specified by an enumerated value.|
+| [ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle) blurStyle                 | Backdrop blur material, specified by an enumerated value.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setKeyboardAvoidMode()
 
@@ -490,7 +490,7 @@ Sets the keyboard avoidance mode of the custom dialog box.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### enableHoverMode()
 
@@ -501,7 +501,7 @@ int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode
 **Description**
 
 
-Sets whether the custom dialog box responds when the device is in semi-folded mode.
+Sets whether the custom dialog box responds when the device is in hover mode.
 
 > **NOTE**
 >
@@ -514,13 +514,13 @@ Sets whether the custom dialog box responds when the device is in semi-folded mo
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  bool enableHoverMode | Whether to respond when the device is in semi-folded mode. The default value is **false**. The value **true** means to respond when the device is in semi-folded mode, and **false** means the opposite.|
+|  bool enableHoverMode | Whether to respond when the device is in hover mode. The default value is **false**. The value **true** means to respond when the device is in hover mode, and **false** means the opposite.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setHoverModeArea()
 
@@ -550,7 +550,7 @@ Sets the default display area of the custom dialog box in hover mode.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setFocusable()
 
@@ -580,7 +580,7 @@ Sets whether the custom dialog box can gain focus.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setBackgroundBlurStyleOptions()
 
@@ -604,13 +604,13 @@ Sets the background blur effect of the custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | Options for customizing the background blur effect. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].i32: color mode, specified by an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).<br>        .value[1]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[2]?.f32: blur degree. The value range is [0.0, 1.0]. If the value is out of the valid range, the boundary value is used.<br>        .value[3]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[4]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[5]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy).<br>        .value[6]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
+|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | Options for customizing the background blur effect. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].i32: color mode, specified by an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).<br>        .value[1]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[2]?.f32: blur degree. The value range is [0.0, 1.0]. If the value is out of the valid range, the boundary value is used.<br>        .value[3]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[4]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[5]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy).<br>        .value[6]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### setBackgroundEffect()
 
@@ -634,10 +634,10 @@ Sets the background effect parameters of the custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | Background effect parameters. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].f32: blur radius, in vp.<br>        .value[1]?.f32: saturation.<br>        .value[2]?.f32: brightness.<br>        .value[3]?.u32: color, in 0xARGB format.<br>        .value[4]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[5]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[6]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[7]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy).<br>        .value[8]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
+|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | Background effect parameters. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].f32: blur radius, in vp.<br>        .value[1]?.f32: saturation.<br>        .value[2]?.f32: brightness.<br>        .value[3]?.u32: color, in 0xARGB format.<br>        .value[4]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[5]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[6]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[7]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy).<br>        .value[8]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|

@@ -9,7 +9,7 @@
 
 AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，继承自ExtensionContext。
 
-辅助功能扩展上下文模块提供辅助功能扩展的上下文环境的能力，包括允许配置辅助应用关注信息类型、查询节点信息、手势注入等。
+辅助功能扩展上下文模块提供辅助功能扩展的相关能力，包括配置关注信息类型、查询节点信息、手势注入等。
 
 > **说明：**
 >
@@ -17,7 +17,7 @@ AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，�
 
 ## 使用说明
 
-在使用AccessibilityExtensionContext的功能前，需要通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContext的实例。
+使用AccessibilityExtensionContext功能前，通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContext实例。
 
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
@@ -33,32 +33,32 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 节点元素具备的属性名称及属性值类型信息。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
 | 名称                   | 类型                                                              | 只读 | 可选 | 说明              |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| accessibilityFocused | boolean                                                            | 否   | 否   | 表示元素是否处于无障碍焦点状态。true表示元素当前处于无障碍焦点状态，false表示元素当前不处于无障碍焦点状态，默认值为false。|
+| accessibilityFocused | boolean                                                            | 否   | 否   | 表示元素是否处于无障碍焦点状态。true表示元素处于无障碍焦点状态，false表示元素不处于无障碍焦点状态，默认值为false。|
 | accessibilityText<sup>12+</sup> | string                                                  | 否   | 否   | 元素的无障碍文本信息。 |
 | bundleName           | string                                                             | 否   | 否   | 应用包名。 |
-| checkable            | boolean                                                            | 否   | 否   | 表示元素是否支持点击操作。true表示元素支持点击操作，false表示元素不支持点击操作，默认值为false。 |
-| checked              | boolean                                                            | 否   | 否   | 表示元素当前的可点击状态。true表示元素当前是可点击的，false表示元素当前是不可点击的，默认值为false。 |
+| checkable            | boolean                                                            | 否   | 否   | 表示元素是否可勾选。true表示元素可勾选，false表示元素不可勾选，默认值为false。 |
+| checked              | boolean                                                            | 否   | 否   | 表示元素的勾选状态。true表示元素已勾选，false表示元素未勾选，默认值为false。 |
 | children             | Array&lt;[AccessibilityElement](#accessibilityelement)&gt;        | 否   | 否   | 所有子元素。 |
 | clickable            | boolean                                                            | 否   | 否   | 表示元素是否可点击。true表示元素可点击，false表示元素不可点击，默认值为false。|
 | componentId          | number                                                             | 否   | 否   | 元素所属的组件ID。默认值为-1。|
-| componentType        | string                                                             | 否   | 否   | 应与元素所属的组件类型所对应，如：按钮Button类型->'Button'、图像Image类型->'Image'。 |
+| componentType        | string                                                             | 否   | 否   | 表示元素所属的组件类型，如：按钮Button类型对应'Button'、图像Image类型对应'Image'。 |
 | contents             | Array&lt;string&gt;                                                | 否   | 否   | 内容列表。根据实际场景设置，无特殊限制。 |
-| currentIndex         | number                                                             | 否   | 否   | 当前项的索引。默认值为0。|
+| currentIndex         | number                                                             | 否   | 否   | 当前项的索引，取值范围大于等于0。默认值为0。|
 | description          | string                                                             | 否   | 否   | 元素的描述信息。根据实际场景设置，无特殊限制。 |
 | editable             | boolean                                                            | 否   | 否   | 表示元素是否可编辑。true表示元素可编辑，false表示元素不可编辑，默认值为false。 |
-| endIndex             | number                                                             | 否   | 否   | 屏幕最后显示项的列表索引。默认值为0。 |
+| endIndex             | number                                                             | 否   | 否   | 屏幕最后显示项的列表索引，取值范围大于等于0。默认值为0。 |
 | error                | string                                                             | 否   | 否   | 错误状态字符串。 |
 | focusable            | boolean                                                            | 否   | 否   | 表示元素是否可聚焦。true表示元素可聚焦，false表示元素不可聚焦，默认值为false。 |
 | hintText             | string                                                             | 否   | 否   | 提示文本。 |
-| inputType            | number                                                             | 否   | 否   | 输入文本的类型。默认值为0。 |
+| inputType            | number                                                             | 否   | 否   | 输入文本的类型，不同数值对应不同的输入模式：0表示无特定类型；1表示文本；2表示邮箱；3表示日期；4表示时间；5表示数字；6表示密码；7表示电话号码；8表示用户名；9表示新密码。默认值为0。 |
 | inspectorKey         | string                                                             | 否   | 否   | 表示元素的别名。 |
 | isActive             | boolean                                                            | 否   | 否   | 表示元素是否处于活动状态。true表示元素处于活动状态，false表示元素不处于活动状态，默认值为true。 |
 | isEnable             | boolean                                                            | 否   | 否   | 表示元素是否启用。true表示元素已启用，false表示元素未启用，默认值为false。 |
@@ -66,22 +66,22 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | isFocused            | boolean                                                            | 否   | 否   | 表示元素是否聚焦。true表示元素处于聚焦状态，false表示元素不处于聚焦状态，默认值为false。 |
 | isPassword           | boolean                                                            | 否   | 否   | 表示元素是否为密码。true表示元素为密码，false表示元素不为密码，默认值为false。 |
 | isVisible            | boolean                                                            | 否   | 否   | 表示元素是否可见。true表示元素可见，false表示元素不可见，默认值为false。 |
-| itemCount            | number                                                             | 否   | 否   | 项目的总数。默认值为0。 |
-| lastContent          | string                                                             | 否   | 否   | 最后的内容。 |
-| layer                | number                                                             | 否   | 否   | 该元素的显示层。 |
-| longClickable        | boolean                                                            | 否   | 否   | 表示元素是否可长单击。true表示元素可长单击，false表示元素不可长单击，默认值为false。 |
-| pageId               | number                                                             | 否   | 否   | 页码id。默认值为-1。 |
+| itemCount            | number                                                             | 否   | 否   | 项目的总数，取值范围大于等于0。默认值为0。 |
+| lastContent          | string                                                             | 否   | 否   | 列表或滚动控件中最后一项的内容。 |
+| layer                | number                                                             | 否   | 否   | 该元素的显示层，取值范围大于等于0。默认值为0。 |
+| longClickable        | boolean                                                            | 否   | 否   | 表示元素是否可长按。true表示元素可长按，false表示元素不可长按，默认值为false。 |
+| pageId               | number                                                             | 否   | 否   | 页码ID。默认值为-1。 |
 | parent               | [AccessibilityElement](#accessibilityelement)                     | 否   | 否   | 元素的父元素。 |
 | pluralLineSupported  | boolean                                                            | 否   | 否   | 表示元素是否支持多行文本。true表示元素支持多行文本，false表示元素不支持多行文本，默认值为false。|
-| rect                 | [Rect](#rect)                                                      | 否   | 否   | 元素的面积。 |
+| rect                 | [Rect](#rect)                                                      | 否   | 否   | 元素的矩形区域，包含位置和尺寸信息。 |
 | resourceName         | string                                                             | 否   | 否   | 元素的资源名称。 |
-| rootElement          | [AccessibilityElement](#accessibilityelement)                     | 否   | 否   | 窗口元素的根元素。 |
+| rootElement          | [AccessibilityElement](#accessibilityelement)                     | 否   | 否   | 窗口元素的根节点元素。 |
 | screenRect           | [Rect](#rect)                                                      | 否   | 否   | 元素的显示区域。 |
-| scrollable           | boolean                                                            | 否   | 否   | 表示元素是否可滚动。true表示元素可滚动，false表示元素不可滚动，默认值为false。 |
+| scrollable           | boolean                                                            | 否   | 否   | 表示元素是否可滚动。true表示元素可滚动，false表示元素不可滚动，默认值为false。在无障碍模式下，当accessibilityScrollable与scrollable取值冲突时，以accessibilityScrollable属性值为准。 |
 | selected             | boolean                                                            | 否   | 否   | 表示元素是否被选中。true表示元素被选中，false表示元素未被选中，默认值为false。 |
-| startIndex           | number                                                             | 否   | 否   | 在屏幕上的第一个项目的列表索引。默认值为0。 |
+| startIndex           | number                                                             | 否   | 否   | 在屏幕上的第一个项目的列表索引，取值范围大于等于0。默认值为0。 |
 | text                 | string                                                             | 否   | 否   | 元素的文本。 |
-| textLengthLimit      | number                                                             | 否   | 否   | 元素文本的最大长度限制。 |
+| textLengthLimit      | number                                                             | 否   | 否   | 元素文本的最大长度限制，取值范围大于等于0。默认值为0。 |
 | textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 否   | 否   | 文本被读取时的移动粒度。 |
 | triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | 否   | 否   | 触发元素事件的动作。 |
 | type                 | [WindowType](#windowtype)                                          | 否   | 否   | 元素的窗口类型。 |
@@ -92,11 +92,11 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | textType<sup>12+</sup>             | string                                                             | 否   | 否   | 元素的无障碍文本类型，由组件accessibilityTextHint属性配置。 |
 | offset<sup>12+</sup>             | number              | 否   | 否   | 对于可滚动类控件，如List、Grid，内容区相对控件的顶部坐标滚动的像素偏移量，单位为像素（px）。默认值为0。 |
 | hotArea<sup>12+</sup>             | [Rect](#rect)                                                              | 否   | 否   | 元素的可触摸区域。 |
-| customComponentType<sup>18+</sup>             | string                                                             | 否   | 是   | 自定义组件类型。与元素的[AccessibilityRoleType](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明)类型所对应。|
-| accessibilityNextFocusId<sup>18+</sup>             | number                | 否   | 是   | 下一个要聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElementInfo对象中可获取到用户在控件上设置的该属性值。默认值为-1。 |
-| accessibilityPreviousFocusId<sup>18+</sup>             | number                | 否   | 是   | 上一个聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElementInfo对象中可获取到用户在控件上设置的该属性值。默认值为-1。 |
-| extraInfo<sup>18+</sup>             | string     | 否  | 是   | 扩展属性，用于定义一些特定组件的属性，包含：<br>- CheckboxGroupSelectedStatus：表示CheckboxGroup组件的选中状态，其中取值0表示已选中，取值1表示部分选中，取值2表示未选中。<br>- Row：Grid组件中聚焦item的行信息，表示该item在第几行。<br>- Column：Grid组件中聚焦的item的列，表示该item在第几列。<br>- ListItemIndex：List组件中聚焦item的行信息，表示当前该item在第几行。<br>- SideBarContainerStates：表示可展开类组件（SideBarContainer、Select）的展开状态，其中取值0表示收起态，取值1表示展开态。<br>- ToggleType：表示Toggle组件的具体类型，其中取值0表示Checkbox，取值1表示Switch，取值2表示Button。<br>- BindSheet：表示BindSheet组件的状态，其中取值0表示状态高，取值1表示状态中，取值2表示状态低。<br>- hasRegisteredHover：表示组件是否注册了onAccessibilityHover事件回调，取值为1表示组件注册了事件回调，若未注册不会使用该字段。<br>- direction：表示list组件的布局方向，其中取值"vertical"表示竖向，取值"horizontal"表示横向。<br>- expandedState：表示list组件中listItem的展开状态，其中取值"expanded"表示展开态，取值"collapsed"表示收起态。<br>- componentTypeDescription：组件类型详细信息，对componentType的补充描述。|
-| accessibilityScrollable<sup>18+</sup>             | boolean                 | 否   | 是   | 表示无障碍模式下元素是否滚动，优先级高于scrollable。其中，true表示可滚动，false表示不可滚动，默认值为true。|
+| customComponentType<sup>18+</sup>             | string                                                             | 否   | 是   | 自定义组件类型。与元素的[AccessibilityRoleType](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明)类型对应。默认值为空。|
+| accessibilityNextFocusId<sup>18+</sup>             | number                | 否   | 是   | 下一个要聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElement对象中可获取到用户在控件上设置的该属性值。默认值为-1。 |
+| accessibilityPreviousFocusId<sup>18+</sup>             | number                | 否   | 是   | 上一个聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElement对象中可获取到用户在控件上设置的该属性值。默认值为-1。 |
+| extraInfo<sup>18+</sup>             | string     | 否  | 是   | 默认值为空。扩展属性，用于定义一些特定组件的属性，包含：<br>- CheckboxGroupSelectedStatus：表示CheckboxGroup组件的选中状态，其中取值0表示已选中，取值1表示部分选中，取值2表示未选中。<br>- Row：Grid组件中聚焦item的行信息，表示该item在第几行。<br>- Column：Grid组件中聚焦的item的列，表示该item在第几列。<br>- ListItemIndex：List组件中聚焦item的行信息，表示当前该item在第几行。<br>- SideBarContainerStates：表示可展开类组件（SideBarContainer、Select）的展开状态，其中取值0表示收起态，取值1表示展开态。<br>- ToggleType：表示Toggle组件的具体类型，其中取值0表示Checkbox，取值1表示Switch，取值2表示Button。<br>- BindSheet：表示BindSheet半模态弹窗组件的展示高度状态，其中取值0表示大高度展示态，取值1表示中高度展示态，取值2表示小高度展示态。<br>- hasRegisteredHover：表示组件是否注册了onAccessibilityHover事件回调，取值为1表示组件注册了事件回调，若未注册不会使用该字段。<br>- direction：表示List组件的布局方向，其中取值"vertical"表示竖向，取值"horizontal"表示横向。<br>- expandedState：表示List组件中ListItem的展开状态，其中取值"expanded"表示展开态，取值"collapsed"表示收起态。<br>- componentTypeDescription：组件类型详细信息，对componentType的补充描述。|
+| accessibilityScrollable<sup>18+</sup>             | boolean                 | 否   | 是   | 表示无障碍模式下元素是否可滚动，优先级高于scrollable，即以accessibilityScrollable属性值为准。其中，true表示可滚动，false表示不可滚动，默认值为true。|
 
 ## FocusDirection
 
@@ -104,7 +104,7 @@ type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'
 
 表示查询下一焦点元素的方向。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型       | 说明      |
 | -------- | ------- |
@@ -121,7 +121,7 @@ type FocusType = 'accessibility' | 'normal'
 
 表示查询焦点元素的类型。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型            | 说明          |
 | ------------- | ----------- |
@@ -132,7 +132,7 @@ type FocusType = 'accessibility' | 'normal'
 
 表示矩形区域。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称     | 类型     | 只读   | 可选   | 说明        |
 | ------ | ------ | ---- | ---- | --------- |
@@ -147,30 +147,34 @@ type WindowType = 'application' | 'system'
 
 表示窗口的类型。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型          | 说明        |
 | ----------- | --------- |
 | 'application' | 表示应用窗口类型。 |
 | 'system'      | 表示系统窗口类型。 |
 
-## AccessibilityExtensionContext.setTargetBundleName<sup>(deprecated)</sup>
+## AccessibilityExtensionContext
+
+辅助功能扩展的上下文环境。通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContext实例。
+
+### setTargetBundleName<sup>(deprecated)</sup>
 
 setTargetBundleName(targetNames: Array\<string>): Promise\<void>
 
-设置关注的目标包名。使用Promise异步回调。
+设置关注应用的包名。使用Promise异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名         | 类型                  | 必填   | 说明       |
 | ----------- | ------------------- | ---- | -------- |
-| targetNames | Array&lt;string&gt; | 是    | 设置关注应用的包名，服务接收关注应用的无障碍事件，默认接收所有应用的无障碍事件，取消关注应用则传空数组。 |
+| targetNames | Array&lt;string&gt; | 是    | 设置关注应用的包名。设置后，服务仅接收关注应用的无障碍事件；未设置时默认接收所有应用的无障碍事件；取消关注应用时传空数组。 |
 
 **返回值：**
 
@@ -192,31 +196,32 @@ setTargetBundleName(targetNames: Array\<string>): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let targetNames = ['com.ohos.xyz'];
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.setTargetBundleName(targetNames).then(() => {
   console.info(`succeeded in setting target bundle names, targetNames is ${targetNames}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to set target bundle names, Code is ${err.code}, message is ${err.message}`);
-})
+  console.error(`Failed to set target bundle names. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
-## AccessibilityExtensionContext.setTargetBundleName<sup>(deprecated)</sup>
+### setTargetBundleName<sup>(deprecated)</sup>
 
 setTargetBundleName(targetNames: Array\<string>, callback: AsyncCallback\<void>): void
 
-设置关注的目标包名。使用callback异步回调。
+设置关注应用的包名。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名         | 类型                        | 必填   | 说明                                       |
 | ----------- | ------------------------- | ---- | ---------------------------------------- |
-| targetNames | Array&lt;string&gt;       | 是    | 设置关注应用的包名，服务接收关注应用的无障碍事件，默认接收所有应用的无障碍事件，取消关注应用则传空数组。                                 |
-| callback    | AsyncCallback&lt;void&gt; | 是    | 回调函数，如果设置关注的目标包名失败，则AsyncCallback中err有数据返回。 |
+| targetNames | Array&lt;string&gt;       | 是    | 设置关注应用的包名。设置后，服务仅接收关注应用的无障碍事件；未设置时默认接收所有应用的无障碍事件；取消关注应用时传空数组。                                 |
+| callback    | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置关注的目标包名成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -233,19 +238,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let targetNames = ['com.ohos.xyz'];
 try {
+  // axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
   axContext.setTargetBundleName(targetNames, (err: BusinessError) => {
-    if (err && err.code) {
-      console.error(`failed to set target bundle names, Code is ${err.code}, message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to set target bundle names. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info(`succeeded in setting target bundle names, targetNames is ${targetNames}`);
   });
 } catch (error) {
-  console.error(`failed to set target bundle names, Because ${JSON.stringify(error)}`);
+  console.error(`Failed to set target bundle names. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
-## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
+### getFocusElement<sup>(deprecated)</sup>
 
 getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>
 
@@ -253,17 +259,18 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名                  | 类型      | 必填   | 说明                  |
 | -------------------- | ------- | ---- | ------------------- |
-| isAccessibilityFocus | boolean | 否    | 获取的是否是无障碍焦点元素，true表示是，false表示否，默认为否。 |
+| isAccessibilityFocus | boolean | 否    | 获取的是否是无障碍焦点元素，true表示是无障碍焦点元素，false表示不是无障碍焦点元素，默认值为false。 |
 
 **返回值：**
+
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
 | Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise对象，返回当前对应的焦点元素。 |
@@ -285,15 +292,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let rootElement: AccessibilityElement;
 
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.getFocusElement().then((data: AccessibilityElement) => {
   rootElement = data;
   console.info(`succeeded in getting focus element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to get focus element, Code is ${err.code}, message is ${err.message}`);
-})
+  console.error(`Failed to get focus element. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
-## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
+### getFocusElement<sup>(deprecated)</sup>
 
 getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void
 
@@ -301,15 +309,15 @@ getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数。当获取焦点元素成功，err为undefined，data为当前对应的焦点元素；否则为错误对象。 |
 
 **错误码：**
 
@@ -328,9 +336,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let rootElement: AccessibilityElement;
 
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
-  if (err && err.code) {
-    console.error(`failed to get focus element, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to get focus element. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   rootElement = data;
@@ -338,7 +347,7 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
 });
 ```
 
-## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
+### getFocusElement<sup>(deprecated)</sup>
 
 getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<AccessibilityElement>): void
 
@@ -346,16 +355,16 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<Accessib
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名                  | 类型                                       | 必填   | 说明                |
 | -------------------- | ---------------------------------------- | ---- | ----------------- |
-| isAccessibilityFocus | boolean                                  | 是    | 获取的是否是无障碍焦点元素，True表示是，False表示否。    |
-| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回当前对应的焦点元素。 |
+| isAccessibilityFocus | boolean                                  | 是    | 获取的是否是无障碍焦点元素，true表示是无障碍焦点元素，false表示不是无障碍焦点元素。    |
+| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数。当获取焦点元素成功，err为undefined，data为当前对应的焦点元素；否则为错误对象。 |
 
 **错误码：**
 
@@ -375,9 +384,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let isAccessibilityFocus = true;
 let rootElement: AccessibilityElement;
 
-axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: AccessibilityElement)=> {
-  if (err && err.code) {
-    console.error(`failed to get focus element, Code is ${err.code}, message is ${err.message}`);
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
+axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: AccessibilityElement) => {
+  if (err) {
+    console.error(`Failed to get focus element. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   rootElement = data;
@@ -385,7 +395,7 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
 });
 ```
 
-## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
+### getWindowRootElement<sup>(deprecated)</sup>
 
 getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>
 
@@ -393,9 +403,9 @@ getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -426,31 +436,32 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let rootElement: AccessibilityElement;
 
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.getWindowRootElement().then((data: AccessibilityElement) => {
   rootElement = data;
   console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to get root element of the window, Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to get root element of the window. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
-## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
+### getWindowRootElement<sup>(deprecated)</sup>
 
 getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void
 
-获取指定窗口的根节点元素。使用callback异步回调。
+获取当前活跃窗口的根节点元素。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                 |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。 |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数。当获取根节点元素成功，err为undefined，data为当前活跃窗口的根节点元素；否则为错误对象。 |
 
 **错误码：**
 
@@ -469,9 +480,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let rootElement: AccessibilityElement;
 
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) => {
-  if (err && err.code) {
-    console.error(`failed to get root element of the window, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to get root element of the window. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   rootElement = data;
@@ -479,7 +491,7 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
 });
 ```
 
-## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
+### getWindowRootElement<sup>(deprecated)</sup>
 
 getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityElement>): void
 
@@ -487,16 +499,16 @@ getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityEle
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                     |
 | -------- | ---------------------------------------- | ---- | ---------------------- |
-| windowId | number                                   | 是    | 指定窗口的编号，未指定则从当前活跃窗口获取。 |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回指定窗口的根节点元素。     |
+| windowId | number                                   | 是    | 指定窗口的编号。 |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数。当获取根节点元素成功，err为undefined，data为指定窗口的根节点元素；否则为错误对象。     |
 
 **错误码：**
 
@@ -516,9 +528,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowId = 10;
 let rootElement: AccessibilityElement;
 
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.getWindowRootElement(windowId, (err: BusinessError, data: AccessibilityElement) => {
-  if (err && err.code) {
-    console.error(`failed to get root element of the window, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to get root element of the window. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   rootElement = data;
@@ -526,7 +539,7 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
 });
 ```
 
-## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
+### getWindows<sup>(deprecated)</sup>
 
 getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>
 
@@ -534,9 +547,9 @@ getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -565,30 +578,31 @@ getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>
 import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.getWindows().then((data: AccessibilityElement[]) => {
   console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to get windows. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
-## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
+### getWindows<sup>(deprecated)</sup>
 
 getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void
 
-获取指定屏幕中的所有窗口。使用callback异步回调。
+获取默认主屏幕中的所有窗口。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。 |
+| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数。当获取窗口成功，err为undefined，data为默认主屏幕的所有窗口；否则为错误对象。 |
 
 **错误码：**
 
@@ -605,16 +619,17 @@ getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void
 import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.getWindows((err: BusinessError, data: AccessibilityElement[]) => {
-  if (err && err.code) {
-    console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to get windows. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
 
-## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
+### getWindows<sup>(deprecated)</sup>
 
 getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityElement>>): void
 
@@ -622,16 +637,16 @@ getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityEleme
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明                    |
 | --------- | ---------------------------------------- | ---- | --------------------- |
-| displayId | number                                   | 是    | 指定的屏幕编号，未指定则从默认主屏幕获取。 |
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数，返回指定屏幕的所有窗口。     |
+| displayId | number                                   | 是    | 指定的屏幕编号，用于标识要获取窗口的屏幕。 |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数。当获取窗口成功，err为undefined，data为指定屏幕的所有窗口；否则为错误对象。     |
 
 **错误码：**
 
@@ -649,26 +664,27 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let displayId = 10;
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[]) => {
-  if (err && err.code) {
-    console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to get windows. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
 
-## AccessibilityExtensionContext.injectGesture<sup>(deprecated)</sup>
+### injectGesture<sup>(deprecated)</sup>
 
 injectGesture(gesturePath: GesturePath): Promise\<void>
 
-注入手势。使用Promise异步回调。
+注入手势，适用于辅助功能应用替用户执行触摸交互的场景，如点击、滑动等操作。使用Promise异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[injectGestureSync](#injectgesturesyncdeprecated)替代，但该替代接口从API version 12开始也已废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -703,30 +719,31 @@ for (let i = 0; i < 10; i++) {
   let gesturePoint = new GesturePoint(100, i * 200);
   gesturePath.points.push(gesturePoint);
 }
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.injectGesture(gesturePath).then(() => {
   console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to inject gesture, Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to inject gesture. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-## AccessibilityExtensionContext.injectGesture<sup>(deprecated)</sup>
+### injectGesture<sup>(deprecated)</sup>
 
 injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
-注入手势。使用callback异步回调。
+注入手势，适用于辅助功能应用替用户执行触摸交互的场景，如点击、滑动等操作。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[injectGestureSync](#injectgesturesyncdeprecated)替代，但该替代接口从API version 12开始也已废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名         | 类型                                                                 | 必填   | 说明                  |
 | ----------- |--------------------------------------------------------------------| ---- | ------------------- |
 | gesturePath | [GesturePath](js-apis-accessibility-GesturePath.md#gesturepath) | 是    | 表示手势的路径信息。          |
-| callback    | AsyncCallback&lt;void&gt;                                          | 是    | 回调函数，表示注入手势执行结果的回调。 |
+| callback    | AsyncCallback&lt;void&gt;                                          | 是    | 回调函数。当注入手势成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -748,25 +765,26 @@ for (let i = 0; i < 10; i++) {
   let gesturePoint = new GesturePoint(100, i * 200);
   gesturePath.points.push(gesturePoint);
 }
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.injectGesture(gesturePath, (err: BusinessError) => {
   if (err) {
-    console.error(`failed to inject gesture, Code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to inject gesture. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 });
 ```
-## AccessibilityExtensionContext.injectGestureSync<sup>(deprecated)</sup>
+### injectGestureSync<sup>(deprecated)</sup>
 
 injectGestureSync(gesturePath: GesturePath): void
 
-注入手势。
+注入手势，适用于辅助功能应用替用户执行触摸交互的场景，如点击、滑动等操作。
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 10开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -793,12 +811,15 @@ for (let i = 0; i < 10; i++) {
   let gesturePoint = new GesturePoint(100, i * 200);
   gesturePath.points.push(gesturePoint);
 }
+// axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.injectGestureSync(gesturePath);
 ```
 
 ## AccessibilityElement
 
-无障碍节点元素，在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
+无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。
+
+调用AccessibilityElement的方法前，先通过[AccessibilityExtensionContext.getFocusElement()](#getfocuselementdeprecated)或[AccessibilityExtensionContext.getWindowRootElement()](#getwindowrootelementdeprecated)获取AccessibilityElement实例。
 
 ### attributeNames<sup>(deprecated)</sup>
 
@@ -808,9 +829,9 @@ attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **返回值：**
 
@@ -824,11 +845,11 @@ attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>
 import { ElementAttributeKeys } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
   console.info(`succeeded in getting attribute names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to get attribute names. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -840,15 +861,15 @@ attributeNames\<T extends keyof ElementAttributeValues>(callback: AsyncCallback\
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名      | 类型                                  | 必填   | 说明                  |
 | -------- | ----------------------------------- | ---- | ------------------- |
-| callback | AsyncCallback&lt;Array&lt;T&gt;&gt; | 是    | 回调函数，返回节点元素的所有属性名称。 |
+| callback | AsyncCallback&lt;Array&lt;T&gt;&gt; | 是    | 回调函数。当获取属性名称成功，err为undefined，data为节点元素的所有属性名称；否则为错误对象。 |
 
 **示例：**
 
@@ -856,10 +877,10 @@ attributeNames\<T extends keyof ElementAttributeValues>(callback: AsyncCallback\
 import { ElementAttributeKeys } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.attributeNames((err: BusinessError, data: ElementAttributeKeys[]) => {
-  if (err && err.code) {
-    console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to get attribute names. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in getting attribute names, ${JSON.stringify(data)}`);
@@ -874,9 +895,9 @@ attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T): Promi
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 
 **参数：**
@@ -909,11 +930,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let attributeName: ElementAttributeKeys = 'bundleName';
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.attributeValue(attributeName).then((data: string) => {
   console.info(`succeeded in getting attribute value by name, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to get attribute value. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -925,16 +946,16 @@ attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, callba
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名           | 类型                                       | 必填   | 说明                     |
 | ------------- | ---------------------------------------- | ---- | ---------------------- |
 | attributeName | ElementAttributeKeys                         | 是    | 表示属性的名称。               |
-| callback      | AsyncCallback&lt;ElementAttributeValues[T]&gt; | 是    | 回调函数，返回根据节点属性名称获取的属性值。 |
+| callback      | AsyncCallback&lt;[ElementAttributeValues](#elementattributevalues)[T]&gt; | 是    | 回调函数。当获取属性值成功，err为undefined，data为对应属性的值；否则为错误对象。 |
 
 **错误码：**
 
@@ -953,10 +974,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let attributeName: ElementAttributeKeys = 'bundleName';
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.attributeValue(attributeName, (err: BusinessError, data: string) => {
-  if (err && err.code) {
-    console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to get attribute value. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in getting attribute value, ${JSON.stringify(data)}`);
@@ -971,9 +992,9 @@ actionNames(): Promise\<Array\<string>>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **返回值：**
 
@@ -986,12 +1007,12 @@ actionNames(): Promise\<Array\<string>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.actionNames().then((data: string[]) => {
   console.info(`succeeded in getting action names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
-})
+  console.error(`Failed to get action names. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### actionNames<sup>(deprecated)</sup>
@@ -1002,47 +1023,49 @@ actionNames(callback: AsyncCallback\<Array\<string>>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                    |
 | -------- | ---------------------------------------- | ---- | --------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是    | 回调函数，返回节点元素支持的所有操作名称。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是    | 回调函数。当获取操作名称成功，err为undefined，data为节点元素支持的所有操作名称；否则为错误对象。 |
 
 **示例：**
 
 ```ts
-// rootElement是AccessibilityElement的实例。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.actionNames((err: BusinessError, data: string[]) => {
-  if (err && err.code) {
-    console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to get action names. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in getting action names, ${JSON.stringify(data)}`);
-})
+});
 ```
 
 ### performAction<sup>(deprecated)</sup>
 
 performAction(actionName: string, parameters?: object): Promise\<void>
 
-根据操作名称执行某个操作。使用Promise异步回调。
+对无障碍节点元素执行指定操作。使用Promise异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名         | 类型                                     | 必填   | 说明                                                       |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| actionName | string | 是    | 表示属性的名称，取值参考[Action](./js-apis-accessibility.md#action)。| 
-| parameters | object | 否    | 表示执行操作时所需要的参数；默认为空。                             |
+| actionName | string | 是    | 表示操作的名称，取值参考[Action](js-apis-accessibility.md#action)。|
+| parameters | object | 否    | 表示执行操作时所需要的参数。不同操作需要的参数键名和值类型不同，具体取值原则参见各Action定义，如setSelection需传入selectTextBegin、selectTextEnd、selectTextInForWard参数，setCursorPosition需传入offset参数。不传则默认为空。                             |
 
 **返回值：**
 
@@ -1066,12 +1089,12 @@ performAction(actionName: string, parameters?: object): Promise\<void>
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  // rootElement是AccessibilityElement的实例。
+  // rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
   // Action描述中无明确要求的，均为无参数Action。
   rootElement.performAction('click').then(() => {
     console.info(`succeeded in performing action.`);
   }).catch((err: BusinessError) => {
-    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to perform action. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -1080,7 +1103,7 @@ performAction(actionName: string, parameters?: object): Promise\<void>
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  // rootElement是AccessibilityElement的实例。
+  // rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
   // setSelection示例代码。
   rootElement.performAction('setSelection', {
     selectTextBegin: '0', // 表示选择起始位置。
@@ -1089,7 +1112,7 @@ performAction(actionName: string, parameters?: object): Promise\<void>
   }).then(() => {
     console.info(`succeeded in performing action`);
   }).catch((err: BusinessError) => {
-    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to perform action. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -1098,14 +1121,14 @@ performAction(actionName: string, parameters?: object): Promise\<void>
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  // rootElement是AccessibilityElement的实例。
+  // rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
   // setCursorPosition示例代码。
   rootElement.performAction('setCursorPosition', {
     offset: '1'   // 表示光标的设置位置。
   }).then(() => {
     console.info(`succeeded in performing action`);
   }).catch((err: BusinessError) => {
-    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to perform action. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -1113,20 +1136,20 @@ performAction(actionName: string, parameters?: object): Promise\<void>
 
 performAction(actionName: string, callback: AsyncCallback\<void>): void
 
-根据操作名称执行某个操作。使用callback异步回调。
+对无障碍节点元素执行指定操作。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名         | 类型                                     | 必填   | 说明             |
 | ----------- | ---------------------------------------- | ---- | -------------- |
-| actionName | string | 是    | 表示属性的名称，取值参考[Action](./js-apis-accessibility.md#action)。| 
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，表示执行指定操作的回调。|
+| actionName | string | 是    | 表示操作的名称，取值参考[Action](js-apis-accessibility.md#action)。|
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当执行操作成功，err为undefined，否则为错误对象。|
 
 **错误码：**
 
@@ -1144,10 +1167,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let actionName = 'action';
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.performAction(actionName, (err: BusinessError) => {
-  if (err && err.code) {
-    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to perform action. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in performing action, actionName is ${actionName}`);
@@ -1158,21 +1181,21 @@ rootElement.performAction(actionName, (err: BusinessError) => {
 
 performAction(actionName: string, parameters: object, callback: AsyncCallback\<void>): void
 
-根据操作名称执行某个操作。使用callback异步回调。
+对无障碍节点元素执行指定操作。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名        | 类型                        | 必填   | 说明                                                          |
 | ---------- | ------------------------- | ---- |-------------------------------------------------------------|
-| actionName | string                    | 是    | 表示属性的名称，取值参考[Action](./js-apis-accessibility.md#action)。 |
-| parameters | object                    | 是    | 表示执行操作时所需要的参数；默认为空。                                |
-| callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数，表示执行指定操作的回调。                                           |
+| actionName | string                    | 是    | 表示操作的名称，取值参考[Action](js-apis-accessibility.md#action)。 |
+| parameters | object                    | 是    | 表示执行操作时所需要的参数。不同操作类型所需的参数结构不同，具体参数格式参见各Action的说明，如setSelection需传入selectTextBegin、selectTextEnd、selectTextInForWard参数，setCursorPosition需传入offset参数。                                |
+| callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当执行操作成功，err为undefined，否则为错误对象。                                           |
 
 **错误码：**
 
@@ -1189,12 +1212,12 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback\<v
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let actionName = 'action';
-let parameters: object = [];
+let parameters: object = {};
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.performAction(actionName, parameters, (err: BusinessError) => {
-  if (err && err.code) {
-    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+  if (err) {
+    console.error(`Failed to perform action. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in performing action,actionName is ${actionName}, parameters is ${parameters}`);
@@ -1209,16 +1232,16 @@ findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityEl
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                            |
 | --------- | ------ | ---- | ----------------------------- |
-| type      | string | 是    | 固定为'content', 表示查找的类型为节点元素内容。 |
-| condition | string | 是    | 表示查找的条件。                      |
+| type      | string | 是    | 固定为'content'，表示查找的类型为节点元素内容。 |
+| condition | string | 是    | 表示查找的关键字条件，用于匹配节点元素的文本内容。                      |
 
 **返回值：**
 
@@ -1237,15 +1260,16 @@ findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityEl
 **示例：**
 
 ```ts
+import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition = 'keyword';
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.findElement('content', condition).then((data: AccessibilityElement[]) => {
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1257,17 +1281,17 @@ findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明                           |
 | --------- | ---------------------------------------- | ---- | ---------------------------- |
-| type      | string                                   | 是    | 固定为'content',表示查找的类型为节点元素内容。 |
-| condition | string                                   | 是    | 表示查找的条件。                     |
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数，返回满足指定查询关键字的所有节点元素。     |
+| type      | string                                   | 是    | 固定为'content'，表示查找的类型为节点元素内容。 |
+| condition | string                                   | 是    | 表示查找的关键字条件，用于匹配节点元素的文本内容。                     |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | 是    | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询关键字的所有节点元素；否则为错误对象。     |
 
 **错误码：**
 
@@ -1280,14 +1304,15 @@ findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<
 **示例：**
 
 ```ts
+import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition = 'keyword';
 
-// rootElement是AccessibilityElement的实例。
-rootElement.findElement('content', condition, (err: BusinessError, data: AccessibilityElement[])=>{
-  if (err && err.code) {
-    console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
+rootElement.findElement('content', condition, (err: BusinessError, data: AccessibilityElement[]) => {
+  if (err) {
+    console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
@@ -1302,9 +1327,9 @@ findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElem
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -1330,16 +1355,16 @@ findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElem
 **示例：**
 
 ```ts
-import { FocusType } from '@kit.AccessibilityKit';
+import { FocusType, AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition: FocusType = 'normal';
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.findElement('focusType', condition).then((data: AccessibilityElement) => {
   console.info(`succeeded in finding element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1351,9 +1376,9 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<Ac
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -1361,7 +1386,7 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<Ac
 | --------- | ---------------------------------------- | ---- | ---------------------------------- |
 | type      | string                                   | 是    | 固定为'focusType'，表示查询的类型为节点的焦点元素类型。 |
 | condition | [FocusType](#focustype)                  | 是    | 表示查询焦点元素的类型。                       |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回满足指定查询焦点元素类型的节点元素。          |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询焦点元素类型的节点元素；否则为错误对象。          |
 
 **错误码：**
 
@@ -1374,15 +1399,15 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<Ac
 **示例：**
 
 ```ts
-import { FocusType } from '@kit.AccessibilityKit';
+import { FocusType, AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition: FocusType = 'normal';
 
-// rootElement是AccessibilityElement的实例。
-rootElement.findElement('focusType', condition, (err: BusinessError, data: AccessibilityElement)=>{
-  if (err && err.code) {
-    console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
+rootElement.findElement('focusType', condition, (err: BusinessError, data: AccessibilityElement) => {
+  if (err) {
+    console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
@@ -1397,9 +1422,9 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise\<Accessi
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -1425,16 +1450,16 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise\<Accessi
 **示例：**
 
 ```ts
-import { FocusDirection } from '@kit.AccessibilityKit';
+import { FocusDirection, AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition: FocusDirection = 'up';
 
-// rootElement是AccessibilityElement的实例。
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
 rootElement.findElement('focusDirection', condition).then((data: AccessibilityElement) => {
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1446,17 +1471,17 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明                                       |
 | --------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| type      | string                                   | 是    | 固定为'focusDirection', 表示查询的类型为节点的下一焦点元素方向。 |
-| condition | [FocusDirection](#focusdirection)        | 是    | 表示下一查询焦点元素的方向。                           |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数，返回满足指定查询下一焦点元素方向的节点元素。              |
+| type      | string                                   | 是    | 固定为'focusDirection'，表示查询的类型为节点的下一焦点元素方向。 |
+| condition | [FocusDirection](#focusdirection)        | 是    | 表示查询下一焦点元素的方向。                           |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询下一焦点元素方向的节点元素；否则为错误对象。              |
 
 **错误码：**
 
@@ -1469,15 +1494,15 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 **示例：**
 
 ```ts
-import { FocusDirection } from '@kit.AccessibilityKit';
+import { FocusDirection, AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition: FocusDirection = 'up';
 
-// rootElement是AccessibilityElement的实例。
-rootElement.findElement('focusDirection', condition, (err: BusinessError, data: AccessibilityElement) =>{
-  if (err && err.code) {
-    console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
+// rootElement是AccessibilityElement的实例，通过getFocusElement()或getWindowRootElement()获取
+rootElement.findElement('focusDirection', condition, (err: BusinessError, data: AccessibilityElement) => {
+  if (err) {
+    console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);

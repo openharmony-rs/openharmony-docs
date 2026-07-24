@@ -108,7 +108,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
        return actualDataSize;
    }
    ```
-   <!-- @[audioSuite_CreateBaseNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @[audioSuite_CreateBaseNodeOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -130,14 +130,28 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    // 创建输入节点。
    OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.inputNode);
    
-   // 重置构造器配置并设置为均衡器节点类型。
+   // 重置构造器配置，创建效果节点。
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
-   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_EQUALIZER);
-   // 创建均衡器节点。
-   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.eqNode);
-   // 设置均衡器节点效果为默认。
-   OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(nodes.eqNode, OH_EQUALIZER_PARAM_DEFAULT);
+   // 可根据需要设置不同的效果节点类型。
+   ```
    
+   设置均衡器效果。
+   
+   <!-- @[audioSuite_SetEqualizerType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+   
+   ``` C
+   // 设置为均衡器节点类型。
+   OH_AudioSuiteNodeBuilder_SetNodeType(builder, OH_AudioNode_Type::EFFECT_NODE_TYPE_EQUALIZER);
+   // 创建均衡器节点。
+   OH_AudioSuiteEngine_CreateNode(pipeline, builder, node);
+   // ...
+   // 设置均衡器节点效果。
+   OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(*node, gains);
+   ```
+   
+   <!-- @[audioSuite_CreateBaseNodeTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   
+   ``` C++
    // 重置构造器配置并设置为输出节点类型。
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
    OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::OUTPUT_NODE_TYPE_DEFAULT);
@@ -598,8 +612,8 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    OH_AudioSuiteEngine_Destroy(audioSuiteEngine);
    ```
 
-## 完整示例代码
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
-
 <!--RP1-->
+## 完整示例代码
+
+- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 <!--RP1End-->

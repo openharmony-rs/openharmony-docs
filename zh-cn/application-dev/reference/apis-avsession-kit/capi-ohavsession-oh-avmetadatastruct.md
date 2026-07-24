@@ -12,7 +12,7 @@ typedef struct OH_AVMetadataStruct OH_AVMetadata
 
 ## 概述
 
-会话元数据。资源设置的avmetadata的实例。
+会话元数据。用于存储媒体资源元数据的结构体定义。
 
 **起始版本：** 13
 

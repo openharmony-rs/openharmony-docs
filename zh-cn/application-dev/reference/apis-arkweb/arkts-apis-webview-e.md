@@ -6,13 +6,17 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+ArkWeb Enums模块是ArkWeb（Web子系统）的枚举类型定义集合，为WebView组件及其关联的API类提供统一的类型约束和状态描述能力。本模块定义了覆盖Web 页面交互、安全状态、DNS配置、下载任务、媒体播控、内核版本、进程模式、内存管理、离线资源、无白屏加载、站点隔离、软键盘行为、Cookie策略、滚动控制、设备形态等多领域的枚举类型，是整个WebView API体系的基础类型支撑层。
+
+开发者在使用[模块描述](arkts-apis-webview.md)中的WebviewController、WebMessagePort、WebDownloadItem、NativeMediaPlayerHandler、NativeMediaPlayerBridge、WebSchemeHandlerRequest等核心类时，均需依赖本模块中的枚举类型来配置行为参数或解析返回结果。当开发者需要精细控制Web组件的运行模式、查询页面状态、处理下载任务、接入原生媒体播控或优化加载体验时，应查阅本模块中对应的枚举定义。
+
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持，后续版本的新增接口，则采用上角标单独标记接口的起始版本。
 
 ## WebHitTestType
 
-[getLastHitTest](./arkts-apis-webview-WebviewController.md#getlasthittest18)接口用于指示光标节点。
+指示光标命中的节点类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -20,8 +24,8 @@
 | ------------- | -- |----------------------------------------- |
 | EditText      | 0 |可编辑的区域。                            |
 | Email         | 1 |电子邮件地址。                            |
-| HttpAnchor    | 2 |超链接，其中src为http。                     |
-| HttpAnchorImg | 3 |带有超链接的图片，其中src为http + HTML::img。 |
+| HttpAnchor    | 2 |超链接，其中链接地址为http。                     |
+| HttpAnchorImg | 3 |带有超链接的图片，其中链接地址为http + HTML::img。 |
 | Img           | 4 |HTML::img标签。                           |
 | Map           | 5 |地理地址。                                |
 | Phone         | 6 |电话号码。                                |
@@ -35,7 +39,7 @@ Web组件使用HTTPDNS的模式。
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
-| OFF                                  | 0 |不使用HTTPDNS， 可以用于撤销之前使用的HTTPDNS配置。|
+| OFF                                  | 0 |不使用HTTPDNS，可以用于撤销之前使用的HTTPDNS配置。|
 | AUTO                                 | 1 |自动模式，用于解析的设定DNS服务器不可用时，可自动回落至系统DNS。|
 | SECURE_ONLY                          | 2 |强制使用设定的HTTPDNS服务器进行域名解析。|
 
@@ -54,7 +58,7 @@ Web组件使用HTTPDNS的模式。
 
 ## MediaPlaybackState<sup>12+</sup>
 
-当前网页的播控状态。
+当前网页的播放控制状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -109,7 +113,7 @@ Web组件使用HTTPDNS的模式。
 
 ## RenderProcessMode<sup>12+</sup>
 
-ArkWeb渲染子进程模式类型。
+ArkWeb渲染子进程模式类型，可根据应用对内存占用与渲染进程隔离的需求选择对应的模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -231,8 +235,8 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 | 名称 | 值 | 说明 |
 |------|----|------|
-| PAUSED  | 0 | 播放状态为暂停状态，表示媒体已暂停。 |
-| PLAYING | 1 | 播放状态为播放状态，表示媒体正在播放。 |
+| PAUSED  | 0 | 表示媒体已暂停。 |
+| PLAYING | 1 | 表示媒体正在播放。 |
 
 ## NetworkState<sup>12+</sup>
 
@@ -258,7 +262,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | HAVE_NOTHING      | 0 | 没有缓存。 |
 | HAVE_METADATA     | 1 | 只缓存了媒体元数据。 |
 | HAVE_CURRENT_DATA | 2 | 只缓存到当前的播放进度。 |
-| HAVE_FUTURE_DATA  | 3 | 缓存时长超过了当前的播放进度, 但是仍有可能导致卡顿。 |
+| HAVE_FUTURE_DATA  | 3 | 缓存时长超过了当前的播放进度，但是仍有可能导致卡顿。 |
 | HAVE_ENOUGH_DATA  | 4 | 缓存了足够的数据，保证播放流畅。 |
 
 ## MediaError<sup>12+</sup>
@@ -397,7 +401,7 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指
 | M114             | 1     | OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若系统版本上不存在此内核则设置无效，使用系统默认内核。|
 | M132             | 2     | OpenHarmony 6.0版本的常青内核（OpenHarmony 7.0版本的遗留内核），M132为OpenHarmony 6.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。|
 | M144             | 3     | OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | 常青内核，系统的最新内核。开发者可选择在每个系统版本上都使用最新的内核，OpenHarmony开发套件（基于API 23）及之后所有系统版本都生效。 |
+| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | 系统的最新内核（常青内核）。开发者可选择在每个系统版本上都使用最新的内核，OpenHarmony开发套件API version 23及之后所有系统版本都生效。 |
 
 **表1** 常青内核与遗留内核含义说明
 
@@ -409,13 +413,13 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指
 
 ## SiteIsolationMode<sup>21+</sup>
 
-站点隔离机制将不同源的网站隔离在不同的渲染进程中，减少跨域攻击面。例如，PC上原有进程模型是每一个Tab对应一个Render进程，站点隔离打开后，让不同源的Iframe运行在独立的Render进程中。
+站点隔离机制将不同源的网站隔离在不同的渲染子进程中，减少跨域攻击面。例如，PC上原有进程模型是每一个Tab对应一个渲染子进程，站点隔离打开后，让不同源的Iframe运行在独立的渲染子进程中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
-| PARTIAL | 0 | 部分站点隔离，即在同一个Render进程内加载新站点。 |
+| PARTIAL | 0 | 部分站点隔离，即在同一个渲染进程内加载新站点。 |
 | STRICT  | 1 | 严格站点隔离，跨站点的Iframe将切换到新的渲染进程。 |
 
 

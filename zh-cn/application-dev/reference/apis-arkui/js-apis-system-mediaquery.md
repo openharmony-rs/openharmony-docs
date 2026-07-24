@@ -50,7 +50,7 @@ matchMedia(condition: string): MediaQueryList
 
 | 类型           | 说明                                       |
 | -------------- | ---------------------------------------- |
-| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | 表示创建MediaQueryList对象的属性，详情见下表说明。 |
+| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | 创建MediaQueryList对象，详情见下表说明。 |
 
 **示例：**
 

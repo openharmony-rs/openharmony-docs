@@ -577,7 +577,7 @@ workerPort.onerror = (e: ErrorEvent) => {
   hilog.info(0x0000, 'testTag', '%{public}s', 'onerror');
 }
 ```
-## sendableContextManager.setEventHubMultithreadingEnabled<sup>20+<sup>
+## sendableContextManager.setEventHubMultithreadingEnabled<sup>20+</sup>
 
 setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void
 
