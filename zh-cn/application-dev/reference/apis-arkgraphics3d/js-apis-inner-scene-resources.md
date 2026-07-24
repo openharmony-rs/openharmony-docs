@@ -1,4 +1,4 @@
-# SceneResource
+# SceneResources
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
@@ -96,7 +96,7 @@ function destroy(): void {
 
 ## Shader
 
-着色器，继承自[SceneResource](#sceneresource-1)。
+着色器，继承自[SceneResource](#sceneresource)。
 
 ### 属性
 
@@ -281,7 +281,7 @@ function setinputs(): void {
 
 ## Material
 
-材质类型，继承自[SceneResource](#sceneresource-1)。
+材质类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -453,7 +453,7 @@ function setinputs(): void {
 
 ## Mesh
 
-网格类型，继承自[SceneResource](#sceneresource-1)。
+网格类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -469,7 +469,7 @@ function setinputs(): void {
 
 ## MeshResource<sup>18+</sup>
 
-网格资源，继承自[SceneResource](#sceneresource-1)。
+网格资源，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -479,7 +479,7 @@ function setinputs(): void {
 
 ## Animation
 
-动画类型，继承自[SceneResource](#sceneresource-1)。
+动画类型，继承自[SceneResource](#sceneresource)。
 
 ### 属性
 
@@ -776,7 +776,7 @@ function finish(): void {
 
 ## Environment
 
-环境类型，继承自[SceneResource](#sceneresource-1)。
+环境类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -793,7 +793,7 @@ function finish(): void {
 
 ## Image
 
-图片类型，继承自[SceneResource](#sceneresource-1)。
+图片类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -823,7 +823,7 @@ function finish(): void {
 
 ## Effect<sup>21+</sup>
 
-特效类型，继承自[SceneResource](#sceneresource-1)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
+特效类型，继承自[SceneResource](#sceneresource)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
 
 ### 属性
 
