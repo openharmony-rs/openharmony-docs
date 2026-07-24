@@ -79,7 +79,7 @@ export default class EntryAbility extends UIAbility {
       console.info('Succeeded in loading the content.');
       try {
         // 创建子窗
-        windowStage.createSubWindow("testSubWindow").then((subWindow) => {
+        windowStage.createSubWindow('testSubWindow').then((subWindow) => {
           if (subWindow == null) {
             console.error('Failed to create the subWindow. Cause: The data is empty');
             return;
@@ -129,7 +129,7 @@ export default class EntryAbility extends UIAbility {
       console.info('Succeeded in loading the content.');
       try {
         // 创建子窗
-        windowStage.createSubWindow("testSubWindow").then((subWindow: window.Window | undefined) => {
+        windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window | undefined) => {
           subWindow!.setUIContent('pages/Index', (err: BusinessError<void> | null): void => {
             if (err?.code) {
               console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
@@ -211,7 +211,7 @@ export default class EntryAbility extends UIAbility {
       console.info('Succeeded in loading the content.');
       try {
         // 创建子窗
-        windowStage.createSubWindow("testSubWindow").then((subWindow) => {
+        windowStage.createSubWindow('testSubWindow').then((subWindow) => {
           if (subWindow == null) {
             console.error('Failed to create the subWindow. Cause: The data is empty');
             return;
@@ -259,7 +259,7 @@ export default class EntryAbility extends UIAbility {
       console.info('Succeeded in loading the content.');
       try {
         // 创建子窗
-        windowStage.createSubWindow("testSubWindow").then((subWindow: window.Window | undefined) => {
+        windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window | undefined) => {
           subWindow!.setUIContent('pages/Index', (err: BusinessError<void> | null): void => {
             if (err?.code) {
               console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
@@ -2126,7 +2126,7 @@ export default class EntryAbility extends UIAbility {
             return;
           }
           windowClass = data;
-          windowClass!.setUIContent("pages/Test");
+          windowClass!.setUIContent('pages/Test');
           let enabled = true;
           let promise = windowClass!.setSystemAvoidAreaEnabled(enabled);
           promise.then(() => {
@@ -2247,7 +2247,7 @@ try {
       return;
     }
     windowClass = data;
-    windowClass!.setUIContent("pages/Test");
+    windowClass!.setUIContent('pages/Test');
     let enabled = true;
     let promise = windowClass!.setSystemAvoidAreaEnabled(enabled);
     promise.then(() => {
@@ -13397,7 +13397,7 @@ struct Float {
           console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         });
         windowClass.showWindow().then(() => {
-          console.info("showWindow success");
+          console.info('showWindow success');
         }).catch((err: BusinessError) => {
           console.error(`showWindow err: ${JSON.stringify(err)}`);
         });
@@ -14458,10 +14458,10 @@ export default class EntryAbility extends UIAbility {
     let windowClass: window.Window | undefined = undefined;
     // 创建子窗
     try {
-      let subWindow = windowStage.createSubWindow("testSubWindow");
+      let subWindow = windowStage.createSubWindow('testSubWindow');
       subWindow.then((data) => {
         if (data == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return;
         }
         windowClass = data;
@@ -14493,7 +14493,7 @@ export default class EntryAbility extends UIAbility {
     let windowClass: window.Window | undefined = undefined;
     // 创建子窗
     try {
-      let subWindow = windowStage.createSubWindow("testSubWindow");
+      let subWindow = windowStage.createSubWindow('testSubWindow');
       subWindow.then((data: window.Window) => {
         windowClass = data;
         let promise = windowClass?.setSubWindowModal(true);
@@ -14575,10 +14575,10 @@ export default class EntryAbility extends UIAbility {
     let windowClass: window.Window | undefined = undefined;
     // 创建子窗
     try {
-      let subWindow = windowStage.createSubWindow("testSubWindow");
+      let subWindow = windowStage.createSubWindow('testSubWindow');
       subWindow.then((data) => {
         if (!data) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return;
         }
         windowClass = data;
@@ -14611,7 +14611,7 @@ export default class EntryAbility extends UIAbility {
     let windowClass: window.Window | undefined = undefined;
     // 创建子窗
     try {
-      let subWindow = windowStage.createSubWindow("testSubWindow");
+      let subWindow = windowStage.createSubWindow('testSubWindow');
       subWindow.then((data: window.Window) => {
         windowClass = data;
         let promise = windowClass?.setSubWindowModal(true, window.ModalityType.WINDOW_MODALITY);
@@ -15380,8 +15380,8 @@ ArkTS-Dyn示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let windowClass: window.Window = window.findWindow("subWindow");
-  let newParentWindow: window.Window = window.findWindow("newParentWindow");
+  let windowClass: window.Window = window.findWindow('subWindow');
+  let newParentWindow: window.Window = window.findWindow('newParentWindow');
   let newParentWindowId: number = newParentWindow.getWindowProperties().id;
   let promise = windowClass.setParentWindow(newParentWindowId);
   promise.then(() => {
@@ -15400,8 +15400,8 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let windowClass: window.Window = window.findWindow("subWindow");
-  let newParentWindow: window.Window = window.findWindow("newParentWindow");
+  let windowClass: window.Window = window.findWindow('subWindow');
+  let newParentWindow: window.Window = window.findWindow('newParentWindow');
   let newParentWindowId: int = newParentWindow.getWindowProperties().id;
   let promise = windowClass.setParentWindow(newParentWindowId);
   promise.then(() => {
@@ -15456,7 +15456,7 @@ getParentWindow(): Window
 ArkTS-Dyn示例:
 ```ts
 try {
-  let windowClass: window.Window = window.findWindow("subWindow");
+  let windowClass: window.Window = window.findWindow('subWindow');
   let parentWindow: window.Window = windowClass.getParentWindow();
   let properties = parentWindow.getWindowProperties();
   console.info(`Succeeded in obtaining parent window properties. Property: ${JSON.stringify(properties)}`);
@@ -15468,7 +15468,7 @@ try {
 ArkTS-Sta示例:
 ```ts
 try {
-  let windowClass: window.Window = window.findWindow("subWindow");
+  let windowClass: window.Window = window.findWindow('subWindow');
   let parentWindow: window.Window = windowClass.getParentWindow();
   let properties = parentWindow.getWindowProperties();
   console.info(`Succeeded in obtaining parent window properties. Property: ${JSON.stringify(properties)}`);
@@ -15652,7 +15652,7 @@ struct Index {
 
   build() {
     RelativeContainer() {
-      Button("窗口置顶")
+      Button('窗口置顶')
         .onClick(() => {
           try {
             windowClass = this.windowStage.getMainWindowSync();
@@ -15856,7 +15856,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
     // 创建子窗
-    windowStage.createSubWindow("testSubWindow").then((subWindow) => {
+    windowStage.createSubWindow('testSubWindow').then((subWindow) => {
       if (subWindow == null) {
         console.error('Failed to create the subWindow. Cause: The data is empty');
         return;
@@ -15891,7 +15891,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
     // 创建子窗
-    windowStage.createSubWindow("testSubWindow").then((subWindow: window.Window) => {
+    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
       subWindow.showWindow().then(() => {
         try {
           let enabled = false;
@@ -17487,7 +17487,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let windowClass: window.Window = window.findWindow("subWindow");
+  let windowClass: window.Window = window.findWindow('subWindow');
   let enabled: boolean = true;
   let promise = windowClass?.setFollowParentMultiScreenPolicy(enabled);
   promise.then(() => {
@@ -17505,7 +17505,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let windowClass: window.Window = window.findWindow("subWindow");
+  let windowClass: window.Window = window.findWindow('subWindow');
   let enabled: boolean = true;
   if (windowClass != undefined) {
     let promise = windowClass.setFollowParentMultiScreenPolicy(enabled);
@@ -17587,14 +17587,14 @@ export default class EntryAbility extends UIAbility {
         console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
         return;
       }
-      console.info("Succeeded in loading the content.");
-      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+      console.info('Succeeded in loading the content.');
+      windowStage.createSubWindow('subWindow').then((subWindow: window.Window) => {
         if (subWindow == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return;
         }
         subWindow.setFollowParentWindowLayoutEnabled(true).then(() => {
-          console.info("after set follow parent window layout")
+          console.info('after set follow parent window layout')
         }).catch((error: BusinessError) => {
           console.error(`setFollowParentWindowLayoutEnabled failed. ${error.code} ${error.message}`);
         })
@@ -17620,14 +17620,14 @@ export default class EntryAbility extends UIAbility {
         console.error(`Failed to load the content. Cause code: ${loadError?.code}, message: ${loadError?.message}`);
         return;
       }
-      console.info("Succeeded in loading the content.");
-      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+      console.info('Succeeded in loading the content.');
+      windowStage.createSubWindow('subWindow').then((subWindow: window.Window) => {
         if (subWindow == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return Promise.resolve();
         }
         subWindow.setFollowParentWindowLayoutEnabled(true).then(() => {
-          console.info("after set follow parent window layout")
+          console.info('after set follow parent window layout')
         }).catch((error: Error) => {
           console.error(`setFollowParentWindowLayoutEnabled failed. ${error.code} ${error.message}`);
         })
@@ -17713,14 +17713,14 @@ export default class EntryAbility extends UIAbility {
         console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
         return;
       }
-      console.info("Succeeded in loading the content.");
-      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+      console.info('Succeeded in loading the content.');
+      windowStage.createSubWindow('subWindow').then((subWindow: window.Window) => {
         if (subWindow == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return;
         }
         subWindow.setRelativePositionToParentWindowEnabled(true).then(() => {
-          console.info("after set relative position to parent window enabled");
+          console.info('after set relative position to parent window enabled');
         }).catch((error: BusinessError) => {
           console.error(`setRelativePositionToParentWindowEnabled failed. ${error.code} ${error.message}`);
         })
@@ -17745,14 +17745,14 @@ export default class EntryAbility extends UIAbility {
         console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
         return;
       }
-      console.info("Succeeded in loading the content.");
-      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+      console.info('Succeeded in loading the content.');
+      windowStage.createSubWindow('subWindow').then((subWindow: window.Window) => {
         if (subWindow == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return null;
         }
         subWindow.setRelativePositionToParentWindowEnabled(true).then(() => {
-          console.info("after set relative position to parent window enabled");
+          console.info('after set relative position to parent window enabled');
         }).catch((error: Error) => {
           console.error(`setRelativePositionToParentWindowEnabled failed. ${error.code} ${error.message}`);
         })
