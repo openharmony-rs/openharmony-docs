@@ -437,6 +437,7 @@ status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrec
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_RECORD_TOGGLE". |
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus).<br>**起始版本：** 26.1.0 |
 | 12100007 | Service exception. |
 | 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
 
@@ -448,6 +449,63 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 设置权限使用记录开关状态
 privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
+  console.info('setPermissionUsedRecordToggleStatus success');
+}).catch((err: BusinessError): void => {
+  console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## privacyManager.setPermissionUsedRecordToggleStatus
+
+setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: number): Promise&lt;void&gt;
+
+设置是否记录指定子身份资料的权限使用情况。适用于系统应用需要为某一子身份资料独立控制权限使用记录的场景。调用成功后，系统按`status`更新该子身份资料的开关状态；设置为`false`时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)不会为该子身份资料产生权限使用记录，并会删除其历史权限使用记录。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.PERMISSION_RECORD_TOGGLE
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| status | boolean | 是 | 指定子身份资料的权限使用记录开关状态。`true`表示开启，调用[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)时可正常添加使用记录；`false`表示关闭，并删除该子身份资料的历史权限使用记录。 |
+| subProfileId | number | 是 | 待设置的子身份资料标识符。可通过[OsAccountSubProfile](../apis-basic-services-kit/js-apis-osAccount-sys.md#osaccountsubprofile)对象的`id`字段获取。取值必须为大于0的整数，且必须属于当前用户；传入不存在的标识符时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_RECORD_TOGGLE". |
+| 202 | Not system app. Interface caller is not a system app. |
+| 801 | Capability not supported. |
+| 12100001 | Invalid parameter. The specified subProfileId does not exist for the current user. |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18). |
+| 12100007 | Service exception. |
+| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
+
+**示例：**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+privacyManager.setPermissionUsedRecordToggleStatus(true, subProfileId).then(() => {
   console.info('setPermissionUsedRecordToggleStatus success');
 }).catch((err: BusinessError): void => {
   console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
@@ -480,6 +538,7 @@ getPermissionUsedRecordToggleStatus(): Promise&lt;boolean&gt;
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
 | 202 | Not system app. Interface caller is not a system app. |
+| 12100004 | This API must be used together with [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18).<br>**起始版本：** 26.1.0 |
 | 12100007 | Service exception. |
 
 **示例：**
@@ -496,6 +555,60 @@ privacyManager.getPermissionUsedRecordToggleStatus().then((status) => {
   } else {
     console.info('get status is FALSE');
   }
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## privacyManager.getPermissionUsedRecordToggleStatus
+
+getPermissionUsedRecordToggleStatus(subProfileId: number): Promise&lt;boolean&gt;
+
+获取指定子身份资料的权限使用记录开关状态。适用于系统应用按子身份资料展示或核验权限使用记录开关配置的场景。调用成功后，Promise返回该子身份资料的当前开关状态：`true`表示开启记录，`false`表示关闭记录。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.PERMISSION_USED_STATS
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| subProfileId | number | 是 | 待查询的子身份资料标识符。可通过[OsAccountSubProfile](../apis-basic-services-kit/js-apis-osAccount-sys.md#osaccountsubprofile)对象的`id`字段获取。取值必须为大于0的整数，且必须属于当前用户；传入不存在的标识符时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象，返回指定子身份资料的权限使用记录开关状态。返回`true`表示开关开启，允许[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)添加权限使用记录；返回`false`表示开关关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
+| 202 | Not system app. Interface caller is not a system app. |
+| 801 | Capability not supported. |
+| 12100001 | Invalid parameter. The specified subProfileId does not exist for the current user. |
+| 12100007 | Service exception. |
+
+**示例：**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+privacyManager.getPermissionUsedRecordToggleStatus(subProfileId).then((status: boolean) => {
+  console.info(`getPermissionUsedRecordToggleStatus success, status: ${status}`);
 }).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
