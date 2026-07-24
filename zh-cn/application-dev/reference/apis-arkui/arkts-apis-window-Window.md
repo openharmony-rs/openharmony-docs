@@ -2391,7 +2391,7 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 | 参数名              | 类型                                        | 必填 | 说明                   |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | 是   | 要设置的状态栏颜色值。 |
+| color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | 是   | 要设置的状态栏文字颜色值。 |
 
 **返回值：**
 
@@ -2416,7 +2416,6 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ColorMetrics, window } from '@kit.ArkUI';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...

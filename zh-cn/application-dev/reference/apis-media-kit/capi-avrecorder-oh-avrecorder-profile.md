@@ -33,17 +33,17 @@ typedef struct OH_AVRecorder_Profile {...} OH_AVRecorder_Profile
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t audioBitrate | 音频比特率。单位为比特每秒（bit/s）。 |
-| int32_t audioChannels | 音频通道数。 |
-| [OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype) audioCodec | 音频编码格式。 |
+| int32_t audioBitrate | 音频比特率。单位为比特每秒（bit/s）。取值为0时不录制音频。 |
+| int32_t audioChannels | 音频通道数。取值为0时不录制音频。 |
+| [OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype) audioCodec | 音频编码器MIME类型。 |
 | int32_t audioSampleRate | 音频采样率。单位为赫兹（Hz）。 |
-| [OH_AVRecorder_ContainerFormatType](capi-avrecorder-base-h.md#oh_avrecorder_containerformattype) fileFormat | 输出文件格式。 |
-| int32_t videoBitrate | 视频比特率。单位为比特每秒（bit/s）。 |
-| [OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype) videoCodec | 视频编码格式。 |
-| int32_t videoFrameWidth | 视频宽度。单位为像素（px）。 |
-| int32_t videoFrameHeight | 视频高度。单位为像素（px）。 |
-| int32_t videoFrameRate | 视频帧率。单位为帧率（FPS）。 |
+| [OH_AVRecorder_ContainerFormatType](capi-avrecorder-base-h.md#oh_avrecorder_containerformattype) fileFormat | 容器格式类型。 |
+| int32_t videoBitrate | 视频比特率。单位为比特每秒（bit/s）。数值越大视频质量越好，但文件也越大。 |
+| [OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype) videoCodec | 视频编码器MIME类型。 |
+| int32_t videoFrameWidth | 视频宽度。单位为像素（px）。取值为0时不录制视频。 |
+| int32_t videoFrameHeight | 视频高度。单位为像素（px）。取值为0时不录制视频。 |
+| int32_t videoFrameRate | 视频帧率。单位为帧每秒（FPS）。 |
 | bool isHdr | 是否录制HDR视频。 <br> true表示录制HDR视频，false表示不录制HDR视频。<br> 默认是false。 |
-| bool enableTemporalScale | 是否支持时域分层编码功能。<br> true表示编码输出的码流中部分帧可以支持跳过不编码，false表示编码输出的码流中所有帧不支持跳过不编码，详情请参考[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md)。<br> 默认是false。 |
+| bool enableTemporalScale | 是否启用时域分层编码功能。<br> true表示编码输出的码流中部分帧可被跳过不编码，false表示编码输出的码流中所有帧均需编码，详情请参考[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md)。<br> 默认是false。 |
 
 
