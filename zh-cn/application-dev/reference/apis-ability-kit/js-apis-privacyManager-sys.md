@@ -1596,7 +1596,7 @@ onActiveStateChange(permissionList: Array&lt;Permissions&gt;, callback: Callback
 | 12100001 | Invalid parameter. The permissionList exceeds the size limit, or the permissionNames in the list are all invalid. |
 | 12100004 | The API is used repeatedly with the same input. |
 | 12100005 | The registration time has exceeded the limit. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **示例：**
@@ -1657,7 +1657,7 @@ offActiveStateChange(permissionList: Array&lt;Permissions&gt;, callback?: Callba
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionList is not in the listening list. |
 | 12100004 | The API is not used in pair with "onActiveStateChange". |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **示例：**
