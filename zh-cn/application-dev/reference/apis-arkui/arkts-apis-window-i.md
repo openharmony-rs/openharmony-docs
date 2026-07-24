@@ -541,7 +541,7 @@
 | rect  | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 否   | 窗口尺寸。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23|
 | bundleName  | string   | 否   | 否   | 应用Bundle的名称。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23|
 | abilityName | string   | 否   | 否   | Ability的名称。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23|
-| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 窗口ID。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本:** 23|
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 窗口ID，该参数为整数。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本:** 23|
 | windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | 否   | 否   | 窗口模式枚举。<br>**ArkTS-Dyn起始版本:** 18<br>**ArkTS-Sta起始版本:** 23|
 | isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-apis-window-Window.md#isfocused12)接口一致。<br>**ArkTS-Dyn起始版本:** 18<br>**ArkTS-Sta起始版本:** 23|
 | globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸，其中的宽高是未经缩放计算过的原始值。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。<br>**ArkTS-Dyn起始版本:** 20<br>**ArkTS-Sta起始版本:** 23|
@@ -732,7 +732,7 @@
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
 | displayId |ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 主窗口所在的屏幕ID。 |
-| windowId  |ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 主窗口ID。|
+| windowId  |ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 主窗口ID，该参数为整数。|
 | showing   | boolean | 否 | 否 | 主窗口的前后台状态。true表示主窗口在前台，false表示主窗口不在前台。|
 | label     | string  | 否 | 否 | 主窗口的任务名称。 |
 
@@ -748,4 +748,4 @@
 
 | 名称     | 类型      | 只读 | 可选 | 说明               |
 | -------- | -------- | ---- | ---- | ------------------ |
-| useCache | boolean  | 否   | 是   | 是否使用主窗口的已有截图。默认值为true。 true表示使用主窗口的已有截图，若主窗口无保存的截图，则使用主窗口的最新截图。false表示使用主窗口的最新截图。|
+| useCache | boolean  | 否   | 是   | 是否使用主窗口的已有截图。默认值为true。true表示优先使用已有截图，若不存在则使用最新截图。false表示直接使用最新截图。|
