@@ -19238,7 +19238,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets",
 				"functions":[
 					{
-						"end_line":226,
+						"end_line":239,
 						"name":"arcAlphabetIndexer_start",
 						"start_line":60
 					}
