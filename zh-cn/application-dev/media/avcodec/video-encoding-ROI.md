@@ -534,12 +534,11 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
    <!-- @[roi_buffer_mode_fill_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp) -->
    
    ``` C++
-   static void FillBufferModeInput(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer,
-       CodecUserData *codecUserData)
+   void Recorder::FillBufferModeInput(uint32_t index, OH_AVBuffer *buffer)
    {
        FrameItem frameItem;
-       if (!codecUserData->frameQueue->Pop(frameItem, std::chrono::milliseconds(FRAME_QUEUE_POP_TIMEOUT_MS))) {
-           OH_VideoEncoder_PushInputBuffer(codec, index);
+       if (!encContext_->frameQueue->Pop(frameItem, std::chrono::milliseconds(FRAME_QUEUE_POP_TIMEOUT_MS))) {
+           OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
            return;
        }
        uint8_t *bufferAddr = OH_AVBuffer_GetAddr(buffer);
@@ -558,6 +557,6 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
                OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, frameItem.roiStr.c_str());
            }
        }
-       OH_VideoEncoder_PushInputBuffer(codec, index);
+       OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
    }
    ```
