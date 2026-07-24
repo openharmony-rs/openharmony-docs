@@ -111,7 +111,7 @@ In component reuse V1, components in the reuse pool are frozen only when the **f
 
 **Migration Rules**
 
-In component reuse V1, **LazyForEach** is often used with component reuse to implement high-performance lazy loading. In component reuse V2, you are advised to use [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) instead of [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md). **Repeat** can reuse components. Compared with **LazyForEach**, **Repeat** has simpler APIs and better performance. For details about how to migrate **LazyForEach** to **Repeat**, see Migrating from LazyForEach to Repeat.
+In component reuse V1, **LazyForEach** is often used with component reuse to implement high-performance lazy loading. In component reuse V2, you are advised to use [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) instead of [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md). **Repeat** can reuse components. Compared with **LazyForEach**, **Repeat** has simpler APIs and better performance. For details about how to migrate **LazyForEach** to **Repeat**, see [Migrating from LazyForEach to Repeat](./arkts-v1-v2-migration-rendering-control-repeat.md#from-lazyforeach-to-repeat) .
 
 
 ## @Reusable -> @ReusableV2 Migration Example
