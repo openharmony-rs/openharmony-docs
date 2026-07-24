@@ -23196,9 +23196,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":40,
 						"name":"thing_view_model",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -25522,7 +25522,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":75,
 						"name":"provide_consume_Builder_Node",
 						"start_line":15
 					}
