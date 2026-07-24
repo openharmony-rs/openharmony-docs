@@ -16,7 +16,7 @@
 
 ## ContextMenuOptions<sup>10+</sup>
 
-菜单项的信息。
+菜单选项信息。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

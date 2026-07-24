@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-表示任务的详细信息，可以通过[getMissionInfo](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissioninfo)获取。
+表示任务的详细信息，包含任务ID、运行状态、创建或更新时间等，适用于系统任务管理场景中查询和管理任务状态。可以通过[getMissionInfo](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissioninfo)获取。
 
 > **说明：**
 >
@@ -31,12 +31,12 @@ import { missionManager } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| missionId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 表示任务ID。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| runningState | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 表示运行状态。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| missionId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 表示任务ID，用于唯一标识一个任务实例。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| runningState | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 表示任务的运行状态。0表示启用，任务活跃有效，对应的Ability正在运行或可恢复到前台；-1表示未启用，任务已关闭、销毁或不可恢复。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | lockedState | boolean | 否 | 否 | 表示锁定状态。返回true表示锁定状态，返回false表示未锁定状态。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| timestamp | string | 否 | 否 | 表示任务的最近创建或更新时间。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| timestamp | string | 否 | 否 | 表示任务的最近创建或更新时间。单位：ns。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | want | [Want](js-apis-app-ability-want.md) | 否 | 否 | 表示任务的Want信息。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| label | string | 否 | 否 | 表示任务的标签。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| label | string | 否 | 否 | 表示任务的标签，用于在任务列表中显示的任务名称。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | iconPath | string | 否 | 否 | 表示任务的图标路径。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | continuable | boolean | 否 | 否 | 表示任务是否可以迁移。返回true表示可以迁移，返回false表示不可迁移。<br>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | abilityState<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 表示此任务的能力状态。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
@@ -49,6 +49,7 @@ import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 获取任务详细信息
   missionManager.getMissionInfo('', 1, (error, data) => {
     if (error) {
       // 处理业务逻辑错误

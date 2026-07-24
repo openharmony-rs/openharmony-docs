@@ -41,7 +41,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
+  // 获取指定应用的多实例运行信息
   appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
     hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
   }).catch((error: Error) => {

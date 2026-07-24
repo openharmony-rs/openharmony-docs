@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 长时任务是指执行时间较长，但仍可以表达为一次任务执行过程的任务。ArkTS-Sta中可使用[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)提供的LongTask构造长时任务，并通过taskpool.execute提交执行。
 

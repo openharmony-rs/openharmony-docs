@@ -1,4 +1,4 @@
-# SceneResource
+# SceneResources
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
@@ -6,7 +6,7 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供3D图形中常用的基本资源类型。
+本模块提供ArkGraphics 3D中常用的基本资源类型，包括着色器、材质、网格、动画、环境或图片等用于构建3D场景的各类资源。
 
 > **说明：**
 >
@@ -16,9 +16,9 @@
 ## 导入模块
 
 ```ts
-import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
-  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream } from '@kit.ArkGraphics3D';
+import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, PolygonMode, Material, MaterialProperty,
+  MetallicRoughnessMaterial, ShaderMaterial, UnlitMaterial, OcclusionMaterial, SamplerFilter, SamplerAddressMode, Sampler, SubMesh,
+  Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream, Effect } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceType
@@ -96,7 +96,7 @@ function destroy(): void {
 
 ## Shader
 
-着色器，继承自[SceneResource](#sceneresource-1)。
+着色器，继承自[SceneResource](#sceneresource)。
 
 ### 属性
 
@@ -118,7 +118,7 @@ ArkTS-Sta: setShaderInputs(inputs: Record<string, double \| Vec2 \| Vec3 \| Vec4
 
 设置[Shader](#shader)的输入，该接口性能优于直接设置inputs属性。
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束：**  此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -166,7 +166,7 @@ function setinputs(): void {
         "uTime": 1.0,
         "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
         "uTexture": image
-      })
+      });
     }
   });
 }
@@ -281,7 +281,7 @@ function setinputs(): void {
 
 ## Material
 
-材质类型，继承自[SceneResource](#sceneresource-1)。
+材质类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -290,7 +290,7 @@ function setinputs(): void {
 | materialType | [MaterialType](#materialtype) | 是 | 否 | 材质类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | shadowReceiver<sup>20+</sup> | boolean | 否 | 是 | 材质是否接收阴影。true表示该材质接收阴影，false表示不接收，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | cullMode<sup>20+</sup> | [CullMode](#cullmode20) | 否 | 是 | 当前材质的剔除模式设置，用于控制是否剔除背面几何面片，默认值为BACK。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| blend<sup>20+</sup> | [Blend](#blend20) | 否 | 是 | 材质是否透明，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| blend<sup>20+</sup> | [Blend](#blend20) | 否 | 是 | 材质的透明效果设置，默认值为undefined。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | alphaCutoff<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 透明通道阈值，如果像素的alpha值等于或高于此阈值，则渲染该像素；如果低于此阈值，则不会渲染该像素。设置值小于1时，则开启该模式，取值范围为[0, 1]，默认值为1。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | 否 | 是 | 渲染排序设置，用于控制材质在渲染管线中的渲染顺序，渲染图层id默认值为32，同一图层内的渲染顺序默认值为0。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | polygonMode<sup>23+</sup> | [PolygonMode](#polygonmode23) | 否 | 是 | 模型的多边形绘制模式，默认值为FILL。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
@@ -328,7 +328,7 @@ function setinputs(): void {
 | material | [MaterialProperty](#materialproperty20) | 否 | 否 | 金属材质参数。<br>粗糙度（Roughness）：表达材质因其表面细微的结构细节所导致的反光强弱程度。<br>金属度（Metallic）：表达材质的金属属性。<br>反射度（Reflectance）：材质的光反射率。|
 | ambientOcclusion | [MaterialProperty](#materialproperty20) | 否 | 否 | 环境光遮蔽贴图，用于模拟环境光在物体凹陷或细节部分的遮挡效果，增强局部阴影表现，提高细节真实感。|
 | emissive | [MaterialProperty](#materialproperty20) | 否 | 否 | 自发光颜色，表达材质自身作为光源向外发光的颜色信息。|
-| clearCoat | [MaterialProperty](#materialproperty20) | 否 | 否 | 透明图层，类似于车漆、碳纤、被水打湿的表面的材质需要在面上再增加一个透明的、具有一定反光特性的面。|
+| clearCoat | [MaterialProperty](#materialproperty20) | 否 | 否 | 透明图层，用于在材质表面叠加一层具有反光特性的透明图层，可模拟车漆、碳纤、被水打湿的表面等材质的光泽表现。|
 | clearCoatRoughness | [MaterialProperty](#materialproperty20) | 否 | 否 | 透明图层粗糙度。|
 | clearCoatNormal | [MaterialProperty](#materialproperty20) | 否 | 否 | 透明图层法线贴图。|
 | sheen | [MaterialProperty](#materialproperty20) | 否 | 否 | 微纤维漫反射材质光泽，可用于表示布料和织物材料。|
@@ -453,7 +453,7 @@ function setinputs(): void {
 
 ## Mesh
 
-网格类型，继承自[SceneResource](#sceneresource-1)。
+网格类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -469,7 +469,7 @@ function setinputs(): void {
 
 ## MeshResource<sup>18+</sup>
 
-网格资源，继承自[SceneResource](#sceneresource-1)。
+网格资源，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -479,7 +479,7 @@ function setinputs(): void {
 
 ## Animation
 
-动画类型，继承自[SceneResource](#sceneresource-1)。
+动画类型，继承自[SceneResource](#sceneresource)。
 
 ### 属性
 
@@ -635,7 +635,7 @@ ArkTS-Dyn: seek(position: number): void
 
 ArkTS-Sta: seek(position: double): void
 
-从指定位置开始播放动画。
+将动画进度跳转到指定位置，不改变动画的播放状态（已播放仍继续播放，已暂停仍暂停）。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -701,7 +701,7 @@ function start(): void {
 
 stop(): void
 
-停止播放一个动画，并将动画的进度设置到未开始状态。
+停止播放一个动画，并将动画的进度设置为0。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -720,7 +720,7 @@ function stop(): void {
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
-      // 停止播放动画，并将动画的进度设置到未开始状态
+      // 停止播放动画，并将动画的进度设置为0
       anim.stop();
     }
   });
@@ -731,7 +731,7 @@ function stop(): void {
 
 finish(): void
 
-直接跳转到动画的最后，并将动画的进度设置到已结束状态。
+直接跳转到动画的最后，并将动画的进度设置为1。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -750,7 +750,7 @@ function finish(): void {
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
-      // 直接跳转到动画的最后，并将动画的进度设置到已结束状态。
+      // 直接跳转到动画的最后，并将动画的进度设置为1。
       anim.finish();
     }
   });
@@ -776,7 +776,7 @@ function finish(): void {
 
 ## Environment
 
-环境类型，继承自[SceneResource](#sceneresource-1)。
+环境类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -789,11 +789,11 @@ function finish(): void {
 | environmentImage | [Image](#image) \| null | 否 | 是 | 环境图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | radianceImage | [Image](#image) \| null | 否 | 是 | 辐射图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | 否 | 是 | 辐射系数，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
+| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Image
 
-图片类型，继承自[SceneResource](#sceneresource-1)。
+图片类型，继承自[SceneResource](#sceneresource)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -819,11 +819,11 @@ function finish(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| surfaceId | string | 是 | 否 | 流ID，取值范围大于0。 |
+| surfaceId | string | 是 | 否 | 流ID，由数字字符组成，数字取值必须为大于0的整数。 |
 
 ## Effect<sup>21+</sup>
 
-特效类型，继承自[SceneResource](#sceneresource-1)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
+特效类型，继承自[SceneResource](#sceneresource)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
 
 ### 属性
 

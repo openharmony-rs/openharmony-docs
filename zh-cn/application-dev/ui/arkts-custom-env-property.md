@@ -115,11 +115,11 @@ struct Child {
 |是否有响应式能力|有，当WithEnv设置的值变化时，会通知\@CustomEnv装饰的变量更新，并通知关联组件刷新。|有，当系统环境变量变化时，会通知\@Env装饰的变量更新，并通知关联组件刷新。|
 
 ## 限制条件
-- \@CustomEnv仅支持在\@Component和\@ComponentV2中使用，否则会有编译时报错。
+- \@CustomEnv仅支持在\@Component和\@ComponentV2中使用，否则会有编译报错。
 ```ts
 
 const custom = CustomEnvKey.create<string>();
-// 错误用法，编译时报错
+// 错误用法，编译报错
 class CustomEnvKey {
   @CustomEnv(custom) customVarName: string = 'hello world'; 
 }
@@ -156,7 +156,7 @@ struct Index {
 }
 ```
 
-- \@CustomEnv装饰的变量为只读属性，不允许开发者进行赋值操作，否则会有编译时报错。
+- \@CustomEnv装饰的变量为只读属性，不允许开发者进行赋值操作，否则会有编译报错。
 ```ts
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
@@ -172,7 +172,7 @@ struct Index {
     Column() {
       Button('update')
         .onClick(() => {
-          this.customVarName = 'Change Message'; // 错误用法，编译时报错
+          this.customVarName = 'Change Message'; // 错误用法，编译报错
         })
 
       WithEnv() {
@@ -196,7 +196,7 @@ struct PageOne {
 
   build() {
     Column() {
-      Child({ firstValue: this.defaultMessage }) // 错误用法，编译时报错
+      Child({ firstValue: this.defaultMessage }) // 错误用法，编译报错
     }
   }
 }
@@ -261,7 +261,7 @@ struct Child {
 
 ### 支持自定义key和value
 
-新增的状态管理装饰器\@CustomEnv支持自定义key配置，并且可以指定变量的初始值。语法格式为：`@CustomEnv(custom) customVarName: string = 'hello world'`。其中'custom'为开发者自定义的环境变量key，'hello world'为该变量的初始值。
+新增的状态管理装饰器\@CustomEnv支持自定义key配置，并且可以指定变量的初始值。语法格式为：`@CustomEnv(custom) customVarName: string = 'hello world'`。其中`custom`为开发者自定义的环境变量key，`hello world`为该变量的初始值。
 
 ```ts
 

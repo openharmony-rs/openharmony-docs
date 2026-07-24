@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-图像滤波器。
+图像滤波器，用于对图像应用各种滤波效果，支持创建模糊、颜色混合、级联组合、偏移、基于着色器等多种图像滤波器。
 
 > **说明：**
 >
@@ -54,7 +54,7 @@ ArkTS-Sta: static createBlurImageFilter(sigmaX: double, sigmaY: double, tileMode
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。创建失败时返回undefined。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的模糊图像滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -62,7 +62,7 @@ ArkTS-Sta: static createBlurImageFilter(sigmaX: double, sigmaY: double, tileMode
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
 **示例：**
 
@@ -78,7 +78,7 @@ ArkTS-Dyn: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.R
 
 ArkTS-Sta: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter | undefined
 
-基于给定的图像创建一个图像滤波器。此接口不建议用于录制类型的画布，会影响性能。
+基于给定的图像创建一个图像滤波器。此接口不建议用于录制类型的画布（即用于记录绘制指令而非直接渲染的Canvas对象），会影响性能。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -90,22 +90,22 @@ ArkTS-Sta: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.R
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 图片对象。 |
-| srcRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | 否   | 可选参数，默认为空。图片要被此滤波器使用的像素区域，如果为空，则使用pixelmap全部区域。 |
-| dstRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | 否   | 可选参数，默认为空。要进行渲染的区域，如果为空，则和srcRect保持一致。 |
+| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 图像对象。 |
+| srcRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | 否   | 可选参数，默认为null。此滤波器要使用的图像的像素区域，如果为null，则使用pixelmap全部区域。 |
+| dstRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | 否   | 可选参数，默认为null。要进行渲染的区域，如果为null，则和srcRect保持一致。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回基于图像创建的图像滤波器。 |
 
 **示例：**
 
 ArkTS-Dyn示例：
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
@@ -118,9 +118,9 @@ class DrawingRenderNode extends RenderNode {
     const colorData = new Uint8Array(color);
     for (let i = 0; i < colorData.length; i += 4) {
       colorData[i] = 255;
-      colorData[i+1] = 156;
-      colorData[i+2] = 0;
-      colorData[i+3] = 255;
+      colorData[i + 1] = 156;
+      colorData[i + 2] = 0;
+      colorData[i + 3] = 255;
     }
 
     let opts : image.InitializationOptions = {
@@ -157,9 +157,9 @@ class DrawingRenderNode extends RenderNode {
     const colorData = new Uint8Array(color);
     for (let i = 0; i < colorData.length; i += 4) {
       colorData[i] = 255;
-      colorData[i+1] = 156;
-      colorData[i+2] = 0;
-      colorData[i+3] = 255;
+      colorData[i + 1] = 156;
+      colorData[i + 2] = 0;
+      colorData[i + 3] = 255;
     }
 
     let opts : image.InitializationOptions = {
@@ -204,7 +204,7 @@ ArkTS-Sta: static createBlendImageFilter(mode: BlendMode, background: ImageFilte
 
 | 类型                  | 说明            |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回按照指定混合模式叠加后的图像滤波器。 |
 
 **错误码：**
 
@@ -256,7 +256,7 @@ ArkTS-Dyn: static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFil
 
 ArkTS-Sta: static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter | undefined
 
-将两个图像滤波器进行级联生成新的图像滤波器，级联时会将第一级滤波器的输出作为第二级滤波器的输入，经过第二级滤波器处理后，输出最终的滤波结果。
+将两个图像滤波器进行级联，生成新的图像滤波器，级联时会将第一级滤波器的输出作为第二级滤波器的输入，经过第二级滤波器处理后，输出最终的滤波结果。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -275,7 +275,7 @@ ArkTS-Sta: static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFil
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回级联后的图像滤波器。 |
 
 **示例：**
 
@@ -330,7 +330,7 @@ ArkTS-Dyn: static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: 
 
 ArkTS-Sta: static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter | undefined
 
-创建一个将颜色滤波器应用于传入的图像滤波器的图像滤波器。
+创建一个图像滤波器，将指定的颜色滤波器应用于输入的图像滤波器。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -349,7 +349,7 @@ ArkTS-Sta: static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: 
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。创建失败时返回undefined。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回颜色滤波器叠加后的图像滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -399,13 +399,13 @@ ArkTS-Sta: static createOffsetImageFilter(dx: double, dy: double, input?: ImageF
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | dx | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 水平方向的平移距离， 该参数为浮点数。 |
 | dy | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 竖直方向的平移距离， 该参数为浮点数。 |
-| input | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | 需进行平移的滤波器。默认为空，如果为空，则将无滤波效果的绘制结果进行平移。 |
+| input | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | 需要进行平移的滤波器。默认为null，如果为null，则将无滤波效果的绘制结果进行平移。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回偏移后的图像滤波器。 |
 
 **示例：**
 
@@ -441,7 +441,7 @@ ArkTS-Sta: static createFromShaderEffect(shader: ShaderEffect): ImageFilter | un
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回基于着色器创建的图像滤波器。 |
 
 **示例：**
 

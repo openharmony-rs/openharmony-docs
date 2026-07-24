@@ -12,7 +12,7 @@ typedef struct OH_AVRecorder_Range {...} OH_AVRecorder_Range
 
 ## 概述
 
-表示类型的范围。
+表示AVRecorder相关参数（如比特率、帧率等）的取值范围。
 
 **起始版本：** 18
 

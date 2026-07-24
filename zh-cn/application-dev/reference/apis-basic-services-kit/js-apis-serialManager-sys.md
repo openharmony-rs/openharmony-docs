@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供串口管理功能，包括打开和关闭设备的串口、写入和读取数据、设置和获取串口的配置参数、权限管理等，适用于物联网设备通信、工业自动化控制、硬件设备调试、传感器数据采集等需要串口通信的场景。串口管理采用系统级权限控制机制，系统级权限控制机制指由系统统一管理和验证串口设备访问权限，应用需要通过系统接口获取访问权限后方可对串口设备进行读写操作，解决了安全访问控制和设备隔离的核心问题，为应用提供了安全的串口通信能力，简化了应用开发流程，提升了系统安全性和设备管理规范性。
+串口管理采用系统级权限控制机制，由系统统一管理和验证串口设备访问权限，应用需要通过系统接口获取访问权限后方可对串口设备进行读写操作，解决了安全访问控制和设备隔离问题。
 
 > **说明：**
 >
@@ -31,7 +31,7 @@ ArkTS-Sta: addSerialRight(tokenId: int, portId: int): void
 
 **使用场景**：
 - 系统应用在静默授权且无需用户确认的场景下使用，静默授权指系统应用在无需用户交互的情况下，直接通过系统接口获取串口设备访问权限的方式，如系统内部组件间通信、后台服务自动连接串口设备。
-- 与requestSerialRight的区别：serialManager.requestSerialRight会触发弹窗请求用户授权，适用于需要用户明确授权的场景；addSerialRight不触发弹窗，而是直接添加应用程序访问设备的权限，适用于系统应用自动化管理的场景。应用退出后，系统会自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。
+- 与requestSerialRight的区别：[serialManager.requestSerialRight](js-apis-serialManager.md#serialmanagerrequestserialright)会触发弹窗请求用户授权，适用于需要用户明确授权的场景；addSerialRight不触发弹窗，而是直接添加应用程序访问设备的权限，适用于系统应用自动化管理的场景。应用退出后，系统会自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。
 
 **系统接口：** 此接口为系统接口
 
@@ -47,7 +47,7 @@ ArkTS-Sta: addSerialRight(tokenId: int, portId: int): void
 
 | 参数名     | 类型     | 必填 | 说明                                  |
 |---------|--------|----|-------------------------------------|
-| tokenId | ArkTS-Dyn: number<br> ArkTS-Sta: int| 是  | 应用访问令牌ID，标识需要访问串口设备权限的应用。可通过bundleManager.getBundleInfoForSelf获取bundleInfo.appInfo.accessTokenId来获得。|
+| tokenId | ArkTS-Dyn: number<br> ArkTS-Sta: int| 是  | 应用访问令牌ID，标识需要访问串口设备权限的应用。可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。|
 | portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 串口设备的端口号，用于唯一标识串口设备，可通过[serialManager.getPortList](js-apis-serialManager.md#serialmanagergetportlist)获取有效的端口号。需确保端口号存在否则会返回31400003错误。|
 
 **返回值：**

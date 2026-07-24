@@ -564,7 +564,7 @@ if (currWindow) {
 }
 ```
 
-### 销毁未完成导致createSubWindow创建同名子窗失败
+### 销毁未完成导致createSubWindow创建同名子窗口失败
 
 开发者在[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)创建窗口对象后，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)，在窗口还未销毁的情况下，再次调用[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)，且使用相同名称，导致窗口创建失败，报错1300002。
 
@@ -689,7 +689,7 @@ onPageHide() {
 错误码1300004表示无权限操作，常见于窗口类型与接口不匹配场景。
 
 
-### 子窗调用restore失败
+### 子窗口调用restore失败
 
 开发者对子窗口调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口，导致操作失败，报错1300004。
 

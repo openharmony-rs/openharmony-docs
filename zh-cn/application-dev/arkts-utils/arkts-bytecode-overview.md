@@ -5,7 +5,7 @@
 <!--Owner: @jokerxd-liu; @zmw1-->
 <!--Designer: @huyunhui1; @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 方舟字节码是ArkTS/TS/JS源码经编译工具链生成的二进制执行载体，以 `*.abc` 文件形式由方舟运行时在设备侧加载、校验并执行。与仅关注源码层语法不同，字节码层保留了类型、方法、字段及指令序列等编译期决策结果，是连接编译器、运行时与诊断工具的关键接口。
 

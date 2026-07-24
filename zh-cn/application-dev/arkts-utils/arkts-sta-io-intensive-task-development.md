@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 I/O密集型任务的性能瓶颈通常在磁盘读写、数据库访问或网络通信上。单次I/O操作可以通过异步接口减少阻塞，但大量I/O任务集中执行时，仍可能占用当前线程调度资源。ArkTS-Sta中可使用[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)将密集I/O任务调度到后台线程执行。
 

@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 > **说明：**
@@ -198,7 +198,7 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 **处理步骤**<br/>
 1. 确认HAP或APP是否存在。
 2. 查看HAP或APP的可执行权限，是否可读。
-3. 查看HAP的大小是否超过4G。
+3. 查看HAP的大小是否超过4GB。
 
 ## 17700015 多个HAP配置信息不同导致应用安装失败
 
@@ -454,7 +454,7 @@ Failed to install the HAP because the overlay check of the HAP failed.
 **处理步骤**<br/>
 1. 检查overlay特征应用是否为预置应用。
 2. 检查目标应用是否为预置应用。
-3. 检查目标应用是否不为overlay特征的应用
+3. 检查目标应用是否不为overlay特征的应用。
 4. 检查目标module是否不为overlay特征的module。<!--DelEnd-->
 
 ## 17700032 指定的应用不包含overlay特征的module
@@ -552,7 +552,7 @@ The specified shared bundle does not exist.
 当卸载shared library时，卸载的shared library不存在。
 
 **可能原因**<br/>
-1. 当前指定卸载的版本不存在与被卸载的shared library中。
+1. 当前指定卸载的版本不存在于被卸载的shared library中。
 2. 当前指定卸载的shared library在设备中不存在。
 
 **处理步骤**<br/>
@@ -654,10 +654,10 @@ Failed to uninstall the HAP because the uninstall is forbidden by enterprise dev
 卸载应用时，[admin权限管理](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)不允许卸载。
 
 **可能原因**<br/>
-企业设备管理不允许安装该应用。
+企业设备管理不允许卸载该应用。
 
 **处理步骤**<br/>
-请在设备中检查应用是否被企业设备管理禁止卸载安装。
+请在设备中检查应用是否被企业设备管理禁止卸载。
 
 ## 17700047 要更新的应用版本没有大于当前版本
 **错误信息**<br/>
@@ -1292,6 +1292,47 @@ The specified skillName is not found.
 1. 排查skillName，确认拼写无误。
 2. 使用[bm工具](../../tools/bm-tool.md)安装对应Skill所在的应用。
 
+<!--Del-->
+## 17700094 指定的应用未创建分身
+
+**错误信息**
+
+The specified bundle did not create a clone.
+
+**错误描述**
+
+设置应用分身偏好时，指定的应用未创建分身。
+
+**可能原因**
+
+指定的应用未创建任何分身。
+
+**处理步骤**
+
+1. 使用[bundleManager.getAppCloneBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetappclonebundleinfo12)确认应用是否已创建分身。
+2. 创建应用分身后重试。
+
+## 17700095 指定的应用未找到分身偏好
+
+**错误信息**
+
+The specified bundle not found app clone preference.
+
+**错误描述**
+
+查询应用分身偏好时，指定的应用未设置分身偏好。
+
+**可能原因**
+
+1. 应用从未设置过分身偏好。
+2. 应用分身偏好已被清除。
+
+**处理步骤**
+
+1. 确认应用是否需要分身偏好。
+2. 使用[bundleManager.setAppClonePreference](js-apis-bundleManager-sys.md#bundlemanagersetappclonepreference)设置分身偏好后重试。
+<!--DelEnd-->
+
 ## 17700101 包管理服务异常
 **错误信息**<br/>
 Bundle manager service exception.
@@ -1535,7 +1576,7 @@ Invalid fileTypes.
 
 ## 18100001 ShortcutInfo列表中bundleName和appIndex不一一对应
 **错误信息**<br/>
-A combination of bundleName and appIndex in the shutcutInfo list is different from the others.
+A combination of bundleName and appIndex in the shortcutInfo list is different from the others.
 
 **错误描述**<br/>
 shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致。

@@ -1173,7 +1173,7 @@ ArkTS-Sta: killProcessesByBundleName(bundleName: string, clearPageStack: boolean
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -1280,7 +1280,7 @@ Ability状态信息。
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbilityStateData](js-apis-inner-application-abilityStateData.md) | Ability状态信息。 |
+| _[AbilityStateData](js-apis-inner-application-abilityStateData.md).default | Ability状态信息。 |
 
 ## AbilityStateData<sup>23+</sup>
 
@@ -1296,7 +1296,7 @@ Ability状态信息。
 
 | 类型                                                         | 说明              |
 | ------------------------------------------------------------ | ----------------- |
-| [_AbilityStateData](js-apis-inner-application-abilityStateData.md) | Ability状态信息。 |
+| _[AbilityStateData](js-apis-inner-application-abilityStateData.md) | Ability状态信息。 |
 
 ## AppStateData<sup>14+</sup>
 
@@ -1312,7 +1312,7 @@ type AppStateData = _AppStateData.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [AppStateData](js-apis-inner-application-appStateData.md) | 应用状态信息。 |
+| _[AppStateData](js-apis-inner-application-appStateData.md).default | 应用状态信息。 |
 
 ## AppStateData<sup>23+</sup>
 
@@ -1328,7 +1328,7 @@ type AppStateData = _AppStateData
 
 | 类型                                                       | 说明           |
 | ---------------------------------------------------------- | -------------- |
-| [_AppStateData](js-apis-inner-application-appStateData.md) | 应用状态信息。 |
+| _[AppStateData](js-apis-inner-application-appStateData.md) | 应用状态信息。 |
 
 ## ApplicationStateObserver<sup>14+</sup>
 
@@ -1344,7 +1344,7 @@ type ApplicationStateObserver = _ApplicationStateObserver.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 应用状态监听器。 |
+| _[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md).default | 应用状态监听器。 |
 
 ## ApplicationStateObserver<sup>23+</sup>
 
@@ -1360,7 +1360,7 @@ ApplicationStateObserver模块。
 
 | 类型                                                         | 说明                           |
 | ------------------------------------------------------------ | ------------------------------ |
-| [_ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | ApplicationStateObserver模块。 |
+| _[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | ApplicationStateObserver模块。 |
 
 ## ProcessInformation
 
@@ -1378,7 +1378,7 @@ type ProcessInformation = _ProcessInformation
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ProcessInformation](js-apis-inner-application-processInformation.md) | 进程信息。 |
+| _[ProcessInformation](js-apis-inner-application-processInformation.md) | 进程信息。 |
 
 ## ProcessData<sup>14+</sup>
 
@@ -1394,7 +1394,7 @@ type ProcessData = _ProcessData.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [ProcessData](js-apis-inner-application-processData.md) | 进程数据。 |
+| _[ProcessData](js-apis-inner-application-processData.md).default | 进程数据。 |
 
 ## ProcessData<sup>23+</sup>
 
@@ -1410,4 +1410,4 @@ type ProcessData = _ProcessData
 
 | 类型                                                     | 说明       |
 | -------------------------------------------------------- | ---------- |
-| [_ProcessData](js-apis-inner-application-processData.md) | 进程数据。 |
+| _[ProcessData](js-apis-inner-application-processData.md) | 进程数据。 |

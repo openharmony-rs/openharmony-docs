@@ -13,7 +13,7 @@
 > - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口均为系统接口。
+> - 本模块接口均为系统接口。
 
 ## 导入模块
 
@@ -27,12 +27,6 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 
 订阅通知并指定订阅信息。使用callback异步回调。
 
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**废弃版本**：26.0.0
-
 **替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -40,6 +34,12 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -55,9 +55,9 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 
 | 错误码ID | 错误信息                             |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -121,12 +121,6 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 
 订阅当前用户下所有应用的通知。使用callback异步回调。
 
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**废弃版本**：26.0.0
-
 **替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification)
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -134,6 +128,12 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -148,9 +148,9 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -204,12 +204,6 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 
 订阅通知并指定订阅信息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**废弃版本**：26.0.0
-
 **替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -217,6 +211,12 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -237,9 +237,9 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -286,10 +286,6 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -297,6 +293,10 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -363,10 +363,6 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 
 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -374,6 +370,10 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 **需要权限**：ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -394,7 +394,7 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied.     |
 | 202      | Not system application to call the interface.     |
 | 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -472,9 +472,9 @@ subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
-| -------- | ----------------------------------- | 
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| -------- | ----------------------------------- |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -544,8 +544,9 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.<br> 适用版本：9-19                                      |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -624,8 +625,9 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.<br> 适用版本：9-19                                      |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -645,7 +647,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.unsubscribe(subscriber).then(() => {
   console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -660,7 +662,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.unsubscribe(subscriber).then(() => {
   console.info("unsubscribe success");
 }).catch((err: Error): void => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`unsubscribe fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -695,9 +698,9 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -790,9 +793,9 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -817,7 +820,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -836,8 +839,9 @@ let notificationKey: notificationSubscribe.NotificationKey = {
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
   console.info("remove success");
-}).catch((err: Error): void  => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -871,9 +875,9 @@ remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback\<void\>):
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -948,9 +952,9 @@ remove(hashCode: string, reason: RemoveReason): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -967,7 +971,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCode, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -978,7 +982,8 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCode, reason).then(() => {
   console.info("remove success");
 }).catch((err: Error): void => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1012,9 +1017,9 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason, callback: AsyncCallback
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1088,9 +1093,9 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1106,7 +1111,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCodes, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1117,7 +1122,8 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCodes, reason).then(() => {
   console.info("remove success");
 }).catch((err: Error): void => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1150,9 +1156,9 @@ removeAll(bundle: BundleOption, callback: AsyncCallback\<void\>): void
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1223,9 +1229,9 @@ removeAll(callback: AsyncCallback\<void\>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1294,9 +1300,9 @@ removeAll(bundle?: BundleOption): Promise\<void\>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1312,7 +1318,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 notificationSubscribe.removeAll().then(() => {
   console.info("removeAll success");
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1322,7 +1328,8 @@ ArkTS-Sta示例：
 notificationSubscribe.removeAll().then(() => {
   console.info("removeAll success");
 }).catch((err: Error): void => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`removeAll fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1357,9 +1364,9 @@ ArkTS-Sta: removeAll(userId: int, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1435,9 +1442,9 @@ ArkTS-Sta: removeAll(userId: int): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1453,7 +1460,7 @@ let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
   console.info("removeAll success");
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1463,7 +1470,8 @@ let userId: int = 1;
 notificationSubscribe.removeAll(userId).then(() => {
   console.info("removeAll success");
 }).catch((err: Error): void => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`removeAll fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1502,9 +1510,9 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600010  | Distributed operation failed.                     |
 | 1600021  | Distributed operation timed out.                    |
 
@@ -1524,7 +1532,7 @@ let operationInfo: notificationSubscribe.OperationInfo = {
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
   console.info("distributeOperation success");
 }).catch((err: BusinessError) => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+  console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1538,11 +1546,14 @@ let operationInfo: notificationSubscribe.OperationInfo = {
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
   console.info("distributeOperation success");
 }).catch((err: Error): void => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`distributeOperation fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
 ## NotificationKey
+
+通知键值。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1554,10 +1565,12 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 | 名称  | 类型   | 只读 | 可选 | 说明                |
 | ----- | ------ | --- | ---- | ------------------ |
-| id    | number | 否  |  否  | 通知ID。            |
+| id    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  |  否  | 通知ID。            |
 | label | string | 否  |  是  | 通知标签，默认为空。 |
 
 ## RemoveReason
+
+通知删除原因。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1574,13 +1587,11 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 ## OperationInfo<sup>18+</sup>
 
+跨设备协同操作信息。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本**：18
-
-**ArkTS-Sta起始版本**：23
 
 | 名称  | 类型   | 只读 | 可选 | 说明     |
 | ----- | ------ | --- | ---- | -------- |

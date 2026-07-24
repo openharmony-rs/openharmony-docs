@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API version 7 开始支持，从API version 9 开始废弃，建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
 
 ## 导入模块
 
@@ -28,7 +28,7 @@ import commonEvent from '@ohos.commonEvent';
 
 publish(event: string, callback: AsyncCallback\<void>): void
 
-发布公共事件（回调形式）。
+以回调形式发布公共事件。
 
 > **说明：**
 > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish)替代。
@@ -39,8 +39,8 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 | 参数名     | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | 是   | 表示要发送的公共事件。 |
-| callback | AsyncCallback\<void> | 是   | 表示指定的回调方法。 |
+| event    | string               | 是   | 表示要发布的公共事件 |
+| callback | AsyncCallback\<void> | 是   | 表示发布公共事件的回调方法。 |
 
 **示例：**
 
@@ -64,7 +64,7 @@ commonEvent.publish("event", publishCB);
 
 publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
-以回调的形式发布公共事件。
+以回调形式发布公共事件。
 
 > **说明：**
 > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish-1)替代。
@@ -77,7 +77,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | 是   | 表示要发布的公共事件。  |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
-| callback | AsyncCallback\<void>   | 是   | 表示指定的回调方法。  |
+| callback | AsyncCallback\<void>   | 是   | 表示发布公共事件的回调方法。  |
 
 **示例：**
 
@@ -91,7 +91,7 @@ let options:CommonEventManager.CommonEventPublishData = {
     code: 0,             // 公共事件的初始代码
     data: "initial data", // 公共事件的初始数据
     isOrdered: true  // 有序公共事件
-}
+};
 
 // 发布公共事件回调
 function publishCB(err:Base.BusinessError) {
@@ -131,7 +131,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-let subscriber:CommonEventManager.CommonEventSubscriber; // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+let subscriber:CommonEventManager.CommonEventSubscriber; // 用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 
 // 订阅者信息
 let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
@@ -180,7 +180,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-let subscriber:CommonEventManager.CommonEventSubscriber; // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+let subscriber:CommonEventManager.CommonEventSubscriber; // 用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 
 // 订阅者信息
 let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
@@ -220,7 +220,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-let subscriber:CommonEventManager.CommonEventSubscriber;// 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+let subscriber:CommonEventManager.CommonEventSubscriber;// 用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 
 // 订阅者信息
 let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
@@ -276,7 +276,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-let subscriber:CommonEventManager.CommonEventSubscriber;    // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+let subscriber:CommonEventManager.CommonEventSubscriber;    // 用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 
 // 订阅者信息
 let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {

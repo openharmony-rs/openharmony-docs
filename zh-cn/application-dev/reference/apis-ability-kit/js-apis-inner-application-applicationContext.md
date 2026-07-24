@@ -232,7 +232,7 @@ off(type: 'abilityLifecycle', callbackId: number,  callback: AsyncCallback\<void
 | ------------- | -------- | ---- | -------------------------- |
 | type | string | 是   | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
 | callbackId    | number | 是   | 通过[ApplicationContext.on('abilityLifecycle')](#applicationcontextonabilitylifecycle)接口注册监听应用内UIAbility的生命周期时返回的ID。 |
-| callback | AsyncCallback\<void> | 是   | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。   |
+| callback | AsyncCallback\<void> | 是   | 回调方法。当取消监听应用内UIAbility的生命周期成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
 
@@ -259,7 +259,7 @@ export default class EntryAbility extends UIAbility {
       // 取消监听应用内UIAbility生命周期
       applicationContext.off('abilityLifecycle', lifecycleId, (error, data) => {
         if (error) {
-          console.error(`unregisterAbilityLifecycleCallback fail, err: ${JSON.stringify(error)}`);
+          console.error(`Failed to unregister abilityLifecycle callback. Code: ${error.code}, message: ${error.message}`);
         } else {
           console.info(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
         }
@@ -581,7 +581,7 @@ let callbackId: number;
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.info('MyAbility onCreate')
+    console.info('MyAbility onCreate');
     let environmentCallback: EnvironmentCallback = {
       onConfigurationUpdated(config) {
         console.info(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
@@ -716,7 +716,7 @@ export default class EntryAbility extends UIAbility {
       // 取消对系统环境变化的监听
       applicationContext.off('environment', callbackId, (error, data) => {
         if (error) {
-          console.error(`unregisterEnvironmentCallback fail, err: ${JSON.stringify(error)}`);
+          console.error(`Failed to unregister environment callback. Code: ${error.code}, message: ${error.message}`);
         } else {
           console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
         }
@@ -931,7 +931,7 @@ on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): vo
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | type     | string                                   | 是   | 此类型表示当前应用进程状态变化，固定为'applicationStateChange'。 |
-| callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | 是   | 当前应用进程状态切换时触发的回调方法。 |
+| callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | 是   | 当前应用进程状态变化时触发的回调方法。 |
 
 **错误码**：
 
@@ -1078,7 +1078,7 @@ export default class MyAbility extends UIAbility {
     // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 本例中的callback字段取值为ApplicationStateChangeCallback，需要替换为实际值。
+      // 本例中的callback参数取值为ApplicationStateChangeCallback，需要替换为实际值。
       // 如果callback字段不传入参数，则取消所有已注册的该类型事件的监听。
       applicationContext.off('applicationStateChange', applicationStateChangeCallback);
     } catch (paramError) {
@@ -1386,11 +1386,11 @@ export default class MyAbility extends UIAbility {
     // 获取运行中的进程信息
     applicationContext.getRunningProcessInformation((err, data) => {
       if (err) {
-        console.error(`getRunningProcessInformation failed, err: ${JSON.stringify(err)}`);
+        console.error(`Failed to get running process information. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info(`The process running information is: ${JSON.stringify(data)}`);
       }
-    })
+    });
   }
 }
 ```
@@ -1521,7 +1521,7 @@ killAllProcesses(callback: AsyncCallback\<void\>): void
 
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| callback    | AsyncCallback\<void\>   | 是   | 回调函数。当终止应用所在的进程成功，err为undefined，否则为错误对象。 |
+| callback    | AsyncCallback\<void\>   | 是   | 回调函数。当终止应用的所有进程成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1544,7 +1544,7 @@ export default class MyAbility extends UIAbility {
     // 终止应用的所有进程
     applicationContext.killAllProcesses(error => {
       if (error) {
-        console.error(`killAllProcesses fail, error: ${JSON.stringify(error)}`);
+        console.error(`Failed to kill all processes. Code: ${error.code}, message: ${error.message}`);
       }
     });
   }
@@ -1734,7 +1734,7 @@ clearUpApplicationData(callback: AsyncCallback\<void\>): void
 **参数：**
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| callback | AsyncCallback\<void> | 是   | 回调方法。清理应用本身的数据成功时，error为undefined，否则返回错误对象。  |
+| callback | AsyncCallback\<void> | 是   | 回调方法。当清理当前应用的应用文件路径下的所有数据，同时撤销应用向用户申请的权限成功时，error为undefined，否则返回错误对象。  |
 
 **错误码**：
 
@@ -1758,7 +1758,7 @@ export default class MyAbility extends UIAbility {
     // 清理当前应用的应用文件路径下的所有数据
     applicationContext.clearUpApplicationData(error => {
       if (error) {
-        console.error(`clearUpApplicationData fail, error: ${JSON.stringify(error)}`);
+        console.error(`Failed to clear up application data. Code: ${error.code}, message: ${error.message}`);
       }
     });
   }
@@ -1840,7 +1840,7 @@ struct Index {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
             }
           } else {
-            hilog.error(0x0000, 'testTag', "%{public}s", 'AppContext is null');
+            hilog.error(0x0000, 'testTag', '%{public}s', 'AppContext is null');
           }
         })
     }
@@ -1894,7 +1894,7 @@ export default class MyAbility extends UIAbility {
       // 获取当前应用的分身索引
       let appCloneIndex = applicationContext.getCurrentAppCloneIndex();
     } catch (error) {
-      console.error(`getCurrentAppCloneIndex fail, error: ${JSON.stringify(error)}`);
+      console.error(`Failed to get current app clone index. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }
@@ -2389,7 +2389,7 @@ export default class EntryAbility extends UIAbility {
 
 startSelfUIAbility(want: Want): Promise\<void>
 
-当前进程延迟退出期间，在当前进程启动一个自身UIAbility，启动成功后，当前进程不再退出。
+当前进程延迟退出期间，在当前进程启动一个自身UIAbility，启动成功后，当前进程不再退出。仅支持主线程调用。
 
 **起始版本**：26.0.0
 

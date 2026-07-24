@@ -1200,6 +1200,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .backgroundColor('#F5DEB3')
   
     Text('no flexShrink')
+      .flexShrink(0)
       .width(200)
       .height(100)
       .backgroundColor('#D2B48C')
@@ -1225,6 +1226,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .backgroundColor('#F5DEB3')
   
     Text('no flexShrink')
+      .flexShrink(0)
       .width(200)
       .height(100)
       .backgroundColor('#D2B48C')

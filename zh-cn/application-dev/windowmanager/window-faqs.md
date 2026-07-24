@@ -222,7 +222,7 @@ export default class EntryAbility extends UIAbility {
       // 隐藏底部导航区域
       windowClass.setSpecificSystemBarEnabled('navigationIndicator', false);
     } catch (exception) {
-      console.error('Failed to obtain isImmersiveLayout. Cause: ' + JSON.stringify(exception));
+      console.error('Failed to set status bar or navigation indicator bar invisible. Cause: ' + JSON.stringify(exception));
     }
   }
 }
@@ -253,7 +253,7 @@ export default class EntryAbility extends UIAbility {
       // 获取状态栏避让区高度
       let statusBarHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height;
     } catch (exception) {
-      console.error(`Failed to enable the listener for system avoid area changes. Cause code: ${exception.code}, message: ${exception.message}`);
+      console.error(`Failed to get window avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
     }
   }
 }
@@ -541,7 +541,7 @@ module.json5配置示例如下：
       console.info(`Succeeded in enabling the listener for window status changes. Data: ${JSON.stringify(WindowStatusType)}`);
     });
   } catch (exception) {
-    console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+    console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
   }
   ```
 
@@ -574,6 +574,72 @@ module.json5配置示例如下：
 对于画中画和闪控球窗口，其隐私模式跟随父窗口。
 
 若需要对隐私窗口进行截图，可使用[snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18)接口。
+
+## APP退后台在多任务窗口展示时，如何实现模糊效果
+APP可以通过监听主窗口生命周期状态，并用[AppStorage](../ui/state-management/arkts-appstorage.md)存储该状态，当状态为前台不可交互状态或后台状态时，设置组件[foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle)。
+
+示例代码如下所示：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+    });
+    AppStorage.setOrCreate('windowStage', windowStage);
+    windowStage.on('windowStageEvent', (data) => {
+      console.info('Succeeded in enabling the listener for window stage event changes. Data : ' +
+        JSON.stringify(data));
+      // 根据事件状态类型选择进行相应的处理
+      if (data == window.WindowStageEventType.SHOWN) {
+        console.info('current window stage event is SHOWN');
+        AppStorage.setOrCreate('interact', true);
+        // 应用进入前台为前台状态时，默认为可交互状态
+        // ...
+      } else if (data == window.WindowStageEventType.HIDDEN) {
+        console.info('current window stage event is HIDDEN');
+        AppStorage.setOrCreate('interact', false);
+        // 应用进入后台为后台状态时，默认为不可交互状态
+        // ...
+      } else if (data == window.WindowStageEventType.PAUSED) {
+        console.info('current window stage event is PAUSED');
+        AppStorage.setOrCreate('interact', false);
+        // 前台应用进入多任务为前台不可交互状态时，转为不可交互状态
+        // ...
+      } else if (data == window.WindowStageEventType.RESUMED) {
+        console.info('current window stage event is RESUMED');
+        AppStorage.setOrCreate('interact', true);
+        // 应用进入多任务后又继续返回前台为前台可交互状态时，恢复可交互状态
+        // ...
+      }
+    });
+  }
+}
+```
+
+```ts
+// ets/pages/Index.ets
+@Entry
+@Component
+struct Index {
+  @StorageLink('interact') interact: boolean = true;
+  build() {
+    Column() {
+      Text('文本文本')
+        .fontSize(60)
+    }
+    .foregroundBlurStyle(this.interact ? BlurStyle.NONE : BlurStyle.COMPONENT_ULTRA_THICK) // 可自定义模糊程度
+  }
+}
+```
 
 ## resize、moveWindowTo等接口有什么位置/大小限制
 

@@ -6,13 +6,13 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
-图像像素类，用于读取或写入图像数据以及获取图像信息，同时支持图像变换（缩放、平移、旋转、翻转、裁剪）、设置不透明度、提取Alpha通道、色彩空间设置等操作。在调用PixelMap的方法前，需要先通过[image.createPixelMapFromPixels](arkts-apis-image-f.md#imagecreatepixelmapfrompixels)或[image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20)系列接口传入像素数据创建一个PixelMap对象，也可以通过[ImageSource](arkts-apis-image-ImageSource.md)进行图片解码创建PixelMap对象。目前PixelMap序列化大小最大为128MB，超过会渲染失败。PixelMap大小的计算方式为：宽 \* 高 \* 每像素占用字节数（详情请参考[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)）。
+图像像素类，用于读取或写入图像数据以及获取图像信息，同时支持图像变换（缩放、平移、旋转、翻转、裁剪）、设置不透明度、提取Alpha通道、色彩空间设置等操作，适用于图像处理、图像编辑、图像显示等需要进行像素级数据操作的场景。在调用PixelMap的方法前，需要先通过[image.createPixelMapFromPixels](arkts-apis-image-f.md#imagecreatepixelmapfrompixels)或[image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20)系列接口传入像素数据创建一个PixelMap对象，也可以通过[ImageSource](arkts-apis-image-ImageSource.md)进行图片解码创建PixelMap对象。目前PixelMap序列化大小最大为128MiB，超过会渲染失败。PixelMap大小的计算方式为：宽 \* 高 \* 每像素占用字节数（详情请参考[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)）。
 
 从API version 11开始，PixelMap支持通过[@ohos.worker (启动一个Worker)](../apis-arkts/js-apis-worker.md)跨线程调用。当PixelMap通过Worker或[@ohos.taskpool (启动任务池)](../apis-arkts/js-apis-taskpool.md)跨线程传输后，原线程的PixelMap的所有接口均不能继续调用，否则将抛出501或7600106（详情请参考[Image错误码](errorcode-image.md)）。
 
 开发原子化服务请通过[ImageSource](arkts-apis-image-ImageSource.md)构建PixelMap对象。
 
-图片占用的内存往往较大，当PixelMap对象使用完成后，应主动调用[release](#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+图像占用的内存往往较大，当PixelMap对象使用完成后，应主动调用[release](#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **说明：**
 >
@@ -39,7 +39,7 @@ import { image } from '@kit.ImageKit';
 
 readAllPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
-读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。使用Promise异步回调。
+读取整个PixelMap的像素数据，并按照PixelMap的像素格式存入缓冲区。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -57,7 +57,7 @@ readAllPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，函数执行结束后获取的图像像素数据会被写入该缓冲区，缓冲区内的像素不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -79,18 +79,36 @@ readAllPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoReadAllPixelsToBuffer(pixelMap: image.PixelMap) {
+function readAllPixelsToBuffer(pixelMap: image.PixelMap) {
   const readBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
 
   pixelMap.readAllPixelsToBuffer(readBuffer)
     .then(() => {
-      console.info('Succeeded in reading pixel data from pixelMap to readBuffer.');
+      console.info('Succeeded in reading pixel data from the PixelMap to readBuffer.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to read pixel data. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function readAllPixelsToBuffer(pixelMap: image.PixelMap) {
+  const readBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+
+  pixelMap.readAllPixelsToBuffer(readBuffer)
+    .then(() => {
+      console.info('Succeeded in reading pixel data from the PixelMap to readBuffer.');
+    })
+    .catch((err: Error) => {
+      console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -99,7 +117,7 @@ function DemoReadAllPixelsToBuffer(pixelMap: image.PixelMap) {
 
 readAllPixelsToBufferSync(dst: ArrayBuffer): void
 
-读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。同步返回结果。
+读取整个PixelMap的像素数据，并按照PixelMap的像素格式存入缓冲区。同步返回结果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -117,7 +135,7 @@ readAllPixelsToBufferSync(dst: ArrayBuffer): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，函数执行结束后获取的图像像素数据会被写入该缓冲区，缓冲区内的像素不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 
@@ -133,18 +151,35 @@ readAllPixelsToBufferSync(dst: ArrayBuffer): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoReadAllPixelsToBufferSync(pixelMap: image.PixelMap) {
+function readAllPixelsToBufferSync(pixelMap: image.PixelMap) {
   const readBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
 
   try {
     pixelMap.readAllPixelsToBufferSync(readBuffer);
-    console.info('Succeeded in reading pixel data from pixelMap to readBuffer.');
+    console.info('Succeeded in reading pixel data from the PixelMap to readBuffer.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to read pixel data. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function readAllPixelsToBufferSync(pixelMap: image.PixelMap) {
+  const readBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+
+  try {
+    pixelMap.readAllPixelsToBufferSync(readBuffer);
+    console.info('Succeeded in reading pixel data from the PixelMap to readBuffer.');
+  } catch (err) {
+    console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -153,7 +188,7 @@ function DemoReadAllPixelsToBufferSync(pixelMap: image.PixelMap) {
 
 readPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
-读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。使用Promise异步回调。
+读取整个PixelMap的像素数据，并按照PixelMap的像素格式存入缓冲区。使用Promise异步回调。
 
 > **说明：**
 >
@@ -173,7 +208,7 @@ readPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 | 参数名 | 类型        | 必填 | 说明                                                                                                  |
 | ------ | ----------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst    | ArrayBuffer | 是   | 缓冲区，函数执行结束后获取的图像像素数据写入到该内存区域内，缓冲区内的像素不包含内存对齐填充字节。缓冲区大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst    | ArrayBuffer | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -183,15 +218,30 @@ readPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ReadPixelsToBuffer(pixelMap: image.PixelMap) {
-  const readBuffer: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+function readPixelsToBuffer(pixelMap: image.PixelMap) {
+  const readBuffer: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
   pixelMap.readPixelsToBuffer(readBuffer).then(() => {
     console.info('Succeeded in reading image pixel data.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to read image pixel data. Code is ${error.code}, message is ${error.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to read image pixel data. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function readPixelsToBuffer(pixelMap: image.PixelMap) {
+  const readBuffer: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  pixelMap.readPixelsToBuffer(readBuffer).then(() => {
+    console.info('Succeeded in reading image pixel data.');
+  }).catch((err: Error) => {
+    console.error(`Failed to read image pixel data. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -200,7 +250,7 @@ function ReadPixelsToBuffer(pixelMap: image.PixelMap) {
 
 readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback\<void>): void
 
-读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。使用callback异步回调。
+读取整个PixelMap的像素数据，并按照PixelMap的像素格式存入缓冲区。使用callback异步回调。
 
 > **说明：**
 >
@@ -220,7 +270,7 @@ readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 缓冲区，函数执行结束后获取的图像像素数据写入到该内存区域内，缓冲区内的像素不包含内存对齐填充字节。缓冲区大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当读取像素数据到ArrayBuffer成功，err为undefined，否则为错误对象。  |
 
 **示例：**
@@ -228,11 +278,11 @@ readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback\<void>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ReadPixelsToBuffer(pixelMap: image.PixelMap) {
-  const readBuffer: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
-  pixelMap.readPixelsToBuffer(readBuffer, (error: BusinessError, res: void) => {
-    if (error) {
-      console.error(`Failed to read image pixel data. Code is ${error.code}, message is ${error.message}`);
+function readPixelsToBuffer(pixelMap: image.PixelMap) {
+  const readBuffer: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  pixelMap.readPixelsToBuffer(readBuffer, (err: BusinessError, res: void) => {
+    if (err) {
+      console.error(`Failed to read image pixel data. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in reading image pixel data.');
@@ -244,7 +294,7 @@ function ReadPixelsToBuffer(pixelMap: image.PixelMap) {
 
 readPixelsToBufferSync(dst: ArrayBuffer): void
 
-读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。同步返回结果。
+读取整个PixelMap的像素数据，并按照PixelMap的像素格式存入缓冲区。同步返回结果。
 
 > **说明：**
 >
@@ -264,7 +314,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 缓冲区，函数执行结束后获取的图像像素数据写入到该内存区域内，缓冲区内的像素不包含内存对齐填充字节。缓冲区大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 
@@ -277,18 +327,33 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ReadPixelsToBufferSync(pixelMap: image.PixelMap) {
-  const bufferSize = pixelMap.getPixelBytesNumber();
-  const readBuffer = new ArrayBuffer(bufferSize);
+function readPixelsToBufferSync(pixelMap: image.PixelMap) {
+  const readBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
   try {
     pixelMap.readPixelsToBufferSync(readBuffer);
     console.info('Succeeded in reading image pixel data.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to read image pixel data. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to read image pixel data. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function readPixelsToBufferSync(pixelMap: image.PixelMap) {
+  const readBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  try {
+    pixelMap.readPixelsToBufferSync(readBuffer);
+    console.info('Succeeded in reading image pixel data.');
+  } catch (err) {
+    console.error(`Failed to read image pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -297,14 +362,14 @@ function ReadPixelsToBufferSync(pixelMap: image.PixelMap) {
 
 readPixelsToArea(area: PositionArea): Promise\<void>
 
-读取PixelMap指定区域内的像素数据，并按照BGRA_8888像素格式写入缓冲区。使用Promise异步回调。
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为YUV类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用Promise异步回调。
 
 > **说明：**
 >
-> 可使用公式计算PositionArea需要申请的内存大小。
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
 >
-> - RGBA的区域计算公式：读取区域（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
-> - YUV的区域计算公式：读取区域（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
+> - RGBA的区域计算公式：读取区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：读取区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -322,7 +387,7 @@ readPixelsToArea(area: PositionArea): Promise\<void>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | ------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后获取的图像像素数据会被写入[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为YUV类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 
 **返回值：**
 
@@ -344,10 +409,12 @@ readPixelsToArea(area: PositionArea): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoReadPixelsToAreaRGBA(pixelMap: image.PixelMap) {
+function readPixelsToAreaRGBA(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(24), // 24为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
@@ -361,14 +428,15 @@ function DemoReadPixelsToAreaRGBA(pixelMap: image.PixelMap) {
 
   pixelMap.readPixelsToArea(area)
     .then(() => {
-      console.info('Succeeded in reading pixel data from the specified area of pixelMap to area.pixels.');
+      console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
+      console.info('BGRA data: ', new Uint8Array(area.pixels));
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to read pixel data. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
     });
 }
 
-function DemoReadPixelsToAreaYUV(pixelMap: image.PixelMap) {
+function readPixelsToAreaYUV(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(9), // 9为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
     offset: 0,
@@ -382,10 +450,59 @@ function DemoReadPixelsToAreaYUV(pixelMap: image.PixelMap) {
 
   pixelMap.readPixelsToArea(area)
     .then(() => {
-      console.info('Succeeded in reading pixel data from the specified area of pixelMap to area.pixels.');
+      console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
+      console.info('YUV data: ', new Uint8Array(area.pixels));
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to read pixel data. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function readPixelsToAreaRGBA(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(24), // 24为需要创建的像素缓冲区大小，取值为：width * height * 4。
+    offset: 0,
+    stride: 8, // 跨距，即每行像素所占的字节数，在没有行末填充字节的情况下取值为：width * 4。
+    region: {
+      size: { width: 2, height: 3 },
+      x: 0,
+      y: 0
+    }
+  };
+
+  pixelMap.readPixelsToArea(area)
+    .then(() => {
+      console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
+      console.info('BGRA data: ', new Uint8Array(area.pixels));
+    })
+    .catch((err: Error) => {
+      console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
+    });
+}
+
+function readPixelsToAreaYUV(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(9), // 9为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
+    offset: 0,
+    stride: 2, // 跨距，即每行像素所占的字节数，在没有行末填充字节的情况下取值为：width * 1（1倍Y分量）。
+    region: {
+      size: { width: 2, height: 3 },
+      x: 0,
+      y: 0
+    }
+  };
+
+  pixelMap.readPixelsToArea(area)
+    .then(() => {
+      console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
+      console.info('YUV data: ', new Uint8Array(area.pixels));
+    })
+    .catch((err: Error) => {
+      console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -394,14 +511,14 @@ function DemoReadPixelsToAreaYUV(pixelMap: image.PixelMap) {
 
 readPixelsToAreaSync(area: PositionArea): void
 
-读取PixelMap指定区域内的像素数据，并按照BGRA_8888像素格式写入缓冲区。同步返回结果。
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为YUV类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。同步返回结果。
 
 > **说明：**
 >
-> 可使用公式计算PositionArea需要申请的内存大小。
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
 >
-> - RGBA的区域计算公式：读取区域（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
-> - YUV的区域计算公式：读取区域（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
+> - RGBA的区域计算公式：读取区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：读取区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -419,7 +536,7 @@ readPixelsToAreaSync(area: PositionArea): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | ------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后获取的图像像素数据会被写入[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为YUV类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 
 **错误码：**
 
@@ -435,10 +552,12 @@ readPixelsToAreaSync(area: PositionArea): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoReadPixelsToAreaSyncRGBA(pixelMap: image.PixelMap) {
+function readPixelsToAreaSyncRGBA(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(24), // 24为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
@@ -452,14 +571,15 @@ function DemoReadPixelsToAreaSyncRGBA(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.readPixelsToAreaSync(area);
-    console.info('Succeeded in reading pixel data from the specified area of pixelMap to area.pixels.');
+    console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
+    console.info('BGRA data: ', new Uint8Array(area.pixels));
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to read pixel data. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 
-function DemoReadPixelsToAreaSyncYUV(pixelMap: image.PixelMap) {
+function readPixelsToAreaSyncYUV(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(9), // 9为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
     offset: 0,
@@ -473,10 +593,57 @@ function DemoReadPixelsToAreaSyncYUV(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.readPixelsToAreaSync(area);
-    console.info('Succeeded in reading pixel data from the specified area of pixelMap to area.pixels.');
+    console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
+    console.info('YUV data: ', new Uint8Array(area.pixels));
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to read pixel data. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function readPixelsToAreaSyncRGBA(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(24), // 24为需要创建的像素缓冲区大小，取值为：width * height * 4。
+    offset: 0,
+    stride: 8, // 跨距，即每行像素所占的字节数，在没有行末填充字节的情况下取值为：width * 4。
+    region: {
+      size: { width: 2, height: 3 },
+      x: 0,
+      y: 0
+    }
+  };
+
+  try {
+    pixelMap.readPixelsToAreaSync(area);
+    console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
+    console.info('BGRA data: ', new Uint8Array(area.pixels));
+  } catch (err) {
+    console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+
+function readPixelsToAreaSyncYUV(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(9), // 9为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
+    offset: 0,
+    stride: 2, // 跨距，即每行像素所占的字节数，在没有行末填充的字节情况下取值为：width * 1（1倍Y分量）。
+    region: {
+      size: { width: 2, height: 3 },
+      x: 0,
+      y: 0
+    }
+  };
+
+  try {
+    pixelMap.readPixelsToAreaSync(area);
+    console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
+    console.info('YUV data: ', new Uint8Array(area.pixels));
+  } catch (err) {
+    console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -485,15 +652,14 @@ function DemoReadPixelsToAreaSyncYUV(pixelMap: image.PixelMap) {
 
 readPixels(area: PositionArea): Promise\<void>
 
-读取PixelMap指定区域内的像素数据，并按照BGRA_8888像素格式写入缓冲区。使用Promise异步回调。
-
-可用公式计算PositionArea需要申请的内存大小。
-
-YUV的区域计算公式：读取区域（region.size {width * height}）* 1.5（1倍的Y分量+0.25倍U分量+0.25倍V分量）
-
-RGBA的区域计算公式：读取区域（region.size {width * height}）* 4（1倍的R分量+1倍G分量+1倍B分量+1倍A分量）
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为YUV类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用Promise异步回调。
 
 > **说明：**
+>
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
+>
+> - RGBA的区域计算公式：读取区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：读取区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 >
 > 从API版本26.0.0开始，建议使用[readPixelsToArea](#readpixelstoarea)代替，以获得更完善的异常处理能力。
 
@@ -511,7 +677,7 @@ RGBA的区域计算公式：读取区域（region.size {width * height}）* 4（
 
 | 参数名 | 类型                           | 必填 | 说明                     |
 | ------ | ------------------------------ | ---- | ------------------------ |
-| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后获取的图像像素数据会被写入[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。 |
+| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为YUV类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 
 **返回值：**
 
@@ -521,10 +687,12 @@ RGBA的区域计算公式：读取区域（region.size {width * height}）* 4（
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ReadPixelsRGBA(pixelMap: image.PixelMap) {
+function readPixelsRGBA(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(8), // 8为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
@@ -532,14 +700,14 @@ function ReadPixelsRGBA(pixelMap: image.PixelMap) {
     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
   };
   pixelMap.readPixels(area).then(() => {
-    console.info('Succeeded in reading the image data in the area.');
-    console.info('RGBA data is ', new Uint8Array(area.pixels));
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to read the image data in the area. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in reading the image data in the area from the specified area.');
+    console.info('BGRA data: ', new Uint8Array(area.pixels));
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
   });
 }
 
-function ReadPixelsYUV(pixelMap: image.PixelMap) {
+function readPixelsYUV(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(6),  // 6为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
     offset: 0,
@@ -547,10 +715,44 @@ function ReadPixelsYUV(pixelMap: image.PixelMap) {
     region: { size: { height: 2, width: 2 }, x: 0, y: 0 }
   };
   pixelMap.readPixels(area).then(() => {
-    console.info('Succeeded in reading the image data in the area.');
-    console.info('YUV data is ', new Uint8Array(area.pixels));
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to read the image data in the area. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in reading the image data in the area from the specified area.');
+    console.info('YUV data: ', new Uint8Array(area.pixels));
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function readPixelsRGBA(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(8), // 8为需要创建的像素缓冲区大小，取值为：width * height * 4。
+    offset: 0,
+    stride: 8,
+    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+  };
+  pixelMap.readPixels(area).then(() => {
+    console.info('Succeeded in reading the image data in the area from the specified area.');
+    console.info('BGRA data: ', new Uint8Array(area.pixels));
+  }).catch((err: Error) => {
+    console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+
+function readPixelsYUV(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(6),  // 6为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
+    offset: 0,
+    stride: 8,
+    region: { size: { height: 2, width: 2 }, x: 0, y: 0 }
+  };
+  pixelMap.readPixels(area).then(() => {
+    console.info('Succeeded in reading the image data in the area from the specified area.');
+    console.info('YUV data: ', new Uint8Array(area.pixels));
+  }).catch((err: Error) => {
+    console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -559,15 +761,14 @@ function ReadPixelsYUV(pixelMap: image.PixelMap) {
 
 readPixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
-读取PixelMap指定区域内的像素数据，并按照BGRA_8888像素格式写入缓冲区。使用callback异步回调。
-
-可用公式计算PositionArea需要申请的内存大小。
-
-YUV的区域计算公式：读取区域（region.size {width * height}）* 1.5（1倍的Y分量+0.25倍U分量+0.25倍V分量）
-
-RGBA的区域计算公式：读取区域（region.size {width * height}）* 4（1倍的R分量+1倍G分量+1倍B分量+1倍A分量）
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为YUV类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用callback异步回调。
 
 > **说明：**
+>
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
+>
+> - RGBA的区域计算公式：读取区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：读取区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 >
 > 从API版本26.0.0开始，建议使用[readPixelsToArea](#readpixelstoarea)代替，以获得更完善的异常处理能力。
 
@@ -585,7 +786,7 @@ RGBA的区域计算公式：读取区域（region.size {width * height}）* 4（
 
 | 参数名   | 类型                           | 必填 | 说明                           |
 | -------- | ------------------------------ | ---- | ------------------------------ |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后获取的图像像素数据会被写入[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为YUV类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 | callback | AsyncCallback\<void>           | 是   |  回调函数。当读取区域内的图片数据成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -593,37 +794,37 @@ RGBA的区域计算公式：读取区域（region.size {width * height}）* 4（
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ReadPixelsRGBA(pixelMap: image.PixelMap) {
+function readPixelsRGBA(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(8), // 8为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
     stride: 8,
     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
   };
-  pixelMap.readPixels(area, (error: BusinessError) => {
-    if (error) {
-      console.error(`Failed to read pixelmap from the specified area. Code is ${error.code}, message is ${error.message}`);
+  pixelMap.readPixels(area, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info('Succeeded in reading pixelmap from the specified area.');
-    console.info('RGBA data is ', new Uint8Array(area.pixels));
+    console.info('Succeeded in reading the image data from the specified area.');
+    console.info('BGRA data: ', new Uint8Array(area.pixels));
   });
 }
 
-function ReadPixelsYUV(pixelMap: image.PixelMap) {
+function readPixelsYUV(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(6), // 6为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
     offset: 0,
     stride: 8,
     region: { size: { height: 2, width: 2 }, x: 0, y: 0 }
   };
-  pixelMap.readPixels(area, (error: BusinessError) => {
-    if (error) {
-      console.error(`Failed to read pixelmap from the specified area. Code is ${error.code}, message is ${error.message}`);
+  pixelMap.readPixels(area, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info('Succeeded in reading pixelmap from the specified area.');
-    console.info('YUV data is ', new Uint8Array(area.pixels));
+    console.info('Succeeded in reading the image data from the specified area.');
+    console.info('YUV data: ', new Uint8Array(area.pixels));
   });
 }
 ```
@@ -632,9 +833,14 @@ function ReadPixelsYUV(pixelMap: image.PixelMap) {
 
 readPixelsSync(area: PositionArea): void
 
-读取PixelMap指定区域内的像素数据，并按照BGRA_8888像素格式写入缓冲区。同步返回结果。
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为YUV类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。同步返回结果。
 
 > **说明：**
+>
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
+>
+> - RGBA的区域计算公式：读取区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：读取区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 >
 > 从API版本26.0.0开始，建议使用[readPixelsToAreaSync](#readpixelstoareasync)代替，以获得更完善的异常处理能力。
 
@@ -650,7 +856,7 @@ readPixelsSync(area: PositionArea): void
 
 | 参数名 | 类型                           | 必填 | 说明                     |
 | ------ | ------------------------------ | ---- | ------------------------ |
-| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后获取的图像像素数据会被写入[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。 |
+| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为YUV类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 
 **错误码：**
 
@@ -663,10 +869,12 @@ readPixelsSync(area: PositionArea): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ReadPixelsSync(pixelMap: image.PixelMap) {
+function readPixelsSync(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(8),
     offset: 0,
@@ -675,10 +883,29 @@ function ReadPixelsSync(pixelMap: image.PixelMap) {
   };
   try {
     pixelMap.readPixelsSync(area);
-    console.info('Succeeded in reading the image data in the area.');
+    console.info('Succeeded in reading the image data from the specified area.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to read the image data in the area. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function readPixelsSync(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(8),
+    offset: 0,
+    stride: 8,
+    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+  };
+  try {
+    pixelMap.readPixelsSync(area);
+    console.info('Succeeded in reading the image data from the specified area.');
+  } catch (err) {
+    console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -687,14 +914,14 @@ function ReadPixelsSync(pixelMap: image.PixelMap) {
 
 writePixelsFromArea(area: PositionArea): Promise\<void>
 
-将缓冲区内的图像像素数据按照BGRA_8888格式写入PixelMap的指定区域（缓冲区内数据的像素格式必须是BGRA_8888）。使用Promise异步回调。
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。使用Promise异步回调。
 
 > **说明：**
 >
-> 可使用公式计算PositionArea需要申请的内存大小。
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
 >
-> - RGBA的区域计算公式：写入区域（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
-> - YUV的区域计算公式：写入区域（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
+> - RGBA的区域计算公式：写入区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：写入区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -712,7 +939,7 @@ writePixelsFromArea(area: PositionArea): Promise\<void>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | ------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的图像像素数据会被写入PixelMap。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 
 **返回值：**
 
@@ -735,10 +962,12 @@ writePixelsFromArea(area: PositionArea): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoWritePixelsFromAreaRGBA(pixelMap: image.PixelMap) {
+function writePixelsFromAreaRGBA(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(24), // 24为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
@@ -751,7 +980,7 @@ function DemoWritePixelsFromAreaRGBA(pixelMap: image.PixelMap) {
   };
   const bufferArr = new Uint8Array(area.pixels);
   for (let i = 0; i < bufferArr.length; i += 4) {
-    // 假设pixelMap的像素格式为RGBA_8888，则下列数组索引依次为：R通道、G通道、B通道、A通道。
+    // 数据源的格式必须是BGRA_8888，下列数组索引依次为：B通道、G通道、R通道、A通道。
     bufferArr[i] = 0xFF;
     bufferArr[i + 1] = 0x00;
     bufferArr[i + 2] = 0x00;
@@ -760,14 +989,14 @@ function DemoWritePixelsFromAreaRGBA(pixelMap: image.PixelMap) {
 
   pixelMap.writePixelsFromArea(area)
     .then(() => {
-      console.info('Succeeded in writing pixel data from area.pixels to the specified area of pixelMap.');
+      console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to write pixel data. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
     });
 }
 
-function DemoWritePixelsFromAreaYUV(pixelMap: image.PixelMap) {
+function writePixelsFromAreaYUV(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(9), // 9为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
     offset: 0,
@@ -789,10 +1018,72 @@ function DemoWritePixelsFromAreaYUV(pixelMap: image.PixelMap) {
 
   pixelMap.writePixelsFromArea(area)
     .then(() => {
-      console.info('Succeeded in writing pixel data from area.pixels to the specified area of pixelMap.');
+      console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to write pixel data. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function writePixelsFromAreaRGBA(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(24), // 24为需要创建的像素缓冲区大小，取值为：width * height * 4。
+    offset: 0,
+    stride: 8, // 跨距，即每行像素所占的字节数，在没有行末填充字节的情况下取值为：width * 4。
+    region: {
+      size: { width: 2, height: 3 },
+      x: 0,
+      y: 0
+    }
+  };
+  const bufferArr = new Uint8Array(area.pixels);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    // 数据源的格式必须是BGRA_8888，下列数组索引依次为：B通道、G通道、R通道、A通道。
+    bufferArr[i] = 0xFF;
+    bufferArr[i + 1] = 0x00;
+    bufferArr[i + 2] = 0x00;
+    bufferArr[i + 3] = 0xFF;
+  }
+
+  pixelMap.writePixelsFromArea(area)
+    .then(() => {
+      console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
+    })
+    .catch((err: Error) => {
+      console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
+    });
+}
+
+function writePixelsFromAreaYUV(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(9), // 9为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
+    offset: 0,
+    stride: 2, // PixelMap为YUV格式时，writePixelsFromArea函数不使用该变量。
+    region: {
+      size: { width: 2, height: 3 },
+      x: 0,
+      y: 0
+    }
+  };
+  const bufferArr = new Uint8Array(area.pixels);
+  const ySize = area.region.size.width * area.region.size.height;
+  for (let i = 0; i < ySize; i++) { // Y平面。
+    bufferArr[i] = 0xFF;
+  }
+  for (let i = ySize; i < bufferArr.length; i++) { // UV交错平面。
+    bufferArr[i] = 0x80;
+  }
+
+  pixelMap.writePixelsFromArea(area)
+    .then(() => {
+      console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
+    })
+    .catch((err: Error) => {
+      console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -801,14 +1092,14 @@ function DemoWritePixelsFromAreaYUV(pixelMap: image.PixelMap) {
 
 writePixelsFromAreaSync(area: PositionArea): void
 
-将缓冲区内的图像像素数据按照BGRA_8888格式写入PixelMap的指定区域（缓冲区内数据的像素格式必须是BGRA_8888）。同步返回结果。
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。同步返回结果。
 
 > **说明：**
 >
-> 可使用公式计算PositionArea需要申请的内存大小。
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
 >
-> - RGBA的区域计算公式：写入区域（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
-> - YUV的区域计算公式：写入区域（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
+> - RGBA的区域计算公式：写入区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：写入区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -826,7 +1117,7 @@ writePixelsFromAreaSync(area: PositionArea): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | ------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的图像像素数据会被写入PixelMap。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 
 **错误码：**
 
@@ -843,10 +1134,12 @@ writePixelsFromAreaSync(area: PositionArea): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoWritePixelsFromAreaSyncRGBA(pixelMap: image.PixelMap) {
+function writePixelsFromAreaSyncRGBA(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(24), // 24为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
@@ -859,7 +1152,7 @@ function DemoWritePixelsFromAreaSyncRGBA(pixelMap: image.PixelMap) {
   };
   const bufferArr = new Uint8Array(area.pixels);
   for (let i = 0; i < bufferArr.length; i += 4) {
-    // 假设pixelMap的像素格式为RGBA_8888，则下列数组索引依次为：R通道、G通道、B通道、A通道。
+    // 数据源的格式必须是BGRA_8888，下列数组索引依次为：B通道、G通道、R通道、A通道。
     bufferArr[i] = 0xFF;
     bufferArr[i + 1] = 0x00;
     bufferArr[i + 2] = 0x00;
@@ -868,14 +1161,14 @@ function DemoWritePixelsFromAreaSyncRGBA(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.writePixelsFromAreaSync(area);
-    console.info('Succeeded in writing pixel data from area.pixels to the specified area of pixelMap.');
+    console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to write pixel data. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 
-function DemoWritePixelsFromAreaSyncYUV(pixelMap: image.PixelMap) {
+function writePixelsFromAreaSyncYUV(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(9), // 9为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
     offset: 0,
@@ -897,10 +1190,70 @@ function DemoWritePixelsFromAreaSyncYUV(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.writePixelsFromAreaSync(area);
-    console.info('Succeeded in writing pixel data from area.pixels to the specified area of pixelMap.');
+    console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to write pixel data. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function writePixelsFromAreaSyncRGBA(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(24), // 24为需要创建的像素缓冲区大小，取值为：width * height * 4。
+    offset: 0,
+    stride: 8, // 跨距，即每行像素所占的字节数，在没有行末填充字节的情况下取值为：width * 4。
+    region: {
+      size: { width: 2, height: 3 },
+      x: 0,
+      y: 0
+    }
+  };
+  const bufferArr = new Uint8Array(area.pixels);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    // 数据源的格式必须是BGRA_8888，下列数组索引依次为：B通道、G通道、R通道、A通道。
+    bufferArr[i] = 0xFF;
+    bufferArr[i + 1] = 0x00;
+    bufferArr[i + 2] = 0x00;
+    bufferArr[i + 3] = 0xFF;
+  }
+
+  try {
+    pixelMap.writePixelsFromAreaSync(area);
+    console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+
+function writePixelsFromAreaSyncYUV(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(9), // 9为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
+    offset: 0,
+    stride: 2, // PixelMap为YUV格式时，writePixelsFromAreaSync函数不使用该变量。
+    region: {
+      size: { width: 2, height: 3 },
+      x: 0,
+      y: 0
+    }
+  };
+  const bufferArr = new Uint8Array(area.pixels);
+  const ySize = area.region.size.width * area.region.size.height;
+  for (let i = 0; i < ySize; i++) { // Y平面。
+    bufferArr[i] = 0xFF;
+  }
+  for (let i = ySize; i < bufferArr.length; i++) { // UV交错平面。
+    bufferArr[i] = 0x80;
+  }
+
+  try {
+    pixelMap.writePixelsFromAreaSync(area);
+    console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -909,15 +1262,14 @@ function DemoWritePixelsFromAreaSyncYUV(pixelMap: image.PixelMap) {
 
 writePixels(area: PositionArea): Promise\<void>
 
-将缓冲区内的图像像素数据按照BGRA_8888格式写入PixelMap的指定区域（缓冲区内数据的像素格式必须是BGRA_8888）。使用Promise异步回调。
-
-可用公式计算PositionArea需要申请的内存大小。
-
-YUV的区域计算公式：读取区域（region.size{width * height}）* 1.5 （1倍的Y分量+0.25倍U分量+0.25倍V分量）
-
-RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （1倍的R分量+1倍G分量+1倍B分量+1倍A分量）
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。使用Promise异步回调。
 
 > **说明：**
+>
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
+>
+> - RGBA的区域计算公式：写入区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：写入区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 >
 > 从API版本26.0.0开始，建议使用[writePixelsFromArea](#writepixelsfromarea)代替，以获得更完善的异常处理能力。
 
@@ -935,7 +1287,7 @@ RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （
 
 | 参数名 | 类型                           | 必填 | 说明                 |
 | ------ | ------------------------------ | ---- | -------------------- |
-| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的图像像素数据会被写入PixelMap。 |
+| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 
 **返回值：**
 
@@ -945,10 +1297,12 @@ RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function WritePixelsRGBA(pixelMap: image.PixelMap) {
+function writePixelsRGBA(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(8), // 8为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
@@ -961,12 +1315,12 @@ function WritePixelsRGBA(pixelMap: image.PixelMap) {
   }
   pixelMap.writePixels(area).then(() => {
     console.info('Succeeded in writing pixels into the specified area.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to write pixels into the specified area. Code is ${error.code}, message is ${error.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
   });
 }
 
-function WritePixelsYUV(pixelMap: image.PixelMap) {
+function writePixelsYUV(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(6), // 6为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
     offset: 0,
@@ -979,8 +1333,48 @@ function WritePixelsYUV(pixelMap: image.PixelMap) {
   }
   pixelMap.writePixels(area).then(() => {
     console.info('Succeeded in writing pixels into the specified area.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to write pixels into the specified area. Code is ${error.code}, message is ${error.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function writePixelsRGBA(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(8), // 8为需要创建的像素缓冲区大小，取值为：width * height * 4。
+    offset: 0,
+    stride: 8,
+    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+  };
+  let bufferArr: Uint8Array = new Uint8Array(area.pixels);
+  for (let i = 0; i < bufferArr.length; i++) {
+    bufferArr[i] = i + 1;
+  }
+  pixelMap.writePixels(area).then(() => {
+    console.info('Succeeded in writing pixels into the specified area.');
+  }).catch((err: Error) => {
+    console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+
+function writePixelsYUV(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(6), // 6为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
+    offset: 0,
+    stride: 8, // PixelMap为YUV格式时，writePixels函数不使用该变量。
+    region: { size: { height: 2, width: 2 }, x: 0, y: 0 }
+  };
+  let bufferArr: Uint8Array = new Uint8Array(area.pixels);
+  for (let i = 0; i < bufferArr.length; i++) {
+    bufferArr[i] = i + 1;
+  }
+  pixelMap.writePixels(area).then(() => {
+    console.info('Succeeded in writing pixels into the specified area.');
+  }).catch((error: Error) => {
+    console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -989,15 +1383,14 @@ function WritePixelsYUV(pixelMap: image.PixelMap) {
 
 writePixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
-将缓冲区内的图像像素数据按照BGRA_8888格式写入PixelMap的指定区域（缓冲区内数据的像素格式必须是BGRA_8888）。使用callback异步回调。
-
-可用公式计算PositionArea需要申请的内存大小。
-
-YUV的区域计算公式：读取区域（region.size{width * height}）* 1.5 （1倍的Y分量+0.25倍U分量+0.25倍V分量）
-
-RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （1倍的R分量+1倍G分量+1倍B分量+1倍A分量）
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。使用callback异步回调。
 
 > **说明：**
+>
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
+>
+> - RGBA的区域计算公式：写入区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：写入区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 >
 > 从API版本26.0.0开始，建议使用[writePixelsFromArea](#writepixelsfromarea)代替，以获得更完善的异常处理能力。
 
@@ -1015,7 +1408,7 @@ RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （
 
 | 参数名    | 类型                           | 必填 | 说明                           |
 | --------- | ------------------------------ | ---- | ------------------------------ |
-| area      | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的图像像素数据会被写入PixelMap。 |
+| area      | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 | callback  | AsyncCallback\<void>           | 是   | 回调函数，当写入成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -1023,8 +1416,9 @@ RGBA的区域计算公式：读取区域（region.size{width * height}）* 4 （
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function WritePixelsRGBA(pixelMap: image.PixelMap) {
-  const area: image.PositionArea = { pixels: new ArrayBuffer(8), // 8为需要创建的像素缓冲区大小，取值为：width * height * 4。
+function writePixelsRGBA(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(8), // 8为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
     stride: 8,
     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
@@ -1033,17 +1427,18 @@ function WritePixelsRGBA(pixelMap: image.PixelMap) {
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
-  pixelMap.writePixels(area, (error: BusinessError) => {
-    if (error) {
-      console.error(`Failed to write pixels into the specified area. Code is ${error.code}, message is ${error.message}`);
+  pixelMap.writePixels(area, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in writing pixels into the specified area.');
   });
 }
 
-function WritePixelsYUV(pixelMap: image.PixelMap) {
-  const area: image.PositionArea = { pixels: new ArrayBuffer(6), // 6为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
+function writePixelsYUV(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(6), // 6为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
     offset: 0,
     stride: 8, // PixelMap为YUV格式时，writePixels函数不使用该变量。
     region: { size: { height: 2, width: 2 }, x: 0, y: 0 }
@@ -1052,9 +1447,9 @@ function WritePixelsYUV(pixelMap: image.PixelMap) {
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
-  pixelMap.writePixels(area, (error: BusinessError) => {
-    if (error) {
-      console.error(`Failed to write pixels into the specified area. Code is ${error.code}, message is ${error.message}`);
+  pixelMap.writePixels(area, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in writing pixels into the specified area.');
@@ -1066,9 +1461,14 @@ function WritePixelsYUV(pixelMap: image.PixelMap) {
 
 writePixelsSync(area: PositionArea): void
 
-将缓冲区内的图像像素数据按照BGRA_8888格式写入PixelMap的指定区域（缓冲区内数据的像素格式必须是BGRA_8888）。同步返回结果。
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。同步返回结果。
 
 > **说明：**
+>
+> 可使用公式计算PositionArea需要申请的缓冲区大小。
+>
+> - RGBA的区域计算公式：写入区域像素数量（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
+> - YUV的区域计算公式：写入区域像素数量（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 >
 > 从API版本26.0.0开始，建议使用[writePixelsFromAreaSync](#writepixelsfromareasync)代替，以获得更完善的异常处理能力。
 
@@ -1086,7 +1486,7 @@ writePixelsSync(area: PositionArea): void
 
 | 参数名 | 类型                           | 必填 | 说明                 |
 | ------ | ------------------------------ | ---- | -------------------- |
-| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，函数执行结束后[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的图像像素数据会被写入PixelMap。 |
+| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为YUV类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 
 **错误码：**
 
@@ -1099,10 +1499,12 @@ writePixelsSync(area: PositionArea): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function WritePixelsSync(pixelMap: image.PixelMap) {
+function writePixelsSync(pixelMap: image.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(8),
     offset: 0,
@@ -1117,8 +1519,31 @@ function WritePixelsSync(pixelMap: image.PixelMap) {
     pixelMap.writePixelsSync(area);
     console.info('Succeeded in writing pixels into the specified area.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to write pixels into the specified area. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function writePixelsSync(pixelMap: image.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(8),
+    offset: 0,
+    stride: 8,
+    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+  };
+  let bufferArr: Uint8Array = new Uint8Array(area.pixels);
+  for (let i = 0; i < bufferArr.length; i++) {
+    bufferArr[i] = i + 1;
+  }
+  try {
+    pixelMap.writePixelsSync(area);
+    console.info('Succeeded in writing pixels into the specified area.');
+  } catch (err) {
+    console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1127,7 +1552,7 @@ function WritePixelsSync(pixelMap: image.PixelMap) {
 
 writeAllPixelsFromBuffer(src: ArrayBuffer): Promise\<void>
 
-将缓冲区内的图像像素数据写入整个PixelMap。使用Promise异步回调。
+将缓冲区内的像素数据写入整个PixelMap。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1143,9 +1568,9 @@ writeAllPixelsFromBuffer(src: ArrayBuffer): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                                  |
+| 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| src      | ArrayBuffer          | 是   | 源数据缓冲区，函数执行结束后该缓冲区内的图像像素数据会被写入PixelMap。缓冲区中的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src      | ArrayBuffer          | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -1168,10 +1593,12 @@ writeAllPixelsFromBuffer(src: ArrayBuffer): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoWriteAllPixelsFromBuffer(pixelMap: image.PixelMap) {
+function writeAllPixelsFromBuffer(pixelMap: image.PixelMap) {
   const writeBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
   const bufferArr = new Uint8Array(writeBuffer);
   for (let i = 0; i < bufferArr.length; i += 4) {
@@ -1184,10 +1611,34 @@ function DemoWriteAllPixelsFromBuffer(pixelMap: image.PixelMap) {
 
   pixelMap.writeAllPixelsFromBuffer(writeBuffer)
     .then(() => {
-      console.info('Succeeded in writing pixel data from writeBuffer to pixelMap.');
+      console.info('Succeeded in writing pixel data from writeBuffer to the PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to write pixel data. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function writeAllPixelsFromBuffer(pixelMap: image.PixelMap) {
+  const writeBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  const bufferArr = new Uint8Array(writeBuffer);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    // 假设pixelMap的像素格式为RGBA_8888，则下列数组索引依次为：R通道、G通道、B通道、A通道。
+    bufferArr[i] = 0xFF;
+    bufferArr[i + 1] = 0x00;
+    bufferArr[i + 2] = 0x00;
+    bufferArr[i + 3] = 0xFF;
+  }
+
+  pixelMap.writeAllPixelsFromBuffer(writeBuffer)
+    .then(() => {
+      console.info('Succeeded in writing pixel data from writeBuffer to the PixelMap.');
+    })
+    .catch((err: Error) => {
+      console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -1196,7 +1647,7 @@ function DemoWriteAllPixelsFromBuffer(pixelMap: image.PixelMap) {
 
 writeAllPixelsFromBufferSync(src: ArrayBuffer): void
 
-将缓冲区内的图像像素数据写入整个PixelMap。同步返回结果。
+将缓冲区内的像素数据写入整个PixelMap。同步返回结果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1212,9 +1663,9 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                                  |
+| 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| src      | ArrayBuffer          | 是   | 源数据缓冲区，函数执行结束后该缓冲区内的图像像素数据会被写入PixelMap。缓冲区中的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src      | ArrayBuffer          | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 
@@ -1231,10 +1682,12 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoWriteAllPixelsFromBufferSync(pixelMap: image.PixelMap) {
+function writeAllPixelsFromBufferSync(pixelMap: image.PixelMap) {
   const writeBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
   const bufferArr = new Uint8Array(writeBuffer);
   for (let i = 0; i < bufferArr.length; i += 4) {
@@ -1247,10 +1700,33 @@ function DemoWriteAllPixelsFromBufferSync(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.writeAllPixelsFromBufferSync(writeBuffer);
-    console.info('Succeeded in writing pixel data from writeBuffer to pixelMap.');
+    console.info('Succeeded in writing pixel data from writeBuffer to the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to write pixel data. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function writeAllPixelsFromBufferSync(pixelMap: image.PixelMap) {
+  const writeBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  const bufferArr = new Uint8Array(writeBuffer);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    // 假设pixelMap的像素格式为RGBA_8888，则下列数组索引依次为：R通道、G通道、B通道、A通道。
+    bufferArr[i] = 0xFF;
+    bufferArr[i + 1] = 0x00;
+    bufferArr[i + 2] = 0x00;
+    bufferArr[i + 3] = 0xFF;
+  }
+
+  try {
+    pixelMap.writeAllPixelsFromBufferSync(writeBuffer);
+    console.info('Succeeded in writing pixel data from writeBuffer to the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1259,7 +1735,7 @@ function DemoWriteAllPixelsFromBufferSync(pixelMap: image.PixelMap) {
 
 writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
-将缓冲区内的图像像素数据写入整个PixelMap。使用Promise异步回调。
+将缓冲区内的像素数据写入整个PixelMap。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1279,7 +1755,7 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 | 参数名 | 类型        | 必填 | 说明           |
 | ------ | ----------- | ---- | -------------- |
-| src    | ArrayBuffer | 是   | 源数据缓冲区，函数执行结束后该缓冲区内的图像像素数据会被写入PixelMap。缓冲区中的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src    | ArrayBuffer | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -1289,19 +1765,38 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function WriteBufferToPixels(pixelMap: image.PixelMap) {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+function writeBufferToPixels(pixelMap: image.PixelMap) {
+  const color: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
   pixelMap.writeBufferToPixels(color).then(() => {
-    console.info("Succeeded in writing data from a buffer to pixelMap.");
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to write data from a buffer to pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in writing data from the buffer to the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to write data from the buffer to the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function writeBufferToPixels(pixelMap: image.PixelMap) {
+  const color: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  let bufferArr: Uint8Array = new Uint8Array(color);
+  for (let i = 0; i < bufferArr.length; i++) {
+    bufferArr[i] = i + 1;
+  }
+  pixelMap.writeBufferToPixels(color).then(() => {
+    console.info('Succeeded in writing data from the buffer to the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to write data from the buffer to the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -1310,7 +1805,7 @@ function WriteBufferToPixels(pixelMap: image.PixelMap) {
 
 writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
-将缓冲区内的图像像素数据写入整个PixelMap。使用callback异步回调。
+将缓冲区内的像素数据写入整个PixelMap。使用callback异步回调。
 
 > **说明：**
 >
@@ -1330,7 +1825,7 @@ writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | -------- | -------------------- | ---- | ------------------------------ |
-| src      | ArrayBuffer          | 是   | 源数据缓冲区，函数执行结束后该缓冲区内的图像像素数据会被写入PixelMap。缓冲区中的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src      | ArrayBuffer          | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当缓冲区中的图像像素数据写入PixelMap成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -1338,18 +1833,18 @@ writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function WriteBufferToPixels(pixelMap: image.PixelMap) {
-  const color: ArrayBuffer = new ArrayBuffer(96);  // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+function writeBufferToPixels(pixelMap: image.PixelMap) {
+  const color: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
-  pixelMap.writeBufferToPixels(color, (error: BusinessError) => {
-    if (error) {
-      console.error(`Failed to write data from a buffer to pixelMap. Code is ${error.code}, message is ${error.message}`);
+  pixelMap.writeBufferToPixels(color, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to write data from the buffer to the PixelMap. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in writing data from a buffer to pixelMap.");
+    console.info('Succeeded in writing data from the buffer to the PixelMap.');
   });
 }
 ```
@@ -1358,7 +1853,7 @@ function WriteBufferToPixels(pixelMap: image.PixelMap) {
 
 writeBufferToPixelsSync(src: ArrayBuffer): void
 
-将缓冲区内的图像像素数据写入整个PixelMap。同步返回结果。
+将缓冲区内的像素数据写入整个PixelMap。同步返回结果。
 
 > **说明：**
 >
@@ -1376,7 +1871,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 
 | 参数名 | 类型        | 必填 | 说明           |
 | ------ | ----------- | ---- | -------------- |
-| src    | ArrayBuffer | 是   | 源数据缓冲区，函数执行结束后该缓冲区内的图像像素数据会被写入PixelMap。缓冲区中的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src    | ArrayBuffer | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 
@@ -1389,21 +1884,41 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function WriteBufferToPixelsSync(pixelMap: image.PixelMap) {
-  const color: ArrayBuffer = new ArrayBuffer(96);  // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+function writeBufferToPixelsSync(pixelMap: image.PixelMap) {
+  const color: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
   try {
     pixelMap.writeBufferToPixelsSync(color);
-    console.info("Succeeded in writing data from a buffer to pixelMap.");
+    console.info('Succeeded in writing data from the buffer to the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to write data from a buffer to pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to write data from the buffer to the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function writeBufferToPixelsSync(pixelMap: image.PixelMap) {
+  const color: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  let bufferArr: Uint8Array = new Uint8Array(color);
+  for (let i = 0; i < bufferArr.length; i++) {
+    bufferArr[i] = i + 1;
+  }
+  try {
+    pixelMap.writeBufferToPixelsSync(color);
+    console.info('Succeeded in writing data from the buffer to the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to write data from the buffer to the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1432,14 +1947,28 @@ getImageInfo(): Promise\<ImageInfo>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function GetImageInfo(pixelMap: image.PixelMap) {
+function getImageInfo(pixelMap: image.PixelMap) {
   pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
-    console.info(`Succeeded in obtaining pixelMap information ${imageInfo.size}.`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to obtain pixelMap information. Code is ${error.code}, message is ${error.message}`);
+    console.info(`Succeeded in obtaining information of the PixelMap with size ${imageInfo.size} and pixel format ${imageInfo.pixelFormat}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to obtain information of the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function getImageInfo(pixelMap: image.PixelMap) {
+  pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+    console.info(`Succeeded in obtaining information of the PixelMap with size ${imageInfo.size} and pixel format ${imageInfo.pixelFormat}.`);
+  }).catch((err: Error) => {
+    console.error(`Failed to obtain information of the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -1466,18 +1995,18 @@ getImageInfo(callback: AsyncCallback\<ImageInfo>): void
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | callback | AsyncCallback\<[ImageInfo](arkts-apis-image-i.md#imageinfo)> | 是   | 回调函数。当获取图像像素信息成功，err为undefined，data为获取到的图像像素信息；否则为错误对象。 |
 
-**示例:**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function GetImageInfoSync(pixelMap: image.PixelMap) {
-  pixelMap.getImageInfo((error: BusinessError, imageInfo: image.ImageInfo) => {
-    if (error) {
-      console.error(`Failed to obtain pixelMap information. Code is ${error.code}, message is ${error.message}`);
+function getImageInfo(pixelMap: image.PixelMap) {
+  pixelMap.getImageInfo((err: BusinessError, imageInfo: image.ImageInfo) => {
+    if (err) {
+      console.error(`Failed to obtain information of the PixelMap. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info(`Succeeded in obtaining pixelMap information ${imageInfo.size}.`);
+    console.info(`Succeeded in obtaining information of the PixelMap with size ${imageInfo.size} and pixel format ${imageInfo.pixelFormat}.`);
   });
 }
 ```
@@ -1514,16 +2043,31 @@ getImageInfoSync(): ImageInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function GetImageInfoSync(pixelMap: image.PixelMap) {
+function getImageInfoSync(pixelMap: image.PixelMap) {
   try {
     let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
-    console.info(`Succeeded in obtaining pixelMap information ${imageInfo.size}.`);
+    console.info(`Succeeded in obtaining information of the PixelMap with size ${imageInfo.size} and pixel format ${imageInfo.pixelFormat}.`);
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to obtain pixelMap information. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to obtain information of the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function getImageInfoSync(pixelMap: image.PixelMap) {
+  try {
+    let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+    console.info(`Succeeded in obtaining information of the PixelMap with size ${imageInfo.size} and pixel format ${imageInfo.pixelFormat}.`);
+  } catch (err) {
+    console.error(`Failed to obtain information of the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1557,7 +2101,7 @@ ArkTS-Sta: getBytesNumberPerRow(): int
 ArkTS-Dyn示例：
 
 ```ts
-function GetBytesNumberPerRow(pixelMap: image.PixelMap) {
+function getBytesNumberPerRow(pixelMap: image.PixelMap) {
   let rowBytes: number = pixelMap.getBytesNumberPerRow();
 }
 ```
@@ -1565,7 +2109,7 @@ function GetBytesNumberPerRow(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function GetBytesNumberPerRow(pixelMap: image.PixelMap) {
+function getBytesNumberPerRow(pixelMap: image.PixelMap) {
   let rowBytes: int = pixelMap.getBytesNumberPerRow();
 }
 ```
@@ -1576,7 +2120,7 @@ ArkTS-Dyn: getPixelBytesNumber(): number
 
 ArkTS-Sta: getPixelBytesNumber(): int
 
-获取图像所有像素所占用的总字节数，不包含内存对齐填充字节。
+获取图像所有像素占用的总字节数，不包含内存对齐填充字节。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1599,7 +2143,7 @@ ArkTS-Sta: getPixelBytesNumber(): int
 ArkTS-Dyn示例：
 
 ```ts
-function GetPixelBytesNumber(pixelMap: image.PixelMap) {
+function getPixelBytesNumber(pixelMap: image.PixelMap) {
   let pixelBytesNumber: number = pixelMap.getPixelBytesNumber();
 }
 ```
@@ -1607,7 +2151,7 @@ function GetPixelBytesNumber(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function GetPixelBytesNumber(pixelMap: image.PixelMap) {
+function getPixelBytesNumber(pixelMap: image.PixelMap) {
   let pixelBytesNumber: int = pixelMap.getPixelBytesNumber();
 }
 ```
@@ -1618,7 +2162,7 @@ ArkTS-Dyn: getDensity(): number
 
 ArkTS-Sta: getDensity(): int
 
-获取当前图像像素的密度。
+获取图像的像素密度。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1634,23 +2178,23 @@ ArkTS-Sta: getDensity(): int
 
 | 类型   | 说明            |
 | ------ | --------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 图像像素的密度，单位：ppi（像素/英寸）。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 图像的像素密度，单位：ppi（像素/英寸）。|
 
 **示例：**
 
 ArkTS-Dyn示例：
 
 ```ts
-function GetDensity(pixelMap: image.PixelMap) {
-  let getDensity: number = pixelMap.getDensity();
+function getDensity(pixelMap: image.PixelMap) {
+  let density: number = pixelMap.getDensity();
 }
 ```
 
 ArkTS-Sta示例：
 
 ```ts
-function GetDensity(pixelMap: image.PixelMap) {
-  let getDensity: int = pixelMap.getDensity();
+function getDensity(pixelMap: image.PixelMap) {
+  let density: int = pixelMap.getDensity();
 }
 ```
 
@@ -1676,7 +2220,7 @@ ArkTS-Sta: setOpacity(value: double): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                                  |
+| 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------------------- |
 | value    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度值。取值范围是(0.0, 1.0]，1.0表示完全不透明，数值越接近0.0则透明度越高。         |
 
@@ -1706,14 +2250,14 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoSetOpacity(pixelMap: image.PixelMap) {
-  let opacityValue: number = 0.5;
-  pixelMap.setOpacity(opacityValue)
+function setOpacity(pixelMap: image.PixelMap) {
+  const opacity: number = 0.5;
+  pixelMap.setOpacity(opacity)
     .then(() => {
       console.info('Succeeded in setting opacity.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to set opacity. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -1721,14 +2265,14 @@ function DemoSetOpacity(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoSetOpacity(pixelMap: image.PixelMap) {
-  let opacityValue: double = 0.5;
-  pixelMap.setOpacity(opacityValue)
+function setOpacity(pixelMap: image.PixelMap) {
+  const opacity: double = 0.5;
+  pixelMap.setOpacity(opacity)
     .then(() => {
       console.info('Succeeded in setting opacity.');
     })
-    .catch((error: Error) => {
-      console.error(`Failed to set opacity. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: Error) => {
+      console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -1755,7 +2299,7 @@ ArkTS-Sta: setOpacitySync(value: double): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                                  |
+| 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------------------- |
 | value    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度值。取值范围是(0.0, 1.0]，1.0表示完全不透明，数值越接近0.0则透明度越高。         |
 
@@ -1779,13 +2323,14 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoSetOpacitySync(pixelMap: image.PixelMap) {
+function setOpacitySync(pixelMap: image.PixelMap) {
+  const opacity: number = 0.5;
   try {
-    pixelMap.setOpacitySync(0.5);
+    pixelMap.setOpacitySync(opacity);
     console.info('Succeeded in setting opacity.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to set opacity. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1793,12 +2338,13 @@ function DemoSetOpacitySync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoSetOpacitySync(pixelMap: image.PixelMap) {
+function setOpacitySync(pixelMap: image.PixelMap) {
+  const opacity: double = 0.5;
   try {
-    pixelMap.setOpacitySync(0.5);
+    pixelMap.setOpacitySync(opacity);
     console.info('Succeeded in setting opacity.');
-  } catch (error) {
-    console.error(`Failed to set opacity. Code is ${error.code}, message is ${error.message}`);
+  } catch (err) {
+    console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1829,7 +2375,7 @@ ArkTS-Sta: opacity(rate: double, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | -------- | -------------------- | ---- | ------------------------------ |
-| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 是   | 透明比率的值，取值范围是(0,1]。  |
+| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度的值，取值范围是(0, 1]。1.0表示完全不透明，数值越接近0.0则透明度越高。  |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置透明比率成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -1839,11 +2385,11 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Opacity(pixelMap: image.PixelMap) {
-  let rate: number = 0.5;
+function opacity(pixelMap: image.PixelMap) {
+  const rate: number = 0.5;
   pixelMap.opacity(rate, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to set opacity. Code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info("Succeeded in setting opacity.");
@@ -1854,18 +2400,17 @@ function Opacity(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-async function Opacity(pixelMap: image.PixelMap) {
-  let rate: double = 0.5;
-  if (pixelMap != undefined) {
-    pixelMap.opacity(rate, (e) => {
-      if (e) {
-        console.error(`Failed to set opacity. Code is ${e.code}, message is ${e.message}`);
-        return;
-      } else {
-        console.info("Succeeded in setting opacity.");
-      }
-    })
-  }
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function opacity(pixelMap: image.PixelMap) {
+  const rate: double = 0.5;
+  pixelMap.opacity(rate, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in setting opacity.");
+  });
 }
 ```
 
@@ -1895,7 +2440,7 @@ ArkTS-Sta: opacity(rate: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                        |
 | ------ | ------ | ---- | --------------------------- |
-| rate   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 透明比率的值，取值范围是(0,1]。|
+| rate   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度的值，取值范围是(0, 1]。1.0表示完全不透明，数值越接近0.0则透明度越高。|
 
 **返回值：**
 
@@ -1910,12 +2455,12 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Opacity(pixelMap: image.PixelMap) {
+function opacity(pixelMap: image.PixelMap) {
   const rate: number = 0.5;
   pixelMap.opacity(rate).then(() => {
     console.info('Succeeded in setting opacity.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to set opacity. Code is ${error.code}, message is ${error.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -1923,15 +2468,13 @@ function Opacity(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-async function Opacity(pixelMap:image.PixelMap) {
+function opacity(pixelMap: image.PixelMap) {
   const rate: double = 0.5;
-  if (pixelMap != undefined) {
-    pixelMap.opacity(rate).then(() => {
-      console.info('Succeeded in setting opacity.');
-    }).catch((error) => {
-      console.error(`Failed to set opacity. code is ${error.code}, message is ${error.message}`);
-    })
-  }
+  pixelMap.opacity(rate).then(() => {
+    console.info('Succeeded in setting opacity.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -1959,7 +2502,7 @@ ArkTS-Sta: opacitySync(rate: double): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | -------- | -------------------- | ---- | ------------------------------ |
-| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 是   | 透明比率的值，取值范围是(0,1]。   |
+| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度的值，取值范围是(0, 1]。1.0表示完全不透明，数值越接近0.0则透明度越高。   |
 
 **错误码：**
 
@@ -1977,14 +2520,14 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function OpacitySync(pixelMap: image.PixelMap) {
+function opacitySync(pixelMap: image.PixelMap) {
   const rate: number = 0.5;
   try {
     pixelMap.opacitySync(rate);
     console.info('Succeeded in setting opacity.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to set opacity. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1992,10 +2535,13 @@ function OpacitySync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function OpacitySync(pixelMap:image.PixelMap) {
+function opacitySync(pixelMap: image.PixelMap) {
   const rate: double = 0.5;
-  if (pixelMap != undefined) {
+  try {
     pixelMap.opacitySync(rate);
+    console.info('Succeeded in setting opacity.');
+  } catch (err) {
+    console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2009,6 +2555,7 @@ extractAlphaPixelMap(): Promise\<PixelMap>
 > **说明：**
 >
 > 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
@@ -2041,16 +2588,32 @@ extractAlphaPixelMap(): Promise\<PixelMap>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoExtractAlphaPixelMap(pixelMap: image.PixelMap) {
+function extractAlphaPixelMap(pixelMap: image.PixelMap) {
   pixelMap.extractAlphaPixelMap()
     .then((alphaMap: image.PixelMap) => {
       console.info('Succeeded in creating alpha PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to create alpha PixelMap. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function extractAlphaPixelMap(pixelMap: image.PixelMap) {
+  pixelMap.extractAlphaPixelMap()
+    .then((alphaMap: image.PixelMap) => {
+      console.info('Succeeded in creating alpha PixelMap.');
+    })
+    .catch((err: Error) => {
+      console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -2064,6 +2627,7 @@ extractAlphaPixelMapSync(): PixelMap
 > **说明：**
 >
 > 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
@@ -2096,16 +2660,31 @@ extractAlphaPixelMapSync(): PixelMap
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoExtractAlphaPixelMapSync(pixelMap: image.PixelMap) {
+function extractAlphaPixelMapSync(pixelMap: image.PixelMap) {
   try {
     const alphaMap = pixelMap.extractAlphaPixelMapSync();
     console.info('Succeeded in creating alpha PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to create alpha PixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function extractAlphaPixelMapSync(pixelMap: image.PixelMap) {
+  try {
+    const alphaMap = pixelMap.extractAlphaPixelMapSync();
+    console.info('Succeeded in creating alpha PixelMap.');
+  } catch (err) {
+    console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2114,7 +2693,7 @@ function DemoExtractAlphaPixelMapSync(pixelMap: image.PixelMap) {
 
 createAlphaPixelmap(): Promise\<PixelMap>
 
-根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用Promise异步回调。
+根据Alpha通道的信息，生成一个仅包含Alpha通道信息的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2135,18 +2714,32 @@ createAlphaPixelmap(): Promise\<PixelMap>
 
 | 类型                             | 说明                        |
 | -------------------------------- | --------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回仅包含Alpha通道信息的ALPHA_8格式的PixelMap。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function CreateAlphaPixelmap(pixelMap: image.PixelMap) {
+function createAlphaPixelmap(pixelMap: image.PixelMap) {
   pixelMap.createAlphaPixelmap().then((alphaPixelMap: image.PixelMap) => {
     console.info('Succeeded in creating alpha PixelMap.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to create alpha PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function createAlphaPixelmap(pixelMap: image.PixelMap) {
+  pixelMap.createAlphaPixelmap().then((alphaPixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating alpha PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -2183,10 +2776,10 @@ createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function CreateAlphaPixelmap(pixelMap: image.PixelMap) {
+function createAlphaPixelmap(pixelMap: image.PixelMap) {
   pixelMap.createAlphaPixelmap((err: BusinessError, alphaPixelMap: image.PixelMap) => {
     if (err) {
-      console.error(`Failed to create alpha PixelMap. Code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in creating alpha PixelMap.');
@@ -2217,7 +2810,7 @@ createAlphaPixelmapSync(): PixelMap
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回仅包含Alpha通道信息的ALPHA_8格式的PixelMap对象，失败抛出异常。 |
 
 **错误码：**
 
@@ -2230,16 +2823,31 @@ createAlphaPixelmapSync(): PixelMap
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function CreateAlphaPixelmapSync(pixelMap: image.PixelMap) {
+function createAlphaPixelmapSync(pixelMap: image.PixelMap) {
   try {
     let pixelmap: image.PixelMap = pixelMap.createAlphaPixelmapSync();
     console.info('Succeeded in creating alpha PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to create alpha PixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function createAlphaPixelmapSync(pixelMap: image.PixelMap) {
+  try {
+    let pixelmap: image.PixelMap = pixelMap.createAlphaPixelmapSync();
+    console.info('Succeeded in creating alpha PixelMap.');
+  } catch (err) {
+    console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2271,11 +2879,11 @@ ArkTS-Sta: applyScale(x: double, y: double, level?: AntiAliasingLevel): Promise\
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。                                             |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。                                             |
-| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。默认值是AntiAliasingLevel.NONE。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。                                |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。                                |
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。默认值为AntiAliasingLevel.NONE。 |
 
 **返回值：**
 
@@ -2303,15 +2911,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyScale(pixelMap: image.PixelMap) {
+function applyScale(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.5;
   pixelMap.applyScale(scaleX, scaleY)
     .then(() => {
-      console.info('Succeeded in scaling pixelMap.');
+      console.info('Succeeded in scaling the PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to scale pixelMap. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -2319,15 +2927,15 @@ function DemoApplyScale(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoApplyScale(pixelMap: image.PixelMap) {
+function applyScale(pixelMap: image.PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 1.5;
   pixelMap.applyScale(scaleX, scaleY)
     .then(() => {
-      console.info('缩放成功。');
+      console.info('Succeeded in scaling the PixelMap.');
     })
-    .catch((error) => {
-      console.error(`缩放失败。错误码：${error.code} 错误信息：${error.message}`);
+    .catch((err: Error) => {
+      console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -2359,11 +2967,11 @@ ArkTS-Sta: applyScaleSync(x: double, y: double, level?: AntiAliasingLevel): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。                                             |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。                                             |
-| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。默认值是AntiAliasingLevel.NONE。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。                                |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。                                |
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。默认值为AntiAliasingLevel.NONE。 |
 
 **错误码：**
 
@@ -2385,15 +2993,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyScaleSync(pixelMap: image.PixelMap) {
+function applyScaleSync(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.5;
   try {
     pixelMap.applyScaleSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
-    console.info('Succeeded in scaling pixelMap.');
+    console.info('Succeeded in scaling the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to scale pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2401,14 +3009,14 @@ function DemoApplyScaleSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoApplyScaleSync(pixelMap: image.PixelMap) {
+function applyScaleSync(pixelMap: image.PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 1.5;
   try {
     pixelMap.applyScaleSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
-    console.info('Succeeded in scaling pixelMap.');
-  } catch (error) {
-    console.error(`Failed to scale pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in scaling the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2423,7 +3031,7 @@ ArkTS-Sta: scale(x: double, y: double, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取非负数，否则会产生翻转效果。
+> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScale](#applyscale)代替，以获得更完善的异常处理能力。
 
@@ -2452,15 +3060,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Scale(pixelMap: image.PixelMap) {
+function scale(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   pixelMap.scale(scaleX, scaleY, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to scale pixelMap. Code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in scaling pixelMap.");
+    console.info("Succeeded in scaling the PixelMap.");
   });
 }
 ```
@@ -2468,19 +3076,18 @@ function Scale(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-async function Scale(pixelMap:image.PixelMap) {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function scale(pixelMap: image.PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 1.0;
-  if (pixelMap != undefined) {
-    pixelMap.scale(scaleX, scaleY, (e) => {
-      if (e) {
-        console.error(`Failed to scale pixelmap. code is ${e.code}, message is ${e.message}`);
-        return;
-      } else {
-        console.info("Succeeded in scaling pixelmap.");
-      }
-    })
-  }
+  pixelMap.scale(scaleX, scaleY, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in scaling the PixelMap.");
+  });
 }
 ```
 
@@ -2494,7 +3101,7 @@ ArkTS-Sta: scale(x: double, y: double): Promise\<void>
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取非负数，否则会产生翻转效果。
+> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScale](#applyscale)代替，以获得更完善的异常处理能力。
 
@@ -2528,13 +3135,13 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Scale(pixelMap: image.PixelMap) {
+function scale(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   pixelMap.scale(scaleX, scaleY).then(() => {
-    console.info('Succeeded in scaling pixelMap.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to scale pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in scaling the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -2542,16 +3149,14 @@ function Scale(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-async function Scale(pixelMap:image.PixelMap) {
+function scale(pixelMap: image.PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 1.0;
-  if (pixelMap != undefined) {
-    pixelMap.scale(scaleX, scaleY).then(() => {
-      console.info('Succeeded in scaling pixelmap.');
-    }).catch((error) => {
-      console.error(`Failed to scale pixelmap. code is ${error.code}, message is ${error.message}`);
-    })
-  }
+  pixelMap.scale(scaleX, scaleY).then(() => {
+    console.info('Succeeded in scaling the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -2565,7 +3170,7 @@ ArkTS-Sta: scaleSync(x: double, y: double): void
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取非负数，否则会产生翻转效果。
+> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScaleSync](#applyscalesync)代替，以获得更完善的异常处理能力。
 
@@ -2600,15 +3205,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ScaleSync(pixelMap: image.PixelMap) {
+function scaleSync(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   try {
     pixelMap.scaleSync(scaleX, scaleY);
-    console.info('Succeeded in scaling pixelMap.');
+    console.info('Succeeded in scaling the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to scale pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2616,11 +3221,14 @@ function ScaleSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function ScaleSync(pixelMap: image.PixelMap) {
+function scaleSync(pixelMap: image.PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 1.0;
-  if (pixelMap != undefined) {
+  try {
     pixelMap.scaleSync(scaleX, scaleY);
+    console.info('Succeeded in scaling the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2635,7 +3243,7 @@ ArkTS-Sta: scale(x: double, y: double, level: AntiAliasingLevel): Promise\<void>
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取非负数，否则会产生翻转效果。
+> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScale](#applyscale)代替，以获得更完善的异常处理能力。
 
@@ -2679,13 +3287,13 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ScaleSync(pixelMap: image.PixelMap) {
+function scaleSync(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   pixelMap.scale(scaleX, scaleY, image.AntiAliasingLevel.LOW).then(() => {
-    console.info('Succeeded in scaling pixelMap.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to scale pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in scaling the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -2693,16 +3301,14 @@ function ScaleSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function ScaleSync(pixelMap:image.PixelMap) {
+function scaleSync(pixelMap: image.PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 1.0;
-  if (pixelMap != undefined) {
-    pixelMap.scale(scaleX, scaleY, image.AntiAliasingLevel.LOW).then(() => {
-      console.info('Succeeded in scaling pixelmap.');
-    }).catch((error) => {
-      console.error(`Failed to scale pixelmap. code is ${error.code}, message is ${error.message}`);
-    })
-  }
+  pixelMap.scale(scaleX, scaleY, image.AntiAliasingLevel.LOW).then(() => {
+    console.info('Succeeded in scaling the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -2716,7 +3322,7 @@ ArkTS-Sta: scaleSync(x: double, y: double, level: AntiAliasingLevel): void
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取非负数，否则会产生翻转效果。
+> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScaleSync](#applyscalesync)代替，以获得更完善的异常处理能力。
 
@@ -2752,15 +3358,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ScaleSync(pixelMap: image.PixelMap) {
+function scaleSync(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   try {
     pixelMap.scaleSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
-    console.info('Succeeded in scaling pixelMap.');
+    console.info('Succeeded in scaling the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to scale pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2768,11 +3374,14 @@ function ScaleSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function ScaleSync(pixelMap: image.PixelMap) {
+function scaleSync(pixelMap: image.PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 1.0;
-  if (pixelMap != undefined) {
+  try {
     pixelMap.scaleSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
+    console.info('Succeeded in scaling the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2807,7 +3416,7 @@ ArkTS-Sta: createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel)
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回缩放后的PixelMap。 |
 
 **错误码：**
 
@@ -2825,13 +3434,13 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function CreateScaledPixelMap(pixelMap: image.PixelMap) {
+function createScaledPixelMap(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   pixelMap.createScaledPixelMap(scaleX, scaleY, image.AntiAliasingLevel.LOW).then((scaledPixelMap: image.PixelMap) => {
     console.info('Succeeded in creating scaled PixelMap.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to create scaled PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to create scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -2839,16 +3448,14 @@ function CreateScaledPixelMap(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-async function CreateScaledPixelMap(pixelMap:image.PixelMap) {
+function createScaledPixelMap(pixelMap: image.PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 1.0;
-  if (pixelMap != undefined) {
-      pixelMap.createScaledPixelMap(scaleX, scaleY, image.AntiAliasingLevel.LOW).then((scaledPixelMap: image.PixelMap) => {
-      console.info('Succeeded in creating scaledPixelMap.');
-    }).catch((error) => {
-      console.error(`Failed to create scaledPixelMap. e code is ${error.code}, e message is ${error.message}`);
-    })
-  }
+  pixelMap.createScaledPixelMap(scaleX, scaleY, image.AntiAliasingLevel.LOW).then((scaledPixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating scaled PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to create scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -2882,7 +3489,7 @@ ArkTS-Sta: createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLe
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回缩放后的PixelMap对象，失败抛出异常。 |
 
 **错误码：**
 
@@ -2900,15 +3507,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function CreateScaledPixelMapSync(pixelMap: image.PixelMap) {
+function createScaledPixelMapSync(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   try {
     let scaledPixelMap = pixelMap.createScaledPixelMapSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
     console.info('Succeeded in creating scaled PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to create scaled PixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to create scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2916,11 +3523,14 @@ function CreateScaledPixelMapSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function CreateScaledPixelMapSync(pixelMap:image.PixelMap) {
+function createScaledPixelMapSync(pixelMap: image.PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 1.0;
-  if (pixelMap != undefined) {
+  try {
     let scaledPixelMap = pixelMap.createScaledPixelMapSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
+    console.info('Succeeded in creating scaled PixelMap.');
+  } catch (err) {
+    console.error(`Failed to create scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2947,16 +3557,16 @@ ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, 
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高（单位：像素（px））。 |
+| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高。单位：像素（px）。 |
 | x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
 | y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
-| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。该参数对于ASTC格式的PixelMap不生效。 |
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值为AntiAliasingLevel.NONE。该参数对于ASTC格式的PixelMap不生效。 |
 
 **返回值：**
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise对象，返回裁剪并缩放后的PixelMap。 |
 
 **错误码：**
 
@@ -2976,7 +3586,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoCreateCroppedAndScaledPixelMap(pixelMap: image.PixelMap) {
+function createCroppedAndScaledPixelMap(pixelMap: image.PixelMap) {
   const imageInfo = pixelMap.getImageInfoSync();
   const region: image.Region = {
     size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
@@ -2989,8 +3599,8 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: image.PixelMap) {
     .then((croppedAndScaled: image.PixelMap) => {
       console.info('Succeeded in creating cropped and scaled PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to create cropped and scaled PixelMap. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to create cropped and scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -2998,7 +3608,7 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoCreateCroppedAndScaledPixelMap(pixelMap: image.PixelMap) {
+function createCroppedAndScaledPixelMap(pixelMap: image.PixelMap) {
   const imageInfo = pixelMap.getImageInfoSync();
   const region: image.Region = {
     size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
@@ -3009,10 +3619,10 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: image.PixelMap) {
   const scaleY: double = 2.0;
   pixelMap.createCroppedAndScaledPixelMap(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH)
     .then((croppedAndScaled: image.PixelMap) => {
-      console.info('PixelMap crop and scale succeeded.');
+      console.info('Succeeded in creating cropped and scaled PixelMap.');
     })
-    .catch((error) => {
-      console.error(`PixelMap crop and scale failed. e code: ${error.code}, message: ${error.message}`);
+    .catch((err: Error) => {
+      console.error(`Failed to create cropped and scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -3039,16 +3649,16 @@ ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: doub
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高（单位：像素（px））。 |
+| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高。单位：像素（px）。 |
 | x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
 | y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
-| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。该参数对于ASTC格式的PixelMap不生效。 |
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值为AntiAliasingLevel.NONE。该参数对于ASTC格式的PixelMap不生效。 |
 
 **返回值：**
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功则同步返回PixelMap对象，失败则抛出异常。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 成功则同步返回裁剪并缩放后的PixelMap对象，失败则抛出异常。 |
 
 **错误码：**
 
@@ -3068,7 +3678,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: image.PixelMap) {
+function createCroppedAndScaledPixelMapSync(pixelMap: image.PixelMap) {
   const imageInfo = pixelMap.getImageInfoSync();
   const region: image.Region = {
     size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
@@ -3081,8 +3691,8 @@ function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: image.PixelMap) {
     const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
     console.info('Succeeded in creating cropped and scaled PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to create cropped and scaled PixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to create cropped and scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3090,7 +3700,7 @@ function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: image.PixelMap) {
+function createCroppedAndScaledPixelMapSync(pixelMap: image.PixelMap) {
   const imageInfo = pixelMap.getImageInfoSync();
   const region: image.Region = {
     size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
@@ -3101,8 +3711,9 @@ function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: image.PixelMap) {
   const scaleY: double = 2.0;
   try {
     const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
-  } catch (error) {
-    console.error(`PixelMap crop and scale failed. e code: ${error.code}, message: ${error.message}`);
+    console.info('Succeeded in creating cropped and scaled PixelMap.');
+  } catch (err) {
+    console.error(`Failed to create cropped and scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3117,7 +3728,7 @@ clone(): Promise\<PixelMap>
 >
 > 该接口不会拷贝原图像的EXIF信息。
 
-**系统能力：**: SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -3127,7 +3738,7 @@ clone(): Promise\<PixelMap>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。|
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回拷贝的PixelMap。|
 
 **错误码：**
 
@@ -3143,14 +3754,28 @@ clone(): Promise\<PixelMap>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Clone(pixelMap: image.PixelMap) {
+function clone(pixelMap: image.PixelMap) {
   pixelMap.clone().then((clonedPixelMap: image.PixelMap) => {
-    console.info('Succeeded in cloning pixelMap.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to clone pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in cloning the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to clone the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function clone(pixelMap: image.PixelMap) {
+  pixelMap.clone().then((clonedPixelMap: image.PixelMap) => {
+    console.info('Succeeded in cloning the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to clone the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -3165,7 +3790,7 @@ cloneSync(): PixelMap
 >
 > 该接口不会拷贝原图像的EXIF信息。
 
-**系统能力：**: SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -3175,7 +3800,7 @@ cloneSync(): PixelMap
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回拷贝的PixelMap对象，失败抛出异常。 |
 
 **错误码：**
 
@@ -3191,16 +3816,31 @@ cloneSync(): PixelMap
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function CloneSync(pixelMap: image.PixelMap) {
+function cloneSync(pixelMap: image.PixelMap) {
   try {
     let clonedPixelMap: image.PixelMap = pixelMap.cloneSync();
-    console.info('Succeeded in cloning pixelMap.');
+    console.info('Succeeded in cloning the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to clone pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to clone the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function cloneSync(pixelMap: image.PixelMap) {
+  try {
+    let clonedPixelMap: image.PixelMap = pixelMap.cloneSync();
+    console.info('Succeeded in cloning the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to clone the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3215,8 +3855,7 @@ ArkTS-Sta: applyTranslate(x: double, y: double): Promise\<void>
 
 > **说明：**
 >
-> - 平移后的图片尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
-> - 建议平移后的图片尺寸不要超过屏幕的宽高。
+> 平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3232,10 +3871,10 @@ ArkTS-Sta: applyTranslate(x: double, y: double): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。单位：像素（px）。                                                         |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。单位：像素（px）。                                                         |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。方向为正数向右，负数向左。取值范围是(-图像宽度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像左侧起的x列像素。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。方向为正数向下，负数向上。取值范围是(-图像高度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像上方起的y行像素。 |
 
 **返回值：**
 
@@ -3263,15 +3902,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyTranslate(pixelMap: image.PixelMap) {
+function applyTranslate(pixelMap: image.PixelMap) {
   const translateX: number = 50.0;
   const translateY: number = 10.0;
   pixelMap.applyTranslate(translateX, translateY)
     .then(() => {
-      console.info('Succeeded in translating pixelMap.');
+      console.info('Succeeded in translating the PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to translate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -3279,15 +3918,15 @@ function DemoApplyTranslate(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoApplyTranslate(pixelMap: image.PixelMap) {
+function applyTranslate(pixelMap: image.PixelMap) {
   const translateX: double = 50.0;
   const translateY: double = 10.0;
   pixelMap.applyTranslate(translateX, translateY)
     .then(() => {
-      console.info('平移成功。');
+      console.info('Succeeded in translating the PixelMap.');
     })
-    .catch((error) => {
-      console.error(`平移失败。错误码：${error.code} 错误信息：${error.message}`);
+    .catch((err: Error) => {
+      console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -3302,8 +3941,7 @@ ArkTS-Sta: applyTranslateSync(x: double, y: double): void
 
 > **说明：**
 >
-> - 平移后的图片尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
-> - 建议平移后的图片尺寸不要超过屏幕的宽高。
+> 平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3319,10 +3957,10 @@ ArkTS-Sta: applyTranslateSync(x: double, y: double): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。单位：像素（px）。                                                         |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。单位：像素（px）。                                                         |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。方向为正数向右，负数向左。取值范围是(-图像宽度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像左侧起的x列像素。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。方向为正数向下，负数向上。取值范围是(-图像高度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像上方起的y行像素。 |
 
 **错误码：**
 
@@ -3344,15 +3982,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyTranslateSync(pixelMap: image.PixelMap) {
+function applyTranslateSync(pixelMap: image.PixelMap) {
   const translateX: number = 50.0;
   const translateY: number = 10.0;
   try {
     pixelMap.applyTranslateSync(translateX, translateY);
-    console.info('Succeeded in translating pixelMap.');
+    console.info('Succeeded in translating the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to translate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3360,15 +3998,14 @@ function DemoApplyTranslateSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoApplyTranslateSync(pixelMap: image.PixelMap) {
+function applyTranslateSync(pixelMap: image.PixelMap) {
   const translateX: double = 50.0;
   const translateY: double = 10.0;
   try {
     pixelMap.applyTranslateSync(translateX, translateY);
-    console.info('Succeeded in translating pixelMap.');
-    console.info('平移成功。');
-  } catch (error) {
-    console.error(`Failed to translate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in translating the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3381,11 +4018,10 @@ ArkTS-Sta: translate(x: double, y: double, callback: AsyncCallback\<void>): void
 
 根据输入的坐标对图片进行位置变换。使用callback异步回调。
 
-translate后的图片尺寸改变为：width+X ，height+Y，建议translate后的图片尺寸宽高不要超过屏幕的宽高。
-
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[applyTranslate](#applytranslate)代替，以获得更完善的异常处理能力。
+> - 平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
+> - 从API版本26.0.0开始，建议使用[applyTranslate](#applytranslate)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -3401,8 +4037,8 @@ translate后的图片尺寸改变为：width+X ，height+Y，建议translate后�
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | -------------------- | ---- | ----------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。单位：像素（px）。 |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。单位：像素（px）。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。方向为正数向右，负数向左。取值范围是(-图像宽度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像左侧起的x列像素。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。方向为正数向下，负数向上。取值范围是(-图像高度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像上方起的y行像素。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当对图片进行位置变换成功，err为undefined，否则为错误对象。|
 
 **示例：**
@@ -3412,15 +4048,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Translate(pixelMap: image.PixelMap) {
+function translate(pixelMap: image.PixelMap) {
   const translateX: number = 50.0;
   const translateY: number = 10.0;
   pixelMap.translate(translateX, translateY, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to translate pixelMap. Code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in translating pixelMap.");
+    console.info("Succeeded in translating the PixelMap.");
   });
 }
 ```
@@ -3428,19 +4064,18 @@ function Translate(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-async function Translate(pixelMap:image.PixelMap) {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function translate(pixelMap: image.PixelMap) {
   const translateX: double = 50.0;
   const translateY: double = 10.0;
-  if (pixelMap != undefined) {
-    pixelMap.translate(translateX, translateY, (e) => {
-      if (e) {
-        console.error(`Failed to translate pixelmap. code is ${e.code}, message is ${e.message}`);
-        return;
-      } else {
-        console.info("Succeeded in translating pixelmap.");
-      }
-    })
-  }
+  pixelMap.translate(translateX, translateY, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in translating the PixelMap.");
+  });
 }
 ```
 
@@ -3452,11 +4087,10 @@ ArkTS-Sta: translate(x: double, y: double): Promise\<void>
 
 根据输入的坐标对图片进行位置变换。使用Promise异步回调。
 
-translate后的图片尺寸改变为：width+X，height+Y，建议translate后的图片尺寸宽高不要超过屏幕的宽高。
-
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[applyTranslate](#applytranslate)代替，以获得更完善的异常处理能力。
+> - 平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
+> - 从API版本26.0.0开始，建议使用[applyTranslate](#applytranslate)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -3472,8 +4106,8 @@ translate后的图片尺寸改变为：width+X，height+Y，建议translate后�
 
 | 参数名 | 类型   | 必填 | 说明        |
 | ------ | ------ | ---- | ----------- |
-| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。单位：像素（px）。 |
-| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。单位：像素（px）。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。方向为正数向右，负数向左。取值范围是(-图像宽度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像左侧起的x列像素。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。方向为正数向下，负数向上。取值范围是(-图像高度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像上方起的y行像素。 |
 
 **返回值：**
 
@@ -3488,13 +4122,13 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Translate(pixelMap: image.PixelMap) {
+function translate(pixelMap: image.PixelMap) {
   const translateX: number = 50.0;
   const translateY: number = 10.0;
   pixelMap.translate(translateX, translateY).then(() => {
-    console.info('Succeeded in translating pixelMap.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to translate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in translating the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -3502,16 +4136,14 @@ function Translate(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-async function Translate(pixelMap:image.PixelMap) {
+function translate(pixelMap: image.PixelMap) {
   const translateX: double = 50.0;
   const translateY: double = 10.0;
-  if (pixelMap != undefined) {
-    pixelMap.translate(translateX, translateY).then(() => {
-      console.info('Succeeded in translating pixelmap.');
-    }).catch((error) => {
-      console.error(`Failed to translate pixelmap. code is ${error.code}, message is ${error.message}`);
-    })
-  }
+  pixelMap.translate(translateX, translateY).then(() => {
+    console.info('Succeeded in translating the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -3523,11 +4155,10 @@ ArkTS-Sta: translateSync(x: double, y: double): void
 
 根据输入的坐标对图片进行位置变换。同步返回结果。
 
-translate后的图片尺寸改变为：width+X，height+Y，建议translate后的图片尺寸宽高不要超过屏幕的宽高。
-
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[applyTranslateSync](#applytranslatesync)代替，以获得更完善的异常处理能力。
+> - 平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
+> - 从API版本26.0.0开始，建议使用[applyTranslateSync](#applytranslatesync)代替，以获得更完善的异常处理能力。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3541,8 +4172,8 @@ translate后的图片尺寸改变为：width+X，height+Y，建议translate后�
 
 | 参数名   | 类型                 | 必填 | 说明                            |
 | -------- | -------------------- | ---- | ------------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。单位：像素（px）。 |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。单位：像素（px）。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。方向为正数向右，负数向左。取值范围是(-图像宽度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像左侧起的x列像素。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。方向为正数向下，负数向上。取值范围是(-图像高度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像上方起的y行像素。 |
 
 **错误码：**
 
@@ -3560,15 +4191,15 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function TranslateSync(pixelMap: image.PixelMap) {
+function translateSync(pixelMap: image.PixelMap) {
   const translateX: number = 50.0;
   const translateY: number = 10.0;
   try {
     pixelMap.translateSync(translateX, translateY);
-    console.info('Succeeded in translating pixelMap.');
+    console.info('Succeeded in translating the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to translate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3576,11 +4207,14 @@ function TranslateSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function TranslateSync(pixelMap:image.PixelMap) {
+function translateSync(pixelMap: image.PixelMap) {
   const translateX: double = 50.0;
   const translateY: double = 10.0;
-  if (pixelMap != undefined) {
+  try {
     pixelMap.translateSync(translateX, translateY);
+    console.info('Succeeded in translating the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3596,7 +4230,7 @@ ArkTS-Sta: applyRotate(angle: double): Promise\<void>
 > **说明：**
 >
 > - 图像旋转角度的取值范围为[0, 360]。超出取值范围时，将根据圆周360°自动矫正。例如，-100°与260°效果相同。
-> - 当旋转角度不是90°的倍数时，图像的尺寸会扩大为旋转后的外接矩形尺寸，以容纳旋转后的图像内容。例如：旋转45°时，输出图像尺寸为原图像的√2倍。
+> - 当旋转角度不是90°的倍数时，图像的尺寸会扩大为旋转后的外接矩形尺寸，以容纳旋转后的图像内容。例如：正方形图像旋转45°后，输出图像的尺寸（边长）变为原图像的√2倍。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3612,9 +4246,9 @@ ArkTS-Sta: applyRotate(angle: double): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
-| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 旋转的角度。单位：角度（°）。                                                                   |
+| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 旋转的角度。方向为正数顺时针，负数逆时针。单位：角度（°）。                                  |
 
 **返回值：**
 
@@ -3642,14 +4276,14 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyRotate(pixelMap: image.PixelMap) {
+function applyRotate(pixelMap: image.PixelMap) {
   const angle: number = 90.0;
   pixelMap.applyRotate(angle)
     .then(() => {
-      console.info('Succeeded in rotating pixelMap.');
+      console.info('Succeeded in rotating the PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to rotate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -3657,14 +4291,14 @@ function DemoApplyRotate(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoApplyRotate(pixelMap: image.PixelMap) {
+function applyRotate(pixelMap: image.PixelMap) {
   const angle: double = 90.0;
   pixelMap.applyRotate(angle)
     .then(() => {
-      console.info('旋转成功。');
+      console.info('Succeeded in rotating the PixelMap.');
     })
-    .catch((error) => {
-      console.error(`旋转失败。错误码：${error.code} 错误信息：${error.message}`);
+    .catch((err: Error) => {
+      console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -3680,7 +4314,7 @@ ArkTS-Sta: applyRotateSync(angle: double): void
 > **说明：**
 >
 > - 图像旋转角度的取值范围为[0, 360]。超出取值范围时，将根据圆周360°自动矫正。例如，-100°与260°效果相同。
-> - 当旋转角度不是90°的倍数时，图像的尺寸会扩大为旋转后的外接矩形尺寸，以容纳旋转后的图像内容。例如：旋转45°时，输出图像尺寸为原图像的√2倍。
+> - 当旋转角度不是90°的倍数时，图像的尺寸会扩大为旋转后的外接矩形尺寸，以容纳旋转后的图像内容。例如：正方形图像旋转45°后，输出图像的尺寸（边长）变为原图像的√2倍。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3696,9 +4330,9 @@ ArkTS-Sta: applyRotateSync(angle: double): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
-| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 旋转的角度。单位：角度（°）。                                                                   |
+| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 旋转的角度。方向为正数顺时针，负数逆时针。单位：角度（°）。                                  |
 
 **错误码：**
 
@@ -3720,14 +4354,14 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyRotateSync(pixelMap: image.PixelMap) {
-  const angle: double = 90.0;
+function applyRotateSync(pixelMap: image.PixelMap) {
+  const angle: number = 90.0;
   try {
     pixelMap.applyRotateSync(angle);
-    console.info('Succeeded in rotating pixelMap.');
+    console.info('Succeeded in rotating the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to rotate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3735,13 +4369,13 @@ function DemoApplyRotateSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoApplyRotateSync(pixelMap: image.PixelMap) {
+function applyRotateSync(pixelMap: image.PixelMap) {
   const angle: double = 90.0;
   try {
     pixelMap.applyRotateSync(angle);
-    console.info('Succeeded in rotating pixelMap.');
-  } catch (e) {
-    console.error(`Failed to rotate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in rotating the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3756,7 +4390,7 @@ ArkTS-Sta: rotate(angle: double, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> - 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
+> - 图像旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360°自动矫正。例如，-100°与260°效果相同。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 > - 从API版本26.0.0开始，建议使用[applyRotate](#applyrotate)代替，以获得更完善的异常处理能力。
 
@@ -3774,7 +4408,7 @@ ArkTS-Sta: rotate(angle: double, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 是   | 图片旋转的角度。单位：角度（deg）。 |
+| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 图像旋转的角度。方向为正数顺时针，负数逆时针。单位：角度（°）。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当对图片进行旋转成功，err为undefined，否则为错误对象。|
 
 **示例：**
@@ -3784,14 +4418,14 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Rotate(pixelMap: image.PixelMap) {
+function rotate(pixelMap: image.PixelMap) {
   const angle: number = 90.0;
   pixelMap.rotate(angle, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to rotate pixelMap. Code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in rotating pixelMap.");
+    console.info("Succeeded in rotating the PixelMap.");
   });
 }
 ```
@@ -3799,18 +4433,17 @@ function Rotate(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-async function Rotate(pixelMap:image.PixelMap) {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function rotate(pixelMap: image.PixelMap) {
   const angle: double = 90.0;
-  if (pixelMap != undefined) {
-    pixelMap.rotate(angle, (e) => {
-      if (e) {
-        console.error(`Failed to rotate pixelmap. code is ${e.code}, message is ${e.message}`);
-        return;
-      } else {
-        console.info("Succeeded in rotating pixelmap.");
-      }
-    })
-  }
+  pixelMap.rotate(angle, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in rotating the PixelMap.");
+  });
 }
 ```
 
@@ -3824,7 +4457,7 @@ ArkTS-Sta: rotate(angle: double): Promise\<void>
 
 > **说明：**
 >
-> - 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
+> - 图像旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360°自动矫正。例如，-100°与260°效果相同。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 > - 从API版本26.0.0开始，建议使用[applyRotate](#applyrotate)代替，以获得更完善的异常处理能力。
 
@@ -3842,7 +4475,7 @@ ArkTS-Sta: rotate(angle: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                          |
 | ------ | ------ | ---- | ----------------------------- |
-| angle  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 图片旋转的角度。单位：角度（deg）。 |
+| angle  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 图像旋转的角度。方向为正数顺时针，负数逆时针。单位：角度（°）。 |
 
 **返回值：**
 
@@ -3857,12 +4490,12 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Rotate(pixelMap: image.PixelMap) {
+function rotate(pixelMap: image.PixelMap) {
   const angle: number = 90.0;
   pixelMap.rotate(angle).then(() => {
-    console.info('Succeeded in rotating pixelMap.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to rotate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in rotating the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -3870,15 +4503,13 @@ function Rotate(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-async function Rotate(pixelMap:image.PixelMap) {
+function rotate(pixelMap: image.PixelMap) {
   const angle: double = 90.0;
-  if (pixelMap != undefined) {
-    pixelMap.rotate(angle).then(() => {
-      console.info('Succeeded in rotating pixelmap.');
-    }).catch((error) => {
-      console.error(`Failed to rotate pixelmap. code is ${error.code}, message is ${error.message}`);
-    })
-  }
+  pixelMap.rotate(angle).then(() => {
+    console.info('Succeeded in rotating the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -3892,7 +4523,7 @@ ArkTS-Sta: rotateSync(angle: double): void
 
 > **说明：**
 >
-> - 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
+> - 图像旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360°自动矫正。例如，-100°与260°效果相同。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 > - 从API版本26.0.0开始，建议使用[applyRotateSync](#applyrotatesync)代替，以获得更完善的异常处理能力。
 
@@ -3908,7 +4539,7 @@ ArkTS-Sta: rotateSync(angle: double): void
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 是   | 图片旋转的角度。单位：角度（deg）。 |
+| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 图像旋转的角度。方向为正数顺时针，负数逆时针。单位：角度（°）。 |
 
 **错误码：**
 
@@ -3926,14 +4557,14 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function RotateSync(pixelMap: image.PixelMap) {
+function rotateSync(pixelMap: image.PixelMap) {
   const angle: number = 90.0;
   try {
     pixelMap.rotateSync(angle);
-    console.info('Succeeded in rotating pixelMap.');
+    console.info('Succeeded in rotating the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to rotate pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3941,10 +4572,13 @@ function RotateSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function RotateSync(pixelMap: image.PixelMap) {
+function rotateSync(pixelMap: image.PixelMap) {
   const angle: double = 90.0;
-  if (pixelMap != undefined) {
+  try {
     pixelMap.rotateSync(angle);
+    console.info('Succeeded in rotating the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -3969,7 +4603,7 @@ applyFlip(horizontal: boolean, vertical: boolean): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
 | horizontal | boolean            | 是   | 是否进行水平翻转。true表示进行水平翻转，false表示不进行水平翻转。                            |
 | vertical   | boolean            | 是   | 是否进行垂直翻转。true表示进行垂直翻转，false表示不进行垂直翻转。                            |
@@ -3995,18 +4629,36 @@ applyFlip(horizontal: boolean, vertical: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyFlip(pixelMap: image.PixelMap) {
+function applyFlip(pixelMap: image.PixelMap) {
   const horizontal: boolean = true;
   const vertical: boolean = false;
   pixelMap.applyFlip(horizontal, vertical)
     .then(() => {
-      console.info('Succeeded in flipping pixelMap.');
+      console.info('Succeeded in flipping the PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to flip pixelMap. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function applyFlip(pixelMap: image.PixelMap) {
+  const horizontal: boolean = true;
+  const vertical: boolean = false;
+  pixelMap.applyFlip(horizontal, vertical)
+    .then(() => {
+      console.info('Succeeded in flipping the PixelMap.');
+    })
+    .catch((err: Error) => {
+      console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -4031,7 +4683,7 @@ applyFlipSync(horizontal: boolean, vertical: boolean): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
 | horizontal | boolean            | 是   | 是否进行水平翻转。true表示进行水平翻转，false表示不进行水平翻转。                            |
 | vertical   | boolean            | 是   | 是否进行垂直翻转。true表示进行垂直翻转，false表示不进行垂直翻转。                            |
@@ -4051,18 +4703,35 @@ applyFlipSync(horizontal: boolean, vertical: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyFlipSync(pixelMap: image.PixelMap) {
+function applyFlipSync(pixelMap: image.PixelMap) {
   const horizontal: boolean = true;
   const vertical: boolean = false;
   try {
     pixelMap.applyFlipSync(horizontal, vertical);
-    console.info('Succeeded in flipping pixelMap.');
+    console.info('Succeeded in flipping the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to flip pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function applyFlipSync(pixelMap: image.PixelMap) {
+  const horizontal: boolean = true;
+  const vertical: boolean = false;
+  try {
+    pixelMap.applyFlipSync(horizontal, vertical);
+    console.info('Succeeded in flipping the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -4100,15 +4769,15 @@ flip(horizontal: boolean, vertical: boolean, callback: AsyncCallback\<void>): vo
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Flip(pixelMap: image.PixelMap) {
+function flip(pixelMap: image.PixelMap) {
   const horizontal: boolean = true;
   const vertical: boolean = false;
   pixelMap.flip(horizontal, vertical, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to flip pixelMap. Code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in flipping pixelMap.");
+    console.info("Succeeded in flipping the PixelMap.");
   });
 }
 ```
@@ -4148,16 +4817,32 @@ flip(horizontal: boolean, vertical: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Flip(pixelMap: image.PixelMap) {
+function flip(pixelMap: image.PixelMap) {
   const horizontal: boolean = true;
   const vertical: boolean = false;
   pixelMap.flip(horizontal, vertical).then(() => {
-    console.info('Succeeded in flipping pixelMap.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to flip pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in flipping the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function flip(pixelMap: image.PixelMap) {
+  const horizontal: boolean = true;
+  const vertical: boolean = false;
+  pixelMap.flip(horizontal, vertical).then(() => {
+    console.info('Succeeded in flipping the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -4198,18 +4883,35 @@ flipSync(horizontal: boolean, vertical: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function FlipSync(pixelMap: image.PixelMap) {
+function flipSync(pixelMap: image.PixelMap) {
   const horizontal: boolean = true;
   const vertical: boolean = false;
   try {
     pixelMap.flipSync(horizontal, vertical);
-    console.info('Succeeded in flipping pixelMap.');
+    console.info('Succeeded in flipping the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to flip pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function flipSync(pixelMap: image.PixelMap) {
+  const horizontal: boolean = true;
+  const vertical: boolean = false;
+  try {
+    pixelMap.flipSync(horizontal, vertical);
+    console.info('Succeeded in flipping the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -4234,7 +4936,7 @@ applyCrop(region: Region): Promise\<void>
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
 | region   | [Region](arkts-apis-image-i.md#region8)   | 是   | 裁剪的区域，区域范围不能超过图片的宽高。单位：像素（px）。              |
 
@@ -4259,10 +4961,12 @@ applyCrop(region: Region): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyCrop(pixelMap: image.PixelMap) {
+function applyCrop(pixelMap: image.PixelMap) {
   const currSize = pixelMap.getImageInfoSync().size;
   const region: image.Region = { // 裁剪区域设为图像中心四分之一的区域。
     x: currSize.width / 4,
@@ -4275,10 +4979,34 @@ function DemoApplyCrop(pixelMap: image.PixelMap) {
 
   pixelMap.applyCrop(region)
     .then(() => {
-      console.info('Succeeded in cropping pixelMap.');
+      console.info('Succeeded in cropping the PixelMap.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`Failed to crop pixelMap. Code is ${error.code}, message is ${error.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function applyCrop(pixelMap: image.PixelMap) {
+  const currSize = pixelMap.getImageInfoSync().size;
+  const region: image.Region = { // 裁剪区域设为图像中心四分之一的区域。
+    x: currSize.width / 4,
+    y: currSize.height / 4,
+    size: {
+      width: currSize.width / 2,
+      height: currSize.height / 2
+    }
+  };
+
+  pixelMap.applyCrop(region)
+    .then(() => {
+      console.info('Succeeded in cropping the PixelMap.');
+    })
+    .catch((err: Error) => {
+      console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -4303,7 +5031,7 @@ applyCropSync(region: Region): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明                                                                                      |
+| 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
 | region   | [Region](arkts-apis-image-i.md#region8)   | 是   | 裁剪的区域，区域范围不能超过图片的宽高。单位：像素（px）。              |
 
@@ -4322,10 +5050,12 @@ applyCropSync(region: Region): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoApplyCropSync(pixelMap: image.PixelMap) {
+function applyCropSync(pixelMap: image.PixelMap) {
   const currSize = pixelMap.getImageInfoSync().size;
   const region: image.Region = { // 裁剪区域设为图像中心四分之一的区域。
     x: currSize.width / 4,
@@ -4338,10 +5068,33 @@ function DemoApplyCropSync(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.applyCropSync(region);
-    console.info('Succeeded in cropping pixelMap.');
+    console.info('Succeeded in cropping the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to crop pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function applyCropSync(pixelMap: image.PixelMap) {
+  const currSize = pixelMap.getImageInfoSync().size;
+  const region: image.Region = { // 裁剪区域设为图像中心四分之一的区域。
+    x: currSize.width / 4,
+    y: currSize.height / 4,
+    size: {
+      width: currSize.width / 2,
+      height: currSize.height / 2
+    }
+  };
+
+  try {
+    pixelMap.applyCropSync(region);
+    console.info('Succeeded in cropping the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -4370,7 +5123,7 @@ crop(region: Region, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | -------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8)   | 是   | 裁剪的区域，包含起始坐标和宽高。取值范围不能超过图片的宽高。 |
+| region   | [Region](arkts-apis-image-i.md#region8)   | 是   | 裁剪的区域，包含起始坐标和宽高。取值范围不能超过图片的宽高。单位：像素（px）。 |
 | callback | AsyncCallback\<void> | 是   |  回调函数。当对图片进行裁剪成功，err为undefined，否则为错误对象。|
 
 **示例：**
@@ -4378,14 +5131,14 @@ crop(region: Region, callback: AsyncCallback\<void>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Crop(pixelMap: image.PixelMap) {
+function crop(pixelMap: image.PixelMap) {
   const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   pixelMap.crop(region, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to crop pixelMap. Code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in cropping pixelMap.");
+    console.info("Succeeded in cropping the PixelMap.");
   });
 }
 ```
@@ -4414,7 +5167,7 @@ crop(region: Region): Promise\<void>
 
 | 参数名 | 类型               | 必填 | 说明        |
 | ------ | ------------------ | ---- | ----------- |
-| region | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域，包含起始坐标和宽高。取值范围不能超过图片的宽高。 |
+| region | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域，包含起始坐标和宽高。取值范围不能超过图片的宽高。单位：像素（px）。 |
 
 **返回值：**
 
@@ -4424,15 +5177,30 @@ crop(region: Region): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Crop(pixelMap: image.PixelMap) {
+function crop(pixelMap: image.PixelMap) {
   const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   pixelMap.crop(region).then(() => {
-    console.info('Succeeded in cropping pixelMap.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to crop pixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in cropping the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function crop(pixelMap: image.PixelMap) {
+  const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+  pixelMap.crop(region).then(() => {
+    console.info('Succeeded in cropping the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -4459,7 +5227,7 @@ cropSync(region: Region): void
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | -------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8)   | 是   | 裁剪的区域，包含起始坐标和宽高。取值范围不能超过图片的宽高。 |
+| region   | [Region](arkts-apis-image-i.md#region8)   | 是   | 裁剪的区域，包含起始坐标和宽高。取值范围不能超过图片的宽高。单位：像素（px）。 |
 
 **错误码：**
 
@@ -4472,17 +5240,33 @@ cropSync(region: Region): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function CropSync(pixelMap: image.PixelMap) {
+function cropSync(pixelMap: image.PixelMap) {
   const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   try {
     pixelMap.cropSync(region);
-    console.info('Succeeded in cropping pixelMap.');
+    console.info('Succeeded in cropping the PixelMap.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to crop pixelMap. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function cropSync(pixelMap: image.PixelMap) {
+  const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+  try {
+    pixelMap.cropSync(region);
+    console.info('Succeeded in cropping the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -4503,7 +5287,7 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 
 | 类型                                | 说明             |
 | ----------------------------------- | ---------------- |
-| [colorSpaceManager.ColorSpaceManager](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspacemanager) | 图像色彩空间信息。 |
+| [colorSpaceManager.ColorSpaceManager](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspacemanager) | 图像色彩空间信息。如果图像不含色彩空间信息，则会抛出异常。 |
 
 **错误码：**
 
@@ -4517,14 +5301,31 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-function GetColorSpace(pixelMap: image.PixelMap) {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getColorSpace(pixelMap: image.PixelMap) {
   try {
     const csm = pixelMap.getColorSpace();
     console.info(`Succeeded in getting color space: ${csm.getColorSpaceName()}.`);
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to get color space. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to get color space. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function getColorSpace(pixelMap: image.PixelMap) {
+  try {
+    const csm = pixelMap.getColorSpace();
+    console.info(`Succeeded in getting color space: ${csm.getColorSpaceName()}.`);
+  } catch (err) {
+    console.error(`Failed to get color space. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -4533,7 +5334,7 @@ function GetColorSpace(pixelMap: image.PixelMap) {
 
 setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void
 
-获取图像的色彩空间。
+设置图像的色彩空间。如需同时对图像的像素颜色进行色彩空间转换，请使用[applyColorSpace](#applycolorspace11)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -4545,32 +5346,51 @@ setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void
 
 | 参数名     | 类型                                | 必填 | 说明            |
 | ---------- | ----------------------------------- | ---- | --------------- |
-| colorSpace | [colorSpaceManager.ColorSpaceManager](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspacemanager) | 是   | 图像色彩空间信息。|
+| colorSpace | [colorSpaceManager.ColorSpaceManager](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspacemanager) | 是   | 图像色彩空间信息。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 62980111| The image source data is incomplete.        |
-| 62980115| If the image parameter invalid.             |
+| -------- | --------------------------------------------|
+| 62980111 | The image source data is incomplete.        |
+| 62980115 | If the image parameter invalid.             |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function SetColorSpace(pixelMap: image.PixelMap) {
+function setColorSpace(pixelMap: image.PixelMap) {
   const colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
   const csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
   try {
     pixelMap.setColorSpace(csm);
     console.info('Succeeded in setting color space.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to set color space. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to set color space. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function setColorSpace(pixelMap: image.PixelMap) {
+  const colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  const csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+  try {
+    pixelMap.setColorSpace(csm);
+    console.info('Succeeded in setting color space.');
+  } catch (err) {
+    console.error(`Failed to set color space. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -4579,7 +5399,7 @@ function SetColorSpace(pixelMap: image.PixelMap) {
 
 applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback: AsyncCallback\<void>): void
 
-根据输入的目标色彩空间对图像像素颜色进行色彩空间转换。使用callback异步回调。
+根据输入的目标色彩空间对图像的像素颜色进行色彩空间转换。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -4611,12 +5431,12 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ApplyColorSpace(pixelMap: image.PixelMap) {
-  let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
-  let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
-  pixelMap.applyColorSpace(targetColorSpace, (error: BusinessError) => {
-    if (error) {
-      console.error(`Failed to apply color space. Code is ${error.code}, message is ${error.message}`);
+function applyColorSpace(pixelMap: image.PixelMap) {
+  const colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  const targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+  pixelMap.applyColorSpace(targetColorSpace, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to apply color space. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in applying color space.');
@@ -4628,7 +5448,7 @@ function ApplyColorSpace(pixelMap: image.PixelMap) {
 
 applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\<void>
 
-根据输入的目标色彩空间对图像像素颜色进行色彩空间转换。使用Promise异步回调。
+根据输入的目标色彩空间对图像的像素颜色进行色彩空间转换。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -4661,17 +5481,35 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ApplyColorSpace(pixelMap: image.PixelMap) {
-  let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
-  let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+function applyColorSpace(pixelMap: image.PixelMap) {
+  const colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  const targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
   pixelMap.applyColorSpace(targetColorSpace).then(() => {
     console.info('Succeeded in applying color space.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to apply color space. Code is ${error.code}, message is ${error.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to apply color space. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function applyColorSpace(pixelMap: image.PixelMap) {
+  const colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  const targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+  pixelMap.applyColorSpace(targetColorSpace).then(() => {
+    console.info('Succeeded in applying color space.');
+  }).catch((err: Error) => {
+    console.error(`Failed to apply color space. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -4704,10 +5542,12 @@ toSdr(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function ToSdr(context: Context) {
+async function toSdr(context: Context) {
   // 此处'app.media.startIcon'需要替换为本地HDR图片。
   let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
   let imageSource = image.createImageSource(img.buffer.slice(0));
@@ -4716,15 +5556,40 @@ async function ToSdr(context: Context) {
   };
   let pixelmap = imageSource.createPixelMapSync(decodingOptions);
   if (pixelmap != undefined) {
-    console.info('Succeeded in creating PixelMap object.');
+    console.info('Succeeded in creating the PixelMap object.');
     pixelmap.toSdr().then(() => {
       let imageInfo = pixelmap.getImageInfoSync();
-      console.info("Succeeded in converting to SDR, imageInfo.isHdr: " + imageInfo.isHdr);
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to convert to SDR. Code is ${error.code}, message is ${error.message}`);
+      console.info("Succeeded in converting to SDR. imageInfo.isHdr: " + imageInfo.isHdr);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to convert to SDR. Code: ${err.code}, message: ${err.message}`);
     });
   } else {
-    console.error('Failed to create PixelMap.');
+    console.error('Failed to create the PixelMap.');
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+async function toSdr(context: Context) {
+  // 此处'app.media.startIcon'需要替换为本地HDR图片。
+  let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
+  let imageSource = image.createImageSource(img.buffer.slice(0));
+  let decodingOptions: image.DecodingOptions = {
+    desiredDynamicRange: image.DecodingDynamicRange.AUTO
+  };
+  let pixelmap = imageSource.createPixelMapSync(decodingOptions);
+  if (pixelmap != undefined) {
+    console.info('Succeeded in creating the PixelMap object.');
+    pixelmap.toSdr().then(() => {
+      let imageInfo = pixelmap.getImageInfoSync();
+      console.info("Succeeded in converting to SDR. imageInfo.isHdr: " + imageInfo.isHdr);
+    }).catch((err: Error) => {
+      console.error(`Failed to convert to SDR. Code: ${err.code}, message: ${err.message}`);
+    });
+  } else {
+    console.error('Failed to create the PixelMap.');
   }
 }
 ```
@@ -4770,10 +5635,12 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function GetMetadata(context: Context) {
+function getMetadata(context: Context) {
   // 此处'app.media.startIcon'需要替换为本地HDR图片。
   let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
   let imageSource = image.createImageSource(img.buffer.slice(0));
@@ -4782,19 +5649,43 @@ async function GetMetadata(context: Context) {
   };
   let pixelMap = imageSource.createPixelMapSync(decodingOptions);
   if (pixelMap != undefined) {
-    console.info('Succeeded in creating PixelMap object.');
+    console.info('Succeeded in creating the PixelMap object.');
     try {
       let staticMetadata = pixelMap.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
-      console.info('Succeeded in getting metadata.');
+      console.info('Succeeded in getting the metadata.');
     } catch (e) {
-      const error = e as BusinessError;
-      console.error(`Failed to get metadata. Code is ${error.code}, message is ${error.message}`);
+      const err = e as BusinessError;
+      console.error(`Failed to get the metadata. Code: ${err.code}, message: ${err.message}`);
     }
   } else {
-    console.error('Failed to create PixelMap.');
+    console.error('Failed to create the PixelMap.');
   }
 }
+```
 
+ArkTS-Sta示例：
+
+```ts
+function getMetadata(context: Context) {
+  // 此处'app.media.startIcon'需要替换为本地HDR图片。
+  let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
+  let imageSource = image.createImageSource(img.buffer.slice(0));
+  let decodingOptions: image.DecodingOptions = {
+    desiredDynamicRange: image.DecodingDynamicRange.AUTO
+  };
+  let pixelMap = imageSource.createPixelMapSync(decodingOptions);
+  if (pixelMap != undefined) {
+    console.info('Succeeded in creating the PixelMap object.');
+    try {
+      let staticMetadata = pixelMap.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
+      console.info('Succeeded in getting the metadata.');
+    } catch (err) {
+      console.error(`Failed to get the metadata. Code: ${err.code}, message: ${err.message}`);
+    }
+  } else {
+    console.error('Failed to create the PixelMap.');
+  }
+}
 ```
 
 ## setMetadata<sup>12+</sup>
@@ -4839,11 +5730,12 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
-function SetMetadata(pixelMap: image.PixelMap) { // 入参pixelMap内存类型需为DMA_ALLOC内存类型，其创建方法请参考上方说明。
+function setMetadata(pixelMap: image.PixelMap) { // 入参pixelMap内存类型需为DMA_ALLOC内存类型，其创建方法请参考上方说明。
   let staticMetadata: image.HdrStaticMetadata = {
     displayPrimariesX: [1.1, 1.1, 1.1],
     displayPrimariesY: [1.2, 1.2, 1.2],
@@ -4855,9 +5747,31 @@ function SetMetadata(pixelMap: image.PixelMap) { // 入参pixelMap内存类型�
     maxFrameAverageLightLevel: 2.1,
   };
   pixelMap.setMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA, staticMetadata).then(() => {
-    console.info('Succeeded in setting pixelMap metadata.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to set the metadata. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in setting the metadata.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the metadata. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function setMetadata(pixelMap: image.PixelMap) { // 入参pixelMap内存类型需为DMA_ALLOC内存类型，其创建方法请参考上方说明。
+  let staticMetadata: image.HdrStaticMetadata = {
+    displayPrimariesX: [1.1, 1.1, 1.1],
+    displayPrimariesY: [1.2, 1.2, 1.2],
+    whitePointX: 1.1,
+    whitePointY: 1.2,
+    maxLuminance: 2.1,
+    minLuminance: 1.0,
+    maxContentLightLevel: 2.1,
+    maxFrameAverageLightLevel: 2.1,
+  };
+  pixelMap.setMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA, staticMetadata).then(() => {
+    console.info('Succeeded in setting the metadata.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set the metadata. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -4866,7 +5780,7 @@ function SetMetadata(pixelMap: image.PixelMap) { // 入参pixelMap内存类型�
 
 setTransferDetached(detached: boolean): void
 
-PixelMap在跨线程传输时，断开原线程的引用。适用于需要立即释放PixelMap的场景。
+设置PixelMap在跨线程传输后断开原线程的引用。适用于需要立即释放PixelMap的场景。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -4898,15 +5812,15 @@ import { taskpool } from '@kit.ArkTS';
 @Concurrent
 // 子线程方法。
 async function loadPixelMap(rawFileDescriptor: number): Promise<image.PixelMap> {
-  // 创建imageSource。
+  // 创建ImageSource。
   const imageSource = image.createImageSource(rawFileDescriptor);
-  // 创建pixelMap。
+  // 创建PixelMap。
   const pixelMap = imageSource.createPixelMapSync();
-  // 释放imageSource。
+  // 释放ImageSource。
   imageSource.release();
-  // 使pixelMap在跨线程传输完成后，断开原线程的引用。
+  // 使PixelMap在跨线程传输完成后，断开原线程的引用。
   pixelMap.setTransferDetached(true);
-  // 返回pixelMap给主线程。
+  // 返回PixelMap给主线程。
   return pixelMap;
 }
 
@@ -4918,16 +5832,16 @@ struct Demo {
   private loadImageFromThread(): void {
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     const resourceMgr = context.resourceManager;
-    // 此处‘example.jpg’仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+    // 此处'example.jpg'仅作示例，请开发者自行替换，否则创建失败会导致后续无法正常执行。
     resourceMgr.getRawFd('example.jpg').then(rawFileDescriptor => {
       taskpool.execute(loadPixelMap, rawFileDescriptor).then(pixelMap => {
         if (pixelMap) {
           this.pixelMap = pixelMap as image.PixelMap;
-          console.info('Succeeded in creating pixelMap.');
-          // 主线程释放pixelMap。由于子线程返回pixelMap时已调用setTransferDetached，所以此处能够立即释放pixelMap。
+          console.info('Succeeded in creating the PixelMap.');
+          // 主线程释放PixelMap。由于子线程返回PixelMap前已调用setTransferDetached(true)，所以此处能够立即释放PixelMap，不需要等待子线程被销毁。
           this.pixelMap.release();
         } else {
-          console.error('Failed to create pixelMap.');
+          console.error('Failed to create the PixelMap.');
         }
       });
     });
@@ -4978,22 +5892,23 @@ class MySequence implements rpc.Parcelable {
   }
   marshalling(messageSequence: rpc.MessageSequence) {
     this.pixelMap.marshalling(messageSequence);
-    console.info('Marshalled.');
+    console.info('Marshalled the PixelMap.');
     return true;
   }
   unmarshalling(messageSequence: rpc.MessageSequence) {
-    image.createPixelMap(new ArrayBuffer(96), {size: { height:4, width: 6 }}).then((pixelParcel: image.PixelMap) => {
+    image.createPixelMap(new ArrayBuffer(96), {size: { height: 4, width: 6 }}).then((pixelParcel: image.PixelMap) => {
       pixelParcel.unmarshalling(messageSequence).then(async (pixelMap: image.PixelMap) => {
         this.pixelMap = pixelMap;
         pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
-          console.info(`Unmarshalled information h: ${imageInfo.size.height} w: ${imageInfo.size.width}.`);
-        })
-      })
+          console.info(`Unmarshalled information: height = ${imageInfo.size.height}, width = ${imageInfo.size.width}.`);
+        });
+      });
     });
     return true;
   }
 }
-async function Marshalling() {
+
+async function marshal() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -5004,7 +5919,7 @@ async function Marshalling() {
     pixelFormat: image.PixelMapFormat.BGRA_8888,
     size: { height: 4, width: 6 },
     alphaType: image.AlphaType.UNPREMUL
-  }
+  };
   let pixelMap: image.PixelMap | undefined = undefined;
   await image.createPixelMap(color, opts).then((srcPixelMap: image.PixelMap) => {
     pixelMap = srcPixelMap;
@@ -5016,8 +5931,8 @@ async function Marshalling() {
     data.writeParcelable(parcelable);
 
     // 反序列化rpc获取到data。
-    let ret: MySequence = new MySequence(pixelMap);
-    data.readParcelable(ret);
+    let seq: MySequence = new MySequence(pixelMap);
+    data.readParcelable(seq);
   }
 }
 ```
@@ -5048,7 +5963,7 @@ unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> |Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回反序列化后的PixelMap。 |
 
 **错误码：**
 
@@ -5068,27 +5983,28 @@ import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
   pixelMap: image.PixelMap;
-  constructor(conPixelMap: image.PixelMap) {
-    this.pixelMap = conPixelMap;
+  constructor(pixelMap: image.PixelMap) {
+    this.pixelMap = pixelMap;
   }
   marshalling(messageSequence: rpc.MessageSequence) {
     this.pixelMap.marshalling(messageSequence);
-    console.info('Marshalled.');
+    console.info('Marshalled the PixelMap.');
     return true;
   }
   unmarshalling(messageSequence: rpc.MessageSequence) {
-    image.createPixelMap(new ArrayBuffer(96), {size: { height:4, width: 6 }}).then((pixelParcel: image.PixelMap) => {
+    image.createPixelMap(new ArrayBuffer(96), {size: { height: 4, width: 6 }}).then((pixelParcel: image.PixelMap) => {
       pixelParcel.unmarshalling(messageSequence).then(async (pixelMap: image.PixelMap) => {
         this.pixelMap = pixelMap;
         pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
-          console.info(`Unmarshalled information h: ${imageInfo.size.height} w: ${imageInfo.size.width}.`);
-        })
-      })
+          console.info(`Unmarshalled information: height = ${imageInfo.size.height}, width = ${imageInfo.size.width}.`);
+        });
+      });
     });
     return true;
   }
 }
-async function Unmarshalling() {
+
+async function unmarshal() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -5099,7 +6015,7 @@ async function Unmarshalling() {
     pixelFormat: image.PixelMapFormat.BGRA_8888,
     size: { height: 4, width: 6 },
     alphaType: image.AlphaType.UNPREMUL
-  }
+  };
   let pixelMap: image.PixelMap | undefined = undefined;
   await image.createPixelMap(color, opts).then((srcPixelMap: image.PixelMap) => {
     pixelMap = srcPixelMap;
@@ -5111,8 +6027,8 @@ async function Unmarshalling() {
     data.writeParcelable(parcelable);
 
     // 反序列化rpc获取到data。
-    let ret: MySequence = new MySequence(pixelMap);
-    data.readParcelable(ret);
+    let seq: MySequence = new MySequence(pixelMap);
+    data.readParcelable(seq);
   }
 }
 ```
@@ -5121,7 +6037,7 @@ async function Unmarshalling() {
 
 release(): Promise\<void\>
 
-释放PixelMap对象（释放后，任何访问该对象内部数据的方法调用都会失败）。使用Promise异步回调。
+释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用都会失败。使用Promise异步回调。
 
 图片使用的内存往往较大，在PixelMap对象使用完成后，应主动调用该方法及时释放内存。
 
@@ -5149,14 +6065,28 @@ release(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Release(pixelMap: image.PixelMap) {
+function release(pixelMap: image.PixelMap) {
   pixelMap.release().then(() => {
-    console.info('Succeeded in releasing PixelMap object.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to release PixelMap object. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in releasing the PixelMap object.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to release the PixelMap object. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function release(pixelMap: image.PixelMap) {
+  pixelMap.release().then(() => {
+    console.info('Succeeded in releasing the PixelMap object.');
+  }).catch((err: Error) => {
+    console.error(`Failed to release the PixelMap object. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -5165,7 +6095,7 @@ function Release(pixelMap: image.PixelMap) {
 
 release(callback: AsyncCallback\<void\>): void
 
-释放PixelMap对象（释放后，任何访问该对象内部数据的方法调用都会失败）。使用callback异步回调。
+释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用都会失败。使用callback异步回调。
 
 图片使用的内存往往较大，在PixelMap对象使用完成后，应主动调用该方法及时释放内存。
 
@@ -5196,13 +6126,13 @@ release(callback: AsyncCallback\<void\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function Release(pixelMap: image.PixelMap) {
+function release(pixelMap: image.PixelMap) {
   pixelMap.release((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to release PixelMap object. Code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to release the PixelMap object. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info('Succeeded in releasing PixelMap object.');
+    console.info('Succeeded in releasing the PixelMap object.');
   });
 }
 ```
@@ -5213,9 +6143,9 @@ convertPixelFormat(targetPixelFormat: PixelMapFormat): Promise\<void>
 
 YUV和RGB类型互转。使用Promise异步回调。
 
-支持NV12/NV21与RGB888/RGBA8888/RGB565/BGRA8888/RGBAF16互转，YCRCB_P010/YCBCR_P010与RGBA1010102互转。
+支持NV12/NV21与RGB_888/RGBA_8888/RGB_565/BGRA_8888/RGBA_F16互转，YCRCB_P010/YCBCR_P010与RGBA_1010102互转。
 
-从API18开始，可用于ASTC_4x4类型转为RGBA_8888类型，目前仅支持ASTC_4x4转为RGBA_8888。
+从API version 18开始，可用于ASTC_4x4类型转为RGBA_8888类型，目前仅支持ASTC_4x4转为RGBA_8888。
 
 > **注意：**
 >
@@ -5231,7 +6161,7 @@ YUV和RGB类型互转。使用Promise异步回调。
 
 | 参数名   | 类型                 | 必填 | 说明               |
 | -------- | -------------------- | ---- | ------------------ |
-| targetPixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 是   | 目标像素格式，用于YUV和RGB类型互转，或者ASTC_4x4类型转为RGBA_8888类型。目前仅支持NV12/NV21与RGB888/RGBA8888/RGB565/BGRA8888/RGBAF16互转，YCRCB_P010/YCBCR_P010与RGBA1010102互转，ASTC_4x4转为RGBA_8888。 |
+| targetPixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 是   | 目标像素格式，用于YUV和RGB类型互转，或者ASTC_4x4类型转为RGBA_8888类型。目前仅支持NV12/NV21与RGB_888/RGBA_8888/RGB_565/BGRA_8888/RGBA_F16互转，YCRCB_P010/YCBCR_P010与RGBA_1010102互转，ASTC_4x4转为RGBA_8888。 |
 
 **返回值：**
 
@@ -5253,18 +6183,32 @@ YUV和RGB类型互转。使用Promise异步回调。
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function ConvertPixelFormat(pixelMap: image.PixelMap) {
+function convertPixelFormat(pixelMap: image.PixelMap) {
   // 设置目标像素格式为NV12。
   let targetPixelFormat = image.PixelMapFormat.NV12;
   pixelMap.convertPixelFormat(targetPixelFormat).then(() => {
-    // pixelMap转换成NV12格式成功。
     console.info('Succeeded in converting pixel format.');
-  }).catch((error: BusinessError) => {
-    // pixelMap转换成NV12格式失败。
-    console.error(`Failed to convert pixel format. Code is ${error.code}, message is ${error.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to convert pixel format. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function convertPixelFormat(pixelMap: image.PixelMap) {
+  // 设置目标像素格式为NV12。
+  let targetPixelFormat = image.PixelMapFormat.NV12;
+  pixelMap.convertPixelFormat(targetPixelFormat).then(() => {
+    console.info('Succeeded in converting pixel format.');
+  }).catch((err: Error) => {
+    console.error(`Failed to convert pixel format. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -5285,7 +6229,7 @@ setMemoryNameSync(name: string): void
 
 | 参数名        | 类型                             | 必填 | 说明             |
 | ------------- | -------------------------------- | ---- | ---------------- |
-| name | string | 是   | PixelMap内存标识符，只允许DMA和SHARE_MEMORY内存类型的PixelMap设置。DMA内存设置名称长度取值范围为[1, 255]，SHARE_MEMORY内存设置名称长度取值范围为[1, 244]。单位：字节（Byte）。 |
+| name | string | 是   | PixelMap内存标识符，只允许DMA和SHARE_MEMORY内存类型的PixelMap设置。DMA内存设置名称长度取值范围为[1, 255]字节，SHARE_MEMORY内存设置名称长度取值范围为[1, 244]字节。 |
 
 **错误码：**
 
@@ -5299,16 +6243,31 @@ setMemoryNameSync(name: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function SetMemoryNameSync(pixelMap: image.PixelMap) {
+function setMemoryNameSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.setMemoryNameSync("PixelMapName Test");
     console.info('Succeeded in setting memory name.');
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to set memory name. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to set memory name. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function setMemoryNameSync(pixelMap: image.PixelMap) {
+  try {
+    pixelMap.setMemoryNameSync("PixelMapName Test");
+    console.info('Succeeded in setting memory name.');
+  } catch (err) {
+    console.error(`Failed to set memory name. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -5348,13 +6307,13 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoGetUniqueId(pixelMap: image.PixelMap) {
+function getUniqueId(pixelMap: image.PixelMap) {
   try {
     const uniqueId: number = pixelMap.getUniqueId();
-    console.info(`Succeeded in getting unique ID: ${uniqueId}.`);
+    console.info(`Succeeded in getting the unique ID: ${uniqueId}.`);
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to get unique ID. Code is ${error.code}, message is ${error.message}`);
+    const err = e as BusinessError;
+    console.error(`Failed to get the unique ID. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -5362,8 +6321,13 @@ function DemoGetUniqueId(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoGetUniqueId(pixelMap: image.PixelMap) {
-  const uniqueId: int = pixelMap.getUniqueId();
+function getUniqueId(pixelMap: image.PixelMap) {
+  try {
+    const uniqueId: int = pixelMap.getUniqueId();
+    console.info(`Succeeded in getting the unique ID: ${uniqueId}.`);
+  } catch (err) {
+    console.error(`Failed to get the unique ID. Code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
 
@@ -5392,7 +6356,7 @@ isReleased(): boolean
 **示例：**
 
 ```ts
-async function IsReleased(pixelMap: image.PixelMap) { // 未释放的PixelMap。
+async function isReleased(pixelMap: image.PixelMap) { // 未释放的PixelMap。
   pixelMap.isReleased(); // 返回false。
   await pixelMap.release();
   pixelMap.isReleased(); // 返回true。

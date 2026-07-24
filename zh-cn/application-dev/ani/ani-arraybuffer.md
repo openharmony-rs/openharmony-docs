@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 `ArrayBuffer`适合承载二进制缓冲区、图片/音频数据、协议报文等需要按字节访问的数据。native侧既可以创建`ArrayBuffer`，也可以读取ArkTS传入的`ArrayBuffer`底层数据。
 

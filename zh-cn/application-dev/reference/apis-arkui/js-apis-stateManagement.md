@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility（包含用户界面的应用组件）数据存储能力和应用程序需要的环境状态、工具。
+状态管理模块具备应用数据存储、持久化管理以及UIAbility（包含用户界面的应用组件）数据存储能力，同时覆盖环境状态、工具和UI状态同步等场景，从而帮助开发者简化状态管理逻辑，提升应用的响应能力和数据一致性。
 
 >**说明：**
 >
@@ -20,8 +20,8 @@
 
 | 类型   | 说明                                     |
 | ---- | -------------------------------------- |
-| T    | Class，number，boolean，string和这些类型的数组形式。 |
-| S    | number，boolean，string。                 |
+| T    | Class、number、boolean、string和这些类型的数组形式。 |
+| S    | number、boolean、string。                 |
 
 
 ## 导入模块
@@ -42,11 +42,23 @@ static&nbsp;connect\<T extends object\>( </br >
   &nbsp;&nbsp;&nbsp;&nbsp;defaultCreator?:&nbsp;StorageDefaultCreator\<T\> </br >
 ):&nbsp;T&nbsp;|&nbsp;undefined
 
-将键值对数据储存在应用内存中。如果给定的key已经存在于[AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，并返回。
+将键值对数据存储在应用内存中。如果给定的key已经存在于[AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，并返回。
+
+> **说明：**
+>
+> 1、若未指定key，使用第二个参数作为默认构造器；否则使用第三个参数（第二个参数非法也使用第三个参数作为默认构造器）。
+>
+> 2、确保数据已经存储在AppStorageV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+>
+> 3、同一个key，connect不同类型的数据会导致应用异常，应用需要确保类型匹配。
+>
+> 4、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255个字符，使用非法字符或空字符的行为是未定义的。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -55,16 +67,6 @@ static&nbsp;connect\<T extends object\>( </br >
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是   | 指定的类型，若未指定key，则使用type的name作为key。 |
 | keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 否   | 指定的key，或者是获取默认值的构造器。默认值为undefined。 |
 | defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 否   | 获取默认值的构造器。默认值为undefined。 |
-
->**说明：**
->
->1、若未指定key，使用第二个参数作为默认构造器；否则使用第三个参数作为默认构造器（第二个参数非法也使用第三个参数作为默认构造器）。
->
->2、确保数据已经存储在AppStorageV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
->
->3、同一个key，connect不同类型的数据会导致应用异常，应用需要确保类型匹配。
->
->4、key建议使用有意义的值，长度不超过255，使用非法字符或空字符的行为是未定义的。
 
 **返回值：**
 
@@ -98,6 +100,10 @@ static&nbsp;remove\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithAr
 
 将指定的键值对数据从[AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md)里面删除。如果指定的键值不存在于AppStorageV2中，将删除失败。
 
+> **说明：**
+>
+> 删除AppStorageV2中不存在的key会报警告。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -107,10 +113,6 @@ static&nbsp;remove\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithAr
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
 | keyOrType | string \| [TypeConstructorWithArgs](#typeconstructorwithargst)\<T\> | 是   | 需要删除的key；如果指定的是type类型，删除的key为type的name。 |
-
->**说明：**
->
->删除AppStorageV2中不存在的key会报警告。
 
 
 **示例：**
@@ -133,6 +135,10 @@ static&nbsp;keys():&nbsp;Array\<string\>
 
 获取[AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md)中的所有key。
 
+> **说明：**
+>
+> key在Array中的顺序是无序的，与key插入到AppStorageV2中的顺序无关。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -142,10 +148,6 @@ static&nbsp;keys():&nbsp;Array\<string\>
 | 类型                                   | 说明                                                         |
 | -------------------------------------- | ------------------------------------------------------------ |
 | Array\<string\> | 所有AppStorageV2中的key。 |
-
->**说明：**
->
->key在Array中的顺序是无序的，与key插入到AppStorageV2中的顺序无关。
 
 **示例：**
 
@@ -158,29 +160,13 @@ const keys: Array<string> = AppStorageV2.keys();
 
 ## PersistenceV2
 
-继承自[AppStorageV2](#appstoragev2)，PersistenceV2提供UI状态的持久化存储能力。具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management/arkts-new-persistencev2.md)。
+继承自[AppStorageV2](#appstoragev2)，PersistenceV2提供UI状态的持久化存储能力，支持将应用状态数据持久化到磁盘，在应用重启后恢复数据，适用于需要保留UI状态数据的场景。具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management/arkts-new-persistencev2.md)。
 
 ### globalConnect<sup>18+</sup>
 
 static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefined
 
-将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果globalConnect的是[\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)对象，该对象[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会，如有必要，可调用[PersistenceV2.save](#save)接口手动存储。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   |类型   |必填   | 说明                                                      |
-| ------------- | ------------|-------------------|-------------------------- |
-| type    |[ConnectOptions\<T\>](#connectoptionst18)    |是  |传入的globalConnect参数，详细说明见ConnectOptions参数说明。 |
-
-**返回值：**
-
-|类型   |说明                 |
-|----------|-----------------------------------|
-|T \| undefined    |创建或获取数据成功时，返回数据；否则返回undefined。    |
+将键值对数据存储在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果通过globalConnect链接的对象是[\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)对象，该对象[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会自动持久化，如需持久化非\@Trace属性的变化，可调用[PersistenceV2.save](#save)接口手动存储。
 
 > **说明：**
 >
@@ -190,7 +176,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 >
 > 3、同一个key，globalConnect不同类型的数据会导致应用异常，应用需要确保类型匹配。
 >
-> 4、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
+> 4、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255个字符，使用非法字符或空字符的行为是未定义的。
 >
 > 5、关联[\@Observed](../../ui/state-management/arkts-observed-and-objectlink.md)对象时，因为该类型的name属性未定义，需要指定key或者自定义name属性。
 >
@@ -201,6 +187,22 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 > 8、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key不可以一样，否则会crash。
 >
 > 9、EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA，使用说明见[声明权限](../../security/AccessToken/declare-permissions.md)。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   |类型   |必填   | 说明                                                      |
+| ------------- | ------------|-------------------|-------------------------- |
+| type    |[ConnectOptions\<T\>](#connectoptionst18)    |是  | globalConnect的配置参数，包含指定的类型、key、默认构造器和加密级别等配置项，详细说明见ConnectOptions参数说明。 |
+
+**返回值：**
+
+|类型   |说明                 |
+|----------|-----------------------------------|
+|T \| undefined    |创建或获取数据成功时，返回数据；否则返回undefined。    |
 
 **示例：**
 仅供开发者了解globalConnect用法，完整使用需开发者自己写出@Entry组件。
@@ -252,8 +254,17 @@ static globalConnect\<T extends CollectionType<S\>, S extends object\>( </br >
   &nbsp;&nbsp;&nbsp;&nbsp;type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\> </br >
 ): T | undefined
 
-将键值对数据储存在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`Date`，`collections.Array`, `collections.Map`, `collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
+将键值对数据存储在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`collections.Array`，`collections.Map`，`collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
 
+> **说明：**
+>
+> 1、若未指定key，使用默认构造器defaultCreator返回数据的类名作为key存入PersistenceV2中。
+>
+> 2、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
+>
+> 3、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key不可以一样，否则会crash。
+>
+> 其他通用条件详见globalConnect<sup>18+</sup>的说明。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -265,7 +276,7 @@ static globalConnect\<T extends CollectionType<S\>, S extends object\>( </br >
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollectionst-s23)\| [ConnectOptions\<T\>](#connectoptionst18) |  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。<br/>当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。|  
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollectionst-s23) \| [ConnectOptions\<T\>](#connectoptionst18) |  是   | globalConnect的配置参数，支持ConnectOptions和ConnectOptionsCollections两种类型，包含类型、key、默认构造器、集合项构造器等配置项，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。<br>当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。|  
 
 当开发者在`globalConnect`中使用`defaultSubCreator`选项时，必须要提供`defaultCreator`。且`defaultSubCreator`函数的返回类型必须与`defaultCreator`返回的集合项类型相同。<br/>当`globalConnect`持久化`Array<ClassA>`类型的数据时，开发者需要使用`defaultSubCreator`选项去告诉状态管理框架创建`ClassA`类的一个实例。如下是`globalConnect`持久化`Array<ClassA>`类型的数据的示例：
 
@@ -308,7 +319,7 @@ struct Page1 {
   // globalConnect支持持久化Map类型的数据
   @Local map: Map<number, number> = PersistenceV2.globalConnect({
     type: Map<number, number>, defaultCreator: () => new Map<number, number>()
-  })!
+  })!;
   output: string[] = [];
 
   // 启动应用，第一次进入，展示restored Map.size=0, map.get(0)=undefined, map.get(1)=undefined, map.get(2)=undefined
@@ -340,6 +351,12 @@ static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs
 
 将指定的键值对数据持久化一次。
 
+> **说明：**
+>
+> 由于非[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)的数据改变不会触发[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)的自动持久化，当非\@Trace的数据发生变化且需要持久化时，可调用该接口持久化对应key的数据。
+>
+> 手动持久化当前内存中不处于connect状态的key是无意义的。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -350,12 +367,6 @@ static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs
 | -------- | ------ | ---- | ---------------------- |
 | keyOrType | string \| [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是   | 需要持久化的key；如果指定的是type类型，持久化的key为type的name。 |
 
->**说明：**
->
->由于非[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)的数据改变不会触发[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)的自动持久化，如有必要，可调用该接口持久化对应key的数据。
->
->手动持久化当前内存中不处于connect状态的key是无意义的。
-
 **示例：**
 
 <!--code_no_check-->
@@ -363,7 +374,7 @@ static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs
 ```ts
 @ObservedV2
 class SampleClass {
-  @Trace p: number = 0;
+  @Trace value: number = 0;
 }
 
 // 假设PersistenceV2中存在key为key_as2的键，持久化该键值对数据
@@ -390,7 +401,7 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| callback | [PersistenceErrorCallback](#persistenceerrorcallback) \| undefined  | 是   | 持久化失败时调用。 |
+| callback | [PersistenceErrorCallback](#persistenceerrorcallback) \| undefined  | 是   | 持久化失败时的回调函数。回调参数包括：key（出错的键值）、reason（出错原因类型，取值为'quota'、'serialization'或'unknown'）、message（出错的详细信息）和oldValue（反序列化失败时返回的旧数据，可选）。 |
 
 **示例：**
 
@@ -414,7 +425,7 @@ globalConnect参数类型。
 |type        | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst)   |否   |否   |指定的类型。         |
 |key         | string   |否   |是   |传入的key，不传则使用type的名字作为key。             |
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
-|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。同一个key使用不同的加密级别时，以第一次globalConnect的加密级别为准。 |
+|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，对应数值：0-4，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)。不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密级别数值不在0-4会直接运行crash。同一个key使用不同的加密级别时，以第一次globalConnect的加密级别为准。 |
 
 ## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
@@ -428,8 +439,8 @@ globalConnect参数类型。
 
 |名称   |类型    |只读   |可选    |说明      |
 |--------|------------|------------|-----------|--------------|
-|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认创建器`defaultCreator`，不提供默认创建器，会导致无法持久化容器类型数据。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。如果提供defaultSubCreator，没有提供defaultCreator，会导致持久化失败。 |
-|defaultSubCreator   | StorageDefaultCreator\<S\>   |否   |是   |使用该集合项默认构造函数，用于持久化容器类数据。如果defaultSubCreator返回的是`undefined`或`null`，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   | 用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认构造器`defaultCreator`，不提供默认构造器会导致持久化失败。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。 |
+|defaultSubCreator   | StorageDefaultCreator\<S\> |否   |是   | 使用该集合项默认构造函数，用于持久化容器类数据。使用此参数时，必须同时提供`defaultCreator`，否则会导致持久化失败。如果defaultSubCreator返回的是`undefined`或`null`时，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
 
 如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
 
@@ -587,7 +598,7 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 
 ## UIUtils
 
-UIUtils提供一些方法，用于处理状态管理相关的数据转换。
+UIUtils状态管理相关的工具方法，包括获取代理对象的原始对象、将非观察数据变为可观察数据、动态添加和删除状态变量监听、同步刷新状态变量修改、创建数据绑定等，适用于需要手动管理状态观察、监听和同步刷新的场景。
 
 ### getTarget
 
@@ -603,7 +614,7 @@ static getTarget\<T extends object\>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| source | T    | 是   | 数据源对象。 |
+| source | T    | 是   |  数据源对象，即被状态管理框架包裹的代理对象，用于获取去除代理后的原始对象。 |
 
 **返回值：**
 
@@ -839,7 +850,7 @@ static makeObserved\<T extends object\>(source: T): T
 
 | 类型 | 说明                                             |
 | ---- | ------------------------------------------------ |
-| T    | 可观察的数据。 |
+| T    | 对于支持的入参类型，返回可观察的数据。对于不支持的入参类型，返回数据源对象本身。 |
 
 **示例：**
 
@@ -886,7 +897,7 @@ static enableV2Compatibility\<T extends object\>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| source | T    | 是   | 数据源，仅支持V1状态数据。 |
+| source | T    | 是   | 数据源，仅支持V1状态数据，如被@Observed装饰的对象或被makeV1Observed方法转换的对象。传入非V1状态数据时返回数据源本身。 |
 
 **返回值：**
 
@@ -1046,7 +1057,6 @@ function CustomButton(num1: Binding<number>) {
 @ComponentV2
 struct CompV2 {
   @Local number1: number = 5;
-  @Local number2: number = 10;
 
   build() {
     Column() {
@@ -1099,12 +1109,12 @@ static makeBinding\<T\>(getter: GetterCallback\<T\>, setter: SetterCallback\<T\>
 import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
-function CustomButton(num2: MutableBinding<number>) {
+function CustomButton(num1: MutableBinding<number>) {
   Row() {
-    Button(`Custom Button: ${num2.value}`)
+    Button(`Custom Button: ${num1.value}`)
       .onClick(() => {
         // MutableBinding类型支持修改
-        num2.value += 1;
+        num1.value += 1;
       })
   }
 }
@@ -1112,8 +1122,7 @@ function CustomButton(num2: MutableBinding<number>) {
 @Entry
 @ComponentV2
 struct CompV2 {
-  @Local number1: number = 5;
-  @Local number2: number = 10;
+  @Local number1: number = 10;
 
   build() {
     Column() {
@@ -1122,7 +1131,7 @@ struct CompV2 {
       CustomButton(
         /**
          * 创建可变绑定
-         * @param getter - 返回this.number2的函数
+         * @param getter - 返回this.number1的函数
          * @param setter - 当绑定值修改时调用的回调
          * @returns 可变的MutableBinding<number>对象
          *
@@ -1131,9 +1140,9 @@ struct CompV2 {
          * 2. 修改.value时会自动调用setter回调
          */
         UIUtils.makeBinding<number>(
-          () => this.number2, // GetterCallback
+          () => this.number1, // GetterCallback
           (val: number) => {
-            this.number2 = val;
+            this.number1 = val;
           }) // SetterCallback
       )
     }
@@ -1333,8 +1342,8 @@ import { UIUtils } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {
-  @Local w: number = 50; // 宽度
-  @Local h: number = 50; // 高度
+  @Local columnWidth: number = 50; // 宽度
+  @Local columnHeight: number = 50; // 高度
   @Local message: string = 'Hello';
 
   build() {
@@ -1344,19 +1353,19 @@ struct Index {
         .onClick(() => {
           // 在执行动画前，存在额外的修改
           UIUtils.applySync(() => {
-            this.w = 100;
-            this.h = 100;
+            this.columnWidth = 100;
+            this.columnHeight = 100;
             this.message = 'Hello World';
           });
           // 动画在1s内，Column方框的尺寸由（100*100）渐变为（200*200），方框内的文本变为Hello ArkUI
           this.getUIContext().animateTo({
             duration: 1000
           }, () => {
-            console.info(`animateTo-in, w=${this.w}, h=${this.h}`);
-            this.w = 200;
-            this.h = 200;
+            console.info(`animateTo-in, width=${this.columnWidth}, height=${this.columnHeight}`);
+            this.columnWidth = 200;
+            this.columnHeight = 200;
             this.message = 'Hello ArkUI';
-            console.info(`animateTo-out, w=${this.w}, h=${this.h}`);
+            console.info(`animateTo-out, width=${this.columnWidth}, height=${this.columnHeight}`);
           });
         })
       // Column方框
@@ -1364,8 +1373,8 @@ struct Index {
         Text(`${this.message}`)
       }
       .backgroundColor('#ff17a98d')
-      .width(this.w)
-      .height(this.h)
+      .width(this.columnWidth)
+      .height(this.columnHeight)
     }
   }
 }
@@ -1398,8 +1407,8 @@ import { UIUtils } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {
-  @Local w: number = 50; // 宽度
-  @Local h: number = 50; // 高度
+  @Local columnWidth: number = 50; // 宽度
+  @Local columnHeight: number = 50; // 高度
   @Local message: string = 'Hello';
 
   build() {
@@ -1408,19 +1417,19 @@ struct Index {
         .margin(20)
         .onClick(() => {
           // 在执行动画前，存在额外的修改
-          this.w = 100;
-          this.h = 100;
+          this.columnWidth = 100;
+          this.columnHeight = 100;
           this.message = 'Hello World';
           UIUtils.flushUpdates();
           // 动画在1s内，Column方框的尺寸由（100*100）渐变为（200*200），方框内的文本变为Hello ArkUI
           this.getUIContext().animateTo({
             duration: 1000
           }, () => {
-            console.info(`animateTo-in, w=${this.w}, h=${this.h}`);
-            this.w = 200;
-            this.h = 200;
+            console.info(`animateTo-in, width=${this.columnWidth}, height=${this.columnHeight}`);
+            this.columnWidth = 200;
+            this.columnHeight = 200;
             this.message = 'Hello ArkUI';
-            console.info(`animateTo-out, w=${this.w}, h=${this.h}`);
+            console.info(`animateTo-out, width=${this.columnWidth}, height=${this.columnHeight}`);
           });
         })
       // Column方框
@@ -1428,8 +1437,8 @@ struct Index {
         Text(`${this.message}`)
       }
       .backgroundColor('#ff17a98d')
-      .width(this.w)
-      .height(this.h)
+      .width(this.columnWidth)
+      .height(this.columnHeight)
     }
   }
 }
@@ -1462,8 +1471,8 @@ import { UIUtils } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {
-  @Local w: number = 50; // 宽度
-  @Local h: number = 50; // 高度
+  @Local columnWidth: number = 50; // 宽度
+  @Local columnHeight: number = 50; // 高度
   @Local message: string = 'Hello';
 
   build() {
@@ -1472,8 +1481,8 @@ struct Index {
         .margin(20)
         .onClick(() => {
           // 在执行动画前，存在额外的修改
-          this.w = 100;
-          this.h = 100;
+          this.columnWidth = 100;
+          this.columnHeight = 100;
           this.message = 'Hello World';
           // 立即处理上述状态变量修改，同步标脏对应的UI节点
           UIUtils.flushUIUpdates();
@@ -1481,11 +1490,11 @@ struct Index {
           this.getUIContext().animateTo({
             duration: 1000
           }, () => {
-            console.info(`animateTo-in, w=${this.w}, h=${this.h}`);
-            this.w = 200;
-            this.h = 200;
+            console.info(`animateTo-in, width=${this.columnWidth}, height=${this.columnHeight}`);
+            this.columnWidth = 200;
+            this.columnHeight = 200;
             this.message = 'Hello ArkUI';
-            console.info(`animateTo-out, w=${this.w}, h=${this.h}`);
+            console.info(`animateTo-out, width=${this.columnWidth}, height=${this.columnHeight}`);
           });
         })
       // Column方框
@@ -1493,8 +1502,8 @@ struct Index {
         Text(`${this.message}`)
       }
       .backgroundColor('#ff17a98d')
-      .width(this.w)
-      .height(this.h)
+      .width(this.columnWidth)
+      .height(this.columnHeight)
     }
   }
 }
@@ -1626,7 +1635,7 @@ type MonitorCallback = (monitorValue: IMonitor) => void
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| monitorValue | [IMonitor](./arkui-ts/ts-state-management-watch-monitor.md#imonitor12) | 是   | 回调函数传入的变化信息。 |
+| monitorValue | [IMonitor](./arkui-ts/ts-state-management-monitor.md#imonitor) | 是   | 回调函数传入的变化信息，包含状态变量变化的路径（dirty）、变化前后的值（通过value方法获取）等详细信息。具体属性和方法详见IMonitor。 |
 
 ## StorageDefaultCreator\<T\>
 
@@ -1701,7 +1710,7 @@ new(...args: any): T
 
 | 类型 | 说明                                             |
 | ---- | ------------------------------------------------ |
-| T    | T类型的实例。 |
+| T    | 通过new方法创建的T类型实例。默认不传入任何构造参数。 |
 
 **示例：**
 
@@ -1753,7 +1762,7 @@ type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' 
 | key | string    | 是   | 出错的键值。   |
 |reason| 'quota' \| 'serialization' \| 'unknown'    | 是   | 出错的原因类型。取值包括：'quota'表示存储配额超限；'serialization'表示序列化或反序列化失败；'unknown'表示未知错误。 |
 | message | string    | 是   | 出错的更多消息。   |
-| oldValue | string    | 否   | 反序列化失败时，返回的旧的存储于磁盘的序列化数据。<br> **起始版本：** 26.0.0。   |
+| oldValue | string    | 否   | 反序列化失败时，返回旧的存储于磁盘的序列化数据；非反序列化失败场景下该参数默认值为undefined。<br> **起始版本：** 26.0.0。   |
 
 **示例：**
 
@@ -1785,7 +1794,6 @@ struct Index {
   // 在PersistenceV2中创建一个key为Sample的键值对（如果存在，则返回PersistenceV2中的数据），并且和data关联
   // 对于需要换connect对象的data属性，需要加@Local修饰（不建议对属性换connect的对象）
   @Local data: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
-  pageStack: NavPathStack = new NavPathStack();
 
   build() {
     Text(`Index add 1 to data.id: ${this.data.sampleChild.id}`)
@@ -1867,7 +1875,7 @@ type TypeDecorator = \<T\>(type: TypeConstructor\<T\>) => PropertyDecorator
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| type | [TypeConstructor\<T\>](#typeconstructort)    | 是   | 标记类属性的类型。   |
+| type | [TypeConstructor\<T\>](#typeconstructort)    | 是   | 标记类属性的类型，仅支持自定义class类型，传入其他类型会导致持久化失败。 |
 
 **返回值：**
 
@@ -1967,7 +1975,6 @@ function CustomButton(num1: Binding<number>) {
 @ComponentV2
 struct CompV2 {
   @Local number1: number = 5;
-  @Local number2: number = 10;
 
   build() {
     Column() {
@@ -2006,12 +2013,12 @@ type SetterCallback\<T\> = (newValue: T) => void
 import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
-function CustomButton(num2: MutableBinding<number>) {
+function CustomButton(num1: MutableBinding<number>) {
   Row() {
-    Button(`Custom Button: ${num2.value}`)
+    Button(`Custom Button: ${num1.value}`)
       .onClick(() => {
-        // MutableBinding支持可变，可以修改num2.value
-        num2.value += 1;
+        // MutableBinding支持可变，可以修改num1.value
+        num1.value += 1;
       })
   }
 }
@@ -2019,8 +2026,7 @@ function CustomButton(num2: MutableBinding<number>) {
 @Entry
 @ComponentV2
 struct CompV2 {
-  @Local number1: number = 5;
-  @Local number2: number = 10;
+  @Local number1: number = 10;
 
   build() {
     Column() {
@@ -2029,9 +2035,9 @@ struct CompV2 {
       CustomButton(
         // 对于UIUtils.makeBinding函数的第二个参数需要传入SetterCallback
         UIUtils.makeBinding<number>(
-          () => this.number2, // GetterCallback
+          () => this.number1, // GetterCallback
           (val: number) => {
-            this.number2 = val;
+            this.number1 = val;
           }) // SetterCallback 必须提供，否则触发时会造成运行时错误
       )
     }
@@ -2079,7 +2085,6 @@ function CustomButton(num1: Binding<number>) {
 @ComponentV2
 struct CompV2 {
   @Local number1: number = 5;
-  @Local number2: number = 10;
 
   build() {
     Column() {
@@ -2135,13 +2140,13 @@ get value(): T
 import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
-function CustomButton(num2: MutableBinding<number>) {
+function CustomButton(num1: MutableBinding<number>) {
   // CustomButton的第二个参数为MutableBinding，一个可变数据绑定的泛型类
   Row() {
-    Button(`Custom Button: ${num2.value}`)
+    Button(`Custom Button: ${num1.value}`)
       .onClick(() => {
         // 可变数据绑定的泛型类可以修改绑定的值
-        num2.value += 1;
+        num1.value += 1;
       })
   }
 }
@@ -2149,8 +2154,7 @@ function CustomButton(num2: MutableBinding<number>) {
 @Entry
 @ComponentV2
 struct CompV2 {
-  @Local number1: number = 5;
-  @Local number2: number = 10;
+  @Local number1: number = 10;
 
   build() {
     Column() {
@@ -2158,9 +2162,9 @@ struct CompV2 {
 
       CustomButton(
         UIUtils.makeBinding<number>(
-          () => this.number2, // GetterCallback
+          () => this.number1, // GetterCallback
           (val: number) => {
-            this.number2 = val;
+            this.number1 = val;
           }) // SetterCallback 必须提供，否则触发时会造成运行时错误
       )
     }
@@ -2239,7 +2243,7 @@ struct PoolOwner {
 
 ## IReusePool
 
-`IReusePool` 接口提供自定义组件上的全局复用池的相关功能。
+`IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。
 
 **起始版本：** 26.0.0
 
@@ -2349,6 +2353,14 @@ preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
 调用空闲任务以预创建可复用组件并在首次使用前将其放入复用池。
 
+> **说明：**
+>
+> 1. `preRender`仅将池配置为接受的组件放入池中。预渲染池不接受的组件会立即创建并销毁。
+>
+> 2. 预渲染期间不会从池中复用组件；池仅接受新创建的实例。
+>
+> 3. @Builder函数执行完整的深度渲染，包括嵌套的子组件。
+
 **起始版本：** 26.0.0
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -2369,14 +2381,6 @@ preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 | 类型 | 说明  |
 | --------------- | ------------------------------------------------------------------------------------------------------------------- |
 | Promise\<void\> | 当空闲任务成功完成时解析的Promise。Promise对象无返回结果。当预渲染任务执行失败时，Promise会被拒绝。|
-
-> **说明：**
->
-> 1. `preRender`仅将池配置为接受的组件放入池中。预渲染池不接受的组件会立即创建并销毁。
->
-> 2. 预渲染期间不会从池中复用组件；池仅接受新创建的实例。
->
-> 3. @Builder函数执行完整的深度渲染，包括嵌套的子组件。
 
 **示例：**
 

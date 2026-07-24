@@ -301,7 +301,7 @@ type GetFormRectInfoCallback = (formId: string) => Promise&lt;formInfo.Rect&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。 |
 
 **错误码：**
 
@@ -321,7 +321,7 @@ import { formInfo } from '@kit.FormKit';
 // 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
 let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
   (formId: string): Promise<formInfo.Rect> => {
-    return new Promise<formInfo.Rect>((resolve: Function) => {
+    return new Promise<formInfo.Rect>((resolve: (value: formInfo.Rect) => void) => {
       console.info(`formId is ${formId}`);
       let formRect: formInfo.Rect = {
         left: 0,

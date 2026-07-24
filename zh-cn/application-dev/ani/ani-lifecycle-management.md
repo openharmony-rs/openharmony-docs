@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ANI引用、`ani_env`和VM相关资源都有明确的生命周期边界。native侧保存ArkTS对象、从系统回调线程调用ANI，或在长期运行线程中循环创建对象时，最容易遇到局部引用泄漏、跨线程误用和悬空指针。
 

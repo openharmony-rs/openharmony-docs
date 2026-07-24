@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ConcurrentHashMap\<K, V>是一个多线程安全的哈希表，支持并发读取和写入，减少锁的竞争，实现高并发性能。提供了对容器元素的高效操作，包括添加、删除、查找等，并且可以迭代操作内部存储的元素。
 

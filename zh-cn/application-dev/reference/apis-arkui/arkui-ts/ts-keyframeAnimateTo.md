@@ -53,7 +53,7 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState
 
 ## KeyframeState对象说明
 
-设置关键帧选项。
+关键帧状态设置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

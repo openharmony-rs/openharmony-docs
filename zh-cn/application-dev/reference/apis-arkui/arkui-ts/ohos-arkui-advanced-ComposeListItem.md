@@ -175,7 +175,7 @@ ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 
 ### 示例1（设置简单列表项）
 
-该示例实现了带有主标题、副标题、描述、右侧按钮及文本的简单列表项。
+该示例实现了带有主标题、副标题、描述、右侧图标及文本的简单列表项。
 
 ArkTS-Dyn示例：
 ```ts

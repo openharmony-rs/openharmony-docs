@@ -7,9 +7,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Trace是属性装饰器，用于状态管理V2中。@ObservedV2与@Trace配套使用，装饰类以及类中的属性，使得被装饰的类和属性具有深度观测的能力。
+@Trace是属性装饰器，用于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中。[@ObservedV2](./ts-state-management-observedv2.md)与@Trace配套使用，装饰类以及类中的属性，使被装饰的类和属性具有深度观测能力，即能够深度观测嵌套对象中属性值的变化，并触发UI自动刷新，适用于需要精确观测和管理类属性变化状态的场景。
 
-在ArkTS-Dyn中使用时，开发指南参考：[\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测（ArkTS-Dyn）](../../../ui/state-management/arkts-new-observedV2-and-trace.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@ObservedV2装饰器和@Trace装饰器：类属性变化观测（ArkTS-Dyn）](../../../ui/state-management/arkts-new-observedV2-and-trace.md)。
 
 > **说明：**
 >
@@ -18,6 +18,8 @@
 ## @Trace
 
 const Trace: PropertyDecorator
+
+声明一个可观察属性，@Trace需与@ObservedV2配套使用，仅在@ObservedV2装饰的类中生效。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -35,9 +37,11 @@ class Son {
   // 使用@Trace属性装饰器标记需要观测的属性，属性变化时触发UI刷新
   @Trace age: number = 100;
 }
+
 class Father {
   son: Son = new Son();
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -46,7 +50,7 @@ struct Index {
   build() {
     Column() {
       Text(`${this.father.son.age}`)
-        // 点击后age值加1，由于@Trace装饰器，UI会自动刷新
+      // 点击后age值加1，由于@Trace装饰器，UI会自动刷新
         .onClick(() => {
           this.father.son.age++;
         })

@@ -1118,11 +1118,10 @@ export struct ChipGroupExample2 {
 ArkTS-Sta示例：
 
 ```typescript
-import { Entry, Text, Column, Component, Button, ClickEvent, Color, $r, ColumnOptions, FlexAlign, Direction, Builder, Row, ResourceStr, BuilderParam, HorizontalAlign, NavDestination, Scroll } from '@ohos.arkui.component'
-import { State, Watch, PropRef, Require } from '@ohos.arkui.stateManagement'
-import hilog from '@ohos.hilog'
+import { Entry, Text, Column, Component, Button, ClickEvent, Color, $r, ColumnOptions, FlexAlign, Direction, Builder, Row, ResourceStr, BuilderParam, HorizontalAlign, NavDestination, Scroll, State, Watch, PropRef, Require, ChipGroupSuffixBuilder } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
 import { SymbolGlyphModifier } from '@ohos.arkui.modifier';
-import { ChipGroup, IconGroupSuffix, IconItemOptions, ChipGroupItemOptions, ChipItemStyle, SuffixImageIconOptions , SymbolItemOptions} from '@ohos.arkui.advanced.ChipGroup';
+import { ChipGroup, IconGroupSuffix, IconItemOptions, ChipGroupItemOptions, ChipItemStyle, SuffixImageIconOptions, SymbolItemOptions} from '@ohos.arkui.advanced.ChipGroup';
 import { ChipSize , ChipSymbolGlyphOptions } from '@ohos.arkui.advanced.Chip';
 
 @Builder
@@ -1173,9 +1172,9 @@ struct SectionItem {
 
 @Entry
 @Component
-export struct ChipGroupExample2 {
+struct ChipGroupExample2 {
   @Builder
-  Suffix() {
+  Suffix(): void {
     IconGroupSuffix({
       items: [
         {
@@ -1281,7 +1280,7 @@ export struct ChipGroupExample2 {
                   { label: { text: '选项8' } },
                   { label: { text: '选项9' } },
                 ],
-                suffix: this.Suffix,
+                suffix: this.Suffix as ChipGroupSuffixBuilder,
               })
             }
           }
@@ -1460,11 +1459,10 @@ export struct ChipGroupExample2 {
 ArkTS-Sta示例：
 
 ```typescript
-import { Entry, Text, Column, Component, Button, ClickEvent, Color, $r, ColumnOptions, FlexAlign, Direction, Builder, Row, ResourceStr, BuilderParam, HorizontalAlign, NavDestination, Scroll } from '@ohos.arkui.component'
-import { State, Watch, PropRef, Require } from '@ohos.arkui.stateManagement'
-import hilog from '@ohos.hilog'
+import { Entry, Text, Column, Component, Button, ClickEvent, Color, $r, ColumnOptions, FlexAlign, Direction, Builder, Row, ResourceStr, BuilderParam, HorizontalAlign, NavDestination, Scroll, State, Watch, PropRef, Require, ChipGroupSuffixBuilder } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
 import { SymbolGlyphModifier } from '@ohos.arkui.modifier';
-import { ChipGroup, IconGroupSuffix, IconItemOptions, ChipGroupItemOptions, ChipItemStyle, SuffixImageIconOptions , SymbolItemOptions} from '@ohos.arkui.advanced.ChipGroup';
+import { ChipGroup, IconGroupSuffix, IconItemOptions, ChipGroupItemOptions, ChipItemStyle, SuffixImageIconOptions, SymbolItemOptions} from '@ohos.arkui.advanced.ChipGroup';
 import { ChipSize , ChipSymbolGlyphOptions } from '@ohos.arkui.advanced.Chip';
 
 @Builder
@@ -1515,9 +1513,9 @@ struct SectionItem {
 
 @Entry
 @Component
-export struct ChipGroupExample2 {
+struct ChipGroupExample2 {
   @Builder
-  Suffix() {
+  Suffix(): void {
     IconGroupSuffix({
       items: [
         {
@@ -1591,7 +1589,7 @@ export struct ChipGroupExample2 {
                   { label: { text: '选项8' } },
                   { label: { text: '选项9' } },
                 ],
-                suffix: this.Suffix,
+                suffix: this.Suffix as ChipGroupSuffixBuilder,
                 multiple: true,
               })
             }
@@ -1634,7 +1632,7 @@ struct ChipGroupMaterialExample {
     IconGroupSuffix({
       items: [{
         icon: {
-          src: $r('sys.media.AI_phone'),
+          src: $r('sys.media.ohos_ic_public_more'),
         },
         action: () => {
           this.getUIContext().getPromptAction().showToast({
@@ -1695,26 +1693,27 @@ struct ChipGroupMaterialExample {
 ArkTS-Sta示例：
 
 ```typescript
-'use static'
-
 import {
   $r,
   Builder,
-  ChipGroup,
-  ChipGroupItemOptions,
-  ChipItemLabelOptions,
-  ChipItemStyle,
   Color,
   Column,
   ColumnOptions,
   Component,
   Entry,
-  IconGroupSuffix,
-  IconItemOptions,
-  IconOptions,
   State,
   uiMaterial
 } from '@kit.ArkUI';
+
+import {
+  ChipGroup,
+  ChipGroupItemOptions,
+  ChipItemLabelOptions,
+  ChipItemStyle,
+  IconGroupSuffix,
+  IconItemOptions,
+  IconOptions
+} from '@ohos.arkui.advanced.ChipGroup';
 
 @Entry
 @Component

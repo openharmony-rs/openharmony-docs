@@ -1401,7 +1401,7 @@ ArkTS-Dyn: lineBreakStrategy(strategy: LineBreakStrategy)
 
 ArkTS-Sta: lineBreakStrategy(strategy: LineBreakStrategy | undefined)
 
-设置折行规则。该属性在wordBreak不等于breakAll的时候生效，不支持连词符。
+设置折行规则。该属性在wordBreak不等于breakAll的时候生效，不支持连字符。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

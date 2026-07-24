@@ -4,8 +4,8 @@
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @shilei123-->
 <!--Designer: @shilei123;@yao_dashuai-->
-<!--Tester: @kir175; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 ##  ArkTS 应用运行时出现模块化加载相关的异常报错提示，可能的报错原因以及解决方法

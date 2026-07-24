@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Require装饰器用于校验[\@Prop](../../../ui/state-management/arkts-prop.md)、[\@State](../../../ui/state-management/arkts-state.md)、[\@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、[\@BuilderParam](../../../ui/state-management/arkts-builderparam.md)、[\@Param](../../../ui/state-management/arkts-new-param.md)和普通变量（无状态装饰器修饰的变量）是否需要构造传参。使用该装饰器装饰的变量，要求父组件在构造子组件时必须传入对应参数，否则在编译阶段报错，从而避免因参数缺失导致的运行时异常，适用于需要确保自定义组件必需参数被正确初始化的场景。
+\@Require装饰器用于校验[\@Prop](../../../ui/state-management/arkts-prop.md)、[\@State](../../../ui/state-management/arkts-state.md)、[\@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、[\@BuilderParam](../../../ui/state-management/arkts-builderparam.md)、[\@Param](../../../ui/state-management/arkts-new-param.md)和普通变量（无状态装饰器装饰的变量）是否需要构造传参。使用该装饰器装饰的变量，要求父组件在构造子组件时必须传入对应参数，否则在编译阶段报错，从而避免因参数缺失导致的运行时异常，适用于需要确保自定义组件必需参数被正确初始化的场景。
 
 在ArkTS-Dyn中使用时，开发指南参考：[\@Require装饰器：校验构造传参](../../../ui/state-management/arkts-require.md)。
 
@@ -19,7 +19,7 @@
 >
 > - 从API version 11开始对\@Prop/\@BuilderParam进行校验。
 >
-> - 从API version 12开始对\@State/\@Provide/\@Param/普通变量（无状态装饰器修饰的变量）进行校验。
+> - 从API version 12开始对\@State/\@Provide/\@Param/普通变量（无状态装饰器装饰的变量）进行校验。
 
 ## @Require
 

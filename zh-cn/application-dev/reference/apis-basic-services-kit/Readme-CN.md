@@ -61,7 +61,7 @@
   - 进程线程通信<!--process-thread-communi-arkts-->
     - [系统定义的公共事件](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [系统定义的公共事件(系统接口)](common_event/commonEventManager-definitions-sys.md)
+    - [系统定义的公共事件（系统接口）](common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
     - [@ohos.commonEventManager (公共事件模块)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
@@ -83,6 +83,7 @@
     - [@ohos.annotation (注解)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (定制配置)](js-apis-customization-customConfig.md)
     - [@ohos.settings (设置数据项名称)](js-apis-settings.md)
+    - [@ohos.settingsLite (设置信息)](js-apis-settings-lite.md)
     - [@ohos.wallpaper (壁纸)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (性能功耗热融合档位)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)
@@ -173,7 +174,7 @@
   - [热管理错误码](errorcode-thermal.md)
   - [上传下载错误码](errorcode-request.md)
   - [时间时区服务错误码](errorcode-time.md)
-  - [事件错误码](errorcode-CommonEventService.md)
+  - [公共事件错误码](errorcode-CommonEventService.md)
   <!--Del-->
   - [系统参数错误码](errorcode-system-parameterV9.md)
   <!--DelEnd-->

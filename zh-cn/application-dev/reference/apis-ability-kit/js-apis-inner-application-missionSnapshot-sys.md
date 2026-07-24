@@ -45,6 +45,7 @@ import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 获取任务快照信息
   missionManager.getMissionInfo('', 1, (error, data) => {
     if (error) {
       // 处理业务逻辑错误

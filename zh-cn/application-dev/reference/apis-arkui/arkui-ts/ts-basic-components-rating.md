@@ -416,7 +416,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 | 按键         | 功能描述                        |
 |------------|-----------------------------|
 | Tab        | 组件间切换焦点。                    |
-| 左右方向键   | 评分预览增加/减少（步长为step），不改变实际分值。 |
+| 左右方向键   | 评分预览增加/减少（步长为stepSize），不改变实际分值。 |
 | Home       | 移动到第一个星星， 不改变实际分值。          |
 | End        | 移动到最后一个星星， 不改变实际分值。         |
 | Space/Enter | 根据当前评分提交评分结果。               |
@@ -490,7 +490,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 | 名称                       | 类型   | 只读 | 可选 | 说明                                                         |
 | -------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| backgroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 否  | 否  | 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。取值为undefined时，则使用系统默认图片。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
+| backgroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 否  | 否  | 未选中的星级的图片路径，可由用户自定义或使用系统默认图片。取值为undefined时，则使用系统默认图片。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
 | foregroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 否  | 否  | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。取值为undefined时，则使用系统默认图片。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
 | secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
 

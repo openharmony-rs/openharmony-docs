@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 多线程并发是指在一个应用中使用多个线程并行或交替执行任务，以提升CPU利用率，避免耗时操作阻塞当前线程。ArkTS-Sta多线程并发基于任务调度能力实现，运行时将[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务调度到工作线程执行，也支持通过[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)创建独占工作线程。
 

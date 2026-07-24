@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 [taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)和[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)都为ArkTS-Sta应用提供多线程并发能力，用于将耗时计算、后台数据处理等逻辑放到非当前线程执行，避免阻塞当前线程。
 

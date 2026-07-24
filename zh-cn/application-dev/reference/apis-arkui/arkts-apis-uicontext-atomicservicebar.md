@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供设置原子化服务menuBar的属性。
+AtomicServiceBar提供对原子化服务menuBar的属性设置能力，支持设置menuBar的可见性、背景颜色、标题内容、标题字体样式、图标颜色，以及获取menuBar的布局信息和监听布局变化。适用于需要在原子化服务中自定义menuBar外观和行为的场景。
 
 > **说明：**
 >
@@ -20,7 +20,7 @@
 >
 > - 以下接口需要先使用UIContext中的[getAtomicServiceBar](arkts-apis-uicontext-uicontext.md#getatomicservicebar11)方法获取到AtomicServiceBar对象，再通过该对象调用对应方法。
 >
-> - 从API version 12开始原子化服务menuBar样式变更，以下接口将失效。
+> - 从API version 12开始原子化服务menuBar样式变更，setVisible、setBackgroundColor、setTitleContent、setTitleFontStyle、setIconColor接口的设置参数将被忽略，具体说明见各接口。
 
 ## setVisible<sup>11+</sup>
 
@@ -44,7 +44,7 @@ setVisible(visible: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| visible | boolean | 是 | 原子化服务menuBar是否可见。true表示设置menuBar可见，false表示设置menuBar不可见。|
+| visible | boolean | 是 | 原子化服务menuBar是否可见。true表示设置menuBar可见，false表示设置menuBar不可见。从API version 12开始，在原子化服务中该参数将被忽略。|
 
 
 **示例：**
@@ -59,6 +59,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -86,7 +90,7 @@ ArkTS-Sta: setBackgroundColor(color:Nullable<Color | int | string>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -96,7 +100,7 @@ ArkTS-Sta: setBackgroundColor(color:Nullable<Color | int | string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------ |
-| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string>  | 是 | 原子化服务menuBar的背景颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。|
+| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string>  | 是 | 原子化服务menuBar的背景颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。从API version 12开始，在原子化服务中该参数将被忽略。|
 
 **示例：**
 
@@ -110,6 +114,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -125,7 +133,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setTitleContent<sup>11+</sup>
 
-setTitleContent(content:string): void
+setTitleContent(content: string): void
 
 通过该方法设置原子化服务menuBar的标题内容。
 
@@ -135,7 +143,7 @@ setTitleContent(content:string): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -143,9 +151,9 @@ setTitleContent(content:string): void
 
 **参数：**
 
-|参数名|类型|必填|说明 |
+| 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| content | string | 是 | 原子化服务menuBar中的标题内容。|
+| content | string | 是 | 原子化服务menuBar中的标题内容。从API version 12开始，在原子化服务中该参数将被忽略。|
 
 **示例：**
 
@@ -159,6 +167,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -174,7 +186,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setTitleFontStyle<sup>11+</sup>
 
-setTitleFontStyle(font:FontStyle):void
+setTitleFontStyle(font: FontStyle): void
 
 通过该方法设置原子化服务menuBar的字体样式。
 
@@ -208,6 +220,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -227,7 +243,7 @@ ArkTS-Dyn: setIconColor(color:Nullable<Color | number | string>): void
 
 ArkTS-Sta: setIconColor(color:Nullable<Color | int | string>): void
 
-通过该方法设置原子化服务图标的颜色。
+通过该方法设置原子化服务menuBar图标的颜色。
 
 > **说明：**
 >
@@ -245,7 +261,7 @@ ArkTS-Sta: setIconColor(color:Nullable<Color | int | string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string>  | 是 | 原子化服务图标的颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
+| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string>  | 是 | 原子化服务menuBar图标的颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。从API version 12开始，在原子化服务中该参数将被忽略。 |
 
 
 **示例：**
@@ -260,6 +276,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -281,7 +301,7 @@ getBarRect(): Frame
 
 > **说明：**
 >
-> 布局信息包含了原子化服务menuBar的左右margin。
+> 布局信息反映的menuBar位置已考虑其左右margin的影响。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -295,7 +315,7 @@ getBarRect(): Frame
 
 | 类型                | 说明            |
 | ----------------- | ------------- |
-| [Frame](./js-apis-arkui-graphics.md#frame) | 原子化服务menuBar的大小和位置。 |
+| [Frame](js-apis-arkui-graphics.md#frame) | 原子化服务menuBar的大小和位置。 |
 
 **示例：**
 
@@ -307,12 +327,12 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct Index {
   build() {
-    Button("getBarRect")
+    Button('getBarRect')
       .onClick(() => {
         let uiContext: UIContext = this.getUIContext();
-        let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
-        if (currentBar != undefined) {
-          let rect = currentBar.getBarRect();
+        let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+        if (atomicServiceBar != undefined) {
+          let rect = atomicServiceBar.getBarRect();
           hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully. x:'
             + rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
         } else {
@@ -327,7 +347,7 @@ struct Index {
 
 onBarRectChange(callback: Callback\<Frame\>): void
 
-当原子化服务AtomicServiceMenuBar（右上角菜单功能胶囊）的大小或位置发生变化时，触发注册的回调，返回AtomicServiceMenuBar最新的布局信息。该布局信息包含了AtomicServiceMenuBar的大小和位置。
+当原子化服务menuBar（即AtomicServiceMenuBar，右上角菜单功能胶囊）的大小或位置发生变化时，触发注册的回调，返回menuBar最新的布局信息。该布局信息包含了menuBar的大小和位置，其中位置已考虑左右margin的影响。
 
 **起始版本：** 26.0.0
 
@@ -339,7 +359,7 @@ onBarRectChange(callback: Callback\<Frame\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<[Frame](./js-apis-arkui-graphics.md#frame)> | 是 | AtomicServiceBar布局变化时的回调，返回变化后的布局信息。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<[Frame](js-apis-arkui-graphics.md#frame)> | 是 | AtomicServiceMenuBar布局变化时的回调，返回变化后的布局信息。 |
 
 **示例：**
 
@@ -350,7 +370,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Entry
 @Component
 struct Index {
-  aboutToAppear() : void {
+  aboutToAppear(): void {
     let uiContext: UIContext = this.getUIContext();
     let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
     if (currentBar != undefined) {

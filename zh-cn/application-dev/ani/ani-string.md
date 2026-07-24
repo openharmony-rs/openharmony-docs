@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 `ani_string`是ArkTS字符串在ANI中的引用类型，native侧接收、创建或返回字符串时，通常需要在`std::string`与`ani_string`之间转换。
   

@@ -27,6 +27,7 @@
 | STREAM_USAGE_NAVIGATION | 适用于导航场景的语音播报功能。 |
 | STREAM_USAGE_VOICE_MESSAGE | 适用于播放语音短消息。 |
 | STREAM_USAGE_VOICE_COMMUNICATION | 适用于VoIP语音通话。 |
+| STREAM_USAGE_VIDEO_COMMUNICATION | 适用于VoIP视频通话。 |
 | STREAM_USAGE_ALARM | 适用于播放闹铃。 |
 | STREAM_USAGE_RINGTONE | 适用于VoIP来电响铃等。 |
 | STREAM_USAGE_NOTIFICATION | 适用于播放通知音、提示音。 |
@@ -69,7 +70,7 @@
 
 当应用启动音频播放或录制时，系统会根据音频流类型自动申请焦点，这可能会中断其他音频或降低其音量。音频焦点的具体介绍可参考[音频焦点介绍](audio-playback-concurrency.md)。
 
-此处仅说明常见的音频流类型影响音频焦点的表现。
+此处仅说明常见的音频流类型影响音频焦点的表现。更多音频焦点场景表现见[音频焦点和音频会话开发概述](audio-playback-concurrency-audio-session-overview.md)。
 
 - 启动导航（Navigation）时，正在播放的音乐（Music）音量会自动调低，待导航（Navigation）结束后，音乐（Music）音量将自动恢复。
 

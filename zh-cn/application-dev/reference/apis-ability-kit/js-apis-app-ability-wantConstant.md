@@ -92,6 +92,8 @@ import { wantConstant } from '@kit.AbilityKit';
 
 **ArkTS-Sta起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                                | 值 | 说明           |
 | ----------------------------------- |---|--------------|
 | ACTION_SEND_TO_DATA        | ohos.want.action.sendToData | 指示启动向指定接收方发送消息界面的操作。  |

@@ -5,9 +5,9 @@
 <!--Owner: @li-weifeng2024; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
-AbilityDelegatorRegistry是自动化测试框架的注册模块，用于获取[AbilityDelegator](js-apis-inner-application-abilityDelegator.md)和[AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)对象。通过该模块，开发者可以利用[AbilityDelegator](js-apis-inner-application-abilityDelegator.md)对象添加[AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md#abilitymonitor-1)对象，实现对指定Ability生命周期状态变化的监视；同时，借助[AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)对象便捷地读取当前运行的测试参数。
+AbilityDelegatorRegistry是自动化测试框架的注册模块，用于获取[AbilityDelegator](js-apis-inner-application-abilityDelegator.md)和[AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)对象。通过该模块，开发者可以利用[AbilityDelegator](js-apis-inner-application-abilityDelegator.md)对象添加[AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md#abilitymonitor-1)对象，实现对指定Ability生命周期状态变化的监视；同时，借助[AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)对象便捷地读取当前运行的测试参数。该模块适用于自动化测试场景，能够帮助开发者精准捕获Ability生命周期变化，提高测试效率和准确性。
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ Ability生命周期状态，可配合[AbilityDelegator](js-apis-inner-applicatio
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-+**系统能力**：以下各项对应的系统能力均为SystemCapability.Ability.AbilityRuntime.Core
++**系统能力：** 以下各项对应的系统能力均为SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS-Dyn起始版本：** 9
 

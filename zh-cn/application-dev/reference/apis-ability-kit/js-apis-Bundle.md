@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供应用信息查询能力，支持[BundleInfo](js-apis-bundle-BundleInfo.md)、[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)、[AbilityInfo](js-apis-bundle-AbilityInfo.md)等信息的查询，以及应用禁用状态的查询、设置等。
@@ -466,7 +466,7 @@ bundle.getBundleInfo(bundleName, bundleFlags, options, (err, data) => {
 
 getAllApplicationInfo(bundleFlags: number, userId?: number): Promise\<Array\<ApplicationInfo\>\>
 
-获取指定用户下所有已安装的应用信息，使用promise异步回调。
+获取指定用户下所有已安装的应用信息，使用Promise异步回调。
 
 **需要权限：**
 

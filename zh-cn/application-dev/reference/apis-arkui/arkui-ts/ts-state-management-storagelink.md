@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@StorageLink是状态管理V1的装饰器，用于与AppStorage中指定键名的属性建立双向数据同步：当@StorageLink装饰的变量发生变化时，变更会同步到AppStorage中该键名对应的属性；当AppStorage中该键名对应的属性发生变化时，变更也会同步回@StorageLink装饰的变量。
+@StorageLink是状态管理V1的装饰器，用于与AppStorage中指定键名的属性建立双向数据同步：当@StorageLink装饰的变量发生变化时，变更会同步到AppStorage中该键名对应的属性；当AppStorage中该键名对应的属性发生变化时，变更也会同步回@StorageLink装饰的变量。适用于需要跨页面、跨Ability共享AppStorage全局状态并与AppStorage保持双向数据同步的场景，可避免逐层传递状态数据，保证数据一致性。
 
 在ArkTS-Dyn中使用时，开发指南参考：[AppStorage：应用全局的UI状态存储（ArkTS-Dyn）](../../../ui/state-management/arkts-appstorage.md)。
 
@@ -27,7 +27,7 @@ const StorageLink: (value: string) => PropertyDecorator
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| value  | string | 是   | AppStorage中的属性键名，用于建立与该键名对应属性的双向数据同步。若AppStorage中已存在该键名对应的属性，则@StorageLink装饰变量的本地初始值将被AppStorage中对应属性的值覆盖；若AppStorage中不存在该键名对应的属性，则以@StorageLink装饰变量的本地初始值在AppStorage中创建对应属性。 |
+| value  | string | 是   | AppStorage中的属性键名，用于与该键名对应的属性建立双向数据同步。若AppStorage中已存在该键名对应的属性，则@StorageLink装饰变量的本地初始值将被AppStorage中对应属性的值覆盖；若AppStorage中不存在该键名对应的属性，则以@StorageLink装饰变量的本地初始值在AppStorage中创建对应属性。 |
 
 **返回值：**
 

@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @guozejun-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @guozejun-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -84,7 +84,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
-| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 当前网格布局列的数量或最小列宽值。<br/>取值为undefined时，按默认1列处理。 |
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 当前网格布局列的数量、固定列宽或最小列宽值。<br/>取值为undefined时，按默认1列处理。 |
 
 ### attributeModifier<sup>23+</sup>
 

@@ -627,7 +627,7 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&l
 设置指定流的音量等级。使用callback异步回调。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[@ohos.multimedia.avVolumePanel (音量面板)](ohos-multimedia-avvolumepanel.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -668,7 +668,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 设置指定流的音量等级。使用Promise异步回调。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[@ohos.multimedia.avVolumePanel (音量面板)](ohos-multimedia-avvolumepanel.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.ACCESS_NOTIFICATION_POLICY
@@ -922,7 +922,7 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void
 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[@ohos.multimedia.avVolumePanel (音量面板)](ohos-multimedia-avvolumepanel.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -961,7 +961,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[@ohos.multimedia.avVolumePanel (音量面板)](ohos-multimedia-avvolumepanel.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

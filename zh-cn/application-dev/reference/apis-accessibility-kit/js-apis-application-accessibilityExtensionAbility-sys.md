@@ -7,7 +7,9 @@
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
 
-AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能业务的能力，能力包括成功连接无障碍服务、断开无障碍服务、处理无障碍服务事件和无障碍按键事件等。
+AccessibilityExtensionAbility基于ExtensionAbility框架，提供无障碍扩展业务的能力，包括连接无障碍服务、断开无障碍服务、处理无障碍事件和处理无障碍按键事件等。
+
+**生命周期流程：** onAccessibilityConnect（连接回调，用于初始化）→ onAccessibilityEventInfo/onAccessibilityKeyEvent（处理无障碍事件和按键事件）→ onAccessibilityDisconnect（断开回调，用于资源回收）。
 
 > **说明：**
 >
@@ -24,26 +26,26 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 无障碍事件信息。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
 | 名称                            | 类型                                       | 只读   | 可选   | 说明                                       |
 | ----------------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| eventType                     | [AccessibilityEventType](./js-apis-accessibility-sys.md#accessibilityeventtype) | 否    | 否    | 无障碍事件类型。                                 |
-| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement) | 否    | 是    | 发生事件的目标组件。                               |
-| timeStamp                     | ArkTS-Dyn: number<br>ArkTS-Sta: long                         | 否    | 是    | 事件时间戳，单位是毫秒。默认值为0。                       |
-| extraInfo                     | string                                   | 否    | 是    | 针对TextArea、TextInput、SearchField、RichEdit组件， 组件文本内容有新增或删除时，新增或删除的文本内容。 |
+| eventType                     | [AccessibilityEventType](js-apis-accessibility-sys.md#accessibilityeventtype) | 否    | 否    | 无障碍事件类型。 |
+| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement) | 否    | 是    | 发生事件的目标组件。当无障碍事件涉及具体组件时，此属性包含该组件信息。 |
+| timeStamp                     | ArkTS-Dyn: number<br>ArkTS-Sta: long                         | 否    | 是    | 事件时间戳，单位为毫秒，默认值为0。 |
+| extraInfo                     | string                                   | 否    | 是    | 针对TextArea、TextInput、SearchField、RichEdit组件，当组件文本内容发生增删变化时，此属性表示增删的具体文本内容。默认值为空字符串。 |
 
 ## AccessibilityExtensionAbility
 
-AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能业务的能力。
+AccessibilityExtensionAbility基于ExtensionAbility框架，提供无障碍扩展业务的能力，支持连接与断开无障碍服务、处理无障碍事件和处理无障碍按键事件。
 
 ### onAccessibilityConnect
 
@@ -51,17 +53,17 @@ onAccessibilityConnect(): void
 
 连接无障碍服务成功后的回调函数。
 
-用户启用AccessibilityExtensionAbility时，系统服务完成连接后回调该接口，在该方法中完成初始化业务逻辑操作。 该方法可以选择性重写。 无障碍服务通过该回调，通知Ability已成功连接。
+用户启用AccessibilityExtensionAbility时，系统服务完成连接后回调该接口，通知Ability已成功连接。开发者可在该方法中完成初始化业务逻辑操作，该方法可选择性重写。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -90,17 +92,17 @@ onAccessibilityDisconnect(): void
 
 断开无障碍服务成功后的回调函数。
 
-用户停用AccessibilityExtensionAbility时，系统服务完成断开连接后回调该接口，在该方法中执行资源回收和退出业务操作。该方法可以选择性重写。
+用户停用AccessibilityExtensionAbility时，系统服务完成断开连接后回调该接口，可在该方法中执行资源回收和退出业务操作。该方法可选择性重写。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -127,23 +129,23 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 onAccessibilityEventInfo(event: AccessibilityEventInfo): void
 
-在应用和事件发生时回调该接口，根据事件信息处理业务逻辑。通常需要重写。
+当无障碍事件发生时，系统将事件分发至已连接的AccessibilityExtensionAbility并回调该接口，可根据事件信息处理业务逻辑。通常需要重写。事件类型的详细说明请参见[AccessibilityEventType](js-apis-accessibility-sys.md#accessibilityeventtype)。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                       | 必填   | 说明    |
 | ----- | ---------------------------------------- | ---- | ----- |
-| event | [AccessibilityEventInfo](#accessibilityeventinfo) | 是    | 无障碍事件 |
+| event | [AccessibilityEventInfo](#accessibilityeventinfo) | 是    | 无障碍事件信息。 |
 
 **错误码：**
 
@@ -173,17 +175,17 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 
-在物理按键按下时回调该方法，在该方法中根据业务判断是否消费事件。
+在按键按下时回调该接口，可在该方法中根据业务判断是否消费事件。该方法可选择性重写。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -192,9 +194,10 @@ onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 | keyEvent | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是    | 按键事件。 |
 
 **返回值：**
+
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 返回true表示此事件被消费，不会继续传递。<br>返回false表示些事件未被消费，会继续传递。|
+| boolean | 返回true表示此事件被消费，不会继续传递。<br>返回false表示此事件未被消费，会继续传递。|
 
 **错误码：**
 

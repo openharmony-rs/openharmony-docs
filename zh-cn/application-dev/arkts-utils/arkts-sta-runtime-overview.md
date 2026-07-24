@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 静态ArkTS运行时是OpenHarmony上面向ArkTS-Sta（强静态类型）语言的运行时系统。ArkTS-Sta运行时基于共享内存模型，支持真正的多线程并行执行，并提供G1分代垃圾回收器、完整的类型系统反射能力、以及基于Region的内存管理机制。
 

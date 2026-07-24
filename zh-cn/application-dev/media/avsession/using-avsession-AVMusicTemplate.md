@@ -30,7 +30,7 @@
 
    以下示例代码仅展示创建AVMusicTemplate对象的接口调用，应用在真正使用时，需要参考接口[@ohos.backgroundTaskManager (后台任务管理)](../../reference/apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)确保AVMusicTemplate对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
-   <!-- @[ability_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @[ability_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -60,13 +60,13 @@
        this.context.startAbility(want).then(() => {
          console.info('startTemplateControllerAbility: startAbility success');
        }).catch((e: BusinessError) => {
-         console.error(`startTemplateControllerAbility: startAbility: errCode: ${e?.code}}`);
+         console.error(`startTemplateControllerAbility: startAbility: errCode: ${e?.code}`);
        });
      }
    }
    ```
    
-   <!-- @[manager_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   <!-- @[manager_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
@@ -118,7 +118,7 @@
    - [onQueryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymaintabs)：注册查询主标签事件监听。提供主界面展示的TAB数据集合，并规定“我的主页”的tabId为"minePage"。
    - [onQueryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymediatabcontent)：注册查询媒体标签内容事件监听。根据tabId提供页面展示内容数据。
    
-   <!-- @[template_register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   <!-- @[template_register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
@@ -234,12 +234,11 @@
    }
    ```
 
-
 3. 在音频模板无法直接感知的场景（登录、下载等），需要媒体应用主动向音频模板同步数据。同步接口详情请查看[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md)。
 
    例如，扫码登录成功的场景。当用户在音频模板界面扫码登录时，由于登录状态只有媒体应用能感知，所以需要调用接口[setUserInfo](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#setuserinfo)给音频模板同步数据。
    
-   <!-- @[set_user_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   <!-- @[set_user_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
@@ -262,7 +261,7 @@
      }
    
      /**
-      * 用户信息发生变化后通知界面刷新用户信息，如登陆账号后。
+      * 用户信息发生变化后通知界面刷新用户信息，如登录账号后。
       */
      public setUserInfo() {
        let userInfo: avMusicTemplate.UserInfo = {
@@ -281,7 +280,7 @@
    
 4. 媒体应用启动时注册的事件监听需要在应用退出时注销，以释放资源。注销接口详情请查看[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md)。
 
-   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';

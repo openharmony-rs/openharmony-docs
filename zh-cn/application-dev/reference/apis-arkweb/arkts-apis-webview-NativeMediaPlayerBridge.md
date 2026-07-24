@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的返回值类型，接管网页媒体的播放器和 ArkWeb 内核之间的一个接口类。ArkWeb 内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。该接口允许应用使用自定义的媒体播放器来接管网页中的媒体内容播放，同时，该接口还支持播放器的挂起和恢复机制。
+NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的返回值类型，是接管网页媒体的播放器和 ArkWeb 内核之间的一个接口类。ArkWeb 内核通过该接口类的实例对象控制应用创建的用于接管网页媒体的播放器。该接口允许应用使用自定义的媒体播放器接管网页中的媒体内容播放，同时，该接口还支持播放器的挂起和恢复机制。
 
 > **说明：**
 >
@@ -36,16 +36,16 @@ NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](./arkts-apis-webvie
 | setMuted | [OneParamFn](#oneparamfn23)\<boolean> | 否   | 否   | 设置静音状态。|
 | setPlaybackRate | [OneParamFn](#oneparamfn23)\<double> | 否   | 否   | 设置播放速度。|
 | release | [ZeroParamFn](#zeroparamfn23)\<> | 否   | 否   | 销毁播放器。|
-| enterFullscreen | [ZeroParamFn](#zeroparamfn23)\<> | 否   | 否   | 播放器进入全屏。|
-| exitFullscreen | [ZeroParamFn](#zeroparamfn23)\<> | 否   | 否   | 播放器退出全屏。|
-| resumePlayer | [ResumePlayerFn](#resumeplayerfn23) | 否   | 是   | 通知应用销毁应用内播放器，并保存应用内播放器的状态信息。|
-| suspendPlayer | [SuspendPlayerFn](#suspendplayerfn23) | 否   | 是   | 通知应用销毁应用内播放器，并保存应用内播放器的状态信息。|
+| enterFullscreen | [ZeroParamFn](#zeroparamfn23)\<> | 否   | 否   | 使播放器进入全屏。|
+| exitFullscreen | [ZeroParamFn](#zeroparamfn23)\<> | 否   | 否   | 使播放器退出全屏。|
+| resumePlayer | [ResumePlayerFn](#resumeplayerfn23) | 否   | 是   | 通知应用重建播放器，并恢复播放器的状态信息。仅与 suspendPlayer 成对出现。|
+| suspendPlayer | [SuspendPlayerFn](#suspendplayerfn23) | 否   | 是   | 通知应用销毁播放器，并保存播放器的状态信息。仅与 resumePlayer 成对出现。|
 
 ## updateRect<sup>12+</sup>
 
 updateRect(x: number, y: number, width: number, height: number): void
 
-向应用通知surface位置信息。
+向应用通知 surface 位置信息。当网页布局变化、页面滚动或播放区域发生改变时由 ArkWeb 内核回调此方法，应用需据此更新原生播放器渲染表面的位置和大小。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -114,7 +114,7 @@ seek(targetTime: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| targetTime | number | 是 | 播放跳转到的时间点。<br>单位：秒。 |
+| targetTime | number | 是 | 播放跳转到的时间点，从媒体开始播放时计算。<br>单位：秒。 |
 
 **示例：**
 
@@ -132,7 +132,7 @@ setVolume(volume: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| volume | number | 是 | 播放器的音量。<br>取值范围：[0, 1.0]，其中0表示静音，1.0表示最大音量。 |
+| volume | number | 是 | 播放器的音量。<br>取值范围：[0, 1.0]，其中0表示静音，1.0表示最大音量。超出取值范围时，按边界值自动修正。 |
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -180,7 +180,7 @@ setPlaybackRate(playbackRate: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| playbackRate | number | 是 | 播放速率。<br>取值范围：[0, 10.0]，其中1表示原速播放。 |
+| playbackRate | number | 是 | 播放速率。<br>取值范围：[0, 10.0]，其中1表示原速播放。超出取值范围时，按边界值自动修正。 |
 
 **示例：**
 
@@ -206,7 +206,7 @@ release(): void
 
 enterFullscreen(): void
 
-播放器进入全屏。
+使播放器进入全屏。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -222,7 +222,7 @@ enterFullscreen(): void
 
 exitFullscreen(): void
 
-播放器退出全屏。
+使播放器退出全屏。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -266,7 +266,7 @@ suspendPlayer?(type: SuspendType): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| type | [SuspendType](./arkts-apis-webview-e.md#suspendtype12) | 是 | 播放器挂起类型。|
+| type | [SuspendType](./arkts-apis-webview-e.md#suspendtype12) | 是 | 播放器挂起类型，用于指定播放器挂起的方式。不同 SuspendType 取值对应不同的挂起场景。|
 
 **示例：**
 
@@ -276,7 +276,7 @@ suspendPlayer?(type: SuspendType): void
 
 type UpdateRectFn = (x: double, y: double, width: double, height: double) => void
 
-更新surface位置信息。
+向应用通知 surface 位置信息。当网页布局变化、页面滚动或播放区域发生改变时由 ArkWeb 内核回调此方法，应用需据此更新原生播放器渲染表面的位置和大小。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -321,7 +321,7 @@ type OneParamFn<T,V=void> = (param: T) => V
 
 type ResumePlayerFn = () => void
 
-通知应用重建应用内播放器，并恢复应用内播放器的状态信息。仅与 SuspendPlayerFn 成对出现。
+通知应用重建播放器，并恢复播放器的状态信息。仅与 suspendPlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -333,7 +333,7 @@ type ResumePlayerFn = () => void
 
 type SuspendPlayerFn = (type: SuspendType) => void
 
-通知应用销毁应用内播放器，并保存应用内播放器的状态信息。仅与 ResumePlayerFn 成对出现。
+通知应用销毁播放器，并保存播放器的状态信息。仅与 resumePlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -345,5 +345,5 @@ type SuspendPlayerFn = (type: SuspendType) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| type | [SuspendType](./arkts-apis-webview-e.md#suspendtype12) | 是 | 播放器挂起类型。|
+| type | [SuspendType](./arkts-apis-webview-e.md#suspendtype12) | 是 | 播放器挂起类型，用于指定播放器挂起的方式。不同 SuspendType 取值对应不同的挂起场景。|
 

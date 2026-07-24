@@ -287,11 +287,12 @@ Image独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../refe
 
 ArkTS-Dyn示例：
 
+<!-- @[image_zoom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片缩放类型
-ArkUI_NumberValue objectFitValue[] = {{.i32 = ARKUI_OBJECT_FIT_CONTAIN}};
-ArkUI_AttributeItem objectFitItem = {objectFitValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &objectFitItem);
+ArkUI_NumberValue fitValue[] = {{.i32 = ARKUI_OBJECT_FIT_COVER}};
+ArkUI_AttributeItem fitItem = {fitValue, 1};
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
 ```
 
 ArkTS-Sta示例：
@@ -311,11 +312,12 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片插值效果
 ArkUI_NumberValue interpolationValue[] = {{.i32 = ARKUI_IMAGE_INTERPOLATION_HIGH}};
 ArkUI_AttributeItem interpolationItem = {interpolationValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_INTERPOLATION, &interpolationItem);
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem);
 ```
 
 ArkTS-Sta示例：
@@ -359,12 +361,12 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_fillcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片填充颜色（0xARGB格式）
-// 例如：0xFFFF0000表示红色
 ArkUI_NumberValue fillColorValue[] = {{.u32 = 0xFF007DFF}};
 ArkUI_AttributeItem fillColorItem = {fillColorValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_FILL_COLOR, &fillColorItem);
+nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
 ```
 
 ArkTS-Sta示例：
@@ -384,10 +386,11 @@ nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_alt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置加载失败时的占位图
-ArkUI_AttributeItem altItem = {nullptr, 0, "/data/storage/el2/base/haps/entry/files/placeholder.png"};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_ALT, &altItem);
+ArkUI_AttributeItem altItem = {nullptr, 0, "resources/rawfile/imageCapiExample.png"};
+nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
 ```
 
 ArkTS-Sta示例：
@@ -406,11 +409,12 @@ nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_decode_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片解码尺寸（单位：px）
-ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 200}, {.i32 = 200}};
+ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 150}, {.i32 = 150}};
 ArkUI_AttributeItem sourceSizeItem = {sourceSizeValue, 2};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
+nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
 ```
 
 ArkTS-Sta示例：
@@ -575,25 +579,25 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_ORIENTATION, &orientationItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 全局事件接收器函数
 void GlobalEventReceiver(ArkUI_NodeEvent* event)
 {
     auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-
-    // 根据事件类型处理
-    switch (eventType) {
-        case NODE_IMAGE_ON_COMPLETE:
-            // 处理图片加载完成事件
-            break;
-        case NODE_IMAGE_ON_ERROR:
-            // 处理图片加载失败事件
-            break;
-        case NODE_IMAGE_ON_SVG_PLAY_FINISH:
-            // 处理SVG播放完成事件
-            break;
-        default:
-            break;
+    if (eventType == NODE_IMAGE_ON_COMPLETE) {
+        ArkUI_NodeComponentEvent* componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (componentEvent != nullptr) {
+            OH_LOG_INFO(LOG_APP, "Image loaded: %.0fx%.0f",
+                        componentEvent->data[IMAGE_WIDTH_INDEX].f32, componentEvent->data[IMAGE_HEIGHT_INDEX].f32);
+        }
+    } else if (eventType == NODE_IMAGE_ON_ERROR) {
+        ArkUI_NodeComponentEvent* componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (componentEvent != nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Image load failed, error: %d", componentEvent->data[ERROR_CODE_INDEX].i32);
+        }
+    } else if (eventType == NODE_IMAGE_ON_SVG_PLAY_FINISH) {
+        OH_LOG_INFO(LOG_APP, "SVG animation play finished");
     }
 }
 ```

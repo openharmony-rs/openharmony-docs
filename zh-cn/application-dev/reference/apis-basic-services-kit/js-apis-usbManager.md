@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供管理USB设备的相关功能，包括主机端的查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备端的端口管理、功能切换及查询等。适用于需要与USB设备进行通信的场景，解决了设备连接、数据传输和权限管理的复杂性问题，为开发者提供统一的USB设备访问接口，降低开发难度，提升开发效率。
+本模块主要提供管理USB设备的相关功能，包括主机端的查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备端的端口管理、功能切换及查询等。适用于需要与USB外设进行数据交互、管理USB设备权限、动态切换USB设备模式等场景。
 
 >  **说明：**
 > 
@@ -23,7 +23,7 @@ import usbManager from '@ohos.usbManager';
 
 ## 使用说明
 
-凡是参数类型为[USBDevicePipe](#usbdevicepipe)的接口,都需要执行如下操作：
+凡是参数类型为[USBDevicePipe](#usbdevicepipe)的接口，都需要执行如下操作：
  
 **在使用接口前：**
 
@@ -55,7 +55,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 > **说明：**
 >
-> 三方应用没有权限获取serial字段读取设备序列号，需要通过[requestRight](#usbmanagerrequestright)申请权限后，自行发起控制传输获取。
+> 三方应用无法通过getDevices()接口直接获取serial字段的设备序列号信息（该字段对三方应用不可用）。如需获取序列号，需要在申请设备访问权限后，自行发起控制传输获取。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -75,7 +75,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
-| 801      | Capability not supported. |
+| 801      | Capability not supported. [since 18] |
 
 **示例：**
 
@@ -85,7 +85,7 @@ if (devicesList) {
   console.info(`devicesList = ${JSON.stringify(devicesList)}`);
 }
 /*
-  devicesList 返回的数据结构,此处提供一个简单的示例，如下
+  devicesList 返回的数据结构，此处提供一个简单的示例，如下
   [
     {
       name: "1-1",
@@ -143,7 +143,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。
 
-1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及device;
+1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及USBDevice;
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)请求使用该设备的权限。
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -171,8 +171,8 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.                                     |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.  |
+| 801      | Capability not supported. [since 18]                                     |
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 | 14400012 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
@@ -187,8 +187,16 @@ async function connectDevice() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   console.info(`devicepipe = ${devicepipe}`);
   usbManager.closePipe(devicepipe);
 }
@@ -227,7 +235,7 @@ hasRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.  |
+| 801      | Capability not supported. [since 18]  |
 
 **示例：**
 
@@ -240,7 +248,11 @@ async function hasRight(): boolean {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let right: boolean = usbManager.hasRight(device.name);
   console.info(`${right}`);
   return right;
@@ -278,12 +290,13 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      |  Capability not supported.  | 
+| 801      |  Capability not supported. [since 18]  | 
 
 **示例：**
 
 ```ts
-async function requestRight() {
+import { BusinessError } from '@ohos.base';
+function requestRight() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -291,7 +304,7 @@ async function requestRight() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name).then(ret => {
+  usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to request right. Code: ${error.code}, message: ${error.message}`);
@@ -330,7 +343,7 @@ removeRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.                                   |
+| 801      | Capability not supported. [since 18]                                   |
 
 **示例：**
 
@@ -393,7 +406,7 @@ ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boo
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. |
+| 801      | Capability not supported. [since 18] |
 
 **示例：**
 
@@ -406,10 +419,22 @@ async function claimInterface() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: int = usbManager.claimInterface(devicepipe, interfaces);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
   console.info(`claimInterface = ${ret}`);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
@@ -454,7 +479,7 @@ ArkTS-Sta: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.                              |
+| 801      | Capability not supported. [since 18]                              |
 
 **示例：**
 
@@ -467,10 +492,22 @@ async function releaseInterface() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: int = usbManager.claimInterface(devicepipe, interfaces);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
   usbManager.closePipe(devicepipe);
@@ -483,7 +520,7 @@ ArkTS-Dyn: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): numb
 
 ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 
-设置设备配置。
+设置设备配置。调用成功后设备的配置将被切换为指定的配置，后续的数据传输和设备操作将基于新配置进行。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -511,7 +548,7 @@ ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.  |
+| 801      | Capability not supported. [since 18]  |
 
 **示例：**
 
@@ -524,8 +561,16 @@ async function setConfiguration() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: int = usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
@@ -539,7 +584,7 @@ ArkTS-Dyn: setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 ArkTS-Sta: setInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
-设置设备接口。
+设置设备接口。调用成功后接口将被切换到指定的备用设置，端点配置将随之改变以匹配传输类型要求。
 
 > **说明：**
 >
@@ -573,7 +618,7 @@ ArkTS-Sta: setInterface(pipe: USBDevicePipe, iface: USBInterface): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.  |
+| 801      | Capability not supported. [since 18]  |
 
 **示例：**
 
@@ -586,10 +631,22 @@ async function setInterface() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: int = usbManager.claimInterface(devicepipe, interfaces);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
   ret = usbManager.setInterface(devicepipe, interfaces);
   console.info(`setInterface = ${ret}`);
   usbManager.closePipe(devicepipe);
@@ -627,8 +684,8 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
+| 801      | Capability not supported. [since 18] |
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first.<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
 
 **示例：**
@@ -641,8 +698,16 @@ async function getRawDescriptor() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   usbManager.getRawDescriptor(devicepipe);
   usbManager.closePipe(devicepipe);
 }
@@ -681,7 +746,7 @@ ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
@@ -693,8 +758,16 @@ async function getFileDescriptor() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let ret: int = usbManager.getFileDescriptor(devicepipe);
   console.info(`getFileDescriptor = ${ret}`);
   let closeRet: int = usbManager.closePipe(devicepipe);
@@ -735,12 +808,13 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported. [since 18]                                    |
 
 **示例：**
 
 ```ts
+import { BusinessError } from '@ohos.base';
 // 控制传输参数：根据USB协议规范、设备描述符或设备规格文档设置各字段值
 // bmRequestType：请求控制类型，常见取值0x00(标准设备请求)、0x01(类请求)、0x02(厂商请求)
 // bRequest：具体控制请求命令（如获取描述符、设置地址等）
@@ -764,8 +838,16 @@ async function usbControlTransfer() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   usbManager.usbControlTransfer(devicepipe, param).then((ret: int) => {
     console.info(`usbControlTransfer = ${ret}`);
   }).catch((error: BusinessError) => {
@@ -818,7 +900,7 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. |
+| 801      | Capability not supported. [since 18] |
 
 **示例：**
 
@@ -827,6 +909,7 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 > 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
 
 ```ts
+import { BusinessError } from '@ohos.base';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
@@ -844,11 +927,19 @@ async function bulkTransfer() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
-      usbManager.claimInterface(devicepipe, interfaces);
+      let ret: int = usbManager.claimInterface(devicepipe, interfaces);
+      if (ret !== 0) {
+        console.error(`claim interface failed`);
+        continue;
+      }
       let buffer =  new Uint8Array(128);
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: int) => {
         console.info(`bulkTransfer = ${ret}`);
@@ -860,7 +951,6 @@ async function bulkTransfer() {
       });
     }
   }
-  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -895,7 +985,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
 | 14400008 | No such device (it may have been disconnected). |
 | 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
@@ -909,7 +999,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
-import { BusinessError } from '@kit.BasicServiceKit';
+import { BusinessError } from '@ohos.base';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
@@ -926,12 +1016,20 @@ async function usbSubmitTransfer() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   // 获取endpoint端点地址。
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
   // 获取设备的第一个id。
-  usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  let ret: int = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
 
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
@@ -947,12 +1045,16 @@ async function usbSubmitTransfer() {
   };
   try {
     transferParams.endpoint=endpoint?.address as int;
-    transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-      console.info('callBackData =' +JSON.stringify(callBackData));
+    transferParams.callback=(err, callbackData: usbManager.SubmitTransferCallback)=>{
+      if (err) {
+        console.error('USB transfer failed:', err);
+        return;
+      }
+      console.info('callbackData =' +JSON.stringify(callbackData));
     }
     usbManager.usbSubmitTransfer(transferParams); 
     console.info('USB transfer request submitted.');
-  } catch (error) {
+  } catch (error: BusinessError) {
     console.error('USB transfer failed:', error);
   }
   usbManager.closePipe(devicepipe);
@@ -989,7 +1091,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1. Unrecognized discard error code. |
 | 14400011 | The transfer is not in progress, or is already complete or cancelled.|
@@ -1012,10 +1114,14 @@ async function usbCancelTransfer() {
     return;
   }
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe === undefined) {
-    console.info(`connect device fail`);
+    console.error(`connect device fail`);
     return;
   }
   // 获取endpoint端点地址。
@@ -1027,7 +1133,11 @@ async function usbCancelTransfer() {
     return;
   }
   // 获取设备的第一个id。
-  usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  let ret: int = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -1092,7 +1202,7 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. |
+| 801      | Capability not supported. [since 18] |
 
 **示例：**
 
@@ -1104,8 +1214,16 @@ async function closePipe() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let ret: int = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${ret}`);
 }
@@ -1144,21 +1262,20 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. |
+| 801      | Capability not supported. [since 18] |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
-| 14400005 | Database operation exception.  |
-| 14401001 | The target USBAccessory not matched. |
+| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
+| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
 
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   let flag = usbManager.hasAccessoryRight(accList?.[0])
-  hilog.info(0, 'testTag ui', `hasAccessoryRight success, ret:${flag}`)
+  console.info(`hasAccessoryRight success, ret:${flag}`)
 } catch (error) {
-  hilog.error(0, 'testTag ui', `hasAccessoryRight error ${error.code}, message is ${error.message}`)
+  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1195,21 +1312,22 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. |
+| 801      | Capability not supported. [since 18] |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
-| 14400005 | Database operation exception. |
-| 14401001 | The target USBAccessory not matched. |
+| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
+| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
 
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList?.[0])
-  hilog.info(0, 'testTag ui', `requestAccessoryRight success, ret:${flag}`)
-} catch (error) {
-  hilog.error(0, 'testTag ui', `requestAccessoryRight error ${error.code}, message is ${error.message}`)
+async function requestAccessoryRight() {
+  try {
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    console.info(`requestAccessoryRight success, ret:${flag}`)
+  } catch (error) {
+    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`)
+  }
 }
 ```
 
@@ -1240,26 +1358,27 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception.                                |
-| 14401001 | The target USBAccessory not matched.                         |
+| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
+| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
 
 **示例：**
 
 <!--code_no_check-->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList?.[0])
-  if (!flag) {
-    return
+async function cancelAccessoryRight() {
+  try {
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    if (!flag) {
+      return
+    }
+    usbManager.cancelAccessoryRight(accList?.[0])
+    console.info(`cancelAccessoryRight success`)
+  } catch (error) {
+    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`)
   }
-  usbManager.cancelAccessoryRight(accList?.[0])
-  hilog.info(0, 'testTag ui', `cancelAccessoryRight success`)
-} catch (error) {
-  hilog.error(0, 'testTag ui', `cancelAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1287,18 +1406,17 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  hilog.info(0, 'testTag ui', `getAccessoryList success, accList: ${JSON.stringify(accList)}`)
+  console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`)
 } catch (error) {
-  hilog.error(0, 'testTag ui', `getAccessoryList error ${error.code}, message is ${error.message}`)
+  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1335,32 +1453,33 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.                                    |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 801      | Capability not supported. [since 18]                                    |
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14401001 | The target USBAccessory not matched.                         |
-| 14401002 | Failed to open the native accessory node.                    |
+| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14401002 | Failed to open the native accessory node. Possible causes: 1. The device node does not exist. 2. The device node is already opened by another process. |
 | 14401003 | Cannot reopen the accessory.                                 |
 
 **示例：**
 
 <!--code_no_check-->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { fileIo } from '@kit.CoreFileKit';
-try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList?.[0])
-  if (!flag) {
-    return
+async function openAccessory() {
+  try {
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    if (!flag) {
+      return
+    }
+    let handle = usbManager.openAccessory(accList?.[0])
+    console.info(`openAccessory success`)
+    let arrayBuffer = new ArrayBuffer(4096);
+    let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
+    console.info('readSync ret: ' + readLength.toString(10));
+  } catch (error) {
+    console.error(`openAccessory error ${error.code}, message is ${error.message}`)
   }
-  let handle = usbManager.openAccessory(accList?.[0])
-  hilog.info(0, 'testTag ui', `openAccessory success`)
-  let arrayBuffer = new ArrayBuffer(4096);
-  let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
-  hilog.info(0, 'testTag ui', 'readSync ret: ' + readLength.toString(10));
-} catch (error) {
-  hilog.error(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1391,25 +1510,26 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
 
 <!--code_no_check-->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList?.[0])
-  if (!flag) {
-    return
+async function closeAccessory() {
+  try {
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    if (!flag) {
+      return
+    }
+    let handle = usbManager.openAccessory(accList?.[0])
+    usbManager.closeAccessory(handle)
+    console.info(`closeAccessory success`)
+  } catch (error) {
+    console.error(`closeAccessory error ${error.code}, message is ${error.message}`)
   }
-  let handle = usbManager.openAccessory(accList?.[0])
-  usbManager.closeAccessory(handle)
-  hilog.info(0, 'testTag ui', `closeAccessory success`)
-} catch (error) {
-  hilog.error(0, 'testTag ui', `closeAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1417,7 +1537,7 @@ try {
 
 resetUsbDevice(pipe: USBDevicePipe): boolean
 
-重置USB外设。
+重置USB外设。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
 
 > **说明：**
 >
@@ -1452,7 +1572,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.|
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400004 | Service exception. Possible causes: 1. No device is plugged in. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
@@ -1461,6 +1581,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 **示例：**
 
 ```ts
+import { BusinessError } from '@ohos.base';
 async function resetUsbDevice() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -1468,8 +1589,16 @@ async function resetUsbDevice() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicepipe);
     console.info(`resetUsbDevice  = ${ret}`);
@@ -1517,6 +1646,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 **示例：**
 
 ```ts
+import { BusinessError } from '@ohos.base';
 let param: usbManager.USBControlParams = {
   request: 0x06,
   reqType: 0x80,
@@ -1533,18 +1663,29 @@ async function controlTransfer() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-  console.info(`controlTransfer = ${ret}`);
-  })
-  usbManager.closePipe(devicepipe);
+    console.info(`controlTransfer = ${ret}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
+  }).finally(() => {
+    usbManager.closePipe(devicepipe);
+  });
 }
 ```
 
 ## USBEndpoint
 
-通过USB发送和接收数据的端口。通过[USBInterface](#usbinterface)获取。
+USB端点，用于主机与设备之间数据传输的通信端点。通过[USBInterface](#usbinterface)获取。
 
 >**说明：**
 >
@@ -1556,7 +1697,7 @@ async function controlTransfer() {
 graph LR
     A[端点类型] --> B[批量端点 bulk]
     A --> C[中断端点 interrupt]
-    A --> D[实时端点 isoc]
+    A --> D[实时端点 isochronous]
     B --> B1[宽带共享调度]
     B1 --> B2[适合大量数据非实时传输]
     C --> C1[固定轮询调度]

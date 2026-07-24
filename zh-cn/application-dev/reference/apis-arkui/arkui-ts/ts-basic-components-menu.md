@@ -72,7 +72,7 @@ ArkTS-Dyn: font(value: Font)
 
 ArkTS-Sta: font(value: Font | undefined)
 
-统一设置Menu中所有文本的尺寸。
+统一设置Menu中所有文本的字体样式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +88,7 @@ ArkTS-Sta: font(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | Menu中所有文本的尺寸。取值为undefined时，按默认值处理。<br/>默认值：<br/>{<br/>      size: 16,<br/>      family: 'HarmonyOS Sans',<br/>      weight: FontWeight.Medium,<br/>      style: FontStyle.Normal<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | Menu中所有文本的字体样式。取值为undefined时，按默认值处理。<br/>默认值：<br/>{<br/>      size: 16,<br/>      family: 'HarmonyOS Sans',<br/>      weight: FontWeight.Medium,<br/>      style: FontStyle.Normal<br/>} |
 ### fontColor<sup>10+</sup>
 
 ArkTS-Dyn: fontColor(value: ResourceColor)
@@ -272,7 +272,7 @@ Menu子菜单展开样式枚举。
 | 名称            | 值   | 说明                                       |
 | --------------- | ---- | ------------------------------------------ |
 | SIDE_EXPAND     | 0    | 默认展开样式，子菜单位于同一平面侧边展开。 |
-| EMBEDDED_EXPAND | 1    | 直接展开样式，子菜单嵌于主菜单内展开。     |
+| EMBEDDED_EXPAND | 1    | 内嵌展开样式，子菜单嵌于主菜单内展开。     |
 | STACK_EXPAND    | 2    | 堆叠样式，子菜单浮于主菜单上方展开。       |
 
 ## 示例
@@ -741,7 +741,7 @@ struct Index {
 
 ### 示例4（设置分割线样式）
 
-该示例通过设置menuItemGroupDivider属性实现分割线样式。
+该示例通过设置menuItemDivider和menuItemGroupDivider属性实现分割线样式。
 
 ArkTS-Dyn示例：
 ```ts

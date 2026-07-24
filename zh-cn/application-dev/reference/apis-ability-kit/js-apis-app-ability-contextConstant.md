@@ -39,7 +39,7 @@ import { contextConstant } from '@kit.AbilityKit';
 
 ## ProcessMode<sup>12+</sup>
 
-UIAbility启动后的进程模式。
+UIAbility启动后的进程模式，用于指定UIAbility在新进程中启动并绑定到指定对象（如父进程或状态栏图标）。
 
 ProcessMode作为[StartOptions](js-apis-app-ability-startOptions.md)的一个属性，仅在[UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1)中生效，用来指定目标UIAbility的进程模式。
 
@@ -65,6 +65,7 @@ ProcessMode作为[StartOptions](js-apis-app-ability-startOptions.md)的一个属
 
   export default class EntryAbility extends UIAbility {
     onForeground() {
+      // 构造Want对象，指定目标UIAbility信息
       let want: Want = {
         deviceId: '',
         bundleName: 'com.example.myapplication',
@@ -187,11 +188,11 @@ export default class EntryAbility extends UIAbility {
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
-| APPLICATION_CONTEXT | 0 | [ApplicationContext](js-apis-inner-application-applicationContext.md)类型。     |
-| ABILITY_STAGE_CONTEXT | 1 | [AbilityStageContext](js-apis-inner-application-abilityStageContext.md)类型。     |
-| UIABILITY_CONTEXT | 2 | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)类型。     |
-| FORM_EXTENSION_CONTEXT | 3 | [FormExtensionContext](../apis-form-kit/js-apis-inner-application-formExtensionContext.md)类型。     |
-| APP_SERVICE_EXTENSION_CONTEXT | 4 | [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md)类型。     |
+| APPLICATION_CONTEXT | 0 | [ApplicationContext](js-apis-inner-application-applicationContext.md)类型，提供应用级别的资源和能力。  |
+| ABILITY_STAGE_CONTEXT | 1 | [AbilityStageContext](js-apis-inner-application-abilityStageContext.md)类型，提供模块级别的资源和能力。   |
+| UIABILITY_CONTEXT | 2 | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)类型，提供界面交互、组件启动等能力。     |
+| FORM_EXTENSION_CONTEXT | 3 | [FormExtensionContext](../apis-form-kit/js-apis-inner-application-formExtensionContext.md)类型，提供卡片服务能力。     |
+| APP_SERVICE_EXTENSION_CONTEXT | 4 | [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md)类型，提供后台服务能力。     |
 
 **示例：**
 

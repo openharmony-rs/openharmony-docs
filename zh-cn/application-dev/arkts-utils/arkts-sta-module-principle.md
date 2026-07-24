@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta运行时采用基于ClassLinker+FileManager的模块加载体系，仅支持ES Module规范，运行时层面采用"编译时统一、运行时扁平"的设计理念。本文详细介绍ArkTS-Sta的模块化规范、模块类型、加载流程、类初始化机制、Native模块加载以及模块化常见问题的解决措施。
 

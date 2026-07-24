@@ -618,9 +618,11 @@ on(type: 'scrollEvent', callback: Callback\<observer.ScrollEventInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScrollEvent](#onscrollevent23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -661,7 +663,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -704,6 +706,26 @@ struct Index {
 }
 ```
 
+## onScrollEvent<sup>23+</sup>
+
+onScrollEvent(callback: Callback<observer.ScrollEventInfo>): void
+
+监听所有滚动组件滚动事件的开始和结束。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('scrollEvent')](#onscrollevent12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | 是   | 回调函数。滚动事件开始和结束时触发。                               |
+
 ## off('scrollEvent')<sup>12+</sup>
 
 off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
@@ -714,9 +736,11 @@ off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScrollEvent](#offscrollevent23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -729,6 +753,26 @@ off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
 
 参考[on('scrollEvent')](#onscrollevent12)接口示例。
 
+## offScrollEvent<sup>23+</sup>
+
+offScrollEvent(callback?: Callback<observer.ScrollEventInfo>): void
+
+取消监听所有滚动组件滚动事件的开始和结束。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('scrollEvent')](#offscrollevent12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该UIContext下所有scrollEvent事件监听。 |
+
 ## on('scrollEvent')<sup>12+</sup>
 
 on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<observer.ScrollEventInfo\>): void
@@ -739,9 +783,11 @@ on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScrollEvent](#onscrollevent23-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -755,6 +801,27 @@ on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<o
 
 参考[on('scrollEvent')](#onscrollevent12)接口示例。
 
+## onScrollEvent<sup>23+</sup>
+
+onScrollEvent(options: observer.ObserverOptions, callback: Callback<observer.ScrollEventInfo>): void
+
+监听指定id的滚动组件滚动事件的开始和结束。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('scrollEvent')](#onscrollevent12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                                                    | 必填 | 说明                                     |
+| ------- | ----------------------------------------------------------------------- | ---- | ---------------------------------------- |
+| options | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | Observer选项，包含指定监听的滚动组件的id。 |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | 是   | 回调函数。滚动事件开始和结束时触发。            |
+
 ## off('scrollEvent')<sup>12+</sup>
 
 off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\<observer.ScrollEventInfo\>): void
@@ -765,9 +832,11 @@ off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScrollEvent](#offscrollevent23-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -780,6 +849,27 @@ off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\
 **示例：**
 
 参考[on('scrollEvent')](#onscrollevent12)接口示例。
+
+## offScrollEvent<sup>23+</sup>
+
+offScrollEvent(options: observer.ObserverOptions, callback?: Callback<observer.ScrollEventInfo>): void
+
+取消监听指定id的滚动组件滚动事件的开始和结束。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('scrollEvent')](#offscrollevent12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                    | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | Observer选项，包含指定监听的滚动组件的id。                    |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | 否   | 回调函数。返回滚动事件的信息。不传参数时，取消该id下所有滚动事件的监听回调。 |
 
 ## on('routerPageUpdate')<sup>11+</sup>
 
@@ -1858,7 +1948,7 @@ on(type: 'willClick', callback: GestureEventListenerCallback): void
 // Index.ets
 // 演示uiObserver.on('willClick', callback)
 // uiObserver.off('willClick', callback)
-// uiObserver.off('didClick', callback)
+// uiObserver.on('didClick', callback)
 // uiObserver.off('didClick', callback)
 
 // 定义监听回调函数
@@ -3944,13 +4034,13 @@ struct Index {
   private removeGlobalListeners() {
     const observer = this.getUIContext().getUIObserver();
     if (this.tapCallback) {
-      observer.removeGlobalGestureListener(0, this.tapCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.TAP, this.tapCallback);
     }
     if (this.panCallback) {
-      observer.removeGlobalGestureListener(2, this.panCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.PAN, this.panCallback);
     }
     if (this.longPressCallback) {
-      observer.removeGlobalGestureListener(1, this.longPressCallback);
+      observer.removeGlobalGestureListener(GestureListenerType.LONG_PRESS, this.longPressCallback);
     }
   }
 

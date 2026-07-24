@@ -55,7 +55,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| newConfig | [Configuration](js-apis-app-ability-configuration.md) | 是 | 表示更新后的配置信息。 |
+| newConfig | [Configuration](js-apis-app-ability-configuration.md) | 是 | 表示更新后的配置信息，包含语言、颜色模式等系统配置项。 |
 
 **示例：**
 
@@ -101,6 +101,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
+  // 接收系统内存级别变化回调
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
     console.info(`onMemoryLevel, level: ${JSON.stringify(level)}`);
   }

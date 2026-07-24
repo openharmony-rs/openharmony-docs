@@ -2,14 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @zhushilin0206-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
 >**说明：**
 >
 >本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
+内置环境变量用于反映系统环境状态的值，开发者可通过[Environment](./ts-state-management.md#environment)查询内置环境变量（如颜色模式、布局方向等）。
 
 ## ColorMode
 

@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_InquiryInfo {...} ScsiPeripheral_InquiryInfo
 
 ## 概述
 
-SCSI INQUIRY 数据。
+SCSI INQUIRY 数据，用于存储SCSI外设的INQUIRY命令查询结果。
 
 **起始版本：** 18
 
@@ -30,6 +30,6 @@ SCSI INQUIRY 数据。
 | char idVendor[[SCSIPERIPHERAL_VENDOR_ID_LEN](capi-scsi-peripheral-types-h.md#scsiperipheral_vendor_id_len) + 1] | 制造商 ID。 |
 | char idProduct[[SCSIPERIPHERAL_PRODUCT_ID_LEN](capi-scsi-peripheral-types-h.md#scsiperipheral_product_id_len) + 1] | 产品 ID。 |
 | char revProduct[[SCSIPERIPHERAL_PRODUCT_REV_LEN](capi-scsi-peripheral-types-h.md#scsiperipheral_product_rev_len) + 1] | 产品版本。 |
-| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md)* data | 所有的查询数据。 |
+| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md)* data | 查询得到的数据的指针。 |
 
 

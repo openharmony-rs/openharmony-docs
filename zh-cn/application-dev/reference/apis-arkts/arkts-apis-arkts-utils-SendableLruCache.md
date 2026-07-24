@@ -1,10 +1,10 @@
-# SendableLruCache<K, V>
+# SendableLruCache&lt;K, V&gt;
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 SendableLruCache在缓存空间不足时，会用新数据替换近期最少使用的数据。此设计基于资源访问的考虑：近期访问的数据可能在不久的将来再次访问，因此最少访问的数据价值最小，应优先移出缓存。SendableLruCache支持Sendable（可跨线程安全共享的）特性，可保存Sendable对象，确保跨线程安全访问。
 
@@ -23,7 +23,7 @@ SendableLruCache在缓存空间不足时，会用新数据替换近期最少使�
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## 属性
@@ -61,7 +61,7 @@ constructor(capacity?: number)
 
 | 参数名   | 类型   | 必填 | 说明                         |
 | -------- | ------ | ---- | ---------------------------- |
-| capacity | number | 否   | 指示缓冲区的自定义容量。不传时，默认值为64，最大值不能超过2147483647；小于等于0时会抛出异常。建议根据实际业务数据量设置合适的容量值，以平衡缓存命中率与内存占用。 |
+| capacity | number | 否   | 指示缓存的自定义容量。不传时，默认值为64，最大值不能超过2147483647；小于等于0时会抛出异常。建议根据实际业务数据量设置合适的容量值，以平衡缓存命中率与内存占用。 |
 
 **示例：**
 
@@ -73,7 +73,7 @@ let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 
 updateCapacity(newCapacity: number): void
 
-将缓存容量设置为指定值。如果缓存中值的总数超过指定容量，将删除最少使用的键值对。
+将缓存容量设置为指定值。如果缓存中值的总数超过指定容量，将淘汰最少使用的键值对。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -83,7 +83,7 @@ updateCapacity(newCapacity: number): void
 
 | 参数名      | 类型   | 必填 | 说明                         |
 | ----------- | ------ | ---- | ---------------------------- |
-| newCapacity | number | 是   | 指示要为缓冲区自定义的容量，最大值不能超过2147483647；小于等于0时会抛出异常。建议根据实际业务数据量设置合适的容量值，以平衡缓存命中率与内存占用。|
+| newCapacity | number | 是   | 指示要为缓存自定义的容量，最大值不能超过2147483647；小于等于0时会抛出异常。建议根据实际业务数据量设置合适的容量值，以平衡缓存命中率与内存占用。|
 
 **示例：**
 
@@ -305,7 +305,7 @@ getPutCount(): number
 
 | 类型   | 说明                         |
 | ------ | ---------------------------- |
-| number | 返回将值添加到缓存的次数。 |
+| number | 返回向缓存中添加值的次数。 |
 
 **示例：**
 
@@ -347,7 +347,7 @@ console.info('result = ' + result);
 
 get(key: K): V | undefined
 
-返回键对应的值。如果指定的键不存在于缓存中，将调用createDefault方法创建值并将其添加到缓存。
+返回键对应的值。如果指定的键不存在于缓存中，将调用createDefault方法；若createDefault返回非undefined值，则将该键值对添加到缓存并返回该值；若createDefault返回undefined，则返回undefined。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -363,7 +363,7 @@ get(key: K): V | undefined
 
 | 类型                     | 说明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
-| V \| undefined | 如果指定的键存在于缓存中，则返回与键关联的值；否则调用createDefault方法创建值。若createDefault返回非undefined值，则将该键值对添加到缓存中，并返回该值；若createDefault返回undefined，则最终返回undefined。当因添加新条目导致缓存中值的数量超过容量时，将删除最少使用的键值对。 |
+| V \| undefined | 如果指定的键存在于缓存中，则返回与键关联的值；否则调用createDefault方法创建值。若createDefault返回非undefined值，则将该键值对添加到缓存中，并返回该值；若createDefault返回undefined，则最终返回undefined。当因添加新条目导致缓存中值的数量超过容量时，将淘汰最少使用的键值对。 |
 
 **示例：**
 
@@ -379,7 +379,7 @@ console.info('result = ' + result);
 
 put(key: K, value: V): V
 
-将键值对添加到缓存中，并返回与添加的键关联的值。当缓存中值的数量超过容量时，将删除最少使用的键值对。
+将键值对添加到缓存中，并返回与添加的键关联的值。当缓存中值的数量超过容量时，将淘汰最少使用的键值对。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -514,7 +514,7 @@ contains(key: K): boolean
 
 | 类型    | 说明                                       |
 | ------- | ------------------------------------------ |
-| boolean | 如果缓存包含指定的键，则返回true，否则返回false。 |
+| boolean | true：缓存包含指定的键；false：缓存不包含指定的键。 |
 
 **示例：**
 
@@ -551,7 +551,7 @@ lruCache.put(3, 15);
 let pair:Iterable<Object[]> = lruCache.entries();
 let arrayValue = Array.from(pair);
 for (let value of arrayValue) {
-  console.info(value[0]+ ', '+ value[1]);
+  console.info(value[0] + ', ' + value[1]);
   // 预期输出：
   // 2, 10
   // 3, 15

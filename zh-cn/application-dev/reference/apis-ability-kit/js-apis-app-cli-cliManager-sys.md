@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供与系统命令行工具（CLI）的交互能力，可以查询工具信息、调用并执行CLI命令，以及管理会话。
+本模块提供与系统命令行工具（CLI）的交互能力，可以查询工具信息、调用并执行CLI命令，以及管理会话。会话在调用execTool接口时创建，用于跟踪CLI工具的执行状态和结果。
 
 **起始版本：** 26.0.0
 
@@ -37,8 +37,8 @@ import { cliManager } from '@kit.AbilityKit';
 | 名称       | 类型 | 必填 | 说明 |
 | ---------- | ---- | --- | ------------------ |
 | background | boolean | 否 | 表示任务是否后台执行。<br/>true：后台执行，false：前台执行。<br/>默认值：false。 |
-| yieldMs    | number | 否 | 任务前台执行时长。取值范围：0 ~ 1000 * timeout。默认值：0。 |
-| timeout    | number | 否 | 任务执行超时时长。取值范围：0 ~ 1800。默认值：1800。 |
+| yieldMs    | number | 否 | 任务前台执行时长。取值范围：0 ~ 1000 * timeout。默认值：0。单位：ms。 |
+| timeout    | number | 否 | 任务执行超时时长。取值范围：0 ~ 1800。默认值：1800。单位：s。 |
 
 ## ExecResult
 
@@ -59,7 +59,7 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 | errorText     | string  | 是   | 否   | 工具的标准错误输出（stderr）。默认值：undefined。 |
 | signalNumber  | number  | 是   | 否   | 工具的终止信号。默认值：undefined。 |
 | timeOut       | boolean | 是   | 是   | 工具的执行是否超时。true表示超时，false表示未超时。 |
-| executionTime | number  | 是   | 是   | 工具的执行时长。 |
+| executionTime | number  | 是   | 是   | 工具的执行时长。单位：ms。|
 
 
 ## SessionStatus
@@ -95,7 +95,7 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 
 | 名称      | 类型 | 只读 | 必填 | 说明 |
 | --------- | ---- | ---- | --- | ------------------ |
-| sessionId  | string | 是 | 是 | 会话身份id。 |
+| sessionId  | string | 是 | 是 | 会话id。 |
 | toolName  | string | 是 | 是 | 工具名称。 |
 | status  | [SessionStatus](#sessionstatus) | 是 | 是 | 会话状态。 |
 | result  | [ExecResult](#execresult) | 是 | 否 | 工具执行结果。默认值：undefined。 |
@@ -139,6 +139,7 @@ import { cliManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 查询所有CLI工具的摘要信息
   cliManager.queryToolSummaries().then((toolSummaries) => {
     console.info('queryToolSummaries success, count: ' + toolSummaries.length);
     for (const summary of toolSummaries) {
@@ -191,6 +192,7 @@ import { cliManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 查询所有CLI工具的详细信息
   cliManager.queryTools().then((toolInfos) => {
     console.info('queryTools success, count: ' + toolInfos.length);
     for (const toolInfo of toolInfos) {
@@ -251,6 +253,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let toolName = 'example_tool';
 try {
+  // 根据工具名称获取工具的详细信息
   cliManager.getToolInfoByName(toolName).then((toolInfo) => {
     console.info('getToolInfoByName success, name: ' + toolInfo.name);
   }).catch((error: BusinessError) => {
@@ -303,7 +306,7 @@ execTool(toolName: string, subCommand: string, args: Record\<string, Object\>, c
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 35600030 | No tool with the specified name exists. |
 | 35600031 | Maximum number of processes has been reached. |
-| 35600050  | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
+| 35600050  | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
 
@@ -313,11 +316,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
 
 try {
+// 创建访问控制管理器实例
 const atManager = abilityAccessCtrl.createAtManager();
 let CLI_DEMO: abilityAccessCtrl.CliInfo = {
     cliName: 'ohos-timer',
     subCliName: '',
 };
+// 定义授权信息列表
 const authInfoList: Array<abilityAccessCtrl.CliAuthInfo> = [{
     cliInfo: CLI_DEMO,
     permissionNames: ['ohos.permission.APPROXIMATELY_LOCATION', "ohos.permission.LOCATION"],
@@ -325,6 +330,7 @@ const authInfoList: Array<abilityAccessCtrl.CliAuthInfo> = [{
 }];
 let tokenId = rpc.IPCSkeleton.getCallingTokenId();
 let agentId : string = '1001';
+// 生成CLI授权结果
 atManager.generateCliAuthResult(tokenId, agentId, authInfoList).then(async (result) => {
     console.info(`generateCliAuthResult result=${JSON.stringify(result)}`);
 
@@ -334,6 +340,7 @@ atManager.generateCliAuthResult(tokenId, agentId, authInfoList).then(async (resu
     }
     let subCommand: string = '';
     let challenge: string = result.authResults[0];
+    // 执行CLI命令
     let curSessionInfo: cliManager.CliSessionInfo = await cliManager.execTool(command, subCommand, curArgs, challenge);
     console.info(`execTool result=${JSON.stringify(curSessionInfo)}`);
 }).catch((error: BusinessError) => {
@@ -396,6 +403,7 @@ import { cliManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sessionId = 'example_session_id';
+// 定义CLI工具会话事件回调
 let callback: common.ToolEventCallback = {
   onEvent: (event: common.CliToolEvent) => {
     console.info('subscribeSession event type: ' + event.toolEventType + ', data: ' + event.data);
@@ -403,6 +411,7 @@ let callback: common.ToolEventCallback = {
 };
 
 try {
+  // 订阅指定会话的事件
   cliManager.subscribeSession(sessionId, callback).then(() => {
     console.info('subscribeSession success.');
   }).catch((error: BusinessError) => {
@@ -464,6 +473,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let sessionId = 'example_session_id';
 try {
+  // 清除指定会话
   cliManager.clearSession(sessionId).then(() => {
     console.info('clearSession success.');
   }).catch((error: BusinessError) => {
@@ -525,6 +535,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let sessionId = 'example_session_id';
 try {
+  // 查询指定会话的状态和执行结果
   cliManager.querySession(sessionId).then((sessionInfo) => {
     console.info('querySession success, status: ' + sessionInfo.status);
   }).catch((error: BusinessError) => {
@@ -595,7 +606,7 @@ execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise\<CliSessionInfo\>
 | 201 | Permission denied. |
 | 202 | Not system application. |
 | 35600031 | Maximum number of processes has been reached. |
-| 35600050  | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
+| 35600050  | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
 
@@ -673,7 +684,7 @@ sendMessage(sessionId: string, message: string): Promise\<void>
 | 参数名    | 类型   | 必填 | 说明                                  |
 | --------- | ------ | ---- | ------------------------------------- |
 | sessionId | string | 是   | 目标CLI工具进程的会话ID。             |
-| message   | string | 是   | 要发送的消息，最大长度为10240。超过最大长度时抛出错误码401。 |
+| message   | string | 是   | 要发送的消息，最大长度为10240字符。超过最大长度时抛出错误码401。 |
 
 **返回值：**
 
@@ -702,6 +713,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let sessionId = 'example_session_id';
 let message = 'example message';
 try {
+  // 向指定会话发送消息
   cliManager.sendMessage(sessionId, message).then(() => {
     console.info('sendMessage success.');
   }).catch((error: BusinessError) => {

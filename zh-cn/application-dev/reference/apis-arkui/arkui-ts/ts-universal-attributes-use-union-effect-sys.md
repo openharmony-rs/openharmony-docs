@@ -34,7 +34,7 @@ useUnionEffect(value: boolean | undefined): T;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | boolean \| undefined | 是 | 表示是否使用祖先组件UnionEffectContainer的融合效果。<br/>useUnionEffect为true时，当前组件使用祖先组件UnionEffectContainer的融合效果，在祖先组件UnionEffectContainer计算形状时会作为UnionEffectContainer的一部分。<br/>useUnionEffect为false时，当前组件不使用祖先组件UnionEffectContainer的融合效果。<br/>设置为undefined时恢复为不使用祖先组件UnionEffectContainer的融合效果。|
+| value | boolean \| undefined | 是 | 表示是否使用祖先组件UnionEffectContainer的融合效果。<br/>取值为true时，当前组件使用祖先组件UnionEffectContainer的融合效果，在祖先组件UnionEffectContainer计算形状时会作为UnionEffectContainer的一部分。<br/>取值为false时，当前组件不使用祖先组件UnionEffectContainer的融合效果。<br/>设置为undefined时恢复为不使用祖先组件UnionEffectContainer的融合效果。|
 
 **返回值：**
 

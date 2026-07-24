@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 最近访问列表常用于书架、文档、搜索记录等场景。每次用户打开一个条目后，将该条目更新为最近访问；当列表超过容量时，移除最久未访问的条目。
 

@@ -4656,6 +4656,8 @@ isWlanSupported(): boolean
 
 查询是否可用Wi-Fi网络。
 
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。

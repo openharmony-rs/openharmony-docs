@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ANI场景下的多线程协作通常有两种方式：自行创建native线程并附加到ArkTS虚拟机，或在ArkTS侧使用语言层并发API（如`taskpool`）调度native调用。选择哪种方式取决于线程模型由谁管理：已有C++线程、系统回调或长期后台任务更适合第一种；只是希望把耗时native计算放到后台执行时，优先使用第二种。
 

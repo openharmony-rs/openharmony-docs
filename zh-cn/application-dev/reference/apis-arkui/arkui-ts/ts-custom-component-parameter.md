@@ -14,7 +14,7 @@
 
 ## ComponentOptions
 
-自定义组件参数，用于配置是否支持组件冻结和全局复用池。
+自定义组件参数，用于配置是否支持组件冻结和全局复用池，适用于需要优化自定义组件性能表现和提升组件复用效率的场景。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +28,7 @@
 
 ## ReusableOptions
 
-可复用自定义组件的参数，用于配置内存优化策略。
+可复用自定义组件的参数，用于配置内存优化策略，适用于需要降低可复用自定义组件内存使用量的场景。
 
 **起始版本：** 26.0.0
 
@@ -38,7 +38,7 @@
 
 | 名称 | 类型 | 只读 | 可选     | 说明   |
 | ------ | ---- | ---- | ------------ | ------------ |
-| memoryOptimizationStrategy | [ReusableMemOptStrategy](#reusablememoptstrategy) | 否   | 是   | 可复用自定义组件的内存优化策略。该参数在创建可复用自定义组件时设定，不支持动态修改。<br>默认值：[DEFAULT](#reusablememoptstrategy) |
+| memoryOptimizationStrategy | [ReusableMemOptStrategy](#reusablememoptstrategy) | 否   | 是   | 可复用自定义组件的内存优化策略。该参数在创建可复用自定义组件时设定，不支持动态修改。传入[ENABLE_AUTO_CACHE_OPTIMIZATION](#reusablememoptstrategy)时可启用自动内存优化，在应用退后台、组件不可见或整机低内存等场景下自动释放复用池中的组件；不传入时使用默认值[DEFAULT](#reusablememoptstrategy)（无内存优化策略）。 |
 
 ## ReusableMemOptStrategy
 
@@ -109,5 +109,5 @@ type ReusePoolOwnership = 'shared' | 'perInstance'
 
 | 类型            | 说明                  |
 |-------------    | ------------------- |
-| 'shared'        | 拥有@Component/@ComponentV2类的所有实例共享单个复用池实例。适用于多个同类型组件实例间需要复用相同资源的场景，可最大化复用池利用率，减少内存占用。 |
-| 'perInstance'   | 拥有@Component/@ComponentV2的每个实例都有自己的复用池实例。适用于需要隔离各组件实例复用资源的场景，避免不同实例间的复用资源相互影响。 |
+| 'shared'        | @Component/@ComponentV2类的所有实例共享同一个复用池实例。适用于多个同类型组件实例间需要复用相同资源的场景，可最大化复用池利用率，减少内存占用。 |
+| 'perInstance'   | @Component/@ComponentV2的每个实例拥有独立的复用池实例。适用于需要隔离各组件实例复用资源的场景，避免不同实例间的复用资源相互影响。 |

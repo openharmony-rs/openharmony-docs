@@ -94,7 +94,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上调用会返回错误码801，在其他设备类型中可正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回错误码801，在其他设备类型中可正常调用。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -163,7 +163,7 @@ start():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，企业管控设备调用会返回错误码32390300，其他设备类型可正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，企业管控设备调用会返回错误码32390300，其他设备类型可正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -210,7 +210,7 @@ stop():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -257,7 +257,7 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -304,7 +304,7 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -365,7 +365,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -428,7 +428,7 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -491,7 +491,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -554,7 +554,7 @@ onConnectionAccepted(callback: Callback&lt;Connection&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -615,7 +615,7 @@ offConnectionAccepted(callback?: Callback&lt;Connection&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -677,7 +677,7 @@ onServerStopped(callback: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -738,7 +738,7 @@ offServerStopped(callback?: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -793,7 +793,7 @@ try {
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -825,7 +825,7 @@ connect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用返回错误码32390300，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用返回错误码32390300，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -880,7 +880,7 @@ disconnect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -932,7 +932,7 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -984,7 +984,7 @@ getPeerDeviceId():&nbsp;string
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1037,7 +1037,7 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1110,7 +1110,7 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1174,7 +1174,7 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offConnectResult](#offconnectresult-1)。
 
@@ -1234,7 +1234,7 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1293,7 +1293,7 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1355,7 +1355,7 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1415,7 +1415,7 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1480,7 +1480,7 @@ onConnectResult(callback: Callback&lt;ConnectResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1541,7 +1541,7 @@ offConnectResult(callback?: Callback&lt;ConnectResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1602,7 +1602,7 @@ onDisconnected(callback: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1660,7 +1660,7 @@ offDisconnected(callback?: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1721,7 +1721,7 @@ onDataReceived(callback: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1779,7 +1779,7 @@ offDataReceived(callback?: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

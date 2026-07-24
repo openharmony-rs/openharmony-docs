@@ -26,13 +26,13 @@
 
 | 认证类型 | 支持切换业务自定义认证方式。<br>（√表示支持，x表示不支持。）| 
 | -------- | -------- |
-| 锁屏口令认证 | × | 
+| 锁屏口令认证 | x | 
 | 人脸认证 | √ | 
 | 指纹认证 | √ | 
 | 人脸+指纹<sup>18+</sup> | √ | 
-| 人脸+锁屏口令认证 | × | 
-| 指纹+锁屏口令认证 | × | 
-| 人脸+指纹+锁屏口令认证 | × | 
+| 人脸+锁屏口令认证 | x | 
+| 指纹+锁屏口令认证 | x | 
+| 人脸+指纹+锁屏口令认证 | x | 
 
 ## 开发示例
 
@@ -155,6 +155,6 @@ applyingCustomAuthentication() {
 
 ## 示例代码
 
-  - [切换自定义认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
-  - [切换自定义认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
+  - [切换自定义认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - [切换自定义认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
   

@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## 概述
 
-定义ArkUI在Native侧可以设置的XComponent组件相关属性集合。
+定义ArkUI在Native侧可以设置或获取的XComponent组件相关属性集合。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ enum ArkUI_NodeAttributeType
 NODE_XCOMPONENT_ID = MAX_NODE_SCOPE_NUM * ARKUI_NODE_XCOMPONENT = 12000
 ```
 
-XComponent组件ID属性，支持属性设置和属性获取接口。<br>
+XComponent组件的ID，支持属性设置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -35,13 +35,13 @@ XComponent组件ID属性，支持属性设置和属性获取接口。<br>
 
 | 参数项 | 描述 |
 | -- | -- |
-| .string | ID的内容。 |
+| .string | XComponent组件的ID内容，用于唯一标识该组件。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .string | ID的内容。 |
+| .string | XComponent组件的ID内容，用于唯一标识该组件。 |
 
 ## NODE_XCOMPONENT_TYPE
 
@@ -60,7 +60,7 @@ XComponent组件的类型需要在组件创建时通过[ArkUI_NodeType](capi-nat
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | XComponent组件的类型，参数类型为[ArkUI_XComponentType](capi-native-type-h.md#arkui_xcomponenttype)。 |
+| .value[0].i32 | XComponent组件的类型，参数类型为[ArkUI_XComponentType](capi-native-type-h.md#arkui_xcomponenttype)，具体枚举值及其与数字的对应关系请参见该枚举定义。 |
 
 ## NODE_XCOMPONENT_SURFACE_SIZE
 
@@ -68,8 +68,8 @@ XComponent组件的类型需要在组件创建时通过[ArkUI_NodeType](capi-nat
 NODE_XCOMPONENT_SURFACE_SIZE = 12002
 ```
 
-XComponent组件的宽高，仅支持属性获取接口。<br>
-使用[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)接口尝试修改XComponent组件的宽高时设置不会生效。<br>
+XComponent组件所持有的Surface的宽高，仅支持属性获取接口。<br>
+使用[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)接口尝试修改Surface的宽高时，该设置不会生效。<br>
 作为属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -81,14 +81,13 @@ XComponent组件的宽高，仅支持属性获取接口。<br>
 | .value[0].u32 | 宽度数值，单位为px。 |
 | .value[1].u32 | 高度数值，单位为px。 |
 
-
 ## NODE_XCOMPONENT_SURFACE_RECT
 
 ```c
 NODE_XCOMPONENT_SURFACE_RECT = 12003
 ```
 
-设置XComponent组件持有Surface的显示区域，支持属性设置和属性获取接口。<br>
+XComponent组件所持有的Surface显示区域，支持属性设置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 18
@@ -99,8 +98,8 @@ NODE_XCOMPONENT_SURFACE_RECT = 12003
 | -- | -- |
 | .value[0].i32 | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位为px。 |
 | .value[1].i32 | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位为px。 |
-| .value[2].i32 | Surface显示区域的宽度，单位为px。 |
-| .value[3].i32 | Surface显示区域的高度，单位为px。 |
+| .value[2].i32 | Surface显示区域的宽度，单位为px，取值必须为正整数。传入0或负数时设置不生效。 |
+| .value[3].i32 | Surface显示区域的高度，单位为px，取值必须为正整数。传入0或负数时设置不生效。 |
 
 **返回：**
 
@@ -108,7 +107,7 @@ NODE_XCOMPONENT_SURFACE_RECT = 12003
 | -- | -- |
 | .value[0].i32 | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位为px。 |
 | .value[1].i32 | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位为px。 |
-| .value[2].i32 | Surface显示区域的宽度，单位为px。 |
+| .value[2].i32 | Surface显示区域的宽度，取值应为非负整数，单位为px。 |
 | .value[3].i32 | Surface显示区域的高度，单位为px。 |
 
 ## NODE_XCOMPONENT_ENABLE_ANALYZER
@@ -117,7 +116,7 @@ NODE_XCOMPONENT_SURFACE_RECT = 12003
 NODE_XCOMPONENT_ENABLE_ANALYZER = 12004
 ```
 
-设置XComponent组件是否支持图像分析，支持属性设置和属性获取接口。<br>
+XComponent组件是否支持图像分析的属性，支持属性设置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 18
@@ -126,7 +125,7 @@ NODE_XCOMPONENT_ENABLE_ANALYZER = 12004
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 是否支持图像分析，`1`表示支持图像分析，`0`表示不支持图像分析，默认值：`0`。 |
+| .value[0].i32 | 是否支持图像分析，`1`表示支持图像分析，`0`表示不支持图像分析，默认值：`0`。传入非0和非1的值时按`0`处理。 |
 
 **返回：**
 
