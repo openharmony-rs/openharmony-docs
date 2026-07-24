@@ -805,7 +805,7 @@ on(type: 'callingDisplayDidChange', callback: Callback\<number>): void
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
-| -------- | ---------------------------------------------- | ---- |
+| -------- | ---------------------------------------------- |
 | 801 | capability not supported. |
 
 **示例：**
@@ -2903,7 +2903,7 @@ getSystemPanelCurrentInsets(displayId: number): Promise&lt;SystemPanelInsets&gt;
 以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
 
 | 错误码ID | 错误信息 |
-| -------- | ------------------------------------------------------- | ---- |
+| -------- | ------------------------------------------------------- |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. Possible causes: 1. Current panel's type is not SOFT_KEYBOARD.  2. Panel's flag is not FLG_FIXED or FLG_FLOATING. |
 | 12800022 | invalid displayId. |
