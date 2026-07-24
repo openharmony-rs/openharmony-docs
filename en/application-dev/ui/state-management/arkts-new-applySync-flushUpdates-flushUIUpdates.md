@@ -347,7 +347,7 @@ import { UIUtils } from '@kit.ArkUI';
 
 ### Animation Scenario
 
-The asynchronous dirty data marking logic of the state management V2 conflicts with the logic for animateTo to immediately refresh dirty nodes. As a result, no animation is displayed when animateTo is triggered in @Monitor. The expected effect can be achieved by using the applySync API to synchronize the changes of status variables. The following is an example:
+The asynchronous dirty data marking logic of the state management V2 conflicts with the logic for animateTo to immediately refresh dirty nodes. As a result, no animation is displayed when animateTo is triggered in @Monitor. The expected effect can be achieved by using the applySync API to synchronize the changes of state variables. The following is an example:
 
 <!-- @[AnimateToUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/AnimateToUse.ets) -->
 

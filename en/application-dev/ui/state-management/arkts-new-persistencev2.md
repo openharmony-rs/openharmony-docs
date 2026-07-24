@@ -204,7 +204,7 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
      @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
        type: Array<ClassA>,
        defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
-       // Add defaultSubCreator to notify the status management framework of how to create an array item.
+       // Add defaultSubCreator to notify the state management framework of how to create an array item.
        // In addition, makeObserved needs to be added to the persistent data. Because the JSON object does not have the observation capability, automatic persistence will fail.
        defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
      })!;
@@ -432,7 +432,7 @@ struct Page1 {
   @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
     type: Array<ClassA>,
     defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
-    // Add defaultSubCreator to notify the status management framework of how to create an array item.
+    // Add defaultSubCreator to notify the state management framework of how to create an array item.
     // Add makeObserved to the persisted data. Otherwise, the persistence will fail.
     defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
   })!;
@@ -1122,7 +1122,7 @@ struct Page1 {
         .fontColor(Color.Red)
 
       // save() API.
-      // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
+      // Variables that are not decorated by @Trace can be refreshed only by using the state variable refresh.
       Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
@@ -1204,7 +1204,7 @@ struct Page1 {
         .fontColor(Color.Red)
 
       // save() API.
-      // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
+      // Variables that are not decorated by @Trace can be refreshed only by using the state variable refresh.
       Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
