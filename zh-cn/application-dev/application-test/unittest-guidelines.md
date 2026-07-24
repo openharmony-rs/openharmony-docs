@@ -105,8 +105,16 @@ export default function abilityTest() {
 import { describe, expect, it, TestType, Level, Size } from '../../../../hypium/index';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility, Want } from '@kit.AbilityKit';
-import { sleep } from '../Util.test'
+
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+
+async function sleep(count: int): Promise<int> {
+  return new Promise<int>((resolve, reject) => {
+    setTimeout(() => {
+      resolve(0)
+    }, count)
+  })
+}
 
 export default function abilityTest(): void {
   describe('ActsAbilityTest', (): void => {
@@ -125,7 +133,6 @@ export default function abilityTest(): void {
       // 获取设备上前台显示的页面并断言检查
       const ability: UIAbility = await delegator.getCurrentTopAbility();
       expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
-
     })
   })
 }
@@ -828,13 +835,10 @@ interface PromiseInfo {
 ```
 
 **ArkTS-Sta示例：**
-1. 示例中引入的promiseReject函数参数示例代码。
 <!-- @[assert_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/assertExampleTest/AssertExample.test.ets) -->
 
 ``` TypeScript
 import { describe, expect, it, Level } from '../../../../hypium/index';
-import { promiseReject } from '../Util.test'
-
 
 export default function exampleTest(): void {
   describe('ExampleTest', (): void => {
@@ -957,12 +961,12 @@ export default function exampleTest(): void {
     })
 
     it('assertPromiseIsRejectedTest', Level.LEVEL1, async () => {
-      let p: Promise<Error> = promiseReject('no');
+      let p: Promise<Error> = Promise.reject(new TypeError('no'));
       await expect(p).assertPromiseIsRejected();
     })
 
     it('assertPromiseIsRejectedWithTest', Level.LEVEL1, async () => {
-      let p: Promise<Error> = promiseReject('reject value')
+      let p: Promise<Error> = Promise.reject(new TypeError('reject value'));
       await expect(p).assertPromiseIsRejectedWith('reject value');
     })
 
@@ -1092,7 +1096,7 @@ export default function afterReturnTest() {
       let claser: ClassName = new ClassName();
       // 进行Mock操作，对ClassName类的method_1函数进行Mock
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望claser.method_1函数被Mock后, 以'testA'为入参时调用函数返回结果'1',以'testB''为入参时调用函数返回结果undefined
+      // 期望claser.method_1函数被Mock后, 以'testA'为入参时调用函数返回结果'1',以'testB'为入参时调用函数返回结果undefined
       when(mockfunc)('testA').afterReturn('1');
       when(mockfunc)('testB').afterReturnNothing();
       // 对Mock后的函数进行断言，看是否符合预期。分别传入参数'testA'和'testB'时，应该返回自定义的预期结果1和undefined
@@ -1374,7 +1378,7 @@ export default function afterThrowTest() {
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
       // 期望claser.method_1函数被Mock后, 以'test'为参数调用函数时抛出error xxx异常
       when(mockfunc)('test').afterThrow('error xxx');
-      // 执行Mock后的函数，捕捉异常并使用assertEqual对比msg否符合预期
+      // 执行Mock后的函数，捕捉异常并使用assertEqual对比msg是否符合预期
       try {
         claser.method_1('test');
       } catch (e) {
