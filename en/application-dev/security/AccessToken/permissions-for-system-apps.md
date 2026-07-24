@@ -6861,7 +6861,7 @@ Allows an application to manage clone preferences.
  	 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
  	 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.0
 
 ## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
 
