@@ -238,7 +238,7 @@ currentIndex: number
 customComponentType?: string
 ```
 
-自定义组件类型。与元素的[AccessibilityRoleType枚举说明](../../apis-arkui/arkts-components/arkts-arkui-accessibilityroletype-e.md)类型所对应。
+自定义组件类型。与元素的AccessibilityRoleType枚举说明类型所对应。
 
 **类型：** string
 

@@ -26,7 +26,7 @@ function getContext(): Context
 
 | 类型 | 说明 |
 | --- | --- |
-| [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 返回应用程序上下文。 |
+| Context | 返回应用程序上下文。 |
 
 **示例：**
 

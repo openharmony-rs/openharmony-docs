@@ -26,7 +26,7 @@ export function createPluginModuleContext(context: Context, pluginBundleName: st
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 表示应用上下文。 |
+| context | Context | 是 | 表示应用上下文。 |
 | pluginBundleName | string | 是 | 表示应用的插件包名。 |
 | pluginModuleName | string | 是 | 表示应用的插件模块名。 |
 

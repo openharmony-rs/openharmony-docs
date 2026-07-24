@@ -26,7 +26,7 @@ static create(options: AnimatorOptions): AnimatorResult
 > -  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [createAnimator](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator)来明确UI的执行上下文。
+> createAnimator来明确UI的执行上下文。
 
 **起始版本：** 9
 
@@ -60,7 +60,7 @@ static create(options: AnimatorOptions): AnimatorResult
 
 **示例：**
 
-推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)接口明确UI上下文。
+推荐通过使用UIContext中的createAnimator接口明确UI上下文。
 
 ```TypeScript
 import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';
@@ -117,7 +117,7 @@ static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 **示例：**
 
-推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)接口明确UI上下文。
+推荐通过使用UIContext中的createAnimator接口明确UI上下文。
 
 ```TypeScript
 import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';
@@ -159,7 +159,7 @@ static createAnimator(options: AnimatorOptions): AnimatorResult
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 import { Animator as animator } from '@kit.ArkUI';

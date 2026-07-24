@@ -454,7 +454,7 @@ Super resolution not enabled.
 
 **可能原因**
 
-若没有通过[PlaybackStrategy](./arkts-apis-media-i.md#playbackstrategy12)使能超分，则每次调用超分相关接口时会返回该错误码。
+若没有通过PlaybackStrategy使能超分，则每次调用超分相关接口时会返回该错误码。
 
 **处理步骤**
 

@@ -125,9 +125,9 @@ deviceId(deviceId: string): Query
 添加设备ID作为Key的前缀。
 > **说明：**  
 >  
-> 其中deviceId为[DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)中的  
+> 其中deviceId为DeviceBasicInfo中的  
 > networkId，通过调用  
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)  
+> deviceManager.getAvailableDeviceListSync  
 > 方法得到。  
 >  
 > deviceId具体获取方式请参考  

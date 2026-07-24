@@ -31,7 +31,7 @@ import { AdvancedDialogV2OnCheckedChange, LoadingDialogV2, AdvancedDialogV2Butto
 | 名称 | 说明 |
 | --- | --- |
 | [AdvancedDialogV2ButtonOptions](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2buttonoptions-i.md) | 用于初始化AdvancedDialogV2Button对象。 |
-| [PopoverDialogV2Options](arkts-arkui-arkui-advanced-dialogv2-popoverdialogv2options-i.md) | 跟手弹出框参数，用于设置弹出框内容、位置属性等。  继承自[CustomPopupOptions](../arkts-components/arkts-arkui-custompopupoptions-i.md)。 |
+| [PopoverDialogV2Options](arkts-arkui-arkui-advanced-dialogv2-popoverdialogv2options-i.md) | 跟手弹出框参数，用于设置弹出框内容、位置属性等。  继承自CustomPopupOptions。 |
 
 ### 类型
 

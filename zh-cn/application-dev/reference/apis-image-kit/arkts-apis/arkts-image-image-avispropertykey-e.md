@@ -3,7 +3,7 @@
 表示AVIS图片信息的枚举。
 > **说明：**  
 >  
-> 返回字段类型具体参考[AvisMetadata](../../../reference/apis-image-kit/arkts-apis-image-AvisMetadata.md)。
+> 返回字段类型具体参考AvisMetadata。
 
 **起始版本：** 26.0.0
 

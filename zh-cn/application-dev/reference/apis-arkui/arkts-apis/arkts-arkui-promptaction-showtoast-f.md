@@ -17,11 +17,11 @@ Creates and displays a toast.
 创建并显示即时反馈。
 > **说明：**  
 >  
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[showToast](arkts-apis-uicontext-promptaction.md#showtoast)替代。showToast需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用showToast可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。  
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用showToast替代。showToast需先通过UIContext中的getPromptAction方法获取PromptAction对象，然后通过该对象进行调用。且直接使用showToast可能导致UI上下文不明确的问题。  
 >  
-> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](arkts-apis-uicontext-promptaction.md)对象。  
+> - 从API version 10开始，可以通过使用UIContext中的getPromptAction方法获取当前UI上下文关联的PromptAction对象。  
 >  
-> - Toast样式单一，不支持内容的自定义，具体支持能力请参考[ShowToastOptions](#showtoastoptions)提供的接口。
+> - Toast样式单一，不支持内容的自定义，具体支持能力请参考ShowToastOptions提供的接口。
 
 **起始版本：** 9
 

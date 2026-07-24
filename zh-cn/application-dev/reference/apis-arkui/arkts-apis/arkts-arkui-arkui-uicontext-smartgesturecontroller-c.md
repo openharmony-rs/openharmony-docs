@@ -65,7 +65,7 @@ enableSmartTapAndSlideGestures(enabled: boolean): void
 >  
 > - 该接口仅影响智慧手势的敲一敲和划一划手势，不影响翻腕手势。  
 >  
-> - 关闭后，组件侧[smartGestureShortcut](../arkts-components/arkts-arkui-commonmethod-c.md#smartgestureshortcut)配置仍会保留，但不会响应智慧手势的敲一敲和划一划手势。
+> - 关闭后，组件侧smartGestureShortcut配置仍会保留，但不会响应智慧手势的敲一敲和划一划手势。
 
 **起始版本：** 26.0.0
 
@@ -117,7 +117,7 @@ registerMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitorCallback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;BaseGestureHandlingProposal, GestureHandlingResolution&gt; | 是 | 智慧手势监听回调。回调参数为系统给出的默认动作处理，返回值用于声明是否消费当前智慧手势以及是否替换默认动作处理。 |
+| monitorCallback | Callback&lt;BaseGestureHandlingProposal, GestureHandlingResolution&gt; | 是 | 智慧手势监听回调。回调参数为系统给出的默认动作处理，返回值用于声明是否消费当前智慧手势以及是否替换默认动作处理。 |
 
 ## requestSelected
 
@@ -129,9 +129,9 @@ requestSelected(id: string): void
 > **说明：**  
 >  
 > - 仅当目标组件满足以下全部条件时，请求才会生效：组件可以响应智慧手势，且组件在屏幕内可见，且组件绑定了  
-> [onClick](../arkts-components/arkts-arkui-commonmethod-c.md#onclick)或绑定了单击手势[TapGesture](arkts-arkui-gesture-con.md#tapgesture)。  
+> onClick或绑定了单击手势[TapGesture](arkts-arkui-gesture-con.md#tapgesture)。  
 >  
-> - 组件能否响应智慧手势由[smartGestureShortcut](../arkts-components/arkts-arkui-commonmethod-c.md#smartgestureshortcut)中的enabled决定。
+> - 组件能否响应智慧手势由smartGestureShortcut中的enabled决定。
 
 **起始版本：** 26.0.0
 
@@ -147,7 +147,7 @@ requestSelected(id: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 组件的[id](../arkts-components/arkts-arkui-commonmethod-c.md#id)。 |
+| id | string | 是 | 组件的id。 |
 
 ## unregisterMonitor
 
@@ -171,5 +171,5 @@ unregisterMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, Gesture
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitorCallback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;BaseGestureHandlingProposal, GestureHandlingResolution&gt; | 是 | 需要注销的智慧手势监听回调。 |
+| monitorCallback | Callback&lt;BaseGestureHandlingProposal, GestureHandlingResolution&gt; | 是 | 需要注销的智慧手势监听回调。 |
 

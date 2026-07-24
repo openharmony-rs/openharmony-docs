@@ -78,7 +78,7 @@ function write(eventName: string, eventType: EventType, keyValues: object, callb
 | eventName | string | 是 | 事件名称。 |
 | eventType | [EventType](../../apis-arkts/arkts-apis/arkts-arkts-xml-eventtype-e.md) | 是 | 事件类型。 |
 | keyValues | object | 是 | 事件参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 事件回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 事件回调函数。 |
 
 **示例：**
 

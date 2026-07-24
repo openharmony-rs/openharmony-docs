@@ -1,6 +1,6 @@
 # @ohos.bundle.bundleManager
 
-本模块提供应用信息的查询能力，支持应用包信息[BundleInfo](bundleManager/BundleInfo)、应用程序信息[ApplicationInfo](bundleManager/ApplicationInfo)、UIAbility组件信息[AbilityInfo](bundleManager/AbilityInfo)、ExtensionAbility组件信息[ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)等信息的查询。
+本模块提供应用信息的查询能力，支持应用包信息BundleInfo、应用程序信息ApplicationInfo、UIAbility组件信息AbilityInfo、ExtensionAbility组件信息[ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)等信息的查询。
 
 **起始版本：** 9
 
@@ -27,7 +27,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | [getAppCloneIdentity](arkts-ability-bundlemanager-getappcloneidentity-f.md#getappcloneidentity) | 根据uid查询分身应用的包名和分身索引。使用Promise异步回调。 |
 | [getApplicationLabel](arkts-ability-bundlemanager-getapplicationlabel-f.md#getapplicationlabel) | 获取指定包名和分身索引的应用名称。使用Promise异步回调。 |
 | [getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo) | 根据给定的bundleName和bundleFlags获取BundleInfo。使用callback异步回调。  获取调用方自身的信息时不需要权限。 |
-| [getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-1) | 根据给定的bundleName、bundleFlags和userId获取[BundleInfo](bundleManager/BundleInfo)。使用callback异步回调。  获取调用方自身信息时不需要权限。 |
+| [getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-1) | 根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用callback异步回调。  获取调用方自身信息时不需要权限。 |
 | [getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-2) | 根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用Promise异步回调。  获取调用方自身的信息时不需要权限。 |
 | [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself) | 根据给定的bundleFlags获取当前应用的BundleInfo。使用Promise异步回调。 |
 | [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1) | 根据给定的bundleFlags获取当前应用的BundleInfo。使用callback异步回调。 |
@@ -38,7 +38,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | [getBundleNameByUid](arkts-ability-bundlemanager-getbundlenamebyuid-f.md#getbundlenamebyuid-1) | 根据给定的uid获取对应应用的bundleName。使用Promise异步回调。 |
 | [getBundleNameByUidSync](arkts-ability-bundlemanager-getbundlenamebyuidsync-f.md#getbundlenamebyuidsync) | 以同步方法根据给定的uid获取对应应用的bundleName。 |
 | [getInstalledBundleList](arkts-ability-bundlemanager-getinstalledbundlelist-f.md#getinstalledbundlelist) | 根据给定的bundleFlags获取系统中所有的BundleInfo。使用Promise异步回调。 |
-| [getLaunchWant](arkts-ability-bundlemanager-getlaunchwant-f.md#getlaunchwant) | 获取本应用[入口UIAbility](../../../quick-start/application-package-glossary.md#uiability)的Want参数。 |
+| [getLaunchWant](arkts-ability-bundlemanager-getlaunchwant-f.md#getlaunchwant) | 获取本应用入口UIAbility的Want参数。 |
 | [getPluginBundlePathForSelf](arkts-ability-bundlemanager-getpluginbundlepathforself-f.md#getpluginbundlepathforself) | 获取指定插件在当前[应用沙箱](../../../file-management/app-sandbox-directory.md)内的安装路径。 |
 | [getProfileByAbility](arkts-ability-bundlemanager-getprofilebyability-f.md#getprofilebyability) | 根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。 > 说明：  > > 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)的相  > 关接口，来获取引用的资源。 |
 | [getProfileByAbility](arkts-ability-bundlemanager-getprofilebyability-f.md#getprofilebyability-1) | 根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。 > 说明：  > > 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)的相  > 关接口，来获取引用的资源。 |

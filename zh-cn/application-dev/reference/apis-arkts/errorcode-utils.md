@@ -64,7 +64,7 @@ Worker initialization failed.
 **处理步骤**
 
 1. 检查Worker的数量是否超出64个，如果超出，及时销毁空闲的Worker。
-2. 如果设置[WorkerOptions](js-apis-worker.md#workeroptions)，检查参数类型及其合法性。
+2. 如果设置WorkerOptions，检查参数类型及其合法性。
 
 ## 10200004 Worker处于非运行状态
 
@@ -100,7 +100,7 @@ The called API is not supported in the worker thread.
 
 **处理步骤**
 
-确保使用Worker线程中支持的API，支持的API范围请参考[Worker](js-apis-worker.md)接口说明。
+确保使用Worker线程中支持的API，支持的API范围请参考Worker接口说明。
 
 ## 10200006 Worker传输信息序列化异常
 
@@ -136,7 +136,7 @@ Worker文件路径格式不符合规范，或路径指向的文件不存在。
 
 **处理步骤**
 
-确保Worker文件路径符合创建Worker对象的规范，参见API参考中[constructor<sup>9+</sup>](js-apis-worker.md#constructor9)接口的示例。
+确保Worker文件路径符合创建Worker对象的规范，参见API参考中constructor<sup>9+</sup>接口的示例。
 
 ## 10200009 Buffer的长度错误
 
@@ -265,7 +265,7 @@ The task to cancel does not exist.
 
 **处理步骤**
 
-取消任务前，确保任务已被[taskpool.execute](js-apis-taskpool.md#taskpoolexecute-1)调用进入任务池且任务未执行完成。无法保证时，需要捕获异常。
+取消任务前，确保任务已被taskpool.execute调用进入任务池且任务未执行完成。无法保证时，需要捕获异常。
 
 ## 10200016 取消正在执行的任务错误
 
@@ -283,7 +283,7 @@ The task to cancel is being executed.
 
 **处理步骤**
 
-取消任务前，确保任务已被[taskpool.execute](js-apis-taskpool.md#taskpoolexecute-1)调用进入任务池且任务未开始执行。无法保证时，需要捕获异常。
+取消任务前，确保任务已被taskpool.execute调用进入任务池且任务未开始执行。无法保证时，需要捕获异常。
 
 ## 10200017 删除不存在的元素错误
 
@@ -319,7 +319,7 @@ The task group to cancel does not exist.
 
 **处理步骤**
 
-取消任务组前，确保任务组已被[taskpool.execute](js-apis-taskpool.md#taskpoolexecute10)调用进入任务池且任务组内存在任务未执行完成。无法保证时，需要捕获异常。
+取消任务组前，确保任务组已被taskpool.execute调用进入任务池且任务组内存在任务未执行完成。无法保证时，需要捕获异常。
 
 ## 10200019 调用未注册对象的方法错误
 
@@ -387,7 +387,7 @@ The function is not called in the TaskPool thread.
 
 **可能原因**
 
-在UI主线程中或在非taskpool的其他线程中调用该函数，而非通过[taskpool.execute](js-apis-taskpool.md#taskpoolexecute-1)调用。
+在UI主线程中或在非taskpool的其他线程中调用该函数，而非通过taskpool.execute调用。
 
 **处理步骤**
 
@@ -445,7 +445,7 @@ dependent task not allowed.
 
 **处理步骤**
 
-排查找到串行队列里使用[addDependency()](js-apis-taskpool.md#adddependency11)添加依赖的任务，使用[removeDependency()](js-apis-taskpool.md#removedependency11)删除此任务的依赖。无法保证时，需要捕获异常。
+排查找到串行队列里使用addDependency()添加依赖的任务，使用removeDependency()删除此任务的依赖。无法保证时，需要捕获异常。
 
 ## 10200026 当前任务存在循环依赖
 
@@ -463,7 +463,7 @@ There is a circular dependency.
 
 **处理步骤**
 
-排查找到循环依赖关系的相关任务，根据实际情况使用[removeDependency()](js-apis-taskpool.md#removedependency11)删除不需要的依赖关系，确保所有任务中不存在循环依赖关系。无法保证时，需要捕获异常。
+排查找到循环依赖关系的相关任务，根据实际情况使用removeDependency()删除不需要的依赖关系，确保所有任务中不存在循环依赖关系。无法保证时，需要捕获异常。
 
 ## 10200027 依赖关系不存在
 
@@ -477,11 +477,11 @@ The dependency does not exist.
 
 **可能原因**
 
-使用[removeDependency()](js-apis-taskpool.md#removedependency11)删除任务依赖时，依赖关系不存在。
+使用removeDependency()删除任务依赖时，依赖关系不存在。
 
 **处理步骤**
 
-调用时，确保在删除依赖之前，已经使用[addDependency()](js-apis-taskpool.md#adddependency11)成功添加依赖。无法保证时，需要捕获异常。
+调用时，确保在删除依赖之前，已经使用addDependency()成功添加依赖。无法保证时，需要捕获异常。
 
 ## 10200028 延时时间小于零
 
@@ -495,11 +495,11 @@ The delayTime is less than zero.
 
 **可能原因**
 
-给定参数[delayTime](js-apis-taskpool.md#taskpoolexecutedelayed11)的值小于零（单位：ms）。
+给定参数delayTime的值小于零（单位：ms）。
 
 **处理步骤**
 
-调用时，确保给定参数[delayTime](js-apis-taskpool.md#taskpoolexecutedelayed11)的值不小于零（单位：ms）。无法保证时，需要捕获异常。
+调用时，确保给定参数delayTime的值不小于零（单位：ms）。无法保证时，需要捕获异常。
 
 ## 10200029 无法将ArrayBuffer同时设置为transferList和cloneList
 
@@ -513,7 +513,7 @@ An ArrayBuffer cannot be set as both a transfer list and a clone list.
 
 **可能原因**
 
-在传输共享列表时，同一个ArrayBuffer既是[setTransferList](js-apis-taskpool.md#settransferlist10)的参数，又是[setCloneList](js-apis-taskpool.md#setclonelist11)的参数。
+在传输共享列表时，同一个ArrayBuffer既是setTransferList的参数，又是setCloneList的参数。
 
 **处理步骤**
 
@@ -531,11 +531,11 @@ The lock does not exist.
 
 **可能原因**
 
-调用[lockAsync](arkts-apis-arkts-utils-locks.md#lockasync)等异步锁函数时，使用了一个不正确的锁名称作为参数。
+调用lockAsync等异步锁函数时，使用了一个不正确的锁名称作为参数。
 
 **处理步骤**
 
-确保在调用接口前，已通过[ArkTSUtils.locks](arkts-apis-arkts-utils-locks.md)正确创建并注册了对应名称的异步锁实例，使用正确的锁名称进行调用。
+确保在调用接口前，已通过ArkTSUtils.locks正确创建并注册了对应名称的异步锁实例，使用正确的锁名称进行调用。
 
 ## 10200031 lockAsync超时
 
@@ -545,7 +545,7 @@ Timeout exceeded.
 
 **错误描述**
 
-[lockAsync](arkts-apis-arkts-utils-locks.md#lockasync)函数在指定时间内无法获取锁。
+lockAsync函数在指定时间内无法获取锁。
 
 **可能原因**
 
@@ -553,7 +553,7 @@ Timeout exceeded.
 
 **处理步骤**
 
-检查锁之间是否存在循环依赖。尝试在[lockAsync](arkts-apis-arkts-utils-locks.md#lockasync)调用中添加catch语句，并查看错误信息。错误信息将包含有关现有异步锁实例和可能的死锁警告的信息。
+检查锁之间是否存在循环依赖。尝试在lockAsync调用中添加catch语句，并查看错误信息。错误信息将包含有关现有异步锁实例和可能的死锁警告的信息。
 
 ## 10200201 Concurrent修改错误
 
@@ -585,11 +585,11 @@ The executed task does not support the registration of listeners.
 
 **可能原因**
 
-未通过回调注册接口注册回调函数，或在[taskpool.execute](js-apis-taskpool.md#taskpoolexecute-1)执行任务之后才注册回调函数。
+未通过回调注册接口注册回调函数，或在taskpool.execute执行任务之后才注册回调函数。
 
 **处理步骤**
 
-确保在[taskpool.execute](js-apis-taskpool.md#taskpoolexecute-1)执行任务之前，通过回调注册接口注册回调函数。监听接口参见[TaskPool](js-apis-taskpool.md)参考文档。
+确保在taskpool.execute执行任务之前，通过回调注册接口注册回调函数。监听接口参见TaskPool参考文档。
 
 ## 10200035 doWrite接口未实现
 
@@ -603,7 +603,7 @@ doWrite接口未实现。
 
 **可能原因**
 
-继承[Writable](js-apis-stream.md#writable)类，未实现[doWrite](js-apis-stream.md#dowrite)接口。
+继承Writable类，未实现doWrite接口。
 
 **处理步骤**
 
@@ -621,7 +621,7 @@ The stream has been ended.
 
 **可能原因**
 
-调用[end](js-apis-stream.md#end)接口之后仍进行数据写操作。
+调用end接口之后仍进行数据写操作。
 
 **处理步骤**
 
@@ -639,11 +639,11 @@ The callback is invoked multiple times consecutively.
 
 **可能原因**
 
-实现[doWrite](js-apis-stream.md#dowrite)接口，并且在一次写入时多次调用callback。
+实现doWrite接口，并且在一次写入时多次调用callback。
 
 **处理步骤**
 
-检查[doWrite](js-apis-stream.md#dowrite)接口实现，排除一次写入多次调用callback的情况。
+检查doWrite接口实现，排除一次写入多次调用callback的情况。
 
 ## 10200038 doRead接口未实现
 
@@ -657,7 +657,7 @@ doRead接口未实现。
 
 **可能原因**
 
-继承[Readable](js-apis-stream.md#readable)类，未实现[doRead](js-apis-stream.md#doread)接口。
+继承Readable类，未实现doRead接口。
 
 **处理步骤**
 
@@ -675,7 +675,7 @@ doTransform接口未实现。
 
 **可能原因**
 
-继承[Transform](js-apis-stream.md#transform)类，未实现[doTransform](js-apis-stream.md#dotransform)接口。
+继承Transform类，未实现doTransform接口。
 
 **处理步骤**
 
@@ -693,7 +693,7 @@ The concurrent task has been executed and cannot be executed periodically.
 
 **可能原因**
 
-在调用[executePeriodically](../apis-arkts/js-apis-taskpool.md#taskpoolexecuteperiodically12)执行周期任务前，该任务已经执行。
+在调用executePeriodically执行周期任务前，该任务已经执行。
 
 **处理步骤**
 
@@ -711,7 +711,7 @@ The periodic task cannot be executed again.
 
 **可能原因**
 
-周期任务再次调用[execute](../apis-arkts/js-apis-taskpool.md#execute11)、[executeDelayed](../apis-arkts/js-apis-taskpool.md#taskpoolexecutedelayed11)、[addTask](../apis-arkts/js-apis-taskpool.md#addtask10-1)和[execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute-1)执行。
+周期任务再次调用execute、executeDelayed、addTask和execute执行。
 
 **处理步骤**
 
@@ -729,7 +729,7 @@ The periodic task cannot have a dependency.
 
 **可能原因**
 
-调用了[removeDependency](../apis-arkts/js-apis-taskpool.md#removedependency11)和[addDependency](js-apis-taskpool.md#adddependency11)接口给周期任务增加或移除依赖关系。
+调用了removeDependency和addDependency接口给周期任务增加或移除依赖关系。
 
 **处理步骤**
 
@@ -747,7 +747,7 @@ The asyncRunner task discarded.
 
 **可能原因**
 
-调用[asyncRunner.execute](../apis-arkts/js-apis-taskpool.md#execute18)执行task任务的数量超过等待任务列表容量时，最早入队的task任务就会被丢弃。
+调用asyncRunner.execute执行task任务的数量超过等待任务列表容量时，最早入队的task任务就会被丢弃。
 
 **处理步骤**
 
@@ -784,11 +784,11 @@ The task has been executed by AsyncRunner.
 
 **可能原因**
 
-异步队列任务调用了[removeDependency](../apis-arkts/js-apis-taskpool.md#removedependency11)或[addDependency](js-apis-taskpool.md#adddependency11)接口来添加或移除依赖关系。
+异步队列任务调用了removeDependency或addDependency接口来添加或移除依赖关系。
 
 **处理步骤**
 
-调用[removeDependency](../apis-arkts/js-apis-taskpool.md#removedependency11)或[addDependency](js-apis-taskpool.md#adddependency11)接口时，请确保对应任务不是异步队列任务。无法保证时，请注意捕获异常。
+调用removeDependency或addDependency接口时，请确保对应任务不是异步队列任务。无法保证时，请注意捕获异常。
 
 ## 10200057 任务无法被两种API执行
 
@@ -798,17 +798,17 @@ The task cannot be executed by two APIs.
 
 **错误描述**
 
-异步队列任务只能被[asyncRunner.execute](../apis-arkts/js-apis-taskpool.md#execute18)接口执行，不能被其他API执行；非异步队列任务，不能被[asyncRunner.execute](../apis-arkts/js-apis-taskpool.md#execute18)接口执行。
+异步队列任务只能被asyncRunner.execute接口执行，不能被其他API执行；非异步队列任务，不能被asyncRunner.execute接口执行。
 
 **可能原因**
 
-1. 异步任务再次调用[sequenceRunner.execute](../apis-arkts/js-apis-taskpool.md#execute11)、[executeDelayed](../apis-arkts/js-apis-taskpool.md#taskpoolexecutedelayed11)、[addTask](../apis-arkts/js-apis-taskpool.md#addtask10-1)、[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute-1)、[asyncRunner.execute](../apis-arkts/js-apis-taskpool.md#execute18)、[executePeriodically](../apis-arkts/js-apis-taskpool.md#taskpoolexecuteperiodically12)或[addDependency](js-apis-taskpool.md#adddependency11)执行。
-2. 已经被执行过的任务再次调用异步队列的[execute](../apis-arkts/js-apis-taskpool.md#execute18)执行。
+1. 异步任务再次调用sequenceRunner.execute、executeDelayed、addTask、taskpool.execute、asyncRunner.execute、executePeriodically或addDependency执行。
+2. 已经被执行过的任务再次调用异步队列的execute执行。
 
 **处理步骤**
 
 1. 调用上述接口时，确保异步任务不再被执行。无法保证时，需要捕获异常。
-2. 调用上述接口时，确保已经被执行过的任务不再调用异步队列的[execute](../apis-arkts/js-apis-taskpool.md#execute18)执行。无法保证时，需要捕获异常。
+2. 调用上述接口时，确保已经被执行过的任务不再调用异步队列的execute执行。无法保证时，需要捕获异常。
 
 ## 10200058 任务执行超时
 
@@ -822,7 +822,7 @@ Task timed out.
 
 **可能原因**
 
-任务在被可以设置超时的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24)或可以设置超时的泛型接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-1)调用时，设置的超时时间（单位：ms）较短，而任务执行时间超过了设置的超时时间。
+任务在被可以设置超时的接口taskpool.execute或可以设置超时的泛型接口taskpool.execute调用时，设置的超时时间（单位：ms）较短，而任务执行时间超过了设置的超时时间。
 
 **处理步骤**
 
@@ -840,13 +840,13 @@ TaskGroup cannot be re-executed.
 
 **可能原因**
 
-1. 任务组在被可以设置超时配置的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)调用后，再次被该接口调用。
-2. 任务组在被可以设置超时配置的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)调用后，被只能设置优先级的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute10)调用。
+1. 任务组在被可以设置超时配置的接口taskpool.execute调用后，再次被该接口调用。
+2. 任务组在被可以设置超时配置的接口taskpool.execute调用后，被只能设置优先级的接口taskpool.execute调用。
 
 **处理步骤**
 
-1. 设置过超时的任务组不要再次使用可以设置超时配置的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)进行执行。无法保证时，需要捕获异常。
-2. 设置过超时的任务组不要使用只能设置优先级的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute10)进行执行。无法保证时，需要捕获异常。
+1. 设置过超时的任务组不要再次使用可以设置超时配置的接口taskpool.execute进行执行。无法保证时，需要捕获异常。
+2. 设置过超时的任务组不要使用只能设置优先级的接口taskpool.execute进行执行。无法保证时，需要捕获异常。
 
 ## 10200060 超出精度限制
 
@@ -860,11 +860,11 @@ Precision limit exceeded.
 
 **可能原因**
 
-使用Decimal提供的函数超出精度限制。有以下函数会抛出这个错误码：[pow](js-apis-arkts-decimal.md#pow)、[exp](js-apis-arkts-decimal.md#exp)、[log](js-apis-arkts-decimal.md#log)、[ln](js-apis-arkts-decimal.md#ln)、[acos](js-apis-arkts-decimal.md#acos)、[asin](js-apis-arkts-decimal.md#asin)、[atan](js-apis-arkts-decimal.md#atan)、[acosh](js-apis-arkts-decimal.md#acosh)、[asinh](js-apis-arkts-decimal.md#asinh)、[atanh](js-apis-arkts-decimal.md#atanh)、[log2](js-apis-arkts-decimal.md#log2)、[log10](js-apis-arkts-decimal.md#log10)、[atan2](js-apis-arkts-decimal.md#atan2)。
+使用Decimal提供的函数超出精度限制。有以下函数会抛出这个错误码：pow、exp、log、ln、acos、asin、atan、acosh、asinh、atanh、log2、log10、atan2。
 
 **处理步骤**
 
-使用[Decimal.set](js-apis-arkts-decimal.md#set)函数来设置有效精度。
+使用Decimal.set函数来设置有效精度。
 
 如：Decimal.set({ precision: 10 })，设置有效精度。
 
@@ -880,11 +880,11 @@ crypto unavailable.
 
 **可能原因**
 
-在Decimal中设置[crypto](js-apis-arkts-decimal.md#decimalconfig)或使用[Decimal.random](js-apis-arkts-decimal.md#random)函数时，使用加密方法失败。
+在Decimal中设置crypto或使用Decimal.random函数时，使用加密方法失败。
 
 **处理步骤**
 
-使用[Decimal.set](js-apis-arkts-decimal.md#set)函数来取消加密算法。
+使用Decimal.set函数来取消加密算法。
 
 如：Decimal.set({ crypto: false}), 取消加密算法。
 
@@ -1008,7 +1008,7 @@ TaskGroup timed out.
 
 **可能原因**
 
-[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)调用任务组时，设置的超时时间（单位：ms）较短，而任务组整体执行时间超过了设置的超时时间。
+taskpool.execute调用任务组时，设置的超时时间（单位：ms）较短，而任务组整体执行时间超过了设置的超时时间。
 
 **处理步骤**
 

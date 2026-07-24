@@ -28,7 +28,7 @@ import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventList
 | [close](arkts-corefile-file-fs-close-f.md#close) | 关闭文件或目录，使用promise异步回调。 |
 | [close](arkts-corefile-file-fs-close-f.md#close-1) | 关闭文件或目录，使用callback异步回调。 |
 | [closeSync](arkts-corefile-file-fs-closesync-f.md#closesync) | 以同步方法关闭文件或目录。 |
-| [connectDfs](arkts-corefile-file-fs-connectdfs-f.md#connectdfs) | 业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](../../../reference/apis-core-file-kit/js-apis-file-fs.md#onstatus12)通知应用。 |
+| [connectDfs](arkts-corefile-file-fs-connectdfs-f.md#connectdfs) | 业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内onStatus通知应用。 |
 | [copy](arkts-corefile-file-fs-copy-f.md#copy) | 拷贝文件或目录，使用promise异步回调。  支持跨设备拷贝。强制覆盖拷贝。入参支持文件或目录URI。  跨端拷贝时，最多同时存在10个拷贝任务；单次拷贝的文件数量不得超过500个。 |
 | [copy](arkts-corefile-file-fs-copy-f.md#copy-1) | 拷贝文件或者目录，使用callback异步回调。  支持跨设备拷贝。强制覆盖拷贝。入参支持文件或目录URI。  跨端拷贝时，最多同时存在10个拷贝任务；单次拷贝的文件数量不得超过500个。 |
 | [copy](arkts-corefile-file-fs-copy-f.md#copy-2) | 拷贝文件或者目录，使用callback异步回调。  支持跨设备拷贝。强制覆盖拷贝。入参支持文件或目录URI。  跨端拷贝时，最多同时存在10个拷贝任务；单次拷贝的文件数量不得超过500个。 |
@@ -146,7 +146,7 @@ import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventList
 | [AtomicFile](arkts-corefile-file-fs-atomicfile-c.md) | AtomicFile是一个用于对文件进行原子读写操作的类。  在写操作时，通过写入临时文件，并在写入成功后将其重命名到原始文件位置来确保写入文件的完整性；而在写入失败时删除临时文件，不修改原始文件内容。  使用者可以自行调用finishWrite或failWrite来完成文件内容的写入或回滚。 |
 | [ReadStream](arkts-corefile-file-fs-readstream-c.md) | 文件可读流，需要先通过fileIo.createReadStream方法来构建一个ReadStream实例。ReadStream继承自数据流基类stream.Readable。ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。 |
 | [TaskSignal](arkts-corefile-file-fs-tasksignal-c.md) | 拷贝中断信号。 |
-| [WriteStream](arkts-corefile-file-fs-writestream-c.md) | 文件可写流，需要先通过[fileIo.createWriteStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)。 |
+| [WriteStream](arkts-corefile-file-fs-writestream-c.md) | 文件可写流，需要先通过fileIo.createWriteStream方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)。 |
 
 ### 接口
 
@@ -170,8 +170,8 @@ import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventList
 | [ReadTextOptions](arkts-corefile-file-fs-readtextoptions-i.md) | 可选项类型，支持readText接口使用，ReadTextOptions继承至[ReadOptions](arkts-corefile-file-fs-readoptions-i.md)。 |
 | [ReaderIterator](arkts-corefile-file-fs-readeriterator-i.md) | 文件读取迭代器。在调用ReaderIterator的方法前，需要先通过readLines方法（同步或异步）来构建一个ReaderIterator实例。 |
 | [ReaderIteratorResult](arkts-corefile-file-fs-readeriteratorresult-i.md) | 文件读取迭代器返回结果，支持ReaderIterator接口使用。 |
-| [Stat](arkts-corefile-file-fs-stat-i.md) | 文件具体信息，在调用Stat的方法前，需要先通过[stat()](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat)方法（同步或异步）构建一个Stat实例。 |
-| [Stream](arkts-corefile-file-fs-stream-i.md) | 文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatestream)方法或者[fileIo.fdopenStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiofdopenstream)（同步或异步）来构建一个Stream实例。 |
+| [Stat](arkts-corefile-file-fs-stat-i.md) | 文件具体信息，在调用Stat的方法前，需要先通过stat()方法（同步或异步）构建一个Stat实例。 |
+| [Stream](arkts-corefile-file-fs-stream-i.md) | 文件流，在调用Stream的方法前，需要先通过fileIo.createStream方法或者fileIo.fdopenStream（同步或异步）来构建一个Stream实例。 |
 | [WatchEvent](arkts-corefile-file-fs-watchevent-i.md) | 事件类 |
 | [WatchEventListener](arkts-corefile-file-fs-watcheventlistener-i.md) | 事件监听类。 |
 | [Watcher](arkts-corefile-file-fs-watcher-i.md) | 文件目录变化监听对象。由createWatcher接口获得。 |

@@ -33,8 +33,8 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
-| y | number | 是 | 相对于组件的纵坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| x | number | 是 | 相对于组件的横坐标。<br/>单位：px |
+| y | number | 是 | 相对于组件的纵坐标。<br/>单位：px |
 
 **返回值：**
 
@@ -94,8 +94,8 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
-| y | number | 是 | 相对于组件的纵坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| x | number | 是 | 相对于组件的横坐标。<br/>单位：px |
+| y | number | 是 | 相对于组件的纵坐标。<br/>单位：px |
 
 **返回值：**
 

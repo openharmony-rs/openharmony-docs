@@ -20,7 +20,7 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 commands?: string
 ```
 
-绘制路径的指令。更多说明请参考[commands](PathAttribute#commands)支持的绘制命令。
+绘制路径的指令。更多说明请参考commands支持的绘制命令。
 
 **类型：** string
 

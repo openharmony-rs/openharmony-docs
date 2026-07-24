@@ -1,6 +1,6 @@
 # NodeAdapter
 
-NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](../arkts-components/arkts-arkui-lazyforeach.md)实现接口功能。
+NodeAdapter提供FrameNode的数据懒加载能力，通过LazyForEach实现接口功能。
 > **说明：**  
 >  
 > 入参不能为负数，入参为负数时不做处理。
@@ -361,7 +361,7 @@ onUpdateChild?(id: number, node: FrameNode): void
 reloadAllItems(): void
 ```
 
-重新加载全部数据操作。实际调用了LazyForEach中的[OnDataReloaded](../arkts-components/arkts-arkui-datachangelistener-i.md#ondatareloaded)接口通知组件重新加载所有数据。
+重新加载全部数据操作。实际调用了LazyForEach中的OnDataReloaded接口通知组件重新加载所有数据。
 
 **起始版本：** 12
 

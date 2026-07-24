@@ -125,7 +125,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 | --- | --- | --- | --- |
 | uri | string | 是 | 文件的URI。 |
 | versionId | string | 是 | 文件某一版本的版本号，格式以接口[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist)返回为准。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VersionDownloadProgress&gt; | 是 | 回调函数，返回下载进度。 |
+| callback | Callback&lt;VersionDownloadProgress&gt; | 是 | 回调函数，返回下载进度。 |
 
 **返回值：**
 

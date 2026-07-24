@@ -239,7 +239,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 | source | [ImageSource](arkts-image-sendableimage-imagesource-i.md) | 是 | 编码的ImageSource。 |
 | fd | number | 是 | 文件描述符。取值范围为[0，65535]。 |
 | options | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当编码进文件成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当编码进文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -321,7 +321,7 @@ packToFile(source: PixelMap, fd: number, options: PackingOption, callback: Async
 | source | [PixelMap](arkts-image-image-pixelmap-i.md) | 是 | 编码的PixelMap资源。 |
 | fd | number | 是 | 文件描述符。取值范围为[0，65535]。 |
 | options | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当编码图片进文件成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当编码图片进文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -481,7 +481,7 @@ packing(source: ImageSource, option: PackingOption, callback: AsyncCallback<Arra
 | --- | --- | --- | --- |
 | source | [ImageSource](arkts-image-sendableimage-imagesource-i.md) | 是 | 编码的ImageSource。 |
 | option | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
+| callback | AsyncCallback&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
 
 ## packing
 
@@ -551,7 +551,7 @@ packing(source: PixelMap, option: PackingOption, callback: AsyncCallback<ArrayBu
 | --- | --- | --- | --- |
 | source | [PixelMap](arkts-image-image-pixelmap-i.md) | 是 | 编码的PixelMap资源。 |
 | option | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
+| callback | AsyncCallback&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
 
 ## packing
 
@@ -648,7 +648,7 @@ release(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当释放图片编码实例成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当释放图片编码实例成功，err为undefined，否则为错误对象。 |
 
 ## release
 

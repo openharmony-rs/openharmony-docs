@@ -27,8 +27,8 @@ function on(type: 'prepareContinue', context: Context, callback: AsyncCallback<C
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'prepareContinue' | 是 | 固定值：prepareContinue。 |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | Ability的Context。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ContinueResultInfo&gt; | 是 | 回调函数。当快速拉起结果获取成功，err为undefined，ContinueResultInfo为获取到的快速启动结果。否则为错误对象。 |
+| context | Context | 是 | Ability的Context。 |
+| callback | AsyncCallback&lt;ContinueResultInfo&gt; | 是 | 回调函数。当快速拉起结果获取成功，err为undefined，ContinueResultInfo为获取到的快速启动结果。否则为错误对象。 |
 
 **错误码：**
 

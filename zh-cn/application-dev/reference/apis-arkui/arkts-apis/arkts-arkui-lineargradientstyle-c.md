@@ -32,7 +32,7 @@ constructor(options: LinearGradientOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [LinearGradientOptions](../arkts-components/arkts-arkui-lineargradientoptions-i.md) | 是 | 显示为线性渐变效果。<br/>[LinearGradientOptions](../arkts-components/arkts-arkui-lineargradientoptions-i.md)中的direction默认值按[GradientDirection](arkts-arkui-gradientdirection-e.md)中的NONE处理。 |
+| options | LinearGradientOptions | 是 | 显示为线性渐变效果。<br/>LinearGradientOptions中的direction默认值按[GradientDirection](arkts-arkui-gradientdirection-e.md)中的NONE处理。 |
 
 ## options
 

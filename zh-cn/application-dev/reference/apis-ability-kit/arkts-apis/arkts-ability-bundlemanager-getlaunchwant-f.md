@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getLaunchWant(): Want
 ```
 
-获取本应用[入口UIAbility](../../../quick-start/application-package-glossary.md#uiability)的Want参数。
+获取本应用入口UIAbility的Want参数。
 
 **起始版本：** 13
 
@@ -26,7 +26,7 @@ function getLaunchWant(): Want
 
 | 类型 | 说明 |
 | --- | --- |
-| [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 返回仅包含bundleName和abilityName的Want对象。 |
+| Want | 返回仅包含bundleName和abilityName的Want对象。 |
 
 **错误码：**
 

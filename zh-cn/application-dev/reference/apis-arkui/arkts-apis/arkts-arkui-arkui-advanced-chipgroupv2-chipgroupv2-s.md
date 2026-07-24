@@ -150,7 +150,7 @@ ChipV2的style属性，如颜色，大小等，参考[ChipGroupV2ItemStyle](arkt
 
 值为undefined时，按默认值处理。
 
-图标填充色（[fillColor](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)和[activatedFillColor](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)）的设置与字体颜色（[fontColor](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md)）保持一致。如果需要设置不同的颜色，可以在传入items时使用[prefixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)和[suffixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)。
+图标填充色（fillColor和activatedFillColor）的设置与字体颜色（[fontColor](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md)）保持一致。如果需要设置不同的颜色，可以在传入items时使用[prefixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)和[suffixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)。
 
 **类型：** ChipGroupV2ItemStyle
 
@@ -174,7 +174,7 @@ items: ChipGroupV2Items
 
 每个ChipV2的特定属性，参考[ChipGroupV2ItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)类型。
 
-值为undefined或空数组时，ChipGroupV2不渲染内部的[ChipV2](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md)。
+值为undefined或空数组时，ChipGroupV2不渲染内部的ChipV2。
 
 **类型：** ChipGroupV2Items
 

@@ -34,8 +34,8 @@ addTask(func: Function, ...args: Object[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | Function | 是 | 需要传入使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰的函数。支持的返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | Function | 是 | 需要传入使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰的函数。支持的返回值类型请参考序列化支持类型。 |
+| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -77,7 +77,7 @@ addTask(task: Task): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| task | [Task](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-task-i.md) | 是 | 需要添加到任务组中的任务。 |
+| task | Task | 是 | 需要添加到任务组中的任务。 |
 
 **错误码：**
 

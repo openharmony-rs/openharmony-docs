@@ -35,7 +35,7 @@ function springCurve(velocity: number, mass: number, stiffness: number, damping:
 
 | 类型 | 说明 |
 | --- | --- |
-| [ICurve](../arkts-components/arkts-arkui-icurve-i.md) | 曲线的插值对象。 |
+| ICurve | 曲线的插值对象。 |
 
 **示例：**
 

@@ -87,7 +87,7 @@ getCutoutInfo(callback: AsyncCallback<CutoutInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CutoutInfo&gt; | 是 | 回调函数。返回不可用屏幕区域对象。 |
+| callback | AsyncCallback&lt;CutoutInfo&gt; | 是 | 回调函数。返回不可用屏幕区域对象。 |
 
 **错误码：**
 
@@ -296,7 +296,7 @@ off(type: 'availableAreaChange', callback?: Callback<Rect>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'availableAreaChange' | 是 | 监听事件，固定为'availableAreaChange'，表示屏幕可用区域变更。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;Rect&gt; | 否 | 需要取消注册的回调函数。返回改变后的可用区域。若无此参数，则取消注册屏幕可用区域变化监听的所有回调函数。 |
+| callback | Callback&lt;Rect&gt; | 否 | 需要取消注册的回调函数。返回改变后的可用区域。若无此参数，则取消注册屏幕可用区域变化监听的所有回调函数。 |
 
 **错误码：**
 
@@ -345,7 +345,7 @@ on(type: 'availableAreaChange', callback: Callback<Rect>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'availableAreaChange' | 是 | 监听事件。固定为'availableAreaChange'，表示屏幕可用区域变更。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;Rect&gt; | 是 | 回调函数。返回改变后的可用区域。 |
+| callback | Callback&lt;Rect&gt; | 是 | 回调函数。返回改变后的可用区域。 |
 
 **错误码：**
 

@@ -40,7 +40,7 @@ function getTask(taskId: number, taskName?: string): Task | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [Task](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-task-i.md) | Task实例；当情况异常时，返回**undefined**，具体可见上文说明。 |
+| Task | Task实例；当情况异常时，返回**undefined**，具体可见上文说明。 |
 
 **示例：**
 

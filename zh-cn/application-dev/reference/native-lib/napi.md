@@ -284,7 +284,7 @@ libace_napi.z.so
 
 **参数：**
 
-- object: 该导出接口支持TypedArray或Sendable TypedArray（[Int8Array](../apis-arkts/arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](../apis-arkts/arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](../apis-arkts/arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](../apis-arkts/arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](../apis-arkts/arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](../apis-arkts/arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md)）类型。
+- object: 该导出接口支持TypedArray或Sendable TypedArray（Int8Array、Uint8Array、Int16Array、Uint16Array、Int32Array、Uint32Array、Uint8ClampedArray、Float32Array）类型。
 
 **返回：**
 
@@ -308,7 +308,7 @@ libace_napi.z.so
 
 **参数：**
 
-- value: 该导出接口额外支持Sendable TypedArray（[Int8Array](../apis-arkts/arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](../apis-arkts/arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](../apis-arkts/arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](../apis-arkts/arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](../apis-arkts/arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](../apis-arkts/arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md)）类型。
+- value: 该导出接口额外支持Sendable TypedArray（Int8Array、Uint8Array、Int16Array、Uint16Array、Int32Array、Uint32Array、Uint8ClampedArray、Float32Array）类型。
 
 ### napi_get_property_names
 

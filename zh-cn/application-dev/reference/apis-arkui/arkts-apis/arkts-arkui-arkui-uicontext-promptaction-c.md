@@ -36,7 +36,7 @@ Closes a custom dialog box corresponding to dialogContent. This API uses a promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content of the custom dialog box. |
+| dialogContent | ComponentContent&lt;T&gt; | 是 | Content of the custom dialog box. |
 
 **返回值：**
 
@@ -105,7 +105,7 @@ Close menu with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the menu. |
+| content | ComponentContent&lt;T&gt; | 是 | Content displayed in the menu. |
 
 **返回值：**
 
@@ -143,7 +143,7 @@ Close popup with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the popup. |
+| content | ComponentContent&lt;T&gt; | 是 | Content displayed in the popup. |
 
 **返回值：**
 
@@ -261,7 +261,7 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | 自定义对话框的内容。 |
+| dialogContent | ComponentContent&lt;T&gt; | 是 | 自定义对话框的内容。 |
 | options | promptAction.BaseDialogOptions | 否 | 选项。 |
 
 **返回值：**
@@ -342,7 +342,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | 自定义对话框的内容。 |
+| dialogContent | ComponentContent&lt;T&gt; | 是 | 自定义对话框的内容。 |
 | controller | promptAction.DialogController | 是 | 对话框控制器。 |
 | options | promptAction.BaseDialogOptions | 否 | 选项。 |
 
@@ -382,9 +382,9 @@ Open menu with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the menu. |
+| content | ComponentContent&lt;T&gt; | 是 | Content displayed in the menu. |
 | target | [TargetInfo](arkts-arkui-arkui-uicontext-targetinfo-i.md) | 是 | Information about the target component to bind. |
-| options | [MenuOptions](../arkts-components/arkts-arkui-menuoptions-i.md) | 否 | Style of the menu.<br>**NOTE**<br>The **title** property is not effective.<br>The **preview** parameter supports only the **MenuPreviewMode** type. |
+| options | MenuOptions | 否 | Style of the menu.<br>**NOTE**<br>The **title** property is not effective.<br>The **preview** parameter supports only the **MenuPreviewMode** type. |
 
 **返回值：**
 
@@ -424,9 +424,9 @@ Open popup with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the popup. |
+| content | ComponentContent&lt;T&gt; | 是 | Content displayed in the popup. |
 | target | [TargetInfo](arkts-arkui-arkui-uicontext-targetinfo-i.md) | 是 | Information about the target component to bind. |
-| options | [PopupCommonOptions](../arkts-components/arkts-arkui-popupcommonoptions-i.md) | 否 | Style of the popup. |
+| options | PopupCommonOptions | 否 | Style of the popup. |
 
 **返回值：**
 
@@ -506,7 +506,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| CustomBuilderWithId | 是 | 对话框生成器。 |
+| builder | CustomBuilder \| CustomBuilderWithId | 是 | 对话框生成器。 |
 | controller | promptAction.DialogController | 否 | Controller of the custom dialog box.<br>**起始版本：** 26.0.0 |
 | options | promptAction.DialogOptions | 否 | Style of the custom dialog box.<br>Note: If both [isModal](arkts-arkui-promptaction-basedialogoptions-i.md)and [showInSubWindow](arkts-arkui-promptaction-basedialogoptions-i.md) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.<br>**起始版本：** 26.0.0 |
 
@@ -578,7 +578,7 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | promptAction.ActionMenuOptions | 是 | 操作菜单选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;promptAction.ActionMenuSuccessResponse&gt; | 是 | 用于返回操作的回调菜单响应结果。 |
+| callback | AsyncCallback&lt;promptAction.ActionMenuSuccessResponse&gt; | 是 | 用于返回操作的回调菜单响应结果。 |
 
 **错误码：**
 
@@ -647,7 +647,7 @@ showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | promptAction.ShowDialogOptions | 是 | 选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;promptAction.ShowDialogSuccessResponse&gt; | 是 | showDialog的回调。 |
+| callback | AsyncCallback&lt;promptAction.ShowDialogSuccessResponse&gt; | 是 | showDialog的回调。 |
 
 **错误码：**
 
@@ -746,7 +746,7 @@ Update the custom dialog with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content of the custom dialog box. |
+| dialogContent | ComponentContent&lt;T&gt; | 是 | Content of the custom dialog box. |
 | options | promptAction.BaseDialogOptions | 是 | Dialog box style. Currently,only **alignment**, **offset**, **autoCancel**, and **maskColor** can be updated. |
 
 **返回值：**
@@ -785,8 +785,8 @@ Update menu with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the menu. |
-| options | [MenuOptions](../arkts-components/arkts-arkui-menuoptions-i.md) | 是 | Style of the menu.<br>**NOTE**<br>1. Updating for the following is not supported:**showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**,**onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.<br>2. The mask style can be updated by configuring [MenuMaskType](../arkts-components/arkts-arkui-menumasktype-i.md).However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value. |
+| content | ComponentContent&lt;T&gt; | 是 | Content displayed in the menu. |
+| options | MenuOptions | 是 | Style of the menu.<br>**NOTE**<br>1. Updating for the following is not supported:**showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**,**onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.<br>2. The mask style can be updated by configuring MenuMaskType.However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value. |
 | partialUpdate | boolean | 否 | Whether to update the menu in incremental mode. Default value: **false**.<br>**NOTE**<br>1. **true**: incremental update, where the specified properties in **options** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **options** are restored to default values. |
 
 **返回值：**
@@ -825,8 +825,8 @@ Update popup with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the popup. |
-| options | [PopupCommonOptions](../arkts-components/arkts-arkui-popupcommonoptions-i.md) | 是 | Style of the popup.<br>**NOTE**<br>Updating the following properties is not supported: **showInSubWindow**, **focusable**, **onStateChange**,**onWillDismiss**, and **transition**. |
+| content | ComponentContent&lt;T&gt; | 是 | Content displayed in the popup. |
+| options | PopupCommonOptions | 是 | Style of the popup.<br>**NOTE**<br>Updating the following properties is not supported: **showInSubWindow**, **focusable**, **onStateChange**,**onWillDismiss**, and **transition**. |
 | partialUpdate | boolean | 否 | Whether to update the popup in incremental mode.<br>Default value: **false**<br>**NOTE**<br>**true**: Incremental update. Only specified attributes in **options** are updated, and the other attributes retain their current values. If the attribute value passed in **options** is invalid or **undefined**,the attribute is not updated.<br>**false**: Full update. Specified attributes in **options** are updated,and the other attributes are restored to their default values. |
 
 **返回值：**

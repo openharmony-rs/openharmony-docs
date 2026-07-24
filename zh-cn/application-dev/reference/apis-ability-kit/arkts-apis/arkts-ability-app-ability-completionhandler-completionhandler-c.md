@@ -41,7 +41,7 @@ onRequestFailure(elementName: ElementName, message: string): void
 
 **示例：**
 
-参见[CompletionHandler使用](#completionhandler使用)。
+参见CompletionHandler使用。
 
 ## onRequestSuccess
 
@@ -70,5 +70,5 @@ onRequestSuccess(elementName: ElementName, message: string): void
 
 **示例：**
 
-参见[CompletionHandler使用](#completionhandler使用)。
+参见CompletionHandler使用。
 

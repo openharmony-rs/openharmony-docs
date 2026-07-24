@@ -6,7 +6,7 @@
 export function bindController(node: FrameNode, controller: TextController, nodeType: 'Text'): void
 ```
 
-将文本控制器[TextController](../arkts-components/arkts-arkui-textcontroller-c.md)绑定到[Text](arkts-arkui-typenode-text-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。
+将文本控制器TextController绑定到[Text](arkts-arkui-typenode-text-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。
 
 **起始版本：** 20
 
@@ -23,7 +23,7 @@ export function bindController(node: FrameNode, controller: TextController, node
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 绑定文本控制器的目标节点。 |
-| controller | [TextController](../arkts-components/arkts-arkui-textcontroller-c.md) | 是 | 文本控制器。 |
+| controller | TextController | 是 | 文本控制器。 |
 | nodeType | 'Text' | 是 | 绑定输入框控制器的目标节点的节点类型为Text。 |
 
 **错误码：**
@@ -40,7 +40,7 @@ export function bindController(node: FrameNode, controller: TextController, node
 export function bindController(node: FrameNode, controller: SwiperController, nodeType: 'Swiper'): void
 ```
 
-将控制器[SwiperController](../arkts-components/arkts-arkui-swipercontroller-c.md)绑定到[Swiper](arkts-arkui-typenode-swiper-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。
+将控制器SwiperController绑定到[Swiper](arkts-arkui-typenode-swiper-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。
 
 **起始版本：** 20
 
@@ -57,7 +57,7 @@ export function bindController(node: FrameNode, controller: SwiperController, no
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 绑定控制器的目标节点。 |
-| controller | [SwiperController](../arkts-components/arkts-arkui-swipercontroller-c.md) | 是 | Swiper容器组件的控制器。 |
+| controller | SwiperController | 是 | Swiper容器组件的控制器。 |
 | nodeType | 'Swiper' | 是 | 绑定控制器的目标节点的节点类型为Swiper。 |
 
 **错误码：**
@@ -74,7 +74,7 @@ export function bindController(node: FrameNode, controller: SwiperController, no
 function bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 ```
 
-将滚动控制器[Scroller](../arkts-components/arkts-arkui-scroller-c.md)绑定到[Scroll](arkts-arkui-typenode-scroll-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
+将滚动控制器Scroller绑定到[Scroll](arkts-arkui-typenode-scroll-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
 
 **起始版本：** 15
 
@@ -91,7 +91,7 @@ function bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 绑定滚动控制器的目标节点。 |
-| controller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | the controller which is bind to 绑定滚动控制器的目标节点。 |
+| controller | Scroller | 是 | the controller which is bind to 绑定滚动控制器的目标节点。 |
 | nodeType | 'Scroll' | 是 | 绑定滚动控制器的目标节点的节点类型为Scroll。 |
 
 **错误码：**
@@ -108,7 +108,7 @@ function bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll
 export function bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 ```
 
-将滚动控制器[Scroller](../arkts-components/arkts-arkui-scroller-c.md)绑定到[List](arkts-arkui-typenode-list-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
+将滚动控制器Scroller绑定到[List](arkts-arkui-typenode-list-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
 
 **起始版本：** 20
 
@@ -125,7 +125,7 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 绑定滚动控制器的目标节点。 |
-| controller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | 滚动控制器。 |
+| controller | Scroller | 是 | 滚动控制器。 |
 | nodeType | 'List' | 是 | 绑定滚动控制器的目标节点的节点类型为List。 |
 
 **错误码：**
@@ -142,7 +142,7 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 export function bindController(node: FrameNode, controller: TextInputController, nodeType: 'TextInput'): void
 ```
 
-将输入框控制器[TextInputController](../arkts-components/arkts-arkui-textinputcontroller-c.md)绑定到[TextInput](arkts-arkui-typenode-textinput-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
+将输入框控制器TextInputController绑定到[TextInput](arkts-arkui-typenode-textinput-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
 
 **起始版本：** 20
 
@@ -159,7 +159,7 @@ export function bindController(node: FrameNode, controller: TextInputController,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 绑定输入框控制器的目标节点。 |
-| controller | [TextInputController](../arkts-components/arkts-arkui-textinputcontroller-c.md) | 是 | 输入框控制器。 |
+| controller | TextInputController | 是 | 输入框控制器。 |
 | nodeType | 'TextInput' | 是 | 绑定输入框控制器的目标节点的节点类型为TextInput。 |
 
 **错误码：**
@@ -176,7 +176,7 @@ export function bindController(node: FrameNode, controller: TextInputController,
 export function bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): void
 ```
 
-将滚动控制器[Scroller](../arkts-components/arkts-arkui-scroller-c.md)绑定到[WaterFlow](arkts-arkui-typenode-waterflow-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
+将滚动控制器Scroller绑定到[WaterFlow](arkts-arkui-typenode-waterflow-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
 
 **起始版本：** 20
 
@@ -193,7 +193,7 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 绑定滚动控制器的目标节点。 |
-| controller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | 滚动控制器。 |
+| controller | Scroller | 是 | 滚动控制器。 |
 | nodeType | 'WaterFlow' | 是 | 绑定滚动控制器的目标节点的节点类型为WaterFlow。 |
 
 **错误码：**
@@ -210,7 +210,7 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 export function bindController(node: FrameNode, controller: TextAreaController, nodeType: 'TextArea'): void
 ```
 
-将输入框控制器[TextAreaController](../arkts-components/arkts-arkui-textareacontroller-c.md)绑定到[TextArea](arkts-arkui-typenode-textarea-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
+将输入框控制器TextAreaController绑定到[TextArea](arkts-arkui-typenode-textarea-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
 
 **起始版本：** 20
 
@@ -227,7 +227,7 @@ export function bindController(node: FrameNode, controller: TextAreaController, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 绑定输入框控制器的目标节点。 |
-| controller | [TextAreaController](../arkts-components/arkts-arkui-textareacontroller-c.md) | 是 | 输入框控制器。 |
+| controller | TextAreaController | 是 | 输入框控制器。 |
 | nodeType | 'TextArea' | 是 | 绑定输入框控制器的目标节点的节点类型为TextArea。 |
 
 **错误码：**
@@ -244,7 +244,7 @@ export function bindController(node: FrameNode, controller: TextAreaController, 
 export function bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 ```
 
-将滚动控制器[Scroller](../arkts-components/arkts-arkui-scroller-c.md)绑定到[Grid](arkts-arkui-typenode-grid-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
+将滚动控制器Scroller绑定到[Grid](arkts-arkui-typenode-grid-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
 
 **起始版本：** 20
 
@@ -261,7 +261,7 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 绑定滚动控制器的目标节点。 |
-| controller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | 滚动控制器。 |
+| controller | Scroller | 是 | 滚动控制器。 |
 | nodeType | 'Grid' | 是 | 绑定滚动控制器的目标节点的节点类型为Grid。 |
 
 **错误码：**

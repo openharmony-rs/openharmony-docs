@@ -34,7 +34,7 @@ onCompleted?(error: BusinessError<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| error | [BusinessError](../../apis-arkui/arkts-components/arkts-arkui-businesserror-t.md)&lt;void&gt; | 是 | 错误信息。 |
+| error | BusinessError&lt;void&gt; | 是 | 错误信息。 |
 
 **示例：**
 

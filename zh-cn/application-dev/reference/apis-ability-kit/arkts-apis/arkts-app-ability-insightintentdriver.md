@@ -4,7 +4,7 @@
 > **说明：**  
 >  
 > 本模块从API version 20开始支持通过  
-> [@InsightIntentLink](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)  
+> @InsightIntentLink  
 > 装饰器定义的意图来实现应用跳转。
 
 **起始版本：** 11
@@ -41,7 +41,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [FunctionIntentInfo](arkts-ability-insightintentdriver-functionintentinfo-i.md) | [@InsightIntentFunctionMethod](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)装饰器的参数类型，当前全部属性均继承自[IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md)。 |
+| [FunctionIntentInfo](arkts-ability-insightintentdriver-functionintentinfo-i.md) | @InsightIntentFunctionMethod装饰器的参数类型，当前全部属性均继承自[IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md)。 |
 
 <!--Del-->
 ### 接口（系统接口）
@@ -54,7 +54,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | [FormIntentInfo](arkts-ability-insightintentdriver-formintentinfo-i-sys.md) | FormIntentInfo用于描述[@InsightIntentForm](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform)装饰器支持的参数，例如卡片名称。同时，该接口也可用于描述[使用配置文件开发的意图](../../../application-models/insight-intent-config-development.md)所绑定的卡片信息。 |
 | [InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md) | 意图信息，表示设备中意图的具体参数配置。 |
 | [InsightIntentInfoFilter](arkts-ability-insightintentdriver-insightintentinfofilter-i-sys.md) | 意图筛选器，描述目标意图的筛选条件，用于筛选设备上符合条件的意图。 |
-| [LinkIntentInfo](arkts-ability-insightintentdriver-linkintentinfo-i-sys.md) | LinkIntentInfo用于描述[@InsightIntentLink](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器支持的参数，例如应用间跳转需要的uri信息。 |
+| [LinkIntentInfo](arkts-ability-insightintentdriver-linkintentinfo-i-sys.md) | LinkIntentInfo用于描述@InsightIntentLink装饰器支持的参数，例如应用间跳转需要的uri信息。 |
 | [PageIntentInfo](arkts-ability-insightintentdriver-pageintentinfo-i-sys.md) | PageIntentInfo用于描述[@InsightIntentPage](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)装饰器支持的参数，例如目标页面的[NavDestination](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)名称。 |
 | [QueryParam](arkts-ability-insightintentdriver-queryparam-i-sys.md) | 查询洞察意图实体时的Param。 |
 | [ServiceExtensionIntentInfo](arkts-ability-insightintentdriver-serviceextensionintentinfo-i-sys.md) | 用于描述[使用配置文件开发的意图](../../../application-models/insight-intent-config-development.md)所绑定的ServiceExtensionAbility组件信息。 |

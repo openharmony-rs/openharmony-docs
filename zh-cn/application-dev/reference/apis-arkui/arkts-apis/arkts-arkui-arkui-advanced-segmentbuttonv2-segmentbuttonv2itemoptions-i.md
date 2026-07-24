@@ -25,7 +25,7 @@ import { OnSelectedIndexesChange, TabSegmentButtonV2, SegmentButtonV2Items, Mult
 accessibilityDescription?: ResourceStr
 ```
 
-分段按钮选项的无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitydescription)。
+分段按钮选项的无障碍说明accessibilityDescription。
 
 默认值：""
 
@@ -51,7 +51,7 @@ accessibilityDescription?: ResourceStr
 accessibilityLevel?: string
 ```
 
-分段按钮选项的无障碍重要性[accessibilityLevel](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitylevel)。
+分段按钮选项的无障碍重要性accessibilityLevel。
 
 默认值："auto"
 
@@ -77,7 +77,7 @@ accessibilityLevel?: string
 accessibilityText?: ResourceStr
 ```
 
-分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitytext)。
+分段按钮选项的无障碍文本accessibilityText。
 
 默认值：""
 

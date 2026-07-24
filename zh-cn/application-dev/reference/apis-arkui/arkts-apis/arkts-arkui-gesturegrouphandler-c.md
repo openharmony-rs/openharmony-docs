@@ -56,7 +56,7 @@ onCancel(event: Callback<void>): GestureGroupHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 手势组处理器取消回调。 |
+| event | Callback&lt;void&gt; | 是 | 手势组处理器取消回调。 |
 
 **返回值：**
 

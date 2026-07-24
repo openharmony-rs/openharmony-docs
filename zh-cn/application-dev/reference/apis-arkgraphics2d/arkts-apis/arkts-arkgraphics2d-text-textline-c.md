@@ -336,7 +336,7 @@ getTextRange(): Range
 
 | 类型 | 说明 |
 | --- | --- |
-| [Range](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-scan-range-i.md) | 该行文本在整个段落文本中的索引区间。 |
+| Range | 该行文本在整个段落文本中的索引区间。 |
 
 **示例：**
 

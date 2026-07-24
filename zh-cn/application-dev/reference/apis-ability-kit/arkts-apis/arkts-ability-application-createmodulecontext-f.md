@@ -12,7 +12,7 @@ import { application } from '@kit.AbilityKit';
 export function createModuleContext(context: Context, moduleName: string): Promise<Context>
 ```
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md)资源继承自入参上下文，便于开发者获取跨HAP/HSP包应用资源。使用Promise异步回调。
 > **说明：**  
 >  
 > 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
@@ -31,7 +31,7 @@ export function createModuleContext(context: Context, moduleName: string): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 表示应用上下文。 |
+| context | Context | 是 | 表示应用上下文。 |
 | moduleName | string | 是 | 表示应用模块名。 |
 
 **返回值：**

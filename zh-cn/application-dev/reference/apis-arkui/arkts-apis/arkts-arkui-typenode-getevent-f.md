@@ -29,7 +29,7 @@ function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefine
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIScrollEvent](../arkts-components/arkts-arkui-uiscrollevent-i.md) | **UIScrollEvent** object for the **Scroll** node, or **undefined** if it fails to be obtained. |
+| UIScrollEvent | **UIScrollEvent** object for the **Scroll** node, or **undefined** if it fails to be obtained. |
 
 
 ## getEvent
@@ -61,7 +61,7 @@ function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIListEvent](../arkts-components/arkts-arkui-uilistevent-i.md) | **UIListEvent** object for the **List** node, or **undefined** if it fails to be obtained. |
+| UIListEvent | **UIListEvent** object for the **List** node, or **undefined** if it fails to be obtained. |
 
 
 ## getEvent
@@ -93,7 +93,7 @@ function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | un
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIWaterFlowEvent](../arkts-components/arkts-arkui-uiwaterflowevent-i.md) | **UIWaterFlowEvent** object for the **WaterFlow** node, or **undefined** if it fails to be obtained. |
+| UIWaterFlowEvent | **UIWaterFlowEvent** object for the **WaterFlow** node, or **undefined** if it fails to be obtained. |
 
 
 ## getEvent
@@ -125,5 +125,5 @@ function getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIGridEvent](../arkts-components/arkts-arkui-uigridevent-i.md) | **UIGridEvent** object for the **Grid** node, or **undefined** if it fails to be obtained. |
+| UIGridEvent | **UIGridEvent** object for the **Grid** node, or **undefined** if it fails to be obtained. |
 

@@ -14,7 +14,7 @@
 ALL_EXPAND = 0
 ```
 
-展开模式。当遇到懒加载节点（如[LazyForEach](../arkts-components/arkts-arkui-lazyforeach.md)）时，展开节点并返回所有子节点数量。
+展开模式。当遇到懒加载节点（如LazyForEach）时，展开节点并返回所有子节点数量。
 
 是否展开懒加载节点：是
 

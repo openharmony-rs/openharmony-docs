@@ -47,7 +47,7 @@ import { dragController } from '@kit.ArkUI';
 | [DragAndDropInfo](arkts-arkui-dragcontroller-draganddropinfo-i.md) | 拖拽过程中监听到status改变时上报的数据。 |
 | [DragEventParam](arkts-arkui-dragcontroller-drageventparam-i.md) | 拖拽结束返回结果的回调。 |
 | [DragInfo](arkts-arkui-dragcontroller-draginfo-i.md) | 发起拖拽所需要的属性和拖拽时携带的信息。 |
-| [DragSpringLoadingConfiguration](arkts-arkui-dragcontroller-dragspringloadingconfiguration-i.md) | 定义拖拽的悬停检测配置参数的接口。默认的配置参数通常已能满足需求。可以通过在绑定[onDragSpringLoading](../arkts-components/arkts-arkui-commonmethod-c.md#ondragspringloading)时指定配置，或者通过在BEGIN状态期间使用[updateConfiguration](arkts-arkui-dragcontroller-springloadingcontext-c.md#updateconfiguration)方法动态修改的方式以自定义该配置参数。 |
+| [DragSpringLoadingConfiguration](arkts-arkui-dragcontroller-dragspringloadingconfiguration-i.md) | 定义拖拽的悬停检测配置参数的接口。默认的配置参数通常已能满足需求。可以通过在绑定onDragSpringLoading时指定配置，或者通过在BEGIN状态期间使用[updateConfiguration](arkts-arkui-dragcontroller-springloadingcontext-c.md#updateconfiguration)方法动态修改的方式以自定义该配置参数。 |
 | [SpringLoadingDragInfos](arkts-arkui-dragcontroller-springloadingdraginfos-i.md) | 定义触发悬停检测时拖拽事件信息的接口。该接口提供了拖拽数据摘要和拖拽事件额外信息，应用程序可以据此决定是否响应悬停检测回调。 |
 
 ### 枚举
@@ -55,6 +55,6 @@ import { dragController } from '@kit.ArkUI';
 | 名称 | 说明 |
 | --- | --- |
 | [DragSpringLoadingState](arkts-arkui-dragcontroller-dragspringloadingstate-e.md) | 定义拖拽的悬停检测状态的枚举类型。默认系统配置下，如果没有触发CANCEL，状态报告如下：保持Hover-->500ms-->BEGIN-->100ms-->UPDATE-->100ms-->UPDATE-->100ms-->UPDATE-->100ms-->END |
-| [DragStartRequestStatus](arkts-arkui-dragcontroller-dragstartrequeststatus-e.md) | 定义应用是否可以发起拖拽的枚举类型。仅在[onDragStart](../arkts-components/arkts-arkui-commonmethod-c.md#ondragstart)调用时有效。 |
+| [DragStartRequestStatus](arkts-arkui-dragcontroller-dragstartrequeststatus-e.md) | 定义应用是否可以发起拖拽的枚举类型。仅在onDragStart调用时有效。 |
 | [DragStatus](arkts-arkui-dragcontroller-dragstatus-e.md) | 拖拽开始和结束状态。 |
 

@@ -70,7 +70,7 @@ import { taskpool } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系请参考[QoS等级定义](../../../napi/qos-guidelines.md#qos-level)。 |
+| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系请参考QoS等级定义。 |
 | [State](arkts-arkts-taskpool-state-e.md) | 表示任务（Task）状态的枚举。当任务创建成功后，调用**execute()**，任务进入taskpool等待队列，状态设置为**WAITING**；任务从等待队列出来进入taskpool工作线程中，任务状态更新为**RUNNING**；当任务执行完成，返回结果后任务状态重置为**WAITING**；当主动cancel任务时，将任务状态更新为**CANCELED**。 |
 
 ### 类型

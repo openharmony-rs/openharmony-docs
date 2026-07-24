@@ -54,5 +54,5 @@ declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCal
 | fd | number | 是 | 待改变文件的文件描述符。 |
 | uid | number | 是 | 文件所有者的UID。 |
 | gid | number | 是 | 文件所有组的GID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
 

@@ -94,7 +94,7 @@ onRequestCustomMatchRule(want: Want): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动UIAbility的Want信息。 |
+| want | Want | 是 | 启动UIAbility的Want信息。 |
 
 **返回值：**
 

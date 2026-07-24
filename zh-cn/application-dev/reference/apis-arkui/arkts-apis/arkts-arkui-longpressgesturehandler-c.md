@@ -56,7 +56,7 @@ onAction(event: Callback<GestureEvent>): LongPressGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;GestureEvent&gt; | 是 | 长按手势处理器识别成功回调。 |
+| event | Callback&lt;GestureEvent&gt; | 是 | 长按手势处理器识别成功回调。 |
 
 **返回值：**
 
@@ -86,7 +86,7 @@ onActionCancel(event: Callback<void>): LongPressGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 长按手势处理器取消回调。 |
+| event | Callback&lt;void&gt; | 是 | 长按手势处理器取消回调。 |
 
 **返回值：**
 
@@ -116,7 +116,7 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;GestureEvent&gt; | 是 | 长按手势处理器取消回调。该回调会返回手势事件信息。 |
+| event | Callback&lt;GestureEvent&gt; | 是 | 长按手势处理器取消回调。该回调会返回手势事件信息。 |
 
 **返回值：**
 
@@ -146,7 +146,7 @@ onActionEnd(event: Callback<GestureEvent>): LongPressGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;GestureEvent&gt; | 是 | 长按手势处理器结束回调。 |
+| event | Callback&lt;GestureEvent&gt; | 是 | 长按手势处理器结束回调。 |
 
 **返回值：**
 

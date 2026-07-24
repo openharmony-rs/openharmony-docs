@@ -33,7 +33,7 @@ function onAnimationReduceStateChange(callback: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。 |
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。 |
 
 **示例：**
 

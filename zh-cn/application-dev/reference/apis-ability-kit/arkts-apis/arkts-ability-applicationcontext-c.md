@@ -74,7 +74,7 @@ clearUpApplicationData(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, <code>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
+| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, <code>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
 
 **错误码：**
 
@@ -254,7 +254,7 @@ getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInformation>>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ProcessInformation&gt;&gt; | 是 | 回调函数，返回有关运行进程的信息。 |
+| callback | AsyncCallback&lt;Array&lt;ProcessInformation&gt;&gt; | 是 | 回调函数，返回有关运行进程的信息。 |
 
 **错误码：**
 
@@ -363,7 +363,7 @@ killAllProcesses(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当终止应用所在的进程成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当终止应用所在的进程成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -395,8 +395,8 @@ off(type: 'abilityLifecycle', callbackId: number, callback: AsyncCallback<void>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'abilityLifecycle' | 是 | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
-| callbackId | number | 是 | 通过[ApplicationContext.on('abilityLifecycle')](ApplicationContext#on(type: 'abilityLifecycle', callback: AbilityLifecycleCallback))接口注册监听应用内UIAbility的生命周期时返回的ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。 |
+| callbackId | number | 是 | 通过ApplicationContext.on('abilityLifecycle'))接口注册监听应用内UIAbility的生命周期时返回的ID。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -427,7 +427,7 @@ off(type: 'abilityLifecycle', callbackId: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'abilityLifecycle' | 是 | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
-| callbackId | number | 是 | 通过[ApplicationContext.on('abilityLifecycle')](ApplicationContext#on(type: 'abilityLifecycle', callback: AbilityLifecycleCallback))接口注册监听应用内UIAbility的生命周期时返回的ID。 |
+| callbackId | number | 是 | 通过ApplicationContext.on('abilityLifecycle'))接口注册监听应用内UIAbility的生命周期时返回的ID。 |
 
 **返回值：**
 
@@ -464,8 +464,8 @@ off(type: 'environment', callbackId: number, callback: AsyncCallback<void>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'environment' | 是 | 此类型表示系统环境变化，如系统深浅色发生变化，固定为'environment'。 |
-| callbackId | number | 是 | 通过[ApplicationContext.on('environment')](ApplicationContext#on(type: 'environment', callback: EnvironmentCallback))接口注册监听系统环境变化时返回的ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。 |
+| callbackId | number | 是 | 通过ApplicationContext.on('environment'))接口注册监听系统环境变化时返回的ID。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -496,7 +496,7 @@ off(type: 'environment', callbackId: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'environment' | 是 | 此类型表示系统环境变化，如系统深浅色发生变化，固定为'environment'。 |
-| callbackId | number | 是 | 通过[ApplicationContext.on('environment')](ApplicationContext#on(type: 'environment', callback: EnvironmentCallback))接口注册监听系统环境变化时返回的ID。 |
+| callbackId | number | 是 | 通过ApplicationContext.on('environment'))接口注册监听系统环境变化时返回的ID。 |
 
 **返回值：**
 
@@ -533,7 +533,7 @@ off(type: 'applicationStateChange', callback?: ApplicationStateChangeCallback): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'applicationStateChange' | 是 | 此类型表示当前应用进程状态变化，固定为'applicationStateChange'。 |
-| callback | [ApplicationStateChangeCallback](arkts-ability-app-ability-applicationstatechangecallback-applicationstatechangecallback-c.md) | 否 | 回调函数。取值可以为使用[ApplicationContext.on('applicationStateChange')](ApplicationContext#on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback))方法定义的callback回调，也可以为空。<br/>-?如果传入已定义的回调，则取消该监听。 <br/>-?如果未传入参数，则取消所有已注册的该类型事件的监听。 |
+| callback | [ApplicationStateChangeCallback](arkts-ability-app-ability-applicationstatechangecallback-applicationstatechangecallback-c.md) | 否 | 回调函数。取值可以为使用ApplicationContext.on('applicationStateChange'))方法定义的callback回调，也可以为空。<br/>-?如果传入已定义的回调，则取消该监听。 <br/>-?如果未传入参数，则取消所有已注册的该类型事件的监听。 |
 
 **错误码：**
 
@@ -565,7 +565,7 @@ offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | systemConfiguration.UpdatedCallback | 否 | 回调函数。取值可以为使用[ApplicationContext.onSystemConfigurationUpdated](../../../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonsystemconfigurationupdated24)方法注册的callback回调，也可以为空。<br/>-&nbsp;如果传入已定义的回调，则取消该监听。 <br/>-&nbsp;如果未传入参数，则取消所有已注册的监听。 |
+| callback | systemConfiguration.UpdatedCallback | 否 | 回调函数。取值可以为使用ApplicationContext.onSystemConfigurationUpdated方法注册的callback回调，也可以为空。<br/>-&nbsp;如果传入已定义的回调，则取消该监听。 <br/>-&nbsp;如果未传入参数，则取消所有已注册的监听。 |
 
 ## on('abilityLifecycle')
 
@@ -596,7 +596,7 @@ on(type: 'abilityLifecycle', callback: AbilityLifecycleCallback): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回此次注册的callbackID，该ID用于在[ApplicationContext.off('abilityLifecycle')](ApplicationContext#off(type: 'abilityLifecycle', callbackId: number, callback: AsyncCallback<void>))方法中取消注册对应的callback。 |
+| number | 返回此次注册的callbackID，该ID用于在ApplicationContext.off('abilityLifecycle'))方法中取消注册对应的callback。 |
 
 **错误码：**
 
@@ -644,7 +644,7 @@ on(type: 'environment', callback: EnvironmentCallback): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回此次注册的callbackID，该ID用于在[ApplicationContext.off('environment')](ApplicationContext#off(type: 'environment', callbackId: number, callback: AsyncCallback<void>))方法中取消注册对应的callback。 |
+| number | 返回此次注册的callbackID，该ID用于在ApplicationContext.off('environment'))方法中取消注册对应的callback。 |
 
 **错误码：**
 
@@ -765,7 +765,7 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 >  
 > 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在  
 > [onWindowStageCreate()](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)生命周期中通过  
-> [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
+> loadContent方法加载页面之后调用。
 
 **起始版本：** 11
 
@@ -801,7 +801,7 @@ setFont(font: string): void
 >  
 > 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在  
 > [onWindowStageCreate()](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)生命周期中通过  
-> [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
+> loadContent方法加载页面之后调用。
 
 **起始版本：** 12
 
@@ -815,7 +815,7 @@ setFont(font: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | string | 是 | 设置字体类型，字体可以通过[UIContext.registerFont](../../../reference/apis-arkui/arkts-apis-uicontext-font.md#registerfont)方法进行注册使用。 |
+| font | string | 是 | 设置字体类型，字体可以通过UIContext.registerFont方法进行注册使用。 |
 
 **错误码：**
 
@@ -859,7 +859,7 @@ setLanguage(language: string): void
 >  
 > 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在  
 > [onWindowStageCreate()](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)生命周期中通过  
-> [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
+> loadContent方法加载页面之后调用。
 
 **起始版本：** 11
 

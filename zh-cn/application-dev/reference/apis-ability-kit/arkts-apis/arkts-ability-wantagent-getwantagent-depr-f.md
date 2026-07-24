@@ -25,7 +25,7 @@ function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | info | [WantAgentInfo](arkts-ability-wantagent-wantagentinfo-t.md) | 是 | WantAgent信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;WantAgent&gt; | 是 | 创建WantAgent的回调方法。 |
+| callback | AsyncCallback&lt;WantAgent&gt; | 是 | 创建WantAgent的回调方法。 |
 
 **示例：**
 

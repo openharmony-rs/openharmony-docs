@@ -221,7 +221,7 @@ off(
 | --- | --- | --- | --- |
 | type | 'selfPermissionStateChange' | 是 | 取消订阅事件类型，固定为'selfPermissionStateChange'，权限状态变更事件。 |
 | permissionList | Array&lt;Permissions&gt; | 是 | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on订阅时的权限列表匹配（不区分顺序）。<br>最大长度为1024。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;PermissionStateChangeInfo&gt; | 否 | 回调函数。取消订阅指定权限名状态变更事件的回调。不传入此参数时，将批量删除与permissionList相关联的所有回调函数。 |
+| callback | Callback&lt;PermissionStateChangeInfo&gt; | 否 | 回调函数。取消订阅指定权限名状态变更事件的回调。不传入此参数时，将批量删除与permissionList相关联的所有回调函数。 |
 
 **错误码：**
 
@@ -285,7 +285,7 @@ on(
 | --- | --- | --- | --- |
 | type | 'selfPermissionStateChange' | 是 | 订阅事件类型，固定为'selfPermissionStateChange'，自身权限状态变更事件。 |
 | permissionList | Array&lt;Permissions&gt; | 是 | 订阅的权限名列表，为空时表示订阅所有的权限状态变化。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;PermissionStateChangeInfo&gt; | 是 | 回调函数。订阅指定权限名状态变更事件的回调。 |
+| callback | Callback&lt;PermissionStateChangeInfo&gt; | 是 | 回调函数。订阅指定权限名状态变更事件的回调。 |
 
 **错误码：**
 
@@ -342,7 +342,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法打开设置页面。 |
+| context | Context | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法打开设置页面。 |
 | permission | Permissions | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为[manual_settings](../../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限，传入其他类型权限时返回错误码12100014。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
@@ -361,7 +361,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 
 **示例：**
 
-示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+示例中context的获取方式请参见获取UIAbility的上下文信息。
 
 ```TypeScript
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
@@ -412,7 +412,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求全局开关的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
+| context | Context | 是 | 请求全局开关的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
 | type | [SwitchType](arkts-ability-abilityaccessctrl-switchtype-e.md) | 是 | 指定需要请求开启的全局开关类型。 |
 
 **返回值：**
@@ -432,7 +432,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 **示例：**
 
-示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+示例中context的获取方式请参见获取UIAbility的上下文信息。
 
 ```TypeScript
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
@@ -483,7 +483,7 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
+| context | Context | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
 | permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。该数组不能为空，仅支持传入已声明且用户已撤销授权的user_grant权限，且传入权限需属于同一[权限组](../../../security/AccessToken/app-permission-group-list.md)。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
@@ -505,7 +505,7 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 
 **示例：**
 
-示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+示例中context的获取方式请参见获取UIAbility的上下文信息。
 
 ```TypeScript
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
@@ -556,9 +556,9 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。<br>若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
+| context | Context | 是 | 请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。<br>若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
 | permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。建议仅传入当前业务场景必要的敏感权限，避免一次申请过多权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
-| requestCallback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PermissionRequestResult&gt; | 是 | 回调函数。调用完成后通过err返回错误信息，通过data返回权限请求结果对象。开发者可根据权限请求结果判断用户是否授权、是否展示过弹窗以及失败原因。 |
+| requestCallback | AsyncCallback&lt;PermissionRequestResult&gt; | 是 | 回调函数。调用完成后通过err返回错误信息，通过data返回权限请求结果对象。开发者可根据权限请求结果判断用户是否授权、是否展示过弹窗以及失败原因。 |
 
 **错误码：**
 
@@ -570,7 +570,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>,
 
 **示例：**
 
-关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+关于向用户申请授权的完整流程及示例，请参见向用户申请授权。
 
 ```TypeScript
 import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
@@ -622,7 +622,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
+| context | Context | 是 | 请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
 | permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。建议仅传入当前业务场景必要的敏感权限，避免一次申请过多权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
@@ -641,7 +641,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>)
 
 **示例：**
 
-关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+关于向用户申请授权的完整流程及示例，请参见向用户申请授权。
 
 ```TypeScript
 import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
@@ -674,7 +674,7 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSt
 
 适用于应用访问受保护资源前进行前置权限判断的场景。
 > **说明**  
-> 建议使用[checkAccessToken](#checkaccesstoken9)替代。
+> 建议使用checkAccessToken替代。
 
 **起始版本：** 9
 
@@ -726,7 +726,7 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>
 
 校验应用是否已被授予指定权限。调用成功后，返回当前权限的授权状态，开发者可据此决定后续操作。使用Promise异步回调。
 > **说明**  
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[checkAccessToken](#checkaccesstoken9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用checkAccessToken替代。
 
 **起始版本：** 8
 

@@ -34,7 +34,7 @@ onFailure(): void
 
 **示例：**
 
-参见[autoFillManager.requestAutoSave](#autofillmanagerrequestautosave)。
+参见autoFillManager.requestAutoSave。
 
 ## onSuccess
 
@@ -56,5 +56,5 @@ onSuccess(): void
 
 **示例：**
 
-参见[autoFillManager.requestAutoSave](#autofillmanagerrequestautosave)。
+参见autoFillManager.requestAutoSave。
 

@@ -26,7 +26,7 @@ function offAudioMonoStateChange(callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。取消指定callback对象的事件响应。需与[accessibility.onAudioMonoStateChange](accessibility.onAudioMonoStateChange(callback: Callback<boolean>))的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数。取消指定callback对象的事件响应。需与[accessibility.onAudioMonoStateChange](accessibility.onAudioMonoStateChange(callback: Callback<boolean>))的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **示例：**
 

@@ -42,7 +42,7 @@ onFinished(callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 动画完成时调用的回调 |
+| callback | Callback&lt;void&gt; | 是 | 动画完成时调用的回调 |
 
 ## onStarted
 
@@ -62,7 +62,7 @@ onStarted(callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 动画开始时调用的回调 |
+| callback | Callback&lt;void&gt; | 是 | 动画开始时调用的回调 |
 
 ## pause
 

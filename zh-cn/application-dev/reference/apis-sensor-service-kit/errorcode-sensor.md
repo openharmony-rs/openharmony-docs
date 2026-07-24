@@ -37,7 +37,7 @@ The sensor is not supported by the device.
 
 **错误描述**
 
-当调用[getSingleSensor](js-apis-sensor.md#sensorgetsinglesensor9)接口时，若设备不支持该传感器，会报此错误码，导致无法获取该传感器信息。此错误码表示请求的传感器类型在当前设备上不存在或未被支持。
+当调用getSingleSensor接口时，若设备不支持该传感器，会报此错误码，导致无法获取该传感器信息。此错误码表示请求的传感器类型在当前设备上不存在或未被支持。
 
 **可能原因**
 
@@ -45,4 +45,4 @@ The sensor is not supported by the device.
 
 **处理步骤**
 
-返回14500102表示设备不支持该传感器。请检查设备是否支持该传感器类型，或使用[getsensorlist](js-apis-sensor.md#sensorgetsensorlist9)接口获取设备支持的传感器列表，选择设备支持的传感器类型。
+返回14500102表示设备不支持该传感器。请检查设备是否支持该传感器类型，或使用getsensorlist接口获取设备支持的传感器列表，选择设备支持的传感器类型。

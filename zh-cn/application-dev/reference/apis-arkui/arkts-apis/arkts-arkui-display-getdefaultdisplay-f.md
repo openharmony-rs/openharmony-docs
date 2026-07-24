@@ -28,7 +28,7 @@ function getDefaultDisplay(callback: AsyncCallback<Display>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Display&gt; | 是 | 回调函数。返回当前默认的Display对象。 |
+| callback | AsyncCallback&lt;Display&gt; | 是 | 回调函数。返回当前默认的Display对象。 |
 
 **示例：**
 

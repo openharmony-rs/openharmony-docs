@@ -35,7 +35,7 @@ off(type: 'enableChange', callback?: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'enableChange' | 是 | 取消监听的事件名，固定为‘enableChange’，即字幕配置启用状态变化事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与[on('enableChange')](accessibility.CaptionsManager.on(type: 'enableChange', callback: Callback<boolean>))的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与[on('enableChange')](accessibility.CaptionsManager.on(type: 'enableChange', callback: Callback<boolean>))的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -95,7 +95,7 @@ off(type: 'styleChange', callback?: Callback<CaptionsStyle>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'styleChange' | 是 | 取消监听的事件名，固定为‘styleChange’，即字幕风格变化事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CaptionsStyle&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与[on('styleChange')](accessibility.CaptionsManager.on(type: 'styleChange', callback: Callback<CaptionsStyle>))的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;CaptionsStyle&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与[on('styleChange')](accessibility.CaptionsManager.on(type: 'styleChange', callback: Callback<CaptionsStyle>))的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -162,7 +162,7 @@ on(type: 'enableChange', callback: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'enableChange' | 是 | 监听的事件名，固定为‘enableChange’，即字幕配置启用状态变化事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 是 | 回调函数，在启用状态变化时将状态通过此函数进行通知。返回true表示字幕配置开启，返回false表示字幕配置关闭。 |
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数，在启用状态变化时将状态通过此函数进行通知。返回true表示字幕配置开启，返回false表示字幕配置关闭。 |
 
 **错误码：**
 
@@ -224,7 +224,7 @@ on(type: 'styleChange', callback: Callback<CaptionsStyle>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'styleChange' | 是 | 监听的事件名，固定为‘styleChange’，即字幕风格变化事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CaptionsStyle&gt; | 是 | 回调函数，在字幕风格变化时通过此函数进行通知。 |
+| callback | Callback&lt;CaptionsStyle&gt; | 是 | 回调函数，在字幕风格变化时通过此函数进行通知。 |
 
 **错误码：**
 

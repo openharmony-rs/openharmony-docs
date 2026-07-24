@@ -22,7 +22,7 @@ function getActiveNotificationCount(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取未删除通知数回调函数。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 获取未删除通知数回调函数。 |
 
 
 ## getActiveNotificationCount

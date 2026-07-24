@@ -75,7 +75,7 @@ constructor(type: EventType, bundleName: string, triggerAction: Action)
 | --- | --- | --- | --- |
 | type | [EventType](../../apis-arkts/arkts-apis/arkts-arkts-xml-eventtype-e.md) | 是 | 无障碍事件类型。 |
 | bundleName | string | 是 | 目标应用名。 |
-| triggerAction | [Action](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-action-e.md) | 是 | 触发事件的 Action。 |
+| triggerAction | Action | 是 | 触发事件的 Action。 |
 
 **示例：**
 

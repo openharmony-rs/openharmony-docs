@@ -143,7 +143,7 @@ function off(type: 'deviceConnect', callback?: Callback<ContinuationResult>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceConnect' | 是 | 取消监听的事件类型，固定值"deviceConnect"。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ContinuationResult&gt; | 否 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
+| callback | Callback&lt;ContinuationResult&gt; | 否 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
 
 **示例：**
 
@@ -184,7 +184,7 @@ function off(type: 'deviceDisconnect', callback?: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceDisconnect' | 是 | 取消监听的事件类型，固定值"deviceDisconnect"。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 否 | 当用户从设备选择模块中断开设备时调用，返回设备ID供开发者使用。 |
+| callback | Callback&lt;string&gt; | 否 | 当用户从设备选择模块中断开设备时调用，返回设备ID供开发者使用。 |
 
 **示例：**
 

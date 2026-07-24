@@ -38,7 +38,7 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | common2D.Color | 是 | ARGB格式的颜色，每个颜色通道的值是0到255之间的整数。 |
-| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 颜色的混合模式。 |
+| mode | BlendMode | 是 | 颜色的混合模式。 |
 
 **返回值：**
 
@@ -71,7 +71,7 @@ static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMod
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | common2D.Color \| number | 是 | 颜色，可以用16进制ARGB格式的无符号整数表示。 |
-| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 颜色的混合模式。 |
+| mode | BlendMode | 是 | 颜色的混合模式。 |
 
 **返回值：**
 

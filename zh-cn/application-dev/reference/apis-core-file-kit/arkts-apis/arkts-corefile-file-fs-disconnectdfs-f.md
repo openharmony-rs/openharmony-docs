@@ -26,7 +26,7 @@ declare function disconnectDfs(networkId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| networkId | string | 是 | 设备的网络Id。通过[distributedDeviceManager](../../apis-distributed-service-kit/arkts-apis/arkts-distributeddevicemanager.md)接口调用[DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)获得。 |
+| networkId | string | 是 | 设备的网络Id。通过distributedDeviceManager接口调用DeviceBasicInfo获得。 |
 
 **返回值：**
 

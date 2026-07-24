@@ -67,7 +67,7 @@ getDistanceMap(): Map<SourceTool, number>
 返回滑动手势识别器在不同输入源的情况下触发的最小滑动距离。
 > **说明：**  
 >  
-> 仅支持对通过Pan手势初始化配置修改的设备类型进行阈值查询。对于默认滑动阈值，可通过查询[SourceTool](../arkts-components/arkts-arkui-sourcetool-e.md).Unknown类型获取。其他未主动设置的类型则无法获取。
+> 仅支持对通过Pan手势初始化配置修改的设备类型进行阈值查询。对于默认滑动阈值，可通过查询SourceTool.Unknown类型获取。其他未主动设置的类型则无法获取。
 
 **起始版本：** 19
 

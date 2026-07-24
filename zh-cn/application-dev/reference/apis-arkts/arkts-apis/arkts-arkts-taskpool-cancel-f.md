@@ -26,7 +26,7 @@ function cancel(task: Task): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| task | [Task](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-task-i.md) | 是 | 需要取消执行的任务。 |
+| task | Task | 是 | 需要取消执行的任务。 |
 
 **错误码：**
 

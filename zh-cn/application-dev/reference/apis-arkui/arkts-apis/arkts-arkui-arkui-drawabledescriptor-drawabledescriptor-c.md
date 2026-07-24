@@ -46,7 +46,7 @@ getPixelMap(): image.PixelMap
 
 **示例：**
 
-示例请参考[LayeredDrawableDescriptor](#layereddrawabledescriptor)中的示例代码。
+示例请参考LayeredDrawableDescriptor中的示例代码。
 
 ## invalidate
 
@@ -121,7 +121,7 @@ load(): Promise<DrawableDescriptorLoadedResult>
 
 **示例：**
 
-示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
+示例请参考DrawableDescriptorLoadedResult中的示例代码。
 
 ## loadSync
 
@@ -154,7 +154,7 @@ loadSync(): DrawableDescriptorLoadedResult
 
 **示例：**
 
-示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
+示例请参考DrawableDescriptorLoadedResult中的示例代码。
 
 ## release
 

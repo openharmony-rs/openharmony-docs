@@ -20,7 +20,7 @@ Send mouse event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [MouseEvent](../arkts-components/arkts-arkui-mouseevent-i.md) | 是 | MouseEvent to be sent. |
+| event | MouseEvent | 是 | MouseEvent to be sent. |
 
 **返回值：**
 

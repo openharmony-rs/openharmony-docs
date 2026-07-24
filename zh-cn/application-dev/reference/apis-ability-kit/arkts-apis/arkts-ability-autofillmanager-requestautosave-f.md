@@ -28,7 +28,7 @@ export function requestAutoSave(context: UIContext, callback?: AutoSaveCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [UIContext](../../apis-arkui/arkts-components/arkts-arkui-uicontext-t.md) | 是 | UI context in which the auto-save operation will be performed. |
+| context | UIContext | 是 | UI context in which the auto-save operation will be performed. |
 | callback | [AutoSaveCallback](arkts-ability-autofillmanager-autosavecallback-i.md) | 否 | Implements callbacks triggered when auto-save is complete. |
 
 **错误码：**

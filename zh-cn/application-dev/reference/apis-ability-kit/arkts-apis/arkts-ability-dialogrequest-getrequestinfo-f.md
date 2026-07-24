@@ -27,7 +27,7 @@ function getRequestInfo(want: Want): RequestInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 表示发起方请求弹框时传入的want信息。 |
+| want | Want | 是 | 表示发起方请求弹框时传入的want信息。 |
 
 **返回值：**
 

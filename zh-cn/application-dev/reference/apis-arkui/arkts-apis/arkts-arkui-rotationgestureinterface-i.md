@@ -118,7 +118,7 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。与[on
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;GestureEvent&gt; | 是 | 手势事件回调函数。 |
+| event | Callback&lt;GestureEvent&gt; | 是 | 手势事件回调函数。 |
 
 **返回值：**
 

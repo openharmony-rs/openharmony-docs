@@ -15,7 +15,7 @@
 > - 在API version 22及之前版本，中间码HAR、字节码HAR通过资源ID相关接口访问资源时，因ID无效会抛出异常；从API version 23开始，中间码HAR、字节码HAR通过资源ID相关接口可以正常访问资源，  
 > 更多请参考[资源访问](../../../quick-start/resource-categories-and-access.md#资源访问)。  
 >  
-> - 示例代码中test文件的具体内容请参考[附录](../../../reference/apis-localization-kit/js-apis-resource-manager.md#附录)。
+> - 示例代码中test文件的具体内容请参考附录。
 
 **起始版本：** 6
 
@@ -278,7 +278,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -1759,7 +1759,7 @@ getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableD
 
 | 类型 | 说明 |
 | --- | --- |
-| [DrawableDescriptor](../../apis-arkui/arkts-components/arkts-arkui-drawabledescriptor-t.md) | 资源ID值对应的DrawableDescriptor对象。 |
+| DrawableDescriptor | 资源ID值对应的DrawableDescriptor对象。 |
 
 **错误码：**
 
@@ -1847,7 +1847,7 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 
 | 类型 | 说明 |
 | --- | --- |
-| [DrawableDescriptor](../../apis-arkui/arkts-components/arkts-arkui-drawabledescriptor-t.md) | 资源ID值对应的DrawableDescriptor对象。 |
+| DrawableDescriptor | 资源ID值对应的DrawableDescriptor对象。 |
 
 **错误码：**
 
@@ -1921,7 +1921,7 @@ getDrawableDescriptorByName(resName: string, density?: number, type?: number): D
 
 | 类型 | 说明 |
 | --- | --- |
-| [DrawableDescriptor](../../apis-arkui/arkts-components/arkts-arkui-drawabledescriptor-t.md) | 资源名称对应的DrawableDescriptor对象。 |
+| DrawableDescriptor | 资源名称对应的DrawableDescriptor对象。 |
 
 **错误码：**
 
@@ -2344,7 +2344,7 @@ getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID值对应的媒体文件内容。 |
+| callback | AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID值对应的媒体文件内容。 |
 
 **示例：**
 
@@ -2429,7 +2429,7 @@ getMediaBase64(resId: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **示例：**
 
@@ -4804,7 +4804,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **示例：**
 
@@ -5878,7 +5878,7 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回rawfile文件内容。 |
+| callback | AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回rawfile文件内容。 |
 
 **示例：**
 
@@ -6138,7 +6138,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | rawfile文件路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RawFileDescriptor&gt; | 是 | 回调函数，返回rawfile文件的文件描述符（fd）。 |
+| callback | AsyncCallback&lt;RawFileDescriptor&gt; | 是 | 回调函数，返回rawfile文件的文件描述符（fd）。 |
 
 **示例：**
 
@@ -6480,7 +6480,7 @@ getString(resId: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的字符串。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的字符串。 |
 
 **示例：**
 
@@ -6565,7 +6565,7 @@ getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
 **示例：**
 

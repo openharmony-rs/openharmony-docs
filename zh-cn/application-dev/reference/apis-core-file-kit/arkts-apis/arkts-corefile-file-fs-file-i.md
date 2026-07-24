@@ -124,7 +124,7 @@ lock(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步文件上锁之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步文件上锁之后的回调。 |
 
 **错误码：**
 
@@ -174,7 +174,7 @@ lock(exclusive: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | exclusive | boolean | 是 | 是否施加独占锁，默认false。true：施加独占锁；false：不施加独占锁。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步文件上锁之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步文件上锁之后的回调。 |
 
 **错误码：**
 

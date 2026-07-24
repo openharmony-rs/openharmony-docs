@@ -22,7 +22,7 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 应用请求通知使能的回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 应用请求通知使能的回调函数。 |
 
 
 ## requestEnableNotification

@@ -788,8 +788,8 @@ systemMaterial?: SystemUiMaterial
 
 **说明：**
 
-- 默认值：[ImmersiveOptions](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。  
-- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor)、背景模糊[backgroundBlurStyle](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundblurstyle)、背景效果[backgroundEffect](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundeffect)、边框颜色[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
+- 默认值：ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象。设置undefined时与默认值保持一致。  
+- 不同的材质具有不同的效果，该接口影响背景色backgroundColor、背景模糊backgroundBlurStyle、背景效果backgroundEffect、边框颜色borderColor、边框宽度borderWidth、阴影shadow，不建议与上述接口一起使用。
 
 **类型：** SystemUiMaterial
 

@@ -63,7 +63,7 @@ constructor(lineHeight: LengthMetrics, lineHeightMultiple?: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | lineHeight | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本行高设置项。LengthMetrics的value值大于0时，文本行高设置生效，否则文本行高自适应字体大小。 |
-| lineHeightMultiple | number | 否 | 文本行高的倍数值。<br/>取值范围：[0, +∞)，支持小数。 |
+| lineHeightMultiple | number | 否 | 文本行高的倍数值。<br/>取值范围：0, +∞)，支持小数。 |
 
 ## lineHeight
 
@@ -73,7 +73,7 @@ readonly lineHeight: number
 
 获取属性字符串的文本行高。
 
-单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+单位：[vp
 
 **类型：** number
 

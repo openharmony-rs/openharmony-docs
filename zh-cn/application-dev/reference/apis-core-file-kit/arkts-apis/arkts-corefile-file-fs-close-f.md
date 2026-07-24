@@ -67,7 +67,7 @@ declare function close(file: number | File, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | file | number \| File | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步关闭文件或目录之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步关闭文件或目录之后的回调。 |
 
 **错误码：**
 

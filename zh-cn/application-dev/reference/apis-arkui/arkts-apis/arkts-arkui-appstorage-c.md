@@ -428,7 +428,7 @@ static delete(propName: string): boolean
 
 1. [@StorageLink](../../../ui/state-management/arkts-appstorage.md#storagelink)、[@StorageProp](../../../ui/state-management/arkts-appstorage.md#storageprop)装饰的变量。
 
-2. 通过[link](arkts-arkui-appstorage-c.md#link)、[prop](arkts-arkui-appstorage-c.md#prop)、[setAndLink](arkts-arkui-appstorage-c.md#setandlink)、[setAndProp](arkts-arkui-appstorage-c.md#setandprop)接口返回的[SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c-sys.md)的实例。
+2. 通过[link](arkts-arkui-appstorage-c.md#link)、[prop](arkts-arkui-appstorage-c.md#prop)、[setAndLink](arkts-arkui-appstorage-c.md#setandlink)、[setAndProp](arkts-arkui-appstorage-c.md#setandprop)接口返回的SubscribedAbstractProperty的实例。
 
 如果想要删除这些订阅者，可以通过以下方式：
 

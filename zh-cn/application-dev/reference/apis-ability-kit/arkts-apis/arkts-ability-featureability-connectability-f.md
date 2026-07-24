@@ -30,7 +30,7 @@ function connectAbility(request: Want, options: ConnectOptions): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| request | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 表示被连接的ServiceAbility。 |
+| request | Want | 是 | 表示被连接的ServiceAbility。 |
 | options | [ConnectOptions](arkts-ability-ability-connectoptions-t.md) | 是 | 表示连接回调函数。 |
 
 **返回值：**

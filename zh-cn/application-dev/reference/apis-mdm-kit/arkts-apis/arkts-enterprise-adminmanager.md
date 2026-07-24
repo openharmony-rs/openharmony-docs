@@ -96,9 +96,9 @@ import { adminManager } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [disableAdmin](arkts-mdm-adminmanager-disableadmin-f.md#disableadmin-2) | 解除激活指定用户的设备管理应用。使用Promise异步回调。 |
-| [disableDeviceAdmin](arkts-mdm-adminmanager-disabledeviceadmin-f.md#disabledeviceadmin) | [超级设备管理应用](../../../mdm/mdm-kit-term.md#sda)通过该接口可以解除激活其他[普通设备管理应用](../../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。 |
-| [enableDeviceAdmin](arkts-mdm-adminmanager-enabledeviceadmin-f.md#enabledeviceadmin) | [超级设备管理应用](../../../mdm/mdm-kit-term.md#sda)通过该接口可以激活其他[普通设备管理应用](../../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。 |
+| disableAdmin | 解除激活指定用户的设备管理应用。使用Promise异步回调。 |
+| [disableDeviceAdmin](arkts-mdm-adminmanager-disabledeviceadmin-f.md#disabledeviceadmin) | 超级设备管理应用通过该接口可以解除激活其他普通设备管理应用，使用Promise异步回调。该接口仅支持超级设备管理应用调用。 |
+| [enableDeviceAdmin](arkts-mdm-adminmanager-enabledeviceadmin-f.md#enabledeviceadmin) | 超级设备管理应用通过该接口可以激活其他普通设备管理应用，使用Promise异步回调。该接口仅支持超级设备管理应用调用。 |
 | [enableSelfDeviceAdmin](arkts-mdm-adminmanager-enableselfdeviceadmin-f.md#enableselfdeviceadmin) | 在企业设备中，MDM应用没有预置激活的场景下，MDM应用可以通过该接口实现自激活。该接口仅支持激活MDM应用自身，不支持激活其他MDM应用；支持的激活类型包括超级设备管理应用和普通设备管理应用。  <!--RP1--><!--RP1End--> |
 | [getDelegatedBundleNames](arkts-mdm-adminmanager-getdelegatedbundlenames-f.md#getdelegatedbundlenames) | 查询可以访问某个委托策略的被委托应用，输出被委托应用列表。 |
 | [getDelegatedPolicies](arkts-mdm-adminmanager-getdelegatedpolicies-f.md#getdelegatedpolicies) | 查询被委托应用可访问的策略列表。 |

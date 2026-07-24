@@ -161,7 +161,7 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;GestureEvent&gt; | 是 | 长按手势取消回调函数。 |
+| event | Callback&lt;GestureEvent&gt; | 是 | 长按手势取消回调函数。 |
 
 **返回值：**
 

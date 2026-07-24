@@ -30,14 +30,14 @@ function importContactsViaUI(context: Context, contacts: Array<Contact>): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | contacts | Array&lt;Contact&gt; | 是 | 表示待导入数据库的联系人信息数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | 返回联系人创建结果的数组。返回的联系人id有效（可通过[getId](Contact#getId())获取）表示创建成功。返回值为-1[INVALID_CONTACT_ID](arkts-contacts-contact-contact-c.md#invalid_contact_id) 表示创建失败。-2表示用户未选择该联系人。 |
+| Promise&lt;Array&lt;number&gt;&gt; | 返回联系人创建结果的数组。返回的联系人id有效（可通过getId)获取）表示创建成功。返回值为-1[INVALID_CONTACT_ID](arkts-contacts-contact-contact-c.md#invalid_contact_id) 表示创建失败。-2表示用户未选择该联系人。 |
 
 **错误码：**
 
@@ -51,7 +51,7 @@ function importContactsViaUI(context: Context, contacts: Array<Contact>): Promis
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';

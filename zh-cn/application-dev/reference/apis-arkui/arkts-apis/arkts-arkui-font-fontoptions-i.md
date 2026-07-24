@@ -5,7 +5,7 @@
 >  
 > 直接使用font可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用  
 > [UIContext](arkts-arkui-uicontext.md)中的  
-> [getFont](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的  
+> getFont方法获取当前UI上下文关联的  
 > [Font](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9

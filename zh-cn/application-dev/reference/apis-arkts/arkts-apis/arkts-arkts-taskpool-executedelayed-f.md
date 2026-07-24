@@ -27,7 +27,7 @@ function executeDelayed(delayTime: number, task: Task, priority?: Priority): Pro
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | delayTime | number | 是 | 延时时间，单位为ms。delayTime值必须要大于等于0。该值应为整数。<br>单位：毫秒。 |
-| task | [Task](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-task-i.md) | 是 | 需要延时执行的任务。 |
+| task | Task | 是 | 需要延时执行的任务。 |
 | priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 延时执行的任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
 
 **返回值：**

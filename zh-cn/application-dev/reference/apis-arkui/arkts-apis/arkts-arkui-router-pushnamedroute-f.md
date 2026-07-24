@@ -18,11 +18,11 @@ function pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<voi
 > - 从API version 10开始支持，从API version 18开始废弃，建议使用  
 > [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)  
 > 替代。pushNamedRoute需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> getRouter获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> getRouter方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 10
@@ -44,7 +44,7 @@ function pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 跳转页面描述信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异常响应回调。 |
 
 **错误码：**
 
@@ -104,11 +104,11 @@ function pushNamedRoute(options: NamedRouterOptions): Promise<void>
 > - 从API version 10开始支持，从API version 18开始废弃，建议使用  
 > [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)替代。  
 > pushNamedRoute需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> getRouter获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> getRouter方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 10
@@ -197,11 +197,11 @@ function pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback:
 > - 从API version 10开始支持，从API version 18开始废弃，建议使用  
 > [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)  
 > 替代。pushNamedRoute需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> getRouter获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> getRouter方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 10
@@ -224,7 +224,7 @@ function pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback:
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 跳转页面描述信息。 |
 | mode | [RouterMode](arkts-arkui-router-routermode-e.md) | 是 | 跳转页面使用的模式。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异常响应回调。 |
 
 **错误码：**
 
@@ -284,11 +284,11 @@ function pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<
 > - 从API version 10开始支持，从API version 18开始废弃，建议使用  
 > [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)  
 > 替代。pushNamedRoute需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> getRouter获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> getRouter方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 10

@@ -38,7 +38,7 @@ constructor(node: FrameNode, distance: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | 是 | 响应滚动动作的目标节点。 |
+| node | FrameNode | 是 | 响应滚动动作的目标节点。 |
 | distance | number | 是 | 滚动距离。<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>单位为vp。 |
 
 ## distance

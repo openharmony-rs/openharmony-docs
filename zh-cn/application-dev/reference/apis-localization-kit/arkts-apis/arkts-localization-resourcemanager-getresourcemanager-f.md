@@ -26,7 +26,7 @@ export function getResourceManager(callback: AsyncCallback<ResourceManager>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResourceManager&gt; | 是 | 回调函数，返回资源管理ResourceManager对象。 |
+| callback | AsyncCallback&lt;ResourceManager&gt; | 是 | 回调函数，返回资源管理ResourceManager对象。 |
 
 **示例：**
 
@@ -78,7 +78,7 @@ export function getResourceManager(bundleName: string, callback: AsyncCallback<R
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResourceManager&gt; | 是 | 回调函数，返回应用包名对应的资源管理ResourceManager对象。 |
+| callback | AsyncCallback&lt;ResourceManager&gt; | 是 | 回调函数，返回应用包名对应的资源管理ResourceManager对象。 |
 
 **示例：**
 

@@ -30,7 +30,7 @@ import { common } from '@kit.AbilityKit';
 | [AgentHostProxy](arkts-ability-common-agenthostproxy-t.md) | AgentHostProxy是连接到Agent的客户端的代理对象，通过它可以与agent.的连接对应方通信。 |
 | [AgentProvider](arkts-ability-common-agentprovider-t.md) | AgentCard中的Provider是指发行和的组织或平台。管理代理的凭据。 |
 | [AgentSkill](arkts-ability-common-agentskill-t.md) | AgentCard中的技能表示特定的 skills、专业知识和熟练程度用于执行任务或解决问题的代理。 |
-| [AppServiceExtensionContext](arkts-ability-common-appserviceextensioncontext-t.md) | [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件上下文，继承自Context。 |
+| [AppServiceExtensionContext](arkts-ability-common-appserviceextensioncontext-t.md) | AppServiceExtensionAbility组件上下文，继承自Context。 |
 | [ApplicationContext](arkts-ability-common-applicationcontext-t.md) | 应用上下文，继承自Context。 |
 | [BaseContext](arkts-ability-common-basecontext-t.md) | 所有Context类型的父类。 |
 | [ConnectOptions](arkts-ability-common-connectoptions-t.md) | 在连接指定的后台服务时作为入参，用于接收与后台服务的连接状态。 |

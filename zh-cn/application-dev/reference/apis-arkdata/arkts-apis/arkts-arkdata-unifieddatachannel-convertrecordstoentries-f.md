@@ -34,7 +34,7 @@ function convertRecordsToEntries(data: UnifiedData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [UnifiedData](../../apis-arkui/arkts-components/arkts-arkui-unifieddata-t.md) | 是 | 需要转换为多样式数据结构的统一数据对象。 |
+| data | UnifiedData | 是 | 需要转换为多样式数据结构的统一数据对象。 |
 
 **错误码：**
 

@@ -35,7 +35,7 @@ build(builder: WrappedBuilder<Args>, config: BuildOptions, ...args: Args): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;Args&gt; | 是 | 创建对应节点树时所需的无状态UI方法[@Builder](../../../ui/state-management/arkts-builder.md)。 |
+| builder | WrappedBuilder&lt;Args&gt; | 是 | 创建对应节点树时所需的无状态UI方法[@Builder](../../../ui/state-management/arkts-builder.md)。 |
 | config | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | 是 | 作用是配置Builder的构建行为，BuildOptions中所有属性都是可选的，默认值为BuildOptions中对应的默认值。 |
 | args | Args | 是 | Input arguments of the builder, which are used to construct the **builder** function encapsulated by the **WrappedBuilder** object. Multiple arguments are supported. The default value is **undefined**. |
 
@@ -61,7 +61,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | UI上下文，获取方式可参考[UIContext获取方法](../../../ui/arkts-global-interface.md#uicontext获取方法)。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
+| uiContext | UIContext | 是 | UI上下文，获取方式可参考UIContext获取方法。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
 | options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | 否 | ReactiveBuilderNode的构造可选参数，参数用于构造节点的理想大小和节点的渲染类型。<br/>默认值：undefined |
 
 ## dispose
@@ -126,7 +126,7 @@ getFrameNode(): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | **FrameNode** object. If no such object is held by the **ReactiveBuilderNode** instance, **null** is returned. |
+| FrameNode | **FrameNode** object. If no such object is held by the **ReactiveBuilderNode** instance, **null** is returned. |
 
 ## inheritFreezeOptions
 
@@ -196,16 +196,16 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 > 传入的坐标值需要转换为px，坐标转换示例可以参考下面示例代码。  
 >  
 > 鼠标左键点击事件将转换为触摸事件，转发时应注意不在外层且绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，事件的  
-> [SourceType](../../../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)不会发生变化，规格可查看  
-> [onTouch](../../../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)。  
+> SourceType不会发生变化，规格可查看  
+> onTouch。  
 >  
-> 注入事件为轴事件[（AxisEvent）](../../apis-arkui/arkts-components/arkts-arkui-common-attribute.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发  
-> [RotationGesture](../../apis-arkui/arkts-apis/arkts-arkui-gesture-i)。  
+> 注入事件为轴事件（AxisEvent）时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发  
+> RotationGesture。  
 >  
 > 转发的事件会在被分发到的目标组件所在的子树里做触摸测试（TouchTest），并触发对应手势，原始事件也会触发当前组件所在组件树中的手势。不保证两类手势的竞争结果。  
 >  
 > 如果是开发者构造的事件，必填字段必须赋值，比如触摸事件的touches字段、轴事件的scrollStep字段，同时要保证事件的完整，比如触摸事件的  
-> [TouchType](../../apis-arkui/arkts-apis/arkts-arkui-enums-e)中DOWN和UP字段都要有，防止出现未定义行为。  
+> TouchType中DOWN和UP字段都要有，防止出现未定义行为。  
 >  
 > [webview](../../apis-arkweb/arkts-apis/arkts-web-webview.md)已经处理过坐标系变换，可以将事件直接下发。  
 >  
@@ -213,7 +213,7 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 >  
 > 不建议同一个事件转发多次。  
 >  
-> postInputEvent的参数不支持[UIExtensionComponent](../../apis-arkui/arkts-components/arkts-arkui-ui_extension_component-i)。
+> postInputEvent的参数不支持UIExtensionComponent。
 
 **起始版本：** 22
 
@@ -253,18 +253,18 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 > - 传入的坐标值单位需要转换为px，坐标转换示例可以参考下面示例代码。  
 >  
 > - 系统在处理鼠标左键点击事件时将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，  
-> [TouchType](../../apis-arkui/arkts-apis/arkts-arkui-enums-e)不会发生变化，规格可查看  
-> [onTouch](../../../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)。  
+> TouchType不会发生变化，规格可查看  
+> onTouch。  
 >  
-> - 注入事件为轴事件[AxisEvent](../../apis-arkui/arkts-components/arkts-arkui-common-attribute.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势  
-> [RotationGesture](../../apis-arkui/arkts-apis/arkts-arkui-gesture-i)。  
+> - 注入事件为轴事件AxisEvent时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势  
+> RotationGesture。  
 >  
 > - 转发的事件会在被分发到的目标组件及其子组件里做事件处理，并触发对应手势。可以通过入参控制当前组件和目标组件手势是否为竞争关系。  
 >  
 > - 如果event转化为对应的事件后，该事件为开发者构造的事件，必填字段必须赋值，比如触摸事件的touches字段，轴事件的scrollStep字段。要保证事件的完整，比如触摸事件的  
-> [TouchType](../../apis-arkui/arkts-apis/arkts-arkui-enums-e)中必须同时包含DOWN和UP两个字段，防止出现程序异常或意外崩溃。  
+> TouchType中必须同时包含DOWN和UP两个字段，防止出现程序异常或意外崩溃。  
 >  
-> - 支持同一个事件转发多次，不支持[UIExtensionComponent](../../apis-arkui/arkts-components/arkts-arkui-ui_extension_component-i)调用本接  
+> - 支持同一个事件转发多次，不支持UIExtensionComponent调用本接  
 > 口。
 
 **起始版本：** 24
@@ -300,7 +300,7 @@ postTouchEvent(event: TouchEvent): boolean
 
 postTouchEvent是从组件树的中间节点往下分发，需要变换到父组件坐标系才能分发成功，参考下图。
 
-OffsetA为buildNode相对于父组件的偏移量，可以通过FrameNode中的[getPositionToParent](arkts-arkui-framenode-c.md#getpositiontoparent)获取。OffsetB为point点相对于buildNode的偏移量，可以通过[TouchEvent](../../../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)获取。OffsetC为OffsetA与OffsetB的和，是传给postTouchEvent的最终结果。
+OffsetA为buildNode相对于父组件的偏移量，可以通过FrameNode中的[getPositionToParent](arkts-arkui-framenode-c.md#getpositiontoparent)获取。OffsetB为point点相对于buildNode的偏移量，可以通过TouchEvent获取。OffsetC为OffsetA与OffsetB的和，是传给postTouchEvent的最终结果。
 
 ![postTouchEvent](../../../reference/apis-arkui/figures/postTouchEvent.PNG)
 > **说明：**  
@@ -311,7 +311,7 @@ OffsetA为buildNode相对于父组件的偏移量，可以通过FrameNode中的[
 >  
 > 同一时间戳，postTouchEvent只能调用一次。  
 >  
-> postTouchEvent的参数不支持[UIExtensionComponent](../../apis-arkui/arkts-components/arkts-arkui-ui_extension_component-i)。
+> postTouchEvent的参数不支持UIExtensionComponent。
 
 **起始版本：** 22
 
@@ -379,7 +379,7 @@ ReactiveBuilderNode通过reuse和[recycle](arkts-arkui-buildernode-reactivebuild
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | Object | 否 | 用于复用[ReactiveBuilderNode](arkts-arkui-buildernode-reactivebuildernode-c.md)的参数。该参数将直接用于[ReactiveBuilderNode](arkts-arkui-buildernode-reactivebuildernode-c.md)中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ReactiveBuilderNode中的自定义组件将直接使用构造时的数据源。 |
+| param | Object | 否 | 用于复用[ReactiveBuilderNode](arkts-arkui-buildernode-reactivebuildernode-c.md)的参数。该参数将直接用于[ReactiveBuilderNode](arkts-arkui-buildernode-reactivebuildernode-c.md)中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的aboutToReuse生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ReactiveBuilderNode中的自定义组件将直接使用构造时的数据源。 |
 
 ## updateConfiguration
 

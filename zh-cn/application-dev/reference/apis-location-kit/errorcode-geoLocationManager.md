@@ -82,15 +82,15 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 **可能原因**
 
-定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)值设定过小。
+定位请求参数LocationRequest、CurrentLocationRequest中的精度要求(maxAccuracy)值设定过小。
 
 **处理步骤**
 
-请将定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)适当放宽，可参考如下场景建议：
+请将定位请求参数LocationRequest、CurrentLocationRequest中的精度要求(maxAccuracy)适当放宽，可参考如下场景建议：
 
-- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为ACCURACY时，建议设置maxAccuracy为大于10的值。
+- 当scenario为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者priority为ACCURACY时，建议设置maxAccuracy为大于10的值。
 
-- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
+- 当scenario为DAILY_LIFE_SERVICE/NO_POWER，或者priority为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
 
 ### 错误原因3. 获取缓存位置失败
 
@@ -108,7 +108,7 @@ The system does not have a cache location.
 
 **处理步骤**
 
-系统未提前将位置信息进行缓存的情况下，需使用[getCurrentLocation](./js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)接口获取实时位置信息。</br>
+系统未提前将位置信息进行缓存的情况下，需使用getCurrentLocation接口获取实时位置信息。</br>
 
 ### 错误原因4. 获取后处理轨迹失败
 
@@ -126,7 +126,7 @@ Failed to obtain the post processing track because sports type is not supported.
 
 **处理步骤**
 
-请参考[getPostProcessingTrack](./js-apis-geoLocationManager.md#geolocationmanagergetpostprocessingtrack)入参说明，使用支持的sports类型。</br>
+请参考getPostProcessingTrack入参说明，使用支持的sports类型。</br>
 
 ### 错误原因5. 其他原因导致定位失败
 

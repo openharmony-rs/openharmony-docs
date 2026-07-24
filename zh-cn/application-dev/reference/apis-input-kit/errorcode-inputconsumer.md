@@ -27,7 +27,7 @@ The hotkey has been used by the system.
 
 **处理步骤**
 
-可以通过[getAllSystemHotkeys](js-apis-inputconsumer.md#inputconsumergetallsystemhotkeys)接口查询所有的系统快捷键。
+可以通过getAllSystemHotkeys接口查询所有的系统快捷键。
 
 ## 4200003 快捷键已经被其他应用注册
 

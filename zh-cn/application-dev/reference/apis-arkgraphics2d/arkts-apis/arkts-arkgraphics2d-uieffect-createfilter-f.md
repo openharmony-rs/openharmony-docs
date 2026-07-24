@@ -24,7 +24,7 @@ function createFilter(): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| [Filter](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-filter-i.md) | 返回Filter的头节点。 |
+| Filter | 返回Filter的头节点。 |
 
 **示例：**
 

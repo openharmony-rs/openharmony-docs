@@ -248,7 +248,7 @@ The form host uses an incorrect dimension.
 
 **处理步骤**
 
-检查入参卡片尺寸是否在[FormDimension](js-apis-app-form-formInfo.md#formdimension)和[supportDimensions](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)配置列表。
+检查入参卡片尺寸是否在FormDimension和[supportDimensions](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)配置列表。
 
 ## 16501013 系统不支持当前操作
 
@@ -320,7 +320,7 @@ The location of the widget is invalid.
 
 **处理步骤**
 
-检查入参卡片位置是否在[FormLocation](js-apis-app-form-formInfo.md#formlocation20)配置列表。
+检查入参卡片位置是否在FormLocation配置列表。
 
 ## 2293761 内部服务错误
 

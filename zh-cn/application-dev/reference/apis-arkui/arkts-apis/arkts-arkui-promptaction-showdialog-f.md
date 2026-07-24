@@ -15,9 +15,9 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 创建并显示对话框，对话框响应结果使用callback异步回调返回。
 > **说明：**  
 >  
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[showDialog](arkts-apis-uicontext-promptaction.md#showdialog)替代。showDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用showDialog可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。  
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用showDialog替代。showDialog需先通过UIContext中的getPromptAction方法获取PromptAction对象，然后通过该对象进行调用。且直接使用showDialog可能导致UI上下文不明确的问题。  
 >  
-> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](arkts-apis-uicontext-promptaction.md)对象。
+> - 从API version 10开始，可以通过使用UIContext中的getPromptAction方法获取当前UI上下文关联的PromptAction对象。
 
 **起始版本：** 9
 
@@ -36,7 +36,7 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md) | 是 | 页面显示对话框信息描述。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ShowDialogSuccessResponse&gt; | 是 | 回调函数。弹出对话框成功，err为undefined，data为获取到的对话框响应结果，否则为错误对象。 |
+| callback | AsyncCallback&lt;ShowDialogSuccessResponse&gt; | 是 | 回调函数。弹出对话框成功，err为undefined，data为获取到的对话框响应结果，否则为错误对象。 |
 
 **错误码：**
 
@@ -187,7 +187,7 @@ try {
 
 ```
 
-从API version 19开始，该示例通过调用[ShowDialogOptions](#showdialogoptions)中的onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性展示了弹窗生命周期的相关接口的使用方法。
+从API version 19开始，该示例通过调用ShowDialogOptions中的onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性展示了弹窗生命周期的相关接口的使用方法。
 
 ```TypeScript
 // xxx.ets
@@ -249,7 +249,7 @@ struct DialogExample {
 
 ```
 
-从API version 19开始，该示例通过调用[ShowDialogOptions](#showdialogoptions)中的onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性展示了弹窗生命周期的相关接口的使用方法。
+从API version 19开始，该示例通过调用ShowDialogOptions中的onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性展示了弹窗生命周期的相关接口的使用方法。
 
 ```TypeScript
 // xxx.ets
@@ -321,9 +321,9 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 创建并显示对话框，对话框通过Promise返回结果。
 > **说明：**  
 >  
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[showDialog](arkts-apis-uicontext-promptaction.md#showdialog-1)替代。showDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用showDialog可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。  
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用showDialog替代。showDialog需先通过UIContext中的getPromptAction方法获取PromptAction对象，然后通过该对象进行调用。且直接使用showDialog可能导致UI上下文不明确的问题。  
 >  
-> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](arkts-apis-uicontext-promptaction.md)对象。
+> - 从API version 10开始，可以通过使用UIContext中的getPromptAction方法获取当前UI上下文关联的PromptAction对象。
 
 **起始版本：** 9
 

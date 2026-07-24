@@ -26,8 +26,8 @@ function getUid(agent: WantAgent, callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取WantAgent实例所属应用的UID的回调方法。 |
+| agent | WantAgent | 是 | WantAgent对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 获取WantAgent实例所属应用的UID的回调方法。 |
 
 **错误码：**
 
@@ -132,7 +132,7 @@ function getUid(agent: WantAgent): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
+| agent | WantAgent | 是 | WantAgent对象。 |
 
 **返回值：**
 

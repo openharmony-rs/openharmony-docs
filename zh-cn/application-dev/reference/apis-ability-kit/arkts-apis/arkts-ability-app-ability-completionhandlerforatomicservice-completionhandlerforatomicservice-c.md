@@ -42,7 +42,7 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 
 **示例：**
 
-参见[CompletionHandlerForAtomicService示例](#completionhandlerforatomicservice示例)。
+参见CompletionHandlerForAtomicService示例。
 
 ## onAtomicServiceRequestSuccess
 
@@ -70,5 +70,5 @@ onAtomicServiceRequestSuccess(appId: string): void
 
 **示例：**
 
-参见[CompletionHandlerForAtomicService示例](#completionhandlerforatomicservice示例)。
+参见CompletionHandlerForAtomicService示例。
 

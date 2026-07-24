@@ -34,7 +34,7 @@ function createEffect(source: image.PixelMap): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| [Filter](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-filter-i.md) | 返回不带任何效果的Filter链表头节点，失败时返回null。 |
+| Filter | 返回不带任何效果的Filter链表头节点，失败时返回null。 |
 
 **示例：**
 

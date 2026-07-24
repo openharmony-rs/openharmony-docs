@@ -27,7 +27,7 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uid | number | 是 | @param { AsyncCallback<string> } callback |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 |  |
+| callback | AsyncCallback&lt;string&gt; | 是 |  |
 
 
 ## getNameForUid

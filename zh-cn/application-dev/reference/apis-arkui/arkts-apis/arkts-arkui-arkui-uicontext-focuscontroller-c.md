@@ -140,7 +140,7 @@ setAutoFocusTransfer(isAutoFocusTransfer: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isAutoFocusTransfer | boolean | 是 | 设置页面切换时，新的页面是否需要主动获取焦点，例如[Router](arkts-router.md)、[Navigation](../arkts-components/arkts-arkui-navigation.md)、[Menu](../arkts-components/arkts-arkui-menu.md)、[Dialog](arkts-arkui-advanced-dialog.md)、[Popup](arkts-arkui-advanced-popup.md)等。true表示需要主动获取焦点，false表示不需要主动获取焦点。默认值为true。 |
+| isAutoFocusTransfer | boolean | 是 | 设置页面切换时，新的页面是否需要主动获取焦点，例如[Router](arkts-router.md)、Navigation、Menu、[Dialog](arkts-arkui-advanced-dialog.md)、[Popup](arkts-arkui-advanced-popup.md)等。true表示需要主动获取焦点，false表示不需要主动获取焦点。默认值为true。 |
 
 ## setKeyProcessingMode
 

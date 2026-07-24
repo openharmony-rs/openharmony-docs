@@ -26,5 +26,5 @@ type GetDelayData = (type: string) => UnifiedData
 
 | 类型 | 说明 |
 | --- | --- |
-| [UnifiedData](../../apis-arkui/arkts-components/arkts-arkui-unifieddata-t.md) | 当延迟回调触发时，返回包含相应类型数据的UnifiedData对象，可用于跨应用数据共享和传输。  |
+| UnifiedData | 当延迟回调触发时，返回包含相应类型数据的UnifiedData对象，可用于跨应用数据共享和传输。  |
 
