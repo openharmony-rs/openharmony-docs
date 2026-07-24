@@ -127,8 +127,12 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 | 参数名   | 类型   | 必填 | 说明                                                           |
 | ------ | ------ | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | routeName | string | 否 | 表示作为命名路由页面的名字。 |
-| storage | string | 否 | 返回[LocalStorage](../state-management/arkts-localstorage.md)实例对象的函数名。 |
-| useSharedStorage | boolean | 否 | 是否使用UIContext.getSharedLocalStorage()接口返回的共享的[LocalStorage](../state-management/arkts-localstorage.md)实例对象，默认值false。<br>true表示使用共享的[LocalStorage](../state-management/arkts-localstorage.md)实例对象。<br>false表示不使用共享的[LocalStorage](../state-management/arkts-localstorage.md)实例对象。 |
+| storage | string | 否 | 返回[LocalStorage](../state-management-static/arkts-static-localstorage.md)实例对象的函数名。 |
+| useSharedStorage | boolean | 否 | 是否使用UIContext.getSharedLocalStorage()接口返回的共享的LocalStorage实例对象，默认值false。值为true时：若loadContent传入了LocalStorage实例，则使用该LocalStorage实例对象，否则会新建一个LocalStorage实例。值为false时：不使用共享的LocalStorage实例对象。 |
+
+> **说明：**
+>
+> 当useSharedStorage设置为true且storage已赋值时，useSharedStorage的优先级高于storage参数，此时无论loadContent中是否传入LocalStorage实例，都不会使用传入的storage参数。
 
 
 <!-- @[EntryDecorator](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/EntryDecorator.ets) -->    
