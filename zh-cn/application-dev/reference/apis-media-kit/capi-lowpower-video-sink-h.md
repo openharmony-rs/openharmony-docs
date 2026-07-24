@@ -542,7 +542,7 @@ OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| int64_t *pts | 当前播放的pts。单位：μs。 |
+| int64_t *pts | 当前播放的pts。单位为微秒（μs）。 |
 
 **返回：**
 
