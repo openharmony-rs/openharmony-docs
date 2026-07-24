@@ -1261,11 +1261,7 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 
 创建一个子窗，并绑定父窗。使用Promise异步回调。
 
-仅支持主窗口作为绑定的父窗。
-
-子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化。
-
-建议在父窗销毁后主动销毁创建的子窗。
+仅支持主窗口作为绑定的父窗，子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化，建议在父窗销毁后主动销毁创建的子窗。
 
 **起始版本：** 26.0.0
 
@@ -2252,7 +2248,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
-| requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | 是   | 目标窗口RequestInfo值。 |
+| requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | 是   | 目标窗口请求信息。 |
 | deathCallback | Callback&lt;void&gt;    | 是   | 目标窗口销毁监听。 |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
@@ -4586,7 +4582,7 @@ export default class EntryAbility extends UIAbility {
 
 setShowOnLockScreen(showOnLockScreen: boolean): void
 
-设置应用显示在锁屏之上。
+设置应用是否显示在锁屏之上。
 
 **系统接口：** 此接口为系统接口。
 
