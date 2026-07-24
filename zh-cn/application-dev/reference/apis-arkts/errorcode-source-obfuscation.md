@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 从API version 18开始，提供源码混淆错误码。开发者在编译遇到此类错误时，可通过本文档查询错误码的含义、可能原因及建议的处理步骤。
 

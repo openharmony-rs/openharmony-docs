@@ -82,7 +82,7 @@ struct KeyframeDemo {
       Circle()
         .width(100)
         .height(100)
-        .fill("#46B1E3")
+        .fill('#46B1E3')
         .margin(100)
         .scale({ x: this.myScale, y: this.myScale })
         .onClick(() => {
@@ -96,7 +96,7 @@ struct KeyframeDemo {
               iterations: 3,
               delay: 200,
               onFinish: () => {
-                console.info("keyframe animate finish");
+                console.info('keyframe animate finish');
               },
               expectedFrameRateRange: {
                 min: 10,

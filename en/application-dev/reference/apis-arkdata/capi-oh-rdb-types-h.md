@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## Overview
@@ -26,7 +26,7 @@ Defines types related to data values.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) | OH_RDB_ReturningContext | Context of the returning-related APIs.|
+| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) | OH_RDB_ReturningContext | Defines the context of the returning-related APIs.|
 
 ### Enums
 
@@ -86,7 +86,7 @@ Creates an [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instan
 
 | Type| Description|
 | -- | -- |
-| [OH_RDB_ReturningContext *](capi-rdb-oh-rdb-returningcontext.md) | Returns a pointer to the [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance if the operation is successful; returns **nullptr** otherwise. You must release the memory via the [OH_RDB_DestroyReturningContext](capi-oh-rdb-types-h.md#oh_rdb_destroyreturningcontext API after use.|
+| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) * | Returns a pointer to the [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance if the operation is successful;<br>returns **nullptr** otherwise. Use [OH_RDB_DestroyReturningContext](#oh_rdb_destroyreturningcontext) to release the memory in time.|
 
 ### OH_RDB_DestroyReturningContext()
 
@@ -130,7 +130,7 @@ Sets the fields returned in the result set.
 
 | Type| Description|
 | -- | -- |
-| int | Check result.<br>Returns **RDB_OK** if the operation is successful; returns **RDB_E_INVALID_ARGS** if the input parameters are invalid.|
+| int | Check result.<br>Returns **RDB_OK** if the operation is successful;<br>returns **RDB_E_INVALID_ARGS** if the input parameters are invalid.|
 
 ### OH_RDB_SetMaxReturningCount()
 
@@ -155,7 +155,7 @@ Sets the maximum number of rows for the returned result set.
 
 | Type| Description|
 | -- | -- |
-| int | Check result.<br>Returns **RDB_OK** if the operation is successful; returns **RDB_E_INVALID_ARGS** if the input parameters are invalid.|
+| int | Check result.<br>Returns **RDB_OK** if the operation is successful;<br>returns **RDB_E_INVALID_ARGS** if the input parameters are invalid.|
 
 ### OH_RDB_GetReturningValues()
 
@@ -179,7 +179,7 @@ Obtains the cursor of data changes, which contains 1,024 rows by default.
 
 | Type| Description|
 | -- | -- |
-| OH_Cursor * | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns **nullptr** otherwise.<br>The cursor is destroyed when the [OH_RDB_DestroyReturningContext](capi-oh-rdb-types-h.md#oh_rdb_destroyreturningcontext) API is called to release memory, and no separate release is required for the cursor.|
+| OH_Cursor * | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful;<br>returns **nullptr** otherwise.<br> The cursor is destroyed when the [OH_RDB_DestroyReturningContext](#oh_rdb_destroyreturningcontext) API is called to release memory. You do not need to release the cursor separately.|
 
 ### OH_RDB_GetChangedCount()
 

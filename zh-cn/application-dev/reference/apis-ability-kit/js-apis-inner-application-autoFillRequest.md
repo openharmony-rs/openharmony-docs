@@ -63,4 +63,4 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称    | 类型   | 只读 | 可选 | 说明      |
 | ------- | ------ | ---- | ---- | -------- |
-| errCode | number | 否   | 否   | 错误码。 |
+| errCode | number | 否   | 否   | 自动填充失败的错误码。 |

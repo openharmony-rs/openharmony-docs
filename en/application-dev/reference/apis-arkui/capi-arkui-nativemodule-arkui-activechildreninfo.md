@@ -12,7 +12,7 @@ typedef struct ArkUI_ActiveChildrenInfo ArkUI_ActiveChildrenInfo
 
 ## Overview
 
-Defines **ActiveChildrenInfo** information.
+Defines active child node information of the current node. You can query the number of active child nodes, obtain child nodes by subscript, and release resources after use.
 
 **Since**: 14
 
@@ -21,9 +21,9 @@ Defines **ActiveChildrenInfo** information.
 **Header file**: [native_type.h](capi-native-type-h.md)
 
 **Related APIs**
-| API                                                                             | Description|
-|---------------------------------------------------------------------------------| -- |
-| [OH_ArkUI_NodeUtils_GetActiveChildrenInfo](capi-native-node-h.md#oh_arkui_nodeutils_getactivechildreninfo) | Obtains all active child nodes of the specified node.|
-| [OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex](capi-native-type-h.md#oh_arkui_activechildreninfo_getnodebyindex) | Obtains the child node at the specified index in the specified **ActiveChildrenInfo** instance.|
-| [OH_ArkUI_ActiveChildrenInfo_GetCount](capi-native-type-h.md#oh_arkui_activechildreninfo_getcount) | Obtains the number of nodes in the specified **ActiveChildrenInfo** instance.|
-| [OH_ArkUI_ActiveChildrenInfo_Destroy](capi-native-type-h.md#oh_arkui_activechildreninfo_destroy) | Destroys an **ActiveChildrenInfo** instance.|
+| Name                                                                             | Description|
+|---------------------------------------------------------------------------------|------|
+| [OH_ArkUI_NodeUtils_GetActiveChildrenInfo](capi-native-node-h.md#oh_arkui_nodeutils_getactivechildreninfo) | Obtains the information about the active child node of a node. This API is applicable to querying the set of active child nodes that can be accessed by the node.|
+| [OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex](capi-native-type-h.md#oh_arkui_activechildreninfo_getnodebyindex) | Obtains the child node whose subscript is index in **ArkUI_ActiveChildrenInfo**. This API is applicable to traversing active child nodes by subscript.|
+| [OH_ArkUI_ActiveChildrenInfo_GetCount](capi-native-type-h.md#oh_arkui_activechildreninfo_getcount) | Obtains the number of nodes in **ArkUI_ActiveChildrenInfo**. This API is applicable to determining the number of active child nodes before traversal.|
+| [OH_ArkUI_ActiveChildrenInfo_Destroy](capi-native-type-h.md#oh_arkui_activechildreninfo_destroy) | Destroys an **ArkUI_ActiveChildrenInfo** instance and releases the resources allocated when obtaining active child node information.|

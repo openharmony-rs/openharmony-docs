@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)）、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）、虚拟机维测能力（[ArkTSVM<sup>23+</sup>](#arktsvm23)）、二进制流解码（[StringDecoder<sup>12+</sup>](#stringdecoder12)）、堆内存阈值配置（[HeapMemoryThreshold<sup>24+</sup>](#heapmemorythreshold24)）等功能。此外还提供获取对象Hash值（[util.getHash<sup>12+</sup>](#utilgethash12)）、获取主线程栈追踪信息（[util.getMainThreadStackTrace<sup>20+</sup>](#utilgetmainthreadstacktrace20)）等工具函数。
 
@@ -22,7 +22,7 @@ import { util } from '@kit.ArkTS';
 
 format(format: string,  ...args: Object[]): string
 
-使用样式化字符串将输入内容按特定格式输出。
+使用样式化字符串将输入内容按特定格式输出，适用于日志输出、用户界面文本格式化等场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -49,10 +49,10 @@ format(format: string,  ...args: Object[]): string
 | %d     | 将参数作为十进制整数进行格式化输出，用于除Symbol和BigInt之外的所有值。|
 | %i     | 将字符串转换为十进制整数，用于除BigInt和Symbol之外的所有值。|
 | %f     | 将字符串转换为浮点数，用于除BigInt和Symbol之外的所有值。|
-| %j     | 将JavaScript对象转换为JSON字符串进行格式化输出。|
+| %j     | 将JavaScript对象序列化为JSON字符串进行格式化输出。|
 | %o     | 用于将JavaScript对象进行格式化输出，将对象转换为字符串表示，但不包含对象的原型链信息。|
 | %O     | 用于将JavaScript对象进行格式化输出，将对象转换为字符串表示。|
-| %c     | 只在浏览器环境中有效。其余环境不会产生样式效果。|
+| %c     | CSS样式占位符，仅在浏览器环境中有效，用于指定格式化输出的样式；其余环境会忽略该占位符。|
 | %%     | 转义百分号的特殊格式化占位符。|
 
 **示例：**
@@ -125,7 +125,7 @@ console.info(formattedString);
 
 errnoToString(errno: number): string
 
-获取系统错误码对应的详细信息。适用于系统调用出错时将数字错误码转换为可读的描述信息，便于开发者快速定位和排查系统级错误。
+获取系统错误码对应的详细信息。适用于系统调用出错时将数字错误码转换为可读的描述信息，便于开发者快速定位和排查系统级错误，常用于错误日志记录和错误提示显示。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -141,7 +141,7 @@ errnoToString(errno: number): string
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| string | 错误码对应的详细信息。 |
+| string | 错误码对应的详细信息，包含可读的错误描述文本，便于开发者定位问题。 |
 
 **示例：**
 
@@ -387,7 +387,7 @@ printf(format: string,  ...args: Object[]): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 按特定格式式样化后的字符串。 |
+| string | 按特定格式式样化后的字符串，包含根据格式说明符处理后的参数值。 |
 
 **示例：**
 
@@ -536,19 +536,19 @@ MultithreadingDetectionOptions是一个接口类，用于配置[ArkTSVM.setMulti
 | -------- | -------- | -------- | -------- | -------- |
 | abort  | boolean  | 否       | 是       | 控制检测到多线程问题时是否崩溃。传入true表示检测到多线程问题时立即崩溃，适用于开发调试阶段需要快速暴露多线程问题的场景；传入false表示不崩溃仅上报故障信息，适用于生产环境需要保持服务可用性的场景。默认true。|
 | frequency  | number  | 否       | 是       | 多线程安全检测的粒度，表示每发生多少次函数调用进行一次多线程安全检测，该值越大采样频率越低，对应用性能影响越小，但可能漏检部分多线程安全使用问题场景，范围为[100, 2147483647]，默认100。|
-| interval  | number  | 否       | 是       | 多线程检测的上报故障时间间隔，仅不崩溃时生效，范围为[0,1440]，单位为分钟，默认5分钟。（不建议设为5分钟以下，有严重的性能影响。）|
+| interval  | number  | 否       | 是       | 多线程安全检测的上报故障时间间隔，仅不崩溃时生效，范围为[0,1440]，单位为分钟，默认5分钟。（不建议设为5分钟以下，有严重的性能影响。）|
 
 ## ArkTSVM<sup>23+</sup>
 
-ArkTSVM是一个类，用于给开发者提供虚拟机的诊断与维护能力，包括多线程检测、堆内存信息获取、内存泄漏防护、全局引用追踪和堆内存预警等功能。
+ArkTSVM是一个类，用于给开发者提供虚拟机的诊断与维护能力，包括多线程安全检测、堆内存信息获取、内存泄漏防护、全局引用追踪和堆内存预警等功能。
 
 ### setMultithreadingDetectionEnabled<sup>23+</sup>
 
 static setMultithreadingDetectionEnabled(enabled: boolean, options?: MultithreadingDetectionOptions): void
 
-若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的C/C++崩溃转储文件（cppcrash文件）里会包含多线程信息（如线程ID、锁状态等）。关闭多线程检测，则C/C++崩溃转储文件（cppcrash文件）里不会包含多线程信息。
+若enabled为true则开启，为false则关闭。开启多线程安全检测，多线程问题的C/C++崩溃转储文件（cppcrash文件）里会包含多线程信息（如线程ID、锁状态等）。关闭多线程安全检测，则C/C++崩溃转储文件（cppcrash文件）里不会包含多线程信息。
 
-options是用于配置多线程检测的行为参数。
+options是用于配置多线程安全检测的行为参数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -558,17 +558,17 @@ options是用于配置多线程检测的行为参数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭。true表示开启，false表示关闭。|
-| options  | [MultithreadingDetectionOptions](#multithreadingdetectionoptions)  | 否       | 多线程检测的参数配置，此参数不填时，对应各属性取[MultithreadingDetectionOptions](#multithreadingdetectionoptions)的默认值。**起始版本：** 26.0.0|
+| enabled  | boolean  | 是       | 控制多线程安全检测开关的开启或关闭。true表示开启，false表示关闭。|
+| options  | [MultithreadingDetectionOptions](#multithreadingdetectionoptions)  | 否       | 多线程安全检测的参数配置，此参数不填时，对应各属性取[MultithreadingDetectionOptions](#multithreadingdetectionoptions)的默认值。**起始版本：** 26.0.0|
 
 **示例：**
 
 ```ts
 import { util } from '@kit.ArkTS';
 
-// 打开多线程检测开关
+// 打开多线程安全检测开关
 util.ArkTSVM.setMultithreadingDetectionEnabled(true);
-// 关闭多线程检测开关
+// 关闭多线程安全检测开关
 util.ArkTSVM.setMultithreadingDetectionEnabled(false);
 // 设置崩溃行为
 util.ArkTSVM.setMultithreadingDetectionEnabled(true, { abort: false });
@@ -1045,7 +1045,7 @@ console.info('result is ' + result);
 console.info('asp.msg is ' + asp.msg);
 // 输出结果：asp.msg is msg111
 
-// 前后插桩的例子
+// 分别添加前置和后置插桩的例子
 class AroundTest {
   foo(arg: string) {
     console.info('execute foo with arg ' + arg);

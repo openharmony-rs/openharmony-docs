@@ -61,13 +61,13 @@ ComposeTitleBar({item?: ComposeTitleBarMenuItem, title: ResourceStr, subtitle?: 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- |---|---| -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。如果同时设置了symbolStyle属性，则symbolStyle优先级更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value，item左侧头像不支持设置该属性。不设置时使用value属性指定的图标资源。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述，用于设置图标的辅助文本信息。当未设置accessibilityText时，label可作为无障碍文本的默认值。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| isEnabled | boolean | 否 | 是 | 是否启用。默认值：false。<br/>true表示启用，false表示禁用。<br/>item属性不支持触发isEnabled属性。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 点击菜单项时触发的回调函数。item属性不支持触发action事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| accessibilityLevel<sup>18+</sup>       | string  | 否 | 是 | 标题栏右侧自定义按钮无障碍重要性，控制当前项是否可被无障碍辅助服务识别。仅适用于menuItems中的项，不适用于item参数。<br/>支持的值为：<br/>"auto"：等同于"yes"。<br/>"yes"：可被无障碍辅助服务识别。<br/>"no"：不可被无障碍辅助服务识别。<br/>"no-hide-descendants"：当前项及其子组件均不可被识别。<br/>默认值："auto"。item属性不支持设置该属性。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍文本。当组件无文本属性时，屏幕朗读不会播报，设置此属性后屏幕朗读可播报该内容，帮助用户了解选中的组件。item属性不支持设置该属性。<br/>默认值：有label时默认值为当前项label属性内容，没有设置label时默认值为“ ”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                     |
+| isEnabled | boolean | 否 | 是 | 是否启用。默认值：false。<br/>true表示启用，false表示禁用。<br/>item参数不支持触发isEnabled属性。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 点击菜单项时触发的回调函数。item参数不支持触发action事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| accessibilityLevel<sup>18+</sup>       | string  | 否 | 是 | 标题栏右侧自定义按钮无障碍重要性，控制当前项是否可被无障碍辅助服务识别。仅适用于menuItems中的项，不适用于item参数。<br/>支持的值为：<br/>"auto"：等同于"yes"。<br/>"yes"：可被无障碍辅助服务识别。<br/>"no"：不可被无障碍辅助服务识别。<br/>"no-hide-descendants"：当前项及其子组件均不可被识别。<br/>默认值："auto"。item参数不支持设置该属性。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍文本。当组件无文本属性时，屏幕朗读不会播报，设置此属性后屏幕朗读可播报该内容，帮助用户了解选中的组件。item属性不支持设置该属性。<br/>默认值：有label时默认值为当前项label属性内容，未设置label时默认值为空字符串。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                     |
 | accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍描述，用于向用户详细解释组件功能和操作后果。组件被选中时，系统先播报文本属性，再播报无障碍描述内容。item属性不支持设置该属性。<br/>默认值为“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
 
 ## 事件

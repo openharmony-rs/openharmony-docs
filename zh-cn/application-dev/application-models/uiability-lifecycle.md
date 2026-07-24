@@ -71,22 +71,23 @@ export default class EntryAbility extends UIAbility {
 > - 不同开发场景下WindowStage生命周期状态（[WindowStageEventType](../reference/apis-arkui/arkts-apis-window-e.md#windowstageeventtype9)）变化事件的时序可能存在差异，具体请见[窗口生命周期](../windowmanager/window-lifecycle.md)。
 > - 对于不同类型的产品，当应用主窗口从前台进入后台时，UIAbility生命周期的变化也会存在差异。详见[不同设备UIAbility生命周期的差异化行为](../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
-  <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+  <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
   
   ``` TypeScript
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  // ···
+  // ...
   
   const DOMAIN = 0x0000;
   
   export default class EntryAbility extends UIAbility {
-  
-    // ···
+    // ...
   
     onWindowStageCreate(windowStage: window.WindowStage): void {
-      // ···
+      // ...
+  
+      // ...
       // 设置WindowStage的事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
       try {
         windowStage.on('windowStageEvent', (data) => {
@@ -121,11 +122,11 @@ export default class EntryAbility extends UIAbility {
       hilog.info(DOMAIN, 'testTag', `%{public}s`, `Ability onWindowStageCreate`);
       // 设置UI加载
       windowStage.loadContent('pages/Index', (err) => {
-        // ···
+        // ...
       });
     }
   
-  // ···
+    // ...
   }
   ```
 

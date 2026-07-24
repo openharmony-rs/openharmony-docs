@@ -63,10 +63,13 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 注册监听应用组件开机自启动状态变化
   autoStartupManager.on('systemAutoStartup', {
+    // 应用开机自启动成功回调
     onAutoStartupOn(data: common.AutoStartupInfo) {
       console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
     },
+    // 应用取消开机自启动回调
     onAutoStartupOff(data: common.AutoStartupInfo) {
       console.info(`autostartupmanager onAutoStartupOff, data: ${JSON.stringify(data)}.`);
     }
@@ -98,7 +101,7 @@ off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | type | string              | 是    | 固定取值“systemAutoStartup”，表示为系统应用所调用。 |
-| callback | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md)   | 否 | 监听应用组件开机自启动状态变化的回调对象。 |
+| callback | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md)   | 否 | 监听应用组件开机自启动状态变化的回调对象。如果不指定该参数，则取消所有已注册的监听。 |
 
 **错误码：**
 
@@ -118,6 +121,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 注销监听应用组件开机自启动状态变化
   autoStartupManager.off('systemAutoStartup', {
     onAutoStartupOn(data: common.AutoStartupInfo) {
       console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
@@ -175,6 +179,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 设置应用组件开机自启动
   autoStartupManager.setApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
@@ -217,7 +222,7 @@ setApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 
 | 类型          | 说明                                                         |
 | ------------- | ------------------------------------------------------------ |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象。无返回结果的Promise对象，用于表示设置应用组件开机自启动的异步操作完成状态。 |
 
 **错误码**：
 
@@ -239,6 +244,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 设置应用组件开机自启动
   autoStartupManager.setApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
@@ -296,6 +302,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 取消应用组件开机自启动
   autoStartupManager.cancelApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
@@ -338,7 +345,7 @@ cancelApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 
 | 类型          | 说明                                                         |
 | ------------- | ------------------------------------------------------------ |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象。无返回结果的Promise对象，用于表示取消应用组件开机自启动的异步操作完成状态。 |
 
 **错误码**：
 
@@ -360,6 +367,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 取消应用组件开机自启动
   autoStartupManager.cancelApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
@@ -414,6 +422,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 查询自启动应用组件信息
   autoStartupManager.queryAllAutoStartupApplications((err: BusinessError, data: common.AutoStartupInfo[]) => {
     if (err) {
       console.error(`queryAllAutoStartupApplications failed, err code: ${err.code}, err msg: ${err.message}.`);
@@ -467,6 +476,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 查询自启动应用组件信息
   autoStartupManager.queryAllAutoStartupApplications().then((data: common.AutoStartupInfo[]) => {
     console.info(`queryAllAutoStartupApplications success, data: ${JSON.stringify(data)}.`);
   }).catch((err: BusinessError) => {

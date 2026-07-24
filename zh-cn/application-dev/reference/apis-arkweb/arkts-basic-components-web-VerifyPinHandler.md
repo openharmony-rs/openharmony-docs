@@ -16,7 +16,7 @@ VerifyPinHandler是Web组件中处理PIN码验证请求的类。当需要用户P
 >
 > - 示例效果请以真机运行为准。
 
-## constructor<sup>22+</sup>
+## constructor
 
 constructor()
 
@@ -24,7 +24,7 @@ VerifyPinHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## confirm<sup>22+</sup>
+## confirm
 
 confirm(result: PinVerifyResult): void
 

@@ -39,7 +39,7 @@ ImageAnimator()
 
 images(value: Array&lt;ImageFrameInfo&gt;)
 
-设置图片帧信息集合。不支持动态更新，否则可能会导致不可预期的行为。
+设置图片帧信息集合。不支持动态更新，否则可能导致显示错乱、帧切换异常或内存上涨等问题（该属性按非动态更新设计，运行时修改不保证生效）。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -69,7 +69,7 @@ state(value: AnimationStatus)
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [AnimationStatus](ts-appendix-enums.md#animationstatus) | 是   | 默认为初始状态，用于控制播放状态。<br/>默认值：AnimationStatus.Initial |
+| value  | [AnimationStatus](ts-appendix-enums.md#animationstatus) | 是   | 用于控制播放状态。<br/>默认值：AnimationStatus.Initial |
 
 ### duration
 
@@ -87,7 +87,7 @@ duration(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>value平均分配给单张图片的播放时长小于一帧时间，将导致播放异常。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000 |
+| value  | number | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>value平均分配给单张图片的播放时长小于一帧时间，将导致播放异常。<br/>设置为负数时，取默认值1000毫秒。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000 |
 
 ### reverse
 
@@ -105,7 +105,7 @@ reverse(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 播放方向。<br/>false表示从第1张图片播放到最后1张图片，true表示从最后1张图片播放到第1张图片。<br/>默认值：false |
+| value  | boolean | 是   | 播放方向。<br/>false表示从第1张图片播放到最后1张图片，true表示从最后1张图片播放到第1张图片。<br/>动画结束后保留哪一帧还与[fillMode](#fillmode)属性有关，详见fillMode说明。<br/>默认值：false |
 
 ### fixedSize
 
@@ -177,7 +177,7 @@ iterations(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| value  | number | 是   | 默认播放一次；-1表示无限次播放，小于-1的负数取默认值；浮点数向下取整。<br/>默认值：1 |
+| value  | number | 是   | 默认播放一次；-1表示无限次播放，小于-1的负数取默认值1；浮点数向下取整。<br/>默认值：1 |
 
 ### monitorInvisibleArea<sup>17+</sup>
 
@@ -277,7 +277,7 @@ onRepeat(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 onCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
-状态回调，动画返回最初状态时触发。
+状态回调，动画取消时触发。当state被设置为[AnimationStatus.Initial](ts-appendix-enums.md#animationstatus)时触发；触发后图片显示回到第一帧（正播）或最后一帧（逆播）。与[onFinish](#onfinish)的区别在于：onCancel对应回到Initial初始状态，onFinish对应动画自然结束或停止（Stopped）状态。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -290,13 +290,13 @@ onCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | 是    | 状态回调，动画返回最初状态时触发。 |
+| event | () => void                               | 是    | 状态回调，动画取消时触发。当state被设置为AnimationStatus.Initial时触发；触发后图片显示回到第一帧（正播）或最后一帧（逆播）。 |
 
 ### onFinish
 
 onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
-状态回调，动画播放完成时或者停止播放时触发。 
+状态回调，动画播放完成时（iterations设置的轮次全部播完且动画自然结束）或者停止播放时（state被切换为[AnimationStatus.Stopped](ts-appendix-enums.md#animationstatus)）触发。当动画处于[AnimationStatus.Initial](ts-appendix-enums.md#animationstatus)状态时返回初始状态不会触发该事件，对应触发的是onCancel。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -308,7 +308,7 @@ onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | 是    | 状态回调，动画播放完成时或者停止播放时触发。 |
+| event | () => void                               | 是    | 状态回调，动画播放完成时（iterations轮次全部播完且动画自然结束）或者停止播放时（state被切换为AnimationStatus.Stopped）触发。 |
 
 ## 示例
 

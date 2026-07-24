@@ -1,11 +1,11 @@
 # 使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较于`napi_ref`，`napi_sendable_ref`支持跨ArkTS线程操作，但同时也存在一些限制。
 

@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-注册自定义字体的信息。
+Font用于管理自定义字体和系统字体信息，支持注册自定义字体、获取系统字体列表、查询字体详细信息等功能，适用于需要在应用中使用自定义字体或查询系统字体资源的场景。
 
 > **说明：**
 >
@@ -24,7 +24,9 @@ registerFont(options: font.FontOptions): void
 
 在字体管理中注册自定义字体。
 
-该接口为异步接口，不支持并发调用。
+推荐使用字体引擎的[loadFontSync](../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口注册自定义字体。
+
+该接口为异步接口，字体注册为异步过程，不支持并发调用。由于注册是异步完成的，建议在页面初始化阶段（如aboutToAppear）提前调用，以确保字体在使用前已注册完成。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -36,7 +38,7 @@ registerFont(options: font.FontOptions): void
 
 | 参数名     | 类型                                       | 必填   | 说明          |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| options | [font.FontOptions](js-apis-font.md#fontoptions) | 是    | 注册的自定义字体信息。<br/>**说明：**<br/>设置注册字体文件的路径，读取系统沙箱路径内的资源时，建议使用file://路径前缀的字符串，需要确保沙箱目录路径下的文件存在并且有可读权限。 |
+| options | [font.FontOptions](js-apis-font.md#fontoptions) | 是    | 注册的自定义字体信息。<br>**说明：**<br>设置注册字体文件的路径，读取系统沙箱路径内的资源时，建议使用file://路径前缀的字符串，需要确保沙箱目录路径下的文件存在并且有可读权限。 |
 
 **示例：**
 
@@ -56,7 +58,7 @@ struct Index {
     this.font.registerFont({
       familyName: 'medium',
       familySrc: '/font/medium.ttf' // font文件夹与pages目录同级
-    })
+    });
   }
 
   build() {
@@ -64,7 +66,7 @@ struct Index {
       Text(this.message)
         .align(Alignment.Center)
         .fontSize(20)
-        .fontFamily('medium') // medium：注册自定义字体的名字（$r('app.string.mediumFamilyName')、'mediumRawFile'等已注册字体也能正常使用）
+        .fontFamily('medium') // medium：已注册的自定义字体名称。需先调用registerFont注册字体后，才能使用该字体名称。
     }.width('100%')
   }
 }
@@ -89,7 +91,7 @@ getSystemFontList(): Array\<string>
 
 | 类型             | 说明        |
 | -------------- | --------- |
-| Array\<string> | 系统的字体名列表。 |
+| Array\<string> | 系统支持的字体名称列表，返回的名称可用于getFontByName方法查询对应字体的详细信息。 |
 
 
 **示例：** 
@@ -113,7 +115,7 @@ struct Index {
         .height('6%')
         .onClick(() => {
           this.fontList = this.font.getSystemFontList();
-          console.info('getSystemFontList', JSON.stringify(this.fontList))
+          console.info('getSystemFontList', JSON.stringify(this.fontList));
         })
     }.width('100%')
   }
@@ -136,13 +138,13 @@ getFontByName(fontName: string): font.FontInfo
 
 | 参数名      | 类型     | 必填   | 说明      |
 | -------- | ------ | ---- | ------- |
-| fontName | string | 是    | 系统的字体名。 |
+| fontName | string | 是    | 系统的字体名，可通过[getSystemFontList()](#getsystemfontlist)方法获取支持的字体名称列表。 |
 
 **返回值：** 
 
 | 类型                                      | 说明           |
 | ----------------------------------------- | -------------- |
-| [font.FontInfo](js-apis-font.md#fontinfo10) | 字体的详细信息。</br>如果查询不到字体，返回undefined。 |
+| [font.FontInfo](js-apis-font.md#fontinfo10) | 字体的详细信息。<br>如果查询不到字体，返回undefined。 |
 
 **示例：** 
 

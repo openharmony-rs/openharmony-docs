@@ -38,7 +38,7 @@ HML is an HTML-like language that allows you to build pages based on components 
 </div>
 ```
 
-Declare the variables used in the XML file for service widgets in the **data** field in the JSON file.
+Declare the variables used in the HML file for service widgets in the **data** field in the JSON file.
 
 ```json
 {

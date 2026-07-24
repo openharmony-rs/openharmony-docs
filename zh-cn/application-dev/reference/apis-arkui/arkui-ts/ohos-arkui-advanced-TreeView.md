@@ -215,7 +215,7 @@ getTreeListener(): TreeListener
 
 ## TreeListener
 
-树视图组件的监听器，可以将此对象绑定至树视图组件，然后通过它监听树的节点的变化，同一个监听器不可以控制多个树视图组件。
+树视图组件的监听器，可以将此对象绑定至树视图组件，然后通过它监听树的节点的变化，同一个监听器不可以控制多个树视图组件。监听器内部维护事件类型与回调函数的映射关系，当用户在TreeView上进行节点操作时，TreeView会通知监听器触发相应的回调函数，开发者可在回调中获取节点信息并进行业务处理。
 
 ### on
 
@@ -290,10 +290,10 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | NODE_CLICK | "NodeClick" | 监听节点点击事件。 |
-| NODE_ADD | "NodeAdd" | 监听节点增加事件。 |
-| NODE_DELETE | "NodeDelete" | 监听节点删除事件。 |
-| NODE_MODIFY | "NodeModify" | 监听节点修改事件。 |
-| NODE_MOVE | "NodeMove" | 监听节点移动事件。 |
+| NODE_ADD | "NodeAdd" | 监听节点增加事件。在调用addNode方法添加节点后触发。 |
+| NODE_DELETE | "NodeDelete" | 监听节点删除事件。在调用removeNode方法删除节点后触发。 |
+| NODE_MODIFY | "NodeModify" | 监听节点修改事件。在调用modifyNode方法修改节点后触发。 |
+| NODE_MOVE | "NodeMove" | 监听节点移动事件。在节点位置发生变化后触发。 |
 
 ## CallbackParam
 
@@ -307,7 +307,7 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 | -------- | -------- |---|---|------------------------------------------|
 | currentNodeId | number | 否 | 否 | 返回当前子节点id。<br />取值范围：大于等于0。              |
 | parentNodeId | number | 否 | 是 | 返回当前父节点id。<br />取值范围：大于等于-1。<br />默认值：-1 |
-| childIndex | number | 否 | 是 | 返回子索引。<br />取值范围：大于等于-1。<br />默认值：-1   |
+| childIndex | number | 否 | 是 | 返回子节点在父节点下的索引位置，用于标识子节点在父节点的子节点列表中的位置。<br />取值范围：大于等于-1，-1表示无效索引或无子节点。<br />默认值：-1 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。

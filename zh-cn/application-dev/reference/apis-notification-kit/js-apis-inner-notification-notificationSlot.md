@@ -18,8 +18,8 @@
 
 | 名称                 | 类型                 | 只读 | 可选 | 说明                   |
 | -------------------- | ---------------------|---- | --- |----------------------|
-| notificationType<sup>11+</sup>                 | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) | 否 | 是  | 渠道类型。 |
-| enabled<sup>9+</sup> | boolean               | 是 | 是  | 表示是否允许发布此通知渠道的通知。<br> - true：允许发布通知。<br> - false：禁止发布通知。   |
+| notificationType<sup>11+</sup>                 | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) | 否 | 是  | 渠道类型。不同渠道类型的通知提醒方式不同。 |
+| enabled<sup>9+</sup> | boolean               | 是 | 是  | 是否允许发布此通知渠道类型的通知。<br> - true：允许发布通知。<br> - false：禁止发布通知。   |
 | notificationLevel<sup>20+</sup>                 | [notificationManager.SlotLevel](js-apis-notificationManager.md#slotlevel) | 否 | 是  | 通知级别，用于描述该渠道类型通知的显示优先级和提醒强度。           |
 | desc                 | string                | 否 | 是  | 通知渠道描述信息。大小不超过243字节，超出部分会被截断。 |
 | badgeFlag            | boolean               | 否 | 是  | 是否显示角标。默认值为true。<br> - true：显示角标。<br> - false：不显示角标。              |

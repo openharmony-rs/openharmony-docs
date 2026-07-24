@@ -1,10 +1,10 @@
 # 使用Node-API接口关联数据，使其生命周期与当前环境的生命周期相关联
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -152,3 +152,8 @@ add_definitions( "-DLOG_DOMAIN=0xd0d0" )
 add_definitions( "-DLOG_TAG=\"testTag\"" )
 target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 ```
+
+## 注意事项
+
+1. 当在同一个运行时环境调用第二次napi_set_instance_data时，第一次调用时注册的FinalizeCallback回调将会被执行，原先的instance_data数据已经释放并失效。
+2. 运行时环境销毁过程中会执行通过napi_set_instance_data接口注册的FinalizeCallback回调，此时运行时环境已不再有效，应避免在该回调中访问ArkTS对象，如napi_ref、napi_value等。

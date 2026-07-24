@@ -198,7 +198,7 @@ const char *OH_GetHardwareModel(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的硬件版本号。 |
+| const char* | 字符串类型的硬件版本号。常见的取值包括："HL1CYBM"等。 |
 
 ### OH_GetBootloaderVersion()
 
@@ -216,7 +216,7 @@ const char *OH_GetBootloaderVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的Bootloader版本号。 |
+| const char* | 字符串类型的Bootloader版本号。常见的取值包括："bootloader"等。 |
 
 ### OH_GetAbiList()
 
@@ -234,7 +234,7 @@ const char *OH_GetAbiList(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的应用二进制接口（Abi）。返回支持的ABI列表，多个取值以英文逗号分隔。常见的取值包括："arm64-v8a","armeabi-v7a"等。 |
+| const char* | 字符串类型的应用二进制接口（Abi）。返回支持的ABI列表，多个取值以英文逗号分隔。常见的取值包括："arm64-v8a"，"armeabi-v7a"等。 |
 
 ### OH_GetSecurityPatchTag()
 
@@ -288,7 +288,7 @@ const char *OH_GetIncrementalVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的差异版本。 |
+| const char* | 字符串类型的差异版本。常见的取值包括："26.0.0.31"，"26.0.0.32"等。 |
 
 ### OH_GetOsReleaseType()
 
@@ -342,7 +342,7 @@ int OH_GetSdkApiVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 系统软件API版本，取值范围为整数。 |
+| int | 系统软件API版本，取值范围为整数。常见的取值包括：26，6等。 |
 
 ### OH_GetFirstApiVersion()
 
@@ -360,7 +360,7 @@ int OH_GetFirstApiVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本，取值范围为整数。 |
+| int | 首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本，取值范围为整数。 常见的取值包括：1等。|
 
 ### OH_GetVersionId()
 
@@ -378,7 +378,7 @@ const char *OH_GetVersionId(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的版本ID。 |
+| const char* | 字符串类型的版本ID。默认值为：default。 |
 
 ### OH_GetBuildType()
 
@@ -396,7 +396,7 @@ const char *OH_GetBuildType(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的系统的构建类型。 |
+| const char* | 字符串类型的系统的构建类型。默认值为：default。 |
 
 ### OH_GetBuildUser()
 
@@ -414,7 +414,7 @@ const char *OH_GetBuildUser(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的系统的构建用户。 |
+| const char* | 字符串类型的系统的构建用户。默认值为：default。 |
 
 ### OH_GetBuildHost()
 
@@ -432,7 +432,7 @@ const char *OH_GetBuildHost(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的系统的构建主机。 |
+| const char* | 字符串类型的系统的构建主机。默认值为：default。 |
 
 ### OH_GetBuildTime()
 
@@ -450,7 +450,7 @@ const char *OH_GetBuildTime(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的系统的构建时间。 |
+| const char* | 字符串类型的系统的构建时间，表示系统版本构建的时间戳。常见的取值包括："1783430505910"等。 |
 
 ### OH_GetBuildRootHash()
 
@@ -468,7 +468,7 @@ const char *OH_GetBuildRootHash(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的系统的构建版本Hash。 |
+| const char* | 字符串类型的系统的构建版本Hash。默认值为：default。 |
 
 ### OH_GetDistributionOSName()
 
@@ -541,5 +541,4 @@ const char *OH_GetDistributionOSReleaseType(void)
 | 类型 | 说明                                                                              |
 | -- |---------------------------------------------------------------------------------|
 | const char* | ISV发行版系统类型。<br> 如果没有指定ISV，它将返回与[OH_GetOsReleaseType](#oh_getosreleasetype)相同的值。 |
-
 

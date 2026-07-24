@@ -12,7 +12,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 100002 路由页面跳转时输入的uri错误
+## 100002 路由页面跳转时输入的URI错误
 
 **错误信息**
 
@@ -153,7 +153,7 @@ buffer size is not large enough.
 
 **错误描述**
 
-传入的buffer size异常。
+传入的buffer size异常，单位：字节。
 
 **可能原因**
 
@@ -163,7 +163,7 @@ buffer size is not large enough.
 
 请检查给定的buffer size是否满足最小缓冲区大小要求。
 
-## 200002 路由页面替换时输入的uri错误
+## 200002 路由页面替换时输入的URI错误
 
 **错误信息**
 

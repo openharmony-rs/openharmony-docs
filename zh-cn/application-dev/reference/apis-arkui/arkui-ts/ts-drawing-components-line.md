@@ -6,13 +6,16 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-直线绘制组件。
+Line组件用于在应用界面中绘制直线，支持自定义直线的起点、终点、颜色、宽度、透明度、虚线样式、端点样式等属性。适用于绘制分隔线、装饰性线条、图表中的坐标轴或连接线、自定义图形边框等场景。
 
 >  **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
+>
+> - Line组件无法形成闭合区域，fill和fillOpacity属性设置无效。
+> - Line组件不支持拐角，strokeLineJoin和strokeMiterLimit属性设置无效。
 
 ## 子组件
 
@@ -24,7 +27,7 @@
 
 new Line(options?: LineOptions)
 
-用于绘制直线的构造函数。 
+用于绘制直线的构造函数。Line组件在width和height定义的矩形区域内绘制直线，绘制区域的左上角为坐标原点(0,0)，x轴向右延伸，y轴向下延伸。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -36,13 +39,13 @@ new Line(options?: LineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options | [LineOptions](#lineoptions18对象说明) | 否 | Line组件绘制区域，包含width和height属性，用于设置Line组件的宽高。不传递此参数时，Line组件的width和height属性将按照各自属性的缺省逻辑处理（参见LineOptions对象说明）。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ### Line
 
 Line(options?: LineOptions)
 
-用于绘制直线的构造函数。 
+用于绘制直线的构造函数。Line组件在width和height定义的矩形区域内绘制直线，绘制区域的左上角为坐标原点(0,0)，x轴向右延伸，y轴向下延伸。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -54,7 +57,7 @@ Line(options?: LineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options | [LineOptions](#lineoptions18对象说明) | 否 | Line组件绘制区域，包含width和height属性，用于设置Line组件的宽高。不传递此参数时，Line组件的width和height属性将按照各自属性的缺省逻辑处理（参见LineOptions对象说明）。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## LineOptions<sup>18+</sup>对象说明
 
@@ -74,8 +77,8 @@ Line(options?: LineOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度。<br/>值为异常值或缺省时按照自身内容需要的宽度处理。<br/>默认单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度。<br/>值为异常值或缺省时按照自身内容需要的高度处理。<br/>默认单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度。<br>值为异常值或缺省时，根据startPoint和endPoint自动计算所需的绘制区域宽度。<br>默认单位：vp<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度。<br>值为异常值或缺省时，根据startPoint和endPoint自动计算所需的绘制区域高度。<br>默认单位：vp<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -85,7 +88,7 @@ Line(options?: LineOptions)
 
 startPoint(value: Array&lt;any&gt;)
 
-设置直线起点坐标点（相对坐标），支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。
+设置直线起点坐标点（相对于Line组件绘制区域的左上角原点），支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -97,13 +100,13 @@ startPoint(value: Array&lt;any&gt;)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | 是   | 直线起点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0] <br/>异常值undefined和null按照默认值处理。|
+| value  | Array&lt;any&gt; | 是   | 直线起点坐标点（相对于Line组件绘制区域的左上角原点），单位vp。数组格式为[x坐标, y坐标]，数组长度必须为2，元素应为Length类型。<br>默认值：[0, 0] <br>异常值undefined和null按照默认值处理。|
 
 ### endPoint
 
 endPoint(value: Array&lt;any&gt;)
 
-设置直线终点坐标点（相对坐标），支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。
+设置直线终点坐标点（相对于Line组件绘制区域的左上角原点），支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -115,13 +118,13 @@ endPoint(value: Array&lt;any&gt;)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | 是   | 直线终点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0] <br/>异常值undefined和null按照默认值处理。|
+| value  | Array&lt;any&gt; | 是   | 直线终点坐标点（相对于Line组件绘制区域的左上角原点），单位vp。数组格式为[x坐标, y坐标]，数组长度必须为2，元素应为Length类型。<br>默认值：[0,&nbsp;0] <br>异常值undefined和null按照默认值处理。|
 
 ## 示例
 
 ### 示例1（组件属性绘制）
 
-通过startPoint、endPoint、strokeOpacity、stroke、strokeDashArray、strokeDashOffset属性分别绘制直线的起始点、结束点、透明度、直线颜色、边框间隙、绘制起点。
+通过startPoint、endPoint、strokeOpacity、stroke、strokeWidth、strokeDashArray、strokeDashOffset属性分别绘制直线的起始点、结束点、透明度、直线颜色、线条宽度、边框间隙、绘制起点。
 
 ```ts
 // xxx.ets
@@ -138,6 +141,7 @@ struct LineExample {
         .endPoint([50, 100])
         .stroke(Color.Black)
         .backgroundColor('#F5F5F5')
+      // 设置起始点为(50, 50)，终点为(150, 150)，线条宽度为5，线条颜色为橙色，线条透明度为0.5
       Line()
         .width(200)
         .height(150)
@@ -158,7 +162,7 @@ struct LineExample {
         .strokeDashArray([10, 3])
         .strokeDashOffset(5)
         .backgroundColor('#F5F5F5')
-      // 当坐标点设置的值超出Line组件的宽高范围时，线条会画出组件绘制区域
+      // 当坐标点设置的值超出Line组件的宽高范围时，线条会画出组件绘制区域。设置虚线模式：线段长度10，间隙长度3
       Line()
         .width(50)
         .height(50)
@@ -175,9 +179,9 @@ struct LineExample {
 
 ![line1](figures/line1.png)
 
-### 示例2（边框端点绘制）
+### 示例2（线条端点绘制）
 
-通过strokeLineCap属性绘制直线的边框端点样式。
+通过strokeLineCap属性绘制直线的线条端点样式。
 
 ```ts
 // xxx.ets
@@ -224,9 +228,9 @@ struct LineExample1 {
 
 ![line](figures/line.png)
 
-### 示例3（边框间隙绘制）
+### 示例3（线条间隙绘制）
 
-通过strokeDashArray属性绘制直线的边框间隙。
+通过strokeDashArray属性绘制直线的线条间隙。
 
 ```ts
 // xxx.ets
@@ -296,7 +300,7 @@ width、height属性分别使用不同的长度类型绘制直线。
 struct LineTypeExample {
   build() {
     Column({ space: 10 }) {
-      // 在200 * 200的区域内绘制一个起始点为（0,0），终点为（150,150），边框宽度为10的直线
+      // 在200 * 200的区域内绘制一个起始点为（0,0），终点为（150,150），线条宽度为10的直线
       Line({ width: '200', height: '200' })// 使用string类型
         .startPoint([0, 0])
         .endPoint([150, 150])
@@ -304,7 +308,7 @@ struct LineTypeExample {
         .strokeWidth(10)
         .backgroundColor('#F5F5F5')
         .margin(10)
-      // 在200 * 200的区域内绘制一个起始点为（0,50），终点为（150,150），边框宽度为10的直线
+      // 在200 * 200的区域内绘制一个起始点为（0,50），终点为（150,150），线条宽度为10的直线
       Line({ width: 200, height: 200 })// 使用number类型
         .startPoint([0, 50])
         .endPoint([150, 150])
@@ -312,7 +316,7 @@ struct LineTypeExample {
         .strokeWidth(10)
         .backgroundColor('#F5F5F5')
         .margin(10)
-      // 在200 * 200的区域内绘制一个起始点为（0,100），终点为（150,150），边框宽度为10的直线
+      // 在200 * 200的区域内绘制一个起始点为（0,100），终点为（150,150），线条宽度为10的直线
       Line({ width: $r('app.string.LineWidth'), height: $r('app.string.LineHeight') })// 使用Resource类型，需用户自定义
         .startPoint([0, 100])
         .endPoint([150, 150])
@@ -335,12 +339,12 @@ struct LineTypeExample {
 // xxx.ets
 class MyLineModifier implements AttributeModifier<LineAttribute> {
   applyNormalAttribute(instance: LineAttribute): void {
-    // 一个起始点为（10, 10），终点为（120, 10）的直线，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，边框透明度0.5，边框宽度10，抗锯齿开启
+    // 一个起始点为（10, 10），终点为（120, 10）的直线，线条颜色#2787D9，线条间隙[20]，设置虚线偏移量为15，线条两端样式为半圆，线条透明度0.5，线条宽度10，抗锯齿开启
     instance.startPoint([10, 10])
     instance.endPoint([120, 10])
-    instance.stroke("#2787D9")
+    instance.stroke('#2787D9')
     instance.strokeDashArray([20])
-    instance.strokeDashOffset("15")
+    instance.strokeDashOffset('15')
     instance.strokeLineCap(LineCapStyle.Round)
     instance.strokeOpacity(0.5)
     instance.strokeWidth(10)

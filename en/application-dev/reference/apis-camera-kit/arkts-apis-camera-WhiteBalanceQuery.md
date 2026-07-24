@@ -45,7 +45,7 @@ Checks whether a white balance mode is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config, only throw in session usage.                                  |
@@ -88,7 +88,7 @@ Obtains the range of white balance values in manual white balance mode.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config, only throw in session usage.                                  |
 
@@ -133,7 +133,7 @@ Obtains the supported white balance hue adjustment range.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config, only throw in session usage.                                  |
 

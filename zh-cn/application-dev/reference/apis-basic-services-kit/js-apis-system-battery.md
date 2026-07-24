@@ -7,7 +7,7 @@
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
 
-该模块提供充电状态及剩余电量的查询功能。
+该模块提供充电状态及剩余电量的查询功能，适用于需要根据设备电池状态调整应用行为的场景，例如在低电量时降低后台活动频率或提醒用户充电，帮助开发者优化应用的能耗表现和用户体验。
 
 >  **说明：**
 >
@@ -17,7 +17,7 @@
 >
 >    \- 对于支持该模块的其他设备类型，该模块从API Version 6开始不再维护，建议使用[@ohos.batteryInfo](js-apis-battery-info.md)替代。
 >
->- 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>- 本模块首批接口从API Version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 
 
@@ -41,7 +41,7 @@ getStatus(options?: GetStatusOptions): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [GetStatusOptions](#getstatusoptionsdeprecated) | 否 | 包含接口调用结果的对象。可选，默认为空。 |
+| options | [GetStatusOptions](#getstatusoptionsdeprecated) | 否 | 包含接口调用结果的对象，用于通过回调获取设备充电状态及剩余电量。不传入时无法获取电量信息，不执行任何回调。 |
 
 **示例：**
 
@@ -112,7 +112,7 @@ export default {
 
 ## GetStatusOptions<sup>(deprecated)</sup>
 
-包含接口调用结果的对象。
+包含接口调用选项的对象，包括成功、失败和完成回调函数。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
@@ -120,7 +120,7 @@ export default {
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | success  | (data: [BatteryResponse](#batteryresponsedeprecated)) => void | 否   | 接口调用成功的回调函数，data为[BatteryResponse](#batteryresponsedeprecated)类型的返回值。 |
 | fail     | (data: string, code: number) => void                | 否   | 接口调用失败的回调函数。data为错误信息，code为错误码。       |
-| complete | () => void                                          | 否   | 接口调用结束的回调函数。                                     |
+| complete | () => void | 否 | 接口调用结束的回调函数，无论接口调用成功或失败都会执行。当需要在接口调用完成后执行清理或通知操作时传入此回调。不传入时无结束通知。 |
 
 ## BatteryResponse<sup>(deprecated)</sup>
 

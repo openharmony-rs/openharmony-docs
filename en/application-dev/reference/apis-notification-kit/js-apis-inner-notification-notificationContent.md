@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:56.240Z pushedAt=2026-06-30T10:57:37.007Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:08:30.614Z pushedAt=2026-07-21T09:31:50.011Z -->
 
 The **NotificationContent** defines the content structure of a notification and provides content description API of multiple notification types. When an application needs to publish a notification, it can select the corresponding content type API to construct the notification content based on the display requirements (such as plain text, long text, multi-line text, picture, or live view).
 
@@ -100,7 +100,7 @@ Describes the picture-attached notification. This API is inherited from [Notific
 | Name          | Type                                         | Read-Only| Optional| Description                              |
 | -------------- | -------------------------------------------- | ---- | --- |------------------------------------|
 | expandedTitle  | string                                       | No  | No  | Title when the notification is expanded.<br>It cannot be an empty string. The size does not exceed 1024 bytes, and the excess part will be truncated.    |
-| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Picture content displayed after the notification is expanded.<br>The total bytes of the image pixels cannot exceed 2 MB.|
+| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  No  | No  | Picture content displayed after the notification is expanded.<br>The total bytes of the image pixels (obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)) cannot exceed 2 MB.|
 | briefText      | string                                       | No  | No  | Notification summary content, which is a summary of the notification content and is not displayed in the notification center.<br>It cannot be an empty string. The size does not exceed 1024 bytes, and the excess part will be truncated. |
 
 ## NotificationSystemLiveViewContent
@@ -165,7 +165,7 @@ Describes the notification timing information.
 
 | Name          | Type             | Read-Only| Optional| Description                            |
 | -------------- | ---------------- | --- | --- | -------------------------------- |
-| initialTime    | number           | No  | Yes  | Initial time for the timer, used to set the starting point of the timer in the Live View.<br>The value range is all non-negative integers. The default value is **0**.<br>Unit: millisecond.  |
+| initialTime    | number           | No  | Yes  | 	Initial time for the timer, which is used to set the starting point of the timer in the live view. The default value is **0**.<br>Unit: ms.  |
 | isCountDown    | boolean          | No  | Yes  | Whether it is countdown mode. The default value is **false**.<br> - **true**: The time is displayed decreasing from initialTime.<br> - **false**: The time is displayed increasing from initialTime. |
 | isPaused       | boolean          | No  | Yes  | Whether the timer is paused. The default value is **false**.<br> - **true**: The timer is paused at the current value.<br> - **false**: The timer runs normally.   |
 | isInTitle      | boolean          | No  | Yes  | Whether the time information is displayed in the notification title. The default value is **false**.<br> - **true**: The timer information will be embedded in the title area.<br> - **false**: The timer information is displayed in a separate area.|
@@ -196,6 +196,6 @@ Describes the notification progress, which is used to display progress bar infor
 
 | Name          | Type           | Read-Only| Optional| Description                            |
 | -------------- | --------------- | --- | --- | -------------------------------- |
-| maxValue        | number         | No  | Yes  | Maximum value of the progress.<br>The value range is all non-negative integers.                       |
-| currentValue    | number         | No  | Yes  | Current value of the progress.<br>The value range is all non-negative integers.                       |
+| maxValue        | number         | No  | Yes  | Maximum value of the progress.|
+| currentValue    | number         | No  | Yes  | Current value of the progress.|
 | isPercentage    | boolean        | No  | Yes  | Whether to display the progress as a percentage. The value defaults to **false**.<br> - **true**: The progress is displayed as a percentage.<br> - **false**: The progress is displayed as an absolute value.|

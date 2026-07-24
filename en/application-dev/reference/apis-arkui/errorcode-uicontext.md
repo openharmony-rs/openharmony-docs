@@ -62,7 +62,7 @@ An invalid negative parameter value is provided.
 
 **Solution**
 
-Ensure all parameter values meet minimum value requirements.
+Pass a parameter value greater than or equal to 0.
 
 ## 100102 Incorrect Parameter Type
 

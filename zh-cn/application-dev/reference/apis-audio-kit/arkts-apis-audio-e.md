@@ -119,6 +119,22 @@
 | PREFERRED_LOW_LATENCY  | 2      | 更偏好使用蓝牙或星闪低延迟模式进行录音。 |
 | PREFERRED_HIGH_QUALITY | 3      | 更偏好使用蓝牙或星闪高质量模式进行录音。 |
 
+## NoiseReductionMode
+
+表示录音降噪模式的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| FIDELITY | 0 | 保真模式，不进行降噪。 |
+| PURE_VOCALS | 1 | 纯人声模式，强降噪。 |
+| STANDARD | 2 | 标准模式，弱降噪。 |
+
 ## CommunicationDeviceType<sup>9+</sup>
 
 表示用于通信的可用设备类型的枚举。
@@ -711,7 +727,7 @@
 
 | 名称               | 值     | 说明             |
 | ------------------ | ------ | ---------------- |
-| UNAVAILABLE_DEVICE | -2     | 表示返听由于输入\输出设备而不可用（如出声设备变更）。    |
+| UNAVAILABLE_DEVICE | -2     | 表示返听由于输入/输出设备而不可用（如出声设备变更）。    |
 | UNAVAILABLE_SCENE  | -1     | 表示返听由于音频场景而不可用（如音频焦点、低时延管控）。 |
 | AVAILABLE_IDLE     |  0     | 表示返听可用。     |
 | AVAILABLE_RUNNING  |  1     | 表示返听运行中。   |

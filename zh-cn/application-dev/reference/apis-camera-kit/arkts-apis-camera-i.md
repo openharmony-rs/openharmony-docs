@@ -267,7 +267,7 @@
 
 ## Rect
 
-矩形定义，返回的检测点坐标系以设备充电口在右侧时的横向设备方向为基准。该坐标系左上角为（0，0），右下角为（1，1），其中（topLeftX，topLeftY）表示矩形区域的左上角坐标，width和height分别表示矩形区域的宽和高。因此在实际使用中根据业务诉求需要裁剪或者选择人脸区域时，必须将矩形区域的x坐标和y坐标分别乘以实际相机预览输出流的宽和高，即可得到裁剪后的人脸矩形区域。
+相机矩形。用于各类检测对象的矩形框绘制。返回的检测点坐标系以设备充电口在右侧时的横向设备方向为基准。该坐标系左上角为（0，0），右下角为（1，1），其中（topLeftX，topLeftY）表示矩形区域的左上角坐标，width和height分别表示矩形区域的宽和高。因此在实际使用中根据业务诉求需要裁剪或者选择人脸区域时，必须将矩形区域的x坐标和y坐标分别乘以实际相机预览输出流的宽和高，即可得到裁剪后的人脸矩形区域。
 
 实际预览流的宽高指的是相机输出流的分辨率，请参考[profile](arkts-apis-camera-i.md#profile)中的size。
 
@@ -519,20 +519,3 @@
 | -------- | ---------- | -------- |-----| ---------- |
 | zoomRatio |   number   |   是     | 否   | 可变焦距比。 |
 | equivalentFocalLength |   number   |   是     | 否   | 当前焦距比对应的等效焦距值。 |
-
-## DefocusFromProximityNotificationInfo
-
-对焦物体和镜头距离过近导致失焦事件的通知对象。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称      | 类型                                                           | 只读 | 可选 | 说明            |
-| -------- | -------------------------------------------------------------- |----- |---| --------------|
-| name      | [NotificationName](arkts-apis-camera-e.md#notificationname)   |  是  | 否 | 通知事件名称。      |
-| value     | [ProximityStateForFocus](arkts-apis-camera-e.md#proximitystateforfocus)  |  是  | 否 | 通知事件状态。     |

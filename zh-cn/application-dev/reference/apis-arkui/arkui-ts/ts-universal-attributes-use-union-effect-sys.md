@@ -18,9 +18,9 @@
 
 ## useUnionEffect
 
-useUnionEffect(value: boolean | undefined): T;
+useUnionEffect(value: boolean \| undefined): T;
 
-表示是否使用祖先组件[UnionEffectContainer](ts-container-unioneffectcomponent-sys.md)的融合效果，是否作为UnionEffectContainer做形状融合的一部分。
+表示是否使用祖先组件[UnionEffectContainer](ts-container-unioneffectcomponent-sys.md)的融合效果，即是否作为UnionEffectContainer做形状融合的一部分，参与融合形态计算。
 
 不设置该属性时，默认不使用祖先组件UnionEffectContainer的融合效果。
 
@@ -44,9 +44,9 @@ useUnionEffect(value: boolean | undefined): T;
 
 ## useUnionEffect
 
-useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T
+useUnionEffect(value: boolean \| undefined, options?: GravityCenterOptions): T
 
-表示是否使用祖先组件[UnionEffectContainer](ts-container-unioneffectcomponent-sys.md)的融合效果，是否作为UnionEffectContainer做形状融合的一部分。
+表示是否使用祖先组件[UnionEffectContainer](ts-container-unioneffectcomponent-sys.md)的融合效果，即是否作为UnionEffectContainer做形状融合的一部分，参与融合形态计算。
 
 不设置该属性时，默认不使用祖先组件UnionEffectContainer的融合效果。
 

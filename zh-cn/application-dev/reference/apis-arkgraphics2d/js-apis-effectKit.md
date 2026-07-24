@@ -59,7 +59,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -116,7 +116,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -130,7 +130,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
   // 创建ColorPicker实例
   effectKit.createColorPicker(pixelMap).then(colorPicker => {
     console.info('Succeeded in creating colorPicker.');
-  }).catch((err : BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
   });
 });
@@ -179,7 +179,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -193,7 +193,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
   // 创建指定取色区域的ColorPicker实例
   effectKit.createColorPicker(pixelMap, [0, 0, 1, 1]).then(colorPicker => {
     console.info('Succeeded in creating colorPicker.');
-  }).catch((err : BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
   });
 });
@@ -235,7 +235,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -293,7 +293,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -435,7 +435,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -487,7 +487,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -544,7 +544,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -773,10 +773,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
-function imageBlur(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // 创建图像源
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // 设置模糊半径
       let radius = 5;
@@ -865,10 +865,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
-function imageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
+function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // 创建图像源
-    let imageSource = image.createImageSource(Image);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // 设置模糊半径
       let radius = 30;
@@ -929,7 +929,7 @@ struct Index {
 
 invert(): Filter
 
-将反转效果添加到效果链表中，返回链表的实例。该方法将图像的RGB颜色值进行反转，常用于实现底片效果、图片艺术处理、夜间模式适配等场景。
+将反转效果添加到效果链表中，返回链表的实例。该方法将图像的RGB颜色值进行反转（即新RGB值=255-原RGB值），常用于实现底片效果、图片艺术处理、夜间模式适配等场景。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -946,10 +946,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
-function imageInvert(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageInvert(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // 创建图像源
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // 创建Filter实例
       let headFilter = effectKit.createEffect(pixelMap);
@@ -1039,10 +1039,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
-function imageColorFilter(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageColorFilter(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // 创建图像源
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // 定义颜色矩阵
       let colorMatrix: Array<number> = [
@@ -1135,10 +1135,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
-function imageBrightness(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageBrightness(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // 创建图像源
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // 设置亮度值
       let bright = 0.5;
@@ -1220,10 +1220,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
-function imageGrayscale(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageGrayscale(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // 创建图像源
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // 创建Filter实例
       let headFilter = effectKit.createEffect(pixelMap);
@@ -1298,7 +1298,7 @@ getEffectPixelMap(): Promise\<image.PixelMap>
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。返回创建的ColorPicker实例。 |
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
 
 **示例：**
@@ -1310,7 +1310,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -1365,7 +1365,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
 // 设置图像初始化选项
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -1386,7 +1386,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 getPixelMap(): image.PixelMap
 
-获取已添加链表效果的源图像的image.PixelMap。常用于图片处理后需要保存或显示结果的场景。
+获取已添加链表效果的源图像的image.PixelMap。常用于图片处理后需要保存或显示结果的场景，默认使用CPU渲染。
 
 > **说明：**
 >
@@ -1407,7 +1407,7 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 
 const colorBuffer = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {

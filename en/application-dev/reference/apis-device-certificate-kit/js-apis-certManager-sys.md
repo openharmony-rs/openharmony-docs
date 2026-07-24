@@ -53,7 +53,7 @@ Obtains all private credentials. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -106,7 +106,7 @@ Obtains all private credentials. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -158,7 +158,7 @@ Obtains all system credentials. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -218,7 +218,7 @@ Obtains details about a CA certificate trusted by the system. This API is called
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -273,7 +273,7 @@ Obtains the list of CA certificates trusted by the system. This API is called on
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -335,7 +335,7 @@ Sets the status of a CA certificate. Currently, only the status of a user's CA c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -386,7 +386,7 @@ Uninstalls all CA certificates trusted by the user. This API is called only by t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -440,7 +440,7 @@ Installs the public credential of the user. This API is called only by the certi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -504,7 +504,7 @@ Uninstalls the public credential of the user. This API is called only by the cer
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -555,7 +555,7 @@ Obtains the public credentials of all users. This API is called only by the cert
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -617,7 +617,7 @@ Grants the permission for an application to use the public credentials of a user
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -676,7 +676,7 @@ Obtains the list of authorized applications of a user's public credential. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -739,7 +739,7 @@ Removes the permission for an application to use the public credentials of a use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -797,7 +797,7 @@ Obtains all private credentials of a specified application. This API is called o
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -860,7 +860,7 @@ Installs the system application credential. This API is called only by the certi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -924,7 +924,7 @@ Obtains the credential details of the system application. This API is called onl
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -986,7 +986,7 @@ Uninstalls the credential of the system application. This API is called only by 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -1037,7 +1037,7 @@ Uninstalls all system application credentials and public user credentials. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |

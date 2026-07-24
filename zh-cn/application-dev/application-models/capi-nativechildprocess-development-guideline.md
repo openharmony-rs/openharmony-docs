@@ -181,7 +181,9 @@
     ``` C++
     #include <IPCKit/ipc_kit.h>
     #include <AbilityKit/native_child_process.h>
-    // ···
+    // ...
+    int32_t g_result = -1;
+    // ...
     static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
     {
         if (errCode != NCP_NO_ERROR) {
@@ -194,7 +196,6 @@
         // 耗时操作建议转移到独立线程去处理，避免长时间阻塞回调线程
         // IPC对象使用完毕后，需要调用OH_IPCRemoteProxy_Destroy方法释放
         // ...
-        // ···
     }
     
     void CreateNativeChildProcess()

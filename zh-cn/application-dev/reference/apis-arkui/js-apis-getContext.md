@@ -20,7 +20,7 @@ getContext(component?: Object):Context
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 18开始废弃，建议使用getHostContext替代。[getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12)需先获取[UIContext](arkts-apis-uicontext-uicontext.md)实例对象后再进行获取。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12)替代。[getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12)需先通过getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例后再调用。
 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -33,13 +33,13 @@ getContext(component?: Object):Context
 
 | 参数名 | 类型          | 必填 | 说明                             |
 | ------ | ----------- | ---- | ------------------------------- |
-| component  | Object | 否   | 当前自定义组件的实例。未传入component或传入的参数类型非法，则返回默认上下文。默认上下文是指通过追溯当前方法的调用链所跟踪到的Context。在异步调用的回调方法中使用该接口，或者该接口的起始调用不在当前页面，将可能导致无法跟踪到该实例的Context，则会返回undefined。             |
+| component  | Object | 否   | 当前自定义组件的实例。当需要获取指定自定义组件关联的Context时，传入该组件实例；不传入component或传入的参数类型非法时，返回默认上下文。默认上下文是指通过追溯当前方法的调用链所跟踪到的Context。传入component时返回该组件关联的Context，不传入时返回通过当前方法调用链跟踪到的默认上下文。             |
 
 **返回值：**
 
 | 类型 | 说明                             |
 | ------ | ------------------------------- |
-| [Context](#context)  | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。    |
+| [Context](#context)  | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility（用户界面Ability）窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility（扩展Ability）窗口中的页面调用该接口，返回类型为ExtensionContext。    |
 
 ## Context
 
@@ -57,7 +57,7 @@ type Context = import('../api/application/Context').default
 
 > **说明：**
 > 
-> 直接使用getContext可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12)调用绑定实例的getContext。
+> 直接使用getContext可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12)获取绑定实例的Context。
 
 **示例：**
 
@@ -83,7 +83,7 @@ export default class EntryAbility extends UIAbility {
 
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        console.error(`Failed to load the content. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
@@ -103,11 +103,11 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-在具体的Index.ets中可以通过getContext接口获取Context上下文，本示例返回的Context类型为UIAbilityContext。
+在Index.ets中可以通过getContext接口获取Context，本示例返回的Context类型为UIAbilityContext。
 
 <!--deprecated_code_no_check-->
 ```ts
-//pages/Index.ets
+// pages/Index.ets
 @Entry
 @Component
 struct Index {
@@ -122,7 +122,7 @@ struct Index {
           .onClick(() => {
             // 建议使用this.getUIContext().getHostContext()
             let context: Context = getContext(this) as Context;
-            console.info("CacheDir:" + context.cacheDir);
+            console.info('CacheDir:' + context.cacheDir);
           })
       }
       .width('100%')

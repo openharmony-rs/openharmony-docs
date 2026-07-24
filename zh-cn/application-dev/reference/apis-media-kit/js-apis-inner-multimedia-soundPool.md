@@ -222,7 +222,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading uri');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundPool. Code: ${err.code}, message: ${err.message}');
+        console.error(`Failed to load soundPool. Code: ${err.code}, message: ${err.message}`);
       });
     }); // '/test_01.mp3' 作为样例，使用时需要传入文件对应路径。
   }
@@ -652,7 +652,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       console.info('Succeeded in playing soundpool');
       streamID = streamId;
     },(err: BusinessError) => {
-      console.error('Failed to play soundpool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to play soundpool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1020,7 +1020,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setPriority(streamID, 1).then(() => {
       console.info('Succeeded in setting Priority soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1269,7 +1269,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setVolume(streamID, 0.5, 0.5).then(() => {
       console.info('Succeeded in setVolume soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to setVolume soundPool and catch error is ' + err.message);
+      console.error(`Failed to setVolume soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1279,7 +1279,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
-设置同一soundId对应的音频资源在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效。若未设置，将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一个soundId对应的音频资源，如果前一播放实例尚未播放完成，后一播放实例在播放前会先打断前一播放实例的播放。
+设置同一soundId对应的音频资源在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的play函数之前设置有效。若未设置，将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一个soundId对应的音频资源，如果前一播放实例尚未播放完成，后一播放实例在播放前会先打断前一播放实例的播放。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1431,7 +1431,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.unload(soundID).then(() => {
       console.info('Succeeded in unload soundPool');
     }, (err: BusinessError) => {
-      console.error('Failed to unload soundPool and catch error is ' + err.message);
+      console.error(`Failed to unload soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1535,7 +1535,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.release().then(() => {
       console.info('Succeeded in releasing soundPool');
     }, (err: BusinessError) => {
-      console.error('Failed to release soundPool and catch error is ' + err.message);
+      console.error(`Failed to release soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1578,7 +1578,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
     soundPool.on('loadComplete', (soundId: number) => {
-      console.info('Succeeded in loadComplete, soundId：' + soundId);
+      console.info('Succeeded in loadComplete, soundId: ' + soundId);
     })
   }
 });

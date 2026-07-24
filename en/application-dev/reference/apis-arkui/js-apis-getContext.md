@@ -20,7 +20,7 @@ Obtains the **Context** object associated with an ability on the page.
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 18. You are advised to use **getHostContext** instead. [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12) has effect only after first a [UIContext](arkts-apis-uicontext-uicontext.md) instance is obtained.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12) instead. [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12) can be called only after a [UIContext](arkts-apis-uicontext-uicontext.md) instance is obtained using **getUIContext()**.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -33,13 +33,13 @@ Obtains the **Context** object associated with an ability on the page.
 
 | Name| Type         | Mandatory| Description                            |
 | ------ | ----------- | ---- | ------------------------------- |
-| component  | Object | No  | Ability instance. If no component is passed in or the passed-in parameter type is invalid, the default context is returned. The default context is the context obtained by tracing the call chain of the API. If this API is used in an asynchronous callback or not initially called on the current page, the context of the instance may fail to be traced. In this case, **undefined** is returned.            |
+| component  | Object | No  | Ability instance. To obtain the context associated with a specified custom component, pass the component instance. If no component is passed in or the passed-in parameter type is invalid, the default context is returned. The default context is the context obtained by tracing the call chain of the API. If a component is passed in, the context associated with the component is returned. If no component is passed in, the default context traced by the current API call chain is returned.            |
 
 **Return value**
 
 | Type| Description                            |
 | ------ | ------------------------------- |
-| [Context](#context)  | Context of the ability. The context type depends on the ability type. For example, if this API is called on a page of the UIAbility, the return value type is UIAbilityContext; if this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext.   |
+| [Context](#context)  | Context of the ability. The context type depends on the ability type. For example, if this API is called on a page of the UIAbility (user UI ability), the return value type is UIAbilityContext. If this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext.   |
 
 ## Context
 
@@ -57,7 +57,7 @@ type Context = import('../api/application/Context').default
 
 > **NOTE**
 > 
-> Directly using **getContext** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a **UIContext** instance using **getUIContext()**, and then obtain the associated **Context** object using [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12).
+> Directly using **getContext** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance using **getUIContext()**, and then obtain the associated **Context** object using [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12).
 
 **Example**
 
@@ -83,7 +83,7 @@ export default class EntryAbility extends UIAbility {
 
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        console.error(`Failed to load the content. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
@@ -103,7 +103,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-In **Index.ets**, **getContext** is used to obtain the context. In this example, the return value type is UIAbilityContext.
+In the **Index.ets** file, you can use the **getContext** API to obtain the context. In this example, the returned context type is **UIAbilityContext**.
 
 <!--deprecated_code_no_check-->
 ```ts
@@ -122,7 +122,7 @@ struct Index {
           .onClick(() => {
             // You are advised to use this.getUIContext().getHostContext().
             let context: Context = getContext(this) as Context;
-            console.info("CacheDir:" + context.cacheDir);
+            console.info('CacheDir:' + context.cacheDir);
           })
       }
       .width('100%')

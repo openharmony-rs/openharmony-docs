@@ -434,8 +434,8 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| duration |  number  |  否  |  是  | 截图淡出动画执行时长，单位为ms，该参数应为正整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画执行时长默认值为400，其他场景默认值为250。取值范围为[0, 400]，超出取值返回会报错。|
-| delay |  number  |  否  |  是  | 截图淡出动画延迟时长，单位为ms，该参数应为正整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画延迟时长默认值为350，其他场景默认值为50。取值范围为[0, 350]，超出取值返回会报错。|
+| duration |  number  |  否  |  是  | 截图淡出动画执行时长，单位为ms，取值为非负整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画执行时长默认值为400，其他场景默认值为250。取值范围为[0, 400]，超出取值范围会报错。|
+| delay |  number  |  否  |  是  | 截图淡出动画延迟时长，单位为ms，取值为非负整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画延迟时长默认值为350，其他场景默认值为50。取值范围为[0, 350]，超出取值范围会报错。|
 
 ## MaximizeOptions
 
@@ -492,7 +492,7 @@
 
 仅对全屏应用生效。
 
-**设备行为差异：** 该接口在Phone设备的非[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)、Tablet设备的非[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)且非电脑模式下可正常调用，在其他设备、[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)或电脑模式下调用不生效也不报错。
+**设备行为差异：** 该接口在Phone设备的非[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)、Tablet设备的非[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)且非电脑模式下可正常调用，在其他设备、[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)或电脑模式下调用不生效也不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |

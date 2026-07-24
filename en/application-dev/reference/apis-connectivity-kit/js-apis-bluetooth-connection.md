@@ -125,7 +125,7 @@ Initiates pairing with the peer Bluetooth device. This API uses an asynchronous 
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -180,7 +180,7 @@ Initiates pairing with the peer Bluetooth device. This API uses a promise to ret
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -235,7 +235,7 @@ Initiates pairing with the peer Bluetooth device. This API uses a promise to ret
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -295,7 +295,7 @@ Obtains the name of the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -347,7 +347,7 @@ Obtains the name of the peer device. The **alias** parameter is optional.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -395,7 +395,7 @@ Obtains the class of the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -440,7 +440,7 @@ Obtains the transport type of the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
@@ -481,7 +481,7 @@ Obtains the profile of the peer Bluetooth device based on the specified UUID. Th
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter.    |
@@ -533,7 +533,7 @@ Obtains the profile of the peer Bluetooth device based on the specified UUID. Th
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter.    |
@@ -578,7 +578,7 @@ Obtains the name of the local Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -619,7 +619,7 @@ Obtains the addresses of paired Bluetooth devices.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -669,7 +669,7 @@ Obtains the pairing status of the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -718,7 +718,7 @@ Obtains the connection status of a Bluetooth profile. The **ProfileId** paramete
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Incorrect parameter types.        |
@@ -763,7 +763,7 @@ Confirms the pairing request from the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -811,7 +811,7 @@ Sets the PIN used to complete Bluetooth pairing. This API uses an asynchronous c
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -862,7 +862,7 @@ Sets the PIN used to complete Bluetooth pairing. This API uses a promise to retu
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -912,7 +912,7 @@ Sets the name of the local Bluetooth device. The value cannot be an empty string
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -954,7 +954,7 @@ Sets the Bluetooth scan mode, which determines whether the local device can be c
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -996,7 +996,7 @@ Obtains the Bluetooth scan mode. This API is used together with the [onScanModeC
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1036,7 +1036,7 @@ Starts a Bluetooth scan for device discovery.<br>
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1079,7 +1079,7 @@ Stops the Bluetooth scan.<br>
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1119,7 +1119,7 @@ Checks whether the local Bluetooth device is in the device scanning state.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1170,7 +1170,7 @@ Sets the name of the peer Bluetooth device. The value cannot be an empty string.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.            |
@@ -1222,7 +1222,7 @@ Obtains the battery level of the peer Bluetooth device. This API uses a promise 
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.            |
@@ -1265,7 +1265,7 @@ Subscribes to battery change events of the peer device. This API uses an asynchr
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |2900099 | Operation failed.                        |
@@ -1306,7 +1306,7 @@ Unsubscribes from battery change events of the peer device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |2900099 | Operation failed.                        |
@@ -1353,7 +1353,7 @@ Subscribes to scan result reporting events of Bluetooth devices. This API uses a
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1398,7 +1398,7 @@ Unsubscribes from Bluetooth scan result reporting events.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1441,7 +1441,7 @@ Subscribes to Bluetooth pairing status change events. This API uses an asynchron
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1484,7 +1484,7 @@ Unsubscribes from Bluetooth pairing status change events.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1528,7 +1528,7 @@ Subscribes to pairing request events. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1571,7 +1571,7 @@ Unsubscribes from pairing request events.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1617,7 +1617,7 @@ Subscribes to scan result reporting events of Bluetooth devices. This API uses a
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1660,7 +1660,7 @@ Unsubscribes from the Bluetooth device discovered.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1702,7 +1702,7 @@ Subscribes to Bluetooth scan mode change events. This API uses an asynchronous c
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1742,7 +1742,7 @@ Unsubscribes from Bluetooth scan mode change events.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1788,7 +1788,7 @@ Obtains the latest connection time of the peer Bluetooth device. This API uses a
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -1838,7 +1838,7 @@ Obtains the profiles supported by the peer device. Supported profiles include A2
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
@@ -1898,7 +1898,7 @@ Obtains the profiles supported by the peer device. Supported profiles include A2
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
@@ -1953,7 +1953,7 @@ Obtains the profiles supported by the disconnected peer device. Supported profil
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
@@ -2002,7 +2002,7 @@ When [HashAlgorithmType](#hashalgorithmtype24) is set to **HASH_ALGORITHM_SHA256
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
@@ -2049,7 +2049,7 @@ Subscribes to the Bluetooth ACL link connection status change event. If this eve
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.       |
@@ -2092,7 +2092,7 @@ Unsubscribes from the Bluetooth ACL link connection status change event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.|

@@ -6,13 +6,13 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供[应用启动框架](../../application-models/app-startup.md)管理启动任务的能力，只能在主线程调用。
+本模块提供[应用启动框架](../../application-models/app-startup.md)管理启动任务的能力，支持任务依赖调度、并行执行、so预加载及任务结果管理，只能在主线程调用。
 
 > **说明：**
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块从API version 18开始支持so预加载。
+> 本模块从API version 18开始支持so预加载，可在应用启动阶段提前加载so文件。清理启动任务结果时，缓存中已加载的so文件不会被移除。
 >
 > 本模块接口仅可在Stage模型下使用。
 
@@ -25,11 +25,11 @@ import { startupManager }  from '@kit.AbilityKit';
 ## startupManager.run
 run(startupTasks: Array\<string\>, config?: StartupConfig): Promise\<void\>
 
-执行启动框架启动任务或加载so文件。
+执行启动框架启动任务或加载so文件。在应用启动阶段，可用于触发启动任务执行，或预加载so文件。
 
 > **说明：**
 >
-> 本接口不支持执行feature类型HAP中的启动任务，如需要使用相关能力请调用[startupManager.run](#startupmanagerrun20)接口。
+> 本接口不支持执行feature类型HAP（Harmony Ability Package）中的启动任务，如需要使用相关能力请调用[startupManager.run](#startupmanagerrun20)接口。
 >
 > 本接口只支持[应用级so](../../application-models/ability-terminology.md#应用级so)文件加载，不支持[系统级so](../../application-models/ability-terminology.md#系统级so)文件加载。
 
@@ -39,27 +39,27 @@ run(startupTasks: Array\<string\>, config?: StartupConfig): Promise\<void\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| startupTasks | Array\<string\> | 是 | 表示准备执行的启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称的数组。 |
-| config | [StartupConfig](./js-apis-app-appstartup-startupConfig.md) | 否 | 表示启动任务配置信息，包含启动框架超时时间与启动任务监听器配置。 |
+| startupTasks | Array\<string\> | 是 | 表示准备执行的启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称的数组。该接口不支持feature类型HAP中的启动任务。名称需与配置文件startup_config.json中配置的name取值保持一致，详见[定义启动任务配置](../../application-models/app-startup.md#定义启动任务配置)和[定义预加载so任务配置](../../application-models/app-startup.md#定义预加载so任务配置)。 |
+| config | [StartupConfig](js-apis-app-appstartup-startupConfig.md) | 否 | 表示启动任务配置信息，用于自定义启动框架的行为。当需要设置自定义超时时间或者监听启动任务完成状态时传入此参数；不传入时使用默认配置（默认超时时间为10000ms，无启动任务监听器）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
-  | 错误码ID | 错误信息 |
-  | ------- | -------------------------------- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 16000050 | Internal error. |
-  | 28800001 | Startup task or its dependency not found. |
-  | 28800002  | The startup tasks have circular dependencies. |
-  | 28800003 | An error occurred while running the startup tasks. |
-  | 28800004 | Running startup tasks timeout. |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 16000050 | Internal error. |
+| 28800001 | Startup task or its dependency not found. |
+| 28800002  | The startup tasks have circular dependencies. |
+| 28800003 | An error occurred while running the startup tasks. |
+| 28800004 | Running startup tasks timeout. |
 
 **示例：**
 
@@ -94,7 +94,11 @@ export default class EntryAbility extends UIAbility {
 
 run(startupTasks: Array\<string\>, context: common.AbilityStageContext, config: StartupConfig): Promise\<void\>
 
-执行启动框架启动任务或加载so文件。支持指定[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)用于启动任务的加载。使用Promise异步回调。
+执行启动框架启动任务或加载so文件。支持指定[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)用于启动任务的加载，该上下文会作为启动任务init方法的入参。本接口支持feature类型HAP中的启动任务。使用Promise异步回调。
+
+> **说明：**
+>
+> 本接口只支持[应用级so](../../application-models/ability-terminology.md#应用级so)文件加载，不支持[系统级so](../../application-models/ability-terminology.md#系统级so)文件加载。
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
@@ -102,19 +106,19 @@ run(startupTasks: Array\<string\>, context: common.AbilityStageContext, config: 
 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| startupTasks | Array\<string\>                                              | 是   | 表示准备执行的启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称的数组。 |
+| startupTasks | Array\<string\>                                              | 是   | 表示准备执行的启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称的数组。名称需与配置文件startup_config.json中配置的name取值保持一致，详见[定义启动任务配置](../../application-models/app-startup.md#定义启动任务配置)和[定义预加载so任务配置](../../application-models/app-startup.md#定义预加载so任务配置)。 |
 | context      | [common.AbilityStageContext](js-apis-inner-application-abilityStageContext.md) | 是   | 表示执行启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的AbilityStage上下文，作为入参传给启动任务的[init](js-apis-app-appstartup-startupTask.md#init)。 |
-| config       | [StartupConfig](./js-apis-app-appstartup-startupConfig.md)   | 是   | 表示启动任务配置信息，包含启动框架超时时间与启动任务监听器配置。 |
+| config       | [StartupConfig](js-apis-app-appstartup-startupConfig.md)   | 是   | 表示启动任务配置信息，包含启动框架超时时间与启动任务监听器配置。 |
 
 **返回值：**
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。执行失败时可通过异常信息获取错误原因。 |
 
 **错误码：**
 
-以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                           |
 | -------- | -------------------------------------------------- |
@@ -134,7 +138,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyAbilityStage extends AbilityStage {
   onCreate(): void {
     hilog.info(0x0000, 'testTag', 'AbilityStage onCreate');
-    let onCompletedCallback = (error: BusinessError<void>) => {
+    let onCompletedCallback = (error: BusinessError) => {
       if (error) {
         hilog.error(0x0000, 'testTag', `onCompletedCallback error code: ${error.code}, error msg: ${error.message}`);
       } else {
@@ -153,7 +157,7 @@ export default class MyAbilityStage extends AbilityStage {
       // 手动调用run方法
       startupManager.run(['StartupTask_001', 'libentry_001'], this.context, config).then(() => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startupManager.run success');
-      }).catch((error: BusinessError<void>) => {
+      }).catch((error: BusinessError) => {
         hilog.error(0x0000, 'testTag', `startupManager.run promise catch error code: ${error.code}, error msg: ${error.message}`);
       })
     } catch (error) {
@@ -216,7 +220,7 @@ export default class EntryAbility extends UIAbility {
 
 getStartupTaskResult(startupTask: string): Object
 
-获取指定启动任务或so预加载任务的执行结果。
+获取指定启动任务或so预加载任务的执行结果。调用run()执行对应的启动任务后，能通过本接口获取其执行结果。
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
@@ -224,21 +228,21 @@ getStartupTaskResult(startupTask: string): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| startupTask | string | 是 | 启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称。 |
+| startupTask | string | 是 | 启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称。名称需与配置文件startup_config.json中配置的name取值保持一致，详见[定义启动任务配置](../../application-models/app-startup.md#定义启动任务配置)和[定义预加载so任务配置](../../application-models/app-startup.md#定义预加载so任务配置)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Object | 输入为启动任务名时，返回指定的启动任务[init](js-apis-app-appstartup-startupTask.md#init)返回的执行结果。<br/>输入为so文件名时，返回undefined。 |
+| Object | 输入为启动任务名时，返回指定启动任务中[init](js-apis-app-appstartup-startupTask.md#init)方法的执行结果。<br/>输入为so文件名时，返回undefined。 |
 
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
-  | 错误码ID | 错误信息 |
-  | ------- | -------------------------------- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -282,7 +286,7 @@ export default class EntryAbility extends UIAbility {
 
 isStartupTaskInitialized(startupTask: string): boolean
 
-获取指定启动任务或so预加载任务是否已初始化。
+获取指定启动任务或so预加载任务是否已初始化。调用run()执行对应的启动任务后，能通过本接口查询其初始化状态。
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
@@ -290,21 +294,21 @@ isStartupTaskInitialized(startupTask: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| startupTask | string | 是 | 启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称。 |
+| startupTask | string | 是 | 启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称。名称需与配置文件startup_config.json中配置的name取值保持一致，详见[定义启动任务配置](../../application-models/app-startup.md#定义启动任务配置)和[定义预加载so任务配置](../../application-models/app-startup.md#定义预加载so任务配置)。 |
 
 **返回值：**
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | boolean | 返回布尔值，true表示该启动任务或so预加载任务已执行完成，false表示该启动任务或so预加载任务尚未执行完成。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 返回布尔值，true表示该启动任务或so预加载任务已初始化完成，false表示尚未初始化完成。 |
 
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
-  | 错误码ID | 错误信息 |
-  | ------- | -------------------------------- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -319,7 +323,7 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     try {
       startupManager.run(['StartupTask_001', 'libentry_001']).then(() => {
-      hilog.info(0x0000, 'testTag', 'StartupTask_001 init successful');
+        hilog.info(0x0000, 'testTag', 'StartupTask_001 init successful');
       }).catch((error: BusinessError) => {
         hilog.error(0x0000, 'testTag', `StartupTask_001 promise catch failed, error code: ${error.code}, error msg: ${error.message}`);
       });
@@ -358,9 +362,9 @@ export default class EntryAbility extends UIAbility {
 
 removeStartupTaskResult(startupTask: string): void
 
-删除指定启动任务或so预加载任务的初始化结果。
+删除指定启动任务或so预加载任务的结果。
 
-- 输入为启动任务名时，删除指定启动任务的初始化结果。
+- 输入为启动任务名时，删除指定启动任务的结果。
 
 - 输入为so文件时，将该so文件置为未加载，缓存中已加载的so文件不会被移除。
 
@@ -370,15 +374,15 @@ removeStartupTaskResult(startupTask: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| startupTask | string | 是 | 启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称。 |
+| startupTask | string | 是 | 启动任务[StartupTask](js-apis-app-appstartup-startupTask.md)的名称或预加载so名称。名称需与配置文件startup_config.json中配置的name取值保持一致，详见[定义启动任务配置](../../application-models/app-startup.md#定义启动任务配置)和[定义预加载so任务配置](../../application-models/app-startup.md#定义预加载so任务配置)。 |
 
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
-  | 错误码ID | 错误信息 |
-  | ------- | -------------------------------- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 

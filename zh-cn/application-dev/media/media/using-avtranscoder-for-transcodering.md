@@ -193,7 +193,7 @@
    }
    ```
 
-5. 配置视频转码参数，调用prepare()接口。
+5. 配置音视频转码参数，调用prepare()接口。
 
    > **说明：**
    >
@@ -280,15 +280,15 @@
      }
    }
    ```
-10. 完整的【开始转码-暂停转码-恢复转码-转码完成】流程
+10. 完整的【开始转码-暂停转码-恢复转码-转码完成】流程。
 
-    ```ts
-    async avTranscoderDemo() {
-      await this.startTranscoderingProcess(); // 开始转码。
-      await this.pauseTranscoderingProcess(); // 暂停转码。
-      await this.resumeTranscoderingProcess(); // 恢复转码。
-    }
-    ```
+   ```ts
+   async avTranscoderDemo() {
+     await this.startTranscoderingProcess(); // 开始转码。
+     await this.pauseTranscoderingProcess(); // 暂停转码。
+     await this.resumeTranscoderingProcess(); // 恢复转码。
+   }
+   ```
 
 ## 运行示例工程
 
