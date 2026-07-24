@@ -1679,7 +1679,7 @@ import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/page2', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -1757,7 +1757,7 @@ import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/Index", (err: BusinessError) => {
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -1797,7 +1797,7 @@ import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/Index", (err: BusinessError) => {
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -2078,7 +2078,7 @@ export default class EntryAbility extends UIAbility {
             return;
           }
           windowClass = data;
-          windowClass.setUIContent("pages/Test");
+          windowClass.setUIContent('pages/Test');
           let enabled = true;
           let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
           promise.then(() => {
@@ -2211,7 +2211,7 @@ export default class EntryAbility extends UIAbility {
             return;
           }
           windowClass = data;
-          windowClass.setUIContent("pages/Test");
+          windowClass.setUIContent('pages/Test');
           let promise = windowClass.setSystemAvoidAreaEnabled(true);
           promise.then(() => {
             let enabled = windowClass?.isSystemAvoidAreaEnabled();
@@ -2266,7 +2266,7 @@ try {
 
 setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolean): Promise&lt;void&gt;
 
-设置主窗口进入全屏模式时鼠标Hover到热区上是否显示窗口标题栏和dock栏，使用Promise异步回调。
+设置主窗口进入全屏模式时鼠标Hover到热区上是否显示窗口标题栏和Dock栏，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Window.SessionManager
 
@@ -2283,7 +2283,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | isTitleHoverShown    | boolean | 否   | 是否显示窗口标题栏。<br>true表示显示窗口标题栏；false表示不显示窗口标题栏。默认值是true。</br> |
-| isDockHoverShown    | boolean | 否   | 是否显示dock栏。<br>true表示显示dock栏；false表示不显示dock栏。默认值是true。</br> |
+| isDockHoverShown    | boolean | 否   | 是否显示Dock栏。<br>true表示显示Dock栏；false表示不显示Dock栏。默认值是true。</br> |
 
 **返回值：**
 
@@ -2328,7 +2328,7 @@ export default class EntryAbility extends UIAbility {
           console.info(`Succeeded in obtaining the main window. Data: ${JSON.stringify(data)}`);
           // 调用maximize接口，设置窗口进入全屏模式。
           mainWindow.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
-          // 调用setTitleAndDockHoverShown接口，隐藏标题栏和dock栏。
+          // 调用setTitleAndDockHoverShown接口，隐藏标题栏和Dock栏。
           mainWindow.setTitleAndDockHoverShown(false, false);
         }
       ).catch((err: BusinessError) => {
@@ -2366,7 +2366,7 @@ export default class EntryAbility extends UIAbility {
           console.info(`Succeeded in obtaining the main window.`);
           // 调用maximize接口，设置窗口进入全屏模式。
           mainWindow!.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
-          // 调用setTitleAndDockHoverShown接口，隐藏标题栏和dock栏。
+          // 调用setTitleAndDockHoverShown接口，隐藏标题栏和Dock栏。
           let promise = mainWindow!.setTitleAndDockHoverShown(false, false);
           promise.then(() => {
             console.info('Succeeded in setting the title and dock hoverShown false.');
@@ -3262,7 +3262,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let SystemBarProperties: window.SystemBarProperties = {
+      let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
         // 以下两个属性从API Version8开始支持
@@ -3270,7 +3270,7 @@ export default class EntryAbility extends UIAbility {
         navigationBarContentColor: '#00ffff'
       };
       try {
-        let promise = windowClass.setWindowSystemBarProperties(SystemBarProperties);
+        let promise = windowClass.setWindowSystemBarProperties(systemBarProperties);
         promise.then(() => {
           console.info('Succeeded in setting the system bar properties.');
         }).catch((err: BusinessError) => {
@@ -3303,7 +3303,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let SystemBarProperties: window.SystemBarProperties = {
+      let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
         //以下两个属性从API Version8开始支持
@@ -3311,7 +3311,7 @@ export default class EntryAbility extends UIAbility {
         navigationBarContentColor: '#00ffff'
       };
       try {
-        let promise = windowClass!.setWindowSystemBarProperties(SystemBarProperties);
+        let promise = windowClass!.setWindowSystemBarProperties(systemBarProperties);
         promise.then(() => {
           console.info('Succeeded in setting the system bar properties.');
         }).catch((err: Error) => {
@@ -4122,7 +4122,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // 为主窗口加载对应的目标页面。
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/page2', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -4159,7 +4159,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // 为主窗口加载对应的目标页面。
-    windowStage.loadContent("pages/page2", (err: BusinessError<void> | null): void => {
+    windowStage.loadContent('pages/page2', (err: BusinessError<void> | null): void => {
       if (err?.code) {
         console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
         return;
@@ -8111,7 +8111,7 @@ on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): voi
 
 > **说明：**
 >
-> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
+> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有Dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有Dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -8515,7 +8515,7 @@ windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
   console.info('Succeeded in setting the content.');
   let grayScale: number = 0.5;
   try {
-    if (canIUse("SystemCapability.Window.SessionManager")) {
+    if (canIUse('SystemCapability.Window.SessionManager')) {
       let promise = windowClass?.setWindowGrayScale(grayScale);
       promise?.then(() => {
         console.info('Succeeded in setting the grayScale.');
@@ -10664,7 +10664,7 @@ import { ColorMetrics } from '@kit.ArkUI';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
-windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
+windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   let errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -10748,7 +10748,7 @@ import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/page2', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -13355,7 +13355,7 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
 <!--no-check-->
 ```ts
 // Float.ets
-import { window } from '@kit.ArkUI'
+import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
 
@@ -13391,7 +13391,7 @@ struct Float {
         }).catch((err: BusinessError) => {
           console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
         });
-        windowClass.setUIContent("pages/FloatWindowInfo").then(() => {
+        windowClass.setUIContent('pages/FloatWindowInfo').then(() => {
           console.info('Succeeded in loading the content.');
         }).catch((err: BusinessError) => {
           console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -13416,7 +13416,7 @@ struct Float {
 <!--no-check-->
 ```ts
 // FloatWindowInfo.ets
-import { window } from '@kit.ArkUI'
+import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -14127,7 +14127,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
-windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
+windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   let errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -14153,7 +14153,7 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 onWindowStageCreate(windowStage: window.WindowStage): void {
   let storage: LocalStorage = new LocalStorage();
   storage.setOrCreate('storageSimpleProp', 121);
-  windowStage.loadContent("pages/Index", storage, (err: BusinessError | null) => {
+  windowStage.loadContent('pages/Index', storage, (err: BusinessError | null) => {
     let errCode = err?.code;
     if (errCode) {
       console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
@@ -14368,7 +14368,7 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     try {
-      windowStage.loadContent("pages/Index").then(() =>{
+      windowStage.loadContent('pages/Index').then(() =>{
         let windowClass = windowStage.getMainWindowSync();
         let enabled = false;
         windowClass.setWindowTitleMoveEnabled(enabled);
@@ -14386,7 +14386,7 @@ ArkTS-Sta示例：
 ```ts
 onWindowStageCreate(windowStage: window.WindowStage): void {
   try {
-    windowStage.loadContent("pages/Index").then(() =>{
+    windowStage.loadContent('pages/Index').then(() =>{
       let windowClass = windowStage.getMainWindowSync();
       let enabled = false;
       windowClass.setWindowTitleMoveEnabled(enabled);
@@ -14748,7 +14748,7 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     try {
-      windowStage.loadContent("pages/Index").then(() =>{
+      windowStage.loadContent('pages/Index').then(() =>{
         let windowClass = windowStage.getMainWindowSync();
         let colorMode : ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
         let style: window.DecorButtonStyle = {
@@ -14779,7 +14779,7 @@ import { ConfigurationConstant } from '@kit.AbilityKit';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     try {
-      windowStage.loadContent("pages/Index").then(() =>{
+      windowStage.loadContent('pages/Index').then(() =>{
         let windowClass = windowStage.getMainWindowSync();
         let colorMode : ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
         let style: window.DecorButtonStyle = {
@@ -15037,7 +15037,7 @@ getWindowStatus(): WindowStatusType
 
 > **说明：**
 >
-> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，PC/2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，PC/2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
+> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，PC/2in1设备会有Dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，PC/2in1设备会有Dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -16099,7 +16099,7 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         windowClass = data;
-        windowClass.setUIContent("pages/Index");
+        windowClass.setUIContent('pages/Index');
         let enabled = true;
         let promise = windowClass.setDialogBackGestureEnabled(enabled);
         promise.then(() => {
@@ -16164,7 +16164,7 @@ class EntryAbility extends UIAbility {
           return;
         }
         windowClass = data;
-        windowClass.setUIContent("pages/Index");
+        windowClass.setUIContent('pages/Index');
         let enabled = true;
         let promise = windowClass.setDialogBackGestureEnabled(enabled);
         promise.then(() => {
@@ -16649,7 +16649,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setGestureBackEnabled<sup>13+<sup>
+## setGestureBackEnabled<sup>13+</sup>
 
 setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
@@ -16772,7 +16772,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## isGestureBackEnabled<sup>13+<sup>
+## isGestureBackEnabled<sup>13+</sup>
 
 isGestureBackEnabled(): boolean
 
@@ -17293,7 +17293,7 @@ try {
 }
 ```
 
-## setExclusivelyHighlighted<sup>15+<sup>
+## setExclusivelyHighlighted<sup>15+</sup>
 
 setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
@@ -17432,7 +17432,7 @@ try {
 }
 ```
 
-## setFollowParentMultiScreenPolicy<sup>17+<sup>
+## setFollowParentMultiScreenPolicy<sup>17+</sup>
 
 setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 
@@ -17639,7 +17639,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setRelativePositionToParentWindowEnabled<sup>20+<sup>
+## setRelativePositionToParentWindowEnabled<sup>20+</sup>
 
 ArkTS-Dyn: setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: number, offsetY?: number): Promise&lt;void&gt;
 
@@ -18626,7 +18626,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let SystemBarProperties: window.SystemBarProperties = {
+      let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
         // 以下两个属性从API Version8开始支持
@@ -18634,7 +18634,7 @@ export default class EntryAbility extends UIAbility {
         navigationBarContentColor: '#00ffff'
       };
       try {
-        windowClass.setWindowSystemBarProperties(SystemBarProperties, (err: BusinessError) => {
+        windowClass.setWindowSystemBarProperties(systemBarProperties, (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
             console.error(`Failed to set the system bar properties. Cause code: ${err.code}, message: ${err.message}`);
@@ -19728,14 +19728,14 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let SystemBarProperties: window.SystemBarProperties = {
+      let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
         // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
-      windowClass.setSystemBarProperties(SystemBarProperties, (err) => {
+      windowClass.setSystemBarProperties(systemBarProperties, (err) => {
         const errCode: number = err.code;
         if (errCode) {
           console.error(`Failed to set the system bar properties. Cause code: ${err.code}, message: ${err.message}`);
@@ -19798,14 +19798,14 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let SystemBarProperties: window.SystemBarProperties = {
+      let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
         // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
-      let promise = windowClass.setSystemBarProperties(SystemBarProperties);
+      let promise = windowClass.setSystemBarProperties(systemBarProperties);
       promise.then(() => {
         console.info('Succeeded in setting the system bar properties.');
       }).catch((err: BusinessError) => {
