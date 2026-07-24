@@ -605,6 +605,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the status value is invalid. |
 | 12100003 | The specified permission does not exist. |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**起始版本：** 26.1.0 |
 | 12100007 | Service exception. |
 | 12100009 | Common inner error. A database error occurs. |
 
@@ -619,6 +620,67 @@ let permission: Permissions = 'ohos.permission.CAMERA';
 
 atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED).then(() => {
   console.info('setPermissionRequestToggleStatus: set closed successful');
+}).catch((err: BusinessError): void => {
+  console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### setPermissionRequestToggleStatus
+
+setPermissionRequestToggleStatus(permissionName: Permissions, status: PermissionRequestToggleStatus, subProfileId: number): Promise&lt;void&gt;
+
+设置指定子身份资料下指定权限的弹窗开关状态。适用于系统应用需要对某一子身份资料的用户授权权限单独控制授权弹窗的场景。调用成功后，该子身份资料请求此权限时将遵循指定状态：`CLOSED`时不弹出权限弹窗，`OPEN`时正常弹出权限弹窗。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.DISABLE_PERMISSION_DIALOG
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是 | 待设置弹窗开关状态的权限名称。仅支持`user_grant`类型权限，权限名长度不得超过256个字符；不满足要求时返回错误码12100001。 |
+| status | [PermissionRequestToggleStatus](#permissionrequesttogglestatus12) | 是 | 指定权限的弹窗开关状态。`CLOSED`表示关闭授权弹窗，应用请求该权限时不会弹窗；`OPEN`表示开启授权弹窗，应用请求该权限时正常弹窗。 |
+| subProfileId | number | 是 | 待设置的子身份资料标识符。可通过[OsAccountSubProfile](../apis-basic-services-kit/js-apis-osAccount-sys.md#osaccountsubprofile)对象的`id`字段获取。取值必须为大于0的整数，且必须属于当前用户；传入不存在的标识符时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 201 | Permission denied. Interface caller does not have permission specified below. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 801 | Capability not supported. |
+| 12100001 | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, the status value is invalid, or the specified subProfileId does not exist for the current user. |
+| 12100003 | The specified permission does not exist. |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus12). |
+| 12100007 | Service exception. |
+| 12100009 | Common inner error. A database error occurs. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permission: Permissions = 'ohos.permission.CAMERA';
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED, subProfileId).then(() => {
+  console.info('setPermissionRequestToggleStatus success');
 }).catch((err: BusinessError): void => {
   console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
@@ -663,6 +725,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise&lt;Permis
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | 12100003 | The specified permission does not exist. |
+| 12100004 | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus12).<br>**起始版本：** 26.1.0 |
 | 12100007 | Service exception. |
 
 **示例：**
@@ -680,6 +743,65 @@ atManager.getPermissionRequestToggleStatus(permission).then((res: abilityAccessC
   } else {
     console.info('getPermissionRequestToggleStatus: The toggle status is open');
   }
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getPermissionRequestToggleStatus
+
+getPermissionRequestToggleStatus(permissionName: Permissions, subProfileId: number): Promise&lt;PermissionRequestToggleStatus&gt;
+
+获取指定子身份资料下指定权限的弹窗开关状态。适用于系统应用在权限管理界面展示或核验某一子身份资料的权限弹窗配置。调用成功后，Promise返回该权限当前的弹窗开关状态，可据此判断应用请求该权限时是否会弹出授权窗口。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是 | 待查询弹窗开关状态的权限名称。仅支持`user_grant`类型权限，权限名长度不得超过256个字符；不满足要求时返回错误码12100001。 |
+| subProfileId | number | 是 | 待查询的子身份资料标识符。可通过[OsAccountSubProfile](../apis-basic-services-kit/js-apis-osAccount-sys.md#osaccountsubprofile)对象的`id`字段获取。取值必须为大于0的整数，且必须属于当前用户；传入不存在的标识符时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[PermissionRequestToggleStatus](#permissionrequesttogglestatus12)&gt; | Promise对象，返回指定子身份资料下该权限的弹窗开关状态。返回`CLOSED`表示应用请求该权限时不会弹窗；返回`OPEN`表示应用请求该权限时正常弹窗。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 201 | Permission denied. Interface caller does not have permission specified below. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 801 | Capability not supported. |
+| 12100001 | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the specified subProfileId does not exist for the current user. |
+| 12100003 | The specified permission does not exist. |
+| 12100007 | Service exception. |
+| 12100009 | Common inner error. A database error occurs. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permission: Permissions = 'ohos.permission.CAMERA';
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+atManager.getPermissionRequestToggleStatus(permission, subProfileId).then((status: abilityAccessCtrl.PermissionRequestToggleStatus) => {
+  console.info(`getPermissionRequestToggleStatus success, status: ${status}`);
 }).catch((err: BusinessError): void => {
   console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
