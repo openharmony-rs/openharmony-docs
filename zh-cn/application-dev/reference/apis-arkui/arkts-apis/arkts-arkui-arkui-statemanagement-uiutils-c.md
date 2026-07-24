@@ -620,7 +620,7 @@ struct Index {
 static getLifecycle<T extends BaseCustomComponent>(customComponent: T): CustomComponentLifecycle
 ```
 
-getLifecycle用于获取[自定义组件的生命周期](ComponentInit)实例。
+getLifecycle用于获取自定义组件的生命周期实例。
 
 **起始版本：** 23
 

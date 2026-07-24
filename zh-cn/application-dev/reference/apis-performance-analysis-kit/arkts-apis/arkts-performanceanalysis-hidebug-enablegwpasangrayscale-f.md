@@ -31,7 +31,7 @@ function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [11400114](../errorcode-hiviewdfx-hidebug.md#11400114-使能gwpasan失败) | The number of GWP-ASAN applications of this device overflowed after last boot. |
+| 11400114 | The number of GWP-ASAN applications of this device overflowed after last boot. |
 
 **示例：**
 
@@ -86,7 +86,7 @@ function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [11400114](../errorcode-hiviewdfx-hidebug.md#11400114-使能gwpasan失败) | The number of GWP-ASAN applications of this device overflowed after last boot. |
+| 11400114 | The number of GWP-ASAN applications of this device overflowed after last boot. |
 
 **示例：**
 

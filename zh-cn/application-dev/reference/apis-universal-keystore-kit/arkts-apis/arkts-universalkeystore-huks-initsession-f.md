@@ -33,7 +33,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | initSession操作密钥的别名。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | initSession操作的参数集合。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksSessionHandle&gt; | 是 | 回调函数。当密钥操作init成功时，err为undefined，data为获取到的HuksSessionHandle；否则为错误对象。HuksSessionHandle的handle返回initSession生成的handle。 |
+| callback | AsyncCallback&lt;HuksSessionHandle&gt; | 是 | 回调函数。当密钥操作init成功时，err为undefined，data为获取到的HuksSessionHandle；否则为错误对象。HuksSessionHandle的handle返回initSession生成的handle。 |
 
 **错误码：**
 

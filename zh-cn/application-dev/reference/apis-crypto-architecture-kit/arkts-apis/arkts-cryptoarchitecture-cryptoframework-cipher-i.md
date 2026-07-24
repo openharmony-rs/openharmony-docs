@@ -46,7 +46,7 @@ doFinal(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 表示最终要加密或解密的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -96,7 +96,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 要加密或解密的数据。在对称加解密中，这个参数可以是**null**，但是**{data: Uint8Array()}**不能传入。在API版本10之前，仅支持**DataBlob**。从API版本10开始，还支持**null**。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
@@ -110,7 +110,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 
 **示例：**
 
-更多加解密流程的完整示例请参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+更多加解密流程的完整示例请参考加解密开发指导。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -258,7 +258,7 @@ doFinal(data: DataBlob | null): Promise<DataBlob>
 
 **示例：**
 
-此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+此外，更多加解密流程的完整示例可参考加解密开发指导。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -350,7 +350,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 **示例：**
 
-此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+此外，更多加解密流程的完整示例可参考加解密开发指导。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -476,7 +476,7 @@ init、update和doFinal必须配合使用，其中init和doFinal是必选的，u
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 要执行的操作（加密或解密） |
 | key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 用于加密或解密的密钥 |
 | params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | 是 | IV等算法参数 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当加解密初始化成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当加解密初始化成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -517,7 +517,7 @@ init、update、doFinal为三段式接口，需要成组使用。其中init和do
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | 是 | 加密或者解密模式。 |
 | key | [Key](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md) | 是 | 指定加密或解密的密钥。 |
 | params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) \| null | 是 | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -751,7 +751,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 需要进行加密或解密的数据。data不能为null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当更新加/解密数据成功时，err为undefined，data为加密或解密结果DataBlob；否则为错误对象。 |
+| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当更新加/解密数据成功时，err为undefined，data为加密或解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 

@@ -217,7 +217,7 @@ getImageBounds(): common2D.Rect
 >  
 > 示意图展示了字符串为" a b "的图像边界。  
 >  
-> ![zh-ch_image_ImageBounds.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
+>   
 >  
 > 示意图展示了字符串为"j"或"E"的图像边界。  
 >  
@@ -336,7 +336,7 @@ getTextRange(): Range
 
 | 类型 | 说明 |
 | --- | --- |
-| [Range](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-scan-range-i.md) | 该行文本在整个段落文本中的索引区间。 |
+| Range | 该行文本在整个段落文本中的索引区间。 |
 
 **示例：**
 

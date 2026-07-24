@@ -20,7 +20,7 @@ import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 alignment?: Alignment
 ```
 
-对齐方式。<br/>默认值：undefined，当未设置alignment且存在导航条或软键盘时，Toast会自动根据导航条或软键盘位置进行调整，可参考bottom的说明。<br>**说明：**<br/>不同alignment下，Toast位置对齐效果，如下图所示。<br/>![zh-cn_image_0001](figures/toast_alignment.PNG)<br/>Toast的文本显示默认自左向右，不支持其他对齐方式。
+对齐方式。<br/>默认值：undefined，当未设置alignment且存在导航条或软键盘时，Toast会自动根据导航条或软键盘位置进行调整，可参考bottom的说明。<br>**说明：**<br/>不同alignment下，Toast位置对齐效果，如下图所示。<br/><br/>Toast的文本显示默认自左向右，不支持其他对齐方式。
 
 **类型：** Alignment
 
@@ -240,7 +240,7 @@ showMode?: ToastShowMode
 systemMaterial?: SystemUiMaterial
 ```
 
-设置组件的系统材质。<br/>默认值：如果主动设置了backgroundBlurStyle或backgroundColor接口，默认值是无系统材质效果，否则默认值是style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>**说明：**<br />不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。
+设置组件的系统材质。<br/>默认值：如果主动设置了backgroundBlurStyle或backgroundColor接口，默认值是无系统材质效果，否则默认值是style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象。设置undefined时与默认值保持一致。<br/>**说明：**<br />不同系统材质对应不同的属性影响效果，该接口影响背景色backgroundColor、边框颜色borderColor、边框宽度borderWidth、阴影shadow，不建议与上述接口一起使用。
 
 **类型：** SystemUiMaterial
 

@@ -4,7 +4,7 @@ CommonOptions定义日期时间选择器的通用选项。
 > **说明：**  
 >  
 > - Date的使用请参考  
-> [TimePickerOptions](../../../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#timepickeroptions)。  
+> TimePickerOptions。  
 >  
 > - DatePickerComponent的文本字号根据显示的总列数变化，当列数大于等于6列时，字号为14vp，其他情况下为16vp，当组件宽度过窄时，  
 > 可能出现文本显示截断的情况。  

@@ -1,6 +1,6 @@
 # Stat
 
-文件具体信息，在调用Stat的方法前，需要先通过[stat()](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat)方法（同步或异步）构建一个Stat实例。
+文件具体信息，在调用Stat的方法前，需要先通过stat()方法（同步或异步）构建一个Stat实例。
 
 **起始版本：** 9
 

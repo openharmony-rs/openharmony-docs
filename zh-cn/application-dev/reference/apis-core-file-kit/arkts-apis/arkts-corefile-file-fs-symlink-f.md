@@ -79,7 +79,7 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | target | string | 是 | 要链接的目标文件的应用沙箱路径。 |
 | srcPath | string | 是 | 符号链接文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步创建符号链接信息之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步创建符号链接信息之后的回调。 |
 
 **错误码：**
 

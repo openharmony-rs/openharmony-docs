@@ -118,7 +118,7 @@ Invalid input parameter.
 
 **可能原因**
 
-参数不在[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)枚举范围之内。
+参数不在PhotoKeys枚举范围之内。
 
 
 **处理步骤**
@@ -163,8 +163,8 @@ Invalid call context. Possible causes: 1. The API is called outside the photo br
 
 1. 在非全图浏览场景下调用该接口。
 
-2. 在已经配置[BaseSelectOptions.isMovingPhotoBadgeShown](arkts-apis-photoAccessHelper-class.md#baseselectoptions)为true的情况下调用该接口。
+2. 在已经配置BaseSelectOptions.isMovingPhotoBadgeShown为true的情况下调用该接口。
 
 **处理步骤**
 
-检查接口[setMovingPhotoState](ohos-file-PhotoPickerComponent.md#setmovingphotostate23)的使用场景。
+检查接口setMovingPhotoState的使用场景。

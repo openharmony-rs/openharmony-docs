@@ -103,7 +103,7 @@ execute(task: Task): Promise<Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| task | [Task](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-task-i.md) | 是 | 需要添加到串行任务队列中的任务。 |
+| task | Task | 是 | 需要添加到串行任务队列中的任务。 |
 
 **返回值：**
 

@@ -43,5 +43,5 @@ constructor(node: FrameNode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | 是 | 响应点击动作的目标节点。 |
+| node | FrameNode | 是 | 响应点击动作的目标节点。 |
 

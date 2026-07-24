@@ -31,9 +31,9 @@ import { appManager } from '@kit.AbilityKit';
 | [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-f.md#isrunninginstabilitytest-1) | 查询当前系统是否处于稳定性测试场景。使用Promise异步回调。 |
 | [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f.md#killprocessesbybundlename-1) | 终止指定应用包名的应用进程。使用Promise异步回调。 |
 | [off](arkts-ability-appmanager-off-f.md#off) | 注销应用状态监听器。使用callback异步回调。 |
-| [off](arkts-ability-appmanager-off-f.md#off-1) | 注销应用状态监听器。使用Promise异步回调。 |
+| off | 注销应用状态监听器。使用Promise异步回调。 |
 | [on](arkts-ability-appmanager-on-f.md#on) | 注册所有应用程序的状态监听器。 |
-| [on](arkts-ability-appmanager-on-f.md#on-1) | 注册指定应用程序的状态监听器。 |
+| on | 注册指定应用程序的状态监听器。 |
 
 <!--Del-->
 ### 函数（系统接口）

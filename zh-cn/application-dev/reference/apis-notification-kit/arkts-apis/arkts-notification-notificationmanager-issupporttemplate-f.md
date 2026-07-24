@@ -25,7 +25,7 @@ function isSupportTemplate(templateName: string, callback: AsyncCallback<boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | templateName | string | 是 | 模板名称。当前仅支持'downloadTemplate'。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示支持该模板；返回false表示不支持该模板；调用失败返回错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示支持该模板；返回false表示不支持该模板；调用失败返回错误对象。 |
 
 **错误码：**
 

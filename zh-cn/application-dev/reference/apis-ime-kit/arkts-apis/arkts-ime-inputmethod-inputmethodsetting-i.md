@@ -45,7 +45,7 @@ displayOptionalInputMethod(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当输入法选择对话框显示成功。err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当输入法选择对话框显示成功。err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -117,7 +117,7 @@ getAllInputMethods(callback: AsyncCallback<Array<InputMethodProperty>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;InputMethodProperty&gt;&gt; | 是 | 回调函数，返回所有输入法列表。 |
+| callback | AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&gt; | 是 | 回调函数，返回所有输入法列表。 |
 
 **错误码：**
 
@@ -274,7 +274,7 @@ getInputMethods(enable: boolean, callback: AsyncCallback<Array<InputMethodProper
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;InputMethodProperty&gt;&gt; | 是 | 回调函数，返回已激活/未激活输入法列表。 |
+| callback | AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&gt; | 是 | 回调函数，返回已激活/未激活输入法列表。 |
 
 **错误码：**
 
@@ -406,7 +406,7 @@ listCurrentInputMethodSubtype(callback: AsyncCallback<Array<InputMethodSubtype>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;InputMethodSubtype&gt;&gt; | 是 | 回调函数，返回当前输入法应用的所有子类型。 |
+| callback | AsyncCallback&lt;Array&lt;InputMethodSubtype&gt;&gt; | 是 | 回调函数，返回当前输入法应用的所有子类型。 |
 
 **错误码：**
 
@@ -498,7 +498,7 @@ listInputMethod(callback: AsyncCallback<Array<InputMethodProperty>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;InputMethodProperty&gt;&gt; | 是 | 回调函数，返回已安装的输入法列表。 |
+| callback | AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&gt; | 是 | 回调函数，返回已安装的输入法列表。 |
 
 **示例：**
 
@@ -574,7 +574,7 @@ listInputMethodSubtype(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | inputMethodProperty | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | 是 | 输入法应用。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;InputMethodSubtype&gt;&gt; | 是 | 回调函数，返回指定输入法应用的所有子类型。 |
+| callback | AsyncCallback&lt;Array&lt;InputMethodSubtype&gt;&gt; | 是 | 回调函数，返回指定输入法应用的所有子类型。 |
 
 **错误码：**
 
@@ -751,7 +751,7 @@ showOptionalInputMethods(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当输入法选择对话框显示成功，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当输入法选择对话框显示成功，err为undefined，data为true；否则为错误对象。 |
 
 **错误码：**
 

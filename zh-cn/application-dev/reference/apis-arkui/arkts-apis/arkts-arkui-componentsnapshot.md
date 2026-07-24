@@ -7,7 +7,7 @@
 组件截图典型使用场景（如长截图）及最佳实践请参考[使用组件截图](../../../ui/arkts-uicontext-component-snapshot.md)。
 > **说明：**  
 >  
-> - 对于使用[XComponent](../arkts-components/arkts-arkui-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用  
+> - 对于使用XComponent的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用  
 > [createPixelMapFromSurface](../../apis-image-kit/arkts-apis/arkts-image-image-createpixelmapfromsurface-f.md#createpixelmapfromsurface)  
 > 直接获取图片。  
 >  

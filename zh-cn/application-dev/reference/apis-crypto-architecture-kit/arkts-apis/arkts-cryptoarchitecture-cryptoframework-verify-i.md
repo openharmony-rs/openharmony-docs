@@ -103,7 +103,7 @@ init(pubKey: PubKey, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | pubKey | [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | 是 | 公钥对象，用于Verify的初始化。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当验签初始化成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当验签初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -539,7 +539,7 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 传入的消息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当验签更新成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当验签更新成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -683,7 +683,7 @@ verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback<boolean>
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 待验签的数据。 |
 | signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签失败。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签失败。 |
 
 **错误码：**
 
@@ -719,7 +719,7 @@ verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback<b
 | --- | --- | --- | --- |
 | data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) \| null | 是 | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 | signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签不通过。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签不通过。 |
 
 **错误码：**
 
@@ -856,7 +856,7 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考签名验签开发指导。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -929,7 +929,7 @@ function verifyByCallback() {
 
 ```
 
-更多示例请参见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+更多示例请参见签名验签开发指导。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1004,7 +1004,7 @@ async function verifyByPromise() {
 
 ```
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考签名验签开发指导。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

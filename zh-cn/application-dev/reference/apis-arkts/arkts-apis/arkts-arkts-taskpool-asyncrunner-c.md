@@ -115,7 +115,7 @@ execute(task: Task, priority?: Priority): Promise<Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| task | [Task](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-task-i.md) | 是 | 需要添加到异步队列中的任务。 |
+| task | Task | 是 | 需要添加到异步队列中的任务。 |
 | priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 指定任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
 
 **返回值：**

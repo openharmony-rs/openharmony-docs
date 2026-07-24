@@ -2,14 +2,14 @@
 
 > **说明：**  
 > 从 API version 7开始支持，从API version 9开始废弃。<!--Del-->建议使用  
-> [notificationManager.NotificationKey](arkts-notification-notificationsubscribe-notificationkey-i-sys.md)替代。  
+> notificationManager.NotificationKey替代。  
 > <!--DelEnd-->
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [NotificationKey](arkts-notification-notificationsubscribe-notificationkey-i-sys.md)
+**替代接口：** NotificationKey
 
 <!--Device-notification-export interface NotificationKey--><!--Device-notification-export interface NotificationKey-End-->
 

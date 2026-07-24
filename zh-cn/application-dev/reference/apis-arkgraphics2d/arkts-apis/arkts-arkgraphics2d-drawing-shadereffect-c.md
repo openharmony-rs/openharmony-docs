@@ -74,7 +74,7 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 | --- | --- | --- | --- |
 | dstShaderEffect | [ShaderEffect](arkts-arkgraphics2d-drawing-shadereffect-c.md) | 是 | 在混合模式中作为目标色的着色器。 |
 | srcShaderEffect | [ShaderEffect](arkts-arkgraphics2d-drawing-shadereffect-c.md) | 是 | 在混合模式中作为源色的着色器。 |
-| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 混合模式。 |
+| blendMode | BlendMode | 是 | 混合模式。 |
 
 **返回值：**
 

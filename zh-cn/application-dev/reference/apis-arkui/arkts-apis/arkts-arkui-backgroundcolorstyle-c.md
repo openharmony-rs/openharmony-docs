@@ -30,7 +30,7 @@ constructor(textBackgroundStyle: TextBackgroundStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| textBackgroundStyle | [TextBackgroundStyle](../arkts-components/arkts-arkui-textbackgroundstyle-i.md) | 是 | 文本背景色设置项。<br />默认值：<br />{<br /> color: Color.Transparent,<br/> radius: 0<br />} |
+| textBackgroundStyle | TextBackgroundStyle | 是 | 文本背景色设置项。<br />默认值：<br />{<br /> color: Color.Transparent,<br/> radius: 0<br />} |
 
 ## textBackgroundStyle
 

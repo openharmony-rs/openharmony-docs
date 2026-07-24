@@ -68,7 +68,7 @@ close(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback. |
+| callback | AsyncCallback&lt;void&gt; | 是 | callback. |
 
 **示例：**
 
@@ -163,7 +163,7 @@ read(callback: AsyncCallback<Dirent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Dirent&gt; | 是 | 异步读取下一个目录项之后的回调。 |
+| callback | AsyncCallback&lt;Dirent&gt; | 是 | 异步读取下一个目录项之后的回调。 |
 
 **示例：**
 

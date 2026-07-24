@@ -78,7 +78,7 @@ offLimitsChange(callback?: Callback<FloatViewLimits>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewLimits&gt; | 否 | 回调函数。返回当前的标准悬浮窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗限制变化的监听。 |
+| callback | Callback&lt;FloatViewLimits&gt; | 否 | 回调函数。返回当前的标准悬浮窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗限制变化的监听。 |
 
 **错误码：**
 
@@ -122,7 +122,7 @@ offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewRectChangeInfo&gt; | 否 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗矩形区域变化的监听。 |
+| callback | Callback&lt;FloatViewRectChangeInfo&gt; | 否 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗矩形区域变化的监听。 |
 
 **错误码：**
 
@@ -166,7 +166,7 @@ offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewStateChangeInfo&gt; | 否 | 回调函数。返回当前的标准悬浮窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗状态变化的监听。 |
+| callback | Callback&lt;FloatViewStateChangeInfo&gt; | 否 | 回调函数。返回当前的标准悬浮窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗状态变化的监听。 |
 
 **错误码：**
 
@@ -210,7 +210,7 @@ onLimitsChange(callback: Callback<FloatViewLimits>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewLimits&gt; | 是 | 回调函数。返回当前的标准悬浮窗限制变化信息。 |
+| callback | Callback&lt;FloatViewLimits&gt; | 是 | 回调函数。返回当前的标准悬浮窗限制变化信息。 |
 
 **错误码：**
 
@@ -255,7 +255,7 @@ onRectChange(callback: Callback<FloatViewRectChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewRectChangeInfo&gt; | 是 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。 |
+| callback | Callback&lt;FloatViewRectChangeInfo&gt; | 是 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。 |
 
 **错误码：**
 
@@ -300,7 +300,7 @@ onStateChange(callback: Callback<FloatViewStateChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatViewStateChangeInfo&gt; | 是 | 回调函数。返回当前的标准悬浮窗状态变化信息。 |
+| callback | Callback&lt;FloatViewStateChangeInfo&gt; | 是 | 回调函数。返回当前的标准悬浮窗状态变化信息。 |
 
 **错误码：**
 

@@ -27,7 +27,7 @@ function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolea
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 要查询的应用Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，返回boolean代表是否启用。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数，返回boolean代表是否启用。 |
 
 
 ## isApplicationEnabled

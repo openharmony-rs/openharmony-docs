@@ -41,7 +41,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| newConfig | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-configuration-i.md) | 是 | 表示更新后的配置信息。 |
+| newConfig | Configuration | 是 | 表示更新后的配置信息。 |
 
 **示例：**
 

@@ -33,9 +33,9 @@ Execute a drag event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| custom | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| DragItemInfo | 是 | Object used for prompts displayed when the object is dragged. |
+| custom | CustomBuilder \| DragItemInfo | 是 | Object used for prompts displayed when the object is dragged. |
 | dragInfo | [DragInfo](arkts-arkui-dragcontroller-draginfo-i.md) | 是 | Information about the drag event. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DragEventParam&gt; | 是 | Callback that contains the drag event information. |
+| callback | AsyncCallback&lt;DragEventParam&gt; | 是 | Callback that contains the drag event information. |
 
 **错误码：**
 
@@ -46,7 +46,7 @@ Execute a drag event.
 
 **示例：**
 
-推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的DragController对象。
+推荐通过使用UIContext中的getDragController方法获取当前UI上下文关联的DragController对象。
 
 ```TypeScript
 import { dragController } from '@kit.ArkUI';
@@ -158,7 +158,7 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| custom | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| DragItemInfo | 是 | 拖拽发起后跟手效果所拖拽的对象。 |
+| custom | CustomBuilder \| DragItemInfo | 是 | 拖拽发起后跟手效果所拖拽的对象。 |
 | dragInfo | [DragInfo](arkts-arkui-dragcontroller-draginfo-i.md) | 是 | 拖拽信息。 |
 
 **返回值：**
@@ -176,7 +176,7 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 
 **示例：**
 
-推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的DragController对象。
+推荐通过使用UIContext中的getDragController方法获取当前UI上下文关联的DragController对象。
 
 ```TypeScript
 import { dragController } from '@kit.ArkUI';

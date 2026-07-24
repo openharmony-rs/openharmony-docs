@@ -36,8 +36,8 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**对象。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考序列化支持类型。 |
+| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -93,8 +93,8 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**实例，并可�
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 泛型任务名称。 |
-| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考序列化支持类型。 |
+| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
 
 **错误码：**
 

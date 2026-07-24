@@ -48,7 +48,7 @@ import { Binding, ComponentReuse, CustomComponentLifecycleState, ComponentInacti
 | --- | --- |
 | [CollectionType](arkts-arkui-collectiontype-t.md) | globalConnect的入参泛型，用于定义globalConnect支持的持久化集合数据类型。 |
 | [GetterCallback](arkts-arkui-gettercallback-t.md) | 获取值的回调方法。 |
-| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 参数为[IMonitor](../arkts-components/arkts-arkui-imonitor-i.md)类型的监听回调函数。 |
+| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 参数为IMonitor类型的监听回调函数。 |
 | [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md) | 持久化失败时返回错误原因的回调。 |
 | [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | 复用自定义组件初始化函数。 |
 | [SetterCallback](arkts-arkui-settercallback-t.md) | 设置值的回调方法。 |

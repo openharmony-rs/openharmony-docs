@@ -30,7 +30,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | phoneNumber | string | 是 | 联系人的电话号码。 |
 | minDuration | number | 是 | 最短通话时长，单位为秒，取值范围大于0。 |
 
@@ -50,7 +50,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';
@@ -93,7 +93,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | phoneNumber | string | 是 | 联系人的电话号码。 |
 | minDuration | number | 是 | 最短通话时长，单位为秒，取值范围大于0。 |
 | withinTime | number | 是 | 表示从当前时间开始计算，通话的起始时间和结束时间应在此时间范围内，单位为秒。最多可设置6小时，超过6小时的默认以6小时查询。 |
@@ -114,7 +114,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';

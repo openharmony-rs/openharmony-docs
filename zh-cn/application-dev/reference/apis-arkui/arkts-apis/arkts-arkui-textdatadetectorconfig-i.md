@@ -1,6 +1,6 @@
 # TextDataDetectorConfig
 
-该配置只支持[Text](../../apis-arkgraphics2d/arkts-apis/arkts-graphics-text.md)组件和[RichEditor](../arkts-components/arkts-arkui-richeditor.md)组件。
+该配置只支持[Text](../../apis-arkgraphics2d/arkts-apis/arkts-graphics-text.md)组件和RichEditor组件。
 
 **起始版本：** 11
 
@@ -72,7 +72,7 @@ enablePreviewMenu?: boolean
 
 默认值：false
 
-当[copyOptions](RichEditorAttribute#copyOptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。
+当copyOptions设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。
 
 该参数在Phone、Tablet中可正常调用，在PC/2in1、TV和Wearable等其他设备类型中无效果。
 

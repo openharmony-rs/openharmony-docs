@@ -27,7 +27,7 @@ function executePeriodically(period: number, task: Task, priority?: Priority): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | period | number | 是 | 周期时长，单位为ms。period值必须要大于等于0。该值应为整数。<br>单位：毫秒。 |
-| task | [Task](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-task-i.md) | 是 | 需要周期执行的任务。 |
+| task | Task | 是 | 需要周期执行的任务。 |
 | priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 周期执行的任务的优先级，该参数默认值为**taskpool.Priority.MEDIUM**。 |
 
 **错误码：**

@@ -75,7 +75,7 @@ onAcceptWant(want: Want): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如Ability名称，Bundle名称等。 |
+| want | Want | 是 | Want类型参数，此处表示调用方传入的启动参数，如Ability名称，Bundle名称等。 |
 
 **返回值：**
 
@@ -121,7 +121,7 @@ onAcceptWantAsync(want: Want): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | Want类型参数，传入需要启动的UIAbility的信息，如UIAbility名称、Bundle名称等。 |
+| want | Want | 是 | Want类型参数，传入需要启动的UIAbility的信息，如UIAbility名称、Bundle名称等。 |
 
 **返回值：**
 
@@ -173,7 +173,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| newConfig | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-configuration-i.md) | 是 | 发生全局配置变更时触发回调，当前全局配置包括系统语言、深浅色模式。 |
+| newConfig | Configuration | 是 | 发生全局配置变更时触发回调，当前全局配置包括系统语言、深浅色模式。 |
 
 **示例：**
 
@@ -361,7 +361,7 @@ onNewProcessRequest(want: Want): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->名称、Bundle名称等。 |
+| want | Want | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->名称、Bundle名称等。 |
 
 **返回值：**
 
@@ -413,7 +413,7 @@ onNewProcessRequestAsync(want: Want): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->名称、Bundle名称等。 |
+| want | Want | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->名称、Bundle名称等。 |
 
 **返回值：**
 

@@ -26,7 +26,7 @@ function createEffect(): VisualEffect
 
 | 类型 | 说明 |
 | --- | --- |
-| [VisualEffect](../../apis-arkui/arkts-components/arkts-arkui-visualeffect-t.md) | 返回VisualEffect的头节点。 |
+| VisualEffect | 返回VisualEffect的头节点。 |
 
 **示例：**
 

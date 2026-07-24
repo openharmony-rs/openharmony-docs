@@ -18,6 +18,6 @@ import { IDataSourcePrefetching, BasicPrefetcher, IPrefetcher } from '@kit.ArkUI
 
 | 名称 | 说明 |
 | --- | --- |
-| [IDataSourcePrefetching](arkts-arkui-arkui-prefetcher-idatasourceprefetching-i.md) | 继承自[IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)。实现该接口，提供具备预取能力的DataSource。 |
+| [IDataSourcePrefetching](arkts-arkui-arkui-prefetcher-idatasourceprefetching-i.md) | 继承自IDataSource。实现该接口，提供具备预取能力的DataSource。 |
 | [IPrefetcher](arkts-arkui-arkui-prefetcher-iprefetcher-i.md) | 实现此接口以提供预取能力。 |
 

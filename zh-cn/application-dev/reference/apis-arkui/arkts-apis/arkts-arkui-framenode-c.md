@@ -30,7 +30,7 @@ addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent<T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; \| ReactiveComponentContent&lt;T&gt; | 是 | FrameNode节点中显示的组件内容。<br>**起始版本：** 12 - 21 |
+| content | ComponentContent&lt;T&gt; \| ReactiveComponentContent&lt;T&gt; | 是 | FrameNode节点中显示的组件内容。<br>**起始版本：** 12 - 21 |
 
 **错误码：**
 
@@ -201,7 +201,7 @@ FrameNode的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 创建对应节点时所需的UI上下文。 |
+| uiContext | UIContext | 是 | 创建对应节点时所需的UI上下文。 |
 
 ## convertPosition
 
@@ -338,9 +338,9 @@ createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | property | [AnimationPropertyType](arkts-arkui-animationpropertytype-e.md) | 是 | 动画属性枚举。 |
-| startValue | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number[]&gt; | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]。<br/>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
+| startValue | Optional&lt;number[]&gt; | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]。<br/>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
 | endValue | number[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]。 |
-| param | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | 是 | 动画参数。包含时长、动画曲线、结束回调等参数。 |
+| param | AnimateParam | 是 | 动画参数。包含时长、动画曲线、结束回调等参数。 |
 
 **返回值：**
 
@@ -370,7 +370,7 @@ static createFrameNodes(uiContext: UIContext, count: number): FrameNode[]
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 创建对应节点时所需的UI上下文。 |
+| uiContext | UIContext | 是 | 创建对应节点时所需的UI上下文。 |
 | count | number | 是 | 指定创建节点的数量，取值范围为大于零的整型。若给定值小于等于0或不是整数，则返回空数组。 |
 
 **返回值：**
@@ -874,7 +874,7 @@ getMeasuredSize(): Size
 
 | 类型 | 说明 |
 | --- | --- |
-| [Size](../arkts-components/arkts-arkui-size-i.md) | 节点测量后的大小，单位为PX。 |
+| Size | 节点测量后的大小，单位为PX。 |
 
 ## getNextSibling
 
@@ -928,7 +928,7 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 
 | 类型 | 说明 |
 | --- | --- |
-| number[] | Current property value from the render node. The array length corresponds to the property type.<br>The return value format varies by property:<br>- An empty array (length 0) is returned if the node has been disposed, the [dispose](arkts-arkui-framenode-c.md#dispose)API has been called, or the property enumeration is invalid.<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°).<br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px.<br>- **AnimationPropertyType.SCALE**: [scaleX, scaleY](scale factors).<br>- **AnimationPropertyType.OPACITY**: [opacity].<br>1. After animation cancellation, the node's property value is restored to the display value at the time of cancellation, which can be obtained using this API.<br>2. During animation playback, this API returns the final target value rather than real-time interpolated values.<br> |
+| number[] | Current property value from the render node. The array length corresponds to the property type.<br>The return value format varies by property:<br>- An empty array (length 0) is returned if the node has been disposed, the [dispose](arkts-arkui-framenode-c.md#dispose)API has been called, or the property enumeration is invalid.<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°).<br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px.<br>- **AnimationPropertyType.SCALE**: scaleX, scaleY.<br>- **AnimationPropertyType.OPACITY**: [opacity].<br>1. After animation cancellation, the node's property value is restored to the display value at the time of cancellation, which can be obtained using this API.<br>2. During animation playback, this API returns the final target value rather than real-time interpolated values.<br> |
 
 ## getNodeType
 
@@ -1032,7 +1032,7 @@ getPositionToParent(): Position
 getPositionToParentWithTransform(): Position
 ```
 
-获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-commonmethod-c.md#transform),[translate](../arkts-components/arkts-arkui-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如transform,translate等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -1080,7 +1080,7 @@ getPositionToScreen(): Position
 getPositionToScreenWithTransform(): Position
 ```
 
-获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-commonmethod-c.md#transform),[translate](../arkts-components/arkts-arkui-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如transform,translate等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -1128,7 +1128,7 @@ getPositionToWindow(): Position
 getPositionToWindowWithTransform(): Position
 ```
 
-获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-commonmethod-c.md#transform),[translate](../arkts-components/arkts-arkui-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如transform,translate等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -1312,7 +1312,7 @@ getUserConfigSize(): SizeT<LengthMetrics>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SizeT](../arkts-components/arkts-arkui-sizet-t.md)&lt;LengthMetrics&gt; | 用户设置的宽高。 |
+| SizeT&lt;LengthMetrics&gt; | 用户设置的宽高。 |
 
 ## insertChildAfter
 
@@ -1648,7 +1648,7 @@ moveTo(targetParent: FrameNode, index?: number): void
 > [XComponent](arkts-arkui-typenode-xcomponent-t.md)。对于其他类型的节点，移动操作不会生效。  
 >  
 > 当前仅支持根节点为以下类型组件的[BuilderNode](arkts-arkui-buildernode-c.md)进行移动操作：[Stack](../../apis-arkts/arkts-apis/arkts-arkts-util-stack-stack-c.md)、  
-> [XComponent](../arkts-components/arkts-arkui-xcomponent.md)、[EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent.md)。对于其他类型的组件，移动操作不会生效。
+> XComponent、EmbeddedComponent。对于其他类型的组件，移动操作不会生效。
 
 **起始版本：** 18
 
@@ -1698,7 +1698,7 @@ FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNod
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [DrawContext](../arkts-components/arkts-arkui-drawcontext-t.md) | 是 | 图形绘制上下文。自绘制区域无法超出组件自身大小。 |
+| context | DrawContext | 是 | 图形绘制上下文。自绘制区域无法超出组件自身大小。 |
 
 ## onLayout
 
@@ -1956,7 +1956,7 @@ setMeasuredSize(size: Size): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [Size](../arkts-components/arkts-arkui-size-i.md) | 是 | FrameNode的测量后的尺寸。 |
+| size | Size | 是 | FrameNode的测量后的尺寸。 |
 
 ## setNeedsLayout
 

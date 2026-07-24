@@ -68,7 +68,7 @@ footer(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| undefined | 是 | footer生成器函数<br>传入undefined移除footer。 |
+| builder | CustomBuilder \| undefined | 是 | footer生成器函数<br>传入undefined移除footer。 |
 
 **返回值：**
 
@@ -98,7 +98,7 @@ header(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| undefined | 是 | header生成器函数<br>传递undefined将移除header。 |
+| builder | CustomBuilder \| undefined | 是 | header生成器函数<br>传递undefined将移除header。 |
 
 **返回值：**
 
@@ -128,7 +128,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): La
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnVisibleIndexesChangeCallback](../arkts-components/arkts-arkui-onvisibleindexeschangecallback-t.md) \| undefined | 是 | 回调函数，当可见区域中子组件的索引发生变化时触发。<br>传递undefined将取消注册回调。 |
+| callback | OnVisibleIndexesChangeCallback \| undefined | 是 | 回调函数，当可见区域中子组件的索引发生变化时触发。<br>传递undefined将取消注册回调。 |
 
 **返回值：**
 
@@ -188,7 +188,7 @@ sticky(sticky: StickyStyle | undefined): LazyColumnLayoutAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sticky | [StickyStyle](../arkts-components/arkts-arkui-stickystyle-e.md) \| undefined | 是 | header和footer吸顶吸底样式。 |
+| sticky | StickyStyle \| undefined | 是 | header和footer吸顶吸底样式。 |
 
 **返回值：**
 

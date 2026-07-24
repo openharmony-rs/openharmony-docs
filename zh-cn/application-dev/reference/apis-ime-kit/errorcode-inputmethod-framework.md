@@ -158,7 +158,7 @@ Input method manager service error. Possible cause: a system error, such as null
 
 **可能原因**
 
-当调用[输入法框架](js-apis-inputmethod.md)中的任何接口都有可能由于依赖输入法管理服务，而服务找不到时发生此异常。
+当调用输入法框架中的任何接口都有可能由于依赖输入法管理服务，而服务找不到时发生此异常。
 
 **处理步骤**
 
@@ -180,7 +180,7 @@ Input method client detached.
 
 **处理步骤**
 
-需先执行[attach](js-apis-inputmethod.md#attach10)接口操作建立绑定，然后再调用showTextInput等接口进行键盘操作。完整调用流程：attach → showTextInput（显示键盘）→ hideTextInput（隐藏键盘），hideTextInput与showTextInput需配对使用以释放资源。
+需先执行attach接口操作建立绑定，然后再调用showTextInput等接口进行键盘操作。完整调用流程：attach → showTextInput（显示键盘）→ hideTextInput（隐藏键盘），hideTextInput与showTextInput需配对使用以释放资源。
 
 ## 12800010 不是系统配置的默认输入法
 
@@ -198,7 +198,7 @@ Not the preconfigured default input method.
 
 **处理步骤**
 
-开发者可以通过接口[getDefaultInputMethod](js-apis-inputmethod.md#inputmethodgetdefaultinputmethod11)查询系统配置默认输入法，判断当前应用是否为默认输入法，若不是，则不支持调用此接口。
+开发者可以通过接口getDefaultInputMethod查询系统配置默认输入法，判断当前应用是否为默认输入法，若不是，则不支持调用此接口。
 
 ## 12800011 当前输入框不支持预上屏
 
@@ -216,7 +216,7 @@ Text preview not supported.
 
 **处理步骤**
 
-开发者可通过接口[getEditorAttributeSync](js-apis-inputmethodengine.md#geteditorattributesync10)获取编辑框属性[EditorAttribute](js-apis-inputmethodengine.md#editorattribute)的isTextPreviewSupported，读取当前输入框是否支持预上屏，若不支持，则此接口不支持调用。
+开发者可通过接口getEditorAttributeSync获取编辑框属性EditorAttribute的isTextPreviewSupported，读取当前输入框是否支持预上屏，若不支持，则此接口不支持调用。
 
 ## 12800012 软键盘类型面板未创建
 
@@ -234,7 +234,7 @@ The input method panel does not exist.
 
 **处理步骤**
 
-开发者可以通过接口[createPanel](js-apis-inputmethodengine.md#createpanel10)创建。
+开发者可以通过接口createPanel创建。
 
 ## 12800013 窗口管理服务错误
 
@@ -284,11 +284,11 @@ The other side does not accept the request.
 
 **可能原因**
 
-开发者调用发送自定义通信数据接口时，若消息接收端未注册[MessageHandler](js-apis-inputmethodengine.md#messagehandler15)接收数据，则抛出此错误码。
+开发者调用发送自定义通信数据接口时，若消息接收端未注册MessageHandler接收数据，则抛出此错误码。
 
 **处理步骤**
 
-消息接收端需先注册MessageHandler接收自定义通信数据，然后才能调用recvMessage接收消息。调用顺序：先注册MessageHandler（监听数据），再调用recvMessage（接收数据）。输入法应用侧调用[recvMessage](js-apis-inputmethodengine.md#recvmessage15)，输入法客户端侧调用[recvMessage](js-apis-inputmethod.md#recvmessage15)。未注册MessageHandler即调用recvMessage会导致无法接收数据。
+消息接收端需先注册MessageHandler接收自定义通信数据，然后才能调用recvMessage接收消息。调用顺序：先注册MessageHandler（监听数据），再调用recvMessage（接收数据）。输入法应用侧调用recvMessage，输入法客户端侧调用recvMessage。未注册MessageHandler即调用recvMessage会导致无法接收数据。
 
 ## 12800016 输入法客户端未处于编辑状态
 
@@ -302,11 +302,11 @@ Input method client is not editable.
 
 **可能原因**
 
-输入法客户端绑定后退出编辑状态。例如：自绘控件调用`Attach`后，又调用了[hideTextInput](js-apis-inputmethod.md#hidetextinput10)操作等。
+输入法客户端绑定后退出编辑状态。例如：自绘控件调用`Attach`后，又调用了hideTextInput操作等。
 
 **处理步骤**
 
-输入法客户端绑定后退出编辑状态，需重新进入编辑状态。完整调用流程：attach（建立绑定）→ showTextInput（进入编辑状态）→ hideTextInput（退出编辑状态）。如：自绘控件需调用[showTextInput](js-apis-inputmethod.md#showtextinput10)重新进入编辑状态。注意：hideTextInput后不能直接调用其他编辑操作，必须先调用showTextInput重新进入编辑状态。
+输入法客户端绑定后退出编辑状态，需重新进入编辑状态。完整调用流程：attach（建立绑定）→ showTextInput（进入编辑状态）→ hideTextInput（退出编辑状态）。如：自绘控件需调用showTextInput重新进入编辑状态。注意：hideTextInput后不能直接调用其他编辑操作，必须先调用showTextInput重新进入编辑状态。
 
 ## 12800017 无效的面板类型或面板状态
 
@@ -342,7 +342,7 @@ The input method is not found.
 
 **处理步骤**
 
-开发者可以通过接口[getAllInputMethods](js-apis-inputmethod.md#getallinputmethods11)查询所有已经安装的输入法。
+开发者可以通过接口getAllInputMethods查询所有已经安装的输入法。
 
 <!--Del-->
 ## 12800019 系统配置的默认输入法不支持此操作
@@ -361,7 +361,7 @@ Current operation cannot be applied to the preconfigured default input method.
 
 **处理步骤**
 
-开发者可以通过接口[getDefaultInputMethod](js-apis-inputmethod.md#inputmethodgetdefaultinputmethod11)查询系统配置的默认输入法，判断当前操作的输入法是否为系统配置的默认输入法，若是，则不做处理。
+开发者可以通过接口getDefaultInputMethod查询系统配置的默认输入法，判断当前操作的输入法是否为系统配置的默认输入法，若是，则不做处理。
 
 <!--DelEnd-->
 
@@ -382,7 +382,7 @@ Invalid immersive effect.
 
 **可能原因**
 
-开发者调用接口[setImmersiveEffect](js-apis-inputmethodengine.md#setimmersiveeffect20)设置输入法沉浸效果[ImmersiveEffect](js-apis-inputmethodengine.md#immersiveeffect20)时，传入的参数不满足上述条件。
+开发者调用接口setImmersiveEffect设置输入法沉浸效果ImmersiveEffect时，传入的参数不满足上述条件。
 
 **处理步骤**
 1. 先设置ImmersiveEffect的immersiveEnabled属性为true启用沉浸模式，再设置gradientMode启用渐变模式和fluidLightMode启用流光模式。
@@ -399,16 +399,16 @@ This operation is allowed only after adjustPanelRect or resize is called.
 **错误描述**
 
 必须先调用以下任一接口，才能调用setImmersiveEffect接口：
-  - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect12)(支持API version 12)
-  - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect15)(支持API version 15)
-  - [resize](js-apis-inputmethodengine.md#resize10)(支持API version 10)
+  - adjustPanelRect(支持API version 12)
+  - adjustPanelRect(支持API version 15)
+  - resize(支持API version 10)
 
 **可能原因**
 
-开发者调用接口[setImmersiveEffect](js-apis-inputmethodengine.md#setimmersiveeffect20)之前，没有调用以下任一接口：
-  - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect12)(支持API version 12)
-  - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect15)(支持API version 15)
-  - [resize](js-apis-inputmethodengine.md#resize10)(支持API version 10)
+开发者调用接口setImmersiveEffect之前，没有调用以下任一接口：
+  - adjustPanelRect(支持API version 12)
+  - adjustPanelRect(支持API version 15)
+  - resize(支持API version 10)
 
 **处理步骤**
 
@@ -428,11 +428,11 @@ displayId无效或不存在。
 
 **可能原因**
 
-调用[getSystemPanelCurrentInsets](js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)接口传入的displayId为无效的值时，会导致接口调用失败并抛出此错误码。
+调用getSystemPanelCurrentInsets接口传入的displayId为无效的值时，会导致接口调用失败并抛出此错误码。
 
 **处理步骤**
 
-开发者可以通过接口[getDisplayId](js-apis-inputmethodengine.md#getdisplayid15)获取当前窗口的所在id。
+开发者可以通过接口getDisplayId获取当前窗口的所在id。
 
 ## 12800023 指定的用户不存在
 

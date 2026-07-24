@@ -19,7 +19,7 @@ type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, dat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | [Want](arkts-arkui-want-t-sys.md) | 是 |  |
+| source | Want | 是 |  |
 | template | [PluginComponentTemplate](arkts-arkui-plugincomponent-plugincomponenttemplate-i.md) | 是 |  |
 | data | [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md) | 是 |  |
 | extraData | [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md) | 是 |  |

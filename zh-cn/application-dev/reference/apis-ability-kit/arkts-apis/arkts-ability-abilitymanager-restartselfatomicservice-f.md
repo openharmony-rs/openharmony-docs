@@ -36,7 +36,7 @@ function restartSelfAtomicService(context: Context): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 当前Ability的上下文。<br>**说明**：当前仅支持[UIAbilityContext](arkts-ability-uiabilitycontext-c.md)。</br> |
+| context | Context | 是 | 当前Ability的上下文。<br>**说明**：当前仅支持[UIAbilityContext](arkts-ability-uiabilitycontext-c.md)。</br> |
 
 **错误码：**
 

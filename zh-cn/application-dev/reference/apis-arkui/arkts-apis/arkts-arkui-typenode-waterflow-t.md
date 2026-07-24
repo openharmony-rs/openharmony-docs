@@ -4,7 +4,7 @@
 type WaterFlow = TypedFrameNode<WaterFlowInterface, WaterFlowAttribute>
 ```
 
-WaterFlow类型的FrameNode节点类型。只允许添加[FlowItem](../arkts-components/arkts-arkui-flowitem.md)类型子组件。
+WaterFlow类型的FrameNode节点类型。只允许添加FlowItem类型子组件。
 
 **起始版本：** 12
 

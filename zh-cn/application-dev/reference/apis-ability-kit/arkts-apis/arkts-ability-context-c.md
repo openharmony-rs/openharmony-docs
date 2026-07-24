@@ -38,7 +38,7 @@ createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 
 | 类型 | 说明 |
 | --- | --- |
-| [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 指定数据加密等级的上下文。 |
+| Context | 指定数据加密等级的上下文。 |
 
 ## createDisplayContext
 
@@ -68,7 +68,7 @@ createDisplayContext(displayId: number): Context
 
 | 类型 | 说明 |
 | --- | --- |
-| [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 带有指定物理屏幕信息的上下文。 |
+| Context | 带有指定物理屏幕信息的上下文。 |
 
 **错误码：**
 
@@ -112,7 +112,7 @@ createModuleContext(moduleName: string): Context
 
 | 类型 | 说明 |
 | --- | --- |
-| [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 模块的上下文。 |
+| Context | 模块的上下文。 |
 
 **错误码：**
 
@@ -173,7 +173,7 @@ getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | dataGroupID | string | 是 | 原子化服务类型的应用创建时，系统会指定分配唯一Group ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取共享目录成功，err为undefined，data为对应的共享目录，如果不存在则返回为空；否则为错误对象。<br>**说明**：仅支持应用el2加密级别。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当获取共享目录成功，err为undefined，data为对应的共享目录，如果不存在则返回为空；否则为错误对象。<br>**说明**：仅支持应用el2加密级别。 |
 
 **错误码：**
 

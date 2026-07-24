@@ -2,12 +2,12 @@
 
 跟手弹出框参数，用于设置弹出框内容、位置属性等。
 
-继承自[CustomPopupOptions](../arkts-components/arkts-arkui-custompopupoptions-i.md)。
+继承自CustomPopupOptions。
 > **说明：**  
 >  
 > radius默认值为32vp。
 
-**继承/实现关系：** PopoverOptions extends [CustomPopupOptions](../arkts-components/arkts-arkui-custompopupoptions-i.md)
+**继承/实现关系：** PopoverOptions extends CustomPopupOptions
 
 **起始版本：** 14
 

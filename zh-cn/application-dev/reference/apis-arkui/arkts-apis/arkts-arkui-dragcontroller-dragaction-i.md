@@ -37,7 +37,7 @@ off(type: 'statusChange', callback?: Callback<DragAndDropInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'statusChange' | 是 | for status changing |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DragAndDropInfo&gt; | 否 | with drag event and status information |
+| callback | Callback&lt;DragAndDropInfo&gt; | 否 | with drag event and status information |
 
 ## on('statusChange')
 
@@ -62,7 +62,7 @@ on(type: 'statusChange', callback: Callback<DragAndDropInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'statusChange' | 是 | for status changing |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DragAndDropInfo&gt; | 是 | with drag event and status information |
+| callback | Callback&lt;DragAndDropInfo&gt; | 是 | with drag event and status information |
 
 ## startDrag
 

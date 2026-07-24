@@ -25,7 +25,7 @@ function getKeyboardType(deviceId: number, callback: AsyncCallback<KeyboardType>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | number | 是 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KeyboardType&gt; | 是 | 回调函数。当查询成功，err为undefined，data为输入设备的键盘类型；否则为错误对象。 |
+| callback | AsyncCallback&lt;KeyboardType&gt; | 是 | 回调函数。当查询成功，err为undefined，data为输入设备的键盘类型；否则为错误对象。 |
 
 **错误码：**
 

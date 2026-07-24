@@ -72,7 +72,7 @@ export default class DemoProcess extends ChildProcess {
 
 ```
 
-主进程部分，示例中的context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)：
+主进程部分，示例中的context的获取方式请参见获取UIAbility的上下文信息：
 
 ```TypeScript
 // 使用childProcessManager.startArkChildProcess方法启动子进程:

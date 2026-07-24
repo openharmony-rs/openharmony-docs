@@ -2,7 +2,7 @@
 
 > **说明：**  
 >  
-> 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和[effectStrategy](SymbolGlyphAttribute#effectStrategy)设置动效。
+> 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和effectStrategy设置动效。
 
 **起始版本：** 12
 
@@ -24,7 +24,7 @@ import { ChipItemLabelOptions, ChipGroupSpaceOptions, SymbolItemOptions, SuffixI
 iconBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow)等视觉属性。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的backgroundColor、border、shadow等视觉属性。
 
 默认值：undefined
 

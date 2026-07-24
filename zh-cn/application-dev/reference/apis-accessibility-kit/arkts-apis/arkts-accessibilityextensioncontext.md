@@ -21,7 +21,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md) | 无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement)或 [AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow)来获取一个 **AccessibilityElement** 实例。 |
+| [AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md) | 无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用AccessibilityExtensionContext.getAccessibilityFocusedElement()或 AccessibilityExtensionContext.getRootInActiveWindow()来获取一个 **AccessibilityElement** 实例。 |
 | [ElementAttributeValues](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i.md) | 节点元素具备的属性名称及属性值类型信息。 |
 | [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md) | 表示矩形区域。 |
 
@@ -30,7 +30,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i-sys.md) | 无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement)或 [AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow)来获取一个 **AccessibilityElement** 实例。 |
+| [AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i-sys.md) | 无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用AccessibilityExtensionContext.getAccessibilityFocusedElement()或 AccessibilityExtensionContext.getRootInActiveWindow()来获取一个 **AccessibilityElement** 实例。 |
 | [AccessibilityGrid](arkts-accessibility-accessibilityextensioncontext-accessibilitygrid-i-sys.md) | 辅助功能网格信息。详见[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)中的属性currentItem。 |
 | [AccessibilitySpan](arkts-accessibility-accessibilityextensioncontext-accessibilityspan-i-sys.md) | 辅助功能超链接文本信息。详见[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)中的属性spans。 |
 | [ElementAttributeValues](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i-sys.md) | 节点元素具备的属性名称及属性值类型信息。 |

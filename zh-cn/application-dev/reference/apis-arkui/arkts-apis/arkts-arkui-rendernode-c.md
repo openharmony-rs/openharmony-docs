@@ -124,7 +124,7 @@ draw(context: DrawContext): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [DrawContext](../arkts-components/arkts-arkui-drawcontext-t.md) | 是 | 图形绘制上下文。 |
+| context | DrawContext | 是 | 图形绘制上下文。 |
 
 ## getChild
 

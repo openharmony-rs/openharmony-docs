@@ -31,7 +31,7 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -83,9 +83,9 @@ function updateContact(context: Context, contact: Contact, callback: AsyncCallba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -96,7 +96,7 @@ function updateContact(context: Context, contact: Contact, callback: AsyncCallba
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -154,7 +154,7 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 | --- | --- | --- | --- |
 | contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -207,10 +207,10 @@ function updateContact(context: Context, contact: Contact, attrs: ContactAttribu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -221,7 +221,7 @@ function updateContact(context: Context, contact: Contact, attrs: ContactAttribu
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -333,7 +333,7 @@ function updateContact(context: Context, contact: Contact, attrs?: ContactAttrib
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
@@ -352,7 +352,7 @@ function updateContact(context: Context, contact: Contact, attrs?: ContactAttrib
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
   import { contact } from '@kit.ContactsKit';

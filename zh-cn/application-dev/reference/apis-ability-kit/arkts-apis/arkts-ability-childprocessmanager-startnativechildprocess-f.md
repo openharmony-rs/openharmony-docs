@@ -51,7 +51,7 @@ function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, opt
 
 **示例：**
 
-子进程部分，详见[Native子进程开发指导（C/C++）- 创建支持参数传递的Native子进程](../../application-models/capi-nativechildprocess-development-guideline.md#创建支持参数传递的native子进程)：
+子进程部分，详见Native子进程开发指导（C/C++）- 创建支持参数传递的Native子进程：
 
 ```TypeScript
 #include <AbilityKit/native_child_process.h>
@@ -80,7 +80,7 @@ void Main(NativeChildProcess_Args args)
 
 ```
 
-主进程部分，示例中的context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)：
+主进程部分，示例中的context的获取方式请参见获取UIAbility的上下文信息：
 
 ```TypeScript
 // 主进程：

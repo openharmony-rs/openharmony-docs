@@ -44,7 +44,7 @@ onCreate(want: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 当前Extension相关的Want类型信息，包括Ability名称、bundle名称等。 |
+| want | Want | 是 | 当前Extension相关的Want类型信息，包括Ability名称、bundle名称等。 |
 
 **示例：**
 

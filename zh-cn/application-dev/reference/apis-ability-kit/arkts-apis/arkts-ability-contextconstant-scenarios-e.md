@@ -14,7 +14,7 @@
 SCENARIO_MOVE_MISSION_TO_FRONT = 0x00000001
 ```
 
-<!--RP1-->系统接口[missionManager.moveMissionToFront](./js-apis-app-ability-missionManager-sys.md#missionmanagermovemissiontofront-2)接口触发的UIAbility到前台场景。<!--RP1End-->
+<!--RP1-->系统接口missionManager.moveMissionToFront接口触发的UIAbility到前台场景。<!--RP1End-->
 
 **起始版本：** 20
 

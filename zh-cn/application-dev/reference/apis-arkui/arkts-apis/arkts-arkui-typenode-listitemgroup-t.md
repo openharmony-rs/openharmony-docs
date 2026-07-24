@@ -4,7 +4,7 @@
 type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>
 ```
 
-ListItemGroup类型的FrameNode节点类型。只允许添加[ListItem](../arkts-components/arkts-arkui-listitem.md)类型子组件。
+ListItemGroup类型的FrameNode节点类型。只允许添加ListItem类型子组件。
 
 **起始版本：** 12
 

@@ -2,7 +2,7 @@
 
 有关异常事件名字、消息、错误堆栈信息、异常线程名称和类型的对象。
 
-**继承/实现关系：** GlobalError extends [Error](Error)
+**继承/实现关系：** GlobalError extends Error
 
 **起始版本：** 18
 

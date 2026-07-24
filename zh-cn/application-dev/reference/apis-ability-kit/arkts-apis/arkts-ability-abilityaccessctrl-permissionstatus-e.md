@@ -72,7 +72,7 @@ GRANTED = 0
 NOT_DETERMINED = 1
 ```
 
-表示未操作。应用声明[用户授权权限](permissions:Permissions)但暂未调用[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser)接口请求授权，或用户在设置中将权限状态修改为每次询问时，查询权限状态返回此值。
+表示未操作。应用声明用户授权权限但暂未调用[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser)接口请求授权，或用户在设置中将权限状态修改为每次询问时，查询权限状态返回此值。
 
 **起始版本：** 20
 

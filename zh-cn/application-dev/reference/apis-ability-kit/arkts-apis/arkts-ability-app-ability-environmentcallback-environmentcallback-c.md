@@ -36,11 +36,11 @@ onConfigurationUpdated(config: Configuration): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-configuration-i.md) | 是 | 变化后的Configuration对象。 |
+| config | Configuration | 是 | 变化后的Configuration对象。 |
 
 **示例：**
 
-参见[EnvironmentCallback使用](#environmentcallback使用)。
+参见EnvironmentCallback使用。
 
 ## onMemoryLevel
 
@@ -68,5 +68,5 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 **示例：**
 
-参见[EnvironmentCallback使用](#environmentcallback使用)。
+参见EnvironmentCallback使用。
 

@@ -23,7 +23,7 @@ function updateConnectStatus(
 
 **废弃版本：** 9
 
-**替代接口：** [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
+**替代接口：** getAvailableDeviceListSync
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +38,7 @@ function updateConnectStatus(
 | token | number | 是 | 注册后的token。 |
 | deviceId | string | 是 | 设备ID。 |
 | status | [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | 是 | 设备连接状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
 
 **示例：**
 
@@ -70,7 +70,7 @@ function updateConnectStatus(token: number, deviceId: string, status: DeviceConn
 
 **废弃版本：** 9
 
-**替代接口：** [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
+**替代接口：** getAvailableDeviceListSync
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

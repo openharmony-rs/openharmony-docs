@@ -6,7 +6,7 @@
 
 **废弃版本：** 22
 
-**替代接口：** [distributedDeviceManager:distributedDeviceManager](../../apis-distributed-service-kit/arkts-apis/arkts-distributeddevicemanager.md)
+**替代接口：** distributedDeviceManager:distributedDeviceManager
 
 <!--Device-unnamed-export interface ContinuationResult--><!--Device-unnamed-export interface ContinuationResult-End-->
 

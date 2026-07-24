@@ -69,7 +69,7 @@ function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前设备是否为RAM受限设备的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示当前设备为RAM受限设备；返回false表示当前设备为非RAM受限设备。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前设备是否为RAM受限设备的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示当前设备为RAM受限设备；返回false表示当前设备为非RAM受限设备。 |
 
 **错误码：**
 

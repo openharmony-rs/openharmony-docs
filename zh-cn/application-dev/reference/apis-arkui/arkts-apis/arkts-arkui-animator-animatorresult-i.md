@@ -20,7 +20,7 @@ import { AnimatorOptions, SimpleAnimatorOptions, AnimatorResult } from '@kit.Ark
 cancel(): void
 ```
 
-取消动画，会触发[onCancel](../../../reference/apis-arkui/js-apis-animator.md#属性)回调。此接口和[finish](arkts-arkui-animator-animatorresult-i.md#finish)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
+取消动画，会触发onCancel回调。此接口和[finish](arkts-arkui-animator-animatorresult-i.md#finish)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
 
 **起始版本：** 6
 
@@ -32,7 +32,7 @@ cancel(): void
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 animator.cancel();
@@ -45,7 +45,7 @@ animator.cancel();
 finish(): void
 ```
 
-结束动画，会触发[onFinish](../../../reference/apis-arkui/js-apis-animator.md#属性)回调。
+结束动画，会触发onFinish回调。
 
 **起始版本：** 6
 
@@ -57,7 +57,7 @@ finish(): void
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 animator.finish();
@@ -82,7 +82,7 @@ pause(): void
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 animator.pause();
@@ -107,7 +107,7 @@ play(): void
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 animator.play();
@@ -216,7 +216,7 @@ reset(options: AnimatorOptions | SimpleAnimatorOptions): void
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 import { Animator as animator, AnimatorResult, AnimatorOptions, SimpleAnimatorOptions } from '@kit.ArkUI';
@@ -258,7 +258,7 @@ reverse(): void
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 animator.reverse();
@@ -287,7 +287,7 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rateRange | [ExpectedFrameRateRange](../arkts-components/arkts-arkui-expectedframeraterange-i.md) | 是 | 设置期望的帧率范围。 |
+| rateRange | ExpectedFrameRateRange | 是 | 设置期望的帧率范围。 |
 
 **示例：**
 
@@ -355,7 +355,7 @@ update(options: AnimatorOptions): void
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 animator.update(options);

@@ -30,9 +30,9 @@ function insertData(options: Options, data: UnifiedData, callback: AsyncCallback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Options](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-zlib-options-i.md) | 是 | 配置项参数，参数中intention字段必填，且不支持DRAG，不填时会返回401错误码；其他字段是否填写均不影响接口的使用。 |
-| data | [UnifiedData](../../apis-arkui/arkts-components/arkts-arkui-unifieddata-t.md) | 是 | 要写入或更新的统一数据对象，用于存储数据记录及其属性信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回写入UDMF的数据的唯一标识符key的值。 |
+| options | Options | 是 | 配置项参数，参数中intention字段必填，且不支持DRAG，不填时会返回401错误码；其他字段是否填写均不影响接口的使用。 |
+| data | UnifiedData | 是 | 要写入或更新的统一数据对象，用于存储数据记录及其属性信息。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回写入UDMF的数据的唯一标识符key的值。 |
 
 **错误码：**
 
@@ -95,8 +95,8 @@ function insertData(options: Options, data: UnifiedData): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Options](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-zlib-options-i.md) | 是 | 配置项参数，参数中intention字段必填，且不支持DRAG，不填时会返回401错误码；其他字段是否填写均不影响接口的使用。 |
-| data | [UnifiedData](../../apis-arkui/arkts-components/arkts-arkui-unifieddata-t.md) | 是 | 要写入或更新的统一数据对象，用于存储数据记录及其属性信息。 |
+| options | Options | 是 | 配置项参数，参数中intention字段必填，且不支持DRAG，不填时会返回401错误码；其他字段是否填写均不影响接口的使用。 |
+| data | UnifiedData | 是 | 要写入或更新的统一数据对象，用于存储数据记录及其属性信息。 |
 
 **返回值：**
 

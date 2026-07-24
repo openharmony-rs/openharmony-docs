@@ -84,5 +84,5 @@ selectionStart和selectionEnd均为-1时表示全选。
 | --- | --- | --- | --- |
 | selectionStart | number | 是 | 选中开始位置。<br/>取值小于0时，按0处理。 |
 | selectionEnd | number | 是 | 选中结束位置。<br/>取值大于文本长度时，按当前文本长度处理。 |
-| options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置。 默认值继承[SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md)。 |
+| options | SelectionOptions | 否 | 选择项配置。 默认值继承SelectionOptions。 |
 

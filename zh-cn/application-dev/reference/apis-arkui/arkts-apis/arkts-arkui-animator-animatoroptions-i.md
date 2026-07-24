@@ -22,7 +22,7 @@ begin: number
 
 动画插值起点。
 
-**说明:** 会影响[onFrame](../../../reference/apis-arkui/js-apis-animator.md#属性)回调的入参值。
+**说明:** 会影响onFrame回调的入参值。
 
 默认值：0
 
@@ -92,7 +92,7 @@ duration: number
 
 动画播放的时长，单位毫秒。
 
-取值范围：[0, +∞)
+取值范围：0, +∞)
 
 默认值：0
 
@@ -134,7 +134,7 @@ end: number
 
 动画插值终点。
 
-**说明:** 会影响[onFrame](../../../reference/apis-arkui/js-apis-animator.md#属性)回调的入参值。
+**说明:** 会影响[onFrame回调的入参值。
 
 默认值：1
 

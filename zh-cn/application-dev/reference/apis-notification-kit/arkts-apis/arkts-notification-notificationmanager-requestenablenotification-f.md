@@ -33,7 +33,7 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当应用请求通知使能成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当应用请求通知使能成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -93,7 +93,7 @@ function requestEnableNotification(context: UIAbilityContext, callback: AsyncCal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) | 是 | 通知弹窗绑定Ability的上下文。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当应用通过弹窗获取用户授权成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当应用通过弹窗获取用户授权成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

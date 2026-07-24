@@ -14,7 +14,7 @@
 bannerEnabled?: NotificationFlagStatus
 ```
 
-是否启用横幅功能。默认值为TYPE_NONE。设置时仅[TYPE_CLOSE](arkts-notification-notificationflags-notificationflagstatus-e-sys.md)会生效。
+是否启用横幅功能。默认值为TYPE_NONE。设置时仅TYPE_CLOSE会生效。
 
 **类型：** NotificationFlagStatus
 
@@ -30,7 +30,7 @@ bannerEnabled?: NotificationFlagStatus
 lockScreenEnabled?: NotificationFlagStatus
 ```
 
-是否启用锁屏功能。默认值为TYPE_NONE。设置时仅[TYPE_CLOSE](arkts-notification-notificationflags-notificationflagstatus-e-sys.md)会生效。
+是否启用锁屏功能。默认值为TYPE_NONE。设置时仅TYPE_CLOSE会生效。
 
 **类型：** NotificationFlagStatus
 
@@ -46,7 +46,7 @@ lockScreenEnabled?: NotificationFlagStatus
 soundEnabled?: NotificationFlagStatus
 ```
 
-是否启用声音提示功能。默认值为TYPE_NONE。从API version 23开始成为可写参数，设置时仅[TYPE_CLOSE](arkts-notification-notificationflags-notificationflagstatus-e-sys.md)会生效。
+是否启用声音提示功能。默认值为TYPE_NONE。从API version 23开始成为可写参数，设置时仅TYPE_CLOSE会生效。
 
 **类型：** NotificationFlagStatus
 
@@ -62,7 +62,7 @@ soundEnabled?: NotificationFlagStatus
 vibrationEnabled?: NotificationFlagStatus
 ```
 
-是否启用振动提醒功能。默认值为TYPE_NONE。从API version 23开始成为可写参数，设置时仅[TYPE_CLOSE](arkts-notification-notificationflags-notificationflagstatus-e-sys.md)会生效。
+是否启用振动提醒功能。默认值为TYPE_NONE。从API version 23开始成为可写参数，设置时仅TYPE_CLOSE会生效。
 
 **类型：** NotificationFlagStatus
 

@@ -22,5 +22,5 @@ Pan手势事件监听函数类型。
 | --- | --- | --- | --- |
 | event | [GestureEvent](arkts-arkui-gestureevent-i.md) | 是 | 触发事件监听的手势事件的相关信息。  |
 | current | [GestureRecognizer](arkts-arkui-gesturerecognizer-c.md) | 是 | 触发事件监听的手势识别器的相关信息。  |
-| node | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | 否 | 触发事件监听的手势事件所绑定的组件。  |
+| node | FrameNode | 否 | 触发事件监听的手势事件所绑定的组件。  |
 

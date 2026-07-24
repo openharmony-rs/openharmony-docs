@@ -27,7 +27,7 @@ function on(type: 'add' | 'remove' | 'change', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'add' \| 'remove' \| 'change' | 是 | 监听事件。<br/>- type为"add"，表示增加显示设备事件。例如：插入显示器。<br/>- type为"remove"，表示移除显示设备事件。例如：移除显示器。<br/>- type为"change"，表示改变显示设备事件。例如：显示器方向改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
+| callback | Callback&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**
 
@@ -70,7 +70,7 @@ function on(type: 'add' | 'remove' | 'change', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'add' \| 'remove' \| 'change' | 是 | 监听事件。<br/>- type为"add"，表示增加显示设备事件。例如：插入显示器。<br/>- type为"remove"，表示移除显示设备事件。例如：移除显示器。<br/>- type为"change"，表示改变显示设备事件。例如：显示器方向改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
+| callback | Callback&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**
 
@@ -113,7 +113,7 @@ function on(type: 'add' | 'remove' | 'change', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'add' \| 'remove' \| 'change' | 是 | 监听事件。<br/>- type为"add"，表示增加显示设备事件。例如：插入显示器。<br/>- type为"remove"，表示移除显示设备事件。例如：移除显示器。<br/>- type为"change"，表示改变显示设备事件。例如：显示器方向改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
+| callback | Callback&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**
 
@@ -162,7 +162,7 @@ function on(type: 'foldStatusChange', callback: Callback<FoldStatus>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'foldStatusChange' | 是 | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FoldStatus&gt; | 是 | 回调函数。表示折叠设备折叠状态。 |
+| callback | Callback&lt;FoldStatus&gt; | 是 | 回调函数。表示折叠设备折叠状态。 |
 
 **错误码：**
 
@@ -209,7 +209,7 @@ function on(type: 'foldAngleChange', callback: Callback<Array<number>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'foldAngleChange' | 是 | 监听事件，固定为'foldAngleChange'，表示折叠设备折叠角度发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。如果是双折轴设备，则数组返回两个角度值，第一个值是折轴一的折叠角度值，第二个值是折轴二的折叠角度值。 |
+| callback | Callback&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。如果是双折轴设备，则数组返回两个角度值，第一个值是折轴一的折叠角度值，第二个值是折轴二的折叠角度值。 |
 
 **错误码：**
 
@@ -252,7 +252,7 @@ function on(type: 'captureStatusChange', callback: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'captureStatusChange' | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。 |
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。 |
 
 **错误码：**
 
@@ -299,7 +299,7 @@ function on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'foldDisplayModeChange' | 是 | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FoldDisplayMode&gt; | 是 | 回调函数。表示折叠设备屏幕显示模式。 |
+| callback | Callback&lt;FoldDisplayMode&gt; | 是 | 回调函数。表示折叠设备屏幕显示模式。 |
 
 **错误码：**
 

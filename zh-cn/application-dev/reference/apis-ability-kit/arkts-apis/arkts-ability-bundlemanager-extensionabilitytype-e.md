@@ -34,7 +34,7 @@ FORM = 0
 WORK_SCHEDULER = 1
 ```
 
-[WorkSchedulerExtensionAbility](../../apis-background-tasks-kit/arkts-apis/arkts-workschedulerextensionability.md)：延时任务扩展能力，允许应用在系统闲时执行实时性不高的任务。
+WorkSchedulerExtensionAbility：延时任务扩展能力，允许应用在系统闲时执行实时性不高的任务。
 
 **起始版本：** 9
 
@@ -62,7 +62,7 @@ INPUT_METHOD = 2
 SERVICE = 3
 ```
 
-[ServiceExtensionAbility](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md)：后台服务扩展能力，提供后台运行并对外提供相应能力。
+ServiceExtensionAbility：后台服务扩展能力，提供后台运行并对外提供相应能力。
 
 **起始版本：** 9
 
@@ -118,7 +118,7 @@ FileShareExtensionAbility：文件共享扩展能力，用于应用间的文件�
 STATIC_SUBSCRIBER = 7
 ```
 
-[StaticSubscriberExtensionAbility](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-application-staticsubscriberextensionability-staticsubscriberextensionability-c-sys.md)：静态广播扩展能力，用于处理静态事件，比如开机事件。
+StaticSubscriberExtensionAbility：静态广播扩展能力，用于处理静态事件，比如开机事件。
 
 **起始版本：** 9
 
@@ -258,7 +258,7 @@ PushExtensionAbility：推送扩展能力，提供推送场景化消息能力。
 DRIVER = 18
 ```
 
-[DriverExtensionAbility](../../apis-driver-development-kit/arkts-apis/arkts-app-ability-driverextensionability.md)：驱动扩展能力，提供外设驱动扩展能力。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。
+DriverExtensionAbility：驱动扩展能力，提供外设驱动扩展能力。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。
 
 **起始版本：** 10
 
@@ -384,7 +384,7 @@ FORM_EDIT = 27
 DISTRIBUTED = 28
 ```
 
-[DistributedExtensionAbility](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-application-distributedextensionability-distributedextensionability-c.md)：提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。
+DistributedExtensionAbility：提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。
 
 **起始版本：** 20
 
@@ -428,7 +428,7 @@ LIVE_FORM = 30
 SELECTION = 31
 ```
 
-[SelectionExtensionAbility](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-selectioninput-selectionextensionability-selectionextensionability-c-sys.md)：为开发者提供划词弹窗能力的ExtensionAbility。
+SelectionExtensionAbility：为开发者提供划词弹窗能力的ExtensionAbility。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -520,7 +520,7 @@ PARTNER_AGENT = 36
 AGENT = 37
 ```
 
-[AgentExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
+AgentExtensionAbility：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -538,7 +538,7 @@ AGENT = 37
 AGENT_UI = 38
 ```
 
-[AgentUIExtensionAbility](../../../reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。
+AgentUIExtensionAbility：为开发者提供接入端侧Agent UI界面显示能力。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

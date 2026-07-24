@@ -45,7 +45,7 @@ blur(radius: number): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| [Filter](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-filter-i.md) | 返回已添加的图像效果。 |
+| Filter | 返回已添加的图像效果。 |
 
 **示例：**
 
@@ -142,7 +142,7 @@ blur(radius: number, tileMode: TileMode): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| [Filter](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-filter-i.md) | 返回已添加的图像效果。 |
+| Filter | 返回已添加的图像效果。 |
 
 **示例：**
 
@@ -239,7 +239,7 @@ brightness(bright: number): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| [Filter](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-filter-i.md) | 返回已添加的图像效果。 |
+| Filter | 返回已添加的图像效果。 |
 
 **示例：**
 
@@ -491,7 +491,7 @@ grayscale(): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| [Filter](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-filter-i.md) | 返回已添加的图像效果。 |
+| Filter | 返回已添加的图像效果。 |
 
 **示例：**
 
@@ -576,7 +576,7 @@ invert(): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| [Filter](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-filter-i.md) | 返回已添加的图像效果。 |
+| Filter | 返回已添加的图像效果。 |
 
 **示例：**
 
@@ -667,7 +667,7 @@ setColorMatrix(colorMatrix: Array<number>): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| [Filter](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-filter-i.md) | 返回已添加的图像效果。 |
+| Filter | 返回已添加的图像效果。 |
 
 **错误码：**
 

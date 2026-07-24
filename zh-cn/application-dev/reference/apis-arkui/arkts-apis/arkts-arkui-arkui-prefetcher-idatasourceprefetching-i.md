@@ -1,8 +1,8 @@
 # IDataSourcePrefetching
 
-继承自[IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)。实现该接口，提供具备预取能力的DataSource。
+继承自IDataSource。实现该接口，提供具备预取能力的DataSource。
 
-**继承/实现关系：** IDataSourcePrefetching extends [IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)
+**继承/实现关系：** IDataSourcePrefetching extends IDataSource
 
 **起始版本：** 12
 

@@ -26,7 +26,7 @@ function on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callba
 | --- | --- | --- | --- |
 | type | 'hotkeyChange' | 是 | 事件类型，固定取值为'hotkeyChange'。 |
 | hotkeyOptions | [HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md) | 是 | 快捷键选项。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;HotkeyOptions&gt; | 是 | 回调函数，返回满足条件的组合按键输入事件。 |
+| callback | Callback&lt;HotkeyOptions&gt; | 是 | 回调函数，返回满足条件的组合按键输入事件。 |
 
 **错误码：**
 
@@ -96,7 +96,7 @@ function on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback<Ke
 | --- | --- | --- | --- |
 | type | 'keyPressed' | 是 | 事件类型，固定取值为'keyPressed'。 |
 | options | [KeyPressedConfig](arkts-input-inputconsumer-keypressedconfig-i.md) | 是 | 按键事件消费设置。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;KeyEvent&gt; | 是 | 回调函数，返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
+| callback | Callback&lt;KeyEvent&gt; | 是 | 回调函数，返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
 
 **错误码：**
 

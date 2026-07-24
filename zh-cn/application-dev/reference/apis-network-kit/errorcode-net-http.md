@@ -232,21 +232,21 @@ Failed to write the received data to the disk or application.
 
 1. 应用没有写文件权限。
 
-2. 调用[request](./js-apis-http.md#request)接口下载超过大小限制（API version 23之前限制为5MB，API version 23及之后的版本，限制为50MB），且未在[HttpRequestOptions](./js-apis-http.md#httprequestoptions)中设置maxLimit参数。
+2. 调用request接口下载超过大小限制（API version 23之前限制为5MB，API version 23及之后的版本，限制为50MB），且未在HttpRequestOptions中设置maxLimit参数。
 
 3. 磁盘空间不足。
 
-4. 上一次请求数据未接收完毕便调用[destroy](./js-apis-http.md#destroy)销毁导致接收数据不完整。
+4. 上一次请求数据未接收完毕便调用destroy销毁导致接收数据不完整。
 
 **处理步骤**
 
 1. 检查应用是否具有写文件权限。
 
-2. 若需下载超过5MB的数据，请在[HttpRequestOptions](./js-apis-http.md#httprequestoptions)中设置合适的maxLimit参数，或改用[requestInStream](./js-apis-http.md#requestinstream10)接口发起流式请求。
+2. 若需下载超过5MB的数据，请在HttpRequestOptions中设置合适的maxLimit参数，或改用requestInStream接口发起流式请求。
 
 3. 检查磁盘空间是否充足。
 
-4. 确保请求完成后再调用[destroy](./js-apis-http.md#destroy)方法。
+4. 确保请求完成后再调用destroy方法。
 
 5. 可查看日志关键词"HttpClient CURLcode result 23"定位该错误。
 

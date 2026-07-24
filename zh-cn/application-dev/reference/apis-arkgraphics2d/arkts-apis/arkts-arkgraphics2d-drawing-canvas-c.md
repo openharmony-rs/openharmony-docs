@@ -443,7 +443,7 @@ drawColor(color: common2D.Color, blendMode?: BlendMode): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | common2D.Color | 是 | ARGB格式的颜色，每个颜色通道的值是0到255之间的整数。 |
-| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
+| blendMode | BlendMode | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -473,7 +473,7 @@ drawColor(alpha: number, red: number, green: number, blue: number, blendMode?: B
 | red | number | 是 | ARGB格式颜色的红色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
 | green | number | 是 | ARGB格式颜色的绿色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
 | blue | number | 是 | ARGB格式颜色的蓝色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
-| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
+| blendMode | BlendMode | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -500,7 +500,7 @@ drawColor(color: number, blendMode?: BlendMode): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | number | 是 | 16进制ARGB格式的颜色。 |
-| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
+| blendMode | BlendMode | 否 | 颜色混合模式，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -1176,7 +1176,7 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array<commo
 | colors | Array&lt;number&gt; \| null | 是 | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
 | indexCount | number | 是 | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。 |
 | indices | Array&lt;number&gt; \| null | 是 | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
-| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 颜色混合模式。 |
+| mode | BlendMode | 是 | 颜色混合模式。 |
 
 **错误码：**
 

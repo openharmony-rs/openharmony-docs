@@ -12,7 +12,7 @@
 > - 本模块接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
 >  
 > - 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见  
-> [附录](../../../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#附录)。
+> 附录。
 
 **起始版本：** 21
 

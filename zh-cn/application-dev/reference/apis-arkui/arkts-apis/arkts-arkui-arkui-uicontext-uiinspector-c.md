@@ -36,7 +36,7 @@ Sets the component after layout or draw criteria and returns the corresponding l
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | ID of the target component, set using the universal attributes [id](../arkts-components/arkts-arkui-commonmethod-c.md#id)or [key](../arkts-components/arkts-arkui-commonmethod-c.md#key). |
+| id | string | 是 | ID of the target component, set using the universal attributes idor key. |
 
 **返回值：**
 

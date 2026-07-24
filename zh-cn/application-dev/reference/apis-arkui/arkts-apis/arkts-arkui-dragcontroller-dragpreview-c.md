@@ -205,5 +205,5 @@ setForegroundColor(color: ResourceColor): void
 
 **示例：**
 
-请参考[animate](#animate11)。
+请参考animate。
 

@@ -54,5 +54,5 @@ declare function stat(path: string, callback: AsyncCallback<Stat>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 待获取文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Stat&gt; | 是 | 异步获取文件的信息之后的回调。 |
+| callback | AsyncCallback&lt;Stat&gt; | 是 | 异步获取文件的信息之后的回调。 |
 

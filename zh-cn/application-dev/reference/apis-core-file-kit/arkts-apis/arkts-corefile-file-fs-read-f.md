@@ -78,7 +78,7 @@ declare function read(fd: number, buffer: ArrayBuffer, callback: AsyncCallback<n
 | --- | --- | --- | --- |
 | fd | number | 是 | 已打开的文件描述符。 |
 | buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步读取数据之后的回调。返回实际读取的数据长度，单位为Byte。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 异步读取数据之后的回调。返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -123,7 +123,7 @@ declare function read(
 | fd | number | 是 | 已打开的文件描述符。 |
 | buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
 | options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 是 | 支持如下选项：<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步读取数据之后的回调。返回实际读取的数据长度，单位为Byte。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 异步读取数据之后的回调。返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 

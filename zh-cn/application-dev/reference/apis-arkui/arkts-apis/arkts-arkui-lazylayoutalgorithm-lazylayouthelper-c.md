@@ -116,11 +116,11 @@ setChildrenInactive(children: number[]): void
 
 设置子组件为非激活状态。
 
-如果子组件是通过[ForEach](../../apis-arkui/arkts-components/arkts-arkui-for_each-i)或[Repeat](../../apis-arkui/arkts-components/arkts-arkui-repeat-i)（未启用[virtualScroll](arkts-arkui-repeatattribute-c.md#virtualscroll)）生成的，设置为非激活状态后将不显示。
+如果子组件是通过ForEach或Repeat（未启用[virtualScroll](arkts-arkui-repeatattribute-c.md#virtualscroll)）生成的，设置为非激活状态后将不显示。
 
-如果子组件是通过[LazyForEach](../../apis-arkui/arkts-components/arkts-arkui-lazy_for_each-i)或[Repeat](../../apis-arkui/arkts-components/arkts-arkui-repeat-i)（启用[virtualScroll](arkts-arkui-repeatattribute-c.md#virtualscroll)）生成的，设置为非激活状态后将销毁或回收。
+如果子组件是通过LazyForEach或Repeat（启用[virtualScroll](arkts-arkui-repeatattribute-c.md#virtualscroll)）生成的，设置为非激活状态后将销毁或回收。
 
-[LazyForEach](../../apis-arkui/arkts-components/arkts-arkui-lazy_for_each-i)或[Repeat](../../apis-arkui/arkts-components/arkts-arkui-repeat-i)（启用[virtualScroll](arkts-arkui-repeatattribute-c.md#virtualscroll)）只支持连续的激活子组件；在两个激活子组件之间设置子组件为非激活状态不会生效。
+LazyForEach或Repeat（启用[virtualScroll](arkts-arkui-repeatattribute-c.md#virtualscroll)）只支持连续的激活子组件；在两个激活子组件之间设置子组件为非激活状态不会生效。
 
 布局在可视区域外的子组件会自动设置为非激活状态。
 

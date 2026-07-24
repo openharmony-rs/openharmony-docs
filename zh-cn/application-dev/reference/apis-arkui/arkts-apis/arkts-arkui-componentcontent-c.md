@@ -1,6 +1,6 @@
 # ComponentContent
 
-继承自[Content](../../../reference/apis-arkui/js-apis-arkui-Content.md#content-1)。
+继承自Content。
 
 **继承/实现关系：** ComponentContent extends [Content](arkts-arkui-content-c.md)
 
@@ -32,8 +32,8 @@ ComponentContent的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 创建对应节点时所需要的UI上下文。 |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;[]&gt; | 是 | 封装不带参builder函数的WrappedBuilder对象。 |
+| uiContext | UIContext | 是 | 创建对应节点时所需要的UI上下文。 |
+| builder | WrappedBuilder&lt;[]&gt; | 是 | 封装不带参builder函数的WrappedBuilder对象。 |
 
 ## constructor
 
@@ -57,8 +57,8 @@ ComponentContent的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 创建对应节点时所需要的UI上下文。 |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;[T]&gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
+| uiContext | UIContext | 是 | 创建对应节点时所需要的UI上下文。 |
+| builder | WrappedBuilder&lt;[T]&gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
 | args | T | 是 | WrappedBuilder对象封装的builder函数的参数。 |
 
 ## constructor
@@ -83,8 +83,8 @@ ComponentContent的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 创建对应节点时所需要的UI上下文。 |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;[T]&gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
+| uiContext | UIContext | 是 | 创建对应节点时所需要的UI上下文。 |
+| builder | WrappedBuilder&lt;[T]&gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
 | args | T | 是 | WrappedBuilder对象封装的builder函数的参数。 |
 | options | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | 是 | build的配置参数，判断是否支持@Builder中嵌套@Builder的行为。*@Builder** within **@Builder**. |
 
@@ -225,7 +225,7 @@ reuse(param?: Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | Object | 否 | 用于复用ComponentContent的参数。该参数将直接用于ComponentContent中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ComponentContent中的自定义组件将直接使用构造时的数据源。 |
+| param | Object | 否 | 用于复用ComponentContent的参数。该参数将直接用于ComponentContent中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则会导致未定义行为。调用此方法将同步触发内部自定义组件的aboutToReuse生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ComponentContent中的自定义组件将直接使用构造时的数据源。 |
 
 ## update
 

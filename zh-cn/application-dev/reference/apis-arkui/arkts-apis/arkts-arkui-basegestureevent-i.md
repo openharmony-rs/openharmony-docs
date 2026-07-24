@@ -1,8 +1,8 @@
 # BaseGestureEvent
 
-基础手势事件类型。继承自[BaseEvent](../arkts-components/arkts-arkui-baseevent-i.md)。
+基础手势事件类型。继承自BaseEvent。
 
-**继承/实现关系：** BaseGestureEvent extends [BaseEvent](../arkts-components/arkts-arkui-baseevent-i.md)
+**继承/实现关系：** BaseGestureEvent extends BaseEvent
 
 **起始版本：** 11
 

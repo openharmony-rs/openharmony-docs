@@ -95,7 +95,7 @@ ThreadWorker构造函数，用于创建一个ThreadWorker实例。
 
 **示例：**
 
-以下示例展示了在Stage模型的entry模块Index.ets文件中加载Worker线程文件的方法，使用Library加载Worker线程文件的场景参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。
+以下示例展示了在Stage模型的entry模块Index.ets文件中加载Worker线程文件的方法，使用Library加载Worker线程文件的场景参考文件路径注意事项。
 
 ```TypeScript
 // Index.ets

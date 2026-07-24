@@ -138,7 +138,7 @@ clipRect: Region
 readonly format: number
 ```
 
-图像格式，参考[OH_NativeBuffer_Format](../../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。
+图像格式，参考OH_NativeBuffer_Format。
 
 **类型：** number
 

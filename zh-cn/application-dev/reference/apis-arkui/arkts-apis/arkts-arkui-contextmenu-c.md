@@ -1,6 +1,6 @@
 # ContextMenu
 
-在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-commonmethod-c.md#bindcontextmenu)属性绑定的菜单。
+在页面范围内关闭通过bindContextMenu属性绑定的菜单。
 
 **起始版本：** 8
 
@@ -14,7 +14,7 @@
 static close()
 ```
 
-可以通过该方法在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-commonmethod-c.md#bindcontextmenu)为组件绑定的菜单。
+可以通过该方法在页面范围内关闭通过bindContextMenu为组件绑定的菜单。
 > **说明：**  
 >  
 > 从API version 18开始废弃，建议使用[UIContext](arkts-arkui-uicontext.md)中的  

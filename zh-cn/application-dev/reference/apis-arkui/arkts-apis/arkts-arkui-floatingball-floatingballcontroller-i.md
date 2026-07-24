@@ -80,7 +80,7 @@ off(type: 'stateChange', callback?: Callback<FloatingBallState>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 监听事件，固定为'stateChange'，即闪控球生命周期状态变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatingBallState&gt; | 否 | 回调函数。返回当前的闪控球生命周期状态。若传入参数，则停止该监听。若未传入参数，则停止所有闪控球生命周期状态变化的监听。 |
+| callback | Callback&lt;FloatingBallState&gt; | 否 | 回调函数。返回当前的闪控球生命周期状态。若传入参数，则停止该监听。若未传入参数，则停止所有闪控球生命周期状态变化的监听。 |
 
 **错误码：**
 
@@ -125,7 +125,7 @@ off(type: 'click', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'click' | 是 | 监听事件，固定为'click'，即闪控球点击事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。若传入参数，则关闭特定的监听。若未传入参数，则关闭所有闪控球点击的监听。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。若传入参数，则关闭特定的监听。若未传入参数，则关闭所有闪控球点击的监听。 |
 
 **错误码：**
 
@@ -171,7 +171,7 @@ offDestroy(callback?: Callback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 否 | 回调函数。若传入参数，则取消该监听；若未传入参数，则取消所有闪控球销毁事件的监听。 |
+| callback | Callback&lt;string&gt; | 否 | 回调函数。若传入参数，则取消该监听；若未传入参数，则取消所有闪控球销毁事件的监听。 |
 
 **错误码：**
 
@@ -222,7 +222,7 @@ on(type: 'stateChange', callback: Callback<FloatingBallState>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 监听事件，固定为'stateChange'，即闪控球生命周期状态变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FloatingBallState&gt; | 是 | 回调函数。返回当前的闪控球生命周期状态。 |
+| callback | Callback&lt;FloatingBallState&gt; | 是 | 回调函数。返回当前的闪控球生命周期状态。 |
 
 **错误码：**
 
@@ -268,7 +268,7 @@ on(type: 'click', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'click' | 是 | 监听事件，固定为'click'，即闪控球点击事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。 |
 
 **错误码：**
 
@@ -315,7 +315,7 @@ onDestroy(callback: Callback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 是 | 回调函数。返回闪控球停止的原因。停止原因包括：<br>- "APP_STOP"：应用主动停止。<br>- "DUMPSTER_STOP"：拖动到垃圾桶触发停止。<br>- "LONG_PRESS_SINGLE_STOP"：长按单个闪控球触发停止。<br>- "LONG_PRESS_ALL_STOP"：长按全部闪控球触发停止。<br>- "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗口被销毁后触发停止。<br>- "SQUEEZE"：超出设备闪控球数量上限，被其他闪控球挤占停止。<br>- "FLOAT_VIEW_STOP"：与标准悬浮窗绑定后，绑定状态下跟随标准悬浮窗停止。<br>- "STOP_IN_SIDEBAR"：在侧边栏中被停止。 |
+| callback | Callback&lt;string&gt; | 是 | 回调函数。返回闪控球停止的原因。停止原因包括：<br>- "APP_STOP"：应用主动停止。<br>- "DUMPSTER_STOP"：拖动到垃圾桶触发停止。<br>- "LONG_PRESS_SINGLE_STOP"：长按单个闪控球触发停止。<br>- "LONG_PRESS_ALL_STOP"：长按全部闪控球触发停止。<br>- "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗口被销毁后触发停止。<br>- "SQUEEZE"：超出设备闪控球数量上限，被其他闪控球挤占停止。<br>- "FLOAT_VIEW_STOP"：与标准悬浮窗绑定后，绑定状态下跟随标准悬浮窗停止。<br>- "STOP_IN_SIDEBAR"：在侧边栏中被停止。 |
 
 **错误码：**
 
@@ -362,7 +362,7 @@ restoreMainWindow(want: Want): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-arkui-want-t-sys.md) | 是 | 加载指定页面的Want。 |
+| want | Want | 是 | 加载指定页面的Want。 |
 
 **返回值：**
 
@@ -416,9 +416,9 @@ setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>
 
 设置闪控球在应用内是否可见。使用Promise异步回调。
 
-- 当应用处于多任务界面时（[生命周期状态](../../../windowmanager/window-overview.md#生命周期状态)为PAUSED），闪控球不可见。  
+- 当应用处于多任务界面时（生命周期状态为PAUSED），闪控球不可见。  
 - 默认情况（即未调用此接口设置时）和调用此接口传入true时：除多任务界面外，闪控球均可见。  
-- 调用此接口传入false时：当应用处于前台（[生命周期状态](../../../windowmanager/window-overview.md#生命周期状态)为SHOWN或者RESUMED）时，闪控球不可见；当应用处于后台（[生命周期状态](../../../windowmanager/window-overview.md#生命周期状态)为HIDDEN）时，闪控球可见。
+- 调用此接口传入false时：当应用处于前台（生命周期状态为SHOWN或者RESUMED）时，闪控球不可见；当应用处于后台（生命周期状态为HIDDEN）时，闪控球可见。
 
 **起始版本：** 24
 

@@ -263,7 +263,7 @@ setBlendMode(mode: BlendMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 颜色的混合模式。 |
+| mode | BlendMode | 是 | 颜色的混合模式。 |
 
 **错误码：**
 

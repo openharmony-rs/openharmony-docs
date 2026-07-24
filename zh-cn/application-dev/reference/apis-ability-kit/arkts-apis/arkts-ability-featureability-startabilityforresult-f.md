@@ -34,7 +34,7 @@ function startAbilityForResult(parameter: StartAbilityParameter, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | parameter | [StartAbilityParameter](arkts-ability-ability-startabilityparameter-t.md) | 是 | 表示被启动的Ability。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AbilityResult&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，data为ability的启动结果；否则为错误对象。 |
+| callback | AsyncCallback&lt;AbilityResult&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，data为ability的启动结果；否则为错误对象。 |
 
 **示例：**
 

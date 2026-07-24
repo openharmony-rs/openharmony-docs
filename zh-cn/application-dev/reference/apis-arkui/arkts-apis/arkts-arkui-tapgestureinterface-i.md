@@ -21,7 +21,7 @@
 
 创建点击手势对象。继承自[GestureInterface<T>](arkts-arkui-gestureinterface-i.md)。
 
-触发点击手势事件的设备类型为键盘或手柄时，事件的[SourceTool](../arkts-components/arkts-arkui-sourcetool-e.md)值为Unknown，事件的[SourceType](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-touchevent-sourcetype-e.md)值为KEY或JOYSTICK。
+触发点击手势事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown，事件的[SourceType](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-touchevent-sourcetype-e.md)值为KEY或JOYSTICK。
 
 **起始版本：** 7
 

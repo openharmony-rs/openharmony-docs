@@ -79,7 +79,7 @@ declare function rmdir(path: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步删除目录之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步删除目录之后的回调。 |
 
 **错误码：**
 

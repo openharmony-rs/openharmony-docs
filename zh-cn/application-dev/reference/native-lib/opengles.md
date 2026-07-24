@@ -48,9 +48,9 @@ libEGL.so
 
 - [Node-API参考](./napi.md)
 
-- [XComponentNode参考](../apis-arkui/js-apis-arkui-xcomponentNode.md)
+- XComponentNode参考
 
-- [XComponent参考](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)
+- XComponent参考
 
 ## OpenGL ES扩展接口
 

@@ -28,7 +28,7 @@ function createImageSource(uri: string): ImageSource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng [SVG](../../../reference/apis-image-kit/arkts-apis-image-f.md#svg标签说明) .ico。 |
+| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng SVG .ico。 |
 
 **返回值：**
 

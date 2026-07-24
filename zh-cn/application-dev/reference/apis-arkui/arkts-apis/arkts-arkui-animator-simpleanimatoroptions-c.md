@@ -41,7 +41,7 @@ SimpleAnimatorOptions的构造函数。
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
@@ -95,7 +95,7 @@ delay(delay: number): SimpleAnimatorOptions
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
@@ -179,7 +179,7 @@ duration(duration: number): SimpleAnimatorOptions
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
@@ -233,7 +233,7 @@ easing(curve: string): SimpleAnimatorOptions
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
@@ -317,7 +317,7 @@ iterations(iterations: number): SimpleAnimatorOptions
 
 **示例：**
 
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 ```TypeScript
 import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';

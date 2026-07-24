@@ -12,7 +12,7 @@ import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventList
 declare function connectDfs(networkId: string, listeners: DfsListeners): Promise<void>
 ```
 
-业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](../../../reference/apis-core-file-kit/js-apis-file-fs.md#onstatus12)通知应用。
+业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内onStatus通知应用。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ declare function connectDfs(networkId: string, listeners: DfsListeners): Promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| networkId | string | 是 | 设备的网络Id。通过[distributedDeviceManager](../../apis-distributed-service-kit/arkts-apis/arkts-distributeddevicemanager.md)接口调用[DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)获得。 |
+| networkId | string | 是 | 设备的网络Id。通过distributedDeviceManager接口调用DeviceBasicInfo获得。 |
 | listeners | [DfsListeners](arkts-corefile-file-fs-dfslisteners-i.md) | 是 | 分布式文件系统状态监听器。 |
 
 **返回值：**

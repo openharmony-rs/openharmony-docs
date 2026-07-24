@@ -350,7 +350,7 @@ workerInstance.onmessage = (e: MessageEvents) => {
 
 ```
 
-如果传递的参数是对象字面量的话，需要[显式标注对象字面量的类型](../../quick-start/typescript-to-arkts-migration-guide.md#需要显式标注对象字面量的类型)。
+如果传递的参数是对象字面量的话，需要显式标注对象字面量的类型。
 
 ```TypeScript
 import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent, Priority } from '@kit.ArkTS';

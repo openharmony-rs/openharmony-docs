@@ -19,9 +19,9 @@ function openCustomDialog(options: CustomDialogOptions): Promise<number>
 弹窗宽度在设备竖屏时默认为 所在窗口宽度 - 左右margin（16vp，设备为2in1时为40vp），最大默认宽度为400vp。
 > **说明：**  
 >  
-> - 从API version 11开始支持，从API version 18开始废弃，建议使用[openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)替代。openCustomDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用openCustomDialog可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。  
+> - 从API version 11开始支持，从API version 18开始废弃，建议使用openCustomDialog替代。openCustomDialog需先通过UIContext中的getPromptAction方法获取PromptAction对象，然后通过该对象进行调用。且直接使用openCustomDialog可能导致UI上下文不明确的问题。  
 >  
-> - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](arkts-apis-uicontext-promptaction.md)对象。
+> - 从API version 12开始，可以通过使用UIContext中的getPromptAction方法获取当前UI上下文关联的PromptAction对象。
 
 **起始版本：** 11
 
@@ -41,7 +41,7 @@ function openCustomDialog(options: CustomDialogOptions): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [CustomDialogOptions](arkts-arkui-promptaction-customdialogoptions-i.md) | 是 | 自定义弹窗的内容。<br>**说明：** 如果BaseDialogOptions中的[isModal](js-apis-promptAction.md#basedialogoptions11)与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11)同时设置为true，则只生效showInSubWindow = true，此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。 |
+| options | [CustomDialogOptions](arkts-arkui-promptaction-customdialogoptions-i.md) | 是 | 自定义弹窗的内容。<br>**说明：** 如果BaseDialogOptions中的isModal与showInSubWindow同时设置为true，则只生效showInSubWindow = true，此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。 |
 
 **返回值：**
 
@@ -204,7 +204,7 @@ struct Index {
 
 ```
 
-直接使用openCustomDialog可能导致实例不明确的问题，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，再通过此对象调用替代方法[openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)。
+直接使用openCustomDialog可能导致实例不明确的问题，建议使用UIContext中的getPromptAction获取PromptAction对象，再通过此对象调用替代方法openCustomDialog。
 
 ```TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
@@ -282,7 +282,7 @@ struct Index {
 
 ```
 
-直接使用openCustomDialog可能导致实例不明确的问题，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，再通过此对象调用替代方法[openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)。
+直接使用openCustomDialog可能导致实例不明确的问题，建议使用UIContext中的getPromptAction获取PromptAction对象，再通过此对象调用替代方法openCustomDialog。
 
 ```TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
@@ -360,7 +360,7 @@ struct Index {
 
 ```
 
-直接使用openCustomDialog可能导致实例不明确的问题，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，再通过此对象调用替代方法[openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)。
+直接使用openCustomDialog可能导致实例不明确的问题，建议使用UIContext中的getPromptAction获取PromptAction对象，再通过此对象调用替代方法openCustomDialog。
 
 ```TypeScript
 // Index.ets
@@ -423,7 +423,7 @@ struct Index {
 
 ```
 
-直接使用openCustomDialog可能导致实例不明确的问题，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，再通过此对象调用替代方法[openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)。
+直接使用openCustomDialog可能导致实例不明确的问题，建议使用UIContext中的getPromptAction获取PromptAction对象，再通过此对象调用替代方法openCustomDialog。
 
 ```TypeScript
 // Index.ets

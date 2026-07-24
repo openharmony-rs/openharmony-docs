@@ -35,7 +35,7 @@ function cubicBezierCurve(x1: number, y1: number, x2: number, y2: number): ICurv
 
 | 类型 | 说明 |
 | --- | --- |
-| [ICurve](../arkts-components/arkts-arkui-icurve-i.md) | 曲线的插值对象。 |
+| ICurve | 曲线的插值对象。 |
 
 **示例：**
 

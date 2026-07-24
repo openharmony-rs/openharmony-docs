@@ -41,7 +41,7 @@ off(type: 'change', callback?: Callback<MediaQueryResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 必须填写字符串'change'。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;MediaQueryResult&gt; | 否 | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
+| callback | Callback&lt;MediaQueryResult&gt; | 否 | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
 
 **示例：**
 
@@ -87,7 +87,7 @@ on(type: 'change', callback: Callback<MediaQueryResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 必须填写字符串'change'。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;MediaQueryResult&gt; | 是 | 向媒体查询注册的回调。 |
+| callback | Callback&lt;MediaQueryResult&gt; | 是 | 向媒体查询注册的回调。 |
 
 **示例：**
 

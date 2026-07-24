@@ -87,7 +87,7 @@ icon?: ResourceStr
 表示意图图标，用于在AI入口显示。
 
 - 当取值为字符串类型时，表示图标读取网络资源。  
-- 当取值为[Resource](../../reference/apis-localization-kit/js-apis-resource-manager.md)时，表示图标读取本地资源。
+- 当取值为Resource时，表示图标读取本地资源。
 
 **类型：** ResourceStr
 

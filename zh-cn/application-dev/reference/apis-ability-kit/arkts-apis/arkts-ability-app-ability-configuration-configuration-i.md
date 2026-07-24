@@ -22,7 +22,7 @@ colorMode?: ConfigurationConstant.ColorMode
 
 表示应用深浅色模式，默认为浅色。
 
-支持开发者[设置应用或组件深浅色](../../application-models/subscribe-system-environment-variable-changes.md#设置深浅色模式)。
+支持开发者设置应用或组件深浅色。
 
 取值范围：
 
@@ -54,7 +54,7 @@ direction?: ConfigurationConstant.Direction
 - DIRECTION_HORIZONTAL：水平方向  
 - DIRECTION_VERTICAL：垂直方向
 
-该环境变量支持在[UIAbility](./js-apis-app-ability-uiAbility.md)组件和[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)组件中订阅，不支持在[ApplicationContext](./js-apis-inner-application-applicationContext.md)和[AbilityStage](./js-apis-app-ability-abilityStage.md)组件容器中订阅。
+该环境变量支持在UIAbility组件和UIExtensionAbility组件中订阅，不支持在ApplicationContext和AbilityStage组件容器中订阅。
 
 **类型：** ConfigurationConstant.Direction
 
@@ -74,7 +74,7 @@ displayId?: number
 
 表示应用所在的物理屏幕ID。
 
-该环境变量支持在[UIAbility](./js-apis-app-ability-uiAbility.md)组件和[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)组件中订阅，不支持在[ApplicationContext](./js-apis-inner-application-applicationContext.md)和[AbilityStage](./js-apis-app-ability-abilityStage.md)组件容器中订阅。
+该环境变量支持在UIAbility组件和UIExtensionAbility组件中订阅，不支持在ApplicationContext和AbilityStage组件容器中订阅。
 
 **类型：** number
 
@@ -112,7 +112,7 @@ fontSizeScale?: number
 
 表示字体大小缩放比例，取值为非负数，默认值为1。
 
-支持开发者[设置应用字体大小](../../application-models/subscribe-system-environment-variable-changes.md#设置字体大小)。
+支持开发者设置应用字体大小。
 
 **类型：** number
 
@@ -168,9 +168,9 @@ language?: string
 
 表示应用当前语言，例如“zh"(中文)，“en”（英文）。
 
-支持开发者[设置应用语言](../../application-models/subscribe-system-environment-variable-changes.md#设置应用语言)。
+支持开发者设置应用语言。
 
-取值范围参考[获取系统支持的语言列表](../apis-localization-kit/js-apis-i18n.md#getsystemlanguages9)。
+取值范围参考获取系统支持的语言列表。
 
 **类型：** string
 
@@ -258,7 +258,7 @@ screenDensity?: ConfigurationConstant.ScreenDensity
 
 字体显示大小与屏幕像素密度呈正相关关系。通过监听屏幕像素密度变化，可以感知字体显示大小的调整。通常情况下，对于相同的物理尺寸，屏幕像素密度越高，字体显示效果越大。
 
-该环境变量支持在[UIAbility](./js-apis-app-ability-uiAbility.md)组件和[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)组件中订阅，不支持在[ApplicationContext](./js-apis-inner-application-applicationContext.md)和[AbilityStage](./js-apis-app-ability-abilityStage.md)组件容器中订阅。
+该环境变量支持在UIAbility组件和UIExtensionAbility组件中订阅，不支持在ApplicationContext和AbilityStage组件容器中订阅。
 
 **类型：** ConfigurationConstant.ScreenDensity
 

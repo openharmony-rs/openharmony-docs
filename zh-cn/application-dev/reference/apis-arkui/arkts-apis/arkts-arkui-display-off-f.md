@@ -27,7 +27,7 @@ function off(type: 'add' | 'remove' | 'change', callback?: Callback<number>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'add' \| 'remove' \| 'change' | 是 | 监听事件。<br/>- type为"add"，表示增加显示设备事件。例如：插入显示器。<br/>- type为"remove"，表示移除显示设备事件。例如：移除显示器。<br/>- type为"change"，表示改变显示设备事件。例如：显示器方向改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 需要取消注册的回调函数。返回监听到的屏幕ID，该参数为整数。若无此参数，则取消注册当前type类型事件监听的所有回调函数。<br>**起始版本：** 20 |
+| callback | Callback&lt;number&gt; | 否 | 需要取消注册的回调函数。返回监听到的屏幕ID，该参数为整数。若无此参数，则取消注册当前type类型事件监听的所有回调函数。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -71,7 +71,7 @@ function off(type: 'add' | 'remove' | 'change', callback?: Callback<number>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'add' \| 'remove' \| 'change' | 是 | 监听事件。<br/>- type为"add"，表示增加显示设备事件。例如：插入显示器。<br/>- type为"remove"，表示移除显示设备事件。例如：移除显示器。<br/>- type为"change"，表示改变显示设备事件。例如：显示器方向改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 需要取消注册的回调函数。返回监听到的屏幕ID，该参数为整数。若无此参数，则取消注册当前type类型事件监听的所有回调函数。<br>**起始版本：** 20 |
+| callback | Callback&lt;number&gt; | 否 | 需要取消注册的回调函数。返回监听到的屏幕ID，该参数为整数。若无此参数，则取消注册当前type类型事件监听的所有回调函数。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -115,7 +115,7 @@ function off(type: 'add' | 'remove' | 'change', callback?: Callback<number>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'add' \| 'remove' \| 'change' | 是 | 监听事件。<br/>- type为"add"，表示增加显示设备事件。例如：插入显示器。<br/>- type为"remove"，表示移除显示设备事件。例如：移除显示器。<br/>- type为"change"，表示改变显示设备事件。例如：显示器方向改变。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 需要取消注册的回调函数。返回监听到的屏幕ID，该参数为整数。若无此参数，则取消注册当前type类型事件监听的所有回调函数。<br>**起始版本：** 20 |
+| callback | Callback&lt;number&gt; | 否 | 需要取消注册的回调函数。返回监听到的屏幕ID，该参数为整数。若无此参数，则取消注册当前type类型事件监听的所有回调函数。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ function off(type: 'foldStatusChange', callback?: Callback<FoldStatus>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'foldStatusChange' | 是 | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FoldStatus&gt; | 否 | 需要取消注册的回调函数。表示折叠设备折叠状态。若无此参数，则取消注册折叠状态变化监听的所有回调函数。<br>**起始版本：** 20 |
+| callback | Callback&lt;FoldStatus&gt; | 否 | 需要取消注册的回调函数。表示折叠设备折叠状态。若无此参数，则取消注册折叠状态变化监听的所有回调函数。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -204,7 +204,7 @@ function off(type: 'foldAngleChange', callback?: Callback<Array<number>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'foldAngleChange' | 是 | 监听事件，固定为'foldAngleChange'表示折叠设备折叠角度发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;number&gt;&gt; | 否 | 需要取消注册的回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。若无此参数，则取消注册折叠角度变化监听的所有回调函数。<br>**起始版本：** 20 |
+| callback | Callback&lt;Array&lt;number&gt;&gt; | 否 | 需要取消注册的回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。若无此参数，则取消注册折叠角度变化监听的所有回调函数。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -251,7 +251,7 @@ function off(type: 'captureStatusChange', callback?: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'captureStatusChange' | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息是否存在被获取监听的所有回调函数。 |
+| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息是否存在被获取监听的所有回调函数。 |
 
 **错误码：**
 
@@ -298,7 +298,7 @@ function off(type: 'foldDisplayModeChange', callback?: Callback<FoldDisplayMode>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'foldDisplayModeChange' | 是 | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式发生变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;FoldDisplayMode&gt; | 否 | 需要取消注册的回调函数。表示折叠设备屏幕显示模式。若无此参数，则取消注册屏幕显示模式变化监听的所有回调函数。<br>**起始版本：** 20 |
+| callback | Callback&lt;FoldDisplayMode&gt; | 否 | 需要取消注册的回调函数。表示折叠设备屏幕显示模式。若无此参数，则取消注册屏幕显示模式变化监听的所有回调函数。<br>**起始版本：** 20 |
 
 **错误码：**
 

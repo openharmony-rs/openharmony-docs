@@ -2,7 +2,7 @@
 
 一次增量备份对象，包含最后一次增量备份时间和增量清单。
 
-**继承/实现关系：** IncrementalBackupData extends [IncrementalBackupTime](arkts-corefile-backup-incrementalbackuptime-i-sys.md), [FileManifestData](arkts-corefile-backup-filemanifestdata-i-sys.md), [BackupParams](arkts-corefile-backup-backupparams-i-sys.md), [BackupPriority](arkts-corefile-backup-backuppriority-i-sys.md)
+**继承/实现关系：** IncrementalBackupData extends IncrementalBackupTime, FileManifestData, BackupParams, BackupPriority
 
 **起始版本：** 12
 

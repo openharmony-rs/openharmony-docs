@@ -87,7 +87,7 @@ off(type: 'drawChildren', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'drawChildren' | 是 | 监听事件的类型。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 监听事件的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 监听事件的回调。 |
 
 ## offDrawChildren
 
@@ -111,7 +111,7 @@ offDrawChildren(callback?: Callback<number[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number[]&gt; | 否 | 监听事件的回调函数。 |
+| callback | Callback&lt;number[]&gt; | 否 | 监听事件的回调函数。 |
 
 **示例：**
 
@@ -173,11 +173,11 @@ offLayoutChildren(callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 监听事件的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 监听事件的回调。 |
 
 **示例：**
 
-以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过[onLayoutChildren23+](#onlayoutchildren23)接口监听子树中的节点完成布局时的回调事件。
+以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过onLayoutChildren23+接口监听子树中的节点完成布局时的回调事件。
 
 ```TypeScript
 import { inspector } from '@kit.ArkUI';
@@ -318,7 +318,7 @@ on(type: 'drawChildren', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'drawChildren' | 是 | 监听事件的类型。 |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 监听事件的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 监听事件的回调。 |
 
 ## onDrawChildren
 
@@ -342,11 +342,11 @@ onDrawChildren(callback: Callback<number[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number[]&gt; | 是 | 监听事件的回调函数，回调函数的参数为发生绘制送显节点的UniqueId。 |
+| callback | Callback&lt;number[]&gt; | 是 | 监听事件的回调函数，回调函数的参数为发生绘制送显节点的UniqueId。 |
 
 **示例：**
 
-以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过[onDrawChildren24+](#ondrawchildren24)接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
+以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过onDrawChildren24+接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
 
 ```TypeScript
 import { inspector } from '@kit.ArkUI';
@@ -404,5 +404,5 @@ onLayoutChildren(callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 事件触发时的回调方法。 |
+| callback | Callback&lt;void&gt; | 是 | 事件触发时的回调方法。 |
 

@@ -49,8 +49,8 @@ auth(
 | --- | --- | --- | --- |
 | challenge | Uint8Array | 是 | 挑战值，可以传Uint8Array([])。 |
 | authType | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md) | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
-| authTrustLevel | [AuthTrustLevel](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-authtrustlevel-e-sys.md) | 是 | 认证信任等级。 |
-| callback | [IUserAuthCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 回调函数。 |
+| authTrustLevel | AuthTrustLevel | 是 | 认证信任等级。 |
+| callback | IUserAuthCallback | 是 | 回调函数。 |
 
 **返回值：**
 
@@ -183,7 +183,7 @@ getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): numb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | authType | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md) | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
-| authTrustLevel | [AuthTrustLevel](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-authtrustlevel-e-sys.md) | 是 | 认证信任等级。 |
+| authTrustLevel | AuthTrustLevel | 是 | 认证信任等级。 |
 
 **返回值：**
 

@@ -21,7 +21,7 @@ function getStorage(path: string, callback: AsyncCallback<Storage>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 应用程序内部数据存储路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Storage&gt; | 是 | 回调函数。 |
+| callback | AsyncCallback&lt;Storage&gt; | 是 | 回调函数。 |
 
 
 ## getStorage

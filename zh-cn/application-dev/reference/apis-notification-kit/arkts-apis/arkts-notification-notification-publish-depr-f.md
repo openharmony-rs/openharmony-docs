@@ -23,7 +23,7 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | request | [NotificationRequest](arkts-notification-notificationmanager-notificationrequest-t.md) | 是 | 用于设置要发布通知的内容和相关配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 发布通知的回调方法。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 发布通知的回调方法。 |
 
 
 ## publish

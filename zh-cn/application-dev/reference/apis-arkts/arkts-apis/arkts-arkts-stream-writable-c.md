@@ -289,7 +289,7 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 事件类型。支持以下事件： |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;emitter.EventData&gt; | 否 | 回调函数。 |
+| callback | Callback&lt;emitter.EventData&gt; | 否 | 回调函数。 |
 
 **示例：**
 
@@ -340,7 +340,7 @@ on(event: string, callback: Callback<emitter.EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 事件类型。支持以下事件： |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;emitter.EventData&gt; | 是 | 用于返回事件数据的回调函数。 |
+| callback | Callback&lt;emitter.EventData&gt; | 是 | 用于返回事件数据的回调函数。 |
 
 **示例：**
 

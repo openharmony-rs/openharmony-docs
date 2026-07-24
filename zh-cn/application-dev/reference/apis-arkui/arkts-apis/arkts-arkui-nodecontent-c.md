@@ -32,7 +32,7 @@ addFrameNode(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | 是 | 需要添加的FrameNode。 |
+| node | FrameNode | 是 | 需要添加的FrameNode。 |
 
 **错误码：**
 
@@ -80,5 +80,5 @@ removeFrameNode(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | 是 | 需要删除的FrameNode。 |
+| node | FrameNode | 是 | 需要删除的FrameNode。 |
 

@@ -32,7 +32,7 @@ EGL_EGLEXT_PROTOTYPES
 
 **eglGetNativeClientBufferANDROID**
 
-从API version 23开始，支持使用EGL扩展接口eglGetNativeClientBufferANDROID，将[OH_NativeBuffer](../apis-arkgraphics2d/capi-native-buffer-h.md)转换为EGLClientBuffer类型，以实现纹理的绑定并进行GPU采样。具体使用方法请参考如下示例代码：
+从API version 23开始，支持使用EGL扩展接口eglGetNativeClientBufferANDROID，将OH_NativeBuffer转换为EGLClientBuffer类型，以实现纹理的绑定并进行GPU采样。具体使用方法请参考如下示例代码：
 
 ```c++
 // 在EGLCore成员变量中已经定义好了如下变量

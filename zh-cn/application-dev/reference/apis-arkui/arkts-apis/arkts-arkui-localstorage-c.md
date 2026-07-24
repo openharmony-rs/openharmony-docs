@@ -98,7 +98,7 @@ delete(propName: string): boolean
 
 1. [@LocalStorageLink](../../../ui/state-management/arkts-localstorage.md#localstoragelink)、[@LocalStorageProp](../../../ui/state-management/arkts-localstorage.md#localstorageprop)装饰的变量。
 
-2. 通过[link](arkts-arkui-localstorage-c.md#link)、[prop](arkts-arkui-localstorage-c.md#prop)、[setAndLink](arkts-arkui-localstorage-c.md#setandlink)、[setAndProp](arkts-arkui-localstorage-c.md#setandprop)接口返回的[SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c-sys.md)的实例。
+2. 通过[link](arkts-arkui-localstorage-c.md#link)、[prop](arkts-arkui-localstorage-c.md#prop)、[setAndLink](arkts-arkui-localstorage-c.md#setandlink)、[setAndProp](arkts-arkui-localstorage-c.md#setandprop)接口返回的SubscribedAbstractProperty的实例。
 
 如果想要删除这些订阅者，可以通过以下方式：
 
@@ -167,7 +167,7 @@ static getShared(): LocalStorage
 获取当前stage共享的[LocalStorage](../../../ui/state-management/arkts-localstorage.md)实例。
 > **说明：**
 > 从API version 12开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getSharedLocalStorage](getSharedLocalStorage)  
+> getSharedLocalStorage  
 > 来明确UI的执行上下文。
 
 **起始版本：** 10

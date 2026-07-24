@@ -36,7 +36,7 @@ blur(blurRadius: number): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| [Filter](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-filter-i.md) | - 返回挂载了模糊效果的Filter。 |
+| Filter | - 返回挂载了模糊效果的Filter。 |
 
 **示例：**
 

@@ -250,7 +250,7 @@ readonly textVerticalAlign?: TextVerticalAlign
 
 获取属性字符串文本段落在垂直方向的对齐方式。
 
-一个段落下使用同一字号必须同时设置行高[lineHeight](TextAttribute#lineHeight)或者同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](arkts-arkui-textstyle-c.md)中的SuperscriptStyle上下角标样式仅在[TextVerticalAlign](arkts-arkui-textverticalalign-e.md)属性值为TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
+一个段落下使用同一字号必须同时设置行高lineHeight或者同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](arkts-arkui-textstyle-c.md)中的SuperscriptStyle上下角标样式仅在[TextVerticalAlign](arkts-arkui-textverticalalign-e.md)属性值为TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
 
 **类型：** TextVerticalAlign
 

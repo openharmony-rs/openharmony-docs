@@ -26,8 +26,8 @@ function execute(func: Function, ...args: Object[]): Promise<Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | Function | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | Object[] | 是 | 任务执行传入函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | Function | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考序列化支持类型。 |
+| args | Object[] | 是 | 任务执行传入函数的入参，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
 
 **返回值：**
 
@@ -80,8 +80,8 @@ function execute<A extends Array<Object>, R>(func: (...args: A) => R | Promise<R
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考序列化支持类型。 |
+| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
 
 **返回值：**
 
@@ -150,7 +150,7 @@ function execute(task: Task, priority?: Priority): Promise<Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| task | [Task](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-task-i.md) | 是 | 需要在任务池中执行的任务。 |
+| task | Task | 是 | 需要在任务池中执行的任务。 |
 | priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 该参数表示等待执行的任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
 
 **返回值：**
@@ -345,7 +345,7 @@ function execute(task: Task, configs: Configs): Promise<Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| task | [Task](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-task-i.md) | 是 | 需要执行的任务。 |
+| task | Task | 是 | 需要执行的任务。 |
 | configs | [Configs](arkts-arkts-taskpool-configs-i.md) | 是 | 任务的配置项。 |
 
 **返回值：**

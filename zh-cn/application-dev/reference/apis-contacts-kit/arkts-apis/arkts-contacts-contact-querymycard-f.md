@@ -30,7 +30,7 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -70,8 +70,8 @@ function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| context | Context | 是 | 应用上下文Context。 |
+| callback | AsyncCallback&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -82,7 +82,7 @@ function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -127,7 +127,7 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -169,9 +169,9 @@ function queryMyCard(context: Context, attrs: ContactAttributes, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -182,7 +182,7 @@ function queryMyCard(context: Context, attrs: ContactAttributes, callback: Async
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -272,7 +272,7 @@ function queryMyCard(context: Context, attrs?: ContactAttributes): Promise<Conta
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
@@ -290,7 +290,7 @@ function queryMyCard(context: Context, attrs?: ContactAttributes): Promise<Conta
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
   import { contact } from '@kit.ContactsKit';

@@ -28,7 +28,7 @@ function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | contacts | Array&lt;Contact&gt; | 是 | 联系人信息数组。 |
 
 **返回值：**
@@ -47,7 +47,7 @@ function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<
 
 **示例：**
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';

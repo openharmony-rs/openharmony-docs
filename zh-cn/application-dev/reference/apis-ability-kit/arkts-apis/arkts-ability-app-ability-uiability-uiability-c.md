@@ -246,7 +246,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 调用方拉起该UIAbility时传递的数据。 |
+| want | Want | 是 | 调用方拉起该UIAbility时传递的数据。 |
 | launchParam | AbilityConstant.LaunchParam | 是 | 应用启动参数，包含应用启动原因、应用上次退出原因等。 |
 
 **示例：**
@@ -417,7 +417,7 @@ UIAbility生命周期回调，应用转到前台后触发，在[onForeground](ar
 
 **示例：**
 
-参考[onWillForeground](#onwillforeground20)。
+参考onWillForeground。
 
 ## onDump
 
@@ -521,7 +521,7 @@ onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 调用方再次拉起该UIAbility时传递的数据。 |
+| want | Want | 是 | 调用方再次拉起该UIAbility时传递的数据。 |
 | launchParam | AbilityConstant.LaunchParam | 是 | UIAbility启动参数，包含启动原因等。 |
 
 **示例：**
@@ -554,7 +554,7 @@ onPrepareToTerminate(): boolean
 > dock栏或系统托盘处右键点击关闭，本回调函数将不执行。  
 >  
 > - 如果应用本身或者所使用的三方框架注册了  
-> [window.WindowStage.on('windowStageClose')](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14)  
+> window.WindowStage.on('windowStageClose')  
 > 监听，本回调函数将不执行。
 
 **起始版本：** 10
@@ -626,7 +626,7 @@ onPrepareToTerminateAsync(): Promise<boolean>
 > dock栏或系统托盘处右键点击关闭，本回调函数将不执行。  
 >  
 > - 如果应用本身或者所使用的三方框架注册了  
-> [window.WindowStage.on('windowStageClose')](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14)  
+> window.WindowStage.on('windowStageClose')  
 > 监听，本回调函数将不执行。  
 >  
 > - 若异步回调内发生crash，按超时处理，执行等待超过10秒未响应，UIAbility将被强制关闭。

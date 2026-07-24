@@ -212,7 +212,7 @@ static toHtml(styledString: StyledString): string
 
 将属性字符串转换成HTML格式字符串。支持转换的属性字符串[StyledStringKey](arkts-arkui-styledstringkey-e.md)包括：StyledStringKey.FONT、StyledStringKey.DECORATION、StyledStringKey.LETTER_SPACING、StyledStringKey.TEXT_SHADOW、StyledStringKey.LINE_HEIGHT、StyledStringKey.IMAGE。
 
-使用方法参考[示例12（fromHtml和toHtml互相转换）](../../../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#示例12fromhtml和tohtml互相转换)。
+使用方法参考示例12（fromHtml和toHtml互相转换）。
 
 **起始版本：** 14
 
