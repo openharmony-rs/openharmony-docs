@@ -187,9 +187,9 @@ The operation is busy. The last operation is not complete.
 
 **可能原因**
 
-上一个执行的操作还未完成即执行本次操作，例如[readCharacteristicValue](js-apis-bluetooth-ble.md#readcharacteristicvalue)未结束即进行下一次操作。
+上一个执行的操作还未完成即执行本次操作，例如readCharacteristicValue未结束即进行下一次操作。
 
-其他涉及的接口有[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)、[readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue)、[writeDescriptorValue](js-apis-bluetooth-ble.md#writedescriptorvalue)、[getRssiValue](js-apis-bluetooth-ble.md#getrssivalue)、[setCharacteristicChangeNotification](js-apis-bluetooth-ble.md#setcharacteristicchangenotification)、[setCharacteristicChangeIndication](js-apis-bluetooth-ble.md#setcharacteristicchangeindication)，如调用未完成均可能阻塞下一次操作。
+其他涉及的接口有writeCharacteristicValue、readDescriptorValue、writeDescriptorValue、getRssiValue、setCharacteristicChangeNotification、setCharacteristicChangeIndication，如调用未完成均可能阻塞下一次操作。
 
 **处理步骤**
 
@@ -353,7 +353,7 @@ GATT未连接。
 
 **可能原因**
 
-GATT处于未连接的状态下执行操作，例如调用[getServices](js-apis-bluetooth-ble.md#getservices)和[readCharacteristicValue](js-apis-bluetooth-ble.md#readcharacteristicvalue)。
+GATT处于未连接的状态下执行操作，例如调用getServices和readCharacteristicValue。
 
 **处理步骤**
 
@@ -371,7 +371,7 @@ GATT处于拥塞状态。
 
 **可能原因**
 
-读写特征值或描述符过于频繁，导致底层数据传输拥塞，例如入参[GattWriteType](js-apis-bluetooth-ble.md#gattwritetype)为WRITE_NO_RESPONSE的[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)接口调用过于频繁可能导致拥塞。
+读写特征值或描述符过于频繁，导致底层数据传输拥塞，例如入参GattWriteType为WRITE_NO_RESPONSE的writeCharacteristicValue接口调用过于频繁可能导致拥塞。
 
 **处理步骤**
 
@@ -447,7 +447,7 @@ GATT服务尚未被添加。
 
 **处理步骤**
 
-先调用[addService](js-apis-bluetooth-ble.md#addservice)添加该服务。
+先调用addService添加该服务。
 
 ## 2901054 IO传输失败
 
@@ -515,11 +515,11 @@ Invalid advertising id.
 
 **可能原因**
 
-传入的广播标识符应为[startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising11)接口返回的值，无效的广播标识符默认为0xFF。
+传入的广播标识符应为startAdvertising接口返回的值，无效的广播标识符默认为0xFF。
 
 **处理步骤**
 
-检查传入的广播标识符是否为[startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising11)接口返回的有效标识符。
+检查传入的广播标识符是否为startAdvertising接口返回的有效标识符。
 
 ## 2903050 HID不在前台
 

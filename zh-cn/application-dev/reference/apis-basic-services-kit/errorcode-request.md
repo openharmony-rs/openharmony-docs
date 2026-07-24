@@ -22,7 +22,7 @@ Invalid file or file system error.
 
 **可能原因**
 
-该错误码表示文件操作异常，可能原因是文件权限不足。具体原因可参考[BusinessError](js-apis-base.md#businesserror)中的错误信息message。
+该错误码表示文件操作异常，可能原因是文件权限不足。具体原因可参考BusinessError中的错误信息message。
 
 **处理步骤**
 

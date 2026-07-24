@@ -27,7 +27,7 @@ function createAVRecorder(callback: AsyncCallback<AVRecorder>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVRecorder&gt; | 是 | 回调函数，返回AVRecorder实例，可用于录制音视频媒体。失败时返回null。 |
+| callback | AsyncCallback&lt;AVRecorder&gt; | 是 | 回调函数，返回AVRecorder实例，可用于录制音视频媒体。失败时返回null。 |
 
 **错误码：**
 

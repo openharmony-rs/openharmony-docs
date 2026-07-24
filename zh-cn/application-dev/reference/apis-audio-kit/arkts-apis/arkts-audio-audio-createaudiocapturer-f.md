@@ -25,7 +25,7 @@ function createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [AudioCapturerOptions](arkts-audio-audio-audiocaptureroptions-i.md) | 是 | 配置音频采集器。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioCapturer&gt; | 是 | 回调函数。当获取音频采集器成功，err为undefined，data为获取到的音频采集器对象；否则为错误对象。异常将返回error对象：<br>错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。<br>错误码6800101：表示必选参数为空或参数类型错误。 |
+| callback | AsyncCallback&lt;AudioCapturer&gt; | 是 | 回调函数。当获取音频采集器成功，err为undefined，data为获取到的音频采集器对象；否则为错误对象。异常将返回error对象：<br>错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。<br>错误码6800101：表示必选参数为空或参数类型错误。 |
 
 **示例：**
 

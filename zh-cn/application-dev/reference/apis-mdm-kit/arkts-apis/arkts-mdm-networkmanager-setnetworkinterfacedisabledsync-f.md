@@ -28,7 +28,7 @@ function setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string | 是 | 指定网络接口。 |
 | isDisabled | boolean | 是 | true表示禁用该网络接口，false表示开启该网络接口。 |
 

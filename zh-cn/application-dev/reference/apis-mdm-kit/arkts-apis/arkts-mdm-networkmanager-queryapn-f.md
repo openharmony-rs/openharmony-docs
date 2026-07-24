@@ -28,7 +28,7 @@ function queryApn(admin: Want, apnInfo: Record<string, string>): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnInfo | Record&lt;string, string&gt; | 是 | APN的查询条件。<br/>- apnName：APN配置的名称标识符，可选。<br/>- mcc：3位数字的移动国家代码，可选。<br/>-mnc：2-3位数字的移动网络代码，可选。<br/>- apn：接入点名称，可选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
 
 **返回值：**
@@ -95,7 +95,7 @@ function queryApn(admin: Want, apnId: string): Record<string, string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnId | string | 是 | 指定的APN ID。可以通过[networkManager.queryApn](arkts-mdm-networkmanager-queryapn-f.md#queryapn)获取设备信息。 |
 
 **返回值：**

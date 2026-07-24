@@ -39,7 +39,7 @@ onBeforeDownload(callback: Callback<WebDownloadItem>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 触发下载的回调。 |
+| callback | Callback&lt;WebDownloadItem&gt; | 是 | 触发下载的回调。 |
 
 ## onDownloadFailed
 
@@ -61,7 +61,7 @@ onDownloadFailed(callback: Callback<WebDownloadItem>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 下载失败的回调。 |
+| callback | Callback&lt;WebDownloadItem&gt; | 是 | 下载失败的回调。 |
 
 ## onDownloadFinish
 
@@ -83,7 +83,7 @@ onDownloadFinish(callback: Callback<WebDownloadItem>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 下载完成的回调。 |
+| callback | Callback&lt;WebDownloadItem&gt; | 是 | 下载完成的回调。 |
 
 ## onDownloadUpdated
 
@@ -105,5 +105,5 @@ onDownloadUpdated(callback: Callback<WebDownloadItem>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 下载更新的回调。 |
+| callback | Callback&lt;WebDownloadItem&gt; | 是 | 下载更新的回调。 |
 

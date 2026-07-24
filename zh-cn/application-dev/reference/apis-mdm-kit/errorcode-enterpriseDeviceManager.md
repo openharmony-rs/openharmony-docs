@@ -289,13 +289,13 @@ Failed to start the ability.
 
 **可能原因**
 
-1. 当设置了禁止运行应用名单（例如调用[addDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)接口），且应用在禁止运行应用名单中时，启动组件会失败。
-2. 当设置了允许运行应用名单（例如调用[addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)接口），且应用不在允许运行应用名单中时，启动组件会失败。
+1. 当设置了禁止运行应用名单（例如调用addDisallowedRunningBundlesSync接口），且应用在禁止运行应用名单中时，启动组件会失败。
+2. 当设置了允许运行应用名单（例如调用addAllowedRunningBundles接口），且应用不在允许运行应用名单中时，启动组件会失败。
 
 **处理步骤**
 
-1. 将应用从禁止运行名单中移除，例如调用[removeDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync)接口。
-2. 将应用添加到允许运行名单，例如调用[addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)接口。
+1. 将应用从禁止运行名单中移除，例如调用removeDisallowedRunningBundlesSync接口。
+2. 将应用添加到允许运行名单，例如调用addAllowedRunningBundles接口。
 
 ## 9200015 组件不存在
 
@@ -407,7 +407,7 @@ Failed to install the application.
 
 该错误码表示安装企业应用失败。
 
-如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，可能原因如下。
+如果调用接口为bundleManager.install，可能原因如下。
 1. 应用安装路径为空、不存在、无效路径。
 2. 安装多个不同包名的应用。
 3. 当安装参数flag为0时再次安装已存在的应用。
@@ -417,7 +417,7 @@ Failed to install the application.
 
 **处理步骤**
 
-如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，处理步骤如下。
+如果调用接口为bundleManager.install，处理步骤如下。
 
 1. 检查应用安装路径是有效的安装路径。
 2. 检查安装参数是有效的安装参数。
@@ -573,11 +573,11 @@ Collecting logs, please try again later.
 
 **可能原因**
 
-当已有一个日志收集任务正在执行时，调用了[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
+当已有一个日志收集任务正在执行时，调用了systemManager.startCollectLog接口创建日志收集任务。
 
 **处理步骤**
 
-等前一个日志收集任务完成（即收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调）后，再调用[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
+等前一个日志收集任务完成（即收到EnterpriseAdminExtensionAbility.onLogCollected回调）后，再调用systemManager.startCollectLog接口创建日志收集任务。
 
 ## 9201010 以太网网络接口配置失败
 
@@ -1220,7 +1220,7 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 
 **处理步骤**
 
-先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
+先通过setDisallowedPolicyForAccount接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
 
 ## 9201044 指定权限未被禁用
 
@@ -1238,7 +1238,7 @@ This permission is not disallowed. Applications cannot be added to or removed fr
 
 **处理步骤**
 
-先通过[setDisallowedPermission](./js-apis-enterprise-securityManager.md#securitymanagersetdisallowedpermission)接口禁用指定权限，再给指定权限添加权限使用例外名单。
+先通过setDisallowedPermission接口禁用指定权限，再给指定权限添加权限使用例外名单。
 
 ## 9201045 指定权限不可被禁用
 

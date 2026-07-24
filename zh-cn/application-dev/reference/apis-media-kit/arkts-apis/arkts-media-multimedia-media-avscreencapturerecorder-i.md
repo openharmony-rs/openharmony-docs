@@ -35,7 +35,7 @@ excludePickerWindows(excludedWindows: Array<number>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| excludedWindows | Array&lt;number&gt; | 是 | 需要在Picker中隐藏的窗口列表，窗口属性获取方法可以参考[getWindowProperties](../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| excludedWindows | Array&lt;number&gt; | 是 | 需要在Picker中隐藏的窗口列表，窗口属性获取方法可以参考getWindowProperties。 |
 
 **返回值：**
 
@@ -104,7 +104,7 @@ off(type: 'stateChange', callback?: Callback<AVScreenCaptureStateCode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 状态切换事件回调类型，支持的事件：'stateChange'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVScreenCaptureStateCode&gt; | 否 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
+| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 否 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
 
 ## off('error')
 
@@ -125,7 +125,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 状态切换事件回调类型，支持的事件：'error'。 |
-| callback | [ErrorCallback](../../apis-arkui/arkts-components/arkts-arkui-errorcallback-t-sys.md) | 否 | 录屏错误事件回调方法，不填此参数则会取消最后一次订阅事件。 |
+| callback | ErrorCallback | 否 | 录屏错误事件回调方法，不填此参数则会取消最后一次订阅事件。 |
 
 ## on('stateChange')
 
@@ -146,7 +146,7 @@ on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 状态切换事件回调类型，支持的事件：'stateChange'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVScreenCaptureStateCode&gt; | 是 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态。 |
+| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 是 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态。 |
 
 ## on('error')
 
@@ -167,7 +167,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 错误事件回调类型，支持的事件：'error'。 |
-| callback | [ErrorCallback](../../apis-arkui/arkts-components/arkts-arkui-errorcallback-t-sys.md) | 是 | 录屏错误事件回调方法。 |
+| callback | ErrorCallback | 是 | 录屏错误事件回调方法。 |
 
 **错误码：**
 
@@ -384,7 +384,7 @@ skipPrivacyMode(windowIDs: Array<number>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowIDs | Array&lt;number&gt; | 是 | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[getWindowProperties](../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| windowIDs | Array&lt;number&gt; | 是 | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考getWindowProperties。 |
 
 **返回值：**
 

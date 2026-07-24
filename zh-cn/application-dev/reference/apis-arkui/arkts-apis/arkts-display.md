@@ -43,21 +43,21 @@ import { display } from '@kit.ArkUI';
 | [isFoldable](arkts-arkui-display-isfoldable-f.md#isfoldable) | 判断设备是否可折叠。 |
 | [makeUnique](arkts-arkui-display-makeunique-f.md#makeunique) | 将屏幕设置为异源模式，使用Promise异步回调。 |
 | [off](arkts-arkui-display-off-f.md#off) | 关闭显示设备变化的监听。 |
-| [off](arkts-arkui-display-off-f.md#off-1) | 关闭显示设备变化的监听。 |
-| [off](arkts-arkui-display-off-f.md#off-2) | 关闭显示设备变化的监听。 |
-| [off](arkts-arkui-display-off-f.md#off-4) | 关闭折叠设备折叠状态变化的监听。 |
-| [off](arkts-arkui-display-off-f.md#off-5) | 关闭折叠设备折叠角度变化的监听。 |
-| [off](arkts-arkui-display-off-f.md#off-6) | 关闭设备的屏幕显示信息是否被获取的监听。 |
-| [off](arkts-arkui-display-off-f.md#off-7) | 关闭折叠设备屏幕显示模式变化的监听。 |
-| [off](arkts-arkui-display-off-f.md#off-8) | 关闭所有屏幕亮度信息状态变化的监听。 |
+| off | 关闭显示设备变化的监听。 |
+| off | 关闭显示设备变化的监听。 |
+| off | 关闭折叠设备折叠状态变化的监听。 |
+| off | 关闭折叠设备折叠角度变化的监听。 |
+| off | 关闭设备的屏幕显示信息是否被获取的监听。 |
+| off | 关闭折叠设备屏幕显示模式变化的监听。 |
+| off | 关闭所有屏幕亮度信息状态变化的监听。 |
 | [on](arkts-arkui-display-on-f.md#on) | 开启显示设备变化的监听。 |
-| [on](arkts-arkui-display-on-f.md#on-1) | 开启显示设备变化的监听。 |
-| [on](arkts-arkui-display-on-f.md#on-2) | 开启显示设备变化的监听。 |
-| [on](arkts-arkui-display-on-f.md#on-4) | 开启折叠设备折叠状态变化的监听。  本接口监听设备物理折叠状态的变化，如果要监听屏幕显示模式的变化，需要使用[display.on('foldDisplayModeChange')](display.on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>))接口。  两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。  若需监听当前显示内容是显示在折叠设备的内屏还是外屏，请使用[display.on('foldDisplayModeChange')](display.on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>))。 |
-| [on](arkts-arkui-display-on-f.md#on-5) | 开启折叠设备折叠角度变化的监听。如果是双折轴设备，则有两个角度值；在充电口朝下的状态下，从右到左分别是折轴一和折轴二。 |
-| [on](arkts-arkui-display-on-f.md#on-6) | 开启设备的屏幕显示信息是否被获取的监听。 |
-| [on](arkts-arkui-display-on-f.md#on-7) | 开启折叠设备屏幕显示模式变化的监听。  本接口监听设备屏幕显示模式的变化，如果要监听设备物理折叠状态的变化，需要使用[display.on('foldStatusChange')](display.on(type: 'foldStatusChange', callback: Callback<FoldStatus>))接口。  两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。 |
-| [on](arkts-arkui-display-on-f.md#on-8) | 开启所有屏幕亮度信息变化的监听。如果屏幕不支持HDR，监听到的[BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。 |
+| on | 开启显示设备变化的监听。 |
+| on | 开启显示设备变化的监听。 |
+| on | 开启折叠设备折叠状态变化的监听。  本接口监听设备物理折叠状态的变化，如果要监听屏幕显示模式的变化，需要使用[display.on('foldDisplayModeChange')](display.on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>))接口。  两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。  若需监听当前显示内容是显示在折叠设备的内屏还是外屏，请使用[display.on('foldDisplayModeChange')](display.on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>))。 |
+| on | 开启折叠设备折叠角度变化的监听。如果是双折轴设备，则有两个角度值；在充电口朝下的状态下，从右到左分别是折轴一和折轴二。 |
+| on | 开启设备的屏幕显示信息是否被获取的监听。 |
+| on | 开启折叠设备屏幕显示模式变化的监听。  本接口监听设备屏幕显示模式的变化，如果要监听设备物理折叠状态的变化，需要使用[display.on('foldStatusChange')](display.on(type: 'foldStatusChange', callback: Callback<FoldStatus>))接口。  两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。 |
+| on | 开启所有屏幕亮度信息变化的监听。如果屏幕不支持HDR，监听到的[BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。 |
 | [onChangeWithAttribute](arkts-arkui-display-onchangewithattribute-f.md#onchangewithattribute) | 开启显示设备指定属性变化的监听。 |
 | [setVirtualScreenSurface](arkts-arkui-display-setvirtualscreensurface-f.md#setvirtualscreensurface) | 设置虚拟屏幕的surfaceId。使用Promise异步回调。 |
 

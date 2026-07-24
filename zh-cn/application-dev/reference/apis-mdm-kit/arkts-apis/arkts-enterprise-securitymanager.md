@@ -37,7 +37,7 @@ import { securityManager } from '@kit.MDMKit';
 | [getDisallowedPermissions](arkts-mdm-securitymanager-getdisallowedpermissions-f.md#getdisallowedpermissions) | 获取指定用户下禁用的权限列表。 |
 | [getExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-getexternalsourceextensionspolicy-f.md#getexternalsourceextensionspolicy) | 获取外部来源扩展程序的管控策略。 |
 | [getPasswordPolicy](arkts-mdm-securitymanager-getpasswordpolicy-f.md#getpasswordpolicy) | 获取设备锁屏口令策略。 |
-| [getPermissionManagedState](arkts-mdm-securitymanager-getpermissionmanagedstate-f.md#getpermissionmanagedstate) | 获取指定应用的指定[user_grant权限](permissions:Permissions)的管理策略。 |
+| [getPermissionManagedState](arkts-mdm-securitymanager-getpermissionmanagedstate-f.md#getpermissionmanagedstate) | 获取指定应用的指定user_grant权限的管理策略。 |
 | [getSecurityStatus](arkts-mdm-securitymanager-getsecuritystatus-f.md#getsecuritystatus) | 获取当前设备安全策略信息。 |
 | [getUnlockPolicy](arkts-mdm-securitymanager-getunlockpolicy-f.md#getunlockpolicy) | 查询解锁策略 |
 | [getUserCertificates](arkts-mdm-securitymanager-getusercertificates-f.md#getusercertificates) | 获取指定系统账户下的用户证书信息。 |
@@ -56,7 +56,7 @@ import { securityManager } from '@kit.MDMKit';
 | [setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setdisallowedpermission) | 禁用指定用户下的指定权限，禁用后指定用户下的所有应用申请和使用指定权限时默认拒绝。 |
 | [setExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-setexternalsourceextensionspolicy-f.md#setexternalsourceextensionspolicy) | 设置外部来源扩展程序的管控策略。  - DEFAULT：  默认，表示无管控策略，用户可以通过“设置-隐私与安全-高级”中的“运行外部来源的扩展程序”开关来设置是否允许扩展程序运行。  - DISALLOW：  禁用。设置此策略后，禁止运行外部来源的扩展程序，运行中的扩展程序可继续运行，扩展程序关闭后无法启动运行。用户无法开启“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。  - FORCE_OPEN：  强制开启。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。 |
 | [setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md#setpasswordpolicy) | 设置设备锁屏口令策略。当用户设置锁屏口令时，如果设置的锁屏口令不符合要求，会有安全提示重新设置锁屏口令。 |
-| [setPermissionManagedState](arkts-mdm-securitymanager-setpermissionmanagedstate-f.md#setpermissionmanagedstate) | 设置指定应用的[user_grant权限](permissions:Permissions)的管理策略。 |
+| [setPermissionManagedState](arkts-mdm-securitymanager-setpermissionmanagedstate-f.md#setpermissionmanagedstate) | 设置指定应用的user_grant权限的管理策略。 |
 | [setScreenLockDisabledForAccount](arkts-mdm-securitymanager-setscreenlockdisabledforaccount-f.md#setscreenlockdisabledforaccount) | 禁用/启用当前用户的滑动解锁能力。启用时：设备灭屏后再亮屏，用户需要在屏幕上滑动后才能进入桌面。禁用时：设备灭屏后再亮屏会直接进入桌面。 |
 | [setScreenWatermarkImage](arkts-mdm-securitymanager-setscreenwatermarkimage-f.md#setscreenwatermarkimage) | 设置屏幕水印 |
 | [setUnlockPolicy](arkts-mdm-securitymanager-setunlockpolicy-f.md#setunlockpolicy) | 设置解锁策略 |

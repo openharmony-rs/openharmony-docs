@@ -28,7 +28,7 @@ function getValue(admin: Want, item: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item | string | 是 | 设备设置策略类型。<br/>- screenOff：设备息屏策略，对于PC/2in1设备，支持查询电池供电下的设备息屏策略。<br/>- powerPolicy：设备电源策略，仅对PC/2in1设备生效，仅支持查询电池供电下的设备电源策略。<br/>- eyeComfort：从API version 23开始支持，护眼模式开关状态。 |
 
 **返回值：**

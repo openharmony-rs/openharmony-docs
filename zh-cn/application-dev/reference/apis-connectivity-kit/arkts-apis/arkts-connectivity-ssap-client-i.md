@@ -37,8 +37,8 @@ close(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## connect
 
@@ -69,8 +69,8 @@ connect(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## disconnect
 
@@ -101,8 +101,8 @@ disconnect(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## getServices
 
@@ -133,8 +133,8 @@ getServices(): Promise<Service[]>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## offConnectionStateChange
 
@@ -156,7 +156,7 @@ offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ConnectionChangeState&gt; | 否 | 用于监听连接状态改变事件的回调。 |
+| callback | Callback&lt;ConnectionChangeState&gt; | 否 | 用于监听连接状态改变事件的回调。 |
 
 ## offMtuChange
 
@@ -178,7 +178,7 @@ offMtuChange(callback?: Callback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 用于监听mtu变化事件的回调。 |
+| callback | Callback&lt;number&gt; | 否 | 用于监听mtu变化事件的回调。 |
 
 ## offPropertyChange
 
@@ -200,7 +200,7 @@ offPropertyChange(callback?: Callback<Property>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Property&gt; | 否 | 用于监听属性值变更事件的回调。 |
+| callback | Callback&lt;Property&gt; | 否 | 用于监听属性值变更事件的回调。 |
 
 ## onConnectionStateChange
 
@@ -224,7 +224,7 @@ onConnectionStateChange(callback: Callback<ConnectionChangeState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ConnectionChangeState&gt; | 是 | 用于监听连接状态改变事件的回调。 |
+| callback | Callback&lt;ConnectionChangeState&gt; | 是 | 用于监听连接状态改变事件的回调。 |
 
 ## onMtuChange
 
@@ -248,7 +248,7 @@ onMtuChange(callback: Callback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 用于监听mtu变化事件的回调。 |
+| callback | Callback&lt;number&gt; | 是 | 用于监听mtu变化事件的回调。 |
 
 ## onPropertyChange
 
@@ -272,7 +272,7 @@ onPropertyChange(callback: Callback<Property>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Property&gt; | 是 | 用于监听属性值更改事件的回调。 |
+| callback | Callback&lt;Property&gt; | 是 | 用于监听属性值更改事件的回调。 |
 
 ## readProperty
 
@@ -309,10 +309,10 @@ readProperty(property: Property): Promise<Property>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100043](../errorcode-nearlink.md#36100043-无效uuid) | Invalid UUID in property. |
-| [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100043 | Invalid UUID in property. |
+| 36100044 | NearLink standard UUID not allowed. |
+| 36100099 | Operation failed. |
 
 ## requestMtuSize
 
@@ -349,8 +349,8 @@ requestMtuSize(mtu: number): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## setPropertyNotification
 
@@ -388,10 +388,10 @@ setPropertyNotification(property: Property, enable: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100043](../errorcode-nearlink.md#36100043-无效uuid) | Invalid UUID in property. |
-| [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100043 | Invalid UUID in property. |
+| 36100044 | NearLink standard UUID not allowed. |
+| 36100099 | Operation failed. |
 
 ## writeProperty
 
@@ -429,8 +429,8 @@ writeProperty(property: Property, writeType: PropertyWriteType): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100043](../errorcode-nearlink.md#36100043-无效uuid) | Invalid UUID in property. |
-| [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100043 | Invalid UUID in property. |
+| 36100044 | NearLink standard UUID not allowed. |
+| 36100099 | Operation failed. |
 

@@ -36,7 +36,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | firewallRule | [FirewallRule](arkts-mdm-networkmanager-firewallrule-i.md) | 是 | 添加防火墙过滤规则。 |
 
 **错误码：**

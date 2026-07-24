@@ -20,7 +20,7 @@ import { bundleManager } from '@kit.MDMKit';
 readonly accessTokenId: number
 ```
 
-应用程序的accessTokenId，应用的身份标识，在程序访问控制校验接口[checkAccessToken](../../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。
+应用程序的accessTokenId，应用的身份标识，在程序访问控制校验接口checkAccessToken中使用。
 
 **类型：** number
 
@@ -422,7 +422,7 @@ readonly process: string
 readonly releaseType: string
 ```
 
-标识应用打包时使用的SDK的发布类型。当前SDK的发布类型可能为Canary、Beta、Release，其中Canary和Beta可能通过序号进一步细分，例如Canary1、Canary2、Beta1、Beta2等。开发者可通过对比应用打包依赖的SDK发布类型和OS的发布类型（[deviceInfo.distributionOSReleaseType](../../apis-basic-service-kit/arkts-apis/arkts-deviceinfo.md)）来判断兼容性。
+标识应用打包时使用的SDK的发布类型。当前SDK的发布类型可能为Canary、Beta、Release，其中Canary和Beta可能通过序号进一步细分，例如Canary1、Canary2、Beta1、Beta2等。开发者可通过对比应用打包依赖的SDK发布类型和OS的发布类型（deviceInfo.distributionOSReleaseType）来判断兼容性。
 
 **类型：** string
 

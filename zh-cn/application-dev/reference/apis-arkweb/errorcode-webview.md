@@ -26,7 +26,7 @@ WebviewController还没有和具体的Web组件关联。
 
 **处理步骤**
 
-请检查WebviewController对象是否已与Web组件关联，可以通过[onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10)接口进行检查。<!--RP1--><!--RP1End-->
+请检查WebviewController对象是否已与Web组件关联，可以通过onControllerAttached()接口进行检查。<!--RP1--><!--RP1End-->
 
 
 ## 17100002 URL格式错误
@@ -397,7 +397,7 @@ AIPageCommand参数格式错误。
 
 **可能原因**
 
-调用[WebviewController.executeAIPageCommand](arkts-apis-webview-WebviewController.md#executeaipagecommand)时，传入的command参数不是合法的JSON对象字符串，或命令字段不符合格式要求。
+调用WebviewController.executeAIPageCommand时，传入的command参数不是合法的JSON对象字符串，或命令字段不符合格式要求。
 
 **处理步骤**
 
@@ -415,8 +415,8 @@ The errorCode is either ARKWEB_NET_OK or outside the range of error codes in Web
 
 **可能原因**
 
-使用的错误码不在[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)范围内，或者调用didFail接口时使用了NET_OK错误码。
+使用的错误码不在WebNetErrorList范围内，或者调用didFail接口时使用了NET_OK错误码。
 
 **处理步骤**
 
-检查使用的错误码是否在[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)范围内，或者调用didFail时是否使用了NET_OK错误码。
+检查使用的错误码是否在WebNetErrorList范围内，或者调用didFail时是否使用了NET_OK错误码。

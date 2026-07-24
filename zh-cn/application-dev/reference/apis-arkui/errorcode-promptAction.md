@@ -18,7 +18,7 @@ The ComponentContent is incorrect.
 
 > **说明：**
 >
-> 当接口是[openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[openCustomDialogWithController](arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12)和[updateCustomDialog](arkts-apis-uicontext-promptaction.md#updatecustomdialog12)时，返回的错误信息为Dialog content error. The ComponentContent is incorrect.
+> 当接口是openCustomDialog、openCustomDialogWithController、closeCustomDialog和updateCustomDialog时，返回的错误信息为Dialog content error. The ComponentContent is incorrect.
 
 **错误描述**
 
@@ -30,7 +30,7 @@ The ComponentContent is incorrect.
 
 **处理步骤**
 
-1. 请确认自定义弹窗的内容节点是否存在，可以通过[getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12)接口查询。
+1. 请确认自定义弹窗的内容节点是否存在，可以通过getFrameNodeById()接口查询。
 
 2. 请确认内容节点能够正常渲染显示。
 
@@ -60,7 +60,7 @@ The ComponentContent cannot be found.
 
 > **说明：**
 >
-> 当接口是[closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12)和[updateCustomDialog](arkts-apis-uicontext-promptaction.md#updatecustomdialog12)时，返回的错误信息为Dialog content not found. The ComponentContent cannot be found.
+> 当接口是closeCustomDialog和updateCustomDialog时，返回的错误信息为Dialog content not found. The ComponentContent cannot be found.
 
 **错误描述**
 
@@ -92,7 +92,7 @@ targetId无效，或者对应的节点已销毁。
 
 **处理步骤**
 
-请确认targetId对应的节点是否存在，可以通过[getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12)接口查询。
+请确认targetId对应的节点是否存在，可以通过getFrameNodeById()接口查询。
 
 ## 103305 指定的targetId对应的节点未挂载在组件树上
 
@@ -110,9 +110,9 @@ The node of targetId is not in the component tree.
 
 **处理步骤**
 
-1. 请确认targetId对应的节点是否存在，可以通过[getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12)接口查询。
+1. 请确认targetId对应的节点是否存在，可以通过getFrameNodeById()接口查询。
 
-2. 请确认targetId对应的节点已挂载在主组件树上，可以通过内容节点的[isAttached()](./js-apis-arkui-frameNode.md#isattached12)接口判断是否被挂载到主组件树上。
+2. 请确认targetId对应的节点已挂载在主组件树上，可以通过内容节点的isAttached()接口判断是否被挂载到主组件树上。
 
 ## 103307 系统弹出窗口导致无法打开浮层
 

@@ -104,7 +104,7 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptor
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceFlag | [DeviceFlag](arkts-audio-audio-deviceflag-e.md) | 是 | 音频设备类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数。当获取音频设备列表成功，err为undefined，data为获取到的音频设备列表；否则为错误对象。 |
+| callback | AsyncCallback&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数。当获取音频设备列表成功，err为undefined，data为获取到的音频设备列表；否则为错误对象。 |
 
 ## getDevices
 
@@ -184,7 +184,7 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo, callback: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | rendererInfo | [AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md) | 是 | 音频渲染器信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数。当获取优先级最高的输出设备成功，err为undefined，data为获取到的优先级最高的输出设备信息；否则为错误对象。 |
+| callback | AsyncCallback&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数。当获取优先级最高的输出设备成功，err为undefined，data为获取到的优先级最高的输出设备信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -247,7 +247,7 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | capturerInfo | [AudioCapturerInfo](arkts-audio-audio-audiocapturerinfo-i.md) | 是 | 音频采集器信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数。当获取优先级最高的输入设备成功，err为undefined，data为获取到的优先级最高的输入设备信息；否则为错误对象。 |
+| callback | AsyncCallback&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数。当获取优先级最高的输入设备成功，err为undefined，data为获取到的优先级最高的输入设备信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -376,7 +376,7 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceType | [CommunicationDeviceType](arkts-audio-audio-communicationdevicetype-e.md) | 是 | 活跃音频设备类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定通信设备的激活状态成功，err为undefined，data为true表示激活，false表示未激活；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当获取指定通信设备的激活状态成功，err为undefined，data为true表示激活，false表示未激活；否则为错误对象。 |
 
 ## isCommunicationDeviceActive
 
@@ -476,7 +476,7 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'，当取消监听音频设备连接变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceChangeAction&gt; | 否 | 回调函数，返回设备更新详情。 |
+| callback | Callback&lt;DeviceChangeAction&gt; | 否 | 回调函数，返回设备更新详情。 |
 
 **错误码：**
 
@@ -504,7 +504,7 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'availableDeviceChange' | 是 | 事件回调类型，支持的事件为'availableDeviceChange'，当取消监听音频可选设备连接变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceChangeAction&gt; | 否 | 回调函数，返回可选设备更新详情。 |
+| callback | Callback&lt;DeviceChangeAction&gt; | 否 | 回调函数，返回可选设备更新详情。 |
 
 **错误码：**
 
@@ -532,7 +532,7 @@ off(type: 'preferOutputDeviceChangeForRendererInfo', callback?: Callback<AudioDe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'preferOutputDeviceChangeForRendererInfo' | 是 | 事件回调类型，支持的事件为'preferOutputDeviceChangeForRendererInfo'，当取消监听最高优先级输出音频设备变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioDeviceDescriptors&gt; | 否 | 回调函数，返回优先级最高的输出设备信息。 |
+| callback | Callback&lt;AudioDeviceDescriptors&gt; | 否 | 回调函数，返回优先级最高的输出设备信息。 |
 
 **错误码：**
 
@@ -560,7 +560,7 @@ off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<Audio
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'preferredInputDeviceChangeForCapturerInfo' | 是 | 事件回调类型，支持的事件为'preferredInputDeviceChangeForCapturerInfo'，当取消监听最高优先级输入音频设备变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioDeviceDescriptors&gt; | 否 | 回调函数，返回优先级最高的输入设备信息。 |
+| callback | Callback&lt;AudioDeviceDescriptors&gt; | 否 | 回调函数，返回优先级最高的输入设备信息。 |
 
 **错误码：**
 
@@ -588,7 +588,7 @@ off(type: 'micBlockStatusChanged', callback?: Callback<DeviceBlockStatusInfo>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'micBlockStatusChanged' | 是 | 事件回调类型，支持的事件为'micBlockStatusChanged'，当取消监听音频麦克风是否被堵塞变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceBlockStatusInfo&gt; | 否 | 回调函数，返回麦克风被堵塞状态和设备信息。 |
+| callback | Callback&lt;DeviceBlockStatusInfo&gt; | 否 | 回调函数，返回麦克风被堵塞状态和设备信息。 |
 
 **错误码：**
 
@@ -617,7 +617,7 @@ on(type: 'deviceChange', deviceFlag: DeviceFlag, callback: Callback<DeviceChange
 | --- | --- | --- | --- |
 | type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'，当音频设备连接状态发生变化时，触发该事件。 |
 | deviceFlag | [DeviceFlag](arkts-audio-audio-deviceflag-e.md) | 是 | 音频设备类型。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceChangeAction&gt; | 是 | 回调函数，返回设备更新详情。 |
+| callback | Callback&lt;DeviceChangeAction&gt; | 是 | 回调函数，返回设备更新详情。 |
 
 **错误码：**
 
@@ -646,7 +646,7 @@ on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<D
 | --- | --- | --- | --- |
 | type | 'availableDeviceChange' | 是 | 事件回调类型，支持的事件为'availableDeviceChange'，当音频可选设备连接状态发生变化时，触发该事件。 |
 | deviceUsage | [DeviceUsage](arkts-audio-audio-deviceusage-e.md) | 是 | 音频设备类型（根据用途分类）。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceChangeAction&gt; | 是 | 回调函数，返回设备更新详情。 |
+| callback | Callback&lt;DeviceChangeAction&gt; | 是 | 回调函数，返回设备更新详情。 |
 
 **错误码：**
 
@@ -675,7 +675,7 @@ on(type: 'preferOutputDeviceChangeForRendererInfo', rendererInfo: AudioRendererI
 | --- | --- | --- | --- |
 | type | 'preferOutputDeviceChangeForRendererInfo' | 是 | 事件回调类型，支持的事件为'preferOutputDeviceChangeForRendererInfo'，当最高优先级输出设备发生变化时，触发该事件。 |
 | rendererInfo | [AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md) | 是 | 音频渲染器信息。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数，返回优先级最高的输出设备信息。 |
+| callback | Callback&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数，返回优先级最高的输出设备信息。 |
 
 **错误码：**
 
@@ -704,7 +704,7 @@ on(type: 'preferredInputDeviceChangeForCapturerInfo', capturerInfo: AudioCapture
 | --- | --- | --- | --- |
 | type | 'preferredInputDeviceChangeForCapturerInfo' | 是 | 事件回调类型，支持的事件为'preferredInputDeviceChangeForCapturerInfo'，当最高优先级输入设备发生变化时，触发该事件。 |
 | capturerInfo | [AudioCapturerInfo](arkts-audio-audio-audiocapturerinfo-i.md) | 是 | 音频采集器信息。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数，返回优先级最高的输入设备信息。 |
+| callback | Callback&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数，返回优先级最高的输入设备信息。 |
 
 **错误码：**
 
@@ -734,7 +734,7 @@ on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'micBlockStatusChanged' | 是 | 事件回调类型，支持的事件为'micBlockStatusChanged'，当麦克风堵塞状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DeviceBlockStatusInfo&gt; | 是 | 回调函数，返回麦克风被堵塞状态和设备信息。 |
+| callback | Callback&lt;DeviceBlockStatusInfo&gt; | 是 | 回调函数，返回麦克风被堵塞状态和设备信息。 |
 
 **错误码：**
 
@@ -767,7 +767,7 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean, cal
 | --- | --- | --- | --- |
 | deviceType | [CommunicationDeviceType](arkts-audio-audio-communicationdevicetype-e.md) | 是 | 音频设备类型。 |
 | active | boolean | 是 | 是否设置设备为激活状态。true表示激活，false表示未激活。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置通信设备激活状态成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置通信设备激活状态成功，err为undefined，否则为错误对象。 |
 
 ## setCommunicationDevice
 

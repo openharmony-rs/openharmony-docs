@@ -203,7 +203,7 @@ off(type: 'statusChange', callback?: Callback<AudioLoopbackStatus>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'statusChange' | 是 | 事件回调类型，支持的事件为'statusChange'，当取消监听音频状态事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioLoopbackStatus&gt; | 否 | 回调函数，返回当前音频返听的状态。 |
+| callback | Callback&lt;AudioLoopbackStatus&gt; | 否 | 回调函数，返回当前音频返听的状态。 |
 
 **错误码：**
 
@@ -230,7 +230,7 @@ on(type: 'statusChange', callback: Callback<AudioLoopbackStatus>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'statusChange' | 是 | 事件回调类型，支持的事件为'statusChange'，当AudioLoopback的状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioLoopbackStatus&gt; | 是 | 回调函数，返回当前音频返听的状态。 |
+| callback | Callback&lt;AudioLoopbackStatus&gt; | 是 | 回调函数，返回当前音频返听的状态。 |
 
 **错误码：**
 

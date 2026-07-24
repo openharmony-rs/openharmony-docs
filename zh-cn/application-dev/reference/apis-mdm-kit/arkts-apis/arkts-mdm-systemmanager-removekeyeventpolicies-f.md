@@ -28,7 +28,7 @@ function removeKeyEventPolicies(admin: Want, keyCodes: Array<KeyCode>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | keyCodes | Array&lt;KeyCode&gt; | 是 | 按键编码。支持一次删除多条按键策略，删除不支持按键时返回9200012错误码。 |
 
 **错误码：**

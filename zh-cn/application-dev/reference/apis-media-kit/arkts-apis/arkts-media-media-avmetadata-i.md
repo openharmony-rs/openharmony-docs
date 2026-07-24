@@ -1,6 +1,6 @@
 # AVMetadata
 
-Defines the audio and video metadata. Parameters that are not declared as read-only in [AVRecorderConfig](#AVRecorderConfig) can be used as input parameters for recording of [AVRecorder](#AVRecorder).
+Defines the audio and video metadata. Parameters that are not declared as read-only in AVRecorderConfig can be used as input parameters for recording of AVRecorder.
 
 **起始版本：** 11
 

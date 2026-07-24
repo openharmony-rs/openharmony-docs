@@ -36,9 +36,9 @@ function setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: bo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | isEnable | boolean | 是 | 是否支持本地安装企业应用。true表示支持，false表示不支持。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取<br>取值应为≥0的整数。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过getOsAccountLocalId等接口来获取<br>取值应为≥0的整数。 |
 
 **错误码：**
 

@@ -44,7 +44,7 @@ The drawingContext is not bound to a canvas component.
 
 **处理步骤**
 
-将绘制上下文绑定至一个Canvas组件后再调用[getContext2DFromDrawingContext](./arkui-ts/ts-canvasrenderingcontext2d.md#getcontext2dfromdrawingcontext23)方法。
+将绘制上下文绑定至一个Canvas组件后再调用getContext2DFromDrawingContext方法。
 
 ## 103704 OffscreenCanvas已经下树
 
@@ -54,7 +54,7 @@ OffscreenCanvas object is detached.
 
 **错误描述**
 
-[OffscreenCanvas](./arkui-ts/ts-components-offscreencanvas.md)已经下树。
+OffscreenCanvas已经下树。
 
 **可能原因**
 

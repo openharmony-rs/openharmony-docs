@@ -43,8 +43,8 @@ getAcbState(): AcbState
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## getConnectionState
 
@@ -75,8 +75,8 @@ getConnectionState(): ConnectionState
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## getDeviceClass
 
@@ -107,8 +107,8 @@ getDeviceClass(): DeviceClass
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## getDeviceInformation
 
@@ -139,8 +139,8 @@ getDeviceInformation(): DeviceInformation
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## getDeviceName
 
@@ -171,8 +171,8 @@ getDeviceName(): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## getPairingState
 
@@ -203,8 +203,8 @@ getPairingState(): PairingState
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 
 ## startPairing
 
@@ -235,6 +235,6 @@ startPairing(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
+| 36100003 | NearLink disabled. |
+| 36100099 | Operation failed. |
 

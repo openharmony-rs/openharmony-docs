@@ -44,7 +44,7 @@ The FrameNode cannot be set whether to support cross-language common attribute s
 
 **处理步骤**
 
-避免对不支持设置跨ArkTS语言访问选项的FrameNode节点调用[setCrossLanguageOptions](./js-apis-arkui-frameNode.md#setcrosslanguageoptions15)接口调整跨语言访问权限。可参考setCrossLanguageOptions接口说明，确认目标节点类型是否支持设置跨ArkTS语言访问选项。
+避免对不支持设置跨ArkTS语言访问选项的FrameNode节点调用setCrossLanguageOptions接口调整跨语言访问权限。可参考setCrossLanguageOptions接口说明，确认目标节点类型是否支持设置跨ArkTS语言访问选项。
 
 ## 100023 参数错误
 
@@ -116,7 +116,7 @@ The current FrameNode has been disposed.
 
 **可能原因**
 
-开发者在当前接口调用前，使用该实例对象调用了[dispose](./js-apis-arkui-frameNode.md#dispose12)接口，例如：item.dispose()。
+开发者在当前接口调用前，使用该实例对象调用了dispose接口，例如：item.dispose()。
 
 **处理步骤**
 
@@ -167,7 +167,7 @@ Reuse/Recycle not implemented for ViewV2, yet.
 
 **错误描述**
 
-BuilderNode中，[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)暂不支持[reuse](./js-apis-arkui-builderNode.md#reuse12)。
+BuilderNode中，[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)暂不支持reuse。
 
 **可能原因**
 
@@ -232,5 +232,5 @@ Operations on the provided node are not supported on non-UI threads.
 **处理步骤**
 
 1. 调整函数调用时机，确保接口在UI线程调用。
-2. 确认节点是由多线程[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的。
+2. 确认节点是由多线程createNode接口创建的。
 3. 参考[多线程NDK接口调用规范](../../ui/ndk-build-on-multi-thread.md#多线程ndk接口调用规范)，将组件所在组件树中所有不可转换的Attached组件移除。

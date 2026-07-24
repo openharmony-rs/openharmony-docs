@@ -43,7 +43,7 @@ function addDockApp(admin: Want, bundleName: string, abilityName: string, index?
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 应用的包名。 |
 | abilityName | string | 是 | 应用的Ability名称，仅支持应用程序入口Ability。 |
 | index | number | 否 | 应用在快捷栏中的位置索引，<br>取值应为[0,99]内的整数，默认值为99。 默认值： 99。 |

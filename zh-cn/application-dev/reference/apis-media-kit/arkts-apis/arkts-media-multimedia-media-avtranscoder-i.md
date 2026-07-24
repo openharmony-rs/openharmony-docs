@@ -110,7 +110,7 @@ off(type:'complete', callback?: Callback<void>):void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' | 是 | 转码完成事件回调类型，支持的事件：'complete'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 完成事件回调方法。 |
+| callback | Callback&lt;void&gt; | 否 | 完成事件回调方法。 |
 
 ## off('error')
 
@@ -133,7 +133,7 @@ off(type:'error', callback?: ErrorCallback):void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 转码错误事件回调类型'error'。 <br>- 'error'：转码过程中发生错误，触发该事件。 |
-| callback | [ErrorCallback](../../apis-arkui/arkts-components/arkts-arkui-errorcallback-t-sys.md) | 否 | 错误事件回调方法。 |
+| callback | ErrorCallback | 否 | 错误事件回调方法。 |
 
 ## off('progressUpdate')
 
@@ -156,7 +156,7 @@ off(type:'progressUpdate', callback?: Callback<number>):void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'progressUpdate' | 是 | 进度更新事件回调类型，支持的事件：'progressUpdate'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 已注册的进度更新事件回调。由于当前回调注册时，仅会保留最后一次注册的回调，建议此参数缺省。 |
+| callback | Callback&lt;number&gt; | 否 | 已注册的进度更新事件回调。由于当前回调注册时，仅会保留最后一次注册的回调，建议此参数缺省。 |
 
 ## on('complete')
 
@@ -181,7 +181,7 @@ on(type:'complete', callback: Callback<void>):void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' | 是 | 完成事件回调类型，支持的事件：'complete'，在转码过程中系统会自动触发此事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数，返回完成事件回调方法。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，返回完成事件回调方法。 |
 
 ## on('error')
 
@@ -206,7 +206,7 @@ on(type:'error', callback: ErrorCallback):void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 转码错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
-| callback | [ErrorCallback](../../apis-arkui/arkts-components/arkts-arkui-errorcallback-t-sys.md) | 是 | 转码错误事件回调方法。 |
+| callback | ErrorCallback | 是 | 转码错误事件回调方法。 |
 
 **错误码：**
 
@@ -242,7 +242,7 @@ on(type:'progressUpdate', callback: Callback<number>):void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'progressUpdate' | 是 | 进度更新事件回调类型，支持的事件：'progressUpdate'，在转码过程中系统会自动触发此事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 回调函数，返回进度更新事件，函数中的参数number，表示当前转码进度。 |
+| callback | Callback&lt;number&gt; | 是 | 回调函数，返回进度更新事件，函数中的参数number，表示当前转码进度。 |
 
 ## pause
 

@@ -18,7 +18,7 @@ use of default id generator function not possible on provided data structure.Nee
 
 **错误描述**
 
-[ForEach](./arkui-ts/ts-rendering-control-foreach.md)使用默认的键值生成函数无法基于提供的数据结构生成键值。
+ForEach使用默认的键值生成函数无法基于提供的数据结构生成键值。
 
 **可能原因**
 
@@ -36,7 +36,7 @@ lacks mandatory '.each' attribute function, i.e. has no default item builder. Ap
 
 **错误描述**
 
-缺少[each](./arkui-ts/ts-rendering-control-repeat.md#each)属性。
+缺少each属性。
 
 **可能原因**
 
@@ -90,7 +90,7 @@ Repeat(). Default key gen failed. Application Error!
 
 **错误描述**
 
-[Repeat](./arkui-ts/ts-rendering-control-repeat.md)的默认[键值](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#键值生成规则)生成失败。
+Repeat的默认[键值](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#键值生成规则)生成失败。
 
 **可能原因**
 

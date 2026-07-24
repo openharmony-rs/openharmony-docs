@@ -74,7 +74,7 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当取消监听流结束事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数，无返回结果。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数，无返回结果。 |
 
 **示例：**
 
@@ -112,7 +112,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 事件回调类型，支持的事件为'audioInterrupt'，当取消监听音频中断事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;audio.InterruptEvent&gt; | 否 | 回调函数，返回中断事件信息。 |
+| callback | Callback&lt;audio.InterruptEvent&gt; | 否 | 回调函数，返回中断事件信息。 |
 
 **示例：**
 
@@ -196,7 +196,7 @@ on(type: 'endOfStream', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当音频流播放结束时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数，无返回结果。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，无返回结果。 |
 
 **示例：**
 
@@ -226,7 +226,7 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 事件回调类型，支持的事件为'audioInterrupt'，当音频焦点状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;audio.InterruptEvent&gt; | 是 | 回调函数，返回中断事件信息。 |
+| callback | Callback&lt;audio.InterruptEvent&gt; | 是 | 回调函数，返回中断事件信息。 |
 
 **示例：**
 

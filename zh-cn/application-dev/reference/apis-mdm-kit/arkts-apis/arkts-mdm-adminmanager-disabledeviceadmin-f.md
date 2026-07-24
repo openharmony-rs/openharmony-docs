@@ -12,7 +12,7 @@ import { adminManager } from '@kit.MDMKit';
 function disableDeviceAdmin(admin: Want): Promise<void>
 ```
 
-[超级设备管理应用](../../../mdm/mdm-kit-term.md#sda)通过该接口可以解除激活其他[普通设备管理应用](../../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
+超级设备管理应用通过该接口可以解除激活其他普通设备管理应用，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
 
 **起始版本：** 23
 
@@ -28,7 +28,7 @@ function disableDeviceAdmin(admin: Want): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 

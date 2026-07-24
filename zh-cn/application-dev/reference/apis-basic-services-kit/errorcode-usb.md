@@ -175,7 +175,7 @@ Resource busy. Possible causes: 1. The transfer has already been submitted. 2. T
 
 **处理步骤**
 
-检查[usbManager.claimInterface](js-apis-usbManager.md#usbmanagerclaiminterface)接口是否调用成功。
+检查usbManager.claimInterface接口是否调用成功。
 
 ## 14400008 没有设备(连接已断开)
 

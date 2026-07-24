@@ -28,7 +28,7 @@ function removeAllowedPermissionBundle(admin: Want, permission: string, applicat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | permission | string | 是 | 权限名称。 |
 | applicationInstance | common.ApplicationInstance | 是 | 需从权限使用例外名单移除的应用实例信息。the application need to be removed from the list of applications allowed to grant the permission. |
 

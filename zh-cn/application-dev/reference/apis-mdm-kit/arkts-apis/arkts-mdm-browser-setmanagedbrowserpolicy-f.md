@@ -12,7 +12,7 @@ import { browser } from '@kit.MDMKit';
 function setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, policyValue: string): void
 ```
 
-为指定的浏览器设置浏览器策略，成功后会发布系统公共事件[COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed)。
+为指定的浏览器设置浏览器策略，成功后会发布系统公共事件COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED。
 
 **起始版本：** 15
 
@@ -28,7 +28,7 @@ function setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: st
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 应用包名，用于指定浏览器。 |
 | policyName | string | 是 | 浏览器策略名。 |
 | policyValue | string | 是 | 浏览器策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |

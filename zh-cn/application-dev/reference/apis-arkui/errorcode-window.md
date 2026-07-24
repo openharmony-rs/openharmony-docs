@@ -302,7 +302,7 @@ Wrong parameters for operating the floating ball.
 
 4.检查是否有未传入的必传参数。
 
-闪控球相关参数具体可见[FloatingBallParams](js-apis-floatingBall.md#floatingballparams)。
+闪控球相关参数具体可见FloatingBallParams。
 
 ## 1300020 创建闪控球窗口失败
 
@@ -526,9 +526,9 @@ Repeated operations on the float view.
 
 **处理步骤**
 
-1. 建议通过[onStateChange](js-apis-floatView.md#onstatechange)获取当前状态变化。启动闪控窗前，检查闪控窗是否处于已启动的状态。
+1. 建议通过onStateChange获取当前状态变化。启动闪控窗前，检查闪控窗是否处于已启动的状态。
 
-2. 建议通过[onStateChange](js-apis-floatView.md#onstatechange)获取当前状态变化。停止闪控窗前，检查闪控窗是否处于已停止的状态。
+2. 建议通过onStateChange获取当前状态变化。停止闪控窗前，检查闪控窗是否处于已停止的状态。
 
 3. 注册闪控窗回调前，确保回调未注册。
 
@@ -649,7 +649,7 @@ This window type is invalid.
 窗口类型无效。
 
 **可能原因**<br>
-使用了无效的窗口类型，有效的窗口类型见[WindowType](arkts-apis-window-e.md#windowtype7)。
+使用了无效的窗口类型，有效的窗口类型见WindowType。
 
 **处理步骤**<br>
 请使用WindowType支持的窗口类型，再进行相关操作。

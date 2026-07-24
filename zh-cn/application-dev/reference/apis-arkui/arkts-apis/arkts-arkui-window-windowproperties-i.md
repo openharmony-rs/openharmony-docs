@@ -182,9 +182,9 @@ isKeepScreenOn: boolean
 isLayoutFullScreen: boolean
 ```
 
-对于子窗，如果设置了[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)，返回值为true。
+对于子窗，如果设置了沉浸式布局，返回值为true。
 
-对于主窗，如果设置了[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)且处于全屏模式，返回值为true。
+对于主窗，如果设置了沉浸式布局且处于全屏模式，返回值为true。
 
 其他情况下均返回false
 
@@ -320,7 +320,7 @@ type: WindowType
 windowRect: Rect
 ```
 
-窗口尺寸，其中左边界上边界是相对于窗口所在屏幕左上顶点计算，可在页面生命周期[onPageShow](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或应用生命周期[onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground)阶段获取。
+窗口尺寸，其中左边界上边界是相对于窗口所在屏幕左上顶点计算，可在页面生命周期onPageShow或应用生命周期[onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground)阶段获取。
 
 **类型：** Rect
 

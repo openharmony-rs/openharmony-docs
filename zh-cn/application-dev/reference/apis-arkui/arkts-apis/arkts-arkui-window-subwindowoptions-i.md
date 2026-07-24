@@ -132,7 +132,7 @@ title: string
 windowRect?: Rect
 ```
 
-子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-arkui-window-window-i.md#resize)方法。不设置且未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)显示前，则默认为{left: 0,top: 0, width: 0, height: 0}。具体参考[设置应用子窗口](../../../windowmanager/application-window-stage.md#设置应用子窗口)开发指南。
+子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-arkui-window-window-i.md#resize)方法。不设置且未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)显示前，则默认为{left: 0,top: 0, width: 0, height: 0}。具体参考设置应用子窗口开发指南。
 
 **类型：** Rect
 
