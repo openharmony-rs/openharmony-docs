@@ -311,7 +311,6 @@ ArkTS-Sta示例：
 'use static'
 
 import { formBindingData, formAgent } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let formId: string = '123456789'; // 卡片的formId，请替换为实际的formId。
 try {
@@ -322,10 +321,10 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formAgent.updateFormCrossBundle(formId, obj).then(() => {
     console.info('formAgent updateFormCrossBundle success');
-  }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error?.code}, message: ${error?.message}`);
+  }).catch((error) => {
+    console.error(`testTag promise error, code: ${error?.code}, message: ${error?.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error?.code}, message: ${error?.message}`);
+  console.error(`testTag catch error, code: ${error?.code}, message: ${error?.message}`);
 }
 ```
