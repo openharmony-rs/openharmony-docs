@@ -9958,7 +9958,7 @@ setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| enabled    | boolean | 是   | 是否响应手势返回事件。<br>true表示响应手势返回事件；false表示不响应手势返回事件。</br> |
+| enabled    | boolean | 是   | 是否响应手势返回事件。<br>true表示响应手势返回事件；false表示不响应手势返回事件。<br> |
 
 **返回值：**
 
