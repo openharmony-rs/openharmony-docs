@@ -56,7 +56,7 @@ outline(options: Optional\<OutlineOptions>): T
 
 | 参数名 | 类型                                      | 必填 | 说明 |
 | ------ | ----------------------------------------- | ---- | ---- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineOptions](ts-types.md#outlineoptions11对象说明)> | 是   |   外描边样式。<br/>当options的值为undefined时，恢复为无外边框效果。   |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineOptions](ts-types.md#outlineoptions11对象说明)> | 是   |   外描边样式。<br/>当options的值为undefined时，恢复为无外描边效果。   |
 
 **返回值：**
 

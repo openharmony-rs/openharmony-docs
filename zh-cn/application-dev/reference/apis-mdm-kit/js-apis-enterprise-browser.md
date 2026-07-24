@@ -100,7 +100,7 @@ getPoliciesSync(admin: Want | null, appId: string): string
 | 参数名 | 类型                                                    | 必填 | 说明                     |
 | ------ | ------------------------------------------------------- | ---- | ------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
-| appId  | string                                                  | 是   | 应用ID，用于指定浏览器。 |
+| appId  | string                                                  | 是   | 应用ID，用于指定浏览器。详情信息可参考[什么是appId](../../quick-start/common-problem-of-application.md#什么是appid)。 |
 
 **返回值：**
 
@@ -267,7 +267,7 @@ try {
 
 getSelfManagedBrowserPolicyVersion(): string
 
-获取指定浏览器的浏览器策略版本。
+获取当前设备浏览器策略版本。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

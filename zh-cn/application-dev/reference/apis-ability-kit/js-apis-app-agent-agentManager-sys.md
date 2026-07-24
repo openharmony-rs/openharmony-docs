@@ -562,7 +562,7 @@ disconnectAgentExtensionAbility(proxy: AgentProxy): Promise\<void>
 **示例：**
 
 ```ts
-import { common, Want, agentManager } from '@kit.AbilityKit';
+import { common, agentManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
@@ -656,6 +656,10 @@ agentManager.notifyLowCodeAgentComplete(agentId)
 connectServiceExtensionAbility(context: AgentExtensionContext, want: Want, callback: ConnectOptions): number
 
 将AgentExtensionAbility连接到ServiceExtensionAbility。若目标ServiceExtensionAbility可见，可直接连接；若不可见，需申请`ohos.permission.START_INVISIBLE_ABILITY`权限；若目标ServiceExtensionAbility位于远程设备上，需申请`ohos.permission.DISTRIBUTED_DATASYNC`权限。
+
+> **说明：**
+>
+> 该接口不支持在多线程和子进程中调用。在多线程中调用将引发CppCrash；在子进程中调用将返回16000050错误码。
 
 **起始版本**：26.0.0
 
@@ -780,6 +784,7 @@ disconnectServiceExtensionAbility(context: AgentExtensionContext, connectId: num
 
 ```ts
 import { AgentExtensionAbility, agentManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let TAG = 'DemoAgentForDisConnect';
 

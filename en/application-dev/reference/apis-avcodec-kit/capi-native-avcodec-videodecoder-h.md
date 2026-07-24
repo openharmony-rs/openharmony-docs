@@ -22,11 +22,36 @@ The file declares the native APIs used for video decoding.
 
 **Sample**: [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
-The following figures show the APIs supported by each version and the APIs that can be called in different states.
+The table below shows the API's support across versions and its callability during decoding.
 
-![meaning](figures/meaning.PNG)
+### API State Matrix
 
-![description of decode api history](figures/video-decode-api.PNG)
+The following provides an overview of whether the API can be called in different states. A checkmark (√) indicates that the API can be called, and a cross (×) indicates that it cannot be called.
+
+| API| Initialized | Configured | Prepared | Flushed | Running | EndOfStream | Error | Released |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| OH_VideoDecoder_CreateByMime<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoDecoder_CreateByName<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoDecoder_RegisterCallback<sup>10+</sup> | √ | √ | × | × | × | × | × | × |
+| OH_VideoDecoder_Configure<sup>9+</sup> | √ | × | × | × | × | × | × | × |
+| OH_VideoDecoder_Prepare<sup>9+</sup> | × | √ | × | × | × | × | × | × |
+| OH_VideoDecoder_SetParameter<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
+| OH_VideoDecoder_SetSurface<sup>9+</sup> | × | √ | √ | √ | √ | √ | × | × |
+| OH_VideoDecoder_PushInputBuffer<sup>11+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoDecoder_RenderOutputBuffer<sup>11+</sup> | × | × | × | × | √ | √ | × | × |
+| OH_VideoDecoder_SetDecryptionConfig<sup>10+</sup> | √ | √ | × | × | × | × | × | × |
+| OH_VideoDecoder_GetOutputDescription<sup>9+</sup> | √ | √ | √ | √ | √ | √ | × | × |
+| OH_VideoDecoder_FreeOutputBuffer<sup>11+</sup> | × | × | × | × | √ | √ | × | × |
+| OH_VideoDecoder_RenderOutputBufferAtTime<sup>12+</sup> | × | × | × | × | √ | √ | × | × |
+| OH_VideoDecoder_Start<sup>9+</sup> | × | × | √ | √ | × | × | × | × |
+| OH_VideoDecoder_Stop<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
+| OH_VideoDecoder_Flush<sup>9+</sup> | × | × | × | × | √ | √ | × | × |
+| OH_VideoDecoder_Reset<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
+| OH_VideoDecoder_Destroy<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
+| OH_VideoDecoder_QueryInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoDecoder_GetInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoDecoder_QueryOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoDecoder_GetOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
 
 ## Summary
 
@@ -88,7 +113,7 @@ Creates a video decoder instance based on a MIME type. This function is recommen
 
 | Name| Description|
 | -- | -- |
-| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#variables).|
+| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE variables](capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 
@@ -488,7 +513,7 @@ Pushes the input buffer filled with data to a video decoder.<br> The input callb
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**:<br>1. The input **codec** is nullptr or does not point to a decoder instance.<br>2. Invalid **index**. This error does not affect the subsequent decoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoDecoder_RenderOutputData()
 
@@ -519,7 +544,7 @@ Returns the processed output buffer to a video decoder and instructs the decoder
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**:<br>1. The input **codec** is nullptr or does not point to a decoder instance.<br>2. Invalid **index**. This error does not affect the subsequent decoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoDecoder_FreeOutputData()
 
@@ -550,7 +575,7 @@ Frees an output buffer of a video decoder.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**:<br>1. The input **codec** is nullptr or does not point to a decoder instance.<br>2. Invalid **index**. This error does not affect the subsequent decoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoDecoder_PushInputBuffer()
 
@@ -577,7 +602,7 @@ Notifies a video decoder that the buffer corresponding to the index has been fil
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_DRM_DECRYPT_FAILED**: The DRM-protected video buffer fails to be decrypted. You are advised to view logs.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**:<br>1. The input **codec** is nullptr or does not point to a decoder instance.<br>2. Invalid **index**. This error does not affect the subsequent decoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_DRM_DECRYPT_FAILED**: The DRM-protected video buffer fails to be decrypted. You are advised to view logs.|
 
 ### OH_VideoDecoder_RenderOutputBuffer()
 
@@ -604,7 +629,7 @@ Returns the output buffer corresponding to the index to a video decoder. The buf
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**:<br>1. The input **codec** is nullptr or does not point to a decoder instance.<br>2. Invalid **index**. This error does not affect the subsequent decoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoDecoder_RenderOutputBufferAtTime()
 
@@ -614,7 +639,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_
 
 **Description**
 
-Returns the output buffer corresponding to the index to a video decoder. The buffer carries the decoded data and is used to instruct the decoder to finish rendering within the specified duration on the output surface.<br> If no output surface is configured, calling this API only returns the output buffer corresponding to the specified index to the decoder.<br> You can request the system to render the buffer at a specific time (after the VSYNC or buffer timestamp) based on the timestamp. To render the buffer at the specified timestamp, that timestamp should approximate the current system time within an acceptable margin of error. Pay attention to the following:<br> 1. Buffers are processed sequentially, which may result in the display of subsequent buffers on the surface being blocked. This is particularly important for interactive scenarios, such as responding to user actions like stopping, fast-forwarding, or rewinding a video.<br> 2. If multiple buffers are sent to the surface for rendering on a single VSYNC event, the last buffer is rendered and other buffers are discarded.<br> 3. If the difference between the timestamp and the current system time exceeds the acceptable margin of error, the surface ignores the timestamp and renders the buffer at the earliest feasible time. In this case, no frames are discarded. <br> 4. If you want the system to handle frame-dropping based on the display's refresh rate, you have to use this function. Otherwise, your application manages frame-dropping on its own.
+Returns the output buffer corresponding to the index to a video decoder. The buffer carries the decoded data and is used to instruct the decoder to finish rendering within the specified duration on the output surface.<br> If no output surface is configured, calling this API only returns the output buffer corresponding to the specified index to the decoder.<br> You can request the system to render the buffer at a specific time (after the VSYNC or buffer timestamp) based on the timestamp. To render the buffer at the specified timestamp, that timestamp should approximate the current system time within an acceptable margin of error. Pay attention to the following:<br> 1. Buffers are processed sequentially, which may result in the display of subsequent buffers on the surface being blocked. This is particularly important for interactive scenarios, such as responding to user actions like stopping, fast-forwarding, or rewinding a video.<br> 2. If multiple buffers are sent to the surface for rendering on a single VSYNC event, the last buffer is rendered and other buffers are discarded.<br> 3. If the difference between the timestamp and the current system time exceeds the acceptable margin of error, the surface ignores the timestamp and renders the buffer at the earliest feasible time. In this case, no frames are discarded.4. If you want the system to handle frame-dropping based on the display's refresh rate, you have to use this function. Otherwise, your application manages frame-dropping on its own.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -632,7 +657,7 @@ Returns the output buffer corresponding to the index to a video decoder. The buf
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**:<br>1. The input **codec** is nullptr or does not point to a decoder instance.<br>2. Invalid **index**. This error does not affect the subsequent decoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current decoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoDecoder_FreeOutputBuffer()
 

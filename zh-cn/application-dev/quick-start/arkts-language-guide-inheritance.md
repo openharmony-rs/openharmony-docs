@@ -515,6 +515,8 @@ class FutureFeature extends Base {
 }
 ```
 
+空子类无需显式声明构造函数，创建实例时隐式调用父类构造函数（等价于自动生成`constructor(...args) { super(...args); }`）。
+
 ### 继承链与多级继承的概念
 
 继承链是指类之间从基类到派生类的多层继承关系。例如`GrandParent → Parent → Child`构成三级继承链，每层继承父类的`public`和`protected`成员并可添加自己的成员。继承链使代码复用在多个层级间传递，但层数过深会增加理解难度和查找性能开销。

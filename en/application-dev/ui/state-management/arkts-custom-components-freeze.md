@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=59b65fcc65a22b7c940ca535023658111a023e22 translatedAt=2026-06-29T10:55:29.071Z pushedAt=2026-06-29T13:05:25.896Z -->
+<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:00:26.246Z pushedAt=2026-07-22T06:57:46.106Z -->
 
 Freezing a custom component is designed to optimize the performance of complex UI pages, especially for scenarios where multiple page stacks, long lists, or grid layouts are involved. When a state variable is bound to multiple UI components, the change of the state variable may trigger a large number of component updates. As a result, the page freezes and the response is delayed. To improve the refresh performance of such heavy-load UIs, you are advised to use the custom component freezing function.
 
@@ -46,7 +46,7 @@ Note that the active or inactive state of a component is not equivalent to its v
 
 5. Component reuse: The component that enters the reuse pool is in the inactive state, and the node attached from the reuse pool is in the active state.
 
-6. Mixed use: For example, if **LazyForEach** is used under **TabContent**, all nodes in **LazyForEach** of API version 17 or earlier are set to the active state since when switching tabs. Since API version 18, only the on-screen nodes of **LazyForEach** are set to the active state, and other nodes are set to the inactive state.
+6. Mixed use: For example, if **LazyForEach** is used under **TabContent**, all nodes in **LazyForEach** of API version 17 or earlier are set to the active state when switching tabs. Since API version 18, only the on-screen nodes of **LazyForEach** are set to the active state, and other nodes are set to the inactive state.
 
 ## Use Scenarios
 
@@ -226,7 +226,7 @@ In the preceding example:
 
 Freezes the custom components cached in LazyForEach. Modifying state variables does not trigger the update of the cache components.
 
-<!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) -->
+<!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -267,28 +267,28 @@ class BasicDataSource implements IDataSource {
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
       listener.onDataReloaded();
-    })
+    });
   }
 
   // Notify LazyForEach that a child component needs to be added for the data item with the specified index.
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
-    })
+    });
   }
 
   // Notify LazyForEach that the data item with the specified index has changed and the child component needs to be rebuilt.
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
-    })
+    });
   }
 
   // Notify LazyForEach that the child component needs to be deleted from the data item with the specified index.
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
-    })
+    });
   }
 }
 
@@ -1451,7 +1451,7 @@ struct Page {
 }
 ```
 
-In the context of component reuse, **LazyForEach** nodes are thoroughly explained and fall into two categories:  on-screen node and **cachedCount** node.
+In the context of component reuse, **LazyForEach** nodes are thoroughly explained and fall into two categories: on-screen node and **cachedCount** node.
 
 ![freeze](figures/freeze_lazyforeach.png)
 

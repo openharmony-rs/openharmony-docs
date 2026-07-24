@@ -16,14 +16,14 @@ This module provides APIs for three processes: subscription, publishing, and ord
 
 **Combination 1: subscribing to and processing common events**
 
-1. Call **OH_CommonEvent_CreateSubscribeInfo** to create subscriber information, declare the name of the event to be subscribed to, and set the publisher permissions and package name as required to filter the event source.
+1. Call **OH_CommonEvent_CreateSubscribeInfo** to create subscriber information, declare the name of the event to be subscribed to, and set the publisher permissions and bundle name as required to filter the event source.
 2. Call **OH_CommonEvent_CreateSubscriber** to create a subscriber and register the callback function for receiving events. Then, call **OH_CommonEvent_Subscribe** to subscribe to a common event. After the subscription takes effect, wait for event delivery in the callback.
-3. When the event is triggered, obtain the event name, code, data, and publisher's package name from the callback parameter **CommonEvent_RcvData**, and then process the service logic.
+3. When the event is triggered, obtain the event name, code, data, and publisher's bundle name from the callback parameter **CommonEvent_RcvData**, and then process the service logic.
 4. When the subscription is no longer needed, call **OH_CommonEvent_UnSubscribe** to unsubscribe from the event and release related resources.
 
 **Combination 2: publishing a common event that carries additional information**
 
-1. Call **OH_CommonEvent_CreatePublishInfo** to create a common event property object, and set the code, data, subscriber package name, subscriber permission, and additional information as required.
+1. Call **OH_CommonEvent_CreatePublishInfo** to create a common event property object, and set the code, data, subscriber bundle name, subscriber permission, and additional information as required.
 2. Call **OH_CommonEvent_PublishWithInfo** to publish an event that carries the property.
 
 > If no additional property is required, you can call **OH_CommonEvent_Publish(event)** to publish the event.
@@ -152,15 +152,14 @@ Enumerates the error codes.
 | Value| Description|
 | -- | -- |
 | COMMONEVENT_ERR_OK = 0 | Operation successful.|
-| COMMONEVENT_ERR_PERMISSION_ERROR = 201 | Permission denied.|
-| COMMONEVENT_ERR_INVALID_PARAMETER = 401 | Invalid parameter.|
-| COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED = 1500003| Event sending frequency is too high.<br>**Since**: 20|
-| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 | The third-party application fails to send system common events.|
-| COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 | Failed to send IPC requests.|
-| COMMONEVENT_ERR_INIT_UNDONE = 1500008 | Services not initialized.|
-| COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 | System error.|
-| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 | The number of subscribers in the process exceeds the system limit (200).|
-| COMMONEVENT_ERR_ALLOC_MEMORY_FAILED = 1500011 | Failed to allocate memory.|
+| COMMONEVENT_ERR_INVALID_PARAMETER = 401 | Invalid parameter. The parameter is invalid. Check the parameter type, value range, and whether the parameter is empty.|
+| COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED = 1500003| Event sending frequency is too high. Check whether the application sends common events too frequently. If more than 20 common events are sent every 5 milliseconds, reduce the common event sending frequency or increase the sending interval and try again.<br>**Since**: 20|
+| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 | The third-party application fails to send system common events. Check whether the current application is a system application or whether the current service is a system service.|
+| COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 | Failed to send IPC requests. Do not set up connections frequently. Try again later.|
+| COMMONEVENT_ERR_INIT_UNDONE = 1500008 | Services not initialized. Try again later.|
+| COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 | System error. Try again later.|
+| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 | The number of subscribers in the process exceeds the system limit (200). Unregister the subscriber that is no longer used in the application. If the subscriber has been unregistered, try again later.|
+| COMMONEVENT_ERR_ALLOC_MEMORY_FAILED = 1500011 | Failed to allocate memory. Try again later.|
 
 
 ## Function Description
@@ -201,14 +200,14 @@ Creates the subscriber information.
 
 | Name| Description|
 | -- | -- |
-| const char* events[] | Pointer to the common events. The valid number of subscribed common events is the smaller value between **eventsNum** and **events[]**.|
-| int32_t eventsNum | Number of common events to subscribe. The value is the length of the **events** array.|
+| const char* events[] | Pointer to the common events. The actual number of subscribed common events is the smaller value between **eventsNum** and **events**.|
+| int32_t eventsNum | Number of common events to subscribe to. The value is a non-negative integer and is the length of the **events** array.|
 
 **Returns**
 
 | Type                            | Description|
 |--------------------------------| -- |
-| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* | Returns the subscriber information created if the operation is successful; returns **NULL** otherwise.|
+| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* | Returns the subscriber information created if the operation is successful; returns **NULL** otherwise. This pointer is internally managed and is released when [OH_CommonEvent_DestroySubscribeInfo()](#oh_commonevent_destroysubscribeinfo) is called.|
 
 ### OH_CommonEvent_SetPublisherPermission()
 
@@ -227,8 +226,8 @@ Sets the publisher permission.
 
 | Name| Description|
 | -- | -- |
-| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | Pointer to the subscriber information.|
-| const char* permission | Pointer to the permission name.|
+| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | Pointer to the subscriber information object for which the publisher permission is to be set.|
+| const char* permission | Pointer to the permission name. The value is an array of permission names defined by the system. The subscriber can receive only the events from the publisher with this permission. If this parameter is not set, the subscriber can receive events from all publishers.|
 
 **Returns**
 
@@ -253,8 +252,8 @@ Sets the publisher bundle name.
 
 | Name| Description|
 | -- | -- |
-| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | Pointer to the subscriber information.|
-| const char* bundleName | Pointer to the bundle name.|
+| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | Pointer to the subscriber information object for which the publisher permission is to be set.|
+| const char* bundleName | Pointer to the bundle name. This parameter is used to specify that the subscriber receives only public events published by the publisher with the specified bundle name. If this parameter is not set, the subscriber can receive all public events published by the app.|
 
 **Returns**
 
@@ -299,13 +298,13 @@ Creates a subscriber.
 | Name                                                                 | Description|
 |----------------------------------------------------------------------| -- |
 | const [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info                            | Pointer to the subscriber information.|
-| [CommonEvent_ReceiveCallback](#commonevent_receivecallback) callback | Callback to be invoked when a common event is triggered.|
+| [CommonEvent_ReceiveCallback](#commonevent_receivecallback) callback | Callback to be invoked when a common event is triggered. When a common event is successfully subscribed to, the common event data is returned by **data** when the event is triggered.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [CommonEvent_Subscriber](#variables)*| Returns the subscriber created if the operation is successful; returns **NULL** otherwise.|
+| [CommonEvent_Subscriber](#variables)*| Returns the subscriber created if the operation is successful; returns **NULL** otherwise. This pointer is internally managed and is released when [OH_CommonEvent_DestroySubscriber()](#oh_commonevent_destroysubscriber) is called.|
 
 ### OH_CommonEvent_DestroySubscriber()
 
@@ -399,7 +398,7 @@ Obtains the name of a common event.
 
 | Type| Description|
 | -- | -- |
-| const char* | Name of a common event.|
+| const char* | Name of a common event. This pointer is generated by the system and is released immediately after the callback function [CommonEvent_ReceiveCallback](#commonevent_receivecallback) ends. This parameter cannot be used outside the callback function.|
 
 ### OH_CommonEvent_GetCodeFromRcvData()
 
@@ -449,7 +448,7 @@ Obtains the result data (string type) of a common event.
 
 | Type| Description|
 | -- | -- |
-| const char* | Result data (string type) of a common event.|
+| const char* | Result data (string type) of a common event. This pointer is generated by the system and is released immediately after the callback function [CommonEvent_ReceiveCallback](#commonevent_receivecallback) ends. This parameter cannot be used outside the callback function.|
 
 ### OH_CommonEvent_GetBundleNameFromRcvData()
 
@@ -474,7 +473,7 @@ Obtains the bundle name of a common event.
 
 | Type| Description|
 | -- | -- |
-| const char* | Bundle name obtained.|
+| const char* | Bundle name obtained. This pointer is generated by the system and is released immediately after the callback function [CommonEvent_ReceiveCallback](#commonevent_receivecallback) ends. This parameter cannot be used outside the callback function.|
 
 ### OH_CommonEvent_GetParametersFromRcvData()
 
@@ -524,7 +523,7 @@ Creates a property object of a common event.
 
 | Type                          | Description|
 |------------------------------| -- |
-| [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* | Returns the property object if the operation is successful; returns **NULL** otherwise.|
+| [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* | Returns the property object if the operation is successful; returns **NULL** otherwise. This pointer is internally managed and is released when [OH_CommonEvent_DestroyPublishInfo()](#oh_commonevent_destroypublishinfo) is called.|
 
 ### OH_CommonEvent_DestroyPublishInfo()
 
@@ -589,7 +588,7 @@ Sets permissions for a common event.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
-| const char* permissions[] | Pointer to the array of permission names. The valid number of permissions is the smaller value between **num** and **permissions[]**.|
+| const char* permissions[] | Subscriber permissions. Only subscribers with the specified permissions can receive the common event. The valid number of permissions is the smaller value between **num** and **permissions**.|
 | int32_t num | Number of permission names. The value is the length of the **permissions** array.|
 
 **Returns**
@@ -693,7 +692,7 @@ Creates an additional information object of a common event.
 
 | Type| Description|
 | -- | -- |
-| [CommonEvent_Parameters](#variables)*| Returns additional information of the common event if operation is successful; returns **NULL** otherwise.|
+| [CommonEvent_Parameters](#variables)*| Returns additional information of the common event if operation is successful; returns **NULL** otherwise. This pointer is internally managed and is released when [OH_CommonEvent_DestroyParameters()](#oh_commonevent_destroyparameters) is called.|
 
 ### OH_CommonEvent_DestroyParameters()
 
@@ -840,7 +839,7 @@ Sets the int array with a specific key for the additional information of a commo
 | -- | -- |
 | [CommonEvent_Parameters](#variables)* param| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
-| const int* value | The int array to set.|
+| const int* value | The int array to set. The actual number of elements is **num**. The length of the **value** array must be greater than **num**. Otherwise, out-of-bounds access may occur.|
 | size_t num | Number of elements in the int array.|
 
 **Returns**
@@ -949,7 +948,7 @@ Sets the long array for the additional information of a common event.
 | -- | -- |
 | [CommonEvent_Parameters](#variables)* param| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
-| const long* value | Pointer to the long array to set.|
+| const long* value | Pointer to the long array to set. The actual number of elements is **num**. The length of the **value** array must be greater than **num**. Otherwise, out-of-bounds access may occur.|
 | size_t num | Number of elements in the long array.|
 
 **Returns**
@@ -1058,7 +1057,7 @@ Sets the Boolean array with a specific key for the additional information of a c
 | -- | -- |
 | [CommonEvent_Parameters](#variables)* param| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
-| const bool* value | Pointer to the Boolean array to set.|
+| const bool* value | Pointer to the Boolean array to set. The actual number of elements is **num**. The length of the **value** array must be greater than **num**. Otherwise, out-of-bounds access may occur.|
 | size_t num | Number of elements in the Boolean array.|
 
 **Returns**
@@ -1167,7 +1166,7 @@ Sets the character array with a specific key for the additional information of a
 | -- | -- |
 | [CommonEvent_Parameters](#variables)* param| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
-| const char* value | Pointer to the character array to set.|
+| const char* value | Pointer to the character array to set. The actual number of elements is the smaller value between **num** and the length of the **value** array.|
 | size_t num | Number of elements in the character array.|
 
 **Returns**
@@ -1276,7 +1275,7 @@ Sets the double array with a specific key for the additional information of a co
 | -- | -- |
 | [CommonEvent_Parameters](#variables)* param| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
-| const double* value | Pointer to the double array to set.|
+| const double* value | Pointer to the double array to set. The actual number of elements is **num**. The length of the **value** array must be greater than **num**. Otherwise, out-of-bounds access may occur.|
 | size_t num | Number of elements in the double array.|
 
 **Returns**
@@ -1308,7 +1307,7 @@ Publishes a common event.
 
 | Type| Description|
 | -- | -- |
-| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter is invalid.<br>         [COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): Event sending frequency is too high.<br>   [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The common event service is not initialized.|
+| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter is invalid.<br>         [COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): Event sending frequency is too high.<br>   [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The common event service is not initialized.         [COMMONEVENT_ERR_NOT_SYSTEM_SERVICE](capi-oh-commonevent-h.md#commonevent_errcode): The third-party app cannot send system common events.|
 
 ### OH_CommonEvent_PublishWithInfo()
 

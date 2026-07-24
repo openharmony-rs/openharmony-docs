@@ -129,6 +129,8 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 >  KeyboardAvoidMode.NONE模式配置页面不避让键盘，页面会被抬起的键盘遮盖。
 >
 >  setKeyboardAvoidMode针对页面生效，对于弹窗类组件不生效，比如Dialog、Popup、Menu、BindSheet、BindContentCover、Toast、OverlayManager。弹窗类组件的避让模式可以参考[CustomDialogControllerOptions对象说明](./ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)。
+>
+>  在性能敏感/高负载场景下，键盘和应用界面的动效可能不完全同步，导致动效过程中出现键盘与应用界面间露出间隙的现象，此时可以通过配置[expandSafeArea](#expandsafearea)的方式使应用背景铺满屏幕，避免不良视觉效果。
 
 ## getKeyboardAvoidMode<sup>11+</sup>
 

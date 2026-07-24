@@ -20,6 +20,8 @@ CanvasRenderingContext2D是Canvas组件的2D绘图上下文对象，用于在Can
 >
 > * Canvas组件的宽或高超过8000px时使用CPU渲染，会导致性能明显下降，此时推荐使用[自定义渲染节点 (RenderNode)](../../../ui/arkts-user-defined-arktsNode-renderNode.md)。
 >
+> * 图形变换接口([rotate](./ts-components-canvas-common-method.md#rotate)、[scale](./ts-components-canvas-common-method.md#scale)、[transform](./ts-components-canvas-common-method.md#transform)、[setTransform](./ts-components-canvas-common-method.md#settransform)、[translate](./ts-components-canvas-common-method.md#translate))与[getPixelMap](./ts-components-canvas-common-method.md#getpixelmap)/[getImageData](./ts-components-canvas-common-method.md#getimagedata)/[toDataURL](#todataurl)接口在不同帧执行时，后者创建出来的内容没有图形变换效果。
+>
 > * 支持使用[画布绘制通用方法](./ts-components-canvas-common-method.md)和设置[画布绘制通用属性](./ts-components-canvas-common-property.md)。
 
 ## constructor
@@ -67,8 +69,8 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 | 参数名      | 类型  | 必填   | 说明    |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | settings | [RenderingContextSettings](#renderingcontextsettings) | 否    | 用于配置CanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，不传入时使用默认配置（不开启抗锯齿）。见[RenderingContextSettings](#renderingcontextsettings)。<br>异常值undefined和null按[RenderingContextSettings](#renderingcontextsettings)的默认值处理。 |
-
 | unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否    | 用于配置CanvasRenderingContext2D对象的单位模式，配置后无法更改。DEFAULT（默认vp单位，适合大多数场景）、PX（px像素单位，适合需要精确像素控制的场景）。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
+
 **示例：**
 
 以下示例展示了配置CanvasRenderingContext2D对象的单位模式，默认单位模式为LengthMetricsUnit.DEFAULT，对应默认单位vp，配置后无法动态更改。详细说明见[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)。

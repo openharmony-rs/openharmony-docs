@@ -820,7 +820,7 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。UIExtensionAbility停止成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。UIExtensionAbility销毁成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -915,7 +915,7 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback&lt;voi
 | 参数名    | 类型                                                    | 必填 | 说明                                                   |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------ |
 | parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | 是   | 返回给UIExtensionAbility拉起方的信息。                 |
-| callback  | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。UIExtensionAbility停止成功时，err为undefined，否则为错误对象。 |
+| callback  | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。UIExtensionAbility销毁成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 

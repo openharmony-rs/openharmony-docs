@@ -469,7 +469,7 @@ db1.connect();  // 编译错误
 
 ### 静态方法的特性（无this绑定、与类生命周期关联）
 
-静态方法具有两个主要特性：无法访问实例this绑定，以及直接与类（而非实例）的生命周期关联。
+静态方法具有两个主要特性：无法访问实例this绑定，以及直接与类（而非实例）的生命周期关联。静态初始化块（`static { }`）从API version 12开始支持。
 
 <!-- @[static_properties_and_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
 
@@ -1072,7 +1072,7 @@ class Animal {
 }
 
 class Dog extends Animal {
-  // 重写方法（override关键字为可选）
+  // 重写方法（TypeScript中override可选）
   speak(): string {
     return 'Dog barks';
   }

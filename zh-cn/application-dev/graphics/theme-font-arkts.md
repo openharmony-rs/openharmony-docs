@@ -67,10 +67,10 @@
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
      align: 3,
-     wordBreak:text.WordBreak.NORMAL
+     wordBreak: text.WordBreak.NORMAL
    };
    // 创建一个段落生成器
-   let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
 
 5. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
@@ -79,11 +79,11 @@
    
    ``` TypeScript
    // 在段落生成器中设置文本样式
-   paragraphGraphBuilder.pushStyle(myTextStyle);
+   paragraphBuilder.pushStyle(myTextStyle);
    // 在段落生成器中设置文本内容
-   paragraphGraphBuilder.addText("Hello World. \nThis is the theme font.");
+   paragraphBuilder.addText("Hello World. \nThis is the theme font.");
    // 通过段落生成器生成段落
-   let paragraph = paragraphGraphBuilder.build();
+   let paragraph = paragraphBuilder.build();
    ```
 
 6. 创建渲染节点，并保存到数组。（此处示例代码为简化逻辑，采用数组作为容器，实际开发中应结合应用情况选择更恰当的容器来保证节点的添加与删除对应。）

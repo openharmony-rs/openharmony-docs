@@ -561,7 +561,7 @@ struct ButtonExample {
 // xxx.ets
 @Entry
 @Component
-struct SwipeGestureExample {
+struct ButtonRenderControlExample {
   @State count: number = 0;
 
   build() {

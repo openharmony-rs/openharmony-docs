@@ -55,10 +55,11 @@ struct Index {
           }
           taskpool.execute(taskGroup).then(() => {
             console.info(`Return success: ${arr[0]} === ${count}`);
+            this.message = 'success';
           }).catch((e: Error) => {
             console.error('Return error.');
+            this.message = 'failed';
           })
-          this.message = 'success';
         })
     }
     .height('100%')
@@ -84,7 +85,7 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 | 原生API方法 | ArkTS容器集方法 | 是否有行为差异 | 在ArkTS容器中的差异表现 |
 | -------- | -------- | -------- | -------- |
 | length: number | readonly length: number | 是 | 为了防止undefined扩散，不允许设置length。 |
-| new(arrayLength ?: number): any[] | static create(arrayLength: number, initialValue: T): Array | 是 | 为了防止undefined扩散，构造函数中必须提供一个初始值。 |
+| new(arrayLength?: number): any[] | static create(arrayLength: number, initialValue: T): Array | 是 | 为了防止undefined扩散，构造函数中必须提供一个初始值。 |
 | new &lt;T&gt;(arrayLength: number): T[] | constructor() | 是 | 构造时传入的数据必须为Sendable类型，否则将导致编译错误。 |
 | new &lt;T&gt;(...items: T[]): T[] | constructor(first: T, ...left: T[]) | 是 | 为了防止undefined扩散，构造函数中必须提供一个初始值，继承场景下，无法调用该函数进行对象构造。 |
 | from&lt;T&gt;(arrayLike: ArrayLike&lt;T&gt;): T[] | static from&lt;T&gt;(arrayLike: ArrayLike&lt;T&gt;): Array&lt;T&gt; | 否 | / |
@@ -159,7 +160,7 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 | reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Int8Array) =&gt; number, initialValue: number): number | reduce(callbackFn: TypedArrayReduceCallback&lt;number, number, Int8Array&gt;, initialValue: number): number | 否 | / |
 | reduce&lt;U&gt;(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Int8Array) =&gt; U, initialValue: U): U | reduce&lt;U&gt;(callbackFn: TypedArrayReduceCallback&lt;U, number, Int8Array&gt;, initialValue: U): U | 否 | / |
 | reverse(): Int8Array | reverse(): Int8Array | 否 | / |
-| set(array: ArrayLike&lt;number&gt;, offset?: number): void | set(array: ArrayLike&lt;number&gt;, offset?: number): void | 是 | 不允许在遍历、访问过程中进行元素的增、删、改操作否则会抛出异常。 |
+| set(array: ArrayLike&lt;number&gt;, offset?: number): void | set(array: ArrayLike&lt;number&gt;, offset?: number): void | 是 | 不允许在遍历、访问过程中进行元素的增、删、改操作，否则会抛出异常。 |
 | slice(start?: number, end?: number): Int8Array | slice(start?: number, end?: number): Int8Array | 否 | / |
 | some(predicate: (value: number, index: number, array: Int8Array) =&gt; unknown, thisArg?: any): boolean | some(predicate: TypedArrayPredicateFn&lt;number, Int8Array&gt;): boolean | 是 | ArkTS不支持this，因此不支持thisArg参数。 |
 | sort(compareFn?: (a: number, b: number) =&gt; number): this | sort(compareFn?: TypedArrayCompareFn&lt;number&gt;): Int8Array | 是 | 1. 不允许在遍历、访问过程中进行元素的增、删、改操作，否则会抛出异常。<br/>2. 继承场景下，无法获得实际类型的返回值。 |

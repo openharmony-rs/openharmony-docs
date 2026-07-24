@@ -473,7 +473,7 @@ struct CustomDialogUser {
     autoCancel: true,
     onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
       console.info(`reason= ${dismissDialogAction.reason}`);
-      console.info('dialog onWillDismiss')
+      console.info('dialog onWillDismiss');
       if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
         dismissDialogAction.dismiss();
       }

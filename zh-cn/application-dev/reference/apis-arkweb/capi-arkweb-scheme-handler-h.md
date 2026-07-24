@@ -831,7 +831,7 @@ bool OH_ArkWebHttpBodyStream_IsChunked(const ArkWeb_HttpBodyStream* httpBodyStre
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果采用分块传输则返回true;否则返回false。 |
+| bool | 如果采用分块传输则返回true；否则返回false。 |
 
 ### OH_ArkWebHttpBodyStream_IsEof()
 
@@ -1065,7 +1065,7 @@ int32_t OH_ArkWeb_RegisterCustomSchemes(const char* scheme, int32_t option)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果返回0，表示成功；返回17100100，表示未知错误；返回17100101，表示参数无效；返回17100102，表示注册scheme的配置失败，应该在创建ArkWeb之前注册。 |
+| int32_t | 如果返回0，表示成功；返回17100100，表示未知错误，请检查调用时机和参数配置；返回17100101，表示参数无效；返回17100102，表示注册scheme的配置失败，应该在创建ArkWeb之前注册。 |
 
 ### OH_ArkWebServiceWorker_SetSchemeHandler()
 

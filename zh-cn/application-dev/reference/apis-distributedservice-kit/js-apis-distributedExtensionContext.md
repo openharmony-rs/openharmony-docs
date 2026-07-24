@@ -176,7 +176,7 @@ disconnectServiceExtensionAbility(connection: number): Promise\<void\>
 
 | 类型            | 说明                               |
 | --------------- | ---------------------------------- |
-| Promise\<void\> | Promise对象。表示异步断开连接操作。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 

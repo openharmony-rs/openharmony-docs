@@ -2102,7 +2102,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 
 ```ts
 import { rpc } from '@kit.IPCKit';
-import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
+import { Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export class Property {
@@ -2190,7 +2190,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 
 ```ts
 import { rpc } from '@kit.IPCKit';
-import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
+import { Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export class Property {
