@@ -26,7 +26,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)](#oh_lowpoweraudiosink_createbymime) | 创建LowPowerAudioSink。 |
+| [OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)](#oh_lowpoweraudiosink_createbymime) | 创建LowPowerAudioSink实例。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_configure) | 配置LowPowerAudioSink，需要在[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)前完成。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_setparameter) | 为LowPowerAudioSink设置参数，支持[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)后动态设置。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AVFormat* format)](#oh_lowpoweraudiosink_getparameter) | 获取LowPowerAudioSink的相关参数。应在[OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure)配置参数后调用。 |
