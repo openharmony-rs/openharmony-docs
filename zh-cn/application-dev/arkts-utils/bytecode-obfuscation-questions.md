@@ -382,7 +382,7 @@ linkSource
 <!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleChild.ets) -->    
 
 ``` TypeScript
-// Sample.ets
+// SampleChild.ets
 import { Type } from '@kit.ArkUI';
 
 @ObservedV2
@@ -414,7 +414,7 @@ export struct Page {
 
   build() {
     Column() {
-      Text(`Page1 add 1 to prop.p1: ${this.prop.f123.p123}`)
+      Text(`Page1 add 1 to prop.f123.p123: ${this.prop.f123.p123}`)
     }
   }
 }
@@ -465,8 +465,8 @@ export interface MyInfo {
 <!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->   
 
 ``` TypeScript
-// ExportCompositeInterface.ts
-import { MyInfo } from './ExportCompositeInterface';
+// MainPage.ets
+import { MyInfo } from './ExportInterface';
   // ...
   const person: MyInfo = {
     age: 20,
@@ -544,7 +544,7 @@ export function add(a: number, b: number): number {
 <!-- @[import_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
 
 ``` TypeScript
-// main.ts
+// MainPage.ets
 async function loadAndUseAdd() {
     try {
         const mathUtils = await import('./ExportUtils');
@@ -603,7 +603,7 @@ export namespace NS {
 <!-- @[import_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
 
 ``` TypeScript
-// import.ts
+// MainPage.ets
 import { NS } from './ExportNs';
   // ...
   NS.foo();

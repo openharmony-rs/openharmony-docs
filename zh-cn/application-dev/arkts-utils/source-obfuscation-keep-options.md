@@ -134,12 +134,12 @@ lastName
     // ...
     let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留
     
-    class jsonTest {
+    class JsonTest {
       prop1: string = '';
-      prop2: number = 0
+      prop2: number = 0;
     }
     
-    let obj = new jsonTest();
+    let obj = new JsonTest();
     const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留
     ```
 
@@ -313,7 +313,7 @@ file
     <!-- @[optionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->        
     
     ``` TypeScript
-    // main.ts
+    // ArkGuardAbility.ts
     const moduleName = './DynamicImportFile'; // moduleName对应的路径名DynamicImportFile应该被保留
     async function func2() {
       const modules = await import(moduleName);
