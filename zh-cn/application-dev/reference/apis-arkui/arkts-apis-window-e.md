@@ -173,7 +173,7 @@
 
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
-| FOLLOW_APP_IMMERSIVE_SETTING  | 0    | 最大化时，跟随应用app当前设置的全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| FOLLOW_APP_IMMERSIVE_SETTING  | 0    | 最大化时，跟随应用当前设置的全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
 | EXIT_IMMERSIVE | 1    | 最大化时，如果当前窗口设置了全屏模式会退出全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。             |
 | ENTER_IMMERSIVE    | 2    | 最大化时，进入全屏模式，鼠标Hover在热区上显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
 | ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER<sup>14+</sup>    | 3    | 最大化时，进入全屏模式，鼠标Hover在热区上不显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。   |

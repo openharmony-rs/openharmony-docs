@@ -541,7 +541,7 @@ module.json5配置示例如下：
       console.info(`Succeeded in enabling the listener for window status changes. Data: ${JSON.stringify(WindowStatusType)}`);
     });
   } catch (exception) {
-    console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+    console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
   }
   ```
 
