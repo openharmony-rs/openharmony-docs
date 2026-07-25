@@ -412,6 +412,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
            auto changeRequest = OH_MediaAssetChangeRequest_Create(asset);
            if (changeRequest == nullptr) {
                OH_LOG_ERROR(LOG_APP, "==NDKDemo== changeRequest is null!");
+               OH_MediaAsset_Release(asset);
                return;
            }
            MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_FILE_VIDEO;
