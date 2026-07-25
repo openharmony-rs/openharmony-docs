@@ -284,7 +284,7 @@ PixelMap的初始化选项。
 | 名称          | 类型                             | 只读 | 可选 | 说明         |
 | ------------- | -------------------------------- | ---- | ---- | ------------ |
 | componentType | [ComponentType](arkts-apis-image-e.md#componenttype9) | 是   | 否   | 组件类型。   |
-| rowStride     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 行距。单位：字节（Byte）。读取相机预览流数据时，需要按stride进行读取。       |
+| rowStride     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 行距。单位：字节（Byte）。读取相机预览流数据时，需要按stride进行读取，使用详情请参考[使用ImageReceiver完成图片接收](../../media/image/image-receiver.md)。       |
 | pixelStride   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 像素间距。单位：字节（Byte）。   |
 | byteBuffer    | ArrayBuffer                      | 是   | 否   | 组件缓冲区。 |
 
