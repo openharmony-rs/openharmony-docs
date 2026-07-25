@@ -415,10 +415,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
                return;
            }
            MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_FILE_VIDEO;
-           uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
+           int32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
            OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %d", result);
    
-           uint32_t resultChange = OH_MediaAccessHelper_ApplyChanges(changeRequest);
+           int32_t resultChange = OH_MediaAccessHelper_ApplyChanges(changeRequest);
            OH_LOG_INFO(LOG_APP, "result of OH_MediaAccessHelper_ApplyChanges: %d", resultChange);
    
            OH_MediaAsset_Release(asset);

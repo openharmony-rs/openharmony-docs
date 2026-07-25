@@ -281,9 +281,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static constexpr int32_t AUDIO_BITRATE = 112000;
    static constexpr int32_t AUDIO_CHANNELS = 2;
    static constexpr int32_t AUDIO_SAMPLE_RATE = 48000;
-   static constexpr int32_t VIDEO_BITRATE = 3000000;
-   static constexpr int32_t VIDEO_FRAME_WIDTH = 1920;
-   static constexpr int32_t VIDEO_FRAME_HEIGHT = 1080;
    // ...
    static constexpr int32_t CALLBACK_ARG_COUNT = 2;
    static constexpr int32_t FILE_PERMISSIONS = 0644;
