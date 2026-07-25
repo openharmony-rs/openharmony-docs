@@ -119,9 +119,9 @@
    // 取消长时任务。
    stopContinuousTask(context: Context) {
      backgroundTaskManager.stopBackgroundRunning(context).then(() => {
-       console.info(`Succeeded in operationing stopBackgroundRunning.`);
+       console.info(`Succeeded in operating stopBackgroundRunning.`);
      }).catch((err: BusinessError) => {
-       console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+       console.error(`Failed to operate stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
      });
    }
    ```
