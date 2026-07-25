@@ -67,3 +67,14 @@
    用户停止录音、录音异常中断或业务结束时，应用需要调用AudioCapturer的[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)接口停止录音、释放音频采集资源，并同步取消录音类型长时任务。
 
    <!-- @[background_task_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) -->
+   
+   ``` TypeScript
+   // 取消长时任务。
+   stopContinuousTask(context: Context) {
+     backgroundTaskManager.stopBackgroundRunning(context).then(() => {
+       console.info(`Succeeded in operationing stopBackgroundRunning.`);
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+     });
+   }
+   ```
