@@ -46,7 +46,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[create_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[create_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    this.avRecorder = await media.createAVRecorder();
@@ -68,7 +68,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    this.avRecorder?.on('stateChange', (state: media.AVRecorderState, reason: media.StateChangeReason) => {
@@ -106,12 +106,12 @@
    > - prepare接口的入参avConfig中仅设置音频相关的配置参数，如示例代码所示。
    >   如果只需要录制音频，请不要设置视频相关配置参数；如果需要录制视频，可以参考[视频录制开发指导](video-recording.md)进行开发。直接设置视频相关参数会导致后续步骤报错。
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，具体录制参数配置可参考[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
-   > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
-   > - 示例中配置的audioCodec音频编码格式、aacProfile音频编码扩展格式、fileFormat封装格式请参考[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
+   > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx（fd number）。需要基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
+   > - 示例中配置的audioCodec音频编码格式、fileFormat封装格式请参考[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
 
    ArkTS-Dyn示例：
 
-   <!-- @[prepare_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[prepare_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    public async prepareAudioRecorder(context: common.Context): Promise<void> {
@@ -127,7 +127,7 @@
          audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
          audioSampleRate: this.audioSampleRate, // 音频采样率。
          fileFormat: media.ContainerFormatType.CFT_MPEG_4A // 封装格式。
-       },
+       } as media.AVRecorderProfile,
        url: 'fd://' + file.fd.toString()
      };
    
@@ -138,6 +138,7 @@
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+       await this.closeFd();
      }
    }
    ```
@@ -179,7 +180,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[start_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[start_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.start();
@@ -197,7 +198,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[pause_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[pause_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.pause();
@@ -215,7 +216,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[resume_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[resume_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.resume();
@@ -233,10 +234,11 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[stop_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[stop_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.stop();
+   await this.closeFd();
    ```
 
    ArkTS-Sta示例：
@@ -251,7 +253,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.reset();
@@ -269,7 +271,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.release();
@@ -291,13 +293,13 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[full_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+<!-- @[full_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
 
 ``` TypeScript
-import { BusinessError } from '@ohos.base';
-import media from '@ohos.multimedia.media';
-import fileIo from '@ohos.file.fs';
-import common from '@ohos.app.ability.common';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
 import { Resolution } from './CommonTypes';
 
 export default class AVRecorderService {
@@ -347,7 +349,7 @@ export default class AVRecorderService {
         audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
         audioSampleRate: this.audioSampleRate, // 音频采样率。
         fileFormat: media.ContainerFormatType.CFT_MPEG_4A // 封装格式。
-      },
+      } as media.AVRecorderProfile,
       url: 'fd://' + file.fd.toString()
     };
 
@@ -358,6 +360,7 @@ export default class AVRecorderService {
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+      await this.closeFd();
     }
   }
 
@@ -400,10 +403,12 @@ export default class AVRecorderService {
     try {
       if (this.avRecorder?.state === 'started' || this.avRecorder?.state === 'paused') {
         await this.avRecorder?.stop();
+        await this.closeFd();
       }
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to stop avRecorder, error code: ${err.code}, message: ${err.message}`);
+      await this.closeFd();
     }
   }
 
