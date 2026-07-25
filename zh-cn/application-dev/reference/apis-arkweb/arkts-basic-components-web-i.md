@@ -688,7 +688,7 @@ Web同层渲染的配置。<br>
 | height            | number                              | 否    | 是 | 同层标签的高，单位为px。          |
 | url               | string                              | 否    | 是 | 同层标签的url信息。            |
 | tag<sup>12+</sup> | string              | 否    | 是 | 标签名，统一为大写字符。              |
-| params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的params标签键值对列表，请使用Object提供的方法操作该对象，即`embed.info?.param?.["name"]`。 |
+| params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的params标签键值对列表，请使用Object提供的方法操作该对象，即`embed.info?.params?.["name"]`。 |
 | position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签相对于Web组件左上角为坐标原点的位置信息，此处区别于标准Position，单位为px。 |
 
 ## NativeEmbedParamItem<sup>21+</sup>
@@ -907,7 +907,7 @@ Web组件返回的请求/响应头对象。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| enable | boolean | 否 | 否 | 是否启用白屏策略功能。true表示启用白屏策略功能，false表示不启用白屏策略功能。   |
+| enable | boolean | 否 | 否 | 是否启用白屏策略功能。true表示启用，false表示不启用。   |
 | detectionTiming | number[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br>默认值：[1.0,3.0,5.0]。 |
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
 | contentfulNodesCountThreshold | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。<br>注：检测策略最大节点依赖于所选择的检测策略。|
