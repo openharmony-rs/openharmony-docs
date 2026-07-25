@@ -1511,7 +1511,7 @@ export default class EntryAbility extends UIAbility {
 
 on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;): void
 
-开启WindowStage生命周期变化的监听。API version 20提供相似事件windowStageLifecycleEvent，二者存在细微差异，差异详情请查阅[on('windowStageLifecycleEvent')](#onwindowstagelifecycleevent20)接口说明。
+开启WindowStage生命周期变化的监听。对于状态间的顺序有要求的情况下，推荐使用[on('windowStageLifecycleEvent')](#onwindowstagelifecycleevent20)接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1569,7 +1569,7 @@ export default class EntryAbility extends UIAbility {
 
 onWindowStageEvent(callback: Callback&lt;WindowStageEventType&gt;): void
 
-开启WindowStage生命周期变化的监听。与onWindowStageLifecycleEvent存在细微差异，差异详情请查阅[onWindowStageLifecycleEvent](#onwindowstagelifecycleevent23)接口说明。
+开启WindowStage生命周期变化的监听。对于状态间的顺序有要求的情况下，推荐使用[onWindowStageLifecycleEvent](#onwindowstagelifecycleevent23)接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
