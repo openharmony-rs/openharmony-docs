@@ -48,7 +48,7 @@ showWindow(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当窗口显示成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -73,7 +73,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -86,7 +86,7 @@ export default class EntryAbility extends UIAbility {
           }
           subWindow.setUIContent('pages/Index', (err) => {
             if (err.code) {
-              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              console.error(`Failed to load the subWindow content. Cause code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in loading the subWindow content.');
@@ -123,7 +123,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
       if (err?.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -132,7 +132,7 @@ export default class EntryAbility extends UIAbility {
         windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window | undefined) => {
           subWindow!.setUIContent('pages/Index', (err: BusinessError<void> | null): void => {
             if (err?.code) {
-              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              console.error(`Failed to load the subWindow content. Cause code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in loading the subWindow content.');
@@ -205,7 +205,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -218,7 +218,7 @@ export default class EntryAbility extends UIAbility {
           }
           subWindow.setUIContent('pages/Index', (err) => {
             if (err.code) {
-              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              console.error(`Failed to load the subWindow content. Cause code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in loading the subWindow content.');
@@ -253,7 +253,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
       if (err?.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -262,7 +262,7 @@ export default class EntryAbility extends UIAbility {
         windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window | undefined) => {
           subWindow!.setUIContent('pages/Index', (err: BusinessError<void> | null): void => {
             if (err?.code) {
-              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              console.error(`Failed to load the subWindow content. Cause code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in loading the subWindow content.');
@@ -342,7 +342,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -355,7 +355,7 @@ export default class EntryAbility extends UIAbility {
           }
           data.setUIContent('pages/Index', (err) => {
             if (err.code) {
-              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              console.error(`Failed to load the subWindow content. Cause code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in loading the subWindow content.');
@@ -399,7 +399,7 @@ destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当窗口销毁成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -4202,7 +4202,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | -------------------- |
 | path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。          |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当页面内容加载成功，err为undefined，否则为错误对象。          |
 
 **错误码：**
 
@@ -4499,7 +4499,7 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | name     | string                                                  | 是   | 命名路由页面的名称。                                             |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
-| callback | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。                                                   |
+| callback | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。当命名路由页面加载成功，err为undefined，否则为错误对象。                                                   |
 
 **错误码：**
 
@@ -4595,7 +4595,7 @@ loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明             |
 | -------- | ------------------------- | ---- | ---------------- |
 | name     | string                    | 是   | 命名路由页面的名称。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。       |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当命名路由页面加载成功，err为undefined，否则为错误对象。       |
 
 **错误码：**
 
@@ -9154,7 +9154,7 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'subWindowClose'，即子窗口关闭事件。 |
-| callback | Callback&lt;void&gt; | 是   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。   |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。   |
 
 **错误码：**
 
@@ -9205,7 +9205,7 @@ onSubWindowClose(callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| callback | Callback&lt;void&gt; | 是   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。   |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。   |
 
 **错误码：**
 
@@ -9252,7 +9252,7 @@ off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                         | 是   | 监听事件，固定为'subWindowClose'，即子窗口关闭事件。     |
-| callback | Callback&lt;void&gt; | 否   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有子窗口关闭的监听。 |
+| callback | Callback&lt;void&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭子窗口所有关闭的监听。 |
 
 **错误码：**
 
@@ -9300,7 +9300,7 @@ offSubWindowClose(callback?: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;void&gt; | 否   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有子窗口关闭的监听。 |
+| callback | Callback&lt;void&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭子窗口所有关闭的监听。 |
 
 **错误码：**
 
@@ -9357,7 +9357,7 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'windowWillClose'，即窗口关闭事件。 |
-| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是   | 回调函数。点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
 
 **错误码：**
 
@@ -9421,7 +9421,7 @@ onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是   | 回调函数。点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
 
 **错误码：**
 
@@ -9492,7 +9492,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'windowWillClose'，即窗口关闭事件。 |
-| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭主窗口或子窗口所有关闭事件的监听。|
 
 **错误码：**
 
@@ -9557,7 +9557,7 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭主窗口或子窗口所有关闭事件的监听。|
 
 **错误码：**
 
@@ -12439,7 +12439,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当窗口最小化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -13251,7 +13251,7 @@ restore(): Promise&lt;void&gt;
 | 1300003      | This window manager service works abnormally.                |
 | 1300004      | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                 |
 
-**示例**
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -13872,8 +13872,8 @@ ArkTS-Sta: setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: int, maskHe
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------- | :--- | :----------------------------- |
 | windowMask   | Uint8Array  | 是   | 异形窗口的掩码，为按像素顺序排列的Alpha数组，该数组中每个元素代表对应像素的透明度，取值范围[0, 255]，0表示完全透明，255表示完全不透明，数组长度等于maskWidth乘以maskHeight。 |
-| maskWidth    | ArkTS-Dyn: number </br>ArkTS-Sta: int    | 是   | 表示异形窗口掩码的宽度，必须等于窗口宽度。 |
-| maskHeight   | ArkTS-Dyn: number </br>ArkTS-Sta: int    | 是   | 表示异形窗口掩码的高度，必须等于窗口高度。 |
+| maskWidth    | ArkTS-Dyn: number </br>ArkTS-Sta: int    | 是   | 表示异形窗口掩码的宽度，必须等于窗口宽度，单位为px。 |
+| maskHeight   | ArkTS-Dyn: number </br>ArkTS-Sta: int    | 是   | 表示异形窗口掩码的高度，必须等于窗口高度，单位为px。 |
 
 **返回值：**
 
@@ -16052,7 +16052,7 @@ setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| enabled    | boolean | 是   | 是否响应手势返回事件。<br>true表示响应手势返回事件；false表示不响应手势返回事件。</br> |
+| enabled    | boolean | 是   | 是否响应手势返回事件。<br>true表示响应手势返回事件；false表示不响应手势返回事件。<br> |
 
 **返回值：**
 
@@ -16870,11 +16870,11 @@ setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置当前窗口是否支持事件分离状态，使用Promise异步回调。默认场景下为true，支持事件分离状态。
 
-当enable为true，支持事件分离状态下：
+当enabled为true，支持事件分离状态下：
 
 - 所有手指点击产生的事件均会发送给其手指命中的窗口。
 
-当enable为false，不支持事件分离状态下：
+当enabled为false，不支持事件分离状态下：
 
 - 当第一根手指点击持续命中该窗口未抬起时，后续其他手指无论是否点击命中该窗口，其产生的事件均会分发给该窗口。
 
@@ -16969,7 +16969,7 @@ isSeparationTouchEnabled():boolean
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| boolean          |  当前窗口是否支持事件分离。</br>true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
+| boolean          |  当前窗口是否支持事件分离。<br>true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
 
 **错误码：**
 
@@ -17002,7 +17002,7 @@ setReceiveDragEventEnabled(enabled: boolean): Promise&lt;void&gt;
 
 默认场景下为true，能够接收拖拽事件。
 
-当enable为false，当前窗口不能接收拖拽事件。
+当enabled为false，当前窗口不能接收拖拽事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -17092,7 +17092,7 @@ isReceiveDragEventEnabled():boolean
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| boolean          |  当前窗口是否能接收拖拽事件的状态。</br>true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
+| boolean          |  当前窗口是否能接收拖拽事件的状态。<br>true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
 
 **错误码：**
 
@@ -19841,7 +19841,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                 |
 | -------- | ------------------------- | ---- | -------------------- |
 | path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当页面内容加载成功，err为undefined，否则为错误对象。           |
 
 **示例：**
 
