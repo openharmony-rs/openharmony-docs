@@ -48,7 +48,7 @@ showWindow(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收窗口显示操作的结果。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当窗口显示成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -399,7 +399,7 @@ destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收窗口销毁操作的结果。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当窗口销毁成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -4202,7 +4202,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | -------------------- |
 | path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收页面内容加载操作的结果。          |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当页面内容加载成功，err为undefined，否则为错误对象。          |
 
 **错误码：**
 
@@ -4499,7 +4499,7 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | name     | string                                                  | 是   | 命名路由页面的名称。                                             |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
-| callback | AsyncCallback&lt;void&gt;                               | 是   | 回调函数，用于接收命名路由页面加载操作的结果。                                                   |
+| callback | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。当命名路由页面加载成功，err为undefined，否则为错误对象。                                                   |
 
 **错误码：**
 
@@ -4595,7 +4595,7 @@ loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明             |
 | -------- | ------------------------- | ---- | ---------------- |
 | name     | string                    | 是   | 命名路由页面的名称。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，用于接收命名路由页面加载操作的结果。       |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当命名路由页面加载成功，err为undefined，否则为错误对象。       |
 
 **错误码：**
 
@@ -12439,7 +12439,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，用于接收窗口最小化操作的结果 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当窗口最小化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -19841,7 +19841,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                 |
 | -------- | ------------------------- | ---- | -------------------- |
 | path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，用于接收页面内容加载操作的结果。           |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当页面内容加载成功，err为undefined，否则为错误对象。           |
 
 **示例：**
 
