@@ -110,7 +110,8 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -211,7 +212,8 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -285,7 +287,8 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
