@@ -1621,4 +1621,4 @@ Example effect:
 
 ![sync](figures/migration-sync.gif)
 
-migration-sync.gif
+<!--no_check-->
