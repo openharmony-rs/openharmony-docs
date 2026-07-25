@@ -111,21 +111,18 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    <!-- @[set_onstatechange_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
    
    ``` C++
-   // 设置状态回调。
    OH_AVRecorder_SetStateCallback(g_recorder, OnStateChange, nullptr);
    ```
 
    <!-- @[set_onerror_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
    
    ``` C++
-   // 设置错误回调。
    OH_AVRecorder_SetErrorCallback(g_recorder, OnError, nullptr);
    ```
 
    <!-- @[set_onuri_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
    
    ``` C++
-   // 设置生成媒体文件回调（fileGenerationMode选择AUTO_CREATE时设置）。
    OH_AVRecorder_SetUriCallback(g_recorder, OnUri, nullptr);
    ```
 
@@ -140,14 +137,12 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        (void)recorder;
        (void)userData;
    
-       // 将reason转换为字符串表示。
        const char *reasonStr =
            (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_USER) ? "USER" :
            (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_BACKGROUND) ? "BACKGROUND" : "UNKNOWN";
    
        if (state == OH_AVRecorder_State::AVRECORDER_IDLE) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange IDLE, reason: %{public}s", reasonStr);
-           // 处理状态变更。
        }
    }
    ```
@@ -178,13 +173,14 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
            auto changeRequest = OH_MediaAssetChangeRequest_Create(asset);
            if (changeRequest == nullptr) {
                OH_LOG_ERROR(LOG_APP, "==NDKDemo== changeRequest is null!");
+               OH_MediaAsset_Release(asset);
                return;
            }
            MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_FILE_VIDEO;
-           uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
+           int32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
            OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %d", result);
    
-           uint32_t resultChange = OH_MediaAccessHelper_ApplyChanges(changeRequest);
+           int32_t resultChange = OH_MediaAccessHelper_ApplyChanges(changeRequest);
            OH_LOG_INFO(LOG_APP, "result of OH_MediaAccessHelper_ApplyChanges: %d", resultChange);
    
            OH_MediaAsset_Release(asset);
@@ -237,7 +233,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
        config.metadata.videoOrientation = strdup("90");
    
-       // 获取沙箱路径
        char fileDirPath[1000] = {0};
        int32_t bufferSize = 1000;
        int32_t writeLength = 0;
@@ -290,13 +285,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
            OH_LOG_ERROR(LOG_APP, "Failed to get surface ID from native window, error: %{public}d", nErr);
            return "";
        }
-       char surfaceIdStr[32] = {0};
-       int32_t snprintfRet = snprintf(surfaceIdStr, sizeof(surfaceIdStr), "%lu", surfaceId);
-       if (snprintfRet < 0) {
-           OH_LOG_ERROR(LOG_APP, "snprintf failed");
-           return "";
-       }
-       OH_LOG_INFO(LOG_APP, "Input surface ID: %{public}s", surfaceIdStr);
+       std::string surfaceIdStr = std::to_string(surfaceId);
+       OH_LOG_INFO(LOG_APP, "Input surface ID: %{public}s", surfaceIdStr.c_str());
        return surfaceIdStr;
    }
    ```
@@ -361,6 +351,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    #include <cstdio>
    #include <cstring>
    #include <string>
+   #include <cinttypes>
    #include <fcntl.h>
    #include <unistd.h>
    
@@ -570,13 +561,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
            OH_LOG_ERROR(LOG_APP, "Failed to get surface ID from native window, error: %{public}d", nErr);
            return "";
        }
-       char surfaceIdStr[32] = {0};
-       int32_t snprintfRet = snprintf(surfaceIdStr, sizeof(surfaceIdStr), "%lu", surfaceId);
-       if (snprintfRet < 0) {
-           OH_LOG_ERROR(LOG_APP, "snprintf failed");
-           return "";
-       }
-       OH_LOG_INFO(LOG_APP, "Input surface ID: %{public}s", surfaceIdStr);
+       std::string surfaceIdStr = std::to_string(surfaceId);
+       OH_LOG_INFO(LOG_APP, "Input surface ID: %{public}s", surfaceIdStr.c_str());
        return surfaceIdStr;
    }
    

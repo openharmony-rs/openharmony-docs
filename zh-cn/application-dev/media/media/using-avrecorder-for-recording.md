@@ -109,6 +109,7 @@
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+       await this.closeFd();
      }
    }
    ```
@@ -143,6 +144,7 @@
    
    ``` TypeScript
    await this.avRecorder?.stop();
+   await this.closeFd();
    ```
 
 8. 重置资源，调用[reset](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#reset9-1)接口，重新进入idle状态，允许重新配置录制参数。
@@ -234,6 +236,7 @@ export default class AVRecorderService {
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+      await this.closeFd();
     }
   }
 
@@ -276,10 +279,12 @@ export default class AVRecorderService {
     try {
       if (this.avRecorder?.state === 'started' || this.avRecorder?.state === 'paused') {
         await this.avRecorder?.stop();
+        await this.closeFd();
       }
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to stop avRecorder, error code: ${err.code}, message: ${err.message}`);
+      await this.closeFd();
     }
   }
 

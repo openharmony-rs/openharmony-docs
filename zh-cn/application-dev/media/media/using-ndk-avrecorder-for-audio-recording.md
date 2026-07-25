@@ -104,14 +104,12 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    <!-- @[set_onstatechange_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
    
    ``` C++
-   // 设置状态回调。
    OH_AVRecorder_SetStateCallback(g_recorder, OnStateChange, nullptr);
    ```
 
    <!-- @[set_onerror_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
    
    ``` C++
-   // 设置错误回调。
    OH_AVRecorder_SetErrorCallback(g_recorder, OnError, nullptr);
    ```
 
@@ -126,14 +124,12 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        (void)recorder;
        (void)userData;
    
-       // 将reason转换为字符串表示。
        const char *reasonStr =
            (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_USER) ? "USER" :
            (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_BACKGROUND) ? "BACKGROUND" : "UNKNOWN";
    
        if (state == OH_AVRecorder_State::AVRECORDER_IDLE) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange IDLE, reason: %{public}s", reasonStr);
-           // 处理状态变更。
        }
    }
    ```
@@ -179,10 +175,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
        config.profile.audioSampleRate = AUDIO_SAMPLE_RATE; // 48000
        config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
-       config.videoSourceType = AVRECORDER_SURFACE_YUV;
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
    
-       // 获取沙箱路径
        char fileDirPath[1000] = {0};
        int32_t bufferSize = 1000;
        int32_t writeLength = 0;
@@ -269,6 +263,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    #include <cstdio>
    #include <cstring>
    #include <string>
+   #include <cinttypes>
    #include <fcntl.h>
    #include <unistd.h>
    
@@ -389,10 +384,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
        config.profile.audioSampleRate = AUDIO_SAMPLE_RATE; // 48000
        config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
-       config.videoSourceType = AVRECORDER_SURFACE_YUV;
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
    
-       // 获取沙箱路径
        char fileDirPath[1000] = {0};
        int32_t bufferSize = 1000;
        int32_t writeLength = 0;

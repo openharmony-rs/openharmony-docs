@@ -251,10 +251,10 @@ export default class AVRecorderService {
         videoFrameHeight: this.videoResolution.frameHeight, // 视频分辨率的高。
         videoFrameRate: 30, // 视频帧率。
         fileFormat: media.ContainerFormatType.CFT_MPEG_4 // 封装格式。
-      },
+      } as media.AVRecorderProfile,
       metadata: {
         videoOrientation: '90' // 视频旋转角度，默认为0不旋转，支持的值为0、90、180、270。
-      },
+      } as media.AVMetadata,
       url: 'fd://' + file.fd.toString()
     };
 
