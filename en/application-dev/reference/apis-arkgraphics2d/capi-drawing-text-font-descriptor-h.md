@@ -192,7 +192,7 @@ Obtains all system font descriptors that match a font descriptor. In the [OH_Dra
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)* desc | Pointer to the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) object.<br>It is recommended to use [OH_Drawing_CreateFontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md#oh_drawing_createfontdescriptor) to obtain a valid [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) instance.<br>If you create a [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) instance yourself, ensure that the fields not used for matching are set to default values. |
+| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)* desc | Pointer to the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) object.<br>It is recommended to use [OH_Drawing_CreateFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_createfontdescriptor) to obtain a valid [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) instance.<br>If you create a [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) instance yourself, ensure that the fields not used for matching are set to default values. |
 | size_t* num | Output parameter. Used to receive the number of members in the returned array. |
 
 **Returns**
