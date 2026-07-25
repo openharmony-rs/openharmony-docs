@@ -49,7 +49,17 @@ AutoAdComponent({
 | displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | 是 | - | 广告展示参数。 | 
 | interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | 是 | - | 广告状态变化回调。 | 
 
-**示例：**
+### build
+
+build(): void
+
+用于创建AutoAdComponent对象的构造函数。
+
+**原子化服务API：**  从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.Advertising.Ads
+
+## 示例
 
 ```typescript
 import { advertising, AutoAdComponent } from '@kit.AdsKit';
@@ -114,18 +124,3 @@ struct Index {
   }
 }
 ```
-
-
-### build
-
-
-build(): void
-
-
-用于创建AutoAdComponent对象的构造函数。
-
-
-**原子化服务API：**  从API version 12开始，该接口支持在原子化服务中使用。
-
-
-**系统能力：**  SystemCapability.Advertising.Ads
