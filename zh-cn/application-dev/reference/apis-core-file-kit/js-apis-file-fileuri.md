@@ -6,6 +6,8 @@
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
+fileuri继承自[uri](../apis-arkts/js-apis-uri.md)。
+
 该模块提供通过路径获取文件统一资源标识符（Uniform Resource Identifier，URI）的能力，支持URI与应用沙箱路径之间的转换。后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行open、read、write等操作，实现文件分享。
 
 > **说明：**
