@@ -10,28 +10,6 @@
 
 AVPlayer是音视频播放组件，提供完整的播放控制和高级功能（多轨道、字幕、DRM等），适用于视频播放器、音频播放器、直播应用等场景，为开发者提供高性能、低延迟的媒体播放能力，降低开发复杂度。
 
-**播放器生命周期：**
-
-```mermaid
-stateDiagram-v2
-    [*] --> Idle: 创建播放器
-    Idle --> Initialized: 设置播放源
-    Initialized --> Prepared: 准备播放
-    Prepared --> Playing: 开始播放
-    Playing --> Paused: 暂停
-    Paused --> Playing: 继续
-    Playing --> Completed: 播放完成
-    Completed --> Playing: 重新播放
-    Playing --> Stopped: 停止
-    Paused --> Stopped: 停止
-    Stopped --> Idle: 重置
-    Prepared --> Idle: 重置
-    Playing --> Idle: 重置
-    Paused --> Idle: 重置
-    Completed --> Idle: 重置
-    Idle --> [*]: 释放资源
-```
-
 **引用文件：** <multimedia/player_framework/avplayer.h>
 
 **库：** libavplayer.so
