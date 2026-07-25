@@ -405,6 +405,7 @@ ArkTS-Dyn示例：
   import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -524,6 +525,7 @@ ArkTS-Dyn示例：
   ```ts
   import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>,
