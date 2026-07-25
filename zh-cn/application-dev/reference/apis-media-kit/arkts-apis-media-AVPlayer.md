@@ -160,19 +160,19 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
-| 201      | Permission denied. 网络播放需申请权限[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，申请方式参考[声明权限](../../security/AccessToken/declare-permissions.md)。 |
-| 401      | The parameter check failed. 可能原因：1.参数类型不正确。2.参数取值范围错误。3.必填参数未设置。请检查参数类型、取值范围及必填项。 |
-| 801      | Capability not supported. 当前设备不支持该能力。请检查系统能力SystemCapability是否支持，或确认设备型号是否具备该功能。 |
-| 5400101  | No memory. 可能原因：系统内存不足或AVPlayer实例过多。处理建议：1.及时调用release()释放不再使用的AVPlayer实例。2.控制同时持有的AVPlayer实例数量。3.关闭其他占用内存的应用。 |
-| 5400102  | Operation not allowed. 可能原因：当前播放器状态不支持该操作，或调用顺序不正确。处理建议：请检查接口的调用状态要求，通过[stateChange](#onstatechange9)事件确认当前状态后再调用。 |
-| 5400103  | I/O error. 可能原因：网络连接异常、文件读取失败或资源不存在。处理建议：1.检查网络连接状态。2.确认媒体文件路径或URL是否正确。3.检查文件是否存在且可读。<br>适用版本：9-13。 |
+| 201      | Permission denied. |
+| 401      | The parameter check failed. |
+| 801      | Capability not supported. |
+| 5400101  | No memory. |
+| 5400102  | Operation not allowed. |
+| 5400103  | I/O error.  <br>适用版本：9-13    |
 | 5400104  | Time out.              |
-| 5400105  | Service died. 播放服务异常终止。处理建议：请调用[release()](#release9)释放资源后，重新创建AVPlayer实例并重试播放操作。 |
-| 5400106  | Unsupported format. 媒体文件格式不支持。请检查文件格式是否在支持范围内，支持的格式请参见[url](#属性)属性说明。 |
+| 5400105  | Service died.     |
+| 5400106  | Unsupported format.     |
 | 5410002  | Seek continuous unsupported.  <br>适用版本：18+     |
-| 5411001  | IO can not find host. 无法找到主机。可能原因：域名解析失败或URL地址错误。处理建议：1.检查URL域名是否正确。2.检查网络DNS配置。3.确认主机是否可访问。<br>适用版本：14+。 |
-| 5411002  | IO connection timeout. 连接超时。可能原因：网络不稳定或服务器响应慢。处理建议：1.检查网络连接状态。2.重试播放操作。3.检查服务器状态。<br>适用版本：14+。 |
-| 5411003  | IO network abnormal. 网络异常。可能原因：网络连接中断或信号不稳定。处理建议：1.检查网络连接状态。2.切换网络后重试。3.稍后重试播放。<br>适用版本：14+。 |
+| 5411001  | IO can not find host.  <br>适用版本：14+    |
+| 5411002  | IO connection timeout.  <br>适用版本：14+  | 
+| 5411003  | IO network abnormal.  <br>适用版本：14+     |
 | 5411004  | IO network unavailable.  <br>适用版本：14+  |
 | 5411005  | IO no permission.  <br>适用版本：14+        |
 | 5411006  | IO request denied.  <br>适用版本：14+  |
