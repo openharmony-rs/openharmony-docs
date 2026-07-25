@@ -92,17 +92,17 @@
              let list: string[] = ['audioPlayback'];
              backgroundTaskManager.startBackgroundRunning(context, list, wantAgentObj)
                .then(() => {
-                 console.info('Operation startBackgroundRunning succeeded');
+                 console.info('Operate startBackgroundRunning succeeded');
                })
                .catch((error: BusinessError) => {
-                 console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
+                 console.error(`Failed to operate startBackgroundRunning. code is ${error.code} message is ${error.message}`);
                });
            } catch (error) {
-             console.error(`Failed to Operation startBackgroundRunning. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+             console.error(`Failed to operate startBackgroundRunning. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
            };
          });
        } catch (error) {
-         console.error(`Failed to Operation getWantAgent. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         console.error(`Failed to operate getWantAgent. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
    ```
