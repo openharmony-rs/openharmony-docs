@@ -38,7 +38,7 @@
 | [AVPlayerState](#avplayerstate) | AVPlayerState | 播放状态。 |
 | [AVPlayerSeekMode](#avplayerseekmode) | AVPlayerSeekMode | 跳转模式。 |
 | [AVPlaybackSpeed](#avplaybackspeed) | AVPlaybackSpeed | 播放速度。 |
-| [AVPlayerOnInfoType](#avplayeroninfotype) | AVPlayerOnInfoType | OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo（已废弃）。<br>从API version 12开始，推荐使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型可获取不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>针对API version 11的开发者，需要使用旧接口。已废弃接口OH_AVPlayerOnInfo的使用方法，参见[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)。 |
+| [AVPlayerOnInfoType](#avplayeroninfotype) | AVPlayerOnInfoType | OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo（已废弃）。<br>从API版本12开始，推荐使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型可获取不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>针对API版本11的开发者，需要使用旧接口。已废弃接口OH_AVPlayerOnInfo的使用方法，参见[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)。 |
 | [AVPlayerBufferingType](#avplayerbufferingtype) | AVPlayerBufferingType | 播放缓冲消息类型。 |
 | [AVPlayerTrackSwitchMode](#avplayertrackswitchmode) | AVPlayerTrackSwitchMode | 枚举轨道切换模式。 |
 | [OH_VideoOutputResult](#oh_videooutputresult) | OH_VideoOutputResult | 视频输出结果。 |
@@ -47,9 +47,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)](#oh_avplayeroninfo) | OH_AVPlayerOnInfo | 从API version 11开始支持，从API version 12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。 |
+| [typedef void (\*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)](#oh_avplayeroninfo) | OH_AVPlayerOnInfo | 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。 |
 | [typedef void (\*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat* infoBody, void *userData)](#oh_avplayeroninfocallback) | OH_AVPlayerOnInfoCallback | 收到播放器消息时被调用。如果应用成功设置该回调，则不会回调OH_AVPlayerOnInfo函数。 |
-| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | 从API version 11开始支持，从API version 12开始废弃，建议使用[OH_AVPlayerOnErrorCallback](#oh_avplayeronerrorcallback)替代。 |
+| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnErrorCallback](#oh_avplayeronerrorcallback)替代。 |
 | [typedef void (\*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avplayeronerrorcallback) | OH_AVPlayerOnErrorCallback | 发生错误时被调用。如果应用成功设置该回调，则不会调用OH_AVPlayerOnError函数。 |
 | [typedef void (\*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)](#oh_avplayeronamplitudeupdatecallback) | OH_AVPlayerOnAmplitudeUpdateCallback | 当计算出最大音频电平值时调用。 |
 | [typedef void (\*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)](#oh_avplayeronseimessagereceivedcallback) | OH_AVPlayerOnSeiMessageReceivedCallback | 用于获取SEI（Supplemental Enhancement Information，补充增强信息）消息的回调处理函数。在订阅SEI消息事件时使用，回调返回详细的SEI信息。 |
@@ -186,7 +186,7 @@ enum AVPlayerOnInfoType
 
 **描述**
 
-OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo（已废弃）。<br>从API version 12开始，推荐使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型可获取不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>针对API version 11的开发者，需要使用旧接口。已废弃接口OH_AVPlayerOnInfo的使用方法，参见[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)。
+OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo（已废弃）。<br>从API版本12开始，推荐使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型可获取不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>针对API版本11的开发者，需要使用旧接口。已废弃接口OH_AVPlayerOnInfo的使用方法，参见[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)。
 
 **起始版本：** 11
 
@@ -305,7 +305,7 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 
 > 说明：
 >
-> 从API version 11开始支持，从API version 12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。
+> 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。
 
 **废弃版本：** 12
 
@@ -350,11 +350,11 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 **描述**
 
-在API version 9及以上的版本发生错误时调用。如果应用成功设置OH_AVPlayerOnErrorCallback回调，则不会调用此函数。
+在API版本9及以上的版本发生错误时调用。如果应用成功设置OH_AVPlayerOnErrorCallback回调，则不会调用此函数。
 
 > 说明：
 >
-> 从API version 11开始支持，从API version 12开始废弃，建议使用[OH_AVPlayerOnErrorCallback](#oh_avplayeronerrorcallback)替代。
+> 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnErrorCallback](#oh_avplayeronerrorcallback)替代。
 
 **废弃版本：** 12
 
@@ -385,7 +385,7 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 | 
-| int32_t errorCode | 错误码。<br>AV_ERR_NO_MEMORY：无内存，取值为1。可能原因：系统内存不足。处理方法：释放不必要的资源后重试。<br>AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。可能原因：当前状态下不允许执行该操作。处理方法：检查当前状态，在合适的状态下执行操作。<br>AV_ERR_INVALID_VAL：无效值，取值为3。可能原因：传入的参数值无效。处理方法：检查参数值是否在有效范围内。<br>AV_ERR_IO：IO错误。API version 12-13取值为4；API version 14及以后，对应错误细化为错误码5411001~5411011。可能原因：文件读写失败或网络IO异常。处理方法：检查文件是否存在或网络连接是否正常。<br>AV_ERR_TIMEOUT：超时错误，取值为5。可能原因：操作超时。处理方法：检查网络状况或增大超时时间。<br>AV_ERR_UNKNOWN：未知错误，取值为6。可能原因：发生未知错误。处理方法：查看日志或联系技术支持。<br>AV_ERR_SERVICE_DIED：服务死亡，取值为7。可能原因：媒体服务异常终止。处理方法：重新创建播放器实例。<br>AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。可能原因：在错误的状态下调用了该方法。处理方法：检查播放器当前状态是否支持该操作。<br>AV_ERR_UNSUPPORT：未支持的接口，取值为9。可能原因：调用了不支持的接口。处理方法：检查API版本支持情况。<br>AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。可能原因：扩展错误。处理方法：根据具体错误码进行处理。 |
+| int32_t errorCode | 错误码。<br>AV_ERR_NO_MEMORY：无内存，取值为1。可能原因：系统内存不足。处理方法：释放不必要的资源后重试。<br>AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。可能原因：当前状态下不允许执行该操作。处理方法：检查当前状态，在合适的状态下执行操作。<br>AV_ERR_INVALID_VAL：无效值，取值为3。可能原因：传入的参数值无效。处理方法：检查参数值是否在有效范围内。<br>AV_ERR_IO：IO错误。API版本12-13取值为4；API版本14及以后，对应错误细化为错误码5411001~5411011。可能原因：文件读写失败或网络IO异常。处理方法：检查文件是否存在或网络连接是否正常。<br>AV_ERR_TIMEOUT：超时错误，取值为5。可能原因：操作超时。处理方法：检查网络状况或增大超时时间。<br>AV_ERR_UNKNOWN：未知错误，取值为6。可能原因：发生未知错误。处理方法：查看日志或联系技术支持。<br>AV_ERR_SERVICE_DIED：服务死亡，取值为7。可能原因：媒体服务异常终止。处理方法：重新创建播放器实例。<br>AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。可能原因：在错误的状态下调用了该方法。处理方法：检查播放器当前状态是否支持该操作。<br>AV_ERR_UNSUPPORT：未支持的接口，取值为9。可能原因：调用了不支持的接口。处理方法：检查API版本支持情况。<br>AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。可能原因：扩展错误。处理方法：根据具体错误码进行处理。 |
 | const char \*errorMsg | 错误消息。 | 
 | void \*userData | 原样返回用户设置回调时传入的userData数据。 |
 
