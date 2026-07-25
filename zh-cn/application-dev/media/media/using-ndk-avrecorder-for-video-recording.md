@@ -491,11 +491,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        OH_AVRecorder_Config config;
        memset(&config, 0, sizeof(config));
    
-       config.audioSourceType = AVRECORDER_MIC;
-       config.profile.audioBitrate = AUDIO_BITRATE; // 112000
-       config.profile.audioChannels = AUDIO_CHANNELS; // 2
-       config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
-       config.profile.audioSampleRate = AUDIO_SAMPLE_RATE; // 48000
        config.videoSourceType = AVRECORDER_SURFACE_YUV;
        config.profile.videoBitrate = VIDEO_BITRATE; // 3000000
        config.profile.videoCodec = AVRECORDER_VIDEO_AVC;
