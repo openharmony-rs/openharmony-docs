@@ -67,7 +67,7 @@ getAVRecorderConfig(callback: AsyncCallback<AVRecorderConfig>): void
 
 获取实时的配置参数。使用callback异步回调。
 
-只能在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))接口调用成功后调用。
+只能在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))接口调用成功后调用。
 
 **起始版本：** 11
 
@@ -127,7 +127,7 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback<number>): void
 
 获取当前音频最大振幅。使用callback异步回调。
 
-在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))接口成功调用后，才能调用此接口。在[stop](media.AVRecorder.stop(callback: AsyncCallback<void>))接口成功调用后，调用此接口会报错。
+在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))接口成功调用后，才能调用此接口。在[stop](media.AVRecorder.stop(callback: AsyncCallback&lt;void&gt;))接口成功调用后，调用此接口会报错。
 
 调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。例如，在1s时获取了一次最大振幅，到2s时再获取到的最大振幅是1-2s这个区间里面的最大值。
 
@@ -158,7 +158,7 @@ getAudioCapturerMaxAmplitude(): Promise<number>
 
 获取当前音频最大振幅。使用Promise异步回调。
 
-在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))接口成功调用后，才能调用此接口。在[stop](media.AVRecorder.stop(callback: AsyncCallback<void>))接口成功调用后，调用此接口会报错。
+在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))接口成功调用后，才能调用此接口。在[stop](media.AVRecorder.stop(callback: AsyncCallback&lt;void&gt;))接口成功调用后，调用此接口会报错。
 
 调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。例如，在1s时获取了一次最大振幅，到2s时再获取到的最大振幅是1-2s这个区间里面的最大值。
 
@@ -243,7 +243,7 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback<audio.AudioCapturerChangeInf
 
 获取当前音频采集参数。使用callback异步回调。
 
-在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))接口成功调用后，才能调用此接口。在[stop](media.AVRecorder.stop(callback: AsyncCallback<void>))接口成功调用后，调用此接口会报错。
+在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))接口成功调用后，才能调用此接口。在[stop](media.AVRecorder.stop(callback: AsyncCallback&lt;void&gt;))接口成功调用后，调用此接口会报错。
 
 **起始版本：** 11
 
@@ -273,7 +273,7 @@ getCurrentAudioCapturerInfo(): Promise<audio.AudioCapturerChangeInfo>
 
 获取当前音频采集参数。使用Promise异步回调。
 
-在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))接口成功调用后，才能调用此接口。在[stop](media.AVRecorder.stop(callback: AsyncCallback<void>))接口成功调用后，调用此接口会报错。
+在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))接口成功调用后，才能调用此接口。在[stop](media.AVRecorder.stop(callback: AsyncCallback&lt;void&gt;))接口成功调用后，调用此接口会报错。
 
 **起始版本：** 11
 
@@ -307,7 +307,7 @@ getInputSurface(callback: AsyncCallback<string>): void
 
 应当注意，填入的视频数据需要携带时间戳（单位ns）和buffersize。时间戳的起始时间请以系统启动时间为基准。
 
-需在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))接口成功调用后，才能调用getInputSurface接口。
+需在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))接口成功调用后，才能调用getInputSurface接口。
 
 **起始版本：** 9
 
@@ -486,7 +486,7 @@ on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo
 on(type: 'photoAssetAvailable', callback: Callback<photoAccessHelper.PhotoAsset>): void
 ```
 
-订阅媒体资源回调事件，当[FileGenerationMode](@ohos.multimedia.media:media.FileGenerationMode)枚举设置为系统创建媒体文件时，会在[stop](media.AVRecorder.stop(callback: AsyncCallback<void>))操作结束后把[PhotoAsset](@ohos.file.photoAccessHelper:photoAccessHelper)对象回调给应用。使用callback异步回调。
+订阅媒体资源回调事件，当[FileGenerationMode](@ohos.multimedia.media:media.FileGenerationMode)枚举设置为系统创建媒体文件时，会在[stop](media.AVRecorder.stop(callback: AsyncCallback&lt;void&gt;))操作结束后把[PhotoAsset](@ohos.file.photoAccessHelper:photoAccessHelper)对象回调给应用。使用callback异步回调。
 
 当用户重复订阅时，以最后一次订阅的回调接口为准。
 
@@ -546,7 +546,7 @@ on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-订阅AVRecorder的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVRecorderState](@ohos.multimedia.media:media.AVRecorderState)也切换至error状态，用户需要通过[reset](media.AVRecorder.reset(callback: AsyncCallback<void>))或者[release](media.AVRecorder.release(callback: AsyncCallback<void>))接口退出录制操作。使用callback异步回调。
+订阅AVRecorder的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVRecorderState](@ohos.multimedia.media:media.AVRecorderState)也切换至error状态，用户需要通过[reset](media.AVRecorder.reset(callback: AsyncCallback&lt;void&gt;))或者[release](media.AVRecorder.release(callback: AsyncCallback&lt;void&gt;))接口退出录制操作。使用callback异步回调。
 
 用户只能订阅一个错误事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
 
@@ -588,7 +588,7 @@ pause(callback: AsyncCallback<void>): void
 
 暂停视频录制。使用callback异步回调。
 
-需要[start](media.AVRecorder.start(callback: AsyncCallback<void>))接口成功调用后，才能调用pause接口，可以通过调用[resume](media.AVRecorder.resume(callback: AsyncCallback<void>))接口来恢复录制。
+需要[start](media.AVRecorder.start(callback: AsyncCallback&lt;void&gt;))接口成功调用后，才能调用pause接口，可以通过调用[resume](media.AVRecorder.resume(callback: AsyncCallback&lt;void&gt;))接口来恢复录制。
 
 **起始版本：** 9
 
@@ -781,7 +781,7 @@ reset(callback: AsyncCallback<void>): void
 
 重置音视频录制。使用callback异步回调。
 
-纯音频录制时，需要重新调用[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))和[getInputSurface](media.AVRecorder.getInputSurface(callback: AsyncCallback<string>))接口才能重新录制。
+纯音频录制时，需要重新调用[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))和[getInputSurface](media.AVRecorder.getInputSurface(callback: AsyncCallback&lt;string&gt;))接口才能重新录制。
 
 **起始版本：** 9
 
@@ -839,7 +839,7 @@ resume(callback: AsyncCallback<void>): void
 
 恢复视频录制。使用callback异步回调。
 
-需要在[pause](media.AVRecorder.pause(callback: AsyncCallback<void>))接口成功调用后，才能调用resume接口。
+需要在[pause](media.AVRecorder.pause(callback: AsyncCallback&lt;void&gt;))接口成功调用后，才能调用resume接口。
 
 **起始版本：** 9
 
@@ -934,7 +934,7 @@ start(callback: AsyncCallback<void>): void
 
 开始视频录制。使用callback异步回调。
 
-纯音频录制需在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))接口成功调用后，才能调用start接口。纯视频录制，音视频录制需在[getInputSurface](media.AVRecorder.getInputSurface(callback: AsyncCallback<string>))接口成功调用后，才能调用start接口。
+纯音频录制需在[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))接口成功调用后，才能调用start接口。纯视频录制，音视频录制需在[getInputSurface](media.AVRecorder.getInputSurface(callback: AsyncCallback&lt;string&gt;))接口成功调用后，才能调用start接口。
 
 **起始版本：** 9
 
@@ -996,9 +996,9 @@ stop(callback: AsyncCallback<void>): void
 
 停止视频录制。使用callback异步回调。
 
-需要在[start](media.AVRecorder.start(callback: AsyncCallback<void>))或[pause](media.AVRecorder.pause(callback: AsyncCallback<void>))接口成功调用后，才能调用stop接口。
+需要在[start](media.AVRecorder.start(callback: AsyncCallback&lt;void&gt;))或[pause](media.AVRecorder.pause(callback: AsyncCallback&lt;void&gt;))接口成功调用后，才能调用stop接口。
 
-纯音频录制时，需要重新调用[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))和[getInputSurface](media.AVRecorder.getInputSurface(callback: AsyncCallback<string>))接口才能重新录制。
+纯音频录制时，需要重新调用[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare](media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))和[getInputSurface](media.AVRecorder.getInputSurface(callback: AsyncCallback&lt;string&gt;))接口才能重新录制。
 
 **起始版本：** 9
 
@@ -1062,7 +1062,7 @@ updateRotation(rotation: number): Promise<void>
 
 更新视频旋转角度。使用Promise异步回调。
 
-当且仅当[prepare](media.AVRecorder.prepare(config: AVRecorderConfig))接口成功调用后，且在[start](media.AVRecorder.start(callback: AsyncCallback<void>))接口之前，才能调用updateRotation接口。
+当且仅当[prepare](media.AVRecorder.prepare(config: AVRecorderConfig))接口成功调用后，且在[start](media.AVRecorder.start(callback: AsyncCallback&lt;void&gt;))接口之前，才能调用updateRotation接口。
 
 **起始版本：** 12
 

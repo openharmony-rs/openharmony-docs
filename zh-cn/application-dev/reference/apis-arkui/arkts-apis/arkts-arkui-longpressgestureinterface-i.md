@@ -5,7 +5,7 @@
 >  
 > 从API version 18开始，部分设备会优先响应系统的双指长按手势，导致应用的双指长按手势不生效。
 
-**继承/实现关系：** LongPressGestureInterface extends [GestureInterface<LongPressGestureInterface>]
+**继承/实现关系：** LongPressGestureInterface extends [GestureInterface&lt;LongPressGestureInterface&gt;]
 
 **起始版本：** 7
 
@@ -19,7 +19,7 @@
 (value?: { fingers?: number; repeat?: boolean; duration?: number }): LongPressGestureInterface
 ```
 
-创建长按手势对象。继承自[GestureInterface<T>](arkts-arkui-gestureinterface-i.md)。
+创建长按手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md)。
 
 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下：
 

@@ -2,7 +2,7 @@
 
 旋转手势处理器对象类型。
 
-**继承/实现关系：** RotationGestureHandler extends [GestureHandler<RotationGestureHandler>]
+**继承/实现关系：** RotationGestureHandler extends [GestureHandler&lt;RotationGestureHandler&gt;]
 
 **起始版本：** 12
 

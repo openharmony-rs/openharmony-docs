@@ -646,7 +646,7 @@ reset(): Promise<void>
 seek(timeMs: number, mode?: SeekMode): void
 ```
 
-跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过[on('seekDone')](media.AVPlayer.on(type: 'seekDone', callback: Callback<int>))事件确认是否生效。
+跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过[on('seekDone')](media.AVPlayer.on(type: 'seekDone', callback: Callback&lt;int&gt;))事件确认是否生效。
 > **注意：**  
 >  
 > 从API版本26.0.0开始，直播场景支持seek。
@@ -877,7 +877,7 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>
 setVolume(volume: number): void
 ```
 
-设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过[on('volumeChange')](media.AVPlayer.on(type: 'volumeChange', callback: Callback<double>))事件确认是否生效。
+设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过[on('volumeChange')](media.AVPlayer.on(type: 'volumeChange', callback: Callback&lt;double&gt;))事件确认是否生效。
 
 **起始版本：** 9
 

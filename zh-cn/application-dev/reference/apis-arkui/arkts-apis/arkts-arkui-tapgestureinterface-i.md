@@ -5,7 +5,7 @@
 >  
 > 当组件同时绑定双击和单击手势且双击手势先绑定时，单击手势会有300ms的延时。
 
-**继承/实现关系：** TapGestureInterface extends [GestureInterface<TapGestureInterface>]
+**继承/实现关系：** TapGestureInterface extends [GestureInterface&lt;TapGestureInterface&gt;]
 
 **起始版本：** 7
 
@@ -19,7 +19,7 @@
 (value?: TapGestureParameters): TapGestureInterface
 ```
 
-创建点击手势对象。继承自[GestureInterface<T>](arkts-arkui-gestureinterface-i.md)。
+创建点击手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md)。
 
 触发点击手势事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown，事件的[SourceType](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-touchevent-sourcetype-e.md)值为KEY或JOYSTICK。
 

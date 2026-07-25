@@ -12,7 +12,7 @@ import { uiObserver } from '@kit.ArkUI';
 export function off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback<NavDestinationInfo>): void
 ```
 
-取消监听NavDestination组件的状态变化。与[uiObserver.off](uiObserver.off(type: 'navDestinationUpdate', callback?:Callback<NavDestinationInfo>))相比，新增了options参数，即支持指定监听的Navigation的id。
+取消监听NavDestination组件的状态变化。与[uiObserver.off](uiObserver.off(type: 'navDestinationUpdate', callback?:Callback&lt;NavDestinationInfo&gt;))相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **起始版本：** 11
 
@@ -413,7 +413,7 @@ export function off(
   ): void
 ```
 
-取消监听Navigation的页面切换事件。与[uiObserver.off](uiObserver.off( type: 'navDestinationSwitch', context:UIAbilityContext | UIContext, callback?: Callback<NavDestinationSwitchInfo> ))相比，新增了observerOptions参数，即支持设置监听选项。
+取消监听Navigation的页面切换事件。与[uiObserver.off](uiObserver.off( type: 'navDestinationSwitch', context:UIAbilityContext | UIContext, callback?: Callback&lt;NavDestinationSwitchInfo&gt; ))相比，新增了observerOptions参数，即支持设置监听选项。
 
 **起始版本：** 12
 

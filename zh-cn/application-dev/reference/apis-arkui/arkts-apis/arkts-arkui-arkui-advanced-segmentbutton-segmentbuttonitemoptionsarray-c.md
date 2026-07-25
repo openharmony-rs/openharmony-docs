@@ -5,7 +5,7 @@
 >  
 > SegmentButtonItemOptionsArray仅支持保存2到5个按钮信息元素。
 
-**继承/实现关系：** SegmentButtonItemOptionsArray extends [Array<SegmentButtonItemOptions>]
+**继承/实现关系：** SegmentButtonItemOptionsArray extends [Array&lt;SegmentButtonItemOptions&gt;]
 
 **起始版本：** 11
 

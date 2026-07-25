@@ -41,7 +41,7 @@ UIAbility生命周期回调，当UIAbility侧滑返回时触发，根据返回�
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | The value <code>true</code> means that the UIAbility instance will be moved to the background and will not be destroyed, and <code>false</code> means that the UIAbility instance will be destroyed. |
+| boolean | The value &lt;code&gt;true</code> means that the UIAbility instance will be moved to the background and will not be destroyed, and &lt;code&gt;false</code> means that the UIAbility instance will be destroyed. |
 
 **示例：**
 
@@ -573,7 +573,7 @@ onPrepareToTerminate(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Whether to terminate the UIAbility.<br>The value <code>true</code> means that the termination process is canceled.<br>The value <code>false</code> means to continue terminating the UIAbility. |
+| boolean | Whether to terminate the UIAbility.<br>The value &lt;code&gt;true</code> means that the termination process is canceled.<br>The value &lt;code&gt;false</code> means to continue terminating the UIAbility. |
 
 **示例：**
 
@@ -647,7 +647,7 @@ onPrepareToTerminateAsync(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result.<br>The value <code>true</code> means that the termination process is canceled.<br>The value <code>false</code> means to continue terminating the UIAbility. |
+| Promise&lt;boolean&gt; | Promise used to return the result.<br>The value &lt;code&gt;true</code> means that the termination process is canceled.<br>The value &lt;code&gt;false</code> means to continue terminating the UIAbility. |
 
 **示例：**
 

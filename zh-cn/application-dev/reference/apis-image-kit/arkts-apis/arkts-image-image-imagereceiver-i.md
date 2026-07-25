@@ -114,7 +114,7 @@ readLatestImage(callback: AsyncCallback<Image>): void
 从ImageReceiver读取最新的图片。使用callback异步回调。
 > **注意**：  
 >  
-> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback<void>))回调触发后调用，才能正常的接收到数  
+> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback&lt;void&gt;))回调触发后调用，才能正常的接收到数  
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用  
 > [release](arkts-image-image-image-i.md#release)方法释放，释放后才可以继续接收新的数据。
 
@@ -139,7 +139,7 @@ readLatestImage(): Promise<Image>
 从ImageReceiver读取最新的图片。使用Promise异步回调。
 > **注意**：  
 >  
-> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback<void>))回调触发后调用，才能正常的接收到数  
+> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback&lt;void&gt;))回调触发后调用，才能正常的接收到数  
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用  
 > [release](arkts-image-image-image-i.md#release)方法释放，释放后才可以继续接收新的数据。
 
@@ -164,7 +164,7 @@ readNextImage(callback: AsyncCallback<Image>): void
 从ImageReceiver读取下一张图片。使用callback异步回调。
 > **注意**：  
 >  
-> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback<void>))回调触发后调用，才能正常的接收到数  
+> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback&lt;void&gt;))回调触发后调用，才能正常的接收到数  
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用  
 > [release](arkts-image-image-image-i.md#release)方法释放，释放后才可以继续接收新的数据。
 
@@ -189,7 +189,7 @@ readNextImage(): Promise<Image>
 从ImageReceiver读取下一张图片。使用Promise异步回调。
 > **注意**：  
 >  
-> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback<void>))回调触发后调用，才能正常的接收到数  
+> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback&lt;void&gt;))回调触发后调用，才能正常的接收到数  
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用  
 > [release](arkts-image-image-image-i.md#release)方法释放，释放后才可以继续接收新的数据。
 

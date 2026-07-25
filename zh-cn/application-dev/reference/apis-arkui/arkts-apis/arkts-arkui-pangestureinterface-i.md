@@ -2,7 +2,7 @@
 
 滑动手势事件，当滑动的最小距离达到设定的最小值时触发滑动手势事件。
 
-**继承/实现关系：** PanGestureInterface extends [GestureInterface<PanGestureInterface>]
+**继承/实现关系：** PanGestureInterface extends [GestureInterface&lt;PanGestureInterface&gt;]
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@
 (value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions): PanGestureInterface
 ```
 
-创建滑动手势对象。继承自[GestureInterface<T>](arkts-arkui-gestureinterface-i.md)。
+创建滑动手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md)。
 
 **起始版本：** 7
 

@@ -1362,7 +1362,7 @@ isFocused(): boolean
 
 判断当前窗口是否已获焦。为获取准确的获焦状态，需要在[WindowEventType](arkts-arkui-window-windoweventtype-e.md)生命周期处于WINDOW_ACTIVE之后调用。
 
-可使用[on('windowEvent')](window.Window.on(type: 'windowEvent', callback: Callback<WindowEventType>))监听对应状态变更，再执行对应具体业务。
+可使用[on('windowEvent')](window.Window.on(type: 'windowEvent', callback: Callback&lt;WindowEventType&gt;))监听对应状态变更，再执行对应具体业务。
 
 **起始版本：** 12
 
@@ -1679,7 +1679,7 @@ isWindowHighlighted(): boolean
 
 获取当前窗口是否为激活态。为准确获取激活态，需要在[WindowEventType](arkts-arkui-window-windoweventtype-e.md)生命周期处于WINDOW_ACTIVE之后调用。
 
-可使用[on('windowHighlightChange')](window.Window.on(type: 'windowHighlightChange', callback: Callback<boolean>))监听对应状态变更，再执行对应具体业务。
+可使用[on('windowHighlightChange')](window.Window.on(type: 'windowHighlightChange', callback: Callback&lt;boolean&gt;))监听对应状态变更，再执行对应具体业务。
 
 **起始版本：** 18
 
@@ -2832,7 +2832,7 @@ off(type: 'systemAvoidAreaChange', callback?: Callback<AvoidArea>): void
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃，建议使用  
-> [off('avoidAreaChange')](window.Window.off(type: 'avoidAreaChange', callback?: Callback<AvoidAreaOptions>))  
+> [off('avoidAreaChange')](window.Window.off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;))  
 > 替代。
 
 **起始版本：** 7
@@ -3413,7 +3413,7 @@ off(type: 'windowWillClose', callback?: Callback<void, Promise<boolean>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowWillClose' | 是 | 监听事件，固定为'windowWillClose'，即窗口关闭事件。 |
-| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否 | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise<boolean>类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。 |
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否 | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。 |
 
 **错误码：**
 
@@ -3650,7 +3650,7 @@ on(type: 'frameMetricsMeasured', callback: Callback<FrameMetrics>): void
 
 开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](arkts-arkui-window-window-i.md#loadcontent)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)调用生效后使用。
 
-应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。但当同时使用该接口和postFrameCallback、postDelayedFrameCallback、[displaySync.on('frame')](@ohos.graphics.displaySync:displaySync.DisplaySync.on(type: 'frame', callback: Callback<IntervalInfo>))中的任意一个时，即使无UI内容重绘，也可能触发回调。
+应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。但当同时使用该接口和postFrameCallback、postDelayedFrameCallback、[displaySync.on('frame')](@ohos.graphics.displaySync:displaySync.DisplaySync.on(type: 'frame', callback: Callback&lt;IntervalInfo&gt;))中的任意一个时，即使无UI内容重绘，也可能触发回调。
 
 **起始版本：** 22
 
@@ -3744,7 +3744,7 @@ on(type: 'systemAvoidAreaChange', callback: Callback<AvoidArea>): void
 > **说明：**  
 >  
 > 从API version 7开始支持，从API version 9开始废弃，建议使用  
-> [on('avoidAreaChange')](window.Window.on(type: 'avoidAreaChange', callback: Callback<AvoidAreaOptions>))替  
+> [on('avoidAreaChange')](window.Window.on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;))替  
 > 代。
 
 **起始版本：** 7
@@ -4246,9 +4246,9 @@ on(type: 'windowEvent', callback: Callback<WindowEventType>): void
 on(type: 'windowStatusChange', callback: Callback<WindowStatusType>): void
 ```
 
-开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新，如果需要在收到windowStatus变化通知时能够立即获取到变化后的窗口大小、位置，建议使用[on('windowStatusDidChange')](@ohos.window:window.Window.on(type: 'windowStatusDidChange', callback: Callback<WindowStatusType>))）。
+开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新，如果需要在收到windowStatus变化通知时能够立即获取到变化后的窗口大小、位置，建议使用[on('windowStatusDidChange')](@ohos.window:window.Window.on(type: 'windowStatusDidChange', callback: Callback&lt;WindowStatusType&gt;))）。
 
-使用当前接口开启监听后，在调用maximize、recover方法时会收到多次回调，如需获取去重后的回调，可使用[on('windowStatusDidChange')](window.Window.on(type: 'windowStatusDidChange', callback: Callback<WindowStatusType>))。
+使用当前接口开启监听后，在调用maximize、recover方法时会收到多次回调，如需获取去重后的回调，可使用[on('windowStatusDidChange')](window.Window.on(type: 'windowStatusDidChange', callback: Callback&lt;WindowStatusType&gt;))。
 > **说明：**  
 >  
 > 在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，应用的  
@@ -4317,9 +4317,9 @@ on(type: 'subWindowClose', callback: Callback<void>): void
 
 当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
 
-该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[on('windowWillClose')](window.Window.on(type: 'windowWillClose', callback: Callback&lt;void, Promise<boolean>&gt;))方法。
+该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[on('windowWillClose')](window.Window.on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;))方法。
 
-如果存在[on('windowWillClose')](window.Window.on(type: 'windowWillClose', callback: Callback&lt;void, Promise<boolean>&gt;))监听事件，只响应[on('windowWillClose')](window.Window.on(type: 'windowWillClose', callback: Callback&lt;void, Promise<boolean>&gt;))接口。
+如果存在[on('windowWillClose')](window.Window.on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;))监听事件，只响应[on('windowWillClose')](window.Window.on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;))接口。
 
 **起始版本：** 12
 
@@ -4353,7 +4353,7 @@ on(type: 'windowWillClose', callback: Callback<void, Promise<boolean>>): void
 
 开启主窗口或子窗口关闭事件的监听。此监听仅能通过系统提供的窗口标题栏关闭按键触发，其余关闭窗口的方式不触发回调。
 
-该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[on('subWindowClose')](window.Window.on(type: 'subWindowClose', callback: Callback<void>))方法。主窗口的同步关闭事件监听参考on('windowStageClose')方法。
+该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[on('subWindowClose')](window.Window.on(type: 'subWindowClose', callback: Callback&lt;void&gt;))方法。主窗口的同步关闭事件监听参考on('windowStageClose')方法。
 
 **起始版本：** 15
 
@@ -4368,7 +4368,7 @@ on(type: 'windowWillClose', callback: Callback<void, Promise<boolean>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowWillClose' | 是 | 监听事件，固定为'windowWillClose'，即窗口关闭事件。 |
-| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是 | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise<boolean>类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。 |
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是 | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。 |
 
 **错误码：**
 
@@ -5542,7 +5542,7 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise<void>
 
 设置当前窗口是否支持获取三键导航类型的避让区域。未调用此接口设置前，系统默认不支持获取三键导航类型的避让区域。使用Promise异步回调。
 
-调用该接口使能后才可以通过[getWindowAvoidArea()](arkts-arkui-window-window-i.md#getwindowavoidarea)获取到[TYPE_FLOAT_NAVIGATION](arkts-arkui-window-avoidareatype-e.md)避让类型对应的避让区域或通过[on('avoidAreaChange')](window.Window.on(type: 'avoidAreaChange', callback: Callback<AvoidAreaOptions>))监听TYPE_FLOAT_NAVIGATION避让类型对应的避让区域的变化。
+调用该接口使能后才可以通过[getWindowAvoidArea()](arkts-arkui-window-window-i.md#getwindowavoidarea)获取到[TYPE_FLOAT_NAVIGATION](arkts-arkui-window-avoidareatype-e.md)避让类型对应的避让区域或通过[on('avoidAreaChange')](window.Window.on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;))监听TYPE_FLOAT_NAVIGATION避让类型对应的避让区域的变化。
 
 **起始版本：** 26.0.0
 
@@ -6737,7 +6737,7 @@ setSubWindowZLevel(zLevel: number): Promise<void>
 setSystemAvoidAreaEnabled(enabled: boolean): Promise<void>
 ```
 
-创建全局悬浮窗、模态窗或WindowType窗口类型为系统窗口时，调用该接口使能后才可以通过[getWindowAvoidArea()](arkts-arkui-window-window-i.md#getwindowavoidarea)获取窗口避让区信息或通过[on('avoidAreaChange')](window.Window.on(type: 'avoidAreaChange', callback: Callback<AvoidAreaOptions>))监听窗口避让区变化。
+创建全局悬浮窗、模态窗或WindowType窗口类型为系统窗口时，调用该接口使能后才可以通过[getWindowAvoidArea()](arkts-arkui-window-window-i.md#getwindowavoidarea)获取窗口避让区信息或通过[on('avoidAreaChange')](window.Window.on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;))监听窗口避让区变化。
 
 **起始版本：** 18
 

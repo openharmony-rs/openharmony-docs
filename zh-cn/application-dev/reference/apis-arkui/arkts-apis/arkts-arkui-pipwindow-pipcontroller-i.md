@@ -405,7 +405,7 @@ this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string)
 on(type: 'controlPanelActionEvent', callback: ControlPanelActionEventCallback): void
 ```
 
-开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。推荐使用[on('controlEvent')](PiPWindow.PiPController.on(type: 'controlEvent', callback: Callback<ControlEventParam>))来开启画中画控制面板控件动作事件的监听。
+开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。推荐使用[on('controlEvent')](PiPWindow.PiPController.on(type: 'controlEvent', callback: Callback&lt;ControlEventParam&gt;))来开启画中画控制面板控件动作事件的监听。
 
 **起始版本：** 11
 

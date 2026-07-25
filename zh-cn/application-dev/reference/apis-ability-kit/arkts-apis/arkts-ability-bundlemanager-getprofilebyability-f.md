@@ -32,7 +32,7 @@ function getProfileByAbility(moduleName: string, abilityName: string, metadataNa
 | moduleName | string | 是 | 表示Module名称。 |
 | abilityName | string | 是 | 表示UIAbility组件的名称。 |
 | metadataName | string | 是 | 表示UIAbility组件的[元信息名称](../../../quick-start/module-configuration-file.md#metadata标签)，即module.json5配置文件中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name。 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | AsyncCallback，当获取成功时，err为undefined，data为获取到的Array<string>；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | AsyncCallback，当获取成功时，err为undefined，data为获取到的Array&lt;string&gt;；否则为错误对象。 |
 
 **错误码：**
 
@@ -102,7 +102,7 @@ function getProfileByAbility(moduleName: string, abilityName: string, metadataNa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回Array<string>。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回Array&lt;string&gt;。 |
 
 **错误码：**
 

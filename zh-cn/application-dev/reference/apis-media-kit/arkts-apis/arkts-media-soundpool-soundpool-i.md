@@ -4,14 +4,14 @@
 > **说明：**  
 >  
 > - 在使用SoundPool实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。  
-> > - [on('loadComplete')](SoundPool.on(type: 'loadComplete', callback: Callback<int>))：监听资源加载完成。建议开发者监听此回调以确  
+> > - [on('loadComplete')](SoundPool.on(type: 'loadComplete', callback: Callback&lt;int&gt;))：监听资源加载完成。建议开发者监听此回调以确  
 > 保音频在加载完成后进行播放。  
 > > -  
-> [on('playFinishedWithStreamId')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback<int>))：监听播  
+> [on('playFinishedWithStreamId')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback&lt;int&gt;))：监听播  
 > 放完成，同时返回播放结束的音频的streamId。  
-> > - [on('playFinished')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback<int>))：监听播放完成。  
+> > - [on('playFinished')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback&lt;int&gt;))：监听播放完成。  
 > > - [on('error')](SoundPool.on(type: 'error', callback: ErrorCallback))：监听错误事件。  
-> > - [on('errorOccurred')](SoundPool.on(type:'errorOccurred', callback:Callback<ErrorInfo>))：监听错误事件，同时返回  
+> > - [on('errorOccurred')](SoundPool.on(type:'errorOccurred', callback:Callback&lt;ErrorInfo&gt;))：监听错误事件，同时返回  
 > [errorInfo](arkts-media-soundpool-errorinfo-i.md)。  
 >  
 > - SoundPool目前不支持后台播放、设置音频打断等音频焦点策略和跳过音频头尾的静音帧。SoundPool低时延播放可参考  
@@ -357,9 +357,9 @@ on(type: 'playFinishedWithStreamId', callback: Callback<number>): void
 
 音频池资源播放完成监听，同时返回播放结束的音频的streamId。使用callback异步回调。
 
-当仅单独注册[on('playFinished')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback<int>))事件回调或者[on('playFinishedWithStreamId')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback<int>))事件回调时，当音频播放完成的时候，都会触发注册的回调。
+当仅单独注册[on('playFinished')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback&lt;int&gt;))事件回调或者[on('playFinishedWithStreamId')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback&lt;int&gt;))事件回调时，当音频播放完成的时候，都会触发注册的回调。
 
-当同时注册[on('playFinished')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback<int>))事件回调和[on('playFinishedWithStreamId')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback<int>))事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
+当同时注册[on('playFinished')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback&lt;int&gt;))事件回调和[on('playFinishedWithStreamId')](SoundPool.on(type: 'playFinishedWithStreamId', callback: Callback&lt;int&gt;))事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
 
 **起始版本：** 18
 

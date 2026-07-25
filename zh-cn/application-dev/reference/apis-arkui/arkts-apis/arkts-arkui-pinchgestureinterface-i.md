@@ -5,7 +5,7 @@
 >  
 > 捏合手势触发成功后，抬起手指直至不再满足触发条件。再次满足条件时，可重新触发捏合手势。
 
-**继承/实现关系：** PinchGestureInterface extends [GestureInterface<PinchGestureInterface>]
+**继承/实现关系：** PinchGestureInterface extends [GestureInterface&lt;PinchGestureInterface&gt;]
 
 **起始版本：** 7
 
@@ -19,7 +19,7 @@
 (value?: { fingers?: number; distance?: number }): PinchGestureInterface
 ```
 
-继承自[GestureInterface<T>](arkts-arkui-gestureinterface-i.md)，设置捏合手势事件。
+继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md)，设置捏合手势事件。
 
 **起始版本：** 7
 

@@ -2,7 +2,7 @@
 
 定义LazyDynamicLayout组件。
 
-**继承/实现关系：** LazyDynamicLayoutAttribute extends [CommonMethod<LazyDynamicLayoutAttribute>]
+**继承/实现关系：** LazyDynamicLayoutAttribute extends [CommonMethod&lt;LazyDynamicLayoutAttribute&gt;]
 
 **起始版本：** 26.0.0
 

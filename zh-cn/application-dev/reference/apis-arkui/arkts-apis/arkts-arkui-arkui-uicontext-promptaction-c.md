@@ -286,7 +286,7 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>
 
 打开自定义对话框。
 
-isModal = true和showInSubWindow = true不能同时使用。* @param { promptAction.CustomDialogOptions } options - 选项。 * @returns { Promise<number> } 返回将由closeCustomDialog使用的对话框ID。
+isModal = true和showInSubWindow = true不能同时使用。* @param { promptAction.CustomDialogOptions } options - 选项。 * @returns { Promise&lt;number&gt; } 返回将由closeCustomDialog使用的对话框ID。
 
 **起始版本：** 12
 

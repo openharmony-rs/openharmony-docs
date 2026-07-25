@@ -16,5 +16,5 @@ export type PositionT<T> = Vector2T<T>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** Vector2T<T>
+**属性类型：** Vector2T&lt;T&gt;
 

@@ -14,5 +14,5 @@ Defines the window animation curve param.
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**属性类型：** Array<double>
+**属性类型：** Array&lt;double&gt;
 

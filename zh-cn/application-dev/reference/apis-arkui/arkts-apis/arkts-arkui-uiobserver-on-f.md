@@ -12,7 +12,7 @@ import { uiObserver } from '@kit.ArkUI';
 export function on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback<NavDestinationInfo>): void
 ```
 
-监听NavDestination组件的状态变化。与* [uiObserver.on](uiObserver.on(type: 'navDestinationUpdate', callback:Callback<NavDestinationInfo>))相比，新增了options参数，即支持指定监听的Navigation的id。
+监听NavDestination组件的状态变化。与* [uiObserver.on](uiObserver.on(type: 'navDestinationUpdate', callback:Callback&lt;NavDestinationInfo&gt;))相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **起始版本：** 11
 
@@ -757,7 +757,7 @@ export function on(
   ): void
 ```
 
-监听Navigation的页面切换事件。与[uiObserver.on](uiObserver.on( type: 'navDestinationSwitch', context: UIAbilityContext |UIContext, callback: Callback<NavDestinationSwitchInfo> ))相比，新增了observerOptions参数，即支持设置监听选项。
+监听Navigation的页面切换事件。与[uiObserver.on](uiObserver.on( type: 'navDestinationSwitch', context: UIAbilityContext |UIContext, callback: Callback&lt;NavDestinationSwitchInfo&gt; ))相比，新增了observerOptions参数，即支持设置监听选项。
 
 **起始版本：** 12
 

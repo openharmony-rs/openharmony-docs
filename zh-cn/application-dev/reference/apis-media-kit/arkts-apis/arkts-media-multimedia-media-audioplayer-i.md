@@ -318,7 +318,7 @@ on(type: 'timeUpdate', callback: Callback<number>): void
 开始订阅音频播放时间更新事件。处于播放状态时，每隔1s上报一次该事件。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('timeUpdate')](@ohos.multimedia.media:media.AVPlayer.on(type: 'timeUpdate', callback: Callback<int>))  
+> [AVPlayer.on('timeUpdate')](@ohos.multimedia.media:media.AVPlayer.on(type: 'timeUpdate', callback: Callback&lt;int&gt;))  
 > 替代。
 
 **起始版本：** 6
