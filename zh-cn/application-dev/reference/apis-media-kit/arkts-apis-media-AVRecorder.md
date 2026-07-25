@@ -167,7 +167,7 @@ let avRecorderConfig: media.AVRecorderConfig = {
   audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
   videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
   profile : avRecorderProfile,
-  url : 'fd://',  // 文件需先通过fs.open接口（@kit.FileKit）打开获取文件描述符fd，赋予读写权限，将fd传给此参数，详见文件管理开发指导。
+  url : 'fd://',  // 文件需先通过fileIo.open接口（@kit.CoreFileKit）打开获取文件描述符fd，赋予读写权限，将fd传给此参数。
   metadata : videoMetaData,
   location : { latitude : 30, longitude : 130 }
 };
@@ -229,7 +229,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
-let watermark: image.PixelMap | undefined = undefined; // 通过image.createImageSource创建ImageSource对象后调用createPixelMap接口（@kit.ImageKit）获取PixelMap，详见image开发指导。水印图像不能为空。
+let watermark: image.PixelMap | undefined = undefined; // 通过image.createImageSource创建ImageSource对象后调用createPixelMap接口（@kit.ImageKit）获取PixelMap。水印图像不能为空。
 let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
 
 if (watermark) {

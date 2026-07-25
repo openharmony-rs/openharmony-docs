@@ -73,7 +73,7 @@ AVRecorder的音频源类型，用于指定录制时采集音频的来源。不�
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_DEFAULT = 0 | 默认音频源类型。适用于无需指定特定音频源类型的通用录制场景 |
+| AVRECORDER_DEFAULT = 0 | 默认音频源类型。适用于无需指定特定音频源类型的通用录制场景。 |
 | AVRECORDER_MIC = 1 | 麦克风音频源类型。 |
 | AVRECORDER_VOICE_RECOGNITION = 2 | 语音识别场景的音频源。 |
 | AVRECORDER_VOICE_COMMUNICATION = 7 | 语音通话场景的音频源。 |
@@ -115,14 +115,14 @@ enum OH_AVRecorder_CodecMimeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_VIDEO_AVC = 2 | H.264 视频编码器MIME类型。 |
-| AVRECORDER_AUDIO_AAC = 3 | AAC 音频编码器MIME类型。 |
-| AVRECORDER_AUDIO_MP3 = 4 | MP3 音频编码器MIME类型。 |
-| AVRECORDER_AUDIO_G711MU = 5 | G711-mulaw 音频编码器MIME类型，适用于VoIP语音通信等窄带语音编码场景。 |
-| AVRECORDER_VIDEO_MPEG4 = 6 | MPEG4 视频编码器MIME类型，适用于对编码效率要求不高的传统视频编码场景。 |
-| AVRECORDER_VIDEO_HEVC = 8 | H.265 视频编码器MIME类型，适用于需要更高压缩效率的视频编码场景，相比H.264压缩率更高但兼容性较低。 |
-| AVRECORDER_AUDIO_AMR_NB = 9 | AMR_NB 音频编码器MIME类型，适用于低带宽窄带语音通话录制场景。 |
-| AVRECORDER_AUDIO_AMR_WB = 10 | AMR_WB 音频编码器MIME类型，适用于较高质量的宽带语音通话录制场景，相比AMR_NB提供更宽的音频频带。 |
+| AVRECORDER_VIDEO_AVC = 2 | H.264视频编码器MIME类型。 |
+| AVRECORDER_AUDIO_AAC = 3 | AAC音频编码器MIME类型。 |
+| AVRECORDER_AUDIO_MP3 = 4 | MP3音频编码器MIME类型。 |
+| AVRECORDER_AUDIO_G711MU = 5 | G711-mulaw音频编码器MIME类型，适用于VoIP语音通信等窄带语音编码场景。 |
+| AVRECORDER_VIDEO_MPEG4 = 6 | MPEG4视频编码器MIME类型，适用于对编码效率要求不高的传统视频编码场景。 |
+| AVRECORDER_VIDEO_HEVC = 8 | H.265视频编码器MIME类型，适用于需要更高压缩效率的视频编码场景，相比H.264压缩率更高但兼容性较低。 |
+| AVRECORDER_AUDIO_AMR_NB = 9 | AMR_NB音频编码器MIME类型，适用于低带宽窄带语音通话录制场景。 |
+| AVRECORDER_AUDIO_AMR_WB = 10 | AMR_WB音频编码器MIME类型，适用于较高质量的宽带语音通话录制场景，相比AMR_NB提供更宽的音频频带。 |
 
 ### OH_AVRecorder_ContainerFormatType
 
