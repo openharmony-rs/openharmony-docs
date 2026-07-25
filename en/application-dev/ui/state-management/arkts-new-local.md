@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:06:30.846Z pushedAt=2026-07-23T11:51:57.403Z -->
+<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:57:05.799Z pushedAt=2026-07-25T09:21:44.734Z -->
 
 To observe changes to variables in custom components decorated by @ComponentV2, developers can use the [@Local](../../reference/apis-arkui/arkui-ts/ts-state-management-local.md#local) decorator to decorate variables.
 
@@ -678,7 +678,7 @@ struct Index {
 
 In the following scenario, [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) cannot be directly used in state management V2.
 
-<!-- @[Local_Question_V2_animateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV2animateTo.ets) -->
+<!-- @[Local_AnimateTo_V2_Problem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalAnimateToV2Problem.ets) -->
 
 ``` TypeScript
 @Entry
@@ -720,9 +720,9 @@ In the above code, the expected animation effect is as follows: The green rectan
 
 ![arkts-new-local-animateTo-1](figures/arkts-new-local-animateTo-1.gif)
 
-Since API version 22, you can use the [applySync APIs](./arkts-new-applySync-flushUpdates-flushUIUpdates.md) to achieve the expected display effect.
+Since API version 22, you can use the [applySync API](./arkts-new-applySync-flushUpdates-flushUIUpdates.md) to achieve the expected display effect.
 
-<!-- @[Local_Question_Expected_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionExpectedEffect.ets) -->
+<!-- @[Local_ApplySync_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalApplySyncEffect.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -764,6 +764,6 @@ struct Index {
 }
 ```
 
-The principle is as follows: Use the **applySync** API to synchronously update the state variables changes in the closure function, and then execute the original animation to achieve the expected effect.
+The principle is as follows: Use the **applySync** API to synchronously update the state variable changes in the closure function, and then execute the original animation to achieve the expected effect.
 
 ![arkts-new-local-animateTo-2](figures/arkts-new-local-animateTo-2.gif)
