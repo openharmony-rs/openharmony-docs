@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 
@@ -40,9 +40,9 @@ switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 
 **返回值：**
 
-  | 类型           | 说明                     |
-  | -------------- | ----------------------- |
-  | Promise\<void> | 无返回结果的Promise对象。 |
+| 类型           | 说明                     |
+| -------------- | ----------------------- |
+| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -52,8 +52,8 @@ switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
 | 202      | not system application.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800005 | configuration persistence error.        |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -63,37 +63,50 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 
 async function switchInputMethodWithSubtype() {
   // 1. 获取当前输入法
-  const currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+  const currentIme: inputMethod.InputMethodProperty | undefined = inputMethod.getCurrentInputMethod();
   if (!currentIme) {
     console.error("Failed to get current input method");
     return;
   }
-  // 2. 切换输入法
-  await inputMethod.switchInputMethod(currentIme.name);
-  console.info('Succeeded in switching inputmethod.');
+  try {
+    // 2. 切换输入法
+    await inputMethod.switchInputMethod(currentIme.name);
+    console.info('Succeeded in switching inputMethod.');
+  } catch (err) {
+    console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
+  }
   // 3. 获取当前输入法子类型
-  const currentSubtype: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
+  const currentSubtype: InputMethodSubtype | undefined = inputMethod.getCurrentInputMethodSubtype();
   if (!currentSubtype) {
     console.error("Failed to get current input subtype");
     return;
   }
-  // 4. 切换输入法子类型
-  await inputMethod.switchInputMethod(currentIme.name, currentSubtype.id);
-  console.info('Succeeded in switching inputmethod.');
+  try {
+    // 4. 切换输入法子类型
+    await inputMethod.switchInputMethod(currentIme.name, currentSubtype.id);
+    console.info('Succeeded in switching inputMethod.');
+  } catch (err) {
+    console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
+  }
 }
 
 switchInputMethodWithSubtype();
 ```
 
-## InputMethodSetting
+## InputMethodSetting<sup>9+</sup>
 
 下列API均需使用[getSetting](./js-apis-inputmethod.md#inputmethodgetsetting9)获取到InputMethodSetting实例后，通过实例调用。
 
 ### on('imeShow')<sup>10+</sup>
 
-on(type: 'imeShow', callback: (info: Array\<InputWindowInfo>) => void): void
+on(type: 'imeShow', callback: (info: Array&lt;InputWindowInfo&gt;) => void): void
 
 订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘显示事件。使用callback异步回调。
+
+配对调用：
+- 调用on('imeShow')订阅事件后，必须在使用完毕时调用对应的off('imeShow')取消订阅。
+- 取消订阅时可以传入callback参数取消指定回调，或不传参数取消type对应的所有回调。
+- 不取消订阅可能导致回调事件持续触发和内存泄漏。
 
 **系统接口**：此接口为系统接口。
 
@@ -168,9 +181,14 @@ inputMethod.getSetting().onImeShow((info: Array<inputMethod.InputWindowInfo>) =>
 
 ### on('imeHide')<sup>10+</sup>
 
-on(type: 'imeHide', callback: (info: Array\<InputWindowInfo>) => void): void
+on(type: 'imeHide', callback: (info: Array&lt;InputWindowInfo&gt;) => void): void
 
 订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘隐藏事件。使用callback异步回调。
+
+配对调用：
+- 调用on('imeHide')订阅事件后，必须在使用完毕时调用对应的off('imeHide')取消订阅。
+- 取消订阅时可以传入callback参数取消指定回调，或不传参数取消type对应的所有回调。
+- 不取消订阅可能导致回调事件持续触发和内存泄漏。
 
 **系统接口**：此接口为系统接口。
 
@@ -246,7 +264,7 @@ inputMethod.getSetting().onImeHide((info: Array<inputMethod.InputWindowInfo>) =>
 
 ### off('imeShow')<sup>10+</sup>
 
-off(type: 'imeShow', callback?: (info: Array\<InputWindowInfo>) => void): void
+off(type: 'imeShow', callback?: (info: Array&lt;InputWindowInfo&gt;) => void): void
 
 取消订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘显示事件。
 
@@ -303,7 +321,7 @@ inputMethod.getSetting().offImeShow();
 
 ### off('imeHide')<sup>10+</sup>
 
-off(type: 'imeHide', callback?: (info: Array\<InputWindowInfo>) => void): void
+off(type: 'imeHide', callback?: (info: Array&lt;InputWindowInfo&gt;) => void): void
 
 取消订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘隐藏事件。
 
@@ -387,7 +405,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 202      | not system application.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -400,8 +418,12 @@ let info: PanelInfo = {
   flag: PanelFlag.FLAG_FIXED
 }
 
-let result: boolean = inputMethod.getSetting().isPanelShown(info);
-console.info('Succeeded in querying isPanelShown, result: ' + result);
+try {
+  let result: boolean = inputMethod.getSetting().isPanelShown(info);
+  console.info('Succeeded in querying isPanelShown, result: ' + result);
+} catch (err) {
+  console.error(`Failed to query isPanelShown. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ### isPanelShown<sup>23+</sup>
@@ -442,7 +464,7 @@ ArkTS-Sta: isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 202      | not system application.  |
-| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
 
@@ -494,13 +516,13 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
   | -------- | -------- | -------- | -------- |
   | bundleName |  string | 是 | 输入法包名。 |
   | extensionName |  string | 是 | 输入法扩展名。 |
-  | enabledState |  [EnabledState](js-apis-inputmethod.md#enabledstate15) | 是 | 输入法启用状态。 |
+  | enabledState |  [EnabledState](js-apis-inputmethod.md#enabledstate15) | 是 | 输入法启用状态。设置为BASIC_MODE表示启用基础模式，设置为FULL_EXPERIENCE_MODE表示启用完整体验模式。 |
 
 **返回值：**
 
   | 类型           | 说明                     |
   | -------------- | ----------------------- |
-  | Promise\<void> | 无返回结果的Promise对象。 |
+  | Promise&lt;void&gt;  | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -511,7 +533,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 | 201      | permissions check fails. |
 | 202      | not system application. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception.  |
-| 12800018 | the input method is not found. |
+| 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
 
 **示例：**
@@ -531,8 +553,12 @@ function enableInputMethodSafely() {
     .then(() => {
       console.info('Succeeded in enable inputmethod.');
     })
-    .catch((err: BusinessError) => {
-      console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
+    .catch((err) => {
+      if (err instanceof BusinessError) {
+        console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.error(`Failed to enableInputMethod. Error: ${err}`);
+      }
     });
 }
 
@@ -576,8 +602,8 @@ ArkTS-Sta: getCursorInfo(userId?: int): CursorInfo
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------- |
 | 202      | not system application. |
-| 12800003 | input method client error. Possible causes:1. No edit box is bound to the current input method application under the specified user. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800003 | input method client error. Possible causes: 1. No edit box is bound to the current input method application under the specified user. |
+| 12800008 | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
 | 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
@@ -630,11 +656,14 @@ getDefaultInputMethodAbility(): InputMethodProperty
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   const defaultAbility: inputMethod.InputMethodProperty = inputMethod.getSetting().getDefaultInputMethodAbility();
-  console.info(`Succeeded in getting default input method ability, name: ${defaultAbility.name}, id: ${defaultAbility.id}`);
+  console.info('Succeeded in getting default input method ability, name: ' + defaultAbility.name + ', id: ' + defaultAbility.id);
 } catch (err) {
-  console.error(`Failed to getDefaultInputMethodAbility. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getDefaultInputMethodAbility. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -649,6 +678,11 @@ ArkTS-Dyn: showSoftKeyboard(displayId: number): Promise&lt;void&gt;
 ArkTS-Sta: showSoftKeyboard(displayId: long): Promise&lt;void&gt;
 
 在指定屏幕上显示输入法软键盘。使用Promise异步回调。
+
+配合使用：
+- 此方法与hideSoftKeyboard配合使用，可实现对软键盘的显示和隐藏控制
+- 通常在调用showSoftKeyboard显示软键盘后，可在需要时调用hideSoftKeyboard隐藏软键盘
+- 需要编辑框与输入法绑定时才能调用
 
 > **说明：**
 >
@@ -686,8 +720,8 @@ ArkTS-Sta: showSoftKeyboard(displayId: long): Promise&lt;void&gt;
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
 | 202      | not system application.  |
-| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons.|
-| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
 
@@ -814,7 +848,7 @@ ArkTS-Sta: getDefaultInputMethod(userId?: int): InputMethodProperty
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -837,7 +871,12 @@ ArkTS-Sta: getDefaultInputMethod(userId?: int): InputMethodProperty
 **示例：**
 
 ```ts
-let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
+try {
+  let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
+  console.info('Succeeded in getting default input method, name: ' + defaultIme.name + ', id: ' + defaultIme.id);
+} catch (err) {
+  console.error(`Failed to getDefaultInputMethod. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## inputMethod.getSystemInputMethodConfigAbility
@@ -862,7 +901,7 @@ ArkTS-Sta: getSystemInputMethodConfigAbility(userId?: int): ElementName
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。|
 
 **返回值：**
 
@@ -887,7 +926,12 @@ ArkTS-Sta: getSystemInputMethodConfigAbility(userId?: int): ElementName
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 
-let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
+try {
+  let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
+  console.info('Succeeded in getting system input method config ability, bundleName: ' + inputMethodConfig.bundleName);
+} catch (err) {
+  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## inputMethod.switchInputMethodWithUserId
@@ -916,13 +960,13 @@ ArkTS-Sta: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, u
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 目标输入法的包名。 |
 | subtypeId | string | 否 | 输入法子类型的ID。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
-  | 类型                                      | 说明                         |
-  | ----------------------------------------- | ---------------------------- |
-  | Promise\<void> | Promise对象，无返回结果。 |
+| 类型                                      | 说明                         |
+| ----------------------------------------- | ---------------------------- |
+| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -945,7 +989,7 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'ServiceExtAbility', 100).then(() => {
+inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'subtype_001', 100).then(() => {
   console.info('Succeeded in switching input method.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
@@ -957,7 +1001,7 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'ServiceExtAbility', 100).then(() => {
+inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'subtype_001', 100).then(() => {
   console.info('Succeeded in switching input method.');
 }).catch((err: BusinessError): void => {
   console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
@@ -986,7 +1030,7 @@ ArkTS-Sta: getCurrentInputMethod(userId?: int): InputMethodProperty
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -1009,7 +1053,12 @@ ArkTS-Sta: getCurrentInputMethod(userId?: int): InputMethodProperty
 **示例：**
 
 ```ts
-let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
+try {
+  let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
+  console.info('Succeeded in getting current input method, name: ' + currentIme.name + ', id: ' + currentIme.id);
+} catch (err) {
+  console.error(`Failed to getCurrentInputMethod. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## inputMethod.getCurrentInputMethodSubtype
@@ -1034,7 +1083,7 @@ ArkTS-Sta: getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。|
 
 **返回值：**
 
@@ -1059,7 +1108,12 @@ ArkTS-Sta: getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
 
-let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
+try {
+  let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
+  console.info('Succeeded in getting current input method subtype, id: ' + currentImeSubType.id);
+} catch (err) {
+  console.error(`Failed to getCurrentInputMethodSubtype. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ### enableInputMethod
@@ -1068,7 +1122,7 @@ ArkTS-Dyn: enableInputMethod(bundleName: string, extensionName: string, enabledS
 
 ArkTS-Sta: enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: int): Promise&lt;void&gt;
 
-修改指定用户输入法的启用状态。使用Promise异步回调。
+修改指定用户输入法的启用状态。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1089,7 +1143,7 @@ ArkTS-Sta: enableInputMethod(bundleName: string, extensionName: string, enabledS
 | bundleName | string | 是 | 输入法的包名。 |
 | extensionName | string | 是 | 输入法的扩展名。 |
 | enabledState | [EnabledState](js-apis-inputmethod.md#enabledstate15) | 是 | 要修改的启用状态。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -1160,13 +1214,13 @@ ArkTS-Sta: getAllInputMethodsSync(userId?: int): Array&lt;InputMethodProperty&gt
 
 | 参数名 | 类型    | 必填 | 说明                    |
 | ------ | ------- | ---- | ----------------------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
 | 类型                                                 | 说明               |
 | ---------------------------------------------------- | ------------------ |
-| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | 返回所有输入法列表。 |
+| Array&lt;[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)&gt; | 返回所有输入法列表。 |
 
 **错误码：**
 
@@ -1184,7 +1238,12 @@ ArkTS-Sta: getAllInputMethodsSync(userId?: int): Array&lt;InputMethodProperty&gt
 **示例：**
 
 ```ts
-let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
+try {
+  let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
+  console.info('Succeeded in getting all input methods, count: ' + imeProperty.length);
+} catch (err) {
+  console.error(`Failed to getAllInputMethodsSync. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ### getInputMethodSubtypes
@@ -1210,7 +1269,7 @@ ArkTS-Sta: getInputMethodSubtypes(bundleName: string, userId?: int): Array&lt;In
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 指定输入法的包名。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -1237,7 +1296,12 @@ ArkTS-Sta: getInputMethodSubtypes(bundleName: string, userId?: int): Array&lt;In
 import { InputMethodSubtype } from '@kit.IMEKit';
 
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
-let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
+try {
+  let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
+  console.info('Succeeded in getting input method subtypes, count: ' + subtypes.length);
+} catch (err) {
+  console.error(`Failed to getInputMethodSubtypes. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ### getInputMethodsSync
@@ -1268,14 +1332,14 @@ ArkTS-Sta: getInputMethodsSync(enable: boolean, userId?: int): Array&lt;InputMet
 
 | 参数名 | 类型    | 必填 | 说明                    |
 | ------ | ------- | ---- | ----------------------- |
-| enable | boolean | 是   |- 是否激活输入法列表，true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| enable | boolean | 是   |是否激活输入法列表：<br>- true表示返回已激活输入法列表。<br>- false表示返回未激活输入法列表。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
 | 类型                                                 | 说明                          |
 | ---------------------------------------------------- | ----------------------------- |
-| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | 返回已激活/未激活输入法列表。 |
+| Array&lt;[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)&gt; | 返回已激活/未激活输入法列表。 |
 
 **错误码：**
 
@@ -1293,7 +1357,12 @@ ArkTS-Sta: getInputMethodsSync(enable: boolean, userId?: int): Array&lt;InputMet
 **示例：**
 
 ```ts
-let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
+try {
+  let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
+  console.info('Succeeded in getting enabled input methods, count: ' + imeProperty.length);
+} catch (err) {
+  console.error(`Failed to getInputMethodsSync. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## ImeChangeWithUserIdCallback
@@ -1327,6 +1396,11 @@ ArkTS-Sta: type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodP
 onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
 订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。使用callback异步回调。
+
+配对调用：
+- 调用onImeChangeWithUserId订阅事件后，必须在使用完毕时调用offImeChangeWithUserId取消订阅。
+- 取消订阅时可以传入callback参数取消指定回调，或不传参数取消所有监听事件。
+- 不取消订阅可能导致回调事件持续触发和内存泄漏。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
