@@ -216,11 +216,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        OH_AVRecorder_Config config;
        memset(&config, 0, sizeof(config));
    
-       config.audioSourceType = AVRECORDER_MIC;
-       config.profile.audioBitrate = AUDIO_BITRATE; // 112000
-       config.profile.audioChannels = AUDIO_CHANNELS; // 2
-       config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
-       config.profile.audioSampleRate = AUDIO_SAMPLE_RATE; // 48000
        config.videoSourceType = AVRECORDER_SURFACE_YUV;
        config.profile.videoBitrate = VIDEO_BITRATE; // 3000000
        config.profile.videoCodec = AVRECORDER_VIDEO_AVC;
@@ -389,14 +384,12 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        (void)recorder;
        (void)userData;
    
-       // 将reason转换为字符串表示。
        const char *reasonStr =
            (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_USER) ? "USER" :
            (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_BACKGROUND) ? "BACKGROUND" : "UNKNOWN";
    
        if (state == OH_AVRecorder_State::AVRECORDER_IDLE) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange IDLE, reason: %{public}s", reasonStr);
-           // 处理状态变更。
        }
    }
    
@@ -461,7 +454,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        OH_LOG_INFO(LOG_APP, "SetRecorderStateCallback called");
        // ...
    
-       // 设置状态回调。
        OH_AVRecorder_SetStateCallback(g_recorder, OnStateChange, nullptr);
    
        napi_value result;
@@ -474,7 +466,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        OH_LOG_INFO(LOG_APP, "SetRecorderErrorCallback called");
        // ...
    
-       // 设置错误回调。
        OH_AVRecorder_SetErrorCallback(g_recorder, OnError, nullptr);
    
        napi_value result;
@@ -485,7 +476,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static napi_value SetRecorderUriCallback(napi_env env, napi_callback_info info)
    {
        OH_LOG_INFO(LOG_APP, "SetRecorderUriCallback called");
-       // 设置生成媒体文件回调（fileGenerationMode选择AUTO_CREATE时设置）。
        OH_AVRecorder_SetUriCallback(g_recorder, OnUri, nullptr);
        napi_value result;
        napi_create_int32(env, 0, &result);
@@ -518,7 +508,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
        config.metadata.videoOrientation = strdup("90");
    
-       // 获取沙箱路径
        char fileDirPath[1000] = {0};
        int32_t bufferSize = 1000;
        int32_t writeLength = 0;

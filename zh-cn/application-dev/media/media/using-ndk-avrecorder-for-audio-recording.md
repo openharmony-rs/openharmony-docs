@@ -301,14 +301,12 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        (void)recorder;
        (void)userData;
    
-       // 将reason转换为字符串表示。
        const char *reasonStr =
            (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_USER) ? "USER" :
            (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_BACKGROUND) ? "BACKGROUND" : "UNKNOWN";
    
        if (state == OH_AVRecorder_State::AVRECORDER_IDLE) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange IDLE, reason: %{public}s", reasonStr);
-           // 处理状态变更。
        }
    }
    
@@ -349,7 +347,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        OH_LOG_INFO(LOG_APP, "SetRecorderStateCallback called");
        // ...
    
-       // 设置状态回调。
        OH_AVRecorder_SetStateCallback(g_recorder, OnStateChange, nullptr);
    
        napi_value result;
@@ -362,7 +359,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        OH_LOG_INFO(LOG_APP, "SetRecorderErrorCallback called");
        // ...
    
-       // 设置错误回调。
        OH_AVRecorder_SetErrorCallback(g_recorder, OnError, nullptr);
    
        napi_value result;

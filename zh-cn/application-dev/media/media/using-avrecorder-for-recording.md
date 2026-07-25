@@ -225,7 +225,7 @@ export default class AVRecorderService {
         audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
         audioSampleRate: this.audioSampleRate, // 音频采样率。
         fileFormat: media.ContainerFormatType.CFT_MPEG_4A // 封装格式。
-      },
+      } as media.AVRecorderProfile,
       url: 'fd://' + file.fd.toString()
     };
 
