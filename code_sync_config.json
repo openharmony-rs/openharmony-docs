@@ -33635,13 +33635,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/arrowfunctions/src/main/ets/pages/Index.ets",
-				"functions":[
-					{
-						"end_line":47,
-						"name":"counter_example",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
@@ -51376,13 +51370,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/MultiThreadConcurrencyOverview/entry/src/main/ets/managers/actormodel2.ets",
-				"functions":[
-					{
-						"end_line":68,
-						"name":"actor_model2",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
