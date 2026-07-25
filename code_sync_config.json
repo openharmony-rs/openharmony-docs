@@ -62473,6 +62473,11 @@
 						"end_line":1204,
 						"name":"implements_clause",
 						"start_line":1172
+					},
+					{
+						"end_line":1364,
+						"name":"extends_syntax",
+						"start_line":1356
 					}
 				]
 			},
@@ -63907,6 +63912,11 @@
 						"end_line":328,
 						"name":"ts_class_compatibility",
 						"start_line":315
+					},
+					{
+						"end_line":369,
+						"name":"ts_assertion_runtime_type",
+						"start_line":361
 					}
 				]
 			},
@@ -63927,11 +63937,6 @@
 						"end_line":989,
 						"name":"as_keyword_type_assertion",
 						"start_line":961
-					},
-					{
-						"end_line":848,
-						"name":"assertion_runtime_type",
-						"start_line":840
 					},
 					{
 						"end_line":68,
