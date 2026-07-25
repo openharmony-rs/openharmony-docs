@@ -1,22 +1,33 @@
 # @ohos.graphics.text (Text)
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=c405210e654f70f77aa7d490a4b73bc76c5ab117 translatedAt=2026-07-25T04:05:09.616Z pushedAt=2026-07-25T13:14:38.650Z -->
+
 The Text module provides a set of APIs for text layout and font management. It aims to deliver high-quality typesetting through features like character-to-glyph conversion, kerning, line breaking, alignment, and text measurement. Additionally, it provides font management capabilities, including font registration, font descriptors, and font collection management.
 
 This module provides the following classes for creating complex text paragraphs:
 
 - [TextStyle](#textstyle): defines the font type, size, spacing, and other text properties.
+
 - [FontCollection](#fontcollection): manages a collection of different fonts.
+
 - [FontDescriptor](#fontdescriptor14): provides information about font descriptors.
+
 - [ParagraphStyle](#paragraphstyle): controls line break and word break strategies for the entire paragraph.
+
 - [ParagraphBuilder](#paragraphbuilder): used to create different paragraph objects.
+
 - [Paragraph](#paragraph): created by calling [build()](#build) of the **ParagraphBuilder** class.
+
 - [LineTypeset](#linetypeset18): created by calling [buildLineTypeset()](#buildlinetypeset18) of the **ParagraphBuilder** class.
+
 - [TextLine](#textline): paragraph text on a line-by-line basis, obtained by calling [getTextLines()](#gettextlines) of the **Paragraph** class.
+
 - [Run](#run): text typesetting unit, obtained by calling [getGlyphRuns()](#getglyphruns) of the **TextLine** class.
 
 > **NOTE**
@@ -39,7 +50,7 @@ The setting of this API takes effect for the entire process, and all pages in th
 
 You can call this API to set the high contrast mode, or enable or disable the high contrast mode by toggling the switch on the system settings screen. This API is used to set the high contrast mode for text rendering. The setting of this API takes precedence over the one based on system settings.
 
-This API does not take effect for the text drawing scenario.
+This API does not take effect for text drawn by the app through APIs such as Canvas. It only takes effect for text rendered using system text components.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -63,12 +74,13 @@ setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): void
 
 Sets the glyph type to be used when characters are mapped to the .notdef (undefined) glyph.
 
-This setting affects all text rendered subsequently.
+After this API is called, any subsequently rendered text containing undefined glyphs will be displayed according to this setting.
 
 This setting affects how to display undefined characters in the font:
 
 - The default behavior follows the .notdef glyph design of the font.
-- After this feature is enabled, characters without glyphs are displayed as a tofu block of text.
+
+- After this feature is enabled, characters without glyphs are displayed as a tofu block.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -114,7 +126,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -181,7 +193,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -251,7 +263,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -288,6 +300,7 @@ struct Index {
 ```
 
 ## text.getFontDescriptorsFromPath<sup>22+</sup>
+
 getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDescriptor&gt;&gt;   
 
 Obtains an array of font descriptors by font file path. This API uses a promise to return the result.
@@ -298,7 +311,6 @@ Obtains an array of font descriptors by font file path. This API uses a promise 
 >
 > - The **weight** field in [FontDescriptor](#fontdescriptor14) does not exactly correspond to the weight value in the font file. Instead, the actual weight value in the font file is rounded off and mapped to the [FontWeight](#fontweight) enum value. For example, the weight value 350 in the font file is mapped to 400, and the corresponding enum value is W400.
 
-
 **System capability**: SystemCapability.Graphics.Drawing
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
@@ -307,7 +319,7 @@ Obtains an array of font descriptors by font file path. This API uses a promise 
 
 | Name| Type              | Mandatory| Description                             |
 | -----  | ------------------ | ---- | --------------------------------- |
-|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
+| path | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes | Path of the font file to query. Two formats are supported:<br/>1. Absolute path of the font file starting with "file://", for example, "file:///system/fonts/test.ttf".<br/>2. File in the project's resources/rawfile directory, in the format of $rawfile('file name'), for example, $rawfile('test.ttf'). |
 
 **Return value**
 
@@ -326,7 +338,7 @@ struct GetFontDescriptorsFromPathTest {
   build() {
     Column({ space: 10 }) {
       Button("get fontDescriptors")
-        .onClick(async () => {
+        .onClick(() => {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
           promise.then((fontFullDescriptors) => {
             for (let index = 0; index < fontFullDescriptors.length; index++) {
@@ -351,6 +363,7 @@ struct GetFontDescriptorsFromPathTest {
 ```
 
 ## text.getFontUnicodeSet<sup>23+</sup>
+
 getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;number&gt;&gt;
 
 Obtains an array of font Unicode by font file path. This API uses a promise to return the result.
@@ -365,8 +378,8 @@ An empty array is returned if the font file is not found, the font file path is 
 
 | Name| Type              | Mandatory| Description                             |
 | -----  | ------------------ | ---- | --------------------------------- |
-|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
-|  index  | number | Yes| Font index to be loaded when the font file format is TTC or OTC. The index value of a non-TTC/OTC file can only be **0**. If this parameter is set to a negative value or exceeds the actual index range of the font file, an empty array is returned.|
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes | Path of the font file to query, which must be "file:// + absolute path of the font file" or $rawfile('file name in the resources/rawfile directory of the project'). |
+|  index  | number | Yes | Index of the font to load when the font file format is ttc/otc. The value ranges from 0 to count-1, where count is the number of fonts contained in the font file. For non-ttc/otc files, the index can only be 0. If this parameter is negative or exceeds the actual index range of the font file, an empty array is returned. |
 
 **Return value**
 
@@ -385,7 +398,7 @@ struct GetFontUnicodeSetTest {
   build() {
     Column({ space: 10 }) {
       Button("get fontUnicode")
-        .onClick(async () => {
+        .onClick(() => {
           let promise = text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0)
           promise.then((unicodeSet) => {
             for (let index = 0; index < unicodeSet.length; index++) {
@@ -401,6 +414,7 @@ struct GetFontUnicodeSetTest {
 ```
 
 ## text.getFontCount<sup>23+</sup>
+
 getFontCount(path: string | Resource): number
 
 Obtains the number of font files contained in a font file based on the font file path.
@@ -417,7 +431,7 @@ Returns **0** if the font file is not found, the font file path is invalid, the 
 
 | Name| Type              | Mandatory| Description                             |
 | -----  | ------------------ | ---- | --------------------------------- |
-|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes | Path of the font file to query, which must be "file:// + absolute path of the font file" or $rawfile('file name in the resources/rawfile directory of the project'). |
 
 **Return value**
 
@@ -498,7 +512,7 @@ struct GetFontPathsByTypeTest {
 
 isFontSupported(fontURL: string | Resource): boolean
 
-Checks whether the system supports the specified font file.
+Checks whether the system supports the specified font file. You can use this API to verify the availability of a font file before loading a custom font, preventing text rendering exceptions caused by unsupported fonts.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -538,7 +552,6 @@ struct isFontSupportedTest {
   }
 }
 ```
-
 
 ## TextHighContrast<sup>20+</sup>
 
@@ -679,7 +692,7 @@ Enumerates the word break types.
 |-----------------------------| ---- | -------------------------------------------------------------------------------------------------------------------- |
 | NORMAL                      | 0    | Default mode that break words based on language-specific conventions.                                                                 |
 | BREAK_ALL                   | 1    | Allows breaks within any character in non-CJK text. (CJK means Chinese, Japanese, and Korean.) This value is suitable for Asian text that contains some non-Asian text. For example, it can be used to break consecutive English characters.|
-| BREAK_WORD                  | 2    | Allows breaks between any two characters in non-CJK text. It prioritizes breaking at whitespace or other natural breakpoints to keep words intact. If no breakpoints are found, it breaks between any two characters. For CJK text, this behaves like **NORMAL**.|
+| BREAK_WORD                  | 2    | For non-CJK text, breaks lines between any two characters. If a line contains break points (such as whitespace characters), the line breaks at the break points first to keep words intact. If the entire line has no break points, the line breaks between any two characters. For CJK text, this strategy behaves the same as NORMAL. |
 | BREAK_HYPHEN<sup>18+</sup>  | 3    | Attempts to break words at the end of a line using a hyphen. If a hyphen cannot be added, it behaves like **BREAK_WORD**.<br>When using this word break strategy, you need to use the `locale` attribute in [TextStyle](#textstyle) to define the language environment, which affects the word break effect.                       |
 
 ## Decoration
@@ -828,7 +841,7 @@ Enumerates the ellipsis styles.
 
 ## TextShadow
 
-Describes the text shadow.
+Represents a text shadow.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -836,8 +849,8 @@ Describes the text shadow.
 
 | Name         | Type                                                | Read Only| Optional| Description                              |
 | ------------- | ---------------------------------------------------- | --  | ---  | --------------------------------- |
-| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | No |  Yes  | Color of the text shadow. The default value is black (255, 0, 0, 0).       |
-| point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | No |  Yes  | Shadow offset position of the font based on the current text, in which the horizontal and vertical coordinates are greater than or equal to 0, with the unit being physical pixels (px).   |
+| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | No  |  Yes   | Color of the text shadow. The default value is black Color(255, 0, 0, 0).        |
+| point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | No  |  Yes   | Offset position of the text shadow relative to the current text. The horizontal and vertical coordinates must be greater than or equal to 0, in physical pixels (px). The default value is common2D.Point(0, 0). |
 | blurRadius    | number                                               | No |  Yes  | Blur radius, a floating-point value in physical pixels (px), with a default value of **0.0**.      |
 
 ## RectStyle
@@ -866,7 +879,7 @@ Describes a font feature.
 
 | Name     | Type                                                | Read Only| Optional| Description                                      |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
-| name      | string                                               | No |  No  | String identified by the keyword in the font feature key-value pair.      |
+| name      | string                                               | No  |  No   | Keyword identifier in the font feature key-value pair, such as 'liga' (standard ligature), 'kern' (kerning adjustment), etc. |
 | value     | number                                               | No |  No  | Value in the font feature key-value pair.                       |
 
 ## FontVariation
@@ -877,7 +890,7 @@ Describes a font variation.
 
 | Name     | Type                                                | Read Only| Optional| Description                                      |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
-| axis      | string                                               | No |  No  | String identified by the keyword in the font variation key-value pair.<br>**Atomic service API**: This API can be used in atomic services since API version 22.      |
+| axis      | string                                               | No  |  No   | Keyword identifier in the variable font property key-value pair, such as 'wght' (weight), 'wdth' (width), and 'ital' (italic).<br>**Atomic service API:** This API can be used in atomic services since API version 22. |
 | value     | number                                               | No |  No  | Value in the font variation key-value pair.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                       |
 | isNormalized<sup>24+</sup>     | boolean                         | No |  Yes  | Whether to normalize. If the value is **true**, the value range of the value field is -1 to 1, which maps the minimum value to the maximum value configured in the font file. The value **0** indicates the default value configured in the font file. If the value is **false**, the value range of the value field is the adjustable range supported by the font file itself. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 24. |
 
@@ -910,7 +923,7 @@ Enumerates the line height scaling base.
 
 ## TextStyle
 
-Describes a text style.
+Represents a text style, which controls the visual appearance attributes of text, including font, color, font size, spacing, decoration lines, and shadows. TextStyle is applied to subsequently added text content through the [pushStyle](#pushstyle) method of [ParagraphBuilder](#paragraphbuilder), and works together with [ParagraphStyle](#paragraphstyle) (which controls paragraph-level attributes). Within the same paragraph, you can call pushStyle multiple times to apply different styles to different text segments.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -920,25 +933,26 @@ Describes a text style.
 | ------------- | ---------------------------------------------------- | -- | -- | --------------------------------------------------------- |
 | decoration    | [Decoration](#decoration)                            | No| Yes| Text decoration. By default, no decoration is used.            |
 | color         | [common2D.Color](js-apis-graphics-common2D.md#color) | No| Yes| Text color. The default color is white.                        |
-| fontWeight    | [FontWeight](#fontweight)                            | No| Yes| Font weight. The default value is **W400**. Currently, only the default system font supports font weight adjustment. For other fonts, if the weight is less than semi-bold (W600), there is no variation in stroke thickness. If the weight is greater than or equal to semi-bold, it might result in a fake bold effect.                        |
+| fontWeight    | [FontWeight](#fontweight)                            | No  | Yes | Font weight. The default value is W400. Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, only variable fonts in system fonts support font weight adjustment. Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, variable fonts in both system fonts and third-party registered fonts support font weight adjustment. For non-variable fonts, setting a font weight value less than semi-bold (W600) results in no change in font thickness, while setting a font weight value greater than or equal to semi-bold (W600) may trigger a pseudo-bold effect.                         |
 | fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | No| Yes| Font width. The default value is **NORMAL**.                         |
 | fontStyle     | [FontStyle](#fontstyle)                              | No| Yes| Font style. The default value is **NORMAL**.                         |
 | baseline      | [TextBaseline](#textbaseline)                        | No| Yes| Text baseline type. The default value is **ALPHABETIC**.              |
-| fontFamilies  | Array\<string>                                       | No| Yes| Array of font families. By default, the array is empty, indicating that all system fonts are matched.                   |
+| fontFamilies  | Array\<string>                                       | No  | Yes | List of font family names. The default value is empty, which matches the system font. When using a custom font, specify the name used when loading the font in this list. When set together with fontTypefaces, fontTypefaces takes precedence and fontFamilies does not take effect.                    |
+| fontTypefaces | Array\<[drawing.Typeface](arkts-apis-graphics-drawing-Typeface.md)> | No  | Yes | Array of specified typesetting font objects, used to prioritize the specified font objects for text shaping and skip the font matching process. When a font object in the array cannot shape some characters, the unshaped characters will be shaped using the system font. The default value is an empty array, indicating that no font object is specified and the default font matching process is used.<br/>When fontTypefaces is set together with [TextStyle](#textstyle).fontFamilies, fontTypefaces takes precedence.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
 | fontSize      | number                                               | No| Yes| Font size, a floating-point value with a default value of **14.0**, measured in physical pixels (px). |
 | letterSpacing | number                                               | No| Yes| Character spacing, a floating-point value in physical pixels (px) with a default value of **0.0**. A positive value widens the character gap, while a negative value narrows it.|
 | wordSpacing   | number                                               | No| Yes| Word spacing, a floating-point value in physical pixels (px) with a default value of **0.0**.                |
 | heightScale   | number                                               | No| Yes| Scale factor of the line height. The value is a floating point number. The default value is **1.0**. This parameter is valid only when **heightOnly** is set to** true**.              |
-| heightOnly    | boolean                                              | No| Yes| How the height of the text box is set. The value **true** means that the height of the text box is set based on the font size and the value of **heightScale**, and **false** means that the height is set based on the line height and line spacing. The default value is **false**.|
+| heightOnly    | boolean                                              | No  | Yes | The value **true** means the text box height is set based on the font size and heightScale, and **false** means the text box height is set based on the line height and line spacing. The default value is **false**. |
 | halfLeading   | boolean                                              | No| Yes| Whether half leading is enabled. Half leading is the leading split in half and applied equally to the top and bottom edges. The value **true** means that half leading is enabled, and **false** means the opposite. The default value is **false**.|
-| ellipsis      | string                                               | No| Yes| Ellipsis content, which will be used to replace the extra content.      |
+| ellipsis      | string                                               | No  | Yes | Ellipsis text. When the ellipsis takes effect, this field value replaces the ellipsis portion. The default value is an empty string, which uses the system default ellipsis … (U+2026). When configured together with the tab attribute of ParagraphStyle, the tab attribute does not take effect. |
 | ellipsisMode  | [EllipsisMode](#ellipsismode)                        | No| Yes| Ellipsis type. The default value is **END**, indicating that the ellipsis is at the end of a line.                      |
 | locale        | string                                               | No| Yes| Language type. For example, **'en-Latn'** indicates English (Latin script), **'zh-Hans'** indicates Simplified Chinese, and **'zh-Hant'** indicates Traditional Chinese. Supports two-segment language tags in the language-script format, where language complies with the ISO 639-1 standard and script complies with the ISO 15924 standard. If the locale is not specified, set to an empty string, or set to **undefined**, the default locale is **'zh-Hans'**.|
-| baselineShift | number                                               | No| Yes| Underline offset of text, a floating-point value in physical pixels (px), with a default value of **0.0**.                |
-| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | No| Yes| Array of font features.|
-| fontVariations| Array\<[FontVariation](#fontvariation)>              | No| Yes| Array of font variations.|
-| textShadows   | Array\<[TextShadow](#textshadow)>                    | No| Yes| Array of shadows.|
-| backgroundRect| [RectStyle](#rectstyle)                              | No| Yes| Rectangle style.|
+| baselineShift | number                                               | No  | Yes | Vertical offset distance of the text baseline, in physical pixels (px). The default value is **0.0**. |
+| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | No  | Yes | Array of text font features. Pass this parameter when you need to enable or disable specific font features (such as ligatures, kerning adjustment, etc.).|
+| fontVariations| Array\<[FontVariation](#fontvariation)>              | No  | Yes | Array of variable font properties. Pass this parameter when you need to adjust the variable axis parameters of a variable font (such as the font weight axis, font width axis, etc.).|
+| textShadows   | Array\<[TextShadow](#textshadow)>                    | No  | Yes | Array of text shadows. Pass this parameter when you need to add shadow effects to text.|
+| backgroundRect| [RectStyle](#rectstyle)                              | No  | Yes | Text rectangle style. Pass this parameter when you need to add a background rectangle to text (such as setting the background color, rounded corners, etc.).|
 | badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | No  | Yes  | Sets whether to use superscript or subscript in text layout. **TEXT_SUPERSCRIPT** indicates that superscript is enabled, and **TEXT_SUBSCRIPT** indicates that subscript is enabled. The default value is **TEXT_BADGE_NONE**, indicating that neither superscript nor subscript is enabled.|
 | lineHeightMaximum<sup>21+</sup> | number | No  | Yes  | Maximum line height, in physical pixels (px). If the line height is scaled, the maximum line height takes effect when [TextStyle](#textstyle).heightScale is greater than 0. The value is a positive floating point number. The default value is **Number.MAX_VALUE**.|
 | lineHeightMinimum<sup>21+</sup> | number | No| Yes| Minimum line height, in physical pixels (px). If the line height is scaled, the minimum line height takes effect when [TextStyle](#textstyle).heightScale is greater than 0. The value is a non-negative floating point number. The default value is **0**.|
@@ -958,7 +972,7 @@ Describes the strut style, which determines the line spacing, baseline alignment
 | fontFamilies   | Array\<string>                                       | No  | Yes| Array of font families. By default, the array is empty, indicating that all system fonts are matched.                                              |
 | fontStyle      | [FontStyle](#fontstyle)                              | No  | Yes| Font style. The default value is **NORMAL**.                                              |
 | fontWidth      | [FontWidth](#fontwidth)                              | No  | Yes| Font width. The default value is **NORMAL**.                                               |
-| fontWeight     | [FontWeight](#fontweight)                            | No  | Yes| Font weight. The default value is **W400**. The default system font supports font weight adjustment. For other fonts, if the weight is less than W600, there is no variation in stroke thickness. If the weight is greater than or equal to W600, it might result in a fake bold effect.                            |
+| fontWeight     | [FontWeight](#fontweight)                            | No   | Yes | Font weight. The default value is **W400**. Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, only variable fonts in system fonts support font weight adjustment. Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, both system fonts and variable fonts in third-party registered fonts support font weight adjustment. For non-variable fonts, the font thickness does not change when the font weight value is set to less than **W600**, and a faux bold effect may be triggered when the font weight value is set to **W600** or greater.                             |
 | fontSize       | number                                               | No  | Yes| Font size, a floating-point value with a default value of **14.0**, measured in physical pixels (px).                            |
 | height         | number                                               | No  | Yes| Scale factor of the line height. The value is a floating point number. The default value is **1.0**.                                        |
 | leading        | number                                               | No  | Yes| Custom line spacing applied to the strut, a floating-point value in physical pixels (px), with a default value of **-1.0**.                         |
@@ -997,6 +1011,8 @@ Describes the font descriptor information.
 | variationAxisRecords<sup>24+</sup> | Array<[FontVariationAxis](#fontvariationaxis24)> | No| Yes| Font variable axis record array, which is used to describe the variable axis information supported by the font. For non-variable fonts, this field is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 | variationInstanceRecords<sup>24+</sup> | Array<[FontVariationInstance](#fontvariationinstance24)> | No| Yes| Font variable instance record array, which is used to describe the variable instance information supported by the font. For non-variable fonts, this field is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 | index<sup>23+</sup> | number | No| Yes| Font index. This parameter is valid only when the font file is in TTC format. The value is **0** for the TTF format.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
+| languages | Array\<string> | No | Yes | List of languages supported by the font. The default value is an empty array. Each element in the array is a language tag string in BCP 47 format (such as 'en' and 'zh-Hans'), indicating the writing languages supported by the font.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| fontFeatures | Array\<string> | No | Yes | Array of OpenType feature tags supported by the font. The default value is an empty array. Each element in the array is a feature tag string (such as 'liga' for standard ligatures and 'kern' for kerning adjustment), indicating the font features supported by the font.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## FontVariationAxis<sup>24+</sup>
 
@@ -1032,7 +1048,7 @@ Font variable instance information, which stores preset variable font style info
 
 ## FontCollection
 
-Implements a collection of fonts.
+Represents a font collection, which manages the font resources required for text typesetting. FontCollection provides font matching and glyph lookup capabilities for [ParagraphBuilder](#paragraphbuilder), and serves as a fundamental component of the text typesetting pipeline. It provides a global instance ([getGlobalInstance](#getglobalinstance)) and local instances ([getLocalInstance](#getlocalinstance22)). Fonts loaded by the global instance are shared within the app, making it suitable for common app scenarios. Local instances are independent of each other, and fonts loaded by a local instance take effect only for that instance without affecting others, making them recommended for widget scenarios. Custom fonts can be loaded through [loadFontSync](#loadfontsync) or [loadFont](#loadfont18).
 
 ### getGlobalInstance
 
@@ -1048,7 +1064,7 @@ Obtains a global **FontCollection** instance.
 
 | Type  | Description               |
 | ------ | ------------------ |
-| [FontCollection](#fontcollection) | **FontCollection** instance.|
+| [FontCollection](#fontcollection) | Global FontCollection instance object of the app, which can be used to manage font loading, unloading, typesetting, and other operations. |
 
 **Example**
 
@@ -1089,7 +1105,7 @@ Obtains the local **FontCollection** instance. This API is recommended for widge
 
 | Type  | Description               |
 | ------ | ------------------ |
-| [FontCollection](#fontcollection) | **FontCollection** instance.|
+| [FontCollection](#fontcollection) | Local FontCollection instance object, recommended for widget scenarios. It can be used to manage font loading, unloading, and typesetting operations. |
 
 **Example**
 
@@ -1176,7 +1192,7 @@ Loads the custom font. This API uses a promise to return the result. In this API
 
 | Type          | Description                         |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1184,7 +1200,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1230,7 +1246,7 @@ Loads a custom font. This API returns the result synchronously. In this API, **n
 | Name| Type              | Mandatory| Description                             |
 | ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
 | name  | string             | Yes  | Name of the font. Any string is acceptable.|
-| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to be loaded. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
+| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes   | Path of the font file to load. Two formats are supported: "file:// + absolute path of the font file" or $rawfile('font file path'). |
 |   index  | number | No  | Font index to be loaded when the font file format is TTC. The default value is **0**, indicating that the first font of the TTC file is loaded.<br>The index value of a non-TTC file is meaningless. If an index is specified, the value can only be **0**.|
 
 **Error codes**
@@ -1246,7 +1262,7 @@ For details about the following error code, see [Drawing and Display Error Codes
 | 25900005 | Failed to get the file size. |
 | 25900006 | Failed to read the file. |
 | 25900007 | Empty file. |
-| 25900008 | Corrupt file. |
+| 25900008 | Corrupted file. |
 
 **Example**
 
@@ -1303,7 +1319,7 @@ Loads a custom font. This API uses a promise to return the result. In this API, 
 |   Name| Type              | Mandatory| Description                             |
 |   -----  | ------------------ | ---- | --------------------------------------------------------------------------------- |
 |   name   | string             | Yes  | Name of the font. Any string is acceptable.|
-|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to be loaded. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
+|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes   | Path of the font file to load. Two formats are supported: "file:// + absolute path of the font file" or $rawfile('font file path'). |
 |   index  | number | No  | Font index to be loaded when the font file format is TTC. The default value is **0**, indicating that the first font of the TTC file is loaded.<br>The index value of a non-TTC file is meaningless. If an index is specified, the value can only be **0**.|
 
 **Return value**
@@ -1325,7 +1341,7 @@ For details about the following error code, see [Drawing and Display Error Codes
 | 25900005 | Failed to get the file size. |
 | 25900006 | Failed to read the file. |
 | 25900007 | Empty file. |
-| 25900008 | Corrupt file. |
+| 25900008 | Corrupted file. |
 
 **Example**
 
@@ -1370,6 +1386,7 @@ struct Index {
 ```
 
 ### unloadFontSync<sup>20+</sup>
+
 unloadFontSync(name: string): void
 
 Uninstalls a specified custom font. This API is synchronous.
@@ -1379,7 +1396,9 @@ After this API is called to unload a custom font corresponding to a font alias, 
 All layout objects that use the font alias must be destroyed and recreated.
 
 - Unloading a non-existent font alias does not produce any effect and does not throw an error.
+
 - This operation only affects future font usage.
+
 - Unloading a font that is currently in use may lead to text rendering exceptions (such as garbled characters or missing glyphs).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
@@ -1427,6 +1446,7 @@ struct UnloadFontSyncTest {
 ```
 
 ### unloadFont<sup>20+</sup>
+
 unloadFont(name: string): Promise\<void>
 
 Uninstalls a specified custom font. This API uses a promise to return the result.
@@ -1436,7 +1456,9 @@ After this API is called to unload a custom font corresponding to a font alias, 
 All layout objects that use the font alias must be destroyed and recreated.
 
 - Unloading a non-existent font alias does not produce any effect and does not throw an error.
+
 - This operation only affects future font usage.
+
 - Unloading a font that is currently in use may lead to text rendering exceptions (such as garbled characters or missing glyphs).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
@@ -1455,7 +1477,7 @@ All layout objects that use the font alias must be destroyed and recreated.
 
 | Type          | Description                     |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Example**
 
@@ -1493,7 +1515,7 @@ struct UnloadFontTest {
 
 clearCaches(): void
 
-Clears the font cache. (The font cache has a memory limit and a clearing mechanism. It occupies limited memory. You are not advised to clear it unless otherwise required.)
+Clears the font typesetting cache. The font typesetting cache has a memory limit and an automatic clearing mechanism. It occupies limited memory. You are not advised to clear it unless there are special memory requirements.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -1560,11 +1582,9 @@ struct Index {
 }
 ```
 
-
-
 ## ParagraphStyle
 
-Describes a paragraph style.
+Represents a paragraph style, which controls the overall layout behavior of a paragraph, including attributes such as alignment, line break strategy, and maximum number of lines. ParagraphStyle serves as a required parameter of the [ParagraphBuilder](#paragraphbuilder) constructor, and works together with [TextStyle](#textstyle) (which controls text-level styles) to determine the final typesetting result of the paragraph.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1581,17 +1601,19 @@ Describes a paragraph style.
 | tab<sup>18+</sup>   | [TextTab](#texttab18)  | No  | Yes  | Alignment mode and position of the text after the tab character in a paragraph. By default, the tab character is replaced with a space. This parameter is invalid when it is used together with the **align** parameter or the **ellipsis** parameter in [TextStyle](#textstyle).<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | trailingSpaceOptimized<sup>20+</sup>   | boolean | No  | Yes  | Whether to consider the alignment impact of trailing spaces during text layout. The value **true** indicates that the alignment impact of trailing spaces is ignored, and the value **false** indicates that the alignment impact of trailing spaces is considered. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | autoSpace<sup>20+</sup>   | boolean | No  | Yes  | Sets whether to enable automatic spacing during text typography. **true** indicates that the automatic spacing feature is enabled. In this case, automatic spacing applies between CJK (Chinese, Japanese, and Korean) and Western characters (Latin, Cyrillic, and Greek), between CJK and digits, between CJK and copyright symbols, between copyright symbols and digits, and between copyright symbols and Western characters. **false** (default) indicates that the automatic spacing feature is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | No  | Yes  | Vertical alignment of text. This parameter takes effect when line height scaling (that is, **heightScale** of [TextStyle](#textstyle)) is enabled or different font sizes (that is, **fontSize** of [TextStyle](#textstyle)) are set for text in a line. If superscript and subscript text (that is, **badgeType** of [TextStyle](#textstyle)) is set in a line, the superscript and subscript text will participate in vertical alignment as common text.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| lineSpacing<sup>21+</sup>   | number | No  | Yes  | Line spacing, in physical pixels (px). The default value is **0**. **lineSpacing** is not restricted by **lineHeightMaximum** and **lineHeightMinimum** in [TextStyle](#textstyle). By default, the line spacing is reserved for the last line. You can set [TextStyle](#textstyle).textHeightBehavior to **DISABLE_ALL** or **DISABLE_LAST_ASCENT** to disable the line spacing for the last line.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | No   | Yes   | Text vertical alignment mode. The default value is BASELINE, which means text baseline alignment. This attribute takes effect when line height scaling is enabled (that is, when [TextStyle](#textstyle)'s heightScale is set) or when text in different font sizes is mixed in a line (that is, when [TextStyle](#textstyle)'s fontSize is set). If there is superscript or subscript text in the line (that is, text with [TextStyle](#textstyle)'s badgeType attribute set), the superscript or subscript text participates in vertical alignment in the same way as normal text.<br>**Atomic service API:** This API can be used in atomic services since API version 22.|
+| lineSpacing<sup>21+</sup>   | number | No   | Yes   | Line spacing, in physical pixels (px). The default value is **0**. lineSpacing is not restricted by lineHeightMaximum and lineHeightMinimum in [TextStyle](#textstyle). The last line retains line spacing by default. You can disable line spacing for the last line by setting [ParagraphStyle](#paragraphstyle)'s textHeightBehavior to DISABLE_ALL or DISABLE_LAST_ASCENT.<br>**Atomic service API:** This API can be used in atomic services since API version 22. |
 | compressHeadPunctuation<sup>23+</sup>   | boolean | No  | Yes  | Sets whether to use punctuation compression at the beginning of a line in text layout. **true** means yes; **false** otherwise. The default value is **false**.<br>**NOTE**<br>1. The font file must support the ss08 feature in [FontFeature](#fontfeature). Otherwise, compression cannot be performed.<br>2. Only the punctuations within the punctuation compression range at the beginning of a line are in the scope of this feature.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | includeFontPadding<sup>23+</sup> | boolean | No| Yes| Sets whether to use padding at the beginning and end of a line in text layout. **true** means yes; **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | fallbackLineSpacing<sup>23+</sup> | boolean | No| Yes| Sets whether to enable line height rollback during text layout. If the set line height is less than the actual line height, the line height is rolled back to the actual line height. **true** means yes; **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| orphanCharOptimization | boolean | No| Yes| Sets whether to enable orphan optimization during text typesetting. Orphan optimization improves text layout by more efficiently handling orphan characters (the first character in the last line of a paragraph). When enabled, it adjusts line break positions to avoid orphan characters as much as possible. Orphan optimization takes effect only when [wordBreak](#wordbreak) is not BREAK_ALL and the [locale](#textstyle) of the first [TextStyle](#textstyle) of the text to be typeset is "zh-Hans" or "zh-Hant". **true** means that orphan optimization is enabled, and **false** means the opposite. The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
-| firstLineHeadIndent | number | No| Yes| Sets the first-line indent of a paragraph. The indent value must be greater than or equal to 0. The default value is **0**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
-| tailIndents | Array\<number> | No| Yes| Sets the end-of-line indent array. Each element in the array represents the indent value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines. All indent values must be greater than or equal to 0. By default, the array is empty.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
-| headIndents | Array\<number> | No| Yes| Sets the line-start indent array. Each element in the array represents the indent value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines. All indent values must be greater than or equal to 0. By default, the array is empty.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+| punctuationOverflow | boolean | No   | Yes   | Whether to enable end-of-line punctuation hanging during text typesetting. The value **true** enables end-of-line punctuation hanging, allowing a single punctuation mark at the end of a line to exceed the typesetting width without wrapping. The value **false** disables end-of-line punctuation hanging. The default value is **false**.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| orphanCharOptimization | boolean | No | Yes | Whether to enable orphan character optimization during text typesetting. Orphan character optimization improves text layout by handling isolated characters (the first character of the last line of a paragraph) more efficiently. When enabled, it adjusts line break points to avoid isolated characters as much as possible. The orphan character optimization feature takes effect only when [wordBreak](#wordbreak) is not BREAK_ALL and the locale of the first [TextStyle](#textstyle) of the text to be typeset is "zh-Hans" or "zh-Hant". The value **true** enables orphan character optimization, and **false** disables it. The default value is **false**.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| firstLineHeadIndent | number | No | Yes | First line indent of the paragraph. The indent value must be greater than or equal to 0, in physical pixels (px). The default value is **0**.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| tailIndents | Array\<number> | No | Yes | Array of tail indents. Each element in the array represents the indent value of one line. When the actual number of text lines exceeds the number of elements in the indent array, the indent of the excess lines is the last value in the array. All indent values must be greater than or equal to 0, in physical pixels (px). The default value is an empty array.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| headIndents | Array\<number> | No | Yes | Array of head indents. Each element in the array represents the indent value of one line. When the actual number of text lines exceeds the number of elements in the indent array, the indent of the excess lines is the last value in the array. All indent values must be greater than or equal to 0, in physical pixels (px). The default value is an empty array.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
 
 Punctuation range at the beginning of a line.
+
 | Punctuation| Unicode Code Point| Unicode Name|
 |---------|---------|-------------|
 | 「| U+300C | LEFT CORNER BRACKET |
@@ -1606,7 +1628,6 @@ Punctuation range at the beginning of a line.
 | 〔| U+3014 | LEFT TORTOISE SHELL BRACKET |
 | ［| U+FF3B | FULLWIDTH LEFT SQUARE BRACKET |
 | ｛| U+FF5B | FULLWIDTH LEFT CURLY BRACKET |
-
 
 ## PlaceholderAlignment
 
@@ -1741,7 +1762,7 @@ Performs layout and calculates the positions of all glyphs. This API uses a prom
 
 | Type          | Description                         |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1749,7 +1770,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1789,13 +1810,14 @@ struct Index {
   @State pixelmap?: PixelMap = undefined;
   fun: Function = textFunc;
 
-  async prepareLayoutPromise() {
-    // Calculate the layout of the paragraph object.
-    paragraph.layout(200).then((data) => {
-      console.info(`Succeeded in doing layout,  ${JSON.stringify(data)}`);
-    }).catch((error: Error) => {
-      console.error(`Failed to do layout, error: ${JSON.stringify(error)} message: ${error.message}`);
-    });
+async prepareLayoutPromise() {
+    try {
+      await paragraph.layout(200);
+      console.info('Succeeded in doing layout');
+    } catch (error) {
+      let e: Error = error as Error;
+      console.error(`Failed to do layout, error: ${JSON.stringify(e)} message: ${e.message}`);
+    }
   }
 
   aboutToAppear() {
@@ -1823,9 +1845,9 @@ struct Index {
 }
 ```
 
->**NOTE**
+> **NOTE**
 >
->The following figure shows the running result of the sample code of the **layout** API after the button is tapped.
+> The figure shows the running result of the sample code for the layout API after the button is clicked.
 >
 >![layout.png](figures/layout.png)
 
@@ -1868,7 +1890,7 @@ for (let i = 0; i < result.fitStrRange.length; ++i) {
 
 paint(canvas: drawing.Canvas, x: number, y: number): void
 
-Paints the text on the canvas with the coordinate point (x, y) as the upper left corner.
+Draws text on the canvas with (x, y) as the upper-left corner. You must call [layout()](#layout18) for typesetting before calling this API; otherwise, the text content cannot be displayed correctly.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1896,7 +1918,7 @@ paragraph.paint(canvas, 0, 0);
 
 paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset: number): void
 
-Draws text along a path on the canvas.
+Draws text along a path on the canvas. You must call [layout()](#layout18) for typesetting before calling this API; otherwise, the text content cannot be displayed correctly.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -2091,7 +2113,7 @@ Obtains the ideographic baseline.
 
 | Type  | Description                 |
 | ------ | -------------------- |
-| number | Ideographic baseline, in units of px. The value is a floating point number.|
+| number | Baseline position under ideographic characters, a floating point number in physical pixels (px). |
 
 **Example**
 
@@ -2245,7 +2267,7 @@ Obtains the height of a given line.
 
 | Name| Type  | Mandatory| Description     |
 | ----- | ------ | ---- | --------- |
-| line  | number | Yes  | Index of the line. The value is an integer ranging from 0 to getLineCount() – 1.|
+| line  | number | Yes  | Index of the text line, which is an integer ranging from 0 to [getLineCount](#getlinecount)-1.|
 
 **Return value**
 
@@ -2273,7 +2295,7 @@ Obtains the width of a given line.
 
 | Name| Type  | Mandatory| Description     |
 | ----- | ------ | ---- | --------- |
-| line  | number | Yes  | Index of the line. The value is an integer ranging from 0 to getLineCount() – 1.|
+| line  | number | Yes  | Text line index, which is an integer ranging from 0 to [getLineCount](#getlinecount)-1.|
 
 **Return value**
 
@@ -2360,7 +2382,6 @@ Obtains the actually visible text range in the specified line, excluding any ove
 let rang = paragraph.getActualTextRange(0, true);
 ```
 
-
 ### getLineMetrics
 
 getLineMetrics(): Array\<LineMetrics>
@@ -2397,7 +2418,7 @@ Obtains the line measurement information of a line.
 
 | Name| Type  | Mandatory| Description     |
 | ----- | ------ | ---- | --------- |
-| lineNumber  | number | Yes  | Line number, starting from 0.|
+| lineNumber  | number | Yes   | Number of the line for which metric information is to be queried. Line numbers start from 0, and the maximum line index is the number of text lines minus 1. The number of text lines can be obtained through the [getLineCount](#getlinecount) API. |
 
 **Return value**
 
@@ -2413,7 +2434,7 @@ let lineMetrics =  paragraph.getLineMetrics(0);
 
 ### updateColor<sup>20+</sup>
 
-updateColor(color: common2D.Color): void;
+updateColor(color: common2D.Color): void
 
 Updates the color of the entire text span. This API call also updates the decoration color if it hasn't been set yet.
 
@@ -2435,7 +2456,7 @@ paragraph.updateColor({ alpha: 255, red: 255, green: 0, blue: 0 });
 
 ### updateDecoration<sup>20+</sup>
 
-updateDecoration(decoration: Decoration): void;
+updateDecoration(decoration: Decoration): void
 
 Updates the decoration line of the entire text span.
 
@@ -2832,12 +2853,13 @@ Obtains the style configuration of a paragraph.
 
 | Type| Description|
 | - | - |
-| [ParagraphStyle](#paragraphstyle) | Paragraph style configuration.|
+| [ParagraphStyle](#paragraphstyle) | Style configuration of the paragraph.<br>The `textStyle.color`, `textStyle.textShadows.color`, `textStyle.backgroundRect.color`, and `textStyle.decoration.color` properties return a 32-bit unsigned integer color value. Example: The return value `4278190080` corresponds to the pure black hexadecimal color value `0xFF000000`, which is equivalent to the [common2D.Color](js-apis-graphics-common2D.md#color) object parameters: alpha=255, red=0, green=0, blue=0. The example provides the numberToRGBA conversion method as a reference. |
 
 **Example**
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -2862,8 +2884,89 @@ struct Index {
           let paragraphStyle = paragraph.getParagraphStyle();
           if (paragraphStyle.textStyle != undefined) {
             console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+            if (paragraphStyle.textStyle?.color != undefined && typeof paragraphStyle.textStyle?.color == 'number') {
+              let textColor: common2D.Color = numberToRGBA(paragraphStyle.textStyle?.color);
+              console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
+            }
           }
         })
+    }
+  }
+}
+
+function numberToRGBA(colorNum: number): common2D.Color {
+  const a = (colorNum >>> 24) & 0xFF;
+  const r = (colorNum >>> 16) & 0xFF;
+  const g = (colorNum >>> 8) & 0xFF;
+  const b = colorNum & 0xFF;
+  return { alpha: a, red: r, green: g, blue: b };
+}
+```
+
+### forceReuseRasterResult
+
+forceReuseRasterResult(isForce: boolean): void
+
+Sets whether to force reuse of the rasterization result. If this API is not called, the system allows updating the rasterization result by default.
+
+This API is suitable for scenarios where the text content remains unchanged but [paint](#paint) needs to be called multiple times for drawing. By reusing the rasterization result, repeated rasterization calculations can be avoided to improve drawing performance. After this setting is applied, it takes effect the next time [paint](#paint) is called for drawing.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+|  ---   | ---  | ---  | ---  |
+| isForce | boolean | Yes | Whether to force reuse of the rasterization result. The value **true** means to force reuse of the rasterization result, and **false** means to allow updating the rasterization result. |
+
+**Example**
+
+```ts
+// Index.ets
+import { text, drawing } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
+ 
+function textFunc(pixelmap: PixelMap) {
+  let canvas = new drawing.Canvas(pixelmap);
+  let textData = "Hello World";
+  let myTextStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle: myTextStyle
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.addText(textData);
+  let paragraph = paragraphBuilder.build();
+  paragraph.layoutSync(200);
+  paragraph.forceReuseRasterResult(true);
+  paragraph.paint(canvas, 0, 0);
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: PixelMap = undefined;
+  fun: Function = textFunc;
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button("Click").onClick(() => {
+        if (this.pixelmap == undefined) {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          this.pixelmap = image.createPixelMapSync(color, opts);
+        }
+        this.fun(this.pixelmap);
+      })
     }
   }
 }
@@ -2904,7 +3007,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2943,7 +3046,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3060,7 +3163,7 @@ Enumerates the affinity modes.
 
 ## ParagraphBuilder
 
-Implements a paragraph builder.
+Implements a paragraph builder that uses the builder pattern to construct paragraph objects. Developers initialize ParagraphBuilder by passing [ParagraphStyle](#paragraphstyle) and [FontCollection](#fontcollection) to the constructor, then set the text style through [pushStyle](#pushstyle), add text content through [addText](#addtext), and finally call [build()](#build) to generate a [Paragraph](#paragraph) object for typesetting and drawing.
 
 ### constructor
 
@@ -3077,7 +3180,7 @@ A constructor used to create a **ParagraphBuilder** object.
 | Name        | Type                              | Mandatory| Description       |
 | -------------- | --------------------------------- | ---- | ----------- |
 | paragraphStyle | [ParagraphStyle](#paragraphstyle) | Yes  | Paragraph style.  |
-| fontCollection | [FontCollection](#fontcollection) | Yes  | Font collection.|
+| fontCollection | [FontCollection](#fontcollection) | Yes | Font collection object that provides font resources required for text typesetting, used for glyph matching and text rendering during paragraph construction. |
 
 **Example**
 
@@ -3134,10 +3237,7 @@ Applies a new style to the current text blob.
 **Example**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -3173,6 +3273,10 @@ popStyle(): void
 
 Restores the previous text style.
 
+> **NOTE**
+>
+> This method must be called after [pushStyle()](#pushstyle). After it is called, subsequently added text will use the text style before the pop operation. If the style stack is empty, the textStyle in [ParagraphStyle](#paragraphstyle) will be used as the default style.
+
 **System capability**: SystemCapability.Graphics.Drawing
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
@@ -3180,10 +3284,7 @@ Restores the previous text style.
 **Example**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -3233,10 +3334,7 @@ Inserts a text string into the paragraph being built.
 **Example**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -3270,7 +3368,7 @@ struct Index {
 
 addPlaceholder(placeholderSpan: PlaceholderSpan): void
 
-Inserts a placeholder into the paragraph being built.
+Inserts a placeholder when building a text paragraph. After insertion, the placeholder occupies the corresponding space in paragraph typesetting according to the specified width, height, and alignment, and affects text line breaking and layout.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -3285,10 +3383,7 @@ Inserts a placeholder into the paragraph being built.
 **Example**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myParagraphStyle: text.ParagraphStyle = {
@@ -3324,7 +3419,7 @@ struct Index {
 
 build(): Paragraph
 
-Creates a paragraph object that can be used for subsequent layout and rendering.
+Builds a paragraph and generates a paragraph object that can be used for subsequent typesetting and rendering. After build() is called, a new ParagraphBuilder instance must be created to build text again.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -3339,8 +3434,7 @@ Creates a paragraph object that can be used for subsequent layout and rendering.
 **Example**
 
 ```ts
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -3375,7 +3469,7 @@ struct Index {
 
 buildLineTypeset(): LineTypeset
 
-Builds a line typesetter.
+Builds a line typesetter and generates a LineTypeset object that can be used for line-by-line typesetting calculation.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -3481,17 +3575,17 @@ Describes the typographic boundaries of a text line. These boundaries depend on 
 | leading | number | No| No| Leading of a text line, which is a floating-point value in physical pixels (px).|
 | width | number | No| No| Total width of the layout boundary, which is a floating-point value in physical pixels (px).|
 
->**NOTE**
+> **NOTE**
 >
->The following figure shows the layout parameters of a text line: width (width of the text line including the left and right spaces), ascent (highest point of the rising height), descent (lowest point of the falling height), leading (line spacing), top (highest point of the current line), baseline (character baseline), bottom (lowest point of the current line), and next line top (highest point of the next line).
+> The figure shows the text line typesetting parameters: width (the width of the text line including left and right spaces), ascent (the highest point of the ascent), descent (the lowest point of the descent), leading (line spacing), top (the highest point of the current line), baseline (the character baseline), bottom (the lowest point of the current line), and next line top (the highest point of the next line).
 >
 >![Typographic.png](figures/Typographic.png)
 >
->The following figure shows the typographic boundaries of the string " a b ".
+> The figure shows the typesetting boundaries for the string " a b ".
 >
 >![TypographicBounds.png](figures/TypographicBounds.png)
 >
->The following figure shows the typographic boundaries of the strings "j" and "E".
+> The figure shows the typesetting boundaries for the string "j" or "E".
 >
 >![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
@@ -3506,6 +3600,7 @@ Defines the callback used to receive the offset and index of each character in a
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | - | - | - | - |
 | offset | number | Yes| Offset of each character in the text line, which is a floating-point value, in physical pixels (px).|
@@ -3523,6 +3618,7 @@ Defines the callback used to receive the offset and index of each character in a
 Implements a carrier that describes the basic text line structure of a paragraph.
 
 Before calling any of the following APIs, you must use [getTextLines()](#gettextlines) of the [Paragraph](#paragraph) class or [createLine()](#createline18) of the [LineTypeset](#linetypeset18) class to create a **TextLine** object.
+
 ### getGlyphCount
 
 getGlyphCount(): number
@@ -3610,10 +3706,9 @@ Paints this text line on the canvas with the coordinate point (x, y) as the uppe
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
-import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
 import { image } from '@kit.ImageKit'
 
 function textFunc(pixelmap: PixelMap) {
@@ -3669,8 +3764,9 @@ Creates a truncated text line object.
 **Example**
 
 <!--code_no_check-->
+
 ```ts
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
+import { drawing, text } from '@kit.ArkGraphics2D'
 import { image } from '@kit.ImageKit'
 
 function textFunc(pixelmap: PixelMap) {
@@ -3706,13 +3802,13 @@ getTypographicBounds(): TypographicBounds
 
 Obtains the typographic boundaries of the text line. These boundaries depend on the typographic font and font size, but not on the characters themselves. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line. Similarly, the strings "j" and "E" have identical typographic boundaries, independent of the characters themselves.
 
->**NOTE**
+> **NOTE**
 >
->The following figure shows the typographic boundaries of the string " a b ".
+> The figure shows the typesetting boundaries for the string " a b ".
 >
 >![TypographicBounds.png](figures/TypographicBounds.png)
 >
->The following figure shows the typographic boundaries of the strings "j" and "E".
+> The figure shows the typesetting boundaries for the string "j" or "E".
 >
 >![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
@@ -3739,16 +3835,15 @@ getImageBounds(): common2D.Rect
 
 Obtains the image boundaries of this text line. The image boundaries, equivalent to visual boundaries, depend on the font, font size, and characters. For example, for the string " a b " (which has a space before "a" and a space after "b"), only "a b" is visible to users, and therefore the image boundaries do not include these spaces at the beginning and end of the line. For the strings "j" and "E", their image boundaries are different. Specifically, the width of the boundary for "j" is narrower than that for "E", and the height of the boundary for "j" is taller than that for "E".
 
->**NOTE**
+> **NOTE**
 >
->The following figure shows the image boundaries of the string " a b ".
+> The figure shows the image boundaries for the string " a b ".
 >
 >![ImageBounds.png](figures/ImageBounds.png)
 >
->The following figure shows the image boundaries of the strings "j" and "E".
+> The figure shows the image boundaries for the string "j" or "E".
 >
 >![ImageBounds-Character.png](figures/ImageBounds-Character.png)
-
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -3802,7 +3897,7 @@ Obtains the index of a character at the specified position in the original strin
 
 | Name| Type| Mandatory| Description|
 | -| - | - | - |
-| point | [common2D.Point](js-apis-graphics-common2D.md#point12) | Yes| Position of the character.|
+| point | [common2D.Point](js-apis-graphics-common2D.md#point12) | Yes | Coordinate position for finding the character index. The coordinates are relative to the top-left origin of the text line, in physical pixels (px). x indicates the horizontal coordinate, and y indicates the vertical coordinate. |
 
 **Return value**
 
@@ -3864,11 +3959,10 @@ Enumerates the offset and index of each character in a text line.
 **Example**
 
 ```ts
-function callback(offset: number, index: number, leadingEdge: boolean): boolean {
+lines[0].enumerateCaretOffsets((offset: number, index: number, leadingEdge: boolean): boolean => {
   console.info('textLine: offset: ' + offset + ', index: ' + index + ', leadingEdge: ' + leadingEdge);
   return index > 50;
-}
-lines[0].enumerateCaretOffsets(callback);
+});
 ```
 
 ### getAlignmentOffset<sup>18+</sup>
@@ -3902,7 +3996,7 @@ let alignmentOffset = lines[0].getAlignmentOffset(0.5, 500);
 
 ## Run
 
-Implements a unit for text layout.
+Represents a text typesetting unit, which is a continuous text segment with the same style attributes. Run is obtained through the [getGlyphRuns()](#getglyphruns) API of the [TextLine](#textline) class.
 
 Before calling any of the following APIs, you must use [getGlyphRuns()](#getglyphruns) of the [TextLine](#textline) class to create a **Run** object.
 
@@ -3975,6 +4069,7 @@ Obtains the index of each glyph in the specified range of this run.
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { text } from '@kit.ArkGraphics2D'
 
@@ -4022,6 +4117,7 @@ Obtains the position of each glyph relative to the respective line in this run.
 ```ts
 let positions = runs[0].getPositions();
 ```
+
 ### getPositions<sup>18+</sup>
 
 getPositions(range: Range): Array<common2D.Point>
@@ -4047,6 +4143,7 @@ Obtains the position array of each glyph relative to the respective line within 
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { text } from '@kit.ArkGraphics2D'
 
@@ -4138,10 +4235,10 @@ Paints this run on the canvas with the coordinate point (x, y) as the upper left
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
 import { image } from '@kit.ImageKit'
 
 function textFunc(pixelmap: PixelMap) {
@@ -4186,7 +4283,6 @@ Obtains the range of glyphs generated by this run.
 | ---------------------- | -------------- |
 | [Range](#range) | Range of the glyphs, where **start** indicates the start position of the range, which is the index relative to the entire paragraph, and **end** indicates the length of the range.|
 
-
 **Example**
 
 ```ts
@@ -4220,6 +4316,7 @@ Obtains an array of character indices for glyphs within a specified range of thi
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { text } from '@kit.ArkGraphics2D'
 
@@ -4252,13 +4349,13 @@ getImageBounds(): common2D.Rect
 
 Obtains the image boundaries of the typographic unit. Equivalent to visual boundaries, these boundaries are associated with the typographic font, font size, and characters. For example, for the string " a b " (which has a space before "a" and a space after "b"), only "a b" is visible to users, and therefore the image boundaries do not include these spaces at the beginning and end of the line.
 
->**NOTE**
+> **NOTE**
 >
->The following figure shows the image boundaries of the string " a b ".
+> The figure shows the image boundaries for the string " a b ".
 >
 >![ImageBounds.png](figures/ImageBounds.png)
 >
->The following figure shows the image boundaries of the strings "j" and "E".
+> The figure shows the image boundaries for the string "j" or "E".
 >
 >![ImageBounds-Character.png](figures/ImageBounds-Character.png)
 
@@ -4284,13 +4381,13 @@ getTypographicBounds(): TypographicBounds
 
 Obtains the typographic boundaries of the typographic unit. These boundaries are associated with the typographic font and font size, but not with the characters. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line.
 
->**NOTE**
+> **NOTE**
 >
->The following figure shows the typographic boundaries of the string " a b ".
+> The figure shows the typesetting boundaries for the string " a b ".
 >
 >![TypographicBounds.png](figures/TypographicBounds.png)
 >
->The following figure shows the typographic boundaries of the strings "j" and "E".
+> The figure shows the typesetting boundaries for the string "j" or "E".
 >
 >![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
@@ -4363,6 +4460,85 @@ advancesRange = runs[0].getAdvances({start:0, end:-10}); // -10 is an invalid va
 let advancesNull = runs[0].getAdvances(null); // null is an invalid value, and undefined is returned.
 ```
 
+### getTextStyle
+
+getTextStyle(): TextStyle
+
+Obtains the text style of this typesetting unit.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Since:** 26.0.0
+
+**Return value**
+
+| Type                   | Description                                   |
+| ---------------------- | ------------------------------------- |
+| [TextStyle](#textstyle)  | Text style of this typesetting unit.<br>**Note:**<br>1. The `textStyle.color`, `textStyle.textShadows.color`, `textStyle.backgroundRect.color`, and `textStyle.decoration.color` attributes: return a 32-bit unsigned integer color value. Example: The return value `4278190080` corresponds to the solid black hexadecimal color value `0xFF000000`, which is equivalent to the [common2D.Color](js-apis-graphics-common2D.md#color) object parameters: alpha=255, red=0, green=0, blue=0. The example provides a numberToRGBA conversion method for reference.<br>2. `textStyle.ellipsis` and `textStyle.ellipsisMode` are paragraph attributes and cannot be obtained through this API. Use [getParagraphStyle()](#getparagraphstyle) instead. |
+
+**Example**
+
+```ts
+// Index.ets
+import { text } from "@kit.ArkGraphics2D"
+import { common2D } from '@kit.ArkGraphics2D'
+import { JSON } from "@kit.ArkTS";
+
+function textFunc() {
+  let textStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let paragraphStyle: text.ParagraphStyle = {
+    textStyle: textStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+  paragraphBuilder.addText("Hello World");
+  let paragraph = paragraphBuilder.build();
+  paragraph.layoutSync(50);
+  let lines = paragraph.getTextLines();
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    let runs = line.getGlyphRuns();
+    for (let j = 0; j < runs.length; j++) {
+      const run = runs[j];
+      const runStyle = run.getTextStyle();
+      console.info(`print line [${i}] run [${j}] textStyle: ${JSON.stringify(runStyle)}`);
+      if (runStyle?.color != undefined && typeof runStyle?.color == 'number') {
+        let textColor: common2D.Color = numberToRGBA(runStyle?.color);
+        console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
+      }
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        textFunc();
+      })
+    }
+  }
+}
+
+function numberToRGBA(colorNum: number): common2D.Color {
+  const alpha = (colorNum >>> 24) & 0xFF;
+  const red = (colorNum >>> 16) & 0xFF;
+  const green = (colorNum >>> 8) & 0xFF;
+  const blue = colorNum & 0xFF;
+  return { alpha: alpha, red: red, green: green, blue: blue };
+}
+```
+
 ## TextTab<sup>18+</sup>
 
 Implements a paragraph-style text tab, which stores the alignment mode and position.
@@ -4405,4 +4581,3 @@ Enumerates the font types, which can be combined through bitwise OR operations.
 | STYLISH  | 1 << 2 | Style font type. The style font type is designed for 2-in-1 devices.|
 | INSTALLED  | 1 << 3 | Font type that has been installed.|
 | CUSTOMIZED<sup>18+</sup>  | 1 << 4 | Custom font type.|
-<!--no_check-->
