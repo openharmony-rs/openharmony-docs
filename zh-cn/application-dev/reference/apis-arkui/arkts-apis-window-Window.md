@@ -5448,7 +5448,7 @@ off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                         | 是   | 监听事件，固定为'subWindowClose'，即子窗口关闭事件。     |
-| callback | Callback&lt;void&gt; | 否   | 回调函数。点击子窗口右上角关闭按钮事件发生时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有子窗口关闭的监听。 |
+| callback | Callback&lt;void&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭子窗口所有关闭的监听。 |
 
 **错误码：**
 
@@ -5564,7 +5564,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'windowWillClose'，即窗口关闭事件。 |
-| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数，点击窗口系统提供的右上角关闭按钮事件发生时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭主窗口或子窗口所有关闭事件的监听。|
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭主窗口或子窗口所有关闭事件的监听。|
 
 **错误码：**
 
