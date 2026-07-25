@@ -1499,7 +1499,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.DEFAULT_WEB_BROWSER
 
-一个表明该应用能否作为用户默认浏览器的 Entitlement（授权）
+允许应用被设置为用户的默认浏览器
 
 <!--RP101--><!--RP101End-->
 

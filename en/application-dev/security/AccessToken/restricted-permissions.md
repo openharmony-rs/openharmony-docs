@@ -1498,7 +1498,7 @@ Allows an application to generate, use, and delete secure element keys.
 
 ## ohos.permission.DEFAULT_WEB_BROWSER
 
-An entitlement that determines if the application is allowed to be set as the default web browser.
+Allows an application to be set as the user's default browser.
 
 <!--RP101--><!--RP101End-->
 
