@@ -79,7 +79,7 @@
 | const char * OH_PLAYER_VIDEO_WIDTH | 获取视频宽度信息的关键字，对应值类型是int32_t，单位为px。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_VIDEO_HEIGHT | 获取视频高度信息的关键字，对应值类型是int32_t，单位为px。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_MESSAGE_TYPE | 获取播放器消息信息的关键字，对应值类型是int32_t。<br> 1：视频帧开始渲染。<br>**起始版本：** 12 |
-| const char * OH_PLAYER_IS_LIVE_STREAM | 获取媒体资源是否为直播类型信息的关键字，对应值类型是int32_t。取值：1表示直播，0表示非直播。<br>**起始版本：** 12 |
+| const char * OH_PLAYER_IS_LIVE_STREAM | 获取媒体资源是否为直播类型信息的关键字，对应值类型是int32_t。1表示直播，0表示非直播。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_MD_KEY_HAS_VIDEO | 获取媒体资源是否包含视频轨信息的关键字，对应值类型int32_t。<br> 1：包含视频轨，0：不包含视频轨。<br>**起始版本：** 22 |
 | const char * OH_PLAYER_MD_KEY_HAS_AUDIO | 获取媒体资源是否包含音频轨信息的关键字，对应值类型int32_t。<br> 1：包含音频轨，0：不包含音频轨。<br>**起始版本：** 22 |
 | const char * OH_PLAYER_MD_KEY_HAS_SUBTITLE | 获取媒体资源是否包含字幕轨信息的关键字，对应值类型int32_t。<br> 1：包含字幕轨，0：不包含字幕轨。<br>**起始版本：** 22 |
@@ -273,7 +273,7 @@ enum OH_VideoOutputResult
 ### OH_AVPlayerOnInfo()
 
 ```c
-typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)
+typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra);
 ```
 
 **描述**
@@ -310,8 +310,6 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 **废弃版本：** 12
 
 **替代接口：** [OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)
-
-**返回值：** 无返回值，用于回调处理。
 
 **参数：**
 
