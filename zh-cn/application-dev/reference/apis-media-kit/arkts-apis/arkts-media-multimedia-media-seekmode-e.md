@@ -68,7 +68,7 @@ SEEK_CONTINUOUS = 3
 
 对于不支持该Seek模式的视频源调用该模式Seek时，会上报AVERR_SEEK_CONTINUOUS_UNSUPPORTED错误(参考[AVErrorCode](arkts-media-media-averrorcode-e.md))，同时画面更新的流畅性会降低。
 
-该Seek模式不会触发[on('seekDone')](@ohos.multimedia.media:media.AVPlayer.on(type: 'seekDone', callback: Callback<int>))事件。
+该Seek模式不会触发[on('seekDone')](@ohos.multimedia.media:media.AVPlayer.on(type: 'seekDone', callback: Callback&lt;int&gt;))事件。
 
 当应用需要退出该模式下的Seek时，需要调用`seek(-1, SeekMode.SEEK_CONTINUOUS)`来结束该模式下的Seek。
 

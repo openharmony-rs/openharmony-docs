@@ -306,7 +306,7 @@ static SetAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractPrope
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | SubscribedAbstractProperty <T>的实例，和AppStorage中propName对应属性的双向绑定的数据。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | SubscribedAbstractProperty &lt;T&gt;的实例，和AppStorage中propName对应属性的双向绑定的数据。 |
 
 ## SetAndProp
 
@@ -337,7 +337,7 @@ static SetAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractPrope
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | SubscribedAbstractProperty <S>的实例。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | SubscribedAbstractProperty &lt;S&gt;的实例。 |
 
 ## SetOrCreate
 
@@ -602,7 +602,7 @@ static ref<T>(propName: string): AbstractProperty<T> | undefined
 
 如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回AppStorage中propName对应属性的引用。否则，返回undefined。
 
-与[link](arkts-arkui-appstorage-c.md#link)的功能基本一致，但不需要手动释放返回的[AbstractProperty<T>](arkts-arkui-abstractproperty-i.md)类型的变量。
+与[link](arkts-arkui-appstorage-c.md#link)的功能基本一致，但不需要手动释放返回的[AbstractProperty&lt;T&gt;](arkts-arkui-abstractproperty-i.md)类型的变量。
 
 **起始版本：** 12
 
@@ -690,7 +690,7 @@ static setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractPrope
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | SubscribedAbstractProperty <T>的实例，为AppStorage中propName对应属性的双向绑定的数据。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | SubscribedAbstractProperty &lt;T&gt;的实例，为AppStorage中propName对应属性的双向绑定的数据。 |
 
 ## setAndProp
 
@@ -724,7 +724,7 @@ static setAndProp<T>(propName: string, defaultValue: T): SubscribedAbstractPrope
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | SubscribedAbstractProperty <T>的实例。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | SubscribedAbstractProperty &lt;T&gt;的实例。 |
 
 ## setAndRef
 
@@ -734,7 +734,7 @@ static setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>
 
 与[ref](arkts-arkui-appstorage-c.md#ref)接口类似，如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回AppStorage中propName对应属性的引用。如果不存在，则使用defaultValue在AppStorage中创建和初始化propName对应的属性，并返回其引用。
 
-与[setAndLink](arkts-arkui-appstorage-c.md#setandlink)的功能基本一致，但不需要手动释放返回的[AbstractProperty<T>](arkts-arkui-abstractproperty-i.md)类型的变量。
+与[setAndLink](arkts-arkui-appstorage-c.md#setandlink)的功能基本一致，但不需要手动释放返回的[AbstractProperty&lt;T&gt;](arkts-arkui-abstractproperty-i.md)类型的变量。
 > **说明：**
 > 从API version 12开始，AppStorage支持[Map](../../../ui/state-management/arkts-appstorage.md#装饰map类型变量)、  
 > [Set](../../../ui/state-management/arkts-appstorage.md#装饰set类型变量)、  
@@ -760,7 +760,7 @@ static setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | AbstractProperty <T>的实例，为AppStorage中propName对应属性的引用。 |
+| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | AbstractProperty &lt;T&gt;的实例，为AppStorage中propName对应属性的引用。 |
 
 ## setOrCreate
 

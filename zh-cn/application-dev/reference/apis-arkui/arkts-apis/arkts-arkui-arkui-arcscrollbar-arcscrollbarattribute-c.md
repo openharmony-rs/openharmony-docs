@@ -1,6 +1,6 @@
 # ArcScrollBarAttribute
 
-**继承/实现关系：** ArcScrollBarAttribute extends [CommonMethod<ArcScrollBarAttribute>]
+**继承/实现关系：** ArcScrollBarAttribute extends [CommonMethod&lt;ArcScrollBarAttribute&gt;]
 
 **起始版本：** 18
 

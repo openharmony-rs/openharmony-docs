@@ -74,7 +74,7 @@ clearUpApplicationData(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, <code>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
+| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, &lt;code&gt;error</code> is &lt;code&gt;undefined</code>; otherwise, &lt;code&gt;error</code> is an error object. |
 
 **错误码：**
 
@@ -913,7 +913,7 @@ setSupportedProcessCache(isSupported : boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isSupported | boolean | 是 | Whether process cache is supported. The value <code>true</code> means that process cache is supported, and <code>false</code> means the opposite. |
+| isSupported | boolean | 是 | Whether process cache is supported. The value &lt;code&gt;true</code> means that process cache is supported, and &lt;code&gt;false</code> means the opposite. |
 
 **错误码：**
 

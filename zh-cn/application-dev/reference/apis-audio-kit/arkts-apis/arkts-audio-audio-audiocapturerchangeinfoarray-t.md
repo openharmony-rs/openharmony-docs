@@ -12,5 +12,5 @@ type AudioCapturerChangeInfoArray = Array<Readonly<AudioCapturerChangeInfo>>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**属性类型：** Array<Readonly<AudioCapturerChangeInfo>>
+**属性类型：** Array<Readonly&lt;AudioCapturerChangeInfo&gt;>
 

@@ -999,7 +999,7 @@ on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAct
 
 监听音频打断事件（当音频焦点发生变化时触发）。使用callback异步回调。
 
-与[on('audioInterrupt')](audio.AudioRenderer.on(type: 'audioInterrupt', callback: Callback<InterruptEvent>))作用一致，均用于监听焦点变化。为无音频流的场景（未曾创建AudioRenderer对象），比如FM、语音唤醒等提供焦点变化监听功能。
+与[on('audioInterrupt')](audio.AudioRenderer.on(type: 'audioInterrupt', callback: Callback&lt;InterruptEvent&gt;))作用一致，均用于监听焦点变化。为无音频流的场景（未曾创建AudioRenderer对象），比如FM、语音唤醒等提供焦点变化监听功能。
 
 **起始版本：** 7
 

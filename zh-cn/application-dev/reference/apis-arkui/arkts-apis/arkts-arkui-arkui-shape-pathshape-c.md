@@ -4,7 +4,7 @@
 
 继承自[CommonShapeMethod](arkts-arkui-arkui-shape-commonshapemethod-c.md)。
 
-**继承/实现关系：** PathShape extends [CommonShapeMethod<PathShape>]
+**继承/实现关系：** PathShape extends [CommonShapeMethod&lt;PathShape&gt;]
 
 **起始版本：** 12
 

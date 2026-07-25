@@ -35,7 +35,7 @@ ReactiveComponentContent的构造函数。
 | uiContext | UIContext | 是 | 创建对应节点时所需的UI上下文。 |
 | builder | WrappedBuilder&lt;T&gt; | 是 | 封装带参@Builder函数的WrappedBuilder对象。 |
 | config | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | 是 | 作用是配置Builder的构建行为，BuildOptions中所有属性都是可选的，默认值为BuildOptions中对应的默认值。 |
-| args | T | 是 | WrappedBuilder对象封装的builder函数的参数。负责将外部数据传递给构造函数中指定的WrappedBuilder<T>构建函数。支持多个入参。默认值为undefined。 |
+| args | T | 是 | WrappedBuilder对象封装的builder函数的参数。负责将外部数据传递给构造函数中指定的WrappedBuilder&lt;T&gt;构建函数。支持多个入参。默认值为undefined。 |
 
 ## dispose
 

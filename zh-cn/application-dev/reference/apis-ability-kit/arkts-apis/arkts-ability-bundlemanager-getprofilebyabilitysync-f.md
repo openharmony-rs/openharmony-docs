@@ -34,7 +34,7 @@ function getProfileByAbilitySync(moduleName: string, abilityName: string, metada
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 数组对象，返回Array<string>。 |
+| Array&lt;string&gt; | 数组对象，返回Array&lt;string&gt;。 |
 
 **错误码：**
 

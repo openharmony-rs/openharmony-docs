@@ -20,7 +20,7 @@ import { webview } from '@kit.ArkWeb';
 attributes: Record<string, string>
 ```
 
-Attributes in **<video>** or **<audio>**.
+Attributes in **&lt;video&gt;** or **&lt;audio&gt;**.
 
 **类型：** Record&lt;string, string&gt;
 
@@ -36,7 +36,7 @@ Attributes in **<video>** or **<audio>**.
 controlList: string[]
 ```
 
-Value of the **controlslist** attribute in **<video>** or **<audio>**.
+Value of the **controlslist** attribute in **&lt;video&gt;** or **&lt;audio&gt;**.
 
 **类型：** string[]
 
@@ -54,9 +54,9 @@ Value of the **controlslist** attribute in **<video>** or **<audio>**.
 controlsShown: boolean
 ```
 
-Whether the **controls** attribute exists in **<video>** or **<audio>**.
+Whether the **controls** attribute exists in **&lt;video&gt;** or **&lt;audio&gt;**.
 
-The value **true** means that the **controls** attribute exists in **<video>** or **<audio>**, and **false** means the opposite.
+The value **true** means that the **controls** attribute exists in **&lt;video&gt;** or **&lt;audio&gt;**, and **false** means the opposite.
 
 **类型：** boolean
 
@@ -74,7 +74,7 @@ The value **true** means that the **controls** attribute exists in **<video>** o
 embedID: string
 ```
 
-ID of **<video>** or **<audio>** on the web page.
+ID of **&lt;video&gt;** or **&lt;audio&gt;** on the web page.
 
 **类型：** string
 

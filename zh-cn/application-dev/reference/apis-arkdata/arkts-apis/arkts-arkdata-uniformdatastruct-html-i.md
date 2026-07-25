@@ -48,7 +48,7 @@ details?: Record<string, string>
 htmlContent: string
 ```
 
-HTML格式的内容文本，支持标准HTML标签。可以是完整的HTML文档或HTML片段。长度限制为20MB。建议使用UTF-8编码。例如：<div>标题</div>。
+HTML格式的内容文本，支持标准HTML标签。可以是完整的HTML文档或HTML片段。长度限制为20MB。建议使用UTF-8编码。例如：&lt;div&gt;标题</div>。
 
 **类型：** string
 

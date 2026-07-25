@@ -34,7 +34,7 @@ function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityNa
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 返回Array<string>对象。 |
+| Array&lt;string&gt; | 返回Array&lt;string&gt;对象。 |
 
 **错误码：**
 

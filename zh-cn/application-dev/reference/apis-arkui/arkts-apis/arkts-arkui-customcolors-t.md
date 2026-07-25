@@ -16,5 +16,5 @@ export declare type CustomColors = Partial<Colors>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** Partial<Colors>
+**属性类型：** Partial&lt;Colors&gt;
 

@@ -12,5 +12,5 @@ type AudioRendererChangeInfoArray = Array<Readonly<AudioRendererChangeInfo>>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**属性类型：** Array<Readonly<AudioRendererChangeInfo>>
+**属性类型：** Array<Readonly&lt;AudioRendererChangeInfo&gt;>
 

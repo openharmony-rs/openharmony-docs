@@ -2,7 +2,7 @@
 
 用于触发快滑手势，滑动速度需大于速度阈值，默认最小速度为100vp/s。
 
-**继承/实现关系：** SwipeGestureInterface extends [GestureInterface<SwipeGestureInterface>]
+**继承/实现关系：** SwipeGestureInterface extends [GestureInterface&lt;SwipeGestureInterface&gt;]
 
 **起始版本：** 8
 
@@ -16,7 +16,7 @@
 (value?: { fingers?: number; direction?: SwipeDirection; speed?: number }): SwipeGestureInterface
 ```
 
-继承自[GestureInterface<T>](arkts-arkui-gestureinterface-i.md)，设置快滑手势事件。
+继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md)，设置快滑手势事件。
 
 **起始版本：** 8
 

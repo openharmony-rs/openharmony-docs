@@ -27,7 +27,7 @@ import { inputConsumer } from '@kit.InputKit';
 | off | 取消订阅应用快捷键。使用callback异步回调。 |
 | off | 取消对'keyPressed'事件的订阅，使用callback异步回调。调用该方法后，被屏蔽的系统按键默认行为将恢复，即系统对音量调节等默认响应将恢复。 |
 | on | 订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。 |
-| on | 订阅按键按下事件。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。使用callback异步回调。  订阅成功后，该按键事件的系统默认行为将被屏蔽，即不会再触发系统级的响应，如音量调节。要恢复系统响应，请使用[off](inputConsumer.off(type: 'keyPressed', callback?: Callback<KeyEvent>))方法取消订阅。 |
+| on | 订阅按键按下事件。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。使用callback异步回调。  订阅成功后，该按键事件的系统默认行为将被屏蔽，即不会再触发系统级的响应，如音量调节。要恢复系统响应，请使用[off](inputConsumer.off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;))方法取消订阅。 |
 
 <!--Del-->
 ### 函数（系统接口）

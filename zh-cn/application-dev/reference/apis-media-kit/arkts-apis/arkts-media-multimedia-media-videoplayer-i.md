@@ -148,7 +148,7 @@ on(type: 'startRenderFrame', callback: Callback<void>): void
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('startRenderFrame')](@ohos.multimedia.media:media.AVPlayer.on(type: 'startRenderFrame', callback: Callback<void>))  
+> [AVPlayer.on('startRenderFrame')](@ohos.multimedia.media:media.AVPlayer.on(type: 'startRenderFrame', callback: Callback&lt;void&gt;))  
 > 替代。
 
 **起始版本：** 8

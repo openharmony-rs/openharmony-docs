@@ -263,7 +263,7 @@ pause(): void
 暂停录制，需要在'start'事件成功触发后，才能调用pause方法。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVRecorder.pause](@ohos.multimedia.media:media.AVRecorder.pause(callback: AsyncCallback<void>))替代。
+> [AVRecorder.pause](@ohos.multimedia.media:media.AVRecorder.pause(callback: AsyncCallback&lt;void&gt;))替代。
 
 **起始版本：** 6
 
@@ -284,7 +284,7 @@ prepare(config: AudioRecorderConfig): void
 录音准备。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVRecorder.prepare](@ohos.multimedia.media:media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback<void>))  
+> [AVRecorder.prepare](@ohos.multimedia.media:media.AVRecorder.prepare(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;))  
 > 替代。
 
 **起始版本：** 6
@@ -320,7 +320,7 @@ release(): void
 释放录音资源。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVRecorder.release](@ohos.multimedia.media:media.AVRecorder.release(callback: AsyncCallback<void>))替代。
+> [AVRecorder.release](@ohos.multimedia.media:media.AVRecorder.release(callback: AsyncCallback&lt;void&gt;))替代。
 
 **起始版本：** 6
 
@@ -343,7 +343,7 @@ reset(): void
 进行重置录音之前，需要先调用stop()停止录音。重置录音之后，需要调用prepare()设置录音参数项，才能再次进行录音。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVRecorder.reset](@ohos.multimedia.media:media.AVRecorder.reset(callback: AsyncCallback<void>))替代。
+> [AVRecorder.reset](@ohos.multimedia.media:media.AVRecorder.reset(callback: AsyncCallback&lt;void&gt;))替代。
 
 **起始版本：** 6
 
@@ -364,7 +364,7 @@ resume(): void
 恢复录制，需要在'pause'事件成功触发后，才能调用resume方法。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVRecorder.resume](@ohos.multimedia.media:media.AVRecorder.resume(callback: AsyncCallback<void>))替代。
+> [AVRecorder.resume](@ohos.multimedia.media:media.AVRecorder.resume(callback: AsyncCallback&lt;void&gt;))替代。
 
 **起始版本：** 6
 
@@ -385,7 +385,7 @@ start(): void
 开始录制，需在'prepare'事件成功触发后，才能调用start方法。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVRecorder.start](@ohos.multimedia.media:media.AVRecorder.start(callback: AsyncCallback<void>))替代。
+> [AVRecorder.start](@ohos.multimedia.media:media.AVRecorder.start(callback: AsyncCallback&lt;void&gt;))替代。
 
 **起始版本：** 6
 
@@ -406,7 +406,7 @@ stop(): void
 停止录音。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVRecorder.stop](@ohos.multimedia.media:media.AVRecorder.stop(callback: AsyncCallback<void>))替代。
+> [AVRecorder.stop](@ohos.multimedia.media:media.AVRecorder.stop(callback: AsyncCallback&lt;void&gt;))替代。
 
 **起始版本：** 6
 

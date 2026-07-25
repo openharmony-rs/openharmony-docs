@@ -30,7 +30,7 @@ function deleteContact(key: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](contact.queryKey(context: Context, id: number, callback: AsyncCallback<string>): void)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](contact.queryKey(context: Context, id: number, callback: AsyncCallback&lt;string&gt;): void)获取。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -77,7 +77,7 @@ function deleteContact(context: Context, key: string, callback: AsyncCallback<vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](contact.queryKey(context: Context, id: number, callback: AsyncCallback<string>): void)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](contact.queryKey(context: Context, id: number, callback: AsyncCallback&lt;string&gt;): void)获取。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
@@ -137,7 +137,7 @@ function deleteContact(key: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](contact.queryKey(context: Context, id: number, callback: AsyncCallback<string>): void)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](contact.queryKey(context: Context, id: number, callback: AsyncCallback&lt;string&gt;): void)获取。 |
 
 **返回值：**
 
@@ -183,7 +183,7 @@ function deleteContact(context: Context, key: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](contact.queryKey(context: Context, id: number, callback: AsyncCallback<string>): void)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](contact.queryKey(context: Context, id: number, callback: AsyncCallback&lt;string&gt;): void)获取。 |
 
 **返回值：**
 
