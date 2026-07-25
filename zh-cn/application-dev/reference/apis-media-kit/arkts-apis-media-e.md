@@ -83,7 +83,7 @@ Codec MIME类型枚举。
 | AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/Vorbis类型。    |
 | AUDIO_FLAC   | 'audio/flac'          | 表示音频/FLAC类型。      |
 | AUDIO_RAW    | 'audio/raw'           | 表示音频/RAW类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| AUDIO_MP3<sup>12+</sup>   | 'audio/MPEG'          | 表示音频/mpeg类型。      |
+| AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | 表示音频/MPEG类型。      |
 | AUDIO_G711MU<sup>12+</sup>   | 'audio/g711mu'     | 表示音频/G.711 μ-law类型。 |
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/AMR-NB类型。 |
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/AMR-WB类型。 |
