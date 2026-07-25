@@ -42,6 +42,8 @@
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
+DES解密失败返回错误码17630001可参考[使用des3des算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用des3des算法解密时调用dofinal失败)
+
 - 异步方法示例：
 
   <!-- @[async_symmetry_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/ets/pages/des/des_ecb_encryption_decryption_asynchronous.ets) -->
