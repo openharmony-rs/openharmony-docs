@@ -114,7 +114,7 @@ try {
     }
   });
 } catch (e) {
-  console.error('set unexpected error: ' + e);
+  console.error('get unexpected error: ' + e);
 }
 ```
 

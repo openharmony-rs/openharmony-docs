@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=79e4597a11fe0470e85a7a6ec526decbb0cbcff4 translatedAt=2026-07-15T07:36:23.561Z pushedAt=2026-07-15T09:14:01.380Z -->
 
-**@Prop** is used for state management V1 to receive values passed from external sources and establishes a one-way synchronization relationship with parent components. When the state variables decorated with **@State** in the parent component change, the changes are synchronously updated to the corresponding **@Prop** decorated variables in the child component, triggering the child component to re-render. **@Prop** uses a unidirectional data flow mechanism. Changes to **@Prop** decorated variables in child components take effect only within the child components and are not synchronized back to the parent component. This is applicable when child components need to respond to state changes of parent components but do not need to modify the parent component's state reversely.
+**\@Prop** is used for [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to receive values passed from external sources and establish a one-way synchronization relationship with parent components. When the state variables decorated with [@State](./ts-state-management-state.md) in the parent component change, the changes are synchronously updated to the corresponding **\@Prop** decorated variables in the child component, triggering the child component to re-render. **\@Prop** uses a unidirectional data flow mechanism. Changes to **\@Prop** decorated variables in child components take effect only within the child components and are not synchronized back to the parent component. This is applicable when child components need to respond to state changes of parent components but do not need to modify the parent component's state reversely.
 
 For details, see [@Prop Decorator: Implementing One-Way Synchronization from Parent to Child Components](../../../ui/state-management/arkts-prop.md).
 
@@ -44,7 +45,7 @@ struct Child {
 @Entry
 @Component
 struct Index {
-  // Use @State to declare a state variable as the data source of @Prop.
+  // Use @State to declare a state variable as the data source of the @Prop decorated variable.
   @State message: string = 'Hello';
 
   build() {

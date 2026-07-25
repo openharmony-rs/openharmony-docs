@@ -12,7 +12,7 @@
 
 ## CommonEventSubscriber
 
-表示公共事件的订阅者。CommonEventSubscriber提供了对有序公共事件的处理能力，包括获取和设置事件传递的Code和Data数据、查询当前公共事件是否为有序或粘性事件、中止或清理有序公共事件的中止状态、结束对当前有序公共事件的处理，以及获取订阅者的订阅信息等，适用于订阅者需要对接收到的公共事件进行数据处理和流程控制的场景。
+表示公共事件的订阅者。CommonEventSubscriber提供了对有序公共事件的处理能力，包括获取和设置事件传递的Code和Data数据、查询当前公共事件是否为有序或粘性公共事件、中止或清理有序公共事件的中止状态、结束对当前有序公共事件的处理，以及获取订阅者的订阅信息等，适用于订阅者需要对接收到的公共事件进行数据处理和流程控制的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -41,7 +41,7 @@ subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
 
 getCode(callback: AsyncCallback\<number>): void
 
-获取有序公共事件传递的数据（number类型）。使用callback异步回调。
+获取有序公共事件传递的数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -79,7 +79,7 @@ subscriber.getCode((err: BusinessError, code: number) => {
 
 getCode(): Promise\<number>
 
-获取有序公共事件传递的数据（number类型）。使用Promise异步回调。
+获取有序公共事件传递的数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -107,7 +107,7 @@ subscriber.getCode().then((code: number) => {
 
 getCodeSync(): number
 
-同步获取有序公共事件传递的数据（number类型）。
+同步获取有序公共事件传递的数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -117,7 +117,7 @@ getCodeSync(): number
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| number | 有序公共事件传递的数据（number类型）。 |
+| number | 有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -132,7 +132,7 @@ console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
 
 setCode(code: number, callback: AsyncCallback\<void>): void
 
-设置有序公共事件传递的数据（number类型）。使用callback异步回调。
+设置有序公共事件传递的数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -142,7 +142,7 @@ setCode(code: number, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| code     | number               | 是   | 有序公共事件传递的数据（number类型）。   |
+| code     | number               | 是   | 有序公共事件传递的数据。   |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据（number类型）成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -171,7 +171,7 @@ subscriber.setCode(1, (err: BusinessError) => {
 
 setCode(code: number): Promise\<void>
 
-设置有序公共事件传递的数据（number类型）。使用Promise异步回调。
+设置有序公共事件传递的数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -181,7 +181,7 @@ setCode(code: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
+| code   | number | 是   | 有序公共事件传递的数据。 |
 
 **返回值：**
 
@@ -213,7 +213,7 @@ subscriber.setCode(1).then(() => {
 
 setCodeSync(code: number): void
 
-设置有序公共事件传递的数据（number类型）。
+同步设置有序公共事件传递的数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -223,7 +223,7 @@ setCodeSync(code: number): void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
+| code   | number | 是   | 有序公共事件传递的数据。 |
 
 **错误码：**
 
@@ -250,7 +250,7 @@ try {
 
 getData(callback: AsyncCallback\<string>): void
 
-获取有序公共事件传递的数据（string类型）。使用callback异步回调。
+获取有序公共事件传递的数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -289,7 +289,7 @@ subscriber.getData((err: BusinessError, data: string) => {
 
 getData(): Promise\<string>
 
-获取有序公共事件传递的数据（string类型）。使用Promise异步回调。
+获取有序公共事件传递的数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -317,7 +317,7 @@ subscriber.getData().then((data: string) => {
 
 getDataSync(): string
 
-获取有序公共事件传递的数据（string类型）。
+同步获取有序公共事件传递的数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -327,7 +327,7 @@ getDataSync(): string
 
 | 类型             | 说明               |
 | ---------------- | ------------------ |
-| string | 有序公共事件传递的数据（string类型）。 |
+| string | 有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -342,7 +342,7 @@ console.info(`Succeeded in getting data, data is ${data}`);
 
 setData(data: string, callback: AsyncCallback\<void>): void
 
-设置有序公共事件传递的数据（string类型）。使用callback异步回调。
+设置有序公共事件传递的数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -381,7 +381,7 @@ subscriber.setData('publish_data_changed', (err: BusinessError) => {
 
 setData(data: string): Promise\<void>
 
-设置有序公共事件传递的数据（string类型）。使用Promise异步回调。
+设置有序公共事件传递的数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -391,7 +391,7 @@ setData(data: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **返回值：**
 
@@ -423,7 +423,7 @@ subscriber.setData('publish_data_changed').then(() => {
 
 setDataSync(data: string): void
 
-设置有序公共事件传递的数据（string类型）。
+同步设置有序公共事件传递的数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -433,7 +433,7 @@ setDataSync(data: string): void
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| data   | string | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。 |
+| data   | string | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **错误码：**
 
@@ -470,8 +470,8 @@ setCodeAndData(code: number, data: string, callback: AsyncCallback\<void\>): voi
 
 | 参数名   | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| code     | number               | 是   | 有序公共事件传递的数据（number类型）。   |
-| data     | string               | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。   |
+| code     | number               | 是   | 有序公共事件传递的数据。   |
+| data     | string               | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。   |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -510,8 +510,8 @@ setCodeAndData(code: number, data: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
-| data   | string | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。 |
+| code   | number | 是   | 有序公共事件传递的数据。 |
+| data   | string | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **返回值：**
 
@@ -543,7 +543,7 @@ subscriber.setCodeAndData(1, 'publish_data_changed').then(() => {
 
 setCodeAndDataSync(code: number, data: string): void
 
-设置有序公共事件传递的数据。
+同步设置有序公共事件传递的数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -553,8 +553,8 @@ setCodeAndDataSync(code: number, data: string): void
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
-| data   | string | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。 |
+| code   | number | 是   | 有序公共事件传递的数据。 |
+| data   | string | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **错误码：**
 
@@ -644,7 +644,7 @@ subscriber.isOrderedCommonEvent().then((isOrdered: boolean) => {
 
 isOrderedCommonEventSync(): boolean
 
-查询当前公共事件是否为有序公共事件。
+同步查询当前公共事件是否为有序公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -729,7 +729,7 @@ subscriber.isStickyCommonEvent().then((isSticky: boolean) => {
 
 isStickyCommonEventSync(): boolean
 
-检查当前公共事件是否为一个粘性事件。
+同步检查当前公共事件是否为一个粘性公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -826,7 +826,7 @@ subscriber.finishCommonEvent().then(() => {
 
 abortCommonEventSync(): void
 
-添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
+同步添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -921,7 +921,7 @@ subscriber.finishCommonEvent().then(() => {
 
 clearAbortCommonEventSync(): void
 
-清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。
+同步清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -950,7 +950,7 @@ getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 参数名   | 类型                    | 必填 | 说明                               |
 | -------- | ----------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 当查询成功时，err为undefined，data为true表示当前有序公共事件处于中止状态，data为false表示当前有序公共事件没有处于中止状态；否则err为错误对象。 |
+| callback | AsyncCallback\<boolean> | 是   | 当查询成功时，err为undefined，data为true表示当前有序公共事件处于中止状态，data为false表示当前有序公共事件未处于中止状态；否则err为错误对象。 |
 
 **错误码：**
 
@@ -986,7 +986,7 @@ getAbortCommonEvent(): Promise\<boolean>
 
 | 类型              | 说明                               |
 | ----------------- | ---------------------------------- |
-| Promise\<boolean> | Promise对象。返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
+| Promise\<boolean> | Promise对象。返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件未处于中止状态。 |
 
 **示例：**
 
@@ -1004,7 +1004,7 @@ subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
 
 getAbortCommonEventSync(): boolean
 
-获取当前有序公共事件是否处于中止状态。
+同步获取当前有序公共事件是否处于中止状态。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1012,7 +1012,7 @@ getAbortCommonEventSync(): boolean
 
 | 类型              | 说明                               |
 | ----------------- | ---------------------------------- |
-| boolean | 返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
+| boolean | 返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件未处于中止状态。 |
 
 **示例：**
 
@@ -1093,7 +1093,7 @@ subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEven
 
 getSubscribeInfoSync(): CommonEventSubscribeInfo
 
-获取订阅者的订阅信息。
+同步获取订阅者的订阅信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -281,7 +281,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 setHostPageOverlayForbidden(isForbidden: boolean) : void
 
-设置是否允许[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)拉起的页面被使用方的页面覆盖。
+设置是否禁止[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)拉起的页面被使用方的页面覆盖。
 
 > **说明：**
 >
@@ -299,7 +299,7 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------ |
-| isForbidden | boolean | 是 | 设置是否允许[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)拉起的页面被使用方的页面覆盖。true表示不允许，false表示允许。 |
+| isForbidden | boolean | 是 | 设置是否禁止[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)拉起的页面被使用方的页面覆盖。true表示禁止，false表示允许。 |
 
 
 **错误码**：

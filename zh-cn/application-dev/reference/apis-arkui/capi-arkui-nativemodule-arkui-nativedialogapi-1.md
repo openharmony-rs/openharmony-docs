@@ -375,7 +375,7 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  bool enableCustomStyle | 弹窗容器样式是否可以自定义。<br/>默认值：false<br/>true：弹窗容器样式不能自定义，宽度自适应子节点，圆角为0，弹窗背景色透明；false：弹窗容器样式可以自定义，高度自适应子节点，宽度由栅格系统定义，圆角半径24vp，PC/2in1设备避让屏幕边缘以及窗口标题栏。 |
+|  bool enableCustomStyle | 弹窗容器样式是否可以自定义。<br/>默认值：false<br/>true：弹窗容器样式可以自定义，宽度自适应子节点，圆角为0，弹窗背景色透明；false：弹窗容器样式不能自定义，高度自适应子节点，宽度由栅格系统定义，圆角半径24vp，PC/2in1设备避让屏幕边缘以及窗口标题栏。 |
 
 **返回：**
 
@@ -500,7 +500,7 @@ int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, vo
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 | void* userData | 用户自定义数据指针。 |
-| callback | 监听自定义弹窗关闭的回调事件。<br> - event: 回调函数的入参，捕获关闭原因。 |
+| void (*callback)(ArkUI_DialogDismissEvent* event) | 监听自定义弹窗关闭的回调事件。<br> - event: 回调函数的入参，捕获关闭原因。 |
 
 **返回：**
 

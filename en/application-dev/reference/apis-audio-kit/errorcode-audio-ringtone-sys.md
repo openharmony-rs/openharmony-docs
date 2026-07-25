@@ -1,10 +1,12 @@
 # Ringtone Error Codes
+
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1961de06e85063963f633ec54a8a4baaf5cb7dc8 translatedAt=2026-07-21T04:01:54.066Z pushedAt=2026-07-22T01:26:50.798Z -->
 
 > **NOTE**
 >
@@ -112,7 +114,7 @@ This error code is reported if the available ROM storage space is insufficient.
 
 **Possible Causes**
 
-The local ROM space of the user is insufficient.
+The user's local ROM space is insufficient.
 
 **Solution**
 

@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义AVRecorder接口。应用可使用媒体AVRecorder提供的接口录制媒体数据。
+定义AVRecorder接口。AVRecorder提供媒体录制能力，支持音视频数据的采集与录制，适用于需要将音视频内容录制保存为文件的场景。
 
 **引用文件：** <multimedia/player_framework/avrecorder.h>
 
@@ -27,23 +27,23 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AVRecorder *OH_AVRecorder_Create(void)](#oh_avrecorder_create) | 创建AVRecorder实例。调用成功之后进入AVRECORDER_IDLE状态。 |
-| [OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config *config)](#oh_avrecorder_prepare) | 配置AVRecorder参数，准备录制。必须在[OH_AVRecorder_Create](#oh_avrecorder_create)成功触发之后调用，调用成功之后进入AVRECORDER_PREPARED状态。<br>若只录制音频，则无需配置视频相关参数；同理，若只录制视频，则无需配置音频相关参数。 |
+| [OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config *config)](#oh_avrecorder_prepare) | 配置AVRecorder参数，准备录制。必须在[OH_AVRecorder_Create](#oh_avrecorder_create)成功触发之后调用，调用成功之后进入AVRECORDER_PREPARED状态。<br>若未配置视频相关参数，则只录制音频；同理，若未配置音频相关参数，则只录制视频。 |
 | [OH_AVErrCode OH_AVRecorder_GetAVRecorderConfig(OH_AVRecorder *recorder, OH_AVRecorder_Config **config)](#oh_avrecorder_getavrecorderconfig) | 获取当前的录制参数。此接口必须在录制准备完成后调用。传入的*config必须为nullptr，由框架层统一分配和释放内存，以避免内存管理混乱，防止内存泄漏或重复释放等问题。 |
 | [OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWindow **window)](#oh_avrecorder_getinputsurface) | 获取输入Surface。必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)成功触发之后，[OH_AVRecorder_Start](#oh_avrecorder_start)之前调用。<br>此Surface提供给调用者，调用者从此Surface中获取Surface Buffer，填入相应的视频数据。 |
-| [OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotation)](#oh_avrecorder_updaterotation) | 更新视频旋转角度。必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)成功触发之后，[OH_AVRecorder_Start](#oh_avrecorder_start)之前调用。 |
+| [OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotation)](#oh_avrecorder_updaterotation) | 更新视频旋转角度。典型使用场景包括：设备横竖屏切换时调整视频方向、根据摄像头采集方向设置视频旋转角度等。必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)成功触发之后，[OH_AVRecorder_Start](#oh_avrecorder_start)之前调用。 |
 | [OH_AVErrCode OH_AVRecorder_Start(OH_AVRecorder *recorder)](#oh_avrecorder_start) | 开始录制。必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)成功触发之后调用，调用成功之后进入AVRECORDER_STARTED状态。 |
 | [OH_AVErrCode OH_AVRecorder_Pause(OH_AVRecorder *recorder)](#oh_avrecorder_pause) | 暂停录制。必须在[OH_AVRecorder_Start](#oh_avrecorder_start)成功触发之后，处于AVRECORDER_STARTED状态时调用，调用成功之后进入AVRECORDER_PAUSED状态。<br>之后可以通过调用[OH_AVRecorder_Resume](#oh_avrecorder_resume)恢复录制，重新进入AVRECORDER_STARTED状态。 |
 | [OH_AVErrCode OH_AVRecorder_Resume(OH_AVRecorder *recorder)](#oh_avrecorder_resume) | 恢复录制。必须在[OH_AVRecorder_Pause](#oh_avrecorder_pause)成功触发之后，处于PAUSED状态时调用，调用成功之后重新进入AVRECORDER_STARTED状态。 |
-| [OH_AVErrCode OH_AVRecorder_Stop(OH_AVRecorder *recorder)](#oh_avrecorder_stop) | 停止录制。必须在[OH_AVRecorder_Start](#oh_avrecorder_start)成功触发之后调用，调用成功之后进入AVRECORDER_STOPPED状态。<br>纯音频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口才能重新录制。<br>纯视频录制、音视频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)和[OH_AVRecorder_GetInputSurface](#oh_avrecorder_getinputsurface)接口才能重新录制。 |
+| [OH_AVErrCode OH_AVRecorder_Stop(OH_AVRecorder *recorder)](#oh_avrecorder_stop) | 停止录制。必须在[OH_AVRecorder_Start](#oh_avrecorder_start)成功触发之后，处于AVRECORDER_STARTED或AVRECORDER_PAUSED状态时调用，调用成功之后进入AVRECORDER_STOPPED状态。<br>纯音频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口才能重新录制。<br>纯视频录制、音视频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)和[OH_AVRecorder_GetInputSurface](#oh_avrecorder_getinputsurface)接口才能重新录制。 |
 | [OH_AVErrCode OH_AVRecorder_Reset(OH_AVRecorder *recorder)](#oh_avrecorder_reset) | 重置录制状态。必须在非AVRECORDER_RELEASED状态下调用，调用成功之后进入AVRECORDER_IDLE状态。<br>纯音频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口才能重新录制。<br>纯视频录制、音视频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)和[OH_AVRecorder_GetInputSurface](#oh_avrecorder_getinputsurface)接口才能重新录制。 |
 | [OH_AVErrCode OH_AVRecorder_Release(OH_AVRecorder *recorder)](#oh_avrecorder_release) | 释放录制资源。调用成功之后进入AVRECORDER_RELEASED状态。<br>调用此接口释放录制资源后，recorder内存将释放，应用层需要显式地将recorder指针置空，避免访问野指针。释放音视频录制资源之后，该OH_AVRecorder实例不能再进行任何操作。 |
-| [OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRecorder_EncoderInfo **info, int32_t *length)](#oh_avrecorder_getavailableencoder) | 获取AVRecorder可用的编码器和编码器信息。<br>参数\*info必须为nullptr，由框架层统一分配和释放内存，以避免内存管理混乱，防止内存泄漏或重复释放等问题。 |
-| [OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnStateChange callback, void *userData)](#oh_avrecorder_setstatecallback) | 设置状态回调函数，以便应用能够响应AVRecorder生成的状态变化事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。 |
+| [OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRecorder_EncoderInfo **info, int32_t *length)](#oh_avrecorder_getavailableencoder) | 获取AVRecorder可用的编码器信息。典型使用场景包括：应用启动时查询设备支持的编码器、根据可用编码器选择合适的编码格式、在编码器选择界面展示可选列表等。<br>参数*info必须为nullptr，由框架层统一分配和释放内存，以避免内存管理混乱，防止内存泄漏或重复释放等问题。 |
+| [OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnStateChange callback, void *userData)](#oh_avrecorder_setstatecallback) | 设置状态变化回调函数，以便应用能够响应AVRecorder生成的状态变化事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。 |
 | [OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnError callback, void *userData)](#oh_avrecorder_seterrorcallback) | 设置错误回调函数，以便应用能够响应AVRecorder生成的错误事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。 |
 | [OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnUri callback, void *userData)](#oh_avrecorder_seturicallback) | 设置URI回调函数，以便应用能够响应AVRecorder生成的URI事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。 |
-| [OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)](#oh_avrecorder_setwillmutewheninterrupted) | 设置是否开启静音打断模式。 |
-| [OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder, int32_t *amplitude)](#oh_avrecorder_getaudiocapturermaxamplitude) | 获取当前音频最大振幅。获取到的值为最近两次调用之间的最大振幅。例如，在1s时获取过一次最大振幅，然后在2s时再次调用该方法，那么返回值是1s到2s之间的最大振幅值。<br> 该方法只能在[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)方法调用之后，且必须在[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)方法之前调用。 |
-| [OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVFormat *metadata)](#oh_avrecorder_setmetadata) | 设置录制的元数据信息。如果metadata参数与config.metadata.customInfo（参考[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)和[OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md)）中存在相同的键，前者的对应值将覆盖后者。<br> 该方法只能在OH_AVRecorder_Prepare方法调用之后，且必须在[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)方法之前调用。 |
+| [OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)](#oh_avrecorder_setwillmutewheninterrupted) | 设置是否开启静音打断模式，用于控制音频流被打断时的处理行为。设置成true表示音频流被打断时录制静音，设置成false表示音频流被打断时停止录制，默认值为false。此接口必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口之前调用。 |
+| [OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder, int32_t *amplitude)](#oh_avrecorder_getaudiocapturermaxamplitude) | 获取当前音频最大振幅。获取到的值为最近两次调用之间的最大振幅。例如，在1s时获取过一次最大振幅，然后在2s时再次调用该接口，那么返回值是1s到2s之间的最大振幅值。<br> 该接口只能在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口调用之后，且必须在[OH_AVRecorder_Stop](#oh_avrecorder_stop)接口之前调用。 |
+| [OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVFormat *metadata)](#oh_avrecorder_setmetadata) | 设置录制的元数据信息。典型使用场景包括：在录制的视频或音频文件中添加作者信息、版权信息、地理位置、录制时间等自定义元数据。如果metadata参数与config.metadata.customInfo（参考[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)和[OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md)）中存在相同的键，前者的对应值将覆盖后者。<br> 该方法只能在OH_AVRecorder_Prepare方法调用之后，且必须在[OH_AVRecorder_Stop](#oh_avrecorder_stop)方法之前调用。 |
 
 ## 函数说明
 
@@ -75,7 +75,7 @@ OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config
 
 **描述**
 
-配置AVRecorder参数，准备录制。必须在[OH_AVRecorder_Create](#oh_avrecorder_create)成功触发之后调用，调用成功之后进入AVRECORDER_PREPARED状态。<br>若只录制音频，则无需配置视频相关参数；同理，若只录制视频，则无需配置音频相关参数。
+配置AVRecorder参数，准备录制。必须在[OH_AVRecorder_Create](#oh_avrecorder_create)成功触发之后调用，调用成功之后进入AVRECORDER_PREPARED状态。<br>若未配置视频相关参数，则只录制音频；同理，若未配置音频相关参数，则只录制视频。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -93,7 +93,7 @@ OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：输入的recorder为nullptr或者准备失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：输入的recorder/config为nullptr或准备失败。 |
 
 ### OH_AVRecorder_GetAVRecorderConfig()
 
@@ -115,13 +115,13 @@ OH_AVErrCode OH_AVRecorder_GetAVRecorderConfig(OH_AVRecorder *recorder, OH_AVRec
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| [OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md) **config | 指向OH_AVRecorder_Config实例的指针。 |
+| [OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md) **config | 指向OH_AVRecorder_Config实例指针的指针，用于获取当前的录制参数配置。传入时\*config必须为nullptr，调用成功后，\*config指向框架层分配的配置实例，由框架层统一释放。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：输入的recorder为nullptr或\*config不为nullptr。<br>        AV_ERR_NO_MEMORY：内存不足，\*config内存分配失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：输入的recorder为nullptr或\*config不为nullptr。<br>        AV_ERR_NO_MEMORY：内存不足，\*config内存分配失败，请释放资源后重试。 |
 
 ### OH_AVRecorder_GetInputSurface()
 
@@ -143,7 +143,7 @@ OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWind
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| [OHNativeWindow](../apis-arkgraphics2d/capi-nativewindow-nativewindow.md) **window | 指向OHNativeWindow实例的指针。 |
+| [OHNativeWindow](../apis-arkgraphics2d/capi-nativewindow-nativewindow.md) **window | 指向OHNativeWindow实例指针的指针，用于获取输入Surface。\*window必须为nullptr，调用成功后，*window指向框架层分配的OHNativeWindow实例，调用者可从此实例中获取Surface填入视频数据。 |
 
 **返回：**
 
@@ -159,7 +159,7 @@ OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotat
 
 **描述**
 
-更新视频旋转角度。必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)成功触发之后，[OH_AVRecorder_Start](#oh_avrecorder_start)之前调用。
+更新视频旋转角度。典型使用场景包括：设备横竖屏切换时调整视频方向、根据摄像头采集方向设置视频旋转角度等。必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)成功触发之后，[OH_AVRecorder_Start](#oh_avrecorder_start)之前调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -268,7 +268,7 @@ OH_AVErrCode OH_AVRecorder_Stop(OH_AVRecorder *recorder)
 
 **描述**
 
-停止录制。必须在[OH_AVRecorder_Start](#oh_avrecorder_start)成功触发之后调用，调用成功之后进入AVRECORDER_STOPPED状态。<br>纯音频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口才能重新录制。<br>纯视频录制、音视频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)和[OH_AVRecorder_GetInputSurface](#oh_avrecorder_getinputsurface)接口才能重新录制。
+停止录制。必须在[OH_AVRecorder_Start](#oh_avrecorder_start)成功触发之后，处于AVRECORDER_STARTED或AVRECORDER_PAUSED状态时调用，调用成功之后进入AVRECORDER_STOPPED状态。<br>纯音频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口才能重新录制。<br>纯视频录制、音视频录制时，需要重新调用[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)和[OH_AVRecorder_GetInputSurface](#oh_avrecorder_getinputsurface)接口才能重新录制。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -344,12 +344,12 @@ OH_AVErrCode OH_AVRecorder_Release(OH_AVRecorder *recorder)
 ### OH_AVRecorder_GetAvailableEncoder()
 
 ```c
-OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRecorder_EncoderInfo **info,int32_t *length)
+OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRecorder_EncoderInfo **info, int32_t *length)
 ```
 
 **描述**
 
-获取AVRecorder可用的编码器和编码器信息。<br>参数*info必须为nullptr，由框架层统一分配和释放内存，以避免内存管理混乱，防止内存泄漏或重复释放等问题。
+获取AVRecorder可用的编码器信息。典型使用场景包括：应用启动时查询设备支持的编码器、根据可用编码器选择合适的编码格式、在编码器选择界面展示可选列表等。<br>参数*info必须为nullptr，由框架层统一分配和释放内存，以避免内存管理混乱，防止内存泄漏或重复释放等问题。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -361,14 +361,14 @@ OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRec
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| [OH_AVRecorder_EncoderInfo](capi-avrecorder-oh-avrecorder-encoderinfo.md) **info | 指向OH_AVRecorder_EncoderInfo实例的指针。 |
-| int32_t *length | 可用编码器的长度。 |
+| [OH_AVRecorder_EncoderInfo](capi-avrecorder-oh-avrecorder-encoderinfo.md) **info | 指向OH_AVRecorder_EncoderInfo实例指针的指针，用于获取可用编码器信息数组。传入时\*info必须为nullptr，调用成功后，\*info指向框架层分配的编码器信息数组，由框架层统一释放。 |
+| int32_t *length | 可用编码器数组的长度。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：输入的 recorder 为nullptr。<br>        AV_ERR_NO_MEMORY：内存不足，\*info内存分配失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：输入的recorder为nullptr或\*info不为nullptr。<br>        AV_ERR_NO_MEMORY：内存不足，\*info内存分配失败，请释放资源后重试。 |
 
 ### OH_AVRecorder_SetStateCallback()
 
@@ -378,7 +378,7 @@ OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecord
 
 **描述**
 
-设置状态回调函数，以便应用能够响应AVRecorder生成的状态变化事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。
+设置状态变化回调函数，以便应用能够响应AVRecorder生成的状态变化事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -391,7 +391,7 @@ OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecord
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
 | [OH_AVRecorder_OnStateChange](capi-avrecorder-base-h.md#oh_avrecorder_onstatechange) callback | 状态回调函数。 |
-| void *userData | 指向用户特定数据的指针。 |
+| void *userData | 用户自定义数据指针，将在状态变化回调函数被触发时传递给回调函数，供应用层使用。 |
 
 **返回：**
 
@@ -420,7 +420,7 @@ OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecord
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
 | [OH_AVRecorder_OnError](capi-avrecorder-base-h.md#oh_avrecorder_onerror) callback | 错误回调函数。 |
-| void *userData | 指向用户特定数据的指针。 |
+| void *userData | 用户自定义数据指针，将在错误回调函数被触发时传递给回调函数，供应用层使用。 |
 
 **返回：**
 
@@ -449,7 +449,7 @@ OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
 | [OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri) callback | URI回调函数。 |
-| void *userData | 指向用户特定数据的指针。 |
+| void *userData | 用户自定义数据指针，将在URI回调函数被触发时传递给回调函数，供应用层使用。 |
 
 **返回：**
 
@@ -465,7 +465,7 @@ OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, b
 
 **描述**
 
-设置是否开启静音打断模式。
+设置是否开启静音打断模式，用于控制音频流被打断时的处理行为。设置成true表示音频流被打断时录制静音，设置成false表示音频流被打断时停止录制，默认值为false。此接口必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口之前调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -477,13 +477,13 @@ OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, b
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| bool muteWhenInterrupted | 设置是否开启静音打断模式。设置成true表示当应用需要录制时保持静音而不是被打断，设置成false表示应用录制打断时停止录音而不是保持静音。 |
+| bool muteWhenInterrupted | 是否开启静音打断模式。true表示开启静音打断模式，音频流被打断时录制静音；false表示关闭静音打断模式，音频流被打断时停止录制。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的recorder为nullptr或回调函数为nullptr。<br>         AV_ERR_INVALID_STATE：函数在无效状态下调用，应先处于准备状态。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的recorder为nullptr。<br>         AV_ERR_INVALID_STATE：函数不支持在当前状态下调用，应当在准备状态之前调用。 |
 
 ### OH_AVRecorder_GetAudioCapturerMaxAmplitude()
 
@@ -493,7 +493,9 @@ OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder,
 
 **描述**
 
-获取当前音频最大振幅。获取到的值为最近两次调用之间的最大振幅。例如，在1s时获取过一次最大振幅，然后在2s时再次调用该方法，那么返回值是1s到2s之间的最大振幅值。<br> 该方法只能在[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)方法调用之后，且必须在[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)方法之前调用。
+获取当前音频最大振幅。获取到的值为最近两次调用之间的最大振幅。例如，在1s时获取过一次最大振幅，然后在2s时再次调用该接口，那么返回值是1s到2s之间的最大振幅值。<br> 该接口只能在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口调用之后，且必须在[OH_AVRecorder_Stop](#oh_avrecorder_stop)接口之前调用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
 **起始版本：** 26.0.0
 
@@ -508,7 +510,7 @@ OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的参数recorder或amplitude为nullptr。<br>         AV_ERR_INVALID_STATE：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>         AV_ERR_NO_MEMORY：内存不足。<br>         AV_ERR_UNKNOWN：未知错误。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的参数recorder或amplitude为nullptr。<br>         AV_ERR_INVALID_STATE：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>         AV_ERR_NO_MEMORY：内存不足，请释放资源后重试。<br>         AV_ERR_UNKNOWN：未知错误，请查看日志获取详细信息。 |
 
 ### OH_AVRecorder_SetMetadata()
 
@@ -518,7 +520,9 @@ OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVForma
 
 **描述**
 
-设置录制的元数据信息。如果metadata参数与config.metadata.customInfo（参考[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)和[OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md)）中存在相同的键，前者的对应值将覆盖后者。<br> 该方法只能在OH_AVRecorder_Prepare方法调用之后，且必须在[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)方法之前调用。
+设置录制的元数据信息。典型使用场景包括：在录制的视频或音频文件中添加作者信息、版权信息、地理位置、录制时间等自定义元数据。如果metadata参数与config.metadata.customInfo（参考[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)和[OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md)）中存在相同的键，前者的对应值将覆盖后者。<br> 该方法只能在OH_AVRecorder_Prepare方法调用之后，且必须在[OH_AVRecorder_Stop](#oh_avrecorder_stop)方法之前调用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
 **起始版本：** 26.0.0
 
@@ -527,12 +531,12 @@ OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVForma
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| const [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md) *metadata | 设置的元数据信息。格式为字符串键值对，其中，键需要以"com.openharmony."开头，且值的长度不能超过256个字节。 |
+| const [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md) *metadata | 设置的元数据信息，会嵌入到录制的媒体文件中。格式为字符串键值对，其中，键需要以"com.openharmony."开头，且值的长度不能超过256个字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的参数recorder或metadata为nullptr，或者metadata中的值长度超过256字节。<br>         AV_ERR_INVALID_STATE：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>         AV_ERR_NO_MEMORY：内存不足。<br>         AV_ERR_UNKNOWN：未知错误。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的参数recorder或metadata为nullptr，或者metadata中的值长度超过256字节。<br>         AV_ERR_INVALID_STATE：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>         AV_ERR_NO_MEMORY：内存不足，请释放资源后重试。<br>         AV_ERR_UNKNOWN：未知错误，请查看日志获取详细信息。 |
 
 

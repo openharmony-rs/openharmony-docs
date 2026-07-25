@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-\@Watch应用于对状态变量的监听。如果开发者需要关注某个状态变量的值是否改变，可以使用\@Watch为状态变量设置回调函数。
+[\@Watch](../../reference/apis-arkui/arkui-ts/ts-state-management-watch.md#watch)应用于对状态变量的监听。如果开发者需要关注某个状态变量的值是否改变，可以使用\@Watch为状态变量设置回调函数。
 
 
 \@Watch提供了状态变量的监听能力，\@Watch仅能监听到可以观察到的变化。

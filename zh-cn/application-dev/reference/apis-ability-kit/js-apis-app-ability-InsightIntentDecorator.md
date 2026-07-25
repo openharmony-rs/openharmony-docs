@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-InsightIntentDecorator模块提供了几类意图装饰器，用于装饰类或方法。开发者可以[使用装饰器开发意图](../../application-models/insight-intent-decorator-development.md), 将应用的功能定义为意图，并集成到智能问答、智能搜索、智能推荐等AI入口。
+InsightIntentDecorator模块提供了几类意图装饰器，用于装饰类或方法。开发者可以[使用装饰器开发意图](../../application-models/insight-intent-decorator-development.md)，将应用的功能定义为意图，并集成到智能问答、智能搜索、智能推荐等AI入口。
 
 - [@InsightIntentLink](#insightintentlink)装饰器：使用该装饰器装饰当前应用的URI，可将该URI定义为意图，便于AI入口跳转到当前应用。该装饰器支持的参数参见[LinkIntentDecoratorInfo](#linkintentdecoratorinfo)。
 - [@InsightIntentPage](#insightintentpage)装饰器：使用该装饰器装饰当前应用的Page页面，可以将该Page页面定义为意图，便于AI入口通过意图快速跳转到当前Page页面。该装饰器支持的参数参见[PageIntentDecoratorInfo](#pageintentdecoratorinfo)。
@@ -151,7 +151,7 @@ export class ClassForLink {
 | displayDescription | string         | 否        | 是   | 表示显示给用户的意图描述。                                       |
 | schema             | string         | 否        | 是   | 表示接入的标准意图的名称。开发者[接入标准意图](../../application-models/insight-intent-definition.md#接入标准意图)时，需要配置该字段，[创建自定义意图](../../application-models/insight-intent-definition.md#创建自定义意图)时，无需配置该字段。标准意图列表参见[附录：标准意图接入规范](../../application-models/insight-intent-access-specifications.md)。 |
 | icon               | ResourceStr | 否   | 是   | 表示意图图标，用于在AI入口显示。<br/>- 当取值为字符串类型时，表示图标读取网络资源。<br/>- 当取值为[Resource](../../reference/apis-localization-kit/js-apis-resource-manager.md)时，表示图标读取本地资源。 |
-| llmDescription     | string      | 否           | 是   | 表示意图的功能，用于大型语言模型理解该意图。                  |
+| llmDescription     | string      | 否           | 是   | 表示意图的功能描述，用于大型语言模型理解该意图。                  |
 | keywords           | string[]     | 否          | 是   | 表示意图的搜索关键字。                                       |
 | parameters         | Record<string, Object>| 否 | 是   | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。取值参见[各垂域意图Schema](https://developer.huawei.com/consumer/cn/doc/service/intents-schema-0000001901962713) |
 | result           | Record<string, Object>     | 否          | 是   | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。                                       |
@@ -395,7 +395,9 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
   onExecute(): Promise<insightIntent.IntentResult<string>> {
     hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo executeMode %{public}s', JSON.stringify(this.executeMode));
     hilog.info(0x0000, LOG_TAG, '%{public}s', JSON.stringify(this));
+    // 创建LocalStorage实例，用于在页面间传递参数
     let storage = new LocalStorage();
+    // 将歌曲名称保存到LocalStorage中，供目标页面读取
     storage.setOrCreate('songName', this.songName);
     // 根据executeMode参数的不同情况，提供不同拉起PlayMusicPage页面的方式。
     if (this.executeMode == insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND) {
@@ -409,7 +411,7 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
       result: 'result'
     }
     hilog.error(0x0000, LOG_TAG, `Failed to execute PlayMusicDemo. Code: ${result.code}, message: ${result.result}`);
-    // 以Promise的方式返回意图执行结果
+    // 以Promise.reject的方式返回意图执行失败结果
     return Promise.reject(result);
   }
 }
@@ -446,7 +448,7 @@ EntryIntentDecoratorInfo继承自[IntentDecoratorInfo](#intentdecoratorinfo)，�
 
 ```ts
 import { formBindingData, FormExtensionAbility } from '@kit.FormKit';
-import { insightIntent, Want, InsightIntentForm } from '@kit.AbilityKit';
+import { Want, InsightIntentForm } from '@kit.AbilityKit';
 
 // 使用@InsightIntentForm装饰器将该FormExtensionAbility名为widget的卡片定义为意图
 @InsightIntentForm({

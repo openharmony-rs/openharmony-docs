@@ -106,7 +106,7 @@ removeFrameNode(node: FrameNode): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 需要删除的FrameNode，该节点需已添加到当前NodeContent中。 |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 需要删除的FrameNode，该节点需已添加到当前NodeContent中，若未添加则删除无效。 |
 
 **示例：**
 

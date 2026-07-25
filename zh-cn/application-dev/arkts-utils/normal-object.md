@@ -18,7 +18,7 @@
 
 此处提供了一个传递普通对象的示例，具体实现如下：
 
-<!-- @[define_test_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/Test.ets) -->
+<!-- @[define_test_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/Test.ets) -->
 
 ``` TypeScript
 // 自定义class TestA
@@ -30,7 +30,7 @@ export class TestA {
 }
 ```
 
-<!-- @[example_normal_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/NormalObject.ets) -->
+<!-- @[example_normal_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/NormalObject.ets) -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -39,7 +39,7 @@ import { TestA } from './Test';
 
 @Concurrent
 async function test1(arg: TestA) {
-  console.info('TestA name is: ' + arg.name);
+  console.info(`TestA name is: ${arg.name}`);
 }
 
 @Entry
@@ -58,17 +58,18 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // 1. 创建Test实例objA
+          // 1. 创建TestA实例objA
           let objA = new TestA('TestA');
           // 2. 创建任务task，将objA传递给该任务，objA非sendable对象，通过序列化传递给子线程
           let task = new taskpool.Task(test1, objA);
           // 3. 执行任务
           taskpool.execute(task).then(() => {
+            this.message = 'success';
             console.info('taskpool: execute task success!');
-          }).catch((e:BusinessError) => {
+          }).catch((e: BusinessError) => {
+            this.message = 'fail';
             console.error(`taskpool: execute task: Code: ${e.code}, message: ${e.message}`);
           })
-          this.message = 'success';
         })
     }
     .height('100%')

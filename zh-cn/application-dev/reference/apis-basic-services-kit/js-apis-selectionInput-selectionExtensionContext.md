@@ -52,7 +52,7 @@ startAbility(want: Want): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
+以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
@@ -113,7 +113,7 @@ class SelectionExtAbility extends SelectionExtensionAbility {
       }).catch((err: BusinessError) => {
         console.error(`Failed to startAbility. Error code: ${err.code}, error message: ${err.message}`);
       });
-    } catch(err) {
+    } catch (err) {
       console.error(`Failed to startAbility. Error code: ${err.code}, error message: ${err.message}`);
     }
     return new SelectionAbilityStub('remote');

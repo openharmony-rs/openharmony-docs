@@ -162,7 +162,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
       } else if (OH_ArkUI_NodeContentEvent_GetEventType(event) == NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW) {
           // ContentSlot下树时需要触发的逻辑
           // ···
-      };
+      }
   };
   // 将该事件注册到nodeContent上
   OH_ArkUI_NodeContent_RegisterCallback(nodeContentHandle_, nodeContentEvent);
@@ -185,7 +185,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
   <!-- @[contentslot_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
 
   ``` C++
-  size_t position = 0;
+  int32_t position = 0;
   ArkUI_NodeHandle component1 = CreateNodeHandle();
   // 将组件插入nodeContent管理器对应位置
   OH_ArkUI_NodeContent_InsertNode(nodeContentHandle_, component1, position);

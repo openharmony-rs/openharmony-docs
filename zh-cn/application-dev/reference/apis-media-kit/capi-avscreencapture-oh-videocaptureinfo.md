@@ -31,6 +31,6 @@ typedef struct OH_VideoCaptureInfo {...} OH_VideoCaptureInfo
 | int32_t missionIDsLen | 指定窗口ID列表的长度，使用该参数需要在captureMode为CAPTURE_SPECIFIED_WINDOW模式下使用，其他模式下此参数不生效。取值需大于0，且与missionIDs列表实际长度一致。 |
 | int32_t videoFrameWidth | 采集视频的宽度设置，单位：px。取值范围需大于等于0。传入负数或超出设备支持分辨率时，屏幕录制将失败。 |
 | int32_t videoFrameHeight | 采集视频的高度设置，单位：px。取值范围需大于等于0。传入负数或超出设备支持分辨率时，屏幕录制将失败。 |
-| [OH_VideoSourceType](capi-native-avscreen-capture-base-h.md#oh_videosourcetype) videoSource | 视频采集格式设置，目前仅支持RGBA格式，设置其他格式时不支持该采集行为。 |
+| [OH_VideoSourceType](capi-native-avscreen-capture-base-h.md#oh_videosourcetype) videoSource | 视频采集格式设置，目前仅支持RGBA格式。RGBA格式适用于需要获取原始像素数据进一步处理的场景，详情请参考[OH_VideoSourceType](capi-native-avscreen-capture-base-h.md#oh_videosourcetype)。设置其他格式时不支持该采集行为。 |
 
 

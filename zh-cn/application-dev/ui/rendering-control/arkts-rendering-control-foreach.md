@@ -492,7 +492,7 @@ struct ArticleCardChangeChild {
           .margin({ bottom: 8 })
 
         Row() {
-          // 此处app.media.iconLiked'，'app.media.iconUnLiked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+          // 此处'app.media.iconLiked'，'app.media.iconUnLiked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
           Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnLiked'))
             .width(24)
             .height(24)
@@ -681,7 +681,7 @@ struct ReducedRenderingPerformance {
       }
       .onClick(() => {
         this.simpleList.splice(1, 0, 'new item');
-        hilog.info(DOMAIN, 'testTag', '[onClick]: simpleList is [${this.simpleList.join(', ')}]');
+        hilog.info(DOMAIN, 'testTag', `[onClick]: simpleList is [${this.simpleList.join(', ')}]`);
       })
 
       ForEach(this.simpleList, (item: string) => {
@@ -700,7 +700,7 @@ struct ReducedChildItem {
   @Prop item: string;
 
   aboutToAppear() {
-    hilog.info(DOMAIN, TAG, '[aboutToAppear]: item is ${this.item}');
+    hilog.info(DOMAIN, TAG, `[aboutToAppear]: item is ${this.item}`);
   }
 
   build() {
@@ -837,7 +837,7 @@ struct ArticleCardChangeData {
           .margin({ bottom: 8 })
 
         Row() {
-          // 此处app.media.iconLiked'，'app.media.iconUnLiked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+          // 此处'app.media.iconLiked'，'app.media.iconUnLiked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
           Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnLiked'))
             .width(24)
             .height(24)

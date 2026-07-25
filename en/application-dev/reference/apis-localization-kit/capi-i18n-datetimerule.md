@@ -27,7 +27,7 @@ Rule of time and date.
 
 | Name| Description|
 | -- | -- |
-| int32_t month | Month.|
+| int32_t month | Month. The month starts from **0**, indicating January.|
 | int32_t dayOfMonth | Day of the month.|
 | int32_t dayOfWeek | Day of the week.|
 | int32_t weekInMonth | Week of the month.|

@@ -446,8 +446,8 @@ struct Index {
 
 ``` TypeScript
 // common/Utils.ets
-import hilog from '@ohos.hilog';
-import { UIContext } from '@ohos.arkui';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
 
 export function GetUIContextByAtomicInterface(): UIContext {
   let callingScopeUIContext = UIContext.getCallingScopeUIContext();
@@ -518,6 +518,7 @@ class PixelUtils {
 ``` TypeScript
 // common/Utils.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
@@ -550,7 +551,7 @@ export class PixelUtil {
     return _uiContext.fp2px(fpValue)
   }
 
-  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+  static lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
     let _uiContext = uiContext ?? PixelUtil.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
@@ -681,7 +682,7 @@ hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
 
 ``` TypeScript
 // common/WindowUtils.ets
-import { display, window } from '@kit.ArkUI';
+import { display, window, UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -936,7 +937,7 @@ export class PixelUtils {
 ``` TypeScript
 // Common/UIContext.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { display } from '@kit.ArkUI';
+import { display, UIContext } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
@@ -966,7 +967,7 @@ export class PixelUtils {
     return _uiContext.fp2px(fpValue)
   }
 
-  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+  static lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
     let _uiContext = uiContext ?? PixelUtils.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
@@ -987,7 +988,7 @@ export class PixelUtils {
 | 主窗口创建并调用loadContent或setUIContent后，且传入自定义组件对象。 | 跟踪自定义组件所属的UI实例，返回该UI实例所属Ability的Context。 | 无                                                           |
 | 在loadContent或setUIContent后，且在UI的回调函数中。          | 根据UI跟踪的调用域（Scope）找到具体的UI实例，返回该UI实例所属Ability的Context。 | 无                                                           |
 | 应用单Ability单窗口的场景，并在loadContent或setUIContent之后，但在非UI的其他异步回调中调用且未传入自定义组件对象。 | 无法根据UI跟踪的调用域（Scope）找到具体的UI实例，但根据当前单例场景可以确定唯一UI实例，返回该UI实例所属Ability的Context。 | 无                                                           |
-| 多Ability或多窗口的多UI实例场景，在loadContent或setUIContent调用之后，但在其他异步回调中调用且未传入自定义组件对象。 | 无法根据UI跟踪的调用域(Scope)找到具体的UI实例，也无法确定唯一实例。接口按照最近获焦、最近前台、最近创建的优先级依次查找匹配的UI实例，返回该UI实例所属Ability的Context。 | 多实例场景可能与预期不一致。如存在两个Ability时，预期返回第一个创建的Ability的Context，实际返回第二个创建的Ability的Context。 |
+| 多Ability或多窗口的多UI实例场景，在loadContent或setUIContent调用之后，但在其他异步回调中调用且未传入自定义组件对象。 | 无法根据UI跟踪的调用域（Scope）找到具体的UI实例，也无法确定唯一实例。接口按照最近获焦、最近前台、最近创建的优先级依次查找匹配的UI实例，返回该UI实例所属Ability的Context。 | 多实例场景可能与预期不一致。如存在两个Ability时，预期返回第一个创建的Ability的Context，实际返回第二个创建的Ability的Context。 |
 | 所有的窗口销毁，无UI实例后。                                 | 没有合适的UI实例，返回undefined。                            | 无                                                         |
 
 在单Ability场景中，建议直接获取Ability的context属性。

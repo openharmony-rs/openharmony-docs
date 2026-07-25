@@ -95,7 +95,7 @@ query(id: string, callback: AsyncCallback&lt;TaskInfo&gt;): void
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // taskId为已创建上传/下载任务的id，可通过request.agent.create接口创建任务后获取 
-  request.agent.query("123456", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
+  request.agent.query('123456', (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
     if (err) {
       console.error(`Failed to query an upload task. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -147,9 +147,9 @@ query(id: string): Promise&lt;TaskInfo&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // taskId为已创建上传/下载任务的id，可通过request.agent.create接口创建任务后获取 
-  request.agent.query("123456").then((taskInfo: request.agent.TaskInfo) => {
+  request.agent.query('123456').then((taskInfo: request.agent.TaskInfo) => {
     console.info(`Succeeded in querying an upload task. result: ${taskInfo.uid}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to query an upload task, Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to query an upload task. Code: ${err.code}, message: ${err.message}`);
   });
   ```

@@ -6,15 +6,16 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-This module provides APIs to publish, subscribe to, and unsubscribe from common events. This module provides a system-level event notification mechanism that allows an app to send notifications to other apps that have subscribed to the event when the system status changes (such as power-on completion, battery level change, and screen on/off) or a custom service event occurs. This mechanism enables transferring information accross components and apps.
+This module provides APIs to publish, subscribe to, and unsubscribe from common events. This module provides a system-level event notification mechanism that allows an app to send notifications to other apps that have subscribed to the event when the system status changes (such as power-on completion, battery level change, and screen on/off) or a custom service event occurs. This mechanism enables transferring information across components and apps.
 
 The key concepts involved in this module are as follows:
-- System common events: preset common events published by system services or system apps, which are enumerated in **Support**. Some system common events require specific permissions for subscription.
-- Ordered common events: common events delivered to subscribers in sequence based on their priorities. The subscriber with a higher priority receives the event first and can modify the event data passed to subsequent subscribers or stop delivering the event to the subscriber with a lower priority.
+- Unordered common events: common events that CES forwards regardless of whether subscribers receive the events and when they subscribe to the events.
+- Ordered common events: common events that CES forwards based on the subscriber priority. CES preferentially forwards an ordered common event to the subscriber with higher priority, waits until the subscriber receives the event, and then forwards the events to the subscriber with lower priority. Subscribers with the same priority receive common events in a random order.
+- Sticky common events: common events that can be sent to a subscriber before or after they initiate a subscription. Only system apps or services can send sticky common events.
 
 **APIs used in combination**
 
-The event communication of this module invovles three processes: subscription, publishing, and ordered event. The subscription process and publishing process are associated through the event name. The publisher and subscriber do not need to be aware of each other.
+The event communication of this module involves three processes: subscription, publishing, and ordered event. The subscription process and publishing process are associated through the event name. The publisher and subscriber do not need to be aware of each other.
 
 **Subscription process: Create a subscriber, subscribe to an event, receive the event, and cancel the subscription.**
 
@@ -63,11 +64,11 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 | Name    | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
 | event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- | 
@@ -112,11 +113,11 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
-| callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+| callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -167,7 +168,7 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 | Name         | Type                                                        | Mandatory| Description                      |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)        | Yes  | Subscriber information.            |
-| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | Yes  | Callback used to receive the created subscriber object. When a common event subscriber is successfully created, **err** is **undefined** and **data** is the **CommonEventSubscriber** object created. Otherwise, **err** is an error object.|
+| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | Yes  | Callback used to receive the created subscriber object. When a common event subscriber is successfully created, **err** is **undefined** and **data** is the **CommonEventSubscriber** object created. If the subscriber fails to be created, **err** is an error object.|
 
 **Error codes**
 
@@ -323,14 +324,14 @@ Subscribes to a common event. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. <br> Applicable versions: 20+|
+| 1500010  | The count of subscriber exceeds system specification. <br> Applicable versions: 20+|
 
 **Example**
 
@@ -389,11 +390,11 @@ Unsubscribes from a common event. This API uses an asynchronous callback to retu
 | Name      | Type                                            | Mandatory| Description                    |
 | ---------- | ----------------------------------------------- | ---- | ------------------------ |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | Yes  | Subscriber object.        |
-| callback   | AsyncCallback\<void>                            | No  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. If this parameter is not passed, the subscription is canceled by default and no result is returned.|
+| callback   | AsyncCallback\<void>                            | No  | Callback used to return the result. If the common event is successfully unsubscribed from, **err** is **undefined**; if the unsubscription fails, **err** is an error object. If this parameter is not passed, the subscription is canceled by default and no result is returned.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -487,14 +488,14 @@ Subscribes to a common event. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           | 
 | -------- | ----------------------------------- |
 | 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. |
+| 1500010  | The count of subscriber exceeds system specification. |
 
 **Example**
 

@@ -492,7 +492,7 @@ splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[])
 
 static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
-创建一个SegmentButtonItemOptionsArray对象。
+创建一个SegmentButtonItemOptionsArray对象。与构造函数接受相同的参数，功能一致，可根据编码习惯选择使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1263,7 +1263,7 @@ import { SegmentButton, SegmentButtonItemTuple, SegmentButtonOptions } from '@ki
 
 @Entry
 @Component
-struct Index12 {
+struct Index {
   @State singleSelectTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }
@@ -1345,7 +1345,7 @@ import {
 
 @Entry
 @Component
-struct IndexCl {
+struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
     buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
       text: '页签按钮3'
@@ -1403,7 +1403,7 @@ import {
 
 @Entry
 @Component
-struct IndexCl {
+struct Index {
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },

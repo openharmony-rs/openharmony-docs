@@ -7,7 +7,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Builder装饰的函数也称为“自定义构建函数”，用于封装可复用的UI构建逻辑，可在自定义组件中多次调用。开发指南见[@Builder装饰器：自定义构建函数](../../../ui/state-management/arkts-builder.md)。
+\@Builder装饰的函数也称为“自定义构建函数”，用于封装可复用的UI构建逻辑，可在自定义组件中多次调用，从而减少代码重复、提升UI构建的可维护性，适用于需要复用相同UI结构的场景。
+
+开发指南参考：[@Builder装饰器：自定义构建函数](../../../ui/state-management/arkts-builder.md)。
 
 > **说明：**
 >

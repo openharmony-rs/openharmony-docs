@@ -130,8 +130,6 @@ import { distributedKVStore } from '@kit.ArkData';
 
 分布式键值数据库类型枚举。
 
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
 | 名称                 | 值 | 说明                                                         |
 | -------------------- | - | ------------------------------------------------------------ |
 | DEVICE_COLLABORATION | 0 | 表示多设备协同数据库。<br>**数据库特点：** 数据以设备的维度管理，不存在冲突；支持按照设备的维度查询数据。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
@@ -160,8 +158,6 @@ import { distributedKVStore } from '@kit.ArkData';
 ## Options
 
 用于提供创建数据库的配置信息。
-
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 | 名称          | 类型                        | 只读 | 可选 | 说明                                                         |
 | --------------- | -------------- | ---- | ----| -------------------------|
@@ -237,11 +233,11 @@ schema.skip = 0;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-| 名称     | 类型    | 只读 | 可选 | 说明                                                                                                     |
-| -------- | ------- | ---- | ---- |--------------------------------------------------------------------------------------------------------|
-| nullable | boolean | 否   | 否   | 表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。                                                        |
-| default  | string  | 否   | 否   | 表示FieldNode的默认值。default需传入type对应类型可解析的字符串字面量，确保内容类型与type字段类型一致。                                        |
-| type     | number  | 否   | 否   | 表示指定节点对应的数据类型，取值为[ValueType](#valuetype)对应的枚举值。注意：暂不支持BYTE_ARRAY，使用此类型会导致[getKVStore](#getkvstore)失败。  |
+| 名称     | 类型    | 只读 | 可选 | 说明                                                                                                    |
+| -------- | ------- | ---- | ---- |-------------------------------------------------------------------------------------------------------|
+| nullable | boolean | 否   | 否   | 表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。                                                       |
+| default  | string  | 否   | 否   | 表示FieldNode的默认值。default需传入type对应类型可解析的字符串字面量，确保内容类型与type字段类型一致。                                       |
+| type     | number  | 否   | 否   | 表示指定节点对应的数据类型，取值为[ValueType](#valuetype)对应的枚举值。说明：暂不支持BYTE_ARRAY，使用此类型会导致[getKVStore](#getkvstore)失败。 |
 
 ### constructor
 
@@ -950,7 +946,7 @@ try {
 
 off(event: 'distributedDataServiceDie', deathCallback?: Callback&lt;void&gt;): void
 
-取消订阅服务状态变更通知。必须先调用[on('distributedDataServiceDie')](#ondistributeddataservicedie)订阅后，才能调用off取消订阅。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
+取消订阅服务终止事件。必须先调用[on('distributedDataServiceDie')](#ondistributeddataservicedie)订阅后，才能调用off取消订阅。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -958,7 +954,7 @@ off(event: 'distributedDataServiceDie', deathCallback?: Callback&lt;void&gt;): v
 
 | 参数名        | 类型             | 必填 | 说明                                                         |
 | ------------- | -------------------- | ---- | ------------------------------------------------------------ |
-| event         | string               | 是   | 取消订阅的事件名，固定为'distributedDataServiceDie'，即服务状态变更事件。 |
+| event         | string               | 是   | 取消订阅的事件名，固定为'distributedDataServiceDie'，即服务终止事件。 |
 | deathCallback | Callback&lt;void&gt; | 否   | 回调函数。如果该参数不填，那么会将之前订阅过的所有的deathCallback取消订阅。                                          |
 
 **错误码：**

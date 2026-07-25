@@ -114,7 +114,7 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 | value     | number                 | 否  | 是  | 设置Counter的初始值。<br>默认值：0<br>取值范围：[min, max]，其中min和max分别对应下述Counter的最小值和最大值（min默认为0，max默认为999）。<br>超出取值范围时，如果值小于min，按min处理；如果值大于max，按max处理。 |
 | min       | number                 | 否  | 是  | 设置Counter的最小值。<br>默认值：0<br>取值范围：(-∞, max]<br>超出取值范围时（即设置值大于max），按max处理。<br>值为undefined时，按默认值处理。 |
 | max       | number                 | 否  | 是  | 设置Counter的最大值。<br>默认值：999<br>取值范围：[min, +∞)<br>超出取值范围时（即设置值小于min），按min处理。<br>值为undefined时，按默认值处理。 |
-| textWidth | number                 | 否  | 是  | 设置数值文本的宽度。<br>默认值：自适应文本宽度。<br>取值范围：[0, +∞)<br>单位：vp<br>值为undefined时，按默认值处理。|
+| textWidth | number                 | 否  | 是  | 设置数值文本的宽度。<br>默认值：自适应文本宽度。<br>取值范围：[0, +∞)<br>单位：vp<br>超出取值范围时（即设置值小于0），按0处理。<br>值为undefined时，按默认值处理。|
 | onChange  | (value: number) => void | 否  | 是  | 数值改变时，返回当前值。使用场景：当需要在数值变化时执行自定义操作（如更新关联UI、记录日志、保存状态等）时传入此回调。<br>value：当前显示的数值。<br>默认值：数值改变时，不返回值。<br>值为undefined时，按默认值处理。 |
 
 > **说明：**
@@ -419,4 +419,4 @@ struct CounterPage {
 }
 ```
 
-![datestyle](figures/counter_direction.png)
+![direction](figures/counter_direction.png)

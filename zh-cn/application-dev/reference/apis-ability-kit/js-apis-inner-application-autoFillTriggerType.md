@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-自动填充服务的拉起类型，通过用户手势操作来选择不同的自动填充服务拉起方式。
+自动填充服务的拉起类型，根据用户手势操作选择不同的拉起方式。
 
 **起始版本：** 26.0.0
 
@@ -19,7 +19,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 ## AutoFillTriggerType
 
-表示自动填充服务的拉起类型，共定义三种自动填充服务拉起方式，包括AUTO_REQUEST、MANUAL_REQUEST、PASTE_REQUEST。AutoFillTriggerType是[FillRequest.triggerType](./js-apis-inner-application-autoFillRequest.md#fillrequest)接口的枚举类型。
+表示自动填充服务的拉起类型，包括AUTO_REQUEST、MANUAL_REQUEST、PASTE_REQUEST三种。AutoFillTriggerType是[FillRequest.triggerType](./js-apis-inner-application-autoFillRequest.md#fillrequest)接口的枚举类型。
 
 **起始版本：** 26.0.0
 

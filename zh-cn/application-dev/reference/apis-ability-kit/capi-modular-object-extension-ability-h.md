@@ -28,6 +28,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_AbilityRuntime_ModularObjectExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) | OH_AbilityRuntime_ModObjExtensionInstance | 定义OH_AbilityRuntime_ModObjExtensionInstance结构体。 |
+| [OH_AbilityRuntime_ModObjExtensionInstance*](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance8h.md) | OH_AbilityRuntime_ModObjExtensionInstanceHandle | 定义指向OH_AbilityRuntime_ModObjExtensionInstance的指针。 |
 
 ### 函数
 

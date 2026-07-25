@@ -154,8 +154,8 @@ let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file, (err, isDLPFile) => {
- if (err != undefined) {
-    console.error('isDLPFile error,', err.code, err.message);
+ if (err) {
+    console.error(`Failed to check if file is DLP file. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('isDLPFile:', isDLPFile);
   }
@@ -240,8 +240,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 dlpPermission.isInSandbox().then((inSandbox) => { // Check whether the application is running in a sandbox.
   if (inSandbox) {
     dlpPermission.getDLPPermissionInfo((err, permissionInfo) => { 
-      if (err != undefined) {
-        console.error('getDLPPermissionInfo error', err.code, err.message);
+      if (err) {
+        console.error(`Failed to get DLP permission info. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info('permissionInfo', JSON.stringify(permissionInfo));
       }
@@ -264,7 +264,7 @@ Determine the file type based on the original file name extension and select an 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| fileName | string | Yes| Name of the target DLP file. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| fileName | string | Yes| Name of the target DLP file. The length cannot exceed 255 bytes. Otherwise, error code 401 is thrown. |
 
 **Return value**
 
@@ -544,8 +544,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPSupportedFileTypes((err, fileTypes) => {
-  if (err != undefined) {
-    console.error('getDLPSupportedFileTypes error', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get DLP supported file types. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('fileTypes', JSON.stringify(fileTypes));
   }
@@ -556,7 +556,7 @@ dlpPermission.getDLPSupportedFileTypes((err, fileTypes) => {
 
 setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Sets the retention state for sandbox applications. By default, when a DLP file is opened, the system automatically creates a sandbox environment. After the file is closed, the sandbox is automatically destroyed. After the retention state is set, the sandbox environment is retained even if the DLP file is closed, allowing the system to quickly reopen the same DLP file. This is applicable to scenarios where the same DLP file needs to be frequently operated, improving the file opening efficiency. This API can be called only in DLP sandbox applications. This API uses a promise to return the result.
+Sets the retention state for DLP sandbox applications. By default, when a DLP file is opened, the system automatically creates a sandbox environment. After the file is closed, the sandbox is automatically destroyed. After the retention state is set, the sandbox environment is retained even if the DLP file is closed, allowing the system to quickly reopen the same DLP file. This is applicable to scenarios where the same DLP file needs to be frequently operated, improving the file opening efficiency. This API can be called only in DLP sandbox applications. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -564,7 +564,7 @@ Sets the retention state for sandbox applications. By default, when a DLP file i
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | Yes| URIs of the files to be set with the retention state. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 19100001 is thrown.|
+| docUris | Array&lt;string&gt; | Yes| URIs of the files to be set with the retention state. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -610,7 +610,7 @@ Sets the retention state for sandbox applications. By default, when a DLP file i
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | Yes| URIs of the files to be set with the retention state. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 19100001 is thrown.|
+| docUris | Array&lt;string&gt; | Yes| URIs of the files to be set with the retention state. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 401 is thrown.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -632,12 +632,11 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.isInSandbox().then((inSandbox) => { // Check whether the application is running in a sandbox.
   if (inSandbox) {
-    dlpPermission.setRetentionState([uri], (err, retentionState) => {
-      if (err != undefined) {
-        console.error('setRetentionState error,', err.code, err.message);
+    dlpPermission.setRetentionState([uri], (err) => {
+      if (err) {
+        console.error(`Failed to set retention state. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info('setRetentionState success');
-        console.info('retentionState: ', JSON.stringify(retentionState));
       }
     }); // Set the sandbox retention state.
   }
@@ -660,7 +659,7 @@ This API is used to cancel the retention state for sandbox application and resto
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | Yes| URIs of the files to be canceled with the retention state. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 19100001 is thrown.|
+| docUris | Array&lt;string&gt; | Yes| URIs of the files to be canceled with the retention state. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -705,7 +704,7 @@ This API is used to cancel the retention state for sandbox application and resto
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | Yes| URIs of the files to be canceled with the retention state. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 19100001 is thrown.|
+| docUris | Array&lt;string&gt; | Yes| URIs of the files to be canceled with the retention state. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 401 is thrown.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -725,8 +724,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.cancelRetentionState([uri], (err, res) => {
-  if (err != undefined) {
-    console.error('cancelRetentionState error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to cancel retention state. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('cancelRetentionState success');
   }
@@ -747,7 +746,7 @@ This API is used to query the sandbox retention information of a specified appli
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | No| Bundle name of the application, which is used to query the sandbox retention information of the application. This parameter is required when you need to query the sandbox retention information of another application. It is optional when you need to query the sandbox retention information of the current application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
+| bundleName | string | No| Bundle name of the application, which is used to query the sandbox retention information of the application. This parameter is required when you need to query the sandbox retention information of another application. It is optional when you need to query the sandbox retention information of the current application. The value contains 7 to 128 bytes. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -792,7 +791,7 @@ This API is used to query the sandbox retention information of a specified appli
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name of the application, which is used to query the sandbox retention information of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
+| bundleName | string | Yes| Bundle name of the application, which is used to query the sandbox retention information of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 401 is thrown.|
 | callback | AsyncCallback&lt;Array&lt;[RetentionSandboxInfo](#retentionsandboxinfo)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -812,8 +811,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList("bundleName", (err, sandboxList) => {
-  if (err != undefined) {
-    console.error('getRetentionSandboxList error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('sandboxList', JSON.stringify(sandboxList));
   }
@@ -826,7 +825,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 
 Obtains the sandbox applications in the retention state of an application. This API uses an asynchronous callback to return the result.
 
-This API is used to query the sandbox retention information of a specified application, so that the sandbox environment in the retention state can be checked or managed.
+This API is used to query the sandbox retention information of a specified application, so that the sandbox environment in the retention state can be checked or managed. This API can be called only in non-DLP sandbox applications.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -853,10 +852,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
-  if (err != undefined) {
+  if (err) {
     console.error('getRetentionSandboxList error,', err.code, err.message);
   } else {
-    console.info('res', JSON.stringify(retentionSandboxList));
+    console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
   }
 }); // Obtain the sandbox retention information.
 ```
@@ -932,8 +931,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPFileAccessRecords((err, accessRecords) => {
-  if (err != undefined) {
-    console.error('getDLPFileAccessRecords error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get DLP file access records. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('accessRecords', JSON.stringify(accessRecords));
   }
@@ -1006,7 +1005,7 @@ if (context !== undefined) {
 ## dlpPermission.setSandboxAppConfig<sup>11+</sup>
 setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
-Sets the configuration information of the sandbox application. The configuration information is in JSON string format and can be set by the application. After the API is successfully called, the sandbox application runs based on the configuration information. This API uses a promise to return the result.
+Sets the configuration information of the sandbox application. The configuration information is in JSON string format and can be set by the application. After the API is successfully called, the sandbox application runs based on the configuration information. This API uses a promise to return the result. This API can be called only in non-DLP sandbox applications.
 
 This API sets the sandbox application configuration so that the application can pass custom parameters as required.
 
@@ -1016,7 +1015,7 @@ This API sets the sandbox application configuration so that the application can 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| configInfo | string | Yes| Sandbox application configuration. The value contains a maximum of 2<sup>22</sup>-1 bytes. If the value is out of range, error code 19100001 is thrown.|
+| configInfo | string | Yes| Sandbox application configuration. The value contains a maximum of 2<sup>22</sup>-1 bytes. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -1041,8 +1040,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.setSandboxAppConfig('configInfo').then((configInfo) => { // Set sandbox application configuration.
-  console.info('configInfo: ', configInfo);
+dlpPermission.setSandboxAppConfig('configInfo').then(() => { // Set sandbox application configuration.
+  console.info('setSandboxAppConfig success');
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1053,7 +1052,7 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 
 Clears the sandbox application configuration. After the API is successfully called, the sandbox application configuration is cleared and the default state is restored. This API uses a promise to return the result.
 
-This API clears the sandbox application configuration and restores the default state to prevent residual configurations from affecting subsequent use.
+This API clears the sandbox application configuration and restores the default state to prevent residual configurations from affecting subsequent use. This API can be called only in non-sandbox applications.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -1079,8 +1078,8 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.cleanSandboxAppConfig().then((configInfo) => { // Clear sandbox application configuration.
-  console.info('configInfo: ', configInfo);
+dlpPermission.cleanSandboxAppConfig().then(() => { // Clear sandbox application configuration.
+  console.info('cleanSandboxAppConfig success');
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1239,7 +1238,7 @@ try {
     dlpPermission.setEnterprisePolicy(enterprisePolicy);
     console.info('set enterprise policy success'); 
 } catch (err) { 
-    console.error('error:' + err.code + err.message); // Throw an error if the operation fails.
+    console.error(`Failed to set enterprise policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1296,7 +1295,7 @@ Represents the information about a DLP file opened.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | uri | string | No| No| URI of the DLP file. The value contains up to 4095 bytes.|
-| lastOpenTime | number | No| No| Time when the file was last opened. Unit: s.|
+| lastOpenTime | number | No| No| Timestamp when the DLP file was last opened. Unit: s.|
 
 ## DLPManagerResult<sup>11+</sup>
 
@@ -1331,7 +1330,7 @@ Represents an enterprise custom policy.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| policyString | string | No| No| JSON string of an enterprise custom policy. The value contains a maximum of 2<sup>22</sup> bytes. If the value is out of range, error code 19100001 is thrown.|
+| policyString | string | No| No| JSON string of an enterprise custom policy. The value contains a maximum of 2<sup>22</sup> bytes. If the value is out of range, an error log is generated.|
 
 ## dlpPermission.generateDlpFileForEnterprise<sup>21+</sup>
 
@@ -1364,7 +1363,7 @@ This API encrypts a plaintext file to generate a DLP file that can be accessed o
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error codes**
+**Error codes**  
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
@@ -1407,7 +1406,7 @@ let customProperty: dlpPermission.CustomProperty = {
 dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty).then((res) => {
   console.info('Successfully generate DLP file for enterprise.');
 }).catch((error: BusinessError)=> {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to generate DLP file for enterprise. Code: ${error.code}, message: ${error.message}`);
 }).finally(()=>{
   if (dlpFd) {
     fileIo.closeSync(dlpFd);
@@ -1586,7 +1585,7 @@ Represents a custom policy.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| enterprise | string | No| No| JSON string of an enterprise custom policy. The value contains a maximum of 2<sup>22</sup> bytes. If the value is out of range, error code 19100001 is thrown.|
+| enterprise | string | No| No| JSON string of an enterprise custom policy. The value contains a maximum of 2<sup>22</sup> bytes. If the value is out of range, error code 401 is thrown.|
 | options | [DlpFileQueryOptions](#dlpfilequeryoptions) | No| Yes| Query options about an enterprise DLP file. This parameter is left blank by default. **Since**: 26.0.0 **Model restriction**: This API can be used only in the stage model.|
 
 ## DLPProperty<sup>21+</sup>
@@ -1598,19 +1597,19 @@ Represents the authorization information.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ownerAccount | string | No| No| Account of the owner who can set the permission. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
-| ownerAccountID | string | No| No| Account ID of the owner. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| ownerAccount | string | No| No| Account of the owner who can set the permission. The length cannot exceed 255 bytes. Otherwise, error code 401 is thrown. |
+| ownerAccountID | string | No| No| Account ID of the owner. The length cannot exceed 255 bytes. Otherwise, error code 401 is thrown. |
 | ownerAccountType | [AccountType](#accounttype21) | No| No| Account type of the owner.|
 | authUserList | Array&lt;[AuthUser](#authuser21)&gt; | No| Yes| List of users who are authorized to access the DLP file. By default, this parameter is left blank.|
-| contactAccount | string | No| No| Account of the contact. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| contactAccount | string | No| No| Account of the contact. The length cannot exceed 255 bytes. Otherwise, error code 401 is thrown. |
 | offlineAccess | boolean | No| No| Whether the file can be accessed offline. **true**: yes; **false**: no.|
 | everyoneAccessList | Array&lt;[DLPFileAccess](#dlpfileaccess)&gt; | No| Yes| Permission granted to everyone. This parameter is left blank by default.|
 | expireTime | number | No| Yes| Timestamp when the file permission has expired. This parameter is left blank by default. The value must be greater than or equal to 0. If the value is out of range, an error code is thrown. Unit: s.|
 | actionUponExpiry | [ActionType](#actiontype21) | No| Yes| Whether the file can be opened after the permission expires (with the editing permission). This parameter is valid only when **expireTime** is not empty. This parameter is left empty by default.|
-| fileId | string | No| Yes| System account ID. This parameter is left empty by default. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| fileId | string | No| Yes| System account ID. This parameter is left empty by default. The length cannot exceed 255 bytes. Otherwise, error code 401 is thrown. |
 | allowedOpenCount | number | No| Yes| Number of allowed opening times. The default value is **0**. No value range restriction is specified.|
 | waterMarkConfig<sup>23+</sup> | boolean | No| Yes| Whether watermarks are required. **true**: yes; **false**: no. This parameter is left empty by default.|
-| countdown<sup>23+</sup> | number | No| Yes| Validity period for file viewing, in seconds. The default value is **0**. After the validity period expires, the file is automatically closed. The value must be greater than or equal to 0. No value range restriction is specified.<br>**Model restriction**: This API can be used only in the stage model.|
+| countdown<sup>23+</sup> | number | No| Yes| Validity period for file viewing, in seconds. The default value is **0**. After the validity period expires, the file is automatically closed. The value range is [-2<sup>31</sup>, 2<sup>31</sup>-1].<br>**Model restriction**: This API can be used only in the stage model.|
 | extensionFields<sup>24+</sup> | Record<string, Object> | No| Yes| Extended attribute of a DLP file. This parameter is left empty by default.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AuthUser<sup>21+</sup>
@@ -1621,10 +1620,10 @@ Represents the user authorization information.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| authAccount | string | No| No| Account of the user who can access the DLP file. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| authAccount | string | No| No| Account of the user who can access the DLP file. The value contains a maximum of 255 bytes. If the value is out of range, error code 401 is thrown.|
 | authAccountType | [AccountType](#accounttype21) | No| No| Type of the account.|
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | No| No| Permission granted to the user.|
-| permExpiryTime | number | No| No| Time when the authorization expires. The value must be greater than or equal to 0. If the value is out of range, it will be forcibly converted to an unsigned integer. Unit: s.|
+| permExpiryTime | number | No| No| Timestamp when the authorization expires. The value must be greater than or equal to 0. If the value is out of range, it will be forcibly converted to an unsigned integer. Unit: s.|
 
 ## DlpConnPlugin<sup>21+</sup>
 
@@ -1745,7 +1744,7 @@ Registers a callback with the SA.
 
 | Type| Description|
 | -------- | -------- |
-| number | Registration result. The unique ID of the callback is returned. The value range is [0, 2<sup>64</sup>-1].|
+| number | Registration result. The unique ID of the callback is returned. The value range is [0, 2<sup>53</sup>-1].|
 
 **Error codes**
 
@@ -1823,7 +1822,7 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 Represents the query options about an enterprise DLP file.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1888,7 +1887,7 @@ let options: dlpPermission.DlpFileQueryOptions = {
 dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) => {
   console.info("try to query opened enterprise dlp files, result: ", JSON.stringify(uris));
 }).catch((error: BusinessError)=> {
-  console.error(error.message);
+  console.error(`Failed to query opened enterprise DLP files. Code: ${error.code}, message: ${error.message}`);
 }).finally(()=> {
   console.info("after querying opened enterprise dlp files");
 });
@@ -1906,7 +1905,7 @@ This API can be called to close enterprise DLP files in batches, clear file reso
 >
 > This API can only close enterprise DLP files generated by the caller app through [generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21).
   
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1952,4 +1951,110 @@ dlpPermission.closeOpenedEnterpriseDlpFiles(options).then(() => {
 }).finally(()=> {
   console.info("after closing opened enterprise dlp files");
 });
+```
+
+## dlpPermission.setControlledAppLists
+
+setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&lt;void&gt;
+
+Sets the list of applications controlled by enterprise DLP. This API uses a promise to return the result.
+  
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions:** ohos.permission.DLP_POLICY_MANAGER
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| appLists | Array&lt;string&gt; | Yes| List of application identifiers of the controlled applications.<br> The maximum length of the array is 100. If the length exceeds 100, error code 19100001 is returned.<br>Each element in the array is the [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of the application. For details about how to obtain the application identifier, see [How Do I Obtain appIdentifier from Application Information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). The maximum length of a single application identifier is 4096 bytes. If the length exceeds 4096 bytes, error code 19100001 is returned.|
+| userId | number | No| ID of the user for whom the controlled application is configured.<br>If this parameter is not specified, the current user is used by default.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100023 | The specified userId is inconsistent with the current userId. |
+| 19100024 | The specified userId belongs to a personal space user and cannot be managed. |
+
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let appList: Array<string> = ["appId1", "appId2"];
+let userId: number = 100;
+dlpPermission.setControlledAppLists(appList, userId).then(() => {
+  console.info("Successfully set controlled appLists.");
+}).catch((error: BusinessError) => {
+  console.error(error.message);
+}).finally(() => {
+  console.info("Completed set controlled appLists operation.");
+});
+```
+
+## dlpPermission.getControlledAppLists
+
+getControlledAppLists(): Promise&lt;Array&lt;string&gt;&gt;
+
+Obtains the list of applications controlled by enterprise DLP for the current user. This API uses a promise to return the result.
+
+>**NOTE**
+>
+> This API can only be used to query the list of applications controlled by enterprise DLP, which is set using [setControlledAppLists](#dlppermissionsetcontrolledapplists).
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions:** ohos.permission.DLP_POLICY_MANAGER
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of applications controlled by enterprise DLP for the current user.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100011 | The system ability works abnormally. |
+
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dlpPermission.getControlledAppLists().then((res) => {
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+}).finally(() => {
+  console.info("Completed getControlledAppLists operation.");
+})
 ```

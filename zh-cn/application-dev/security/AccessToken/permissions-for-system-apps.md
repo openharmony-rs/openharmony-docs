@@ -4510,25 +4510,6 @@
 
 **起始版本**：18
 
-## ohos.permission.ACCESS_DDK_USB_SERIAL
-
-允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
-
-支持以下类型的外设扩展驱动开发：
-
-外设以USB总线接入主机，且满足：
-
-1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
-2. 外设支持通过USB接口模拟传统的串行通信。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**起始版本**：18
-
 ## ohos.permission.ACCESS_CUSTOM_RINGTONE
 
 允许应用访问铃音库。
@@ -5811,6 +5792,20 @@
 
 **起始版本**：24
 
+ ## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
+ 
+ 允许系统应用开启智能体相关的权限管理特性。
+ 
+ **权限级别**：system_basic
+ 
+ **授权方式**：系统授权（system_grant）
+ 
+ **是否支持证书授权**：true
+ 
+ **支持设备**：Phone | PC/2in1 | Tablet
+ 
+ **起始版本**：26.0.0
+
 ## ohos.permission.MODIFY_AGENT_CARD
 
 允许系统应用更新和删除AgentCard。
@@ -6745,6 +6740,34 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.CREATE_SIGN_CONTENT_TRUST
+
+允许应用创建内容证真签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.APPEND_SIGN_CONTENT_TRUST
+
+允许应用追加内容证真签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
 ## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
 
 允许应用设置蜂窝网络相关信息。
@@ -6757,7 +6780,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.TBOX_CELLULAR_INFO
 
@@ -6771,7 +6794,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.MANAGE_TBOX_WIFI
 
@@ -6785,7 +6808,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.TBOX_WIFI_INFO
 
@@ -6799,7 +6822,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.PACKET_CAPTURE_INFO
 
@@ -6813,7 +6836,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.CCN_SELF_HEALING
 
@@ -6827,11 +6850,25 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.AUTO_OTA_PROXY
 
 允许系统应用发送OTA相关的车辆控制及域控制命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.CAMERA_EVS
+
+允许应用使用车载相机。
 
 **权限级别**：system_basic
 
@@ -6947,6 +6984,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.UPDATE_FORM_CROSS_BUNDLE
+
+允许应用更新其他应用的卡片。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
 
 允许应用获取和管理文件管理文件。
@@ -6962,3 +7013,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.ACCESS_MEDIALIB_SANDBOX
+
+允许应用在appspawn挂载媒体库沙箱。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Wearable | TV | Tablet | Phone | PC/2in1 | Car | LiteWearable | Smartlock | Router
+
+**起始版本**：26.1.0
