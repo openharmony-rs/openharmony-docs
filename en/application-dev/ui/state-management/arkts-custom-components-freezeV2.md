@@ -110,7 +110,7 @@ In the preceding example:
 
 1. Click **changeBookName** on page 1. The name attribute of the bookTest variable is changed, and the onMessageChange method registered in @Monitor is called.
 
-2. Click **go to next page** on page 1 to jump to page 2, and then update the status variable bookTest after 1s. When **bookTest** is updated, page 1 is already in the inactive state, where the [@Local](./arkts-new-local.md) decorated state variable **bookTest** does not respond to updates. Therefore, the @Monitor is not called, and no UI re-rendering occurs for nodes bound to this state variable.
+2. Click **go to next page** on page 1 to jump to page 2, and then update the state variable bookTest after 1s. When **bookTest** is updated, page 1 is already in the inactive state, where the [@Local](./arkts-new-local.md) decorated state variable **bookTest** does not respond to updates. Therefore, the @Monitor is not called, and no UI re-rendering occurs for nodes bound to this state variable.
 
 The trace information is shown below.
 
@@ -122,7 +122,7 @@ The trace information is shown below.
 
 ### TabContent
 
-Freezes the TabContent that is currently invisible in Tabs. Modifying the status variable does not trigger the update of the frozen component.
+Freezes the TabContent that is currently invisible in Tabs. Modifying the state variable does not trigger the update of the frozen component.
 
 During initial rendering, only the **TabContent** component that is being displayed is created. The remaining **TabContent** components are created only when all TabContent components are switched.
 

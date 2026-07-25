@@ -109,7 +109,7 @@ clearMonitorForCrownEvents(): void
     <button class="btn" type="capsule" value="flagChange" onclick="flagChange"></button>
     <list class="list" focusable="true" scrollpage="true">
         <list-item for="{{ array }}" class="listItem">
-            <text class="text" onclick="toggleShow" show="{{ visible }}">{{ $item.value }}</text>
+            <text class="text">{{ $item.value }}</text>
         </list-item>
     </list>
 </div>
@@ -138,7 +138,7 @@ export default {
     },
     onShow() {
         setMonitorForCrownEvents((event) => {
-            console.info('event timestamp is: ', event.timeStamp, ', angularVelocity is: ',
+            console.info('event timestamp is: ', event.timestamp, ', angularVelocity is: ',
                 event.angularVelocity);
             console.info('rotate is: ', event.rotate);
             return this.flag;

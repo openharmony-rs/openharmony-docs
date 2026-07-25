@@ -5465,7 +5465,7 @@ getAppClonePreference(bundleName: string): Promise\<AppClonePreference>;
 
 根据给定的bundleName查询应用分身偏好设置。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -5526,7 +5526,7 @@ setAppClonePreference(bundleName: string, appClonePreference: AppClonePreference
 
 根据给定的bundleName设置应用分身偏好设置。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -6647,7 +6647,7 @@ type AppClonePreferenceMode = _AppClonePreferenceMode
 
 应用分身偏好设置的模式。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -6663,7 +6663,7 @@ type AppClonePreference = _AppClonePreference
 
 应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
