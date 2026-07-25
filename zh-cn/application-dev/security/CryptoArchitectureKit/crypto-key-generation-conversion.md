@@ -126,7 +126,7 @@ HMAC使用的对称密钥可以是任何长度。
 
 ### ChaCha20
 
-从API version 22开始，算法库支持该算法。
+从API版本22开始，算法库支持该算法。
 
 ChaCha20是一种现代化的流密码（stream cipher）对称加密算法。
 
@@ -246,7 +246,7 @@ RSA（Rivest–Shamir–Adleman），当前支持使用字符串参数和密钥�
 
 **使用密钥参数生成**
 
-从API version 10开始，支持使用密钥参数生成RSA密钥。
+从API版本10开始，支持使用密钥参数生成RSA密钥。
 
 RSA密钥参数，涉及三个整数，包括：
 
@@ -315,7 +315,7 @@ ECC（Elliptic Curve Cryptography），是一种基于椭圆曲线数学的公�
 
 **使用密钥参数生成**
 
-从API version 10开始，支持使用密钥参数生成ECC密钥。
+从API版本10开始，支持使用密钥参数生成ECC密钥。
 
 Fp域下的ECC密钥参数包括：
 
@@ -350,15 +350,17 @@ Fp域下的ECC密钥参数包括：
 | sk | N/A | N/A | √ | √ | 
 
 > **说明：**
+>
 > - 当前ECC只支持Fp域，因此fieldType固定为"Fp"。fieldType和p构成了属性field，当前field只支持[ECFieldFp](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecfieldfp10)。
 > 
 > - g和pk为ECC曲线上的点，属于[Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10)类型，需要指定具体的X和Y坐标。
 
 **使用曲线名生成密钥参数**
 
-从API version 11开始，支持使用曲线名来生成ECC公共密钥参数。
+从API版本11开始，支持使用曲线名来生成ECC公共密钥参数。
 
 > **说明：**
+>
 > - 曲线名为要求输入的字符串参数，支持的曲线名请参考ECC密钥字符串参数表中的“曲线名”一列。
 > 
 > - 生成的公共密钥参数可以直接用于随机生成公私钥，也可用于构造公钥、私钥及公私钥对密钥参数。
@@ -395,7 +397,7 @@ DSA（Digital Signature Algorithm），是一种基于模运算和整数有限�
 
 **使用密钥参数生成**
 
-从API version 10开始支持，使用密钥参数生成DSA密钥。
+从API版本10开始支持，使用密钥参数生成DSA密钥。
 
 DSA密钥参数，包括：
 
@@ -424,6 +426,7 @@ DSA密钥参数，包括：
 | sk | N/A | N/A | × | √ | 
 
 > **说明：**
+>
 > - DSA不支持通过指定私钥参数（p, q, g, sk）来生成私钥。
 > 
 > - 当使用公共参数（p, q, g）来生成DSA密钥对时，DSA密钥长度至少需要1024位。
@@ -444,7 +447,7 @@ SM2是一种基于椭圆曲线的公钥密码算法，采用Fp域上的椭圆曲
 
 **使用密钥参数生成**
 
-从API version 11开始，支持使用密钥参数生成SM2密钥。
+从API版本11开始，支持使用密钥参数生成SM2密钥。
 
 Fp域下的SM2密钥参数包括：
 
@@ -479,15 +482,17 @@ Fp域下的SM2密钥参数包括：
 | sk | N/A | N/A | √ | √ | 
 
 > **说明：**
+>
 > - 当前SM2只支持Fp域，因此fieldType固定为"Fp"。fieldType和p构成了属性field，当前field只支持[ECFieldFp](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecfieldfp10)。
 > 
 > - g和pk为SM2曲线上的点，属于[Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10)类型，需要指定具体X，Y坐标。
 
 **使用曲线名生成密钥参数**
 
-从API version 11开始，支持使用曲线名称生成SM2公钥参数。
+从API版本11开始，支持使用曲线名称生成SM2公钥参数。
 
 > **说明：**
+>
 > - 曲线名为要求输入的字符串参数，支持的曲线名为"NID_sm2"。
 > 
 > - 生成的公共密钥参数可以直接随机生成公私钥，也可用于构造公、私以及公私钥对密钥参数。
@@ -508,7 +513,7 @@ Ed25519算法是基于EdDSA算法的数字签名算法，密钥长度为256位�
 
 **使用密钥参数生成**
 
-从API version 11开始，支持使用密钥参数生成Ed25519密钥。
+从API版本11开始，支持使用密钥参数生成Ed25519密钥。
 
 Ed25519密钥参数包括：
 
@@ -545,7 +550,7 @@ X25519算法是一种 Diffie-Hellman 密钥交换算法，用于密钥协商。
 
 **使用密钥参数生成**
 
-从API version 11开始支持使用密钥参数生成X25519密钥。
+从API版本11开始支持使用密钥参数生成X25519密钥。
 
 X25519密钥参数包括：
 
@@ -596,7 +601,7 @@ DH（Diffie–Hellman key exchange），是一种密钥协商算法，只涉及�
 
 **使用密钥参数生成**
 
-从API version 11开始支持使用密钥参数生成DH密钥。
+从API版本11开始支持使用密钥参数生成DH密钥。
 
 DH密钥参数，包括：
 
@@ -624,7 +629,7 @@ DH密钥参数，包括：
 
 **使用素数长度和私钥长度生成公共密钥参数**
 
-从API version 11开始，使用素数长度和私钥长度生成DH公共密钥参数。
+从API版本11开始，使用素数长度和私钥长度生成DH公共密钥参数。
 
 如果素数长度与安全素数组的素数长度一致，则选用对应的知名安全素数群。对应关系如表所示。
 

@@ -56,7 +56,7 @@
   | CCM | [128\|192\|256] | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
   | XTS | [128\|256] | [NoPadding] | 26.0.0+ | 
 
-- 从API version 10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
+- 从API版本10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
   
   举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding，其字符串参数为"AES|CFB|NoPadding"。
 
@@ -86,7 +86,7 @@
   | OFB | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
   | CFB | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
 
-- 从API version 10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
+- 从API版本10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
 
   举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding，其字符串参数为"DES|CFB|NoPadding"。
 
@@ -120,7 +120,7 @@
   | OFB | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
   | CFB | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
 
-- 从API version 10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
+- 从API版本10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
 
   举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding，其字符串参数为"3DES|CFB|NoPadding"。
 
@@ -181,7 +181,7 @@
 
 ### ChaCha20
 
-从API version 22开始，算法库支持该算法。
+从API版本22开始，算法库支持该算法。
 
 算法库当前提供了[ChaCha20](crypto-key-generation-conversion.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
@@ -403,7 +403,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 **获取/设置OAEP填充模式的参数**
 
-从API version 10开始，支持RSA使用PKCS1_OAEP填充模式时获取和设置相关参数，“√”表示支持获取或设置该参数。
+从API版本10开始，支持RSA使用PKCS1_OAEP填充模式时获取和设置相关参数，“√”表示支持获取或设置该参数。
 
 | OAEP参数 | 枚举值 | 获取 | 设置 | 
 | -------- | -------- | -------- | -------- |
@@ -432,7 +432,7 @@ SM2非对称加密的结果由C1、C2、C3三部分组成。其中C1是根据生
 
 **获取SM2摘要算法参数**
 
-从API version 11开始，支持SM2获取摘要算法参数，“√”表示支持获取或设置该参数。
+从API版本11开始，支持SM2获取摘要算法参数，“√”表示支持获取或设置该参数。
 
 | SM2加解密参数 | 枚举值 | 获取 | 设置 | 
 | -------- | -------- | -------- | -------- |
@@ -440,7 +440,7 @@ SM2非对称加密的结果由C1、C2、C3三部分组成。其中C1是根据生
 
 **转换SM2密文格式**
 
-从API version 12开始，支持SM2格式转换。当前支持的SM2密文格式为国密标准的ASN.1格式，其中各参数组合顺序为C1C3C2。
+从API版本12开始，支持SM2格式转换。当前支持的SM2密文格式为国密标准的ASN.1格式，其中各参数组合顺序为C1C3C2。
 
 开发者可指定SM2密文参数，转换为符合国密标准的ASN.1格式密文。同样，可以从国密标准的ASN.1格式密文中提取SM2密文参数，便于重新组合成其他格式的SM2密文。
 
@@ -474,9 +474,9 @@ SM2密文参数，包括：
 
 **开发者应当对每次update和doFinal的结果都判断是否为null，并在结果不为null时取出其中的数据进行拼接，形成完整的密文/明文。**
 
-**开发示例：** [使用AES对称密钥（GCM模式）分段加解密](crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)
+**开发示例：** [使用AES对称密钥（GCM模式）分段加解密](crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)
 
-**开发示例：** [使用SM4对称密钥（GCM模式）分段加解密](crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md)
+**开发示例：** [使用SM4对称密钥（GCM模式）分段加解密](crypto-sm4-sym-encrypt-decrypt.md#使用sm4对称密钥gcm模式分段加解密)
 
 ### 非对称加解密
 
@@ -490,7 +490,7 @@ SM2密文参数，包括：
 
 **开发者应当对每次doFinal的结果都判断是否为null，并在结果不为null时取出其中的数据进行拼接，形成完整的密文/明文。**
 
-**开发示例：** [使用RSA非对称密钥分段加解密](crypto-rsa-asym-encrypt-decrypt-by-segment.md)
+**开发示例：** [使用RSA非对称密钥分段加解密](crypto-rsa-asym-encrypt-decrypt.md#使用rsa非对称密钥分段加解密)
 
 ### 常见问题
 
