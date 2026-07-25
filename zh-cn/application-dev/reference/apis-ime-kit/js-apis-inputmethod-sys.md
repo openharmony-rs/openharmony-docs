@@ -73,6 +73,7 @@ async function switchInputMethodWithSubtype() {
   } catch (err) {
     console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
   }
+  // 3. 获取当前输入法子类型
   const currentSubtype: InputMethodSubtype | undefined = inputMethod.getCurrentInputMethodSubtype();
   if (!currentSubtype) {
     console.error("Failed to get current input subtype");
@@ -1042,7 +1043,7 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 
 | 参数名 | 类型    | 必填 | 说明                    |
 | ------ | ------- | ---- | ----------------------- |
-| enable | boolean | 是   |- true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
+| enable | boolean | 是   |是否激活输入法列表：<br>- true表示返回已激活输入法列表。<br>- false表示返回未激活输入法列表。 |
 | userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
