@@ -78,6 +78,8 @@ import { rpc } from '@kit.IPCKit';
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
@@ -4369,6 +4371,8 @@ try {
 ## MessageParcel<sup>(deprecated)</sup>
 
 在RPC过程中，发送方可以使用MessageParcel提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageParcel提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 > **说明：**
 >
