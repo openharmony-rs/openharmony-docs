@@ -791,7 +791,7 @@ isLocalWantAgent(agent: WantAgent): boolean
 **示例：**
 
 ```ts
-import { wantAgent } from '@kit.AbilityKit';
+import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 
 // 声明wantAgent实例
