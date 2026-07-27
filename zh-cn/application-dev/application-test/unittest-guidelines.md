@@ -59,7 +59,7 @@
 
 下面提供一个简单示例，测试场景：启动被测试页面，检查设备当前显示的页面是否为预期启动的页面。
 
-**ArkTS-Dyn示例：**
+ArkTS-Dyn示例：
 
 <!-- @[basic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
 
@@ -97,7 +97,8 @@ export default function abilityTest() {
   })
 }
 ```
-**ArkTS-Sta示例：**
+ArkTS-Sta示例：
+
 <!-- @[basic_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
 
 ``` TypeScript
@@ -340,7 +341,7 @@ export default function abilityTest(): void {
 
 **示例代码1**：beforeAll/beforeEach/afterEach/afterAll使用示例
 
-**ArkTS-Dyn示例：**
+ArkTS-Dyn示例：
 
 <!-- @[order1_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) -->
 
@@ -390,7 +391,7 @@ export default function exampleTest() {
 }
 ```
 
-**ArkTS-Sta示例：**
+ArkTS-Sta示例：
 
 <!-- @[order1_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/ExecuteOrder1.test.ets) -->
 
@@ -439,7 +440,7 @@ export default function exampleTest(): void {
 
 **示例代码2**：beforeItSpecified/afterItSpecified使用示例，从1.0.15版本开始支持
 
-**ArkTS-Dyn示例：**
+ArkTS-Dyn示例：
 
 <!-- @[order2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) -->
 
@@ -474,7 +475,8 @@ export default function exampleTest() {
 }
 ```
 
-**ArkTS-Sta示例：**
+ArkTS-Sta示例：
+
 <!-- @[order2_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/ExecuteOrder2.test.ets) -->
 
 ``` TypeScript
@@ -507,7 +509,7 @@ export default function exampleTest(): void {
 
 **示例代码3**：xit使用示例，从1.0.17版本开始支持
 
-**ArkTS-Dyn示例：**
+ArkTS-Dyn示例：
 
 <!-- @[order3_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) -->
 
@@ -528,7 +530,7 @@ export default function describeExampleTest() {
 }
 ```
 
-**ArkTS-Sta示例：**
+ArkTS-Sta示例：
 
 <!-- @[order3_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/ExecuteOrder3.test.ets) -->
 
@@ -551,7 +553,7 @@ export default function describeExampleTest(): void {
 
 **示例代码4**：beforeEachIt/afterEachIt使用示例，从1.0.25版本开始支持
 
-**ArkTS-Dyn示例：**
+ArkTS-Dyn示例：
 
 <!-- @[order4_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
 
@@ -590,7 +592,7 @@ export default function test() {
 }
 ```
 
-**ArkTS-Sta示例：**
+ArkTS-Sta示例：
 
 <!-- @[order4_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/basicExampleTest/ExecuteOrder4.test.ets) -->
 
@@ -662,7 +664,7 @@ export default function test(): void {
 
 **示例代码**：
 
-**ArkTS-Dyn示例：**
+ArkTS-Dyn示例：
 
 <!-- @[assert_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets) -->
 
@@ -833,7 +835,8 @@ interface PromiseInfo {
 }
 ```
 
-**ArkTS-Sta示例：**
+ArkTS-Sta示例：
+
 <!-- @[assert_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/jsunitStatic/entry/src/main/src/test/assertExampleTest/AssertExample.test.ets) -->
 
 ``` TypeScript
