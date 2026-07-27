@@ -6,9 +6,9 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-ServiceExtensionContext模块是ServiceExtensionAbility的上下文环境，继承自ExtensionContext。
+ServiceExtensionContext模块是ServiceExtensionAbility（服务扩展能力）的上下文环境，继承自ExtensionContext。
 
-ServiceExtensionContext模块提供ServiceExtensionAbility具有的能力，包括启动、停止、绑定、解绑Ability。
+ServiceExtensionContext模块提供ServiceExtensionAbility具有的能力，包括启动、终止、连接和断开连接Ability（应用组件）。
 
 > **说明：**
 >
@@ -30,7 +30,7 @@ import { common } from '@kit.AbilityKit';
 
 ## 使用说明
 
-在使用ServiceExtensionContext的功能前，需要通过ServiceExtensionAbility子类实例获取。
+使用ServiceExtensionContext功能前，通过ServiceExtensionAbility子类实例获取ServiceExtensionContext。
 
 **示例：**
 
@@ -83,7 +83,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -169,14 +169,14 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -364,7 +364,7 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCa
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当根据accountId启动Ability成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -461,7 +461,7 @@ ArkTS-Sta:startAbilityWithAccount(want: Want, accountId: int, options: StartOpti
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当根据accountId启动Ability成功，err为undefined，否则为错误对象。 |
 
@@ -562,14 +562,14 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options?: StartOp
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -646,7 +646,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-启动一个新的ServiceExtensionAbility。使用callback异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -721,7 +721,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-启动一个新的ServiceExtensionAbility。使用Promise异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -741,7 +741,7 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -803,7 +803,7 @@ ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number
 
 ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
 
-启动一个新的ServiceExtensionAbility。使用callback异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用callback异步回调。
 
 > **说明：**
 > 
@@ -825,7 +825,7 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int, c
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当启动一个新的ServiceExtensionAbility成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -889,7 +889,7 @@ ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number
 
 ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
 
-启动一个新的ServiceExtensionAbility。使用Promise异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -911,13 +911,13 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1167,13 +1167,13 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1243,7 +1243,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-停止指定的ServiceExtensionAbility后台服务。使用callback异步回调。
+停止指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1314,7 +1314,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-停止指定的ServiceExtensionAbility后台服务。使用Promise异步回调。
+停止指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1334,7 +1334,7 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1392,7 +1392,7 @@ ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number,
 
 ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
 
-停止指定账号下指定的ServiceExtensionAbility后台服务。使用callback异步回调。
+停止指定账号下指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用callback异步回调。
 
 > **说明：**
 > 
@@ -1413,7 +1413,7 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, ca
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当使用账户停止同一应用程序内的服务成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1473,7 +1473,7 @@ ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number)
 
 ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
 
-停止指定账号下指定的ServiceExtensionAbility后台服务。使用Promise异步回调。
+停止指定账号下指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -1494,13 +1494,13 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): P
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1627,7 +1627,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1685,8 +1685,8 @@ ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
-| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、断开或连接失败后的信息。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项对象，包含服务连接成功、断开或失败时的回调函数。 |
 
 **返回值：**
 
@@ -1832,14 +1832,14 @@ ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int,
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
-| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 远端对象实例。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可通过系统账号管理接口获取。 |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项，用于返回连接成功、连接中断或连接失败的信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回Ability连接的结果code。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回连接标识符，用于后续断开连接。 |
 
 **错误码：**
 
@@ -1960,7 +1960,7 @@ ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number, callback: Async
 
 ArkTS-Sta: disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback&lt;void&gt;): void
 
-将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用callback异步回调。
+将一个Ability与连接的服务类型的Ability断开连接，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2062,7 +2062,7 @@ ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number): Promise&lt;voi
 
 ArkTS-Sta: disconnectServiceExtensionAbility(connection: long): Promise&lt;void&gt;
 
-将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用Promise异步回调。
+将一个Ability与连接的服务类型的Ability断开连接。断开连接后，将连接成功时返回的remote对象置空。仅支持在主线程调用。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2082,7 +2082,7 @@ ArkTS-Sta: disconnectServiceExtensionAbility(connection: long): Promise&lt;void&
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2580,7 +2580,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动Ability的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
@@ -2687,7 +2687,7 @@ ArkTS-Sta: startAbilityByCallWithAccount(want: Want, accountId: int): Promise&lt
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 传入需要启动的Ability的信息，包含abilityName、moduleName、bundleName、deviceId(可选)、parameters(可选)，其中deviceId缺省或为空表示启动本地Ability，parameters缺省或为空表示后台启动Ability。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，-1表示当前活动用户。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
@@ -2826,13 +2826,13 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息，需确保目标应用已完成页面初始化后再调用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3084,13 +3084,13 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | link | string | 是 | 指示要打开的标准格式URL。 |
-| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数。 |
+| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数，可用于设置是否仅启用App Linking。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3189,7 +3189,7 @@ preStartMission(bundleName: string, moduleName: string, abilityName: string, sta
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3260,7 +3260,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-启动一个新的[UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md)。使用Promise异步回调。
+启动一个新的[UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md)。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -3284,7 +3284,7 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3333,7 +3333,7 @@ export default class MyServiceExtensionAbility extends ServiceExtensionAbility {
 ## ServiceExtensionContext.openAtomicService<sup>18+</sup>
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;void&gt;
 
-通过应用ID，拉起原子化服务。使用Promise异步回调。
+通过应用ID，拉起原子化服务。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -3358,7 +3358,7 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;voi
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3519,15 +3519,15 @@ ArkTS-Sta: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int):
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：**26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：**26.0.0
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。其中获焦应用通过want.parameters中bundleName指定，被拉起的UIExtensionAbility通过Want中bundleName、abilityName、moduleName字段共同确定，同时需通过want.parameters中的ability.want.params.uiExtensionType字段配置UIExtensionAbility的类型；需确保获焦应用已完成页面初始化后再调用。 |
 | accountId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getForegroundOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount-sys.md#getforegroundosaccountlocalid23)接口获取。 |
 
 **返回值：**
@@ -3544,7 +3544,7 @@ ArkTS-Sta: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int):
 | ------- | -------- |
 | 201 | The application does not have permission to call the interface. |
 | 202 | The application is not system-app, can not use system-api. |
-| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.4.The logical screen corresponding to the specified accountId is not in the foreground.|
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. 4.The logical screen corresponding to the specified accountId is not in the foreground.|
 
 ArkTS-Dyn示例：
 
