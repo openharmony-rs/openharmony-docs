@@ -140,7 +140,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder 
 
 **描述**
 
-更新Audio Vivid信号格式为[OH_AudioVividSignalFormat](#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX时的音频对象渲染的线性增益。该函数可选，如未设置则不应用增益。
+更新Audio Vivid信号格式为[OH_AudioVividSignalFormat](#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX时的音频对象渲染的线性增益。
 
 **起始版本：** 26.0.0
 
@@ -349,4 +349,5 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：</li><br>         <li>    1. 参数builder为空指针或无效；</li><br>         <li>    2. 参数objectIndex无效。</li><br>         </ul> |
+
 
