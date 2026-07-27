@@ -81,9 +81,11 @@ int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codecSyncMode);
     }
     if (sampleInfo.isSmartFluencySupported) {
-        // 配置FULL模式，为后续ADAPTIVE模式性能体验最大化准备好运行环境。
+        // 在初始化阶段配置ADAPTIVE模式，确保解码过程MV信息输出到丢帧判决模块。
+        // MV信息输出需在初始化阶段使能ADAPTIVE模式，不支持运行态动态使能。
+        // 若中途动态切入ADAPTIVE模式，丢帧判决模块将无法获取MV信息，退化为按固定间隔丢帧。
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
-                                OH_FRAME_RETENTION_MODE_FULL);
+            OH_FRAME_RETENTION_MODE_ADAPTIVE);
     }
 
     int ret = OH_VideoDecoder_Configure(decoder_, format);
