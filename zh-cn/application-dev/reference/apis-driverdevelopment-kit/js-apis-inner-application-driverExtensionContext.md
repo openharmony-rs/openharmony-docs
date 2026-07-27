@@ -46,7 +46,7 @@ updateDriverState(): void
 
   ```ts
   // 当前代码实现依赖上一节代码实现
-  if (context != null) {
+  if (context !== undefined) {
     context.updateDriverState();
   }
   ```
