@@ -433,7 +433,7 @@ OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float 
 
 **描述**
 
-设置播放器的音量。<br> 可以在播放或暂停的过程中使用。0表示无声音，1为原始值。默认音量为1，若未调用本接口设置音量则使用该默认值。
+设置播放器的音量。<br> 可以在播放或暂停的过程中使用。取值为0时，表示无声音。默认音量为1，若未调用本接口设置音量则使用该默认值。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -527,7 +527,7 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTim
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t *currentTime | 用于获取当前播放位置（输出参数）。单位：毫秒。 |
+| int32_t *currentTime | 用于获取当前播放位置（输出参数）。单位为毫秒（ms）。 |
 
 **返回：**
 
@@ -597,7 +597,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed s
 
 **描述**
 
-根据指定的[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)，设置播放器的播放速率。支持的状态包括prepared、playing、paused、completed。默认播放速率为1.0倍速（正常速度），若未调用本接口设置速率则使用该默认值。<br> **差异说明：** [OH_AVPlayer_SetPlaybackRate](#oh_avplayer_setplaybackrate)也用于设置播放速率，但使用float类型支持更灵活的速率范围。本方法使用固定枚举档位，适合标准播放场景；SetPlaybackRate适合需要精确控制速率值的场景。适用于倍速播放、慢动作回放、快进预览等场景。
+根据指定的[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)，设置播放器的播放速率。支持的状态包括prepared、playing、paused、completed。默认播放速率为1.0倍速（正常速度），若未调用本接口设置速率则使用该默认值。<br> 差异说明：[OH_AVPlayer_SetPlaybackRate](#oh_avplayer_setplaybackrate)也用于设置播放速率，但使用float类型支持更灵活的速率范围。本方法使用固定枚举档位，适合标准播放场景；SetPlaybackRate适合需要精确控制速率值的场景。适用于倍速播放、慢动作回放、快进预览等场景。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 

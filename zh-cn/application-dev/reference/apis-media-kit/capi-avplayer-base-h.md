@@ -64,7 +64,7 @@
 | const char * OH_PLAYER_STATE_CHANGE_REASON | 获取播放状态变更原因的关键字，对应值类型是int32_t。<br> 1：用户操作触发，如应用调用play/pause/stop等接口；2：系统变更触发，如应用切换到后台时播放状态自动暂停。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_VOLUME | 获取音量的关键字，对应值类型是float，取值范围[0.0, 1.0]。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_BITRATE_ARRAY | 获取比特率列表的关键字，对应值类型是uint8_t字节数组，单位为bps。通过该关键字获取信息时：<br> 需要先使用uint8_t类型指针变量保存比特率列表，使用size_t类型变量保存字节数组长度。<br> 然后分配若干个uint32_t类型的存储空间，接收将uint8_t字节数组转换为uint32_t类型比特率整数值。<br>**起始版本：** 12 |
-| const char * OH_PLAYER_AUDIO_INTERRUPT_TYPE | 获取音频打断类型的关键字，对应值类型是int32_t。取值1表示中断事件开始；2表示结束。<br>**起始版本：** 12 |
+| const char * OH_PLAYER_AUDIO_INTERRUPT_TYPE | 获取音频打断类型的关键字，对应值类型是int32_t。取值为1表示中断事件开始；取值为2，表示中断事件结束。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_AUDIO_INTERRUPT_FORCE | 获取音频打断FORCE类型的关键字，对应值类型是int32_t。取值0表示强制打断，系统改变音频播放状态；1表示共享打断，应用改变音频播放状态。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_AUDIO_INTERRUPT_HINT | 获取音频打断HINT类型的关键字，对应值类型是int32_t。取值0表示NONE，无提示；1表示RESUME，提示音频恢复；2表示PAUSE，提示音频暂停暂时失去焦点；3表示STOP，提示音频停止；4表示DUCK，音频降低音量；5表示UNDUCK，音频恢复音量。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_AUDIO_DEVICE_CHANGE_REASON | 获取音频设备变更原因的关键字，对应值类型是int32_t，具体取值请参见OH_AudioStream_DeviceChangeReason。<br>**起始版本：** 12 |
@@ -74,10 +74,10 @@
 | const char * OH_PLAYER_PLAYBACK_SPEED | 获取播放倍速信息的关键字，对应值类型是[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlaybackSpeed类型。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_PLAYBACK_RATE | 获取有效播放速率的关键字，对应值类型是浮点数。<br>**起始版本：** 20 |
 | const char * OH_PLAYER_BITRATE | 获取比特率信息的关键字，对应值类型是uint32_t，单位为bps。<br>**起始版本：** 12 |
-| const char * OH_PLAYER_CURRENT_POSITION | 获取播放进度信息的关键字，对应值类型是int32_t，单位为毫秒。<br>**起始版本：** 12 |
-| const char * OH_PLAYER_DURATION | 获取媒体资源时长信息的关键字，对应值类型是int64_t，单位为毫秒。<br>**起始版本：** 12 |
-| const char * OH_PLAYER_VIDEO_WIDTH | 获取视频宽度信息的关键字，对应值类型是int32_t，单位为px。<br>**起始版本：** 12 |
-| const char * OH_PLAYER_VIDEO_HEIGHT | 获取视频高度信息的关键字，对应值类型是int32_t，单位为px。<br>**起始版本：** 12 |
+| const char * OH_PLAYER_CURRENT_POSITION | 获取播放进度信息的关键字，对应值类型是int32_t，单位为毫秒（ms）。<br>**起始版本：** 12 |
+| const char * OH_PLAYER_DURATION | 获取媒体资源时长信息的关键字，对应值类型是int64_t，单位为毫秒（ms）。<br>**起始版本：** 12 |
+| const char * OH_PLAYER_VIDEO_WIDTH | 获取视频宽度信息的关键字，对应值类型是int32_t，单位为像素（px）。<br>**起始版本：** 12 |
+| const char * OH_PLAYER_VIDEO_HEIGHT | 获取视频高度信息的关键字，对应值类型是int32_t，单位为像素（px）。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_MESSAGE_TYPE | 获取播放器消息信息的关键字，对应值类型是int32_t。<br> 1：视频帧开始渲染。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_IS_LIVE_STREAM | 获取媒体资源是否为直播类型信息的关键字，对应值类型是int32_t。1表示直播，0表示非直播。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_MD_KEY_HAS_VIDEO | 获取媒体资源是否包含视频轨信息的关键字，对应值类型int32_t。<br> 1：包含视频轨，0：不包含视频轨。<br>**起始版本：** 22 |
@@ -280,6 +280,10 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 
 收到播放器消息时调用。如果应用成功设置OH_AVPlayerOnInfoCallback回调，则不会回调此函数。
 
+> 说明：
+>
+> 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。
+
 信息类型（type）和信息（extra）的对应关系如表所示。
 
 | 信息类型（type） | 对应的extra描述 | 
@@ -303,9 +307,7 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 | AV_INFO_TYPE_SUBTITLE_UPDATE | 字幕信息更新时返回消息，此场景extra未定义。 | 
 | AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE | 音频输出设备改变时返回消息，extra表示设备改变原因，具体请参见[OH_AudioStream_DeviceChangeReason](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason)。 |
 
-> 说明：
->
-> 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。
+**起始版本：** 11
 
 **废弃版本：** 12
 
@@ -445,7 +447,7 @@ typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *p
 
 **描述**
 
-用于获取音频PCM数据输出的回调处理函数。如果应用成功设置该回调，则会获取音频PCM数据输出。PCM数据为原始音频数据，格式（采样率、声道数、位深等）与媒体源一致。回调在音频解码后触发，数据仅在此回调期间有效，需及时处理或拷贝。适用于音频分析、特效处理等场景。
+如果应用成功设置该回调，则会获取音频PCM数据输出。PCM数据为原始音频数据，格式（采样率、声道数、位深等）与媒体源一致。回调在音频解码后触发，数据仅在此回调期间有效，需及时处理或拷贝。适用于音频分析、特效处理等场景。
 
 **使用场景：**
 
@@ -469,7 +471,7 @@ typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer
 
 **描述**
 
-用于获取待进行后处理的音频PCM数据的回调处理函数。如果应用成功设置该回调，则AVPlayer需要使用处理后的数据进行音频播放，且处理必须在回调返回前及时完成，否则会阻塞播放。<br> 使用本方法期间请勿更改采样率、声道数或采样格式，避免数据获取出现异常。
+如果应用成功设置该回调，则AVPlayer需要使用处理后的数据进行音频播放，且处理必须在回调返回前及时完成，否则会阻塞播放。<br> 使用本方法期间请勿更改采样率、声道数或采样格式，避免数据获取出现异常。
 
 **起始版本：** 26.0.0
 
