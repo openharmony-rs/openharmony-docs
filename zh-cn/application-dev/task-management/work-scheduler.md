@@ -197,7 +197,7 @@
 
    延迟任务申请成功之后，需要等到条件满足后才可以执行延迟任务回调，为了快速验证延迟任务回调功能是否正确，可以通过以下[hidumper命令](../dfx/hidumper.md)手动触发延迟任务执行回调。
    参数说明：
-   - `-s 1904`：指定向 WorkScheduler 系统服务发送命令（1904 为该服务 ID）。
+   - `-s 1904`：指向 WorkScheduler 系统服务发送命令（1904 为该服务 ID）。
    - `-a`：携带附加参数，需用引号包裹。
    - `-t`：指定目标应用包名和 ExtensionAbility 名称，示例中的 `com.example.application` 和 `MyWorkSchedulerExtensionAbility` 需替换为实际值。
    ```ts
