@@ -676,7 +676,7 @@ ArkTS-Sta: moveWindowToAsync(x: int, y: int): Promise&lt;void&gt;
 
 移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
 
@@ -769,7 +769,7 @@ ArkTS-Sta: moveWindowToAsync(x: int, y: int, moveConfiguration?: MoveConfigurati
 
 移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
 
@@ -871,7 +871,7 @@ ArkTS-Sta: moveWindowToGlobal(x: int, y: int): Promise&lt;void&gt;
 
 基于屏幕坐标移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 > **说明：**
 >
@@ -958,7 +958,7 @@ ArkTS-Sta: moveWindowToGlobal(x: int, y: int, moveConfiguration?: MoveConfigurat
 
 基于屏幕坐标移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 > **说明：**
 >
@@ -1054,7 +1054,7 @@ ArkTS-Sta: moveWindowToGlobalDisplay(x: int, y: int): Promise&lt;void&gt;
 
 基于[全局坐标系](../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)移动窗口位置，使用Promise异步回调。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 > **说明：**
 >
@@ -16223,7 +16223,7 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ---------------------------- | -- | --------- |
-| enable| boolean | 是 | 是否允许拖拽。<br>true表示允许，false表示不允许。</br> |
+| enable| boolean | 是 | 是否允许拖拽。<br>true表示允许，false表示不允许。 |
 
 **返回值：**
 
@@ -16331,7 +16331,7 @@ struct Index {
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
-            if(event.type == TouchType.Down){
+            if (event.type == TouchType.Down) {
               this.isTouchDown = true;
             } else if (event.type === TouchType.Move && this.isTouchDown) {
               try {
@@ -16381,7 +16381,7 @@ struct Index {
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
-            if(event.type == TouchType.Down){
+            if (event.type == TouchType.Down) {
               this.isTouchDown = true;
             } else if (event.type === TouchType.Move && this.isTouchDown) {
               try {
@@ -16484,7 +16484,7 @@ struct Index {
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
-            if(event.type == TouchType.Down){
+            if (event.type == TouchType.Down) {
               this.isTouchDown = true;
             } else if (event.type === TouchType.Move && this.isTouchDown) {
               try {
@@ -16530,7 +16530,7 @@ struct Index {
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
-            if(event.type == TouchType.Down){
+            if (event.type == TouchType.Down) {
               this.isTouchDown = true;
             } else if (event.type === TouchType.Move && this.isTouchDown) {
               try {
@@ -19046,7 +19046,7 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
 
-应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
+应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品端配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
 
@@ -19099,7 +19099,7 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
 
-应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
+应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品端配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
 
