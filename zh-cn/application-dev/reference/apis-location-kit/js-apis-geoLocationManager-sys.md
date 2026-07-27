@@ -70,6 +70,9 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
+| GEOFENCE_TRANSITION_EVENT_ENTER  | 1 | 该事件表示设备从地理围栏外进入地理围栏内。 |
+| GEOFENCE_TRANSITION_EVENT_EXIT  | 2 | 该事件表示设备从地理围栏内退出到地理围栏外。 |
+| GEOFENCE_TRANSITION_EVENT_DWELL   | 4 | 该事件表示设备在地理围栏范围内，且持续徘徊超过10秒。 |
 | GEOFENCE_TRANSITION_EVENT_APPROACHING_GEOFENCE    | 8 | 该事件表示设备正在接近地理围栏区域。<br/>**系统接口**：此接口为系统接口。 |
 | GEOFENCE_TRANSITION_EVENT_LEAVING_GEOFENCE    | 16 | 该事件表示设备已离开地理围栏区域。<br/>**系统接口**：此接口为系统接口。 |
 | GEOFENCE_TRANSITION_EVENT_NEAR_WANDER    | 32 | 该事件表示设备正在接近地理围栏区域，且持续徘徊超过15分钟。<br/>**系统接口**：此接口为系统接口。 |
@@ -85,18 +88,187 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| identifier | string | 否 | 否 | 融合围栏唯一标识。<br/>**系统接口**：此接口为系统接口。 |
-| scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | 否 | 否 | 融合围栏场景。<br/>**系统接口**：此接口为系统接口。 |
-| fenceType | int | 否 | 否 | 融合围栏类型。可参考FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;。支持多类型围栏，比如3，代表包含GNSS、CELL两种围栏。<br/>**系统接口**：此接口为系统接口。 |
-| poiType | string | 否 | 是 | POI类型。<br/>**系统接口**：此接口为系统接口。 |
-| poiLocation | Point&lt;[Point](#point)&gt; | 否 | 否 | POI位置信息。<br/>**系统接口**：此接口为系统接口。 |
-| monitorTransitionEvents | int | 否 | 否 | 标识监听的围栏事件。可参考GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt;。支持多事件同时监听，比如3，代表监听围栏进入、退出两种事件。<br/>**系统接口**：此接口为系统接口。<br/>**系统接口**：此接口为系统接口。 |
-| loiterTimeMs | int | 否 | 否 | 徘徊时间，单位为毫秒。取值范围为大于0。若监听徘徊事件，当设备在围栏内徘徊时间达到该值，则上报徘徊事件。<br/>**系统接口**：此接口为系统接口。 |
-| gnssFences | Array&lt;[GnssFence](#gnssfence)&gt; | 否 | 否 | GNSS围栏信息。<br/>**系统接口**：此接口为系统接口。 |
-| cellFences | Array&lt;[CellFence](#cellfence)&gt; | 否 | 否 | CELL围栏信息。<br/>**系统接口**：此接口为系统接口。 |
-| wifiFences | Array&lt;[WifiFence](#wififence)&gt; | 否 | 否 | WIFI围栏信息。<br/>**系统接口**：此接口为系统接口。 |
-| expirationMs | int | 否 | 否 | 表示围栏存活时间，单位是毫秒。取值范围为大于0。<br/>**系统接口**：此接口为系统接口。 |
+| identifier | string | 否 | 否 | 表示融合围栏唯一标识。<br/>**系统接口**：此接口为系统接口。 |
+| scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | 否 | 否 | 表示融合围栏场景。<br/>**系统接口**：此接口为系统接口。 |
+| fenceType | number | 否 | 否 | 表示融合围栏类型。可参考FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;。支持多类型围栏，比如3，代表包含GNSS、CELL两种围栏。<br/>**系统接口**：此接口为系统接口。 |
+| poiType | string | 否 | 是 | 表示POI类型。<br/>**系统接口**：此接口为系统接口。 |
+| poiLocation | Point&lt;[Point](#point)&gt; | 否 | 否 | 表示POI位置信息。<br/>**系统接口**：此接口为系统接口。 |
+| monitorTransitionEvents | number | 否 | 否 | 表示监听的围栏事件。可参考GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt;。支持多事件同时监听，比如3，代表监听围栏进入、退出两种事件。<br/>**系统接口**：此接口为系统接口。<br/>**系统接口**：此接口为系统接口。 |
+| loiterTimeMs | number | 否 | 否 | 表示徘徊时间，单位为毫秒。取值范围为大于0。若监听徘徊事件，当设备在围栏内徘徊时间达到该值，则上报徘徊事件。<br/>**系统接口**：此接口为系统接口。 |
+| gnssFences | Array&lt;[GnssFence](#gnssfence)&gt; | 否 | 是 | 表示GNSS围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择GNSS，则为必填<br/>**系统接口**：此接口为系统接口。 |
+| cellFences | Array&lt;[CellFence](#cellfence)&gt; | 否 | 是 | 表示CELL围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择CELLULAR，则为必填<br/>**系统接口**：此接口为系统接口。 |
+| wifiFences | Array&lt;[WifiFence](#wififence)&gt; | 否 | 是 | 表示WIFI围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择WIFI，则为必填<br/>**系统接口**：此接口为系统接口。 |
+| expirationMs | number | 否 | 否 | 表示围栏存活时间，单位是毫秒。取值范围为大于0。<br/>**系统接口**：此接口为系统接口。 |
 | fenceTransitionCallback | Callback&lt;[FusionFenceTransition](#fusionfencetransition)&gt; | 否 | 否 | 表示用于接收围栏事件的回调函数。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## FusionFenceScene 
+
+融合围栏场景。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| AIRPORT    | 1 | 表示机场场景。<br/>**系统接口**：此接口为系统接口。 |
+| TRAIN_STATION    | 2 | 表示火车站场景。<br/>**系统接口**：此接口为系统接口。 |
+| SUBWAY    | 3 | 表示地铁场景。<br/>**系统接口**：此接口为系统接口。 |
+| SHOP    | 4 | 表示商场场景。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## FusionFenceType
+
+融合围栏类型。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| GNSS    | 1 | 表示GNSS围栏。<br/>**系统接口**：此接口为系统接口。 |
+| CELLULAR    | 2 | 表示WELL围栏。<br/>**系统接口**：此接口为系统接口。 |
+| WIFI    | 4 | 表示WIFI围栏。<br/>**系统接口**：此接口为系统接口。 |
+| BLUETOOTH    | 8 | 表示蓝牙围栏。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## Point
+
+POI位置信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| latitude | number | 否 | 否 |表示纬度。取值范围为-90到90。 |
+| longitude | number | 否 |否 | 表示经度。取值范围为-180到180。 |
+
+
+## GnssFence
+
+GNSS围栏信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| gnssFenceType | number | 否 | 否 | GNSS围栏类型。可参考GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt;。支持多类型GNSS围栏，比如3，代表包含圆形、多边形两种围栏。<br/>**系统接口**：此接口为系统接口。 |
+| circularFence | Geofence&lt;[Geofence](#geofence)&gt; | 否 | 是 | 表示圆形围栏信息集合。若GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt选择CIRCULAR，则为必填<br/>**系统接口**：此接口为系统接口。 |
+| polygon | Array&lt;[Point](#point)&gt; | 否 | 是 | 表示多边形围栏信息集合。若GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt选择POLYGON，则为必填<br/>**系统接口**：此接口为系统接口。 |
+
+
+## GnssFenceType
+
+POI位置信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| POLYGON    | 1 | 表示多边形围栏。<br/>**系统接口**：此接口为系统接口。 |
+| CIRCULAR    | 2 | 表示圆形围栏。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## CellFence
+
+CELL围栏信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| cellInfos | Array&lt;[CellInfo](#cellinfo)&gt; | 否 | 否 | 表示CELL围栏信息集合。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## CellInfo
+
+CELL信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| timeSinceBoot | number | 否 | 否 | 表示CELL信息时间戳。<br/>**系统接口**：此接口为系统接口。 |
+| cellId | number | 否 | 否 | 表示CELL信息唯一标识。<br/>**系统接口**：此接口为系统接口。 |
+| lac | number | 否 | 否 | 表示位置区域码。<br/>**系统接口**：此接口为系统接口。 |
+| mcc | number | 否 | 否 | 表示国家码。<br/>**系统接口**：此接口为系统接口。 |
+| mnc | number | 否 | 否 | 表示运营商标识。<br/>**系统接口**：此接口为系统接口。 |
+| rat | number | 否 | 否 | 表示无线接入技术（2G/3G/4G/5G）。<br/>**系统接口**：此接口为系统接口。 |
+| signalIntensity | number | 否 | 否 | 表示信号强度（dBm，负值）。<br/>**系统接口**：此接口为系统接口。 |
+| arfcn | number | 否 | 否 | 表示绝对射频信道号。<br/>**系统接口**：此接口为系统接口。 |
+| pci | number | 否 | 否 | 表示物理小区标识。<br/>**系统接口**：此接口为系统接口。 |
+| tac | number | 否 | 是 | 表示跟踪区域码。<br/>**系统接口**：此接口为系统接口。 |
+| additionsMap | Map&lt;string, string&gt; | 否 | 否 | 表示扩展字段。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## WifiFence
+
+WIFI围栏信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| type | WifiFingerprintType&lt;[WifiFingerprintType](#wififingerprinttype)&gt; | 否 | 否 | 表示WIFI指纹算法类型。<br/>**系统接口**：此接口为系统接口。 |
+| wifiFeatures | Array&lt;[WirelessSignalFeature](#wirelesssignalfeature)&gt; | 否 | 否 | 表示WIFI指纹信息集合。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## WifiFingerprintType
+
+WIFI指纹算法类型。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| SEMANTIC    | 1 | 表示语义算法。<br/>**系统接口**：此接口为系统接口。 |
+| LOCATION    | 2 | 表示高精指纹算法。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## WirelessSignalFeature
+
+WIFI指纹信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| rssiAvg | number | 否 | 否 | 表示RSSI平均值。<br/>**系统接口**：此接口为系统接口。 |
+| rssiStandardDeviation | number | 否 | 否 | 表示RSSI标准差。<br/>**系统接口**：此接口为系统接口。 |
+| mac | Array&lt;string&gt; | 否 | 否 | 表示设备MAC地址信息集合。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## FusionFenceTransition
+
+融合围栏回调事件信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| identifier | string | 否 | 否 | 表示融合围栏唯一标识。<br/>**系统接口**：此接口为系统接口。 |
+| scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | 否 | 否 | 表示融合围栏场景。<br/>**系统接口**：此接口为系统接口。 |
+| transitionEvent | GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt; | 否 | 否 | 表示围栏事件。<br/>**系统接口**：此接口为系统接口。 |
 
 
 ## Location
@@ -1513,12 +1685,6 @@ isFusionFenceSupported(): boolean;
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
-
-**参数**：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | identifier | string | 是 | 融合围栏唯一标识。|
 
 **错误码**：
 
