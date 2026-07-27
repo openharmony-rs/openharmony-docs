@@ -12290,7 +12290,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/StaticNoMutableBuilder.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":58,
 						"name":"static_no_mutable_builder",
 						"start_line":20
 					}
