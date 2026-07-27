@@ -54168,9 +54168,9 @@
 						"start_line":154
 					},
 					{
-						"end_line":162,
+						"end_line":167,
 						"name":"hap_const_dynamic_import_native_index",
-						"start_line":157
+						"start_line":162
 					},
 					{
 						"end_line":197,
@@ -54208,9 +54208,9 @@
 						"start_line":254
 					},
 					{
-						"end_line":264,
+						"end_line":269,
 						"name":"hap_variable_dynamic_import_native",
-						"start_line":258
+						"start_line":263
 					},
 					{
 						"end_line":302,
