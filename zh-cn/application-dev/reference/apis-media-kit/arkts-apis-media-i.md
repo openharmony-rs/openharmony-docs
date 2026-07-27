@@ -477,10 +477,10 @@ async function setupPlayer() {
 | -------- | -------- | ---- | ---- | -------------------- |
 | preferredWidth| ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 播放策略首选宽度，设置范围为大于0的整数，如1080，单位为像素（px）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
 | preferredHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 播放策略首选高度，设置范围为大于0的整数，如1920，单位为像素（px）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
-| preferredBufferDuration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 播放策略首选缓冲持续时间，单位为秒（s），取值范围[1, 20]。<br>具体使用方式可参考[在线视频播放卡顿优化实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-online-video-playback-lags-practice)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
+| preferredBufferDuration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 播放策略首选缓冲持续时间，单位为秒（s），取值范围[1, 20]。超出范围时自动修正为边界值或使用默认值。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
 | preferredHdr | boolean | 否   | 是   | 表示播放策略是否为hdr。true表示是，false表示不是，默认为false。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
 | enableSuperResolution<sup>18+</sup> | boolean | 否   | 是   | 表示是否使能超分功能。true表示使能超分，false表示不使能超分，默认为false。<br>若不使能超分，则后续不能调用超分相关接口。若使能超分，则超分功能默认开启，默认目标分辨率为1920x1080，单位为像素。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
-| showFirstFrameOnPrepare<sup>17+</sup> | boolean | 否   | 是   | 播放策略true是Prepare之后显示视频起播首帧，false是Prepare之后不显示视频起播首帧，默认不显示。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本17开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 17<br> **ArkTS-Sta起始版本：** 23 |
+| showFirstFrameOnPrepare<sup>17+</sup> | boolean | 否   | 是   | 播放策略true是Prepare之后显示视频起播首帧，false是Prepare之后不显示视频起播首帧，默认值为false。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本17开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 17<br> **ArkTS-Sta起始版本：** 23 |
 | mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 关闭输出的媒体类型。<br>对于API版本12-19，仅支持设置MediaType.MEDIA_TYPE_AUD。从API版本20开始，增加支持MediaType.MEDIA_TYPE_VID。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
 | preferredAudioLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选音轨语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本13开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 13<br> **ArkTS-Sta起始版本：** 23 |
 | preferredSubtitleLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选字幕语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本13开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 13<br> **ArkTS-Sta起始版本：** 23 |
@@ -535,7 +535,7 @@ async function setupPlayer() {
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | 否   | 否   | 指标事件的类型。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 | timeStamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 事件发生时的系统时间。 |
-| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 事件发生时的播放进度位置。 |
+| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 事件发生时的播放进度位置。单位为毫秒（ms） |
 | details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>卡顿事件包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。<br/>音画不同步事件包含不同步类型（视频帧超前或滞后音频帧）和不同步起止时间。<br/>加载速率变化事件包含变化前后的数据下载速率。<br/>加载数据请求错误事件包含请求阶段（连接、请求流媒体播放列表、请求流媒体数据）、请求时间和网络错误码。<br/>播放内容切换事件包含切换前后的资源参数信息（视频分辨率、视频帧率、音频采样率、音频通道数等）。<br/>播放内容不连续事件包含不连续类型（PTS跳变或者音频参数变化）、跳变前后的PTS/变化前后的音频参数（音频采样率、音频通道数、音频位深）。<br/>音频状态变化事件包括失焦事件发生时的前/后状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 

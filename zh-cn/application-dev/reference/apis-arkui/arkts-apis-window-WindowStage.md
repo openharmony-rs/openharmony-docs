@@ -324,7 +324,7 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 
 创建该WindowStage实例下的子窗口，使用callback异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
+子窗口创建后无标题栏，默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -340,8 +340,8 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                          |
 | -------- | -------------------------------------- | ---- | --------------------------------------------- |
-| name     | string                                 | 是   | 子窗口的名字。                                |
-| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数。返回当前WindowStage下的子窗口对象。 |
+| name     | string                                 | 是   | 子窗口的名字，用于唯一标识子窗口。建议使用有意义的窗口名称作为标识符。 |
+| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数。返回当前WindowStage对应主窗下的子窗口对象。 |
 
 **错误码：**
 
@@ -454,7 +454,7 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 
 | 类型                             | 说明                                             |
 | -------------------------------- | ------------------------------------------------ |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowStage下的子窗口对象。 |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowStage对应主窗下的子窗口对象。 |
 
 **错误码：**
 
@@ -550,13 +550,13 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | name   | string | 是   | 子窗口的名字。 |
-| options  | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是   | 子窗口参数。  |
+| options  | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是   | 子窗口创建参数。  |
 
 **返回值：**
 
 | 类型                             | 说明                                             |
 | -------------------------------- | ------------------------------------------------ |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowStage下创建的子窗口对象。 |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowStage对应主窗下的子窗口对象。 |
 
 **错误码：**
 
@@ -622,7 +622,7 @@ getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
 | 参数名   | 类型                                                | 必填 | 说明                                              |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | 是   | 回调函数。返回当前WindowStage下的所有子窗口对象。 |
+| callback | AsyncCallback&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | 是   | 回调函数。返回当前WindowStage对应主窗下的所有子窗口，若无子窗口则返回空数组。 |
 
 **错误码：**
 
@@ -680,7 +680,7 @@ getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
 | 类型                                          | 说明                                                 |
 | --------------------------------------------- | ---------------------------------------------------- |
-| Promise&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | Promise对象。返回当前WindowStage下的所有子窗口对象。 |
+| Promise&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | Promise对象。返回当前WindowStage对应主窗下的所有子窗口，若无子窗口则返回空数组。 |
 
 **错误码：**
 
@@ -2754,8 +2754,6 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 设置是否启用最后关闭的主窗尺寸的记忆功能，使用Promise异步回调。
 
 启用记忆功能后，在同一个UIAbility下，记忆最后关闭的主窗口的尺寸；此主窗口再次启动时，以记忆的尺寸按照规则进行打开。
-
-层叠规则：1、当前实例是自由窗口时，打开下一实例窗口层叠时，大小要跟随。2、当前实例是最大化或全屏窗口时，打开下一个实例窗口层叠时，保持最大化。
 
 记忆规则：
 |上一次窗口状态|记忆规则|

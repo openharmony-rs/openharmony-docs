@@ -12,9 +12,7 @@ DrawingRenderingContext对象与Canvas组件绑定后，可在Canvas组件上进
 >
 > 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-## 接口
-
-### constructor
+## constructor
 
 constructor(unit?: LengthMetricsUnit)
 
