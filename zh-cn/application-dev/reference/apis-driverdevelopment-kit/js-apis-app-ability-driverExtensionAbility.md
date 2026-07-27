@@ -61,7 +61,7 @@ Extension生命周期回调，在创建时回调，执行初始化业务逻辑�
   import { Want } from '@kit.AbilityKit';
 
   class DriverExt extends DriverExtensionAbility {
-    onInit(want : Want) {
+    onInit(want: Want) {
       console.info(`onInit, want: ${want.abilityName}`);
     }
   }
@@ -117,16 +117,16 @@ Extension生命周期回调，会在[onCreate](../apis-ability-kit/js-apis-app-a
   import { Want } from '@kit.AbilityKit';
 
   class StubTest extends rpc.RemoteObject {
-      constructor(des : string) {
+      constructor(des: string) {
           super(des);
       }
-      onRemoteMessageRequest(code : number, data : rpc.MessageSequence, reply : rpc.MessageSequence, option : rpc.MessageOption) {
+      onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
         // 必须重写此接口
         return true;
       }
   }
   class DriverExt extends DriverExtensionAbility {
-    onConnect(want : Want) {
+    onConnect(want: Want) {
       console.info(`onConnect , want: ${want.abilityName}`);
       return new StubTest('test');
     }
@@ -141,10 +141,10 @@ Extension生命周期回调，会在[onCreate](../apis-ability-kit/js-apis-app-a
   import { Want } from '@kit.AbilityKit';
   
   class StubTest extends rpc.RemoteObject {
-      constructor(des : string) {
+      constructor(des: string) {
           super(des);
       }
-      onRemoteMessageRequest(code : number, data : rpc.MessageSequence, reply : rpc.MessageSequence, option : rpc.MessageOption) {
+      onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
         // 必须重写此接口
         return true;
       }
@@ -154,7 +154,7 @@ Extension生命周期回调，会在[onCreate](../apis-ability-kit/js-apis-app-a
       return 'asyncTest';
   }
   class DriverExt extends DriverExtensionAbility {
-    async onConnect(want : Want) {
+    async onConnect(want: Want) {
       console.info(`onConnect , want: ${want.abilityName}`);
       let descriptor = await getDescriptor();
       return new StubTest(descriptor);
@@ -191,7 +191,7 @@ Extension的生命周期回调，客户端执行断开连接服务时回调。
   import { Want } from '@kit.AbilityKit';
 
   class DriverExt extends DriverExtensionAbility {
-    onDisconnect(want : Want) {
+    onDisconnect(want: Want) {
       console.info(`onDisconnect, want: ${want.abilityName}`);
     }
   }
@@ -204,7 +204,7 @@ Extension的生命周期回调，客户端执行断开连接服务时回调。
   import { Want } from '@kit.AbilityKit';
 
   class DriverExt extends DriverExtensionAbility {
-    async onDisconnect(want : Want) {
+    async onDisconnect(want: Want) {
       console.info(`onDisconnect, want: ${want.abilityName}`);
       // 调用异步函数...
     }
@@ -237,7 +237,7 @@ onDump(params: Array\<string>): Array\<string>
     
   ```ts
   class DriverExt extends DriverExtensionAbility {
-      onDump(params : Array<string>) {
+      onDump(params: Array<string>) {
           console.info(`dump, params: ${JSON.stringify(params)}`);
           return ['params'];
       }

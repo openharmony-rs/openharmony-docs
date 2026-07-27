@@ -63,9 +63,9 @@ queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt;
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 
 try {
-  let devices : Array<deviceManager.Device> = deviceManager.queryDevices(deviceManager.BusType.USB);
+  let devices: Array<deviceManager.Device> = deviceManager.queryDevices(deviceManager.BusType.USB);
   for (let item of devices) {
-    let device : deviceManager.USBDevice = item as deviceManager.USBDevice;
+    let device: deviceManager.USBDevice = item as deviceManager.USBDevice;
     console.info(`Device id is ${device.deviceId}`);
   }
 } catch (error) {
@@ -116,11 +116,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.bindDriverWithDeviceId(12345678, (error : BusinessError, data : number) => {
+  deviceManager.bindDriverWithDeviceId(12345678, (error: BusinessError, data: number) => {
     console.error(`Device is disconnected`);
   }).then((data: deviceManager.RemoteDeviceDriver) => {
     console.info(`bindDriverWithDeviceId success, Device_Id is ${data.deviceId}.
-    remote is ${data.remote != null ? data.remote.getDescriptor() : "null"}`);
+    remote is ${data.remote != null ? data.remote.getDescriptor(): "null"}`);
   }, (error: BusinessError) => {
     console.error(`bindDriverWithDeviceId async fail. Code is ${error.code}, message is ${error.message}`);
   });
@@ -169,9 +169,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.unbindDriverWithDeviceId(12345678).then((data : number) => {
+  deviceManager.unbindDriverWithDeviceId(12345678).then((data: number) => {
     console.info(`unbindDriverWithDeviceId success, Device_Id is ${data}.`);
-  }, (error : BusinessError) => {
+  }, (error: BusinessError) => {
     console.error(`unbindDriverWithDeviceId async fail. Code is ${error.code}, message is ${error.message}`);
   });
 } catch (error) {
@@ -220,15 +220,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
 
 interface DataType {
-  deviceId : number;
-  remote : rpc.IRemoteObject;
+  deviceId: number;
+  remote: rpc.IRemoteObject;
 }
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.bindDevice(12345678, (error : BusinessError, data : number) => {
+  deviceManager.bindDevice(12345678, (error: BusinessError, data: number) => {
     console.error(`Device is disconnected`);
-  }, (error : BusinessError, data : DataType) => {
+  }, (error: BusinessError, data: DataType) => {
     if (error) {
       console.error(`bindDevice async fail. Code is ${error.code}, message is ${error.message}`);
       return;
@@ -280,9 +280,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.bindDeviceDriver(12345678, (error : BusinessError, data : number) => {
+  deviceManager.bindDeviceDriver(12345678, (error: BusinessError, data: number) => {
     console.error(`Device is disconnected`);
-  }, (error : BusinessError, data : deviceManager.RemoteDeviceDriver) => {
+  }, (error: BusinessError, data: deviceManager.RemoteDeviceDriver) => {
     if (error) {
       console.error(`bindDeviceDriver async fail. Code is ${error.code}, message is ${error.message}`);
       return;
@@ -340,11 +340,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.bindDevice(12345678, (error : BusinessError, data : number) => {
+  deviceManager.bindDevice(12345678, (error: BusinessError, data: number) => {
     console.error(`Device is disconnected`);
   }).then(data => {
     console.info(`bindDevice success, Device_Id is ${data.deviceId}.
-    remote is ${data.remote != null ? data.remote.getDescriptor() : "null"}`);
+    remote is ${data.remote != null ? data.remote.getDescriptor(): "null"}`);
   }, (error: BusinessError) => {
     console.error(`bindDevice async fail. Code is ${error.code}, message is ${error.message}`);
   });
@@ -399,11 +399,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.bindDeviceDriver(12345678, (error : BusinessError, data : number) => {
+  deviceManager.bindDeviceDriver(12345678, (error: BusinessError, data: number) => {
     console.error(`Device is disconnected`);
   }).then((data: deviceManager.RemoteDeviceDriver) => {
     console.info(`bindDeviceDriver success, Device_Id is ${data.deviceId}.
-    remote is ${data.remote != null ? data.remote.getDescriptor() : "null"}`);
+    remote is ${data.remote != null ? data.remote.getDescriptor(): "null"}`);
   }, (error: BusinessError) => {
     console.error(`bindDeviceDriver async fail. Code is ${error.code}, message is ${error.message}`);
   });
@@ -450,7 +450,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.unbindDevice(12345678, (error : BusinessError, data : number) => {
+  deviceManager.unbindDevice(12345678, (error: BusinessError, data: number) => {
     if (error) {
       console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
       return;
@@ -505,9 +505,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.unbindDevice(12345678).then((data : number) => {
+  deviceManager.unbindDevice(12345678).then((data: number) => {
     console.info(`unbindDevice success, Device_Id is ${data}.`);
-  }, (error : BusinessError) => {
+  }, (error: BusinessError) => {
     console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
   });
 } catch (error) {
