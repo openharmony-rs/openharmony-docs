@@ -59,11 +59,11 @@
 对于常规视频播放业务，建议采用**初始化阶段配置感知自适应模式与运行态动态切换结合**的策略。
 
 - **初始化配置**：建议在视频起播前的初始化阶段直接配置为感知自适应（`ADAPTIVE`）模式。解码过程MV信息输出到丢帧判决模块需在初始化阶段使能`ADAPTIVE`模式，不支持运行态动态使能；若在初始化阶段未配置`ADAPTIVE`模式，后续运行态动态切入时丢帧判决模块将无法获取MV信息，退化为按固定间隔丢帧，感知自适应收益将降低。
-- **动态切换**：在播放过程中，当倍速变化时，仍可通过`OH_VideoDecoder_SetParameter`动态切换模式与倍速参数；当恢复至1.0x及以下倍速时，可切回全量直通（`FULL`）模式，恢复全量帧解码输出。
+- **动态切换**：在播放过程中，当倍速变化时，仍可通过`OH_VideoDecoder_SetParameter`动态切换模式与倍速参数；当恢复至1.0x及以下倍速时，恢复全量帧解码输出。
 
 ### 初始化阶段配置感知自适应模式
 
-在视频起播前的初始化阶段，直接配置`ADAPTIVE`模式，以确保解码过程MV信息输出到丢帧判决模块。实际倍速在运行态通过`OH_VideoDecoder_SetParameter`动态下发。
+在视频起播前的初始化阶段，直接配置`ADAPTIVE`模式。实际倍速在运行态通过`OH_VideoDecoder_SetParameter`动态下发。
 
 <!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
 
