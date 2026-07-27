@@ -347,6 +347,63 @@ struct Index {
 
 <!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+``` TypeScript
+// entryability/EntryAbility.ets
+import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window, UIContext } from '@kit.ArkUI';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+    } catch (err) {
+      hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
+    }
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    // 在loadContent前调用，此时无UI实例，vp2px会根据屏幕默认像素密度返回计算结果。
+    // 此时UIContext对象的解析策略ResolveStrategy为UNDEFINED。
+    let resolvedUIContext = UIContext.resolveUIContext();
+    let pxValue = resolvedUIContext.vp2px(20);
+    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      // 在loadContent异步回调中调用，此时有UI实例，但上下文不明确，此时会根据主窗的像素密度返回计算结果。
+      // 此时UIContext对象的解析策略ResolveStrategy为UNIQUE。
+      let resolvedUIContext = UIContext.resolveUIContext();
+      let pxValue = resolvedUIContext.vp2px(20);
+      hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+    });
+    // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+  }
+
+  onWindowStageDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}
+```
+
 <!--deprecated_code_no_check-->
 ``` TypeScript
 // entryability/EntryAbility.ets
