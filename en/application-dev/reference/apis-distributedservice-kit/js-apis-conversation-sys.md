@@ -5,6 +5,7 @@
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=6a0c4a565ec3c4eada9375dc1f53febf5f813a4b translatedAt=2026-07-27T01:18:24.922Z pushedAt=2026-07-27T01:19:49.939Z -->
 
 The DSoftBus module **conversation** provides APIs for cross-device interaction of apps, including obtaining the trusted device list, and sending and receiving session data. With this module, your app can obtain trusted devices under the same account, register a listener to receive cross-device data, and send data to a specified device through a session channel. This module is applicable to scenarios that require cross-device collaboration and multi-device data transfer, simplifying the development of cross-device interaction.
 
@@ -56,19 +57,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let devices: conversation.DeviceNodeInfo[] = conversation.getTrustedDevices();
-  hilog.info(0x0000, TAG, 'trusted devices count = ' + devices.length);
+  console.info(`getTrustedDevices success, count: ${devices.length}`);
   for (let device of devices) {
-    hilog.info(0x0000, TAG, 'device name = ' + device.deviceName + ', networkId = ' + device.networkId);
+    console.info(`device name: ${device.deviceName}, networkId: ${device.networkId}`);
   }
 } catch (err) {
-  hilog.error(0x0000, TAG, 'getTrustedDevices errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`getTrustedDevices errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -116,9 +114,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let deviceId: string = 'device_network_id_or_udid'; // deviceId is the network ID or UDID of the target device obtained by calling conversation.getTrustedDevices().
@@ -129,13 +124,13 @@ try {
   view[0] = 1;
 
   conversation.postConversationData(deviceId, bundleName, abilityName, msg).then(() => {
-    hilog.info(0x0000, TAG, 'postConversationData success');
+    console.info(`postConversationData success`);
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, TAG, 'postConversationData errCode: ' + err.code + ', errMessage: ' + err.message);
+    console.error(`postConversationData errCode: ${err.code}, errMessage: ${err.message}`);
   });
 } catch (err) {
-  hilog.error(0x0000, TAG, 'postConversationData errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`postConversationData errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -180,21 +175,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let bundleName: string = 'com.example.demo';
   let abilityName: string = 'EntryAbility';
 
   conversation.registerConversationListener(bundleName, abilityName, (deviceId: string, msg: ArrayBuffer) => {
-    hilog.info(0x0000, TAG, 'received message from deviceId = ' + deviceId + ', msg length = ' + msg.byteLength);
+    console.info(`received message, deviceId: ${deviceId}, msg length: ${msg.byteLength}`);
   });
-  hilog.info(0x0000, TAG, 'registerConversationListener success');
+  console.info(`registerConversationListener success`);
 } catch (err) {
-  hilog.error(0x0000, TAG, 'registerConversationListener errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`registerConversationListener errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -236,19 +228,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let bundleName: string = 'com.example.demo';
   let abilityName: string = 'EntryAbility';
 
   conversation.unregisterConversationListener(bundleName, abilityName);
-  hilog.info(0x0000, TAG, 'unregisterConversationListener success');
+  console.info(`unregisterConversationListener success`);
 } catch (err) {
-  hilog.error(0x0000, TAG, 'unregisterConversationListener errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`unregisterConversationListener errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 

@@ -37,7 +37,7 @@ type ConnectionState = nearlinkConstant.ConnectionState
 | [nearlinkConstant.ConnectionState](js-apis-nearlink-constant.md#connectionstate) | 和远端设备的连接状态。 |
 
 
-## createPort
+## dataTransfer.createPort
 
 createPort(uuid: string): void
 
@@ -59,7 +59,7 @@ createPort(uuid: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -87,7 +87,7 @@ try {
 ```
 
 
-## destroyPort
+## dataTransfer.destroyPort
 
 destroyPort(uuid: string): void
 
@@ -109,7 +109,7 @@ destroyPort(uuid: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -136,7 +136,7 @@ try {
 ```
 
 
-## connect
+## dataTransfer.connect
 
 connect(params: ConnectionParams): Promise&lt;void&gt;
 
@@ -164,7 +164,7 @@ connect(params: ConnectionParams): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -186,7 +186,6 @@ try {
   let connectionParams:dataTransfer.ConnectionParams = {
     address: '01:02:03:04:05:06', // 星闪远端设备地址
     uuid: 'FFFFFFFF-1234-5678-ABCD-000000001234', // 星闪服务UUID
-    mtu: 1024 // 期望发送数据包的字节大小，可选参数
   };
   dataTransfer.connect(connectionParams).then(()=>{
     console.info('connect success');
@@ -199,7 +198,7 @@ try {
 ```
 
 
-## disconnect
+## dataTransfer.disconnect
 
 disconnect(params: ConnectionParams): Promise&lt;void&gt;
 
@@ -227,7 +226,7 @@ disconnect(params: ConnectionParams): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -249,7 +248,6 @@ try {
   let connectionParams:dataTransfer.ConnectionParams = {
     address: '01:02:03:04:05:06', // 星闪远端设备地址
     uuid: 'FFFFFFFF-1234-5678-ABCD-000000001234', // 星闪服务UUID
-    mtu: 1024 // 期望发送数据包的字节大小，可选参数
   };
   dataTransfer.disconnect(connectionParams).then(()=>{
     console.info('disconnect success');
@@ -262,7 +260,7 @@ try {
 ```
 
 
-## onConnectionStateChanged
+## dataTransfer.onConnectionStateChanged
 
 onConnectionStateChanged(callback: Callback&lt;ConnectionResult&gt;): void
 
@@ -284,7 +282,7 @@ onConnectionStateChanged(callback: Callback&lt;ConnectionResult&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -307,7 +305,7 @@ try {
 ```
 
 
-## offConnectionStateChanged
+## dataTransfer.offConnectionStateChanged
 
 offConnectionStateChanged(callback?: Callback&lt;ConnectionResult&gt;): void
 
@@ -327,7 +325,7 @@ offConnectionStateChanged(callback?: Callback&lt;ConnectionResult&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -347,7 +345,7 @@ try {
 ```
 
 
-## getConnectionState
+## dataTransfer.getConnectionState
 
 getConnectionState(params: ConnectionStateParams): ConnectionState
 
@@ -375,15 +373,15 @@ getConnectionState(params: ConnectionStateParams): ConnectionState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
 | 801 | Capability not supported because the chip does not support it. |
-| 36100003 | NearLink is off. |
+| 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
-| 36100043 | Invalid UUID. |
+| 36100043 | Invalid UUID in connection parameters. |
 | 36100044 | NearLink standard UUID not allowed. |
 | 36100099 | Operation failed. |
 
@@ -405,7 +403,7 @@ try {
 ```
 
 
-## writeData
+## dataTransfer.writeData
 
 writeData(params: DataParams): Promise&lt;void&gt;
 
@@ -433,7 +431,7 @@ writeData(params: DataParams): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -474,7 +472,7 @@ try {
 ```
 
 
-## onReadData
+## dataTransfer.onReadData
 
 onReadData(callback: Callback&lt;DataParams&gt;): void
 
@@ -496,7 +494,7 @@ onReadData(callback: Callback&lt;DataParams&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -519,7 +517,7 @@ try {
 ```
 
 
-## offReadData
+## dataTransfer.offReadData
 
 offReadData(callback?: Callback&lt;DataParams&gt;): void
 
@@ -539,7 +537,7 @@ offReadData(callback?: Callback&lt;DataParams&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

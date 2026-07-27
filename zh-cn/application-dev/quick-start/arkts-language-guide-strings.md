@@ -20,7 +20,7 @@
 
 ``` TypeScript
 let single: string = 'Hello';
-let double: string = 'World';
+let double: string = "World";
 let template: string = `ArkTS`;
 ```
 
@@ -672,7 +672,7 @@ console.info(`${isLowerCase('Hello')}`);  // false
 let searchText2: string = 'Hello World';
 
 // indexOf：查找位置
-let pos: number = searchText2.indexOf('World');      // 7
+let pos: number = searchText2.indexOf('World');      // 6
 let lastPos: number = searchText2.lastIndexOf('o');  // 7
 
 // includes：是否包含

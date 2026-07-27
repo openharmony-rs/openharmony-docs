@@ -56,7 +56,7 @@ type ConnectionInterval = nearlinkConstant.ConnectionInterval
 
 ## RemoteDevice
 
-提供远端设备的操作方法，使用前需要使用[remoteDevice.createRemoteDevice](js-apis-nearlink-remote-device.md#createremotedevice)方法创建一个远端设备[RemoteDevice](js-apis-nearlink-remote-device.md#remotedevice)实例。一个设备只需要创建一次，无需多次创建。
+提供远端设备的操作方法，使用前需要使用[remoteDevice.createRemoteDevice](js-apis-nearlink-remote-device.md#remotedevicecreateremotedevice)方法创建一个远端设备[RemoteDevice](js-apis-nearlink-remote-device.md#remotedevice)实例。一个设备只需要创建一次，无需多次创建。
 
 **起始版本：** 26.0.0
 
@@ -87,7 +87,7 @@ startCrediblePairing(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -134,7 +134,7 @@ removePairedDevice(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -181,7 +181,7 @@ setPairingConfirmation(accept: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -226,7 +226,7 @@ connect(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -273,7 +273,7 @@ disconnect(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -320,7 +320,7 @@ setDeviceAlias(alias: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -366,7 +366,7 @@ getDeviceAlias(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -410,7 +410,7 @@ getDeviceModel(): DeviceModel
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -455,7 +455,7 @@ cancelDevicePairing(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -510,7 +510,7 @@ setPairingPasscode(passcode: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -561,7 +561,7 @@ getRssiValue(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -610,7 +610,7 @@ setConnectionInterval(interval: ConnectionInterval): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -634,7 +634,7 @@ try {
 }
 ```
 
-### onPairingRequest
+### remoteDevice.onPairingRequest
 
 onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
 
@@ -660,7 +660,7 @@ onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -684,7 +684,7 @@ try {
 }
 ```
 
-### offPairingRequest
+### remoteDevice.offPairingRequest
 
 offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
 
@@ -706,7 +706,7 @@ offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

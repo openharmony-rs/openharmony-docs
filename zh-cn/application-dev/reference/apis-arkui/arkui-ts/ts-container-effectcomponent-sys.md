@@ -41,7 +41,7 @@ EffectComponent()
 
 EffectComponent(options?: EffectComponentOptions)
 
-创建特效绘制合并组件，无参数或者参数为EffectLayer.None时用于对子组件背景模糊特效的绘制合并。有明确参数时表示当前渲染图层置于特殊图层。
+创建特效绘制合并组件，无参数或者参数为EffectLayer.NONE时用于对子组件背景模糊特效的绘制合并。有明确参数时表示当前渲染图层置于特殊图层。
 
 **系统接口：** 此接口为系统接口。
 

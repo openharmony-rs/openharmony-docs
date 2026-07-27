@@ -193,11 +193,11 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Utils {
-  @State x: number = 120;
-  @State y: number = 10;
-  @State z: number = 100;
+  @State translateX: number = 120;
+  @State translateY: number = 10;
+  @State translateZ: number = 100;
   @State value: string = '';
-  private matrix1 = matrix4.identity().translate({ x: this.x, y: this.y, z: this.z });
+  private matrix1 = matrix4.identity().translate({ x: this.translateX, y: this.translateY, z: this.translateZ });
 
   build() {
     Column() {
