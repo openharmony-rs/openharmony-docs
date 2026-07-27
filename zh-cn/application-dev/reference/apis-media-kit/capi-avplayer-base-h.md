@@ -117,7 +117,7 @@ enum AVPlayerState
 
 **描述**
 
-播放状态。状态转换关系[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)
+播放状态。[播放状态转换图](../../media/media/figures/video-playback-status-change.png)。
 
 **起始版本：** 11
 
@@ -395,7 +395,7 @@ typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double
 
 **描述**
 
-当计算出最大音频电平值时调用。如果应用成功设置该回调，则会触发回调。
+当计算出最大音频电平值时调用。
 
 **使用场景**
 

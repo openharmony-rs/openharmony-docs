@@ -1571,7 +1571,7 @@ getPlaybackPosition(): number
 
 获取当前播放位置，可以在prepared/playing/paused/completed状态调用。返回值单位为毫秒（ms），适合大多数播放进度查询场景。
 
-与getCurrentPresentationTimestamp的区别：本方法返回毫秒精度，getCurrentPresentationTimestamp返回微秒精度。建议：一般播放进度查询使用本方法；需要高精度时间戳时使用getCurrentPresentationTimestamp。
+与getCurrentPresentationTimestamp的区别：本方法返回毫秒精度，getCurrentPresentationTimestamp返回微秒精度。建议：一般播放进度查询使用本方法；需要高精度时间戳时请使用getCurrentPresentationTimestamp。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 

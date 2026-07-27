@@ -375,7 +375,6 @@ OH_AVErrCode OH_AVPlayer_Reset(OH_AVPlayer *player)
 | [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者player Reset执行失败。 |
 
 ### OH_AVPlayer_Release()
-
 ```c
 OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)
 ```
