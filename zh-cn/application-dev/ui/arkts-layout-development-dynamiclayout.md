@@ -1616,7 +1616,7 @@ export class GridLayout extends CustomLayoutAlgorithm {
     }
 
     // 计算总高度
-    const totalHeight = rowHeights.reduce((sum, h) => sum + h, 0) + (rows - 1) * this.gap;
+    const totalHeight = rowHeights.reduce((sum, h) => (sum + h).toInt(), 0) + (rows - 1) * this.gap;
 
     // 第二遍测量：使用每行的统一高度重新测量子组件
     for (let i = 0; i < childCount; i++) {
@@ -1665,7 +1665,7 @@ export class GridLayout extends CustomLayoutAlgorithm {
         const row: Int = Math.floor(i / columns).toInt();
         const col = i % columns;
         const x = col * (itemWidth + this.gap);
-        const y = row === 0 ? 0 : rowHeights.slice(0, row).reduce((sum, h) => sum + h, 0) + row * this.gap;
+        const y = row === 0 ? 0 : rowHeights.slice(0, row).reduce((sum, h) => (sum + h).toInt(), 0) + row * this.gap;
         child.layout({ x, y });
       }
     }

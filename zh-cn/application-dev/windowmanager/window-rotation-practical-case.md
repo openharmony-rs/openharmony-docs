@@ -289,7 +289,7 @@ struct SpecificSceneSetOrientationIndex {
     try {
       // 1.获取当前默认Display
       const disp: display.Display = display.getDefaultDisplaySync();
-      const displayOrientation: int = disp.orientation as int; // 当前屏幕方向（0/1/2/3）
+      const displayOrientation: int = disp.orientation.valueOf() as int; // 当前屏幕方向（0/1/2/3）
 
       console.info('Current display orientation = ' + displayOrientation);
       // 2.将displayOrientation转换为windowOrientation

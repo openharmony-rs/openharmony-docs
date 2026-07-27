@@ -37,9 +37,9 @@ struct HelloComponent {
     // HelloComponent自定义组件组合系统组件Row和Text
     Column() {
       Text(this.message)
-        .onClick(() => {
         .fontSize(20)
         .margin(10)
+        .onClick(() => {
           this.message = 'Hello, ArkUI!';
         })
     }

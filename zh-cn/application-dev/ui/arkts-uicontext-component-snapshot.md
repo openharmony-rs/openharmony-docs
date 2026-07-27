@@ -106,7 +106,7 @@ export struct ScrollSnapshot {
   private scrollHeight: double = 0;
 
   // ...
-  build() {
+  build():void {
     // ...
         Stack() {
           // ...
@@ -190,7 +190,7 @@ ArkTS-Sta示例：
 async scrollSnapAndMerge(): Promise<void> {
   try {
     // 记录滚动偏移
-    this.scrollYOffsets.push(Math.round(this.curYOffset - this.yOffsetBefore) as int);
+    this.scrollYOffsets.push(Math.round(this.curYOffset - this.yOffsetBefore).toInt());
     // 调用组件截图接口，获取list组件的截图
     let snapshot = this.getUIContext().getComponentSnapshot();
     let pixelMapPromise = snapshot.get(LIST_ID);
@@ -205,21 +205,21 @@ async scrollSnapAndMerge(): Promise<void> {
     }
     // 获取位图像素字节，并保存在数组中
     let area: image.PositionArea =
-      await ImageUtils.getSnapshotArea(pixelMap, this.scrollYOffsets, Math.round(this.listComponentWidth) as int,
-        Math.round(this.listComponentHeight) as int);
+      await ImageUtils.getSnapshotArea(pixelMap, this.scrollYOffsets, Math.round(this.listComponentWidth).toInt(),
+        Math.round(this.listComponentHeight).toInt());
     this.areaArray.push(area);
 
     // 判断是否滚动到底以及用户是否已经强制停止
     if (!this.scroller.isAtEnd() && !this.isClickStop) {
       // 如果没有到底或被停止，则播放一个滚动动效，延迟一段时间后，继续递归截图
-      CommonUtils.scrollAnimation(this.scroller, 1000, Math.round(this.scrollHeight) as int);
+      CommonUtils.scrollAnimation(this.scroller, 1000, Math.round(this.scrollHeight).toInt());
       await CommonUtils.sleep(1500);
       await this.scrollSnapAndMerge();
     } else {
       // 当滚动到底时，调用`mergeImage`将所有保存的位图数据进行拼接，返回长截图位图对象
       this.mergedImage =
         await ImageUtils.mergeImage(this.areaArray, this.scrollYOffsets[this.scrollYOffsets.length - 1],
-          Math.round(this.listComponentWidth) as int, Math.round(this.listComponentHeight) as int);
+          Math.round(this.listComponentWidth).toInt(), Math.round(this.listComponentHeight).toInt());
     }
   } catch (err) {
     let error = err as BusinessError;
@@ -325,8 +325,8 @@ ArkTS-Sta示例：
 static async mergeImage(areaArray: image.PositionArea[], lastOffsetY: int, listWidth: int,
   listHeight: int): Promise<image.PixelMap> {
   // 创建一个长截图位图对象
-  let wVal: int = Math.round(uiContext!.vp2px(listWidth)) as int;
-  let hVal: int = Math.round(uiContext!.vp2px(lastOffsetY + listHeight)) as int;
+  let wVal: int = Math.round(uiContext!.vp2px(listWidth)) .toInt();
+  let hVal: int = Math.round(uiContext!.vp2px(lastOffsetY + listHeight)) .toInt();
   let opts: image.InitializationOptions = {
     editable: true,
     pixelFormat: image.PixelMapFormat.RGBA_8888,

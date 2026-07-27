@@ -1635,11 +1635,11 @@ struct Index {
                   windowClass.resize(500, 1000);
                   windowClass.showWindow();
                 })
-                .catch((error: BusinessError): void => {
+                .catch((error: Error): void => {
                   hilog.error(DOMAIN, 'testTag', `Failed to setUIContent. Cause : ${error.message}`);
                 });
             })
-            .catch((error: BusinessError): void => {
+            .catch((error: Error): void => {
               hilog.error(DOMAIN, 'testTag', `Failed to create the window. Cause : ${error.message}`);
             });
         })
