@@ -86,10 +86,10 @@
    // 共享模块
    import { ArkTSUtils } from '@kit.ArkTS';
    
-   // 声明当前模块为共享模块，只能导出可Sendable数据
+   // 声明当前模块为共享模块，只能导出Sendable数据
    'use shared'
    
-   // 共享模块，SingletonA全局唯一
+   // 共享模块，singletonA全局唯一
    @Sendable
    class SingletonA {
      private count_: number = 0;
@@ -118,8 +118,6 @@
    import { ArkTSUtils, taskpool } from '@kit.ArkTS';
    import { singletonA } from './sharedModule';
    
-   export { num, str } from './test'; // 正确示例，导出对象合集
-   
    @Sendable
    export class A {
      private count_: number = 0;
@@ -141,12 +139,12 @@
    @Concurrent
    async function increaseCount() {
      await singletonA.increaseCount();
-     console.info('SharedModule: count is:' + await singletonA.getCount());
+     console.info(`SharedModule: count is: ${await singletonA.getCount()}`);
    }
    
    @Concurrent
    async function printCount() {
-     console.info('SharedModule: count is:' + await singletonA.getCount());
+     console.info(`SharedModule: count is: ${await singletonA.getCount()}`);
    }
    
    @Entry
