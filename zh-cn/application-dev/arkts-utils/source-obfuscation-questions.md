@@ -136,7 +136,7 @@ export namespace NS {
 <!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-// import.ts
+// Index.ets
 import { NS } from './ExportNs';
   // ...
   NS.foo();
@@ -196,7 +196,7 @@ export function add(a: number, b: number): number {
 <!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-// main.ts
+// Index.ets
 async function loadAndUseAdd() {
   let result: number = 0;
   try {
@@ -448,7 +448,7 @@ export interface MyInfo {
 <!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-// FileOutside.ts
+// Index.ets
 import { MyInfo } from './FileInside';
   // ...
   const person: MyInfo = {

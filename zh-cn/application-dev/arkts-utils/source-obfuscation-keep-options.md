@@ -313,7 +313,7 @@ file
     <!-- @[optionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->        
     
     ``` TypeScript
-    // main.ts
+    // ArkGuardAbility.ts
     const moduleName = './DynamicImportFile'; // moduleName对应的路径名DynamicImportFile应该被保留
     async function func2() {
       const modules = await import(moduleName);
