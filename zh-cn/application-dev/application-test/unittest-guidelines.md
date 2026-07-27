@@ -838,11 +838,6 @@ interface PromiseInfo {
 
 ``` TypeScript
 import { describe, expect, it, Level } from '../../../../hypium/index';
-<<<<<<< HEAD
-=======
-import { promiseReject } from '../Util.test';
-
->>>>>>> b791c6573a5dac59ae08ff422c93df541fb11263
 
 export default function exampleTest(): void {
   describe('ExampleTest', (): void => {
