@@ -1,4 +1,4 @@
-# AVPlayerCallback<sup>(deprecated)</sup>
+# AVPlayerCallback
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
