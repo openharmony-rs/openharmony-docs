@@ -21,7 +21,7 @@
 
 例如：
 
-<!-- @[static_no_mutable_builder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/StaticNoMutableBuilder.ets) -->
+<!-- @[static_no_mutable_builder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/StaticNoMutableBuilder.ets) -->  
   ```typescript
   'use static'
 

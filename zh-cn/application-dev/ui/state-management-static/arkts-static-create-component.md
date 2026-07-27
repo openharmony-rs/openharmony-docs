@@ -24,7 +24,7 @@
 
 以下示例展示了自定义组件的基本用法。
 
-<!-- @[ComponentBasicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentBasicUsage.ets) -->   
+<!-- @[ComponentBasicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentBasicUsage.ets) -->     
 
 ``` TypeScript
 import { Column, Component, Divider, Entry, State, Text } from '@kit.ArkUI';
