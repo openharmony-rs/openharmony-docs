@@ -3242,7 +3242,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
  onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
 
-设置网页首次内容绘制时触发的回调函数。
+设置网页首次内容绘制时触发的回调函数，返回导航开始时间戳、首次内容绘制耗时等性能指标。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
