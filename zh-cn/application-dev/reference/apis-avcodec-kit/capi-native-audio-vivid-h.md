@@ -140,7 +140,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder 
 
 **描述**
 
-更新Audio Vivid信号格式为[OH_AudioVividSignalFormat](#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX时的音频对象渲染的线性增益。该函数可选，如未设置则不应用增益。
+更新Audio Vivid信号格式为[OH_AudioVividSignalFormat](#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX时的音频对象渲染的线性增益。
 
 **起始版本：** 26.0.0
 
