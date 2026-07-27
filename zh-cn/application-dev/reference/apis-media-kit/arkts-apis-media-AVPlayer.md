@@ -322,7 +322,7 @@ async function test() {
 
 setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
 
-为播放器设置轨道选择过滤器，播放器将使用该过滤器来选择可用的轨道用于播放。可以在idle/prepared/playing/paused/completed状态下调用。使用Promise异步回调。
+为播放器设置轨道选择过滤器，播放器将使用该过滤器来选择可用的轨道用于播放。可以在idle、prepared、playing、paused或completed状态下调用。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -433,7 +433,7 @@ async function test() {
 
 removePlaybackMediaSource(id: string): Promise\<void>
 
-从播放器的播放列表中移除指定的媒体源。可以在idle/prepared/playing/paused/completed状态下调用。使用Promise异步回调。
+从播放器的播放列表中移除指定的媒体源。可以在idle、prepared、playing、paused或completed状态下调用。使用Promise异步回调。
 
 > **注意：**
 >
@@ -484,7 +484,7 @@ async function test() {
 
 clearPlaybackList(): Promise\<void>
 
-清空播放列表中的所有项目，当前正在播放的媒体将会立即终止。可以在idle/prepared/playing/paused/completed状态下调用。使用Promise异步回调。
+清空播放列表中的所有项目，当前正在播放的媒体将会立即终止。可以在idle、prepared、playing、paused或completed状态下调用。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -566,7 +566,7 @@ async function test() {
 
 getMediaSources(): Array<MediaSource | undefined>
 
-获取当前播放列表中所有媒体源的数组，可以在idle/prepared/playing/paused/completed/stopped状态调用。
+获取当前播放列表中所有媒体源的数组，可以在idle、prepared、playing、paused、completed或stopped状态调用。
 
 **起始版本：** 26.0.0
 
