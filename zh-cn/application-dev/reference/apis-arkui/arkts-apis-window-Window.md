@@ -2529,7 +2529,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. Possible cause: The device does not support the API itself. |
+| 801      | Capability not supported. Failed to call the api due to limited device capabilities. Possible cause: The device does not support the api itself. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 
