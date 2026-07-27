@@ -75,6 +75,30 @@ import { geoLocationManager } from '@kit.LocationKit';
 | GEOFENCE_TRANSITION_EVENT_NEAR_WANDER    | 32 | 该事件表示设备正在接近地理围栏区域，且持续徘徊超过15分钟。<br/>**系统接口**：此接口为系统接口。 |
 
 
+## FusionFenceRequestParams
+
+融合围栏请求信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| identifier | string | 否 | 否 | 融合围栏唯一标识。<br/>**系统接口**：此接口为系统接口。 |
+| scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | 否 | 否 | 融合围栏场景。<br/>**系统接口**：此接口为系统接口。 |
+| fenceType | int | 否 | 否 | 融合围栏类型。可参考FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;。支持多类型围栏，比如3，代表包含GNSS、CELL两种围栏。<br/>**系统接口**：此接口为系统接口。 |
+| poiType | string | 否 | 是 | POI类型。<br/>**系统接口**：此接口为系统接口。 |
+| poiLocation | Point&lt;[Point](#point)&gt; | 否 | 否 | POI位置信息。<br/>**系统接口**：此接口为系统接口。 |
+| monitorTransitionEvents | int | 否 | 否 | 标识监听的围栏事件。可参考GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt;。支持多事件同时监听，比如3，代表监听围栏进入、退出两种事件。<br/>**系统接口**：此接口为系统接口。<br/>**系统接口**：此接口为系统接口。 |
+| loiterTimeMs | int | 否 | 否 | 徘徊时间，单位为毫秒。取值范围为大于0。若监听徘徊事件，当设备在围栏内徘徊时间达到该值，则上报徘徊事件。<br/>**系统接口**：此接口为系统接口。 |
+| gnssFences | Array&lt;[GnssFence](#gnssfence)&gt; | 否 | 否 | GNSS围栏信息。<br/>**系统接口**：此接口为系统接口。 |
+| cellFences | Array&lt;[CellFence](#cellfence)&gt; | 否 | 否 | CELL围栏信息。<br/>**系统接口**：此接口为系统接口。 |
+| wifiFences | Array&lt;[WifiFence](#wififence)&gt; | 否 | 否 | WIFI围栏信息。<br/>**系统接口**：此接口为系统接口。 |
+| expirationMs | int | 否 | 否 | 表示围栏存活时间，单位是毫秒。取值范围为大于0。<br/>**系统接口**：此接口为系统接口。 |
+| fenceTransitionCallback | Callback&lt;[FusionFenceTransition](#fusionfencetransition)&gt; | 否 | 否 | 表示用于接收围栏事件的回调函数。<br/>**系统接口**：此接口为系统接口。 |
+
+
 ## Location
 
 位置信息。
