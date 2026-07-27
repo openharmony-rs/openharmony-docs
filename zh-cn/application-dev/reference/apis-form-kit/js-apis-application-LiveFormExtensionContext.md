@@ -33,6 +33,15 @@ LiveFormExtensionContext提供访问特定于LiveFormExtensionAbility资源的�
 startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
 
 拉起互动卡片提供方（应用）的页面，使用Promise异步回调。
+拉起互动卡片提供方（应用）的页面，使用Promise异步回调。
+拉起互动卡片提供方（应用）的页面，使用Promise异步回调。
+**使用场景：**
+- 互动卡片中点击跳转到应用主页或详情页
+- 卡片交互场景中跳转到应用特定功能页
+
+**使用场景：**
+- 互动卡片中点击跳转到应用主页或详情页
+- 卡片交互场景中跳转到应用特定功能页
 
 **使用场景：**
 - 互动卡片中点击跳转到应用主页或详情页
@@ -48,7 +57,7 @@ startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**参数：**
+want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 需要被拉起的应用页面信息。[仅支持使用显式want。](../../../application-dev/application-models/ability-startup-with-explicit-want.md)仅支持拉起互动卡片提供方（应用）的页面。
 
   | 参数名 | 类型    | 必填 | 说明                                   |
   | ------ | ------ | ---- | ------------------------------------- |
@@ -62,7 +71,7 @@ startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
 **错误码：**
 
 以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)和[通用错误码](../errorcode-universal.md)。
-
+| 16500050 | IPC connection error. |
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported due to limited device capabilities. 请检查设备能力是否支持该特性。                 |

@@ -6,6 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 FormEditExtensionAbility模块提供卡片编辑功能，支持用户在卡片提供方应用内编辑卡片内容，适用于需要动态更新卡片展示信息、实现卡片个性化配置的场景。继承自[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+FormEditExtensionAbility模块提供卡片编辑功能，继承自[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。适用于卡片内容个性化配置、卡片样式动态调整等场景。
 
 > **说明：**
 >
@@ -20,7 +21,7 @@ import { FormEditExtensionAbility } from '@kit.FormKit';
 ```
 ## FormEditExtensionAbility
 
-提供卡片编辑功能。开发者可通过继承此类并实现相关生命周期方法，创建卡片编辑界面，实现卡片的配置修改和更新。
+提供卡片编辑功能，继承此类并实现生命周期方法后，可实现卡片编辑界面，用于在用户长按卡片等场景下触发卡片编辑。
 
 ### 属性
 

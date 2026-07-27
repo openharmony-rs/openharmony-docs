@@ -38,6 +38,8 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       'time': '11:00'
     };
     // this.context继承自FormExtensionAbility，可直接使用
+    // this.context继承自FormExtensionAbility，可直接使用
+    console.info('current language is:', this.context.config.language);
     console.info("current language is:", this.context.config.language);
     return formBindingData.createFormBindingData(formData);
   }

@@ -35,7 +35,7 @@ import { formInfo } from '@kit.FormKit';
 | description | string               | 否    | 否     | 卡片描述。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | descriptionId<sup>10+</sup>      | number               | 否    | 否     | 卡片描述ID。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为大于0小于2^32的整数。 |
 | type        | [FormType](#formtype)             | 否    | 否     | 卡片类型。当前支持JS卡片、ArkTS卡片。<br>**说明：** 当卡片类型为JS时，isDynamic强制为true，transparencyEnabled不生效，jsComponentName为必填项。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| jsComponentName      | string               | 否    | 否     | JS卡片的组件名，仅当卡片类型为JS时有效。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+js ComponentName      | string               | 否    | 否     | JS卡片的组件名，仅当卡片类型为JS时有效。
 | colorMode<sup>(deprecated)</sup>  | [ColorMode](#colormodedeprecated) | 否    | 否     | 卡片颜色模式。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **说明：** <br> 从 API version 9开始支持，从API version 20开始废弃。此接口已完全移除，无替代方案。 |
 | isDefault    | boolean      | 否    | 否     | 卡片是否是默认卡片。<br/>-&nbsp;true：默认卡片。<br/>-&nbsp;false：非默认卡片。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | updateEnabled  | boolean               | 否    | 否     | 卡片是否使能更新。<br/>-&nbsp;true：表示支持周期性刷新。<br/>-&nbsp;false：表示不支持周期性刷新。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -65,7 +65,7 @@ import { formInfo } from '@kit.FormKit';
 
 ## ColorMode<sup>(deprecated)</sup>
 
-卡片主题样式统一跟随系统的颜色模式。本枚举定义了卡片支持的颜色模式。
+卡片支持的颜色模式枚举。卡片可选择跟随系统颜色模式(MODE_AUTO),也可自主选择暗色(MODE_DARK)或亮色(MODE_LIGHT)模式。
 
 > **说明：**
 >
@@ -129,7 +129,7 @@ import { formInfo } from '@kit.FormKit';
 | PARAM_FORM_CUSTOMIZE_KEY<sup>10+</sup>    | 'ohos.extra.param.key.form_customize'   | 自定义数据。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | FORM_RENDERING_MODE_KEY<sup>11+</sup>    | 'ohos.extra.param.key.form_rendering_mode'   | 卡片渲染模式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | HOST_BG_INVERSE_COLOR_KEY<sup>12+</sup>    | 'ohos.extra.param.key.host_bg_inverse_color'   | 卡片使用方的背景反色颜色值。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| FORM_LOCATION_KEY<sup>12+</sup>    | 'ohos.extra.param.key.form_location'   | 卡片位置，具体取值参考[FormLocation](#formlocation20)。|
+卡片位置，具体取值请参考[FormLocation](#formlocation20)。
 | FORM_PERMISSION_NAME_KEY<sup>12+</sup> | 'ohos.extra.param.key.permission_name' | 用户授权权限名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | FORM_PERMISSION_GRANTED_KEY<sup>12+</sup> | 'ohos.extra.param.key.permission_granted' | 用户是否授权。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | ORIGINAL_FORM_KEY<sup>20+</sup> | 'ohos.extra.param.key.original_form_id' | 用groupId关联的一组卡片，在调整大小时，会先创建新尺寸的卡片，再删除旧尺寸的卡片。新尺寸卡片创建时want参数会通过该key传递旧尺寸卡片的卡片id。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -144,10 +144,10 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称        | 值   | 说明         |
 | ----------- | ---- | ------------ |
-| Dimension_1_2      | 1   | 1 x 2 form。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 该字段在所有设备类型上均支持。|
-| Dimension_2_2      | 2   | 2 x 2 form。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 该字段在所有设备类型上均支持。|
-| Dimension_2_4      | 3   | 2 x 4 form。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 该字段在所有设备类型上均支持。|
-| Dimension_4_4      | 4   | 4 x 4 form。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 该字段在所有设备类型上均支持。|
+| Dimension_1_2      | 1   | 1 x 2 form。<br>**设备行为差异：** 该字段在所有设备类型上均支持。|
+| Dimension_2_2      | 2   | 2 x 2 form。<br>**设备行为差异：** 该字段在所有设备类型上均支持。|
+| Dimension_2_4      | 3   | 2 x 4 form。<br>**设备行为差异：** 该字段在所有设备类型上均支持。|
+| Dimension_4_4      | 4   | 4 x 4 form。<br>**设备行为差异：** 该字段在所有设备类型上均支持。|
 | Dimension_2_1<sup>(deprecated)</sup>      | 5   | 2 x 1 form。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 该字段在所有设备类型上均支持。<br>**说明：** 从 API version 9开始支持，从API version 20开始废弃。此接口已完全移除，无替代方案。|
 | DIMENSION_1_1<sup>11+</sup>      | 6   | 1 x 1 form。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 该字段在所有设备类型上均支持。<br>**说明：** 该尺寸仅在锁屏卡片上生效。|
 | DIMENSION_6_4<sup>12+</sup>      | 7   | 6 x 4 form。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 该字段在所有设备类型上均支持。|
@@ -234,14 +234,14 @@ import { formInfo } from '@kit.FormKit';
 **系统能力：** SystemCapability.Ability.Form
 
 | 名称 | 类型 | 只读 | 可选  | 说明                              |
-|-----|-----|------|-----|---------------------------------|
+|:----|:----|:-----|:----|:---------------------------------|
 | area     | [Rect](#rect20) | 否 | 否   | 描述互动卡片动效区域范围，以卡片左上角为原点。   |
 | duration | number | 否 | 否   | 互动卡片动效持续时长，单位ms。取值为大于0的整数。<br>**应用差异：** 针对三方应用，取值要求不大于3500；系统应用无此限制。超出范围时抛出异常。 |
 | useDefaultAnimation | boolean | 否 | 是   | 互动卡片状态切换时是否启动系统提供的默认动效，默认为true。<br/>-&nbsp;true：表示系统提供默认切换动效。<br/>-&nbsp;false：表示系统不提供切换动效，画面直接切换，适合切换时非激活态和激活态UI完全一致的场景。 |
 
 ## Rect<sup>20+</sup>
 
-通用矩形区域信息。可用于描述卡片位置、互动卡片动效区域等信息。
+通用矩形区域信息。可用于描述卡片坐标区域、互动卡片动效区域等信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

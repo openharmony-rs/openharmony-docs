@@ -7,6 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 FormEditExtensionContext是[FormEditExtensionAbility](./js-apis-app-form-formEditExtensionAbility.md)的上下文，继承自[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)。用于管理卡片编辑场景的上下文环境，支持拉起卡片提供方页面和所属应用UIAbility，适用于卡片编辑流程中需要与卡片提供方交互的场景。
+FormEditExtensionContext是FormEditExtensionAbility的上下文，继承自UIExtensionContext。用于管理卡片编辑场景的上下文环境，支持拉起卡片提供方页面和所属应用UIAbility，适用于卡片编辑流程中需要与卡片提供方交互的场景。
 
 > **说明：**
 >
@@ -26,6 +27,15 @@ FormEditExtensionContext提供允许访问特定于FormEditExtensionAbility资�
 startSecondPage(want: Want): Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt;
 
 拉起需要被编辑的卡片提供方页面。使用Promise异步回调。
+拉起需要被编辑的卡片提供方页面。使用Promise异步回调。
+**使用场景：**
+- 用户在卡片编辑界面点击编辑按钮，需要打开卡片提供方的编辑页面
+- 用户需要修改卡片配置或内容时，拉起卡片提供方应用进行编辑
+拉起需要被编辑的卡片提供方页面。使用Promise异步回调。
+
+**使用场景：**
+- 用户在卡片编辑界面点击编辑按钮，需要打开卡片提供方的编辑页面
+- 用户需要修改卡片配置或内容时，拉起卡片提供方应用进行编辑
 
 **使用场景：**
 - 用户在卡片编辑界面点击编辑按钮，需要打开卡片提供方的编辑页面
@@ -41,7 +51,7 @@ startSecondPage(want: Want): Promise&lt;[AbilityResult](../apis-ability-kit/js-a
   | ------ | ------ | ---- | ------------------------------------- |
   | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是   | 需要拉起的编辑页面信息。必须包含bundleName字段，且parameters中需包含secPageAbilityName。|
 
-**返回值：**
+| Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>  |  Promise对象，返回被启动方退出时的结果码和数据。  |
 
   | 类型 | 说明    |
   | ------ | ------ |
@@ -83,12 +93,21 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
     } catch (e: Error) {
       console.error(TAG, `startSecondPage failed, code: ${e.code}, message: ${e.message}`)
       return;
+拉起卡片所属应用的UIAbility。使用Promise异步回调。
     }
+**使用场景：**
+- 用户在卡片编辑界面需要跳转到应用主界面查看更多信息
+- 用户需要访问应用的其他配置功能或设置界面
   }
 }
 ```
 
 ### startUIAbility<sup>23+</sup>
+拉起卡片所属应用的UIAbility。使用Promise异步回调。
+
+**使用场景：**
+- 用户在卡片编辑界面需要跳转到应用主界面查看更多信息
+- 用户需要访问应用的其他配置功能或设置界面
 
 startUIAbility(want: Want): Promise&lt;void&gt;
 
@@ -98,7 +117,7 @@ startUIAbility(want: Want): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**参数：**
+应用自身UIAbility的组件信息（如abilityName）
 
   | 参数名 | 类型    | 必填 | 说明                                   |
   | ------ | ------ | ---- | ------------------------------------- |

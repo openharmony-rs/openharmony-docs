@@ -49,6 +49,16 @@ import { FormExtensionAbility } from '@kit.FormKit';
 onAddForm(want: Want): formBindingData.FormBindingData
 
 卡片提供方接收创建卡片的通知接口。需要注意：FormExtensionAbility创建后10秒内无操作将会被清理，请避免在回调中执行耗时操作。
+卡片提供方接收创建卡片的通知接口。
+
+**配合使用：**
+- 必须调用formBindingData.createFormBindingData()创建卡片数据对象
+- 调用顺序：先创建数据对象（如dataObj1），再调用formBindingData.createFormBindingData(dataObj1)创建FormBindingData对象
+- 返回要求：必须返回FormBindingData对象，卡片要显示的数据通过参数传入
+**配合使用：**
+- 必须调用formBindingData.createFormBindingData()创建卡片数据对象
+- 调用顺序：先创建数据对象（如dataObj1），再调用formBindingData.createFormBindingData(dataObj1)创建FormBindingData对象
+- 返回要求：必须返回FormBindingData对象，卡片要显示的数据通过参数传入
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -91,10 +101,16 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 ### FormExtensionAbility.onCastToNormalForm
 
 onCastToNormalForm(formId: string): void
+onCastToNormalForm(formId: string): void
+
+卡片提供方收到卡片使用方将临时卡片转常态卡片的通知接口。仅当FormExtensionAbility存活时才会触发该回调。
 
 卡片提供方收到卡片使用方将临时卡片转常态卡片的通知接口。临时卡片、常态卡片是卡片使用方的概念，其中：临时卡片是短期存在的，在特定事件或用户行为后显示，完成后自动消失。常态卡片是持久存在的，在用户未进行清除或更改的情况下，会一直存在，平时开发的功能卡片属于常态卡片。在当前版本，卡片使用方不使用临时卡片。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| formId | string | 是   | 请求转换为常态的卡片标识。 |
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -103,6 +119,9 @@ onCastToNormalForm(formId: string): void
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                     |
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| formId | string | 是   | 请求转换为常态的卡片标识。 |
 | ------ | ------ | ---- | ------------------------ |
 | formId | string | 是   | 请求转换为常态的卡片标识。<br>**说明：** 此回调仅当FormExtensionAbility存活时才会触发。 |
 
@@ -135,7 +154,7 @@ onUpdateForm(formId: string, wantParams?: Record<string, Object>): void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| formId | string | 是   | 请求更新的卡片标识。卡片ID由系统在创建卡片时生成，可通过onAddForm回调的want参数获取。 |
+| formId | string | 是   | 请求更新的卡片标识。 |
 | wantParams<sup>12+</sup> | Record<string, Object> | 否   | 更新参数，用于携带卡片更新的额外信息。当需要传递自定义参数更新卡片时传入，不传入时为undefined。支持的参数包括：ohos.extra.param.key.host_bg_inverse_color（是否启用宿主背景反色）等。 |
 
 **示例：**
@@ -156,7 +175,13 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     formProvider.updateForm(formId, formBindingDataObj).then(() => {
       console.info(`FormExtensionAbility context updateForm`);
     }).catch ((error: BusinessError) => {
+卡片提供方接收修改可见性的通知接口。该接口仅对系统应用生效，且需要将formVisibleNotify配置为true。
       console.error(`FormExtensionAbility context updateForm failed, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+**配合使用：**
+- 在回调中需要调用formProvider.updateForm()更新卡片数据
+- 调用顺序：先调用formBindingData.createFormBindingData()创建卡片数据对象，再调用formProvider.updateForm(formId, obj2)更新卡片
+- 参数要求：formId为需要更新的卡片ID（从newStatus参数中获取），obj2为FormBindingData类型的卡片数据对象
+- 错误处理：需要使用Promise或异步回调处理更新结果，捕获可能的BusinessError错误
     });
   }
 }
@@ -165,8 +190,17 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 ### FormExtensionAbility.onChangeFormVisibility
 
 onChangeFormVisibility(newStatus: Record\<string, number>): void
+onChangeFormVisibility(newStatus: Record<string, number>): void
+
+卡片提供方接收修改可见性的通知接口。该接口仅对系统应用生效，且需要将formVisibleNotify配置为true。仅当FormExtensionAbility存活时才会触发该回调。
 
 卡片提供方接收修改可见性的通知接口。当卡片在桌面上的可见性发生变化（如卡片被遮挡、移出屏幕等）时，会触发此回调。开发者可以在此优化卡片的资源占用或暂停不必要的更新操作，并通过formProvider.updateForm()更新卡片数据。仅当FormExtensionAbility存活时才会触发此回调。该接口仅对系统应用生效，且需要将formVisibleNotify配置为true。
+
+**配合使用：**
+- 在回调中需要调用formProvider.updateForm()更新卡片数据
+- 调用顺序：先调用formBindingData.createFormBindingData()创建卡片数据对象，再调用formProvider.updateForm(formId, obj2)更新卡片
+- 参数要求：formId为需要更新的卡片ID（从newStatus参数中获取），obj2为FormBindingData类型的卡片数据对象
+- 错误处理：需要使用Promise或异步回调处理更新结果，捕获可能的BusinessError错误
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -218,7 +252,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onFormEvent(formId: string, message: string): void
 
-卡片提供方接收处理卡片事件的通知接口。当卡片内配置的自定义事件（如按钮点击、消息接收等）触发时，会调用此回调，开发者可以在此处理卡片与用户的交互逻辑。message参数为事件携带的消息内容，由卡片使用方定义。仅当FormExtensionAbility存活时才会触发此回调。
+卡片提供方接收处理卡片事件的通知接口，例如卡片使用方触发的自定义事件。message参数为事件携带的消息内容，由卡片使用方定义。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -248,6 +282,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 ### FormExtensionAbility.onRemoveForm
 
 onRemoveForm(formId: string): void
+onRemoveForm(formId: string): void
+
+卡片提供方接收销毁卡片的通知接口。仅当FormExtensionAbility存活时才会触发该回调。
 
 卡片提供方接收销毁卡片的通知接口。仅当FormExtensionAbility存活时才会触发此回调。
 
@@ -374,7 +411,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): void
 
-当卡片位置发生变化时（如用户移动卡片、卡片在不同屏幕间切换等），触发该回调。开发者可以根据新的位置信息调整卡片的展示或预加载相关内容。仅当FormExtensionAbility存活时才会触发此回调。
+当卡片位置发生变化时，触发该回调。当卡片在桌面上被拖动、桌面布局发生变化或屏幕旋转时，会触发此回调。开发者可以根据新的位置信息调整卡片的展示或预加载相关内容。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -412,7 +449,7 @@ export default class EntryFormAbility extends FormExtensionAbility {
 
 onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void
 
-卡片大小变化时，触发回调。当用户调整卡片尺寸或系统自动调整卡片大小时，会触发此回调。开发者可以根据新的尺寸调整卡片的布局和内容展示。仅当FormExtensionAbility存活时才会触发此回调。
+当卡片大小发生变化时（如用户调整卡片尺寸、系统自动调整布局等），触发该回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
