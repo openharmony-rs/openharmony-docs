@@ -392,7 +392,7 @@ Applications often need to monitor changes in the scroll position of a list and 
 
 As shown in Figure 8, when the list scrolls from contacts starting with "A" to those starting with "B," the external index bar should also update from the selected "A" state to the selected "B" state. This can be achieved by listening for the [onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#onscrollindex) event of the **ArcList** component. When an index item "C" is clicked, the list should jump to the contacts starting with "C." This can be achieved by listening for the [onSelect](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md#onselect) event of the [ArcAlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md) component.
 
-When the list scrolls, the **selectedIndex** value of the letter to highlight in the alphabet index bar is recalculated based on the **firstIndex** value of the item to which the list has scrolled. Since the **ArcAlphabetIndexer** component uses the [selected](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md#selected) attribute to set the selected item index, changes to **selectedIndex** will trigger the **ArcAlphabetIndexer** component to re-render and display the selected letter state.
+When the list scrolls, the **indexerIndex** value of the letter to highlight in the alphabet index bar is recalculated based on the **centerIndex** value of the item to which the list has scrolled. Since the **ArcAlphabetIndexer** component uses the [selected](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md#selected) attribute to set the selected item index, changes to **indexerIndex** will trigger the **ArcAlphabetIndexer** component to re-render and display the selected letter state.
 
 When an index item is selected, the selected item index (**index**) is used to recalculate the corresponding position in the list. The list is then scrolled to that position using the [scrollToIndex](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex) API of the bound scroll controller (**arcListScroller**). The **ArcList** component can be bound to a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) (scroll controller) object using the [scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
 
@@ -405,7 +405,7 @@ import { common } from '@kit.AbilityKit';
 
 // ...
 const alphabets: string[] = [
-  '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',
+    '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
   'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 ];
 
@@ -430,7 +430,9 @@ export struct ArcListArcIndexerBar {
             // ...
             .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
               // Recalculate the corresponding index bar position based on the index of the item to which the list has scrolled.
-              this.indexerIndex = centerIndex + 1;
+              let contact = this.contacts[centerIndex] as Contact;
+              let firstChar = contact.firstChar;
+              this.indexerIndex = alphabets.indexOf(firstChar);
             })
             // ...
             // ArcAlphabetIndexer component
@@ -438,8 +440,19 @@ export struct ArcListArcIndexerBar {
               .selected(this.indexerIndex!!)
               .onSelect((index: number) => {
                 // Scroll the list to the corresponding position when an index item is selected.
-                this.indexerIndex = index
-                this.arcListScroller.scrollToIndex(this.indexerIndex - 1)
+                this.indexerIndex = index;
+                const selectedLetter = alphabets[index];
+                let targetIndex = -1;
+                for (let i = 0; i < this.contacts.length; i++) {
+                  const contact = this.contacts[i] as Contact;
+                  if (contact.firstChar === selectedLetter) {
+                    targetIndex = i;
+                    break;
+                  }
+                }
+                if (targetIndex >= 0) {
+                  this.arcListScroller.scrollToIndex(targetIndex);
+                }
               })
               // ...
           }
