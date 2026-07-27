@@ -70,7 +70,6 @@ import { ComponentActive, ComponentInactive, ComponentReuse, ComponentRecycle } 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   @State changeChild: boolean = false;
 
   build() {
@@ -252,11 +251,6 @@ export function PageTwoBuilder() {
 @Component
 struct PageTwo {
   @State pageStack: NavPathStack = new NavPathStack();
-  @State @Watch('onMessageUpdated') message: number = 0;
-
-  onMessageUpdated() {
-    console.info(`TabContent message callback func ${this.message}`);
-  }
 
   build() {
     NavDestination() {
@@ -279,10 +273,6 @@ struct PageTwo {
           .width('40%')
         Row() {
           Column() {
-            Button(`change message`)
-              .onClick(() => {
-                this.message++;
-              })
             TabsComponent();
           }
           .width('100%')
@@ -323,7 +313,6 @@ struct FreezeChild {
 @Component
 struct TabsComponent {
   private data: number[] = [0, 1, 2];
-  private controller: TabsController = new TabsController();
   @State @Watch('onMessageUpdated') message: number = 0;
 
   onMessageUpdated() {
@@ -334,6 +323,7 @@ struct TabsComponent {
     Column() {
       Button(`Incr state ${this.message}`)
         .onClick(() => {
+          // 点击Button修改message，触发可见TabContent的onMessageUpdated回调
           this.message++;
         })
         .margin(10)
