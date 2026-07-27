@@ -4119,3 +4119,4 @@ Enumerates event IDs.
 | EVENT_APPLY_START      | 0x0100000E | Applying the upgrade.  |
 | EVENT_UPGRADE_SUCCESS  | 0x0100000F | Upgrade succeeded.  |
 | EVENT_UPGRADE_FAIL     | 0x01000010 | Update failed.  |
+<!--no_check-->
