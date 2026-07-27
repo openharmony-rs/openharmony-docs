@@ -1309,3 +1309,211 @@ setLocationSwitchIgnored(isIgnored: boolean): void
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
+
+
+## geoLocationManager.addFusionFence
+
+addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise<void>;
+
+添加一个融合围栏，并订阅围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
+
+融合围栏支持设置多种类型围栏，包括GNSS围栏、WIFI围栏、CELL围栏。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | fenceRequestParams | FusionFenceRequestParams&lt;[FusionFenceRequestParams](#fusionfencerequestparams)&gt; | 是 | 融合围栏请求信息。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.setLocationSwitchIgnored} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                            |
+|3301100 | The location switch is off.|
+|3301603 | Duplicate fusion fence identifier.                                            |
+|3301601 | The number of geofences exceeds the maximum.                                            |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  let latitude = 30.07;
+  let longitude = 119.98;
+  let point: geoLocationManager.Point = {
+    latitude:latitude,
+    longitude:longitude
+  }
+  let geofence: geoLocationManager.Geofence = {
+    "latitude": latitude, "longitude": longitude, "radius": 2000, "expiration": 500000000
+  }
+  let polygon: Array<geoLocationManager.Point> = [point];
+  let gnssFence: geoLocationManager.GnssFence = {
+    gnssFenceType: geoLocationManager.GnssFenceType.CIRCULAR, // GnssFenceType
+    circularFence: geofence,
+    polygon: polygon
+  }
+  let gnssFences: Array<geoLocationManager.GnssFence> = [gnssFence];
+
+  let additionsMap: Map<string, string> = new Map<string, string>([
+    ['key1', 'value1'],
+    ['key2', 'value2'],
+  ]);
+
+  let cellInfo: geoLocationManager.CellInfo = {
+    timeSinceBoot:1781062881671, cellId:9999, lac:1024, mcc: 460, mnc: 1, rat: 13, signalIntensity: -75, arfcn: 1850, pci: 256, tac: 888,
+    additionsMap: additionsMap
+  }
+  let cellInfos: Array<geoLocationManager.CellInfo> = [cellInfo];
+  let cellFence: geoLocationManager.CellFence = {
+    cellInfos: cellInfos,
+  };
+  let cellFences: Array<geoLocationManager.CellFence> = [cellFence];
+
+  let mac: Array<string> = ["FA:C4:D0:0E:BF:DF"];
+  let wifiFeature: geoLocationManager.WirelessSignalFeature = {
+    rssiAvg: 1,
+    rssiStandardDeviation:2.0,
+    mac:mac
+  };
+
+  let wifiFeatures: Array<geoLocationManager.WirelessSignalFeature> = [wifiFeature];
+
+  let wifiFence: geoLocationManager.WifiFence = {
+    type: geoLocationManager.WifiFingerprintType.LOCATION,
+    wifiFeatures:wifiFeatures
+  };
+
+  let wifiFences: Array<geoLocationManager.WifiFence> = [wifiFence];
+
+  let fenceRequestParams: geoLocationManager.FusionFenceRequestParams = {
+    identifier: "123456789",
+    scene: geoLocationManager.FusionFenceScene.AIRPORT,
+    fenceType: 1,
+    poiType: "1",
+    poiLocation: point,
+    monitorTransitionEvents: 63,
+    loiterTimeMs: 10000,
+    gnssFences: gnssFences,
+    cellFences: cellFences,
+    wifiFences: wifiFences,
+    expirationMs: 100000000,
+    fenceTransitionCallback: (transition : geoLocationManager.FusionFenceTransition) => {
+      if (transition) {
+        console.info("GeofenceTransition: %{public}s", JSON.stringify(transition));
+      }
+    },
+  }
+  try {
+    await geoLocationManager.addFusionFence(fenceRequestParams).then(() => {
+      console.info("addFusionGeofence success");
+    }).catch((error : BusinessError) => {
+      console.error("addFusionFence: BusinessError=" + JSON.stringify(error));
+    });
+  } catch(error) {
+    console.error("addFusionFence: error=" + JSON.stringify(error));
+  }
+  ```
+
+
+## geoLocationManager.removeFusionFence
+
+removeFusionFence(identifier: string): Promise<void>;
+
+删除一个融合围栏，并取消订阅该围栏事件。使用Promise异步回调。。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | identifier | string | 是 | 融合围栏唯一标识。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.setLocationSwitchIgnored} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                            |
+|3301602 | Failed to delete a fusion fence due to an incorrect identifier.                                          |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    await geoLocationManager.removeFusionFence("123456789").then(() => {
+      console.info("addFusionGeofence success");
+    }).catch((error : BusinessError) => {
+      console.error("addFusionFence: BusinessError=" + JSON.stringify(error));
+    });
+  } catch(error) {
+    console.error("addFusionFence: error=" + JSON.stringify(error));
+  }
+  ```
+
+
+## geoLocationManager.isFusionFenceSupported
+
+isFusionFenceSupported(): boolean;
+
+判断系统是否支持融合围栏能力。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | identifier | string | 是 | 融合围栏唯一标识。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持融合围栏能力。<br/>false：不支持融合围栏能力。 |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    let isFusionFenceSupported = geoLocationManager.isFusionFenceSupported();
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
