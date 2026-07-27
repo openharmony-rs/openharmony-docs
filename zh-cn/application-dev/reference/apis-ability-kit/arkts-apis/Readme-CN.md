@@ -1544,7 +1544,7 @@
     - [AbilityDelegatorArgs](arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md)
   - [shellCmdResult](arkts-shellcmdresult.md)
     - [ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)
-- bundleManager<!--arkts-abilitykit-bundleManager-->
+- bundleManager<!--arkts-abilitykit-bundlemanager-->
   - [AbilityInfo](arkts-abilityinfo.md)
     - [AbilityInfo](arkts-ability-abilityinfo-i.md)
     - [WindowSize](arkts-ability-abilityinfo-windowsize-i.md)
@@ -1723,7 +1723,7 @@
     - [ContinuationExtraParams](arkts-ability-continuationextraparams-continuationextraparams-i.md)
   - [continuationResult](arkts-continuationresult.md)
     - [ContinuationResult](arkts-ability-continuationresult-continuationresult-i.md)
-- wantAgent<!--arkts-abilitykit-wantAgent-->
+- wantAgent<!--arkts-abilitykit-wantagent-->
   - [triggerInfo](arkts-triggerinfo.md)
     - [TriggerInfo](arkts-ability-triggerinfo-triggerinfo-i.md)
     <!--Del-->
