@@ -5,6 +5,7 @@
 <!--Designer: @zhangzhengxue; @jackd320-->
 <!--Tester: @mamba-ting-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=6a0c4a565ec3c4eada9375dc1f53febf5f813a4b translatedAt=2026-07-27T01:18:54.831Z pushedAt=2026-07-27T01:19:49.941Z -->
 
 The **@ohos.update** module provides the core capabilities of online update, local SD card update, and factory reset. Version management, update control, and equipment maintenance can be implemented for the Over-The-Air (OTA) clients and system apps using this module. APIs provided by this module can be used for system version update, offline update, and data clearing.
 
@@ -2792,6 +2793,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
+| 203      | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error.               |
 
 **Example**
@@ -2855,6 +2857,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
+| 203      | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error.               |
 
 **Example**
@@ -2917,6 +2920,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
+| 203      | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error.               |
 
 **Example**
@@ -2991,6 +2995,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
+| 203      | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error.               |
 
 **Example**
@@ -4114,4 +4119,3 @@ Enumerates event IDs.
 | EVENT_APPLY_START      | 0x0100000E | Applying the upgrade.  |
 | EVENT_UPGRADE_SUCCESS  | 0x0100000F | Upgrade succeeded.  |
 | EVENT_UPGRADE_FAIL     | 0x01000010 | Update failed.  |
-<!--no_check-->
