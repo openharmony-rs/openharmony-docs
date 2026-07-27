@@ -64564,7 +64564,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActiveRecycle.ets",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":82,
 						"name":"ComponentActiveRecycle",
 						"start_line":16
 					}
@@ -64594,7 +64594,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/PageTwo.ets",
 				"functions":[
 					{
-						"end_line":133,
+						"end_line":124,
 						"name":"PageTwo",
 						"start_line":16
 					}
